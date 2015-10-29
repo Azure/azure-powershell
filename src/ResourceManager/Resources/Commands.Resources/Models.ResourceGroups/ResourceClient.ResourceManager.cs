@@ -304,11 +304,6 @@ namespace Microsoft.Azure.Commands.Resources.Models
             parameters.DeploymentName = GenerateDeploymentName(parameters);
             Deployment deployment = CreateBasicDeployment(parameters, parameters.DeploymentMode);
 
-            if (!string.IsNullOrEmpty(parameters.StorageAccountName))
-            {
-                WriteWarning("The StorageAccountName parameter is no longer used and will be removed in a future release. Please update scripts to remove this parameter.");
-            }
-
             ResourceManagementClient.Deployments.CreateOrUpdate(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
             WriteVerbose(string.Format("Create template deployment '{0}'.", parameters.DeploymentName));
             DeploymentExtended result = ProvisionDeploymentStatus(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
@@ -463,7 +458,6 @@ namespace Microsoft.Azure.Commands.Resources.Models
             string resourceGroup = options.ResourceGroupName;
             string name = options.DeploymentName;
             List<string> excludedProvisioningStates = options.ExcludedProvisioningStates ?? new List<string>();
-            List<string> provisioningStates = options.ProvisioningStates ?? new List<string>();
 
             if (!string.IsNullOrEmpty(resourceGroup) && !string.IsNullOrEmpty(name))
             {
@@ -471,14 +465,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             }
             else if (!string.IsNullOrEmpty(resourceGroup))
             {
-                DeploymentListParameters parameters = new DeploymentListParameters();
-
-                if (provisioningStates.Count == 1)
-                {
-                    parameters.ProvisioningState = provisioningStates.First();
-                }
-
-                DeploymentListResult result = ResourceManagementClient.Deployments.List(resourceGroup, parameters);
+                DeploymentListResult result = ResourceManagementClient.Deployments.List(resourceGroup, null);
 
                 deployments.AddRange(result.Deployments.Select(d => d.ToPSResourceGroupDeployment(options.ResourceGroupName)));
 
@@ -489,12 +476,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 }
             }
 
-            if (provisioningStates.Count > 1)
-            {
-                return deployments.Where(d => provisioningStates
-                    .Any(s => s.Equals(d.ProvisioningState, StringComparison.OrdinalIgnoreCase))).ToList();
-            }
-            else if (provisioningStates.Count == 0 && excludedProvisioningStates.Count > 0)
+            if(excludedProvisioningStates.Count > 0)
             {
                 return deployments.Where(d => excludedProvisioningStates
                     .All(s => !s.Equals(d.ProvisioningState, StringComparison.OrdinalIgnoreCase))).ToList();

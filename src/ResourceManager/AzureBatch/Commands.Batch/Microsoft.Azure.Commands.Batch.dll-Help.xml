@@ -289,10 +289,15 @@
           </maml:para>
         </maml:introduction>
         <dev:code>PS C:\&gt;Get-AzureRmBatchAccount -AccountName "pfuller"
-AccountName          Location        ResourceGroupName Tags               TaskTenantUrl
------------          --------        ----------------- ----               -------------
-pfuller              westus          CmdletExampleRG                      https://pfuller.westus.batch.azure.com                        
-</dev:code>
+          AccountName                  : pfuller
+          Location                     : westus
+          ResourceGroupName            : CmdletExampleRG
+          CoreQuota                    : 20
+          PoolQuota                    : 20
+          ActiveJobAndJobScheduleQuota : 20
+          Tags                         :
+          TaskTenantUrl                : https://pfuller.westus.batch.azure.com
+        </dev:code>
         <dev:remarks>
           <maml:para>This command gets the batch account named pfuller.</maml:para>
           <maml:para />
@@ -311,11 +316,24 @@ pfuller              westus          CmdletExampleRG                      https:
           </maml:para>
         </maml:introduction>
         <dev:code>PS C:\&gt;Get-AzureRmBatchAccount -ResourceGroupName "CmdletExampleRG"
-AccountName          Location        ResourceGroupName Tags               TaskTenantUrl
------------          --------        ----------------- ----               -------------
-cmdletexample        westus          CmdletExampleRG                      https://cmdletexample.westus.batch.azure.com
-cmdletexample2       westus          CmdletExampleRG                      https://cmdletexample.westus.batch.azure.com                        
-</dev:code>
+          AccountName                  : cmdletexample
+          Location                     : westus
+          ResourceGroupName            : CmdletExampleRG
+          CoreQuota                    : 20
+          PoolQuota                    : 20
+          ActiveJobAndJobScheduleQuota : 20
+          Tags                         :
+          TaskTenantUrl                : https://cmdletexample.westus.batch.azure.com
+
+          AccountName                  : cmdletexample2
+          Location                     : westus
+          ResourceGroupName            : CmdletExampleRG
+          CoreQuota                    : 20
+          PoolQuota                    : 20
+          ActiveJobAndJobScheduleQuota : 20
+          Tags                         :
+          TaskTenantUrl                : https://cmdletexample.westus.batch.azure.com
+        </dev:code>
         <dev:remarks>
           <maml:para>This command gets the batch accounts associated with the CmdletExampleRG resource group.</maml:para>
           <maml:para />
@@ -4048,11 +4066,16 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobs/
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;New-AzureRmBatchAccountKey -AccountName "CmdletExample" -KeyType "Primary"
-AccountName          Location        ResourceGroupName Tags               TaskTenantUrl
------------          --------        ----------------- ----               -------------
-cmdletexample        westus          CmdletExample                        https://batch.core.contoso.net                        
-</dev:code>
+        <dev:code>PS C:\&gt;New-AzureRmBatchAccountKey -AccountName "cmdletexample" -KeyType "Primary"
+          AccountName                  : cmdletexample
+          Location                     : westus
+          ResourceGroupName            : CmdletExampleRG
+          CoreQuota                    : 20
+          PoolQuota                    : 20
+          ActiveJobAndJobScheduleQuota : 20
+          Tags                         :
+          TaskTenantUrl                : https://cmdletexample.westus.batch.azure.com
+        </dev:code>
         <dev:remarks>
           <maml:para>This command regenerates the primary account key on the Batch account named CmdletExample.</maml:para>
           <maml:para />
@@ -4242,10 +4265,15 @@ cmdletexample        westus          CmdletExample                        https:
           </maml:para>
         </maml:introduction>
         <dev:code>PS C:\&gt;New-AzureRmBatchAccount -AccountName "cmdletexample" -ResourceGroupName "CmdletExampleRG" -Location "WestUS"
-AccountName          Location        ResourceGroupName Tags               TaskTenantUrl
------------          --------        ----------------- ----               -------------
-cmdletexample       WestUS           CmdletExampleRG                      https://batch.core.contoso.net                        
-</dev:code>
+          AccountName                  : cmdletexample
+          Location                     : westus
+          ResourceGroupName            : CmdletExampleRG
+          CoreQuota                    : 20
+          PoolQuota                    : 20
+          ActiveJobAndJobScheduleQuota : 20
+          Tags                         :
+          TaskTenantUrl                : https://cmdletexample.westus.batch.azure.com
+        </dev:code>
         <dev:remarks>
           <maml:para>This command creates a new Batch account named cmdletexample using the CmdletExampleRG resource group in the WestUS location.</maml:para>
           <maml:para />
@@ -7450,13 +7478,19 @@ Switch-AzureMode AzureResourceManager</maml:para>
     <maml:uri>
     </maml:uri>
   </maml:navigationLink>Azure Resource Manager Cmdlets<maml:navigationLink xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp"><maml:linkText>Using Windows Powershell with Resource Manager</maml:linkText><maml:uri></maml:uri></maml:navigationLink><command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp"><command:details><command:name>Set-AzureRmBatchAccount</command:name><maml:description><maml:para>Updates the specified Batch account.</maml:para></maml:description><maml:copyright><maml:para /></maml:copyright><command:verb>Set</command:verb><command:noun>AzureRMBatchAccount</command:noun><dev:version /></command:details><maml:description><maml:para>The Set-AzureRmBatchAccount cmdlet updates the specified Azure Batch account. Currently, only tags can be updated.</maml:para></maml:description><command:syntax><command:syntaxItem><maml:name>Set-AzureRmBatchAccount</maml:name><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="Name"><maml:name>AccountName</maml:name><maml:description><maml:para>Specifies the name of the existing Batch account to update.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">String</command:parameterValue></command:parameter><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="2" aliases="Tags"><maml:name>Tag</maml:name><maml:description><maml:para>Specifies tags in an array of hash tables to set on the account.</maml:para></maml:description><command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>Profile</maml:name><maml:description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">AzureProfile</command:parameterValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none"><maml:name>ResourceGroupName</maml:name><maml:description><maml:para>Specifies the resource group of the account being updated.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">String</command:parameterValue></command:parameter></command:syntaxItem></command:syntax><command:parameters><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="Name"><maml:name>AccountName</maml:name><maml:description><maml:para>Specifies the name of the existing Batch account to update.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">String</command:parameterValue><dev:type><maml:name>String</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>Profile</maml:name><maml:description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">AzureProfile</command:parameterValue><dev:type><maml:name>AzureProfile</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none"><maml:name>ResourceGroupName</maml:name><maml:description><maml:para>Specifies the resource group of the account being updated.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">String</command:parameterValue><dev:type><maml:name>String</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="2" aliases="Tags"><maml:name>Tag</maml:name><maml:description><maml:para>Specifies tags in an array of hash tables to set on the account.</maml:para></maml:description><command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue><dev:type><maml:name>Hashtable[]</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter></command:parameters><command:inputTypes><command:inputType><dev:type><maml:name></maml:name><maml:uri></maml:uri><maml:description><maml:para /></maml:description></dev:type><maml:description><maml:para></maml:para></maml:description></command:inputType></command:inputTypes><command:returnValues><command:returnValue><dev:type><maml:name>BatchAccountContext</maml:name><maml:uri></maml:uri><maml:description><maml:para /></maml:description></dev:type><maml:description><maml:para></maml:para></maml:description></command:returnValue></command:returnValues><command:terminatingErrors /><command:nonTerminatingErrors /><command:examples><command:example><maml:title>Example 1: Update the tags on an existing Batch account</maml:title><maml:introduction><maml:para></maml:para></maml:introduction><dev:code>PS C:\&gt;Set-AzureRmBatchAccount -AccountName "cmdletexample" -Tag @(@{Name = "tag1";Value = "value1"},@{Name = "tag2";Value = "value2"})
-AccountName          Location        ResourceGroupName Tags               TaskTenantUrl
------------          --------        ----------------- ----               -------------
-cmdletexample        westus          cmdletexamplerg   {System.Collection https://cmdletexample.westus.batch.azure.com
-                                                       s.Hashtable, Syste
-                                                       m.Collections.Hash
-                                                       table}                        
-</dev:code><dev:remarks><maml:para>This command updates the tags on the cmdletexample account.</maml:para><maml:para /><maml:para /></dev:remarks><command:commandLines><command:commandLine><command:commandText /></command:commandLine></command:commandLines></command:example></command:examples><maml:relatedLinks><maml:navigationLink><maml:linkText>Get-AzureRmBatchAccount</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>New-AzureRmBatchAccount</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>Remove-AzureRmBatchAccount</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>RMAzure_Batch_Cmdlets</maml:linkText><maml:uri /></maml:navigationLink></maml:relatedLinks><maml:alertSet><maml:alert><maml:para>Keywords: azure, azurerm, arm, resource, management, manager, batch</maml:para></maml:alert></maml:alertSet></command:command><command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp"><command:details><command:name>Start-AzureBatchPoolResize</command:name><maml:description><maml:para>Starts to resize a pool.</maml:para></maml:description><maml:copyright><maml:para /></maml:copyright><command:verb>Start</command:verb><command:noun>AzureBatchPoolResize</command:noun><dev:version /></command:details><maml:description><maml:para>The Start-AzureBatchPoolResize cmdlet starts an Azure Batch resize operation on a pool.</maml:para></maml:description><command:syntax><command:syntaxItem><maml:name>Start-AzureBatchPoolResize</maml:name><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue,ByPropertyName)" position="1" aliases="none"><maml:name>Id</maml:name><maml:description><maml:para>Specifies the ID of the pool that this cmdlet resizes.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">String</command:parameterValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>ComputeNodeDeallocationOption</maml:name><maml:description><maml:para>Specifies a deallocation option for the resizing operation that this cmdlet starts.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">ComputeNodeDeallocationOption</command:parameterValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>Profile</maml:name><maml:description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">AzureProfile</command:parameterValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>ResizeTimeout</maml:name><maml:description><maml:para>Specifies a time-out period for the resizing operation. If the pool does not reach the target size by this time, the resize operation stops.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">TimeSpan</command:parameterValue></command:parameter><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none"><maml:name>BatchContext</maml:name><maml:description><maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRmBatchAccountKeys cmdlet. </maml:para></maml:description><command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue></command:parameter><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>TargetDedicated</maml:name><maml:description><maml:para>Specifies the target number of dedicated compute nodes.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">Int32</command:parameterValue></command:parameter></command:syntaxItem></command:syntax><command:parameters><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none"><maml:name>BatchContext</maml:name><maml:description><maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRmBatchAccountKeys cmdlet. </maml:para></maml:description><command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue><dev:type><maml:name>BatchAccountContext</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>ComputeNodeDeallocationOption</maml:name><maml:description><maml:para>Specifies a deallocation option for the resizing operation that this cmdlet starts.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">ComputeNodeDeallocationOption</command:parameterValue><dev:type><maml:name>ComputeNodeDeallocationOption</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue,ByPropertyName)" position="1" aliases="none"><maml:name>Id</maml:name><maml:description><maml:para>Specifies the ID of the pool that this cmdlet resizes.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">String</command:parameterValue><dev:type><maml:name>String</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>Profile</maml:name><maml:description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">AzureProfile</command:parameterValue><dev:type><maml:name>AzureProfile</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>ResizeTimeout</maml:name><maml:description><maml:para>Specifies a time-out period for the resizing operation. If the pool does not reach the target size by this time, the resize operation stops.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">TimeSpan</command:parameterValue><dev:type><maml:name>TimeSpan</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>TargetDedicated</maml:name><maml:description><maml:para>Specifies the target number of dedicated compute nodes.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">Int32</command:parameterValue><dev:type><maml:name>Int32</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter></command:parameters><command:inputTypes><command:inputType><dev:type><maml:name></maml:name><maml:uri></maml:uri><maml:description><maml:para /></maml:description></dev:type><maml:description><maml:para></maml:para></maml:description></command:inputType></command:inputTypes><command:returnValues><command:returnValue><dev:type><maml:name></maml:name><maml:uri></maml:uri><maml:description><maml:para /></maml:description></dev:type><maml:description><maml:para></maml:para></maml:description></command:returnValue></command:returnValues><command:terminatingErrors /><command:nonTerminatingErrors /><command:examples><command:example><maml:title>Example 1: Resize a pool to 12 nodes</maml:title><maml:introduction><maml:para></maml:para></maml:introduction><dev:code>PS C:\&gt;Start-AzureBatchPoolResize -Id "ContosoPool06" -TargetDedicated 12 -BatchContext $Context
+    AccountName                  : cmdletexample
+    Location                     : westus
+    ResourceGroupName            : CmdletExampleRG
+    CoreQuota                    : 20
+    PoolQuota                    : 20
+    ActiveJobAndJobScheduleQuota : 20
+    Tags                         : 
+                                   Name  Value
+                                   ====  ======
+                                   tag1  value1
+                                   tag2  value2
+    TaskTenantUrl                : https://cmdletexample.westus.batch.azure.com
+  </dev:code><dev:remarks><maml:para>This command updates the tags on the cmdletexample account.</maml:para><maml:para /><maml:para /></dev:remarks><command:commandLines><command:commandLine><command:commandText /></command:commandLine></command:commandLines></command:example></command:examples><maml:relatedLinks><maml:navigationLink><maml:linkText>Get-AzureRmBatchAccount</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>New-AzureRmBatchAccount</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>Remove-AzureRmBatchAccount</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>RMAzure_Batch_Cmdlets</maml:linkText><maml:uri /></maml:navigationLink></maml:relatedLinks><maml:alertSet><maml:alert><maml:para>Keywords: azure, azurerm, arm, resource, management, manager, batch</maml:para></maml:alert></maml:alertSet></command:command><command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp"><command:details><command:name>Start-AzureBatchPoolResize</command:name><maml:description><maml:para>Starts to resize a pool.</maml:para></maml:description><maml:copyright><maml:para /></maml:copyright><command:verb>Start</command:verb><command:noun>AzureBatchPoolResize</command:noun><dev:version /></command:details><maml:description><maml:para>The Start-AzureBatchPoolResize cmdlet starts an Azure Batch resize operation on a pool.</maml:para></maml:description><command:syntax><command:syntaxItem><maml:name>Start-AzureBatchPoolResize</maml:name><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue,ByPropertyName)" position="1" aliases="none"><maml:name>Id</maml:name><maml:description><maml:para>Specifies the ID of the pool that this cmdlet resizes.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">String</command:parameterValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>ComputeNodeDeallocationOption</maml:name><maml:description><maml:para>Specifies a deallocation option for the resizing operation that this cmdlet starts.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">ComputeNodeDeallocationOption</command:parameterValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>Profile</maml:name><maml:description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">AzureProfile</command:parameterValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>ResizeTimeout</maml:name><maml:description><maml:para>Specifies a time-out period for the resizing operation. If the pool does not reach the target size by this time, the resize operation stops.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">TimeSpan</command:parameterValue></command:parameter><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none"><maml:name>BatchContext</maml:name><maml:description><maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRmBatchAccountKeys cmdlet. </maml:para></maml:description><command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue></command:parameter><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>TargetDedicated</maml:name><maml:description><maml:para>Specifies the target number of dedicated compute nodes.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">Int32</command:parameterValue></command:parameter></command:syntaxItem></command:syntax><command:parameters><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none"><maml:name>BatchContext</maml:name><maml:description><maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRmBatchAccountKeys cmdlet. </maml:para></maml:description><command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue><dev:type><maml:name>BatchAccountContext</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>ComputeNodeDeallocationOption</maml:name><maml:description><maml:para>Specifies a deallocation option for the resizing operation that this cmdlet starts.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">ComputeNodeDeallocationOption</command:parameterValue><dev:type><maml:name>ComputeNodeDeallocationOption</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue,ByPropertyName)" position="1" aliases="none"><maml:name>Id</maml:name><maml:description><maml:para>Specifies the ID of the pool that this cmdlet resizes.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">String</command:parameterValue><dev:type><maml:name>String</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>Profile</maml:name><maml:description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">AzureProfile</command:parameterValue><dev:type><maml:name>AzureProfile</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>ResizeTimeout</maml:name><maml:description><maml:para>Specifies a time-out period for the resizing operation. If the pool does not reach the target size by this time, the resize operation stops.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">TimeSpan</command:parameterValue><dev:type><maml:name>TimeSpan</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>TargetDedicated</maml:name><maml:description><maml:para>Specifies the target number of dedicated compute nodes.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">Int32</command:parameterValue><dev:type><maml:name>Int32</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter></command:parameters><command:inputTypes><command:inputType><dev:type><maml:name></maml:name><maml:uri></maml:uri><maml:description><maml:para /></maml:description></dev:type><maml:description><maml:para></maml:para></maml:description></command:inputType></command:inputTypes><command:returnValues><command:returnValue><dev:type><maml:name></maml:name><maml:uri></maml:uri><maml:description><maml:para /></maml:description></dev:type><maml:description><maml:para></maml:para></maml:description></command:returnValue></command:returnValues><command:terminatingErrors /><command:nonTerminatingErrors /><command:examples><command:example><maml:title>Example 1: Resize a pool to 12 nodes</maml:title><maml:introduction><maml:para></maml:para></maml:introduction><dev:code>PS C:\&gt;Start-AzureBatchPoolResize -Id "ContosoPool06" -TargetDedicated 12 -BatchContext $Context
 </dev:code><dev:remarks><maml:para>This command starts a resize operation on the pool that has the ID ContosoPool06. The target for the operation is 12 dedicated compute nodes. Use the Get-AzureRmBatchAccountKeys cmdlet to assign a context to the $Context variable. </maml:para><maml:para /><maml:para /></dev:remarks><command:commandLines><command:commandLine><command:commandText /></command:commandLine></command:commandLines></command:example><command:example><maml:title>Example 2: Resize a pool using a deallocation option</maml:title><maml:introduction><maml:para></maml:para></maml:introduction><dev:code>PS C:\&gt;Get-AzureBatchPool -Id "ContosoPool06" -BatchContext $Context | Start-AzureBatchPoolResize -TargetDedicated 5 -ResizeTimeout ([TimeSpan]::FromHours(1)) -ComputeNodeDeallocationOption ([Microsoft.Azure.Batch.Common.ComputeNodeDeallocationOption]::Terminate) -BatchContext $Context
 </dev:code><dev:remarks><maml:para>This cmdlet resizes a pool to five dedicated compute nodes. The command gets the pool that has the ID ContosoPool06 by using the Get-AzureBatchPool cmdlet. The command passes that pool object to the current cmdlet by using the pipeline operator. The command starts a resize operation on the pool. The target is five dedicated compute nodes. The command specifies time-out period of one hour. The command specifies a deallocation option of Terminate.</maml:para><maml:para /><maml:para /></dev:remarks><command:commandLines><command:commandLine><command:commandText /></command:commandLine></command:commandLines></command:example></command:examples><maml:relatedLinks><maml:navigationLink><maml:linkText>Get-AzureRmBatchAccountKeys</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>Get-AzureBatchPool</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>Stop-AzureBatchPoolResize</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>RMAzure_Batch_Cmdlets</maml:linkText><maml:uri /></maml:navigationLink></maml:relatedLinks><maml:alertSet><maml:alert><maml:para>Keywords: azure, azurerm, arm, resource, management, manager, batch</maml:para></maml:alert></maml:alertSet></command:command><command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp"><command:details><command:name>Stop-AzureBatchPoolResize</command:name><maml:description><maml:para>Stops a pool resize operation.</maml:para></maml:description><maml:copyright><maml:para /></maml:copyright><command:verb>Stop</command:verb><command:noun>AzureBatchPoolResize</command:noun><dev:version /></command:details><maml:description><maml:para>The Stop-AzureBatchPoolResize cmdlet stops an Azure Batch resize operation on a pool.</maml:para></maml:description><command:syntax><command:syntaxItem><maml:name>Stop-AzureBatchPoolResize</maml:name><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue,ByPropertyName)" position="1" aliases="none"><maml:name>Id</maml:name><maml:description><maml:para>Specifies the ID of the pool for which this cmdlet stops a resizing operation.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">String</command:parameterValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>Profile</maml:name><maml:description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">AzureProfile</command:parameterValue></command:parameter><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none"><maml:name>BatchContext</maml:name><maml:description><maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRmBatchAccountKeys cmdlet.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue></command:parameter></command:syntaxItem></command:syntax><command:parameters><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none"><maml:name>BatchContext</maml:name><maml:description><maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRmBatchAccountKeys cmdlet.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue><dev:type><maml:name>BatchAccountContext</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue,ByPropertyName)" position="1" aliases="none"><maml:name>Id</maml:name><maml:description><maml:para>Specifies the ID of the pool for which this cmdlet stops a resizing operation.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">String</command:parameterValue><dev:type><maml:name>String</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>Profile</maml:name><maml:description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">AzureProfile</command:parameterValue><dev:type><maml:name>AzureProfile</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter></command:parameters><command:inputTypes><command:inputType><dev:type><maml:name></maml:name><maml:uri></maml:uri><maml:description><maml:para /></maml:description></dev:type><maml:description><maml:para></maml:para></maml:description></command:inputType></command:inputTypes><command:returnValues><command:returnValue><dev:type><maml:name></maml:name><maml:uri></maml:uri><maml:description><maml:para /></maml:description></dev:type><maml:description><maml:para></maml:para></maml:description></command:returnValue></command:returnValues><command:terminatingErrors /><command:nonTerminatingErrors /><command:examples><command:example><maml:title>Example 1: Stop resizing a pool</maml:title><maml:introduction><maml:para></maml:para></maml:introduction><dev:code>PS C:\&gt;Stop-AzureBatchPoolResize -Id "ContosoPool06" -BatchContext $Context 
 </dev:code><dev:remarks><maml:para>This command stops a resize operation on the pool that has the ID ContosoPool06. Use the Get-AzureRmBatchAccountKeys cmdlet to assign a context to the $Context variable.</maml:para><maml:para /><maml:para /></dev:remarks><command:commandLines><command:commandLine><command:commandText /></command:commandLine></command:commandLines></command:example><command:example><maml:title>Example 2: Stop resizing a pool by using the pipeline</maml:title><maml:introduction><maml:para></maml:para></maml:introduction><dev:code>PS C:\&gt;Get-AzureBatchPool -Id "ContosoPool06" -BatchContext $Context | Stop-AzureBatchPoolResize -BatchContext $Context 
@@ -8551,4 +8585,107 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
     </maml:relatedLinks>
   </command:command>
 
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Get-AzureRmBatchSubscriptionQuotas</command:name>
+      <maml:description>
+        <maml:para>Gets the quotas of the subscription in the Batch Service.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>AzureRmBatchSubscriptionQuotas</command:noun>
+      <dev:version />
+    </command:details>
+    <maml:description>
+      <maml:para>Get-AzureRmBatchSubscriptionQuotas cmdlet gets the quotas of the subscription in the Batch Service for the specified region.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-AzureRmBatchSubscriptionQuotas</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="none">
+          <maml:name>Location</maml:name>
+          <maml:description>
+            <maml:para>The region to get the quotas of the subscription in the Batch Service from.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="none">
+        <maml:name>Location</maml:name>
+        <maml:description>
+          <maml:para>The region to get the quotas of the subscription in the Batch Service from.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>
+          </maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>
+          </maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>PSBatchSubscriptionQuotas</maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <command:examples>
+      <command:example>
+        <maml:title>Example 1: Get the quotas for the subscription in the Batch Service in the westus region.</maml:title>
+        <maml:introduction>
+          <maml:para>
+          </maml:para>
+        </maml:introduction>
+        <dev:code>
+          PS C:\&gt;Get-AzureRmBatchSubscriptionQuotas "westus"
+          AccountQuota Location
+          ------------ --------
+          1            westus
+        </dev:code>
+        <dev:remarks>
+          <maml:para>The return value indicates that this subscription can only create 1 account in the westus region.</maml:para>
+          <maml:para />
+          <maml:para />
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+  </command:command>
 </helpItems>
