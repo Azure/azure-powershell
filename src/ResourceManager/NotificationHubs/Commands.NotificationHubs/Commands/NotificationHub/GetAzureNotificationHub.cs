@@ -46,20 +46,17 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
 
         protected override void ProcessRecord()
         {
-            if (!string.IsNullOrEmpty(ResourceGroup) && !string.IsNullOrEmpty(Namespace))
+            if (!string.IsNullOrEmpty(NotificationHub))
             {
-                if (!string.IsNullOrEmpty(NotificationHub))
-                {
-                    // Get a NotificationHub
-                    var notificationHub = Client.GetNotificationHub(ResourceGroup, Namespace, NotificationHub);
-                    WriteObject(notificationHub);
-                }
-                else
-                {
-                    // Get all NotificationHub
-                    var notificationHubsList = Client.ListNotificationHubs(ResourceGroup, Namespace);
-                    WriteObject(notificationHubsList.ToList(), true);
-                }
+                // Get a NotificationHub
+                var notificationHub = Client.GetNotificationHub(ResourceGroup, Namespace, NotificationHub);
+                WriteObject(notificationHub);
+            }
+            else
+            {
+                // Get all NotificationHub
+                var notificationHubsList = Client.ListNotificationHubs(ResourceGroup, Namespace);
+                WriteObject(notificationHubsList.ToList(), true);
             }
         }
     }

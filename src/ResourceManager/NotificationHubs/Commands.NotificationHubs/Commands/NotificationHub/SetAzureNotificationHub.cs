@@ -56,24 +56,21 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
             HelpMessage = "NotificationHub definition.")]
         [ValidateNotNullOrEmpty]
         public NotificationHubAttributes NotificationHubObj { get; set; }
-        
+
         protected override void ProcessRecord()
         {
-            if (!string.IsNullOrEmpty(ResourceGroup) && !string.IsNullOrEmpty(Namespace))
+            NotificationHubAttributes hub = null;
+            if (!string.IsNullOrEmpty(InputFile))
             {
-                NotificationHubAttributes hub = null;
-                if (!string.IsNullOrEmpty(InputFile))
-                {
-                    hub = ParseInputFile<NotificationHubAttributes>(InputFile);
-                }
-                else
-                {
-                    hub = NotificationHubObj;
-                }
-
-                var hubAttributes = Client.UpdateNotificationHub(ResourceGroup, Namespace, hub);
-                WriteObject(hubAttributes);
+                hub = ParseInputFile<NotificationHubAttributes>(InputFile);
             }
+            else
+            {
+                hub = NotificationHubObj;
+            }
+
+            var hubAttributes = Client.UpdateNotificationHub(ResourceGroup, Namespace, hub);
+            WriteObject(hubAttributes);
         }
     }
 }

@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
         [ValidateNotNullOrEmpty]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = false,
+        [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "NotificationHub Name.")]
@@ -65,26 +65,20 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
 
         protected override void ProcessRecord()
         {
-            if (!string.IsNullOrEmpty(ResourceGroup) && !string.IsNullOrEmpty(Namespace) && !string.IsNullOrEmpty(NotificationHub) )
+            SharedAccessAuthorizationRuleAttributes sasRule = null;
+            if (!string.IsNullOrEmpty(InputFile))
             {
-                if (!string.IsNullOrEmpty(ResourceGroup) && !string.IsNullOrEmpty(Namespace))
-                {
-                    SharedAccessAuthorizationRuleAttributes sasRule = null;
-                    if (!string.IsNullOrEmpty(InputFile))
-                    {
-                        sasRule = ParseInputFile<SharedAccessAuthorizationRuleAttributes>(InputFile);
-                    }
-                    else
-                    {
-                        sasRule = SASRule;
-                    }
-
-                    // Create a new notificationHub authorizationRule
-                    var authRule = Client.CreateOrUpdateNotificationHubAuthorizationRules(ResourceGroup, Namespace, NotificationHub,
-                                                            sasRule.Name, sasRule.Rights, sasRule.PrimaryKey, sasRule.SecondaryKey);
-                    WriteObject(authRule);
-                }
+                sasRule = ParseInputFile<SharedAccessAuthorizationRuleAttributes>(InputFile);
             }
+            else
+            {
+                sasRule = SASRule;
+            }
+
+            // Create a new notificationHub authorizationRule
+            var authRule = Client.CreateOrUpdateNotificationHubAuthorizationRules(ResourceGroup, Namespace, NotificationHub,
+                                                    sasRule.Name, sasRule.Rights, sasRule.PrimaryKey, sasRule.SecondaryKey);
+            WriteObject(authRule);
         }
     }
 }

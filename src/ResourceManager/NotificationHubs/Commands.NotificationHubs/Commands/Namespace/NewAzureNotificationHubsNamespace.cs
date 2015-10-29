@@ -54,12 +54,9 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
 
         protected override void ProcessRecord()
         {
-            if (!string.IsNullOrEmpty(ResourceGroup) && !string.IsNullOrEmpty(Namespace) && !string.IsNullOrEmpty(Location))
-            {
-                // Create a new namespace 
-                var nsAttribute = Client.BeginCreateNamespace(ResourceGroup, Namespace, Location, ConvertTagsToDictionary(Tags));
-                WriteObject(nsAttribute);
-            }
+            // Create a new namespace 
+            var nsAttribute = Client.BeginCreateNamespace(ResourceGroup, Namespace, Location, ConvertTagsToDictionary(Tags));
+            WriteObject(nsAttribute);
         }
     }
 }

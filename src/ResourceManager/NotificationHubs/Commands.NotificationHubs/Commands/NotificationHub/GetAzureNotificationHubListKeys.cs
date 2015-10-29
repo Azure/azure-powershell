@@ -54,13 +54,9 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
 
         protected override void ProcessRecord()
         {
-            if (!string.IsNullOrEmpty(ResourceGroup) && !string.IsNullOrEmpty(Namespace) && !string.IsNullOrEmpty(NotificationHub) 
-                                && !string.IsNullOrEmpty(AuthorizationRule))
-            {
-                // Get a notificationHub ConnectionString for the specified AuthorizationRule
-                var keys = Client.GetNotificationHubListKeys(ResourceGroup, Namespace, NotificationHub, AuthorizationRule);
-                WriteObject(keys);
-            }
+            // Get a notificationHub ConnectionString for the specified AuthorizationRule
+            var keys = Client.GetNotificationHubListKeys(ResourceGroup, Namespace, NotificationHub, AuthorizationRule);
+            WriteObject(keys);
         }
     }
 }

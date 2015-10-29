@@ -47,12 +47,9 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
 
         protected override void ProcessRecord()
         {
-            if (!string.IsNullOrEmpty(ResourceGroup) && !string.IsNullOrEmpty(Namespace) && !string.IsNullOrEmpty(NotificationHub))
-            {
-                // Get a notificationHub PNS Credentials
-                var pnsCredentials = Client.GetNotificationHubPNSCredentials(ResourceGroup, Namespace, NotificationHub);
-                WriteObject(pnsCredentials);
-            }
+            // Get a notificationHub PNS Credentials
+            var pnsCredentials = Client.GetNotificationHubPNSCredentials(ResourceGroup, Namespace, NotificationHub);
+            WriteObject(pnsCredentials);
         }
     }
 }

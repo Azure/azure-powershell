@@ -22,7 +22,8 @@ using System.IO;
 using Newtonsoft.Json;
 using Microsoft.Azure.Common.Authentication;
 using System.Collections.Generic;
-using System.Collections;    
+using System.Collections;
+using System.Globalization;
 
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands
 {
@@ -104,9 +105,10 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands
             if (!string.IsNullOrEmpty(InputFile))
             {
                 string fileName = this.TryResolvePath(InputFile);
-                if (!(new FileInfo(fileName)).Exists)
+                //if (!(new FileInfo(fileName)).Exists)
+                if (!AzureSession.DataStore.FileExists(fileName))
                 {
-                    throw new PSArgumentException(string.Format("File {0} does not exist", fileName));
+                    throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, Resources.FileDoesNotExist, fileName));
                 }
 
                 try

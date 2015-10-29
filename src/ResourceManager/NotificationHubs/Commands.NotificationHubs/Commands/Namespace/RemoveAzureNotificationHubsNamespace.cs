@@ -40,12 +40,9 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
 
         protected override void ProcessRecord()
         {
-            if (!string.IsNullOrEmpty(ResourceGroup) && !string.IsNullOrEmpty(Namespace))
-            {
-                // delete a namespace 
-                ExecuteLongRunningCmdletWrap(
-                () => Client.BeginDeleteNamespace(ResourceGroup, Namespace));
-            }
+            // delete a namespace 
+            ExecuteLongRunningCmdletWrap(
+            () => Client.BeginDeleteNamespace(ResourceGroup, Namespace));
         }
     }
 }

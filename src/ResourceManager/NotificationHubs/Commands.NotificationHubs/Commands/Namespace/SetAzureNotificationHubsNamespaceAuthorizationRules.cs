@@ -54,24 +54,20 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
 
         protected override void ProcessRecord()
         {
-            if (!string.IsNullOrEmpty(ResourceGroup) && !string.IsNullOrEmpty(Namespace))
+            SharedAccessAuthorizationRuleAttributes sasRule = null;
+            if (!string.IsNullOrEmpty(InputFile))
             {
-                SharedAccessAuthorizationRuleAttributes sasRule = null;
-                if (!string.IsNullOrEmpty(InputFile))
-                {
-                    sasRule = ParseInputFile<SharedAccessAuthorizationRuleAttributes>(InputFile);
-                }
-                else
-                {
-                    sasRule = SASRule;
-                }
-
-                // Update namespace authorizationRule
-                var updateNSAuthRule = Client.CreateOrUpdateNamespaceAuthorizationRules(ResourceGroup, Namespace, sasRule.Name, sasRule.Rights,
-                    sasRule.PrimaryKey, sasRule.SecondaryKey == null ? null : sasRule.SecondaryKey);
-                WriteObject(updateNSAuthRule);
+                sasRule = ParseInputFile<SharedAccessAuthorizationRuleAttributes>(InputFile);
+            }
+            else
+            {
+                sasRule = SASRule;
             }
 
+            // Update namespace authorizationRule
+            var updateNSAuthRule = Client.CreateOrUpdateNamespaceAuthorizationRules(ResourceGroup, Namespace, sasRule.Name, sasRule.Rights,
+                sasRule.PrimaryKey, sasRule.SecondaryKey == null ? null : sasRule.SecondaryKey);
+            WriteObject(updateNSAuthRule);
         }
     }
 }

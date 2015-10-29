@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
         [ValidateNotNullOrEmpty]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = false,
+        [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "NotificationHub Name.")]
@@ -54,13 +54,9 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
 
         protected override void ProcessRecord()
         {
-            if (!string.IsNullOrEmpty(ResourceGroup) && !string.IsNullOrEmpty(Namespace) && !string.IsNullOrEmpty(NotificationHub) 
-                                && !string.IsNullOrEmpty(AuthorizationRule))
-            {
-                // Delete notificationHub authorizationRule
-                var deleteAuthRule = Client.DeleteNotificationHubAuthorizationRules(ResourceGroup, Namespace, NotificationHub, AuthorizationRule);
-                WriteObject(deleteAuthRule);
-            }
+            // Delete notificationHub authorizationRule
+            var deleteAuthRule = Client.DeleteNotificationHubAuthorizationRules(ResourceGroup, Namespace, NotificationHub, AuthorizationRule);
+            WriteObject(deleteAuthRule);
         }
     }
 }

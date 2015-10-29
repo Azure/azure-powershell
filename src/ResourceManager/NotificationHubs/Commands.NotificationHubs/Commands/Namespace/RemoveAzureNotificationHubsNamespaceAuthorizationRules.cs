@@ -47,12 +47,9 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
 
         protected override void ProcessRecord()
         {
-            if (!string.IsNullOrEmpty(ResourceGroup) && !string.IsNullOrEmpty(Namespace) && !string.IsNullOrEmpty(AuthorizationRule))
-            {
-                // Create a new namespace authorizationRule
-                var deleteAuthRule = Client.DeleteNamespaceAuthorizationRules(ResourceGroup, Namespace, AuthorizationRule);
-                WriteObject(deleteAuthRule);
-            }
+            // Create a new namespace authorizationRule
+            var deleteAuthRule = Client.DeleteNamespaceAuthorizationRules(ResourceGroup, Namespace, AuthorizationRule);
+            WriteObject(deleteAuthRule);
         }
     }
 }

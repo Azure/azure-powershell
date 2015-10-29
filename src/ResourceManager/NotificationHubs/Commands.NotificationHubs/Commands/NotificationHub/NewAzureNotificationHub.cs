@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
         [ValidateNotNullOrEmpty]
         public string ResourceGroup { get; set; }
 
-        [Parameter(Mandatory = false,
+        [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "Namespace Name.")]
@@ -59,21 +59,18 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
 
         protected override void ProcessRecord()
         {
-            if (!string.IsNullOrEmpty(ResourceGroup) && !string.IsNullOrEmpty(Namespace))
+            NotificationHubAttributes hub = null;
+            if (!string.IsNullOrEmpty(InputFile))
             {
-                NotificationHubAttributes hub = null;
-                if (!string.IsNullOrEmpty(InputFile))
-                {
-                    hub = ParseInputFile<NotificationHubAttributes>(InputFile);
-                }
-                else
-                {
-                    hub = NotificationHubObj;
-                }
-
-                var hubAttributes = Client.CreateNotificationHub(ResourceGroup, Namespace, hub);
-                WriteObject(hubAttributes);
+                hub = ParseInputFile<NotificationHubAttributes>(InputFile);
             }
+            else
+            {
+                hub = NotificationHubObj;
+            }
+
+            var hubAttributes = Client.CreateNotificationHub(ResourceGroup, Namespace, hub);
+            WriteObject(hubAttributes);
         }
     }
 }
