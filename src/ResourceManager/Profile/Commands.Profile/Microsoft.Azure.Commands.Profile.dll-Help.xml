@@ -1235,13 +1235,6 @@ TenantId: xxxx-xxxx-xxxx-xxxx</maml:para>
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>Get-AzureRmSubscription</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>All</maml:name>
-          <maml:description>
-            <maml:para>If Provided, lists subscription details for all subscriptions in all tenants authorized for the current account.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>InformationAction</maml:name>
           <maml:description>
@@ -1324,19 +1317,6 @@ TenantId: xxxx-xxxx-xxxx-xxxx</maml:para>
         <dev:defaultValue>
         </dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>All</maml:name>
-        <maml:description>
-          <maml:para>If Provided, lists subscription details for all subscriptions in all tenants authorized for the current account.</maml:para>
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        <dev:type>
-          <maml:name>SwitchParameter</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
     </command:parameters>
     <command:inputTypes>
       <command:inputType>
@@ -1384,7 +1364,7 @@ TenantId: xxxx-xxxx-xxxx-xxxx</maml:para>
         <maml:introduction>
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
-        <dev:code>Get-AzureRmSubscription -All</dev:code>
+        <dev:code>Get-AzureRmSubscription</dev:code>
         <dev:remarks>
           <maml:para>List all subscriptions in all tenants that are authorized for the current account.</maml:para>
           <maml:para />
@@ -1409,32 +1389,6 @@ Subscription Name: Contoso Subscription 1</maml:para>
         <dev:code>Get-AzureRmSubscription -TenantId xxxx-xxxx-xxxx-xxxx</dev:code>
         <dev:remarks>
           <maml:para>List all subscriptions in the given tenant that are authorized for the current account.</maml:para>
-          <maml:para />
-          <maml:para />
-          <maml:para>SubscriptionId: yyyy-yyyy-yyyy-yyyy
-TenantId: xxxx-xxxx-xxxx-xxxx
-Subscription Name: Contoso Subscription 1
-
-SubscriptionId: yyyy-yyyy-yyyy-yyyy
-TenantId: xxxx-xxxx-xxxx-xxxx
-Subscription Name: Contoso Subscription 2</maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText>
-              <maml:para />
-            </command:commandText>
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-      <command:example>
-        <maml:title>--------------------------  List all subscriptions in the current tenant  --------------------------</maml:title>
-        <maml:introduction>
-          <maml:paragraph>PS C:\&gt;</maml:paragraph>
-        </maml:introduction>
-        <dev:code>Get-AzureRmSubscription</dev:code>
-        <dev:remarks>
-          <maml:para>List all subscriptions in the current tenant that are authorized for the given user.</maml:para>
           <maml:para />
           <maml:para />
           <maml:para>SubscriptionId: yyyy-yyyy-yyyy-yyyy

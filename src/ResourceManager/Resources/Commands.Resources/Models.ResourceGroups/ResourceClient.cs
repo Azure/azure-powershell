@@ -409,18 +409,6 @@ namespace Microsoft.Azure.Commands.Resources.Models
             return new TemplateValidationInfo(validationResult);
         }
 
-        internal List<PSPermission> GetResourceGroupPermissions(string resourceGroup)
-        {
-            PermissionGetResult permissionsResult = AuthorizationManagementClient.Permissions.ListForResourceGroup(resourceGroup);
-
-            if (permissionsResult != null)
-            {
-                return permissionsResult.Permissions.Select(p => p.ToPSPermission()).ToList();
-            }
-
-            return null;
-        }
-
         internal List<PSPermission> GetResourcePermissions(ResourceIdentifier identity)
         {
             PermissionGetResult permissionsResult = AuthorizationManagementClient.Permissions.ListForResource(
