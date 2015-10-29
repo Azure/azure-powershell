@@ -72,7 +72,7 @@ function Test-GetAzureRmVMDscExtension
         New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
         # Test DSC Extension
-        $version = '2.3';
+        $version = '2.8';
 
 		# Publish DSC Configuration
 		#TODO: Find a way to mock calls with storage
