@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The shareKey")]
+            HelpMessage = "The SharedKey")]
         [ValidateNotNullOrEmpty]
         public string SharedKey { get; set; }
 
