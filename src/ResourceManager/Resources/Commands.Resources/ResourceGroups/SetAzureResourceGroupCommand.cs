@@ -57,7 +57,6 @@ namespace Microsoft.Azure.Commands.Resources
                 ResourceGroupName = Name ?? ResourceIdentifier.FromResourceGroupIdentifier(this.Id).ResourceGroupName,
                 Tag = Tag,
             };
-            WriteWarning("The output object of this cmdlet will be modified in a future release.");
             WriteObject(ResourcesClient.UpdatePSResourceGroup(parameters));
         }
     }

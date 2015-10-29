@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         public const string AzureRmBatchAccount = "AzureRmBatchAccount";
         public const string AzureRmBatchAccountKey = "AzureRmBatchAccountKey";
         public const string AzureRmBatchAccountKeys = "AzureRmBatchAccountKeys";
+        public const string AzureRmBatchSubscriptionQuotas = "AzureRmBatchSubscriptionQuotas";
 
         // Batch Service cmdlet nouns
         public const string AzureBatchPool = "AzureBatchPool";
