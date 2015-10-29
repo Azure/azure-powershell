@@ -20,7 +20,7 @@ using Environment = Microsoft.Azure.Management.DevTestLab.Models.Environment;
 
 namespace Microsoft.Azure.Commands.DevTestLab
 {
-    [Cmdlet(VerbsCommon.Get, "AzureDtlEnvironment", DefaultParameterSetName = "FilterNone")]
+    [Cmdlet(VerbsCommon.Get, "AzureDtlEnvironment", DefaultParameterSetName = "ListAll")]
     [OutputType(typeof(IEnumerable<Environment>), typeof(Environment))]
     public class GetAzureDtlEnvironment : DevTestLabBaseCmdlet
     {
@@ -29,24 +29,31 @@ namespace Microsoft.Azure.Commands.DevTestLab
         #region Optional Parameters
 
         // We support four parameter sets:
-        // 1: No parameters: Get all environments in current subscription.
-        // 2: Only ResourceGroupName specified: Gets all environments in that resource group.
-        // 3: Both LabName and lab's ResourceGroupName are specified: Gets all environments in that lab.
-        // 4: Both EnvironmentName and ResourceGroupName are specified: Gets the specific environment.
+        // 1: ListAll: Lists all environments within the current subscription, if no parameters are specified.
+        // 2: ListAllWithinResourceGroup: Lists all environments within a resource group, if the -ResourceGroupName parameter is specified. 
+        // 3: GetSpecificWithinResourceGroup: Gets a specific environment within a resource group, if both the -EnvironmentName and -ResourceGroupName are specified.
+        // 4: ListAllWithinLab: Lists all environments within a lab, if both the -LabName and the -LabResourceGroupName parameters are specified. 
+        // 5: @TODO: GetSpecificWithinLab: Gets a specific environment within a lab, if the -LabName, -LabResourceGroupName and -EnvironmentName parameters are specified. 
 
-        [Parameter(Mandatory = true, ParameterSetName = "FilterByEnvironmentName")]
+        [Parameter(Mandatory = true, ParameterSetName = "ListAllWithinResourceGroup")]
+        [Parameter(Mandatory = true, ParameterSetName = "GetSpecificWithinResourceGroup")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(Mandatory = true, ParameterSetName = "GetSpecificWithinResourceGroup")]
+        // @TODO: [Parameter(Mandatory = true, ParameterSetName = "GetSpecificWithinLab")]
         [ValidateNotNullOrEmpty]
         public string EnvironmentName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = "FilterByLabName")]
+        [Parameter(Mandatory = true, ParameterSetName = "ListAllWithinLab")]
+        // @TODO: [Parameter(Mandatory = true, ParameterSetName = "GetSpecificWithinLab")]
         [ValidateNotNullOrEmpty]
         public string LabName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = "FilterByLabName")]
-        [Parameter(Mandatory = true, ParameterSetName = "FilterByEnvironmentName")]
-        [Parameter(Mandatory = true, ParameterSetName = "FilterByResourceGroupName")]
+        [Parameter(Mandatory = true, ParameterSetName = "ListAllWithinLab")]
+        // @TODO: [Parameter(Mandatory = true, ParameterSetName = "GetSpecificWithinLab")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
+        public string LabResourceGroupName { get; set; }
 
         #endregion // Optional Parameters
 
@@ -63,19 +70,19 @@ namespace Microsoft.Azure.Commands.DevTestLab
 
             switch (ParameterSetName)
             {
-                case "FilterByEnvironmentName":
+                case "GetSpecificWithinResourceGroup":
                     WriteObject(this.DtlClient.GetEnvironment(this.ResourceGroupName, this.EnvironmentName));
                     break;
 
-                case "FilterByResourceGroupName":
+                case "ListAllWithinResourceGroup":
                     WriteObject(this.DtlClient.ListEnvironmentByResourceGroup(this.ResourceGroupName));
                     break;
 
-                case "FilterByLabName":
-                    WriteObject(this.DtlClient.ListEnvironmentByLab(this.ResourceGroupName, this.LabName));
+                case "ListAllWithinLab":
+                    WriteObject(this.DtlClient.ListEnvironmentByLab(this.LabResourceGroupName, this.LabName));
                     break;
 
-                case "FilterNone":
+                case "ListAll":
                 default:
                     WriteObject(this.DtlClient.ListEnvironments());
                     break;

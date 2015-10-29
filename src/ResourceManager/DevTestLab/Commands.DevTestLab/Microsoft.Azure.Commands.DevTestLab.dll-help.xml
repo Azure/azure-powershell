@@ -15,10 +15,10 @@
 	</command:details>
 	<maml:description>
 		<maml:para>The Get-AzureDtlEnvironment cmdlet does the following: 
-- Lists all environments under the current subscription, if no parameters are specified.
-- Lists all environments in a resource group, if the -ResourceGroupName parameter is specified.
-- Lists all environments in a lab, if the lab&#39;s name and lab&#39;s resource group are specified via the -LabName and the -ResourceGroupName parameters respectively. 
-- Gets a specific environment, if the environment&#39;s name and environment&#39;s resource group are specified via the -EnvironmentName and -ResourceGroupName respectively. </maml:para>
+- Lists all environments within the current subscription, if no parameters are specified.
+- Lists all environments within a resource group, if the -ResourceGroupName parameter is specified.
+- Gets a specific environment within a resource group, if both the -EnvironmentName and -ResourceGroupName are specified.
+- Lists all environments within a lab, if both the -LabName and the -LabResourceGroupName parameters are specified.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -27,14 +27,24 @@
 		<command:syntaxItem>
 			<maml:name>Get-AzureDtlEnvironment</maml:name>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>EnvironmentName</maml:name>
+				<maml:name>ResourceGroupName</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Get-AzureDtlEnvironment</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
 					<maml:para />
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>ResourceGroupName</maml:name>
+				<maml:name>EnvironmentName</maml:name>
 				<maml:description>
 					<maml:para />
 				</maml:description>
@@ -51,17 +61,7 @@
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>ResourceGroupName</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
-		<command:syntaxItem>
-			<maml:name>Get-AzureDtlEnvironment</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>ResourceGroupName</maml:name>
+				<maml:name>LabResourceGroupName</maml:name>
 				<maml:description>
 					<maml:para />
 				</maml:description>
@@ -96,6 +96,18 @@
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>LabName</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>LabResourceGroupName</maml:name>
 			<maml:description>
 				<maml:para />
 			</maml:description>
@@ -147,7 +159,7 @@
 			</maml:introduction>
 			<dev:code>PS C:\&gt; Get-AzureDtlEnvironment </dev:code>
 			<dev:remarks>
-				<maml:para>Lists all environments under the current subscription.</maml:para>
+				<maml:para>Lists all environments within the current subscription, if no parameters are specified.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
@@ -167,8 +179,7 @@
 			</maml:introduction>
 			<dev:code>PS C:\&gt; Get-AzureDtlEnvironment -ResourceGroupName &quot;myresourceGroup&quot;</dev:code>
 			<dev:remarks>
-				<maml:para>Lists all environments in a resource group, if the -ResourceGroupName parameter is specified.
-</maml:para>
+				<maml:para>Lists all environments within a resource group, if the -ResourceGroupName parameter is specified.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
@@ -186,9 +197,9 @@
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>PS C:\&gt; Get-AzureDtlEnvironment -LabName &quot;myLab&quot; -ResourceGroupName &quot;myLabResourceGroup&quot;</dev:code>
+			<dev:code>PS C:\&gt; Get-AzureDtlEnvironment -ResourceGroupName &quot;myResourceGroup&quot; -EnvironmentName &quot;myEnvironment&quot;</dev:code>
 			<dev:remarks>
-				<maml:para>Lists all environments in a lab, if the lab&#39;s name and lab&#39;s resource group are specified via the -LabName and the -ResourceGroupName parameters respectively.</maml:para>
+				<maml:para>Gets a specific environment within a resource group, if both the -EnvironmentName and -ResourceGroupName are specified.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
@@ -206,9 +217,9 @@
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>PS C:\&gt; Get-AzureDtlEnvironment -EnvironmentName &quot;myEnvironment&quot; -ResourceGroupName &quot;myEnvironmentResourceGroup&quot;</dev:code>
+			<dev:code>PS C:\&gt; Get-AzureDtlEnvironment -LabName &quot;myLab&quot; -LabResourceGroupName &quot;myLabResourceGroup&quot;</dev:code>
 			<dev:remarks>
-				<maml:para>Gets a specific environment, if the environment&#39;s name and environment&#39;s resource group are specified via the -EnvironmentName and -ResourceGroupName respectively. </maml:para>
+				<maml:para>Lists all environments within a lab, if both the -LabName and the -LabResourceGroupName parameters are specified.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
@@ -241,9 +252,9 @@
 	</command:details>
 	<maml:description>
 		<maml:para>The Get-AzureDtlLab cmdlet does the following: 
-- Lists all labs under current subscription, if no parameters are specified. 
-- Lists all labs in a resource group, if the -ResourceGroupName parameter is specified.
-- Gets a specific lab, if the lab&#39;s name and lab&#39;s resource group are specified via the -LabName and the -ResourceGroupName parameters respectively. </maml:para>
+- Lists all labs within current subscription, if no parameters are specified. 
+- Lists all labs within a resource group, if the -ResourceGroupName parameter is specified.
+- Gets a specific lab within a resource group, if both the -LabName and -ResourceGroupName are specified. </maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -252,14 +263,14 @@
 		<command:syntaxItem>
 			<maml:name>Get-AzureDtlLab</maml:name>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>LabName</maml:name>
+				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
 					<maml:para />
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>ResourceGroupName</maml:name>
+				<maml:name>LabName</maml:name>
 				<maml:description>
 					<maml:para />
 				</maml:description>
@@ -343,7 +354,7 @@
 			</maml:introduction>
 			<dev:code>PS C:\&gt; Get-AzureDtlLab</dev:code>
 			<dev:remarks>
-				<maml:para>Lists all labs under current subscription.</maml:para>
+				<maml:para>Lists all labs within current subscription, if no parameters are specified.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
@@ -363,7 +374,7 @@
 			</maml:introduction>
 			<dev:code>PS C:\&gt; Get-AzureDtlLab -ResourceGroupName &quot;myResourceGroup&quot;</dev:code>
 			<dev:remarks>
-				<maml:para>Lists all labs in a resource group, if the -ResourceGroupName parameter is specified.</maml:para>
+				<maml:para>Lists all labs within a resource group, if the -ResourceGroupName parameter is specified.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
@@ -383,7 +394,7 @@
 			</maml:introduction>
 			<dev:code>PS C:\&gt; Get-AzureDtlLab -LabName &quot;myLab&quot; -ResourceGroupName &quot;myLabResourceGroup&quot;</dev:code>
 			<dev:remarks>
-				<maml:para>Gets a specific lab, if the lab&#39;s name and lab&#39;s resource group are specified via the -LabName and the -ResourceGroupName parameters respectively. </maml:para>
+				<maml:para>Gets a specific lab within a resource group, if both the -LabName and -ResourceGroupName are specified. </maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
@@ -416,8 +427,8 @@
 	</command:details>
 	<maml:description>
 		<maml:para>The Get-AzureDtlVMTemplate cmdlet does the following: 
-- Lists all VM templates within the specified lab, if the lab&#39;s name and lab&#39;s resource group are specified via the -LabName and -ResourceGroupName parameters respectively.
-- Gets a specific VM template, if the VM template&#39;s name, lab&#39;s name and lab&#39;s resource group are specified via the -VMTemplate, -LabName and -ResourceGroupName parameters respectively.</maml:para>
+- Lists all VM templates within a lab, if the -LabName and -LabResourceGroupName parameters are specified.
+- Gets a specific VM template within a lab, if the -VMTemplateName, -LabName and -LabResourceGroupName parameters are specified.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -430,7 +441,7 @@
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>ResourceGroupName</maml:name>
+				<maml:name>LabResourceGroupName</maml:name>
 				<maml:description>
 					<maml:para />
 				</maml:description>
@@ -447,14 +458,14 @@
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>VMTemplateName</maml:name>
+				<maml:name>LabResourceGroupName</maml:name>
 				<maml:description>
 					<maml:para />
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>ResourceGroupName</maml:name>
+				<maml:name>VMTemplateName</maml:name>
 				<maml:description>
 					<maml:para />
 				</maml:description>
@@ -476,7 +487,7 @@
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>ResourceGroupName</maml:name>
+			<maml:name>VMTemplateName</maml:name>
 			<maml:description>
 				<maml:para />
 			</maml:description>
@@ -488,7 +499,7 @@
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>VMTemplateName</maml:name>
+			<maml:name>LabResourceGroupName</maml:name>
 			<maml:description>
 				<maml:para />
 			</maml:description>
@@ -538,9 +549,9 @@
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>PS C:\&gt; Get-AzureDtlVMTemplate -LabName &quot;myLab&quot; -ResourceGroupName &quot;myLabResourceGroup&quot;</dev:code>
+			<dev:code>PS C:\&gt; Get-AzureDtlVMTemplate -LabName &quot;myLab&quot; -LabResourceGroupName &quot;myLabResourceGroup&quot;</dev:code>
 			<dev:remarks>
-				<maml:para>Lists all VM templates within the specified lab, if the lab&#39;s name and lab&#39;s resource group are specified via the -LabName and -ResourceGroupName parameters respectively.</maml:para>
+				<maml:para>Lists all VM templates within a lab, if the -LabName and -LabResourceGroupName parameters are specified.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
@@ -560,10 +571,10 @@
 			</maml:introduction>
 			<dev:code>PS C:\&gt; Get-AzureDtlVMTemplate -VMTemplateName &quot;myVMTemplateName&quot; -LabName &quot;myLab&quot; -ResourceGroupName &quot;myLabResourceGroup&quot;</dev:code>
 			<dev:remarks>
+				<maml:para>Gets a specific VM template within a lab, if the -VMTemplateName, -LabName and -LabResourceGroupName parameters are specified.</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para />
-				<maml:para>- Gets a specific VM template, if the VM template&apos;s name, lab&apos;s name and lab&apos;s resource group are specified via the -VMTemplateName, -LabName and -ResourceGroupName parameters respectively.</maml:para>
+				<maml:para></maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>

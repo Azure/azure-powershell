@@ -1,6 +1,7 @@
 ﻿# Import the private AzureRM cmdlets.
 # Note: This is a temporary step, until the DTL cmdlets are formally integrated into Azure Powershell.
-Import-Module C:\Repos\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureResourceManager.psd1 -Verbose
+# Note: Please ensure that this script is run from the "src\Package\{Debug|Release}\ResourceManager\AzureResourceManager\AzureRM.DevTestLab\Samples" folder
+Import-Module $PSScriptRoot\..\..\AzureResourceManager.psd1 -Verbose
 
 # Login to Azure 
 Login-AzureRmAccount
@@ -21,7 +22,7 @@ Select-AzureRmSubscription -TenantId "REPLACE-WITH-YOUR-TENANT-ID" -Subscription
 
 # Example 1
 # Lists all labs under current subscription.
-Get-AzureDtlLab
+Get-AzureDtlLab -verbose
 
 
 #################################################
@@ -30,7 +31,7 @@ Get-AzureDtlLab
 #
 #################################################
 
-Get-AzureDtlVMTemplate
+Get-AzureDtlVMTemplate -verbose
 
 #################################################
 # 
@@ -38,11 +39,11 @@ Get-AzureDtlVMTemplate
 #
 #################################################
 
-Get-AzureDTLEnvironment
+Get-AzureDTLEnvironment -verbose
 
 # 
 # 
 #
 
 
-New-AzureDtlEnvironment -EnvironmentName HelloTuesday -UserName SomeAdmin -Password SomePassword! -ResourceGroupName HackathonLabRG -LabName HackathonLab -Location "East Asia" -VMTemplateName "TEMPLATE FOR DTL DEV VM" -VMSize Standard_A4 -Verbose
+New-AzureDtlEnvironment -EnvironmentName "REPLACE-WITH-YOUR-ENV-NAME" -UserName "REPLACE-WITH-YOUR-USERNAME" -Password "REPLACE-WITH-YOUR-PASSWORD" -ResourceGroupName "REPLACE-WITH-YOUR-LAB-RESOURCEGROUP" -LabName "REPLACE-WITH-YOUR-LAB-NAME" -Location "East Asia" -VMTemplateName "REPLACE-WITH-YOUR-VMTEMPLATE-NAME" -VMSize Standard_A4 -Verbose

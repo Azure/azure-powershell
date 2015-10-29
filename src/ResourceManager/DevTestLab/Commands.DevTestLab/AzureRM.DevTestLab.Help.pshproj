@@ -13,10 +13,10 @@
       <GeneralHelp>
         <Synopsis>Gets all environments under the current subscription.</Synopsis>
         <Description>The Get-AzureDtlEnvironment cmdlet does the following: 
-- Lists all environments under the current subscription, if no parameters are specified.
-- Lists all environments in a resource group, if the -ResourceGroupName parameter is specified.
-- Lists all environments in a lab, if the lab's name and lab's resource group are specified via the -LabName and the -ResourceGroupName parameters respectively. 
-- Gets a specific environment, if the environment's name and environment's resource group are specified via the -EnvironmentName and -ResourceGroupName respectively. </Description>
+- Lists all environments within the current subscription, if no parameters are specified.
+- Lists all environments within a resource group, if the -ResourceGroupName parameter is specified.
+- Gets a specific environment within a resource group, if both the -EnvironmentName and -ResourceGroupName are specified.
+- Lists all environments within a lab, if both the -LabName and the -LabResourceGroupName parameters are specified.</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -26,16 +26,16 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="FilterNone" Params="Verbose Debug ErrorAction WarningAction ErrorVariable WarningVariable OutVariable OutBuffer PipelineVariable" />
-        <CommandParameterSetInfo2 Name="FilterByEnvironmentName" Params="EnvironmentName ResourceGroupName Verbose Debug ErrorAction WarningAction ErrorVariable WarningVariable OutVariable OutBuffer PipelineVariable" />
-        <CommandParameterSetInfo2 Name="FilterByLabName" Params="LabName ResourceGroupName Verbose Debug ErrorAction WarningAction ErrorVariable WarningVariable OutVariable OutBuffer PipelineVariable" />
-        <CommandParameterSetInfo2 Name="FilterByResourceGroupName" Params="ResourceGroupName Verbose Debug ErrorAction WarningAction ErrorVariable WarningVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="ListAll" Params="Verbose Debug ErrorAction WarningAction ErrorVariable WarningVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="ListAllWithinResourceGroup" Params="ResourceGroupName Verbose Debug ErrorAction WarningAction ErrorVariable WarningVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="GetSpecificWithinResourceGroup" Params="ResourceGroupName EnvironmentName Verbose Debug ErrorAction WarningAction ErrorVariable WarningVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="ListAllWithinLab" Params="LabName LabResourceGroupName Verbose Debug ErrorAction WarningAction ErrorVariable WarningVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
         <string>Get-AzureDtlEnvironment</string>
-        <string>Get-AzureDtlEnvironment -EnvironmentName &lt;String&gt; -ResourceGroupName &lt;String&gt;</string>
-        <string>Get-AzureDtlEnvironment -LabName &lt;String&gt; -ResourceGroupName &lt;String&gt;</string>
         <string>Get-AzureDtlEnvironment -ResourceGroupName &lt;String&gt;</string>
+        <string>Get-AzureDtlEnvironment -ResourceGroupName &lt;String&gt; -EnvironmentName &lt;String&gt;</string>
+        <string>Get-AzureDtlEnvironment -LabName &lt;String&gt; -LabResourceGroupName &lt;String&gt;</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -51,7 +51,6 @@
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>ResourceGroupName</Name>
           <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
@@ -70,31 +69,40 @@
           <Description />
           <DefaultValue />
         </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>LabResourceGroupName</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
       </Parameters>
       <Examples>
         <Example>
           <Name>Example 1</Name>
           <Cmd>PS C:\&gt; Get-AzureDtlEnvironment </Cmd>
-          <Description>Lists all environments under the current subscription.</Description>
+          <Description>Lists all environments within the current subscription, if no parameters are specified.</Description>
           <Output />
         </Example>
         <Example>
           <Name>Example 2</Name>
           <Cmd>PS C:\&gt; Get-AzureDtlEnvironment -ResourceGroupName "myresourceGroup"</Cmd>
-          <Description>Lists all environments in a resource group, if the -ResourceGroupName parameter is specified.
-</Description>
+          <Description>Lists all environments within a resource group, if the -ResourceGroupName parameter is specified.</Description>
           <Output />
         </Example>
         <Example>
           <Name>Example 3</Name>
-          <Cmd>PS C:\&gt; Get-AzureDtlEnvironment -LabName "myLab" -ResourceGroupName "myLabResourceGroup"</Cmd>
-          <Description>Lists all environments in a lab, if the lab's name and lab's resource group are specified via the -LabName and the -ResourceGroupName parameters respectively.</Description>
+          <Cmd>PS C:\&gt; Get-AzureDtlEnvironment -ResourceGroupName "myResourceGroup" -EnvironmentName "myEnvironment"</Cmd>
+          <Description>Gets a specific environment within a resource group, if both the -EnvironmentName and -ResourceGroupName are specified.</Description>
           <Output />
         </Example>
         <Example>
           <Name>Example 4</Name>
-          <Cmd>PS C:\&gt; Get-AzureDtlEnvironment -EnvironmentName "myEnvironment" -ResourceGroupName "myEnvironmentResourceGroup"</Cmd>
-          <Description>Gets a specific environment, if the environment's name and environment's resource group are specified via the -EnvironmentName and -ResourceGroupName respectively. </Description>
+          <Cmd>PS C:\&gt; Get-AzureDtlEnvironment -LabName "myLab" -LabResourceGroupName "myLabResourceGroup"</Cmd>
+          <Description>Lists all environments within a lab, if both the -LabName and the -LabResourceGroupName parameters are specified.</Description>
           <Output />
         </Example>
       </Examples>
@@ -107,9 +115,9 @@
       <GeneralHelp>
         <Synopsis>Gets all labs under the current subscription.</Synopsis>
         <Description>The Get-AzureDtlLab cmdlet does the following: 
-- Lists all labs under current subscription, if no parameters are specified. 
-- Lists all labs in a resource group, if the -ResourceGroupName parameter is specified.
-- Gets a specific lab, if the lab's name and lab's resource group are specified via the -LabName and the -ResourceGroupName parameters respectively. </Description>
+- Lists all labs within current subscription, if no parameters are specified. 
+- Lists all labs within a resource group, if the -ResourceGroupName parameter is specified.
+- Gets a specific lab within a resource group, if both the -LabName and -ResourceGroupName are specified. </Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -119,13 +127,13 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="FilterNone" Params="Verbose Debug ErrorAction WarningAction ErrorVariable WarningVariable OutVariable OutBuffer PipelineVariable" />
-        <CommandParameterSetInfo2 Name="FilterByLabName" Params="LabName ResourceGroupName Verbose Debug ErrorAction WarningAction ErrorVariable WarningVariable OutVariable OutBuffer PipelineVariable" />
-        <CommandParameterSetInfo2 Name="FilterByResourceGroupName" Params="ResourceGroupName Verbose Debug ErrorAction WarningAction ErrorVariable WarningVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="ListAll" Params="Verbose Debug ErrorAction WarningAction ErrorVariable WarningVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="GetSpecificWithinResourceGroup" Params="ResourceGroupName LabName Verbose Debug ErrorAction WarningAction ErrorVariable WarningVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="ListAllWithinResourceGroup" Params="ResourceGroupName Verbose Debug ErrorAction WarningAction ErrorVariable WarningVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
         <string>Get-AzureDtlLab</string>
-        <string>Get-AzureDtlLab -LabName &lt;String&gt; -ResourceGroupName &lt;String&gt;</string>
+        <string>Get-AzureDtlLab -ResourceGroupName &lt;String&gt; -LabName &lt;String&gt;</string>
         <string>Get-AzureDtlLab -ResourceGroupName &lt;String&gt;</string>
       </Syntax>
       <Parameters>
@@ -155,19 +163,19 @@
         <Example>
           <Name>Example 1</Name>
           <Cmd>PS C:\&gt; Get-AzureDtlLab</Cmd>
-          <Description>Lists all labs under current subscription.</Description>
+          <Description>Lists all labs within current subscription, if no parameters are specified.</Description>
           <Output />
         </Example>
         <Example>
           <Name>Example 2</Name>
           <Cmd>PS C:\&gt; Get-AzureDtlLab -ResourceGroupName "myResourceGroup"</Cmd>
-          <Description>Lists all labs in a resource group, if the -ResourceGroupName parameter is specified.</Description>
+          <Description>Lists all labs within a resource group, if the -ResourceGroupName parameter is specified.</Description>
           <Output />
         </Example>
         <Example>
           <Name>Example 3</Name>
           <Cmd>PS C:\&gt; Get-AzureDtlLab -LabName "myLab" -ResourceGroupName "myLabResourceGroup"</Cmd>
-          <Description>Gets a specific lab, if the lab's name and lab's resource group are specified via the -LabName and the -ResourceGroupName parameters respectively. </Description>
+          <Description>Gets a specific lab within a resource group, if both the -LabName and -ResourceGroupName are specified. </Description>
           <Output />
         </Example>
       </Examples>
@@ -180,8 +188,8 @@
       <GeneralHelp>
         <Synopsis>Gets all VM templates within the specified lab.</Synopsis>
         <Description>The Get-AzureDtlVMTemplate cmdlet does the following: 
-- Lists all VM templates within the specified lab, if the lab's name and lab's resource group are specified via the -LabName and -ResourceGroupName parameters respectively.
-- Gets a specific VM template, if the VM template's name, lab's name and lab's resource group are specified via the -VMTemplate, -LabName and -ResourceGroupName parameters respectively.</Description>
+- Lists all VM templates within a lab, if the -LabName and -LabResourceGroupName parameters are specified.
+- Gets a specific VM template within a lab, if the -VMTemplateName, -LabName and -LabResourceGroupName parameters are specified.</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -191,12 +199,12 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="FilterByLabName" Params="LabName ResourceGroupName Verbose Debug ErrorAction WarningAction ErrorVariable WarningVariable OutVariable OutBuffer PipelineVariable" />
-        <CommandParameterSetInfo2 Name="FilterByVMTemplateName" Params="LabName VMTemplateName ResourceGroupName Verbose Debug ErrorAction WarningAction ErrorVariable WarningVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="ListAll" Params="LabName LabResourceGroupName Verbose Debug ErrorAction WarningAction ErrorVariable WarningVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="GetSpecific" Params="LabName LabResourceGroupName VMTemplateName Verbose Debug ErrorAction WarningAction ErrorVariable WarningVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>Get-AzureDtlVMTemplate -LabName &lt;String&gt; -ResourceGroupName &lt;String&gt;</string>
-        <string>Get-AzureDtlVMTemplate -LabName &lt;String&gt; -VMTemplateName &lt;String&gt; -ResourceGroupName &lt;String&gt;</string>
+        <string>Get-AzureDtlVMTemplate -LabName &lt;String&gt; -LabResourceGroupName &lt;String&gt;</string>
+        <string>Get-AzureDtlVMTemplate -LabName &lt;String&gt; -LabResourceGroupName &lt;String&gt; -VMTemplateName &lt;String&gt;</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -231,19 +239,30 @@
           <Description />
           <DefaultValue />
         </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>LabResourceGroupName</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
       </Parameters>
       <Examples>
         <Example>
           <Name>Example 1</Name>
-          <Cmd>PS C:\&gt; Get-AzureDtlVMTemplate -LabName "myLab" -ResourceGroupName "myLabResourceGroup"</Cmd>
-          <Description>Lists all VM templates within the specified lab, if the lab's name and lab's resource group are specified via the -LabName and -ResourceGroupName parameters respectively.</Description>
+          <Cmd>PS C:\&gt; Get-AzureDtlVMTemplate -LabName "myLab" -LabResourceGroupName "myLabResourceGroup"</Cmd>
+          <Description>Lists all VM templates within a lab, if the -LabName and -LabResourceGroupName parameters are specified.</Description>
           <Output />
         </Example>
         <Example>
           <Name>Example 2</Name>
           <Cmd>PS C:\&gt; Get-AzureDtlVMTemplate -VMTemplateName "myVMTemplateName" -LabName "myLab" -ResourceGroupName "myLabResourceGroup"</Cmd>
-          <Description />
-          <Output>- Gets a specific VM template, if the VM template's name, lab's name and lab's resource group are specified via the -VMTemplateName, -LabName and -ResourceGroupName parameters respectively.</Output>
+          <Description>Gets a specific VM template within a lab, if the -VMTemplateName, -LabName and -LabResourceGroupName parameters are specified.</Description>
+          <Output />
         </Example>
       </Examples>
       <RelatedLinks />

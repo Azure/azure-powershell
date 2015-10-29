@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DevTestLab
 {
-    [Cmdlet(VerbsCommon.Get, "AzureDtlLab", DefaultParameterSetName = "FilterNone")]
+    [Cmdlet(VerbsCommon.Get, "AzureDtlLab", DefaultParameterSetName = "ListAll")]
     [OutputType(typeof(IEnumerable<Lab>), typeof(Lab))]
     public class GetAzureDtlLab : DevTestLabBaseCmdlet
     {
@@ -29,18 +29,18 @@ namespace Microsoft.Azure.Commands.DevTestLab
         #region Optional Parameters
 
         // We support three parameter sets:
-        // 1: No parameters: Get all labs in current subscription.
-        // 2: Only ResourceGroupName specified: Gets all labs in that resource group.
-        // 3: Both LabName and ResourceGroupName are specified: Gets the specific lab.
+        // 1: ListAll: Lists all labs within current subscription, if no parameters are specified.
+        // 2: ListAllWithinResourceGroup: Lists all labs within a resource group, if the -ResourceGroupName parameter is specified.
+        // 3: GetSpecificWithinResourceGroup: Gets a specific lab within a resource group, if both the -LabName and -ResourceGroupName are specified. 
 
-        [Parameter(Mandatory = true, ParameterSetName = "FilterByLabName")]
-        [ValidateNotNullOrEmpty]
-        public string LabName { get; set; }
-
-        [Parameter(Mandatory = true, ParameterSetName = "FilterByLabName")]
-        [Parameter(Mandatory = true, ParameterSetName = "FilterByResourceGroupName")]
+        [Parameter(Mandatory = true, ParameterSetName = "GetSpecificWithinResourceGroup")]
+        [Parameter(Mandatory = true, ParameterSetName = "ListAllWithinResourceGroup")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
+
+        [Parameter(Mandatory = true, ParameterSetName = "GetSpecificWithinResourceGroup")]
+        [ValidateNotNullOrEmpty]
+        public string LabName { get; set; }
 
         #endregion // Optional Parameters
 
@@ -57,15 +57,15 @@ namespace Microsoft.Azure.Commands.DevTestLab
 
             switch (ParameterSetName)
             {
-                case "FilterByLabName":
+                case "GetSpecificWithinResourceGroup":
                     WriteObject(this.DtlClient.GetLab(this.ResourceGroupName, this.LabName));
                     break;
 
-                case "FilterByResourceGroupName":
+                case "ListAllWithinResourceGroup":
                     WriteObject(this.DtlClient.ListLabsByResourceGroup(this.ResourceGroupName));
                     break;
 
-                case "FilterNone":
+                case "ListAll":
                 default:
                     WriteObject(this.DtlClient.ListLabs());
                     break;

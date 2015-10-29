@@ -20,7 +20,7 @@ using Environment = Microsoft.Azure.Management.DevTestLab.Models.Environment;
 
 namespace Microsoft.Azure.Commands.DevTestLab
 {
-    [Cmdlet(VerbsCommon.Get, "AzureDtlVMTemplate", DefaultParameterSetName = "FilterByLabName")]
+    [Cmdlet(VerbsCommon.Get, "AzureDtlVMTemplate", DefaultParameterSetName = "ListAll")]
     [OutputType(typeof(IEnumerable<Environment>), typeof(Environment))]
     public class GetAzureDtlVMTemplate: DevTestLabBaseCmdlet
     {
@@ -28,23 +28,23 @@ namespace Microsoft.Azure.Commands.DevTestLab
 
         #region Optional Parameters
 
-        // We support three parameter sets:
-        // 1: Both LabName and lab's ResourceGroupName are specified: Gets all VM templates in that lab.
-        // 2: LabName, lab's ResourceGroupName and VMTemplateName specified: Gets specific VM template.
+        // We support two parameter sets:
+        // 1: ListAll: Lists all VM templates within a lab, if the -LabName and -LabResourceGroupName parameters are specified.
+        // 2: GetSpecific: Gets a specific VM template within a lab, if the -VMTemplateName, -LabName and -LabResourceGroupName parameters are specified.
 
-        [Parameter(Mandatory = true, ParameterSetName = "FilterByLabName")]
-        [Parameter(Mandatory = true, ParameterSetName = "FilterByVMTemplateName")]
+        [Parameter(Mandatory = true, ParameterSetName = "ListAll")]
+        [Parameter(Mandatory = true, ParameterSetName = "GetSpecific")]
         [ValidateNotNullOrEmpty]
         public string LabName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = "FilterByVMTemplateName")]
+        [Parameter(Mandatory = true, ParameterSetName = "ListAll")]
+        [Parameter(Mandatory = true, ParameterSetName = "GetSpecific")]
+        [ValidateNotNullOrEmpty]
+        public string LabResourceGroupName { get; set; }
+
+        [Parameter(Mandatory = true, ParameterSetName = "GetSpecific")]
         [ValidateNotNullOrEmpty]
         public string VMTemplateName { get; set; }
-
-        [Parameter(Mandatory = true, ParameterSetName = "FilterByLabName")]
-        [Parameter(Mandatory = true, ParameterSetName = "FilterByVMTemplateName")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
 
         #endregion // Optional Parameters
 
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.DevTestLab
         #region Cmdlet Overrides
 
         /// <summary>
-        /// Implements the Get-AzureDTLLab cmdlet.
+        /// Implements the Get-AzureDtlLab cmdlet.
         /// </summary>
         protected override void ProcessRecord()
         {
@@ -61,12 +61,12 @@ namespace Microsoft.Azure.Commands.DevTestLab
 
             switch (ParameterSetName)
             {
-                case "FilterByLabName":
-                    WriteObject(this.DtlClient.ListVMTemplatesByLab(this.LabName, this.ResourceGroupName));
+                case "ListAll":
+                    WriteObject(this.DtlClient.ListVMTemplatesByLab(this.LabName, this.LabResourceGroupName));
                     break;
 
-                case "FilterByVMTemplateName":
-                    WriteObject(this.DtlClient.GetVMTemplate(this.LabName, this.ResourceGroupName, this.VMTemplateName));
+                case "GetSpecific":
+                    WriteObject(this.DtlClient.GetVMTemplate(this.LabName, this.LabResourceGroupName, this.VMTemplateName));
                     break;
             }
 
