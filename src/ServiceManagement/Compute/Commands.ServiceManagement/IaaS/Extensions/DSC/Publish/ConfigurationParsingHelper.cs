@@ -206,7 +206,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
 
         private static Dictionary<String, String> GetRequiredModulesFromAst(Ast ast, IEnumerable<Token> tokens)
         {
-            var modules = new Dictionary<String,String>();
+            var modules = new Dictionary<String,String>(StringComparer.OrdinalIgnoreCase);
 
             // We use System.Management.Automation.Language.Parser to extract required modules from ast, 
             // but format of ast is a bit tricky and have changed in time.
