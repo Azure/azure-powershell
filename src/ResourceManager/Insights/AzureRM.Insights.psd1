@@ -57,7 +57,9 @@ ScriptsToProcess = @()
 TypesToProcess = @()
   
 # Format files (.ps1xml) to be loaded when importing this module  
-FormatsToProcess = @()
+FormatsToProcess = @(
+	'.\Microsoft.Azure.Commands.Insights.format.ps1xml'
+)
   
 # Modules to import as nested modules of the module specified in ModuleToProcess  
 NestedModules = @(  
