@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
             };
 
             profile.Environments
-                .ForEach((e) => result.Environments.Add(e.Key, (PSAzureEnvironment)e.Value));
+                .ForEach((e) => result.Environments[e.Key] = (PSAzureEnvironment)e.Value);
             return result;
         }
 
@@ -54,8 +54,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
             {
                 Context = profile.Context
             };
-            profile.Environments
-                    .ForEach((e) => result.Environments.Add(e.Key, (AzureEnvironment)e.Value));
+            profile.Environments.ForEach((e) => result.Environments[e.Key] = (AzureEnvironment) e.Value);
             return result;
         }
 
@@ -68,13 +67,13 @@ namespace Microsoft.Azure.Commands.Profile.Models
         }
 
         /// <summary>
-        /// The current credentials and mestadata for connectiong with the current Azure cloud instance.
+        /// The current credentials and metadata for connecting with the current Azure cloud instance.
         /// </summary>
         public PSAzureContext Context { get; set; }
 
         public override string ToString()
         {
-            return Context.ToString();
+            return Context!= null? Context.ToString() : null;
         }
     }
 }

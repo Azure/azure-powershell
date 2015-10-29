@@ -79,11 +79,29 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adding a new certificate with thumbprint {0}. .
+        /// </summary>
+        internal static string AddingCertificate {
+            get {
+                return ResourceManager.GetString("AddingCertificate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Begin {0} call to RP.
         /// </summary>
         internal static string BeginMAMLCall {
             get {
                 return ResourceManager.GetString("BeginMAMLCall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Canceling deletion of the certificate with thumbprint {0}..
+        /// </summary>
+        internal static string CancelCertificateDelete {
+            get {
+                return ResourceManager.GetString("CancelCertificateDelete", resourceCulture);
             }
         }
         
@@ -246,6 +264,33 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string GetAllAccounts {
             get {
                 return ResourceManager.GetString("GetAllAccounts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting the certificate with thumbprint {0}..
+        /// </summary>
+        internal static string GetCertificateByThumbprint {
+            get {
+                return ResourceManager.GetString("GetCertificateByThumbprint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting certificates matching the specified OData filter..
+        /// </summary>
+        internal static string GetCertificatesByFilter {
+            get {
+                return ResourceManager.GetString("GetCertificatesByFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting all certificates that have been added to the Batch account..
+        /// </summary>
+        internal static string GetCertificatesNoFilter {
+            get {
+                return ResourceManager.GetString("GetCertificatesNoFilter", resourceCulture);
             }
         }
         
@@ -475,6 +520,15 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Getting the quotas of the subscription in the Batch Service for region: {0}..
+        /// </summary>
+        internal static string GettingSubscriptionQuotas {
+            get {
+                return ResourceManager.GetString("GettingSubscriptionQuotas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The endpoint is not recognized as valid: {0}.
         /// </summary>
         internal static string InvalidEndpointType {
@@ -543,6 +597,15 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string MissingResGroupName {
             get {
                 return ResourceManager.GetString("MissingResGroupName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No certificate data was specified. Supply the path to a certificate file, or provide the raw certificate data..
+        /// </summary>
+        internal static string NoCertificateData {
+            get {
+                return ResourceManager.GetString("NoCertificateData", resourceCulture);
             }
         }
         
@@ -660,6 +723,24 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string RemoveBatchAccount {
             get {
                 return ResourceManager.GetString("RemoveBatchAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing certificate ....
+        /// </summary>
+        internal static string RemoveCertificate {
+            get {
+                return ResourceManager.GetString("RemoveCertificate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the certificate with thumbprint {0}?.
+        /// </summary>
+        internal static string RemoveCertificateConfirm {
+            get {
+                return ResourceManager.GetString("RemoveCertificateConfirm", resourceCulture);
             }
         }
         

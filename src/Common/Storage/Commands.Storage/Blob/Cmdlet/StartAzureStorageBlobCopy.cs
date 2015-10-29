@@ -173,7 +173,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = FileParameterSet)]
         [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = FileToBlobParameterSet)]
         [Parameter(HelpMessage = "Source Azure Storage Context Object", ParameterSetName = UriParameterSet)]
-        public new AzureStorageContext Context { get; set; }
+        public override AzureStorageContext Context { get; set; }
 
         [Parameter(HelpMessage = "Destination Storage context object", Mandatory = false)]
         public AzureStorageContext DestContext { get; set; }

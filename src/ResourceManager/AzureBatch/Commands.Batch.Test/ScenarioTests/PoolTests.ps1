@@ -138,6 +138,37 @@ function Test-ListPoolsByFilter
 
 <#
 .SYNOPSIS
+Tests querying for Batch pools using a select clause
+#>
+function Test-GetAndListPoolsWithSelect
+{
+	param([string]$accountName, [string]$poolId)
+
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
+	$filter = "id eq '$poolId'"
+	$selectClause = "id,state"
+
+	# Test with Get pool API
+	$pool = Get-AzureBatchPool_ST $poolId -BatchContext $context
+	Assert-AreNotEqual $null $pool.VirtualMachineSize
+	Assert-AreEqual $poolId $pool.Id
+
+	$pool = Get-AzureBatchPool_ST $poolId -Select $selectClause -BatchContext $context
+	Assert-AreEqual $null $pool.VirtualMachineSize
+	Assert-AreEqual $poolId $pool.Id
+
+	# Test with List pools API
+	$pool = Get-AzureBatchPool_ST -Filter $filter -BatchContext $context
+	Assert-AreNotEqual $null $pool.VirtualMachineSize
+	Assert-AreEqual $poolId $pool.Id
+
+	$pool = Get-AzureBatchPool_ST -Filter $filter -Select $selectClause -BatchContext $context
+	Assert-AreEqual $null $pool.VirtualMachineSize
+	Assert-AreEqual $poolId $pool.Id
+}
+
+<#
+.SYNOPSIS
 Tests querying for Batch pools and supplying a max count
 #>
 function Test-ListPoolsWithMaxCount

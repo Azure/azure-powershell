@@ -9,7 +9,7 @@
 @{  
   
 # Version number of this module.  
-ModuleVersion = '0.9.9'  
+ModuleVersion = '0.10.0' 
   
 # ID used to uniquely identify this module  
 GUID = '81d522a4-6e5d-4105-8f58-376204c47458'  
@@ -21,7 +21,7 @@ Author = 'Microsoft Corporation'
 CompanyName = 'Microsoft Corporation'  
   
 # Copyright statement for this module  
-Copyright = '© Microsoft Corporation. All rights reserved.'    
+Copyright = 'Microsoft Corporation. All rights reserved.'    
   
 # Description of the functionality provided by this module  
 Description = 'Azure Resource Manager'  
@@ -78,37 +78,41 @@ FormatsToProcess = @(
     '.\AzureRM.OperationalInsights\Microsoft.Azure.Commands.OperationalInsights.format.ps1xml',  
     '.\AzureRM.Backup\Microsoft.Azure.Commands.AzureBackup.format.ps1xml',
     '.\AzureRM.UsageAggregates\Microsoft.Azure.Commands.UsageAggregates.Format.ps1xml',
-    '.\AzureRM.Sql\Microsoft.Azure.Commands.Sql.format.ps1xml'
+    '.\AzureRM.Sql\Microsoft.Azure.Commands.Sql.format.ps1xml',
+	'.\AzureRM.DataLakeAnalytics\Microsoft.Azure.Commands.DataLakeAnalytics.format.ps1xml',
+	'.\AzureRM.DataLakeStore\Microsoft.Azure.Commands.DataLakeStoreFileSystem.format.ps1xml'
 )  
   
 # Modules to import as nested modules of the module specified in ModuleToProcess  
 NestedModules = @(  
-    '.\AzureRM.Automation\Microsoft.Azure.Commands.ResourceManager.Automation.dll',  
-    '.\AzureRM.Resources\Microsoft.Azure.Commands.Resources.dll',  
-    '.\AzureRM.Resources\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll',  
-    '.\AzureRM.Profile\Microsoft.Azure.Commands.Profile.dll',  
-    '.\AzureRM.Tags\Microsoft.Azure.Commands.Tags.dll',  
-    '.\AzureRM.Sql\Microsoft.Azure.Commands.Sql.dll',  
-    '.\AzureRM.DataFactories\Microsoft.Azure.Commands.DataFactories.dll',  
-    '.\AzureRM.RedisCache\Microsoft.Azure.Commands.RedisCache.dll',  
-    '.\AzureRM.Batch\Microsoft.Azure.Commands.Batch.dll',  
-    '.\AzureRM.Dns\Microsoft.Azure.Commands.Dns.dll',  
-    '.\AzureRM.KeyVault\Microsoft.Azure.Commands.KeyVault.dll',  
-    '.\AzureRM.TrafficManager\Microsoft.Azure.Commands.TrafficManager.dll',  
-    '.\AzureRM.StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.dll',  
-    '.\AzureRM.Insights\Microsoft.Azure.Commands.Insights.dll',  
-    '.\AzureRM.Websites\Microsoft.Azure.Commands.Websites.dll',  
-    '.\AzureRM.Compute\Microsoft.Azure.Commands.Compute.dll',  
-    '.\AzureRM.Network\Microsoft.Azure.Commands.Network.dll',  
-    '.\Azure.Storage\Microsoft.WindowsAzure.Commands.Storage.dll',
-    '.\AzureRM.ApiManagement\Microsoft.Azure.Commands.ApiManagement.dll',  
-    '.\AzureRM.Storage\Microsoft.Azure.Commands.Management.Storage.dll',  
-    '.\AzureRM.OperationalInsights\Microsoft.Azure.Commands.OperationalInsights.dll',  
-    '.\AzureRM.UsageAggregates\Microsoft.Azure.Commands.UsageAggregates.dll', 
-    '.\AzureRM.HDInsight\Microsoft.Azure.Commands.HDInsight.dll',
-    '.\AzureRM.ApiManagement\Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll',  
-    '.\AzureRM.Backup\Microsoft.Azure.Commands.AzureBackup.dll',
-    '.\AzureRM.SiteRecovery\Microsoft.Azure.Commands.SiteRecovery.dll'
+    '.\AzureRM.Profile',
+    '.\AzureRM.Automation',
+    '.\AzureRM.Resources\AzureRM.Resources.psd1',
+    '.\AzureRM.Resources\AzureRM.Tags.psd1',
+    '.\AzureRM.Tags',  
+    '.\AzureRM.Sql',  
+    '.\AzureRM.DataFactories',  
+    '.\AzureRM.RedisCache',  
+    '.\AzureRM.Batch',  
+    '.\AzureRM.Dns',  
+    '.\AzureRM.KeyVault',  
+    '.\AzureRM.TrafficManager',  
+    '.\AzureRM.StreamAnalytics',  
+    '.\AzureRM.Insights',  
+    '.\AzureRM.Websites',  
+    '.\AzureRM.Compute',  
+    '.\AzureRM.Network',  
+    '.\Azure.Storage',
+    '.\AzureRM.ApiManagement',  
+    '.\AzureRM.Storage',  
+    '.\AzureRM.OperationalInsights',  
+    '.\AzureRM.UsageAggregates', 
+    '.\AzureRM.HDInsight',
+    '.\AzureRM.ApiManagement',  
+    '.\AzureRM.Backup',
+    '.\AzureRM.SiteRecovery',
+    '.\AzureRM.DataLakeAnalytics',
+    '.\AzureRM.DataLakeStore'
 )  
   
 # Functions to export from this module  
@@ -121,15 +125,7 @@ CmdletsToExport = '*'
 VariablesToExport = '*'  
   
 # Aliases to export from this module  
-AliasesToExport = @(  
-    'Get-AzureRmSqlDatabaseServerAuditingPolicy',  
-    'Remove-AzureRmSqlDatabaseServerAuditing',  
-    'Set-AzureRmSqlDatabaseServerAuditingPolicy',  
-    'Use-AzureRmSqlDatabaseServerAuditingPolicy',
-    'Get-AzureRmStorageContainerAcl',  
-    'Start-CopyAzureStorageBlob',  
-    'Stop-CopyAzureStorageBlob'
-)  
+AliasesToExport = '*'
   
 # List of all modules packaged with this module  
 ModuleList = @()  

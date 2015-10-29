@@ -12,20 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Threading;
+using System.Security.Cryptography.X509Certificates;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Common;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Management.Batch;
 using Microsoft.Azure.Management.Batch.Models;
-using System;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.Azure.Test.HttpRecorder;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Threading;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
@@ -37,12 +38,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
     public static class ScenarioTestHelpers
     {
         // NOTE: To save time on setup and compute node allocation when recording, many tests assume the following:
-        //     - A Batch account named 'pstests' exists under the subscription being used for recording.
+        //     - The SharedAccount exists under the subscription being used for recording.
         //     - The following commands were run to create a pool, and all 3 compute nodes are allocated:
-        //          $context = Get-AzureRmBatchAccountKeys "pstests"
+        //          $context = Get-AzureRmBatchAccountKeys "<SharedAccount>"
         //          $startTask = New-Object Microsoft.Azure.Commands.Batch.Models.PSStartTask
         //          $startTask.CommandLine = "cmd /c echo hello"
-        //          New-AzureRmBatchPool -Id "testPool" -VirtualMachineSize "small" -OSFamily "4" -TargetOSVersion "*" -TargetDedicated 3 -StartTask $startTask -BatchContext $context
+        //          New-AzureBatchPool -Id "testPool" -VirtualMachineSize "small" -OSFamily "4" -TargetOSVersion "*" -TargetDedicated 3 -StartTask $startTask -BatchContext $context
         internal const string SharedAccount = "pstests";
         internal const string SharedPool = "testPool";
         internal const string SharedPoolStartTaskStdOut = "startup\\stdout.txt";
@@ -83,13 +84,117 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Creates a test pool for use in Scenario tests.
+        /// Adds a test certificate for use in Scenario tests. Returns the thumbprint of the cert.
         /// </summary>
-        public static void CreateTestPool(BatchController controller, BatchAccountContext context, string poolId, int targetDedicated)
+        public static string AddTestCertificate(BatchController controller, BatchAccountContext context, string filePath)
         {
             RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
             BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            X509Certificate2 cert = new X509Certificate2(filePath);
+            ListCertificateOptions getParameters = new ListCertificateOptions(context, behaviors) 
+            { 
+                ThumbprintAlgorithm = BatchTestHelpers.TestCertificateAlgorithm, 
+                Thumbprint = cert.Thumbprint,
+                Select = "thumbprint,state"
+            };
+
+            try
+            {
+                PSCertificate existingCert = client.ListCertificates(getParameters).FirstOrDefault();
+                DateTime start = DateTime.Now;
+                DateTime end = start.AddMinutes(5);
+
+                // Cert might still be deleting from other tests, so we wait for the delete to finish.
+                while (existingCert != null && existingCert.State == CertificateState.Deleting)
+                {
+                    if (DateTime.Now > end)
+                    {
+                        throw new TimeoutException("Timed out waiting for existing cert to be deleted.");
+                    }
+                    Sleep(5000);
+                    existingCert = client.ListCertificates(getParameters).FirstOrDefault();
+                }
+            }
+            catch (AggregateException ex)
+            {
+                foreach (Exception inner in ex.InnerExceptions)
+                {
+                    BatchException batchEx = inner as BatchException;
+                    // When the cert doesn't exist, we get a 404 error. For all other errors, throw.
+                    if (batchEx == null || !batchEx.Message.Contains("CertificateNotFound"))
+                    {
+                        throw;
+                    }
+                }
+            }
+
+            NewCertificateParameters parameters = new NewCertificateParameters(context, null, cert.RawData, behaviors);
+
+            client.AddCertificate(parameters);
+
+            return cert.Thumbprint;
+        }
+
+        /// <summary>
+        /// Deletes a certificate.
+        /// </summary>
+        public static void DeleteTestCertificate(BatchController controller, BatchAccountContext context, string thumbprintAlgorithm, string thumbprint)
+        {
+            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
+            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            CertificateOperationParameters parameters = new CertificateOperationParameters(context, thumbprintAlgorithm,
+                thumbprint, behaviors);
+
+            client.DeleteCertificate(parameters);
+        }
+
+        /// <summary>
+        /// Deletes a certificate.
+        /// </summary>
+        public static void WaitForCertificateToFailDeletion(BatchController controller, BatchAccountContext context, string thumbprintAlgorithm, string thumbprint)
+        {
+            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
+            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            ListCertificateOptions parameters = new ListCertificateOptions(context, behaviors)
+            {
+                ThumbprintAlgorithm = BatchTestHelpers.TestCertificateAlgorithm,
+                Thumbprint = thumbprint
+            };
+
+            PSCertificate cert = client.ListCertificates(parameters).First();
+
+            DateTime timeout = DateTime.Now.AddMinutes(2);
+            while (cert.State != CertificateState.DeleteFailed)
+            {
+                if (DateTime.Now > timeout)
+                {
+                    throw new TimeoutException("Timed out waiting for failed certificate deletion");
+                }
+                Sleep(10000);
+                cert = client.ListCertificates(parameters).First();
+            }
+        }
+
+        /// <summary>
+        /// Creates a test pool for use in Scenario tests.
+        /// </summary>
+        public static void CreateTestPool(BatchController controller, BatchAccountContext context, string poolId, int targetDedicated, CertificateReference certReference = null)
+        {
+            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
+            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            PSCertificateReference[] certReferences = null;
+            if (certReference != null)
+            {
+                certReferences = new PSCertificateReference[] { new PSCertificateReference(certReference) };
+            }
 
             NewPoolParameters parameters = new NewPoolParameters(context, poolId, behaviors)
             {
@@ -97,6 +202,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 OSFamily = "4",
                 TargetOSVersion = "*",
                 TargetDedicated = targetDedicated,
+                CertificateReferences = certReferences,
             };
 
             client.CreatePool(parameters);

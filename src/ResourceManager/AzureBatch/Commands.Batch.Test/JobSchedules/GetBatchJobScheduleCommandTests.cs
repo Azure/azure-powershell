@@ -21,6 +21,7 @@ using Moq;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Threading.Tasks;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
@@ -71,38 +72,69 @@ namespace Microsoft.Azure.Commands.Batch.Test.JobSchedules
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void ListBatchJobScheduleByODataFilterTest()
+        public void GetBatchJobScheduleODataTest()
+        {
+            // Setup cmdlet to get a single job schedule
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+            cmdlet.Id = "testJobSchedule";
+            cmdlet.Select = "id,state";
+            cmdlet.Expand = "stats";
+
+            string requestSelect = null;
+            string requestExpand = null;
+
+            // Fetch the OData clauses off the request. The OData clauses are applied after user provided RequestInterceptors, so a ResponseInterceptor is used.
+            CloudJobScheduleGetResponse getResponse = BatchTestHelpers.CreateCloudJobScheduleGetResponse(cmdlet.Id);
+            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudJobScheduleGetParameters, CloudJobScheduleGetResponse>(getResponse);
+            ResponseInterceptor responseInterceptor = new ResponseInterceptor((response, request) =>
+            {
+                requestSelect = request.Parameters.DetailLevel.SelectClause;
+                requestExpand = request.Parameters.DetailLevel.ExpandClause;
+
+                return Task.FromResult(response);
+            });
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { requestInterceptor, responseInterceptor };
+
+            cmdlet.ExecuteCmdlet();
+
+            Assert.Equal(cmdlet.Select, requestSelect);
+            Assert.Equal(cmdlet.Expand, requestExpand);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ListBatchJobSchedulesODataTest()
         {
             // Setup cmdlet to list job schedules using an OData filter
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
             cmdlet.Id = null;
             cmdlet.Filter = "startswith(id,'test')";
+            cmdlet.Select = "id,state";
+            cmdlet.Expand = "stats";
 
-            string[] idsOfConstructedJobSchedules = new[] { "test1", "test2" };
+            string requestFilter = null;
+            string requestSelect = null;
+            string requestExpand = null;
 
-            // Build some CloudJobSchedules instead of querying the service on a List CloudJobSchedules call
-            CloudJobScheduleListResponse response = BatchTestHelpers.CreateCloudJobScheduleListResponse(idsOfConstructedJobSchedules);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudJobScheduleListParameters, CloudJobScheduleListResponse>(response);
-            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+            // Fetch the OData clauses off the request. The OData clauses are applied after user provided RequestInterceptors, so a ResponseInterceptor is used.
+            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudJobScheduleListParameters, CloudJobScheduleListResponse>();
+            ResponseInterceptor responseInterceptor = new ResponseInterceptor((response, request) =>
+            {
+                requestFilter = request.Parameters.DetailLevel.FilterClause;
+                requestSelect = request.Parameters.DetailLevel.SelectClause;
+                requestExpand = request.Parameters.DetailLevel.ExpandClause;
 
-            // Setup the cmdlet to write pipeline output to a list that can be examined later
-            List<PSCloudJobSchedule> pipeline = new List<PSCloudJobSchedule>();
-            commandRuntimeMock.Setup(r =>
-                r.WriteObject(It.IsAny<PSCloudJobSchedule>()))
-                .Callback<object>(j => pipeline.Add((PSCloudJobSchedule)j));
+                return Task.FromResult(response);
+            });
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { requestInterceptor, responseInterceptor };
 
             cmdlet.ExecuteCmdlet();
 
-            // Verify that the cmdlet wrote the constructed job schedules to the pipeline
-            Assert.Equal(2, pipeline.Count);
-            int jobScheduleCount = 0;
-            foreach (PSCloudJobSchedule j in pipeline)
-            {
-                Assert.True(idsOfConstructedJobSchedules.Contains(j.Id));
-                jobScheduleCount++;
-            }
-            Assert.Equal(idsOfConstructedJobSchedules.Length, jobScheduleCount);
+            Assert.Equal(cmdlet.Filter, requestFilter);
+            Assert.Equal(cmdlet.Select, requestSelect);
+            Assert.Equal(cmdlet.Expand, requestExpand);
         }
 
         [Fact]

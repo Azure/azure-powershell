@@ -112,13 +112,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 {
                     Description = this.Description ?? null,
                     DisplayName = this.DisplayName ?? null,
-                    PolicyRule =  File.Exists(this.Policy) 
-                        ? FileUtilities.DataStore.ReadFileAsText(this.TryResolvePath(this.Policy))
-                        : this.Policy
+                    PolicyRule = JObject.Parse(GetPolicyRuleObject().ToString())
                 }
             };
 
             return policyDefinitionObject.ToJToken();
+        }
+
+        /// <summary>
+        /// Gets the policy rule object
+        /// </summary>
+        private JToken GetPolicyRuleObject()
+        {
+            return File.Exists(this.Policy)
+                ? JToken.FromObject(FileUtilities.DataStore.ReadFileAsText(this.TryResolvePath(this.Policy)))
+                : JToken.FromObject(this.Policy);
         }
     }
 }

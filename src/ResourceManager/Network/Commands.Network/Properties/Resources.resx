@@ -205,7 +205,8 @@
   </data>
   <data name="RouteTableType" xml:space="preserve">
     <value>microsoft.network/routeTables</value>
-  </data>  <data name="ApplicationGatewayBackendAddressPoolName" xml:space="preserve">
+  </data>
+  <data name="ApplicationGatewayBackendAddressPoolName" xml:space="preserve">
     <value>backendAddressPools</value>
   </data>
   <data name="ApplicationGatewaybackendHttpSettingsName" xml:space="preserve">
@@ -244,4 +245,11 @@
   </data>
   <data name="SetByIP" xml:space="preserve">
     <value>SetByIP</value>
-  </data></root>
+  </data>
+  <data name="LoadBalancerInboundNatPoolsName" xml:space="preserve">
+    <value>inboundNatPools</value>
+  </data>
+  <data name="ExpressRouteCircuitType" xml:space="preserve">
+    <value>microsoft.network/ExpressRouteCircuits</value>
+  </data>
+</root>

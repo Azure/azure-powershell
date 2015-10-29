@@ -129,13 +129,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             };
             if(!string.IsNullOrEmpty(this.Policy))
             {
-                policyDefinitionObject.Properties.PolicyRule = File.Exists(this.Policy)
-                    ? FileUtilities.DataStore.ReadFileAsText(this.TryResolvePath(this.Policy))
-                    : this.Policy;
+                policyDefinitionObject.Properties.PolicyRule = JObject.Parse(GetPolicyRuleObject().ToString());
             }
             else
             {
-                policyDefinitionObject.Properties.PolicyRule = resource.Properties["policyRule"].ToString();
+                policyDefinitionObject.Properties.PolicyRule = JObject.Parse(resource.Properties["policyRule"].ToString());
             }
 
             return policyDefinitionObject.ToJToken();
@@ -165,6 +163,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 subscriptionId.ToString(),
                 Constants.MicrosoftAuthorizationPolicyDefinitionType,
                 this.Name);
+        }
+
+        /// <summary>
+        /// Gets the policy rule object
+        /// </summary>
+        protected JToken GetPolicyRuleObject()
+        {
+            return File.Exists(this.Policy)
+                ? JToken.FromObject(FileUtilities.DataStore.ReadFileAsText(this.TryResolvePath(this.Policy)))
+                : JToken.FromObject(this.Policy);
         }
     }
 }

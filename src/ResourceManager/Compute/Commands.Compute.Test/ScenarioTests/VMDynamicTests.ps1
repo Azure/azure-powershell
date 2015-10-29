@@ -14,13 +14,25 @@
 
 function get_all_vm_locations
 {
-    $st = Write-Verbose 'Getting all Azure location - Start';
-
-    $locations = Get-AzureRmLocation | where { $_.Name -eq 'Microsoft.Compute/virtualMachines' } | select -ExpandProperty Locations;
+	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+	{
+		$namespace = "Microsoft.Compute" 
+		$type = "virtualMachines" 
+		$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}  
+  
+		if ($location -eq $null) 
+		{  
+			$st = Write-Verbose 'Getting all Azure location - End';
+			return @("West US", "East US")
+		} else 
+		{  
+			$st = Write-Verbose 'Getting all Azure location - End';
+			return $location.Locations  
+		}  
+	}
 
     $st = Write-Verbose 'Getting all Azure location - End';
-
-    return $locations;
+	return @("West US", "East US")
 }
 
 function get_all_standard_vm_sizes

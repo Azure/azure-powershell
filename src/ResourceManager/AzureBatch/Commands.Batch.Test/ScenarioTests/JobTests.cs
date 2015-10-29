@@ -63,14 +63,14 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         public void TestListJobsByFilter()
         {
             BatchController controller = BatchController.NewInstance;
-            string jobId1 = "testId1";
-            string jobId2 = "testId2";
+            string jobId1 = "filterTestId1";
+            string jobId2 = "filterTestId2";
             string jobId3 = "thirdtestId";
-            string state = "active";
+            string prefix = "filterTest";
             int matches = 2;
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-ListJobsByFilter '{0}' '{1}' '{2}'", accountName, state.ToString(), matches) }; },
+                () => { return new string[] { string.Format("Test-ListJobsByFilter '{0}' '{1}' '{2}'", accountName, prefix, matches) }; },
                 () =>
                 {
                     context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
@@ -84,6 +84,29 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                     ScenarioTestHelpers.DeleteJob(controller, context, jobId1);
                     ScenarioTestHelpers.DeleteJob(controller, context, jobId2);
                     ScenarioTestHelpers.DeleteJob(controller, context, jobId3);
+                },
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
+        }
+
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAndListJobsWithSelect()
+        {
+            BatchController controller = BatchController.NewInstance;
+            BatchAccountContext context = null;
+            string jobId = "selectTest";
+            controller.RunPsTestWorkflow(
+                () => { return new string[] { string.Format("Test-GetAndListJobsWithSelect '{0}' '{1}'", accountName, jobId) }; },
+                () =>
+                {
+                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    ScenarioTestHelpers.CreateTestJob(controller, context, jobId);
+                },
+                () =>
+                {
+                    ScenarioTestHelpers.DeleteJob(controller, context, jobId);
                 },
                 TestUtilities.GetCallingClass(),
                 TestUtilities.GetCurrentMethodName());

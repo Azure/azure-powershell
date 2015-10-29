@@ -18,9 +18,11 @@ using Microsoft.Azure.Batch.Protocol.Models;
 using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Threading.Tasks;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
@@ -71,38 +73,69 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void ListBatchPoolByODataFilterTest()
+        public void GetBatchPoolODataTest()
+        {
+            // Setup cmdlet to get a single pool
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+            cmdlet.Id = "testPool";
+            cmdlet.Select = "id,state";
+            cmdlet.Expand = "stats";
+
+            string requestSelect = null;
+            string requestExpand = null;
+
+            // Fetch the OData clauses off the request. The OData clauses are applied after user provided RequestInterceptors, so a ResponseInterceptor is used.
+            CloudPoolGetResponse getResponse = BatchTestHelpers.CreateCloudPoolGetResponse(cmdlet.Id);
+            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudPoolGetParameters, CloudPoolGetResponse>(getResponse);
+            ResponseInterceptor responseInterceptor = new ResponseInterceptor((response, request) =>
+            {
+                requestSelect = request.Parameters.DetailLevel.SelectClause;
+                requestExpand = request.Parameters.DetailLevel.ExpandClause;
+
+                return Task.FromResult(response);
+            });
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { requestInterceptor, responseInterceptor };
+
+            cmdlet.ExecuteCmdlet();
+
+            Assert.Equal(cmdlet.Select, requestSelect);
+            Assert.Equal(cmdlet.Expand, requestExpand);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ListBatchPoolsODataTest()
         {
             // Setup cmdlet to list pools using an OData filter
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
             cmdlet.Id = null;
             cmdlet.Filter = "startswith(id,'test')";
+            cmdlet.Select = "id,state";
+            cmdlet.Expand = "stats";
 
-            string[] idsOfConstructedPools = new[] { "test1", "test2" };
+            string requestFilter = null;
+            string requestSelect = null;
+            string requestExpand = null;
 
-            // Build some CloudPools instead of querying the service on a List CloudPools call
-            CloudPoolListResponse response = BatchTestHelpers.CreateCloudPoolListResponse(idsOfConstructedPools);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudPoolListParameters, CloudPoolListResponse>(response);
-            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+            // Fetch the OData clauses off the request. The OData clauses are applied after user provided RequestInterceptors, so a ResponseInterceptor is used.
+            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudPoolListParameters, CloudPoolListResponse>();
+            ResponseInterceptor responseInterceptor = new ResponseInterceptor((response, request) =>
+            {
+                requestFilter = request.Parameters.DetailLevel.FilterClause;
+                requestSelect = request.Parameters.DetailLevel.SelectClause;
+                requestExpand = request.Parameters.DetailLevel.ExpandClause;
 
-            // Setup the cmdlet to write pipeline output to a list that can be examined later
-            List<PSCloudPool> pipeline = new List<PSCloudPool>();
-            commandRuntimeMock.Setup(r =>
-                r.WriteObject(It.IsAny<PSCloudPool>()))
-                .Callback<object>(p => pipeline.Add((PSCloudPool)p));
+                return Task.FromResult(response);
+            });
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { requestInterceptor, responseInterceptor };
 
             cmdlet.ExecuteCmdlet();
 
-            // Verify that the cmdlet wrote the constructed pools to the pipeline
-            Assert.Equal(2, pipeline.Count);
-            int poolCount = 0;
-            foreach (PSCloudPool p in pipeline)
-            {
-                Assert.True(idsOfConstructedPools.Contains(p.Id));
-                poolCount++;
-            }
-            Assert.Equal(idsOfConstructedPools.Length, poolCount);
+            Assert.Equal(cmdlet.Filter, requestFilter);
+            Assert.Equal(cmdlet.Select, requestSelect);
+            Assert.Equal(cmdlet.Expand, requestExpand);
         }
 
         [Fact]

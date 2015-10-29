@@ -106,6 +106,30 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAndListTasksWithSelect()
+        {
+            BatchController controller = BatchController.NewInstance;
+            BatchAccountContext context = null;
+            string jobId = "selectTaskTest";
+            string taskId = "testTask1";
+            controller.RunPsTestWorkflow(
+                () => { return new string[] { string.Format("Test-GetAndListTasksWithSelect '{0}' '{1}' '{2}'", accountName, jobId, taskId) }; },
+                () =>
+                {
+                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    ScenarioTestHelpers.CreateTestJob(controller, context, jobId);
+                    ScenarioTestHelpers.CreateTestTask(controller, context, jobId, taskId);
+                },
+                () =>
+                {
+                    ScenarioTestHelpers.DeleteJob(controller, context, jobId);
+                },
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListTasksWithMaxCount()
         {
             BatchController controller = BatchController.NewInstance;
@@ -277,8 +301,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 {
                     context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
                     ScenarioTestHelpers.CreateTestJob(controller, context, jobId);
-                    ScenarioTestHelpers.CreateTestTask(controller, context, jobId, taskId1);
-                    ScenarioTestHelpers.CreateTestTask(controller, context, jobId, taskId2);
+                    // Make the tasks long running so they can be terminated before they finish execution
+                    ScenarioTestHelpers.CreateTestTask(controller, context, jobId, taskId1, "ping -t localhost -w 60");
+                    ScenarioTestHelpers.CreateTestTask(controller, context, jobId, taskId2, "ping -t localhost -w 60");
                 },
                 () =>
                 {

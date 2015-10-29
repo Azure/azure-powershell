@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using Microsoft.Azure.Management.HDInsight.Models;
 
@@ -29,12 +30,14 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             ClusterVersion = cluster.Properties.ClusterVersion;
             OperatingSystemType = cluster.Properties.OperatingSystemType;
             ClusterState = cluster.Properties.ClusterState;
-            ClusterType = cluster.Properties.ClusterDefinition.ClusterType;
+            HDInsightClusterType type;
+            Enum.TryParse(cluster.Properties.ClusterDefinition.ClusterType, out type);
+            ClusterType = type;
             CoresUsed = cluster.Properties.QuotaInfo.CoresUsed;
             var httpEndpoint =
                 cluster.Properties.ConnectivityEndpoints.FirstOrDefault(c => c.Name.Equals("HTTPS", StringComparison.OrdinalIgnoreCase));
             HttpEndpoint = httpEndpoint != null ? httpEndpoint.Location : null;
-
+            Error = cluster.Properties.ErrorInfos.Select(s => s.Message).FirstOrDefault();
             ResourceGroup = ClusterConfigurationUtils.GetResourceGroupFromClusterId(cluster.Id);
         }
 
@@ -100,6 +103,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public string HttpEndpoint { get; set; }
 
         /// <summary>
+        /// The error (if any).
+        /// </summary>
+        public string Error { get; set; }
+
+        /// <summary>
         /// Default storage account for this cluster.
         /// </summary>
         public string DefaultStorageAccount { get; set; }
@@ -117,6 +125,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// <summary>
         /// Additional storage accounts for this cluster
         /// </summary>
-        public List<string> AdditionalStorageAccounts { get; set; }
+        public List<string> AdditionalStorageAccounts { get; set; }      
     }
 }

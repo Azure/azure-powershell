@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 HDInsightJobClient = hdinsightJobManagementMock.Object,
-                ClusterCredential = new PSCredential("httpuser", string.Format("Password1!").ConvertToSecureString()),
+                HttpCredential = new PSCredential("httpuser", string.Format("Password1!").ConvertToSecureString()),
                 ClusterName = ClusterName
             };
 
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 JobDetail = new JobDetailRootJsonObject
                 {
                     Completed = "false",
-                    User = cmdlet.ClusterCredential.UserName,
+                    User = cmdlet.HttpCredential.UserName,
                     Id = jobid
                 }
             };

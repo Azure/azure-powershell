@@ -13,8 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.IO;
 using System.Management.Automation;
+using System.Reflection;
 using Microsoft.Azure.Commands.Sql.Server.Model;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
 {
@@ -22,7 +25,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
     /// Defines the Get-AzureRmSqlServer cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmSqlServer", ConfirmImpact = ConfirmImpact.None)]
-    public class GetAzureSqlServer : AzureSqlServerCmdletBase
+    public class GetAzureSqlServer : AzureSqlServerCmdletBase, IModuleAssemblyInitializer
     {
         /// <summary>
         /// Gets or sets the name of the database server to use.
@@ -73,6 +76,26 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         protected override IEnumerable<AzureSqlServerModel> ApplyUserInputToModel(IEnumerable<AzureSqlServerModel> model)
         {
             return model;
+        }
+
+        /// <summary>
+        /// Add Sql aliases
+        /// </summary>
+        public void OnImport()
+        {
+            try
+            {
+                System.Management.Automation.PowerShell invoker = null;
+                invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
+                invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(
+                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+                    "SqlStartup.ps1")));
+                invoker.Invoke();
+            }
+            catch
+            {
+                // This may throw exception for tests, ignore.
+            }
         }
     }
 }
