@@ -164,7 +164,7 @@ function Test-CRUDNamespace
 .SYNOPSIS
 Tests NotificationHub Namespace AuthorizationRules Create List Remove operations.
 #>
-function Test-CRUDNamespaceAuthorizationRules
+function Test-CRUDNamespaceAuth
 {
     # Setup    
     $location = "South Central US"
@@ -431,7 +431,7 @@ function Test-CRUDNotificationHub
 .SYNOPSIS
 Tests NotificationHub AuthorizationRules Create List Remove operations.
 #>
-function Test-CRUDNHAuthorizationRules
+function Test-CRUDNHAuth
 {
     # Setup    
     $location = "South Central US"

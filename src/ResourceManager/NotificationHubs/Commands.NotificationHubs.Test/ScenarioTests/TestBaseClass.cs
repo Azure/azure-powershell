@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.NotificatioHubs.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.NotificationHubs.Test.ScenarioTests
 {
     using System;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -39,11 +39,11 @@ namespace Microsoft.Azure.Commands.NotificatioHubs.Test.ScenarioTests
         {
             var nhManagementClient = GetNotificationHubsManagementClient();
             var resourceManagementClient = GetResourceManagementClient();
-            var galaryClient = GetGalleryClient();
+            var gallaryClient = GetGalleryClient();
             var authorizationManagementClient = GetAuthorizationManagementClient();
             var managementClient = GetManagementClient();
 
-            helper.SetupManagementClients(nhManagementClient, resourceManagementClient, galaryClient,
+            helper.SetupManagementClients(nhManagementClient, resourceManagementClient, gallaryClient,
                                             authorizationManagementClient, managementClient);
         }
 

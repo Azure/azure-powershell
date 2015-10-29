@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.NotificatioHubs.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.NotificationHubs.Test.ScenarioTests
 {
     using Microsoft.Azure.Commands.NotificationHubs;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -31,9 +31,9 @@ namespace Microsoft.Azure.Commands.NotificatioHubs.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCRUDNamespaceAuthorizationRules()
+        public void TestCRUDNamespaceAuth()
         {
-            RunPowerShellTest("Test-CRUDNamespaceAuthorizationRules");
+            RunPowerShellTest("Test-CRUDNamespaceAuth");
         }
 
         [Fact]
@@ -45,9 +45,9 @@ namespace Microsoft.Azure.Commands.NotificatioHubs.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCRUDNHAuthorizationRules()
+        public void TestCRUDNHAuth()
         {
-            RunPowerShellTest("Test-CRUDNHAuthorizationRules");
+            RunPowerShellTest("Test-CRUDNHAuth");
         }
     }
 }

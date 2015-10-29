@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourcegroups/RGName-onesdk4978?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlZ3JvdXBzL1JHTmFtZS1vbmVzZGs0OTc4P2FwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourcegroups/RGName-onesdk9102?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlZ3JvdXBzL1JHTmFtZS1vbmVzZGs5MTAyP2FwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
       "RequestMethod": "HEAD",
       "RequestBody": "",
       "RequestHeaders": {
@@ -28,16 +28,16 @@
           "gateway"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14975"
+          "14997"
         ],
         "x-ms-request-id": [
-          "c6e1a269-f430-46de-a2b8-e2e5ba6624cf"
+          "ac8c7a92-e5f4-461b-b276-b9f9d8622300"
         ],
         "x-ms-correlation-request-id": [
-          "c6e1a269-f430-46de-a2b8-e2e5ba6624cf"
+          "ac8c7a92-e5f4-461b-b276-b9f9d8622300"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151013T234317Z:c6e1a269-f430-46de-a2b8-e2e5ba6624cf"
+          "WESTUS:20151029T223810Z:ac8c7a92-e5f4-461b-b276-b9f9d8622300"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -46,14 +46,14 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 13 Oct 2015 23:43:17 GMT"
+          "Thu, 29 Oct 2015 22:38:10 GMT"
         ]
       },
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourcegroups/RGName-onesdk4978?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlZ3JvdXBzL1JHTmFtZS1vbmVzZGs0OTc4P2FwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourcegroups/RGName-onesdk9102?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlZ3JvdXBzL1JHTmFtZS1vbmVzZGs5MTAyP2FwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
       "RequestMethod": "HEAD",
       "RequestBody": "",
       "RequestHeaders": {
@@ -73,16 +73,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14968"
+          "14989"
         ],
         "x-ms-request-id": [
-          "20b4fdfd-036d-4d6d-8c0b-bcbee5d1a448"
+          "0b9a54f9-7cb3-4daa-b4a0-6154429aad37"
         ],
         "x-ms-correlation-request-id": [
-          "20b4fdfd-036d-4d6d-8c0b-bcbee5d1a448"
+          "0b9a54f9-7cb3-4daa-b4a0-6154429aad37"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151013T234512Z:20b4fdfd-036d-4d6d-8c0b-bcbee5d1a448"
+          "WESTUS:20151029T223954Z:0b9a54f9-7cb3-4daa-b4a0-6154429aad37"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -91,14 +91,14 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 13 Oct 2015 23:45:11 GMT"
+          "Thu, 29 Oct 2015 22:39:53 GMT"
         ]
       },
       "StatusCode": 204
     },
     {
-      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourcegroups/RGName-onesdk4978?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlZ3JvdXBzL1JHTmFtZS1vbmVzZGs0OTc4P2FwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourcegroups/RGName-onesdk9102?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlZ3JvdXBzL1JHTmFtZS1vbmVzZGs5MTAyP2FwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"South Central US\"\r\n}",
       "RequestHeaders": {
@@ -112,7 +112,7 @@
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk4978\",\r\n  \"name\": \"RGName-onesdk4978\",\r\n  \"location\": \"southcentralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk9102\",\r\n  \"name\": \"RGName-onesdk9102\",\r\n  \"location\": \"southcentralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "195"
@@ -127,16 +127,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1197"
         ],
         "x-ms-request-id": [
-          "1d49fba0-c49a-43ac-a936-9ec29c32c647"
+          "41f48f35-f74e-4eae-ba82-51a157f20251"
         ],
         "x-ms-correlation-request-id": [
-          "1d49fba0-c49a-43ac-a936-9ec29c32c647"
+          "41f48f35-f74e-4eae-ba82-51a157f20251"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151013T234318Z:1d49fba0-c49a-43ac-a936-9ec29c32c647"
+          "WESTUS:20151029T223811Z:41f48f35-f74e-4eae-ba82-51a157f20251"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -145,14 +145,14 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 13 Oct 2015 23:43:18 GMT"
+          "Thu, 29 Oct 2015 22:38:11 GMT"
         ]
       },
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk4978/resources?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs0OTc4L3Jlc291cmNlcz9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk9102/resources?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs5MTAyL3Jlc291cmNlcz9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -175,16 +175,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14974"
+          "14996"
         ],
         "x-ms-request-id": [
-          "cb64f594-3545-4d09-815f-13e264816c03"
+          "6926f8ea-6972-4f6d-8130-d9a19d40e9fc"
         ],
         "x-ms-correlation-request-id": [
-          "cb64f594-3545-4d09-815f-13e264816c03"
+          "6926f8ea-6972-4f6d-8130-d9a19d40e9fc"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151013T234318Z:cb64f594-3545-4d09-815f-13e264816c03"
+          "WESTUS:20151029T223811Z:6926f8ea-6972-4f6d-8130-d9a19d40e9fc"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -193,77 +193,14 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 13 Oct 2015 23:43:18 GMT"
+          "Thu, 29 Oct 2015 22:38:11 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourcegroups/RGName-onesdk4978/providers/Microsoft.Authorization/permissions?api-version=2015-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlZ3JvdXBzL1JHTmFtZS1vbmVzZGs0OTc4L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wZXJtaXNzaW9ucz9hcGktdmVyc2lvbj0yMDE1LTA3LTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/1.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"actions\": [\r\n        \"*\"\r\n      ],\r\n      \"notActions\": []\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "61"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "0eba6278-731e-40ce-8168-3fa2e24a4e5b"
-        ],
-        "x-ms-gateway-service-instanceid": [
-          "PASFE_IN_0"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14989"
-        ],
-        "x-ms-correlation-request-id": [
-          "025e3bde-3b18-41cb-8e0b-c550766580d3"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20151013T234319Z:025e3bde-3b18-41cb-8e0b-c550766580d3"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Tue, 13 Oct 2015 23:43:18 GMT"
-        ],
-        "Set-Cookie": [
-          "x-ms-gateway-slice=productionb; path=/"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.5"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk4978/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk3567?api-version=2014-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs0OTc4L3Byb3ZpZGVycy9NaWNyb3NvZnQuTm90aWZpY2F0aW9uSHVicy9uYW1lc3BhY2VzL05hbWVzcGFjZS1vbmVzZGszNTY3P2FwaS12ZXJzaW9uPTIwMTQtMDktMDE=",
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk9102/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk695?api-version=2014-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs5MTAyL3Byb3ZpZGVycy9NaWNyb3NvZnQuTm90aWZpY2F0aW9uSHVicy9uYW1lc3BhY2VzL05hbWVzcGFjZS1vbmVzZGs2OTU/YXBpLXZlcnNpb249MjAxNC0wOS0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"South Central US\",\r\n  \"properties\": {\r\n    \"createdAt\": \"0001-01-01T00:00:00\",\r\n    \"enabled\": false,\r\n    \"critical\": false,\r\n    \"namespaceType\": \"NotificationHub\"\r\n  }\r\n}",
       "RequestHeaders": {
@@ -277,10 +214,10 @@
           "Microsoft.Azure.Management.NotificationHubs.NotificationHubsManagementClient/0.9.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": null,\r\n  \"name\": null,\r\n  \"type\": null,\r\n  \"location\": \"South Central US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Activating\",\r\n    \"name\": \"Namespace-onesdk3567\",\r\n    \"region\": \"South Central US\",\r\n    \"enabled\": false,\r\n    \"critical\": false,\r\n    \"namespaceType\": \"NotificationHub\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": null,\r\n  \"name\": null,\r\n  \"type\": null,\r\n  \"location\": \"South Central US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Activating\",\r\n    \"name\": \"Namespace-onesdk695\",\r\n    \"region\": \"South Central US\",\r\n    \"enabled\": false,\r\n    \"critical\": false,\r\n    \"namespaceType\": \"NotificationHub\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "250"
+          "249"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -292,7 +229,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "fdf9e94a-ca86-4bd8-86f4-22d422cb3638_M0_M0"
+          "d38762a1-f03a-47ba-83ce-9b0d6f2d09e2_M0_M0"
         ],
         "Server-SB": [
           "Service-Bus-Resource-Provider/SN1"
@@ -308,23 +245,23 @@
           "1196"
         ],
         "x-ms-correlation-request-id": [
-          "76610507-616f-401c-8e53-0beadd5526be"
+          "525d8aee-1bd5-43ea-b768-006c03815509"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151013T234321Z:76610507-616f-401c-8e53-0beadd5526be"
+          "WESTUS:20151029T223813Z:525d8aee-1bd5-43ea-b768-006c03815509"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Tue, 13 Oct 2015 23:43:20 GMT"
+          "Thu, 29 Oct 2015 22:38:12 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk4978/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk3567?api-version=2014-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs0OTc4L3Byb3ZpZGVycy9NaWNyb3NvZnQuTm90aWZpY2F0aW9uSHVicy9uYW1lc3BhY2VzL05hbWVzcGFjZS1vbmVzZGszNTY3P2FwaS12ZXJzaW9uPTIwMTQtMDktMDE=",
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk9102/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk695?api-version=2014-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs5MTAyL3Byb3ZpZGVycy9NaWNyb3NvZnQuTm90aWZpY2F0aW9uSHVicy9uYW1lc3BhY2VzL05hbWVzcGFjZS1vbmVzZGs2OTU/YXBpLXZlcnNpb249MjAxNC0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -332,10 +269,10 @@
           "Microsoft.Azure.Management.NotificationHubs.NotificationHubsManagementClient/0.9.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk4978/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk3567\",\r\n  \"name\": \"Namespace-onesdk3567\",\r\n  \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n  \"location\": \"South Central US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"status\": \"Active\",\r\n    \"createdAt\": \"2015-10-13T23:43:20.883Z\",\r\n    \"serviceBusEndpoint\": \"https://Namespace-onesdk3567.servicebus.windows.net:443/\",\r\n    \"enabled\": true,\r\n    \"critical\": false,\r\n    \"updatedAt\": \"2015-10-13T23:43:24.007Z\",\r\n    \"namespaceType\": \"NotificationHub\",\r\n    \"messagingSku\": 1\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk9102/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk695\",\r\n  \"name\": \"Namespace-onesdk695\",\r\n  \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n  \"location\": \"South Central US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"status\": \"Active\",\r\n    \"createdAt\": \"2015-10-29T22:38:12.937Z\",\r\n    \"serviceBusEndpoint\": \"https://Namespace-onesdk695.servicebus.windows.net:443/\",\r\n    \"enabled\": true,\r\n    \"critical\": false,\r\n    \"updatedAt\": \"2015-10-29T22:38:18.67Z\",\r\n    \"namespaceType\": \"NotificationHub\",\r\n    \"messagingSku\": 1\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "587"
+          "583"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -347,7 +284,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "c0a4b6dc-4afb-456d-85ae-9321e30d6d71_M0_M0"
+          "2ff7193e-69a5-452c-8e7d-87ab02e431a9_M0_M0"
         ],
         "Server-SB": [
           "Service-Bus-Resource-Provider/SN1"
@@ -360,26 +297,26 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14980"
+          "14995"
         ],
         "x-ms-correlation-request-id": [
-          "cc07d8c1-f0d3-4fff-bc6e-3bc903702c6c"
+          "d8661f4a-6542-4796-a0d9-587bbe660a65"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151013T234336Z:cc07d8c1-f0d3-4fff-bc6e-3bc903702c6c"
+          "WESTUS:20151029T223828Z:d8661f4a-6542-4796-a0d9-587bbe660a65"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Tue, 13 Oct 2015 23:43:36 GMT"
+          "Thu, 29 Oct 2015 22:38:28 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk4978/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk3567/notificationHubs/TestNh?api-version=2014-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs0OTc4L3Byb3ZpZGVycy9NaWNyb3NvZnQuTm90aWZpY2F0aW9uSHVicy9uYW1lc3BhY2VzL05hbWVzcGFjZS1vbmVzZGszNTY3L25vdGlmaWNhdGlvbkh1YnMvVGVzdE5oP2FwaS12ZXJzaW9uPTIwMTQtMDktMDE=",
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk9102/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk695/notificationHubs/TestNh?api-version=2014-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs5MTAyL3Byb3ZpZGVycy9NaWNyb3NvZnQuTm90aWZpY2F0aW9uSHVicy9uYW1lc3BhY2VzL05hbWVzcGFjZS1vbmVzZGs2OTUvbm90aWZpY2F0aW9uSHVicy9UZXN0Tmg/YXBpLXZlcnNpb249MjAxNC0wOS0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"South Central US\",\r\n  \"tags\": {\r\n    \"Tag1\": \"Value1\",\r\n    \"Tag2\": \"Value2\"\r\n  },\r\n  \"properties\": {\r\n    \"name\": \"TestNh\"\r\n  }\r\n}",
       "RequestHeaders": {
@@ -408,7 +345,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "495ca95c-ac1d-4a58-9e4e-cbbf7ae4f669_M2_M2"
+          "5f5169ce-97eb-4690-a291-fe890e5dd947_M0_M0"
         ],
         "Server-SB": [
           "Service-Bus-Resource-Provider/SN1"
@@ -424,23 +361,23 @@
           "1195"
         ],
         "x-ms-correlation-request-id": [
-          "040397f9-b60c-4af9-826a-d8c260678806"
+          "ca51099e-3182-4954-bcd2-1e3c40161dd2"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151013T234339Z:040397f9-b60c-4af9-826a-d8c260678806"
+          "WESTUS:20151029T223831Z:ca51099e-3182-4954-bcd2-1e3c40161dd2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Tue, 13 Oct 2015 23:43:38 GMT"
+          "Thu, 29 Oct 2015 22:38:30 GMT"
         ]
       },
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk4978/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk3567/notificationHubs/TestNh?api-version=2014-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs0OTc4L3Byb3ZpZGVycy9NaWNyb3NvZnQuTm90aWZpY2F0aW9uSHVicy9uYW1lc3BhY2VzL05hbWVzcGFjZS1vbmVzZGszNTY3L25vdGlmaWNhdGlvbkh1YnMvVGVzdE5oP2FwaS12ZXJzaW9uPTIwMTQtMDktMDE=",
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk9102/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk695/notificationHubs/TestNh?api-version=2014-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs5MTAyL3Byb3ZpZGVycy9NaWNyb3NvZnQuTm90aWZpY2F0aW9uSHVicy9uYW1lc3BhY2VzL05hbWVzcGFjZS1vbmVzZGs2OTUvbm90aWZpY2F0aW9uSHVicy9UZXN0Tmg/YXBpLXZlcnNpb249MjAxNC0wOS0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"South Central US\",\r\n  \"tags\": {\r\n    \"tag1\": \"Value1\",\r\n    \"tag2\": \"Value2\"\r\n  },\r\n  \"properties\": {\r\n    \"name\": \"TestNh\",\r\n    \"registrationTtl\": \"90.00:00:00\",\r\n    \"wnsCredential\": {\r\n      \"properties\": {\r\n        \"packageSid\": \"ms-app://s-1-15-2-1817505189-427745171-3213743798-2985869298-800724128-1004923984-4143860699\",\r\n        \"secretKey\": \"w7TBprR-9tJxn9mUOdK4PPHLCAzSYFhp\",\r\n        \"windowsLiveEndpoint\": \"http://pushtestservice.cloudapp.net/LiveID/accesstoken.srf\"\r\n      }\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
@@ -472,7 +409,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "9be5121e-41b6-4db2-be67-96569a3b69cc_M2_M2"
+          "1cf75562-f039-4118-bfaf-0e9a0a20f99a_M0_M0"
         ],
         "Server-SB": [
           "Service-Bus-Resource-Provider/SN1"
@@ -488,23 +425,23 @@
           "1192"
         ],
         "x-ms-correlation-request-id": [
-          "2a837d0f-a6a9-4ac5-a5b7-90ac842337b3"
+          "feff9dd2-393d-4fd3-845d-03f8e776b5f7"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151013T234341Z:2a837d0f-a6a9-4ac5-a5b7-90ac842337b3"
+          "WESTUS:20151029T223834Z:feff9dd2-393d-4fd3-845d-03f8e776b5f7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Tue, 13 Oct 2015 23:43:41 GMT"
+          "Thu, 29 Oct 2015 22:38:33 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk4978/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk3567/notificationHubs/TestNh?api-version=2014-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs0OTc4L3Byb3ZpZGVycy9NaWNyb3NvZnQuTm90aWZpY2F0aW9uSHVicy9uYW1lc3BhY2VzL05hbWVzcGFjZS1vbmVzZGszNTY3L25vdGlmaWNhdGlvbkh1YnMvVGVzdE5oP2FwaS12ZXJzaW9uPTIwMTQtMDktMDE=",
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk9102/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk695/notificationHubs/TestNh?api-version=2014-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs5MTAyL3Byb3ZpZGVycy9NaWNyb3NvZnQuTm90aWZpY2F0aW9uSHVicy9uYW1lc3BhY2VzL05hbWVzcGFjZS1vbmVzZGs2OTUvbm90aWZpY2F0aW9uSHVicy9UZXN0Tmg/YXBpLXZlcnNpb249MjAxNC0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -512,10 +449,10 @@
           "Microsoft.Azure.Management.NotificationHubs.NotificationHubsManagementClient/0.9.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk4978/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk3567/notificationHubs/TestNh\",\r\n  \"name\": \"TestNh\",\r\n  \"type\": \"Microsoft.NotificationHubs/namespaces/notificationHubs\",\r\n  \"location\": \"South Central US\",\r\n  \"tags\": {\r\n    \"tag1\": \"Value1\",\r\n    \"tag2\": \"Value2\"\r\n  },\r\n  \"properties\": {\r\n    \"registrationTtl\": \"90.00:00:00\",\r\n    \"authorizationRules\": []\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk9102/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk695/notificationHubs/TestNh\",\r\n  \"name\": \"TestNh\",\r\n  \"type\": \"Microsoft.NotificationHubs/namespaces/notificationHubs\",\r\n  \"location\": \"South Central US\",\r\n  \"tags\": {\r\n    \"tag1\": \"Value1\",\r\n    \"tag2\": \"Value2\"\r\n  },\r\n  \"properties\": {\r\n    \"registrationTtl\": \"90.00:00:00\",\r\n    \"authorizationRules\": []\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "408"
+          "407"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -527,7 +464,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "5ee86c1c-f277-4311-8315-3e5cb60fc7d0_M2_M2"
+          "d294b554-2f32-4b10-b8b8-cb85ba3c996f_M0_M0"
         ],
         "Server-SB": [
           "Service-Bus-Resource-Provider/SN1"
@@ -540,28 +477,28 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14979"
+          "14994"
         ],
         "x-ms-correlation-request-id": [
-          "cfbfd78c-4e15-4d4c-9c47-6ff9dcea57e2"
+          "613dd5f5-2af2-41d5-b2ce-07153f627ea2"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151013T234339Z:cfbfd78c-4e15-4d4c-9c47-6ff9dcea57e2"
+          "WESTUS:20151029T223831Z:613dd5f5-2af2-41d5-b2ce-07153f627ea2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Tue, 13 Oct 2015 23:43:39 GMT"
+          "Thu, 29 Oct 2015 22:38:31 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk4978/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk3567/notificationHubs/NotificationHub-onesdk9344?api-version=2014-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs0OTc4L3Byb3ZpZGVycy9NaWNyb3NvZnQuTm90aWZpY2F0aW9uSHVicy9uYW1lc3BhY2VzL05hbWVzcGFjZS1vbmVzZGszNTY3L25vdGlmaWNhdGlvbkh1YnMvTm90aWZpY2F0aW9uSHViLW9uZXNkazkzNDQ/YXBpLXZlcnNpb249MjAxNC0wOS0wMQ==",
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk9102/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk695/notificationHubs/NotificationHub-onesdk2311?api-version=2014-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs5MTAyL3Byb3ZpZGVycy9NaWNyb3NvZnQuTm90aWZpY2F0aW9uSHVicy9uYW1lc3BhY2VzL05hbWVzcGFjZS1vbmVzZGs2OTUvbm90aWZpY2F0aW9uSHVicy9Ob3RpZmljYXRpb25IdWItb25lc2RrMjMxMT9hcGktdmVyc2lvbj0yMDE0LTA5LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"location\": \"South Central US\",\r\n  \"tags\": {\r\n    \"tag1\": \"Value1\",\r\n    \"tag2\": \"Value2\"\r\n  },\r\n  \"properties\": {\r\n    \"name\": \"NotificationHub-onesdk9344\",\r\n    \"registrationTtl\": \"90.00:00:00\",\r\n    \"wnsCredential\": {\r\n      \"properties\": {\r\n        \"packageSid\": \"ms-app://s-1-15-2-1817505189-427745171-3213743798-2985869298-800724128-1004923984-4143860699\",\r\n        \"secretKey\": \"w7TBprR-9tJxn9mUOdK4PPHLCAzSYFhp\",\r\n        \"windowsLiveEndpoint\": \"http://pushtestservice.cloudapp.net/LiveID/accesstoken.srf\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"location\": \"South Central US\",\r\n  \"tags\": {\r\n    \"tag1\": \"Value1\",\r\n    \"tag2\": \"Value2\"\r\n  },\r\n  \"properties\": {\r\n    \"name\": \"NotificationHub-onesdk2311\",\r\n    \"registrationTtl\": \"90.00:00:00\",\r\n    \"wnsCredential\": {\r\n      \"properties\": {\r\n        \"packageSid\": \"ms-app://s-1-15-2-1817505189-427745171-3213743798-2985869298-800724128-1004923984-4143860699\",\r\n        \"secretKey\": \"w7TBprR-9tJxn9mUOdK4PPHLCAzSYFhp\",\r\n        \"windowsLiveEndpoint\": \"http://pushtestservice.cloudapp.net/LiveID/accesstoken.srf\"\r\n      }\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json"
@@ -588,7 +525,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "e07d0575-06c6-474b-9070-1c934dfa3736_M2_M2"
+          "5f3f1491-133b-4b1e-a325-a4e64e3bddb8_M0_M0"
         ],
         "Server-SB": [
           "Service-Bus-Resource-Provider/SN1"
@@ -604,23 +541,23 @@
           "1194"
         ],
         "x-ms-correlation-request-id": [
-          "fe91378c-be04-4f27-a780-11e35acb32e5"
+          "5839de80-c22e-4f8b-83cd-60b456004111"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151013T234340Z:fe91378c-be04-4f27-a780-11e35acb32e5"
+          "WESTUS:20151029T223833Z:5839de80-c22e-4f8b-83cd-60b456004111"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Tue, 13 Oct 2015 23:43:40 GMT"
+          "Thu, 29 Oct 2015 22:38:32 GMT"
         ]
       },
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk4978/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk3567/notificationHubs/NotificationHub-onesdk9344/pnsCredentials?api-version=2014-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs0OTc4L3Byb3ZpZGVycy9NaWNyb3NvZnQuTm90aWZpY2F0aW9uSHVicy9uYW1lc3BhY2VzL05hbWVzcGFjZS1vbmVzZGszNTY3L25vdGlmaWNhdGlvbkh1YnMvTm90aWZpY2F0aW9uSHViLW9uZXNkazkzNDQvcG5zQ3JlZGVudGlhbHM/YXBpLXZlcnNpb249MjAxNC0wOS0wMQ==",
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk9102/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk695/notificationHubs/NotificationHub-onesdk2311/pnsCredentials?api-version=2014-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs5MTAyL3Byb3ZpZGVycy9NaWNyb3NvZnQuTm90aWZpY2F0aW9uSHVicy9uYW1lc3BhY2VzL05hbWVzcGFjZS1vbmVzZGs2OTUvbm90aWZpY2F0aW9uSHVicy9Ob3RpZmljYXRpb25IdWItb25lc2RrMjMxMS9wbnNDcmVkZW50aWFscz9hcGktdmVyc2lvbj0yMDE0LTA5LTAx",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
@@ -628,10 +565,10 @@
           "Microsoft.Azure.Management.NotificationHubs.NotificationHubsManagementClient/0.9.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk4978/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk3567/notificationHubs/NotificationHub-onesdk9344/pnsCredentials\",\r\n  \"name\": \"NotificationHub-onesdk9344\",\r\n  \"type\": \"Microsoft.NotificationHubs/namespaces/notificationHubs/pnsCredentials\",\r\n  \"location\": null,\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"wnsCredential\": {\r\n      \"properties\": {\r\n        \"packageSid\": \"ms-app://s-1-15-2-1817505189-427745171-3213743798-2985869298-800724128-1004923984-4143860699\",\r\n        \"secretKey\": \"w7TBprR-9tJxn9mUOdK4PPHLCAzSYFhp\",\r\n        \"windowsLiveEndpoint\": \"http://pushtestservice.cloudapp.net/LiveID/accesstoken.srf\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk9102/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk695/notificationHubs/NotificationHub-onesdk2311/pnsCredentials\",\r\n  \"name\": \"NotificationHub-onesdk2311\",\r\n  \"type\": \"Microsoft.NotificationHubs/namespaces/notificationHubs/pnsCredentials\",\r\n  \"location\": null,\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"wnsCredential\": {\r\n      \"properties\": {\r\n        \"packageSid\": \"ms-app://s-1-15-2-1817505189-427745171-3213743798-2985869298-800724128-1004923984-4143860699\",\r\n        \"secretKey\": \"w7TBprR-9tJxn9mUOdK4PPHLCAzSYFhp\",\r\n        \"windowsLiveEndpoint\": \"http://pushtestservice.cloudapp.net/LiveID/accesstoken.srf\"\r\n      }\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "650"
+          "649"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -643,7 +580,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "3dbba3ce-65cd-4618-9892-b34e750d7c70_M2_M2"
+          "7de68435-c171-4ab4-a306-c786fcbd5e72_M0_M0"
         ],
         "Server-SB": [
           "Service-Bus-Resource-Provider/SN1"
@@ -659,23 +596,23 @@
           "1193"
         ],
         "x-ms-correlation-request-id": [
-          "2b51dc9f-a190-4e3a-9004-929acbe581cd"
+          "ac6a2c7b-79c3-452c-83d3-2d1064c11e05"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151013T234340Z:2b51dc9f-a190-4e3a-9004-929acbe581cd"
+          "WESTUS:20151029T223833Z:ac6a2c7b-79c3-452c-83d3-2d1064c11e05"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Tue, 13 Oct 2015 23:43:40 GMT"
+          "Thu, 29 Oct 2015 22:38:32 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk4978/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk3567/notificationHubs?api-version=2014-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs0OTc4L3Byb3ZpZGVycy9NaWNyb3NvZnQuTm90aWZpY2F0aW9uSHVicy9uYW1lc3BhY2VzL05hbWVzcGFjZS1vbmVzZGszNTY3L25vdGlmaWNhdGlvbkh1YnM/YXBpLXZlcnNpb249MjAxNC0wOS0wMQ==",
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk9102/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk695/notificationHubs?api-version=2014-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs5MTAyL3Byb3ZpZGVycy9NaWNyb3NvZnQuTm90aWZpY2F0aW9uSHVicy9uYW1lc3BhY2VzL05hbWVzcGFjZS1vbmVzZGs2OTUvbm90aWZpY2F0aW9uSHVicz9hcGktdmVyc2lvbj0yMDE0LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -683,10 +620,10 @@
           "Microsoft.Azure.Management.NotificationHubs.NotificationHubsManagementClient/0.9.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk4978/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk3567/notificationHubs/notificationhub-onesdk9344\",\r\n      \"name\": \"notificationhub-onesdk9344\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces/notificationHubs\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": {\r\n        \"tag1\": \"Value1\",\r\n        \"tag2\": \"Value2\"\r\n      },\r\n      \"properties\": {\r\n        \"registrationTtl\": \"90.00:00:00\",\r\n        \"authorizationRules\": []\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk4978/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk3567/notificationHubs/testnh\",\r\n      \"name\": \"testnh\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces/notificationHubs\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": {\r\n        \"tag1\": \"Value1\",\r\n        \"tag2\": \"Value2\"\r\n      },\r\n      \"properties\": {\r\n        \"registrationTtl\": \"90.00:00:00\",\r\n        \"authorizationRules\": []\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk9102/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk695/notificationHubs/notificationhub-onesdk2311\",\r\n      \"name\": \"notificationhub-onesdk2311\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces/notificationHubs\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": {\r\n        \"tag1\": \"Value1\",\r\n        \"tag2\": \"Value2\"\r\n      },\r\n      \"properties\": {\r\n        \"registrationTtl\": \"90.00:00:00\",\r\n        \"authorizationRules\": []\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk9102/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk695/notificationHubs/testnh\",\r\n      \"name\": \"testnh\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces/notificationHubs\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": {\r\n        \"tag1\": \"Value1\",\r\n        \"tag2\": \"Value2\"\r\n      },\r\n      \"properties\": {\r\n        \"registrationTtl\": \"90.00:00:00\",\r\n        \"authorizationRules\": []\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "885"
+          "883"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -698,7 +635,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "2058a84a-b9df-42d7-ac6a-1805626456d1_M2_M2"
+          "284c957d-b6d8-4025-9c1b-ea67c0788a73_M0_M0"
         ],
         "Server-SB": [
           "Service-Bus-Resource-Provider/SN1"
@@ -711,26 +648,26 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14978"
+          "14993"
         ],
         "x-ms-correlation-request-id": [
-          "0431152a-6bae-4b59-a512-bea27ea1320c"
+          "0882fb94-525a-4873-9cb4-6b9b746ce4da"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151013T234341Z:0431152a-6bae-4b59-a512-bea27ea1320c"
+          "WESTUS:20151029T223834Z:0882fb94-525a-4873-9cb4-6b9b746ce4da"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Tue, 13 Oct 2015 23:43:41 GMT"
+          "Thu, 29 Oct 2015 22:38:33 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk4978/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk3567/notificationHubs/TestNh/pnsCredentials?api-version=2014-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs0OTc4L3Byb3ZpZGVycy9NaWNyb3NvZnQuTm90aWZpY2F0aW9uSHVicy9uYW1lc3BhY2VzL05hbWVzcGFjZS1vbmVzZGszNTY3L25vdGlmaWNhdGlvbkh1YnMvVGVzdE5oL3Buc0NyZWRlbnRpYWxzP2FwaS12ZXJzaW9uPTIwMTQtMDktMDE=",
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk9102/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk695/notificationHubs/TestNh/pnsCredentials?api-version=2014-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs5MTAyL3Byb3ZpZGVycy9NaWNyb3NvZnQuTm90aWZpY2F0aW9uSHVicy9uYW1lc3BhY2VzL05hbWVzcGFjZS1vbmVzZGs2OTUvbm90aWZpY2F0aW9uSHVicy9UZXN0TmgvcG5zQ3JlZGVudGlhbHM/YXBpLXZlcnNpb249MjAxNC0wOS0wMQ==",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
@@ -738,10 +675,10 @@
           "Microsoft.Azure.Management.NotificationHubs.NotificationHubsManagementClient/0.9.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk4978/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk3567/notificationHubs/TestNh/pnsCredentials\",\r\n  \"name\": \"TestNh\",\r\n  \"type\": \"Microsoft.NotificationHubs/namespaces/notificationHubs/pnsCredentials\",\r\n  \"location\": null,\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"wnsCredential\": {\r\n      \"properties\": {\r\n        \"packageSid\": \"ms-app://s-1-15-2-1817505189-427745171-3213743798-2985869298-800724128-1004923984-4143860699\",\r\n        \"secretKey\": \"w7TBprR-9tJxn9mUOdK4PPHLCAzSYFhp\",\r\n        \"windowsLiveEndpoint\": \"http://pushtestservice.cloudapp.net/LiveID/accesstoken.srf\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk9102/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk695/notificationHubs/TestNh/pnsCredentials\",\r\n  \"name\": \"TestNh\",\r\n  \"type\": \"Microsoft.NotificationHubs/namespaces/notificationHubs/pnsCredentials\",\r\n  \"location\": null,\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"wnsCredential\": {\r\n      \"properties\": {\r\n        \"packageSid\": \"ms-app://s-1-15-2-1817505189-427745171-3213743798-2985869298-800724128-1004923984-4143860699\",\r\n        \"secretKey\": \"w7TBprR-9tJxn9mUOdK4PPHLCAzSYFhp\",\r\n        \"windowsLiveEndpoint\": \"http://pushtestservice.cloudapp.net/LiveID/accesstoken.srf\"\r\n      }\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "610"
+          "609"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -753,7 +690,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "30816f0a-9073-44d0-9cb7-869ac7a5e19b_M2_M2"
+          "9e4ebbf4-3eb7-4e37-a48c-f7b7ef713540_M0_M0"
         ],
         "Server-SB": [
           "Service-Bus-Resource-Provider/SN1"
@@ -769,23 +706,23 @@
           "1191"
         ],
         "x-ms-correlation-request-id": [
-          "655a1d33-ad60-48da-84d9-1456ef67db48"
+          "c12d4cbd-a832-49b4-a558-3310088f973e"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151013T234356Z:655a1d33-ad60-48da-84d9-1456ef67db48"
+          "WESTUS:20151029T223849Z:c12d4cbd-a832-49b4-a558-3310088f973e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Tue, 13 Oct 2015 23:43:55 GMT"
+          "Thu, 29 Oct 2015 22:38:48 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk4978/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk3567/notificationHubs/TestNh?api-version=2014-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs0OTc4L3Byb3ZpZGVycy9NaWNyb3NvZnQuTm90aWZpY2F0aW9uSHVicy9uYW1lc3BhY2VzL05hbWVzcGFjZS1vbmVzZGszNTY3L25vdGlmaWNhdGlvbkh1YnMvVGVzdE5oP2FwaS12ZXJzaW9uPTIwMTQtMDktMDE=",
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk9102/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk695/notificationHubs/TestNh?api-version=2014-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs5MTAyL3Byb3ZpZGVycy9NaWNyb3NvZnQuTm90aWZpY2F0aW9uSHVicy9uYW1lc3BhY2VzL05hbWVzcGFjZS1vbmVzZGs2OTUvbm90aWZpY2F0aW9uSHVicy9UZXN0Tmg/YXBpLXZlcnNpb249MjAxNC0wOS0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
@@ -805,7 +742,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "3a41fb4d-8d80-4fe0-a216-57a2366fee8d_M2_M2"
+          "75ad1743-be4b-4b79-b9d2-79622a02475d_M0_M0"
         ],
         "Server-SB": [
           "Service-Bus-Resource-Provider/SN1"
@@ -821,23 +758,23 @@
           "1190"
         ],
         "x-ms-correlation-request-id": [
-          "4218aa14-d785-4a34-9795-eca587b2162b"
+          "1d0d95b4-35c5-4e1f-bf0b-4c8638882e9d"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151013T234358Z:4218aa14-d785-4a34-9795-eca587b2162b"
+          "WESTUS:20151029T223851Z:1d0d95b4-35c5-4e1f-bf0b-4c8638882e9d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Tue, 13 Oct 2015 23:43:58 GMT"
+          "Thu, 29 Oct 2015 22:38:50 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk4978/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk3567/notificationHubs/NotificationHub-onesdk9344?api-version=2014-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs0OTc4L3Byb3ZpZGVycy9NaWNyb3NvZnQuTm90aWZpY2F0aW9uSHVicy9uYW1lc3BhY2VzL05hbWVzcGFjZS1vbmVzZGszNTY3L25vdGlmaWNhdGlvbkh1YnMvTm90aWZpY2F0aW9uSHViLW9uZXNkazkzNDQ/YXBpLXZlcnNpb249MjAxNC0wOS0wMQ==",
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk9102/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk695/notificationHubs/NotificationHub-onesdk2311?api-version=2014-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs5MTAyL3Byb3ZpZGVycy9NaWNyb3NvZnQuTm90aWZpY2F0aW9uSHVicy9uYW1lc3BhY2VzL05hbWVzcGFjZS1vbmVzZGs2OTUvbm90aWZpY2F0aW9uSHVicy9Ob3RpZmljYXRpb25IdWItb25lc2RrMjMxMT9hcGktdmVyc2lvbj0yMDE0LTA5LTAx",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
@@ -857,7 +794,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "555b6b9e-7fb0-489b-84fb-07d746a81f81_M2_M2"
+          "70a2904f-adfe-4464-8edd-68f8b818f01f_M0_M0"
         ],
         "Server-SB": [
           "Service-Bus-Resource-Provider/SN1"
@@ -873,23 +810,23 @@
           "1189"
         ],
         "x-ms-correlation-request-id": [
-          "d8fec8d7-a201-4285-b79a-3d6e70be0b74"
+          "c7a6a226-a87f-4889-a868-be08308491a1"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151013T234410Z:d8fec8d7-a201-4285-b79a-3d6e70be0b74"
+          "WESTUS:20151029T223853Z:c7a6a226-a87f-4889-a868-be08308491a1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Tue, 13 Oct 2015 23:44:10 GMT"
+          "Thu, 29 Oct 2015 22:38:53 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk4978/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk3567?api-version=2014-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs0OTc4L3Byb3ZpZGVycy9NaWNyb3NvZnQuTm90aWZpY2F0aW9uSHVicy9uYW1lc3BhY2VzL05hbWVzcGFjZS1vbmVzZGszNTY3P2FwaS12ZXJzaW9uPTIwMTQtMDktMDE=",
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk9102/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk695?api-version=2014-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs5MTAyL3Byb3ZpZGVycy9NaWNyb3NvZnQuTm90aWZpY2F0aW9uSHVicy9uYW1lc3BhY2VzL05hbWVzcGFjZS1vbmVzZGs2OTU/YXBpLXZlcnNpb249MjAxNC0wOS0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
@@ -909,7 +846,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "599081e1-f03a-4600-933a-6c0cb665f324_M0_M0"
+          "c296575e-458a-4a32-ae31-5a494546261b_M0_M0"
         ],
         "Server-SB": [
           "Service-Bus-Resource-Provider/SN1"
@@ -918,7 +855,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk4978/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk3567/operationresults/Namespace-onesdk3567?api-version=2014-09-01"
+          "https://management.azure.com/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk9102/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk695/operationresults/Namespace-onesdk695?api-version=2014-09-01"
         ],
         "Server": [
           "Service-Bus-Resource-Provider/SN1",
@@ -928,23 +865,23 @@
           "1188"
         ],
         "x-ms-correlation-request-id": [
-          "7a7f20d7-2e25-457a-9dd2-8d9b002b5de6"
+          "6289fe6e-0254-47a0-8502-fad086939055"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151013T234411Z:7a7f20d7-2e25-457a-9dd2-8d9b002b5de6"
+          "WESTUS:20151029T223853Z:6289fe6e-0254-47a0-8502-fad086939055"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Tue, 13 Oct 2015 23:44:11 GMT"
+          "Thu, 29 Oct 2015 22:38:53 GMT"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk4978/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk3567/operationresults/Namespace-onesdk3567?api-version=2014-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs0OTc4L3Byb3ZpZGVycy9NaWNyb3NvZnQuTm90aWZpY2F0aW9uSHVicy9uYW1lc3BhY2VzL05hbWVzcGFjZS1vbmVzZGszNTY3L29wZXJhdGlvbnJlc3VsdHMvTmFtZXNwYWNlLW9uZXNkazM1Njc/YXBpLXZlcnNpb249MjAxNC0wOS0wMQ==",
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk9102/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk695/operationresults/Namespace-onesdk695?api-version=2014-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs5MTAyL3Byb3ZpZGVycy9NaWNyb3NvZnQuTm90aWZpY2F0aW9uSHVicy9uYW1lc3BhY2VzL05hbWVzcGFjZS1vbmVzZGs2OTUvb3BlcmF0aW9ucmVzdWx0cy9OYW1lc3BhY2Utb25lc2RrNjk1P2FwaS12ZXJzaW9uPTIwMTQtMDktMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -967,7 +904,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "60ca6c75-c847-458f-b9f6-e4e352b73058_M0_M0"
+          "40b4d555-52f6-4524-af03-39a904b70c81_M0_M0"
         ],
         "Server-SB": [
           "Service-Bus-Resource-Provider/SN1"
@@ -976,33 +913,33 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk4978/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk3567/operationresults/Namespace-onesdk3567?api-version=2014-09-01"
+          "https://management.azure.com/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk9102/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk695/operationresults/Namespace-onesdk695?api-version=2014-09-01"
         ],
         "Server": [
           "Service-Bus-Resource-Provider/SN1",
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14977"
+          "14992"
         ],
         "x-ms-correlation-request-id": [
-          "8860b413-4254-4666-a656-8052f2983f4a"
+          "a15948a0-f20c-416f-a6aa-dc7656cfdd22"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151013T234411Z:8860b413-4254-4666-a656-8052f2983f4a"
+          "WESTUS:20151029T223853Z:a15948a0-f20c-416f-a6aa-dc7656cfdd22"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Tue, 13 Oct 2015 23:44:11 GMT"
+          "Thu, 29 Oct 2015 22:38:53 GMT"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk4978/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk3567/operationresults/Namespace-onesdk3567?api-version=2014-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs0OTc4L3Byb3ZpZGVycy9NaWNyb3NvZnQuTm90aWZpY2F0aW9uSHVicy9uYW1lc3BhY2VzL05hbWVzcGFjZS1vbmVzZGszNTY3L29wZXJhdGlvbnJlc3VsdHMvTmFtZXNwYWNlLW9uZXNkazM1Njc/YXBpLXZlcnNpb249MjAxNC0wOS0wMQ==",
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk9102/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk695/operationresults/Namespace-onesdk695?api-version=2014-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs5MTAyL3Byb3ZpZGVycy9NaWNyb3NvZnQuTm90aWZpY2F0aW9uSHVicy9uYW1lc3BhY2VzL05hbWVzcGFjZS1vbmVzZGs2OTUvb3BlcmF0aW9ucmVzdWx0cy9OYW1lc3BhY2Utb25lc2RrNjk1P2FwaS12ZXJzaW9uPTIwMTQtMDktMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1013,10 +950,10 @@
           "Microsoft.Azure.Management.NotificationHubs.NotificationHubsManagementClient/0.9.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.NotificationHubs/namespaces/Namespace-onesdk3567' under resource group 'RGName-onesdk4978' was not found.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.NotificationHubs/namespaces/Namespace-onesdk695' under resource group 'RGName-onesdk9102' was not found.\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "179"
+          "178"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1031,13 +968,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "25d1fac8-e213-4e40-835f-06d5a4c41721"
+          "1bf80a63-985f-42ce-85d4-6901c955fa02"
         ],
         "x-ms-correlation-request-id": [
-          "25d1fac8-e213-4e40-835f-06d5a4c41721"
+          "1bf80a63-985f-42ce-85d4-6901c955fa02"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151013T234511Z:25d1fac8-e213-4e40-835f-06d5a4c41721"
+          "WESTUS:20151029T223953Z:1bf80a63-985f-42ce-85d4-6901c955fa02"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1046,14 +983,14 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 13 Oct 2015 23:45:11 GMT"
+          "Thu, 29 Oct 2015 22:39:52 GMT"
         ]
       },
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourcegroups/RGName-onesdk4978?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlZ3JvdXBzL1JHTmFtZS1vbmVzZGs0OTc4P2FwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourcegroups/RGName-onesdk9102?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlZ3JvdXBzL1JHTmFtZS1vbmVzZGs5MTAyP2FwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1076,16 +1013,16 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1181"
+          "1198"
         ],
         "x-ms-request-id": [
-          "4ab64482-b0d0-4265-b9ed-ff88f9e2dc26"
+          "1cb24a82-8d75-4f5a-adbc-390e76955e23"
         ],
         "x-ms-correlation-request-id": [
-          "4ab64482-b0d0-4265-b9ed-ff88f9e2dc26"
+          "1cb24a82-8d75-4f5a-adbc-390e76955e23"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151013T234512Z:4ab64482-b0d0-4265-b9ed-ff88f9e2dc26"
+          "WESTUS:20151029T223955Z:1cb24a82-8d75-4f5a-adbc-390e76955e23"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1094,17 +1031,17 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 13 Oct 2015 23:45:12 GMT"
+          "Thu, 29 Oct 2015 22:39:54 GMT"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREs0OTc4LVNPVVRIQ0VOVFJBTFVTIiwiam9iTG9jYXRpb24iOiJzb3V0aGNlbnRyYWx1cyJ9?api-version=2014-04-01-preview"
+          "https://management.azure.com/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREs5MTAyLVNPVVRIQ0VOVFJBTFVTIiwiam9iTG9jYXRpb24iOiJzb3V0aGNlbnRyYWx1cyJ9?api-version=2014-04-01-preview"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREs0OTc4LVNPVVRIQ0VOVFJBTFVTIiwiam9iTG9jYXRpb24iOiJzb3V0aGNlbnRyYWx1cyJ9?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFTUjA1QlRVVTZNa1JQVGtWVFJFczBPVGM0TFZOUFZWUklRMFZPVkZKQlRGVlRJaXdpYW05aVRHOWpZWFJwYjI0aU9pSnpiM1YwYUdObGJuUnlZV3gxY3lKOT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREs5MTAyLVNPVVRIQ0VOVFJBTFVTIiwiam9iTG9jYXRpb24iOiJzb3V0aGNlbnRyYWx1cyJ9?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFTUjA1QlRVVTZNa1JQVGtWVFJFczVNVEF5TFZOUFZWUklRMFZPVkZKQlRGVlRJaXdpYW05aVRHOWpZWFJwYjI0aU9pSnpiM1YwYUdObGJuUnlZV3gxY3lKOT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1130,16 +1067,16 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14967"
+          "14988"
         ],
         "x-ms-request-id": [
-          "f0a41c50-a747-4eef-a2ed-a37bd0cbeecc"
+          "9ad4ca7f-511b-4818-bfbb-115769ab6a6c"
         ],
         "x-ms-correlation-request-id": [
-          "f0a41c50-a747-4eef-a2ed-a37bd0cbeecc"
+          "9ad4ca7f-511b-4818-bfbb-115769ab6a6c"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151013T234513Z:f0a41c50-a747-4eef-a2ed-a37bd0cbeecc"
+          "WESTUS:20151029T223955Z:9ad4ca7f-511b-4818-bfbb-115769ab6a6c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1148,17 +1085,17 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 13 Oct 2015 23:45:12 GMT"
+          "Thu, 29 Oct 2015 22:39:54 GMT"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREs0OTc4LVNPVVRIQ0VOVFJBTFVTIiwiam9iTG9jYXRpb24iOiJzb3V0aGNlbnRyYWx1cyJ9?api-version=2014-04-01-preview"
+          "https://management.azure.com/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREs5MTAyLVNPVVRIQ0VOVFJBTFVTIiwiam9iTG9jYXRpb24iOiJzb3V0aGNlbnRyYWx1cyJ9?api-version=2014-04-01-preview"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREs0OTc4LVNPVVRIQ0VOVFJBTFVTIiwiam9iTG9jYXRpb24iOiJzb3V0aGNlbnRyYWx1cyJ9?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFTUjA1QlRVVTZNa1JQVGtWVFJFczBPVGM0TFZOUFZWUklRMFZPVkZKQlRGVlRJaXdpYW05aVRHOWpZWFJwYjI0aU9pSnpiM1YwYUdObGJuUnlZV3gxY3lKOT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREs5MTAyLVNPVVRIQ0VOVFJBTFVTIiwiam9iTG9jYXRpb24iOiJzb3V0aGNlbnRyYWx1cyJ9?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFTUjA1QlRVVTZNa1JQVGtWVFJFczVNVEF5TFZOUFZWUklRMFZPVkZKQlRGVlRJaXdpYW05aVRHOWpZWFJwYjI0aU9pSnpiM1YwYUdObGJuUnlZV3gxY3lKOT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1184,16 +1121,16 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14966"
+          "14989"
         ],
         "x-ms-request-id": [
-          "676fb6bc-dc0b-4c43-8e1d-6748c92ec77b"
+          "db467334-630f-4a15-855e-57895cd71d65"
         ],
         "x-ms-correlation-request-id": [
-          "676fb6bc-dc0b-4c43-8e1d-6748c92ec77b"
+          "db467334-630f-4a15-855e-57895cd71d65"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151013T234528Z:676fb6bc-dc0b-4c43-8e1d-6748c92ec77b"
+          "WESTUS:20151029T224010Z:db467334-630f-4a15-855e-57895cd71d65"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1202,17 +1139,17 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 13 Oct 2015 23:45:27 GMT"
+          "Thu, 29 Oct 2015 22:40:10 GMT"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREs0OTc4LVNPVVRIQ0VOVFJBTFVTIiwiam9iTG9jYXRpb24iOiJzb3V0aGNlbnRyYWx1cyJ9?api-version=2014-04-01-preview"
+          "https://management.azure.com/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREs5MTAyLVNPVVRIQ0VOVFJBTFVTIiwiam9iTG9jYXRpb24iOiJzb3V0aGNlbnRyYWx1cyJ9?api-version=2014-04-01-preview"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREs0OTc4LVNPVVRIQ0VOVFJBTFVTIiwiam9iTG9jYXRpb24iOiJzb3V0aGNlbnRyYWx1cyJ9?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFTUjA1QlRVVTZNa1JQVGtWVFJFczBPVGM0TFZOUFZWUklRMFZPVkZKQlRGVlRJaXdpYW05aVRHOWpZWFJwYjI0aU9pSnpiM1YwYUdObGJuUnlZV3gxY3lKOT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREs5MTAyLVNPVVRIQ0VOVFJBTFVTIiwiam9iTG9jYXRpb24iOiJzb3V0aGNlbnRyYWx1cyJ9?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFTUjA1QlRVVTZNa1JQVGtWVFJFczVNVEF5TFZOUFZWUklRMFZPVkZKQlRGVlRJaXdpYW05aVRHOWpZWFJwYjI0aU9pSnpiM1YwYUdObGJuUnlZV3gxY3lKOT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1238,16 +1175,16 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14965"
+          "14988"
         ],
         "x-ms-request-id": [
-          "b33f65e9-d295-476f-84f7-8dfea4670571"
+          "3b90bdfb-fb04-45cb-859d-88f9e6f04c1f"
         ],
         "x-ms-correlation-request-id": [
-          "b33f65e9-d295-476f-84f7-8dfea4670571"
+          "3b90bdfb-fb04-45cb-859d-88f9e6f04c1f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151013T234543Z:b33f65e9-d295-476f-84f7-8dfea4670571"
+          "WESTUS:20151029T224025Z:3b90bdfb-fb04-45cb-859d-88f9e6f04c1f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1256,17 +1193,17 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 13 Oct 2015 23:45:42 GMT"
+          "Thu, 29 Oct 2015 22:40:25 GMT"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREs0OTc4LVNPVVRIQ0VOVFJBTFVTIiwiam9iTG9jYXRpb24iOiJzb3V0aGNlbnRyYWx1cyJ9?api-version=2014-04-01-preview"
+          "https://management.azure.com/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREs5MTAyLVNPVVRIQ0VOVFJBTFVTIiwiam9iTG9jYXRpb24iOiJzb3V0aGNlbnRyYWx1cyJ9?api-version=2014-04-01-preview"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREs0OTc4LVNPVVRIQ0VOVFJBTFVTIiwiam9iTG9jYXRpb24iOiJzb3V0aGNlbnRyYWx1cyJ9?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFTUjA1QlRVVTZNa1JQVGtWVFJFczBPVGM0TFZOUFZWUklRMFZPVkZKQlRGVlRJaXdpYW05aVRHOWpZWFJwYjI0aU9pSnpiM1YwYUdObGJuUnlZV3gxY3lKOT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREs5MTAyLVNPVVRIQ0VOVFJBTFVTIiwiam9iTG9jYXRpb24iOiJzb3V0aGNlbnRyYWx1cyJ9?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFTUjA1QlRVVTZNa1JQVGtWVFJFczVNVEF5TFZOUFZWUklRMFZPVkZKQlRGVlRJaXdpYW05aVRHOWpZWFJwYjI0aU9pSnpiM1YwYUdObGJuUnlZV3gxY3lKOT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1289,16 +1226,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14964"
+          "14987"
         ],
         "x-ms-request-id": [
-          "5c974928-c3ec-4957-a340-743268700d66"
+          "1fbfdc3f-6bb3-404a-b259-69ebede2295a"
         ],
         "x-ms-correlation-request-id": [
-          "5c974928-c3ec-4957-a340-743268700d66"
+          "1fbfdc3f-6bb3-404a-b259-69ebede2295a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151013T234558Z:5c974928-c3ec-4957-a340-743268700d66"
+          "WESTUS:20151029T224040Z:1fbfdc3f-6bb3-404a-b259-69ebede2295a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1307,7 +1244,7 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 13 Oct 2015 23:45:58 GMT"
+          "Thu, 29 Oct 2015 22:40:40 GMT"
         ]
       },
       "StatusCode": 200
@@ -1315,9 +1252,9 @@
   ],
   "Names": {
     "Test-CRUDNotificationHub": [
-      "onesdk4978",
-      "onesdk3567",
-      "onesdk9344"
+      "onesdk9102",
+      "onesdk695",
+      "onesdk2311"
     ]
   },
   "Variables": {

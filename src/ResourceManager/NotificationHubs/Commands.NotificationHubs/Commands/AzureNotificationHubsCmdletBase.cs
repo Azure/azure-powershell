@@ -105,8 +105,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands
             if (!string.IsNullOrEmpty(InputFile))
             {
                 string fileName = this.TryResolvePath(InputFile);
-                //if (!(new FileInfo(fileName)).Exists)
-                if (!AzureSession.DataStore.FileExists(fileName))
+                if (!(new FileInfo(fileName)).Exists)
                 {
                     throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, Resources.FileDoesNotExist, fileName));
                 }
