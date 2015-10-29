@@ -34,37 +34,42 @@ namespace Microsoft.Azure.Commands.Profile
     [OutputType(typeof(PSAzureProfile))]
     public class AddAzureRMAccountCommand : AzureRMCmdlet , IModuleAssemblyInitializer
     {
+        private const string UserParameterSet = "User";
+        private const string ServicePrincipalParameterSet = "ServicePrincipal";
+        private const string ServicePrincipalCertificateParameterSet = "ServicePrincipalCertificate";
+        private const string AccessTokenParameterSet = "AccessToken";
+
         [Parameter(Mandatory = false, HelpMessage = "Environment containing the account to log into")]
         [ValidateNotNullOrEmpty]
         public AzureEnvironment Environment { get; set; }
 
-        [Parameter(ParameterSetName = "User", Mandatory = false, HelpMessage = "Optional credential")]
-        [Parameter(ParameterSetName = "ServicePrincipal", Mandatory = true, HelpMessage = "Credential")]
+        [Parameter(ParameterSetName = UserParameterSet, Mandatory = false, HelpMessage = "Optional credential")]
+        [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = true, HelpMessage = "Credential")]
         public PSCredential Credential { get; set; }
 
-        [Parameter(ParameterSetName = "ServicePrincipalCertificate", Mandatory = true, HelpMessage = "Certificate Hash (Thumbprint)")]
+        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, Mandatory = true, HelpMessage = "Certificate Hash (Thumbprint)")]
         public string CertificateThumbprint { get; set; }
 
-        [Parameter(ParameterSetName = "ServicePrincipalCertificate", Mandatory = true, HelpMessage = "SPN")]
+        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, Mandatory = true, HelpMessage = "SPN")]
         public string ApplicationId { get; set; }
 
-        [Parameter(ParameterSetName = "ServicePrincipal", Mandatory = true)]
-        [Parameter(ParameterSetName = "ServicePrincipalCertificate", Mandatory = true)]
+        [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = true)]
+        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, Mandatory = true)]
         public SwitchParameter ServicePrincipal { get; set; }
 
-        [Parameter(ParameterSetName = "User", Mandatory = false, HelpMessage = "Optional tenant name or ID")]
-        [Parameter(ParameterSetName = "ServicePrincipal", Mandatory = true, HelpMessage = "TenantId name or ID")]
-        [Parameter(ParameterSetName = "AccessToken", Mandatory = false, HelpMessage = "TenantId name or ID")]
-        [Parameter(ParameterSetName = "ServicePrincipalCertificate", Mandatory = true, HelpMessage = "TenantId name or ID")]
+        [Parameter(ParameterSetName = UserParameterSet, Mandatory = false, HelpMessage = "Optional tenant name or ID")]
+        [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = true, HelpMessage = "TenantId name or ID")]
+        [Parameter(ParameterSetName = AccessTokenParameterSet, Mandatory = false, HelpMessage = "TenantId name or ID")]
+        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, Mandatory = true, HelpMessage = "TenantId name or ID")]
+        [Alias("Domain")]
         [ValidateNotNullOrEmpty]
-        [Alias("Tenant")]
         public string TenantId { get; set; }
 
-        [Parameter(ParameterSetName = "AccessToken", Mandatory = true, HelpMessage = "AccessToken")]
+        [Parameter(ParameterSetName = AccessTokenParameterSet, Mandatory = true, HelpMessage = "AccessToken")]
         [ValidateNotNullOrEmpty]
         public string AccessToken { get; set; }
 
-        [Parameter(ParameterSetName = "AccessToken", Mandatory = true, HelpMessage = "Account Id for access token")]
+        [Parameter(ParameterSetName = AccessTokenParameterSet, Mandatory = true, HelpMessage = "Account Id for access token")]
         [ValidateNotNullOrEmpty]
         public string AccountId { get; set; }
 
@@ -95,13 +100,15 @@ namespace Microsoft.Azure.Commands.Profile
 
         protected override void ProcessRecord()
         {
-            if (SubscriptionId != null && SubscriptionName != null)
+            if (!string.IsNullOrWhiteSpace(SubscriptionId) && 
+                !string.IsNullOrWhiteSpace(SubscriptionName))
             {
                 throw new PSInvalidOperationException(Resources.BothSubscriptionIdAndNameProvided);
             }
 
             Guid subscrptionIdGuid;
-            if (SubscriptionId != null && !Guid.TryParse(SubscriptionId, out subscrptionIdGuid))
+            if (!string.IsNullOrWhiteSpace(SubscriptionId) && 
+                !Guid.TryParse(SubscriptionId, out subscrptionIdGuid))
             {
                 throw new PSInvalidOperationException(Resources.InvalidSubscriptionId);
             }

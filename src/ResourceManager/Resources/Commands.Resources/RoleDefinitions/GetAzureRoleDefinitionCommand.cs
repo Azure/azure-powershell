@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
+using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -34,7 +35,7 @@ namespace Microsoft.Azure.Commands.Resources
 
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionId,
             HelpMessage = "Role definition id.")]
-        [ValidateNotNullOrEmpty]
+        [ValidateGuidNotEmpty]
         public Guid Id { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionCustom,

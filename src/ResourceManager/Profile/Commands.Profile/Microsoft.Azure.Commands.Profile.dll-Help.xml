@@ -16,7 +16,7 @@
     </command:details>
     <maml:description>
       <maml:para>NOTE THAT THIS CMDLET AUTHENTICATES ONLY AZURE RESOURCE MANAGER CMDLETS.  SERVICE MANAGEMENT CMDLETS MUST BE SEPARATELY AUTHENTICATED USING THE ADD-AZUREACCOUNT OR IMPORT-AZUREPUBLISHSETTINGSFILE CMDLETS.</maml:para>
-      <maml:para>Log in to Azure Resource manager to provide authentication for management cmdlets.  Microsoft Account (Live Id) and Oragnization Id credentials may be provided through the dialog prompt.  Organizational ID and Service Principal credentials may be provided through a -Credential parameter.  Access Token credentials may be provided through the AccessToken credential.  By default, user is authenticated agains all available teants.  The TenantIdId parameter may be provided to streamline authentication when access to only a single teant is needed.  The SubscriptionId parameter may be provided to select a particular subscription by default, otherwise the first listed subscription will be selected.</maml:para>
+      <maml:para>Log in to Azure Resource manager to provide authentication for management cmdlets.  Microsoft Account (Live Id) and Organization Id credentials may be provided through the dialog prompt.  Organizational ID and Service Principal credentials may be provided through a -Credential parameter.  Access Token credentials may be provided through the AccessToken credential.  By default, user is authenticated against all available tenants.  The TenantId parameter may be provided to streamline authentication when access to only a single tenant is needed.  The SubscriptionId parameter may be provided to select a particular subscription by default, otherwise the first listed subscription will be selected.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -31,7 +31,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Credential</maml:name>
           <maml:description>
-            <maml:para>Securely provide the user id and password for Organization Id credentials or the Application Id and Secret for Service Principal credentials. The provided credentials will be sued to acquire tokens for authenticataing ARM cmdlets with Azure.</maml:para>
+            <maml:para>Securely provide the user id and password for Organization Id credentials or the Application Id and Secret for Service Principal credentials. The provided credentials will be used to acquire tokens for authenticating ARM cmdlets with Azure.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
         </command:parameter>
@@ -76,14 +76,14 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Credential</maml:name>
           <maml:description>
-            <maml:para>Securely provide the user id and password for Organization Id credentials or the Application Id and Secret for Service Principal credentials. The provided credentials will be sued to acquire tokens for authenticataing ARM cmdlets with Azure.</maml:para>
+            <maml:para>Securely provide the user id and password for Organization Id credentials or the Application Id and Secret for Service Principal credentials. The provided credentials will be sued to acquire tokens for authenticating ARM cmdlets with Azure.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>ServicePrincipal</maml:name>
           <maml:description>
-            <maml:para>When provided, indicates that service princiapl credentials will be provided via the Credential parameter and the TenantId containing the given Servicew Principal will be provided in the TenantIdId parameter.</maml:para>
+            <maml:para>When provided, indicates that service principal credentials will be provided via the Credential parameter and the Tenant containing the given Service Principal will be provided in the TenantId parameter.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         </command:parameter>
@@ -178,7 +178,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>Credential</maml:name>
         <maml:description>
-          <maml:para>Securely provide the user id and password for Organization Id credentials or the Application Id and Secret for Service Principal credentials. The provided credentials will be sued to acquire tokens for authenticataing ARM cmdlets with Azure.</maml:para>
+          <maml:para>Securely provide the user id and password for Organization Id credentials or the Application Id and Secret for Service Principal credentials. The provided credentials will be used to acquire tokens for authenticating ARM cmdlets with Azure.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
         <dev:type>
@@ -240,7 +240,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ServicePrincipal</maml:name>
         <maml:description>
-          <maml:para>When provided, indicates that service princiapl credentials will be provided via the Credential parameter and the TenantId containing the given Servicew Principal will be provided in the TenantIdId parameter.</maml:para>
+          <maml:para>When provided, indicates that service principal credentials will be provided via the Credential parameter and the Tenant containing the given Service Principal will be provided in the TenantId parameter.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -310,12 +310,12 @@
         </maml:introduction>
         <dev:code>Add-AzureRmAccount</dev:code>
         <dev:remarks>
-          <maml:para>Displays a dialog where Microsoft Account or Oragnizational Id credentials may be provided.  The given credentials will be used to acquire a token for authentication with Azure Resource Manager.  Note that if multi-factor authentication (MFA) is enabled for your credentials, you must log in using the interactive option, or use Service Principal authentication.</maml:para>
+          <maml:para>Displays a dialog where Microsoft Account or Organizational Id credentials may be provided.  The given credentials will be used to acquire a token for authentication with Azure Resource Manager.  Note that if multi-factor authentication (MFA) is enabled for your credentials, you must log in using the interactive option, or use Service Principal authentication.</maml:para>
           <maml:para />
           <maml:para />
           <maml:para>Account: azureuser@contoso.com
 Environment: AzureCloud
-Subscription: xxxx-xxxx-xxxx-xxxx
+SubscriptionId: xxxx-xxxx-xxxx-xxxx
 TenantId: xxxx-xxxx-xxxx-xxxx</maml:para>
         </dev:remarks>
         <command:commandLines>
@@ -340,7 +340,7 @@ Add-AzureRmAccount -Credential $credential</dev:code>
           <maml:para />
           <maml:para>Account: azureuser@contoso.onmicrosoft.cn
 Environment: AzureChinacloud
-Subscription: xxxx-xxxx-xxxx-xxxx
+SubscriptionId: xxxx-xxxx-xxxx-xxxx
 TenantId: xxxx-xxxx-xxxx-xxxx</maml:para>
         </dev:remarks>
         <command:commandLines>
@@ -387,7 +387,7 @@ TenantId: zzzz-zzzz-zzzz-zzzz</maml:para>
           <maml:para />
           <maml:para>Account: user@example.com
 Environment: AzureCloud
-Subscription: yyyy-yyyy-yyyy-yyyy
+SubscriptionId: yyyy-yyyy-yyyy-yyyy
 TenantId: xxxx-xxxx-xxxx-xxxx</maml:para>
         </dev:remarks>
         <command:commandLines>
@@ -467,7 +467,7 @@ TenantId: xxxx-xxxx-xxxx-xxxx</maml:para>
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>Add endpoints and metdaata that allow Azure Resource Manager cmdlets to connect with a new instance of Azure Resource Manager.  Built-in environments AzureCloud and AzureChinaCloud target existing public instances of Azure Resource Manager.</maml:para>
+      <maml:para>Add endpoints and metdata that allow Azure Resource Manager cmdlets to connect with a new instance of Azure Resource Manager.  Built-in environments AzureCloud and AzureChinaCloud target existing public instances of Azure Resource Manager.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -580,7 +580,7 @@ TenantId: xxxx-xxxx-xxxx-xxxx</maml:para>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="15">
           <maml:name>AdTenantId</maml:name>
           <maml:description>
-            <maml:para>The default Active Direcotyr TenantId.</maml:para>
+            <maml:para>The default Active Directory Tenant.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -799,7 +799,7 @@ TenantId: xxxx-xxxx-xxxx-xxxx</maml:para>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="15">
         <maml:name>AdTenantId</maml:name>
         <maml:description>
-          <maml:para>The default Active Direcotyr TenantId.</maml:para>
+          <maml:para>The default Active Directory Tenant.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -1168,7 +1168,7 @@ TenantId: xxxx-xxxx-xxxx-xxxx</maml:para>
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>Get detailed information, inbclusing subscription id, subscription name, and home tenant about subscriptions the current account can access.</maml:para>
+      <maml:para>Get detailed information, including subscription id, subscription name, and home tenant about subscriptions the current account can access.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -1235,13 +1235,6 @@ TenantId: xxxx-xxxx-xxxx-xxxx</maml:para>
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>Get-AzureRmSubscription</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>All</maml:name>
-          <maml:description>
-            <maml:para>If Provided, lists subscription details for all subscriptions in all tenants authorized for the current account.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>InformationAction</maml:name>
           <maml:description>
@@ -1324,19 +1317,6 @@ TenantId: xxxx-xxxx-xxxx-xxxx</maml:para>
         <dev:defaultValue>
         </dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>All</maml:name>
-        <maml:description>
-          <maml:para>If Provided, lists subscription details for all subscriptions in all tenants authorized for the current account.</maml:para>
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        <dev:type>
-          <maml:name>SwitchParameter</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
     </command:parameters>
     <command:inputTypes>
       <command:inputType>
@@ -1384,7 +1364,7 @@ TenantId: xxxx-xxxx-xxxx-xxxx</maml:para>
         <maml:introduction>
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
-        <dev:code>Get-AzureRmSubscription -All</dev:code>
+        <dev:code>Get-AzureRmSubscription</dev:code>
         <dev:remarks>
           <maml:para>List all subscriptions in all tenants that are authorized for the current account.</maml:para>
           <maml:para />
@@ -1409,32 +1389,6 @@ Subscription Name: Contoso Subscription 1</maml:para>
         <dev:code>Get-AzureRmSubscription -TenantIdId xxxx-xxxx-xxxx-xxxx</dev:code>
         <dev:remarks>
           <maml:para>List all subscriptions in the given tenant that are authorized for the current account.</maml:para>
-          <maml:para />
-          <maml:para />
-          <maml:para>SubscriptionId: yyyy-yyyy-yyyy-yyyy
-TenantIdId: xxxx-xxxx-xxxx-xxxx
-Subscription Name: Contoso Subscription 1
-
-SubscriptionId: yyyy-yyyy-yyyy-yyyy
-TenantIdId: xxxx-xxxx-xxxx-xxxx
-Subscription Name: Contoso Subscription 2</maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText>
-              <maml:para />
-            </command:commandText>
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-      <command:example>
-        <maml:title>--------------------------  List all subscriptions in the current tenant  --------------------------</maml:title>
-        <maml:introduction>
-          <maml:paragraph>PS C:\&gt;</maml:paragraph>
-        </maml:introduction>
-        <dev:code>Get-AzureRmSubscription</dev:code>
-        <dev:remarks>
-          <maml:para>List all subscriptions in the current tenant that are authorized for the given user.</maml:para>
           <maml:para />
           <maml:para />
           <maml:para>SubscriptionId: yyyy-yyyy-yyyy-yyyy
@@ -2109,7 +2063,7 @@ Subscription Name: Contoso Subscription 1</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
           <maml:name>SubscriptionId</maml:name>
           <maml:description>
             <maml:para>The Subscription Id for executed cmdlets to use.</maml:para>
@@ -2184,12 +2138,12 @@ Subscription Name: Contoso Subscription 1</maml:para>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
           <maml:name>TenantId</maml:name>
           <maml:description>
-            <maml:para>The tenant to taret in this session.</maml:para>
+            <maml:para>The tenant to target in this session.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">AzureTenantId</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-          <maml:name>Subscription</maml:name>
+          <maml:name>SubscriptionId</maml:name>
           <maml:description>
             <maml:para>The subscription to target in this session.</maml:para>
           </maml:description>
@@ -2267,7 +2221,7 @@ Subscription Name: Contoso Subscription 1</maml:para>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>TenantId</maml:name>
         <maml:description>
-          <maml:para>The tenant to taret in this session.</maml:para>
+          <maml:para>The tenant to target in this session.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">AzureTenantId</command:parameterValue>
         <dev:type>
@@ -2344,7 +2298,7 @@ Subscription Name: Contoso Subscription 1</maml:para>
           <maml:para />
           <maml:para>Account: user@contoso.com
 Environment: AzureCloud
-Subscription: xxxx-xxxx-xxxx-xxxx
+SubscriptionId: xxxx-xxxx-xxxx-xxxx
 TenantId: yyyy-yyyy-yyyy-yyyy</maml:para>
         </dev:remarks>
         <command:commandLines>
@@ -2497,7 +2451,7 @@ TenantId: yyyy-yyyy-yyyy-yyyy</maml:para>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="15">
           <maml:name>AdTenantId</maml:name>
           <maml:description>
-            <maml:para>The default Active Direcotyr TenantId.</maml:para>
+            <maml:para>The default Active Directory Tenant.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -2716,7 +2670,7 @@ TenantId: yyyy-yyyy-yyyy-yyyy</maml:para>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="15">
         <maml:name>AdTenantId</maml:name>
         <maml:description>
-          <maml:para>The default Active Direcotyr TenantId.</maml:para>
+          <maml:para>The default Active Directory Tenant.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
