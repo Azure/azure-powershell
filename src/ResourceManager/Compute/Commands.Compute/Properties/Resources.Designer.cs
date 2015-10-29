@@ -306,6 +306,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error occurred when getting storage account, {0}, for boot diagnostics..
+        /// </summary>
+        public static string ErrorDuringGettingStorageAccountForBootDiagnostics {
+            get {
+                return ResourceManager.GetString("ErrorDuringGettingStorageAccountForBootDiagnostics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Storage account, {0}, is a premium account.  You cannot specify a premium storage account for boot diagnostics.
         /// </summary>
         public static string PremiumStorageAccountForBootDiagnostics {

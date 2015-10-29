@@ -100,11 +100,22 @@ namespace Microsoft.Azure.Commands.Compute
 
             if (!string.IsNullOrEmpty(storageAccountName))
             {
-                var storageAccountResponse = storageClient.StorageAccounts.GetProperties(this.ResourceGroupName, storageAccountName);
-
-                if (!storageAccountResponse.StorageAccount.AccountType.Equals(AccountType.PremiumLRS))
+                try
                 {
-                    return storageAccountResponse.StorageAccount.PrimaryEndpoints.Blob;
+                    var storageAccountResponse = storageClient.StorageAccounts.GetProperties(this.ResourceGroupName,
+                        storageAccountName);
+                    if (!storageAccountResponse.StorageAccount.AccountType.Equals(AccountType.PremiumLRS))
+                    {
+                        return storageAccountResponse.StorageAccount.PrimaryEndpoints.Blob;
+                    }
+                }
+                catch (Exception e)
+                {
+                    if (!e.Message.Contains("ResourceNotFound"))
+                    {
+                        WriteWarning(string.Format(
+                            Properties.Resources.ErrorDuringGettingStorageAccountForBootDiagnostics, storageAccountName));
+                    }
                 }
             }
 
