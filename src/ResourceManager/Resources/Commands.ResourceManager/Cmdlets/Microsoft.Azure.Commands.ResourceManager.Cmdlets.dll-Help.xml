@@ -7138,7 +7138,7 @@ ineInput="false" position="named">
           </maml:description>
           <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         </command:parameter>
-<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+	<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>ApiVersion</maml:name>
           <maml:description>
             <maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
@@ -7293,22 +7293,7 @@ ineInput="false" position="named">
         <dev:defaultValue>
         </dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-        <maml:name>ResourceGroupNameContains</maml:name>
-        <maml:description>
-          <maml:para>The resource group name substring.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      
-      </command:parameter>
-   mmand:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+   	<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ApiVersion</maml:name>
         <maml:description>
           <maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
