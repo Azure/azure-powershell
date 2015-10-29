@@ -6712,14 +6712,7 @@
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>OutputObjectFormat</maml:name>
-          <maml:description>
-            <maml:para>The output format of the resource properties.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">ResourceObjectFormat</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+	<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>ApiVersion</maml:name>
           <maml:description>
             <maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
@@ -6764,21 +6757,7 @@
           </maml:description>
           <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>ODataQuery</maml:name>
-          <maml:description>
-            <maml:para>An OData style filter which will be appended to the request in addition to any other filters.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>OutputObjectFormat</maml:name>
-          <maml:description>
-            <maml:para>The output format of the resource properties.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">ResourceObjectFormat</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+	<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>ApiVersion</maml:name>
           <maml:description>
             <maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
@@ -6866,13 +6845,7 @@
           <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>OutputObjectFormat</maml:name>
-          <maml:description>
-            <maml:para>The output format of the resource properties.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">ResourceObjectFormat</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+ineInput="false" position="named">
           <maml:name>ApiVersion</maml:name>
           <maml:description>
             <maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
@@ -6980,13 +6953,7 @@
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>OutputObjectFormat</maml:name>
-          <maml:description>
-            <maml:para>The output format of the resource properties.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">ResourceObjectFormat</command:parameterValue>
-        </command:parameter>
+       
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>ApiVersion</maml:name>
           <maml:description>
@@ -7081,18 +7048,7 @@
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>OutputObjectFormat</maml:name>
-          <maml:description>
-            <maml:para>The output format of the resource properties.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">ResourceObjectFormat</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>ApiVersion</maml:name>
-          <maml:description>
-            <maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
-          </maml:description>
+                </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
@@ -7182,14 +7138,7 @@
           </maml:description>
           <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>OutputObjectFormat</maml:name>
-          <maml:description>
-            <maml:para>The output format of the resource properties.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">ResourceObjectFormat</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>ApiVersion</maml:name>
           <maml:description>
             <maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
@@ -7357,20 +7306,9 @@
         <dev:defaultValue>
         </dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>OutputObjectFormat</maml:name>
-        <maml:description>
-          <maml:para>The output format of the resource properties.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">ResourceObjectFormat</command:parameterValue>
-        <dev:type>
-          <maml:name>ResourceObjectFormat</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
+      
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+   mmand:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ApiVersion</maml:name>
         <maml:description>
           <maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
