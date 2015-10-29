@@ -173,6 +173,7 @@
     <Compile Include="TestMockSupport.cs" />
     <Compile Include="PSAzureAccount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValidateGuidNotEmpty.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
