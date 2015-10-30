@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
 
-            Assert.Equal(2, environments.Count);
+            Assert.Equal(3, environments.Count);
         }
 
         [Fact]

@@ -365,7 +365,7 @@ Add-AzureRmAccount -Credential $credential -TenantId xxxx-xxxx-xxxx-xxxx -Servic
           <maml:para>Account: xxxx-xxxx-xxxx-xxxx
 Environment: AzureCloud
 Subscription: yyyy-yyyy-yyyy-yyyy
-Tenant: zzzz-zzzz-zzzz-zzzz</maml:para>
+TenantId: zzzz-zzzz-zzzz-zzzz</maml:para>
         </dev:remarks>
         <command:commandLines>
           <command:commandLine>
@@ -1456,7 +1456,7 @@ Subscription Name: Contoso Subscription 1</maml:para>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
           <maml:name>TenantId</maml:name>
           <maml:description>
-            <maml:para>Tenant to get information about.  If not provided, all authorized tenants are returned.</maml:para>
+            <maml:para>TenantId to get information about.  If not provided, all authorized tenants are returned.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -1480,7 +1480,7 @@ Subscription Name: Contoso Subscription 1</maml:para>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
         <maml:name>TenantId</maml:name>
         <maml:description>
-          <maml:para>Tenant to get information about.  If not provided, all authorized tenants are returned.</maml:para>
+          <maml:para>TenantId to get information about.  If not provided, all authorized tenants are returned.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
