@@ -117,6 +117,6 @@ namespace Microsoft.Azure.Commands.Compute.Common
 
         //AzureDiskEncryption
         public const string AzureDiskEncryptionExtension = "AzureRmVMDiskEncryptionExtension";
-        public const string AzureDiskEncryptionStatus = "AzureRmVmDiskEncryptionStatus";
+        public const string AzureDiskEncryptionStatus = "AzureRmVMDiskEncryptionStatus";
     }
 }
