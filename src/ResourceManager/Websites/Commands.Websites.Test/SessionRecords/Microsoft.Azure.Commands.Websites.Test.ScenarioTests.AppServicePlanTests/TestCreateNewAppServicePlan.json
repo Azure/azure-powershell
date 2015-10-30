@@ -28,13 +28,13 @@
           "14999"
         ],
         "x-ms-request-id": [
-          "36bd3ff5-793a-4b01-a1f8-21de75498454"
+          "cb5aa094-5537-41ad-9f6a-9cb4aa9d580a"
         ],
         "x-ms-correlation-request-id": [
-          "36bd3ff5-793a-4b01-a1f8-21de75498454"
+          "cb5aa094-5537-41ad-9f6a-9cb4aa9d580a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151028T235305Z:36bd3ff5-793a-4b01-a1f8-21de75498454"
+          "WESTUS:20151026T211858Z:cb5aa094-5537-41ad-9f6a-9cb4aa9d580a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -43,14 +43,14 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 28 Oct 2015 23:53:04 GMT"
+          "Mon, 26 Oct 2015 21:18:57 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/resourcegroups/onesdk577?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGFkYjMyYWQtODMyNy00Y2JiLWI3NzUtYjg0YjQ0NjViYjM4L3Jlc291cmNlZ3JvdXBzL29uZXNkazU3Nz9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/resourcegroups/onesdk7363?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGFkYjMyYWQtODMyNy00Y2JiLWI3NzUtYjg0YjQ0NjViYjM4L3Jlc291cmNlZ3JvdXBzL29uZXNkazczNjM/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
       "RequestMethod": "HEAD",
       "RequestBody": "",
       "RequestHeaders": {
@@ -61,7 +61,7 @@
       "ResponseBody": "",
       "ResponseHeaders": {
         "Content-Length": [
-          "101"
+          "102"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -79,13 +79,13 @@
           "14998"
         ],
         "x-ms-request-id": [
-          "c8a2980a-67e0-4362-89ab-2400544ddc27"
+          "0f8eb7ba-9773-42fa-aacc-3afcf77e01f7"
         ],
         "x-ms-correlation-request-id": [
-          "c8a2980a-67e0-4362-89ab-2400544ddc27"
+          "0f8eb7ba-9773-42fa-aacc-3afcf77e01f7"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151028T235305Z:c8a2980a-67e0-4362-89ab-2400544ddc27"
+          "WESTUS:20151026T211858Z:0f8eb7ba-9773-42fa-aacc-3afcf77e01f7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -94,14 +94,14 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 28 Oct 2015 23:53:04 GMT"
+          "Mon, 26 Oct 2015 21:18:57 GMT"
         ]
       },
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/resourcegroups/onesdk577?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGFkYjMyYWQtODMyNy00Y2JiLWI3NzUtYjg0YjQ0NjViYjM4L3Jlc291cmNlZ3JvdXBzL29uZXNkazU3Nz9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/resourcegroups/onesdk7363?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGFkYjMyYWQtODMyNy00Y2JiLWI3NzUtYjg0YjQ0NjViYjM4L3Jlc291cmNlZ3JvdXBzL29uZXNkazczNjM/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
       "RequestMethod": "HEAD",
       "RequestBody": "",
       "RequestHeaders": {
@@ -124,13 +124,13 @@
           "14996"
         ],
         "x-ms-request-id": [
-          "8203b6ff-499f-49d0-9098-28e4cfbdc61e"
+          "646d0698-4f1e-4e65-b679-7aa2c8cb486a"
         ],
         "x-ms-correlation-request-id": [
-          "8203b6ff-499f-49d0-9098-28e4cfbdc61e"
+          "646d0698-4f1e-4e65-b679-7aa2c8cb486a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151028T235332Z:8203b6ff-499f-49d0-9098-28e4cfbdc61e"
+          "WESTUS:20151026T211928Z:646d0698-4f1e-4e65-b679-7aa2c8cb486a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -139,14 +139,14 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 28 Oct 2015 23:53:32 GMT"
+          "Mon, 26 Oct 2015 21:19:27 GMT"
         ]
       },
       "StatusCode": 204
     },
     {
-      "RequestUri": "/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/resourcegroups/onesdk577?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGFkYjMyYWQtODMyNy00Y2JiLWI3NzUtYjg0YjQ0NjViYjM4L3Jlc291cmNlZ3JvdXBzL29uZXNkazU3Nz9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/resourcegroups/onesdk7363?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGFkYjMyYWQtODMyNy00Y2JiLWI3NzUtYjg0YjQ0NjViYjM4L3Jlc291cmNlZ3JvdXBzL29uZXNkazczNjM/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"Brazil South\"\r\n}",
       "RequestHeaders": {
@@ -160,10 +160,10 @@
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/resourceGroups/onesdk577\",\r\n  \"name\": \"onesdk577\",\r\n  \"location\": \"brazilsouth\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/resourceGroups/onesdk7363\",\r\n  \"name\": \"onesdk7363\",\r\n  \"location\": \"brazilsouth\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "176"
+          "178"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -178,13 +178,13 @@
           "1199"
         ],
         "x-ms-request-id": [
-          "48b61d14-ba5c-4830-a61a-5cf59c7717ab"
+          "61bebc28-3881-454d-8864-73da21dd46d5"
         ],
         "x-ms-correlation-request-id": [
-          "48b61d14-ba5c-4830-a61a-5cf59c7717ab"
+          "61bebc28-3881-454d-8864-73da21dd46d5"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151028T235308Z:48b61d14-ba5c-4830-a61a-5cf59c7717ab"
+          "WESTUS:20151026T211901Z:61bebc28-3881-454d-8864-73da21dd46d5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -193,14 +193,14 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 28 Oct 2015 23:53:07 GMT"
+          "Mon, 26 Oct 2015 21:19:01 GMT"
         ]
       },
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/resourceGroups/onesdk577/resources?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGFkYjMyYWQtODMyNy00Y2JiLWI3NzUtYjg0YjQ0NjViYjM4L3Jlc291cmNlR3JvdXBzL29uZXNkazU3Ny9yZXNvdXJjZXM/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/resourceGroups/onesdk7363/resources?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGFkYjMyYWQtODMyNy00Y2JiLWI3NzUtYjg0YjQ0NjViYjM4L3Jlc291cmNlR3JvdXBzL29uZXNkazczNjMvcmVzb3VyY2VzP2FwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -226,13 +226,13 @@
           "14997"
         ],
         "x-ms-request-id": [
-          "ad04f46c-b5eb-4a97-9a07-5d1a6661990f"
+          "97da30d8-4b01-490c-8f31-93f2420f96b1"
         ],
         "x-ms-correlation-request-id": [
-          "ad04f46c-b5eb-4a97-9a07-5d1a6661990f"
+          "97da30d8-4b01-490c-8f31-93f2420f96b1"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151028T235308Z:ad04f46c-b5eb-4a97-9a07-5d1a6661990f"
+          "WESTUS:20151026T211901Z:97da30d8-4b01-490c-8f31-93f2420f96b1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -241,14 +241,14 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 28 Oct 2015 23:53:07 GMT"
+          "Mon, 26 Oct 2015 21:19:01 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/resourcegroups/onesdk577/providers/Microsoft.Authorization/permissions?api-version=2015-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGFkYjMyYWQtODMyNy00Y2JiLWI3NzUtYjg0YjQ0NjViYjM4L3Jlc291cmNlZ3JvdXBzL29uZXNkazU3Ny9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcGVybWlzc2lvbnM/YXBpLXZlcnNpb249MjAxNS0wNy0wMQ==",
+      "RequestUri": "/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/resourcegroups/onesdk7363/providers/Microsoft.Authorization/permissions?api-version=2015-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGFkYjMyYWQtODMyNy00Y2JiLWI3NzUtYjg0YjQ0NjViYjM4L3Jlc291cmNlZ3JvdXBzL29uZXNkazczNjMvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRob3JpemF0aW9uL3Blcm1pc3Npb25zP2FwaS12ZXJzaW9uPTIwMTUtMDctMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -271,10 +271,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "6b14acd0-39e9-40e5-9511-e4a8047e4458"
+          "253cfbb8-359d-4119-a373-de3f4166424a"
         ],
         "x-ms-gateway-service-instanceid": [
-          "PASFE_IN_1"
+          "PASFE_IN_2"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -286,16 +286,16 @@
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "f65adafa-a1e3-45cc-9ef8-4bf02e4c3692"
+          "568bb865-f6c6-4010-84b6-99739287935b"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151028T235309Z:f65adafa-a1e3-45cc-9ef8-4bf02e4c3692"
+          "WESTUS:20151026T211902Z:568bb865-f6c6-4010-84b6-99739287935b"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 28 Oct 2015 23:53:09 GMT"
+          "Mon, 26 Oct 2015 21:19:02 GMT"
         ],
         "Set-Cookie": [
           "x-ms-gateway-slice=productionb; path=/"
@@ -310,10 +310,10 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/resourceGroups/onesdk577/providers/Microsoft.Web/serverfarms/onesdk9791?api-version=2015-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGFkYjMyYWQtODMyNy00Y2JiLWI3NzUtYjg0YjQ0NjViYjM4L3Jlc291cmNlR3JvdXBzL29uZXNkazU3Ny9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi9zZXJ2ZXJmYXJtcy9vbmVzZGs5NzkxP2FwaS12ZXJzaW9uPTIwMTUtMDgtMDE=",
+      "RequestUri": "/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/resourceGroups/onesdk7363/providers/Microsoft.Web/serverfarms/onesdk5339?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGFkYjMyYWQtODMyNy00Y2JiLWI3NzUtYjg0YjQ0NjViYjM4L3Jlc291cmNlR3JvdXBzL29uZXNkazczNjMvcHJvdmlkZXJzL01pY3Jvc29mdC5XZWIvc2VydmVyZmFybXMvb25lc2RrNTMzOT9hcGktdmVyc2lvbj0yMDE1LTA4LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"S2\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 2\r\n  },\r\n  \"location\": \"Brazil South\",\r\n  \"properties\": {\r\n    \"name\": \"onesdk9791\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"S2\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 2\r\n  },\r\n  \"location\": \"Brazil South\",\r\n  \"properties\": {\r\n    \"name\": \"onesdk5339\"\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -322,7 +322,7 @@
           "166"
         ],
         "x-ms-client-request-id": [
-          "eb7abfb0-3e6f-4232-8541-5d89d9b58640"
+          "132f7bd5-3542-43bb-bd47-befd742084c3"
         ],
         "accept-language": [
           "en-US"
@@ -334,10 +334,10 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/resourceGroups/onesdk577/providers/Microsoft.Web/serverfarms/onesdk9791\",\r\n  \"name\": \"onesdk9791\",\r\n  \"type\": \"Microsoft.Web/serverfarms\",\r\n  \"kind\": null,\r\n  \"location\": \"Brazil South\",\r\n  \"tags\": null,\r\n  \"plan\": null,\r\n  \"properties\": {\r\n    \"serverFarmId\": 0,\r\n    \"name\": \"onesdk9791\",\r\n    \"workerSize\": 1,\r\n    \"workerSizeId\": 1,\r\n    \"numberOfWorkers\": 2,\r\n    \"currentWorkerSize\": 1,\r\n    \"currentWorkerSizeId\": 1,\r\n    \"currentNumberOfWorkers\": 2,\r\n    \"status\": 0,\r\n    \"webSpace\": \"onesdk577-BrazilSouthwebspace\",\r\n    \"subscription\": \"4adb32ad-8327-4cbb-b775-b84b4465bb38\",\r\n    \"adminSiteName\": null,\r\n    \"hostingEnvironment\": null,\r\n    \"hostingEnvironmentProfile\": null,\r\n    \"maximumNumberOfWorkers\": 10,\r\n    \"planName\": \"VirtualDedicatedPlan\",\r\n    \"adminRuntimeSiteName\": null,\r\n    \"computeMode\": 0,\r\n    \"siteMode\": null,\r\n    \"geoRegion\": \"Brazil South\",\r\n    \"perSiteScaling\": false,\r\n    \"numberOfSites\": 0,\r\n    \"hostingEnvironmentId\": null,\r\n    \"tags\": null,\r\n    \"resourceGroup\": \"onesdk577\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S2\",\r\n    \"tier\": \"Standard\",\r\n    \"size\": \"S2\",\r\n    \"family\": \"S\",\r\n    \"capacity\": 2\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/resourceGroups/onesdk7363/providers/Microsoft.Web/serverfarms/onesdk5339\",\r\n  \"name\": \"onesdk5339\",\r\n  \"type\": \"Microsoft.Web/serverfarms\",\r\n  \"kind\": null,\r\n  \"location\": \"Brazil South\",\r\n  \"tags\": null,\r\n  \"plan\": null,\r\n  \"properties\": {\r\n    \"serverFarmId\": 0,\r\n    \"name\": \"onesdk5339\",\r\n    \"workerSize\": 1,\r\n    \"workerSizeId\": 1,\r\n    \"numberOfWorkers\": 2,\r\n    \"currentWorkerSize\": 1,\r\n    \"currentWorkerSizeId\": 1,\r\n    \"currentNumberOfWorkers\": 2,\r\n    \"status\": 0,\r\n    \"webSpace\": \"onesdk7363-BrazilSouthwebspace\",\r\n    \"subscription\": \"4adb32ad-8327-4cbb-b775-b84b4465bb38\",\r\n    \"adminSiteName\": null,\r\n    \"hostingEnvironment\": null,\r\n    \"hostingEnvironmentProfile\": null,\r\n    \"maximumNumberOfWorkers\": 10,\r\n    \"planName\": \"VirtualDedicatedPlan\",\r\n    \"adminRuntimeSiteName\": null,\r\n    \"computeMode\": 0,\r\n    \"siteMode\": null,\r\n    \"geoRegion\": \"Brazil South\",\r\n    \"perSiteScaling\": false,\r\n    \"numberOfSites\": 0,\r\n    \"hostingEnvironmentId\": null,\r\n    \"tags\": null,\r\n    \"resourceGroup\": \"onesdk7363\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S2\",\r\n    \"tier\": \"Standard\",\r\n    \"size\": \"S2\",\r\n    \"family\": \"S\",\r\n    \"capacity\": 2\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "948"
+          "951"
         ],
         "Content-Type": [
           "application/json"
@@ -352,22 +352,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "2b644174-f372-46c3-a6a3-834c31ace5d5"
+          "74558149-fcd2-4900-a4e1-e41d0cf3a6d5"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "196bb6f5-9201-44b7-84be-c10e69823491"
+          "654739ca-50ad-46af-b7aa-915b55ffca1d"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151028T235328Z:196bb6f5-9201-44b7-84be-c10e69823491"
+          "WESTUS:20151026T211924Z:654739ca-50ad-46af-b7aa-915b55ffca1d"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 28 Oct 2015 23:53:28 GMT"
+          "Mon, 26 Oct 2015 21:19:24 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -382,13 +382,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/resourceGroups/onesdk577/providers/Microsoft.Web/serverfarms/onesdk9791?api-version=2015-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGFkYjMyYWQtODMyNy00Y2JiLWI3NzUtYjg0YjQ0NjViYjM4L3Jlc291cmNlR3JvdXBzL29uZXNkazU3Ny9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi9zZXJ2ZXJmYXJtcy9vbmVzZGs5NzkxP2FwaS12ZXJzaW9uPTIwMTUtMDgtMDE=",
+      "RequestUri": "/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/resourceGroups/onesdk7363/providers/Microsoft.Web/serverfarms/onesdk5339?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGFkYjMyYWQtODMyNy00Y2JiLWI3NzUtYjg0YjQ0NjViYjM4L3Jlc291cmNlR3JvdXBzL29uZXNkazczNjMvcHJvdmlkZXJzL01pY3Jvc29mdC5XZWIvc2VydmVyZmFybXMvb25lc2RrNTMzOT9hcGktdmVyc2lvbj0yMDE1LTA4LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f8b4a281-1540-413b-9cf4-64c9700db003"
+          "1500ec93-5925-4119-b479-de03ea9787c7"
         ],
         "accept-language": [
           "en-US"
@@ -400,10 +400,10 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/resourceGroups/onesdk577/providers/Microsoft.Web/serverfarms/onesdk9791\",\r\n  \"name\": \"onesdk9791\",\r\n  \"type\": \"Microsoft.Web/serverfarms\",\r\n  \"kind\": null,\r\n  \"location\": \"Brazil South\",\r\n  \"tags\": null,\r\n  \"plan\": null,\r\n  \"properties\": {\r\n    \"serverFarmId\": 0,\r\n    \"name\": \"onesdk9791\",\r\n    \"workerSize\": 1,\r\n    \"workerSizeId\": 1,\r\n    \"numberOfWorkers\": 2,\r\n    \"currentWorkerSize\": 1,\r\n    \"currentWorkerSizeId\": 1,\r\n    \"currentNumberOfWorkers\": 2,\r\n    \"status\": 0,\r\n    \"webSpace\": \"onesdk577-BrazilSouthwebspace\",\r\n    \"subscription\": \"4adb32ad-8327-4cbb-b775-b84b4465bb38\",\r\n    \"adminSiteName\": null,\r\n    \"hostingEnvironment\": null,\r\n    \"hostingEnvironmentProfile\": null,\r\n    \"maximumNumberOfWorkers\": 10,\r\n    \"planName\": \"VirtualDedicatedPlan\",\r\n    \"adminRuntimeSiteName\": null,\r\n    \"computeMode\": 0,\r\n    \"siteMode\": null,\r\n    \"geoRegion\": \"Brazil South\",\r\n    \"perSiteScaling\": false,\r\n    \"numberOfSites\": 0,\r\n    \"hostingEnvironmentId\": null,\r\n    \"tags\": null,\r\n    \"resourceGroup\": \"onesdk577\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S2\",\r\n    \"tier\": \"Standard\",\r\n    \"size\": \"S2\",\r\n    \"family\": \"S\",\r\n    \"capacity\": 2\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/resourceGroups/onesdk7363/providers/Microsoft.Web/serverfarms/onesdk5339\",\r\n  \"name\": \"onesdk5339\",\r\n  \"type\": \"Microsoft.Web/serverfarms\",\r\n  \"kind\": null,\r\n  \"location\": \"Brazil South\",\r\n  \"tags\": null,\r\n  \"plan\": null,\r\n  \"properties\": {\r\n    \"serverFarmId\": 0,\r\n    \"name\": \"onesdk5339\",\r\n    \"workerSize\": 1,\r\n    \"workerSizeId\": 1,\r\n    \"numberOfWorkers\": 2,\r\n    \"currentWorkerSize\": 1,\r\n    \"currentWorkerSizeId\": 1,\r\n    \"currentNumberOfWorkers\": 2,\r\n    \"status\": 0,\r\n    \"webSpace\": \"onesdk7363-BrazilSouthwebspace\",\r\n    \"subscription\": \"4adb32ad-8327-4cbb-b775-b84b4465bb38\",\r\n    \"adminSiteName\": null,\r\n    \"hostingEnvironment\": null,\r\n    \"hostingEnvironmentProfile\": null,\r\n    \"maximumNumberOfWorkers\": 10,\r\n    \"planName\": \"VirtualDedicatedPlan\",\r\n    \"adminRuntimeSiteName\": null,\r\n    \"computeMode\": 0,\r\n    \"siteMode\": null,\r\n    \"geoRegion\": \"Brazil South\",\r\n    \"perSiteScaling\": false,\r\n    \"numberOfSites\": 0,\r\n    \"hostingEnvironmentId\": null,\r\n    \"tags\": null,\r\n    \"resourceGroup\": \"onesdk7363\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"S2\",\r\n    \"tier\": \"Standard\",\r\n    \"size\": \"S2\",\r\n    \"family\": \"S\",\r\n    \"capacity\": 2\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "948"
+          "951"
         ],
         "Content-Type": [
           "application/json"
@@ -418,22 +418,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "014e565b-5ae7-4b37-96c0-7e8759effbae"
+          "c830619e-1caa-4c83-a6cd-5a3687becfa9"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "4ad4e899-79b5-40ff-969c-3ee03f1e1206"
+          "b07ac630-a6f1-4816-a259-43b7ddce7818"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151028T235329Z:4ad4e899-79b5-40ff-969c-3ee03f1e1206"
+          "WESTUS:20151026T211925Z:b07ac630-a6f1-4816-a259-43b7ddce7818"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 28 Oct 2015 23:53:28 GMT"
+          "Mon, 26 Oct 2015 21:19:24 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -448,13 +448,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/resourceGroups/onesdk577/providers/Microsoft.Web/serverfarms/onesdk9791?api-version=2015-08-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGFkYjMyYWQtODMyNy00Y2JiLWI3NzUtYjg0YjQ0NjViYjM4L3Jlc291cmNlR3JvdXBzL29uZXNkazU3Ny9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi9zZXJ2ZXJmYXJtcy9vbmVzZGs5NzkxP2FwaS12ZXJzaW9uPTIwMTUtMDgtMDE=",
+      "RequestUri": "/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/resourceGroups/onesdk7363/providers/Microsoft.Web/serverfarms/onesdk5339?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGFkYjMyYWQtODMyNy00Y2JiLWI3NzUtYjg0YjQ0NjViYjM4L3Jlc291cmNlR3JvdXBzL29uZXNkazczNjMvcHJvdmlkZXJzL01pY3Jvc29mdC5XZWIvc2VydmVyZmFybXMvb25lc2RrNTMzOT9hcGktdmVyc2lvbj0yMDE1LTA4LTAx",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "84b24d9f-53a6-4eef-b097-1efe026fa8aa"
+          "1662fbf1-6325-4686-8ebb-b5d4bbb65185"
         ],
         "accept-language": [
           "en-US"
@@ -481,22 +481,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "e3d625f7-c8e0-4002-a70e-a75c22fab263"
+          "23f7e75d-42e1-4479-82a9-628d8f48315e"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1198"
         ],
         "x-ms-correlation-request-id": [
-          "f7352268-1ef3-44f9-8bc6-1e1a45dcfde8"
+          "3bf60684-1a15-47cb-a944-6e13077d7cff"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151028T235332Z:f7352268-1ef3-44f9-8bc6-1e1a45dcfde8"
+          "WESTUS:20151026T211928Z:3bf60684-1a15-47cb-a944-6e13077d7cff"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 28 Oct 2015 23:53:32 GMT"
+          "Mon, 26 Oct 2015 21:19:27 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -511,8 +511,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/resourcegroups/onesdk577?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGFkYjMyYWQtODMyNy00Y2JiLWI3NzUtYjg0YjQ0NjViYjM4L3Jlc291cmNlZ3JvdXBzL29uZXNkazU3Nz9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/resourcegroups/onesdk7363?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGFkYjMyYWQtODMyNy00Y2JiLWI3NzUtYjg0YjQ0NjViYjM4L3Jlc291cmNlZ3JvdXBzL29uZXNkazczNjM/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
@@ -538,13 +538,13 @@
           "1198"
         ],
         "x-ms-request-id": [
-          "d79be7de-9f35-4d94-8014-b17bedd82fa2"
+          "1ebf0ec0-6d9e-4b69-8a88-d60bed6df98b"
         ],
         "x-ms-correlation-request-id": [
-          "d79be7de-9f35-4d94-8014-b17bedd82fa2"
+          "1ebf0ec0-6d9e-4b69-8a88-d60bed6df98b"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151028T235335Z:d79be7de-9f35-4d94-8014-b17bedd82fa2"
+          "WESTUS:20151026T211932Z:1ebf0ec0-6d9e-4b69-8a88-d60bed6df98b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -553,17 +553,17 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 28 Oct 2015 23:53:35 GMT"
+          "Mon, 26 Oct 2015 21:19:31 GMT"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs1NzctQlJBWklMU09VVEgiLCJqb2JMb2NhdGlvbiI6ImJyYXppbHNvdXRoIn0?api-version=2014-04-01-preview"
+          "https://management.azure.com/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs3MzYzLUJSQVpJTFNPVVRIIiwiam9iTG9jYXRpb24iOiJicmF6aWxzb3V0aCJ9?api-version=2014-04-01-preview"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs1NzctQlJBWklMU09VVEgiLCJqb2JMb2NhdGlvbiI6ImJyYXppbHNvdXRoIn0?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGFkYjMyYWQtODMyNy00Y2JiLWI3NzUtYjg0YjQ0NjViYjM4L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFQVGtWVFJFczFOemN0UWxKQldrbE1VMDlWVkVnaUxDSnFiMkpNYjJOaGRHbHZiaUk2SW1KeVlYcHBiSE52ZFhSb0luMD9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs3MzYzLUJSQVpJTFNPVVRIIiwiam9iTG9jYXRpb24iOiJicmF6aWxzb3V0aCJ9?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGFkYjMyYWQtODMyNy00Y2JiLWI3NzUtYjg0YjQ0NjViYjM4L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFQVGtWVFJFczNNell6TFVKU1FWcEpURk5QVlZSSUlpd2lhbTlpVEc5allYUnBiMjRpT2lKaWNtRjZhV3h6YjNWMGFDSjk/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -592,13 +592,13 @@
           "14995"
         ],
         "x-ms-request-id": [
-          "4caff862-1f9d-47a0-a07f-7ae8b36bff53"
+          "6f0ef908-57ad-45ba-99c9-d76066b93e98"
         ],
         "x-ms-correlation-request-id": [
-          "4caff862-1f9d-47a0-a07f-7ae8b36bff53"
+          "6f0ef908-57ad-45ba-99c9-d76066b93e98"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151028T235336Z:4caff862-1f9d-47a0-a07f-7ae8b36bff53"
+          "WESTUS:20151026T211932Z:6f0ef908-57ad-45ba-99c9-d76066b93e98"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -607,17 +607,17 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 28 Oct 2015 23:53:36 GMT"
+          "Mon, 26 Oct 2015 21:19:32 GMT"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs1NzctQlJBWklMU09VVEgiLCJqb2JMb2NhdGlvbiI6ImJyYXppbHNvdXRoIn0?api-version=2014-04-01-preview"
+          "https://management.azure.com/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs3MzYzLUJSQVpJTFNPVVRIIiwiam9iTG9jYXRpb24iOiJicmF6aWxzb3V0aCJ9?api-version=2014-04-01-preview"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs1NzctQlJBWklMU09VVEgiLCJqb2JMb2NhdGlvbiI6ImJyYXppbHNvdXRoIn0?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGFkYjMyYWQtODMyNy00Y2JiLWI3NzUtYjg0YjQ0NjViYjM4L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFQVGtWVFJFczFOemN0UWxKQldrbE1VMDlWVkVnaUxDSnFiMkpNYjJOaGRHbHZiaUk2SW1KeVlYcHBiSE52ZFhSb0luMD9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs3MzYzLUJSQVpJTFNPVVRIIiwiam9iTG9jYXRpb24iOiJicmF6aWxzb3V0aCJ9?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGFkYjMyYWQtODMyNy00Y2JiLWI3NzUtYjg0YjQ0NjViYjM4L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFQVGtWVFJFczNNell6TFVKU1FWcEpURk5QVlZSSUlpd2lhbTlpVEc5allYUnBiMjRpT2lKaWNtRjZhV3h6YjNWMGFDSjk/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -646,13 +646,13 @@
           "14994"
         ],
         "x-ms-request-id": [
-          "3100b748-d6a1-4251-9e4c-a28da442f87d"
+          "490da0c7-1a0c-4aa2-b636-c9ca66887b85"
         ],
         "x-ms-correlation-request-id": [
-          "3100b748-d6a1-4251-9e4c-a28da442f87d"
+          "490da0c7-1a0c-4aa2-b636-c9ca66887b85"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151028T235352Z:3100b748-d6a1-4251-9e4c-a28da442f87d"
+          "WESTUS:20151026T211948Z:490da0c7-1a0c-4aa2-b636-c9ca66887b85"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -661,17 +661,17 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 28 Oct 2015 23:53:51 GMT"
+          "Mon, 26 Oct 2015 21:19:47 GMT"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs1NzctQlJBWklMU09VVEgiLCJqb2JMb2NhdGlvbiI6ImJyYXppbHNvdXRoIn0?api-version=2014-04-01-preview"
+          "https://management.azure.com/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs3MzYzLUJSQVpJTFNPVVRIIiwiam9iTG9jYXRpb24iOiJicmF6aWxzb3V0aCJ9?api-version=2014-04-01-preview"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs1NzctQlJBWklMU09VVEgiLCJqb2JMb2NhdGlvbiI6ImJyYXppbHNvdXRoIn0?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGFkYjMyYWQtODMyNy00Y2JiLWI3NzUtYjg0YjQ0NjViYjM4L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFQVGtWVFJFczFOemN0UWxKQldrbE1VMDlWVkVnaUxDSnFiMkpNYjJOaGRHbHZiaUk2SW1KeVlYcHBiSE52ZFhSb0luMD9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs3MzYzLUJSQVpJTFNPVVRIIiwiam9iTG9jYXRpb24iOiJicmF6aWxzb3V0aCJ9?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGFkYjMyYWQtODMyNy00Y2JiLWI3NzUtYjg0YjQ0NjViYjM4L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFQVGtWVFJFczNNell6TFVKU1FWcEpURk5QVlZSSUlpd2lhbTlpVEc5allYUnBiMjRpT2lKaWNtRjZhV3h6YjNWMGFDSjk/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -700,13 +700,13 @@
           "14993"
         ],
         "x-ms-request-id": [
-          "4ad812b7-dbfb-436b-a8b3-2d03d5e2516b"
+          "a0be766a-f982-472e-913c-cb4f41b3cc5f"
         ],
         "x-ms-correlation-request-id": [
-          "4ad812b7-dbfb-436b-a8b3-2d03d5e2516b"
+          "a0be766a-f982-472e-913c-cb4f41b3cc5f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151028T235407Z:4ad812b7-dbfb-436b-a8b3-2d03d5e2516b"
+          "WESTUS:20151026T212003Z:a0be766a-f982-472e-913c-cb4f41b3cc5f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -715,17 +715,17 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 28 Oct 2015 23:54:07 GMT"
+          "Mon, 26 Oct 2015 21:20:03 GMT"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs1NzctQlJBWklMU09VVEgiLCJqb2JMb2NhdGlvbiI6ImJyYXppbHNvdXRoIn0?api-version=2014-04-01-preview"
+          "https://management.azure.com/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs3MzYzLUJSQVpJTFNPVVRIIiwiam9iTG9jYXRpb24iOiJicmF6aWxzb3V0aCJ9?api-version=2014-04-01-preview"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs1NzctQlJBWklMU09VVEgiLCJqb2JMb2NhdGlvbiI6ImJyYXppbHNvdXRoIn0?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGFkYjMyYWQtODMyNy00Y2JiLWI3NzUtYjg0YjQ0NjViYjM4L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFQVGtWVFJFczFOemN0UWxKQldrbE1VMDlWVkVnaUxDSnFiMkpNYjJOaGRHbHZiaUk2SW1KeVlYcHBiSE52ZFhSb0luMD9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/4adb32ad-8327-4cbb-b775-b84b4465bb38/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREs3MzYzLUJSQVpJTFNPVVRIIiwiam9iTG9jYXRpb24iOiJicmF6aWxzb3V0aCJ9?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGFkYjMyYWQtODMyNy00Y2JiLWI3NzUtYjg0YjQ0NjViYjM4L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFQVGtWVFJFczNNell6TFVKU1FWcEpURk5QVlZSSUlpd2lhbTlpVEc5allYUnBiMjRpT2lKaWNtRjZhV3h6YjNWMGFDSjk/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -751,13 +751,13 @@
           "14992"
         ],
         "x-ms-request-id": [
-          "bada6211-b598-4b4a-9631-d3383e1025a1"
+          "5759031a-9e3e-4c77-a0f2-64b2a7fb8707"
         ],
         "x-ms-correlation-request-id": [
-          "bada6211-b598-4b4a-9631-d3383e1025a1"
+          "5759031a-9e3e-4c77-a0f2-64b2a7fb8707"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151028T235422Z:bada6211-b598-4b4a-9631-d3383e1025a1"
+          "WESTUS:20151026T212019Z:5759031a-9e3e-4c77-a0f2-64b2a7fb8707"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -766,7 +766,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 28 Oct 2015 23:54:21 GMT"
+          "Mon, 26 Oct 2015 21:20:18 GMT"
         ]
       },
       "StatusCode": 200
@@ -774,8 +774,8 @@
   ],
   "Names": {
     "Test-CreateNewAppServicePlan": [
-      "onesdk577",
-      "onesdk9791"
+      "onesdk7363",
+      "onesdk5339"
     ]
   },
   "Variables": {
