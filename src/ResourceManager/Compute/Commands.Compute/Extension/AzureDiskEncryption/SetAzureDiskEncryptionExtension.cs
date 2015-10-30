@@ -151,6 +151,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         [ValidateNotNullOrEmpty]
         public SwitchParameter Force { get; set; }
 
+        private string currentOSType = null;
+
         private void ValidateInputParameters()
         {
             if (false == Uri.IsWellFormedUriString(DiskEncryptionKeyVaultId, UriKind.Absolute))
@@ -192,24 +194,24 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                                                       ErrorCategory.InvalidResult,
                                                       null));
             }
-            bool publisherMismatch = false;
+            bool publisherMatch = false;
             if (string.Equals(currentOSType, "Linux", StringComparison.InvariantCultureIgnoreCase))
             {
                 if (returnedExtension.Publisher.Equals(AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultPublisher, StringComparison.InvariantCultureIgnoreCase) &&
-                                  returnedExtension.ExtensionType.Equals(AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultName, StringComparison.InvariantCultureIgnoreCase))
+                    returnedExtension.ExtensionType.Equals(AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultName, StringComparison.InvariantCultureIgnoreCase))
                 {
-                    publisherMismatch = true;
+                    publisherMatch = true;
                 }
             }
-            else if(string.Equals(currentOSType,"Windows",StringComparison.InvariantCultureIgnoreCase))
+            else if (string.Equals(currentOSType, "Windows", StringComparison.InvariantCultureIgnoreCase))
             {
                 if (returnedExtension.Publisher.Equals(AzureDiskEncryptionExtensionContext.ExtensionDefaultPublisher, StringComparison.InvariantCultureIgnoreCase) &&
-                               returnedExtension.ExtensionType.Equals(AzureDiskEncryptionExtensionContext.ExtensionDefaultName, StringComparison.InvariantCultureIgnoreCase))
+                    returnedExtension.ExtensionType.Equals(AzureDiskEncryptionExtensionContext.ExtensionDefaultName, StringComparison.InvariantCultureIgnoreCase))
                 {
-                    publisherMismatch = true;
+                    publisherMatch = true;
                 }
             }
-            if (publisherMismatch)
+            if (publisherMatch)
             {
                 AzureDiskEncryptionExtensionContext context = new AzureDiskEncryptionExtensionContext(returnedExtension);
                 if ((context == null) ||
@@ -305,13 +307,11 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             return JsonConvert.SerializeObject(protectedSettings);
         }
 
-        private VirtualMachineExtension GetVmExtensionParameters()
+        private VirtualMachineExtension GetVmExtensionParameters(VirtualMachine vmParameters)
         {
             string SettingString = GetExtensionPublicSettings();
             string ProtectedSettingString = GetExtensionProtectedSettings();
 
-
-            VirtualMachine vmParameters = (this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName)).VirtualMachine;
             if (vmParameters == null)
             {
                 ThrowTerminatingError(new ErrorRecord(new ApplicationException(string.Format(CultureInfo.CurrentUICulture, "Set-AzureDiskEncryptionExtension can enable encryption only on a VM that was already created ")),
@@ -353,7 +353,29 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             return vmExtensionParameters;
         }
 
-        private string currentOSType = null;
+        private void CreateVMBackupForLinx()
+        {
+            try
+            {
+                AzureVMBackupExtensionUtil azureBackupExtensionUtil = new AzureVMBackupExtensionUtil();
+                AzureVMBackupConfig vmConfig = new AzureVMBackupConfig();
+                vmConfig.ResourceGroupName = ResourceGroupName;
+                vmConfig.VMName = VMName;
+                vmConfig.VirtualMachineExtensionType = VirtualMachineExtensionType;
+                string tag = string.Format("{0}{1}", "AzureEnc", Guid.NewGuid().ToString());
+                // this would create shapshot only for Linux box. and we should wait for the snapshot found.
+                azureBackupExtensionUtil.CreateSnapshotForDisks(vmConfig, tag, this);
+
+                WriteInformation(new InformationRecord(string.Format("one snapshot for disks are created with tag,{0}", tag), string.Empty));
+            }
+            catch (AzureVMBackupException e)
+            {
+                ThrowTerminatingError(new ErrorRecord(new ApplicationException(string.Format(CultureInfo.CurrentUICulture, e.ToString())),
+                                                      "InvalidResult",
+                                                      ErrorCategory.InvalidResult,
+                                                      null));
+            }
+        }
 
         protected override void ProcessRecord()
         {
@@ -368,37 +390,16 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
                     currentOSType = virtualMachineResponse.StorageProfile.OSDisk.OperatingSystemType;
 
-                    if(string.Equals(currentOSType,"Linux",StringComparison.InvariantCultureIgnoreCase))
+                    if (string.Equals(currentOSType, "Linux", StringComparison.InvariantCultureIgnoreCase))
                     {
-                        try
-                        {
-                            AzureVMBackupExtensionUtil azureBackupExtensionUtil = new AzureVMBackupExtensionUtil();
-                            AzureVMBackupConfig vmConfig = new AzureVMBackupConfig();
-                            vmConfig.ResourceGroupName = ResourceGroupName;
-                            vmConfig.VMName = VMName;
-                            vmConfig.VirtualMachineExtensionType = VirtualMachineExtensionType;
-                            string tag = string.Format("{0}{1}", "AzureEnc", Guid.NewGuid().ToString());
-                            // this would create shapshot only for Linux box. and we should wait for the snapshot found.
-                            azureBackupExtensionUtil.CreateSnapshotForDisks(vmConfig, tag, this);
-                            
-                            WriteInformation(new InformationRecord(string.Format("one snapshot for disks are created with tag,{0}",tag), string.Empty));
-                        }
-                        catch (AzureVMBackupException e)
-                        {
-                            ThrowTerminatingError(new ErrorRecord(new ApplicationException(string.Format(CultureInfo.CurrentUICulture, e.ToString())),
-                                                      "InvalidResult",
-                                                      ErrorCategory.InvalidResult,
-                                                      null));
-                        }
+                        CreateVMBackupForLinx();
                     }
 
-                    VirtualMachineExtension parameters = GetVmExtensionParameters();
+                    VirtualMachineExtension parameters = GetVmExtensionParameters(virtualMachineResponse);
 
                     this.VirtualMachineExtensionClient.CreateOrUpdate(this.ResourceGroupName,
-                                                                               this.VMName,
-                                                                               parameters);
-
-                    
+                                                                      this.VMName,
+                                                                      parameters);
 
                     var op = UpdateVmEncryptionSettings();
                     WriteObject(Mapper.Map<PSComputeLongRunningOperation>(op));
