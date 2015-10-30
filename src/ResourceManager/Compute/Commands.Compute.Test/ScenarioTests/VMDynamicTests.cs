@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
     public partial class VMDynamicTests
     {
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        //[Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RunVMDynamicTests()
         {
             ComputeTestController.NewInstance.RunPsTest("Run-VMDynamicTests");
