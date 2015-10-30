@@ -210,6 +210,13 @@
     <Compile Include="Extension\AzureDiskEncryption\GetAzureDiskEncryptionStatus.cs" />
     <Compile Include="Extension\AzureDiskEncryption\RemoveAzureDiskEncryptionExtension.cs" />
     <Compile Include="Extension\AzureDiskEncryption\SetAzureDiskEncryptionExtension.cs" />
+    <Compile Include="Extension\AzureVMBackup\AzureVMBackupExtensionUtil.cs" />
+    <Compile Include="Extension\AzureVMBackup\AzureVMBackupException.cs" />
+    <Compile Include="Extension\AzureVMBackup\AzureVMBackupExtensionProtectedSettings.cs" />
+    <Compile Include="Extension\AzureVMBackup\AzureVMBackupExtensionPublicSettings.cs" />
+    <Compile Include="Extension\AzureVMBackup\AzureVMBackupConfig.cs" />
+    <Compile Include="Extension\AzureVMBackup\RemoveAzureVMBackup.cs" />
+    <Compile Include="Extension\AzureVMBackup\SetAzureVMBackupExtension.cs" />
     <Compile Include="Extension\CustomScript\GetAzureVMCustomScriptExtensionCommand.cs" />
     <Compile Include="Extension\CustomScript\CustomScriptExtensionPrivateSettings.cs" />
     <Compile Include="Extension\CustomScript\CustomScriptExtensionPublicSettings.cs" />
