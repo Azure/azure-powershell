@@ -39,7 +39,7 @@ function Test-GetAzureVMDscExtension
         $vm = Get-AzureVM -ServiceName $svcName -Name $vmName
 
         # Install DSC Extension Handler
-        $version = '2.3'
+        $version = '2.8'
         #$vm = Set-AzureVMDSCExtension -VM $vm -ConfigurationArchive 'DummyConfig.ps1.zip' -ConfigurationName 'DummyConfig' -Verbose 
         $vm = Set-AzureVMDSCExtension -VM $vm -ConfigurationArchive '' -Version $version -Verbose 
         $vm | Update-AzureVM -Verbose
