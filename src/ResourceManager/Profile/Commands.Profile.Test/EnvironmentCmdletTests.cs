@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
                 PublishSettingsFileUrl = "http://microsoft.com"
             };
 
-            Assert.Throws<ArgumentException>(() => cmdlet.ExecuteCmdlet());
+            Assert.Throws<InvalidOperationException>(() => cmdlet.ExecuteCmdlet());
         }
 
         [Fact]
