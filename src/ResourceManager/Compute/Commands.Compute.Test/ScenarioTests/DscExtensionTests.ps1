@@ -89,7 +89,6 @@ function Test-GetAzureRmVMDscExtension
 		Assert-AreEqual $extension.Publisher "Microsoft.Powershell"
 		Assert-AreEqual $extension.ExtensionType "DSC"
 		Assert-AreEqual $extension.TypeHandlerVersion $version
-		Assert-AreEqual $extension.Location $loc
 		Assert-NotNull $extension.ProvisioningState
 
 		$status = Get-AzureRmVMDscExtensionStatus -ResourceGroupName $rgname -VMName $vmname 
@@ -108,7 +107,7 @@ function Test-GetAzureRmVMDscExtension
 		# Cleanup
 		if(Get-AzureRmResourceGroup -Name $rgname -Location $loc)
 		{
-			Clean-ResourceGroup $rgname
+			#Remove-AzureRmResourceGroup -Name $rgname -Force;
 		}
     }
 }
