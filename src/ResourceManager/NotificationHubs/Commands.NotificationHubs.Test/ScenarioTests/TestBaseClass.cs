@@ -56,12 +56,12 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Test.ScenarioTests
                 SetupManagementClients();
 
                 List<string> modules = new List<string>();
-                modules.Add("Microsoft.Azure.Commands.NotificationHubs.dll");
+                //modules.Add("Microsoft.Azure.Commands.NotificationHubs.dll");
                 modules.Add("ScenarioTests\\" + this.GetType().Name + ".ps1");
                 modules.Add(helper.RMProfileModule);
                 modules.Add(helper.RMResourceModule);
-                modules.Add(helper.RMStorageDataPlaneModule);
-                modules.Add(helper.RMStorageModule);
+                //modules.Add(helper.RMStorageDataPlaneModule);
+                //modules.Add(helper.RMStorageModule);
                 modules.Add(helper.GetRMModulePath(@"AzureRM.NotificationHubs.psd1"));  
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
