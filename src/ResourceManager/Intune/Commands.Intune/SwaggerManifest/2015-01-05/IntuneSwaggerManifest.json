@@ -1,7 +1,7 @@
 {
     "swagger": "2.0",
     "info": {
-        "version": "2015-01-05",
+        "version": "2015-01-11-alpha",
         "title": "IntuneResourceManagementClient",
         "description": "Microsoft.Intune Resource provider Api features in the swagger-2.0 specification"
     },

@@ -8,7 +8,7 @@
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
+// See the License for the specific language governing permissions and 
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
@@ -19,8 +19,6 @@ namespace Microsoft.Azure.Commands.Intune
     /// </summary>
     public class IntuneConstants
     {
-        public static string ApiVersion = "2015-01-11-alpha";
-
         public static int DEFAULT_PIN_RETRIES = 15;
         public static int DEFAULT_RECHECK_ACCESS_OFFLINE_GRACEPERIOD_MINUTES = 720;
         public static int DEFAULT_RECHECK_ACCESSTIMEOUT_MINUTES = 30;

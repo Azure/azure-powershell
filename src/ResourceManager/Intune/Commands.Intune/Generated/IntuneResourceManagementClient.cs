@@ -4,6 +4,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.Net;
     using System.Net.Http;
     using System.Net.Http.Headers;
@@ -14,13 +15,15 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
+    using System.Linq;
+    using Microsoft.Rest.Azure;
     using Models;
 
     /// <summary>
     /// Microsoft.Intune Resource provider Api features in the swagger-2.0
     /// specification
     /// </summary>
-    public partial class IntuneResourceManagementClient : ServiceClient<IntuneResourceManagementClient>, IIntuneResourceManagementClient
+    public partial class IntuneResourceManagementClient : ServiceClient<IntuneResourceManagementClient>, IIntuneResourceManagementClient, IAzureClient
     {
         /// <summary>
         /// The base URI of the service.
@@ -38,15 +41,24 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
         public JsonSerializerSettings DeserializationSettings { get; private set; }        
 
         /// <summary>
-        /// Service Api Version.
+        /// The management credentials for Azure.
         /// </summary>
-        public string ApiVersion { get; set; }
+        public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
-        /// Subscription credentials which uniquely identify client
-        /// subscription.
+        /// Service Api Version.
         /// </summary>
-        public ServiceClientCredentials Credentials { get; set; }
+        public string ApiVersion { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the preferred language for the response.
+        /// </summary>
+        public string AcceptLanguage { get; set; }
+
+        /// <summary>
+        /// The retry timeout for Long Running Operations.
+        /// </summary>
+        public int? LongRunningOperationRetryTimeout { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the IntuneResourceManagementClient class.
@@ -60,7 +72,8 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
         /// Initializes a new instance of the IntuneResourceManagementClient class.
         /// </summary>
         /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
+        /// Optional. The set of delegating handlers to insert in the http
+        /// client pipeline.
         /// </param>
         public IntuneResourceManagementClient(params DelegatingHandler[] handlers) : base(handlers)
         {
@@ -74,7 +87,8 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
         /// Optional. The http client handler used to handle http transport.
         /// </param>
         /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
+        /// Optional. The set of delegating handlers to insert in the http
+        /// client pipeline.
         /// </param>
         public IntuneResourceManagementClient(HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : base(rootHandler, handlers)
         {
@@ -88,7 +102,8 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
         /// Optional. The base URI of the service.
         /// </param>
         /// <param name='handlers'>
-        /// Optional. The delegating handlers to add to the http client pipeline.
+        /// Optional. The set of delegating handlers to insert in the http
+        /// client pipeline.
         /// </param>
         public IntuneResourceManagementClient(Uri baseUri, params DelegatingHandler[] handlers) : this(handlers)
         {
@@ -96,8 +111,53 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             {
                 throw new ArgumentNullException("baseUri");
             }
-            this.Initialize();
             this.BaseUri = baseUri;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the IntuneResourceManagementClient class.
+        /// </summary>
+        /// <param name='credentials'>
+        /// Required. The management credentials for Azure.
+        /// </param>
+        /// <param name='handlers'>
+        /// Optional. The set of delegating handlers to insert in the http
+        /// client pipeline.
+        /// </param>
+        public IntuneResourceManagementClient(ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
+        {
+            if (credentials == null)
+            {
+                throw new ArgumentNullException("credentials");
+            }
+            this.Credentials = credentials;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the IntuneResourceManagementClient class.
+        /// </summary>
+        /// <param name='baseUri'>
+        /// Optional. The base URI of the service.
+        /// </param>
+        /// <param name='credentials'>
+        /// Required. The management credentials for Azure.
+        /// </param>
+        /// <param name='handlers'>
+        /// Optional. The set of delegating handlers to insert in the http
+        /// client pipeline.
+        /// </param>
+        public IntuneResourceManagementClient(Uri baseUri, ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
+        {
+            if (baseUri == null)
+            {
+                throw new ArgumentNullException("baseUri");
+            }
+            if (credentials == null)
+            {
+                throw new ArgumentNullException("credentials");
+            }
+            this.BaseUri = baseUri;
+            this.Credentials = credentials;
         }
 
         /// <summary>
@@ -106,7 +166,9 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
         private void Initialize()
         {
             this.BaseUri = new Uri("https://management.azure.com");
-            if (this.Credentials != null) 
+            this.ApiVersion = "2015-01-11-alpha";
+            this.AcceptLanguage = "en-US";
+            if (this.Credentials != null)
             {
                 this.Credentials.InitializeServiceClient(this);
             }
@@ -119,6 +181,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
                 ReferenceLoopHandling = ReferenceLoopHandling.Serialize,
                 ContractResolver = new ReadOnlyJsonContractResolver()
             };
+            SerializationSettings.Converters.Add(new ResourceJsonConverter()); 
             DeserializationSettings = new JsonSerializerSettings{
                 DateFormatHandling = DateFormatHandling.IsoDateFormat,
                 DateTimeZoneHandling = DateTimeZoneHandling.Utc,
@@ -126,6 +189,8 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
                 ReferenceLoopHandling = ReferenceLoopHandling.Serialize,
                 ContractResolver = new ReadOnlyJsonContractResolver()
             };
+            DeserializationSettings.Converters.Add(new ResourceJsonConverter()); 
+            DeserializationSettings.Converters.Add(new CloudErrorJsonConverter()); 
         }    
         /// <summary>
         /// Returns location for user tenant.
@@ -136,7 +201,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse<LocationCollection>> GetLocationsWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<LocationCollection>> GetLocationsWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (this.ApiVersion == null)
             {
@@ -168,6 +233,15 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             httpRequest.Method = new HttpMethod("GET");
             httpRequest.RequestUri = new Uri(url);
             // Set Headers
+            httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", Guid.NewGuid().ToString());
+            if (this.AcceptLanguage != null)
+            {
+                if (httpRequest.Headers.Contains("accept-language"))
+                {
+                    httpRequest.Headers.Remove("accept-language");
+                }
+                httpRequest.Headers.TryAddWithoutValidation("accept-language", this.AcceptLanguage);
+            }
             if (customHeaders != null)
             {
                 foreach(var header in customHeaders)
@@ -201,7 +275,14 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             cancellationToken.ThrowIfCancellationRequested();
             if (!(statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK")))
             {
-                var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", statusCode));
+                var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", statusCode));
+                string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                CloudError errorBody = JsonConvert.DeserializeObject<CloudError>(responseContent, this.DeserializationSettings);
+                if (errorBody != null)
+                {
+                    ex = new CloudException(errorBody.Message);
+                    ex.Body = errorBody;
+                }
                 ex.Request = httpRequest;
                 ex.Response = httpResponse;
                 if (shouldTrace)
@@ -211,9 +292,13 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
                 throw ex;
             }
             // Create Result
-            var result = new HttpOperationResponse<LocationCollection>();
+            var result = new AzureOperationResponse<LocationCollection>();
             result.Request = httpRequest;
             result.Response = httpResponse;
+            if (httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
             // Deserialize Response
             if (statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK"))
             {
@@ -236,7 +321,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse<Location>> GetLocationByHostNameWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<Location>> GetLocationByHostNameWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (this.ApiVersion == null)
             {
@@ -268,6 +353,15 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             httpRequest.Method = new HttpMethod("GET");
             httpRequest.RequestUri = new Uri(url);
             // Set Headers
+            httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", Guid.NewGuid().ToString());
+            if (this.AcceptLanguage != null)
+            {
+                if (httpRequest.Headers.Contains("accept-language"))
+                {
+                    httpRequest.Headers.Remove("accept-language");
+                }
+                httpRequest.Headers.TryAddWithoutValidation("accept-language", this.AcceptLanguage);
+            }
             if (customHeaders != null)
             {
                 foreach(var header in customHeaders)
@@ -317,9 +411,13 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
                 throw ex;
             }
             // Create Result
-            var result = new HttpOperationResponse<Location>();
+            var result = new AzureOperationResponse<Location>();
             result.Request = httpRequest;
             result.Response = httpResponse;
+            if (httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
             // Deserialize Response
             if (statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK"))
             {
@@ -353,7 +451,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse<ApplicationCollection>> GetApplicationsWithHttpMessagesAsync(string hostName, string filter = default(string), int? top = default(int?), string select = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ApplicationCollection>> GetApplicationsWithHttpMessagesAsync(string hostName, string filter = default(string), int? top = default(int?), string select = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -406,6 +504,15 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             httpRequest.Method = new HttpMethod("GET");
             httpRequest.RequestUri = new Uri(url);
             // Set Headers
+            httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", Guid.NewGuid().ToString());
+            if (this.AcceptLanguage != null)
+            {
+                if (httpRequest.Headers.Contains("accept-language"))
+                {
+                    httpRequest.Headers.Remove("accept-language");
+                }
+                httpRequest.Headers.TryAddWithoutValidation("accept-language", this.AcceptLanguage);
+            }
             if (customHeaders != null)
             {
                 foreach(var header in customHeaders)
@@ -455,9 +562,13 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
                 throw ex;
             }
             // Create Result
-            var result = new HttpOperationResponse<ApplicationCollection>();
+            var result = new AzureOperationResponse<ApplicationCollection>();
             result.Request = httpRequest;
             result.Response = httpResponse;
+            if (httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
             // Deserialize Response
             if (statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK"))
             {
@@ -491,7 +602,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse<IOSMAMPolicyCollection>> GetiOSMAMPoliciesWithHttpMessagesAsync(string hostName, string filter = default(string), int? top = default(int?), string select = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IOSMAMPolicyCollection>> GetiOSMAMPoliciesWithHttpMessagesAsync(string hostName, string filter = default(string), int? top = default(int?), string select = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -544,6 +655,15 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             httpRequest.Method = new HttpMethod("GET");
             httpRequest.RequestUri = new Uri(url);
             // Set Headers
+            httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", Guid.NewGuid().ToString());
+            if (this.AcceptLanguage != null)
+            {
+                if (httpRequest.Headers.Contains("accept-language"))
+                {
+                    httpRequest.Headers.Remove("accept-language");
+                }
+                httpRequest.Headers.TryAddWithoutValidation("accept-language", this.AcceptLanguage);
+            }
             if (customHeaders != null)
             {
                 foreach(var header in customHeaders)
@@ -593,9 +713,13 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
                 throw ex;
             }
             // Create Result
-            var result = new HttpOperationResponse<IOSMAMPolicyCollection>();
+            var result = new AzureOperationResponse<IOSMAMPolicyCollection>();
             result.Request = httpRequest;
             result.Response = httpResponse;
+            if (httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
             // Deserialize Response
             if (statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK"))
             {
@@ -629,7 +753,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse<AndroidMAMPolicyCollection>> GetAndroidMAMPoliciesWithHttpMessagesAsync(string hostName, string filter = default(string), int? top = default(int?), string select = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<AndroidMAMPolicyCollection>> GetAndroidMAMPoliciesWithHttpMessagesAsync(string hostName, string filter = default(string), int? top = default(int?), string select = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -682,6 +806,15 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             httpRequest.Method = new HttpMethod("GET");
             httpRequest.RequestUri = new Uri(url);
             // Set Headers
+            httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", Guid.NewGuid().ToString());
+            if (this.AcceptLanguage != null)
+            {
+                if (httpRequest.Headers.Contains("accept-language"))
+                {
+                    httpRequest.Headers.Remove("accept-language");
+                }
+                httpRequest.Headers.TryAddWithoutValidation("accept-language", this.AcceptLanguage);
+            }
             if (customHeaders != null)
             {
                 foreach(var header in customHeaders)
@@ -731,9 +864,13 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
                 throw ex;
             }
             // Create Result
-            var result = new HttpOperationResponse<AndroidMAMPolicyCollection>();
+            var result = new AzureOperationResponse<AndroidMAMPolicyCollection>();
             result.Request = httpRequest;
             result.Response = httpResponse;
+            if (httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
             // Deserialize Response
             if (statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK"))
             {
@@ -765,7 +902,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse<IOSMAMPolicy>> GetiOSMAMPolicyByIdWithHttpMessagesAsync(string hostName, string policyId, string select = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IOSMAMPolicy>> GetiOSMAMPolicyByIdWithHttpMessagesAsync(string hostName, string policyId, string select = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -814,6 +951,15 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             httpRequest.Method = new HttpMethod("GET");
             httpRequest.RequestUri = new Uri(url);
             // Set Headers
+            httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", Guid.NewGuid().ToString());
+            if (this.AcceptLanguage != null)
+            {
+                if (httpRequest.Headers.Contains("accept-language"))
+                {
+                    httpRequest.Headers.Remove("accept-language");
+                }
+                httpRequest.Headers.TryAddWithoutValidation("accept-language", this.AcceptLanguage);
+            }
             if (customHeaders != null)
             {
                 foreach(var header in customHeaders)
@@ -863,9 +1009,13 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
                 throw ex;
             }
             // Create Result
-            var result = new HttpOperationResponse<IOSMAMPolicy>();
+            var result = new AzureOperationResponse<IOSMAMPolicy>();
             result.Request = httpRequest;
             result.Response = httpResponse;
+            if (httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
             // Deserialize Response
             if (statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK"))
             {
@@ -897,7 +1047,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse<IOSMAMPolicy>> CreateOrUpdateiOSMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, IOSMAMPolicyRequestBody parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IOSMAMPolicy>> CreateOrUpdateiOSMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, IOSMAMPolicyRequestBody parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -946,6 +1096,15 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             httpRequest.Method = new HttpMethod("PUT");
             httpRequest.RequestUri = new Uri(url);
             // Set Headers
+            httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", Guid.NewGuid().ToString());
+            if (this.AcceptLanguage != null)
+            {
+                if (httpRequest.Headers.Contains("accept-language"))
+                {
+                    httpRequest.Headers.Remove("accept-language");
+                }
+                httpRequest.Headers.TryAddWithoutValidation("accept-language", this.AcceptLanguage);
+            }
             if (customHeaders != null)
             {
                 foreach(var header in customHeaders)
@@ -999,9 +1158,13 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
                 throw ex;
             }
             // Create Result
-            var result = new HttpOperationResponse<IOSMAMPolicy>();
+            var result = new AzureOperationResponse<IOSMAMPolicy>();
             result.Request = httpRequest;
             result.Response = httpResponse;
+            if (httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
             // Deserialize Response
             if (statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK"))
             {
@@ -1033,7 +1196,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse<IOSMAMPolicy>> PatchiOSMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, IOSMAMPolicyRequestBody parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IOSMAMPolicy>> PatchiOSMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, IOSMAMPolicyRequestBody parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -1082,6 +1245,15 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             httpRequest.Method = new HttpMethod("PATCH");
             httpRequest.RequestUri = new Uri(url);
             // Set Headers
+            httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", Guid.NewGuid().ToString());
+            if (this.AcceptLanguage != null)
+            {
+                if (httpRequest.Headers.Contains("accept-language"))
+                {
+                    httpRequest.Headers.Remove("accept-language");
+                }
+                httpRequest.Headers.TryAddWithoutValidation("accept-language", this.AcceptLanguage);
+            }
             if (customHeaders != null)
             {
                 foreach(var header in customHeaders)
@@ -1135,9 +1307,13 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
                 throw ex;
             }
             // Create Result
-            var result = new HttpOperationResponse<IOSMAMPolicy>();
+            var result = new AzureOperationResponse<IOSMAMPolicy>();
             result.Request = httpRequest;
             result.Response = httpResponse;
+            if (httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
             // Deserialize Response
             if (statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK"))
             {
@@ -1166,7 +1342,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse> DeleteiOSMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> DeleteiOSMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -1210,6 +1386,15 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             httpRequest.Method = new HttpMethod("DELETE");
             httpRequest.RequestUri = new Uri(url);
             // Set Headers
+            httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", Guid.NewGuid().ToString());
+            if (this.AcceptLanguage != null)
+            {
+                if (httpRequest.Headers.Contains("accept-language"))
+                {
+                    httpRequest.Headers.Remove("accept-language");
+                }
+                httpRequest.Headers.TryAddWithoutValidation("accept-language", this.AcceptLanguage);
+            }
             if (customHeaders != null)
             {
                 foreach(var header in customHeaders)
@@ -1259,9 +1444,13 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
                 throw ex;
             }
             // Create Result
-            var result = new HttpOperationResponse();
+            var result = new AzureOperationResponse();
             result.Request = httpRequest;
             result.Response = httpResponse;
+            if (httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
             if (shouldTrace)
             {
                 ServiceClientTracing.Exit(invocationId, result);
@@ -1287,7 +1476,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse<AndroidMAMPolicy>> GetAndroidMAMPolicyByIdWithHttpMessagesAsync(string hostName, string policyId, string select = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<AndroidMAMPolicy>> GetAndroidMAMPolicyByIdWithHttpMessagesAsync(string hostName, string policyId, string select = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -1336,6 +1525,15 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             httpRequest.Method = new HttpMethod("GET");
             httpRequest.RequestUri = new Uri(url);
             // Set Headers
+            httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", Guid.NewGuid().ToString());
+            if (this.AcceptLanguage != null)
+            {
+                if (httpRequest.Headers.Contains("accept-language"))
+                {
+                    httpRequest.Headers.Remove("accept-language");
+                }
+                httpRequest.Headers.TryAddWithoutValidation("accept-language", this.AcceptLanguage);
+            }
             if (customHeaders != null)
             {
                 foreach(var header in customHeaders)
@@ -1385,9 +1583,13 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
                 throw ex;
             }
             // Create Result
-            var result = new HttpOperationResponse<AndroidMAMPolicy>();
+            var result = new AzureOperationResponse<AndroidMAMPolicy>();
             result.Request = httpRequest;
             result.Response = httpResponse;
+            if (httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
             // Deserialize Response
             if (statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK"))
             {
@@ -1419,7 +1621,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse<AndroidMAMPolicy>> CreateOrUpdateAndroidMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, AndroidMAMPolicyRequestBody parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<AndroidMAMPolicy>> CreateOrUpdateAndroidMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, AndroidMAMPolicyRequestBody parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -1468,6 +1670,15 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             httpRequest.Method = new HttpMethod("PUT");
             httpRequest.RequestUri = new Uri(url);
             // Set Headers
+            httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", Guid.NewGuid().ToString());
+            if (this.AcceptLanguage != null)
+            {
+                if (httpRequest.Headers.Contains("accept-language"))
+                {
+                    httpRequest.Headers.Remove("accept-language");
+                }
+                httpRequest.Headers.TryAddWithoutValidation("accept-language", this.AcceptLanguage);
+            }
             if (customHeaders != null)
             {
                 foreach(var header in customHeaders)
@@ -1521,9 +1732,13 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
                 throw ex;
             }
             // Create Result
-            var result = new HttpOperationResponse<AndroidMAMPolicy>();
+            var result = new AzureOperationResponse<AndroidMAMPolicy>();
             result.Request = httpRequest;
             result.Response = httpResponse;
+            if (httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
             // Deserialize Response
             if (statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK"))
             {
@@ -1555,7 +1770,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse<AndroidMAMPolicy>> PatchAndroidMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, AndroidMAMPolicyRequestBody parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<AndroidMAMPolicy>> PatchAndroidMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, AndroidMAMPolicyRequestBody parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -1604,6 +1819,15 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             httpRequest.Method = new HttpMethod("PATCH");
             httpRequest.RequestUri = new Uri(url);
             // Set Headers
+            httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", Guid.NewGuid().ToString());
+            if (this.AcceptLanguage != null)
+            {
+                if (httpRequest.Headers.Contains("accept-language"))
+                {
+                    httpRequest.Headers.Remove("accept-language");
+                }
+                httpRequest.Headers.TryAddWithoutValidation("accept-language", this.AcceptLanguage);
+            }
             if (customHeaders != null)
             {
                 foreach(var header in customHeaders)
@@ -1657,9 +1881,13 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
                 throw ex;
             }
             // Create Result
-            var result = new HttpOperationResponse<AndroidMAMPolicy>();
+            var result = new AzureOperationResponse<AndroidMAMPolicy>();
             result.Request = httpRequest;
             result.Response = httpResponse;
+            if (httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
             // Deserialize Response
             if (statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK"))
             {
@@ -1688,7 +1916,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse> DeleteAndroidMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> DeleteAndroidMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -1732,6 +1960,15 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             httpRequest.Method = new HttpMethod("DELETE");
             httpRequest.RequestUri = new Uri(url);
             // Set Headers
+            httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", Guid.NewGuid().ToString());
+            if (this.AcceptLanguage != null)
+            {
+                if (httpRequest.Headers.Contains("accept-language"))
+                {
+                    httpRequest.Headers.Remove("accept-language");
+                }
+                httpRequest.Headers.TryAddWithoutValidation("accept-language", this.AcceptLanguage);
+            }
             if (customHeaders != null)
             {
                 foreach(var header in customHeaders)
@@ -1781,9 +2018,13 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
                 throw ex;
             }
             // Create Result
-            var result = new HttpOperationResponse();
+            var result = new AzureOperationResponse();
             result.Request = httpRequest;
             result.Response = httpResponse;
+            if (httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
             if (shouldTrace)
             {
                 ServiceClientTracing.Exit(invocationId, result);
@@ -1814,7 +2055,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse<ApplicationCollection>> GetAppForiOSMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, string filter = default(string), int? top = default(int?), string select = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ApplicationCollection>> GetAppForiOSMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, string filter = default(string), int? top = default(int?), string select = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -1873,6 +2114,15 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             httpRequest.Method = new HttpMethod("GET");
             httpRequest.RequestUri = new Uri(url);
             // Set Headers
+            httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", Guid.NewGuid().ToString());
+            if (this.AcceptLanguage != null)
+            {
+                if (httpRequest.Headers.Contains("accept-language"))
+                {
+                    httpRequest.Headers.Remove("accept-language");
+                }
+                httpRequest.Headers.TryAddWithoutValidation("accept-language", this.AcceptLanguage);
+            }
             if (customHeaders != null)
             {
                 foreach(var header in customHeaders)
@@ -1922,9 +2172,13 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
                 throw ex;
             }
             // Create Result
-            var result = new HttpOperationResponse<ApplicationCollection>();
+            var result = new AzureOperationResponse<ApplicationCollection>();
             result.Request = httpRequest;
             result.Response = httpResponse;
+            if (httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
             // Deserialize Response
             if (statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK"))
             {
@@ -1961,7 +2215,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse<ApplicationCollection>> GetAppForAndroidMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, string filter = default(string), int? top = default(int?), string select = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ApplicationCollection>> GetAppForAndroidMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, string filter = default(string), int? top = default(int?), string select = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -2020,6 +2274,15 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             httpRequest.Method = new HttpMethod("GET");
             httpRequest.RequestUri = new Uri(url);
             // Set Headers
+            httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", Guid.NewGuid().ToString());
+            if (this.AcceptLanguage != null)
+            {
+                if (httpRequest.Headers.Contains("accept-language"))
+                {
+                    httpRequest.Headers.Remove("accept-language");
+                }
+                httpRequest.Headers.TryAddWithoutValidation("accept-language", this.AcceptLanguage);
+            }
             if (customHeaders != null)
             {
                 foreach(var header in customHeaders)
@@ -2069,9 +2332,13 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
                 throw ex;
             }
             // Create Result
-            var result = new HttpOperationResponse<ApplicationCollection>();
+            var result = new AzureOperationResponse<ApplicationCollection>();
             result.Request = httpRequest;
             result.Response = httpResponse;
+            if (httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
             // Deserialize Response
             if (statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK"))
             {
@@ -2106,7 +2373,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse> AddAppForiOSMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, string appId, MAMPolicyAppIdOrGroupIdPayload parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> AddAppForiOSMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, string appId, MAMPolicyAppIdOrGroupIdPayload parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -2165,6 +2432,15 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             httpRequest.Method = new HttpMethod("PUT");
             httpRequest.RequestUri = new Uri(url);
             // Set Headers
+            httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", Guid.NewGuid().ToString());
+            if (this.AcceptLanguage != null)
+            {
+                if (httpRequest.Headers.Contains("accept-language"))
+                {
+                    httpRequest.Headers.Remove("accept-language");
+                }
+                httpRequest.Headers.TryAddWithoutValidation("accept-language", this.AcceptLanguage);
+            }
             if (customHeaders != null)
             {
                 foreach(var header in customHeaders)
@@ -2218,9 +2494,13 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
                 throw ex;
             }
             // Create Result
-            var result = new HttpOperationResponse();
+            var result = new AzureOperationResponse();
             result.Request = httpRequest;
             result.Response = httpResponse;
+            if (httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
             if (shouldTrace)
             {
                 ServiceClientTracing.Exit(invocationId, result);
@@ -2246,7 +2526,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse> DeleteAppForiOSMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, string appId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> DeleteAppForiOSMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, string appId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -2296,6 +2576,15 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             httpRequest.Method = new HttpMethod("DELETE");
             httpRequest.RequestUri = new Uri(url);
             // Set Headers
+            httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", Guid.NewGuid().ToString());
+            if (this.AcceptLanguage != null)
+            {
+                if (httpRequest.Headers.Contains("accept-language"))
+                {
+                    httpRequest.Headers.Remove("accept-language");
+                }
+                httpRequest.Headers.TryAddWithoutValidation("accept-language", this.AcceptLanguage);
+            }
             if (customHeaders != null)
             {
                 foreach(var header in customHeaders)
@@ -2345,9 +2634,13 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
                 throw ex;
             }
             // Create Result
-            var result = new HttpOperationResponse();
+            var result = new AzureOperationResponse();
             result.Request = httpRequest;
             result.Response = httpResponse;
+            if (httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
             if (shouldTrace)
             {
                 ServiceClientTracing.Exit(invocationId, result);
@@ -2377,7 +2670,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse> AddAppForAndriodPolicyWithHttpMessagesAsync(string hostName, string policyId, string appId, MAMPolicyAppIdOrGroupIdPayload parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> AddAppForAndriodPolicyWithHttpMessagesAsync(string hostName, string policyId, string appId, MAMPolicyAppIdOrGroupIdPayload parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -2436,6 +2729,15 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             httpRequest.Method = new HttpMethod("PUT");
             httpRequest.RequestUri = new Uri(url);
             // Set Headers
+            httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", Guid.NewGuid().ToString());
+            if (this.AcceptLanguage != null)
+            {
+                if (httpRequest.Headers.Contains("accept-language"))
+                {
+                    httpRequest.Headers.Remove("accept-language");
+                }
+                httpRequest.Headers.TryAddWithoutValidation("accept-language", this.AcceptLanguage);
+            }
             if (customHeaders != null)
             {
                 foreach(var header in customHeaders)
@@ -2489,9 +2791,13 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
                 throw ex;
             }
             // Create Result
-            var result = new HttpOperationResponse();
+            var result = new AzureOperationResponse();
             result.Request = httpRequest;
             result.Response = httpResponse;
+            if (httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
             if (shouldTrace)
             {
                 ServiceClientTracing.Exit(invocationId, result);
@@ -2517,7 +2823,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse> DeleteAppForAndroidMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, string appId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> DeleteAppForAndroidMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, string appId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -2567,6 +2873,15 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             httpRequest.Method = new HttpMethod("DELETE");
             httpRequest.RequestUri = new Uri(url);
             // Set Headers
+            httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", Guid.NewGuid().ToString());
+            if (this.AcceptLanguage != null)
+            {
+                if (httpRequest.Headers.Contains("accept-language"))
+                {
+                    httpRequest.Headers.Remove("accept-language");
+                }
+                httpRequest.Headers.TryAddWithoutValidation("accept-language", this.AcceptLanguage);
+            }
             if (customHeaders != null)
             {
                 foreach(var header in customHeaders)
@@ -2616,9 +2931,13 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
                 throw ex;
             }
             // Create Result
-            var result = new HttpOperationResponse();
+            var result = new AzureOperationResponse();
             result.Request = httpRequest;
             result.Response = httpResponse;
+            if (httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
             if (shouldTrace)
             {
                 ServiceClientTracing.Exit(invocationId, result);
@@ -2633,7 +2952,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
         /// Location hostName for the tenant
         /// </param>
         /// <param name='policyId'>
-        /// policy id for the tenant
+        /// policy name for the tenant
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -2641,7 +2960,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse<GroupsCollection>> GetGroupsForiOSMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<GroupsCollection>> GetGroupsForiOSMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -2685,6 +3004,15 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             httpRequest.Method = new HttpMethod("GET");
             httpRequest.RequestUri = new Uri(url);
             // Set Headers
+            httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", Guid.NewGuid().ToString());
+            if (this.AcceptLanguage != null)
+            {
+                if (httpRequest.Headers.Contains("accept-language"))
+                {
+                    httpRequest.Headers.Remove("accept-language");
+                }
+                httpRequest.Headers.TryAddWithoutValidation("accept-language", this.AcceptLanguage);
+            }
             if (customHeaders != null)
             {
                 foreach(var header in customHeaders)
@@ -2734,9 +3062,13 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
                 throw ex;
             }
             // Create Result
-            var result = new HttpOperationResponse<GroupsCollection>();
+            var result = new AzureOperationResponse<GroupsCollection>();
             result.Request = httpRequest;
             result.Response = httpResponse;
+            if (httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
             // Deserialize Response
             if (statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK"))
             {
@@ -2757,7 +3089,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
         /// Location hostName for the tenant
         /// </param>
         /// <param name='policyId'>
-        /// policy id for the tenant
+        /// policy name for the tenant
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -2765,7 +3097,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse<GroupsCollection>> GetGroupsForAndroidMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<GroupsCollection>> GetGroupsForAndroidMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -2809,6 +3141,15 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             httpRequest.Method = new HttpMethod("GET");
             httpRequest.RequestUri = new Uri(url);
             // Set Headers
+            httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", Guid.NewGuid().ToString());
+            if (this.AcceptLanguage != null)
+            {
+                if (httpRequest.Headers.Contains("accept-language"))
+                {
+                    httpRequest.Headers.Remove("accept-language");
+                }
+                httpRequest.Headers.TryAddWithoutValidation("accept-language", this.AcceptLanguage);
+            }
             if (customHeaders != null)
             {
                 foreach(var header in customHeaders)
@@ -2858,9 +3199,13 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
                 throw ex;
             }
             // Create Result
-            var result = new HttpOperationResponse<GroupsCollection>();
+            var result = new AzureOperationResponse<GroupsCollection>();
             result.Request = httpRequest;
             result.Response = httpResponse;
+            if (httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
             // Deserialize Response
             if (statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK"))
             {
@@ -2896,7 +3241,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse> AddGroupForiOSMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, string groupId, MAMPolicyAppIdOrGroupIdPayload parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> AddGroupForiOSMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, string groupId, MAMPolicyAppIdOrGroupIdPayload parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -2955,6 +3300,15 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             httpRequest.Method = new HttpMethod("PUT");
             httpRequest.RequestUri = new Uri(url);
             // Set Headers
+            httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", Guid.NewGuid().ToString());
+            if (this.AcceptLanguage != null)
+            {
+                if (httpRequest.Headers.Contains("accept-language"))
+                {
+                    httpRequest.Headers.Remove("accept-language");
+                }
+                httpRequest.Headers.TryAddWithoutValidation("accept-language", this.AcceptLanguage);
+            }
             if (customHeaders != null)
             {
                 foreach(var header in customHeaders)
@@ -3008,9 +3362,13 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
                 throw ex;
             }
             // Create Result
-            var result = new HttpOperationResponse();
+            var result = new AzureOperationResponse();
             result.Request = httpRequest;
             result.Response = httpResponse;
+            if (httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
             if (shouldTrace)
             {
                 ServiceClientTracing.Exit(invocationId, result);
@@ -3036,7 +3394,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse> DeleteGroupForiOSMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, string groupId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> DeleteGroupForiOSMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, string groupId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -3086,6 +3444,15 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             httpRequest.Method = new HttpMethod("DELETE");
             httpRequest.RequestUri = new Uri(url);
             // Set Headers
+            httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", Guid.NewGuid().ToString());
+            if (this.AcceptLanguage != null)
+            {
+                if (httpRequest.Headers.Contains("accept-language"))
+                {
+                    httpRequest.Headers.Remove("accept-language");
+                }
+                httpRequest.Headers.TryAddWithoutValidation("accept-language", this.AcceptLanguage);
+            }
             if (customHeaders != null)
             {
                 foreach(var header in customHeaders)
@@ -3135,9 +3502,13 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
                 throw ex;
             }
             // Create Result
-            var result = new HttpOperationResponse();
+            var result = new AzureOperationResponse();
             result.Request = httpRequest;
             result.Response = httpResponse;
+            if (httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
             if (shouldTrace)
             {
                 ServiceClientTracing.Exit(invocationId, result);
@@ -3167,7 +3538,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse> AddGroupForAndriodPolicyWithHttpMessagesAsync(string hostName, string policyId, string groupId, MAMPolicyAppIdOrGroupIdPayload parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> AddGroupForAndriodPolicyWithHttpMessagesAsync(string hostName, string policyId, string groupId, MAMPolicyAppIdOrGroupIdPayload parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -3226,6 +3597,15 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             httpRequest.Method = new HttpMethod("PUT");
             httpRequest.RequestUri = new Uri(url);
             // Set Headers
+            httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", Guid.NewGuid().ToString());
+            if (this.AcceptLanguage != null)
+            {
+                if (httpRequest.Headers.Contains("accept-language"))
+                {
+                    httpRequest.Headers.Remove("accept-language");
+                }
+                httpRequest.Headers.TryAddWithoutValidation("accept-language", this.AcceptLanguage);
+            }
             if (customHeaders != null)
             {
                 foreach(var header in customHeaders)
@@ -3279,9 +3659,13 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
                 throw ex;
             }
             // Create Result
-            var result = new HttpOperationResponse();
+            var result = new AzureOperationResponse();
             result.Request = httpRequest;
             result.Response = httpResponse;
+            if (httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
             if (shouldTrace)
             {
                 ServiceClientTracing.Exit(invocationId, result);
@@ -3307,7 +3691,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse> DeleteGroupForAndroidMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, string groupId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> DeleteGroupForAndroidMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, string groupId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -3357,6 +3741,15 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             httpRequest.Method = new HttpMethod("DELETE");
             httpRequest.RequestUri = new Uri(url);
             // Set Headers
+            httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", Guid.NewGuid().ToString());
+            if (this.AcceptLanguage != null)
+            {
+                if (httpRequest.Headers.Contains("accept-language"))
+                {
+                    httpRequest.Headers.Remove("accept-language");
+                }
+                httpRequest.Headers.TryAddWithoutValidation("accept-language", this.AcceptLanguage);
+            }
             if (customHeaders != null)
             {
                 foreach(var header in customHeaders)
@@ -3406,9 +3799,13 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
                 throw ex;
             }
             // Create Result
-            var result = new HttpOperationResponse();
+            var result = new AzureOperationResponse();
             result.Request = httpRequest;
             result.Response = httpResponse;
+            if (httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
             if (shouldTrace)
             {
                 ServiceClientTracing.Exit(invocationId, result);
