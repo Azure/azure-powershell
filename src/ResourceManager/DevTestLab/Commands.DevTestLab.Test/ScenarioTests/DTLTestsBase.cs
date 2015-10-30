@@ -28,7 +28,7 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.DevTestLab.Test.ScenarioTests
 {
-    public class DTLTestsBase : RMTestBase
+    public abstract class DTLTestsBase : RMTestBase
     {
         private EnvironmentSetupHelper helper;
 
