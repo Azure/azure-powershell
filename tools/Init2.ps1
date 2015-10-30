@@ -9,7 +9,7 @@
 	# Install-AzureRM
 	
 	write-host "Initializing environment.." -ForegroundColor Cyan
-	..\Initialize-AzureInternalEnvironments.ps1
+	.\Initialize-AzureInternalEnvironments.ps1
 	
 	write-host "Logging in with Azure environment.." -ForegroundColor Cyan
 	$env = Get-AzureRmEnvironment 
