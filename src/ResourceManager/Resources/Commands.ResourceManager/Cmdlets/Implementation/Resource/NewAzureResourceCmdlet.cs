@@ -87,10 +87,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected override void OnProcessRecord()
         {
             base.OnProcessRecord();
-            if(this.IsFullObject.IsPresent)
-            {
-                this.WriteWarning("The IsFullObject parameter is obsolete and will be removed in future releases.");
-            }
 
             var resourceId = this.GetResourceId();
             this.ConfirmAction(
