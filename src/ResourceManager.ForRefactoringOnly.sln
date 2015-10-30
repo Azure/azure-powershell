@@ -126,6 +126,7 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.NotificationHubs.Test", "ResourceManager\NotificationHubs\Commands.NotificationHubs.Test\Commands.NotificationHubs.Test.csproj", "{EA66BF2C-4E5F-42FE-912C-B62AEB588308}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.NotificationHubs", "ResourceManager\NotificationHubs\Commands.NotificationHubs\Commands.NotificationHubs.csproj", "{0C90F837-86C9-4205-858B-4D8DA5CB0352}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.DataLakeAnalytics", "ResourceManager\DataLakeAnalytics\Commands.DataLakeAnalytics\Commands.DataLakeAnalytics.csproj", "{8A397A61-6DC3-4244-9A40-D44A22152AAE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.DataLakeStore", "ResourceManager\DataLakeStore\Commands.DataLakeStore\Commands.DataLakeStore.csproj", "{8AAB43E6-E8F6-4F91-AF8A-6A63CD78EF1E}"
@@ -133,7 +134,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.DataLakeStore.Test", "ResourceManager\DataLakeStore\Commands.DataLakeStore.Test\Commands.DataLakeStore.Test.csproj", "{B0D03ECF-9F25-499A-BE25-D668E0D208AA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.DataLakeAnalytics.Test", "ResourceManager\DataLakeAnalytics\Commands.DataLakeAnalytics.Test\Commands.DataLakeAnalytics.Test.csproj", "{E6122DB1-1466-47EE-8BA0-73F9CA90F826}"
->>>>>>> refs/remotes/Azure/dev
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

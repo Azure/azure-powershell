@@ -158,12 +158,20 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\NotificationHubServiceTests.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.NotificationHubs.Test.ScenarioTests.NotificationHubServiceTests\TestCRUDNamespace.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.NotificationHubs.Test.ScenarioTests.NotificationHubServiceTests\TestCRUDNamespaceAuth.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.NotificationHubs.Test.ScenarioTests.NotificationHubServiceTests\TestCRUDNHAuth.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.NotificationHubs.Test.ScenarioTests.NotificationHubServiceTests\TestCRUDNotificationHub.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.NotificationHubs.Test.ScenarioTests.NotificationHubServiceTests\TestCRUDNamespace.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.NotificationHubs.Test.ScenarioTests.NotificationHubServiceTests\TestCRUDNamespaceAuth.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.NotificationHubs.Test.ScenarioTests.NotificationHubServiceTests\TestCRUDNHAuth.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.NotificationHubs.Test.ScenarioTests.NotificationHubServiceTests\TestCRUDNotificationHub.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\NewNotificationHub.json">
