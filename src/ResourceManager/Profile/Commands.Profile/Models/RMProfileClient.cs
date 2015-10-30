@@ -55,7 +55,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             AzureSubscription newSubscription = null;
             AzureTenant newTenant = null;
-            ShowDialog promptBehavior = (password == null && account.Type != AzureAccount.AccountType.AccessToken && !account.IsPropertySet(AzureAccount.Property.CertificateThumbprint))
+            ShowDialog promptBehavior = 
+                (password == null && 
+                 account.Type != AzureAccount.AccountType.AccessToken && 
+                 !account.IsPropertySet(AzureAccount.Property.CertificateThumbprint))
                 ? ShowDialog.Always : ShowDialog.Never;
 
             // (tenant and subscription are present) OR
@@ -254,7 +257,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
             if (AzureEnvironment.PublicEnvironments.ContainsKey(environment.Name))
             {
-                throw new ArgumentException(Resources.ChangingDefaultEnvironmentNotSupported, "environment");
+                throw new InvalidOperationException(
+                    string.Format(Resources.ChangingDefaultEnvironmentNotSupported, "environment"));
             }
 
             if (_profile.Environments.ContainsKey(environment.Name))
