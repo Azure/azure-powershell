@@ -76,9 +76,9 @@ namespace Microsoft.Azure.Commands.Intune
             var androidPolicies = this.IntuneClient.GetAndroidMAMPolicies(this.AsuHostName);
             if (androidPolicies != null && androidPolicies.Value.Count > 0)
             {
-                for (int start = 0; start < androidPolicies.Value.Count; start += IntuneConstants.BATCH_SIZE)
+                for (int start = 0; start < androidPolicies.Value.Count; start += IntuneConstants.BatchSize)
                 {
-                    var batch = androidPolicies.Value.Skip(start).Take(IntuneConstants.BATCH_SIZE);
+                    var batch = androidPolicies.Value.Skip(start).Take(IntuneConstants.BatchSize);
                     this.WriteObject(batch, enumerateCollection: true);
                 }
             }

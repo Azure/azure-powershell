@@ -46,6 +46,7 @@ namespace Microsoft.Azure.Commands.Intune
             required,
             notRequired
         }
+
         /// <summary>
         /// Types of clipboard sharing levels
         /// </summary>

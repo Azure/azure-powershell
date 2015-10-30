@@ -43,9 +43,9 @@ namespace Microsoft.Azure.Commands.Intune
 
                 if (groupCollection != null && groupCollection.Value.Count > 0)
                 {
-                    for (int start = 0; start < groupCollection.Value.Count; start += IntuneConstants.BATCH_SIZE)
+                    for (int start = 0; start < groupCollection.Value.Count; start += IntuneConstants.BatchSize)
                     {
-                        var batch = groupCollection.Value.Skip(start).Take(IntuneConstants.BATCH_SIZE);
+                        var batch = groupCollection.Value.Skip(start).Take(IntuneConstants.BatchSize);
                         this.WriteObject(batch, enumerateCollection: true);
                     }
                 }

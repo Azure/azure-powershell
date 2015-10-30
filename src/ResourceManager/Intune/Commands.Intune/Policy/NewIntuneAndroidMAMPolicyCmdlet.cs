@@ -195,10 +195,10 @@ namespace Microsoft.Azure.Commands.Intune
         /// </summary>
         private void InitializeDefaultValuesForParams()
         {
-            this.PinRetries = this.PinRetries ?? IntuneConstants.DEFAULT_PIN_RETRIES;
-            this.RecheckAccessOfflineGracePeriodMinutes = this.RecheckAccessOfflineGracePeriodMinutes ?? IntuneConstants.DEFAULT_RECHECK_ACCESS_OFFLINE_GRACEPERIOD_MINUTES;
-            this.RecheckAccessTimeoutMinutes = this.RecheckAccessTimeoutMinutes ?? IntuneConstants.DEFAULT_RECHECK_ACCESSTIMEOUT_MINUTES;
-            this.OfflineWipeIntervalDays = this.OfflineWipeIntervalDays ?? IntuneConstants.DEFAULT_OFFLINE_WIPEINTERVAL_DAYS;
+            this.PinRetries = this.PinRetries ?? IntuneConstants.DefaultPinRetries;
+            this.RecheckAccessOfflineGracePeriodMinutes = this.RecheckAccessOfflineGracePeriodMinutes ?? IntuneConstants.DefaultRecheckAccessOfflineGraceperiodMinutes;
+            this.RecheckAccessTimeoutMinutes = this.RecheckAccessTimeoutMinutes ?? IntuneConstants.DefaultRecheckAccessTimeoutMinutes;
+            this.OfflineWipeIntervalDays = this.OfflineWipeIntervalDays ?? IntuneConstants.DefaultOfflineWipeIntervalDays;
             this.Description = this.Description ?? "New Android Policy";
         }
 
