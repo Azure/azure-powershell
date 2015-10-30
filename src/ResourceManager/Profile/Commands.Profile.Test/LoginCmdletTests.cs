@@ -209,6 +209,10 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.Equal(cmdlt.TenantId, AzureRmProfileProvider.Instance.Profile.Context.Tenant.Id.ToString());
             Assert.Equal(cmdlt.ApplicationId, AzureRmProfileProvider.Instance.Profile.Context.Account.Id.ToString());
             Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context.Subscription);
+            Assert.Equal(
+                cmdlt.CertificateThumbprint,
+                AzureRmProfileProvider.Instance.Profile.Context.Account.GetProperty(AzureAccount.Property.CertificateThumbprint));
+            
         }
     }
 }
