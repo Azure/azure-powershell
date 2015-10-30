@@ -349,6 +349,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
                     ServiceProperties sp = new ServiceProperties();
                     sp.Clean();
                     sp.Cors = fileServiceProperties.Cors;
+                    sp.HourMetrics = fileServiceProperties.HourMetrics;
+                    sp.MinuteMetrics = fileServiceProperties.MinuteMetrics;
                     return sp;
                 default:
                     throw new ArgumentException(Resources.InvalidStorageServiceType, "type");
@@ -383,13 +385,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
                         throw new InvalidOperationException(Resources.FileNotSupportLogging);
                     }
 
-                    if (null != properties.HourMetrics || null != properties.MinuteMetrics)
-                    {
-                        throw new InvalidOperationException(Resources.FileNotSupportMetrics);
-                    }
-
                     FileServiceProperties fileServiceProperties = new FileServiceProperties();
                     fileServiceProperties.Cors = properties.Cors;
+                    fileServiceProperties.HourMetrics = properties.HourMetrics;
+                    fileServiceProperties.MinuteMetrics = properties.MinuteMetrics;
                     account.CreateCloudFileClient().SetServiceProperties(fileServiceProperties, (FileRequestOptions)options, operationContext);
                     break;
                 default:
