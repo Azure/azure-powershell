@@ -95,6 +95,7 @@ NestedModules = @(
     '.\AzureRM.RedisCache',  
     '.\AzureRM.Batch',  
     '.\AzureRM.Dns',  
+    '.\AzureRM.DevTestLab',  
     '.\AzureRM.KeyVault',  
     '.\AzureRM.TrafficManager',  
     '.\AzureRM.StreamAnalytics',  

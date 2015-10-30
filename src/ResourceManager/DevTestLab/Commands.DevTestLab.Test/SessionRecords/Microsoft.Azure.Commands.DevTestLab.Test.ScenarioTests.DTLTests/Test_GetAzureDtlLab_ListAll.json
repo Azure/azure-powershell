@@ -1,0 +1,74 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/fe869d2a-4f32-41a5-a22f-53ea1a952ceb/providers/Microsoft.DevTestLab/labs?api-version=2015-05-21-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmU4NjlkMmEtNGYzMi00MWE1LWEyMmYtNTNlYTFhOTUyY2ViL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2VGVzdExhYi9sYWJzP2FwaS12ZXJzaW9uPTIwMTUtMDUtMjEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.DevTestLab.DevTestLabManagementClient/0.9.9.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/fe869d2a-4f32-41a5-a22f-53ea1a952ceb/resourceGroups/hackathonlabrg/providers/Microsoft.DevTestLab/labs/HackathonLab\",\r\n      \"name\": \"HackathonLab\",\r\n      \"type\": \"Microsoft.DevTestLab/labs\",\r\n      \"location\": \"East Asia\",\r\n      \"properties\": {\r\n        \"defaultStorageAccount\": \"msdtlvm1972098908\",\r\n        \"storageAccounts\": [\r\n          \"msdtlvm1072077560\",\r\n          \"msdtlvm1141998\",\r\n          \"msdtlvm1285818648\",\r\n          \"msdtlvm128630067\",\r\n          \"msdtlvm1385291969\",\r\n          \"msdtlvm1398396194\",\r\n          \"msdtlvm1399344498\",\r\n          \"msdtlvm1660581803\",\r\n          \"msdtlvm1826968769\",\r\n          \"msdtlvm1838008273\",\r\n          \"msdtlvm1972098908\",\r\n          \"msdtlvm240558969\",\r\n          \"msdtlvm333396372\",\r\n          \"msdtlvm388957844\",\r\n          \"msdtlvm451896900\",\r\n          \"msdtlvm516368361\",\r\n          \"msdtlvm520459027\",\r\n          \"msdtlvm537863017\",\r\n          \"msdtlvm605750733\",\r\n          \"msdtlvm744862156\",\r\n          \"msdtlvm806243040\",\r\n          \"msdtlvm926627167\",\r\n          \"msdtlvm932562907\",\r\n          \"msdtlvm94160272\",\r\n          \"msdtlvm970890712\",\r\n          \"msdtlvm1972098908\"\r\n        ],\r\n        \"vaultName\": \"msdtl1020065959\",\r\n        \"provisioningState\": \"Succeeded\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "873"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-rp-requesturi": [
+          "https://eastasia.rp1.vsdth.visualstudio.com/subscriptions/fe869d2a-4f32-41a5-a22f-53ea1a952ceb/providers/Microsoft.DevTestLab/labs?api-version=2015-05-21-preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14999"
+        ],
+        "x-ms-request-id": [
+          "71aaf547-4abc-43a8-81b2-b5afbc9b1a17"
+        ],
+        "x-ms-correlation-request-id": [
+          "71aaf547-4abc-43a8-81b2-b5afbc9b1a17"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTEUROPE:20151029T204636Z:71aaf547-4abc-43a8-81b2-b5afbc9b1a17"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 29 Oct 2015 20:46:35 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=80192df3fa169c770d60f47dfac48555590a120618eb1e23ddd83c2a9842a4a5;Path=/;Domain=eastasia.rp1.vsdth.visualstudio.com"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "fe869d2a-4f32-41a5-a22f-53ea1a952ceb"
+  }
+}
