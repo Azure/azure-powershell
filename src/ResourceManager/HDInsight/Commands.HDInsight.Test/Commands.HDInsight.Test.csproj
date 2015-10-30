@@ -158,7 +158,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HDInsightTestBase.cs" />
-    <None Include="app.config" />
     <None Include="ScenarioTests\HDInsightConfigurationTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
