@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public partial class VMDynamicTests
     {
-        [Fact]
+        //[Fact]
         //[Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RunVMDynamicTests()
         {
