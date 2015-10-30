@@ -84,11 +84,19 @@ namespace Microsoft.Azure.Commands.Profile
         public string SqlDatabaseDnsSuffix { get; set; }
 
         [Parameter(Position = 14, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Dns Suffix of Azure Data Lake Store FileSystem. Example: azuredatalake.net")]
+        public string AzureDataLakeStoreFileSystemEndpointSuffix { get; set; }
+
+        [Parameter(Position = 15, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Dns Suffix of Azure Data Lake Analytics job and catalog services")]
+        public string AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix { get; set; }
+
+        [Parameter(Position = 16, Mandatory = false, ValueFromPipelineByPropertyName = true,
            HelpMessage = "Determines whether to enable ADFS authentication, or to use AAD authentication instead. This value is normally true only for Azure Stack endpoints.")]
         [Alias("OnPremise")]
         public SwitchParameter EnableAdfsAuthentication { get; set; }
 
-        [Parameter(Position = 15, Mandatory = false, ValueFromPipelineByPropertyName = true,
+        [Parameter(Position = 17, Mandatory = false, ValueFromPipelineByPropertyName = true,
            HelpMessage = "The default tenant for this environment.")]
         public string AdTenant { get; set; }
 
@@ -127,6 +135,8 @@ namespace Microsoft.Azure.Commands.Profile
             SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId, AzureKeyVaultServiceEndpointResourceId);
             SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.TrafficManagerDnsSuffix, TrafficManagerDnsSuffix);
             SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix, SqlDatabaseDnsSuffix);
+            SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix, AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix);
+            SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix, AzureDataLakeStoreFileSystemEndpointSuffix);
             SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.AdTenant, AdTenant);
 
             profileClient.AddOrSetEnvironment(newEnvironment);

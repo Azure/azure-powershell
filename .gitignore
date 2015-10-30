@@ -195,3 +195,5 @@ FakesAssemblies/
 
 .vs/
 /tools/*.dll
+*.GhostDoc.xml
+pingme.txt
