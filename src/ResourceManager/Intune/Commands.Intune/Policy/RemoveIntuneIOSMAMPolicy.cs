@@ -58,6 +58,8 @@ namespace Microsoft.Azure.Commands.Intune
                     {
                         this.IntuneClient.DeleteiOSMAMPolicy(this.AsuHostName, this.Name);
                         this.WriteObject("1 item deleted");
+
+                        // TODO: Make sure that the policy does not exist - it says 0 item deleted
                     });
             };
 

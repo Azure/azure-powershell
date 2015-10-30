@@ -26,8 +26,8 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-	<OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.Intune</OutputPath>
-	<DefineConstants>TRACE;SIGN</DefineConstants>
+    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.Intune</OutputPath>
+    <DefineConstants>TRACE;SIGN</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -129,6 +129,8 @@
     <Compile Include="NumericParameterValueChecker.cs" />
     <Compile Include="Apps\RemoveIntuneAndroidMAMPolicyAppCmdlet.cs" />
     <Compile Include="Apps\RemoveIntuneiOSMAMPolicyAppCmdlet.cs" />
+    <Compile Include="Policy\RemoveIntuneAndroidMAMPolicy.cs" />
+    <Compile Include="Policy\RemoveIntuneIOSMAMPolicy.cs" />
     <Compile Include="Policy\SetIntuneAndroidMAMPolicyCmdlet.cs" />
     <Compile Include="Policy\SetIntuneiOSMAMPolicyCmdlet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -163,7 +165,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />  
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
