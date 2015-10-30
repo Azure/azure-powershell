@@ -9,10 +9,10 @@
 @{  
   
 # Version number of this module.  
-ModuleVersion = '0.9.8'  
+ModuleVersion = '0.10.1' 
   
 # ID used to uniquely identify this module  
-GUID = '5A326AE2-2143-470F-AB1C-DEC910F9D75B'  
+GUID = '36a788d2-8c8a-49f8-88dc-e9b853379713'  
   
 # Author of this module  
 Author = 'Microsoft Corporation'  
@@ -21,10 +21,10 @@ Author = 'Microsoft Corporation'
 CompanyName = 'Microsoft Corporation'  
   
 # Copyright statement for this module  
-Copyright = '© Microsoft Corporation. All rights reserved.'    
+Copyright = 'Microsoft Corporation. All rights reserved.'    
   
 # Description of the functionality provided by this module  
-Description = 'Microsoft Azure PowerShell - DevTestLab'  
+Description = 'Microsoft Azure PowerShell - DevTestLab service cmdlets for Azure Resource Manager'  
   
 # Minimum version of the Windows PowerShell engine required by this module  
 PowerShellVersion = '3.0'  
@@ -45,7 +45,7 @@ CLRVersion='4.0'
 ProcessorArchitecture = 'None'  
   
 # Modules that must be imported into the global environment prior to importing this module  
-RequiredModules = @()
+RequiredModules = @( @{ ModuleName = 'AzureRM.Profile'; ModuleVersion = '0.10.0'})
   
 # Assemblies that must be loaded prior to importing this module  
 RequiredAssemblies = @()  
