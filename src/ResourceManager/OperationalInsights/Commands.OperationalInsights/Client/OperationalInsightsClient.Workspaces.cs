@@ -258,10 +258,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         public virtual List<PSIntelligencePack> GetIntelligencePackList(string resourceGroupName, string workspaceName)
         {
             List<PSIntelligencePack> intelligencePacks = new List<PSIntelligencePack>();
-            if (string.IsNullOrWhiteSpace(workspaceName) || string.IsNullOrWhiteSpace(resourceGroupName))
-            {
-                throw new ArgumentException(Resources.ResourceGroupNameCannotBeEmpty);
-            }
 
             var listResponse = OperationalInsightsManagementClient.Workspaces.ListIntelligencePacks(resourceGroupName, workspaceName);
             if (listResponse != null)
@@ -272,22 +268,17 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             return intelligencePacks;
         }
 
-        public virtual string SetIntelligencePack(string resourceGroupName, string workspaceName, string intelligencePack, bool enabled)
+        public virtual PSIntelligencePack SetIntelligencePack(string resourceGroupName, string workspaceName, string intelligencePackName, bool enabled)
         {
-            if (string.IsNullOrWhiteSpace(workspaceName) || string.IsNullOrWhiteSpace(resourceGroupName))
-            {
-                throw new ArgumentException(Resources.ResourceGroupNameCannotBeEmpty);
-            }
-
             if (enabled)
             {
-                OperationalInsightsManagementClient.Workspaces.EnableIntelligencePackAsync(resourceGroupName, workspaceName, intelligencePack);
-                return "enabled";
+                OperationalInsightsManagementClient.Workspaces.EnableIntelligencePackAsync(resourceGroupName, workspaceName, intelligencePackName);
+                return new PSIntelligencePack(intelligencePackName, enabled); ;
             }
             else
             {
-                OperationalInsightsManagementClient.Workspaces.DisableIntelligencePackAsync(resourceGroupName, workspaceName, intelligencePack);
-                return "disabled";
+                OperationalInsightsManagementClient.Workspaces.DisableIntelligencePackAsync(resourceGroupName, workspaceName, intelligencePackName);
+                return new PSIntelligencePack(intelligencePackName, enabled);
             }
         }
         private bool CheckWorkspaceExists(string resourceGroupName, string workspaceName)

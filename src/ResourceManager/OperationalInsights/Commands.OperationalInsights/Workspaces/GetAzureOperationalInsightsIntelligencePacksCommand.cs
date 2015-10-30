@@ -18,17 +18,18 @@ using Microsoft.Azure.Commands.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet(VerbsCommon.Get, Constants.IntelligencePack), OutputType(typeof(List<PSIntelligencePack>))]
-    public class GetAzureOperationalInsightsIntelligencePackCommand : OperationalInsightsBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, Constants.IntelligencePacks), OutputType(typeof(List<PSIntelligencePack>))]
+    public class GetAzureOperationalInsightsIntelligencePacksCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, ValueFromPipeline = true,
+        [Alias("Name")]
+        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The workspace name.")]
-        [ValidateNotNull]
+        [ValidateNotNullOrEmpty]
         public string WorkspaceName { get; set; }
 
         protected override void ProcessRecord()

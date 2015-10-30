@@ -154,7 +154,7 @@
     <Compile Include="StorageInsights\NewAzureOperationalInsightsStorageInsightCommand.cs" />
     <Compile Include="StorageInsights\RemoveAzureOperationalInsightsStorageInsightCommand.cs" />
     <Compile Include="Workspaces\SetAzureOperationalInsightsIntelligencePackCommand.cs" />
-    <Compile Include="Workspaces\GetAzureOperationalInsightsIntelligencePackCommand.cs" />
+    <Compile Include="Workspaces\GetAzureOperationalInsightsIntelligencePacksCommand.cs" />
     <Compile Include="Workspaces\GetAzureOperationalInsightsWorkspaceManagementGroupsCommand.cs" />
     <Compile Include="Workspaces\GetAzureOperationalInsightsLinkTargetsCommand.cs" />
     <Compile Include="Workspaces\GetAzureOperationalInsightsWorkspaceUsageCommand.cs" />

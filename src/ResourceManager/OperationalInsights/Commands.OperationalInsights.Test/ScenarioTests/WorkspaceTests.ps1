@@ -170,11 +170,11 @@ function Test-WorkspaceEnableDisableListIntelligencePacks
     Assert-NotNull $workspace.PortalUrl
 
     # Enable intelligence packs
-	Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $rgname -WorkspaceName $wsname -IntelligencePack "ChangeTracking" -Enabled $true
-	Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $rgname -WorkspaceName $wsname -IntelligencePack "SiteRecovery" -Enabled $true
+	Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $rgname -WorkspaceName $wsname -IntelligencePackName "ChangeTracking" -Enabled $true
+	Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $rgname -WorkspaceName $wsname -IntelligencePackName "SiteRecovery" -Enabled $true
 
 	# List to verify that the IP's have been enabled
-	$ipList = Get-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $rgname -WorkspaceName $wsname
+	$ipList = Get-AzureRmOperationalInsightsIntelligencePacks -ResourceGroupName $rgname -WorkspaceName $wsname
 	Foreach ($ip in $ipList)
 	{
 		if (($ip.Name -eq "ChangeTracking") -or ($ip.Name -eq "SiteRecovery") -or ($ip.Name -eq "LogManagement"))
@@ -188,14 +188,14 @@ function Test-WorkspaceEnableDisableListIntelligencePacks
 	}
 
 	# Disable intelligence packs
-	#Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $rgname -WorkspaceName $wsname -IntelligencePack "ChangeTracking" -Enabled $false
-	#Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $rgname -WorkspaceName $wsname -IntelligencePack "SiteRecovery" -Enabled $false
+	Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $rgname -WorkspaceName $wsname -IntelligencePackName "ChangeTracking" -Enabled $false
+	Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $rgname -WorkspaceName $wsname -IntelligencePackName "SiteRecovery" -Enabled $false
 
 	# List to verify that the IP's have been disabled
-	$ipList = Get-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $rgname -WorkspaceName $wsname
+	$ipList = Get-AzureRmOperationalInsightsIntelligencePacks -ResourceGroupName $rgname -WorkspaceName $wsname
 	Foreach ($ip in $ipList)
 	{
-		if (($ip.Name -eq "ChangeTracking") -or ($ip.Name -eq "SiteRecovery") -or ($ip.Name -eq "LogManagement"))
+		if ($ip.Name -eq "LogManagement")
 		{
 			Assert-True $ip.Enabled
 		}

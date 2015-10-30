@@ -26,24 +26,24 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, ValueFromPipeline = true,
+        [Alias("Name")]
+        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The workspace name.")]
-        [ValidateNotNull]
+        [ValidateNotNullOrEmpty]
         public string WorkspaceName { get; set; }
 
-        [Parameter(Position = 2, Mandatory = true, ValueFromPipeline = true,
+        [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The intelligence pack name.")]
         [ValidateNotNullOrEmpty]
-        public string IntelligencePack { get; set; }
+        public string IntelligencePackName { get; set; }
 
         [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Boolean that indicates whether the intelligence pack will be enabled or disabled.")]
-        [ValidateNotNull]
         public bool Enabled { get; set; }
 
         protected override void ProcessRecord()
         {
-            WriteObject(OperationalInsightsClient.SetIntelligencePack(ResourceGroupName, WorkspaceName, IntelligencePack, Enabled), true);
+            WriteObject(OperationalInsightsClient.SetIntelligencePack(ResourceGroupName, WorkspaceName, IntelligencePackName, Enabled), true);
         }
 
     }
