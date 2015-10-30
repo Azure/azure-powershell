@@ -8,6 +8,7 @@ using System.Collections;
 using System.Management.Automation;
 using System.Globalization;
 using AutoMapper;
+using Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
@@ -191,8 +192,24 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                                                       ErrorCategory.InvalidResult,
                                                       null));
             }
-            if (returnedExtension.Publisher.Equals(AzureDiskEncryptionExtensionContext.ExtensionDefaultPublisher, StringComparison.InvariantCultureIgnoreCase) &&
-                returnedExtension.ExtensionType.Equals(AzureDiskEncryptionExtensionContext.ExtensionDefaultName, StringComparison.InvariantCultureIgnoreCase))
+            bool publisherMismatch = false;
+            if (string.Equals(currentOSType, "Linux", StringComparison.InvariantCultureIgnoreCase))
+            {
+                if (returnedExtension.Publisher.Equals(AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultPublisher, StringComparison.InvariantCultureIgnoreCase) &&
+                                  returnedExtension.ExtensionType.Equals(AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultName, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    publisherMismatch = true;
+                }
+            }
+            else if(string.Equals(currentOSType,"Windows",StringComparison.InvariantCultureIgnoreCase))
+            {
+                if (returnedExtension.Publisher.Equals(AzureDiskEncryptionExtensionContext.ExtensionDefaultPublisher, StringComparison.InvariantCultureIgnoreCase) &&
+                               returnedExtension.ExtensionType.Equals(AzureDiskEncryptionExtensionContext.ExtensionDefaultName, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    publisherMismatch = true;
+                }
+            }
+            if (publisherMismatch)
             {
                 AzureDiskEncryptionExtensionContext context = new AzureDiskEncryptionExtensionContext(returnedExtension);
                 if ((context == null) ||
@@ -293,6 +310,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             string SettingString = GetExtensionPublicSettings();
             string ProtectedSettingString = GetExtensionProtectedSettings();
 
+
             VirtualMachine vmParameters = (this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName)).VirtualMachine;
             if (vmParameters == null)
             {
@@ -302,20 +320,40 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                                                       null));
             }
 
-            VirtualMachineExtension vmExtensionParameters = new VirtualMachineExtension
+            VirtualMachineExtension vmExtensionParameters = null;
+            if (string.Equals(currentOSType, "Windows", StringComparison.InvariantCultureIgnoreCase))
             {
-                Location = vmParameters.Location,
-                Name = this.Name,
-                Type = VirtualMachineExtensionType,
-                Publisher = AzureDiskEncryptionExtensionContext.ExtensionDefaultPublisher,
-                ExtensionType = AzureDiskEncryptionExtensionContext.ExtensionDefaultName,
-                TypeHandlerVersion = (this.TypeHandlerVersion) ?? AzureDiskEncryptionExtensionContext.ExtensionDefaultVersion,
-                Settings = SettingString,
-                ProtectedSettings = ProtectedSettingString,
-            };
+                vmExtensionParameters = new VirtualMachineExtension
+                {
+                    Location = vmParameters.Location,
+                    Name = this.Name,
+                    Type = VirtualMachineExtensionType,
+                    Publisher = AzureDiskEncryptionExtensionContext.ExtensionDefaultPublisher,
+                    ExtensionType = AzureDiskEncryptionExtensionContext.ExtensionDefaultName,
+                    TypeHandlerVersion = (this.TypeHandlerVersion) ?? AzureDiskEncryptionExtensionContext.ExtensionDefaultVersion,
+                    Settings = SettingString,
+                    ProtectedSettings = ProtectedSettingString,
+                };
+            }
+            else if (string.Equals(currentOSType, "Linux", StringComparison.InvariantCultureIgnoreCase))
+            {
+                vmExtensionParameters = new VirtualMachineExtension
+                {
+                    Location = vmParameters.Location,
+                    Name = this.Name,
+                    Type = VirtualMachineExtensionType,
+                    Publisher = AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultPublisher,
+                    ExtensionType = AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultName,
+                    TypeHandlerVersion = (this.TypeHandlerVersion) ?? AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultVersion,
+                    Settings = SettingString,
+                    ProtectedSettings = ProtectedSettingString,
+                };
+            }
 
             return vmExtensionParameters;
         }
+
+        private string currentOSType = null;
 
         protected override void ProcessRecord()
         {
@@ -326,11 +364,42 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 if (this.Force.IsPresent ||
                 this.ShouldContinue(Properties.Resources.EnableAzureDiskEncryptionConfirmation, Properties.Resources.EnableAzureDiskEncryptionCaption))
                 {
+                    VirtualMachine virtualMachineResponse = this.ComputeClient.ComputeManagementClient.VirtualMachines.GetWithInstanceView(this.ResourceGroupName, VMName).VirtualMachine;
+
+                    currentOSType = virtualMachineResponse.StorageProfile.OSDisk.OperatingSystemType;
+
+                    if(string.Equals(currentOSType,"Linux",StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        try
+                        {
+                            AzureVMBackupExtensionUtil azureBackupExtensionUtil = new AzureVMBackupExtensionUtil();
+                            AzureVMBackupConfig vmConfig = new AzureVMBackupConfig();
+                            vmConfig.ResourceGroupName = ResourceGroupName;
+                            vmConfig.VMName = VMName;
+                            vmConfig.VirtualMachineExtensionType = VirtualMachineExtensionType;
+                            string tag = string.Format("{0}{1}", "AzureEnc", Guid.NewGuid().ToString());
+                            // this would create shapshot only for Linux box. and we should wait for the snapshot found.
+                            azureBackupExtensionUtil.CreateSnapshotForDisks(vmConfig, tag, this);
+                            
+                            WriteInformation(new InformationRecord(string.Format("one snapshot for disks are created with tag,{0}",tag), string.Empty));
+                        }
+                        catch (AzureVMBackupException e)
+                        {
+                            ThrowTerminatingError(new ErrorRecord(new ApplicationException(string.Format(CultureInfo.CurrentUICulture, e.ToString())),
+                                                      "InvalidResult",
+                                                      ErrorCategory.InvalidResult,
+                                                      null));
+                        }
+                    }
+
                     VirtualMachineExtension parameters = GetVmExtensionParameters();
 
                     this.VirtualMachineExtensionClient.CreateOrUpdate(this.ResourceGroupName,
                                                                                this.VMName,
                                                                                parameters);
+
+                    
+
                     var op = UpdateVmEncryptionSettings();
                     WriteObject(Mapper.Map<PSComputeLongRunningOperation>(op));
                 }
