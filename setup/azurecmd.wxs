@@ -48,8 +48,8 @@
     </Property>
 
     <Property Id="POWERSHELLGETAZUREINSTALLED" >
-      <DirectorySearch Id="PROGRAMFILESCONTAINER" Path="[BaseModulesFolder]">
-        <DirectorySearch Id= "PROFILEMODULE" Path="Azure"/>
+      <DirectorySearch Id="AZURECONTAINER" Path="[BaseModulesFolder]">
+        <DirectorySearch Id= "AZUREMODULE" Path="Azure"/>
       </DirectorySearch>
     </Property>
 
