@@ -874,7 +874,7 @@ function Test-AzureDiskEncryptionExtension
         $user2 = "Bar12";
         $password2 = 'FoO@123' + $rgname;
 		$aadClientID = '97f847ef-9e1e-4c7c-9ae7-1c0f7c78f761';
-		$aadClientSecret = 'e8335678-2063-4620-afa3-5ba815e27fd3';
+		$aadClientSecret = '';
 		$diskEncryptionKeyVaultUrl  = 'https://sureddvaultsc2.vault.azure.net'
 		$diskEncryptionKeyVaultId = '/subscriptions/0ee9d577-9bc4-4a32-a4e8-c29981025378/resourceGroups/sureddrgsc2/providers/Microsoft.KeyVault/vaults/sureddvaultsc2';
 		$volumeType = 'All';
