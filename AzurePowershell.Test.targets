@@ -103,10 +103,10 @@
   
   <Target Name="InvokeXUnitAll" DependsOnTargets="DeclareXunitTests">
     <Message Importance="high" Text="Running XUnit tests" />
-    <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
+    <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="true" />
     <Exec 
         Command="$(MSBuildProjectDirectory)\packages\xunit.runner.console.2.0.0\tools\xunit.console.x86.exe &quot;%(XUnitTests.Identity)&quot; -notrait &quot;RunType=LiveOnly&quot; -html &quot;$(TestOutputDirectory)\%(XUnitTests.Filename).html&quot;"
-        Timeout="$(TestTimeout)" ContinueOnError="false"/>
+        Timeout="$(TestTimeout)" ContinueOnError="true"/>
     <OnError ExecuteTargets="TimeoutErrorHandler"/>
   </Target>
   
