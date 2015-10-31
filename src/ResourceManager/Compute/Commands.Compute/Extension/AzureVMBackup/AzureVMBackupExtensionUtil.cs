@@ -65,7 +65,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
         private string GetBase64Encoding(object obj)
         {
             string plainText = JsonConvert.SerializeObject(obj);
-            Console.WriteLine(plainText);
             var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
             string base64EncodedPrivateConfig = System.Convert.ToBase64String(plainTextBytes);
             return base64EncodedPrivateConfig;
@@ -172,8 +171,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
             List<string> blobUris = this.GetDiskBlobUris(virtualMachineResponse.VirtualMachine);
 
             Dictionary<string, string> snapshotQuery = new Dictionary<string, string>();
-            snapshotQuery.Add(backupExtensionMetadataName, snapshotTag);
-            List<CloudPageBlob> snapshots = FindSnapshot(blobUris, snapshotQuery, storageCredentialsFactory);
+            List<CloudPageBlob> snapshots = this.FindSnapshot(blobUris, snapshotQuery, storageCredentialsFactory);
             foreach (CloudPageBlob snapshot in snapshots)
             {
                 snapshot.Delete();

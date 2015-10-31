@@ -61,23 +61,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
         [ValidateNotNullOrEmpty]
         public string VMName { get; set; }
 
-        [Alias("ExtensionName")]
-        [Parameter(
-            Mandatory = true,
-            Position = 2,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The extension name.")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            Position = 6,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The location.")]
-        [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
-
         [Parameter(ValueFromPipelineByPropertyName = true)]
         public string Tag { get; set; }
 
