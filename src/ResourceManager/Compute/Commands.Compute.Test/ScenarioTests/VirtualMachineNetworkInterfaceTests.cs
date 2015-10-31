@@ -19,29 +19,29 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public class VirtualMachineNetworkInterfaceTests
     {
-        //[Fact]
-        ////[Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineSingleNetworkInterface()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-SingleNetworkInterface");
         }
 
-        //[Fact]
-        //[Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineMultipleNetworkInterface()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-MultipleNetworkInterface");
         }
 
-        //[Fact]
-        //[Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSingleNetworkInterfaceDnsSettings()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-SingleNetworkInterfaceDnsSettings");
         }
 
-        //[Fact]
-        //[Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddNetworkInterface()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-AddNetworkInterface");
