@@ -13,16 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Model;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
-    /// Gets azure automation variables for a given account.
+    /// Gets azure automation job stream record for a given job.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmAutomationJobOutputRecord")]
     [OutputType(typeof(JobStream))]
