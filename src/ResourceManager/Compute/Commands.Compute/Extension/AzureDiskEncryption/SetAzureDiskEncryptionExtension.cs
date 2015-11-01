@@ -46,6 +46,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         private const string volumeTypeKey = "VolumeType";
         private const string encryptionOperationKey = "EncryptionOperation";
         private const string sequenceVersionKey = "SequenceVersion";
+        private const string passphraseKey = "Passphrase";
 
         [Parameter(
            Mandatory = true,
@@ -160,6 +161,15 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             HelpMessage = "The type handler version.")]
         [ValidateNotNullOrEmpty]
         public string TypeHandlerVersion { get; set; }
+
+        //withPassphraseParameterSet
+        [Parameter(
+            Mandatory = false,
+            Position = 13,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The passphrase specified in parameters.")]
+        [ValidateNotNullOrEmpty]
+        public string Passphrase { get; set; }
 
         [Parameter(HelpMessage = "To force the removal.")]
         [ValidateNotNullOrEmpty]
@@ -317,7 +327,10 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         {
             Hashtable protectedSettings = new Hashtable();
             protectedSettings.Add(aadClientSecretKey, AadClientSecret ?? String.Empty);
-
+            if (string.Equals(this.currentOSType, "Linux"))
+            {
+                protectedSettings.Add(passphraseKey, Passphrase ?? null);
+            }
             return JsonConvert.SerializeObject(protectedSettings);
         }
 
