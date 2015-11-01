@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections;
+using System.Management.Automation;
 using Microsoft.Azure.Commands.Automation.Common;
 
 using AutomationManagement = Microsoft.Azure.Management.Automation;
@@ -47,11 +49,29 @@ namespace Microsoft.Azure.Commands.Automation.Model
 
             this.JobStreamId = jobStream.Properties.JobStreamId;
             this.Type = jobStream.Properties.StreamType;
-            this.Text = jobStream.Properties.Summary;
             this.Time = jobStream.Properties.Time;
             this.AutomationAccountName = automationAccountName;
             this.ResourceGroupName = resourceGroupName;
             this.Id = jobId;
+            this.Text = jobStream.Properties.StreamText;
+
+            if (!String.IsNullOrWhiteSpace(jobStream.Properties.Summary))
+            {
+                if (jobStream.Properties.Summary.Length > Constants.JobSummaryLenght)
+                {
+                    this.Summary = jobStream.Properties.Summary.Substring(0, Constants.JobSummaryLenght) + "...";
+                }
+                else
+                {
+                    this.Summary = jobStream.Properties.Summary;
+                }
+            }
+
+            this.Value = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
+            foreach (var kvp in jobStream.Properties.Value)
+            {
+                this.Value.Add(kvp.Key, kvp.Value);
+            }
         }
 
         /// <summary>
@@ -92,8 +112,18 @@ namespace Microsoft.Azure.Commands.Automation.Model
         public string Text { get; set; }
 
         /// <summary>
+        /// Gets or sets the summary.
+        /// </summary>
+        public string Summary { get; set; }
+
+        /// <summary>
         /// Gets or sets the stream Type.
         /// </summary>
         public string Type { get; set; }
+
+        /// <summary>
+        /// Gets or sets the stream values.
+        /// </summary>
+        public Hashtable Value { get; set; }
     }
 }
