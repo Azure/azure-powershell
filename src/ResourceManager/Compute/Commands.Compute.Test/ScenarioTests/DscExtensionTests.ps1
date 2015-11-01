@@ -12,11 +12,11 @@ function Test-GetAzureRmVMDscExtension
 
 	# Setup
     $rgname = Get-ComputeTestResourceName
+	$loc = Get-ComputeVMLocation
 
     try
     {
         # Common
-        $loc = Get-ComputeVMLocation;
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware
@@ -89,7 +89,6 @@ function Test-GetAzureRmVMDscExtension
 		Assert-AreEqual $extension.Publisher "Microsoft.Powershell"
 		Assert-AreEqual $extension.ExtensionType "DSC"
 		Assert-AreEqual $extension.TypeHandlerVersion $version
-		#Assert-AreEqual $extension.Location $loc
 		Assert-NotNull $extension.ProvisioningState
 
 		$status = Get-AzureRmVMDscExtensionStatus -ResourceGroupName $rgname -VMName $vmname 
@@ -105,8 +104,11 @@ function Test-GetAzureRmVMDscExtension
     }
     finally
     {
-        # Cleanup
-        Clean-ResourceGroup $rgname
+		# Cleanup
+		if(Get-AzureRmResourceGroup -Name $rgname -Location $loc)
+		{
+			#Remove-AzureRmResourceGroup -Name $rgname -Force;
+		}
     }
 }
 
