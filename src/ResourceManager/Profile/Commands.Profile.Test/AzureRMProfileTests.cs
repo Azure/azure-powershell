@@ -46,12 +46,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             mock.MoqClients = true;
             AzureSession.ClientFactory = mock;
             var context = new AzureContext(new AzureSubscription()
-            {
-                Account = DefaultAccount,
-                Environment = EnvironmentName.AzureCloud,
-                Id = DefaultSubscription,
-                Name = DefaultSubscriptionName
-            },
+                {
+                    Account = DefaultAccount,
+                    Environment = EnvironmentName.AzureCloud,
+                    Id = DefaultSubscription,
+                    Name = DefaultSubscriptionName
+                },
                 new AzureAccount() { Id = DefaultAccount, Type = AzureAccount.AccountType.User },
                 AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud],
                 new AzureTenant() { Domain = DefaultDomain, Id = DefaultTenant });
@@ -65,9 +65,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         public void MultipleTenantsAndSubscriptionsSucceed()
         {
             var tenants = new List<string> {Guid.NewGuid().ToString(), DefaultTenant.ToString()};
-            var firstList = new List<string> { DefaultSubscription.ToString(), Guid.NewGuid().ToString() };
+            var secondsubscriptionInTheFirstTenant = Guid.NewGuid().ToString();
+            var firstList = new List<string> { DefaultSubscription.ToString(), secondsubscriptionInTheFirstTenant};
             var secondList = new List<string> { Guid.NewGuid().ToString()};
-            var client = SetupTestEnvironment(tenants, firstList, secondList);
+            var thirdList = new List<string> { DefaultSubscription.ToString(), secondsubscriptionInTheFirstTenant };
+            var fourthList = new List<string> { DefaultSubscription.ToString(), secondsubscriptionInTheFirstTenant };
+            var client = SetupTestEnvironment(tenants, firstList, secondList, thirdList, fourthList);
             var subResults = new List<AzureSubscription>(client.ListSubscriptions());
             Assert.Equal(3, subResults.Count);
             var tenantResults = client.ListTenants();
@@ -75,7 +78,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             tenantResults = client.ListTenants(DefaultTenant.ToString());
             Assert.Equal(1, tenantResults.Count());
             AzureSubscription subValue;
-            Assert.True(client.TryGetSubscription(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
+            Assert.True(client.TryGetSubscriptionById(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
+            Assert.Equal(DefaultSubscription.ToString(), subValue.Id.ToString());
+            Assert.True(client.TryGetSubscriptionByName(DefaultTenant.ToString(), 
+                MockSubscriptionClientFactory.GetSubscriptionNameFromId(DefaultSubscription.ToString()), 
+                out subValue));
             Assert.Equal(DefaultSubscription.ToString(), subValue.Id.ToString());
         }
 
@@ -84,8 +91,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         public void SingleTenantAndSubscriptionSucceeds()
         {
             var tenants = new List<string> {DefaultTenant.ToString()};
-            var subscriptions = new List<string> {DefaultSubscription.ToString()};
-            var client = SetupTestEnvironment(tenants, subscriptions);
+            var firstList = new List<string> {DefaultSubscription.ToString()};
+            var secondList = firstList;
+            var thirdList = firstList;
+            var client = SetupTestEnvironment(tenants, firstList, secondList, thirdList);
             var subResults = new List<AzureSubscription>(client.ListSubscriptions());
             Assert.Equal(1, subResults.Count);
             var tenantResults = client.ListTenants();
@@ -93,7 +102,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             tenantResults = client.ListTenants(DefaultTenant.ToString());
             Assert.Equal(1, tenantResults.Count());
             AzureSubscription subValue;
-            Assert.True(client.TryGetSubscription(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
+            Assert.True(client.TryGetSubscriptionById(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
+            Assert.Equal(DefaultSubscription.ToString(), subValue.Id.ToString());
+            Assert.True(client.TryGetSubscriptionByName(DefaultTenant.ToString(), 
+                MockSubscriptionClientFactory.GetSubscriptionNameFromId(DefaultSubscription.ToString()), 
+                out subValue));
             Assert.Equal(DefaultSubscription.ToString(), subValue.Id.ToString());
         }
 
@@ -102,12 +115,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         public void SubscriptionNotFoundDoesNotThrow()
         {
             var tenants = new List<string> { DefaultTenant.ToString() };
-            var subscriptions = new List<string> { Guid.NewGuid().ToString() };
-            var client = SetupTestEnvironment(tenants, subscriptions);
+            string randomSubscriptionId = Guid.NewGuid().ToString();
+            var firstList = new List<string> { randomSubscriptionId };
+            var secondList = firstList;
+            var client = SetupTestEnvironment(tenants, firstList, secondList);
             var subResults = new List<AzureSubscription>(client.ListSubscriptions());
             Assert.Equal(1, subResults.Count);
             AzureSubscription subValue;
-            Assert.True(client.TryGetSubscription(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
+            Assert.False(client.TryGetSubscriptionById(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
+            Assert.False(client.TryGetSubscriptionByName("random-tenant", "random-subscription", out subValue));
         }
 
         [Fact]
@@ -127,10 +143,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         {
             var tenants = new List<string> { DefaultTenant.ToString() };
             var subscriptions = new List<string> () ;
-            var client = SetupTestEnvironment(tenants, subscriptions);
+            var client = SetupTestEnvironment(tenants, subscriptions, subscriptions);
             Assert.Equal(0, client.ListSubscriptions().Count());
             AzureSubscription subValue;
-            Assert.True(client.TryGetSubscription(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
+            Assert.False(client.TryGetSubscriptionById(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
+            Assert.False(client.TryGetSubscriptionByName(DefaultTenant.ToString(), "random-name", out subValue));
         }
 
         [Fact]
