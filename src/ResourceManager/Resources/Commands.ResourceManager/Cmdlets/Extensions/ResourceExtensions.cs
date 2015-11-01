@@ -32,8 +32,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
         /// Converts a <see cref="Resource{JToken}"/> object into a <see cref="PSObject"/> object.
         /// </summary>
         /// <param name="resource">The <see cref="Resource{JToken}"/> object.</param>
-        /// <param name="objectFormat">The <see cref="ResourceObjectFormat"/></param>
-        internal static PSObject ToPsObject(this Resource<JToken> resource, ResourceObjectFormat objectFormat)
+        internal static PSObject ToPsObject(this Resource<JToken> resource)
         {
             var resourceType = string.IsNullOrEmpty(resource.Id)
                 ? null
@@ -56,12 +55,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
                 { "Location", resource.Location },
                 { "SubscriptionId", string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetSubscriptionId(resource.Id) },
                 { "Tags", TagsHelper.GetTagsHashtables(resource.Tags) },
-                { "Plan", resource.Plan.ToJToken().ToPsObject(objectFormat) },
-                { "Properties", ResourceExtensions.GetProperties(resource, objectFormat) },
+                { "Plan", resource.Plan.ToJToken().ToPsObject() },
+                { "Properties", ResourceExtensions.GetProperties(resource) },
                 { "CreatedTime", resource.CreatedTime },
                 { "ChangedTime", resource.ChangedTime },
                 { "ETag", resource.ETag },
-                { "Sku", resource.Sku.ToJToken().ToPsObject(objectFormat) },
+                { "Sku", resource.Sku.ToJToken().ToPsObject() },
             };
 
             var resourceTypeName = resourceType == null && extensionResourceType == null
@@ -81,17 +80,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
         /// Gets the properties object
         /// </summary>
         /// <param name="resource">The <see cref="Resource{JToken}"/> object.</param>
-        /// <param name="objectFormat">The <see cref="ResourceObjectFormat"/></param>
-        private static object GetProperties(Resource<JToken> resource, ResourceObjectFormat objectFormat)
+        private static object GetProperties(Resource<JToken> resource)
         {
             if (resource.Properties == null)
             {
                 return null;
             }
 
-            return objectFormat == ResourceObjectFormat.Legacy
-                ? JsonUtilities.DeserializeJson(resource.Properties.ToString())
-                : (object)resource.Properties.ToPsObject(objectFormat);
+            return (object)resource.Properties.ToPsObject();
         }
 
         /// <summary>

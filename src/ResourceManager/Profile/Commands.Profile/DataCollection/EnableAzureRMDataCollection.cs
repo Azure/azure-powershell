@@ -20,8 +20,14 @@ using System.Security.Permissions;
 namespace Microsoft.Azure.Commands.Profile
 {
     [Cmdlet(VerbsLifecycle.Enable, "AzureRmDataCollection")]
+    [Alias("Enable-AzureDataCollection")]
     public class EnableAzureRmDataCollectionCommand : AzureRMCmdlet
     {
+        protected override void BeginProcessing()
+        {
+            // do not call begin processing there is no context needed for this cmdlet
+        }
+
         protected override void ProcessRecord()
         {
             SetDataCollectionProfile(true);

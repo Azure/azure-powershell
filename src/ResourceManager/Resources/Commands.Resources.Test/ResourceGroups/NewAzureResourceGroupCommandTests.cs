@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void CreatesNewPSResourceGroupWithUserTemplate()
+        public void CreatesNewPSResourceGroup()
         {
             CreatePSResourceGroupParameters expectedParameters = new CreatePSResourceGroupParameters()
             {
@@ -89,17 +89,12 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
             cmdlet.Name = expectedParameters.ResourceGroupName;
             cmdlet.Location = expectedParameters.Location;
-            cmdlet.TemplateFile = expectedParameters.TemplateFile;
-            cmdlet.DeploymentName = expectedParameters.DeploymentName;
             cmdlet.Tag = expectedParameters.Tag;
 
             cmdlet.ExecuteCmdlet();
 
             Assert.Equal(expectedParameters.ResourceGroupName, actualParameters.ResourceGroupName);
             Assert.Equal(expectedParameters.Location, actualParameters.Location);
-            Assert.Equal(expectedParameters.DeploymentName, actualParameters.DeploymentName);
-            Assert.Equal(expectedParameters.TemplateFile, actualParameters.TemplateFile);
-            Assert.NotNull(actualParameters.TemplateParameterObject);
             Assert.Equal(expectedParameters.Tag, actualParameters.Tag);
 
             commandRuntimeMock.Verify(f => f.WriteObject(expected), Times.Once());

@@ -83,5 +83,21 @@ namespace Microsoft.Azure.Commands.HDInsight.Commands
             }
             return httpEndpoint;
         }
+
+        protected string GetResourceGroupByAccountName(string clusterName)
+        {
+            try
+            {
+                var clusterId = HDInsightManagementClient.ListClusters().First(x => x.Name.Equals(clusterName, StringComparison.InvariantCultureIgnoreCase)).Id;
+                var rgStart = clusterId.IndexOf("resourceGroups/", StringComparison.InvariantCultureIgnoreCase) + ("resourceGroups/".Length);
+                var rgLength = (clusterId.IndexOf("/providers/", StringComparison.InvariantCultureIgnoreCase)) - rgStart;
+                return clusterId.Substring(rgStart, rgLength);
+            }
+            catch
+            {
+                throw new CloudException(string.Format("Could not find resource group for cluster {0}.", clusterName));
+            }
+        }
+
     }
 }

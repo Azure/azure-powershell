@@ -74,10 +74,10 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
         public void CanCreateDataset()
         {
             // Arrange
-            Table expected = new Table()
+            Dataset expected = new Dataset()
             {
                 Name = datasetName,
-                Properties = new TableProperties()
+                Properties = new DatasetProperties()
             };
 
             dataFactoriesClientMock.Setup(c => c.ReadJsonFileContent(It.IsAny<string>()))
@@ -125,10 +125,10 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
         public void CanThrowIfDatasetProvisioningFailed()
         {
             // Arrange
-            Table expected = new Table()
+            Dataset expected = new Dataset()
             {
                 Name = datasetName,
-                Properties = new TableProperties()
+                Properties = new DatasetProperties()
             };
 
             dataFactoriesClientMock.Setup(c => c.ReadJsonFileContent(It.IsAny<string>()))

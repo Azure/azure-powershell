@@ -25,6 +25,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.WindowsAzure.Commands.Common;
 
 
 namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
@@ -78,7 +79,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                     helper.RMStorageModule, 
                     helper.GetRMModulePath(@"AzureRM.Insights.psd1"), 
                     helper.GetRMModulePath(@"AzureRM.Sql.psd1"));
-
                 helper.RunPowerShellTest(scripts);
             }
         }
@@ -146,12 +146,12 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                 if (HttpMockServer.Variables.ContainsKey(TenantIdKey))
                 {
                     tenantId = HttpMockServer.Variables[TenantIdKey];
-                    AzureRMCmdlet.DefaultProfile.Context.Tenant.Id = new Guid(tenantId);
+                    AzureRmProfileProvider.Instance.Profile.Context.Tenant.Id = new Guid(tenantId);
                 }
                 if (HttpMockServer.Variables.ContainsKey(DomainKey))
                 {
                     UserDomain = HttpMockServer.Variables[DomainKey];
-                    AzureRMCmdlet.DefaultProfile.Context.Tenant.Domain = UserDomain;
+                    AzureRmProfileProvider.Instance.Profile.Context.Tenant.Domain = UserDomain;
                 }
             }
 

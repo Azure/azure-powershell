@@ -13,7 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections;
+using System;
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.HDInsight.Models.Management;
 using Microsoft.Azure.Management.HDInsight.Models;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models
@@ -64,6 +66,26 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// Gets or sets the database to store the metadata for Hive.
         /// </summary>
         public AzureHDInsightMetastore HiveMetastore { get; set; }
+
+        /// <summary>
+        /// Gets Object id of the service principal 
+        /// </summary>
+        public Guid ObjectId { get; set; }
+
+        /// <summary>
+        /// Gets client certificate associated with service principal
+        /// </summary>
+        public string CertificateFilePath { get; set; }
+
+        /// <summary>
+        /// Gets client certificate password associated with service principal
+        /// </summary>
+        public string CertificatePassword { get; set; }
+
+        /// <summary>
+        /// Gets AAD tenant uri of the service principal
+        /// </summary>
+        public Guid AADTenantId { get; set; }
         
         /// <summary>
         /// Gets the configurations of this HDInsight cluster.
@@ -73,14 +95,14 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// <summary>
         /// Gets config actions for the cluster.
         /// </summary>
-        public Dictionary<ClusterNodeType, List<ScriptAction>> ScriptActions { get; private set; }
+        public Dictionary<ClusterNodeType, List<AzureHDInsightScriptAction>> ScriptActions { get; private set; }
 
         public AzureHDInsightConfig()
         {
             ClusterType = HDInsightClusterType.Hadoop;
             AdditionalStorageAccounts = new Dictionary<string, string>();
             Configurations = new Dictionary<string, Hashtable>();
-            ScriptActions = new Dictionary<ClusterNodeType, List<ScriptAction>>();
+            ScriptActions = new Dictionary<ClusterNodeType, List<AzureHDInsightScriptAction>>();
         }
     }
 }

@@ -61,6 +61,24 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to AccountId must be provided to use an AccessToken credential..
+        /// </summary>
+        internal static string AccessTokenRequiresAccount {
+            get {
+                return ResourceManager.GetString("AccessTokenRequiresAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Access token credentials must provide the AccountId parameter..
+        /// </summary>
+        internal static string AccountIdRequired {
+            get {
+                return ResourceManager.GetString("AccountIdRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Selected profile must not be null..
         /// </summary>
         internal static string AzureProfileMustNotBeNull {
@@ -84,6 +102,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string CommonTenantAuthFailed {
             get {
                 return ResourceManager.GetString("CommonTenantAuthFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current tenant with Id &apos;{0}&apos; will be used..
+        /// </summary>
+        internal static string CurrentTenantInUse {
+            get {
+                return ResourceManager.GetString("CurrentTenantInUse", resourceCulture);
             }
         }
         
@@ -115,6 +142,24 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please provide either a subscription ID, subscription name, tenant Id or domain..
+        /// </summary>
+        internal static string SetAzureRmContextNoParameterSet {
+            get {
+                return ResourceManager.GetString("SetAzureRmContextNoParameterSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to find subscription with name &apos;{0}&apos;..
+        /// </summary>
+        internal static string SubscriptionNameNotFoundError {
+            get {
+                return ResourceManager.GetString("SubscriptionNameNotFoundError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Subscription {0} was not found in tenant {1}. Please verify that the subscription exists in this tenant..
         /// </summary>
         internal static string SubscriptionNotFoundError {
@@ -129,6 +174,24 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string TenantAuthFailed {
             get {
                 return ResourceManager.GetString("TenantAuthFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to find tenant &apos;{0}&apos;..
+        /// </summary>
+        internal static string TenantIdNotFound {
+            get {
+                return ResourceManager.GetString("TenantIdNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To create an access token credential, you must provide an access token account..
+        /// </summary>
+        internal static string TypeNotAccessToken {
+            get {
+                return ResourceManager.GetString("TypeNotAccessToken", resourceCulture);
             }
         }
     }

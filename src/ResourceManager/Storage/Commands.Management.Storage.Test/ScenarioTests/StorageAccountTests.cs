@@ -76,5 +76,20 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         {
             TestController.NewInstance.RunPsTest("Test-PipingGetAccountToGetKey");
         }
+ 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPipingSetStorageAccount()
+        {
+            TestController.NewInstance.RunPsTest("Test-PipingToSetAzureRmCurrentStorageAccount");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetCurrentStorageAccount()
+        {
+            TestController.NewInstance.RunPsTest("Test-SetAzureRmCurrentStorageAccount");
+        }
+
     }
 }

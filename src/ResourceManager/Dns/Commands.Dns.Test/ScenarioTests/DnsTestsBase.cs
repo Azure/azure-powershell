@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
             string mockName) 
         {
             Dictionary<string, string> d = new Dictionary<string, string>();
-            d.Add("Microsoft.Authorization", "2014-07-01-preview");
+            d.Add("Microsoft.Authorization", null);
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
 
             using (UndoContext context = UndoContext.Current) 
