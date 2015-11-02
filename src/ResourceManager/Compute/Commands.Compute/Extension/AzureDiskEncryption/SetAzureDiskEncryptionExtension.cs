@@ -64,25 +64,16 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         [ValidateNotNullOrEmpty]
         public string VMName { get; set; }
 
-        [Alias("ExtensionName")]
-        [Parameter(
-            Mandatory = true,
-            Position = 2,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The extension name.")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
         [Parameter(
            Mandatory = true,
-           Position = 3,
+           Position = 2,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Client ID of AAD app with permissions to write secrets to KeyVault")]
         public string AadClientID { get; set; }
 
         [Parameter(
             Mandatory = true,
-            Position = 4,
+            Position = 3,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = aadClientSecretParameterSet,
             HelpMessage = "Client Secret of AAD app with permissions to write secrets to KeyVault")]
@@ -91,7 +82,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
         [Parameter(
             Mandatory = true,
-            Position = 4,
+            Position = 3,
             ValueFromPipelineByPropertyName = true,
              ParameterSetName = aadClientCertParameterSet,
             HelpMessage = "Thumbprint of AAD app certificate with permissions to write secrets to KeyVault")]
@@ -100,21 +91,21 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
         [Parameter(
             Mandatory = true,
-            Position = 5,
+            Position = 4,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "URL of the KeyVault where generated encryption key will be placed to")]
         public string DiskEncryptionKeyVaultUrl { get; set; }
 
         [Parameter(
             Mandatory = true,
-            Position = 6,
+            Position = 5,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "ResourceID of the KeyVault where generated encryption key will be placed to")]
         public string DiskEncryptionKeyVaultId { get; set; }
 
         [Parameter(
             Mandatory = false,
-            Position = 7,
+            Position = 6,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Versioned KeyVault URL of the KeyEncryptionKey used to encrypt the disk encryption key")]
         [ValidateNotNullOrEmpty]
@@ -122,7 +113,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
         [Parameter(
             Mandatory = false,
-            Position = 8,
+            Position = 7,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "ResourceID of the KeyVault containing the KeyEncryptionKey used to encrypt the disk encryption key")]
         [ValidateNotNullOrEmpty]
@@ -130,7 +121,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
         [Parameter(
             Mandatory = false,
-            Position = 9,
+            Position = 8,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "KeyEncryption Algorithm used to encrypt the volume encryption key")]
         [ValidateSet("RSA-OAEP", "RSA1_5")]
@@ -138,7 +129,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
         [Parameter(
             Mandatory = false,
-            Position = 10,
+            Position = 9,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Type of the volume (OS or Data) to perform encryption operation")]
         [ValidateSet("OS", "Data", "All")]
@@ -146,7 +137,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
         [Parameter(
             Mandatory = false,
-            Position = 11,
+            Position = 10,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Sequence version of encryption operation. This must be incremented to perform repeated encryption operations on the same VM")]
         [ValidateNotNullOrEmpty]
@@ -155,11 +146,20 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         [Alias("HandlerVersion", "Version")]
         [Parameter(
             Mandatory = false,
-            Position = 12,
+            Position = 11,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The type handler version.")]
         [ValidateNotNullOrEmpty]
         public string TypeHandlerVersion { get; set; }
+
+        [Alias("ExtensionName")]
+        [Parameter(
+            Mandatory = false,
+            Position = 12,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The extension name. If this parameter is not specified, default values used are AzureDiskEncryption for windows VMs and AzureDiskEncryptionForLinux for Linux VMs")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
 
         [Parameter(HelpMessage = "To force the removal.")]
         [ValidateNotNullOrEmpty]
@@ -337,6 +337,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             VirtualMachineExtension vmExtensionParameters = null;
             if (string.Equals(currentOSType, "Windows", StringComparison.InvariantCultureIgnoreCase))
             {
+                this.Name = this.Name ?? AzureDiskEncryptionExtensionContext.ExtensionDefaultName;
                 vmExtensionParameters = new VirtualMachineExtension
                 {
                     Location = vmParameters.Location,
@@ -351,6 +352,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             }
             else if (string.Equals(currentOSType, "Linux", StringComparison.InvariantCultureIgnoreCase))
             {
+                this.Name = this.Name ?? AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultName;
                 vmExtensionParameters = new VirtualMachineExtension
                 {
                     Location = vmParameters.Location,
