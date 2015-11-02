@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
 {
     public class ProfileModuleTests
     {
-        [Fact(Skip = "TODO: only works for live mode")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void WarningOnIncompatibleVersions()
         {

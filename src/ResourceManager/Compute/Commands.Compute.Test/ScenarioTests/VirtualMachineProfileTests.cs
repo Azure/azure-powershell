@@ -19,15 +19,15 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public class VirtualMachineProfileTests
     {
-        //[Fact]
-        //[Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineProfile()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineProfile");
         }
 
-        //[Fact]
-        //[Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineProfileWithoutAUC()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineProfileWithoutAUC");

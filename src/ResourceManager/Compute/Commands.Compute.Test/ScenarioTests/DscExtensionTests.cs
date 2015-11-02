@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public class DscExtensionTests
     {
-        [Fact(Skip = "TODO: OOM issue when writing the result")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureRmVMDscExtension()
         {
