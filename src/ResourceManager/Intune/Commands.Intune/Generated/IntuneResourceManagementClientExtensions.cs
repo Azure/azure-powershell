@@ -8,6 +8,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.Rest;
+    using Microsoft.Rest.Azure;
     using Models;
 
     public static partial class IntuneResourceManagementClientExtensions
@@ -34,7 +35,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             /// </param>
             public static async Task<LocationCollection> GetLocationsAsync( this IIntuneResourceManagementClient operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                HttpOperationResponse<LocationCollection> result = await operations.GetLocationsWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false);
+                AzureOperationResponse<LocationCollection> result = await operations.GetLocationsWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false);
                 return result.Body;
             }
 
@@ -60,7 +61,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             /// </param>
             public static async Task<Location> GetLocationByHostNameAsync( this IIntuneResourceManagementClient operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                HttpOperationResponse<Location> result = await operations.GetLocationByHostNameWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false);
+                AzureOperationResponse<Location> result = await operations.GetLocationByHostNameWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false);
                 return result.Body;
             }
 
@@ -108,7 +109,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             /// </param>
             public static async Task<ApplicationCollection> GetApplicationsAsync( this IIntuneResourceManagementClient operations, string hostName, string filter = default(string), int? top = default(int?), string select = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                HttpOperationResponse<ApplicationCollection> result = await operations.GetApplicationsWithHttpMessagesAsync(hostName, filter, top, select, null, cancellationToken).ConfigureAwait(false);
+                AzureOperationResponse<ApplicationCollection> result = await operations.GetApplicationsWithHttpMessagesAsync(hostName, filter, top, select, null, cancellationToken).ConfigureAwait(false);
                 return result.Body;
             }
 
@@ -156,7 +157,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             /// </param>
             public static async Task<IOSMAMPolicyCollection> GetiOSMAMPoliciesAsync( this IIntuneResourceManagementClient operations, string hostName, string filter = default(string), int? top = default(int?), string select = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                HttpOperationResponse<IOSMAMPolicyCollection> result = await operations.GetiOSMAMPoliciesWithHttpMessagesAsync(hostName, filter, top, select, null, cancellationToken).ConfigureAwait(false);
+                AzureOperationResponse<IOSMAMPolicyCollection> result = await operations.GetiOSMAMPoliciesWithHttpMessagesAsync(hostName, filter, top, select, null, cancellationToken).ConfigureAwait(false);
                 return result.Body;
             }
 
@@ -204,7 +205,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             /// </param>
             public static async Task<AndroidMAMPolicyCollection> GetAndroidMAMPoliciesAsync( this IIntuneResourceManagementClient operations, string hostName, string filter = default(string), int? top = default(int?), string select = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                HttpOperationResponse<AndroidMAMPolicyCollection> result = await operations.GetAndroidMAMPoliciesWithHttpMessagesAsync(hostName, filter, top, select, null, cancellationToken).ConfigureAwait(false);
+                AzureOperationResponse<AndroidMAMPolicyCollection> result = await operations.GetAndroidMAMPoliciesWithHttpMessagesAsync(hostName, filter, top, select, null, cancellationToken).ConfigureAwait(false);
                 return result.Body;
             }
 
@@ -248,7 +249,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             /// </param>
             public static async Task<IOSMAMPolicy> GetiOSMAMPolicyByIdAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, string select = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                HttpOperationResponse<IOSMAMPolicy> result = await operations.GetiOSMAMPolicyByIdWithHttpMessagesAsync(hostName, policyId, select, null, cancellationToken).ConfigureAwait(false);
+                AzureOperationResponse<IOSMAMPolicy> result = await operations.GetiOSMAMPolicyByIdWithHttpMessagesAsync(hostName, policyId, select, null, cancellationToken).ConfigureAwait(false);
                 return result.Body;
             }
 
@@ -292,7 +293,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             /// </param>
             public static async Task<IOSMAMPolicy> CreateOrUpdateiOSMAMPolicyAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, IOSMAMPolicyRequestBody parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                HttpOperationResponse<IOSMAMPolicy> result = await operations.CreateOrUpdateiOSMAMPolicyWithHttpMessagesAsync(hostName, policyId, parameters, null, cancellationToken).ConfigureAwait(false);
+                AzureOperationResponse<IOSMAMPolicy> result = await operations.CreateOrUpdateiOSMAMPolicyWithHttpMessagesAsync(hostName, policyId, parameters, null, cancellationToken).ConfigureAwait(false);
                 return result.Body;
             }
 
@@ -336,7 +337,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             /// </param>
             public static async Task<IOSMAMPolicy> PatchiOSMAMPolicyAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, IOSMAMPolicyRequestBody parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                HttpOperationResponse<IOSMAMPolicy> result = await operations.PatchiOSMAMPolicyWithHttpMessagesAsync(hostName, policyId, parameters, null, cancellationToken).ConfigureAwait(false);
+                AzureOperationResponse<IOSMAMPolicy> result = await operations.PatchiOSMAMPolicyWithHttpMessagesAsync(hostName, policyId, parameters, null, cancellationToken).ConfigureAwait(false);
                 return result.Body;
             }
 
@@ -417,7 +418,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             /// </param>
             public static async Task<AndroidMAMPolicy> GetAndroidMAMPolicyByIdAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, string select = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                HttpOperationResponse<AndroidMAMPolicy> result = await operations.GetAndroidMAMPolicyByIdWithHttpMessagesAsync(hostName, policyId, select, null, cancellationToken).ConfigureAwait(false);
+                AzureOperationResponse<AndroidMAMPolicy> result = await operations.GetAndroidMAMPolicyByIdWithHttpMessagesAsync(hostName, policyId, select, null, cancellationToken).ConfigureAwait(false);
                 return result.Body;
             }
 
@@ -461,7 +462,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             /// </param>
             public static async Task<AndroidMAMPolicy> CreateOrUpdateAndroidMAMPolicyAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, AndroidMAMPolicyRequestBody parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                HttpOperationResponse<AndroidMAMPolicy> result = await operations.CreateOrUpdateAndroidMAMPolicyWithHttpMessagesAsync(hostName, policyId, parameters, null, cancellationToken).ConfigureAwait(false);
+                AzureOperationResponse<AndroidMAMPolicy> result = await operations.CreateOrUpdateAndroidMAMPolicyWithHttpMessagesAsync(hostName, policyId, parameters, null, cancellationToken).ConfigureAwait(false);
                 return result.Body;
             }
 
@@ -505,7 +506,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             /// </param>
             public static async Task<AndroidMAMPolicy> PatchAndroidMAMPolicyAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, AndroidMAMPolicyRequestBody parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                HttpOperationResponse<AndroidMAMPolicy> result = await operations.PatchAndroidMAMPolicyWithHttpMessagesAsync(hostName, policyId, parameters, null, cancellationToken).ConfigureAwait(false);
+                AzureOperationResponse<AndroidMAMPolicy> result = await operations.PatchAndroidMAMPolicyWithHttpMessagesAsync(hostName, policyId, parameters, null, cancellationToken).ConfigureAwait(false);
                 return result.Body;
             }
 
@@ -596,7 +597,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             /// </param>
             public static async Task<ApplicationCollection> GetAppForiOSMAMPolicyAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, string filter = default(string), int? top = default(int?), string select = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                HttpOperationResponse<ApplicationCollection> result = await operations.GetAppForiOSMAMPolicyWithHttpMessagesAsync(hostName, policyId, filter, top, select, null, cancellationToken).ConfigureAwait(false);
+                AzureOperationResponse<ApplicationCollection> result = await operations.GetAppForiOSMAMPolicyWithHttpMessagesAsync(hostName, policyId, filter, top, select, null, cancellationToken).ConfigureAwait(false);
                 return result.Body;
             }
 
@@ -650,7 +651,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             /// </param>
             public static async Task<ApplicationCollection> GetAppForAndroidMAMPolicyAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, string filter = default(string), int? top = default(int?), string select = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                HttpOperationResponse<ApplicationCollection> result = await operations.GetAppForAndroidMAMPolicyWithHttpMessagesAsync(hostName, policyId, filter, top, select, null, cancellationToken).ConfigureAwait(false);
+                AzureOperationResponse<ApplicationCollection> result = await operations.GetAppForAndroidMAMPolicyWithHttpMessagesAsync(hostName, policyId, filter, top, select, null, cancellationToken).ConfigureAwait(false);
                 return result.Body;
             }
 
@@ -850,7 +851,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             /// Location hostName for the tenant
             /// </param>
             /// <param name='policyId'>
-            /// policy id for the tenant
+            /// policy name for the tenant
             /// </param>
             public static GroupsCollection GetGroupsForiOSMAMPolicy(this IIntuneResourceManagementClient operations, string hostName, string policyId)
             {
@@ -867,14 +868,14 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             /// Location hostName for the tenant
             /// </param>
             /// <param name='policyId'>
-            /// policy id for the tenant
+            /// policy name for the tenant
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
             public static async Task<GroupsCollection> GetGroupsForiOSMAMPolicyAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                HttpOperationResponse<GroupsCollection> result = await operations.GetGroupsForiOSMAMPolicyWithHttpMessagesAsync(hostName, policyId, null, cancellationToken).ConfigureAwait(false);
+                AzureOperationResponse<GroupsCollection> result = await operations.GetGroupsForiOSMAMPolicyWithHttpMessagesAsync(hostName, policyId, null, cancellationToken).ConfigureAwait(false);
                 return result.Body;
             }
 
@@ -888,7 +889,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             /// Location hostName for the tenant
             /// </param>
             /// <param name='policyId'>
-            /// policy id for the tenant
+            /// policy name for the tenant
             /// </param>
             public static GroupsCollection GetGroupsForAndroidMAMPolicy(this IIntuneResourceManagementClient operations, string hostName, string policyId)
             {
@@ -905,14 +906,14 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             /// Location hostName for the tenant
             /// </param>
             /// <param name='policyId'>
-            /// policy id for the tenant
+            /// policy name for the tenant
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
             public static async Task<GroupsCollection> GetGroupsForAndroidMAMPolicyAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                HttpOperationResponse<GroupsCollection> result = await operations.GetGroupsForAndroidMAMPolicyWithHttpMessagesAsync(hostName, policyId, null, cancellationToken).ConfigureAwait(false);
+                AzureOperationResponse<GroupsCollection> result = await operations.GetGroupsForAndroidMAMPolicyWithHttpMessagesAsync(hostName, policyId, null, cancellationToken).ConfigureAwait(false);
                 return result.Body;
             }
 

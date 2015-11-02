@@ -14,11 +14,9 @@
 namespace Microsoft.Azure.Commands.Intune
 {
     using System;
-    using System.Net.Http;
     using RestClient;
     using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.Azure.Common.Authentication.Models;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Handlers;
     using Microsoft.Azure.Common.Authentication;
     using System.Collections.Concurrent;
     using System.Management.Automation;
@@ -76,7 +74,6 @@ namespace Microsoft.Azure.Commands.Intune
         internal static IntuneResourceManagementClient GetIntuneManagementClient(AzureContext context)
         {
             var endpoint = context.Environment.GetEndpoint(AzureEnvironment.Endpoint.ResourceManager);
-
             if (string.IsNullOrWhiteSpace(endpoint))
             {
                 throw new ApplicationException(
@@ -84,20 +81,8 @@ namespace Microsoft.Azure.Commands.Intune
             }
 
             var endpointUri = new Uri(endpoint, UriKind.Absolute);
-
-            var intuneClient = new IntuneResourceManagementClient(
-                new DelegatingHandler[]
-                {
-                    new TracingHandler(),
-                    new UserAgentHandler(headerValues: AzureSession.ClientFactory.UserAgents),
-                    // NOTE: When Tenant-Only support is given update the following AuthenticationHandler to take Tenant-creds.
-                    new AuthenticationHandler(cloudCredentials: AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(context)),
-                    new RetryHandler()
-                });
-
+            var intuneClient  = AzureSession.ClientFactory.CreateArmClient<IntuneResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
             intuneClient.BaseUri = endpointUri;
-            intuneClient.ApiVersion = IntuneConstants.ApiVersion;
-
             return intuneClient;
         }
 

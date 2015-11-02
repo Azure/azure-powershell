@@ -42,9 +42,9 @@ namespace Microsoft.Azure.Commands.Intune
                 var iOSAppsForPolicy = this.IntuneClient.GetAppForiOSMAMPolicy(this.AsuHostName, Name);
                 if (iOSAppsForPolicy != null && iOSAppsForPolicy.Value.Count > 0)
                 {
-                    for (int start = 0; start < iOSAppsForPolicy.Value.Count; start += IntuneConstants.BATCH_SIZE)
+                    for (int start = 0; start < iOSAppsForPolicy.Value.Count; start += IntuneConstants.BatchSize)
                     {
-                        var batch = iOSAppsForPolicy.Value.Skip(start).Take(IntuneConstants.BATCH_SIZE);
+                        var batch = iOSAppsForPolicy.Value.Skip(start).Take(IntuneConstants.BatchSize);
                         this.WriteObject(batch, enumerateCollection: true);
                     }
                 }

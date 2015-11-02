@@ -7,6 +7,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient.Models
     using Newtonsoft.Json;
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
+    using Microsoft.Rest.Azure;
 
     /// <summary>
     /// iOS Policy request body parameters for Intune MAM.
