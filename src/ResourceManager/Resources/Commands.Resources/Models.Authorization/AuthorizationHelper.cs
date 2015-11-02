@@ -12,6 +12,11 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
         public static string GetRoleDefinitionFullyQualifiedId(string subscriptionId, string roleDefinitionGuid)
         {
+            if(string.IsNullOrEmpty(roleDefinitionGuid))
+            {
+                return null;
+            }
+
             return string.Concat(string.Format(AuthorizationHelper.roleDefinitionIdPrefixFormat, subscriptionId), roleDefinitionGuid);
         }
     }
