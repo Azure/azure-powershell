@@ -117,14 +117,14 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineTags");
         }
 
-        [Fact(Skip = "TODO: OOM issue when writing the result")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVMImageCmdletOutputFormat()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VMImageCmdletOutputFormat");
         }
 
-        [Fact(Skip = "TODO: OOM issue when writing the result")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetVMSizeFromAllLocations()
         {
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineListWithPaging");
         }
         
-        [Fact(Skip = "TODO: OOM issue when writing the result")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineWithDifferentStorageResource()
         {
