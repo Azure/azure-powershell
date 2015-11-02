@@ -34,6 +34,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSExpressRouteCircuitSku Sku { get; set; }
 
+        public string BillingType { get; set; }
+
         public string ProvisioningState { get; set; }
 
         [JsonIgnore]
