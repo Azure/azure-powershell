@@ -121,7 +121,7 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
         }
 
         public AzureDedicatedCircuit NewAzureDedicatedCircuit(string circuitName, 
-            UInt32 bandwidth, string location, string serviceProviderName, CircuitSku sku)
+            UInt32 bandwidth, string location, string serviceProviderName, CircuitSku sku, BillingType billingType)
         {
             var result = Client.DedicatedCircuits.New(new DedicatedCircuitNewParameters()
             {
@@ -129,7 +129,8 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
                 CircuitName = circuitName,
                 Location = location,
                 ServiceProviderName = serviceProviderName,
-                Sku = sku
+                Sku = sku,
+                BillingType = billingType
             });
 
             if (result.HttpStatusCode.Equals(HttpStatusCode.OK))
