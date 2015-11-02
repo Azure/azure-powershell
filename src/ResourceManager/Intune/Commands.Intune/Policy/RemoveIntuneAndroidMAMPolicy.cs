@@ -55,11 +55,17 @@ namespace Microsoft.Azure.Commands.Intune
                     this.Name,
                     () =>
                     {
-                        this.IntuneClient.DeleteAndroidMAMPolicy(this.AsuHostName, this.Name);
-                        this.WriteObject("1 item deleted");
+                       var res = this.IntuneClient.DeleteAndroidMAMPolicyWithHttpMessagesAsync(this.AsuHostName, this.Name);
 
-                        // TODO: Make sure that the policy does not exist - it says 0 item deleted
-                    });               
+                       if (res.Result.Response.StatusCode == System.Net.HttpStatusCode.OK)
+                       {
+                           this.WriteObject("1 item deleted");
+                       }
+                       else
+                       {
+                           this.WriteObject("0 item deleted");
+                       }
+                    });
             };
 
             base.SafeExecutor(action);
