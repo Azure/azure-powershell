@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Commands.Network
             this.ExpressRouteCircuitClient.CreateOrUpdate(this.ResourceGroupName, this.Name, circuitModel);
 
             var getExpressRouteCircuit = this.GetExpressRouteCircuit(this.ResourceGroupName, this.Name);
-
+            getExpressRouteCircuit.BillingType = this.BillingType;
             return getExpressRouteCircuit;
         }
     }

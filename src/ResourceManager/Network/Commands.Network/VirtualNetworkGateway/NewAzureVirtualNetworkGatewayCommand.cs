@@ -82,13 +82,6 @@ namespace Microsoft.Azure.Commands.Network
         public bool EnableBgp { get; set; }
 
         [Parameter(
-              Mandatory = false,
-              ValueFromPipelineByPropertyName = true,
-             ParameterSetName = "SetByResourceId",
-             HelpMessage = "GatewayDefaultSiteId")]
-        public string GatewayDefaultSiteId { get; set; }
-
-        [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              ParameterSetName = "SetByResource",
@@ -148,13 +141,12 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.GatewayDefaultSite != null)
             {
-                this.GatewayDefaultSiteId = this.GatewayDefaultSite.Id;
-            }
-
-            if (!string.IsNullOrEmpty(this.GatewayDefaultSiteId))
-            {
                 vnetGateway.GatewayDefaultSite = new PSResourceId();
-                vnetGateway.GatewayDefaultSite.Id = this.GatewayDefaultSiteId;
+                vnetGateway.GatewayDefaultSite.Id = this.GatewayDefaultSite.Id;
+            }
+            else
+            {
+                vnetGateway.GatewayDefaultSite = null;
             }
 
             // Map to the sdk object
