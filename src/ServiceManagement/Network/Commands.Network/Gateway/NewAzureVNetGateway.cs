@@ -24,11 +24,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
         public string VNetName { get; set; }
 
         [Parameter(Position = 1, Mandatory = false, HelpMessage = "The type of routing that the gateway will use. This will default to StaticRouting if no value is provided.")]
-        [ValidateSet("StaticRouting", "DynamicRouting", IgnoreCase = true)]
         public string GatewayType { get; set; }
 
         [Parameter(Position = 2, Mandatory = false, HelpMessage = "The Gateway SKU for the new gateway.")]
-        [ValidateSet("Default", "HighPerformance", "Standard", IgnoreCase = true)]
         public string GatewaySKU { get; set; }
 
         public override void ExecuteCmdlet()
