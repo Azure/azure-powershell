@@ -14,7 +14,9 @@
 
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Management.Compute;
+using Microsoft.Azure.Management.Compute.Models;
 using System.Management.Automation;
+using System;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
@@ -42,10 +44,10 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
         [Alias("ExtensionName")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             Position = 2,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The extension name.")]
+            HelpMessage = "The extension name. If this parameter is not specified, default values used are AzureDiskEncryption for windows VMs and AzureDiskEncryptionForLinux for Linux VMs")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -59,6 +61,18 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
             ExecuteClientAction(() =>
             {
+                VirtualMachine virtualMachineResponse = (this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName)).VirtualMachine;
+
+                string currentOSType = virtualMachineResponse.StorageProfile.OSDisk.OperatingSystemType;
+                if (string.Equals(currentOSType, "Windows", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    this.Name = this.Name ?? AzureDiskEncryptionExtensionContext.ExtensionDefaultName;
+                }
+                else if (string.Equals(currentOSType, "Linux", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    this.Name = this.Name ?? AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultName;
+                }
+
                 if (this.Force.IsPresent
              || this.ShouldContinue(Properties.Resources.VirtualMachineExtensionRemovalConfirmation, Properties.Resources.VirtualMachineExtensionRemovalCaption))
                 {
