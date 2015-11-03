@@ -63,7 +63,7 @@ function Get-ProviderLocations($provider)
 				return @("Central US", "East US") 
 			} else 
 			{  
-				return $location.Locations[0]  
+				return $location.Locations
 			}  
 		}
 		
