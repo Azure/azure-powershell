@@ -907,6 +907,17 @@ function Test-AzureDiskEncryptionExtension
         #Remove AzureDiskEncryption extension
         Remove-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName;
 
+        #Remove the VM 
+        Remove-AzureRmVm -ResourceGroupName $rgname -Name $vmName -Force;
+
+        #Create a brand new VM using the same OS vhd encrypted above
+        $p.StorageProfile.ImageReference = $null;
+        $p.OSProfile = $null;
+        $p.StorageProfile.DataDisks = $null;
+        $p = Set-AzureRmVMOSDisk -VM $p -Name $p.StorageProfile.OSDisk.Name -VhdUri $p.StorageProfile.OSDisk.VirtualHardDisk.Uri -Caching ReadWrite -CreateOption attach -DiskEncryptionKeyUrl $encryptionStatus.OsVolumeEncryptionSettings.DiskEncryptionKey.SecretUrl -DiskEncryptionKeyVaultId $encryptionStatus.OsVolumeEncryptionSettings.DiskEncryptionKey.SourceVault.ReferenceUri -Windows;
+
+        New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
+
     }
     finally
     {
