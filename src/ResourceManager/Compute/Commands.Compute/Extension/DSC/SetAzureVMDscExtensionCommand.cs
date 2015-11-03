@@ -10,6 +10,7 @@ using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Management.Automation;
@@ -321,7 +322,11 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 
                 publicSettings.SasToken = configurationUris.SasToken;
                 publicSettings.ModulesUrl = configurationUris.ModulesUrl;
-                publicSettings.DataCollection = DataCollection;
+
+                Hashtable privacySetting = new Hashtable();
+                privacySetting.Add("DataCollection", DataCollection);
+                publicSettings.Privacy = privacySetting;
+
                 publicSettings.ConfigurationFunction = string.Format(
                     CultureInfo.InvariantCulture,
                     "{0}\\{1}",
