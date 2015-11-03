@@ -391,11 +391,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             try
             {
-                var apiVersion = await ApiVersionHelper
-                    .DetermineApiVersion(
-                        DefaultContext,
+                var apiVersion = await this.DetermineApiVersion(
                         resourceId: resource.Id,
-                        cancellationToken: this.CancellationToken.Value,
                         pre: this.Pre)
                     .ConfigureAwait(continueOnCapturedContext: false);
 

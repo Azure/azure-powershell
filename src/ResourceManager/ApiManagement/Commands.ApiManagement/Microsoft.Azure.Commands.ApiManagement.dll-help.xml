@@ -2466,7 +2466,7 @@ Set-AzureRmApiManagementVirtualNetworks –ResourceGroupName ContosoGroup –Nam
         <maml:introduction>
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
-        <dev:code>PS C:\&gt; Set-AzureRmApiHostnames -Name ContosoApi -ResourceGroupName Contoso –PortalHostnameConfiguration $portalHostnameConf –ProxyHostnameConfiguration $proxyHostnameConf</dev:code>
+        <dev:code>PS C:\&gt; Set-AzureRmApiManagementHostnames -Name ContosoApi -ResourceGroupName Contoso –PortalHostnameConfiguration $portalHostnameConf –ProxyHostnameConfiguration $proxyHostnameConf</dev:code>
         <dev:remarks>
           <maml:para>Set custom hostname configuration for proxy and portal.</maml:para>
           <maml:para />
@@ -2491,7 +2491,7 @@ Set-AzureRmApiManagementVirtualNetworks –ResourceGroupName ContosoGroup –Nam
 Import-AzureRmApiManagementHostnameCertificate -Name ContosoApi -ResourceGroupName Contoso –HostnameType “Portal” -PfxPath “C:\portalcert.pfx” -PfxPassword “certsecret”
 $portalHostnameConf = New-AzureRmApiManagementHostnameConfiguration -Hostname “portal.contoso.com” -CertificateThumbprint 33CC47C6FCA848DC9B14A6F071C1EF7C
 $proxyHostnameConf = New-AzureRmApiManagementHostnameConfiguration -Hostname “proxy.contoso.com” -CertificateThumbprint 5DD7CCF6A1E74E0987DD2873406B7264
-Set-AzureRmApiHostnames -Name ContosoApi -ResourceGroupName Contoso –PortalHostnameConfiguration $portalHostnameConf –ProxyHostnameConfiguration $proxyHostnameConf
+Set-AzureRmApiManagementHostnames -Name ContosoApi -ResourceGroupName Contoso –PortalHostnameConfiguration $portalHostnameConf –ProxyHostnameConfiguration $proxyHostnameConf
 </dev:code>
         <dev:remarks>
           <maml:para>Script to configure custom hostname for proxy and portal. First import corresponding certificates and then apply custom hostnames.</maml:para>
