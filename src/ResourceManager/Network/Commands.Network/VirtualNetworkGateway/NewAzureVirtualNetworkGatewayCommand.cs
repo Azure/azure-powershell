@@ -82,6 +82,20 @@ namespace Microsoft.Azure.Commands.Network
         public bool EnableBgp { get; set; }
 
         [Parameter(
+              Mandatory = false,
+              ValueFromPipelineByPropertyName = true,
+             ParameterSetName = "SetByResourceId",
+             HelpMessage = "GatewayDefaultSiteId")]
+        public string GatewayDefaultSiteId { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             ParameterSetName = "SetByResource",
+            HelpMessage = "GatewayDefaultSite")]
+        public PSLocalNetworkGateway GatewayDefaultSite { get; set; }
+
+        [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "An array of hashtables which represents resource tags.")]
@@ -131,6 +145,17 @@ namespace Microsoft.Azure.Commands.Network
             vnetGateway.GatewayType = this.GatewayType;
             vnetGateway.VpnType = this.VpnType;
             vnetGateway.EnableBgp = this.EnableBgp;
+
+            if (this.GatewayDefaultSite != null)
+            {
+                this.GatewayDefaultSiteId = this.GatewayDefaultSite.Id;
+            }
+
+            if (!string.IsNullOrEmpty(this.GatewayDefaultSiteId))
+            {
+                vnetGateway.GatewayDefaultSite = new PSResourceId();
+                vnetGateway.GatewayDefaultSite.Id = this.GatewayDefaultSiteId;
+            }
 
             // Map to the sdk object
             var vnetGatewayModel = Mapper.Map<MNM.VirtualNetworkGateway>(vnetGateway);
