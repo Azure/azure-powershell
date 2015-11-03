@@ -20,14 +20,14 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Test.ScenarioTests
     public class BackupPolicyTests:StorSimpleTestBase
     {
         #region New-AzureStorSimpleDeviceBackupScheduleAddConfig
-        [Fact(Skip = "TODO: Failed in constructor, owner should look at it")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewBackupPolicyConfig()
         {
             RunPowerShellTest("Test-NewBackupPolicyAddConfig");
         }
 
-        [Fact(Skip = "TODO: Failed in constructor, owner should look at it")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewBackupPolicyAddConfigDefaultValues()
         {

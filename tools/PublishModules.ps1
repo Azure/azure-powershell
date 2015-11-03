@@ -55,7 +55,6 @@ if ($repo -ne $null) {
 
 $resourceManagerRootFolder = "$packageFolder\$buildConfig\ResourceManager\AzureResourceManager"
 $publishToLocal = test-path $repositoryLocation
-
 if (($scope -eq 'All') -or $publishToLocal ) {
     # If we publish 'All' or to local folder, publish AzureRM.Profile first, becasue it is the common dependency
     Write-Host "Publishing profile module"
