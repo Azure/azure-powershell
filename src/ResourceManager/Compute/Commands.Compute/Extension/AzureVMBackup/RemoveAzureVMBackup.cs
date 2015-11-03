@@ -61,7 +61,11 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
         [ValidateNotNullOrEmpty]
         public string VMName { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = true,
+            Position = 2,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The tag for this backup.")]
         public string Tag { get; set; }
 
         protected override void ProcessRecord()

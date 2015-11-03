@@ -183,7 +183,8 @@
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -195,7 +196,8 @@
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -2695,7 +2697,8 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -2707,7 +2710,8 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -3111,7 +3115,8 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -3123,7 +3128,8 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -3248,7 +3254,8 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -3260,7 +3267,8 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -4366,10 +4374,10 @@ Get-AzureRmVmDiskEncryptionStatus -ResourceGroupName $rgname -VMName $vmName;</d
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Version</maml:name>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>FilterExpression</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Specifies a filter expression.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -4418,10 +4426,10 @@ Get-AzureRmVmDiskEncryptionStatus -ResourceGroupName $rgname -VMName $vmName;</d
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>FilterExpression</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Version</maml:name>
 				<maml:description>
-					<maml:para>Specifies a filter expression.</maml:para>
+					<maml:para />
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -4490,10 +4498,10 @@ Get-AzureRmVmDiskEncryptionStatus -ResourceGroupName $rgname -VMName $vmName;</d
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>Version</maml:name>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>FilterExpression</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Specifies a filter expression.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -4526,10 +4534,10 @@ Get-AzureRmVmDiskEncryptionStatus -ResourceGroupName $rgname -VMName $vmName;</d
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>FilterExpression</maml:name>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Version</maml:name>
 			<maml:description>
-				<maml:para>Specifies a filter expression.</maml:para>
+				<maml:para />
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -5239,9 +5247,9 @@ Get-AzureRmVmDiskEncryptionStatus -ResourceGroupName $rgname -VMName $vmName;</d
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
-				<maml:name>AvailabilitySetName</maml:name>
+				<maml:name>VMName</maml:name>
 				<maml:description>
-					<maml:para>Specifies the name of the Availability Set for which this cmdlet gets the available virtual machine sizes.</maml:para>
+					<maml:para>Specifies the name of the virtual machine that this cmdlet gets the available virtual machine sizes for resizing.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -5270,9 +5278,9 @@ Get-AzureRmVmDiskEncryptionStatus -ResourceGroupName $rgname -VMName $vmName;</d
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
-				<maml:name>VMName</maml:name>
+				<maml:name>AvailabilitySetName</maml:name>
 				<maml:description>
-					<maml:para>Specifies the name of the virtual machine that this cmdlet gets the available virtual machine sizes for resizing.</maml:para>
+					<maml:para>Specifies the name of the Availability Set for which this cmdlet gets the available virtual machine sizes.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -5342,9 +5350,9 @@ Get-AzureRmVmDiskEncryptionStatus -ResourceGroupName $rgname -VMName $vmName;</d
 			<dev:defaultValue>none</dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
-			<maml:name>AvailabilitySetName</maml:name>
+			<maml:name>VMName</maml:name>
 			<maml:description>
-				<maml:para>Specifies the name of the Availability Set for which this cmdlet gets the available virtual machine sizes.</maml:para>
+				<maml:para>Specifies the name of the virtual machine that this cmdlet gets the available virtual machine sizes for resizing.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -5354,9 +5362,9 @@ Get-AzureRmVmDiskEncryptionStatus -ResourceGroupName $rgname -VMName $vmName;</d
 			<dev:defaultValue>none</dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
-			<maml:name>VMName</maml:name>
+			<maml:name>AvailabilitySetName</maml:name>
 			<maml:description>
-				<maml:para>Specifies the name of the virtual machine that this cmdlet gets the available virtual machine sizes for resizing.</maml:para>
+				<maml:para>Specifies the name of the Availability Set for which this cmdlet gets the available virtual machine sizes.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -5608,7 +5616,8 @@ Get-AzureRmVmDiskEncryptionStatus -ResourceGroupName $rgname -VMName $vmName;</d
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -5620,7 +5629,8 @@ Get-AzureRmVmDiskEncryptionStatus -ResourceGroupName $rgname -VMName $vmName;</d
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -6835,7 +6845,8 @@ PS C:\&gt; $VirtualMachine = New-AzureRmVMConfig -VMName &quot;VirtualMachine07&
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -6847,7 +6858,8 @@ PS C:\&gt; $VirtualMachine = New-AzureRmVMConfig -VMName &quot;VirtualMachine07&
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -7029,7 +7041,8 @@ PS C:\&gt; $VirtualMachine = New-AzureRmVMConfig -VMName &quot;VirtualMachine07&
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -7041,7 +7054,8 @@ PS C:\&gt; $VirtualMachine = New-AzureRmVMConfig -VMName &quot;VirtualMachine07&
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -8245,7 +8259,7 @@ PS C:\&gt; $VirtualMachine = New-AzureRmVMConfig -VMName &quot;VirtualMachine07&
 	<command:details>
 		<command:name>Remove-AzureRmVMBackup</command:name>
 		<maml:description>
-			<maml:para />
+			<maml:para>Remove-AzureRmVMBackup cmdlet remove the VM Backup for the VM.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -8263,21 +8277,21 @@ PS C:\&gt; $VirtualMachine = New-AzureRmVMConfig -VMName &quot;VirtualMachine07&
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Resource group name of the virtual machine</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>VMName</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Name of the virtual machine</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
 				<maml:name>Tag</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The tag for the VM Backup. This is used for identify the backups.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -8301,7 +8315,7 @@ PS C:\&gt; $VirtualMachine = New-AzureRmVMConfig -VMName &quot;VirtualMachine07&
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Resource group name of the virtual machine</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -8313,7 +8327,7 @@ PS C:\&gt; $VirtualMachine = New-AzureRmVMConfig -VMName &quot;VirtualMachine07&
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 			<maml:name>VMName</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Name of the virtual machine</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -8322,10 +8336,10 @@ PS C:\&gt; $VirtualMachine = New-AzureRmVMConfig -VMName &quot;VirtualMachine07&
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
 			<maml:name>Tag</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The tag for the VM Backup. This is used for identify the backups.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -8367,7 +8381,8 @@ PS C:\&gt; $VirtualMachine = New-AzureRmVMConfig -VMName &quot;VirtualMachine07&
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -8379,7 +8394,8 @@ PS C:\&gt; $VirtualMachine = New-AzureRmVMConfig -VMName &quot;VirtualMachine07&
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -8933,7 +8949,8 @@ PS C:\&gt; Update-AzureRmVM -ResourceGroupName &quot;ResourceGroup11&quot; -Name
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -8945,7 +8962,8 @@ PS C:\&gt; Update-AzureRmVM -ResourceGroupName &quot;ResourceGroup11&quot; -Name
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -9108,7 +9126,8 @@ PS C:\&gt; Update-AzureRmVM -ResourceGroupName &quot;ResourceGroup11&quot; -Name
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -9120,7 +9139,8 @@ PS C:\&gt; Update-AzureRmVM -ResourceGroupName &quot;ResourceGroup11&quot; -Name
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -9929,7 +9949,8 @@ Remove-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmNa
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -9941,7 +9962,8 @@ Remove-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmNa
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -10425,7 +10447,8 @@ Remove-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmNa
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -10437,7 +10460,8 @@ Remove-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmNa
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -11337,7 +11361,7 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName &quot;ResourceGroup11&quot; -V
 	<command:details>
 		<command:name>Set-AzureRmVMBackupExtension</command:name>
 		<maml:description>
-			<maml:para />
+			<maml:para>Set-AzureRmVMBackupExtension cmdlet create a backup for this VM.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -11355,28 +11379,28 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName &quot;ResourceGroup11&quot; -V
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Resource group name of the virtual machine</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>VMName</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Name of the virtual machine</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
 				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Name of the ARM resource that represents the extension. This is &#39;VMBackupForLinuxExtension&#39; for Linux VMs.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
 				<maml:name>Tag</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The tag for the VM Backup. This is used for identify the backups.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -11400,7 +11424,7 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName &quot;ResourceGroup11&quot; -V
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Resource group name of the virtual machine</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -11412,7 +11436,7 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName &quot;ResourceGroup11&quot; -V
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 			<maml:name>VMName</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Name of the virtual machine</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -11424,7 +11448,7 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName &quot;ResourceGroup11&quot; -V
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
 			<maml:name>Name</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Name of the ARM resource that represents the extension. This is &#39;VMBackupForLinuxExtension&#39; for Linux VMs.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -11433,10 +11457,10 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName &quot;ResourceGroup11&quot; -V
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
 			<maml:name>Tag</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The tag for the VM Backup. This is used for identify the backups.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -11478,7 +11502,8 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName &quot;ResourceGroup11&quot; -V
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -11490,7 +11515,8 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName &quot;ResourceGroup11&quot; -V
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -11696,7 +11722,8 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName &quot;ResourceGroup11&quot; -V
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -11708,7 +11735,8 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName &quot;ResourceGroup11&quot; -V
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -12382,7 +12410,8 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName &quot;ResourceGroup11&quot; -V
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -12394,7 +12423,8 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName &quot;ResourceGroup11&quot; -V
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -12595,7 +12625,8 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName &quot;ResourceGroup11&quot; -V
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -12607,7 +12638,8 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName &quot;ResourceGroup11&quot; -V
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -12629,7 +12661,7 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName &quot;ResourceGroup11&quot; -V
 	<command:details>
 		<command:name>Set-AzureRmVMDiskEncryptionExtension</command:name>
 		<maml:description>
-			<maml:para>Set-AzureRmVMDiskEncryptionExtension cmdlet enables encryption on a running IaaS VM in Azure. This cmdlet prepares the VM to enable encryption, which may need rebooting the VM when done for the first time. This cmdlet installs an extension on the VM to enable encryption. If no Name parameter is specified, an extension with default name &#39;AzureDiskEncryption&#39; for Windows VMs and &#39;AzureDiskEncryptionForLinux&#39; for Linux VMs is created. Please save your work on the VM before running this cmdlet and wait for it to be done. </maml:para>
+			<maml:para>Set-AzureRmVMDiskEncryptionExtension cmdlet enables encryption on a running IaaS VM in Azure. This cmdlet prepares the VM to enable encryption, which may need rebooting the VM when done for the first time. This cmdlet installs an extension on the VM to enable encryption. If no Name parameter is specified, an extension with default name &#39;AzureDiskEncryption&#39; for Windows VMs and &#39;AzureDiskEncryptionForLinux&#39; for Linux VMs is created. Please save your work on the VM before running this cmdlet and wait for it to be done.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -12682,14 +12714,14 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName &quot;ResourceGroup11&quot; -V
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
 				<maml:name>DiskEncryptionKeyVaultId</maml:name>
 				<maml:description>
-					<maml:para>Resource ID of the KeyVault to which the VM encryption keys should be uploaded to. </maml:para>
+					<maml:para>Resource ID of the KeyVault to which the VM encryption keys should be uploaded to.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="6">
 				<maml:name>KeyEncryptionKeyUrl</maml:name>
 				<maml:description>
-					<maml:para>URL of the key encryption key that is used to wrap and unwrap the VM encryption key. This must be the full versioned URL. See examples for more details. </maml:para>
+					<maml:para>URL of the key encryption key that is used to wrap and unwrap the VM encryption key. This must be the full versioned URL. See examples for more details.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -12703,14 +12735,14 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName &quot;ResourceGroup11&quot; -V
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="8">
 				<maml:name>KeyEncryptionAlgorithm</maml:name>
 				<maml:description>
-					<maml:para>Algorithm used to wrap and unwrap the VM encryption key with key encryption key. Default value is RSA-OAEP if not specified. </maml:para>
+					<maml:para>Algorithm used to wrap and unwrap the VM encryption key with key encryption key. Default value is RSA-OAEP if not specified.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="9">
 				<maml:name>VolumeType</maml:name>
 				<maml:description>
-					<maml:para>Type of VM volumes to perform the encryption operation. For Windows VMs allowed values are All, OS and Data . For Linux VMs allowed value is Data only. Default for Windows VMs is All if not specified. </maml:para>
+					<maml:para>Type of VM volumes to perform the encryption operation. For Windows VMs allowed values are All, OS and Data . For Linux VMs allowed value is Data only. Default for Windows VMs is All if not specified.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -12731,7 +12763,14 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName &quot;ResourceGroup11&quot; -V
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="12">
 				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para>Name of the ARM resource that represents the extension. This is defaulted to &#39;AzureDiskEncryption&#39; for Windows VMs and &#39;AzureDiskEncryptionForLinux&#39; for Linux VMs. </maml:para>
+					<maml:para>Name of the ARM resource that represents the extension. This is defaulted to &#39;AzureDiskEncryption&#39; for Windows VMs and &#39;AzureDiskEncryptionForLinux&#39; for Linux VMs.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="13">
+				<maml:name>Passphrase</maml:name>
+				<maml:description>
+					<maml:para>Passphrase specified in the powershell. This parameter only works for Linux VM.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -12797,14 +12836,14 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName &quot;ResourceGroup11&quot; -V
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
 				<maml:name>DiskEncryptionKeyVaultId</maml:name>
 				<maml:description>
-					<maml:para>Resource ID of the KeyVault to which the VM encryption keys should be uploaded to. </maml:para>
+					<maml:para>Resource ID of the KeyVault to which the VM encryption keys should be uploaded to.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="6">
 				<maml:name>KeyEncryptionKeyUrl</maml:name>
 				<maml:description>
-					<maml:para>URL of the key encryption key that is used to wrap and unwrap the VM encryption key. This must be the full versioned URL. See examples for more details. </maml:para>
+					<maml:para>URL of the key encryption key that is used to wrap and unwrap the VM encryption key. This must be the full versioned URL. See examples for more details.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -12818,14 +12857,14 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName &quot;ResourceGroup11&quot; -V
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="8">
 				<maml:name>KeyEncryptionAlgorithm</maml:name>
 				<maml:description>
-					<maml:para>Algorithm used to wrap and unwrap the VM encryption key with key encryption key. Default value is RSA-OAEP if not specified. </maml:para>
+					<maml:para>Algorithm used to wrap and unwrap the VM encryption key with key encryption key. Default value is RSA-OAEP if not specified.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="9">
 				<maml:name>VolumeType</maml:name>
 				<maml:description>
-					<maml:para>Type of VM volumes to perform the encryption operation. For Windows VMs allowed values are All, OS and Data . For Linux VMs allowed value is Data only. Default for Windows VMs is All if not specified. </maml:para>
+					<maml:para>Type of VM volumes to perform the encryption operation. For Windows VMs allowed values are All, OS and Data . For Linux VMs allowed value is Data only. Default for Windows VMs is All if not specified.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -12846,7 +12885,14 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName &quot;ResourceGroup11&quot; -V
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="12">
 				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para>Name of the ARM resource that represents the extension. This is defaulted to &#39;AzureDiskEncryption&#39; for Windows VMs and &#39;AzureDiskEncryptionForLinux&#39; for Linux VMs. </maml:para>
+					<maml:para>Name of the ARM resource that represents the extension. This is defaulted to &#39;AzureDiskEncryption&#39; for Windows VMs and &#39;AzureDiskEncryptionForLinux&#39; for Linux VMs.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="13">
+				<maml:name>Passphrase</maml:name>
+				<maml:description>
+					<maml:para>Passphrase specified in the powershell. This parameter only works for Linux VM.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -12937,7 +12983,7 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName &quot;ResourceGroup11&quot; -V
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
 			<maml:name>DiskEncryptionKeyVaultId</maml:name>
 			<maml:description>
-				<maml:para>Resource ID of the KeyVault to which the VM encryption keys should be uploaded to. </maml:para>
+				<maml:para>Resource ID of the KeyVault to which the VM encryption keys should be uploaded to.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -12949,7 +12995,7 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName &quot;ResourceGroup11&quot; -V
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="6">
 			<maml:name>KeyEncryptionKeyUrl</maml:name>
 			<maml:description>
-				<maml:para>URL of the key encryption key that is used to wrap and unwrap the VM encryption key. This must be the full versioned URL. See examples for more details. </maml:para>
+				<maml:para>URL of the key encryption key that is used to wrap and unwrap the VM encryption key. This must be the full versioned URL. See examples for more details.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -12973,7 +13019,7 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName &quot;ResourceGroup11&quot; -V
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="8">
 			<maml:name>KeyEncryptionAlgorithm</maml:name>
 			<maml:description>
-				<maml:para>Algorithm used to wrap and unwrap the VM encryption key with key encryption key. Default value is RSA-OAEP if not specified. </maml:para>
+				<maml:para>Algorithm used to wrap and unwrap the VM encryption key with key encryption key. Default value is RSA-OAEP if not specified.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -12985,7 +13031,7 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName &quot;ResourceGroup11&quot; -V
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="9">
 			<maml:name>VolumeType</maml:name>
 			<maml:description>
-				<maml:para>Type of VM volumes to perform the encryption operation. For Windows VMs allowed values are All, OS and Data . For Linux VMs allowed value is Data only. Default for Windows VMs is All if not specified. </maml:para>
+				<maml:para>Type of VM volumes to perform the encryption operation. For Windows VMs allowed values are All, OS and Data . For Linux VMs allowed value is Data only. Default for Windows VMs is All if not specified.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -13021,7 +13067,19 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName &quot;ResourceGroup11&quot; -V
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="12">
 			<maml:name>Name</maml:name>
 			<maml:description>
-				<maml:para>Name of the ARM resource that represents the extension. This is defaulted to &#39;AzureDiskEncryption&#39; for Windows VMs and &#39;AzureDiskEncryptionForLinux&#39; for Linux VMs. </maml:para>
+				<maml:para>Name of the ARM resource that represents the extension. This is defaulted to &#39;AzureDiskEncryption&#39; for Windows VMs and &#39;AzureDiskEncryptionForLinux&#39; for Linux VMs.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="13">
+			<maml:name>Passphrase</maml:name>
+			<maml:description>
+				<maml:para>Passphrase specified in the powershell. This parameter only works for Linux VM.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -13087,7 +13145,8 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName &quot;ResourceGroup11&quot; -V
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -13099,7 +13158,8 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName &quot;ResourceGroup11&quot; -V
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -13113,7 +13173,7 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName &quot;ResourceGroup11&quot; -V
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  Enabling encryption using AAD Client ID, Client Secret   --------------------------</maml:title>
+			<maml:title>--------------------------  Enabling encryption using AAD Client ID, Client Secret  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -13128,8 +13188,7 @@ $keyVault = Get-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $rgname
 $diskEncryptionKeyVaultUrl = $keyVault.VaultUri;
 $keyVaultResourceId = $keyVault.ResourceId;
 
-Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId ;
-      </dev:code>
+Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId ;</dev:code>
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
@@ -14847,34 +14906,6 @@ PS C:\&gt; $VirtualMachine = Set-AzureRmVMOperatingSystem -VM $$VirtualMachine -
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="7">
-				<maml:name>DiskEncryptionKeyUrl</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="8">
-				<maml:name>DiskEncryptionKeyVaultId</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="9">
-				<maml:name>KeyEncryptionKeyUrl</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="10">
-				<maml:name>KeyEncryptionKeyVaultId</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
 				<maml:description>
@@ -14951,82 +14982,6 @@ PS C:\&gt; $VirtualMachine = Set-AzureRmVMOperatingSystem -VM $$VirtualMachine -
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
-		<command:syntaxItem>
-			<maml:name>Set-AzureRmVMOSDisk</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
-				<maml:name>VM</maml:name>
-				<maml:description>
-					<maml:para>Specifies the local virtual machine object on which to set operating system disk properties. To obtain a virtual machine object, use the Get-AzureRmVM cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">PSVirtualMachine</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
-				<maml:name>Name</maml:name>
-				<maml:description>
-					<maml:para>Specifies the name of the operating system disk.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
-				<maml:name>VhdUri</maml:name>
-				<maml:description>
-					<maml:para>Specifies the Uniform Resource Identifier (URI) of a virtual hard disk (VHD).</maml:para>
-					<maml:para>For an image based virtual machine, this parameter specifies the VHD file to create when a platform image or user image is specified. This is the location from which the image binary large object (BLOB) is copied to start the virtual machine. </maml:para>
-					<maml:para>For a disk based virtual machine boot scenario, this parameter specifies the VHD file that the virtual machine uses directly for starting up.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
-				<maml:name>Caching</maml:name>
-				<maml:description>
-					<maml:para>Specifies the caching mode of the operating system disk. Valid values are: </maml:para>
-					<maml:para>-- ReadOnly
--- ReadWrite</maml:para>
-					<maml:para>The default value is ReadWrite. Changing the caching value causes the virtual machine to restart. </maml:para>
-					<maml:para>This setting affects the consistency and performance of the disk.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
-				<maml:name>SourceImageUri</maml:name>
-				<maml:description>
-					<maml:para>This setting affects the consistency and performance of the disk.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
-				<maml:name>CreateOption</maml:name>
-				<maml:description>
-					<maml:para>Specifies whether this cmldet creates a disk in the virtual machine from a platform or user image, creates an empty disk, or attaches an existing disk. Valid values are: </maml:para>
-					<maml:para>-- Attach 
--- Empty 
--- FromImage</maml:para>
-					<maml:para>This setting affects the consistency and performance of the disk.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="6">
-				<maml:name>Linux</maml:name>
-				<maml:description>
-					<maml:para>Indicates that the operating system on the user image is Linux. Specify this parameter for user image based virtual machine deployment.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="7">
 				<maml:name>DiskEncryptionKeyUrl</maml:name>
 				<maml:description>
@@ -15130,6 +15085,110 @@ PS C:\&gt; $VirtualMachine = Set-AzureRmVMOperatingSystem -VM $$VirtualMachine -
 					<maml:para>Indicates that the operating system on the user image is Linux. Specify this parameter for user image based virtual machine deployment.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Set-AzureRmVMOSDisk</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
+				<maml:name>VM</maml:name>
+				<maml:description>
+					<maml:para>Specifies the local virtual machine object on which to set operating system disk properties. To obtain a virtual machine object, use the Get-AzureRmVM cmdlet.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSVirtualMachine</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of the operating system disk.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+				<maml:name>VhdUri</maml:name>
+				<maml:description>
+					<maml:para>Specifies the Uniform Resource Identifier (URI) of a virtual hard disk (VHD).</maml:para>
+					<maml:para>For an image based virtual machine, this parameter specifies the VHD file to create when a platform image or user image is specified. This is the location from which the image binary large object (BLOB) is copied to start the virtual machine. </maml:para>
+					<maml:para>For a disk based virtual machine boot scenario, this parameter specifies the VHD file that the virtual machine uses directly for starting up.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+				<maml:name>Caching</maml:name>
+				<maml:description>
+					<maml:para>Specifies the caching mode of the operating system disk. Valid values are: </maml:para>
+					<maml:para>-- ReadOnly
+-- ReadWrite</maml:para>
+					<maml:para>The default value is ReadWrite. Changing the caching value causes the virtual machine to restart. </maml:para>
+					<maml:para>This setting affects the consistency and performance of the disk.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+				<maml:name>SourceImageUri</maml:name>
+				<maml:description>
+					<maml:para>This setting affects the consistency and performance of the disk.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
+				<maml:name>CreateOption</maml:name>
+				<maml:description>
+					<maml:para>Specifies whether this cmldet creates a disk in the virtual machine from a platform or user image, creates an empty disk, or attaches an existing disk. Valid values are: </maml:para>
+					<maml:para>-- Attach 
+-- Empty 
+-- FromImage</maml:para>
+					<maml:para>This setting affects the consistency and performance of the disk.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="6">
+				<maml:name>Linux</maml:name>
+				<maml:description>
+					<maml:para>Indicates that the operating system on the user image is Linux. Specify this parameter for user image based virtual machine deployment.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="7">
+				<maml:name>DiskEncryptionKeyUrl</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="8">
+				<maml:name>DiskEncryptionKeyVaultId</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="9">
+				<maml:name>KeyEncryptionKeyUrl</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="10">
+				<maml:name>KeyEncryptionKeyVaultId</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
@@ -15906,7 +15965,8 @@ PS C:\&gt; $VirtualMachine07 = Set-AzureRmVMSourceImage -VM $VirtualMachine07 -I
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -15918,7 +15978,8 @@ PS C:\&gt; $VirtualMachine07 = Set-AzureRmVMSourceImage -VM $VirtualMachine07 -I
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
