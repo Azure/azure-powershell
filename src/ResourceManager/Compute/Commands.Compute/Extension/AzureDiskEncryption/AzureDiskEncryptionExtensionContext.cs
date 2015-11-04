@@ -44,6 +44,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         public string VolumeType { get; set; }
         public string AadClientCertThumbprint { get; set; }
         public string SequenceVersion { get; set; }
+        public SecureString Passphrase { get; set; } 
 
         private static SecureString ConvertStringToSecureString(string str)
         {
@@ -74,6 +75,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             AadClientCertThumbprint = (publicSettings == null) ? null : publicSettings.AadClientCertThumbprint;
             SequenceVersion = (publicSettings == null) ? null : publicSettings.SequenceVersion;
             AadClientSecret = (protectedSettings == null) ? null : ConvertStringToSecureString(protectedSettings.AadClientSecret);
+            Passphrase = (protectedSettings == null) ? null : ConvertStringToSecureString(protectedSettings.Passphrase);
         }
 
         public AzureDiskEncryptionExtensionContext(PSVirtualMachineExtension psExt)
