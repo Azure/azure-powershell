@@ -33,13 +33,6 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
         public string ProvisioningState { get; set; }
 
-        public List<PSPermission> Permissions { get; set; }
-
-        public string PermissionsTable
-        {
-            get { return ResourcesExtensions.ConstructPermissionsTable(Permissions); }
-        }
-
         public Hashtable[] Tags { get; set; }
 
         public string TagsTable
