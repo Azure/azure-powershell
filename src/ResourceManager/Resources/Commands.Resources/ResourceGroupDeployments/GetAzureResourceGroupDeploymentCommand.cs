@@ -44,10 +44,6 @@ namespace Microsoft.Azure.Commands.Resources
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The provisioning state of the resource group deployment.")]
-        [ValidateNotNullOrEmpty]
-        public string ProvisioningState { get; set; }
-
         [Alias("DeploymentId", "ResourceId")]
         [Parameter(ParameterSetName = GetAzureResourceGroupDeploymentCommand.DeploymentIdParameterSet, Mandatory = true, HelpMessage = "The fully qualified resource Id of the deployment. example: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Resources/deployments/{deploymentName}")]
         [ValidateNotNullOrEmpty]
@@ -58,15 +54,9 @@ namespace Microsoft.Azure.Commands.Resources
             FilterResourceGroupDeploymentOptions options = new FilterResourceGroupDeploymentOptions()
             {
                 ResourceGroupName = ResourceGroupName ?? ResourceIdUtility.GetResourceGroupName(Id),
-                DeploymentName = Name ?? (string.IsNullOrEmpty(Id) ? null : ResourceIdUtility.GetResourceName(Id)),
-                ProvisioningStates = string.IsNullOrEmpty(ProvisioningState) ? new List<string>() : 
-                    new List<string>() { ProvisioningState }
+                DeploymentName = Name ?? (string.IsNullOrEmpty(Id) ? null : ResourceIdUtility.GetResourceName(Id))
             };
 
-            if(!string.IsNullOrEmpty(ProvisioningState))
-            {
-                WriteWarning("The ProvisioningState parameter is being deprecated and will be removed in a future release.");
-            }
             WriteObject(ResourcesClient.FilterResourceGroupDeployments(options), true);
         }
     }

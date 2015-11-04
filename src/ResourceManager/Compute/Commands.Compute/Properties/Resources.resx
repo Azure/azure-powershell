@@ -452,6 +452,14 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
     <value>Since the VM is created using premium storage, existing standard storage account, {0}, is used for boot diagnostics.</value>
     <comment>{0} = existing standard storage account name</comment>
   </data>
+  <data name="ErrorDuringGettingStorageAccountForBootDiagnostics" xml:space="preserve">
+    <value>Error occurred when getting storage account, {0}, for boot diagnostics: {1}</value>
+    <comment>{0} = storage account name, {1} = error message</comment>
+  </data>
+  <data name="StorageAccountNotFoundForBootDiagnostics" xml:space="preserve">
+    <value>Storage account, {0}, is not found.  The OS disk may be in a different storage group.</value>
+    <comment>{0} = storage account name</comment>
+  </data>
   <data name="VMOSDiskDiskEncryptionBothKekVaultIdAndKekUrlRequired" xml:space="preserve">
     <value>You have to specify either both of KeyEncryptionKeyVaultId and KeyEncryptionKeyUrl or none of them.</value>
   </data>

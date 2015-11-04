@@ -68,11 +68,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                                 param.OsProfile.WindowsOperatingSystemProfile.RdpSettings.UserName == _rdpCred.UserName &&
                                 param.OsProfile.WindowsOperatingSystemProfile.RdpSettings.Password ==
                                 _rdpCred.Password.ConvertToString())))
-                .Returns(new HDInsightLongRunningOperationResponse
+                .Returns(new OperationResource
                 {
-                    Error = null,
+                    ErrorInfo= null,
                     StatusCode = HttpStatusCode.OK,
-                    Status = OperationStatus.Succeeded
+                    State = AsyncOperationState.Succeeded
                 })
                 .Verifiable();
 
@@ -92,11 +92,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                             param =>
                                 param.OsProfile.LinuxOperatingSystemProfile == null &&
                                 param.OsProfile.WindowsOperatingSystemProfile.RdpSettings == null)))
-                .Returns(new HDInsightLongRunningOperationResponse
+                .Returns(new OperationResource
                 {
-                    Error = null,
+                    ErrorInfo = null,
                     StatusCode = HttpStatusCode.OK,
-                    Status = OperationStatus.Succeeded
+                    State = AsyncOperationState.Succeeded
                 })
                 .Verifiable();
 
