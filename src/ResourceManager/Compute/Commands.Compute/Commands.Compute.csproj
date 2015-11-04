@@ -81,7 +81,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Compute, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.9.0.0\lib\net40\Microsoft.Azure.Management.Compute.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.9.1.0\lib\net40\Microsoft.Azure.Management.Compute.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Network, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -204,6 +205,19 @@
     <Compile Include="ExtensionImages\GetAzureVMExtensionImageTypeCommand.cs" />
     <Compile Include="ExtensionImages\GetAzureVMExtensionImageCommand.cs" />
     <Compile Include="ExtensionImages\VirtualMachineExtensionImageBaseCmdlet.cs" />
+    <Compile Include="Extension\AzureDiskEncryption\AzureDiskEncryptionExtensionContext.cs" />
+    <Compile Include="Extension\AzureDiskEncryption\AzureDiskEncryptionExtensionProtectedSettings.cs" />
+    <Compile Include="Extension\AzureDiskEncryption\AzureDiskEncryptionExtensionPublicSettings.cs" />
+    <Compile Include="Extension\AzureDiskEncryption\GetAzureDiskEncryptionStatus.cs" />
+    <Compile Include="Extension\AzureDiskEncryption\RemoveAzureDiskEncryptionExtension.cs" />
+    <Compile Include="Extension\AzureDiskEncryption\SetAzureDiskEncryptionExtension.cs" />
+    <Compile Include="Extension\AzureVMBackup\AzureVMBackupExtensionUtil.cs" />
+    <Compile Include="Extension\AzureVMBackup\AzureVMBackupException.cs" />
+    <Compile Include="Extension\AzureVMBackup\AzureVMBackupExtensionProtectedSettings.cs" />
+    <Compile Include="Extension\AzureVMBackup\AzureVMBackupExtensionPublicSettings.cs" />
+    <Compile Include="Extension\AzureVMBackup\AzureVMBackupConfig.cs" />
+    <Compile Include="Extension\AzureVMBackup\RemoveAzureVMBackup.cs" />
+    <Compile Include="Extension\AzureVMBackup\SetAzureVMBackupExtension.cs" />
     <Compile Include="Extension\CustomScript\GetAzureVMCustomScriptExtensionCommand.cs" />
     <Compile Include="Extension\CustomScript\CustomScriptExtensionPrivateSettings.cs" />
     <Compile Include="Extension\CustomScript\CustomScriptExtensionPublicSettings.cs" />
@@ -239,6 +253,7 @@
     <Compile Include="Extension\SqlServer\VirtualMachineSqlServerExtensionContext.cs" />
     <Compile Include="Images\GetAzureVMImageCommand.cs" />
     <Compile Include="Common\HashTableExtensions.cs" />
+    <Compile Include="Models\AzureDiskEncryptionStatusContext.cs" />
     <Compile Include="Models\PSComputeLongRunningOperation.cs" />
     <Compile Include="Models\PSOperation.cs" />
     <Compile Include="Extension\VMAccess\GetAzureVMAccessExtension.cs" />
