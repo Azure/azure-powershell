@@ -46,7 +46,6 @@ namespace Microsoft.Azure.Commands.Resources.Models
             {
                 result.Resources = client.FilterResources(new FilterResourcesOptions { ResourceGroup = resourceGroup.Name })
                     .Select(r => r.ToPSResource(client, true)).ToList();
-                result.Permissions = client.GetResourceGroupPermissions(resourceGroup.Name);
             }
 
             return result;

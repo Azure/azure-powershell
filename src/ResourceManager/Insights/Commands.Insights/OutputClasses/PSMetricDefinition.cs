@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             this.Name = metricDefinition.Name.ToString(localizedValue: false);
             this.PrimaryAggregationType = metricDefinition.PrimaryAggregationType;
             this.Properties = new PSDictionaryElement(metricDefinition.Properties);
-            this.ResourceUri = metricDefinition.ResourceUri;
+            this.ResourceId = metricDefinition.ResourceId;
             this.Unit = metricDefinition.Unit;
         }
     }

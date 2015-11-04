@@ -40,5 +40,12 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             ProfileController.NewInstance.RunPsTest("72f988bf-86f1-41af-91ab-2d7cd011db47", "Test-PipingWithContext");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SetAzureRmContextWithoutSubscription()
+        {
+            ProfileController.NewInstance.RunPsTest("72f988bf-86f1-41af-91ab-2d7cd011db47", "Test-SetAzureRmContextWithoutSubscription");
+        }
     }
 }

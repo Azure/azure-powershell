@@ -53,7 +53,6 @@ namespace Microsoft.Azure.Commands.Resources
                 ConfirmAction = ConfirmAction
             };
 
-            WriteWarning("The output object of this cmdlet will be modified in a future release.");
             WriteObject(ResourcesClient.CreatePSResourceGroup(parameters));
         }
     }
