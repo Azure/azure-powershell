@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
     {
         internal string resourceGroupName { get; set; }
         internal string dataLakeAccountName { get; set; }
-        internal const string resourceGroupLocation = "West US";
+        internal const string resourceGroupLocation = "East US 2";
 
         private EnvironmentSetupHelper helper;
 
