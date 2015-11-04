@@ -29,8 +29,8 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
     using Microsoft.Azure.Common.Authentication.Models;
     using Microsoft.Azure.Common.Authentication;
     using Hyak.Common;
-    
-   
+
+
     public class ExpressRouteClient
     {
         public ExpressRouteManagementClient Client { get; internal set; }
@@ -47,7 +47,7 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
         /// <param name="profile">Azure Profile</param>
         public ExpressRouteClient(AzureSMProfile profile, AzureSubscription subscription)
             : this(CreateClient<ExpressRouteManagementClient>(profile, subscription))
-        {   
+        {
         }
 
         public ExpressRouteClient(ExpressRouteManagementClient client)
@@ -63,17 +63,17 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
         public AzureBgpPeering NewAzureBGPPeering(Guid serviceKey, string advertisedPublicPrefixes, UInt32 customerAsn, UInt32 peerAsn, string primaryPeerSubnet,
             string routingRegistryName, string secondaryPeerSubnet, UInt32 vlanId, BgpPeeringAccessType accessType, string sharedKey = null)
         {
-             var result = Client.BorderGatewayProtocolPeerings.New(serviceKey.ToString(), accessType, new BorderGatewayProtocolPeeringNewParameters()
-            {
-                AdvertisedPublicPrefixes = advertisedPublicPrefixes,
-                CustomerAutonomousSystemNumber = customerAsn,
-                PeerAutonomousSystemNumber = peerAsn,
-                PrimaryPeerSubnet = primaryPeerSubnet,
-                RoutingRegistryName = routingRegistryName,
-                SecondaryPeerSubnet = secondaryPeerSubnet,
-                SharedKey = sharedKey,
-                VirtualLanId = vlanId
-            });
+            var result = Client.BorderGatewayProtocolPeerings.New(serviceKey.ToString(), accessType, new BorderGatewayProtocolPeeringNewParameters()
+           {
+               AdvertisedPublicPrefixes = advertisedPublicPrefixes,
+               CustomerAutonomousSystemNumber = customerAsn,
+               PeerAutonomousSystemNumber = peerAsn,
+               PrimaryPeerSubnet = primaryPeerSubnet,
+               RoutingRegistryName = routingRegistryName,
+               SecondaryPeerSubnet = secondaryPeerSubnet,
+               SharedKey = sharedKey,
+               VirtualLanId = vlanId
+           });
 
             if (result.HttpStatusCode.Equals(HttpStatusCode.OK))
             {
@@ -91,7 +91,7 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
             return result.HttpStatusCode.Equals(HttpStatusCode.OK);
         }
 
-        public AzureBgpPeering UpdateAzureBGPPeering(Guid serviceKey, 
+        public AzureBgpPeering UpdateAzureBGPPeering(Guid serviceKey,
             BgpPeeringAccessType accessType, UInt32 customerAsn, UInt32 peerAsn, string primaryPeerSubnet,
             string routingRegistryName, string secondaryPeerSubnet, UInt32 vlanId, string sharedKey)
         {
@@ -114,14 +114,14 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
                 throw new Exception(result.Error.ToString());
             }
         }
-        
+
         public AzureDedicatedCircuit GetAzureDedicatedCircuit(Guid serviceKey)
         {
             return (Client.DedicatedCircuits.Get(serviceKey.ToString())).DedicatedCircuit;
         }
 
-        public AzureDedicatedCircuit NewAzureDedicatedCircuit(string circuitName, 
-            UInt32 bandwidth, string location, string serviceProviderName, CircuitSku sku)
+        public AzureDedicatedCircuit NewAzureDedicatedCircuit(string circuitName,
+            UInt32 bandwidth, string location, string serviceProviderName, CircuitSku sku, BillingType billingType)
         {
             var result = Client.DedicatedCircuits.New(new DedicatedCircuitNewParameters()
             {
@@ -129,7 +129,8 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
                 CircuitName = circuitName,
                 Location = location,
                 ServiceProviderName = serviceProviderName,
-                Sku = sku
+                Sku = sku,
+                BillingType = billingType
             });
 
             if (result.HttpStatusCode.Equals(HttpStatusCode.OK))
@@ -149,7 +150,7 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
 
         public AzureDedicatedCircuit SetAzureDedicatedCircuitProperties(Guid serviceKey, UInt32? bandwidth, CircuitSku? sku)
         {
-            var updateParams = new DedicatedCircuitUpdateParameters() {};
+            var updateParams = new DedicatedCircuitUpdateParameters() { };
 
             if (bandwidth.HasValue)
             {
@@ -314,5 +315,5 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
             });
             return result.StatusCode.Equals(HttpStatusCode.OK);
         }
-    }  
+    }
 }
