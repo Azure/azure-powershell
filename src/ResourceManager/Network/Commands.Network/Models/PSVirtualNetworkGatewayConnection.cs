@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
     public class PSVirtualNetworkGatewayConnection : PSTopLevelResource
     {
+        public string AuthorizationKey { get; set; }
         public PSVirtualNetworkGateway VirtualNetworkGateway1 { get; set; }
 
         public PSVirtualNetworkGateway VirtualNetworkGateway2 { get; set; }

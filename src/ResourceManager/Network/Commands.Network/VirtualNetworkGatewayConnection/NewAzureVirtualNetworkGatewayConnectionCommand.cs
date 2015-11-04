@@ -50,6 +50,13 @@ namespace Microsoft.Azure.Commands.Network
         public string Location { get; set; }
 
         [Parameter(
+         Mandatory = true,
+         ValueFromPipelineByPropertyName = true,
+         HelpMessage = "AuthorizationKey.")]
+        [ValidateNotNullOrEmpty]
+        public string AuthorizationKey { get; set; }
+
+        [Parameter(
              Mandatory = true,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "First virtual network gateway.")]
@@ -152,6 +159,7 @@ namespace Microsoft.Azure.Commands.Network
             vnetGatewayConnection.ConnectionType = this.ConnectionType;
             vnetGatewayConnection.RoutingWeight = this.RoutingWeight;
             vnetGatewayConnection.SharedKey = this.SharedKey;
+            vnetGatewayConnection.AuthorizationKey = this.AuthorizationKey;
 
             if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
             {
