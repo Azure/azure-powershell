@@ -14,15 +14,15 @@
 
 namespace Microsoft.Azure.Commands.Intune
 {
-    using System;
-    using System.Linq;
     using System.Management.Automation;
-    using RestClient;
+    using Management.Intune;
+    using Management.Intune.Models;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Cmdlet to get apps for iOS platform.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmIntuneAndroidMAMApp"), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmIntuneAndroidMAMApp"), OutputType(typeof(List<Application>))]
     public sealed class GetIntuneAndroidMAMAppCmdlet : IntuneBaseCmdlet
     {
         /// <summary>
@@ -30,27 +30,17 @@ namespace Microsoft.Azure.Commands.Intune
         /// </summary>
         protected override void ProcessRecord()
         {
-            Action action = () =>
+            string filter = string.Format("platform eq '{0}'", PlatformType.Android.ToString().ToLower());
+
+            MultiPageGetter<Application> mpg = new MultiPageGetter<Application>();
+            var items = mpg.GetAllResources(this.IntuneClient.GetApps, this.IntuneClient.GetAppsNext, this.AsuHostName, filter);
+            List<Application> apps = new List<Application>(items.Count);
+            foreach(var item in items)
             {
-                string filter = string.Format("platform eq '{0}'", PlatformType.Android.ToString().ToLower());
-                var resources = this.IntuneClient.GetApplications(this.AsuHostName, filter);
+                apps.Add(item);
+            }
 
-                if (resources != null && resources.Value.Count > 0)
-                {
-                    for(int start=0; start < resources.Value.Count; start+= IntuneConstants.BatchSize)
-                    {
-                        var batch = resources.Value.Skip(start).Take(IntuneConstants.BatchSize);
-                        this.WriteObject(batch, enumerateCollection: true);
-                    }                    
-                }
-                else
-                {
-                    this.WriteObject("0 Apps returned");
-                }
-            };
-
-            this.SafeExecutor(action);
-        }
-
+            this.WriteObject(apps, enumerateCollection: true);
+        }      
     }
 }

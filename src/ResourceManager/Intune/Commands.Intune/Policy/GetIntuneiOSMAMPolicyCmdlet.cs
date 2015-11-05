@@ -14,11 +14,10 @@
 
 namespace Microsoft.Azure.Commands.Intune
 {
-    using System;
     using System.Linq;
     using System.Management.Automation;
-    using RestClient;
-
+    using Management.Intune;
+    using Management.Intune.Models;
     /// <summary>
     /// Cmdlet to get existing resources.
     /// </summary>
@@ -37,19 +36,14 @@ namespace Microsoft.Azure.Commands.Intune
         /// </summary>
         protected override void ProcessRecord()
         {
-            Action action = () =>
+            if (Name != null)
             {
-                if (Name != null)
-                {
-                    GetiOSPolicyByName();
-                }
-                else
-                {
-                    GetiOSPolicies();
-                }
-            };
-
-            base.SafeExecutor(action);
+                GetiOSPolicyByName();
+            }
+            else
+            {
+                GetiOSPolicies();
+            }
         }
 
         /// <summary>
@@ -57,7 +51,7 @@ namespace Microsoft.Azure.Commands.Intune
         /// </summary>
         private void GetiOSPolicyByName()
         {
-            var iOSPolicy = this.IntuneClient.GetiOSMAMPolicyById(this.AsuHostName, this.Name);
+            var iOSPolicy = this.IntuneClient.Ios.GetMAMPolicyById(this.AsuHostName, this.Name);
             if (iOSPolicy != null)
             {
                 this.WriteObject(iOSPolicy);
@@ -73,18 +67,19 @@ namespace Microsoft.Azure.Commands.Intune
         /// </summary>
         private void GetiOSPolicies()
         {
-            var iOSPolicies = this.IntuneClient.GetiOSMAMPolicies(this.AsuHostName);
-            if (iOSPolicies != null && iOSPolicies.Value.Count > 0)
+            MultiPageGetter<IOSMAMPolicy> mpg = new MultiPageGetter<IOSMAMPolicy>();
+            var items = mpg.GetAllResources(
+                this.IntuneClient.Ios.GetMAMPolicies,
+                this.IntuneClient.Ios.GetMAMPoliciesNext,
+                this.AsuHostName, filter: null);
+
+            if (items.Count > 0)
             {
-                for (int start = 0; start < iOSPolicies.Value.Count; start += IntuneConstants.BatchSize)
-                {
-                    var batch = iOSPolicies.Value.Skip(start).Take(IntuneConstants.BatchSize);
-                    this.WriteObject(batch, enumerateCollection: true);
-                }
+                this.WriteObject(items, enumerateCollection: true);
             }
             else
             {
-                this.WriteObject("0 Policies returned");
+                this.WriteObject("0 items returned");
             }
         }
     }

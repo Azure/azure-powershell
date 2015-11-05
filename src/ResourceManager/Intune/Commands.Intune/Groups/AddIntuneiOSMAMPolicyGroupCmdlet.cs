@@ -14,10 +14,9 @@
 
 namespace Microsoft.Azure.Commands.Intune
 {
-    using System;
     using System.Management.Automation;
-    using RestClient;
-    using RestClient.Models;
+    using Management.Intune;
+    using Management.Intune.Models;
 
     /// <summary>
     /// A cmdlet to link a group to Android Intune MAM policy Azure resource.
@@ -46,21 +45,16 @@ namespace Microsoft.Azure.Commands.Intune
         /// </summary>
         protected override void ProcessRecord()
         {
-            Action action = () =>
-            {
-                this.ConfirmAction(
-                    this.Force,
-                    "Are you sure you want to link Group with name:" + this.GroupName + " to iOS policy with name:" + this.Name,
-                    "Link the group with iOS policy resource.",
-                    this.Name,
-                    () =>
-                    {
-                        this.IntuneClient.AddGroupForiOSMAMPolicy(this.AsuHostName, this.Name, this.GroupName, PrepareMAMPolicyAppIdGroupIdPayload());
-                        this.WriteObject("Operation completed successfully");
-                    });
-            };
-
-            base.SafeExecutor(action);
+            this.ConfirmAction(
+                this.Force,
+                "Are you sure you want to link Group with name:" + this.GroupName + " to iOS policy with name:" + this.Name,
+                "Link the group with iOS policy resource.",
+                this.Name,
+                () =>
+                {
+                    this.IntuneClient.Ios.AddGroupForMAMPolicy(this.AsuHostName, this.Name, this.GroupName, PrepareMAMPolicyAppIdGroupIdPayload());
+                    this.WriteObject("Operation completed successfully");
+                });
         }
 
         private MAMPolicyAppIdOrGroupIdPayload PrepareMAMPolicyAppIdGroupIdPayload()

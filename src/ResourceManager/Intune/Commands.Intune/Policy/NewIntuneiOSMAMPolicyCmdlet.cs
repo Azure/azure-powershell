@@ -15,10 +15,9 @@
 namespace Microsoft.Azure.Commands.Intune
 {
     using System;
-    using System.Xml;
     using System.Management.Automation;
-    using RestClient;
-    using RestClient.Models;
+    using Management.Intune;
+    using Management.Intune.Models;
 
     /// <summary>
     /// A cmdlet that creates a new iOS intune policy azure resource.
@@ -156,23 +155,18 @@ namespace Microsoft.Azure.Commands.Intune
             InitializeDefaultValuesForParams();
 
             var policyId = Guid.NewGuid().ToString();
-
-            Action action = () =>
-            {
-                ValidateNumericParameters();
-                this.ConfirmAction(
-                    this.Force,
-                    "Are you sure you want to create a new iOS policy:" + this.FriendlyName,
-                    "Creating the iOS policy resource.",
-                    policyId,
-                    () =>
-                    {
-                        var policyObj = this.IntuneClient.CreateOrUpdateiOSMAMPolicy(this.AsuHostName, policyId, PrepareIOSPolicyBody());
-                        this.WriteObject(policyObj);
-                    });
-            };
-
-            base.SafeExecutor(action);
+            ValidateNumericParameters();
+            this.ConfirmAction(
+                this.Force,
+                "Are you sure you want to create a new iOS policy:" + this.FriendlyName,
+                "Creating the iOS policy resource.",
+                policyId,
+                () =>
+                {
+                    var policyObj = this.IntuneClient.Ios.CreateOrUpdateMAMPolicy(this.AsuHostName, policyId, PrepareIOSPolicyBody());
+                    this.WriteObject(policyObj);
+                });
+ 
         }
 
         /// <summary>
@@ -207,10 +201,9 @@ namespace Microsoft.Azure.Commands.Intune
         /// Prepares iOS Policy body for the new policy request
         /// </summary>
         /// <returns>policy request body</returns>
-        private IOSMAMPolicyRequestBody PrepareIOSPolicyBody()
+        private IOSMAMPolicy PrepareIOSPolicyBody()
         {
-            var policyBody = new IOSMAMPolicyRequestBody();
-            policyBody.Properties = new IOSMAMPolicyProperties() {
+            var policyBody = new IOSMAMPolicy() {
                 FriendlyName = this.FriendlyName,
                 Description = this.Description,
                 AppSharingFromLevel = this.AllowDataTransferToApps.ToString(),
@@ -223,10 +216,12 @@ namespace Microsoft.Azure.Commands.Intune
                 PinNumRetry = this.PinRetries,
                 DeviceCompliance = this.DeviceCompliance.ToString(),
                 ManagedBrowser = this.ManagedBrowser.ToString(),
-                AccessRecheckOfflineTimeout = XmlConvert.ToString(TimeSpan.FromMinutes(this.RecheckAccessOfflineGracePeriodMinutes.Value)),
-                AccessRecheckOnlineTimeout = XmlConvert.ToString(TimeSpan.FromMinutes(this.RecheckAccessTimeoutMinutes.Value)),
-                OfflineWipeTimeout = XmlConvert.ToString(TimeSpan.FromDays(this.OfflineWipeIntervalDays.Value)),
-
+                //AccessRecheckOfflineTimeout = XmlConvert.ToString(TimeSpan.FromMinutes(this.RecheckAccessOfflineGracePeriodMinutes.Value)),
+                //AccessRecheckOnlineTimeout = XmlConvert.ToString(TimeSpan.FromMinutes(this.RecheckAccessTimeoutMinutes.Value)),
+                //OfflineWipeTimeout = XmlConvert.ToString(TimeSpan.FromDays(this.OfflineWipeIntervalDays.Value)),
+                AccessRecheckOfflineTimeout = TimeSpan.FromMinutes(this.RecheckAccessOfflineGracePeriodMinutes.Value),
+                AccessRecheckOnlineTimeout = TimeSpan.FromMinutes(this.RecheckAccessTimeoutMinutes.Value),
+                OfflineWipeTimeout = TimeSpan.FromDays(this.OfflineWipeIntervalDays.Value),
                 FileEncryptionLevel = this.FileEncryptionLevel.ToString(),
                 TouchId = this.AllowFingerprint.ToString()
             };            

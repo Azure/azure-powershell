@@ -14,10 +14,11 @@
 
 namespace Microsoft.Azure.Commands.Intune
 {
-    using System;
     using System.Linq;
     using System.Management.Automation;
-    using RestClient;
+    using Management.Intune;
+    using Management.Intune.Models;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Cmdlet to get existing resources.
@@ -37,8 +38,6 @@ namespace Microsoft.Azure.Commands.Intune
         /// </summary>
         protected override void ProcessRecord()
         {
-            Action action = () =>
-            {
                 if (Name != null)
                 {
                     GetAndroidPolicyById();
@@ -47,9 +46,6 @@ namespace Microsoft.Azure.Commands.Intune
                 {
                     GetAndroidPolicies();
                 }
-            };
-
-            base.SafeExecutor(action);
         }
 
         /// <summary>
@@ -57,7 +53,7 @@ namespace Microsoft.Azure.Commands.Intune
         /// </summary>
         private void GetAndroidPolicyById()
         {
-            var andriodPolicy = this.IntuneClient.GetAndroidMAMPolicyById(this.AsuHostName, this.Name);
+            var andriodPolicy =  this.IntuneClient.Android.GetMAMPolicyById(this.AsuHostName, this.Name);
             if (andriodPolicy != null)
             {
                 this.WriteObject(andriodPolicy);
@@ -73,18 +69,19 @@ namespace Microsoft.Azure.Commands.Intune
         /// </summary>
         private void GetAndroidPolicies()
         {
-            var androidPolicies = this.IntuneClient.GetAndroidMAMPolicies(this.AsuHostName);
-            if (androidPolicies != null && androidPolicies.Value.Count > 0)
+            MultiPageGetter<AndroidMAMPolicy> mpg = new MultiPageGetter<AndroidMAMPolicy>();
+            var items = mpg.GetAllResources(
+                this.IntuneClient.Android.GetMAMPolicies,
+                this.IntuneClient.Android.GetMAMPoliciesNext,
+                this.AsuHostName, filter: null);
+
+            if (items.Count > 0)
             {
-                for (int start = 0; start < androidPolicies.Value.Count; start += IntuneConstants.BatchSize)
-                {
-                    var batch = androidPolicies.Value.Skip(start).Take(IntuneConstants.BatchSize);
-                    this.WriteObject(batch, enumerateCollection: true);
-                }
+                this.WriteObject(items, enumerateCollection: true);
             }
             else
             {
-                this.WriteObject("0 Policies returned");
+                this.WriteObject("0 items returned");
             }
         }
     }

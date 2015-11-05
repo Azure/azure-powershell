@@ -14,12 +14,12 @@
 namespace Microsoft.Azure.Commands.Intune
 {
     using System;
-    using RestClient;
     using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.Azure.Common.Authentication.Models;
     using Microsoft.Azure.Common.Authentication;
     using System.Collections.Concurrent;
     using System.Management.Automation;
+    using Management.Intune;
 
     /// <summary>
     /// Base class for all commandlets. Helps create an instance of the client that commandlets can leverage. 
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Intune
                 if (asuHostName == null)
                 {
                     var location = IntuneClient.GetLocationByHostName();
-                    asuHostName = location.Properties.HostName;                    
+                    asuHostName = location.HostName;                    
                 }
 
                 return asuHostName;
@@ -84,37 +84,6 @@ namespace Microsoft.Azure.Commands.Intune
             var intuneClient  = AzureSession.ClientFactory.CreateArmClient<IntuneResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
             intuneClient.BaseUri = endpointUri;
             return intuneClient;
-        }
-
-        /// <summary>
-        /// Writes the error records to console
-        /// </summary>
-        internal void WriteErrors()
-        {
-            if (errors.Count != 0)
-            {
-                foreach (var error in errors)
-                {
-                    base.WriteError(error);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Reusable function for executing actions by all commandlets
-        /// </summary>
-        /// <param name="action"></param>
-        internal void SafeExecutor(Action action)
-        {
-            try
-            {
-                action();
-            }
-            catch(Exception)
-            {                
-                this.WriteErrors();
-                throw;
-            }
         }
     }
 }

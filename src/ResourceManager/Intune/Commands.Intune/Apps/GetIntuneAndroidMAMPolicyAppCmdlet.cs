@@ -14,11 +14,9 @@
 
 namespace Microsoft.Azure.Commands.Intune
 {
-    using System;
-    using System.Linq;
     using System.Management.Automation;
-    using RestClient;
-
+    using Management.Intune;
+    using Management.Intune.Models;
     /// <summary>
     /// Cmdlet to get existing resources.
     /// </summary>
@@ -37,24 +35,20 @@ namespace Microsoft.Azure.Commands.Intune
         /// </summary>
         protected override void ProcessRecord()
         {
-            Action action = () =>
-            {
-                var androidAppsForPolicy = this.IntuneClient.GetAppForAndroidMAMPolicy(this.AsuHostName, Name);
-                if (androidAppsForPolicy != null && androidAppsForPolicy.Value.Count > 0)
-                {
-                    for (int start = 0; start < androidAppsForPolicy.Value.Count; start += IntuneConstants.BatchSize)
-                    {
-                        var batch = androidAppsForPolicy.Value.Skip(start).Take(IntuneConstants.BatchSize);
-                        this.WriteObject(batch, enumerateCollection: true);
-                    }
-                }
-                else
-                {
-                    this.WriteObject("0 items returned");
-                }
-            };
+            MultiPageGetter<Application> mpg = new MultiPageGetter<Application>();
+            var items = mpg.GetAllResources(
+                this.IntuneClient.Android.GetAppForMAMPolicy,
+                this.IntuneClient.Android.GetAppForMAMPolicyNext,
+                this.AsuHostName, filter: null);
 
-            base.SafeExecutor(action);
+            if (items.Count > 0)
+            {
+                this.WriteObject(items, enumerateCollection: true);
+            }
+            else
+            {
+                this.WriteObject("0 items returned");
+            }
         }
     }
 }

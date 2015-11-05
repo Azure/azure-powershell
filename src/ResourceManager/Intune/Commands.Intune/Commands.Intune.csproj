@@ -45,6 +45,13 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Hyak.Common">
+      <HintPath>..\..\..\packages\Hyak.Common.1.0.2\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Management.Intune">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Intune.0.1.0-preview\lib\net45\Microsoft.Azure.Management.Intune.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.18.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.18.206251556\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
       <Private>True</Private>
@@ -70,12 +77,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.1.4.1\lib\portable-net45+win8+wpa81\Microsoft.Rest.ClientRuntime.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.0.9.3\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.2.0.0\lib\portable-net45+win8+wpa81\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Rest.ClientRuntime.Azure">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.1.0.21\lib\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.0.9.3\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -98,33 +106,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Generated\IIntuneResourceManagementClient.cs" />
-    <Compile Include="Generated\IntuneResourceManagementClient.cs" />
-    <Compile Include="Generated\IntuneResourceManagementClientExtensions.cs" />
-    <Compile Include="Generated\Models\AndroidMAMPolicy.cs" />
-    <Compile Include="Generated\Models\AndroidMAMPolicyCollection.cs" />
-    <Compile Include="Generated\Models\AndroidMAMPolicyProperties.cs" />
-    <Compile Include="Generated\Models\AndroidMAMPolicyRequestBody.cs" />
-    <Compile Include="Generated\Models\Application.cs" />
-    <Compile Include="Generated\Models\ApplicationCollection.cs" />
-    <Compile Include="Generated\Models\ApplicationProperties.cs" />
-    <Compile Include="Generated\Models\Error.cs" />
-    <Compile Include="Generated\Models\Group.cs" />
-    <Compile Include="Generated\Models\GroupProperties.cs" />
-    <Compile Include="Generated\Models\GroupsCollection.cs" />
-    <Compile Include="Generated\Models\IOSMAMPolicy.cs" />
-    <Compile Include="Generated\Models\IOSMAMPolicyCollection.cs" />
-    <Compile Include="Generated\Models\IOSMAMPolicyProperties.cs" />
-    <Compile Include="Generated\Models\IOSMAMPolicyRequestBody.cs" />
-    <Compile Include="Generated\Models\Location.cs" />
-    <Compile Include="Generated\Models\LocationCollection.cs" />
-    <Compile Include="Generated\Models\LocationProperties.cs" />
-    <Compile Include="Generated\Models\MAMPolicyAppIdOrGroupIdPayload.cs" />
-    <Compile Include="Generated\Models\MAMPolicyAppOrGroupIdProperties.cs" />
-    <Compile Include="Generated\Models\MAMPolicyProperties.cs" />
-    <Compile Include="Generated\Models\Resource.cs" />
     <Compile Include="Apps\GetIntuneAndroidMAMAppCmdlet.cs" />
     <Compile Include="Apps\GetIntuneAndroidMAMPolicyAppCmdlet.cs" />
+    <Compile Include="MultiPageGetter.cs" />
     <Compile Include="Groups\AddIntuneiOSMAMPolicyGroupCmdlet.cs" />
     <Compile Include="Groups\RemoveIntuneAndroidMAMPolicyGroupCmdlet.cs" />
     <Compile Include="Groups\RemoveIntuneiOSMAMPolicyGroupCmdlet.cs" />
@@ -154,7 +138,6 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="SwaggerManifest\2015-01-05\IntuneSwaggerManifest.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">

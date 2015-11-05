@@ -14,9 +14,8 @@
 
 namespace Microsoft.Azure.Commands.Intune
 {
-    using System;
     using System.Management.Automation;
-    using RestClient;
+    using Management.Intune;
 
     /// <summary>
     /// A cmdlet to link a group to Android Intune MAM policy Azure resource.
@@ -45,21 +44,16 @@ namespace Microsoft.Azure.Commands.Intune
         /// </summary>
         protected override void ProcessRecord()
         {
-            Action action = () =>
-            {
-                this.ConfirmAction(
-                    this.Force,
-                    "Are you sure you want to remove group with name:" + this.GroupName + " from iOS policy with name:" + this.Name,
-                    "Remove the group from iOS policy resource.",
-                    this.Name,
-                    () =>
-                    {
-                        this.IntuneClient.DeleteGroupForiOSMAMPolicy(this.AsuHostName, this.Name, this.GroupName);
-                        this.WriteObject("Operation completed successfully");
-                    });
-            };
-
-            base.SafeExecutor(action);
+            this.ConfirmAction(
+                this.Force,
+                "Are you sure you want to remove group with name:" + this.GroupName + " from iOS policy with name:" + this.Name,
+                "Remove the group from iOS policy resource.",
+                this.Name,
+                () =>
+                {
+                    this.IntuneClient.Ios.DeleteGroupForMAMPolicy(this.AsuHostName, this.Name, this.GroupName);
+                    this.WriteObject("Operation completed successfully");
+                });
         }
     }
 }

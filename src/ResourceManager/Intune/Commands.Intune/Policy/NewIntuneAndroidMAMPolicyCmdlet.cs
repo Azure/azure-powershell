@@ -15,15 +15,14 @@
 namespace Microsoft.Azure.Commands.Intune
 {
     using System;
-    using System.Xml;
     using System.Management.Automation;
-    using RestClient;
-    using RestClient.Models;
+    using Management.Intune;
+    using Management.Intune.Models;
 
     /// <summary>
     /// A cmdlet that creates a new Android Intune MAM policy Azure resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmIntuneAndroidMAMPolicy", SupportsShouldProcess = true), OutputType(typeof(AndroidMAMPolicy))]
+    [Cmdlet(VerbsCommon.New, "AzureRmIntuneAndroidMAMPolicy", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
     public sealed class NewIntuneAndroidMAMPolicyCmdlet : IntuneBaseCmdlet
     {
         /// <summary>
@@ -155,23 +154,17 @@ namespace Microsoft.Azure.Commands.Intune
         {
             InitializeDefaultValuesForParams();            
             var policyId = Guid.NewGuid().ToString();
-
-            Action action = () =>
-            {
-                ValidateNumericParameters();
-                this.ConfirmAction(
-                    this.Force,
-                    "Are you sure you want to create a new Android policy:" + this.FriendlyName,
-                    "Creating the Android policy resource",
-                    policyId,
-                    () =>
-                    {
-                        var policyObj = this.IntuneClient.CreateOrUpdateAndroidMAMPolicy(this.AsuHostName, policyId, PrepareAndroidPolicyBody());
-                        this.WriteObject(policyObj);
-                    });
-            };
-
-            base.SafeExecutor(action);
+            ValidateNumericParameters();
+            this.ConfirmAction(
+                this.Force,
+                "Are you sure you want to create a new Android policy:" + this.FriendlyName,
+                "Creating the Android policy resource",
+                policyId,
+                () =>
+                {
+                    var policyObj = this.IntuneClient.Android.CreateOrUpdateMAMPolicy(this.AsuHostName, policyId, PrepareAndroidPolicyBody());
+                    this.WriteObject(policyObj);
+                });
         }
 
         /// <summary>
@@ -206,10 +199,9 @@ namespace Microsoft.Azure.Commands.Intune
         /// Prepares iOS Policy body for the new policy request
         /// </summary>
         /// <returns>policy request body</returns>
-        private AndroidMAMPolicyRequestBody PrepareAndroidPolicyBody()
-        {            
-            var policyBody = new AndroidMAMPolicyRequestBody();
-            policyBody.Properties = new AndroidMAMPolicyProperties()
+        private AndroidMAMPolicy PrepareAndroidPolicyBody()
+        {
+            var policyBody = new AndroidMAMPolicy()
             {
                 FriendlyName = this.FriendlyName,
                 Description = this.Description,
@@ -223,10 +215,12 @@ namespace Microsoft.Azure.Commands.Intune
                 PinNumRetry = this.PinRetries,
                 DeviceCompliance = this.DeviceCompliance.ToString(),
                 ManagedBrowser = this.ManagedBrowser.ToString(),
-                AccessRecheckOfflineTimeout = XmlConvert.ToString(TimeSpan.FromMinutes(this.RecheckAccessOfflineGracePeriodMinutes.Value)),
-                AccessRecheckOnlineTimeout = XmlConvert.ToString(TimeSpan.FromMinutes(this.RecheckAccessTimeoutMinutes.Value)),
-                OfflineWipeTimeout = XmlConvert.ToString(TimeSpan.FromDays(this.OfflineWipeIntervalDays.Value)),
-
+                //AccessRecheckOfflineTimeout = XmlConvert.ToString(TimeSpan.FromMinutes(this.RecheckAccessOfflineGracePeriodMinutes.Value)),
+                //AccessRecheckOnlineTimeout = XmlConvert.ToString(TimeSpan.FromMinutes(this.RecheckAccessTimeoutMinutes.Value)),
+                //OfflineWipeTimeout = XmlConvert.ToString(TimeSpan.FromDays(this.OfflineWipeIntervalDays.Value)),
+                AccessRecheckOfflineTimeout = TimeSpan.FromMinutes(this.RecheckAccessOfflineGracePeriodMinutes.Value),
+                AccessRecheckOnlineTimeout = TimeSpan.FromMinutes(this.RecheckAccessTimeoutMinutes.Value),
+                OfflineWipeTimeout = TimeSpan.FromDays(this.OfflineWipeIntervalDays.Value),
                 FileEncryption = this.FileEncryption.ToString(),
                 ScreenCapture = this.ScreenCapture.ToString()
             };

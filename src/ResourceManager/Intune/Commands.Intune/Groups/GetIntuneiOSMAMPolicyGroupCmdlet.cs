@@ -14,10 +14,9 @@
 
 namespace Microsoft.Azure.Commands.Intune
 {
-    using System;
-    using System.Linq;
     using System.Management.Automation;
-    using RestClient;
+    using Management.Intune;
+    using Management.Intune.Models;
 
     /// <summary>
     /// Cmdlet to get groups for iOS platform.
@@ -37,25 +36,21 @@ namespace Microsoft.Azure.Commands.Intune
         /// </summary>
         protected override void ProcessRecord()
         {
-            Action action = () =>
+            MultiPageGetter<GroupItem> mpg = new MultiPageGetter<GroupItem>();
+            var items = mpg.GetAllResources(
+                this.IntuneClient.Ios.GetGroupsForMAMPolicy,
+                this.IntuneClient.Ios.GetGroupsForMAMPolicyNext,
+                this.AsuHostName,
+                filter: null);
+
+            if (items.Count > 0)
             {
-                var groupCollection = this.IntuneClient.GetGroupsForiOSMAMPolicy(this.AsuHostName, this.Name);
-
-                if (groupCollection != null && groupCollection.Value.Count > 0)
-                {
-                    for (int start = 0; start < groupCollection.Value.Count; start += IntuneConstants.BatchSize)
-                    {
-                        var batch = groupCollection.Value.Skip(start).Take(IntuneConstants.BatchSize);
-                        this.WriteObject(batch, enumerateCollection: true);
-                    }
-                }
-                else
-                {
-                    this.WriteObject("0 groups returned");
-                }
-            };
-
-            this.SafeExecutor(action);
+                this.WriteObject(items, enumerateCollection: true);
+            }
+            else
+            {
+                this.WriteObject("0 items returned");
+            }
         }
     }
 }

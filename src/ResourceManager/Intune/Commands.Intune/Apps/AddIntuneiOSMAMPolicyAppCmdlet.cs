@@ -16,8 +16,8 @@ namespace Microsoft.Azure.Commands.Intune
 {
     using System;
     using System.Management.Automation;
-    using RestClient;
-    using RestClient.Models;
+    using Management.Intune;
+    using Management.Intune.Models;
 
     /// <summary>
     /// A cmdlet to link an app to iOS Intune MAM policy Azure resource.
@@ -46,21 +46,16 @@ namespace Microsoft.Azure.Commands.Intune
         /// </summary>
         protected override void ProcessRecord()
         {
-            Action action = () =>
-            {
-                this.ConfirmAction(
-                    this.Force,
-                    "Are you sure you want to add App with name:" + this.AppName + " to iOS policy with id:" + this.Name,
-                    "Link the app with iOS policy resource",
-                    this.Name,
-                    () =>
-                    {
-                        this.IntuneClient.AddAppForiOSMAMPolicy(this.AsuHostName, this.Name, this.AppName, PrepareMAMPolicyAppIdGroupIdPayload());
-                        this.WriteObject("Operation completed successfully");
-                    });
-            };
-
-            base.SafeExecutor(action);
+            this.ConfirmAction(
+                this.Force,
+                "Are you sure you want to add App with name:" + this.AppName + " to iOS policy with id:" + this.Name,
+                "Link the app with iOS policy resource",
+                this.Name,
+                () =>
+                {
+                    this.IntuneClient.Ios.AddAppForMAMPolicy(this.AsuHostName, this.Name, this.AppName, PrepareMAMPolicyAppIdGroupIdPayload());
+                    this.WriteObject("Operation completed successfully");
+                });
         }
 
         private MAMPolicyAppIdOrGroupIdPayload PrepareMAMPolicyAppIdGroupIdPayload()
