@@ -42,11 +42,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
         {
             base.ProcessRecord();
 
-            var listKeyResponse = this.StorageClient.StorageAccounts.ListKeys(
+            var storageKeys = this.StorageClient.StorageAccounts.ListKeys(
                  this.ResourceGroupName,
-                 this.Name);
+                 this.Name).StorageAccountKeys;
 
-            WriteObject(listKeyResponse.StorageAccountKeys);
+            WriteObject(storageKeys);
         }
     }
 }
