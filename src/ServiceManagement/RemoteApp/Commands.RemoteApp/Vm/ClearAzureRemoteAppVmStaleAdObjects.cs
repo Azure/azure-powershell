@@ -58,9 +58,9 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
                 foreach (DirectoryEntry staleEntry in staleEntries)
                 {
                     string shouldProcessMessage = String.Format(Commands_RemoteApp.GenericDeleteConfirmation, staleEntry.Properties["cn"][0].ToString());
-                    string verbouseDescription = String.Format(Commands_RemoteApp.GenericDeleteVerboseDescription, staleEntry.Properties["cn"][0].ToString());
+                    string verboseDescription = String.Format(Commands_RemoteApp.GenericDeleteVerboseDescription, staleEntry.Properties["cn"][0].ToString());
 
-                    if (Force.IsPresent || ShouldProcess(verbouseDescription, shouldProcessMessage, null))
+                    if (Force.IsPresent || ShouldProcess(verboseDescription, shouldProcessMessage, null))
                     {
                         WriteVerbose(String.Format(Commands_RemoteApp.GenericVerboseDelete, staleEntry.Properties["cn"][0].ToString()));
                         staleEntry.DeleteTree();
