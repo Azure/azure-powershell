@@ -82,6 +82,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
 
         [Parameter(Mandatory = false, Position = 2, ParameterSetName = CredentialsParameterSet)]
         [Parameter(Mandatory = true, Position = 2, ParameterSetName = ServicePrincipalParameterSet)]
+        [Alias("TenantId")]
         public string Tenant { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = ServicePrincipalParameterSet)]

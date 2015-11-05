@@ -91,15 +91,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             {
                 this.RunTask(async (taskId) =>
                 {
-                    bool foundAFile = true;
-
-                    string[] filePath = NamingUtil.ValidatePath(this.Path, true);
-                    CloudFile targetFile = baseDirectory.GetFileReferenceByPath(filePath);
-                    
+                    bool foundAFolder = true;
+                    string[] subfolders = NamingUtil.ValidatePath(this.Path);
+                    CloudFileDirectory targetDir = baseDirectory.GetDirectoryReferenceByPath(subfolders);
+                                        
                     try
                     {
-                        await this.Channel.FetchFileAttributesAsync(
-                            targetFile,
+                        await this.Channel.FetchDirectoryAttributesAsync(
+                            targetDir,
                             null,
                             this.RequestOptions,
                             this.OperationContext,
@@ -113,26 +112,26 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                             throw;
                         }
 
-                        foundAFile = false;
+                        foundAFolder = false;
                     }
 
-                    if (foundAFile)
+                    if (foundAFolder)
                     {
-                        this.OutputStream.WriteObject(taskId, targetFile);
+                        this.OutputStream.WriteObject(taskId, targetDir);
                         return;
                     }
 
-                    string[] subfolders = NamingUtil.ValidatePath(this.Path);
-                    CloudFileDirectory targetDir = baseDirectory.GetDirectoryReferenceByPath(subfolders);
+                    string[] filePath = NamingUtil.ValidatePath(this.Path, true);
+                    CloudFile targetFile = baseDirectory.GetFileReferenceByPath(filePath);
 
-                    await this.Channel.FetchDirectoryAttributesAsync(
-                        targetDir,
+                    await this.Channel.FetchFileAttributesAsync(
+                        targetFile,
                         null,
                         this.RequestOptions,
                         this.OperationContext,
                         this.CmdletCancellationToken);
 
-                    this.OutputStream.WriteObject(taskId, targetDir);
+                    this.OutputStream.WriteObject(taskId, targetFile);
                 });
             }
         }

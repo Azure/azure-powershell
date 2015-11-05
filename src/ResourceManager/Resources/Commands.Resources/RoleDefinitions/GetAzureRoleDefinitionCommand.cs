@@ -15,6 +15,8 @@
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
+using Microsoft.WindowsAzure.Commands.Common;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -31,6 +33,11 @@ namespace Microsoft.Azure.Commands.Resources
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionId,
+            HelpMessage = "Role definition id.")]
+        [ValidateGuidNotEmpty]
+        public Guid Id { get; set; }
+
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionCustom,
             HelpMessage = "If specified, only displays the custom created roles in the directory.")]
         public SwitchParameter Custom { get; set; }
@@ -40,6 +47,10 @@ namespace Microsoft.Azure.Commands.Resources
             if (Custom.IsPresent)
             {
                 WriteObject(PoliciesClient.FilterRoleDefinitionsByCustom(), enumerateCollection: true);
+            }
+            else if (Id != Guid.Empty)
+            {
+                WriteObject(PoliciesClient.GetRoleDefinition(Id));
             }
             else
             {

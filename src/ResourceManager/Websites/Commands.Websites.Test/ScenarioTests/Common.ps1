@@ -25,6 +25,15 @@ function Get-WebsiteName
 .SYNOPSIS
 Gets a website name for testing.
 #>
+function Get-TrafficManagerProfileName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets a website name for testing.
+#>
 function Get-WebHostPlanName
 {
     return getAssetName 
@@ -65,6 +74,30 @@ function Get-Location
 
 <#
 .SYNOPSIS
+Gets the location for the Website. Default to West US if none found.
+#>
+function Get-SecondaryLocation
+{
+	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+	{
+		$namespace = "Microsoft.Web"
+		$type = "sites"
+		$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
+  
+		if ($location -eq $null) 
+		{  
+			return "East US"  
+		} else 
+		{  
+			return $location.Locations[1]  
+		}
+	}
+
+	return "EastUS"
+}
+
+<#
+.SYNOPSIS
 Cleans the website
 #>
 function Clean-Website($resourceGroup, $websiteName)
@@ -72,5 +105,23 @@ function Clean-Website($resourceGroup, $websiteName)
     if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) 
 	{
 		$result = Remove-AzureRmWebsite -ResourceGroupName $resourceGroup.ToString() -WebsiteName $websiteName.ToString() -Force
+    }
+}
+
+function PingWebApp($webApp)
+{
+	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) 
+	{
+		try 
+		{
+			$result = Invoke-WebRequest $webApp.HostNames[0] 
+			$statusCode = $result.StatusCode
+		} 
+		catch [System.Net.WebException ] 
+		{ 
+			$statusCode = $_.Exception.Response.StatusCode
+		}
+
+		return $statusCode
     }
 }

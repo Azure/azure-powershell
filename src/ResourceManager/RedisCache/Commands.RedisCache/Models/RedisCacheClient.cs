@@ -32,14 +32,14 @@ namespace Microsoft.Azure.Commands.RedisCache
         }
         public RedisCacheClient() { }
 
-        public RedisCreateOrUpdateResponse CreateOrUpdateCache(string resourceGroupName, string cacheName, string location, string redisVersion, string skuFamily, int skuCapacity, string skuName, Hashtable redisConfiguration, bool? enableNonSslPort)
+        public RedisCreateOrUpdateResponse CreateOrUpdateCache(string resourceGroupName, string cacheName, string location, string skuFamily, int skuCapacity, string skuName,
+                Hashtable redisConfiguration, bool? enableNonSslPort, Hashtable tenantSettings, int? shardCount, string virtualNetwork, string subnet, string staticIP)
         {
             RedisCreateOrUpdateParameters parameters = new RedisCreateOrUpdateParameters
                                                     {
                                                         Location = location,
                                                         Properties = new RedisProperties
                                                         {
-                                                            RedisVersion = redisVersion,
                                                             Sku = new Sku() { 
                                                                 Name = skuName,
                                                                 Family = skuFamily,
@@ -61,6 +61,33 @@ namespace Microsoft.Azure.Commands.RedisCache
             {
                 parameters.Properties.EnableNonSslPort = enableNonSslPort.Value;
             }
+
+            if (tenantSettings != null)
+            {
+                parameters.Properties.TenantSettings = new Dictionary<string, string>();
+                foreach (object key in tenantSettings.Keys)
+                {
+                    parameters.Properties.TenantSettings.Add(key.ToString(), tenantSettings[key].ToString());
+                }
+            }
+
+            parameters.Properties.ShardCount = shardCount;
+            
+            if (!string.IsNullOrWhiteSpace(virtualNetwork))
+            {
+                parameters.Properties.VirtualNetwork = virtualNetwork;
+            }
+
+            if (!string.IsNullOrWhiteSpace(subnet))
+            {
+                parameters.Properties.Subnet = subnet;
+            }
+
+            if (!string.IsNullOrWhiteSpace(staticIP))
+            {
+                parameters.Properties.StaticIP = staticIP;
+            }
+
             RedisCreateOrUpdateResponse response = _client.Redis.CreateOrUpdate(resourceGroupName: resourceGroupName, name: cacheName, parameters: parameters);
             return response;
         }
