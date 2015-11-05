@@ -136,6 +136,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.Protocols" />
     <Reference Include="System.Management.Automation" />
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http" />
@@ -186,6 +188,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Commands.RemoteApp.resx</DependentUpon>
     </Compile>
+    <Compile Include="Common\AdHelper.cs" />
     <Compile Include="Common\CmdRuntime.cs" />
     <Compile Include="Common\Exception.cs" />
     <Compile Include="Common\LongRunningTask.cs" />
@@ -210,7 +213,9 @@
     <Compile Include="TemplateImage\RemoveAzureRemoteAppTemplateImage.cs" />
     <Compile Include="TemplateImage\RenameAzureRemoteAppTemplateImage.cs" />
     <Compile Include="TemplateImage\TemplateImage.cs" />
+    <Compile Include="Vm\ClearAzureRemoteAppVmStaleAdObjects.cs" />
     <Compile Include="Vm\GetAzureRemoteAppVm.cs" />
+    <Compile Include="Vm\GetAzureRemoteAppVmStaleAdObjects.cs" />
     <Compile Include="Vm\RestartAzureRemoteAppVm.cs" />
     <Compile Include="Vnet\GetAzureRemoteAppVnet.cs" />
     <Compile Include="Vnet\GetAzureRemoteAppVpnDeviceConfigScript.cs" />
