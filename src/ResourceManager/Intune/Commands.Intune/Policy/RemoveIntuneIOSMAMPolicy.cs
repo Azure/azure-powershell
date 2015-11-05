@@ -56,8 +56,16 @@ namespace Microsoft.Azure.Commands.Intune
                     this.Name,
                     () =>
                     {
-                        this.IntuneClient.DeleteiOSMAMPolicy(this.AsuHostName, this.Name);
-                        this.WriteObject("1 item deleted");
+                        var res = this.IntuneClient.DeleteiOSMAMPolicyWithHttpMessagesAsync(this.AsuHostName, this.Name);
+
+                        if (res.Result.Response.StatusCode == System.Net.HttpStatusCode.OK)
+                        {
+                            this.WriteObject("1 item deleted");
+                        }
+                        else
+                        {
+                            this.WriteObject("0 item deleted");
+                        }
                     });
             };
 

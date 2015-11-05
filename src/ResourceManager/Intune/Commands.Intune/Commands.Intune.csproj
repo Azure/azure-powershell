@@ -46,7 +46,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Hyak.Common">
-      <HintPath>..\..\..\packages\Hyak.Common.1.0.2\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
+	  <HintPath>..\..\..\packages\Hyak.Common.1.0.3\lib\net45\Hyak.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Intune">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Intune.0.1.0-preview\lib\net45\Microsoft.Azure.Management.Intune.dll</HintPath>
@@ -129,6 +129,8 @@
     <Compile Include="NumericParameterValueChecker.cs" />
     <Compile Include="Apps\RemoveIntuneAndroidMAMPolicyAppCmdlet.cs" />
     <Compile Include="Apps\RemoveIntuneiOSMAMPolicyAppCmdlet.cs" />
+    <Compile Include="Policy\RemoveIntuneAndroidMAMPolicy.cs" />
+    <Compile Include="Policy\RemoveIntuneIOSMAMPolicy.cs" />
     <Compile Include="Policy\SetIntuneAndroidMAMPolicyCmdlet.cs" />
     <Compile Include="Policy\SetIntuneiOSMAMPolicyCmdlet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
