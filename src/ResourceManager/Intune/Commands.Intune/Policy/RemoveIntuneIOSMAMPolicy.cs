@@ -20,8 +20,8 @@ namespace Microsoft.Azure.Commands.Intune
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
-    using RestClient;
-    using RestClient.Models;
+    using Management.Intune;
+    using Management.Intune.Models;
 
     /// <summary>
     /// A cmdlet that removes Intune iOS MAM Policy.
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Intune
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
-        
+
         #endregion params
 
         /// <summary>
@@ -47,29 +47,26 @@ namespace Microsoft.Azure.Commands.Intune
         /// </summary>
         protected override void ProcessRecord()
         {
-            Action action = () =>
-            {
-                this.ConfirmAction(
-                    this.Force,
-                    string.Format("Are you sure you want to delete the following Intune Policies: {0}", this.Name),
-                    "Deleting the resource...",
-                    this.Name,
-                    () =>
+            this.ConfirmAction
+            (
+                this.Force,
+                string.Format("Are you sure you want to delete the following Intune Policies: {0}", this.Name),
+                "Deleting the resource...",
+                this.Name,
+                () =>
+                {
+                    var res = this.IntuneClient.Ios.DeleteMAMPolicyWithHttpMessagesAsync(this.AsuHostName, this.Name);
+
+                    if (res.Result.Response.StatusCode == System.Net.HttpStatusCode.OK)
                     {
-                        var res = this.IntuneClient.DeleteiOSMAMPolicyWithHttpMessagesAsync(this.AsuHostName, this.Name);
-
-                        if (res.Result.Response.StatusCode == System.Net.HttpStatusCode.OK)
-                        {
-                            this.WriteObject("1 item deleted");
-                        }
-                        else
-                        {
-                            this.WriteObject("0 item deleted");
-                        }
-                    });
-            };
-
-            base.SafeExecutor(action);
+                        this.WriteObject("1 item deleted");
+                    }
+                    else
+                    {
+                        this.WriteObject("0 item deleted");
+                    }
+                }
+             );
         }
     }
 }
