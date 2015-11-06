@@ -39,10 +39,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         public string IPAddressOrRange { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Start Time")]
-        DateTime? StartTime { get; set; }
+        public DateTime? StartTime { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Expiry Time")]
-        DateTime? ExpiryTime { get; set; }
+        public DateTime? ExpiryTime { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the NewAzureStorageAccountSasTokenCommand class.
