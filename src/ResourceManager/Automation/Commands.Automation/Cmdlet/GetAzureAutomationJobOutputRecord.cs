@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets the job id
         /// </summary>
         [Alias("JobId")]
-        [Parameter(Mandatory = true, Position = 2, ValueFromPipelineByPropertyName = true, HelpMessage = "The job name or Id")]
+        [Parameter(Mandatory = true, Position = 2, ValueFromPipelineByPropertyName = true, HelpMessage = "The job Id")]
         public Guid Id { get; set; }
 
         /// <summary>

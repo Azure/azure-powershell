@@ -57,9 +57,9 @@ namespace Microsoft.Azure.Commands.Automation.Model
 
             if (!String.IsNullOrWhiteSpace(jobStream.Properties.Summary))
             {
-                if (jobStream.Properties.Summary.Length > Constants.JobSummaryLenght)
+                if (jobStream.Properties.Summary.Length > Constants.JobSummaryLength)
                 {
-                    this.Summary = jobStream.Properties.Summary.Substring(0, Constants.JobSummaryLenght) + "...";
+                    this.Summary = jobStream.Properties.Summary.Substring(0, Constants.JobSummaryLength) + "...";
                 }
                 else
                 {
