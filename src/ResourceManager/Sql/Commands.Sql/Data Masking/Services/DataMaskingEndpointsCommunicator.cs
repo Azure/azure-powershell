@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         {
             IDataMaskingOperations operations = GetCurrentSqlClient(clientRequestId).DataMasking;
             operations.Delete(resourceGroupName, serverName, databaseName, ruleId);
-        }
+       }
 
         /// <summary>
         /// Retrieve the SQL Management client for the currently selected subscription, adding the session and request

@@ -223,6 +223,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to RoleDefinition Description is invalid..
+        /// </summary>
+        internal static string InvalidRoleDefinitionDescription {
+            get {
+                return ResourceManager.GetString("InvalidRoleDefinitionDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to RoleDefinition Name is invalid.
         /// </summary>
         internal static string InvalidRoleDefinitionName {
@@ -313,6 +322,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Multiple role definitions found with name &apos;{0}&apos;. Specify role definition using it&apos;s Id instead..
+        /// </summary>
+        internal static string MultipleRoleDefinitionsFoundWithSameName {
+            get {
+                return ResourceManager.GetString("MultipleRoleDefinitionsFoundWithSameName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Replacing resource group ....
         /// </summary>
         internal static string NewResourceGroupMessage {
@@ -340,6 +358,24 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to To get all operations under {0}, please specify the search string as {0}/*..
+        /// </summary>
+        internal static string OperationSearchStringInvalidProviderName {
+            get {
+                return ResourceManager.GetString("OperationSearchStringInvalidProviderName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Individual parts in the search string should either equal * or not contain *..
+        /// </summary>
+        internal static string OperationSearchStringInvalidWildcard {
+            get {
+                return ResourceManager.GetString("OperationSearchStringInvalidWildcard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Overriding the existing file..
         /// </summary>
         internal static string OverrdingFile {
@@ -354,6 +390,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string PrincipalNotFound {
             get {
                 return ResourceManager.GetString("PrincipalNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wildcard character ? is not supported..
+        /// </summary>
+        internal static string ProviderOperationUnsupportedWildcard {
+            get {
+                return ResourceManager.GetString("ProviderOperationUnsupportedWildcard", resourceCulture);
             }
         }
         
@@ -435,6 +480,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string RemoveRoleDefinition {
             get {
                 return ResourceManager.GetString("RemoveRoleDefinition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove role definition with name &apos;{0}&apos;..
+        /// </summary>
+        internal static string RemoveRoleDefinitionWithName {
+            get {
+                return ResourceManager.GetString("RemoveRoleDefinitionWithName", resourceCulture);
             }
         }
         
@@ -570,6 +624,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string ResourceTypeFormat {
             get {
                 return ResourceManager.GetString("ResourceTypeFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Role definition id should be a valid guid..
+        /// </summary>
+        internal static string RoleDefinitionIdShouldBeAGuid {
+            get {
+                return ResourceManager.GetString("RoleDefinitionIdShouldBeAGuid", resourceCulture);
             }
         }
         

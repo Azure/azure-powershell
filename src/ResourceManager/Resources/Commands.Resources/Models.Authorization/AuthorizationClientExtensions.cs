@@ -23,6 +23,16 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
     {
         public const string CustomRole = "CustomRole";
 
+        public static IEnumerable<RoleAssignment> FilterRoleAssignmentsOnRoleId(this IEnumerable<RoleAssignment> assignments, string roleId)
+        {
+            if(!string.IsNullOrEmpty(roleId))
+            {
+                return assignments.Where(a => a.Properties.RoleDefinitionId == roleId);
+            }
+
+            return assignments;
+        }
+
         public static PSRoleDefinition ToPSRoleDefinition(this RoleDefinition role)
         {
             PSRoleDefinition roleDefinition = null;
@@ -34,7 +44,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                     Name = role.Properties.RoleName,
                     Actions = new List<string>(role.Properties.Permissions.SelectMany(r => r.Actions)),
                     NotActions = new List<string>(role.Properties.Permissions.SelectMany(r => r.NotActions)),
-                    Id = role.Id,
+                    Id = role.Id.GuidFromFullyQualifiedId(),
                     AssignableScopes = role.Properties.AssignableScopes.ToList(),
                     Description = role.Properties.Description,
                     IsCustom = role.Properties.Type == CustomRole ? true : false
@@ -55,11 +65,20 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             List<string> objectIds = new List<string>();
             objectIds.AddRange(assignments.Select(r => r.Properties.PrincipalId.ToString()));
             List<PSADObject> adObjects = activeDirectoryClient.GetObjectsByObjectId(objectIds);
+            List<PSRoleDefinition> roleDefinitions;
 
-            List<PSRoleDefinition> roleDefinitions = policyClient.FilterRoleDefinitions(name: null);
+            if (assignments.Count() == 1)
+            {
+                roleDefinitions = new List<PSRoleDefinition> { policyClient.GetRoleDefinition(assignments.Single().Properties.RoleDefinitionId) };
+            }
+            else
+            {
+                roleDefinitions = policyClient.GetRoleDefinitions();
+            }
 
             foreach (RoleAssignment assignment in assignments)
             {
+                assignment.Properties.RoleDefinitionId = assignment.Properties.RoleDefinitionId.GuidFromFullyQualifiedId();
                 PSADObject adObject = adObjects.SingleOrDefault(o => o.Id == assignment.Properties.PrincipalId) ?? new PSADObject() { Id = assignment.Properties.PrincipalId };
                 PSRoleDefinition roleDefinition = roleDefinitions.SingleOrDefault(r => r.Id == assignment.Properties.RoleDefinitionId) ?? new PSRoleDefinition() { Id = assignment.Properties.RoleDefinitionId };
 
@@ -69,7 +88,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                     {
                         RoleAssignmentId = assignment.Id,
                         DisplayName = adObject.DisplayName,
-                        RoleDefinitionId = roleDefinition.Id.GuidFromFullyQualifiedId(),
+                        RoleDefinitionId = roleDefinition.Id,
                         RoleDefinitionName = roleDefinition.Name,
                         Scope = assignment.Properties.Scope,
                         SignInName = ((PSADUser)adObject).SignInName,
@@ -83,7 +102,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                     {
                         RoleAssignmentId = assignment.Id,
                         DisplayName = adObject.DisplayName,
-                        RoleDefinitionId = roleDefinition.Id.GuidFromFullyQualifiedId(),
+                        RoleDefinitionId = roleDefinition.Id,
                         RoleDefinitionName = roleDefinition.Name,
                         Scope = assignment.Properties.Scope,
                         ObjectId = adObject.Id,
@@ -96,7 +115,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                     {
                         RoleAssignmentId = assignment.Id,
                         DisplayName = adObject.DisplayName,
-                        RoleDefinitionId = roleDefinition.Id.GuidFromFullyQualifiedId(),
+                        RoleDefinitionId = roleDefinition.Id,
                         RoleDefinitionName = roleDefinition.Name,
                         Scope = assignment.Properties.Scope,
                         ObjectId = adObject.Id,
@@ -109,7 +128,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                     {
                         RoleAssignmentId = assignment.Id,
                         DisplayName = adObject.DisplayName,
-                        RoleDefinitionId = roleDefinition.Id.GuidFromFullyQualifiedId(),
+                        RoleDefinitionId = roleDefinition.Id,
                         RoleDefinitionName = roleDefinition.Name,
                         Scope = assignment.Properties.Scope,
                         ObjectId = adObject.Id,

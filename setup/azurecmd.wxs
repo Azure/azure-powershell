@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
 
-  <?define productName="Microsoft Azure PowerShell - October 2015" ?>
+  <?define productName="Microsoft Azure PowerShell - November 2015" ?>
   <?define sourceDir="$(var.SolutionDir)..\src\Package\$(var.Configuration)" ?>
   <?define caSourceDir="$(var.SolutionDir)setup\bin\$(var.Configuration)" ?>
 
-  <?define version="0.9.9" ?>
+  <?define version="1.0.0" ?>
   <?define versionedStartMenuFolder="Microsoft Azure" ?>
   <?define staleStartMenuFolder="Windows Azure" ?>
    
@@ -47,8 +47,18 @@
       </DirectorySearch>
     </Property>
 
+    <Property Id="POWERSHELLGETAZUREINSTALLED" >
+      <DirectorySearch Id="AZURECONTAINER" Path="[BaseModulesFolder]">
+        <DirectorySearch Id= "AZUREMODULE" Path="Azure"/>
+      </DirectorySearch>
+    </Property>
+
     <Condition Message="Azure Modules from the PowerShell Gallery are installed on this machine.  Please remove these modules before installing this MSI.">
       <![CDATA[Installed or NOT(POWERSHELLGETMODULESINSTALLED >< "AzureRM.Profile")]]>
+    </Condition>
+
+    <Condition Message="Azure Modules from the PowerShell Gallery are installed on this machine.  Please remove these modules before installing this MSI.">
+      <![CDATA[Installed or NOT(POWERSHELLGETAZUREINSTALLED >< "Azure")]]>
     </Condition>
 
 

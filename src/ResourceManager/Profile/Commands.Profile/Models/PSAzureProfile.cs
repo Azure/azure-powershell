@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         }
 
         /// <summary>
-        /// The current credentials and mestadata for connectiong with the current Azure cloud instance.
+        /// The current credentials and metadata for connecting with the current Azure cloud instance.
         /// </summary>
         public PSAzureContext Context { get; set; }
 

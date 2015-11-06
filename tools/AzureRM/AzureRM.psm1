@@ -1,4 +1,4 @@
-$AzureMajorVersion = "0"
+$AzureMajorVersion = "1"
 
 $AzureRMModules = @(
   "AzureRM.ApiManagement",
@@ -7,6 +7,8 @@ $AzureRMModules = @(
   "AzureRM.Batch",
   "AzureRM.Compute",
   "AzureRM.DataFactories",
+  "AzureRM.DataLakeAnalytics",
+  "AzureRM.DataLakeStore",
   "AzureRM.Dns",
   "AzureRM.HDInsight",
   "AzureRM.Insights",

@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
 
         public override string ToString()
         {
-            return this.TenantId;
+            return (this.TenantId == Guid.Empty.ToString()) ? this.Domain : this.TenantId;
         }
     }
 }

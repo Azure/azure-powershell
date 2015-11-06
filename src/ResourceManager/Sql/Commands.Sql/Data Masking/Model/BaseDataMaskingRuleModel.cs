@@ -35,11 +35,6 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Model
         public string ServerName { get; set; }
 
         /// <summary>
-        /// Gets or sets the rule id
-        /// </summary>
-        public string RuleId { get; set; }
-
-        /// <summary>
         /// Gets or sets the name of the chema that contains the table on which the rule operates on
         /// </summary>
         public string SchemaName { get; set; }

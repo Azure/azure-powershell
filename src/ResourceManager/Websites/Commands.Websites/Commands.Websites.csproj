@@ -7,7 +7,7 @@
     <ProjectGuid>{80A92297-7C92-456B-8EE7-9FB6CE30149D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.Azure.Commands.Websites</RootNamespace>
+    <RootNamespace>Microsoft.Azure.Commands.WebApps</RootNamespace>
     <AssemblyName>Microsoft.Azure.Commands.Websites</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -55,7 +55,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.Authentication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.3.4-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.4.0-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.NetFramework">
@@ -69,17 +69,20 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Graph.RBAC.1.7.0-preview\lib\net40\Microsoft.Azure.Graph.RBAC.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Authorization">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.0.19.2-preview\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Authorization, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.1.0.2\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.WebSites, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.WebSites.0.16.4-prerelease\lib\net40\Microsoft.Azure.Management.WebSites.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.WebSites.0.16.7-preview\lib\net45\Microsoft.Azure.Management.WebSites.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.7-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.11-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.18.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.18.206251556\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
@@ -90,7 +93,12 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.1.2.0\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.1.3.0\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.1.0.21\lib\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -108,10 +116,6 @@
     <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop, Version=1.0.168.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.1.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -139,23 +143,36 @@
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cmdlets\GetAzureWebAppPublishingProfile.cs" />
-    <Compile Include="Cmdlets\GetAzureWebApp.cs" />
-    <Compile Include="Cmdlets\RemoveAzureWebApp.cs" />
-    <Compile Include="Cmdlets\NewAzureWebApp.cs" />
-    <Compile Include="Cmdlets\RestartAzureWebApp.cs" />
-    <Compile Include="Cmdlets\StartAzureWebApp.cs" />
-    <Compile Include="Cmdlets\StopAzureWebApp.cs" />
-    <Compile Include="Cmdlets\AppServicePlan\GetAzureAppServicePlan.cs" />
-    <Compile Include="Cmdlets\AppServicePlan\SetAzureAppServicePlan.cs" />
-    <Compile Include="Cmdlets\AppServicePlan\NewAzureAppServicePlan.cs" />
-    <Compile Include="Cmdlets\AppServicePlan\RemoveAppServicePlan.cs" />
-    <Compile Include="Models.WebApp\AppServicePlanBaseNotMandatoryCmdlet.cs" />
+    <Compile Include="Cmdlets\AppServicePlans\GetAzureAppServicePlanMetrics.cs" />
+    <Compile Include="Cmdlets\DeploymentSlots\GetAzureWebAppSlot.cs" />
+    <Compile Include="Cmdlets\DeploymentSlots\GetAzureWebAppSlotMetrics.cs" />
+    <Compile Include="Cmdlets\DeploymentSlots\GetAzureWebAppSlotPublishingProfile.cs" />
+    <Compile Include="Cmdlets\DeploymentSlots\NewAzureWebAppSlot.cs" />
+    <Compile Include="Cmdlets\DeploymentSlots\RemoveAzureWebAppSlot.cs" />
+    <Compile Include="Cmdlets\DeploymentSlots\ResetAzureWebAppSlotPublishingProfile.cs" />
+    <Compile Include="Cmdlets\DeploymentSlots\RestartAzureWebAppSlot.cs" />
+    <Compile Include="Cmdlets\DeploymentSlots\SetAzureWebAppSlot.cs" />
+    <Compile Include="Cmdlets\DeploymentSlots\StartAzureWebAppSlot.cs" />
+    <Compile Include="Cmdlets\DeploymentSlots\StopAzureWebAppSlot.cs" />
+    <Compile Include="Cmdlets\WebApps\GetAzureWebAppMetrics.cs" />
+    <Compile Include="Cmdlets\WebApps\GetAzureWebAppPublishingProfile.cs" />
+    <Compile Include="Cmdlets\WebApps\GetAzureWebApp.cs" />
+    <Compile Include="Cmdlets\WebApps\RemoveAzureWebApp.cs" />
+    <Compile Include="Cmdlets\WebApps\NewAzureWebApp.cs" />
+    <Compile Include="Cmdlets\WebApps\ResetAzureWebAppPublishingProfile.cs" />
+    <Compile Include="Cmdlets\WebApps\RestartAzureWebApp.cs" />
+    <Compile Include="Cmdlets\WebApps\SetAzureWebApp.cs" />
+    <Compile Include="Cmdlets\WebApps\StartAzureWebApp.cs" />
+    <Compile Include="Cmdlets\WebApps\StopAzureWebApp.cs" />
+    <Compile Include="Cmdlets\AppServicePlans\GetAzureAppServicePlan.cs" />
+    <Compile Include="Cmdlets\AppServicePlans\SetAzureAppServicePlan.cs" />
+    <Compile Include="Cmdlets\AppServicePlans\NewAzureAppServicePlan.cs" />
+    <Compile Include="Cmdlets\AppServicePlans\RemoveAppServicePlan.cs" />
     <Compile Include="Models.WebApp\AppServicePlanBaseCmdlet.cs" />
-    <Compile Include="Models.WebApp\WebAppBaseNotMandatoryCmdlet.cs" />
-    <Compile Include="Models.WebApp\WebAppBaseSlotCmdlet.cs" />
     <Compile Include="Models.WebApp\WebAppBaseCmdlet.cs" />
     <Compile Include="Models.WebApp\WebAppBaseClient.cs" />
+    <Compile Include="Models.WebApp\WebAppSlotBaseCmdlet.cs" />
+    <Compile Include="Utilities\CmdletHelpers.cs" />
     <Compile Include="Utilities\WebsitesClient.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -163,16 +180,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validations\ValidateConnectionStringsAttribute.cs" />
+    <Compile Include="Validations\ValidateServerFarmAttribute.cs" />
+    <Compile Include="Validations\ValidateStringDictionaryAttribute.cs" />
+    <Compile Include="Validations\ValidateWebAppNameAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Microsoft.Azure.Commands.Websites.dll-Help.xml">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Microsoft.WindowsAzure.Commands.WebSites.format.ps1xml">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <None Include="..\AzureRM.Websites.psd1">
       <Link>AzureRM.Websites.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -198,6 +211,13 @@
       <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
       <Name>Commands.ResourceManager.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Resources\Commands.Resources\Commands.Resources.csproj">
+      <Project>{e1f5201d-6067-430e-b303-4e367652991b}</Project>
+      <Name>Commands.Resources</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Cmdlets\Certificates\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />

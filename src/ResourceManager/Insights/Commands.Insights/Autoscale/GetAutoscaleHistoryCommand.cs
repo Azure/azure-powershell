@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// <returns>true if the record should kept in the result, false if it should be filtered out</returns>
         protected override bool KeepTheRecord(EventData record)
         {
-            return string.IsNullOrWhiteSpace(this.ResourceId) || string.Equals(record.ResourceUri, this.ResourceId, StringComparison.OrdinalIgnoreCase);
+            return string.IsNullOrWhiteSpace(this.ResourceId) || string.Equals(record.ResourceId, this.ResourceId, StringComparison.OrdinalIgnoreCase);
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// <returns>Modified query filter including the condition for eventSource</returns>
         protected override string ProcessParticularParameters(string currentQueryFilter)
         {
-            return this.AddConditionIfPResent(currentQueryFilter, "eventSource", AutoscaleEventSourceName);
+            return this.AddConditionIfPResent(currentQueryFilter, "category", AutoscaleEventSourceName);
         }
     }
 }
