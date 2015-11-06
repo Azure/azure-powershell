@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         private const string Key2 = "Key2";
 
-
         [Parameter(
             Position = 0,
             Mandatory = true,
@@ -56,27 +55,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
         {
             base.ProcessRecord();
 
-            KeyName keyName = ParseKeyName(this.KeyName);
-
             var keys = this.StorageClient.StorageAccounts.RegenerateKey(
                 this.ResourceGroupName,
                 this.Name,
-                keyName);
+                this.KeyName);
 
-            WriteObject(keys.StorageAccountKeys);
-        }
-
-        private static KeyName ParseKeyName(string keyName)
-        {
-            if (Key1.Equals(keyName, StringComparison.OrdinalIgnoreCase))
-            {
-                return Microsoft.Azure.Management.Storage.Models.KeyName.Key1;
-            }
-            if (Key2.Equals(keyName, StringComparison.OrdinalIgnoreCase))
-            {
-                return Microsoft.Azure.Management.Storage.Models.KeyName.Key2;
-            }
-            throw new ArgumentOutOfRangeException("keyName");
+            WriteObject(keys);
         }
     }
 }
