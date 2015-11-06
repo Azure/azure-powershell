@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
 
                 ServiceDiagnosticSettings properties = getResponse.Properties;
 
-                if (this.Enabled && string.IsNullOrWhiteSpace(properties.StorageAccountId) && string.IsNullOrWhiteSpace(properties.StorageAccountId))
+                if (this.Enabled && string.IsNullOrWhiteSpace(this.StorageAccountId))
                 {
                     throw new ArgumentException("StorageAccountId can't be null when enabling");
                 }

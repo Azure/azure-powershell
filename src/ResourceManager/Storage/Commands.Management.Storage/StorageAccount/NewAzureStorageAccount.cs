@@ -17,10 +17,11 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
+using StorageModels = Microsoft.Azure.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet(VerbsCommon.New, StorageAccountNounStr), OutputType(typeof(StorageAccount))]
+    [Cmdlet(VerbsCommon.New, StorageAccountNounStr), OutputType(typeof(StorageModels.StorageAccount))]
     public class NewAzureStorageAccountCommand : StorageAccountBaseCmdlet
     {
         [Parameter(
@@ -86,9 +87,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 this.Name,
                 createParameters);
 
-            var getAccountResponse = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
+            var storageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name).StorageAccount;
 
-            this.WriteStorageAccount(getAccountResponse.StorageAccount);
+            this.WriteStorageAccount(storageAccount);
         }
     }
 }
