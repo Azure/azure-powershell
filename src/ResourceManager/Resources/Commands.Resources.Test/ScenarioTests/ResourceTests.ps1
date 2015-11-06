@@ -300,3 +300,25 @@ function Test-FindAResource
 	$expected = Find-AzureRmResource -ResourceNameContains test -ResourceGroupNameContains $rgname
 	Assert-AreEqual 2 @($expected).Count
 }
+
+<#
+.SYNOPSIS
+Tests getting a resource with properties expanded
+#>
+function Test-GetResourceExpandProperties
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rname = Get-ResourceName
+	$rglocation = Get-ProviderLocation ResourceManagement
+	$apiversion = "2014-04-01"
+	$resourceType = "Providers.Test/statefulResources"
+
+	# Test
+	New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+	$resource = New-AzureRmResource -Name $rname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+	$resourceGet = Get-AzureRmResource -ResourceName $rname -ResourceGroupName $rgname -ExpandProperties
+
+	# Assert
+	Assert-AreEqual $resourceGet.Properties.key "value"
+}

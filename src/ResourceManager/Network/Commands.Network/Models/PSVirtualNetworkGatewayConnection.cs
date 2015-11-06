@@ -32,6 +32,12 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string SharedKey { get; set; }
 
+        public string ConnectionStatus { get; set; }
+
+        public ulong EgressBytesTransferred { get; set; }
+
+        public ulong IngressBytesTransferred { get; set; }
+
         [JsonIgnore]
         public string VirtualNetworkGateway1Text
         {
