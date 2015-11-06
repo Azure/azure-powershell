@@ -127,6 +127,12 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         protected override void ProcessRecord()
         {
+            if (ParameterSetName == ForVault && !EnabledForDeployment.IsPresent &&
+                !EnabledForTemplateDeployment.IsPresent && !EnabledForDiskEncryption.IsPresent)
+            {
+                throw new ArgumentException(PSKeyVaultProperties.Resources.VaultPermissionFlagMissing);
+            }
+
             ResourceGroupName = string.IsNullOrWhiteSpace(ResourceGroupName) ? GetResourceGroupName(VaultName) : ResourceGroupName;
 
             // Get the vault to be updated

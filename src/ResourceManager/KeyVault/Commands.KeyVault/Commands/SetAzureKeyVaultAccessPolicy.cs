@@ -158,7 +158,13 @@ namespace Microsoft.Azure.Commands.KeyVault
         #endregion
 
         protected override void ProcessRecord()
-        {           
+        {
+            if (ParameterSetName == ForVault && !EnabledForDeployment.IsPresent &&
+                !EnabledForTemplateDeployment.IsPresent && !EnabledForDiskEncryption.IsPresent)
+            {
+                throw new ArgumentException(PSKeyVaultProperties.Resources.VaultPermissionFlagMissing);
+            }
+
             ResourceGroupName = string.IsNullOrWhiteSpace(ResourceGroupName) ? GetResourceGroupName(VaultName) : ResourceGroupName;           
             PSKeyVaultModels.PSVault vault = null;
 
