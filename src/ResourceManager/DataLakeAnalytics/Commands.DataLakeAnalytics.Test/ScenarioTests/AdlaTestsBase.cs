@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
     using System.Net;
     using System.Reflection;
 
-    public abstract class DataLakeAnalyticsTestsBase : TestBase, IDisposable
+    public abstract class AdlaTestsBase : TestBase, IDisposable
     {
         internal string resourceGroupName { get; set; }
         internal string dataLakeAnalyticsAccountName { get; set; }
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         private ResourceManagementClient resourceManagementClient;
         private StorageManagementClient storageManagementClient;
 
-        protected DataLakeAnalyticsTestsBase()
+        protected AdlaTestsBase()
         {
             helper = new EnvironmentSetupHelper();
             dataLakeAnalyticsManagementClient = GetDataLakeAnalyticsManagementClient();

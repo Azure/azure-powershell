@@ -154,8 +154,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScenarioTests\DataLakeStoreTestsBase.cs" />
-    <Compile Include="ScenarioTests\DataLakeStoreTests.cs" />
+    <Compile Include="ScenarioTests\AdlsTestsBase.cs" />
+    <Compile Include="ScenarioTests\AdlsTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\Commands.ScenarioTests.ResourceManager.Common.csproj">
@@ -172,13 +172,13 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="ScenarioTests\DataLakeStoreTests.ps1">
+    <None Include="ScenarioTests\AdlsTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests.DataLakeStoreTests\TestDataLakeStoreAccount.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests.AdlsTests\TestAdlsAccount.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests.DataLakeStoreTests\TestNegativeDataLakeStoreAccount.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests.AdlsTests\TestNegativeAdlsAccount.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

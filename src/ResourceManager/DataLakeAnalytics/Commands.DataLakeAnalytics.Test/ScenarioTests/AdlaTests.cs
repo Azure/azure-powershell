@@ -18,39 +18,39 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
     using Microsoft.Azure.Test;
     using Xunit;
 
-    public class DataLakeAnalyticsTests : DataLakeAnalyticsTestsBase
+    public class AdlaTests : AdlaTestsBase
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestDataLakeAnalyticsAccount()
+        public void TestAdlaAccount()
         {
             RunPowerShellTest(
                 string.Format(
                     "Test-DataLakeAnalyticsAccount -resourceGroupName {0} -accountName {1} -dataLakeAccountName {2} -secondDataLakeAccountName {3} -blobAccountName {4} -blobAccountKey {5} -location '{6}'",
                     this.resourceGroupName, this.dataLakeAnalyticsAccountName, this.dataLakeStoreAccountName,
                     this.secondDataLakeStoreAccountName, this.azureBlobStoreName, this.azureBlobStoreAccessKey,
-                    DataLakeAnalyticsTestsBase.resourceGroupLocation));
+                    AdlaTestsBase.resourceGroupLocation));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestDataLakeAnalyticsJob()
+        public void TestAdlaJob()
         {
-            RunPowerShellTest(string.Format("Test-DataLakeAnalyticsJob -resourceGroupName {0} -accountName {1} -dataLakeAccountName {2} -location '{3}'", this.resourceGroupName, this.dataLakeAnalyticsAccountName, this.dataLakeStoreAccountName, DataLakeAnalyticsTestsBase.resourceGroupLocation));
+            RunPowerShellTest(string.Format("Test-DataLakeAnalyticsJob -resourceGroupName {0} -accountName {1} -dataLakeAccountName {2} -location '{3}'", this.resourceGroupName, this.dataLakeAnalyticsAccountName, this.dataLakeStoreAccountName, AdlaTestsBase.resourceGroupLocation));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNegativeDataLakeAnalyticsAccount()
+        public void TestNegativeAdlaAccount()
         {
-            RunPowerShellTest(string.Format("Test-NegativeDataLakeAnalyticsAccount -resourceGroupName {0} -accountName {1} -dataLakeAccountName {2} -location '{3}'", this.resourceGroupName, this.dataLakeAnalyticsAccountName, this.dataLakeStoreAccountName, DataLakeAnalyticsTestsBase.resourceGroupLocation));
+            RunPowerShellTest(string.Format("Test-NegativeDataLakeAnalyticsAccount -resourceGroupName {0} -accountName {1} -dataLakeAccountName {2} -location '{3}'", this.resourceGroupName, this.dataLakeAnalyticsAccountName, this.dataLakeStoreAccountName, AdlaTestsBase.resourceGroupLocation));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNegativeDataLakeAnalyticsJob()
+        public void TestNegativeAdlaJob()
         {
-            RunPowerShellTest(string.Format("Test-NegativeDataLakeAnalyticsJob -resourceGroupName {0} -accountName {1} -dataLakeAccountName {2} -location '{3}'", this.resourceGroupName, this.dataLakeAnalyticsAccountName, this.dataLakeStoreAccountName, DataLakeAnalyticsTestsBase.resourceGroupLocation));
+            RunPowerShellTest(string.Format("Test-NegativeDataLakeAnalyticsJob -resourceGroupName {0} -accountName {1} -dataLakeAccountName {2} -location '{3}'", this.resourceGroupName, this.dataLakeAnalyticsAccountName, this.dataLakeStoreAccountName, AdlaTestsBase.resourceGroupLocation));
         }
     }
 }
