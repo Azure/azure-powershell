@@ -49,6 +49,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             {
                 PrefixName = RoleName = roleName.Trim();
                 PrefixName = PrefixName.Replace(".", string.Empty);
+                PrefixName = PrefixName.Replace(" ", string.Empty);
                 RoleType = ExtensionRoleType.NamedRoles;
                 Default = false;
             }
@@ -62,6 +63,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
         public string GetExtensionId(string extensionName, string slot, int index)
         {
             var normalizedExtName = extensionName.Replace(".", string.Empty);
+            normalizedExtName = normalizedExtName.Replace(" ", string.Empty);
 
             var suffix = new StringBuilder();
             suffix.AppendFormat(ExtensionIdSuffixTemplate, normalizedExtName, slot, index);
