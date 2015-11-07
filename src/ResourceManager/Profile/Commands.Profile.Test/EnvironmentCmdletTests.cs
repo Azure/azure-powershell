@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
                 PublishSettingsFileUrl = "http://microsoft.com"
             };
 
-            Assert.Throws<ArgumentException>(() => cmdlet.ExecuteCmdlet());
+            Assert.Throws<InvalidOperationException>(() => cmdlet.ExecuteCmdlet());
         }
 
         [Fact]
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
 
-            Assert.Equal(2, environments.Count);
+            Assert.Equal(3, environments.Count);
         }
 
         [Fact]

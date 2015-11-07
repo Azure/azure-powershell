@@ -64,6 +64,12 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The SharedKey")]
+        [ValidateNotNullOrEmpty]
+        public string SharedKey { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "The MircosoftConfigAdvertisedPublicPrefixes",
             ParameterSetName = "MicrosoftPeeringConfig")]
         [ValidateNotNullOrEmpty]
