@@ -106,6 +106,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiVersionHandler.cs" />
     <Compile Include="Apps\GetIntuneAndroidMAMAppCmdlet.cs" />
     <Compile Include="Apps\GetIntuneAndroidMAMPolicyAppCmdlet.cs" />
     <Compile Include="MultiPageGetter.cs" />
