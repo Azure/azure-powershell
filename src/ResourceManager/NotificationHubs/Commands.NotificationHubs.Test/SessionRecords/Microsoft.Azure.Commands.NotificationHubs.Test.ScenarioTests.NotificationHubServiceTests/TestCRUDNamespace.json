@@ -1,0 +1,1664 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourcegroups/RGName-onesdk294?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlZ3JvdXBzL1JHTmFtZS1vbmVzZGsyOTQ/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
+      "RequestMethod": "HEAD",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "108"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14991"
+        ],
+        "x-ms-request-id": [
+          "6c937793-1931-4881-a9c7-54d8c51dee1c"
+        ],
+        "x-ms-correlation-request-id": [
+          "6c937793-1931-4881-a9c7-54d8c51dee1c"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20151029T224807Z:6c937793-1931-4881-a9c7-54d8c51dee1c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 29 Oct 2015 22:48:07 GMT"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourcegroups/RGName-onesdk294?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlZ3JvdXBzL1JHTmFtZS1vbmVzZGsyOTQ/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
+      "RequestMethod": "HEAD",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14974"
+        ],
+        "x-ms-request-id": [
+          "310ebb1a-8eac-47a1-9e84-fbdbf273ef7f"
+        ],
+        "x-ms-correlation-request-id": [
+          "310ebb1a-8eac-47a1-9e84-fbdbf273ef7f"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20151029T225105Z:310ebb1a-8eac-47a1-9e84-fbdbf273ef7f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 29 Oct 2015 22:51:05 GMT"
+        ]
+      },
+      "StatusCode": 204
+    },
+    {
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourcegroups/RGName-onesdk294?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlZ3JvdXBzL1JHTmFtZS1vbmVzZGsyOTQ/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"South Central US\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "38"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk294\",\r\n  \"name\": \"RGName-onesdk294\",\r\n  \"location\": \"southcentralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "193"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1188"
+        ],
+        "x-ms-request-id": [
+          "dd2a90c8-4984-446d-a525-7eec0eb95352"
+        ],
+        "x-ms-correlation-request-id": [
+          "dd2a90c8-4984-446d-a525-7eec0eb95352"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20151029T224809Z:dd2a90c8-4984-446d-a525-7eec0eb95352"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 29 Oct 2015 22:48:08 GMT"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk294/resources?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGsyOTQvcmVzb3VyY2VzP2FwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": []\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "12"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14990"
+        ],
+        "x-ms-request-id": [
+          "5ebd8f9b-0626-4c8a-a7bc-242ee892cfbd"
+        ],
+        "x-ms-correlation-request-id": [
+          "5ebd8f9b-0626-4c8a-a7bc-242ee892cfbd"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20151029T224809Z:5ebd8f9b-0626-4c8a-a7bc-242ee892cfbd"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 29 Oct 2015 22:48:08 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk294/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk8283?api-version=2014-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGsyOTQvcHJvdmlkZXJzL01pY3Jvc29mdC5Ob3RpZmljYXRpb25IdWJzL25hbWVzcGFjZXMvTmFtZXNwYWNlLW9uZXNkazgyODM/YXBpLXZlcnNpb249MjAxNC0wOS0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"South Central US\",\r\n  \"properties\": {\r\n    \"createdAt\": \"0001-01-01T00:00:00\",\r\n    \"enabled\": false,\r\n    \"critical\": false,\r\n    \"namespaceType\": \"NotificationHub\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "191"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.NotificationHubs.NotificationHubsManagementClient/0.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": null,\r\n  \"name\": null,\r\n  \"type\": null,\r\n  \"location\": \"South Central US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Activating\",\r\n    \"name\": \"Namespace-onesdk8283\",\r\n    \"region\": \"South Central US\",\r\n    \"enabled\": false,\r\n    \"critical\": false,\r\n    \"namespaceType\": \"NotificationHub\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "250"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "78e1a1b4-1015-4ce2-9f2e-9a8c8ac5cc3f_M2_M2"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1197"
+        ],
+        "x-ms-correlation-request-id": [
+          "afcac09a-6d10-4fd5-a5a2-84d28adc9994"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20151029T224810Z:afcac09a-6d10-4fd5-a5a2-84d28adc9994"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Thu, 29 Oct 2015 22:48:10 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk294/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk8283?api-version=2014-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGsyOTQvcHJvdmlkZXJzL01pY3Jvc29mdC5Ob3RpZmljYXRpb25IdWJzL25hbWVzcGFjZXMvTmFtZXNwYWNlLW9uZXNkazgyODM/YXBpLXZlcnNpb249MjAxNC0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.NotificationHubs.NotificationHubsManagementClient/0.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk294/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk8283\",\r\n  \"name\": \"Namespace-onesdk8283\",\r\n  \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n  \"location\": \"South Central US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"status\": \"Active\",\r\n    \"createdAt\": \"2015-10-29T22:48:09.95Z\",\r\n    \"serviceBusEndpoint\": \"https://Namespace-onesdk8283.servicebus.windows.net:443/\",\r\n    \"enabled\": true,\r\n    \"critical\": false,\r\n    \"updatedAt\": \"2015-10-29T22:48:12.077Z\",\r\n    \"namespaceType\": \"NotificationHub\",\r\n    \"messagingSku\": 1\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "585"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "dfc04229-5057-4f6f-b365-13d223cb00b9_M2_M2"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14997"
+        ],
+        "x-ms-correlation-request-id": [
+          "ccfa0034-bc8f-4f56-8492-b0e26bdf6c60"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20151029T224825Z:ccfa0034-bc8f-4f56-8492-b0e26bdf6c60"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Thu, 29 Oct 2015 22:48:25 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourcegroups/RGName-onesdk8629?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlZ3JvdXBzL1JHTmFtZS1vbmVzZGs4NjI5P2FwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
+      "RequestMethod": "HEAD",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "109"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14989"
+        ],
+        "x-ms-request-id": [
+          "b5fec9fd-1431-49ba-9352-13aa82d6d6cf"
+        ],
+        "x-ms-correlation-request-id": [
+          "b5fec9fd-1431-49ba-9352-13aa82d6d6cf"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20151029T224826Z:b5fec9fd-1431-49ba-9352-13aa82d6d6cf"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 29 Oct 2015 22:48:26 GMT"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourcegroups/RGName-onesdk8629?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlZ3JvdXBzL1JHTmFtZS1vbmVzZGs4NjI5P2FwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
+      "RequestMethod": "HEAD",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14969"
+        ],
+        "x-ms-request-id": [
+          "23a7fcb4-fdac-46c4-9b8d-5a22e5c75119"
+        ],
+        "x-ms-correlation-request-id": [
+          "23a7fcb4-fdac-46c4-9b8d-5a22e5c75119"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20151029T225152Z:23a7fcb4-fdac-46c4-9b8d-5a22e5c75119"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 29 Oct 2015 22:51:51 GMT"
+        ]
+      },
+      "StatusCode": 204
+    },
+    {
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourcegroups/RGName-onesdk8629?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlZ3JvdXBzL1JHTmFtZS1vbmVzZGs4NjI5P2FwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"South Central US\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "38"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk8629\",\r\n  \"name\": \"RGName-onesdk8629\",\r\n  \"location\": \"southcentralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "195"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1187"
+        ],
+        "x-ms-request-id": [
+          "f712b86a-4eb9-436d-ac7f-6e35472ea48d"
+        ],
+        "x-ms-correlation-request-id": [
+          "f712b86a-4eb9-436d-ac7f-6e35472ea48d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20151029T224826Z:f712b86a-4eb9-436d-ac7f-6e35472ea48d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 29 Oct 2015 22:48:26 GMT"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk8629/resources?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs4NjI5L3Jlc291cmNlcz9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": []\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "12"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14988"
+        ],
+        "x-ms-request-id": [
+          "2cce762f-c56b-40f9-9263-5872b51b2339"
+        ],
+        "x-ms-correlation-request-id": [
+          "2cce762f-c56b-40f9-9263-5872b51b2339"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20151029T224826Z:2cce762f-c56b-40f9-9263-5872b51b2339"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 29 Oct 2015 22:48:26 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk8629/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk7059?api-version=2014-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs4NjI5L3Byb3ZpZGVycy9NaWNyb3NvZnQuTm90aWZpY2F0aW9uSHVicy9uYW1lc3BhY2VzL05hbWVzcGFjZS1vbmVzZGs3MDU5P2FwaS12ZXJzaW9uPTIwMTQtMDktMDE=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"South Central US\",\r\n  \"properties\": {\r\n    \"createdAt\": \"0001-01-01T00:00:00\",\r\n    \"enabled\": false,\r\n    \"critical\": false,\r\n    \"namespaceType\": \"NotificationHub\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "191"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.NotificationHubs.NotificationHubsManagementClient/0.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": null,\r\n  \"name\": null,\r\n  \"type\": null,\r\n  \"location\": \"South Central US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Activating\",\r\n    \"name\": \"Namespace-onesdk7059\",\r\n    \"region\": \"South Central US\",\r\n    \"enabled\": false,\r\n    \"critical\": false,\r\n    \"namespaceType\": \"NotificationHub\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "250"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "5a27552d-e83d-4c17-aea3-c6991dd80f5d_M2_M2"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1196"
+        ],
+        "x-ms-correlation-request-id": [
+          "1de52e94-68f2-43c5-807d-45740ceb7522"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20151029T224827Z:1de52e94-68f2-43c5-807d-45740ceb7522"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Thu, 29 Oct 2015 22:48:26 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk8629/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk7059?api-version=2014-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs4NjI5L3Byb3ZpZGVycy9NaWNyb3NvZnQuTm90aWZpY2F0aW9uSHVicy9uYW1lc3BhY2VzL05hbWVzcGFjZS1vbmVzZGs3MDU5P2FwaS12ZXJzaW9uPTIwMTQtMDktMDE=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"South Central US\",\r\n  \"tags\": {\r\n    \"tag2\": \"value2\",\r\n    \"tag1\": \"value1\"\r\n  },\r\n  \"properties\": {\r\n    \"status\": \"Active\",\r\n    \"createdAt\": \"0001-01-01T00:00:00\",\r\n    \"enabled\": true,\r\n    \"critical\": false,\r\n    \"namespaceType\": \"NotificationHub\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "279"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.NotificationHubs.NotificationHubsManagementClient/0.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": null,\r\n  \"name\": null,\r\n  \"type\": null,\r\n  \"location\": \"South Central US\",\r\n  \"tags\": {\r\n    \"tag2\": \"value2\",\r\n    \"tag1\": \"value1\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Active\",\r\n    \"name\": \"Namespace-onesdk7059\",\r\n    \"region\": \"South Central US\",\r\n    \"status\": \"Active\",\r\n    \"enabled\": true,\r\n    \"critical\": false,\r\n    \"namespaceType\": \"NotificationHub\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "292"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "57120bf4-5650-4351-be71-09a37fd1f71a_M2_M2"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1195"
+        ],
+        "x-ms-correlation-request-id": [
+          "24740ae6-17b5-41ac-b9bc-eb38e331b451"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20151029T224844Z:24740ae6-17b5-41ac-b9bc-eb38e331b451"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Thu, 29 Oct 2015 22:48:44 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk8629/providers/Microsoft.NotificationHubs/namespaces?api-version=2014-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs4NjI5L3Byb3ZpZGVycy9NaWNyb3NvZnQuTm90aWZpY2F0aW9uSHVicy9uYW1lc3BhY2VzP2FwaS12ZXJzaW9uPTIwMTQtMDktMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.NotificationHubs.NotificationHubsManagementClient/0.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk8629/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk7059\",\r\n      \"name\": \"Namespace-onesdk7059\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-10-29T22:48:26.82Z\",\r\n        \"serviceBusEndpoint\": \"https://Namespace-onesdk7059.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2015-10-29T22:48:30.85Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "613"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "6400ba8f-8f75-420f-9fff-3bc2508ceacb_M3_M3"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14996"
+        ],
+        "x-ms-correlation-request-id": [
+          "58369ae9-9fba-4fa7-a0ec-0fb2e1397076"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20151029T224842Z:58369ae9-9fba-4fa7-a0ec-0fb2e1397076"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Thu, 29 Oct 2015 22:48:42 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/providers/Microsoft.NotificationHubs/namespaces?api-version=2014-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Byb3ZpZGVycy9NaWNyb3NvZnQuTm90aWZpY2F0aW9uSHVicy9uYW1lc3BhY2VzP2FwaS12ZXJzaW9uPTIwMTQtMDktMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.NotificationHubs.NotificationHubsManagementClient/0.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/Default-NotificationHubs-NorthCentralUS/providers/Microsoft.NotificationHubs/namespaces/TestNorthCentral\",\r\n      \"name\": \"TestNorthCentral\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"North Central US\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-10-12T19:28:03.69Z\",\r\n        \"serviceBusEndpoint\": \"https://TestNorthCentral.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2015-10-12T19:28:13.737Z\",\r\n        \"eventHubEnabled\": true,\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG2402/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace1535\",\r\n      \"name\": \"HydraNH-Namespace1535\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": {\r\n        \"tag1\": \"value1\",\r\n        \"tag2\": \"value2\",\r\n        \"tag3\": \"value3\",\r\n        \"tag4\": \"value4\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-09T00:11:59.727Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace1535.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": true,\r\n        \"updatedAt\": \"2015-08-09T00:12:13.233Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups//providers/Microsoft.NotificationHubs/namespaces/prod-6-2-bl2-SBAC2-1\",\r\n      \"name\": \"prod-6-2-bl2-SBAC2-1\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"East US\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2012-06-03T02:47:54.277Z\",\r\n        \"serviceBusEndpoint\": \"https://prod-6-2-bl2-SBAC2-1.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2012-06-03T02:58:56.033Z\",\r\n        \"createACSNamespace\": true,\r\n        \"namespaceType\": \"Messaging\",\r\n        \"messagingSku\": 2\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk9142/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk7590\",\r\n      \"name\": \"Namespace-onesdk7590\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-10-09T23:34:36.313Z\",\r\n        \"serviceBusEndpoint\": \"https://Namespace-onesdk7590.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2015-10-09T23:34:39.44Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG7453/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace6913\",\r\n      \"name\": \"HydraNH-Namespace6913\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": {\r\n        \"tag1\": \"value1\",\r\n        \"tag2\": \"value2\",\r\n        \"tag3\": \"value3\",\r\n        \"tag4\": \"value4\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-11T20:54:40.73Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace6913.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": true,\r\n        \"updatedAt\": \"2015-08-11T20:54:48.26Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG1571/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace687\",\r\n      \"name\": \"HydraNH-Namespace687\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-10T19:30:03.337Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace687.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2015-08-10T19:30:04.823Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG3605/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace2992\",\r\n      \"name\": \"HydraNH-Namespace2992\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": {\r\n        \"tag1\": \"value1\",\r\n        \"tag2\": \"value2\",\r\n        \"tag3\": \"value3\",\r\n        \"tag4\": \"value4\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-07T22:55:53.537Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace2992.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": true,\r\n        \"updatedAt\": \"2015-08-07T22:56:06.76Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG3856/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7885\",\r\n      \"name\": \"HydraNH-Namespace7885\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": {\r\n        \"tag1\": \"value1\",\r\n        \"tag2\": \"value2\",\r\n        \"tag3\": \"value3\",\r\n        \"tag4\": \"value4\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-07T22:57:15.08Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace7885.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": true,\r\n        \"updatedAt\": \"2015-08-07T22:57:28.83Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5215/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace3270\",\r\n      \"name\": \"HydraNH-Namespace3270\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-07T18:35:46.607Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace3270.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2015-08-07T18:35:50.3Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG3499/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace2455\",\r\n      \"name\": \"HydraNH-Namespace2455\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-08T00:14:49.95Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace2455.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2015-08-08T00:14:52.423Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG3800/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace2562\",\r\n      \"name\": \"HydraNH-Namespace2562\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-07T21:26:47.64Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace2562.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2015-08-07T21:26:50.423Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG3777/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace8871\",\r\n      \"name\": \"HydraNH-Namespace8871\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": {\r\n        \"tag1\": \"value1\",\r\n        \"tag2\": \"value2\",\r\n        \"tag3\": \"value3\",\r\n        \"tag4\": \"value4\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-07T21:57:04.503Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace8871.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": true,\r\n        \"updatedAt\": \"2015-08-07T21:57:20.38Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG6550/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7711\",\r\n      \"name\": \"HydraNH-Namespace7711\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": {\r\n        \"tag1\": \"value1\",\r\n        \"tag2\": \"value2\",\r\n        \"tag3\": \"value3\",\r\n        \"tag4\": \"value4\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-12T03:51:40.333Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace7711.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": true,\r\n        \"updatedAt\": \"2015-08-12T03:51:46.557Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups//providers/Microsoft.NotificationHubs/namespaces/CSM-SBTestInfra\",\r\n      \"name\": \"CSM-SBTestInfra\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2014-05-12T18:04:56.787Z\",\r\n        \"serviceBusEndpoint\": \"https://CSM-SBTestInfra.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2014-05-12T18:23:13.52Z\",\r\n        \"createACSNamespace\": true,\r\n        \"namespaceType\": \"Messaging\",\r\n        \"messagingSku\": 2\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG1341/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5206\",\r\n      \"name\": \"HydraNH-Namespace5206\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": {\r\n        \"tag1\": \"value1\",\r\n        \"tag2\": \"value2\",\r\n        \"tag3\": \"value3\",\r\n        \"tag4\": \"value4\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-07T22:04:15.74Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace5206.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": true,\r\n        \"updatedAt\": \"2015-08-07T22:04:28.87Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG6515/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace4809\",\r\n      \"name\": \"HydraNH-Namespace4809\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-07T23:42:49Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace4809.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2015-08-07T23:42:52.887Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG2906/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7137\",\r\n      \"name\": \"HydraNH-Namespace7137\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": {\r\n        \"tag1\": \"value1\",\r\n        \"tag2\": \"value2\",\r\n        \"tag3\": \"value3\",\r\n        \"tag4\": \"value4\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-11T17:42:44.45Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace7137.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": true,\r\n        \"updatedAt\": \"2015-08-11T17:42:54.713Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG9698/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7349\",\r\n      \"name\": \"HydraNH-Namespace7349\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": {\r\n        \"tag1\": \"value1\",\r\n        \"tag2\": \"value2\",\r\n        \"tag3\": \"value3\",\r\n        \"tag4\": \"value4\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-07T21:55:45.867Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace7349.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": true,\r\n        \"updatedAt\": \"2015-08-07T21:55:56.81Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG3653/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace4516\",\r\n      \"name\": \"HydraNH-Namespace4516\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-08T00:05:03.22Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace4516.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2015-08-08T00:05:04.53Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG3366/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace2320\",\r\n      \"name\": \"HydraNH-Namespace2320\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-07T21:10:33.943Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace2320.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2015-08-07T21:10:37.233Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk8629/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk7059\",\r\n      \"name\": \"Namespace-onesdk7059\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-10-29T22:48:26.82Z\",\r\n        \"serviceBusEndpoint\": \"https://Namespace-onesdk7059.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2015-10-29T22:48:30.85Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG3689/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace9627\",\r\n      \"name\": \"HydraNH-Namespace9627\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-08T00:19:22.523Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace9627.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2015-08-08T00:19:25.073Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG8221/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace6431\",\r\n      \"name\": \"HydraNH-Namespace6431\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-11T23:07:23.813Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace6431.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2015-08-11T23:07:26.96Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG4301/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5019\",\r\n      \"name\": \"HydraNH-Namespace5019\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": {\r\n        \"tag1\": \"value1\",\r\n        \"tag2\": \"value2\",\r\n        \"tag3\": \"value3\",\r\n        \"tag4\": \"value4\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-08T01:32:58.133Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace5019.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": true,\r\n        \"updatedAt\": \"2015-08-08T01:33:10.617Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5307/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5016\",\r\n      \"name\": \"HydraNH-Namespace5016\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": {\r\n        \"tag1\": \"value1\",\r\n        \"tag2\": \"value2\",\r\n        \"tag3\": \"value3\",\r\n        \"tag4\": \"value4\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-10T23:22:02.64Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace5016.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": true,\r\n        \"updatedAt\": \"2015-08-10T23:22:27.597Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5915/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7983\",\r\n      \"name\": \"HydraNH-Namespace7983\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-08T23:26:27.06Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace7983.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2015-08-08T23:26:29.313Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/111c36dc-4047-4c69-acd5-301072ff1fc2/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7143\",\r\n      \"name\": \"HydraNH-Namespace7143\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-07T23:55:03.03Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace7143.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2015-09-03T22:09:32.387Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG8335/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace251\",\r\n      \"name\": \"HydraNH-Namespace251\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": {\r\n        \"tag1\": \"value1\",\r\n        \"tag2\": \"value2\",\r\n        \"tag3\": \"value3\",\r\n        \"tag4\": \"value4\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-07T22:33:01.393Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace251.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": true,\r\n        \"updatedAt\": \"2015-08-07T22:33:13.69Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/Default-NotificationHubs-CentralUS/providers/Microsoft.NotificationHubs/namespaces/loctestns0004\",\r\n      \"name\": \"loctestns0004\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"Central US\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2014-10-21T18:30:52.017Z\",\r\n        \"serviceBusEndpoint\": \"https://loctestns0004.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2014-10-21T18:30:54.913Z\",\r\n        \"eventHubEnabled\": true,\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG6513/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace2610\",\r\n      \"name\": \"HydraNH-Namespace2610\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": {\r\n        \"tag1\": \"value1\",\r\n        \"tag2\": \"value2\",\r\n        \"tag3\": \"value3\",\r\n        \"tag4\": \"value4\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-07T22:51:43.667Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace2610.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": true,\r\n        \"updatedAt\": \"2015-08-07T22:51:56.793Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG6885/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace1729\",\r\n      \"name\": \"HydraNH-Namespace1729\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": {\r\n        \"tag1\": \"value1\",\r\n        \"tag2\": \"value2\",\r\n        \"tag3\": \"value3\",\r\n        \"tag4\": \"value4\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-07T22:46:43.05Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace1729.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": true,\r\n        \"updatedAt\": \"2015-08-07T22:46:56.523Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG8399/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace3669\",\r\n      \"name\": \"HydraNH-Namespace3669\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-07T18:45:14.04Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace3669.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2015-08-07T18:45:15.507Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG7444/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace9101\",\r\n      \"name\": \"HydraNH-Namespace9101\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-10T21:39:03.35Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace9101.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2015-08-10T21:39:05.49Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG1292/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace4418\",\r\n      \"name\": \"HydraNH-Namespace4418\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": {\r\n        \"tag1\": \"value1\",\r\n        \"tag2\": \"value2\",\r\n        \"tag3\": \"value3\",\r\n        \"tag4\": \"value4\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-10T22:46:16.21Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace4418.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": true,\r\n        \"updatedAt\": \"2015-08-10T22:46:31.107Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG9939/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace4260\",\r\n      \"name\": \"HydraNH-Namespace4260\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": {\r\n        \"tag1\": \"value1\",\r\n        \"tag2\": \"value2\",\r\n        \"tag3\": \"value3\",\r\n        \"tag4\": \"value4\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-07T21:54:47.87Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace4260.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": true,\r\n        \"updatedAt\": \"2015-08-07T21:55:03.113Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG6401/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace226\",\r\n      \"name\": \"HydraNH-Namespace226\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": {\r\n        \"tag1\": \"value1\",\r\n        \"tag2\": \"value2\",\r\n        \"tag3\": \"value3\",\r\n        \"tag4\": \"value4\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-11T21:01:54.48Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace226.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": true,\r\n        \"updatedAt\": \"2015-08-11T21:02:00.863Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG9292/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace6246\",\r\n      \"name\": \"HydraNH-Namespace6246\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": {\r\n        \"tag1\": \"value1\",\r\n        \"tag2\": \"value2\",\r\n        \"tag3\": \"value3\",\r\n        \"tag4\": \"value4\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-11T17:14:09.5Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace6246.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": true,\r\n        \"updatedAt\": \"2015-08-11T17:14:15.61Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5332/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5042\",\r\n      \"name\": \"HydraNH-Namespace5042\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": {\r\n        \"tag1\": \"value1\",\r\n        \"tag2\": \"value2\",\r\n        \"tag3\": \"value3\",\r\n        \"tag4\": \"value4\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-11T23:39:09.16Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace5042.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": true,\r\n        \"updatedAt\": \"2015-08-11T23:39:15.593Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk294/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk8283\",\r\n      \"name\": \"Namespace-onesdk8283\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-10-29T22:48:09.95Z\",\r\n        \"serviceBusEndpoint\": \"https://Namespace-onesdk8283.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2015-10-29T22:48:12.077Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG4393/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace8154\",\r\n      \"name\": \"HydraNH-Namespace8154\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-07T21:17:04.05Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace8154.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2015-08-07T21:17:05.917Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG3832/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace3788\",\r\n      \"name\": \"HydraNH-Namespace3788\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-07T23:23:39.56Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace3788.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2015-08-07T23:23:41.643Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG2329/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace1169\",\r\n      \"name\": \"HydraNH-Namespace1169\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": {\r\n        \"tag1\": \"value1\",\r\n        \"tag2\": \"value2\",\r\n        \"tag3\": \"value3\",\r\n        \"tag4\": \"value4\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-12T07:39:41.147Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace1169.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": true,\r\n        \"updatedAt\": \"2015-08-12T07:39:52.433Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG2740/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace3915\",\r\n      \"name\": \"HydraNH-Namespace3915\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": {\r\n        \"tag1\": \"value1\",\r\n        \"tag2\": \"value2\",\r\n        \"tag3\": \"value3\",\r\n        \"tag4\": \"value4\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-07T22:25:13.627Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace3915.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": true,\r\n        \"updatedAt\": \"2015-08-07T22:25:32.213Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk2096/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk6126\",\r\n      \"name\": \"Namespace-onesdk6126\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-10-09T23:44:30.683Z\",\r\n        \"serviceBusEndpoint\": \"https://Namespace-onesdk6126.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2015-10-09T23:44:36.167Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG502/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace89\",\r\n      \"name\": \"HydraNH-Namespace89\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": {\r\n        \"tag1\": \"value1\",\r\n        \"tag2\": \"value2\",\r\n        \"tag3\": \"value3\",\r\n        \"tag4\": \"value4\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-12T07:21:53.73Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace89.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": true,\r\n        \"updatedAt\": \"2015-08-12T07:21:59.83Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG3062/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace2376\",\r\n      \"name\": \"HydraNH-Namespace2376\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-08T00:36:32.113Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace2376.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2015-08-08T00:36:34.547Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG2082/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace8262\",\r\n      \"name\": \"HydraNH-Namespace8262\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": {\r\n        \"tag1\": \"value1\",\r\n        \"tag2\": \"value2\",\r\n        \"tag3\": \"value3\",\r\n        \"tag4\": \"value4\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-12T03:41:20.96Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace8262.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": true,\r\n        \"updatedAt\": \"2015-08-12T03:41:27.067Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG6304/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace2465\",\r\n      \"name\": \"HydraNH-Namespace2465\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": {\r\n        \"tag1\": \"value1\",\r\n        \"tag2\": \"value2\",\r\n        \"tag3\": \"value3\",\r\n        \"tag4\": \"value4\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-07T23:02:54.267Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace2465.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": true,\r\n        \"updatedAt\": \"2015-08-07T23:03:06.707Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG5492/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace1927\",\r\n      \"name\": \"HydraNH-Namespace1927\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": {\r\n        \"tag1\": \"value1\",\r\n        \"tag2\": \"value2\",\r\n        \"tag3\": \"value3\",\r\n        \"tag4\": \"value4\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-07T23:04:54.09Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace1927.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": true,\r\n        \"updatedAt\": \"2015-08-07T23:05:08.22Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG9144/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace2745\",\r\n      \"name\": \"HydraNH-Namespace2745\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": {\r\n        \"tag1\": \"value1\",\r\n        \"tag2\": \"value2\",\r\n        \"tag3\": \"value3\",\r\n        \"tag4\": \"value4\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-07T22:20:20.967Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace2745.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": true,\r\n        \"updatedAt\": \"2015-08-07T22:20:36.853Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG2780/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace6970\",\r\n      \"name\": \"HydraNH-Namespace6970\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": {\r\n        \"tag1\": \"value1\",\r\n        \"tag2\": \"value2\",\r\n        \"tag3\": \"value3\",\r\n        \"tag4\": \"value4\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-07T22:18:08.26Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace6970.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": true,\r\n        \"updatedAt\": \"2015-08-07T22:18:23.5Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG1024/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace1652\",\r\n      \"name\": \"HydraNH-Namespace1652\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": {\r\n        \"tag1\": \"value1\",\r\n        \"tag2\": \"value2\",\r\n        \"tag3\": \"value3\",\r\n        \"tag4\": \"value4\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-07T22:06:45.87Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace1652.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": true,\r\n        \"updatedAt\": \"2015-08-07T22:07:03.36Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/TestRG-123/providers/Microsoft.NotificationHubs/namespaces/NS-11fd83cf-97a2-4ab6-8a13-c7ba10255e63\",\r\n      \"name\": \"NS-11fd83cf-97a2-4ab6-8a13-c7ba10255e63\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"East US\",\r\n      \"tags\": {\r\n        \"test\": \"namespace\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-03-12T23:08:14.88Z\",\r\n        \"serviceBusEndpoint\": \"https://NS-11fd83cf-97a2-4ab6-8a13-c7ba10255e63.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2015-03-12T23:08:17.447Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG7797/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace1339\",\r\n      \"name\": \"HydraNH-Namespace1339\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": {\r\n        \"tag1\": \"value1\",\r\n        \"tag2\": \"value2\",\r\n        \"tag3\": \"value3\",\r\n        \"tag4\": \"value4\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-10T23:29:57.37Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace1339.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": true,\r\n        \"updatedAt\": \"2015-08-10T23:30:09.187Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG2239/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace8768\",\r\n      \"name\": \"HydraNH-Namespace8768\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-09T00:48:57.073Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace8768.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2015-08-09T00:48:59.56Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG1763/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5892\",\r\n      \"name\": \"HydraNH-Namespace5892\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": {\r\n        \"tag1\": \"value1\",\r\n        \"tag2\": \"value2\",\r\n        \"tag3\": \"value3\",\r\n        \"tag4\": \"value4\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-11T19:20:44.62Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace5892.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": true,\r\n        \"updatedAt\": \"2015-08-11T19:20:51.1Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG7053/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace7393\",\r\n      \"name\": \"HydraNH-Namespace7393\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": {\r\n        \"tag1\": \"value1\",\r\n        \"tag2\": \"value2\",\r\n        \"tag3\": \"value3\",\r\n        \"tag4\": \"value4\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-07T23:01:16.977Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace7393.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": true,\r\n        \"updatedAt\": \"2015-08-07T23:01:29.83Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG8946/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace921\",\r\n      \"name\": \"HydraNH-Namespace921\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-10T19:19:00.23Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace921.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2015-08-10T19:19:04.583Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/Default-NotificationHubs-WestUS/providers/Microsoft.NotificationHubs/namespaces/TestNHWestUS\",\r\n      \"name\": \"TestNHWestUS\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"West US\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-10-12T19:28:37.073Z\",\r\n        \"serviceBusEndpoint\": \"https://TestNHWestUS.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2015-10-12T19:28:40.393Z\",\r\n        \"eventHubEnabled\": true,\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG500/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace5264\",\r\n      \"name\": \"HydraNH-Namespace5264\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": {\r\n        \"tag1\": \"value1\",\r\n        \"tag2\": \"value2\",\r\n        \"tag3\": \"value3\",\r\n        \"tag4\": \"value4\"\r\n      },\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-08T22:27:48.503Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace5264.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": true,\r\n        \"updatedAt\": \"2015-08-08T22:28:01.393Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/NotificationHub-RG7806/providers/Microsoft.NotificationHubs/namespaces/HydraNH-Namespace265\",\r\n      \"name\": \"HydraNH-Namespace265\",\r\n      \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n      \"location\": \"South Central US\",\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"createdAt\": \"2015-08-11T16:59:55.577Z\",\r\n        \"serviceBusEndpoint\": \"https://HydraNH-Namespace265.servicebus.windows.net:443/\",\r\n        \"enabled\": true,\r\n        \"critical\": false,\r\n        \"updatedAt\": \"2015-08-11T16:59:58.427Z\",\r\n        \"namespaceType\": \"NotificationHub\",\r\n        \"messagingSku\": 1\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "38179"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "967c00d3-ebed-40de-9dec-88977d9b5fb1_M3_M3"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14995"
+        ],
+        "x-ms-correlation-request-id": [
+          "d60a0222-4667-4d8e-ab62-677f1cb22bfb"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20151029T224843Z:d60a0222-4667-4d8e-ab62-677f1cb22bfb"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Thu, 29 Oct 2015 22:48:43 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk8629/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk7059?api-version=2014-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs4NjI5L3Byb3ZpZGVycy9NaWNyb3NvZnQuTm90aWZpY2F0aW9uSHVicy9uYW1lc3BhY2VzL05hbWVzcGFjZS1vbmVzZGs3MDU5P2FwaS12ZXJzaW9uPTIwMTQtMDktMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.NotificationHubs.NotificationHubsManagementClient/0.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk8629/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk7059\",\r\n  \"name\": \"Namespace-onesdk7059\",\r\n  \"type\": \"Microsoft.NotificationHubs/namespaces\",\r\n  \"location\": \"South Central US\",\r\n  \"tags\": {\r\n    \"tag2\": \"value2\",\r\n    \"tag1\": \"value1\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"status\": \"Active\",\r\n    \"createdAt\": \"2015-10-29T22:48:26.82Z\",\r\n    \"serviceBusEndpoint\": \"https://Namespace-onesdk7059.servicebus.windows.net:443/\",\r\n    \"enabled\": true,\r\n    \"critical\": false,\r\n    \"updatedAt\": \"2015-10-29T22:48:43.863Z\",\r\n    \"namespaceType\": \"NotificationHub\",\r\n    \"messagingSku\": 1\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "615"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "334b6f8c-14bb-40b9-b371-d4cc26afe1f3_M2_M2"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14994"
+        ],
+        "x-ms-correlation-request-id": [
+          "68056ca9-7b51-4a4e-8fed-f8c5f492d5eb"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20151029T224900Z:68056ca9-7b51-4a4e-8fed-f8c5f492d5eb"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Thu, 29 Oct 2015 22:48:59 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk8629/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk7059?api-version=2014-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs4NjI5L3Byb3ZpZGVycy9NaWNyb3NvZnQuTm90aWZpY2F0aW9uSHVicy9uYW1lc3BhY2VzL05hbWVzcGFjZS1vbmVzZGs3MDU5P2FwaS12ZXJzaW9uPTIwMTQtMDktMDE=",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.NotificationHubs.NotificationHubsManagementClient/0.9.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "a6679f87-24d9-4f4e-bdf5-810d88fa82f2_M2_M2"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk8629/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk7059/operationresults/Namespace-onesdk7059?api-version=2014-09-01"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1194"
+        ],
+        "x-ms-correlation-request-id": [
+          "9b7fdcb9-3e46-4ddf-8b7e-a8ea540f8a59"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20151029T224903Z:9b7fdcb9-3e46-4ddf-8b7e-a8ea540f8a59"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Thu, 29 Oct 2015 22:49:03 GMT"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk8629/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk7059/operationresults/Namespace-onesdk7059?api-version=2014-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs4NjI5L3Byb3ZpZGVycy9NaWNyb3NvZnQuTm90aWZpY2F0aW9uSHVicy9uYW1lc3BhY2VzL05hbWVzcGFjZS1vbmVzZGs3MDU5L29wZXJhdGlvbnJlc3VsdHMvTmFtZXNwYWNlLW9uZXNkazcwNTk/YXBpLXZlcnNpb249MjAxNC0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-09-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.NotificationHubs.NotificationHubsManagementClient/0.9.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "075e4a4f-8c7b-40c7-a3d2-0741bf58b9ef_M2_M2"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk8629/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk7059/operationresults/Namespace-onesdk7059?api-version=2014-09-01"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14993"
+        ],
+        "x-ms-correlation-request-id": [
+          "60053ead-7d32-4ddd-bba3-1345d281722b"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20151029T224903Z:60053ead-7d32-4ddd-bba3-1345d281722b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Thu, 29 Oct 2015 22:49:03 GMT"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk8629/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk7059/operationresults/Namespace-onesdk7059?api-version=2014-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs4NjI5L3Byb3ZpZGVycy9NaWNyb3NvZnQuTm90aWZpY2F0aW9uSHVicy9uYW1lc3BhY2VzL05hbWVzcGFjZS1vbmVzZGs3MDU5L29wZXJhdGlvbnJlc3VsdHMvTmFtZXNwYWNlLW9uZXNkazcwNTk/YXBpLXZlcnNpb249MjAxNC0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-09-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.NotificationHubs.NotificationHubsManagementClient/0.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.NotificationHubs/namespaces/Namespace-onesdk7059' under resource group 'RGName-onesdk8629' was not found.\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "179"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "8f752917-8c26-42d5-a271-ad548e11d426"
+        ],
+        "x-ms-correlation-request-id": [
+          "8f752917-8c26-42d5-a271-ad548e11d426"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20151029T225003Z:8f752917-8c26-42d5-a271-ad548e11d426"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 29 Oct 2015 22:50:03 GMT"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk294/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk8283?api-version=2014-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGsyOTQvcHJvdmlkZXJzL01pY3Jvc29mdC5Ob3RpZmljYXRpb25IdWJzL25hbWVzcGFjZXMvTmFtZXNwYWNlLW9uZXNkazgyODM/YXBpLXZlcnNpb249MjAxNC0wOS0wMQ==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.NotificationHubs.NotificationHubsManagementClient/0.9.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "e4fa4671-c979-45b1-a7d8-5414cc4f8aac_M2_M2"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk294/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk8283/operationresults/Namespace-onesdk8283?api-version=2014-09-01"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1193"
+        ],
+        "x-ms-correlation-request-id": [
+          "6b0f8b5e-e4e7-4b89-ae83-036c5f2d9d78"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20151029T225004Z:6b0f8b5e-e4e7-4b89-ae83-036c5f2d9d78"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Thu, 29 Oct 2015 22:50:04 GMT"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk294/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk8283/operationresults/Namespace-onesdk8283?api-version=2014-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGsyOTQvcHJvdmlkZXJzL01pY3Jvc29mdC5Ob3RpZmljYXRpb25IdWJzL25hbWVzcGFjZXMvTmFtZXNwYWNlLW9uZXNkazgyODMvb3BlcmF0aW9ucmVzdWx0cy9OYW1lc3BhY2Utb25lc2RrODI4Mz9hcGktdmVyc2lvbj0yMDE0LTA5LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-09-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.NotificationHubs.NotificationHubsManagementClient/0.9.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "bec522e4-5a88-486b-9ef6-67f12dfba172_M2_M2"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk294/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk8283/operationresults/Namespace-onesdk8283?api-version=2014-09-01"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14991"
+        ],
+        "x-ms-correlation-request-id": [
+          "a67b90f4-ae22-4014-b6ec-889af2de965b"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20151029T225004Z:a67b90f4-ae22-4014-b6ec-889af2de965b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Thu, 29 Oct 2015 22:50:04 GMT"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourceGroups/RGName-onesdk294/providers/Microsoft.NotificationHubs/namespaces/Namespace-onesdk8283/operationresults/Namespace-onesdk8283?api-version=2014-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGsyOTQvcHJvdmlkZXJzL01pY3Jvc29mdC5Ob3RpZmljYXRpb25IdWJzL25hbWVzcGFjZXMvTmFtZXNwYWNlLW9uZXNkazgyODMvb3BlcmF0aW9ucmVzdWx0cy9OYW1lc3BhY2Utb25lc2RrODI4Mz9hcGktdmVyc2lvbj0yMDE0LTA5LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-09-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.NotificationHubs.NotificationHubsManagementClient/0.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.NotificationHubs/namespaces/Namespace-onesdk8283' under resource group 'RGName-onesdk294' was not found.\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "178"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "cae975b3-995b-4988-b833-56fda5e08dc7"
+        ],
+        "x-ms-correlation-request-id": [
+          "cae975b3-995b-4988-b833-56fda5e08dc7"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20151029T225104Z:cae975b3-995b-4988-b833-56fda5e08dc7"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 29 Oct 2015 22:51:04 GMT"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourcegroups/RGName-onesdk294?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlZ3JvdXBzL1JHTmFtZS1vbmVzZGsyOTQ/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1164"
+        ],
+        "x-ms-request-id": [
+          "00ef4dec-ab68-4faa-9eb5-1a525a8b18d8"
+        ],
+        "x-ms-correlation-request-id": [
+          "00ef4dec-ab68-4faa-9eb5-1a525a8b18d8"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20151029T225106Z:00ef4dec-ab68-4faa-9eb5-1a525a8b18d8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 29 Oct 2015 22:51:06 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREsyOTQtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2014-04-01-preview"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREsyOTQtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFTUjA1QlRVVTZNa1JQVGtWVFJFc3lPVFF0VTA5VlZFaERSVTVVVWtGTVZWTWlMQ0pxYjJKTWIyTmhkR2x2YmlJNkluTnZkWFJvWTJWdWRISmhiSFZ6SW4wP2FwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-04-01-preview"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14973"
+        ],
+        "x-ms-request-id": [
+          "c7d717e2-7afc-4d69-9fee-c383474fb6bf"
+        ],
+        "x-ms-correlation-request-id": [
+          "c7d717e2-7afc-4d69-9fee-c383474fb6bf"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20151029T225107Z:c7d717e2-7afc-4d69-9fee-c383474fb6bf"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 29 Oct 2015 22:51:06 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREsyOTQtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2014-04-01-preview"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREsyOTQtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFTUjA1QlRVVTZNa1JQVGtWVFJFc3lPVFF0VTA5VlZFaERSVTVVVWtGTVZWTWlMQ0pxYjJKTWIyTmhkR2x2YmlJNkluTnZkWFJvWTJWdWRISmhiSFZ6SW4wP2FwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-04-01-preview"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14972"
+        ],
+        "x-ms-request-id": [
+          "7ee35288-aae7-4f49-8d80-72d0ab2c1028"
+        ],
+        "x-ms-correlation-request-id": [
+          "7ee35288-aae7-4f49-8d80-72d0ab2c1028"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20151029T225122Z:7ee35288-aae7-4f49-8d80-72d0ab2c1028"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 29 Oct 2015 22:51:21 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREsyOTQtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2014-04-01-preview"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREsyOTQtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFTUjA1QlRVVTZNa1JQVGtWVFJFc3lPVFF0VTA5VlZFaERSVTVVVWtGTVZWTWlMQ0pxYjJKTWIyTmhkR2x2YmlJNkluTnZkWFJvWTJWdWRISmhiSFZ6SW4wP2FwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-04-01-preview"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14971"
+        ],
+        "x-ms-request-id": [
+          "733798ca-fd71-4196-8e2b-ee85ee0fa6ff"
+        ],
+        "x-ms-correlation-request-id": [
+          "733798ca-fd71-4196-8e2b-ee85ee0fa6ff"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20151029T225137Z:733798ca-fd71-4196-8e2b-ee85ee0fa6ff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 29 Oct 2015 22:51:37 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREsyOTQtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2014-04-01-preview"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREsyOTQtU09VVEhDRU5UUkFMVVMiLCJqb2JMb2NhdGlvbiI6InNvdXRoY2VudHJhbHVzIn0?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFTUjA1QlRVVTZNa1JQVGtWVFJFc3lPVFF0VTA5VlZFaERSVTVVVWtGTVZWTWlMQ0pxYjJKTWIyTmhkR2x2YmlJNkluTnZkWFJvWTJWdWRISmhiSFZ6SW4wP2FwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-04-01-preview"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14970"
+        ],
+        "x-ms-request-id": [
+          "fadcd30c-203c-494c-a4b9-465b70d3b94d"
+        ],
+        "x-ms-correlation-request-id": [
+          "fadcd30c-203c-494c-a4b9-465b70d3b94d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20151029T225152Z:fadcd30c-203c-494c-a4b9-465b70d3b94d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 29 Oct 2015 22:51:51 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/resourcegroups/RGName-onesdk8629?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL3Jlc291cmNlZ3JvdXBzL1JHTmFtZS1vbmVzZGs4NjI5P2FwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1163"
+        ],
+        "x-ms-request-id": [
+          "c11ce3c7-7899-47bc-9a56-a813f828d075"
+        ],
+        "x-ms-correlation-request-id": [
+          "c11ce3c7-7899-47bc-9a56-a813f828d075"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20151029T225153Z:c11ce3c7-7899-47bc-9a56-a813f828d075"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 29 Oct 2015 22:51:52 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREs4NjI5LVNPVVRIQ0VOVFJBTFVTIiwiam9iTG9jYXRpb24iOiJzb3V0aGNlbnRyYWx1cyJ9?api-version=2014-04-01-preview"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREs4NjI5LVNPVVRIQ0VOVFJBTFVTIiwiam9iTG9jYXRpb24iOiJzb3V0aGNlbnRyYWx1cyJ9?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFTUjA1QlRVVTZNa1JQVGtWVFJFczROakk1TFZOUFZWUklRMFZPVkZKQlRGVlRJaXdpYW05aVRHOWpZWFJwYjI0aU9pSnpiM1YwYUdObGJuUnlZV3gxY3lKOT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-04-01-preview"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14968"
+        ],
+        "x-ms-request-id": [
+          "0806fcd1-5cc1-42d9-8af5-a27cfcfd3f0f"
+        ],
+        "x-ms-correlation-request-id": [
+          "0806fcd1-5cc1-42d9-8af5-a27cfcfd3f0f"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20151029T225153Z:0806fcd1-5cc1-42d9-8af5-a27cfcfd3f0f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 29 Oct 2015 22:51:52 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREs4NjI5LVNPVVRIQ0VOVFJBTFVTIiwiam9iTG9jYXRpb24iOiJzb3V0aGNlbnRyYWx1cyJ9?api-version=2014-04-01-preview"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREs4NjI5LVNPVVRIQ0VOVFJBTFVTIiwiam9iTG9jYXRpb24iOiJzb3V0aGNlbnRyYWx1cyJ9?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFTUjA1QlRVVTZNa1JQVGtWVFJFczROakk1TFZOUFZWUklRMFZPVkZKQlRGVlRJaXdpYW05aVRHOWpZWFJwYjI0aU9pSnpiM1YwYUdObGJuUnlZV3gxY3lKOT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-04-01-preview"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14967"
+        ],
+        "x-ms-request-id": [
+          "e28c5cb0-9ef3-4c79-905a-4877b05f3c02"
+        ],
+        "x-ms-correlation-request-id": [
+          "e28c5cb0-9ef3-4c79-905a-4877b05f3c02"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20151029T225208Z:e28c5cb0-9ef3-4c79-905a-4877b05f3c02"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 29 Oct 2015 22:52:07 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREs4NjI5LVNPVVRIQ0VOVFJBTFVTIiwiam9iTG9jYXRpb24iOiJzb3V0aGNlbnRyYWx1cyJ9?api-version=2014-04-01-preview"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREs4NjI5LVNPVVRIQ0VOVFJBTFVTIiwiam9iTG9jYXRpb24iOiJzb3V0aGNlbnRyYWx1cyJ9?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFTUjA1QlRVVTZNa1JQVGtWVFJFczROakk1TFZOUFZWUklRMFZPVkZKQlRGVlRJaXdpYW05aVRHOWpZWFJwYjI0aU9pSnpiM1YwYUdObGJuUnlZV3gxY3lKOT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-04-01-preview"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14966"
+        ],
+        "x-ms-request-id": [
+          "b4b2a44c-293e-4463-81a3-10adbf2323b4"
+        ],
+        "x-ms-correlation-request-id": [
+          "b4b2a44c-293e-4463-81a3-10adbf2323b4"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20151029T225223Z:b4b2a44c-293e-4463-81a3-10adbf2323b4"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 29 Oct 2015 22:52:22 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREs4NjI5LVNPVVRIQ0VOVFJBTFVTIiwiam9iTG9jYXRpb24iOiJzb3V0aGNlbnRyYWx1cyJ9?api-version=2014-04-01-preview"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/111c36dc-4047-4c69-acd5-301072ff1fc2/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1SR05BTUU6MkRPTkVTREs4NjI5LVNPVVRIQ0VOVFJBTFVTIiwiam9iTG9jYXRpb24iOiJzb3V0aGNlbnRyYWx1cyJ9?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTExYzM2ZGMtNDA0Ny00YzY5LWFjZDUtMzAxMDcyZmYxZmMyL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFTUjA1QlRVVTZNa1JQVGtWVFJFczROakk1TFZOUFZWUklRMFZPVkZKQlRGVlRJaXdpYW05aVRHOWpZWFJwYjI0aU9pSnpiM1YwYUdObGJuUnlZV3gxY3lKOT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-04-01-preview"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14965"
+        ],
+        "x-ms-request-id": [
+          "3d4235be-60d6-403f-98b0-36538db2f054"
+        ],
+        "x-ms-correlation-request-id": [
+          "3d4235be-60d6-403f-98b0-36538db2f054"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20151029T225238Z:3d4235be-60d6-403f-98b0-36538db2f054"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 29 Oct 2015 22:52:38 GMT"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "Test-CRUDNamespace": [
+      "onesdk294",
+      "onesdk8283",
+      "onesdk8629",
+      "onesdk7059"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "111c36dc-4047-4c69-acd5-301072ff1fc2"
+  }
+}

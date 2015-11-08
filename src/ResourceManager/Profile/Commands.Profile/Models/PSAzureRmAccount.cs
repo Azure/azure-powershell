@@ -52,6 +52,11 @@ namespace Microsoft.Azure.Commands.Profile.Models
                 result.Tenants = account.GetProperty(AzureAccount.Property.Tenants);
             }
 
+            if (account.IsPropertySet(AzureAccount.Property.CertificateThumbprint))
+            {
+                result.CertificateThumbprint = account.GetProperty(AzureAccount.Property.CertificateThumbprint);
+            }
+
            return result;
         }
 
@@ -87,6 +92,10 @@ namespace Microsoft.Azure.Commands.Profile.Models
                 result.SetProperty(AzureAccount.Property.Tenants, account.Tenants);
             }
 
+            if (!string.IsNullOrWhiteSpace(account.CertificateThumbprint))
+            {
+                result.SetProperty(AzureAccount.Property.CertificateThumbprint, account.CertificateThumbprint);
+            }
             return result;
         }
 
@@ -108,6 +117,11 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// The access token for the account (if any)
         /// </summary>
         public string AccessToken { get; set; }
+
+        /// <summary>
+        /// Gets or sets Thumbprint for associated certificate
+        /// </summary>
+        public string CertificateThumbprint { get; set; }
 
         public override string ToString()
         {

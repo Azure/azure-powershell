@@ -186,5 +186,33 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.Equal(cmdlt.TenantId, AzureRmProfileProvider.Instance.Profile.Context.Tenant.Id.ToString());
             Assert.Null(AzureRmProfileProvider.Instance.Profile.Context.Subscription);
         }
+
+        [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        public void LoginWithRbacSPNAndCertificateOnly()
+        {
+            var cmdlt = new AddAzureRMAccountCommand();
+            // Setup
+            // NOTE: Use rbac SPN credentials for this test case
+            cmdlt.CommandRuntime = commandRuntimeMock;
+            cmdlt.ServicePrincipal = true;
+            cmdlt.TenantId = "1449d5b7-8a83-47db-ae4c-9b03e888bad0";
+            cmdlt.ApplicationId = "20c58db7-4501-44e8-8e76-6febdb400c6b";
+            cmdlt.CertificateThumbprint = "F064B7C7EACC942D10662A5115E047E94FA18498";
+
+            // Act
+            cmdlt.InvokeBeginProcessing();
+            cmdlt.ExecuteCmdlet();
+            cmdlt.InvokeEndProcessing();
+
+            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context);
+            Assert.Equal(cmdlt.TenantId, AzureRmProfileProvider.Instance.Profile.Context.Tenant.Id.ToString());
+            Assert.Equal(cmdlt.ApplicationId, AzureRmProfileProvider.Instance.Profile.Context.Account.Id.ToString());
+            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context.Subscription);
+            Assert.Equal(
+                cmdlt.CertificateThumbprint,
+                AzureRmProfileProvider.Instance.Profile.Context.Account.GetProperty(AzureAccount.Property.CertificateThumbprint));
+            
+        }
     }
 }

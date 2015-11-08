@@ -109,9 +109,10 @@ namespace Microsoft.Azure.Commands.Profile
         protected override void ProcessRecord()
         {
             var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
-
-
-            if ((Name == "AzureCloud") || (Name == "AzureChinaCloud"))
+            
+            if ((Name == "AzureCloud") || 
+                (Name == "AzureChinaCloud") ||
+                (Name == "AzureUSGovernment"))
             {
                 throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture,
                     "Cannot change built-in environment {0}.", Name));
