@@ -20,14 +20,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
     public class DataMaskingTests : SqlTestsBase
     {
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.BVT)]
-        public void TestDatabaseDataMaskingPolicyEnablementToggling()
-        {
-            RunPowerShellTest("Test-DatabaseDataMaskingPolicyEnablementToggling");
-        }
-
         [Fact]
         [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestDatabaseDataMaskingPrivilegedLoginsChanges()
