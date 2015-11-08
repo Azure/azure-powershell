@@ -6,12 +6,12 @@
     using System.Linq;
     using System.Net;
     using System.Xml.Linq;
+    using Azure.Management.ApiManagement;
     using Microsoft.Azure.Management.ApiManagement.Models;
     using Microsoft.Azure.Management.Resources;
     using Microsoft.Azure.Management.Resources.Models;
     using Microsoft.Azure.Test;
     using Microsoft.WindowsAzure.Management;
-    using Azure.Management.ApiManagement;
 
     public class TestsFixture : TestBase
     {

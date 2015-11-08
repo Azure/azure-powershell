@@ -50,6 +50,13 @@
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>SubscriptionName</maml:name>
+          <maml:description>
+            <maml:para>If provided, determines the subscription name that will be targeted by default after log in.  If this parameter is not provided, the first listed subscription will be targeted.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>InformationAction</maml:name>
           <maml:description>
             <maml:para />
@@ -76,7 +83,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Credential</maml:name>
           <maml:description>
-            <maml:para>Securely provide the user id and password for Organization Id credentials or the Application Id and Secret for Service Principal credentials. The provided credentials will be sued to acquire tokens for authenticating ARM cmdlets with Azure.</maml:para>
+            <maml:para>Securely provide the user id and password for Organization Id credentials or the Application Id and Secret for Service Principal credentials. The provided credentials will be used to acquire tokens for authenticating ARM cmdlets with Azure.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
         </command:parameter>
@@ -98,6 +105,79 @@
           <maml:name>SubscriptionId</maml:name>
           <maml:description>
             <maml:para>If provided, determines the subscription that will be targeted by default after log in.  If this parameter is not provided, the first listed subscription will be targeted.  </maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>SubscriptionName</maml:name>
+          <maml:description>
+            <maml:para>If provided, determines the subscription name that will be targeted by default after log in.  If this parameter is not provided, the first listed subscription will be targeted.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>InformationAction</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>InformationVariable</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Add-AzureRmAccount</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Environment</maml:name>
+          <maml:description>
+            <maml:para>The name of the Azure environment to authenticate with.  Built-in environments include AzureCloud (the default setting) and AzureChinaCloud for access to Azure China.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">AzureEnvironment</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>CertificateThumbprint</maml:name>
+          <maml:description>
+            <maml:para>When provided, indicates which certificate thumbprint to use for ServicePrincipal authentication.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>ApplicationId</maml:name>
+          <maml:description>
+            <maml:para>ClientId of the application which will be used for ServicePrincipal authentication.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>ServicePrincipal</maml:name>
+          <maml:description>
+            <maml:para>When provided, indicates that service principal credentials will be provided via the Credential parameter and the Tenant containing the given Service Principal will be provided in the TenantId parameter.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>TenantId</maml:name>
+          <maml:description>
+            <maml:para>If provided, limit authentication to only the provided tenant.  This parameter is required for authentication as a service principal.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>SubscriptionId</maml:name>
+          <maml:description>
+            <maml:para>If provided, determines the subscription that will be targeted by default after log in.  If this parameter is not provided, the first listed subscription will be targeted.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>SubscriptionName</maml:name>
+          <maml:description>
+            <maml:para>If provided, determines the subscription name that will be targeted by default after log in.  If this parameter is not provided, the first listed subscription will be targeted.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -139,10 +219,24 @@
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>AccountId</maml:name>
+          <maml:description>
+            <maml:para>When provided, indicates account Id for access token.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>SubscriptionId</maml:name>
           <maml:description>
             <maml:para>If provided, determines the subscription that will be targeted by default after log in.  If this parameter is not provided, the first listed subscription will be targeted.  </maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>SubscriptionName</maml:name>
+          <maml:description>
+            <maml:para>If provided, determines the subscription name that will be targeted by default after log in.  If this parameter is not provided, the first listed subscription will be targeted.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -212,6 +306,18 @@
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>SubscriptionName</maml:name>
+        <maml:description>
+          <maml:para>If provided, determines the subscription name that will be targeted by default after log in.  If this parameter is not provided, the first listed subscription will be targeted.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>InformationAction</maml:name>
         <maml:description>
           <maml:para />
@@ -250,6 +356,30 @@
         <dev:defaultValue>Common</dev:defaultValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>CertificateThumbprint</maml:name>
+        <maml:description>
+          <maml:para>When provided, indicates which certificate thumbprint to use for ServicePrincipal authentication.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ApplicationId</maml:name>
+        <maml:description>
+          <maml:para>ClientId of the application which will be used for ServicePrincipal authentication.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>AccessToken</maml:name>
         <maml:description>
           <maml:para>When provided, indicates that authentication with Azure Resource Manager should use the given access token.</maml:para>
@@ -260,6 +390,18 @@
           <maml:uri />
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>AccountId</maml:name>
+        <maml:description>
+          <maml:para>When provided, indicates account Id for access token.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
       </command:parameter>
     </command:parameters>
     <command:inputTypes>
@@ -365,7 +507,7 @@ Add-AzureRmAccount -Credential $credential -TenantId xxxx-xxxx-xxxx-xxxx -Servic
           <maml:para>Account: xxxx-xxxx-xxxx-xxxx
 Environment: AzureCloud
 Subscription: yyyy-yyyy-yyyy-yyyy
-Tenant: zzzz-zzzz-zzzz-zzzz</maml:para>
+TenantId: zzzz-zzzz-zzzz-zzzz</maml:para>
         </dev:remarks>
         <command:commandLines>
           <command:commandLine>
@@ -1235,13 +1377,6 @@ TenantId: xxxx-xxxx-xxxx-xxxx</maml:para>
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>Get-AzureRmSubscription</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>All</maml:name>
-          <maml:description>
-            <maml:para>If Provided, lists subscription details for all subscriptions in all tenants authorized for the current account.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>InformationAction</maml:name>
           <maml:description>
@@ -1324,19 +1459,6 @@ TenantId: xxxx-xxxx-xxxx-xxxx</maml:para>
         <dev:defaultValue>
         </dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>All</maml:name>
-        <maml:description>
-          <maml:para>If Provided, lists subscription details for all subscriptions in all tenants authorized for the current account.</maml:para>
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        <dev:type>
-          <maml:name>SwitchParameter</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
     </command:parameters>
     <command:inputTypes>
       <command:inputType>
@@ -1384,7 +1506,7 @@ TenantId: xxxx-xxxx-xxxx-xxxx</maml:para>
         <maml:introduction>
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
-        <dev:code>Get-AzureRmSubscription -All</dev:code>
+        <dev:code>Get-AzureRmSubscription</dev:code>
         <dev:remarks>
           <maml:para>List all subscriptions in all tenants that are authorized for the current account.</maml:para>
           <maml:para />
@@ -1409,32 +1531,6 @@ Subscription Name: Contoso Subscription 1</maml:para>
         <dev:code>Get-AzureRmSubscription -TenantId xxxx-xxxx-xxxx-xxxx</dev:code>
         <dev:remarks>
           <maml:para>List all subscriptions in the given tenant that are authorized for the current account.</maml:para>
-          <maml:para />
-          <maml:para />
-          <maml:para>SubscriptionId: yyyy-yyyy-yyyy-yyyy
-TenantId: xxxx-xxxx-xxxx-xxxx
-Subscription Name: Contoso Subscription 1
-
-SubscriptionId: yyyy-yyyy-yyyy-yyyy
-TenantId: xxxx-xxxx-xxxx-xxxx
-Subscription Name: Contoso Subscription 2</maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText>
-              <maml:para />
-            </command:commandText>
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-      <command:example>
-        <maml:title>--------------------------  List all subscriptions in the current tenant  --------------------------</maml:title>
-        <maml:introduction>
-          <maml:paragraph>PS C:\&gt;</maml:paragraph>
-        </maml:introduction>
-        <dev:code>Get-AzureRmSubscription</dev:code>
-        <dev:remarks>
-          <maml:para>List all subscriptions in the current tenant that are authorized for the given user.</maml:para>
           <maml:para />
           <maml:para />
           <maml:para>SubscriptionId: yyyy-yyyy-yyyy-yyyy
@@ -1502,7 +1598,7 @@ Subscription Name: Contoso Subscription 1</maml:para>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
           <maml:name>TenantId</maml:name>
           <maml:description>
-            <maml:para>Tenant to get information about.  If not provided, all authorized tenants are returned.</maml:para>
+            <maml:para>TenantId to get information about.  If not provided, all authorized tenants are returned.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -1526,7 +1622,7 @@ Subscription Name: Contoso Subscription 1</maml:para>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
         <maml:name>TenantId</maml:name>
         <maml:description>
-          <maml:para>Tenant to get information about.  If not provided, all authorized tenants are returned.</maml:para>
+          <maml:para>TenantId to get information about.  If not provided, all authorized tenants are returned.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
