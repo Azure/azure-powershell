@@ -88,6 +88,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to In order to enable Threat Detection, please enable database auditing via Set-AzureRmSqlDatabaseAuditingPolicy.
+        /// </summary>
+        internal static string AuditingIsTurnedOff {
+            get {
+                return ResourceManager.GetString("AuditingIsTurnedOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Database with name: &apos;{0}&apos; already exists in server &apos;{1}&apos;..
         /// </summary>
         internal static string DatabaseNameExists {
@@ -214,7 +223,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You need to provide at least one email address or mark EmailServiceAndAccountAdmins as True..
+        ///   Looks up a localized string similar to You need to provide at least one email address or set EmailAdmins to True..
         /// </summary>
         internal static string NeedToProvideEmail {
             get {
@@ -394,7 +403,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Threat Detection is only available in the latest SQL Database Update (V12). Please upgrade to set it up on your database..
+        ///   Looks up a localized string similar to Threat detection is only available for the latest SQL Database Update (V12). Please upgrade to set it up on your database..
         /// </summary>
         internal static string ServerNotApplicableForThreatDetection {
             get {

@@ -12,22 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Sql.ThreatDetection.Model;
 
-namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
+namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
 {
     /// <summary>
     /// Returns the auditing policy of a specific database.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseAuditingPolicy"), OutputType(typeof(DatabaseAuditingPolicyModel))]
-    public class GetAzureSqlDatabaseAuditingPolicy : SqlDatabaseAuditingCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseThreatDetectionPolicy"), OutputType(typeof(ThreatDetectionPolicyModel))]
+    public class AzureRmSqlDatabaseThreatDetectionPolicy
     {
         /// <summary>
         /// No sending is needed as this is a Get cmdlet
         /// </summary>
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected override DatabaseAuditingPolicyModel PersistChanges(DatabaseAuditingPolicyModel model) 
+        protected ThreatDetectionPolicyModel PersistChanges(ThreatDetectionPolicyModel model) 
         {
             return null;
         }

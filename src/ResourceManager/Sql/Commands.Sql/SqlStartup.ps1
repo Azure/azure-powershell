@@ -18,7 +18,5 @@
     "Remove-AzureRmSqlDatabaseServerAuditing" = "Remove-AzureRmSqlServerAuditing";
     "Set-AzureRmSqlDatabaseServerAuditingPolicy" = "Set-AzureRmSqlServerAuditingPolicy";
     "Use-AzureRmSqlDatabaseServerAuditingPolicy" = "Use-AzureRmSqlServerAuditingPolicy";
-    "Set-AzureRmSqlDatabaseThreatDetectionPolicy" = "Set-AzureRmSqlDatabaseAuditingPolicy";
-    "Get-AzureRmSqlDatabaseThreatDetectionPolicy" = "Get-AzureRmSqlDatabaseAuditingPolicy";
 }.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | New-Alias -Description "AzureAlias"
 

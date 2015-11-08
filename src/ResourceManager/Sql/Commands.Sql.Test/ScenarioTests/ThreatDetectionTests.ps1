@@ -12,9 +12,6 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-# In the cmdlets, we use the alias:
-#    "Set-AzureRmSqlDatabaseThreatDetectionPolicy" = "Set-AzureRmSqlDatabaseAuditingPolicy";
-#    "Get-AzureRmSqlDatabaseThreatDetectionPolicy" = "Get-AzureRmSqlDatabaseAuditingPolicy";
 
 <#
 .SYNOPSIS
@@ -30,15 +27,12 @@ function Test-ThreatDetectionDatabaseGetDefualtPolicy
 	try 
 	{
 		# Test
-		Set-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
-		$policy = Get-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		$policy = Get-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
         # Assert
-		Assert-AreEqual $params.storageAccount $policy.StorageAccountName 
-		Assert-AreEqual $policy.AuditState "Enabled"
 		Assert-AreEqual $policy.ThreatDetectionState "New"
-		Assert-AreEqual $policy.EmailAddresses ""
-        Assert-True {$policy.EmailServiceAndAccountAdmins}
+		Assert-AreEqual $policy.NotificationRecipientsEmail ""
+        Assert-True {$policy.EmailAdmins}
 		Assert-AreEqual $policy.FilterDetectionTypes ""
 	}
 	finally
@@ -62,25 +56,24 @@ function Test-ThreatDetectionDatabaseUpdatePolicy
 	try
 	{
 		# Test
-		Set-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -ThreatDetectionState "Enabled" -EmailAddresses "koko@gmail.com;koko1@gmail.com" -EmailServiceAndAccountAdmins $false -FilterDetectionTypes "type1,type2"
-		$policy = Get-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+        Set-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
+		Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -NotificationRecipientsEmail "koko@mailTest.com;koko1@mailTest.com" -EmailAdmins $false -FilterDetectionTypes "type1,type2"
+		$policy = Get-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
 		# Assert
-		Assert-AreEqual $policy.AuditState "Enabled"
 		Assert-AreEqual $policy.ThreatDetectionState "Enabled"
-		Assert-AreEqual $policy.EmailAddresses "koko@gmail.com;koko1@gmail.com"
-        Assert-False {$policy.EmailServiceAndAccountAdmins}
+		Assert-AreEqual $policy.NotificationRecipientsEmail "koko@mailTest.com;koko1@mailTest.com"
+        Assert-False {$policy.EmailAdmins}
 		Assert-AreEqual $policy.FilterDetectionTypes "type1,type2"
 
         # Test
-		Set-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -ThreatDetectionState "Disabled" -EmailAddresses "koko@gmail.com;koko1@gmail.com" -EmailServiceAndAccountAdmins $false -FilterDetectionTypes "type1,type2"
-		$policy = Get-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		Remove-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		$policy = Get-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
 		# Assert
-		Assert-AreEqual $policy.AuditState "Enabled"
 		Assert-AreEqual $policy.ThreatDetectionState "Disabled"
-		Assert-AreEqual $policy.EmailAddresses "koko@gmail.com;koko1@gmail.com"
-        Assert-False {$policy.EmailServiceAndAccountAdmins}
+		Assert-AreEqual $policy.NotificationRecipientsEmail "koko@mailTest.com;koko1@mailTest.com"
+        Assert-False {$policy.EmailAdmins}
 		Assert-AreEqual $policy.FilterDetectionTypes "type1,type2"
 	}
 	finally
@@ -103,47 +96,36 @@ function Test-DisablingThreatDetection
 
 	try
 	{
-		# Test
-		Set-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -ThreatDetectionState "Enabled" 
-		$policy = Get-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		# 1. Test
+        Set-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
+		Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName 
+		$policy = Get-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
 		# Assert
-		Assert-AreEqual $policy.AuditState "Enabled"
 		Assert-AreEqual $policy.ThreatDetectionState "Enabled"
 
-        # Test
-        Remove-AzureRmSqlDatabaseAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
-        $policy = Get-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
-	
-		# Assert
-		Assert-AreEqual $policy.AuditState "Disabled"
+
+        # 2. Test
+        Remove-AzureRmSqlDatabaseThreatDetection -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName 
+		$policy = Get-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+
+        # Assert
 		Assert-AreEqual $policy.ThreatDetectionState "Disabled"
 
-        # Test
+
+        # 3. Test
         Set-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -ThreatDetectionState "Enabled" 
-		$policy = Get-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		$policy = Get-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 
-        Assert-AreEqual $policy.ThreatDetectionState "Enabled"
-        
-        Set-AzureRmSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount
-		Use-AzureRmSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
-		$policy = Get-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
-
-		# Assert
-		Assert-AreEqual $policy.UseServerDefault "Enabled"
-        Assert-AreEqual $policy.ThreatDetectionState "Disabled"
-
-        # Test
-        Set-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -ThreatDetectionState "Enabled" 
-		$policy = Get-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
-
-        Assert-AreEqual $policy.ThreatDetectionState "Enabled"
-
-        Remove-AzureRmSqlDatabaseThreatDetection -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName 
-		$policy = Get-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
-        
         # Assert
-        Assert-AreEqual $policy.ThreatDetectionState "Disabled"
+        Assert-AreEqual $policy.ThreatDetectionState "Enabled"
+       
+        # 4. Test
+        Remove-AzureRmSqlDatabaseAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+        $policy = Get-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+	
+		# Assert
+		Assert-AreEqual $policy.ThreatDetectionState "Disabled"
      }
 	finally
 	{
@@ -165,12 +147,17 @@ function Test-InvalidArgumentsThreatDetection
 
 	try
 	{
-		 #  Check that EmailAddresses are in correct format 
-		 Assert-Throws {Set-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -ThreatDetectionState "Enabled" -EmailAddresses "kokogmail.com"} 
+         # turning on threat detection without auditing
+         Assert-Throws {Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName} 
+ 
+         Set-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
 
-         #  Check that EmailServiceAndAccountAdmins is not False and EmailAddresses is not empty 
-         Assert-Throws {Set-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -ThreatDetectionState "Enabled" -EmailServiceAndAccountAdmins $false} 
-         Assert-Throws {Set-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -ThreatDetectionState "Enabled" -EmailServiceAndAccountAdmins $false -EmailAddresses ""} 
+		 #  Check that NotificationRecipientsEmail are in correct format 
+		 Assert-Throws {Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -NotificationRecipientsEmail "kokogmail.com"} 
+
+         #  Check that EmailAdmins is not False and NotificationRecipientsEmail is not empty 
+         Assert-Throws {Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EmailAdmins $false} 
+         Assert-Throws {Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EmailAdmins $false -NotificationRecipientsEmail ""} 
 	}
 	finally
 	{
@@ -181,9 +168,9 @@ function Test-InvalidArgumentsThreatDetection
 
 <#
 .SYNOPSIS
-Tests that thread detection doesn't work on Sawa servers
+Tests that thread detection doesn't work on 0.2v servers
 #>
-function Test-ThreatDetectionOnSawaServer
+function Test-ThreatDetectionOnV02Server
 {
 	# Setup
 	$testSuffix = 5004
@@ -192,8 +179,9 @@ function Test-ThreatDetectionOnSawaServer
 
 	try
 	{
-		 #  Check that EmailAddresses are in correct format 
-		 Assert-Throws {Set-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -ThreatDetectionState "Enabled" -EmailAddresses "kokogmail.com"} 
+         Set-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
+         Assert-Throws {Set-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -ThreatDetectionState "Enabled"}
+		 Assert-Throws {Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName} 
 	}
 	finally
 	{

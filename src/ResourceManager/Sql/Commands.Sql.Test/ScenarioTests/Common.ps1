@@ -102,13 +102,11 @@ function Create-ThreatDetectionTestEnvironmentWithStorageV2 ($testSuffix, $serve
 
     if ($serverVersion -eq "12.0")
     {
-        # Sawa server
         New-AzureRmResourceGroupDeployment -ResourceGroupName $params.rgname -TemplateFile ".\Templates\sql-ddm-test-env-setup.json" -serverName $params.serverName -databaseName $params.databaseName -EnvLocation "Australia East" -Force
     }
 
     if ($serverVersion -eq "2.0")
     {
-        # Sterling server
         New-AzureRmResourceGroupDeployment -ResourceGroupName $params.rgname -TemplateFile ".\Templates\sql-audit-test-env-setup.json" -serverName $params.serverName -databaseName $params.databaseName -EnvLocation "Australia East" -Force
     }
 

@@ -22,17 +22,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
     public class ThreatDetectionTests : SqlTestsBase
     {
-        protected Management.Storage.StorageManagementClient GetStorageV2Client()
-        {
-            var client = TestBase.GetServiceClient<Management.Storage.StorageManagementClient>(new CSMTestEnvironmentFactory());
-            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
-            {
-                client.LongRunningOperationInitialTimeout = 0;
-                client.LongRunningOperationRetryTimeout = 0;
-            }
-            return client;
-        }
-
         protected override void SetupManagementClients()
         {
             var sqlCSMClient = GetSqlClient();
@@ -73,9 +62,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.Sql)]
-        public void ThreatDetectionOnSawaServer()
+        public void ThreatDetectionOnV02Server()
         {
-            RunPowerShellTest("Test-ThreatDetectionOnSawaServer");
+            RunPowerShellTest("Test-ThreatDetectionOnV02Server");
         }
     }
 }

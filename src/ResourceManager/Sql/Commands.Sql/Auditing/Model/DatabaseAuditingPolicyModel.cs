@@ -12,6 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+
+using Microsoft.Azure.Commands.Sql.ThreatDetection.Model;
+
 namespace Microsoft.Azure.Commands.Sql.Auditing.Model
 {
     /// <summary>
@@ -20,47 +23,24 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
     public enum UseServerDefaultOptions {Enabled, Disabled }
 
     /// <summary>
-    /// The possible states in which an auditing policy may be in
-    /// </summary>
-    public enum ThreatDetectionStateType { Enabled, Disabled, New };
-
-    /// <summary>
     /// A class representing a database auditing policy
     /// </summary>
-    public class DatabaseAuditingAndThreatDetectionPolicyModel : BaseAuditingPolicyModel
+    public class DatabaseAuditingPolicyModel : BaseAuditingPolicyModel
     {
         /// <summary>
         /// Gets or sets the database name
         /// </summary>
         public string DatabaseName { get; set; }
-      
-        /// <summary>
-        /// Gets or sets the use server default property
-        /// </summary>
-        public UseServerDefaultOptions UseServerDefault { get; set; }
 
-        #region Threat Detection properties
 
         /// <summary>
         /// Gets or sets the Threat Detection state
         /// </summary>
         public ThreatDetectionStateType ThreatDetectionState { get; internal set; }
-
+      
         /// <summary>
-        /// Gets or sets the Threat Detection Email Addresses
+        /// Gets or sets the use server default property
         /// </summary>
-        public string EmailAddresses { get; internal set; }
-
-        /// <summary>
-        /// Gets or sets the whether to email service and co-administrators
-        /// </summary>
-        public bool EmailServiceAndAccountAdmins { get; internal set; }
-
-        /// <summary>
-        /// Gets or sets a semi-colon list of detection type to filter 
-        /// </summary>
-        public string FilterDetectionTypes { get; internal set; }
-
-        #endregion
+        public UseServerDefaultOptions UseServerDefault { get; set; }
     }
 }

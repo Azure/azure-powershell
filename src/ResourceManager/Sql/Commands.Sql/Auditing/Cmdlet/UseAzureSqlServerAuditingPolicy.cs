@@ -12,17 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Sql.Properties;
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using System;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Sql.ThreatDetection.Model;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 {
     /// <summary>
     /// Marks the given database as using its server's default policy instead of its own policy.
     /// </summary>
-    [Cmdlet(VerbsOther.Use, "AzureRmSqlServerAuditingPolicy"), OutputType(typeof(DatabaseAuditingAndThreatDetectionPolicyModel))]
+    [Cmdlet(VerbsOther.Use, "AzureRmSqlServerAuditingPolicy"), OutputType(typeof(DatabaseAuditingPolicyModel))]
     [Alias("Use-AzureRmSqlDatabaseServerAuditingPolicy")]
     public class UseAzureSqlServerAuditingPolicy : SqlDatabaseAuditingCmdletBase
     {
@@ -42,15 +42,11 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// Updates the given model element with the cmdlet specific operation 
         /// </summary>
         /// <param name="model">A model object</param>
-        protected override DatabaseAuditingAndThreatDetectionPolicyModel ApplyUserInputToModel(DatabaseAuditingAndThreatDetectionPolicyModel model)
+        protected override DatabaseAuditingPolicyModel ApplyUserInputToModel(DatabaseAuditingPolicyModel model)
         {
             base.ApplyUserInputToModel(model);
             model.UseServerDefault = UseServerDefaultOptions.Enabled;
             model.StorageAccountName = GetStorageAccountName();
-
-
-            // When disabling auditing policy we disable Threat Detection
-            model.ThreatDetectionState = ThreatDetectionStateType.Disabled;
             return model;
         }
 
@@ -63,7 +59,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             string storageAccountName = ModelAdapter.GetServerStorageAccount(ResourceGroupName, ServerName, clientRequestId);
             if (string.IsNullOrEmpty(storageAccountName))
             {
-                throw new Exception(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.UseServerWithoutStorageAccount));
+                throw new Exception(string.Format(Properties.Resources.UseServerWithoutStorageAccount));
             }
             return storageAccountName;
         }

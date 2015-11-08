@@ -51,6 +51,10 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ThreatDetection\Cmdlet\SqlDatabaseThreatDetectionCmdletBase.cs" />
+    <Compile Include="ThreatDetection\Cmdlet\GetAzureSqlDatabaseThreatDetection.cs" />
+    <Compile Include="ThreatDetection\Cmdlet\SetAzureSqlDatabaseThreatDetection.cs" />
+    <Compile Include="Auditing\Model\DatabaseAuditingPolicyModel.cs" />
     <Compile Include="ThreatDetection\Cmdlet\RemoveSqlDatabaseThreatDetection.cs" />
     <Compile Include="Location Capabilities\Cmdlet\GetAzureSqlCapability.cs" />
     <Compile Include="Location Capabilities\Model\EditionCapabilityModel.cs" />
@@ -91,7 +95,8 @@
     <Compile Include="Auditing\Cmdlet\SqlDatabaseServerAuditingCmdletBase.cs" />
     <Compile Include="Auditing\Cmdlet\UseAzureSqlServerAuditingPolicy.cs" />
     <Compile Include="Auditing\Model\BaseAuditingPolicyModel.cs" />
-    <Compile Include="Auditing\Model\DatabaseAuditingAndThreatDetectionPolicyModel.cs" />
+    <Compile Include="ThreatDetection\Model\BaseThreatDetectionPolicyModel.cs" />
+    <Compile Include="ThreatDetection\Model\ThreatDetectionPolicyModel.cs" />
     <Compile Include="Auditing\Model\ServerAuditingPolicyModel.cs" />
     <Compile Include="Auditing\Services\AuditingEndpointsCommunicator.cs" />
     <Compile Include="Auditing\Services\SqlAuditAdapter.cs" />
@@ -226,6 +231,7 @@
     <Compile Include="ServiceTierAdvisor\Model\UpgradeServerHint.cs" />
     <Compile Include="ServiceTierAdvisor\Services\AzureSqlServiceTierAdvisorAdapter.cs" />
     <Compile Include="ServiceTierAdvisor\Services\AzureSqlServiceTierAdvisorCommunicator.cs" />
+    <Compile Include="ThreatDetection\Services\SqlThreatDetectionAdapter.cs" />
     <Compile Include="ThreatDetection\Services\ThreatDetectionEndpointsCommunicator.cs" />
     <Compile Include="TransparentDataEncryption\Cmdlet\AzureSqlDatabaseTransparentDataEncryptionActivityCmdletBase.cs" />
     <Compile Include="TransparentDataEncryption\Cmdlet\AzureSqlDatabaseTransparentDataEncryptionCmdletBase.cs" />
@@ -376,9 +382,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ThreatDetection\Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
 </Project>

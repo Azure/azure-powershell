@@ -23,6 +23,7 @@ using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Database.Services;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.Server.Services;
+using Microsoft.Azure.Commands.Sql.ThreatDetection.Model;
 using Microsoft.Azure.Commands.Sql.ThreatDetection.Services;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Services
@@ -43,9 +44,9 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         private AuditingEndpointsCommunicator AuditingCommunicator { get; set; }
 
         /// <summary>
-        /// The auditing endpoints communicator used by this adapter
+        /// The Sql Threat Detection Adapter
         /// </summary>
-        private ThreatDetectionEndpointsCommunicator ThreatDetectionCommunicator { get; set; }
+        private SqlThreatDetectionAdapter ThreatDetectionAdapter { get; set; }
        
         /// <summary>
         /// The Azure endpoints communicator used by this adapter
@@ -87,7 +88,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             Context = context;
             Subscription = context.Subscription;
             AuditingCommunicator = new AuditingEndpointsCommunicator(Context);
-            ThreatDetectionCommunicator = new ThreatDetectionEndpointsCommunicator(Context);
+            ThreatDetectionAdapter = new SqlThreatDetectionAdapter(Context);
             AzureCommunicator = new AzureEndpointsCommunicator(Context);
             IgnoreStorage = false;
         }
@@ -117,26 +118,20 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// <summary>
         /// Provides a database audit policy model for the given database
         /// </summary>
-        public DatabaseAuditingAndThreatDetectionPolicyModel GetDatabaseAuditingAndThreatDetectionPolicy(string resourceGroup, string serverName, string databaseName, string requestId)
+        public DatabaseAuditingPolicyModel GetDatabaseAuditingPolicy(string resourceGroup, string serverName, string databaseName, string requestId)
         {
             DatabaseAuditingPolicy auditingPolicy = AuditingCommunicator.GetDatabaseAuditingPolicy(resourceGroup, serverName, databaseName, requestId);
-            DatabaseSecurityAlertPolicy threatDetectionPolicy = new DatabaseSecurityAlertPolicy();
-            if (IsRightServerVersionForThreatDetection(resourceGroup, serverName, requestId))
-            {
-                threatDetectionPolicy = ThreatDetectionCommunicator.GetDatabaseSecurityAlertPolicy(resourceGroup, serverName, databaseName, requestId);
-            }
-
-            DatabaseAuditingAndThreatDetectionPolicyModel auditingAndThreatDetectionPolicyModel = ModelizeDatabaseAuditAndThreatDetectionPolicy(auditingPolicy, threatDetectionPolicy);
-            auditingAndThreatDetectionPolicyModel.ResourceGroupName = resourceGroup;
-            auditingAndThreatDetectionPolicyModel.ServerName = serverName;
-            auditingAndThreatDetectionPolicyModel.DatabaseName = databaseName;
+            DatabaseAuditingPolicyModel auditingPolicyModel = ModelizeDatabaseAuditPolicy(auditingPolicy);
+            auditingPolicyModel.ResourceGroupName = resourceGroup;
+            auditingPolicyModel.ServerName = serverName;
+            auditingPolicyModel.DatabaseName = databaseName;
 
             FetchedStorageAccountName = auditingPolicy.Properties.StorageAccountName;
             FetchedStorageAccountResourceGroup = auditingPolicy.Properties.StorageAccountResourceGroupName;
             FetchedStorageAccountSubscription = auditingPolicy.Properties.StorageAccountSubscriptionId;
             FetchedStorageAccountTableEndpoint = auditingPolicy.Properties.StorageTableEndpoint;
 
-            return auditingAndThreatDetectionPolicyModel;
+            return auditingPolicyModel;
         }
 
         /// <summary>
@@ -160,23 +155,17 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// <summary>
         /// Transforms the given database policy object to its cmdlet model representation
         /// </summary>
-        private DatabaseAuditingAndThreatDetectionPolicyModel ModelizeDatabaseAuditAndThreatDetectionPolicy(DatabaseAuditingPolicy auditingPolicy, DatabaseSecurityAlertPolicy threatDetectionPolicy)
+        private DatabaseAuditingPolicyModel ModelizeDatabaseAuditPolicy(DatabaseAuditingPolicy auditingPolicy)
         {
-            DatabaseAuditingAndThreatDetectionPolicyModel auditingAndThreatDetectionPolicyModel = new DatabaseAuditingAndThreatDetectionPolicyModel();
+            DatabaseAuditingPolicyModel auditingPolicyModel = new DatabaseAuditingPolicyModel();
             
             DatabaseAuditingPolicyProperties auditingProperties = auditingPolicy.Properties;
-            auditingAndThreatDetectionPolicyModel.AuditState = ModelizeAuditState(auditingProperties.AuditingState);
-            auditingAndThreatDetectionPolicyModel.UseServerDefault = auditingProperties.UseServerDefault == SecurityConstants.AuditingEndpoint.Enabled ? UseServerDefaultOptions.Enabled : UseServerDefaultOptions.Disabled;
-            ModelizeStorageInfo(auditingAndThreatDetectionPolicyModel, auditingProperties.StorageAccountName, auditingProperties.StorageAccountKey, auditingProperties.StorageAccountSecondaryKey);
-            ModelizeEventTypesInfo(auditingAndThreatDetectionPolicyModel, auditingProperties.EventTypesToAudit);
-            ModelizeRetentionInfo(auditingAndThreatDetectionPolicyModel, auditingProperties.RetentionDays, auditingProperties.AuditLogsTableName, auditingProperties.FullAuditLogsTableName);
-
-            DatabaseSecurityAlertPolicyProperties threatDetectionProperties = threatDetectionPolicy.Properties;
-            auditingAndThreatDetectionPolicyModel.ThreatDetectionState = ModelizeThreatDetectionState(threatDetectionProperties.State);
-            auditingAndThreatDetectionPolicyModel.EmailAddresses = threatDetectionProperties.EmailAddresses;
-            auditingAndThreatDetectionPolicyModel.EmailServiceAndAccountAdmins = ModelizeThreatDetectionEmailServiceAndAccountAdmins(threatDetectionProperties.EmailAccountAdmins);
-            auditingAndThreatDetectionPolicyModel.FilterDetectionTypes = threatDetectionProperties.DisabledAlerts;
-            return auditingAndThreatDetectionPolicyModel;
+            auditingPolicyModel.AuditState = ModelizeAuditState(auditingProperties.AuditingState);
+            auditingPolicyModel.UseServerDefault = auditingProperties.UseServerDefault == SecurityConstants.AuditingEndpoint.Enabled ? UseServerDefaultOptions.Enabled : UseServerDefaultOptions.Disabled;
+            ModelizeStorageInfo(auditingPolicyModel, auditingProperties.StorageAccountName, auditingProperties.StorageAccountKey, auditingProperties.StorageAccountSecondaryKey);
+            ModelizeEventTypesInfo(auditingPolicyModel, auditingProperties.EventTypesToAudit);
+            ModelizeRetentionInfo(auditingPolicyModel, auditingProperties.RetentionDays, auditingProperties.AuditLogsTableName, auditingProperties.FullAuditLogsTableName);
+            return auditingPolicyModel;
         }
 
         /// <summary>
@@ -279,31 +268,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             if (threatDetectionState == SecurityConstants.ThreatDetectionEndpoint.Enabled) return ThreatDetectionStateType.Enabled;
             return ThreatDetectionStateType.Disabled;
         }
-
-        /// <summary>
-        /// Transforms the given policy EmailAccountAdmins in a boolean form to its cmdlet model representation
-        /// </summary>
-        private bool ModelizeThreatDetectionEmailServiceAndAccountAdmins(string emailAccountAdminsState)
-        {
-            if (emailAccountAdminsState == SecurityConstants.ThreatDetectionEndpoint.Enabled) return true;
-            return false;
-        }
-
-        /// <summary>
-        /// Transforms the given policy state into a string representation
-        /// </summary>
-        private string PolicizeThreatDetectionState(ThreatDetectionStateType threatDetectionState)
-        {
-            switch (threatDetectionState)
-            {
-                case ThreatDetectionStateType.Enabled:
-                    return SecurityConstants.ThreatDetectionEndpoint.Enabled;
-                case ThreatDetectionStateType.New:
-                    return SecurityConstants.ThreatDetectionEndpoint.New;
-                default:
-                    return SecurityConstants.ThreatDetectionEndpoint.Disabled;
-            }
-        }
         
         /// <summary>
         /// Transforms the given model to its endpoints acceptable structure and sends it to the endpoint
@@ -317,7 +281,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// <summary>
         /// Transforms the given model to its endpoints acceptable structure and sends it to the endpoint
         /// </summary>
-        public void SetDatabaseAuditingAndThreatDetectionPolicy(DatabaseAuditingAndThreatDetectionPolicyModel model, String clientId, string storageEndpointSuffix)
+        public void SetDatabaseAuditingAndThreatDetectionState(DatabaseAuditingPolicyModel model, String clientId, string storageEndpointSuffix)
         {
             if ((model.ThreatDetectionState == ThreatDetectionStateType.Enabled)
                     && !IsRightServerVersionForThreatDetection(model.ResourceGroupName, model.ServerName, clientId))
@@ -329,14 +293,29 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             {
                 throw new Exception(Properties.Resources.DatabaseNotInServiceTierForAuditingPolicy);
             }
+
+            // We save the old model in case we need to revert to it.
+            DatabaseAuditingPolicyModel oldDatabaseAuditingAndThreatDetectionModel = GetDatabaseAuditingPolicy(model.ResourceGroupName, model.ServerName, model.DatabaseName, clientId);
+
             DatabaseAuditingPolicyCreateOrUpdateParameters databaseAuditingPolicyParameters = PolicizeDatabaseAuditingModel(model, storageEndpointSuffix);
             AuditingCommunicator.SetDatabaseAuditingPolicy(model.ResourceGroupName, model.ServerName, model.DatabaseName, clientId, databaseAuditingPolicyParameters);
 
-            DatabaseSecurityAlertPolicyCreateOrUpdateParameters databaseSecurityAlertPolicyParameters = PolicizeDatabaseSecurityAlertModel(model);
-            ThreatDetectionCommunicator.SetDatabaseSecurityAlertPolicy(model.ResourceGroupName, model.ServerName, model.DatabaseName, clientId, databaseSecurityAlertPolicyParameters);
+            try
+            {
+                ThreatDetectionPolicyModel threatDetectionPolicyModel = ThreatDetectionAdapter.GetDatabaseThreatDetectionPolicy(model.ResourceGroupName, model.ServerName, model.DatabaseName, clientId);
+                threatDetectionPolicyModel.ThreatDetectionState = model.ThreatDetectionState;
+                ThreatDetectionAdapter.SetDatabaseThreatDetectionPolicy(threatDetectionPolicyModel, clientId);
+            }
+            catch (Exception)
+            {
+                // we revert the auditing policy
+                databaseAuditingPolicyParameters = PolicizeDatabaseAuditingModel(oldDatabaseAuditingAndThreatDetectionModel, storageEndpointSuffix);
+                AuditingCommunicator.SetDatabaseAuditingPolicy(oldDatabaseAuditingAndThreatDetectionModel.ResourceGroupName, model.ServerName, model.DatabaseName, clientId, databaseAuditingPolicyParameters);
+                throw;
+            }
         }
 
-        private bool IsDatabaseInServiceTierForPolicy(DatabaseAuditingAndThreatDetectionPolicyModel model, string clientId)
+        private bool IsDatabaseInServiceTierForPolicy(DatabaseAuditingPolicyModel model, string clientId)
         {
             AzureSqlDatabaseCommunicator dbCommunicator = new AzureSqlDatabaseCommunicator(Context);
             Management.Sql.Models.Database database = dbCommunicator.Get(model.ResourceGroupName, model.ServerName, model.DatabaseName, clientId);
@@ -352,29 +331,10 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// <summary>
         /// Takes the cmdlets model object and transform it to the policy as expected by the endpoint
         /// </summary>
-        /// <param name="model">The SecurityAlert model object</param>
-        /// <returns>The communication model object</returns>
-        private DatabaseSecurityAlertPolicyCreateOrUpdateParameters PolicizeDatabaseSecurityAlertModel(DatabaseAuditingAndThreatDetectionPolicyModel model)
-        {
-            DatabaseSecurityAlertPolicyCreateOrUpdateParameters updateParameters = new DatabaseSecurityAlertPolicyCreateOrUpdateParameters();
-            DatabaseSecurityAlertPolicyProperties properties = new DatabaseSecurityAlertPolicyProperties();
-            updateParameters.Properties = properties;
-            properties.State = PolicizeThreatDetectionState(model.ThreatDetectionState);
-            properties.EmailAddresses = model.EmailAddresses ?? "";
-            properties.EmailAccountAdmins = model.EmailServiceAndAccountAdmins
-                ? SecurityConstants.ThreatDetectionEndpoint.Enabled
-                : SecurityConstants.ThreatDetectionEndpoint.Disabled;
-            properties.DisabledAlerts = model.FilterDetectionTypes ?? "";
-            return updateParameters;
-        }
-
-        /// <summary>
-        /// Takes the cmdlets model object and transform it to the policy as expected by the endpoint
-        /// </summary>
         /// <param name="model">The AuditingPolicy model object</param>
         /// <param name="storageEndpointSuffix">The storage endpoint suffix</param>
         /// <returns>The communication model object</returns>
-        private DatabaseAuditingPolicyCreateOrUpdateParameters PolicizeDatabaseAuditingModel(DatabaseAuditingAndThreatDetectionPolicyModel model, string storageEndpointSuffix)
+        private DatabaseAuditingPolicyCreateOrUpdateParameters PolicizeDatabaseAuditingModel(DatabaseAuditingPolicyModel model, string storageEndpointSuffix)
         {
             DatabaseAuditingPolicyCreateOrUpdateParameters updateParameters = new DatabaseAuditingPolicyCreateOrUpdateParameters();
             DatabaseAuditingPolicyProperties properties = new DatabaseAuditingPolicyProperties();
@@ -438,7 +398,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             }
             if (string.IsNullOrEmpty(storageAccountName) && (!IgnoreStorage)) // can happen if the user didn't provide account name for a policy that lacked it 
             {
-                throw new Exception(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.NoStorageAccountWhenConfiguringAuditingPolicy));
+                throw new Exception(string.Format(Properties.Resources.NoStorageAccountWhenConfiguringAuditingPolicy));
             }
             return storageAccountName;
         }

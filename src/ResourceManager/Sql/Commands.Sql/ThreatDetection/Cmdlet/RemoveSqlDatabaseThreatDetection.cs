@@ -12,18 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Sql.Auditing.Cmdlet;
+using Microsoft.Azure.Commands.Sql.ThreatDetection.Model;
 
 namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
 {
     /// <summary>
     /// Disables auditing on a specific database.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabaseThreatDetection"), OutputType(typeof(DatabaseAuditingAndThreatDetectionPolicyModel))]
-    [Alias("Remove-AzureRmSqlDatabaseThreatDetection")]
-    public class RemoveSqlDatabaseThreatDetection : SqlDatabaseAuditingCmdletBase
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabaseThreatDetection"), OutputType(typeof(ThreatDetectionPolicyModel))]
+    public class AzureRmSqlDatabaseThreatDetection : SqlDatabaseThreatDetectionCmdletBase
     {
         /// <summary>
         ///  Defines whether the cmdlets will output the model object at the end of its execution
@@ -41,7 +39,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         /// Updates the given model element with the cmdlet specific operation 
         /// </summary>
         /// <param name="model">A model object</param>
-        protected override DatabaseAuditingAndThreatDetectionPolicyModel ApplyUserInputToModel(DatabaseAuditingAndThreatDetectionPolicyModel model)
+        protected override ThreatDetectionPolicyModel ApplyUserInputToModel(ThreatDetectionPolicyModel model)
         {
             base.ApplyUserInputToModel(model);
             model.ThreatDetectionState = ThreatDetectionStateType.Disabled;

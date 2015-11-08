@@ -823,7 +823,7 @@ Tags                          :</maml:para>
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name>Microsoft.Azure.Commands.Sql.Security.Model.DatabaseAuditingAndThreatDetectionPolicyModel</maml:name>
+          <maml:name>Microsoft.Azure.Commands.Sql.Security.Model.DatabaseAuditingPolicyModel</maml:name>
           <maml:uri>
           </maml:uri>
           <maml:description />
@@ -7389,7 +7389,7 @@ FirewallRuleName  : rule01</maml:para>
     <command:inputTypes>
       <command:inputType>
         <dev:type>
-          <maml:name>Microsoft.Azure.Commands.Sql.Security.Model.DatabaseAuditingAndThreatDetectionPolicyModel</maml:name>
+          <maml:name>Microsoft.Azure.Commands.Sql.Security.Model.DatabaseAuditingPolicyModel</maml:name>
           <maml:uri>
           </maml:uri>
           <maml:description />
@@ -7402,7 +7402,7 @@ FirewallRuleName  : rule01</maml:para>
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name>Microsoft.Azure.Commands.Sql.Security.Model.DatabaseAuditingAndThreatDetectionPolicyModel</maml:name>
+          <maml:name>Microsoft.Azure.Commands.Sql.Security.Model.DatabaseAuditingPolicyModel</maml:name>
           <maml:uri>
           </maml:uri>
           <maml:description />
@@ -9595,14 +9595,14 @@ Tags                          :</maml:para>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-          <maml:name>EmailAddresses</maml:name>
+          <maml:name>NotificationRecipientsEmail</maml:name>
           <maml:description>
             <maml:para>A semicolon separated list of email addresses to send the alerts to.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-          <maml:name>EmailServiceAndAccountAdmins</maml:name>
+          <maml:name>EmailAdmins</maml:name>
           <maml:description>
             <maml:para>Defines whether to email service and co-administrators.</maml:para>
           </maml:description>
@@ -9793,7 +9793,7 @@ Tags                          :</maml:para>
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name>Microsoft.Azure.Commands.Sql.Security.Model.DatabaseAuditingAndThreatDetectionPolicyModel</maml:name>
+          <maml:name>Microsoft.Azure.Commands.Sql.Security.Model.DatabaseAuditingPolicyModel</maml:name>
           <maml:uri>
           </maml:uri>
           <maml:description />
@@ -13520,7 +13520,7 @@ The final command upgrades the existing server named server02 in the  resource g
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name>Microsoft.Azure.Commands.Sql.Security.Model.DatabaseAuditingAndThreatDetectionPolicyModel</maml:name>
+          <maml:name>Microsoft.Azure.Commands.Sql.Security.Model.DatabaseAuditingPolicyModel</maml:name>
           <maml:uri>
           </maml:uri>
           <maml:description />

@@ -28,16 +28,16 @@
           "gateway"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14985"
+          "14939"
         ],
         "x-ms-request-id": [
-          "911b4552-84c2-42f8-b7ad-a6a7770f553e"
+          "ded57079-2731-4a3e-8eea-1380632edaca"
         ],
         "x-ms-correlation-request-id": [
-          "911b4552-84c2-42f8-b7ad-a6a7770f553e"
+          "ded57079-2731-4a3e-8eea-1380632edaca"
         ],
         "x-ms-routing-request-id": [
-          "WESTEUROPE:20151107T163703Z:911b4552-84c2-42f8-b7ad-a6a7770f553e"
+          "WESTEUROPE:20151108T113009Z:ded57079-2731-4a3e-8eea-1380632edaca"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -46,7 +46,7 @@
           "no-cache"
         ],
         "Date": [
-          "Sat, 07 Nov 2015 16:37:03 GMT"
+          "Sun, 08 Nov 2015 11:30:09 GMT"
         ]
       },
       "StatusCode": 404
@@ -82,16 +82,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1199"
         ],
         "x-ms-request-id": [
-          "422e5b53-c101-4718-813d-60933083111b"
+          "6be015e6-594a-49f1-93bf-85dd82199369"
         ],
         "x-ms-correlation-request-id": [
-          "422e5b53-c101-4718-813d-60933083111b"
+          "6be015e6-594a-49f1-93bf-85dd82199369"
         ],
         "x-ms-routing-request-id": [
-          "WESTEUROPE:20151107T163708Z:422e5b53-c101-4718-813d-60933083111b"
+          "WESTEUROPE:20151108T113013Z:6be015e6-594a-49f1-93bf-85dd82199369"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -100,7 +100,7 @@
           "no-cache"
         ],
         "Date": [
-          "Sat, 07 Nov 2015 16:37:07 GMT"
+          "Sun, 08 Nov 2015 11:30:12 GMT"
         ]
       },
       "StatusCode": 201
@@ -130,16 +130,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14984"
+          "14938"
         ],
         "x-ms-request-id": [
-          "e522b471-5431-4741-b460-039402b00fca"
+          "7843efcb-42f0-4817-b232-5150504d368d"
         ],
         "x-ms-correlation-request-id": [
-          "e522b471-5431-4741-b460-039402b00fca"
+          "7843efcb-42f0-4817-b232-5150504d368d"
         ],
         "x-ms-routing-request-id": [
-          "WESTEUROPE:20151107T163708Z:e522b471-5431-4741-b460-039402b00fca"
+          "WESTEUROPE:20151108T113013Z:7843efcb-42f0-4817-b232-5150504d368d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -148,77 +148,14 @@
           "no-cache"
         ],
         "Date": [
-          "Sat, 07 Nov 2015 16:37:07 GMT"
+          "Sun, 08 Nov 2015 11:30:13 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourcegroups/sql-td-cmdlet-test-rg5004/providers/Microsoft.Authorization/permissions?api-version=2015-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlZ3JvdXBzL3NxbC10ZC1jbWRsZXQtdGVzdC1yZzUwMDQvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRob3JpemF0aW9uL3Blcm1pc3Npb25zP2FwaS12ZXJzaW9uPTIwMTUtMDctMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/1.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"actions\": [\r\n        \"*\"\r\n      ],\r\n      \"notActions\": []\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "61"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "a618a07c-2e3c-48b4-b249-9eb3cfe0f0c0"
-        ],
-        "x-ms-gateway-service-instanceid": [
-          "PASFE_IN_3"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14988"
-        ],
-        "x-ms-correlation-request-id": [
-          "e6793299-df7a-4d05-8b3a-de60eb31c722"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTEUROPE:20151107T163709Z:e6793299-df7a-4d05-8b3a-de60eb31c722"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Sat, 07 Nov 2015 16:37:09 GMT"
-        ],
-        "Set-Cookie": [
-          "x-ms-gateway-slice=productionb; path=/"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.5"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-td-cmdlet-test-rg5004/providers/Microsoft.Storage/storageAccounts/tdcmdlets5004?api-version=2015-05-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC10ZC1jbWRsZXQtdGVzdC1yZzUwMDQvcHJvdmlkZXJzL01pY3Jvc29mdC5TdG9yYWdlL3N0b3JhZ2VBY2NvdW50cy90ZGNtZGxldHM1MDA0P2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-td-cmdlet-test-rg5004/providers/Microsoft.Storage/storageAccounts/tdcmdlets5004?api-version=2015-06-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC10ZC1jbWRsZXQtdGVzdC1yZzUwMDQvcHJvdmlkZXJzL01pY3Jvc29mdC5TdG9yYWdlL3N0b3JhZ2VBY2NvdW50cy90ZGNtZGxldHM1MDA0P2FwaS12ZXJzaW9uPTIwMTUtMDYtMTU=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"Australia East\",\r\n  \"properties\": {\r\n    \"accountType\": \"Standard_GRS\"\r\n  }\r\n}",
       "RequestHeaders": {
@@ -229,10 +166,10 @@
           "96"
         ],
         "x-ms-client-request-id": [
-          "a9584f41-1236-49d5-b311-3425ab50442c"
+          "a0a35f84-1430-49fc-a286-ff9a87993261"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Storage.StorageManagementClient/2.0.0.0"
+          "Microsoft.Azure.Management.Storage.StorageManagementClient/3.0.0.0"
         ]
       },
       "ResponseBody": "",
@@ -250,46 +187,47 @@
           "25"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1180"
+          "1199"
         ],
         "x-ms-request-id": [
-          "99bf225a-1d92-4ff1-a1af-60d1eca3c085"
-        ],
-        "x-ms-correlation-request-id": [
-          "99bf225a-1d92-4ff1-a1af-60d1eca3c085"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTEUROPE:20151107T163716Z:99bf225a-1d92-4ff1-a1af-60d1eca3c085"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "e88ce056-8a76-4712-b4f6-b389b87ae2fa"
         ],
         "Cache-Control": [
           "no-cache"
         ],
-        "Date": [
-          "Sat, 07 Nov 2015 16:37:15 GMT"
-        ],
         "Location": [
-          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Storage/operations/789b9214-c60f-4df8-a782-8f00b1a6ef72?monitor=true&api-version=2015-05-01-preview"
+          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Storage/operations/492df647-3ab9-4c7f-b4c7-f4db8d624cea?monitor=true&api-version=2015-06-15"
         ],
         "Server": [
+          "Microsoft-Azure-Storage-Resource-Provider/1.0",
           "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-correlation-request-id": [
+          "e88ce056-8a76-4712-b4f6-b389b87ae2fa"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTEUROPE:20151108T113018Z:e88ce056-8a76-4712-b4f6-b389b87ae2fa"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Sun, 08 Nov 2015 11:30:18 GMT"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Storage/operations/789b9214-c60f-4df8-a782-8f00b1a6ef72?monitor=true&api-version=2015-05-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9vcGVyYXRpb25zLzc4OWI5MjE0LWM2MGYtNGRmOC1hNzgyLThmMDBiMWE2ZWY3Mj9tb25pdG9yPXRydWUmYXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Storage/operations/492df647-3ab9-4c7f-b4c7-f4db8d624cea?monitor=true&api-version=2015-06-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9vcGVyYXRpb25zLzQ5MmRmNjQ3LTNhYjktNGM3Zi1iNGM3LWY0ZGI4ZDYyNGNlYT9tb25pdG9yPXRydWUmYXBpLXZlcnNpb249MjAxNS0wNi0xNQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0598e45b-d946-4cca-9a4a-c45c3a0dc9c5"
+          "e4c0094e-685b-4f27-8930-96d38bb9864d"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Storage.StorageManagementClient/2.0.0.0"
+          "Microsoft.Azure.Management.Storage.StorageManagementClient/3.0.0.0"
         ]
       },
       "ResponseBody": "",
@@ -307,46 +245,47 @@
           "25"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14903"
+          "14878"
         ],
         "x-ms-request-id": [
-          "d7066922-4413-47ca-b39c-060b28e7c51e"
-        ],
-        "x-ms-correlation-request-id": [
-          "d7066922-4413-47ca-b39c-060b28e7c51e"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTEUROPE:20151107T163716Z:d7066922-4413-47ca-b39c-060b28e7c51e"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "201a4014-1769-4633-9d80-08003626465d"
         ],
         "Cache-Control": [
           "no-cache"
         ],
-        "Date": [
-          "Sat, 07 Nov 2015 16:37:16 GMT"
-        ],
         "Location": [
-          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Storage/operations/789b9214-c60f-4df8-a782-8f00b1a6ef72?monitor=true&api-version=2015-05-01-preview"
+          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Storage/operations/492df647-3ab9-4c7f-b4c7-f4db8d624cea?monitor=true&api-version=2015-06-15"
         ],
         "Server": [
+          "Microsoft-Azure-Storage-Resource-Provider/1.0",
           "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-correlation-request-id": [
+          "201a4014-1769-4633-9d80-08003626465d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTEUROPE:20151108T113019Z:201a4014-1769-4633-9d80-08003626465d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Sun, 08 Nov 2015 11:30:18 GMT"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Storage/operations/789b9214-c60f-4df8-a782-8f00b1a6ef72?monitor=true&api-version=2015-05-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9vcGVyYXRpb25zLzc4OWI5MjE0LWM2MGYtNGRmOC1hNzgyLThmMDBiMWE2ZWY3Mj9tb25pdG9yPXRydWUmYXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Storage/operations/492df647-3ab9-4c7f-b4c7-f4db8d624cea?monitor=true&api-version=2015-06-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9vcGVyYXRpb25zLzQ5MmRmNjQ3LTNhYjktNGM3Zi1iNGM3LWY0ZGI4ZDYyNGNlYT9tb25pdG9yPXRydWUmYXBpLXZlcnNpb249MjAxNS0wNi0xNQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ae6ddb83-2681-4954-a3e4-8f2ed7d4ab01"
+          "00b1104e-305e-4b99-b6da-3a431b17725a"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Storage.StorageManagementClient/2.0.0.0"
+          "Microsoft.Azure.Management.Storage.StorageManagementClient/3.0.0.0"
         ]
       },
       "ResponseBody": "",
@@ -364,46 +303,47 @@
           "25"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14902"
+          "14874"
         ],
         "x-ms-request-id": [
-          "25e7052b-c1c4-43b4-8e9d-83c6f2c28dd8"
-        ],
-        "x-ms-correlation-request-id": [
-          "25e7052b-c1c4-43b4-8e9d-83c6f2c28dd8"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTEUROPE:20151107T163742Z:25e7052b-c1c4-43b4-8e9d-83c6f2c28dd8"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "8100326a-cf25-409f-bf08-66d15266538a"
         ],
         "Cache-Control": [
           "no-cache"
         ],
-        "Date": [
-          "Sat, 07 Nov 2015 16:37:42 GMT"
-        ],
         "Location": [
-          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Storage/operations/789b9214-c60f-4df8-a782-8f00b1a6ef72?monitor=true&api-version=2015-05-01-preview"
+          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Storage/operations/492df647-3ab9-4c7f-b4c7-f4db8d624cea?monitor=true&api-version=2015-06-15"
         ],
         "Server": [
+          "Microsoft-Azure-Storage-Resource-Provider/1.0",
           "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-correlation-request-id": [
+          "8100326a-cf25-409f-bf08-66d15266538a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTEUROPE:20151108T113044Z:8100326a-cf25-409f-bf08-66d15266538a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Sun, 08 Nov 2015 11:30:44 GMT"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Storage/operations/789b9214-c60f-4df8-a782-8f00b1a6ef72?monitor=true&api-version=2015-05-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9vcGVyYXRpb25zLzc4OWI5MjE0LWM2MGYtNGRmOC1hNzgyLThmMDBiMWE2ZWY3Mj9tb25pdG9yPXRydWUmYXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Storage/operations/492df647-3ab9-4c7f-b4c7-f4db8d624cea?monitor=true&api-version=2015-06-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9vcGVyYXRpb25zLzQ5MmRmNjQ3LTNhYjktNGM3Zi1iNGM3LWY0ZGI4ZDYyNGNlYT9tb25pdG9yPXRydWUmYXBpLXZlcnNpb249MjAxNS0wNi0xNQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c7a8e40c-e150-4158-9e23-4b94d151323b"
+          "51e2f31c-777a-4871-88c9-86980518faff"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Storage.StorageManagementClient/2.0.0.0"
+          "Microsoft.Azure.Management.Storage.StorageManagementClient/3.0.0.0"
         ]
       },
       "ResponseBody": "{\r\n  \"location\": \"Australia East\",\r\n  \"properties\": {\r\n    \"accountType\": \"Standard_GRS\"\r\n  }\r\n}",
@@ -421,49 +361,50 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "ad284cd6-4703-4f03-82ce-88673ec96e60"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14901"
-        ],
-        "x-ms-correlation-request-id": [
-          "ad284cd6-4703-4f03-82ce-88673ec96e60"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTEUROPE:20151107T163807Z:ad284cd6-4703-4f03-82ce-88673ec96e60"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "4b9d566e-a59a-4ddb-9b26-044c3a2c797f"
         ],
         "Cache-Control": [
           "no-cache"
         ],
-        "Date": [
-          "Sat, 07 Nov 2015 16:38:07 GMT"
-        ],
         "Server": [
+          "Microsoft-Azure-Storage-Resource-Provider/1.0",
           "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14870"
+        ],
+        "x-ms-correlation-request-id": [
+          "4b9d566e-a59a-4ddb-9b26-044c3a2c797f"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTEUROPE:20151108T113110Z:4b9d566e-a59a-4ddb-9b26-044c3a2c797f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Sun, 08 Nov 2015 11:31:10 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-td-cmdlet-test-rg5004/providers/Microsoft.Storage/storageAccounts/tdcmdlets5004?api-version=2015-05-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC10ZC1jbWRsZXQtdGVzdC1yZzUwMDQvcHJvdmlkZXJzL01pY3Jvc29mdC5TdG9yYWdlL3N0b3JhZ2VBY2NvdW50cy90ZGNtZGxldHM1MDA0P2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-td-cmdlet-test-rg5004/providers/Microsoft.Storage/storageAccounts/tdcmdlets5004?api-version=2015-06-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC10ZC1jbWRsZXQtdGVzdC1yZzUwMDQvcHJvdmlkZXJzL01pY3Jvc29mdC5TdG9yYWdlL3N0b3JhZ2VBY2NvdW50cy90ZGNtZGxldHM1MDA0P2FwaS12ZXJzaW9uPTIwMTUtMDYtMTU=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "39018278-6bee-457f-a7eb-8ef5fce40ca2"
+          "ab66199c-a10c-48fa-ac15-6ab24c82d11d"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Storage.StorageManagementClient/2.0.0.0"
+          "Microsoft.Azure.Management.Storage.StorageManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-td-cmdlet-test-rg5004/providers/Microsoft.Storage/storageAccounts/tdcmdlets5004\",\r\n  \"location\": \"Australia East\",\r\n  \"name\": \"tdcmdlets5004\",\r\n  \"properties\": {\r\n    \"accountType\": \"Standard_GRS\",\r\n    \"creationTime\": \"2015-11-07T16:37:15.0177318Z\",\r\n    \"primaryEndpoints\": {\r\n      \"blob\": \"https://tdcmdlets5004.blob.core.windows.net/\",\r\n      \"file\": \"https://tdcmdlets5004.file.core.windows.net/\",\r\n      \"queue\": \"https://tdcmdlets5004.queue.core.windows.net/\",\r\n      \"table\": \"https://tdcmdlets5004.table.core.windows.net/\"\r\n    },\r\n    \"primaryLocation\": \"Australia East\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"secondaryLocation\": \"Australia Southeast\",\r\n    \"statusOfPrimary\": \"available\",\r\n    \"statusOfSecondary\": \"available\"\r\n  },\r\n  \"tags\": {},\r\n  \"type\": \"Microsoft.Storage/storageAccounts\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-td-cmdlet-test-rg5004/providers/Microsoft.Storage/storageAccounts/tdcmdlets5004\",\r\n  \"location\": \"australiaeast\",\r\n  \"name\": \"tdcmdlets5004\",\r\n  \"properties\": {\r\n    \"accountType\": \"Standard_GRS\",\r\n    \"creationTime\": \"2015-11-08T11:30:18.1232779Z\",\r\n    \"primaryEndpoints\": {\r\n      \"blob\": \"https://tdcmdlets5004.blob.core.windows.net/\",\r\n      \"file\": \"https://tdcmdlets5004.file.core.windows.net/\",\r\n      \"queue\": \"https://tdcmdlets5004.queue.core.windows.net/\",\r\n      \"table\": \"https://tdcmdlets5004.table.core.windows.net/\"\r\n    },\r\n    \"primaryLocation\": \"australiaeast\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"secondaryLocation\": \"australiasoutheast\",\r\n    \"statusOfPrimary\": \"available\",\r\n    \"statusOfSecondary\": \"available\"\r\n  },\r\n  \"tags\": {},\r\n  \"type\": \"Microsoft.Storage/storageAccounts\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "766"
+          "763"
         ],
         "Content-Type": [
           "application/json"
@@ -475,46 +416,47 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "98f2fc36-ccdd-4e62-adf4-3eaf324b6e44"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14900"
-        ],
-        "x-ms-correlation-request-id": [
-          "98f2fc36-ccdd-4e62-adf4-3eaf324b6e44"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTEUROPE:20151107T163808Z:98f2fc36-ccdd-4e62-adf4-3eaf324b6e44"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "e26ebfba-ba87-43c2-8520-0e60ae120031"
         ],
         "Cache-Control": [
           "no-cache"
         ],
-        "Date": [
-          "Sat, 07 Nov 2015 16:38:08 GMT"
-        ],
         "Server": [
+          "Microsoft-Azure-Storage-Resource-Provider/1.0",
           "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14869"
+        ],
+        "x-ms-correlation-request-id": [
+          "e26ebfba-ba87-43c2-8520-0e60ae120031"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTEUROPE:20151108T113111Z:e26ebfba-ba87-43c2-8520-0e60ae120031"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Sun, 08 Nov 2015 11:31:10 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-td-cmdlet-test-rg5004/providers/Microsoft.Storage/storageAccounts/tdcmdlets5004/listKeys?api-version=2015-05-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC10ZC1jbWRsZXQtdGVzdC1yZzUwMDQvcHJvdmlkZXJzL01pY3Jvc29mdC5TdG9yYWdlL3N0b3JhZ2VBY2NvdW50cy90ZGNtZGxldHM1MDA0L2xpc3RLZXlzP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-td-cmdlet-test-rg5004/providers/Microsoft.Storage/storageAccounts/tdcmdlets5004/listKeys?api-version=2015-06-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC10ZC1jbWRsZXQtdGVzdC1yZzUwMDQvcHJvdmlkZXJzL01pY3Jvc29mdC5TdG9yYWdlL3N0b3JhZ2VBY2NvdW50cy90ZGNtZGxldHM1MDA0L2xpc3RLZXlzP2FwaS12ZXJzaW9uPTIwMTUtMDYtMTU=",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "70d98263-9509-43bf-9a69-3767934105c4"
+          "0ad47125-aa08-4789-8d34-ba92685fba26"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Storage.StorageManagementClient/2.0.0.0"
+          "Microsoft.Azure.Management.Storage.StorageManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"key1\": \"RJ/0pPGXCpqXQPChjf88xOfU+CM7dWbn7YVGA9b5LPnBVgzhSeCl65T77mZl3b8eTfaVSjbsiBWZ8AyifF9I0A==\",\r\n  \"key2\": \"Gvpy3tzRipAvKMDSYgSYK2TWUkRd0Z5uCM+Bj5HzF35QOOl7hiz3XKasTzLCQfai070tNNZWwjuA3p4P601Yeg==\"\r\n}",
+      "ResponseBody": "{\r\n  \"key1\": \"fM6lHwOVlfup8SRvH1p34NQGgCPgjv8YqjvjSeV6b6dOYGDiUy1eIWf4haXMRxPqe6Xl3OkxZQLBbw1FJJZYEQ==\",\r\n  \"key2\": \"jWKW9NTEF3GGF0V4ySMNRcTGbaLJPRL748RHofhz5SgsBV6PKrS8jsI4dyfcnFmtTXNSjNHcdNu7z7Mj7eDUvA==\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "198"
@@ -529,28 +471,29 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "5974c75d-0233-4dcf-8a30-38ab9396477a"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1179"
-        ],
-        "x-ms-correlation-request-id": [
-          "5974c75d-0233-4dcf-8a30-38ab9396477a"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTEUROPE:20151107T163808Z:5974c75d-0233-4dcf-8a30-38ab9396477a"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "9a63265c-b6f4-4a53-99e7-c62b64264461"
         ],
         "Cache-Control": [
           "no-cache"
         ],
-        "Date": [
-          "Sat, 07 Nov 2015 16:38:08 GMT"
-        ],
         "Server": [
+          "Microsoft-Azure-Storage-Resource-Provider/1.0",
           "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "9a63265c-b6f4-4a53-99e7-c62b64264461"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTEUROPE:20151108T113111Z:9a63265c-b6f4-4a53-99e7-c62b64264461"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Sun, 08 Nov 2015 11:31:11 GMT"
         ]
       },
       "StatusCode": 200
@@ -565,7 +508,7 @@
           "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
         ],
         "x-ms-client-request-id": [
-          "383c64e6-90fa-4df0-8a70-72f4a3fb4e9e"
+          "7faef12d-5628-49b9-81ad-c510feac14fd"
         ]
       },
       "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ParentResourceNotFound\",\r\n    \"message\": \"Can not perform requested operation on nested resource. Parent resource 'sql-td-cmdlet-server5004/sql-td-cmdlet-db5004' not found.\"\r\n  }\r\n}",
@@ -586,13 +529,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "0b3c2d14-5f9e-40d8-8782-3101ad566d7b"
+          "7248ac58-8eb5-409f-97e0-6341085d246c"
         ],
         "x-ms-correlation-request-id": [
-          "0b3c2d14-5f9e-40d8-8782-3101ad566d7b"
+          "7248ac58-8eb5-409f-97e0-6341085d246c"
         ],
         "x-ms-routing-request-id": [
-          "WESTEUROPE:20151107T163810Z:0b3c2d14-5f9e-40d8-8782-3101ad566d7b"
+          "WESTEUROPE:20151108T113112Z:7248ac58-8eb5-409f-97e0-6341085d246c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -601,7 +544,7 @@
           "no-cache"
         ],
         "Date": [
-          "Sat, 07 Nov 2015 16:38:09 GMT"
+          "Sun, 08 Nov 2015 11:31:12 GMT"
         ]
       },
       "StatusCode": 404
