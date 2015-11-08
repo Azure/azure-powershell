@@ -142,6 +142,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to One or more of the email addresses you entered are not valid..
+        /// </summary>
+        internal static string EmailsAreNotValid {
+            get {
+                return ResourceManager.GetString("EmailsAreNotValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {your_password_here}.
         /// </summary>
         internal static string EnterPassword {
@@ -201,6 +210,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string InvalidTenantId {
             get {
                 return ResourceManager.GetString("InvalidTenantId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You need to provide at least one email address or mark EmailServiceAndAccountAdmins as True..
+        /// </summary>
+        internal static string NeedToProvideEmail {
+            get {
+                return ResourceManager.GetString("NeedToProvideEmail", resourceCulture);
             }
         }
         
@@ -372,6 +390,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string ServerNotApplicableForDataMasking {
             get {
                 return ResourceManager.GetString("ServerNotApplicableForDataMasking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Threat Detection is only available in the latest SQL Database Update (V12). Please upgrade to set it up on your database..
+        /// </summary>
+        internal static string ServerNotApplicableForThreatDetection {
+            get {
+                return ResourceManager.GetString("ServerNotApplicableForThreatDetection", resourceCulture);
             }
         }
         

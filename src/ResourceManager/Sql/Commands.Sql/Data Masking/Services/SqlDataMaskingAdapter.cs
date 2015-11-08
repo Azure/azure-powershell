@@ -282,7 +282,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
             DatabaseDataMaskingPolicyModel dbPolicyModel = new DatabaseDataMaskingPolicyModel();
             DataMaskingPolicyProperties properties = policy.Properties;
             dbPolicyModel.DataMaskingState = ModelizePolicyState(properties.DataMaskingState); 
-            dbPolicyModel.PrivilegedLogins = properties.ExemptPrincipals;
+            dbPolicyModel.PrivilegedUsers = properties.ExemptPrincipals;
             return dbPolicyModel;
         }
 
@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
             DataMaskingPolicyProperties properties = new DataMaskingPolicyProperties();
             updateParameters.Properties = properties;
             properties.DataMaskingState = (model.DataMaskingState == DataMaskingStateType.Disabled) ? SecurityConstants.DataMaskingEndpoint.Disabled : SecurityConstants.DataMaskingEndpoint.Enabled;
-            properties.ExemptPrincipals = model.PrivilegedLogins ?? "";
+            properties.ExemptPrincipals = model.PrivilegedUsers ?? "";
             return updateParameters;
         }
     }

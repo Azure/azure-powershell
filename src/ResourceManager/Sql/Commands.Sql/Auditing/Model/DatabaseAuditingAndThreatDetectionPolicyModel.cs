@@ -18,11 +18,16 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
     /// The possible states in which the user server's policy property may be in
     /// </summary>
     public enum UseServerDefaultOptions {Enabled, Disabled }
-    
+
+    /// <summary>
+    /// The possible states in which an auditing policy may be in
+    /// </summary>
+    public enum ThreatDetectionStateType { Enabled, Disabled, New };
+
     /// <summary>
     /// A class representing a database auditing policy
     /// </summary>
-    public class DatabaseAuditingPolicyModel : BaseAuditingPolicyModel
+    public class DatabaseAuditingAndThreatDetectionPolicyModel : BaseAuditingPolicyModel
     {
         /// <summary>
         /// Gets or sets the database name
@@ -33,5 +38,29 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
         /// Gets or sets the use server default property
         /// </summary>
         public UseServerDefaultOptions UseServerDefault { get; set; }
+
+        #region Threat Detection properties
+
+        /// <summary>
+        /// Gets or sets the Threat Detection state
+        /// </summary>
+        public ThreatDetectionStateType ThreatDetectionState { get; internal set; }
+
+        /// <summary>
+        /// Gets or sets the Threat Detection Email Addresses
+        /// </summary>
+        public string EmailAddresses { get; internal set; }
+
+        /// <summary>
+        /// Gets or sets the whether to email service and co-administrators
+        /// </summary>
+        public bool EmailServiceAndAccountAdmins { get; internal set; }
+
+        /// <summary>
+        /// Gets or sets a semi-colon list of detection type to filter 
+        /// </summary>
+        public string FilterDetectionTypes { get; internal set; }
+
+        #endregion
     }
 }

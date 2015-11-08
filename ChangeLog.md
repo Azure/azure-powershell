@@ -1,4 +1,8 @@
-﻿* Azure Redis Cache
+﻿* Azure SQL Database: new cmdlets for managing database threat detection policies:
+  * Get-AzureRmSqlDatabaseThreatDetectionPolicy
+  * Set-AzureRmSqlDatabaseThreatDetectionPolicy
+
+* Azure Redis Cache
   * Set-AzureRedisCache - Premium and vNet support for redis cache
   * New-AzureRedisCache - Premium and vNet support for redis cache
 

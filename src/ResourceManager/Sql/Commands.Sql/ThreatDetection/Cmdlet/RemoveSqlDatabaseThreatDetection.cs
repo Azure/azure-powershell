@@ -14,15 +14,16 @@
 
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Sql.Auditing.Cmdlet;
 
-namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
+namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
 {
     /// <summary>
     /// Disables auditing on a specific database.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabaseAuditing"), OutputType(typeof(DatabaseAuditingAndThreatDetectionPolicyModel))]
-    [Alias("Remove-AzureRmSqlDatabaseAuditing")]
-    public class RemoveSqlDatabaseAuditing : SqlDatabaseAuditingCmdletBase
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabaseThreatDetection"), OutputType(typeof(DatabaseAuditingAndThreatDetectionPolicyModel))]
+    [Alias("Remove-AzureRmSqlDatabaseThreatDetection")]
+    public class RemoveSqlDatabaseThreatDetection : SqlDatabaseAuditingCmdletBase
     {
         /// <summary>
         ///  Defines whether the cmdlets will output the model object at the end of its execution
@@ -43,23 +44,8 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         protected override DatabaseAuditingAndThreatDetectionPolicyModel ApplyUserInputToModel(DatabaseAuditingAndThreatDetectionPolicyModel model)
         {
             base.ApplyUserInputToModel(model);
-            model.AuditState = AuditStateType.Disabled;
-
-            // When disabling auditing policy we disable Threat Detection
             model.ThreatDetectionState = ThreatDetectionStateType.Disabled;
             return model;
-        }
-
-        /// <summary>
-        /// This method is responsible to call the right API in the communication layer that will eventually send the information in the 
-        /// object to the REST endpoint
-        /// </summary>
-        /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected override DatabaseAuditingAndThreatDetectionPolicyModel PersistChanges(DatabaseAuditingAndThreatDetectionPolicyModel model)
-        {
-            ModelAdapter.IgnoreStorage = true;
-            base.PersistChanges(model);
-            return null;
         }
     }
 }

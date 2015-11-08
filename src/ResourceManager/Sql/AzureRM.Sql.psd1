@@ -82,7 +82,9 @@ AliasesToExport = @(
 	'Get-AzureRmSqlDatabaseServerAuditingPolicy',  
     'Remove-AzureRmSqlDatabaseServerAuditing',  
     'Set-AzureRmSqlDatabaseServerAuditingPolicy',  
-    'Use-AzureRmSqlDatabaseServerAuditingPolicy'
+    'Use-AzureRmSqlDatabaseServerAuditingPolicy',
+    'Set-AzureRmSqlDatabaseThreatDetectionPolicy',
+    'Get-AzureRmSqlDatabaseThreatDetectionPolicy' 
 )
   
 # List of all modules packaged with this module  

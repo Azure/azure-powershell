@@ -22,9 +22,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.BVT)]
-        public void TestDatabaseDataMaskingPrivilegedLoginsChanges()
+        public void TestDatabaseDataMaskingPrivilegedUsersChanges()
         {
-            RunPowerShellTest("Test-DatabaseDataMaskingPrivilegedLoginsChanges");
+            RunPowerShellTest("Test-DatabaseDataMaskingPrivilegedUsersChanges");
         }
 
         [Fact]

@@ -20,14 +20,14 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// <summary>
     /// Returns the auditing policy of a specific database.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseAuditingPolicy"), OutputType(typeof(DatabaseAuditingPolicyModel))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseAuditingPolicy"), OutputType(typeof(DatabaseAuditingAndThreatDetectionPolicyModel))]
     public class GetAzureSqlDatabaseAuditingPolicy : SqlDatabaseAuditingCmdletBase
     {
         /// <summary>
         /// No sending is needed as this is a Get cmdlet
         /// </summary>
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected override DatabaseAuditingPolicyModel PersistChanges(DatabaseAuditingPolicyModel model) 
+        protected override DatabaseAuditingAndThreatDetectionPolicyModel PersistChanges(DatabaseAuditingAndThreatDetectionPolicyModel model) 
         {
             return null;
         }

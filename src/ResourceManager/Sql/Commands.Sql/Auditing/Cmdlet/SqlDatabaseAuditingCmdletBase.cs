@@ -22,15 +22,15 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// <summary>
     /// The base class for all Azure Sql Database security Management Cmdlets
     /// </summary>
-    public abstract class SqlDatabaseAuditingCmdletBase  : AzureSqlDatabaseCmdletBase<DatabaseAuditingPolicyModel, SqlAuditAdapter>
+    public abstract class SqlDatabaseAuditingCmdletBase  : AzureSqlDatabaseCmdletBase<DatabaseAuditingAndThreatDetectionPolicyModel, SqlAuditAdapter>
     {
         /// <summary>
         /// Provides the model element that this cmdlet operates on
         /// </summary>
         /// <returns>A model object</returns>
-        protected override DatabaseAuditingPolicyModel GetEntity()
+        protected override DatabaseAuditingAndThreatDetectionPolicyModel GetEntity()
         {
-            return ModelAdapter.GetDatabaseAuditingPolicy(ResourceGroupName, ServerName, DatabaseName, clientRequestId);
+            return ModelAdapter.GetDatabaseAuditingAndThreatDetectionPolicy(ResourceGroupName, ServerName, DatabaseName, clientRequestId);
         }
 
         /// <summary>
@@ -48,9 +48,9 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// object to the REST endpoint
         /// </summary>
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected override DatabaseAuditingPolicyModel PersistChanges(DatabaseAuditingPolicyModel model)
+        protected override DatabaseAuditingAndThreatDetectionPolicyModel PersistChanges(DatabaseAuditingAndThreatDetectionPolicyModel model)
         {
-            ModelAdapter.SetDatabaseAuditingPolicy(model, clientRequestId, DefaultContext.Environment.Endpoints[AzureEnvironment.Endpoint.StorageEndpointSuffix]);
+            ModelAdapter.SetDatabaseAuditingAndThreatDetectionPolicy(model, clientRequestId, DefaultContext.Environment.Endpoints[AzureEnvironment.Endpoint.StorageEndpointSuffix]);
             return null;
         }
     }

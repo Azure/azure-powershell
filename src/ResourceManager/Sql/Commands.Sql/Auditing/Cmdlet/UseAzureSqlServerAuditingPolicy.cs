@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// <summary>
     /// Marks the given database as using its server's default policy instead of its own policy.
     /// </summary>
-    [Cmdlet(VerbsOther.Use, "AzureRmSqlServerAuditingPolicy"), OutputType(typeof(DatabaseAuditingPolicyModel))]
+    [Cmdlet(VerbsOther.Use, "AzureRmSqlServerAuditingPolicy"), OutputType(typeof(DatabaseAuditingAndThreatDetectionPolicyModel))]
     [Alias("Use-AzureRmSqlDatabaseServerAuditingPolicy")]
     public class UseAzureSqlServerAuditingPolicy : SqlDatabaseAuditingCmdletBase
     {
@@ -42,11 +42,15 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// Updates the given model element with the cmdlet specific operation 
         /// </summary>
         /// <param name="model">A model object</param>
-        protected override DatabaseAuditingPolicyModel ApplyUserInputToModel(DatabaseAuditingPolicyModel model)
+        protected override DatabaseAuditingAndThreatDetectionPolicyModel ApplyUserInputToModel(DatabaseAuditingAndThreatDetectionPolicyModel model)
         {
             base.ApplyUserInputToModel(model);
             model.UseServerDefault = UseServerDefaultOptions.Enabled;
             model.StorageAccountName = GetStorageAccountName();
+
+
+            // When disabling auditing policy we disable Threat Detection
+            model.ThreatDetectionState = ThreatDetectionStateType.Disabled;
             return model;
         }
 

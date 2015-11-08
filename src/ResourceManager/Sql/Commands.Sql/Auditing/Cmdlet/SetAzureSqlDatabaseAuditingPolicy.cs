@@ -12,13 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Sql.Properties;
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
-using Microsoft.Azure.Commands.Sql.Auditing.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.Sql.Services;
 using Microsoft.Azure.Commands.Sql.Common;
 
@@ -27,7 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// <summary>
     /// Sets the auditing policy properties for a specific database.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseAuditingPolicy"), OutputType(typeof(DatabaseAuditingPolicyModel))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseAuditingPolicy"), OutputType(typeof(DatabaseAuditingAndThreatDetectionPolicyModel))]
     public class SetAzureSqlDatabaseAuditingPolicy : SqlDatabaseAuditingCmdletBase
     {
         /// <summary>
@@ -71,6 +70,37 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the audit logs table")]
         [ValidateNotNullOrEmpty]
         public string TableIdentifier { get; internal set; }
+        
+        #region Threat Detection properties
+
+        /// <summary>
+        /// Gets or sets the Threat Detection state
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Defines if threat detection is enabled or disabled for this database")]
+        [ValidateSet(SecurityConstants.Enabled, SecurityConstants.Disabled, IgnoreCase = false)]
+        [ValidateNotNullOrEmpty]
+        public string ThreatDetectionState { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Threat Detection Email Addresses
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A semicolon separated list of email addresses to send the alerts to")]
+        public string EmailAddresses { get; set; }
+
+        /// <summary>
+        /// Gets or sets the whether to email service and co-administrators
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Defines whether to email service and co-administrators")]
+        [ValidateNotNullOrEmpty]
+        public bool? EmailServiceAndAccountAdmins { get; set; }
+
+        /// <summary>
+        /// Gets or sets a semi-colon list of detection type to filter 
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A semicolon separated list of detection types to filter")]
+        public string FilterDetectionTypes { get; internal set; }
+
+        #endregion
 
         /// <summary>
         /// Returns true if the model object that was constructed by this cmdlet should be written out
@@ -82,7 +112,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// Updates the given model element with the cmdlet specific operation 
         /// </summary>
         /// <param name="model">A model object</param>
-        protected override DatabaseAuditingPolicyModel ApplyUserInputToModel(DatabaseAuditingPolicyModel model)
+        protected override DatabaseAuditingAndThreatDetectionPolicyModel ApplyUserInputToModel(DatabaseAuditingAndThreatDetectionPolicyModel model)
         {
             base.ApplyUserInputToModel(model);
             AuditStateType orgAuditStateType = model.AuditState;
@@ -115,14 +145,73 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
                 if ((orgAuditStateType == AuditStateType.New) && (model.RetentionInDays > 0))
                 {
                     // If retention days is greater than 0 and no audit table identifier is supplied , we throw exception giving the user hint on the recommended TableIdentifier we got from the CSM
-                    throw new Exception(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.InvalidRetentionTypeSet, model.TableIdentifier));
+                    throw new Exception(string.Format(Properties.Resources.InvalidRetentionTypeSet, model.TableIdentifier));
                 }
             }
             else
             {
                 model.TableIdentifier = TableIdentifier;
             }
+
+            // Threat Detection related definitions:
+            // *************************************
+            if (!string.IsNullOrEmpty(ThreatDetectionState))
+            {
+                model.ThreatDetectionState = (ThreatDetectionState == SecurityConstants.Enabled) ? ThreatDetectionStateType.Enabled : ThreatDetectionStateType.Disabled;
+            }
+
+            if (EmailAddresses != null)
+            {
+                model.EmailAddresses = EmailAddresses;
+            }
+
+            if (EmailServiceAndAccountAdmins != null)
+            {
+                model.EmailServiceAndAccountAdmins = (bool) EmailServiceAndAccountAdmins;
+            }
+
+            if (FilterDetectionTypes != null)
+            {
+                model.FilterDetectionTypes = FilterDetectionTypes;
+            }
+
+            if (model.ThreatDetectionState == ThreatDetectionStateType.Enabled)
+            {
+                // Validity checks:
+                // 1. Check that EmailAddresses are in correct format 
+                bool areEmailAddressesInCorrectFormat = AreEmailAddressesInCorrectFormat(EmailAddresses);
+                if (!areEmailAddressesInCorrectFormat)
+                {
+                    throw new Exception(Properties.Resources.EmailsAreNotValid);
+                }
+
+                // 2. check that EmailServiceAndAccountAdmins is not False and EmailAddresses is not empty
+                if (!model.EmailServiceAndAccountAdmins && string.IsNullOrEmpty(model.EmailAddresses))
+                {
+                    throw new Exception(Properties.Resources.NeedToProvideEmail);
+                }
+            }
+
             return model;
+        }
+
+        /// <summary>
+        /// Checks if email addresses are in a correct format
+        /// </summary>
+        /// <param name="emailAddresses">The email addresses</param>
+        /// <returns>Returns whether the email addresses are in a correct format</returns>
+        private bool AreEmailAddressesInCorrectFormat(string emailAddresses)
+        {
+            if (string.IsNullOrEmpty(emailAddresses))
+            {
+                return true;
+            }
+
+            string[] emailAddressesArray = emailAddresses.Split(';').Where(s => !string.IsNullOrEmpty(s)).ToArray();
+            var emailRegex = new Regex(@"^[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)*@([a-zA-Z0-9_]+[a-zA-Z0-9_-]*\.)+[a-zA-Z]{2,63}$");
+
+            List<string> resultList = emailAddressesArray.Where(i => emailRegex.IsMatch(i)).ToList();
+            return resultList.Count == emailAddressesArray.Count();
         }
     }
 }

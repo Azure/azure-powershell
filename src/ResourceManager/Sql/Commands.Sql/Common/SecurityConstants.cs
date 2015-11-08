@@ -120,5 +120,15 @@ namespace Microsoft.Azure.Commands.Sql.Common
             public const string Required = "Required";
             public const string Optional = "Optional";
         }
+
+        /// <summary>
+        /// The values that are sent and received by the threat detection endpoint
+        /// </summary>
+        public class ThreatDetectionEndpoint
+        {
+            public const string New = "New";
+            public const string Enabled = "Enabled";
+            public const string Disabled = "Disabled";
+        }
     }
 }
