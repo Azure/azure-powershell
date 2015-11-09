@@ -12,13 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.Properties;
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
+using Microsoft.Azure.Commands.Sql.Auditing.Services;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Sql.Services;
 using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Commands.Sql.ThreatDetection.Model;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 {
@@ -69,14 +71,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the audit logs table")]
         [ValidateNotNullOrEmpty]
         public string TableIdentifier { get; internal set; }
-        
-        /// <summary>
-        /// Gets or sets the Threat Detection state
-        /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Defines if threat detection is enabled or disabled for this database")]
-        [ValidateSet(SecurityConstants.Enabled, SecurityConstants.Disabled, IgnoreCase = false)]
-        [ValidateNotNullOrEmpty]
-        public string ThreatDetectionState { get; set; }
 
         /// <summary>
         /// Returns true if the model object that was constructed by this cmdlet should be written out
@@ -121,14 +115,13 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
                 if ((orgAuditStateType == AuditStateType.New) && (model.RetentionInDays > 0))
                 {
                     // If retention days is greater than 0 and no audit table identifier is supplied , we throw exception giving the user hint on the recommended TableIdentifier we got from the CSM
-                    throw new Exception(string.Format(Properties.Resources.InvalidRetentionTypeSet, model.TableIdentifier));
+                    throw new Exception(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.InvalidRetentionTypeSet, model.TableIdentifier));
                 }
             }
             else
             {
                 model.TableIdentifier = TableIdentifier;
             }
-
             return model;
         }
     }

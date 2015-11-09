@@ -12,9 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
-using Microsoft.Azure.Commands.Sql.ThreatDetection.Model;
-
 namespace Microsoft.Azure.Commands.Sql.Auditing.Model
 {
     /// <summary>
