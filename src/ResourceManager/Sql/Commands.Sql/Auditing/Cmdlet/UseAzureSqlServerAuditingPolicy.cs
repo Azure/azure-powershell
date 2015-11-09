@@ -15,7 +15,6 @@
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using System;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Sql.ThreatDetection.Model;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 {

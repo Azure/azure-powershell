@@ -262,6 +262,6 @@
     <value>Threat detection is only available for the latest SQL Database Update (V12). Please upgrade to set it up on your database.</value>
   </data>
   <data name="AuditingIsTurnedOff" xml:space="preserve">
-    <value>In order to enable Threat Detection, please enable database auditing via Set-AzureRmSqlDatabaseAuditingPolicy</value>
+    <value>In order to enable Threat Detection, please enable database auditing.</value>
   </data>
 </root>

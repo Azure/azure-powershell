@@ -42,11 +42,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// The auditing endpoints communicator used by this adapter
         /// </summary>
         private AuditingEndpointsCommunicator AuditingCommunicator { get; set; }
-
-        /// <summary>
-        /// The Sql Threat Detection Adapter
-        /// </summary>
-        private SqlThreatDetectionAdapter ThreatDetectionAdapter { get; set; }
        
         /// <summary>
         /// The Azure endpoints communicator used by this adapter
@@ -88,7 +83,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             Context = context;
             Subscription = context.Subscription;
             AuditingCommunicator = new AuditingEndpointsCommunicator(Context);
-            ThreatDetectionAdapter = new SqlThreatDetectionAdapter(Context);
             AzureCommunicator = new AzureEndpointsCommunicator(Context);
             IgnoreStorage = false;
         }
@@ -258,16 +252,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             }
             model.RetentionInDays = retentionDaysForModel;
         }
-
-        /// <summary>
-        /// Transforms the given policy state in a string form to its cmdlet model representation
-        /// </summary>
-        private ThreatDetectionStateType ModelizeThreatDetectionState(string threatDetectionState)
-        {
-            if (threatDetectionState == SecurityConstants.ThreatDetectionEndpoint.New) return ThreatDetectionStateType.New;
-            if (threatDetectionState == SecurityConstants.ThreatDetectionEndpoint.Enabled) return ThreatDetectionStateType.Enabled;
-            return ThreatDetectionStateType.Disabled;
-        }
         
         /// <summary>
         /// Transforms the given model to its endpoints acceptable structure and sends it to the endpoint
@@ -283,36 +267,13 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// </summary>
         public void SetDatabaseAuditingAndThreatDetectionState(DatabaseAuditingPolicyModel model, String clientId, string storageEndpointSuffix)
         {
-            if ((model.ThreatDetectionState == ThreatDetectionStateType.Enabled)
-                    && !IsRightServerVersionForThreatDetection(model.ResourceGroupName, model.ServerName, clientId))
-            {
-                throw new Exception(Properties.Resources.ServerNotApplicableForThreatDetection);
-            }
-
             if (!IsDatabaseInServiceTierForPolicy(model, clientId))
             {
                 throw new Exception(Properties.Resources.DatabaseNotInServiceTierForAuditingPolicy);
             }
 
-            // We save the old model in case we need to revert to it.
-            DatabaseAuditingPolicyModel oldDatabaseAuditingAndThreatDetectionModel = GetDatabaseAuditingPolicy(model.ResourceGroupName, model.ServerName, model.DatabaseName, clientId);
-
             DatabaseAuditingPolicyCreateOrUpdateParameters databaseAuditingPolicyParameters = PolicizeDatabaseAuditingModel(model, storageEndpointSuffix);
             AuditingCommunicator.SetDatabaseAuditingPolicy(model.ResourceGroupName, model.ServerName, model.DatabaseName, clientId, databaseAuditingPolicyParameters);
-
-            try
-            {
-                ThreatDetectionPolicyModel threatDetectionPolicyModel = ThreatDetectionAdapter.GetDatabaseThreatDetectionPolicy(model.ResourceGroupName, model.ServerName, model.DatabaseName, clientId);
-                threatDetectionPolicyModel.ThreatDetectionState = model.ThreatDetectionState;
-                ThreatDetectionAdapter.SetDatabaseThreatDetectionPolicy(threatDetectionPolicyModel, clientId);
-            }
-            catch (Exception)
-            {
-                // we revert the auditing policy
-                databaseAuditingPolicyParameters = PolicizeDatabaseAuditingModel(oldDatabaseAuditingAndThreatDetectionModel, storageEndpointSuffix);
-                AuditingCommunicator.SetDatabaseAuditingPolicy(oldDatabaseAuditingAndThreatDetectionModel.ResourceGroupName, model.ServerName, model.DatabaseName, clientId, databaseAuditingPolicyParameters);
-                throw;
-            }
         }
 
         private bool IsDatabaseInServiceTierForPolicy(DatabaseAuditingPolicyModel model, string clientId)

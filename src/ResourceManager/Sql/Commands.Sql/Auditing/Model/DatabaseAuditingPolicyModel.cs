@@ -31,12 +31,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
         /// Gets or sets the database name
         /// </summary>
         public string DatabaseName { get; set; }
-
-
-        /// <summary>
-        /// Gets or sets the Threat Detection state
-        /// </summary>
-        public ThreatDetectionStateType ThreatDetectionState { get; internal set; }
       
         /// <summary>
         /// Gets or sets the use server default property

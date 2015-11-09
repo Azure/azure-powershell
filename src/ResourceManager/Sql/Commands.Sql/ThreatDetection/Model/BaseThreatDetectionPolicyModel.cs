@@ -20,6 +20,11 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Model
     public enum ThreatDetectionStateType { Enabled, Disabled, New };
 
     /// <summary>
+    /// The possible disable alert types
+    /// </summary> 
+    public enum FilterDetectionType { Successful_SQLi, Attempted_SQLi, Client_GEO_Anomaly, Failed_Logins_Anomaly, Failed_Queries_Anomaly, Data_Extraction_Anomaly, Data_Alteration_Anomaly };
+
+    /// <summary>
     /// A class representing a database auditing policy
     /// </summary>
     public class BaseThreatDetectionPolicyModel
@@ -42,16 +47,16 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Model
         /// <summary>
         /// Gets or sets the Threat Detection Email Addresses
         /// </summary>
-        public string EmailAddresses { get; internal set; }
+        public string NotificationRecipientsEmail { get; internal set; }
 
         /// <summary>
         /// Gets or sets the whether to email service and co-administrators
         /// </summary>
-        public bool EmailServiceAndAccountAdmins { get; internal set; }
+        public bool EmailAdmins { get; internal set; }
 
         /// <summary>
-        /// Gets or sets a semi-colon list of detection type to filter 
+        /// Gets or sets the detection types to filter 
         /// </summary>
-        public string FilterDetectionTypes { get; internal set; }
+        public FilterDetectionType[] FilterDetectionTypes { get; internal set; }
     }
 }

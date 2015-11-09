@@ -14,10 +14,8 @@
 
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.Sql.Services;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.ThreatDetection.Model;
@@ -129,11 +127,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             else
             {
                 model.TableIdentifier = TableIdentifier;
-            }
-
-            if (!string.IsNullOrEmpty(ThreatDetectionState))
-            {
-                model.ThreatDetectionState = (ThreatDetectionState == SecurityConstants.Enabled) ? ThreatDetectionStateType.Enabled : ThreatDetectionStateType.Disabled;
             }
 
             return model;

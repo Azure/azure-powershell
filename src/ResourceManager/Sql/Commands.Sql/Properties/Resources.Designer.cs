@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In order to enable Threat Detection, please enable database auditing via Set-AzureRmSqlDatabaseAuditingPolicy.
+        ///   Looks up a localized string similar to In order to enable Threat Detection, please enable database auditing..
         /// </summary>
         internal static string AuditingIsTurnedOff {
             get {

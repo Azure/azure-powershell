@@ -14,6 +14,7 @@
 
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
+using Microsoft.Azure.Commands.Sql.ThreatDetection.Model;
 
 namespace Microsoft.Azure.Commands.Sql.Common
 {
@@ -58,6 +59,27 @@ namespace Microsoft.Azure.Commands.Sql.Common
         public const string Enabled = "Enabled";
         public const string Disabled = "Disabled";
 
+        // Threat Detection disabled types::
+        public const string Successful_SQLi = "Successful_SQLi";
+        public const string Attempted_SQLi = "Attempted_SQLi";
+        public const string Client_GEO_Anomaly = "Client_GEO_Anomaly";
+        public const string Failed_Logins_Anomaly = "Failed_Logins_Anomaly";
+        public const string Failed_Queries_Anomaly = "Failed_Queries_Anomaly";
+        public const string Data_Extraction_Anomaly = "Data_Extraction_Anomaly";
+        public const string Data_Alteration_Anomaly = "Data_Alteration_Anomaly";
+
+        public static readonly Dictionary<string, FilterDetectionType> FilterDetectionToFilterDetectionTypes = new Dictionary
+            <string, FilterDetectionType>
+        {
+            {Successful_SQLi, FilterDetectionType.Successful_SQLi},
+            {Attempted_SQLi, FilterDetectionType.Attempted_SQLi},
+            {Client_GEO_Anomaly, FilterDetectionType.Client_GEO_Anomaly},
+            {Failed_Logins_Anomaly, FilterDetectionType.Failed_Logins_Anomaly},
+            {Failed_Queries_Anomaly, FilterDetectionType.Failed_Queries_Anomaly},
+            {Data_Extraction_Anomaly, FilterDetectionType.Data_Extraction_Anomaly},
+            {Data_Alteration_Anomaly, FilterDetectionType.Data_Alteration_Anomaly},
+        };
+        
         // Masking functions
         public const string NoMasking = "NoMasking";
         public const string Default = "Default";

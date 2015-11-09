@@ -13,7 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.ThreatDetection.Model;
 
 namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
@@ -43,11 +45,13 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         [ValidateNotNullOrEmpty]
         public bool? EmailAdmins { get; set; }
 
+
         /// <summary>
-        /// Gets or sets a semi-colon list of detection type to filter 
+        /// Gets or sets the names of the detection types to filter.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A semicolon separated list of detection types to filter")]
-        public string FilterDetectionTypes { get; internal set; }
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Detection types to filter")]
+        [ValidateSet(SecurityConstants.Successful_SQLi, SecurityConstants.Attempted_SQLi, SecurityConstants.Client_GEO_Anomaly, SecurityConstants.Failed_Logins_Anomaly, SecurityConstants.Failed_Queries_Anomaly, SecurityConstants.Data_Extraction_Anomaly, SecurityConstants.Data_Alteration_Anomaly, IgnoreCase = false)]
+        public string[] FilterDetectionTypes { get; set; }
 
         /// <summary>
         /// Returns true if the model object that was constructed by this cmdlet should be written out
@@ -67,24 +71,24 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
 
             if (NotificationRecipientsEmail != null)
             {
-                model.EmailAddresses = NotificationRecipientsEmail;
+                model.NotificationRecipientsEmail = NotificationRecipientsEmail;
             }
 
             if (EmailAdmins != null)
             {
-                model.EmailServiceAndAccountAdmins = (bool)EmailAdmins;
+                model.EmailAdmins = (bool)EmailAdmins;
             }
 
             if (FilterDetectionTypes != null)
             {
-                model.FilterDetectionTypes = FilterDetectionTypes;
+                model.FilterDetectionTypes = FilterDetectionTypes.Select(s => SecurityConstants.FilterDetectionToFilterDetectionTypes[s]).ToArray(); ;
             }
 
             if (model.ThreatDetectionState == ThreatDetectionStateType.Enabled)
             {
                 // Validity checks:
                 // 1. check that EmailAdmins is not False and NotificationRecipientsEmail is not empty
-                if (!model.EmailServiceAndAccountAdmins && string.IsNullOrEmpty(model.EmailAddresses))
+                if (!model.EmailAdmins && string.IsNullOrEmpty(model.NotificationRecipientsEmail))
                 {
                     throw new Exception(Properties.Resources.NeedToProvideEmail);
                 }

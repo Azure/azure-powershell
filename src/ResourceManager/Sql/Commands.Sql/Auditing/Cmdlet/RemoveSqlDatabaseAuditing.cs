@@ -45,9 +45,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         {
             base.ApplyUserInputToModel(model);
             model.AuditState = AuditStateType.Disabled;
-
-            // When disabling auditing policy we disable Threat Detection
-            model.ThreatDetectionState = ThreatDetectionStateType.Disabled;
             return model;
         }
 
