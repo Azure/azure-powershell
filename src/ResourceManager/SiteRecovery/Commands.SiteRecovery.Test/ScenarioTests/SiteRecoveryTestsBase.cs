@@ -114,7 +114,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
         private RecoveryServicesManagementClient GetRecoveryServicesManagementClient()
         {
             return new RecoveryServicesManagementClient(
-                "Microsoft.SiteRecovery",
+                "Microsoft.RecoveryServices",
+                "vaults",
                 CloudServiceManagementClient.Credentials,
                 CloudServiceManagementClient.BaseUri).WithHandler(HttpMockServer.CreateInstance());
         }
@@ -132,7 +133,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
             return new SiteRecoveryManagementClient(
                 asrVaultCreds.ResourceName,
                 asrVaultCreds.ResourceGroupName,
-                "Microsoft.SiteRecovery",
+                "Microsoft.RecoveryServices",
+                "vaults",
                 CloudServiceManagementClient.Credentials,
                 CloudServiceManagementClient.BaseUri).WithHandler(HttpMockServer.CreateInstance());
         }

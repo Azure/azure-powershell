@@ -1,0 +1,453 @@
+﻿//// ----------------------------------------------------------------------------------
+////
+//// Copyright Microsoft Corporation
+//// Licensed under the Apache License, Version 2.0 (the "License");
+//// you may not use this file except in compliance with the License.
+//// You may obtain a copy of the License at
+//// http://www.apache.org/licenses/LICENSE-2.0
+//// Unless required by applicable law or agreed to in writing, software
+//// distributed under the License is distributed on an "AS IS" BASIS,
+//// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//// See the License for the specific language governing permissions and
+//// limitations under the License.
+//// ----------------------------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Runtime.Serialization;
+using System.Text;
+using Microsoft.Azure.Commands.RecoveryServices;
+using Microsoft.Azure.Management.RecoveryServices.Models;
+
+namespace Microsoft.Azure.Commands.RecoveryServices
+{
+    /// <summary>
+    /// Hash functions which can be used to calculate CIK HMAC.
+    /// </summary>
+    public enum CikSupportedHashFunctions
+    {
+        /// <summary>
+        /// Represents a HMACSHA256 hash function.
+        /// </summary>
+        HMACSHA256,
+
+        /// <summary>
+        /// Represents a HMACSHA384 hash function.
+        /// </summary>
+        HMACSHA384,
+
+        /// <summary>
+        /// Represents a HMACSHA512 hash function.
+        /// </summary>
+        HMACSHA512
+    }
+
+    /// <summary>
+    /// The types of crypto algorithms
+    /// </summary>
+    public enum CryptoAlgorithm
+    {
+        /// <summary>
+        /// The asymmetric key based RSA 2048 algorithm.
+        /// </summary>
+        RSAPKCS1V17,
+
+        /// <summary>
+        /// The asymmetric key based RSA 2048 algorithm.
+        /// </summary>
+        RSAPKCS1V15,
+
+        /// <summary>
+        /// The symmetric key based AES algorithm with key size 256 bits.
+        /// </summary>
+        AES256,
+
+        /// <summary>
+        /// The symmetric key based SHA 256 Algorithm
+        /// </summary>
+        HMACSHA256,
+
+        /// <summary>
+        /// When no algorithm is used.
+        /// </summary>
+        None
+    }
+
+    /// <summary>
+    /// The RP service error code that needs to be handled by portal.
+    /// </summary>
+    public enum RpErrorCode
+    {
+        /// <summary>
+        /// The error code sent by RP if the Resource extended info doesn't exists.
+        /// </summary>
+        ResourceExtendedInfoNotFound
+    }
+
+    /// <summary>
+    /// Error contract returned when some exception occurs in ASR REST API.
+    /// </summary>
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all contracts together.")]
+    [DataContract]
+    public class ErrorInException : Error
+    {
+    }
+
+    /// <summary>
+    /// Error contract returned when some exception occurs in ASR REST API.
+    /// </summary>
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all contracts together.")]
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    public class Error
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Error" /> class.
+        /// </summary>
+        public Error()
+        {
+        }
+
+        /// <summary>
+        /// Gets or sets error code.
+        /// </summary>
+        [DataMember]
+        public string Code { get; set; }
+
+        /// <summary>
+        /// Gets or sets error message.
+        /// </summary>
+        [DataMember]
+        public string Message { get; set; }
+
+        /// <summary>
+        /// Gets or sets possible causes of error.
+        /// </summary>
+        [DataMember]
+        public string PossibleCauses { get; set; }
+
+        /// <summary>
+        /// Gets or sets recommended action to resolve error.
+        /// </summary>
+        [DataMember]
+        public string RecommendedAction { get; set; }
+
+        /// <summary>
+        /// Gets or sets client request Id.
+        /// </summary>
+        [DataMember(Name = "ActivityId")]
+        public string ClientRequestId { get; set; }
+    }
+
+    /// <summary>
+    /// CIK token details.
+    /// </summary>
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all contracts together.")]
+    [DataContract]
+    public class CikTokenDetails
+    {
+        /// <summary>
+        /// Gets or sets the timestamp before which the token is not valid.
+        /// </summary>
+        [DataMember]
+        public DateTime NotBeforeTimestamp { get; set; }
+
+        /// <summary>
+        /// Gets or sets the timestamp after which the token is not valid.
+        /// </summary>
+        [DataMember]
+        public DateTime NotAfterTimestamp { get; set; }
+
+        /// <summary>
+        /// Gets or sets the client request Id for the operation linked with this CIK token.
+        /// </summary>
+        [DataMember]
+        public string ClientRequestId { get; set; }
+
+        /// <summary>
+        /// Gets or sets Hash function used to calculate the HMAC.
+        /// </summary>
+        [DataMember]
+        public string HashFunction { get; set; }
+
+        /// <summary>
+        /// Gets or sets the HMAC generated using the CIK key.
+        /// </summary>
+        [DataMember]
+        public string Hmac { get; set; }
+
+        /// <summary>
+        /// Gets or sets Data contract version.
+        /// </summary>
+        [DataMember(Name = "Version")]
+        public Version Version { get; set; }
+
+        /// <summary>
+        /// Gets or sets property bag. This property bag is introduced to support addition of any 
+        /// new property in data contract without breaking the existing clients.
+        /// If any new property needs to be introduced in the contract, 
+        /// add a key value pair for it in this dictionary. 
+        /// </summary>
+        [DataMember]
+        public Dictionary<string, object> PropertyBag { get; set; }
+
+        /// <summary>
+        /// Converts the object into string.
+        /// </summary>
+        /// <returns>The string representation.</returns>
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("NotBeforeTimestamp: " + this.NotBeforeTimestamp);
+            sb.AppendLine("NotAfterTimestamp: " + this.NotAfterTimestamp);
+            sb.AppendLine("ClientRequestId: " + this.ClientRequestId);
+            sb.AppendLine("Hmac: " + this.Hmac);
+            return sb.ToString();
+        }
+    }
+}
+
+//// TODO: Remove this once we get nuget
+namespace Microsoft.Azure.Commands.RecoveryServices.RestApiInfra
+{
+    /// <summary>
+    /// Class to define the error for RP
+    /// </summary>
+    [SuppressMessage(
+    "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+    "SA1402:FileMayOnlyContainASingleClass",
+    Justification = "Keeping all contracts together.")]
+    [DataContract(Namespace = "http://schemas.microsoft.com/wars")]
+    public class Error
+    {
+        /// <summary>
+        /// Gets or sets the value for the error as string.
+        /// </summary>
+        [DataMember]
+        public string ErrorCode { get; set; }
+    }
+}
+
+namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
+{
+    /// <summary>
+    /// Class to define Vault credentials
+    /// </summary>
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all contracts together.")]
+    [DataContract]
+    public class VaultCreds
+    {
+        #region Constructores
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VaultCreds"/> class.
+        /// </summary>
+        public VaultCreds()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VaultCreds"/> class.
+        /// </summary>
+        /// <param name="subscriptionId">subscription Id</param>
+        /// <param name="resourceName">resource name</param>
+        /// <param name="managementCert">management cert</param>
+        /// <param name="acsNamespace">authenticating service namespace</param>
+        public VaultCreds(string subscriptionId, string resourceName, string managementCert, AcsNamespace acsNamespace)
+        {
+            this.SubscriptionId = subscriptionId;
+            this.ResourceType = Constants.ASRVaultType;
+            this.ResourceName = resourceName;
+            this.ManagementCert = managementCert;
+            this.AcsNamespace = acsNamespace;
+        }
+
+        #endregion
+
+        #region Properties
+        /// <summary>
+        /// Gets or sets the key name for Namespace entry
+        /// </summary>
+        [DataMember(Order = 0)]
+        public string SubscriptionId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the key name for Namespace entry
+        /// </summary>
+        [DataMember(Order = 1)]
+        public string ResourceType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the key name for Namespace entry
+        /// </summary>
+        [DataMember(Order = 2)]
+        public string ResourceName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the key name for Namespace entry
+        /// </summary>
+        [DataMember(Order = 3)]
+        public string ManagementCert { get; set; }
+
+        /// <summary>
+        /// Gets or sets the key name for HostName entry
+        /// </summary>
+        [DataMember(Order = 4)]
+        public AcsNamespace AcsNamespace { get; set; }
+
+        #endregion
+    }
+
+    /// <summary>
+    /// Class to define ASR Vault credentials
+    /// </summary>
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all contracts together.")]
+    public class ASRVaultCreds : VaultCreds
+    {
+        #region Constructores
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ASRVaultCreds"/> class.
+        /// </summary>
+        public ASRVaultCreds()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ASRVaultCreds"/> class.
+        /// </summary>
+        /// <param name="subscriptionId">subscription Id</param>
+        /// <param name="resourceName">resource name</param>
+        /// <param name="managementCert">management cert</param>
+        /// <param name="acsNamespace">authenticating service  namespace</param>
+        /// <param name="channelIntegrityKey">Agent Channel Integrity Key</param>
+        /// <param name="resourceGroupName">cloud service name</param>
+        /// <param name="siteId">custom site Id</param>
+        /// <param name="siteName">custom site name</param>
+        public ASRVaultCreds(
+            string subscriptionId,
+            string resourceName,
+            string managementCert,
+            AcsNamespace acsNamespace,
+            string channelIntegrityKey,
+            string resourceGroupName,
+            string siteId,
+            string siteName,
+            string resourceNamespace,
+            string resourceType)
+            : base(subscriptionId, resourceName, managementCert, acsNamespace)
+        {
+            this.ChannelIntegrityKey = channelIntegrityKey;
+            this.ResourceGroupName = resourceGroupName;
+            this.Version = Constants.VaultCredentialVersion;
+
+            this.SiteId = siteId != null ? siteId : string.Empty;
+            this.SiteName = siteName != null ? siteName : string.Empty;
+
+            this.ResourceNamespace = resourceNamespace;
+            this.ARMResourceType = resourceType;
+        }
+
+        #endregion
+
+        #region Properties
+        /// <summary>
+        /// Gets or sets the value for ACIK
+        /// </summary>
+        [DataMember(Order = 0)]
+        public string ChannelIntegrityKey { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value for cloud service name
+        /// </summary>
+        [DataMember(Order = 1)]
+        public string ResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the values for the version of the credentials
+        /// </summary>
+        [DataMember(Order = 2)]
+        public string Version { get; set; }
+
+        /// <summary>
+        /// Gets or sets the site Id
+        /// </summary>
+        [DataMember(Order = 3)]
+        public string SiteId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the site name
+        /// </summary>
+        [DataMember(Order = 4)]
+        public string SiteName { get; set; }
+
+        /// <summary>
+        /// Gets or sets Resource namespace
+        /// </summary>
+        [DataMember(Order = 5)]
+        public string ResourceNamespace { get; set; }
+
+        /// <summary>
+        /// Gets or sets Resource type
+        /// </summary>
+        [DataMember(Order = 6)]
+        public string ARMResourceType { get; set; }
+
+        #endregion
+    }
+
+    /// <summary>
+    /// Class to define ACS name space
+    /// </summary>
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all contracts together.")]
+    [DataContract]
+    public class AcsNamespace
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AcsNamespace"/> class.
+        /// </summary>
+        /// <param name="acsDetails">authenticating service Details name</param>
+        public AcsNamespace(UploadCertificateResponse acsDetails)
+        {
+            this.HostName = acsDetails.Properties.GlobalAcsHostName;
+            this.Namespace = acsDetails.Properties.GlobalAcsNamespace;
+            this.ResourceProviderRealm = acsDetails.Properties.GlobalAcsRPRealm;
+        }
+
+        /// <summary>
+        /// Gets or sets Host name
+        /// </summary>
+        [DataMember(Order = 0)]
+        public string HostName { get; set; }
+
+        /// <summary>
+        /// Gets or sets Name space
+        /// </summary>
+        [DataMember(Order = 0)]
+        public string Namespace { get; set; }
+
+        /// <summary>
+        /// Gets or sets Resource provider realm
+        /// </summary>
+        [DataMember(Order = 0)]
+        public string ResourceProviderRealm { get; set; }
+    }
+}
