@@ -33,7 +33,7 @@ function Test-ThreatDetectionDatabaseGetDefualtPolicy
 		Assert-AreEqual $policy.ThreatDetectionState "New"
 		Assert-AreEqual $policy.NotificationRecipientsEmail ""
         Assert-True {$policy.EmailAdmins}
-        Assert-AreEqual $policy.FilterDetectionTypes ""
+        Assert-AreEqual $policy.ExcludedDetectionTypes ""
 	}
 	finally
 	{
@@ -57,34 +57,34 @@ function Test-ThreatDetectionDatabaseUpdatePolicy
 	{
 		# Test
         Set-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
-        Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -NotificationRecipientsEmail "koko@mailTest.com;koko1@mailTest.com" -EmailAdmins $false -FilterDetectionTypes "Successful_SQLi", "Attempted_SQLi"
+        Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -NotificationRecipientsEmail "koko@mailTest.com;koko1@mailTest.com" -EmailAdmins $false -ExcludedDetectionTypes "Successful_SQLi", "Attempted_SQLi"
         $policy = Get-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
 		# Assert
 		Assert-AreEqual $policy.ThreatDetectionState "Enabled"
 		Assert-AreEqual $policy.NotificationRecipientsEmail "koko@mailTest.com;koko1@mailTest.com"
         Assert-False {$policy.EmailAdmins}
-        Assert-AreEqual $policy.FilterDetectionTypes.Length 2
-		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.FilterDetectionType]::Successful_SQLi)}
-		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.FilterDetectionType]::Attempted_SQLi)}
+        Assert-AreEqual $policy.ExcludedDetectionTypes.Length 2
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ExcludedDetectionType]::Successful_SQLi)}
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ExcludedDetectionType]::Attempted_SQLi)}
 
 
         # Test
-        Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -FilterDetectionTypes "Successful_SQLi", "Attempted_SQLi", "Client_Access_Anomaly", "Failed_Logins_Anomaly", "Failed_Queries_Anomaly", "Data_Extraction_Anomaly", "Data_Alteration_Anomaly"
+        Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -ExcludedDetectionTypes "Successful_SQLi", "Attempted_SQLi", "Client_GEO_Anomaly", "Failed_Logins_Anomaly", "Failed_Queries_Anomaly", "Data_Extraction_Anomaly", "Data_Alteration_Anomaly"
         $policy = Get-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
 		# Assert
 		Assert-AreEqual $policy.ThreatDetectionState "Enabled"
 		Assert-AreEqual $policy.NotificationRecipientsEmail "koko@mailTest.com;koko1@mailTest.com"
         Assert-False {$policy.EmailAdmins}
-        Assert-AreEqual $policy.FilterDetectionTypes.Length 7
-		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.FilterDetectionType]::Successful_SQLi)}
-		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.FilterDetectionType]::Attempted_SQLi)}
-		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.FilterDetectionType]::Client_Access_Anomaly)}
-		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.FilterDetectionType]::Failed_Logins_Anomaly)}
-		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.FilterDetectionType]::Failed_Queries_Anomaly)}
-		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.FilterDetectionType]::Data_Extraction_Anomaly)}
-		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.FilterDetectionType]::Data_Alteration_Anomaly)}
+        Assert-AreEqual $policy.ExcludedDetectionTypes.Length 7
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ExcludedDetectionType]::Successful_SQLi)}
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ExcludedDetectionType]::Attempted_SQLi)}
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ExcludedDetectionType]::Client_GEO_Anomaly)}
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ExcludedDetectionType]::Failed_Logins_Anomaly)}
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ExcludedDetectionType]::Failed_Queries_Anomaly)}
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ExcludedDetectionType]::Data_Extraction_Anomaly)}
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ExcludedDetectionType]::Data_Alteration_Anomaly)}
 
         
         # Test
@@ -95,14 +95,14 @@ function Test-ThreatDetectionDatabaseUpdatePolicy
 		Assert-AreEqual $policy.ThreatDetectionState "Disabled"
 		Assert-AreEqual $policy.NotificationRecipientsEmail "koko@mailTest.com;koko1@mailTest.com"
         Assert-False {$policy.EmailAdmins}
-        Assert-AreEqual $policy.FilterDetectionTypes.Length 7
-		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.FilterDetectionType]::Successful_SQLi)}
-		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.FilterDetectionType]::Attempted_SQLi)}
-		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.FilterDetectionType]::Client_Access_Anomaly)}
-		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.FilterDetectionType]::Failed_Logins_Anomaly)}
-		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.FilterDetectionType]::Failed_Queries_Anomaly)}
-		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.FilterDetectionType]::Data_Extraction_Anomaly)}
-		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.FilterDetectionType]::Data_Alteration_Anomaly)}
+        Assert-AreEqual $policy.ExcludedDetectionTypes.Length 7
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ExcludedDetectionType]::Successful_SQLi)}
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ExcludedDetectionType]::Attempted_SQLi)}
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ExcludedDetectionType]::Client_GEO_Anomaly)}
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ExcludedDetectionType]::Failed_Logins_Anomaly)}
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ExcludedDetectionType]::Failed_Queries_Anomaly)}
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ExcludedDetectionType]::Data_Extraction_Anomaly)}
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ExcludedDetectionType]::Data_Alteration_Anomaly)}
 	}
 	finally
 	{

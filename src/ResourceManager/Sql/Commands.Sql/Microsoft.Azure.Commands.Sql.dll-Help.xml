@@ -9609,7 +9609,7 @@ Tags                          :</maml:para>
           <command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
         </command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-          <maml:name>FilterDetectionTypes</maml:name>
+          <maml:name>ExcludedDetectionTypes</maml:name>
           <maml:description>
             <maml:para>A semicolon separated list of detection types to filter.</maml:para>
           </maml:description>

@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         /// <param name="model">A model object</param>
         protected override ThreatDetectionPolicyModel ApplyUserInputToModel(ThreatDetectionPolicyModel model)
         {
-            base.ApplyUserInputToModel(model);
+            model = base.ApplyUserInputToModel(model);
             model.ThreatDetectionState = ThreatDetectionStateType.Disabled;
             return model;
         }

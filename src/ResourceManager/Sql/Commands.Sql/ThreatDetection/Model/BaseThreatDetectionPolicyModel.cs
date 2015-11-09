@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Model
     /// <summary>
     /// The possible disable alert types
     /// </summary> 
-    public enum FilterDetectionType { Successful_SQLi, Attempted_SQLi, Client_GEO_Anomaly, Failed_Logins_Anomaly, Failed_Queries_Anomaly, Data_Extraction_Anomaly, Data_Alteration_Anomaly };
+    public enum ExcludedDetectionType { Successful_SQLi, Attempted_SQLi, Client_GEO_Anomaly, Failed_Logins_Anomaly, Failed_Queries_Anomaly, Data_Extraction_Anomaly, Data_Alteration_Anomaly };
 
     /// <summary>
     /// A class representing a database auditing policy
@@ -57,6 +57,6 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Model
         /// <summary>
         /// Gets or sets the detection types to filter 
         /// </summary>
-        public FilterDetectionType[] FilterDetectionTypes { get; internal set; }
+        public ExcludedDetectionType[] ExcludedDetectionTypes { get; internal set; }
     }
 }

@@ -13,8 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.ThreatDetection.Model;
 
@@ -49,9 +51,9 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         /// <summary>
         /// Gets or sets the names of the detection types to filter.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Detection types to filter")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Detection types to exclude")]
         [ValidateSet(SecurityConstants.Successful_SQLi, SecurityConstants.Attempted_SQLi, SecurityConstants.Client_GEO_Anomaly, SecurityConstants.Failed_Logins_Anomaly, SecurityConstants.Failed_Queries_Anomaly, SecurityConstants.Data_Extraction_Anomaly, SecurityConstants.Data_Alteration_Anomaly, IgnoreCase = false)]
-        public string[] FilterDetectionTypes { get; set; }
+        public string[] ExcludedDetectionTypes { get; set; }
 
         /// <summary>
         /// Returns true if the model object that was constructed by this cmdlet should be written out
@@ -67,7 +69,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         {
             base.ApplyUserInputToModel(model);
 
-            model.ThreatDetectionState = ThreatDetectionStateType.Disabled;
+            model.ThreatDetectionState = ThreatDetectionStateType.Enabled;
 
             if (NotificationRecipientsEmail != null)
             {
@@ -79,15 +81,22 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
                 model.EmailAdmins = (bool)EmailAdmins;
             }
 
-            if (FilterDetectionTypes != null)
+            if (ExcludedDetectionTypes != null)
             {
-                model.FilterDetectionTypes = FilterDetectionTypes.Select(s => SecurityConstants.FilterDetectionToFilterDetectionTypes[s]).ToArray(); ;
+                model.ExcludedDetectionTypes = ExcludedDetectionTypes.Select(s => SecurityConstants.ExcludedDetectionToExcludedDetectionTypes[s]).ToArray(); ;
             }
 
             if (model.ThreatDetectionState == ThreatDetectionStateType.Enabled)
             {
                 // Validity checks:
-                // 1. check that EmailAdmins is not False and NotificationRecipientsEmail is not empty
+                // 1. Check that EmailAddresses are in correct format 
+                bool areEmailAddressesInCorrectFormat = AreEmailAddressesInCorrectFormat(model.NotificationRecipientsEmail);
+                if (!areEmailAddressesInCorrectFormat)
+                {
+                    throw new Exception(Properties.Resources.EmailsAreNotValid);
+                }
+
+                // 2. check that EmailAdmins is not False and NotificationRecipientsEmail is not empty
                 if (!model.EmailAdmins && string.IsNullOrEmpty(model.NotificationRecipientsEmail))
                 {
                     throw new Exception(Properties.Resources.NeedToProvideEmail);
@@ -95,6 +104,25 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
             }
 
             return model;
+        }
+
+        /// <summary>
+        /// Checks if email addresses are in a correct format
+        /// </summary>
+        /// <param name="emailAddresses">The email addresses</param>
+        /// <returns>Returns whether the email addresses are in a correct format</returns>
+        private bool AreEmailAddressesInCorrectFormat(string emailAddresses)
+        {
+            if (string.IsNullOrEmpty(emailAddresses))
+            {
+                return true;
+            }
+
+            string[] emailAddressesArray = emailAddresses.Split(';').Where(s => !string.IsNullOrEmpty(s)).ToArray();
+            var emailRegex = new Regex(@"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$");
+
+            List<string> resultList = emailAddressesArray.Where(i => emailRegex.IsMatch(i)).ToList();
+            return resultList.Count == emailAddressesArray.Count();
         }
     }
 }

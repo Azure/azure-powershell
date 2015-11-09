@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         public const string Enabled = "Enabled";
         public const string Disabled = "Disabled";
 
-        // Threat Detection disabled types::
+        // Threat Detection disabled types:
         public const string Successful_SQLi = "Successful_SQLi";
         public const string Attempted_SQLi = "Attempted_SQLi";
         public const string Client_GEO_Anomaly = "Client_GEO_Anomaly";
@@ -68,16 +68,16 @@ namespace Microsoft.Azure.Commands.Sql.Common
         public const string Data_Extraction_Anomaly = "Data_Extraction_Anomaly";
         public const string Data_Alteration_Anomaly = "Data_Alteration_Anomaly";
 
-        public static readonly Dictionary<string, FilterDetectionType> FilterDetectionToFilterDetectionTypes = new Dictionary
-            <string, FilterDetectionType>
+        public static readonly Dictionary<string, ExcludedDetectionType> ExcludedDetectionToExcludedDetectionTypes = new Dictionary
+            <string, ExcludedDetectionType>
         {
-            {Successful_SQLi, FilterDetectionType.Successful_SQLi},
-            {Attempted_SQLi, FilterDetectionType.Attempted_SQLi},
-            {Client_GEO_Anomaly, FilterDetectionType.Client_GEO_Anomaly},
-            {Failed_Logins_Anomaly, FilterDetectionType.Failed_Logins_Anomaly},
-            {Failed_Queries_Anomaly, FilterDetectionType.Failed_Queries_Anomaly},
-            {Data_Extraction_Anomaly, FilterDetectionType.Data_Extraction_Anomaly},
-            {Data_Alteration_Anomaly, FilterDetectionType.Data_Alteration_Anomaly},
+            {Successful_SQLi, ExcludedDetectionType.Successful_SQLi},
+            {Attempted_SQLi, ExcludedDetectionType.Attempted_SQLi},
+            {Client_GEO_Anomaly, ExcludedDetectionType.Client_GEO_Anomaly},
+            {Failed_Logins_Anomaly, ExcludedDetectionType.Failed_Logins_Anomaly},
+            {Failed_Queries_Anomaly, ExcludedDetectionType.Failed_Queries_Anomaly},
+            {Data_Extraction_Anomaly, ExcludedDetectionType.Data_Extraction_Anomaly},
+            {Data_Alteration_Anomaly, ExcludedDetectionType.Data_Alteration_Anomaly},
         };
         
         // Masking functions
