@@ -150,14 +150,14 @@ namespace Microsoft.Azure.Commands.Resources
             if (templateParameterFilePath != null && FileUtilities.DataStore.FileExists(templateParameterFilePath))
             {
                 var parametersFromFile = GalleryTemplatesClient.ParseTemplateParameterFileContents(templateParameterFilePath);
-                parametersFromFile.ForEach(dp => templateParameterObject[dp.Key] = dp.Value.Value);
+                parametersFromFile.ForEach(dp => templateParameterObject[dp.Key] = new Hashtable { { "value", dp.Value.Value }, { "reference", dp.Value.Reference } });
             }
 
             // Load dynamic parameters
             IEnumerable<RuntimeDefinedParameter> parameters = PowerShellUtilities.GetUsedDynamicParameters(dynamicParameters, MyInvocation);
             if (parameters.Any())
             {
-                parameters.ForEach(dp => templateParameterObject[((ParameterAttribute)dp.Attributes[0]).HelpMessage] = dp.Value);
+                parameters.ForEach(dp => templateParameterObject[((ParameterAttribute)dp.Attributes[0]).HelpMessage] = new Hashtable { { "value", dp.Value } });
             }
 
             return templateParameterObject;
