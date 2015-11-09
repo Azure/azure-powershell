@@ -26,14 +26,14 @@ namespace Microsoft.Azure.Commands.Intune
     /// <summary>
     /// Base class for all commandlets. Helps create an instance of the client that commandlets can leverage. 
     /// </summary>
-    public abstract class IntuneBaseCmdlet: AzureRMCmdlet
+    public abstract class IntuneBaseCmdlet : AzureRMCmdlet
     {
         /// <summary>
         /// Contains the errors that encountered while satisfying the request.
         /// </summary>
         internal static readonly ConcurrentBag<ErrorRecord> errors = new ConcurrentBag<ErrorRecord>();
 
-        private static IIntuneResourceManagementClient intuneClient;
+        private static IIntuneResourceManagementClient intuneClient;       
 
         /// <summary>
         /// The default parameter set.
@@ -46,8 +46,9 @@ namespace Microsoft.Azure.Commands.Intune
             {
                 if (intuneClient == null)
                 {
-                    intuneClient = GetIntuneManagementClient(this.DefaultContext);
+                    intuneClient = GetIntuneManagementClient(this.DefaultContext, ApiVersion);
                 }
+
                 return intuneClient;
             }
 
@@ -56,6 +57,13 @@ namespace Microsoft.Azure.Commands.Intune
                 intuneClient = value;
             }
         }
+
+        /// <summary>
+        /// Gets or sets the API version.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.")]
+        [ValidateNotNullOrEmpty]
+        public string ApiVersion { get; set; }
 
         /// <summary>
         /// ASU host name for the tenant
@@ -67,6 +75,7 @@ namespace Microsoft.Azure.Commands.Intune
             {
                 if (asuHostName == null)
                 {
+
                     // Location location = IntuneClient.GetLocationByHostName();
 
                     Location mockLocation = new Location();
@@ -76,18 +85,24 @@ namespace Microsoft.Azure.Commands.Intune
                     asuHostName = mockLocation.HostName;
 
                     // asuHostName = location.HostName;                
+                    var location = IntuneClient.GetLocationByHostName();
+                    asuHostName = location.HostName;
+
                 }
 
                 return asuHostName;
             }
         }
+
         /// <summary>
         /// Gets a new instance of the <see cref="IntuneResourceManagementClient"/>.
         /// </summary>
         /// <param name="context">The azure profile.</param>
-        internal static IntuneResourceManagementClient GetIntuneManagementClient(AzureContext context)
+        /// <param name="apiVersion">The apiVersion of the service.</param>
+        internal static IntuneResourceManagementClient GetIntuneManagementClient(AzureContext context, string apiVersion = null)
         {
             var endpoint = context.Environment.GetEndpoint(AzureEnvironment.Endpoint.ResourceManager);
+            ApiVersionHandler apiVersionHandler = null;
             if (string.IsNullOrWhiteSpace(endpoint))
             {
                 throw new ApplicationException(
@@ -95,7 +110,19 @@ namespace Microsoft.Azure.Commands.Intune
             }
 
             var endpointUri = new Uri(endpoint, UriKind.Absolute);
-            var intuneClient  = AzureSession.ClientFactory.CreateArmClient<IntuneResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+
+            if (!string.IsNullOrEmpty(apiVersion))
+            {
+                apiVersionHandler = new ApiVersionHandler(apiVersion);
+                AzureSession.ClientFactory.AddHandler<ApiVersionHandler>(apiVersionHandler);
+            }
+            var intuneClient = AzureSession.ClientFactory.CreateArmClient<IntuneResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+
+            if (!string.IsNullOrEmpty(apiVersion))
+            {
+                AzureSession.ClientFactory.RemoveHandler(apiVersionHandler.GetType());
+            }
+
             intuneClient.BaseUri = endpointUri;
             return intuneClient;
         }
