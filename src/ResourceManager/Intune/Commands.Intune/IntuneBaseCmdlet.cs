@@ -20,6 +20,8 @@ namespace Microsoft.Azure.Commands.Intune
     using System.Collections.Concurrent;
     using System.Management.Automation;
     using Management.Intune;
+    using System.Linq;
+    using Microsoft.Azure.Management.Intune.Models;
 
     /// <summary>
     /// Base class for all commandlets. Helps create an instance of the client that commandlets can leverage. 
@@ -31,22 +33,27 @@ namespace Microsoft.Azure.Commands.Intune
         /// </summary>
         internal static readonly ConcurrentBag<ErrorRecord> errors = new ConcurrentBag<ErrorRecord>();
 
-        private static IntuneResourceManagementClient intuneClient;
+        private static IIntuneResourceManagementClient intuneClient;
 
         /// <summary>
         /// The default parameter set.
         /// </summary>
         internal const string DefaultParameterSet = "Default Parameter Set for Intune MAM Policy cmdlets.";
 
-        internal IntuneResourceManagementClient IntuneClient
+        public IIntuneResourceManagementClient IntuneClient
         {
             get
             {
-                if(intuneClient == null)
+                if (intuneClient == null)
                 {
                     intuneClient = GetIntuneManagementClient(this.DefaultContext);
                 }
                 return intuneClient;
+            }
+
+            set
+            {
+                intuneClient = value;
             }
         }
 
@@ -60,8 +67,15 @@ namespace Microsoft.Azure.Commands.Intune
             {
                 if (asuHostName == null)
                 {
-                    var location = IntuneClient.GetLocationByHostName();
-                    asuHostName = location.HostName;                    
+                    // Location location = IntuneClient.GetLocationByHostName();
+
+                    Location mockLocation = new Location();
+
+                    mockLocation.Location = "mockLocationString";
+                    mockLocation.HostName = "mockHostName";
+                    asuHostName = mockLocation.HostName;
+
+                    // asuHostName = location.HostName;                
                 }
 
                 return asuHostName;

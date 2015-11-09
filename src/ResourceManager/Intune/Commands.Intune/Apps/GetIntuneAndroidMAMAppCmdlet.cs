@@ -33,8 +33,10 @@ namespace Microsoft.Azure.Commands.Intune
             string filter = string.Format("platform eq '{0}'", PlatformType.Android.ToString().ToLower());
 
             MultiPageGetter<Application> mpg = new MultiPageGetter<Application>();
+            
             var items = mpg.GetAllResources(this.IntuneClient.GetApps, this.IntuneClient.GetAppsNext, this.AsuHostName, filter);
             List<Application> apps = new List<Application>(items.Count);
+
             foreach(var item in items)
             {
                 apps.Add(item);

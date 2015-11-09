@@ -44,15 +44,18 @@ namespace Microsoft.Azure.Commands.Intune
         {
             var resources = GetFirstPage(asuHostName, filter, null, null);
             List<T> items = new List<T>();
+
             if (resources != null)
             {
-                items.AddRange(resources.ToList());                
+                items.AddRange(resources.ToList());
+           
                 while (resources.NextPageLink != null)
                 {
                     resources = GetNextPage(resources.NextPageLink);
-                    items.AddRange(resources.ToList());                    
+                    items.AddRange(resources.ToList());         
                 }                
             }
+
             return items;
         }
 
