@@ -15,9 +15,9 @@
 namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Model
 {
     /// <summary>
-    /// A class representing a database auditing policy
+    /// A class representing a database threat detection policy
     /// </summary>
-    public class ThreatDetectionPolicyModel : BaseThreatDetectionPolicyModel
+    public class DatabaseThreatDetectionPolicyModel : BaseThreatDetectionPolicyModel
     {
         /// <summary>
         /// Gets or sets the database name

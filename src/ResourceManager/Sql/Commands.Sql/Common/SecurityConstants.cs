@@ -68,16 +68,16 @@ namespace Microsoft.Azure.Commands.Sql.Common
         public const string Data_Extraction_Anomaly = "Data_Extraction_Anomaly";
         public const string Data_Alteration_Anomaly = "Data_Alteration_Anomaly";
 
-        public static readonly Dictionary<string, ExcludedDetectionType> ExcludedDetectionToExcludedDetectionTypes = new Dictionary
-            <string, ExcludedDetectionType>
+        public static readonly Dictionary<string, DetectionType> ExcludedDetectionToExcludedDetectionTypes = new Dictionary
+            <string, DetectionType>
         {
-            {Successful_SQLi, ExcludedDetectionType.Successful_SQLi},
-            {Attempted_SQLi, ExcludedDetectionType.Attempted_SQLi},
-            {Client_GEO_Anomaly, ExcludedDetectionType.Client_GEO_Anomaly},
-            {Failed_Logins_Anomaly, ExcludedDetectionType.Failed_Logins_Anomaly},
-            {Failed_Queries_Anomaly, ExcludedDetectionType.Failed_Queries_Anomaly},
-            {Data_Extraction_Anomaly, ExcludedDetectionType.Data_Extraction_Anomaly},
-            {Data_Alteration_Anomaly, ExcludedDetectionType.Data_Alteration_Anomaly},
+            {Successful_SQLi, DetectionType.Successful_SQLi},
+            {Attempted_SQLi, DetectionType.Attempted_SQLi},
+            {Client_GEO_Anomaly, DetectionType.Client_GEO_Anomaly},
+            {Failed_Logins_Anomaly, DetectionType.Failed_Logins_Anomaly},
+            {Failed_Queries_Anomaly, DetectionType.Failed_Queries_Anomaly},
+            {Data_Extraction_Anomaly, DetectionType.Data_Extraction_Anomaly},
+            {Data_Alteration_Anomaly, DetectionType.Data_Alteration_Anomaly},
         };
         
         // Masking functions

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
     /// <summary>
     /// Sets the auditing policy properties for a specific database.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseThreatDetectionPolicy"), OutputType(typeof(ThreatDetectionPolicyModel))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseThreatDetectionPolicy"), OutputType(typeof(DatabaseThreatDetectionPolicyModel))]
     public class SetAzureSqlDatabaseThreatDetection : SqlDatabaseThreatDetectionCmdletBase
     {
         /// <summary>
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Detection types to exclude")]
         [ValidateSet(SecurityConstants.Successful_SQLi, SecurityConstants.Attempted_SQLi, SecurityConstants.Client_GEO_Anomaly, SecurityConstants.Failed_Logins_Anomaly, SecurityConstants.Failed_Queries_Anomaly, SecurityConstants.Data_Extraction_Anomaly, SecurityConstants.Data_Alteration_Anomaly, IgnoreCase = false)]
-        public string[] ExcludedDetectionTypes { get; set; }
+        public string[] ExcludedDetectionType { get; set; }
 
         /// <summary>
         /// Returns true if the model object that was constructed by this cmdlet should be written out
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         /// Updates the given model element with the cmdlet specific operation 
         /// </summary>
         /// <param name="model">A model object</param>
-        protected override ThreatDetectionPolicyModel ApplyUserInputToModel(ThreatDetectionPolicyModel model)
+        protected override DatabaseThreatDetectionPolicyModel ApplyUserInputToModel(DatabaseThreatDetectionPolicyModel model)
         {
             base.ApplyUserInputToModel(model);
 
@@ -81,29 +81,35 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
                 model.EmailAdmins = (bool)EmailAdmins;
             }
 
-            if (ExcludedDetectionTypes != null)
+            if (ExcludedDetectionType != null)
             {
-                model.ExcludedDetectionTypes = ExcludedDetectionTypes.Select(s => SecurityConstants.ExcludedDetectionToExcludedDetectionTypes[s]).ToArray(); ;
+                model.ExcludedDetectionTypes = ExcludedDetectionType.Select(s => SecurityConstants.ExcludedDetectionToExcludedDetectionTypes[s]).ToArray();
             }
 
-            if (model.ThreatDetectionState == ThreatDetectionStateType.Enabled)
-            {
-                // Validity checks:
-                // 1. Check that EmailAddresses are in correct format 
-                bool areEmailAddressesInCorrectFormat = AreEmailAddressesInCorrectFormat(model.NotificationRecipientsEmail);
-                if (!areEmailAddressesInCorrectFormat)
-                {
-                    throw new Exception(Properties.Resources.EmailsAreNotValid);
-                }
-
-                // 2. check that EmailAdmins is not False and NotificationRecipientsEmail is not empty
-                if (!model.EmailAdmins && string.IsNullOrEmpty(model.NotificationRecipientsEmail))
-                {
-                    throw new Exception(Properties.Resources.NeedToProvideEmail);
-                }
-            }
+            ValidateInput(model);
 
             return model;
+        }
+
+        /// <summary>
+        /// Preforms validity checks
+        /// </summary>
+        /// <param name="model">The model</param>
+        private void ValidateInput(DatabaseThreatDetectionPolicyModel model)
+        {
+            // Validity checks:
+            // 1. Check that EmailAddresses are in correct format 
+            bool areEmailAddressesInCorrectFormat = AreEmailAddressesInCorrectFormat(model.NotificationRecipientsEmail);
+            if (!areEmailAddressesInCorrectFormat)
+            {
+                throw new Exception(Properties.Resources.EmailsAreNotValid);
+            }
+
+            // 2. check that EmailAdmins is not False and NotificationRecipientsEmail is not empty
+            if (!model.EmailAdmins && string.IsNullOrEmpty(model.NotificationRecipientsEmail))
+            {
+                throw new Exception(Properties.Resources.NeedToProvideEmail);
+            }
         }
 
         /// <summary>
@@ -120,9 +126,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
 
             string[] emailAddressesArray = emailAddresses.Split(';').Where(s => !string.IsNullOrEmpty(s)).ToArray();
             var emailRegex = new Regex(@"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$");
-
-            List<string> resultList = emailAddressesArray.Where(i => emailRegex.IsMatch(i)).ToList();
-            return resultList.Count == emailAddressesArray.Count();
+            return !emailAddressesArray.Any(e => !emailRegex.IsMatch(e));
         }
     }
 }

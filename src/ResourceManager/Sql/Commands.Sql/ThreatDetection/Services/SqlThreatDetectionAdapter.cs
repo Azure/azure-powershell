@@ -27,7 +27,7 @@ using Microsoft.Azure.Commands.Sql.ThreatDetection.Model;
 namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
 {
     /// <summary>
-    /// The SqlAuditClient class is responsible for transforming the data that was received form the endpoints to the cmdlets model of auditing policy and vice versa
+    /// The SqlThreatDetectionAdapter class is responsible for transforming the data that was received form the endpoints to the cmdlets model of auditing policy and vice versa
     /// </summary>
     public class SqlThreatDetectionAdapter
     {
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         private AzureSubscription Subscription { get; set; }
 
         /// <summary>
-        /// The auditing endpoints communicator used by this adapter
+        /// The Threat Detection endpoints communicator used by this adapter
         /// </summary>
         private ThreatDetectionEndpointsCommunicator ThreatDetectionCommunicator { get; set; }
        
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         private AzureEndpointsCommunicator AzureCommunicator { get; set; }
 
         /// <summary>
-        /// The Sql Auditingn Adapter
+        /// The Sql Auditing Adapter
         /// </summary>
         private SqlAuditAdapter AuditingAdapter { get; set; }
 
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// <summary>
         /// Provides a database threat detection policy model for the given database
         /// </summary>
-        public ThreatDetectionPolicyModel GetDatabaseThreatDetectionPolicy(string resourceGroup, string serverName, string databaseName, string requestId)
+        public DatabaseThreatDetectionPolicyModel GetDatabaseThreatDetectionPolicy(string resourceGroup, string serverName, string databaseName, string requestId)
         {
             if (!IsRightServerVersionForThreatDetection(resourceGroup, serverName, requestId))
             {
@@ -88,25 +88,25 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
 
             DatabaseSecurityAlertPolicy threatDetectionPolicy = ThreatDetectionCommunicator.GetDatabaseSecurityAlertPolicy(resourceGroup, serverName, databaseName, requestId);
 
-            ThreatDetectionPolicyModel threatDetectionPolicyModel = ModelizeDatabaseThreatDetectionPolicy(threatDetectionPolicy);
-            threatDetectionPolicyModel.ResourceGroupName = resourceGroup;
-            threatDetectionPolicyModel.ServerName = serverName;
-            threatDetectionPolicyModel.DatabaseName = databaseName;
-            return threatDetectionPolicyModel;
+            DatabaseThreatDetectionPolicyModel databaseThreatDetectionPolicyModel = ModelizeDatabaseThreatDetectionPolicy(threatDetectionPolicy);
+            databaseThreatDetectionPolicyModel.ResourceGroupName = resourceGroup;
+            databaseThreatDetectionPolicyModel.ServerName = serverName;
+            databaseThreatDetectionPolicyModel.DatabaseName = databaseName;
+            return databaseThreatDetectionPolicyModel;
         }
 
         /// <summary>
         /// Transforms the given database policy object to its cmdlet model representation
         /// </summary>
-        private ThreatDetectionPolicyModel ModelizeDatabaseThreatDetectionPolicy(DatabaseSecurityAlertPolicy threatDetectionPolicy)
+        private DatabaseThreatDetectionPolicyModel ModelizeDatabaseThreatDetectionPolicy(DatabaseSecurityAlertPolicy threatDetectionPolicy)
         {
-            ThreatDetectionPolicyModel threatDetectionPolicyModel = new ThreatDetectionPolicyModel();
+            DatabaseThreatDetectionPolicyModel databaseThreatDetectionPolicyModel = new DatabaseThreatDetectionPolicyModel();
             DatabaseSecurityAlertPolicyProperties threatDetectionProperties = threatDetectionPolicy.Properties;
-            threatDetectionPolicyModel.ThreatDetectionState = ModelizeThreatDetectionState(threatDetectionProperties.State);
-            threatDetectionPolicyModel.NotificationRecipientsEmail = threatDetectionProperties.EmailAddresses;
-            threatDetectionPolicyModel.EmailAdmins = ModelizeThreatDetectionEmailAdmins(threatDetectionProperties.EmailAccountAdmins);
-            ModelizeDisabledAlerts(threatDetectionPolicyModel, threatDetectionProperties.DisabledAlerts);
-            return threatDetectionPolicyModel;
+            databaseThreatDetectionPolicyModel.ThreatDetectionState = ModelizeThreatDetectionState(threatDetectionProperties.State);
+            databaseThreatDetectionPolicyModel.NotificationRecipientsEmail = threatDetectionProperties.EmailAddresses;
+            databaseThreatDetectionPolicyModel.EmailAdmins = ModelizeThreatDetectionEmailAdmins(threatDetectionProperties.EmailAccountAdmins);
+            ModelizeDisabledAlerts(databaseThreatDetectionPolicyModel, threatDetectionProperties.DisabledAlerts);
+            return databaseThreatDetectionPolicyModel;
         }
 
         /// <summary>
@@ -131,16 +131,16 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// <summary>
         /// Updates the given model with all the disabled alerts information
         /// </summary>
-        private void ModelizeDisabledAlerts(ThreatDetectionPolicyModel model, string disabledAlerts)
+        private void ModelizeDisabledAlerts(DatabaseThreatDetectionPolicyModel model, string disabledAlerts)
         {
-            HashSet<ExcludedDetectionType> events = new HashSet<ExcludedDetectionType>();
-            if (disabledAlerts.IndexOf(SecurityConstants.Successful_SQLi) != -1) events.Add(ExcludedDetectionType.Successful_SQLi);
-            if (disabledAlerts.IndexOf(SecurityConstants.Attempted_SQLi) != -1) events.Add(ExcludedDetectionType.Attempted_SQLi);
-            if (disabledAlerts.IndexOf(SecurityConstants.Client_GEO_Anomaly) != -1) events.Add(ExcludedDetectionType.Client_GEO_Anomaly);
-            if (disabledAlerts.IndexOf(SecurityConstants.Failed_Logins_Anomaly) != -1) events.Add(ExcludedDetectionType.Failed_Logins_Anomaly);
-            if (disabledAlerts.IndexOf(SecurityConstants.Failed_Queries_Anomaly) != -1) events.Add(ExcludedDetectionType.Failed_Queries_Anomaly);
-            if (disabledAlerts.IndexOf(SecurityConstants.Data_Extraction_Anomaly) != -1) events.Add(ExcludedDetectionType.Data_Extraction_Anomaly);
-            if (disabledAlerts.IndexOf(SecurityConstants.Data_Alteration_Anomaly) != -1) events.Add(ExcludedDetectionType.Data_Alteration_Anomaly); 
+            HashSet<DetectionType> events = new HashSet<DetectionType>();
+            if (disabledAlerts.IndexOf(SecurityConstants.Successful_SQLi) != -1) events.Add(DetectionType.Successful_SQLi);
+            if (disabledAlerts.IndexOf(SecurityConstants.Attempted_SQLi) != -1) events.Add(DetectionType.Attempted_SQLi);
+            if (disabledAlerts.IndexOf(SecurityConstants.Client_GEO_Anomaly) != -1) events.Add(DetectionType.Client_GEO_Anomaly);
+            if (disabledAlerts.IndexOf(SecurityConstants.Failed_Logins_Anomaly) != -1) events.Add(DetectionType.Failed_Logins_Anomaly);
+            if (disabledAlerts.IndexOf(SecurityConstants.Failed_Queries_Anomaly) != -1) events.Add(DetectionType.Failed_Queries_Anomaly);
+            if (disabledAlerts.IndexOf(SecurityConstants.Data_Extraction_Anomaly) != -1) events.Add(DetectionType.Data_Extraction_Anomaly);
+            if (disabledAlerts.IndexOf(SecurityConstants.Data_Alteration_Anomaly) != -1) events.Add(DetectionType.Data_Alteration_Anomaly); 
             model.ExcludedDetectionTypes = events.ToArray();
         }
 
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// <summary>
         /// Transforms the given model to its endpoints acceptable structure and sends it to the endpoint
         /// </summary>
-        public void SetDatabaseThreatDetectionPolicy(ThreatDetectionPolicyModel model, String clientId)
+        public void SetDatabaseThreatDetectionPolicy(DatabaseThreatDetectionPolicyModel model, String clientId)
         {
             if (model.ThreatDetectionState == ThreatDetectionStateType.Enabled)
             {
@@ -172,8 +172,15 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
                     throw new Exception(Properties.Resources.ServerNotApplicableForThreatDetection);
                 }
 
+                // Check that auditing is turned on:
                 DatabaseAuditingPolicyModel databaseAuditingPolicyModel = AuditingAdapter.GetDatabaseAuditingPolicy(model.ResourceGroupName, model.ServerName, model.DatabaseName, clientId);
-                if (databaseAuditingPolicyModel.AuditState != AuditStateType.Enabled)
+                AuditStateType auditingState = databaseAuditingPolicyModel.AuditState;
+                if (databaseAuditingPolicyModel.UseServerDefault == UseServerDefaultOptions.Enabled)
+                {
+                    ServerAuditingPolicyModel serverAuditingPolicyModel = AuditingAdapter.GetServerAuditingPolicy(model.ResourceGroupName, model.ServerName, clientId);
+                    auditingState = serverAuditingPolicyModel.AuditState;
+                }
+                if (auditingState != AuditStateType.Enabled)
                 {
                     throw new Exception(Properties.Resources.AuditingIsTurnedOff);
                 }
@@ -186,7 +193,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// <summary>
         /// Checks whether the given alert type was used
         /// </summary>
-        private bool IsEventTypeOn(ExcludedDetectionType lookedForType, ExcludedDetectionType[] userSelectedTypes)
+        private bool IsDetectionTypeOn(DetectionType lookedForType, DetectionType[] userSelectedTypes)
         {
             if (userSelectedTypes.Contains(lookedForType))
             {
@@ -196,9 +203,9 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         }
 
         /// <summary>
-        /// Extracts the event types from the given model
+        /// Extracts the detection types from the given model
         /// </summary>
-        private string ExtractFilterDetectionType(BaseThreatDetectionPolicyModel model)
+        private string ExtractExcludedDetectionType(BaseThreatDetectionPolicyModel model)
         {
             if (model.ExcludedDetectionTypes == null)
             {
@@ -206,31 +213,31 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
             }
 
             StringBuilder events = new StringBuilder();
-            if (IsEventTypeOn(ExcludedDetectionType.Successful_SQLi, model.ExcludedDetectionTypes))
+            if (IsDetectionTypeOn(DetectionType.Successful_SQLi, model.ExcludedDetectionTypes))
             {
                 events.Append(SecurityConstants.Successful_SQLi).Append(";");
             }
-            if (IsEventTypeOn(ExcludedDetectionType.Attempted_SQLi, model.ExcludedDetectionTypes))
+            if (IsDetectionTypeOn(DetectionType.Attempted_SQLi, model.ExcludedDetectionTypes))
             {
                 events.Append(SecurityConstants.Attempted_SQLi).Append(";");
             }
-            if (IsEventTypeOn(ExcludedDetectionType.Client_GEO_Anomaly, model.ExcludedDetectionTypes))
+            if (IsDetectionTypeOn(DetectionType.Client_GEO_Anomaly, model.ExcludedDetectionTypes))
             {
                 events.Append(SecurityConstants.Client_GEO_Anomaly).Append(";");
             }
-            if (IsEventTypeOn(ExcludedDetectionType.Failed_Logins_Anomaly, model.ExcludedDetectionTypes))
+            if (IsDetectionTypeOn(DetectionType.Failed_Logins_Anomaly, model.ExcludedDetectionTypes))
             {
                 events.Append(SecurityConstants.Failed_Logins_Anomaly).Append(";");
             }
-            if (IsEventTypeOn(ExcludedDetectionType.Failed_Queries_Anomaly, model.ExcludedDetectionTypes))
+            if (IsDetectionTypeOn(DetectionType.Failed_Queries_Anomaly, model.ExcludedDetectionTypes))
             {
                 events.Append(SecurityConstants.Failed_Queries_Anomaly).Append(";");
             }
-            if (IsEventTypeOn(ExcludedDetectionType.Data_Extraction_Anomaly, model.ExcludedDetectionTypes))
+            if (IsDetectionTypeOn(DetectionType.Data_Extraction_Anomaly, model.ExcludedDetectionTypes))
             {
                 events.Append(SecurityConstants.Data_Extraction_Anomaly).Append(";");
             }
-            if (IsEventTypeOn(ExcludedDetectionType.Data_Alteration_Anomaly, model.ExcludedDetectionTypes))
+            if (IsDetectionTypeOn(DetectionType.Data_Alteration_Anomaly, model.ExcludedDetectionTypes))
             {
                 events.Append(SecurityConstants.Data_Alteration_Anomaly).Append(";");
             }
@@ -246,7 +253,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// </summary>
         /// <param name="model">The SecurityAlert model object</param>
         /// <returns>The communication model object</returns>
-        private DatabaseSecurityAlertPolicyCreateOrUpdateParameters PolicizeDatabaseSecurityAlertModel(ThreatDetectionPolicyModel model)
+        private DatabaseSecurityAlertPolicyCreateOrUpdateParameters PolicizeDatabaseSecurityAlertModel(DatabaseThreatDetectionPolicyModel model)
         {
             DatabaseSecurityAlertPolicyCreateOrUpdateParameters updateParameters = new DatabaseSecurityAlertPolicyCreateOrUpdateParameters();
             DatabaseSecurityAlertPolicyProperties properties = new DatabaseSecurityAlertPolicyProperties();
@@ -256,7 +263,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
             properties.EmailAccountAdmins = model.EmailAdmins
                 ? SecurityConstants.ThreatDetectionEndpoint.Enabled
                 : SecurityConstants.ThreatDetectionEndpoint.Disabled;
-            properties.DisabledAlerts = ExtractFilterDetectionType(model);
+            properties.DisabledAlerts = ExtractExcludedDetectionType(model);
             return updateParameters;
         }
     }

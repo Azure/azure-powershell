@@ -20,14 +20,14 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
     /// <summary>
     /// Returns the auditing policy of a specific database.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseThreatDetectionPolicy"), OutputType(typeof(ThreatDetectionPolicyModel))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseThreatDetectionPolicy"), OutputType(typeof(DatabaseThreatDetectionPolicyModel))]
     public class AzureRmSqlDatabaseThreatDetectionPolicy : SqlDatabaseThreatDetectionCmdletBase
     {
         /// <summary>
         /// No sending is needed as this is a Get cmdlet
         /// </summary>
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected override ThreatDetectionPolicyModel PersistChanges(ThreatDetectionPolicyModel model) 
+        protected override DatabaseThreatDetectionPolicyModel PersistChanges(DatabaseThreatDetectionPolicyModel model) 
         {
             return null;
         }

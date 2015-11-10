@@ -60,9 +60,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.Sql)]
-        public void ThreatDetectionOnV02Server()
+        public void ThreatDetectionOnV2Server()
         {
-            RunPowerShellTest("Test-ThreatDetectionOnV02Server");
+            RunPowerShellTest("Test-ThreatDetectionOnV2Server");
         }
     }
 }

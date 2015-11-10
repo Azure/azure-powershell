@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
     /// <summary>
     /// Disables auditing on a specific database.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabaseThreatDetectionPolicy"), OutputType(typeof(ThreatDetectionPolicyModel))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabaseThreatDetectionPolicy"), OutputType(typeof(DatabaseThreatDetectionPolicyModel))]
     public class AzureRmSqlDatabaseThreatDetection : SqlDatabaseThreatDetectionCmdletBase
     {
         /// <summary>
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         /// Updates the given model element with the cmdlet specific operation 
         /// </summary>
         /// <param name="model">A model object</param>
-        protected override ThreatDetectionPolicyModel ApplyUserInputToModel(ThreatDetectionPolicyModel model)
+        protected override DatabaseThreatDetectionPolicyModel ApplyUserInputToModel(DatabaseThreatDetectionPolicyModel model)
         {
             model = base.ApplyUserInputToModel(model);
             model.ThreatDetectionState = ThreatDetectionStateType.Disabled;

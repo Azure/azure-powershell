@@ -23,13 +23,13 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
     /// <summary>
     /// The base class for all Azure Sql Database security Management Cmdlets
     /// </summary>
-    public abstract class SqlDatabaseThreatDetectionCmdletBase : AzureSqlDatabaseCmdletBase<ThreatDetectionPolicyModel, SqlThreatDetectionAdapter>
+    public abstract class SqlDatabaseThreatDetectionCmdletBase : AzureSqlDatabaseCmdletBase<DatabaseThreatDetectionPolicyModel, SqlThreatDetectionAdapter>
     {
         /// <summary>
         /// Provides the model element that this cmdlet operates on
         /// </summary>
         /// <returns>A model object</returns>
-        protected override ThreatDetectionPolicyModel GetEntity()
+        protected override DatabaseThreatDetectionPolicyModel GetEntity()
         {
             return ModelAdapter.GetDatabaseThreatDetectionPolicy(ResourceGroupName, ServerName, DatabaseName, clientRequestId);
         }
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         /// object to the REST endpoint
         /// </summary>
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected override ThreatDetectionPolicyModel PersistChanges(ThreatDetectionPolicyModel model)
+        protected override DatabaseThreatDetectionPolicyModel PersistChanges(DatabaseThreatDetectionPolicyModel model)
         {
             ModelAdapter.SetDatabaseThreatDetectionPolicy(model, clientRequestId);
             return null;
