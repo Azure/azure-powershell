@@ -166,7 +166,7 @@
     <value>The source and destination path type cannot be the same. One must be webhdfs qualified and the other a local or network path.</value>
   </data>
   <data name="LocalFileAlreadyExists" xml:space="preserve">
-    <value>The destination path '{0}' already exists. Please set overwrite to true in order to overwrite this file</value>
+    <value>The destination path '{0}' already exists. Please set overwrite to true or use the force switch in order to overwrite this file</value>
   </data>
   <data name="LongRunningOperationFailed" xml:space="preserve">
     <value>DataLakeStore account operation failed with the following error code: {0} and message: {1}</value>
