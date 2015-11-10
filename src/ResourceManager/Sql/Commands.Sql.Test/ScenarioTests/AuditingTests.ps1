@@ -20,7 +20,7 @@ Tests that when setting the storage account property's value in a database's aud
 function Test-AuditingDatabaseUpdatePolicyWithStorageV2
 {
 	# Setup
-	$testSuffix = 1029
+	$testSuffix = 1030
 	Create-TestEnvironmentWithStorageV2 $testSuffix
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
 
