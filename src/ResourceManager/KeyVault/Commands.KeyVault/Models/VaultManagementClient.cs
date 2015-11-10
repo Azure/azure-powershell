@@ -85,6 +85,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                             Name = parameters.SkuName
                         },
                         EnabledForDeployment = parameters.EnabledForDeployment,
+                        EnabledForTemplateDeployment = parameters.EnabledForTemplateDeployment,
+                        EnabledForDiskEncryption = parameters.EnabledForDiskEncryption,
                         TenantId = parameters.TenantId,
                         VaultUri = "",
                         AccessPolicies = new AccessPolicyEntry[]
@@ -137,7 +139,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// </summary>
         /// <param name="existingVault"></param>
         /// <returns></returns>
-        public PSVault UpdateVault(PSVault existingVault, PSVaultAccessPolicy[] updatedPolicies, bool updatedEnabledForDeployment, ActiveDirectoryClient adClient = null)
+        public PSVault UpdateVault(PSVault existingVault, PSVaultAccessPolicy[] updatedPolicies, bool updatedEnabledForDeployment,
+            bool? updatedEnabledForTemplateDeployment, bool? updatedEnabledForDiskEncryption, ActiveDirectoryClient adClient = null)
         {
             if (existingVault == null)
                 throw new ArgumentNullException("existingVault");
@@ -148,6 +151,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             //Only access policies and EnabledForDeployment can be changed
             VaultProperties properties = existingVault.OriginalVault.Properties;
             properties.EnabledForDeployment = updatedEnabledForDeployment;
+            properties.EnabledForTemplateDeployment = updatedEnabledForTemplateDeployment;
+            properties.EnabledForDiskEncryption = updatedEnabledForDiskEncryption;
             properties.AccessPolicies = (updatedPolicies == null) ? 
                 new List<AccessPolicyEntry>() :
                 updatedPolicies.Select(a => new AccessPolicyEntry()

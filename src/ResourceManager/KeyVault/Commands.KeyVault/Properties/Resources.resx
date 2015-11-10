@@ -231,4 +231,7 @@
   <data name="VaultNotFound" xml:space="preserve">
     <value>Cannot find vault '{0}' in resource group '{1}'.</value>
   </data>
+  <data name="VaultPermissionFlagMissing" xml:space="preserve">
+    <value>At least one of -EnabledForDeployment, -EnabledForTemplateDeployment, or -EnabledForDiskEncryption must be specified.</value>
+  </data>
 </root>
