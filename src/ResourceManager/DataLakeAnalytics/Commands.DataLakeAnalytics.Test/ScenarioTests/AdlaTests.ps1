@@ -9,7 +9,10 @@ function Test-DataLakeAnalyticsAccount
 		$resourceGroupName,
 		$accountName,
 		$dataLakeAccountName,
-		$location = "West US"
+		$secondDataLakeAccountName,
+		$blobAccountName,
+		$blobAccountKey,
+		$location = "East US 2"
 	)
     
     # Creating Account
@@ -86,6 +89,34 @@ function Test-DataLakeAnalyticsAccount
         }
     }
     Assert-True {$found -eq 1} "Account created earlier is not found when listing all in subscription."
+
+	# add a data lake store account to the analytics account
+	Add-AzureRmDataLakeAnalyticsDataSource -Account $accountName -DataLakeStore $secondDataLakeAccountName
+
+	# get the account and ensure that it contains two data lake stores
+	$testStoreAdd = Get-AzureRmDataLakeAnalyticsAccount -Name $accountName
+	Assert-AreEqual 2 $testStoreAdd.Properties.DataLakeStoreAccounts.Count
+
+	# remove the Data lake storage account
+	Assert-True {Remove-AzureRmDataLakeAnalyticsDataSource -Account $accountName -DataLakeStore $secondDataLakeAccountName -Force -PassThru} "Remove Data Lake Store account failed."
+
+	# get the account and ensure that it contains one data lake store
+	$testStoreAdd = Get-AzureRmDataLakeAnalyticsAccount -Name $accountName
+	Assert-AreEqual 1 $testStoreAdd.Properties.DataLakeStoreAccounts.Count
+
+	# add a blob account to the analytics account
+	Add-AzureRmDataLakeAnalyticsDataSource -Account $accountName -Blob $blobAccountName -AccessKey $blobAccountKey
+
+	# get the account and ensure that it contains one blob account
+	$testStoreAdd = Get-AzureRmDataLakeAnalyticsAccount -Name $accountName
+	Assert-AreEqual 1 $testStoreAdd.Properties.StorageAccounts.Count
+
+	# remove the blob storage account
+	Assert-True {Remove-AzureRmDataLakeAnalyticsDataSource -Account $accountName -Blob $blobAccountName -Force -PassThru} "Remove blob Storage account failed."
+
+	# get the account and ensure that it contains no azure storage accounts
+	$testStoreAdd = Get-AzureRmDataLakeAnalyticsAccount -Name $accountName
+	Assert-True {$testStoreAdd.Properties.StorageAccounts -eq $null -or $testStoreAdd.Properties.StorageAccounts.Count -eq 0} "Remove blob storage reported success but failed to remove the account."
 
     # Delete dataLakeAnalytics account
     Assert-True {Remove-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
