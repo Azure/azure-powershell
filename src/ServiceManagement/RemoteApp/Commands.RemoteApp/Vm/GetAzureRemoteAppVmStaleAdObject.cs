@@ -22,7 +22,7 @@ using System;
 
 namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRemoteAppVmStaleAdObjects"), OutputType(typeof(string))]
+    [Cmdlet(VerbsCommon.Get, "AzureRemoteAppVmStaleAdObject"), OutputType(typeof(string))]
     public class GetAzureRemoteAppVmStaleAdObjects : RdsStaleAdObjectCmdlet
     {
         [Parameter(Mandatory = true,
