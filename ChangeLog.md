@@ -1,4 +1,4 @@
-﻿* Azure SQL Database: new cmdlets for managing database threat detection policies:
+* Azure SQL Database: new cmdlets for managing database threat detection policies:
   * Get-AzureRmSqlDatabaseThreatDetectionPolicy
   * Set-AzureRmSqlDatabaseThreatDetectionPolicy
   * Remove-AzureRmSqlDatabaseThreatDetectionPolicy
