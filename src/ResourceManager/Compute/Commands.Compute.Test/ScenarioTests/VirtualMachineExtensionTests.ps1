@@ -139,6 +139,7 @@ function Test-VirtualMachineExtension
         Assert-AreEqual $ext.ResourceGroupName $rgname;
         Assert-NotNull $ext.ProvisioningState;
         Assert-NotNull $ext.Statuses;
+        Assert-NotNull $ext.SubStatuses;
 
         # Remove Extension
         Remove-AzureRmVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname -Force;

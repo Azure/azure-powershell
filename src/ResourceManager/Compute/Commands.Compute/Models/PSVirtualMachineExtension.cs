@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Management.Compute.Models;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Compute.Models
 {
@@ -42,6 +43,21 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public string ProvisioningState { get; set; }
 
         public IList<InstanceViewStatus> Statuses { get; set; }
+
+        [JsonIgnore]
+        public string StatusesText
+        {
+            get { return JsonConvert.SerializeObject(Statuses, Formatting.Indented); }
+        }
+
+        public IList<InstanceViewStatus> SubStatuses { get; set; }
+
+        [JsonIgnore]
+        public string SubStatusesText
+        {
+            get { return JsonConvert.SerializeObject(SubStatuses, Formatting.Indented); }
+        }
+
     }
 
     public static class PSVirtualMachineExtensionConversions
@@ -71,7 +87,8 @@ namespace Microsoft.Azure.Commands.Compute.Models
                 PublicSettings = ext == null ? null : ext.Settings,
                 ProtectedSettings = ext == null ? null : ext.ProtectedSettings,
                 ProvisioningState = ext == null ? null : ext.ProvisioningState,
-                Statuses = ext == null || ext.InstanceView == null ? null : ext.InstanceView.Statuses
+                Statuses = ext == null || ext.InstanceView == null ? null : ext.InstanceView.Statuses,
+                SubStatuses = ext == null || ext.InstanceView == null ? null : ext.InstanceView.SubStatuses,
             };
 
             return result;
