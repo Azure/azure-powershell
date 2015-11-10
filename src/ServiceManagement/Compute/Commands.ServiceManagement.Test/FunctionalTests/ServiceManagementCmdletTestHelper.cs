@@ -1596,14 +1596,16 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             Collection<SM.OSImageContext> vmImages = GetAzureVMImage();
             foreach (SM.OSImageContext image in vmImages)
             {
-                if (Utilities.MatchKeywords(image.ImageName, keywords, exactMatch) >= 0 &&
-                    ((diskSize == null) || (image.LogicalSizeInGB <= diskSize)))
+                if (Utilities.MatchKeywords(image.ImageName, keywords, exactMatch) >= 0
+                    && ((diskSize == null) || (image.LogicalSizeInGB <= diskSize))
+                    && image.Location.Contains(CredentialHelper.Location))
                     return image.ImageName;
             }
             foreach (SM.OSImageContext image in vmImages)
             {
-                if (Utilities.MatchKeywords(image.OS, keywords, exactMatch) >= 0 &&
-                    ((diskSize == null) || (image.LogicalSizeInGB <= diskSize)))
+                if (Utilities.MatchKeywords(image.OS, keywords, exactMatch) >= 0
+                    && ((diskSize == null) || (image.LogicalSizeInGB <= diskSize))
+                    && image.Location.Contains(CredentialHelper.Location))
                     return image.ImageName;
             }
             return null;
