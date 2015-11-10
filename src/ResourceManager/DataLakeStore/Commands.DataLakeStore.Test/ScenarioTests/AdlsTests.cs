@@ -18,20 +18,20 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
     using Microsoft.Azure.Test;
     using Xunit;
 
-    public class DataLakeStoreTests : DataLakeStoreTestsBase
+    public class AdlsTests : AdlsTestsBase
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestDataLakeStoreAccount()
+        public void TestAdlsAccount()
         {
-            RunPowerShellTest(string.Format("Test-DataLakeStoreAccount -resourceGroupName {0} -accountName {1} -location '{2}'", this.resourceGroupName, this.dataLakeAccountName, DataLakeStoreTestsBase.resourceGroupLocation));
+            RunPowerShellTest(string.Format("Test-DataLakeStoreAccount -resourceGroupName {0} -accountName {1} -location '{2}'", this.resourceGroupName, this.dataLakeAccountName, AdlsTestsBase.resourceGroupLocation));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNegativeDataLakeStoreAccount()
+        public void TestNegativeAdlsAccount()
         {
-            RunPowerShellTest(string.Format("Test-NegativeDataLakeStoreAccount -resourceGroupName {0} -accountName {1} -location '{2}'", this.resourceGroupName, this.dataLakeAccountName, DataLakeStoreTestsBase.resourceGroupLocation));
+            RunPowerShellTest(string.Format("Test-NegativeDataLakeStoreAccount -resourceGroupName {0} -accountName {1} -location '{2}'", this.resourceGroupName, this.dataLakeAccountName, AdlsTestsBase.resourceGroupLocation));
         }
     }
 }

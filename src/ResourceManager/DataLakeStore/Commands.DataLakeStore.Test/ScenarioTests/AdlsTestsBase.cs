@@ -27,11 +27,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
     using Microsoft.Azure.Management.Resources.Models;
     using System.Net;
 
-    public abstract class DataLakeStoreTestsBase : TestBase, IDisposable
+    public abstract class AdlsTestsBase : TestBase, IDisposable
     {
         internal string resourceGroupName { get; set; }
         internal string dataLakeAccountName { get; set; }
-        internal const string resourceGroupLocation = "West US";
+        internal const string resourceGroupLocation = "East US 2";
 
         private EnvironmentSetupHelper helper;
 
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
 
         private ResourceManagementClient resourceManagementClient;
 
-        protected DataLakeStoreTestsBase()
+        protected AdlsTestsBase()
         {
             helper = new EnvironmentSetupHelper();
             dataLakeStoreManagementClient = GetDataLakeStoreManagementClient();
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
 
                     // Create the resource group
                     this.TryRegisterSubscriptionForResource();
-                    this.TryCreateResourceGroup(this.resourceGroupName, DataLakeStoreTestsBase.resourceGroupLocation);
+                    this.TryCreateResourceGroup(this.resourceGroupName, AdlsTestsBase.resourceGroupLocation);
 
                     helper.SetupEnvironment(AzureModule.AzureResourceManager);
                     helper.SetupModules(AzureModule.AzureResourceManager, "ScenarioTests\\" + this.GetType().Name + ".ps1",

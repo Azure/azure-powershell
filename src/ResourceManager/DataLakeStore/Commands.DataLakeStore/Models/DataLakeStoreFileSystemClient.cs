@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
             if (File.Exists(destinationFilePath) && !overwrite)
             {
-                throw new CloudException(string.Format(Properties.Resources.LocalFileAlreadyExists, destinationFilePath));
+                throw new IOException(string.Format(Properties.Resources.LocalFileAlreadyExists, destinationFilePath));
             }
             // create all of the directories along the way.
             if (!Directory.Exists(Path.GetDirectoryName(destinationFilePath)))
@@ -380,6 +380,13 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             bool isBinary = false, Cmdlet cmdletRunningRequest = null, ProgressRecord parentProgress = null)
         {
             var originalValue = TracingAdapter.IsEnabled;
+            FileType ignoredType;
+            
+            if (!overwrite && TestFileOrFolderExistence(destinationPath, accountName, out ignoredType))
+            {
+                throw new InvalidOperationException(string.Format(Properties.Resources.LocalFileAlreadyExists, destinationPath));    
+            }
+
             try
             {
                 //TODO: Remove this logic when defect: 4259238 (located here: http://vstfrd:8080/Azure/RD/_workitems/edit/4259238) is resolved
