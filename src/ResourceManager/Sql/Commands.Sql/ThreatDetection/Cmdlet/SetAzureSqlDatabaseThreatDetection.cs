@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Text.RegularExpressions;
@@ -46,7 +45,6 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Defines whether to email administrators")]
         [ValidateNotNullOrEmpty]
         public bool? EmailAdmins { get; set; }
-
 
         /// <summary>
         /// Gets or sets the names of the detection types to filter.
