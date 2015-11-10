@@ -33,7 +33,7 @@ function Test-ThreatDetectionDatabaseGetDefualtPolicy
 		Assert-AreEqual $policy.ThreatDetectionState "New"
 		Assert-AreEqual $policy.NotificationRecipientsEmail ""
         Assert-True {$policy.EmailAdmins}
-        Assert-AreEqual $policy.ExcludedDetectionType ""
+        Assert-AreEqual $policy.ExcludedDetectionTypes.Length 0
 	}
 	finally
 	{

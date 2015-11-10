@@ -75,8 +75,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
             return server.Properties.Version == "12.0";
         }
 
-       
-        /// <summary>
+       /// <summary>
         /// Provides a database threat detection policy model for the given database
         /// </summary>
         public DatabaseThreatDetectionPolicyModel GetDatabaseThreatDetectionPolicy(string resourceGroup, string serverName, string databaseName, string requestId)
@@ -133,15 +132,15 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// </summary>
         private void ModelizeDisabledAlerts(DatabaseThreatDetectionPolicyModel model, string disabledAlerts)
         {
-            HashSet<DetectionType> events = new HashSet<DetectionType>();
-            if (disabledAlerts.IndexOf(SecurityConstants.Successful_SQLi) != -1) events.Add(DetectionType.Successful_SQLi);
-            if (disabledAlerts.IndexOf(SecurityConstants.Attempted_SQLi) != -1) events.Add(DetectionType.Attempted_SQLi);
-            if (disabledAlerts.IndexOf(SecurityConstants.Client_GEO_Anomaly) != -1) events.Add(DetectionType.Client_GEO_Anomaly);
-            if (disabledAlerts.IndexOf(SecurityConstants.Failed_Logins_Anomaly) != -1) events.Add(DetectionType.Failed_Logins_Anomaly);
-            if (disabledAlerts.IndexOf(SecurityConstants.Failed_Queries_Anomaly) != -1) events.Add(DetectionType.Failed_Queries_Anomaly);
-            if (disabledAlerts.IndexOf(SecurityConstants.Data_Extraction_Anomaly) != -1) events.Add(DetectionType.Data_Extraction_Anomaly);
-            if (disabledAlerts.IndexOf(SecurityConstants.Data_Alteration_Anomaly) != -1) events.Add(DetectionType.Data_Alteration_Anomaly); 
-            model.ExcludedDetectionTypes = events.ToArray();
+            HashSet<DetectionType> detectionTypes = new HashSet<DetectionType>();
+            if (disabledAlerts.IndexOf(SecurityConstants.Successful_SQLi) != -1) detectionTypes.Add(DetectionType.Successful_SQLi);
+            if (disabledAlerts.IndexOf(SecurityConstants.Attempted_SQLi) != -1) detectionTypes.Add(DetectionType.Attempted_SQLi);
+            if (disabledAlerts.IndexOf(SecurityConstants.Client_GEO_Anomaly) != -1) detectionTypes.Add(DetectionType.Client_GEO_Anomaly);
+            if (disabledAlerts.IndexOf(SecurityConstants.Failed_Logins_Anomaly) != -1) detectionTypes.Add(DetectionType.Failed_Logins_Anomaly);
+            if (disabledAlerts.IndexOf(SecurityConstants.Failed_Queries_Anomaly) != -1) detectionTypes.Add(DetectionType.Failed_Queries_Anomaly);
+            if (disabledAlerts.IndexOf(SecurityConstants.Data_Extraction_Anomaly) != -1) detectionTypes.Add(DetectionType.Data_Extraction_Anomaly);
+            if (disabledAlerts.IndexOf(SecurityConstants.Data_Alteration_Anomaly) != -1) detectionTypes.Add(DetectionType.Data_Alteration_Anomaly); 
+            model.ExcludedDetectionTypes = detectionTypes.ToArray();
         }
 
         /// <summary>
@@ -212,40 +211,40 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
                 return null;
             }
 
-            StringBuilder events = new StringBuilder();
+            StringBuilder detectionTypes = new StringBuilder();
             if (IsDetectionTypeOn(DetectionType.Successful_SQLi, model.ExcludedDetectionTypes))
             {
-                events.Append(SecurityConstants.Successful_SQLi).Append(";");
+                detectionTypes.Append(SecurityConstants.Successful_SQLi).Append(";");
             }
             if (IsDetectionTypeOn(DetectionType.Attempted_SQLi, model.ExcludedDetectionTypes))
             {
-                events.Append(SecurityConstants.Attempted_SQLi).Append(";");
+                detectionTypes.Append(SecurityConstants.Attempted_SQLi).Append(";");
             }
             if (IsDetectionTypeOn(DetectionType.Client_GEO_Anomaly, model.ExcludedDetectionTypes))
             {
-                events.Append(SecurityConstants.Client_GEO_Anomaly).Append(";");
+                detectionTypes.Append(SecurityConstants.Client_GEO_Anomaly).Append(";");
             }
             if (IsDetectionTypeOn(DetectionType.Failed_Logins_Anomaly, model.ExcludedDetectionTypes))
             {
-                events.Append(SecurityConstants.Failed_Logins_Anomaly).Append(";");
+                detectionTypes.Append(SecurityConstants.Failed_Logins_Anomaly).Append(";");
             }
             if (IsDetectionTypeOn(DetectionType.Failed_Queries_Anomaly, model.ExcludedDetectionTypes))
             {
-                events.Append(SecurityConstants.Failed_Queries_Anomaly).Append(";");
+                detectionTypes.Append(SecurityConstants.Failed_Queries_Anomaly).Append(";");
             }
             if (IsDetectionTypeOn(DetectionType.Data_Extraction_Anomaly, model.ExcludedDetectionTypes))
             {
-                events.Append(SecurityConstants.Data_Extraction_Anomaly).Append(";");
+                detectionTypes.Append(SecurityConstants.Data_Extraction_Anomaly).Append(";");
             }
             if (IsDetectionTypeOn(DetectionType.Data_Alteration_Anomaly, model.ExcludedDetectionTypes))
             {
-                events.Append(SecurityConstants.Data_Alteration_Anomaly).Append(";");
+                detectionTypes.Append(SecurityConstants.Data_Alteration_Anomaly).Append(";");
             }
-            if (events.Length != 0)
+            if (detectionTypes.Length != 0)
             {
-                events.Remove(events.Length - 1, 1); // remove trailing comma
+                detectionTypes.Remove(detectionTypes.Length - 1, 1); // remove trailing comma
             }
-            return events.ToString();
+            return detectionTypes.ToString();
         }
 
         /// <summary>
