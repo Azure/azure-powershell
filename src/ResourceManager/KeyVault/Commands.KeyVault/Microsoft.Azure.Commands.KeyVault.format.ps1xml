@@ -189,6 +189,14 @@
                 <PropertyName>EnabledForDeployment</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>Enabled For Template Deployment?</Label>
+                <PropertyName>EnabledForTemplateDeployment</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Enabled For Disk Encryption?</Label>
+                <PropertyName>EnabledForDiskEncryption</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>Access Policies</Label>
                 <PropertyName>AccessPoliciesText</PropertyName>
               </ListItem>

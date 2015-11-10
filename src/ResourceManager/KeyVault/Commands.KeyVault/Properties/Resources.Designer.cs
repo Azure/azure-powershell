@@ -401,5 +401,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
                 return ResourceManager.GetString("VaultNotFound", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to At least one of -EnabledForDeployment, -EnabledForTemplateDeployment, or -EnabledForDiskEncryption must be specified..
+        /// </summary>
+        internal static string VaultPermissionFlagMissing {
+            get {
+                return ResourceManager.GetString("VaultPermissionFlagMissing", resourceCulture);
+            }
+        }
     }
 }
