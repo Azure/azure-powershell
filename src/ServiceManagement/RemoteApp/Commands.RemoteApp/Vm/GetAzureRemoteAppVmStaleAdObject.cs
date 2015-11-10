@@ -22,8 +22,8 @@ using System;
 
 namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRemoteAppVmStaleAdObjects"), OutputType(typeof(IList<string>))]
-    public class GetAzureRemoteAppVmStaleAdObjects : RdsCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureRemoteAppVmStaleAdObjects"), OutputType(typeof(string))]
+    public class GetAzureRemoteAppVmStaleAdObjects : RdsStaleAdObjectCmdlet
     {
         [Parameter(Mandatory = true,
             Position = 0,
@@ -35,7 +35,7 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 
         [Parameter(Mandatory = false,
             Position = 1,
-            HelpMessage = "Alternate credentials")]
+            HelpMessage = "Credential with permission to query computers in Active Directory")]
         public PSCredential Credential { get; set; }
 
         public override void ExecuteCmdlet()
@@ -48,10 +48,10 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 
             if (vmList != null && vmList.Vms != null)
             {
-                IList<DirectoryEntry> staleEntries = AdHelper.GetVmAdStaleEntries(vmList.Vms, adConfig.ActiveDirectoryConfig, Credential);
+                IList<DirectoryEntry> staleEntries = GetVmAdStaleEntries(vmList.Vms, adConfig.ActiveDirectoryConfig, Credential);
                 foreach(DirectoryEntry staleEntry in staleEntries)
                 {
-                    WriteObject(staleEntry.Properties["cn"][0].ToString());
+                    WriteObject(ActiveDirectoryHelper.GetCN(staleEntry));
                 }
             }
         }

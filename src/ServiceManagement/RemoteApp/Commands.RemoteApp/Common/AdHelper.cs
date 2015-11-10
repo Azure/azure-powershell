@@ -25,10 +25,59 @@ using Microsoft.WindowsAzure.Management.RemoteApp.Models;
 
 namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 {
-    class AdHelper
+    class AdHelper : IAdHelper
     {
         internal const int VMNameLength = 12;
-        public static string ConvertToUnsecureString(SecureString securePassword)
+        internal const string CN = "cn";
+
+        public IList<DirectoryEntry> GetVmAdEntries(string domainName, string OU, string vmNamePrefix, PSCredential credential)
+        {
+            // may throw InvalidOperationException and NotSupportedException
+
+            List<DirectoryEntry> results = null;
+            string userName = null;
+            string password = null;
+            DirectoryEntry directoryEntry = null;
+            DirectorySearcher directorySearcher = null;
+            SearchResultCollection searchResults = null;
+            DirectoryContext context = new DirectoryContext(DirectoryContextType.Domain, domainName);
+
+            Domain domain = Domain.GetDomain(context);
+            DomainController dc = domain.PdcRoleOwner;
+
+            string path = String.Format(
+                "LDAP://{0}{1}",
+                dc.Name,
+                (String.IsNullOrWhiteSpace(OU) ? "" : "/" + OU)
+                );
+
+
+            if ((credential != null) && (credential.UserName != null))
+            {
+                userName = credential.UserName;
+                password = ConvertToUnsecureString(credential.Password);
+            }
+
+            directoryEntry = new DirectoryEntry(path, userName, password);
+            directorySearcher = new DirectorySearcher(directoryEntry)
+            {
+                Filter = String.Format("(&(objectClass=computer)(name={0}*))", vmNamePrefix)
+            };
+
+            searchResults = directorySearcher.FindAll();
+
+            results = new List<DirectoryEntry>();
+
+            foreach (SearchResult searchResult in searchResults)
+            {
+                DirectoryEntry entry = searchResult.GetDirectoryEntry();
+                results.Add(entry);
+            }
+
+            return results;
+        }
+
+        protected string ConvertToUnsecureString(SecureString securePassword)
         {
             string password = null;
 
@@ -49,94 +98,15 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
             return password;
         }
 
-        public static IList<DirectoryEntry> GetVmAdEntries(string domainName, string OU, string vmNamePrefix, string maxName, PSCredential credential)
+        public string GetCN(DirectoryEntry dirEntry)
         {
-            // may throw InvalidOperationException and NotSupportedException
-
-            List<DirectoryEntry> results = null;
-
-            DirectoryContext context = new DirectoryContext(DirectoryContextType.Domain, domainName);
-
-            Domain domain = Domain.GetDomain(context);
-            DomainController dc = domain.PdcRoleOwner;
-
-            string path = String.Format(
-                "LDAP://{0}{1}",
-                dc.Name,
-                (String.IsNullOrWhiteSpace(OU) ? "" : "/" + OU)
-                );
-
-            string userName = null;
-            string password = null;
-
-            if ((credential != null) && (credential.UserName != null))
-            {
-                userName = credential.UserName;
-                password = ConvertToUnsecureString(credential.Password);
-            }
-
-            DirectoryEntry directoryEntry = new DirectoryEntry(path, userName, password);
-            DirectorySearcher directorySearcher = new DirectorySearcher(directoryEntry)
-            {
-                Filter = String.Format("(&(objectClass=computer)(name={0}*))", vmNamePrefix)
-            };
-
-            SearchResultCollection searchResults = directorySearcher.FindAll();
-
-            results = new List<DirectoryEntry>();
-
-            foreach (SearchResult searchResult in searchResults)
-            {
-                string name = searchResult.Properties["cn"][0].ToString();
-
-                if ((name.Length == AdHelper.VMNameLength) && ((maxName == null) || (String.Compare(name, maxName, true) < 0)))
-                {
-                    DirectoryEntry computerToDel = searchResult.GetDirectoryEntry();
-                    results.Add(computerToDel);
-                }
-            }
-
-            return results;
+            return dirEntry.Properties[AdHelper.CN][0].ToString();
         }
-
-        public static IList<DirectoryEntry> GetVmAdStaleEntries(IList<RemoteAppVm> vmList, ActiveDirectoryConfig adConfig, PSCredential credential)
+        
+        public void DeleteEntry(DirectoryEntry dirEntry)
         {
-            Dictionary<string, string> vmPrefixes = new Dictionary<string, string>();
-            foreach (RemoteAppVm vm in vmList)
-            {
-                string vmNamePrefix = vm.VirtualMachineName.Substring(0, 8);
-                if (vmPrefixes.ContainsKey(vmNamePrefix))
-                {
-                    if (String.Compare(vm.VirtualMachineName, vmPrefixes[vmNamePrefix], true) < 0)
-                    {
-                        vmPrefixes[vmNamePrefix] = vm.VirtualMachineName;
-                    }
-                }
-                else
-                {
-                    vmPrefixes.Add(vmNamePrefix, vm.VirtualMachineName);
-                }
-            }
-
-            List<DirectoryEntry> staleVmEntries = new List<DirectoryEntry>();
-
-            foreach (string vmNamePrefix in vmPrefixes.Keys)
-            {
-                IList<DirectoryEntry> adEntries = AdHelper.GetVmAdEntries(
-                    adConfig.DomainName,
-                    adConfig.OrganizationalUnit,
-                    vmNamePrefix,
-                    vmPrefixes[vmNamePrefix],
-                    credential);
-
-                foreach (DirectoryEntry adEntry in adEntries)
-                {
-                    staleVmEntries.Add(adEntry);
-                }
-            }
-
-            return staleVmEntries;
+            dirEntry.DeleteTree();
+            dirEntry.CommitChanges();
         }
-
     }
 }

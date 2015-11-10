@@ -23,8 +23,8 @@ using System.Text;
 
 namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Clear, "AzureRemoteAppVmStaleAdObjects", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High), OutputType(typeof(IList<string>))]
-    public class ClearAzureRemoteAppVmStaleAdObjects : RdsCmdlet
+    [Cmdlet(VerbsCommon.Clear, "AzureRemoteAppVmStaleAdObject", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High), OutputType(typeof(string))]
+    public class ClearAzureRemoteAppVmStaleAdObjects : RdsStaleAdObjectCmdlet
     {
         [Parameter(Mandatory = true,
             Position = 0,
@@ -36,12 +36,8 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 
         [Parameter(Mandatory = false,
             Position = 1,
-            HelpMessage = "Alternate credentials")]
+            HelpMessage = "Credential with permission to query and delete computers from Active Directory")]
         public PSCredential Credential { get; set; }
-
-        [Parameter(Mandatory = false,
-            HelpMessage = "Forces the command to run without asking for user confirmation.")]
-        public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -51,25 +47,25 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
             adConfig = CallClient(() => Client.Collections.GetAd(CollectionName), Client.Collections);
             vmList = CallClient(() => Client.Collections.ListVms(CollectionName), Client.Collections);
 
-            if (vmList != null && vmList.Vms != null)
+            if ((vmList != null) && (vmList.Vms != null) && (adConfig != null) && (adConfig.ActiveDirectoryConfig != null))
             {
-                IList<DirectoryEntry> staleEntries = AdHelper.GetVmAdStaleEntries(vmList.Vms, adConfig.ActiveDirectoryConfig, Credential);
+                IList<DirectoryEntry> staleEntries = GetVmAdStaleEntries(vmList.Vms, adConfig.ActiveDirectoryConfig, Credential);
 
                 foreach (DirectoryEntry staleEntry in staleEntries)
                 {
-                    string shouldProcessMessage = String.Format(Commands_RemoteApp.GenericDeleteConfirmation, staleEntry.Properties["cn"][0].ToString());
-                    string verboseDescription = String.Format(Commands_RemoteApp.GenericDeleteVerboseDescription, staleEntry.Properties["cn"][0].ToString());
+                    string staleEntryCN = ActiveDirectoryHelper.GetCN(staleEntry);
+                    string shouldProcessMessage = String.Format(Commands_RemoteApp.GenericDeleteConfirmation, staleEntryCN);
+                    string verboseDescription = String.Format(Commands_RemoteApp.GenericDeleteVerboseDescription, staleEntryCN);
 
-                    if (Force.IsPresent || ShouldProcess(verboseDescription, shouldProcessMessage, null))
+                    if (ShouldProcess(verboseDescription, shouldProcessMessage, null))
                     {
-                        WriteVerbose(String.Format(Commands_RemoteApp.GenericVerboseDelete, staleEntry.Properties["cn"][0].ToString()));
-                        staleEntry.DeleteTree();
-                        staleEntry.CommitChanges();
-                        WriteObject(staleEntry.Properties["cn"][0].ToString());
+                        WriteVerbose(String.Format(Commands_RemoteApp.GenericVerboseDelete, staleEntryCN));
+                        ActiveDirectoryHelper.DeleteEntry(staleEntry);
+                        WriteObject(staleEntryCN);
                     }
                     else
                     {
-                        WriteVerbose(String.Format(Commands_RemoteApp.GenericVerboseSkip, staleEntry.Properties["cn"][0].ToString()));
+                        WriteVerbose(String.Format(Commands_RemoteApp.GenericVerboseSkip, staleEntryCN));
                     }
 
                 }
