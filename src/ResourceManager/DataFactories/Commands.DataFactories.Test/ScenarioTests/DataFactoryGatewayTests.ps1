@@ -53,6 +53,7 @@ function Test-DataFactoryGateway
         $actual = New-AzureRmDataFactoryGateway -ResourceGroupName $rgname -DataFactoryName $dfname -Name $gwname
         $expected = Get-AzureRmDataFactoryGateway -ResourceGroupName $rgname -DataFactoryName $dfname -Name $gwname
         Assert-AreEqual $actual.Name $expected.Name
+		Assert-NotNull $actual.Key
 
         $key = New-AzureRmDataFactoryGatewayKey -ResourceGroupName $rgname -DataFactoryName $dfname -GatewayName $gwname
         Assert-NotNull $key
