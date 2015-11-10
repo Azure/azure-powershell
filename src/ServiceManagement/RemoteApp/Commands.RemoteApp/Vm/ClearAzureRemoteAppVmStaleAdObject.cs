@@ -24,7 +24,7 @@ using System.Text;
 namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 {
     [Cmdlet(VerbsCommon.Clear, "AzureRemoteAppVmStaleAdObject", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High), OutputType(typeof(string))]
-    public class ClearAzureRemoteAppVmStaleAdObjects : RdsStaleAdObjectCmdlet
+    public class ClearAzureRemoteAppVmStaleAdObject : RdsStaleAdObjectCmdlet
     {
         [Parameter(Mandatory = true,
             Position = 0,

@@ -117,7 +117,7 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
         public void GetStaleAdVmObjects()
         {
             int countOfExpectedVms = 0;
-            GetAzureRemoteAppVmStaleAdObjects mockCmdlet = SetUpTestCommon<GetAzureRemoteAppVmStaleAdObjects>();
+            GetAzureRemoteAppVmStaleAdObject mockCmdlet = SetUpTestCommon<GetAzureRemoteAppVmStaleAdObject>();
             IEnumerable<string> result = null;
             IList<string> resulAdObjs = null;
 
