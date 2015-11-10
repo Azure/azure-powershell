@@ -3706,7 +3706,7 @@
                             <File Id="filC19D2936401BB415655E1554F85EE97B" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\RecoveryServices\Microsoft.ApplicationInsights.dll" />
                         </Component>
                         <Component Id="cmpCA80C6C0F5670291AF2F3560D36B1EA3" Guid="*">
-                            <File Id="filE640AA6B0606E3DE6875594E25DE82D3" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\RecoveryServices\Microsoft.Azure.Commands.RecoveryServices.dll" />
+                            <File Id="filE640AA6B0606E3DE6875594E25DE82D3" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\RecoveryServices\Microsoft.Azure.Commands.RecoveryServicesRdfe.dll" />
                         </Component>
                         <Component Id="cmp1E1EACEE941A7D7B9B2649BB3AC9ABC3" Guid="*">
                             <File Id="fil7BC44111780DA333D7D3C421E0660012" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\RecoveryServices\Microsoft.Azure.Commands.RecoveryServices.dll-help.xml" />

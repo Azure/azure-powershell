@@ -24,23 +24,24 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     public partial class PSRecoveryServicesClient
     {
         /// <summary>
-        /// Gets Azure Site Recovery Servers.
+        /// Update Azure VM Properties
         /// </summary>
-        /// <param name="shouldSignRequest">Boolean indicating if the request should be signed ACIK</param>
-        /// <returns>Server list response</returns>
-        public ServerListResponse GetAzureSiteRecoveryServer(bool shouldSignRequest = true)
+        /// <param name="fabricName">Fabric Name</param>
+        /// <param name="protectionContainerName">Protection Container Name</param>
+        /// <param name="replicationProtectedItemName">Replication Protected Item</param>
+        /// <param name="input">Update Replication Protected Item Input</param>
+        /// <returns></returns>
+        public LongRunningOperationResponse UpdateVmProperties(string fabricName, 
+            string protectionContainerName, 
+            string replicationProtectedItemName, 
+            UpdateReplicationProtectedItemInput input)
         {
-            return this.GetSiteRecoveryClient().Servers.List(this.GetRequestHeaders(shouldSignRequest));
-        }
-
-        /// <summary>
-        /// Gets Azure Site Recovery Server.
-        /// </summary>
-        /// <param name="serverId">Server ID</param>
-        /// <returns>Server response</returns>
-        public ServerResponse GetAzureSiteRecoveryServer(string serverId)
-        {
-            return this.GetSiteRecoveryClient().Servers.Get(serverId, this.GetRequestHeaders());
+            return this.GetSiteRecoveryClient().ReplicationProtectedItem.BeginUpdateProtection(
+                fabricName,
+                protectionContainerName,
+                replicationProtectedItemName,
+                input,
+                this.GetRequestHeaders());
         }
     }
 }

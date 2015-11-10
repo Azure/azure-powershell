@@ -133,11 +133,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             }
         }
 
+
         /// <summary>
         /// Waits for the job to complete.
         /// </summary>
         /// <param name="jobId">Id of the job to wait for.</param>
-        public void WaitForJobCompletion(string jobId)
+        /// <returns>Final job response</returns>
+        public JobResponse WaitForJobCompletion(string jobId)
         {
             JobResponse jobResponse = null;
             do
@@ -155,6 +157,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                             jobResponse.Job.Properties.State == JobStatus.Suspended ||
                             jobResponse.Job.Properties.State == JobStatus.Succeeded ||
                         this.StopProcessingFlag));
+            return jobResponse;
         }
 
         /// <summary>
@@ -174,7 +177,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <param name="paramName">Parameter name.</param>
         protected void ValidateUsageById(string replicationProvider, string paramName)
         {
-            if (replicationProvider != Constants.HyperVReplica)
+            if (replicationProvider != Constants.HyperVReplica2012)
             {
                 throw new Exception(
                     string.Format(

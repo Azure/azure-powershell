@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Linq;
 using System.Diagnostics;
 using System.Management.Automation;
 using System.Threading;
@@ -29,14 +30,19 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     public class StartAzureSiteRecoveryUnplannedFailoverJob : SiteRecoveryCmdletBase
     {
         /// <summary>
-        /// Gets or sets ID of the PE.
+        /// Gets or sets Name of the PE.
         /// </summary>
-        public string protectionEntityId;
+        public string protectionEntityName;
 
         /// <summary>
-        /// Gets or sets ID of the Protection Container.
+        /// Gets or sets Name of the Protection Container.
         /// </summary>
-        public string protectionContainerId;
+        public string protectionContainerName;
+
+        /// <summary>
+        /// Gets or sets Name of the Fabric.
+        /// </summary>
+        public string fabricName;
 
         #region Parameters
 
@@ -74,8 +80,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 switch (this.ParameterSetName)
                 {
                     case ASRParameterSets.ByPEObject:
-                        this.protectionEntityId = this.ProtectionEntity.Name;
-                        this.protectionContainerId = this.ProtectionEntity.ProtectionContainerId;
+                        this.protectionEntityName = this.ProtectionEntity.Name;
+                        this.protectionContainerName = this.ProtectionEntity.ProtectionContainerId;
+                        this.fabricName = Utilities.GetValueFromArmId(this.ProtectionEntity.ID, ARMResourceTypeConstants.ReplicationFabrics);
                         this.StartPEUnplannedFailover();
                         break;
                 }
@@ -91,37 +98,30 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void StartPEUnplannedFailover()
         {
-            var request = new UnplannedFailoverRequest();
-
-            request.FailoverDirection = this.Direction;
-            request.SourceSiteOperations = this.PerformSourceSideActions ? Constants.Required : Constants.NotRequired;
-            LongRunningOperationResponse response =
-                RecoveryServicesClient.StartAzureSiteRecoveryUnplannedFailover(
-                this.protectionContainerId,
-                this.protectionEntityId,
-                request);
-
-            if (string.IsNullOrEmpty(this.ProtectionEntity.ReplicationProvider))
+            UnplannedFailoverInputProperties unplannedFailoverInputProperties = new UnplannedFailoverInputProperties()
             {
-                // fetch the latest PE object
-                // As get PE by name is failing before protection, get all & filter.
-                // Once after we fix get pe by name, change the logic to use the same.
-                ProtectionEntityListResponse protectionEntityListResponse =
-                    RecoveryServicesClient.GetAzureSiteRecoveryProtectionEntity(
-                    this.ProtectionEntity.ProtectionContainerId);
+                FailoverDirection = this.Direction,
+                SourceSiteOperations = this.PerformSourceSideActions ? "Required" : "NotRequired", //Required|NotRequired
+                ProviderSpecificDetails = new ProviderSpecificFailoverInput()
+            };
 
-                foreach (ProtectionEntity pe in protectionEntityListResponse.ProtectionEntities)
-                {
-                    if (0 == string.Compare(this.ProtectionEntity.FriendlyName, pe.Properties.FriendlyName, true))
-                    {
-                        this.ProtectionEntity = new ASRProtectionEntity(pe);
-                        break;
-                    }
-                }
-            }
+            UnplannedFailoverInput input = new UnplannedFailoverInput()
+            {
+                Properties = unplannedFailoverInputProperties
+            };
 
-            request.ReplicationProvider = this.ProtectionEntity.ReplicationProvider;
-            request.ReplicationProviderSettings = new FailoverReplicationProviderSpecificInput();
+            // fetch the latest PE object
+            ProtectableItemResponse protectableItemResponse =
+                                        RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(this.fabricName,
+                                        this.ProtectionEntity.ProtectionContainerId, this.ProtectionEntity.Name);
+
+            ReplicationProtectedItemResponse replicationProtectedItemResponse =
+                        RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(this.fabricName,
+                        this.ProtectionEntity.ProtectionContainerId, Utilities.GetValueFromArmId(protectableItemResponse.ProtectableItem.Properties.ReplicationProtectedItemId,  ARMResourceTypeConstants.ReplicationProtectedItems));
+
+            PolicyResponse policyResponse = RecoveryServicesClient.GetAzureSiteRecoveryPolicy(Utilities.GetValueFromArmId(replicationProtectedItemResponse.ReplicationProtectedItem.Properties.PolicyID, ARMResourceTypeConstants.ReplicationPolicies));
+
+            this.ProtectionEntity = new ASRProtectionEntity(protectableItemResponse.ProtectableItem, replicationProtectedItemResponse.ReplicationProtectedItem);
 
             if (0 == string.Compare(
                 this.ProtectionEntity.ReplicationProvider,
@@ -130,15 +130,22 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             {
                 if (this.Direction == Constants.PrimaryToRecovery)
                 {
-                    AzureFailoverInput failoverInput = new AzureFailoverInput()
+                    HyperVReplicaAzureFailoverProviderInput failoverInput = new HyperVReplicaAzureFailoverProviderInput()
                     {
-                        PrimaryKekCertificatePfx = string.Empty,
-                        SecondaryKekCertificatePfx = string.Empty,
+                        PrimaryKekCertificatePfx = null,
+                        SecondaryKekCertificatePfx = null,
                         VaultLocation = this.GetCurrentValutLocation()
                     };
-                    request.ReplicationProviderSettings = failoverInput;
-                }
+                    input.Properties.ProviderSpecificDetails = failoverInput;
+                }               
             }
+
+            LongRunningOperationResponse response =
+                RecoveryServicesClient.StartAzureSiteRecoveryUnplannedFailover(
+                this.fabricName,
+                this.protectionContainerName,
+                Utilities.GetValueFromArmId(replicationProtectedItemResponse.ReplicationProtectedItem.Id,  ARMResourceTypeConstants.ReplicationProtectedItems),
+                input);
 
             JobResponse jobResponse =
                 RecoveryServicesClient

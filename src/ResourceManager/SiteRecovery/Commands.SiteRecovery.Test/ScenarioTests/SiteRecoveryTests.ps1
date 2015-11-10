@@ -69,7 +69,8 @@ function Test-SiteRecoveryCreateProfile
 	Import-AzureRmSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
 
 	# Create profile
-	$job = New-AzureRmSiteRecoveryProtectionProfile -Name pp -ReplicationProvider HyperVReplica -ReplicationMethod Online -ReplicationFrequencyInSeconds 30 -RecoveryPoints 1 -ApplicationConsistentSnapshotFrequencyInHours 0 -ReplicationPort 8083 -Authentication Kerberos
+	$job = New-AzureRmSiteRecoveryPolicy -Name ppAzure -ReplicationProvider HyperVReplicaAzure -ReplicationFrequencyInSeconds 30 -RecoveryPoints 1 -ApplicationConsistentSnapshotFrequencyInHours 0 -RecoveryAzureStorageAccountId "/subscriptions/00a07ea0-ad8b-491c-9de8-77bf10881499/resourceGroups/testsitegroup/providers/Microsoft.Storage/storageAccounts/sa5151"
+
 	# WaitForJobCompletion -JobId $job.Name
 }
 
@@ -85,12 +86,12 @@ function Test-SiteRecoveryDeleteProfile
 	Import-AzureRmSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
 
 	# Get a profile created in previous test (with name pp)
-	$profiles = Get-AzureRmSiteRecoveryProtectionProfile -Name pp
+	$profiles = Get-AzureRmSiteRecoveryPolicy -FriendlyName ppAzure
 	Assert-True { $profiles.Count -gt 0 }
 	Assert-NotNull($profiles)
 
 	# Delete the profile
-	$job = Remove-AzureRmSiteRecoveryProtectionProfile -ProtectionProfile $profiles[0]
+	$job = Remove-AzureRmSiteRecoveryPolicy -Policy $profiles[0]
 	# WaitForJobCompletion -JobId $job.Name
 }
 
@@ -106,12 +107,11 @@ function Test-SiteRecoveryAssociateProfile
 	Import-AzureRmSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
 
 	# Get the primary cloud, recovery cloud, and protection profile
-	$pri = Get-AzureRmSiteRecoveryProtectionContainer -FriendlyName pri
-	$rec = Get-AzureRmSiteRecoveryProtectionContainer -FriendlyName rec
-	$pp = Get-AzureRmSiteRecoveryProtectionProfile -Name pp;
+	$pri = Get-AzureRmSiteRecoveryProtectionContainer -FriendlyName cloud9
+	$pp = Get-AzureRmSiteRecoveryPolicy -Name ppAzure;
 
 	# Associate the profile
-	$job = Start-AzureRmSiteRecoveryProtectionProfileAssociationJob -ProtectionProfile $pp -PrimaryProtectionContainer $pri -RecoveryProtectionContainer $rec
+	# $job = Start-AzureRmSiteRecoveryPolicyAssociationJob -Policy $pp -PrimaryProtectionContainer $pri
 	# WaitForJobCompletion -JobId $job.Name
 }
 
@@ -127,12 +127,11 @@ function Test-SiteRecoveryDissociateProfile
 	Import-AzureRmSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
 
 	# Get the primary cloud, recovery cloud, and protection profile
-	$pri = Get-AzureRmSiteRecoveryProtectionContainer -FriendlyName pri
-	$rec = Get-AzureRmSiteRecoveryProtectionContainer -FriendlyName rec
-	$pp = Get-AzureRmSiteRecoveryProtectionProfile -Name pp;
+	$pri = Get-AzureRmSiteRecoveryProtectionContainer -FriendlyName cloud9
+	$pp = Get-AzureRmSiteRecoveryPolicy -Name ppAzure;
 
 	# Dissociate the profile
-	$job = Start-AzureRmSiteRecoveryProtectionProfileDissociationJob -ProtectionProfile $pp -PrimaryProtectionContainer $pri -RecoveryProtectionContainer $rec
+	$job = Start-AzureRmSiteRecoveryPolicyDissociationJob -Policy $pp -PrimaryProtectionContainer $pri
 	# WaitForJobCompletion -JobId $job.Name
 }
 

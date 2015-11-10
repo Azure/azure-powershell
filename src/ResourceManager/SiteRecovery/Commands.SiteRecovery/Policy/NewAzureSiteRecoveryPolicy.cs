@@ -18,42 +18,45 @@ using System.Management.Automation;
 using Microsoft.Azure.Management.SiteRecovery.Models;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Properties = Microsoft.Azure.Commands.SiteRecovery.Properties;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
     /// <summary>
-    /// Creates Azure Site Recovery Protection Profile object in memory.
+    /// Creates Azure Site Recovery Policy object in memory.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmSiteRecoveryProtectionProfile", DefaultParameterSetName = ASRParameterSets.EnterpriseToAzure)]
-    public class NewAzureSiteRecoveryProtectionProfile : SiteRecoveryCmdletBase
+    [Cmdlet(VerbsCommon.New, "AzureRmSiteRecoveryPolicy", DefaultParameterSetName = ASRParameterSets.EnterpriseToAzure)]
+    [Alias("New-AzureRmSiteRecoveryProtectionProfile")]
+    public class NewAzureSiteRecoveryPolicy : SiteRecoveryCmdletBase
     {
         /// <summary>
-        /// Holds Name (if passed) of the protection profile object.
+        /// Holds Name (if passed) of the Policy object.
         /// </summary>
         private string targetName = string.Empty;
 
         #region Parameters
 
         /// <summary>
-        /// Gets or sets Name of the Protection Profile.
+        /// Gets or sets Name of the Policy.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets Replication Provider of the Protection Profile.
+        /// Gets or sets Replication Provider of the Policy.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
-            Constants.HyperVReplica,
+            Constants.HyperVReplica2012R2,
+            Constants.HyperVReplica2012,
             Constants.HyperVReplicaAzure)]
         public string ReplicationProvider { get; set; }
 
         /// <summary>
-        /// Gets or sets a value for Replication Method of the Protection Profile.
+        /// Gets or sets a value for Replication Method of the Policy.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
         [ValidateNotNullOrEmpty]
@@ -63,7 +66,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public string ReplicationMethod { get; set; }
 
         /// <summary>
-        /// Gets or sets Replication Frequency of the Protection Profile in seconds.
+        /// Gets or sets Replication Frequency of the Policy in seconds.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
@@ -75,7 +78,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public string ReplicationFrequencyInSeconds { get; set; }
 
         /// <summary>
-        /// Gets or sets Recovery Points of the Protection Profile.
+        /// Gets or sets Recovery Points of the Policy.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure)]
@@ -84,7 +87,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public int RecoveryPoints { get; set; }
 
         /// <summary>
-        /// Gets or sets Application Consistent Snapshot Frequency of the Protection Profile in hours.
+        /// Gets or sets Application Consistent Snapshot Frequency of the Policy in hours.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure)]
@@ -93,21 +96,21 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public int ApplicationConsistentSnapshotFrequencyInHours { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether Compression needs to be Enabled on the Protection Profile.
+        /// Gets or sets a value indicating whether Compression needs to be Enabled on the Policy.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
         [DefaultValue(false)]
         public SwitchParameter CompressionEnabled { get; set; }
 
         /// <summary>
-        /// Gets or sets the Replication Port of the Protection Profile.
+        /// Gets or sets the Replication Port of the Policy.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public ushort ReplicationPort { get; set; }
 
         /// <summary>
-        /// Gets or sets the Replication Port of the Protection Profile.
+        /// Gets or sets the Replication Port of the Policy.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
         [ValidateNotNullOrEmpty]
@@ -117,7 +120,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public string Authentication { get; set; }
 
         /// <summary>
-        /// Gets or sets Replication Start time of the Protection Profile.
+        /// Gets or sets Replication Start time of the Policy.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure)]
@@ -126,25 +129,18 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
         /// <summary>
         /// Gets or sets a value indicating whether Replica should be Deleted on 
-        /// disabling protection of a protection entity protected by the Protection Profile.
+        /// disabling protection of a protection entity protected by the Policy.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
         [DefaultValue(false)]
         public SwitchParameter AllowReplicaDeletion { get; set; }
 
         /// <summary>
-        /// Gets or sets a value Recovery Azure Subscription of the Protection Profile for E2A scenarios.
+        /// Gets or sets Recovery Azure Storage Account Name of the Policy for E2A scenarios.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = false)]
         [ValidateNotNullOrEmpty]
-        public string RecoveryAzureSubscription { get; set; }
-
-        /// <summary>
-        /// Gets or sets Recovery Azure Storage Account Name of the Protection Profile for E2A scenarios.
-        /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
-        [ValidateNotNullOrEmpty]
-        public string RecoveryAzureStorageAccount { get; set; }
+        public string RecoveryAzureStorageAccountId { get; set; }
 
         /// <summary>
         /// Gets or sets switch parameter. On passing, command does not ask for confirmation.
@@ -164,10 +160,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 switch (this.ParameterSetName)
                 {
                     case ASRParameterSets.EnterpriseToEnterprise:
-                        this.EnterpriseToEnterpriseProtectionProfileObject();
+                        this.EnterpriseToEnterprisePolicyObject();
                         break;
                     case ASRParameterSets.EnterpriseToAzure:
-                        this.EnterpriseToAzureProtectionProfileObject();
+                        this.EnterpriseToAzurePolicyObject();
                         break;
                 }
 
@@ -179,11 +175,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         }
 
         /// <summary>
-        /// Creates an E2E Protection Profile object
+        /// Creates an E2E Policy object
         /// </summary>
-        private void EnterpriseToEnterpriseProtectionProfileObject()
+        private void EnterpriseToEnterprisePolicyObject()
         {
-            if (string.Compare(this.ReplicationProvider, Constants.HyperVReplica, StringComparison.OrdinalIgnoreCase) != 0)
+            if (string.Compare(this.ReplicationProvider, Constants.HyperVReplica2012, StringComparison.OrdinalIgnoreCase) != 0 && string.Compare(this.ReplicationProvider, Constants.HyperVReplica2012R2, StringComparison.OrdinalIgnoreCase) != 0)
             {
                 throw new InvalidOperationException(
                     string.Format(
@@ -196,42 +192,61 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             ushort replicationFrequencyInSeconds =
                 PSRecoveryServicesClient.ConvertReplicationFrequencyToUshort(this.ReplicationFrequencyInSeconds);
 
-            HyperVReplicaProtectionProfileInput hyperVReplicaProtectionProfileInput
-                    = new HyperVReplicaProtectionProfileInput()
-                    {
-                        ApplicationConsistentSnapshotFrequencyInHours = this.ApplicationConsistentSnapshotFrequencyInHours,
-                        ReplicationFrequencyInSeconds = replicationFrequencyInSeconds,
-                        OnlineReplicationStartTime = this.ReplicationStartTime,
-                        Compression = this.CompressionEnabled == true ? "Enable" : "Disable",
-                        InitialReplicationMethod =
-                            (string.Compare(this.ReplicationMethod, Constants.OnlineReplicationMethod, StringComparison.OrdinalIgnoreCase) == 0) ? "OverNetwork" : "Offline",
-                        RecoveryPoints = this.RecoveryPoints,
-                        ReplicationPort = this.ReplicationPort,
-                        ReplicaDeletion = this.AllowReplicaDeletion == true ? "Required" : "NotRequired",
-                        AllowedAuthenticationType =
-                            (ushort)((string.Compare(this.Authentication, Constants.AuthenticationTypeKerberos, StringComparison.OrdinalIgnoreCase) == 0) ? 1 : 2)
-                    };
+            CreatePolicyInputProperties createPolicyInputProperties = new CreatePolicyInputProperties();
 
-            CreateProtectionProfileInput createProtectionProfileInput = new CreateProtectionProfileInput();
-            createProtectionProfileInput.Name = this.Name;
-            createProtectionProfileInput.ReplicationProvider = this.ReplicationProvider;
-            createProtectionProfileInput.ReplicationProviderSettings =
-                hyperVReplicaProtectionProfileInput;
+            if(string.Compare(this.ReplicationProvider, Constants.HyperVReplica2012, StringComparison.OrdinalIgnoreCase) == 0)
+            {
+                createPolicyInputProperties.ProviderSpecificInput = new HyperVReplica2012PolicyInput()
+                        {
+                            AllowedAuthenticationType =
+                                (ushort)((string.Compare(this.Authentication, Constants.AuthenticationTypeKerberos, StringComparison.OrdinalIgnoreCase) == 0) ? 1 : 2),
+                            ApplicationConsistentSnapshotFrequencyInHours = this.ApplicationConsistentSnapshotFrequencyInHours,
+                            Compression = this.CompressionEnabled == true ? "Enable" : "Disable",
+                            InitialReplicationMethod =
+                             (string.Compare(this.ReplicationMethod, Constants.OnlineReplicationMethod, StringComparison.OrdinalIgnoreCase) == 0) ? "OverNetwork" : "Offline",
+                            OnlineReplicationStartTime = this.ReplicationStartTime,
+                            RecoveryPoints = this.RecoveryPoints,
+                            ReplicaDeletion = this.AllowReplicaDeletion == true ? "Required" : "NotRequired",
+                            ReplicationPort = this.ReplicationPort
+                        };
 
-            LongRunningOperationResponse response =
-                RecoveryServicesClient.CreateProtectionProfile(createProtectionProfileInput);
+            }
+            else
+            {
+                createPolicyInputProperties.ProviderSpecificInput = new HyperVReplica2012R2PolicyInput()
+                        {
+                            AllowedAuthenticationType =
+                                (ushort)((string.Compare(this.Authentication, Constants.AuthenticationTypeKerberos, StringComparison.OrdinalIgnoreCase) == 0) ? 1 : 2),
+                            ApplicationConsistentSnapshotFrequencyInHours = this.ApplicationConsistentSnapshotFrequencyInHours,
+                            Compression = this.CompressionEnabled == true ? "Enable" : "Disable",
+                            InitialReplicationMethod =
+                             (string.Compare(this.ReplicationMethod, Constants.OnlineReplicationMethod, StringComparison.OrdinalIgnoreCase) == 0) ? "OverNetwork" : "Offline",
+                            OnlineReplicationStartTime = this.ReplicationStartTime,
+                            RecoveryPoints = this.RecoveryPoints,
+                            ReplicaDeletion = this.AllowReplicaDeletion == true ? "Required" : "NotRequired",
+                            ReplicationFrequencyInSeconds = replicationFrequencyInSeconds,
+                            ReplicationPort = this.ReplicationPort
+                        };
+            }
 
-            JobResponse jobResponse =
+            CreatePolicyInput createPolicyInput = new CreatePolicyInput() {
+                Properties = createPolicyInputProperties
+            };
+            
+            LongRunningOperationResponse responseBlue =
+                RecoveryServicesClient.CreatePolicy(this.Name, createPolicyInput);
+
+            JobResponse jobResponseBlue =
                 RecoveryServicesClient
-                .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+                .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(responseBlue.Location));
 
-            WriteObject(new ASRJob(jobResponse.Job));
+            WriteObject(new ASRJob(jobResponseBlue.Job));
         }
 
         /// <summary>
-        /// Creates an E2A Protection Profile Object
+        /// Creates an E2A Policy Object
         /// </summary>
-        private void EnterpriseToAzureProtectionProfileObject()
+        private void EnterpriseToAzurePolicyObject()
         {
             if (string.Compare(this.ReplicationProvider, Constants.HyperVReplicaAzure, StringComparison.OrdinalIgnoreCase) != 0)
             {
@@ -246,34 +261,39 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             ushort replicationFrequencyInSeconds =
                 PSRecoveryServicesClient.ConvertReplicationFrequencyToUshort(this.ReplicationFrequencyInSeconds);
 
-            HyperVReplicaAzureProtectionProfileInput hyperVReplicaAzureProtectionProfileInput =
-                new HyperVReplicaAzureProtectionProfileInput()
+            HyperVReplicaAzurePolicyInput hyperVReplicaAzurePolicyInput =
+                new HyperVReplicaAzurePolicyInput()
                 {
                     ApplicationConsistentSnapshotFrequencyInHours =
                         this.ApplicationConsistentSnapshotFrequencyInHours,
-                    ReplicationInterval = replicationFrequencyInSeconds,
+                    Encryption = "Disable",
+                    OnlineIrStartTime = this.ReplicationStartTime,
                     RecoveryPointHistoryDuration = this.RecoveryPoints,
-                    OnlineReplicationStartTime = this.ReplicationStartTime,
-                    Encryption = "Disable"
+                    ReplicationInterval = replicationFrequencyInSeconds,
+                                 
                 };
 
-            var storageAccount = new CustomerStorageAccount();
-            storageAccount.StorageAccountName = this.RecoveryAzureStorageAccount;
-            storageAccount.SubscriptionId = this.RecoveryAzureSubscription;
+            hyperVReplicaAzurePolicyInput.StorageAccounts =
+                   new System.Collections.Generic.List<string>();
 
-            hyperVReplicaAzureProtectionProfileInput.StorageAccounts =
-                new System.Collections.Generic.List<CustomerStorageAccount>();
-            hyperVReplicaAzureProtectionProfileInput.StorageAccounts.Add(storageAccount);
+            if (RecoveryAzureStorageAccountId != null)
+            {
+                string storageAccount = this.RecoveryAzureStorageAccountId;   
+                hyperVReplicaAzurePolicyInput.StorageAccounts.Add(storageAccount);
+            }
 
-            CreateProtectionProfileInput createProtectionProfileInput =
-                new CreateProtectionProfileInput();
-            createProtectionProfileInput.Name = this.Name;
-            createProtectionProfileInput.ReplicationProvider = this.ReplicationProvider;
-            createProtectionProfileInput.ReplicationProviderSettings =
-                hyperVReplicaAzureProtectionProfileInput;
+            CreatePolicyInputProperties createPolicyInputProperties = new CreatePolicyInputProperties()
+            {
+                ProviderSpecificInput = hyperVReplicaAzurePolicyInput
+            };
 
-            LongRunningOperationResponse response = 
-                RecoveryServicesClient.CreateProtectionProfile(createProtectionProfileInput);
+            CreatePolicyInput createPolicyInput = new CreatePolicyInput()
+            {
+                Properties = createPolicyInputProperties
+            };
+
+            LongRunningOperationResponse response =
+                RecoveryServicesClient.CreatePolicy(this.Name, createPolicyInput);
 
             JobResponse jobResponse =
                 RecoveryServicesClient
