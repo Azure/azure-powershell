@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         private const string ByObjectId = "ByObjectId";
         private const string ByServicePrincipalName = "ByServicePrincipalName";
         private const string ByUserPrincipalName = "ByUserPrincipalName";
+        private const string ForVault = "ForVault";
 
         #endregion
 
@@ -131,24 +132,24 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "Specifies secret operation permissions to grant to a user or service principal.")]
         [ValidateSet("get", "list", "set", "delete", "all")]
         public string[] PermissionsToSecrets { get; set; }
-
+        
         [Parameter(Mandatory = false,
-            ParameterSetName = ByObjectId,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "If specified, enables secrets to be retrieved from this key vault by the Microsoft.Compute resource provider when referenced in resource creation.")]
-        [Parameter(Mandatory = false,
-            ParameterSetName = ByServicePrincipalName,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "If specified, enables secrets to be retrieved from this key vault by the Microsoft.Compute resource provider when referenced in resource creation.")]
-        [Parameter(Mandatory = false,
-            ParameterSetName = ByUserPrincipalName,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "If specified, enables secrets to be retrieved from this key vault by the Microsoft.Compute resource provider when referenced in resource creation.")]
-        [Parameter(Mandatory = true,
-            ParameterSetName = "None",
+            ParameterSetName = ForVault,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "If specified, enables secrets to be retrieved from this key vault by the Microsoft.Compute resource provider when referenced in resource creation.")]
         public SwitchParameter EnabledForDeployment { get; set; }
+
+        [Parameter(Mandatory = false,
+            ParameterSetName = ForVault,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "If specified, enables secrets to be retrieved from this key vault by Azure Resource Manager when referenced in templates.")]
+        public SwitchParameter EnabledForTemplateDeployment { get; set; }
+
+        [Parameter(Mandatory = false,
+            ParameterSetName = ForVault,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "If specified, enables secrets to be retrieved from this key vault by Azure Disk Encryption.")]
+        public SwitchParameter EnabledForDiskEncryption { get; set; }
 
         [Parameter(Mandatory = false,
            HelpMessage = "This Cmdlet does not return an object by default. If this switch is specified, it returns the updated key vault object.")]
@@ -157,7 +158,13 @@ namespace Microsoft.Azure.Commands.KeyVault
         #endregion
 
         protected override void ProcessRecord()
-        {           
+        {
+            if (ParameterSetName == ForVault && !EnabledForDeployment.IsPresent &&
+                !EnabledForTemplateDeployment.IsPresent && !EnabledForDiskEncryption.IsPresent)
+            {
+                throw new ArgumentException(PSKeyVaultProperties.Resources.VaultPermissionFlagMissing);
+            }
+
             ResourceGroupName = string.IsNullOrWhiteSpace(ResourceGroupName) ? GetResourceGroupName(VaultName) : ResourceGroupName;           
             PSKeyVaultModels.PSVault vault = null;
 
@@ -216,7 +223,11 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
 
             // Update the vault
-            var updatedVault = KeyVaultManagementClient.UpdateVault(vault, updatedListOfAccessPolicies, this.EnabledForDeployment.IsPresent ? true : vault.EnabledForDeployment, ActiveDirectoryClient);
+            var updatedVault = KeyVaultManagementClient.UpdateVault(vault, updatedListOfAccessPolicies,
+                this.EnabledForDeployment.IsPresent ? true : vault.EnabledForDeployment,
+                EnabledForTemplateDeployment.IsPresent ? true : vault.EnabledForTemplateDeployment,
+                EnabledForDiskEncryption.IsPresent ? true : vault.EnabledForDiskEncryption,
+                ActiveDirectoryClient);
 
             if (PassThru.IsPresent)
                 WriteObject(updatedVault);

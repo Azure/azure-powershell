@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachine()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachine");
+            ComputeTestController.NewInstance.RunPsTest(@"Test-VirtualMachine $null");
         }
 
         [Fact]
