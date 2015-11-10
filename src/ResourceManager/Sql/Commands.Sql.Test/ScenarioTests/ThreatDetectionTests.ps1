@@ -134,7 +134,7 @@ function Test-DisablingThreatDetection
 
 
         # 2. Test
-        Remove-AzureRmSqlDatabaseThreatDetection -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName 
+        Remove-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName 
 		$policy = Get-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 
         # Assert

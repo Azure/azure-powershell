@@ -790,3 +790,138 @@ function Test-VirtualMachineAccessExtension
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Test AzureDiskEncryption extension
+#>
+function Test-AzureDiskEncryptionExtension
+{
+    # This test should be run in Live mode only not in Playback mode
+	#Pre-requisites to be filled in before running this test. The AAD app should belong to the directory as the user running the test.
+    $aadClientID = "";
+	$aadClientSecret = "";
+	#Fill in VM admin user and password
+	$adminUser = "";
+	$adminPassword = "";
+
+	#Resource group variables
+	$rgName = "detestrg";
+	$loc = "South Central US";
+
+	#KeyVault config variables
+	$vaultName = "detestvault";
+	$kekName = "dstestkek";
+
+	#VM config variables
+	$vmName = "detestvm";
+	$vmsize = 'Standard_D2';
+	$imagePublisher = "MicrosoftWindowsServer";
+	$imageOffer = "WindowsServer";
+	$imageSku ="2012-R2-Datacenter";
+
+	#Storage config variables
+	$storageAccountName = "deteststore";
+	$stotype = 'Standard_LRS';
+	$vhdContainerName = "vhds";
+    $osDiskName = 'osdisk' + $vmName;
+	$dataDiskName = 'datadisk' + $vmName;
+    $osDiskCaching = 'ReadWrite';
+	
+	#Network config variables
+	$vnetName = "detestvnet";
+	$subnetName = "detestsubnet";
+	$publicIpName = 'pubip' + $vmName;
+	$nicName = 'nic' + $vmName;
+
+
+	#Disk encryption variables
+	$keyEncryptionAlgorithm = "RSA-OAEP";
+	$volumeType = "All";
+
+    try
+    {
+        Login-AzureRmAccount;
+        # Create new resource group      
+        New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
+
+		# Create new KeyVault
+		$keyVault = New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $loc -Sku standard;
+		$keyVault = Get-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $rgname
+		#set enabledForDiskEncryption
+        Write-Host 'Press go to https://resources.azure.com and set enabledForDiskEncryption flag on KeyVault. [ENTER] to continue or [CTRL-C] to abort...'
+        Read-Host
+		#set permissions to AAD app to write secrets and keys
+		Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -ServicePrincipalName $aadClientID -PermissionsToKeys all -PermissionsToSecrets all 
+		#create a key in KeyVault to use as Kek
+		$kek = Add-AzureKeyVaultKey -VaultName $vaultName -Name $kekName -Destination "Software"
+
+		$diskEncryptionKeyVaultUrl = $keyVault.VaultUri;
+		$keyVaultResourceId = $keyVault.ResourceId;
+		$keyEncryptionKeyUrl = $kek.Key.kid;
+
+        # VM Profile & Hardware   
+        $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
+
+        # NRP
+        $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ($subnetName) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzureRmVirtualNetwork -Force -Name ($vnetName) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzureRmVirtualNetwork -Name ($vnetName) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $pubip = New-AzureRmPublicIpAddress -Force -Name ($publicIpName) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ($publicIpName);
+        $pubip = Get-AzureRmPublicIpAddress -Name ($publicIpName) -ResourceGroupName $rgname;
+        $pubipId = $pubip.Id;
+        $nic = New-AzureRmNetworkInterface -Force -Name ($nicName) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzureRmNetworkInterface -Name ($nicName) -ResourceGroupName $rgname;
+        $nicId = $nic.Id;
+
+        $p = Add-AzureRmVMNetworkInterface -VM $p -Id $nicId;
+
+        # Storage Account (SA)
+        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $storageAccountName -Location $loc -Type $stotype;
+        $stokey = (Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $storageAccountName).Key1;
+
+        $osDiskVhdUri = "https://$storageAccountName.blob.core.windows.net/$vhdContainerName/$osDiskName.vhd";
+        $dataDiskVhdUri = "https://$storageAccountName.blob.core.windows.net/$vhdContainerName/$dataDiskName.vhd";
+
+        $p = Set-AzureRmVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
+        $p = Add-AzureRmVMDataDisk -VM $p -Name $dataDiskName -Caching 'ReadOnly' -DiskSizeInGB 2 -Lun 1 -VhdUri $dataDiskVhdUri -CreateOption Empty;
+
+        # OS & Image
+        $securePassword = ConvertTo-SecureString $adminPassword -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($adminUser, $securePassword);
+        $computerName = $vmName;
+        $vhdContainer = "https://$storageAccountName.blob.core.windows.net/$vhdContainerName";
+
+        $p = Set-AzureRmVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
+        $p = Set-AzureRmVMSourceImage -VM $p -PublisherName $imagePublisher -Offer $imageOffer -Skus $imageSku -Version "latest";
+
+
+        # Virtual Machine
+        New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
+
+		#Enable encryption on the VM
+        Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $keyVaultResourceId -Force;
+        #Get encryption status
+        $encryptionStatus = Get-AzureRmVmDiskEncryptionStatus -ResourceGroupName $rgname -VMName $vmName;
+        #Remove AzureDiskEncryption extension
+        Remove-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName;
+
+        #Remove the VM 
+        Remove-AzureRmVm -ResourceGroupName $rgname -Name $vmName -Force;
+
+        #Create a brand new VM using the same OS vhd encrypted above
+        $p.StorageProfile.ImageReference = $null;
+        $p.OSProfile = $null;
+        $p.StorageProfile.DataDisks = $null;
+        $p = Set-AzureRmVMOSDisk -VM $p -Name $p.StorageProfile.OSDisk.Name -VhdUri $p.StorageProfile.OSDisk.VirtualHardDisk.Uri -Caching ReadWrite -CreateOption attach -DiskEncryptionKeyUrl $encryptionStatus.OsVolumeEncryptionSettings.DiskEncryptionKey.SecretUrl -DiskEncryptionKeyVaultId $encryptionStatus.OsVolumeEncryptionSettings.DiskEncryptionKey.SourceVault.ReferenceUri -Windows;
+
+        New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
+
+    }
+    finally
+    {
+        # Cleanup
+        Remove-AzureRmResourceGroup -Name $rgname -Force;
+    }
+}
