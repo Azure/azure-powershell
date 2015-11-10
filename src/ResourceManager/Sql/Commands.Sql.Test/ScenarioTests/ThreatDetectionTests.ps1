@@ -171,6 +171,7 @@ function Test-InvalidArgumentsThreatDetection
          Assert-Throws {Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName} 
 
          Set-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
+         Set-AzureRmSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount
          Use-AzureRmSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
          Remove-AzureRmSqlDatabaseServerAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName
          Assert-Throws {Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName} 
@@ -198,7 +199,7 @@ function Test-ThreatDetectionOnV2Server
 {
 	# Setup
 	$testSuffix = 5004
-	Create-ThreatDetectionTestEnvironmentWithStorageV2 $testSuffix "0.2"
+	Create-ThreatDetectionTestEnvironmentWithStorageV2 $testSuffix "2.0"
 	$params = Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
 
 	try
