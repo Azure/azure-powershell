@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 parameters.HeadNodeSize = value.HeadNodeSize;
                 parameters.ZookeeperNodeSize = value.ZookeeperNodeSize;
                 HiveMetastore = value.HiveMetastore;
-                OozieMetastore = value.HiveMetastore;
+                OozieMetastore = value.OozieMetastore;
                 foreach (
                     var storageAccount in
                         value.AdditionalStorageAccounts.Where(
