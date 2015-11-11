@@ -38,6 +38,12 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
         public string PrivilegedLogins { get; set; }
 
         /// <summary>
+        /// Gets or sets the privileged users names
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A semicolon separated list of privileged user ids login name")]
+        public string PrivilegedUsers { get; set; }
+
+        /// <summary>
         /// Gets or sets the name of the data masking state
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Defines if data masking is enabled or disabled for this database")]
@@ -61,7 +67,13 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
 
             if (PrivilegedLogins != null) // empty string here means that the user clears the logins list
             {
-                model.PrivilegedLogins = PrivilegedLogins;
+                WriteWarning("The parameter PrivilegedLogins is being deprecated and will be removed in a future release. Use the PrivilegedUsers parameter to provide SQL users excluded from masking.");
+                model.PrivilegedUsers = PrivilegedLogins;
+            }
+           
+            if (PrivilegedUsers != null) // empty string here means that the user clears the users list
+            {
+                model.PrivilegedUsers = PrivilegedUsers;
             }
             
             if (!string.IsNullOrEmpty(DataMaskingState))
