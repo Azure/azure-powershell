@@ -91,7 +91,8 @@ $resourceCommands = @(
   {Get-AzureResourceGroupGalleryTemplate},
   {Get-AzureTag},
   {Get-AzureADUser -UPN $credential.UserName},
-  {Get-AzureRoleAssignment}
+  {Get-AzureRoleAssignment},
+  {Get-AzureRmWebApp}
 )
 
 if ($credential -eq $null)
