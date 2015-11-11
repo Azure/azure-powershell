@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.DirectoryServices;
-using System.Linq;
 using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Management.RemoteApp.Models;
 
 namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
@@ -54,7 +51,7 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
                 {
                     string name = ActiveDirectoryHelper.GetCN(adEntry);
 
-                    if ((name.Length == AdHelper.VMNameLength) && ((maxName == null) || (String.Compare(name, maxName, StringComparison.OrdinalIgnoreCase) < 0)))
+                    if ((name.Length == AdHelper.VMNameLength) && (String.Compare(name, maxName, StringComparison.OrdinalIgnoreCase) < 0))
                     {
                         staleVmEntries.Add(adEntry);
                     }
