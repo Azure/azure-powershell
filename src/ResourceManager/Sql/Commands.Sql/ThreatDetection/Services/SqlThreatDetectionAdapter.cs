@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
             DatabaseThreatDetectionPolicyModel databaseThreatDetectionPolicyModel = new DatabaseThreatDetectionPolicyModel();
             DatabaseSecurityAlertPolicyProperties threatDetectionProperties = threatDetectionPolicy.Properties;
             databaseThreatDetectionPolicyModel.ThreatDetectionState = ModelizeThreatDetectionState(threatDetectionProperties.State);
-            databaseThreatDetectionPolicyModel.NotificationRecipientsEmail = threatDetectionProperties.EmailAddresses;
+            databaseThreatDetectionPolicyModel.NotificationRecipientsEmails = threatDetectionProperties.EmailAddresses;
             databaseThreatDetectionPolicyModel.EmailAdmins = ModelizeThreatDetectionEmailAdmins(threatDetectionProperties.EmailAccountAdmins);
             ModelizeDisabledAlerts(databaseThreatDetectionPolicyModel, threatDetectionProperties.DisabledAlerts);
             return databaseThreatDetectionPolicyModel;
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
             DatabaseSecurityAlertPolicyProperties properties = new DatabaseSecurityAlertPolicyProperties();
             updateParameters.Properties = properties;
             properties.State = PolicizeThreatDetectionState(model.ThreatDetectionState);
-            properties.EmailAddresses = model.NotificationRecipientsEmail ?? "";
+            properties.EmailAddresses = model.NotificationRecipientsEmails ?? "";
             properties.EmailAccountAdmins = model.EmailAdmins
                 ? SecurityConstants.ThreatDetectionEndpoint.Enabled
                 : SecurityConstants.ThreatDetectionEndpoint.Disabled;

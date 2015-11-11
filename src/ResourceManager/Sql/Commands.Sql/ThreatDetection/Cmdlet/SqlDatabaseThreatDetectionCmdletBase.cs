@@ -31,7 +31,8 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         /// <returns>A model object</returns>
         protected override DatabaseThreatDetectionPolicyModel GetEntity()
         {
-            return ModelAdapter.GetDatabaseThreatDetectionPolicy(ResourceGroupName, ServerName, DatabaseName, clientRequestId);
+            return ModelAdapter.GetDatabaseThreatDetectionPolicy(ResourceGroupName, ServerName, DatabaseName,
+                clientRequestId);
         }
 
         /// <summary>

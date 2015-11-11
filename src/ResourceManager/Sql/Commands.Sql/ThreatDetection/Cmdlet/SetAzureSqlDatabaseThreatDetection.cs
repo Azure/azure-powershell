@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         /// Gets or sets the Threat Detection Email Addresses
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A semicolon separated list of email addresses to send the alerts to")]
-        public string NotificationRecipientsEmail { get; set; }
+        public string NotificationRecipientsEmails { get; set; }
 
         /// <summary>
         /// Gets or sets the whether to email administrators
@@ -69,9 +69,9 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
 
             model.ThreatDetectionState = ThreatDetectionStateType.Enabled;
 
-            if (NotificationRecipientsEmail != null)
+            if (NotificationRecipientsEmails != null)
             {
-                model.NotificationRecipientsEmail = NotificationRecipientsEmail;
+                model.NotificationRecipientsEmails = NotificationRecipientsEmails;
             }
 
             if (EmailAdmins != null)
@@ -97,14 +97,14 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         {
             // Validity checks:
             // 1. Check that EmailAddresses are in correct format 
-            bool areEmailAddressesInCorrectFormat = AreEmailAddressesInCorrectFormat(model.NotificationRecipientsEmail);
+            bool areEmailAddressesInCorrectFormat = AreEmailAddressesInCorrectFormat(model.NotificationRecipientsEmails);
             if (!areEmailAddressesInCorrectFormat)
             {
                 throw new Exception(Properties.Resources.EmailsAreNotValid);
             }
 
-            // 2. check that EmailAdmins is not False and NotificationRecipientsEmail is not empty
-            if (!model.EmailAdmins && string.IsNullOrEmpty(model.NotificationRecipientsEmail))
+            // 2. check that EmailAdmins is not False and NotificationRecipientsEmails is not empty
+            if (!model.EmailAdmins && string.IsNullOrEmpty(model.NotificationRecipientsEmails))
             {
                 throw new Exception(Properties.Resources.NeedToProvideEmail);
             }
@@ -123,7 +123,10 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
             }
 
             string[] emailAddressesArray = emailAddresses.Split(';').Where(s => !string.IsNullOrEmpty(s)).ToArray();
-            var emailRegex = new Regex(@"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$");
+            var emailRegex =
+                new Regex(string.Format("{0}{1}",
+                    @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))",
+                    @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$"));
             return !emailAddressesArray.Any(e => !emailRegex.IsMatch(e));
         }
     }

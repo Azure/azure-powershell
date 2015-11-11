@@ -31,7 +31,7 @@ function Test-ThreatDetectionDatabaseGetDefualtPolicy
 
         # Assert
 		Assert-AreEqual $policy.ThreatDetectionState "New"
-		Assert-AreEqual $policy.NotificationRecipientsEmail ""
+		Assert-AreEqual $policy.NotificationRecipientsEmails ""
         Assert-True {$policy.EmailAdmins}
         Assert-AreEqual $policy.ExcludedDetectionTypes.Length 0
 	}
@@ -57,12 +57,12 @@ function Test-ThreatDetectionDatabaseUpdatePolicy
 	{
 		# Test
         Set-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
-        Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -NotificationRecipientsEmail "koko@mailTest.com;koko1@mailTest.com" -EmailAdmins $false -ExcludedDetectionType "Successful_SQLi", "Attempted_SQLi"
+        Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -NotificationRecipientsEmails "koko@mailTest.com;koko1@mailTest.com" -EmailAdmins $false -ExcludedDetectionType "Successful_SQLi", "Attempted_SQLi"
         $policy = Get-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
 		# Assert
 		Assert-AreEqual $policy.ThreatDetectionState "Enabled"
-		Assert-AreEqual $policy.NotificationRecipientsEmail "koko@mailTest.com;koko1@mailTest.com"
+		Assert-AreEqual $policy.NotificationRecipientsEmails "koko@mailTest.com;koko1@mailTest.com"
         Assert-False {$policy.EmailAdmins}
         Assert-AreEqual $policy.ExcludedDetectionTypes.Length 2
 		Assert-True {$policy.ExcludedDetectionTypes.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType]::Successful_SQLi)}
@@ -75,7 +75,7 @@ function Test-ThreatDetectionDatabaseUpdatePolicy
 	
 		# Assert
 		Assert-AreEqual $policy.ThreatDetectionState "Enabled"
-		Assert-AreEqual $policy.NotificationRecipientsEmail "koko@mailTest.com;koko1@mailTest.com"
+		Assert-AreEqual $policy.NotificationRecipientsEmails "koko@mailTest.com;koko1@mailTest.com"
         Assert-False {$policy.EmailAdmins}
         Assert-AreEqual $policy.ExcludedDetectionTypes.Length 7
 		Assert-True {$policy.ExcludedDetectionTypes.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType]::Successful_SQLi)}
@@ -93,7 +93,7 @@ function Test-ThreatDetectionDatabaseUpdatePolicy
 	
 		# Assert
 		Assert-AreEqual $policy.ThreatDetectionState "Disabled"
-		Assert-AreEqual $policy.NotificationRecipientsEmail "koko@mailTest.com;koko1@mailTest.com"
+		Assert-AreEqual $policy.NotificationRecipientsEmails "koko@mailTest.com;koko1@mailTest.com"
         Assert-False {$policy.EmailAdmins}
         Assert-AreEqual $policy.ExcludedDetectionTypes.Length 7
 		Assert-True {$policy.ExcludedDetectionTypes.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType]::Successful_SQLi)}
@@ -176,13 +176,13 @@ function Test-InvalidArgumentsThreatDetection
          Remove-AzureRmSqlDatabaseServerAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName
          Assert-Throws {Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName} 
 
-		 #  Check that NotificationRecipientsEmail are in correct format 
+		 #  Check that NotificationRecipientsEmails are in correct format 
          Set-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
-		 Assert-Throws {Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -NotificationRecipientsEmail "kokogmail.com"} 
+		 Assert-Throws {Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -NotificationRecipientsEmails "kokogmail.com"} 
 
-         #  Check that EmailAdmins is not False and NotificationRecipientsEmail is not empty 
+         #  Check that EmailAdmins is not False and NotificationRecipientsEmails is not empty 
          Assert-Throws {Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EmailAdmins $false} 
-         Assert-Throws {Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EmailAdmins $false -NotificationRecipientsEmail ""} 
+         Assert-Throws {Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EmailAdmins $false -NotificationRecipientsEmails ""} 
 	}
 	finally
 	{

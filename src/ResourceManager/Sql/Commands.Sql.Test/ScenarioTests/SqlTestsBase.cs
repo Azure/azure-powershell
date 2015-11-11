@@ -160,7 +160,9 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
         protected Management.Storage.StorageManagementClient GetStorageV2Client()
         {
-            var client = TestBase.GetServiceClient<Management.Storage.StorageManagementClient>(new CSMTestEnvironmentFactory());
+            var client =
+                TestBase.GetServiceClient<Management.Storage.StorageManagementClient>(new CSMTestEnvironmentFactory());
+
             if (HttpMockServer.Mode == HttpRecorderMode.Playback)
             {
                 client.LongRunningOperationInitialTimeout = 0;

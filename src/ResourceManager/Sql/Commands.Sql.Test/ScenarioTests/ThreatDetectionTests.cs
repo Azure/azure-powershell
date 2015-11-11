@@ -27,7 +27,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             var storageV2Client = GetStorageV2Client();
             var resourcesClient = GetResourcesClient();
             var authorizationClient = GetAuthorizationManagementClient();
-            helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, storageV2Client, resourcesClient, authorizationClient);
+            helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, storageV2Client, resourcesClient,
+                authorizationClient);
         }
 
         [Fact]
