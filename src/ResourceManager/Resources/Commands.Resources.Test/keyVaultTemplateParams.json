@@ -1,0 +1,19 @@
+﻿{
+    "hostingPlanName": {
+        "reference": {
+            "keyVault": {
+                "id": "/subscriptions/37253224-3dfb-46de-b2ef-435b719cd81a/resourceGroups/jogaoGroup/providers/Microsoft.KeyVault/vaults/jvault"
+            },
+            "secretName": "jsecret"
+        }
+    },
+    "siteLocation": {
+        "value": "West US"
+    },
+    "sku": {
+        "value": "Free"
+    },
+    "workerSize": {
+        "value": 0
+    }
+}
