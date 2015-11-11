@@ -80,15 +80,15 @@ namespace Microsoft.Azure.Commands.Compute.Models
                 Name = ext.Name,
                 Location = ext.Location,
                 Etag = null, // TODO: Update CRP library for this field
-                Publisher = ext == null ? null : ext.Publisher,
-                ExtensionType = ext == null ? null : ext.ExtensionType,
-                TypeHandlerVersion = ext == null ? null : ext.TypeHandlerVersion,
+                Publisher = ext.Publisher,
+                ExtensionType = ext.ExtensionType,
+                TypeHandlerVersion = ext.TypeHandlerVersion,
                 Id = ext.Id,
-                PublicSettings = ext == null ? null : ext.Settings,
-                ProtectedSettings = ext == null ? null : ext.ProtectedSettings,
-                ProvisioningState = ext == null ? null : ext.ProvisioningState,
-                Statuses = ext == null || ext.InstanceView == null ? null : ext.InstanceView.Statuses,
-                SubStatuses = ext == null || ext.InstanceView == null ? null : ext.InstanceView.SubStatuses,
+                PublicSettings = ext.Settings,
+                ProtectedSettings = ext.ProtectedSettings,
+                ProvisioningState = ext.ProvisioningState,
+                Statuses = ext.InstanceView == null ? null : ext.InstanceView.Statuses,
+                SubStatuses = ext.InstanceView == null ? null : ext.InstanceView.SubStatuses,
             };
 
             return result;

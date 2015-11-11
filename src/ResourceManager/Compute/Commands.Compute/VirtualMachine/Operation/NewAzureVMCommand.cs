@@ -48,6 +48,11 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(ValueFromPipelineByPropertyName = true)]
         public Hashtable[] Tags { get; set; }
 
+        [Parameter(
+            Position = 3,
+            HelpMessage = "Disable BG Info Extension")]
+        public SwitchParameter DisableBginfoExtension { get; set; }
+
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
@@ -87,8 +92,108 @@ namespace Microsoft.Azure.Commands.Compute
 
                 var op = this.VirtualMachineClient.CreateOrUpdate(this.ResourceGroupName, parameters);
                 var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+
+                if (!(this.DisableBginfoExtension.IsPresent || IsLinuxOs()))
+                {
+
+                    var currentBginfoVersion = GetBginfoExtension();
+
+                    if (!string.IsNullOrEmpty(currentBginfoVersion))
+                    {
+                        var extensionParameters = new VirtualMachineExtension
+                        {
+                            Location = this.Location,
+                            Name = VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
+                            Type = VirtualMachineExtensionType,
+                            Publisher = VirtualMachineBGInfoExtensionContext.ExtensionDefaultPublisher,
+                            ExtensionType = VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
+                            TypeHandlerVersion = currentBginfoVersion,
+                            AutoUpgradeMinorVersion = true
+                        };
+
+                        ComputeClient.ComputeManagementClient.VirtualMachineExtensions.CreateOrUpdate(
+                            this.ResourceGroupName, this.VM.Name, extensionParameters);
+                    }
+                }
                 WriteObject(result);
             });
+        }
+
+        private string GetBginfoExtension()
+        {
+            var canonicalizedLocation = this.Location.Canonicalize();
+
+            var publishers =
+                ComputeClient.ComputeManagementClient.VirtualMachineImages.ListPublishers(new VirtualMachineImageListPublishersParameters
+                {
+                    Location = canonicalizedLocation
+                });
+
+            var publisher = publishers.Resources.FirstOrDefault(e => e.Name.Equals(VirtualMachineBGInfoExtensionContext.ExtensionDefaultPublisher));
+
+            if (publisher == null || !publisher.Name.Equals(VirtualMachineBGInfoExtensionContext.ExtensionDefaultPublisher))
+            {
+                return null;
+            }
+
+            var virtualMachineImageClient = ComputeClient.ComputeManagementClient.VirtualMachineExtensionImages;
+
+
+            var imageTypes =
+                virtualMachineImageClient.ListTypes(new VirtualMachineExtensionImageListTypesParameters
+                {
+                    Location = canonicalizedLocation,
+                    PublisherName = VirtualMachineBGInfoExtensionContext.ExtensionDefaultPublisher
+                });
+
+            var extensionType = imageTypes.Resources.FirstOrDefault(
+                e => e.Name.Equals(VirtualMachineBGInfoExtensionContext.ExtensionDefaultName));
+
+            if (extensionType == null || !extensionType.Name.Equals(VirtualMachineBGInfoExtensionContext.ExtensionDefaultName))
+            {
+                return null;
+            }
+
+            var bginfoVersions =
+                virtualMachineImageClient.ListVersions(new VirtualMachineExtensionImageGetParameters
+                {
+                    Location = canonicalizedLocation,
+                    PublisherName = VirtualMachineBGInfoExtensionContext.ExtensionDefaultPublisher,
+                    Type = VirtualMachineBGInfoExtensionContext.ExtensionDefaultName
+                });
+
+            if (bginfoVersions != null
+                && bginfoVersions.Resources != null
+                && bginfoVersions.Resources.Count > 0)
+            {
+                return bginfoVersions.Resources.Max(ver =>
+                {
+                    Version result;
+                    return (Version.TryParse(ver.Name, out result))
+                        ? string.Format("{0}.{1}", result.Major, result.Minor)
+                        : VirtualMachineBGInfoExtensionContext.ExtensionDefaultVersion;
+                });
+            }
+
+            return null;
+        }
+
+        private bool IsLinuxOs()
+        {
+            if (this.VM == null)
+            {
+                return false;
+            }
+
+            if ((this.VM.StorageProfile != null)
+                && (this.VM.StorageProfile.OSDisk != null)
+                && (this.VM.StorageProfile.OSDisk.OperatingSystemType != null))
+            {
+                return (this.VM.StorageProfile.OSDisk.OperatingSystemType.Equals(OperatingSystemTypes.Linux));
+            }
+
+            return ((this.VM.OSProfile != null)
+                    && (this.VM.OSProfile.LinuxConfiguration != null));
         }
 
         private Uri GetOrCreateStorageAccountForBootDiagnostics()
