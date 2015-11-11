@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Commands.Profile
                     DefaultProfile = new AzureRMProfile();
                 }
 
-                var profileClient = new RMProfileClient(DefaultProfile);
+                var profileClient = new RMProfileClient(AuthenticationFactory, ClientFactory, DefaultProfile);
 
                 WriteObject((PSAzureProfile)profileClient.Login(azureAccount, Environment, TenantId, SubscriptionId,
                     SubscriptionName, password));

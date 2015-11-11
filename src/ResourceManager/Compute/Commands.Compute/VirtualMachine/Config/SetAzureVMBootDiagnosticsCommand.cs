@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 else
                 {
-                    var storageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(
+                    var storageClient = ClientFactory.CreateClient<StorageManagementClient>(
                         DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
                     var storageAccount = storageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.StorageAccountName);
 

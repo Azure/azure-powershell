@@ -69,12 +69,13 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// <summary>
         /// Creates new ResourceManagementClient
         /// </summary>
+        /// <param name="clientFactory">Factory for management cleints</param>
         /// <param name="context">Profile containing resources to manipulate</param>
-        public ResourcesClient(AzureContext context)
+        public ResourcesClient(IClientFactory clientFactory, AzureContext context)
             : this(
-                AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
-                new GalleryTemplatesClient(context),
-                AzureSession.ClientFactory.CreateClient<AuthorizationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
+                clientFactory.CreateClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
+                new GalleryTemplatesClient(clientFactory, context),
+                clientFactory.CreateClient<AuthorizationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
 
         }

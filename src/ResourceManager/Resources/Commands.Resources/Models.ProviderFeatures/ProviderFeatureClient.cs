@@ -43,10 +43,11 @@ namespace Microsoft.Azure.Commands.Resources.Models.ProviderFeatures
         /// <summary>
         /// Initializes a new instance of the <see cref="ProviderFeatureClient"/> class.
         /// </summary>
+        /// <param name="clientFactory">The client factory</param>
         /// <param name="context">The azure context</param>
-        public ProviderFeatureClient(AzureContext context)
+        public ProviderFeatureClient(IClientFactory clientFactory, AzureContext context)
         {
-            this.FeaturesManagementClient = AzureSession.ClientFactory.CreateClient<Management.Resources.FeatureClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            this.FeaturesManagementClient = clientFactory.CreateClient<Management.Resources.FeatureClient>(context, AzureEnvironment.Endpoint.ResourceManager);
         }
 
         /// <summary>

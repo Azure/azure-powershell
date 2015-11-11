@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Profile
                     throw new PSInvalidOperationException(Resources.SetAzureRmContextNoParameterSet);
                 }
 
-                var profileClient = new RMProfileClient(DefaultProfile);
+                var profileClient = new RMProfileClient(AuthenticationFactory, ClientFactory, DefaultProfile);
                 if (!string.IsNullOrWhiteSpace(SubscriptionId) || !string.IsNullOrWhiteSpace(SubscriptionName))
                 {
                     profileClient.SetCurrentContext(SubscriptionId, SubscriptionName, TenantId);

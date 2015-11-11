@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Profile
 
         protected override void ProcessRecord()
         {
-            var profileClient = new RMProfileClient(DefaultProfile);
+            var profileClient = new RMProfileClient(AuthenticationFactory, ClientFactory, DefaultProfile);
 
             var newEnvironment = new AzureEnvironment
             {
