@@ -13,24 +13,26 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using Microsoft.Azure.Commands.Sql.Auditing.Services;
+using Microsoft.Azure.Commands.Sql.ThreatDetection.Model;
+using Microsoft.Azure.Commands.Sql.ThreatDetection.Services;
 using Microsoft.Azure.Common.Authentication.Models;
 
-namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
+namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
 {
     /// <summary>
     /// The base class for all Azure Sql Database security Management Cmdlets
     /// </summary>
-    public abstract class SqlDatabaseAuditingCmdletBase : AzureSqlDatabaseCmdletBase<DatabaseAuditingPolicyModel, SqlAuditAdapter>
+    public abstract class SqlDatabaseThreatDetectionCmdletBase : AzureSqlDatabaseCmdletBase<DatabaseThreatDetectionPolicyModel, SqlThreatDetectionAdapter>
     {
         /// <summary>
         /// Provides the model element that this cmdlet operates on
         /// </summary>
         /// <returns>A model object</returns>
-        protected override DatabaseAuditingPolicyModel GetEntity()
+        protected override DatabaseThreatDetectionPolicyModel GetEntity()
         {
-            return ModelAdapter.GetDatabaseAuditingPolicy(ResourceGroupName, ServerName, DatabaseName, clientRequestId);
+            return ModelAdapter.GetDatabaseThreatDetectionPolicy(ResourceGroupName, ServerName, DatabaseName,
+                clientRequestId);
         }
 
         /// <summary>
@@ -38,9 +40,9 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// </summary>
         /// <param name="subscription">The AzureSubscription in which the current execution is performed</param>
         /// <returns>An initialized and ready to use ModelAdapter object</returns>
-        protected override SqlAuditAdapter InitModelAdapter(AzureSubscription subscription)
+        protected override SqlThreatDetectionAdapter InitModelAdapter(AzureSubscription subscription)
         {
-            return new SqlAuditAdapter(DefaultProfile.Context);
+            return new SqlThreatDetectionAdapter(DefaultProfile.Context);
         }
 
         /// <summary>
@@ -48,9 +50,9 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// object to the REST endpoint
         /// </summary>
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected override DatabaseAuditingPolicyModel PersistChanges(DatabaseAuditingPolicyModel model)
+        protected override DatabaseThreatDetectionPolicyModel PersistChanges(DatabaseThreatDetectionPolicyModel model)
         {
-            ModelAdapter.SetDatabaseAuditingPolicy(model, clientRequestId, DefaultContext.Environment.Endpoints[AzureEnvironment.Endpoint.StorageEndpointSuffix]);
+            ModelAdapter.SetDatabaseThreatDetectionPolicy(model, clientRequestId);
             return null;
         }
     }

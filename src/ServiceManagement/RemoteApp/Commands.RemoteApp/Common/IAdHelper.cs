@@ -12,26 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Sql.Auditing.Model
-{
-    /// <summary>
-    /// The possible states in which the user server's policy property may be in
-    /// </summary>
-    public enum UseServerDefaultOptions {Enabled, Disabled }
+using System.Collections.Generic;
+using System.DirectoryServices;
+using System.Management.Automation;
 
-    /// <summary>
-    /// A class representing a database auditing policy
-    /// </summary>
-    public class DatabaseAuditingPolicyModel : BaseAuditingPolicyModel
+namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
+{
+    public interface IAdHelper
     {
-        /// <summary>
-        /// Gets or sets the database name
-        /// </summary>
-        public string DatabaseName { get; set; }
-      
-        /// <summary>
-        /// Gets or sets the use server default property
-        /// </summary>
-        public UseServerDefaultOptions UseServerDefault { get; set; }
+        IList<DirectoryEntry> GetVmAdEntries(string domainName, string OU, string vmNamePrefix, PSCredential credential);
+        string GetCN(DirectoryEntry dirEntry);
+        void DeleteEntry(DirectoryEntry dirEntry);
     }
 }

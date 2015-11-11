@@ -1,3 +1,8 @@
+* Azure SQL Database: new cmdlets for managing database threat detection policies:
+  * Get-AzureRmSqlDatabaseThreatDetectionPolicy
+  * Set-AzureRmSqlDatabaseThreatDetectionPolicy
+  * Remove-AzureRmSqlDatabaseThreatDetectionPolicy
+  
 ## 2015.11.09 version 1.0.1
 * Azure Compute
   * Added cmdlets for managing VM DiskEncryption extension
