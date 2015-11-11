@@ -12,17 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Sql.ThreatDetection.Model;
 
-namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
+namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
 {
     /// <summary>
     /// Disables auditing on a specific database.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabaseAuditing"), OutputType(typeof(DatabaseAuditingPolicyModel))]
-    [Alias("Remove-AzureRmSqlDatabaseAuditing")]
-    public class RemoveSqlDatabaseAuditing : SqlDatabaseAuditingCmdletBase
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabaseThreatDetectionPolicy"), 
+            OutputType(typeof(DatabaseThreatDetectionPolicyModel))]
+   
+    public class AzureRmSqlDatabaseThreatDetection : SqlDatabaseThreatDetectionCmdletBase
     {
         /// <summary>
         ///  Defines whether the cmdlets will output the model object at the end of its execution
@@ -40,22 +41,12 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// Updates the given model element with the cmdlet specific operation 
         /// </summary>
         /// <param name="model">A model object</param>
-        protected override DatabaseAuditingPolicyModel ApplyUserInputToModel(DatabaseAuditingPolicyModel model)
+        protected override DatabaseThreatDetectionPolicyModel ApplyUserInputToModel(
+            DatabaseThreatDetectionPolicyModel model)
         {
-            base.ApplyUserInputToModel(model);
-            model.AuditState = AuditStateType.Disabled;
+            model = base.ApplyUserInputToModel(model);
+            model.ThreatDetectionState = ThreatDetectionStateType.Disabled;
             return model;
-        }
-
-        /// <summary>
-        /// This method is responsible to call the right API in the communication layer that will eventually send the information in the 
-        /// object to the REST endpoint
-        /// </summary>
-        /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected override DatabaseAuditingPolicyModel PersistChanges(DatabaseAuditingPolicyModel model)
-        {
-            ModelAdapter.IgnoreStorage = true;
-            return base.PersistChanges(model);
         }
     }
 }

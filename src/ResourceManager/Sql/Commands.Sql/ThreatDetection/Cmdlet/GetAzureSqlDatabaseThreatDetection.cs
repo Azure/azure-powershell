@@ -12,26 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Sql.Auditing.Model
+using System.Management.Automation;
+using Microsoft.Azure.Commands.Sql.ThreatDetection.Model;
+
+namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
 {
     /// <summary>
-    /// The possible states in which the user server's policy property may be in
+    /// Returns the auditing policy of a specific database.
     /// </summary>
-    public enum UseServerDefaultOptions {Enabled, Disabled }
-
-    /// <summary>
-    /// A class representing a database auditing policy
-    /// </summary>
-    public class DatabaseAuditingPolicyModel : BaseAuditingPolicyModel
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseThreatDetectionPolicy"), 
+            OutputType(typeof(DatabaseThreatDetectionPolicyModel))]
+    public class AzureRmSqlDatabaseThreatDetectionPolicy : SqlDatabaseThreatDetectionCmdletBase
     {
         /// <summary>
-        /// Gets or sets the database name
+        /// No sending is needed as this is a Get cmdlet
         /// </summary>
-        public string DatabaseName { get; set; }
-      
-        /// <summary>
-        /// Gets or sets the use server default property
-        /// </summary>
-        public UseServerDefaultOptions UseServerDefault { get; set; }
+        /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
+        protected override DatabaseThreatDetectionPolicyModel PersistChanges(DatabaseThreatDetectionPolicyModel model) 
+        {
+            return null;
+        }
     }
 }
