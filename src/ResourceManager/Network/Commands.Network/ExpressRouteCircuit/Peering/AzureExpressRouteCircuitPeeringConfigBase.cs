@@ -45,12 +45,6 @@ namespace Microsoft.Azure.Commands.Network
         public int PeerASN { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            HelpMessage = "The AzureASN")]
-        [ValidateNotNullOrEmpty]
-        public int AzureASN { get; set; }
-
-        [Parameter(
             Mandatory = true,
             HelpMessage = "The PrimaryPeerAddressPrefix")]
         [ValidateNotNullOrEmpty]
@@ -67,6 +61,12 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The vlanId")]
         [ValidateNotNullOrEmpty]
         public int VlanId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The SharedKey")]
+        [ValidateNotNullOrEmpty]
+        public string SharedKey { get; set; }
 
         [Parameter(
             Mandatory = false,

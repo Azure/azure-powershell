@@ -79,7 +79,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                     helper.RMStorageModule, 
                     helper.GetRMModulePath(@"AzureRM.Insights.psd1"), 
                     helper.GetRMModulePath(@"AzureRM.Sql.psd1"));
-
                 helper.RunPowerShellTest(scripts);
             }
         }
@@ -157,6 +156,19 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             }
 
             return TestBase.GetGraphServiceClient<GraphRbacManagementClient>(testFactory, tenantId);
+        }
+
+        protected Management.Storage.StorageManagementClient GetStorageV2Client()
+        {
+            var client =
+                TestBase.GetServiceClient<Management.Storage.StorageManagementClient>(new CSMTestEnvironmentFactory());
+
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                client.LongRunningOperationInitialTimeout = 0;
+                client.LongRunningOperationRetryTimeout = 0;
+            }
+            return client;
         }
     }
 }

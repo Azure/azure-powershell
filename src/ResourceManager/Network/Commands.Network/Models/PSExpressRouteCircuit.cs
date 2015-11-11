@@ -34,6 +34,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSExpressRouteCircuitSku Sku { get; set; }
 
+        public string BillingType { get; set; }
+
         public string ProvisioningState { get; set; }
 
         [JsonIgnore]
@@ -47,7 +49,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             get { return JsonConvert.SerializeObject(ServiceProviderProperties, Formatting.Indented); }
         }
-        
+
         [JsonIgnore]
         public string PeeringsText
         {

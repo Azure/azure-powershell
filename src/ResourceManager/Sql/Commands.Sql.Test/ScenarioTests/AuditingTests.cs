@@ -22,17 +22,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
     public class AuditingTests : SqlTestsBase
     {
-        protected Microsoft.Azure.Management.Storage.StorageManagementClient GetStorageV2Client()
-        {
-            var client = TestBase.GetServiceClient<Microsoft.Azure.Management.Storage.StorageManagementClient>(new CSMTestEnvironmentFactory());
-            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
-            {
-                client.LongRunningOperationInitialTimeout = 0;
-                client.LongRunningOperationRetryTimeout = 0;
-            }
-            return client;
-        }
-
         protected override void SetupManagementClients()
         {
             var sqlCSMClient = GetSqlClient();
@@ -43,20 +32,22 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, storageV2Client, resourcesClient, authorizationClient);
         }
         
-        [Fact(Skip = "PSGet: TODO fix by moving SM specific logic to test setup")]        [Trait(Category.AcceptanceType, Category.Sql)]
+        [Fact(Skip = "PSGet: TODO fix by moving SM specific logic to test setup")]        
+        [Trait(Category.AcceptanceType, Category.Sql)]
         public void TestAuditingDatabaseUpdatePolicyWithStorage()
         {
             RunPowerShellTest("Test-AuditingDatabaseUpdatePolicyWithStorage");
         }
 
-        [Fact(Skip = "PSGet: TODO fix by moving SM specific logic to test setup")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.Sql)]
         public void TestAuditingDatabaseUpdatePolicyWithStorageV2()
         {
             RunPowerShellTest("Test-AuditingDatabaseUpdatePolicyWithStorageV2");
         }
 
-        [Fact(Skip = "PSGet: TODO fix by moving SM specific logic to test setup")]        [Trait(Category.AcceptanceType, Category.Sql)]
+        [Fact(Skip = "PSGet: TODO fix by moving SM specific logic to test setup")]        
+        [Trait(Category.AcceptanceType, Category.Sql)]
         public void TestAuditingServerUpdatePolicyWithStorage()
         {
             RunPowerShellTest("Test-AuditingServerUpdatePolicyWithStorage");

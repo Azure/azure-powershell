@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             this.Name = metricDefinition.Name != null ? metricDefinition.Name.Value : null;
             this.PrimaryAggregationType = metricDefinition.PrimaryAggregationType;
             this.Properties = metricDefinition.Properties;
-            this.ResourceUri = metricDefinition.ResourceUri;
+            this.ResourceId = metricDefinition.ResourceId;
             this.Unit = metricDefinition.Unit;
         }
     }

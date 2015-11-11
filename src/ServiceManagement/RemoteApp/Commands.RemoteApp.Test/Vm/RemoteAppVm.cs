@@ -111,5 +111,58 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             Assert.Equal<string>(vmName, resultVms[0].VirtualMachineName);
             Assert.Equal<string>(loggedInUserUpn, resultVms[0].LoggedOnUserUpns[0]);
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetStaleAdVmObjects()
+        {
+            int countOfExpectedVms = 0;
+            GetAzureRemoteAppVmStaleAdObject mockCmdlet = SetUpTestCommon<GetAzureRemoteAppVmStaleAdObject>();
+            IEnumerable<string> result = null;
+            IList<string> resulAdObjs = null;
+
+            string[] existingVms = new string[] {"abcdefgh0003", "abcdefgh0004", "abcdefgh0005"};
+            string[] adObjects = new string[] { "abcdefgh0000", "abcdefgh0002", "abcdefgh0003", "abcdefgh0004", "abcdefgh0005", "abcdefgh0006" };
+            string[] expectedResult = new string[] { "abcdefgh0000", "abcdefgh0002" };
+
+            // Required parameters for this test
+            mockCmdlet.CollectionName = collectionName;
+
+            // Setup the environment for testing this cmdlet
+            countOfExpectedVms = MockObject.SetUpStaleVmObjectsTest(
+                remoteAppManagementClientMock,
+                collectionName,
+                existingVms
+                );
+
+            if(mockCmdlet.ActiveDirectoryHelper is MockAdHelper)
+            {
+                (mockCmdlet.ActiveDirectoryHelper as MockAdHelper).SetEntries(adObjects);
+            }
+
+            mockCmdlet.ResetPipelines();
+
+            Log("Calling Get-AzureRemoteAppVmStaleAdObjects which should return list of stale Vm objects.");
+
+            mockCmdlet.ExecuteCmdlet();
+            if (mockCmdlet.runTime().ErrorStream.Count != 0)
+            {
+                Assert.True(false,
+                    String.Format("Get-AzureRemoteAppVmStaleAdObjects returned the following error {0}.",
+                        mockCmdlet.runTime().ErrorStream[0].Exception.Message
+                    )
+                );
+            }
+
+            result = LanguagePrimitives.GetEnumerable(mockCmdlet.runTime().OutputPipeline).Cast<string>();
+
+            Assert.NotNull(result);
+            Assert.Equal(expectedResult.Length, result.Count());
+
+            foreach (string staleObj in result)
+            {
+                Assert.True(expectedResult.Contains(staleObj));
+            }
+        }
     }
 }

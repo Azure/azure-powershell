@@ -94,6 +94,21 @@ namespace Microsoft.Azure.Commands.Batch
         }
 
         /// <summary>
+        /// The core quota for this Batch account.
+        /// </summary>
+        public int CoreQuota { get; private set; }
+
+        /// <summary>
+        /// The pool quota for this Batch account.
+        /// </summary>
+        public int PoolQuota { get; private set; }
+
+        /// <summary>
+        /// The active job and job schedule quota for this Batch account.
+        /// </summary>
+        public int ActiveJobAndJobScheduleQuota { get; private set; }
+
+        /// <summary>
         /// The key to use when interacting with the Batch service. Be default, the primary key will be used.
         /// </summary>
         public AccountKeyType KeyInUse 
@@ -157,6 +172,9 @@ namespace Microsoft.Azure.Commands.Batch
             this.Location = resource.Location;
             this.State = resource.Properties.ProvisioningState.ToString();
             this.Tags = Helpers.CreateTagHashtable(resource.Tags);
+            this.CoreQuota = resource.Properties.CoreQuota;
+            this.PoolQuota = resource.Properties.PoolQuota;
+            this.ActiveJobAndJobScheduleQuota = resource.Properties.ActiveJobAndJobScheduleQuota;
 
             // extract the host and strip off the account name for the TaskTenantUrl and AccountName
             var hostParts = accountEndpoint.Split('.');

@@ -1144,7 +1144,8 @@ namespace Microsoft.Azure.Common.Authentication
 
             if (AzureEnvironment.PublicEnvironments.ContainsKey(environment.Name))
             {
-                throw new ArgumentException(Resources.ChangingDefaultEnvironmentNotSupported, "environment");
+                throw new InvalidOperationException(
+                    string.Format(Resources.ChangingDefaultEnvironmentNotSupported, "environment"));
             }
 
             if (Profile.Environments.ContainsKey(environment.Name))

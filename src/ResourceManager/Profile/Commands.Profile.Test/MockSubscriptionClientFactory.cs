@@ -44,6 +44,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             }
         }
 
+        public static string GetSubscriptionNameFromId(string id)
+        {
+            return "Sub-" + id;
+        }
+
         public SubscriptionClient GetSubscriptionClient()
         {
             var tenantMock = new Mock<ITenantOperations>();
@@ -72,7 +77,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                             result.Subscription =
                                 new Subscription
                                 {
-                                    DisplayName = "Returned Subscription",
+                                    DisplayName = GetSubscriptionNameFromId(subId),
                                     Id = subId,
                                     State = "Active",
                                     SubscriptionId = subId
@@ -100,7 +105,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                                             sub =>
                                                 new Subscription
                                                 {
-                                                    DisplayName = "Contoso Subscription",
+                                                    DisplayName = GetSubscriptionNameFromId(sub),
                                                     Id = sub,
                                                     State = "Active",
                                                     SubscriptionId = sub
