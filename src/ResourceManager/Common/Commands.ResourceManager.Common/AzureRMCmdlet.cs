@@ -17,6 +17,7 @@ using System.IO;
 using System.Management.Automation;
 using System.Management.Automation.Host;
 using System.Threading;
+using Microsoft.Azure.Commands.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Properties;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
@@ -32,6 +33,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
     /// </summary>
     public abstract class AzureRMCmdlet : AzurePSCmdlet
     {
+        public const string ProfileVariable = "_azpsh_profile";
         /// <summary>
         /// Static constructor for AzureRMCmdlet.
         /// </summary>
@@ -61,8 +63,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         /// </summary>
         public AzureRMProfile DefaultProfile
         {
-            get { return AzureRmProfileProvider.Instance.Profile; }
-            set { AzureRmProfileProvider.Instance.Profile = value; }
+            get { return (AzureRMProfile)(SessionState.PSVariable.GetValue(ProfileVariable) as PSAzureProfile);}
+            set { SessionState.PSVariable.Set(ProfileVariable, ((PSAzureProfile)value)); }
         }
 
         /// <summary>

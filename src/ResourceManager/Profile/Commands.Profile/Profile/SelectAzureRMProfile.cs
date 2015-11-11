@@ -14,6 +14,7 @@
 
 using System;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Models;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Properties;
@@ -46,19 +47,19 @@ namespace Microsoft.Azure.Commands.Profile
         {
             if (!string.IsNullOrEmpty(Path))
             {
-                AzureRmProfileProvider.Instance.Profile = new AzureRMProfile(Path);
+                DefaultProfile = new AzureRMProfile(Path);
             }
             else
             {
-                AzureRmProfileProvider.Instance.Profile = Profile;
+                DefaultProfile = Profile;
             }
 
-            if (AzureRmProfileProvider.Instance.Profile == null)
+            if (DefaultProfile == null)
             {
                 throw new ArgumentException(Resources.AzureProfileMustNotBeNull);
             }
 
-            WriteObject((PSAzureProfile)AzureRmProfileProvider.Instance.Profile);
+            WriteObject((PSAzureProfile)DefaultProfile);
         }
     }
 }

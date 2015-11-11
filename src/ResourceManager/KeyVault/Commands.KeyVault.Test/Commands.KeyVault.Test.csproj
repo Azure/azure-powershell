@@ -308,10 +308,6 @@
       <Project>{e1f5201d-6067-430e-b303-4e367652991b}</Project>
       <Name>Commands.Resources</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Commands.KeyVault\Commands.KeyVault.csproj">
-      <Project>{9ffc40cc-a341-4d0c-a25d-dc6b78ef6c94}</Project>
-      <Name>Commands.KeyVault</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resource.resx">

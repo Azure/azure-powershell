@@ -11,30 +11,30 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+// TODO: Rewrite for using Sync
+//using Microsoft.WindowsAzure.Commands.Sync;
+//using Microsoft.WindowsAzure.Commands.Sync.Download;
+//using System.IO;
 
-using Microsoft.WindowsAzure.Commands.Sync;
-using Microsoft.WindowsAzure.Commands.Sync.Download;
-using System.IO;
+//namespace Microsoft.Azure.Commands.Compute.Models
+//{
+//    public class VhdDownloaderModel
+//    {
+//        public static VhdDownloadContext Download(DownloaderParameters downloadParameters, ComputeClientBaseCmdlet cmdlet)
+//        {
+//            Program.SyncOutput = new PSSyncOutputEvents(cmdlet);
 
-namespace Microsoft.Azure.Commands.Compute.Models
-{
-    public class VhdDownloaderModel
-    {
-        public static VhdDownloadContext Download(DownloaderParameters downloadParameters, ComputeClientBaseCmdlet cmdlet)
-        {
-            Program.SyncOutput = new PSSyncOutputEvents(cmdlet);
+//            downloadParameters.ProgressDownloadComplete = Program.SyncOutput.ProgressDownloadComplete;
+//            downloadParameters.ProgressDownloadStatus = Program.SyncOutput.ProgressDownloadStatus;
 
-            downloadParameters.ProgressDownloadComplete = Program.SyncOutput.ProgressDownloadComplete;
-            downloadParameters.ProgressDownloadStatus = Program.SyncOutput.ProgressDownloadStatus;
+//            var downloader = new Downloader(downloadParameters);
+//            downloader.Download();
 
-            var downloader = new Downloader(downloadParameters);
-            downloader.Download();
-
-            return new VhdDownloadContext
-            {
-                LocalFilePath =  new FileInfo(downloadParameters.LocalFilePath),
-                Source = downloadParameters.BlobUri.Uri
-            };
-        }
-    }
-}
+//            return new VhdDownloadContext
+//            {
+//                LocalFilePath =  new FileInfo(downloadParameters.LocalFilePath),
+//                Source = downloadParameters.BlobUri.Uri
+//            };
+//        }
+//    }
+//}

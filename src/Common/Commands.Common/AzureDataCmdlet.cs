@@ -26,6 +26,7 @@ using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
+using Microsoft.Azure.Commands.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
@@ -56,7 +57,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         public AzureRMProfile RMProfile
         {
-            get { return AzureRmProfileProvider.Instance.Profile; }
+            get { return (AzureRMProfile)(SessionState.PSVariable.Get(AzurePowerShell.ProfileVariable).Value as PSAzureProfile); }
         }
 
         protected override void SaveDataCollectionProfile()

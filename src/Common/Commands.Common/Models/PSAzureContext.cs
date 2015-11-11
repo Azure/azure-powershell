@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.Common.Authentication.Models;
 
-namespace Microsoft.Azure.Commands.Profile.Models
+namespace Microsoft.Azure.Commands.Models
 {
     /// <summary>
     /// The context for connecting cmdlets in the current session to Azure.

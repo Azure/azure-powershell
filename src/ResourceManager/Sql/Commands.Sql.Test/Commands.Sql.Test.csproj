@@ -264,10 +264,6 @@
       <Project>{65c3a86a-716d-4e7d-ab67-1db00b3bf72d}</Project>
       <Name>Commands.Common.Storage</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Commands.Sql\Commands.Sql.csproj">
-      <Project>{69ed499e-6f3c-488f-86b8-b74cfda4d47e}</Project>
-      <Name>Commands.Sql</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />

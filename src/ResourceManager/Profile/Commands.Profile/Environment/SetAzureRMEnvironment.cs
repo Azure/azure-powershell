@@ -15,6 +15,7 @@
 using System;
 using System.Globalization;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Models;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -108,7 +109,7 @@ namespace Microsoft.Azure.Commands.Profile
 
         protected override void ProcessRecord()
         {
-            var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
+            var profileClient = new RMProfileClient(DefaultProfile);
             
             if ((Name == "AzureCloud") || 
                 (Name == "AzureChinaCloud") ||
@@ -119,9 +120,9 @@ namespace Microsoft.Azure.Commands.Profile
             }
 
             var newEnvironment = new AzureEnvironment { Name = Name, OnPremise = EnableAdfsAuthentication };
-            if (AzureRmProfileProvider.Instance.Profile.Environments.ContainsKey(Name))
+            if (DefaultProfile.Environments.ContainsKey(Name))
             {
-                newEnvironment = AzureRmProfileProvider.Instance.Profile.Environments[Name];
+                newEnvironment = DefaultProfile.Environments[Name];
             }
             SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.PublishSettingsFileUrl, PublishSettingsFileUrl);
             SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.ServiceManagement, ServiceEndpoint);

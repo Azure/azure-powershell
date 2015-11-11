@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Models;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Common;
@@ -28,7 +29,7 @@ namespace Microsoft.Azure.Commands.Profile
     {
         protected override void ProcessRecord()
         {
-            WriteObject((PSAzureContext)AzureRmProfileProvider.Instance.Profile.Context);
+            WriteObject((PSAzureContext)DefaultProfile.Context);
         }
     }
 }

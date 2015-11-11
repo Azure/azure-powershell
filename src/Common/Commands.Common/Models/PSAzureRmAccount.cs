@@ -17,7 +17,7 @@ using System.Configuration;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Common.Authentication.Utilities;
 
-namespace Microsoft.Azure.Commands.Profile.Models
+namespace Microsoft.Azure.Commands.Models
 {
     /// <summary>
     /// Azure account details.

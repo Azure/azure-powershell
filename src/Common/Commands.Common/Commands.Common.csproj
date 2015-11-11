@@ -146,19 +146,22 @@
     <Compile Include="AzurePSCmdlet.cs" />
     <Compile Include="AzurePSDataCollectionProfile.cs" />
     <Compile Include="AzurePowerShell.cs" />
-    <Compile Include="AzureRmProfileProvider.cs" />
     <Compile Include="AzureSMProfileProvder.cs" />
     <Compile Include="AzureSubscriptionExtensions.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="ContextExtensions.cs" />
     <Compile Include="IProfileProvider.cs" />
-    <Compile Include="ProfileClient.cs" />
+    <Compile Include="Models\PSAzureContext.cs" />
+    <Compile Include="Models\PSAzureEnvironment.cs" />
+    <Compile Include="Models\PSAzureProfile.cs" />
+    <Compile Include="Models\PSAzureRmAccount.cs" />
+    <Compile Include="Models\PSAzureSubscription.cs" />
+    <Compile Include="Models\PSAzureTenant.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="PublishSettingsImporter.cs" />
     <Compile Include="MetricHelper.cs" />
     <Compile Include="CmdletInfoHandler.cs" />
     <Compile Include="SecureStringExtensions.cs" />
@@ -167,7 +170,6 @@
     <Compile Include="GeneralUtilities.cs" />
     <Compile Include="PowerShellUtilities.cs" />
     <Compile Include="RecordingTracingInterceptor.cs" />
-    <Compile Include="ProfileClientExtensions.cs" />
     <Compile Include="ClientCreatedArgs.cs" />
     <Compile Include="CmdletExtensions.cs" />
     <Compile Include="TestMockSupport.cs" />

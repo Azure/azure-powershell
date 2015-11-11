@@ -22,6 +22,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
+using Microsoft.Azure.Commands.Models;
 using Microsoft.Azure.Commands.Profile.Properties;
 
 namespace Microsoft.Azure.Commands.Profile
@@ -116,72 +117,72 @@ namespace Microsoft.Azure.Commands.Profile
 
         protected override void ProcessRecord()
         {
-            if (!string.IsNullOrWhiteSpace(SubscriptionId) && 
-                !string.IsNullOrWhiteSpace(SubscriptionName))
-            {
-                throw new PSInvalidOperationException(Resources.BothSubscriptionIdAndNameProvided);
-            }
-
-            Guid subscrptionIdGuid;
-            if (!string.IsNullOrWhiteSpace(SubscriptionId) && 
-                !Guid.TryParse(SubscriptionId, out subscrptionIdGuid))
-            {
-                throw new PSInvalidOperationException(Resources.InvalidSubscriptionId);
-            }
-
-            AzureAccount azureAccount = new AzureAccount();
-
-            if (!string.IsNullOrEmpty(AccessToken))
-            {
-                if (string.IsNullOrWhiteSpace(AccountId) )
+                if (!string.IsNullOrWhiteSpace(SubscriptionId) &&
+                    !string.IsNullOrWhiteSpace(SubscriptionName))
                 {
-                    throw new PSInvalidOperationException(Resources.AccountIdRequired);
+                    ThrowTerminatingError( new ErrorRecord(new PSInvalidOperationException(Resources.BothSubscriptionIdAndNameProvided), "BothSubscriptionIdAndNameProvided", ErrorCategory.InvalidArgument, this));
                 }
 
-                azureAccount.Type = AzureAccount.AccountType.AccessToken;
-                azureAccount.Id = AccountId;
-                azureAccount.SetProperty(AzureAccount.Property.AccessToken, AccessToken);
-            }
-            else if (ServicePrincipal.IsPresent)
-            {
-                azureAccount.Type = AzureAccount.AccountType.ServicePrincipal;
-            }
-            else
-            {
-                azureAccount.Type = AzureAccount.AccountType.User;
-            }
+                Guid subscrptionIdGuid;
+                if (!string.IsNullOrWhiteSpace(SubscriptionId) &&
+                    !Guid.TryParse(SubscriptionId, out subscrptionIdGuid))
+                {
+                    throw new PSInvalidOperationException(Resources.InvalidSubscriptionId);
+                }
 
-            if (!string.IsNullOrEmpty(CertificateThumbprint))
-            {
-                azureAccount.SetProperty(AzureAccount.Property.CertificateThumbprint, CertificateThumbprint);
-            }
+                AzureAccount azureAccount = new AzureAccount();
 
-            SecureString password = null;
-            if (Credential != null)
-            {
-                azureAccount.Id = Credential.UserName;
-                password = Credential.Password;
-            }
+                if (!string.IsNullOrEmpty(AccessToken))
+                {
+                    if (string.IsNullOrWhiteSpace(AccountId))
+                    {
+                        throw new PSInvalidOperationException(Resources.AccountIdRequired);
+                    }
 
-            if (!string.IsNullOrEmpty(ApplicationId))
-            {
-                azureAccount.Id = ApplicationId;
-            }
+                    azureAccount.Type = AzureAccount.AccountType.AccessToken;
+                    azureAccount.Id = AccountId;
+                    azureAccount.SetProperty(AzureAccount.Property.AccessToken, AccessToken);
+                }
+                else if (ServicePrincipal.IsPresent)
+                {
+                    azureAccount.Type = AzureAccount.AccountType.ServicePrincipal;
+                }
+                else
+                {
+                    azureAccount.Type = AzureAccount.AccountType.User;
+                }
 
-            if (!string.IsNullOrEmpty(TenantId))
-            {
-                azureAccount.SetProperty(AzureAccount.Property.Tenants, new[] { TenantId });
-            }
+                if (!string.IsNullOrEmpty(CertificateThumbprint))
+                {
+                    azureAccount.SetProperty(AzureAccount.Property.CertificateThumbprint, CertificateThumbprint);
+                }
 
-            if( AzureRmProfileProvider.Instance.Profile == null)
-            {
-                AzureRmProfileProvider.Instance.Profile = new AzureRMProfile();
-            }
+                SecureString password = null;
+                if (Credential != null)
+                {
+                    azureAccount.Id = Credential.UserName;
+                    password = Credential.Password;
+                }
 
-            var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
-            
-            WriteObject((PSAzureProfile)profileClient.Login(azureAccount, Environment, TenantId, SubscriptionId, 
-                SubscriptionName, password));
+                if (!string.IsNullOrEmpty(ApplicationId))
+                {
+                    azureAccount.Id = ApplicationId;
+                }
+
+                if (!string.IsNullOrEmpty(TenantId))
+                {
+                    azureAccount.SetProperty(AzureAccount.Property.Tenants, new[] { TenantId });
+                }
+
+                if (DefaultProfile == null)
+                {
+                    DefaultProfile = new AzureRMProfile();
+                }
+
+                var profileClient = new RMProfileClient(DefaultProfile);
+
+                WriteObject((PSAzureProfile)profileClient.Login(azureAccount, Environment, TenantId, SubscriptionId,
+                    SubscriptionName, password));
         }
 
         /// <summary>

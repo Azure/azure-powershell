@@ -37,10 +37,6 @@
       <Project>{3436a126-edc9-4060-8952-9a1be34cdd95}</Project>
       <Name>Commands.ScenarioTests.ResourceManager.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Commands.NotificationHubs\Commands.NotificationHubs.csproj">
-      <Project>{0c90f837-86c9-4205-858b-4d8da5cb0352}</Project>
-      <Name>Commands.NotificationHubs</Name>
-    </ProjectReference>
     <Reference Include="Hyak.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Hyak.Common.1.0.2\lib\net45\Hyak.Common.dll</HintPath>
       <Private>True</Private>

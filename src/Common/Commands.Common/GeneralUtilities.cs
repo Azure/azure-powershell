@@ -423,13 +423,12 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// at a time.
         /// </summary>
         /// <param name="clearSMContext">Whenter to clear the service management context.</param>
-        public static void ClearCurrentStorageAccount(bool clearSMContext = false)
+        public static void ClearCurrentStorageAccount(AzureRMProfile profile, bool clearSMContext = false)
         {
-            var RMProfile = AzureRmProfileProvider.Instance.Profile;
-            if (RMProfile != null && RMProfile.Context != null && 
-                RMProfile.Context.Subscription != null && RMProfile.Context.Subscription.IsPropertySet(AzureSubscription.Property.StorageAccount))
+            if (profile != null && profile.Context != null && 
+                profile.Context.Subscription != null && profile.Context.Subscription.IsPropertySet(AzureSubscription.Property.StorageAccount))
             {
-                RMProfile.Context.Subscription.SetProperty(AzureSubscription.Property.StorageAccount, null);
+                profile.Context.Subscription.SetProperty(AzureSubscription.Property.StorageAccount, null);
             }
 
             if (clearSMContext)
