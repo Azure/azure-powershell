@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         //          $startTask = New-Object Microsoft.Azure.Commands.Batch.Models.PSStartTask
         //          $startTask.CommandLine = "cmd /c echo hello"
         //          New-AzureBatchPool -Id "testPool" -VirtualMachineSize "small" -OSFamily "4" -TargetOSVersion "*" -TargetDedicated 3 -StartTask $startTask -BatchContext $context
-        internal const string SharedAccount = "pstests";
+        internal const string SharedAccount = "pstestaccount";
         internal const string SharedPool = "testPool";
         internal const string SharedPoolStartTaskStdOut = "startup\\stdout.txt";
         internal const string SharedPoolStartTaskStdOutContent = "hello";

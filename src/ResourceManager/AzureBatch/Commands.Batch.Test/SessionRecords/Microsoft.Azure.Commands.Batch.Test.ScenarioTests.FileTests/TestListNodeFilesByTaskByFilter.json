@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resources?$filter=resourceType%20eq%20'Microsoft.Batch%2FbatchAccounts'&api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjM2OGVkMzgtMzU3MC00ODFmLWI0ZmEtMWQwYTZlOGQzZjNiL3Jlc291cmNlcz8kZmlsdGVyPXJlc291cmNlVHlwZSUyMGVxJTIwJ01pY3Jvc29mdC5CYXRjaCUyRmJhdGNoQWNjb3VudHMnJmFwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resources?$filter=resourceType%20eq%20'Microsoft.Batch%2FbatchAccounts'&api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDYyNDEzNTUtYmI5NS00NmE5LWJhNmMtNDJiNTU0ZDcxOTI1L3Jlc291cmNlcz8kZmlsdGVyPXJlc291cmNlVHlwZSUyMGVxJTIwJ01pY3Jvc29mdC5CYXRjaCUyRmJhdGNoQWNjb3VudHMnJmFwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -10,10 +10,58 @@
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourceGroups/default-azurebatch-eastus/providers/Microsoft.Batch/batchAccounts/pstests\",\r\n      \"name\": \"pstests\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-eastus/providers/Microsoft.Batch/batchAccounts/pstestaccount\",\r\n      \"name\": \"pstestaccount\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-westus/providers/Microsoft.Batch/batchAccounts/jsmatlab\",\r\n      \"name\": \"jsmatlab\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "237"
+          "455"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14993"
+        ],
+        "x-ms-request-id": [
+          "5236f3a8-093e-4a13-8d25-2cc8cfd4c69e"
+        ],
+        "x-ms-correlation-request-id": [
+          "5236f3a8-093e-4a13-8d25-2cc8cfd4c69e"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20151111T003828Z:5236f3a8-093e-4a13-8d25-2cc8cfd4c69e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 11 Nov 2015 00:38:28 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resources?$filter=resourceType%20eq%20'Microsoft.Batch%2FbatchAccounts'&api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDYyNDEzNTUtYmI5NS00NmE5LWJhNmMtNDJiNTU0ZDcxOTI1L3Jlc291cmNlcz8kZmlsdGVyPXJlc291cmNlVHlwZSUyMGVxJTIwJ01pY3Jvc29mdC5CYXRjaCUyRmJhdGNoQWNjb3VudHMnJmFwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-eastus/providers/Microsoft.Batch/batchAccounts/pstestaccount\",\r\n      \"name\": \"pstestaccount\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-westus/providers/Microsoft.Batch/batchAccounts/jsmatlab\",\r\n      \"name\": \"jsmatlab\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "455"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -28,13 +76,13 @@
           "14992"
         ],
         "x-ms-request-id": [
-          "28f9b7b3-04eb-42cd-8169-303de26815da"
+          "77809109-fa00-4ae2-a81f-2a2eddbd94e1"
         ],
         "x-ms-correlation-request-id": [
-          "28f9b7b3-04eb-42cd-8169-303de26815da"
+          "77809109-fa00-4ae2-a81f-2a2eddbd94e1"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20151027T001018Z:28f9b7b3-04eb-42cd-8169-303de26815da"
+          "WESTUS:20151111T003835Z:77809109-fa00-4ae2-a81f-2a2eddbd94e1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -43,62 +91,14 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 27 Oct 2015 00:10:18 GMT"
+          "Wed, 11 Nov 2015 00:38:35 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resources?$filter=resourceType%20eq%20'Microsoft.Batch%2FbatchAccounts'&api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjM2OGVkMzgtMzU3MC00ODFmLWI0ZmEtMWQwYTZlOGQzZjNiL3Jlc291cmNlcz8kZmlsdGVyPXJlc291cmNlVHlwZSUyMGVxJTIwJ01pY3Jvc29mdC5CYXRjaCUyRmJhdGNoQWNjb3VudHMnJmFwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourceGroups/default-azurebatch-eastus/providers/Microsoft.Batch/batchAccounts/pstests\",\r\n      \"name\": \"pstests\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus\"\r\n    }\r\n  ]\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "237"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14991"
-        ],
-        "x-ms-request-id": [
-          "0322d1b9-0d75-4c40-881e-5db43bcde22a"
-        ],
-        "x-ms-correlation-request-id": [
-          "0322d1b9-0d75-4c40-881e-5db43bcde22a"
-        ],
-        "x-ms-routing-request-id": [
-          "CENTRALUS:20151027T001025Z:0322d1b9-0d75-4c40-881e-5db43bcde22a"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Tue, 27 Oct 2015 00:10:24 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourceGroups/default-azurebatch-eastus/providers/Microsoft.Batch/batchAccounts/pstests?api-version=2015-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjM2OGVkMzgtMzU3MC00ODFmLWI0ZmEtMWQwYTZlOGQzZjNiL3Jlc291cmNlR3JvdXBzL2RlZmF1bHQtYXp1cmViYXRjaC1lYXN0dXMvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3BzdGVzdHM/YXBpLXZlcnNpb249MjAxNS0wOS0wMQ==",
+      "RequestUri": "/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-eastus/providers/Microsoft.Batch/batchAccounts/pstestaccount?api-version=2015-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDYyNDEzNTUtYmI5NS00NmE5LWJhNmMtNDJiNTU0ZDcxOTI1L3Jlc291cmNlR3JvdXBzL2RlZmF1bHQtZWFzdHVzL3Byb3ZpZGVycy9NaWNyb3NvZnQuQmF0Y2gvYmF0Y2hBY2NvdW50cy9wc3Rlc3RhY2NvdW50P2FwaS12ZXJzaW9uPTIwMTUtMDktMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -109,10 +109,10 @@
           "Microsoft.Azure.Management.Batch.BatchManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"pstests\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"accountEndpoint\": \"pstests.eastus.batch.azure.com\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"coreQuota\": 20,\r\n    \"poolQuota\": 20,\r\n    \"activeJobAndJobScheduleQuota\": 20\r\n  },\r\n  \"id\": \"/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourceGroups/default-azurebatch-eastus/providers/Microsoft.Batch/batchAccounts/pstests\",\r\n  \"type\": \"Microsoft.Batch/batchAccounts\"\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"pstestaccount\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"accountEndpoint\": \"pstestaccount.eastus.batch.azure.com\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"coreQuota\": 20,\r\n    \"poolQuota\": 20,\r\n    \"activeJobAndJobScheduleQuota\": 20\r\n  },\r\n  \"id\": \"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-eastus/providers/Microsoft.Batch/batchAccounts/pstestaccount\",\r\n  \"type\": \"Microsoft.Batch/batchAccounts\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "387"
+          "394"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -121,37 +121,37 @@
           "-1"
         ],
         "Last-Modified": [
-          "Tue, 27 Oct 2015 00:10:19 GMT"
+          "Wed, 11 Nov 2015 00:38:29 GMT"
         ],
         "Pragma": [
           "no-cache"
         ],
         "request-id": [
-          "e4407c46-bffa-4fea-86cf-98e8f72d066a"
+          "05496ab7-e87e-429b-a601-652dcfeacff0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14988"
+          "14986"
         ],
         "x-ms-request-id": [
-          "7826cf9e-bf0e-4697-828d-f4e9ff35f127"
+          "1b71132f-0083-4521-96cc-a1fcabbbacb3"
         ],
         "x-ms-correlation-request-id": [
-          "7826cf9e-bf0e-4697-828d-f4e9ff35f127"
+          "1b71132f-0083-4521-96cc-a1fcabbbacb3"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20151027T001019Z:7826cf9e-bf0e-4697-828d-f4e9ff35f127"
+          "WESTUS:20151111T003830Z:1b71132f-0083-4521-96cc-a1fcabbbacb3"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Tue, 27 Oct 2015 00:10:19 GMT"
+          "Wed, 11 Nov 2015 00:38:29 GMT"
         ],
         "ETag": [
-          "0x8D2DE63003FB9AE"
+          "0x8D2EA306BBCF4C4"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -160,8 +160,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourceGroups/default-azurebatch-eastus/providers/Microsoft.Batch/batchAccounts/pstests?api-version=2015-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjM2OGVkMzgtMzU3MC00ODFmLWI0ZmEtMWQwYTZlOGQzZjNiL3Jlc291cmNlR3JvdXBzL2RlZmF1bHQtYXp1cmViYXRjaC1lYXN0dXMvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3BzdGVzdHM/YXBpLXZlcnNpb249MjAxNS0wOS0wMQ==",
+      "RequestUri": "/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-eastus/providers/Microsoft.Batch/batchAccounts/pstestaccount?api-version=2015-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDYyNDEzNTUtYmI5NS00NmE5LWJhNmMtNDJiNTU0ZDcxOTI1L3Jlc291cmNlR3JvdXBzL2RlZmF1bHQtZWFzdHVzL3Byb3ZpZGVycy9NaWNyb3NvZnQuQmF0Y2gvYmF0Y2hBY2NvdW50cy9wc3Rlc3RhY2NvdW50P2FwaS12ZXJzaW9uPTIwMTUtMDktMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -172,10 +172,10 @@
           "Microsoft.Azure.Management.Batch.BatchManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"pstests\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"accountEndpoint\": \"pstests.eastus.batch.azure.com\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"coreQuota\": 20,\r\n    \"poolQuota\": 20,\r\n    \"activeJobAndJobScheduleQuota\": 20\r\n  },\r\n  \"id\": \"/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourceGroups/default-azurebatch-eastus/providers/Microsoft.Batch/batchAccounts/pstests\",\r\n  \"type\": \"Microsoft.Batch/batchAccounts\"\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"pstestaccount\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"accountEndpoint\": \"pstestaccount.eastus.batch.azure.com\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"coreQuota\": 20,\r\n    \"poolQuota\": 20,\r\n    \"activeJobAndJobScheduleQuota\": 20\r\n  },\r\n  \"id\": \"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-eastus/providers/Microsoft.Batch/batchAccounts/pstestaccount\",\r\n  \"type\": \"Microsoft.Batch/batchAccounts\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "387"
+          "394"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -184,37 +184,37 @@
           "-1"
         ],
         "Last-Modified": [
-          "Tue, 27 Oct 2015 00:10:25 GMT"
+          "Wed, 11 Nov 2015 00:38:35 GMT"
         ],
         "Pragma": [
           "no-cache"
         ],
         "request-id": [
-          "4484fb30-a74c-4b2b-a953-9f04e60314c3"
+          "35bc8d11-b827-4a39-b98a-5a6ea121b74c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14987"
+          "14985"
         ],
         "x-ms-request-id": [
-          "3be159c0-30f1-499a-8b1b-ef5f6142877b"
+          "41054069-176f-4732-8075-22fd1ec48ea5"
         ],
         "x-ms-correlation-request-id": [
-          "3be159c0-30f1-499a-8b1b-ef5f6142877b"
+          "41054069-176f-4732-8075-22fd1ec48ea5"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20151027T001025Z:3be159c0-30f1-499a-8b1b-ef5f6142877b"
+          "WESTUS:20151111T003836Z:41054069-176f-4732-8075-22fd1ec48ea5"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Tue, 27 Oct 2015 00:10:24 GMT"
+          "Wed, 11 Nov 2015 00:38:35 GMT"
         ],
         "ETag": [
-          "0x8D2DE6303A854A0"
+          "0x8D2EA306F4DA0B1"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -223,8 +223,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourceGroups/default-azurebatch-eastus/providers/Microsoft.Batch/batchAccounts/pstests/listKeys?api-version=2015-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjM2OGVkMzgtMzU3MC00ODFmLWI0ZmEtMWQwYTZlOGQzZjNiL3Jlc291cmNlR3JvdXBzL2RlZmF1bHQtYXp1cmViYXRjaC1lYXN0dXMvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3BzdGVzdHMvbGlzdEtleXM/YXBpLXZlcnNpb249MjAxNS0wOS0wMQ==",
+      "RequestUri": "/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-eastus/providers/Microsoft.Batch/batchAccounts/pstestaccount/listKeys?api-version=2015-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDYyNDEzNTUtYmI5NS00NmE5LWJhNmMtNDJiNTU0ZDcxOTI1L3Jlc291cmNlR3JvdXBzL2RlZmF1bHQtZWFzdHVzL3Byb3ZpZGVycy9NaWNyb3NvZnQuQmF0Y2gvYmF0Y2hBY2NvdW50cy9wc3Rlc3RhY2NvdW50L2xpc3RLZXlzP2FwaS12ZXJzaW9uPTIwMTUtMDktMDE=",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
@@ -235,10 +235,10 @@
           "Microsoft.Azure.Management.Batch.BatchManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"accountName\": \"pstests\",\r\n  \"primary\": \"hIsQ4xSEK40UEhQPO1ixIV6kxX2Kd7WldCNgTOWFeYRU5EpnfeS5+ZuPNQZXuDalZYEFlgMZc2TkmF/PIBKhBg==\",\r\n  \"secondary\": \"zkP4SqUquW+Vc9Uwu6iAl/EfvrKiUzWznxunIdvDPGngakhTFrmysae7LEF0EI6BzqPrWHngaKzlsbKoQTcQdQ==\"\r\n}",
+      "ResponseBody": "{\r\n  \"accountName\": \"pstestaccount\",\r\n  \"primary\": \"BXXODafLGpfb8boG1WOVc0+LgbpsXWhE0OnPiD3Yl/iUZ6SixyG4rxQmFSu08RrC7LUIuE9E7k4jkI/XV+McZw==\",\r\n  \"secondary\": \"u9bk9P98NJdr0vTsgRMINRZrsxDipDbFzgRxhCm17FA1eCJlV+TGMP6udRhbOtl33wwtJ4HSnjelLW04/6vdMQ==\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "229"
+          "235"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -250,28 +250,28 @@
           "no-cache"
         ],
         "request-id": [
-          "193caafd-76b4-437e-a9c9-04bfb208e551"
+          "aca33018-1af1-4858-a22b-08a9affab15f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1195"
+          "1193"
         ],
         "x-ms-request-id": [
-          "90f09191-3e76-4df5-b828-5edbe9908da9"
+          "1c345810-db7c-4642-b127-ed5e226df1c6"
         ],
         "x-ms-correlation-request-id": [
-          "90f09191-3e76-4df5-b828-5edbe9908da9"
+          "1c345810-db7c-4642-b127-ed5e226df1c6"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20151027T001019Z:90f09191-3e76-4df5-b828-5edbe9908da9"
+          "WESTUS:20151111T003830Z:1c345810-db7c-4642-b127-ed5e226df1c6"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Tue, 27 Oct 2015 00:10:19 GMT"
+          "Wed, 11 Nov 2015 00:38:29 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -280,8 +280,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourceGroups/default-azurebatch-eastus/providers/Microsoft.Batch/batchAccounts/pstests/listKeys?api-version=2015-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjM2OGVkMzgtMzU3MC00ODFmLWI0ZmEtMWQwYTZlOGQzZjNiL3Jlc291cmNlR3JvdXBzL2RlZmF1bHQtYXp1cmViYXRjaC1lYXN0dXMvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3BzdGVzdHMvbGlzdEtleXM/YXBpLXZlcnNpb249MjAxNS0wOS0wMQ==",
+      "RequestUri": "/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-eastus/providers/Microsoft.Batch/batchAccounts/pstestaccount/listKeys?api-version=2015-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDYyNDEzNTUtYmI5NS00NmE5LWJhNmMtNDJiNTU0ZDcxOTI1L3Jlc291cmNlR3JvdXBzL2RlZmF1bHQtZWFzdHVzL3Byb3ZpZGVycy9NaWNyb3NvZnQuQmF0Y2gvYmF0Y2hBY2NvdW50cy9wc3Rlc3RhY2NvdW50L2xpc3RLZXlzP2FwaS12ZXJzaW9uPTIwMTUtMDktMDE=",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
@@ -292,10 +292,10 @@
           "Microsoft.Azure.Management.Batch.BatchManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"accountName\": \"pstests\",\r\n  \"primary\": \"hIsQ4xSEK40UEhQPO1ixIV6kxX2Kd7WldCNgTOWFeYRU5EpnfeS5+ZuPNQZXuDalZYEFlgMZc2TkmF/PIBKhBg==\",\r\n  \"secondary\": \"zkP4SqUquW+Vc9Uwu6iAl/EfvrKiUzWznxunIdvDPGngakhTFrmysae7LEF0EI6BzqPrWHngaKzlsbKoQTcQdQ==\"\r\n}",
+      "ResponseBody": "{\r\n  \"accountName\": \"pstestaccount\",\r\n  \"primary\": \"BXXODafLGpfb8boG1WOVc0+LgbpsXWhE0OnPiD3Yl/iUZ6SixyG4rxQmFSu08RrC7LUIuE9E7k4jkI/XV+McZw==\",\r\n  \"secondary\": \"u9bk9P98NJdr0vTsgRMINRZrsxDipDbFzgRxhCm17FA1eCJlV+TGMP6udRhbOtl33wwtJ4HSnjelLW04/6vdMQ==\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "229"
+          "235"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -307,28 +307,28 @@
           "no-cache"
         ],
         "request-id": [
-          "3f30253a-83ea-41d8-9b33-65b071581ec0"
+          "07d1e2a5-2210-4586-9eb9-4ef4c4e7f358"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1194"
+          "1192"
         ],
         "x-ms-request-id": [
-          "d926eba4-7131-49dc-85f7-e123ea7593f0"
+          "b90bbc9b-29a8-4a1e-9fa5-b304c94e8165"
         ],
         "x-ms-correlation-request-id": [
-          "d926eba4-7131-49dc-85f7-e123ea7593f0"
+          "b90bbc9b-29a8-4a1e-9fa5-b304c94e8165"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20151027T001025Z:d926eba4-7131-49dc-85f7-e123ea7593f0"
+          "WESTUS:20151111T003836Z:b90bbc9b-29a8-4a1e-9fa5-b304c94e8165"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Tue, 27 Oct 2015 00:10:25 GMT"
+          "Wed, 11 Nov 2015 00:38:35 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -349,50 +349,50 @@
           "110"
         ],
         "client-request-id": [
-          "2fc90829-b293-4fef-8808-6a9644870475"
+          "bd499afa-9038-41d2-9e58-c0f720e4d7a5"
         ],
         "ocp-date": [
-          "Tue, 27 Oct 2015 00:10:19 GMT"
+          "Wed, 11 Nov 2015 00:38:30 GMT"
         ],
         "return-client-request-id": [
           "true"
         ],
         "User-Agent": [
           "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
-          "AzBatch/2.0.2.0"
+          "AzurePowershell/v1.0.0"
         ]
       },
       "ResponseBody": "",
       "ResponseHeaders": {
         "Last-Modified": [
-          "Tue, 27 Oct 2015 00:10:20 GMT"
+          "Wed, 11 Nov 2015 00:38:30 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "f99c703f-0903-4b5b-ba55-bdda9196f70d"
+          "b99a69c3-ed39-49dc-878c-4e826fc400c5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "client-request-id": [
-          "2fc90829-b293-4fef-8808-6a9644870475"
+          "bd499afa-9038-41d2-9e58-c0f720e4d7a5"
         ],
         "DataServiceVersion": [
           "3.0"
         ],
         "DataServiceId": [
-          "https://pstests.eastus.batch.azure.com/jobs/job-1"
+          "https://pstestaccount.eastus.batch.azure.com/jobs/job-1"
         ],
         "Date": [
-          "Tue, 27 Oct 2015 00:10:20 GMT"
+          "Wed, 11 Nov 2015 00:38:31 GMT"
         ],
         "ETag": [
-          "0x8D2DE6300ADFB4F"
+          "0x8D2EA306C1B3635"
         ],
         "Location": [
-          "https://pstests.eastus.batch.azure.com/jobs/job-1"
+          "https://pstestaccount.eastus.batch.azure.com/jobs/job-1"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -413,114 +413,50 @@
           "83"
         ],
         "client-request-id": [
-          "f9847014-2734-4ad9-9d0e-9d2f37e11353"
+          "3d9dfee6-65f2-4af8-b068-d8512b2e2c4b"
         ],
         "ocp-date": [
-          "Tue, 27 Oct 2015 00:10:20 GMT"
+          "Wed, 11 Nov 2015 00:38:30 GMT"
         ],
         "return-client-request-id": [
           "true"
         ],
         "User-Agent": [
           "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
-          "AzBatch/2.0.2.0"
+          "AzurePowershell/v1.0.0"
         ]
       },
       "ResponseBody": "",
       "ResponseHeaders": {
         "Last-Modified": [
-          "Tue, 27 Oct 2015 00:10:21 GMT"
+          "Wed, 11 Nov 2015 00:38:32 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "9da69211-8581-4999-9a3d-2c14637bd347"
+          "833b1c4e-c639-4629-a65e-b24713988f6b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "client-request-id": [
-          "f9847014-2734-4ad9-9d0e-9d2f37e11353"
+          "3d9dfee6-65f2-4af8-b068-d8512b2e2c4b"
         ],
         "DataServiceVersion": [
           "3.0"
         ],
         "DataServiceId": [
-          "https://pstests.eastus.batch.azure.com/jobs/listNodeFileByTaskFilterJob/tasks/testTask"
+          "https://pstestaccount.eastus.batch.azure.com/jobs/listNodeFileByTaskFilterJob/tasks/testTask"
         ],
         "Date": [
-          "Tue, 27 Oct 2015 00:10:20 GMT"
+          "Wed, 11 Nov 2015 00:38:31 GMT"
         ],
         "ETag": [
-          "0x8D2DE630140658F"
+          "0x8D2EA306CFD9B0E"
         ],
         "Location": [
-          "https://pstests.eastus.batch.azure.com/jobs/listNodeFileByTaskFilterJob/tasks/testTask"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 201
-    },
-    {
-      "RequestUri": "/jobs/listNodeFileByTaskFilterJob/tasks?api-version=2015-06-01.2.0&timeout=30",
-      "EncodedRequestUri": "L2pvYnMvbGlzdE5vZGVGaWxlQnlUYXNrRmlsdGVySm9iL3Rhc2tzP2FwaS12ZXJzaW9uPTIwMTUtMDYtMDEuMi4wJnRpbWVvdXQ9MzA=",
-      "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"id\": \"testTask\",\r\n  \"commandLine\": \"cmd /c dir /s\",\r\n  \"runElevated\": true\r\n}",
-      "RequestHeaders": {
-        "Content-Type": [
-          "application/json; odata=minimalmetadata"
-        ],
-        "Content-Length": [
-          "83"
-        ],
-        "client-request-id": [
-          "f9847014-2734-4ad9-9d0e-9d2f37e11353"
-        ],
-        "ocp-date": [
-          "Tue, 27 Oct 2015 00:10:20 GMT"
-        ],
-        "return-client-request-id": [
-          "true"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
-          "AzBatch/2.0.2.0"
-        ]
-      },
-      "ResponseBody": "",
-      "ResponseHeaders": {
-        "Last-Modified": [
-          "Tue, 27 Oct 2015 00:10:21 GMT"
-        ],
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "request-id": [
-          "9da69211-8581-4999-9a3d-2c14637bd347"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "client-request-id": [
-          "f9847014-2734-4ad9-9d0e-9d2f37e11353"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "DataServiceId": [
-          "https://pstests.eastus.batch.azure.com/jobs/listNodeFileByTaskFilterJob/tasks/testTask"
-        ],
-        "Date": [
-          "Tue, 27 Oct 2015 00:10:20 GMT"
-        ],
-        "ETag": [
-          "0x8D2DE630140658F"
-        ],
-        "Location": [
-          "https://pstests.eastus.batch.azure.com/jobs/listNodeFileByTaskFilterJob/tasks/testTask"
+          "https://pstestaccount.eastus.batch.azure.com/jobs/listNodeFileByTaskFilterJob/tasks/testTask"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -535,47 +471,47 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "305ed514-2a47-41ab-a999-5b880fc8bf5b"
+          "845d2318-9517-43ef-9f9d-42ab267fc871"
         ],
         "ocp-date": [
-          "Tue, 27 Oct 2015 00:10:20 GMT"
+          "Wed, 11 Nov 2015 00:38:30 GMT"
         ],
         "return-client-request-id": [
           "true"
         ],
         "User-Agent": [
           "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
-          "AzBatch/2.0.2.0"
+          "AzurePowershell/v1.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstests.eastus.batch.azure.com/$metadata#tasks/@Element\",\r\n  \"id\": \"testTask\",\r\n  \"url\": \"https://pstests.eastus.batch.azure.com/jobs/listNodeFileByTaskFilterJob/tasks/testTask\",\r\n  \"eTag\": \"0x8D2DE630140658F\",\r\n  \"creationTime\": \"2015-10-27T00:10:21.6787343Z\",\r\n  \"lastModified\": \"2015-10-27T00:10:21.6787343Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-10-27T00:10:21.6787343Z\",\r\n  \"commandLine\": \"cmd /c dir /s\",\r\n  \"runElevated\": true,\r\n  \"constraints\": {\r\n    \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"retentionTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"maxTaskRetryCount\": 0\r\n  },\r\n  \"executionInfo\": {\r\n    \"retryCount\": 0,\r\n    \"requeueCount\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.eastus.batch.azure.com/$metadata#tasks/@Element\",\r\n  \"id\": \"testTask\",\r\n  \"url\": \"https://pstestaccount.eastus.batch.azure.com/jobs/listNodeFileByTaskFilterJob/tasks/testTask\",\r\n  \"eTag\": \"0x8D2EA306CFD9B0E\",\r\n  \"creationTime\": \"2015-11-11T00:38:32.055067Z\",\r\n  \"lastModified\": \"2015-11-11T00:38:32.055067Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-11-11T00:38:32.055067Z\",\r\n  \"commandLine\": \"cmd /c dir /s\",\r\n  \"runElevated\": true,\r\n  \"constraints\": {\r\n    \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"retentionTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"maxTaskRetryCount\": 0\r\n  },\r\n  \"executionInfo\": {\r\n    \"retryCount\": 0,\r\n    \"requeueCount\": 0\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Tue, 27 Oct 2015 00:10:21 GMT"
+          "Wed, 11 Nov 2015 00:38:32 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "b27c5f7e-6ea8-40e5-8686-5d39b1c8bd3a"
+          "db6db054-e92b-4b63-88db-27e3b5d3cdff"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "client-request-id": [
-          "305ed514-2a47-41ab-a999-5b880fc8bf5b"
+          "845d2318-9517-43ef-9f9d-42ab267fc871"
         ],
         "DataServiceVersion": [
           "3.0"
         ],
         "Date": [
-          "Tue, 27 Oct 2015 00:10:20 GMT"
+          "Wed, 11 Nov 2015 00:38:31 GMT"
         ],
         "ETag": [
-          "0x8D2DE630140658F"
+          "0x8D2EA306CFD9B0E"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -590,212 +526,47 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "305ed514-2a47-41ab-a999-5b880fc8bf5b"
+          "dd27014b-0c0c-494a-9c15-7828d52ca526"
         ],
         "ocp-date": [
-          "Tue, 27 Oct 2015 00:10:20 GMT"
+          "Wed, 11 Nov 2015 00:38:36 GMT"
         ],
         "return-client-request-id": [
           "true"
         ],
         "User-Agent": [
           "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
-          "AzBatch/2.0.2.0"
+          "AzurePowershell/v1.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstests.eastus.batch.azure.com/$metadata#tasks/@Element\",\r\n  \"id\": \"testTask\",\r\n  \"url\": \"https://pstests.eastus.batch.azure.com/jobs/listNodeFileByTaskFilterJob/tasks/testTask\",\r\n  \"eTag\": \"0x8D2DE630140658F\",\r\n  \"creationTime\": \"2015-10-27T00:10:21.6787343Z\",\r\n  \"lastModified\": \"2015-10-27T00:10:21.6787343Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-10-27T00:10:21.6787343Z\",\r\n  \"commandLine\": \"cmd /c dir /s\",\r\n  \"runElevated\": true,\r\n  \"constraints\": {\r\n    \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"retentionTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"maxTaskRetryCount\": 0\r\n  },\r\n  \"executionInfo\": {\r\n    \"retryCount\": 0,\r\n    \"requeueCount\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.eastus.batch.azure.com/$metadata#tasks/@Element\",\r\n  \"id\": \"testTask\",\r\n  \"url\": \"https://pstestaccount.eastus.batch.azure.com/jobs/listNodeFileByTaskFilterJob/tasks/testTask\",\r\n  \"eTag\": \"0x8D2EA306CFD9B0E\",\r\n  \"creationTime\": \"2015-11-11T00:38:32.055067Z\",\r\n  \"lastModified\": \"2015-11-11T00:38:32.055067Z\",\r\n  \"state\": \"completed\",\r\n  \"stateTransitionTime\": \"2015-11-11T00:38:31.8182427Z\",\r\n  \"previousState\": \"running\",\r\n  \"previousStateTransitionTime\": \"2015-11-11T00:38:31.6942403Z\",\r\n  \"commandLine\": \"cmd /c dir /s\",\r\n  \"runElevated\": true,\r\n  \"constraints\": {\r\n    \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"retentionTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"maxTaskRetryCount\": 0\r\n  },\r\n  \"executionInfo\": {\r\n    \"startTime\": \"2015-11-11T00:38:31.6942403Z\",\r\n    \"endTime\": \"2015-11-11T00:38:31.8182427Z\",\r\n    \"exitCode\": 0,\r\n    \"retryCount\": 0,\r\n    \"requeueCount\": 0\r\n  },\r\n  \"nodeInfo\": {\r\n    \"affinityId\": \"TVM:tvm-1783593343_3-20151110t233600z\",\r\n    \"nodeUrl\": \"https://pstestaccount.eastus.batch.azure.com/pools/testpool/nodes/tvm-1783593343_3-20151110t233600z\",\r\n    \"poolId\": \"testpool\",\r\n    \"nodeId\": \"tvm-1783593343_3-20151110t233600z\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Tue, 27 Oct 2015 00:10:21 GMT"
+          "Wed, 11 Nov 2015 00:38:32 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "b27c5f7e-6ea8-40e5-8686-5d39b1c8bd3a"
+          "19e106b2-80e7-4f80-b60f-39f5e705d772"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "client-request-id": [
-          "305ed514-2a47-41ab-a999-5b880fc8bf5b"
+          "dd27014b-0c0c-494a-9c15-7828d52ca526"
         ],
         "DataServiceVersion": [
           "3.0"
         ],
         "Date": [
-          "Tue, 27 Oct 2015 00:10:20 GMT"
+          "Wed, 11 Nov 2015 00:38:36 GMT"
         ],
         "ETag": [
-          "0x8D2DE630140658F"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/jobs/listNodeFileByTaskFilterJob/tasks/testTask?api-version=2015-06-01.2.0&timeout=30",
-      "EncodedRequestUri": "L2pvYnMvbGlzdE5vZGVGaWxlQnlUYXNrRmlsdGVySm9iL3Rhc2tzL3Rlc3RUYXNrP2FwaS12ZXJzaW9uPTIwMTUtMDYtMDEuMi4wJnRpbWVvdXQ9MzA=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "client-request-id": [
-          "305ed514-2a47-41ab-a999-5b880fc8bf5b"
-        ],
-        "ocp-date": [
-          "Tue, 27 Oct 2015 00:10:20 GMT"
-        ],
-        "return-client-request-id": [
-          "true"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
-          "AzBatch/2.0.2.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstests.eastus.batch.azure.com/$metadata#tasks/@Element\",\r\n  \"id\": \"testTask\",\r\n  \"url\": \"https://pstests.eastus.batch.azure.com/jobs/listNodeFileByTaskFilterJob/tasks/testTask\",\r\n  \"eTag\": \"0x8D2DE630140658F\",\r\n  \"creationTime\": \"2015-10-27T00:10:21.6787343Z\",\r\n  \"lastModified\": \"2015-10-27T00:10:21.6787343Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-10-27T00:10:21.6787343Z\",\r\n  \"commandLine\": \"cmd /c dir /s\",\r\n  \"runElevated\": true,\r\n  \"constraints\": {\r\n    \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"retentionTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"maxTaskRetryCount\": 0\r\n  },\r\n  \"executionInfo\": {\r\n    \"retryCount\": 0,\r\n    \"requeueCount\": 0\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Type": [
-          "application/json; odata=minimalmetadata"
-        ],
-        "Last-Modified": [
-          "Tue, 27 Oct 2015 00:10:21 GMT"
-        ],
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "request-id": [
-          "b27c5f7e-6ea8-40e5-8686-5d39b1c8bd3a"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "client-request-id": [
-          "305ed514-2a47-41ab-a999-5b880fc8bf5b"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Tue, 27 Oct 2015 00:10:20 GMT"
-        ],
-        "ETag": [
-          "0x8D2DE630140658F"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/jobs/listNodeFileByTaskFilterJob/tasks/testTask?api-version=2015-06-01.2.0&timeout=30",
-      "EncodedRequestUri": "L2pvYnMvbGlzdE5vZGVGaWxlQnlUYXNrRmlsdGVySm9iL3Rhc2tzL3Rlc3RUYXNrP2FwaS12ZXJzaW9uPTIwMTUtMDYtMDEuMi4wJnRpbWVvdXQ9MzA=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "client-request-id": [
-          "87d0248b-e476-4395-9def-f0c65dac6b6a"
-        ],
-        "ocp-date": [
-          "Tue, 27 Oct 2015 00:10:26 GMT"
-        ],
-        "return-client-request-id": [
-          "true"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
-          "AzBatch/2.0.2.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstests.eastus.batch.azure.com/$metadata#tasks/@Element\",\r\n  \"id\": \"testTask\",\r\n  \"url\": \"https://pstests.eastus.batch.azure.com/jobs/listNodeFileByTaskFilterJob/tasks/testTask\",\r\n  \"eTag\": \"0x8D2DE630140658F\",\r\n  \"creationTime\": \"2015-10-27T00:10:21.6787343Z\",\r\n  \"lastModified\": \"2015-10-27T00:10:21.6787343Z\",\r\n  \"state\": \"completed\",\r\n  \"stateTransitionTime\": \"2015-10-27T00:10:21.0406927Z\",\r\n  \"previousState\": \"running\",\r\n  \"previousStateTransitionTime\": \"2015-10-27T00:10:20.9166923Z\",\r\n  \"commandLine\": \"cmd /c dir /s\",\r\n  \"runElevated\": true,\r\n  \"constraints\": {\r\n    \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"retentionTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"maxTaskRetryCount\": 0\r\n  },\r\n  \"executionInfo\": {\r\n    \"startTime\": \"2015-10-27T00:10:20.9166923Z\",\r\n    \"endTime\": \"2015-10-27T00:10:21.0406927Z\",\r\n    \"exitCode\": 0,\r\n    \"retryCount\": 0,\r\n    \"requeueCount\": 0\r\n  },\r\n  \"nodeInfo\": {\r\n    \"affinityId\": \"TVM:tvm-1915592855_3-20151026t232643z\",\r\n    \"nodeUrl\": \"https://pstests.eastus.batch.azure.com/pools/testpool/nodes/tvm-1915592855_3-20151026t232643z\",\r\n    \"poolId\": \"testpool\",\r\n    \"nodeId\": \"tvm-1915592855_3-20151026t232643z\"\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Type": [
-          "application/json; odata=minimalmetadata"
-        ],
-        "Last-Modified": [
-          "Tue, 27 Oct 2015 00:10:21 GMT"
-        ],
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "request-id": [
-          "c8de5260-b1bb-4922-85b5-15bd140c7acb"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "client-request-id": [
-          "87d0248b-e476-4395-9def-f0c65dac6b6a"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Tue, 27 Oct 2015 00:10:27 GMT"
-        ],
-        "ETag": [
-          "0x8D2DE630140658F"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/jobs/listNodeFileByTaskFilterJob/tasks/testTask?api-version=2015-06-01.2.0&timeout=30",
-      "EncodedRequestUri": "L2pvYnMvbGlzdE5vZGVGaWxlQnlUYXNrRmlsdGVySm9iL3Rhc2tzL3Rlc3RUYXNrP2FwaS12ZXJzaW9uPTIwMTUtMDYtMDEuMi4wJnRpbWVvdXQ9MzA=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "client-request-id": [
-          "87d0248b-e476-4395-9def-f0c65dac6b6a"
-        ],
-        "ocp-date": [
-          "Tue, 27 Oct 2015 00:10:26 GMT"
-        ],
-        "return-client-request-id": [
-          "true"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
-          "AzBatch/2.0.2.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstests.eastus.batch.azure.com/$metadata#tasks/@Element\",\r\n  \"id\": \"testTask\",\r\n  \"url\": \"https://pstests.eastus.batch.azure.com/jobs/listNodeFileByTaskFilterJob/tasks/testTask\",\r\n  \"eTag\": \"0x8D2DE630140658F\",\r\n  \"creationTime\": \"2015-10-27T00:10:21.6787343Z\",\r\n  \"lastModified\": \"2015-10-27T00:10:21.6787343Z\",\r\n  \"state\": \"completed\",\r\n  \"stateTransitionTime\": \"2015-10-27T00:10:21.0406927Z\",\r\n  \"previousState\": \"running\",\r\n  \"previousStateTransitionTime\": \"2015-10-27T00:10:20.9166923Z\",\r\n  \"commandLine\": \"cmd /c dir /s\",\r\n  \"runElevated\": true,\r\n  \"constraints\": {\r\n    \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"retentionTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"maxTaskRetryCount\": 0\r\n  },\r\n  \"executionInfo\": {\r\n    \"startTime\": \"2015-10-27T00:10:20.9166923Z\",\r\n    \"endTime\": \"2015-10-27T00:10:21.0406927Z\",\r\n    \"exitCode\": 0,\r\n    \"retryCount\": 0,\r\n    \"requeueCount\": 0\r\n  },\r\n  \"nodeInfo\": {\r\n    \"affinityId\": \"TVM:tvm-1915592855_3-20151026t232643z\",\r\n    \"nodeUrl\": \"https://pstests.eastus.batch.azure.com/pools/testpool/nodes/tvm-1915592855_3-20151026t232643z\",\r\n    \"poolId\": \"testpool\",\r\n    \"nodeId\": \"tvm-1915592855_3-20151026t232643z\"\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Type": [
-          "application/json; odata=minimalmetadata"
-        ],
-        "Last-Modified": [
-          "Tue, 27 Oct 2015 00:10:21 GMT"
-        ],
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "request-id": [
-          "c8de5260-b1bb-4922-85b5-15bd140c7acb"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "client-request-id": [
-          "87d0248b-e476-4395-9def-f0c65dac6b6a"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Tue, 27 Oct 2015 00:10:27 GMT"
-        ],
-        "ETag": [
-          "0x8D2DE630140658F"
+          "0x8D2EA306CFD9B0E"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -810,20 +581,20 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "f6cc8d82-457c-4752-a7da-1fd8ab548f92"
+          "c1d77346-4bed-40ee-9ba0-a7616177ec13"
         ],
         "ocp-date": [
-          "Tue, 27 Oct 2015 00:10:20 GMT"
+          "Wed, 11 Nov 2015 00:38:30 GMT"
         ],
         "return-client-request-id": [
           "true"
         ],
         "User-Agent": [
           "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
-          "AzBatch/2.0.2.0"
+          "AzurePowershell/v1.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstests.eastus.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.eastus.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -832,19 +603,19 @@
           "chunked"
         ],
         "request-id": [
-          "2a7ab676-89ca-435d-ac52-c037aa65132f"
+          "4e84830d-8de4-4fe5-ba67-ed78641bb35b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "client-request-id": [
-          "f6cc8d82-457c-4752-a7da-1fd8ab548f92"
+          "c1d77346-4bed-40ee-9ba0-a7616177ec13"
         ],
         "DataServiceVersion": [
           "3.0"
         ],
         "Date": [
-          "Tue, 27 Oct 2015 00:10:21 GMT"
+          "Wed, 11 Nov 2015 00:38:31 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -859,20 +630,20 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "f6cc8d82-457c-4752-a7da-1fd8ab548f92"
+          "d1145af8-caf0-4211-af63-e65c5ccb562a"
         ],
         "ocp-date": [
-          "Tue, 27 Oct 2015 00:10:20 GMT"
+          "Wed, 11 Nov 2015 00:38:32 GMT"
         ],
         "return-client-request-id": [
           "true"
         ],
         "User-Agent": [
           "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
-          "AzBatch/2.0.2.0"
+          "AzurePowershell/v1.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstests.eastus.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.eastus.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"completed\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -881,215 +652,19 @@
           "chunked"
         ],
         "request-id": [
-          "2a7ab676-89ca-435d-ac52-c037aa65132f"
+          "d12bfa57-a25e-468b-9d3c-b24df6cbe60e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "client-request-id": [
-          "f6cc8d82-457c-4752-a7da-1fd8ab548f92"
+          "d1145af8-caf0-4211-af63-e65c5ccb562a"
         ],
         "DataServiceVersion": [
           "3.0"
         ],
         "Date": [
-          "Tue, 27 Oct 2015 00:10:21 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/jobs/listNodeFileByTaskFilterJob/tasks?$filter=id%20eq%20'testTask'&$select=id%2Cstate&api-version=2015-06-01.2.0&timeout=30",
-      "EncodedRequestUri": "L2pvYnMvbGlzdE5vZGVGaWxlQnlUYXNrRmlsdGVySm9iL3Rhc2tzPyRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZSZhcGktdmVyc2lvbj0yMDE1LTA2LTAxLjIuMCZ0aW1lb3V0PTMw",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "client-request-id": [
-          "f6cc8d82-457c-4752-a7da-1fd8ab548f92"
-        ],
-        "ocp-date": [
-          "Tue, 27 Oct 2015 00:10:20 GMT"
-        ],
-        "return-client-request-id": [
-          "true"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
-          "AzBatch/2.0.2.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstests.eastus.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"active\"\r\n    }\r\n  ]\r\n}",
-      "ResponseHeaders": {
-        "Content-Type": [
-          "application/json; odata=minimalmetadata"
-        ],
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "request-id": [
-          "2a7ab676-89ca-435d-ac52-c037aa65132f"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "client-request-id": [
-          "f6cc8d82-457c-4752-a7da-1fd8ab548f92"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Tue, 27 Oct 2015 00:10:21 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/jobs/listNodeFileByTaskFilterJob/tasks?$filter=id%20eq%20'testTask'&$select=id%2Cstate&api-version=2015-06-01.2.0&timeout=30",
-      "EncodedRequestUri": "L2pvYnMvbGlzdE5vZGVGaWxlQnlUYXNrRmlsdGVySm9iL3Rhc2tzPyRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZSZhcGktdmVyc2lvbj0yMDE1LTA2LTAxLjIuMCZ0aW1lb3V0PTMw",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "client-request-id": [
-          "cc1c4e6c-3bc1-47e9-b2dd-1b6f2670caa9"
-        ],
-        "ocp-date": [
-          "Tue, 27 Oct 2015 00:10:22 GMT"
-        ],
-        "return-client-request-id": [
-          "true"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
-          "AzBatch/2.0.2.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstests.eastus.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"completed\"\r\n    }\r\n  ]\r\n}",
-      "ResponseHeaders": {
-        "Content-Type": [
-          "application/json; odata=minimalmetadata"
-        ],
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "request-id": [
-          "b0f1db4b-67e0-42ca-bbb0-8ee6a6b44af7"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "client-request-id": [
-          "cc1c4e6c-3bc1-47e9-b2dd-1b6f2670caa9"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Tue, 27 Oct 2015 00:10:24 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/jobs/listNodeFileByTaskFilterJob/tasks?$filter=id%20eq%20'testTask'&$select=id%2Cstate&api-version=2015-06-01.2.0&timeout=30",
-      "EncodedRequestUri": "L2pvYnMvbGlzdE5vZGVGaWxlQnlUYXNrRmlsdGVySm9iL3Rhc2tzPyRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZSZhcGktdmVyc2lvbj0yMDE1LTA2LTAxLjIuMCZ0aW1lb3V0PTMw",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "client-request-id": [
-          "cc1c4e6c-3bc1-47e9-b2dd-1b6f2670caa9"
-        ],
-        "ocp-date": [
-          "Tue, 27 Oct 2015 00:10:22 GMT"
-        ],
-        "return-client-request-id": [
-          "true"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
-          "AzBatch/2.0.2.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstests.eastus.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"completed\"\r\n    }\r\n  ]\r\n}",
-      "ResponseHeaders": {
-        "Content-Type": [
-          "application/json; odata=minimalmetadata"
-        ],
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "request-id": [
-          "b0f1db4b-67e0-42ca-bbb0-8ee6a6b44af7"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "client-request-id": [
-          "cc1c4e6c-3bc1-47e9-b2dd-1b6f2670caa9"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Tue, 27 Oct 2015 00:10:24 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/jobs/listNodeFileByTaskFilterJob/tasks?$filter=id%20eq%20'testTask'&$select=id%2Cstate&api-version=2015-06-01.2.0&timeout=30",
-      "EncodedRequestUri": "L2pvYnMvbGlzdE5vZGVGaWxlQnlUYXNrRmlsdGVySm9iL3Rhc2tzPyRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Rlc3RUYXNrJTI3JiRzZWxlY3Q9aWQlMkNzdGF0ZSZhcGktdmVyc2lvbj0yMDE1LTA2LTAxLjIuMCZ0aW1lb3V0PTMw",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "client-request-id": [
-          "cc1c4e6c-3bc1-47e9-b2dd-1b6f2670caa9"
-        ],
-        "ocp-date": [
-          "Tue, 27 Oct 2015 00:10:22 GMT"
-        ],
-        "return-client-request-id": [
-          "true"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
-          "AzBatch/2.0.2.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstests.eastus.batch.azure.com/$metadata#tasks\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testTask\",\r\n      \"state\": \"completed\"\r\n    }\r\n  ]\r\n}",
-      "ResponseHeaders": {
-        "Content-Type": [
-          "application/json; odata=minimalmetadata"
-        ],
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "request-id": [
-          "b0f1db4b-67e0-42ca-bbb0-8ee6a6b44af7"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "client-request-id": [
-          "cc1c4e6c-3bc1-47e9-b2dd-1b6f2670caa9"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Tue, 27 Oct 2015 00:10:24 GMT"
+          "Wed, 11 Nov 2015 00:38:34 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1104,20 +679,20 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "4eab7c43-4b2d-4f41-b5bd-c5f413ac972a"
+          "b74ae7b1-9b62-4a03-b663-be747aa4b74c"
         ],
         "ocp-date": [
-          "Tue, 27 Oct 2015 00:10:25 GMT"
+          "Wed, 11 Nov 2015 00:38:36 GMT"
         ],
         "return-client-request-id": [
           "true"
         ],
         "User-Agent": [
           "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
-          "AzBatch/2.0.2.0"
+          "AzurePowershell/v1.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstests.eastus.batch.azure.com/$metadata#files\",\r\n  \"value\": [\r\n    {\r\n      \"name\": \"stderr.txt\",\r\n      \"url\": \"https://pstests.eastus.batch.azure.com/jobs/listNodeFileByTaskFilterJob/tasks/testTask/files/stderr.txt\",\r\n      \"isDirectory\": false,\r\n      \"properties\": {\r\n        \"creationTime\": \"2015-10-27T00:10:20.9256921Z\",\r\n        \"lastModified\": \"2015-10-27T00:10:20.9256921Z\",\r\n        \"contentLength\": \"0\",\r\n        \"contentType\": \"application/octet-stream\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"stdout.txt\",\r\n      \"url\": \"https://pstests.eastus.batch.azure.com/jobs/listNodeFileByTaskFilterJob/tasks/testTask/files/stdout.txt\",\r\n      \"isDirectory\": false,\r\n      \"properties\": {\r\n        \"creationTime\": \"2015-10-27T00:10:20.924692Z\",\r\n        \"lastModified\": \"2015-10-27T00:10:21.0286929Z\",\r\n        \"contentLength\": \"419\",\r\n        \"contentType\": \"application/octet-stream\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.eastus.batch.azure.com/$metadata#files\",\r\n  \"value\": [\r\n    {\r\n      \"name\": \"stderr.txt\",\r\n      \"url\": \"https://pstestaccount.eastus.batch.azure.com/jobs/listNodeFileByTaskFilterJob/tasks/testTask/files/stderr.txt\",\r\n      \"isDirectory\": false,\r\n      \"properties\": {\r\n        \"creationTime\": \"2015-11-11T00:38:31.7032402Z\",\r\n        \"lastModified\": \"2015-11-11T00:38:31.7032402Z\",\r\n        \"contentLength\": \"0\",\r\n        \"contentType\": \"application/octet-stream\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"stdout.txt\",\r\n      \"url\": \"https://pstestaccount.eastus.batch.azure.com/jobs/listNodeFileByTaskFilterJob/tasks/testTask/files/stdout.txt\",\r\n      \"isDirectory\": false,\r\n      \"properties\": {\r\n        \"creationTime\": \"2015-11-11T00:38:31.7032402Z\",\r\n        \"lastModified\": \"2015-11-11T00:38:31.8102418Z\",\r\n        \"contentLength\": \"419\",\r\n        \"contentType\": \"application/octet-stream\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -1126,19 +701,19 @@
           "chunked"
         ],
         "request-id": [
-          "dcdd7835-b628-41e7-9d5a-5b1dc8744640"
+          "44c2e214-f500-4a9c-bf01-6dd0ee6f59dd"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "client-request-id": [
-          "4eab7c43-4b2d-4f41-b5bd-c5f413ac972a"
+          "b74ae7b1-9b62-4a03-b663-be747aa4b74c"
         ],
         "DataServiceVersion": [
           "3.0"
         ],
         "Date": [
-          "Tue, 27 Oct 2015 00:10:27 GMT"
+          "Wed, 11 Nov 2015 00:38:36 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1153,20 +728,20 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "bf240ce6-997e-4821-b63d-784b021ed536"
+          "6b2e9b03-0a21-43e3-9f7a-3e62aaf1a8fd"
         ],
         "ocp-date": [
-          "Tue, 27 Oct 2015 00:10:26 GMT"
+          "Wed, 11 Nov 2015 00:38:36 GMT"
         ],
         "return-client-request-id": [
           "true"
         ],
         "User-Agent": [
           "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
-          "AzBatch/2.0.2.0"
+          "AzurePowershell/v1.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstests.eastus.batch.azure.com/$metadata#files\",\r\n  \"value\": [\r\n    {\r\n      \"name\": \"stderr.txt\",\r\n      \"url\": \"https://pstests.eastus.batch.azure.com/jobs/listNodeFileByTaskFilterJob/tasks/testTask/files/stderr.txt\",\r\n      \"isDirectory\": false,\r\n      \"properties\": {\r\n        \"creationTime\": \"2015-10-27T00:10:20.9256921Z\",\r\n        \"lastModified\": \"2015-10-27T00:10:20.9256921Z\",\r\n        \"contentLength\": \"0\",\r\n        \"contentType\": \"application/octet-stream\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"stdout.txt\",\r\n      \"url\": \"https://pstests.eastus.batch.azure.com/jobs/listNodeFileByTaskFilterJob/tasks/testTask/files/stdout.txt\",\r\n      \"isDirectory\": false,\r\n      \"properties\": {\r\n        \"creationTime\": \"2015-10-27T00:10:20.924692Z\",\r\n        \"lastModified\": \"2015-10-27T00:10:21.0286929Z\",\r\n        \"contentLength\": \"419\",\r\n        \"contentType\": \"application/octet-stream\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.eastus.batch.azure.com/$metadata#files\",\r\n  \"value\": [\r\n    {\r\n      \"name\": \"stderr.txt\",\r\n      \"url\": \"https://pstestaccount.eastus.batch.azure.com/jobs/listNodeFileByTaskFilterJob/tasks/testTask/files/stderr.txt\",\r\n      \"isDirectory\": false,\r\n      \"properties\": {\r\n        \"creationTime\": \"2015-11-11T00:38:31.7032402Z\",\r\n        \"lastModified\": \"2015-11-11T00:38:31.7032402Z\",\r\n        \"contentLength\": \"0\",\r\n        \"contentType\": \"application/octet-stream\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"stdout.txt\",\r\n      \"url\": \"https://pstestaccount.eastus.batch.azure.com/jobs/listNodeFileByTaskFilterJob/tasks/testTask/files/stdout.txt\",\r\n      \"isDirectory\": false,\r\n      \"properties\": {\r\n        \"creationTime\": \"2015-11-11T00:38:31.7032402Z\",\r\n        \"lastModified\": \"2015-11-11T00:38:31.8102418Z\",\r\n        \"contentLength\": \"419\",\r\n        \"contentType\": \"application/octet-stream\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -1175,117 +750,19 @@
           "chunked"
         ],
         "request-id": [
-          "501fa769-1931-4ae5-9512-d27700d48d35"
+          "75406268-21b9-4f5c-8a13-f069284b20d1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "client-request-id": [
-          "bf240ce6-997e-4821-b63d-784b021ed536"
+          "6b2e9b03-0a21-43e3-9f7a-3e62aaf1a8fd"
         ],
         "DataServiceVersion": [
           "3.0"
         ],
         "Date": [
-          "Tue, 27 Oct 2015 00:10:27 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/jobs/listNodeFileByTaskFilterJob/tasks/testTask/files?$filter=startswith(name%2C'std')&recursive=false&api-version=2015-06-01.2.0&timeout=30",
-      "EncodedRequestUri": "L2pvYnMvbGlzdE5vZGVGaWxlQnlUYXNrRmlsdGVySm9iL3Rhc2tzL3Rlc3RUYXNrL2ZpbGVzPyRmaWx0ZXI9c3RhcnRzd2l0aCUyOG5hbWUlMkMlMjdzdGQlMjclMjkmcmVjdXJzaXZlPWZhbHNlJmFwaS12ZXJzaW9uPTIwMTUtMDYtMDEuMi4wJnRpbWVvdXQ9MzA=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "client-request-id": [
-          "bf240ce6-997e-4821-b63d-784b021ed536"
-        ],
-        "ocp-date": [
-          "Tue, 27 Oct 2015 00:10:26 GMT"
-        ],
-        "return-client-request-id": [
-          "true"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
-          "AzBatch/2.0.2.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstests.eastus.batch.azure.com/$metadata#files\",\r\n  \"value\": [\r\n    {\r\n      \"name\": \"stderr.txt\",\r\n      \"url\": \"https://pstests.eastus.batch.azure.com/jobs/listNodeFileByTaskFilterJob/tasks/testTask/files/stderr.txt\",\r\n      \"isDirectory\": false,\r\n      \"properties\": {\r\n        \"creationTime\": \"2015-10-27T00:10:20.9256921Z\",\r\n        \"lastModified\": \"2015-10-27T00:10:20.9256921Z\",\r\n        \"contentLength\": \"0\",\r\n        \"contentType\": \"application/octet-stream\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"stdout.txt\",\r\n      \"url\": \"https://pstests.eastus.batch.azure.com/jobs/listNodeFileByTaskFilterJob/tasks/testTask/files/stdout.txt\",\r\n      \"isDirectory\": false,\r\n      \"properties\": {\r\n        \"creationTime\": \"2015-10-27T00:10:20.924692Z\",\r\n        \"lastModified\": \"2015-10-27T00:10:21.0286929Z\",\r\n        \"contentLength\": \"419\",\r\n        \"contentType\": \"application/octet-stream\"\r\n      }\r\n    }\r\n  ]\r\n}",
-      "ResponseHeaders": {
-        "Content-Type": [
-          "application/json; odata=minimalmetadata"
-        ],
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "request-id": [
-          "501fa769-1931-4ae5-9512-d27700d48d35"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "client-request-id": [
-          "bf240ce6-997e-4821-b63d-784b021ed536"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Tue, 27 Oct 2015 00:10:27 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/jobs/listNodeFileByTaskFilterJob/tasks/testTask/files?$filter=startswith(name%2C'std')&recursive=false&api-version=2015-06-01.2.0&timeout=30",
-      "EncodedRequestUri": "L2pvYnMvbGlzdE5vZGVGaWxlQnlUYXNrRmlsdGVySm9iL3Rhc2tzL3Rlc3RUYXNrL2ZpbGVzPyRmaWx0ZXI9c3RhcnRzd2l0aCUyOG5hbWUlMkMlMjdzdGQlMjclMjkmcmVjdXJzaXZlPWZhbHNlJmFwaS12ZXJzaW9uPTIwMTUtMDYtMDEuMi4wJnRpbWVvdXQ9MzA=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "client-request-id": [
-          "bf240ce6-997e-4821-b63d-784b021ed536"
-        ],
-        "ocp-date": [
-          "Tue, 27 Oct 2015 00:10:26 GMT"
-        ],
-        "return-client-request-id": [
-          "true"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
-          "AzBatch/2.0.2.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstests.eastus.batch.azure.com/$metadata#files\",\r\n  \"value\": [\r\n    {\r\n      \"name\": \"stderr.txt\",\r\n      \"url\": \"https://pstests.eastus.batch.azure.com/jobs/listNodeFileByTaskFilterJob/tasks/testTask/files/stderr.txt\",\r\n      \"isDirectory\": false,\r\n      \"properties\": {\r\n        \"creationTime\": \"2015-10-27T00:10:20.9256921Z\",\r\n        \"lastModified\": \"2015-10-27T00:10:20.9256921Z\",\r\n        \"contentLength\": \"0\",\r\n        \"contentType\": \"application/octet-stream\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"stdout.txt\",\r\n      \"url\": \"https://pstests.eastus.batch.azure.com/jobs/listNodeFileByTaskFilterJob/tasks/testTask/files/stdout.txt\",\r\n      \"isDirectory\": false,\r\n      \"properties\": {\r\n        \"creationTime\": \"2015-10-27T00:10:20.924692Z\",\r\n        \"lastModified\": \"2015-10-27T00:10:21.0286929Z\",\r\n        \"contentLength\": \"419\",\r\n        \"contentType\": \"application/octet-stream\"\r\n      }\r\n    }\r\n  ]\r\n}",
-      "ResponseHeaders": {
-        "Content-Type": [
-          "application/json; odata=minimalmetadata"
-        ],
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "request-id": [
-          "501fa769-1931-4ae5-9512-d27700d48d35"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "client-request-id": [
-          "bf240ce6-997e-4821-b63d-784b021ed536"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Tue, 27 Oct 2015 00:10:27 GMT"
+          "Wed, 11 Nov 2015 00:38:36 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1300,17 +777,17 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "10ef3abe-aedc-471c-9f10-b1432de1ee8c"
+          "270331d6-17d4-47c8-b455-3852d6481bd4"
         ],
         "ocp-date": [
-          "Tue, 27 Oct 2015 00:10:26 GMT"
+          "Wed, 11 Nov 2015 00:38:36 GMT"
         ],
         "return-client-request-id": [
           "true"
         ],
         "User-Agent": [
           "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
-          "AzBatch/2.0.2.0"
+          "AzurePowershell/v1.0.0"
         ]
       },
       "ResponseBody": "",
@@ -1319,157 +796,19 @@
           "chunked"
         ],
         "request-id": [
-          "0856bcd7-92ce-44a4-9624-a656c3b3575d"
+          "e271350c-899f-4701-934b-425e1b827f64"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "client-request-id": [
-          "10ef3abe-aedc-471c-9f10-b1432de1ee8c"
+          "270331d6-17d4-47c8-b455-3852d6481bd4"
         ],
         "DataServiceVersion": [
           "3.0"
         ],
         "Date": [
-          "Tue, 27 Oct 2015 00:10:27 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/jobs/listNodeFileByTaskFilterJob?api-version=2015-06-01.2.0&timeout=30",
-      "EncodedRequestUri": "L2pvYnMvbGlzdE5vZGVGaWxlQnlUYXNrRmlsdGVySm9iP2FwaS12ZXJzaW9uPTIwMTUtMDYtMDEuMi4wJnRpbWVvdXQ9MzA=",
-      "RequestMethod": "DELETE",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "client-request-id": [
-          "10ef3abe-aedc-471c-9f10-b1432de1ee8c"
-        ],
-        "ocp-date": [
-          "Tue, 27 Oct 2015 00:10:26 GMT"
-        ],
-        "return-client-request-id": [
-          "true"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
-          "AzBatch/2.0.2.0"
-        ]
-      },
-      "ResponseBody": "",
-      "ResponseHeaders": {
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "request-id": [
-          "0856bcd7-92ce-44a4-9624-a656c3b3575d"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "client-request-id": [
-          "10ef3abe-aedc-471c-9f10-b1432de1ee8c"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Tue, 27 Oct 2015 00:10:27 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/jobs/listNodeFileByTaskFilterJob?api-version=2015-06-01.2.0&timeout=30",
-      "EncodedRequestUri": "L2pvYnMvbGlzdE5vZGVGaWxlQnlUYXNrRmlsdGVySm9iP2FwaS12ZXJzaW9uPTIwMTUtMDYtMDEuMi4wJnRpbWVvdXQ9MzA=",
-      "RequestMethod": "DELETE",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "client-request-id": [
-          "10ef3abe-aedc-471c-9f10-b1432de1ee8c"
-        ],
-        "ocp-date": [
-          "Tue, 27 Oct 2015 00:10:26 GMT"
-        ],
-        "return-client-request-id": [
-          "true"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
-          "AzBatch/2.0.2.0"
-        ]
-      },
-      "ResponseBody": "",
-      "ResponseHeaders": {
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "request-id": [
-          "0856bcd7-92ce-44a4-9624-a656c3b3575d"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "client-request-id": [
-          "10ef3abe-aedc-471c-9f10-b1432de1ee8c"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Tue, 27 Oct 2015 00:10:27 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/jobs/listNodeFileByTaskFilterJob?api-version=2015-06-01.2.0&timeout=30",
-      "EncodedRequestUri": "L2pvYnMvbGlzdE5vZGVGaWxlQnlUYXNrRmlsdGVySm9iP2FwaS12ZXJzaW9uPTIwMTUtMDYtMDEuMi4wJnRpbWVvdXQ9MzA=",
-      "RequestMethod": "DELETE",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "client-request-id": [
-          "10ef3abe-aedc-471c-9f10-b1432de1ee8c"
-        ],
-        "ocp-date": [
-          "Tue, 27 Oct 2015 00:10:26 GMT"
-        ],
-        "return-client-request-id": [
-          "true"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
-          "AzBatch/2.0.2.0"
-        ]
-      },
-      "ResponseBody": "",
-      "ResponseHeaders": {
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "request-id": [
-          "0856bcd7-92ce-44a4-9624-a656c3b3575d"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "client-request-id": [
-          "10ef3abe-aedc-471c-9f10-b1432de1ee8c"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Tue, 27 Oct 2015 00:10:27 GMT"
+          "Wed, 11 Nov 2015 00:38:38 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1480,6 +819,6 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "6368ed38-3570-481f-b4fa-1d0a6e8d3f3b"
+    "SubscriptionId": "46241355-bb95-46a9-ba6c-42b554d71925"
   }
 }

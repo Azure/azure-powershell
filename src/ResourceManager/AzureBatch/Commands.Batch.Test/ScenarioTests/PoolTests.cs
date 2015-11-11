@@ -306,6 +306,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 () =>
                 {
                     context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, commonAccountName);
+                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(controller, context, testPoolId);
                     ScenarioTestHelpers.DisableAutoScale(controller, context, testPoolId);
                     ScenarioTestHelpers.WaitForSteadyPoolAllocation(controller, context, testPoolId);
                 },
@@ -328,6 +329,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 () =>
                 {
                     context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, commonAccountName);
+                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(controller, context, testPoolId);
                     ScenarioTestHelpers.DisableAutoScale(controller, context, testPoolId);
                     ScenarioTestHelpers.WaitForSteadyPoolAllocation(controller, context, testPoolId);
                 },
@@ -350,6 +352,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 () =>
                 {
                     context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, commonAccountName);
+                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(controller, context, testPoolId);
                     ScenarioTestHelpers.EnableAutoScale(controller, context, testPoolId);
                     ScenarioTestHelpers.WaitForSteadyPoolAllocation(controller, context, testPoolId);
                 },
@@ -369,6 +372,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 () =>
                 {
                     context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, commonAccountName);
+                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(controller, context, testPoolId);
                     ScenarioTestHelpers.EnableAutoScale(controller, context, testPoolId);
                     ScenarioTestHelpers.WaitForSteadyPoolAllocation(controller, context, testPoolId);
                 },
@@ -421,14 +425,14 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 TestUtilities.GetCurrentMethodName());
         }
 
-        [Fact]
+        [Fact(Skip = "WATaskOSFamilyVersions table appears to be out of date, re-record when updated")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestChangeOSVersionById()
         {
             TestChangeOSVersion(false);
         }
 
-        [Fact]
+        [Fact(Skip = "WATaskOSFamilyVersions table appears to be out of date, re-record when updated")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestChangeOSVersionPipeline()
         {
