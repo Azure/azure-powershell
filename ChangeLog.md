@@ -2,6 +2,9 @@
   * Get-AzureRmSqlDatabaseThreatDetectionPolicy
   * Set-AzureRmSqlDatabaseThreatDetectionPolicy
   * Remove-AzureRmSqlDatabaseThreatDetectionPolicy
+* Azure RemoteApp: New cmdlets for managing stale machine accounts in AD:
+  * Get-AzureRemoteAppVmStaleAdObject
+  * Clear-AzureRemoteAppVmStaleAdObject
   
 ## 2015.11.09 version 1.0.1
 * Azure Compute
