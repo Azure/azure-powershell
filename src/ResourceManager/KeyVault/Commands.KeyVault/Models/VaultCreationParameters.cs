@@ -26,6 +26,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public string SkuName { get; set; }
         public string SkuFamilyName { get; set; }
         public bool EnabledForDeployment { get; set; }
+        public bool EnabledForTemplateDeployment { get; set; }
+        public bool EnabledForDiskEncryption { get; set; }
         public Guid TenantId { get; set; }
         public Guid ObjectId { get; set; }
         public string[] PermissionsToKeys { get; set; }

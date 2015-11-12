@@ -1,3 +1,19 @@
+* Azure SQL Database: new cmdlets for managing database threat detection policies:
+  * Get-AzureRmSqlDatabaseThreatDetectionPolicy
+  * Set-AzureRmSqlDatabaseThreatDetectionPolicy
+  * Remove-AzureRmSqlDatabaseThreatDetectionPolicy
+* Azure RemoteApp: New cmdlets for managing stale machine accounts in AD:
+  * Get-AzureRemoteAppVmStaleAdObject
+  * Clear-AzureRemoteAppVmStaleAdObject
+  
+## 2015.11.09 version 1.0.1
+* Azure Compute
+  * Added cmdlets for managing VM DiskEncryption extension
+* Azure KeyVault
+  * Added EnabledForDiskEncryption and EnabledForTemplateDeployment flags to Azure Key Vault access policy
+* Azure Websites 
+  * Fixed issues with website management client creation
+
 ## 2015.11.05 version 1.0
 * Azure Compute
   * AzureRmVM cmdlet bug fixes
