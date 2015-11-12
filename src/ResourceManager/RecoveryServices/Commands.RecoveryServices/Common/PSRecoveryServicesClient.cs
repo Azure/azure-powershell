@@ -27,7 +27,6 @@ using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.RecoveryServices;
 using Microsoft.Azure.Management.RecoveryServices.Models;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
-using Microsoft.WindowsAzure.Management.Scheduler;
 using System.Configuration;
 using System.Net.Security;
 
@@ -73,11 +72,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         private RecoveryServicesManagementClient recoveryServicesClient;
 
         /// <summary>
-        /// Recovery Services client.
-        /// </summary>
-        private CloudServiceManagementClient cloudServicesClient;
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="PSRecoveryServicesClient" /> class with 
         /// required current subscription.
         /// </summary>
@@ -87,9 +81,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             System.Configuration.Configuration recoveryServicesConfig = ConfigurationManager.OpenExeConfiguration(System.Reflection.Assembly.GetExecutingAssembly().Location);
 
             System.Configuration.AppSettingsSection appSettings = (System.Configuration.AppSettingsSection)recoveryServicesConfig.GetSection("appSettings");
-
-            this.Profile = azureProfile;
-            this.cloudServicesClient = AzureSession.ClientFactory.CreateClient<CloudServiceManagementClient>(azureProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
 
             string resourceNamespace = string.Empty;
             string resourceType = string.Empty;
@@ -115,11 +106,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     ARMResourceType = resourceType
                 });
             }
+
             this.recoveryServicesClient =
             AzureSession.ClientFactory.CreateCustomClient<RecoveryServicesManagementClient>(
                 asrVaultCreds.ResourceNamespace,
-                cloudServicesClient.Credentials,
-                Profile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager));
+                AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(azureProfile.Context),
+                azureProfile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager));
         }
 
         private static bool IgnoreCertificateErrorHandler

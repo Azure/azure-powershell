@@ -195,27 +195,5 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 input,
                 this.GetRequestHeaders());
         }
-
-        /// <summary>
-        /// Sync ownership information for replication proection entity
-        /// </summary>
-        /// <param name="fabricName">Fabric Name</param>
-        /// <param name="protectionContainerName">Protection Conatiner Name</param>
-        /// <param name="replicationProtectedItemName">Replication Protected Item</param>
-        /// <param name="input">Input for Update OwnerShip Information</param>
-        /// <returns>Job Response</returns>
-        public LongRunningOperationResponse UpdateAzureSiteRecoveryProtectionEntity(string fabricName,
-            string protectionContainerName,
-            string replicationProtectedItemName,
-            Object input)
-        {
-            //return this.GetSiteRecoveryClient().ReplicationProtectedItem.SyncOwnerInformation(
-            //    fabricName,
-            //    protectionContainerName,
-            //    replicationProtectedItemName,
-            //    this.GetRequestHeaders());
-
-            return null;
-        }
     }
 }

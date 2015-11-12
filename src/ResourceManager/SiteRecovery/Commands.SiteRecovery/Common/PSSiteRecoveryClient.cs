@@ -33,7 +33,6 @@ using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Properties = Microsoft.Azure.Commands.SiteRecovery.Properties;
-using Microsoft.WindowsAzure.Management.Scheduler;
 using System.Configuration;
 using System.Collections.Specialized;
 using System.Net.Security;
@@ -61,10 +60,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             }
         }
 
-        /// Azure profile
-        /// </summary>
-        public IAzureProfile Profile { get; set; }
-
         /// <summary>
         /// Amount of time to sleep before fetching job details again.
         /// </summary>
@@ -87,14 +82,14 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         private RecoveryServicesManagementClient recoveryServicesClient;
 
         /// <summary>
-        /// Recovery Services client.
-        /// </summary>
-        private CloudServiceManagementClient cloudServicesClient;
-
-        /// <summary>
         /// End point Uri
         /// </summary>
         private static Uri endPointUri;
+
+        /// <summary>
+        /// Subscription Cloud credentials
+        /// </summary>
+        private static SubscriptionCloudCredentials cloudCredentials;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PSRecoveryServicesClient" /> class with 
@@ -106,9 +101,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             System.Configuration.Configuration siteRecoveryConfig = ConfigurationManager.OpenExeConfiguration(System.Reflection.Assembly.GetExecutingAssembly().Location);
 
             System.Configuration.AppSettingsSection appSettings = (System.Configuration.AppSettingsSection)siteRecoveryConfig.GetSection("appSettings");
-
-            this.Profile = azureProfile;
-            this.cloudServicesClient = AzureSession.ClientFactory.CreateClient<CloudServiceManagementClient>(azureProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
 
             string resourceNamespace = string.Empty;
             string resourceType = string.Empty;
@@ -146,13 +138,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             {
                 if (appSettings.Settings.Count == 0)
                 {
-                    endPointUri = Profile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager);
+                    endPointUri = azureProfile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager);
                 }
                 else
                 {
                     if (null == appSettings.Settings["RDFEProxy"])
                     {
-                        endPointUri = Profile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager);
+                        endPointUri = azureProfile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager);
 
                     }
                     else
@@ -169,12 +161,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 }
             }
 
+            cloudCredentials = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(azureProfile.Context);
             this.recoveryServicesClient =
             AzureSession.ClientFactory.CreateCustomClient<RecoveryServicesManagementClient>(
                 asrVaultCreds.ResourceNamespace,
                 asrVaultCreds.ARMResourceType,
-                cloudServicesClient.Credentials,
-                Profile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager));
+                cloudCredentials,
+                azureProfile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager));
         }
 
         private static bool IgnoreCertificateErrorHandler
@@ -334,7 +327,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 asrVaultCreds.ResourceGroupName,
                 asrVaultCreds.ResourceNamespace,
                 asrVaultCreds.ARMResourceType,
-                cloudServicesClient.Credentials,
+                cloudCredentials,
                 endPointUri);
 
             if (null == siteRecoveryClient)

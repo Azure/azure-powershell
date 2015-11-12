@@ -133,7 +133,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             }
         }
 
-
         /// <summary>
         /// Waits for the job to complete.
         /// </summary>
