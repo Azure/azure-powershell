@@ -40,10 +40,10 @@ function Test-GetAzureVMDscExtension
 
         # Install DSC Extension Handler
 		#Get latest dsc extension handler version
-		$publisher = "Microsoft.Powershell"
-		$extensionName = "DSC"
-		$latestExtension = Get-AzureVMAvailableExtension -Publisher $publisher -ExtensionName $extensionName -Verbose
-		Assert-NotNull $latestExtension
+        $publisher = "Microsoft.Powershell"
+        $extensionName = "DSC"
+        $latestExtension = Get-AzureVMAvailableExtension -Publisher $publisher -ExtensionName $extensionName -Verbose
+        Assert-NotNull $latestExtension
         Assert-NotNull $latestExtension.Version
 
         #$vm = Set-AzureVMDSCExtension -VM $vm -ConfigurationArchive 'DummyConfig.ps1.zip' -ConfigurationName 'DummyConfig' -Verbose 
