@@ -25,34 +25,55 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Gets Azure Site Recovery Job details.
         /// </summary>
-        /// <param name="jobId">Job ID</param>
+        /// <param name="jobName">Job ID</param>
         /// <returns>Job response</returns>
-        public JobResponse GetAzureSiteRecoveryJobDetails(string jobId)
+        public JobResponse GetAzureSiteRecoveryJobDetails(string jobName)
         {
-            return this.GetSiteRecoveryClient().Jobs.Get(jobId, this.GetRequestHeaders());
+            return this.GetSiteRecoveryClient().Jobs.Get(jobName, this.GetRequestHeaders(false));
         }
 
         /// <summary>
         /// Get Azure Site Recovery Job.
         /// </summary>
-        /// <param name="jqp">Job query parameter.</param>
         /// <returns>Job list response</returns>
-        public JobListResponse GetAzureSiteRecoveryJob(JobQueryParameter jqp)
+        public JobListResponse GetAzureSiteRecoveryJob()
         {
-            return this.GetSiteRecoveryClient().Jobs.List(jqp, this.GetRequestHeaders());
+            return this.GetSiteRecoveryClient().Jobs.List(this.GetRequestHeaders(false));
         }
 
         /// <summary>
         /// Resumes Azure Site Recovery Job.
         /// </summary>
-        /// <param name="jobId">Job ID</param>
+        /// <param name="jobName">Job ID</param>
         /// <param name="resumeJobParams">Resume Job parameters</param>
         /// <returns>Long running operation response</returns>
         public LongRunningOperationResponse ResumeAzureSiteRecoveryJob(
-            string jobId,
+            string jobName,
             ResumeJobParams resumeJobParams)
         {
-            return this.GetSiteRecoveryClient().Jobs.BeginResuming(jobId, resumeJobParams, this.GetRequestHeaders());
+            return this.GetSiteRecoveryClient().Jobs.BeginResuming(jobName, resumeJobParams, this.GetRequestHeaders());
+        }
+
+        /// <summary>
+        /// Restart Azure Site Recovery Job.
+        /// </summary>
+        /// <param name="jobName">Job Name</param>
+        /// <returns>Long running operation response</returns>
+        public LongRunningOperationResponse RestartAzureSiteRecoveryJob(
+            string jobName)
+        {
+            return this.GetSiteRecoveryClient().Jobs.BeginRestarting(jobName, this.GetRequestHeaders());
+        }
+
+        /// <summary>
+        /// Cancel Azure Site Recovery Job.
+        /// </summary>
+        /// <param name="jobName">Job Name</param>
+        /// <returns>Long running operation response</returns>
+        public LongRunningOperationResponse CancelAzureSiteRecoveryJob(
+            string jobName)
+        {
+            return this.GetSiteRecoveryClient().Jobs.BeginCancelling(jobName, this.GetRequestHeaders());
         }
     }
 }
