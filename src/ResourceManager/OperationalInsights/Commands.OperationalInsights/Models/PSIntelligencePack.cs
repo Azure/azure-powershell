@@ -12,32 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Xunit;
+using System;
+using System.Collections.Generic;
+using Microsoft.Azure.Management.OperationalInsights.Models;
 
-namespace Microsoft.Azure.Commands.OperationalInsights.Test
+namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
-    public class WorkspaceTests : OperationalInsightsScenarioTestBase
+    public class PSIntelligencePack
     {
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestWorkspaceCreateUpdateDelete()
+        public PSIntelligencePack()
         {
-            RunPowerShellTest("Test-WorkspaceCreateUpdateDelete");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestWorkspaceActions()
+        public PSIntelligencePack(string name, bool enabled)
         {
-            RunPowerShellTest("Test-WorkspaceActions");
+            this.Name = name;
+            this.Enabled = enabled;
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestWorkspaceEnableDisableListIntelligencePacks()
-        {
-            RunPowerShellTest("Test-WorkspaceEnableDisableListIntelligencePacks");
-        }
+        public string Name { get; set; }
+
+        public bool Enabled { get; set; }
     }
 }
