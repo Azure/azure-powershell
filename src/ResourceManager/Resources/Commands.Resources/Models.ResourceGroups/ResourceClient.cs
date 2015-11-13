@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
         {
             if (templateParameterObject != null)
             {
-                return SerializeHashtable(templateParameterObject, addValueLayer: true);
+                return SerializeHashtable(templateParameterObject, addValueLayer: false);
             }
             else
             {
