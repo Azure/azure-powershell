@@ -39,7 +39,7 @@ function Test-GetAzureVMDscExtension
         $vm = Get-AzureVM -ServiceName $svcName -Name $vmName
 
         # Install DSC Extension Handler
-		#Get latest dsc extension handler version
+        #Get latest dsc extension handler version
         $publisher = "Microsoft.Powershell"
         $extensionName = "DSC"
         $latestExtension = Get-AzureVMAvailableExtension -Publisher $publisher -ExtensionName $extensionName -Verbose
