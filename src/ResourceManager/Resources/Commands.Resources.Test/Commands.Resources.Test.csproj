@@ -245,6 +245,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="keyVaultTemplateParams.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SamplePolicyDefinition.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

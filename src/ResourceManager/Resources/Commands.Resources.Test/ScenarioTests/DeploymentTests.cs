@@ -29,5 +29,11 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             ResourcesController.NewInstance.RunPsTest("Test-NewDeploymentFromTemplateFile");
         }
+
+        [Fact]
+        public void TestNewDeploymentWithKeyVaultReference()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-NewDeploymentWithKeyVaultReference");
+        }
     }
 }

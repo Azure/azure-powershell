@@ -67,3 +67,48 @@ function Test-NewDeploymentFromTemplateFile
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Tests deployment via template file and parameter object.
+#>
+function Test-NewDeploymentWithKeyVaultReference
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rname = Get-ResourceName
+	$keyVaultResourceName = Get-ResourceName
+	$secretName = Get-ResourceName
+	$rglocation = Get-ProviderLocation ResourceManagement
+	$location = Get-ProviderLocation "Microsoft.Web/sites"
+	$hostplanName = "xDeploymentTestHost26668"
+
+	try
+	{
+		# Test
+		New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+
+		$keyVault = $keyVault = new-azurermkeyvault -VaultName $keyVaultResourceName -ResourceGroupName $rgname -Location $location -EnabledForTemplateDeployment
+		Set-AzureKeyVaultSecret -VaultName $keyVaultResourceName -SecretName $secretName -SecretValue $hostplanName
+		$content = (Get-Content keyVaultTemplateParams.json) -join '' | ConvertFrom-Json
+		$content.hostingPlanName.reference.KeyVault.id = $keyVault.resourceid
+		$content.hostingPlanName.reference.SecretName = $secretName
+		$content | ConvertTo-Json -depth 999 | Out-File keyVaultTemplateParams.json
+
+		$deployment = New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile sampleTemplate.json -TemplateParameterFile keyVaultTemplateParams.json
+
+		# Assert
+		Assert-AreEqual Succeeded $deployment.ProvisioningState
+
+		$subId = (Get-AzureRmContext).Subscription.SubscriptionId
+		$deploymentId = "/subscriptions/$subId/resourcegroups/$rgname/providers/Microsoft.Resources/deployments/$rname"
+		$getById = Get-AzureRmResourceGroupDeployment -Id $deploymentId
+		Assert-AreEqual $getById.DeploymentName $deployment.DeploymentName
+	}
+	
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
