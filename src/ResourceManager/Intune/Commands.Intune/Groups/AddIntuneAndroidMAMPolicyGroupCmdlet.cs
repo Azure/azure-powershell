@@ -14,9 +14,11 @@
 
 namespace Microsoft.Azure.Commands.Intune
 {
-    using System.Management.Automation;
     using Management.Intune;
     using Management.Intune.Models;
+    using Microsoft.Azure.Commands.Intune.Properties;
+    using System.Globalization;
+    using System.Management.Automation;
 
     /// <summary>
     /// A cmdlet to link a group to Android Intune MAM policy Azure resource.
@@ -47,13 +49,25 @@ namespace Microsoft.Azure.Commands.Intune
         {
             this.ConfirmAction(
                 this.Force,
-                "Are you sure you want to link Group with name:" + this.GroupName + " to Android policy with name:" + this.Name,
-                "Link the group with Android policy resource.",
+                string.Format(
+                    CultureInfo.CurrentCulture, 
+                    Resources.AddLinkedResouce_ActionMessage, 
+                    Resources.Group, 
+                    this.GroupName, 
+                    Resources.AndroidPolicy, 
+                    this.Name),
+                string.Format(
+                    CultureInfo.CurrentCulture, 
+                    Resources.AddLinkedResources_ProcessMessage, 
+                    Resources.Group, 
+                    this.GroupName, 
+                    Resources.AndroidPolicy, 
+                    this.Name),
                 this.Name,
                 () =>
                 {
                     this.IntuneClient.Android.AddGroupForPolicy(this.AsuHostName, this.Name, this.GroupName, PrepareMAMPolicyAppIdGroupIdPayload());
-                    this.WriteObject("Operation completed successfully");
+                    this.WriteObject(Resources.OperationCompletedMessage);
                 });
         }
 

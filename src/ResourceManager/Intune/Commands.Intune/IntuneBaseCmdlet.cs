@@ -13,13 +13,14 @@
 // ----------------------------------------------------------------------------------
 namespace Microsoft.Azure.Commands.Intune
 {
-    using System;
+    using Management.Intune;
+    using Microsoft.Azure.Commands.Intune.Properties;
     using Microsoft.Azure.Commands.ResourceManager.Common;
-    using Microsoft.Azure.Common.Authentication.Models;
     using Microsoft.Azure.Common.Authentication;
+    using Microsoft.Azure.Common.Authentication.Models;
+    using System;
     using System.Collections.Concurrent;
     using System.Management.Automation;
-    using Management.Intune;
 
     /// <summary>
     /// Base class for all commandlets. Helps create an instance of the client that commandlets can leverage. 
@@ -87,8 +88,7 @@ namespace Microsoft.Azure.Commands.Intune
             ApiVersionHandler apiVersionHandler = null;
             if (string.IsNullOrWhiteSpace(endpoint))
             {
-                throw new ApplicationException(
-                    "The endpoint for the Azure Resource Manager service is not set. Please report this issue via GitHub or contact Microsoft customer support.");
+                throw new ApplicationException(Resources.ARMEndpointNotSetErrorMessage);
             }
 
             var endpointUri = new Uri(endpoint, UriKind.Absolute);

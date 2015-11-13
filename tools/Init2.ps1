@@ -23,7 +23,7 @@
 	#$secpasswd = ConvertTo-SecureString "Pass1Word" -AsPlainText -Force
 	#$mycreds = New-Object System.Management.Automation.PSCredential ("admin@OneDFAdminExpRunner2DMSUB01.ccsctp.net", $secpasswd)
 
-$secpasswd = ConvertTo-SecureString "P0rsche911" -AsPlainText -Force
+	$secpasswd = ConvertTo-SecureString "P0rsche911" -AsPlainText -Force
 	$mycreds = New-Object System.Management.Automation.PSCredential ("admin@uxmdmonly.ccsctp.net", $secpasswd)
 	
 	Login-AzureRmAccount -environment $env[2] -credential $mycreds

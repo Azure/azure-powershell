@@ -14,10 +14,11 @@
 
 namespace Microsoft.Azure.Commands.Intune
 {
-    using System;
-    using System.Management.Automation;
     using Management.Intune;
     using Management.Intune.Models;
+    using Microsoft.Azure.Commands.Intune.Properties;
+    using System.Globalization;
+    using System.Management.Automation;
 
     /// <summary>
     /// A cmdlet to link an app to Android Intune MAM policy Azure resource.
@@ -48,13 +49,25 @@ namespace Microsoft.Azure.Commands.Intune
         {
             this.ConfirmAction(
                 this.Force,
-                "Are you sure you want to link App with name:" + this.AppName + " to Android policy with id:" + this.Name,
-                "Link the app with Android policy resource.",
+                string.Format(
+                    CultureInfo.CurrentCulture, 
+                    Resources.AddLinkedResouce_ActionMessage, 
+                    Resources.App, 
+                    this.AppName, 
+                    Resources.AndroidPolicy, 
+                    this.Name),
+                string.Format(
+                    CultureInfo.CurrentCulture, 
+                    Resources.AddLinkedResources_ProcessMessage, 
+                    Resources.App, 
+                    this.AppName, 
+                    Resources.AndroidPolicy, 
+                    this.Name),
                 this.Name,
                 () =>
                 {
                     this.IntuneClient.Android.AddAppForPolicy(this.AsuHostName, this.Name, this.AppName, PrepareMAMPolicyAppIdGroupIdPayload());
-                    this.WriteObject("Operation completed successfully");
+                    this.WriteObject(Resources.OperationCompletedMessage);
                 });
         }
 
