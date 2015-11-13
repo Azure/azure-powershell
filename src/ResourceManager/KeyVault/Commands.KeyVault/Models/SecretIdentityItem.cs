@@ -14,15 +14,13 @@
 
 using System;
 using System.Collections;
-using System.Security;
-using Microsoft.Azure.KeyVault;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     public class SecretIdentityItem : ObjectIdentifier
     {
-        internal SecretIdentityItem(Microsoft.Azure.KeyVault.SecretItem secretItem, VaultUriHelper vaultUriHelper)
+        internal SecretIdentityItem(Azure.KeyVault.SecretItem secretItem, VaultUriHelper vaultUriHelper)
         {
             if (secretItem == null)
                 throw new ArgumentNullException("secretItem");            

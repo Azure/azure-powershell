@@ -16,7 +16,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Management.KeyVault;
 using PSKeyVaultModels = Microsoft.Azure.Commands.KeyVault.Models;
 using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
@@ -89,8 +88,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                                                     ActiveDirectoryClient);
                     if (vault == null)
                         throw new ArgumentException(string.Format(PSKeyVaultProperties.Resources.VaultNotFound, VaultName, ResourceGroupName));
-                    else
-                        WriteObject(vault);
+                    WriteObject(vault);
                     break;
 
                 case ListVaultsByRGParameterSet:

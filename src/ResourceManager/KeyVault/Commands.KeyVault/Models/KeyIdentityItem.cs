@@ -14,15 +14,13 @@
 
 using System;
 using System.Collections;
-using Microsoft.Azure.KeyVault.WebKey;
-using Microsoft.Azure.KeyVault;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     public class KeyIdentityItem : ObjectIdentifier
     {
-        internal KeyIdentityItem(Microsoft.Azure.KeyVault.KeyItem keyItem, VaultUriHelper vaultUriHelper)
+        internal KeyIdentityItem(Azure.KeyVault.KeyItem keyItem, VaultUriHelper vaultUriHelper)
         {
             if (keyItem == null)
                 throw new ArgumentNullException("keyItem");           
