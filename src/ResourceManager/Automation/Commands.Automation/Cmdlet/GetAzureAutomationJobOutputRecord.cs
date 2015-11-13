@@ -36,6 +36,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the job stream id
         /// </summary>
+        [Alias("OutputRecordId")]
         [Parameter(Mandatory = true, Position = 3, ValueFromPipelineByPropertyName = true, HelpMessage = "The stream id")]
         [ValidateNotNullOrEmpty]
         public string JobStreamId { get; set; }

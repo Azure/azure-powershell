@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
         IEnumerable<JobStream> GetJobStream(string resourceGroupName, string automationAccountName, Guid jobId,
             DateTimeOffset? time, string streamType, ref string nextLink);
 
-        JobStream GetJobStreamRecord(string resourceGroupName, string automationAccountName, Guid jobId, string jobStreamId);
+        JobStreamRecord GetJobStreamRecord(string resourceGroupName, string automationAccountName, Guid jobId, string jobStreamId);
 
         #endregion
 

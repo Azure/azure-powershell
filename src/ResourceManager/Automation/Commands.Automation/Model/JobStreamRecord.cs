@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.Automation.Model
     /// <summary>
     /// The Job Stream.
     /// </summary>
-    public class JobStream
+    public class JobStreamRecord : JobStream
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="JobStream"/> class.
+        /// Initializes a new instance of the <see cref="JobStreamRecord"/> class.
         /// </summary>
         /// <param name="jobStream">
         /// The job stream.
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// </param>
         /// <exception cref="System.ArgumentException">
         /// </exception>
-        public JobStream(AutomationManagement.Models.JobStream jobStream, string resourceGroupName, string automationAccountName, Guid jobId )
+        public JobStreamRecord(AutomationManagement.Models.JobStream jobStream, string resourceGroupName, string automationAccountName, Guid jobId )
         {
             Requires.Argument("jobStream", jobStream).NotNull();
 
@@ -60,48 +60,37 @@ namespace Microsoft.Azure.Commands.Automation.Model
                      jobStream.Properties.Summary.Substring(0, Constants.JobSummaryLength) + "..." :
                      jobStream.Properties.Summary;
             }
+
+            this.Value = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
+            foreach (var kvp in jobStream.Properties.Value)
+            {
+                object paramValue;
+                try
+                {
+                    paramValue = ((object)PowerShellJsonConverter.Deserialize(kvp.Value.ToString()));
+                }
+                catch (CmdletInvocationException exception)
+                {
+                    if (!exception.Message.Contains("Invalid JSON primitive"))
+                        throw;
+
+                    paramValue = kvp.Value;
+                }
+                this.Value.Add(kvp.Key, paramValue);
+            }
+
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="JobStream"/> class.
+        /// Initializes a new instance of the <see cref="JobStreamRecord"/> class.
         /// </summary>
-        public JobStream()
+        public JobStreamRecord()
         {
         }
 
         /// <summary>
-        /// Gets or sets the resource group name.
+        /// Gets or sets the stream values.
         /// </summary>
-        public string ResourceGroupName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the automation account name.
-        /// </summary>
-        public string AutomationAccountName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Job Id.
-        /// </summary>
-        public Guid Id { get; set; }
-
-        /// <summary>
-        /// Gets or sets the stream id
-        /// </summary>
-        public string JobStreamId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the stream time.
-        /// </summary>
-        public DateTimeOffset Time { get; set; }
-
-        /// <summary>
-        /// Gets or sets the summary.
-        /// </summary>
-        public string Summary { get; set; }
-
-        /// <summary>
-        /// Gets or sets the stream Type.
-        /// </summary>
-        public string Type { get; set; }
+        public Hashtable Value { get; set; }
     }
 }
