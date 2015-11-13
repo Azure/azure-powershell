@@ -215,6 +215,7 @@
     <Compile Include="ScenarioTests\FileTests.cs" />
     <Compile Include="ScenarioTests\JobTests.cs" />
     <Compile Include="ScenarioTests\PoolTests.cs" />
+    <Compile Include="ScenarioTests\ScenarioTestContext.cs" />
     <Compile Include="ScenarioTests\ScenarioTestHelpers.cs" />
     <Compile Include="ScenarioTests\SubscriptionTests.cs" />
     <Compile Include="ScenarioTests\TaskTests.cs" />
@@ -274,7 +275,7 @@
     </None>
     <None Include="ScenarioTests\SubscriptionTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>    
+    </None>
     <None Include="ScenarioTests\TaskTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -568,7 +569,7 @@
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.SubscriptionTests\TestGetSubscriptionQuotas.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>    
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.TaskTests\TestCreateTask.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
