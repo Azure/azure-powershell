@@ -528,24 +528,20 @@ Param($resourceGroupName, $serviceName)
         $productName = getAssetName
         $productApprovalRequired = $TRUE
         $productDescription = getAssetName
-        $notificationPeriod = "M2"
         $productState = "Published"
-        $subscriptionPeriod = "Y1"
         $productSubscriptionRequired = $TRUE
         $productSubscriptionsLimit = 10
         $productTerms = getAssetName
 
         $newProduct = New-AzureRmApiManagementProduct -Context $context –ProductId $productId –Title $productName –Description $productDescription `
-            –LegalTerms $productTerms –NotificationPeriod $notificationPeriod –SubscriptionPeriod $subscriptionPeriod –SubscriptionRequired $productSubscriptionRequired `
+            –LegalTerms $productTerms –SubscriptionRequired $productSubscriptionRequired `
             –ApprovalRequired $productApprovalRequired –State $productState -SubscriptionsLimit $productSubscriptionsLimit
 
         Assert-AreEqual $productId $newProduct.ProductId 
         Assert-AreEqual $productName $newProduct.Title
         Assert-AreEqual $productApprovalRequired $newProduct.ApprovalRequired
         Assert-AreEqual $productDescription $newProduct.Description
-        Assert-AreEqual $notificationPeriod $newProduct.NotificationPeriod
         Assert-AreEqual "NotPublished" $newProduct.State #product must contain at least one api to be published
-        Assert-AreEqual $subscriptionPeriod $newProduct.SubscriptionPeriod
         Assert-AreEqual $productSubscriptionRequired $newProduct.SubscriptionRequired
         Assert-AreEqual $productSubscriptionsLimit $newProduct.SubscriptionsLimit
         Assert-AreEqual $productTerms $newProduct.LegalTerms
@@ -563,24 +559,20 @@ Param($resourceGroupName, $serviceName)
         $productName = getAssetName
         $productApprovalRequired = $FALSE
         $productDescription = getAssetName
-        $notificationPeriod = "M5"
         $productState = "Published"
-        $subscriptionPeriod = "Y2"
         $productSubscriptionRequired = $TRUE
         $productSubscriptionsLimit = 20
         $productTerms = getAssetName
 
         $newProduct = Set-AzureRmApiManagementProduct -Context $context –ProductId $productId –Title $productName –Description $productDescription `
-            –LegalTerms $productTerms –NotificationPeriod $notificationPeriod –SubscriptionPeriod $subscriptionPeriod -ApprovalRequired $productApprovalRequired `
+            –LegalTerms $productTerms -ApprovalRequired $productApprovalRequired `
              –SubscriptionRequired $TRUE –State $productState -SubscriptionsLimit $productSubscriptionsLimit -PassThru
 
         Assert-AreEqual $productId $newProduct.ProductId 
         Assert-AreEqual $productName $newProduct.Title
         Assert-AreEqual $productApprovalRequired $newProduct.ApprovalRequired
         Assert-AreEqual $productDescription $newProduct.Description
-        Assert-AreEqual $notificationPeriod $newProduct.NotificationPeriod
         Assert-AreEqual $productState $newProduct.State
-        Assert-AreEqual $subscriptionPeriod $newProduct.SubscriptionPeriod
         Assert-AreEqual $productSubscriptionRequired $newProduct.SubscriptionRequired
         Assert-AreEqual $productSubscriptionsLimit $newProduct.SubscriptionsLimit
         Assert-AreEqual $productTerms $newProduct.LegalTerms

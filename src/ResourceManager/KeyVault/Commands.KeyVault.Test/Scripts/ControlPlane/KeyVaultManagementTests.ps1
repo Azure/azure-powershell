@@ -439,7 +439,7 @@ function Test-ModifyAccessPolicyEnabledForDeployment
     Assert-AreEqual 0 $vault.AccessPolicies.Count
     Assert-AreEqual $false $vault.EnabledForDeployment
 
-    # Set and Remove EnabledForDeployment, without any other permissions
+    # Set and Remove EnabledForDeployment
     $vault = Set-AzureRmKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -EnabledForDeployment -PassThru
     Assert-NotNull $vault
     Assert-AreEqual 0 $vault.AccessPolicies.Count
@@ -449,17 +449,52 @@ function Test-ModifyAccessPolicyEnabledForDeployment
     Assert-NotNull $vault
     Assert-AreEqual 0 $vault.AccessPolicies.Count
     Assert-AreEqual $false $vault.EnabledForDeployment
+}
 
-    # Set and Remove EnabledForDeployment, with other permissions
-    $PermToKeys = @("encrypt", "decrypt", "unwrapKey", "wrapKey", "verify", "sign", "get", "list", "update", "create", "import", "delete", "backup", "restore")
-    $PermToSecrets = @("get", "list", "set", "delete")
-    $vault = Set-AzureRmKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -EnabledForDeployment -UPN $upn -PermissionsToKeys $PermToKeys -PermissionsToSecrets $PermToSecrets -PassThru
-    CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets	
-    Assert-AreEqual $true $vault.EnabledForDeployment
-
-    $vault = Remove-AzureRmKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -EnabledForDeployment -ObjectId $vault.AccessPolicies[0].ObjectId -PassThru
+function Test-ModifyAccessPolicyEnabledForTemplateDeployment
+{
+    Param($existingVaultName, $rgName, $upn)
+    $vault = Get-AzureRmKeyVault -VaultName $existingVaultName -ResourceGroupName $rgName
+    Assert-NotNull $vault
     Assert-AreEqual 0 $vault.AccessPolicies.Count
-    Assert-AreEqual $false $vault.EnabledForDeployment
+	if ($vault.EnabledForTemplateDeployment -ne $null)
+	{
+	    Assert-AreEqual $false $vault.EnabledForTemplateDeployment
+	}
+
+    # Set and Remove EnabledForTemplateDeployment
+    $vault = Set-AzureRmKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -EnabledForTemplateDeployment -PassThru
+    Assert-NotNull $vault
+    Assert-AreEqual 0 $vault.AccessPolicies.Count
+    Assert-AreEqual $true $vault.EnabledForTemplateDeployment
+
+    $vault = Remove-AzureRmKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -EnabledForTemplateDeployment -PassThru
+    Assert-NotNull $vault
+    Assert-AreEqual 0 $vault.AccessPolicies.Count
+    Assert-AreEqual $false $vault.EnabledForTemplateDeployment
+}
+
+function Test-ModifyAccessPolicyEnabledForDiskEncryption
+{
+    Param($existingVaultName, $rgName, $upn)
+    $vault = Get-AzureRmKeyVault -VaultName $existingVaultName -ResourceGroupName $rgName
+    Assert-NotNull $vault
+    Assert-AreEqual 0 $vault.AccessPolicies.Count
+	if ($vault.EnabledForDiskEncryption -ne $null)
+	{
+		Assert-AreEqual $false $vault.EnabledForDiskEncryption
+	}
+
+    # Set and Remove EnabledForDiskEncryption
+    $vault = Set-AzureRmKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -EnabledForDiskEncryption -PassThru
+    Assert-NotNull $vault
+    Assert-AreEqual 0 $vault.AccessPolicies.Count
+    Assert-AreEqual $true $vault.EnabledForDiskEncryption
+
+    $vault = Remove-AzureRmKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -EnabledForDiskEncryption -PassThru
+    Assert-NotNull $vault
+    Assert-AreEqual 0 $vault.AccessPolicies.Count
+    Assert-AreEqual $false $vault.EnabledForDiskEncryption
 }
 
 function Test-ModifyAccessPolicyNegativeCases

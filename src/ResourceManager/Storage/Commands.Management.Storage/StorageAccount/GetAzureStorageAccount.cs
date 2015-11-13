@@ -45,23 +45,23 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
             if (string.IsNullOrEmpty(this.ResourceGroupName))
             {
-                var listResponse = this.StorageClient.StorageAccounts.List();
+                var storageAccounts = this.StorageClient.StorageAccounts.List().StorageAccounts;
 
-                WriteStorageAccountList(listResponse.StorageAccounts);
+                WriteStorageAccountList(storageAccounts);
             }
             else if (string.IsNullOrEmpty(this.Name))
             {
-                var listResponse = this.StorageClient.StorageAccounts.ListByResourceGroup(this.ResourceGroupName);
+                var storageAccounts = this.StorageClient.StorageAccounts.ListByResourceGroup(this.ResourceGroupName).StorageAccounts;
 
-                WriteStorageAccountList(listResponse.StorageAccounts);
+                WriteStorageAccountList(storageAccounts);
             }
             else
             {
-                var getResponse = this.StorageClient.StorageAccounts.GetProperties(
+                var storageAccount = this.StorageClient.StorageAccounts.GetProperties(
                     this.ResourceGroupName,
-                    this.Name);
+                    this.Name).StorageAccount;
 
-                WriteStorageAccount(getResponse.StorageAccount);
+                WriteStorageAccount(storageAccount);
             }
         }
     }
