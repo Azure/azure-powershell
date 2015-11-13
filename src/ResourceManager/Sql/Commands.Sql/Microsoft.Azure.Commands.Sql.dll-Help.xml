@@ -1041,7 +1041,7 @@ TableIdentifier    : Server01Database01</maml:para>
 ResourceGroupName : resourcegroup01
 ServerName        : server01
 DataMaskingState  : Uninitialized
-PrivilegedLogins  :</maml:para>
+PrivilegedUsers  :</maml:para>
         </dev:remarks>
         <command:commandLines>
           <command:commandLine>
@@ -9586,6 +9586,34 @@ Tags                          :</maml:para>
             <maml:para>Specifies the name of the audit logs table. Specify this value if you specify a value greater than zero for the RetentionInDays parameter.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>	
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>ThreatDetectionState</maml:name>
+          <maml:description>
+            <maml:para>Defines if threat detection is enabled or disabled for this database.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>NotificationRecipientsEmail</maml:name>
+          <maml:description>
+            <maml:para>A semicolon separated list of email addresses to send the alerts to.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>EmailAdmins</maml:name>
+          <maml:description>
+            <maml:para>Defines whether to email service and co-administrators.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
+        </command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>ExcludedDetectionTypes</maml:name>
+          <maml:description>
+            <maml:para>A semicolon separated list of detection types to filter.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
           <maml:name>ServerName</maml:name>
@@ -9885,7 +9913,7 @@ Tags                          :</maml:para>
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Set-AzureRmSqlDatabaseDataMaskingPolicy cmdlet sets the data masking policy for an Azure SQL database. To use this cmdlet, use the ResourceGroupName, ServerName, and DatabaseName parameters to identify the database. You can set the DataMaskingState parameter to specify whether data masking operations are enabled or disabled. You can also set the PrivilegedLogins parameter to specify which users are allowed to see the unmasked data. If the cmdlet succeeds and the PassThru parameter is used, it returns an object describing the current data masking policy as well as the database identifiers. Database identifiers include, but are not limited to, ResourceGroupName, ServerName, and DatabaseName.</maml:para>
+      <maml:para>The Set-AzureRmSqlDatabaseDataMaskingPolicy cmdlet sets the data masking policy for an Azure SQL database. To use this cmdlet, use the ResourceGroupName, ServerName, and DatabaseName parameters to identify the database. You can set the DataMaskingState parameter to specify whether data masking operations are enabled or disabled. You can also set the PrivilegedUsers parameter to specify which users are allowed to see the unmasked data. If the cmdlet succeeds and the PassThru parameter is used, it returns an object describing the current data masking policy as well as the database identifiers. Database identifiers include, but are not limited to, ResourceGroupName, ServerName, and DatabaseName.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -9899,6 +9927,13 @@ Tags                          :</maml:para>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
           <maml:name>PrivilegedLogins</maml:name>
+          <maml:description>
+            <maml:para>The parameter PrivilegedLogins is being deprecated and will be removed in a future release. Use the PrivilegedUsers parameter to provide SQL users excluded from masking.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>PrivilegedUsers</maml:name>
           <maml:description>
             <maml:para>Specifies a semicolon separated list of privileged user ids that can view the masking data.</maml:para>
           </maml:description>
@@ -9950,8 +9985,20 @@ Tags                          :</maml:para>
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+		  <maml:name>PrivilegedLogins</maml:name>
+		  <maml:description>
+			<maml:para>The parameter PrivilegedLogins is being deprecated and will be removed in a future release. Use the PrivilegedUsers parameter to provide SQL users excluded from masking.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-        <maml:name>PrivilegedLogins</maml:name>
+        <maml:name>PrivilegedUsers</maml:name>
         <maml:description>
           <maml:para>Specifies a semicolon separated list of privileged user ids that can view the masking data.</maml:para>
         </maml:description>

@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             {
                 if (string.IsNullOrWhiteSpace(tag.Key))
                     continue;
-                var value = (tag.Value == null) ? string.Empty : (string)tag.Value;
+                var value = tag.Value ?? string.Empty;
 
                 yield return new KeyValuePair<string, string>(tag.Key, value);
             }
