@@ -144,5 +144,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineWithDifferentStorageResource");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineWithEmptyAuc()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineWithEmptyAuc");
+        }
+
     }
 }

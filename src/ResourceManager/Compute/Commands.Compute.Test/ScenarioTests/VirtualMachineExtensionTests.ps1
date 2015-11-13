@@ -296,13 +296,13 @@ function Test-VirtualMachineExtensionUsingHashTable
         Assert-AreEqual $vm1.HardwareProfile.VirtualMachineSize $vmsize;
 
         # Check Extensions in VM
-        Assert-AreEqual $vm1.Extensions.Count 1;
-        Assert-AreEqual $vm1.Extensions[0].Name $extname;
-        Assert-AreEqual $vm1.Extensions[0].Type 'Microsoft.Compute/virtualMachines/extensions';
-        Assert-AreEqual $vm1.Extensions[0].Publisher $publisher;
-        Assert-AreEqual $vm1.Extensions[0].ExtensionType $exttype;
-        Assert-AreEqual $vm1.Extensions[0].TypeHandlerVersion $extver;
-        Assert-NotNull $vm1.Extensions[0].Settings;
+        Assert-AreEqual $vm1.Extensions.Count 2;
+        Assert-AreEqual $vm1.Extensions[1].Name $extname;
+        Assert-AreEqual $vm1.Extensions[1].Type 'Microsoft.Compute/virtualMachines/extensions';
+        Assert-AreEqual $vm1.Extensions[1].Publisher $publisher;
+        Assert-AreEqual $vm1.Extensions[1].ExtensionType $exttype;
+        Assert-AreEqual $vm1.Extensions[1].TypeHandlerVersion $extver;
+        Assert-NotNull $vm1.Extensions[1].Settings;
 
         # Remove Extension
         Remove-AzureRmVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname -Force;
@@ -465,13 +465,13 @@ function Test-VirtualMachineCustomScriptExtension
         Assert-AreEqual $vm1.HardwareProfile.VirtualMachineSize $vmsize;
 
         # Check Extensions in VM
-        Assert-AreEqual $vm1.Extensions.Count 1;
-        Assert-AreEqual $vm1.Extensions[0].Name $extname;
-        Assert-AreEqual $vm1.Extensions[0].Type 'Microsoft.Compute/virtualMachines/extensions';
-        Assert-AreEqual $vm1.Extensions[0].Publisher $publisher;
-        Assert-AreEqual $vm1.Extensions[0].ExtensionType $exttype;
-        Assert-AreEqual $vm1.Extensions[0].TypeHandlerVersion $extver;
-        Assert-NotNull $vm1.Extensions[0].Settings;
+        Assert-AreEqual $vm1.Extensions.Count 2;
+        Assert-AreEqual $vm1.Extensions[1].Name $extname;
+        Assert-AreEqual $vm1.Extensions[1].Type 'Microsoft.Compute/virtualMachines/extensions';
+        Assert-AreEqual $vm1.Extensions[1].Publisher $publisher;
+        Assert-AreEqual $vm1.Extensions[1].ExtensionType $exttype;
+        Assert-AreEqual $vm1.Extensions[1].TypeHandlerVersion $extver;
+        Assert-NotNull $vm1.Extensions[1].Settings;
 
         # *** TODO: The removal call did not return. 12/12/2014
     }
@@ -626,13 +626,13 @@ function Test-VirtualMachineCustomScriptExtensionFileUri
         Assert-AreEqual $vm1.HardwareProfile.VirtualMachineSize $vmsize;
 
         # Check Extensions in VM
-        Assert-AreEqual $vm1.Extensions.Count 1;
-        Assert-AreEqual $vm1.Extensions[0].Name $extname;
-        Assert-AreEqual $vm1.Extensions[0].Type 'Microsoft.Compute/virtualMachines/extensions';
-        Assert-AreEqual $vm1.Extensions[0].Publisher $publisher;
-        Assert-AreEqual $vm1.Extensions[0].ExtensionType $exttype;
-        Assert-AreEqual $vm1.Extensions[0].TypeHandlerVersion $extver;
-        Assert-NotNull $vm1.Extensions[0].Settings;
+        Assert-AreEqual $vm1.Extensions.Count 2;
+        Assert-AreEqual $vm1.Extensions[1].Name $extname;
+        Assert-AreEqual $vm1.Extensions[1].Type 'Microsoft.Compute/virtualMachines/extensions';
+        Assert-AreEqual $vm1.Extensions[1].Publisher $publisher;
+        Assert-AreEqual $vm1.Extensions[1].ExtensionType $exttype;
+        Assert-AreEqual $vm1.Extensions[1].TypeHandlerVersion $extver;
+        Assert-NotNull $vm1.Extensions[1].Settings;
     }
     finally
     {
@@ -775,13 +775,13 @@ function Test-VirtualMachineAccessExtension
         Assert-AreEqual $vm1.HardwareProfile.VirtualMachineSize $vmsize;
 
         # Check Extensions in VM
-        Assert-AreEqual $vm1.Extensions.Count 1;
-        Assert-AreEqual $vm1.Extensions[0].Name $extname;
-        Assert-AreEqual $vm1.Extensions[0].Type 'Microsoft.Compute/virtualMachines/extensions';
-        Assert-AreEqual $vm1.Extensions[0].Publisher $publisher;
-        Assert-AreEqual $vm1.Extensions[0].ExtensionType $exttype;
-        Assert-AreEqual $vm1.Extensions[0].TypeHandlerVersion $extver;
-        Assert-NotNull $vm1.Extensions[0].Settings;
+        Assert-AreEqual $vm1.Extensions.Count 2;
+        Assert-AreEqual $vm1.Extensions[1].Name $extname;
+        Assert-AreEqual $vm1.Extensions[1].Type 'Microsoft.Compute/virtualMachines/extensions';
+        Assert-AreEqual $vm1.Extensions[1].Publisher $publisher;
+        Assert-AreEqual $vm1.Extensions[1].ExtensionType $exttype;
+        Assert-AreEqual $vm1.Extensions[1].TypeHandlerVersion $extver;
+        Assert-NotNull $vm1.Extensions[1].Settings;
 
         # *** TODO: The removal call did not return. 12/12/2014
     }

@@ -111,8 +111,9 @@ namespace Microsoft.Azure.Commands.Compute
                             AutoUpgradeMinorVersion = true
                         };
 
-                        ComputeClient.ComputeManagementClient.VirtualMachineExtensions.CreateOrUpdate(
+                        op = ComputeClient.ComputeManagementClient.VirtualMachineExtensions.CreateOrUpdate(
                             this.ResourceGroupName, this.VM.Name, extensionParameters);
+                        result = Mapper.Map<PSComputeLongRunningOperation>(op);
                     }
                 }
                 WriteObject(result);
@@ -207,15 +208,26 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 try
                 {
-                    var storageAccountResponse = storageClient.StorageAccounts.GetProperties(this.ResourceGroupName,
-                        storageAccountName);
-                    if (!storageAccountResponse.StorageAccount.AccountType.Equals(AccountType.PremiumLRS))
+                    var storageAccountList = storageClient.StorageAccounts.List();
+                    if (storageAccountList != null)
                     {
-                        return storageAccountResponse.StorageAccount.PrimaryEndpoints.Blob;
+                        var osDiskStorageAccount = storageAccountList.StorageAccounts.First(e => e.Name.Equals(storageAccountName));
+
+                        if (osDiskStorageAccount != null
+                            && osDiskStorageAccount.AccountType.HasValue
+                            && !osDiskStorageAccount.AccountType.Value.ToString().ToLowerInvariant().Contains("premium"))
+                        {
+                            return osDiskStorageAccount.PrimaryEndpoints.Blob;
+                        }
                     }
                 }
                 catch (Exception e)
                 {
+                    if (e.Message.Contains("Unable to find a matching HTTP request"))
+                    {
+                        throw;
+                    }
+
                     if (e.Message.Contains("ResourceNotFound"))
                     {
                         WriteWarning(string.Format(
@@ -265,7 +277,8 @@ namespace Microsoft.Azure.Commands.Compute
             try
             {
                 return storageAccountList.StorageAccounts.First(
-                e => e.AccountType.HasValue && !e.AccountType.Value.Equals(AccountType.PremiumLRS));
+                e => e.AccountType.HasValue
+                    && !e.AccountType.Value.ToString().ToLowerInvariant().Contains("premium"));
             }
             catch (InvalidOperationException e)
             {
