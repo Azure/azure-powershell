@@ -57,11 +57,11 @@
     <Reference Include="Microsoft.Azure.Management.Authorization">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.1.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.OperationalInsights">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.OperationalInsights.0.9.0-preview\lib\net40\Microsoft.Azure.Management.OperationalInsights.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Azure.Gallery">
       <HintPath>..\..\..\packages\Microsoft.Azure.Gallery.2.6.2-preview\lib\net40\Microsoft.Azure.Gallery.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Management.OperationalInsights">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.OperationalInsights.0.10.0-preview\lib\net40\Microsoft.Azure.Management.OperationalInsights.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -183,6 +183,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.OperationalInsights.Test.WorkspaceTests\TestWorkspaceCreateUpdateDelete.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.OperationalInsights.Test.WorkspaceTests\TestWorkspaceEnableDisableListIntelligencePacks.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
