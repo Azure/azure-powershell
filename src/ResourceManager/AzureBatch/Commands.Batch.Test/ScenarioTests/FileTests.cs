@@ -444,35 +444,4 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             TestUtilities.GetCurrentMethodName());
         }
     }
-
-    // Cmdlets that use the HTTP Recorder interceptor for use with scenario tests
-    [Cmdlet(VerbsCommon.Get, "AzureBatchNodeFile_ST", DefaultParameterSetName = ComputeNodeAndIdParameterSet)]
-    public class GetBatchNodeFileScenarioTestCommand : GetBatchNodeFileCommand
-    {
-        protected override void ProcessRecord()
-        {
-            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
-            base.ProcessRecord();
-        }
-    }
-
-    [Cmdlet(VerbsCommon.Get, "AzureBatchNodeFileContent_ST")]
-    public class GetBatchNodeFileContentScenarioTestCommand : GetBatchNodeFileContentCommand
-    {
-        protected override void ProcessRecord()
-        {
-            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
-            base.ProcessRecord();
-        }
-    }
-
-    [Cmdlet(VerbsCommon.Get, "AzureBatchRemoteDesktopProtocolFile_ST")]
-    public class GetBatchRemoteDesktopProtocolFileScenarioTestCommand : GetBatchRemoteDesktopProtocolFileCommand
-    {
-        protected override void ProcessRecord()
-        {
-            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
-            base.ProcessRecord();
-        }
-    }
 }

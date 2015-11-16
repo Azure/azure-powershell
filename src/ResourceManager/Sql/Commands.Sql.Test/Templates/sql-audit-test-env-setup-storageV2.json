@@ -1,0 +1,73 @@
+{
+    "$schema": "http://schemas.management.azure.com/deploymentTemplate?api-version=2014-04-01-preview",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "administratorLogin": {
+            "type": "string",
+            "defaultValue": "testlogin"
+
+        },
+        "administratorLoginPassword": {
+            "type": "securestring",
+            "defaultValue": "testp@ssMakingIt1007Longer"
+        },
+        "collation": {
+            "type": "string",
+            "defaultValue": "SQL_Latin1_General_CP1_CI_AS"
+        },
+        "databaseName": {
+            "type": "string"
+        },
+        "edition": {
+            "type": "string",
+            "defaultValue": "Basic"
+        },
+        "configuredServiceLevelObjectiveId": {
+            "type": "string",
+            "defaultValue": "910b4fcb-8a29-4c3e-958f-f7ba794388b2"
+        },
+        "serverName": {
+            "type": "string"
+        },
+        "storageName": {
+            "type": "string"
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "2014-04-01-preview",
+            "location": "[resourceGroup().location]",
+            "name": "[parameters('serverName')]",
+            "properties": {
+                "administratorLogin": "[parameters('administratorLogin')]",
+                "administratorLoginPassword": "[parameters('administratorLoginPassword')]"
+            },
+            "resources": [
+                {
+                    "apiVersion": "2014-04-01-preview",
+                    "dependsOn": [
+                        "[concat('Microsoft.Sql/servers/', parameters('serverName'))]"
+                    ],
+                    "location": "[resourceGroup().location]",
+                    "name": "[parameters('databaseName')]",
+                    "properties": {
+                        "collation": "[parameters('collation')]",
+                        "edition": "[parameters('edition')]",
+                        "maxSizeBytes": "1073741824"
+                    },
+                    "type": "databases"
+                }
+            ],
+            "type": "Microsoft.Sql/servers"
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[parameters('storageName')]",
+            "apiVersion": "2015-06-15",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "accountType": "Standard_GRS"
+            }
+        }
+    ]
+}

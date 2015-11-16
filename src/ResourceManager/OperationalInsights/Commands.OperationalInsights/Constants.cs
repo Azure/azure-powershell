@@ -27,5 +27,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         public const string WorkspaceUsage = "AzureRmOperationalInsightsWorkspaceUsage";
 
         public const string StorageInsight = "AzureRmOperationalInsightsStorageInsight";
+
+        public const string IntelligencePack = "AzureRmOperationalInsightsIntelligencePack";
+
+        public const string IntelligencePacks = "AzureRmOperationalInsightsIntelligencePacks";
     }
 }
