@@ -19,98 +19,98 @@ namespace Commands.Network.Test.ScenarioTests
 {
     public class LoadBalancerTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLoadBalancerCRUDPublic()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerCRUD-Public");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLoadBalancerCRUDInternalDynamic()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerCRUD-InternalDynamic");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLoadBalancerCRUDInternalStatic()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerCRUD-InternalStatic");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLoadBalancerCRUDPublicNoInboundNATRule()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerCRUD-PublicNoInboundNATRule");
         }
         
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLoadBalancerCRUDPublicPublicNoLbRule()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerCRUD-PublicNoLbRule");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLoadBalancerCRUDInternalUsingId()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerCRUD-InternalUsingId");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLoadBalancerCRUDPublicUsingId()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerCRUD-PublicUsingId");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLoadBalancerChildResource()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerChildResource");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLoadBalancerSet()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerSet");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateEmptyLoadBalancer()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-CreateEmptyLoadBalancer");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLoadBalancerNicAssociation()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancer-NicAssociation");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLoadBalancerNicAssociationDuringCreate()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancer-NicAssociationDuringCreate");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLoadBalancerInboundNatPoolConfigInternalLB()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerInboundNatPoolConfigCRUD-InternalLB");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLoadBalancerInboundNatPoolConfigCRUDPublicLB()
         {

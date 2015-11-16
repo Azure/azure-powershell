@@ -21,70 +21,70 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 {
     public class StorageAccountTests : RMTestBase
     {
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStorageAccount()
         {
             TestController.NewInstance.RunPsTest("Test-StorageAccount");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAzureStorageAccount()
         {
             TestController.NewInstance.RunPsTest("Test-NewAzureStorageAccount");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureStorageAccount()
         {
             TestController.NewInstance.RunPsTest("Test-GetAzureStorageAccount");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAzureStorageAccount()
         {
             TestController.NewInstance.RunPsTest("Test-SetAzureStorageAccount");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAzureStorageAccount()
         {
             TestController.NewInstance.RunPsTest("Test-RemoveAzureStorageAccount");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureStorageAccountKey()
         {
             TestController.NewInstance.RunPsTest("Test-GetAzureStorageAccountKey");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAzureStorageAccountKey()
         {
             TestController.NewInstance.RunPsTest("Test-NewAzureStorageAccountKey");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPipingGetAccountToGetKey()
         {
             TestController.NewInstance.RunPsTest("Test-PipingGetAccountToGetKey");
         }
  
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPipingSetStorageAccount()
         {
             TestController.NewInstance.RunPsTest("Test-PipingToSetAzureRmCurrentStorageAccount");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetCurrentStorageAccount()
         {

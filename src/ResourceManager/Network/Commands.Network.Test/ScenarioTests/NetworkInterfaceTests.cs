@@ -19,49 +19,49 @@ namespace Commands.Network.Test.ScenarioTests
 {
     public class NetworkInterfaceTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNetworkInterfaceCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceCRUD");
         }
         
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNetworkInterfaceCRUDUsingId()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceCRUDUsingId");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNetworkInterfaceCRUDStaticAllocation()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceCRUDStaticAllocation");
         }
         
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNetworkInterfaceNoPublicIpAddress()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceNoPublicIpAddress");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNetworkInterfaceSet()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceSet");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNetworkInterfaceIDns()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceIDns");
         }
         
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNetworkInterfaceEnableIPForwarding()
         {

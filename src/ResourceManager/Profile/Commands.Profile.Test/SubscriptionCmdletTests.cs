@@ -20,28 +20,28 @@ namespace Microsoft.Azure.Commands.Profile.Test
 {
     public class SubscriptionCmdletTests
     {
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AllParameterSetsSucceed()
         {
             ProfileController.NewInstance.RunPsTest("72f988bf-86f1-41af-91ab-2d7cd011db47", "Test-GetSubscriptionsEndToEnd");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureRmContextWorks()
         {
             ProfileController.NewInstance.RunPsTest("72f988bf-86f1-41af-91ab-2d7cd011db47", "Test-SetAzureRmContextEndToEnd");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void PipingWithRmContextWorks()
         {
             ProfileController.NewInstance.RunPsTest("72f988bf-86f1-41af-91ab-2d7cd011db47", "Test-PipingWithContext");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureRmContextWithoutSubscription()
         {
