@@ -14,7 +14,6 @@
 
 using System;
 using Microsoft.Azure.KeyVault.WebKey;
-using Microsoft.Azure.KeyVault;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
@@ -24,7 +23,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public KeyBundle()
         { }
 
-        internal KeyBundle(Microsoft.Azure.KeyVault.KeyBundle keyBundle, VaultUriHelper vaultUriHelper)
+        internal KeyBundle(Azure.KeyVault.KeyBundle keyBundle, VaultUriHelper vaultUriHelper)
         {
             if (keyBundle == null)
                 throw new ArgumentNullException("keyBundle");

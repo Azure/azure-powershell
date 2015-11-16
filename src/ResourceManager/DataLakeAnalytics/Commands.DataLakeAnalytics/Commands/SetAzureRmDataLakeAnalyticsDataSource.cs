@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             }
             else
             {
-                WriteWarning(Resources.InvalidDataLakeAccountModificationAttempt);
+                WriteWarning(Resources.InvalidDataLakeStoreAccountModificationAttempt);
             }
         }
     }
