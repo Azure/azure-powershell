@@ -19,28 +19,28 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public class VirtualMachineNetworkInterfaceTests
     {
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineSingleNetworkInterface()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-SingleNetworkInterface");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineMultipleNetworkInterface()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-MultipleNetworkInterface");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSingleNetworkInterfaceDnsSettings()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-SingleNetworkInterfaceDnsSettings");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddNetworkInterface()
         {

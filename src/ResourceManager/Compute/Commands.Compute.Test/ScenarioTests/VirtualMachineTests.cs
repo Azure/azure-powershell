@@ -19,112 +19,112 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public partial class VirtualMachineTests
     {
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachine()
         {
             ComputeTestController.NewInstance.RunPsTest(@"Test-VirtualMachine $null");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachinePiping()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachinePiping");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLinuxVirtualMachine()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-LinuxVirtualMachine");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineWithVMAgentAutoUpdate()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineWithVMAgentAutoUpdate");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineImageList()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineImageList");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineList()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineList");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineSizeAndUsage()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineSizeAndUsage");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineCapture()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineCapture");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineDataDisk()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineDataDisk");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineDataDiskNegative()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineDataDiskNegative");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachinePIRv2()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachinePIRv2");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachinePlan()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachinePlan");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachinePlan2()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachinePlan2");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineTags()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineTags");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVMImageCmdletOutputFormat()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VMImageCmdletOutputFormat");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetVMSizeFromAllLocations()
         {
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineListWithPaging");
         }
         
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineWithDifferentStorageResource()
         {

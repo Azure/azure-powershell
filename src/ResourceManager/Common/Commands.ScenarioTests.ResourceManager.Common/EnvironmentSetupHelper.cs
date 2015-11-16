@@ -41,7 +41,14 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         private AzureAccount testAccount;
 
-        private AzureRMProfile _testProfile;
+        /// <summary>
+        /// The profile to use during the test
+        /// </summary>
+        public AzureRMProfile TestProfile
+        {
+            get; set;
+        }
+
         private IDataStore _dataStore;
 
         private const string PackageDirectoryFromCommon = @"..\..\..\..\Package\Debug";
@@ -51,10 +58,10 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         public EnvironmentSetupHelper()
         {
-            _testProfile = new AzureRMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
-            _testProfile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
-            _testProfile.Context = new AzureContext(new AzureSubscription(), new AzureAccount(), _testProfile.Environments["foo"], new AzureTenant());
-            _testProfile.Context.Subscription.Environment = "foo";
+            TestProfile = new AzureRMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+            TestProfile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
+            TestProfile.Context = new AzureContext(new AzureSubscription(), new AzureAccount(), TestProfile.Environments["foo"], new AzureTenant());
+            TestProfile.Context.Subscription.Environment = "foo";
             // Ignore SSL errors
             System.Net.ServicePointManager.ServerCertificateValidationCallback += (se, cert, chain, sslerror) => true;
             // Set RunningMocked
@@ -157,9 +164,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             environment.Endpoints[AzureEnvironment.Endpoint.ServiceManagement] = currentEnvironment.BaseUri.AbsoluteUri;
             environment.Endpoints[AzureEnvironment.Endpoint.ResourceManager] = currentEnvironment.Endpoints.ResourceManagementUri.AbsoluteUri;
 
-            if (!_testProfile.Environments.ContainsKey(testEnvironmentName))
+            if (!TestProfile.Environments.ContainsKey(testEnvironmentName))
             {
-                _testProfile.Environments[testEnvironmentName] = environment;
+                TestProfile.Environments[testEnvironmentName] = environment;
             }
 
             if (currentEnvironment.SubscriptionId != null)
@@ -209,7 +216,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                     }
                 }
 
-                _testProfile.Context = new AzureContext(testSubscription, testAccount, environment, testTenant);
+                TestProfile.Context = new AzureContext(testSubscription, testAccount, environment, testTenant);
             }
         }
 
@@ -271,7 +278,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         public virtual Collection<PSObject> RunPowerShellTest(params string[] scripts)
         {
             var sessionState = InitialSessionState.CreateDefault();
-            sessionState.Variables.Add(new SessionStateVariableEntry(AzurePowerShell.ProfileVariable, (PSAzureProfile)_testProfile, AzurePowerShell.ProfileVariable));
+            sessionState.Variables.Add(new SessionStateVariableEntry(AzurePowerShell.ProfileVariable, (PSAzureProfile)TestProfile, AzurePowerShell.ProfileVariable));
             if (_dataStore is MemoryDataStore)
             {
                 sessionState.Variables.Add(new SessionStateVariableEntry(AzurePowerShell.DataStoreVariable, _dataStore, AzurePowerShell.DataStoreVariable));

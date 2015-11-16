@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
     public class ActiveDirectoryTests : RMTestBase
     {
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAllADGroups()
         {
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 TestUtilities.GetCurrentMethodName());
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADGroupWithSearchString()
         {
@@ -75,14 +75,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 TestUtilities.GetCurrentMethodName());
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADGroupWithBadSearchString()
         {
             ResourcesController.NewInstance.RunPsTest("Test-GetADGroupWithBadSearchString");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADGroupWithObjectId()
         {
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 TestUtilities.GetCurrentMethodName());
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADGroupSecurityEnabled()
         {
@@ -134,14 +134,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 TestUtilities.GetCurrentMethodName());
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADGroupWithBadObjectId()
         {
             ResourcesController.NewInstance.RunPsTest("Test-GetADGroupWithBadObjectId");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADGroupWithUserObjectId()
         {
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 TestUtilities.GetCurrentMethodName());
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADGroupMemberWithGroupObjectId()
         {
@@ -205,14 +205,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 TestUtilities.GetCurrentMethodName());
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADGroupMemberWithBadGroupObjectId()
         {
             ResourcesController.NewInstance.RunPsTest("Test-GetADGroupMemberWithBadGroupObjectId");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADGroupMemberWithUserObjectId()
         {
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 TestUtilities.GetCurrentMethodName());
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADGroupMemberFromEmptyGroup()
         {
@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 TestUtilities.GetCurrentMethodName());
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADServicePrincipalWithObjectId()
         {
@@ -293,14 +293,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 TestUtilities.GetCurrentMethodName());
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADServicePrincipalWithBadObjectId()
         {
             ResourcesController.NewInstance.RunPsTest("Test-GetADServicePrincipalWithBadObjectId");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADServicePrincipalWithUserObjectId()
         {
@@ -326,7 +326,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 TestUtilities.GetCurrentMethodName());
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADServicePrincipalWithSPN()
         {
@@ -355,14 +355,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 TestUtilities.GetCurrentMethodName());
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADServicePrincipalWithBadSPN()
         {
             ResourcesController.NewInstance.RunPsTest("Test-GetADServicePrincipalWithBadSPN");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADServicePrincipalWithSearchString()
         {
@@ -391,14 +391,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 TestUtilities.GetCurrentMethodName());
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADServicePrincipalWithBadSearchString()
         {
             ResourcesController.NewInstance.RunPsTest("Test-GetADServicePrincipalWithBadSearchString");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAllADUser()
         {
@@ -424,7 +424,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 TestUtilities.GetCurrentMethodName());
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADUserWithObjectId()
         {
@@ -450,7 +450,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 TestUtilities.GetCurrentMethodName());
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADUserWithMail()
         {
@@ -476,14 +476,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 TestUtilities.GetCurrentMethodName());
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADUserWithBadObjectId()
         {
             ResourcesController.NewInstance.RunPsTest("Test-GetADUserWithBadObjectId");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADUserWithGroupObjectId()
         {
@@ -509,7 +509,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 TestUtilities.GetCurrentMethodName());
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADUserWithUPN()
         {
@@ -541,14 +541,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest("Test-GetADUserWithFPOUPN");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADUserWithBadUPN()
         {
             ResourcesController.NewInstance.RunPsTest("Test-GetADUserWithBadUPN");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADUserWithSearchString()
         {
@@ -574,21 +574,21 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 TestUtilities.GetCurrentMethodName());
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADUserWithBadSearchString()
         {
             ResourcesController.NewInstance.RunPsTest("Test-GetADUserWithBadSearchString");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewADApplication()
         {
             ResourcesController.NewInstance.RunPsTest("Test-NewADApplication");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewADServicePrincipal()
         {

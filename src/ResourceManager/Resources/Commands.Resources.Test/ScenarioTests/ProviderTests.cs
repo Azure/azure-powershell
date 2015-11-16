@@ -19,14 +19,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
     public class ProviderTests
     {
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureProvider()
         {
             ResourcesController.NewInstance.RunPsTest("Test-AzureProvider");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureProviderOperation()
         {
