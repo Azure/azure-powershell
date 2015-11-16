@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Intune
                 this.Name,
                 () =>
                 {
-                    this.IntuneClient.Android.AddGroupForPolicy(this.AsuHostName, this.Name, this.GroupName, PrepareMAMPolicyAppIdGroupIdPayload());
+                    this.IntuneClient.Android.AddGroupForMAMPolicy(this.AsuHostName, this.Name, this.GroupName, PrepareMAMPolicyAppIdGroupIdPayload());
                     this.WriteObject("Operation completed successfully");
                 });
         }

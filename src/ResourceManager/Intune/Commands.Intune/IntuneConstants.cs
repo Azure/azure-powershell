@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Commands.Intune
         public static int DefaultPinRetries = 15;
         public static int DefaultRecheckAccessOfflineGraceperiodMinutes = 720;
         public static int DefaultRecheckAccessTimeoutMinutes = 30;
-        public static int DefaultOfflineWipeIntervalDays = 1;
-        public static int BatchSize = 10;
+        public static int DefaultOfflineWipeIntervalDays = 1;        
 
         public static string AppUriFormat = "https://{0}/providers/Microsoft.Intune/locations/{1}/apps/{2}";
         public static string GroupUriFormat = "https://{0}/providers/Microsoft.Intune/locations/{1}/groups/{2}";
