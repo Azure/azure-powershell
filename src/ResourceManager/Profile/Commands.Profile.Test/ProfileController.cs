@@ -81,8 +81,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 SetupManagementClients();
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                var oldFactory = AzureSession.AuthenticationFactory as MockTokenAuthenticationFactory;
-                AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory(oldFactory.Token.UserId, oldFactory.Token.AccessToken, tenant);
 
                 var callingClassName = callingClassType
                     .Split(new[] {"."}, StringSplitOptions.RemoveEmptyEntries)
@@ -115,9 +113,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         private void SetupManagementClients()
         {
-            SubscriptionClient = GetSubscriptionClient();
-
-            helper.SetupManagementClients(SubscriptionClient);
         }
 
 

@@ -33,13 +33,14 @@ namespace Microsoft.Azure.Commands.Profile.Test
     {
         private MemoryDataStore dataStore;
         private MockCommandRuntime commandRuntimeMock;
+        private AzureRMProfile _profile;
 
         public TenantCmdletTests()
         {
             dataStore = new MemoryDataStore();
             AzureSession.DataStore = dataStore;
             commandRuntimeMock = new MockCommandRuntime();
-            AzureRmProfileProvider.Instance.Profile = new AzureRMProfile();
+            _profile = new AzureRMProfile();
         }
 
         [Fact]
@@ -50,6 +51,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.TenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47";
+            cmdlt.DefaultProfile = _profile;
 
             // Act
             Login("2c224e7e-3ef5-431d-a57b-e71f4662e3a6", null);
@@ -70,6 +72,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.TenantId = "microsoft.com";
+            cmdlt.DefaultProfile = _profile;
 
             // Act
             Login("2c224e7e-3ef5-431d-a57b-e71f4662e3a6", null);
@@ -89,6 +92,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var cmdlt = new GetAzureRMTenantCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
+            cmdlt.DefaultProfile = _profile;
 
             // Act
             Login("2c224e7e-3ef5-431d-a57b-e71f4662e3a6", null);
@@ -108,13 +112,14 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.SubscriptionId = subscriptionId;
             cmdlt.TenantId = tenantId;
+            cmdlt.DefaultProfile = _profile;
 
             // Act
             cmdlt.InvokeBeginProcessing();
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
-            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context);
+            Assert.NotNull(_profile.Context);
         }
     }
 }

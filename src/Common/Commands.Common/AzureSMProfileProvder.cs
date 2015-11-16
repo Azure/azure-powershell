@@ -36,41 +36,39 @@ namespace Microsoft.WindowsAzure.Commands.Common
         }
 
         public static AzureSMProfileProvider Instance { get; private set; }
-        public AzureSMProfile Profile
-        {
-            get
-            {
-                var returnValue = _profile;
-                if (_profile == null)
-                {
-                    if (_defaultProfile == null)
-                    {
-                        _defaultProfile = InitializeDefaultProfile();
-                        SetProfileValue(null);
-                    }
 
-                    returnValue = _defaultProfile;
+        public AzureSMProfile GetProfile(IDataStore dataStore)
+        {
+            var returnValue = _profile;
+            if (_profile == null)
+            {
+                if (_defaultProfile == null)
+                {
+                    _defaultProfile = InitializeDefaultProfile(dataStore);
+                    SetProfileValue(null);
                 }
 
-                return returnValue;
+                returnValue = _defaultProfile;
             }
-            set { SetProfileValue(value); }
+
+            return returnValue;
         }
 
         /// <summary>
         /// Create the default profile, based on the default profile path
         /// </summary>
+        /// <param name="dataStore"></param>
         /// <returns>The default profile, serialized from the default location on disk</returns>
-        private AzureSMProfile InitializeDefaultProfile()
+        private AzureSMProfile InitializeDefaultProfile(IDataStore dataStore)
         {
-            if (!string.IsNullOrEmpty(AzureSession.ProfileDirectory) && !string.IsNullOrEmpty(AzureSession.ProfileFile))
+            if (!string.IsNullOrEmpty(AzurePowerShell.ProfileDirectory) && !string.IsNullOrEmpty(AzurePowerShell.ProfileFile))
             {
                 try
                 {
-                    GeneralUtilities.EnsureDefaultProfileDirectoryExists();
-                    _defaultDiskTokenCache = new ProtectedFileTokenCache(Path.Combine(AzureSession.ProfileDirectory,
-                        AzureSession.TokenCacheFile));
-                    return new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+                    GeneralUtilities.EnsureDefaultProfileDirectoryExists(dataStore);
+                    _defaultDiskTokenCache = new ProtectedFileTokenCache(Path.Combine(AzurePowerShell.ProfileDirectory,
+                        AzurePowerShell.TokenCacheFile));
+                    return new AzureSMProfile(Path.Combine(AzurePowerShell.ProfileDirectory, AzurePowerShell.ProfileFile));
                 }
                 catch
                 {
@@ -85,25 +83,11 @@ namespace Microsoft.WindowsAzure.Commands.Common
         private void SetProfileValue(AzureSMProfile profile)
         {
             _profile = profile;
-            SetTokenCacheForProfile(profile);
         }
 
         public void ResetDefaultProfile()
         {
             SetProfileValue(null);
-        }
-
-        public void SetTokenCacheForProfile(AzureSMProfile profile)
-        {
-            var defaultProfilePath = Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile);
-            if (_profile == null || string.Equals(profile.ProfilePath, defaultProfilePath, StringComparison.OrdinalIgnoreCase))
-            {
-                AzureSession.TokenCache = _defaultDiskTokenCache;
-            }
-            else
-            {
-                AzureSession.TokenCache = TokenCache.DefaultShared;
-            }
         }
     }
 }

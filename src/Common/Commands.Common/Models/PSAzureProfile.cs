@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
-namespace Microsoft.Azure.Commands.Profile.Models
+namespace Microsoft.Azure.Commands.Models
 {
     /// <summary>
     /// Credential and environment data for connecting with an Azure instance in the current session.

@@ -33,13 +33,14 @@ namespace Microsoft.Azure.Commands.Profile.Test
     {
         private MemoryDataStore dataStore;
         private MockCommandRuntime commandRuntimeMock;
+        private AzureRMProfile _profile;
 
         public LoginCmdletTests()
         {
             dataStore = new MemoryDataStore();
             AzureSession.DataStore = dataStore;
             commandRuntimeMock = new MockCommandRuntime();
-            AzureRmProfileProvider.Instance.Profile = new AzureRMProfile();
+            _profile = new AzureRMProfile();
         }
 
         [Fact]
@@ -51,14 +52,15 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.SubscriptionId = "2c224e7e-3ef5-431d-a57b-e71f4662e3a6";
             cmdlt.TenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47";
+            cmdlt.DefaultProfile = _profile;
 
             // Act
             cmdlt.InvokeBeginProcessing();
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
-            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context);
-            Assert.Equal("microsoft.com", AzureRmProfileProvider.Instance.Profile.Context.Tenant.Domain);
+            Assert.NotNull(_profile.Context);
+            Assert.Equal("microsoft.com", _profile.Context.Tenant.Domain);
         }
 
         [Fact]
@@ -70,6 +72,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.SubscriptionId = "2c224e7e-3ef5-431d-a57b-e71f4662e3a5";
             cmdlt.TenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47";
+            cmdlt.DefaultProfile = _profile;
 
             // Act
             cmdlt.InvokeBeginProcessing();
@@ -85,14 +88,15 @@ namespace Microsoft.Azure.Commands.Profile.Test
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.SubscriptionId = "2c224e7e-3ef5-431d-a57b-e71f4662e3a6";
+            cmdlt.DefaultProfile = _profile;
 
             // Act
             cmdlt.InvokeBeginProcessing();
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
-            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context);
-            Assert.Equal("microsoft.com", AzureRmProfileProvider.Instance.Profile.Context.Tenant.Domain);
+            Assert.NotNull(_profile.Context);
+            Assert.Equal("microsoft.com", _profile.Context.Tenant.Domain);
         }
 
         [Fact]
@@ -102,14 +106,15 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var cmdlt = new AddAzureRMAccountCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
+            cmdlt.DefaultProfile = _profile;
 
             // Act
             cmdlt.InvokeBeginProcessing();
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
-            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context);
-            Assert.Equal("microsoft.com", AzureRmProfileProvider.Instance.Profile.Context.Tenant.Domain);
+            Assert.NotNull(_profile.Context);
+            Assert.Equal("microsoft.com", _profile.Context.Tenant.Domain);
         }
 
         [Fact]
@@ -120,14 +125,15 @@ namespace Microsoft.Azure.Commands.Profile.Test
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.TenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47";
+            cmdlt.DefaultProfile = _profile;
 
             // Act
             cmdlt.InvokeBeginProcessing();
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
-            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context);
-            Assert.Equal("microsoft.com", AzureRmProfileProvider.Instance.Profile.Context.Tenant.Domain);
+            Assert.NotNull(_profile.Context);
+            Assert.Equal("microsoft.com", _profile.Context.Tenant.Domain);
         }
 
         [Fact]
@@ -139,14 +145,15 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.TenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47";
             cmdlt.SubscriptionName = "Node CLI Test";
+            cmdlt.DefaultProfile = _profile;
 
             // Act
             cmdlt.InvokeBeginProcessing();
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
-            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context);
-            Assert.Equal("microsoft.com", AzureRmProfileProvider.Instance.Profile.Context.Tenant.Domain);
+            Assert.NotNull(_profile.Context);
+            Assert.Equal("microsoft.com", _profile.Context.Tenant.Domain);
         }
 
         [Fact]
@@ -159,6 +166,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.TenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47";
             cmdlt.SubscriptionName = "Node CLI Test";
             cmdlt.SubscriptionId = "2c224e7e-3ef5-431d-a57b-e71f4662e3a6";
+            cmdlt.DefaultProfile = _profile;
 
             // Act
             cmdlt.InvokeBeginProcessing();
@@ -175,16 +183,17 @@ namespace Microsoft.Azure.Commands.Profile.Test
             // NOTE: Use owner1@rbactest.onmicrosoft.com credentials for this test case
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.TenantId = "1449d5b7-8a83-47db-ae4c-9b03e888bad0";
+            cmdlt.DefaultProfile = _profile;
 
             // Act
             cmdlt.InvokeBeginProcessing();
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
-            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context);
-            Assert.Equal("rbactest.onmicrosoft.com", AzureRmProfileProvider.Instance.Profile.Context.Tenant.Domain);
-            Assert.Equal(cmdlt.TenantId, AzureRmProfileProvider.Instance.Profile.Context.Tenant.Id.ToString());
-            Assert.Null(AzureRmProfileProvider.Instance.Profile.Context.Subscription);
+            Assert.NotNull(_profile.Context);
+            Assert.Equal("rbactest.onmicrosoft.com", _profile.Context.Tenant.Domain);
+            Assert.Equal(cmdlt.TenantId, _profile.Context.Tenant.Id.ToString());
+            Assert.Null(_profile.Context.Subscription);
         }
 
         [Fact]
@@ -199,19 +208,20 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.TenantId = "1449d5b7-8a83-47db-ae4c-9b03e888bad0";
             cmdlt.ApplicationId = "20c58db7-4501-44e8-8e76-6febdb400c6b";
             cmdlt.CertificateThumbprint = "F064B7C7EACC942D10662A5115E047E94FA18498";
+            cmdlt.DefaultProfile = _profile;
 
             // Act
             cmdlt.InvokeBeginProcessing();
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
-            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context);
-            Assert.Equal(cmdlt.TenantId, AzureRmProfileProvider.Instance.Profile.Context.Tenant.Id.ToString());
-            Assert.Equal(cmdlt.ApplicationId, AzureRmProfileProvider.Instance.Profile.Context.Account.Id.ToString());
-            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context.Subscription);
+            Assert.NotNull(_profile.Context);
+            Assert.Equal(cmdlt.TenantId, _profile.Context.Tenant.Id.ToString());
+            Assert.Equal(cmdlt.ApplicationId, _profile.Context.Account.Id.ToString());
+            Assert.NotNull(_profile.Context.Subscription);
             Assert.Equal(
                 cmdlt.CertificateThumbprint,
-                AzureRmProfileProvider.Instance.Profile.Context.Account.GetProperty(AzureAccount.Property.CertificateThumbprint));
+                _profile.Context.Account.GetProperty(AzureAccount.Property.CertificateThumbprint));
             
         }
     }

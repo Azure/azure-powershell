@@ -29,9 +29,9 @@ namespace Microsoft.Azure.Commands.Network
 
         public Action<string> WarningLogger { get; set; }
 
-        public NetworkClient(AzureContext context)
+        public NetworkClient(IClientFactory clientFactory, AzureContext context)
             : this(
-                AzureSession.ClientFactory.CreateClient<NetworkResourceProviderClient>(context, AzureEnvironment.Endpoint.ResourceManager))
+                clientFactory.CreateClient<NetworkResourceProviderClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
 
         }

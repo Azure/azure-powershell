@@ -19,6 +19,7 @@ using Xunit;
 using System;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.Models;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -34,22 +35,25 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var tenantId = Guid.NewGuid();
             var subscriptionId = Guid.NewGuid();
             var domain = "Contoso.com";
+            var subscription = new AzureSubscription
+            {
+                Id = subscriptionId,
+                Name = "Test Subscription 1"
+            };
+            subscription.SetProperty(AzureSubscription.Property.StorageAccount, storageAccount);
+            subscription.SetProperty(AzureSubscription.Property.Tenants, tenantId.ToString());
             var context = new PSAzureContext()
             {
                 Account = new PSAzureRmAccount
                 {
                     Id = "user@contoso.com",
-                    AccountType = "User"
+                    AccountType = "AccessToken",
+                    AccessToken = Guid.NewGuid().ToString()
                 },
                 Environment = (PSAzureEnvironment)AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud],
                 Subscription = 
-                new PSAzureSubscription {
-                    CurrentStorageAccount = storageAccount,
-                    CurrentStorageAccountName= PSAzureSubscription.GetAccountName(storageAccount),
-                    SubscriptionId = subscriptionId.ToString(),
-                    SubscriptionName = "Test Subscription 1",
-                    TenantId = tenantId.ToString()
-                },
+                (PSAzureSubscription)subscription,
+
                 Tenant = new PSAzureTenant
                 {
                     Domain=domain,
@@ -62,7 +66,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
         public static AzureSMProfile CreateAzureSMProfile(string storageAccount)
         {
             var profile = new AzureSMProfile();
-            var client = new ProfileClient(profile);
             var tenantId = Guid.NewGuid();
             var subscriptionId = Guid.NewGuid();
             var account = new AzureAccount
@@ -81,45 +84,16 @@ namespace Microsoft.Azure.Commands.Profile.Test
             };
             subscription.SetProperty(AzureSubscription.Property.Tenants, tenantId.ToString());
             subscription.SetProperty(AzureSubscription.Property.StorageAccount, storageAccount);
-            client.AddOrSetAccount(account);
-            client.AddOrSetSubscription(subscription);
-            client.SetSubscriptionAsDefault(subscriptionId, account.Id);
+            profile.Accounts[account.Id ] = account;
+            profile.Subscriptions[subscription.Id] = subscription;
+            subscription.SetProperty(AzureSubscription.Property.Default, "true");
             return profile;
         }
 
-        public static void RunDataProfileTest(AzureRMProfile rmProfile, AzureSMProfile smProfile, Action testAction)
+        public static void RunDataProfileTest(AzureRMProfile rmProfile, AzureSMProfile smProfile, Action<AzureRMProfile, AzureSMProfile> testAction)
         {
-            var savedRmProfile = AzureRmProfileProvider.Instance.Profile;
-            var savedSmProfile = AzureSMProfileProvider.Instance.Profile;
-            try
-            {
-                AzureRmProfileProvider.Instance.Profile = rmProfile;
-                AzureSMProfileProvider.Instance.Profile = smProfile;
-                testAction();
-            }
-            finally
-            {
-                AzureRmProfileProvider.Instance.Profile = savedRmProfile;
-                AzureSMProfileProvider.Instance.Profile = savedSmProfile;
-            }
+                testAction(rmProfile, smProfile);
        }
-        [Theory,
-        InlineData(null, null),
-        InlineData("", null),
-        InlineData("AccountName=myAccount", "AccountName=myAccount")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-       public void CanClearStorageAccountForSMProfile(string connectionString, string expected)
-        {
-            RunDataProfileTest(
-                CreateAzureRMProfile(null),
-                CreateAzureSMProfile(connectionString),
-                () =>
-                {
-                    Assert.Equal(expected, AzureSMProfileProvider.Instance.Profile.Context.GetCurrentStorageAccountName());
-                    GeneralUtilities.ClearCurrentStorageAccount(true);
-                    Assert.True(string.IsNullOrEmpty(AzureSMProfileProvider.Instance.Profile.Context.GetCurrentStorageAccountName()));
-                });
-        }
 
         [Theory,
         InlineData(null, null),
@@ -131,11 +105,11 @@ namespace Microsoft.Azure.Commands.Profile.Test
             RunDataProfileTest(
                 CreateAzureRMProfile(connectionString),
                 CreateAzureSMProfile(null),
-                () =>
+                (rm, sm) =>
                 {
-                    Assert.Equal(expected, AzureRmProfileProvider.Instance.Profile.Context.GetCurrentStorageAccountName());
-                    GeneralUtilities.ClearCurrentStorageAccount();
-                    Assert.True(string.IsNullOrEmpty(AzureRmProfileProvider.Instance.Profile.Context.GetCurrentStorageAccountName()));
+                    Assert.Equal(expected, rm.Context.GetCurrentStorageAccountName());
+                    GeneralUtilities.ClearCurrentStorageAccount(new MemoryDataStore(), rm );
+                    Assert.True(string.IsNullOrEmpty(rm.Context.GetCurrentStorageAccountName()));
                 });
         }
 
@@ -148,10 +122,9 @@ namespace Microsoft.Azure.Commands.Profile.Test
            RunDataProfileTest(
                 rmProfile, 
                 new AzureSMProfile(), 
-                () =>
+                (rm, sm) =>
                 {
-                    GeneralUtilities.ClearCurrentStorageAccount(true);
-                    Assert.True(string.IsNullOrEmpty(AzureSMProfileProvider.Instance.Profile.Context.GetCurrentStorageAccountName()));
+                    GeneralUtilities.ClearCurrentStorageAccount(new MemoryDataStore(), rm);
                 });
         }
 }

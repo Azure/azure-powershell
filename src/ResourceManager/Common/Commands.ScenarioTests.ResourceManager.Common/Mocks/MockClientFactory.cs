@@ -75,18 +75,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             }
 
             SubscriptionCloudCredentials creds = new TokenCloudCredentials(subscription.Id.ToString(), "fake_token");
-            if (HttpMockServer.GetCurrentMode() != HttpRecorderMode.Playback)
-            {
-                ProfileClient profileClient = new ProfileClient(profile);
-                AzureContext context = new AzureContext(
-                    subscription,
-                    profileClient.GetAccount(subscription.Account),
-                    profileClient.GetEnvironmentOrDefault(subscription.Environment)
-                );
-
-                creds = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(context);
-            }
-
             Uri endpointUri = profile.Environments[subscription.Environment].GetEndpointAsUri(endpoint);
             return CreateCustomClient<TClient>(creds, endpointUri);
         }

@@ -15,6 +15,7 @@
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Linq;
+using Microsoft.Azure.Commands.Models;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -56,7 +57,7 @@ namespace Microsoft.Azure.Commands.Profile
         {
             if (ParameterSetName == ContextParameterSet)
             {
-                AzureRmProfileProvider.Instance.Profile.SetContextWithCache(new AzureContext(Context.Subscription, Context.Account,
+                DefaultProfile.SetContextWithCache(new AzureContext(Context.Subscription, Context.Account,
                     Context.Environment, Context.Tenant));
             }
             else if (ParameterSetName == SubscriptionNameParameterSet || ParameterSetName == SubscriptionIdParameterSet)
@@ -68,7 +69,7 @@ namespace Microsoft.Azure.Commands.Profile
                     throw new PSInvalidOperationException(Resources.SetAzureRmContextNoParameterSet);
                 }
 
-                var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
+                var profileClient = new RMProfileClient(AuthenticationFactory, ClientFactory, DefaultProfile);
                 if (!string.IsNullOrWhiteSpace(SubscriptionId) || !string.IsNullOrWhiteSpace(SubscriptionName))
                 {
                     profileClient.SetCurrentContext(SubscriptionId, SubscriptionName, TenantId);
@@ -78,7 +79,7 @@ namespace Microsoft.Azure.Commands.Profile
                     profileClient.SetCurrentContext(TenantId);
                 }
             }
-            WriteObject((PSAzureContext)AzureRmProfileProvider.Instance.Profile.Context);
+            WriteObject((PSAzureContext)DefaultContext);
         }
     }
 }

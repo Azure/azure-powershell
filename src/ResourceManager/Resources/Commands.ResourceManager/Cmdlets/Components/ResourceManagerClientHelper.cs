@@ -29,8 +29,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <summary>
         /// Gets a new instance of the <see cref="ResourceManagerRestRestClient"/>.
         /// </summary>
+        /// <param name="authenticationFactory">The authentication provider for manageemnt clients.</param>
+        /// <param name="clientFactory">The factory for management clients.</param>
         /// <param name="context">The azure profile.</param>
-        internal static ResourceManagerRestRestClient GetResourceManagerClient(AzureContext context, Dictionary<string, string> cmdletHeaderValues = null)
+        internal static ResourceManagerRestRestClient GetResourceManagerClient(IAuthenticationFactory authenticationFactory, IClientFactory clientFactory, AzureContext context, Dictionary<string, string> cmdletHeaderValues = null)
         {
             var endpoint = context.Environment.GetEndpoint(AzureEnvironment.Endpoint.ResourceManager);
 
@@ -46,8 +48,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                 endpointUri: endpointUri,
                 httpClientHelper: HttpClientHelperFactory.Instance
                 .CreateHttpClientHelper(
-                        credentials: AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(context),
-                        headerValues: AzureSession.ClientFactory.UserAgents,
+                        credentials: authenticationFactory.GetSubscriptionCloudCredentials(context),
+                        headerValues: clientFactory.UserAgents,
                         cmdletHeaderValues: cmdletHeaderValues));
         }
     }

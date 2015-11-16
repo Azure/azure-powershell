@@ -180,10 +180,6 @@
       <Project>{3436a126-edc9-4060-8952-9a1be34cdd95}</Project>
       <Name>Commands.ScenarioTests.ResourceManager.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Commands.Insights\Commands.Insights.csproj">
-      <Project>{DEA446A1-84E2-46CC-B780-EB4AFDE2460E}</Project>
-      <Name>Commands.Insights</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="MSSharedLibKey.snk" />
@@ -214,7 +210,7 @@
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AzureRmDiagnosticSettingTests\TestGetAzureRmDiagnosticSetting.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>    
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AlertsTests\TestAddAlertRule.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

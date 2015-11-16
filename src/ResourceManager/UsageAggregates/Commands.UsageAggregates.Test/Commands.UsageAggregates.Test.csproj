@@ -117,10 +117,6 @@
       <Project>{3436a126-edc9-4060-8952-9a1be34cdd95}</Project>
       <Name>Commands.ScenarioTests.ResourceManager.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Commands.UsageAggregates\Commands.UsageAggregates.csproj">
-      <Project>{1a131d3a-eac4-420c-a1c0-5490ed68ef67}</Project>
-      <Name>Commands.UsageAggregates</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">

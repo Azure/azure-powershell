@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             {
                 if (this.resourcesClient == null)
                 {
-                    this.resourcesClient = new ResourcesClient(DefaultContext)
+                    this.resourcesClient = new ResourcesClient(ClientFactory, DefaultContext)
                     {
                         VerboseLogger = WriteVerboseWithTimestamp,
                         ErrorLogger = WriteErrorWithTimestamp,
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 {
                     // since this accessor can be called before BeginProcessing, use GetCurrentContext if no 
                     // profile is passed in
-                    this.galleryTemplatesClient = new GalleryTemplatesClient(DefaultContext);
+                    this.galleryTemplatesClient = new GalleryTemplatesClient(ClientFactory, DefaultContext);
                 }
 
                 return this.galleryTemplatesClient;
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             {
                 if (this.policiesClient == null)
                 {
-                    this.policiesClient = new AuthorizationClient(DefaultContext);
+                    this.policiesClient = new AuthorizationClient(AuthenticationFactory, ClientFactory, DefaultContext);
                 }
                 return this.policiesClient;
             }

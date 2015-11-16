@@ -153,18 +153,13 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
         /// <summary>
         /// remove the vmbackups with the metadata  key "vmbackuptag" and value snapshotTag, snapshotTag is the parameter passed in.
         /// </summary>
-        /// <param name="resourceGroupName"></param>
-        /// <param name="vmName"></param>
-        /// <param name="virtualMachineExtensionType"></param>
-        /// <param name="location"></param>
-        /// <param name="virtualMachineResponse"></param>
-        /// <param name="profile"></param>
-        /// <param name="VirtualMachineExtensionClient"></param>
+        /// <param name="vmConfig"></param>
         /// <param name="snapshotTag"></param>
+        /// <param name="virtualMachineExtensionBaseCmdlet"></param>
         public void RemoveSnapshot(AzureVMBackupConfig vmConfig, string snapshotTag, VirtualMachineExtensionBaseCmdlet virtualMachineExtensionBaseCmdlet)
         {
             VirtualMachineGetResponse virtualMachineResponse = virtualMachineExtensionBaseCmdlet.ComputeClient.ComputeManagementClient.VirtualMachines.GetWithInstanceView(vmConfig.ResourceGroupName, vmConfig.VMName);
-            StorageManagementClient storageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(virtualMachineExtensionBaseCmdlet.DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
+            StorageManagementClient storageClient = virtualMachineExtensionBaseCmdlet.ClientFactory.CreateClient<StorageManagementClient>(virtualMachineExtensionBaseCmdlet.DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
 
             StorageCredentialsFactory storageCredentialsFactory = new StorageCredentialsFactory(vmConfig.ResourceGroupName, storageClient, virtualMachineExtensionBaseCmdlet.DefaultProfile.Context.Subscription);
 
@@ -182,17 +177,13 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
         /// <summary>
         /// we only support the Linux box now, if it's a windows, one AzureVMBackupException would be thrown.
         /// </summary>
-        /// <param name="resourceGroupName"></param>
-        /// <param name="vmName"></param>
-        /// <param name="virtualMachineExtensionType"></param>
-        /// <param name="location"></param>
-        /// <param name="virtualMachineResponse"></param>
+        /// <param name="vmConfig"></param>
         /// <param name="snapshotTag"></param>
         /// <param name="virtualMachineExtensionBaseCmdlet"></param>
         public void CreateSnapshotForDisks(AzureVMBackupConfig vmConfig, string snapshotTag, VirtualMachineExtensionBaseCmdlet virtualMachineExtensionBaseCmdlet)
         {
             VirtualMachine virtualMachine = virtualMachineExtensionBaseCmdlet.ComputeClient.ComputeManagementClient.VirtualMachines.GetWithInstanceView(vmConfig.ResourceGroupName, vmConfig.VMName).VirtualMachine;
-            StorageManagementClient storageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(virtualMachineExtensionBaseCmdlet.DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
+            StorageManagementClient storageClient = virtualMachineExtensionBaseCmdlet.ClientFactory.CreateClient<StorageManagementClient>(virtualMachineExtensionBaseCmdlet.DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
 
             StorageCredentialsFactory storageCredentialsFactory = new StorageCredentialsFactory(vmConfig.ResourceGroupName, storageClient, virtualMachineExtensionBaseCmdlet.DefaultProfile.Context.Subscription);
 

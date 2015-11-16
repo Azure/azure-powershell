@@ -31,12 +31,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
     public class RMProfileClient
     {
+        private IAuthenticationFactory _authenticationFactory;
+        private IClientFactory _clientFactory;
         private AzureRMProfile _profile;
         public Action<string> WarningLog;
 
-        public RMProfileClient(AzureRMProfile profile)
+        public RMProfileClient(IAuthenticationFactory authenticationFactory, IClientFactory clientFactory, AzureRMProfile profile)
         {
             _profile = profile;
+            _authenticationFactory = authenticationFactory;
+            _clientFactory = clientFactory;
 
             if (_profile != null && _profile.Context != null &&
                 _profile.Context.TokenCache != null && _profile.Context.TokenCache.Length > 0)
@@ -409,7 +413,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 return new SimpleAccessToken(account, tenantId);
             }
 
-            return AzureSession.AuthenticationFactory.Authenticate(
+            return _authenticationFactory.Authenticate(
                 account,
                 environment,
                 tenantId,
@@ -427,7 +431,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             out AzureSubscription subscription,
             out AzureTenant tenant)
         {
-            using (var subscriptionClient = AzureSession.ClientFactory.CreateCustomClient<SubscriptionClient>(
+            using (var subscriptionClient = _clientFactory.CreateCustomClient<SubscriptionClient>(
                 new TokenCloudCredentials(accessToken.AccessToken),
                 environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager)))
             {
@@ -512,7 +516,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             var commonTenantToken = AcquireAccessToken(account, environment, AuthenticationFactory.CommonAdTenant,
                 password, promptBehavior);
 
-            using (var subscriptionClient = AzureSession.ClientFactory.CreateCustomClient<SubscriptionClient>(
+            using (var subscriptionClient = _clientFactory.CreateCustomClient<SubscriptionClient>(
                     new TokenCloudCredentials(commonTenantToken.AccessToken),
                     environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager)))
             {
@@ -526,7 +530,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             SecureString password, ShowDialog promptBehavior, string tenantId)
         {
             var accessToken = AcquireAccessToken(account, environment, tenantId, password, promptBehavior);
-            using (var subscriptionClient = AzureSession.ClientFactory.CreateCustomClient<SubscriptionClient>(
+            using (var subscriptionClient = _clientFactory.CreateCustomClient<SubscriptionClient>(
                 new TokenCloudCredentials(accessToken.AccessToken),
                 environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager)))
             {

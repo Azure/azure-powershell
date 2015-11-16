@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 
         private static RMProfileClient SetupTestEnvironment(List<string> tenants, params List<string>[] subscriptionLists)
         {
-            AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory(DefaultAccount,
+            var authFactory = new MockTokenAuthenticationFactory(DefaultAccount,
                 Guid.NewGuid().ToString(), DefaultTenant.ToString());
             var subscriptionList = new Queue<List<string>>(subscriptionLists);
             var clientFactory = new MockSubscriptionClientFactory(tenants, subscriptionList);
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 new AzureTenant() { Domain = DefaultDomain, Id = DefaultTenant });
             var profile = new AzureRMProfile();
             profile.Context = context;
-            return new RMProfileClient(profile);
+            return new RMProfileClient(authFactory, mock, profile);
         }
 
         [Fact]

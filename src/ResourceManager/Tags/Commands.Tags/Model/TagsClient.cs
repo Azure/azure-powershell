@@ -38,9 +38,10 @@ namespace Microsoft.Azure.Commands.Tags.Model
         /// <summary>
         /// Creates new tags client instance.
         /// </summary>
+        /// <param name="clientFactory">The factory for management clients</param>
         /// <param name="context">The Azure context instance</param>
-        public TagsClient(AzureContext context)
-            : this(AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
+        public TagsClient(IClientFactory clientFactory, AzureContext context)
+            : this(clientFactory.CreateClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
 
         }
