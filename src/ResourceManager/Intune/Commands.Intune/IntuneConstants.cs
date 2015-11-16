@@ -26,5 +26,13 @@ namespace Microsoft.Azure.Commands.Intune
 
         public static string AppUriFormat = "https://{0}/providers/Microsoft.Intune/locations/{1}/apps/{2}";
         public static string GroupUriFormat = "https://{0}/providers/Microsoft.Intune/locations/{1}/groups/{2}";
+
+        public static string PlatformFilterQueryParam = "platform eq '{0}'";
+
+        // Policy Properties
+        public static string PinRetriesProperty = "PinRetries";
+        public static string RecheckAccessOfflineGracePeriodMinutesProperty = "RecheckAccessOfflineGracePeriodMinutes";
+        public static string RecheckAccessTimeoutMinutesProperty = "RecheckAccessTimeoutMinutes";
+        public static string OfflineWipeIntervalDaysProperty = "OfflineWipeIntervalDays";
     }
 }

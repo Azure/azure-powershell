@@ -14,14 +14,9 @@
 
 namespace Microsoft.Azure.Commands.Intune
 {
-    using System;
+    using Microsoft.Azure.Commands.Intune.Properties;
+    using System.Globalization;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.Intune;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
-    using Management.Intune;
-    using Management.Intune.Models;
 
     /// <summary>
     /// A cmdlet that removes Intune iOS MAM Policy.
@@ -50,8 +45,8 @@ namespace Microsoft.Azure.Commands.Intune
             this.ConfirmAction
             (
                 this.Force,
-                string.Format("Are you sure you want to delete the following Intune Policies: {0}", this.Name),
-                "Deleting the resource...",
+                string.Format(CultureInfo.CurrentCulture, Resources.DeleteResource_ActionMessage, Resources.IosPolicy, this.Name),
+                string.Format(CultureInfo.CurrentCulture, Resources.DeleteResource_ProcessMessage, Resources.IosPolicy, this.Name),
                 this.Name,
                 () =>
                 {
@@ -59,11 +54,11 @@ namespace Microsoft.Azure.Commands.Intune
 
                     if (res.Result.Response.StatusCode == System.Net.HttpStatusCode.OK)
                     {
-                        this.WriteObject("1 item deleted");
+                        this.WriteObject(Resources.OneItemDeleted);
                     }
                     else
                     {
-                        this.WriteObject("0 item deleted");
+                        this.WriteObject(Resources.NoItemsDeleted); //todo: We need to fix the delete logic about status code 204, and other error messages.
                     }
                 }
              );

@@ -14,9 +14,11 @@
 
 namespace Microsoft.Azure.Commands.Intune
 {
-    using System.Management.Automation;
     using Management.Intune;
     using Management.Intune.Models;
+    using Microsoft.Azure.Commands.Intune.Properties;
+    using System.Management.Automation;
+
     /// <summary>
     /// Cmdlet to get existing resources.
     /// </summary>
@@ -47,7 +49,7 @@ namespace Microsoft.Azure.Commands.Intune
             }
             else
             {
-                this.WriteObject("0 items returned");
+                this.WriteObject(Resources.NoItemsReturned);
             }
         }
     }

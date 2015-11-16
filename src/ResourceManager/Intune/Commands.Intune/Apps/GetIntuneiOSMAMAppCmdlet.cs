@@ -14,11 +14,11 @@
 
 namespace Microsoft.Azure.Commands.Intune
 {
-    using System;
-    using System.Linq;
-    using System.Management.Automation;
     using Management.Intune;
     using Management.Intune.Models;
+    using Microsoft.Azure.Commands.Intune.Properties;
+    using System.Globalization;
+    using System.Management.Automation;
 
     /// <summary>
     /// Cmdlet to get apps for iOS platform.
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Intune
         /// </summary>
         protected override void ProcessRecord()
         {
-            string filter = string.Format("platform eq '{0}'", PlatformType.iOS.ToString().ToLower());
+            string filter = string.Format(CultureInfo.InvariantCulture, IntuneConstants.PlatformFilterQueryParam, PlatformType.iOS.ToString().ToLower());
             MultiPageGetter<Application> mpg = new MultiPageGetter<Application>();
             var items = mpg.GetAllResources(this.IntuneClient.GetApps, this.IntuneClient.GetAppsNext, this.AsuHostName, filter);
             if (items.Count > 0)
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Intune
             }
             else
             {
-                this.WriteObject("0 items returned");
+                this.WriteObject(Resources.NoItemsReturned);
             }
         }
     }

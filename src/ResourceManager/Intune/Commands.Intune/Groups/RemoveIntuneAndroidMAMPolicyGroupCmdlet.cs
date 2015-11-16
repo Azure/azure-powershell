@@ -14,8 +14,10 @@
 
 namespace Microsoft.Azure.Commands.Intune
 {
-    using System.Management.Automation;
     using Management.Intune;
+    using Microsoft.Azure.Commands.Intune.Properties;
+    using System.Globalization;
+    using System.Management.Automation;
 
     /// <summary>
     /// A cmdlet to link a group to Android Intune MAM policy Azure resource.
@@ -46,13 +48,25 @@ namespace Microsoft.Azure.Commands.Intune
         {
             this.ConfirmAction(
                 this.Force,
-                "Are you sure you want to remove group with name:" + this.GroupName + " from android policy with name:" + this.Name,
-                "Remove the group from android policy resource.",
+                string.Format(
+                    CultureInfo.CurrentCulture, 
+                    Resources.RemoveLinkedResource_ActionMessage, 
+                    Resources.Group, 
+                    this.GroupName, 
+                    Resources.AndroidPolicy, 
+                    this.Name),
+                string.Format(
+                    CultureInfo.CurrentCulture, 
+                    Resources.RemoveLinkedResource_ProcessMessage, 
+                    Resources.Group, 
+                    this.GroupName, 
+                    Resources.AndroidPolicy, 
+                    this.Name),
                 this.Name,
                 () =>
                 {
                     this.IntuneClient.Android.DeleteGroupForMAMPolicy(this.AsuHostName, this.Name, this.GroupName);
-                    this.WriteObject("Operation completed successfully");
+                    this.WriteObject(Resources.OperationCompletedMessage);
                 });
         }
     }

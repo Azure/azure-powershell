@@ -14,10 +14,12 @@
 
 namespace Microsoft.Azure.Commands.Intune
 {
-    using System;
-    using System.Management.Automation;
     using Management.Intune;
     using Management.Intune.Models;
+    using Microsoft.Azure.Commands.Intune.Properties;
+    using System;
+    using System.Globalization;
+    using System.Management.Automation;
 
     /// <summary>
     /// A cmdlet that creates a new iOS intune policy azure resource.
@@ -42,14 +44,14 @@ namespace Microsoft.Azure.Commands.Intune
         /// <summary>
         /// The AppSharingFromLevel of the policy
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates whether the application is allowed to receive information shared by other applications.  Information can be restricted to no applications, only managed applications, or be allowed from all applications.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates whether the application is allowed to receive information shared by other applications. Information can be restricted to no applications, only managed applications, or be allowed from all applications.")]
         [Alias("AppSharingFromLevel"), ValidateNotNullOrEmpty, ValidateSet("none", "policyManagedApps","allApps"), PSDefaultValue(Value = AppSharingType.none)]
         public AppSharingType AllowDataTransferToApps { get; set; }
 
         /// <summary>
         /// The AppSharingToLevel of the policy
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates whether the application is allowed to share information with other applications.  Information can be shared with no applications, only managed applications, or shared to all applications.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates whether the application is allowed to share information with other applications. Information can be shared with no applications, only managed applications, or shared to all applications.")]
         [Alias("AppSharingToLevel"), ValidateNotNullOrEmpty, ValidateSet("none", "policyManagedApps", "allApps"), PSDefaultValue(Value = AppSharingType.none)]
         public AppSharingType AllowDataTransferFromApps{ get; set; }
 
@@ -158,8 +160,8 @@ namespace Microsoft.Azure.Commands.Intune
             ValidateNumericParameters();
             this.ConfirmAction(
                 this.Force,
-                "Are you sure you want to create a new iOS policy:" + this.FriendlyName,
-                "Creating the iOS policy resource.",
+                string.Format(CultureInfo.CurrentCulture, Resources.NewResource_ActionMessage, Resources.IosPolicy, this.FriendlyName),
+                string.Format(CultureInfo.CurrentCulture, Resources.NewResource_ProcessMessage, Resources.IosPolicy, this.FriendlyName), 
                 policyId,
                 () =>
                 {
@@ -179,7 +181,7 @@ namespace Microsoft.Azure.Commands.Intune
             this.RecheckAccessOfflineGracePeriodMinutes = this.RecheckAccessOfflineGracePeriodMinutes ?? IntuneConstants.DefaultRecheckAccessOfflineGraceperiodMinutes;
             this.RecheckAccessTimeoutMinutes = this.RecheckAccessTimeoutMinutes ?? IntuneConstants.DefaultRecheckAccessTimeoutMinutes;
             this.OfflineWipeIntervalDays = this.OfflineWipeIntervalDays ?? IntuneConstants.DefaultOfflineWipeIntervalDays;
-            this.Description = this.Description ?? "New iOS Policy";
+            this.Description = this.Description ?? string.Format(CultureInfo.CurrentCulture, Resources.NewResource, Resources.IosPolicy);
         }
 
         /// <summary>
@@ -190,10 +192,10 @@ namespace Microsoft.Azure.Commands.Intune
             NumericParameterValueChecker.CheckIfNegativeAndThrowException(
                 new System.Collections.Generic.Dictionary<string, int>
                 {
-                    {"PinRetries", PinRetries.Value},
-                    {"RecheckAccessOfflineGracePeriodMinutes", this.RecheckAccessOfflineGracePeriodMinutes.Value},
-                    {"RecheckAccessTimeoutMinutes", this.RecheckAccessTimeoutMinutes.Value},
-                    {"OfflineWipeIntervalDays", this.OfflineWipeIntervalDays.Value }
+                    {IntuneConstants.PinRetriesProperty, PinRetries.Value},
+                    {IntuneConstants.RecheckAccessOfflineGracePeriodMinutesProperty, this.RecheckAccessOfflineGracePeriodMinutes.Value},
+                    {IntuneConstants.RecheckAccessTimeoutMinutesProperty, this.RecheckAccessTimeoutMinutes.Value},
+                    {IntuneConstants.OfflineWipeIntervalDaysProperty, this.OfflineWipeIntervalDays.Value }
                 });            
         }
 
