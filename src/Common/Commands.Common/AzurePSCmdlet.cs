@@ -103,6 +103,23 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 #endif
         }
 
+        protected virtual T GetSessionVariableValue<T>(string name, T defaultValue) where T : class
+        {
+            if (SessionState != null)
+            {
+                return (SessionState.PSVariable.GetValue(name, defaultValue) as T);
+            }
+
+            return defaultValue;
+        }
+
+        protected virtual void SetSessionVariable<T>(string name, T value) where T : class
+        {
+            if (SessionState != null)
+            {
+                SessionState.PSVariable.Set(name, value);
+            }
+        }
         /// <summary>
         /// Initialize the data collection profile
         /// </summary>
@@ -237,13 +254,14 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 WriteDebugWithTimestamp(string.Format("using account id '{0}'...", DefaultContext.Account.Id));
             }
 
+            DataStore = GetSessionVariableValue<IDataStore>(AzurePowerShell.DataStoreVariable, new DiskDataStore());
             _httpTracingInterceptor = _httpTracingInterceptor ?? new RecordingTracingInterceptor(_debugMessages);
             _adalListener = _adalListener ?? new DebugStreamTraceListener(_debugMessages);
             RecordingTracingInterceptor.AddToContext(_httpTracingInterceptor);
             DebugStreamTraceListener.AddAdalTracing(_adalListener);
 
             List<ProductInfoHeaderValue> headerList =
-                SessionState.PSVariable.GetValue(AzurePowerShell.UserAgentVariable, new List<ProductInfoHeaderValue>()) as List<ProductInfoHeaderValue>;
+                GetSessionVariableValue(AzurePowerShell.UserAgentVariable, new List<ProductInfoHeaderValue>());
             foreach (var header in headerList)
             {
                 ClientFactory.UserAgents.Add(header);
@@ -277,7 +295,12 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 headerList.Add(userAgent);
             }
 
-            SessionState.PSVariable.Set(AzurePowerShell.UserAgentVariable, headerList);
+            SetSessionVariable(AzurePowerShell.UserAgentVariable, headerList);
+            if (!(DataStore is DiskDataStore))
+            {
+                SetSessionVariable(AzurePowerShell.DataStoreVariable, DataStore);
+            }
+
             base.EndProcessing();
         }
 

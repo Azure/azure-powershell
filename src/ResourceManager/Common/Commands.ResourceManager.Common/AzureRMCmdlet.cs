@@ -61,7 +61,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         protected override void BeginProcessing()
         {
             // Deserialize session variables
-            DefaultProfile = (AzureRMProfile)(SessionState.PSVariable.GetValue(AzurePowerShell.ProfileVariable, null) as PSAzureProfile);
+            var sessionProfile = GetSessionVariableValue<PSAzureProfile>(AzurePowerShell.ProfileVariable, null);
+            if (sessionProfile != null)
+            {
+                DefaultProfile = sessionProfile;
+            }
             base.BeginProcessing();
             ClientFactory.AddHandler(new RPRegistrationDelegatingHandler(
                            () => new ResourceManagementClient(
@@ -73,7 +77,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         protected override void EndProcessing()
         {
-            SessionState.PSVariable.Set(AzurePowerShell.ProfileVariable, ((PSAzureProfile)DefaultProfile));
+            SetSessionVariable(AzurePowerShell.ProfileVariable, ((PSAzureProfile)DefaultProfile));
             ClientFactory.RemoveHandler(typeof(RPRegistrationDelegatingHandler));
             base.EndProcessing();
         }

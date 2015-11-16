@@ -12,13 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure;
-using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
@@ -27,8 +24,9 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
+using System.Management.Automation.Runspaces;
 using System.Reflection;
-using System.Security.Cryptography.X509Certificates;
+using Microsoft.Azure.Commands.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
@@ -43,33 +41,32 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         private AzureAccount testAccount;
 
+        private AzureRMProfile _testProfile;
+        private IDataStore _dataStore;
+
         private const string PackageDirectoryFromCommon = @"..\..\..\..\Package\Debug";
         public string PackageDirectory = @"..\..\..\..\..\Package\Debug";
 
         protected List<string> modules;
 
-        protected ProfileClient ProfileClient { get; set; }
-
         public EnvironmentSetupHelper()
         {
-            var datastore = new MemoryDataStore();
-            AzureSession.DataStore = datastore;
-            var profile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
-            var rmprofile = new AzureRMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
-            rmprofile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
-            rmprofile.Context = new AzureContext(new AzureSubscription(), new AzureAccount(), rmprofile.Environments["foo"], new AzureTenant());
-            rmprofile.Context.Subscription.Environment = "foo";
-            if (AzureRmProfileProvider.Instance.Profile == null)
-            {
-                AzureRmProfileProvider.Instance.Profile = rmprofile;            }
-
-            AzureSession.DataStore = datastore;            ProfileClient = new ProfileClient(profile);
-
+            _testProfile = new AzureRMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+            _testProfile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
+            _testProfile.Context = new AzureContext(new AzureSubscription(), new AzureAccount(), _testProfile.Environments["foo"], new AzureTenant());
+            _testProfile.Context.Subscription.Environment = "foo";
             // Ignore SSL errors
             System.Net.ServicePointManager.ServerCertificateValidationCallback += (se, cert, chain, sslerror) => true;
-
             // Set RunningMocked
             TestMockSupport.RunningMocked = HttpMockServer.GetCurrentMode() == HttpRecorderMode.Playback;
+            if (TestMockSupport.RunningMocked)
+            {
+                _dataStore = new MemoryDataStore();
+            }
+            else
+            {
+                _dataStore = new DiskDataStore();
+            }
         }
 
         public string RMProfileModule
@@ -121,7 +118,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         /// <param name="initializedManagementClients"></param>
         public void SetupManagementClients(params object[] initializedManagementClients)
         {
-            AzureSession.ClientFactory = new MockClientFactory(initializedManagementClients);
         }
 
         /// <summary>
@@ -130,14 +126,11 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         /// <param name="initializedManagementClients"></param>
         public void SetupSomeOfManagementClients(params object[] initializedManagementClients)
         {
-            AzureSession.ClientFactory = new MockClientFactory(initializedManagementClients, false);
         }
 
         public void SetupEnvironment(AzureModule mode)
         {
             SetupAzureEnvironmentFromEnvironmentVariables(mode);
-
-            ProfileClient.Profile.Save();
         }
 
         private void SetupAzureEnvironmentFromEnvironmentVariables(AzureModule mode)
@@ -157,24 +150,16 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 currentEnvironment.UserName = "fakeuser@microsoft.com";
             }
 
-            SetAuthenticationFactory(mode, currentEnvironment);
-
             AzureEnvironment environment = new AzureEnvironment { Name = testEnvironmentName };
-
             Debug.Assert(currentEnvironment != null);
             environment.Endpoints[AzureEnvironment.Endpoint.ActiveDirectory] = currentEnvironment.Endpoints.AADAuthUri.AbsoluteUri;
             environment.Endpoints[AzureEnvironment.Endpoint.Gallery] = currentEnvironment.Endpoints.GalleryUri.AbsoluteUri;
             environment.Endpoints[AzureEnvironment.Endpoint.ServiceManagement] = currentEnvironment.BaseUri.AbsoluteUri;
             environment.Endpoints[AzureEnvironment.Endpoint.ResourceManager] = currentEnvironment.Endpoints.ResourceManagementUri.AbsoluteUri;
 
-            if (!ProfileClient.Profile.Environments.ContainsKey(testEnvironmentName))
+            if (!_testProfile.Environments.ContainsKey(testEnvironmentName))
             {
-                ProfileClient.AddOrSetEnvironment(environment);
-            }
-
-            if (!AzureRmProfileProvider.Instance.Profile.Environments.ContainsKey(testEnvironmentName))
-            {
-                AzureRmProfileProvider.Instance.Profile.Environments[testEnvironmentName] = environment;
+                _testProfile.Environments[testEnvironmentName] = environment;
             }
 
             if (currentEnvironment.SubscriptionId != null)
@@ -195,19 +180,24 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                     }
                 };
 
+                var accessToken = Guid.NewGuid().ToString();
+                if (currentEnvironment.AuthorizationContext != null &&
+                    currentEnvironment.AuthorizationContext.AccessToken != null)
+                {
+                    accessToken = currentEnvironment.AuthorizationContext.AccessToken;
+                }
+
                 testAccount = new AzureAccount()
                 {
                     Id = currentEnvironment.UserName,
-                    Type = AzureAccount.AccountType.User,
+                    Type = AzureAccount.AccountType.AccessToken,
                     Properties = new Dictionary<AzureAccount.Property, string>
                     {
                         {AzureAccount.Property.Subscriptions, currentEnvironment.SubscriptionId},
+                        {AzureAccount.Property.AccessToken, accessToken }
                     }
                 };
 
-                ProfileClient.Profile.Subscriptions[testSubscription.Id] = testSubscription;
-                ProfileClient.Profile.Accounts[testAccount.Id] = testAccount;
-                ProfileClient.SetSubscriptionAsDefault(testSubscription.Name, testSubscription.Account);
 
                 var testTenant = new AzureTenant() { Id = Guid.NewGuid() };
                 if (!string.IsNullOrEmpty(currentEnvironment.Tenant))
@@ -218,35 +208,13 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                         testTenant.Id = tenant;
                     }
                 }
-                AzureRmProfileProvider.Instance.Profile.Context = new AzureContext(testSubscription, testAccount, environment, testTenant);
+
+                _testProfile.Context = new AzureContext(testSubscription, testAccount, environment, testTenant);
             }
         }
 
         private void SetAuthenticationFactory(AzureModule mode, TestEnvironment environment)
         {
-            string jwtToken = null;
-            X509Certificate2 certificate = null;
-
-            if (environment.Credentials is TokenCloudCredentials)
-            {
-                jwtToken = ((TokenCloudCredentials)environment.Credentials).Token;
-            }
-            if (environment.Credentials is CertificateCloudCredentials)
-            {
-                certificate = ((CertificateCloudCredentials)environment.Credentials).ManagementCertificate;
-            }
-
-
-            if (jwtToken != null)
-            {
-                AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory(environment.UserName,
-                    jwtToken);
-            }
-            else if (certificate != null)
-            {
-                AzureSession.AuthenticationFactory = new MockCertificateAuthenticationFactory(environment.UserName,
-                    certificate);
-            }
         }
 
         public void SetupModules(AzureModule mode, params string[] modules)
@@ -302,7 +270,13 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         public virtual Collection<PSObject> RunPowerShellTest(params string[] scripts)
         {
-            using (var powershell = System.Management.Automation.PowerShell.Create())
+            var sessionState = InitialSessionState.CreateDefault();
+            sessionState.Variables.Add(new SessionStateVariableEntry(AzurePowerShell.ProfileVariable, (PSAzureProfile)_testProfile, AzurePowerShell.ProfileVariable));
+            if (_dataStore is MemoryDataStore)
+            {
+                sessionState.Variables.Add(new SessionStateVariableEntry(AzurePowerShell.DataStoreVariable, _dataStore, AzurePowerShell.DataStoreVariable));
+            }
+            using (var powershell = System.Management.Automation.PowerShell.Create(sessionState))
             {
                 SetupPowerShellModules(powershell);
 
@@ -313,7 +287,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                     powershell.AddScript(scripts[i]);
                 }
                 try
-                {
+                {                    
                     powershell.Runspace.Events.Subscribers.Clear();
                     output = powershell.Invoke();
 

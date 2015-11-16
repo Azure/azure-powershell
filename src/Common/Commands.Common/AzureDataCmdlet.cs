@@ -57,7 +57,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         public AzureRMProfile RMProfile
         {
-            get { return (AzureRMProfile)(SessionState.PSVariable.Get(AzurePowerShell.ProfileVariable).Value as PSAzureProfile); }
+            get { return GetSessionVariableValue<PSAzureProfile>(AzurePowerShell.ProfileVariable, null); }
         }
 
         protected override void SaveDataCollectionProfile()
