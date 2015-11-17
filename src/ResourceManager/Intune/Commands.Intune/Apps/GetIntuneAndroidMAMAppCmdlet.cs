@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Intune
     using System.Globalization;
 
     /// <summary>
-    /// Cmdlet to get apps for iOS platform.
+    /// Cmdlet to get apps for Android platform.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmIntuneAndroidMAMApp"), OutputType(typeof(List<Application>))]
     public sealed class GetIntuneAndroidMAMAppCmdlet : IntuneBaseCmdlet

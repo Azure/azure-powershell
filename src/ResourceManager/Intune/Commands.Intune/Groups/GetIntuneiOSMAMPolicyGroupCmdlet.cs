@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Intune
     using System.Management.Automation;
 
     /// <summary>
-    /// Cmdlet to get groups for iOS platform.
+    /// Cmdlet to get existing groups associated to iOS Intune MAM policy Azure resource.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmIntuneiOSMAMPolicyGroup"), OutputType(typeof(PSObject))]
     public sealed class GetIntuneiOSMAMPolicyGroupCmdlet : IntuneBaseCmdlet

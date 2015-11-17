@@ -11,8 +11,15 @@
     <CmdletObject verb="Add" noun="AzureRmIntuneAndroidMAMPolicyApp">
       <Name>Add-AzureRmIntuneAndroidMAMPolicyApp</Name>
       <GeneralHelp>
-        <Synopsis />
-        <Description />
+        <Synopsis>A cmdlet to link an App to Android Intune MAM policy Azure resource.</Synopsis>
+        <Description>A cmdlet to link an app to Android Intune MAM policy Azure resource.
+
+SYNTAX
+    Add-AzureRmIntuneAndroidMAMPolicyApp -Name &lt;String&gt; -AppName &lt;String&gt; [-Force [&lt;SwitchParameter&gt;]] [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf [&lt;SwitchParameter&gt;]] [-Confirm [&lt;SwitchParameter&gt;]] [&lt;CommonParameters&gt;]
+
+&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -35,7 +42,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>The Android policy name.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -45,7 +52,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>The Android App name to link to.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -54,7 +61,7 @@
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>If set to true, don't ask for confirmation.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -64,7 +71,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -125,8 +132,15 @@
     <CmdletObject verb="Add" noun="AzureRmIntuneAndroidMAMPolicyGroup">
       <Name>Add-AzureRmIntuneAndroidMAMPolicyGroup</Name>
       <GeneralHelp>
-        <Synopsis />
-        <Description />
+        <Synopsis>A cmdlet to link a Group to Android Intune MAM policy Azure resource.</Synopsis>
+        <Description>A cmdlet to link a group to Android Intune MAM policy Azure resource.
+
+SYNTAX
+    Add-AzureRmIntuneAndroidMAMPolicyGroup -Name &lt;String&gt; -GroupName &lt;String&gt; [-Force [&lt;SwitchParameter&gt;]] [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf [&lt;SwitchParameter&gt;]] [-Confirm [&lt;SwitchParameter&gt;]] [&lt;CommonParameters&gt;]
+
+&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -149,7 +163,7 @@
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>The Android policy name.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -159,7 +173,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>The Android group name to link to.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -168,7 +182,7 @@
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>If set to true, don't ask for confirmation.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -178,7 +192,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -239,8 +253,15 @@
     <CmdletObject verb="Add" noun="AzureRmIntuneiOSMAMPolicyApp">
       <Name>Add-AzureRmIntuneiOSMAMPolicyApp</Name>
       <GeneralHelp>
-        <Synopsis />
-        <Description />
+        <Synopsis>A cmdlet to link an App to iOS Intune MAM policy Azure resource.</Synopsis>
+        <Description>A cmdlet to link an app to iOS Intune MAM policy Azure resource.
+
+SYNTAX
+    Add-AzureRmIntuneiOSMAMPolicyApp -Name &lt;String&gt; -AppName &lt;String&gt; [-Force [&lt;SwitchParameter&gt;]] [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf [&lt;SwitchParameter&gt;]] [-Confirm [&lt;SwitchParameter&gt;]] [&lt;CommonParameters&gt;]
+
+&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -263,7 +284,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>The iOS policy name.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -273,7 +294,7 @@
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>The iOS App Name to link to.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -282,7 +303,7 @@
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>If set to true, don't ask for confirmation.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -292,7 +313,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -353,8 +374,15 @@
     <CmdletObject verb="Add" noun="AzureRmIntuneiOSMAMPolicyGroup">
       <Name>Add-AzureRmIntuneiOSMAMPolicyGroup</Name>
       <GeneralHelp>
-        <Synopsis />
-        <Description />
+        <Synopsis>A cmdlet to link a Group to iOS Intune MAM policy Azure resource.</Synopsis>
+        <Description>A cmdlet to link a group to iOS Intune MAM policy Azure resource.
+
+SYNTAX
+    Add-AzureRmIntuneiOSMAMPolicyGroup -Name &lt;String&gt; -GroupName &lt;String&gt; [-Force [&lt;SwitchParameter&gt;]] [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf [&lt;SwitchParameter&gt;]] [-Confirm [&lt;SwitchParameter&gt;]] [&lt;CommonParameters&gt;]
+
+&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -377,7 +405,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>The iOS policy name.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -387,7 +415,7 @@
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>The iOS group name to link to.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -396,7 +424,7 @@
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>If set to true, don't ask for confirmation.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -406,7 +434,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -467,8 +495,15 @@
     <CmdletObject verb="Get" noun="AzureRmIntuneAndroidMAMApp">
       <Name>Get-AzureRmIntuneAndroidMAMApp</Name>
       <GeneralHelp>
-        <Synopsis />
-        <Description />
+        <Synopsis>Cmdlet to get Apps for Android platform.</Synopsis>
+        <Description>Cmdlet to get apps for Android platform.
+
+SYNTAX
+    Get-AzureRmIntuneAndroidMAMApp [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [&lt;CommonParameters&gt;]
+
+&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -491,7 +526,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -528,8 +563,15 @@
     <CmdletObject verb="Get" noun="AzureRmIntuneAndroidMAMPolicy">
       <Name>Get-AzureRmIntuneAndroidMAMPolicy</Name>
       <GeneralHelp>
-        <Synopsis />
-        <Description />
+        <Synopsis>Cmdlet to get existing Android Intune MAM Policy.</Synopsis>
+        <Description>Cmdlet to get existing Android Intune MAM Policy.
+
+SYNTAX
+    Get-AzureRmIntuneAndroidMAMPolicy [-Name &lt;String&gt;] [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [&lt;CommonParameters&gt;]
+
+&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -552,7 +594,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>The policy name to fetch.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -562,7 +604,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -599,8 +641,15 @@
     <CmdletObject verb="Get" noun="AzureRmIntuneAndroidMAMPolicyApp">
       <Name>Get-AzureRmIntuneAndroidMAMPolicyApp</Name>
       <GeneralHelp>
-        <Synopsis />
-        <Description />
+        <Synopsis>Cmdlet to get existing Apps associated to Android Intune MAM policy Azure resource.</Synopsis>
+        <Description>Cmdlet to get existing apps associated to Android Intune MAM policy Azure resource.
+
+SYNTAX
+    Get-AzureRmIntuneAndroidMAMPolicyApp -Name &lt;String&gt; [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [&lt;CommonParameters&gt;]
+
+&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -623,7 +672,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>The policy name for the apps to fetch.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -633,7 +682,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -670,8 +719,15 @@
     <CmdletObject verb="Get" noun="AzureRmIntuneAndroidMAMPolicyGroup">
       <Name>Get-AzureRmIntuneAndroidMAMPolicyGroup</Name>
       <GeneralHelp>
-        <Synopsis />
-        <Description />
+        <Synopsis>Cmdlet to get existing Groups associated to Android Intune MAM policy Azure resource.</Synopsis>
+        <Description>Cmdlet to get existing groups associated to Android Intune MAM policy Azure resource.
+
+SYNTAX
+    Get-AzureRmIntuneAndroidMAMPolicyGroup -Name &lt;String&gt; [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [&lt;CommonParameters&gt;]
+
+&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -694,7 +750,7 @@
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>The policy name to fetch for the groups.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -704,7 +760,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -741,8 +797,15 @@
     <CmdletObject verb="Get" noun="AzureRmIntuneiOSMAMApp">
       <Name>Get-AzureRmIntuneiOSMAMApp</Name>
       <GeneralHelp>
-        <Synopsis />
-        <Description />
+        <Synopsis>Cmdlet to get existing Apps associated to iOS Intune MAM policy Azure resource.</Synopsis>
+        <Description>Cmdlet to get existing apps associated to iOS Intune MAM policy Azure resource.
+
+SYNTAX
+    Get-AzureRmIntuneiOSMAMApp [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [&lt;CommonParameters&gt;]
+
+&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -765,7 +828,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -802,8 +865,15 @@
     <CmdletObject verb="Get" noun="AzureRmIntuneiOSMAMPolicy">
       <Name>Get-AzureRmIntuneiOSMAMPolicy</Name>
       <GeneralHelp>
-        <Synopsis />
-        <Description />
+        <Synopsis>Cmdlet to get existing iOS Intune MAM Policy.</Synopsis>
+        <Description>Cmdlet to get existing iOS Intune MAM Policy.
+
+SYNTAX
+    Get-AzureRmIntuneiOSMAMPolicy [-Name &lt;String&gt;] [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [&lt;CommonParameters&gt;]
+
+&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -826,7 +896,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>The policy name to fetch.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -836,7 +906,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -873,8 +943,15 @@
     <CmdletObject verb="Get" noun="AzureRmIntuneiOSMAMPolicyApp">
       <Name>Get-AzureRmIntuneiOSMAMPolicyApp</Name>
       <GeneralHelp>
-        <Synopsis />
-        <Description />
+        <Synopsis>Cmdlet to get existing Apps associated to iOS Intune MAM policy Azure resource.</Synopsis>
+        <Description>Cmdlet to get existing apps associated to iOS Intune MAM policy Azure resource.
+
+SYNTAX
+    Get-AzureRmIntuneiOSMAMPolicyApp -Name &lt;String&gt; [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [&lt;CommonParameters&gt;]
+
+&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -897,7 +974,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>The policy name for the apps to fetch.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -907,7 +984,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -944,8 +1021,15 @@
     <CmdletObject verb="Get" noun="AzureRmIntuneiOSMAMPolicyGroup">
       <Name>Get-AzureRmIntuneiOSMAMPolicyGroup</Name>
       <GeneralHelp>
-        <Synopsis />
-        <Description />
+        <Synopsis>Cmdlet to get existing Groups associated to iOS Intune MAM policy Azure resource.</Synopsis>
+        <Description>Cmdlet to get existing groups associated to iOS Intune MAM policy Azure resource.
+
+SYNTAX
+    Get-AzureRmIntuneiOSMAMPolicyGroup -Name &lt;String&gt; [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [&lt;CommonParameters&gt;]
+
+&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -968,7 +1052,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>The policy name to fetch for the groups.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -978,7 +1062,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -1015,8 +1099,15 @@
     <CmdletObject verb="New" noun="AzureRmIntuneAndroidMAMPolicy">
       <Name>New-AzureRmIntuneAndroidMAMPolicy</Name>
       <GeneralHelp>
-        <Synopsis />
-        <Description />
+        <Synopsis>A cmdlet that creates a new Android Intune MAM policy Azure resource.</Synopsis>
+        <Description>A cmdlet that creates a new Android Intune MAM policy Azure resource.
+
+SYNTAX
+    New-AzureRmIntuneAndroidMAMPolicy -FriendlyName &lt;String&gt; [-Description &lt;String&gt;] [-AllowDataTransferToApps &lt;AppSharingType&gt;] [-AllowDataTransferFromApps &lt;AppSharingType&gt;] [-Authentication &lt;ChoiceType&gt;] [-ClipboardSharing &lt;ClipboardSharingLevelType&gt;] [-DataBackup &lt;FilterType&gt;] [-FileSharingSaveAs &lt;FilterType&gt;] [-Pin &lt;ChoiceType&gt;] [-PinRetries &lt;Nullable`1[Int32]&gt;] [-DeviceCompliance &lt;OptionType&gt;] [-ManagedBrowser &lt;ChoiceType&gt;] [-RecheckAccessOfflineGracePeriodMinutes &lt;Nullable`1[Int32]&gt;] [-RecheckAccessTimeoutMinutes &lt;Nullable`1[Int32]&gt;] [-OfflineWipeIntervalDays &lt;Nullable`1[Int32]&gt;] [-FileEncryption &lt;ChoiceType&gt;] [-ScreenCapture &lt;FilterType&gt;] [-Force [&lt;SwitchParameter&gt;]] [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf [&lt;SwitchParameter&gt;]] [-Confirm [&lt;SwitchParameter&gt;]] [&lt;CommonParameters&gt;]
+
+&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -1039,7 +1130,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>The policy friendly name.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -1049,7 +1140,7 @@
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>The policy description.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="AppSharingType" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -1064,7 +1155,7 @@
           <Aliases>
             <string>AppSharingFromLevel</string>
           </Aliases>
-          <Description />
+          <Description>Indicates whether the application is allowed to receive information shared by other applications. Information can be restricted to no applications, only managed applications, or be allowed from all applications.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="AppSharingType" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -1079,7 +1170,7 @@
           <Aliases>
             <string>AppSharingToLevel</string>
           </Aliases>
-          <Description />
+          <Description>Indicates whether the application is allowed to share information with other applications. Information can be shared with no applications, only managed applications, or shared to all applications.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ChoiceType" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -1091,7 +1182,7 @@
             <string>System.Management.Automation.ValidateSetAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>Indicates whether corporate credentials are required to access the application.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ClipboardSharingLevelType" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -1106,7 +1197,7 @@
           <Aliases>
             <string>ClipboardSharingLevel</string>
           </Aliases>
-          <Description />
+          <Description>Indicates whether to restrict cut, copy and paste with other applications.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="FilterType" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -1118,7 +1209,7 @@
             <string>System.Management.Automation.ValidateSetAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>Indicates whether to prevent iTunes and iCloud backups.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="FilterType" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -1130,7 +1221,7 @@
             <string>System.Management.Automation.ValidateSetAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>Indicates whether to prevent ‘Save As’ from the application.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ChoiceType" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -1142,7 +1233,7 @@
             <string>System.Management.Automation.ValidateSetAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>Indicates whether simple PIN is required to access the application.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="Nullable`1[Int32]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -1156,7 +1247,7 @@
           <Aliases>
             <string>PinNumRetry</string>
           </Aliases>
-          <Description />
+          <Description>When a simple PIN is required to access the application, this indicates the number of attempts before a PIN reset.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="OptionType" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -1168,7 +1259,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>Indicates whether managed applications are blocked from running on rooted or jailbroken devices.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ChoiceType" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -1180,7 +1271,7 @@
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>Indicates whether web content from the application is forced to run in the managed browser.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="Nullable`1[Int32]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -1193,7 +1284,7 @@
           <Aliases>
             <string>AccessRecheckOfflineTimeout</string>
           </Aliases>
-          <Description />
+          <Description>Indicates how long to wait in minutes before re-checking access requirements on the device if the device is offline.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="Nullable`1[Int32]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -1205,7 +1296,7 @@
           <Aliases>
             <string>AccessRecheckOnlineTimeout</string>
           </Aliases>
-          <Description />
+          <Description>Indicates how long to wait in minutes before re-checking access requirements on the device.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="Nullable`1[Int32]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -1217,7 +1308,7 @@
           <Aliases>
             <string>OfflineWipeTimeout</string>
           </Aliases>
-          <Description />
+          <Description>Indicates the number of days a device must be offline before application data is automatically wiped.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ChoiceType" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -1228,7 +1319,7 @@
             <string>System.Management.Automation.PSDefaultValueAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>Indicates whether to encrypt application data.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="FilterType" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -1239,7 +1330,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>Indicates whether fingerprints are allowed instead of PIN to access the application.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -1248,7 +1339,7 @@
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>If set to true, don't ask for confirmation.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -1258,7 +1349,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -1319,8 +1410,16 @@
     <CmdletObject verb="New" noun="AzureRmIntuneiOSMAMPolicy">
       <Name>New-AzureRmIntuneiOSMAMPolicy</Name>
       <GeneralHelp>
-        <Synopsis />
-        <Description />
+        <Synopsis>A cmdlet that creates a new iOS Intune MAM policy azure resource.</Synopsis>
+        <Description>A cmdlet that creates a new iOS Intune MAM policy azure resource.
+
+SYNTAX
+    New-AzureRmIntuneiOSMAMPolicy -FriendlyName &lt;String&gt; [-Description &lt;String&gt;] [-AllowDataTransferToApps &lt;AppSharingType&gt;] [-AllowDataTransferFromApps &lt;AppSharingType&gt;] [-Authentication &lt;ChoiceType&gt;] [-ClipboardSharing &lt;ClipboardSharingLevelType&gt;] [-DataBackup &lt;FilterType&gt;] [-FileSharingSaveAs &lt;FilterType&gt;] [-Pin &lt;ChoiceType&gt;] [-PinRetries &lt;Nullable`1[Int32]&gt;] [-DeviceCompliance &lt;OptionType&gt;] [-ManagedBrowser &lt;ChoiceType&gt;] [-RecheckAccessOfflineGracePeriodMinutes &lt;Nullable`1[Int32]&gt;] [-RecheckAccessTimeoutMinutes &lt;Nullable`1[Int32]&gt;] [-OfflineWipeIntervalDays &lt;Nullable`1[Int32]&gt;] [-FileEncryptionLevel &lt;DeviceLockType&gt;] [-AllowFingerprint &lt;OptionType&gt;] [-Force [&lt;SwitchParameter&gt;]] [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf [&lt;SwitchParameter&gt;]] [-Confirm [&lt;SwitchParameter&gt;]] [&lt;CommonParameters&gt;]
+
+
+&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -1343,7 +1442,7 @@
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>The policy friendly name.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -1353,7 +1452,7 @@
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>The policy description.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="AppSharingType" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -1368,7 +1467,7 @@
           <Aliases>
             <string>AppSharingFromLevel</string>
           </Aliases>
-          <Description />
+          <Description>Indicates whether the application is allowed to receive information shared by other applications. Information can be restricted to no applications, only managed applications, or be allowed from all applications.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="AppSharingType" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -1383,7 +1482,7 @@
           <Aliases>
             <string>AppSharingToLevel</string>
           </Aliases>
-          <Description />
+          <Description>Indicates whether the application is allowed to share information with other applications. Information can be shared with no applications, only managed applications, or shared to all applications.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ChoiceType" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -1395,7 +1494,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>Indicates whether corporate credentials are required to access the application.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ClipboardSharingLevelType" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -1410,7 +1509,7 @@
           <Aliases>
             <string>ClipboardSharingLevel</string>
           </Aliases>
-          <Description />
+          <Description>Indicates whether to restrict cut, copy and paste with other applications.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="FilterType" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -1422,7 +1521,7 @@
             <string>System.Management.Automation.PSDefaultValueAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>Indicates whether to prevent iTunes and iCloud backups.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="FilterType" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -1434,7 +1533,7 @@
             <string>System.Management.Automation.ValidateSetAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>Indicates whether to prevent ‘Save As’ from the application.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ChoiceType" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -1446,7 +1545,7 @@
             <string>System.Management.Automation.ValidateSetAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>Indicates whether simple PIN is required to access the application.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="Nullable`1[Int32]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -1460,31 +1559,31 @@
           <Aliases>
             <string>PinNumRetry</string>
           </Aliases>
-          <Description />
+          <Description>When a simple PIN is required to access the application, this indicates the number of attempts before a PIN reset.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="OptionType" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>DeviceCompliance</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ValidateSetAttribute</string>
             <string>System.Management.Automation.PSDefaultValueAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>Indicates whether managed applications are blocked from running on rooted or jailbroken devices.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ChoiceType" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>ManagedBrowser</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateSetAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.PSDefaultValueAttribute</string>
+            <string>System.Management.Automation.ValidateSetAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>Indicates whether web content from the application is forced to run in the managed browser.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="Nullable`1[Int32]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -1497,19 +1596,19 @@
           <Aliases>
             <string>AccessRecheckOfflineTimeout</string>
           </Aliases>
-          <Description />
+          <Description>Indicates how long to wait in minutes before re-checking access requirements on the device if the device is offline.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="Nullable`1[Int32]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>RecheckAccessTimeoutMinutes</Name>
           <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases>
             <string>AccessRecheckOnlineTimeout</string>
           </Aliases>
-          <Description />
+          <Description>Indicates how long to wait in minutes before re-checking access requirements on the device.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="Nullable`1[Int32]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -1521,7 +1620,7 @@
           <Aliases>
             <string>OfflineWipeTimeout</string>
           </Aliases>
-          <Description />
+          <Description>Indicates the number of days a device must be offline before application data is automatically wiped.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="DeviceLockType" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -1532,21 +1631,21 @@
             <string>System.Management.Automation.PSDefaultValueAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>Indicates whether fingerprints are allowed instead of PIN to access the application.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="OptionType" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>AllowFingerprint</Name>
           <Attributes>
             <string>System.Management.Automation.PSDefaultValueAttribute</string>
-            <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases>
             <string>TouchId</string>
           </Aliases>
-          <Description />
+          <Description>Indicates whether fingerprints are allowed instead of PIN to access the application.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -1555,7 +1654,7 @@
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>If set to true, don't ask for confirmation.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -1565,7 +1664,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -1626,8 +1725,15 @@
     <CmdletObject verb="Remove" noun="AzureRmIntuneAndroidMAMPolicy">
       <Name>Remove-AzureRmIntuneAndroidMAMPolicy</Name>
       <GeneralHelp>
-        <Synopsis />
-        <Description />
+        <Synopsis>A cmdlet that removes Intune Andriod MAM Policy.</Synopsis>
+        <Description>A cmdlet that removes Intune Andriod MAM Policy.
+
+SYNTAX
+    Remove-AzureRmIntuneAndroidMAMPolicy -Name &lt;String&gt; [-Force [&lt;SwitchParameter&gt;]] [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf [&lt;SwitchParameter&gt;]] [-Confirm [&lt;SwitchParameter&gt;]] [&lt;CommonParameters&gt;]
+
+&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -1650,7 +1756,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>The Android Policy Name (Policy Guid) to remove the policy.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -1659,7 +1765,7 @@
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>If set to true, don't ask for confirmation.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -1669,7 +1775,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -1730,8 +1836,15 @@
     <CmdletObject verb="Remove" noun="AzureRmIntuneAndroidMAMPolicyApp">
       <Name>Remove-AzureRmIntuneAndroidMAMPolicyApp</Name>
       <GeneralHelp>
-        <Synopsis />
-        <Description />
+        <Synopsis>A cmdlet to remove a linked App from Android Intune MAM policy Azure resource.</Synopsis>
+        <Description>A cmdlet to remove a linked app from Android Intune MAM policy Azure resource.
+
+SYNTAX
+    Remove-AzureRmIntuneAndroidMAMPolicyApp -Name &lt;String&gt; -AppName &lt;String&gt; [-Force [&lt;SwitchParameter&gt;]] [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf [&lt;SwitchParameter&gt;]] [-Confirm [&lt;SwitchParameter&gt;]] [&lt;CommonParameters&gt;]
+
+&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -1754,7 +1867,7 @@
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>The Android policy Name.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -1764,7 +1877,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>The Android App name to remove.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -1773,7 +1886,7 @@
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>If set to true, don't ask for confirmation.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -1783,7 +1896,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -1844,8 +1957,15 @@
     <CmdletObject verb="Remove" noun="AzureRmIntuneAndroidMAMPolicyGroup">
       <Name>Remove-AzureRmIntuneAndroidMAMPolicyGroup</Name>
       <GeneralHelp>
-        <Synopsis />
-        <Description />
+        <Synopsis>A cmdlet to remove a linked Group from an Android Intune MAM policy Azure resource.</Synopsis>
+        <Description>A cmdlet to remove a linked group from an Android Intune MAM policy Azure resource.
+
+SYNTAX
+    Remove-AzureRmIntuneAndroidMAMPolicyGroup -Name &lt;String&gt; -GroupName &lt;String&gt; [-Force [&lt;SwitchParameter&gt;]] [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf [&lt;SwitchParameter&gt;]] [-Confirm [&lt;SwitchParameter&gt;]] [&lt;CommonParameters&gt;]
+
+&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -1868,7 +1988,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>The Android policy name.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -1878,7 +1998,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>The group name for Android policy to remove.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -1887,7 +2007,7 @@
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>If set to true, don't ask for confirmation.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -1897,7 +2017,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -1958,8 +2078,15 @@
     <CmdletObject verb="Remove" noun="AzureRmIntuneIOSMAMPolicy">
       <Name>Remove-AzureRmIntuneIOSMAMPolicy</Name>
       <GeneralHelp>
-        <Synopsis />
-        <Description />
+        <Synopsis>A cmdlet that removes Intune iOS MAM Policy.</Synopsis>
+        <Description>A cmdlet that removes Intune iOS MAM Policy.
+
+SYNTAX
+    Remove-AzureRmIntuneIOSMAMPolicy -Name &lt;String&gt; [-Force [&lt;SwitchParameter&gt;]] [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf [&lt;SwitchParameter&gt;]] [-Confirm [&lt;SwitchParameter&gt;]] [&lt;CommonParameters&gt;]
+
+&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -1978,11 +2105,11 @@
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
           <Name>Name</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>The iOS Policy Name (Policy Guid) to remove the policy.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -1991,7 +2118,7 @@
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>If set to true, don't ask for confirmation.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -2001,7 +2128,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -2062,8 +2189,15 @@
     <CmdletObject verb="Remove" noun="AzureRmIntuneiOSMAMPolicyApp">
       <Name>Remove-AzureRmIntuneiOSMAMPolicyApp</Name>
       <GeneralHelp>
-        <Synopsis />
-        <Description />
+        <Synopsis>A cmdlet to remove a linked App from an iOS Intune MAM policy Azure resource.</Synopsis>
+        <Description>A cmdlet to remove a linked app from an iOS Intune MAM policy Azure resource.
+
+SYNTAX
+    Remove-AzureRmIntuneiOSMAMPolicyApp -Name &lt;String&gt; -AppName &lt;String&gt; [-Force [&lt;SwitchParameter&gt;]] [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf [&lt;SwitchParameter&gt;]] [-Confirm [&lt;SwitchParameter&gt;]] [&lt;CommonParameters&gt;]
+
+&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -2086,7 +2220,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>The iOS policy name.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -2096,7 +2230,7 @@
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>The iOS App Name to remove.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -2105,7 +2239,7 @@
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>If set to true, don't ask for confirmation.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -2115,7 +2249,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -2176,8 +2310,12 @@
     <CmdletObject verb="Remove" noun="AzureRmIntuneiOSMAMPolicyGroup">
       <Name>Remove-AzureRmIntuneiOSMAMPolicyGroup</Name>
       <GeneralHelp>
-        <Synopsis />
-        <Description />
+        <Synopsis>A cmdlet to remove a linked Group from an iOS Intune MAM policy Azure resource.</Synopsis>
+        <Description>A cmdlet to remove a linked group from an iOS Intune MAM policy Azure resource.
+
+&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -2200,7 +2338,7 @@
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>The iOS policy name.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -2210,7 +2348,7 @@
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>The group name for iOS policy to remove.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -2219,7 +2357,7 @@
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>If set to true, don't ask for confirmation.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -2229,7 +2367,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -2290,8 +2428,15 @@
     <CmdletObject verb="Set" noun="AzureRmIntuneAndroidMAMPolicy">
       <Name>Set-AzureRmIntuneAndroidMAMPolicy</Name>
       <GeneralHelp>
-        <Synopsis />
-        <Description />
+        <Synopsis>A cmdlet that edits an existing Android Intune MAM policy.</Synopsis>
+        <Description>A cmdlet that edits an existing Android Intune MAM policy.
+
+SYNTAX
+    Set-AzureRmIntuneAndroidMAMPolicy -Name &lt;String&gt; [-FriendlyName &lt;String&gt;] [-Description &lt;String&gt;] [-AllowDataTransferToApps &lt;Nullable`1[AppSharingType]&gt;] [-AllowDataTransferFromApps &lt;Nullable`1[AppSharingType]&gt;] [-Authentication &lt;Nullable`1[ChoiceType]&gt;] [-ClipboardSharing &lt;Nullable`1[ClipboardSharingLevelType]&gt;] [-DataBackup &lt;Nullable`1[FilterType]&gt;] [-FileSharingSaveAs &lt;Nullable`1[FilterType]&gt;] [-Pin &lt;Nullable`1[ChoiceType]&gt;] [-PinRetries &lt;Nullable`1[Int32]&gt;] [-DeviceCompliance &lt;Nullable`1[OptionType]&gt;] [-ManagedBrowser &lt;Nullable`1[ChoiceType]&gt;] [-RecheckAccessOfflineGracePeriodMinutes &lt;Nullable`1[Int32]&gt;] [-RecheckAccessTimeoutMinutes &lt;Nullable`1[Int32]&gt;] [-OfflineWipeIntervalDays &lt;Nullable`1[Int32]&gt;] [-FileEncryption &lt;Nullable`1[ChoiceType]&gt;] [-ScreenCapture &lt;Nullable`1[FilterType]&gt;] [-Force [&lt;SwitchParameter&gt;]] [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf [&lt;SwitchParameter&gt;]] [-Confirm [&lt;SwitchParameter&gt;]] [&lt;CommonParameters&gt;]
+
+&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -2314,7 +2459,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>The policy name to patch.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -2324,7 +2469,7 @@
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>The policy friendly name.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -2334,93 +2479,93 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>The policy description.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="Nullable`1[AppSharingType]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>AllowDataTransferToApps</Name>
           <Attributes>
-            <string>System.Management.Automation.AliasAttribute</string>
-            <string>System.Management.Automation.ValidateSetAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.ValidateSetAttribute</string>
           </Attributes>
           <Aliases>
             <string>AppSharingFromLevel</string>
           </Aliases>
-          <Description />
+          <Description>Indicates whether the application is allowed to receive information shared by other applications. Information can be restricted to no applications, only managed applications, or be allowed from all applications.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="Nullable`1[AppSharingType]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>AllowDataTransferFromApps</Name>
           <Attributes>
-            <string>System.Management.Automation.AliasAttribute</string>
-            <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ValidateSetAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases>
             <string>AppSharingToLevel</string>
           </Aliases>
-          <Description />
+          <Description>Indicates whether the application is allowed to share information with other applications. Information can be shared with no applications, only managed applications, or shared to all applications.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="Nullable`1[ChoiceType]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>Authentication</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
-            <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ValidateSetAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>Indicates whether corporate credentials are required to access the application.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="Nullable`1[ClipboardSharingLevelType]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>ClipboardSharing</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateSetAttribute</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-            <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.ValidateSetAttribute</string>
           </Attributes>
           <Aliases>
             <string>ClipboardSharingLevel</string>
           </Aliases>
-          <Description />
+          <Description>Indicates whether to restrict cut, copy and paste with other applications.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="Nullable`1[FilterType]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>DataBackup</Name>
           <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ValidateSetAttribute</string>
-            <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>Indicates whether to prevent iTunes and iCloud backups.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="Nullable`1[FilterType]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>FileSharingSaveAs</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ValidateSetAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>Indicates whether to prevent ‘Save As’ from the application.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="Nullable`1[ChoiceType]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>Pin</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
-            <string>System.Management.Automation.ValidateSetAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateSetAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>Indicates whether simple PIN is required to access the application.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="Nullable`1[Int32]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -2434,18 +2579,18 @@
           <Aliases>
             <string>PinNumRetry</string>
           </Aliases>
-          <Description />
+          <Description>When a simple PIN is required to access the application, this indicates the number of attempts before a PIN reset.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="Nullable`1[OptionType]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>DeviceCompliance</Name>
           <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ValidateSetAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>Indicates whether managed applications are blocked from running on rooted or jailbroken devices.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="Nullable`1[ChoiceType]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -2456,64 +2601,64 @@
             <string>System.Management.Automation.ValidateSetAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>Indicates whether web content from the application is forced to run in the managed browser.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="Nullable`1[Int32]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>RecheckAccessOfflineGracePeriodMinutes</Name>
           <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.AliasAttribute</string>
-            <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases>
             <string>AccessRecheckOfflineTimeout</string>
           </Aliases>
-          <Description />
+          <Description>Indicates how long to wait in minutes before re-checking access requirements on the device if the device is offline.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="Nullable`1[Int32]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>RecheckAccessTimeoutMinutes</Name>
           <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases>
             <string>AccessRecheckOnlineTimeout</string>
           </Aliases>
-          <Description />
+          <Description>Indicates how long to wait in minutes before re-checking access requirements on the device.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="Nullable`1[Int32]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>OfflineWipeIntervalDays</Name>
           <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases>
             <string>OfflineWipeTimeout</string>
           </Aliases>
-          <Description />
+          <Description>Indicates the number of days a device must be offline before application data is automatically wiped.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="Nullable`1[ChoiceType]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>FileEncryption</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>Indicates whether to encrypt application data.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="Nullable`1[FilterType]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>ScreenCapture</Name>
           <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>Indicates whether fingerprints are allowed instead of PIN to access the application.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -2522,7 +2667,7 @@
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>If set to true, don't ask for confirmation.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -2532,7 +2677,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -2593,8 +2738,15 @@
     <CmdletObject verb="Set" noun="AzureRmIntuneiOSMAMPolicy">
       <Name>Set-AzureRmIntuneiOSMAMPolicy</Name>
       <GeneralHelp>
-        <Synopsis />
-        <Description />
+        <Synopsis>A cmdlet that edits an existing iOS Intune MAM policy.</Synopsis>
+        <Description>A cmdlet that edits an existing iOS Intune MAM policy.
+
+SYNTAX
+    Set-AzureRmIntuneiOSMAMPolicy -Name &lt;String&gt; [-FriendlyName &lt;String&gt;] [-Description &lt;String&gt;] [-AllowDataTransferToApps &lt;Nullable`1[AppSharingType]&gt;] [-AllowDataTransferFromApps &lt;Nullable`1[AppSharingType]&gt;] [-Authentication &lt;Nullable`1[ChoiceType]&gt;] [-ClipboardSharing &lt;Nullable`1[ClipboardSharingLevelType]&gt;] [-DataBackup &lt;Nullable`1[FilterType]&gt;] [-FileSharingSaveAs &lt;Nullable`1[FilterType]&gt;] [-Pin &lt;Nullable`1[ChoiceType]&gt;] [-PinRetries &lt;Nullable`1[Int32]&gt;] [-DeviceCompliance &lt;Nullable`1[OptionType]&gt;] [-ManagedBrowser &lt;Nullable`1[ChoiceType]&gt;] [-RecheckAccessOfflineGracePeriodMinutes &lt;Nullable`1[Int32]&gt;] [-RecheckAccessTimeoutMinutes &lt;Nullable`1[Int32]&gt;] [-OfflineWipeIntervalDays &lt;Nullable`1[Int32]&gt;] [-FileEncryptionLevel &lt;Nullable`1[DeviceLockType]&gt;] [-AllowFingerprint &lt;Nullable`1[OptionType]&gt;] [-Force [&lt;SwitchParameter&gt;]] [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf [&lt;SwitchParameter&gt;]] [-Confirm [&lt;SwitchParameter&gt;]] [&lt;CommonParameters&gt;]
+
+&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -2617,7 +2769,7 @@
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>The policy name to patch.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -2627,7 +2779,7 @@
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>The policy friendly name.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -2637,21 +2789,21 @@
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>The policy description.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="Nullable`1[AppSharingType]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>AllowDataTransferToApps</Name>
           <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ValidateSetAttribute</string>
-            <string>System.Management.Automation.AliasAttribute</string>
-            <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases>
             <string>AppSharingFromLevel</string>
           </Aliases>
-          <Description />
+          <Description>Indicates whether the application is allowed to receive information shared by other applications. Information can be restricted to no applications, only managed applications, or be allowed from all applications.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="Nullable`1[AppSharingType]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -2665,126 +2817,126 @@
           <Aliases>
             <string>AppSharingToLevel</string>
           </Aliases>
-          <Description />
+          <Description>Indicates whether the application is allowed to share information with other applications. Information can be shared with no applications, only managed applications, or shared to all applications.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="Nullable`1[ChoiceType]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>Authentication</Name>
           <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ValidateSetAttribute</string>
-            <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>Indicates whether corporate credentials are required to access the application.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="Nullable`1[ClipboardSharingLevelType]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>ClipboardSharing</Name>
           <Attributes>
+            <string>System.Management.Automation.ValidateSetAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.AliasAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
-            <string>System.Management.Automation.ValidateSetAttribute</string>
           </Attributes>
           <Aliases>
             <string>ClipboardSharingLevel</string>
           </Aliases>
-          <Description />
+          <Description>Indicates whether to restrict cut, copy and paste with other applications.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="Nullable`1[FilterType]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>DataBackup</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateSetAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateSetAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>Indicates whether to prevent iTunes and iCloud backups.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="Nullable`1[FilterType]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>FileSharingSaveAs</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateSetAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+            <string>System.Management.Automation.ValidateSetAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>Indicates whether to prevent ‘Save As’ from the application.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="Nullable`1[ChoiceType]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>Pin</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateSetAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateSetAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>Indicates whether simple PIN is required to access the application.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="Nullable`1[Int32]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>PinRetries</Name>
           <Attributes>
-            <string>System.Management.Automation.AliasAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
-            <string>System.Management.Automation.ValidateRangeAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.ValidateRangeAttribute</string>
           </Attributes>
           <Aliases>
             <string>PinNumRetry</string>
           </Aliases>
-          <Description />
+          <Description>When a simple PIN is required to access the application, this indicates the number of attempts before a PIN reset.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="Nullable`1[OptionType]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>DeviceCompliance</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.ValidateSetAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+            <string>System.Management.Automation.ValidateSetAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>Indicates whether managed applications are blocked from running on rooted or jailbroken devices.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="Nullable`1[ChoiceType]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>ManagedBrowser</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ValidateSetAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>Indicates whether web content from the application is forced to run in the managed browser.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="Nullable`1[Int32]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>RecheckAccessOfflineGracePeriodMinutes</Name>
           <Attributes>
-            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases>
             <string>AccessRecheckOfflineTimeout</string>
           </Aliases>
-          <Description />
+          <Description>Indicates how long to wait in minutes before re-checking access requirements on the device if the device is offline.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="Nullable`1[Int32]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
           <Name>RecheckAccessTimeoutMinutes</Name>
           <Attributes>
-            <string>System.Management.Automation.AliasAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
           </Attributes>
           <Aliases>
             <string>AccessRecheckOnlineTimeout</string>
           </Aliases>
-          <Description />
+          <Description>Indicates how long to wait in minutes before re-checking access requirements on the device.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="Nullable`1[Int32]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -2796,7 +2948,7 @@
           <Aliases>
             <string>OfflineWipeTimeout</string>
           </Aliases>
-          <Description />
+          <Description>Indicates the number of days a device must be offline before application data is automatically wiped.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="Nullable`1[DeviceLockType]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -2806,7 +2958,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>Indicates whether fingerprints are allowed instead of PIN to access the application.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="Nullable`1[OptionType]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -2819,7 +2971,7 @@
           <Aliases>
             <string>TouchId</string>
           </Aliases>
-          <Description />
+          <Description>Indicates whether fingerprints are allowed instead of PIN to access the application.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -2828,7 +2980,7 @@
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>If set to true, don't ask for confirmation.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -2838,7 +2990,7 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
           </Attributes>
           <Aliases />
-          <Description />
+          <Description>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">

@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Intune
     using System.Management.Automation;
 
     /// <summary>
-    /// A cmdlet to link an app to iOS Intune MAM policy Azure resource.
+    /// A cmdlet to remove a linked app from an iOS Intune MAM policy Azure resource.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmIntuneiOSMAMPolicyApp", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
     public sealed class RemoveIntuneiOSMAMPolicyAppCmdlet : IntuneBaseCmdlet

@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Intune
     using System.Management.Automation;
 
     /// <summary>
-    /// A cmdlet to link a group to Android Intune MAM policy Azure resource.
+    /// A cmdlet to remove a linked group from an Android Intune MAM policy Azure resource.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmIntuneAndroidMAMPolicyGroup", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
     public sealed class RemoveIntuneAndroidMAMPolicyGroupCmdlet : IntuneBaseCmdlet
