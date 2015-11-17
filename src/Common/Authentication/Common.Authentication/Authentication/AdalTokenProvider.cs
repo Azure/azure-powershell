@@ -30,13 +30,8 @@ namespace Microsoft.Azure.Common.Authentication
         private readonly ITokenProvider servicePrincipalTokenProvider;
 
         public AdalTokenProvider()
-            : this(new ConsoleParentWindow())
         {
-        }
-
-        public AdalTokenProvider(IWin32Window parentWindow)
-        {
-            this.userTokenProvider = new UserTokenProvider(parentWindow);
+            this.userTokenProvider = new UserTokenProvider();
             this.servicePrincipalTokenProvider = new ServicePrincipalTokenProvider();
         }
 

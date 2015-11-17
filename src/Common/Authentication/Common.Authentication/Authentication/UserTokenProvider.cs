@@ -32,11 +32,9 @@ namespace Microsoft.Azure.Common.Authentication
     /// </summary>
     internal class UserTokenProvider : ITokenProvider
     {
-        private readonly IWin32Window parentWindow;
 
-        public UserTokenProvider(IWin32Window parentWindow)
+        public UserTokenProvider()
         {
-            this.parentWindow = parentWindow;
         }
 
         public IAccessToken GetAccessToken(
@@ -78,7 +76,6 @@ namespace Microsoft.Azure.Common.Authentication
                 Resources.UPNRenewTokenTrace, 
                 token.AuthResult.AccessTokenType, 
                 token.AuthResult.ExpiresOn,
-                token.AuthResult.IsMultipleResourceRefreshToken, 
                 token.AuthResult.TenantId, 
                 token.UserId);
 
@@ -109,10 +106,7 @@ namespace Microsoft.Azure.Common.Authentication
             return new AuthenticationContext(
                 config.AdEndpoint + config.AdDomain, 
                 config.ValidateAuthority, 
-                config.TokenCache)
-            {
-                OwnerWindow = parentWindow
-            };
+                config.TokenCache);
         }
 
         // We have to run this in a separate thread to guarantee that it's STA. This method
@@ -222,45 +216,18 @@ namespace Microsoft.Azure.Common.Authentication
                 config.AdEndpoint,
                 config.ClientId, 
                 config.ClientRedirectUri);
-            if (string.IsNullOrEmpty(userId))
+            if (string.IsNullOrEmpty(userId) || password == null)
             {
-                if (promptBehavior != PromptBehavior.Never)
-                {
-                    ClearCookies();
-                }
+                throw new NotImplementedException("Device based authencation is not implemented.");
+            }
 
-                result = context.AcquireTokenAsync(
-                                    config.ResourceClientUri, 
-                                    config.ClientId,
-                                    config.ClientRedirectUri, 
-                                    promptBehavior,
-                                    UserIdentifier.AnyUser, 
-                                    AdalConfiguration.EnableEbdMagicCookie)
-                                .ConfigureAwait(false).GetAwaiter().GetResult();
-            }
-            else
-            {
-                if (password == null)
-                {
-                    result = context.AcquireTokenAsync(
-                                        config.ResourceClientUri, 
-                                        config.ClientId,
-                                        config.ClientRedirectUri, 
-                                        promptBehavior,
-                                        new UserIdentifier(userId, UserIdentifierType.OptionalDisplayableId),
-                                        AdalConfiguration.EnableEbdMagicCookie)
-                                    .ConfigureAwait(false).GetAwaiter().GetResult();
-                }
-                else
-                {
-                    UserCredential credential = new UserCredential(userId, password.ConvertToUnsecureString());
-                    result = context.AcquireTokenAsync(
-                                        config.ResourceClientUri, 
-                                        config.ClientId, 
-                                        credential)
-                                    .ConfigureAwait(false).GetAwaiter().GetResult();
-                }
-            }
+            UserCredential credential = new UserCredential(userId, password.ConvertToUnsecureString());
+            result = context.AcquireTokenAsync(
+                                config.ResourceClientUri, 
+                                config.ClientId, 
+                                credential)
+                            .ConfigureAwait(false).GetAwaiter().GetResult();
+
             return result;
         }
 
@@ -273,6 +240,7 @@ namespace Microsoft.Azure.Common.Authentication
             }
             return message;
         }
+
         /// <summary>
         /// Implementation of <see cref="IAccessToken"/> using data from ADAL
         /// </summary>

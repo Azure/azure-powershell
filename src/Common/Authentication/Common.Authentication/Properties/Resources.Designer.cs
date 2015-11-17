@@ -556,7 +556,7 @@ namespace Microsoft.Azure.Common.Authentication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [Common.Authentication]: Renewing Token with Type: &apos;{0}&apos;, Expiry: &apos;{1}&apos;, MultipleResource? &apos;{2}&apos;, Tenant: &apos;{3}&apos;, UserId: &apos;{4}&apos;.
+        ///   Looks up a localized string similar to [Common.Authentication]: Renewing Token with Type: &apos;{0}&apos;, Expiry: &apos;{1}&apos;, Tenant: &apos;{2}&apos;, UserId: &apos;{3}&apos;.
         /// </summary>
         public static string UPNRenewTokenTrace {
             get {

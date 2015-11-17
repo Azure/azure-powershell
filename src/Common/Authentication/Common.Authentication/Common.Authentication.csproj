@@ -51,7 +51,6 @@
     <Compile Include="Authentication\AccessTokenCredential.cs" />
     <Compile Include="Authentication\AdalConfiguration.cs" />
     <Compile Include="Authentication\AdalTokenProvider.cs" />
-    <Compile Include="Authentication\ConsoleParentWindow.cs" />
     <Compile Include="Authentication\CredStore.cs" />
     <Compile Include="Authentication\IAccessToken.cs" />
     <Compile Include="Authentication\ITokenProvider.cs" />

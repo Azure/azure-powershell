@@ -103,8 +103,9 @@ namespace Microsoft.Azure.Common.Authentication.Factories
 
             if (context.Account.Type == AzureAccount.AccountType.Certificate)
             {
-                var certificate = AzureSession.DataStore.GetCertificate(context.Account.Id);
-                return new CertificateCredentials(context.Subscription.Id.ToString(), certificate);
+                throw new NotImplementedException("ADAL 3.6.210231457-alpha does not support certificate based authentication.");
+                //var certificate = AzureSession.DataStore.GetCertificate(context.Account.Id);
+                //return new CertificateCredentials(context.Subscription.Id.ToString(), certificate);
             }
 
             if (context.Account.Type == AzureAccount.AccountType.AccessToken)
