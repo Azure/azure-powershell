@@ -23,8 +23,9 @@ namespace Microsoft.Azure.Commands.Network
     {
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The AuthorizationKey")]
-        public string AuthorizationKey { get; set; }
+            HelpMessage = "The name of the Authorization")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -35,14 +36,14 @@ namespace Microsoft.Azure.Commands.Network
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
-            if (!string.IsNullOrEmpty(this.AuthorizationKey))
+            if (!string.IsNullOrEmpty(this.Name))
             {
                 var authorization =
                     this.Circuit.Authorizations.First(
                         resource =>
                         string.Equals(
                             resource.Name,
-                            this.AuthorizationKey,
+                            this.Name,
                             System.StringComparison.CurrentCultureIgnoreCase));
 
                 WriteObject(authorization);

@@ -20,7 +20,7 @@ using Microsoft.PowerShell.Commands;
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet(VerbsCommon.Add, "AzureRmDataLakeStoreItemContent"), OutputType(typeof (bool))]
-    public class AddAzureDataLakeStoreContent : DataLakeStoreFileSystemCmdletBase
+    public class AddAzureDataLakeStoreItemContent : DataLakeStoreFileSystemCmdletBase
     {
         private FileSystemCmdletProviderEncoding _encoding = FileSystemCmdletProviderEncoding.UTF8;
 

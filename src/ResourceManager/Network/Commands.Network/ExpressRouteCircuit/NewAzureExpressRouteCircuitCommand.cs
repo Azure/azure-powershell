@@ -90,6 +90,12 @@ namespace Microsoft.Azure.Commands.Network
         public List<PSPeering> Peering { get; set; }
 
         [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public List<PSExpressRouteCircuitAuthorization> Authorization { get; set; }
+
+        [Parameter(
               Mandatory = true,
               ValueFromPipelineByPropertyName = true)]
         [ValidateSet(
@@ -159,6 +165,8 @@ namespace Microsoft.Azure.Commands.Network
 
             circuit.Peerings = new List<PSPeering>();
             circuit.Peerings = this.Peering;
+            circuit.Authorizations = new List<PSExpressRouteCircuitAuthorization>();
+            circuit.Authorizations = this.Authorization;
             circuit.BillingType = this.BillingType;
 
             // Map to the sdk object

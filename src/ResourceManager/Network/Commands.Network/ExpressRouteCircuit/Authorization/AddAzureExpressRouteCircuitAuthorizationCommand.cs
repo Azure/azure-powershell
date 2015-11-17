@@ -24,6 +24,12 @@ namespace Microsoft.Azure.Commands.Network
     public class AddAzureExpressRouteCircuitAuthorizationCommand : AzureExpressRouteCircuitAuthorizationBase
     {
         [Parameter(
+            Mandatory = true,
+            HelpMessage = "The name of the Authorization")]
+        [ValidateNotNullOrEmpty]
+        public override string Name { get; set; }
+
+        [Parameter(
            Mandatory = true,
            ValueFromPipeline = true,
            HelpMessage = "The Circuit")]
@@ -32,19 +38,16 @@ namespace Microsoft.Azure.Commands.Network
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
-            var authorization = this.Circuit.Authorizations.SingleOrDefault(resource => string.Equals(resource.Name, this.AuthorizationKey, System.StringComparison.CurrentCultureIgnoreCase));
+            var authorization = this.Circuit.Authorizations.SingleOrDefault(resource => string.Equals(resource.Name,this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
             if (authorization != null)
             {
-                throw new ArgumentException("Authorization with the specified key already exists");
+                throw new ArgumentException("Authorization with the specified name already exists");
             }
 
             authorization = new PSExpressRouteCircuitAuthorization();
 
-            authorization.AuthorizationKey = this.AuthorizationKey;
-            authorization.AuthorizationUseStatus = this.AuthorizationUseStatus;
-            authorization.ProvisioningState = this.ProvisioningState;
-
+            authorization.Name = this.Name;
             this.Circuit.Authorizations.Add(authorization);
 
             WriteObject(this.Circuit);
