@@ -329,7 +329,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                 this.WriteProgressAction = writeProgressAction;
                 this.CancellationToken = cancellationToken;
                 this.LastState = "Starting";
-                this.ProgressRecord = new ProgressRecord(activityId: 0, activity: activityName, statusDescription: "Starting - 0.00% completed.");
+                this.ProgressRecord = new ProgressRecord(activityId: 0, activity: activityName, status: "Starting - 0.00% completed.");
             }
 
             /// <summary>

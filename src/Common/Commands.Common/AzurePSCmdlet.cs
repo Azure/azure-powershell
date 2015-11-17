@@ -107,17 +107,30 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             if (SessionState != null)
             {
-                return (SessionState.PSVariable.GetValue(name, defaultValue) as T);
+                try
+                {
+                    var variablePath = GetPath(name);
+                    var fileText = DataStore.ReadFileAsText(variablePath);
+                    return JsonConvert.DeserializeObject<T>(fileText);
+                }
+                catch
+                {
+                }
             }
 
             return defaultValue;
         }
 
+        protected virtual string GetPath(string variableName)
+        {
+            return Path.Combine(SessionState.Path.CurrentLocation.Path, "sessions", variableName);
+        }
         protected virtual void SetSessionVariable<T>(string name, T value) where T : class
         {
             if (SessionState != null)
             {
-                SessionState.PSVariable.Set(name, value);
+                var variablePath = GetPath(name);
+                DataStore.WriteFile(variablePath, JsonConvert.SerializeObject(value));
             }
         }
         /// <summary>
@@ -200,25 +213,25 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected bool CheckIfInteractive()
         {
-            bool interactive = true;
-            if (this.Host == null || 
-                this.Host.UI == null || 
-                this.Host.UI.RawUI == null ||
-                Environment.GetCommandLineArgs().Any(s => s.Equals("-NonInteractive", StringComparison.OrdinalIgnoreCase)))
-            {
-                interactive = false;
-            }
-            else
-            {
-                try
-                {
-                    var test = this.Host.UI.RawUI.KeyAvailable;
-                }
-                catch
-                {
-                    interactive = false;
-                }
-            }
+            bool interactive = false;
+            //if (this.Host == null || 
+            //    this.Host.UI == null || 
+            //    this.Host.UI.RawUI == null ||
+            //    Environment.GetCommandLineArgs().Any(s => s.Equals("-NonInteractive", StringComparison.OrdinalIgnoreCase)))
+            //{
+            //    interactive = false;
+            //}
+            //else
+            //{
+            //    try
+            //    {
+            //        var test = this.Host.UI.RawUI.KeyAvailable;
+            //    }
+            //    catch
+            //    {
+            //        interactive = false;
+            //    }
+            //}
 
             if (!interactive && !_dataCollectionProfile.EnableAzureDataCollection.HasValue)
             {
