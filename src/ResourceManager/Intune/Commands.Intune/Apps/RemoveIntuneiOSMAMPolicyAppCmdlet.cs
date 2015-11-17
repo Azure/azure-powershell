@@ -28,14 +28,14 @@ namespace Microsoft.Azure.Commands.Intune
         /// <summary>
         /// Gets or sets the policy name.
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The iOS policy name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The iOS policy name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the App name
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The iOS App Name to remove.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The iOS App Name to remove.")]
         [ValidateNotNullOrEmpty]
         public string AppName { get; set; }
 
@@ -65,8 +65,15 @@ namespace Microsoft.Azure.Commands.Intune
                     this.Name,
                 () =>
                 {
-                    this.IntuneClient.Ios.DeleteAppForMAMPolicy(this.AsuHostName, this.Name, this.AppName);
-                    this.WriteObject(Resources.OperationCompletedMessage);
+                    var result = IntuneClient.Ios.DeleteAppForMAMPolicyWithHttpMessagesAsync(this.AsuHostName, this.Name, this.AppName).GetAwaiter().GetResult();
+                    if (result.Response.StatusCode == System.Net.HttpStatusCode.OK)
+                    {
+                        this.WriteObject(Resources.OneItemDeleted);
+                    }
+                    else
+                    {
+                        this.WriteObject(Resources.NoItemsDeleted);
+                    }
                 });
         }
     }

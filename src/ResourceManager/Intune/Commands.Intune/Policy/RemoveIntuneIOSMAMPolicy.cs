@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Intune
                     }
                     else if (res.Response.StatusCode == System.Net.HttpStatusCode.NoContent)
                     {
-                        this.WriteObject(Resources.NoItemsDeleted); // ToDo: We need to fix the delete logic about status code 204, and other error messages.
+                        this.WriteObject(Resources.NoItemsDeleted);
                     }
                 }
              );

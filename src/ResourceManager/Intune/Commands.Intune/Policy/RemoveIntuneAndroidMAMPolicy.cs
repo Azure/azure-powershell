@@ -51,14 +51,14 @@ namespace Microsoft.Azure.Commands.Intune
                 () =>
                 {
                     var res = this.IntuneClientWrapper.DeleteAndroidMAMPolicyWithHttpMessagesAsync(this.AsuHostName, this.Name);
-
+                
                     if (res.Response.StatusCode == System.Net.HttpStatusCode.OK)
                     {
                         this.WriteObject(Resources.OneItemDeleted);
                     }
                     else if (res.Response.StatusCode == System.Net.HttpStatusCode.NoContent)
                     {
-                        this.WriteObject(Resources.NoItemsDeleted); // ToDo: We need to fix the delete logic about status code 204, and other error messages.
+                        this.WriteObject(Resources.NoItemsDeleted);
                     }
                 }
             );

@@ -17,11 +17,9 @@ namespace Microsoft.Azure.Commands.Intune
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Management.Automation;
-    using Management.Intune.Models;
+    using System.Management.Automation;    
     using Rest.Azure;
-
-
+    
     /// <summary>
     /// Class to make multiple calls for different types of resources in generic way
     /// </summary>
@@ -43,6 +41,7 @@ namespace Microsoft.Azure.Commands.Intune
             string filter)
         {
             var resources = GetFirstPage(asuHostName, filter, null, null);
+
             List<T> items = new List<T>();
 
             if (resources != null)
@@ -56,7 +55,8 @@ namespace Microsoft.Azure.Commands.Intune
                 }                
             }
 
-            return items;
+            return GetOtherPageResults(resources, GetNextPage);
+
         }
 
         /// <summary>
@@ -73,17 +73,7 @@ namespace Microsoft.Azure.Commands.Intune
             string filter)
         {
             var resources = GetFirstPage(asuHostName, filter);
-            List<T> items = new List<T>();
-            if (resources != null)
-            {
-                items.AddRange(resources.ToList());
-                while (resources.NextPageLink != null)
-                {
-                    resources = GetNextPage(resources.NextPageLink);
-                    items.AddRange(resources.ToList());
-                }
-            }
-            return items;
+            return GetOtherPageResults(resources, GetNextPage);
         }
 
         /// <summary>
@@ -101,6 +91,17 @@ namespace Microsoft.Azure.Commands.Intune
             string filter)
         {
             var resources = GetFirstPage(asuHostName, filter, null, null, null);
+            return GetOtherPageResults(resources, GetNextPage);
+        }
+        
+        /// <summary>
+        /// Method used for getting other page results.
+        /// </summary>
+        /// <param name="resources">Result obtained from first page call</param>
+        /// <param name="GetNextPage">Method to get next page in sequence</param>
+        /// <returns>List of objects</returns>
+        private List<T> GetOtherPageResults(IPage<T> resources, Func<string, IPage<T>> GetNextPage)
+        {
             List<T> items = new List<T>();
             if (resources != null)
             {

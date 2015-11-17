@@ -15,12 +15,12 @@ write-host "Policy created with properties";
 write-host "Policy name:" -ForegroundColor Green
 $p.name
 write-host "Policy properties:" -ForegroundColor Green
-$p.Properties;
+$p;
 
 write-host "Patching the policy" -ForegroundColor Yellow;
 $p = Set-AzureRmIntuneiOSMAMPolicy -Name $p.Name -AllowDataTransferToApps allApps -FriendlyName "New iOS Policy Patched"
 write-host "Updated policy properties:" -ForegroundColor Green
-$p.Properties;
+$p;
 
 write-host "-----------------------------------------------------------"
 write-host "Demo Apps linking to POLICIES.." -ForegroundColor Red
@@ -44,7 +44,7 @@ $apps;
 write-host "Get the updated policy" -ForegroundColor Yellow;
 $p = Get-AzureRmIntuneiOSMAMPolicy -Name $p.Name
 write-host "Updated policy properties:" -ForegroundColor Green
-$p.Properties;
+$p;
 
 write-host "Unlink app with name:" $apps[1].Name  " from policy with name:"  $p.name  -ForegroundColor Yellow;
 Remove-AzureRmIntuneiOSMAMPolicyApp -Name $p.name -AppName $apps[1].Name;
@@ -52,7 +52,7 @@ Remove-AzureRmIntuneiOSMAMPolicyApp -Name $p.name -AppName $apps[1].Name;
 write-host "Get the updated policy" -ForegroundColor Yellow;
 $p = Get-AzureRmIntuneiOSMAMPolicy -Name $p.Name
 write-host "Updated policy properties:" -ForegroundColor Green
-$p.Properties;
+$p;
 
 write-host "-----------------------------------------------------------"
 write-host "Demo Groups linking to POLICIES.." -ForegroundColor Red
@@ -67,7 +67,7 @@ Add-AzureRmIntuneiOSMAMPolicyGroup -Name $p.Name -GroupName $groups[0].Id
 write-host "Get the updated policy" -ForegroundColor Yellow;
 $p = Get-AzureRmIntuneiOSMAMPolicy -Name $p.Name
 write-host "Updated policy properties:" -ForegroundColor Green
-$p.Properties;
+$p;
 
 write-host "Remove AAD group with id:" $groups[0].Id " from policy with name:"  $p.name  -ForegroundColor Yellow;
 Remove-AzureRmIntuneiOSMAMPolicyGroup -Name $p.Name -GroupName $groups[0].Id
@@ -75,4 +75,7 @@ Remove-AzureRmIntuneiOSMAMPolicyGroup -Name $p.Name -GroupName $groups[0].Id
 write-host "Get the updated policy" -ForegroundColor Yellow;
 $p = Get-AzureRmIntuneiOSMAMPolicy -Name $p.Name
 write-host "Updated policy properties:" -ForegroundColor Green
-$p.Properties;
+$p;
+
+write-host "Remove the policy" -ForegroundColor Yellow;
+Remove-AzureRmIntuneiOSMAMPolicy -Name $p.Name

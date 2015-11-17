@@ -4,7 +4,7 @@ write-host "MAM Powershell Cmdlet execution DEMO.." -ForegroundColor Cyan
 write-host "###########################################################"
 
 write-host "-----------------------------------------------------------"
-write-host "Demo POLICIES.." -ForegroundColor 
+write-host "Demo POLICIES.." -ForegroundColor Red
 write-host "-----------------------------------------------------------"
 
 write-host "Creating a new Android Policy.." -ForegroundColor Yellow
@@ -15,15 +15,15 @@ write-host "Policy created with properties";
 write-host "Policy name:" -ForegroundColor Green
 $p.name
 write-host "Policy properties:" -ForegroundColor Green
-$p.Properties;
+$p;
 
 write-host "Patching the policy" -ForegroundColor Yellow;
 $p = Set-AzureRmIntuneAndroidMAMPolicy -Name $p.Name -AllowDataTransferToApps allApps -FriendlyName "New Android Policy Patched"
 write-host "Updated policy properties:" -ForegroundColor Green
-$p.Properties;
+$p;
 
 write-host "-----------------------------------------------------------"
-write-host "Demo Apps linking to POLICIES.." -ForegroundColor DarkRed
+write-host "Demo Apps linking to POLICIES.." -ForegroundColor Red
 write-host "-----------------------------------------------------------"
 
 write-host "Get Android Apps available"  -ForegroundColor Yellow;
@@ -44,7 +44,7 @@ $apps;
 write-host "Get the updated policy" -ForegroundColor Yellow;
 $p = Get-AzureRmIntuneAndroidMAMPolicy -Name $p.Name
 write-host "Updated policy properties:" -ForegroundColor Green
-$p.Properties;
+$p;
 
 write-host "Unlink app with name:" $apps[1].Name  " from policy with name:"  $p.name  -ForegroundColor Yellow;
 Remove-AzureRmIntuneAndroidMAMPolicyApp -Name $p.name -AppName $apps[1].Name;
@@ -52,10 +52,10 @@ Remove-AzureRmIntuneAndroidMAMPolicyApp -Name $p.name -AppName $apps[1].Name;
 write-host "Get the updated policy" -ForegroundColor Yellow;
 $p = Get-AzureRmIntuneAndroidMAMPolicy -Name $p.Name
 write-host "Updated policy properties:" -ForegroundColor Green
-$p.Properties;
+$p;
 
 write-host "-----------------------------------------------------------"
-write-host "Demo Groups linking to POLICIES.." -ForegroundColor DarkRed
+write-host "Demo Groups linking to POLICIES.." -ForegroundColor Red
 write-host "-----------------------------------------------------------"
 
 write-host "Get AAD groups in the environment"  -ForegroundColor Yellow;
@@ -67,7 +67,7 @@ Add-AzureRmIntuneAndroidMAMPolicyGroup -Name $p.Name -GroupName $groups[0].Id
 write-host "Get the updated policy" -ForegroundColor Yellow;
 $p = Get-AzureRmIntuneAndroidMAMPolicy -Name $p.Name
 write-host "Updated policy properties:" -ForegroundColor Green
-$p.Properties;
+$p;
 
 write-host "Remove AAD group with id:" $groups[0].Id " from policy with name:"  $p.name  -ForegroundColor Yellow;
 Remove-AzureRmIntuneAndroidMAMPolicyGroup -Name $p.Name -GroupName $groups[0].Id
@@ -75,4 +75,7 @@ Remove-AzureRmIntuneAndroidMAMPolicyGroup -Name $p.Name -GroupName $groups[0].Id
 write-host "Get the updated policy" -ForegroundColor Yellow;
 $p = Get-AzureRmIntuneAndroidMAMPolicy -Name $p.Name
 write-host "Updated policy properties:" -ForegroundColor Green
-$p.Properties;
+$p;
+
+write-host "Remove the policy" -ForegroundColor Yellow;
+Remove-AzureRmIntuneAndroidMAMPolicy -Name $p.Name

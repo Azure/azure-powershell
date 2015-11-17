@@ -29,14 +29,14 @@ namespace Microsoft.Azure.Commands.Intune
         /// <summary>
         /// Gets or sets the policy name
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The Android policy name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Android policy name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the Group name
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The Android group name to link to.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Android group name to link to.")]
         [ValidateNotNullOrEmpty]
         public string GroupName { get; set; }
 
@@ -66,21 +66,14 @@ namespace Microsoft.Azure.Commands.Intune
                 this.Name,
                 () =>
                 {
+<<<<<<< HEAD
                     this.IntuneClient.Android.AddGroupForPolicy(this.AsuHostName, this.Name, this.GroupName, PrepareMAMPolicyAppIdGroupIdPayload());
+=======
+                    var payLoad = AppOrGroupPayloadMaker.PrepareMAMPolicyPayload(this.IntuneClient, LinkType.Group, this.AsuHostName, this.GroupName);
+                    this.IntuneClient.Android.AddGroupForMAMPolicy(this.AsuHostName, this.Name, this.GroupName, payLoad);
+>>>>>>> dfd85ca0cbb0a218ef089946056f3659c39f7308
                     this.WriteObject(Resources.OperationCompletedMessage);
                 });
-        }
-
-        private MAMPolicyAppIdOrGroupIdPayload PrepareMAMPolicyAppIdGroupIdPayload()
-        {
-            string groupUri = string.Format(IntuneConstants.GroupUriFormat, this.IntuneClient.BaseUri.Host, this.AsuHostName, this.GroupName);
-            var groupIdPayload = new MAMPolicyAppIdOrGroupIdPayload();
-            groupIdPayload.Properties = new MAMPolicyAppOrGroupIdProperties()
-            {
-                Url = groupUri
-            };
-
-            return groupIdPayload;
         }
     }
 }
