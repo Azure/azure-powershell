@@ -53,6 +53,7 @@ namespace Microsoft.Azure.Commands.Intune
         private void GetAndroidPolicyById()
         {
             var andriodPolicy =  this.IntuneClient.Android.GetMAMPolicyById(this.AsuHostName, this.Name);
+
             if (andriodPolicy != null)
             {
                 this.WriteObject(andriodPolicy);
@@ -69,9 +70,10 @@ namespace Microsoft.Azure.Commands.Intune
         private void GetAndroidPolicies()
         {
             MultiPageGetter<AndroidMAMPolicy> mpg = new MultiPageGetter<AndroidMAMPolicy>();
+
             var items = mpg.GetAllResources(
-                this.IntuneClient.Android.GetMAMPolicies,
-                this.IntuneClient.Android.GetMAMPoliciesNext,
+                this.IntuneClientWrapper.GetAndroidMAMPolicies,
+                this.IntuneClientWrapper.GetAndroidMAMPoliciesNext,
                 this.AsuHostName, filter: null);
 
             if (items.Count > 0)

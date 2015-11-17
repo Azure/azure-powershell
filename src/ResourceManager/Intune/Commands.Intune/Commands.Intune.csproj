@@ -110,6 +110,8 @@
     <Compile Include="ApiVersionHandler.cs" />
     <Compile Include="Apps\GetIntuneAndroidMAMAppCmdlet.cs" />
     <Compile Include="Apps\GetIntuneAndroidMAMPolicyAppCmdlet.cs" />
+    <Compile Include="IIntuneResourceManagementClientWrapper.cs" />
+    <Compile Include="IntuneResourceManagementClientWrapper.cs" />
     <Compile Include="MultiPageGetter.cs" />
     <Compile Include="Groups\AddIntuneiOSMAMPolicyGroupCmdlet.cs" />
     <Compile Include="Groups\RemoveIntuneAndroidMAMPolicyGroupCmdlet.cs" />

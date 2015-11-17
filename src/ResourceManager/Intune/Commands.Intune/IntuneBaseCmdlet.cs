@@ -13,20 +13,20 @@
 // ----------------------------------------------------------------------------------
 namespace Microsoft.Azure.Commands.Intune
 {
+    using System;
+    using System.Collections.Concurrent;
+    using System.Linq;
+    using System.Management.Automation;
     using Management.Intune;
     using Microsoft.Azure.Commands.Intune.Properties;
     using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.Azure.Common.Authentication;
     using Microsoft.Azure.Common.Authentication.Models;
-    using System;
-    using System.Collections.Concurrent;
-    using System.Management.Automation;
-    using Management.Intune;
-    using System.Linq;
     using Microsoft.Azure.Management.Intune.Models;
+    // using Microsoft.Rest.Serialization;
 
     /// <summary>
-    /// Base class for all commandlets. Helps create an instance of the client that commandlets can leverage. 
+    /// Base class for all commandlets. Helps ceate an instance of the client that commandlets can leverage. 
     /// </summary>
     public abstract class IntuneBaseCmdlet : AzureRMCmdlet
     {
@@ -35,7 +35,9 @@ namespace Microsoft.Azure.Commands.Intune
         /// </summary>
         internal static readonly ConcurrentBag<ErrorRecord> errors = new ConcurrentBag<ErrorRecord>();
 
-        private static IIntuneResourceManagementClient intuneClient;       
+        private static IIntuneResourceManagementClient intuneClient;
+
+        public IIntuneResourceManagementClientWrapper intuneClientWrapper;
 
         /// <summary>
         /// The default parameter set.
@@ -60,6 +62,25 @@ namespace Microsoft.Azure.Commands.Intune
             }
         }
 
+        public IIntuneResourceManagementClientWrapper IntuneClientWrapper
+        {
+            get
+            {
+                if (intuneClientWrapper == null)
+                {
+                    intuneClientWrapper = new IntuneResourceManagementClientWrapper();
+                    intuneClientWrapper.Initialize(this.DefaultContext, ApiVersion);
+                }
+
+                return intuneClientWrapper;
+            }
+
+            set
+            {
+                intuneClientWrapper = value;
+            }
+        }
+
         /// <summary>
         /// Gets or sets the API version.
         /// </summary>
@@ -71,13 +92,14 @@ namespace Microsoft.Azure.Commands.Intune
         /// ASU host name for the tenant
         /// </summary>
         private static string asuHostName;
+
         internal string AsuHostName
         {
             get
             {
                 if (asuHostName == null)
                 {
-                    var location = IntuneClient.GetLocationByHostName();
+                    Location location = IntuneClientWrapper.GetLocationByHostName();
                     asuHostName = location.HostName;
                 }
 
@@ -106,6 +128,7 @@ namespace Microsoft.Azure.Commands.Intune
                 apiVersionHandler = new ApiVersionHandler(apiVersion);
                 AzureSession.ClientFactory.AddHandler<ApiVersionHandler>(apiVersionHandler);
             }
+
             var intuneClient = AzureSession.ClientFactory.CreateArmClient<IntuneResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
 
             if (!string.IsNullOrEmpty(apiVersion))

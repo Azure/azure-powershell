@@ -14,21 +14,21 @@
 
 namespace Microsoft.Azure.Commands.Intune
 {
-    using Microsoft.Azure.Commands.Intune.Properties;
-    using System.Globalization;
+    using System.Globalization;  
     using System.Management.Automation;
+    using Microsoft.Azure.Commands.Intune.Properties;
 
     /// <summary>
     /// A cmdlet that removes Intune Andriod MAM Policy.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmIntuneAndroidMAMPolicy", SupportsShouldProcess = true, DefaultParameterSetName = IntuneBaseCmdlet.DefaultParameterSet), OutputType(typeof(PSObject))]
-    public class RemoveAzureRmIntuneAndroidMAMPolicyCmdlet : IntuneBaseCmdlet
+    public class RemoveIntuneAndroidMAMPolicyCmdlet : IntuneBaseCmdlet
     {
         #region params
         /// <summary>
         /// The Android Policy Name
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The Android Policy Name (Policy Guid) to remove the policy.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Android Policy Name (Policy Guid) to remove the policy.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -50,15 +50,15 @@ namespace Microsoft.Azure.Commands.Intune
                 this.Name,
                 () =>
                 {
-                    var res = this.IntuneClient.Android.DeleteMAMPolicyWithHttpMessagesAsync(this.AsuHostName, this.Name);
+                    var res = this.IntuneClientWrapper.DeleteAndroidMAMPolicyWithHttpMessagesAsync(this.AsuHostName, this.Name);
 
-                    if (res.Result.Response.StatusCode == System.Net.HttpStatusCode.OK)
+                    if (res.Response.StatusCode == System.Net.HttpStatusCode.OK)
                     {
                         this.WriteObject(Resources.OneItemDeleted);
                     }
-                    else
+                    else if (res.Response.StatusCode == System.Net.HttpStatusCode.NoContent)
                     {
-                        this.WriteObject(Resources.NoItemsDeleted); //todo: We need to fix the delete logic about status code 204, and other error messages.
+                        this.WriteObject(Resources.NoItemsDeleted); // ToDo: We need to fix the delete logic about status code 204, and other error messages.
                     }
                 }
             );

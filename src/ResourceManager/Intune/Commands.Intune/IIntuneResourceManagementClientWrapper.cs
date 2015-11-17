@@ -12,7 +12,6 @@ namespace Microsoft.Azure.Commands.Intune
 {
     public interface IIntuneResourceManagementClientWrapper
     {
-
         void Initialize(AzureContext defaultContext, string apiVersion);
 
         IPage<AndroidMAMPolicy> GetAndroidMAMPolicies(string hostName, string filter = null, int? top = null, string select = null);

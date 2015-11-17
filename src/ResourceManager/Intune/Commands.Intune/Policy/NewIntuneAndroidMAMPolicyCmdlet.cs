@@ -14,12 +14,13 @@
 
 namespace Microsoft.Azure.Commands.Intune
 {
-    using Management.Intune;
-    using Management.Intune.Models;
-    using Microsoft.Azure.Commands.Intune.Properties;
     using System;
     using System.Globalization;
     using System.Management.Automation;
+    using Management.Intune;
+    using Management.Intune.Models;
+    using Microsoft.Azure.Commands.Intune.Properties;
+    using Microsoft.Rest.Serialization;
 
     /// <summary>
     /// A cmdlet that creates a new Android Intune MAM policy Azure resource.
@@ -154,9 +155,12 @@ namespace Microsoft.Azure.Commands.Intune
         /// </summary>
         protected override void ProcessRecord()
         {
-            InitializeDefaultValuesForParams();            
-            var policyId = Guid.NewGuid().ToString();
+            InitializeDefaultValuesForParams();
             ValidateNumericParameters();
+
+            var policyObjToCreate = this.PrepareAndroidPolicyBody();
+            var policyId = Guid.NewGuid().ToString();
+
             this.ConfirmAction(
                 this.Force,
                 string.Format(CultureInfo.CurrentCulture, Resources.NewResource_ActionMessage, Resources.AndroidPolicy, this.FriendlyName),
@@ -164,7 +168,7 @@ namespace Microsoft.Azure.Commands.Intune
                 policyId,
                 () =>
                 {
-                    var policyObj = this.IntuneClient.Android.CreateOrUpdateMAMPolicy(this.AsuHostName, policyId, PrepareAndroidPolicyBody());
+                    var policyObj = this.IntuneClientWrapper.CreateOrUpdateAndroidMAMPolicy(this.AsuHostName, policyId, policyObjToCreate);
                     this.WriteObject(policyObj);
                 });
         }
@@ -191,7 +195,7 @@ namespace Microsoft.Azure.Commands.Intune
         private void InitializeDefaultValuesForParams()
         {
             this.PinRetries = this.PinRetries ?? IntuneConstants.DefaultPinRetries;
-            this.RecheckAccessOfflineGracePeriodMinutes = this.RecheckAccessOfflineGracePeriodMinutes ?? IntuneConstants.DefaultRecheckAccessOfflineGraceperiodMinutes;
+            this.RecheckAccessOfflineGracePeriodMinutes = this.RecheckAccessOfflineGracePeriodMinutes ?? IntuneConstants.DefaultRecheckAccessOfflineGracePeriodMinutes;
             this.RecheckAccessTimeoutMinutes = this.RecheckAccessTimeoutMinutes ?? IntuneConstants.DefaultRecheckAccessTimeoutMinutes;
             this.OfflineWipeIntervalDays = this.OfflineWipeIntervalDays ?? IntuneConstants.DefaultOfflineWipeIntervalDays;
             this.Description = this.Description ?? string.Format(CultureInfo.CurrentCulture, Resources.NewResource, Resources.AndroidPolicy);

@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Intune
     public class IntuneConstants
     {
         public static int DefaultPinRetries = 15;
-        public static int DefaultRecheckAccessOfflineGraceperiodMinutes = 720;
+        public static int DefaultRecheckAccessOfflineGracePeriodMinutes = 720;
         public static int DefaultRecheckAccessTimeoutMinutes = 30;
         public static int DefaultOfflineWipeIntervalDays = 1;        
 

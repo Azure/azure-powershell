@@ -158,6 +158,7 @@ namespace Microsoft.Azure.Commands.Intune
 
             var policyId = Guid.NewGuid().ToString();
             ValidateNumericParameters();
+
             this.ConfirmAction(
                 this.Force,
                 string.Format(CultureInfo.CurrentCulture, Resources.NewResource_ActionMessage, Resources.IosPolicy, this.FriendlyName),
@@ -165,10 +166,9 @@ namespace Microsoft.Azure.Commands.Intune
                 policyId,
                 () =>
                 {
-                    var policyObj = this.IntuneClient.Ios.CreateOrUpdateMAMPolicy(this.AsuHostName, policyId, PrepareIOSPolicyBody());
+                    var policyObj = this.IntuneClientWrapper.CreateOrUpdateIosMAMPolicy(this.AsuHostName, policyId, this.PrepareIOSPolicyBody());
                     this.WriteObject(policyObj);
-                });
- 
+                }); 
         }
 
         /// <summary>
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Commands.Intune
         private void InitializeDefaultValuesForParams()
         {
             this.PinRetries = this.PinRetries ?? IntuneConstants.DefaultPinRetries;
-            this.RecheckAccessOfflineGracePeriodMinutes = this.RecheckAccessOfflineGracePeriodMinutes ?? IntuneConstants.DefaultRecheckAccessOfflineGraceperiodMinutes;
+            this.RecheckAccessOfflineGracePeriodMinutes = this.RecheckAccessOfflineGracePeriodMinutes ?? IntuneConstants.DefaultRecheckAccessOfflineGracePeriodMinutes;
             this.RecheckAccessTimeoutMinutes = this.RecheckAccessTimeoutMinutes ?? IntuneConstants.DefaultRecheckAccessTimeoutMinutes;
             this.OfflineWipeIntervalDays = this.OfflineWipeIntervalDays ?? IntuneConstants.DefaultOfflineWipeIntervalDays;
             this.Description = this.Description ?? string.Format(CultureInfo.CurrentCulture, Resources.NewResource, Resources.IosPolicy);
