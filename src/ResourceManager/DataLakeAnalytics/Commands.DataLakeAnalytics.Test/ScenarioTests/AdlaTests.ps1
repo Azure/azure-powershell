@@ -185,6 +185,14 @@ function Test-DataLakeAnalyticsJob
 
 	Assert-NotNull {Get-AzureRmDataLakeAnalyticsJob -ResourceGroupName $resourceGroupName -AccountName $accountName}
 
+	$jobsWithDateOffset = Get-AzureRmDataLakeAnalyticsJob -ResourceGroupName $resourceGroupName -AccountName $accountName -SubmittedAfter $(([DateTime]::Now).AddMinutes(-5))
+
+	Assert-True {$jobsWithDateOffset.Count -gt 0} "Failed to retrieve jobs submitted after five miuntes ago"
+
+	$jobsWithDateOffset = Get-AzureRmDataLakeAnalyticsJob -ResourceGroupName $resourceGroupName -AccountName $accountName -SubmittedBefore $(([DateTime]::Now).AddMinutes(0))
+
+	Assert-True {$jobsWithDateOffset.Count -gt 0} "Failed to retrieve jobs submitted before right now"
+
     # Delete the DataLakeAnalytics account
     Assert-True {Remove-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
 
@@ -300,6 +308,10 @@ function Test-NegativeDataLakeAnalyticsJob
 
 	# Attempt to Get debug data for a non-existent job
 	Assert-Throws {Get-AzureRmDataLakeAnalyticsJobDebugInfo -ResourceGroupName $resourceGroupName -AccountName $accountName -JobIdentity [Guid]::Empty}
+
+	$jobsWithDateOffset = Get-AzureRmDataLakeAnalyticsJob -ResourceGroupName $resourceGroupName -AccountName $accountName -SubmittedAfter $([DateTime]::Now)
+
+	Assert-True {$jobsWithDateOffset.Count -eq 0} "Retrieval of jobs submitted after right now returned results and should not have"
 
     # Delete the DataLakeAnalytics account
     Assert-True {Remove-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
