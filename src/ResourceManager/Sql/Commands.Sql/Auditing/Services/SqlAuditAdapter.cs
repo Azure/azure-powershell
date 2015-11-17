@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// The auditing endpoints communicator used by this adapter
         /// </summary>
         private AuditingEndpointsCommunicator Communicator { get; set; }
-       
+
         /// <summary>
         /// The Azure endpoints communicator used by this adapter
         /// </summary>
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         {
             return Communicator.GetServerAuditingPolicy(resourceGroupName, serverName, requestId).Properties.StorageAccountName;
         }
-        
+
         /// <summary>
         /// Provides a database audit policy model for the given database
         /// </summary>
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             FetchedStorageAccountResourceGroup = policy.Properties.StorageAccountResourceGroupName;
             FetchedStorageAccountSubscription = policy.Properties.StorageAccountSubscriptionId;
             FetchedStorageAccountTableEndpoint = policy.Properties.StorageTableEndpoint;
-            
+
             return dbPolicyModel;
         }
 
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// </summary>
         private string PolicizeAuditState(AuditStateType auditState)
         {
-            switch(auditState)
+            switch (auditState)
             {
                 case AuditStateType.Enabled:
                     return SecurityConstants.AuditingEndpoint.Enabled;
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// Updates the given model with all the event types information
         /// </summary>
         private void ModelizeEventTypesInfo(BaseAuditingPolicyModel model, string eventTypesToAudit)
-        { 
+        {
             HashSet<AuditEventType> events = new HashSet<AuditEventType>();
             if (eventTypesToAudit.IndexOf(SecurityConstants.PlainSQL_Success) != -1) events.Add(AuditEventType.PlainSQL_Success);
             if (eventTypesToAudit.IndexOf(SecurityConstants.PlainSQL_Failure) != -1) events.Add(AuditEventType.PlainSQL_Failure);
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             if (eventTypesToAudit.IndexOf(SecurityConstants.TransactionManagement_Failure) != -1) events.Add(AuditEventType.TransactionManagement_Failure);
             model.EventType = events.ToArray();
         }
-        
+
         /// <summary>
         /// Updates the content of the model object with all the retention information
         /// </summary>
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             Management.Sql.Models.Database database = dbCommunicator.Get(model.ResourceGroupName, model.ServerName, model.DatabaseName, clientId);
             DatabaseEdition edition = DatabaseEdition.None;
             Enum.TryParse<DatabaseEdition>(database.Properties.Edition, true, out edition);
-            if(edition == DatabaseEdition.Basic || edition == DatabaseEdition.Standard || edition == DatabaseEdition.Premium || edition == DatabaseEdition.DataWarehouse)
+            if (edition == DatabaseEdition.Basic || edition == DatabaseEdition.Standard || edition == DatabaseEdition.Premium || edition == DatabaseEdition.DataWarehouse)
             {
                 return true;
             }
@@ -399,7 +399,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             {
                 events.Append(SecurityConstants.AuditingEndpoint.TransactionManagement_Failure).Append(",");
             }
-            if(events.Length != 0) 
+            if (events.Length != 0)
             {
                 events.Remove(events.Length - 1, 1); // remove trailing comma
             }
@@ -415,7 +415,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             {
                 return true;
             }
-            return false;    
+            return false;
         }
 
         /// <summary>
@@ -439,11 +439,11 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// </summary>
         private string ExtractStorageAccountSubscriptionId(string storageName)
         {
-             if (IgnoreStorage)
+            if (IgnoreStorage)
             {
                 return null;
             }
-             if (storageName == FetchedStorageAccountName && FetchedStorageAccountSubscription!= null)
+            if (storageName == FetchedStorageAccountName && FetchedStorageAccountSubscription != null)
             {
                 return FetchedStorageAccountSubscription;
             }

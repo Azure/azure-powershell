@@ -32,7 +32,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             
             var bundle = GetToken(authFactory, context);
             this.token = bundle.Item1;
-            this.resourceId = bundle.Item2;
         }
 
         /// <summary>
@@ -82,8 +81,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         }
      
         private IAccessToken token;
-        private string resourceId;
-
         private const AzureEnvironment.Endpoint ResourceIdEndpoint = AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId;
     }
 }

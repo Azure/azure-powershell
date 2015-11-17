@@ -13,13 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using Microsoft.Azure.KeyVault;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     public class ObjectIdentifier
     {
-        internal void SetObjectIdentifier(VaultUriHelper vaultUriHelper, Microsoft.Azure.KeyVault.ObjectIdentifier identifier)
+        internal void SetObjectIdentifier(VaultUriHelper vaultUriHelper, Azure.KeyVault.ObjectIdentifier identifier)
         {
             if (vaultUriHelper == null)
                 throw new ArgumentNullException("vaultUriHelper");
