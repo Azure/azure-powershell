@@ -82,26 +82,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
             return false;
         }
-
-        public static string ReadMessageBody(ref Message originalMessage)
-        {
-            StringBuilder strBuilder = new StringBuilder();
-
-            using (MessageBuffer messageBuffer = originalMessage.CreateBufferedCopy(int.MaxValue))
-            {
-                Message message = messageBuffer.CreateMessage();
-                XmlWriter writer = XmlWriter.Create(strBuilder);
-                using (XmlDictionaryWriter dictionaryWriter = XmlDictionaryWriter.CreateDictionaryWriter(writer))
-                {
-                    message.WriteBodyContents(dictionaryWriter);
-                }
-
-                originalMessage = messageBuffer.CreateMessage();
-            }
-
-            return XmlUtilities.Beautify(strBuilder.ToString());
-        }
-
         public static string GetConfiguration(string configurationPath)
         {
             var configuration = string.Join(string.Empty, File.ReadAllLines(configurationPath));

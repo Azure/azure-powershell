@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.WebApps
                 
                 if (!CmdletHelpers.TryParseWebAppMetadataFromResourceId(WebApp.Id, out rg, out name, out slot, true))
                 {
-                    throw new ValidationMetadataException("Input object is a deployment slot, not a production web app");
+                    throw new PSArgumentException("Input object is a deployment slot, not a production web app");
                 }
 
                 ResourceGroupName = rg;

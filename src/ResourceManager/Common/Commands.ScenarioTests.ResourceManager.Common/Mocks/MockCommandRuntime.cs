@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Management.Automation;
@@ -31,12 +32,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             return "MockCommand";
         }
 
-        [SuppressMessage("Microsoft.Design", "CA1065:DoNotRaiseExceptionsInUnexpectedLocations", 
-            Justification = "Tests should not access this property")]
-        public PSTransactionContext CurrentPSTransaction
-        {
-            get { throw new System.NotImplementedException(); }
-        }
 
         [SuppressMessage("Microsoft.Design", "CA1065:DoNotRaiseExceptionsInUnexpectedLocations",
             Justification = "Tests should not access this property")]
@@ -102,7 +97,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
         public void WriteObject(object sendToPipeline, bool enumerateCollection)
         {
-            System.Collections.IEnumerable enumerable = LanguagePrimitives.GetEnumerable(sendToPipeline);
+            System.Collections.IEnumerable enumerable = sendToPipeline as IEnumerable;
             if (enumerable != null && enumerateCollection)
             {
                 foreach (object o in enumerable)

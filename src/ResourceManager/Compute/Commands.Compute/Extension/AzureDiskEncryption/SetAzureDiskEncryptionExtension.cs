@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             VirtualMachineExtensionGetResponse extensionResult = this.VirtualMachineExtensionClient.GetWithInstanceView(this.ResourceGroupName, this.VMName, this.Name);
             if (extensionResult == null)
             {
-                ThrowTerminatingError(new ErrorRecord(new ApplicationFailedException(string.Format(CultureInfo.CurrentUICulture, "Failed to retrieve extension status")),
+                ThrowTerminatingError(new ErrorRecord(new PSInvalidOperationException(string.Format(CultureInfo.CurrentUICulture, "Failed to retrieve extension status")), 
                                                       "InvalidResult",
                                                       ErrorCategory.InvalidResult,
                                                       null));
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 (string.IsNullOrWhiteSpace(returnedExtension.Publisher)) ||
                 (string.IsNullOrWhiteSpace(returnedExtension.ExtensionType)))
             {
-                ThrowTerminatingError(new ErrorRecord(new ApplicationFailedException(string.Format(CultureInfo.CurrentUICulture, "Missing extension publisher and type info")),
+                ThrowTerminatingError(new ErrorRecord(new PSInvalidOperationException(string.Format(CultureInfo.CurrentUICulture, "Missing extension publisher and type info")), 
                                                       "InvalidResult",
                                                       ErrorCategory.InvalidResult,
                                                       null));
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                     (context.Statuses.Count < 1) ||
                     (string.IsNullOrWhiteSpace(context.Statuses[0].Message)))
                 {
-                    ThrowTerminatingError(new ErrorRecord(new ApplicationFailedException(string.Format(CultureInfo.CurrentUICulture, "Invalid extension status")),
+                    ThrowTerminatingError(new ErrorRecord(new PSInvalidOperationException(string.Format(CultureInfo.CurrentUICulture, "Invalid extension status")), 
                                                           "InvalidResult",
                                                           ErrorCategory.InvalidResult,
                                                           null));
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             }
             else
             {
-                ThrowTerminatingError(new ErrorRecord(new ApplicationFailedException(string.Format(CultureInfo.CurrentUICulture, "Extension publisher and type mismatched")),
+                ThrowTerminatingError(new ErrorRecord(new PSInvalidOperationException(string.Format(CultureInfo.CurrentUICulture, "Extension publisher and type mismatched")), 
                                                       "InvalidResult",
                                                       ErrorCategory.InvalidResult,
                                                       null));

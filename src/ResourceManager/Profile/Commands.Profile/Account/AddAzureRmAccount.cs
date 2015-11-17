@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Profile
     [Cmdlet("Add", "AzureRmAccount", DefaultParameterSetName = "User")]
     [Alias("Login-AzureRmAccount")]
     [OutputType(typeof(PSAzureProfile))]
-    public class AddAzureRMAccountCommand : AzureRMCmdlet , IModuleAssemblyInitializer
+    public class AddAzureRMAccountCommand : AzureRMCmdlet 
     {
         private const string UserParameterSet = "User";
         private const string ServicePrincipalParameterSet = "ServicePrincipal";
@@ -185,25 +185,6 @@ namespace Microsoft.Azure.Commands.Profile
                     SubscriptionName, password));
         }
 
-        /// <summary>
-        /// Load global aliases for ARM
-        /// </summary>
-        public void OnImport()
-        {
-            try
-            {
-                System.Management.Automation.PowerShell invoker = null;
-                invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
-                invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(
-                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
-                    "AzureRmProfileStartup.ps1")));
-                invoker.Invoke();
-            }
-            catch
-            {
-                // This will throw exception for tests, ignore.
-            }
-        }
 
     }
 }

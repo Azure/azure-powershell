@@ -1,0 +1,5 @@
+RtPackage: Microsoft.CLU
+RtEntry: Microsoft.CLU.CommandModel.CmdletCommandModel.Run
+RtAssembly: Microsoft.CLU.dll
+Modules: Microsoft.Azure.Commands.Network
+NounPrefix: AzureRm
