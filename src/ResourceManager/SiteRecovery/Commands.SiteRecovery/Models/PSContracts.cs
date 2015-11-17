@@ -704,6 +704,26 @@ namespace Microsoft.Azure.Portal.HybridServicesCore
         #region Public methods
 
         /// <summary>
+        /// Returns the Xml representation of this object.
+        /// </summary>
+        /// <returns>the xml as string</returns>
+        public ResourceExtendedInformationArgs Translate()
+        {
+            if (string.IsNullOrEmpty(this.Etag))
+            {
+                this.Etag = Guid.NewGuid().ToString();
+            }
+
+            string serializedInfo = Utilities.Serialize<ResourceExtendedInfo>(this);
+            ResourceExtendedInformationArgs extendedInfoArgs = new ResourceExtendedInformationArgs(
+                Constants.VaultExtendedInfoContractVersion,
+                serializedInfo,
+                this.Etag);
+
+            return extendedInfoArgs;
+        }
+
+        /// <summary>
         /// Method to generate security information
         /// </summary>
         public void GenerateSecurityInfo()

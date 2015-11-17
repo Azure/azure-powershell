@@ -41,11 +41,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <returns>Vault Extended Information Response</returns>
         public async Task<ResourceExtendedInformation> GetExtendedInfo()
         {
-            ResourceExtendedInformationResponse response =
+            ResourceExtendedInformationResponse response = 
                 await this.recoveryServicesClient.VaultExtendedInfo.GetExtendedInfoAsync(
-                asrVaultCreds.ResourceGroupName,
-                asrVaultCreds.ResourceName,
-                this.GetRequestHeaders());
+                asrVaultCreds.ResourceGroupName, 
+                asrVaultCreds.ResourceName, 
+                this.GetRequestHeaders(false));
 
             return response.ResourceExtendedInformation;
         }
@@ -58,10 +58,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public AzureOperationResponse CreateExtendedInfo(ResourceExtendedInformationArgs extendedInfoArgs)
         {
             return this.recoveryServicesClient.VaultExtendedInfo.CreateExtendedInfo(
-                asrVaultCreds.ResourceGroupName,
-                asrVaultCreds.ResourceName,
-                extendedInfoArgs,
-                this.GetRequestHeaders());
+                asrVaultCreds.ResourceGroupName, 
+                asrVaultCreds.ResourceName, 
+                extendedInfoArgs, 
+                this.GetRequestHeaders(false));
         }
 
         /// <summary>
@@ -72,10 +72,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public async Task<UploadCertificateResponse> UpdateVaultCertificate(CertificateArgs args, string certFriendlyName)
         {
             return await this.recoveryServicesClient.VaultExtendedInfo.UploadCertificateAsync(
-                asrVaultCreds.ResourceGroupName,
+                asrVaultCreds.ResourceGroupName, 
                 asrVaultCreds.ResourceName,
-                args, certFriendlyName,
-                this.GetRequestHeaders());
+                args, certFriendlyName, 
+                this.GetRequestHeaders(false));
         }
 
         /// <summary>
@@ -86,7 +86,17 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <returns>credential object</returns>
         public ASRVaultCreds GenerateVaultCredential(X509Certificate2 managementCert, ASRVault vault, ASRSite site)
         {
-            ASRVaultCreds currentVaultContext = PSRecoveryServicesClient.asrVaultCreds;
+            ASRVaultCreds currentVaultContext = new ASRVaultCreds(
+                PSRecoveryServicesClient.asrVaultCreds.SubscriptionId,
+                PSRecoveryServicesClient.asrVaultCreds.ResourceName,
+                PSRecoveryServicesClient.asrVaultCreds.ManagementCert,
+                PSRecoveryServicesClient.asrVaultCreds.AcsNamespace,
+                PSRecoveryServicesClient.asrVaultCreds.ChannelIntegrityKey,
+                PSRecoveryServicesClient.asrVaultCreds.ResourceGroupName,
+                PSRecoveryServicesClient.asrVaultCreds.SiteId,
+                PSRecoveryServicesClient.asrVaultCreds.SiteName,
+                PSRecoveryServicesClient.asrVaultCreds.ResourceNamespace,
+                PSRecoveryServicesClient.asrVaultCreds.ResourceType);
 
             string resourceProviderNamespace = string.Empty;
             string resourceType = string.Empty;
@@ -144,7 +154,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 ResourceGroupName = vault.ResouceGroupName,
                 ResourceName = vault.Name,
                 ResourceNamespace = resourceProviderNamespace,
-                ARMResourceType = resourceType
+                ARMResourceType= resourceType
             });
 
             // Get Channel Integrity key
@@ -191,7 +201,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             try
             {
                 extendedInformation = await this.GetExtendedInfo();
-
             }
             catch (Exception exception)
             {
@@ -202,6 +211,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     JavaScriptSerializer serializer = new JavaScriptSerializer();
                     rpError.Error error = serializer.Deserialize<rpError.Error>(cloudException.Response.Content);
 
+                    // rpError.Error error = (rpError.Error)Utilities.Deserialize<rpError.Error>(cloudException.Response.Content);
                     if (error.ErrorCode.Equals(RpErrorCode.ResourceExtendedInfoNotFound.ToString(), StringComparison.InvariantCultureIgnoreCase))
                     {
                         extendedInformation = new ResourceExtendedInformation();
@@ -209,13 +219,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 }
             }
 
-            if (null == extendedInformation.Properties)
+            ResourceExtendedInfo extendedInfo = Utilities.Deserialize<ResourceExtendedInfo>(extendedInformation.ExtendedInfo);
+
+            if (extendedInfo == null)
             {
-                extendedInformation = this.CreateVaultExtendedInformation();
+                extendedInfo = this.CreateVaultExtendedInformation();
             }
             else
             {
-                if (!extendedInformation.Properties.Algorithm.Equals(CryptoAlgorithm.None.ToString(), StringComparison.InvariantCultureIgnoreCase))
+                if (!extendedInfo.Algorithm.Equals(CryptoAlgorithm.None.ToString(), StringComparison.InvariantCultureIgnoreCase))
                 {
                     // In case this condition is true that means the credential was first generated in portal
                     // and hence can not be fetched here.
@@ -223,29 +235,21 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 }
             }
 
-            return extendedInformation.Properties.IntegrityKey;
+            return extendedInfo.ChannelIntegrityKey;
         }
 
         /// <summary>
         /// Method to create the extended info for the vault.
         /// </summary>
         /// <returns>returns the object as task</returns>
-        private ResourceExtendedInformation CreateVaultExtendedInformation()
+        private ResourceExtendedInfo CreateVaultExtendedInformation()
         {
-            ResourceExtendedInformation extendedInformation =
-                new ResourceExtendedInformation();
-            extendedInformation.Properties = new ResourceExtendedInfoProperties();
-            extendedInformation.Properties.IntegrityKey = Utilities.GenerateRandomKey(128);
-            extendedInformation.Properties.Algorithm = CryptoAlgorithm.None.ToString();
-
-            ResourceExtendedInformationArgs extendedInfoArgs = new ResourceExtendedInformationArgs();
-            extendedInfoArgs.Properties = new ResourceExtendedInfoProperties();
-            extendedInfoArgs.Properties.Algorithm = extendedInformation.Properties.Algorithm;
-            extendedInfoArgs.Properties.IntegrityKey = extendedInformation.Properties.IntegrityKey;
-
+            ResourceExtendedInfo extendedInfo = new ResourceExtendedInfo();
+            extendedInfo.GenerateSecurityInfo();
+            ResourceExtendedInformationArgs extendedInfoArgs = extendedInfo.Translate();
             this.CreateExtendedInfo(extendedInfoArgs);
 
-            return extendedInformation;
+            return extendedInfo;
         }
 
         /// <summary>

@@ -65,8 +65,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 VaultCreateArgs vaultCreateArgs = new VaultCreateArgs();
                 vaultCreateArgs.Location = this.Location;
                 vaultCreateArgs.Properties = new VaultProperties();
-                vaultCreateArgs.Sku = new VaultSku();
-                vaultCreateArgs.Sku.Name = "standard";
+                vaultCreateArgs.Properties.Sku = new VaultSku();
+                vaultCreateArgs.Properties.Sku.Name = "standard";
 
                 VaultCreateResponse response = RecoveryServicesClient.CreateVault(this.ResouceGroupName, this.Name, vaultCreateArgs);
 
