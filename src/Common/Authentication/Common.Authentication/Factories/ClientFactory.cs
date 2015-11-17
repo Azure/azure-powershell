@@ -98,8 +98,8 @@ namespace Microsoft.Azure.Common.Authentication.Factories
 
             ServiceClientCredentials creds = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(context, endpoint);
             TClient client = CreateCustomClient<TClient>(
+                context.Environment.GetEndpointAsUri(endpoint),
                 creds, 
-                context.Environment.GetEndpointAsUri(endpoint), 
                 GetCustomHandlers());
 
             return client;
