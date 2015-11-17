@@ -14,18 +14,42 @@
 
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Common;
+using Microsoft.Azure.Commands.Batch.Properties;
 using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class RemoveComputeNodeParameters : ComputeNodeOperationParameters
+    public class RemoveComputeNodeParameters : BatchClientParametersBase
     {
-        public RemoveComputeNodeParameters(BatchAccountContext context, string poolId, string computeNodeId, PSComputeNode computeNode,
-            IEnumerable<BatchClientBehavior> additionalBehaviors = null)
-            : base(context, poolId, computeNodeId, computeNode, additionalBehaviors)
-        { }
+        public RemoveComputeNodeParameters(BatchAccountContext context, string poolId, string[] computeNodeIds, PSComputeNode computeNode,
+            IEnumerable<BatchClientBehavior> additionalBehaviors = null) : base(context, additionalBehaviors)
+        {
+            if ((string.IsNullOrWhiteSpace(poolId) || computeNodeIds == null) && computeNode == null)
+            {
+                throw new ArgumentNullException(Resources.NoComputeNode);
+            }
 
+            this.PoolId = poolId;
+            this.ComputeNodeIds = computeNodeIds;
+            this.ComputeNode = computeNode;
+        }
+
+        /// <summary>
+        /// The id of the pool containing the compute nodes.
+        /// </summary>
+        public string PoolId { get; private set; }
+
+        /// <summary>
+        /// The ids of the compute nodes to remove.
+        /// </summary>
+        public string[] ComputeNodeIds { get; private set; }
+
+        /// <summary>
+        /// The PSComputeNode object representing the compute node to remove.
+        /// </summary>
+        public PSComputeNode ComputeNode { get; private set; }
+        
         /// <summary>
         /// Specifies when nodes may be removed from the pool.
         /// </summary>

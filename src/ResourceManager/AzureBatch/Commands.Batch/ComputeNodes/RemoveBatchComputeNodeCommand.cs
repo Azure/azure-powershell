@@ -26,14 +26,15 @@ namespace Microsoft.Azure.Commands.Batch
     public class RemoveBatchComputeNodeCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true,
-            HelpMessage = "The id of the pool that contains the compute node.")]
+            HelpMessage = "The id of the pool that contains the compute nodes.")]
         [ValidateNotNullOrEmpty]
         public string PoolId { get; set; }
 
         [Parameter(Position = 1, ParameterSetName = Constants.IdParameterSet, Mandatory = true,
-            HelpMessage = "The id of the compute node to remove from the pool.")]
+            HelpMessage = "The ids of the compute nodes to remove from the pool.")]
+        [Alias("Id")]
         [ValidateNotNullOrEmpty]
-        public string Id { get; set; }
+        public string[] Ids { get; set; }
 
         [Parameter(Position = 0, ParameterSetName = Constants.InputObjectParameterSet, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
@@ -50,9 +51,9 @@ namespace Microsoft.Azure.Commands.Batch
 
         protected override void ProcessRecord()
         {
-            string computeNodeId = ComputeNode == null ? this.Id : ComputeNode.Id;
+            string computeNodeIds = ComputeNode == null ? string.Join(",", this.Ids) : ComputeNode.Id;
             RemoveComputeNodeParameters parameters = new RemoveComputeNodeParameters(this.BatchContext, this.PoolId,
-                this.Id, this.ComputeNode, this.AdditionalBehaviors)
+                this.Ids, this.ComputeNode, this.AdditionalBehaviors)
             {
                 DeallocationOption = this.DeallocationOption,
                 ResizeTimeout = this.ResizeTimeout
@@ -60,10 +61,10 @@ namespace Microsoft.Azure.Commands.Batch
 
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Resources.RemoveComputeNodeConfirm, computeNodeId),
+                string.Format(Resources.RemoveComputeNodeConfirm, computeNodeIds),
                 Resources.RemoveComputeNode,
-                computeNodeId,
-                () => BatchClient.RemoveComputeNodeFromPool(parameters));
+                computeNodeIds,
+                () => BatchClient.RemoveComputeNodesFromPool(parameters));
         }
     }
 }

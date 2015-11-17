@@ -745,7 +745,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Removing compute node from its pool....
+        ///   Looks up a localized string similar to Removing compute node(s) from pool....
         /// </summary>
         internal static string RemoveComputeNode {
             get {
@@ -754,7 +754,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove compute node {0} from its pool?.
+        ///   Looks up a localized string similar to Are you sure you want to remove compute node(s) {0} from the pool?.
         /// </summary>
         internal static string RemoveComputeNodeConfirm {
             get {

@@ -8688,9 +8688,9 @@ Switch-AzureMode AzureResourceManager</maml:para>
       </command:example>
     </command:examples>
   </command:command>
-  
-  
-  
+
+
+
 
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
@@ -8698,7 +8698,7 @@ Switch-AzureMode AzureResourceManager</maml:para>
         Remove-AzureBatchComputeNode
       </command:name>
       <maml:description>
-        <maml:para>Removes the specified compute node from the specified pool</maml:para>
+        <maml:para>Removes the specified compute nodes from the specified pool</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para></maml:para>
@@ -8708,7 +8708,7 @@ Switch-AzureMode AzureResourceManager</maml:para>
       <dev:version></dev:version>
     </command:details>
     <maml:description>
-      <maml:para>Removes the specified compute node from the specified pool</maml:para>
+      <maml:para>Removes the specified compute nodes from the specified pool</maml:para>
     </maml:description>
     <!-- Cmdlet syntax section-->
     <command:syntax>
@@ -8717,16 +8717,16 @@ Switch-AzureMode AzureResourceManager</maml:para>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
           <maml:name>PoolId</maml:name>
           <maml:description>
-            <maml:para>The id of the pool that contains the compute node.</maml:para>
+            <maml:para>The id of the pool that contains the compute nodes.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
-          <maml:name>Id</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="false" position="2">
+          <maml:name>Ids</maml:name>
           <maml:description>
-            <maml:para>The id of the compute node to remove from the pool.</maml:para>
+            <maml:para>The ids of the compute nodes to remove from the pool.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+          <command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
           <maml:name>BatchContext</maml:name>
@@ -8738,20 +8738,20 @@ Switch-AzureMode AzureResourceManager</maml:para>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>DeallocationOption</maml:name>
           <maml:description>
-            <maml:para>Specifies when the compute node may be removed from the pool. The default is Requeue.</maml:para>
+            <maml:para>Specifies when the compute nodes may be removed from the pool. The default is Requeue.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">ComputeNodeDeallocationOption</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Force</maml:name>
           <maml:description>
-            <maml:para>If this parameter is not present, then you will be prompted for confirmation before the compute node is removed from the pool. Use this parameter to remove the compute node from the pool without being asked for confirmation.</maml:para>
+            <maml:para>If this parameter is not present, then you will be prompted for confirmation before the compute nodes are removed from the pool. Use this parameter to remove the compute nodes from the pool without being asked for confirmation.</maml:para>
           </maml:description>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>ResizeTimeout</maml:name>
           <maml:description>
-            <maml:para>Specifies the timeout for removal of the compute node from the pool. The default value is 10 minutes. The minimum value is 5 minutes.</maml:para>
+            <maml:para>Specifies the timeout for removal of the compute nodes from the pool. The default value is 10 minutes. The minimum value is 5 minutes.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">TimeSpan</command:parameterValue>
         </command:parameter>
@@ -8775,20 +8775,20 @@ Switch-AzureMode AzureResourceManager</maml:para>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>DeallocationOption</maml:name>
           <maml:description>
-            <maml:para>Specifies when the compute node may be removed from the pool. The default is Requeue.</maml:para>
+            <maml:para>Specifies when the compute nodes may be removed from the pool. The default is Requeue.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">ComputeNodeDeallocationOption</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Force</maml:name>
           <maml:description>
-            <maml:para>If this parameter is not present, then you will be prompted for confirmation before the compute node is removed from the pool. Use this parameter to remove the compute node from the pool without being asked for confirmation.</maml:para>
+            <maml:para>If this parameter is not present, then you will be prompted for confirmation before the compute nodes are removed from the pool. Use this parameter to remove the compute nodes from the pool without being asked for confirmation.</maml:para>
           </maml:description>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>ResizeTimeout</maml:name>
           <maml:description>
-            <maml:para>Specifies the timeout for removal of the compute node from the pool. The default value is 10 minutes. The minimum value is 5 minutes.</maml:para>
+            <maml:para>Specifies the timeout for removal of the compute nodes from the pool. The default value is 10 minutes. The minimum value is 5 minutes.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">TimeSpan</command:parameterValue>
         </command:parameter>
@@ -8825,7 +8825,7 @@ Switch-AzureMode AzureResourceManager</maml:para>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>DeallocationOption</maml:name>
         <maml:description>
-          <maml:para>Specifies when the compute node may be removed from the pool. The default is Requeue.</maml:para>
+          <maml:para>Specifies when the compute nodes may be removed from the pool. The default is Requeue.</maml:para>
 
         </maml:description>
         <command:parameterValue required="true" variableLength="false">ComputeNodeDeallocationOption</command:parameterValue>
@@ -8838,7 +8838,7 @@ Switch-AzureMode AzureResourceManager</maml:para>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>Force</maml:name>
         <maml:description>
-          <maml:para>If this parameter is not present, then you will be prompted for confirmation before the compute node is removed from the pool. Use this parameter to remove the compute node from the pool without being asked for confirmation.</maml:para>
+          <maml:para>If this parameter is not present, then you will be prompted for confirmation before the compute nodes are removed from the pool. Use this parameter to remove the compute nodes from the pool without being asked for confirmation.</maml:para>
 
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -8848,15 +8848,15 @@ Switch-AzureMode AzureResourceManager</maml:para>
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
-        <maml:name>Id</maml:name>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="false" position="2">
+        <maml:name>Ids</maml:name>
         <maml:description>
-          <maml:para>The id of the compute node to remove from the pool.</maml:para>
+          <maml:para>The ids of the compute nodes to remove from the pool.</maml:para>
 
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
         <dev:type>
-          <maml:name>string</maml:name>
+          <maml:name>string[]</maml:name>
           <maml:uri/>
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
@@ -8864,7 +8864,7 @@ Switch-AzureMode AzureResourceManager</maml:para>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
         <maml:name>PoolId</maml:name>
         <maml:description>
-          <maml:para>The id of the pool that contains the compute node.</maml:para>
+          <maml:para>The id of the pool that contains the compute nodes.</maml:para>
 
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
@@ -8877,7 +8877,7 @@ Switch-AzureMode AzureResourceManager</maml:para>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ResizeTimeout</maml:name>
         <maml:description>
-          <maml:para>Specifies the timeout for removal of the compute node from the pool. The default value is 10 minutes. The minimum value is 5 minutes.</maml:para>
+          <maml:para>Specifies the timeout for removal of the compute nodes from the pool. The default value is 10 minutes. The minimum value is 5 minutes.</maml:para>
 
         </maml:description>
         <command:parameterValue required="true" variableLength="false">TimeSpan</command:parameterValue>
@@ -8977,6 +8977,32 @@ Switch-AzureMode AzureResourceManager</maml:para>
           <maml:para>Description</maml:para>
           <maml:para>-----------</maml:para>
           <maml:para>Removes compute node &quot;tvm-2316545714_1-20150725t213220z&quot; from pool &quot;myPool&quot; using the pipeline. Since the Force switch is specified, the user is not asked for confirmation.</maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 3 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          Remove-AzureBatchComputeNode &quot;myPool&quot; @(&quot;tvm-1783593343_28-20151117t214257z&quot;,&quot;tvm-1783593343_29-20151117t214257z&quot;) -Force -BatchContext $context
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>Removes two compute nodes from pool &quot;myPool&quot;</maml:para>
           <maml:para></maml:para>
           <maml:para></maml:para>
           <maml:para></maml:para>

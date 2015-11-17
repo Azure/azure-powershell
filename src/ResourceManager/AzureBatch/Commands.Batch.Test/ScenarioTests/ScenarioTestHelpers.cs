@@ -476,13 +476,13 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Gets the id of a compute node in the specified pool
         /// </summary>
-        public static string GetComputeNodeId(BatchController controller, BatchAccountContext context, string poolId)
+        public static string GetComputeNodeId(BatchController controller, BatchAccountContext context, string poolId, int index = 0)
         {
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
             ListComputeNodeOptions options = new ListComputeNodeOptions(context, poolId, null);
-
-            return client.ListComputeNodes(options).First().Id;
+            List<PSComputeNode> computeNodes = client.ListComputeNodes(options).ToList();
+            return computeNodes[index].Id;
         }
 
         /// <summary>

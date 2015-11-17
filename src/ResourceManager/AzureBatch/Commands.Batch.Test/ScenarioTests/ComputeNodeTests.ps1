@@ -172,7 +172,9 @@ function Test-RemoveComputeNode
     }
 
     # State transition isn't immediate
-    $computeNode = Get-AzureBatchComputeNode -PoolId $poolId -Filter "id eq '$computeNodeId'" -Select "id,state" -BatchContext $context
+    $filter = "id eq '$computeNodeId'"
+    $select = "id,state"
+    $computeNode = Get-AzureBatchComputeNode -PoolId $poolId -Filter $filter -Select $select -BatchContext $context
     $start = [DateTime]::Now
     $end = $start.AddSeconds(30)
     while ($computeNode.State -ne 'LeavingPool')
@@ -182,7 +184,36 @@ function Test-RemoveComputeNode
             throw [System.TimeoutException] "Timed out waiting for compute node to enter LeavingPool state"
         }
         Start-TestSleep 1000
-        $computeNode = Get-AzureBatchComputeNode -PoolId $poolId -Filter "id eq '$computeNodeId'" -Select "id,state" -BatchContext $context
+        $computeNode = Get-AzureBatchComputeNode -PoolId $poolId -Filter $filter -Select $select -BatchContext $context
+    }
+}
+
+<#
+.SYNOPSIS
+Tests removing multiple compute nodes from a pool
+#>
+function Test-RemoveMultipleComputeNodes
+{
+    param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$computeNodeId2)
+
+    $context = Get-ScenarioTestContext $accountName
+
+    Remove-AzureBatchComputeNode $poolId @($computeNodeId, $computeNodeId2) -Force -BatchContext $context
+
+    # State transition isn't immediate
+    $filter = "(id eq '$computeNodeId') or (id eq '$computeNodeId2')"
+    $select = "id,state"
+    $computeNodes = Get-AzureBatchComputeNode -PoolId $poolId -Filter $filter -Select $select -BatchContext $context
+    $start = [DateTime]::Now
+    $end = $start.AddSeconds(30)
+    while ($computeNodes[0].State -ne 'LeavingPool' -and $computeNodes[1].State -ne 'LeavingPool')
+    {
+        if ([DateTime]::Now -gt $end)
+        {
+            throw [System.TimeoutException] "Timed out waiting for compute nodes to enter LeavingPool state"
+        }
+        Start-TestSleep 1000
+        $computeNodes = Get-AzureBatchComputeNode -PoolId $poolId -Filter $filter -Select $select -BatchContext $context
     }
 }
 

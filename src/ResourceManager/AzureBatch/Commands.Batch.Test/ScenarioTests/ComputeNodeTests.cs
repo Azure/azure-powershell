@@ -139,6 +139,34 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveMultipleComputeNodes()
+        {
+            BatchController controller = BatchController.NewInstance;
+            BatchAccountContext context = null;
+            string computeNodeId = null;
+            string computeNodeId2 = null;
+            int originalDedicated = 3;
+            controller.RunPsTestWorkflow(
+                () => { return new string[] { string.Format("Test-RemoveMultipleComputeNodes '{0}' '{1}' '{2}' '{3}'", accountName, poolId, computeNodeId, computeNodeId2) }; },
+                () =>
+                {
+                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    originalDedicated = ScenarioTestHelpers.GetPoolCurrentDedicated(controller, context, poolId);
+                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(controller, context, poolId);
+                    ScenarioTestHelpers.ResizePool(controller, context, poolId, originalDedicated + 2);
+                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(controller, context, poolId);
+                    computeNodeId = ScenarioTestHelpers.GetComputeNodeId(controller, context, poolId);
+                    ScenarioTestHelpers.WaitForIdleComputeNode(controller, context, poolId, computeNodeId);
+                    computeNodeId2 = ScenarioTestHelpers.GetComputeNodeId(controller, context, poolId, 1);
+                    ScenarioTestHelpers.WaitForIdleComputeNode(controller, context, poolId, computeNodeId2);
+                },
+                null,
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRebootComputeNodeById()
         {
             TestRebootComputeNode(false, TestUtilities.GetCurrentMethodName());

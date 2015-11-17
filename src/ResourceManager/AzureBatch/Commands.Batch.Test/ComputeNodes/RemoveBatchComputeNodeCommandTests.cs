@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
-            cmdlet.Id = null;
+            cmdlet.Ids = null;
 
             Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
 
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
 
-            cmdlet.Id = "computeNode1";
+            cmdlet.Ids = new string[] { "computeNode1" };
 
             // Don't go to the service on a Remove ComputeNode call
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeRemoveParameters, ComputeNodeRemoveResponse>();
@@ -84,12 +84,13 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.BatchContext = context;
 
             cmdlet.PoolId = "testPool";
-            cmdlet.Id = "computeNode1";
+            cmdlet.Ids = new string[] { "computeNode1", "computeNode2" };
             cmdlet.DeallocationOption = ComputeNodeDeallocationOption.Terminate;
             cmdlet.ResizeTimeout = TimeSpan.FromMinutes(8);
 
             ComputeNodeDeallocationOption? requestDeallocationOption = null;
             TimeSpan? requestResizeTimeout = null;
+            IList<string> requestComputeNodeIds = null;
 
             // Don't go to the service on a Remove ComputeNode call
             RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
@@ -102,6 +103,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
                     // Grab the parameters from the outgoing request.
                     requestDeallocationOption = request.TypedParameters.ComputeNodeDeallocationOption;
                     requestResizeTimeout = request.TypedParameters.ResizeTimeout;
+                    requestComputeNodeIds = request.TypedParameters.ComputeNodeIds;
 
                     ComputeNodeRemoveResponse response = new ComputeNodeRemoveResponse();
                     Task<ComputeNodeRemoveResponse> task = Task.FromResult(response);
@@ -115,6 +117,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             // Verify that the parameters were properly set on the outgoing request
             Assert.Equal(cmdlet.DeallocationOption, requestDeallocationOption);
             Assert.Equal(cmdlet.ResizeTimeout, requestResizeTimeout);
+            Assert.Equal(cmdlet.Ids.Length, requestComputeNodeIds.Count);
+            foreach (string id in cmdlet.Ids)
+            {
+                Assert.True(requestComputeNodeIds.Contains(id));
+            }
         }
     }
 }
