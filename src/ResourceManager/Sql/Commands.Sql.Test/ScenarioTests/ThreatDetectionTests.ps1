@@ -20,7 +20,7 @@ Tests the default values of database's threat detection policy
 function Test-ThreatDetectionDatabaseGetDefualtPolicy
 {
 	# Setup
-	$testSuffix = 5000
+	$testSuffix = 4000
 	Create-ThreatDetectionTestEnvironmentWithStorageV2 $testSuffix
 	$params = Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
 
@@ -49,7 +49,7 @@ Tests that when modifying the properties of a databases's threat detection polic
 function Test-ThreatDetectionDatabaseUpdatePolicy
 {
 	# Setup
-	$testSuffix = 5001
+	$testSuffix = 6001
 	Create-ThreatDetectionTestEnvironmentWithStorageV2 $testSuffix
 	$params = Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
 
@@ -118,7 +118,7 @@ Tests that when turning off auditing or marking it as "use server default" , thr
 function Test-DisablingThreatDetection
 {
 	# Setup
-	$testSuffix = 5002
+	$testSuffix = 7002
 	Create-ThreatDetectionTestEnvironmentWithStorageV2 $testSuffix
 	$params = Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
 
@@ -161,7 +161,7 @@ Tests sending invalid arguments in database's threat detection
 function Test-InvalidArgumentsThreatDetection
 {
 	# Setup
-	$testSuffix = 5003
+	$testSuffix = 8003
 	Create-ThreatDetectionTestEnvironmentWithStorageV2 $testSuffix
 	$params = Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
 
