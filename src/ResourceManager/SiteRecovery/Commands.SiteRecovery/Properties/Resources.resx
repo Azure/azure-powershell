@@ -304,4 +304,10 @@ Please provide a storage account with the same location as that of the vault.</v
   <data name="ProtectionIsNotEnabledForVM" xml:space="preserve">
     <value>Protection is not enabled for VM</value>
   </data>
+  <data name="PassingPolicyMandatoryForEnablingDR" xml:space="preserve">
+    <value>Passing policy is mandatory for enabling protection.</value>
+  </data>
+  <data name="SiteRecoveryVaultTypeWillBeDeprecatedSoon" xml:space="preserve">
+    <value>SiteRecovery vault type will be deprecated soon. Please use RecoveryServices vault type instead.</value>
+  </data>
 </root>

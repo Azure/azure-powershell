@@ -129,23 +129,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     {
                         if (this.Protection == Constants.EnableProtection)
                         {
-                            //If no policy is passed work on the first policy in container by default
-                            if (this.Policy == null)
+                            if (string.Compare(this.ParameterSetName, ASRParameterSets.DisableDR, StringComparison.OrdinalIgnoreCase) == 0)
                             {
-                                ProtectionContainerResponse protectionContainerResponse = RecoveryServicesClient.GetAzureSiteRecoveryProtectionContainer(
-                                    Utilities.GetValueFromArmId(this.ProtectionEntity.ID, ARMResourceTypeConstants.ReplicationFabrics),
-                                    Utilities.GetValueFromArmId(this.ProtectionEntity.ID, ARMResourceTypeConstants.ReplicationProtectionContainers));
-
-                                ProtectionContainerMappingListResponse protectionContainerMappingListResponse = RecoveryServicesClient.GetAzureSiteRecoveryProtectionContainerMapping(Utilities.GetValueFromArmId(protectionContainerResponse.ProtectionContainer.Id, ARMResourceTypeConstants.ReplicationFabrics), protectionContainerResponse.ProtectionContainer.Name);
-                                if (protectionContainerMappingListResponse.ProtectionContainerMappings != null && protectionContainerMappingListResponse.ProtectionContainerMappings.Count > 0)
-                                {
-                                    PolicyResponse policyResponse = RecoveryServicesClient.GetAzureSiteRecoveryPolicy(Utilities.GetValueFromArmId(protectionContainerMappingListResponse.ProtectionContainerMappings[0].Properties.PolicyId,  ARMResourceTypeConstants.ReplicationPolicies));
-                                    this.Policy = new ASRPolicy(policyResponse.Policy);
-                                }
-                                else
-                                {
-                                    throw new InvalidOperationException(Properties.Resources.CloudNotPaired);
-                                }
+                                throw new PSArgumentException(Properties.Resources.PassingPolicyMandatoryForEnablingDR);
                             }
 
                             EnableProtectionProviderSpecificInput enableProtectionProviderSpecificInput = new EnableProtectionProviderSpecificInput();
@@ -162,13 +148,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                                 Properties = inputProperties
                             };
                             
-                            // Considering no PP input for E2E, if needed, change below logic
-                            // for E2E, consider the profile created PS & a profile created in service
+                            // Process if block only if policy is not null, policy is created for E2A or B2A and parameter set is for enable DR of E2A or B2A 
                             if (this.Policy != null &&
-                                0 == string.Compare(
-                                this.Policy.ReplicationProvider,
-                                Constants.HyperVReplicaAzure,
-                                StringComparison.OrdinalIgnoreCase))
+                                0 == string.Compare(this.Policy.ReplicationProvider, Constants.HyperVReplicaAzure, StringComparison.OrdinalIgnoreCase) &&
+                                (0 == string.Compare(this.ParameterSetName, ASRParameterSets.EnterpriseToAzure, StringComparison.OrdinalIgnoreCase) ||
+                                0 == string.Compare(this.ParameterSetName, ASRParameterSets.HyperVSiteToAzure, StringComparison.OrdinalIgnoreCase)))
                             {
                                 HyperVReplicaAzureEnableProtectionInput providerSettings = new HyperVReplicaAzureEnableProtectionInput();
                                 providerSettings.HvHostVmId = this.ProtectionEntity.FabricObjectId;

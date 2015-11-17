@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
             foreach (ResourceGroup resourceGroup in this.GetRecoveryServicesClient.ResourceGroup.List())
             {
-                if (resourceGroup.Name == resourceGroupName)
+                if (string.Compare(resourceGroup.Name, resourceGroupName, StringComparison.OrdinalIgnoreCase) == 0)
                 {
                     validResourceGroup = true;
                     break;
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
             foreach (Vault vault in GetRecoveryServicesClient.Vaults.Get(resourceGroupName, this.GetRequestHeaders(false)))
             {
-                if (vault.Name == resourceName)
+                if (string.Compare(vault.Name, resourceName, StringComparison.OrdinalIgnoreCase) == 0)
                 {
                     validResource = true;
                     idPrefixtillvaultName = vault.Id;

@@ -58,11 +58,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             try
             {
+                this.WriteWarningWithTimestamp(
+                    string.Format(
+                    Properties.Resources.SiteRecoveryVaultTypeWillBeDeprecatedSoon));
+
                 VaultCreateArgs vaultCreateArgs = new VaultCreateArgs();
                 vaultCreateArgs.Location = this.Location;
                 vaultCreateArgs.Properties = new VaultProperties();
-                vaultCreateArgs.Properties.Sku = new VaultSku();
-                vaultCreateArgs.Properties.Sku.Name = "standard";
+                vaultCreateArgs.Sku = new VaultSku();
+                vaultCreateArgs.Sku.Name = "standard";
 
                 VaultCreateResponse response = RecoveryServicesClient.CreateVault(this.ResouceGroupName, this.Name, vaultCreateArgs);
 

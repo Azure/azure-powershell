@@ -39,7 +39,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.RecoveryServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServices.1.0.0-preview\lib\net40\Microsoft.Azure.Management.RecoveryServices.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServices.5.0.3-preview\lib\net40\Microsoft.Azure.Management.RecoveryServices.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Hyak.Common">

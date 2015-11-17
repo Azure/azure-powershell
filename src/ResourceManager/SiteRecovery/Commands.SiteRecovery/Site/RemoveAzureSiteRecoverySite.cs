@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Gets or sets the site name
         /// </summary>
-        [Parameter(Mandatory = true)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRSite Site { get; set; }
 
