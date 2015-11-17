@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Network
     {
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The name of the Peering")]
+            HelpMessage = "The name of the Authorization")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
