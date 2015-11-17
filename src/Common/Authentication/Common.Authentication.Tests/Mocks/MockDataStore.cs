@@ -21,7 +21,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
+namespace Microsoft.Azure.Commands.Common.Test.Mocks
 {
     public class MockDataStore : IDataStore
     {
@@ -261,15 +261,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             }
         }
 
-        public X509Certificate2 GetCertificate(string thumbprint)
+        public byte [] GetCertificate(string thumbprint)
         {
             if (thumbprint != null && certStore.ContainsKey(thumbprint))
             {
-                return certStore[thumbprint];
+                return certStore[thumbprint].Export(X509ContentType.Pkcs12);
             }
             else
             {
-                return new X509Certificate2();
+                return new X509Certificate2().Export(X509ContentType.Pkcs12);
             }
         }
 
