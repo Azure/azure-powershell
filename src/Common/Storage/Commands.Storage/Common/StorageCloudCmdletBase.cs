@@ -77,7 +77,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
         }
 
-                public T Channel
+        public T Channel
         {
             get;
             set;

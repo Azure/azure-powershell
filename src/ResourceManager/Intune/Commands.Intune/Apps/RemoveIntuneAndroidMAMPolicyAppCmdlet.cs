@@ -14,8 +14,10 @@
 
 namespace Microsoft.Azure.Commands.Intune
 {
-    using System.Management.Automation;    
     using Management.Intune;
+    using Microsoft.Azure.Commands.Intune.Properties;
+    using System.Globalization;
+    using System.Management.Automation;
 
     /// <summary>
     /// A cmdlet to link an app to Android Intune MAM policy Azure resource.
@@ -46,13 +48,25 @@ namespace Microsoft.Azure.Commands.Intune
         {
             this.ConfirmAction(
                 this.Force,
-                "Are you sure you want to remove App with name:" + this.AppName + " from android policy with name:" + this.Name,
-                "Remove the app from android policy resource.",
+                string.Format(
+                    CultureInfo.CurrentCulture,
+                    Resources.RemoveLinkedResource_ActionMessage, 
+                    Resources.App, 
+                    this.AppName,
+                    Resources.AndroidPolicy, 
+                    this.Name),
+                string.Format(
+                    CultureInfo.CurrentCulture,
+                    Resources.RemoveLinkedResource_ProcessMessage,
+                    Resources.App,
+                    this.AppName,
+                    Resources.AndroidPolicy,
+                    this.Name),
                 this.Name,
                 () =>
                 {
                     this.IntuneClient.Android.DeleteAppForMAMPolicy(this.AsuHostName, this.Name, this.AppName);
-                    this.WriteObject("Operation completed successfully");
+                    this.WriteObject(Resources.OperationCompletedMessage);
                 });
         }
     }

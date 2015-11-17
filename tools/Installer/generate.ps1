@@ -32,8 +32,14 @@ Write-Verbose "The output folder is set to $output"
 $serviceManagementPath = Join-Path $output "ServiceManagement\Azure"
 $resourceManagerPath = Join-Path $output "ResourceManager\AzureResourceManager"
 
-Write-Verbose "Removing unneeded psd1 file for AzureResourceManager"
+Write-Verbose "Removing unneeded psd1 and other files"
 Remove-Item -Force $resourceManagerPath\AzureResourceManager.psd1 -ErrorAction SilentlyContinue
+Remove-Item -Force $resourceManagerPath\AzureRM.DataLakeAnalytics\AzureRM.Tags.psd1 -ErrorAction SilentlyContinue
+Remove-Item -Force $resourceManagerPath\AzureRM.DataLakeAnalytics\Microsoft.Azure.Commands.Tags.dll-Help.xml -ErrorAction SilentlyContinue
+Remove-Item -Force $resourceManagerPath\AzureRM.DataLakeAnalytics\Microsoft.Azure.Commands.Tags.format.ps1xml -ErrorAction SilentlyContinue
+Remove-Item -Force $resourceManagerPath\AzureRM.DataLakeStore\AzureRM.Tags.psd1 -ErrorAction SilentlyContinue
+Remove-Item -Force $resourceManagerPath\AzureRM.DataLakeStore\Microsoft.Azure.Commands.Tags.dll-Help.xml -ErrorAction SilentlyContinue
+Remove-Item -Force $resourceManagerPath\AzureRM.DataLakeStore\Microsoft.Azure.Commands.Tags.format.ps1xml -ErrorAction SilentlyContinue
 Write-Verbose "Removing duplicated Resources folder"
 Remove-Item -Recurse -Force $serviceManagementPath\Compute\Resources\ -ErrorAction SilentlyContinue
 Remove-Item -Recurse -Force $serviceManagementPath\Sql\Resources\ -ErrorAction SilentlyContinue

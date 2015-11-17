@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.Intune
     using Management.Intune;
     using Management.Intune.Models;
     using System.Collections.Generic;
+    using System.Globalization;
 
     /// <summary>
     /// Cmdlet to get apps for iOS platform.
@@ -30,7 +31,7 @@ namespace Microsoft.Azure.Commands.Intune
         /// </summary>
         protected override void ProcessRecord()
         {
-            string filter = string.Format("platform eq '{0}'", PlatformType.Android.ToString().ToLower());
+            string filter = string.Format(CultureInfo.InvariantCulture, IntuneConstants.PlatformFilterQueryParam, PlatformType.Android.ToString().ToLower());
 
             MultiPageGetter<Application> mpg = new MultiPageGetter<Application>();
             

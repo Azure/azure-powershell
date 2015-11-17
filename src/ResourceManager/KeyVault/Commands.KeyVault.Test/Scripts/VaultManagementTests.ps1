@@ -170,6 +170,20 @@ function Test_ModifyAccessPolicyEnabledForDeployment
     Test-ModifyAccessPolicyEnabledForDeployment $global:precreatedVaultName $global:resourceGroupName $user
 }
 
+function Test_ModifyAccessPolicyEnabledForTemplateDeployment
+{
+    $user = (Get-AzureRmSubscription -Current).DefaultAccount 
+    Reset-PreCreatedVault
+    Test-ModifyAccessPolicyEnabledForTemplateDeployment $global:precreatedVaultName $global:resourceGroupName $user
+}
+
+function Test_ModifyAccessPolicyEnabledForDiskEncryption
+{
+    $user = (Get-AzureRmSubscription -Current).DefaultAccount 
+    Reset-PreCreatedVault
+    Test-ModifyAccessPolicyEnabledForDiskEncryption $global:precreatedVaultName $global:resourceGroupName $user
+}
+
 function Test_ModifyAccessPolicyNegativeCases
 {
     $user = (Get-AzureRmSubscription -Current).DefaultAccount 

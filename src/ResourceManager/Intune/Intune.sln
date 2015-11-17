@@ -20,7 +20,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{AB94E3
 		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
 EndProject
+<<<<<<< HEAD
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Intune.Test", "Commands.Intune.Test\Commands.Intune.Test.csproj", "{CA5F571B-550B-4BE3-9BA3-06442DF52768}"
+=======
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Resources.Test", "..\Resources\Commands.Resources.Test\Commands.Resources.Test.csproj", "{4C2FE49A-09E1-4979-AD46-CD64FD04C8F7}"
+>>>>>>> 41c462796d0c074d9be62127f3677a385ebbe89a
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,10 +56,17 @@ Global
 		{8058D403-06E3-4BED-8924-D166CE303961}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8058D403-06E3-4BED-8924-D166CE303961}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8058D403-06E3-4BED-8924-D166CE303961}.Release|Any CPU.Build.0 = Release|Any CPU
+<<<<<<< HEAD
 		{CA5F571B-550B-4BE3-9BA3-06442DF52768}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CA5F571B-550B-4BE3-9BA3-06442DF52768}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA5F571B-550B-4BE3-9BA3-06442DF52768}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA5F571B-550B-4BE3-9BA3-06442DF52768}.Release|Any CPU.Build.0 = Release|Any CPU
+=======
+		{4C2FE49A-09E1-4979-AD46-CD64FD04C8F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C2FE49A-09E1-4979-AD46-CD64FD04C8F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C2FE49A-09E1-4979-AD46-CD64FD04C8F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C2FE49A-09E1-4979-AD46-CD64FD04C8F7}.Release|Any CPU.Build.0 = Release|Any CPU
+>>>>>>> 41c462796d0c074d9be62127f3677a385ebbe89a
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

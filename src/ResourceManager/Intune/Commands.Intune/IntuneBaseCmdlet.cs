@@ -13,10 +13,12 @@
 // ----------------------------------------------------------------------------------
 namespace Microsoft.Azure.Commands.Intune
 {
-    using System;
+    using Management.Intune;
+    using Microsoft.Azure.Commands.Intune.Properties;
     using Microsoft.Azure.Commands.ResourceManager.Common;
-    using Microsoft.Azure.Common.Authentication.Models;
     using Microsoft.Azure.Common.Authentication;
+    using Microsoft.Azure.Common.Authentication.Models;
+    using System;
     using System.Collections.Concurrent;
     using System.Management.Automation;
     using Management.Intune;
@@ -75,19 +77,8 @@ namespace Microsoft.Azure.Commands.Intune
             {
                 if (asuHostName == null)
                 {
-
-                    // Location location = IntuneClient.GetLocationByHostName();
-
-                    Location mockLocation = new Location();
-
-                    mockLocation.Location = "mockLocationString";
-                    mockLocation.HostName = "mockHostName";
-                    asuHostName = mockLocation.HostName;
-
-                    // asuHostName = location.HostName;                
                     var location = IntuneClient.GetLocationByHostName();
                     asuHostName = location.HostName;
-
                 }
 
                 return asuHostName;
@@ -105,8 +96,7 @@ namespace Microsoft.Azure.Commands.Intune
             ApiVersionHandler apiVersionHandler = null;
             if (string.IsNullOrWhiteSpace(endpoint))
             {
-                throw new ApplicationException(
-                    "The endpoint for the Azure Resource Manager service is not set. Please report this issue via GitHub or contact Microsoft customer support.");
+                throw new ApplicationException(Resources.ARMEndpointNotSetErrorMessage);
             }
 
             var endpointUri = new Uri(endpoint, UriKind.Absolute);
