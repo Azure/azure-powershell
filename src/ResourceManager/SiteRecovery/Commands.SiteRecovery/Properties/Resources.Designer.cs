@@ -282,6 +282,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Passing Azure storage account is mandatory for enabling protection in Enterprise to Azure and Hoster to Azure scenarios..
+        /// </summary>
+        internal static string PassingStorageMandatoryForEnablingDRInAzureScenarios {
+            get {
+                return ResourceManager.GetString("PassingStorageMandatoryForEnablingDRInAzureScenarios", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Policy {0} is not associated with the Vault {1}.
         /// </summary>
         internal static string PolicyNotFound {
