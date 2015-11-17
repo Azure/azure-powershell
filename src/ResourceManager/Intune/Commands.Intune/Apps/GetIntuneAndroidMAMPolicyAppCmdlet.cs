@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Intune
         /// <summary>
         /// Gets the policy Name
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The policy name for the apps to fetch.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy name for the apps to fetch.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

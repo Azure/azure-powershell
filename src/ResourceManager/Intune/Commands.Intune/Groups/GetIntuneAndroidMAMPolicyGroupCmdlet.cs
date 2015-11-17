@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Intune
         /// <summary>
         /// Gets the policy Name
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The policy name to fetch for the groups.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy name to fetch for the groups.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

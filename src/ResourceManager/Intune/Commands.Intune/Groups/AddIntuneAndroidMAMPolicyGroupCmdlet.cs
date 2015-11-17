@@ -29,14 +29,14 @@ namespace Microsoft.Azure.Commands.Intune
         /// <summary>
         /// Gets or sets the policy name
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The Android policy name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Android policy name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the Group name
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The Android group name to link to.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Android group name to link to.")]
         [ValidateNotNullOrEmpty]
         public string GroupName { get; set; }
 
@@ -66,21 +66,10 @@ namespace Microsoft.Azure.Commands.Intune
                 this.Name,
                 () =>
                 {
-                    this.IntuneClient.Android.AddGroupForMAMPolicy(this.AsuHostName, this.Name, this.GroupName, PrepareMAMPolicyAppIdGroupIdPayload());
+                    var payLoad = AppOrGroupPayloadMaker.PrepareMAMPolicyPayload(this.IntuneClient, LinkType.Group, this.AsuHostName, this.GroupName);
+                    this.IntuneClient.Android.AddGroupForMAMPolicy(this.AsuHostName, this.Name, this.GroupName, payLoad);
                     this.WriteObject(Resources.OperationCompletedMessage);
                 });
-        }
-
-        private MAMPolicyAppIdOrGroupIdPayload PrepareMAMPolicyAppIdGroupIdPayload()
-        {
-            string groupUri = string.Format(IntuneConstants.GroupUriFormat, this.IntuneClient.BaseUri.Host, this.AsuHostName, this.GroupName);
-            var groupIdPayload = new MAMPolicyAppIdOrGroupIdPayload();
-            groupIdPayload.Properties = new MAMPolicyAppOrGroupIdProperties()
-            {
-                Url = groupUri
-            };
-
-            return groupIdPayload;
         }
     }
 }

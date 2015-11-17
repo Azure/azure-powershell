@@ -32,21 +32,21 @@ namespace Microsoft.Azure.Commands.Intune
         /// <summary>
         /// The policy name
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The policy name to patch.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy name to patch.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the policy name.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The policy friendly name.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy friendly name.")]
         [ValidateNotNullOrEmpty]
         public string FriendlyName { get; set; }
 
         /// <summary>
         /// The description of the policy
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The policy description.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy description.")]
         [ValidateNotNullOrEmpty]
         public string Description { get; set; }
 
