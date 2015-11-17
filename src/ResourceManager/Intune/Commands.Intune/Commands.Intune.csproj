@@ -108,6 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiVersionHandler.cs" />
+    <Compile Include="AppOrGroupPayloadMaker.cs" />
     <Compile Include="Apps\GetIntuneAndroidMAMAppCmdlet.cs" />
     <Compile Include="Apps\GetIntuneAndroidMAMPolicyAppCmdlet.cs" />
     <Compile Include="MultiPageGetter.cs" />

@@ -29,14 +29,14 @@ namespace Microsoft.Azure.Commands.Intune
         /// <summary>
         /// Gets or sets the policy name
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The iOS policy name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The iOS policy name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the App name
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The iOS App Name to link to.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The iOS App Name to link to.")]
         [ValidateNotNullOrEmpty]
         public string AppName { get; set; }
 
@@ -66,21 +66,10 @@ namespace Microsoft.Azure.Commands.Intune
                 this.Name,
                 () =>
                 {
-                    this.IntuneClient.Ios.AddAppForMAMPolicy(this.AsuHostName, this.Name, this.AppName, PrepareMAMPolicyAppIdGroupIdPayload());
+                    var payLoad = AppOrGroupPayloadMaker.PrepareMAMPolicyPayload(this.IntuneClient, LinkType.App, this.AsuHostName, this.AppName);
+                    this.IntuneClient.Ios.AddAppForMAMPolicy(this.AsuHostName, this.Name, this.AppName, payLoad);
                     this.WriteObject(Resources.OperationCompletedMessage);
                 });
-        }
-
-        private MAMPolicyAppIdOrGroupIdPayload PrepareMAMPolicyAppIdGroupIdPayload()
-        {
-            string appUri = string.Format(IntuneConstants.AppUriFormat, this.IntuneClient.BaseUri.Host, this.AsuHostName, this.AppName);
-            var appIdPayload = new MAMPolicyAppIdOrGroupIdPayload();
-            appIdPayload.Properties = new MAMPolicyAppOrGroupIdProperties()
-            {
-                Url = appUri
-            };
-
-            return appIdPayload;
-        }
+        }        
     }
 }

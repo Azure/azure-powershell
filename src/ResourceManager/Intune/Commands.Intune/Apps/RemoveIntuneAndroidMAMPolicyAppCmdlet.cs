@@ -28,14 +28,14 @@ namespace Microsoft.Azure.Commands.Intune
         /// <summary>
         /// Gets or sets the policy name
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The Android policy Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Android policy Name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the App name
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The Android App name to remove.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Android App name to remove.")]
         [ValidateNotNullOrEmpty]
         public string AppName { get; set; }
 
@@ -65,8 +65,15 @@ namespace Microsoft.Azure.Commands.Intune
                 this.Name,
                 () =>
                 {
-                    this.IntuneClient.Android.DeleteAppForMAMPolicy(this.AsuHostName, this.Name, this.AppName);
-                    this.WriteObject(Resources.OperationCompletedMessage);
+                    var result = IntuneClient.Android.DeleteAppForMAMPolicyWithHttpMessagesAsync(this.AsuHostName, this.Name, this.AppName).GetAwaiter().GetResult();
+                    if (result.Response.StatusCode == System.Net.HttpStatusCode.OK)
+                    {
+                        this.WriteObject(Resources.OneItemDeleted);
+                    }
+                    else
+                    {
+                        this.WriteObject(Resources.NoItemsDeleted);
+                    }
                 });
         }
     }

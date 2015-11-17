@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Intune
         /// <summary>
         /// Gets or sets the API version.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.")]
         [ValidateNotNullOrEmpty]
         public string ApiVersion { get; set; }
 

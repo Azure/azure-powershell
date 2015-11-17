@@ -22,13 +22,13 @@ namespace Microsoft.Azure.Commands.Intune
     /// A cmdlet that removes Intune iOS MAM Policy.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmIntuneIOSMAMPolicy", SupportsShouldProcess = true, DefaultParameterSetName = IntuneBaseCmdlet.DefaultParameterSet), OutputType(typeof(PSObject))]
-    public class RemoveAzureRmIntuneIOSMAMPolicyCmdlet : IntuneBaseCmdlet
+    public class RemoveIntuneIOSMAMPolicyCmdlet : IntuneBaseCmdlet
     {
         #region params
         /// <summary>
         /// The iOS policy Id
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The iOS Policy Name (Policy Guid) to remove the policy.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The iOS Policy Name (Policy Guid) to remove the policy.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -50,9 +50,9 @@ namespace Microsoft.Azure.Commands.Intune
                 this.Name,
                 () =>
                 {
-                    var res = this.IntuneClient.Ios.DeleteMAMPolicyWithHttpMessagesAsync(this.AsuHostName, this.Name);
-
-                    if (res.Result.Response.StatusCode == System.Net.HttpStatusCode.OK)
+                    var res = this.IntuneClient.Ios.DeleteMAMPolicyWithHttpMessagesAsync(this.AsuHostName, this.Name).GetAwaiter().GetResult();
+                    
+                    if (res.Response.StatusCode == System.Net.HttpStatusCode.OK)
                     {
                         this.WriteObject(Resources.OneItemDeleted);
                     }
