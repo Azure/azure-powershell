@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch
         internal const string ComputeNodeParameterSet = "ComputeNode";
 
         [Parameter(ParameterSetName = TaskParameterSet, Mandatory = true,
-            ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the job containing the target task.")]
+            ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the job containing the task.")]
         [ValidateNotNullOrEmpty]
         public string JobId { get; set; }
 
