@@ -95,9 +95,6 @@
     <Reference Include="Microsoft.Azure.Management.Storage">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.3.0.0\lib\net40\Microsoft.Azure.Management.Storage.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Rest.ClientRuntime.Azure">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.1.0.20\lib\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.7-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
@@ -177,27 +174,11 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.CLU">
+      <HintPath>..\..\..\lib\Microsoft.CLU.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\DscExtensionCmdletConstants.cs">
-      <Link>Extension\DSC\DscExtensionCmdletConstants.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\DscExtensionPrivateSettings.cs">
-      <Link>Extension\DSC\DscExtensionPrivateSettings.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\DscExtensionPublicSettings.cs">
-      <Link>Extension\DSC\DscExtensionPublicSettings.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\DscExtensionSettingsSerializer.cs">
-      <Link>Extension\DSC\DscExtensionSettingsSerializer.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\Publish\ConfigurationParseResult.cs">
-      <Link>Extension\DSC\ConfigurationParseResult.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\Publish\ConfigurationParsingHelper.cs">
-      <Link>Extension\DSC\ConfigurationParsingHelper.cs</Link>
-    </Compile>
     <Compile Include="AvailabilitySets\RemoveAzureAvailabilitySetCommand.cs" />
     <Compile Include="AvailabilitySets\GetAzureAvailabilitySetCommand.cs" />
     <Compile Include="AvailabilitySets\NewAzureAvailabilitySetCommand.cs" />
@@ -232,16 +213,6 @@
     <Compile Include="Extension\Diagnostics\GetAzureVMDiagnosticsExtension.cs" />
     <Compile Include="Extension\Diagnostics\RemoveAzureVMDiagnosticsExtension.cs" />
     <Compile Include="Extension\Diagnostics\SetAzureVMDiagnosticsExtension.cs" />
-    <Compile Include="Extension\DSC\GetAzureVMDscExtensionStatusCommand.cs" />
-    <Compile Include="Extension\DSC\GetDscResourceException.cs" />
-    <Compile Include="Extension\DSC\DscExtensionPublishCmdletCommonBase.cs" />
-    <Compile Include="Extension\DSC\DscExtensionCmdletCommonBase.cs" />
-    <Compile Include="Extension\DSC\PublishAzureVMDscConfigurationCommand.cs" />
-    <Compile Include="Extension\DSC\RemoveAzureVMDscExtensionCommand.cs" />
-    <Compile Include="Extension\DSC\SetAzureVMDscExtensionCommand.cs" />
-    <Compile Include="Extension\DSC\VirtualMachineDscExtensionContext.cs" />
-    <Compile Include="Extension\DSC\GetAzureVMDscExtensionCommand.cs" />
-    <Compile Include="Extension\DSC\VirtualMachineDscExtensionStatusContext.cs" />
     <Compile Include="Extension\SetAzureVMExtensionCommand.cs" />
     <Compile Include="Extension\RemoveAzureVMExtensionCommand.cs" />
     <Compile Include="Extension\GetAzureVMExtensionCommand.cs" />
@@ -371,6 +342,12 @@
       <Link>AzureRM.Compute.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Content\azure.lx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\package.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Microsoft.Azure.Commands.Compute.dll-Help.psd1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -383,9 +360,15 @@
     <Content Include="Microsoft.Azure.Commands.Compute.Types.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Microsoft.Azure.Commands.Compute.nuspec">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Tools\azure.bat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -410,4 +393,8 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
   </Target>
+  <PropertyGroup>
+    <PostBuildEvent>$(SolutionDir)\..\tools\NuGet.exe pack $(TargetName).nuspec
+xcopy *.nupkg $(SolutionDir)\..\CLUPackages /Y</PostBuildEvent>
+  </PropertyGroup>
 </Project>

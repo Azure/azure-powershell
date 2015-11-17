@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata minClientVersion="2.5">
+    <id>Microsoft.Azure.Commands.Resources</id>
+    <title>Microsoft Azure Resource Manager cmdlets</title>
+    <version>0.0.4</version>
+    <authors>Microsoft</authors>
+    <owners>azure-sdk, PowerShell, Microsoft</owners>
+    <licenseUrl>http://aka.ms/windowsazureapache2</licenseUrl>
+    <projectUrl>https://github.com/Azure/azure-sdk-for-net</projectUrl>
+    <iconUrl>http://go.microsoft.com/fwlink/?LinkID=288890</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <summary>Provides PowerShell cmdlets for managing resources and resource groups using Azure Resource Manager.</summary>
+    <description>
+      Provides PowerShell cmdlets for managing generic azure resources, authorization, tags, and AD entities.
+
+      Supported Library Platforms:
+      - .NET Framework 4.5.2
+</description>
+    <copyright>Copyright © Microsoft Corporation</copyright>
+    <tags>Microsoft "Microsoft Azure" Azure cloud PowerShell WMF Windows Management Framework ARM Azure Resource Manager azureofficial windowsazureofficial</tags>
+    <references>
+      <group targetFramework="net452">
+        <reference file="Hyak.Common.dll"  />
+        <reference file="Microsoft.Azure.Common.Authentication.dll"  />
+        <reference file="Microsoft.Azure.Common.dll"  />
+        <reference file="Microsoft.Azure.Common.NetFramework.dll"  />
+        <reference file="Microsoft.Azure.Gallery.dll"  />
+        <reference file="Microsoft.Azure.Graph.RBAC.dll"  />
+        <reference file="Microsoft.Azure.Management.Authorization.dll"  />
+        <reference file="Microsoft.Azure.ResourceManager.dll"  />
+        <reference file="Microsoft.IdentityModel.Clients.ActiveDirectory.dll"  />
+        <reference file="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll"  />
+        <reference file="Microsoft.Rest.ClientRuntime.Azure.Authentication.dll"  />
+        <reference file="Microsoft.Rest.ClientRuntime.dll"  />
+        <reference file="Microsoft.Threading.Tasks.dll"  />
+        <reference file="Microsoft.Threading.Tasks.Extensions.Desktop.dll"  />
+        <reference file="Microsoft.Threading.Tasks.Extensions.dll"  />
+        <reference file="Microsoft.WindowsAzure.Commands.Common.dll"  />
+        <reference file="Microsoft.WindowsAzure.Commands.Common.pdb"  />
+        <reference file="Microsoft.Azure.Commands.ResourceManager.Common.dll"  />
+        <reference file="Microsoft.Azure.Commands.ResourceManager.Common.pdb"  />
+        <reference file="Microsoft.Azure.Commands.Tags.dll" />
+        <reference file="Microsoft.Azure.Commands.Tags.pdb" />
+        <reference file="Microsoft.Azure.Commands.Resources.dll"  />
+        <reference file="Microsoft.Azure.Commands.Resources.pdb"  />
+        <reference file="Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll"  />
+        <reference file="Microsoft.Azure.Commands.ResourceManager.Cmdlets.pdb"  />
+        <reference file="Microsoft.WindowsAzure.Management.dll"  />
+        <reference file="Newtonsoft.Json.dll"  />
+        <reference file="System.Net.Http.Extensions.dll"  />
+        <reference file="System.Net.Http.Primitives.dll"  />
+      </group>
+    </references>
+    <dependencies>
+      <dependency id="Microsoft.Azure.Commands.Profile" version="[0.0.1, 1)" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="Hyak.Common.dll" target="lib\net452" />
+    <file src="Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll" target="lib\net452" />
+    <file src="Microsoft.Azure.Commands.ResourceManager.Cmdlets.pdb" target="lib\net452" />
+    <file src="Microsoft.Azure.Commands.Tags.dll" target="lib\net452" />
+    <file src="Microsoft.Azure.Commands.Tags.pdb" target="lib\net452" />
+    <file src="Microsoft.Azure.Commands.Resources.dll" target="lib\net452" />
+    <file src="Microsoft.Azure.Commands.Resources.pdb" target="lib\net452" />
+    <file src="Microsoft.Azure.Commands.Resources.dll-Help.xml" target="content" />
+    <file src="Microsoft.Azure.Commands.Resources.format.ps1xml" target="content" />
+    <file src="Microsoft.Azure.Common.Authentication.dll" target="lib\net452" />
+    <file src="Microsoft.Azure.Common.dll" target="lib\net452" />
+    <file src="Microsoft.Azure.Common.NetFramework.dll" target="lib\net452" />
+    <file src="Microsoft.Azure.Gallery.dll" target="lib\net452" />
+    <file src="Microsoft.Azure.Graph.RBAC.dll" target="lib\net452" />
+    <file src="Microsoft.Azure.Management.Authorization.dll" target="lib\net452" />
+    <file src="Microsoft.Azure.ResourceManager.dll" target="lib\net452" />
+    <file src="Microsoft.IdentityModel.Clients.ActiveDirectory.dll" target="lib\net452" />
+    <file src="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll" target="lib\net452" />
+    <file src="Microsoft.Rest.ClientRuntime.Azure.Authentication.dll" target="lib\net452" />
+    <file src="Microsoft.Rest.ClientRuntime.dll" target="lib\net452" />
+    <file src="Microsoft.Threading.Tasks.dll" target="lib\net452" />
+    <file src="Microsoft.Threading.Tasks.Extensions.Desktop.dll" target="lib\net452" />
+    <file src="Microsoft.Threading.Tasks.Extensions.dll" target="lib\net452" />
+    <file src="Microsoft.WindowsAzure.Commands.Common.dll" target="lib\net452" />
+    <file src="Microsoft.WindowsAzure.Commands.Common.pdb" target="lib\net452" />
+    <file src="Microsoft.Azure.Commands.ResourceManager.Common.dll" target="lib\net452" />
+    <file src="Microsoft.Azure.Commands.ResourceManager.Common.pdb" target="lib\net452" />
+    <file src="Microsoft.WindowsAzure.Management.dll" target="lib\net452" />
+    <file src="Newtonsoft.Json.dll" target="lib\net452" />
+    <file src="System.Net.Http.Extensions.dll" target="lib\net452" />
+    <file src="System.Net.Http.Primitives.dll" target="lib\net452" />
+    <file src="content\azure.lx" target="content\azure.lx" />
+    <file src="content\package.cfg" target="content\package.cfg" />
+    <file src="tools\azure.bat" target="tools\azure.bat" />
+  </files>
+</package>

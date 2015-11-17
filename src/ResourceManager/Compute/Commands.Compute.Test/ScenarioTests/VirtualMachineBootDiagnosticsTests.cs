@@ -27,21 +27,21 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         }
 
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineBootDiagnosticsPremium()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineBootDiagnosticsPremium");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLinuxVirtualMachineBootDiagnostics()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-LinuxVirtualMachineBootDiagnostics");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineBootDiagnosticsSet()
         {

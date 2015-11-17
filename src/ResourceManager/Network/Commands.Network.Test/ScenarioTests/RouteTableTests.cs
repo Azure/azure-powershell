@@ -19,35 +19,35 @@ namespace Commands.Network.Test.ScenarioTests
 {
     public class RouteTableTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEmptyRouteTable()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-EmptyRouteTable");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRouteTableCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-RouteTableCRUD");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRouteTableSubnetRef()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-RouteTableSubnetRef");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRouteTableRouteCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-RouteTableRouteCRUD");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRouteHopTypeTest()
         {

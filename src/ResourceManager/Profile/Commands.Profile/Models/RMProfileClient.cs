@@ -21,7 +21,6 @@ using Microsoft.Azure.Subscriptions;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Management.Automation;
 using System.Security;

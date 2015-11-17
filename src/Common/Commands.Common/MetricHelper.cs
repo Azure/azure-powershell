@@ -1,13 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using System;
 using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.ApplicationInsights;
-using Microsoft.ApplicationInsights.Channel;
-using Microsoft.ApplicationInsights.DataContracts;
-using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Common
@@ -15,20 +24,20 @@ namespace Microsoft.WindowsAzure.Commands.Common
     public static class MetricHelper
     {
         private const int FlushTimeoutInMilli = 5000;
-        private static readonly TelemetryClient TelemetryClient;
+        //private static readonly TelemetryClient TelemetryClient;
 
         static MetricHelper()
         {            
-            TelemetryClient = new TelemetryClient();
-            // TODO: InstrumentationKey shall be injected in build server
-            TelemetryClient.InstrumentationKey = "7df6ff70-8353-4672-80d6-568517fed090";
-            // Disable IP collection
-            TelemetryClient.Context.Location.Ip = "0.0.0.0";
+            //TelemetryClient = new TelemetryClient();
+            //// TODO: InstrumentationKey shall be injected in build server
+            //TelemetryClient.InstrumentationKey = "7df6ff70-8353-4672-80d6-568517fed090";
+            //// Disable IP collection
+            //TelemetryClient.Context.Location.Ip = "0.0.0.0";
 
-            if (TestMockSupport.RunningMocked)
-            {
-                TelemetryConfiguration.Active.DisableTelemetry = true;
-            }
+            //if (TestMockSupport.RunningMocked)
+            //{
+            //    TelemetryConfiguration.Active.DisableTelemetry = true;
+            //}
         }
 
         public static void LogQoSEvent(AzurePSQoSEvent qos, bool isUsageMetricEnabled, bool isErrorMetricEnabled)
@@ -51,30 +60,30 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         private static void LogUsageEvent(AzurePSQoSEvent qos)
         {
-            var tcEvent = new RequestTelemetry(qos.CmdletType, qos.StartTime, qos.Duration, string.Empty, qos.IsSuccess);
-            tcEvent.Context.User.Id = qos.Uid;
-            tcEvent.Context.User.UserAgent = AzurePowerShell.UserAgentValue.ToString();
-            tcEvent.Context.Device.OperatingSystem = Environment.OSVersion.VersionString;
+            //var tcEvent = new RequestTelemetry(qos.CmdletType, qos.StartTime, qos.Duration, string.Empty, qos.IsSuccess);
+            //tcEvent.Context.User.Id = qos.Uid;
+            //tcEvent.Context.User.UserAgent = AzurePowerShell.UserAgentValue.ToString();
+            //tcEvent.Context.Device.OperatingSystem = Environment.OSVersion.VersionString;
 
-            TelemetryClient.TrackRequest(tcEvent);
+            //TelemetryClient.TrackRequest(tcEvent);
         }
 
         private static void LogExceptionEvent(AzurePSQoSEvent qos)
         {
             //Log as custome event to exclude actual exception message
-            var tcEvent = new EventTelemetry("CmdletError");
-            tcEvent.Properties.Add("ExceptionType", qos.Exception.GetType().FullName);
-            tcEvent.Properties.Add("StackTrace", qos.Exception.StackTrace);
-            if (qos.Exception.InnerException != null)
-            {
-                tcEvent.Properties.Add("InnerExceptionType", qos.Exception.InnerException.GetType().FullName);
-                tcEvent.Properties.Add("InnerStackTrace", qos.Exception.InnerException.StackTrace);
-            }
+            //var tcEvent = new EventTelemetry("CmdletError");
+            //tcEvent.Properties.Add("ExceptionType", qos.Exception.GetType().FullName);
+            //tcEvent.Properties.Add("StackTrace", qos.Exception.StackTrace);
+            //if (qos.Exception.InnerException != null)
+            //{
+            //    tcEvent.Properties.Add("InnerExceptionType", qos.Exception.InnerException.GetType().FullName);
+            //    tcEvent.Properties.Add("InnerStackTrace", qos.Exception.InnerException.StackTrace);
+            //}
 
-            tcEvent.Context.User.Id = qos.Uid;
-            tcEvent.Properties.Add("CmdletType", qos.CmdletType);
+            //tcEvent.Context.User.Id = qos.Uid;
+            //tcEvent.Properties.Add("CmdletType", qos.CmdletType);
 
-            TelemetryClient.TrackEvent(tcEvent);
+            //TelemetryClient.TrackEvent(tcEvent);
         }
 
         public static bool IsMetricTermAccepted()
@@ -100,7 +109,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
         {
             try
             {
-                TelemetryClient.Flush();
+                //TelemetryClient.Flush();
             }
             catch
             {

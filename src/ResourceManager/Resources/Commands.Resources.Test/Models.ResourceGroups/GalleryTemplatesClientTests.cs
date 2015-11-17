@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             galleryTemplatesClient = new GalleryTemplatesClient(galleryClientMock.Object);
         }
 
-        [Fact]
+        [Fact(Skip = "PowerShell runtime only")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ConstructsDynamicParameter()
         {
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Assert.Equal(int.Parse(value.MaxLength), validateLengthAttribute.MaxLength);
         }
 
-        [Fact]
+        [Fact(Skip = "PowerShell runtime only")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ResolvesDuplicatedDynamicParameterName()
         {
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Assert.Equal(int.Parse(value.MaxLength), validateLengthAttribute.MaxLength);
         }
 
-        [Fact]
+        [Fact(Skip="PowerShell runtime only")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ResolvesDuplicatedDynamicParameterNameSubstring()
         {
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Assert.Equal(int.Parse(value.MaxLength), validateLengthAttribute.MaxLength);
         }
 
-        [Fact]
+        [Fact(Skip = "PowerShell runtime only")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ResolvesDuplicatedDynamicParameterNameCaseInsensitive()
         {
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Assert.Equal(int.Parse(value.MaxLength), validateLengthAttribute.MaxLength);
         }
 
-        [Fact]
+        [Fact(Skip = "PowerShell runtime only")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ConstructsDynamicParameterNoValidation()
         {
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Assert.Equal(parameterSetNames[0], parameterAttribute.ParameterSetName);
         }
 
-        [Fact]
+        [Fact(Skip = "PowerShell runtime only")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ConstructsDynamicParameterWithNullAllowedValues()
         {

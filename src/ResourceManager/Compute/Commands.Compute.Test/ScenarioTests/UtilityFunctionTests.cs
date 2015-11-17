@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public class UtilityFunctionTests
     {
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLocationStringExtension()
         {

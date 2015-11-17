@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.WebApps.Validations
             var webAppName = arguments as string;
             if (CmdletHelpers.IsDeploymentSlot(webAppName))
             {
-                throw new ValidationMetadataException(string.Format("Specified resource '{0}' is a non-production web app slot. Please use the AzureRMWebAppSlot cmdlets to manage this resource", webAppName));
+                throw new PSArgumentException(string.Format("Specified resource '{0}' is a non-production web app slot. Please use the AzureRMWebAppSlot cmdlets to manage this resource", webAppName));
             }
         }
 

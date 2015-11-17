@@ -14,13 +14,13 @@ namespace Microsoft.WindowsAzure.Commands.Common
         {
             if (arguments == null)
             {
-                throw new ValidationMetadataException("Specify a parameter of type 'System.Guid' and try again.");
+                throw new PSArgumentException("Specify a parameter of type 'System.Guid' and try again.");
             }
 
             Guid param = (Guid)arguments;
             if (param == Guid.Empty)
             {
-                throw new ValidationMetadataException("Specify a non empty value of type 'System.Guid' and try again.");
+                throw new PSArgumentException("Specify a non empty value of type 'System.Guid' and try again.");
             }
         }
     }

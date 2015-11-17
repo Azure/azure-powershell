@@ -41,7 +41,14 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         private AzureAccount testAccount;
 
-        private AzureRMProfile _testProfile;
+        /// <summary>
+        /// The profile to use during the test
+        /// </summary>
+        public AzureRMProfile TestProfile
+        {
+            get; set;
+        }
+
         private IDataStore _dataStore;
 
         private const string PackageDirectoryFromCommon = @"..\..\..\..\Package\Debug";
@@ -51,10 +58,10 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         public EnvironmentSetupHelper()
         {
-            _testProfile = new AzureRMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
-            _testProfile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
-            _testProfile.Context = new AzureContext(new AzureSubscription(), new AzureAccount(), _testProfile.Environments["foo"], new AzureTenant());
-            _testProfile.Context.Subscription.Environment = "foo";
+            TestProfile = new AzureRMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+            TestProfile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
+            TestProfile.Context = new AzureContext(new AzureSubscription(), new AzureAccount(), TestProfile.Environments["foo"], new AzureTenant());
+            TestProfile.Context.Subscription.Environment = "foo";
             // Ignore SSL errors
             System.Net.ServicePointManager.ServerCertificateValidationCallback += (se, cert, chain, sslerror) => true;
             // Set RunningMocked
@@ -157,9 +164,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             environment.Endpoints[AzureEnvironment.Endpoint.ServiceManagement] = currentEnvironment.BaseUri.AbsoluteUri;
             environment.Endpoints[AzureEnvironment.Endpoint.ResourceManager] = currentEnvironment.Endpoints.ResourceManagementUri.AbsoluteUri;
 
-            if (!_testProfile.Environments.ContainsKey(testEnvironmentName))
+            if (!TestProfile.Environments.ContainsKey(testEnvironmentName))
             {
-                _testProfile.Environments[testEnvironmentName] = environment;
+                TestProfile.Environments[testEnvironmentName] = environment;
             }
 
             if (currentEnvironment.SubscriptionId != null)
@@ -209,7 +216,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                     }
                 }
 
-                _testProfile.Context = new AzureContext(testSubscription, testAccount, environment, testTenant);
+                TestProfile.Context = new AzureContext(testSubscription, testAccount, environment, testTenant);
             }
         }
 
@@ -270,65 +277,67 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         public virtual Collection<PSObject> RunPowerShellTest(params string[] scripts)
         {
-            var sessionState = InitialSessionState.CreateDefault();
-            sessionState.Variables.Add(new SessionStateVariableEntry(AzurePowerShell.ProfileVariable, (PSAzureProfile)_testProfile, AzurePowerShell.ProfileVariable));
-            if (_dataStore is MemoryDataStore)
-            {
-                sessionState.Variables.Add(new SessionStateVariableEntry(AzurePowerShell.DataStoreVariable, _dataStore, AzurePowerShell.DataStoreVariable));
-            }
-            using (var powershell = System.Management.Automation.PowerShell.Create(sessionState))
-            {
-                SetupPowerShellModules(powershell);
+            //var sessionState = InitialSessionState.CreateDefault();
+            //sessionState.Variables.Add(new SessionStateVariableEntry(AzurePowerShell.ProfileVariable, (PSAzureProfile)TestProfile, AzurePowerShell.ProfileVariable));
+            //if (_dataStore is MemoryDataStore)
+            //{
+            //    sessionState.Variables.Add(new SessionStateVariableEntry(AzurePowerShell.DataStoreVariable, _dataStore, AzurePowerShell.DataStoreVariable));
+            //}
+            //using (var powershell = System.Management.Automation.PowerShell.Create(sessionState))
+            //{
+            //    SetupPowerShellModules(powershell);
 
-                Collection<PSObject> output = null;
-                for (int i = 0; i < scripts.Length; ++i)
-                {
-                    Console.WriteLine(scripts[i]);
-                    powershell.AddScript(scripts[i]);
-                }
-                try
-                {                    
-                    powershell.Runspace.Events.Subscribers.Clear();
-                    output = powershell.Invoke();
+            //    Collection<PSObject> output = null;
+            //    for (int i = 0; i < scripts.Length; ++i)
+            //    {
+            //        Console.WriteLine(scripts[i]);
+            //        powershell.AddScript(scripts[i]);
+            //    }
+            //    try
+            //    {                    
+            //        powershell.Runspace.Events.Subscribers.Clear();
+            //        output = powershell.Invoke();
 
-                    if (powershell.Streams.Error.Count > 0)
-                    {
-                        throw new RuntimeException(
-                            "Test failed due to a non-empty error stream, check the error stream in the test log for more details.");
-                    }
+            //        if (powershell.Streams.Error.Count > 0)
+            //        {
+            //            throw new RuntimeException(
+            //                "Test failed due to a non-empty error stream, check the error stream in the test log for more details.");
+            //        }
 
-                    return output;
-                }
-                catch (Exception psException)
-                {
-                    powershell.LogPowerShellException(psException);
-                    throw;
-                }
-                finally
-                {
-                    powershell.LogPowerShellResults(output);
-                    powershell.Streams.Error.Clear();
-                }
-            }
+            //        return output;
+            //    }
+            //    catch (Exception psException)
+            //    {
+            //        powershell.LogPowerShellException(psException);
+            //        throw;
+            //    }
+            //    finally
+            //    {
+            //        //powershell.LogPowerShellResults(output);
+            //        //powershell.Streams.Error.Clear();
+            //    }
+            //}
+
+            return null;
         }
 
-        private void SetupPowerShellModules(System.Management.Automation.PowerShell powershell)
-        {
-            powershell.AddScript(string.Format("Write-Debug \"current directory: {0}\"", Directory.GetCurrentDirectory()));
-            powershell.AddScript(string.Format("Write-Debug \"current executing assembly: {0}\"", Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)));
-            powershell.AddScript(string.Format("cd \"{0}\"", Directory.GetCurrentDirectory()));
+        //private void SetupPowerShellModules(System.Management.Automation.PowerShell powershell)
+        //{
+        //    //powershell.AddScript(string.Format("Write-Debug \"current directory: {0}\"", Directory.GetCurrentDirectory()));
+        //    //powershell.AddScript(string.Format("Write-Debug \"current executing assembly: {0}\"", Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)));
+        //    //powershell.AddScript(string.Format("cd \"{0}\"", Directory.GetCurrentDirectory()));
 
-            foreach (string moduleName in modules)
-            {
-                powershell.AddScript(string.Format("Import-Module \".\\{0}\"", moduleName));
-            }
+        //    //foreach (string moduleName in modules)
+        //    //{
+        //    //    powershell.AddScript(string.Format("Import-Module \".\\{0}\"", moduleName));
+        //    //}
 
-            powershell.AddScript("$VerbosePreference='Continue'");
-            powershell.AddScript("$DebugPreference='Continue'");
-            powershell.AddScript("$ErrorActionPreference='Stop'");
-            powershell.AddScript("Write-Debug \"AZURE_TEST_MODE = $($env:AZURE_TEST_MODE)\"");
-            powershell.AddScript("Write-Debug \"TEST_HTTPMOCK_OUTPUT =  $($env:TEST_HTTPMOCK_OUTPUT)\"");
-        }
+        //    //powershell.AddScript("$VerbosePreference='Continue'");
+        //    //powershell.AddScript("$DebugPreference='Continue'");
+        //    //powershell.AddScript("$ErrorActionPreference='Stop'");
+        //    //powershell.AddScript("Write-Debug \"AZURE_TEST_MODE = $($env:AZURE_TEST_MODE)\"");
+        //    //powershell.AddScript("Write-Debug \"TEST_HTTPMOCK_OUTPUT =  $($env:TEST_HTTPMOCK_OUTPUT)\"");
+        //}
 
     }
 }

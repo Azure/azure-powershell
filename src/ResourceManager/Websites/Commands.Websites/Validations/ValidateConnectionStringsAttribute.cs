@@ -28,37 +28,37 @@ namespace Microsoft.Azure.Commands.WebApps.Validations
             var hashtable = arguments as Hashtable;
             if (hashtable == null)
             {
-                throw new ValidationMetadataException("Argument must be of type 'System.Collections.Hashtable'");
+                throw new PSArgumentException("Argument must be of type 'System.Collections.Hashtable'");
             }
 
             foreach (var key in hashtable.Keys)
             {
                 if (key.GetType() != typeof(string))
                 {
-                    throw new ValidationMetadataException(string.Format("Key '{0}' should be of type string instead of {1}", key, key.GetType()));
+                    throw new PSArgumentException(string.Format("Key '{0}' should be of type string instead of {1}", key, key.GetType()));
                 }
 
                 var typeValuePair = hashtable[key] as Hashtable;
                 if (typeValuePair == null)
                 {
-                    throw new ValidationMetadataException("Connection string type value pair must be of type 'System.Collections.Hashtable'");
+                    throw new PSArgumentException("Connection string type value pair must be of type 'System.Collections.Hashtable'");
                 }
                 var typeValuePairIgnoreCase = new Hashtable(typeValuePair, StringComparer.OrdinalIgnoreCase);
 
                 if (!typeValuePairIgnoreCase.ContainsKey("Type") || typeValuePairIgnoreCase["Type"].GetType() != typeof(string))
                 {
-                    throw new ValidationMetadataException("Connection string type must be specified.");
+                    throw new PSArgumentException("Connection string type must be specified.");
                 }
 
                 DatabaseServerType type;
                 if (!Enum.TryParse(typeValuePairIgnoreCase["Type"].ToString(), true, out type))
                 {
-                    throw new ValidationMetadataException("Database server type values are [MySql| SQLAzure| SQLServer| Custom]");
+                    throw new PSArgumentException("Database server type values are [MySql| SQLAzure| SQLServer| Custom]");
                 }
 
                 if (!typeValuePairIgnoreCase.ContainsKey("Value") || typeValuePairIgnoreCase["Value"].GetType() != typeof(string))
                 {
-                    throw new ValidationMetadataException("Connection string value must be specified.");
+                    throw new PSArgumentException("Connection string value must be specified.");
                 }
             }
         }

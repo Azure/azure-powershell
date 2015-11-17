@@ -21,14 +21,14 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 {
     public class AppServicePlanTests : RMTestBase
     {
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNewAppServicePlan()
         {
             WebsitesController.NewInstance.RunPsTest("Test-CreateNewAppServicePlan");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAppServicePlan()
         {
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             WebsitesController.NewInstance.RunPsTest("Test-GetAppServicePlan");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAppServicePlan()
         {

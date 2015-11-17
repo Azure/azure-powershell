@@ -21,14 +21,14 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 {
     public class WebAppSlotTests : RMTestBase
     {
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNewWebAppSlot()
         {
             WebsitesController.NewInstance.RunPsTest("Test-CreateNewWebAppSlot");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetWebAppSlot()
         {
@@ -42,35 +42,35 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             WebsitesController.NewInstance.RunPsTest("Test-GetWebAppSlotMetrics");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestWebAppSlotPublishingProfile()
         {
             WebsitesController.NewInstance.RunPsTest("Test-WebAppSlotPublishingProfile");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCloneWebAppToSlot()
         {
             WebsitesController.NewInstance.RunPsTest("Test-CloneWebAppToSlot");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCloneWebAppSlot()
         {
             WebsitesController.NewInstance.RunPsTest("Test-CloneWebAppSlot");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStartStopRestartWebAppSlot()
         {
             WebsitesController.NewInstance.RunPsTest("Test-StartStopRestartWebAppSlot");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetWebAppSlot()
         {

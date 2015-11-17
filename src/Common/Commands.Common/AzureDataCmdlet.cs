@@ -92,26 +92,26 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
                 var startTime = DateTime.Now;
                 var endTime = DateTime.Now;
-                double elapsedSeconds = 0;
+                //double elapsedSeconds = 0;
 
-                while (!this.Host.UI.RawUI.KeyAvailable && elapsedSeconds < timeToWaitInSeconds)
-                {
-                    Thread.Sleep(TimeSpan.FromMilliseconds(10));
-                    endTime = DateTime.Now;
+                //while (!this.Host.UI.RawUI.KeyAvailable && elapsedSeconds < timeToWaitInSeconds)
+                //{
+                //    Thread.Sleep(TimeSpan.FromMilliseconds(10));
+                //    endTime = DateTime.Now;
 
-                    elapsedSeconds = (endTime - startTime).TotalSeconds;
-                    record.PercentComplete = ((int) elapsedSeconds*100/(int) timeToWaitInSeconds);
-                    WriteProgress(record);
-                }
+                //    elapsedSeconds = (endTime - startTime).TotalSeconds;
+                //    record.PercentComplete = ((int) elapsedSeconds*100/(int) timeToWaitInSeconds);
+                //    WriteProgress(record);
+                //}
 
                 bool enabled = false;
-                if (this.Host.UI.RawUI.KeyAvailable)
-                {
-                    KeyInfo keyInfo =
-                        this.Host.UI.RawUI.ReadKey(ReadKeyOptions.NoEcho | ReadKeyOptions.AllowCtrlC |
-                                                   ReadKeyOptions.IncludeKeyDown);
-                    enabled = (keyInfo.Character == 'Y' || keyInfo.Character == 'y');
-                }
+                //if (this.Host.UI.RawUI.KeyAvailable)
+                //{
+                //    KeyInfo keyInfo =
+                //        this.Host.UI.RawUI.ReadKey(ReadKeyOptions.NoEcho | ReadKeyOptions.AllowCtrlC |
+                //                                   ReadKeyOptions.IncludeKeyDown);
+                //    enabled = (keyInfo.Character == 'Y' || keyInfo.Character == 'y');
+                //}
 
                 _dataCollectionProfile.EnableAzureDataCollection = enabled;
 

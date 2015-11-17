@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 {
     public class WebAppTests : RMTestBase
     {
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNewWebApp()
         {
@@ -42,35 +42,35 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             WebsitesController.NewInstance.RunPsTest("Test-GetWebAppMetrics");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestWebAppPublishingProfile()
         {
             WebsitesController.NewInstance.RunPsTest("Test-WebAppPublishingProfile");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCloneNewWebApp()
         {
             WebsitesController.NewInstance.RunPsTest("Test-CloneNewWebApp");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCloneNewWebAppWithNewTrafficManager()
         {
             WebsitesController.NewInstance.RunPsTest("Test-CloneNewWebAppWithTrafficManager");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStartStopRestartWebApp()
         {
             WebsitesController.NewInstance.RunPsTest("Test-StartStopRestartWebApp");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetWebApp()
         {

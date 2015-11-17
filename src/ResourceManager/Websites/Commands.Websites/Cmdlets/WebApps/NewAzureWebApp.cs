@@ -20,7 +20,6 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Management.WebSites.Models;
-using Microsoft.PowerShell;
 using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
