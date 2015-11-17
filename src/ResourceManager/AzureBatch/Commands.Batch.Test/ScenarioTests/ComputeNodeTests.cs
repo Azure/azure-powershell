@@ -125,33 +125,72 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveComputeNodeById()
+        {
+            TestRemoveComputeNode(false, TestUtilities.GetCurrentMethodName());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveComputeNodePipeline()
+        {
+            TestRemoveComputeNode(true, TestUtilities.GetCurrentMethodName());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRebootComputeNodeById()
         {
-            TestRebootComputeNode(false);
+            TestRebootComputeNode(false, TestUtilities.GetCurrentMethodName());
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRebootComputeNodePipeline()
         {
-            TestRebootComputeNode(true);
+            TestRebootComputeNode(true, TestUtilities.GetCurrentMethodName());
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestReimageComputeNodeById()
         {
-            TestReimageComputeNode(false);
+            TestReimageComputeNode(false, TestUtilities.GetCurrentMethodName());
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestReimageComputeNodePipeline()
         {
-            TestReimageComputeNode(true);
+            TestReimageComputeNode(true, TestUtilities.GetCurrentMethodName());
         }
 
-        private void TestRebootComputeNode(bool usePipeline)
+        private void TestRemoveComputeNode(bool usePipeline, string testMethodName)
+        {
+            BatchController controller = BatchController.NewInstance;
+            BatchAccountContext context = null;
+            string computeNodeId = null;
+            int originalDedicated = 3;
+            controller.RunPsTestWorkflow(
+                () => { return new string[] { string.Format("Test-RemoveComputeNode '{0}' '{1}' '{2}' '{3}'", accountName, poolId, computeNodeId, usePipeline ? 1 : 0) }; },
+                () =>
+                {
+                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    originalDedicated = ScenarioTestHelpers.GetPoolCurrentDedicated(controller, context, poolId);
+                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(controller, context, poolId);
+                    computeNodeId = ScenarioTestHelpers.GetComputeNodeId(controller, context, poolId);
+                    ScenarioTestHelpers.WaitForIdleComputeNode(controller, context, poolId, computeNodeId);
+                },
+                () =>
+                {
+                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(controller, context, poolId);
+                    ScenarioTestHelpers.ResizePool(controller, context, poolId, originalDedicated);
+                },
+                TestUtilities.GetCallingClass(),
+                testMethodName);
+        }
+
+        private void TestRebootComputeNode(bool usePipeline, string testMethodName)
         {
             BatchController controller = BatchController.NewInstance;
             BatchAccountContext context = null;
@@ -166,10 +205,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 },
                 null,
                 TestUtilities.GetCallingClass(),
-                usePipeline ? "TestRebootComputeNodePipeline" : "TestRebootComputeNodeById");
+                testMethodName);
         }
 
-        private void TestReimageComputeNode(bool usePipeline)
+        private void TestReimageComputeNode(bool usePipeline, string testMethodName)
         {
             BatchController controller = BatchController.NewInstance;
             BatchAccountContext context = null;
@@ -184,7 +223,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 },
                 null,
                 TestUtilities.GetCallingClass(),
-                usePipeline ? "TestReimageComputeNodePipeline" : "TestReimageComputeNodeById");
+                testMethodName);
         }
     }
 }

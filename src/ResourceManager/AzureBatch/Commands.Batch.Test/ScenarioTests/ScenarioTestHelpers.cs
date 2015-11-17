@@ -243,6 +243,18 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             return pool.TargetOSVersion;
         }
 
+        public static void ResizePool(BatchController controller, BatchAccountContext context, string poolId, int targetDedicated)
+        {
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            PoolResizeParameters parameters = new PoolResizeParameters(context, poolId, null)
+            {
+                TargetDedicated = targetDedicated
+            };
+
+            client.ResizePool(parameters);
+        }
+
         public static void WaitForSteadyPoolAllocation(BatchController controller, BatchAccountContext context, string poolId)
         {
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
@@ -252,7 +264,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 PoolId = poolId
             };
 
-            DateTime timeout = DateTime.Now.AddMinutes(2);
+            DateTime timeout = DateTime.Now.AddMinutes(5);
             PSCloudPool pool = client.ListPools(options).First();
             while (pool.AllocationState != AllocationState.Steady)
             {
@@ -411,6 +423,22 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 TaskStateMonitor monitor = context.BatchOMClient.Utilities.CreateTaskStateMonitor();
                 monitor.WaitAll(tasks.Select(t => t.omObject), TaskState.Completed, TimeSpan.FromMinutes(2), null);
             }
+        }
+
+        /// <summary>
+        /// Gets the id of the compute node that the specified task completed on. Returns null if the task isn't complete.
+        /// </summary>
+        public static string GetTaskComputeNodeId(BatchController controller, BatchAccountContext context, string jobId, string taskId)
+        {
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            ListTaskOptions options = new ListTaskOptions(context, jobId, null)
+            {
+                TaskId = taskId
+            };
+            PSCloudTask task = client.ListTasks(options).First();
+
+            return task.ComputeNodeInformation == null ? null : task.ComputeNodeInformation.ComputeNodeId;
         }
 
         /// <summary>

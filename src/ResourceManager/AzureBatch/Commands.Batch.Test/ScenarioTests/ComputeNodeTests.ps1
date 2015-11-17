@@ -151,6 +151,43 @@ function Test-ListComputeNodePipeline
 
 <#
 .SYNOPSIS
+Tests removing a compute node from a pool
+#>
+function Test-RemoveComputeNode
+{
+    param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$usePipeline)
+
+    $context = Get-ScenarioTestContext $accountName
+
+    $deallocationOption = ([Microsoft.Azure.Batch.Common.ComputeNodeRebootOption]::Terminate)
+    $resizeTimeout = ([TimeSpan]::FromMinutes(8))
+
+    if ($usePipeline -eq '1')
+    {
+        Get-AzureBatchComputeNode $poolId $computeNodeId -BatchContext $context | Remove-AzureBatchComputeNode -DeallocationOption $deallocationOption -ResizeTimeout $resizeTimeout -Force -BatchContext $context
+    }
+    else
+    {
+        Remove-AzureBatchComputeNode $poolId $computeNodeId -DeallocationOption $deallocationOption -ResizeTimeout $resizeTimeout -Force -BatchContext $context
+    }
+
+    # State transition isn't immediate
+    $computeNode = Get-AzureBatchComputeNode -PoolId $poolId -Filter "id eq '$computeNodeId'" -Select "id,state" -BatchContext $context
+    $start = [DateTime]::Now
+    $end = $start.AddSeconds(30)
+    while ($computeNode.State -ne 'LeavingPool')
+    {
+        if ([DateTime]::Now -gt $end)
+        {
+            throw [System.TimeoutException] "Timed out waiting for compute node to enter LeavingPool state"
+        }
+        Start-TestSleep 1000
+        $computeNode = Get-AzureBatchComputeNode -PoolId $poolId -Filter "id eq '$computeNodeId'" -Select "id,state" -BatchContext $context
+    }
+}
+
+<#
+.SYNOPSIS
 Tests rebooting a compute node
 #>
 function Test-RebootComputeNode
