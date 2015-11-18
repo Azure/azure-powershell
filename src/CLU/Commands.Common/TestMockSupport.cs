@@ -14,7 +14,7 @@
 // ----------------------------------------------------------------------------------
 
 
-namespace Microsoft.WindowsAzure.Commands.Utilities.Common
+namespace Microsoft.Azure.Commands.Utilities.Common
 {
     using System.Threading;
     public class TestMockSupport

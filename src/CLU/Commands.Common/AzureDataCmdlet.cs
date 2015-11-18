@@ -23,10 +23,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using Microsoft.Azure.Commands.Common.Properties;
 using Microsoft.Azure.Commands.Models;
+using Microsoft.Azure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Common
 {

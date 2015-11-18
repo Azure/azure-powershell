@@ -23,8 +23,8 @@ using Microsoft.Azure.Commands.Models;
 using Microsoft.Azure.Commands.Common.Resources.Properties;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Common;
+using Microsoft.Azure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common

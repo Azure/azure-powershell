@@ -7,7 +7,7 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Commands.Common", "Commands
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Commands.Common.Authentication", "Commands.Common.Authentication\Commands.Common.Authentication.xproj", "{4CE82310-D016-497D-93A0-0323A3E62064}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Commands.Common.Resources", "Commands.Common.Resources\Microsoft.Azure.Commands.Common.Resources.xproj", "{447889D2-370A-461B-ADA3-E892C22E2C05}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Commands.Common.Resources", "Commands.Common.Resources\Commands.Common.Resources.xproj", "{447889D2-370A-461B-ADA3-E892C22E2C05}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Microsoft.Azure.Commands.Profile", "Microsoft.Azure.Commands.Profile\Microsoft.Azure.Commands.Profile.xproj", "{45B05B68-516F-4D74-897F-56D12894946C}"
 EndProject

@@ -30,7 +30,7 @@ using System.Linq;
 using System.Threading;
 using Microsoft.Azure.Common.Authentication.Factories;
 
-namespace Microsoft.WindowsAzure.Commands.Utilities.Common
+namespace Microsoft.Azure.Commands.Utilities.Common
 {
     /// <summary>
     /// Represents base class for all Azure cmdlets.

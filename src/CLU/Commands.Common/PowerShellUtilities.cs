@@ -18,7 +18,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Management.Automation;
 
-namespace Microsoft.WindowsAzure.Commands.Utilities.Common
+namespace Microsoft.Azure.Commands.Utilities.Common
 {
     public static class PowerShellUtilities
     {
