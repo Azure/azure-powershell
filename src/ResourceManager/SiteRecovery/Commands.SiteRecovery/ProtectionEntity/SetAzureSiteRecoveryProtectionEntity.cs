@@ -159,8 +159,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                                 providerSettings.VmName = this.ProtectionEntity.FriendlyName;
 
                                 // Id disk details are missing in input PE object, get the latest PE.
-                                // As get PE by name is failing before protection, get all & filter.
-                                // Once after we fix get pe by name, change the logic to use the same.
                                 if (string.IsNullOrEmpty(this.ProtectionEntity.OS))
                                 {
                                     // Just checked for OS to see whether the disk details got filled up or not
@@ -204,6 +202,12 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                                 }
 
                                 input.Properties.ProviderSpecificDetails = providerSettings;
+                            }
+                            else if (this.Policy != null &&
+                                0 == string.Compare(this.Policy.ReplicationProvider, Constants.HyperVReplicaAzure, StringComparison.OrdinalIgnoreCase) &&
+                                0 == string.Compare(this.ParameterSetName, ASRParameterSets.EnterpriseToEnterprise, StringComparison.OrdinalIgnoreCase))
+                            {
+                                throw new PSArgumentException(Properties.Resources.PassingStorageMandatoryForEnablingDRInAzureScenarios);
                             }
 
                             this.response =
