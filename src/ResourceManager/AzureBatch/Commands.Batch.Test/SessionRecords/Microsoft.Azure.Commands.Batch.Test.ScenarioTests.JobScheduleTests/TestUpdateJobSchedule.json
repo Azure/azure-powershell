@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resources?$filter=resourceType%20eq%20'Microsoft.Batch%2FbatchAccounts'&api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjM2OGVkMzgtMzU3MC00ODFmLWI0ZmEtMWQwYTZlOGQzZjNiL3Jlc291cmNlcz8kZmlsdGVyPXJlc291cmNlVHlwZSUyMGVxJTIwJ01pY3Jvc29mdC5CYXRjaCUyRmJhdGNoQWNjb3VudHMnJmFwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resources?$filter=resourceType%20eq%20'Microsoft.Batch%2FbatchAccounts'&api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDYyNDEzNTUtYmI5NS00NmE5LWJhNmMtNDJiNTU0ZDcxOTI1L3Jlc291cmNlcz8kZmlsdGVyPXJlc291cmNlVHlwZSUyMGVxJTIwJ01pY3Jvc29mdC5CYXRjaCUyRmJhdGNoQWNjb3VudHMnJmFwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -10,10 +10,10 @@
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourceGroups/default-azurebatch-eastus/providers/Microsoft.Batch/batchAccounts/pstests\",\r\n      \"name\": \"pstests\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-eastus/providers/Microsoft.Batch/batchAccounts/pstestaccount\",\r\n      \"name\": \"pstestaccount\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-westus/providers/Microsoft.Batch/batchAccounts/jsmatlab\",\r\n      \"name\": \"jsmatlab\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "237"
+          "455"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -25,16 +25,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14967"
+          "14985"
         ],
         "x-ms-request-id": [
-          "2b519bf4-80cf-4564-857c-0a0a8b30fcc0"
+          "57181414-ee01-4aa1-861d-a57b48b7e57e"
         ],
         "x-ms-correlation-request-id": [
-          "2b519bf4-80cf-4564-857c-0a0a8b30fcc0"
+          "57181414-ee01-4aa1-861d-a57b48b7e57e"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151027T002553Z:2b519bf4-80cf-4564-857c-0a0a8b30fcc0"
+          "WESTUS:20151111T010203Z:57181414-ee01-4aa1-861d-a57b48b7e57e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -43,14 +43,14 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 27 Oct 2015 00:25:53 GMT"
+          "Wed, 11 Nov 2015 01:02:03 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resources?$filter=resourceType%20eq%20'Microsoft.Batch%2FbatchAccounts'&api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjM2OGVkMzgtMzU3MC00ODFmLWI0ZmEtMWQwYTZlOGQzZjNiL3Jlc291cmNlcz8kZmlsdGVyPXJlc291cmNlVHlwZSUyMGVxJTIwJ01pY3Jvc29mdC5CYXRjaCUyRmJhdGNoQWNjb3VudHMnJmFwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resources?$filter=resourceType%20eq%20'Microsoft.Batch%2FbatchAccounts'&api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDYyNDEzNTUtYmI5NS00NmE5LWJhNmMtNDJiNTU0ZDcxOTI1L3Jlc291cmNlcz8kZmlsdGVyPXJlc291cmNlVHlwZSUyMGVxJTIwJ01pY3Jvc29mdC5CYXRjaCUyRmJhdGNoQWNjb3VudHMnJmFwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -58,10 +58,10 @@
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourceGroups/default-azurebatch-eastus/providers/Microsoft.Batch/batchAccounts/pstests\",\r\n      \"name\": \"pstests\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-eastus/providers/Microsoft.Batch/batchAccounts/pstestaccount\",\r\n      \"name\": \"pstestaccount\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"eastus\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-westus/providers/Microsoft.Batch/batchAccounts/jsmatlab\",\r\n      \"name\": \"jsmatlab\",\r\n      \"type\": \"Microsoft.Batch/batchAccounts\",\r\n      \"location\": \"westus\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "237"
+          "455"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -73,16 +73,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14966"
+          "14984"
         ],
         "x-ms-request-id": [
-          "592812c8-48bb-4d0d-ae92-81f314c347c2"
+          "cc37cbb9-3958-4956-8b5d-8e4a640c0a1c"
         ],
         "x-ms-correlation-request-id": [
-          "592812c8-48bb-4d0d-ae92-81f314c347c2"
+          "cc37cbb9-3958-4956-8b5d-8e4a640c0a1c"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151027T002557Z:592812c8-48bb-4d0d-ae92-81f314c347c2"
+          "WESTUS:20151111T010207Z:cc37cbb9-3958-4956-8b5d-8e4a640c0a1c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -91,14 +91,14 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 27 Oct 2015 00:25:56 GMT"
+          "Wed, 11 Nov 2015 01:02:07 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourceGroups/default-azurebatch-eastus/providers/Microsoft.Batch/batchAccounts/pstests?api-version=2015-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjM2OGVkMzgtMzU3MC00ODFmLWI0ZmEtMWQwYTZlOGQzZjNiL3Jlc291cmNlR3JvdXBzL2RlZmF1bHQtYXp1cmViYXRjaC1lYXN0dXMvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3BzdGVzdHM/YXBpLXZlcnNpb249MjAxNS0wOS0wMQ==",
+      "RequestUri": "/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-eastus/providers/Microsoft.Batch/batchAccounts/pstestaccount?api-version=2015-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDYyNDEzNTUtYmI5NS00NmE5LWJhNmMtNDJiNTU0ZDcxOTI1L3Jlc291cmNlR3JvdXBzL2RlZmF1bHQtZWFzdHVzL3Byb3ZpZGVycy9NaWNyb3NvZnQuQmF0Y2gvYmF0Y2hBY2NvdW50cy9wc3Rlc3RhY2NvdW50P2FwaS12ZXJzaW9uPTIwMTUtMDktMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -109,10 +109,10 @@
           "Microsoft.Azure.Management.Batch.BatchManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"pstests\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"accountEndpoint\": \"pstests.eastus.batch.azure.com\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"coreQuota\": 20,\r\n    \"poolQuota\": 20,\r\n    \"activeJobAndJobScheduleQuota\": 20\r\n  },\r\n  \"id\": \"/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourceGroups/default-azurebatch-eastus/providers/Microsoft.Batch/batchAccounts/pstests\",\r\n  \"type\": \"Microsoft.Batch/batchAccounts\"\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"pstestaccount\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"accountEndpoint\": \"pstestaccount.eastus.batch.azure.com\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"coreQuota\": 20,\r\n    \"poolQuota\": 20,\r\n    \"activeJobAndJobScheduleQuota\": 20\r\n  },\r\n  \"id\": \"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-eastus/providers/Microsoft.Batch/batchAccounts/pstestaccount\",\r\n  \"type\": \"Microsoft.Batch/batchAccounts\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "387"
+          "394"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -121,37 +121,37 @@
           "-1"
         ],
         "Last-Modified": [
-          "Tue, 27 Oct 2015 00:25:54 GMT"
+          "Wed, 11 Nov 2015 01:02:04 GMT"
         ],
         "Pragma": [
           "no-cache"
         ],
         "request-id": [
-          "89543b23-a646-418a-97d5-e4b9dee8f6d7"
+          "6c0848c6-a6c0-4980-9850-4b89f855671f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14959"
+          "14913"
         ],
         "x-ms-request-id": [
-          "c52dc0da-2554-4d24-a5ca-8bb61497b4e8"
+          "a72af5b0-a6e3-4fd8-b0c7-2313bb488acb"
         ],
         "x-ms-correlation-request-id": [
-          "c52dc0da-2554-4d24-a5ca-8bb61497b4e8"
+          "a72af5b0-a6e3-4fd8-b0c7-2313bb488acb"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151027T002554Z:c52dc0da-2554-4d24-a5ca-8bb61497b4e8"
+          "WESTUS:20151111T010204Z:a72af5b0-a6e3-4fd8-b0c7-2313bb488acb"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Tue, 27 Oct 2015 00:25:53 GMT"
+          "Wed, 11 Nov 2015 01:02:04 GMT"
         ],
         "ETag": [
-          "0x8D2DE652D565242"
+          "0x8D2EA33B70AF974"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -160,8 +160,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourceGroups/default-azurebatch-eastus/providers/Microsoft.Batch/batchAccounts/pstests?api-version=2015-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjM2OGVkMzgtMzU3MC00ODFmLWI0ZmEtMWQwYTZlOGQzZjNiL3Jlc291cmNlR3JvdXBzL2RlZmF1bHQtYXp1cmViYXRjaC1lYXN0dXMvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3BzdGVzdHM/YXBpLXZlcnNpb249MjAxNS0wOS0wMQ==",
+      "RequestUri": "/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-eastus/providers/Microsoft.Batch/batchAccounts/pstestaccount?api-version=2015-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDYyNDEzNTUtYmI5NS00NmE5LWJhNmMtNDJiNTU0ZDcxOTI1L3Jlc291cmNlR3JvdXBzL2RlZmF1bHQtZWFzdHVzL3Byb3ZpZGVycy9NaWNyb3NvZnQuQmF0Y2gvYmF0Y2hBY2NvdW50cy9wc3Rlc3RhY2NvdW50P2FwaS12ZXJzaW9uPTIwMTUtMDktMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -172,10 +172,10 @@
           "Microsoft.Azure.Management.Batch.BatchManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"pstests\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"accountEndpoint\": \"pstests.eastus.batch.azure.com\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"coreQuota\": 20,\r\n    \"poolQuota\": 20,\r\n    \"activeJobAndJobScheduleQuota\": 20\r\n  },\r\n  \"id\": \"/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourceGroups/default-azurebatch-eastus/providers/Microsoft.Batch/batchAccounts/pstests\",\r\n  \"type\": \"Microsoft.Batch/batchAccounts\"\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"pstestaccount\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"accountEndpoint\": \"pstestaccount.eastus.batch.azure.com\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"coreQuota\": 20,\r\n    \"poolQuota\": 20,\r\n    \"activeJobAndJobScheduleQuota\": 20\r\n  },\r\n  \"id\": \"/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-eastus/providers/Microsoft.Batch/batchAccounts/pstestaccount\",\r\n  \"type\": \"Microsoft.Batch/batchAccounts\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "387"
+          "394"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -184,37 +184,37 @@
           "-1"
         ],
         "Last-Modified": [
-          "Tue, 27 Oct 2015 00:25:57 GMT"
+          "Wed, 11 Nov 2015 01:02:09 GMT"
         ],
         "Pragma": [
           "no-cache"
         ],
         "request-id": [
-          "26c6a339-1912-4c44-87ad-06342e6833c2"
+          "c1999266-8c2d-4d6d-a61a-919a29b93600"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14958"
+          "14912"
         ],
         "x-ms-request-id": [
-          "d5305d0a-dbd8-4629-8fe4-c84f25854c00"
+          "2700c8a5-7caf-4b71-9027-0d3a0d8917d5"
         ],
         "x-ms-correlation-request-id": [
-          "d5305d0a-dbd8-4629-8fe4-c84f25854c00"
+          "2700c8a5-7caf-4b71-9027-0d3a0d8917d5"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151027T002557Z:d5305d0a-dbd8-4629-8fe4-c84f25854c00"
+          "WESTUS:20151111T010208Z:2700c8a5-7caf-4b71-9027-0d3a0d8917d5"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Tue, 27 Oct 2015 00:25:56 GMT"
+          "Wed, 11 Nov 2015 01:02:08 GMT"
         ],
         "ETag": [
-          "0x8D2DE652F39D3D2"
+          "0x8D2EA33B98EE073"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -223,8 +223,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourceGroups/default-azurebatch-eastus/providers/Microsoft.Batch/batchAccounts/pstests/listKeys?api-version=2015-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjM2OGVkMzgtMzU3MC00ODFmLWI0ZmEtMWQwYTZlOGQzZjNiL3Jlc291cmNlR3JvdXBzL2RlZmF1bHQtYXp1cmViYXRjaC1lYXN0dXMvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3BzdGVzdHMvbGlzdEtleXM/YXBpLXZlcnNpb249MjAxNS0wOS0wMQ==",
+      "RequestUri": "/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-eastus/providers/Microsoft.Batch/batchAccounts/pstestaccount/listKeys?api-version=2015-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDYyNDEzNTUtYmI5NS00NmE5LWJhNmMtNDJiNTU0ZDcxOTI1L3Jlc291cmNlR3JvdXBzL2RlZmF1bHQtZWFzdHVzL3Byb3ZpZGVycy9NaWNyb3NvZnQuQmF0Y2gvYmF0Y2hBY2NvdW50cy9wc3Rlc3RhY2NvdW50L2xpc3RLZXlzP2FwaS12ZXJzaW9uPTIwMTUtMDktMDE=",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
@@ -235,10 +235,10 @@
           "Microsoft.Azure.Management.Batch.BatchManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"accountName\": \"pstests\",\r\n  \"primary\": \"hIsQ4xSEK40UEhQPO1ixIV6kxX2Kd7WldCNgTOWFeYRU5EpnfeS5+ZuPNQZXuDalZYEFlgMZc2TkmF/PIBKhBg==\",\r\n  \"secondary\": \"zkP4SqUquW+Vc9Uwu6iAl/EfvrKiUzWznxunIdvDPGngakhTFrmysae7LEF0EI6BzqPrWHngaKzlsbKoQTcQdQ==\"\r\n}",
+      "ResponseBody": "{\r\n  \"accountName\": \"pstestaccount\",\r\n  \"primary\": \"BXXODafLGpfb8boG1WOVc0+LgbpsXWhE0OnPiD3Yl/iUZ6SixyG4rxQmFSu08RrC7LUIuE9E7k4jkI/XV+McZw==\",\r\n  \"secondary\": \"u9bk9P98NJdr0vTsgRMINRZrsxDipDbFzgRxhCm17FA1eCJlV+TGMP6udRhbOtl33wwtJ4HSnjelLW04/6vdMQ==\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "229"
+          "235"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -250,28 +250,28 @@
           "no-cache"
         ],
         "request-id": [
-          "0d2e6e50-cd58-496a-aec7-f5921db9f7c5"
+          "07e663c6-acde-40b0-95cf-49bdb1d7571c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1190"
+          "1194"
         ],
         "x-ms-request-id": [
-          "00db0a90-3558-462e-b3b6-4eb0d6060ff3"
+          "20fa7ef3-f75c-4dc8-8c5b-3764d0ab99c6"
         ],
         "x-ms-correlation-request-id": [
-          "00db0a90-3558-462e-b3b6-4eb0d6060ff3"
+          "20fa7ef3-f75c-4dc8-8c5b-3764d0ab99c6"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151027T002554Z:00db0a90-3558-462e-b3b6-4eb0d6060ff3"
+          "WESTUS:20151111T010204Z:20fa7ef3-f75c-4dc8-8c5b-3764d0ab99c6"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Tue, 27 Oct 2015 00:25:53 GMT"
+          "Wed, 11 Nov 2015 01:02:04 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -280,8 +280,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/6368ed38-3570-481f-b4fa-1d0a6e8d3f3b/resourceGroups/default-azurebatch-eastus/providers/Microsoft.Batch/batchAccounts/pstests/listKeys?api-version=2015-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjM2OGVkMzgtMzU3MC00ODFmLWI0ZmEtMWQwYTZlOGQzZjNiL3Jlc291cmNlR3JvdXBzL2RlZmF1bHQtYXp1cmViYXRjaC1lYXN0dXMvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3BzdGVzdHMvbGlzdEtleXM/YXBpLXZlcnNpb249MjAxNS0wOS0wMQ==",
+      "RequestUri": "/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/default-eastus/providers/Microsoft.Batch/batchAccounts/pstestaccount/listKeys?api-version=2015-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDYyNDEzNTUtYmI5NS00NmE5LWJhNmMtNDJiNTU0ZDcxOTI1L3Jlc291cmNlR3JvdXBzL2RlZmF1bHQtZWFzdHVzL3Byb3ZpZGVycy9NaWNyb3NvZnQuQmF0Y2gvYmF0Y2hBY2NvdW50cy9wc3Rlc3RhY2NvdW50L2xpc3RLZXlzP2FwaS12ZXJzaW9uPTIwMTUtMDktMDE=",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
@@ -292,10 +292,10 @@
           "Microsoft.Azure.Management.Batch.BatchManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"accountName\": \"pstests\",\r\n  \"primary\": \"hIsQ4xSEK40UEhQPO1ixIV6kxX2Kd7WldCNgTOWFeYRU5EpnfeS5+ZuPNQZXuDalZYEFlgMZc2TkmF/PIBKhBg==\",\r\n  \"secondary\": \"zkP4SqUquW+Vc9Uwu6iAl/EfvrKiUzWznxunIdvDPGngakhTFrmysae7LEF0EI6BzqPrWHngaKzlsbKoQTcQdQ==\"\r\n}",
+      "ResponseBody": "{\r\n  \"accountName\": \"pstestaccount\",\r\n  \"primary\": \"BXXODafLGpfb8boG1WOVc0+LgbpsXWhE0OnPiD3Yl/iUZ6SixyG4rxQmFSu08RrC7LUIuE9E7k4jkI/XV+McZw==\",\r\n  \"secondary\": \"u9bk9P98NJdr0vTsgRMINRZrsxDipDbFzgRxhCm17FA1eCJlV+TGMP6udRhbOtl33wwtJ4HSnjelLW04/6vdMQ==\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "229"
+          "235"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -307,28 +307,28 @@
           "no-cache"
         ],
         "request-id": [
-          "ed57ff9f-6c46-45a7-a5ff-50a40a5b9e2c"
+          "4d3d4cbc-8705-45fd-961a-3021c4bd898b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1189"
+          "1193"
         ],
         "x-ms-request-id": [
-          "2d4c9299-f147-4f55-bd70-0883456d5ff0"
+          "9578143c-b948-4608-9f7c-47ce232b6150"
         ],
         "x-ms-correlation-request-id": [
-          "2d4c9299-f147-4f55-bd70-0883456d5ff0"
+          "9578143c-b948-4608-9f7c-47ce232b6150"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151027T002557Z:2d4c9299-f147-4f55-bd70-0883456d5ff0"
+          "WESTUS:20151111T010208Z:9578143c-b948-4608-9f7c-47ce232b6150"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Tue, 27 Oct 2015 00:25:56 GMT"
+          "Wed, 11 Nov 2015 01:02:08 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -349,50 +349,50 @@
           "179"
         ],
         "client-request-id": [
-          "aae31444-d0c5-4f1b-8c88-b3c3ba80b895"
+          "ec334d1d-e389-4250-a31e-eb2b7f946af1"
         ],
         "ocp-date": [
-          "Tue, 27 Oct 2015 00:25:54 GMT"
+          "Wed, 11 Nov 2015 01:02:04 GMT"
         ],
         "return-client-request-id": [
           "true"
         ],
         "User-Agent": [
           "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
-          "AzBatch/2.0.2.0"
+          "AzurePowershell/v1.0.0"
         ]
       },
       "ResponseBody": "",
       "ResponseHeaders": {
         "Last-Modified": [
-          "Tue, 27 Oct 2015 00:25:55 GMT"
+          "Wed, 11 Nov 2015 01:02:04 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "81094f68-0d4d-4710-b468-2d3582395b23"
+          "fba438a6-a444-4703-a4c4-f6e28c34c593"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "client-request-id": [
-          "aae31444-d0c5-4f1b-8c88-b3c3ba80b895"
+          "ec334d1d-e389-4250-a31e-eb2b7f946af1"
         ],
         "DataServiceVersion": [
           "3.0"
         ],
         "DataServiceId": [
-          "https://pstests.eastus.batch.azure.com/jobschedules/testUpdateJobSchedule"
+          "https://pstestaccount.eastus.batch.azure.com/jobschedules/testUpdateJobSchedule"
         ],
         "Date": [
-          "Tue, 27 Oct 2015 00:25:56 GMT"
+          "Wed, 11 Nov 2015 01:02:05 GMT"
         ],
         "ETag": [
-          "0x8D2DE652E03AECC"
+          "0x8D2EA33B7169672"
         ],
         "Location": [
-          "https://pstests.eastus.batch.azure.com/jobschedules/testUpdateJobSchedule"
+          "https://pstestaccount.eastus.batch.azure.com/jobschedules/testUpdateJobSchedule"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -407,47 +407,47 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "ee0e119a-fa9a-47db-86a2-706988862ac7"
+          "d0151cb1-ec14-40e5-ab1e-d8778dba339e"
         ],
         "ocp-date": [
-          "Tue, 27 Oct 2015 00:25:57 GMT"
+          "Wed, 11 Nov 2015 01:02:08 GMT"
         ],
         "return-client-request-id": [
           "true"
         ],
         "User-Agent": [
           "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
-          "AzBatch/2.0.2.0"
+          "AzurePowershell/v1.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstests.eastus.batch.azure.com/$metadata#jobschedules/@Element\",\r\n  \"id\": \"testUpdateJobSchedule\",\r\n  \"url\": \"https://pstests.eastus.batch.azure.com/jobschedules/testUpdateJobSchedule\",\r\n  \"eTag\": \"0x8D2DE652E03AECC\",\r\n  \"lastModified\": \"2015-10-27T00:25:55.7717708Z\",\r\n  \"creationTime\": \"2015-10-27T00:25:55.7717708Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-10-27T00:25:55.7717708Z\",\r\n  \"jobSpecification\": {\r\n    \"priority\": 0,\r\n    \"constraints\": {\r\n      \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n      \"maxTaskRetryCount\": 0\r\n    },\r\n    \"poolInfo\": {\r\n      \"poolId\": \"testPool\"\r\n    }\r\n  },\r\n  \"executionInfo\": {\r\n    \"recentJob\": {\r\n      \"url\": \"https://pstests.eastus.batch.azure.com/jobs/testUpdateJobSchedule:job-1\",\r\n      \"id\": \"testUpdateJobSchedule:job-1\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.eastus.batch.azure.com/$metadata#jobschedules/@Element\",\r\n  \"id\": \"testUpdateJobSchedule\",\r\n  \"url\": \"https://pstestaccount.eastus.batch.azure.com/jobschedules/testUpdateJobSchedule\",\r\n  \"eTag\": \"0x8D2EA33B7169672\",\r\n  \"lastModified\": \"2015-11-11T01:02:04.8603762Z\",\r\n  \"creationTime\": \"2015-11-11T01:02:04.8603762Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2015-11-11T01:02:04.8603762Z\",\r\n  \"jobSpecification\": {\r\n    \"priority\": 0,\r\n    \"constraints\": {\r\n      \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n      \"maxTaskRetryCount\": 0\r\n    },\r\n    \"poolInfo\": {\r\n      \"poolId\": \"testPool\"\r\n    }\r\n  },\r\n  \"executionInfo\": {\r\n    \"recentJob\": {\r\n      \"url\": \"https://pstestaccount.eastus.batch.azure.com/jobs/testUpdateJobSchedule:job-1\",\r\n      \"id\": \"testUpdateJobSchedule:job-1\"\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Tue, 27 Oct 2015 00:25:55 GMT"
+          "Wed, 11 Nov 2015 01:02:04 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "6fb384ec-c735-4a59-8bdd-c297eab02de1"
+          "3effe12c-1de3-418e-9e64-25786554b987"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "client-request-id": [
-          "ee0e119a-fa9a-47db-86a2-706988862ac7"
+          "d0151cb1-ec14-40e5-ab1e-d8778dba339e"
         ],
         "DataServiceVersion": [
           "3.0"
         ],
         "Date": [
-          "Tue, 27 Oct 2015 00:25:58 GMT"
+          "Wed, 11 Nov 2015 01:02:08 GMT"
         ],
         "ETag": [
-          "0x8D2DE652E03AECC"
+          "0x8D2EA33B7169672"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -468,108 +468,47 @@
           "3380"
         ],
         "client-request-id": [
-          "ea87dd48-a6ff-4691-9b5c-64b9e3c99971"
+          "5e5cae21-b3d9-47cd-a9cf-bd92e0ac8e05"
         ],
         "ocp-date": [
-          "Tue, 27 Oct 2015 00:25:58 GMT"
+          "Wed, 11 Nov 2015 01:02:09 GMT"
         ],
         "return-client-request-id": [
           "true"
         ],
         "User-Agent": [
           "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
-          "AzBatch/2.0.2.0"
+          "AzurePowershell/v1.0.0"
         ]
       },
       "ResponseBody": "",
       "ResponseHeaders": {
         "Last-Modified": [
-          "Tue, 27 Oct 2015 00:25:59 GMT"
+          "Wed, 11 Nov 2015 01:02:09 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "db3059e5-f46f-4c06-9835-a7ad274aa624"
+          "8a677300-1a93-43da-9be8-88a96b261b9a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "client-request-id": [
-          "ea87dd48-a6ff-4691-9b5c-64b9e3c99971"
+          "5e5cae21-b3d9-47cd-a9cf-bd92e0ac8e05"
         ],
         "DataServiceVersion": [
           "3.0"
         ],
         "DataServiceId": [
-          "https://pstests.eastus.batch.azure.com/jobschedules/testUpdateJobSchedule"
+          "https://pstestaccount.eastus.batch.azure.com/jobschedules/testUpdateJobSchedule"
         ],
         "Date": [
-          "Tue, 27 Oct 2015 00:25:58 GMT"
+          "Wed, 11 Nov 2015 01:02:10 GMT"
         ],
         "ETag": [
-          "0x8D2DE653010F3BC"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/jobschedules/testUpdateJobSchedule?api-version=2015-06-01.2.0&timeout=30",
-      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy90ZXN0VXBkYXRlSm9iU2NoZWR1bGU/YXBpLXZlcnNpb249MjAxNS0wNi0wMS4yLjAmdGltZW91dD0zMA==",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"schedule\": {\r\n    \"doNotRunUntil\": \"2020-01-01T12:00:00\",\r\n    \"doNotRunAfter\": \"2025-01-01T12:00:00\",\r\n    \"startWindow\": \"PT1H\",\r\n    \"recurrenceInterval\": \"P1D\"\r\n  },\r\n  \"jobSpecification\": {\r\n    \"priority\": 1,\r\n    \"displayName\": \"jobSpecDisplayName\",\r\n    \"constraints\": {\r\n      \"maxWallClockTime\": \"P1D\",\r\n      \"maxTaskRetryCount\": 5\r\n    },\r\n    \"jobManagerTask\": {\r\n      \"id\": \"jobManager\",\r\n      \"displayName\": \"jobManagerDisplay\",\r\n      \"commandLine\": \"cmd /c dir /s\",\r\n      \"resourceFiles\": [\r\n        {\r\n          \"blobSource\": \"https://testacct.blob.core.windows.net/\",\r\n          \"filePath\": \"filePath\"\r\n        }\r\n      ],\r\n      \"environmentSettings\": [\r\n        {\r\n          \"name\": \"name1\",\r\n          \"value\": \"value1\"\r\n        },\r\n        {\r\n          \"name\": \"name2\",\r\n          \"value\": \"value2\"\r\n        }\r\n      ],\r\n      \"constraints\": {\r\n        \"maxWallClockTime\": \"PT1H\"\r\n      },\r\n      \"killJobOnCompletion\": false,\r\n      \"runElevated\": false\r\n    },\r\n    \"jobPreparationTask\": {\r\n      \"id\": \"jobPrep\",\r\n      \"commandLine\": \"cmd /c dir /s\",\r\n      \"resourceFiles\": [\r\n        {\r\n          \"blobSource\": \"https://testacct.blob.core.windows.net/\",\r\n          \"filePath\": \"jobPrepFilePath\"\r\n        }\r\n      ],\r\n      \"environmentSettings\": [\r\n        {\r\n          \"name\": \"jobPrepName1\",\r\n          \"value\": \"jobPrepValue1\"\r\n        },\r\n        {\r\n          \"name\": \"jobPrepName2\",\r\n          \"value\": \"jobPrepValue2\"\r\n        }\r\n      ],\r\n      \"constraints\": {\r\n        \"maxTaskRetryCount\": 2\r\n      },\r\n      \"runElevated\": false\r\n    },\r\n    \"jobReleaseTask\": {\r\n      \"id\": \"jobRelease\",\r\n      \"commandLine\": \"cmd /c dir /s\",\r\n      \"resourceFiles\": [\r\n        {\r\n          \"blobSource\": \"https://testacct.blob.core.windows.net/\",\r\n          \"filePath\": \"jobReleaseFilePath\"\r\n        }\r\n      ],\r\n      \"environmentSettings\": [\r\n        {\r\n          \"name\": \"jobReleaseName1\",\r\n          \"value\": \"jobReleaseValue1\"\r\n        },\r\n        {\r\n          \"name\": \"jobReleaseName2\",\r\n          \"value\": \"jobReleaseValue2\"\r\n        }\r\n      ],\r\n      \"runElevated\": false\r\n    },\r\n    \"commonEnvironmentSettings\": [\r\n      {\r\n        \"name\": \"commonName1\",\r\n        \"value\": \"commonValue1\"\r\n      },\r\n      {\r\n        \"name\": \"commonName2\",\r\n        \"value\": \"commonValue2\"\r\n      }\r\n    ],\r\n    \"poolInfo\": {\r\n      \"autoPoolSpecification\": {\r\n        \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n        \"poolLifetimeOption\": \"jobschedule\",\r\n        \"keepAlive\": false,\r\n        \"pool\": {\r\n          \"vmSize\": \"small\",\r\n          \"osFamily\": \"4\",\r\n          \"targetOSVersion\": \"*\",\r\n          \"targetDedicated\": 3,\r\n          \"startTask\": {\r\n            \"commandLine\": \"cmd /c dir /s\"\r\n          },\r\n          \"certificateReferences\": [\r\n            {\r\n              \"thumbprint\": \"0123456789ABCDEF\",\r\n              \"thumbprintAlgorithm\": \"sha1\",\r\n              \"storeLocation\": \"localmachine\",\r\n              \"storeName\": \"certStore\",\r\n              \"visibility\": \"starttask\"\r\n            }\r\n          ]\r\n        }\r\n      }\r\n    },\r\n    \"metadata\": [\r\n      {\r\n        \"name\": \"specMeta1\",\r\n        \"value\": \"specMetaValue1\"\r\n      },\r\n      {\r\n        \"name\": \"specMeta2\",\r\n        \"value\": \"specMetaValue2\"\r\n      }\r\n    ]\r\n  },\r\n  \"metadata\": [\r\n    {\r\n      \"name\": \"jobScheduleMeta1\",\r\n      \"value\": \"jobScheduleValue1\"\r\n    }\r\n  ]\r\n}",
-      "RequestHeaders": {
-        "Content-Type": [
-          "application/json; odata=minimalmetadata"
-        ],
-        "Content-Length": [
-          "3380"
-        ],
-        "client-request-id": [
-          "ea87dd48-a6ff-4691-9b5c-64b9e3c99971"
-        ],
-        "ocp-date": [
-          "Tue, 27 Oct 2015 00:25:58 GMT"
-        ],
-        "return-client-request-id": [
-          "true"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
-          "AzBatch/2.0.2.0"
-        ]
-      },
-      "ResponseBody": "",
-      "ResponseHeaders": {
-        "Last-Modified": [
-          "Tue, 27 Oct 2015 00:25:59 GMT"
-        ],
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "request-id": [
-          "db3059e5-f46f-4c06-9835-a7ad274aa624"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "client-request-id": [
-          "ea87dd48-a6ff-4691-9b5c-64b9e3c99971"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "DataServiceId": [
-          "https://pstests.eastus.batch.azure.com/jobschedules/testUpdateJobSchedule"
-        ],
-        "Date": [
-          "Tue, 27 Oct 2015 00:25:58 GMT"
-        ],
-        "ETag": [
-          "0x8D2DE653010F3BC"
+          "0x8D2EA33B9D1FA99"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -584,20 +523,20 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "c22b62dc-2a63-45a1-8c95-e889ad0a46e6"
+          "08eec2dc-db73-4666-ac73-f9a452f309e8"
         ],
         "ocp-date": [
-          "Tue, 27 Oct 2015 00:25:58 GMT"
+          "Wed, 11 Nov 2015 01:02:09 GMT"
         ],
         "return-client-request-id": [
           "true"
         ],
         "User-Agent": [
           "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
-          "AzBatch/2.0.2.0"
+          "AzurePowershell/v1.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstests.eastus.batch.azure.com/$metadata#jobschedules\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testUpdateJobSchedule\",\r\n      \"url\": \"https://pstests.eastus.batch.azure.com/jobschedules/testUpdateJobSchedule\",\r\n      \"eTag\": \"0x8D2DE653010F3BC\",\r\n      \"lastModified\": \"2015-10-27T00:25:59.2141756Z\",\r\n      \"creationTime\": \"2015-10-27T00:25:55.7717708Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2015-10-27T00:25:55.7717708Z\",\r\n      \"schedule\": {\r\n        \"doNotRunUntil\": \"2020-01-01T12:00:00Z\",\r\n        \"doNotRunAfter\": \"2025-01-01T12:00:00Z\",\r\n        \"startWindow\": \"PT1H\",\r\n        \"recurrenceInterval\": \"P1D\"\r\n      },\r\n      \"jobSpecification\": {\r\n        \"displayName\": \"jobSpecDisplayName\",\r\n        \"priority\": 1,\r\n        \"constraints\": {\r\n          \"maxWallClockTime\": \"P1D\",\r\n          \"maxTaskRetryCount\": 5\r\n        },\r\n        \"jobManagerTask\": {\r\n          \"id\": \"jobManager\",\r\n          \"displayName\": \"jobManagerDisplay\",\r\n          \"commandLine\": \"cmd /c dir /s\",\r\n          \"resourceFiles\": [\r\n            {\r\n              \"blobSource\": \"https://testacct.blob.core.windows.net/\",\r\n              \"filePath\": \"filePath\"\r\n            }\r\n          ],\r\n          \"environmentSettings\": [\r\n            {\r\n              \"name\": \"name1\",\r\n              \"value\": \"value1\"\r\n            },\r\n            {\r\n              \"name\": \"name2\",\r\n              \"value\": \"value2\"\r\n            }\r\n          ],\r\n          \"constraints\": {\r\n            \"maxWallClockTime\": \"PT1H\",\r\n            \"retentionTime\": \"P10675199DT2H48M5.4775807S\",\r\n            \"maxTaskRetryCount\": 5\r\n          },\r\n          \"runElevated\": false,\r\n          \"runExclusive\": true,\r\n          \"killJobOnCompletion\": false\r\n        },\r\n        \"jobPreparationTask\": {\r\n          \"id\": \"jobPrep\",\r\n          \"commandLine\": \"cmd /c dir /s\",\r\n          \"resourceFiles\": [\r\n            {\r\n              \"blobSource\": \"https://testacct.blob.core.windows.net/\",\r\n              \"filePath\": \"jobPrepFilePath\"\r\n            }\r\n          ],\r\n          \"environmentSettings\": [\r\n            {\r\n              \"name\": \"jobPrepName1\",\r\n              \"value\": \"jobPrepValue1\"\r\n            },\r\n            {\r\n              \"name\": \"jobPrepName2\",\r\n              \"value\": \"jobPrepValue2\"\r\n            }\r\n          ],\r\n          \"constraints\": {\r\n            \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n            \"retentionTime\": \"P10675199DT2H48M5.4775807S\",\r\n            \"maxTaskRetryCount\": 2\r\n          },\r\n          \"runElevated\": false,\r\n          \"waitForSuccess\": true,\r\n          \"rerunOnNodeRebootAfterSuccess\": true\r\n        },\r\n        \"jobReleaseTask\": {\r\n          \"id\": \"jobRelease\",\r\n          \"commandLine\": \"cmd /c dir /s\",\r\n          \"resourceFiles\": [\r\n            {\r\n              \"blobSource\": \"https://testacct.blob.core.windows.net/\",\r\n              \"filePath\": \"jobReleaseFilePath\"\r\n            }\r\n          ],\r\n          \"environmentSettings\": [\r\n            {\r\n              \"name\": \"jobReleaseName1\",\r\n              \"value\": \"jobReleaseValue1\"\r\n            },\r\n            {\r\n              \"name\": \"jobReleaseName2\",\r\n              \"value\": \"jobReleaseValue2\"\r\n            }\r\n          ],\r\n          \"maxWallClockTime\": \"PT15M\",\r\n          \"retentionTime\": \"P10675199DT2H48M5.4775807S\",\r\n          \"runElevated\": false\r\n        },\r\n        \"commonEnvironmentSettings\": [\r\n          {\r\n            \"name\": \"commonName1\",\r\n            \"value\": \"commonValue1\"\r\n          },\r\n          {\r\n            \"name\": \"commonName2\",\r\n            \"value\": \"commonValue2\"\r\n          }\r\n        ],\r\n        \"poolInfo\": {\r\n          \"autoPoolSpecification\": {\r\n            \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n            \"poolLifetimeOption\": \"jobschedule\",\r\n            \"keepAlive\": false,\r\n            \"pool\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\",\r\n              \"vmSize\": \"small\",\r\n              \"maxTasksPerNode\": 1,\r\n              \"taskSchedulingPolicy\": {\r\n                \"nodeFillType\": \"Spread\"\r\n              },\r\n              \"resizeTimeout\": \"PT5M\",\r\n              \"targetDedicated\": 3,\r\n              \"enableAutoScale\": false,\r\n              \"enableInterNodeCommunication\": false,\r\n              \"startTask\": {\r\n                \"commandLine\": \"cmd /c dir /s\",\r\n                \"runElevated\": false,\r\n                \"maxTaskRetryCount\": 0,\r\n                \"waitForSuccess\": false\r\n              },\r\n              \"certificateReferences\": [\r\n                {\r\n                  \"thumbprint\": \"0123456789abcdef\",\r\n                  \"thumbprintAlgorithm\": \"sha1\",\r\n                  \"storeLocation\": \"LocalMachine\",\r\n                  \"storeName\": \"certStore\",\r\n                  \"visibility\": \"starttask\"\r\n                }\r\n              ]\r\n            }\r\n          }\r\n        },\r\n        \"metadata\": [\r\n          {\r\n            \"name\": \"specMeta1\",\r\n            \"value\": \"specMetaValue1\"\r\n          },\r\n          {\r\n            \"name\": \"specMeta2\",\r\n            \"value\": \"specMetaValue2\"\r\n          }\r\n        ]\r\n      },\r\n      \"executionInfo\": {\r\n        \"nextRunTime\": \"2015-10-28T12:00:00Z\",\r\n        \"recentJob\": {\r\n          \"url\": \"https://pstests.eastus.batch.azure.com/jobs/testUpdateJobSchedule:job-1\",\r\n          \"id\": \"testUpdateJobSchedule:job-1\"\r\n        }\r\n      },\r\n      \"metadata\": [\r\n        {\r\n          \"name\": \"jobScheduleMeta1\",\r\n          \"value\": \"jobScheduleValue1\"\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.eastus.batch.azure.com/$metadata#jobschedules\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testUpdateJobSchedule\",\r\n      \"url\": \"https://pstestaccount.eastus.batch.azure.com/jobschedules/testUpdateJobSchedule\",\r\n      \"eTag\": \"0x8D2EA33B9D1FA99\",\r\n      \"lastModified\": \"2015-11-11T01:02:09.4439065Z\",\r\n      \"creationTime\": \"2015-11-11T01:02:04.8603762Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2015-11-11T01:02:04.8603762Z\",\r\n      \"schedule\": {\r\n        \"doNotRunUntil\": \"2020-01-01T12:00:00Z\",\r\n        \"doNotRunAfter\": \"2025-01-01T12:00:00Z\",\r\n        \"startWindow\": \"PT1H\",\r\n        \"recurrenceInterval\": \"P1D\"\r\n      },\r\n      \"jobSpecification\": {\r\n        \"displayName\": \"jobSpecDisplayName\",\r\n        \"priority\": 1,\r\n        \"constraints\": {\r\n          \"maxWallClockTime\": \"P1D\",\r\n          \"maxTaskRetryCount\": 5\r\n        },\r\n        \"jobManagerTask\": {\r\n          \"id\": \"jobManager\",\r\n          \"displayName\": \"jobManagerDisplay\",\r\n          \"commandLine\": \"cmd /c dir /s\",\r\n          \"resourceFiles\": [\r\n            {\r\n              \"blobSource\": \"https://testacct.blob.core.windows.net/\",\r\n              \"filePath\": \"filePath\"\r\n            }\r\n          ],\r\n          \"environmentSettings\": [\r\n            {\r\n              \"name\": \"name1\",\r\n              \"value\": \"value1\"\r\n            },\r\n            {\r\n              \"name\": \"name2\",\r\n              \"value\": \"value2\"\r\n            }\r\n          ],\r\n          \"constraints\": {\r\n            \"maxWallClockTime\": \"PT1H\",\r\n            \"retentionTime\": \"P10675199DT2H48M5.4775807S\",\r\n            \"maxTaskRetryCount\": 5\r\n          },\r\n          \"runElevated\": false,\r\n          \"runExclusive\": true,\r\n          \"killJobOnCompletion\": false\r\n        },\r\n        \"jobPreparationTask\": {\r\n          \"id\": \"jobPrep\",\r\n          \"commandLine\": \"cmd /c dir /s\",\r\n          \"resourceFiles\": [\r\n            {\r\n              \"blobSource\": \"https://testacct.blob.core.windows.net/\",\r\n              \"filePath\": \"jobPrepFilePath\"\r\n            }\r\n          ],\r\n          \"environmentSettings\": [\r\n            {\r\n              \"name\": \"jobPrepName1\",\r\n              \"value\": \"jobPrepValue1\"\r\n            },\r\n            {\r\n              \"name\": \"jobPrepName2\",\r\n              \"value\": \"jobPrepValue2\"\r\n            }\r\n          ],\r\n          \"constraints\": {\r\n            \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n            \"retentionTime\": \"P10675199DT2H48M5.4775807S\",\r\n            \"maxTaskRetryCount\": 2\r\n          },\r\n          \"runElevated\": false,\r\n          \"waitForSuccess\": true,\r\n          \"rerunOnNodeRebootAfterSuccess\": true\r\n        },\r\n        \"jobReleaseTask\": {\r\n          \"id\": \"jobRelease\",\r\n          \"commandLine\": \"cmd /c dir /s\",\r\n          \"resourceFiles\": [\r\n            {\r\n              \"blobSource\": \"https://testacct.blob.core.windows.net/\",\r\n              \"filePath\": \"jobReleaseFilePath\"\r\n            }\r\n          ],\r\n          \"environmentSettings\": [\r\n            {\r\n              \"name\": \"jobReleaseName1\",\r\n              \"value\": \"jobReleaseValue1\"\r\n            },\r\n            {\r\n              \"name\": \"jobReleaseName2\",\r\n              \"value\": \"jobReleaseValue2\"\r\n            }\r\n          ],\r\n          \"maxWallClockTime\": \"PT15M\",\r\n          \"retentionTime\": \"P10675199DT2H48M5.4775807S\",\r\n          \"runElevated\": false\r\n        },\r\n        \"commonEnvironmentSettings\": [\r\n          {\r\n            \"name\": \"commonName1\",\r\n            \"value\": \"commonValue1\"\r\n          },\r\n          {\r\n            \"name\": \"commonName2\",\r\n            \"value\": \"commonValue2\"\r\n          }\r\n        ],\r\n        \"poolInfo\": {\r\n          \"autoPoolSpecification\": {\r\n            \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n            \"poolLifetimeOption\": \"jobschedule\",\r\n            \"keepAlive\": false,\r\n            \"pool\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\",\r\n              \"vmSize\": \"small\",\r\n              \"maxTasksPerNode\": 1,\r\n              \"taskSchedulingPolicy\": {\r\n                \"nodeFillType\": \"Spread\"\r\n              },\r\n              \"resizeTimeout\": \"PT5M\",\r\n              \"targetDedicated\": 3,\r\n              \"enableAutoScale\": false,\r\n              \"enableInterNodeCommunication\": false,\r\n              \"startTask\": {\r\n                \"commandLine\": \"cmd /c dir /s\",\r\n                \"runElevated\": false,\r\n                \"maxTaskRetryCount\": 0,\r\n                \"waitForSuccess\": false\r\n              },\r\n              \"certificateReferences\": [\r\n                {\r\n                  \"thumbprint\": \"0123456789abcdef\",\r\n                  \"thumbprintAlgorithm\": \"sha1\",\r\n                  \"storeLocation\": \"LocalMachine\",\r\n                  \"storeName\": \"certStore\",\r\n                  \"visibility\": \"starttask\"\r\n                }\r\n              ]\r\n            }\r\n          }\r\n        },\r\n        \"metadata\": [\r\n          {\r\n            \"name\": \"specMeta1\",\r\n            \"value\": \"specMetaValue1\"\r\n          },\r\n          {\r\n            \"name\": \"specMeta2\",\r\n            \"value\": \"specMetaValue2\"\r\n          }\r\n        ]\r\n      },\r\n      \"executionInfo\": {\r\n        \"nextRunTime\": \"2015-11-12T12:00:00Z\",\r\n        \"recentJob\": {\r\n          \"url\": \"https://pstestaccount.eastus.batch.azure.com/jobs/testUpdateJobSchedule:job-1\",\r\n          \"id\": \"testUpdateJobSchedule:job-1\"\r\n        }\r\n      },\r\n      \"metadata\": [\r\n        {\r\n          \"name\": \"jobScheduleMeta1\",\r\n          \"value\": \"jobScheduleValue1\"\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -606,117 +545,19 @@
           "chunked"
         ],
         "request-id": [
-          "d3c0a499-ab73-46c6-a4a8-ea0b5332bb91"
+          "a6918113-2158-4293-8b7d-cb2719fc864d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "client-request-id": [
-          "c22b62dc-2a63-45a1-8c95-e889ad0a46e6"
+          "08eec2dc-db73-4666-ac73-f9a452f309e8"
         ],
         "DataServiceVersion": [
           "3.0"
         ],
         "Date": [
-          "Tue, 27 Oct 2015 00:26:00 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/jobschedules?api-version=2015-06-01.2.0&timeout=30",
-      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcz9hcGktdmVyc2lvbj0yMDE1LTA2LTAxLjIuMCZ0aW1lb3V0PTMw",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "client-request-id": [
-          "c22b62dc-2a63-45a1-8c95-e889ad0a46e6"
-        ],
-        "ocp-date": [
-          "Tue, 27 Oct 2015 00:25:58 GMT"
-        ],
-        "return-client-request-id": [
-          "true"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
-          "AzBatch/2.0.2.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstests.eastus.batch.azure.com/$metadata#jobschedules\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testUpdateJobSchedule\",\r\n      \"url\": \"https://pstests.eastus.batch.azure.com/jobschedules/testUpdateJobSchedule\",\r\n      \"eTag\": \"0x8D2DE653010F3BC\",\r\n      \"lastModified\": \"2015-10-27T00:25:59.2141756Z\",\r\n      \"creationTime\": \"2015-10-27T00:25:55.7717708Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2015-10-27T00:25:55.7717708Z\",\r\n      \"schedule\": {\r\n        \"doNotRunUntil\": \"2020-01-01T12:00:00Z\",\r\n        \"doNotRunAfter\": \"2025-01-01T12:00:00Z\",\r\n        \"startWindow\": \"PT1H\",\r\n        \"recurrenceInterval\": \"P1D\"\r\n      },\r\n      \"jobSpecification\": {\r\n        \"displayName\": \"jobSpecDisplayName\",\r\n        \"priority\": 1,\r\n        \"constraints\": {\r\n          \"maxWallClockTime\": \"P1D\",\r\n          \"maxTaskRetryCount\": 5\r\n        },\r\n        \"jobManagerTask\": {\r\n          \"id\": \"jobManager\",\r\n          \"displayName\": \"jobManagerDisplay\",\r\n          \"commandLine\": \"cmd /c dir /s\",\r\n          \"resourceFiles\": [\r\n            {\r\n              \"blobSource\": \"https://testacct.blob.core.windows.net/\",\r\n              \"filePath\": \"filePath\"\r\n            }\r\n          ],\r\n          \"environmentSettings\": [\r\n            {\r\n              \"name\": \"name1\",\r\n              \"value\": \"value1\"\r\n            },\r\n            {\r\n              \"name\": \"name2\",\r\n              \"value\": \"value2\"\r\n            }\r\n          ],\r\n          \"constraints\": {\r\n            \"maxWallClockTime\": \"PT1H\",\r\n            \"retentionTime\": \"P10675199DT2H48M5.4775807S\",\r\n            \"maxTaskRetryCount\": 5\r\n          },\r\n          \"runElevated\": false,\r\n          \"runExclusive\": true,\r\n          \"killJobOnCompletion\": false\r\n        },\r\n        \"jobPreparationTask\": {\r\n          \"id\": \"jobPrep\",\r\n          \"commandLine\": \"cmd /c dir /s\",\r\n          \"resourceFiles\": [\r\n            {\r\n              \"blobSource\": \"https://testacct.blob.core.windows.net/\",\r\n              \"filePath\": \"jobPrepFilePath\"\r\n            }\r\n          ],\r\n          \"environmentSettings\": [\r\n            {\r\n              \"name\": \"jobPrepName1\",\r\n              \"value\": \"jobPrepValue1\"\r\n            },\r\n            {\r\n              \"name\": \"jobPrepName2\",\r\n              \"value\": \"jobPrepValue2\"\r\n            }\r\n          ],\r\n          \"constraints\": {\r\n            \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n            \"retentionTime\": \"P10675199DT2H48M5.4775807S\",\r\n            \"maxTaskRetryCount\": 2\r\n          },\r\n          \"runElevated\": false,\r\n          \"waitForSuccess\": true,\r\n          \"rerunOnNodeRebootAfterSuccess\": true\r\n        },\r\n        \"jobReleaseTask\": {\r\n          \"id\": \"jobRelease\",\r\n          \"commandLine\": \"cmd /c dir /s\",\r\n          \"resourceFiles\": [\r\n            {\r\n              \"blobSource\": \"https://testacct.blob.core.windows.net/\",\r\n              \"filePath\": \"jobReleaseFilePath\"\r\n            }\r\n          ],\r\n          \"environmentSettings\": [\r\n            {\r\n              \"name\": \"jobReleaseName1\",\r\n              \"value\": \"jobReleaseValue1\"\r\n            },\r\n            {\r\n              \"name\": \"jobReleaseName2\",\r\n              \"value\": \"jobReleaseValue2\"\r\n            }\r\n          ],\r\n          \"maxWallClockTime\": \"PT15M\",\r\n          \"retentionTime\": \"P10675199DT2H48M5.4775807S\",\r\n          \"runElevated\": false\r\n        },\r\n        \"commonEnvironmentSettings\": [\r\n          {\r\n            \"name\": \"commonName1\",\r\n            \"value\": \"commonValue1\"\r\n          },\r\n          {\r\n            \"name\": \"commonName2\",\r\n            \"value\": \"commonValue2\"\r\n          }\r\n        ],\r\n        \"poolInfo\": {\r\n          \"autoPoolSpecification\": {\r\n            \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n            \"poolLifetimeOption\": \"jobschedule\",\r\n            \"keepAlive\": false,\r\n            \"pool\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\",\r\n              \"vmSize\": \"small\",\r\n              \"maxTasksPerNode\": 1,\r\n              \"taskSchedulingPolicy\": {\r\n                \"nodeFillType\": \"Spread\"\r\n              },\r\n              \"resizeTimeout\": \"PT5M\",\r\n              \"targetDedicated\": 3,\r\n              \"enableAutoScale\": false,\r\n              \"enableInterNodeCommunication\": false,\r\n              \"startTask\": {\r\n                \"commandLine\": \"cmd /c dir /s\",\r\n                \"runElevated\": false,\r\n                \"maxTaskRetryCount\": 0,\r\n                \"waitForSuccess\": false\r\n              },\r\n              \"certificateReferences\": [\r\n                {\r\n                  \"thumbprint\": \"0123456789abcdef\",\r\n                  \"thumbprintAlgorithm\": \"sha1\",\r\n                  \"storeLocation\": \"LocalMachine\",\r\n                  \"storeName\": \"certStore\",\r\n                  \"visibility\": \"starttask\"\r\n                }\r\n              ]\r\n            }\r\n          }\r\n        },\r\n        \"metadata\": [\r\n          {\r\n            \"name\": \"specMeta1\",\r\n            \"value\": \"specMetaValue1\"\r\n          },\r\n          {\r\n            \"name\": \"specMeta2\",\r\n            \"value\": \"specMetaValue2\"\r\n          }\r\n        ]\r\n      },\r\n      \"executionInfo\": {\r\n        \"nextRunTime\": \"2015-10-28T12:00:00Z\",\r\n        \"recentJob\": {\r\n          \"url\": \"https://pstests.eastus.batch.azure.com/jobs/testUpdateJobSchedule:job-1\",\r\n          \"id\": \"testUpdateJobSchedule:job-1\"\r\n        }\r\n      },\r\n      \"metadata\": [\r\n        {\r\n          \"name\": \"jobScheduleMeta1\",\r\n          \"value\": \"jobScheduleValue1\"\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}",
-      "ResponseHeaders": {
-        "Content-Type": [
-          "application/json; odata=minimalmetadata"
-        ],
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "request-id": [
-          "d3c0a499-ab73-46c6-a4a8-ea0b5332bb91"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "client-request-id": [
-          "c22b62dc-2a63-45a1-8c95-e889ad0a46e6"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Tue, 27 Oct 2015 00:26:00 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/jobschedules?api-version=2015-06-01.2.0&timeout=30",
-      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcz9hcGktdmVyc2lvbj0yMDE1LTA2LTAxLjIuMCZ0aW1lb3V0PTMw",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "client-request-id": [
-          "c22b62dc-2a63-45a1-8c95-e889ad0a46e6"
-        ],
-        "ocp-date": [
-          "Tue, 27 Oct 2015 00:25:58 GMT"
-        ],
-        "return-client-request-id": [
-          "true"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
-          "AzBatch/2.0.2.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstests.eastus.batch.azure.com/$metadata#jobschedules\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testUpdateJobSchedule\",\r\n      \"url\": \"https://pstests.eastus.batch.azure.com/jobschedules/testUpdateJobSchedule\",\r\n      \"eTag\": \"0x8D2DE653010F3BC\",\r\n      \"lastModified\": \"2015-10-27T00:25:59.2141756Z\",\r\n      \"creationTime\": \"2015-10-27T00:25:55.7717708Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2015-10-27T00:25:55.7717708Z\",\r\n      \"schedule\": {\r\n        \"doNotRunUntil\": \"2020-01-01T12:00:00Z\",\r\n        \"doNotRunAfter\": \"2025-01-01T12:00:00Z\",\r\n        \"startWindow\": \"PT1H\",\r\n        \"recurrenceInterval\": \"P1D\"\r\n      },\r\n      \"jobSpecification\": {\r\n        \"displayName\": \"jobSpecDisplayName\",\r\n        \"priority\": 1,\r\n        \"constraints\": {\r\n          \"maxWallClockTime\": \"P1D\",\r\n          \"maxTaskRetryCount\": 5\r\n        },\r\n        \"jobManagerTask\": {\r\n          \"id\": \"jobManager\",\r\n          \"displayName\": \"jobManagerDisplay\",\r\n          \"commandLine\": \"cmd /c dir /s\",\r\n          \"resourceFiles\": [\r\n            {\r\n              \"blobSource\": \"https://testacct.blob.core.windows.net/\",\r\n              \"filePath\": \"filePath\"\r\n            }\r\n          ],\r\n          \"environmentSettings\": [\r\n            {\r\n              \"name\": \"name1\",\r\n              \"value\": \"value1\"\r\n            },\r\n            {\r\n              \"name\": \"name2\",\r\n              \"value\": \"value2\"\r\n            }\r\n          ],\r\n          \"constraints\": {\r\n            \"maxWallClockTime\": \"PT1H\",\r\n            \"retentionTime\": \"P10675199DT2H48M5.4775807S\",\r\n            \"maxTaskRetryCount\": 5\r\n          },\r\n          \"runElevated\": false,\r\n          \"runExclusive\": true,\r\n          \"killJobOnCompletion\": false\r\n        },\r\n        \"jobPreparationTask\": {\r\n          \"id\": \"jobPrep\",\r\n          \"commandLine\": \"cmd /c dir /s\",\r\n          \"resourceFiles\": [\r\n            {\r\n              \"blobSource\": \"https://testacct.blob.core.windows.net/\",\r\n              \"filePath\": \"jobPrepFilePath\"\r\n            }\r\n          ],\r\n          \"environmentSettings\": [\r\n            {\r\n              \"name\": \"jobPrepName1\",\r\n              \"value\": \"jobPrepValue1\"\r\n            },\r\n            {\r\n              \"name\": \"jobPrepName2\",\r\n              \"value\": \"jobPrepValue2\"\r\n            }\r\n          ],\r\n          \"constraints\": {\r\n            \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n            \"retentionTime\": \"P10675199DT2H48M5.4775807S\",\r\n            \"maxTaskRetryCount\": 2\r\n          },\r\n          \"runElevated\": false,\r\n          \"waitForSuccess\": true,\r\n          \"rerunOnNodeRebootAfterSuccess\": true\r\n        },\r\n        \"jobReleaseTask\": {\r\n          \"id\": \"jobRelease\",\r\n          \"commandLine\": \"cmd /c dir /s\",\r\n          \"resourceFiles\": [\r\n            {\r\n              \"blobSource\": \"https://testacct.blob.core.windows.net/\",\r\n              \"filePath\": \"jobReleaseFilePath\"\r\n            }\r\n          ],\r\n          \"environmentSettings\": [\r\n            {\r\n              \"name\": \"jobReleaseName1\",\r\n              \"value\": \"jobReleaseValue1\"\r\n            },\r\n            {\r\n              \"name\": \"jobReleaseName2\",\r\n              \"value\": \"jobReleaseValue2\"\r\n            }\r\n          ],\r\n          \"maxWallClockTime\": \"PT15M\",\r\n          \"retentionTime\": \"P10675199DT2H48M5.4775807S\",\r\n          \"runElevated\": false\r\n        },\r\n        \"commonEnvironmentSettings\": [\r\n          {\r\n            \"name\": \"commonName1\",\r\n            \"value\": \"commonValue1\"\r\n          },\r\n          {\r\n            \"name\": \"commonName2\",\r\n            \"value\": \"commonValue2\"\r\n          }\r\n        ],\r\n        \"poolInfo\": {\r\n          \"autoPoolSpecification\": {\r\n            \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n            \"poolLifetimeOption\": \"jobschedule\",\r\n            \"keepAlive\": false,\r\n            \"pool\": {\r\n              \"osFamily\": \"4\",\r\n              \"targetOSVersion\": \"*\",\r\n              \"vmSize\": \"small\",\r\n              \"maxTasksPerNode\": 1,\r\n              \"taskSchedulingPolicy\": {\r\n                \"nodeFillType\": \"Spread\"\r\n              },\r\n              \"resizeTimeout\": \"PT5M\",\r\n              \"targetDedicated\": 3,\r\n              \"enableAutoScale\": false,\r\n              \"enableInterNodeCommunication\": false,\r\n              \"startTask\": {\r\n                \"commandLine\": \"cmd /c dir /s\",\r\n                \"runElevated\": false,\r\n                \"maxTaskRetryCount\": 0,\r\n                \"waitForSuccess\": false\r\n              },\r\n              \"certificateReferences\": [\r\n                {\r\n                  \"thumbprint\": \"0123456789abcdef\",\r\n                  \"thumbprintAlgorithm\": \"sha1\",\r\n                  \"storeLocation\": \"LocalMachine\",\r\n                  \"storeName\": \"certStore\",\r\n                  \"visibility\": \"starttask\"\r\n                }\r\n              ]\r\n            }\r\n          }\r\n        },\r\n        \"metadata\": [\r\n          {\r\n            \"name\": \"specMeta1\",\r\n            \"value\": \"specMetaValue1\"\r\n          },\r\n          {\r\n            \"name\": \"specMeta2\",\r\n            \"value\": \"specMetaValue2\"\r\n          }\r\n        ]\r\n      },\r\n      \"executionInfo\": {\r\n        \"nextRunTime\": \"2015-10-28T12:00:00Z\",\r\n        \"recentJob\": {\r\n          \"url\": \"https://pstests.eastus.batch.azure.com/jobs/testUpdateJobSchedule:job-1\",\r\n          \"id\": \"testUpdateJobSchedule:job-1\"\r\n        }\r\n      },\r\n      \"metadata\": [\r\n        {\r\n          \"name\": \"jobScheduleMeta1\",\r\n          \"value\": \"jobScheduleValue1\"\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}",
-      "ResponseHeaders": {
-        "Content-Type": [
-          "application/json; odata=minimalmetadata"
-        ],
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "request-id": [
-          "d3c0a499-ab73-46c6-a4a8-ea0b5332bb91"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "client-request-id": [
-          "c22b62dc-2a63-45a1-8c95-e889ad0a46e6"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Tue, 27 Oct 2015 00:26:00 GMT"
+          "Wed, 11 Nov 2015 01:02:10 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -731,17 +572,17 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "c5e6192b-8a22-4944-80eb-75ee6ded1a01"
+          "9a86a051-bd45-4e52-af93-490c54813be3"
         ],
         "ocp-date": [
-          "Tue, 27 Oct 2015 00:25:58 GMT"
+          "Wed, 11 Nov 2015 01:02:09 GMT"
         ],
         "return-client-request-id": [
           "true"
         ],
         "User-Agent": [
           "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
-          "AzBatch/2.0.2.0"
+          "AzurePowershell/v1.0.0"
         ]
       },
       "ResponseBody": "",
@@ -750,65 +591,19 @@
           "chunked"
         ],
         "request-id": [
-          "a225596e-0619-4d41-9802-f50a194bc6b0"
+          "eef738c4-ec39-4042-a42d-a273d3170e6b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "client-request-id": [
-          "c5e6192b-8a22-4944-80eb-75ee6ded1a01"
+          "9a86a051-bd45-4e52-af93-490c54813be3"
         ],
         "DataServiceVersion": [
           "3.0"
         ],
         "Date": [
-          "Tue, 27 Oct 2015 00:25:59 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/jobschedules/testUpdateJobSchedule?api-version=2015-06-01.2.0&timeout=30",
-      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy90ZXN0VXBkYXRlSm9iU2NoZWR1bGU/YXBpLXZlcnNpb249MjAxNS0wNi0wMS4yLjAmdGltZW91dD0zMA==",
-      "RequestMethod": "DELETE",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "client-request-id": [
-          "c5e6192b-8a22-4944-80eb-75ee6ded1a01"
-        ],
-        "ocp-date": [
-          "Tue, 27 Oct 2015 00:25:58 GMT"
-        ],
-        "return-client-request-id": [
-          "true"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchRestClient/2.0.2.0",
-          "AzBatch/2.0.2.0"
-        ]
-      },
-      "ResponseBody": "",
-      "ResponseHeaders": {
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "request-id": [
-          "a225596e-0619-4d41-9802-f50a194bc6b0"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "client-request-id": [
-          "c5e6192b-8a22-4944-80eb-75ee6ded1a01"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Tue, 27 Oct 2015 00:25:59 GMT"
+          "Wed, 11 Nov 2015 01:02:10 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -819,6 +614,6 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "6368ed38-3570-481f-b4fa-1d0a6e8d3f3b"
+    "SubscriptionId": "46241355-bb95-46a9-ba6c-42b554d71925"
   }
 }

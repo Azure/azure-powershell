@@ -463,7 +463,7 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
     <comment>{0} = storage account name, {1} = error message</comment>
   </data>
   <data name="StorageAccountNotFoundForBootDiagnostics" xml:space="preserve">
-    <value>Storage account, {0}, is not found.  The OS disk may be in a different storage group.</value>
+    <value>Storage account, {0}, is not found.  The OS disk may be in a different subscription.</value>
     <comment>{0} = storage account name</comment>
   </data>
   <data name="VMOSDiskDiskEncryptionBothKekVaultIdAndKekUrlRequired" xml:space="preserve">

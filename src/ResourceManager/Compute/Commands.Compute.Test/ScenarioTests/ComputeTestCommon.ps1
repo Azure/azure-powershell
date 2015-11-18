@@ -400,26 +400,22 @@ function Get-ResourceProviderLocation
 {
     param ([string] $provider)
 
-	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
-	{
-        $namespace = $provider.Split("/")[0];
-        if($provider.Contains("/"))
-        {
-            $type = $provider.Substring($namespace.Length + 1);
-            $location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type};
+    $namespace = $provider.Split("/")[0];
+    if($provider.Contains("/"))
+    {
+        $type = $provider.Substring($namespace.Length + 1);
+        $location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type};
   
-            if ($location -eq $null)
-            {
-                return "westus";
-            }
-            else
-            {
-                return $location.Locations[0];
-            }
+        if ($location -eq $null)
+        {
+            return "westus";
         }
-        return "westus";
-	}
-	return "westus";
+        else
+        {
+            return $location.Locations[0];
+        }
+    }
+    return "westus";
 }
 
 function Get-ComputeVMLocation

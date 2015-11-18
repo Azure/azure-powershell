@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
-                if (Status)
+                if (Status.IsPresent)
                 {
                     var result = this.VirtualMachineExtensionClient.GetWithInstanceView(this.ResourceGroupName, this.VMName, this.Name);
                     var returnedExtension = result.ToPSVirtualMachineExtension(this.ResourceGroupName);
