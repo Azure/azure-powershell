@@ -20,7 +20,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 
-namespace Microsoft.Azure.Common.Authentication.Models
+namespace Microsoft.Azure.Commands.Common.Authentication.Models
 {
     public class XmlProfileSerializer : IProfileSerializer
     {

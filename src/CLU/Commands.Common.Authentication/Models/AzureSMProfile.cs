@@ -19,7 +19,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Commands.Common.Authentication.Properties;
 
-namespace Microsoft.Azure.Common.Authentication.Models
+namespace Microsoft.Azure.Commands.Common.Authentication.Models
 {
     /// <summary>
     /// Represents Azure profile structure with multiple environments, subscriptions, and accounts.

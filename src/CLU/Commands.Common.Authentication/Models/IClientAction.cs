@@ -14,7 +14,7 @@
 
 using Microsoft.Rest;
 
-namespace Microsoft.Azure.Common.Authentication.Models
+namespace Microsoft.Azure.Commands.Common.Authentication.Models
 {
     public interface IClientAction
     {

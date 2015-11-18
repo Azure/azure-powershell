@@ -19,8 +19,8 @@ using System.Diagnostics;
 using System.Management.Automation;
 using System.Net.Http.Headers;
 using System.Reflection;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common;
 using Newtonsoft.Json;
 using System.IO;
@@ -28,7 +28,7 @@ using System.Management.Automation.Host;
 using System.Text;
 using System.Linq;
 using System.Threading;
-using Microsoft.Azure.Common.Authentication.Factories;
+using Microsoft.Azure.Commands.Common.Authentication.Factories;
 
 namespace Microsoft.Azure.Commands.Utilities.Common
 {

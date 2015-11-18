@@ -19,7 +19,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Commands.Common.Authentication.Properties;
 
-namespace Microsoft.Azure.Common.Authentication
+namespace Microsoft.Azure.Commands.Common.Authentication
 {
     public static class JsonUtilities
     {

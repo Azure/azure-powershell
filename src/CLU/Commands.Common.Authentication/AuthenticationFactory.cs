@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using System;
 using System.Linq;
 using System.Management.Automation;
@@ -22,7 +22,7 @@ using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest;
 using Microsoft.Rest.Azure.Authentication;
 
-namespace Microsoft.Azure.Common.Authentication.Factories
+namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 {
     public class AuthenticationFactory : IAuthenticationFactory
     {
