@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication.Utilities;
+using Microsoft.Azure.Commands.Common;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
-namespace Microsoft.Azure.Common.Authentication.Models
+namespace Microsoft.Azure.Commands.Common.Authentication.Models
 {
     public partial class AzureAccount
     {

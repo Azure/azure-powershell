@@ -15,7 +15,7 @@
 using Newtonsoft.Json;
 using System;
 
-namespace Microsoft.Azure.Common.Authentication.Models
+namespace Microsoft.Azure.Commands.Common.Authentication.Models
 {
     /// <summary>
     /// Represents current Azure session context.

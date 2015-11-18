@@ -18,7 +18,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using Commands.Common.Authentication.Properties;
 
-namespace Microsoft.Azure.Common.Authentication.Models
+namespace Microsoft.Azure.Commands.Common.Authentication.Models
 {
     public class DiskDataStore : IDataStore
     {

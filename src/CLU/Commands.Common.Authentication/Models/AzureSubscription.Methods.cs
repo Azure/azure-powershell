@@ -12,10 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication.Utilities;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Common.Authentication.Models
+namespace Microsoft.Azure.Commands.Common.Authentication.Models
 {
     public partial class AzureSubscription
     {

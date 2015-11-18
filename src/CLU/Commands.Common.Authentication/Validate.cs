@@ -17,7 +17,7 @@ using System.IO;
 using System.Linq;
 using Commands.Common.Authentication.Properties;
 
-namespace Microsoft.Azure.Common.Authentication
+namespace Microsoft.Azure.Commands.Common.Authentication
 {
     public static class Validate
     {

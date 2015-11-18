@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Common.Authentication
+namespace Microsoft.Azure.Commands.Common.Authentication
 {
     public enum ShowDialog
     {

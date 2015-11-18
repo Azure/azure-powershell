@@ -19,7 +19,7 @@ using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Microsoft.Azure.Common.Authentication
+namespace Microsoft.Azure.Commands.Common.Authentication
 {
     public class AccessTokenCredential : ServiceClientCredentials
     {

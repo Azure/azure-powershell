@@ -15,7 +15,7 @@
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System;
 
-namespace Microsoft.Azure.Common.Authentication
+namespace Microsoft.Azure.Commands.Common.Authentication
 {
     /// <summary>
     /// Class storing the configuration information needed
