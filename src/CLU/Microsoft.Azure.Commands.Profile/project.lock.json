@@ -77,17 +77,21 @@
           "System.Threading.Thread": "4.0.0-beta-23516"
         }
       },
-      "Microsoft.Azure.Management.Resources/3.0.0-preview": {
+      "Microsoft.Azure.Management.Resources/3.1.0-preview": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Rest.ClientRuntime.Azure": "[2.0.0, 3.0.0)",
-          "System.Runtime.Serialization.Primitives": "[4.0.10, 4.1.0)"
+          "Microsoft.Rest.ClientRuntime.Azure": "[2.1.0, 3.0.0)",
+          "System.Diagnostics.Tools": "4.0.1-beta-23509",
+          "System.Net.Http": "4.0.1-beta-23509",
+          "System.Runtime.Serialization.Primitives": "4.1.0-beta-23509",
+          "System.Threading.Tasks": "4.0.11-beta-23509",
+          "System.Xml.ReaderWriter": "4.0.11-beta-23509"
         },
         "compile": {
-          "lib/dotnet/Microsoft.Azure.ResourceManager.dll": {}
+          "lib/dnxcore50/Microsoft.Azure.ResourceManager.dll": {}
         },
         "runtime": {
-          "lib/dotnet/Microsoft.Azure.ResourceManager.dll": {}
+          "lib/dnxcore50/Microsoft.Azure.ResourceManager.dll": {}
         }
       },
       "Microsoft.Cci/4.0.0-beta-23409": {
@@ -1019,17 +1023,21 @@
           "System.Threading.Thread": "4.0.0-beta-23516"
         }
       },
-      "Microsoft.Azure.Management.Resources/3.0.0-preview": {
+      "Microsoft.Azure.Management.Resources/3.1.0-preview": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Rest.ClientRuntime.Azure": "[2.0.0, 3.0.0)",
-          "System.Runtime.Serialization.Primitives": "[4.0.10, 4.1.0)"
+          "Microsoft.Rest.ClientRuntime.Azure": "[2.1.0, 3.0.0)",
+          "System.Diagnostics.Tools": "4.0.1-beta-23509",
+          "System.Net.Http": "4.0.1-beta-23509",
+          "System.Runtime.Serialization.Primitives": "4.1.0-beta-23509",
+          "System.Threading.Tasks": "4.0.11-beta-23509",
+          "System.Xml.ReaderWriter": "4.0.11-beta-23509"
         },
         "compile": {
-          "lib/dotnet/Microsoft.Azure.ResourceManager.dll": {}
+          "lib/dnxcore50/Microsoft.Azure.ResourceManager.dll": {}
         },
         "runtime": {
-          "lib/dotnet/Microsoft.Azure.ResourceManager.dll": {}
+          "lib/dnxcore50/Microsoft.Azure.ResourceManager.dll": {}
         }
       },
       "Microsoft.Cci/4.0.0-beta-23409": {
@@ -2279,17 +2287,21 @@
           "System.Threading.Thread": "4.0.0-beta-23516"
         }
       },
-      "Microsoft.Azure.Management.Resources/3.0.0-preview": {
+      "Microsoft.Azure.Management.Resources/3.1.0-preview": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Rest.ClientRuntime.Azure": "[2.0.0, 3.0.0)",
-          "System.Runtime.Serialization.Primitives": "[4.0.10, 4.1.0)"
+          "Microsoft.Rest.ClientRuntime.Azure": "[2.1.0, 3.0.0)",
+          "System.Diagnostics.Tools": "4.0.1-beta-23509",
+          "System.Net.Http": "4.0.1-beta-23509",
+          "System.Runtime.Serialization.Primitives": "4.1.0-beta-23509",
+          "System.Threading.Tasks": "4.0.11-beta-23509",
+          "System.Xml.ReaderWriter": "4.0.11-beta-23509"
         },
         "compile": {
-          "lib/dotnet/Microsoft.Azure.ResourceManager.dll": {}
+          "lib/dnxcore50/Microsoft.Azure.ResourceManager.dll": {}
         },
         "runtime": {
-          "lib/dotnet/Microsoft.Azure.ResourceManager.dll": {}
+          "lib/dnxcore50/Microsoft.Azure.ResourceManager.dll": {}
         }
       },
       "Microsoft.Cci/4.0.0-beta-23409": {
@@ -3482,16 +3494,18 @@
       "type": "project",
       "path": "../Microsoft.WindowsAzure.Commands.Common/project.json"
     },
-    "Microsoft.Azure.Management.Resources/3.0.0-preview": {
+    "Microsoft.Azure.Management.Resources/3.1.0-preview": {
       "type": "package",
-      "sha512": "lcCMzTmpXJOkXQTc2RYMhxkQxDmwrqqDZTXPwLxoMaQEqnelY3agD/o9eOVUti+JzqL4iLr+t+xnYpG9ePOXKQ==",
+      "sha512": "Tp2RcSvRKyBQLEBuTSWYGVk2iVgNo7/BUyK4HgbAKUsuQkOvNLV7yN1r8lzROoUiu7ZVIEqvgLRXEVGKsJ2y+A==",
       "files": [
-        "lib/dotnet/Microsoft.Azure.ResourceManager.dll",
-        "lib/dotnet/Microsoft.Azure.ResourceManager.xml",
-        "lib/portable-net45+win8+wpa81/Microsoft.Azure.ResourceManager.dll",
-        "lib/portable-net45+win8+wpa81/Microsoft.Azure.ResourceManager.xml",
-        "Microsoft.Azure.Management.Resources.3.0.0-preview.nupkg",
-        "Microsoft.Azure.Management.Resources.3.0.0-preview.nupkg.sha512",
+        "lib/dnxcore50/Microsoft.Azure.ResourceManager.dll",
+        "lib/dnxcore50/Microsoft.Azure.ResourceManager.xml",
+        "lib/net45/Microsoft.Azure.ResourceManager.dll",
+        "lib/net45/Microsoft.Azure.ResourceManager.xml",
+        "lib/portable-net45+win+wpa81/Microsoft.Azure.ResourceManager.dll",
+        "lib/portable-net45+win+wpa81/Microsoft.Azure.ResourceManager.xml",
+        "Microsoft.Azure.Management.Resources.3.1.0-preview.nupkg",
+        "Microsoft.Azure.Management.Resources.3.1.0-preview.nupkg.sha512",
         "Microsoft.Azure.Management.Resources.nuspec"
       ]
     },
@@ -5999,7 +6013,7 @@
     "": [
       "Commands.Common.Authentication >= 1.0.0-*",
       "Microsoft.Azure.Commands.Common.Resources >= 1.0.0-*",
-      "Microsoft.Azure.Management.Resources >= 3.0.0-preview",
+      "Microsoft.Azure.Management.Resources >= 3.1.0-preview",
       "Microsoft.IdentityModel.Clients.ActiveDirectory >= 3.6.210231457-alpha",
       "Microsoft.Rest.ClientRuntime >= 1.4.1",
       "Microsoft.Rest.ClientRuntime.Azure >= 2.1.0",
