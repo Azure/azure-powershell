@@ -138,12 +138,12 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
                 if (SubmittedAfter.HasValue)
                 {
-                    filter.Add(string.Format("submitTime ge datetimeoffset'{0}'", SubmittedAfter.Value));
+                    filter.Add(string.Format("submitTime ge datetimeoffset'{0}'", SubmittedAfter.Value.ToString("O")));
                 }
 
                 if (SubmittedBefore.HasValue)
                 {
-                    filter.Add(string.Format("submitTime lt datetimeoffset'{0}'", SubmittedBefore.Value));
+                    filter.Add(string.Format("submitTime lt datetimeoffset'{0}'", SubmittedBefore.Value.ToString("O")));
                 }
 
                 if (!string.IsNullOrEmpty(Name))

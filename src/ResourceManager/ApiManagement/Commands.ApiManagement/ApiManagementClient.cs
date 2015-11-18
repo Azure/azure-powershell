@@ -311,26 +311,28 @@ namespace Microsoft.Azure.Commands.ApiManagement
             PsApiManagementHostnameConfiguration proxyHostnameConfiguration,
             PsApiManagement currentState)
         {
-            if (portalHostnameConfiguration != null && currentState.PortalHostnameConfiguration != null)
+            if (portalHostnameConfiguration != null)
             {
                 yield return new HostnameConfiguration(
                     HostnameType.Portal,
                     portalHostnameConfiguration.Hostname,
-                    new CertificateInformation(
-                        portalHostnameConfiguration.HostnameCertificate.Expiry,
-                        portalHostnameConfiguration.HostnameCertificate.Thumbprint,
-                        portalHostnameConfiguration.HostnameCertificate.Subject));
+                    new CertificateInformation
+                    {
+                        Thumbprint = portalHostnameConfiguration.HostnameCertificate.Thumbprint,
+                        Subject = string.IsNullOrWhiteSpace(portalHostnameConfiguration.HostnameCertificate.Subject) ? "dummy" : portalHostnameConfiguration.HostnameCertificate.Subject
+                    });
             }
 
-            if (proxyHostnameConfiguration != null && currentState.ProxyHostnameConfiguration != null)
+            if (proxyHostnameConfiguration != null)
             {
                 yield return new HostnameConfiguration(
                     HostnameType.Proxy,
                     proxyHostnameConfiguration.Hostname,
-                    new CertificateInformation(
-                        proxyHostnameConfiguration.HostnameCertificate.Expiry,
-                        proxyHostnameConfiguration.HostnameCertificate.Thumbprint,
-                        proxyHostnameConfiguration.HostnameCertificate.Subject));
+                    new CertificateInformation
+                    {
+                        Thumbprint = proxyHostnameConfiguration.HostnameCertificate.Thumbprint,
+                        Subject = string.IsNullOrWhiteSpace(proxyHostnameConfiguration.HostnameCertificate.Subject) ? "dummy" : proxyHostnameConfiguration.HostnameCertificate.Subject
+                    });
             }
         }
 

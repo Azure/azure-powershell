@@ -98,7 +98,9 @@ namespace Microsoft.WindowsAzure.Commands.Profile
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            if ((Name == "AzureCloud") || (Name == "AzureChinaCloud"))
+            if ((Name == "AzureCloud") ||
+                (Name == "AzureChinaCloud") ||
+                (Name == "AzureUSGovernment"))
             {
                 throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, 
                     Resources.CannotChangeBuiltinEnvironment, Name));

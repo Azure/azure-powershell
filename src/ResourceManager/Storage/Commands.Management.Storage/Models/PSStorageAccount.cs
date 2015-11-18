@@ -18,12 +18,13 @@ using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Storage;
+using StorageModels = Microsoft.Azure.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage.Models
 {
     public class PSStorageAccount : IStorageContextProvider
     {
-        public PSStorageAccount(StorageAccount storageAccount)
+        public PSStorageAccount(StorageModels.StorageAccount storageAccount)
         {
             this.ResourceGroupName = ParseResourceGroupFromId(storageAccount.Id);
             this.StorageAccountName = storageAccount.Name;
@@ -75,7 +76,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public IDictionary<string, string> Tags { get; set; }
 
-        public static PSStorageAccount Create(StorageAccount storageAccount, IStorageManagementClient client)
+        public static PSStorageAccount Create(StorageModels.StorageAccount storageAccount, IStorageManagementClient client)
         {
             var result = new PSStorageAccount(storageAccount);
             var credentials = StorageUtilities.GenerateStorageCredentials(client, result.ResourceGroupName, result.StorageAccountName);
