@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24711.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Microsoft.WindowsAzure.Commands.Common", "Microsoft.WindowsAzure.Commands.Common\Microsoft.WindowsAzure.Commands.Common.xproj", "{5F567ACA-595E-436D-83DB-A21E08F82DF6}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Commands.Common", "Commands.Common\Commands.Common.xproj", "{5F567ACA-595E-436D-83DB-A21E08F82DF6}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Commands.Common.Authentication", "Commands.Common.Authentication\Commands.Common.Authentication.xproj", "{4CE82310-D016-497D-93A0-0323A3E62064}"
 EndProject
