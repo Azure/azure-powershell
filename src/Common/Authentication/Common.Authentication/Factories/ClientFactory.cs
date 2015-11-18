@@ -37,7 +37,22 @@ namespace Microsoft.Azure.Common.Authentication.Factories
             _actions = new Dictionary<Type, IClientAction>();
             UserAgents = new HashSet<ProductInfoHeaderValue>();
             _handlers = new OrderedDictionary();
+            DataStore = new DiskDataStore();
+            AuthenticationFactory = new AuthenticationFactory(DataStore);
         }
+
+        public ClientFactory(IDataStore dataStore, IAuthenticationFactory authenticationFactory)
+        {
+            _actions = new Dictionary<Type, IClientAction>();
+            UserAgents = new HashSet<ProductInfoHeaderValue>();
+            _handlers = new OrderedDictionary();
+            DataStore = dataStore;
+            AuthenticationFactory = authenticationFactory;
+        }
+
+        protected IAuthenticationFactory AuthenticationFactory { get; set; }
+
+        protected IDataStore DataStore { get; set; }
 
         public virtual TClient CreateArmClient<TClient>(AzureContext context, AzureEnvironment.Endpoint endpoint) where TClient : Microsoft.Rest.ServiceClient<TClient>
         {
@@ -46,7 +61,7 @@ namespace Microsoft.Azure.Common.Authentication.Factories
                 throw new ApplicationException(Resources.NoSubscriptionInContext);
             }
 
-            var creds = AzureSession.AuthenticationFactory.GetServiceClientCredentials(context);
+            var creds = AuthenticationFactory.GetServiceClientCredentials(context);
             var newHandlers = GetCustomHandlers();
             TClient client = (newHandlers == null || newHandlers.Length == 0)
                 ? CreateCustomArmClient<TClient>(context.Environment.GetEndpointAsUri(endpoint), creds)
@@ -96,7 +111,7 @@ namespace Microsoft.Azure.Common.Authentication.Factories
                 throw new ApplicationException(exceptionMessage);
             }
 
-            ServiceClientCredentials creds = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(context, endpoint);
+            ServiceClientCredentials creds = AuthenticationFactory.GetSubscriptionCloudCredentials(context, endpoint);
             TClient client = CreateCustomClient<TClient>(
                 creds, 
                 context.Environment.GetEndpointAsUri(endpoint), 

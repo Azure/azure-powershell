@@ -1,0 +1,18 @@
+{
+  "locked": false,
+  "version": 2,
+  "targets": {
+    "DNX,Version=v4.5.1": {},
+    "DNXCore,Version=v5.0": {},
+    "DNX,Version=v4.5.1/win7-x86": {},
+    "DNX,Version=v4.5.1/win7-x64": {},
+    "DNXCore,Version=v5.0/win7-x86": {},
+    "DNXCore,Version=v5.0/win7-x64": {}
+  },
+  "libraries": {},
+  "projectFileDependencyGroups": {
+    "": [],
+    "DNX,Version=v4.5.1": [],
+    "DNXCore,Version=v5.0": []
+  }
+}

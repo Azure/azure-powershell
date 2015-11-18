@@ -59,7 +59,12 @@ namespace Microsoft.Azure.Common.Authentication.Models
             /// <summary>
             /// Password for associated certificate
             /// </summary>
-            CertificatePassword
+            CertificatePassword,
+
+            /// <summary>
+            /// Secret for SPN authentication
+            /// </summary>
+            ApplicationSecret
         }
     }
 }

@@ -430,6 +430,15 @@ namespace Microsoft.Azure.Common.Authentication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Service Principal credentials must specify a certificate thumbprint and password or an application secret..
+        /// </summary>
+        public static string SPNRequiresCreds {
+            get {
+                return ResourceManager.GetString("SPNRequiresCreds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to [Common.Authentication]: Checking token expiration, token expires &apos;{0}&apos; Comparing to &apos;{1}&apos; With threshold &apos;{2}&apos;, calculated time until token expiry: &apos;{3}&apos;.
         /// </summary>
         public static string SPNTokenExpirationCheckTrace {

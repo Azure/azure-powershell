@@ -1544,4 +1544,7 @@ Select Y to enable data collection [Y/N]:</value>
   <data name="NoCurrentContextForDataCmdlet" xml:space="preserve">
     <value>"There is no current context, please log in using Login-AzureRmAccount for Azure Resource Manager or Add-AzureAccount for Azure Service Management."</value>
   </data>
+  <data name="CertificateNotFoundInStore" xml:space="preserve">
+    <value>No certificate was found in the certificate store with thumbprint {0}</value>
+  </data>
 </root>

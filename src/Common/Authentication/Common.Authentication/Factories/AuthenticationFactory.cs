@@ -30,16 +30,23 @@ namespace Microsoft.Azure.Common.Authentication.Factories
         public AuthenticationFactory()
         {
             TokenProvider = new AdalTokenProvider();
+            DataStore = new DiskDataStore();
+        }
+
+        public AuthenticationFactory(IDataStore dataStore)
+        {
+            DataStore = dataStore;
         }
 
         public ITokenProvider TokenProvider { get; set; }
+
+        public IDataStore DataStore { get; set; }
 
         public IAccessToken Authenticate(
             AzureAccount account, 
             AzureEnvironment environment, 
             string tenant, 
-            SecureString password, 
-            ShowDialog promptBehavior,
+            string password, 
             TokenCache tokenCache, 
             AzureEnvironment.Endpoint resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
@@ -58,7 +65,7 @@ namespace Microsoft.Azure.Common.Authentication.Factories
             else
             {
 
-                token = TokenProvider.GetAccessToken(configuration, promptBehavior, account.Id, password, account.Type);
+                token = TokenProvider.GetAccessToken(configuration, ShowDialog.Never, account.Id, password, account.Type);
             }
 
             account.Id = token.UserId;
@@ -69,11 +76,10 @@ namespace Microsoft.Azure.Common.Authentication.Factories
             AzureAccount account,
             AzureEnvironment environment,
             string tenant,
-            SecureString password,
-            ShowDialog promptBehavior,
+            string password,
             AzureEnvironment.Endpoint resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
-            return Authenticate(account, environment, tenant, password, promptBehavior, AzureSession.TokenCache, resourceId);
+            return Authenticate(account, environment, tenant, password, TokenCache.DefaultShared, resourceId);
         }
 
         public ServiceClientCredentials GetSubscriptionCloudCredentials(AzureContext context)
@@ -139,14 +145,14 @@ namespace Microsoft.Azure.Common.Authentication.Factories
             {
                 ServiceClientTracing.Information(Resources.UPNAuthenticationTrace, 
                     context.Account.Id, context.Environment.Name, tenant);
-                var tokenCache = AzureSession.TokenCache;
+                var tokenCache = TokenCache.DefaultShared;
                 if(context.TokenCache != null && context.TokenCache.Length > 0)
                 {
                     tokenCache = new TokenCache(context.TokenCache);
                 }
                 
                 var token = Authenticate(context.Account, context.Environment,
-                        tenant, null, ShowDialog.Never, tokenCache);
+                        tenant, null, tokenCache);
 
                 if (context.TokenCache != null && context.TokenCache.Length > 0)
                 {
@@ -219,7 +225,7 @@ namespace Microsoft.Azure.Common.Authentication.Factories
                     ValidateAuthority = !context.Environment.OnPremise
                 };
 
-                var tokenCache = AzureSession.TokenCache;
+                var tokenCache = TokenCache.DefaultShared;
 
                 if (context.TokenCache != null && context.TokenCache.Length > 0)
                 {
@@ -239,25 +245,30 @@ namespace Microsoft.Azure.Common.Authentication.Factories
                 }
                 else if (context.Account.Type == AzureAccount.AccountType.ServicePrincipal)
                 {
-                    if (context.Account.IsPropertySet(AzureAccount.Property.CertificateThumbprint))
+                    if (context.Account.IsPropertySet(AzureAccount.Property.CertificateThumbprint) 
+                        && context.Account.IsPropertySet(AzureAccount.Property.CertificatePassword))
                     {
                         result = ApplicationTokenProvider.LoginSilentAsync(
                             tenant,
                             context.Account.Id,
                             new CertificateApplicationCredentialProvider(
                                 context.Account.GetProperty(AzureAccount.Property.CertificateThumbprint),
-                                context.Account.GetProperty(AzureAccount.Property.CertificatePassword)),
+                                context.Account.GetProperty(AzureAccount.Property.CertificatePassword), DataStore.GetCertificate),
+                            env,
+                            tokenCache).ConfigureAwait(false).GetAwaiter().GetResult();
+                    }
+                    else if (context.Account.IsPropertySet(AzureAccount.Property.ApplicationSecret))
+                    {
+                        result = ApplicationTokenProvider.LoginSilentAsync(
+                            tenant,
+                            context.Account.Id,
+                            new KeyStoreApplicationCredentialProvider(tenant, context.Account.GetProperty(AzureAccount.Property.ApplicationSecret)),
                             env,
                             tokenCache).ConfigureAwait(false).GetAwaiter().GetResult();
                     }
                     else
                     {
-                        result = ApplicationTokenProvider.LoginSilentAsync(
-                            tenant,
-                            context.Account.Id,
-                            new KeyStoreApplicationCredentialProvider(tenant),
-                            env,
-                            tokenCache).ConfigureAwait(false).GetAwaiter().GetResult();
+                        throw new NotSupportedException(Resources.SPNRequiresCreds);
                     }
                 }
                 else

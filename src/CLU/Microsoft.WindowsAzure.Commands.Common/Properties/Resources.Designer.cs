@@ -528,6 +528,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
+        ///    Looks up a localized string similar to No certificate was found in the certificate store with thumbprint {0}.
+        /// </summary>
+        internal static string CertificateNotFoundInStore {
+            get {
+                return ResourceManager.GetString("CertificateNotFoundInStore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///    Looks up a localized string similar to Your account does not have access to the private key for certificate {0}.
         /// </summary>
         internal static string CertificatePrivateKeyAccessError {

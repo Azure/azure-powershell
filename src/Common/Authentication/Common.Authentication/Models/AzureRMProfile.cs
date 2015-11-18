@@ -25,6 +25,37 @@ namespace Microsoft.Azure.Common.Authentication.Models
     [Serializable]
     public sealed class AzureRMProfile : IAzureProfile
     {
+        private IDataStore _dataStore;
+
+        /// <summary>
+        /// Creates new instance of AzureRMProfile.
+        /// </summary>
+        public AzureRMProfile() : this(new DiskDataStore())
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of AzureRMProfile and loads its content from specified path.
+        /// </summary>
+        /// <param name="path">The location of profile file on disk.</param>
+        /// <param name="dataStore">The location of profile file on disk.</param>
+        public AzureRMProfile(string path, IDataStore dataStore) : this(dataStore)
+        {
+            Load(path);
+        }
+
+        public AzureRMProfile(IDataStore dataStore)
+        {
+            _dataStore = dataStore;
+            Environments = new Dictionary<string, AzureEnvironment>(StringComparer.InvariantCultureIgnoreCase);
+
+            // Adding predefined environments
+            foreach (AzureEnvironment env in AzureEnvironment.PublicEnvironments.Values)
+            {
+                Environments[env.Name] = env;
+            }
+        }
+
         /// <summary>
         /// Gets or sets Azure environments.
         /// </summary>
@@ -44,15 +75,9 @@ namespace Microsoft.Azure.Common.Authentication.Models
         private void Load(string path)
         {
             this.ProfilePath = path;
-
-            if (!AzureSession.DataStore.DirectoryExists(AzureSession.ProfileDirectory))
+            if (_dataStore.FileExists(ProfilePath))
             {
-                AzureSession.DataStore.CreateDirectory(AzureSession.ProfileDirectory);
-            }
-
-            if (AzureSession.DataStore.FileExists(ProfilePath))
-            {
-                string contents = AzureSession.DataStore.ReadFileAsText(ProfilePath);
+                string contents = _dataStore.ReadFileAsText(ProfilePath);
                 AzureRMProfile profile = JsonConvert.DeserializeObject<AzureRMProfile>(contents);
                 Debug.Assert(profile != null);
                 this.Context = profile.Context;
@@ -60,28 +85,6 @@ namespace Microsoft.Azure.Common.Authentication.Models
             }
         }
 
-        /// <summary>
-        /// Creates new instance of AzureRMProfile.
-        /// </summary>
-        public AzureRMProfile()
-        {
-            Environments = new Dictionary<string, AzureEnvironment>(StringComparer.InvariantCultureIgnoreCase);
-
-            // Adding predefined environments
-            foreach (AzureEnvironment env in AzureEnvironment.PublicEnvironments.Values)
-            {
-                Environments[env.Name] = env;
-            }
-        }
-
-        /// <summary>
-        /// Initializes a new instance of AzureRMProfile and loads its content from specified path.
-        /// </summary>
-        /// <param name="path">The location of profile file on disk.</param>
-        public AzureRMProfile(string path) : this()
-        {
-            Load(path);
-        }
 
         /// <summary>
         /// Writes profile to the disk it was opened from disk.
@@ -115,14 +118,14 @@ namespace Microsoft.Azure.Common.Authentication.Models
             {
                 string contents = ToString();
                 string diskContents = string.Empty;
-                if (AzureSession.DataStore.FileExists(path))
+                if (_dataStore.FileExists(path))
                 {
-                    diskContents = AzureSession.DataStore.ReadFileAsText(path);
+                    diskContents = _dataStore.ReadFileAsText(path);
                 }
 
                 if (diskContents != contents)
                 {
-                    AzureSession.DataStore.WriteFile(path, contents);
+                    _dataStore.WriteFile(path, contents);
                 }
             }
             finally

@@ -66,8 +66,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 try
                 {
                     GeneralUtilities.EnsureDefaultProfileDirectoryExists(dataStore);
-                    _defaultDiskTokenCache = new ProtectedFileTokenCache(Path.Combine(AzurePowerShell.ProfileDirectory,
-                        AzurePowerShell.TokenCacheFile));
+                    _defaultDiskTokenCache = TokenCache.DefaultShared;
                     return new AzureSMProfile(Path.Combine(AzurePowerShell.ProfileDirectory, AzurePowerShell.ProfileFile));
                 }
                 catch

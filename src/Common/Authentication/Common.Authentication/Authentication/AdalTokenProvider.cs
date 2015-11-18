@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Common.Authentication
             AdalConfiguration config, 
             ShowDialog promptBehavior, 
             string userId, 
-            SecureString password,
+            string password,
             AzureAccount.AccountType credentialType)
         {
             switch (credentialType)

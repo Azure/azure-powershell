@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Common.Authentication.Models
     [Serializable]
     public sealed class AzureSMProfile : IAzureProfile
     {
+        private IDataStore _dataStore;
         /// <summary>
         /// Gets Azure Accounts
         /// </summary>
@@ -129,7 +130,7 @@ namespace Microsoft.Azure.Common.Authentication.Models
         /// <summary>
         /// Initializes a new instance of AzureSMProfile
         /// </summary>
-        public AzureSMProfile()
+        public AzureSMProfile() : this(new DiskDataStore())
         {
             Environments = new Dictionary<string, AzureEnvironment>(StringComparer.InvariantCultureIgnoreCase);
             Subscriptions = new Dictionary<Guid, AzureSubscription>();
@@ -143,25 +144,43 @@ namespace Microsoft.Azure.Common.Authentication.Models
         }
 
         /// <summary>
+        /// Initializes a new instance of AzureSMProfile
+        /// </summary>
+        public AzureSMProfile(IDataStore dataStore)
+        {
+            Environments = new Dictionary<string, AzureEnvironment>(StringComparer.InvariantCultureIgnoreCase);
+            Subscriptions = new Dictionary<Guid, AzureSubscription>();
+            Accounts = new Dictionary<string, AzureAccount>(StringComparer.InvariantCultureIgnoreCase);
+
+            // Adding predefined environments
+            foreach (AzureEnvironment env in AzureEnvironment.PublicEnvironments.Values)
+            {
+                Environments[env.Name] = env;
+            }
+
+            _dataStore = dataStore;
+        }
+
+        /// <summary>
         /// Initializes a new instance of AzureSMProfile and loads its content from specified path.
         /// Any errors generated in the process are stored in ProfileLoadErrors collection.
         /// </summary>
         /// <param name="path">Location of profile file on disk.</param>
-        public AzureSMProfile(string path) : this()
+        public AzureSMProfile(string path) : this(new DiskDataStore())
+        {
+        }
+
+        public AzureSMProfile(string path, IDataStore dataStore) : this(dataStore)
         {
             ProfilePath = path;
             ProfileLoadErrors = new List<string>();
 
-            if (!AzureSession.DataStore.DirectoryExists(AzureSession.ProfileDirectory))
-            {
-                AzureSession.DataStore.CreateDirectory(AzureSession.ProfileDirectory);
-            }
 
-            if (AzureSession.DataStore.FileExists(ProfilePath))
+            if (_dataStore.FileExists(ProfilePath))
             {
-                string contents = AzureSession.DataStore.ReadFileAsText(ProfilePath);
+                string contents = _dataStore.ReadFileAsText(ProfilePath);
 
-                IProfileSerializer serializer;     
+                IProfileSerializer serializer;
                 serializer = new JsonProfileSerializer();
                 if (!serializer.Deserialize(contents, this))
                 {
@@ -199,14 +218,14 @@ namespace Microsoft.Azure.Common.Authentication.Models
             {
                 string contents = ToString();
                 string diskContents = string.Empty;
-                if (AzureSession.DataStore.FileExists(path))
+                if (_dataStore.FileExists(path))
                 {
-                    diskContents = AzureSession.DataStore.ReadFileAsText(path);
+                    diskContents = _dataStore.ReadFileAsText(path);
                 }
 
                 if (diskContents != contents)
                 {
-                    AzureSession.DataStore.WriteFile(path, contents);
+                    _dataStore.WriteFile(path, contents);
                 }
             }
             finally

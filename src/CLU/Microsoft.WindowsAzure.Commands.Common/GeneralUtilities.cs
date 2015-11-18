@@ -20,14 +20,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using System.Xml;
-using Hyak.Common;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.Properties;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
@@ -60,7 +58,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             else
             {
                 throw new ArgumentException(string.Format(
-                    Microsoft.Azure.Common.Authentication.Properties.Resources.CertificateNotFoundInStore, 
+                    Resources.CertificateNotFoundInStore, 
                     thumbprint));
             }
         }

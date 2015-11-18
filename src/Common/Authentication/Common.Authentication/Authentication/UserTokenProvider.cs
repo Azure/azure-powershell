@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Common.Authentication
             AdalConfiguration config, 
             ShowDialog promptBehavior, 
             string userId, 
-            SecureString password,
+            string password,
             AzureAccount.AccountType credentialType)
         {
             if (credentialType != AzureAccount.AccountType.User)
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Common.Authentication
         // We have to run this in a separate thread to guarantee that it's STA. This method
         // handles the threading details.
         private AuthenticationResult AcquireToken(AdalConfiguration config, ShowDialog promptBehavior, string userId,
-            SecureString password)
+            string password)
         {
             AuthenticationResult result = null;
             Exception ex = null;
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Common.Authentication
             AdalConfiguration config,
             ShowDialog showDialog,
             string userId,
-            SecureString password,
+            string password,
             out Exception ex)
         {
             try
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Common.Authentication
             AdalConfiguration config, 
             PromptBehavior promptBehavior, 
             string userId,
-            SecureString password)
+            string password)
         {
             AuthenticationResult result;
             var context = CreateContext(config);
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Common.Authentication
                 throw new NotImplementedException("Device based authencation is not implemented.");
             }
 
-            UserCredential credential = new UserCredential(userId, password.ConvertToUnsecureString());
+            UserCredential credential = new UserCredential(userId, password);
             result = context.AcquireTokenAsync(
                                 config.ResourceClientUri, 
                                 config.ClientId, 

@@ -39,7 +39,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
     {
         protected readonly ConcurrentQueue<string> _debugMessages;
 
-        private RecordingTracingInterceptor _httpTracingInterceptor;
 
         private DebugStreamTraceListener _adalListener;
         protected static AzurePSDataCollectionProfile _dataCollectionProfile = null;
@@ -271,9 +270,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
 
             DataStore = GetSessionVariableValue<IDataStore>(AzurePowerShell.DataStoreVariable, new DiskDataStore());
-            _httpTracingInterceptor = _httpTracingInterceptor ?? new RecordingTracingInterceptor(_debugMessages);
             _adalListener = _adalListener ?? new DebugStreamTraceListener(_debugMessages);
-            RecordingTracingInterceptor.AddToContext(_httpTracingInterceptor);
             DebugStreamTraceListener.AddAdalTracing(_adalListener);
 
             List<ProductInfoHeaderValue> headerList =
@@ -299,7 +296,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             string message = string.Format("{0} end processing.", this.GetType().Name);
             WriteDebugWithTimestamp(message);
 
-            RecordingTracingInterceptor.RemoveFromContext(_httpTracingInterceptor);
             DebugStreamTraceListener.RemoveAdalTracing(_adalListener);
             FlushDebugMessages();
 
