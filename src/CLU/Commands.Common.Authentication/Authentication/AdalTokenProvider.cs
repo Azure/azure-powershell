@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Common.Authentication.Properties;
 using System;
+using Commands.Common.Authentication.Properties;
 
 namespace Microsoft.Azure.Common.Authentication
 {

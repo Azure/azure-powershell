@@ -13,13 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Common.Authentication.Properties;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest;
 using System;
 using System.Collections.Generic;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
+using Commands.Common.Authentication.Properties;
 
 namespace Microsoft.Azure.Common.Authentication
 {

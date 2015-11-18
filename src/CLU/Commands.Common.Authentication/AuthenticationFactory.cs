@@ -13,11 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Common.Authentication.Properties;
 using System;
 using System.Linq;
 using System.Management.Automation;
 using System.Security;
+using Commands.Common.Authentication.Properties;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest;
 using Microsoft.Rest.Azure.Authentication;

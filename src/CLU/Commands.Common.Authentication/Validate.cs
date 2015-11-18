@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication.Properties;
 using System;
 using System.IO;
 using System.Linq;
+using Commands.Common.Authentication.Properties;
 
 namespace Microsoft.Azure.Common.Authentication
 {

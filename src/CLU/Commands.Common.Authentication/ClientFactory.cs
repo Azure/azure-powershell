@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Common.Authentication.Properties;
 using Microsoft.Rest;
 using System;
 using System.Collections.Generic;
@@ -24,6 +23,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Reflection;
+using Commands.Common.Authentication.Properties;
 
 namespace Microsoft.Azure.Common.Authentication.Factories
 {

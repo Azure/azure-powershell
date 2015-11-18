@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication.Properties;
 using System;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using Commands.Common.Authentication.Properties;
 
 namespace Microsoft.Azure.Common.Authentication.Models
 {
