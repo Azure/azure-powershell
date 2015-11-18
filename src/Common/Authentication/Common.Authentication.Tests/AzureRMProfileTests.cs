@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using Microsoft.Azure.Commands.Common.Test.Mocks;
 using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;

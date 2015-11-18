@@ -15,7 +15,7 @@
 using Microsoft.Azure.Common.Authentication;
 using System;
 
-namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
+namespace Microsoft.Azure.Commands.Common.Test.Mocks
 {
     public class MockAccessToken : IAccessToken
     {

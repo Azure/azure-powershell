@@ -19,7 +19,7 @@ using Microsoft.Rest;
 using System;
 using System.Security;
 
-namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
+namespace Microsoft.Azure.Commands.Common.Test.Mocks
 {
     public class MockTokenAuthenticationFactory : IAuthenticationFactory
     {
@@ -82,7 +82,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             return Authenticate(account, environment, tenant, password, promptBehavior, AzureSession.TokenCache, resourceId);
         }
 
-        public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(AzureContext context)
+        public ServiceClientCredentials GetSubscriptionCloudCredentials(AzureContext context)
         {
             return new AccessTokenCredential(context.Subscription.Id, Token);
         }
@@ -94,7 +94,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
         }
 
 
-        public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(AzureContext context, AzureEnvironment.Endpoint targetEndpoint)
+        public ServiceClientCredentials GetSubscriptionCloudCredentials(AzureContext context, AzureEnvironment.Endpoint targetEndpoint)
         {
             return new AccessTokenCredential(context.Subscription.Id, Token);
         }

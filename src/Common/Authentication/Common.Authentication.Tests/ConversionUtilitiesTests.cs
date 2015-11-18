@@ -16,7 +16,7 @@ using Microsoft.Azure.Common.Authentication;
 using System.Collections.Generic;
 using Xunit;
 
-namespace Microsoft.WindowsAzure.Commands.Common.Test
+namespace Common.Authentication.Test
 {
     public class ConversionUtilitiesTests
     {

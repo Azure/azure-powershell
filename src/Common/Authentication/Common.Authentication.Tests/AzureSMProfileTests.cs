@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using Microsoft.Azure.Commands.Common.Test.Mocks;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

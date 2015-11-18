@@ -14,14 +14,14 @@
 
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Management.Storage;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Security;
 using Microsoft.Azure.Common.Authentication.Factories;
-using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using Microsoft.Azure.Commands.Common.Test.Mocks;
 using Xunit;
+using Microsoft.Azure.Management.Storage;
 
 namespace Common.Authentication.Test
 {
