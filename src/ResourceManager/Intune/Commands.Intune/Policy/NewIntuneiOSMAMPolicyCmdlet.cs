@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.Intune
         {
             InitializeDefaultValuesForParams();
 
-            var policyId = Guid.NewGuid().ToString();
+            var policyId = (IntuneResourceManagementClientWrapper.iOSPolicyIdsQueue.Count == 0 ? Guid.NewGuid() : IntuneResourceManagementClientWrapper.iOSPolicyIdsQueue.Dequeue()).ToString();
             ValidateNumericParameters();
 
             this.ConfirmAction(

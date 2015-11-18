@@ -32,14 +32,34 @@ namespace Microsoft.Azure.Commands.Intune
         /// Gets and sets the IntuneClient
         /// </summary>      
         private IIntuneResourceManagementClient IntuneClient { get; set; }
+
+        /// <summary>
+        /// Queue for the Android policyIds
+        /// </summary>
+        public static Queue<Guid> AndroidPolicyIdsQueue { get; private set; }
+
+        /// <summary>
+        /// Queue for the iOS policyIds
+        /// </summary>
+        public static Queue<Guid> iOSPolicyIdsQueue { get; private set; }
         
         private bool Initialized { get; set; }
+
         /// <summary>
         /// Parameterless Constructor
         /// </summary>
         public IntuneResourceManagementClientWrapper()
         {
 
+        }
+
+        /// <summary>
+        /// Initialize the static variables on first load of class.
+        /// </summary>
+        static IntuneResourceManagementClientWrapper()
+        {
+            AndroidPolicyIdsQueue = new Queue<Guid>();
+            iOSPolicyIdsQueue = new Queue<Guid>();
         }
 
         /// <summary>

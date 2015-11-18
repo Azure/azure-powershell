@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Intune.Test
             this.cmdlet.ExecuteCmdlet();
             
             // Verify the params which are set with Deafult values
-            commandRuntimeMock.Verify(f => f.WriteObject(IntuneProperties.Resources.OneItemDeleted), Times.Once());        
+            commandRuntimeMock.Verify(f => f.WriteObject("1 item deleted."), Times.Once());        
         }
 
         [Fact]
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.Intune.Test
             this.cmdlet.ExecuteCmdlet();
 
             // Verify the params which are set with Deafult values
-            commandRuntimeMock.Verify(f => f.WriteObject(IntuneProperties.Resources.NoItemsDeleted), Times.Once());
+            commandRuntimeMock.Verify(f => f.WriteObject("0 item deleted."), Times.Once());
         }
     }
 }

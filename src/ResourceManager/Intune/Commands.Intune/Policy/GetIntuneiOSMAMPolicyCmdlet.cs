@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.Intune
     using Management.Intune;
     using Management.Intune.Models;
     using Microsoft.Azure.Commands.Intune.Properties;
+    using System.Collections.Generic;
     using System.Management.Automation;
 
     /// <summary>
@@ -53,14 +54,8 @@ namespace Microsoft.Azure.Commands.Intune
         private void GetiOSPolicyByName()
         {
             var iOSPolicy = this.IntuneClient.Ios.GetMAMPolicyById(this.AsuHostName, this.Name);
-            if (iOSPolicy != null)
-            {
-                this.WriteObject(iOSPolicy);
-            }
-            else
-            {
-                this.WriteObject(Resources.NoItemsReturned);
-            }
+
+            this.WriteObject(iOSPolicy);
         }
 
         /// <summary>
@@ -69,19 +64,16 @@ namespace Microsoft.Azure.Commands.Intune
         private void GetiOSPolicies()
         {
             MultiPageGetter<IOSMAMPolicy> mpg = new MultiPageGetter<IOSMAMPolicy>();
-            var items = mpg.GetAllResources(
+            List<IOSMAMPolicy> items = mpg.GetAllResources(
                 this.IntuneClient.Ios.GetMAMPolicies,
                 this.IntuneClient.Ios.GetMAMPoliciesNext,
-                this.AsuHostName, filter: null);
+                this.AsuHostName,
+                filter: null,
+                top: null,
+                select: null);
 
-            if (items.Count > 0)
-            {
-                this.WriteObject(items, enumerateCollection: true);
-            }
-            else
-            {
-                this.WriteObject(Resources.NoItemsReturned);
-            }
+            this.WriteObject(items, enumerateCollection: true);
+
         }
     }
 }

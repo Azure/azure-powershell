@@ -36,27 +36,15 @@ namespace Microsoft.Azure.Commands.Intune
         /// <returns>List of resources returned</returns>
         public List<T> GetAllResources(
             Func<string, string, int?, string, IPage<T>> GetFirstPage, 
-            Func<string, IPage<T>> GetNextPage, 
-            string asuHostName, 
-            string filter)
+            Func<string, IPage<T>> GetNextPage,
+            string asuHostName,
+            string filter = null,
+            int? top = null,
+            string select = null)
         {
-            var resources = GetFirstPage(asuHostName, filter, null, null);
-
-            List<T> items = new List<T>();
-
-            if (resources != null)
-            {
-                items.AddRange(resources.ToList());
-           
-                while (resources.NextPageLink != null)
-                {
-                    resources = GetNextPage(resources.NextPageLink);
-                    items.AddRange(resources.ToList());         
-                }                
-            }
+            var resources = GetFirstPage(asuHostName, filter, top, select);
 
             return GetOtherPageResults(resources, GetNextPage);
-
         }
 
         /// <summary>
@@ -65,14 +53,15 @@ namespace Microsoft.Azure.Commands.Intune
         /// <param name="GetFirstPage">Method (with 2 input parameters) to get first pageful</param>
         /// <param name="GetNextPage">Method to get subsequent pagefuls</param>
         /// <param name="asuHostName">host name</param>
-        /// <param name="filter">Rest API query filter </param>
+        /// <param name="policyId">Rest API query filter </param>
         /// <returns>List of resources returned</returns>
         internal List<T> GetAllResources(Func<string, string, IPage<T>> GetFirstPage, 
             Func<string, IPage<T>> GetNextPage, 
             string asuHostName, 
-            string filter)
+            string policyId)
         {
-            var resources = GetFirstPage(asuHostName, filter);
+
+            var resources = GetFirstPage(asuHostName, policyId);
             return GetOtherPageResults(resources, GetNextPage);
         }
 
@@ -82,15 +71,21 @@ namespace Microsoft.Azure.Commands.Intune
         /// <param name="GetFirstPage">Method (with 5 input parameters) to get first pageful</param>
         /// <param name="GetNextPage">Method to get subsequent pagefuls</param>
         /// <param name="asuHostName">host name</param>
+        /// <param name="policyId"> The policy Id</param>
         /// <param name="filter">Rest API query filter </param>
+        /// <param name="top"> Restricting number of results.</param>
+        /// <param name="select"> select fields query.</param>
         /// <returns>List of resources returned</returns>
         public List<T> GetAllResources(
-            Func<string, string, string, int?, string, IPage<T>> GetFirstPage, 
-            Func<string, IPage<T>> GetNextPage, 
-            string asuHostName, 
-            string filter)
+            Func<string, string, string, int?, string, IPage<T>> GetFirstPage,
+            Func<string, IPage<T>> GetNextPage,
+            string asuHostName,
+            string policyId,
+            string filter = null,
+            int? top = null,
+            string select = null)
         {
-            var resources = GetFirstPage(asuHostName, filter, null, null, null);
+            var resources = GetFirstPage(asuHostName, policyId, filter, top, select);
             return GetOtherPageResults(resources, GetNextPage);
         }
         

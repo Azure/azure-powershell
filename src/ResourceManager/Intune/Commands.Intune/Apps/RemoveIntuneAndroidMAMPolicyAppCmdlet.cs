@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.Intune
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
+
         /// <summary>
         /// Executes the cmdlet.
         /// </summary>

@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.Intune
     using Management.Intune;
     using Management.Intune.Models;
     using Microsoft.Azure.Commands.Intune.Properties;
+    using System.Collections.Generic;
     using System.Management.Automation;
 
     /// <summary>
@@ -37,14 +38,14 @@ namespace Microsoft.Azure.Commands.Intune
         /// </summary>
         protected override void ProcessRecord()
         {
-                if (Name != null)
-                {
-                    GetAndroidPolicyById();
-                }
-                else
-                {
-                    GetAndroidPolicies();
-                }
+            if (Name != null)
+            {
+                GetAndroidPolicyById();
+            }
+            else
+            {
+                GetAndroidPolicies();
+            }
         }
 
         /// <summary>
@@ -52,16 +53,8 @@ namespace Microsoft.Azure.Commands.Intune
         /// </summary>
         private void GetAndroidPolicyById()
         {
-            var andriodPolicy =  this.IntuneClient.Android.GetMAMPolicyById(this.AsuHostName, this.Name);
-
-            if (andriodPolicy != null)
-            {
-                this.WriteObject(andriodPolicy);
-            }
-            else
-            {
-                this.WriteObject(Resources.NoItemsReturned);
-            }
+            var andriodPolicy = this.IntuneClient.Android.GetMAMPolicyById(this.AsuHostName, this.Name);
+            this.WriteObject(andriodPolicy);
         }
 
         /// <summary>
@@ -71,19 +64,15 @@ namespace Microsoft.Azure.Commands.Intune
         {
             MultiPageGetter<AndroidMAMPolicy> mpg = new MultiPageGetter<AndroidMAMPolicy>();
 
-            var items = mpg.GetAllResources(
+            List<AndroidMAMPolicy> items = mpg.GetAllResources(
                 this.IntuneClientWrapper.GetAndroidMAMPolicies,
                 this.IntuneClientWrapper.GetAndroidMAMPoliciesNext,
-                this.AsuHostName, filter: null);
+                this.AsuHostName,
+                filter: null,
+                top: null,
+                select: null);
 
-            if (items.Count > 0)
-            {
-                this.WriteObject(items, enumerateCollection: true);
-            }
-            else
-            {
-                this.WriteObject(Resources.NoItemsReturned);
-            }
+            this.WriteObject(items, enumerateCollection: true);
         }
     }
 }

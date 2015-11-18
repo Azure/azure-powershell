@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.Intune
     using Management.Intune;
     using Management.Intune.Models;
     using Microsoft.Azure.Commands.Intune.Properties;
+    using System.Collections.Generic;
     using System.Globalization;
     using System.Management.Automation;
 
@@ -33,15 +34,16 @@ namespace Microsoft.Azure.Commands.Intune
         {
             string filter = string.Format(CultureInfo.InvariantCulture, IntuneConstants.PlatformFilterQueryParam, PlatformType.iOS.ToString().ToLower());
             MultiPageGetter<Application> mpg = new MultiPageGetter<Application>();
-            var items = mpg.GetAllResources(this.IntuneClient.GetApps, this.IntuneClient.GetAppsNext, this.AsuHostName, filter);
-            if (items.Count > 0)
-            {
-                this.WriteObject(items, enumerateCollection: true);
-            }
-            else
-            {
-                this.WriteObject(Resources.NoItemsReturned);
-            }
+
+            List<Application> items = mpg.GetAllResources(
+               this.IntuneClient.GetApps,
+               this.IntuneClient.GetAppsNext,
+               this.AsuHostName,
+               filter,
+               top: null,
+               select: null);
+
+            this.WriteObject(items, enumerateCollection: true);
         }
     }
 }

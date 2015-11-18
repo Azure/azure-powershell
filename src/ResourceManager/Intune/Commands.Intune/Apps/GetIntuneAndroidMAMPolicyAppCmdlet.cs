@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.Intune
     using Management.Intune;
     using Management.Intune.Models;
     using Microsoft.Azure.Commands.Intune.Properties;
+    using System.Collections.Generic;
     using System.Management.Automation;
 
     /// <summary>
@@ -38,19 +39,14 @@ namespace Microsoft.Azure.Commands.Intune
         protected override void ProcessRecord()
         {
             MultiPageGetter<Application> mpg = new MultiPageGetter<Application>();
-            var items = mpg.GetAllResources(
+
+            List<Application> items = mpg.GetAllResources(
                 this.IntuneClient.Android.GetAppForMAMPolicy,
                 this.IntuneClient.Android.GetAppForMAMPolicyNext,
-                this.AsuHostName, filter: null);
+                this.AsuHostName, 
+                this.Name);
 
-            if (items.Count > 0)
-            {
-                this.WriteObject(items, enumerateCollection: true);
-            }
-            else
-            {
-                this.WriteObject(Resources.NoItemsReturned);
-            }
+            this.WriteObject(items, enumerateCollection: true);
         }
     }
 }

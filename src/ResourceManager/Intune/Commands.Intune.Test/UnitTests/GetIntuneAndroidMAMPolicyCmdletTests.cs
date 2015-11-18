@@ -72,8 +72,9 @@ namespace Microsoft.Azure.Commands.Intune.Test
             // Set cmdline args and Execute the cmdlet
             this.cmdlet.ExecuteCmdlet();
 
+            var policies = new List<AndroidMAMPolicy>();
             // Verify the result
-            commandRuntimeMock.Verify(f => f.WriteObject(IntuneProperties.Resources.NoItemsReturned), Times.Once());
+            commandRuntimeMock.Verify(f => f.WriteObject(policies, true), Times.Once());
         }
 
         [Fact]

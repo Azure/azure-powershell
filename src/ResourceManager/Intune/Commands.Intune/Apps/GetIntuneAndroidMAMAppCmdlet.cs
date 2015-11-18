@@ -34,16 +34,16 @@ namespace Microsoft.Azure.Commands.Intune
             string filter = string.Format(CultureInfo.InvariantCulture, IntuneConstants.PlatformFilterQueryParam, PlatformType.Android.ToString().ToLower());
 
             MultiPageGetter<Application> mpg = new MultiPageGetter<Application>();
-            
-            var items = mpg.GetAllResources(this.IntuneClient.GetApps, this.IntuneClient.GetAppsNext, this.AsuHostName, filter);
-            List<Application> apps = new List<Application>(items.Count);
 
-            foreach(var item in items)
-            {
-                apps.Add(item);
-            }
+            List<Application> items = mpg.GetAllResources(
+                this.IntuneClient.GetApps, 
+                this.IntuneClient.GetAppsNext, 
+                this.AsuHostName,
+                filter,
+                top: null,
+                select: null);
 
-            this.WriteObject(apps, enumerateCollection: true);
-        }      
+            this.WriteObject(items, enumerateCollection: true);
+        }
     }
 }

@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Commands.Intune
             InitializeDefaultValuesForParams();
             ValidateNumericParameters();
 
-            var policyId = Guid.NewGuid().ToString();
+            var policyId = (IntuneResourceManagementClientWrapper.AndroidPolicyIdsQueue.Count == 0 ? Guid.NewGuid() : IntuneResourceManagementClientWrapper.AndroidPolicyIdsQueue.Dequeue()).ToString();
 
             this.ConfirmAction(
                 this.Force,
