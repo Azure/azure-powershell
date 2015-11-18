@@ -23,10 +23,9 @@ namespace Microsoft.Azure.Commands.Intune
     using Microsoft.Azure.Common.Authentication;
     using Microsoft.Azure.Common.Authentication.Models;
     using Microsoft.Azure.Management.Intune.Models;
-    // using Microsoft.Rest.Serialization;
 
     /// <summary>
-    /// Base class for all commandlets. Helps ceate an instance of the client that commandlets can leverage. 
+    /// Base class for all commandlets. Helps create an instance of the client that commandlets can leverage. 
     /// </summary>
     public abstract class IntuneBaseCmdlet : AzureRMCmdlet
     {
@@ -62,6 +61,9 @@ namespace Microsoft.Azure.Commands.Intune
             }
         }
 
+        /// <summary>
+        /// Gets and sets the wrapper for IntuneClient
+        /// </summary>
         public IIntuneResourceManagementClientWrapper IntuneClientWrapper
         {
             get
@@ -74,7 +76,6 @@ namespace Microsoft.Azure.Commands.Intune
 
                 return intuneClientWrapper;
             }
-
             set
             {
                 intuneClientWrapper = value;

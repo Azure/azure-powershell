@@ -1,8 +1,23 @@
-﻿using System;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using System;
 using System.Management.Automation;
 using Microsoft.Azure.Management.Intune.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using IntuneProperties = Microsoft.Azure.Commands.Intune.Properties;
 using Microsoft.Rest.Azure;
 using Moq;
 using Xunit;
@@ -11,7 +26,10 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Intune.Test
-{  
+{
+    /// <summary>
+    ///  Unit Tests for the GetIntuneAndroidMAMPolicy Cmdlet.
+    /// </summary>
     public class GetIntuneAndroidMAMPolicyCmdletTests
     {
         private Mock<IIntuneResourceManagementClientWrapper> intuneClientWrapperMock;
@@ -41,14 +59,6 @@ namespace Microsoft.Azure.Commands.Intune.Test
             // Set up the expected Policy
             IPage<AndroidMAMPolicy> expectedResultPage = new Page<AndroidMAMPolicy>();
             
-            AndroidMAMPolicy expectedMAMPolicy = new AndroidMAMPolicy()
-            {
-                FriendlyName = "expectedPolicyFriendlyName",
-                OfflineWipeTimeout = TimeSpan.FromDays(100),
-                AccessRecheckOfflineTimeout = TimeSpan.FromMinutes(2),
-                AccessRecheckOnlineTimeout = TimeSpan.FromMinutes(3),
-            };
-            
             // Set up the mock methods
             intuneClientWrapperMock.Setup(f => f.GetAndroidMAMPolicies(mockLocation.HostName, null, null, null))
                 .Returns(expectedResultPage);
@@ -63,7 +73,7 @@ namespace Microsoft.Azure.Commands.Intune.Test
             this.cmdlet.ExecuteCmdlet();
 
             // Verify the result
-            commandRuntimeMock.Verify(f => f.WriteObject("0 items returned"), Times.Once());
+            commandRuntimeMock.Verify(f => f.WriteObject(IntuneProperties.Resources.NoItemsReturned), Times.Once());
         }
 
         [Fact]

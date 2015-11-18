@@ -158,7 +158,6 @@ namespace Microsoft.Azure.Commands.Intune
             InitializeDefaultValuesForParams();
             ValidateNumericParameters();
 
-            var policyObjToCreate = this.PrepareAndroidPolicyBody();
             var policyId = Guid.NewGuid().ToString();
 
             this.ConfirmAction(
@@ -168,6 +167,7 @@ namespace Microsoft.Azure.Commands.Intune
                 policyId,
                 () =>
                 {
+                    var policyObjToCreate = this.PrepareAndroidPolicyBody();
                     var policyObj = this.IntuneClientWrapper.CreateOrUpdateAndroidMAMPolicy(this.AsuHostName, policyId, policyObjToCreate);
                     this.WriteObject(policyObj);
                 });

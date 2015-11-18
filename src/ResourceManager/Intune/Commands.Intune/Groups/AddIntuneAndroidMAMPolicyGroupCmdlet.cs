@@ -66,12 +66,9 @@ namespace Microsoft.Azure.Commands.Intune
                 this.Name,
                 () =>
                 {
-<<<<<<< HEAD
-                    this.IntuneClient.Android.AddGroupForPolicy(this.AsuHostName, this.Name, this.GroupName, PrepareMAMPolicyAppIdGroupIdPayload());
-=======
                     var payLoad = AppOrGroupPayloadMaker.PrepareMAMPolicyPayload(this.IntuneClient, LinkType.Group, this.AsuHostName, this.GroupName);
-                    this.IntuneClient.Android.AddGroupForMAMPolicy(this.AsuHostName, this.Name, this.GroupName, payLoad);
->>>>>>> dfd85ca0cbb0a218ef089946056f3659c39f7308
+                    this.IntuneClient.Android.AddGroupForPolicy(this.AsuHostName, this.Name, this.GroupName, payLoad);
+
                     this.WriteObject(Resources.OperationCompletedMessage);
                 });
         }
