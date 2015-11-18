@@ -6,7 +6,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D616D432-7AB5-48DE-894F-1EFE7AE48990}</ProjectGuid>
+    <ProjectGuid>{CA5F571B-550B-4BE3-9BA3-06442DF52768}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Commands.Intune.Test</RootNamespace>
