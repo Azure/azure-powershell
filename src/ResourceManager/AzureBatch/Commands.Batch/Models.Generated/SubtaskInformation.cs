@@ -29,14 +29,16 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSTaskExecutionInformation
+    public class SubtaskInformation
     {
         
-        internal Microsoft.Azure.Batch.TaskExecutionInformation omObject;
+        internal Microsoft.Azure.Batch.SubtaskInformation omObject;
+        
+        private PSComputeNodeInformation computeNodeInformation;
         
         private PSTaskSchedulingError schedulingError;
         
-        internal PSTaskExecutionInformation(Microsoft.Azure.Batch.TaskExecutionInformation omObject)
+        internal SubtaskInformation(Microsoft.Azure.Batch.SubtaskInformation omObject)
         {
             if ((omObject == null))
             {
@@ -45,11 +47,16 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public System.DateTime? StartTime
+        public PSComputeNodeInformation ComputeNodeInformation
         {
             get
             {
-                return this.omObject.StartTime;
+                if (((this.computeNodeInformation == null) 
+                            && (this.omObject.ComputeNodeInformation != null)))
+                {
+                    this.computeNodeInformation = new PSComputeNodeInformation(this.omObject.ComputeNodeInformation);
+                }
+                return this.computeNodeInformation;
             }
         }
         
@@ -69,6 +76,30 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
+        public System.Int32? Id
+        {
+            get
+            {
+                return this.omObject.Id;
+            }
+        }
+        
+        public Microsoft.Azure.Batch.Common.TaskState? PreviousState
+        {
+            get
+            {
+                return this.omObject.PreviousState;
+            }
+        }
+        
+        public System.DateTime? PreviousStateTransitionTime
+        {
+            get
+            {
+                return this.omObject.PreviousStateTransitionTime;
+            }
+        }
+        
         public PSTaskSchedulingError SchedulingError
         {
             get
@@ -82,35 +113,27 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public int RetryCount
+        public System.DateTime? StartTime
         {
             get
             {
-                return this.omObject.RetryCount;
+                return this.omObject.StartTime;
             }
         }
         
-        public System.DateTime? LastRetryTime
+        public Microsoft.Azure.Batch.Common.TaskState? State
         {
             get
             {
-                return this.omObject.LastRetryTime;
+                return this.omObject.State;
             }
         }
         
-        public int RequeueCount
+        public System.DateTime? StateTransitionTime
         {
             get
             {
-                return this.omObject.RequeueCount;
-            }
-        }
-        
-        public System.DateTime? LastRequeueTime
-        {
-            get
-            {
-                return this.omObject.LastRequeueTime;
+                return this.omObject.StateTransitionTime;
             }
         }
     }

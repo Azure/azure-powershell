@@ -29,17 +29,19 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSSchedule
+    public class PSMultiInstanceSettings
     {
         
-        internal Microsoft.Azure.Batch.Schedule omObject;
+        internal Microsoft.Azure.Batch.MultiInstanceSettings omObject;
         
-        public PSSchedule()
+        private IList<PSResourceFile> commonResourceFiles;
+        
+        public PSMultiInstanceSettings(int numberOfInstances)
         {
-            this.omObject = new Microsoft.Azure.Batch.Schedule();
+            this.omObject = new Microsoft.Azure.Batch.MultiInstanceSettings(numberOfInstances);
         }
         
-        internal PSSchedule(Microsoft.Azure.Batch.Schedule omObject)
+        internal PSMultiInstanceSettings(Microsoft.Azure.Batch.MultiInstanceSettings omObject)
         {
             if ((omObject == null))
             {
@@ -48,51 +50,62 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public System.DateTime? DoNotRunAfter
+        public IList<PSResourceFile> CommonResourceFiles
         {
             get
             {
-                return this.omObject.DoNotRunAfter;
+                if (((this.commonResourceFiles == null) 
+                            && (this.omObject.CommonResourceFiles != null)))
+                {
+                    List<PSResourceFile> list;
+                    list = new List<PSResourceFile>();
+                    IEnumerator<Microsoft.Azure.Batch.ResourceFile> enumerator;
+                    enumerator = this.omObject.CommonResourceFiles.GetEnumerator();
+                    for (
+                    ; enumerator.MoveNext(); 
+                    )
+                    {
+                        list.Add(new PSResourceFile(enumerator.Current));
+                    }
+                    this.commonResourceFiles = list;
+                }
+                return this.commonResourceFiles;
             }
             set
             {
-                this.omObject.DoNotRunAfter = value;
+                if ((value == null))
+                {
+                    this.omObject.CommonResourceFiles = null;
+                }
+                else
+                {
+                    this.omObject.CommonResourceFiles = new List<Microsoft.Azure.Batch.ResourceFile>();
+                }
+                this.commonResourceFiles = value;
             }
         }
         
-        public System.DateTime? DoNotRunUntil
+        public string CoordinationCommandLine
         {
             get
             {
-                return this.omObject.DoNotRunUntil;
+                return this.omObject.CoordinationCommandLine;
             }
             set
             {
-                this.omObject.DoNotRunUntil = value;
+                this.omObject.CoordinationCommandLine = value;
             }
         }
         
-        public System.TimeSpan? RecurrenceInterval
+        public int NumberOfInstances
         {
             get
             {
-                return this.omObject.RecurrenceInterval;
+                return this.omObject.NumberOfInstances;
             }
             set
             {
-                this.omObject.RecurrenceInterval = value;
-            }
-        }
-        
-        public System.TimeSpan? StartWindow
-        {
-            get
-            {
-                return this.omObject.StartWindow;
-            }
-            set
-            {
-                this.omObject.StartWindow = value;
+                this.omObject.NumberOfInstances = value;
             }
         }
     }
