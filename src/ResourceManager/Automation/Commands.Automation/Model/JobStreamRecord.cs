@@ -22,7 +22,7 @@ using AutomationManagement = Microsoft.Azure.Management.Automation;
 namespace Microsoft.Azure.Commands.Automation.Model
 {
     /// <summary>
-    /// The Job Stream.
+    /// The Job Stream Record.
     /// </summary>
     public class JobStreamRecord : JobStream
     {
@@ -43,24 +43,8 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// </param>
         /// <exception cref="System.ArgumentException">
         /// </exception>
-        public JobStreamRecord(AutomationManagement.Models.JobStream jobStream, string resourceGroupName, string automationAccountName, Guid jobId )
+        public JobStreamRecord(AutomationManagement.Models.JobStream jobStream, string resourceGroupName, string automationAccountName, Guid jobId ) : base (jobStream, resourceGroupName, automationAccountName, jobId)
         {
-            Requires.Argument("jobStream", jobStream).NotNull();
-
-            this.JobStreamId = jobStream.Properties.JobStreamId;
-            this.Type = jobStream.Properties.StreamType;
-            this.Time = jobStream.Properties.Time;
-            this.AutomationAccountName = automationAccountName;
-            this.ResourceGroupName = resourceGroupName;
-            this.Id = jobId;
-
-            if (!String.IsNullOrWhiteSpace(jobStream.Properties.Summary))
-            {
-                this.Summary = jobStream.Properties.Summary.Length > Constants.JobSummaryLength ?
-                     jobStream.Properties.Summary.Substring(0, Constants.JobSummaryLength) + "..." :
-                     jobStream.Properties.Summary;
-            }
-
             this.Value = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
             foreach (var kvp in jobStream.Properties.Value)
             {
