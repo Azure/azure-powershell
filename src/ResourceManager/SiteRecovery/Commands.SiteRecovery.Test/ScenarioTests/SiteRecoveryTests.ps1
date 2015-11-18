@@ -188,9 +188,6 @@ function Test-SiteRecoveryVaultCRUDTests
 	Assert-NotNull($vaultToBeRemoved.ID)
 	Assert-NotNull($vaultToBeRemoved.Type)
 
-	# Download Vault settings file
-	Get-AzureRmSiteRecoveryVaultSettingsFile -Vault $vaultToBeRemoved
-
 	# Remove Vault
 	Remove-AzureRmSiteRecoveryVault -Vault $vaultToBeRemoved
 	$vaults = Get-AzureRmSiteRecoveryVault -ResourceGroupName testsitegroup -Name rsv1
