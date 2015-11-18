@@ -12,24 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
-using Microsoft.Azure.Commands.Models;
-using Microsoft.Azure.Commands.Profile.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Commands.Common;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.Azure.Common.Authentication.Models;
 
-namespace Microsoft.Azure.Commands.Profile
-{    
-    /// <summary>
-    /// Cmdlet to get current context. 
-    /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmContext")]
-    [OutputType(typeof(PSAzureContext))]
-    public class GetAzureRMContextCommand : AzureRMCmdlet
+namespace Microsoft.Azure.Commands.Common
+{
+    public static class ContextExtensions
     {
-        protected override void ProcessRecord()
+        public static string GetCurrentStorageAccountName(this AzureContext context)
         {
-            WriteObject((PSAzureContext)DefaultProfile.Context);
+            string result = null;
+            if (context != null && context.Subscription != null  
+                && context.Subscription.IsPropertySet(AzureSubscription.Property.StorageAccount))
+            {
+                result = context.Subscription.GetProperty(AzureSubscription.Property.StorageAccount);
+            }
+
+            return result;
         }
     }
 }

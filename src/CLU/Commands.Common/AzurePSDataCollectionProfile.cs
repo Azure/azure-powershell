@@ -12,24 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
-using Microsoft.Azure.Commands.Models;
-using Microsoft.Azure.Commands.Profile.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Commands.Common;
+using System;
+using System.IO;
+using Newtonsoft.Json;
+using Microsoft.Azure.Common.Authentication;
 
-namespace Microsoft.Azure.Commands.Profile
-{    
-    /// <summary>
-    /// Cmdlet to get current context. 
-    /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmContext")]
-    [OutputType(typeof(PSAzureContext))]
-    public class GetAzureRMContextCommand : AzureRMCmdlet
+namespace Microsoft.Azure.Commands.Common
+{
+    public class AzurePSDataCollectionProfile
     {
-        protected override void ProcessRecord()
+        public const string EnvironmentVariableName = "Azure_PS_Data_Collection";
+        public static string DefaultFileName = "AzureDataCollectionProfile.json";
+
+        public AzurePSDataCollectionProfile()
         {
-            WriteObject((PSAzureContext)DefaultProfile.Context);
         }
+
+        public AzurePSDataCollectionProfile(bool enable)
+        {
+            EnableAzureDataCollection = enable;
+        }
+
+        [JsonProperty(PropertyName = "enableAzureDataCollection")]
+        public bool? EnableAzureDataCollection { get; set; }
     }
 }

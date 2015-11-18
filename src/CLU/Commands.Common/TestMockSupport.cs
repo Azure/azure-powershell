@@ -1,4 +1,5 @@
-﻿// ----------------------------------------------------------------------------------
+﻿
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,24 +13,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
-using Microsoft.Azure.Commands.Models;
-using Microsoft.Azure.Commands.Profile.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Commands.Common;
 
-namespace Microsoft.Azure.Commands.Profile
-{    
-    /// <summary>
-    /// Cmdlet to get current context. 
-    /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmContext")]
-    [OutputType(typeof(PSAzureContext))]
-    public class GetAzureRMContextCommand : AzureRMCmdlet
+namespace Microsoft.Azure.Commands.Utilities.Common
+{
+    using System.Threading;
+    public class TestMockSupport
     {
-        protected override void ProcessRecord()
+        //a.k.a when you run under Playback mode
+        public static bool RunningMocked { get; set; }
+
+        public static void Delay(int milliSeconds)
         {
-            WriteObject((PSAzureContext)DefaultProfile.Context);
+            if (!RunningMocked)
+            {
+                Thread.Sleep(milliSeconds);
+            }
         }
     }
 }

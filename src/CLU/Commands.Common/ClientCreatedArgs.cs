@@ -12,24 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
-using Microsoft.Azure.Commands.Models;
-using Microsoft.Azure.Commands.Profile.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Commands.Common;
+using System;
+using System.Net.Http;
+using System.Reflection;
 
-namespace Microsoft.Azure.Commands.Profile
-{    
-    /// <summary>
-    /// Cmdlet to get current context. 
-    /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmContext")]
-    [OutputType(typeof(PSAzureContext))]
-    public class GetAzureRMContextCommand : AzureRMCmdlet
+namespace Microsoft.Azure.Commands.Common
+{
+    public class ClientCreatedArgs : EventArgs
     {
-        protected override void ProcessRecord()
+        public object CreatedClient { get; set; }
+
+        public Type ClientType { get; set; }
+
+        public void AddHandlerToClient(DelegatingHandler handler)
         {
-            WriteObject((PSAzureContext)DefaultProfile.Context);
+            var withHandlerMethod = ClientType.GetMethod("WithHandler", new[] { typeof(DelegatingHandler) });
+            CreatedClient = withHandlerMethod.Invoke(CreatedClient, new object[] { handler });
         }
     }
 }
