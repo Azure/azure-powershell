@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Intune
     using System.Management.Automation;
 
     /// <summary>
-    /// Cmdlet to get existing resources.
+    /// Cmdlet to get existing apps associated to Android Intune MAM policy Azure resource.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmIntuneAndroidMAMPolicyApp"), OutputType(typeof(PSObject))]
     public sealed class GetIntuneAndroidMAMPolicyAppCmdlet : IntuneBaseCmdlet

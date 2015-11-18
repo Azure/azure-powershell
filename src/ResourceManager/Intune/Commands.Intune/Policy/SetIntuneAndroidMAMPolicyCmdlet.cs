@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Intune
     using System.Management.Automation;
 
     /// <summary>
-    /// A cmdlet that edits an existing Android intune policy.
+    /// A cmdlet that edits an existing Android Intune MAM policy.
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRmIntuneAndroidMAMPolicy", SupportsShouldProcess = true, DefaultParameterSetName = SetIntuneAndroidMAMPolicyCmdlet.TypeBasedParameterSet), OutputType(typeof(AndroidMAMPolicy))]
     public sealed class SetIntuneAndroidMAMPolicyCmdlet : IntuneBaseCmdlet

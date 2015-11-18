@@ -4,7 +4,7 @@
 	<command:details>
 		<command:name>Add-AzureRmIntuneAndroidMAMPolicyApp</command:name>
 		<maml:description>
-			<maml:para />
+			<maml:para>A cmdlet to link an App to Android Intune MAM policy Azure resource.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -14,7 +14,12 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para />
+		<maml:para>A cmdlet to link an app to Android Intune MAM policy Azure resource.</maml:para>
+		<maml:para>SYNTAX
+    Add-AzureRmIntuneAndroidMAMPolicyApp -Name &lt;String&gt; -AppName &lt;String&gt; [-Force [&lt;SwitchParameter&gt;]] [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf [&lt;SwitchParameter&gt;]] [-Confirm [&lt;SwitchParameter&gt;]] [&lt;CommonParameters&gt;]</maml:para>
+		<maml:para>&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -22,28 +27,28 @@
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The Android policy name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>AppName</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The Android App name to link to.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Force</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>If set to true, don&#39;t ask for confirmation.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>ApiVersion</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -81,7 +86,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Name</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The Android policy name.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -93,7 +98,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>AppName</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The Android App name to link to.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -105,7 +110,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Force</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>If set to true, don&#39;t ask for confirmation.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -117,7 +122,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>ApiVersion</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -217,7 +222,7 @@
 	<command:details>
 		<command:name>Add-AzureRmIntuneAndroidMAMPolicyGroup</command:name>
 		<maml:description>
-			<maml:para />
+			<maml:para>A cmdlet to link a Group to Android Intune MAM policy Azure resource.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -227,7 +232,12 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para />
+		<maml:para>A cmdlet to link a group to Android Intune MAM policy Azure resource.</maml:para>
+		<maml:para>SYNTAX
+    Add-AzureRmIntuneAndroidMAMPolicyGroup -Name &lt;String&gt; -GroupName &lt;String&gt; [-Force [&lt;SwitchParameter&gt;]] [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf [&lt;SwitchParameter&gt;]] [-Confirm [&lt;SwitchParameter&gt;]] [&lt;CommonParameters&gt;]</maml:para>
+		<maml:para>&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -235,28 +245,28 @@
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The Android policy name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>GroupName</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The Android group name to link to.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Force</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>If set to true, don&#39;t ask for confirmation.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>ApiVersion</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -294,7 +304,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Name</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The Android policy name.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -306,7 +316,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>GroupName</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The Android group name to link to.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -318,7 +328,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Force</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>If set to true, don&#39;t ask for confirmation.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -330,7 +340,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>ApiVersion</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -430,7 +440,7 @@
 	<command:details>
 		<command:name>Add-AzureRmIntuneiOSMAMPolicyApp</command:name>
 		<maml:description>
-			<maml:para />
+			<maml:para>A cmdlet to link an App to iOS Intune MAM policy Azure resource.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -440,7 +450,12 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para />
+		<maml:para>A cmdlet to link an app to iOS Intune MAM policy Azure resource.</maml:para>
+		<maml:para>SYNTAX
+    Add-AzureRmIntuneiOSMAMPolicyApp -Name &lt;String&gt; -AppName &lt;String&gt; [-Force [&lt;SwitchParameter&gt;]] [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf [&lt;SwitchParameter&gt;]] [-Confirm [&lt;SwitchParameter&gt;]] [&lt;CommonParameters&gt;]</maml:para>
+		<maml:para>&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -448,28 +463,28 @@
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The iOS policy name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>AppName</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The iOS App Name to link to.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Force</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>If set to true, don&#39;t ask for confirmation.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>ApiVersion</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -507,7 +522,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Name</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The iOS policy name.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -519,7 +534,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>AppName</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The iOS App Name to link to.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -531,7 +546,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Force</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>If set to true, don&#39;t ask for confirmation.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -543,7 +558,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>ApiVersion</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -643,7 +658,7 @@
 	<command:details>
 		<command:name>Add-AzureRmIntuneiOSMAMPolicyGroup</command:name>
 		<maml:description>
-			<maml:para />
+			<maml:para>A cmdlet to link a Group to iOS Intune MAM policy Azure resource.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -653,7 +668,12 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para />
+		<maml:para>A cmdlet to link a group to iOS Intune MAM policy Azure resource.</maml:para>
+		<maml:para>SYNTAX
+    Add-AzureRmIntuneiOSMAMPolicyGroup -Name &lt;String&gt; -GroupName &lt;String&gt; [-Force [&lt;SwitchParameter&gt;]] [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf [&lt;SwitchParameter&gt;]] [-Confirm [&lt;SwitchParameter&gt;]] [&lt;CommonParameters&gt;]</maml:para>
+		<maml:para>&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -661,28 +681,28 @@
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The iOS policy name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>GroupName</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The iOS group name to link to.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Force</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>If set to true, don&#39;t ask for confirmation.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>ApiVersion</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -720,7 +740,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Name</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The iOS policy name.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -732,7 +752,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>GroupName</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The iOS group name to link to.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -744,7 +764,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Force</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>If set to true, don&#39;t ask for confirmation.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -756,7 +776,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>ApiVersion</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -856,7 +876,7 @@
 	<command:details>
 		<command:name>Get-AzureRmIntuneAndroidMAMApp</command:name>
 		<maml:description>
-			<maml:para />
+			<maml:para>Cmdlet to get Apps for Android platform.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -866,7 +886,12 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para />
+		<maml:para>Cmdlet to get apps for Android platform.</maml:para>
+		<maml:para>SYNTAX
+    Get-AzureRmIntuneAndroidMAMApp [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [&lt;CommonParameters&gt;]</maml:para>
+		<maml:para>&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -874,7 +899,7 @@
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>ApiVersion</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -898,7 +923,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>ApiVersion</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -974,7 +999,7 @@
 	<command:details>
 		<command:name>Get-AzureRmIntuneAndroidMAMPolicy</command:name>
 		<maml:description>
-			<maml:para />
+			<maml:para>Cmdlet to get existing Android Intune MAM Policy.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -984,7 +1009,12 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para />
+		<maml:para>Cmdlet to get existing Android Intune MAM Policy.</maml:para>
+		<maml:para>SYNTAX
+    Get-AzureRmIntuneAndroidMAMPolicy [-Name &lt;String&gt;] [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [&lt;CommonParameters&gt;]</maml:para>
+		<maml:para>&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -992,14 +1022,14 @@
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The policy name to fetch.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>ApiVersion</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -1023,7 +1053,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Name</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The policy name to fetch.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -1035,7 +1065,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>ApiVersion</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -1111,7 +1141,7 @@
 	<command:details>
 		<command:name>Get-AzureRmIntuneAndroidMAMPolicyApp</command:name>
 		<maml:description>
-			<maml:para />
+			<maml:para>Cmdlet to get existing Apps associated to Android Intune MAM policy Azure resource.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -1121,7 +1151,12 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para />
+		<maml:para>Cmdlet to get existing apps associated to Android Intune MAM policy Azure resource.</maml:para>
+		<maml:para>SYNTAX
+    Get-AzureRmIntuneAndroidMAMPolicyApp -Name &lt;String&gt; [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [&lt;CommonParameters&gt;]</maml:para>
+		<maml:para>&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -1129,14 +1164,14 @@
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The policy name for the apps to fetch.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>ApiVersion</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -1160,7 +1195,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Name</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The policy name for the apps to fetch.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -1172,7 +1207,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>ApiVersion</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -1248,7 +1283,7 @@
 	<command:details>
 		<command:name>Get-AzureRmIntuneAndroidMAMPolicyGroup</command:name>
 		<maml:description>
-			<maml:para />
+			<maml:para>Cmdlet to get existing Groups associated to Android Intune MAM policy Azure resource.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -1258,7 +1293,12 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para />
+		<maml:para>Cmdlet to get existing groups associated to Android Intune MAM policy Azure resource.</maml:para>
+		<maml:para>SYNTAX
+    Get-AzureRmIntuneAndroidMAMPolicyGroup -Name &lt;String&gt; [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [&lt;CommonParameters&gt;]</maml:para>
+		<maml:para>&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -1266,14 +1306,14 @@
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The policy name to fetch for the groups.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>ApiVersion</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -1297,7 +1337,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Name</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The policy name to fetch for the groups.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -1309,7 +1349,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>ApiVersion</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -1385,7 +1425,7 @@
 	<command:details>
 		<command:name>Get-AzureRmIntuneiOSMAMApp</command:name>
 		<maml:description>
-			<maml:para />
+			<maml:para>Cmdlet to get existing Apps associated to iOS Intune MAM policy Azure resource.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -1395,7 +1435,12 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para />
+		<maml:para>Cmdlet to get existing apps associated to iOS Intune MAM policy Azure resource.</maml:para>
+		<maml:para>SYNTAX
+    Get-AzureRmIntuneiOSMAMApp [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [&lt;CommonParameters&gt;]</maml:para>
+		<maml:para>&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -1403,7 +1448,7 @@
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>ApiVersion</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -1427,7 +1472,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>ApiVersion</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -1503,7 +1548,7 @@
 	<command:details>
 		<command:name>Get-AzureRmIntuneiOSMAMPolicy</command:name>
 		<maml:description>
-			<maml:para />
+			<maml:para>Cmdlet to get existing iOS Intune MAM Policy.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -1513,7 +1558,12 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para />
+		<maml:para>Cmdlet to get existing iOS Intune MAM Policy.</maml:para>
+		<maml:para>SYNTAX
+    Get-AzureRmIntuneiOSMAMPolicy [-Name &lt;String&gt;] [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [&lt;CommonParameters&gt;]</maml:para>
+		<maml:para>&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -1521,14 +1571,14 @@
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The policy name to fetch.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>ApiVersion</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -1552,7 +1602,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Name</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The policy name to fetch.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -1564,7 +1614,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>ApiVersion</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -1640,7 +1690,7 @@
 	<command:details>
 		<command:name>Get-AzureRmIntuneiOSMAMPolicyApp</command:name>
 		<maml:description>
-			<maml:para />
+			<maml:para>Cmdlet to get existing Apps associated to iOS Intune MAM policy Azure resource.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -1650,7 +1700,12 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para />
+		<maml:para>Cmdlet to get existing apps associated to iOS Intune MAM policy Azure resource.</maml:para>
+		<maml:para>SYNTAX
+    Get-AzureRmIntuneiOSMAMPolicyApp -Name &lt;String&gt; [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [&lt;CommonParameters&gt;]</maml:para>
+		<maml:para>&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -1658,14 +1713,14 @@
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The policy name for the apps to fetch.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>ApiVersion</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -1689,7 +1744,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Name</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The policy name for the apps to fetch.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -1701,7 +1756,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>ApiVersion</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -1777,7 +1832,7 @@
 	<command:details>
 		<command:name>Get-AzureRmIntuneiOSMAMPolicyGroup</command:name>
 		<maml:description>
-			<maml:para />
+			<maml:para>Cmdlet to get existing Groups associated to iOS Intune MAM policy Azure resource.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -1787,7 +1842,12 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para />
+		<maml:para>Cmdlet to get existing groups associated to iOS Intune MAM policy Azure resource.</maml:para>
+		<maml:para>SYNTAX
+    Get-AzureRmIntuneiOSMAMPolicyGroup -Name &lt;String&gt; [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [&lt;CommonParameters&gt;]</maml:para>
+		<maml:para>&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -1795,14 +1855,14 @@
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The policy name to fetch for the groups.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>ApiVersion</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -1826,7 +1886,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Name</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The policy name to fetch for the groups.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -1838,7 +1898,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>ApiVersion</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -1914,7 +1974,7 @@
 	<command:details>
 		<command:name>New-AzureRmIntuneAndroidMAMPolicy</command:name>
 		<maml:description>
-			<maml:para />
+			<maml:para>A cmdlet that creates a new Android Intune MAM policy Azure resource.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -1924,7 +1984,12 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para />
+		<maml:para>A cmdlet that creates a new Android Intune MAM policy Azure resource.</maml:para>
+		<maml:para>SYNTAX
+    New-AzureRmIntuneAndroidMAMPolicy -FriendlyName &lt;String&gt; [-Description &lt;String&gt;] [-AllowDataTransferToApps &lt;AppSharingType&gt;] [-AllowDataTransferFromApps &lt;AppSharingType&gt;] [-Authentication &lt;ChoiceType&gt;] [-ClipboardSharing &lt;ClipboardSharingLevelType&gt;] [-DataBackup &lt;FilterType&gt;] [-FileSharingSaveAs &lt;FilterType&gt;] [-Pin &lt;ChoiceType&gt;] [-PinRetries &lt;Nullable`1[Int32]&gt;] [-DeviceCompliance &lt;OptionType&gt;] [-ManagedBrowser &lt;ChoiceType&gt;] [-RecheckAccessOfflineGracePeriodMinutes &lt;Nullable`1[Int32]&gt;] [-RecheckAccessTimeoutMinutes &lt;Nullable`1[Int32]&gt;] [-OfflineWipeIntervalDays &lt;Nullable`1[Int32]&gt;] [-FileEncryption &lt;ChoiceType&gt;] [-ScreenCapture &lt;FilterType&gt;] [-Force [&lt;SwitchParameter&gt;]] [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf [&lt;SwitchParameter&gt;]] [-Confirm [&lt;SwitchParameter&gt;]] [&lt;CommonParameters&gt;]</maml:para>
+		<maml:para>&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -1932,133 +1997,133 @@
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>FriendlyName</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The policy friendly name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Description</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The policy description.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>AllowDataTransferToApps</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether the application is allowed to receive information shared by other applications. Information can be restricted to no applications, only managed applications, or be allowed from all applications.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AppSharingType</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>AllowDataTransferFromApps</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether the application is allowed to share information with other applications. Information can be shared with no applications, only managed applications, or shared to all applications.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AppSharingType</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Authentication</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether corporate credentials are required to access the application.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">ChoiceType</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>ClipboardSharing</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether to restrict cut, copy and paste with other applications.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">ClipboardSharingLevelType</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>DataBackup</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether to prevent iTunes and iCloud backups.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">FilterType</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>FileSharingSaveAs</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether to prevent ‘Save As’ from the application.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">FilterType</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Pin</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether simple PIN is required to access the application.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">ChoiceType</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>PinRetries</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>When a simple PIN is required to access the application, this indicates the number of attempts before a PIN reset.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>DeviceCompliance</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether managed applications are blocked from running on rooted or jailbroken devices.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">OptionType</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>ManagedBrowser</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether web content from the application is forced to run in the managed browser.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">ChoiceType</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>RecheckAccessOfflineGracePeriodMinutes</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates how long to wait in minutes before re-checking access requirements on the device if the device is offline.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>RecheckAccessTimeoutMinutes</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates how long to wait in minutes before re-checking access requirements on the device.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>OfflineWipeIntervalDays</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates the number of days a device must be offline before application data is automatically wiped.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>FileEncryption</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether to encrypt application data.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">ChoiceType</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>ScreenCapture</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether fingerprints are allowed instead of PIN to access the application.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">FilterType</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Force</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>If set to true, don&#39;t ask for confirmation.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>ApiVersion</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -2096,7 +2161,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>FriendlyName</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The policy friendly name.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -2108,7 +2173,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Description</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The policy description.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -2120,7 +2185,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>AllowDataTransferToApps</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether the application is allowed to receive information shared by other applications. Information can be restricted to no applications, only managed applications, or be allowed from all applications.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AppSharingType</command:parameterValue>
 			<dev:type>
@@ -2132,7 +2197,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>AllowDataTransferFromApps</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether the application is allowed to share information with other applications. Information can be shared with no applications, only managed applications, or shared to all applications.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AppSharingType</command:parameterValue>
 			<dev:type>
@@ -2144,7 +2209,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Authentication</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether corporate credentials are required to access the application.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">ChoiceType</command:parameterValue>
 			<dev:type>
@@ -2156,7 +2221,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>ClipboardSharing</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether to restrict cut, copy and paste with other applications.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">ClipboardSharingLevelType</command:parameterValue>
 			<dev:type>
@@ -2168,7 +2233,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>DataBackup</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether to prevent iTunes and iCloud backups.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">FilterType</command:parameterValue>
 			<dev:type>
@@ -2180,7 +2245,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>FileSharingSaveAs</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether to prevent ‘Save As’ from the application.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">FilterType</command:parameterValue>
 			<dev:type>
@@ -2192,7 +2257,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Pin</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether simple PIN is required to access the application.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">ChoiceType</command:parameterValue>
 			<dev:type>
@@ -2204,7 +2269,7 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>PinRetries</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>When a simple PIN is required to access the application, this indicates the number of attempts before a PIN reset.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			<dev:type>
@@ -2216,7 +2281,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>DeviceCompliance</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether managed applications are blocked from running on rooted or jailbroken devices.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">OptionType</command:parameterValue>
 			<dev:type>
@@ -2228,7 +2293,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>ManagedBrowser</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether web content from the application is forced to run in the managed browser.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">ChoiceType</command:parameterValue>
 			<dev:type>
@@ -2240,7 +2305,7 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>RecheckAccessOfflineGracePeriodMinutes</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates how long to wait in minutes before re-checking access requirements on the device if the device is offline.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			<dev:type>
@@ -2252,7 +2317,7 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>RecheckAccessTimeoutMinutes</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates how long to wait in minutes before re-checking access requirements on the device.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			<dev:type>
@@ -2264,7 +2329,7 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>OfflineWipeIntervalDays</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates the number of days a device must be offline before application data is automatically wiped.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			<dev:type>
@@ -2276,7 +2341,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>FileEncryption</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether to encrypt application data.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">ChoiceType</command:parameterValue>
 			<dev:type>
@@ -2288,7 +2353,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>ScreenCapture</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether fingerprints are allowed instead of PIN to access the application.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">FilterType</command:parameterValue>
 			<dev:type>
@@ -2300,7 +2365,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Force</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>If set to true, don&#39;t ask for confirmation.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -2312,7 +2377,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>ApiVersion</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -2412,7 +2477,7 @@
 	<command:details>
 		<command:name>New-AzureRmIntuneiOSMAMPolicy</command:name>
 		<maml:description>
-			<maml:para />
+			<maml:para>A cmdlet that creates a new iOS Intune MAM policy azure resource.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -2422,7 +2487,13 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para />
+		<maml:para>A cmdlet that creates a new iOS Intune MAM policy azure resource.</maml:para>
+		<maml:para>SYNTAX
+    New-AzureRmIntuneiOSMAMPolicy -FriendlyName &lt;String&gt; [-Description &lt;String&gt;] [-AllowDataTransferToApps &lt;AppSharingType&gt;] [-AllowDataTransferFromApps &lt;AppSharingType&gt;] [-Authentication &lt;ChoiceType&gt;] [-ClipboardSharing &lt;ClipboardSharingLevelType&gt;] [-DataBackup &lt;FilterType&gt;] [-FileSharingSaveAs &lt;FilterType&gt;] [-Pin &lt;ChoiceType&gt;] [-PinRetries &lt;Nullable`1[Int32]&gt;] [-DeviceCompliance &lt;OptionType&gt;] [-ManagedBrowser &lt;ChoiceType&gt;] [-RecheckAccessOfflineGracePeriodMinutes &lt;Nullable`1[Int32]&gt;] [-RecheckAccessTimeoutMinutes &lt;Nullable`1[Int32]&gt;] [-OfflineWipeIntervalDays &lt;Nullable`1[Int32]&gt;] [-FileEncryptionLevel &lt;DeviceLockType&gt;] [-AllowFingerprint &lt;OptionType&gt;] [-Force [&lt;SwitchParameter&gt;]] [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf [&lt;SwitchParameter&gt;]] [-Confirm [&lt;SwitchParameter&gt;]] [&lt;CommonParameters&gt;]</maml:para>
+		<maml:para>
+&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -2430,133 +2501,133 @@
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>FriendlyName</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The policy friendly name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Description</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The policy description.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>AllowDataTransferToApps</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether the application is allowed to receive information shared by other applications. Information can be restricted to no applications, only managed applications, or be allowed from all applications.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AppSharingType</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>AllowDataTransferFromApps</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether the application is allowed to share information with other applications. Information can be shared with no applications, only managed applications, or shared to all applications.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AppSharingType</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Authentication</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether corporate credentials are required to access the application.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">ChoiceType</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>ClipboardSharing</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether to restrict cut, copy and paste with other applications.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">ClipboardSharingLevelType</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>DataBackup</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether to prevent iTunes and iCloud backups.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">FilterType</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>FileSharingSaveAs</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether to prevent ‘Save As’ from the application.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">FilterType</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Pin</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether simple PIN is required to access the application.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">ChoiceType</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>PinRetries</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>When a simple PIN is required to access the application, this indicates the number of attempts before a PIN reset.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>DeviceCompliance</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether managed applications are blocked from running on rooted or jailbroken devices.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">OptionType</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>ManagedBrowser</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether web content from the application is forced to run in the managed browser.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">ChoiceType</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>RecheckAccessOfflineGracePeriodMinutes</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates how long to wait in minutes before re-checking access requirements on the device if the device is offline.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>RecheckAccessTimeoutMinutes</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates how long to wait in minutes before re-checking access requirements on the device.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>OfflineWipeIntervalDays</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates the number of days a device must be offline before application data is automatically wiped.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>FileEncryptionLevel</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether fingerprints are allowed instead of PIN to access the application.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">DeviceLockType</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>AllowFingerprint</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether fingerprints are allowed instead of PIN to access the application.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">OptionType</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Force</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>If set to true, don&#39;t ask for confirmation.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>ApiVersion</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -2594,7 +2665,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>FriendlyName</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The policy friendly name.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -2606,7 +2677,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Description</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The policy description.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -2618,7 +2689,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>AllowDataTransferToApps</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether the application is allowed to receive information shared by other applications. Information can be restricted to no applications, only managed applications, or be allowed from all applications.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AppSharingType</command:parameterValue>
 			<dev:type>
@@ -2630,7 +2701,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>AllowDataTransferFromApps</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether the application is allowed to share information with other applications. Information can be shared with no applications, only managed applications, or shared to all applications.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AppSharingType</command:parameterValue>
 			<dev:type>
@@ -2642,7 +2713,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Authentication</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether corporate credentials are required to access the application.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">ChoiceType</command:parameterValue>
 			<dev:type>
@@ -2654,7 +2725,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>ClipboardSharing</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether to restrict cut, copy and paste with other applications.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">ClipboardSharingLevelType</command:parameterValue>
 			<dev:type>
@@ -2666,7 +2737,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>DataBackup</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether to prevent iTunes and iCloud backups.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">FilterType</command:parameterValue>
 			<dev:type>
@@ -2678,7 +2749,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>FileSharingSaveAs</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether to prevent ‘Save As’ from the application.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">FilterType</command:parameterValue>
 			<dev:type>
@@ -2690,7 +2761,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Pin</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether simple PIN is required to access the application.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">ChoiceType</command:parameterValue>
 			<dev:type>
@@ -2702,7 +2773,7 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>PinRetries</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>When a simple PIN is required to access the application, this indicates the number of attempts before a PIN reset.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			<dev:type>
@@ -2714,7 +2785,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>DeviceCompliance</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether managed applications are blocked from running on rooted or jailbroken devices.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">OptionType</command:parameterValue>
 			<dev:type>
@@ -2726,7 +2797,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>ManagedBrowser</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether web content from the application is forced to run in the managed browser.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">ChoiceType</command:parameterValue>
 			<dev:type>
@@ -2738,7 +2809,7 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>RecheckAccessOfflineGracePeriodMinutes</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates how long to wait in minutes before re-checking access requirements on the device if the device is offline.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			<dev:type>
@@ -2750,7 +2821,7 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>RecheckAccessTimeoutMinutes</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates how long to wait in minutes before re-checking access requirements on the device.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			<dev:type>
@@ -2762,7 +2833,7 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>OfflineWipeIntervalDays</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates the number of days a device must be offline before application data is automatically wiped.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			<dev:type>
@@ -2774,7 +2845,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>FileEncryptionLevel</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether fingerprints are allowed instead of PIN to access the application.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">DeviceLockType</command:parameterValue>
 			<dev:type>
@@ -2786,7 +2857,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>AllowFingerprint</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether fingerprints are allowed instead of PIN to access the application.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">OptionType</command:parameterValue>
 			<dev:type>
@@ -2798,7 +2869,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Force</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>If set to true, don&#39;t ask for confirmation.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -2810,7 +2881,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>ApiVersion</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -2910,7 +2981,7 @@
 	<command:details>
 		<command:name>Remove-AzureRmIntuneAndroidMAMPolicy</command:name>
 		<maml:description>
-			<maml:para />
+			<maml:para>A cmdlet that removes Intune Andriod MAM Policy.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -2920,7 +2991,12 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para />
+		<maml:para>A cmdlet that removes Intune Andriod MAM Policy.</maml:para>
+		<maml:para>SYNTAX
+    Remove-AzureRmIntuneAndroidMAMPolicy -Name &lt;String&gt; [-Force [&lt;SwitchParameter&gt;]] [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf [&lt;SwitchParameter&gt;]] [-Confirm [&lt;SwitchParameter&gt;]] [&lt;CommonParameters&gt;]</maml:para>
+		<maml:para>&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -2928,21 +3004,21 @@
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The Android Policy Name (Policy Guid) to remove the policy.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Force</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>If set to true, don&#39;t ask for confirmation.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>ApiVersion</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -2980,7 +3056,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Name</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The Android Policy Name (Policy Guid) to remove the policy.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -2992,7 +3068,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Force</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>If set to true, don&#39;t ask for confirmation.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -3004,7 +3080,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>ApiVersion</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -3104,7 +3180,7 @@
 	<command:details>
 		<command:name>Remove-AzureRmIntuneAndroidMAMPolicyApp</command:name>
 		<maml:description>
-			<maml:para />
+			<maml:para>A cmdlet to remove a linked App from Android Intune MAM policy Azure resource.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -3114,7 +3190,12 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para />
+		<maml:para>A cmdlet to remove a linked app from Android Intune MAM policy Azure resource.</maml:para>
+		<maml:para>SYNTAX
+    Remove-AzureRmIntuneAndroidMAMPolicyApp -Name &lt;String&gt; -AppName &lt;String&gt; [-Force [&lt;SwitchParameter&gt;]] [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf [&lt;SwitchParameter&gt;]] [-Confirm [&lt;SwitchParameter&gt;]] [&lt;CommonParameters&gt;]</maml:para>
+		<maml:para>&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -3122,28 +3203,28 @@
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The Android policy Name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>AppName</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The Android App name to remove.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Force</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>If set to true, don&#39;t ask for confirmation.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>ApiVersion</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -3181,7 +3262,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Name</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The Android policy Name.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -3193,7 +3274,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>AppName</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The Android App name to remove.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -3205,7 +3286,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Force</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>If set to true, don&#39;t ask for confirmation.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -3217,7 +3298,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>ApiVersion</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -3317,7 +3398,7 @@
 	<command:details>
 		<command:name>Remove-AzureRmIntuneAndroidMAMPolicyGroup</command:name>
 		<maml:description>
-			<maml:para />
+			<maml:para>A cmdlet to remove a linked Group from an Android Intune MAM policy Azure resource.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -3327,7 +3408,12 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para />
+		<maml:para>A cmdlet to remove a linked group from an Android Intune MAM policy Azure resource.</maml:para>
+		<maml:para>SYNTAX
+    Remove-AzureRmIntuneAndroidMAMPolicyGroup -Name &lt;String&gt; -GroupName &lt;String&gt; [-Force [&lt;SwitchParameter&gt;]] [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf [&lt;SwitchParameter&gt;]] [-Confirm [&lt;SwitchParameter&gt;]] [&lt;CommonParameters&gt;]</maml:para>
+		<maml:para>&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -3335,28 +3421,28 @@
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The Android policy name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>GroupName</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The group name for Android policy to remove.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Force</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>If set to true, don&#39;t ask for confirmation.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>ApiVersion</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -3394,7 +3480,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Name</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The Android policy name.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -3406,7 +3492,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>GroupName</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The group name for Android policy to remove.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -3418,7 +3504,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Force</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>If set to true, don&#39;t ask for confirmation.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -3430,7 +3516,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>ApiVersion</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -3530,7 +3616,7 @@
 	<command:details>
 		<command:name>Remove-AzureRmIntuneIOSMAMPolicy</command:name>
 		<maml:description>
-			<maml:para />
+			<maml:para>A cmdlet that removes Intune iOS MAM Policy.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -3540,7 +3626,12 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para />
+		<maml:para>A cmdlet that removes Intune iOS MAM Policy.</maml:para>
+		<maml:para>SYNTAX
+    Remove-AzureRmIntuneIOSMAMPolicy -Name &lt;String&gt; [-Force [&lt;SwitchParameter&gt;]] [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf [&lt;SwitchParameter&gt;]] [-Confirm [&lt;SwitchParameter&gt;]] [&lt;CommonParameters&gt;]</maml:para>
+		<maml:para>&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -3548,21 +3639,21 @@
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The iOS Policy Name (Policy Guid) to remove the policy.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Force</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>If set to true, don&#39;t ask for confirmation.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>ApiVersion</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -3600,7 +3691,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Name</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The iOS Policy Name (Policy Guid) to remove the policy.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -3612,7 +3703,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Force</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>If set to true, don&#39;t ask for confirmation.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -3624,7 +3715,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>ApiVersion</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -3724,7 +3815,7 @@
 	<command:details>
 		<command:name>Remove-AzureRmIntuneiOSMAMPolicyApp</command:name>
 		<maml:description>
-			<maml:para />
+			<maml:para>A cmdlet to remove a linked App from an iOS Intune MAM policy Azure resource.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -3734,7 +3825,12 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para />
+		<maml:para>A cmdlet to remove a linked app from an iOS Intune MAM policy Azure resource.</maml:para>
+		<maml:para>SYNTAX
+    Remove-AzureRmIntuneiOSMAMPolicyApp -Name &lt;String&gt; -AppName &lt;String&gt; [-Force [&lt;SwitchParameter&gt;]] [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf [&lt;SwitchParameter&gt;]] [-Confirm [&lt;SwitchParameter&gt;]] [&lt;CommonParameters&gt;]</maml:para>
+		<maml:para>&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -3742,28 +3838,28 @@
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The iOS policy name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>AppName</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The iOS App Name to remove.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Force</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>If set to true, don&#39;t ask for confirmation.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>ApiVersion</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -3801,7 +3897,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Name</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The iOS policy name.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -3813,7 +3909,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>AppName</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The iOS App Name to remove.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -3825,7 +3921,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Force</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>If set to true, don&#39;t ask for confirmation.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -3837,7 +3933,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>ApiVersion</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -3937,7 +4033,7 @@
 	<command:details>
 		<command:name>Remove-AzureRmIntuneiOSMAMPolicyGroup</command:name>
 		<maml:description>
-			<maml:para />
+			<maml:para>A cmdlet to remove a linked Group from an iOS Intune MAM policy Azure resource.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -3947,7 +4043,10 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para />
+		<maml:para>A cmdlet to remove a linked group from an iOS Intune MAM policy Azure resource.</maml:para>
+		<maml:para>&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -3955,28 +4054,28 @@
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The iOS policy name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>GroupName</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The group name for iOS policy to remove.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Force</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>If set to true, don&#39;t ask for confirmation.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>ApiVersion</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -4014,7 +4113,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Name</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The iOS policy name.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -4026,7 +4125,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>GroupName</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The group name for iOS policy to remove.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -4038,7 +4137,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Force</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>If set to true, don&#39;t ask for confirmation.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -4050,7 +4149,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>ApiVersion</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -4150,7 +4249,7 @@
 	<command:details>
 		<command:name>Set-AzureRmIntuneAndroidMAMPolicy</command:name>
 		<maml:description>
-			<maml:para />
+			<maml:para>A cmdlet that edits an existing Android Intune MAM policy.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -4160,7 +4259,12 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para />
+		<maml:para>A cmdlet that edits an existing Android Intune MAM policy.</maml:para>
+		<maml:para>SYNTAX
+    Set-AzureRmIntuneAndroidMAMPolicy -Name &lt;String&gt; [-FriendlyName &lt;String&gt;] [-Description &lt;String&gt;] [-AllowDataTransferToApps &lt;Nullable`1[AppSharingType]&gt;] [-AllowDataTransferFromApps &lt;Nullable`1[AppSharingType]&gt;] [-Authentication &lt;Nullable`1[ChoiceType]&gt;] [-ClipboardSharing &lt;Nullable`1[ClipboardSharingLevelType]&gt;] [-DataBackup &lt;Nullable`1[FilterType]&gt;] [-FileSharingSaveAs &lt;Nullable`1[FilterType]&gt;] [-Pin &lt;Nullable`1[ChoiceType]&gt;] [-PinRetries &lt;Nullable`1[Int32]&gt;] [-DeviceCompliance &lt;Nullable`1[OptionType]&gt;] [-ManagedBrowser &lt;Nullable`1[ChoiceType]&gt;] [-RecheckAccessOfflineGracePeriodMinutes &lt;Nullable`1[Int32]&gt;] [-RecheckAccessTimeoutMinutes &lt;Nullable`1[Int32]&gt;] [-OfflineWipeIntervalDays &lt;Nullable`1[Int32]&gt;] [-FileEncryption &lt;Nullable`1[ChoiceType]&gt;] [-ScreenCapture &lt;Nullable`1[FilterType]&gt;] [-Force [&lt;SwitchParameter&gt;]] [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf [&lt;SwitchParameter&gt;]] [-Confirm [&lt;SwitchParameter&gt;]] [&lt;CommonParameters&gt;]</maml:para>
+		<maml:para>&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -4168,140 +4272,140 @@
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The policy name to patch.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>FriendlyName</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The policy friendly name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Description</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The policy description.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>AllowDataTransferToApps</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether the application is allowed to receive information shared by other applications. Information can be restricted to no applications, only managed applications, or be allowed from all applications.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[AppSharingType]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>AllowDataTransferFromApps</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether the application is allowed to share information with other applications. Information can be shared with no applications, only managed applications, or shared to all applications.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[AppSharingType]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Authentication</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether corporate credentials are required to access the application.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[ChoiceType]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>ClipboardSharing</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether to restrict cut, copy and paste with other applications.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[ClipboardSharingLevelType]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>DataBackup</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether to prevent iTunes and iCloud backups.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[FilterType]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>FileSharingSaveAs</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether to prevent ‘Save As’ from the application.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[FilterType]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Pin</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether simple PIN is required to access the application.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[ChoiceType]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>PinRetries</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>When a simple PIN is required to access the application, this indicates the number of attempts before a PIN reset.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>DeviceCompliance</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether managed applications are blocked from running on rooted or jailbroken devices.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[OptionType]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>ManagedBrowser</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether web content from the application is forced to run in the managed browser.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[ChoiceType]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>RecheckAccessOfflineGracePeriodMinutes</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates how long to wait in minutes before re-checking access requirements on the device if the device is offline.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>RecheckAccessTimeoutMinutes</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates how long to wait in minutes before re-checking access requirements on the device.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>OfflineWipeIntervalDays</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates the number of days a device must be offline before application data is automatically wiped.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>FileEncryption</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether to encrypt application data.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[ChoiceType]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>ScreenCapture</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether fingerprints are allowed instead of PIN to access the application.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[FilterType]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Force</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>If set to true, don&#39;t ask for confirmation.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>ApiVersion</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -4339,7 +4443,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Name</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The policy name to patch.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -4351,7 +4455,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>FriendlyName</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The policy friendly name.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -4363,7 +4467,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Description</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The policy description.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -4375,7 +4479,7 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>AllowDataTransferToApps</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether the application is allowed to receive information shared by other applications. Information can be restricted to no applications, only managed applications, or be allowed from all applications.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[AppSharingType]</command:parameterValue>
 			<dev:type>
@@ -4387,7 +4491,7 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>AllowDataTransferFromApps</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether the application is allowed to share information with other applications. Information can be shared with no applications, only managed applications, or shared to all applications.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[AppSharingType]</command:parameterValue>
 			<dev:type>
@@ -4399,7 +4503,7 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Authentication</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether corporate credentials are required to access the application.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[ChoiceType]</command:parameterValue>
 			<dev:type>
@@ -4411,7 +4515,7 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>ClipboardSharing</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether to restrict cut, copy and paste with other applications.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[ClipboardSharingLevelType]</command:parameterValue>
 			<dev:type>
@@ -4423,7 +4527,7 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>DataBackup</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether to prevent iTunes and iCloud backups.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[FilterType]</command:parameterValue>
 			<dev:type>
@@ -4435,7 +4539,7 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>FileSharingSaveAs</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether to prevent ‘Save As’ from the application.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[FilterType]</command:parameterValue>
 			<dev:type>
@@ -4447,7 +4551,7 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Pin</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether simple PIN is required to access the application.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[ChoiceType]</command:parameterValue>
 			<dev:type>
@@ -4459,7 +4563,7 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>PinRetries</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>When a simple PIN is required to access the application, this indicates the number of attempts before a PIN reset.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			<dev:type>
@@ -4471,7 +4575,7 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>DeviceCompliance</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether managed applications are blocked from running on rooted or jailbroken devices.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[OptionType]</command:parameterValue>
 			<dev:type>
@@ -4483,7 +4587,7 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>ManagedBrowser</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether web content from the application is forced to run in the managed browser.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[ChoiceType]</command:parameterValue>
 			<dev:type>
@@ -4495,7 +4599,7 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>RecheckAccessOfflineGracePeriodMinutes</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates how long to wait in minutes before re-checking access requirements on the device if the device is offline.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			<dev:type>
@@ -4507,7 +4611,7 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>RecheckAccessTimeoutMinutes</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates how long to wait in minutes before re-checking access requirements on the device.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			<dev:type>
@@ -4519,7 +4623,7 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>OfflineWipeIntervalDays</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates the number of days a device must be offline before application data is automatically wiped.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			<dev:type>
@@ -4531,7 +4635,7 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>FileEncryption</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether to encrypt application data.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[ChoiceType]</command:parameterValue>
 			<dev:type>
@@ -4543,7 +4647,7 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>ScreenCapture</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether fingerprints are allowed instead of PIN to access the application.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[FilterType]</command:parameterValue>
 			<dev:type>
@@ -4555,7 +4659,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Force</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>If set to true, don&#39;t ask for confirmation.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -4567,7 +4671,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>ApiVersion</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -4667,7 +4771,7 @@
 	<command:details>
 		<command:name>Set-AzureRmIntuneiOSMAMPolicy</command:name>
 		<maml:description>
-			<maml:para />
+			<maml:para>A cmdlet that edits an existing iOS Intune MAM policy.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -4677,7 +4781,12 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para />
+		<maml:para>A cmdlet that edits an existing iOS Intune MAM policy.</maml:para>
+		<maml:para>SYNTAX
+    Set-AzureRmIntuneiOSMAMPolicy -Name &lt;String&gt; [-FriendlyName &lt;String&gt;] [-Description &lt;String&gt;] [-AllowDataTransferToApps &lt;Nullable`1[AppSharingType]&gt;] [-AllowDataTransferFromApps &lt;Nullable`1[AppSharingType]&gt;] [-Authentication &lt;Nullable`1[ChoiceType]&gt;] [-ClipboardSharing &lt;Nullable`1[ClipboardSharingLevelType]&gt;] [-DataBackup &lt;Nullable`1[FilterType]&gt;] [-FileSharingSaveAs &lt;Nullable`1[FilterType]&gt;] [-Pin &lt;Nullable`1[ChoiceType]&gt;] [-PinRetries &lt;Nullable`1[Int32]&gt;] [-DeviceCompliance &lt;Nullable`1[OptionType]&gt;] [-ManagedBrowser &lt;Nullable`1[ChoiceType]&gt;] [-RecheckAccessOfflineGracePeriodMinutes &lt;Nullable`1[Int32]&gt;] [-RecheckAccessTimeoutMinutes &lt;Nullable`1[Int32]&gt;] [-OfflineWipeIntervalDays &lt;Nullable`1[Int32]&gt;] [-FileEncryptionLevel &lt;Nullable`1[DeviceLockType]&gt;] [-AllowFingerprint &lt;Nullable`1[OptionType]&gt;] [-Force [&lt;SwitchParameter&gt;]] [-ApiVersion &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf [&lt;SwitchParameter&gt;]] [-Confirm [&lt;SwitchParameter&gt;]] [&lt;CommonParameters&gt;]</maml:para>
+		<maml:para>&lt;CommonParameters&gt;
+    This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -4685,140 +4794,140 @@
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The policy name to patch.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>FriendlyName</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The policy friendly name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Description</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The policy description.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>AllowDataTransferToApps</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether the application is allowed to receive information shared by other applications. Information can be restricted to no applications, only managed applications, or be allowed from all applications.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[AppSharingType]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>AllowDataTransferFromApps</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether the application is allowed to share information with other applications. Information can be shared with no applications, only managed applications, or shared to all applications.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[AppSharingType]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Authentication</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether corporate credentials are required to access the application.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[ChoiceType]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>ClipboardSharing</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether to restrict cut, copy and paste with other applications.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[ClipboardSharingLevelType]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>DataBackup</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether to prevent iTunes and iCloud backups.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[FilterType]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>FileSharingSaveAs</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether to prevent ‘Save As’ from the application.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[FilterType]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Pin</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether simple PIN is required to access the application.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[ChoiceType]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>PinRetries</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>When a simple PIN is required to access the application, this indicates the number of attempts before a PIN reset.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>DeviceCompliance</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether managed applications are blocked from running on rooted or jailbroken devices.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[OptionType]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>ManagedBrowser</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether web content from the application is forced to run in the managed browser.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[ChoiceType]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>RecheckAccessOfflineGracePeriodMinutes</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates how long to wait in minutes before re-checking access requirements on the device if the device is offline.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>RecheckAccessTimeoutMinutes</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates how long to wait in minutes before re-checking access requirements on the device.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>OfflineWipeIntervalDays</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates the number of days a device must be offline before application data is automatically wiped.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>FileEncryptionLevel</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether fingerprints are allowed instead of PIN to access the application.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[DeviceLockType]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>AllowFingerprint</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether fingerprints are allowed instead of PIN to access the application.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[OptionType]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Force</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>If set to true, don&#39;t ask for confirmation.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>ApiVersion</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -4856,7 +4965,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Name</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The policy name to patch.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -4868,7 +4977,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>FriendlyName</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The policy friendly name.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -4880,7 +4989,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Description</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The policy description.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -4892,7 +5001,7 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>AllowDataTransferToApps</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether the application is allowed to receive information shared by other applications. Information can be restricted to no applications, only managed applications, or be allowed from all applications.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[AppSharingType]</command:parameterValue>
 			<dev:type>
@@ -4904,7 +5013,7 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>AllowDataTransferFromApps</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether the application is allowed to share information with other applications. Information can be shared with no applications, only managed applications, or shared to all applications.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[AppSharingType]</command:parameterValue>
 			<dev:type>
@@ -4916,7 +5025,7 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Authentication</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether corporate credentials are required to access the application.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[ChoiceType]</command:parameterValue>
 			<dev:type>
@@ -4928,7 +5037,7 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>ClipboardSharing</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether to restrict cut, copy and paste with other applications.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[ClipboardSharingLevelType]</command:parameterValue>
 			<dev:type>
@@ -4940,7 +5049,7 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>DataBackup</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether to prevent iTunes and iCloud backups.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[FilterType]</command:parameterValue>
 			<dev:type>
@@ -4952,7 +5061,7 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>FileSharingSaveAs</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether to prevent ‘Save As’ from the application.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[FilterType]</command:parameterValue>
 			<dev:type>
@@ -4964,7 +5073,7 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Pin</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether simple PIN is required to access the application.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[ChoiceType]</command:parameterValue>
 			<dev:type>
@@ -4976,7 +5085,7 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>PinRetries</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>When a simple PIN is required to access the application, this indicates the number of attempts before a PIN reset.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			<dev:type>
@@ -4988,7 +5097,7 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>DeviceCompliance</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether managed applications are blocked from running on rooted or jailbroken devices.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[OptionType]</command:parameterValue>
 			<dev:type>
@@ -5000,7 +5109,7 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>ManagedBrowser</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether web content from the application is forced to run in the managed browser.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[ChoiceType]</command:parameterValue>
 			<dev:type>
@@ -5012,7 +5121,7 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>RecheckAccessOfflineGracePeriodMinutes</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates how long to wait in minutes before re-checking access requirements on the device if the device is offline.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			<dev:type>
@@ -5024,7 +5133,7 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>RecheckAccessTimeoutMinutes</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates how long to wait in minutes before re-checking access requirements on the device.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			<dev:type>
@@ -5036,7 +5145,7 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>OfflineWipeIntervalDays</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates the number of days a device must be offline before application data is automatically wiped.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			<dev:type>
@@ -5048,7 +5157,7 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>FileEncryptionLevel</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether fingerprints are allowed instead of PIN to access the application.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[DeviceLockType]</command:parameterValue>
 			<dev:type>
@@ -5060,7 +5169,7 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>AllowFingerprint</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether fingerprints are allowed instead of PIN to access the application.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[OptionType]</command:parameterValue>
 			<dev:type>
@@ -5072,7 +5181,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Force</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>If set to true, don&#39;t ask for confirmation.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -5084,7 +5193,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>ApiVersion</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>

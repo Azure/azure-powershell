@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Intune
     using System.Management.Automation;
 
     /// <summary>
-    /// A cmdlet to link a group to Android Intune MAM policy Azure resource.
+    /// A cmdlet to link a group to iOS Intune MAM policy Azure resource.
     /// </summary>
     [Cmdlet(VerbsCommon.Add, "AzureRmIntuneiOSMAMPolicyGroup", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
     public sealed class AddIntuneiOSMAMPolicyGroupCmdlet : IntuneBaseCmdlet

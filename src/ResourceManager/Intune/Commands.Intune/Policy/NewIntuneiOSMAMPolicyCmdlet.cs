@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Intune
     using System.Management.Automation;
 
     /// <summary>
-    /// A cmdlet that creates a new iOS intune policy azure resource.
+    /// A cmdlet that creates a new iOS Intune MAM policy azure resource.
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmIntuneiOSMAMPolicy", SupportsShouldProcess = true), OutputType(typeof(IOSMAMPolicy))]
     public sealed class NewIntuneiOSMAMPolicyCmdlet : IntuneBaseCmdlet
