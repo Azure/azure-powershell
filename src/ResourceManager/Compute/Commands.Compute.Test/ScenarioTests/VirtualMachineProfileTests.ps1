@@ -244,13 +244,22 @@ function Test-VirtualMachineProfileWithoutAUC
     $dataDiskVhdUri2 = "https://$stoname.blob.core.windows.net/test/data2.vhd";
     $dataDiskVhdUri3 = "https://$stoname.blob.core.windows.net/test/data3.vhd";
 
-    $p = Set-AzureRmVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption Empty;
+    $dekUri = "https://testvault123.vault.azure.net/secrets/Test1/514ceb769c984379a7e0230bddaaaaaa";
+    $dekId =  "/subscriptions/" + $subid + "/resourceGroups/RgTest1/providers/Microsoft.KeyVault/vaults/TestVault123";
+    $kekUri = "http://keyVaultName.vault.azure.net/secrets/secretName/secretVersion";
+    $kekId = "/subscriptions/" + $subid + "/resourceGroups/RgTest1/providers/Microsoft.KeyVault/vaults/TestVault123";
+
+    $p = Set-AzureRmVMOSDisk -VM $p -Windows -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption Empty -DiskEncryptionKeyUrl $dekUri -DiskEncryptionKeyVaultId $dekId -KeyEncryptionKeyUrl $kekUri -KeyEncryptionKeyVaultId $kekId;
 
     $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 0 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
     $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 1 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
     $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 2 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
     $p = Remove-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3';
 
+    Assert-AreEqual $p.StorageProfile.OSDisk.EncryptionSettings.DiskEncryptionKey.SourceVault.ReferenceUri $dekId
+    Assert-AreEqual $p.StorageProfile.OSDisk.EncryptionSettings.DiskEncryptionKey.SecretUrl $dekUri
+    Assert-AreEqual $p.StorageProfile.OSDisk.EncryptionSettings.KeyEncryptionKey.SourceVault.ReferenceUri $kekId
+    Assert-AreEqual $p.StorageProfile.OSDisk.EncryptionSettings.KeyEncryptionKey.KeyUrl $kekUri
     Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
     Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
     Assert-AreEqual $p.StorageProfile.OSDisk.VirtualHardDisk.Uri $osDiskVhdUri;

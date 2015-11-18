@@ -427,3 +427,56 @@ function Test-SetApiManagementVirtualNetworks
         Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
     }
 }
+
+<#
+.SYNOPSIS
+Tests SetApiManagementHostnames.
+#>
+function Test-SetApiManagementHostnames
+{
+    $certFilePath = ".\testcertificate.pfx";
+    $certPassword = "powershelltest";
+    $certSubject = "CN=ailn.redmond.corp.microsoft.com"
+    $certThumbprint = "51A702569BADEDB90A75141B070F2D4B5DDFA447"
+
+    # Setup
+    $location = Get-ProviderLocation "Microsoft.ApiManagement/service"
+
+    # Create resource group
+    $resourceGroupName = 'onesdk598'#Get-ResourceGroupName
+    #New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
+
+    $apiManagementName = 'onesdk2394'#Get-ApiManagementServiceName
+    $organization = "apimpowershellorg"
+    $adminEmail = "apim@powershell.org"
+    $sku = "Developer"
+    $capacity = 1
+
+    # Create API Management service
+    #$result = New-AzureRmApiManagement -ResourceGroupName $resourceGroupName -Location $location -Name $apiManagementName -Organization $organization -AdminEmail $adminEmail -Sku $sku -Capacity $capacity |
+    #Get-AzureRmApiManagement |
+    #Import-AzureRmApiManagementHostnameCertificate -HostnameType "Portal" -PfxPath $certFilePath -PfxPassword $certPassword -PassThru
+
+    #Assert-AreEqual $certSubject $result.Subject
+    #Assert-AreEqual $certThumbprint $result.Thumbprint
+
+    # set portal hostname
+    $portalHostnameConf = New-AzureRmApiManagementHostnameConfiguration -CertificateThumbprint $certThumbprint -Hostname "ailn.redmond.corp.microsoft.com"
+    $result = Set-AzureRmApiManagementHostnames -Name $apiManagementName -ResourceGroupName $resourceGroupName –PortalHostnameConfiguration $portalHostnameConf -PassThru
+
+    Assert-AreEqual "ailn.redmond.corp.microsoft.com" $result.PortalHostnameConfiguration.Hostname
+    Assert-AreEqual $certSubject $result.PortalHostnameConfiguration.HostnameCertificate.Subject
+    Assert-Null $result.ProxyHostnameConfiguration
+
+    # set default hostnames
+    $result = Set-AzureRmApiManagementHostnames -Name $apiManagementName -ResourceGroupName $resourceGroupName
+
+    Assert-Null $result.ProxyHostnameConfiguration
+    Assert-Null $result.PortalHostnameConfiguration
+
+    # Remove the service
+    Remove-AzureRmApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -Force
+
+    # Remove resource group
+    Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+}

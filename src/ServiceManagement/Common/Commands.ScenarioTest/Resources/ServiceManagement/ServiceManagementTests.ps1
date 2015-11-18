@@ -564,11 +564,11 @@ function Run-ServiceDeploymentExtensionCmdletTests
         }
         $cscfg = '.\Resources\ServiceManagement\Files\LongRoleName.Cloud.cscfg';
 
-        $webRoleShortName = "WebRole1";
+        $webRoleNameWithSpaces = "WebRole1 With Spaces In Name";
         $workerRoleLongName = "Microsoft.Contoso.Department.ProjectCodeName.Worker";
-        $rdpCfg1 = New-AzureServiceRemoteDesktopExtensionConfig -Credential $credential -Role $webRoleShortName
+        $rdpCfg1 = New-AzureServiceRemoteDesktopExtensionConfig -Credential $credential -Role $webRoleNameWithSpaces
         $rdpCfg2 = New-AzureServiceRemoteDesktopExtensionConfig -Credential $credential -Role $workerRoleLongName;
-        $adCfg1 = New-AzureServiceADDomainExtensionConfig -Role $webRoleShortName -WorkgroupName 'test1';
+        $adCfg1 = New-AzureServiceADDomainExtensionConfig -Role $webRoleNameWithSpaces -WorkgroupName 'test1';
         $adCfg2 = New-AzureServiceADDomainExtensionConfig -Role $workerRoleLongName -WorkgroupName 'test2';
 
         $st = New-AzureDeployment -ServiceName $svcName -Package $cspkg -Configuration $cscfg -Label $svcName -Slot Production -ExtensionConfiguration $rdpCfg1,$adCfg1;

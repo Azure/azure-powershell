@@ -1,4 +1,4 @@
-$AzureMajorVersion = "0"
+$AzureMajorVersion = "1"
 
 $AzureRMModules = @(
   "AzureRM.ApiManagement",
