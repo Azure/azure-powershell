@@ -1,0 +1,35 @@
+﻿{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "keyVaultName": {
+            "type": "string",
+            "metadata": {
+                "description": "Name of the Vault"
+            }
+        },
+        "secretName": {
+            "type": "string",
+            "metadata": {
+                "description": "Name of the secret to store in the vault"
+            }
+        },
+        "secretValue": {
+            "type": "securestring",
+            "metadata": {
+                "description": "Value of the secret"
+            }
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.KeyVault/vaults/secrets",
+            "name": "[concat(parameters('keyVaultName'), '/', parameters('secretName'))]",
+            "apiVersion": "2015-06-01",
+            "tags": { "displayName": "secret" },
+            "properties": {
+                "value": "[parameters('secretValue')]"
+            }
+        }
+    ]
+}

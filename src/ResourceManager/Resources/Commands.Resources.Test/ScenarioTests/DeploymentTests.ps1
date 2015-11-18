@@ -70,14 +70,14 @@ function Test-NewDeploymentFromTemplateFile
 
 <#
 .SYNOPSIS
-Tests deployment via template file and parameter object.
+Tests deployment via template file and parameter file with KeyVault reference.
 #>
 function Test-NewDeploymentWithKeyVaultReference
 {
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$keyVaultResourceName = Get-ResourceName
+	$keyVaultname = Get-ResourceName
 	$secretName = Get-ResourceName
 	$rglocation = Get-ProviderLocation ResourceManagement
 	$location = Get-ProviderLocation "Microsoft.Web/sites"
@@ -88,8 +88,10 @@ function Test-NewDeploymentWithKeyVaultReference
 		# Test
 		New-AzureRmResourceGroup -Name $rgname -Location $rglocation
 
-		$keyVault = $keyVault = new-azurermkeyvault -VaultName $keyVaultResourceName -ResourceGroupName $rgname -Location $location -EnabledForTemplateDeployment
-		Set-AzureKeyVaultSecret -VaultName $keyVaultResourceName -SecretName $secretName -SecretValue $hostplanName
+		$keyVault = New-AzureRmKeyVault -VaultName $keyVaultname -ResourceGroupName $rgname -Location $location -EnabledForTemplateDeployment
+		$parameters = @{ "keyVaultName" = $keyVaultname; "secretName" = $secretName; "secretValue" = $hostplanName }
+		New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile keyVaultSetupTemplate.json -TemplateParameterObject $parameters
+
 		$content = (Get-Content keyVaultTemplateParams.json) -join '' | ConvertFrom-Json
 		$content.hostingPlanName.reference.KeyVault.id = $keyVault.resourceid
 		$content.hostingPlanName.reference.SecretName = $secretName

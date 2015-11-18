@@ -143,10 +143,14 @@ namespace Microsoft.Azure.Commands.Resources
 
         protected Hashtable GetTemplateParameterObject(Hashtable templateParameterObject)
         {
-            templateParameterObject = templateParameterObject ?? new Hashtable();
-            foreach (var parameterKey in templateParameterObject.Keys)
+            // NOTE(jogao): create a new Hashtable so that user can re-use the templateParameterObject.
+            var prameterObject = new Hashtable();
+            if (templateParameterObject != null)
             {
-                templateParameterObject[parameterKey] = new Hashtable { { "value", templateParameterObject[parameterKey] } };
+                foreach (var parameterKey in templateParameterObject.Keys)
+                {
+                    prameterObject[parameterKey] = new Hashtable { { "value", templateParameterObject[parameterKey] } };
+                }
             }
 
             // Load parameters from the file
@@ -154,17 +158,17 @@ namespace Microsoft.Azure.Commands.Resources
             if (templateParameterFilePath != null && FileUtilities.DataStore.FileExists(templateParameterFilePath))
             {
                 var parametersFromFile = GalleryTemplatesClient.ParseTemplateParameterFileContents(templateParameterFilePath);
-                parametersFromFile.ForEach(dp => templateParameterObject[dp.Key] = new Hashtable { { "value", dp.Value.Value }, { "reference", dp.Value.Reference } });
+                parametersFromFile.ForEach(dp => prameterObject[dp.Key] = new Hashtable { { "value", dp.Value.Value }, { "reference", dp.Value.Reference } });
             }
 
             // Load dynamic parameters
             IEnumerable<RuntimeDefinedParameter> parameters = PowerShellUtilities.GetUsedDynamicParameters(dynamicParameters, MyInvocation);
             if (parameters.Any())
             {
-                parameters.ForEach(dp => templateParameterObject[((ParameterAttribute)dp.Attributes[0]).HelpMessage] = new Hashtable { { "value", dp.Value } });
+                parameters.ForEach(dp => prameterObject[((ParameterAttribute)dp.Attributes[0]).HelpMessage] = new Hashtable { { "value", dp.Value } });
             }
 
-            return templateParameterObject;
+            return prameterObject;
         }
     }
 }
