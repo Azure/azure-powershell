@@ -14,15 +14,14 @@
 
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Management.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 using System.Security;
 using Microsoft.Azure.Common.Authentication.Factories;
-using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using Microsoft.Azure.Commands.Common.Test.Mocks;
 using Xunit;
+using Microsoft.Azure.Management.Storage;
 
 namespace Common.Authentication.Test
 {
@@ -100,8 +99,7 @@ namespace Common.Authentication.Test
             var client = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(context, AzureEnvironment.Endpoint.ServiceManagement);
 
             // List storage accounts
-            var storageAccounts = client.StorageAccounts.List().StorageAccounts;
-            foreach (var storageAccount in storageAccounts)
+            foreach (var storageAccount in client.StorageAccounts.List())
             {
                 Assert.NotNull(storageAccount);
             }

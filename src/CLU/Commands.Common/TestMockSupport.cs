@@ -1,4 +1,5 @@
-﻿// ----------------------------------------------------------------------------------
+﻿
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,25 +13,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
-using System;
 
-namespace Microsoft.Azure.Commands.Common.Test.Mocks
+namespace Microsoft.Azure.Commands.Utilities.Common
 {
-    public class MockAccessToken : IAccessToken
+    using System.Threading;
+    public class TestMockSupport
     {
-        public void AuthorizeRequest(Action<string, string> authTokenSetter)
-        {
-            authTokenSetter("Bearer", AccessToken);
-        }
+        //a.k.a when you run under Playback mode
+        public static bool RunningMocked { get; set; }
 
-        public string AccessToken { get; set; }
-        public string UserId { get; set; }
-        public LoginType LoginType { get; set; }
-
-        public string TenantId
+        public static void Delay(int milliSeconds)
         {
-            get { return string.Empty; }
+            if (!RunningMocked)
+            {
+                Thread.Sleep(milliSeconds);
+            }
         }
     }
 }

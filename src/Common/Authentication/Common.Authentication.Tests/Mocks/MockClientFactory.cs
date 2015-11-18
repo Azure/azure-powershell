@@ -12,17 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
-using Microsoft.Azure;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Rest;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 
-namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
+namespace Microsoft.Azure.Commands.Common.Test.Mocks
 {
     public class MockClientFactory : IClientFactory
     {
@@ -36,7 +35,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
         public TClient CreateClient<TClient>(AzureSMProfile profile, AzureSubscription subscription, AzureEnvironment.Endpoint endpoint) 
             where TClient : ServiceClient<TClient>
         {
-            SubscriptionCloudCredentials creds = new TokenCloudCredentials(subscription.Id.ToString(), "fake_token");
+            ServiceClientCredentials creds = new TokenCredentials("fake_token");
             Uri endpointUri = profile.Environments[subscription.Environment].GetEndpointAsUri(endpoint);
             return CreateCustomClient<TClient>(creds, endpointUri);
         }
@@ -44,7 +43,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
         public TClient CreateClient<TClient>(AzureContext context, AzureEnvironment.Endpoint endpoint) 
             where TClient : ServiceClient<TClient>
         {
-            SubscriptionCloudCredentials creds = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(context);
+            ServiceClientCredentials creds = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(context);
             return CreateCustomClient<TClient>(creds, context.Environment.GetEndpointAsUri(endpoint));
         }
 

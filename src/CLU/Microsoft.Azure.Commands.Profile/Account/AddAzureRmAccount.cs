@@ -20,7 +20,7 @@ using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Common.Authentication;
-using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Commands.Common;
 using System;
 using Microsoft.Azure.Commands.Models;
 using Microsoft.Azure.Commands.Profile;

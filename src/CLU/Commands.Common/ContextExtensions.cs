@@ -12,25 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.Azure.Common.Authentication.Models;
 
-namespace Microsoft.Azure.Commands.Common.Test.Mocks
+namespace Microsoft.Azure.Commands.Common
 {
-    public class MockAccessToken : IAccessToken
+    public static class ContextExtensions
     {
-        public void AuthorizeRequest(Action<string, string> authTokenSetter)
+        public static string GetCurrentStorageAccountName(this AzureContext context)
         {
-            authTokenSetter("Bearer", AccessToken);
-        }
+            string result = null;
+            if (context != null && context.Subscription != null  
+                && context.Subscription.IsPropertySet(AzureSubscription.Property.StorageAccount))
+            {
+                result = context.Subscription.GetProperty(AzureSubscription.Property.StorageAccount);
+            }
 
-        public string AccessToken { get; set; }
-        public string UserId { get; set; }
-        public LoginType LoginType { get; set; }
-
-        public string TenantId
-        {
-            get { return string.Empty; }
+            return result;
         }
     }
 }

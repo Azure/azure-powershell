@@ -12,25 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
-namespace Microsoft.Azure.Commands.Common.Test.Mocks
+namespace Microsoft.Azure.Commands.Common
 {
-    public class MockAccessToken : IAccessToken
+    public interface IProfileProvider<T> where T : IAzureProfile
     {
-        public void AuthorizeRequest(Action<string, string> authTokenSetter)
-        {
-            authTokenSetter("Bearer", AccessToken);
-        }
-
-        public string AccessToken { get; set; }
-        public string UserId { get; set; }
-        public LoginType LoginType { get; set; }
-
-        public string TenantId
-        {
-            get { return string.Empty; }
-        }
+        T GetProfile(IDataStore dataStore);
+        void ResetDefaultProfile();
     }
 }

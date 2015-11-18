@@ -12,13 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
+using System;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
+using Microsoft.Rest;
 
-namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
+namespace Microsoft.Azure.Commands.Common.Test.Mocks
 {
     public class MockCertificateAuthenticationFactory : IAuthenticationFactory
     {
@@ -69,21 +70,23 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             return Authenticate(account, environment, tenant, password, promptBehavior, AzureSession.TokenCache, resourceId);
         }
 
-        public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(AzureContext context)
+        public ServiceClientCredentials GetSubscriptionCloudCredentials(AzureContext context)
         {
-            return new CertificateCloudCredentials(context.Subscription.Id.ToString(), Certificate);
+            throw new NotImplementedException("ADAL 3.6.210231457-alpha does not support certificate based authentication.");
+            // return new CertificateCredentials(context.Subscription.Id.ToString(), Certificate);
         }
 
 
-        public Rest.ServiceClientCredentials GetServiceClientCredentials(AzureContext context)
+        public ServiceClientCredentials GetServiceClientCredentials(AzureContext context)
         {
             throw new System.NotImplementedException();
         }
 
 
-        public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(AzureContext context, AzureEnvironment.Endpoint targetEndpoint)
+        public ServiceClientCredentials GetSubscriptionCloudCredentials(AzureContext context, AzureEnvironment.Endpoint targetEndpoint)
         {
-            return new CertificateCloudCredentials(context.Subscription.Id.ToString(), Certificate);
+            throw new NotImplementedException("ADAL 3.6.210231457-alpha does not support certificate based authentication.");
+            // return new CertificateCredentials(context.Subscription.Id.ToString(), Certificate);
         }
     }
 }

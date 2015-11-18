@@ -12,25 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
 using System;
+using System.IO;
+using Newtonsoft.Json;
+using Microsoft.Azure.Common.Authentication;
 
-namespace Microsoft.Azure.Commands.Common.Test.Mocks
+namespace Microsoft.Azure.Commands.Common
 {
-    public class MockAccessToken : IAccessToken
+    public class AzurePSDataCollectionProfile
     {
-        public void AuthorizeRequest(Action<string, string> authTokenSetter)
+        public const string EnvironmentVariableName = "Azure_PS_Data_Collection";
+        public static string DefaultFileName = "AzureDataCollectionProfile.json";
+
+        public AzurePSDataCollectionProfile()
         {
-            authTokenSetter("Bearer", AccessToken);
         }
 
-        public string AccessToken { get; set; }
-        public string UserId { get; set; }
-        public LoginType LoginType { get; set; }
-
-        public string TenantId
+        public AzurePSDataCollectionProfile(bool enable)
         {
-            get { return string.Empty; }
+            EnableAzureDataCollection = enable;
         }
+
+        [JsonProperty(PropertyName = "enableAzureDataCollection")]
+        public bool? EnableAzureDataCollection { get; set; }
     }
 }

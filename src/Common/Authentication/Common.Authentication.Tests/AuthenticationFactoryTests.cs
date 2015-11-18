@@ -15,7 +15,7 @@
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Factories;
 using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.Azure.Commands.Test.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using Xunit;

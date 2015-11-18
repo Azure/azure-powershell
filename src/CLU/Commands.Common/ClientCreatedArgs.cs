@@ -12,25 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
 using System;
+using System.Net.Http;
+using System.Reflection;
 
-namespace Microsoft.Azure.Commands.Common.Test.Mocks
+namespace Microsoft.Azure.Commands.Common
 {
-    public class MockAccessToken : IAccessToken
+    public class ClientCreatedArgs : EventArgs
     {
-        public void AuthorizeRequest(Action<string, string> authTokenSetter)
-        {
-            authTokenSetter("Bearer", AccessToken);
-        }
+        public object CreatedClient { get; set; }
 
-        public string AccessToken { get; set; }
-        public string UserId { get; set; }
-        public LoginType LoginType { get; set; }
+        public Type ClientType { get; set; }
 
-        public string TenantId
+        public void AddHandlerToClient(DelegatingHandler handler)
         {
-            get { return string.Empty; }
+            var withHandlerMethod = ClientType.GetMethod("WithHandler", new[] { typeof(DelegatingHandler) });
+            CreatedClient = withHandlerMethod.Invoke(CreatedClient, new object[] { handler });
         }
     }
 }
