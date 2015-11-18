@@ -14,6 +14,18 @@
 
 <#
 .SYNOPSIS
+Gets a ScenarioTestContext for the specified account 
+#>
+function Get-ScenarioTestContext($accountName)
+{
+    $context = Get-AzureRmBatchAccountKeys $accountName
+    $testContext = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext -ArgumentList $context
+    return $testContext
+}
+
+
+<#
+.SYNOPSIS
 Gets a Batch account name for testing.
 #>
 function Get-BatchAccountName
