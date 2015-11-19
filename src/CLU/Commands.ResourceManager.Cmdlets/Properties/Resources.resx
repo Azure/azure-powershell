@@ -126,12 +126,6 @@
   <data name="InvalidTagFormatNotUniqueName" xml:space="preserve">
     <value>Invalid tag format. Ensure that each tag has a unique name. Example: @{Name = "tagName1"; Value = "tagValue1"}, @{Name = "tagName2"; Value = "tagValue2"}</value>
   </data>
-  <data name="RemoveTagMessage" xml:space="preserve">
-    <value>Removing tag ....</value>
-  </data>
-  <data name="RemovingTag" xml:space="preserve">
-    <value>Are you sure you want to remove tag '{0}'</value>
-  </data>
   <data name="TagNotFoundMessage" xml:space="preserve">
     <value>Tag '{0}' not found</value>
   </data>
