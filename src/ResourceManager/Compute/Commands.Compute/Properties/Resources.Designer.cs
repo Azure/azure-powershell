@@ -842,7 +842,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Storage account, {0}, is not found.  The OS disk may be in a different storage group..
+        ///   Looks up a localized string similar to Storage account, {0}, is not found.  The OS disk may be in a different subscription..
         /// </summary>
         public static string StorageAccountNotFoundForBootDiagnostics {
             get {
