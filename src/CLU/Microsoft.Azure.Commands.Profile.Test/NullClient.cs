@@ -14,20 +14,26 @@
 
 
 using System;
-using Hyak.Common;
+using System.Net.Http;
 using Microsoft.Azure;
+using Microsoft.Rest;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 {
     public class NullClient : ServiceClient<NullClient>
     {
-        public NullClient(SubscriptionCloudCredentials credentials) : base()
+        public NullClient(ServiceClientCredentials credentials) : base()
         {
             
         }
-        public NullClient(SubscriptionCloudCredentials credentials, Uri baseUri) : base()
+        public NullClient(Uri baseUri, ServiceClientCredentials credentials) : base()
         {
             
+        }
+
+        public NullClient(Uri baseUri, ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : base(handlers)
+        {
+
         }
     }
 }

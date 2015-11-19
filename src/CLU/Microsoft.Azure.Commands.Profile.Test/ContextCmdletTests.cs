@@ -31,15 +31,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 {
     public class ContextCmdletTests : RMTestBase
     {
-        private MemoryDataStore dataStore;
-        private MockCommandRuntime commandRuntimeMock;
+        private MemoryDataStore _dataStore;
+        private MockCommandRuntime _commandRuntimeMock;
+        private IAuthenticationFactory _authFactory;
 
         public ContextCmdletTests()
         {
-            dataStore = new MemoryDataStore();
-            AzureSession.DataStore = dataStore;
-            commandRuntimeMock = new MockCommandRuntime();
-            AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
+            _dataStore = new MemoryDataStore();
+            _commandRuntimeMock = new MockCommandRuntime();
+            _authFactory = new MockTokenAuthenticationFactory();
         }
 
         [Fact]
@@ -48,7 +48,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         {
             var cmdlt = new GetAzureRMContextCommand();
             // Setup
-            cmdlt.CommandRuntime = commandRuntimeMock;
+            cmdlt.DataStore = _dataStore;
+            cmdlt.AuthenticationFactory = _authFactory;
+            cmdlt.SetCommandRuntimeMock(_commandRuntimeMock);
             cmdlt.DefaultProfile = currentProfile;
 
             // Act
@@ -57,8 +59,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            Assert.True(commandRuntimeMock.OutputPipeline.Count == 1);
-            var context = (PSAzureContext) commandRuntimeMock.OutputPipeline[0];
+            Assert.True(_commandRuntimeMock.OutputPipeline.Count == 1);
+            var context = (PSAzureContext) _commandRuntimeMock.OutputPipeline[0];
             Assert.Equal("test", context.Subscription.SubscriptionName);
         }
         
@@ -68,7 +70,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         {
             var cmdlt = new SetAzureRMContextCommand();
             // Setup
-            cmdlt.CommandRuntime = commandRuntimeMock;
+            cmdlt.DataStore = _dataStore;
+            cmdlt.AuthenticationFactory = _authFactory;
+            cmdlt.SetCommandRuntimeMock(_commandRuntimeMock);
             cmdlt.TenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47";
             cmdlt.DefaultProfile = currentProfile;
             // Act
@@ -77,8 +81,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            Assert.True(commandRuntimeMock.OutputPipeline.Count == 1);
-            var context = (PSAzureContext)commandRuntimeMock.OutputPipeline[0];
+            Assert.True(_commandRuntimeMock.OutputPipeline.Count == 1);
+            var context = (PSAzureContext)_commandRuntimeMock.OutputPipeline[0];
             // TenantId is not sufficient to change the context.
             Assert.NotEqual("72f988bf-86f1-41af-91ab-2d7cd011db47", context.Tenant.TenantId);
         }
@@ -89,7 +93,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         {
             var cmdlt = new SetAzureRMContextCommand();
             // Setup
-            cmdlt.CommandRuntime = commandRuntimeMock;
+            cmdlt.DataStore = _dataStore;
+            cmdlt.AuthenticationFactory = _authFactory;
+            cmdlt.SetCommandRuntimeMock(_commandRuntimeMock);
             cmdlt.DefaultProfile = currentProfile;
             // Act
             cmdlt.InvokeBeginProcessing();
@@ -97,8 +103,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            Assert.True(commandRuntimeMock.OutputPipeline.Count == 1);
-            var context = (PSAzureContext)commandRuntimeMock.OutputPipeline[0];
+            Assert.True(_commandRuntimeMock.OutputPipeline.Count == 1);
+            var context = (PSAzureContext)_commandRuntimeMock.OutputPipeline[0];
             Assert.NotNull(context);
         }
     }

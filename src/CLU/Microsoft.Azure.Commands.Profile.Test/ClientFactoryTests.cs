@@ -16,13 +16,13 @@ using System.Collections.Generic;
 using Xunit;
 using System;
 using System.Net.Http.Headers;
-using Hyak.Common;
 using Microsoft.Azure;
 using Microsoft.Azure.Common.Authentication.Factories;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Rest.TransientFaultHandling;
+using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
@@ -33,54 +33,41 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void VerifyUserAgentValuesAreTransmitted()
         {
-            var storedClientFactory = AzureSession.ClientFactory;
-            var storedAuthFactory = AzureSession.AuthenticationFactory;
-            try
-            {
-                var authFactory = new AuthenticationFactory();
-                authFactory.TokenProvider = new MockAccessTokenProvider(Guid.NewGuid().ToString(), "user@contoso.com");
-                AzureSession.AuthenticationFactory = authFactory;
-                var factory = new ClientFactory();
-                AzureSession.ClientFactory = factory;
-                factory.UserAgents.Clear();
-                factory.AddUserAgent("agent1");
-                factory.AddUserAgent("agent1", "1.0.0");
-                factory.AddUserAgent("agent1", "1.0.0");
-                factory.AddUserAgent("agent1", "1.9.8");
-                factory.AddUserAgent("agent2");
-                Assert.Equal(4, factory.UserAgents.Count);
-                var client = factory.CreateClient<NullClient>(new AzureContext(
-                    new AzureSubscription
+            var authFactory = new MockTokenAuthenticationFactory("user@contoso.com", Guid.NewGuid().ToString());
+            var factory = new ClientFactory(new MemoryDataStore(), authFactory);
+            factory.UserAgents.Clear();
+            factory.AddUserAgent("agent1");
+            factory.AddUserAgent("agent1", "1.0.0");
+            factory.AddUserAgent("agent1", "1.0.0");
+            factory.AddUserAgent("agent1", "1.9.8");
+            factory.AddUserAgent("agent2");
+            Assert.Equal(4, factory.UserAgents.Count);
+            var client = factory.CreateArmClient<NullClient>(new AzureContext(
+                new AzureSubscription
+                {
+                    Id = Guid.NewGuid(),
+                    Properties = new Dictionary<AzureSubscription.Property, string>
                     {
-                        Id = Guid.NewGuid(),
-                        Properties = new Dictionary<AzureSubscription.Property, string>
-                        {
                             {AzureSubscription.Property.Tenants, "123"}
-                        }
-                    },
-                    new AzureAccount
+                    }
+                },
+                new AzureAccount
+                {
+                    Id = "user@contoso.com",
+                    Type = AzureAccount.AccountType.User,
+                    Properties = new Dictionary<AzureAccount.Property, string>
                     {
-                        Id = "user@contoso.com",
-                        Type = AzureAccount.AccountType.User,
-                        Properties = new Dictionary<AzureAccount.Property, string>
-                        {
                             {AzureAccount.Property.Tenants, "123"}
-                        }
-                    },
-                    AzureEnvironment.PublicEnvironments["AzureCloud"]
+                    }
+                },
+                AzureEnvironment.PublicEnvironments["AzureCloud"]
 
-                    ), AzureEnvironment.Endpoint.ResourceManager);
-                Assert.Equal(5, client.HttpClient.DefaultRequestHeaders.UserAgent.Count);
-                Assert.True(client.HttpClient.DefaultRequestHeaders.UserAgent.Contains(new ProductInfoHeaderValue("agent1", "")));
-                Assert.True(client.HttpClient.DefaultRequestHeaders.UserAgent.Contains(new ProductInfoHeaderValue("agent1", "1.0.0")));
-                Assert.True(client.HttpClient.DefaultRequestHeaders.UserAgent.Contains(new ProductInfoHeaderValue("agent1", "1.9.8")));
-                Assert.True(client.HttpClient.DefaultRequestHeaders.UserAgent.Contains(new ProductInfoHeaderValue("agent2", "")));
-            }
-            finally
-            {
-                AzureSession.ClientFactory = storedClientFactory;
-                AzureSession.AuthenticationFactory = storedAuthFactory;
-            }
+                ), AzureEnvironment.Endpoint.ResourceManager);
+            Assert.Equal(5, client.HttpClient.DefaultRequestHeaders.UserAgent.Count);
+            Assert.True(client.HttpClient.DefaultRequestHeaders.UserAgent.Contains(new ProductInfoHeaderValue("agent1", "")));
+            Assert.True(client.HttpClient.DefaultRequestHeaders.UserAgent.Contains(new ProductInfoHeaderValue("agent1", "1.0.0")));
+            Assert.True(client.HttpClient.DefaultRequestHeaders.UserAgent.Contains(new ProductInfoHeaderValue("agent1", "1.9.8")));
+            Assert.True(client.HttpClient.DefaultRequestHeaders.UserAgent.Contains(new ProductInfoHeaderValue("agent2", "")));
         }
     }
 }

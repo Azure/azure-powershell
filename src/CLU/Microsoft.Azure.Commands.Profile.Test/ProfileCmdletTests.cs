@@ -31,14 +31,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 {
     public class ProfileCmdletTests : RMTestBase
     {
-        private MemoryDataStore dataStore;
-        private MockCommandRuntime commandRuntimeMock;
+        private MemoryDataStore _dataStore;
+        private MockCommandRuntime _commandRuntimeMock;
 
         public ProfileCmdletTests()
         {
-            dataStore = new MemoryDataStore();
-            AzureSession.DataStore = dataStore;
-            commandRuntimeMock = new MockCommandRuntime();
+            _dataStore = new MemoryDataStore();
+            _commandRuntimeMock = new MockCommandRuntime();
         }
 
         [Fact]
@@ -50,15 +49,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             SelectAzureRMProfileCommand cmdlt = new SelectAzureRMProfileCommand();
             // Setup
             cmdlt.Profile = profile;
-            cmdlt.CommandRuntime = commandRuntimeMock;
+            cmdlt.DataStore = _dataStore;
+            cmdlt.SetCommandRuntimeMock(_commandRuntimeMock);
             // Act
             cmdlt.InvokeBeginProcessing();
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
-            Assert.NotNull(commandRuntimeMock.OutputPipeline);
-            Assert.Equal(1, commandRuntimeMock.OutputPipeline.Count);
-            var newProfile = (AzureRMProfile)(commandRuntimeMock.OutputPipeline[0] as PSAzureProfile) ;
+            Assert.NotNull(_commandRuntimeMock.OutputPipeline);
+            Assert.Equal(1, _commandRuntimeMock.OutputPipeline.Count);
+            var newProfile = (AzureRMProfile)(_commandRuntimeMock.OutputPipeline[0] as PSAzureProfile) ;
             Assert.NotNull(newProfile);
             // Verify
             Assert.True(newProfile.Environments.ContainsKey("foo"));
@@ -70,7 +70,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         {
             SelectAzureRMProfileCommand cmdlt = new SelectAzureRMProfileCommand();
             // Setup
-            cmdlt.CommandRuntime = commandRuntimeMock;
+            cmdlt.DataStore = _dataStore;
+            cmdlt.SetCommandRuntimeMock(_commandRuntimeMock);
             cmdlt.DefaultProfile = currentProfile;
 
             // Act
@@ -83,13 +84,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SelectAzureProfileFromDisk()
         {
-            var profile = new AzureRMProfile();
+            var profile = new AzureRMProfile(_dataStore);
             profile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
             profile.Save("X:\\foo.json");
             SelectAzureRMProfileCommand cmdlt = new SelectAzureRMProfileCommand();
             // Setup
             cmdlt.Path = "X:\\foo.json";
-            cmdlt.CommandRuntime = commandRuntimeMock;
+            cmdlt.DataStore = _dataStore;
+            cmdlt.SetCommandRuntimeMock(_commandRuntimeMock);
 
             // Act
             cmdlt.InvokeBeginProcessing();
@@ -105,13 +107,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SaveAzureProfileInMemory()
         {
-            var profile = new AzureRMProfile();
+            var profile = new AzureRMProfile(_dataStore);
             profile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
             SaveAzureRMProfileCommand cmdlt = new SaveAzureRMProfileCommand();
             // Setup
             cmdlt.Profile = profile;
             cmdlt.Path = "X:\\foo.json";
-            cmdlt.CommandRuntime = commandRuntimeMock;
+            cmdlt.DataStore = _dataStore;
+            cmdlt.SetCommandRuntimeMock(_commandRuntimeMock);
             cmdlt.DefaultProfile = currentProfile;
 
             // Act
@@ -120,8 +123,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            Assert.True(AzureSession.DataStore.FileExists("X:\\foo.json"));
-            var profile2 = new AzureRMProfile("X:\\foo.json");
+            Assert.True(_dataStore.FileExists("X:\\foo.json"));
+            var profile2 = new AzureRMProfile("X:\\foo.json", _dataStore);
             Assert.True(profile2.Environments.ContainsKey("foo"));
         }
 
@@ -132,7 +135,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             SaveAzureRMProfileCommand cmdlt = new SaveAzureRMProfileCommand();
             // Setup
             cmdlt.Path = "X:\\foo.json";
-            cmdlt.CommandRuntime = commandRuntimeMock;
+            cmdlt.DataStore = _dataStore;
+            cmdlt.SetCommandRuntimeMock(_commandRuntimeMock);
 
             // Act
             Assert.Throws<ArgumentException>(() => cmdlt.ExecuteCmdlet());
@@ -142,13 +146,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SaveAzureProfileFromDefault()
         {
-            var profile = new AzureRMProfile();
+            var profile = new AzureRMProfile(_dataStore);
             profile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
             profile.Context = new AzureContext(new AzureSubscription(), new AzureAccount(), profile.Environments["foo"]);
             SaveAzureRMProfileCommand cmdlt = new SaveAzureRMProfileCommand();
             // Setup
             cmdlt.Path = "X:\\foo.json";
-            cmdlt.CommandRuntime = commandRuntimeMock;
+            cmdlt.DataStore = _dataStore;
+            cmdlt.SetCommandRuntimeMock(_commandRuntimeMock);
             cmdlt.DefaultProfile = profile;
 
             // Act
@@ -157,8 +162,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            Assert.True(AzureSession.DataStore.FileExists("X:\\foo.json"));
-            var profile2 = new AzureRMProfile("X:\\foo.json");
+            Assert.True(_dataStore.FileExists("X:\\foo.json"));
+            var profile2 = new AzureRMProfile("X:\\foo.json", _dataStore);
             Assert.True(profile2.Environments.ContainsKey("foo"));
         }
     }

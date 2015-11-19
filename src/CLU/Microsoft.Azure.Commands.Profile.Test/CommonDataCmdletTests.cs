@@ -95,23 +95,23 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 testAction(rmProfile, smProfile);
        }
 
-        [Theory,
-        InlineData(null, null),
-        InlineData("", null),
-        InlineData("AccountName=myAccount","AccountName=myAccount")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-       public void CanClearStorageAccountForRMProfile(string connectionString, string expected)
-        {
-            RunDataProfileTest(
-                CreateAzureRMProfile(connectionString),
-                CreateAzureSMProfile(null),
-                (rm, sm) =>
-                {
-                    Assert.Equal(expected, rm.Context.GetCurrentStorageAccountName());
-                    GeneralUtilities.ClearCurrentStorageAccount(new MemoryDataStore(), rm );
-                    Assert.True(string.IsNullOrEmpty(rm.Context.GetCurrentStorageAccountName()));
-                });
-        }
+        //[Theory,
+        //InlineData(null, null),
+        //InlineData("", null),
+        //InlineData("AccountName=myAccount","AccountName=myAccount")]
+       // [Trait(Category.AcceptanceType, Category.CheckIn)]
+       //public void CanClearStorageAccountForRMProfile(string connectionString, string expected)
+       // {
+       //     RunDataProfileTest(
+       //         CreateAzureRMProfile(connectionString),
+       //         CreateAzureSMProfile(null),
+       //         (rm, sm) =>
+       //         {
+       //             Assert.Equal(expected, rm.Context.GetCurrentStorageAccountName());
+       //             GeneralUtilities.ClearCurrentStorageAccount(new MemoryDataStore(), rm );
+       //             Assert.True(string.IsNullOrEmpty(rm.Context.GetCurrentStorageAccountName()));
+       //         });
+       // }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

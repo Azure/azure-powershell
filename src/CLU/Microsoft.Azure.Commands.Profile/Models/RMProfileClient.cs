@@ -432,10 +432,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             out AzureSubscription subscription,
             out AzureTenant tenant)
         {
-            using (var subscriptionClient = _clientFactory.CreateCustomClient<SubscriptionClient>(
-                new TokenCredentials(accessToken.AccessToken),
-                environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager)))
+            using (var subscriptionClient = _clientFactory.CreateCustomArmClient<SubscriptionClient>(
+                environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager), 
+                new TokenCredentials(accessToken.AccessToken)))
             {
+                //TODO: Fix subscription client to not require subscriptionId
+                subscriptionClient.SubscriptionId = subscriptionId ?? Guid.NewGuid().ToString();
                 Subscription subscriptionFromServer = null;
 
                 try
@@ -517,10 +519,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             var commonTenantToken = AcquireAccessToken(account, environment, AuthenticationFactory.CommonAdTenant,
                 password, promptBehavior);
 
-            using (var subscriptionClient = _clientFactory.CreateCustomClient<SubscriptionClient>(
-                    new TokenCredentials(commonTenantToken.AccessToken),
-                    environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager)))
+            using (var subscriptionClient = _clientFactory.CreateCustomArmClient<SubscriptionClient>(
+                    environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager), 
+                    new TokenCredentials(commonTenantToken.AccessToken)
+                    ))
             {
+                //TODO: Fix subscription client to not require subscriptionId
+                subscriptionClient.SubscriptionId = Guid.NewGuid().ToString();
                 return subscriptionClient.Tenants.List()
                     .Select(ti => new AzureTenant() { Id = new Guid(ti.TenantId), Domain = commonTenantToken.GetDomain() })
                     .ToList();
@@ -531,10 +536,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             string password, ShowDialog promptBehavior, string tenantId)
         {
             var accessToken = AcquireAccessToken(account, environment, tenantId, password, promptBehavior);
-            using (var subscriptionClient = _clientFactory.CreateCustomClient<SubscriptionClient>(
-                new TokenCredentials(accessToken.AccessToken),
-                environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager)))
+            using (var subscriptionClient = _clientFactory.CreateCustomArmClient<SubscriptionClient>(
+                environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager), 
+                new TokenCredentials(accessToken.AccessToken)
+                ))
             {
+                //TODO: Fix subscription client to not require subscriptionId
+                subscriptionClient.SubscriptionId = Guid.NewGuid().ToString();
                 var subscriptions = subscriptionClient.Subscriptions.List();
                 if (subscriptions != null && subscriptions.Any())
                 {

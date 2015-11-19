@@ -12,19 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Resources.Test.ScenarioTests;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Xunit;
+using System;
+using Microsoft.Azure.Common.Authentication;
 
-namespace Microsoft.Azure.Commands.Profile.Test
+namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 {
-    public class ProfileModuleTests
+    public class MockAccessToken : IAccessToken
     {
-        [Fact(Skip= "TODO, [#108248038]: Enable scenario tests")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void WarningOnIncompatibleVersions()
+        private string _tenantId = String.Empty;
+        public void AuthorizeRequest(Action<string, string> authTokenSetter)
         {
-            ProfileController.NewInstance.RunPsTest("db1ab6f0-4769-4b27-930e-01e2ef9c123c", "Test-LoadProfileModule");
+            authTokenSetter("Bearer", AccessToken);
+        }
+
+        public string AccessToken { get; set; }
+        public string UserId { get; set; }
+        public LoginType LoginType { get; set; }
+
+        public string TenantId
+        {
+            get { return _tenantId; }
+            set { _tenantId = value; }
         }
     }
 }
