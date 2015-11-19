@@ -84,22 +84,20 @@ namespace Microsoft.Azure.Commands.Utilities.Common
         public AzurePSCmdlet()
         {
             _debugMessages = new ConcurrentQueue<string>();
-            // TODO: Instantiate ClientFactory and AuthenticationFactory
-            // remove
-            ClientFactory = new ClientFactory();
-            AuthenticationFactory = new AuthenticationFactory();
 #if DEBUG
             if (!TestMockSupport.RunningMocked)
             {
 #endif
-                DataStore = new DiskDataStore();
+                DataStore = DataStore ?? new DiskDataStore();
 #if DEBUG
             }
             else
             {
-                DataStore = new MemoryDataStore();
+                DataStore = DataStore ?? new MemoryDataStore();
             }
 #endif
+            AuthenticationFactory = AuthenticationFactory ?? new AuthenticationFactory(DataStore);
+            ClientFactory =  ClientFactory?? new ClientFactory(DataStore, AuthenticationFactory);
         }
 
         protected virtual T GetSessionVariableValue<T>(string name, T defaultValue) where T : class
@@ -338,7 +336,11 @@ namespace Microsoft.Azure.Commands.Utilities.Common
         protected new void WriteObject(object sendToPipeline)
         {
             FlushDebugMessages();
+#if DEBUG
+            CommandRuntime.WriteObject(sendToPipeline);
+#else
             base.WriteObject(sendToPipeline);
+#endif
         }
 
         protected new void WriteObject(object sendToPipeline, bool enumerateCollection)

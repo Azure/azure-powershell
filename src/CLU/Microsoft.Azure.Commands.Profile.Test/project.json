@@ -1,6 +1,6 @@
 {
   "version": "1.0.0-*",
-  "description": "Microsoft.Azure.Commands.Common.Resources Class Library",
+  "description": "Tests for Authentication Management Cmdlets",
   "authors": [ "markcowl" ],
   "tags": [ "" ],
   "projectUrl": "",
@@ -16,12 +16,19 @@
   },
   "dependencies": {
     "Commands.Common.Authentication": "",
+    "Commands.ResourceManager.Common": "",
     "Commands.Common": "",
+    "Microsoft.Azure.Commands.Profile": "",
+    "Commands.ScenarioTests.ResourceManager.Common": "",
+    "Microsoft.Azure.Management.Resources": "3.1.1-preview",
     "Microsoft.IdentityModel.Clients.ActiveDirectory": "3.6.210231457-alpha",
     "Microsoft.Rest.ClientRuntime": "1.4.1",
+    "Microsoft.Rest.ClientRuntime.Azure": "2.1.0",
+    "Microsoft.Rest.ClientRuntime.Azure.Authentication": "1.0.0-preview",
     "Newtonsoft.Json": "6.0.8",
     "System.Collections": "4.0.11-beta-23409",
     "System.Collections.Concurrent": "4.0.11-beta-23409",
+    "System.Diagnostics.Tools": "4.0.1-beta-23516",
     "System.Diagnostics.TraceSource": "4.0.0-beta-23516",
     "System.Diagnostics.Tracing": "4.0.21-beta-23516",
     "System.IO": "4.0.11-beta-23516",
@@ -35,6 +42,7 @@
     "System.Runtime": "4.0.21-beta-23516",
     "System.Runtime.Extensions": "4.0.11-beta-23409",
     "System.Runtime.Serialization.Json": "4.0.1-beta-23409",
+    "System.Runtime.Serialization.Primitives": "4.1.0-beta-23516",
     "System.Runtime.Serialization.Xml": "4.0.11-beta-23409",
     "System.Security.Cryptography.Algorithms": "4.0.0-beta-23516",
     "System.Security.Cryptography.X509Certificates": "4.0.0-beta-23516",
@@ -42,6 +50,13 @@
     "System.Text.Encoding.Extensions": "4.0.11-beta-23516",
     "System.Threading": "4.0.11-beta-23409",
     "System.Threading.Tasks": "4.0.11-beta-23516",
-    "System.Threading.Thread": "4.0.0-beta-23516"
+    "System.Threading.Thread": "4.0.0-beta-23516",
+    "System.Xml.ReaderWriter": "4.0.11-beta-23516",
+    "xunit": "2.1.0-rc1-build3168",
+    "xunit.assert": "2.1.0-rc1-build3168",
+    "xunit.runner.dnx": "2.1.0-rc1-build204"
+  },
+  "commands": {
+    "test": "xunit.runner.dnx"
   }
 }

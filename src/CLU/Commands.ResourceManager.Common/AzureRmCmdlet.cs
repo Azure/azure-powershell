@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             var sessionProfile = GetSessionVariableValue<PSAzureProfile>(AzurePowerShell.ProfileVariable, null);
             if (sessionProfile != null)
             {
-                DefaultProfile = sessionProfile;
+                DefaultProfile = DefaultProfile?? sessionProfile;
             }
             base.BeginProcessing();
             //TODO:  Add back RP automatic registration
