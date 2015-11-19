@@ -22,7 +22,6 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public const string ExtensionDefaultName = "CustomScriptExtension";
         public const string ExtensionDefaultVersion = "1.4";
 
-
         public string CommandToExecute { get; set; }
         public string[] Uri { get; set; }
 

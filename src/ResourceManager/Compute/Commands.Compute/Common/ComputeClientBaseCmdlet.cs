@@ -63,6 +63,15 @@ namespace Microsoft.Azure.Commands.Compute
             }
             catch (CloudException ex)
             {
+                try
+                {
+                    base.EndProcessing();
+                }
+                catch
+                {
+                    // Ignore exceptions during end processing
+                }
+
                 throw new ComputeCloudException(ex);
             }
         }
