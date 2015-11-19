@@ -273,6 +273,24 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Passing policy is mandatory for enabling protection..
+        /// </summary>
+        internal static string PassingPolicyMandatoryForEnablingDR {
+            get {
+                return ResourceManager.GetString("PassingPolicyMandatoryForEnablingDR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Passing Azure storage account is mandatory for enabling protection in Enterprise to Azure and Hoster to Azure scenarios..
+        /// </summary>
+        internal static string PassingStorageMandatoryForEnablingDRInAzureScenarios {
+            get {
+                return ResourceManager.GetString("PassingStorageMandatoryForEnablingDRInAzureScenarios", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Policy {0} is not associated with the Vault {1}.
         /// </summary>
         internal static string PolicyNotFound {
@@ -440,6 +458,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Properties {
         internal static string SiteNotFound {
             get {
                 return ResourceManager.GetString("SiteNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SiteRecovery vault type will be deprecated soon. Please use RecoveryServices vault type instead..
+        /// </summary>
+        internal static string SiteRecoveryVaultTypeWillBeDeprecatedSoon {
+            get {
+                return ResourceManager.GetString("SiteRecoveryVaultTypeWillBeDeprecatedSoon", resourceCulture);
             }
         }
         

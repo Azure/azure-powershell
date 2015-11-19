@@ -158,3 +158,38 @@ function WaitForJobCompletion
 
 	Assert-True { $endStateDescription -ccontains $job.State } "Job did not reached desired state within $NumOfSecondsToWait seconds."
 }
+
+<#
+.SYNOPSIS
+Site Recovery Vault CRUD Tests
+#>
+function Test-SiteRecoveryVaultCRUDTests
+{
+	# Create vault
+	$vaultCreationResponse = New-AzureRmSiteRecoveryVault -Name rsv1 -ResouceGroupName testsitegroup -Location westus
+	Assert-NotNull($vaultCreationResponse.Name)
+	Assert-NotNull($vaultCreationResponse.ID)
+	Assert-NotNull($vaultCreationResponse.Type)
+
+	# Enumerate Vaults
+	$vaults = Get-AzureRmSiteRecoveryVault
+	Assert-True { $vaults.Count -gt 0 }
+	Assert-NotNull($vaults)
+	foreach($vault in $vaults)
+	{
+		Assert-NotNull($vault.Name)
+		Assert-NotNull($vault.ID)
+		Assert-NotNull($vault.Type)
+	}
+
+	# Get the created vault
+	$vaultToBeRemoved = Get-AzureRmSiteRecoveryVault -ResourceGroupName testsitegroup -Name rsv1
+	Assert-NotNull($vaultToBeRemoved.Name)
+	Assert-NotNull($vaultToBeRemoved.ID)
+	Assert-NotNull($vaultToBeRemoved.Type)
+
+	# Remove Vault
+	Remove-AzureRmSiteRecoveryVault -Vault $vaultToBeRemoved
+	$vaults = Get-AzureRmSiteRecoveryVault -ResourceGroupName testsitegroup -Name rsv1
+	Assert-True { $vaults.Count -eq 0 }
+}
