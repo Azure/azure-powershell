@@ -27,7 +27,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common;
 using Microsoft.Azure.Commands.Common.Properties;
 
-namespace Microsoft.WindowsAzure.Commands.Utilities.Common
+namespace Microsoft.Azure.Commands.Utilities.Common
 {
     public static class GeneralUtilities
     {

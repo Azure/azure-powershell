@@ -12,24 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Linq;
-using Microsoft.Azure.Commands.Common.Authentication;
+using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.ResourceManager.Common
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Tags
 {
-    public static class AccessTokenExtensions
+    public class PSTag
     {
-        public static string GetDomain(this IAccessToken token)
-        {
-            if( token != null && token.UserId !=null && token.UserId.Contains('@'))
-            {
-                return token.UserId.Split(
-                    new[] { '@' }, 
-                    StringSplitOptions.RemoveEmptyEntries).Last();
-            }
+        public string Name { get; set; }
 
-            return null;
-        }
+        public string ValuesTable { get; set; }
+
+        public string Count { get; set; }
+
+        public List<PSTagValue> Values { get; set; }
     }
 }

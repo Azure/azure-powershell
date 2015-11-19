@@ -1,6 +1,6 @@
 {
   "version": "1.0.0-*",
-  "description": "Microsoft.WindowsAzure.Commands.Common Class Library",
+  "description": "Microsoft.Azure.Commands.Common Class Library",
   "authors": [ "markcowl" ],
   "tags": [ "" ],
   "projectUrl": "",

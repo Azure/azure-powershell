@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "Commands.Common.Authentication": "",
-    "Commands.Common.Resources": "",
+    "Commands.ResourceManager.Common": "",
     "Commands.Common": "",
     "Microsoft.Azure.Commands.Profile": "",
     "Microsoft.Azure.Management.Resources": "3.1.1-preview",
