@@ -88,12 +88,22 @@ function Test-NewDeploymentWithKeyVaultReference
 		# Test
 		New-AzureRmResourceGroup -Name $rgname -Location $rglocation
 
-		$keyVault = New-AzureRmKeyVault -VaultName $keyVaultname -ResourceGroupName $rgname -Location $location -EnabledForTemplateDeployment
-		$parameters = @{ "keyVaultName" = $keyVaultname; "secretName" = $secretName; "secretValue" = $hostplanName }
-		New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile keyVaultSetupTemplate.json -TemplateParameterObject $parameters
+		$context = Get-AzureRmContext
+		$subscriptionId = $context.Subscription.SubscriptionId
+		$account = Get-AzureAccount -Name $context.Account.Id
+		$tenantId = $account.Tenants
+		$adUser = Get-AzureRmADUser -UserPrincipalName $context.Account.Id
+		$objectId = $adUser.Id
+		$KeyVaultResourceId = "/subscriptions/" + $subscriptionId + "/resourcegroups/" + $rgname + "/providers/Microsoft.KeyVault/vaults/" + $keyVaultname
+		
+		$parameters = @{ "keyVaultName" = $keyVaultname; "secretName" = $secretName; "secretValue" = $hostplanName; "tenantId" = $tenantId; "objectId" = $objectId }
+		$deployment = New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile keyVaultSetupTemplate.json -TemplateParameterObject $parameters
+
+		# Assert
+		Assert-AreEqual Succeeded $deployment.ProvisioningState
 
 		$content = (Get-Content keyVaultTemplateParams.json) -join '' | ConvertFrom-Json
-		$content.hostingPlanName.reference.KeyVault.id = $keyVault.resourceid
+		$content.hostingPlanName.reference.KeyVault.id = $KeyVaultResourceId
 		$content.hostingPlanName.reference.SecretName = $secretName
 		$content | ConvertTo-Json -depth 999 | Out-File keyVaultTemplateParams.json
 

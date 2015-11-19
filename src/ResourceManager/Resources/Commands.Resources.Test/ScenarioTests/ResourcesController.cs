@@ -24,14 +24,13 @@ using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Insights;
 using Microsoft.Azure.Management.Authorization;
-using Microsoft.Azure.Management.KeyVault;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.Azure.Common.Authentication.Models;
+
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
@@ -52,17 +51,15 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public SubscriptionClient SubscriptionClient { get; private set; }
 
         public GalleryClient GalleryClient { get; private set; }
-        
+
         public InsightsClient InsightsClient { get; private set; }
 
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
-        public KeyVaultManagementClient KeyVaultManagementClient { get; private set; }
-
         public string UserDomain { get; private set; }
 
-        public static ResourcesController NewInstance 
-        { 
+        public static ResourcesController NewInstance
+        {
             get
             {
                 return new ResourcesController();
@@ -80,9 +77,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             var mockName = TestUtilities.GetCurrentMethodName(2);
 
             RunPsTestWorkflow(
-                () => scripts, 
+                () => scripts,
                 // no custom initializer
-                null, 
+                null,
                 // no custom cleanup 
                 null,
                 callingClassType,
@@ -90,8 +87,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
 
         public void RunPsTestWorkflow(
-            Func<string[]> scriptBuilder, 
-            Action<CSMTestEnvironmentFactory> initialize, 
+            Func<string[]> scriptBuilder,
+            Action<CSMTestEnvironmentFactory> initialize,
             Action cleanup,
             string callingClassType,
             string mockName)
@@ -102,24 +99,23 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
                 this.csmTestFactory = new CSMTestEnvironmentFactory();
 
-                if(initialize != null)
+                if (initialize != null)
                 {
                     initialize(this.csmTestFactory);
                 }
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                SetupAzureContext();
+
                 SetupManagementClients();
-             
+
                 var callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
-                helper.SetupModules(AzureModule.AzureResourceManager, 
-                    "ScenarioTests\\Common.ps1", 
-                    "ScenarioTests\\" + callingClassName + ".ps1", 
-                    helper.RMProfileModule, 
-                    helper.RMResourceModule,
-                    helper.GetRMModulePath("AzureRM.KeyVault.psd1"));
+                helper.SetupModules(AzureModule.AzureResourceManager,
+                    "ScenarioTests\\Common.ps1",
+                    "ScenarioTests\\" + callingClassName + ".ps1",
+                    helper.RMProfileModule,
+                    helper.RMResourceModule);
 
                 try
                 {
@@ -135,7 +131,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 }
                 finally
                 {
-                    if(cleanup !=null)
+                    if (cleanup != null)
                     {
                         cleanup();
                     }
@@ -152,7 +148,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             GraphClient = GetGraphClient();
             InsightsClient = GetInsightsClient();
             this.FeatureClient = this.GetFeatureClient();
-            KeyVaultManagementClient = GetKeyVaultManagementClient();
             HttpClientHelperFactory.Instance = new TestHttpClientHelperFactory(this.csmTestFactory.GetTestEnvironment().Credentials as SubscriptionCloudCredentials);
 
             helper.SetupManagementClients(ResourceManagementClient,
@@ -161,8 +156,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 AuthorizationManagementClient,
                 GraphClient,
                 InsightsClient,
-                this.FeatureClient,
-                KeyVaultManagementClient);
+                this.FeatureClient);
         }
 
         private GraphRbacManagementClient GetGraphClient()
@@ -225,81 +219,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         private InsightsClient GetInsightsClient()
         {
             return TestBase.GetServiceClient<InsightsClient>(this.csmTestFactory);
-        }
-
-        private KeyVaultManagementClient GetKeyVaultManagementClient()
-        {
-            return TestBase.GetServiceClient<KeyVaultManagementClient>(this.csmTestFactory);
-        }
-
-        private void SetupAzureContext()
-        {
-            TestEnvironment csmEnvironment = new CSMTestEnvironmentFactory().GetTestEnvironment();
-
-            if (csmEnvironment.SubscriptionId != null)
-            {
-                //Overwrite the default subscription and default account
-                //with ones using user ID and tenant ID from auth context
-                var user = GetUser(csmEnvironment);
-                var tenantId = GetTenantId(csmEnvironment);
-
-                var testSubscription = new AzureSubscription()
-                {
-                    Id = new Guid(csmEnvironment.SubscriptionId),
-                    Name = AzureRmProfileProvider.Instance.Profile.Context.Subscription.Name,
-                    Environment = AzureRmProfileProvider.Instance.Profile.Context.Environment.Name,
-                    Account = user,
-                    Properties = new Dictionary<AzureSubscription.Property, string>
-                    {
-                        {AzureSubscription.Property.Default, "True"},
-                        {
-                            AzureSubscription.Property.StorageAccount,
-                            Environment.GetEnvironmentVariable("AZURE_STORAGE_ACCOUNT")
-                        },
-                        {AzureSubscription.Property.Tenants, tenantId},
-                    }
-                };
-
-                var testAccount = new AzureAccount()
-                {
-                    Id = user,
-                    Type = AzureAccount.AccountType.User,
-                    Properties = new Dictionary<AzureAccount.Property, string>
-                    {
-                        {AzureAccount.Property.Subscriptions, csmEnvironment.SubscriptionId},
-                        {AzureAccount.Property.Tenants, tenantId},
-                    }
-                };
-
-                AzureRmProfileProvider.Instance.Profile.Context = new AzureContext(testSubscription, testAccount, AzureRmProfileProvider.Instance.Profile.Context.Environment, new AzureTenant { Id = new Guid(tenantId) });
-            }
-
-        }
-
-        private string GetTenantId(TestEnvironment environment)
-        {
-            if (HttpMockServer.Mode == HttpRecorderMode.Record)
-            {
-                HttpMockServer.Variables["TenantId"] = environment.AuthorizationContext.TenantId;
-                return environment.AuthorizationContext.TenantId;
-            }
-            else
-            {
-                return HttpMockServer.Variables["TenantId"];
-            }
-        }
-
-        private string GetUser(TestEnvironment environment)
-        {
-            if (HttpMockServer.Mode == HttpRecorderMode.Record)
-            {
-                HttpMockServer.Variables["User"] = environment.AuthorizationContext.UserId;
-                return environment.AuthorizationContext.UserId;
-            }
-            else
-            {
-                return HttpMockServer.Variables["User"];
-            }
         }
 
         /// <summary>
