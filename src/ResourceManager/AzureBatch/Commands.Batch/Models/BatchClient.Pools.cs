@@ -207,8 +207,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// <summary>
         /// Enables automatic scaling on the specified pool.
         /// </summary>
-        /// <param name="parameters">The parameters specifying the pool and autoscale formula.</param>
-        public void EnableAutoScale(AutoScaleParameters parameters)
+        /// <param name="parameters">The parameters specifying the pool and autoscale parameters.</param>
+        public void EnableAutoScale(EnableAutoScaleParameters parameters)
         {
             if (parameters == null)
             {
@@ -219,7 +219,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             WriteVerbose(string.Format(Resources.EnableAutoScale, poolId, parameters.AutoScaleFormula));
             PoolOperations poolOperations = parameters.Context.BatchOMClient.PoolOperations;
-            poolOperations.EnableAutoScale(poolId, parameters.AutoScaleFormula, parameters.AdditionalBehaviors);
+            poolOperations.EnableAutoScale(poolId, parameters.AutoScaleFormula, parameters.AutoScaleEvaluationInterval, 
+                parameters.AdditionalBehaviors);
         }
 
         /// <summary>

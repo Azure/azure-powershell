@@ -12,8 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Batch;
-using Microsoft.Azure.Batch.Common;
 using Microsoft.Azure.Commands.Batch.Models;
 using System;
 using System.Management.Automation;
@@ -21,32 +19,29 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsLifecycle.Enable, Constants.AzureBatchAutoScale)]
-    public class EnableBatchAutoScaleCommand : BatchObjectModelCmdletBase
+    [Cmdlet(VerbsLifecycle.Enable, Constants.AzureBatchComputeNodeScheduling, DefaultParameterSetName = Constants.IdParameterSet)]
+    public class EnableBatchComputeNodeSchedulingCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, HelpMessage = "The id of the pool to enable automatic scaling on.")]
+        [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true,
+            HelpMessage = "The id of the pool that contains the compute node.")]
+        [ValidateNotNullOrEmpty]
+        public string PoolId { get; set; }
+
+        [Parameter(Position = 1, ParameterSetName = Constants.IdParameterSet, Mandatory = true,
+            HelpMessage = "The id of the compute node to reimage.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
-        [Parameter(Position = 1)]
+        [Parameter(Position = 0, ParameterSetName = Constants.InputObjectParameterSet, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string AutoScaleFormula { get; set; }
-
-        [Parameter(Position = 2)]
-        [ValidateNotNullOrEmpty]
-        public TimeSpan? AutoScaleEvaluationInterval { get; set; }
+        public PSComputeNode ComputeNode { get; set; }
 
         protected override void ProcessRecord()
         {
-            EnableAutoScaleParameters parameters = new EnableAutoScaleParameters(this.BatchContext, this.Id,
-                null, this.AdditionalBehaviors)
-            {
-                AutoScaleFormula = this.AutoScaleFormula,
-                AutoScaleEvaluationInterval = this.AutoScaleEvaluationInterval
-            };
+            ComputeNodeOperationParameters parameters = new ComputeNodeOperationParameters(this.BatchContext, this.PoolId, 
+                this.Id, this.ComputeNode, this.AdditionalBehaviors);
 
-            BatchClient.EnableAutoScale(parameters);
+            BatchClient.EnableComputeNodeScheduling(parameters);
         }
     }
 }

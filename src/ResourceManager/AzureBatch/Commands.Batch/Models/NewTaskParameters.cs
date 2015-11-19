@@ -71,5 +71,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// The task constraints.
         /// </summary>
         public PSTaskConstraints Constraints { get; set; }
+
+        /// <summary>
+        /// The settings of running multi-instance task.
+        /// </summary>
+        public PSMultiInstanceSettings MultiInstanceSettings { get; set; }
     }
 }

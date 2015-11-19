@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class SubtaskInformation
+    public class PSSubtaskInformation
     {
         
         internal Microsoft.Azure.Batch.SubtaskInformation omObject;
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private PSTaskSchedulingError schedulingError;
         
-        internal SubtaskInformation(Microsoft.Azure.Batch.SubtaskInformation omObject)
+        internal PSSubtaskInformation(Microsoft.Azure.Batch.SubtaskInformation omObject)
         {
             if ((omObject == null))
             {
