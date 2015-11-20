@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroupDeployments
             ValidatePSResourceGroupDeploymentParameters parameters = new ValidatePSResourceGroupDeploymentParameters()
             {
                 ResourceGroupName = ResourceGroupName,
-                TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
+                TemplateFile = TemplateUri ?? TemplateFile,
                 TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
                 ParameterUri = TemplateParameterUri
             };

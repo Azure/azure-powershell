@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Resources
                 ResourceGroupName = ResourceGroupName,
                 DeploymentName = Name,
                 DeploymentMode = Mode,
-                TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
+                TemplateFile = TemplateUri ?? TemplateFile,
                 TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
                 ParameterUri = TemplateParameterUri
             };

@@ -98,15 +98,15 @@ namespace Microsoft.Azure.Commands.Resources
                 if (string.IsNullOrEmpty(TemplateParameterUri))
                 {
                     dynamicParameters = GetTemplateParametersFromFile(
-                        this.TryResolvePath(TemplateFile),
+                        TemplateFile,
                         TemplateParameterObject,
-                        this.TryResolvePath(TemplateParameterFile),
+                        TemplateParameterFile,
                         MyInvocation.MyCommand.Parameters.Keys.ToArray());
                 }
                 else
                 {
                     dynamicParameters = GetTemplateParametersFromFile(
-                        this.TryResolvePath(TemplateFile),
+                        TemplateFile,
                         TemplateParameterObject,
                         TemplateParameterUri,
                         MyInvocation.MyCommand.Parameters.Keys.ToArray());
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.Resources
                     dynamicParameters = GetTemplateParametersFromFile(
                         TemplateUri,
                         TemplateParameterObject,
-                        this.TryResolvePath(TemplateParameterFile),
+                        TemplateParameterFile,
                         MyInvocation.MyCommand.Parameters.Keys.ToArray());
                 }
                 else

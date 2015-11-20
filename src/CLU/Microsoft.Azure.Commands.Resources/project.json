@@ -19,8 +19,8 @@
     "Commands.Common": "",
     "Commands.ResourceManager.Common": "",
     "Commands.ResourceManager.Cmdlets": "",
-    "Microsoft.Azure.Graph.RBAC":  "2.0.0-preview",
-    "Microsoft.Azure.Management.Authorization": "2.0.0-preview",
+    "Microsoft.Azure.Graph.RBAC": "2.0.0-preview",
+    "Microsoft.Azure.Management.Authorization": "2.0.1-preview",
     "Microsoft.Azure.Management.Resources": "3.1.1-preview",
     "Microsoft.IdentityModel.Clients.ActiveDirectory": "3.6.210231457-alpha",
     "Microsoft.Rest.ClientRuntime": "1.4.1",
@@ -52,6 +52,7 @@
     "System.Threading": "4.0.11-beta-23409",
     "System.Threading.Tasks": "4.0.11-beta-23516",
     "System.Threading.Thread": "4.0.0-beta-23516",
-    "System.Xml.ReaderWriter": "4.0.11-beta-23516"
+    "System.Xml.ReaderWriter": "4.0.11-beta-23516",
+    "System.Text.RegularExpressions": "4.0.11-beta-23516"
   }
 }

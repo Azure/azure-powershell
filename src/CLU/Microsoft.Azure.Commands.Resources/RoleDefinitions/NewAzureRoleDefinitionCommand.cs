@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Resources
             PSRoleDefinition role = null;
             if (!string.IsNullOrEmpty(InputFile))
             {
-                string fileName = this.TryResolvePath(InputFile);
+                string fileName = InputFile;
                 if (!(new FileInfo(fileName)).Exists)
                 {
                     throw new PSArgumentException(string.Format("File {0} does not exist", fileName));

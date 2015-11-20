@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.Resources
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
+    using System.Text.RegularExpressions;
     using Microsoft.Azure.Commands.Resources.Models;
     using Microsoft.Azure.Management.Resources.Models;
     using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
@@ -87,7 +88,7 @@ namespace Microsoft.Azure.Commands.Resources
         private List<PSResourceProviderOperation> ProcessProviderOperationsWithWildCard(string actionSearchString)
         {
             // Filter the list of all operation names to what matches the wildcard
-            WildcardPattern wildcard = new WildcardPattern(actionSearchString, WildcardOptions.IgnoreCase | WildcardOptions.Compiled);
+            Regex wildcard = new Regex(actionSearchString, RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
             List<ProviderOperationsMetadata> providers = new List<ProviderOperationsMetadata>();
             string provider = this.OperationSearchString.Split(Separator).First();
