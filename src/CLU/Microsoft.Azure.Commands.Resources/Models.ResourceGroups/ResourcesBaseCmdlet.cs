@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             {
                 if (this.resourcesClient == null)
                 {
-                    this.resourcesClient = new ResourcesClient(ClientFactory, DefaultContext)
+                    this.resourcesClient = new ResourcesClient(ClientFactory, DefaultContext, DataStore)
                     {
                         VerboseLogger = WriteVerboseWithTimestamp,
                         ErrorLogger = WriteErrorWithTimestamp,

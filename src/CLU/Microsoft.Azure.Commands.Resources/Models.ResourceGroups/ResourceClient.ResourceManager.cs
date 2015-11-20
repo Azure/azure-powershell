@@ -228,17 +228,14 @@ namespace Microsoft.Azure.Commands.Resources.Models
                         throw new ArgumentException(ProjectResources.InvalidTagFormat);
                     }
                 }
-                var listResult = ResourceManagementClient.Resources.List(new ResourceListParameters
-                    {
-                        ResourceGroupName = parameters.ResourceGroupName,
-                        ResourceType = parameters.ResourceType,
-                        TagName = tagValuePair.Name,
-                        TagValue = tagValuePair.Value
-                    });
+                var listResult = ResourceManagementClient.Resources.List( item =>
+                    item.ResourceType == parameters.ResourceType &&
+                    item.Tagname == tagValuePair.Name && 
+                    item.Tagvalue == tagValuePair.Value);
 
-                if (listResult.Resources != null)
+                if (listResult != null)
                 {
-                    resources.AddRange(listResult.Resources.Select(r => r.ToPSResource(this, false)));
+                    resources.AddRange(listResult.Select(r => r.ToPSResource(this, false)));
                 }
             }
             return resources;
@@ -320,17 +317,14 @@ namespace Microsoft.Azure.Commands.Resources.Models
             }
             else
             {
-                var result = ResourceManagementClient.Resources.List(new GenericResourceFilter
-                {
-                    ResourceType = options.ResourceType
-                });
+                var result = ResourceManagementClient.Resources.List( item => item.ResourceType == options.ResourceType);
 
-                resources.AddRange(result.Resources);
+                resources.AddRange(result);
 
-                while (!string.IsNullOrEmpty(result.NextLink))
+                while (!string.IsNullOrEmpty(result.NextPageLink))
                 {
-                    result = ResourceManagementClient.Resources.ListNext(result.NextLink);
-                    resources.AddRange(result.Resources);
+                    result = ResourceManagementClient.Resources.ListNext(result.NextPageLink);
+                    resources.AddRange(result);
                 }
             }
 

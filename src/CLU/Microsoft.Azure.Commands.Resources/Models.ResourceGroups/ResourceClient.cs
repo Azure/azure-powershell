@@ -63,12 +63,14 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
         public Action<string> WarningLogger { get; set; }
 
+        public IDataStore DataStore { get; set; }
+
         /// <summary>
         /// Creates new ResourceManagementClient
         /// </summary>
         /// <param name="clientFactory">Factory for management cleints</param>
         /// <param name="context">Profile containing resources to manipulate</param>
-        public ResourcesClient(IClientFactory clientFactory, AzureContext context)
+        public ResourcesClient(IClientFactory clientFactory, AzureContext context, IDataStore dataStore)
             : this(
                 clientFactory.CreateClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
                 clientFactory.CreateClient<AuthorizationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
@@ -329,7 +331,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             }
             else
             {
-                deployment.Properties.Template = FileUtilities.DataStore.ReadFileAsText(parameters.TemplateFile);
+                deployment.Properties.Template = DataStore.ReadFileAsText(parameters.TemplateFile);
             }
 
             if (Uri.IsWellFormedUriString(parameters.ParameterUri, UriKind.Absolute))
