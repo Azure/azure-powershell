@@ -56,9 +56,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
         public IResourceManagementClient ResourceManagementClient { get; set; }
 
         public IAuthorizationManagementClient AuthorizationManagementClient { get; set; }
-
-        public GalleryTemplatesClient GalleryTemplatesClient { get; set; }
-
+        
         public Action<string> VerboseLogger { get; set; }
 
         public Action<string> ErrorLogger { get; set; }
@@ -137,32 +135,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
             return response.ToPSResourceProvider();
         }
-
-        private string GetTemplate(string templateFile, string galleryTemplateName)
-        {
-            string template;
-
-            if (!string.IsNullOrEmpty(templateFile))
-            {
-                if (Uri.IsWellFormedUriString(templateFile, UriKind.Absolute))
-                {
-                    template = GeneralUtilities.DownloadFile(templateFile);
-                }
-                else
-                {
-                    template = FileUtilities.DataStore.ReadFileAsText(templateFile);
-                }
-            }
-            else
-            {
-                Debug.Assert(!string.IsNullOrEmpty(galleryTemplateName));
-                string templateUri = GalleryTemplatesClient.GetGalleryTemplateFile(galleryTemplateName);
-                template = GeneralUtilities.DownloadFile(templateUri);
-            }
-
-            return template;
-        }
-
+        
         private ResourceGroup CreateOrUpdateResourceGroup(string name, string location, Hashtable[] tags)
         {
             Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(tags, validate: true);
@@ -352,13 +325,6 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 deployment.Properties.TemplateLink = new TemplateLink
                 {
                     Uri = parameters.TemplateFile
-                };
-            }
-            else if (!string.IsNullOrEmpty(parameters.GalleryTemplateIdentity))
-            {
-                deployment.Properties.TemplateLink = new TemplateLink
-                {
-                    Uri = GalleryTemplatesClient.GetGalleryTemplateFile(parameters.GalleryTemplateIdentity)
                 };
             }
             else

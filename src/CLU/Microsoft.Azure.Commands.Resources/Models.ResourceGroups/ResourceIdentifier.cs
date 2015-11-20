@@ -143,29 +143,6 @@ namespace Microsoft.Azure.Commands.Resources.Models
             return resourceId.ToString();
         }
         
-        public ResourceIdentity ToResourceIdentity(string apiVersion)
-        {
-            if (string.IsNullOrEmpty(ResourceType))
-            {
-                throw new ArgumentNullException("ResourceType");
-            }
-            if (ResourceType.IndexOf('/') < 0)
-            {
-                throw new ArgumentException(ProjectResources.ResourceTypeFormat, "ResourceType");
-            }
-
-            ResourcesResourceIdentity identity = new ResourcesResourceIdentity
-            {
-                ResourceName = ResourceName,
-                ParentResourcePath = ParentResource,
-                ResourceProviderNamespace = ResourceIdentifier.GetProviderFromResourceType(ResourceType),
-                ResourceType = ResourceIdentifier.GetTypeFromResourceType(ResourceType),
-                ResourceProviderApiVersion = apiVersion
-            };
-
-            return identity;
-        }
-
         private void AppendIfNotNull(ref StringBuilder resourceId, string format, string value)
         {
             if (!string.IsNullOrEmpty(value))

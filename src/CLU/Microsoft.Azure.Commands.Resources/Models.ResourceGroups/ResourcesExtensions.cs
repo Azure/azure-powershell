@@ -139,18 +139,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
             return result;
         }
-
-        public static PSGalleryItem ToPSGalleryItem(this GalleryItem gallery)
-        {
-            PSGalleryItem psGalleryItem = new PSGalleryItem();
-            foreach (PropertyInfo prop in gallery.GetType().GetProperties())
-            {
-                (typeof(PSGalleryItem)).GetProperty(prop.Name).SetValue(psGalleryItem, prop.GetValue(gallery, null), null);
-            }
-
-            return psGalleryItem;
-        }
-
+        
         // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
         //public static PSDeploymentEventData ToPSDeploymentEventData(this EventData eventData)
         //{

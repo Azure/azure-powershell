@@ -12,19 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.Resources.Models;
+using Microsoft.Rest.Azure;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using Microsoft.Azure.Commands.Tags.Model;
-using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Management.Resources.Models;
-using Microsoft.Azure;
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
-using Hyak.Common;
-using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
@@ -256,7 +252,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// <returns>The created resource group</returns>
         public virtual PSResourceGroup CreatePSResourceGroup(CreatePSResourceGroupParameters parameters)
         {
-            bool createDeployment = !string.IsNullOrEmpty(parameters.GalleryTemplateIdentity) || !string.IsNullOrEmpty(parameters.TemplateFile);
+            bool createDeployment = !string.IsNullOrEmpty(parameters.TemplateFile);
             bool? resourceExists = ResourceManagementClient.ResourceGroups.CheckExistence(parameters.ResourceGroupName);
 
             ResourceGroup resourceGroup = null;
@@ -368,10 +364,6 @@ namespace Microsoft.Azure.Commands.Resources.Models
             else if (!string.IsNullOrEmpty(parameters.TemplateFile))
             {
                 return Path.GetFileNameWithoutExtension(parameters.TemplateFile);
-            }
-            else if (!string.IsNullOrEmpty(parameters.GalleryTemplateIdentity))
-            {
-                return parameters.GalleryTemplateIdentity;
             }
             else
             {

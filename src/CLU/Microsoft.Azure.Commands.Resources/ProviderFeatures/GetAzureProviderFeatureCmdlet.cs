@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Resources.ProviderFeatures
                     break;
                     
                 default:
-                    throw new ApplicationException(string.Format("Unknown parameter set encountered: '{0}'", this.ParameterSetName));
+                    throw new PSInvalidOperationException(string.Format("Unknown parameter set encountered: '{0}'", this.ParameterSetName));
             }
         }
     }

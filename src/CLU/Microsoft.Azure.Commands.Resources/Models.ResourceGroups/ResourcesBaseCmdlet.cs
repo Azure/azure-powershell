@@ -26,12 +26,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// Field that holds the resource client instance
         /// </summary>
         private ResourcesClient resourcesClient;
-
-        /// <summary>
-        /// Field that holds the gallery templates client instance
-        /// </summary>
-        private GalleryTemplatesClient galleryTemplatesClient;
-
+        
         /// <summary>
         /// Field that holds the policies client instance
         /// </summary>
@@ -57,26 +52,6 @@ namespace Microsoft.Azure.Commands.Resources.Models
             }
 
             set { this.resourcesClient = value; }
-        }
-
-        /// <summary>
-        /// Gets or sets the gallery templates client
-        /// </summary>
-        public GalleryTemplatesClient GalleryTemplatesClient
-        {
-            get
-            {
-                if (this.galleryTemplatesClient == null)
-                {
-                    // since this accessor can be called before BeginProcessing, use GetCurrentContext if no 
-                    // profile is passed in
-                    this.galleryTemplatesClient = new GalleryTemplatesClient(ClientFactory, DefaultContext);
-                }
-
-                return this.galleryTemplatesClient;
-            }
-
-            set { this.galleryTemplatesClient = value; }
         }
 
         /// <summary>

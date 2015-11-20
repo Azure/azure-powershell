@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Utilities.Common;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -87,55 +88,7 @@ namespace Microsoft.Azure.Commands.Resources
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Uri to the template file.")]
         [ValidateNotNullOrEmpty]
         public string TemplateUri { get; set; }
-
-        public object GetDynamicParameters()
-        {
-            if (!string.IsNullOrEmpty(TemplateFile) &&
-                !TemplateFile.Equals(templateFile, StringComparison.OrdinalIgnoreCase))
-            {
-                templateFile = TemplateFile;
-                if (string.IsNullOrEmpty(TemplateParameterUri))
-                {
-                    dynamicParameters = GalleryTemplatesClient.GetTemplateParametersFromFile(
-                        TemplateFile,
-                        TemplateParameterObject,
-                        TemplateParameterFile,
-                        MyInvocation.MyCommand.Parameters.Keys.ToArray());
-                }
-                else
-                {
-                    dynamicParameters = GalleryTemplatesClient.GetTemplateParametersFromFile(
-                        TemplateFile,
-                        TemplateParameterObject,
-                        TemplateParameterUri,
-                        MyInvocation.MyCommand.Parameters.Keys.ToArray());
-                }
-            }
-            else if (!string.IsNullOrEmpty(TemplateUri) &&
-                !TemplateUri.Equals(templateUri, StringComparison.OrdinalIgnoreCase))
-            {
-                templateUri = TemplateUri;
-                if (string.IsNullOrEmpty(TemplateParameterUri))
-                {
-                    dynamicParameters = GalleryTemplatesClient.GetTemplateParametersFromFile(
-                        TemplateUri,
-                        TemplateParameterObject,
-                        TemplateParameterFile,
-                        MyInvocation.MyCommand.Parameters.Keys.ToArray());
-                }
-                else
-                {
-                    dynamicParameters = GalleryTemplatesClient.GetTemplateParametersFromFile(
-                        TemplateUri,
-                        TemplateParameterObject,
-                        TemplateParameterUri,
-                        MyInvocation.MyCommand.Parameters.Keys.ToArray());
-                }
-            }
-
-            return dynamicParameters;
-        }
-
+        
         protected Hashtable GetTemplateParameterObject(Hashtable templateParameterObject)
         {
             templateParameterObject = templateParameterObject ?? new Hashtable();
@@ -144,7 +97,7 @@ namespace Microsoft.Azure.Commands.Resources
             string templateParameterFilePath = TemplateParameterFile;
             if (templateParameterFilePath != null && FileUtilities.DataStore.FileExists(templateParameterFilePath))
             {
-                var parametersFromFile = GalleryTemplatesClient.ParseTemplateParameterFileContents(templateParameterFilePath);
+                var parametersFromFile = this.ParseTemplateParameterFileContents(templateParameterFilePath);
                 parametersFromFile.ForEach(dp => templateParameterObject[dp.Key] = dp.Value.Value);
             }
 
@@ -156,6 +109,28 @@ namespace Microsoft.Azure.Commands.Resources
             }
 
             return templateParameterObject;
+        }
+
+        private Dictionary<string, TemplateFileParameterV1> ParseTemplateParameterFileContents(string templateParameterFilePath)
+        {
+            Dictionary<string, TemplateFileParameterV1> parameters = new Dictionary<string, TemplateFileParameterV1>();
+
+            if (!string.IsNullOrEmpty(templateParameterFilePath) && 
+                FileUtilities.DataStore.FileExists(templateParameterFilePath))
+            {
+                try
+                {
+                    parameters = JsonConvert.DeserializeObject<Dictionary<string, TemplateFileParameterV1>>(
+                        FileUtilities.DataStore.ReadFileAsText(templateParameterFilePath));
+                }
+                catch (JsonSerializationException)
+                {
+                    parameters = new Dictionary<string, TemplateFileParameterV1>(
+                        JsonConvert.DeserializeObject<TemplateFileParameterV2>(FileUtilities.DataStore.ReadFileAsText(templateParameterFilePath)).Parameters);
+                }
+            }
+
+            return parameters;
         }
     }
 }
