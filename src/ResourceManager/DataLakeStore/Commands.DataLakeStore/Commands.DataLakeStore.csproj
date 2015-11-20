@@ -55,7 +55,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.DataLake.StoreFileSystem, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataLake.StoreFileSystem.0.9.5-preview\lib\net40\Microsoft.Azure.Management.DataLake.StoreFileSystem.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataLake.StoreFileSystem.0.9.6-preview\lib\net40\Microsoft.Azure.Management.DataLake.StoreFileSystem.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.DataLake.StoreUploader, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -152,6 +152,7 @@
     <Compile Include="Models\DataLakeStoreEnums.cs" />
     <Compile Include="Models\DataLakeStoreFileSystemClient.cs" />
     <Compile Include="Models\DataLakeStoreFileSystemCmdletBase.cs" />
+    <Compile Include="Models\DataLakeStoreItem.cs" />
     <Compile Include="Models\DataLakeStoreItemAcl.cs" />
     <Compile Include="Models\DataLakeStoreItemPermissionInstance.cs" />
     <Compile Include="Models\DataLakeStorePathInstance.cs" />

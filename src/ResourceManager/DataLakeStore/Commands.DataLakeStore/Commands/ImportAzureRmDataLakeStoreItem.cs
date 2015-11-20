@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             if (Directory.Exists(powerShellSourcePath))
             {
                 DataLakeStoreFileSystemClient.CopyDirectory(
-                    Destination.Path,
+                    Destination.TransformedPath,
                     Account,
                     powerShellSourcePath,
                     CmdletCancellationToken,
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             else if (File.Exists(powerShellSourcePath))
             {
                 DataLakeStoreFileSystemClient.CopyFile(
-                    Destination.Path,
+                    Destination.TransformedPath,
                     Account,
                     powerShellSourcePath,
                     CmdletCancellationToken,
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             // only attempt to write output if this cmdlet hasn't been cancelled.
             if (!CmdletCancellationToken.IsCancellationRequested && !Stopping)
             {
-                WriteObject(Destination.FullyQualifiedPath);
+                WriteObject(Destination.OriginalPath);
             }
         }
     }
