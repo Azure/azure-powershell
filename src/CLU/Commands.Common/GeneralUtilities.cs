@@ -347,6 +347,25 @@ namespace Microsoft.Azure.Commands.Utilities.Common
             return new Uri(endpoint);
         }
 
+        public static string DownloadFile(string uri)
+        {
+            string contents = null;
+
+            using (HttpClient httClient = new HttpClient())
+            {
+                try
+                {
+                    contents = httClient.GetStringAsync(uri).ConfigureAwait(false).GetAwaiter().GetResult();
+                }
+                catch
+                {
+                    // Ignore the exception and return empty contents
+                }
+            }
+
+            return contents;
+        }
+
         public static string GenerateSeparator(int amount, string separator)
         {
             StringBuilder result = new StringBuilder();

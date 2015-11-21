@@ -87,24 +87,6 @@ namespace Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
-        ///    Looks up a localized string similar to Removing tag .....
-        /// </summary>
-        internal static string RemoveTagMessage {
-            get {
-                return ResourceManager.GetString("RemoveTagMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///    Looks up a localized string similar to Are you sure you want to remove tag &apos;{0}&apos;.
-        /// </summary>
-        internal static string RemovingTag {
-            get {
-                return ResourceManager.GetString("RemovingTag", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///    Looks up a localized string similar to Tag &apos;{0}&apos; not found.
         /// </summary>
         internal static string TagNotFoundMessage {
