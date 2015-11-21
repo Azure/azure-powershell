@@ -8,7 +8,7 @@
   "frameworks": {
     "dnxcore50": {
       "dependencies": {
-        "Microsoft.CLU": "1.0.0-*",
+        "Microsoft.CLU": "0.0.1-beta-151119",
         "Microsoft.CSharp": "4.0.1-beta-23409",
         "System.Linq": "4.0.1-beta-23409"
       }
