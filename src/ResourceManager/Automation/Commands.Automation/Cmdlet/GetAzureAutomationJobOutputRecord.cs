@@ -29,17 +29,16 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the job id
         /// </summary>
-        [Alias("JobId")]
         [Parameter(Mandatory = true, Position = 2, ValueFromPipelineByPropertyName = true, HelpMessage = "The job Id")]
-        public Guid Id { get; set; }
+        public Guid JobId { get; set; }
 
         /// <summary>
-        /// Gets or sets the job stream id
+        /// Gets or sets the job stream record id
         /// </summary>
-        [Alias("OutputRecordId")]
+        [Alias("StreamRecordId")]
         [Parameter(Mandatory = true, Position = 3, ValueFromPipelineByPropertyName = true, HelpMessage = "The stream record id")]
         [ValidateNotNullOrEmpty]
-        public string JobStreamId { get; set; }
+        public string Id { get; set; }
         
         /// <summary>
         /// Execute this cmdlet.
@@ -47,7 +46,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationProcessRecord()
         {
-            var ret = this.AutomationClient.GetJobStreamRecord(this.ResourceGroupName, this.AutomationAccountName, this.Id, this.JobStreamId);
+            var ret = this.AutomationClient.GetJobStreamRecord(this.ResourceGroupName, this.AutomationAccountName, this.JobId, this.Id);
             this.GenerateCmdletOutput(ret);
         }
     }

@@ -47,12 +47,12 @@ namespace Microsoft.Azure.Commands.Automation.Model
         {
             Requires.Argument("jobStream", jobStream).NotNull();
 
-            this.JobStreamId = jobStream.Properties.JobStreamId;
+            this.StreamRecordId = jobStream.Properties.JobStreamId;
             this.Type = jobStream.Properties.StreamType;
             this.Time = jobStream.Properties.Time;
             this.AutomationAccountName = automationAccountName;
             this.ResourceGroupName = resourceGroupName;
-            this.Id = jobId;
+            this.JobId = jobId;
 
             if (!String.IsNullOrWhiteSpace(jobStream.Properties.Summary))
             {
@@ -82,12 +82,12 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Gets or sets the Job Id.
         /// </summary>
-        public Guid Id { get; set; }
+        public Guid JobId { get; set; }
 
         /// <summary>
-        /// Gets or sets the stream id
+        /// Gets or sets the stream record id
         /// </summary>
-        public string JobStreamId { get; set; }
+        public string StreamRecordId { get; set; }
 
         /// <summary>
         /// Gets or sets the stream time.

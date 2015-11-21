@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Automation.Common;
 
@@ -45,7 +46,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// </exception>
         public JobStreamRecord(AutomationManagement.Models.JobStream jobStream, string resourceGroupName, string automationAccountName, Guid jobId ) : base (jobStream, resourceGroupName, automationAccountName, jobId)
         {
-            this.Value = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
+            this.Value = new List<object>();
             foreach (var kvp in jobStream.Properties.Value)
             {
                 object paramValue;
@@ -60,7 +61,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
 
                     paramValue = kvp.Value;
                 }
-                this.Value.Add(kvp.Key, paramValue);
+                this.Value.Add(paramValue);
             }
 
         }
@@ -75,6 +76,6 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Gets or sets the stream values.
         /// </summary>
-        public Hashtable Value { get; set; }
+        public List<object> Value { get; set; }
     }
 }
