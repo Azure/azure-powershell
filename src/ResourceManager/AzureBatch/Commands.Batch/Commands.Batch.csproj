@@ -60,7 +60,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Batch">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Batch.1.5.0\lib\net40\Microsoft.Azure.Management.Batch.dll</HintPath>
-    </Reference>    
+    </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.7-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
@@ -157,12 +157,14 @@
     <Compile Include="Certificates\RemoveBatchCertificateCommand.cs" />
     <Compile Include="Certificates\NewBatchCertificateCommand.cs" />
     <Compile Include="Certificates\StopBatchCertificateDeletionCommand.cs" />
+    <Compile Include="ComputeNodes\RemoveBatchComputeNodeCommand.cs" />
     <Compile Include="ComputeNodes\ResetBatchComputeNodeCommand.cs" />
     <Compile Include="ComputeNodes\RestartBatchComputeNodeCommand.cs" />
     <Compile Include="ComputeNodeUsers\SetBatchComputeNodeUserCommand.cs" />
     <Compile Include="Files\GetBatchNodeFileCommand.cs" />
     <Compile Include="Files\GetBatchNodeFileContentCommand.cs" />
     <Compile Include="Files\GetBatchRemoteDesktopProtocolFileCommand.cs" />
+    <Compile Include="Files\RemoveBatchNodeFileCommand.cs" />
     <Compile Include="JobSchedules\DisableBatchJobScheduleCommand.cs" />
     <Compile Include="JobSchedules\EnableBatchJobScheduleCommand.cs" />
     <Compile Include="JobSchedules\SetBatchJobScheduleCommand.cs" />
@@ -270,6 +272,7 @@
     <Compile Include="Models\ComputeNodeUserOperationParameters.cs" />
     <Compile Include="Models\RebootComputeNodeParameters.cs" />
     <Compile Include="Models\ReimageComputeNodeParameters.cs" />
+    <Compile Include="Models\RemoveComputeNodeParameters.cs" />
     <Compile Include="Models\TaskOperationParameters.cs" />
     <Compile Include="Models\ComputeNodeOperationParameters.cs" />
     <Compile Include="Models\JobScheduleOperationParameters.cs" />
