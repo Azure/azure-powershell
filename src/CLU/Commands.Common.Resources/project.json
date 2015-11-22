@@ -8,18 +8,17 @@
   "frameworks": {
     "dnxcore50": {
       "dependencies": {
-        "Microsoft.CLU": "1.0.0-*",
-        "Microsoft.CSharp": "4.0.1-beta-23409",
-        "System.Linq": "4.0.1-beta-23409"
+        "Microsoft.NETCore": "5.0.1-beta-23516",
+        "Microsoft.NETCore.Platforms": "1.0.1-beta-23516",
+       "Microsoft.CSharp": "4.0.1-beta-23516"
       }
     }
   },
   "dependencies": {
-    "Commands.Common.Authentication": "",
-    "Commands.Common": "",
+    "System.Linq": "4.0.1-beta-23516",
     "Microsoft.IdentityModel.Clients.ActiveDirectory": "3.6.210231457-alpha",
     "Microsoft.Rest.ClientRuntime": "1.4.1",
-    "Newtonsoft.Json": "6.0.8",
+    "Newtonsoft.Json": "7.0.0",
     "System.Collections": "4.0.11-beta-23409",
     "System.Collections.Concurrent": "4.0.11-beta-23409",
     "System.Diagnostics.TraceSource": "4.0.0-beta-23516",
@@ -42,6 +41,9 @@
     "System.Text.Encoding.Extensions": "4.0.11-beta-23516",
     "System.Threading": "4.0.11-beta-23409",
     "System.Threading.Tasks": "4.0.11-beta-23516",
-    "System.Threading.Thread": "4.0.0-beta-23516"
+    "System.Threading.Thread": "4.0.0-beta-23516",
+    "Microsoft.CLU": "1.0.0",
+    "Commands.Common": "1.0.0-*",
+    "Commands.Common.Authentication": "1.0.0-*"
   }
 }
