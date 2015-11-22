@@ -61,7 +61,7 @@ FormatsToProcess = @()
   
 # Modules to import as nested modules of the module specified in ModuleToProcess  
 NestedModules = @(  
-    '.\Microsoft.Azure.Commands.RecoveryServices.dll'
+    '.\Microsoft.Azure.Commands.RecoveryServices.ARM.dll'
 )
   
 # Functions to export from this module  
