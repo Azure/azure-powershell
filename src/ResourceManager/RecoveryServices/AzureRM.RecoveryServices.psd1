@@ -9,7 +9,7 @@
 @{  
   
 # Version number of this module.  
-ModuleVersion = '1.0.1'
+ModuleVersion = '1.0.2'
   
 # ID used to uniquely identify this module  
 GUID = '4AA53B7E-FCFE-4E22-979C-9A4E6380DE58'  
@@ -61,7 +61,7 @@ FormatsToProcess = @()
   
 # Modules to import as nested modules of the module specified in ModuleToProcess  
 NestedModules = @(  
-    '.\Microsoft.Azure.Commands.RecoveryServices.dll'
+    '.\Microsoft.Azure.Commands.RecoveryService.dll'
 )
   
 # Functions to export from this module  
