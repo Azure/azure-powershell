@@ -191,4 +191,7 @@
   <data name="SpecifyValueGreaterOrEqualToZeroMessage" xml:space="preserve">
     <value>Please specify value greater than or equal to 0</value>
   </data>
+  <data name="NotInitializedErrorMessage" xml:space="preserve">
+    <value>Not initialized</value>
+  </data>
 </root>

@@ -23,6 +23,7 @@ using Microsoft.Azure.Management.Intune;
 using Microsoft.Azure.Management.Intune.Models;
 using Microsoft.Rest.Azure;
 using Newtonsoft.Json;
+using Microsoft.Azure.Commands.Intune.Properties;
 
 namespace Microsoft.Azure.Commands.Intune
 {
@@ -74,6 +75,72 @@ namespace Microsoft.Azure.Commands.Intune
             }
         }
 
+
+        /// <summary>
+        /// Gets the GetOperationResults Page.
+        /// </summary>
+        public IPage<OperationResult> GetOperationResults(string hostName, string filter = null, int? top = null, string select = null)
+        {
+            if (this.Initialized)
+            {
+                IPage<OperationResult> operationResults = this.IntuneClient.GetOperationResults(hostName, filter, top, select);
+                return operationResults;
+            }
+            else
+            {
+                throw new InvalidOperationException(Resources.NotInitializedErrorMessage);
+            }
+        }
+
+        /// <summary>
+        /// Gets the GetOperationResults Next Page.
+        /// </summary>
+        public IPage<OperationResult> GetOperationResultsNext(string nextPageLink)
+        {
+            if (this.Initialized)
+            {
+                IPage<OperationResult> operationResults = this.IntuneClient.GetOperationResultsNext(nextPageLink);
+                return operationResults;
+            }
+            else
+            {
+                throw new InvalidOperationException(Resources.NotInitializedErrorMessage);
+            }
+        }
+
+
+        /// <summary>
+        /// Gets the Devices Page.
+        /// </summary>
+        public IPage<Device> GetUserDevices(string hostName, string userName, string filter = null, int? top = null, string select = null)
+        {
+            if (this.Initialized)
+            {
+                IPage<Device> devices = this.IntuneClient.GetUserDevices(hostName, userName, filter, top, select);
+                return devices;
+            }
+            else
+            {
+                throw new InvalidOperationException(Resources.NotInitializedErrorMessage);
+            }
+        }
+
+        /// <summary>
+        /// Gets the Devices Next Page.
+        /// </summary>
+        public IPage<Device> GetUserDevicesNext(string nextPageLink)
+        {
+            if (this.Initialized)
+            {
+                IPage<Device> devices = this.IntuneClient.GetUserDevicesNext(nextPageLink);
+                return devices;
+            }
+            else
+            {
+                throw new InvalidOperationException(Resources.NotInitializedErrorMessage);
+            }
+        }
+
         /// <summary>
         /// Gets the Android MAM Policies Page.
         /// </summary>
@@ -86,7 +153,7 @@ namespace Microsoft.Azure.Commands.Intune
             }
             else
             {
-                throw new InvalidOperationException("Not initialized");
+                throw new InvalidOperationException(Resources.NotInitializedErrorMessage);
             }
         }
 
@@ -102,7 +169,7 @@ namespace Microsoft.Azure.Commands.Intune
             }
             else
             {
-                throw new InvalidOperationException("Not initialized");
+                throw new InvalidOperationException(Resources.NotInitializedErrorMessage);
             }
         }
 
@@ -118,7 +185,7 @@ namespace Microsoft.Azure.Commands.Intune
             }
             else
             {
-                throw new InvalidOperationException("Not initialized");
+                throw new InvalidOperationException(Resources.NotInitializedErrorMessage);
             }
         }
 
@@ -134,7 +201,7 @@ namespace Microsoft.Azure.Commands.Intune
             }
             else
             {
-                throw new InvalidOperationException("Not initialized");
+                throw new InvalidOperationException(Resources.NotInitializedErrorMessage);
             }
         }
 
@@ -150,7 +217,7 @@ namespace Microsoft.Azure.Commands.Intune
             }
             else
             {
-                throw new InvalidOperationException("Not initialized");
+                throw new InvalidOperationException(Resources.NotInitializedErrorMessage);
             }
         }
 
@@ -166,7 +233,7 @@ namespace Microsoft.Azure.Commands.Intune
             }
             else
             {
-                throw new InvalidOperationException("Not initialized");
+                throw new InvalidOperationException(Resources.NotInitializedErrorMessage);
             }
         }
 

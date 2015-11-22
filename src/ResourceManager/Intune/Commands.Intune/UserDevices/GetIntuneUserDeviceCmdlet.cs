@@ -14,66 +14,74 @@
 
 namespace Microsoft.Azure.Commands.Intune
 {
+    using System.Management.Automation;
     using Management.Intune;
     using Management.Intune.Models;
-    using Microsoft.Azure.Commands.Intune.Properties;
     using System.Collections.Generic;
-    using System.Management.Automation;
+    using System.Globalization;
 
     /// <summary>
-    /// Cmdlet to get existing iOS Intune MAM Policy.
+    /// Cmdlet to get apps for User.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmIntuneiOSMAMPolicy"), OutputType(typeof(PSObject))]
-    public sealed class GetIntuneiOSMAMPolicyCmdlet : IntuneBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureRmIntuneUserApp"), OutputType(typeof(PSObject))]
+    public sealed class GetIntuneUserDeviceCmdlet : IntuneBaseCmdlet
     {
         /// <summary>
-        /// Gets the policy name.
+        /// Gets the Devices Name
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy name to fetch.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Device name to fetch.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Gets the User name
+        /// </summary>
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The User name for the Devices to fetch.")]
+        [ValidateNotNullOrEmpty]
+        public string Username { get; set; }
 
         /// <summary>
         /// Contains the cmdlet's execution logic.
         /// </summary>
         protected override void ProcessRecord()
         {
-            if (Name != null)
+           if (Name != null)
             {
-                GetiOSPolicyByName();
+                GetUserDeviceByName();
             }
             else
             {
-                GetiOSPolicies();
+                GetUserDevices();
             }
         }
 
         /// <summary>
-        /// Get iOS policy by policy name.
+        /// Get GetUserDevice by device name.
         /// </summary>
-        private void GetiOSPolicyByName()
+        private void GetUserDeviceByName()
         {
-            var iOSPolicy = this.IntuneClient.Ios.GetMAMPolicyById(this.AsuHostName, this.Name, select: null);
+            var device = this.IntuneClient.GetUserDeviceByDeviceName(this.AsuHostName, this.Username, this.Name, select: null);
 
-            this.WriteObject(iOSPolicy);
+            this.WriteObject(device);
         }
 
         /// <summary>
-        /// Get all iOS Policies
+        /// Get all GetUserDevices
         /// </summary>
-        private void GetiOSPolicies()
+        private void GetUserDevices()
         {
-            MultiPageGetter<IOSMAMPolicy> mpg = new MultiPageGetter<IOSMAMPolicy>();
-            List<IOSMAMPolicy> items = mpg.GetAllResources(
-                this.IntuneClient.Ios.GetMAMPolicies,
-                this.IntuneClient.Ios.GetMAMPoliciesNext,
+            MultiPageGetter<Device> mpg = new MultiPageGetter<Device>();
+
+            List<Device> items = mpg.GetAllResources(
+                this.IntuneClientWrapper.GetUserDevices,
+                this.IntuneClientWrapper.GetUserDevicesNext,
                 this.AsuHostName,
+                this.Username,
                 filter: null,
                 top: null,
                 select: null);
 
             this.WriteObject(items, enumerateCollection: true);
-
         }
     }
 }

@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Intune
         /// </summary>
         private void GetAndroidPolicyById()
         {
-            var andriodPolicy = this.IntuneClient.Android.GetMAMPolicyById(this.AsuHostName, this.Name);
+            var andriodPolicy = this.IntuneClient.Android.GetMAMPolicyById(this.AsuHostName, this.Name, select: null);
             this.WriteObject(andriodPolicy);
         }
 

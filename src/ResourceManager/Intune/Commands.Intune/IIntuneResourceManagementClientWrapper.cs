@@ -32,6 +32,26 @@ namespace Microsoft.Azure.Commands.Intune
         void Initialize(AzureContext defaultContext, string apiVersion);
 
         /// <summary>
+        /// Gets the GetOperationResults Page.
+        /// </summary>
+        IPage<OperationResult> GetOperationResults(string hostName, string filter = null, int? top = null, string select = null);
+        
+        /// <summary>
+        /// Gets the GetOperationResults Next Page.
+        /// </summary>
+        IPage<OperationResult> GetOperationResultsNext(string nextPageLink);
+
+        /// <summary>
+        /// Gets the Devices Page.
+        /// </summary>
+        IPage<Device> GetUserDevices(string hostName, string userName, string filter = null, int? top = null, string select = null);
+
+        /// <summary>
+        /// Gets the Devices Next Page.
+        /// </summary>
+        IPage<Device> GetUserDevicesNext(string nextPageLink);
+
+        /// <summary>
         /// Gets the Android MAM Policies Page.
         /// </summary>
         IPage<AndroidMAMPolicy> GetAndroidMAMPolicies(string hostName, string filter = null, int? top = null, string select = null);

@@ -17,63 +17,41 @@ namespace Microsoft.Azure.Commands.Intune
     using Management.Intune;
     using Management.Intune.Models;
     using Microsoft.Azure.Commands.Intune.Properties;
+    using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Management.Automation;
 
     /// <summary>
-    /// Cmdlet to get existing iOS Intune MAM Policy.
+    /// Cmdlet to get existing Operation results.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmIntuneiOSMAMPolicy"), OutputType(typeof(PSObject))]
-    public sealed class GetIntuneiOSMAMPolicyCmdlet : IntuneBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureRmIntuneOperationResults", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
+    public sealed class GetIntuneOperationResultsCmdlet : IntuneBaseCmdlet
     {
-        /// <summary>
-        /// Gets the policy name.
-        /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy name to fetch.")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
         /// <summary>
         /// Contains the cmdlet's execution logic.
         /// </summary>
         protected override void ProcessRecord()
         {
-            if (Name != null)
-            {
-                GetiOSPolicyByName();
-            }
-            else
-            {
-                GetiOSPolicies();
-            }
+            GetOperationResults();
         }
 
         /// <summary>
-        /// Get iOS policy by policy name.
+        /// Get all OperationResults
         /// </summary>
-        private void GetiOSPolicyByName()
+        private void GetOperationResults()
         {
-            var iOSPolicy = this.IntuneClient.Ios.GetMAMPolicyById(this.AsuHostName, this.Name, select: null);
+            MultiPageGetter<OperationResult> mpg = new MultiPageGetter<OperationResult>();
 
-            this.WriteObject(iOSPolicy);
-        }
-
-        /// <summary>
-        /// Get all iOS Policies
-        /// </summary>
-        private void GetiOSPolicies()
-        {
-            MultiPageGetter<IOSMAMPolicy> mpg = new MultiPageGetter<IOSMAMPolicy>();
-            List<IOSMAMPolicy> items = mpg.GetAllResources(
-                this.IntuneClient.Ios.GetMAMPolicies,
-                this.IntuneClient.Ios.GetMAMPoliciesNext,
+            List<OperationResult> items = mpg.GetAllResources(
+                this.IntuneClientWrapper.GetOperationResults,
+                this.IntuneClientWrapper.GetOperationResultsNext,
                 this.AsuHostName,
                 filter: null,
                 top: null,
                 select: null);
 
             this.WriteObject(items, enumerateCollection: true);
-
         }
     }
 }

@@ -187,6 +187,15 @@ namespace Microsoft.Azure.Commands.Intune.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Not initialized.
+        /// </summary>
+        internal static string NotInitializedErrorMessage {
+            get {
+                return ResourceManager.GetString("NotInitializedErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 1 item deleted..
         /// </summary>
         internal static string OneItemDeleted {
