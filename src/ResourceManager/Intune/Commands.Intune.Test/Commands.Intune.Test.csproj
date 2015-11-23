@@ -159,7 +159,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="ScenarioTests\IntuneTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

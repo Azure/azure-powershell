@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// The tenant level parameter set.
         /// </summary>
-        public const string ResourceIdParameterSet = "The resource Id.";
+        internal const string ResourceIdParameterSet = "The resource Id.";
 
         /// <summary>
         /// Gets or sets the resource Id parameter.

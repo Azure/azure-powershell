@@ -124,8 +124,6 @@ namespace Microsoft.Azure.Commands.Intune.Test.ScenarioTests
         internal static void InitializeEnvironment()
         {
             Environment.SetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION", "SubscriptionId=3e9e6f07-6225-4d10-8fd4-5f0236c28f5a;Environment=Dogfood;UserId=admin@aad296.ccsctp.net;Password=Pa$$w0rd");
-            // Environment.SetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION", "SubscriptionId=None;Environment=Dogfood;UserId=admin@uxmdmonly.ccsctp.net;Password=P0rsche911");
-            // AZURE_TEST_MODE = None, Record, Playback
             Environment.SetEnvironmentVariable("AZURE_TEST_MODE", "Playback");
         }
     }

@@ -47,7 +47,6 @@ namespace Microsoft.Azure.Commands.Resources.Test
         {
             resourcesClientMock = new Mock<ResourcesClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
-
             cmdlet = new NewAzureResourceGroupCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
@@ -76,9 +75,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 DeploymentName = deploymentName,
                 Tag = tags
             };
-
-            CreatePSResourceGroupParameters actualParameters = new CreatePSResourceGroupParameters();
-            
+            CreatePSResourceGroupParameters actualParameters = new CreatePSResourceGroupParameters();        
             PSResourceGroup expected = new PSResourceGroup()
             {
                 Location = expectedParameters.Location,

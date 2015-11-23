@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
     /// <summary>
     /// A helper class for converting <see cref="JObject"/> and <see cref="JToken"/> objects to <see cref="PSObject"/> classes.
     /// </summary>
-    public static class JTokenExtensions
+    internal static class JTokenExtensions
     {
         /// <summary>
         /// A lookup table that contains the native mappings which are supported.
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
         /// </summary>
         /// <param name="jtoken">The <see cref="JObject"/></param>
         /// <param name="objectType">The type of the object.</param>
-        public static PSObject ToPsObject(this JToken jtoken, string objectType = null)
+        internal static PSObject ToPsObject(this JToken jtoken, string objectType = null)
         {
             if (jtoken == null)
             {

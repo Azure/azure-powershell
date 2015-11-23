@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
     /// <summary>
     /// A helper class for tracking long running operations.
     /// </summary>
-    public class LongRunningOperationHelper
+    internal class LongRunningOperationHelper
     {
         /// <summary>
         /// The default retry after interval.
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// Waits for the operation to complete.
         /// </summary>
         /// <param name="operationResult">The operation result.</param>
-        public string WaitOnOperation(OperationResult operationResult)
+        internal string WaitOnOperation(OperationResult operationResult)
         {
             // TODO: Re-factor this mess.
             this.ProgressTrackerObject.UpdateProgress("Starting", 0);

@@ -26,13 +26,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
     /// <summary>
     /// A helper class that handles common tasks that deal with the <see cref="Resource{JToken}"/> class.
     /// </summary>
-    public static class ResourceExtensions
+    internal static class ResourceExtensions
     {
         /// <summary>
         /// Converts a <see cref="Resource{JToken}"/> object into a <see cref="PSObject"/> object.
         /// </summary>
         /// <param name="resource">The <see cref="Resource{JToken}"/> object.</param>
-        public static PSObject ToPsObject(this Resource<JToken> resource)
+        internal static PSObject ToPsObject(this Resource<JToken> resource)
         {
             var resourceType = string.IsNullOrEmpty(resource.Id)
                 ? null
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
         /// Converts a <see cref="JToken"/> to a <see cref="Resource{JToken}"/>.
         /// </summary>
         /// <param name="jtoken">The <see cref="JToken"/>.</param>
-        public static Resource<JToken> ToResource(this JToken jtoken)
+        internal static Resource<JToken> ToResource(this JToken jtoken)
         {
             return jtoken.ToObject<Resource<JToken>>(JsonExtensions.JsonMediaTypeSerializer);
         }
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
         /// </summary>
         /// <typeparam name="TType">The type of the properties.</typeparam>
         /// <param name="jtoken">The <see cref="JToken"/>.</param>
-        public static Resource<TType> ToResource<TType>(this JToken jtoken)
+        internal static Resource<TType> ToResource<TType>(this JToken jtoken)
         {
             return jtoken.ToObject<Resource<TType>>(JsonExtensions.JsonMediaTypeSerializer);
         }

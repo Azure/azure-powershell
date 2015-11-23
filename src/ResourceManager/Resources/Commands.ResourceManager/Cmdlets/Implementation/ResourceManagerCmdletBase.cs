@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         /// <param name="activityName">The name of the action.</param>
         /// <param name="isResourceCreateOrUpdate">When set to true, indicates that the tracker will be used to track a resource creation request.</param>
-        public LongRunningOperationHelper GetLongRunningOperationTracker(string activityName, bool isResourceCreateOrUpdate)
+        internal LongRunningOperationHelper GetLongRunningOperationTracker(string activityName, bool isResourceCreateOrUpdate)
         {
             return new LongRunningOperationHelper(
                 activityName: activityName,

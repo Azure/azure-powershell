@@ -57,7 +57,6 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 ResourceGroupName = resourceGroupName,
                 Resources = new List<PSResource>() { new PSResource() { Name = "resource1" } }
             };
-
             result.Add(expected);
             resourcesClientMock.Setup(f => f.FilterResourceGroups(resourceGroupName, null, false, null)).Returns(result);
 
@@ -84,7 +83,6 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 ResourceGroupName = resourceGroupName,
                 Resources = new List<PSResource>() { new PSResource() { Name = "resource1" } }
             };
-
             result.Add(expected);
             resourcesClientMock.Setup(f => f.FilterResourceGroups(null, null, true, null)).Returns(result);
 
