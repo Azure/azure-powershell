@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Get AD users.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureADUser", DefaultParameterSetName = ParameterSet.Empty), OutputType(typeof(List<PSADUser>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmADUser", DefaultParameterSetName = ParameterSet.Empty), OutputType(typeof(List<PSADUser>))]
     public class GetAzureADUserCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SearchString,
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [ValidateNotNullOrEmpty]
         public string Mail { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             ADObjectFilterOptions options = new ADObjectFilterOptions
             {

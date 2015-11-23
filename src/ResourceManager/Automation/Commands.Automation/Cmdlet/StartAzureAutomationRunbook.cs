@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Starts an Azure automation runbook.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, "AzureAutomationRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByRunbookName)]
+    [Cmdlet(VerbsLifecycle.Start, "AzureRmAutomationRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByRunbookName)]
     [OutputType(typeof(Job))]
     public class StartAzureAutomationRunbook : AzureAutomationBaseCmdlet
     {
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        protected override void AutomationExecuteCmdlet()
+        protected override void AutomationProcessRecord()
         {
             Job job = null;
 

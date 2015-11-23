@@ -15,6 +15,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Gallery;
@@ -24,6 +25,7 @@ using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
@@ -54,8 +56,8 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                     var testSubscription = new AzureSubscription()
                     {
                         Id = new Guid(csmEnvironment.SubscriptionId),
-                        Name = ProfileClient.Profile.DefaultSubscription.Name,
-                        Environment = ProfileClient.Profile.DefaultSubscription.Environment,
+                        Name = AzureRmProfileProvider.Instance.Profile.Context.Subscription.Name,
+                        Environment = AzureRmProfileProvider.Instance.Profile.Context.Subscription.Environment,
                         Account = user,
                         Properties = new Dictionary<AzureSubscription.Property, string>
                     {
@@ -84,15 +86,14 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                     }
                     };
 
-                    ProfileClient.Profile.Accounts.Remove(ProfileClient.Profile.DefaultSubscription.Account);
-                    ProfileClient.Profile.Subscriptions[testSubscription.Id] = testSubscription;
-                    ProfileClient.Profile.Accounts[testAccount.Id] = testAccount;
-                    ProfileClient.SetSubscriptionAsDefault(testSubscription.Name, testSubscription.Account);
+                    AzureRmProfileProvider.Instance.Profile.Context.Subscription.Name = testSubscription.Name;
+                    AzureRmProfileProvider.Instance.Profile.Context.Subscription.Id = testSubscription.Id;
+                    AzureRmProfileProvider.Instance.Profile.Context.Subscription.Account = testSubscription.Account;
 
-                    var environment = ProfileClient.Profile.Environments[ProfileClient.Profile.DefaultSubscription.Environment];
+                    var environment = AzureRmProfileProvider.Instance.Profile.Environments[AzureRmProfileProvider.Instance.Profile.Context.Subscription.Environment];
                     environment.Endpoints[AzureEnvironment.Endpoint.Graph] = csmEnvironment.Endpoints.GraphUri.AbsoluteUri;
-
-                    ProfileClient.Profile.Save();
+                    environment.Endpoints[AzureEnvironment.Endpoint.StorageEndpointSuffix] = "core.windows.net"; 
+                    AzureRmProfileProvider.Instance.Profile.Save();
                 }
             }
         }

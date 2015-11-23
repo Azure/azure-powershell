@@ -29,21 +29,15 @@ namespace Microsoft.Azure.Commands.HDInsight
     {
         private ClusterResizeParameters resizeParams;
         #region Input Parameter Definitions
-
+        
         [Parameter(
             Position = 0,
-            Mandatory = true,
-            HelpMessage = "Gets or sets the name of the resource group.")]
-        public string ResourceGroupName { get; set; }
-
-        [Parameter(
-            Position = 1,
             Mandatory = true,
             HelpMessage = "Gets or sets the name of the cluster.")]
         public string ClusterName { get; set; }
 
         [Parameter(
-            Position = 3,
+            Position = 1,
             Mandatory = true,
             HelpMessage = "Gets or sets the name of the cluster.")]
         public int TargetInstanceCount
@@ -52,6 +46,9 @@ namespace Microsoft.Azure.Commands.HDInsight
             set { resizeParams.TargetInstanceCount = value; }
         }
 
+        [Parameter(HelpMessage = "Gets or sets the name of the resource group.")]
+        public string ResourceGroupName { get; set; }
+
         #endregion
 
         public SetAzureHDInsightClusterSizeCommand()
@@ -59,8 +56,13 @@ namespace Microsoft.Azure.Commands.HDInsight
             resizeParams = new ClusterResizeParameters();
         }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
+            if (ResourceGroupName == null)
+            {
+                ResourceGroupName = GetResourceGroupByAccountName(ClusterName);
+            }
+
             HDInsightManagementClient.ResizeCluster(ResourceGroupName, ClusterName, resizeParams);
 
             var cluster = HDInsightManagementClient.GetCluster(ResourceGroupName, ClusterName);

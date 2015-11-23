@@ -56,7 +56,13 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             TokenProvider = ((account, environment, tenant) => Token);
         }
 
-        public IAccessToken Authenticate(AzureAccount account, AzureEnvironment environment, string tenant, SecureString password, ShowDialog promptBehavior,
+        public IAccessToken Authenticate(
+            AzureAccount account,
+            AzureEnvironment environment,
+            string tenant,
+            SecureString password,
+            ShowDialog promptBehavior,
+            IdentityModel.Clients.ActiveDirectory.TokenCache tokenCache,
             AzureEnvironment.Endpoint resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
             if (account.Id == null)
@@ -78,6 +84,16 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
                 return TokenProvider(account, environment, tenant);
             }
         }
+        public IAccessToken Authenticate(
+            AzureAccount account,
+            AzureEnvironment environment,
+            string tenant,
+            SecureString password,
+            ShowDialog promptBehavior,
+            AzureEnvironment.Endpoint resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
+        {
+            return Authenticate(account, environment, tenant, password, promptBehavior, AzureSession.TokenCache, resourceId);
+        }
 
         public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(AzureContext context)
         {
@@ -88,6 +104,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
         public Microsoft.Rest.ServiceClientCredentials GetServiceClientCredentials(AzureContext context)
         {
             return new Microsoft.Rest.TokenCredentials(Token.AccessToken);
+        }
+
+        public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(AzureContext context, AzureEnvironment.Endpoint targetEndpoint)
+        {
+            return new TokenCloudCredentials(context.Subscription.Id.ToString(),Token.AccessToken);
         }
     }
 }

@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using Microsoft.Azure.Management.HDInsight.Models;
 
@@ -28,24 +30,43 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             ClusterVersion = cluster.Properties.ClusterVersion;
             OperatingSystemType = cluster.Properties.OperatingSystemType;
             ClusterState = cluster.Properties.ClusterState;
-            ClusterType = cluster.Properties.ClusterDefinition.ClusterType;
+            HDInsightClusterType type;
+            Enum.TryParse(cluster.Properties.ClusterDefinition.ClusterType, out type);
+            ClusterType = type;
             CoresUsed = cluster.Properties.QuotaInfo.CoresUsed;
             var httpEndpoint =
                 cluster.Properties.ConnectivityEndpoints.FirstOrDefault(c => c.Name.Equals("HTTPS", StringComparison.OrdinalIgnoreCase));
             HttpEndpoint = httpEndpoint != null ? httpEndpoint.Location : null;
+            Error = cluster.Properties.ErrorInfos.Select(s => s.Message).FirstOrDefault();
+            ResourceGroup = ClusterConfigurationUtils.GetResourceGroupFromClusterId(cluster.Id);
+        }
 
+        public AzureHDInsightCluster(Cluster cluster, IDictionary<string, string> clusterConfiguration)
+            : this(cluster)
+        {
+            if (clusterConfiguration != null)
+            {
+                var defaultAccount = ClusterConfigurationUtils.GetDefaultStorageAccountDetails(
+                clusterConfiguration,
+                cluster.Properties.ClusterVersion);
+
+                DefaultStorageAccount = defaultAccount.StorageAccountName;
+                DefaultStorageContainer = defaultAccount.StorageContainerName;
+
+                AdditionalStorageAccounts = ClusterConfigurationUtils.GetAdditionStorageAccounts(clusterConfiguration, DefaultStorageAccount);
+            }
         }
 
         /// <summary>
         /// The name of the resource.
         /// </summary>
         public string Name { get; set; }
-        
+
         /// <summary>
         /// The ID of the resource.
         /// </summary>
         public string Id { get; set; }
-        
+
         /// <summary>
         /// The location of the resource.
         /// </summary>
@@ -80,5 +101,30 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// The endpoint with which to connect to the cluster.
         /// </summary>
         public string HttpEndpoint { get; set; }
+
+        /// <summary>
+        /// The error (if any).
+        /// </summary>
+        public string Error { get; set; }
+
+        /// <summary>
+        /// Default storage account for this cluster.
+        /// </summary>
+        public string DefaultStorageAccount { get; set; }
+
+        /// <summary>
+        /// Default storage container for this cluster.
+        /// </summary>
+        public string DefaultStorageContainer { get; set; }
+
+        /// <summary>
+        /// Default storage container for this cluster.
+        /// </summary>
+        public string ResourceGroup { get; set; }
+
+        /// <summary>
+        /// Additional storage accounts for this cluster
+        /// </summary>
+        public List<string> AdditionalStorageAccounts { get; set; }      
     }
 }

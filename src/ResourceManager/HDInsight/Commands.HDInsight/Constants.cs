@@ -17,28 +17,38 @@ namespace Microsoft.Azure.Commands.HDInsight
     {
         public static class CommandNames
         {
-            public const string AzureHDInsightCluster = "AzureHDInsightCluster";
-            public const string AzureHDInsightClusterConfig = "AzureHDInsightClusterConfig";
-            public const string AzureHDInsightClusterSize = "AzureHDInsightClusterSize";
-            public const string AzureHDInsightHttpServicesAccess = "AzureHDInsightHttpServicesAccess";
-            public const string AzureHDInsightRdpServicesAccess = "AzureHDInsightRdpServicesAccess";
-            public const string AzureHDInsightConfigValues = "AzureHDInsightConfigValues";
-            public const string AzureHDInsightMetastore = "AzureHDInsightMetastore";
-            public const string AzureHDInsightScriptAction = "AzureHDInsightScriptAction";
-            public const string AzureHDInsightStorage = "AzureHDInsightStorage";
-            public const string AzureHDInsightProperties = "AzureHDInsightProperties";
-            public const string AzureHDInsightJob = "AzureHDInsightJob";
-            public const string AzureHDInsightJobOutput = "AzureHDInsightJobOutput";
-            public const string AzureHDInsightDefaultStorage = "AzureHDInsightDefaultStorage";
-            public const string AzureHDInsightHiveJob = "AzureHDInsightHiveJob";
+            public const string AzureHDInsightCluster = "AzureRmHDInsightCluster";
+            public const string AzureHDInsightClusterConfig = "AzureRmHDInsightClusterConfig";
+            public const string AzureHDInsightClusterSize = "AzureRmHDInsightClusterSize";
+            public const string AzureHDInsightHttpServicesAccess = "AzureRmHDInsightHttpServicesAccess";
+            public const string AzureHDInsightRdpServicesAccess = "AzureRmHDInsightRdpServicesAccess";
+            public const string AzureHDInsightConfigValues = "AzureRmHDInsightConfigValues";
+            public const string AzureHDInsightMetastore = "AzureRmHDInsightMetastore";
+            public const string AzureHDInsightScriptAction = "AzureRmHDInsightScriptAction";
+            public const string AzureHDInsightStorage = "AzureRmHDInsightStorage";
+            public const string AzureHDInsightProperties = "AzureRmHDInsightProperties";
+            public const string AzureHDInsightJob = "AzureRmHDInsightJob";
+            public const string AzureHDInsightJobOutput = "AzureRmHDInsightJobOutput";
+            public const string AzureHDInsightDefaultStorage = "AzureRmHDInsightDefaultStorage";
+            public const string AzureHDInsightHiveJob = "AzureRmHDInsightHiveJob";
+            public const string AzureHDInsightClusterIdentity = "AzureHDInsightClusterIdentity";
+            public const string Hive = "Hive";
         }
 
         public static class JobDefinitions
         {
-            public const string AzureHDInsightHiveJobDefinition = "AzureHDInsightHiveJobDefinition";
-            public const string AzureHDInsightPigJobDefinition = "AzureHDInsightPigJobDefinition";
-            public const string AzureHDInsightMapReduceJobDefinition = "AzureHDInsightMapReduceJobDefinition";
-            public const string AzureHDInsightStreamingMapReduceJobDefinition = "AzureHDInsightStreamingMapReduceJobDefinition";
+            public const string AzureHDInsightHiveJobDefinition = "AzureRmHDInsightHiveJobDefinition";
+            public const string AzureHDInsightPigJobDefinition = "AzureRmHDInsightPigJobDefinition";
+            public const string AzureHDInsightMapReduceJobDefinition = "AzureRmHDInsightMapReduceJobDefinition";
+            public const string AzureHDInsightStreamingMapReduceJobDefinition = "AzureRmHDInsightStreamingMapReduceJobDefinition";
+            public const string AzureHDInsightSqoopJobDefinition = "AzureRmHDInsightSqoopJobDefinition";
+        }
+
+        public static class ClusterConfiguration
+        {
+            public const string DefaultStorageAccountNameKey = "fs.defaultFS";
+            public const string DefaultStorageAccountNameKeyOld = "fs.default.name";
+            public const string StorageAccountKeyPrefix = "fs.azure.account.key.";
         }
     }
 }

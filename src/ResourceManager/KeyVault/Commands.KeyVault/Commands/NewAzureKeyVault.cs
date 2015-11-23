@@ -15,7 +15,6 @@
 using System;
 using System.Collections;
 using System.Management.Automation;
-using Microsoft.Azure.Management.KeyVault;
 using PSKeyVaultModels = Microsoft.Azure.Commands.KeyVault.Models;
 using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
@@ -24,7 +23,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Create a new key vault. 
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureKeyVault", HelpUri = Constants.KeyVaultHelpUri)]
+    [Cmdlet(VerbsCommon.New, "AzureRmKeyVault", HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof (PSKeyVaultModels.PSVault))]
     public class NewAzureKeyVault : KeyVaultManagementCmdletBase
     {
@@ -59,16 +58,24 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             Position = 2,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specifies the Azure region in which to create the key vault. Use the command Get-AzureLocation to see your choices. For more information, type Get-Help Get-AzureLocation.")]
+            HelpMessage = "Specifies the Azure region in which to create the key vault. Use the command Get-AzureRmResourceProvider with the ProviderNamespace parameter to see your choices.")]
         [ValidateNotNullOrEmpty()]
         public string Location { get; set; }
 
         [Parameter(Mandatory = false,            
             ValueFromPipelineByPropertyName = true,
-            HelpMessage =
-                "If specified, enables secrets to be retrieved from this key vault by the Microsoft.Compute resource provider when referenced in resource creation."
-            )]
-        public SwitchParameter EnabledForDeployment { get; set; }        
+            HelpMessage = "If specified, enables secrets to be retrieved from this key vault by the Microsoft.Compute resource provider when referenced in resource creation.")]
+        public SwitchParameter EnabledForDeployment { get; set; }
+
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "If specified, enables secrets to be retrieved from this key vault by Azure Resource Manager when referenced in templates.")]
+        public SwitchParameter EnabledForTemplateDeployment { get; set; }
+
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "If specified, enables secrets to be retrieved from this key vault by Azure Disk Encryption.")]
+        public SwitchParameter EnabledForDiskEncryption { get; set; }
 
         [Parameter(Mandatory = false,            
             ValueFromPipelineByPropertyName = true,
@@ -84,7 +91,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         #endregion
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {            
             if (VaultExistsInCurrentSubscription(this.VaultName))
             {
@@ -97,6 +104,8 @@ namespace Microsoft.Azure.Commands.KeyVault
                 ResourceGroupName = this.ResourceGroupName,
                 Location = this.Location,
                 EnabledForDeployment = this.EnabledForDeployment.IsPresent,
+                EnabledForTemplateDeployment = EnabledForTemplateDeployment.IsPresent,
+                EnabledForDiskEncryption = EnabledForDiskEncryption.IsPresent,
                 SkuFamilyName = DefaultSkuFamily,
                 SkuName = string.IsNullOrWhiteSpace(this.Sku) ? DefaultSkuName : this.Sku,
                 TenantId = GetTenantId(),

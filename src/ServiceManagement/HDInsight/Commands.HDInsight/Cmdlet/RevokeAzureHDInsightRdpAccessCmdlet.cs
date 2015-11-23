@@ -134,6 +134,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         /// </summary>
         protected override void EndProcessing()
         {
+            this.WriteWarning(string.Format(AzureHdInsightPowerShellConstants.AsmWarning, "Revoke-AzureRmHDInsightRdpServicesAccess"));
             this.command.Enable = false;
             try
             {

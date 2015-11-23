@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Command to update an azure backup vault in a subscription.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRMBackupVault"), OutputType(typeof(CmdletModel.AzureRMBackupVault))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmBackupVault"), OutputType(typeof(CmdletModel.AzureRMBackupVault))]
     public class SetAzureRMBackupVault : AzureBackupVaultCmdletBase
     {
         [Parameter(Position = 1, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.StorageType)]
@@ -35,9 +35,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         //[Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ResourceTags)]
         //public Hashtable[] Tag { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
             ExecutionBlock(() =>
             {

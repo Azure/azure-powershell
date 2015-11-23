@@ -17,7 +17,7 @@ using Xunit;
 
 namespace Commands.Network.Test.ScenarioTests
 {
-    public class LoadBalancerTests
+    public class LoadBalancerTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -101,6 +101,20 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestLoadBalancerNicAssociationDuringCreate()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancer-NicAssociationDuringCreate");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestLoadBalancerInboundNatPoolConfigInternalLB()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerInboundNatPoolConfigCRUD-InternalLB");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestLoadBalancerInboundNatPoolConfigCRUDPublicLB()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerInboundNatPoolConfigCRUD-PublicLB");
         }
     }
 }

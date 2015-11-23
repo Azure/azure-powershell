@@ -30,23 +30,26 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(
             Position = 0,
             Mandatory = true,
-            HelpMessage = "Gets or sets the name of the resource group.")]
-        public string ResourceGroupName { get; set; }
-
-        [Parameter(
-            Position = 1,
-            Mandatory = true,
             HelpMessage = "Gets or sets the name of the cluster.")]
         public string ClusterName { get; set; }
 
+        [Parameter(HelpMessage = "Gets or sets the name of the resource group.")]
+        public string ResourceGroupName { get; set; }
+
+
         #endregion
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             var httpParams = new HttpSettingsParameters
             {
                 HttpUserEnabled = false
             };
+
+            if (ResourceGroupName == null)
+            {
+                ResourceGroupName = GetResourceGroupByAccountName(ClusterName);
+            }
 
             HDInsightManagementClient.ConfigureHttp(ResourceGroupName, ClusterName, httpParams);
             WriteObject(HDInsightManagementClient.GetConnectivitySettings(ResourceGroupName, ClusterName));

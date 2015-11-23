@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets azure automation configurations for a given account.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureAutomationDscConfiguration", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmAutomationDscConfiguration", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(DscConfiguration))]
     public class GetAzureAutomationDscConfiguration : AzureAutomationBaseCmdlet
     {
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             IEnumerable<DscConfiguration> ret = null;
             if (this.ParameterSetName == AutomationCmdletParameterSets.ByConfigurationName)

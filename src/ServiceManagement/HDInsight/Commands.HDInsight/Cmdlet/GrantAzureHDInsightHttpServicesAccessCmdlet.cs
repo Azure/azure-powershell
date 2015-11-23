@@ -130,6 +130,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         /// </summary>
         protected override void EndProcessing()
         {
+            this.WriteWarning(string.Format(AzureHdInsightPowerShellConstants.AsmWarning, "Grant-AzureRmHDInsightHttpServicesAccess"));
             this.command.Enable = true;
             try
             {

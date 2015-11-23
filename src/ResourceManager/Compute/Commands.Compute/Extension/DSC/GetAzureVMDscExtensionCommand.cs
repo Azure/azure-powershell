@@ -40,8 +40,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         [Parameter(
             Position = 2,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Name of the ARM resource that represents the extension. The Set-AzureVMDscExtension cmdlet sets this name to  " +
-            "'Microsoft.Powershell.DSC', which is the same value used by Get-AzureVMDscExtension. Specify this parameter only if you changed " +
+            HelpMessage = "Name of the ARM resource that represents the extension. The Set-AzureRmVMDscExtension cmdlet sets this name to  " +
+            "'Microsoft.Powershell.DSC', which is the same value used by Get-AzureRmVMDscExtension. Specify this parameter only if you changed " +
             "the default name in the Set cmdlet or used a different resource name in an ARM template.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -52,9 +52,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         [ValidateNotNullOrEmpty]
         public SwitchParameter Status { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
             if (String.IsNullOrEmpty(Name))
             {
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                         new JsonException(
                             String.Format(
                                 CultureInfo.CurrentUICulture,
-                                Properties.Resources.AzureVMDscWrongSettingsFormat,
+                                Microsoft.Azure.Commands.Compute.Properties.Resources.AzureVMDscWrongSettingsFormat,
                                 extension.PublicSettings),
                             e),
                         string.Empty,
@@ -149,7 +149,11 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             {
                 context.ModulesUrl = extensionPublicSettings.ModulesUrl;
                 context.ConfigurationFunction = extensionPublicSettings.ConfigurationFunction;
-                context.Properties = new Hashtable(extensionPublicSettings.Properties.ToDictionary(x => x.Name, x => x.Value));
+                if (extensionPublicSettings.Properties != null)
+                {
+                    context.Properties =
+                        new Hashtable(extensionPublicSettings.Properties.ToDictionary(x => x.Name, x => x.Value));
+                }
             }
 
             return context;

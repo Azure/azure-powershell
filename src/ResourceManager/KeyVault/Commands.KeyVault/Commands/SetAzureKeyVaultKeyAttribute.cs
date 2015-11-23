@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         #endregion
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             var keyBundle = DataServiceClient.UpdateKey(
                 VaultName,

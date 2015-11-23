@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Get, "AzureApiManagementSsoToken"), OutputType(typeof (string))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmApiManagementSsoToken"), OutputType(typeof (string))]
     public class GetAzureApiManagementSsoToken : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             ExecuteCmdLetWrap(
                 () => Client.GetSsoToken(ResourceGroupName, Name),

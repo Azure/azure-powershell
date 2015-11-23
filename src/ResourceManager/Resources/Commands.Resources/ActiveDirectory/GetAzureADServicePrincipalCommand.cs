@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Get AD users.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureADServicePrincipal", DefaultParameterSetName = ParameterSet.Empty), OutputType(typeof(List<PSADServicePrincipal>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmADServicePrincipal", DefaultParameterSetName = ParameterSet.Empty), OutputType(typeof(List<PSADServicePrincipal>))]
     public class GetAzureADServicePrincipalCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SearchString,
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Alias("SPN")]
         public string ServicePrincipalName { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             ADObjectFilterOptions options = new ADObjectFilterOptions
             {

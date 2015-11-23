@@ -24,7 +24,7 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
-    public class ComputeNodeTests
+    public class ComputeNodeTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
         private const string accountName = ScenarioTestHelpers.SharedAccount;
         private const string poolId = ScenarioTestHelpers.SharedPool;
@@ -51,6 +51,25 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 {
                     context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
                     matches = ScenarioTestHelpers.GetPoolCurrentDedicated(controller, context, poolId);
+                },
+                null,
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAndListComputeNodesWithSelect()
+        {
+            BatchController controller = BatchController.NewInstance;
+            BatchAccountContext context = null;
+            string computeNodeId = null;
+            controller.RunPsTestWorkflow(
+                () => { return new string[] { string.Format("Test-GetAndListComputeNodesWithSelect '{0}' '{1}' '{2}'", accountName, poolId, computeNodeId) }; },
+                () =>
+                {
+                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    computeNodeId = ScenarioTestHelpers.GetComputeNodeId(controller, context, poolId);
                 },
                 null,
                 TestUtilities.GetCallingClass(),
@@ -166,37 +185,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 null,
                 TestUtilities.GetCallingClass(),
                 usePipeline ? "TestReimageComputeNodePipeline" : "TestReimageComputeNodeById");
-        }
-    }
-
-    // Cmdlets that use the HTTP Recorder interceptor for use with scenario tests
-    [Cmdlet(VerbsCommon.Get, "AzureBatchComputeNode_ST", DefaultParameterSetName = Constants.ODataFilterParameterSet)]
-    public class GetBatchComputeNodeScenarioTestCommand : GetBatchComputeNodeCommand
-    {
-        public override void ExecuteCmdlet()
-        {
-            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
-            base.ExecuteCmdlet();
-        }
-    }
-
-    [Cmdlet(VerbsLifecycle.Restart, "AzureBatchComputeNode_ST", DefaultParameterSetName = Constants.IdParameterSet)]
-    public class RestartBatchComputeNodeScenarioTestCommand : RestartBatchComputeNodeCommand
-    {
-        public override void ExecuteCmdlet()
-        {
-            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
-            base.ExecuteCmdlet();
-        }
-    }
-
-    [Cmdlet(VerbsCommon.Reset, "AzureBatchComputeNode_ST", DefaultParameterSetName = Constants.IdParameterSet)]
-    public class ResetBatchComputeNodeScenarioTestCommand : ResetBatchComputeNodeCommand
-    {
-        public override void ExecuteCmdlet()
-        {
-            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
-            base.ExecuteCmdlet();
         }
     }
 }

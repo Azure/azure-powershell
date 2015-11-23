@@ -23,7 +23,8 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsCommon.New, Constants.AzureBatchJobSchedule)]
     public class NewBatchJobScheduleCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the job schedule to create.")]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, 
+            HelpMessage = "The id of the job schedule to create.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
@@ -43,7 +44,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public IDictionary Metadata { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             NewJobScheduleParameters parameters = new NewJobScheduleParameters(this.BatchContext, this.Id, this.AdditionalBehaviors)
             {

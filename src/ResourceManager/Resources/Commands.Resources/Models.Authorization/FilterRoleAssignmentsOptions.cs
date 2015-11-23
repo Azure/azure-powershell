@@ -18,7 +18,12 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 {
     public class FilterRoleAssignmentsOptions
     {
-        public string RoleDefinition { get; set; }
+        public string RoleDefinitionName { get; set; }
+
+        /// <summary>
+        /// RoleDefinitionId Guid
+        /// </summary>
+        public string RoleDefinitionId { get; set; }
 
         private string scope;
 
@@ -53,5 +58,11 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         public ResourceIdentifier ResourceIdentifier { get; set; }
 
         public ADObjectFilterOptions ADObjectFilter { get; set; }
+
+        public bool ExpandPrincipalGroups { get; set; }
+
+        public bool IncludeClassicAdministrators { get; set; }
+
+        public bool ExcludeAssignmentsForDeletedPrincipals { get; set; }
     }
 }

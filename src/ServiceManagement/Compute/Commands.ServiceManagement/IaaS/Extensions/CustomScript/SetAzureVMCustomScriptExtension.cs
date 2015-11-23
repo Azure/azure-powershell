@@ -210,7 +210,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 
         protected string GetStorageName()
         {
-            return Profile.Context.Subscription.GetProperty(AzureSubscription.Property.StorageAccount);
+            return Profile.Context.Subscription.GetStorageAccountName();
         }
 
         protected string GetStorageKey(string storageName)

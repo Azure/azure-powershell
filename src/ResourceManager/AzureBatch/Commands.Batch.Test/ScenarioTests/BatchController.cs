@@ -21,6 +21,7 @@ using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
@@ -73,7 +74,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             string callingClassType,
             string mockName)
         {
-            HttpMockServer.Matcher = new PermissiveRecordMatcher();
+            Dictionary<string, string> d = new Dictionary<string, string>();
+            d.Add("Microsoft.Authorization", "2014-07-01-preview");
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
             using (UndoContext context = UndoContext.Current)
             {
                 context.Start(callingClassType, mockName);
@@ -85,12 +88,13 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 var callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
-                helper.SetupModules(
-                    AzureModule.AzureResourceManager,
-                    "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + callingClassName + ".ps1",
-                    "Microsoft.Azure.Commands.Batch.Test.dll"
-                    );
+                helper.SetupModules(AzureModule.AzureResourceManager, 
+                    "ScenarioTests\\Common.ps1", 
+                    "ScenarioTests\\" + callingClassName + ".ps1", 
+                    "Microsoft.Azure.Commands.Batch.Test.dll",
+                    helper.RMProfileModule, 
+                    helper.RMResourceModule,
+                    helper.GetRMModulePath("AzureRM.Batch.psd1"));
 
                 try
                 {

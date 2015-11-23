@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Dns
     /// <summary>
     /// Adds a record to a record set object.
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, "AzureDnsRecordConfig"), OutputType(typeof(DnsRecordSet))]
+    [Cmdlet(VerbsCommon.Add, "AzureRmDnsRecordConfig"), OutputType(typeof(DnsRecordSet))]
     public class AddAzureDnsRecordConfig : DnsBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The record set in which to add the record.")]
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Dns
         [ValidateNotNullOrEmpty]
         public string Cname { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             var result = this.RecordSet;
             if (!string.Equals(this.ParameterSetName, this.RecordSet.RecordType.ToString(), StringComparison.OrdinalIgnoreCase))

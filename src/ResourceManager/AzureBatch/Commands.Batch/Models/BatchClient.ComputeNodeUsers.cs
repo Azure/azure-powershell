@@ -53,9 +53,29 @@ namespace Microsoft.Azure.Commands.Batch.Models
             user.ExpiryTime = options.ExpiryTime;
             user.IsAdmin = options.IsAdmin;
 
-            WriteVerbose(string.Format(Resources.NBU_CreatingUser, user.Name, computeNodeId));
+            WriteVerbose(string.Format(Resources.CreatingComputeNodeUser, user.Name, computeNodeId));
 
             user.Commit(ComputeNodeUserCommitSemantics.AddUser, options.AdditionalBehaviors);
+        }
+
+        /// <summary>
+        /// Updates a compute node user account
+        /// </summary>
+        /// <param name="parameters">The parameters specifying the compute node user to update and the changes to make</param>
+        public void UpdateComputeNodeUser(UpdateComputeNodeUserParameters parameters)
+        {
+            if (parameters == null)
+            {
+                throw new ArgumentNullException("parameters");
+            }
+
+            WriteVerbose(string.Format(Resources.UpdatingComputeNodeUser, parameters.ComputeNodeUserName));
+
+            ComputeNodeUser computeNodeUser = new ComputeNodeUser(parameters.Context.BatchOMClient.PoolOperations, parameters.PoolId, parameters.ComputeNodeId);
+            computeNodeUser.Name = parameters.ComputeNodeUserName;
+            computeNodeUser.Password = parameters.Password;
+            computeNodeUser.ExpiryTime = parameters.ExpiryTime;
+            computeNodeUser.Commit(ComputeNodeUserCommitSemantics.UpdateUser, parameters.AdditionalBehaviors);
         }
 
         /// <summary>

@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets stream for a compilation job
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureAutomationDscCompilationJobOutput")]
+    [Cmdlet(VerbsCommon.Get, "AzureRmAutomationDscCompilationJobOutput")]
     [OutputType(typeof(JobStream))]
     public class GetAzureAutomationDscCompilationJobOutput : AzureAutomationBaseCmdlet
     {
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        protected override void AutomationExecuteCmdlet()
+        protected override void AutomationProcessRecord()
         {
             var ret = this.AutomationClient.GetDscCompilationJobStream(this.ResourceGroupName, this.AutomationAccountName, this.Id, this.StartTime, this.Stream.ToString());
 

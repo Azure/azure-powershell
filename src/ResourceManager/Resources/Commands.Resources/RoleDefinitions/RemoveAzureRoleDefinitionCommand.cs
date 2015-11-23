@@ -14,20 +14,29 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Resources.Models;
+using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
+using System;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Resources
 {
     /// <summary>
     /// Deletes a given role definition.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRoleDefinition"), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmRoleDefinition"), OutputType(typeof(bool))]
     public class RemoveAzureRoleDefinitionCommand : ResourcesBaseCmdlet
     {
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionId,
+            HelpMessage = "Role definition id")]
+        [ValidateGuidNotEmpty]
+        public Guid Id { get; set; }
+
+        [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionName,
+            HelpMessage = "Role definition name. For e.g. Reader, Contributor, Virtual Machine Contributor.")]
         [ValidateNotNullOrEmpty]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Role definition id.")]
-        public string Id { get; set; }
+        public string Name { get; set; }
 
         [Parameter(Mandatory = false)]
         public SwitchParameter Force { get; set; }
@@ -35,16 +44,29 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             PSRoleDefinition roleDefinition = null;
+            Action action = null;
+            string confirmMessage = null;
+
+            if(Id != Guid.Empty)
+            {
+                action = (() => roleDefinition = PoliciesClient.RemoveRoleDefinition(Id, DefaultProfile.Context.Subscription.Id.ToString()));
+                confirmMessage = string.Format(ProjectResources.RemoveRoleDefinition, Id);
+            }
+            else
+            {
+                action = (() => roleDefinition = PoliciesClient.RemoveRoleDefinition(Name, DefaultProfile.Context.Subscription.Id.ToString()));
+                confirmMessage = string.Format(ProjectResources.RemoveRoleDefinitionWithName, Name);
+            }
 
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(ProjectResources.RemoveRoleDefinition, Id),
+                confirmMessage,
                 ProjectResources.RemoveRoleDefinition,
-                Id,
-                () => roleDefinition = PoliciesClient.RemoveRoleDefinition(Id));
+                Id.ToString(),
+                action);
 
             if (PassThru)
             {

@@ -57,10 +57,10 @@ namespace Microsoft.Azure.Commands.Automation.Common
         {
         }
 
-        public AutomationClient(AzureProfile profile, AzureSubscription subscription)
-            : this(subscription,
-                AzureSession.ClientFactory.CreateClient<AutomationManagement.AutomationManagementClient>(profile,
-                    subscription, AzureEnvironment.Endpoint.ResourceManager))
+        public AutomationClient(AzureContext context)
+            : this(context.Subscription,
+                AzureSession.ClientFactory.CreateClient<AutomationManagement.AutomationManagementClient>(context,
+                    AzureEnvironment.Endpoint.ResourceManager))
         {
         }
 
@@ -475,7 +475,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             }
         }
 
-        public Runbook ImportRunbook(string resourceGroupName, string automationAccountName, string runbookPath, string description, IDictionary tags, string type, bool? logProgress, bool? logVerbose, bool published, bool overwrite)
+        public Runbook ImportRunbook(string resourceGroupName, string automationAccountName, string runbookPath, string description, IDictionary tags, string type, bool? logProgress, bool? logVerbose, bool published, bool overwrite, string name)
         {
 
             var fileExtension = Path.GetExtension(runbookPath);
@@ -502,6 +502,20 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
 
             var runbookName = Path.GetFileNameWithoutExtension(runbookPath);
+
+            if (String.IsNullOrWhiteSpace(name) == false)
+            {
+                if (0 == string.Compare(type, Constants.RunbookType.PowerShellWorkflow, StringComparison.OrdinalIgnoreCase))
+                {
+                    if (0 != string.Compare(runbookName, name, StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        throw new ResourceCommonException(typeof(Runbook),
+                        string.Format(CultureInfo.CurrentCulture, Resources.FileNameRunbookNameMismatch));
+                    }
+                }
+
+                runbookName = name;
+            }
 
             using (var request = new RequestSettings(this.automationManagementClient))
             {
@@ -1478,6 +1492,27 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #endregion
 
+        #region ConnectionType
+
+        public void DeleteConnectionType(string resourceGroupName, string automationAccountName, string name)
+        {
+            try
+            {
+                this.automationManagementClient.ConnectionTypes.Delete(resourceGroupName, automationAccountName, name);
+            }
+            catch (CloudException cloudException)
+            {
+                if (cloudException.Response.StatusCode == HttpStatusCode.NoContent)
+                {
+                    throw new ResourceNotFoundException(typeof(ConnectionType),
+                        string.Format(CultureInfo.CurrentCulture, Resources.ConnectionTypeNotFound, name));
+                }
+
+                throw;
+            }
+        }
+
+        #endregion
 
         #region Private Methods
 

@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         #endregion Input Parameter Definition
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             if (string.IsNullOrEmpty(OutputFile))
             {

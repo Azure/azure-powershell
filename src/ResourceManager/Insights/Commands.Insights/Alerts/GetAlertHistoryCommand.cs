@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// <returns>true if the record should kept in the result, false if it should be filtered out</returns>
         protected override bool KeepTheRecord(EventData record)
         {
-            return string.IsNullOrWhiteSpace(this.ResourceId) || string.Equals(record.ResourceUri, this.ResourceId, StringComparison.OrdinalIgnoreCase);
+            return string.IsNullOrWhiteSpace(this.ResourceId) || string.Equals(record.ResourceId, this.ResourceId, StringComparison.OrdinalIgnoreCase);
         }
 
         /// <summary>

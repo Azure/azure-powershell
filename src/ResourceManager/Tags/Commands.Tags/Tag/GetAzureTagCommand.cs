@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Tags.Tag
     /// <summary>
     /// Creates a new tag with the specified values
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureTag"), OutputType(typeof(List<PSTag>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmTag"), OutputType(typeof(List<PSTag>))]
     public class GetAzureTagCommand : TagBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Name of the tag. If not specified, return all the tags of the subscription.")]
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Tags.Tag
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Whether should get the tag values information as well.")]
         public SwitchParameter Detailed { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             List<PSTag> tags = string.IsNullOrEmpty(Name) ? TagsClient.ListTags() : new List<PSTag>() { TagsClient.GetTag(Name) };
             if (tags != null && tags.Count > 0)

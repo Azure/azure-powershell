@@ -40,30 +40,31 @@ namespace Microsoft.Azure.Commands.Batch.Models
             // Get the single compute node matching the specified id
             if (!string.IsNullOrEmpty(options.ComputeNodeId))
             {
-                WriteVerbose(string.Format(Resources.GBCN_GetById, options.ComputeNodeId, poolId));
+                WriteVerbose(string.Format(Resources.GetComputeNodeById, options.ComputeNodeId, poolId));
                 PoolOperations poolOperations = options.Context.BatchOMClient.PoolOperations;
-                ComputeNode computeNode = poolOperations.GetComputeNode(poolId, options.ComputeNodeId, additionalBehaviors: options.AdditionalBehaviors);
+                ODATADetailLevel getDetailLevel = new ODATADetailLevel(selectClause: options.Select);
+                ComputeNode computeNode = poolOperations.GetComputeNode(poolId, options.ComputeNodeId, detailLevel: getDetailLevel, additionalBehaviors: options.AdditionalBehaviors);
                 PSComputeNode psComputeNode = new PSComputeNode(computeNode);
                 return new PSComputeNode[] { psComputeNode };
             }
             // List compute nodes using the specified filter
             else
             {
-                ODATADetailLevel odata = null;
                 string verboseLogString = null;
+                ODATADetailLevel listDetailLevel = new ODATADetailLevel(selectClause: options.Select);
                 if (!string.IsNullOrEmpty(options.Filter))
                 {
-                    verboseLogString = string.Format(Resources.GBCN_GetByOData, poolId);
-                    odata = new ODATADetailLevel(filterClause: options.Filter);
+                    verboseLogString = string.Format(Resources.GetComputeNodeByOData, poolId);
+                    listDetailLevel.FilterClause = options.Filter;
                 }
                 else
                 {
-                    verboseLogString = string.Format(Resources.GBCN_NoFilter, poolId);
+                    verboseLogString = string.Format(Resources.GetComputeNodeNoFilter, poolId);
                 }
                 WriteVerbose(verboseLogString);
 
                 PoolOperations poolOperations = options.Context.BatchOMClient.PoolOperations;
-                IPagedEnumerable<ComputeNode> computeNodes = poolOperations.ListComputeNodes(poolId, odata, options.AdditionalBehaviors);
+                IPagedEnumerable<ComputeNode> computeNodes = poolOperations.ListComputeNodes(poolId, listDetailLevel, options.AdditionalBehaviors);
                 Func<ComputeNode, PSComputeNode> mappingFunction = c => { return new PSComputeNode(c); };
                 return PSPagedEnumerable<PSComputeNode, ComputeNode>.CreateWithMaxCount(
                     computeNodes, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));

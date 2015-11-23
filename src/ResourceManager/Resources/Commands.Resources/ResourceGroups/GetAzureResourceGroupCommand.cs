@@ -13,33 +13,71 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Resources.Models;
-using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Management.Automation;
+using System.Reflection;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.Resources
 {
     /// <summary>
     /// Filters resource groups.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureResourceGroup"), OutputType(typeof(List<PSResourceGroup>))]
-    public class GetAzureResourceGroupCommand : ResourcesBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureRmResourceGroup", DefaultParameterSetName = ResourceGroupNameParameterSet), OutputType(typeof(List<PSResourceGroup>))]
+    public class GetAzureResourceGroupCommand : ResourcesBaseCmdlet, IModuleAssemblyInitializer
     {
+        /// <summary>
+        /// List resources group by name parameter set.
+        /// </summary>
+        internal const string ResourceGroupNameParameterSet = "Lists the resource group based in the name.";
+
+        /// <summary>
+        /// List resources group by Id parameter set.
+        /// </summary>
+        internal const string ResourceGroupIdParameterSet = "Lists the resource group based in the Id.";
+
         [Alias("ResourceGroupName")]
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = "GetSingle")]
+        [Parameter(Mandatory = false, ParameterSetName = ResourceGroupNameParameterSet, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = "GetMultiple")]
-        public Hashtable Tag { get; set; }
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group location.")]
+        [ValidateNotNullOrEmpty]
+        public string Location { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = "GetMultiple")]
-        public SwitchParameter Detailed { get; set; }
+        [Alias("ResourceGroupId", "ResourceId")]
+        [Parameter(Mandatory = false, ParameterSetName = ResourceGroupIdParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group Id.")]
+        [ValidateNotNullOrEmpty]
+        public string Id { get; set; }
         
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            var detailed = Detailed.IsPresent || !string.IsNullOrEmpty(Name);
-            WriteObject(ResourcesClient.FilterResourceGroups(Name, Tag, detailed), true);
+            Name = Name ?? ResourceIdentifier.FromResourceGroupIdentifier(this.Id).ResourceGroupName;
+
+            this.WriteObject(
+                ResourcesClient.FilterResourceGroups(name: this.Name, tag: null, detailed: false, location: this.Location),
+                true);
+        }
+
+        /// <summary>
+        /// Load global aliases and script cmdlets for ARM
+        /// </summary>
+        public void OnImport()
+        {
+            try
+            {
+                System.Management.Automation.PowerShell invoker = null;
+                invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
+                invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(
+                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+                    "ResourceManagerStartup.ps1")));
+                invoker.Invoke();
+            }
+            catch
+            {
+                // This may throw exception for tests, ignore.
+            }
         }
     }
 }

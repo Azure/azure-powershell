@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Gallery;
@@ -21,6 +22,7 @@ using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test;
+using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
@@ -78,6 +80,10 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
             string callingClassType,
             string mockName)
         {
+            Dictionary<string, string> d = new Dictionary<string, string>();
+            d.Add("Microsoft.Authorization", null);
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
+
             using (UndoContext context = UndoContext.Current)
             {
                 context.Start(callingClassType, mockName);
@@ -96,9 +102,12 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
                 var callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
-                helper.SetupModules(
-                    AzureModule.AzureResourceManager,
-                    "ScenarioTests\\Common.ps1",
+                helper.SetupModules(AzureModule.AzureResourceManager, 
+                    helper.RMProfileModule, 
+                    helper.RMResourceModule, 
+                    helper.RMStorageDataPlaneModule,
+                    helper.RMStorageModule,
+                    "ScenarioTests\\Common.ps1", 
                     "ScenarioTests\\" + callingClassName + ".ps1");
 
                 try

@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
         internal const string PeriodPattern = "^(?<" + PeriodGroupName + ">[DdMmYy]{1})(?<" + ValueGroupName + @">\d+)$";
         static readonly Regex PeriodRegex = new Regex(PeriodPattern, RegexOptions.Compiled);
 
-        private readonly AzureProfile _azureProfile;
+        private readonly AzureContext _context;
         private Management.ApiManagement.ApiManagementClient _client;
 
         static ApiManagementClient()
@@ -106,9 +106,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 .CreateMap<ProductContract, PsApiManagementProduct>()
                 .ForMember(dest => dest.ProductId, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Name))
-                .ForMember(dest => dest.LegalTerms, opt => opt.MapFrom(src => src.Terms))
-                .ForMember(dest => dest.NotificationPeriod, opt => opt.MapFrom(src => FormatPeriod(src.NotificationPeriod)))
-                .ForMember(dest => dest.SubscriptionPeriod, opt => opt.MapFrom(src => FormatPeriod(src.SubscriptionPeriod)));
+                .ForMember(dest => dest.LegalTerms, opt => opt.MapFrom(src => src.Terms));
 
             Mapper
                 .CreateMap<SubscriptionContract, PsApiManagementSubscription>()
@@ -143,26 +141,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                         : new Hashtable(src.TokenBodyParameters.ToDictionary(key => key.Name, value => value.Value)));
         }
 
-        private static string FormatPeriod(PeriodContract notificationPeriod)
+        public ApiManagementClient(AzureContext context)
         {
-            if (notificationPeriod == null)
+            if (context == null)
             {
-                return null;
+                throw new ArgumentNullException("AzureProfile");
             }
 
-            const string format = "{0}{1}";
-
-            return string.Format(format, notificationPeriod.Interval.ToString()[0], notificationPeriod.Value);
-        }
-
-        public ApiManagementClient(AzureProfile azureProfile)
-        {
-            if (azureProfile == null)
-            {
-                throw new ArgumentNullException("azureProfile");
-            }
-
-            _azureProfile = azureProfile;
+            _context = context;
             _client = CreateClient();
 
         }
@@ -175,7 +161,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
         private Management.ApiManagement.ApiManagementClient CreateClient()
         {
             return AzureSession.ClientFactory.CreateClient<Management.ApiManagement.ApiManagementClient>(
-                _azureProfile,
+                _context,
                 AzureEnvironment.Endpoint.ResourceManager);
         }
 
@@ -594,8 +580,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             bool? subscriptionRequired,
             bool? approvalRequired,
             int? subscriptionsLimit,
-            string subscriptionPeriod,
-            string notificationPeriod,
             PsApiManagementProductState? state)
         {
             var productContract = new ProductContract(title)
@@ -622,16 +606,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 }
             }
 
-            if (!string.IsNullOrWhiteSpace(subscriptionPeriod))
-            {
-                productContract.SubscriptionPeriod = ParsePeriod(subscriptionPeriod);
-            }
-
-            if (!string.IsNullOrWhiteSpace(notificationPeriod))
-            {
-                productContract.NotificationPeriod = ParsePeriod(notificationPeriod);
-            }
-
             Client.Products.Create(context.ResourceGroupName, context.ServiceName, productId, new ProductCreateParameters(productContract));
             var response = Client.Products.Get(context.ResourceGroupName, context.ServiceName, productId);
 
@@ -647,8 +621,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             bool? subscriptionRequired, 
             bool? approvalRequired, 
             int? subscriptionsLimit, 
-            string subscriptionPeriod, 
-            string notificationPeriod, 
             PsApiManagementProductState? state)
         {
             var productUpdateParameters = new ProductUpdateParameters
@@ -676,41 +648,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 }
             }
 
-            if (!string.IsNullOrWhiteSpace(subscriptionPeriod))
-            {
-                productUpdateParameters.SubscriptionPeriod = ParsePeriod(subscriptionPeriod);
-            }
-
-            if (!string.IsNullOrWhiteSpace(notificationPeriod))
-            {
-                productUpdateParameters.NotificationPeriod = ParsePeriod(notificationPeriod);
-            }
-
             Client.Products.Update(context.ResourceGroupName, context.ServiceName, productId, productUpdateParameters, "*");
-        }
-
-        private static PeriodContract ParsePeriod(string period)
-        {
-            var match = PeriodRegex.Match(period);
-            if (!match.Success)
-            {
-                throw new ArgumentException(string.Format("Invalid period format: {0}", period), "period");
-            }
-
-            var periodStr = match.Groups[PeriodGroupName].Value;
-            var valueStr = match.Groups[ValueGroupName].Value;
-
-            var contract = new PeriodContract
-            {
-                Value = Int32.Parse(valueStr),
-                Interval = "d".Equals(periodStr, StringComparison.OrdinalIgnoreCase)
-                    ? PeriodIntervalContract.Day
-                    : "m".Equals(periodStr, StringComparison.OrdinalIgnoreCase)
-                        ? PeriodIntervalContract.Month
-                        : PeriodIntervalContract.Year
-            };
-
-            return contract;
         }
 
         public void ProductAddToGroup(PsApiManagementContext context, string groupId, string productId)

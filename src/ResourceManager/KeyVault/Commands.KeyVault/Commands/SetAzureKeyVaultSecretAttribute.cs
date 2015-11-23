@@ -14,7 +14,6 @@
 
 using System;
 using System.Collections;
-using System.Security;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.KeyVault.Models;
 
@@ -105,7 +104,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         #endregion
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {            
             var secret = DataServiceClient.UpdateSecret(
                 VaultName,

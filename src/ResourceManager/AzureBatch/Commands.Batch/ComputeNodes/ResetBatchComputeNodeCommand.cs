@@ -24,11 +24,13 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsCommon.Reset, Constants.AzureBatchComputeNode, DefaultParameterSetName = Constants.IdParameterSet)]
     public class ResetBatchComputeNodeCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true, HelpMessage = "The id of the pool that contains the compute node.")]
+        [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true, 
+            HelpMessage = "The id of the pool that contains the compute node.")]
         [ValidateNotNullOrEmpty]
         public string PoolId { get; set; }
 
-        [Parameter(Position = 1, ParameterSetName = Constants.IdParameterSet, Mandatory = true, HelpMessage = "The id of the compute node to reimage.")]
+        [Parameter(Position = 1, ParameterSetName = Constants.IdParameterSet, Mandatory = true, 
+            HelpMessage = "The id of the compute node to reimage.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
@@ -40,7 +42,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public ComputeNodeReimageOption? ReimageOption { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             ReimageComputeNodeParameters parameters = new ReimageComputeNodeParameters(this.BatchContext, this.PoolId,
                 this.Id, this.ComputeNode, this.AdditionalBehaviors)

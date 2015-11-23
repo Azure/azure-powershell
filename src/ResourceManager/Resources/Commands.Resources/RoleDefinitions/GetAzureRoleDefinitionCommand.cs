@@ -13,7 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Resources.Models;
+using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
+using Microsoft.WindowsAzure.Commands.Common;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -22,25 +25,36 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Get the available role Definitions for certain resource types.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRoleDefinition"), OutputType(typeof(List<PSRoleDefinition>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmRoleDefinition"), OutputType(typeof(List<PSRoleDefinition>))]
     public class GetAzureRoleDefinitionCommand : ResourcesBaseCmdlet
     {
-        [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Optional. The name of the role Definition.")]
+        [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionName,
+            HelpMessage = "Role definition name. For e.g. Reader, Contributor, Virtual Machine Contributor.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory=false)]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionId,
+            HelpMessage = "Role definition id.")]
+        [ValidateGuidNotEmpty]
+        public Guid Id { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionCustom,
+            HelpMessage = "If specified, only displays the custom created roles in the directory.")]
         public SwitchParameter Custom { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             if (Custom.IsPresent)
             {
-                WriteObject(PoliciesClient.FilterRoleDefinitionsByCustom(), true);
+                WriteObject(PoliciesClient.FilterRoleDefinitionsByCustom(), enumerateCollection: true);
+            }
+            else if (Id != Guid.Empty)
+            {
+                WriteObject(PoliciesClient.GetRoleDefinition(Id));
             }
             else
             {
-                WriteObject(PoliciesClient.FilterRoleDefinitions(Name), true);
+                WriteObject(PoliciesClient.FilterRoleDefinitions(Name), enumerateCollection: true);
             }
         }
     }

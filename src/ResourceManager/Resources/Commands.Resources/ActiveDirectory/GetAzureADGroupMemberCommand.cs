@@ -23,14 +23,14 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Get AD groups members.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureADGroupMember", DefaultParameterSetName = ParameterSet.Empty), OutputType(typeof(List<PSADObject>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmADGroupMember", DefaultParameterSetName = ParameterSet.Empty), OutputType(typeof(List<PSADObject>))]
     public class GetAzureADGroupMemberCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The user email address.")]
         [ValidateNotNullOrEmpty]
         public Guid GroupObjectId { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             ADObjectFilterOptions options = new ADObjectFilterOptions
             {

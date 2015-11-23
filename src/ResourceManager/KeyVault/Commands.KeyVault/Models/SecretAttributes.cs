@@ -15,7 +15,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Microsoft.Azure.KeyVault;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -77,9 +76,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
         }
 
-        public static explicit operator Microsoft.Azure.KeyVault.SecretAttributes(SecretAttributes attr)
+        public static explicit operator Azure.KeyVault.SecretAttributes(SecretAttributes attr)
         {
-            return new Microsoft.Azure.KeyVault.SecretAttributes()
+            return new Azure.KeyVault.SecretAttributes
             {
                 Enabled = attr.Enabled,
                 NotBefore = attr.NotBefore,

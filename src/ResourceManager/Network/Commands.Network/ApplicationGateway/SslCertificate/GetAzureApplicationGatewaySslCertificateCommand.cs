@@ -19,7 +19,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureApplicationGatewaySslCertificate"), 
+    [Cmdlet(VerbsCommon.Get, "AzureRmApplicationGatewaySslCertificate"), 
         OutputType(typeof(PSApplicationGatewaySslCertificate), typeof(IEnumerable<PSApplicationGatewaySslCertificate>))]
     public class GetAzureApplicationGatewaySslCertificate : NetworkBaseCmdlet
     {
@@ -35,9 +35,9 @@ namespace Microsoft.Azure.Commands.Network
              HelpMessage = "The applicationGateway")]
         public PSApplicationGateway ApplicationGateway { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
             
             if (!string.IsNullOrEmpty(this.Name))
             {

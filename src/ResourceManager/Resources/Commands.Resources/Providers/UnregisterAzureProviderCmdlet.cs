@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Un-registers the resource provider from the current subscription.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Unregister, "AzureProvider"), OutputType(typeof(List<PSResourceProvider>))]
+    [Cmdlet(VerbsLifecycle.Unregister, "AzureRmResourceProvider"), OutputType(typeof(List<PSResourceProvider>))]
     public class UnregisterAzureProviderCmdlet : ResourcesBaseCmdlet
     {
         /// <summary>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Resources
         /// <summary>
         /// Executes the cmdlet
         /// </summary>
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             this.ConfirmAction(
                 force: this.Force,

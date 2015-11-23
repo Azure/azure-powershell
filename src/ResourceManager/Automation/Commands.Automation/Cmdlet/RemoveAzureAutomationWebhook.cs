@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Remove a new Webhook for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureAutomationWebhook")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmAutomationWebhook")]
     public class RemoveAzureAutomationWebhook : AzureAutomationBaseCmdlet
     {
         /// <summary>
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        protected override void AutomationExecuteCmdlet()
+        protected override void AutomationProcessRecord()
         {
             ConfirmAction(
                 Force.IsPresent,
