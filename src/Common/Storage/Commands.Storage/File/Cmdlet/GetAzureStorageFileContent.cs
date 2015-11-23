@@ -151,18 +151,24 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
             this.RunTask(async taskId =>
             {
-                var downloadJob = new TransferJob(
-                    new TransferLocation(fileToBeDownloaded),
-                    new TransferLocation(targetFile),
-                    TransferMethod.SyncCopy);
+                await fileToBeDownloaded.FetchAttributesAsync(null, this.RequestOptions, OperationContext, CmdletCancellationToken);
 
                 var progressRecord = new ProgressRecord(
                     this.OutputStream.GetProgressId(taskId),
                     string.Format(CultureInfo.CurrentCulture, Resources.ReceiveAzureFileActivity, fileToBeDownloaded.GetFullPath(), targetFile),
                     Resources.PrepareDownloadingFile);
 
-                await this.RunTransferJob(downloadJob, progressRecord);
-
+                await this.DoTransfer(() =>
+                    {
+                        return this.TransferManager.DownloadAsync(
+                            fileToBeDownloaded,
+                            targetFile,
+                            null,
+                            this.GetTransferContext(progressRecord, fileToBeDownloaded.Properties.Length),
+                            CmdletCancellationToken);
+                    }, 
+                    progressRecord);
+                
                 if (this.PassThru)
                 {
                     this.OutputStream.WriteObject(taskId, fileToBeDownloaded);

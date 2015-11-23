@@ -160,7 +160,7 @@
     <value>Can not find the specified file '{0}'.</value>
   </data>
   <data name="FileTransmitStatus" xml:space="preserve">
-    <value>Percent : {0}%. Average Speed : {1}/Second.</value>
+    <value>Percent : {0}%.</value>
   </data>
   <data name="InvalidBlobName" xml:space="preserve">
     <value>Blob name '{0}' is invalid. Valid names should be 1 through 1024 characters long and should not end with a . or /.</value>

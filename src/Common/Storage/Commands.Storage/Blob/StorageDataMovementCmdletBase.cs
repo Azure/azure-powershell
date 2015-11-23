@@ -27,7 +27,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// <summary>
         /// Blob Transfer Manager
         /// </summary>
-        private ITransferJobRunner transferJobRunner;
+        protected ITransferManager TransferManager
+        {
+            get;
+            private set;
+        }
 
         [Parameter(HelpMessage = "Force to overwrite the existing blob or file")]
         public SwitchParameter Force
@@ -64,28 +68,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         {
             base.BeginProcessing();
 
-            this.transferJobRunner = TransferJobRunnerFactory.CreateRunner(this.GetCmdletConcurrency());
+            this.TransferManager = TransferManagerFactory.CreateTransferManager(this.GetCmdletConcurrency());
         }
 
-        protected async Task RunTransferJob(TransferJob transferJob, DataMovementUserData userData)
+        protected async Task DoTransfer(Func<Task> doTransfer, DataMovementUserData userData)
         {
-            this.SetRequestOptionsInTransferJob(transferJob);
-            transferJob.OverwritePromptCallback = ConfirmOverwrite;
-
             try
             {
-                await this.transferJobRunner.RunTransferJob(
-                    transferJob,
-                    (percent, speed) =>
-                    {
-                        if (userData.Record != null)
-                        {
-                            userData.Record.PercentComplete = (int)percent;
-                            userData.Record.StatusDescription = string.Format(CultureInfo.CurrentCulture, Resources.FileTransmitStatus, (int)percent, Util.BytesToHumanReadableSize(speed));
-                            this.OutputStream.WriteProgress(userData.Record);
-                        }
-                    },
-                    this.CmdletCancellationToken);
+                await doTransfer();
 
                 if (userData.Record != null)
                 {
@@ -114,46 +104,23 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             }
         }
 
-        protected void SetRequestOptionsInTransferJob(TransferJob transferJob)
+        protected TransferContext GetTransferContext(DataMovementUserData userData)
         {
-            BlobRequestOptions cmdletOptions = RequestOptions;
+            TransferContext transferContext = new TransferContext();
+            transferContext.ClientRequestId = CmdletOperationContext.ClientRequestId;
+            transferContext.OverwriteCallback = ConfirmOverwrite;
 
-            if (cmdletOptions == null)
-            {
-                return;
-            }
+            transferContext.ProgressHandler = new TransferProgressHandler((transferProgress) =>
+                {
+                    if (userData.Record != null)
+                    {
+                        userData.Record.PercentComplete = (int)(transferProgress.BytesTransferred * 100 / userData.TotalSize);
+                        userData.Record.StatusDescription = string.Format(CultureInfo.CurrentCulture, Resources.FileTransmitStatus, userData.Record.PercentComplete);
+                        this.OutputStream.WriteProgress(userData.Record);
+                    }
+                });
 
-            if (null != transferJob.Source.Blob)
-            {
-                this.SetRequestOptions(transferJob.Source, cmdletOptions);
-            }
-
-            if (null != transferJob.Destination.Blob)
-            {
-                this.SetRequestOptions(transferJob.Destination, cmdletOptions);
-            }
-        }
-
-        protected void SetRequestOptions(TransferLocation location, BlobRequestOptions cmdletOptions)
-        {
-            BlobRequestOptions requestOptions = location.RequestOptions as BlobRequestOptions;
-
-            if (null == requestOptions)
-            {
-                requestOptions = new BlobRequestOptions();
-            }
-
-            if (cmdletOptions.MaximumExecutionTime != null)
-            {
-                requestOptions.MaximumExecutionTime = cmdletOptions.MaximumExecutionTime;
-            }
-
-            if (cmdletOptions.ServerTimeout != null)
-            {
-                requestOptions.ServerTimeout = cmdletOptions.ServerTimeout;
-            }
-
-            location.RequestOptions = requestOptions;
+            return transferContext;
         }
 
         protected override void EndProcessing()
@@ -165,26 +132,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             }
             finally
             {
-                this.transferJobRunner.Dispose();
-                this.transferJobRunner = null;
+                this.TransferManager = null;
             }
-        }
-
-        /// <summary>
-        /// Dispose DataMovement cmdlet
-        /// </summary>
-        /// <param name="disposing">User disposing</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                if (this.transferJobRunner != null)
-                {
-                    this.transferJobRunner.Dispose();
-                    this.transferJobRunner = null;
-                }
-            }
-            base.Dispose(disposing);
         }
     }
 }

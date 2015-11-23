@@ -125,9 +125,8 @@
     <Reference Include="Microsoft.WindowsAzure.Storage">
       <HintPath>..\..\..\packages\WindowsAzure.Storage.6.0.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Storage.DataMovement, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Microsoft.WindowsAzure.Storage.DataMovement.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAzure.Storage.DataMovement">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Storage.DataMovement.0.1.0\lib\net45\Microsoft.WindowsAzure.Storage.DataMovement.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -188,7 +187,7 @@
     <Compile Include="Common\CommunicationExceptionUtilTest.cs" />
     <Compile Include="Common\FileNamingGenerator.cs" />
     <Compile Include="Common\IStorageManagement.cs" />
-    <Compile Include="Common\MockTransferJobRunner.cs" />
+    <Compile Include="Common\MockTransferManager.cs" />
     <Compile Include="Common\MockupException.cs" />
     <Compile Include="Common\NameUtilTest.cs" />
     <Compile Include="Common\CmdletOperationContextTest.cs" />
