@@ -80,11 +80,25 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
         public virtual TClient CreateCustomArmClient<TClient>(params object[] parameters) where TClient : Microsoft.Rest.ServiceClient<TClient>
         {
+            var handlers = new List<DelegatingHandler>();
+            var newParameters = new List<object>();
             List<Type> types = new List<Type>();
             foreach (object obj in parameters)
             {
-                types.Add(obj.GetType());
+                if (obj is DelegatingHandler)
+                {
+                    handlers.Add(obj as DelegatingHandler);
+                }
+                else
+                {
+                    types.Add(obj.GetType());
+                    newParameters.Add(obj);
+                }
             }
+
+            types.Add(typeof (DelegatingHandler[]));
+            newParameters.Add(handlers.ToArray());
+            
             
             var constructor = typeof(TClient).GetConstructor(types.ToArray());
 
@@ -93,7 +107,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 throw new InvalidOperationException(string.Format(Resources.InvalidManagementClientType, typeof(TClient).Name));
             }
 
-            TClient client = (TClient)constructor.Invoke(parameters);
+            TClient client = (TClient)constructor.Invoke(newParameters.ToArray());
 
             foreach (ProductInfoHeaderValue userAgent in UserAgents)
             {

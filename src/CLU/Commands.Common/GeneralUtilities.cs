@@ -27,7 +27,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common;
 using Microsoft.Azure.Commands.Common.Properties;
 
-namespace Microsoft.WindowsAzure.Commands.Utilities.Common
+namespace Microsoft.Azure.Commands.Utilities.Common
 {
     public static class GeneralUtilities
     {
@@ -345,6 +345,25 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 UriFormat.UriEscaped);
 
             return new Uri(endpoint);
+        }
+
+        public static string DownloadFile(string uri)
+        {
+            string contents = null;
+
+            using (HttpClient httClient = new HttpClient())
+            {
+                try
+                {
+                    contents = httClient.GetStringAsync(uri).ConfigureAwait(false).GetAwaiter().GetResult();
+                }
+                catch
+                {
+                    // Ignore the exception and return empty contents
+                }
+            }
+
+            return contents;
         }
 
         public static string GenerateSeparator(int amount, string separator)
