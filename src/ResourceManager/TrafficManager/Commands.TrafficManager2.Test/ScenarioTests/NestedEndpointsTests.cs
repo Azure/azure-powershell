@@ -25,5 +25,12 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest("Test-NestedEndpointsCreateUpdate");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestProfileWithNestedEndpointsGetPut()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-ProfileWithNestedEndpointsGetPut");
+        }
     }
 }

@@ -142,6 +142,9 @@
     <None Include="SessionRecords\**\*.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests.NestedEndpointsTests\TestProfileWithNestedEndpointsGetPut.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">

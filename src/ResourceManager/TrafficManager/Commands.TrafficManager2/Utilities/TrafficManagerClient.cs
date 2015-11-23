@@ -270,13 +270,18 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                 {
                     profile.Endpoints.Add(new TrafficManagerEndpoint
                     {
+                        Id = endpoint.Id,
+                        ResourceGroupName = resourceGroupName,
+                        ProfileName = profileName,
                         Name = endpoint.Name,
                         Type = endpoint.Type,
+                        TargetResourceId = endpoint.Properties.TargetResourceId,
                         Target = endpoint.Properties.Target,
                         EndpointStatus = endpoint.Properties.EndpointStatus,
                         Location = endpoint.Properties.EndpointLocation,
                         Priority = endpoint.Properties.Priority,
                         Weight = endpoint.Properties.Weight,
+                        EndpointMonitorStatus = endpoint.Properties.EndpointMonitorStatus,
                         MinChildEndpoints = endpoint.Properties.MinChildEndpoints,
                     });
                 }

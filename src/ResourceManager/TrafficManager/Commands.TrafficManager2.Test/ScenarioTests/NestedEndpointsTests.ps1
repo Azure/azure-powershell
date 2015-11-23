@@ -77,3 +77,45 @@ function Test-NestedEndpointsCreateUpdate
 	Assert-AreEqual 4 $retrievedParentProfile.Endpoints[1].MinChildEndpoints
 	Assert-AreEqual "West US" $retrievedParentProfile.Endpoints[1].Location
 }
+
+<#
+.SYNOPSIS
+Tests the Get-Put pattern for a profile with a nested endpoint
+#>
+function Test-ProfileWithNestedEndpointsGetPut
+{
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$childProfileName = getAssetName
+	$childProfileRelativeName = getAssetName
+	$parentProfileName = getAssetName
+	$parentProfileRelativeName = getAssetName
+
+	$createdChildProfile = New-AzureRmTrafficManagerProfile -Name $childProfileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $childProfileRelativeName -Ttl 30 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testchild.asp" 
+	Assert-NotNull $createdChildProfile.Id
+
+	$createdParentProfile = New-AzureRmTrafficManagerProfile -Name $parentProfileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $parentProfileRelativeName -Ttl 51 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTPS" -MonitorPort 111 -MonitorPath "/testparent.asp" 
+	$nestedEndpoint = New-AzureRmTrafficManagerEndpoint -Name "MyNestedEndpoint" -ProfileName $parentProfileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "NestedEndpoints" -TargetResourceId $createdChildProfile.Id -EndpointStatus "Enabled" -EndpointLocation "West Europe" -MinChildEndpoints 1
+
+	$retrievedParentProfile = Get-AzureRmTrafficManagerProfile -Name $parentProfileName -ResourceGroupName $resourceGroup.ResourceGroupName
+	$retrievedParentProfile | Set-AzureRmTrafficManagerProfile
+
+	$retrievedParentProfile = Get-AzureRmTrafficManagerProfile -Name $parentProfileName -ResourceGroupName $resourceGroup.ResourceGroupName
+
+    Assert-NotNull $retrievedParentProfile
+	Assert-AreEqual 51 $retrievedParentProfile.Ttl
+	Assert-AreEqual 111 $retrievedParentProfile.MonitorPort
+	Assert-AreEqual "HTTPS" $retrievedParentProfile.MonitorProtocol
+	Assert-AreEqual "/testparent.asp" $retrievedParentProfile.MonitorPath 
+	Assert-AreEqual "Performance" $retrievedParentProfile.TrafficRoutingMethod
+
+	Assert-AreEqual 1 $retrievedParentProfile.Endpoints.Count
+	Assert-AreEqual 1 $retrievedParentProfile.Endpoints[0].MinChildEndpoints
+    Assert-AreEqual 1 $retrievedParentProfile.Endpoints[0].Weight
+	Assert-AreEqual 1 $retrievedParentProfile.Endpoints[0].Priority
+	Assert-AreEqual "Microsoft.Network/trafficManagerProfiles/nestedEndpoints" $retrievedParentProfile.Endpoints[0].Type
+	Assert-AreEqual "MyNestedEndpoint" $retrievedParentProfile.Endpoints[0].Name
+	Assert-AreEqual "Enabled" $retrievedParentProfile.Endpoints[0].EndpointStatus
+	Assert-AreEqual "West Europe" $retrievedParentProfile.Endpoints[0].Location
+	Assert-AreEqual $createdChildProfile.Id $retrievedParentProfile.Endpoints[0].TargetResourceId
+	Assert-AreEqual $retrievedParentProfile.Name $retrievedParentProfile.Endpoints[0].ProfileName
+}
