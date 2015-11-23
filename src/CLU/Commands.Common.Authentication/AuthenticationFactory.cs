@@ -28,14 +28,13 @@ namespace Microsoft.Azure.Common.Authentication.Factories
     {
         public const string CommonAdTenant = "Common";
 
-        public AuthenticationFactory()
+        public AuthenticationFactory() : this(new DiskDataStore())
         {
-            TokenProvider = new AdalTokenProvider();
-            DataStore = new DiskDataStore();
         }
 
         public AuthenticationFactory(IDataStore dataStore)
         {
+            TokenProvider = new AdalTokenProvider();
             DataStore = dataStore;
         }
 

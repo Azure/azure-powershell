@@ -47,17 +47,29 @@ namespace Microsoft.Azure.Commands.Profile
         [ValidateNotNullOrEmpty]
         public AzureEnvironment Environment { get; set; }
 
-        [Parameter(ParameterSetName = UserParameterSet, Mandatory = false, HelpMessage = "Optional credential")]
         [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = true, HelpMessage = "Credential")]
         [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Optional credential")]
         [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "Optional credential")]
-        public PSCredential Credential { get; set; }
+        public string Secret { get; set; }
+
+        [Parameter(ParameterSetName = UserParameterSet, Mandatory = true, HelpMessage = "User name (in username@contoso.com format)")]
+        [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Account Id for access token")]
+        [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "Account Id for access token")]
+        [ValidateNotNullOrEmpty]
+        public string Username { get; set; }
+
+        [Parameter(ParameterSetName = UserParameterSet, Mandatory = true, HelpMessage = "Optional password")]
+        [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Account Id for access token")]
+        [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "Account Id for access token")]
+        [ValidateNotNullOrEmpty]
+        public string Password { get; set; }
 
         [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, Mandatory = true, HelpMessage = "Certificate Hash (Thumbprint)")]
         [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Certificate Hash (Thumbprint)")]
         [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "Certificate Hash (Thumbprint)")]
         public string CertificateThumbprint { get; set; }
 
+        [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = true, HelpMessage = "Credential")]
         [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, Mandatory = true, HelpMessage = "SPN")]
         [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "SPN")]
         [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "SPN")]
@@ -132,7 +144,7 @@ namespace Microsoft.Azure.Commands.Profile
                 }
 
                 AzureAccount azureAccount = new AzureAccount();
-
+                string password = null;
                 if (!string.IsNullOrEmpty(AccessToken))
                 {
                     if (string.IsNullOrWhiteSpace(AccountId))
@@ -147,10 +159,14 @@ namespace Microsoft.Azure.Commands.Profile
                 else if (ServicePrincipal.IsPresent)
                 {
                     azureAccount.Type = AzureAccount.AccountType.ServicePrincipal;
+                    azureAccount.Id = ApplicationId;
+                    password = Secret;
                 }
                 else
                 {
                     azureAccount.Type = AzureAccount.AccountType.User;
+                    azureAccount.Id = Username;
+                    password = Password;
                 }
 
                 if (!string.IsNullOrEmpty(CertificateThumbprint))
@@ -158,12 +174,6 @@ namespace Microsoft.Azure.Commands.Profile
                     azureAccount.SetProperty(AzureAccount.Property.CertificateThumbprint, CertificateThumbprint);
                 }
 
-                string password = null;
-                if (Credential != null)
-                {
-                    azureAccount.Id = Credential.UserName;
-                    password = Credential.Password;
-                }
 
                 if (!string.IsNullOrEmpty(ApplicationId))
                 {

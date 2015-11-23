@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Common.Authentication
                 config.AdEndpoint,
                 config.ClientId,
                 config.ClientRedirectUri);
-            if (string.IsNullOrEmpty(userId) || password == null)
+            if (promptBehavior != ShowDialog.Never)
             {
                 throw new NotImplementedException("Device based authencation is not implemented.");
             }

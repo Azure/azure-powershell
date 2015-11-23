@@ -108,9 +108,12 @@ namespace Microsoft.Azure.Commands.Utilities.Common
                 try
                 {
                     returnValue = SessionState.PSVariable.Get<T>(name)?? defaultValue ;
-                    //var variablePath = GetPath(name);
-                    //var fileText = DataStore.ReadFileAsText(variablePath);
-                    //return JsonConvert.DeserializeObject<T>(fileText);
+                    var variablePath = GetPath(name);
+                    var fileText = DataStore.ReadFileAsText(variablePath);
+                    if (!string.IsNullOrEmpty(fileText))
+                    {
+                        returnValue = JsonConvert.DeserializeObject<T>(fileText);
+                    }
                 }
                 catch
                 {
@@ -129,8 +132,8 @@ namespace Microsoft.Azure.Commands.Utilities.Common
             if (SessionState != null)
             {
                 SessionState.PSVariable.Set(name, value);
-                //var variablePath = GetPath(name);
-                //DataStore.WriteFile(variablePath, JsonConvert.SerializeObject(value));
+                var variablePath = GetPath(name);
+                DataStore.WriteFile(variablePath, JsonConvert.SerializeObject(value));
             }
         }
         /// <summary>
