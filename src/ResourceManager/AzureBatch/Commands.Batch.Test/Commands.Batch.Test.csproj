@@ -180,12 +180,14 @@
     <Compile Include="Certificates\NewBatchCertificateCommandTests.cs" />
     <Compile Include="Certificates\RemoveBatchCertificateCommandTests.cs" />
     <Compile Include="Certificates\StopBatchCertificateDeletionCommandTests.cs" />
+    <Compile Include="ComputeNodes\RemoveBatchComputeNodeCommandTests.cs" />
     <Compile Include="ComputeNodes\ResetBatchComputeNodeCommandTests.cs" />
     <Compile Include="ComputeNodes\RestartBatchComputeNodeCommandTests.cs" />
     <Compile Include="ComputeNodeUsers\SetBatchComputeNoderUserCommandTests.cs" />
     <Compile Include="Files\GetBatchRemoteDesktopProtocolFileCommandTests.cs" />
     <Compile Include="Files\GetBatchNodeFileCommandTests.cs" />
     <Compile Include="Files\GetBatchNodeFileContentCommandTests.cs" />
+    <Compile Include="Files\RemoveBatchNodeFileCommandTests.cs" />
     <Compile Include="JobSchedules\DisableBatchJobScheduleCommandTests.cs" />
     <Compile Include="JobSchedules\EnableBatchJobScheduleCommandTests.cs" />
     <Compile Include="JobSchedules\SetBatchJobScheduleCommandTests.cs" />
@@ -363,6 +365,15 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ComputeNodeTests\TestReimageComputeNodePipeline.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ComputeNodeTests\TestRemoveComputeNodeById.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ComputeNodeTests\TestRemoveComputeNodePipeline.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ComputeNodeTests\TestRemoveMultipleComputeNodes.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ComputeNodeUserTests\TestCreateComputeNodeUser.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -373,6 +384,18 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ComputeNodeUserTests\TestUpdateComputeNodeUser.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.FileTests\TestDeleteNodeFileByComputeNodeByName.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.FileTests\TestDeleteNodeFileByComputeNodeByPipeline.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.FileTests\TestDeleteNodeFileByTaskByName.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.FileTests\TestDeleteNodeFileByTaskByPipeline.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.FileTests\TestGetNodeFileByComputeNodeByName.json">
