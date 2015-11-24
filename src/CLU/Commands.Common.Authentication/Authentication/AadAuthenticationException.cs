@@ -14,7 +14,7 @@
 
 using System;
 
-namespace Microsoft.Azure.Common.Authentication
+namespace Microsoft.Azure.Commands.Common.Authentication
 {
     /// <summary>
     /// Base class representing an exception that occurs when

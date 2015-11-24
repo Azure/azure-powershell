@@ -21,8 +21,8 @@ using System.Management.Automation.Host;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Newtonsoft.Json;
 using Microsoft.Azure.Commands.Common.Properties;
 using Microsoft.Azure.Commands.Models;
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Common
 {
     public class AzureDataCmdlet : AzurePSCmdlet
     {
-        protected override Azure.Common.Authentication.Models.AzureContext DefaultContext
+        protected override AzureContext DefaultContext
         {
             get
             {

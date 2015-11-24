@@ -17,7 +17,7 @@ using Microsoft.Rest.Azure.Authentication;
 using System.Security;
 using System.Threading.Tasks;
 
-namespace Microsoft.Azure.Common.Authentication
+namespace Microsoft.Azure.Commands.Common.Authentication
 {
     /// <summary>
     /// Interface to the keystore for authentication

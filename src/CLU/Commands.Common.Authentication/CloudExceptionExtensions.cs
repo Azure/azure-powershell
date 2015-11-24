@@ -16,7 +16,7 @@
 using Microsoft.Rest;
 using System.Linq;
 
-namespace Microsoft.Azure.Common
+namespace Microsoft.Azure.Commands.Common
 {
     public static class HttpOperationExceptionExtensions
     {

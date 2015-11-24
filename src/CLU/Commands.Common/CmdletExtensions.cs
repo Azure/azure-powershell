@@ -17,7 +17,7 @@ using System.Collections.ObjectModel;
 using System.Management.Automation;
 using System.Reflection;
 
-namespace Microsoft.WindowsAzure.Commands.Utilities.Common
+namespace Microsoft.Azure.Commands.Utilities.Common
 {
     public static class CmdletExtensions
     {
