@@ -18,6 +18,7 @@ using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Subscriptions;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Common.Authentication;
@@ -36,8 +37,6 @@ namespace Commands.Network.Test
         public SubscriptionClient SubscriptionClient { get; private set; }
 
         public GalleryClient GalleryClient { get; private set; }
-
-        //public EventsClient EventsClient { get; private set; }
 
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
