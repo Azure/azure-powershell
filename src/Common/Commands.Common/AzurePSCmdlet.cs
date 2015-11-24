@@ -272,6 +272,12 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             base.WriteError(errorRecord);
         }
 
+        protected new void ThrowTerminatingError(ErrorRecord errorRecord)
+        {
+            FlushDebugMessages(IsDataCollectionAllowed());
+            base.ThrowTerminatingError(errorRecord);
+        }
+
         protected new void WriteObject(object sendToPipeline)
         {
             FlushDebugMessages();
