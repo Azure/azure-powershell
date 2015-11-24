@@ -503,6 +503,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         public void Dispose()
         {
+            try
+            {
+                FlushDebugMessages();
+            }
+            catch (Exception) { }
             Dispose(true);
             GC.SuppressFinalize(this);
         }
