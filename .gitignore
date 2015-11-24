@@ -21,6 +21,7 @@ app.config
 *.sln.docstates
 *.lock.json
 .vs/
+artifacts/
 
 # Build results
 [Dd]ebug/

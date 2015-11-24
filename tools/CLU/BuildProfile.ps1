@@ -1,8 +1,8 @@
-﻿param([string]$packageId, [string]$packageSource, [string]$packageVersion)
-Write-Host "using package id: $packageId, package source: $packageSource, packageVersion: $packageVersion"
-Write-Host "Publishing dotnetcore exe"
-dotnet.exe publish $packageId --framework dnxcore50 --runtime win7-x64 -o $packageSource
+﻿param([string]$cmdletsDir, [string]$packageId, [string]$packageSource, [string]$packageVersion, [string]$outputDir)
 
+$packageSource = $packageSource.TrimEnd('\\')
+Write-Host "using package id: $packageId, package source: $packageSource, packageVersion: $packageVersion"
+dotnet publish $cmdletsDir -f dnxcore50 -r win7-x64 -o $packageSource
 $nuSpecTemplate = (Get-ChildItem ([System.IO.Path]::Combine($packageSource, ($packageId + ".nuspec.template"))))
 $nuSpecOutput = [System.IO.Path]::Combine($packageSource, ($packageId + ".nuspec"))
 Write-Host "Creating dynamic nuspec package in: $nuSpecOutput"
@@ -27,4 +27,5 @@ $outputContent = $outputContent -replace "%ReferenceFiles%", $refFileText
 Set-Content -Value $outputContent -Path $nuspecOutput
 
 Write-Host "Creating nuget package..."
-cmd /c "$env:WORKSPACE\tools\Nuget.exe pack $nuspecOutput"
+cmd /c "$env:WORKSPACE\tools\Nuget.exe pack $nuspecOutput -OutputDirectory $outputDir"
+Pop-Location

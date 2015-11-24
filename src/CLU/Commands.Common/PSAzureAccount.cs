@@ -13,8 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
-
-namespace Microsoft.Azure.Common.Authentication.Models
+namespace Microsoft.Azure.Commands.Common.Authentication.Models
 {
     public class PSAzureAccount
     {
