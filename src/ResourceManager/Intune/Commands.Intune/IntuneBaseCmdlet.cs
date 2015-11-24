@@ -15,6 +15,7 @@ namespace Microsoft.Azure.Commands.Intune
 {
     using System;
     using System.Collections.Concurrent;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
     using Management.Intune;
@@ -36,12 +37,29 @@ namespace Microsoft.Azure.Commands.Intune
 
         private static IIntuneResourceManagementClient intuneClient;
 
-        public IIntuneResourceManagementClientWrapper intuneClientWrapper;
+        /// <summary>
+        /// Queue for the Android policyIds
+        /// </summary>
+        public static Queue<Guid> AndroidPolicyIdsQueue { get; private set; }
+
+        /// <summary>
+        /// Queue for the iOS policyIds
+        /// </summary>
+        public static Queue<Guid> iOSPolicyIdsQueue { get; private set; }
 
         /// <summary>
         /// The default parameter set.
         /// </summary>
         internal const string DefaultParameterSet = "Default Parameter Set for Intune MAM Policy cmdlets.";
+
+        /// <summary>
+        /// Initialize the static variables on first load of class.
+        /// </summary>
+        static IntuneBaseCmdlet()
+        {
+            AndroidPolicyIdsQueue = new Queue<Guid>();
+            iOSPolicyIdsQueue = new Queue<Guid>();
+        }
 
         public IIntuneResourceManagementClient IntuneClient
         {
@@ -58,27 +76,6 @@ namespace Microsoft.Azure.Commands.Intune
             set
             {
                 intuneClient = value;
-            }
-        }
-
-        /// <summary>
-        /// Gets and sets the wrapper for IntuneClient
-        /// </summary>
-        public IIntuneResourceManagementClientWrapper IntuneClientWrapper
-        {
-            get
-            {
-                if (intuneClientWrapper == null)
-                {
-                    intuneClientWrapper = new IntuneResourceManagementClientWrapper();
-                    intuneClientWrapper.Initialize(this.DefaultContext, ApiVersion);
-                }
-
-                return intuneClientWrapper;
-            }
-            set
-            {
-                intuneClientWrapper = value;
             }
         }
 
@@ -100,7 +97,7 @@ namespace Microsoft.Azure.Commands.Intune
             {
                 if (asuHostName == null)
                 {
-                    Location location = IntuneClientWrapper.GetLocationByHostName();
+                    Location location = this.IntuneClient.GetLocationByHostName();
                     asuHostName = location.HostName;
                 }
 
@@ -138,6 +135,7 @@ namespace Microsoft.Azure.Commands.Intune
             }
 
             intuneClient.BaseUri = endpointUri;
+
             return intuneClient;
         }
     }

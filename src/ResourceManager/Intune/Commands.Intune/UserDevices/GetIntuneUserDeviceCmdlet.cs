@@ -73,8 +73,8 @@ namespace Microsoft.Azure.Commands.Intune
             MultiPageGetter<Device> mpg = new MultiPageGetter<Device>();
 
             List<Device> items = mpg.GetAllResources(
-                this.IntuneClientWrapper.GetUserDevices,
-                this.IntuneClientWrapper.GetUserDevicesNext,
+                this.IntuneClient.GetMAMUserDevices,
+                this.IntuneClient.GetMAMUserDevicesNext,
                 this.AsuHostName,
                 this.Username,
                 filter: null,

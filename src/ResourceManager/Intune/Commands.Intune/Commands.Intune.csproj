@@ -53,7 +53,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.4.0-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Intune, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Azure.Management.Intune, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Intune.0.1.1-preview\lib\net45\Microsoft.Azure.Management.Intune.dll</HintPath>
     </Reference>
@@ -112,8 +112,6 @@
     <Compile Include="AppOrGroupPayloadMaker.cs" />
     <Compile Include="Apps\GetIntuneAndroidMAMAppCmdlet.cs" />
     <Compile Include="Apps\GetIntuneAndroidMAMPolicyAppCmdlet.cs" />
-    <Compile Include="IIntuneResourceManagementClientWrapper.cs" />
-    <Compile Include="IntuneResourceManagementClientWrapper.cs" />
     <Compile Include="MultiPageGetter.cs" />
     <Compile Include="Groups\AddIntuneiOSMAMPolicyGroupCmdlet.cs" />
     <Compile Include="Groups\RemoveIntuneAndroidMAMPolicyGroupCmdlet.cs" />
@@ -136,8 +134,8 @@
     <Compile Include="NumericParameterValueChecker.cs" />
     <Compile Include="Apps\RemoveIntuneAndroidMAMPolicyAppCmdlet.cs" />
     <Compile Include="Apps\RemoveIntuneiOSMAMPolicyAppCmdlet.cs" />
-    <Compile Include="Policy\RemoveIntuneAndroidMAMPolicy.cs" />
-    <Compile Include="Policy\RemoveIntuneIOSMAMPolicy.cs" />
+    <Compile Include="Policy\RemoveIntuneAndroidMAMPolicyCmdlet.cs" />
+    <Compile Include="Policy\RemoveIntuneiOSMAMPolicyCmdlet.cs" />
     <Compile Include="Policy\SetIntuneAndroidMAMPolicyCmdlet.cs" />
     <Compile Include="Policy\SetIntuneiOSMAMPolicyCmdlet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

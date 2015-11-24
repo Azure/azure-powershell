@@ -158,8 +158,8 @@ namespace Microsoft.Azure.Commands.Intune
             InitializeDefaultValuesForParams();
             ValidateNumericParameters();
 
-            var policyId = (IntuneResourceManagementClientWrapper.AndroidPolicyIdsQueue.Count == 0 ? Guid.NewGuid() : IntuneResourceManagementClientWrapper.AndroidPolicyIdsQueue.Dequeue()).ToString();
-
+            var policyId = (IntuneBaseCmdlet.AndroidPolicyIdsQueue.Count == 0 ? Guid.NewGuid() : IntuneBaseCmdlet.AndroidPolicyIdsQueue.Dequeue()).ToString();
+            
             this.ConfirmAction(
                 this.Force,
                 string.Format(CultureInfo.CurrentCulture, Resources.NewResource_ActionMessage, Resources.AndroidPolicy, this.FriendlyName),
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Commands.Intune
                 () =>
                 {
                     var policyObjToCreate = this.PrepareAndroidPolicyBody();
-                    var policyObj = this.IntuneClientWrapper.CreateOrUpdateAndroidMAMPolicy(this.AsuHostName, policyId, policyObjToCreate);
+                    var policyObj = this.IntuneClient.Android.CreateOrUpdateMAMPolicy(this.AsuHostName, policyId, this.PrepareAndroidPolicyBody());
                     this.WriteObject(policyObj);
                 });
         }

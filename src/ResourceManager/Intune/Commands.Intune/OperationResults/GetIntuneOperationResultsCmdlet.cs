@@ -44,8 +44,8 @@ namespace Microsoft.Azure.Commands.Intune
             MultiPageGetter<OperationResult> mpg = new MultiPageGetter<OperationResult>();
 
             List<OperationResult> items = mpg.GetAllResources(
-                this.IntuneClientWrapper.GetOperationResults,
-                this.IntuneClientWrapper.GetOperationResultsNext,
+                this.IntuneClient.GetOperationResults,
+                this.IntuneClient.GetOperationResultsNext,
                 this.AsuHostName,
                 filter: null,
                 top: null,

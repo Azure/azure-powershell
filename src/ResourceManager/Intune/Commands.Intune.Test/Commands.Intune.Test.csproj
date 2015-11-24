@@ -140,6 +140,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UnitTests\GetIntuneiOSMAMPolicyCmdletTests.cs" />
+    <Compile Include="UnitTests\SetIntuneAndroidMAMPolicyCmdletTests.cs" />
+    <Compile Include="UnitTests\SetIntuneiOSMAMPolicyCmdletTests.cs" />
+    <Compile Include="UnitTests\NewIntuneiOSMAMPolicyCmdletTests.cs" />
+    <Compile Include="UnitTests\RemoveIntuneiOSMAMPolicyCmdletTests.cs" />
     <Compile Include="UnitTests\RemoveIntuneAndroidMAMPolicyCmdletTests.cs" />
     <Compile Include="UnitTests\NewIntuneAndroidMAMPolicyCmdletTests.cs" />
     <Compile Include="UnitTests\GetIntuneAndroidMAMPolicyCmdletTests.cs" />

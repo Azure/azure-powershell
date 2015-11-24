@@ -65,8 +65,8 @@ namespace Microsoft.Azure.Commands.Intune
             MultiPageGetter<AndroidMAMPolicy> mpg = new MultiPageGetter<AndroidMAMPolicy>();
 
             List<AndroidMAMPolicy> items = mpg.GetAllResources(
-                this.IntuneClientWrapper.GetAndroidMAMPolicies,
-                this.IntuneClientWrapper.GetAndroidMAMPoliciesNext,
+                this.IntuneClient.Android.GetMAMPolicies,
+                this.IntuneClient.Android.GetMAMPoliciesNext,
                 this.AsuHostName,
                 filter: null,
                 top: null,

@@ -16,19 +16,20 @@ namespace Microsoft.Azure.Commands.Intune
 {
     using System.Globalization;
     using System.Management.Automation;
+    using System.Threading.Tasks;
     using Microsoft.Azure.Commands.Intune.Properties;
 
     /// <summary>
-    /// A cmdlet that removes Intune iOS MAM Policy.
+    /// A cmdlet that removes Intune Andriod MAM Policy.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmIntuneIOSMAMPolicy", SupportsShouldProcess = true, DefaultParameterSetName = IntuneBaseCmdlet.DefaultParameterSet), OutputType(typeof(PSObject))]
-    public class RemoveIntuneIOSMAMPolicyCmdlet : IntuneBaseCmdlet
+    [Cmdlet(VerbsCommon.Remove, "AzureRmIntuneAndroidMAMPolicy", SupportsShouldProcess = true, DefaultParameterSetName = IntuneBaseCmdlet.DefaultParameterSet), OutputType(typeof(PSObject))]
+    public class RemoveIntuneAndroidMAMPolicyCmdlet : IntuneBaseCmdlet
     {
         #region params
         /// <summary>
-        /// The iOS policy Id
+        /// The Android Policy Name
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The iOS Policy Name (Policy Guid) to remove the policy.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Android Policy Name (Policy Guid) to remove the policy.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -45,13 +46,13 @@ namespace Microsoft.Azure.Commands.Intune
             this.ConfirmAction
             (
                 this.Force,
-                string.Format(CultureInfo.CurrentCulture, Resources.DeleteResource_ActionMessage, Resources.IosPolicy, this.Name),
-                string.Format(CultureInfo.CurrentCulture, Resources.DeleteResource_ProcessMessage, Resources.IosPolicy, this.Name),
+                string.Format(CultureInfo.CurrentCulture, Resources.DeleteResource_ActionMessage, Resources.AndroidPolicy, this.Name),
+                string.Format(CultureInfo.CurrentCulture, Resources.DeleteResource_ProcessMessage, Resources.AndroidPolicy, this.Name),
                 this.Name,
                 () =>
                 {
-                    var res = this.IntuneClient.Ios.DeleteMAMPolicyWithHttpMessagesAsync(this.AsuHostName, this.Name).GetAwaiter().GetResult();
-                    
+                    var res = this.IntuneClient.Android.DeleteMAMPolicyWithHttpMessagesAsync(this.AsuHostName, this.Name).GetAwaiter().GetResult();              
+                
                     if (res.Response.StatusCode == System.Net.HttpStatusCode.OK)
                     {
                         this.WriteObject(Resources.OneItemDeleted);
@@ -61,7 +62,7 @@ namespace Microsoft.Azure.Commands.Intune
                         this.WriteObject(Resources.NoItemsDeleted);
                     }
                 }
-             );
+            );
         }
     }
 }

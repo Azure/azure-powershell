@@ -156,7 +156,8 @@ namespace Microsoft.Azure.Commands.Intune
         {
             InitializeDefaultValuesForParams();
 
-            var policyId = (IntuneResourceManagementClientWrapper.iOSPolicyIdsQueue.Count == 0 ? Guid.NewGuid() : IntuneResourceManagementClientWrapper.iOSPolicyIdsQueue.Dequeue()).ToString();
+            var policyId = (IntuneBaseCmdlet.iOSPolicyIdsQueue.Count == 0 ? Guid.NewGuid() : IntuneBaseCmdlet.iOSPolicyIdsQueue.Dequeue()).ToString();
+
             ValidateNumericParameters();
 
             this.ConfirmAction(
@@ -166,7 +167,7 @@ namespace Microsoft.Azure.Commands.Intune
                 policyId,
                 () =>
                 {
-                    var policyObj = this.IntuneClientWrapper.CreateOrUpdateIosMAMPolicy(this.AsuHostName, policyId, this.PrepareIOSPolicyBody());
+                    var policyObj = this.IntuneClient.Ios.CreateOrUpdateMAMPolicy(this.AsuHostName, policyId, this.PrepareIOSPolicyBody());
                     this.WriteObject(policyObj);
                 }); 
         }

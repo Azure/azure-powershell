@@ -28,24 +28,24 @@ using Xunit;
 namespace Microsoft.Azure.Commands.Intune.Test
 {
     /// <summary>
-    ///  Unit Tests for the RemoveIntuneAndroidMAMPolicy Cmdlet.
+    ///  Unit Tests for the RemoveIntuneIosMAMPolicy Cmdlet.
     /// </summary> 
-    public class RemoveIntuneAndroidMAMPolicyCmdletTests : RMTestBase
+    public class RemoveIntuneiOSMAMPolicyCmdletTests : RMTestBase
     {
         private Mock<IIntuneResourceManagementClient> intuneClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
-        private RemoveIntuneAndroidMAMPolicyCmdlet cmdlet;
+        private RemoveIntuneiOSMAMPolicyCmdlet cmdlet;
         private Location expectedLocation;
 
         /// <summary>
-        ///  C'tor for RemoveIntuneAndroidMAMPolicyCmdletTests class.
+        ///  C'tor for RemoveIntuneiOSMAMPolicyCmdletTests class.
         /// </summary>
-        public RemoveIntuneAndroidMAMPolicyCmdletTests()
+        public RemoveIntuneiOSMAMPolicyCmdletTests()
         {
             commandRuntimeMock = new Mock<ICommandRuntime>();
             intuneClientMock = new Mock<IIntuneResourceManagementClient>();
 
-            cmdlet = new RemoveIntuneAndroidMAMPolicyCmdlet();                         
+            cmdlet = new RemoveIntuneiOSMAMPolicyCmdlet();
                             
             this.cmdlet.CommandRuntime = commandRuntimeMock.Object;
             this.cmdlet.IntuneClient = intuneClientMock.Object;
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Intune.Test
         /// </summary>   
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RemoveIntuneAndroidMAMPolicyCmdlet_OneItemDeleted_Test()
+        public void RemoveIntuneIosMAMPolicyCmdlet_OneItemDeleted_Test()
         {
             // Set up expected response
             var expectedRespose = new Microsoft.Rest.Azure.AzureOperationResponse();
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Intune.Test
             string expectedPolicyId = Guid.NewGuid().ToString();
 
             // Mock the Underlying Service API method
-            intuneClientMock.Setup(f => f.Android.DeleteMAMPolicyWithHttpMessagesAsync(expectedLocation.HostName, expectedPolicyId, It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
+            intuneClientMock.Setup(f => f.Ios.DeleteMAMPolicyWithHttpMessagesAsync(expectedLocation.HostName, expectedPolicyId, It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
                 .Returns(Task.FromResult(expectedRespose));
 
             // Mock the PowerShell RunTime method
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Intune.Test
         /// </summary>   
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RemoveIntuneAndroidMAMPolicyCmdlet_NoItemDeleted_Test()
+        public void RemoveIntuneIosMAMPolicyCmdlet_NoItemDeleted_Test()
         {
             // Set up expected response
             Microsoft.Rest.Azure.AzureOperationResponse expectedRespose = new Microsoft.Rest.Azure.AzureOperationResponse();
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.Intune.Test
             string expectedPolicyId = Guid.NewGuid().ToString();
 
             // Mock the Underlying Service API method
-            intuneClientMock.Setup(f => f.Android.DeleteMAMPolicyWithHttpMessagesAsync(expectedLocation.HostName, expectedPolicyId, It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
+            intuneClientMock.Setup(f => f.Ios.DeleteMAMPolicyWithHttpMessagesAsync(expectedLocation.HostName, expectedPolicyId, It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
                 .Returns(Task.FromResult(expectedRespose));
 
             // Mock the PowerShell RunTime method
