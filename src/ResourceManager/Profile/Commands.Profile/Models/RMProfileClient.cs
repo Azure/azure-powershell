@@ -528,7 +528,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         private List<AzureTenant> ListAccountTenants(AzureAccount account, AzureEnvironment environment, SecureString password, ShowDialog promptBehavior)
         {
-            List<AzureTenant> result = null;
+            List<AzureTenant> result = new List<AzureTenant>();
             try
             {
                 var commonTenantToken = AcquireAccessToken(account, environment, AuthenticationFactory.CommonAdTenant,

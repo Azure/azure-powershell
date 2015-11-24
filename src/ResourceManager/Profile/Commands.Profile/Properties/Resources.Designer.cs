@@ -203,5 +203,14 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
                 return ResourceManager.GetString("UnableToAqcuireToken", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to find environment with name &apos;{0}&apos;.
+        /// </summary>
+        internal static string UnknownEnvironment {
+            get {
+                return ResourceManager.GetString("UnknownEnvironment", resourceCulture);
+            }
+        }
     }
 }

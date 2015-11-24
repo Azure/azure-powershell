@@ -45,6 +45,12 @@ namespace Microsoft.Azure.Commands.Profile
         [ValidateNotNullOrEmpty]
         public AzureEnvironment Environment { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Name of the environment containing the account to log into")]
+        [ValidateNotNullOrEmpty]
+
+        public string EnvironmentName { get; set; }
+
+
         [Parameter(ParameterSetName = UserParameterSet, Mandatory = false, HelpMessage = "Optional credential")]
         [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = true, HelpMessage = "Credential")]
         [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Optional credential")]
@@ -108,9 +114,21 @@ namespace Microsoft.Azure.Commands.Profile
         protected override void BeginProcessing()
         {
             base.BeginProcessing();
-            if (Environment == null)
+            if (Environment == null && EnvironmentName == null)
             {
-                Environment = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
+                Environment = AzureEnvironment.PublicEnvironments[Microsoft.Azure.Common.Authentication.Models.EnvironmentName.AzureCloud];
+            }
+            else if (Environment == null && EnvironmentName != null)
+            {
+                if (AzureRmProfileProvider.Instance.Profile.Environments.ContainsKey(EnvironmentName))
+                {
+                    Environment = AzureRmProfileProvider.Instance.Profile.Environments[EnvironmentName];
+                }
+                else
+                {
+                    throw new PSInvalidOperationException(
+                        string.Format(Resources.UnknownEnvironment, EnvironmentName));
+                }
             }
         }
 
