@@ -63,8 +63,6 @@ namespace Microsoft.Azure.Commands.Profile
 
         [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = true)]
         [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, Mandatory = true)]
-        [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false)]
-        [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false)]
         public SwitchParameter ServicePrincipal { get; set; }
 
         [Parameter(ParameterSetName = UserParameterSet, Mandatory = false, HelpMessage = "Optional tenant name or ID")]
@@ -90,10 +88,12 @@ namespace Microsoft.Azure.Commands.Profile
         public string AccountId { get; set; }
 
         [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Subscription", ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = false, HelpMessage = "Subscription", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string SubscriptionId { get; set; }
 
         [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "Subscription Name", ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = false, HelpMessage = "Subscription Name", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string SubscriptionName { get; set; }
 
@@ -126,7 +126,8 @@ namespace Microsoft.Azure.Commands.Profile
             if (!string.IsNullOrWhiteSpace(SubscriptionId) && 
                 !Guid.TryParse(SubscriptionId, out subscrptionIdGuid))
             {
-                throw new PSInvalidOperationException(Resources.InvalidSubscriptionId);
+                throw new PSInvalidOperationException(
+                    string.Format(Resources.InvalidSubscriptionId, SubscriptionId));
             }
 
             AzureAccount azureAccount = new AzureAccount();

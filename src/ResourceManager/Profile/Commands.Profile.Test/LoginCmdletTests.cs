@@ -214,5 +214,26 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 AzureRmProfileProvider.Instance.Profile.Context.Account.GetProperty(AzureAccount.Property.CertificateThumbprint));
             
         }
+
+        [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        public void GetMultipleTenantsOnLogin()
+        {
+            var cmdlt = new AddAzureRMAccountCommand();
+            // Setup
+            // NOTE: Use admin@rbactest.onmicrosoft.com credentials for this test case
+            cmdlt.CommandRuntime = commandRuntimeMock;
+
+            // Act
+            cmdlt.InvokeBeginProcessing();
+            cmdlt.ExecuteCmdlet();
+            cmdlt.InvokeEndProcessing();
+
+            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context);
+            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context.Account);
+            var tenants = AzureRmProfileProvider.Instance.Profile.Context.Account.GetPropertyAsArray(AzureAccount.Property.Tenants);
+            Assert.NotNull(tenants);
+            Assert.Equal(3, tenants.Length);
+        }
     }
 }

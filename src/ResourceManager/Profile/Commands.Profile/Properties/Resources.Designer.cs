@@ -194,5 +194,14 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
                 return ResourceManager.GetString("TypeNotAccessToken", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unabe to acquire token for tenant &apos;{0}&apos;.
+        /// </summary>
+        internal static string UnableToAqcuireToken {
+            get {
+                return ResourceManager.GetString("UnableToAqcuireToken", resourceCulture);
+            }
+        }
     }
 }
