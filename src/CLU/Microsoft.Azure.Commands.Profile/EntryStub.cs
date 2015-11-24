@@ -12,35 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
-namespace Microsoft.Azure.Commands.ResourceManager.Common
+namespace Microsoft.Azure.Commands.Profile
 {
-    public static class AccessTokenExtensions
+    public class EntryStub
     {
-        public static string GetDomain(this IAccessToken token)
+        public static void Main(string[] args)
         {
-            if( token != null)
-            {
-                return GetDomain(token.UserId);
-            }
-
-            return null;
-        }
-
-        public static string GetDomain(string emailString)
-        {
-            string result = null;
-            if (emailString != null && emailString.Contains('@'))
-            {
-                result =  emailString.Split(
-                    new[] { '@' },
-                    StringSplitOptions.RemoveEmptyEntries).Last();
-            }
-
-            return result;
+            // empty entry point
         }
     }
 }

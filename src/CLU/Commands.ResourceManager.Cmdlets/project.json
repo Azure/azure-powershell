@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0-*",
+  "version": "1.0.0",
   "description": "Microsoft.Azure.Commands.ResourceManager.Cmdlets Class Library",
   "authors": [ "markcowl, hovsepm" ],
   "tags": [ "" ],
@@ -8,21 +8,23 @@
   "frameworks": {
     "dnxcore50": {
       "dependencies": {
-        "Microsoft.CLU": "0.0.1-beta-151119",
-        "Microsoft.CSharp": "4.0.1-beta-23409",
-        "System.Linq": "4.0.1-beta-23409"
+        "Microsoft.NETCore": "5.0.1-beta-23516",
+        "Microsoft.NETCore.Platforms": "1.0.1-beta-23516",
+        "Microsoft.CSharp": "4.0.1-beta-23516"
       }
     }
   },
   "dependencies": {
+    "System.Linq": "4.0.1-beta-23516",
+    "Microsoft.CLU": "1.0.0",
     "Commands.Common.Authentication": "",
     "Commands.Common": "",
     "Commands.ResourceManager.Common": "",
     "Microsoft.IdentityModel.Clients.ActiveDirectory": "3.6.210231457-alpha",
     "Microsoft.Rest.ClientRuntime": "1.4.1",
-    "Newtonsoft.Json": "6.0.8",
-    "System.Collections": "4.0.11-beta-23409",
-    "System.Collections.Concurrent": "4.0.11-beta-23409",
+    "Newtonsoft.Json": "7.0.1",
+    "System.Collections": "4.0.11-beta-23516",
+    "System.Collections.Concurrent": "4.0.11-beta-23516",
     "System.Diagnostics.TraceSource": "4.0.0-beta-23516",
     "System.Diagnostics.Tracing": "4.0.21-beta-23516",
     "System.IO": "4.0.11-beta-23516",
@@ -34,14 +36,14 @@
     "System.Reflection.Primitives": "4.0.1-beta-23516",
     "System.Reflection.TypeExtensions": "4.1.0-beta-23516",
     "System.Runtime": "4.0.21-beta-23516",
-    "System.Runtime.Extensions": "4.0.11-beta-23409",
-    "System.Runtime.Serialization.Json": "4.0.1-beta-23409",
-    "System.Runtime.Serialization.Xml": "4.0.11-beta-23409",
+    "System.Runtime.Extensions": "4.0.11-beta-23516",
+    "System.Runtime.Serialization.Json": "4.0.1-beta-23516",
+    "System.Runtime.Serialization.Xml": "4.1.0-beta-23516",
     "System.Security.Cryptography.Algorithms": "4.0.0-beta-23516",
     "System.Security.Cryptography.X509Certificates": "4.0.0-beta-23516",
     "System.Text.Encoding": "4.0.11-beta-23516",
     "System.Text.Encoding.Extensions": "4.0.11-beta-23516",
-    "System.Threading": "4.0.11-beta-23409",
+    "System.Threading": "4.0.11-beta-23516",
     "System.Threading.Tasks": "4.0.11-beta-23516",
     "System.Threading.Thread": "4.0.0-beta-23516",
     "Microsoft.Azure.Management.Resources": "3.1.1-preview",

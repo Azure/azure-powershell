@@ -13,11 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using System.Security;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Test.Mocks;
 
-namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
+namespace Microsoft.Azure.Commands.Test.Utilities.Common
 {
     public class MockAccessTokenProvider : ITokenProvider
     {
