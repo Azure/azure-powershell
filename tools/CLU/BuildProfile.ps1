@@ -1,5 +1,19 @@
 ﻿param([string]$cmdletsDir, [string]$packageId, [string]$packageSource, [string]$packageVersion, [string]$outputDir)
 
+if (!(Test-Path $cmdletsDir))
+{
+	throw "cmdletsDir: '$cmdletsDir' must be an existing directory containing cmdlet code"
+}
+if (!(Test-Path $outputDir))
+{
+	throw "outputDir: '$outputDir' must be an existing directory"
+}
+
+if ([string]::IsNullOrWhiteSpace($env:WORKSPACE) -or !(Test-Path $env:WORKSPACE))
+{
+	throw "env:WORKSPACE: '$env:WORKSPACE' must be an existing directory"
+}
+
 $packageSource = $packageSource.TrimEnd('\\')
 Write-Host "using package id: $packageId, package source: $packageSource, packageVersion: $packageVersion"
 dotnet publish $cmdletsDir -f dnxcore50 -r win7-x64 -o $packageSource
