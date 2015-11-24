@@ -8,25 +8,26 @@
   "frameworks": {
     "dnxcore50": {
       "dependencies": {
-        "Microsoft.CLU": "0.0.1-beta-151119",
-        "Microsoft.CSharp": "4.0.1-beta-23409",
-        "System.Linq": "4.0.1-beta-23409"
+        "Microsoft.NETCore": "5.0.1-beta-23516",
+        "Microsoft.NETCore.Platforms": "1.0.1-beta-23516",
+        "Microsoft.CSharp": "4.0.1-beta-23516"
       }
     }
   },
   "dependencies": {
+    "System.Linq": "4.0.1-beta-23516",
+    "Microsoft.CLU": "1.0.0",
+    "Commands.Common": "",
     "Commands.Common.Authentication": "",
     "Commands.ResourceManager.Common": "",
-    "Commands.Common": "",
-    "Microsoft.Azure.Commands.Profile": "",
     "Microsoft.Azure.Management.Resources": "3.1.1-preview",
     "Microsoft.IdentityModel.Clients.ActiveDirectory": "3.6.210231457-alpha",
     "Microsoft.Rest.ClientRuntime": "1.4.1",
     "Microsoft.Rest.ClientRuntime.Azure": "2.1.0",
     "Microsoft.Rest.ClientRuntime.Azure.Authentication": "1.0.0-preview",
-    "Newtonsoft.Json": "6.0.8",
-    "System.Collections": "4.0.11-beta-23409",
-    "System.Collections.Concurrent": "4.0.11-beta-23409",
+    "Newtonsoft.Json": "7.0.1",
+    "System.Collections": "4.0.11-beta-23516",
+    "System.Collections.Concurrent": "4.0.11-beta-23516",
     "System.Diagnostics.Tools": "4.0.1-beta-23516",
     "System.Diagnostics.TraceSource": "4.0.0-beta-23516",
     "System.Diagnostics.Tracing": "4.0.21-beta-23516",
@@ -39,10 +40,10 @@
     "System.Reflection.Primitives": "4.0.1-beta-23516",
     "System.Reflection.TypeExtensions": "4.1.0-beta-23516",
     "System.Runtime": "4.0.21-beta-23516",
-    "System.Runtime.Extensions": "4.0.11-beta-23409",
-    "System.Runtime.Serialization.Json": "4.0.1-beta-23409",
+    "System.Runtime.Extensions": "4.0.11-beta-23516",
+    "System.Runtime.Serialization.Json": "4.0.1-beta-23516",
     "System.Runtime.Serialization.Primitives": "4.1.0-beta-23516",
-    "System.Runtime.Serialization.Xml": "4.0.11-beta-23409",
+    "System.Runtime.Serialization.Xml": "4.1.0-beta-23516",
     "System.Security.Cryptography.Algorithms": "4.0.0-beta-23516",
     "System.Security.Cryptography.X509Certificates": "4.0.0-beta-23516",
     "System.Text.Encoding": "4.0.11-beta-23516",
@@ -52,7 +53,7 @@
     "System.Threading.Thread": "4.0.0-beta-23516",
     "System.Xml.ReaderWriter": "4.0.11-beta-23516",
     "xunit.runner.dnx": "2.1.0-rc1-build204",
-    "xunit": "2.2.0-beta1-build3217",
+    "xunit": "2.2.0-beta1-build3220",
     "Microsoft.Azure.Test.HttpRecorder": "2.0.0",
     "Microsoft.Rest.ClientRuntime.Azure.TestFramework": "1.0.0"
   }

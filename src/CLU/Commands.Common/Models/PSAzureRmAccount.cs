@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Models
@@ -47,7 +48,7 @@ namespace Microsoft.Azure.Commands.Models
 
             if (account.IsPropertySet(AzureAccount.Property.Tenants))
             {
-                result.Tenants = account.GetProperty(AzureAccount.Property.Tenants);
+                result.Tenants = new List<string>(account.GetPropertyAsArray(AzureAccount.Property.Tenants));
             }
 
             if (account.IsPropertySet(AzureAccount.Property.CertificateThumbprint))
@@ -85,9 +86,12 @@ namespace Microsoft.Azure.Commands.Models
                 result.SetProperty(AzureAccount.Property.AccessToken, account.AccessToken);
             }
 
-            if (!string.IsNullOrWhiteSpace(account.Tenants))
+            if (account.Tenants != null)
             {
-                result.SetProperty(AzureAccount.Property.Tenants, account.Tenants);
+                foreach (var tenant in account.Tenants)
+                {
+                    result.SetOrAppendProperty(AzureAccount.Property.Tenants, tenant);
+                }
             }
 
             if (!string.IsNullOrWhiteSpace(account.CertificateThumbprint))
@@ -109,7 +113,7 @@ namespace Microsoft.Azure.Commands.Models
         /// <summary>
         /// The tenant ids for the account
         /// </summary>
-        public string Tenants { get; set; }
+        public List<string> Tenants { get; set; }
 
         /// <summary>
         /// The access token for the account (if any)

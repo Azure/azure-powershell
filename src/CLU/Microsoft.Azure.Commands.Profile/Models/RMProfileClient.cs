@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
         }
 
-        public IAccessToken AcureAccessToken(string tenantId)
+        public IAccessToken AcquireAccessToken(string tenantId)
         {
             return AcquireAccessToken(_profile.Context.Account, _profile.Context.Environment, tenantId, null, ShowDialog.Auto);
         }
@@ -514,22 +514,44 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
         }
 
+
+
         private List<AzureTenant> ListAccountTenants(AzureAccount account, AzureEnvironment environment, string password, ShowDialog promptBehavior)
         {
-            var commonTenantToken = AcquireAccessToken(account, environment, AuthenticationFactory.CommonAdTenant,
-                password, promptBehavior);
+            List<AzureTenant> result = null;
+            try
+            {
+                var commonTenantToken = AcquireAccessToken(account, environment, AuthenticationFactory.CommonAdTenant,
+                    password, promptBehavior);
 
-            using (var subscriptionClient = _clientFactory.CreateCustomArmClient<SubscriptionClient>(
-                    environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager), 
+                using (var subscriptionClient = _clientFactory.CreateCustomArmClient<SubscriptionClient>(
+                    environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
                     new TokenCredentials(commonTenantToken.AccessToken)
                     ))
-            {
-                //TODO: Fix subscription client to not require subscriptionId
-                subscriptionClient.SubscriptionId = Guid.NewGuid().ToString();
-                return subscriptionClient.Tenants.List()
-                    .Select(ti => new AzureTenant() { Id = new Guid(ti.TenantId), Domain = commonTenantToken.GetDomain() })
-                    .ToList();
+                {
+                    //TODO: Fix subscription client to not require subscriptionId
+                    subscriptionClient.SubscriptionId = Guid.NewGuid().ToString();
+                    result = account.MergeTenants(subscriptionClient.Tenants.List(), commonTenantToken);
+                }
             }
+            catch
+            {
+                if (account.IsPropertySet(AzureAccount.Property.Tenants))
+                {
+                    result =
+                        account.GetPropertyAsArray(AzureAccount.Property.Tenants)
+                            .Select(
+                                ti =>
+                                    new AzureTenant()
+                                    {
+                                        Id = new Guid(ti),
+                                        Domain = AccessTokenExtensions.GetDomain(account.Id)
+                                    }).ToList();
+                }
+                
+            }
+
+            return result;
         }
 
         private IEnumerable<AzureSubscription> ListSubscriptionsForTenant(AzureAccount account, AzureEnvironment environment,

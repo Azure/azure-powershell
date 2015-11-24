@@ -145,7 +145,11 @@ namespace Microsoft.Azure.Commands.Resources
         /// <param name="templateParameterFilePath">Path to the template parameter file if present</param>
         /// <param name="staticParameters">The existing PowerShell cmdlet parameters</param>
         /// <returns>The template parameters</returns>
-        protected RuntimeDefinedParameterDictionary GetTemplateParametersFromFile(string templateFilePath, Hashtable templateParameterObject, string templateParameterFilePath, string[] staticParameters)
+        public RuntimeDefinedParameterDictionary GetTemplateParametersFromFile(
+            string templateFilePath, 
+            Hashtable templateParameterObject, 
+            string templateParameterFilePath, 
+            string[] staticParameters)
         {
             RuntimeDefinedParameterDictionary dynamicParameters = new RuntimeDefinedParameterDictionary();
             string templateContent = null;
@@ -167,7 +171,7 @@ namespace Microsoft.Azure.Commands.Resources
             return dynamicParameters;
         }
 
-        protected Dictionary<string, TemplateFileParameterV1> ParseTemplateParameterFileContents(string templateParameterFilePath)
+        public Dictionary<string, TemplateFileParameterV1> ParseTemplateParameterFileContents(string templateParameterFilePath)
         {
             Dictionary<string, TemplateFileParameterV1> parameters = new Dictionary<string, TemplateFileParameterV1>();
 
@@ -288,7 +292,7 @@ namespace Microsoft.Azure.Commands.Resources
             }
         }
 
-        protected RuntimeDefinedParameter ConstructDynamicParameter(string[] staticParameters, KeyValuePair<string, TemplateFileParameterV1> parameter)
+        public RuntimeDefinedParameter ConstructDynamicParameter(string[] staticParameters, KeyValuePair<string, TemplateFileParameterV1> parameter)
         {
             const string duplicatedParameterSuffix = "FromTemplate";
             string name = parameter.Key;

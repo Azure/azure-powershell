@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         protected override void BeginProcessing()
         {
             // Deserialize session variables
-            var sessionProfile = GetSessionVariableValue<PSAzureProfile>(AzurePowerShell.ProfileVariable, null);
+            var sessionProfile = GetSessionVariableValue<PSAzureProfile>(AzurePowerShell.ProfileVariable, (PSAzureProfile)(new AzureRMProfile()));
             if (sessionProfile != null)
             {
                 DefaultProfile = DefaultProfile?? sessionProfile;

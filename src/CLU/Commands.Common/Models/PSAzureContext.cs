@@ -85,6 +85,6 @@ namespace Microsoft.Azure.Commands.Models
         /// </summary>
         public PSAzureTenant Tenant { get; set; }
 
-        private byte[] TokenCache { get; set; }
+        public byte[] TokenCache { get; set; }
     }
 }
