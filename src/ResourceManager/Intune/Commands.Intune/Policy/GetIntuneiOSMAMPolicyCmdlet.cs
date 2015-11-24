@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Intune
         /// </summary>
         private void GetiOSPolicyByName()
         {
-            var iOSPolicy = this.IntuneClient.Ios.GetMAMPolicyById(this.AsuHostName, this.Name, select: null);
+            var iOSPolicy = this.IntuneClient.Ios.GetMAMPolicyByName(this.AsuHostName, this.Name, select: null);
 
             this.WriteObject(iOSPolicy);
         }

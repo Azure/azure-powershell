@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.Intune
         {
             if (this.Initialized)
             {
-                IPage<Device> devices = this.IntuneClient.GetUserDevices(hostName, userName, filter, top, select);
+                IPage<Device> devices = this.IntuneClient.GetMAMUserDevices(hostName, userName, filter, top, select);
                 return devices;
             }
             else
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Commands.Intune
         {
             if (this.Initialized)
             {
-                IPage<Device> devices = this.IntuneClient.GetUserDevicesNext(nextPageLink);
+                IPage<Device> devices = this.IntuneClient.GetMAMUserDevicesNext(nextPageLink);
                 return devices;
             }
             else

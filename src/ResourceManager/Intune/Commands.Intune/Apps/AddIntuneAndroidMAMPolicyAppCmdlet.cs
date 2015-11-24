@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Intune
                 () =>
                 {
                     var payLoad = AppOrGroupPayloadMaker.PrepareMAMPolicyPayload(this.IntuneClient, LinkType.App, this.AsuHostName, this.AppName);
-                    this.IntuneClient.Android.AddAppForPolicy(this.AsuHostName, this.Name, this.AppName, payLoad);
+                    this.IntuneClient.Android.AddAppForMAMPolicy(this.AsuHostName, this.Name, this.AppName, payLoad);
                     this.WriteObject(Resources.OperationCompletedMessage);
                 });
         }        

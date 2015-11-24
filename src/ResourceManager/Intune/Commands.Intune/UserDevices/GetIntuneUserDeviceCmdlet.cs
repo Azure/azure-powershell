@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Intune
         /// </summary>
         private void GetUserDeviceByName()
         {
-            var device = this.IntuneClient.GetUserDeviceByDeviceName(this.AsuHostName, this.Username, this.Name, select: null);
+            var device = this.IntuneClient.GetMAMUserDeviceByDeviceName(this.AsuHostName, this.Username, this.Name, select: null);
 
             this.WriteObject(device);
         }
