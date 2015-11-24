@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 GetLoadBalancer(resourceGroupName, name);
             }
-            catch (CloudException exception)
+            catch (Microsoft.Rest.Azure.CloudException exception)
             {
                 if (exception.Response.StatusCode == HttpStatusCode.NotFound)
                 {

@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 GetVirtualNetworkGatewayConnection(resourceGroupName, name);
             }
-            catch (CloudException exception)
+            catch (Microsoft.Rest.Azure.CloudException exception)
             {
                 if (exception.Response.StatusCode == HttpStatusCode.NotFound)
                 {
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 GetVirtualNetworkGatewayConnectionSharedKey(resourceGroupName, name);
             }
-            catch (CloudException exception)
+            catch (Microsoft.Rest.Azure.CloudException exception)
             {
                 if (exception.Response.StatusCode == HttpStatusCode.NotFound)
                 {

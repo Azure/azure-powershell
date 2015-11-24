@@ -19,14 +19,14 @@ namespace Commands.Network.Test.ScenarioTests
 {
     public class VirtualNetworkTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
-        [Fact(Skip = "Rerecord tests")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualNetworkCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkCRUD");
         }
 
-        [Fact(Skip = "Rerecord tests")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualNetworkSubnetCRUD()
         {

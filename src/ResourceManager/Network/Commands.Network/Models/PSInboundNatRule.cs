@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string ProvisioningState { get; set; }
 
         [JsonProperty(Order = 1)]
-        public PSIPConfiguration BackendIPConfiguration { get; set; }
+        public PSNetworkInterfaceIPConfiguration BackendIPConfiguration { get; set; }
 
         [JsonIgnore]
         public string FrontendIPConfigurationText

@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 GetVirtualNetwork(resourceGroupName, name);
             }
-            catch (CloudException exception)
+            catch (Microsoft.Rest.Azure.CloudException exception)
             {
                 if (exception.Response.StatusCode == HttpStatusCode.NotFound)
                 {
