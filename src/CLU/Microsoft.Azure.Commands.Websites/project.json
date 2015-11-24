@@ -1,23 +1,28 @@
 {
   "version": "1.0.0-*",
-  "description": "Website Management Cmdlets",
-  "authors": [ "markcowl" ],
+  "description": "Microsoft Azure Website Manager Cmdlets",
+  "authors": [ "markcowl, hovsepm, haocs" ],
   "tags": [ "" ],
   "projectUrl": "",
   "licenseUrl": "",
   "frameworks": {
     "dnxcore50": {
       "dependencies": {
-        "Microsoft.CLU": "1.0.0-*",
-        "Microsoft.CSharp": "4.0.1-beta-23409",
-        "System.Linq": "4.0.1-beta-23409"
+        "Microsoft.NETCore": "5.0.1-beta-23516",
+        "Microsoft.NETCore.Platforms": "1.0.1-beta-23516",
+        "Microsoft.CSharp": "4.0.1-beta-23516"
       }
     }
   },
   "dependencies": {
     "Commands.Common.Authentication": "",
     "Commands.Common": "",
-    "Commands.Common.Resources": "",
+    "Commands.ResourceManager.Common": "",
+    "Commands.ResourceManager.Cmdlets": "",
+    "Microsoft.Azure.Commands.Resources": "",
+    "Microsoft.Azure.Commands.Profile": "",
+    "Microsoft.Azure.Graph.RBAC": "2.0.0-preview",
+    "Microsoft.Azure.Management.Authorization": "2.0.1-preview",
     "Microsoft.Azure.Management.Resources": "3.1.1-preview",
     "Microsoft.Azure.Management.Websites": "1.0.0-preview",
     "Microsoft.IdentityModel.Clients.ActiveDirectory": "3.6.210231457-alpha",
@@ -38,7 +43,7 @@
     "System.Reflection.Extensions": "4.0.1-beta-23516",
     "System.Reflection.Primitives": "4.0.1-beta-23516",
     "System.Reflection.TypeExtensions": "4.1.0-beta-23516",
-    "System.Runtime": "4.0.20",
+    "System.Runtime": "4.0.21-beta-23516",
     "System.Runtime.Extensions": "4.0.11-beta-23409",
     "System.Runtime.Serialization.Json": "4.0.1-beta-23409",
     "System.Runtime.Serialization.Primitives": "4.1.0-beta-23516",
@@ -50,6 +55,9 @@
     "System.Threading": "4.0.11-beta-23409",
     "System.Threading.Tasks": "4.0.11-beta-23516",
     "System.Threading.Thread": "4.0.0-beta-23516",
-    "System.Xml.ReaderWriter": "4.0.11-beta-23516"
+    "System.Xml.ReaderWriter": "4.0.11-beta-23516",
+    "System.Text.RegularExpressions": "4.0.11-beta-23516",
+    "Microsoft.CLU": "1.0.0",
+    "System.Linq": "4.0.1-beta-23409"
   }
 }

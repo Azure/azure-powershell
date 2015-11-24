@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.WebApps.Models
             {
                 if (_resourcesClient == null)
                 {
-                    _resourcesClient = new PSResourceManagerModels.ResourcesClient(ClientFactory, DefaultProfile.Context)
+                    _resourcesClient = new PSResourceManagerModels.ResourcesClient(ClientFactory, DefaultProfile.Context, DataStore)
                     {
                         VerboseLogger = WriteVerboseWithTimestamp,
                         ErrorLogger = WriteErrorWithTimestamp,

@@ -22,7 +22,6 @@ using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Commands.WebApps.Validations;
 using Microsoft.Azure.Management.WebSites.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
