@@ -16,6 +16,12 @@
   },
   "dependencies": {
     "System.Linq": "4.0.1-beta-23516",
+    "Microsoft.CLU": "1.0.0",
+    "Commands.Common": "",
+    "Commands.Common.Authentication": "",
+    "Commands.ResourceManager.Common": "",
+    "Commands.ScenarioTests.ResourceManager.Common": "",
+    "Microsoft.Azure.Commands.Profile": "",
     "Microsoft.Azure.Management.Resources": "3.1.1-preview",
     "Microsoft.IdentityModel.Clients.ActiveDirectory": "3.6.210231457-alpha",
     "Microsoft.Rest.ClientRuntime": "1.4.1",
@@ -50,13 +56,7 @@
     "System.Xml.ReaderWriter": "4.0.11-beta-23516",
     "xunit": "2.2.0-beta1-build3220",
     "xunit.assert": "2.2.0-beta1-build3220",
-    "xunit.runner.dnx": "2.1.0-rc1-build204",
-    "Microsoft.CLU": "1.0.0",
-    "Commands.Common": "1.0.0-*",
-    "Commands.Common.Authentication": "1.0.0-*",
-    "Commands.Common.Resources": "1.0.0-*",
-    "Commands.ScenarioTests.ResourceManager.Common": "1.0.0-*",
-    "Microsoft.Azure.Commands.Profile": "1.0.0-*"
+    "xunit.runner.dnx": "2.1.0-rc1-build204"
   },
   "commands": {
     "test": "xunit.runner.dnx"
