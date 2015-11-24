@@ -14,8 +14,10 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Utilities.Common;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -23,12 +25,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
-using System.Management.Automation.Runspaces;
-using System.Reflection;
-using Microsoft.Azure.Commands.Models;
-using Microsoft.Azure.Commands.Utilities.Common;
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-using Microsoft.Azure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.ScenarioTest
 {

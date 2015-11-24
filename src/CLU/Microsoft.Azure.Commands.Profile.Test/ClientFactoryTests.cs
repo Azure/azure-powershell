@@ -12,18 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using Xunit;
-using System;
-using System.Net.Http.Headers;
-using Microsoft.Azure;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
-using Microsoft.Azure.Commands.Test.Utilities.Common;
-using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Rest.TransientFaultHandling;
 using Microsoft.Azure.Commands.Common.Test.Mocks;
 using Microsoft.Azure.Commands.ScenarioTest;
+using System;
+using System.Collections.Generic;
+using System.Net.Http.Headers;
+using Xunit;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 {
