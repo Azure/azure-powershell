@@ -35,6 +35,9 @@ namespace Microsoft.Azure.Commands.Intune
         /// </summary>
         internal static readonly ConcurrentBag<ErrorRecord> errors = new ConcurrentBag<ErrorRecord>();
 
+        /// <summary>
+        /// IIntuneResourceManagementClient
+        /// </summary>
         private static IIntuneResourceManagementClient intuneClient;
 
         /// <summary>
@@ -72,7 +75,6 @@ namespace Microsoft.Azure.Commands.Intune
 
                 return intuneClient;
             }
-
             set
             {
                 intuneClient = value;

@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Intune.Test
     /// <summary>
     ///  Unit Tests for the SetIntuneAndroidMAMPolicy Cmdlet.
     /// </summary>
-    public class SetIntuneAndroidMAMPolicyCmdletTests : RMTestBase
+    public class SetIntuneAndroidMAMPolicyCmdletTests
     {
         private Mock<IIntuneResourceManagementClient> intuneClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
