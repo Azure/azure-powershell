@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Network.Models
      {
          public List<PSRoute> Routes { get; set; }
 
-         public List<PSResourceId> Subnets { get; set; }
+         public List<PSSubnet> Subnets { get; set; }
 
          public string ProvisioningState { get; set; }
 

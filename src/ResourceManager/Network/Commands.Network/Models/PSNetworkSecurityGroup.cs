@@ -25,9 +25,9 @@ namespace Microsoft.Azure.Commands.Network.Models
 
          public List<PSSecurityRule> DefaultSecurityRules { get; set; }
 
-         public List<PSResourceId> NetworkInterfaces { get; set; }
+         public List<PSNetworkInterface> NetworkInterfaces { get; set; }
 
-         public List<PSResourceId> Subnets { get; set; }
+         public List<PSSubnet> Subnets { get; set; }
 
          public string ProvisioningState { get; set; }
 

@@ -75,10 +75,12 @@ namespace Microsoft.Azure.Commands.Network
             // CNM to MNM
             Mapper.CreateMap<CNM.PSDhcpOptions, MNM.DhcpOptions>();
             Mapper.CreateMap<CNM.PSSubnet, MNM.Subnet>();
+            Mapper.CreateMap<CNM.PSIPConfiguration, MNM.IPConfiguration>();
 
             // MNM to CNM
             Mapper.CreateMap<MNM.DhcpOptions, CNM.PSDhcpOptions>();
             Mapper.CreateMap<MNM.Subnet, CNM.PSSubnet>();
+            Mapper.CreateMap<MNM.IPConfiguration, CNM.PSIPConfiguration>();
 
             // VirtualNetwork
             // CNM to MNM
@@ -102,12 +104,13 @@ namespace Microsoft.Azure.Commands.Network
             // CNM to MNM
             Mapper.CreateMap<CNM.PSNetworkInterface, MNM.NetworkInterface>();
             Mapper.CreateMap<CNM.PSNetworkInterfaceDnsSettings, MNM.NetworkInterfaceDnsSettings>();
-            Mapper.CreateMap<CNM.PSNetworkInterfaceIpConfiguration, MNM.NetworkInterfaceIPConfiguration>();
+            Mapper.CreateMap<CNM.PSNetworkInterfaceIPConfiguration, MNM.NetworkInterfaceIPConfiguration>();
+
 
             // MNM to CNM
             Mapper.CreateMap<MNM.NetworkInterface, CNM.PSNetworkInterface>();
             Mapper.CreateMap<MNM.NetworkInterfaceDnsSettings, CNM.PSNetworkInterfaceDnsSettings>();
-            Mapper.CreateMap<MNM.NetworkInterfaceIPConfiguration, CNM.PSNetworkInterfaceIpConfiguration>();
+            Mapper.CreateMap<MNM.NetworkInterfaceIPConfiguration, CNM.PSNetworkInterfaceIPConfiguration>();
 
             // LoadBalancer
             // CNM to MNM

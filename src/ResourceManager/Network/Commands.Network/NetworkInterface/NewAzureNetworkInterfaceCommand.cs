@@ -228,9 +228,9 @@ namespace Microsoft.Azure.Commands.Network
             networkInterface.Name = this.Name;
             networkInterface.Location = this.Location;
             networkInterface.EnableIPForwarding = this.EnableIPForwarding.IsPresent;
-            networkInterface.IpConfigurations = new List<PSNetworkInterfaceIpConfiguration>();
+            networkInterface.IpConfigurations = new List<PSNetworkInterfaceIPConfiguration>();
 
-            var nicIpConfiguration = new PSNetworkInterfaceIpConfiguration();
+            var nicIpConfiguration = new PSNetworkInterfaceIPConfiguration();
             nicIpConfiguration.Name = string.IsNullOrEmpty(this.IpConfigurationName) ? "ipconfig1" : this.IpConfigurationName;
             nicIpConfiguration.PrivateIpAllocationMethod = MNM.IPAllocationMethod.Dynamic;
 
@@ -251,25 +251,25 @@ namespace Microsoft.Azure.Commands.Network
 
             if (!string.IsNullOrEmpty(this.NetworkSecurityGroupId))
             {
-                networkInterface.NetworkSecurityGroup = new PSResourceId();
+                networkInterface.NetworkSecurityGroup = new PSNetworkSecurityGroup();
                 networkInterface.NetworkSecurityGroup.Id = this.NetworkSecurityGroupId;
             }
 
             if (this.LoadBalancerBackendAddressPoolId != null)
             {
-                nicIpConfiguration.LoadBalancerBackendAddressPools = new List<PSResourceId>();
+                nicIpConfiguration.LoadBalancerBackendAddressPools = new List<PSBackendAddressPool>();
                 foreach (var bepoolId in this.LoadBalancerBackendAddressPoolId)
                 {
-                    nicIpConfiguration.LoadBalancerBackendAddressPools.Add(new PSResourceId { Id = bepoolId });
+                    nicIpConfiguration.LoadBalancerBackendAddressPools.Add(new PSBackendAddressPool { Id = bepoolId });
                 }
             }
 
             if (this.LoadBalancerInboundNatRuleId != null)
             {
-                nicIpConfiguration.LoadBalancerInboundNatRules = new List<PSResourceId>();
+                nicIpConfiguration.LoadBalancerInboundNatRules = new List<PSInboundNatRule>();
                 foreach (var natruleId in this.LoadBalancerInboundNatRuleId)
                 {
-                    nicIpConfiguration.LoadBalancerInboundNatRules.Add(new PSResourceId { Id = natruleId });
+                    nicIpConfiguration.LoadBalancerInboundNatRules.Add(new PSInboundNatRule { Id = natruleId });
                 }
             }
 

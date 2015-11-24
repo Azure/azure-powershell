@@ -16,7 +16,6 @@ using System;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Common.Authentication;
-using Microsoft.Rest.Azure.Authentication;
 namespace Microsoft.Azure.Commands.Network
 {
     public partial class NetworkClient
@@ -30,10 +29,8 @@ namespace Microsoft.Azure.Commands.Network
         public Action<string> WarningLogger { get; set; }
 
         public NetworkClient(AzureContext context)
-            : this(
-                AzureSession.ClientFactory.CreateClient<NetworkManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
+            : this(AzureSession.ClientFactory.CreateArmClient<NetworkManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
-
         }
 
         public NetworkClient(INetworkManagementClient NetworkManagementClient)

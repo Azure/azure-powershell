@@ -87,8 +87,8 @@ namespace Microsoft.Azure.Commands.Network
 
             foreach (var ipconfig in psNic.IpConfigurations)
             {
-                ipconfig.LoadBalancerBackendAddressPools = ipconfig.LoadBalancerBackendAddressPools ?? new List<PSResourceId>();
-                ipconfig.LoadBalancerInboundNatRules = ipconfig.LoadBalancerInboundNatRules ?? new List<PSResourceId>();
+                ipconfig.LoadBalancerBackendAddressPools = ipconfig.LoadBalancerBackendAddressPools ?? new List<PSBackendAddressPool>();
+                ipconfig.LoadBalancerInboundNatRules = ipconfig.LoadBalancerInboundNatRules ?? new List<PSInboundNatRule>();
             }
             
             return psNic;

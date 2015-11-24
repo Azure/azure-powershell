@@ -17,14 +17,15 @@ using System.Linq;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Subscriptions;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Common.Authentication;
 
 namespace Commands.Network.Test
 {
+    using Microsoft.Azure.Internal.Subscriptions;
+    using Microsoft.Azure.Management.Internal.Resources;
+
     public sealed class NetworkResourcesController
     {
         private CSMTestEnvironmentFactory csmTestFactory;
@@ -40,7 +41,7 @@ namespace Commands.Network.Test
 
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
-        public NetworkResourceProviderClient NetworkResourceProviderClient { get; private set; }
+        public NetworkManagementClient NetworkManagementClient { get; private set; }
 
         public static NetworkResourcesController NewInstance 
         { 
@@ -130,7 +131,7 @@ namespace Commands.Network.Test
             SubscriptionClient = GetSubscriptionClient();
             GalleryClient = GetGalleryClient();
             //EventsClient = GetEventsClient();
-            NetworkResourceProviderClient = GetNetworkResourceProviderClient();
+            this.NetworkManagementClient = this.GetNetworkManagementClient();
             AuthorizationManagementClient = GetAuthorizationManagementClient();
 
             helper.SetupManagementClients(
@@ -139,7 +140,7 @@ namespace Commands.Network.Test
                 GalleryClient,
                 //EventsClient,
                 AuthorizationManagementClient,
-                NetworkResourceProviderClient);
+                this.NetworkManagementClient);
         }
 
         private AuthorizationManagementClient GetAuthorizationManagementClient()
@@ -157,9 +158,9 @@ namespace Commands.Network.Test
             return TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
         }
 
-        private NetworkResourceProviderClient GetNetworkResourceProviderClient()
+        private NetworkManagementClient GetNetworkManagementClient()
         {
-            return TestBase.GetServiceClient<NetworkResourceProviderClient>(this.csmTestFactory);
+            return TestBase.GetServiceClient<NetworkManagementClient>(this.csmTestFactory);
         }
         private GalleryClient GetGalleryClient()
         {

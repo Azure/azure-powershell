@@ -24,8 +24,6 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSDhcpOptions DhcpOptions { get; set; }
 
-        public List<PSResourceId> NetworkInterfaces { get; set; }
-
         public List<PSSubnet> Subnets { get; set; }
 
         public string ProvisioningState { get; set; }
@@ -40,12 +38,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string DhcpOptionsText
         {
             get { return JsonConvert.SerializeObject(DhcpOptions, Formatting.Indented); }
-        }
-
-        [JsonIgnore]
-        public string NetworkInterfacesText
-        {
-            get { return JsonConvert.SerializeObject(NetworkInterfaces, Formatting.Indented); }
         }
 
         [JsonIgnore]

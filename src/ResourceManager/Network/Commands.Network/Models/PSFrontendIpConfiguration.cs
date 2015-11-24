@@ -19,43 +19,16 @@ namespace Microsoft.Azure.Commands.Network.Models
 
     using Newtonsoft.Json;
 
-    public class PSFrontendIPConfiguration : PSChildResource
+    public class PSFrontendIPConfiguration : PSIPConfiguration
     {
-        [JsonProperty(Order = 1)]
-        public string PrivateIpAddress { get; set; }
-
-        [JsonProperty(Order = 1)]
-        public string PrivateIpAllocationMethod { get; set; }
-
-        [JsonProperty(Order = 1)]
-        public PSResourceId Subnet { get; set; }
-
-        [JsonProperty(Order = 1)]
-        public PSResourceId PublicIpAddress { get; set; }
-
-        [JsonProperty(Order = 1)]
+        [JsonProperty(Order = 2)]
         public List<PSResourceId> InboundNatRules { get; set; }
 
-        [JsonProperty(Order = 1)]
+        [JsonProperty(Order = 2)]
         public List<PSResourceId> LoadBalancingRules { get; set; }
 
-        [JsonProperty(Order = 1)]
+        [JsonProperty(Order = 2)]
         public List<PSResourceId> InboundNatPools { get; set; }
-
-        [JsonProperty(Order = 1)]
-        public string ProvisioningState { get; set; }
-
-        [JsonIgnore]
-        public string SubnetText
-        {
-            get { return JsonConvert.SerializeObject(Subnet, Formatting.Indented); }
-        }
-
-        [JsonIgnore]
-        public string PublicIpAddressText
-        {
-            get { return JsonConvert.SerializeObject(PublicIpAddress, Formatting.Indented); }
-        }
 
         [JsonIgnore]
         public string InboundNatRulesText

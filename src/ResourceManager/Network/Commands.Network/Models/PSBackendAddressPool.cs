@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     public class PSBackendAddressPool : PSChildResource
     {
         [JsonProperty(Order = 1)]
-        public List<PSResourceId> BackendIpConfigurations { get; set; }
+        public List<PSIPConfiguration> BackendIpConfigurations { get; set; }
 
         [JsonProperty(Order = 1)]
         public List<PSResourceId> LoadBalancingRules { get; set; }

@@ -18,33 +18,33 @@ namespace Microsoft.Azure.Commands.Network.Models
 
     using Newtonsoft.Json;
 
-    public class PSNetworkInterfaceIPConfiguration : PSIPConfiguration
+    public class PSIPConfiguration : PSChildResource
     {
-        [JsonProperty(Order = 2)]
-        public List<PSBackendAddressPool> LoadBalancerBackendAddressPools { get; set; }
+        [JsonProperty(Order = 1)]
+        public string PrivateIpAddress { get; set; }
 
-        [JsonProperty(Order = 2)]
-        public List<PSInboundNatRule> LoadBalancerInboundNatRules { get; set; }
+        [JsonProperty(Order = 1)]
+        public string PrivateIpAllocationMethod { get; set; }
 
-        [JsonProperty(Order = 2)]
-        public List<PSInboundNatPool> LoadBalancerInboundNatPools { get; set; }
+        [JsonProperty(Order = 1)]
+        public PSResourceId Subnet { get; set; }
+
+        [JsonProperty(Order = 1)]
+        public PSResourceId PublicIpAddress { get; set; }
+        
+        [JsonProperty(Order = 1)]
+        public string ProvisioningState { get; set; }
 
         [JsonIgnore]
-        public string LoadBalancerBackendAddressPoolsText
+        public string SubnetText
         {
-            get { return JsonConvert.SerializeObject(LoadBalancerBackendAddressPools, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(Subnet, Formatting.Indented); }
         }
 
         [JsonIgnore]
-        public string LoadBalancerInboundNatRulesText
+        public string PublicIpAddressText
         {
-            get { return JsonConvert.SerializeObject(LoadBalancerInboundNatRules, Formatting.Indented); }
-        }
-
-        [JsonIgnore]
-        public string LoadBalancerInboundNatPoolsText
-        {
-            get { return JsonConvert.SerializeObject(LoadBalancerInboundNatPools, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(PublicIpAddress, Formatting.Indented); }
         }
     }
 }
