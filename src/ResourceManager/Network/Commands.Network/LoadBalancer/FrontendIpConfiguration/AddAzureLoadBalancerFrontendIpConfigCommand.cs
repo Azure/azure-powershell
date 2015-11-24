@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Network
            
             if (!string.IsNullOrEmpty(this.SubnetId))
             {
-                frontendIpConfig.Subnet = new PSResourceId();
+                frontendIpConfig.Subnet = new PSSubnet();
                 frontendIpConfig.Subnet.Id = this.SubnetId;
 
                 if (!string.IsNullOrEmpty(this.PrivateIpAddress))
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (!string.IsNullOrEmpty(this.PublicIpAddressId))
             {
-                frontendIpConfig.PublicIpAddress = new PSResourceId();
+                frontendIpConfig.PublicIpAddress = new PSPublicIpAddress();
                 frontendIpConfig.PublicIpAddress.Id = this.PublicIpAddressId;
             }
 

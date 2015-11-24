@@ -33,19 +33,19 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonIgnore]
         public string InboundNatRulesText
         {
-            get { return JsonConvert.SerializeObject(InboundNatRules, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(InboundNatRules, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
         public string LoadBalancingRulesText
         {
-            get { return JsonConvert.SerializeObject(LoadBalancingRules, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(LoadBalancingRules, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
         public string InboundNatPoolsText
         {
-            get { return JsonConvert.SerializeObject(InboundNatPools, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(InboundNatPools, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
     }

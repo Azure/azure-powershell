@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonIgnore]
         public string MicrosoftPeeringConfigText
         {
-            get { return JsonConvert.SerializeObject(MicrosoftPeeringConfig, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(MicrosoftPeeringConfig, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

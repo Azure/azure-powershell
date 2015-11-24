@@ -14,8 +14,6 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    using System.Collections.Generic;
-
     using Newtonsoft.Json;
 
     public class PSIPConfiguration : PSChildResource
@@ -27,10 +25,10 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string PrivateIpAllocationMethod { get; set; }
 
         [JsonProperty(Order = 1)]
-        public PSResourceId Subnet { get; set; }
+        public PSSubnet Subnet { get; set; }
 
         [JsonProperty(Order = 1)]
-        public PSResourceId PublicIpAddress { get; set; }
+        public PSPublicIpAddress PublicIpAddress { get; set; }
         
         [JsonProperty(Order = 1)]
         public string ProvisioningState { get; set; }
@@ -38,13 +36,13 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonIgnore]
         public string SubnetText
         {
-            get { return JsonConvert.SerializeObject(Subnet, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(Subnet, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
         public string PublicIpAddressText
         {
-            get { return JsonConvert.SerializeObject(PublicIpAddress, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(PublicIpAddress, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

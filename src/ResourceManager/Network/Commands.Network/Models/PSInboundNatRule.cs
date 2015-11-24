@@ -46,13 +46,13 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonIgnore]
         public string FrontendIPConfigurationText
         {
-            get { return JsonConvert.SerializeObject(FrontendIPConfiguration, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(FrontendIPConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
         public string BackendIPConfigurationText
         {
-            get { return JsonConvert.SerializeObject(BackendIPConfiguration, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(BackendIPConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

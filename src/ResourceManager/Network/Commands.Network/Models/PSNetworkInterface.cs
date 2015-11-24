@@ -39,25 +39,25 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonIgnore]
         public string VirtualMachineText
         {
-            get { return JsonConvert.SerializeObject(VirtualMachine, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(VirtualMachine, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
         public string IpConfigurationsText
         {
-            get { return JsonConvert.SerializeObject(IpConfigurations, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(IpConfigurations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
         public string DnsSettingsText
         {
-            get { return JsonConvert.SerializeObject(this.DnsSettings, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(this.DnsSettings, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
         
         [JsonIgnore]
         public string NetworkSecurityGroupText
         {
-            get { return JsonConvert.SerializeObject(NetworkSecurityGroup, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(NetworkSecurityGroup, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

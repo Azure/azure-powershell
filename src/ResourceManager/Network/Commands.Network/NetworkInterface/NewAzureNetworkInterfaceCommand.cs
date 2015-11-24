@@ -240,12 +240,12 @@ namespace Microsoft.Azure.Commands.Network
                 nicIpConfiguration.PrivateIpAllocationMethod = MNM.IPAllocationMethod.Static;
             }
 
-            nicIpConfiguration.Subnet = new PSResourceId();
+            nicIpConfiguration.Subnet = new PSSubnet();
             nicIpConfiguration.Subnet.Id = this.SubnetId;
 
             if (!string.IsNullOrEmpty(this.PublicIpAddressId))
             {
-                nicIpConfiguration.PublicIpAddress = new PSResourceId();
+                nicIpConfiguration.PublicIpAddress = new PSPublicIpAddress();
                 nicIpConfiguration.PublicIpAddress.Id = this.PublicIpAddressId;
             }
 

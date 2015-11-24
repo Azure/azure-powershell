@@ -28,19 +28,19 @@ namespace Microsoft.Azure.Commands.Network.Models
          [JsonIgnore]
          public string FrontendIpConfigurationText
          {
-             get { return JsonConvert.SerializeObject(FrontendIpConfiguration, Formatting.Indented); }
+             get { return JsonConvert.SerializeObject(FrontendIpConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
          }
 
          [JsonIgnore]
          public string FrontendPortText
          {
-             get { return JsonConvert.SerializeObject(FrontendPort, Formatting.Indented); }
+             get { return JsonConvert.SerializeObject(FrontendPort, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
          }
 
          [JsonIgnore]
          public string SslCertificateText
          {
-             get { return JsonConvert.SerializeObject(SslCertificate, Formatting.Indented); }
+             get { return JsonConvert.SerializeObject(SslCertificate, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
          }
      }
 }

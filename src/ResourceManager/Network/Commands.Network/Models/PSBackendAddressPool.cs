@@ -33,13 +33,13 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonIgnore]
         public string BackendIpConfigurationsText
         {
-            get { return JsonConvert.SerializeObject(BackendIpConfigurations, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(BackendIpConfigurations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
         public string LoadBalancingRulesText
         {
-            get { return JsonConvert.SerializeObject(LoadBalancingRules, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(LoadBalancingRules, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

@@ -26,25 +26,17 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 2)]
         public List<PSInboundNatRule> LoadBalancerInboundNatRules { get; set; }
 
-        [JsonProperty(Order = 2)]
-        public List<PSInboundNatPool> LoadBalancerInboundNatPools { get; set; }
 
         [JsonIgnore]
         public string LoadBalancerBackendAddressPoolsText
         {
-            get { return JsonConvert.SerializeObject(LoadBalancerBackendAddressPools, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(LoadBalancerBackendAddressPools, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
         public string LoadBalancerInboundNatRulesText
         {
-            get { return JsonConvert.SerializeObject(LoadBalancerInboundNatRules, Formatting.Indented); }
-        }
-
-        [JsonIgnore]
-        public string LoadBalancerInboundNatPoolsText
-        {
-            get { return JsonConvert.SerializeObject(LoadBalancerInboundNatPools, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(LoadBalancerInboundNatRules, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }
