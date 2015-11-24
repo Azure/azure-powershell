@@ -46,13 +46,13 @@ namespace Microsoft.Azure.Commands.Network
                 peering.SharedKey = this.SharedKey;
             }
 
-            if (this.MircosoftConfigAdvertisedPublicPrefixes != null
-                && this.MircosoftConfigAdvertisedPublicPrefixes.Any())
+            if (this.MicrosoftConfigAdvertisedPublicPrefixes != null
+                && this.MicrosoftConfigAdvertisedPublicPrefixes.Any())
             {
                 peering.MicrosoftPeeringConfig = new PSPeeringConfig();
-                peering.MicrosoftPeeringConfig.AdvertisedPublicPrefixes = this.MircosoftConfigAdvertisedPublicPrefixes;
-                peering.MicrosoftPeeringConfig.CustomerASN = this.MircosoftConfigCustomerAsn;
-                peering.MicrosoftPeeringConfig.RoutingRegistryName = this.MircosoftConfigRoutingRegistryName;
+                peering.MicrosoftPeeringConfig.AdvertisedPublicPrefixes = this.MicrosoftConfigAdvertisedPublicPrefixes;
+                peering.MicrosoftPeeringConfig.CustomerASN = this.MicrosoftConfigCustomerAsn;
+                peering.MicrosoftPeeringConfig.RoutingRegistryName = this.MicrosoftConfigRoutingRegistryName;
             }
 
             WriteObject(peering);
