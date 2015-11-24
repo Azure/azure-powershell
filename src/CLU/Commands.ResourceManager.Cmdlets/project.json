@@ -8,9 +8,9 @@
   "frameworks": {
     "dnxcore50": {
       "dependencies": {
-        "Microsoft.CLU": "0.0.1-beta-151119",
-        "Microsoft.CSharp": "4.0.1-beta-23409",
-        "System.Linq": "4.0.1-beta-23409"
+        "Microsoft.NETCore": "5.0.1-beta-23516",
+        "Microsoft.NETCore.Platforms": "1.0.1-beta-23516",
+        "Microsoft.CSharp": "4.0.1-beta-23516"
       }
     }
   },
@@ -45,6 +45,8 @@
     "System.Threading.Tasks": "4.0.11-beta-23516",
     "System.Threading.Thread": "4.0.0-beta-23516",
     "Microsoft.Azure.Management.Resources": "3.1.1-preview",
-    "Microsoft.Extensions.Caching.Memory": "1.0.0-rc1-final"
+    "Microsoft.Extensions.Caching.Memory": "1.0.0-rc1-final",
+    "Microsoft.CLU": "1.0.0",
+    "System.Linq": "4.0.1-beta-23409"
   }
 }

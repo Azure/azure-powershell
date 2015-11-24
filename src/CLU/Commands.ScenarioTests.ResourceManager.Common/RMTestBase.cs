@@ -12,18 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Threading;
-using Microsoft.Azure.Commands.Utilities.Common;
 
-namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
+namespace Microsoft.Azure.Commands.Test.Utilities.Common
 {
     /// <summary>
     /// Base class for Microsoft Azure PowerShell unit tests.

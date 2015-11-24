@@ -18,7 +18,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using Microsoft.Azure.Test.HttpRecorder;
 
-namespace Microsoft.WindowsAzure.Commands.ScenarioTest
+namespace Microsoft.Azure.Commands.ScenarioTest
 {
     // Excludes api version when matching mocked records. 
     // If alternate api version is provided, uses that to match records else removes the api-version matching.
