@@ -56,8 +56,8 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The public IP address allocation method.")]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
-            MNM.IpAllocationMethod.Dynamic,
-            MNM.IpAllocationMethod.Static,
+            MNM.IPAllocationMethod.Dynamic,
+            MNM.IPAllocationMethod.Static,
             IgnoreCase = true)]
         public string AllocationMethod { get; set; }
 
@@ -132,9 +132,8 @@ namespace Microsoft.Azure.Commands.Network
                 publicIp.DnsSettings.ReverseFqdn = this.ReverseFqdn;
             }
 
-            var publicIpModel = Mapper.Map<MNM.PublicIpAddress>(publicIp);
+            var publicIpModel = Mapper.Map<MNM.PublicIPAddress>(publicIp);
 
-            publicIpModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.PublicIpAddressType;
             publicIpModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             this.PublicIpAddressClient.CreateOrUpdate(this.ResourceGroupName, this.Name, publicIpModel);

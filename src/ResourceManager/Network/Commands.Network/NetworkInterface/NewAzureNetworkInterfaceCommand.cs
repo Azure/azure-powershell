@@ -232,12 +232,12 @@ namespace Microsoft.Azure.Commands.Network
 
             var nicIpConfiguration = new PSNetworkInterfaceIpConfiguration();
             nicIpConfiguration.Name = string.IsNullOrEmpty(this.IpConfigurationName) ? "ipconfig1" : this.IpConfigurationName;
-            nicIpConfiguration.PrivateIpAllocationMethod = MNM.IpAllocationMethod.Dynamic;
+            nicIpConfiguration.PrivateIpAllocationMethod = MNM.IPAllocationMethod.Dynamic;
 
             if (!string.IsNullOrEmpty(this.PrivateIpAddress))
             {
                 nicIpConfiguration.PrivateIpAddress = this.PrivateIpAddress;
-                nicIpConfiguration.PrivateIpAllocationMethod = MNM.IpAllocationMethod.Static;
+                nicIpConfiguration.PrivateIpAllocationMethod = MNM.IPAllocationMethod.Static;
             }
 
             nicIpConfiguration.Subnet = new PSResourceId();
@@ -290,7 +290,6 @@ namespace Microsoft.Azure.Commands.Network
             networkInterface.IpConfigurations.Add(nicIpConfiguration);
 
             var networkInterfaceModel = Mapper.Map<MNM.NetworkInterface>(networkInterface);
-            networkInterfaceModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.NetworkInterfaceType;
             networkInterfaceModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             this.NetworkInterfaceClient.CreateOrUpdate(this.ResourceGroupName, this.Name, networkInterfaceModel);

@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Network
             backendHttpSettings.Protocol = this.Protocol;
             backendHttpSettings.CookieBasedAffinity = this.CookieBasedAffinity;
             backendHttpSettings.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
-                                    this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
+                                    this.NetworkClient.NetworkManagementClient.SubscriptionId,
                                     Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewaybackendHttpSettingsName,
                                     this.Name);
             return backendHttpSettings;

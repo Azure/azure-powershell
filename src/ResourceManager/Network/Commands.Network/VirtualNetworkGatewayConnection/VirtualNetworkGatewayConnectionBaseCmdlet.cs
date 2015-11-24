@@ -26,11 +26,11 @@ namespace Microsoft.Azure.Commands.Network
 {
     public abstract class VirtualNetworkGatewayConnectionBaseCmdlet : NetworkBaseCmdlet
     {
-        public IVirtualNetworkGatewayConnectionOperations VirtualNetworkGatewayConnectionClient
+        public IVirtualNetworkGatewayConnectionsOperations VirtualNetworkGatewayConnectionClient
         {
             get
             {
-                return NetworkClient.NetworkResourceProviderClient.VirtualNetworkGatewayConnections;
+                return NetworkClient.NetworkManagementClient.VirtualNetworkGatewayConnections;
             }
         }
 
@@ -55,9 +55,9 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSVirtualNetworkGatewayConnection GetVirtualNetworkGatewayConnection(string resourceGroupName, string name)
         {
-            var getVirtualNetworkGatewayConnectionResponse = this.VirtualNetworkGatewayConnectionClient.Get(resourceGroupName, name);
+            var connection = this.VirtualNetworkGatewayConnectionClient.Get(resourceGroupName, name);
 
-            var psVirtualNetworkGatewayConnection = ToPsVirtualNetworkGatewayConnection(getVirtualNetworkGatewayConnectionResponse.VirtualNetworkGatewayConnection);
+            var psVirtualNetworkGatewayConnection = ToPsVirtualNetworkGatewayConnection(connection);
             psVirtualNetworkGatewayConnection.ResourceGroupName = resourceGroupName;
 
             return psVirtualNetworkGatewayConnection;

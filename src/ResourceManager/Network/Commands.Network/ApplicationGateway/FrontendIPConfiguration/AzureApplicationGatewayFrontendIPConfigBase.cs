@@ -85,11 +85,11 @@ namespace Microsoft.Azure.Commands.Network
                 if (!string.IsNullOrEmpty(this.PrivateIPAddress))
                 {
                     frontendIPConfig.PrivateIPAddress = this.PrivateIPAddress;
-                    frontendIPConfig.PrivateIPAllocationMethod = Management.Network.Models.IpAllocationMethod.Static;
+                    frontendIPConfig.PrivateIPAllocationMethod = Management.Network.Models.IPAllocationMethod.Static;
                 }
                 else
                 {
-                    frontendIPConfig.PrivateIPAllocationMethod = Management.Network.Models.IpAllocationMethod.Dynamic;
+                    frontendIPConfig.PrivateIPAllocationMethod = Management.Network.Models.IPAllocationMethod.Dynamic;
                 }
             }
 
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             frontendIPConfig.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
-                                    this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
+                                    this.NetworkClient.NetworkManagementClient.SubscriptionId,
                                     Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewayFrontendIPConfigName,
                                     this.Name);
             return frontendIPConfig;

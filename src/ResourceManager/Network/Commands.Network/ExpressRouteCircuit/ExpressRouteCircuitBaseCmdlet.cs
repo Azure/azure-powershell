@@ -26,11 +26,11 @@ namespace Microsoft.Azure.Commands.Network
 
     public abstract class ExpressRouteCircuitBaseCmdlet : NetworkBaseCmdlet
     {
-        public IExpressRouteCircuitOperations ExpressRouteCircuitClient
+        public IExpressRouteCircuitsOperations ExpressRouteCircuitClient
         {
             get
             {
-                return NetworkClient.NetworkResourceProviderClient.ExpressRouteCircuits;
+                return NetworkClient.NetworkManagementClient.ExpressRouteCircuits;
             }
         }
 
@@ -56,15 +56,15 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSExpressRouteCircuit GetExpressRouteCircuit(string resourceGroupName, string name)
         {
-            var circuitGetResponse = this.ExpressRouteCircuitClient.Get(resourceGroupName, name);
+            var circuit = this.ExpressRouteCircuitClient.Get(resourceGroupName, name);
 
-            var expressRouteCircuit = Mapper.Map<PSExpressRouteCircuit>(circuitGetResponse.ExpressRouteCircuit);
-            expressRouteCircuit.ResourceGroupName = resourceGroupName;
+            var psExpressRouteCircuit = Mapper.Map<PSExpressRouteCircuit>(circuit);
+            psExpressRouteCircuit.ResourceGroupName = resourceGroupName;
 
-            expressRouteCircuit.Tag =
-                TagsConversionHelper.CreateTagHashtable(circuitGetResponse.ExpressRouteCircuit.Tags);
+            psExpressRouteCircuit.Tag =
+                TagsConversionHelper.CreateTagHashtable(circuit.Tags);
             
-            return expressRouteCircuit;
+            return psExpressRouteCircuit;
         }
 
         public PSExpressRouteCircuit ToPsExpressRouteCircuit(ExpressRouteCircuit circuit)

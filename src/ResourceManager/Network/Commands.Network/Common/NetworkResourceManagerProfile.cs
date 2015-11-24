@@ -68,8 +68,8 @@ namespace Microsoft.Azure.Commands.Network
 
         protected override void Configure()
         {
-            Mapper.CreateMap<CNM.PSResourceId, MNM.ResourceId>();
-            Mapper.CreateMap<MNM.ResourceId, CNM.PSResourceId>();
+            Mapper.CreateMap<CNM.PSResourceId, MNM.SubResource>();
+            Mapper.CreateMap<MNM.SubResource, CNM.PSResourceId>();
 
             // Subnet
             // CNM to MNM
@@ -91,23 +91,23 @@ namespace Microsoft.Azure.Commands.Network
 
             // PublicIpAddress
             // CNM to MNM
-            Mapper.CreateMap<CNM.PSPublicIpAddress, MNM.PublicIpAddress>();
-            Mapper.CreateMap<CNM.PSPublicIpAddressDnsSettings, MNM.PublicIpAddressDnsSettings>();
+            Mapper.CreateMap<CNM.PSPublicIpAddress, MNM.PublicIPAddress>();
+            Mapper.CreateMap<CNM.PSPublicIpAddressDnsSettings, MNM.PublicIPAddressDnsSettings>();
 
             // MNM to CNM
-            Mapper.CreateMap<MNM.PublicIpAddress, CNM.PSPublicIpAddress>();
-            Mapper.CreateMap<MNM.PublicIpAddressDnsSettings, CNM.PSPublicIpAddressDnsSettings>();
+            Mapper.CreateMap<MNM.PublicIPAddress, CNM.PSPublicIpAddress>();
+            Mapper.CreateMap<MNM.PublicIPAddressDnsSettings, CNM.PSPublicIpAddressDnsSettings>();
 
             // NetworkInterface
             // CNM to MNM
             Mapper.CreateMap<CNM.PSNetworkInterface, MNM.NetworkInterface>();
             Mapper.CreateMap<CNM.PSNetworkInterfaceDnsSettings, MNM.NetworkInterfaceDnsSettings>();
-            Mapper.CreateMap<CNM.PSNetworkInterfaceIpConfiguration, MNM.NetworkInterfaceIpConfiguration>();
+            Mapper.CreateMap<CNM.PSNetworkInterfaceIpConfiguration, MNM.NetworkInterfaceIPConfiguration>();
 
             // MNM to CNM
             Mapper.CreateMap<MNM.NetworkInterface, CNM.PSNetworkInterface>();
             Mapper.CreateMap<MNM.NetworkInterfaceDnsSettings, CNM.PSNetworkInterfaceDnsSettings>();
-            Mapper.CreateMap<MNM.NetworkInterfaceIpConfiguration, CNM.PSNetworkInterfaceIpConfiguration>();
+            Mapper.CreateMap<MNM.NetworkInterfaceIPConfiguration, CNM.PSNetworkInterfaceIpConfiguration>();
 
             // LoadBalancer
             // CNM to MNM
@@ -118,10 +118,10 @@ namespace Microsoft.Azure.Commands.Network
             
             // FrontendIpConfiguration
             // CNM to MNM
-            Mapper.CreateMap<CNM.PSFrontendIPConfiguration, MNM.FrontendIpConfiguration>();
+            Mapper.CreateMap<CNM.PSFrontendIPConfiguration, MNM.FrontendIPConfiguration>();
 
             // MNM to CNM
-            Mapper.CreateMap<MNM.FrontendIpConfiguration, CNM.PSFrontendIPConfiguration>();
+            Mapper.CreateMap<MNM.FrontendIPConfiguration, CNM.PSFrontendIPConfiguration>();
 
             // BackendAddressPool
             // CNM to MNM
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Commands.Network
             Mapper.CreateMap<CNM.PSConnectionSharedKey, MNM.ConnectionSharedKey>();
             Mapper.CreateMap<CNM.PSLocalNetworkGateway, MNM.LocalNetworkGateway>();
             Mapper.CreateMap<CNM.PSVirtualNetworkGatewayConnection, MNM.VirtualNetworkGatewayConnection>();
-            Mapper.CreateMap<CNM.PSVirtualNetworkGatewayIpConfiguration, MNM.VirtualNetworkGatewayIpConfiguration>();
+            Mapper.CreateMap<CNM.PSVirtualNetworkGatewayIpConfiguration, MNM.VirtualNetworkGatewayIPConfiguration>();
 
             // MNM to CNM
             Mapper.CreateMap<MNM.VirtualNetworkGateway, CNM.PSVirtualNetworkGateway>();
@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Commands.Network
             Mapper.CreateMap<MNM.ConnectionSharedKey, CNM.PSConnectionSharedKey>();
             Mapper.CreateMap<MNM.LocalNetworkGateway, CNM.PSLocalNetworkGateway>();
             Mapper.CreateMap<MNM.VirtualNetworkGatewayConnection, CNM.PSVirtualNetworkGatewayConnection>();
-            Mapper.CreateMap<MNM.VirtualNetworkGatewayIpConfiguration, CNM.PSVirtualNetworkGatewayIpConfiguration>();
+            Mapper.CreateMap<MNM.VirtualNetworkGatewayIPConfiguration, CNM.PSVirtualNetworkGatewayIpConfiguration>();
 
             // Application Gateways
             // CNM to MNM

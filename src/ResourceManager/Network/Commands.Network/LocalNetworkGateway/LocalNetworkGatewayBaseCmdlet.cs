@@ -26,11 +26,11 @@ namespace Microsoft.Azure.Commands.Network
 {
     public abstract class LocalNetworkGatewayBaseCmdlet : NetworkBaseCmdlet
     {
-        public ILocalNetworkGatewayOperations LocalNetworkGatewayClient
+        public ILocalNetworkGatewaysOperations LocalNetworkGatewayClient
         {
             get
             {
-                return NetworkClient.NetworkResourceProviderClient.LocalNetworkGateways;
+                return NetworkClient.NetworkManagementClient.LocalNetworkGateways;
             }
         }
 
@@ -55,9 +55,9 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSLocalNetworkGateway GetLocalNetworkGateway(string resourceGroupName, string name)
         {
-            var getLocalNetworkGatewayResponse = this.LocalNetworkGatewayClient.Get(resourceGroupName, name);
+            var localNetworkGateway = this.LocalNetworkGatewayClient.Get(resourceGroupName, name);
 
-            var psLocalNetworkGateway = ToPsLocalNetworkGateway(getLocalNetworkGatewayResponse.LocalNetworkGateway);
+            var psLocalNetworkGateway = ToPsLocalNetworkGateway(localNetworkGateway);
             psLocalNetworkGateway.ResourceGroupName = resourceGroupName;
 
             return psLocalNetworkGateway;
