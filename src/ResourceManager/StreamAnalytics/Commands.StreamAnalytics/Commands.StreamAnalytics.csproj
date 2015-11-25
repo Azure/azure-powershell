@@ -67,7 +67,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.StreamAnalytics, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.StreamAnalytics.1.7.0\lib\net40\Microsoft.Azure.Management.StreamAnalytics.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.StreamAnalytics.1.7.1\lib\net40\Microsoft.Azure.Management.StreamAnalytics.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
