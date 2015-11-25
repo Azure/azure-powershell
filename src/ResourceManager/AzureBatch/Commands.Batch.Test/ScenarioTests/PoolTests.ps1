@@ -387,6 +387,7 @@ function Test-EnableAutoScale
     $context = Get-ScenarioTestContext $accountName
 
     $formula = '$TargetDedicated=2'
+    $interval = ([TimeSpan]::FromMinutes(8))
 
     # Verify pool starts with autoscale disabled
     $pool = Get-AzureBatchPool $poolId -BatchContext $context
@@ -394,17 +395,18 @@ function Test-EnableAutoScale
 
     if ($usePipeline -eq '1')
     {
-        Get-AzureBatchPool -Id $poolId -BatchContext $context | Enable-AzureBatchAutoScale -AutoScaleFormula $formula -BatchContext $context
+        Get-AzureBatchPool -Id $poolId -BatchContext $context | Enable-AzureBatchAutoScale -AutoScaleFormula $formula -AutoScaleEvaluationInterval $interval -BatchContext $context
     }
     else
     {
-        Enable-AzureBatchAutoScale $poolId $formula -BatchContext $context
+        Enable-AzureBatchAutoScale $poolId $formula $interval -BatchContext $context
     }
 
     # Verify that autoscale was enabled. 
     # Use a filter because it seems that the recorder sometimes gets confused when two identical URLs are sent too close together
     $pool = Get-AzureBatchPool -Filter "id eq '$poolId'" -BatchContext $context
     Assert-True { $pool.AutoScaleEnabled }
+    Assert-AreEqual $interval $pool.AutoScaleEvaluationInterval
 }
 
 <#

@@ -180,6 +180,8 @@
     <Compile Include="Certificates\NewBatchCertificateCommandTests.cs" />
     <Compile Include="Certificates\RemoveBatchCertificateCommandTests.cs" />
     <Compile Include="Certificates\StopBatchCertificateDeletionCommandTests.cs" />
+    <Compile Include="ComputeNodes\DisableBatchComputeNodeSchedulingCommandTests.cs" />
+    <Compile Include="ComputeNodes\EnableBatchComputeNodeSchedulingCommandTests.cs" />
     <Compile Include="ComputeNodes\RemoveBatchComputeNodeCommandTests.cs" />
     <Compile Include="ComputeNodes\ResetBatchComputeNodeCommandTests.cs" />
     <Compile Include="ComputeNodes\RestartBatchComputeNodeCommandTests.cs" />
@@ -225,6 +227,7 @@
     <Compile Include="ScenarioTests\ComputeNodeTests.cs" />
     <Compile Include="ScenarioTests\JobScheduleTests.cs" />
     <Compile Include="Subscriptions\GetBatchSubscriptionQuotasCommandTests.cs" />
+    <Compile Include="Tasks\GetBatchSubtaskCommandTests.cs" />
     <Compile Include="Tasks\GetBatchTaskCommandTests.cs" />
     <Compile Include="Tasks\NewBatchTaskCommandTests.cs" />
     <Compile Include="Tasks\RemoveBatchTaskCommandTests.cs" />
@@ -333,6 +336,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.CertificateTests\TestListCertificatesWithMaxCount.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ComputeNodeTests\TestDisableAndEnableComputeNodeSchedulingById.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ComputeNodeTests\TestDisableAndEnableComputeNodeSchedulingPipeline.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ComputeNodeTests\TestGetAndListComputeNodesWithSelect.json">
@@ -608,7 +617,13 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.TaskTests\TestGetTaskById.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.TaskTests\TestListAllSubtasks.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.TaskTests\TestListAllTasks.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.TaskTests\TestListSubtasksWithMaxCount.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.TaskTests\TestListTaskPipeline.json">
@@ -650,6 +665,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="about.txt" />
+    <Content Include="Resources\MSMpiSetup.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
