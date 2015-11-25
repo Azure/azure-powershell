@@ -13,31 +13,33 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.ComponentModel;
 using System.Management.Automation;
 using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
+using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Properties = Microsoft.Azure.Commands.SiteRecovery.Properties;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
     /// <summary>
-    /// Retrieves Azure Site Recovery Server.
+    /// Creates Azure Site Recovery Policy object in memory.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSiteRecoveryProtectionProfile", DefaultParameterSetName = ASRParameterSets.Default)]
-    [OutputType(typeof(IEnumerable<ASRProtectionProfile>))]
-    public class GetAzureSiteRecoveryProtectionProfile : SiteRecoveryCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRmSiteRecoverySite", DefaultParameterSetName = ASRParameterSets.Default)]
+    [OutputType(typeof(List<ASRSite>))]
+    public class GetAzureSiteRecoverySite : SiteRecoveryCmdletBase
     {
         #region Parameters
         /// <summary>
-        /// Gets or sets ID of the Server.
+        /// Gets or sets Name of the Site.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByName, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets name of the Server.
+        /// Gets or sets Friendly name of the Site.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByFriendlyName, Mandatory = true)]
         [ValidateNotNullOrEmpty]
@@ -53,11 +55,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             {
                 switch (this.ParameterSetName)
                 {
-                    case ASRParameterSets.ByFriendlyName:
-                        this.GetByFriendlyName();
-                        break;
                     case ASRParameterSets.ByName:
                         this.GetByName();
+                        break;
+                    case ASRParameterSets.ByFriendlyName:
+                        this.GetByFriendlyName();
                         break;
                     case ASRParameterSets.Default:
                         this.GetAll();
@@ -71,19 +73,23 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         }
 
         /// <summary>
-        /// Queries by Friendly name.
+        /// Queries by friendly name.
         /// </summary>
         private void GetByFriendlyName()
         {
-            ProtectionProfileListResponse profileListResponse =
-                RecoveryServicesClient.GetAzureSiteRecoveryProtectionProfile();
-            bool found = false;
+            FabricListResponse fabricListResponse =
+                RecoveryServicesClient.GetAzureSiteRecoveryFabric();
 
-            foreach (ProtectionProfile profile in profileListResponse.ProtectionProfiles)
+            bool found = false;
+            foreach (Fabric fabric in fabricListResponse.Fabrics)
             {
-                if (0 == string.Compare(this.FriendlyName, profile.CustomData.FriendlyName, true))
+                // Do not process for fabrictype other than HyperVSite 
+                if (String.Compare(fabric.Properties.CustomDetails.InstanceType, Constants.HyperVSite) != 0)
+                    continue;
+
+                if (0 == string.Compare(this.FriendlyName, fabric.Properties.FriendlyName, true))
                 {
-                    this.WriteProfile(profile);
+                    this.WriteSite(fabric);
                     found = true;
                 }
             }
@@ -92,22 +98,35 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             {
                 throw new InvalidOperationException(
                     string.Format(
-                    Properties.Resources.ProtectionProfileNotFound,
+                    Properties.Resources.SiteNotFound,
                     this.FriendlyName,
                     PSRecoveryServicesClient.asrVaultCreds.ResourceName));
             }
-
         }
 
         /// <summary>
-        /// Queries by Name.
+        /// Queries by name.
         /// </summary>
         private void GetByName()
         {
-            ProtectionProfileResponse profileResponse =
-                RecoveryServicesClient.GetAzureSiteRecoveryProtectionProfile(this.Name);
+            FabricResponse fabricResponse =
+                RecoveryServicesClient.GetAzureSiteRecoveryFabric(this.Name);
+            bool found = false;
 
-            this.WriteProfile(profileResponse.ProtectionProfile);
+            if (fabricResponse != null)
+            {
+                this.WriteSite(fabricResponse.Fabric);
+                found = true;
+            }
+
+            if (!found)
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                    Properties.Resources.ServerNotFound,
+                    this.Name,
+                    PSRecoveryServicesClient.asrVaultCreds.ResourceName));
+            }
         }
 
         /// <summary>
@@ -115,28 +134,26 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void GetAll()
         {
-            ProtectionProfileListResponse profileListResponse =
-                RecoveryServicesClient.GetAzureSiteRecoveryProtectionProfile();
+            FabricListResponse fabricListResponse =
+                RecoveryServicesClient.GetAzureSiteRecoveryFabric();
 
-            this.WriteProfiles(profileListResponse.ProtectionProfiles);
+            foreach (Fabric fabric in fabricListResponse.Fabrics)
+            {
+                // Do not process for fabrictype other than HyperVSite 
+                if (String.Compare(fabric.Properties.CustomDetails.InstanceType, Constants.HyperVSite) != 0)
+                    continue;
+
+                this.WriteSite(fabric);
+            }
         }
 
         /// <summary>
-        /// Write Protection profiles.
+        /// Write Powershell Site.
         /// </summary>
-        /// <param name="profiles">List of Profiles</param>
-        private void WriteProfiles(IList<ProtectionProfile> profiles)
+        /// <param name="server">Fabric object</param>
+        private void WriteSite(Fabric fabric)
         {
-            this.WriteObject(profiles.Select(p => new ASRProtectionProfile(p)), true);
-        }
-
-        /// <summary>
-        /// Write Profile.
-        /// </summary>
-        /// <param name="profile">Profile object</param>
-        private void WriteProfile(ProtectionProfile profile)
-        {
-            this.WriteObject(new ASRProtectionProfile(profile));
-        }
+            this.WriteObject(new ASRSite(fabric));
+        }       
     }
 }
