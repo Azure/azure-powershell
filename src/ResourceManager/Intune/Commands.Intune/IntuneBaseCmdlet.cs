@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Intune
             {
                 if (intuneClient == null)
                 {
-                    intuneClient = GetIntuneManagementClient(this.DefaultContext, ApiVersion);
+                    intuneClient = GetIntuneManagementClient(this.DefaultContext);
                 }
 
                 return intuneClient;
@@ -84,9 +84,9 @@ namespace Microsoft.Azure.Commands.Intune
         /// <summary>
         /// Gets or sets the API version.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.")]
-        [ValidateNotNullOrEmpty]
-        public string ApiVersion { get; set; }
+        //[Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.")]
+        //[ValidateNotNullOrEmpty]
+        //public string ApiVersion { get; set; }
 
         /// <summary>
         /// ASU host name for the tenant
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Intune
         internal static IntuneResourceManagementClient GetIntuneManagementClient(AzureContext context, string apiVersion = null)
         {
             var endpoint = context.Environment.GetEndpoint(AzureEnvironment.Endpoint.ResourceManager);
-            ApiVersionHandler apiVersionHandler = null;
+            //ApiVersionHandler apiVersionHandler = null;
             if (string.IsNullOrWhiteSpace(endpoint))
             {
                 throw new ApplicationException(Resources.ARMEndpointNotSetErrorMessage);
@@ -123,18 +123,18 @@ namespace Microsoft.Azure.Commands.Intune
 
             var endpointUri = new Uri(endpoint, UriKind.Absolute);
 
-            if (!string.IsNullOrEmpty(apiVersion))
-            {
-                apiVersionHandler = new ApiVersionHandler(apiVersion);
-                AzureSession.ClientFactory.AddHandler<ApiVersionHandler>(apiVersionHandler);
-            }
+            //if (!string.IsNullOrEmpty(apiVersion))
+            //{
+            //    apiVersionHandler = new ApiVersionHandler(apiVersion);
+            //    AzureSession.ClientFactory.AddHandler<ApiVersionHandler>(apiVersionHandler);
+            //}
 
             var intuneClient = AzureSession.ClientFactory.CreateArmClient<IntuneResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
 
-            if (!string.IsNullOrEmpty(apiVersion))
-            {
-                AzureSession.ClientFactory.RemoveHandler(apiVersionHandler.GetType());
-            }
+            //if (!string.IsNullOrEmpty(apiVersion))
+            //{
+            //    AzureSession.ClientFactory.RemoveHandler(apiVersionHandler.GetType());
+            //}
 
             intuneClient.BaseUri = endpointUri;
 
