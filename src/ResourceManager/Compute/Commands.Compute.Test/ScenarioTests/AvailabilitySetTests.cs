@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public class AvailabilitySetTests
     {
-        [Fact(Skip = "Rerecord tests")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAvailabilitySet()
         {
