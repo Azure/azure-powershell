@@ -18,6 +18,7 @@ using System.Management.Automation;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
+using Microsoft.Azure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -38,14 +39,33 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Gets or sets vault Object.
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ForSite, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRVault Vault { get; set; }
 
         /// <summary>
+        /// Gets or sets Site Identifier.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.ForSite, Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public String SiteIdentifier { get; set; }
+
+        /// <summary>
+        /// Gets or sets SiteFriendlyName.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.ForSite, Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public String SiteFriendlyName { get; set; }
+
+        /// <summary>
         /// Gets or sets the path where the credential file is to be generated
         /// </summary>
-        [Parameter]
+        /// <summary>
+        /// Gets or sets vault Object.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.Default)]
+        [Parameter(ParameterSetName = ASRParameterSets.ForSite)]
         public string Path { get; set; }
 
         #endregion Parameters
@@ -78,10 +98,19 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             // Generate certificate
             X509Certificate2 cert = CertUtils.CreateSelfSignedCertificate(VaultCertificateExpiryInHoursForHRM, subscription.Id.ToString(), this.Vault.Name);
 
+            ASRSite site = new ASRSite();
+
+            if (!string.IsNullOrEmpty(this.SiteIdentifier) && !string.IsNullOrEmpty(this.SiteFriendlyName))
+            {
+                site.ID = this.SiteIdentifier;
+                site.Name = this.SiteFriendlyName;
+            }
+
             // Generate file.
             ASRVaultCreds vaultCreds = RecoveryServicesClient.GenerateVaultCredential(
                                             cert,
-                                            this.Vault);
+                                            this.Vault,
+                                            site);
 
             string filePath = string.IsNullOrEmpty(this.Path) ? Utilities.GetDefaultPath() : this.Path;
             string fileName = this.GenerateFileName();
@@ -104,7 +133,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             string fileName;
             string format = "yyyy-MM-ddTHH-mm-ss";
-            fileName = string.Format("{0}_{1}.VaultCredentials", this.Vault.Name, DateTime.UtcNow.ToString(format));
+
+            if (string.IsNullOrEmpty(this.SiteIdentifier) || string.IsNullOrEmpty(this.SiteFriendlyName))
+            {
+                fileName = string.Format("{0}_{1}.VaultCredentials", this.Vault.Name, DateTime.UtcNow.ToString(format));
+            }
+            else
+            {
+                fileName = string.Format("{0}_{1}_{2}.VaultCredentials", this.SiteFriendlyName, this.Vault.Name, DateTime.UtcNow.ToString(format));
+            }
 
             return fileName;
         }

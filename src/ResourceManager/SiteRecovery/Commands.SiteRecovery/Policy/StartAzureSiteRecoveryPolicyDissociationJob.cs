@@ -13,17 +13,20 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Management.SiteRecovery.Models;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
     /// <summary>
-    /// Adds Azure Site Recovery Protection Profile settings to a Protection Container.
+    /// Adds Azure Site Recovery Policy settings to a Protection Container.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, "AzureRmSiteRecoveryProtectionProfileDissociationJob", DefaultParameterSetName = ASRParameterSets.EnterpriseToAzure)]
+    [Cmdlet(VerbsLifecycle.Start, "AzureRmSiteRecoveryPolicyDissociationJob", DefaultParameterSetName = ASRParameterSets.EnterpriseToAzure)]
+    [Alias("Start-AzureRmSiteRecoveryPolicyDissociationJob")]
     [OutputType(typeof(ASRJob))]
-    public class StartAzureSiteRecoveryProtectionProfileDissociationJob : SiteRecoveryCmdletBase
+    public class StartAzureSiteRecoveryPolicyDissociationJob : SiteRecoveryCmdletBase
     {
         /// <summary>
         /// Job response.
@@ -33,15 +36,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         #region Parameters
 
         /// <summary>
-        /// Gets or sets Protection Profile object.
+        /// Gets or sets Policy object.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true, ValueFromPipeline = true)]
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public ASRProtectionProfile ProtectionProfile { get; set; }
+        public ASRPolicy Policy { get; set; }
 
         /// <summary>
-        /// Gets or sets Protection Container to be removed the Protection Profile settings off.
+        /// Gets or sets Protection Container to be removed the Policy settings off.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
@@ -49,7 +52,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public ASRProtectionContainer PrimaryProtectionContainer { get; set; }
 
         /// <summary>
-        /// Gets or sets Protection Container to be removed the Protection Profile settings off.
+        /// Gets or sets Protection Container to be removed the Policy settings off.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
         [ValidateNotNullOrEmpty]
@@ -83,61 +86,68 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         private void EnterpriseToEnterpriseDissociation()
         {
             if (string.Compare(
-                this.ProtectionProfile.ReplicationProvider,
-                Constants.HyperVReplica,
+                this.Policy.ReplicationProvider,
+                Constants.HyperVReplica2012,
+                StringComparison.OrdinalIgnoreCase) != 0 && string.Compare(
+                this.Policy.ReplicationProvider,
+                Constants.HyperVReplica2012R2,
                 StringComparison.OrdinalIgnoreCase) != 0)
             {
                 throw new InvalidOperationException(
                     string.Format(
                     Properties.Resources.IncorrectReplicationProvider,
-                    this.ProtectionProfile.ReplicationProvider));
+                    this.Policy.ReplicationProvider));
             }
 
-            DisassociateProtectionProfileInput disassociateProtectionProfileInput = new DisassociateProtectionProfileInput();
-            disassociateProtectionProfileInput.PrimaryProtectionContainerId = this.PrimaryProtectionContainer.Name;
-            disassociateProtectionProfileInput.RecoveryProtectionContainerId = this.RecoveryProtectionContainer.Name;
-            disassociateProtectionProfileInput.Name = this.ProtectionProfile.Name;
-            disassociateProtectionProfileInput.ReplicationProviderSettings = new ProtectionProfileProviderSpecificInput();
-
-            this.response = RecoveryServicesClient.DissociateAzureSiteRecoveryProtectionProfile(
-                this.ProtectionProfile.Name,
-                disassociateProtectionProfileInput);
-
-            JobResponse jobResponse =
-                RecoveryServicesClient
-                .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
-
-            WriteObject(new ASRJob(jobResponse.Job));
+            Dissociate(this.RecoveryProtectionContainer.ID);
         }
 
         private void EnterpriseToAzureDissociation()
         {
             if (string.Compare(
-                this.ProtectionProfile.ReplicationProvider,
+                this.Policy.ReplicationProvider,
                 Constants.HyperVReplicaAzure,
                 StringComparison.OrdinalIgnoreCase) != 0)
             {
                 throw new InvalidOperationException(
                     string.Format(
                     Properties.Resources.IncorrectReplicationProvider,
-                    this.ProtectionProfile.ReplicationProvider));
+                    this.Policy.ReplicationProvider));
             }
 
-            DisassociateProtectionProfileInput disassociateProtectionProfileInput = new DisassociateProtectionProfileInput();
-            disassociateProtectionProfileInput.PrimaryProtectionContainerId = this.PrimaryProtectionContainer.Name;
-            disassociateProtectionProfileInput.RecoveryProtectionContainerId = Constants.AzureContainer;
-            disassociateProtectionProfileInput.Name = this.ProtectionProfile.Name;
-            disassociateProtectionProfileInput.ReplicationProviderSettings = new ProtectionProfileProviderSpecificInput();
+            Dissociate(Constants.AzureContainer);
+        }
 
-            this.response = RecoveryServicesClient.DissociateAzureSiteRecoveryProtectionProfile(
-                this.ProtectionProfile.Name,
-                disassociateProtectionProfileInput);
+        /// <summary>
+        /// Helper to configure cloud
+        /// </summary>
+        private void Dissociate(string targetProtectionContainerId)
+        {
+            RemoveProtectionContainerMappingInputProperties inputProperties = new RemoveProtectionContainerMappingInputProperties()
+            {
+                ProviderSpecificInput = new ReplicationProviderContainerUnmappingInput()
+            };
+
+            RemoveProtectionContainerMappingInput input = new RemoveProtectionContainerMappingInput()
+            {
+                Properties = inputProperties
+            };
+
+            ProtectionContainerMappingListResponse protectionContainerMappingListResponse = RecoveryServicesClient.GetAzureSiteRecoveryProtectionContainerMapping(Utilities.GetValueFromArmId(PrimaryProtectionContainer.ID, ARMResourceTypeConstants.ReplicationFabrics), PrimaryProtectionContainer.Name);
+            ProtectionContainerMapping protectionContainerMapping = protectionContainerMappingListResponse.ProtectionContainerMappings.SingleOrDefault(t => (t.Properties.PolicyId.CompareTo(this.Policy.ID) == 0 && t.Properties.TargetProtectionContainerId.CompareTo(targetProtectionContainerId) == 0));
+
+            if (protectionContainerMapping == null)
+            {
+                throw new Exception("Cloud is not paired");
+            }
+
+            LongRunningOperationResponse response = RecoveryServicesClient.UnConfigureProtection(Utilities.GetValueFromArmId(this.PrimaryProtectionContainer.ID, ARMResourceTypeConstants.ReplicationFabrics), this.PrimaryProtectionContainer.Name, protectionContainerMapping.Name, input);
 
             JobResponse jobResponse =
                 RecoveryServicesClient
                 .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-            WriteObject(new ASRJob(jobResponse.Job));
+            this.WriteObject(new ASRJob(jobResponse.Job));
         }
     }
 }
