@@ -45,6 +45,12 @@ namespace Microsoft.Azure.Commands.Profile
         [ValidateNotNullOrEmpty]
         public AzureEnvironment Environment { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Name of the environment containing the account to log into")]
+        [ValidateNotNullOrEmpty]
+
+        public string EnvironmentName { get; set; }
+
+
         [Parameter(ParameterSetName = UserParameterSet, Mandatory = false, HelpMessage = "Optional credential")]
         [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = true, HelpMessage = "Credential")]
         [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Optional credential")]
@@ -63,8 +69,6 @@ namespace Microsoft.Azure.Commands.Profile
 
         [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = true)]
         [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, Mandatory = true)]
-        [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false)]
-        [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false)]
         public SwitchParameter ServicePrincipal { get; set; }
 
         [Parameter(ParameterSetName = UserParameterSet, Mandatory = false, HelpMessage = "Optional tenant name or ID")]
@@ -90,10 +94,12 @@ namespace Microsoft.Azure.Commands.Profile
         public string AccountId { get; set; }
 
         [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Subscription", ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = false, HelpMessage = "Subscription", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string SubscriptionId { get; set; }
 
         [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "Subscription Name", ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = false, HelpMessage = "Subscription Name", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string SubscriptionName { get; set; }
 
@@ -108,9 +114,21 @@ namespace Microsoft.Azure.Commands.Profile
         protected override void BeginProcessing()
         {
             base.BeginProcessing();
-            if (Environment == null)
+            if (Environment == null && EnvironmentName == null)
             {
-                Environment = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
+                Environment = AzureEnvironment.PublicEnvironments[Microsoft.Azure.Common.Authentication.Models.EnvironmentName.AzureCloud];
+            }
+            else if (Environment == null && EnvironmentName != null)
+            {
+                if (AzureRmProfileProvider.Instance.Profile.Environments.ContainsKey(EnvironmentName))
+                {
+                    Environment = AzureRmProfileProvider.Instance.Profile.Environments[EnvironmentName];
+                }
+                else
+                {
+                    throw new PSInvalidOperationException(
+                        string.Format(Resources.UnknownEnvironment, EnvironmentName));
+                }
             }
         }
 
@@ -126,7 +144,8 @@ namespace Microsoft.Azure.Commands.Profile
             if (!string.IsNullOrWhiteSpace(SubscriptionId) && 
                 !Guid.TryParse(SubscriptionId, out subscrptionIdGuid))
             {
-                throw new PSInvalidOperationException(Resources.InvalidSubscriptionId);
+                throw new PSInvalidOperationException(
+                    string.Format(Resources.InvalidSubscriptionId, SubscriptionId));
             }
 
             AzureAccount azureAccount = new AzureAccount();
