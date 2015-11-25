@@ -27,21 +27,21 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         }
 
 
-        [Fact(Skip = "Rerecord tests")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineBootDiagnosticsPremium()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineBootDiagnosticsPremium");
         }
 
-        [Fact(Skip = "Rerecord tests")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLinuxVirtualMachineBootDiagnostics()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-LinuxVirtualMachineBootDiagnostics");
         }
 
-        [Fact(Skip = "Rerecord tests")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineBootDiagnosticsSet()
         {
