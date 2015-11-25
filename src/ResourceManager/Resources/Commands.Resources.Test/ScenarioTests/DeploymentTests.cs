@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest("Test-NewDeploymentFromTemplateFile");
         }
 
-        [Fact]
+        [Fact(Skip = "Fix acquisition of TenantId in KeyVault Test.")]
         public void TestNewDeploymentWithKeyVaultReference()
         {
             ResourcesController.NewInstance.RunPsTest("Test-NewDeploymentWithKeyVaultReference");
