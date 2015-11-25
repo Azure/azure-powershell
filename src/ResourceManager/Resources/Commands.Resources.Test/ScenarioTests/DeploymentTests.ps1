@@ -90,8 +90,7 @@ function Test-NewDeploymentWithKeyVaultReference
 
 		$context = Get-AzureRmContext
 		$subscriptionId = $context.Subscription.SubscriptionId
-		$account = Get-AzureAccount -Name $context.Account.Id
-		$tenantId = $account.Tenants
+		$tenantId = $context.Tenant.TenantId
 		$adUser = Get-AzureRmADUser -UserPrincipalName $context.Account.Id
 		$objectId = $adUser.Id
 		$KeyVaultResourceId = "/subscriptions/" + $subscriptionId + "/resourcegroups/" + $rgname + "/providers/Microsoft.KeyVault/vaults/" + $keyVaultname
