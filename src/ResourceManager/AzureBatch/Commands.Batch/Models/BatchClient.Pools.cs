@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// Gets the result of evaluating an automatic scaling formula on the specified pool.
         /// </summary>
         /// <param name="parameters">The parameters specifying the pool and autoscale formula.</param>
-        public PSAutoScaleEvaluation EvaluateAutoScale(AutoScaleParameters parameters)
+        public PSAutoScaleEvaluation EvaluateAutoScale(EvaluateAutoScaleParameters parameters)
         {
             if (parameters == null)
             {

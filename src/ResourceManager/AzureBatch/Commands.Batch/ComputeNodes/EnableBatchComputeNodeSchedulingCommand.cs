@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Batch
         public string PoolId { get; set; }
 
         [Parameter(Position = 1, ParameterSetName = Constants.IdParameterSet, Mandatory = true,
-            HelpMessage = "The id of the compute node to reimage.")]
+            HelpMessage = "The id of the compute node.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 

@@ -19,9 +19,9 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class AutoScaleParameters : PoolOperationParameters
+    public class EvaluateAutoScaleParameters : PoolOperationParameters
     {
-        public AutoScaleParameters(BatchAccountContext context, string poolId, PSCloudPool pool, string autoScaleFormula,
+        public EvaluateAutoScaleParameters(BatchAccountContext context, string poolId, PSCloudPool pool, string autoScaleFormula,
             IEnumerable<BatchClientBehavior> additionalBehaviors = null) : base(context, poolId, pool, additionalBehaviors)
         {
             if (string.IsNullOrWhiteSpace(autoScaleFormula))

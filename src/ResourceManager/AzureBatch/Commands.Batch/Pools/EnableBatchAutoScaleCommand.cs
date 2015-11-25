@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Batch
         protected override void ProcessRecord()
         {
             EnableAutoScaleParameters parameters = new EnableAutoScaleParameters(this.BatchContext, this.Id,
-                null, this.AdditionalBehaviors)
+                pool: null, additionalBehaviors: this.AdditionalBehaviors)
             {
                 AutoScaleFormula = this.AutoScaleFormula,
                 AutoScaleEvaluationInterval = this.AutoScaleEvaluationInterval
