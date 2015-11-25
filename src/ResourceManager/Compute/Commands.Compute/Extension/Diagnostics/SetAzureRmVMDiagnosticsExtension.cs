@@ -35,9 +35,6 @@ namespace Microsoft.Azure.Commands.Compute
         private string publicConfiguration;
         private string privateConfiguration;
         private string storageKey;
-        private const string VirtualMachineExtension = "Microsoft.Compute/virtualMachines/extensions";
-        private const string IaaSDiagnosticsExtension = "IaaSDiagnostics";
-        private const string ExtensionPublisher = "Microsoft.Azure.Diagnostics";
         private IStorageManagementClient storageClient;
 
         [Parameter(
@@ -179,11 +176,11 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     Location = this.Location,
                     Name = this.Name,
-                    Type = VirtualMachineExtension,
+                    Type = DiagnosticsExtensionConstants.VirtualMachineExtensionResourceType,
                     Settings = this.PublicConfiguration,
                     ProtectedSettings = this.PrivateConfiguration,
-                    Publisher = ExtensionPublisher,
-                    ExtensionType = IaaSDiagnosticsExtension,
+                    Publisher = DiagnosticsExtensionConstants.ExtensionPublisher,
+                    ExtensionType = DiagnosticsExtensionConstants.ExtensionType,
                     TypeHandlerVersion = "1.4"
                 };
 

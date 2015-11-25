@@ -469,4 +469,8 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
   <data name="VMOSDiskDiskEncryptionBothKekVaultIdAndKekUrlRequired" xml:space="preserve">
     <value>You have to specify either both of KeyEncryptionKeyVaultId and KeyEncryptionKeyUrl or none of them.</value>
   </data>
+  <data name="DiagnosticsExtensionNotFound" xml:space="preserve">
+    <value>No diagnostics extension found under resource group '{0}', virtual machine '{1}'.</value>
+    <comment>{0} = resource group name, {1} = virtual machine name</comment>
+  </data>
 </root>
