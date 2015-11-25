@@ -17,28 +17,30 @@ using System.Management.Automation;
 using Microsoft.Azure.Management.SiteRecovery.Models;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Properties = Microsoft.Azure.Commands.SiteRecovery.Properties;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
     /// <summary>
-    /// Adds Azure Site Recovery Protection Profile settings to a Protection Container.
+    /// Adds Azure Site Recovery Policy settings to a Protection Container.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, "AzureRmSiteRecoveryProtectionProfileAssociationJob", DefaultParameterSetName = ASRParameterSets.EnterpriseToAzure)]
+    [Cmdlet(VerbsLifecycle.Start, "AzureRmSiteRecoveryPolicyAssociationJob", DefaultParameterSetName = ASRParameterSets.EnterpriseToAzure)]
+    [Alias("Start-AzureRmSiteRecoveryProtectionProfileAssociationJob")]
     [OutputType(typeof(ASRJob))]
-    public class StartAzureSiteRecoveryProtectionProfileAssociationJob : SiteRecoveryCmdletBase
+    public class StartAzureSiteRecoveryPolicyAssociationJob : SiteRecoveryCmdletBase
     {
         #region Parameters
 
         /// <summary>
-        /// Gets or sets Protection Profile object.
+        /// Gets or sets Policy object.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true, ValueFromPipeline = true)]
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public ASRProtectionProfile ProtectionProfile { get; set; }
+        public ASRPolicy Policy { get; set; }
 
         /// <summary>
-        /// Gets or sets Protection Container to be applied the Protection Profile settings on.
+        /// Gets or sets Protection Container to be applied the Policy settings on.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
@@ -46,7 +48,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public ASRProtectionContainer PrimaryProtectionContainer { get; set; }
 
         /// <summary>
-        /// Gets or sets Recovery Protection Container to be applied the Protection Profile settings on.
+        /// Gets or sets Recovery Protection Container to be applied the Policy settings on.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
         [ValidateNotNullOrEmpty]
@@ -78,61 +80,66 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         }
 
         /// <summary>
-        /// Associates protection profile with enterprise based protection containers
+        /// Associates Policy with enterprise based protection containers
         /// </summary>
         private void EnterpriseToEnterpriseAssociation()
         {
             if (string.Compare(
-                this.ProtectionProfile.ReplicationProvider,
-                Constants.HyperVReplica,
+                this.Policy.ReplicationProvider,
+                Constants.HyperVReplica2012,
+                StringComparison.OrdinalIgnoreCase) != 0 && string.Compare(
+                this.Policy.ReplicationProvider,
+                Constants.HyperVReplica2012R2,
                 StringComparison.OrdinalIgnoreCase) != 0)
             {
                 throw new InvalidOperationException(
                     string.Format(
                     Properties.Resources.IncorrectReplicationProvider,
-                    this.ProtectionProfile.ReplicationProvider));
+                    this.Policy.ReplicationProvider));
             }
 
-            ProtectionProfileAssociationInput protectionProfileAssociationInput =
-                new ProtectionProfileAssociationInput(
-                    this.PrimaryProtectionContainer.Name,
-                    this.RecoveryProtectionContainer.Name);
-
-            LongRunningOperationResponse response = RecoveryServicesClient.AssociateAzureSiteRecoveryProtectionProfile(
-                this.ProtectionProfile.Name,
-                protectionProfileAssociationInput);
-
-            JobResponse jobResponse =
-                RecoveryServicesClient
-                .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
-
-            this.WriteObject(new ASRJob(jobResponse.Job));
+            Associate(this.RecoveryProtectionContainer.ID);
         }
 
+
         /// <summary>
-        /// Associates Azure protection profile with enterprise based protection containers
+        /// Associates Azure Policy with enterprise based protection containers
         /// </summary>
         private void EnterpriseToAzureAssociation()
         {
             if (string.Compare(
-                this.ProtectionProfile.ReplicationProvider,
+                this.Policy.ReplicationProvider,
                 Constants.HyperVReplicaAzure,
                 StringComparison.OrdinalIgnoreCase) != 0)
             {
                 throw new InvalidOperationException(
                     string.Format(
                     Properties.Resources.IncorrectReplicationProvider,
-                    this.ProtectionProfile.ReplicationProvider));
+                    this.Policy.ReplicationProvider));
             }
 
-            ProtectionProfileAssociationInput protectionProfileAssociationInput =
-                new ProtectionProfileAssociationInput(
-                    this.PrimaryProtectionContainer.Name,
-                    Constants.AzureContainer);
+            Associate(Constants.AzureContainer);         
+        }
 
-            LongRunningOperationResponse response = RecoveryServicesClient.AssociateAzureSiteRecoveryProtectionProfile(
-                this.ProtectionProfile.Name,
-                protectionProfileAssociationInput);
+        /// <summary>
+        /// Helper to configure cloud
+        /// </summary>
+        private void Associate(string targetProtectionContainerId)
+        {
+            CreateProtectionContainerMappingInputProperties inputProperties = new CreateProtectionContainerMappingInputProperties()
+            {
+                PolicyId = this.Policy.ID,
+                ProviderSpecificInput = new ReplicationProviderContainerMappingInput(),
+                TargetProtectionContainerId = targetProtectionContainerId
+            };
+
+            CreateProtectionContainerMappingInput input = new CreateProtectionContainerMappingInput()
+            {
+                Properties = inputProperties
+            };
+
+            string mappingName = "ContainerMapping_" + Guid.NewGuid().ToString();
+            LongRunningOperationResponse response = RecoveryServicesClient.ConfigureProtection(Utilities.GetValueFromArmId(this.PrimaryProtectionContainer.ID, ARMResourceTypeConstants.ReplicationFabrics), this.PrimaryProtectionContainer.Name, mappingName, input);
 
             JobResponse jobResponse =
                 RecoveryServicesClient
@@ -140,5 +147,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
             this.WriteObject(new ASRJob(jobResponse.Job));
         }
+
     }
 }

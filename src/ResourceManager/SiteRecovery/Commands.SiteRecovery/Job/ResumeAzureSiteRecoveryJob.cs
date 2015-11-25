@@ -84,7 +84,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 this.Comments = " ";
             }
 
-            resumeJobParams.Comments = this.Comments;
+            resumeJobParams.Properties = new ResumeJobParamsProperties();
+            resumeJobParams.Properties.Comments = this.Comments;
 
             LongRunningOperationResponse response = RecoveryServicesClient.ResumeAzureSiteRecoveryJob(this.Name, resumeJobParams);
 

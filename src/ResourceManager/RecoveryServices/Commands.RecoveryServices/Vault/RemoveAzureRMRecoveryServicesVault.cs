@@ -13,29 +13,29 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.ComponentModel;
 using System.Management.Automation;
-using Microsoft.Azure.Management.SiteRecovery.Models;
-using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
-using Properties = Microsoft.Azure.Commands.SiteRecovery.Properties;
+using System.Net;
+using Microsoft.Azure.Commands.RecoveryServices.Properties;
+using Microsoft.Azure.Management.RecoveryServices.Models;
 
-namespace Microsoft.Azure.Commands.SiteRecovery
+namespace Microsoft.Azure.Commands.RecoveryServices
 {
     /// <summary>
-    /// Creates Azure Site Recovery Protection Profile object in memory.
+    /// Used to initiate a vault delete operation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoveryProtectionProfile")]
-    public class RemoveAzureSiteRecoveryProtectionProfile : SiteRecoveryCmdletBase
+    [Cmdlet(VerbsCommon.Remove, "AzureRmRecoveryServicesVault")]
+    public class RemoveAzureRmRecoveryServicesVault : RecoveryServicesCmdletBase
     {
         #region Parameters
 
         /// <summary>
-        /// Gets or sets Name of the Protection Profile.
+        /// Gets or sets vault Object.
         /// </summary>
-        [Parameter(Mandatory = true)]
-        public ASRProtectionProfile ProtectionProfile { get; set; }
+        [Parameter(Mandatory = true, ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
+        public ARSVault Vault { get; set; }
 
-        #endregion Parameters
+        #endregion
 
         /// <summary>
         /// ProcessRecord of the command.
@@ -44,13 +44,14 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             try
             {
-                LongRunningOperationResponse response =  RecoveryServicesClient.DeleteProtectionProfile(this.ProtectionProfile.Name);
-                
-                JobResponse jobResponse =
-                    RecoveryServicesClient
-                    .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+                RecoveryServicesOperationStatusResponse response = RecoveryServicesClient.DeleteVault(this.Vault.ResouceGroupName, this.Vault.Name);
 
-                WriteObject(new ASRJob(jobResponse.Job));
+                VaultOperationOutput output = new VaultOperationOutput()
+                {
+                    Response = response.StatusCode == HttpStatusCode.OK ? Resources.VaultDeletionSuccessMessage : response.StatusCode.ToString()
+                };
+
+                this.WriteObject(output, true);
             }
             catch (Exception exception)
             {
