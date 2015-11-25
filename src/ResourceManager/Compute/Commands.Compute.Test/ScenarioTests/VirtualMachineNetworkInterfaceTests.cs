@@ -19,14 +19,14 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public class VirtualMachineNetworkInterfaceTests
     {
-        [Fact]
+        [Fact(Skip = "Rerecord tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineSingleNetworkInterface()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-SingleNetworkInterface");
         }
 
-        [Fact]
+        [Fact(Skip = "Rerecord tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineMultipleNetworkInterface()
         {
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-SingleNetworkInterfaceDnsSettings");
         }
 
-        [Fact]
+        [Fact(Skip = "Rerecord tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddNetworkInterface()
         {
