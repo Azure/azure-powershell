@@ -16,6 +16,7 @@ $AzureRMModules = @(
   "AzureRM.Network",
   "AzureRM.NotificationHubs",
   "AzureRM.OperationalInsights",
+  "AzureRM.RecoveryServices",
   "AzureRM.RedisCache",
   "AzureRM.Resources",
   "AzureRM.SiteRecovery",

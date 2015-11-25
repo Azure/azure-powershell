@@ -75,17 +75,29 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void GetByFriendlyName()
         {
-            ServerListResponse serverListResponse =
-                RecoveryServicesClient.GetAzureSiteRecoveryServer();
+            FabricListResponse fabricListResponse =
+                RecoveryServicesClient.GetAzureSiteRecoveryFabric();
 
             bool found = false;
-            foreach (Server server in serverListResponse.Servers)
+            foreach (Fabric fabric in fabricListResponse.Fabrics)
             {
-                if (0 == string.Compare(this.FriendlyName, server.Properties.FriendlyName, true))
+                // Do not process for fabrictype other than Vmm|HyperVSite 
+                if (String.Compare(fabric.Properties.CustomDetails.InstanceType, Constants.VMM) != 0 && String.Compare(fabric.Properties.CustomDetails.InstanceType, Constants.HyperVSite) != 0)
+                    continue;
+
+                RecoveryServicesProviderListResponse recoveryServicesProviderListResponse =
+                        RecoveryServicesClient.GetAzureSiteRecoveryProvider(
+                        fabric.Name);
+
+                foreach (RecoveryServicesProvider recoveryServicesProvider in recoveryServicesProviderListResponse.RecoveryServicesProviders)
                 {
-                    this.WriteServer(server);
-                    found = true;
+                    if (0 == string.Compare(this.FriendlyName, recoveryServicesProvider.Properties.FriendlyName, true))
+                    {
+                        this.WriteServer(fabric, recoveryServicesProvider);
+                        found = true;
+                    }
                 }
+
             }
 
             if (!found)
@@ -103,10 +115,39 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void GetByName()
         {
-            ServerResponse serverResponse =
-                RecoveryServicesClient.GetAzureSiteRecoveryServer(this.Name);
+            FabricListResponse fabricListResponse =
+                RecoveryServicesClient.GetAzureSiteRecoveryFabric();
 
-            this.WriteServer(serverResponse.Server);
+            bool found = false;
+            foreach (Fabric fabric in fabricListResponse.Fabrics)
+            {
+                // Do not process for fabrictype other than Vmm|HyperVSite 
+                if (String.Compare(fabric.Properties.CustomDetails.InstanceType, Constants.VMM) != 0 && String.Compare(fabric.Properties.CustomDetails.InstanceType, Constants.HyperVSite) != 0)
+                    continue;
+
+                RecoveryServicesProviderListResponse recoveryServicesProviderListResponse =
+                        RecoveryServicesClient.GetAzureSiteRecoveryProvider(
+                        fabric.Name);
+
+                foreach (RecoveryServicesProvider recoveryServicesProvider in recoveryServicesProviderListResponse.RecoveryServicesProviders)
+                {
+                    if (0 == string.Compare(this.Name, recoveryServicesProvider.Name, true))
+                    {
+                        this.WriteServer(fabric, recoveryServicesProvider);
+                        found = true;
+                    }
+                }
+
+            }
+
+            if (!found)
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                    Properties.Resources.ServerNotFound,
+                    this.Name,
+                    PSRecoveryServicesClient.asrVaultCreds.ResourceName));
+            }
         }
 
         /// <summary>
@@ -114,28 +155,34 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void GetAll()
         {
-            ServerListResponse serverListResponse =
-                RecoveryServicesClient.GetAzureSiteRecoveryServer();
+            FabricListResponse fabricListResponse =
+                RecoveryServicesClient.GetAzureSiteRecoveryFabric();
 
-            this.WriteServers(serverListResponse.Servers);
+            foreach (Fabric fabric in fabricListResponse.Fabrics)
+            {
+                // Do not process for fabrictype other than Vmm|HyperVSite 
+                if (String.Compare(fabric.Properties.CustomDetails.InstanceType, Constants.VMM) != 0 && String.Compare(fabric.Properties.CustomDetails.InstanceType, Constants.HyperVSite) != 0)
+                    continue;
+
+                RecoveryServicesProviderListResponse recoveryServicesProviderListResponse =
+                        RecoveryServicesClient.GetAzureSiteRecoveryProvider(
+                        fabric.Name);
+
+                foreach (RecoveryServicesProvider recoveryServicesProvider in recoveryServicesProviderListResponse.RecoveryServicesProviders)
+                {
+                    this.WriteServer(fabric, recoveryServicesProvider);
+                }
+            }
         }
 
         /// <summary>
-        /// Write Servers.
+        /// Write Powershell Server.
         /// </summary>
-        /// <param name="servers">List of Servers</param>
-        private void WriteServers(IList<Server> servers)
+        /// <param name="server">Fabric object</param>
+        /// <param name="provider">Recovery Service Provider object</param>
+        private void WriteServer(Fabric fabric, RecoveryServicesProvider provider)
         {
-            this.WriteObject(servers.Select(s => new ASRServer(s)), true);
-        }
-
-        /// <summary>
-        /// Write Server.
-        /// </summary>
-        /// <param name="server">Server object</param>
-        private void WriteServer(Server server)
-        {
-            this.WriteObject(new ASRServer(server));
+            this.WriteObject(new ASRServer(fabric, provider));
         }
     }
 }
