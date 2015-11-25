@@ -38,7 +38,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         protected readonly ConcurrentQueue<string> _debugMessages;
 
         private RecordingTracingInterceptor _httpTracingInterceptor;
-
+        
         private DebugStreamTraceListener _adalListener;
         protected static AzurePSDataCollectionProfile _dataCollectionProfile = null;
         protected static string _errorRecordFolderPath = null;
@@ -507,7 +507,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             {
                 FlushDebugMessages();
             }
-            catch (Exception) { }
+            catch { }
             Dispose(true);
             GC.SuppressFinalize(this);
         }
