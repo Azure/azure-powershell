@@ -23,29 +23,29 @@ namespace Microsoft.Azure.Commands.Intune
     /// <summary>
     /// Cmdlet to get apps for User.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmIntuneUserApp"), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmIntuneMAMUserDevice"), OutputType(typeof(PSObject))]
     public sealed class GetIntuneUserDeviceCmdlet : IntuneBaseCmdlet
     {
         /// <summary>
-        /// Gets the Devices Name
+        /// Gets the User Name
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Device name to fetch.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The user name to fetch.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets the User name
+        /// Gets the Devcie name
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The User name for the Devices to fetch.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The device name for the user to fetch.")]
         [ValidateNotNullOrEmpty]
-        public string Username { get; set; }
+        public string DeviceName { get; set; }
 
         /// <summary>
         /// Contains the cmdlet's execution logic.
         /// </summary>
         protected override void ProcessRecord()
         {
-           if (Name != null)
+           if (DeviceName != null)
             {
                 GetUserDeviceByName();
             }
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Intune
         /// </summary>
         private void GetUserDeviceByName()
         {
-            var device = this.IntuneClient.GetMAMUserDeviceByDeviceName(this.AsuHostName, this.Username, this.Name, select: null);
+            var device = this.IntuneClient.GetMAMUserDeviceByDeviceName(this.AsuHostName, this.Name, this.DeviceName, select: null);
 
             this.WriteObject(device);
         }
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Intune
                 this.IntuneClient.GetMAMUserDevices,
                 this.IntuneClient.GetMAMUserDevicesNext,
                 this.AsuHostName,
-                this.Username,
+                this.Name,
                 filter: null,
                 top: null,
                 select: null);

@@ -176,10 +176,6 @@
       <Project>{3436a126-edc9-4060-8952-9a1be34cdd95}</Project>
       <Name>Commands.ScenarioTests.ResourceManager.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Profile\Commands.Profile\Commands.Profile.csproj">
-      <Project>{142d7b0b-388a-4ceb-a228-7f6d423c5c2e}</Project>
-      <Name>Commands.Profile</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Commands.Intune\Commands.Intune.csproj">
       <Project>{189b40c3-7505-410a-9e55-7e7671bb2e14}</Project>
       <Name>Commands.Intune</Name>

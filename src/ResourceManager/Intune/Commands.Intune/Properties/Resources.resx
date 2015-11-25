@@ -194,4 +194,10 @@
   <data name="NotInitializedErrorMessage" xml:space="preserve">
     <value>Not initialized</value>
   </data>
+  <data name="InvokeDeviceWipe_ActionMessage" xml:space="preserve">
+    <value>Are you sure you want to wipe device {0} for user '{1}'?</value>
+  </data>
+  <data name="InvokeDeviceWipe_ProcessMessage" xml:space="preserve">
+    <value>Wiping device {0} for user '{1}'.</value>
+  </data>
 </root>

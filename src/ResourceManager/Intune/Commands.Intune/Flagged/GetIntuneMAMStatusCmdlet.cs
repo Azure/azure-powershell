@@ -12,46 +12,32 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Intune
+namespace Microsoft.Azure.Commands.Intune.Flagged
 {
     using Management.Intune;
-    using Management.Intune.Models;
-    using Microsoft.Azure.Commands.Intune.Properties;
-    using System;
-    using System.Collections.Generic;
-    using System.Globalization;
     using System.Management.Automation;
 
     /// <summary>
-    /// Cmdlet to get existing Operation results.
+    /// Cmdlet to get the MAM summary status
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmIntuneOperationResults", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
-    public sealed class GetIntuneOperationResultsCmdlet : IntuneBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureRmIntuneMAMStatus", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
+    public sealed class GetIntuneMAMStatusCmdlet : IntuneBaseCmdlet
     {
         /// <summary>
         /// Contains the cmdlet's execution logic.
         /// </summary>
         protected override void ProcessRecord()
         {
-            GetOperationResults();
+            GetMAMDefaultStatus();
         }
 
         /// <summary>
-        /// Get all OperationResults
+        /// Get MAM summary status
         /// </summary>
-        private void GetOperationResults()
+        private void GetMAMDefaultStatus()
         {
-            MultiPageGetter<OperationResult> mpg = new MultiPageGetter<OperationResult>();
-
-            List<OperationResult> items = mpg.GetAllResources(
-                this.IntuneClient.GetOperationResults,
-                this.IntuneClient.GetOperationResultsNext,
-                this.AsuHostName,
-                filter: null,
-                top: null,
-                select: null);
-
-            this.WriteObject(items, enumerateCollection: true);
+            var result = IntuneClient.GetMAMStatuses(this.AsuHostName);
+            this.WriteObject(result);
         }
     }
 }

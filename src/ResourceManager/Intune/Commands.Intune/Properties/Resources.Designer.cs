@@ -133,6 +133,24 @@ namespace Microsoft.Azure.Commands.Intune.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to wipe device {0} for user &apos;{1}&apos;?.
+        /// </summary>
+        internal static string InvokeDeviceWipe_ActionMessage {
+            get {
+                return ResourceManager.GetString("InvokeDeviceWipe_ActionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wiping device {0} for user &apos;{1}&apos;..
+        /// </summary>
+        internal static string InvokeDeviceWipe_ProcessMessage {
+            get {
+                return ResourceManager.GetString("InvokeDeviceWipe_ProcessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to iOSpolicy.
         /// </summary>
         internal static string IosPolicy {

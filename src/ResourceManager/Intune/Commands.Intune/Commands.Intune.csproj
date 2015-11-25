@@ -113,11 +113,15 @@
     <Compile Include="Apps\GetIntuneAndroidMAMAppCmdlet.cs" />
     <Compile Include="Apps\GetIntuneAndroidMAMPolicyAppCmdlet.cs" />
     <Compile Include="MultiPageGetter.cs" />
+    <Compile Include="Flagged\GetIntuneMAMFlaggedUsersCmdlet.cs" />
+    <Compile Include="Flagged\GetIntuneMAMStatusCmdlet.cs" />
+    <Compile Include="Flagged\GetIntuneMAMUserFlaggedEnrolledAppsCmdlet.cs" />
+    <Compile Include="Operations\GetIntuneOperationResultsCmdlet.cs" />
+    <Compile Include="Operations\InvokeMAMUserDeviceWipeCmdlet.cs" />
     <Compile Include="Groups\AddIntuneiOSMAMPolicyGroupCmdlet.cs" />
     <Compile Include="Groups\RemoveIntuneAndroidMAMPolicyGroupCmdlet.cs" />
     <Compile Include="Groups\RemoveIntuneiOSMAMPolicyGroupCmdlet.cs" />
     <Compile Include="IntuneEnums.cs" />
-    <Compile Include="OperationResults\GetIntuneOperationResultsCmdlet.cs" />
     <Compile Include="Policy\GetIntuneAndroidMAMPolicyCmdlet.cs" />
     <Compile Include="Groups\GetIntuneAndroidMAMPolicyGroupCmdlet.cs" />
     <Compile Include="Apps\GetIntuneiOSMAMAppCmdlet.cs" />
@@ -144,7 +148,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="UserDevices\GetIntuneUserDeviceCmdlet.cs" />
+    <Compile Include="UserDevices\GetIntuneMAMUserDeviceCmdlet.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="MSSharedLibKey.snk" />
