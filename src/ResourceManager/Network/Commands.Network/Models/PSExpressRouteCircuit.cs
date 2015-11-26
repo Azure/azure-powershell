@@ -34,26 +34,24 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSExpressRouteCircuitSku Sku { get; set; }
 
-        public string BillingType { get; set; }
-
         public string ProvisioningState { get; set; }
 
         [JsonIgnore]
         public string SkuText
         {
-            get { return JsonConvert.SerializeObject(Sku, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(Sku, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
         public string ServiceProviderPropertiesText
         {
-            get { return JsonConvert.SerializeObject(ServiceProviderProperties, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(ServiceProviderProperties, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
         public string PeeringsText
         {
-            get { return JsonConvert.SerializeObject(Peerings, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(Peerings, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

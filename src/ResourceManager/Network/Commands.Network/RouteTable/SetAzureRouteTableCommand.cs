@@ -42,7 +42,6 @@ namespace Microsoft.Azure.Commands.Network
             
             // Map to the sdk object
             var routeTableModel = Mapper.Map<MNM.RouteTable>(this.RouteTable);
-            routeTableModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.RouteTableType;
             routeTableModel.Tags = TagsConversionHelper.CreateTagDictionary(this.RouteTable.Tag, validate: true);
 
             // Execute the PUT RouteTable call
