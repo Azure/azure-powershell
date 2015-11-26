@@ -35,6 +35,10 @@ namespace Microsoft.Azure.Commands.Compute
         private string publicConfiguration;
         private string privateConfiguration;
         private string storageKey;
+        private string extensionName = "Microsoft.Insights.VMDiagnosticsSettings";
+        private string location;
+        private string version = "1.5";
+        private bool autoUpgradeMinorVersion = true;
         private IStorageManagementClient storageClient;
 
         [Parameter(
@@ -79,20 +83,77 @@ namespace Microsoft.Azure.Commands.Compute
         }
 
         [Parameter(
+            Mandatory = false,
             Position = 4,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The location.")]
-        [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
+        public string Location {
+            get
+            {
+                if (String.IsNullOrEmpty(this.location))
+                {
+                    var virtualMachine = ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName).VirtualMachine;
+                    this.location = virtualMachine.Location;
+                }
+                return this.location;
+            }
+            set
+            {
+                this.location = value;
+            }
+        }
 
         [Alias("ExtensionName")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             Position = 5,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Extension Name.")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+            HelpMessage = "The extension name.")]
+        public string Name
+        {
+            get
+            {
+                return this.extensionName;
+            }
+            set
+            {
+                this.extensionName = value;
+            }
+        }
+
+        [Parameter(
+            Mandatory = false,
+            Position = 5,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The extension version.")]
+        public string Version
+        {
+            get
+            {
+                return this.version;
+            }
+            set
+            {
+                this.version = value;
+            }
+        }
+
+        [Parameter(
+            Mandatory = false,
+            Position = 6,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Pass a boolean value indicating whether auto upgrade diagnostics extension minor version.")]
+        public bool AutoUpgradeMinorVersion
+        {
+            get
+            {
+                return this.autoUpgradeMinorVersion;
+            }
+            set
+            {
+                this.autoUpgradeMinorVersion = value;
+            }
+        }
 
         public string StorageAccountName
         {
@@ -181,7 +242,8 @@ namespace Microsoft.Azure.Commands.Compute
                     ProtectedSettings = this.PrivateConfiguration,
                     Publisher = DiagnosticsExtensionConstants.ExtensionPublisher,
                     ExtensionType = DiagnosticsExtensionConstants.ExtensionType,
-                    TypeHandlerVersion = "1.4"
+                    TypeHandlerVersion = this.Version,
+                    AutoUpgradeMinorVersion = this.AutoUpgradeMinorVersion
                 };
 
                 var op = this.VirtualMachineExtensionClient.CreateOrUpdate(
