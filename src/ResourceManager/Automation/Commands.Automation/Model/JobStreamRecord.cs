@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// </exception>
         public JobStreamRecord(AutomationManagement.Models.JobStream jobStream, string resourceGroupName, string automationAccountName, Guid jobId ) : base (jobStream, resourceGroupName, automationAccountName, jobId)
         {
-            this.Value = new List<object>();
+            this.Value = new Hashtable();
             foreach (var kvp in jobStream.Properties.Value)
             {
                 object paramValue;
@@ -61,9 +61,8 @@ namespace Microsoft.Azure.Commands.Automation.Model
 
                     paramValue = kvp.Value;
                 }
-                this.Value.Add(paramValue);
+                this.Value.Add(kvp.Key, paramValue);
             }
-
         }
 
         /// <summary>
@@ -76,6 +75,6 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Gets or sets the stream values.
         /// </summary>
-        public List<object> Value { get; set; }
+        public Hashtable Value { get; set; }
     }
 }
