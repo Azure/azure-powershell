@@ -38,6 +38,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         public const string ClientRequestIdHeaderName = "x-ms-client-request-id";
 
+        public const string ActivityIdHeaderName = "x-ms-activity-id";
+
         // default schedule expiry time for daily schedule, consistent with UX
         // 12/31/9999 12:00:00 AM
         public static readonly DateTimeOffset DefaultScheduleExpiryTime = DateTimeOffset.MaxValue;
