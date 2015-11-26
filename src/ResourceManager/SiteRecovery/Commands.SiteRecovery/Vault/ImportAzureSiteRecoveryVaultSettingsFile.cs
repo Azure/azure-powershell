@@ -100,14 +100,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
             try
             {
+                Utilities.UpdateCurrentVaultContext(asrVaultCreds);
+
                 RecoveryServicesClient.ValidateVaultSettings(
                     asrVaultCreds.ResourceName,
                     asrVaultCreds.ResourceGroupName);
 
-                Utilities.UpdateVaultSettings(asrVaultCreds);
-                this.WriteObject(new ASRVaultSettings(
-                    asrVaultCreds.ResourceName,
-                    asrVaultCreds.ResourceGroupName));
+                this.WriteObject(new ASRVaultSettings(asrVaultCreds));
             }
             catch (Exception exception)
             {

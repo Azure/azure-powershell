@@ -135,7 +135,7 @@ ClientRequestId: {3}</value>
     <value>Resource Group is not associated with the selected Subscription</value>
   </data>
   <data name="InvalidResource" xml:space="preserve">
-    <value>Resource is not associted with the selected Cloud Service</value>
+    <value>Resource is not associted with the selected Resource group</value>
   </data>
   <data name="InvalidXml" xml:space="preserve">
     <value>XML is malformed or file is empty, exception details: {0}</value>
@@ -213,7 +213,7 @@ ClientRequestId: {3}</value>
     <value>Replication Start Time span value cannot be greater then 24 hours.</value>
   </data>
   <data name="StorageAccountNameIsNotValid" xml:space="preserve">
-    <value>Please enter the storage account name details in the protection profile.</value>
+    <value>Please enter the storage account name details in the Policy.</value>
   </data>
   <data name="SubscriptionIdIsNotValid" xml:space="preserve">
     <value>Please enter the subscription ID details.</value>
@@ -242,8 +242,8 @@ ClientRequestId: {3}</value>
   <data name="InCorrectVaultInformation" xml:space="preserve">
     <value>Vault information (Name: {0}, Location: {1}) is not correct</value>
   </data>
-  <data name="NewProtectionProfileObjectWhatIfMessage" xml:space="preserve">
-    <value>Creates a new in-memory protection profile association object.</value>
+  <data name="NewPolicyObjectWhatIfMessage" xml:space="preserve">
+    <value>Creates a new in-memory Policy association object.</value>
   </data>
   <data name="ValidationUnsuccessfulWarning" xml:space="preserve">
     <value>Could not validate the storage account and subscription given.
@@ -277,7 +277,40 @@ Please provide a storage account with the same location as that of the vault.</v
   <data name="VaultCannotBeDeleted" xml:space="preserve">
     <value>Vault {0} cannot be deleted as it contains registered servers. Unregister them and then retry the operation.</value>
   </data>
-  <data name="ProtectionProfileNotFound" xml:space="preserve">
-    <value>Protection Profile {0} is not associated with the Vault {1}</value>
+  <data name="PolicyNotFound" xml:space="preserve">
+    <value>Policy {0} is not associated with the Vault {1}</value>
+  </data>
+  <data name="SiteNotFound" xml:space="preserve">
+    <value>Site {0} is not associated with the Vault {1}</value>
+  </data>
+  <data name="CloudNotPaired" xml:space="preserve">
+    <value>Cloud is not paired</value>
+  </data>
+  <data name="UnsupportedDirectionForTFO" xml:space="preserve">
+    <value>Unsupported direction for TFO</value>
+  </data>
+  <data name="SiteRemovalWithRegisteredHyperVHostsError" xml:space="preserve">
+    <value>Some hyper-V hosts are registered to this site. Cannot remove the site.</value>
+  </data>
+  <data name="InvalidServerType" xml:space="preserve">
+    <value>Invalid Server Type</value>
+  </data>
+  <data name="NicNotFoundInVMForUpdateVmProperties" xml:space="preserve">
+    <value>Nic not found in VM</value>
+  </data>
+  <data name="UnsupportedReplicationProvidedForUpdateVmProperties" xml:space="preserve">
+    <value>Unsupported replication provider for set VM properties</value>
+  </data>
+  <data name="ProtectionIsNotEnabledForVM" xml:space="preserve">
+    <value>Protection is not enabled for VM</value>
+  </data>
+  <data name="PassingPolicyMandatoryForEnablingDR" xml:space="preserve">
+    <value>Passing policy is mandatory for enabling protection.</value>
+  </data>
+  <data name="PassingStorageMandatoryForEnablingDRInAzureScenarios" xml:space="preserve">
+    <value>Passing Azure storage account is mandatory for enabling protection in Enterprise to Azure and Hoster to Azure scenarios.</value>
+  </data>
+  <data name="SiteRecoveryVaultTypeWillBeDeprecatedSoon" xml:space="preserve">
+    <value>SiteRecovery vault type will be deprecated soon. Please use RecoveryServices vault type instead.</value>
   </data>
 </root>
