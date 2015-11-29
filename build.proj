@@ -51,7 +51,6 @@
     <CmdletSolutionsToBuild Include=".\src\ServiceManagement\ServiceManagement.sln"
                             Condition=" '$(Scope)' == 'ServiceManagement' or '$(Scope)' == 'AzureStorage' "/>
     <SetupSln Include=".\setup\azurepowershell.sln" />
-    <SetupPowershellGetSln Include=".\setup-powershellget\powershellget.sln" />
   </ItemGroup>
   
   <!--
@@ -80,13 +79,6 @@
       Properties="Configuration=$(Configuration);Platform=Any CPU"
       ContinueOnError="false" />
     
-    <MSBuild
-      Projects="@(SetupPowershellGetSln)"
-      Targets="Clean"
-      Properties="Configuration=$(Configuration);Platform=Any CPU"
-      ContinueOnError="false" 
-      Condition=" '$(Scope)' == 'all' "/>
-      
     <!-- Delete the publish files -->
     <Message Importance="high" Text="Cleaning publish files..." ContinueOnError="false" />
     <ItemGroup>
@@ -161,14 +153,6 @@
       
     <CallTarget Targets="CodeSignBinaries" Condition=" '$(CodeSign)' == 'true' " />
     
-    <Message Importance="high" Text="Building Setup..." />
-    <MSBuild
-      Projects="@(SetupPowershellGetSln)"
-      Targets="Build"
-      Properties="Configuration=$(Configuration);Platform=Any CPU"
-      ContinueOnError="false" 
-      Condition=" '$(Scope)' == 'all' "/>
-    
     <MSBuild
       Projects="@(SetupSln)"
       Targets="Build"
@@ -203,8 +187,6 @@
     </GetFrameworkSdkPath>
 
     <!-- Copying shortcut to be signed -->
-    <Copy SourceFiles="$(LibraryRoot)setup-powershellget\Setup\ShortcutStartup.ps1" 
-      DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" />
     <Copy SourceFiles="$(LibraryRoot)tools\AzureRM\AzureRM.psd1" 
       DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" />
     <Copy SourceFiles="$(LibraryRoot)tools\AzureRM\AzureRM.psm1" 
@@ -260,8 +242,6 @@
         Condition="!$(DelaySign) and '@(DelaySignedAssembliesToSign)' != ''"/>
         
     <!-- Copying signed shortcut back -->
-    <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\ShortcutStartup.ps1" 
-      DestinationFolder="$(LibraryRoot)setup-powershellget\Setup" />
     <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureRM.psd1" 
       DestinationFolder="$(LibraryRoot)tools\AzureRM" />
     <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureRM.psm1" 

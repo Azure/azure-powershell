@@ -72,6 +72,28 @@ namespace Microsoft.Azure.Commands.Batch.Models
         }
 
         /// <summary>
+        /// Removes the specified compute nodes from the specified pool.
+        /// </summary>
+        /// <param name="parameters">The parameters specifying the pool and the compute nodes.</param>
+        public void RemoveComputeNodesFromPool(RemoveComputeNodeParameters parameters)
+        {
+            if (parameters == null)
+            {
+                throw new ArgumentNullException("parameters");
+            }
+
+            if (parameters.ComputeNode != null)
+            {
+                parameters.ComputeNode.omObject.RemoveFromPool(parameters.DeallocationOption, parameters.ResizeTimeout, parameters.AdditionalBehaviors);
+            }
+            else
+            {
+                PoolOperations poolOperations = parameters.Context.BatchOMClient.PoolOperations;
+                poolOperations.RemoveFromPool(parameters.PoolId, parameters.ComputeNodeIds, parameters.DeallocationOption, parameters.ResizeTimeout, parameters.AdditionalBehaviors);
+            }
+        }
+
+        /// <summary>
         /// Reboots the specified compute node.
         /// </summary>
         /// <param name="parameters">The parameters specifying the compute node to reboot and the reboot option.</param>

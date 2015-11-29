@@ -243,6 +243,18 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             return pool.TargetOSVersion;
         }
 
+        public static void ResizePool(BatchController controller, BatchAccountContext context, string poolId, int targetDedicated)
+        {
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            PoolResizeParameters parameters = new PoolResizeParameters(context, poolId, null)
+            {
+                TargetDedicated = targetDedicated
+            };
+
+            client.ResizePool(parameters);
+        }
+
         public static void WaitForSteadyPoolAllocation(BatchController controller, BatchAccountContext context, string poolId)
         {
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
@@ -252,7 +264,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 PoolId = poolId
             };
 
-            DateTime timeout = DateTime.Now.AddMinutes(2);
+            DateTime timeout = DateTime.Now.AddMinutes(5);
             PSCloudPool pool = client.ListPools(options).First();
             while (pool.AllocationState != AllocationState.Steady)
             {
@@ -414,6 +426,22 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         /// <summary>
+        /// Gets the id of the compute node that the specified task completed on. Returns null if the task isn't complete.
+        /// </summary>
+        public static string GetTaskComputeNodeId(BatchController controller, BatchAccountContext context, string jobId, string taskId)
+        {
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            ListTaskOptions options = new ListTaskOptions(context, jobId, null)
+            {
+                TaskId = taskId
+            };
+            PSCloudTask task = client.ListTasks(options).First();
+
+            return task.ComputeNodeInformation == null ? null : task.ComputeNodeInformation.ComputeNodeId;
+        }
+
+        /// <summary>
         /// Deletes a job schedule used in a Scenario test.
         /// </summary>
         public static void DeleteJobSchedule(BatchController controller, BatchAccountContext context, string jobScheduleId)
@@ -448,13 +476,13 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Gets the id of a compute node in the specified pool
         /// </summary>
-        public static string GetComputeNodeId(BatchController controller, BatchAccountContext context, string poolId)
+        public static string GetComputeNodeId(BatchController controller, BatchAccountContext context, string poolId, int index = 0)
         {
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
             ListComputeNodeOptions options = new ListComputeNodeOptions(context, poolId, null);
-
-            return client.ListComputeNodes(options).First().Id;
+            List<PSComputeNode> computeNodes = client.ListComputeNodes(options).ToList();
+            return computeNodes[index].Id;
         }
 
         /// <summary>
