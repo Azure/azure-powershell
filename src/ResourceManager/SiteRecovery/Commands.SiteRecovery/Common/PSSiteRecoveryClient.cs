@@ -33,9 +33,9 @@ using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Properties = Microsoft.Azure.Commands.SiteRecovery.Properties;
-using Microsoft.WindowsAzure.Management.Scheduler;
 using System.Configuration;
 using System.Collections.Specialized;
+using System.Net.Security;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -60,10 +60,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             }
         }
 
-        /// Azure profile
-        /// </summary>
-        public IAzureProfile Profile { get; set; }
-
         /// <summary>
         /// Amount of time to sleep before fetching job details again.
         /// </summary>
@@ -86,9 +82,14 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         private RecoveryServicesManagementClient recoveryServicesClient;
 
         /// <summary>
-        /// Recovery Services client.
+        /// End point Uri
         /// </summary>
-        private CloudServiceManagementClient cloudServicesClient;
+        private static Uri endPointUri;
+
+        /// <summary>
+        /// Subscription Cloud credentials
+        /// </summary>
+        private static SubscriptionCloudCredentials cloudCredentials;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PSRecoveryServicesClient" /> class with 
@@ -97,31 +98,85 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <param name="azureSubscription">Azure Subscription</param>
         public PSRecoveryServicesClient(IAzureProfile azureProfile)
         {
-            this.Profile = azureProfile;
-
-            this.cloudServicesClient = AzureSession.ClientFactory.CreateClient<CloudServiceManagementClient>(azureProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
-
-            System.Configuration.Configuration siteRecoveryConfig = ConfigurationManager.OpenExeConfiguration(System.Reflection.Assembly.GetExecutingAssembly().Location);            
+            System.Configuration.Configuration siteRecoveryConfig = ConfigurationManager.OpenExeConfiguration(System.Reflection.Assembly.GetExecutingAssembly().Location);
 
             System.Configuration.AppSettingsSection appSettings = (System.Configuration.AppSettingsSection)siteRecoveryConfig.GetSection("appSettings");
-            
-            string resourceNamespace = "";
-            if(appSettings.Settings.Count == 0)
-            {
-                resourceNamespace = "Microsoft.SiteRecovery"; // ProviderNameSpace for Production is taken as default
-            }
-            else
-            {
-                resourceNamespace = appSettings.Settings["ProviderNamespace"].Value;
-            }
-             
-            Utilities.UpdateVaultSettingsProviderNamespace(resourceNamespace);
 
+            string resourceNamespace = string.Empty;
+            string resourceType = string.Empty;
+
+            // Get Resource provider namespace and type from config only if Vault context is not set
+            // (hopefully it is required only for Vault related cmdlets)
+            if (string.IsNullOrEmpty(asrVaultCreds.ResourceNamespace) ||
+                string.IsNullOrEmpty(asrVaultCreds.ARMResourceType))
+            {
+                if (appSettings.Settings.Count == 0)
+                {
+                    resourceNamespace = "Microsoft.SiteRecovery"; // ProviderNameSpace for Production is taken as default
+                    resourceType = ARMResourceTypeConstants.SiteRecoveryVault;
+                }
+                else
+                {
+                    resourceNamespace =
+                        null == appSettings.Settings["ProviderNamespace"]
+                        ? "Microsoft.SiteRecovery"
+                        : appSettings.Settings["ProviderNamespace"].Value;
+                    resourceType =
+                        null == appSettings.Settings["ResourceType"]
+                        ? ARMResourceTypeConstants.SiteRecoveryVault
+                        : appSettings.Settings["ResourceType"].Value;
+                }
+
+                Utilities.UpdateCurrentVaultContext(new ASRVaultCreds()
+                {
+                    ResourceNamespace = resourceNamespace,
+                    ARMResourceType = resourceType
+                });
+            }
+
+            if (null == endPointUri)
+            {
+                if (appSettings.Settings.Count == 0)
+                {
+                    endPointUri = azureProfile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager);
+                }
+                else
+                {
+                    if (null == appSettings.Settings["RDFEProxy"])
+                    {
+                        endPointUri = azureProfile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager);
+
+                    }
+                    else
+                    {
+                        // Setting Endpoint to RDFE Proxy
+                        if (null == ServicePointManager.ServerCertificateValidationCallback)
+                        {
+                            ServicePointManager.ServerCertificateValidationCallback =
+                                IgnoreCertificateErrorHandler;
+                        }
+
+                        endPointUri = new Uri(appSettings.Settings["RDFEProxy"].Value);
+                    }
+                }
+            }
+
+            cloudCredentials = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(azureProfile.Context);
             this.recoveryServicesClient =
             AzureSession.ClientFactory.CreateCustomClient<RecoveryServicesManagementClient>(
                 asrVaultCreds.ResourceNamespace,
-                cloudServicesClient.Credentials,
-                Profile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager));
+                asrVaultCreds.ARMResourceType,
+                cloudCredentials,
+                azureProfile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager));
+        }
+
+        private static bool IgnoreCertificateErrorHandler
+           (object sender,
+           System.Security.Cryptography.X509Certificates.X509Certificate certificate,
+           System.Security.Cryptography.X509Certificates.X509Chain chain,
+           SslPolicyErrors sslPolicyErrors)
+        {
+            return true;
         }
 
         /// <summary>
@@ -144,7 +199,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
             foreach (ResourceGroup resourceGroup in this.GetRecoveryServicesClient.ResourceGroup.List())
             {
-                if (resourceGroup.Name == resourceGroupName)
+                if (string.Compare(resourceGroup.Name, resourceGroupName, StringComparison.OrdinalIgnoreCase) == 0)
                 {
                     validResourceGroup = true;
                     break;
@@ -158,7 +213,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
             foreach (Vault vault in GetRecoveryServicesClient.Vaults.Get(resourceGroupName, this.GetRequestHeaders(false)))
             {
-                if (vault.Name == resourceName)
+                if (string.Compare(vault.Name, resourceName, StringComparison.OrdinalIgnoreCase) == 0)
                 {
                     validResource = true;
                     idPrefixtillvaultName = vault.Id;
@@ -261,7 +316,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         /// <returns>Site Recovery Management client</returns>
         private SiteRecoveryManagementClient GetSiteRecoveryClient()
-        {
+        {                    
             this.ValidateVaultSettings(
                 asrVaultCreds.ResourceName,
                 asrVaultCreds.ResourceGroupName);
@@ -271,8 +326,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 asrVaultCreds.ResourceName,
                 asrVaultCreds.ResourceGroupName,
                 asrVaultCreds.ResourceNamespace,
-                cloudServicesClient.Credentials,
-                Profile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager));
+                asrVaultCreds.ARMResourceType,
+                cloudCredentials,
+                endPointUri);
 
             if (null == siteRecoveryClient)
             {
