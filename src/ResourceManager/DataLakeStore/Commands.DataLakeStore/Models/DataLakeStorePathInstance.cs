@@ -23,14 +23,13 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
     /// </summary>
     public class DataLakeStorePathInstance
     {
-        public string Path { get; set; }
-        public string FullyQualifiedPath { get; set; }
+        public string TransformedPath { get; set; }
+        public string OriginalPath { get; set; }
 
         public static DataLakeStorePathInstance Parse(string path)
         {
             // reverse all slashes to the correct slash type
             path = path.Replace('\\', '/');
-            var tempAccount = string.Empty;
 
             // all paths must start with a slash and be account relative.
             if (!path.StartsWith("/"))
@@ -40,8 +39,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
             return new DataLakeStorePathInstance
             {
-                Path = path,
-                FullyQualifiedPath = path
+                TransformedPath = path.TrimStart('/').TrimEnd('/'),
+                OriginalPath = path // return the original path they gave
             };
         }
     }

@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         protected override void ProcessRecord()
         {
             var toReturn = new DataLakeStoreItemAcl();
-            toReturn.InitializeAces(DataLakeStoreFileSystemClient.GetAclStatus(Path.Path, Account));
+            toReturn.InitializeAces(DataLakeStoreFileSystemClient.GetAclStatus(Path.TransformedPath, Account));
             WriteObject(toReturn);
         }
     }
