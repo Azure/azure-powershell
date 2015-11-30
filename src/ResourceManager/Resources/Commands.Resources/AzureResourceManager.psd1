@@ -113,7 +113,8 @@ NestedModules = @(
     '.\AzureRM.SiteRecovery',
     '.\AzureRM.DataLakeAnalytics',
     '.\AzureRM.DataLakeStore',
-	'.\AzureRM.Intune'
+    '.\AzureRM.Intune',
+    '.\AzureRM.RecoveryServices'
 )  
   
 # Functions to export from this module  

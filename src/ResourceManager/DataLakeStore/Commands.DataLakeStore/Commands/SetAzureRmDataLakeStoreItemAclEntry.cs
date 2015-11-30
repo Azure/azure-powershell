@@ -98,16 +98,16 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             {
                 ConfirmAction(
                     Force.IsPresent,
-                    string.Format(Resources.SettingDataLakeStoreItemAcl, Path.FullyQualifiedPath),
-                    string.Format(Resources.SetDataLakeStoreItemAcl, Path.FullyQualifiedPath),
-                    Path.FullyQualifiedPath,
+                    string.Format(Resources.SettingDataLakeStoreItemAcl, Path.OriginalPath),
+                    string.Format(Resources.SetDataLakeStoreItemAcl, Path.OriginalPath),
+                    Path.OriginalPath,
                     () =>
-                        DataLakeStoreFileSystemClient.ModifyAcl(Path.Path, Account,
+                        DataLakeStoreFileSystemClient.ModifyAcl(Path.TransformedPath, Account,
                             aclSpec));
             }
             else
             {
-                DataLakeStoreFileSystemClient.ModifyAcl(Path.Path, Account,
+                DataLakeStoreFileSystemClient.ModifyAcl(Path.TransformedPath, Account,
                     aclSpec);
             }
         }

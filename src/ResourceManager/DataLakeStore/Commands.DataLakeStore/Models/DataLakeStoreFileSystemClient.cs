@@ -302,9 +302,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 Offset = offset
             };
 
-            var response = _client.FileSystem.BeginOpen(filePath, accountName, parameters);
-
-            return _client.FileSystem.Open(response.Location).FileContents;
+            return _client.FileSystem.DirectOpen(filePath, accountName, parameters).FileContents;
         }
 
         public string GetHomeDirectory(string accountName)
@@ -354,14 +352,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         public void CreateFile(string filePath, string accountName, Stream contents = null, bool overwrite = false,
             string permissions = null)
         {
-            var beginRequest = _client.FileSystem.BeginCreate(filePath, accountName, new FileCreateParameters
+            _client.FileSystem.DirectCreate(filePath, accountName, contents, new FileCreateParameters
             {
                 Overwrite = overwrite,
                 Permission = permissions
-            }
-                );
-
-            _client.FileSystem.Create(beginRequest.Location, contents);
+            });
         }
 
         public bool CreateDirectory(string dirPath, string accountName, string permissions = null)
@@ -371,8 +366,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         public void AppendToFile(string filePath, string accountName, Stream contents)
         {
-            var beginRequest = _client.FileSystem.BeginAppend(filePath, accountName, null);
-            _client.FileSystem.Append(beginRequest.Location, contents);
+            _client.FileSystem.DirectAppend(filePath, accountName, contents, null);
         }
 
         public void CopyFile(string destinationPath, string accountName, string sourcePath,

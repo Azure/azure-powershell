@@ -55,10 +55,10 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Test.Framework">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Test.Framework.1.0.5785.18045-prerelease\lib\net45\Microsoft.Azure.Test.Framework.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Test.Framework.1.0.5799.28345-prerelease\lib\net45\Microsoft.Azure.Test.Framework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Test.HttpRecorder">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Test.HttpRecorder.1.0.5785.18045-prerelease\lib\net45\Microsoft.Azure.Test.HttpRecorder.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Test.HttpRecorder.1.0.5799.28345-prerelease\lib\net45\Microsoft.Azure.Test.HttpRecorder.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory">
       <SpecificVersion>False</SpecificVersion>
@@ -203,7 +203,7 @@
       <Project>{cff09e81-1e31-444e-b4d4-a21e946c29e2}</Project>
       <Name>Commands.ServiceManagement.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Commands.RecoveryServices\Commands.RecoveryServices.csproj">
+    <ProjectReference Include="..\Commands.RecoveryServices\Commands.RecoveryServicesRdfe.csproj">
       <Project>{98b10548-df97-4fb1-8d82-2a12945d4f21}</Project>
       <Name>Commands.RecoveryServices</Name>
     </ProjectReference>

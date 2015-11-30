@@ -32,9 +32,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         protected override void ProcessRecord()
         {
-            this.WriteObject(new ASRVaultSettings(
-                PSRecoveryServicesClient.asrVaultCreds.ResourceName,
-                PSRecoveryServicesClient.asrVaultCreds.ResourceGroupName));
+            this.WriteObject(new ASRVaultSettings(PSRecoveryServicesClient.asrVaultCreds));
         }
     }
 }
