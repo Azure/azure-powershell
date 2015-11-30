@@ -203,7 +203,7 @@
       <Project>{cff09e81-1e31-444e-b4d4-a21e946c29e2}</Project>
       <Name>Commands.ServiceManagement.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Commands.RecoveryServices\Commands.RecoveryServices.csproj">
+    <ProjectReference Include="..\Commands.RecoveryServices\Commands.RecoveryServicesRdfe.csproj">
       <Project>{98b10548-df97-4fb1-8d82-2a12945d4f21}</Project>
       <Name>Commands.RecoveryServices</Name>
     </ProjectReference>

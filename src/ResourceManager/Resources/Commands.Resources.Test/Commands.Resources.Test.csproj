@@ -245,6 +245,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="KeyVaultSetupTemplate.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="keyVaultTemplateParams.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SamplePolicyDefinition.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -319,6 +325,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.DeploymentTests\TestNewDeploymentFromTemplateFile.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.DeploymentTests\TestNewDeploymentWithKeyVaultReference.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.MoveResourceTest\TestMoveAzureResource.json">

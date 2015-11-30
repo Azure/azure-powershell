@@ -89,7 +89,7 @@ NestedModules = '.\Services\Microsoft.WindowsAzure.Commands.dll',
                 '.\Networking\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.dll',
                 '.\StorSimple\Microsoft.WindowsAzure.Commands.StorSimple.dll',
                 '.\RemoteApp\Microsoft.WindowsAzure.Commands.RemoteApp.dll',
-                '.\RecoveryServices\Microsoft.Azure.Commands.RecoveryServices.dll'
+                '.\RecoveryServices\Microsoft.Azure.Commands.RecoveryServicesRdfe.dll'
 
 # Functions to export from this module
 FunctionsToExport = '*'

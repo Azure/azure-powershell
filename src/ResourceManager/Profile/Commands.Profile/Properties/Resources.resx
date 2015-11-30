@@ -162,4 +162,10 @@
   <data name="TypeNotAccessToken" xml:space="preserve">
     <value>To create an access token credential, you must provide an access token account.</value>
   </data>
+  <data name="UnableToAqcuireToken" xml:space="preserve">
+    <value>Unabe to acquire token for tenant '{0}'</value>
+  </data>
+  <data name="UnknownEnvironment" xml:space="preserve">
+    <value>Unable to find environment with name '{0}'</value>
+  </data>
 </root>

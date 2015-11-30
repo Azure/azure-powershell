@@ -29,13 +29,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     {
         #region Parameters
         /// <summary>
-        /// Gets or sets Resouce Group name.
+        /// Gets or sets Resource Group name.
         /// </summary>
         [Parameter]
-        public string ResouceGroupName { get; set; }
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets Resouce Name.
+        /// Gets or sets Resource Name.
         /// </summary>
         [Parameter]
         public string Name { get; set; }
@@ -46,15 +46,17 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
+
             try
             {
-                if (string.IsNullOrEmpty(this.ResouceGroupName))
+                if (string.IsNullOrEmpty(this.ResourceGroupName))
                 {
-                    this.GetVaultsUnderAllResouceGroups();
+                    this.GetVaultsUnderAllResourceGroups();
                 }
                 else
                 {
-                    this.GetVaultsUnderResouceGroup();
+                    this.GetVaultsUnderResourceGroup();
                 }
             }
             catch (Exception exception)
@@ -66,10 +68,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Get vaults under a resouce group.
         /// </summary>
-        private void GetVaultsUnderResouceGroup()
+        private void GetVaultsUnderResourceGroup()
         {
             VaultListResponse vaultListResponse =
-                RecoveryServicesClient.GetVaultsInResouceGroup(this.ResouceGroupName);
+                RecoveryServicesClient.GetVaultsInResouceGroup(this.ResourceGroupName);
 
             this.WriteVaults(vaultListResponse.Vaults);
         }
@@ -77,7 +79,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Get vaults under all resouce group.
         /// </summary>
-        private void GetVaultsUnderAllResouceGroups()
+        private void GetVaultsUnderAllResourceGroups()
         {
             foreach (var resourceGroup in RecoveryServicesClient.GetResouceGroups().ResourceGroups)
             {
