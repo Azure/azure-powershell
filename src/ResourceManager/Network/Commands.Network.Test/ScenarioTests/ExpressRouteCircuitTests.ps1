@@ -213,7 +213,7 @@ function Test-ExpressRouteCircuitAuthorizationCRUD
         # Create the resource group
         $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation
         
-        # Create the ExpressRouteCircuit with peering
+        # Create the ExpressRouteCircuit with authorization
 		$authorization = New-AzureRmExpressRouteCircuitAuthorization -Name $authorizationName
 		$circuit = New-AzureRmExpressRouteCircuit -Name $circuitName -Location $location -ResourceGroupName $rgname -SkuTier Standard -SkuFamily MeteredData -BillingType UnlimitedData -ServiceProviderName "equinix" -PeeringLocation "Silicon Valley" -BandwidthInMbps 1000 -Authorization $authorization
         

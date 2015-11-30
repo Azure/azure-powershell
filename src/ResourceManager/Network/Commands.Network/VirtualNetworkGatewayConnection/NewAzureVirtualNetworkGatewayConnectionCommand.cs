@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Network
         public string Location { get; set; }
 
         [Parameter(
-         Mandatory = true,
+         Mandatory = false,
          ValueFromPipelineByPropertyName = true,
          HelpMessage = "AuthorizationKey.")]
         [ValidateNotNullOrEmpty]
@@ -159,7 +159,11 @@ namespace Microsoft.Azure.Commands.Network
             vnetGatewayConnection.ConnectionType = this.ConnectionType;
             vnetGatewayConnection.RoutingWeight = this.RoutingWeight;
             vnetGatewayConnection.SharedKey = this.SharedKey;
-            vnetGatewayConnection.AuthorizationKey = this.AuthorizationKey;
+            if (!string.IsNullOrEmpty(this.AuthorizationKey))
+            {
+                vnetGatewayConnection.AuthorizationKey = this.AuthorizationKey;
+            }
+            
 
             if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
             {
