@@ -13,13 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Management.DataLake.StoreFileSystem.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreChildItem"), OutputType(typeof (IEnumerable<FileStatusProperties>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreChildItem"), OutputType(typeof (IEnumerable<DataLakeStoreItem>))]
     public class GetAzureDataLakeStoreChildItem : DataLakeStoreFileSystemCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -38,7 +39,12 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         protected override void ProcessRecord()
         {
-            WriteObject(DataLakeStoreFileSystemClient.GetFileStatuses(Path.Path, Account).FileStatus, true);
+            List<DataLakeStoreItem> toReturn =
+                DataLakeStoreFileSystemClient.GetFileStatuses(Path.TransformedPath, Account)
+                    .FileStatus.Select(element => new DataLakeStoreItem(element))
+                    .ToList();
+
+            WriteObject(toReturn, true);
         }
     }
 }
