@@ -34,22 +34,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
         protected override void ProcessRecord()
         {
-            try
-            {
-                DataLakeAnalyticsClient.GetAcount(ResourceGroupName, Name);
-                WriteObject(true);
-            }
-            catch (CloudException e)
-            {
-                if (e.Response.StatusCode == HttpStatusCode.NotFound)
-                {
-                    WriteObject(false);
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            WriteObject(DataLakeAnalyticsClient.TestAccount(ResourceGroupName, Name));
         }
     }
 }

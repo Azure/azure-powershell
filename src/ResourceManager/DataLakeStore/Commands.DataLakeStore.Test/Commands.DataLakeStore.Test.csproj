@@ -64,7 +64,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.DataLake.StoreFileSystem, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataLake.StoreFileSystem.0.9.5-preview\lib\net40\Microsoft.Azure.Management.DataLake.StoreFileSystem.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataLake.StoreFileSystem.0.9.6-preview\lib\net40\Microsoft.Azure.Management.DataLake.StoreFileSystem.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.DataLake.StoreUploader, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -76,11 +76,11 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Test.Framework">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Test.Framework.1.0.5785.18045-prerelease\lib\net45\Microsoft.Azure.Test.Framework.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Test.Framework.1.0.5799.28345-prerelease\lib\net45\Microsoft.Azure.Test.Framework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Test.HttpRecorder">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Test.HttpRecorder.1.0.5785.18045-prerelease\lib\net45\Microsoft.Azure.Test.HttpRecorder.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Test.HttpRecorder.1.0.5799.28345-prerelease\lib\net45\Microsoft.Azure.Test.HttpRecorder.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.18.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -176,6 +176,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests.AdlsTests\TestAdlsAccount.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests.AdlsTests\TestAdlsFileSystem.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests.AdlsTests\TestAdlsFileSystemPermissions.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests.AdlsTests\TestNegativeAdlsAccount.json">

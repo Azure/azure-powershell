@@ -51,17 +51,17 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         {
             FileType fileType;
             if (Force &&
-                DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Destination.FullyQualifiedPath, Account,
+                DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Destination.TransformedPath, Account,
                     out fileType) && fileType == FileType.File)
                 // If it is a directory you are trying to overwrite with a concatenated file, we will error out.
             {
-                DataLakeStoreFileSystemClient.DeleteFileOrFolder(Destination.FullyQualifiedPath, Account, false);
+                DataLakeStoreFileSystemClient.DeleteFileOrFolder(Destination.TransformedPath, Account, false);
             }
 
-            DataLakeStoreFileSystemClient.ConcatenateFiles(Destination.Path, Account,
-                Paths.Select(path => path.Path).ToArray());
+            DataLakeStoreFileSystemClient.ConcatenateFiles(Destination.TransformedPath, Account,
+                Paths.Select(path => path.TransformedPath).ToArray());
 
-            WriteObject(Destination.FullyQualifiedPath);
+            WriteObject(Destination.OriginalPath);
         }
     }
 }

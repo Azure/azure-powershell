@@ -26,6 +26,7 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Hyak.Common;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common;
+using System.Reflection;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
@@ -213,6 +214,72 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 cmdlt.CertificateThumbprint,
                 AzureRmProfileProvider.Instance.Profile.Context.Account.GetProperty(AzureAccount.Property.CertificateThumbprint));
             
+        }
+
+        [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        public void GetMultipleTenantsOnLogin()
+        {
+            var cmdlt = new AddAzureRMAccountCommand();
+            // Setup
+            // NOTE: Use admin@rbactest.onmicrosoft.com credentials for this test case
+            cmdlt.CommandRuntime = commandRuntimeMock;
+
+            // Act
+            cmdlt.InvokeBeginProcessing();
+            cmdlt.ExecuteCmdlet();
+            cmdlt.InvokeEndProcessing();
+
+            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context);
+            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context.Account);
+            var tenants = AzureRmProfileProvider.Instance.Profile.Context.Account.GetPropertyAsArray(AzureAccount.Property.Tenants);
+            Assert.NotNull(tenants);
+            Assert.Equal(3, tenants.Length);
+        }
+
+        [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        public void LoginWithEnvironementName()
+        {
+            var cmdlt = new AddAzureRMAccountCommand();
+            // Setup
+            cmdlt.CommandRuntime = commandRuntimeMock;
+            cmdlt.EnvironmentName = "AzureUSGovernment";
+
+            // Act
+            cmdlt.InvokeBeginProcessing();
+            cmdlt.ExecuteCmdlet();
+            cmdlt.InvokeEndProcessing();
+
+            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context);
+            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context.Environment);
+            Assert.Equal("AzureUSGovernment", AzureRmProfileProvider.Instance.Profile.Context.Environment.Name);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ThrowOnUnknownEnvironment()
+        {
+            var cmdlt = new AddAzureRMAccountCommand();
+            // Setup
+            cmdlt.CommandRuntime = commandRuntimeMock;
+            cmdlt.EnvironmentName = "unknown";
+            var testPassed = false;
+
+            // Act
+            try
+            {
+                cmdlt.InvokeBeginProcessing();
+            }
+            catch(TargetInvocationException ex)
+            {
+                Assert.NotNull(ex);
+                Assert.NotNull(ex.InnerException);
+                Assert.Equal("Unable to find environment with name 'unknown'", ex.InnerException.Message);
+                testPassed = true;
+            }
+
+            Assert.True(testPassed);
         }
     }
 }

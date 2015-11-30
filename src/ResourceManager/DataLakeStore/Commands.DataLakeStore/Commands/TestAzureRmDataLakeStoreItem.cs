@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         protected override void ProcessRecord()
         {
             FileType fileType;
-            if (DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Path.Path, Account, out fileType))
+            if (DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Path.TransformedPath, Account, out fileType))
             {
                 if (PathType == DataLakeStoreEnums.PathType.Any)
                 {
