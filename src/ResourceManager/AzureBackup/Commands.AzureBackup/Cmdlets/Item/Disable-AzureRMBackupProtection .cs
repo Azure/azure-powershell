@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets.DataSource
 
         private bool DeleteBackupData;
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ConfirmAction(
                 Force.IsPresent,

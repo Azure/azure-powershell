@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
             HelpMessage = "NotificationHub Name.")]
         public string NotificationHub { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (!string.IsNullOrEmpty(NotificationHub))
             {

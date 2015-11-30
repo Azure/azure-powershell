@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         [ValidateSet("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", IgnoreCase = true)]
         public string[] DaysOfWeek { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
             {

@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             )]
         public SwitchParameter PassThru { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             bool[] success = {true};
             foreach (var path in Paths)

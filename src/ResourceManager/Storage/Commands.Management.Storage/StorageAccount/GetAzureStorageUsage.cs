@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.StorageAccount
     [Cmdlet(VerbsCommon.Get, StorageUsageNounStr), OutputType(typeof(PSUsage))]
     public class GetAzureStorageUsageCommand : StorageAccountBaseCmdlet
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             base.ProcessRecord();
 

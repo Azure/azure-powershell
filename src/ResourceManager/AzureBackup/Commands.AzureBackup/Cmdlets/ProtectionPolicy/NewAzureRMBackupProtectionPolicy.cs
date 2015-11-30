@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         [Parameter(Position = 7, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.RetentionPolicyList, ValueFromPipelineByPropertyName = true)]
         public AzureRMBackupRetentionPolicy[] RetentionPolicy { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
             {

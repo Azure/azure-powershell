@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The loadbalancer")]
         public PSLoadBalancer LoadBalancer { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             base.ProcessRecord();
 

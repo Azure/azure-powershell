@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         /// </summary>
         private StorageCredentials _storageCredentials;
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             base.ProcessRecord();
 

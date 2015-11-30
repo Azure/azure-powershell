@@ -487,6 +487,24 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
         }
 
+        public virtual void ExecuteCmdlet()
+        {
+            // Do nothing.
+        }
+
+        protected override void ProcessRecord()
+        {
+            try
+            {
+                base.ProcessRecord();
+                ExecuteCmdlet();
+            }
+            catch (Exception ex)
+            {
+                WriteExceptionError(ex);
+            }
+        }
+
         protected virtual void Dispose(bool disposing)
         {
             if (_adalListener != null)

@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             Format = Format ?? DefaultFormat;
         }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             base.ProcessRecord();
             WriteObject(WebsitesClient.GetWebAppPublishingProfile(ResourceGroupName, Name, null, OutputFile, Format));

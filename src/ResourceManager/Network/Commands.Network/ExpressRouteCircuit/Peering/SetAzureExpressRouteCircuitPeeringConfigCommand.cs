@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The Circuit")]
         public PSExpressRouteCircuit Circuit { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             base.ProcessRecord();
 

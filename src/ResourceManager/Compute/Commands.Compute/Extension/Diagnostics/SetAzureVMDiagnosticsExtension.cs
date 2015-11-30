@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Commands.Compute
             return storageKey;
         }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             base.ProcessRecord();
             ExecuteCommand();

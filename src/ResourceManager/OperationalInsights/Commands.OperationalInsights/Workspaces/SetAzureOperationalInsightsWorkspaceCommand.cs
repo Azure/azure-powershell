@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
             HelpMessage = "The resource tags for the workspace.")]
         public Hashtable Tags { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ByObject)
             {

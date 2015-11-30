@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The virtualNetworkGateway")]
         public PSVirtualNetworkGateway VirtualNetworkGateway { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             base.ProcessRecord();
 

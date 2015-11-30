@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet(VerbsCommon.Get, "AzureRmExpressRouteServiceProvider"), OutputType(typeof(PSExpressRouteServiceProvider))]
     public class GetAzureExpressRouteServiceProviderCommand : NetworkBaseCmdlet
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             base.ProcessRecord();
 

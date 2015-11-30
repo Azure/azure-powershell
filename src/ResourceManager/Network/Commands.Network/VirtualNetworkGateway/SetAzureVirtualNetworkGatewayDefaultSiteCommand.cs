@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNull]
         public PSLocalNetworkGateway GatewayDefaultSite { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             base.ProcessRecord();
 

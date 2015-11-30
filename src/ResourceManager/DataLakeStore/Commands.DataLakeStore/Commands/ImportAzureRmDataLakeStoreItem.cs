@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             HelpMessage = "Indicates that, if the file or folder exists, it should be overwritten")]
         public SwitchParameter Force { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             var powerShellSourcePath = SessionState.Path.GetUnresolvedProviderPathFromPSPath(Path);
 

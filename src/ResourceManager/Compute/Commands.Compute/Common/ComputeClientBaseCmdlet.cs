@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Compute
             set { computeClient = value; }
         }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             base.ProcessRecord();
             ComputeAutoMapperProfile.Initialize();

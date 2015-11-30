@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [ValidateNotNullOrEmpty]
         public SwitchParameter InstanceDetails { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             base.ProcessRecord();
             WriteObject(WebsitesClient.GetWebAppUsageMetrics(ResourceGroupName, Name, null, Metrics, StartTime, EndTime, Granularity, InstanceDetails.IsPresent));

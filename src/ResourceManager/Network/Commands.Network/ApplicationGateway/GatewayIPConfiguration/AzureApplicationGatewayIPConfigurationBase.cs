@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Subnet where application gateway gets its address from")]
         public PSSubnet Subnet { get; set; }
        
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             base.ProcessRecord();
 

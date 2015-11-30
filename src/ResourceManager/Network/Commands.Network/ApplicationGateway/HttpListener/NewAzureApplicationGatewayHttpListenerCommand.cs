@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewayHttpListener"), OutputType(typeof(PSApplicationGatewayHttpListener))]
     public class NewAzureApplicationGatewayHttpListenerCommand : AzureApplicationGatewayHttpListenerBase
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             base.ProcessRecord();
             WriteObject(base.NewObject());

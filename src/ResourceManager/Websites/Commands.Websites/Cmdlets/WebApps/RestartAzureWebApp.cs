@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     [Cmdlet(VerbsLifecycle.Restart, "AzureRmWebApp")]
     public class RestartAzureWebAppCmdlet : WebAppBaseCmdlet
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             base.ProcessRecord();
             WebsitesClient.RestartWebApp(ResourceGroupName, Name, null);

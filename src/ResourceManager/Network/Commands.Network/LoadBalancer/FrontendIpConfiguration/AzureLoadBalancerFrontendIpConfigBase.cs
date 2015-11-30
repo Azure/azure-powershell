@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "PublicIpAddress")]
         public PSPublicIpAddress PublicIpAddress { get; set; }
         
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             base.ProcessRecord();
 

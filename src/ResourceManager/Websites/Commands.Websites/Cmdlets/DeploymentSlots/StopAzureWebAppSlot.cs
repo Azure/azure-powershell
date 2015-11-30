@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     [Cmdlet(VerbsLifecycle.Stop, "AzureRMWebAppSlot")]
     public class StopAzureWebAppSlotCmdlet : WebAppSlotBaseCmdlet
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             base.ProcessRecord();
             WebsitesClient.StopWebApp(ResourceGroupName, Name, Slot);

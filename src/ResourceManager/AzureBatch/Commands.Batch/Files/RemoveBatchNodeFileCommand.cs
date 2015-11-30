@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter]
         public SwitchParameter Force { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             string fileName = this.InputObject == null ? this.Name : this.InputObject.Name;
             NodeFileOperationParameters parameters = new NodeFileOperationParameters(this.BatchContext, this.JobId, this.TaskId, this.PoolId,

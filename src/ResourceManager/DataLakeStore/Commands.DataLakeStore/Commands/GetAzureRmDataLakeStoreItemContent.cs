@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             set { _encoding = value; }
         }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             byte[] byteArray;
             using (var memStream = ((MemoryStream) DataLakeStoreFileSystemClient.PreviewFile(Path.Path, Account, Length,

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     [Cmdlet(VerbsCommon.Reset, "AzureRMWebAppSlotPublishingProfile")]
     public class ResetAzureWebAppPSlotublishingProfileCmdlet : WebAppSlotBaseCmdlet
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             base.ProcessRecord();
             WriteObject(WebsitesClient.ResetWebAppPublishingCredentials(ResourceGroupName, Name, Slot));

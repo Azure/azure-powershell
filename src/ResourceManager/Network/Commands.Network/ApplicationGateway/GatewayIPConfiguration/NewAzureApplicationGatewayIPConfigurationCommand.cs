@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewayIPConfiguration"), OutputType(typeof(PSApplicationGatewayIPConfiguration))]
     public class NewAzureApplicationGatewayIPConfigurationCommand : AzureApplicationGatewayIPConfigurationBase
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             base.ProcessRecord();
             WriteObject(base.NewObject());

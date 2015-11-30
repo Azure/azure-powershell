@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "EnableFloatingIP")]
         public SwitchParameter EnableFloatingIP { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             base.ProcessRecord();
 

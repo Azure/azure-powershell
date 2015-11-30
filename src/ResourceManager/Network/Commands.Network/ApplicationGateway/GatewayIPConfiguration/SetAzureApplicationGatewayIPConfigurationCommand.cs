@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Network
              ValueFromPipeline = true,
              HelpMessage = "The applicationGateway")]
         public PSApplicationGateway ApplicationGateway { get; set; }
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             base.ProcessRecord();
 

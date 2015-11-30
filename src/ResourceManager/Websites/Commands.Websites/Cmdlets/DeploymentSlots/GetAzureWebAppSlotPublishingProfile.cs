@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
             Format = Format ?? DefaultFormat;
         }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             base.ProcessRecord();
             WriteObject(WebsitesClient.GetWebAppPublishingProfile(ResourceGroupName, Name, Slot, OutputFile, Format));

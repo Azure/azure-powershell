@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// <summary>
         /// Executes the cmdlet
         /// </summary>
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ModelAdapter = InitModelAdapter(DefaultProfile.Context.Subscription);
             M model = this.GetEntity();

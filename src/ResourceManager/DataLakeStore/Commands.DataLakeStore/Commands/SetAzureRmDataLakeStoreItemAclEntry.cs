@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 "Indicates that the ACL entries should be set on the file with the specified ACL without prompting.")]
         public SwitchParameter Force { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             var aclSpec = ParameterSetName.Equals(BaseParameterSetName)
                 ? Acl.GetAclSpec()

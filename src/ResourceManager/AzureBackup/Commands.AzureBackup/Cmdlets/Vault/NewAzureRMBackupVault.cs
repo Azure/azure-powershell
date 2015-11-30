@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         //[Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ResourceTags)]
         //public Hashtable[] Tag { get; set; }        
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
             {

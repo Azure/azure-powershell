@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewayRequestRoutingRule"), OutputType(typeof(PSApplicationGatewayRequestRoutingRule))]
     public class NewAzureApplicationGatewayRequestRoutingRuleCommand : AzureApplicationGatewayRequestRoutingRuleBase
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             base.ProcessRecord();
             WriteObject(base.NewObject());

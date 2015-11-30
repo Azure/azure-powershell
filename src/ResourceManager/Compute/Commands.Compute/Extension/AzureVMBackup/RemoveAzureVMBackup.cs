@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
             HelpMessage = "The tag for this backup.")]
         public string Tag { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             base.ProcessRecord();
 

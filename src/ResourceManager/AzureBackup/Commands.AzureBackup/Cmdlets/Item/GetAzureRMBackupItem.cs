@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         [ValidateSet("AzureVM")]
         public string Type { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
             {

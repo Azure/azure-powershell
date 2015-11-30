@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewaySslCertificate"), OutputType(typeof(PSApplicationGatewaySslCertificate))]
     public class NewAzureApplicationGatewaySslCertificateCommand : AzureApplicationGatewaySslCertificateBase
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             base.ProcessRecord();
             WriteObject(base.NewObject());

@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Network
 
             set { _networkClient = value; }
         }
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             base.ProcessRecord();
             NetworkResourceManagerProfile.Initialize();

@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.Retention)]
         public int Retention { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
             {

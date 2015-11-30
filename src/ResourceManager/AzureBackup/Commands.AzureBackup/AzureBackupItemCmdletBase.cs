@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         [ValidateNotNullOrEmpty]
         public AzureRMBackupContainerContextObject Item { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             base.ProcessRecord();
             WriteDebug(String.Format(Resources.CmdletCalled, Item.ResourceGroupName, Item.ResourceName, Item.Location));

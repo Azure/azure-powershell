@@ -287,5 +287,4 @@
   <PropertyGroup>
     <PostBuildEvent>powershell.exe -ExecutionPolicy Unrestricted -File "$(ProjectDir)\PostBuild.ps1" "$(TargetDir)\"</PostBuildEvent>
   </PropertyGroup>
-  <Import Project="..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
 </Project>

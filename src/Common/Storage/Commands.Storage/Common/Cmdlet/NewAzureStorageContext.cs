@@ -381,16 +381,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
             return Resources.DefaultStorageEndPointDomain;
         }
 
-        protected override void ProcessRecord()
-        {
-            ExecuteCmdlet();
-        }
-
         /// <summary>
         /// Execute command
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        public virtual void ExecuteCmdlet()
+        public override void ExecuteCmdlet()
         {
             CloudStorageAccount account = null;
             bool useHttps = (StorageNouns.HTTPS.ToLower() == protocolType.ToLower());

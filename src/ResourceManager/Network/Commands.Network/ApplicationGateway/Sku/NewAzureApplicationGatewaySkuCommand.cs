@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewaySku"), OutputType(typeof(PSApplicationGatewaySku))]
     public class NewAzureApplicationGatewaySkuCommand : AzureApplicationGatewaySkuBase
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             base.ProcessRecord();
 
