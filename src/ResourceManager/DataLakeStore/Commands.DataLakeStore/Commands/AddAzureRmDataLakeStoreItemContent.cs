@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
-            DataLakeStoreFileSystemClient.AppendToFile(Path.Path, Account, new MemoryStream(GetBytes(Value, Encoding)));
+            DataLakeStoreFileSystemClient.AppendToFile(Path.TransformedPath, Account, new MemoryStream(GetBytes(Value, Encoding)));
             WriteObject(true);
         }
     }

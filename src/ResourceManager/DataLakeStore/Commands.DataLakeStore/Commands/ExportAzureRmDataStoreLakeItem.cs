@@ -52,13 +52,13 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
             FileType type;
 
-            if (!DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Path.Path, Account, out type) ||
+            if (!DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Path.TransformedPath, Account, out type) ||
                 type != FileType.File)
             {
-                throw new CloudException(string.Format(Resources.InvalidExportPathType, Path.Path));
+                throw new CloudException(string.Format(Resources.InvalidExportPathType, Path.TransformedPath));
             }
 
-            DataLakeStoreFileSystemClient.DownloadFile(Path.Path, Account, powerShellReadyPath, CmdletCancellationToken,
+            DataLakeStoreFileSystemClient.DownloadFile(Path.TransformedPath, Account, powerShellReadyPath, CmdletCancellationToken,
                 Force, this);
 
             WriteObject(powerShellReadyPath);

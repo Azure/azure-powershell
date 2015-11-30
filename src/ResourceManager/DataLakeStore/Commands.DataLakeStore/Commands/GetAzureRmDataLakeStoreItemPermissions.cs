@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         {
             WriteObject(
                 DataLakeStoreItemPermissionInstance.Parse(
-                    DataLakeStoreFileSystemClient.GetFileStatus(Path.Path, Account).Permission));
+                    DataLakeStoreFileSystemClient.GetFileStatus(Path.TransformedPath, Account).Permission));
         }
     }
 }

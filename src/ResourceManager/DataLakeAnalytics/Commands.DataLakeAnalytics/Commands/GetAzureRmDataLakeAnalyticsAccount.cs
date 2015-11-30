@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             if (!string.IsNullOrEmpty(Name))
             {
                 // Get for single account
-                WriteObject(DataLakeAnalyticsClient.GetAcount(ResourceGroupName, Name));
+                WriteObject(DataLakeAnalyticsClient.GetAccount(ResourceGroupName, Name));
             }
             else
             {

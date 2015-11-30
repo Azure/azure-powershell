@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
-            DataLakeStoreFileSystemClient.SetPermission(Path.Path, Account, Permissions.PermissionsOctal);
+            DataLakeStoreFileSystemClient.SetPermission(Path.TransformedPath, Account, Permissions.PermissionsOctal);
             WriteObject(true);
         }
     }
