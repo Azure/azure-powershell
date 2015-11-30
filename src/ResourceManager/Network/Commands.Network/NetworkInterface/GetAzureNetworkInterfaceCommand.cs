@@ -77,20 +77,20 @@ namespace Microsoft.Azure.Commands.Network
             }
             else if (!string.IsNullOrEmpty(this.ResourceGroupName))
             {
-                var getNetworkInterfaceResponse = new MNM.NetworkInterfaceListResponse();
+                IEnumerable<MNM.NetworkInterface> nicList;
 
                 if (ParameterSetName.Equals("ScaleSetNic"))
                 {
-                    getNetworkInterfaceResponse = this.NetworkInterfaceClient.ListVirtualMachineScaleSetNetworkInterfaces(this.ResourceGroupName, this.VirtualMachineScaleSetName);
+                    nicList = this.NetworkInterfaceClient.ListVirtualMachineScaleSetNetworkInterfaces(this.ResourceGroupName, this.VirtualMachineScaleSetName);
                 }
                 else
                 {
-                    getNetworkInterfaceResponse = this.NetworkInterfaceClient.List(this.ResourceGroupName);
+                    nicList = this.NetworkInterfaceClient.List(this.ResourceGroupName);
                 }
                 
                 var psNetworkInterfaces = new List<PSNetworkInterface>();
 
-                foreach (var nic in getNetworkInterfaceResponse.NetworkInterfaces)
+                foreach (var nic in nicList)
                 {
                     var psNic = this.ToPsNetworkInterface(nic);
                     psNic.ResourceGroupName = this.ResourceGroupName;
@@ -102,11 +102,11 @@ namespace Microsoft.Azure.Commands.Network
 
             else
             {
-                var getNetworkInterfaceResponse = this.NetworkInterfaceClient.ListAll();
+                var nicList = this.NetworkInterfaceClient.ListAll();
 
                 var psNetworkInterfaces = new List<PSNetworkInterface>();
 
-                foreach (var nic in getNetworkInterfaceResponse.NetworkInterfaces)
+                foreach (var nic in nicList)
                 {
                     var psNic = this.ToPsNetworkInterface(nic);
                     psNic.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(psNic.Id);

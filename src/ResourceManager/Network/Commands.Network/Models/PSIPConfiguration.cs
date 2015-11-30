@@ -14,28 +14,35 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    using System.Collections.Generic;
-
     using Newtonsoft.Json;
 
-    public class PSExpressRouteServiveProvider
+    public class PSIPConfiguration : PSChildResource
     {
-        public string Name { get; set; }
+        [JsonProperty(Order = 1)]
+        public string PrivateIpAddress { get; set; }
 
-        public List<string> PeeringLocations { get; set; }
+        [JsonProperty(Order = 1)]
+        public string PrivateIpAllocationMethod { get; set; }
 
-        public PSExpressRouteServiceProviderBandwidthsOffered BandwidthsOffered { get; set; }
+        [JsonProperty(Order = 1)]
+        public PSSubnet Subnet { get; set; }
+
+        [JsonProperty(Order = 1)]
+        public PSPublicIpAddress PublicIpAddress { get; set; }
+        
+        [JsonProperty(Order = 1)]
+        public string ProvisioningState { get; set; }
 
         [JsonIgnore]
-        public string BandwidthsOfferedText
+        public string SubnetText
         {
-            get { return JsonConvert.SerializeObject(BandwidthsOffered, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return JsonConvert.SerializeObject(Subnet, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
-        public string PeeringLocationsText
+        public string PublicIpAddressText
         {
-            get { return JsonConvert.SerializeObject(PeeringLocations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return JsonConvert.SerializeObject(PublicIpAddress, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

@@ -49,11 +49,11 @@ namespace Microsoft.Azure.Commands.Network
             }
             else if (!string.IsNullOrEmpty(this.ResourceGroupName))
             {
-                var getLbResponse = this.LoadBalancerClient.List(this.ResourceGroupName);
+                var lbList = this.LoadBalancerClient.List(this.ResourceGroupName);
 
                 var psLoadBalancers = new List<PSLoadBalancer>();
 
-                foreach (var lb in getLbResponse.LoadBalancers)
+                foreach (var lb in lbList)
                 {
                     var psLb = this.ToPsLoadBalancer(lb);
                     psLb.ResourceGroupName = this.ResourceGroupName;
@@ -65,11 +65,11 @@ namespace Microsoft.Azure.Commands.Network
 
             else
             {
-                var getLbResponse = this.LoadBalancerClient.ListAll();
+                var lbList = this.LoadBalancerClient.ListAll();
 
                 var psLoadBalancers = new List<PSLoadBalancer>();
 
-                foreach (var lb in getLbResponse.LoadBalancers)
+                foreach (var lb in lbList)
                 {
                     var psLb = this.ToPsLoadBalancer(lb);
                     psLb.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(lb.Id);

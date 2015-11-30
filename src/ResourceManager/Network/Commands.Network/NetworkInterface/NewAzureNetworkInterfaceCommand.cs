@@ -228,48 +228,48 @@ namespace Microsoft.Azure.Commands.Network
             networkInterface.Name = this.Name;
             networkInterface.Location = this.Location;
             networkInterface.EnableIPForwarding = this.EnableIPForwarding.IsPresent;
-            networkInterface.IpConfigurations = new List<PSNetworkInterfaceIpConfiguration>();
+            networkInterface.IpConfigurations = new List<PSNetworkInterfaceIPConfiguration>();
 
-            var nicIpConfiguration = new PSNetworkInterfaceIpConfiguration();
+            var nicIpConfiguration = new PSNetworkInterfaceIPConfiguration();
             nicIpConfiguration.Name = string.IsNullOrEmpty(this.IpConfigurationName) ? "ipconfig1" : this.IpConfigurationName;
-            nicIpConfiguration.PrivateIpAllocationMethod = MNM.IpAllocationMethod.Dynamic;
+            nicIpConfiguration.PrivateIpAllocationMethod = MNM.IPAllocationMethod.Dynamic;
 
             if (!string.IsNullOrEmpty(this.PrivateIpAddress))
             {
                 nicIpConfiguration.PrivateIpAddress = this.PrivateIpAddress;
-                nicIpConfiguration.PrivateIpAllocationMethod = MNM.IpAllocationMethod.Static;
+                nicIpConfiguration.PrivateIpAllocationMethod = MNM.IPAllocationMethod.Static;
             }
 
-            nicIpConfiguration.Subnet = new PSResourceId();
+            nicIpConfiguration.Subnet = new PSSubnet();
             nicIpConfiguration.Subnet.Id = this.SubnetId;
 
             if (!string.IsNullOrEmpty(this.PublicIpAddressId))
             {
-                nicIpConfiguration.PublicIpAddress = new PSResourceId();
+                nicIpConfiguration.PublicIpAddress = new PSPublicIpAddress();
                 nicIpConfiguration.PublicIpAddress.Id = this.PublicIpAddressId;
             }
 
             if (!string.IsNullOrEmpty(this.NetworkSecurityGroupId))
             {
-                networkInterface.NetworkSecurityGroup = new PSResourceId();
+                networkInterface.NetworkSecurityGroup = new PSNetworkSecurityGroup();
                 networkInterface.NetworkSecurityGroup.Id = this.NetworkSecurityGroupId;
             }
 
             if (this.LoadBalancerBackendAddressPoolId != null)
             {
-                nicIpConfiguration.LoadBalancerBackendAddressPools = new List<PSResourceId>();
+                nicIpConfiguration.LoadBalancerBackendAddressPools = new List<PSBackendAddressPool>();
                 foreach (var bepoolId in this.LoadBalancerBackendAddressPoolId)
                 {
-                    nicIpConfiguration.LoadBalancerBackendAddressPools.Add(new PSResourceId { Id = bepoolId });
+                    nicIpConfiguration.LoadBalancerBackendAddressPools.Add(new PSBackendAddressPool { Id = bepoolId });
                 }
             }
 
             if (this.LoadBalancerInboundNatRuleId != null)
             {
-                nicIpConfiguration.LoadBalancerInboundNatRules = new List<PSResourceId>();
+                nicIpConfiguration.LoadBalancerInboundNatRules = new List<PSInboundNatRule>();
                 foreach (var natruleId in this.LoadBalancerInboundNatRuleId)
                 {
-                    nicIpConfiguration.LoadBalancerInboundNatRules.Add(new PSResourceId { Id = natruleId });
+                    nicIpConfiguration.LoadBalancerInboundNatRules.Add(new PSInboundNatRule { Id = natruleId });
                 }
             }
 
@@ -290,7 +290,6 @@ namespace Microsoft.Azure.Commands.Network
             networkInterface.IpConfigurations.Add(nicIpConfiguration);
 
             var networkInterfaceModel = Mapper.Map<MNM.NetworkInterface>(networkInterface);
-            networkInterfaceModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.NetworkInterfaceType;
             networkInterfaceModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             this.NetworkInterfaceClient.CreateOrUpdate(this.ResourceGroupName, this.Name, networkInterfaceModel);

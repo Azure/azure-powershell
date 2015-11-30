@@ -49,12 +49,12 @@ namespace Microsoft.Azure.Commands.Network
             }
             else if (!string.IsNullOrEmpty(this.ResourceGroupName))
             {
-                var getPublicIpResponse = this.PublicIpAddressClient.List(this.ResourceGroupName);
+                var publicIPList = this.PublicIpAddressClient.List(this.ResourceGroupName);
 
                 var psPublicIps = new List<PSPublicIpAddress>();
                 
                 // populate the publicIpAddresses with the ResourceGroupName
-                foreach (var publicIp in getPublicIpResponse.PublicIpAddresses)
+                foreach (var publicIp in publicIPList)
                 {
                     var psPublicIp = this.ToPsPublicIpAddress(publicIp);
                     psPublicIp.ResourceGroupName = this.ResourceGroupName;
@@ -65,12 +65,12 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                var getPublicIpResponse = this.PublicIpAddressClient.ListAll();
+                var publicIPList = this.PublicIpAddressClient.ListAll();
 
                 var psPublicIps = new List<PSPublicIpAddress>();
 
                 // populate the publicIpAddresses with the ResourceGroupName
-                foreach (var publicIp in getPublicIpResponse.PublicIpAddresses)
+                foreach (var publicIp in publicIPList)
                 {
                     var psPublicIp = this.ToPsPublicIpAddress(publicIp);
                     psPublicIp.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(publicIp.Id);
