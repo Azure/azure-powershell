@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         protected override void ProcessRecord()
         {
-            DataLakeStoreFileSystemClient.SetPermission(Path.Path, Account, Permissions.PermissionsOctal);
+            DataLakeStoreFileSystemClient.SetPermission(Path.TransformedPath, Account, Permissions.PermissionsOctal);
             WriteObject(true);
         }
     }

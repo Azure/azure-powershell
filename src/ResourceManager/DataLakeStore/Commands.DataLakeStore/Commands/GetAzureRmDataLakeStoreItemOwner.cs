@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         protected override void ProcessRecord()
         {
-            var aclObject = DataLakeStoreFileSystemClient.GetAclStatus(Path.Path, Account);
+            var aclObject = DataLakeStoreFileSystemClient.GetAclStatus(Path.TransformedPath, Account);
             WriteObject(Type == DataLakeStoreEnums.Owner.Group ? aclObject.Group : aclObject.Owner);
         }
     }

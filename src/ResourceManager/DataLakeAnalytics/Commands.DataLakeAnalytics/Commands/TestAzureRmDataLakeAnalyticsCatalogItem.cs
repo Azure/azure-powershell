@@ -47,21 +47,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
         protected override void ProcessRecord()
         {
-            try
-            {
-                DataLakeAnalyticsClient.GetCatalogItem(ResourceGroupName, Account, Path, ItemType);
-                WriteObject(true);
-            }
-            catch (Exception e)
-            {
-                if (e.Message.Equals(string.Format(Resources.InvalidCatalogPath, Path.FullCatalogItemPath),
-                    StringComparison.CurrentCultureIgnoreCase))
-                {
-                    throw;
-                }
-
-                WriteObject(false);
-            }
+            WriteObject(DataLakeAnalyticsClient.TestCatalogItem(ResourceGroupName, Account, Path, ItemType));
         }
     }
 }

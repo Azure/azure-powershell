@@ -53,19 +53,19 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 ConfirmAction(
                     Force.IsPresent,
                     string.Format(Resources.RemovingDataLakeStoreItemAcl,
-                        Default ? Resources.DefaultAclWord : string.Empty, Path.FullyQualifiedPath),
+                        Default ? Resources.DefaultAclWord : string.Empty, Path.OriginalPath),
                     string.Format(Resources.RemoveDataLakeStoreItemAcl,
-                        Default ? Resources.DefaultAclWord : string.Empty, Path.FullyQualifiedPath),
-                    Path.FullyQualifiedPath,
+                        Default ? Resources.DefaultAclWord : string.Empty, Path.OriginalPath),
+                    Path.OriginalPath,
                     () =>
                     {
                         if (Default)
                         {
-                            DataLakeStoreFileSystemClient.RemoveDefaultAcl(Path.Path, Account);
+                            DataLakeStoreFileSystemClient.RemoveDefaultAcl(Path.TransformedPath, Account);
                         }
                         else
                         {
-                            DataLakeStoreFileSystemClient.RemoveAcl(Path.Path, Account);
+                            DataLakeStoreFileSystemClient.RemoveAcl(Path.TransformedPath, Account);
                         }
                     });
             }
@@ -73,11 +73,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             {
                 if (Default)
                 {
-                    DataLakeStoreFileSystemClient.RemoveDefaultAcl(Path.Path, Account);
+                    DataLakeStoreFileSystemClient.RemoveDefaultAcl(Path.TransformedPath, Account);
                 }
                 else
                 {
-                    DataLakeStoreFileSystemClient.RemoveAcl(Path.Path, Account);
+                    DataLakeStoreFileSystemClient.RemoveAcl(Path.TransformedPath, Account);
                 }
             }
         }
