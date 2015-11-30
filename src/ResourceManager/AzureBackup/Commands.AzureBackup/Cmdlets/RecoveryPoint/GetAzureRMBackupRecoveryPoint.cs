@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             ExecutionBlock(() =>
             {

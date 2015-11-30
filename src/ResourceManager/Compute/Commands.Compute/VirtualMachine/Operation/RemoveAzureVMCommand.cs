@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
                 if (this.Force.IsPresent || this.ShouldContinue(Microsoft.Azure.Commands.Compute.Properties.Resources.VirtualMachineRemovalConfirmation, Microsoft.Azure.Commands.Compute.Properties.Resources.VirtualMachineRemovalCaption))

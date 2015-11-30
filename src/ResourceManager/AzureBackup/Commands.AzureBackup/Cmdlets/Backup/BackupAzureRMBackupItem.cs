@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         {
             ExecutionBlock(() =>
             {
-                base.ProcessRecord();
+                base.ExecuteCmdlet();
 
                 WriteDebug(Resources.MakingClientCall);
                 Guid operationId = AzureBackupClient.TriggerBackup(Item.ResourceGroupName, Item.ResourceName, Item.ContainerUniqueName, Item.ItemName);

@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Network
         public PSApplicationGatewayBackendAddressPool BackendAddressPool { get; set; }
         public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
             
             if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
             {

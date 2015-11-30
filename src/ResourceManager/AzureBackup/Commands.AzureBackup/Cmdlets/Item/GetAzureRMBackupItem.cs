@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         {
             ExecutionBlock(() =>
             {
-                base.ProcessRecord();
+                base.ExecuteCmdlet();
 
                 List<CSMProtectedItemResponse> azureBackupDatasourceObjects = null;
                 List<CSMItemResponse> azureBackupPOObjects = null;

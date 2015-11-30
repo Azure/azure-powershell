@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Network
     {
         public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             PSApplicationGatewaySku sku = new PSApplicationGatewaySku()
                 {

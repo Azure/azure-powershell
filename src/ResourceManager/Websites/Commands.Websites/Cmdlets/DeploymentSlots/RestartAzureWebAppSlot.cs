@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     {
         public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
             WebsitesClient.RestartWebApp(ResourceGroupName, Name, Slot);
             WriteObject(WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot));
         }

@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             var storageKeys = this.StorageClient.StorageAccounts.ListKeys(
                  this.ResourceGroupName,

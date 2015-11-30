@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     {
         public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
             WebsitesClient.StopWebApp(ResourceGroupName, Name, null);
             WriteObject(WebsitesClient.GetWebApp(ResourceGroupName, Name, null));
         }

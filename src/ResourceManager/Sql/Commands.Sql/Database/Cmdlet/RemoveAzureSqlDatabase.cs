@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 return;
             }
 
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
         }
     }
 }

@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
             if (!string.IsNullOrEmpty(this.Name))
             {
                 var loadBalancer = this.GetLoadBalancer(this.ResourceGroupName, this.Name);

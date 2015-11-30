@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             this.StorageClient.StorageAccounts.Delete(
                 this.ResourceGroupName,

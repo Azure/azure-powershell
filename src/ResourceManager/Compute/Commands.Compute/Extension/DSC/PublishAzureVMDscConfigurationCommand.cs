@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 
         public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             try
             {

@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Network
         public PSApplicationGateway ApplicationGateway { get; set; }
         public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             this.ApplicationGateway.Sku.Name = this.Name;
             this.ApplicationGateway.Sku.Tier = this.Tier;

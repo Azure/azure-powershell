@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                {
                    ExecutionBlock(() =>
                    {
-                       base.ProcessRecord();
+                       base.ExecuteCmdlet();
 
                        WriteDebug(Resources.MakingClientCall);
 

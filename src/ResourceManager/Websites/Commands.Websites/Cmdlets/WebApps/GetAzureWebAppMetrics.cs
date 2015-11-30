@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
         public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
             WriteObject(WebsitesClient.GetWebAppUsageMetrics(ResourceGroupName, Name, null, Metrics, StartTime, EndTime, Granularity, InstanceDetails.IsPresent));
         }
     }

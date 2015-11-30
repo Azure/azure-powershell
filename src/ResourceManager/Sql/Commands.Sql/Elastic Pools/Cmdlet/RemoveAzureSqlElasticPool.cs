@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
                 return;
             }
 
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
         }
     }
 }

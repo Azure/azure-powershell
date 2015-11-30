@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Network
         public int Capacity { get; set; }        
         public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();            
+            base.ExecuteCmdlet();            
         }
     }
 }

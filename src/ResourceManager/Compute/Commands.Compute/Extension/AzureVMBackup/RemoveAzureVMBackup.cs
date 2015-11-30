@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
 
         public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             VirtualMachineGetResponse virtualMachineResponse = this.ComputeClient.ComputeManagementClient.VirtualMachines.GetWithInstanceView(this.ResourceGroupName, VMName);
             string currentOSType = virtualMachineResponse.VirtualMachine.StorageProfile.OSDisk.OperatingSystemType;

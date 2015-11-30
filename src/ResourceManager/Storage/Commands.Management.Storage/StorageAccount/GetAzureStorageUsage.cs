@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.StorageAccount
     {
         public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             foreach (var usage in this.StorageClient.Usage.List().Usages)
             {

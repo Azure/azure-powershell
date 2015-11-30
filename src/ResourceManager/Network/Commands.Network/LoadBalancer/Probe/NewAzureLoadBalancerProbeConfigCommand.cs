@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             var probe = new PSProbe();
             probe.Name = this.Name;

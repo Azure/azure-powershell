@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         {
             ExecutionBlock(() =>
             {
-                base.ProcessRecord();
+                base.ExecuteCmdlet();
                 InitializeAzureBackupCmdlet(ResourceGroupName, Name);
 
                 WriteDebug(String.Format(Resources.CreatingBackupVault, ResourceGroupName, Name));

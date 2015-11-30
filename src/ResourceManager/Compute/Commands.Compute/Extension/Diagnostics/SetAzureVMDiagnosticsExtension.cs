@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         internal void ExecuteCommand()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             ExecuteClientAction(() =>
             {
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
             ExecuteCommand();
         }
     }

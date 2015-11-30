@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         {
             ExecutionBlock(() =>
             {
-                base.ProcessRecord();
+                base.ExecuteCmdlet();
 
                 string vmName = String.Empty;
                 string rgName = String.Empty;

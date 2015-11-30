@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
         public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
             WriteObject(WebsitesClient.GetWebAppPublishingProfile(ResourceGroupName, Name, null, OutputFile, Format));
         }
 

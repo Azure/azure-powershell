@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             var backendAddressPool = new PSBackendAddressPool();
             backendAddressPool.Name = this.Name;

@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         {
             ExecutionBlock(() =>
             {
-                base.ProcessRecord();
+                base.ExecuteCmdlet();
 
                 List<AzureRMBackupContainer> containers = new List<AzureRMBackupContainer>();
 

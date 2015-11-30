@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             try
             {
-                base.ProcessRecord();
+                base.ExecuteCmdlet();
                 this.OnProcessRecord();
             }
             catch (Exception ex)

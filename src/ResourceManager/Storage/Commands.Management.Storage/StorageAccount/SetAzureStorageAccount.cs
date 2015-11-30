@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             Dictionary<string, string> tagDictionary = null;
             StorageAccountUpdateParameters updateParameters = null;

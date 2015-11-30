@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
             
         public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(Properties.Resources.RemoveWebappSlotWarning, Name, Slot),

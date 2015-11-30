@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets.DataSource
                 {
                     ExecutionBlock(() =>
                     {
-                        base.ProcessRecord();
+                        base.ExecuteCmdlet();
                         Guid operationId = Guid.Empty;
                         WriteDebug(Resources.MakingClientCall);
 

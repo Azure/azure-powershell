@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         {
             ExecutionBlock(() =>
             {
-                base.ProcessRecord();
+                base.ExecuteCmdlet();
                 if (DailyRetention != false)
                 {
                     AzureRMBackupRetentionPolicy retentionPolicy = new AzureBackupDailyRetentionPolicy(RetentionType.Daily.ToString(), Retention);

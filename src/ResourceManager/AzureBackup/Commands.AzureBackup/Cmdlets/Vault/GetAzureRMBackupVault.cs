@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         {
             ExecutionBlock(() =>
             {
-                base.ProcessRecord();
+                base.ExecuteCmdlet();
                 InitializeAzureBackupCmdlet(String.Empty, String.Empty);
 
                 if (ResourceGroupName != null && Name != null)

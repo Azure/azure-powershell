@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             if (string.IsNullOrEmpty(this.ResourceGroupName))
             {

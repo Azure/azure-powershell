@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             if (this.IsExpressRouteCircuitPresent(this.ResourceGroupName, this.Name))
             {

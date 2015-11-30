@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 
         public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
             CloningInfo cloningInfo = null;
             if (SourceWebApp != null)
             {

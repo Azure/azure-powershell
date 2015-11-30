@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 
         public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
             WriteObject(WebsitesClient.GetWebAppUsageMetrics(ResourceGroupName, Name, Slot, Metrics, StartTime, EndTime, Granularity, InstanceDetails.IsPresent));
         }
     }

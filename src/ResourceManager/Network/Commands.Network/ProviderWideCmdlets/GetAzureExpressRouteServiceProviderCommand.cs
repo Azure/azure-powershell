@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Network
     {
         public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             var serviceProviderList = this.NetworkClient.NetworkResourceProviderClient.ExpressRouteServiceProviders.List();
 

@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             var inboundNatRule = new PSInboundNatRule();
             inboundNatRule.Name = this.Name;

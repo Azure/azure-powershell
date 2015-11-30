@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             
         public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(Properties.Resources.RemoveWebsiteWarning, Name),
