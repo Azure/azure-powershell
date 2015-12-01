@@ -52,9 +52,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         [ValidateNotNullOrEmpty]
         public SwitchParameter Status { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             if (String.IsNullOrEmpty(Name))
             {

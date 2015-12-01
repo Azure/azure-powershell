@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// <summary>
         /// Execute the cmdlet
         /// </summary>
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             AutoscaleProfile profile = this.CreateSettingProfile();
             WriteObject(profile);

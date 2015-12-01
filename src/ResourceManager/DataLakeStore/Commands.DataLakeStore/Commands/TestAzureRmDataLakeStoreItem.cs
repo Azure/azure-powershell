@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             HelpMessage = "Indicates the type of path expected when testing. Valid values are Any, File or Folder.")]
         public DataLakeStoreEnums.PathType PathType { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             FileType fileType;
             if (DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Path.TransformedPath, Account, out fileType))

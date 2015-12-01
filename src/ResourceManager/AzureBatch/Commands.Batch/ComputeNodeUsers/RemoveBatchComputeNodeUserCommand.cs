@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter]
         public SwitchParameter Force { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ComputeNodeUserOperationParameters parameters = new ComputeNodeUserOperationParameters(this.BatchContext, this.PoolId, this.ComputeNodeId,
                 this.Name, this.AdditionalBehaviors);

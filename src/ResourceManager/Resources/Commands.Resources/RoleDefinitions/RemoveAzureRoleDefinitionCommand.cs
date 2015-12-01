@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             PSRoleDefinition roleDefinition = null;
             Action action = null;

@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             set { _encoding = value; }
         }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             DataLakeStoreFileSystemClient.AppendToFile(Path.TransformedPath, Account, new MemoryStream(GetBytes(Value, Encoding)));
             WriteObject(true);
