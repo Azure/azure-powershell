@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Commands.Profile
             }
         }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (!string.IsNullOrWhiteSpace(SubscriptionId) && 
                 !string.IsNullOrWhiteSpace(SubscriptionName))

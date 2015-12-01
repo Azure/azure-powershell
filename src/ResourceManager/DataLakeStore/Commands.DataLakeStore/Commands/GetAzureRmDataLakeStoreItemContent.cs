@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             HelpMessage = "If the length parameter is not specified or is less than or equal to zero, force returns all content of the file, otherwise it does nothing.")]
         public SwitchParameter Force { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             byte[] byteArray;
             if (Length <= 0)

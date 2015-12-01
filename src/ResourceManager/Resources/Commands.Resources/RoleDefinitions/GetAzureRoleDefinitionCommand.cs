@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Resources
             HelpMessage = "If specified, only displays the custom created roles in the directory.")]
         public SwitchParameter Custom { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (Custom.IsPresent)
             {

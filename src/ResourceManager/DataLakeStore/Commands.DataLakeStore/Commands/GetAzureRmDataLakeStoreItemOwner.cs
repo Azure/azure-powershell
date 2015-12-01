@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [ValidateNotNull]
         public DataLakeStoreEnums.Owner Type { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             var aclObject = DataLakeStoreFileSystemClient.GetAclStatus(Path.TransformedPath, Account);
             WriteObject(Type == DataLakeStoreEnums.Owner.Group ? aclObject.Group : aclObject.Owner);

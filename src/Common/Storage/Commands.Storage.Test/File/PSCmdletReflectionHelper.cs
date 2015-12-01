@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,8 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File
     internal static class PSCmdletReflectionHelper
     {
         private static readonly Type psCmdletType = typeof(PSCmdlet);
+
+        private static readonly Type azurePsCmdletType = typeof(AzurePSCmdlet);
 
         private static readonly FieldInfo parameterSetFieldInfo = typeof(System.Management.Automation.Cmdlet).GetField("_parameterSetName", BindingFlags.Instance | BindingFlags.NonPublic);
 
@@ -40,7 +43,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File
 
         private static readonly MethodInfo endProcessingMethodInfo = psCmdletType.GetMethod("EndProcessing", BindingFlags.NonPublic | BindingFlags.Instance);
 
-        private static readonly MethodInfo processRecordMethodInfo = psCmdletType.GetMethod("ProcessRecord", BindingFlags.NonPublic | BindingFlags.Instance);
+        private static readonly MethodInfo processRecordMethodInfo = azurePsCmdletType.GetMethod("ExecuteCmdlet", BindingFlags.Public | BindingFlags.Instance);
 
         private static readonly object[] emptyParameters = new object[0];
 

@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         #endregion
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             var httpParams = new HttpSettingsParameters
             {
