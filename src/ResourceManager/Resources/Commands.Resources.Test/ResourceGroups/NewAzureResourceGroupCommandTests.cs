@@ -81,7 +81,6 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 Resources = new List<PSResource>() { new PSResource() { Name = "resource1" } },
                 Tags = expectedParameters.Tag
             };
-
             resourcesClientMock.Setup(f => f.CreatePSResourceGroup(It.IsAny<CreatePSResourceGroupParameters>()))
                 .Returns(expected)
                 .Callback((CreatePSResourceGroupParameters p) => { actualParameters = p; });
