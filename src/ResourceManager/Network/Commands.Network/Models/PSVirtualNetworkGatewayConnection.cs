@@ -14,8 +14,6 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    using System.Collections.Generic;
-
     using Newtonsoft.Json;
 
     public class PSVirtualNetworkGatewayConnection : PSTopLevelResource
@@ -26,11 +24,19 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSLocalNetworkGateway LocalNetworkGateway2 { get; set; }
 
+        public PSResourceId Peer { get; set; }
+
         public string ConnectionType { get; set; }
 
         public int RoutingWeight { get; set; }
 
         public string SharedKey { get; set; }
+
+        public string ConnectionStatus { get; set; }
+
+        public ulong EgressBytesTransferred { get; set; }
+
+        public ulong IngressBytesTransferred { get; set; }
 
         [JsonIgnore]
         public string VirtualNetworkGateway1Text
@@ -48,6 +54,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string LocalNetworkGateway2Text
         {
             get { return JsonConvert.SerializeObject(LocalNetworkGateway2.Id, Formatting.Indented); }
+        }
+
+        [JsonIgnore]
+        public string PeerText
+        {
+            get { return JsonConvert.SerializeObject(Peer.Id, Formatting.Indented); }
         }
     }
 }

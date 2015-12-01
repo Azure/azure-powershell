@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// 4 .Create a HSM or software key by importing key material with given key 
     /// attributes
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, "AzureRmKeyVaultKey",
+    [Cmdlet(VerbsCommon.Add, "AzureKeyVaultKey",
         DefaultParameterSetName = CreateParameterSet, 
         HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(KeyBundle))]
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ParameterSetName = ImportParameterSet,
             HelpMessage = "Specifies whether to add the key as a software-protected key or an HSM-protected key in the Key Vault service. Valid values are: HSM and Software. ")]
-        [ValidateSetAttribute(new string[] { HsmDestination, SoftwareDestination })]
+        [ValidateSetAttribute(HsmDestination, SoftwareDestination)]
         public string Destination { get; set; }
 
         /// <summary>

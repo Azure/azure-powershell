@@ -58,9 +58,10 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
        Mandatory = false,
        ValueFromPipelineByPropertyName = true,
-       HelpMessage = "The type of this virtual network gateway: Vpn")]
+       HelpMessage = "The type of this virtual network gateway: Vpn, ExoressRoute")]
         [ValidateSet(
         MNM.VirtualNetworkGatewayType.Vpn,
+        MNM.VirtualNetworkGatewayType.ExpressRoute,
         IgnoreCase = true)]
         public string GatewayType { get; set; }
 
@@ -79,6 +80,13 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "EnableBgp Flag")]
         public bool EnableBgp { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             ParameterSetName = "SetByResource",
+            HelpMessage = "GatewayDefaultSite")]
+        public PSLocalNetworkGateway GatewayDefaultSite { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -130,6 +138,16 @@ namespace Microsoft.Azure.Commands.Network
             vnetGateway.GatewayType = this.GatewayType;
             vnetGateway.VpnType = this.VpnType;
             vnetGateway.EnableBgp = this.EnableBgp;
+
+            if (this.GatewayDefaultSite != null)
+            {
+                vnetGateway.GatewayDefaultSite = new PSResourceId();
+                vnetGateway.GatewayDefaultSite.Id = this.GatewayDefaultSite.Id;
+            }
+            else
+            {
+                vnetGateway.GatewayDefaultSite = null;
+            }
 
             // Map to the sdk object
             var vnetGatewayModel = Mapper.Map<MNM.VirtualNetworkGateway>(vnetGateway);

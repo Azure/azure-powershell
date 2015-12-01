@@ -16,6 +16,7 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Profile
 {    
@@ -28,15 +29,15 @@ namespace Microsoft.Azure.Commands.Profile
     public class GetAzureRMTenantCommand : AzureRMCmdlet
     {
         [Parameter(Mandatory = false, Position = 0, ValueFromPipelineByPropertyName = true)]
-        [Alias("Domain")]
+        [Alias("Domain", "Tenant")]
         [ValidateNotNullOrEmpty]
-        public string Tenant { get; set; }
+        public string TenantId { get; set; }
         
         protected override void ProcessRecord()
         {
-            var profileClient = new RMProfileClient(AzureRMCmdlet.DefaultProfile);
+            var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
             
-            WriteObject(profileClient.ListTenants(Tenant).Select((t) => (PSAzureTenant)t), enumerateCollection: true);
+            WriteObject(profileClient.ListTenants(TenantId).Select((t) => (PSAzureTenant)t), enumerateCollection: true);
         }
     }
 }

@@ -25,6 +25,7 @@ using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Management.KeyVault;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.KeyVault.Test
 {
@@ -194,12 +195,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
                 if (HttpMockServer.Variables.ContainsKey(TenantIdKey))
                 {
                     tenantId = HttpMockServer.Variables[TenantIdKey];
-                   AzureRMCmdlet.DefaultProfile.Context.Tenant.Id = new Guid(tenantId);
+                   AzureRmProfileProvider.Instance.Profile.Context.Tenant.Id = new Guid(tenantId);
                 }
                 if (HttpMockServer.Variables.ContainsKey(DomainKey))
                 {
                     UserDomain = HttpMockServer.Variables[DomainKey];
-                    AzureRMCmdlet.DefaultProfile.Context.Tenant.Domain = UserDomain;
+                    AzureRmProfileProvider.Instance.Profile.Context.Tenant.Domain = UserDomain;
                 }
 
             }

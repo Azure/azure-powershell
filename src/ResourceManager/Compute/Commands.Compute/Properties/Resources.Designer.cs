@@ -234,11 +234,29 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Storage account name for boot diagnostics is not given..
+        /// </summary>
+        public static string BootDiagnosticsNoStorageAccountError {
+            get {
+                return ResourceManager.GetString("BootDiagnosticsNoStorageAccountError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot specify both Windows and Linux configurations..
         /// </summary>
         public static string BothWindowsAndLinuxConfigurationsSpecified {
             get {
                 return ResourceManager.GetString("BothWindowsAndLinuxConfigurationsSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Since the VM is created using premium storage, new standard storage account, {0}, is created for boot diagnostics..
+        /// </summary>
+        public static string CreatingStorageAccountForBootDiagnostics {
+            get {
+                return ResourceManager.GetString("CreatingStorageAccountForBootDiagnostics", resourceCulture);
             }
         }
         
@@ -275,6 +293,51 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         public static string DscExtensionRemovalConfirmation {
             get {
                 return ResourceManager.GetString("DscExtensionRemovalConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable AzureDiskEncryption on the VM.
+        /// </summary>
+        public static string EnableAzureDiskEncryptionCaption {
+            get {
+                return ResourceManager.GetString("EnableAzureDiskEncryptionCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This cmdlet prepares the VM and enables encryption which may reboot the machine and takes 10-15 minutes to finish. Please save your work on the VM before confirming. Do you want to continue?.
+        /// </summary>
+        public static string EnableAzureDiskEncryptionConfirmation {
+            get {
+                return ResourceManager.GetString("EnableAzureDiskEncryptionConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error occurred when creating storage account for boot diagnostics.  Keep creating a VM with disabling boot diagnostics.  : {0}.
+        /// </summary>
+        public static string ErrorDuringCreatingStorageAccountForBootDiagnostics {
+            get {
+                return ResourceManager.GetString("ErrorDuringCreatingStorageAccountForBootDiagnostics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error occurred when getting storage account, {0}, for boot diagnostics: {1}.
+        /// </summary>
+        public static string ErrorDuringGettingStorageAccountForBootDiagnostics {
+            get {
+                return ResourceManager.GetString("ErrorDuringGettingStorageAccountForBootDiagnostics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Storage account, {0}, is a premium account.  You cannot specify a premium storage account for boot diagnostics.
+        /// </summary>
+        public static string PremiumStorageAccountForBootDiagnostics {
+            get {
+                return ResourceManager.GetString("PremiumStorageAccountForBootDiagnostics", resourceCulture);
             }
         }
         
@@ -779,11 +842,29 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Storage account, {0}, is not found.  The OS disk may be in a different storage group..
+        /// </summary>
+        public static string StorageAccountNotFoundForBootDiagnostics {
+            get {
+                return ResourceManager.GetString("StorageAccountNotFoundForBootDiagnostics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No current subscription has been designated. Use Select-AzureRmSubscription -Current &lt;subscriptionName&gt; to set the current subscription..
         /// </summary>
         public static string StorageCredentialsFactoryCurrentSubscriptionNotSet {
             get {
                 return ResourceManager.GetString("StorageCredentialsFactoryCurrentSubscriptionNotSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Since the VM is created using premium storage, existing standard storage account, {0}, is used for boot diagnostics..
+        /// </summary>
+        public static string UsingExistingStorageAccountForBootDiagnostics {
+            get {
+                return ResourceManager.GetString("UsingExistingStorageAccountForBootDiagnostics", resourceCulture);
             }
         }
         
@@ -865,6 +946,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         public static string VirtualMachineStoppingConfirmation {
             get {
                 return ResourceManager.GetString("VirtualMachineStoppingConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have to specify either both of KeyEncryptionKeyVaultId and KeyEncryptionKeyUrl or none of them..
+        /// </summary>
+        public static string VMOSDiskDiskEncryptionBothKekVaultIdAndKekUrlRequired {
+            get {
+                return ResourceManager.GetString("VMOSDiskDiskEncryptionBothKekVaultIdAndKekUrlRequired", resourceCulture);
             }
         }
     }

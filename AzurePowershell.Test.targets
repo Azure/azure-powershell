@@ -30,6 +30,8 @@
     <HDInsightTestDebug>.\src\ServiceManagement\HDInsight\Commands.HDInsight.Test\bin\Debug\Microsoft.WindowsAzure.Commands.HDInsight.Test.dll</HDInsightTestDebug>
     <StorageTestDebug>.\src\Common\Storage\Commands.Storage.Test\bin\Debug\Microsoft.WindowsAzure.Commands.Storage.Test.dll</StorageTestDebug>
     <KeyVaultTestDebug>.\src\ResourceManager\KeyVault\Commands.KeyVault.Test\bin\Debug\Microsoft.Azure.Commands.KeyVault.Test.dll</KeyVaultTestDebug>
+    <DataLakeAnalyticsTestDebug>.\src\ResourceManager\DataLakeAnalytics\Commands.DataLakeAnalytics.Test\bin\Debug\Microsoft.Azure.Commands.DataLakeAnalytics.Test.dll</DataLakeAnalyticsTestDebug>
+    <DataLakeStoreTestDebug>.\src\ResourceManager\DataLakeStore\Commands.DataLakeStore.Test\bin\Debug\Microsoft.Azure.Commands.DataLakeStore.Test.dll</DataLakeStoreTestDebug>
     <UsageAggregationTestDebug>.\src\ResourceManager\UsageAggregates\Commands.UsageAggregates.Test\bin\Debug\Microsoft.Azure.Commands.UsageAggregates.Test.dll</UsageAggregationTestDebug>
     <TestFilter>"!Functional&#x26;!Scenario&#x26;!AzureRTScenario&#x26;!Sequential&#x26;!PIRTest&#x26;!Preview&#x26;!ADDomain&#x26;!Network&#x26;!AzureRTUpload&#x26;!AzureRTCleanUp"</TestFilter>
     <ScenarioTestFilter>All</ScenarioTestFilter>
@@ -80,6 +82,7 @@
       <XUnitTests Include=".\src\ResourceManager\ApiManagement\Commands.ApiManagement.Test\bin\Debug\Microsoft.Azure.Commands.ApiManagement.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\Profile\Commands.Profile.Test\bin\Debug\Microsoft.Azure.Commands.Profile.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\AzureBackup\Commands.AzureBackup.Test\bin\Debug\Microsoft.Azure.Commands.AzureBackup.Test.dll"/>
+      <XUnitTests Include=".\src\ResourceManager\NotificationHubs\Commands.NotificationHubs.Test\bin\Debug\Microsoft.Azure.Commands.NotificationHubs.Test.dll"/>	                      
       <XUnitTests Include="@(AsmXUnitTests)"/>
     </ItemGroup>
     <ItemGroup Condition=" '$(scope)' == 'ServiceManagement' ">
@@ -216,7 +219,7 @@
   </Target>
 
   <!-- Run the scenario tests -->
-  <Target Name="ScenarioTest" DependsOnTargets="Clean;BuildDebug;BeforeRunTests">
+  <Target Name="ScenarioTest" DependsOnTargets="Clean;Build;BeforeRunTests">
     <Message Importance="high" Text="Running scenario tests..." />
     <MSBuild Targets="InvokeMSTest"
       Properties="_testAssembly=$(ScenarioTestDebug);_testSettings=$(TestSettings);_testFilter=$(ScenarioTestFilter);_testResult=$(TestOutputDirectory)\ScenarioTestDebug.trx"
@@ -261,6 +264,20 @@
       IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false"/>
   </Target>
 
+  <!-- Run the DataLakeAnalytics tests -->
+  <Target Name="DataLakeAnalyticsTests">
+    <Message Importance="high" Text="Running DataLakeAnalytics tests" />
+    <Xunit.Runner.MSBuild.xunit Assemblies="$(DataLakeAnalyticsTestDebug)" Html="$(TestOutputDirectory)\DataLakeAnalyticsTests.xunit.dll.html" Verbose="true"
+      IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false"/>
+  </Target>
+  
+  <!-- Run the DataLakeStore tests -->
+  <Target Name="DataLakeStoreTests">
+    <Message Importance="high" Text="Running DataLakeStore tests" />
+    <Xunit.Runner.MSBuild.xunit Assemblies="$(DataLakeStoreTestDebug)" Html="$(TestOutputDirectory)\DataLakeStoreTests.xunit.dll.html" Verbose="true"
+      IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false"/>
+  </Target>
+  
   <!-- run the UsageAggregationTests -->
   <Target Name="UsageAggregationTests">
     <Message Importance="high" Text="Running UsageAggregates tests" />
@@ -275,7 +292,7 @@
       IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
   </Target>
 
-  <Target Name="RunOneSDKCIT" DependsOnTargets="Clean;BuildDebug;BeforeRunTests">
+  <Target Name="RunOneSDKCIT" DependsOnTargets="Clean;Build;BeforeRunTests">
     <Message Importance="high" Text="Running CIT Scenario tests..." />
     <Delete Files="$(TestOutputDirectory)\RunOneSDKCITDebug.trx" />
     <Exec
@@ -284,7 +301,7 @@
   </Target>
   
   <!-- Run the AzureRT tests -->
-  <Target Name="AzureRTBVTs" DependsOnTargets="Clean;BuildDebug;BeforeRunTests">
+  <Target Name="AzureRTBVTs" DependsOnTargets="Clean;Build;BeforeRunTests">
     <Message Importance="high" Text="Running AzureRT BVT tests..." />
     <Delete Files="$(TestOutputDirectory)\RTBVTDebug.trx" />
     <Exec
@@ -292,7 +309,7 @@
       ContinueOnError="false" />
   </Target>
 
-  <Target Name="AzureRTOne" DependsOnTargets="Clean;BuildDebug;BeforeRunTests">
+  <Target Name="AzureRTOne" DependsOnTargets="Clean;Build;BeforeRunTests">
     <Message Importance="high" Text="Running a specific tests..." />
     <Delete Files="$(TestOutputDirectory)\RTFunctionalDebug.trx" />
     <Exec
@@ -300,7 +317,7 @@
       ContinueOnError="false" />
   </Target>
 
-  <Target Name="AzureRTRepeat" DependsOnTargets="Clean;BuildDebug;BeforeRunTests">
+  <Target Name="AzureRTRepeat" DependsOnTargets="Clean;Build;BeforeRunTests">
     <Message Importance="high" Text="Running a specific tests..." />
     <Delete Files="$(TestOutputDirectory)\RTFunctionalDebug.trx" />
     <Exec
@@ -308,7 +325,7 @@
       ContinueOnError="false" />
   </Target>
 
-  <Target Name="AzureRTMulti" DependsOnTargets="Clean;BuildDebug;BeforeRunTests">
+  <Target Name="AzureRTMulti" DependsOnTargets="Clean;Build;BeforeRunTests">
     <Message Importance="high" Text="Running tests:" />
     <Delete Files="$(TestOutputDirectory)\RTFunctionalDebug.trx" />
     <Exec
@@ -316,7 +333,7 @@
       ContinueOnError="false" />
   </Target>
 
-  <Target Name="AzureRTAll" DependsOnTargets="Clean;BuildDebug;BeforeRunTests">
+  <Target Name="AzureRTAll" DependsOnTargets="Clean;Build;BeforeRunTests">
     <Message Importance="high" Text="Running AzureRT all tests..." />
     <Delete Files="$(TestOutputDirectory)\RTDebug.trx" />
     <Exec
@@ -324,7 +341,7 @@
       ContinueOnError="false" />
   </Target>
 
-  <Target Name="AzureRTAllFast" DependsOnTargets="Clean;BuildDebug;BeforeRunTests">
+  <Target Name="AzureRTAllFast" DependsOnTargets="Clean;Build;BeforeRunTests">
     <Message Importance="high" Text="Running AzureRT all tests..." />
 
     <Delete Files="$(TestOutputDirectory)\RTSequentialDebug.trx" />
@@ -337,7 +354,7 @@
       ContinueOnError="false" />
   </Target>
 
-  <Target Name="AzureRTSeq" DependsOnTargets="Clean;BuildDebug;BeforeRunTests">
+  <Target Name="AzureRTSeq" DependsOnTargets="Clean;Build;BeforeRunTests">
     <Message Importance="high" Text="Running AzureRT all tests..." />
 
     <Delete Files="$(TestOutputDirectory)\RTSequentialDebug.trx" />
@@ -346,7 +363,7 @@
       ContinueOnError="true" />
   </Target>
 
-  <Target Name="AzureRTNetwork" DependsOnTargets="Clean;BuildDebug;BeforeRunTests">
+  <Target Name="AzureRTNetwork" DependsOnTargets="Clean;Build;BeforeRunTests">
     <Message Importance="high" Text="Running AzureRT all tests..." />
 
     <Delete Files="$(TestOutputDirectory)\RTSequentialDebug.trx" />
@@ -355,7 +372,7 @@
       ContinueOnError="false" />
   </Target>
 
-  <Target Name="AzureRTUploadSeq" DependsOnTargets="Clean;BuildDebug;BeforeRunTests">
+  <Target Name="AzureRTUploadSeq" DependsOnTargets="Clean;Build;BeforeRunTests">
     <Message Importance="high" Text="Running AzureRT all tests..." />
 
     <Delete Files="$(TestOutputDirectory)\RTSequentialDebug.trx" />
@@ -364,7 +381,7 @@
       ContinueOnError="false" />
   </Target>
 
-  <Target Name="AzureRTPar" DependsOnTargets="Clean;BuildDebug;BeforeRunTests">
+  <Target Name="AzureRTPar" DependsOnTargets="Clean;Build;BeforeRunTests">
     <Message Importance="high" Text="Running AzureRT all tests..." />
 
     <Delete Files="$(TestOutputDirectory)\RTDebug.trx" />
@@ -373,7 +390,7 @@
       ContinueOnError="false" />
   </Target>
 
-  <Target Name="AzureRTFunctional" DependsOnTargets="Clean;BuildDebug;BeforeRunTests">
+  <Target Name="AzureRTFunctional" DependsOnTargets="Clean;Build;BeforeRunTests">
     <Message Importance="high" Text="Running AzureRT Functional tests..." />
 
     <Delete Files="$(TestOutputDirectory)\RTFunctionalDebug.trx" />
@@ -382,7 +399,7 @@
       ContinueOnError="false" />
   </Target>
 
-  <Target Name="AzureRTScenario" DependsOnTargets="Clean;BuildDebug;BeforeRunTests">
+  <Target Name="AzureRTScenario" DependsOnTargets="Clean;Build;BeforeRunTests">
     <Message Importance="high" Text="Running AzureRT Scenario tests..." />
 
     <Delete Files="$(TestOutputDirectory)\RTScenarioDebug.trx" />
@@ -391,7 +408,7 @@
       ContinueOnError="false" />
   </Target>
 
-  <Target Name="AzureRTAllPreview" DependsOnTargets="Clean;BuildDebug;BeforeRunTests">
+  <Target Name="AzureRTAllPreview" DependsOnTargets="Clean;Build;BeforeRunTests">
     <Message Importance="high" Text="Running AzureRT all tests..." />
     <Delete Files="$(TestOutputDirectory)\RTAddVhdDebug.trx" />
     <Delete Files="$(TestOutputDirectory)\RTDebug.trx" />
@@ -403,7 +420,7 @@
       ContinueOnError="false" />
   </Target>
 
-  <Target Name="AzureRTPreview" DependsOnTargets="Clean;BuildDebug;BeforeRunTests">
+  <Target Name="AzureRTPreview" DependsOnTargets="Clean;Build;BeforeRunTests">
     <Message Importance="high" Text="Running AzureRT all tests..." />
     <Delete Files="$(TestOutputDirectory)\RTPreviewDebug.trx" />
     <Exec
@@ -411,7 +428,7 @@
       ContinueOnError="false" />
   </Target>
 
-  <Target Name="AzureRTCleanUp" DependsOnTargets="Clean;BuildDebug;BeforeRunTests">
+  <Target Name="AzureRTCleanUp" DependsOnTargets="Clean;Build;BeforeRunTests">
     <Message Importance="high" Text="Running AzureRT clean up tests..." />
     <Delete Files="$(TestOutputDirectory)\RTCleanUpDebug.trx" />
     <Exec
@@ -419,7 +436,7 @@
       ContinueOnError="false" />
   </Target>
 
-  <Target Name="ComputeCodeCoverage" DependsOnTargets="ForceRestorePackages;Clean;BuildDebug">
+  <Target Name="ComputeCodeCoverage" DependsOnTargets="RestoreNugetPackages;Clean;Build">
     <Message Importance="high" Text="Gathering Code Coverage data from Compute tests..." />
     <Delete Files="Project.covarage" />
     <Exec
