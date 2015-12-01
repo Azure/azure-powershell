@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
@@ -20,7 +19,7 @@ using System.Globalization;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmKeyVaultKey", 
+    [Cmdlet(VerbsCommon.Remove, "AzureKeyVaultKey", 
         SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.High, 
         HelpUri = Constants.KeyVaultHelpUri)]

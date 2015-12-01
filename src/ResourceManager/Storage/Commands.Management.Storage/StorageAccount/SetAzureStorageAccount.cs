@@ -12,20 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Resources.Models;
-using Microsoft.Azure.Commands.Tags.Model;
-using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Management.Storage.Models;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.Management.Storage.Models;
+using StorageModels = Microsoft.Azure.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
     /// <summary>
     /// Lists all storage services underneath the subscription.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, StorageAccountNounStr, DefaultParameterSetName = UpdateAccountTypeParamSet), OutputType(typeof(StorageAccount))]
+    [Cmdlet(VerbsCommon.Set, StorageAccountNounStr, DefaultParameterSetName = UpdateAccountTypeParamSet), OutputType(typeof(StorageModels.StorageAccount))]
     public class SetAzureStorageAccountCommand : StorageAccountBaseCmdlet
     {
         protected const string UpdateAccountTypeParamSet = "UpdateAccountType";
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Resource Group Name.")]
+            HelpMessage = "Resource Group StorageAccountName.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Storage Account Name.")]
+            HelpMessage = "Storage Account StorageAccountName.")]
         [Alias(StorageAccountNameAlias, AccountNameAlias)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Mandatory = true,
             ParameterSetName = UpdateCustomDomainParamSet,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Storage Account Custom Domain Name.")]
+            HelpMessage = "Storage Account Custom Domain StorageAccountName.")]
         [AllowEmptyString]
         [ValidateNotNull]
         public string CustomDomainName { get; set; }
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Position = 3,
             ParameterSetName = UpdateCustomDomainParamSet,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "To Use Sub Domain Name.")]
+            HelpMessage = "To Use Sub Domain StorageAccountName.")]
         [ValidateNotNullOrEmpty]
         public bool? UseSubDomain { get; set; }
 
@@ -131,9 +131,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 this.Name,
                 updateParameters);
 
-            var accountProperties = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
+            var storageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name).StorageAccount;
 
-            WriteStorageAccount(accountProperties.StorageAccount);
+            WriteStorageAccount(storageAccount);
         }
     }
 }

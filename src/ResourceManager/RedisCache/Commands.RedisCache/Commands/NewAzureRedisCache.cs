@@ -42,13 +42,14 @@ namespace Microsoft.Azure.Commands.RedisCache
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Redis version.")]
         public string RedisVersion { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Size of redis cache. Valid values: C0, C1, C2, C3, C4, C5, C6, 250MB, 1GB, 2.5GB, 6GB, 13GB, 26GB, 53GB")]
-        [ValidateSet(SizeConverter.C0String, SizeConverter.C1String, SizeConverter.C2String, SizeConverter.C3String, SizeConverter.C4String, SizeConverter.C5String,
-            SizeConverter.C6String, SizeConverter.C0, SizeConverter.C1, SizeConverter.C2, SizeConverter.C3, SizeConverter.C4, SizeConverter.C5, SizeConverter.C6, IgnoreCase = false)]
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Size of redis cache. Valid values: P1,P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250MB, 1GB, 2.5GB, 6GB, 13GB, 26GB, 53GB")]
+        [ValidateSet(SizeConverter.P1String, SizeConverter.P2String, SizeConverter.P3String, SizeConverter.P4String, 
+            SizeConverter.C0String, SizeConverter.C1String, SizeConverter.C2String, SizeConverter.C3String, SizeConverter.C4String, SizeConverter.C5String, SizeConverter.C6String, 
+            SizeConverter.MB250, SizeConverter.GB1, SizeConverter.GB2_5, SizeConverter.GB6, SizeConverter.GB13, SizeConverter.GB26, SizeConverter.GB53, IgnoreCase = false)]
         public string Size { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Wheather want to create Basic (1 Node) or Standard (2 Node) cache.")]
-        [ValidateSet(SkuStrings.Basic, SkuStrings.Standard, IgnoreCase = false)]
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Choose to create a Basic, Standard, or Premium cache.")]
+        [ValidateSet(SkuStrings.Basic, SkuStrings.Standard, SkuStrings.Premium, IgnoreCase = false)]
         public string Sku { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "MaxMemoryPolicy is deprecated. Please use RedisConfiguration instead.")]
@@ -60,7 +61,20 @@ namespace Microsoft.Azure.Commands.RedisCache
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "EnableNonSslPort property of redis cache.")]
         public bool? EnableNonSslPort { get; set; }
 
-        private const string redisDefaultVersion = "3.0";
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "A hash table which represents tenant settings.")]
+        public Hashtable TenantSettings { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "The number of shards to create on a Premium Cluster Cache.")]
+        public int? ShardCount { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "The exact ARM resource ID of the virtual network to deploy the redis cache in. Example format: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1")]
+        public string VirtualNetwork { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Required when deploying a redis cache inside an existing Azure Virtual Network.")]
+        public string Subnet { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Required when deploying a redis cache inside an existing Azure Virtual Network.")]
+        public string StaticIP { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -74,27 +88,26 @@ namespace Microsoft.Azure.Commands.RedisCache
                 throw new ArgumentException(Resources.MaxMemoryPolicyException);
             }
 
-            string skuFamily;
+            if (string.IsNullOrEmpty(Sku))
+            {
+                Sku = SkuStrings.Standard;
+            }
 
-            int skuCapacity = 1;
-
+            
             if (string.IsNullOrEmpty(Size))
             {
                 Size = SizeConverter.C1String;
             }
             else
             {
-                Size = SizeConverter.GetSizeInRedisSpecificFormat(Size);
+                Size = SizeConverter.GetSizeInRedisSpecificFormat(Size, SkuStrings.Premium.Equals(Sku));
             }
 
+            int skuCapacity = 1;
             // Size to SkuFamily and SkuCapacity conversion
-            skuFamily = Size.Substring(0, 1);
+            string skuFamily = Size.Substring(0, 1);
             int.TryParse(Size.Substring(1), out skuCapacity);
 
-            if (string.IsNullOrEmpty(Sku))
-            {
-                Sku = SkuStrings.Standard;
-            }
 
             // If Force flag is not avaliable than check if cache is already available or not
             try
@@ -121,7 +134,13 @@ namespace Microsoft.Azure.Commands.RedisCache
                     throw;
                 }
             }
-            WriteObject(new RedisCacheAttributesWithAccessKeys(CacheClient.CreateOrUpdateCache(ResourceGroupName, Name, Location, redisDefaultVersion, skuFamily, skuCapacity, Sku, RedisConfiguration, EnableNonSslPort), ResourceGroupName));
+
+            WriteObject(
+                new RedisCacheAttributesWithAccessKeys(
+                    CacheClient.CreateOrUpdateCache(ResourceGroupName, Name, Location, skuFamily, skuCapacity, Sku, RedisConfiguration, EnableNonSslPort, TenantSettings, ShardCount, VirtualNetwork, Subnet, StaticIP), 
+                    ResourceGroupName
+                )
+            );
         }
     }
 }

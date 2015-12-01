@@ -19,7 +19,6 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Graph.RBAC;
@@ -29,7 +28,9 @@ using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
@@ -50,15 +51,15 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public SubscriptionClient SubscriptionClient { get; private set; }
 
         public GalleryClient GalleryClient { get; private set; }
-        
+
         public InsightsClient InsightsClient { get; private set; }
 
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
         public string UserDomain { get; private set; }
 
-        public static ResourcesController NewInstance 
-        { 
+        public static ResourcesController NewInstance
+        {
             get
             {
                 return new ResourcesController();
@@ -76,9 +77,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             var mockName = TestUtilities.GetCurrentMethodName(2);
 
             RunPsTestWorkflow(
-                () => scripts, 
+                () => scripts,
                 // no custom initializer
-                null, 
+                null,
                 // no custom cleanup 
                 null,
                 callingClassType,
@@ -86,8 +87,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
 
         public void RunPsTestWorkflow(
-            Func<string[]> scriptBuilder, 
-            Action<CSMTestEnvironmentFactory> initialize, 
+            Func<string[]> scriptBuilder,
+            Action<CSMTestEnvironmentFactory> initialize,
             Action cleanup,
             string callingClassType,
             string mockName)
@@ -98,22 +99,22 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
                 this.csmTestFactory = new CSMTestEnvironmentFactory();
 
-                if(initialize != null)
+                if (initialize != null)
                 {
                     initialize(this.csmTestFactory);
                 }
 
+                helper.SetupEnvironment(AzureModule.AzureResourceManager);
+
                 SetupManagementClients();
 
-                helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                
                 var callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
-                helper.SetupModules(AzureModule.AzureResourceManager, 
-                    "ScenarioTests\\Common.ps1", 
-                    "ScenarioTests\\" + callingClassName + ".ps1", 
-                    helper.RMProfileModule, 
+                helper.SetupModules(AzureModule.AzureResourceManager,
+                    "ScenarioTests\\Common.ps1",
+                    "ScenarioTests\\" + callingClassName + ".ps1",
+                    helper.RMProfileModule,
                     helper.RMResourceModule);
 
                 try
@@ -130,7 +131,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 }
                 finally
                 {
-                    if(cleanup !=null)
+                    if (cleanup != null)
                     {
                         cleanup();
                     }
@@ -183,7 +184,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 }
                 if (HttpMockServer.Variables.ContainsKey(SubscriptionIdKey))
                 {
-                    AzureRMCmdlet.DefaultProfile.Context.Subscription.Id = new Guid(HttpMockServer.Variables[SubscriptionIdKey]);
+                    AzureRmProfileProvider.Instance.Profile.Context.Subscription.Id = new Guid(HttpMockServer.Variables[SubscriptionIdKey]);
                 }
             }
 
@@ -244,9 +245,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             /// </summary>
             /// <param name="credentials">The credentials.</param>
             /// <param name="headerValues">The headers.</param>
-            public override HttpClientHelper CreateHttpClientHelper(SubscriptionCloudCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues)
+            public override HttpClientHelper CreateHttpClientHelper(SubscriptionCloudCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues, Dictionary<string, string> cmdletHeaderValues)
             {
-                return new HttpClientHelperImpl(credentials: this.credential, headerValues: headerValues);
+                return new HttpClientHelperImpl(credentials: this.credential, headerValues: headerValues, cmdletHeaderValues: cmdletHeaderValues);
             }
 
             /// <summary>
@@ -259,8 +260,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 /// </summary>
                 /// <param name="credentials">The credentials.</param>
                 /// <param name="headerValues">The headers.</param>
-                public HttpClientHelperImpl(SubscriptionCloudCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues)
-                    : base(credentials: credentials, headerValues: headerValues)
+                public HttpClientHelperImpl(SubscriptionCloudCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues, Dictionary<string, string> cmdletHeaderValues)
+                    : base(credentials: credentials, headerValues: headerValues, cmdletHeaderValues: cmdletHeaderValues)
                 {
                 }
 

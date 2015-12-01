@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -20,6 +21,7 @@ using Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet;
 using Microsoft.WindowsAzure.Management.Storage.Test.Common;
 using Microsoft.WindowsAzure.Storage.File;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
 {
@@ -76,29 +78,43 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
             NewDirectoryAndAssert("?*?\"\\*p:?\\/D?*?<:Z>:/l*<??\\:\\c\"(/:|**<<<|r:/**<:\\y", "ArgumentException");
         }
 
-        private void NewDirectoryAndAssert(string directoryName, string expectedErrorId = null)
+        private void NewDirectoryAndAssert(string directoryName)
         {
             this.CmdletInstance.RunCmdlet(
                 Constants.ShareNameParameterSetName,
                 new KeyValuePair<string, object>("ShareName", "share"),
                 new KeyValuePair<string, object>("Path", directoryName));
 
-            if (expectedErrorId == null)
+            this.MockCmdRunTime.OutputPipeline
+                .Cast<CloudFileDirectory>()
+                .AssertSingleObject(x => x.Name == directoryName && x.Share.Name == "share");
+        }
+
+        private void NewDirectoryAndAssert(string directoryName, string expectedErrorId)
+        {
+            try
             {
-                this.MockCmdRunTime.OutputPipeline
-                    .Cast<CloudFileDirectory>()
-                    .AssertSingleObject(x => x.Name == directoryName && x.Share.Name == "share");
+                this.CmdletInstance.RunCmdlet(
+                    Constants.ShareNameParameterSetName,
+                    new KeyValuePair<string, object>("ShareName", "share"),
+                    new KeyValuePair<string, object>("Path", directoryName));
             }
-            else
+            catch (TargetInvocationException exception)
             {
                 Trace.WriteLine(string.Format("Creating a directory with name '{0}'", directoryName));
-                if (this.MockCmdRunTime.ErrorStream != null && this.MockCmdRunTime.ErrorStream.Count > 0)
+                if (exception.InnerException != null)
                 {
-                    Trace.WriteLine(string.Format("ErrorStream:"));
-                    this.MockCmdRunTime.ErrorStream.ForEach(r => Trace.WriteLine(r.FullyQualifiedErrorId));
+                    Trace.WriteLine(string.Format("Exception:"));
+                    Trace.WriteLine(string.Format("{0}: {1}", exception.InnerException.GetType(), exception.InnerException.Message));
+                    if (exception.InnerException.GetType().ToString().Contains(expectedErrorId))
+                    {
+                        return;
+                    }
                 }
-                this.MockCmdRunTime.ErrorStream.AssertSingleObject(x => x.FullyQualifiedErrorId == expectedErrorId);
+
             }
+
+            throw new InvalidOperationException("Did not receive expected exception");
         }
     }
 }

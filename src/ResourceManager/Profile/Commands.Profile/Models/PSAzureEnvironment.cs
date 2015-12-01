@@ -43,6 +43,8 @@ namespace Microsoft.Azure.Commands.Profile.Models
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.ActiveDirectory] = environment.ActiveDirectoryAuthority;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.AdTenant] = environment.AdTenant;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.Gallery] = environment.GalleryUrl;
+            newEnvironment.Endpoints[AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix] = environment.AzureDataLakeStoreFileSystemEndpointSuffix;
+            newEnvironment.Endpoints[AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix] = environment.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.ManagementPortalUrl] = environment.ManagementPortalUrl;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.ServiceManagement] = environment.ServiceManagementUrl;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.PublishSettingsFileUrl] =
@@ -155,6 +157,16 @@ namespace Microsoft.Azure.Commands.Profile.Models
                 AzureKeyVaultDnsSuffix =
                     environment.Endpoints[AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix];
             }
+            if (environment.IsEndpointSet(AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix))
+            {
+                AzureDataLakeStoreFileSystemEndpointSuffix =
+                    environment.Endpoints[AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix];
+            }
+            if (environment.IsEndpointSet(AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix))
+            {
+                AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix =
+                    environment.Endpoints[AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix];
+            }
             if (environment.IsEndpointSet(AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId))
             {
                 AzureKeyVaultServiceEndpointResourceId =
@@ -239,6 +251,16 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public string AzureKeyVaultDnsSuffix { get; set; }
 
         /// <summary>
+        /// Gets or sets the domain name suffix for Data Lake store filesystem services.
+        /// </summary>
+        public string AzureDataLakeStoreFileSystemEndpointSuffix { get; set; }
+
+        /// <summary>
+        /// Gets or sets the domain name suffix for Data Lake Analytics job and catalog services.
+        /// </summary>
+        public string AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix { get; set; }
+
+        /// <summary>
         /// Gets or sets the expected token audience for authenticating requests to the key vault service.
         /// </summary>
         public string AzureKeyVaultServiceEndpointResourceId { get; set; }
@@ -267,6 +289,8 @@ namespace Microsoft.Azure.Commands.Profile.Models
                        && ServiceManagementUrl == other.ServiceManagementUrl
                        && StorageEndpointSuffix == other.StorageEndpointSuffix
                        && SqlDatabaseDnsSuffix == other.SqlDatabaseDnsSuffix
+                       && AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix == other.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix
+                       && AzureDataLakeStoreFileSystemEndpointSuffix == other.AzureDataLakeStoreFileSystemEndpointSuffix
                        && TrafficManagerDnsSuffix == other.TrafficManagerDnsSuffix;
             }
 

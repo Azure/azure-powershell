@@ -14,6 +14,30 @@
 
 <#
 .SYNOPSIS
+Sleeps but only during recording.
+#>
+function Start-TestSleep($milliseconds)
+{
+    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+    {
+        Start-Sleep -Milliseconds $milliseconds
+    }
+}
+
+<#
+.SYNOPSIS
+Gets a ScenarioTestContext for the specified account 
+#>
+function Get-ScenarioTestContext($accountName)
+{
+    $context = Get-AzureRmBatchAccountKeys $accountName
+    $testContext = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext -ArgumentList $context
+    return $testContext
+}
+
+
+<#
+.SYNOPSIS
 Gets a Batch account name for testing.
 #>
 function Get-BatchAccountName
@@ -36,22 +60,31 @@ Gets the location for the Batch account provider. Default to West US if none fou
 #>
 function Get-BatchAccountProviderLocation($index)
 {
-    $location = Get-AzureRmLocation | where {$_.Name -eq "Microsoft.Batch/batchAccounts"}
-    if ($location -eq $null) 
-	{
-        "West US"
-    } 
-	else 
-	{
-	    if ($index -eq $null)
-		{
-			$location.Locations[0]
-		}
-		else
-		{
-			$location.Locations[$index]
-		}
+    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+    {
+        $namespace = "Microsoft.Batch"
+        $type = "batchAccounts"
+        $r = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}  
+        $location = $r.Locations
+  
+        if ($location -eq $null) 
+        {  
+            return "West US"  
+        } 
+        else 
+        {  
+            if ($index -eq $null)
+            {
+                return "West US"
+            }
+            else
+            {
+                return $location[$index]  
+            }
+        }  
     }
+
+    return "West US"
 }
 
 <#
@@ -61,7 +94,7 @@ Cleans the created Batch account and resource group
 function Clean-BatchAccountAndResourceGroup($accountName,$resourceGroup)
 {
     Clean-BatchAccount $accountName $resourceGroup
-	Clean-ResourceGroup $resourceGroup
+    Clean-ResourceGroup $resourceGroup
 }
 
 <#
@@ -71,7 +104,7 @@ Cleans the created Batch account
 function Clean-BatchAccount($accountName,$resourceGroup)
 {
     if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) 
-	{
+    {
         Remove-AzureRmBatchAccount -Name $accountName -ResourceGroupName $resourceGroup -Force
     }
 }
@@ -82,8 +115,8 @@ Cleans the created resource group
 #>
 function Clean-ResourceGroup($resourceGroup)
 {
-	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) 
-	{
+    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) 
+    {
         Remove-AzureRmResourceGroup -Name $resourceGroup -Force
     }
 }

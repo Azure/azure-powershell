@@ -13,8 +13,6 @@
 //  limitations under the License.
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 {
-    using System;
-
     public class PsApiManagementProduct
     {
         public string ProductId { get; set; }
@@ -32,12 +30,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
         public bool? ApprovalRequired { get; set; }
 
         public int? SubscriptionsLimit { get; set; }
-
-        // maps from period contract
-        public string SubscriptionPeriod { get; set; }
-
-        // maps from period contract
-        public string NotificationPeriod { get; set; }
 
         public PsApiManagementProductState State { get; set; }
     }

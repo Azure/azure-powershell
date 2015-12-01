@@ -9,7 +9,7 @@
 @{  
   
 # Version number of this module.  
-ModuleVersion = '0.9.8'  
+ModuleVersion = '1.0.1' 
   
 # ID used to uniquely identify this module  
 GUID = '342714fc-4009-4863-8afb-a9067e3db04b'  
@@ -21,10 +21,10 @@ Author = 'Microsoft Corporation'
 CompanyName = 'Microsoft Corporation'  
   
 # Copyright statement for this module  
-Copyright = '© Microsoft Corporation. All rights reserved.'    
+Copyright = 'Microsoft Corporation. All rights reserved.'    
   
 # Description of the functionality provided by this module  
-Description = 'Microsoft Azure PowerShell - Profile'  
+Description = 'Microsoft Azure PowerShell - Profile credential management cmdlets for Azure Resource Manager'  
   
 # Minimum version of the Windows PowerShell engine required by this module  
 PowerShellVersion = '3.0'  
@@ -51,7 +51,7 @@ RequiredModules = @()
 RequiredAssemblies = @()  
   
 # Script files (.ps1) that are run in the caller's environment prior to importing this module  
-ScriptsToProcess = @()  
+ScriptsToProcess = @('CheckVersions.ps1')  
   
 # Type files (.ps1xml) to be loaded when importing this module  
 TypesToProcess = @()

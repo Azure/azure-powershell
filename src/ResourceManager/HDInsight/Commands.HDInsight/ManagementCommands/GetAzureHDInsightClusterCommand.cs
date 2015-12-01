@@ -44,6 +44,11 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         protected override void ProcessRecord()
         {
+            if (ClusterName != null && ResourceGroupName == null)
+            {
+                ResourceGroupName = GetResourceGroupByAccountName(ClusterName);
+            }
+
             var result = HDInsightManagementClient.GetCluster(ResourceGroupName, ClusterName);
 
             var output = result.Select(entry =>

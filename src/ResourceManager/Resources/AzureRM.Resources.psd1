@@ -9,7 +9,7 @@
 @{  
   
 # Version number of this module.  
-ModuleVersion = '0.9.8'  
+ModuleVersion = '1.0.1' 
   
 # ID used to uniquely identify this module  
 GUID = 'ab3ca893-26fe-44b0-bd3c-8933df144d7b'  
@@ -21,10 +21,10 @@ Author = 'Microsoft Corporation'
 CompanyName = 'Microsoft Corporation'  
   
 # Copyright statement for this module  
-Copyright = '© Microsoft Corporation. All rights reserved.'    
+Copyright = 'Microsoft Corporation. All rights reserved.'    
   
 # Description of the functionality provided by this module  
-Description = 'Microsoft Azure PowerShell - Resources'  
+Description = 'Microsoft Azure PowerShell - Azure Resource Manager cmdlets.  Manages subscriptions, tenants, resource groups, deployment templates, providers, and resource permissions in Azure Resource Manager.  Provides cmdlets for managing resources generically across resource providers.'  
   
 # Minimum version of the Windows PowerShell engine required by this module  
 PowerShellVersion = '3.0'  
@@ -45,7 +45,7 @@ CLRVersion='4.0'
 ProcessorArchitecture = 'None'  
   
 # Modules that must be imported into the global environment prior to importing this module  
-RequiredModules = @( @{ ModuleName = 'AzureRM.Profile'; ModuleVersion = '0.9.8' })
+RequiredModules = @( @{ ModuleName = 'AzureRM.Profile'; ModuleVersion = '1.0.1'})
   
 # Assemblies that must be loaded prior to importing this module  
 RequiredAssemblies = @()  

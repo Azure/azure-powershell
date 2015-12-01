@@ -50,8 +50,10 @@ if ($wixInstallRoot -eq $null){
 #and we just register both 3.8 & 3.5 to simplify the script
 $env:path = $env:path + ";$wixInstallRoot"
 
+# Regenerate the installer files
+&"$env:AzurePSRoot\tools\Installer\generate.ps1" 'Debug'
+
 # Build the cmdlets and installer in debug mode
 msbuild "$env:AzurePSRoot\build.proj" /t:Build
 
 Write-Host "MSI file path: $env:AzurePSRoot\setup\build\Debug\AzurePowerShell.msi"
-Write-Host "MSI for PowerShell Gallery: $env:AzurePSRoot\setup-powershellget\build\Debug\AzurePowerShellGet.msi"

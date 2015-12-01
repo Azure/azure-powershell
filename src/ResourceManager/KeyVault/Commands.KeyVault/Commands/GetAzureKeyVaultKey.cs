@@ -21,7 +21,7 @@ using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmKeyVaultKey",
+    [Cmdlet(VerbsCommon.Get, "AzureKeyVaultKey",
         DefaultParameterSetName = ByVaultNameParameterSet, 
         HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(List<KeyIdentityItem>), typeof(KeyBundle))]
@@ -105,10 +105,12 @@ namespace Microsoft.Azure.Commands.KeyVault
                     WriteObject(keyBundle);
                     break;
                 case ByKeyVersionsParameterSet:
-                     keyBundle = DataServiceClient.GetKey(VaultName, Name, null);
+                    keyBundle = DataServiceClient.GetKey(VaultName, Name, null);
                     if (keyBundle != null)
+                    {
                         WriteObject(new KeyIdentityItem(keyBundle));
-                    GetAndWriteKeyVersions(VaultName, Name, keyBundle.Version);
+                        GetAndWriteKeyVersions(VaultName, Name, keyBundle.Version);
+                    }
                     break;
                 case ByVaultNameParameterSet:
                     GetAndWriteKeys(VaultName);
@@ -123,7 +125,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         {
             KeyVaultObjectFilterOptions options = new KeyVaultObjectFilterOptions
             {
-                VaultName = VaultName,
+                VaultName = vaultName,
                 NextLink = null
             };
           
@@ -138,7 +140,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         {
             KeyVaultObjectFilterOptions options = new KeyVaultObjectFilterOptions
             {
-                VaultName = VaultName,
+                VaultName = vaultName,
                 NextLink = null,
                 Name = name
             };

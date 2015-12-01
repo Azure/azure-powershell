@@ -106,7 +106,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
         {
             CloudStorageAccount account = CloudStorageAccount.DevelopmentStorageAccount;
             command.Context = new AzureStorageContext(account);
-            Assert.IsFalse(command.ShouldInitServiceChannel());
+            string toss;
+            Assert.IsFalse(command.TryGetStorageAccount(command.RMProfile, out toss));
         }
     }
 }

@@ -13,9 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections;
 using System.Security;
-using Microsoft.Azure.KeyVault;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -27,9 +25,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// <summary>
         /// Internal constructor used by KeyVaultDataServiceClient
         /// </summary>
-        /// <param name="clientSecret">secret returned from service</param>
+        /// <param name="secret">secret returned from service</param>
         /// <param name="vaultUriHelper">helper class</param>
-        internal Secret(Microsoft.Azure.KeyVault.Secret secret, VaultUriHelper vaultUriHelper)
+        internal Secret(Azure.KeyVault.Secret secret, VaultUriHelper vaultUriHelper)
         {
             if (secret == null)
                 throw new ArgumentNullException("secret");

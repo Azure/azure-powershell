@@ -13,20 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Common.Authentication;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System;
-using System.IO;
 using System.Net.Http;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     public class KeyVaultCmdletBase : AzureRMCmdlet
-    {        
-        public KeyVaultCmdletBase()
-        {        
-        }
-
+    {
         internal IKeyVaultDataServiceClient DataServiceClient
         {
             get

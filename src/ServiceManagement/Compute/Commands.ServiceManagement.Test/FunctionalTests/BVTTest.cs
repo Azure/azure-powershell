@@ -379,6 +379,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 //
                 // Remove-AzureVM
                 //
+                vmPowershellCmdlets.RemoveAzureVM(newAzureVMName, serviceName, false, true);
+                Assert.AreNotEqual(null, vmPowershellCmdlets.GetAzureVM(newAzureVMName, serviceName));
+
                 vmPowershellCmdlets.RemoveAzureVM(newAzureVMName, serviceName);
 
                 RecordTimeTaken(ref prevTime);

@@ -146,6 +146,43 @@ namespace Microsoft.Azure.Commands.Batch.Models
         }
 
         /// <summary>
+        /// Deletes the specified file from its compute node.
+        /// </summary>
+        /// <param name="parameters">Specifies which node file to delete.</param>
+        public void DeleteNodeFile(NodeFileOperationParameters parameters)
+        {
+            if (parameters == null)
+            {
+                throw new ArgumentNullException("parameters");
+            }
+
+            switch (parameters.NodeFileType)
+            {
+                case PSNodeFileType.Task:
+                {
+                    JobOperations jobOperations = parameters.Context.BatchOMClient.JobOperations;
+                    jobOperations.DeleteNodeFile(parameters.JobId, parameters.TaskId, parameters.NodeFileName, parameters.AdditionalBehaviors);
+                    break;
+                }
+                case PSNodeFileType.ComputeNode:
+                {
+                    PoolOperations poolOperations = parameters.Context.BatchOMClient.PoolOperations;
+                    poolOperations.DeleteNodeFile(parameters.PoolId, parameters.ComputeNodeId, parameters.NodeFileName, parameters.AdditionalBehaviors);
+                    break;
+                }
+                case PSNodeFileType.PSNodeFileInstance:
+                {
+                    parameters.NodeFile.omObject.Delete(parameters.AdditionalBehaviors);
+                    break;
+                }
+                default:
+                {
+                    throw new ArgumentException(Resources.NoNodeFile);
+                }
+            }
+        }
+
+        /// <summary>
         /// Downloads a node file using the specified options.
         /// </summary>
         /// <param name="options">The download options.</param>

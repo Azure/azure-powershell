@@ -25,6 +25,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.WindowsAzure.Commands.Common;
 
 
 namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
@@ -57,7 +58,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
         {
             //HttpMockServer.Matcher = new PermissiveRecordMatcher();
             Dictionary<string, string> d = new Dictionary<string, string>();
-            d.Add("Microsoft.Authorization", "2014-07-01-preview");
+            d.Add("Microsoft.Authorization", null);
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
             // Enable undo functionality as well as mock recording
             using (UndoContext context = UndoContext.Current)
@@ -78,7 +79,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                     helper.RMStorageModule, 
                     helper.GetRMModulePath(@"AzureRM.Insights.psd1"), 
                     helper.GetRMModulePath(@"AzureRM.Sql.psd1"));
-
                 helper.RunPowerShellTest(scripts);
             }
         }
@@ -146,16 +146,29 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                 if (HttpMockServer.Variables.ContainsKey(TenantIdKey))
                 {
                     tenantId = HttpMockServer.Variables[TenantIdKey];
-                    AzureRMCmdlet.DefaultProfile.Context.Tenant.Id = new Guid(tenantId);
+                    AzureRmProfileProvider.Instance.Profile.Context.Tenant.Id = new Guid(tenantId);
                 }
                 if (HttpMockServer.Variables.ContainsKey(DomainKey))
                 {
                     UserDomain = HttpMockServer.Variables[DomainKey];
-                    AzureRMCmdlet.DefaultProfile.Context.Tenant.Domain = UserDomain;
+                    AzureRmProfileProvider.Instance.Profile.Context.Tenant.Domain = UserDomain;
                 }
             }
 
             return TestBase.GetGraphServiceClient<GraphRbacManagementClient>(testFactory, tenantId);
+        }
+
+        protected Management.Storage.StorageManagementClient GetStorageV2Client()
+        {
+            var client =
+                TestBase.GetServiceClient<Management.Storage.StorageManagementClient>(new CSMTestEnvironmentFactory());
+
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                client.LongRunningOperationInitialTimeout = 0;
+                client.LongRunningOperationRetryTimeout = 0;
+            }
+            return client;
         }
     }
 }

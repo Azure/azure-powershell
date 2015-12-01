@@ -70,9 +70,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         public static readonly string MicrosoftResourcesDeploymentOperationsType = Constants.MicrosoftResourceNamesapce + "/deployments/operations";
 
         /// <summary>
+        /// The deployments resource type.
+        /// </summary>
+        public static readonly string MicrosoftResourcesDeploymentType = Constants.MicrosoftResourceNamesapce + "/deployments";
+
+        /// <summary>
         /// The policy definition resource type.
         /// </summary>
         public static readonly string MicrosoftAuthorizationPolicyDefinitionType = Constants.MicrosoftAuthorizationNamespace + "/policydefinitions";
+
+        /// <summary>
+        /// The policy definition resource type.
+        /// </summary>
+        public static readonly string MicrosoftAuthorizationPolicyAssignmentType = Constants.MicrosoftAuthorizationNamespace + "/policyassignments";
 
         /// <summary>
         /// The type name of the generic resource.
