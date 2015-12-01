@@ -82,13 +82,17 @@ namespace Microsoft.Azure.Commands.Resources.Models
         public static Hashtable[] CreateTagHashtable(IDictionary<string, string> dictionary)
         {
             List<Hashtable> tagHashtable = new List<Hashtable>();
-            foreach (string key in dictionary.Keys)
+
+            if (dictionary != null && dictionary.Count > 0)
             {
-                tagHashtable.Add(new Hashtable
+                foreach (string key in dictionary.Keys)
+                {
+                    tagHashtable.Add(new Hashtable
                 {
                     {"Name", key},
                     {"Value", dictionary[key]}
                 });
+                }
             }
             return tagHashtable.ToArray();
         }

@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Tags
         /// <param name="clientFactory">The factory for management clients</param>
         /// <param name="context">The Azure context instance</param>
         public TagsClient(IClientFactory clientFactory, AzureContext context)
-            : this(clientFactory.CreateClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
+            : this(clientFactory.CreateArmClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
 
         }

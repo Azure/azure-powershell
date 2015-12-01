@@ -68,8 +68,8 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// <param name="context">Profile containing resources to manipulate</param>
         public ResourcesClient(IClientFactory clientFactory, AzureContext context, IDataStore dataStore)
             : this(
-                clientFactory.CreateClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
-                clientFactory.CreateClient<AuthorizationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
+                clientFactory.CreateArmClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
+                clientFactory.CreateArmClient<AuthorizationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
         }
 

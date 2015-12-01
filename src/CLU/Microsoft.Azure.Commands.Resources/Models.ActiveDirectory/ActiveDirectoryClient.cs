@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
         public ActiveDirectoryClient(IAuthenticationFactory authenticationFactory, IClientFactory clientFactory, AzureContext context)
         {
             AccessTokenCredential creds = (AccessTokenCredential)authenticationFactory.GetSubscriptionCloudCredentials(context);
-            GraphClient = clientFactory.CreateCustomClient<GraphRbacManagementClient>(
+            GraphClient = clientFactory.CreateCustomArmClient<GraphRbacManagementClient>(
                 creds.TenantID,
                 creds,
                 context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.Graph));

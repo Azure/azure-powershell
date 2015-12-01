@@ -317,7 +317,16 @@ namespace Microsoft.Azure.Commands.Resources.Models
             }
             else
             {
-                var result = ResourceManagementClient.Resources.List( item => item.ResourceType == options.ResourceType);
+
+                IPage<GenericResource> result;
+                if (options != null && options.ResourceType != null)
+                {
+                    result = ResourceManagementClient.Resources.List(item => item.ResourceType == options.ResourceType);
+                }
+                else
+                {
+                    result = ResourceManagementClient.Resources.List();
+                }
 
                 resources.AddRange(result);
 

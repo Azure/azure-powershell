@@ -74,19 +74,25 @@ namespace Microsoft.Azure.Commands.Resources.Models
         public static PSResource ToPSResource(this GenericResource resource, ResourcesClient client, bool minimal)
         {
             ResourceIdentifier identifier = new ResourceIdentifier(resource.Id);
-            return new PSResource
+            var retValue = new PSResource
             {
                 Name = identifier.ResourceName,
                 Location = resource.Location,
                 ResourceType = identifier.ResourceType,
                 ResourceGroupName = identifier.ResourceGroupName,
                 ParentResource = identifier.ParentResource,
-                Properties = JsonUtilities.DeserializeJson(resource.Properties.ToString()),
-                PropertiesText = resource.Properties.ToString(),
                 Tags = TagsConversionHelper.CreateTagHashtable(resource.Tags),
                 Permissions = minimal ? null : client.GetResourcePermissions(identifier),
                 ResourceId = identifier.ToString()
             };
+
+            if(resource.Properties != null)
+            {
+                retValue.Properties = JsonUtilities.DeserializeJson(resource.Properties.ToString());
+                retValue.PropertiesText = resource.Properties.ToString();
+            }
+
+            return retValue;
         }
 
         public static PSResourceProvider ToPSResourceProvider(this Provider provider)
