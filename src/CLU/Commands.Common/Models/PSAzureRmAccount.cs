@@ -15,6 +15,7 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Models
 {
@@ -86,12 +87,12 @@ namespace Microsoft.Azure.Commands.Models
                 result.SetProperty(AzureAccount.Property.AccessToken, account.AccessToken);
             }
 
-            if (account.Tenants != null)
+            if (account.Tenants != null &&
+                account.Tenants.Any(s => !string.IsNullOrWhiteSpace(s)))
             {
-                foreach (var tenant in account.Tenants)
-                {
-                    result.SetOrAppendProperty(AzureAccount.Property.Tenants, tenant);
-                }
+                result.SetProperty(
+                    AzureAccount.Property.Tenants,
+                    account.Tenants.Where(s => !string.IsNullOrWhiteSpace(s)).ToArray());
             }
 
             if (!string.IsNullOrWhiteSpace(account.CertificateThumbprint))
