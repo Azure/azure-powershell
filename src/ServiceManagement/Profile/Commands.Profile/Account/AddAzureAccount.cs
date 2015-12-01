@@ -40,6 +40,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
         
        [Parameter(ParameterSetName = "User", Mandatory = false, HelpMessage = "Optional tenant name or ID")]
        [Parameter(ParameterSetName = "ServicePrincipal", Mandatory = true, HelpMessage = "Tenant name or ID")]
+       [Alias("TenantId")]
         public string Tenant { get; set; }
      
         public AddAzureAccount() : base(true)

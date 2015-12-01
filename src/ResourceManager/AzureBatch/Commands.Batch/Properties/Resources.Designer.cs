@@ -520,6 +520,15 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Getting the quotas of the subscription in the Batch Service for region: {0}..
+        /// </summary>
+        internal static string GettingSubscriptionQuotas {
+            get {
+                return ResourceManager.GetString("GettingSubscriptionQuotas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The endpoint is not recognized as valid: {0}.
         /// </summary>
         internal static string InvalidEndpointType {
@@ -736,6 +745,24 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing compute node(s) from pool....
+        /// </summary>
+        internal static string RemoveComputeNode {
+            get {
+                return ResourceManager.GetString("RemoveComputeNode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove compute node(s) {0} from the pool?.
+        /// </summary>
+        internal static string RemoveComputeNodeConfirm {
+            get {
+                return ResourceManager.GetString("RemoveComputeNodeConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing user ....
         /// </summary>
         internal static string RemoveComputeNodeUser {
@@ -786,6 +813,24 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string RemoveJobScheduleConfirm {
             get {
                 return ResourceManager.GetString("RemoveJobScheduleConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting node file....
+        /// </summary>
+        internal static string RemoveNodeFile {
+            get {
+                return ResourceManager.GetString("RemoveNodeFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete node file {0}?.
+        /// </summary>
+        internal static string RemoveNodeFileConfirm {
+            get {
+                return ResourceManager.GetString("RemoveNodeFileConfirm", resourceCulture);
             }
         }
         

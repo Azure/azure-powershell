@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <summary>
         /// Convert between implementations of the current connection context for Azure.
         /// </summary>
-        /// <param name="context">The connection context to covnert.</param>
+        /// <param name="context">The connection context to convert.</param>
         /// <returns>The converted context.</returns>
         public static implicit operator PSAzureContext(AzureContext context)
         {
@@ -24,7 +24,6 @@ namespace Microsoft.Azure.Commands.Profile.Models
             {
                 return null;
             }
-
             return new PSAzureContext
             {
                 Account = context.Account,
@@ -38,7 +37,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <summary>
         /// Convert between implementations of the current connection context for Azure.
         /// </summary>
-        /// <param name="context">The connection context to covnert.</param>
+        /// <param name="context">The connection context to convert.</param>
         /// <returns>The converted context.</returns>
         public static implicit operator AzureContext(PSAzureContext context)
         {
@@ -47,8 +46,22 @@ namespace Microsoft.Azure.Commands.Profile.Models
                 return null;
             }
 
-            var result = new AzureContext(context.Subscription, context.Account, 
-                context.Environment, context.Tenant);
+            AzureContext result = null;
+            if (context.Subscription == null)
+            {
+                result = new AzureContext(
+                      context.Account,
+                      context.Environment,
+                      context.Tenant);
+            }
+            else
+            {
+              result = new AzureContext(
+                    context.Subscription,
+                    context.Account,
+                    context.Environment,
+                    context.Tenant);
+            }
             result.TokenCache = context.TokenCache;
             return result;
         }
@@ -72,6 +85,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// The targeted tenant in Azure.
         /// </summary>
         public PSAzureTenant Tenant { get; set; }
+
         private byte[] TokenCache { get; set; }
     }
 }

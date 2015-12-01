@@ -55,8 +55,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         protected override DatabaseAuditingPolicyModel PersistChanges(DatabaseAuditingPolicyModel model)
         {
             ModelAdapter.IgnoreStorage = true;
-            base.PersistChanges(model);
-            return null;
+            return base.PersistChanges(model);
         }
     }
 }

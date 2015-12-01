@@ -166,6 +166,19 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetVaultByNameCapitalized()
+        {
+            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
+                () => new[] { string.Format("{0} {1}", "Test-GetVaultByName", _data.preCreatedVault.ToUpper()) },
+                env => Initialize(),
+                null,
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName()
+                );
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetUnknownVaultFails()
         {
             KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
@@ -471,6 +484,54 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
                 () =>
                 {
                     return new[] { string.Format("{0} {1} {2} {3}", "Test-ModifyAccessPolicyEnabledForDeployment", _data.preCreatedVault, _data.resourceGroupName, upn) };
+                },
+                (env) =>
+                {
+                    Initialize();
+                    upn = GetUser(env.GetTestEnvironment());
+                },
+                null,
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName()
+                );
+        }
+
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestModifyAccessPolicyEnabledForTemplateDeployment()
+        {
+            string upn = "";
+
+            _data.ResetPreCreatedVault();
+            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
+                () =>
+                {
+                    return new[] { string.Format("{0} {1} {2} {3}", "Test-ModifyAccessPolicyEnabledForTemplateDeployment", _data.preCreatedVault, _data.resourceGroupName, upn) };
+                },
+                (env) =>
+                {
+                    Initialize();
+                    upn = GetUser(env.GetTestEnvironment());
+                },
+                null,
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName()
+                );
+        }
+
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestModifyAccessPolicyEnabledForDiskEncryption()
+        {
+            string upn = "";
+
+            _data.ResetPreCreatedVault();
+            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
+                () =>
+                {
+                    return new[] { string.Format("{0} {1} {2} {3}", "Test-ModifyAccessPolicyEnabledForDiskEncryption", _data.preCreatedVault, _data.resourceGroupName, upn) };
                 },
                 (env) =>
                 {

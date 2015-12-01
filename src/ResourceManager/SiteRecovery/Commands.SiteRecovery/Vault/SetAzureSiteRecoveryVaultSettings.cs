@@ -52,9 +52,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             // Change the vault context
             ASRVaultCreds vaultCreds = RecoveryServicesClient.ChangeVaultContext(this.Vault);
 
-            this.WriteObject(new ASRVaultSettings(
-                PSRecoveryServicesClient.asrVaultCreds.ResourceName,
-                PSRecoveryServicesClient.asrVaultCreds.ResourceGroupName));
+            this.WriteObject(new ASRVaultSettings(PSRecoveryServicesClient.asrVaultCreds));
         }
     }
 }

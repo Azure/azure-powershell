@@ -38,13 +38,13 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
     public static class ScenarioTestHelpers
     {
         // NOTE: To save time on setup and compute node allocation when recording, many tests assume the following:
-        //     - A Batch account named 'pstests' exists under the subscription being used for recording.
+        //     - The SharedAccount exists under the subscription being used for recording.
         //     - The following commands were run to create a pool, and all 3 compute nodes are allocated:
-        //          $context = Get-AzureRmBatchAccountKeys "pstests"
+        //          $context = Get-AzureRmBatchAccountKeys "<SharedAccount>"
         //          $startTask = New-Object Microsoft.Azure.Commands.Batch.Models.PSStartTask
         //          $startTask.CommandLine = "cmd /c echo hello"
         //          New-AzureBatchPool -Id "testPool" -VirtualMachineSize "small" -OSFamily "4" -TargetOSVersion "*" -TargetDedicated 3 -StartTask $startTask -BatchContext $context
-        internal const string SharedAccount = "pstests";
+        internal const string SharedAccount = "pstestaccount";
         internal const string SharedPool = "testPool";
         internal const string SharedPoolStartTaskStdOut = "startup\\stdout.txt";
         internal const string SharedPoolStartTaskStdOutContent = "hello";
@@ -71,7 +71,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
             BatchAccountContext context = client.ListKeys(null, accountName);
 
-            return context;
+            ScenarioTestContext testContext = new ScenarioTestContext(context);
+
+            return testContext;
         }
 
         /// <summary>
@@ -88,12 +90,47 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// </summary>
         public static string AddTestCertificate(BatchController controller, BatchAccountContext context, string filePath)
         {
-            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
-            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
             X509Certificate2 cert = new X509Certificate2(filePath);
-            NewCertificateParameters parameters = new NewCertificateParameters(context, null, cert.RawData, behaviors);
+            ListCertificateOptions getParameters = new ListCertificateOptions(context) 
+            { 
+                ThumbprintAlgorithm = BatchTestHelpers.TestCertificateAlgorithm, 
+                Thumbprint = cert.Thumbprint,
+                Select = "thumbprint,state"
+            };
+
+            try
+            {
+                PSCertificate existingCert = client.ListCertificates(getParameters).FirstOrDefault();
+                DateTime start = DateTime.Now;
+                DateTime end = start.AddMinutes(5);
+
+                // Cert might still be deleting from other tests, so we wait for the delete to finish.
+                while (existingCert != null && existingCert.State == CertificateState.Deleting)
+                {
+                    if (DateTime.Now > end)
+                    {
+                        throw new TimeoutException("Timed out waiting for existing cert to be deleted.");
+                    }
+                    Sleep(5000);
+                    existingCert = client.ListCertificates(getParameters).FirstOrDefault();
+                }
+            }
+            catch (AggregateException ex)
+            {
+                foreach (Exception inner in ex.InnerExceptions)
+                {
+                    BatchException batchEx = inner as BatchException;
+                    // When the cert doesn't exist, we get a 404 error. For all other errors, throw.
+                    if (batchEx == null || !batchEx.Message.Contains("CertificateNotFound"))
+                    {
+                        throw;
+                    }
+                }
+            }
+
+            NewCertificateParameters parameters = new NewCertificateParameters(context, null, cert.RawData);
 
             client.AddCertificate(parameters);
 
@@ -105,12 +142,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// </summary>
         public static void DeleteTestCertificate(BatchController controller, BatchAccountContext context, string thumbprintAlgorithm, string thumbprint)
         {
-            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
-            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
             CertificateOperationParameters parameters = new CertificateOperationParameters(context, thumbprintAlgorithm,
-                thumbprint, behaviors);
+                thumbprint);
 
             client.DeleteCertificate(parameters);
         }
@@ -120,11 +155,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// </summary>
         public static void WaitForCertificateToFailDeletion(BatchController controller, BatchAccountContext context, string thumbprintAlgorithm, string thumbprint)
         {
-            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
-            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
-            ListCertificateOptions parameters = new ListCertificateOptions(context, behaviors)
+            ListCertificateOptions parameters = new ListCertificateOptions(context)
             {
                 ThumbprintAlgorithm = BatchTestHelpers.TestCertificateAlgorithm,
                 Thumbprint = thumbprint
@@ -149,8 +182,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// </summary>
         public static void CreateTestPool(BatchController controller, BatchAccountContext context, string poolId, int targetDedicated, CertificateReference certReference = null)
         {
-            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
-            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
             PSCertificateReference[] certReferences = null;
@@ -159,7 +190,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 certReferences = new PSCertificateReference[] { new PSCertificateReference(certReference) };
             }
 
-            NewPoolParameters parameters = new NewPoolParameters(context, poolId, behaviors)
+            NewPoolParameters parameters = new NewPoolParameters(context, poolId)
             {
                 VirtualMachineSize = "small",
                 OSFamily = "4",
@@ -173,32 +204,26 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         public static void EnableAutoScale(BatchController controller, BatchAccountContext context, string poolId)
         {
-            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
-            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
             string formula = "$TargetDedicated=2";
-            AutoScaleParameters parameters = new AutoScaleParameters(context, poolId, null, formula, behaviors);
+            AutoScaleParameters parameters = new AutoScaleParameters(context, poolId, null, formula);
             client.EnableAutoScale(parameters);
         }
 
         public static void DisableAutoScale(BatchController controller, BatchAccountContext context, string poolId)
         {
-            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
-            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
-            PoolOperationParameters parameters = new PoolOperationParameters(context, poolId, null, behaviors);
+            PoolOperationParameters parameters = new PoolOperationParameters(context, poolId, null);
             client.DisableAutoScale(parameters);
         }
 
         public static string WaitForOSVersionChange(BatchController controller, BatchAccountContext context, string poolId)
         {
-            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
-            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
-            ListPoolOptions options = new ListPoolOptions(context, behaviors)
+            ListPoolOptions options = new ListPoolOptions(context)
             {
                 PoolId = poolId
             };
@@ -218,18 +243,28 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             return pool.TargetOSVersion;
         }
 
-        public static void WaitForSteadyPoolAllocation(BatchController controller, BatchAccountContext context, string poolId)
+        public static void ResizePool(BatchController controller, BatchAccountContext context, string poolId, int targetDedicated)
         {
-            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
-            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
-            ListPoolOptions options = new ListPoolOptions(context, behaviors)
+            PoolResizeParameters parameters = new PoolResizeParameters(context, poolId, null)
+            {
+                TargetDedicated = targetDedicated
+            };
+
+            client.ResizePool(parameters);
+        }
+
+        public static void WaitForSteadyPoolAllocation(BatchController controller, BatchAccountContext context, string poolId)
+        {
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            ListPoolOptions options = new ListPoolOptions(context)
             {
                 PoolId = poolId
             };
 
-            DateTime timeout = DateTime.Now.AddMinutes(2);
+            DateTime timeout = DateTime.Now.AddMinutes(5);
             PSCloudPool pool = client.ListPools(options).First();
             while (pool.AllocationState != AllocationState.Steady)
             {
@@ -247,11 +282,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// </summary>
         public static int GetPoolCurrentDedicated(BatchController controller, BatchAccountContext context, string poolId)
         {
-            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
-            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
-            ListPoolOptions options = new ListPoolOptions(context, behaviors)
+            ListPoolOptions options = new ListPoolOptions(context)
             {
                 PoolId = poolId
             };
@@ -265,11 +298,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// </summary>
         public static int GetPoolCount(BatchController controller, BatchAccountContext context)
         {
-            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
-            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
-            ListPoolOptions options = new ListPoolOptions(context, behaviors);
+            ListPoolOptions options = new ListPoolOptions(context);
 
             return client.ListPools(options).Count();
         }
@@ -280,11 +311,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// </summary>
         public static void DeletePool(BatchController controller, BatchAccountContext context, string poolId)
         {
-            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
-            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
-            client.DeletePool(context, poolId, behaviors);
+            client.DeletePool(context, poolId);
         }
 
         /// <summary>
@@ -292,8 +321,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// </summary>
         public static void CreateTestJobSchedule(BatchController controller, BatchAccountContext context, string jobScheduleId, TimeSpan? recurrenceInterval)
         {
-            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
-            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
             PSJobSpecification jobSpecification = new PSJobSpecification();
@@ -306,7 +333,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 schedule.RecurrenceInterval = recurrenceInterval;
             }
 
-            NewJobScheduleParameters parameters = new NewJobScheduleParameters(context, jobScheduleId, behaviors)
+            NewJobScheduleParameters parameters = new NewJobScheduleParameters(context, jobScheduleId)
             {
                 JobSpecification = jobSpecification,
                 Schedule = schedule
@@ -320,14 +347,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// </summary>
         public static void CreateTestJob(BatchController controller, BatchAccountContext context, string jobId)
         {
-            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
-            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
             PSPoolInformation poolInfo = new PSPoolInformation();
             poolInfo.PoolId = SharedPool;
 
-            NewJobParameters parameters = new NewJobParameters(context, jobId, behaviors)
+            NewJobParameters parameters = new NewJobParameters(context, jobId)
             {
                 PoolInformation = poolInfo
             };
@@ -341,11 +366,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         public static string WaitForRecentJob(BatchController controller, BatchAccountContext context, string jobScheduleId, string previousJob = null)
         {
             DateTime timeout = DateTime.Now.AddMinutes(2);
-            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
-            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
-            ListJobScheduleOptions options = new ListJobScheduleOptions(context, behaviors)
+            ListJobScheduleOptions options = new ListJobScheduleOptions(context)
             {
                 JobScheduleId = jobScheduleId,
                 Filter = null,
@@ -370,11 +393,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// </summary>
         public static void CreateTestTask(BatchController controller, BatchAccountContext context, string jobId, string taskId, string cmdLine = "cmd /c dir /s")
         {
-            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
-            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
-            NewTaskParameters parameters = new NewTaskParameters(context, jobId, null, taskId, behaviors)
+            NewTaskParameters parameters = new NewTaskParameters(context, jobId, null, taskId)
             {
                 CommandLine = cmdLine,
                 RunElevated = true
@@ -388,11 +409,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// </summary>
         public static void WaitForTaskCompletion(BatchController controller, BatchAccountContext context, string jobId, string taskId)
         {
-            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
-            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
-            ListTaskOptions options = new ListTaskOptions(context, jobId, null, behaviors)
+            ListTaskOptions options = new ListTaskOptions(context, jobId, null)
             {
                 TaskId = taskId
             };
@@ -407,15 +426,29 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         /// <summary>
+        /// Gets the id of the compute node that the specified task completed on. Returns null if the task isn't complete.
+        /// </summary>
+        public static string GetTaskComputeNodeId(BatchController controller, BatchAccountContext context, string jobId, string taskId)
+        {
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            ListTaskOptions options = new ListTaskOptions(context, jobId, null)
+            {
+                TaskId = taskId
+            };
+            PSCloudTask task = client.ListTasks(options).First();
+
+            return task.ComputeNodeInformation == null ? null : task.ComputeNodeInformation.ComputeNodeId;
+        }
+
+        /// <summary>
         /// Deletes a job schedule used in a Scenario test.
         /// </summary>
         public static void DeleteJobSchedule(BatchController controller, BatchAccountContext context, string jobScheduleId)
         {
-            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
-            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
-            client.DeleteJobSchedule(context, jobScheduleId, behaviors);
+            client.DeleteJobSchedule(context, jobScheduleId);
         }
 
         /// <summary>
@@ -423,11 +456,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// </summary>
         public static void DeleteJob(BatchController controller, BatchAccountContext context, string jobId)
         {
-            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
-            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
-            client.DeleteJob(context, jobId, behaviors);
+            client.DeleteJob(context, jobId);
         }
 
         /// <summary>
@@ -435,11 +466,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// </summary>
         public static void TerminateJob(BatchController controller, BatchAccountContext context, string jobId)
         {
-            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
-            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
-            TerminateJobParameters parameters = new TerminateJobParameters(context, jobId, null, behaviors);
+            TerminateJobParameters parameters = new TerminateJobParameters(context, jobId, null);
 
             client.TerminateJob(parameters);
         }
@@ -447,15 +476,13 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Gets the id of a compute node in the specified pool
         /// </summary>
-        public static string GetComputeNodeId(BatchController controller, BatchAccountContext context, string poolId)
+        public static string GetComputeNodeId(BatchController controller, BatchAccountContext context, string poolId, int index = 0)
         {
-            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
-            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
-            ListComputeNodeOptions options = new ListComputeNodeOptions(context, poolId, null, behaviors);
-
-            return client.ListComputeNodes(options).First().Id;
+            ListComputeNodeOptions options = new ListComputeNodeOptions(context, poolId, null);
+            List<PSComputeNode> computeNodes = client.ListComputeNodes(options).ToList();
+            return computeNodes[index].Id;
         }
 
         /// <summary>
@@ -463,11 +490,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// </summary>
         public static void WaitForIdleComputeNode(BatchController controller, BatchAccountContext context, string poolId, string computeNodeId)
         {
-            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
-            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
-            ListComputeNodeOptions options = new ListComputeNodeOptions(context, poolId, null, behaviors)
+            ListComputeNodeOptions options = new ListComputeNodeOptions(context, poolId, null)
             {
                 ComputeNodeId = computeNodeId
             };
@@ -491,11 +516,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// </summary>
         public static void CreateComputeNodeUser(BatchController controller, BatchAccountContext context, string poolId, string computeNodeId, string computeNodeUserName)
         {
-            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
-            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
-            NewComputeNodeUserParameters parameters = new NewComputeNodeUserParameters(context, poolId, computeNodeId, null, behaviors)
+            NewComputeNodeUserParameters parameters = new NewComputeNodeUserParameters(context, poolId, computeNodeId, null)
             {
                 ComputeNodeUserName = computeNodeUserName,
                 Password = "Password1234!",
@@ -509,31 +532,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// </summary>
         public static void DeleteComputeNodeUser(BatchController controller, BatchAccountContext context, string poolId, string computeNodeId, string computeNodeUserName)
         {
-            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
-            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
-            ComputeNodeUserOperationParameters parameters = new ComputeNodeUserOperationParameters(context, poolId, computeNodeId, computeNodeUserName, behaviors);
+            ComputeNodeUserOperationParameters parameters = new ComputeNodeUserOperationParameters(context, poolId, computeNodeId, computeNodeUserName);
 
             client.DeleteComputeNodeUser(parameters);
-        }
-
-
-        /// <summary>
-        /// Creates an interceptor that can be used to support the HTTP recorder scenario tests.
-        /// Since the BatchRestClient is not generated from the test infrastructure, the HTTP
-        /// recording delegate must be explicitly added.
-        /// </summary>
-        public static RequestInterceptor CreateHttpRecordingInterceptor()
-        {
-            RequestInterceptor interceptor = new RequestInterceptor((batchRequest) =>
-            {
-                // Setup HTTP recorder
-                HttpMockServer mockServer = HttpMockServer.CreateInstance();
-                mockServer.InnerHandler = new HttpClientHandler();
-                batchRequest.RestClient.AddHandlerToPipeline(mockServer);
-            });
-            return interceptor;
         }
 
         /// <summary>
