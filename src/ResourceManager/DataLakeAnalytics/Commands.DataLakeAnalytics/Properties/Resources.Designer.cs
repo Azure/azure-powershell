@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot perform the requested operation because the specified account &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string AccountDoesNotExist {
+            get {
+                return ResourceManager.GetString("AccountDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} jobs do not support the inclusion of additional information. This is currently only supported for SQL-IP jobs. The -Include parameter will be ignored for this job..
         /// </summary>
         internal static string AdditionalDataNotSupported {
@@ -138,6 +147,24 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         internal static string InvalidJobType {
             get {
                 return ResourceManager.GetString("InvalidJobType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to U-SQL Secrets can only be returned by specific database secret name combination. There is no list support..
+        /// </summary>
+        internal static string InvalidUSqlSecretRequest {
+            get {
+                return ResourceManager.GetString("InvalidUSqlSecretRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to U-SQL Types can only be returned in a list of all types within a database and schema combination..
+        /// </summary>
+        internal static string InvalidUSqlTypeRequest {
+            get {
+                return ResourceManager.GetString("InvalidUSqlTypeRequest", resourceCulture);
             }
         }
         

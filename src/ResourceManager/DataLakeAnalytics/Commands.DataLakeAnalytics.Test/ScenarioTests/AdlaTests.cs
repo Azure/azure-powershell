@@ -34,6 +34,19 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAdlaCatalog()
+        {
+            RunPowerShellTest(
+                string.Format(
+                    "Test-DataLakeAnalyticsCatalog -resourceGroupName {0} -accountName {1} -dataLakeAccountName {2} -databaseName {3} -tableName {4} -tvfName {5} -viewName {6} -procName {7} -secretName {8} -secretPwd {9} -credentialName {10} -location '{11}'",
+                    this.resourceGroupName, this.dataLakeAnalyticsAccountName, this.dataLakeStoreAccountName,
+                    this.dbName, this.tableName, this.tvfName, this.viewName, this.procName, this.secretName,
+                    this.secretPwd, this.credName,
+                    AdlaTestsBase.resourceGroupLocation));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAdlaJob()
         {
             RunPowerShellTest(string.Format("Test-DataLakeAnalyticsJob -resourceGroupName {0} -accountName {1} -dataLakeAccountName {2} -location '{3}'", this.resourceGroupName, this.dataLakeAnalyticsAccountName, this.dataLakeStoreAccountName, AdlaTestsBase.resourceGroupLocation));
