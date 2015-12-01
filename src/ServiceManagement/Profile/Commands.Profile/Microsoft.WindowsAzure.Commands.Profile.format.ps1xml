@@ -76,7 +76,8 @@
                 <PropertyName>TenantId</PropertyName>
               </ListItem>
               <ListItem>
-                <PropertyName>CurrentStorageAccountName</PropertyName>
+                <Label>CurrentStorageAccountName</Label>
+                <ScriptBlock>$_.GetAccountName()</ScriptBlock>
               </ListItem>
             </ListItems>
           </ListEntry>
