@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json
             var attributes = objectType.GetTypeInfo().GetCustomAttributes(typeof(JsonPreserveCaseDictionaryAttribute), true);
             if (attributes.Any())
             {
-                contract.PropertyNameResolver = propertyName => propertyName;
+                contract.DictionaryKeyResolver = propertyName => propertyName;
             }
 
             return contract;
