@@ -167,6 +167,7 @@
     <Compile Include="Cmdlet\RemoveAzureAutomationRunbook.cs" />
     <Compile Include="Cmdlet\RemoveAzureAutomationSchedule.cs" />
     <Compile Include="Cmdlet\RemoveAzureAutomationVariable.cs" />
+    <Compile Include="Cmdlet\RemoveAzureAutomationDscConfiguration.cs" />
     <Compile Include="Cmdlet\RemoveAzureAutomationWebhook.cs" />
     <Compile Include="Cmdlet\ResumeAzureAutomationJob.cs" />
     <Compile Include="Cmdlet\SetAzureAutomationCertificate.cs" />

@@ -74,6 +74,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         DirectoryInfo GetConfigurationContent(string resourceGroupName, string automationAccountName, string configurationName, bool? isDraft, string outputFolder, bool overwriteExistingFile);
 
+        void DeleteConfiguration(string resourceGroupName, string automationAccountName, string name);
+
         #endregion
 
         #region AgentRegistrationInforamtion
