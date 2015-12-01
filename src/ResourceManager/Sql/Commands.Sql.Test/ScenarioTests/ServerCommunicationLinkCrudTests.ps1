@@ -13,88 +13,88 @@
 # ----------------------------------------------------------------------------------
 
 <# 
-    .SYNOPSIS
-    Tests creating a server communication link
+	.SYNOPSIS
+	Tests creating a server communication link
 #>
 function Test-CreateServerCommunicationLink
 {
-    # Setup 
+	# Setup 
 	$rg = Create-ResourceGroupForTest
 	$server = Create-ServerForTest $rg "Japan East"
 	$server2 = Create-ServerForTest $rg "Japan East"
 
-    try
-    {
+	try
+	{
 		$linkName = Get-ElasticPoolName
 		$ep1 = New-AzureRmSqlServerCommunicationLink -ServerName $server1.ServerName -ResourceGroupName $rg.ResourceGroupName `
 			-LinkName $linkName -PartnerServer $server2.ServerName
 
-        Assert-NotNull $ep1
-        Assert-AreEqual $server2.ServerName $ep1.PartnerServer
-    }
-    finally
-    {
-        Remove-ResourceGroupForTest $rg
-    }
+		Assert-NotNull $ep1
+		Assert-AreEqual $server2.ServerName $ep1.PartnerServer
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
 }
 
 <# 
-    .SYNOPSIS
-    Tests getting a server communication link
+	.SYNOPSIS
+	Tests getting a server communication link
 #>
 function Test-GetServerCommunicationLink
 {
-    # Setup 
+	# Setup 
 	$rg = Create-ResourceGroupForTest
 	$server = Create-ServerForTest $rg "Japan East"
 	$server2 = Create-ServerForTest $rg "Japan East"
 
-    $linkName = Get-ElasticPoolName
-    $ep1 = New-AzureRmSqlServerCommunicationLink -ServerName $server1.ServerName -ResourceGroupName $rg.ResourceGroupName `
-        -LinkName $linkName -PartnerServer $server2.ServerName
-    Assert-NotNull $ep1
-    
-    try
-    {
-        $gep1 = Get-AzureRmSqlServerCommunicationLink -ServerName $server1.ServerName -ResourceGroupName $rg.ResourceGroupName `
-            -LinkName $ep1.LinkName 
-        Assert-NotNull $ep1
-        Assert-AreEqual $server2.ServerName $ep1.PartnerServer
+	$linkName = Get-ElasticPoolName
+	$ep1 = New-AzureRmSqlServerCommunicationLink -ServerName $server1.ServerName -ResourceGroupName $rg.ResourceGroupName `
+		-LinkName $linkName -PartnerServer $server2.ServerName
+	Assert-NotNull $ep1
+	
+	try
+	{
+		$gep1 = Get-AzureRmSqlServerCommunicationLink -ServerName $server1.ServerName -ResourceGroupName $rg.ResourceGroupName `
+			-LinkName $ep1.LinkName 
+		Assert-NotNull $ep1
+		Assert-AreEqual $server2.ServerName $ep1.PartnerServer
 
-        $all = $server | Get-AzureRmSqlServerCommunicationLink
-        Assert-AreEqual $all.Count 1
-    }
-    finally
-    {
-        Remove-ResourceGroupForTest $rg
-    }
+		$all = $server | Get-AzureRmSqlServerCommunicationLink
+		Assert-AreEqual $all.Count 1
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
 }
 
 <# 
-    .SYNOPSIS
-    Tests removing a server communication link
+	.SYNOPSIS
+	Tests removing a server communication link
 #>
 function Test-RemoveServerCommunicationLink
 {
-    # Setup 
+	# Setup 
 	$rg = Create-ResourceGroupForTest
 	$server1 = Create-ServerForTest $rg "Japan East"
 	$server2 = Create-ServerForTest $rg "Japan East"
 
-    $linkName = Get-ElasticPoolName
-    $ep1 = New-AzureRmSqlServerCommunicationLink -ServerName $server1.ServerName -ResourceGroupName $rg.ResourceGroupName `
-        -LinkName $linkName -PartnerServer $server2.ServerName
-    Assert-NotNull $ep1
-    
-    try
-    {
-        Remove-AzureRmSqlServerCommunicationLink -ServerName $server1.ServerName -ResourceGroupName $rg.ResourceGroupName -LinkName $ep1.LinkName -Force
-        
-        $all = $server | Get-AzureRmSqlServerCommunicationLink
-        Assert-AreEqual $all.Count 0
-    }
-    finally
-    {
-        Remove-ResourceGroupForTest $rg
-    }
+	$linkName = Get-ElasticPoolName
+	$ep1 = New-AzureRmSqlServerCommunicationLink -ServerName $server1.ServerName -ResourceGroupName $rg.ResourceGroupName `
+		-LinkName $linkName -PartnerServer $server2.ServerName
+	Assert-NotNull $ep1
+	
+	try
+	{
+		Remove-AzureRmSqlServerCommunicationLink -ServerName $server1.ServerName -ResourceGroupName $rg.ResourceGroupName -LinkName $ep1.LinkName -Force
+		
+		$all = $server | Get-AzureRmSqlServerCommunicationLink
+		Assert-AreEqual $all.Count 0
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
 }

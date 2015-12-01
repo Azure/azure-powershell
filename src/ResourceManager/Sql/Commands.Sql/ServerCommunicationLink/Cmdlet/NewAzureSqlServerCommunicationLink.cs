@@ -83,6 +83,12 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Cmdlet
         protected override IEnumerable<AzureSqlServerCommunicationLinkModel> ApplyUserInputToModel(IEnumerable<AzureSqlServerCommunicationLinkModel> model)
         {
             string location = ModelAdapter.GetServerLocation(ResourceGroupName, ServerName);
+
+            if (!MyInvocation.BoundParameters.ContainsKey("PartnerServer"))
+            {
+                throw new CmdletInvocationException("'PartnerServer' must be specified in the invocation of this cmdlet.");
+            }
+
             List<AzureSqlServerCommunicationLinkModel> newEntity = new List<AzureSqlServerCommunicationLinkModel>();
             newEntity.Add(new AzureSqlServerCommunicationLinkModel()
                 {
@@ -90,7 +96,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Cmdlet
                     ServerName = ServerName,
                     Location = location,
                     Name = LinkName,
-                    PartnerServer = MyInvocation.BoundParameters.ContainsKey("PartnerServer") ? PartnerServer : null,
+                    PartnerServer = PartnerServer,
                 });
             return newEntity;
         }

@@ -260,6 +260,7 @@
   </data>
   <data name="ServerCommunicationLinkNameExists" xml:space="preserve">
     <value>Server communication link with name: '{0}' already exists in server '{1}'.</value>
+  </data>
   <data name="EmailsAreNotValid" xml:space="preserve">
     <value>One or more of the email addresses you entered are not valid.</value>
   </data>

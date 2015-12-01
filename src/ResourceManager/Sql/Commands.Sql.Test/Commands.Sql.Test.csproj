@@ -207,7 +207,10 @@
     <None Include="ScenarioTests\ServerActiveDirectoryAdministratorTest.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\ServerCommunicationLinkCrudTests.ps1" />
+    <None Include="ScenarioTests\ServerCommunicationLinkCrudTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+
+    </None>
     <None Include="ScenarioTests\ServiceTierAdvisorTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

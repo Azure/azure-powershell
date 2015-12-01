@@ -118,7 +118,6 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Services
             Communicator.Remove(resourceGroupName, serverName, communicationLinkName, Util.GenerateTracingId());
         }
 
-
         /// <summary>
         /// Gets the Location of the server.
         /// </summary>
