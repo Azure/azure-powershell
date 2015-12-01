@@ -31,6 +31,8 @@ namespace Microsoft.Azure.Commands.HDInsight
             public const string AzureHDInsightJobOutput = "AzureRmHDInsightJobOutput";
             public const string AzureHDInsightDefaultStorage = "AzureRmHDInsightDefaultStorage";
             public const string AzureHDInsightHiveJob = "AzureRmHDInsightHiveJob";
+            public const string AzureHDInsightClusterIdentity = "AzureHDInsightClusterIdentity";
+            public const string Hive = "Hive";
         }
 
         public static class JobDefinitions
@@ -39,6 +41,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             public const string AzureHDInsightPigJobDefinition = "AzureRmHDInsightPigJobDefinition";
             public const string AzureHDInsightMapReduceJobDefinition = "AzureRmHDInsightMapReduceJobDefinition";
             public const string AzureHDInsightStreamingMapReduceJobDefinition = "AzureRmHDInsightStreamingMapReduceJobDefinition";
+            public const string AzureHDInsightSqoopJobDefinition = "AzureRmHDInsightSqoopJobDefinition";
         }
 
         public static class ClusterConfiguration

@@ -37,14 +37,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         private readonly IEnumerable<ProductInfoHeaderValue> headerValues;
 
         /// <summary>
+        /// The cmdlet info header values.
+        /// </summary>
+        private readonly Dictionary<string,string> cmdletHeaderValues;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="HttpClientHelper"/> class.
         /// </summary>
         /// <param name="credentials">The subscription cloud credentials.</param>
         /// <param name="headerValues">The header values.</param>
-        protected HttpClientHelper(SubscriptionCloudCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues)
+        protected HttpClientHelper(SubscriptionCloudCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues, Dictionary<string,string> cmdletHeaderValues)
         {
             this.credentials = credentials;
             this.headerValues = headerValues;
+            this.cmdletHeaderValues = cmdletHeaderValues;
         }
 
         /// <summary>
@@ -57,6 +63,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
             {
                 new AuthenticationHandler(cloudCredentials: credentials),
                 new UserAgentHandler(headerValues: headerValues),
+                new CmdletInfoHandler(cmdletHeaderValues: cmdletHeaderValues),
                 new TracingHandler(),
                 new RetryHandler(),
             };

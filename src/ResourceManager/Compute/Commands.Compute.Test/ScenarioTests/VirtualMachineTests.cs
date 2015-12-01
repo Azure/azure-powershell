@@ -19,11 +19,11 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public partial class VirtualMachineTests
     {
-        [Fact(Skip = "PSGet Migration: TODO: Get-AzureRmSubscription")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachine()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachine");
+            ComputeTestController.NewInstance.RunPsTest(@"Test-VirtualMachine $null");
         }
 
         [Fact]
@@ -131,11 +131,26 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-GetVMSizeFromAllLocations");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO: OOM issue when writing the result")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineListWithPaging()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineListWithPaging");
         }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineWithDifferentStorageResource()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineWithDifferentStorageResource");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineWithEmptyAuc()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineWithEmptyAuc");
+        }
+
     }
 }

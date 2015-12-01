@@ -18,6 +18,9 @@ using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Threading;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 {
@@ -54,7 +57,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
             AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud], 
             new AzureTenant { Id = Guid.NewGuid(), Domain = "testdomain.onmicrosoft.com" });
 
-            AzureRMCmdlet.DefaultProfile = currentProfile;
+            AzureRmProfileProvider.Instance.Profile = currentProfile;
 
             // Now override AzureSession.DataStore to use the MemoryDataStore
             if (AzureSession.DataStore != null && !(AzureSession.DataStore is MemoryDataStore))
@@ -63,6 +66,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
             }
 
             AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
+            TestMockSupport.RunningMocked = true;
+            //This is needed for AutoRest Authentication
+            SynchronizationContext.SetSynchronizationContext(new SynchronizationContext());
         }
     }
 }

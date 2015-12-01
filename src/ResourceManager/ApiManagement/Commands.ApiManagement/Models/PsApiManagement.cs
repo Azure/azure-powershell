@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             AdditionalRegions = new List<PsApiManagementRegion>();
         }
 
-        internal PsApiManagement(ApiServiceResource apiServiceResource)
+        public PsApiManagement(ApiServiceResource apiServiceResource)
             : this()
         {
             if (apiServiceResource == null)
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
                 var proxyHostnameResource = apiServiceResource.Properties.HostnameConfigurations.FirstOrDefault(conf => conf.Type == HostnameType.Proxy);
                 if (proxyHostnameResource != null)
                 {
-                    PortalHostnameConfiguration = new PsApiManagementHostnameConfiguration(proxyHostnameResource);
+                    ProxyHostnameConfiguration = new PsApiManagementHostnameConfiguration(proxyHostnameResource);
                 }
             }
 

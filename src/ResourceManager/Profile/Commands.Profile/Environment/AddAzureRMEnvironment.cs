@@ -16,6 +16,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -81,17 +82,30 @@ namespace Microsoft.Azure.Commands.Profile
         public string SqlDatabaseDnsSuffix { get; set; }
 
         [Parameter(Position = 14, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Dns Suffix of Azure Data Lake Store FileSystem. Example: azuredatalake.net")]
+        public string AzureDataLakeStoreFileSystemEndpointSuffix { get; set; }
+
+        [Parameter(Position = 15, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Dns Suffix of Azure Data Lake Analytics job and catalog services")]
+        public string AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix { get; set; }
+
+        [Parameter(Position = 16, Mandatory = false, ValueFromPipelineByPropertyName = true,
           HelpMessage = "Enable ADFS authentication by disabling the authority validation")]
         [Alias("OnPremise")]
         public SwitchParameter EnableAdfsAuthentication { get; set; }
 
-        [Parameter(Position = 15, Mandatory = false, ValueFromPipelineByPropertyName = true,
+        [Parameter(Position = 17, Mandatory = false, ValueFromPipelineByPropertyName = true,
            HelpMessage = "The default tenant for this environment.")]
         public string AdTenant { get; set; }
 
+        protected override void BeginProcessing()
+        {
+            // do not call begin processing there is no context needed for this cmdlet
+        }
+
         protected override void ProcessRecord()
         {
-            var profileClient = new RMProfileClient(AzureRMCmdlet.DefaultProfile);
+            var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
 
             var newEnvironment = new AzureEnvironment
             {
@@ -112,6 +126,8 @@ namespace Microsoft.Azure.Commands.Profile
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId] = AzureKeyVaultServiceEndpointResourceId;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.TrafficManagerDnsSuffix] = TrafficManagerDnsSuffix;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix] = SqlDatabaseDnsSuffix;
+            newEnvironment.Endpoints[AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix] = AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix;
+            newEnvironment.Endpoints[AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix] = AzureDataLakeStoreFileSystemEndpointSuffix;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.AdTenant] = AdTenant;
             WriteObject((PSAzureEnvironment)profileClient.AddOrSetEnvironment(newEnvironment));
         }

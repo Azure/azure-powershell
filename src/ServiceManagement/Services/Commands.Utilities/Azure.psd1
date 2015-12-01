@@ -9,7 +9,7 @@
 @{
 
 # Version number of this module.
-ModuleVersion = '0.9.9'
+ModuleVersion = '1.0.1'
 
 # ID used to uniquely identify this module
 GUID = 'D48CF693-4125-4D2D-8790-1514F44CE325'
@@ -89,7 +89,7 @@ NestedModules = '.\Services\Microsoft.WindowsAzure.Commands.dll',
                 '.\Networking\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.dll',
                 '.\StorSimple\Microsoft.WindowsAzure.Commands.StorSimple.dll',
                 '.\RemoteApp\Microsoft.WindowsAzure.Commands.RemoteApp.dll',
-                '.\RecoveryServices\Microsoft.Azure.Commands.RecoveryServices.dll'
+                '.\RecoveryServices\Microsoft.Azure.Commands.RecoveryServicesRdfe.dll'
 
 # Functions to export from this module
 FunctionsToExport = '*'

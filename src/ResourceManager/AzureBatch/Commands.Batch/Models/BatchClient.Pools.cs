@@ -41,19 +41,20 @@ namespace Microsoft.Azure.Commands.Batch.Models
             {
                 WriteVerbose(string.Format(Resources.GetPoolById, options.PoolId));
                 PoolOperations poolOperations = options.Context.BatchOMClient.PoolOperations;
-                CloudPool pool = poolOperations.GetPool(options.PoolId, additionalBehaviors: options.AdditionalBehaviors);
+                ODATADetailLevel getDetailLevel = new ODATADetailLevel(selectClause: options.Select, expandClause: options.Expand);
+                CloudPool pool = poolOperations.GetPool(options.PoolId, detailLevel: getDetailLevel, additionalBehaviors: options.AdditionalBehaviors);
                 PSCloudPool psPool = new PSCloudPool(pool);
                 return new PSCloudPool[] { psPool };
             }
             // List pools using the specified filter
             else
             {
-                ODATADetailLevel odata = null;
                 string verboseLogString = null;
+                ODATADetailLevel listDetailLevel = new ODATADetailLevel(selectClause: options.Select, expandClause: options.Expand);
                 if (!string.IsNullOrEmpty(options.Filter))
                 {
                     verboseLogString = Resources.GetPoolByOData;
-                    odata = new ODATADetailLevel(filterClause: options.Filter);
+                    listDetailLevel.FilterClause = options.Filter;
                 }
                 else
                 {
@@ -62,7 +63,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 WriteVerbose(verboseLogString);
 
                 PoolOperations poolOperations = options.Context.BatchOMClient.PoolOperations;
-                IPagedEnumerable<CloudPool> pools = poolOperations.ListPools(odata, options.AdditionalBehaviors);
+                IPagedEnumerable<CloudPool> pools = poolOperations.ListPools(listDetailLevel, options.AdditionalBehaviors);
                 Func<CloudPool, PSCloudPool> mappingFunction = p => { return new PSCloudPool(p); };
                 return PSPagedEnumerable<PSCloudPool, CloudPool>.CreateWithMaxCount(
                     pools, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));            
@@ -86,6 +87,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             pool.ResizeTimeout = parameters.ResizeTimeout;
             pool.MaxTasksPerComputeNode = parameters.MaxTasksPerComputeNode;
             pool.InterComputeNodeCommunicationEnabled = parameters.InterComputeNodeCommunicationEnabled;
+            pool.TargetOSVersion = parameters.TargetOSVersion;
 
             if (!string.IsNullOrEmpty(parameters.AutoScaleFormula))
             {

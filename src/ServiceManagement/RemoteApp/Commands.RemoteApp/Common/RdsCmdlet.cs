@@ -24,6 +24,7 @@ using System.Collections.ObjectModel;
 using System.Management.Automation;
 using System.Security.Principal;
 using Microsoft.Azure;
+using Microsoft.WindowsAzure.Commands.Common;
 
 
 namespace Microsoft.WindowsAzure.Management.RemoteApp.Models
@@ -56,6 +57,7 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
         private IRemoteAppManagementClient client = null;
 
         private Microsoft.WindowsAzure.Management.ManagementClient mgmtClient = null;
+        private IAdHelper cachedAdHelper = null;
 
         public IRemoteAppManagementClient Client
         {
@@ -81,8 +83,7 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
             set
             {
                 client = value;  // Test Hook
-                Profile = InitializeDefaultProfile();
-                SetTokenCacheForProfile(Profile);
+                AzureSMProfileProvider.Instance.ResetDefaultProfile();
             }
         }
 
@@ -102,6 +103,23 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
             set
             {
                 mgmtClient = value;
+            }
+        }
+
+        public IAdHelper ActiveDirectoryHelper
+        {
+            get
+            {
+                if (cachedAdHelper == null)
+                {
+                    cachedAdHelper = new AdHelper();
+                }
+
+                return cachedAdHelper;
+            }
+            set
+            {
+                cachedAdHelper = value;
             }
         }
 

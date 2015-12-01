@@ -46,6 +46,17 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         }
 
         /// <summary>
+        /// Method to delete Azure Site Recovery Vault
+        /// </summary>
+        /// <param name="resouceGroupName">name of the resouce group</param>
+        /// <param name="vaultName">name of the vault</param>
+        /// <returns>creation response object.</returns>
+        public RecoveryServicesOperationStatusResponse DeleteVault(string resouceGroupName, string vaultName)
+        {
+            return this.recoveryServicesClient.Vaults.BeginDeleting(resouceGroupName, vaultName);
+        }
+
+        /// <summary>
         /// Method to list Azure resouce groups
         /// </summary>
         /// <returns>resource group list response object.</returns>

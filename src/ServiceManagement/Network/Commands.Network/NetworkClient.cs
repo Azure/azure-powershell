@@ -271,6 +271,26 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
                 });
             }
 
+            //Probe
+            outConfig.Probes = new List<Probe>();
+
+            if (null != config.Probes)
+            {
+                foreach (PowerShellAppGwModel.Probe probe in config.Probes)
+                {
+                    outConfig.Probes.Add(new Probe
+                    {
+                        Name = probe.Name,
+                        Protocol = probe.Protocol.ToString(),
+                        Host = probe.Host,
+                        Path = probe.Path,
+                        Interval = probe.Interval,
+                        Timeout = probe.Timeout,
+                        UnhealthyThreshold = probe.UnhealthyThreshold
+                    });
+                }
+            }
+
             //Backend Address Pools 
             outConfig.BackendAddressPools = new List<BackendAddressPool>();
             foreach (PowerShellAppGwModel.BackendAddressPool pool in config.BackendAddressPools)
@@ -300,7 +320,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
                     Name = setting.Name,
                     Port = setting.Port,
                     Protocol = (Protocol)setting.Protocol,
-                    CookieBasedAffinity = setting.CookieBasedAffinity
+                    CookieBasedAffinity = setting.CookieBasedAffinity,
+                    RequestTimeout = setting.RequestTimeout,
+                    Probe = setting.Probe
                 });
             }
 
@@ -370,6 +392,28 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
                 });
             }
 
+            //Probe
+            List<PowerShellAppGwModel.Probe> probes = new List<PowerShellAppGwModel.Probe>();
+
+            if (null != config.Probes)
+            {
+                foreach (Probe probe in config.Probes)
+                {
+
+                    probes.Add(new PowerShellAppGwModel.Probe
+                    {
+                        Name = probe.Name,
+                        Protocol = (String.Equals(probe.Protocol, "http", StringComparison.InvariantCultureIgnoreCase) ?
+                                    PowerShellAppGwModel.Protocol.Http : PowerShellAppGwModel.Protocol.Https),
+                        Host = probe.Host,
+                        Path = probe.Path,
+                        Interval = probe.Interval,
+                        Timeout = probe.Timeout,
+                        UnhealthyThreshold = probe.UnhealthyThreshold
+                    });
+                }
+            }
+
             //Backend Address Pools 
             List<PowerShellAppGwModel.BackendAddressPool> pools = new List<PowerShellAppGwModel.BackendAddressPool>();
             foreach (BackendAddressPool pool in config.BackendAddressPools)
@@ -396,7 +440,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
                     Name = setting.Name,
                     Port = setting.Port,
                     Protocol = (PowerShellAppGwModel.Protocol)setting.Protocol,
-                    CookieBasedAffinity = setting.CookieBasedAffinity
+                    CookieBasedAffinity = setting.CookieBasedAffinity,
+                    RequestTimeout = setting.RequestTimeout,
+                    Probe = setting.Probe
                 });
             }
 
@@ -429,6 +475,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
             }
 
             outConfig.FrontendIPConfigurations = fips;
+            outConfig.Probes = probes;
             outConfig.FrontendPorts = fps;
             outConfig.BackendAddressPools = pools;
             outConfig.BackendHttpSettingsList = settings;

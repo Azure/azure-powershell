@@ -88,7 +88,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ServiceManagement.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ServiceManagement.Network.Test", "Network\Commands.Network.Test\Commands.ServiceManagement.Network.Test.csproj", "{FDB897BD-FCB4-44A1-8D66-AC99F22EC737}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RecoveryServices", "RecoveryServices\Commands.RecoveryServices\Commands.RecoveryServices.csproj", "{98B10548-DF97-4FB1-8D82-2A12945D4F21}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RecoveryServices", "RecoveryServices\Commands.RecoveryServices\Commands.RecoveryServicesRdfe.csproj", "{98B10548-DF97-4FB1-8D82-2A12945D4F21}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RecoveryServices.Test", "RecoveryServices\Commands.RecoveryServices.Test\Commands.RecoveryServices.Test.csproj", "{A415F75B-EB6A-49A6-934E-5BA71B83D6EB}"
 EndProject
@@ -105,6 +105,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.StorSimple.Test", "StorSimple\Commands.StorSimple.Test\Commands.StorSimple.Test.csproj", "{0FA676D5-1349-4086-B33F-65EC2CB7DA41}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ServiceManagement.Common", "Common\Commands.ServiceManagement.Common\Commands.ServiceManagement.Common.csproj", "{CFF09E81-1E31-444E-B4D4-A21E946C29E2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{1059B990-B1E2-4846-B1B2-8663F11CBDE3}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

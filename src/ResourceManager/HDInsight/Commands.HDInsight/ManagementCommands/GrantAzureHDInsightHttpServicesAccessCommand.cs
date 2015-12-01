@@ -27,23 +27,20 @@ namespace Microsoft.Azure.Commands.HDInsight
     public class GrantAzureHDInsightHttpServicesAccessCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
-
+        
         [Parameter(
             Position = 0,
-            Mandatory = true,
-            HelpMessage = "Gets or sets the name of the resource group.")]
-        public string ResourceGroupName { get; set; }
-
-        [Parameter(
-            Position = 1,
             Mandatory = true,
             HelpMessage = "Gets or sets the name of the cluster.")]
         public string ClusterName { get; set; }
 
-        [Parameter(Position = 2,
+        [Parameter(Position = 1,
             Mandatory = true,
             HelpMessage = "Gets or sets the login for the cluster's user.")]
         public PSCredential HttpCredential { get; set; }
+
+        [Parameter(HelpMessage = "Gets or sets the name of the resource group.")]
+        public string ResourceGroupName { get; set; }
 
         #endregion
 
@@ -55,6 +52,11 @@ namespace Microsoft.Azure.Commands.HDInsight
                 HttpUsername = HttpCredential.UserName,
                 HttpPassword = HttpCredential.Password.ConvertToString()
             };
+
+            if (ResourceGroupName == null)
+            {
+                ResourceGroupName = GetResourceGroupByAccountName(ClusterName);
+            }
             
             HDInsightManagementClient.ConfigureHttp(ResourceGroupName, ClusterName, httpParams);
             WriteObject(HDInsightManagementClient.GetConnectivitySettings(ResourceGroupName, ClusterName));

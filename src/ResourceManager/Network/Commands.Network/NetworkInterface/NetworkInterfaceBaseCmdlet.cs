@@ -63,11 +63,18 @@ namespace Microsoft.Azure.Commands.Network
             networkInterface.ResourceGroupName = resourceGroupName;
             networkInterface.Tag =
                 TagsConversionHelper.CreateTagHashtable(getNetworkInterfaceResponse.NetworkInterface.Tags);
-            
-            if (networkInterface.IpConfigurations[0].PublicIpAddress == null)
-            {
-                networkInterface.IpConfigurations[0].PublicIpAddress = new PSResourceId();
-            }
+
+            return networkInterface;
+        }
+
+        public PSNetworkInterface GetScaleSetNetworkInterface(string resourceGroupName, string scaleSetName, string vmIndex, string name)
+        {
+            var getNetworkInterfaceResponse = this.NetworkInterfaceClient.GetVirtualMachineScaleSetNetworkInterface(resourceGroupName, scaleSetName, vmIndex, name);
+
+            var networkInterface = Mapper.Map<PSNetworkInterface>(getNetworkInterfaceResponse.NetworkInterface);
+            networkInterface.ResourceGroupName = resourceGroupName;
+            networkInterface.Tag =
+                TagsConversionHelper.CreateTagHashtable(getNetworkInterfaceResponse.NetworkInterface.Tags);
 
             return networkInterface;
         }

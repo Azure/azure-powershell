@@ -27,13 +27,21 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string VpnType { get; set; }
 
         public bool EnableBgp { get; set; }
-        
+
+        public PSResourceId GatewayDefaultSite { get; set; }
+
         public string ProvisioningState { get; set; }
 
         [JsonIgnore]
         public string IpConfigurationsText
         {
             get { return JsonConvert.SerializeObject(IpConfigurations, Formatting.Indented); }
+        }
+
+        [JsonIgnore]
+        public string GatewayDefaultSiteText
+        {
+            get { return JsonConvert.SerializeObject(GatewayDefaultSite, Formatting.Indented); }
         }
     }
 }

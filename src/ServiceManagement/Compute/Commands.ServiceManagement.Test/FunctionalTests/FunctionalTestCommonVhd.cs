@@ -12,14 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
-using System;
-using System.IO;
-using System.Linq;
-using System.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.ConfigDataInfo;
+using Microsoft.WindowsAzure.Commands.Storage.Common;
+using System;
+using System.IO;
+using System.Linq;
+using System.Management.Automation;
+using System.Reflection;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 {
@@ -166,7 +167,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         private void CopyCommonVhd(string vhdContainerName, string vhdName, string myVhdName)
         {
-            vmPowershellCmdlets.RunPSScript(string.Format("Start-AzureStorageBlobCopy -SrcContainer {0} -SrcBlob {1} -DestContainer {2} -DestBlob {3}", vhdContainerName, vhdName, vhdContainerName, myVhdName));
+            vmPowershellCmdlets.RunPSScript(string.Format("{0}-{1} -SrcContainer {2} -SrcBlob {3} -DestContainer {4} -DestBlob {5}",
+                VerbsLifecycle.Start, StorageNouns.CopyBlob, vhdContainerName, vhdName, vhdContainerName, myVhdName));
         }
 
         [TestMethod(), TestCategory(Category.Functional), TestCategory(Category.BVT), TestProperty("Feature", "IAAS"), Priority(1), Owner("hylee"), Description("Test the cmdlet ((Add,Get,Save,Update,Remove)-AzureVMImage)")]

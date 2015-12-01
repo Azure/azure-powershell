@@ -67,6 +67,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
         [Parameter(
             ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName=true,
             HelpMessage = "Azure Storage Context Object")]
         public override AzureStorageContext Context { get; set; }
 
