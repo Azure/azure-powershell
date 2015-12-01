@@ -4159,9 +4159,6 @@
                         <Component Id="cmp2FF23DA02D92BABF1414E60E2746B791" Guid="*">
                             <File Id="fil8502BEF8D63565248962863AF77D7E44" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Microsoft.WindowsAzure.Management.TrafficManager.dll" />
                         </Component>
-                        <Component Id="cmp5BC1FEE2A60641F2345605CD3B676362" Guid="*">
-                            <File Id="filC467F130CDCA9ECCB88E974C5ADAA94B" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Microsoft.WindowsAzure.Management.VirtualNetworks.dll" />
-                        </Component>
                         <Component Id="cmpE1EAFD7E808AF4C192C5D45154BB2136" Guid="*">
                             <File Id="fil24568F5AAF5B1381C11436DB37976472" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Microsoft.WindowsAzure.Management.WebSites.dll" />
                         </Component>
@@ -6113,8 +6110,7 @@
             <ComponentRef Id="cmp2F2E1D5926F718232A6068856776B49D" />
             <ComponentRef Id="cmpF1CE4A66C053B106D2C485757F703AB2" />
             <ComponentRef Id="cmp2A6B149B9B0BDCC11A05919864D86251" />
-            <ComponentRef Id="cmp2FF23DA02D92BABF1414E60E2746B791" />
-            <ComponentRef Id="cmp5BC1FEE2A60641F2345605CD3B676362" />
+            <ComponentRef Id="cmp2FF23DA02D92BABF1414E60E2746B791" />            
             <ComponentRef Id="cmpE1EAFD7E808AF4C192C5D45154BB2136" />
             <ComponentRef Id="cmp0313F8F73743B761E3DC5BBE65D6FB04" />
             <ComponentRef Id="cmpFA98ECC9A87BB49B7FC68AC0CDC89955" />

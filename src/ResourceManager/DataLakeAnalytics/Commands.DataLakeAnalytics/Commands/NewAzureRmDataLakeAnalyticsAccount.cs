@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         {
             try
             {
-                if (DataLakeAnalyticsClient.GetAcount(ResourceGroupName, Name) != null)
+                if (DataLakeAnalyticsClient.GetAccount(ResourceGroupName, Name) != null)
                 {
                     throw new CloudException(string.Format(Resources.DataLakeAnalyticsAccountExists, Name));
                 }
