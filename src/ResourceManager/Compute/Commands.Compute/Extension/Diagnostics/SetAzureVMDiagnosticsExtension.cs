@@ -12,18 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Management.Storage;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Commands.Management.Storage;
-using Microsoft.Azure.Management.Storage;
-using Newtonsoft.Json;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -82,6 +79,7 @@ namespace Microsoft.Azure.Commands.Compute
         }
 
         [Parameter(
+            Mandatory = false,
             Position = 4,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The location.")]
@@ -175,6 +173,11 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
+                if (string.IsNullOrEmpty(this.Location))
+                {
+                    this.Location = GetLocationFromVm(this.ResourceGroupName, this.VMName);
+                }
+
                 var parameters = new VirtualMachineExtension
                 {
                     Location = this.Location,

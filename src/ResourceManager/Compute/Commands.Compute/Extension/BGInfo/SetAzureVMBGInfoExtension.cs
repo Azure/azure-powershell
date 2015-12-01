@@ -12,24 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+
+using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
-using Newtonsoft.Json;
-using System.Collections;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(
         VerbsCommon.Set,
-        ProfileNouns.VirtualMachineAccessExtension)]
-    public class SetAzureVMAccessExtensionCommand : VirtualMachineExtensionBaseCmdlet
+        ProfileNouns.VirtualMachineBgInfoExtension)]
+    public class SetAzureVMBGInfoExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
-        private const string userNameKey = "UserName";
-        private const string passwordKey = "Password";
-
         [Parameter(
            Mandatory = true,
            Position = 0,
@@ -49,59 +46,43 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Alias("ExtensionName")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The extension name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Alias("HandlerVersion", "Version")]
         [Parameter(
             Mandatory = false,
             Position = 3,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The type handler version.")]
-        [ValidateNotNullOrEmpty]
-        public string TypeHandlerVersion { get; set; }
-
-        [Parameter(
-           Mandatory = false,
-           Position = 4,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "New or Existing User Name")]
-        public string UserName { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            Position = 5,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "New or Existing User Password")]
-        public string Password { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            Position = 6,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The location.")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
-        public override void ExecuteCmdlet()
+        [Alias("HandlerVersion", "Version")]
+        [Parameter(
+            Mandatory = true,
+            Position = 5,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The version")]
+        [ValidateNotNullOrEmpty]
+        public string TypeHandlerVersion { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            Position = 5,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Disable auto-upgrade of minor version")]
+        public SwitchParameter DisableAutoUpgradeMinorVersion { get; set; }
+
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
             ExecuteClientAction(() =>
             {
-                Hashtable publicSettings = new Hashtable();
-                publicSettings.Add(userNameKey, UserName ?? "");
-
-                Hashtable privateSettings = new Hashtable();
-                privateSettings.Add(passwordKey, Password ?? "");
-
-                var SettingString = JsonConvert.SerializeObject(publicSettings);
-                var ProtectedSettingString = JsonConvert.SerializeObject(privateSettings);
-
                 if (string.IsNullOrEmpty(this.Location))
                 {
                     this.Location = GetLocationFromVm(this.ResourceGroupName, this.VMName);
@@ -110,13 +91,12 @@ namespace Microsoft.Azure.Commands.Compute
                 var parameters = new VirtualMachineExtension
                 {
                     Location = this.Location,
-                    Name = this.Name,
+                    Name = this.Name ?? VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
                     Type = VirtualMachineExtensionType,
-                    Publisher = VirtualMachineAccessExtensionContext.ExtensionDefaultPublisher,
-                    ExtensionType = VirtualMachineAccessExtensionContext.ExtensionDefaultName,
-                    TypeHandlerVersion = (this.TypeHandlerVersion) ?? VirtualMachineAccessExtensionContext.ExtensionDefaultVersion,
-                    Settings = SettingString,
-                    ProtectedSettings = ProtectedSettingString,
+                    Publisher = VirtualMachineBGInfoExtensionContext.ExtensionDefaultPublisher,
+                    ExtensionType = VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
+                    TypeHandlerVersion = this.TypeHandlerVersion ?? VirtualMachineBGInfoExtensionContext.ExtensionDefaultVersion,
+                    AutoUpgradeMinorVersion = !DisableAutoUpgradeMinorVersion.IsPresent
                 };
 
                 var op = this.VirtualMachineExtensionClient.CreateOrUpdate(
@@ -124,7 +104,8 @@ namespace Microsoft.Azure.Commands.Compute
                     this.VMName,
                     parameters);
 
-                WriteObject(op);
+                var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+                WriteObject(result);
             });
         }
     }

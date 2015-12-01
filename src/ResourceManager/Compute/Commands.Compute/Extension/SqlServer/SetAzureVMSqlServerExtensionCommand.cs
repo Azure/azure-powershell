@@ -79,6 +79,7 @@ namespace Microsoft.Azure.Commands.Compute
         public AutoBackupSettings AutoBackupSettings { get; set; }
 
         [Parameter(
+            Mandatory = false,
             Position = 7,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Location of the resource.")]
@@ -88,6 +89,11 @@ namespace Microsoft.Azure.Commands.Compute
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+
+            if (string.IsNullOrEmpty(this.Location))
+            {
+                this.Location = GetLocationFromVm(this.ResourceGroupName, this.VMName);
+            }
 
             var parameters = new VirtualMachineExtension
             {
