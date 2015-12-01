@@ -109,8 +109,8 @@
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Compute.12.3.1\lib\net40\Microsoft.WindowsAzure.Management.Compute.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Network">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Network.7.0.3\lib\net40\Microsoft.WindowsAzure.Management.Network.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>	
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Network.7.0.4\lib\net40\Microsoft.WindowsAzure.Management.Network.dll</HintPath>      
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Storage, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -165,6 +165,7 @@
     <Compile Include="ApplicationGateway\Model\FrontendPort.cs" />
     <Compile Include="ApplicationGateway\Model\HttpListener.cs" />
     <Compile Include="ApplicationGateway\Model\HttpLoadBalancingRule.cs" />
+    <Compile Include="ApplicationGateway\Model\Probe.cs" />
     <Compile Include="ApplicationGateway\Model\Protocol.cs" />
     <Compile Include="ApplicationGateway\Model\Subnet.cs" />
     <Compile Include="ApplicationGateway\Model\UpdateApplicationGatewayParameters.cs" />
