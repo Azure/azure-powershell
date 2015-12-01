@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
             HelpMessage = "Hashtables which represents resource Tags.")]
         public Hashtable Tags { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             // Create a new namespace 
             var nsAttribute = Client.BeginCreateNamespace(ResourceGroup, Namespace, Location, ConvertTagsToDictionary(Tags));

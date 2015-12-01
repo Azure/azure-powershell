@@ -36,9 +36,9 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(Mandatory = false)]
         public SwitchParameter DefaultRules { get; set; }
         
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             var rules = this.DefaultRules
                             ? this.NetworkSecurityGroup.DefaultSecurityRules

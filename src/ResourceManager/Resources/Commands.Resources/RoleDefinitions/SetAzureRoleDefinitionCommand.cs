@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.RoleDefinition, HelpMessage = "Role definition.")]
         public PSRoleDefinition Role { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             PSRoleDefinition role = null;
             if (!string.IsNullOrEmpty(InputFile))

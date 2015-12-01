@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [ValidateNotNull]
         public DataLakeStoreItemPermissionInstance Permissions { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             DataLakeStoreFileSystemClient.SetPermission(Path.TransformedPath, Account, Permissions.PermissionsOctal);
             WriteObject(true);

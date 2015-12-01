@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             WriteObject(DataLakeAnalyticsClient.TestCatalogItem(ResourceGroupName, Account, Path, ItemType));
         }

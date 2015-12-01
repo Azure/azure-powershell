@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public ComputeNodeDeallocationOption? ComputeNodeDeallocationOption { get; set; }
         
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             PoolResizeParameters parameters = new PoolResizeParameters(this.BatchContext, this.Id, null, this.AdditionalBehaviors)
             {

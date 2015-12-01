@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Dns
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             string zoneName = null;
             string resourceGroupname = null;
