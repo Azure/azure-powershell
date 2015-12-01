@@ -38,7 +38,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         protected readonly ConcurrentQueue<string> _debugMessages;
 
         private RecordingTracingInterceptor _httpTracingInterceptor;
-
+        
         private DebugStreamTraceListener _adalListener;
         protected static AzurePSDataCollectionProfile _dataCollectionProfile = null;
         protected static string _errorRecordFolderPath = null;
@@ -270,6 +270,12 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
             
             base.WriteError(errorRecord);
+        }
+
+        protected new void ThrowTerminatingError(ErrorRecord errorRecord)
+        {
+            FlushDebugMessages(IsDataCollectionAllowed());
+            base.ThrowTerminatingError(errorRecord);
         }
 
         protected new void WriteObject(object sendToPipeline)
@@ -515,6 +521,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         public void Dispose()
         {
+            try
+            {
+                FlushDebugMessages();
+            }
+            catch { }
             Dispose(true);
             GC.SuppressFinalize(this);
         }
