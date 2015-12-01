@@ -142,8 +142,20 @@
   </Target>
 
   <!-- Build all flavors of the Cmdlets -->
-  <Target Name="Build" DependsOnTargets="RestoreNugetPackages;BuildMsBuildTask">
-    <Message Importance="high" Text="Building Cmdlets..." />
+  <!-- TODO: once CLU stablizes, see whether we need : DependsOnTargets="RestoreNugetPackages;BuildMsBuildTask" -->
+  <Target Name="Build">
+    <PropertyGroup>
+      <_TemporaryDnxFeeds>-s https://api.nuget.org/v3/index.json -s https://www.myget.org/F/xunit/api/v2 -s $(LibraryToolsFolder)\LocalFeed</_TemporaryDnxFeeds>
+      <_CLURootDir>$(LibrarySourceFolder)\CLU</_CLURootDir>
+    </PropertyGroup>
+    <Exec Command="dnu restore $(_TemporaryDnxFeeds)" WorkingDirectory="$(_CLURootDir)"/>
+    <ItemGroup>
+      <_CLUProjects Include="$(_CLURootDir)\**\project.json"
+                    Exclude="$(_CLURootDir)\*.Test\project.json"></_CLUProjects>
+    </ItemGroup>
+    <Exec Command="dnu build" WorkingDirectory="%(_CLUProjects.RootDir)%(_CLUProjects.Directory)" />    
+    
+    <!--<Message Importance="high" Text="Building Cmdlets..." />
     <MSBuild
       Projects="@(CmdletSolutionsToBuild)"
       Targets="Build"
@@ -153,7 +165,7 @@
       
     <CallTarget Targets="CodeSignBinaries" Condition=" '$(CodeSign)' == 'true' " />
     
-    <Message Importance="high" Text="Building Setup..." />
+    <Message Importance="high" Text="Building Setup..." />-->
     
     <!--<MSBuild
       Projects="@(SetupSln)"
@@ -166,11 +178,12 @@
                 Condition=" '$(CodeSign)' == 'true' and '$(Scope)' == 'all'" />    -->
   </Target>
   
-  <!-- Do everything possible -->
+  <!--TODO: once CLU stablizes, see whether we need invoke 'clean' target. 
+    Dnx uses dynamic compilation, 'clean' is unnecessary -->
   <Target
     Name="Full"
-    DependsOnTargets="Clean;Build;Test" />
-    
+    DependsOnTargets="Build;Test" />
+  
   <Target Name="BuildMsBuildTask" DependsOnTargets="RestoreNugetPackages">
     <MSBuild Projects="$(LibraryToolsFolder)\BuildPackagesTask\Microsoft.Azure.Build.Tasks.csproj"
              Targets="Build" Properties="Configuration=Debug;Platform=AnyCPU" />
@@ -298,7 +311,14 @@
   <!-- Run checkin tests for each pull request -->
   <Target Name="Test" DependsOnTargets="BeforeRunTests">
     <Message Importance="high" Text="Running check in tests..." />
-    <CallTarget Targets="InvokeXUnit"/>
+    <ItemGroup>
+      <!--Exclude 2 test projects still in progress-->
+      <_CLUTestProjects Include="$(_CLURootDir)\*.Test\project.json"
+                        Exclude="$(_CLURootDir)\Microsoft.Azure.Commands.Resources.Test\project.json;$(_CLURootDir)\Microsoft.Azure.Commands.Websites.Test\project.json"></_CLUTestProjects>
+    </ItemGroup>
+    <Exec Command="dnu build" WorkingDirectory="%(_CLUTestProjects.RootDir)%(_CLUTestProjects.Directory)" />
+    <Exec Command="dnx test" WorkingDirectory="%(_CLUTestProjects.RootDir)%(_CLUTestProjects.Directory)" />
+    <!--<CallTarget Targets="InvokeXUnit"/>-->
   </Target>
   
   <!-- Run Full switch with scenario tests -->
