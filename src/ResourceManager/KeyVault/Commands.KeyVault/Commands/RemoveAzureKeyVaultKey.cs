@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         public SwitchParameter PassThru { get; set; }
 
         #endregion
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             KeyBundle keyBundle = null;
             ConfirmAction(

@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = HelpMessages.VMOSDiskKeyEncryptionKeyVaultId)]
         public string KeyEncryptionKeyVaultId { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (this.VM.StorageProfile == null)
             {

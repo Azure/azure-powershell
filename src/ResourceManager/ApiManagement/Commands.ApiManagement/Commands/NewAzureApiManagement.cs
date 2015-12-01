@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             HelpMessage = "Tags dictionary.")]
         public Dictionary<string, string> Tags { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ExecuteLongRunningCmdletWrap(
                 () => Client.BeginCreateApiManagementService(
