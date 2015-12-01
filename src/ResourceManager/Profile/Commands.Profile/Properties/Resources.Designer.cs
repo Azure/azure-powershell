@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to AccountId &apos;{0}&apos; for tenant &apos;{1}&apos; does not match home accountId &apos;{2}&apos;.
+        ///   Looks up a localized string similar to Account ID &apos;{0}&apos; for tenant &apos;{1}&apos; does not match home Account ID &apos;{2}&apos;.
         /// </summary>
         internal static string AccountIdMismatch {
             get {

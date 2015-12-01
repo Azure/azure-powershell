@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                             accountId = account.Id;
                             account.SetOrAppendProperty(AzureAccount.Property.Tenants, tenant);
                         }
-                        else if (accountId == account.Id)
+                        else if (accountId.Equals(account.Id, StringComparison.OrdinalIgnoreCase))
                         {
                             account.SetOrAppendProperty(AzureAccount.Property.Tenants, tenant);
                         }
