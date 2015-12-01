@@ -338,7 +338,8 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 }
 
                 //If nested deployment, get the operations under those deployments as well
-                if(operation.Properties.TargetResource.ResourceType.Equals(Constants.MicrosoftResourcesDeploymentType, StringComparison.OrdinalIgnoreCase))
+                if(operation.Properties.TargetResource.ResourceType.Equals(Constants.MicrosoftResourcesDeploymentType, StringComparison.OrdinalIgnoreCase)
+                    && !operation.Properties.StatusCode.Equals("BadRequest", StringComparison.OrdinalIgnoreCase))
                 {
                     List<DeploymentOperation> newNestedOperations = new List<DeploymentOperation>();
                     DeploymentOperationsListResult result;
