@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
-                if (String.IsNullOrEmpty(this.Name))
+                if (string.IsNullOrEmpty(this.Name))
                 {
                     var virtualMachine = ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName).VirtualMachine;
                     var diagnosticsExtension = virtualMachine.Extensions != null

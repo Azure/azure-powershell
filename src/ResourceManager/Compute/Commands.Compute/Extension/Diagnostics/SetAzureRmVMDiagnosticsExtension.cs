@@ -13,17 +13,22 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Globalization;
+using System.Linq;
 using System.Management.Automation;
+using System.Xml.Linq;
 using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Commands.Management.Storage;
-using Microsoft.Azure.Management.Storage;
-using Newtonsoft.Json;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Auth;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -34,7 +39,6 @@ namespace Microsoft.Azure.Commands.Compute
     {
         private string publicConfiguration;
         private string privateConfiguration;
-        private string storageKey;
         private string extensionName = "Microsoft.Insights.VMDiagnosticsSettings";
         private string location;
         private string version = "1.5";
@@ -71,26 +75,43 @@ namespace Microsoft.Azure.Commands.Compute
         }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             Position = 3,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The storage connection context")]
-        [ValidateNotNullOrEmpty]
-        public AzureStorageContext StorageContext
-        {
-            get;
-            set;
-        }
+            HelpMessage = "The storage account name.")]
+        public string StorageAccountName { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 4,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The storage account key.")]
+        public string StorageAccountKey { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            Position = 5,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The storage account endpoint.")]
+        public string StorageAccountEndpoint { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            Position = 6,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The storage connection context.")]
+        [ValidateNotNullOrEmpty]
+        public AzureStorageContext StorageContext { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            Position = 7,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The location.")]
         public string Location {
             get
             {
-                if (String.IsNullOrEmpty(this.location))
+                if (string.IsNullOrEmpty(this.location))
                 {
                     var virtualMachine = ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName).VirtualMachine;
                     this.location = virtualMachine.Location;
@@ -106,7 +127,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Alias("ExtensionName")]
         [Parameter(
             Mandatory = false,
-            Position = 5,
+            Position = 8,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The extension name.")]
         public string Name
@@ -123,7 +144,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             Mandatory = false,
-            Position = 5,
+            Position = 9,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The extension version.")]
         public string Version
@@ -140,7 +161,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             Mandatory = false,
-            Position = 6,
+            Position = 10,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Pass a boolean value indicating whether auto upgrade diagnostics extension minor version.")]
         public bool AutoUpgradeMinorVersion
@@ -155,36 +176,7 @@ namespace Microsoft.Azure.Commands.Compute
             }
         }
 
-        public string StorageAccountName
-        {
-            get
-            {
-                return this.StorageContext.StorageAccountName;
-            }
-        }
-
-        public string Endpoint
-        {
-            get
-            {
-                return "https://" + this.StorageContext.EndPointSuffix;
-            }
-        }
-
-        public string StorageKey
-        {
-            get
-            {
-                if (string.IsNullOrEmpty(this.storageKey))
-                {
-                    this.storageKey = GetStorageKey();
-                }
-
-                return this.storageKey;
-            }
-        }
-
-        public string PublicConfiguration
+        private string PublicConfiguration
         {
             get
             {
@@ -199,21 +191,21 @@ namespace Microsoft.Azure.Commands.Compute
             }
         }
 
-        public string PrivateConfiguration
+        private string PrivateConfiguration
         {
             get
             {
                 if (string.IsNullOrEmpty(this.privateConfiguration))
                 {
-                    this.privateConfiguration = DiagnosticsHelper.GetJsonSerializedPrivateDiagnosticsConfiguration(this.StorageAccountName, this.StorageKey,
-                            this.Endpoint);
+                    this.privateConfiguration = DiagnosticsHelper.GetJsonSerializedPrivateDiagnosticsConfiguration(this.StorageAccountName, this.StorageAccountKey,
+                            this.StorageAccountEndpoint);
                 }
 
                 return this.privateConfiguration;
             }
         }
 
-        public IStorageManagementClient StorageClient
+        private IStorageManagementClient StorageClient
         {
             get
             {
@@ -227,10 +219,8 @@ namespace Microsoft.Azure.Commands.Compute
             }
         }
 
-        internal void ExecuteCommand()
+        private void ExecuteCommand()
         {
-            base.ProcessRecord();
-
             ExecuteClientAction(() =>
             {
                 var parameters = new VirtualMachineExtension
@@ -255,22 +245,101 @@ namespace Microsoft.Azure.Commands.Compute
             });
         }
 
-        protected string GetStorageKey()
+        private void InitializeStorageParameters()
         {
-            string storageKey = string.Empty;
+            InitializeStorageAccountName();
 
-            if (!string.IsNullOrEmpty(StorageAccountName))
+            var storageAccounts = this.StorageClient.StorageAccounts.List().StorageAccounts;
+            var storageAccount = storageAccounts == null ? null : storageAccounts.FirstOrDefault(account => account.Name.Equals(this.StorageAccountName));
+
+            InitializeStorageAccountKey(storageAccount);
+            InitializeStorageAccountEndpoint(storageAccount);
+        }
+
+        private void InitializeStorageAccountName()
+        {
+            if (string.IsNullOrEmpty(this.StorageAccountName))
             {
-                var storageCredentials = StorageUtilities.GenerateStorageCredentials(this.StorageClient, this.ResourceGroupName, this.StorageAccountName);
-                storageKey = storageCredentials.ExportBase64EncodedKey();
-            }
+                if (this.StorageContext != null)
+                {
+                    this.StorageAccountName = this.StorageContext.StorageAccountName;
+                }
+                else
+                {
+                    var config = XElement.Load(this.DiagnosticsConfigurationPath);
+                    var storageNode = config.Elements().FirstOrDefault(ele => ele.Name.LocalName == "StorageAccount");
 
-            return storageKey;
+                    if (storageNode == null)
+                    {
+                        throw new ArgumentNullException(Properties.Resources.DiagnosticsExtensionStorageAccountNameNotDefined);
+                    }
+                    else
+                    {
+                        this.StorageAccountName = storageNode.Value;
+                    }
+                }
+            }
+        }
+
+        private void InitializeStorageAccountKey(StorageAccount storageAccount)
+        {
+            if (string.IsNullOrEmpty(this.StorageAccountKey))
+            {
+                if (storageAccount == null)
+                {
+                    throw new Exception(string.Format(CultureInfo.InvariantCulture, Properties.Resources.DiagnosticsExtensionFailedToListKeyForNoStorageAccount, this.StorageAccountName));
+                }
+
+                var psStorageAccount = new PSStorageAccount(storageAccount);
+                var credentials = StorageUtilities.GenerateStorageCredentials(this.StorageClient, psStorageAccount.ResourceGroupName, psStorageAccount.StorageAccountName);
+                this.StorageAccountKey = credentials.ExportBase64EncodedKey();
+            }
+        }
+
+        private void InitializeStorageAccountEndpoint(StorageAccount storageAccount)
+        {
+            if (string.IsNullOrEmpty(this.StorageAccountEndpoint))
+            {
+                var context = this.StorageContext;
+                if (context == null)
+                {
+                    Uri blobEndpoint = null, queueEndpoint = null, tableEndpoint = null, fileEndpoint = null;
+                    if (storageAccount != null)
+                    {
+                        // Create storage context from storage account
+                        var endpoints = storageAccount.PrimaryEndpoints;
+                        blobEndpoint = endpoints.Blob;
+                        queueEndpoint = endpoints.Queue;
+                        tableEndpoint = endpoints.Table;
+                        fileEndpoint = endpoints.File;
+                    }
+                    else if (this.DefaultContext != null && this.DefaultContext.Environment != null)
+                    {
+                        // Create storage context from default azure environment. Default to use https
+                        blobEndpoint = DefaultContext.Environment.GetStorageBlobEndpoint(this.StorageAccountName);
+                        queueEndpoint = DefaultContext.Environment.GetStorageQueueEndpoint(this.StorageAccountName);
+                        tableEndpoint = DefaultContext.Environment.GetStorageTableEndpoint(this.StorageAccountName);
+                        fileEndpoint = DefaultContext.Environment.GetStorageFileEndpoint(this.StorageAccountName);
+                    }
+                    else
+                    {
+                        // Can't automatically get the endpoint to create storage context
+                        throw new ArgumentNullException(Properties.Resources.DiagnosticsExtensionStorageAccountEndpointNotDefined);
+                    }
+                    var credentials = new StorageCredentials(this.StorageAccountName, this.StorageAccountKey);
+                    var cloudStorageAccount = new CloudStorageAccount(credentials, blobEndpoint, queueEndpoint, tableEndpoint, fileEndpoint);
+                    context = new AzureStorageContext(cloudStorageAccount);
+                }
+
+                var scheme = context.BlobEndPoint.StartsWith("https://", StringComparison.OrdinalIgnoreCase) ? "https://" : "http://";
+                this.StorageAccountEndpoint = scheme + context.EndPointSuffix;
+            }
         }
 
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
+            InitializeStorageParameters();
             ExecuteCommand();
         }
     }
