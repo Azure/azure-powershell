@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         public Action<string> ErrorLogger { get; set; }
 
         public StorageManagementClientWrapper(IClientFactory clientFactory, AzureContext context)
-            : this(clientFactory.CreateClient<StorageManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
+            : this(clientFactory.CreateArmClient<StorageManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
         }
 
