@@ -135,6 +135,24 @@ namespace Microsoft.Azure.Commands.Common.Resources.Properties {
         }
         
         /// <summary>
+        ///    Looks up a localized string similar to Invalid tag format. Expect @{Name = &amp;quot;tagName&amp;quot;} or @{Name = &amp;quot;tagName&amp;quot;; Value = &amp;quot;tagValue&amp;quot;}..
+        /// </summary>
+        internal static string InvalidTagFormat {
+            get {
+                return ResourceManager.GetString("InvalidTagFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Looks up a localized string similar to Invalid tag format. Ensure that each tag has a unique name. Example: @{Name = &amp;quot;tagName1&amp;quot;; Value = &amp;quot;tagValue1&amp;quot;}, @{Name = &amp;quot;tagName2&amp;quot;; Value = &amp;quot;tagValue2&amp;quot;}..
+        /// </summary>
+        internal static string InvalidTagFormatNotUniqueName {
+            get {
+                return ResourceManager.GetString("InvalidTagFormatNotUniqueName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///    Looks up a localized string similar to The provided account {0} does not have access to any subscriptions. Please try logging in with different credentials..
         /// </summary>
         internal static string NoSubscriptionFound {
