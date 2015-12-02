@@ -1066,13 +1066,12 @@ function Test-VirtualMachineBginfoExtension
         Assert-AreEqual $vm1.HardwareProfile.VirtualMachineSize $vmsize;
 
         # Check Extensions in VM
-        Assert-AreEqual $vm1.Extensions.Count 2;
-        Assert-AreEqual $vm1.Extensions[1].Name $extname;
-        Assert-AreEqual $vm1.Extensions[1].Type 'Microsoft.Compute/virtualMachines/extensions';
-        Assert-AreEqual $vm1.Extensions[1].Publisher $publisher;
-        Assert-AreEqual $vm1.Extensions[1].ExtensionType $exttype;
-        Assert-AreEqual $vm1.Extensions[1].TypeHandlerVersion $extver;
-        Assert-NotNull $vm1.Extensions[1].Settings;
+        Assert-AreEqual $vm1.Extensions.Count 1;
+        Assert-AreEqual $vm1.Extensions[0].Name $extname;
+        Assert-AreEqual $vm1.Extensions[0].Type 'Microsoft.Compute/virtualMachines/extensions';
+        Assert-AreEqual $vm1.Extensions[0].Publisher $publisher;
+        Assert-AreEqual $vm1.Extensions[0].ExtensionType $exttype;
+        Assert-AreEqual $vm1.Extensions[0].TypeHandlerVersion $extver;
     }
     finally
     {
