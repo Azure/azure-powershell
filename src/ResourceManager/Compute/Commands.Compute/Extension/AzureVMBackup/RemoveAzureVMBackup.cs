@@ -68,9 +68,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
             HelpMessage = "The tag for this backup.")]
         public string Tag { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             VirtualMachineGetResponse virtualMachineResponse = this.ComputeClient.ComputeManagementClient.VirtualMachines.GetWithInstanceView(this.ResourceGroupName, VMName);
             string currentOSType = virtualMachineResponse.VirtualMachine.StorageProfile.OSDisk.OperatingSystemType;

@@ -69,9 +69,9 @@ namespace Microsoft.Azure.Commands.Compute
             set;
         }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             ExecuteClientAction(() =>
             {

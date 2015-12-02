@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 "Indicates that the ACL should be removed on the file with the specified ACL without prompting.")]
         public SwitchParameter Force { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (!Force.IsPresent)
             {

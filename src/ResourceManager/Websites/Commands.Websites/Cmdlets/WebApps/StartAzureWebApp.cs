@@ -27,9 +27,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     [Cmdlet(VerbsLifecycle.Start, "AzureRmWebApp")]
     public class StartAzureWebAppCmdlet : WebAppBaseCmdlet
     {   
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
             WebsitesClient.StartWebApp(ResourceGroupName, Name, null);
             WriteObject(WebsitesClient.GetWebApp(ResourceGroupName, Name, null));
         }

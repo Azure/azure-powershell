@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Insights
         /// <summary>
         /// Execute the cmdlet
         /// </summary>
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             try
             {
