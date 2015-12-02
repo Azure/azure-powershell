@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Intune
         /// <summary>
         /// Executes the cmdlet.
         /// </summary>
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             this.ConfirmAction
             (

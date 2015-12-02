@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Intune.Flagged
         /// <summary>
         /// Contains the cmdlet's execution logic.
         /// </summary>
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (Name != null)
             {
@@ -63,16 +63,16 @@ namespace Microsoft.Azure.Commands.Intune.Flagged
         /// </summary>
         private void GetMAMFlaggedUsers()
         {
-            // MultiPageGetter<FlaggedUser> mpg = new MultiPageGetter<FlaggedUser>();
-            // List<FlaggedUser> items = mpg.GetAllResources(
-            //    this.IntuneClient.GetMAMFlaggedUsers,    
-            //    this.IntuneClient.GetMAMFlaggedUsersNext,
-            //    this.AsuHostName,
-            //    filter: null,
-            //    top: null,
-            //    select: null);
-            
-            // this.WriteObject(items, enumerateCollection:true);
+            MultiPageGetter<FlaggedUser> mpg = new MultiPageGetter<FlaggedUser>();
+            List<FlaggedUser> items = mpg.GetAllResources(
+               this.IntuneClient.GetMAMFlaggedUsers,
+               this.IntuneClient.GetMAMFlaggedUsersNext,
+               this.AsuHostName,
+               filter: null,
+               top: null,
+               select: null);
+
+            this.WriteObject(items, enumerateCollection: true);
         }
     }
 }

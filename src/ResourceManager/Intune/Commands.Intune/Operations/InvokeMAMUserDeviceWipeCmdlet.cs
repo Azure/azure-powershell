@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Intune.Operations
         /// <summary>
         /// Contains the cmdlet's execution logic.
         /// </summary>
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             InvokeDeviceWipeOperation();
         }
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Intune.Operations
                         .GetAwaiter()
                         .GetResult();
 
-                    this.WriteObject(result);
+                    this.WriteObject(result.Body);
                 });
         }
     }

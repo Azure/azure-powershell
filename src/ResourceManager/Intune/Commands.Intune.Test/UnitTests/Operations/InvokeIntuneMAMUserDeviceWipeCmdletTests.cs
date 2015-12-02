@@ -83,14 +83,14 @@ namespace Commands.Intune.Test.UnitTests
             commandRuntimeMock.Setup(m => m.ShouldProcess(It.IsAny<string>(), It.IsAny<string>()))
                 .Returns(() => true);
 
+            // Set cmdline args and execute the cmdlet
             this.cmdlet.Force = true;
             this.cmdlet.Name = "UserName1";
-            this.cmdlet.DeviceName = "MyDevice1";
-            // Set cmdline args and execute the cmdlet
+            this.cmdlet.DeviceName = "MyDevice1";            
             this.cmdlet.ExecuteCmdlet();
 
             // Verify the result
-            commandRuntimeMock.Verify(f => f.WriteObject(expectedResult, true), Times.Once());
+            commandRuntimeMock.Verify(f => f.WriteObject(expectedResult), Times.Once());
         }
     }
 }

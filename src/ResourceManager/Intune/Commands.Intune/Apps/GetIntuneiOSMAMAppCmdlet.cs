@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Intune
         /// <summary>
         /// Contains the cmdlet's execution logic.
         /// </summary>
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             string filter = string.Format(CultureInfo.InvariantCulture, IntuneConstants.PlatformFilterQueryParam, PlatformType.iOS.ToString().ToLower());
             MultiPageGetter<Application> mpg = new MultiPageGetter<Application>();

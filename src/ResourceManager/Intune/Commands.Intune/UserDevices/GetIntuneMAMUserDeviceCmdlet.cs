@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Intune
         /// <summary>
         /// Contains the cmdlet's execution logic.
         /// </summary>
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
            if (DeviceName != null)
             {

@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Intune.Flagged
         /// <summary>
         /// Contains the cmdlet's execution logic.
         /// </summary>
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             GetMAMFlaggedEnrolledApps();
         }
@@ -45,17 +45,17 @@ namespace Microsoft.Azure.Commands.Intune.Flagged
         /// </summary>
         private void GetMAMFlaggedEnrolledApps()
         {
-            // MultiPageGetter<FlaggedEnrolledApp> mpg = new MultiPageGetter<FlaggedEnrolledApp>();
-            // List<FlaggedEnrolledApp> items = mpg.GetAllResources(
-            //    this.IntuneClient.GetMAMUserFlaggedEnrolledApps,
-            //    this.IntuneClient.GetMAMUserFlaggedEnrolledAppsNext,
-            //    this.AsuHostName,
-            //    this.Name,
-            //    filter: null,
-            //    top: null,
-            //    select: null);
+            MultiPageGetter<FlaggedEnrolledApp> mpg = new MultiPageGetter<FlaggedEnrolledApp>();
+            List<FlaggedEnrolledApp> items = mpg.GetAllResources(
+               this.IntuneClient.GetMAMUserFlaggedEnrolledApps,
+               this.IntuneClient.GetMAMUserFlaggedEnrolledAppsNext,
+               this.AsuHostName,
+               this.Name,
+               filter: null,
+               top: null,
+               select: null);
 
-            // this.WriteObject(items, enumerateCollection: true);
+            this.WriteObject(items, enumerateCollection: true);
         }
     }
 }

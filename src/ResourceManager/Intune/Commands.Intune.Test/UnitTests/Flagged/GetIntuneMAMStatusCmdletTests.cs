@@ -85,7 +85,7 @@ namespace Commands.Intune.Test.UnitTests
             this.cmdlet.ExecuteCmdlet();
 
             // Verify the result
-            commandRuntimeMock.Verify(f => f.WriteObject(expectedResult, true), Times.Once());
+            commandRuntimeMock.Verify(f => f.WriteObject(expectedResult), Times.Once());
         }
     }
 }

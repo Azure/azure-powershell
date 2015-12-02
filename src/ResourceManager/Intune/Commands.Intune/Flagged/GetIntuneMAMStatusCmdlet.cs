@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Intune.Flagged
         /// <summary>
         /// Contains the cmdlet's execution logic.
         /// </summary>
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             GetMAMDefaultStatus();
         }
