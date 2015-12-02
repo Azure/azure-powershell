@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Network
 
             probe.Id =
                 ChildResourceHelper.GetResourceNotSetId(
-                    this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
+                    this.NetworkClient.NetworkManagementClient.SubscriptionId,
                     Microsoft.Azure.Commands.Network.Properties.Resources.LoadBalancerProbeName,
                     this.Name);
 

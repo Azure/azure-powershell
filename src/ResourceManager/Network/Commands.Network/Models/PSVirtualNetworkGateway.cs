@@ -35,13 +35,13 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonIgnore]
         public string IpConfigurationsText
         {
-            get { return JsonConvert.SerializeObject(IpConfigurations, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(IpConfigurations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
         public string GatewayDefaultSiteText
         {
-            get { return JsonConvert.SerializeObject(GatewayDefaultSite, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(GatewayDefaultSite, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

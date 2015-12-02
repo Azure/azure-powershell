@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             requestRoutingRule.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
-                                this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
+                                this.NetworkClient.NetworkManagementClient.SubscriptionId,
                                 Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewayRequestRoutingRuleName,
                                 this.Name);
             

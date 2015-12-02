@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Network
 
             loadBalancingRule.Id =
                 ChildResourceHelper.GetResourceId(
-                    this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
+                    this.NetworkClient.NetworkManagementClient.SubscriptionId,
                     this.LoadBalancer.ResourceGroupName,
                     this.LoadBalancer.Name,
                     Microsoft.Azure.Commands.Network.Properties.Resources.LoadBalancerRuleName,
