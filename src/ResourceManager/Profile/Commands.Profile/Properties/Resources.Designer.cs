@@ -70,6 +70,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Account ID &apos;{0}&apos; for tenant &apos;{1}&apos; does not match home Account ID &apos;{2}&apos;.
+        /// </summary>
+        internal static string AccountIdMismatch {
+            get {
+                return ResourceManager.GetString("AccountIdMismatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Access token credentials must provide the AccountId parameter..
         /// </summary>
         internal static string AccountIdRequired {
