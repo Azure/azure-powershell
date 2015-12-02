@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <param name="providerNamespace">The provider namespace.</param>
         /// <param name="resourceType">The resource type.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
-        internal static string[] GetApiVersionsForResourceType(AzureContext context, string providerNamespace, string resourceType, CancellationToken cancellationToken, Dictionary<string, string> cmdletHeaderValues = null)
+        private static string[] GetApiVersionsForResourceType(AzureContext context, string providerNamespace, string resourceType, CancellationToken cancellationToken, Dictionary<string, string> cmdletHeaderValues = null)
         {
             var resourceManagerClient = ResourceManagerClientHelper.GetResourceManagerClient(context, cmdletHeaderValues);
 
