@@ -1023,62 +1023,40 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         #region AzureSubscription
 
-        public Collection<PSAzureSubscriptionExtended> GetAzureSubscription()
+        public Collection<PSAzureSubscriptionExtended> GetAzureSubscription(bool extendedDetails = true)
         {
-            return RunPSCmdletAndReturnAll<PSAzureSubscriptionExtended>(new GetAzureSubscriptionCmdletInfo(null, null, true, false, false));
+            return RunPSCmdletAndReturnAll<PSAzureSubscriptionExtended>(new GetAzureSubscriptionCmdletInfo(null, false, false, extendedDetails));
         }
 
-        public PSAzureSubscriptionExtended GetAzureSubscription(string subscriptionName)
+        public PSAzureSubscriptionExtended GetAzureSubscription(string subscriptionId, bool extendedDetails = true)
         {
-            return RunPSCmdletAndReturnFirst<PSAzureSubscriptionExtended>(new GetAzureSubscriptionCmdletInfo(subscriptionName, null, true, false, false));
+            return RunPSCmdletAndReturnFirst<PSAzureSubscriptionExtended>(new GetAzureSubscriptionCmdletInfo(subscriptionId, false, false, extendedDetails));
         }
 
-        public PSAzureSubscriptionExtended GetCurrentAzureSubscription()
+        public PSAzureSubscriptionExtended GetCurrentAzureSubscription(bool extendedDetails = true)
         {
-            return RunPSCmdletAndReturnFirst<PSAzureSubscriptionExtended>(new GetAzureSubscriptionCmdletInfo(null, null, true, true, false));
+            return RunPSCmdletAndReturnFirst<PSAzureSubscriptionExtended>(new GetAzureSubscriptionCmdletInfo(null, true, false, extendedDetails));
         }
 
-        public PSAzureSubscriptionExtended GetDefaultAzureSubscription()
-        {
-            return RunPSCmdletAndReturnFirst<PSAzureSubscriptionExtended>(new GetAzureSubscriptionCmdletInfo(null, null, true, false, true));
-        }
-
-        public PSAzureSubscriptionExtended SetAzureSubscription(string subscriptionName, string subscriptionId, string currentStorageAccountName, bool debug = false)
+        public PSAzureSubscriptionExtended SetAzureSubscription(string subscriptionId, string currentStorageAccountName, bool debug = false)
         {
             var setAzureSubscriptionCmdlet = new SetAzureSubscriptionCmdletInfo(subscriptionId, currentStorageAccountName);
-            SelectAzureSubscription(subscriptionName);
+            SelectAzureSubscription(subscriptionId);
             var azurePowershellCmdlet = new WindowsAzurePowershellCmdlet(setAzureSubscriptionCmdlet);
             azurePowershellCmdlet.Run(debug);
 
-            Collection<PSAzureSubscriptionExtended> subscriptions = GetAzureSubscription();
-            foreach (PSAzureSubscriptionExtended subscription in subscriptions)
-            {
-                if (subscription.SubscriptionName == subscriptionName)
-                {
-                    return subscription;
-                }
-            }
-            return null;
+            return GetAzureSubscription(subscriptionId);
         }
 
-        public PSAzureSubscriptionExtended SetDefaultAzureSubscription(string subscriptionName, bool debug = false)
+        public PSAzureSubscriptionExtended SetDefaultAzureSubscription(string subscriptionId, bool debug = false)
         {
-            SelectAzureSubscription(subscriptionName);
-
-            Collection<PSAzureSubscriptionExtended> subscriptions = GetAzureSubscription();
-            foreach (PSAzureSubscriptionExtended subscription in subscriptions)
-            {
-                if (subscription.SubscriptionName == subscriptionName)
-                {
-                    return subscription;
-                }
-            }
-            return null;
+            SelectAzureSubscription(subscriptionId);
+            return GetAzureSubscription(subscriptionId);
         }
 
-        public AzureSubscription SelectAzureSubscription(string subscriptionName, bool isDefault = true, bool clear = false, string subscriptionDataFile = null)
+        public AzureSubscription SelectAzureSubscription(string subscriptionId, bool isDefault = true)
         {
-            return RunPSCmdletAndReturnFirst<AzureSubscription>(new SelectAzureSubscriptionCmdletInfo(subscriptionName, isDefault, clear, subscriptionDataFile));
+            return RunPSCmdletAndReturnFirst<AzureSubscription>(new SelectAzureSubscriptionCmdletInfo(subscriptionId, isDefault));
         }
 
         #endregion
