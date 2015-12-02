@@ -54,15 +54,15 @@ namespace Microsoft.Azure.Commands.Intune
         /// The AppSharingFromLevel of the policy
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates whether the application is allowed to receive information shared by other applications. Information can be restricted to no applications, only managed applications, or be allowed from all applications.")]
-        [Alias("AppSharingFromLevel"), ValidateNotNullOrEmpty, ValidateSet("none", "policyManagedApps", "allApps")]
-        public AppSharingType? AllowDataTransferToApps { get; set; }
+        [ValidateNotNullOrEmpty, ValidateSet("none", "policyManagedApps", "allApps")]
+        public AppSharingType? AppSharingFromLevel { get; set; }
 
         /// <summary>
         /// The AppSharingToLevel of the policy
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates whether the application is allowed to share information with other applications. Information can be shared with no applications, only managed applications, or shared to all applications.")]
-        [Alias("AppSharingToLevel"), ValidateNotNullOrEmpty, ValidateSet("none", "policyManagedApps", "allApps")]
-        public AppSharingType? AllowDataTransferFromApps { get; set; }
+        [ValidateNotNullOrEmpty, ValidateSet("none", "policyManagedApps", "allApps")]
+        public AppSharingType? AppSharingToLevel { get; set; }
 
         /// <summary>
         /// The Authentication of the policy
@@ -75,8 +75,8 @@ namespace Microsoft.Azure.Commands.Intune
         /// The ClipboardSharingLevel of the policy
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates whether to restrict cut, copy and paste with other applications.")]
-        [Alias("ClipboardSharingLevel"), ValidateNotNullOrEmpty, ValidateSet("blocked", "policyManagedApps", "policyManagedAppsWithPasteIn", "allApps")]
-        public ClipboardSharingLevelType? ClipboardSharing { get; set; }
+        [ValidateNotNullOrEmpty, ValidateSet("blocked", "policyManagedApps", "policyManagedAppsWithPasteIn", "allApps")]
+        public ClipboardSharingLevelType? ClipboardSharingLevel { get; set; }
 
         /// <summary>
         /// The DataBackup of the policy
@@ -103,8 +103,8 @@ namespace Microsoft.Azure.Commands.Intune
         /// The PinNumRetry  of the policy
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "When a simple PIN is required to access the application, this indicates the number of attempts before a PIN reset.")]
-        [Alias("PinNumRetry"), ValidateNotNullOrEmpty, ValidateRange(0, 200)]
-        public int? PinRetries { get; set; }
+        [ValidateNotNullOrEmpty, ValidateRange(0, 200)]
+        public int? PinNumRetry { get; set; }
 
         /// <summary>
         /// The DeviceCompliance  of the policy
@@ -124,22 +124,20 @@ namespace Microsoft.Azure.Commands.Intune
         /// The AccessRecheckOfflineTimeout of the policy
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates how long to wait in minutes before re-checking access requirements on the device if the device is offline.")]
-        [Alias("AccessRecheckOfflineTimeout"), ValidateNotNullOrEmpty]
-        public int? RecheckAccessOfflineGracePeriodMinutes { get; set; }
+        [ValidateNotNullOrEmpty]
+        public int? AccessRecheckOfflineTimeout { get; set; }
 
         /// <summary>
         /// The AccessRecheckOnlineTimeout of the policy
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates how long to wait in minutes before re-checking access requirements on the device.")]
-        [Alias("AccessRecheckOnlineTimeout")]
-        public int? RecheckAccessTimeoutMinutes { get; set; }
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates how long to wait in minutes before re-checking access requirements on the device.")]        
+        public int? AccessRecheckOnlineTimeout { get; set; }
 
         /// <summary>
         /// The OfflineWipeTimeout of the policy
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates the number of days a device must be offline before application data is automatically wiped.")]
-        [Alias("OfflineWipeTimeout")]
-        public int? OfflineWipeIntervalDays { get; set; }
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates the number of days a device must be offline before application data is automatically wiped.")]        
+        public int? OfflineWipeTimeout { get; set; }
 
         /// <summary>
         /// The FileEncryption of the policy
@@ -149,9 +147,9 @@ namespace Microsoft.Azure.Commands.Intune
         public ChoiceType? FileEncryption { get; set; }
 
         /// <summary>
-        /// The TouchId of the policy
+        /// The screen capture of the policy
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates whether fingerprints are allowed instead of PIN to access the application.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates whether Screen capture is allowed for the application.")]
         [ValidateNotNullOrEmpty]
         public FilterType? ScreenCapture { get; set; }
 
@@ -189,21 +187,21 @@ namespace Microsoft.Azure.Commands.Intune
         private void ValidateNumericParameters()
         {
             Dictionary<string, int> paramsToValidate = new Dictionary<string, int>();
-            if(PinRetries.HasValue)
+            if(PinNumRetry.HasValue)
             {
-                paramsToValidate.Add(IntuneConstants.PinRetriesProperty, PinRetries.Value);                
+                paramsToValidate.Add(IntuneConstants.PinNumRetryProperty, PinNumRetry.Value);                
             }
-            if(this.RecheckAccessOfflineGracePeriodMinutes.HasValue)
+            if(this.AccessRecheckOfflineTimeout.HasValue)
             {
-                paramsToValidate.Add(IntuneConstants.RecheckAccessOfflineGracePeriodMinutesProperty, this.RecheckAccessOfflineGracePeriodMinutes.Value);
+                paramsToValidate.Add(IntuneConstants.AccessRecheckOfflineTimeoutProperty, this.AccessRecheckOfflineTimeout.Value);
             }
-            if(this.RecheckAccessTimeoutMinutes.HasValue)
+            if(this.AccessRecheckOnlineTimeout.HasValue)
             {
-                paramsToValidate.Add(IntuneConstants.RecheckAccessTimeoutMinutesProperty, this.RecheckAccessTimeoutMinutes.Value);
+                paramsToValidate.Add(IntuneConstants.AccessRecheckOnlineTimeoutProperty, this.AccessRecheckOnlineTimeout.Value);
             }
-            if(this.OfflineWipeIntervalDays.HasValue)
+            if(this.OfflineWipeTimeout.HasValue)
             {
-                paramsToValidate.Add(IntuneConstants.OfflineWipeIntervalDaysProperty, this.OfflineWipeIntervalDays.Value);
+                paramsToValidate.Add(IntuneConstants.OfflineWipeTimeoutProperty, this.OfflineWipeTimeout.Value);
             }
 
             NumericParameterValueChecker.CheckIfNegativeAndThrowException(paramsToValidate);
@@ -216,32 +214,32 @@ namespace Microsoft.Azure.Commands.Intune
         private AndroidMAMPolicy PrepareAndriodPolicyBody()
         {
             TimeSpan? accessRecheckOfflineTimeout = null, accessRecheckOnlineTimeout = null, offlineWipeTimeout = null;
-            if(RecheckAccessOfflineGracePeriodMinutes.HasValue)
+            if(AccessRecheckOfflineTimeout.HasValue)
             {
-                accessRecheckOfflineTimeout = TimeSpan.FromMinutes(RecheckAccessOfflineGracePeriodMinutes.Value);
+                accessRecheckOfflineTimeout = TimeSpan.FromMinutes(AccessRecheckOfflineTimeout.Value);
             }
 
-            if(RecheckAccessTimeoutMinutes.HasValue)
+            if(AccessRecheckOnlineTimeout.HasValue)
             {
-                accessRecheckOnlineTimeout = TimeSpan.FromMinutes(RecheckAccessTimeoutMinutes.Value);
+                accessRecheckOnlineTimeout = TimeSpan.FromMinutes(AccessRecheckOnlineTimeout.Value);
             }
 
-            if (OfflineWipeIntervalDays.HasValue)
+            if (OfflineWipeTimeout.HasValue)
             {
-                offlineWipeTimeout = TimeSpan.FromDays(OfflineWipeIntervalDays.Value);
+                offlineWipeTimeout = TimeSpan.FromDays(OfflineWipeTimeout.Value);
             }
             
             var policyBody = new AndroidMAMPolicy() {             
                 FriendlyName = this.FriendlyName,
                 Description = this.Description,
-                AppSharingFromLevel = this.AllowDataTransferToApps.HasValue ? AllowDataTransferToApps.ToString() : null,
-                AppSharingToLevel = this.AllowDataTransferFromApps.HasValue ? this.AllowDataTransferFromApps.ToString() : null,
+                AppSharingFromLevel = this.AppSharingFromLevel.HasValue ? AppSharingFromLevel.ToString() : null,
+                AppSharingToLevel = this.AppSharingToLevel.HasValue ? this.AppSharingToLevel.ToString() : null,
                 Authentication = this.Authentication.HasValue ? this.Authentication.ToString() : null,
-                ClipboardSharingLevel = this.ClipboardSharing.HasValue ? this.ClipboardSharing.ToString() : null,
+                ClipboardSharingLevel = this.ClipboardSharingLevel.HasValue ? this.ClipboardSharingLevel.ToString() : null,
                 DataBackup = this.DataBackup.HasValue ? this.DataBackup.ToString() : null,
                 FileSharingSaveAs = this.FileSharingSaveAs.HasValue ? this.FileSharingSaveAs.ToString() : null,
                 Pin = this.Pin.HasValue ? this.Pin.ToString() : null,
-                PinNumRetry = this.PinRetries,
+                PinNumRetry = this.PinNumRetry,
                 DeviceCompliance = this.DeviceCompliance.HasValue ? this.DeviceCompliance.ToString() : null,
                 ManagedBrowser = this.ManagedBrowser.HasValue ? this.ManagedBrowser.ToString() : null,
                 AccessRecheckOfflineTimeout = accessRecheckOfflineTimeout,

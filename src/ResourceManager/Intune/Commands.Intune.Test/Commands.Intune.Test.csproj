@@ -149,6 +149,11 @@
     <Compile Include="UnitTests\Policy\RemoveIntuneAndroidMAMPolicyCmdletTests.cs" />
     <Compile Include="UnitTests\Policy\NewIntuneAndroidMAMPolicyCmdletTests.cs" />
     <Compile Include="UnitTests\Policy\GetIntuneAndroidMAMPolicyCmdletTests.cs" />
+    <Compile Include="UnitTests\Flagged\GetIntuneMAMFlaggedEnrolledAppsCmdletTests.cs" />
+    <Compile Include="UnitTests\Flagged\GetIntuneMAMFlaggedUsersCmdletTests.cs" />
+    <Compile Include="UnitTests\Flagged\GetIntuneMAMStatusCmdletTests.cs" />
+    <Compile Include="UnitTests\UserDevices\GetIntuneMAMUserDeviceCmdletTests.cs" />
+    <Compile Include="UnitTests\Operations\InvokeIntuneMAMUserDeviceWipeCmdletTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Net.Http.Extensions">
@@ -169,7 +174,9 @@
     <None Include="ScenarioTests\IntuneTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Intune.Test.ScenarioTests.IntuneTests\TestE2EAndroidMAMPolicy.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Intune.Test.ScenarioTests.IntuneTests\TestE2EAndroidMAMPolicy.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">

@@ -78,10 +78,10 @@ namespace Microsoft.Azure.Commands.Intune.Test
             var expectedMAMPolicy = new IOSMAMPolicy()
             {
                 FriendlyName = "expectedPolicyFriendlyName",
-                PinNumRetry = IntuneConstants.DefaultPinRetries,
-                AccessRecheckOfflineTimeout = TimeSpan.FromMinutes(IntuneConstants.DefaultRecheckAccessOfflineGracePeriodMinutes),
-                AccessRecheckOnlineTimeout = TimeSpan.FromMinutes(IntuneConstants.DefaultRecheckAccessTimeoutMinutes),
-                OfflineWipeTimeout = TimeSpan.FromDays(IntuneConstants.DefaultOfflineWipeIntervalDays),
+                PinNumRetry = IntuneConstants.DefaultPinNumRetry,
+                AccessRecheckOfflineTimeout = TimeSpan.FromMinutes(IntuneConstants.DefaultAccessRecheckOfflineTimeout),
+                AccessRecheckOnlineTimeout = TimeSpan.FromMinutes(IntuneConstants.DefaultAccessRecheckOnlineTimeout),
+                OfflineWipeTimeout = TimeSpan.FromDays(IntuneConstants.DefaultOfflineWipeTimeout),
             };
 
             expectedRespose.Body = expectedResultPage;

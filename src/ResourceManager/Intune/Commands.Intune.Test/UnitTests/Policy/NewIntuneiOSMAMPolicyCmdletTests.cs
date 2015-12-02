@@ -71,10 +71,10 @@ namespace Microsoft.Azure.Commands.Intune.Test
             var expectedMAMPolicy = new IOSMAMPolicy()
             {   
                 FriendlyName = "expectedPolicyFriendlyName",
-                PinNumRetry = IntuneConstants.DefaultPinRetries,
-                AccessRecheckOfflineTimeout = TimeSpan.FromMinutes(IntuneConstants.DefaultRecheckAccessOfflineGracePeriodMinutes),
-                AccessRecheckOnlineTimeout = TimeSpan.FromMinutes(IntuneConstants.DefaultRecheckAccessTimeoutMinutes),
-                OfflineWipeTimeout = TimeSpan.FromDays(IntuneConstants.DefaultOfflineWipeIntervalDays),
+                PinNumRetry = IntuneConstants.DefaultPinNumRetry,
+                AccessRecheckOfflineTimeout = TimeSpan.FromMinutes(IntuneConstants.DefaultAccessRecheckOfflineTimeout),
+                AccessRecheckOnlineTimeout = TimeSpan.FromMinutes(IntuneConstants.DefaultAccessRecheckOnlineTimeout),
+                OfflineWipeTimeout = TimeSpan.FromDays(IntuneConstants.DefaultOfflineWipeTimeout),
             };
 
             resIosPolicy.Body = expectedMAMPolicy;
@@ -138,9 +138,9 @@ namespace Microsoft.Azure.Commands.Intune.Test
             // Set cmdline args and execute the cmdlet
             this.cmdlet.Force = true;
             this.cmdlet.FriendlyName = expectedMAMPolicy.FriendlyName;     
-            this.cmdlet.RecheckAccessOfflineGracePeriodMinutes = expectedMAMPolicy.AccessRecheckOfflineTimeout.Value.Minutes;
-            this.cmdlet.RecheckAccessTimeoutMinutes = expectedMAMPolicy.AccessRecheckOnlineTimeout.Value.Minutes;
-            this.cmdlet.OfflineWipeIntervalDays = expectedMAMPolicy.OfflineWipeTimeout.Value.Days;
+            this.cmdlet.AccessRecheckOfflineTimeout = expectedMAMPolicy.AccessRecheckOfflineTimeout.Value.Minutes;
+            this.cmdlet.AccessRecheckOnlineTimeout = expectedMAMPolicy.AccessRecheckOnlineTimeout.Value.Minutes;
+            this.cmdlet.OfflineWipeTimeout = expectedMAMPolicy.OfflineWipeTimeout.Value.Days;
 
             this.cmdlet.ExecuteCmdlet();
 
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Commands.Intune.Test
             // Set the cmdline args and execute the cmdlet
             this.cmdlet.FriendlyName = "expectedPolicyFriendlyName";
             this.cmdlet.Force = true;
-            this.cmdlet.PinRetries = -1;
+            this.cmdlet.PinNumRetry = -1;
 
             try
             {

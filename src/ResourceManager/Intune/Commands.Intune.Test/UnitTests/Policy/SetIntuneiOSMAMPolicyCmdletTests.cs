@@ -57,9 +57,9 @@ namespace Microsoft.Azure.Commands.Intune.Test
             intuneClientMock.Setup(f => f.GetLocationByHostNameWithHttpMessagesAsync(It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
                 .Returns(Task.FromResult(resLocation));
         }
-     
+
         /// <summary>
-        /// Test for Non-default valid args.
+        /// Test for valid args.
         /// </summary>   
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -89,9 +89,9 @@ namespace Microsoft.Azure.Commands.Intune.Test
             // Set cmdline args and execute the cmdlet
             this.cmdlet.Force = true;
             this.cmdlet.FriendlyName = expectedMAMPolicy.FriendlyName;     
-            this.cmdlet.RecheckAccessOfflineGracePeriodMinutes = expectedMAMPolicy.AccessRecheckOfflineTimeout.Value.Minutes;
-            this.cmdlet.RecheckAccessTimeoutMinutes = expectedMAMPolicy.AccessRecheckOnlineTimeout.Value.Minutes;
-            this.cmdlet.OfflineWipeIntervalDays = expectedMAMPolicy.OfflineWipeTimeout.Value.Days;
+            this.cmdlet.AccessRecheckOfflineTimeout = expectedMAMPolicy.AccessRecheckOfflineTimeout.Value.Minutes;
+            this.cmdlet.AccessRecheckOnlineTimeout = expectedMAMPolicy.AccessRecheckOnlineTimeout.Value.Minutes;
+            this.cmdlet.OfflineWipeTimeout = expectedMAMPolicy.OfflineWipeTimeout.Value.Days;
 
             this.cmdlet.ExecuteCmdlet();
 
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.Intune.Test
             // Set the cmdline args and execute the cmdlet
             this.cmdlet.FriendlyName = "expectedPolicyFriendlyName";
             this.cmdlet.Force = true;
-            this.cmdlet.PinRetries = -1;
+            this.cmdlet.PinNumRetry = -1;
 
             try
             {
