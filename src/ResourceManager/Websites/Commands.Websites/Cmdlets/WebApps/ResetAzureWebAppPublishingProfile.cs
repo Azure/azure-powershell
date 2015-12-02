@@ -24,9 +24,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     [Cmdlet(VerbsCommon.Reset, "AzureRMWebAppPublishingProfile")]
     public class ResetAzureWebAppPublishingProfileCmdlet : WebAppBaseCmdlet
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
             WriteObject(WebsitesClient.ResetWebAppPublishingCredentials(ResourceGroupName, Name, null));
         }
     }

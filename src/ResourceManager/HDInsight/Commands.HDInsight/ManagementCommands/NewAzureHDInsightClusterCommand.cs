@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             ScriptActions = new Dictionary<ClusterNodeType, List<AzureHDInsightScriptAction>>();
         }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             parameters.UserName = HttpCredential.UserName;
             parameters.Password = HttpCredential.Password.ConvertToString();

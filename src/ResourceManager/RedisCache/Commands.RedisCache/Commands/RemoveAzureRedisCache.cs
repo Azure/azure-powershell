@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.RedisCache
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (!Force.IsPresent)
             {
