@@ -58,10 +58,10 @@
     "System.Threading.Tasks": "4.0.11-beta-23516",
     "System.Threading.Thread": "4.0.0-beta-23516",
     "System.Xml.ReaderWriter": "4.0.11-beta-23516",
-    "xunit": "2.2.0-beta1-build3220",
-    "xunit.assert": "2.1.0-rc1-build3168",
+    "xunit": "2.1.0",
+    "xunit.assert": "2.1.0",
     "xunit.runner.dnx": "2.1.0-rc1-build204",
-    "moq.netcore": "4.4.0"
+    "moq.netcore": "4.4.0-beta8"
   },
   "commands": {
     "test": "xunit.runner.dnx"
