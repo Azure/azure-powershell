@@ -8,7 +8,7 @@
   <?define version="1.0.1" ?>
   <?define versionedStartMenuFolder="Microsoft Azure" ?>
   <?define staleStartMenuFolder="Windows Azure" ?>
-   
+
   <Product Id="*"
            Name="$(var.productName)"
            Language="1033"
@@ -41,27 +41,6 @@
 
     <SetProperty Id="POWERSHELLEXE" Value="[WindowsFolder]System32\WindowsPowerShell\v1.0\powershell.exe" Before="AppSearch"/>
 
-    <Property Id="POWERSHELLGETMODULESINSTALLED" >
-      <DirectorySearch Id="PROGRAMFILESCONTAINER" Path="[BaseModulesFolder]">
-        <DirectorySearch Id= "PROFILEMODULE" Path="AzureRM.Profile"/>
-      </DirectorySearch>
-    </Property>
-
-    <Property Id="POWERSHELLGETAZUREINSTALLED" >
-      <DirectorySearch Id="AZURECONTAINER" Path="[BaseModulesFolder]">
-        <DirectorySearch Id= "AZUREMODULE" Path="Azure"/>
-      </DirectorySearch>
-    </Property>
-
-    <Condition Message="Azure Modules from the PowerShell Gallery are installed on this machine.  Please remove these modules before installing this MSI.">
-      <![CDATA[Installed or NOT(POWERSHELLGETMODULESINSTALLED >< "AzureRM.Profile")]]>
-    </Condition>
-
-    <Condition Message="Azure Modules from the PowerShell Gallery are installed on this machine.  Please remove these modules before installing this MSI.">
-      <![CDATA[Installed or NOT(POWERSHELLGETAZUREINSTALLED >< "Azure")]]>
-    </Condition>
-
-
     <Condition Message="This setup requires the Windows PowerShell 3.0 or compatible version to be installed.">
       <!-- This condition will break if PowerShell has version x3.0 and it is not compatible with 3.0 -->
       <![CDATA[Installed or (PSCOMPATIBLEVERSION >< "3.0")]]>
@@ -88,11 +67,11 @@
     </Directory>
 
     <Property Id="POWERSHELLPATH">
-    <RegistrySearch Id="POWERSHELLPATH"
-                    Type="raw"
-                    Root="HKLM"
-                    Key="SOFTWARE\Microsoft\PowerShell\3\PowerShellEngine"
-                    Name="ApplicationBase" />
+      <RegistrySearch Id="POWERSHELLPATH"
+                      Type="raw"
+                      Root="HKLM"
+                      Key="SOFTWARE\Microsoft\PowerShell\3\PowerShellEngine"
+                      Name="ApplicationBase" />
     </Property>
 
     <DirectoryRef Id="PowerShellFolder">
@@ -100,12 +79,18 @@
         <CreateFolder />
         <!-- Work around bug that PowerShell does not always consider default module paths. -->
         <Environment Id="PSModulePath.SystemAppRoot" Action="set" Name="PSMODULEPATH" Part="last" Value="[BaseModulesFolder];[PowerShellFolder]ResourceManager\AzureResourceManager;[PowerShellFolder]ServiceManagement" System="yes" />
-      </Component>
+     </Component>
     </DirectoryRef>
 
     <DirectoryRef Id="PowerShellFolder">
       <Component Id="AzureSdkExecutionPolicyScript" Guid="3d0d589a-b34c-4c48-9a4c-df78f286c6a3">
         <File Id="AzureSdkExecutionPolicyScriptFile" KeyPath="yes" Source="$(var.SolutionDir)\Setup\SetExecutionPolicy.ps1" />
+      </Component>
+    </DirectoryRef>
+
+    <DirectoryRef Id="PowerShellFolder">
+      <Component Id="AzureSdkRemoveModulesScript" Guid="7d75fe67-88e4-40da-bc3d-874cb0438d30">
+        <File Id="AzureSdkRemoveModulesScriptFile" KeyPath="yes" Source="$(var.SolutionDir)\Setup\RemoveGalleryModules.ps1" />
       </Component>
     </DirectoryRef>
 
@@ -127,17 +112,20 @@
       <ComponentRef Id="PSModulePath.System" />
       <ComponentRef Id="AzureSdkShortcut" />
       <ComponentRef Id="AzureSdkExecutionPolicyScript" />
-    </Feature>
+      <ComponentRef Id="AzureSdkRemoveModulesScript" />
+   </Feature>
 
     <Binary Id="CustomActions" SourceFile="$(var.caSourceDir)\Microsoft.WindowsAzure.Setup.CA.dll"/>
     <CustomAction Id="UpdatePSShortcut" BinaryKey="CustomActions" DllEntry="UpdatePSShortcut" Execute ="deferred" Impersonate="no"/>
     <CustomAction Id="SetCustomActionDataValue" Return="check" Property="UpdatePSShortcut"
                      Value="ShortcutPath=[AzureSdkMenu]Microsoft Azure PowerShell.lnk;DefaultShortcutPath=[ProgramMenuFolder]System Tools\Windows PowerShell.lnk" />
     <CustomAction Id="SetExecutionPolicy" Property="POWERSHELLEXE" ExeCommand="-NoLogo -NoProfile -ExecutionPolicy Bypass -Command &quot;. \&quot;[PowerShellFolder]SetExecutionPolicy.ps1\&quot;&quot;" Execute="deferred" Impersonate="no" Return="check"/>
+    <CustomAction Id="RemoveGalleryModules" Property="POWERSHELLEXE" ExeCommand="-NoLogo -NoProfile -ExecutionPolicy Bypass -Command &quot;. \&quot;[PowerShellFolder]RemoveGalleryModules.ps1\&quot;&quot;" Execute="deferred" Impersonate="no" Return="check"/>
 
     <InstallExecuteSequence>
       <Custom Action="SetCustomActionDataValue" After="CreateShortcuts">NOT Installed</Custom>
-      <Custom Action="UpdatePSShortcut" After="SetCustomActionDataValue">NOT Installed</Custom>
+      <Custom Action="RemoveGalleryModules" After="SetCustomActionDataValue">NOT Installed</Custom>
+      <Custom Action="UpdatePSShortcut" After="RemoveGalleryModules">NOT Installed</Custom>
       <Custom Action="SetExecutionPolicy" After="UpdatePSShortcut">NOT Installed</Custom>
     </InstallExecuteSequence>
 
