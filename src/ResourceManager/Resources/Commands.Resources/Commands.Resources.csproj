@@ -287,4 +287,4 @@
   <PropertyGroup>
     <PostBuildEvent>powershell.exe -ExecutionPolicy Unrestricted -File "$(ProjectDir)\PostBuild.ps1" "$(TargetDir)\"</PostBuildEvent>
   </PropertyGroup>
-  </Project>
+ </Project>
