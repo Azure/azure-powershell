@@ -312,9 +312,9 @@
   <Target Name="Test" DependsOnTargets="BeforeRunTests">
     <Message Importance="high" Text="Running check in tests..." />
     <ItemGroup>
-      <!--Exclude 2 test projects still in progress with build failures-->
+      <!--Exclude 1 test projects still in progress with build failures-->
       <_CLUTestProjects Include="$(CLURootDir)\*.Test\project.json"
-                        Exclude="$(CLURootDir)\Microsoft.Azure.Commands.Resources.Test\project.json;$(CLURootDir)\Microsoft.Azure.Commands.Websites.Test\project.json">
+                        Exclude="$(CLURootDir)\Microsoft.Azure.Commands.Resources.Test\project.json">
       </_CLUTestProjects>
     </ItemGroup>
     <Exec Command="dnu build" WorkingDirectory="%(_CLUTestProjects.RootDir)%(_CLUTestProjects.Directory)" />
