@@ -20,8 +20,7 @@ namespace Microsoft.Azure.Commands.Intune.Test.ScenarioTests
 {
     public class IntuneTests : TestBase
     {
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact(Skip = "Tenant only Authencation does not work with Scenario Test framework")]  
         public void TestE2EAndroidMAMPolicy()
         {
             IntuneTestController.NewInstance.RunPsTest("Test-E2EAndroidMAMPolicy");
