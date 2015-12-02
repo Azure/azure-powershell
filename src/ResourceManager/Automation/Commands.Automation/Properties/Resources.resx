@@ -173,6 +173,10 @@
     <value>Are you sure you want to remove the Azure Automation {0} ?</value>
     <comment>Automation</comment>
   </data>
+  <data name="RemovingAzureAutomationDscConfigurationWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Azure Automation {0} ? This action doesn't remove DSC node configurations under this DSC configuration.</value>
+    <comment>Automation</comment>
+  </data>
   <data name="ResourceExists" xml:space="preserve">
     <value>Resource exist.</value>
     <comment>Automation</comment>

@@ -29,10 +29,11 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// </summary>
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The configuration name.")]
+        [Alias("ConfigurationName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Position = 3, HelpMessage = "Confirm the removal of the configuration")]
+        [Parameter(Position = 3, HelpMessage = "Force confirmation of the removal of the configuration")]
         public SwitchParameter Force { get; set; }
 
         /// <summary>
@@ -43,7 +44,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         {
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Resources.RemovingAzureAutomationResourceWarning, "DSC Configuration"),
+                string.Format(Resources.RemovingAzureAutomationDscConfigurationWarning, "DSC Configuration"),
                 string.Format(Resources.RemoveAzureAutomationResourceDescription, "DSC Configuration"),
                 Name,
                 () => this.AutomationClient.DeleteConfiguration(
