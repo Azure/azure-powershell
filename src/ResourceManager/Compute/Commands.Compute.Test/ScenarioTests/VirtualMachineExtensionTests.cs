@@ -19,35 +19,35 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public class VirtualMachineExtensionTests
     {
-        [Fact(Skip = "Rerecord tests")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineExtension()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineExtension");
         }
 
-        [Fact(Skip = "Rerecord tests")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineExtensionUsingHashTable()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineExtensionUsingHashTable");
         }
 
-        [Fact(Skip = "Rerecord tests")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineCustomScriptExtension()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineCustomScriptExtension");
         }
 
-        [Fact(Skip = "Rerecord tests")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineCustomScriptExtensionFileUri()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineCustomScriptExtensionFileUri");
         }
 
-        [Fact(Skip = "Rerecord tests")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineAccessExtension()
         {
