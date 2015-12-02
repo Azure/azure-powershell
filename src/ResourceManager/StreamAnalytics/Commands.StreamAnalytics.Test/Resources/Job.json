@@ -12,9 +12,8 @@
         "properties": {
           "type": "stream",
           "serialization": {
-            "type": "CSV",
+            "type": "JSON",
             "properties": {
-              "fieldDelimiter": ",",
               "encoding": "UTF8"
             }
           },
