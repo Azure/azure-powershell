@@ -29,11 +29,11 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.ExecuteCmdlet();
 
-            var serviceProviderList = this.NetworkClient.NetworkResourceProviderClient.ExpressRouteServiceProviders.List();
+            var serviceProviderList = this.NetworkClient.NetworkManagementClient.ExpressRouteServiceProviders.List();
 
             var psProviders = new List<PSExpressRouteServiceProvider>();
 
-            foreach (var provider in serviceProviderList.ExpressRouteServiceProviders)
+            foreach (var provider in serviceProviderList)
             {
                 var psProvider = Mapper.Map<PSExpressRouteServiceProvider>(provider);
                 psProviders.Add(psProvider);

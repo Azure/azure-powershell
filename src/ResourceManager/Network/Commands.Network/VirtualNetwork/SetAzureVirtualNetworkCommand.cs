@@ -43,7 +43,6 @@ namespace Microsoft.Azure.Commands.Network
             
             // Map to the sdk object
             var vnetModel = Mapper.Map<MNM.VirtualNetwork>(this.VirtualNetwork);
-            vnetModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.VirtualNetworkType;
             vnetModel.Tags = TagsConversionHelper.CreateTagDictionary(this.VirtualNetwork.Tag, validate: true);
 
             // Execute the Create VirtualNetwork call

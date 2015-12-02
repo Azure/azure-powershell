@@ -439,7 +439,7 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"0c5ef11e-0b2f-4fe4-a848-2a5bbabaf8b5\""
+          "W/\"0c5ef11e-0b2f-4fe4-a848-2a5bbabaf8b5"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
@@ -494,7 +494,7 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"0c5ef11e-0b2f-4fe4-a848-2a5bbabaf8b5\""
+          "W/\"0c5ef11e-0b2f-4fe4-a848-2a5bbabaf8b5"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
@@ -716,7 +716,7 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"af3d43ec-7ae2-4818-b728-232eb48fa3a1\""
+          "W/\"af3d43ec-7ae2-4818-b728-232eb48fa3a1"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
@@ -938,7 +938,7 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"74810d0b-3d4f-4303-aae8-655d20de85ea\""
+          "W/\"74810d0b-3d4f-4303-aae8-655d20de85ea"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
@@ -993,7 +993,7 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"74810d0b-3d4f-4303-aae8-655d20de85ea\""
+          "W/\"74810d0b-3d4f-4303-aae8-655d20de85ea"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
@@ -5010,7 +5010,7 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"4c4fbbf7-5d1b-418b-ae84-b05328ddc6d4\""
+          "W/\"4c4fbbf7-5d1b-418b-ae84-b05328ddc6d4"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
@@ -5065,7 +5065,7 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"4c4fbbf7-5d1b-418b-ae84-b05328ddc6d4\""
+          "W/\"4c4fbbf7-5d1b-418b-ae84-b05328ddc6d4"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
