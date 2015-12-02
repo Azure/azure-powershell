@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet(
         VerbsCommon.Set,
         ProfileNouns.VirtualMachineDiagnosticsExtension)]
-    public class SetAzureVMDiagnosticsExtensionCommand : VirtualMachineExtensionBaseCmdlet
+    public class SetAzureRmVMDiagnosticsExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         private string publicConfiguration;
         private string privateConfiguration;

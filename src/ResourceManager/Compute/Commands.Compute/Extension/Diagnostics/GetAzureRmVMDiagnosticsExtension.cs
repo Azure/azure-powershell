@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Compute
         ProfileNouns.VirtualMachineDiagnosticsExtension),
     OutputType(
         typeof(PSVirtualMachineExtension))]
-    public class GetAzureVMDiagnosticsExtensionCommand : VirtualMachineExtensionBaseCmdlet
+    public class GetAzureRmVMDiagnosticsExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(
            Mandatory = true,

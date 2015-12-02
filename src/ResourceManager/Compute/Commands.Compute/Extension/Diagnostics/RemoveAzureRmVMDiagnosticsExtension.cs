@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet(
         VerbsCommon.Remove,
         ProfileNouns.VirtualMachineDiagnosticsExtension)]
-    public class RemoveAzureVMDiagnosticsExtensionCommand : VirtualMachineExtensionBaseCmdlet
+    public class RemoveAzureRmVMDiagnosticsExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(
            Mandatory = true,
