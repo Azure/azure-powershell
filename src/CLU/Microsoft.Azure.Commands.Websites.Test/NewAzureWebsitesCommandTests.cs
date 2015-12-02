@@ -12,13 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps;
+using Microsoft.Azure.Commands.WebApps.Utilities;
+using Moq;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.WebApps.Utilities;
-using Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps;
-using Moq;
-
 
 namespace Microsoft.Azure.Commands.Websites.Test
 {
@@ -53,9 +52,10 @@ namespace Microsoft.Azure.Commands.Websites.Test
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new NewAzureWebAppCmdlet()
             {
-                CommandRuntime = commandRuntimeMock.Object,
+                //CommandRuntime = commandRuntimeMock.Object,
                 WebsitesClient = websitesClientMock.Object
             };
+            System.Reflection.TypeExtensions.GetProperty(cmdlet.GetType(), "CommandRuntime").SetValue(cmdlet, commandRuntimeMock.Object);
         }
 
     }

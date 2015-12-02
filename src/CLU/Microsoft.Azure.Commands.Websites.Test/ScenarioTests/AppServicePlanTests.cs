@@ -13,47 +13,64 @@
 // ----------------------------------------------------------------------------------
 
 
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.Azure.Commands.ScenarioTest;
+using Microsoft.Azure.Commands.Test.Utilities.Common;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 {
     public class AppServicePlanTests : RMTestBase
     {
+        private const string CallingClass = "Microsoft.Azure.Commands.Websites.Test.ScenarioTests.AppServicePlanTests";
+
         [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNewAppServicePlan()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-CreateNewAppServicePlan");
+            WebsitesController.NewInstance.RunPsTest(
+                CallingClass,
+                "TestCreateNewAppServicePlan",
+                "Test-CreateNewAppServicePlan");
         }
 
         [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAppServicePlan()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-SetAppServicePlan");
+            WebsitesController.NewInstance.RunPsTest(
+                CallingClass,
+                "TestSetAppServicePlan",
+                "Test-SetAppServicePlan");
         }
 
         [Fact(Skip="Needs investigation. Fails running playback")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAppServicePlan()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-GetAppServicePlan");
+            WebsitesController.NewInstance.RunPsTest(
+                CallingClass,
+                "TestGetAppServicePlan",
+                "Test-GetAppServicePlan");
         }
 
         [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAppServicePlan()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-RemoveAppServicePlan");
+            WebsitesController.NewInstance.RunPsTest(
+                CallingClass,
+                "TestRemoveAppServicePlan",
+                "Test-RemoveAppServicePlan");
         }
 
         [Fact(Skip = "Needs investigation. Fails running playback")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAppServicePlanMetrics()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-GetAppServicePlanMetrics");
+            WebsitesController.NewInstance.RunPsTest(
+                CallingClass,
+                "TestGetAppServicePlanMetrics",
+                "Test-GetAppServicePlanMetrics");
         }
     }
 }
