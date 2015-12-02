@@ -133,14 +133,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UnitTests\GetIntuneiOSMAMPolicyCmdletTests.cs" />
-    <Compile Include="UnitTests\SetIntuneAndroidMAMPolicyCmdletTests.cs" />
-    <Compile Include="UnitTests\SetIntuneiOSMAMPolicyCmdletTests.cs" />
-    <Compile Include="UnitTests\NewIntuneiOSMAMPolicyCmdletTests.cs" />
-    <Compile Include="UnitTests\RemoveIntuneiOSMAMPolicyCmdletTests.cs" />
-    <Compile Include="UnitTests\RemoveIntuneAndroidMAMPolicyCmdletTests.cs" />
-    <Compile Include="UnitTests\NewIntuneAndroidMAMPolicyCmdletTests.cs" />
-    <Compile Include="UnitTests\GetIntuneAndroidMAMPolicyCmdletTests.cs" />
+    <Compile Include="UnitTests\Apps\AddIntuneiOSMAMPolicyAppCmdletTests.cs" />
+    <Compile Include="UnitTests\Apps\GetIntuneiOSMAMPolicyAppCmdletTests.cs" />
+    <Compile Include="UnitTests\Apps\GetIntuneAndroidMAMPolicyAppCmdletTests.cs" />
+    <Compile Include="UnitTests\Apps\GetIntuneiOSMAMAppCmdletTests.cs" />
+    <Compile Include="UnitTests\Apps\GetIntuneAndroidMAMAppCmdletTests.cs" />
+    <Compile Include="UnitTests\Apps\AddIntuneAndroidMAMPolicyAppCmdletTests.cs" />
+    <Compile Include="UnitTests\Apps\RemoveIntuneiOSMAMPolicyAppCmdletTests.cs" />
+    <Compile Include="UnitTests\Apps\RemoveIntuneAndroidMAMPolicyAppCmdletTests.cs" />
+    <Compile Include="UnitTests\Policy\GetIntuneiOSMAMPolicyCmdletTests.cs" />
+    <Compile Include="UnitTests\Policy\SetIntuneAndroidMAMPolicyCmdletTests.cs" />
+    <Compile Include="UnitTests\Policy\SetIntuneiOSMAMPolicyCmdletTests.cs" />
+    <Compile Include="UnitTests\Policy\NewIntuneiOSMAMPolicyCmdletTests.cs" />
+    <Compile Include="UnitTests\Policy\RemoveIntuneiOSMAMPolicyCmdletTests.cs" />
+    <Compile Include="UnitTests\Policy\RemoveIntuneAndroidMAMPolicyCmdletTests.cs" />
+    <Compile Include="UnitTests\Policy\NewIntuneAndroidMAMPolicyCmdletTests.cs" />
+    <Compile Include="UnitTests\Policy\GetIntuneAndroidMAMPolicyCmdletTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Net.Http.Extensions">

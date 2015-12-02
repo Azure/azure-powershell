@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.Intune.Test
         public void RemoveIntuneAndroidMAMPolicyCmdlet_NoItemDeleted_Test()
         {
             // Set up expected response
-            Microsoft.Rest.Azure.AzureOperationResponse expectedRespose = new Microsoft.Rest.Azure.AzureOperationResponse();
+            var expectedRespose = new Microsoft.Rest.Azure.AzureOperationResponse();
 
             expectedRespose.Response = new System.Net.Http.HttpResponseMessage();
             expectedRespose.Response.StatusCode = System.Net.HttpStatusCode.NoContent;

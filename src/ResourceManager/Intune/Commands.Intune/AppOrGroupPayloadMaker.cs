@@ -14,7 +14,6 @@
 
 namespace Microsoft.Azure.Commands.Intune
 {
-
     using Microsoft.Azure.Management.Intune.Models;
     using Microsoft.Azure.Management.Intune;
     using System.Globalization;
@@ -29,7 +28,7 @@ namespace Microsoft.Azure.Commands.Intune
     }
 
     /// <summary>
-    /// Prepares payload for link requests of type:group/app for an Intune policy
+    /// Prepares payload for link requests of type:group/app for an Intune policy.
     /// </summary>
     public class AppOrGroupPayloadMaker
     {
@@ -41,6 +40,7 @@ namespace Microsoft.Azure.Commands.Intune
             string uriFormat = type == LinkType.App ? AppUriFormat : GroupUriFormat;            
             string uri = string.Format(CultureInfo.InvariantCulture, uriFormat, client.BaseUri.Host, asuHostName, name);
             var payload = new MAMPolicyAppIdOrGroupIdPayload();
+
             payload.Properties = new MAMPolicyAppOrGroupIdProperties()
             {
                 Url = uri

@@ -57,56 +57,7 @@ namespace Microsoft.Azure.Commands.Intune.Test
             intuneClientMock.Setup(f => f.GetLocationByHostNameWithHttpMessagesAsync(It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
                 .Returns(Task.FromResult(resLocation));
         }
-
-        /// <summary>
-        /// Test for default args.
-        /// </summary>       
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void SetIntuneiOSMAMPolicy_WithDefaultArgs_Test()
-        {
-            AzureOperationResponse<IOSMAMPolicy> resIosPolicy = new AzureOperationResponse<IOSMAMPolicy>();
-
-            // Set expected Policy object
-            var expectedMAMPolicy = new IOSMAMPolicy()
-            {   
-                FriendlyName = "expectedPolicyFriendlyName",
-                PinNumRetry = IntuneConstants.DefaultPinRetries,
-                AccessRecheckOfflineTimeout = TimeSpan.FromMinutes(IntuneConstants.DefaultRecheckAccessOfflineGracePeriodMinutes),
-                AccessRecheckOnlineTimeout = TimeSpan.FromMinutes(IntuneConstants.DefaultRecheckAccessTimeoutMinutes),
-                OfflineWipeTimeout = TimeSpan.FromDays(IntuneConstants.DefaultOfflineWipeIntervalDays),
-            };
-
-            resIosPolicy.Body = expectedMAMPolicy;
-
-            IOSMAMPolicy actualPolicyObj = new IOSMAMPolicy();
-
-            // Mock the Underlying Service API method
-            intuneClientMock.Setup(f => f.Ios.PatchMAMPolicyWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<IOSMAMPolicy>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
-                .Returns(Task.FromResult(resIosPolicy)).Callback((string hostName, string s, IOSMAMPolicy pObj, Dictionary<string, List<string>> dict, CancellationToken cTkn) => { actualPolicyObj = pObj; });
-            
-            // Mock the PowerShell RunTime method
-            commandRuntimeMock.Setup(m => m.ShouldProcess(It.IsAny<string>(), It.IsAny<string>()))
-                .Returns(() => true);
-              
-            // Set the cmdline args and execute the cmdlet
-            this.cmdlet.Force = true;
-            this.cmdlet.FriendlyName = expectedMAMPolicy.FriendlyName;
-
-            this.cmdlet.ExecuteCmdlet();
-            
-            // Verify the params which are set with Default values
-            Assert.Equal(expectedMAMPolicy.FriendlyName, actualPolicyObj.FriendlyName);
-            Assert.Equal(expectedMAMPolicy.Name, actualPolicyObj.Id);
-            Assert.Equal(expectedMAMPolicy.Id, actualPolicyObj.Name);
-            Assert.Equal(expectedMAMPolicy.PinNumRetry, actualPolicyObj.PinNumRetry);     
-            Assert.Equal(expectedMAMPolicy.OfflineWipeTimeout, actualPolicyObj.OfflineWipeTimeout);
-            Assert.Equal(expectedMAMPolicy.AccessRecheckOfflineTimeout, actualPolicyObj.AccessRecheckOfflineTimeout);
-            Assert.Equal(expectedMAMPolicy.AccessRecheckOnlineTimeout, actualPolicyObj.AccessRecheckOnlineTimeout);
-
-            commandRuntimeMock.Verify(f => f.WriteObject(expectedMAMPolicy), Times.Once());        
-        }
-
+     
         /// <summary>
         /// Test for Non-default valid args.
         /// </summary>   
@@ -115,7 +66,7 @@ namespace Microsoft.Azure.Commands.Intune.Test
         public void SetIntuneiOSMAMPolicy_WithValidArgs_Test()
         {
             // Set up the expected Policy
-            AzureOperationResponse<IOSMAMPolicy> resPolicy = new AzureOperationResponse<IOSMAMPolicy>();
+            var resPolicy = new AzureOperationResponse<IOSMAMPolicy>();
 
             var expectedMAMPolicy = new IOSMAMPolicy()
             {
@@ -161,7 +112,7 @@ namespace Microsoft.Azure.Commands.Intune.Test
         public void SetIntuneiOSMAMPolicy_WithInValidArgs_Test()
         {
             // Set-up the expected Policy
-            AzureOperationResponse<IOSMAMPolicy> resIosPolicy = new AzureOperationResponse<IOSMAMPolicy>();
+            var resIosPolicy = new AzureOperationResponse<IOSMAMPolicy>();
             
             var expectedMAMPolicy = new IOSMAMPolicy()
             {

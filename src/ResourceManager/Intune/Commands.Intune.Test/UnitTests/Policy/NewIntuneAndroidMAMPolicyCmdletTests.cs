@@ -28,30 +28,30 @@ using Xunit;
 namespace Microsoft.Azure.Commands.Intune.Test
 {
     /// <summary>
-    ///  Unit Tests for the NewIntuneIOSMAMPolicy Cmdlet.
+    ///  Unit Tests for the NewIntuneAndroidMAMPolicy Cmdlet.
     /// </summary>
-    public class NewIntuneiOSMAMPolicyCmdletTests
+    public class NewIntuneAndroidMAMPolicyCmdletTests
     {
         private Mock<IIntuneResourceManagementClient> intuneClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
-        private NewIntuneiOSMAMPolicyCmdlet cmdlet;
-        private Location mockLocation;
+        private NewIntuneAndroidMAMPolicyCmdlet cmdlet;
+        private Location expectedLocation;
 
         /// <summary>
-        ///  C'tor for NewIntuneiOSMAMPolicyCmdletTests class.
+        ///  C'tor for NewIntuneAndroidMAMPolicyCmdletTests class.
         /// </summary>
-        public NewIntuneiOSMAMPolicyCmdletTests()
+        public NewIntuneAndroidMAMPolicyCmdletTests()
         {
             commandRuntimeMock = new Mock<ICommandRuntime>();
             intuneClientMock = new Mock<IIntuneResourceManagementClient>();
 
-            cmdlet = new NewIntuneiOSMAMPolicyCmdlet();
+            cmdlet = new NewIntuneAndroidMAMPolicyCmdlet();
             this.cmdlet.CommandRuntime = commandRuntimeMock.Object;
             this.cmdlet.IntuneClient = intuneClientMock.Object;
 
             // Set-up mock Location and mock the underlying service API method       
             AzureOperationResponse<Location> resLocation = new AzureOperationResponse<Location>();
-            Location expectedLocation = new Location("mockHostName");
+            expectedLocation = new Location("mockHostName");
             resLocation.Body = expectedLocation;
     
             intuneClientMock.Setup(f => f.GetLocationByHostNameWithHttpMessagesAsync(It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
@@ -63,12 +63,12 @@ namespace Microsoft.Azure.Commands.Intune.Test
         /// </summary>       
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void NewIntuneiOSMAMPolicy_WithDefaultArgs_Test()
+        public void NewIntuneAndroidMAMPolicyCmdlet_WithDefaultArgs_Test()
         {
-            AzureOperationResponse<IOSMAMPolicy> resIosPolicy = new AzureOperationResponse<IOSMAMPolicy>();
-
             // Set expected Policy object
-            var expectedMAMPolicy = new IOSMAMPolicy()
+            var resPolicy = new AzureOperationResponse<AndroidMAMPolicy>();
+
+            var expectedMAMPolicy = new AndroidMAMPolicy()
             {   
                 FriendlyName = "expectedPolicyFriendlyName",
                 PinNumRetry = IntuneConstants.DefaultPinRetries,
@@ -76,20 +76,20 @@ namespace Microsoft.Azure.Commands.Intune.Test
                 AccessRecheckOnlineTimeout = TimeSpan.FromMinutes(IntuneConstants.DefaultRecheckAccessTimeoutMinutes),
                 OfflineWipeTimeout = TimeSpan.FromDays(IntuneConstants.DefaultOfflineWipeIntervalDays),
             };
+          
+            resPolicy.Body = expectedMAMPolicy;
 
-            resIosPolicy.Body = expectedMAMPolicy;
+            AndroidMAMPolicy actualPolicyObj = new AndroidMAMPolicy();
 
-            IOSMAMPolicy actualPolicyObj = new IOSMAMPolicy();
-
-            // Mock the Underlying Service API method
-            intuneClientMock.Setup(f => f.Ios.CreateOrUpdateMAMPolicyWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<IOSMAMPolicy>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
-                .Returns(Task.FromResult(resIosPolicy)).Callback((string hostName, string s, IOSMAMPolicy pObj, Dictionary<string, List<string>> dict, CancellationToken cTkn) => { actualPolicyObj = pObj; });
+            // Set up mock methods
+            intuneClientMock.Setup(f => f.Android.CreateOrUpdateMAMPolicyWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<AndroidMAMPolicy>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
+                .Returns(Task.FromResult(resPolicy)).Callback((string hostName, string s, AndroidMAMPolicy pObj, Dictionary<string, List<string>> dict, CancellationToken cTkn ) => { actualPolicyObj = pObj; });
             
             // Mock the PowerShell RunTime method
             commandRuntimeMock.Setup(m => m.ShouldProcess(It.IsAny<string>(), It.IsAny<string>()))
                 .Returns(() => true);
               
-            // Set the cmdline args and execute the cmdlet
+            // Set the cmdline args and Execute the cmdlet
             this.cmdlet.Force = true;
             this.cmdlet.FriendlyName = expectedMAMPolicy.FriendlyName;
 
@@ -108,16 +108,16 @@ namespace Microsoft.Azure.Commands.Intune.Test
         }
 
         /// <summary>
-        /// Test for Non-default valid args.
+        /// Test for valid args.
         /// </summary>   
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void NewIntuneiOSMAMPolicy_WithValidArgs_Test()
-        {
+        public void NewIntuneAndroidMAMPolicyCmdlet_WithValidArgs_Test()
+        {  
             // Set up the expected Policy
-            AzureOperationResponse<IOSMAMPolicy> resPolicy = new AzureOperationResponse<IOSMAMPolicy>();
+            AzureOperationResponse<AndroidMAMPolicy> resPolicy = new AzureOperationResponse<AndroidMAMPolicy>();
 
-            var expectedMAMPolicy = new IOSMAMPolicy()
+            var expectedMAMPolicy = new AndroidMAMPolicy()
             {
                 FriendlyName = "expectedPolicyFriendlyName",              
                 OfflineWipeTimeout = TimeSpan.FromDays(100),
@@ -126,16 +126,17 @@ namespace Microsoft.Azure.Commands.Intune.Test
             };
 
             resPolicy.Body = expectedMAMPolicy;
+            
+            AndroidMAMPolicy actualPolicyObj = new AndroidMAMPolicy();
 
-            IOSMAMPolicy actualPolicyObj = new IOSMAMPolicy();
-
-            intuneClientMock.Setup(f => f.Ios.CreateOrUpdateMAMPolicyWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<IOSMAMPolicy>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
-                .Returns(Task.FromResult(resPolicy)).Callback((string hostName, string s, IOSMAMPolicy pObj, Dictionary<string, List<string>> dict, CancellationToken cTkn) => { actualPolicyObj = pObj; });
-
+            // Set up the mock methods
+            intuneClientMock.Setup(f => f.Android.CreateOrUpdateMAMPolicyWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<AndroidMAMPolicy>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
+               .Returns(Task.FromResult(resPolicy)).Callback((string hostName, string s, AndroidMAMPolicy pObj, Dictionary<string, List<string>> dict, CancellationToken cTkn) => { actualPolicyObj = pObj; });
+           
             commandRuntimeMock.Setup(m => m.ShouldProcess(It.IsAny<string>(), It.IsAny<string>()))
                 .Returns(() => true);
 
-            // Set cmdline args and execute the cmdlet
+            // Set cmdline args and Execute the cmdlet
             this.cmdlet.Force = true;
             this.cmdlet.FriendlyName = expectedMAMPolicy.FriendlyName;     
             this.cmdlet.RecheckAccessOfflineGracePeriodMinutes = expectedMAMPolicy.AccessRecheckOfflineTimeout.Value.Minutes;
@@ -158,23 +159,26 @@ namespace Microsoft.Azure.Commands.Intune.Test
         /// </summary>   
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void NewIntuneiOSMAMPolicy_WithInValidArgs_Test()
+        public void NewIntuneAndroidMAMPolicyCmdlet_WithInValidArgs_Test()
         {
             // Set-up the expected Policy
-            AzureOperationResponse<IOSMAMPolicy> resIosPolicy = new AzureOperationResponse<IOSMAMPolicy>();
-            
-            var expectedMAMPolicy = new IOSMAMPolicy()
+            AzureOperationResponse<AndroidMAMPolicy> resPolicy = new AzureOperationResponse<AndroidMAMPolicy>();
+
+            var expectedMAMPolicy = new AndroidMAMPolicy()
             {
                 FriendlyName = "expectedPolicyFriendlyName",
             };
 
-            intuneClientMock.Setup(f => f.Ios.CreateOrUpdateMAMPolicyWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<IOSMAMPolicy>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
-                .Returns(Task.FromResult(resIosPolicy));
+            resPolicy.Body = expectedMAMPolicy;
 
+            // Set up the mock methods
+            intuneClientMock.Setup(f => f.Android.CreateOrUpdateMAMPolicyWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<AndroidMAMPolicy>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
+               .Returns(Task.FromResult(resPolicy));
+           
             commandRuntimeMock.Setup(m => m.ShouldProcess(It.IsAny<string>(), It.IsAny<string>()))
                 .Returns(() => true);
 
-            // Set the cmdline args and execute the cmdlet
+            // Set the cmdline args and Execute the cmdlet
             this.cmdlet.FriendlyName = "expectedPolicyFriendlyName";
             this.cmdlet.Force = true;
             this.cmdlet.PinRetries = -1;

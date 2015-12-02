@@ -59,55 +59,6 @@ namespace Microsoft.Azure.Commands.Intune.Test
         }
 
         /// <summary>
-        /// Test for default args.
-        /// </summary>       
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void SetIntuneAndroidMAMPolicyCmdlet_WithDefaultArgs_Test()
-        {
-            // Set expected Policy object
-            AzureOperationResponse<AndroidMAMPolicy> resPolicy = new AzureOperationResponse<AndroidMAMPolicy>();
-
-            var expectedMAMPolicy = new AndroidMAMPolicy()
-            {   
-                FriendlyName = "expectedPolicyFriendlyName",
-                PinNumRetry = IntuneConstants.DefaultPinRetries,
-                AccessRecheckOfflineTimeout = TimeSpan.FromMinutes(IntuneConstants.DefaultRecheckAccessOfflineGracePeriodMinutes),
-                AccessRecheckOnlineTimeout = TimeSpan.FromMinutes(IntuneConstants.DefaultRecheckAccessTimeoutMinutes),
-                OfflineWipeTimeout = TimeSpan.FromDays(IntuneConstants.DefaultOfflineWipeIntervalDays),
-            };
-          
-            resPolicy.Body = expectedMAMPolicy;
-
-            AndroidMAMPolicy actualPolicyObj = new AndroidMAMPolicy();
-
-            // Set up mock methods
-            intuneClientMock.Setup(f => f.Android.PatchMAMPolicyWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<AndroidMAMPolicy>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
-                .Returns(Task.FromResult(resPolicy)).Callback((string hostName, string s, AndroidMAMPolicy pObj, Dictionary<string, List<string>> dict, CancellationToken cTkn ) => { actualPolicyObj = pObj; });
-            
-            // Mock the PowerShell RunTime method
-            commandRuntimeMock.Setup(m => m.ShouldProcess(It.IsAny<string>(), It.IsAny<string>()))
-                .Returns(() => true);
-              
-            // Set the cmdline args and Execute the cmdlet
-            this.cmdlet.Force = true;
-            this.cmdlet.FriendlyName = expectedMAMPolicy.FriendlyName;
-
-            this.cmdlet.ExecuteCmdlet();
-            
-            // Verify the params which are set with Default values
-            Assert.Equal(expectedMAMPolicy.FriendlyName, actualPolicyObj.FriendlyName);
-            Assert.Equal(expectedMAMPolicy.Name, actualPolicyObj.Id);
-            Assert.Equal(expectedMAMPolicy.Id, actualPolicyObj.Name);
-            Assert.Equal(expectedMAMPolicy.PinNumRetry, actualPolicyObj.PinNumRetry);        
-            Assert.Equal(expectedMAMPolicy.OfflineWipeTimeout, actualPolicyObj.OfflineWipeTimeout);
-            Assert.Equal(expectedMAMPolicy.AccessRecheckOfflineTimeout, actualPolicyObj.AccessRecheckOfflineTimeout);
-            Assert.Equal(expectedMAMPolicy.AccessRecheckOnlineTimeout, actualPolicyObj.AccessRecheckOnlineTimeout);
-
-            commandRuntimeMock.Verify(f => f.WriteObject(expectedMAMPolicy), Times.Once());        
-        }
-
-        /// <summary>
         /// Test for valid args.
         /// </summary>   
         [Fact]
@@ -115,7 +66,7 @@ namespace Microsoft.Azure.Commands.Intune.Test
         public void SetIntuneAndroidMAMPolicyCmdlet_WithValidArgs_Test()
         {  
             // Set up the expected Policy
-            AzureOperationResponse<AndroidMAMPolicy> resPolicy = new AzureOperationResponse<AndroidMAMPolicy>();
+            var resPolicy = new AzureOperationResponse<AndroidMAMPolicy>();
 
             var expectedMAMPolicy = new AndroidMAMPolicy()
             {
@@ -162,7 +113,7 @@ namespace Microsoft.Azure.Commands.Intune.Test
         public void SetIntuneAndroidMAMPolicyCmdlet_WithInValidArgs_Test()
         {
             // Set-up the expected Policy
-            AzureOperationResponse<AndroidMAMPolicy> resPolicy = new AzureOperationResponse<AndroidMAMPolicy>();
+            var resPolicy = new AzureOperationResponse<AndroidMAMPolicy>();
 
             var expectedMAMPolicy = new AndroidMAMPolicy()
             {

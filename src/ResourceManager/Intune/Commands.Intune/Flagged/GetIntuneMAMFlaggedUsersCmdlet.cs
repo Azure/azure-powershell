@@ -63,16 +63,16 @@ namespace Microsoft.Azure.Commands.Intune.Flagged
         /// </summary>
         private void GetMAMFlaggedUsers()
         {
-            MultiPageGetter<FlaggedUser> mpg = new MultiPageGetter<FlaggedUser>();
-            List<FlaggedUser> items = mpg.GetAllResources(
-                this.IntuneClient.GetMAMFlaggedUsers,    
-                this.IntuneClient.GetMAMFlaggedUsersNext,
-                this.AsuHostName,
-                filter: null,
-                top: null,
-                select: null);
+            // MultiPageGetter<FlaggedUser> mpg = new MultiPageGetter<FlaggedUser>();
+            // List<FlaggedUser> items = mpg.GetAllResources(
+            //    this.IntuneClient.GetMAMFlaggedUsers,    
+            //    this.IntuneClient.GetMAMFlaggedUsersNext,
+            //    this.AsuHostName,
+            //    filter: null,
+            //    top: null,
+            //    select: null);
             
-            this.WriteObject(items, enumerateCollection:true);
+            // this.WriteObject(items, enumerateCollection:true);
         }
     }
 }
