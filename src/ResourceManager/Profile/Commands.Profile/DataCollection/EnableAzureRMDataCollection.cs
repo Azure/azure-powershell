@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Profile
             // do not call begin processing there is no context needed for this cmdlet
         }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             SetDataCollectionProfile(true);
         }

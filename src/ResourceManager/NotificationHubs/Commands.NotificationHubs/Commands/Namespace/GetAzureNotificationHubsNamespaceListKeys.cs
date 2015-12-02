@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
         [ValidateNotNullOrEmpty]
         public string AuthorizationRule { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             // Get a namespace ConnectionString for the specified AuthorizationRule
             var keys = Client.GetNamespaceListKeys(ResourceGroup, Namespace, AuthorizationRule);

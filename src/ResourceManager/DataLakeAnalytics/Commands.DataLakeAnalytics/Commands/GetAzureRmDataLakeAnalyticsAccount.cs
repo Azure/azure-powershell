@@ -40,12 +40,12 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (!string.IsNullOrEmpty(Name))
             {
                 // Get for single account
-                WriteObject(DataLakeAnalyticsClient.GetAcount(ResourceGroupName, Name));
+                WriteObject(DataLakeAnalyticsClient.GetAccount(ResourceGroupName, Name));
             }
             else
             {

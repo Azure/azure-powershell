@@ -255,6 +255,9 @@ function Test-NegativeDataLakeAnalyticsAccount
     # Delete dataLakeAnalytics account
     Assert-True {Remove-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
 
+	# Verify that trying to delete a non existent account now throws
+	Assert-Throws {Remove-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru}
+
 	# Verify that it is gone by trying to get it again
 	Assert-Throws {Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
 }
@@ -314,6 +317,340 @@ function Test-NegativeDataLakeAnalyticsJob
 	Assert-True {$jobsWithDateOffset.Count -eq 0} "Retrieval of jobs submitted after right now returned results and should not have"
 
     # Delete the DataLakeAnalytics account
+    Assert-True {Remove-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
+
+	# Verify that it is gone by trying to get it again
+	Assert-Throws {Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
+}
+
+<#
+.SYNOPSIS
+Tests DataLakeAnalytics Job Lifecycle (Get, Cancel and Get Debug data).
+#>
+function Test-DataLakeAnalyticsCatalog
+{
+   param
+	(
+		$resourceGroupName,
+		$accountName,
+		$dataLakeAccountName,
+		$databaseName,
+		$tableName,
+		$tvfName,
+		$viewName,
+		$procName,
+		$credentialName,
+		$secretName,
+		$secretPwd,
+		$location = "West US"
+	)
+	
+    # Creating Account
+    $accountCreated = New-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
+    
+    Assert-AreEqual $accountName $accountCreated.Name
+    Assert-AreEqual $location $accountCreated.Location
+    Assert-AreEqual "Microsoft.DataLakeAnalytics/accounts" $accountCreated.Type
+    Assert-True {$accountCreated.Id -like "*$resourceGroupName*"}
+
+    # In loop to check if account exists
+    for ($i = 0; $i -le 60; $i++)
+    {
+		[array]$accountGet = Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName
+        if ($accountGet[0].Properties.ProvisioningState -like "Succeeded")
+        {
+            Assert-AreEqual $accountName $accountGet[0].Name
+            Assert-AreEqual $location $accountGet[0].Location
+            Assert-AreEqual "Microsoft.DataLakeAnalytics/accounts" $accountGet[0].Type
+			Assert-True {$accountGet[0].Id -like "*$resourceGroupName*"}
+            break
+        }
+
+		Write-Host "account not yet provisioned. current state: $($accountGet[0].Properties.ProvisioningState)"
+		[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
+        Assert-False {$i -eq 60} "dataLakeAnalytics accounts not in succeeded state even after 30 min."
+    }
+	
+	# For now, all Job related tests just ensure that they have a valid response and do not throw.
+	# Wait for two minutes prior to attempting to submit the job in the freshly created account.
+	[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(120000)
+	
+	# Run a job to create the catalog items (except secret and credential)
+	$scriptTemplate = @"
+DROP DATABASE IF EXISTS {0}; CREATE DATABASE {0};
+CREATE TABLE {0}.dbo.{1}
+(
+        //Define schema of table
+        UserId          int, 
+        Start           DateTime, 
+        Region          string, 
+        Query           string, 
+        Duration        int, 
+        Urls            string, 
+        ClickedUrls     string,
+    INDEX idx1 //Name of index
+    CLUSTERED (Region ASC) //Column to cluster by
+    PARTITIONED BY HASH (Region) //Column to partition by
+);
+DROP FUNCTION IF EXISTS {0}.dbo.{2};
+
+//create table weblogs on space-delimited website log data
+CREATE FUNCTION {0}.dbo.{2}()
+RETURNS @result TABLE
+(
+    s_date DateTime,
+    s_time string,
+    s_sitename string,
+    cs_method string, 
+    cs_uristem string,
+    cs_uriquery string,
+    s_port int,
+    cs_username string, 
+    c_ip string,
+    cs_useragent string,
+    cs_cookie string,
+    cs_referer string, 
+    cs_host string,
+    sc_status int,
+    sc_substatus int,
+    sc_win32status int, 
+    sc_bytes int,
+    cs_bytes int,
+    s_timetaken int
+)
+AS
+BEGIN
+
+    @result = EXTRACT
+        s_date DateTime,
+        s_time string,
+        s_sitename string,
+        cs_method string,
+        cs_uristem string,
+        cs_uriquery string,
+        s_port int,
+        cs_username string,
+        c_ip string,
+        cs_useragent string,
+        cs_cookie string,
+        cs_referer string,
+        cs_host string,
+        sc_status int,
+        sc_substatus int,
+        sc_win32status int,
+        sc_bytes int,
+        cs_bytes int,
+        s_timetaken int
+    FROM @"/Samples/Data/WebLog.log"
+    USING Extractors.Text(delimiter:' ');
+
+RETURN;
+END;
+CREATE VIEW {0}.dbo.{3} 
+AS 
+    SELECT * FROM 
+    (
+        VALUES(1,2),(2,4)
+    ) 
+AS 
+T(a, b);
+CREATE PROCEDURE {0}.dbo.{4}()
+AS BEGIN
+  CREATE VIEW {0}.dbo.{3} 
+  AS 
+    SELECT * FROM 
+    (
+        VALUES(1,2),(2,4)
+    ) 
+  AS 
+  T(a, b);
+END;
+"@
+	# run the script
+	$scriptToRun = [string]::Format($scriptTemplate, $databaseName, $tableName, $tvfName, $viewName, $procName)
+	$jobInfo = Submit-AzureRmDataLakeAnalyticsJob -ResourceGroupName $resourceGroupName -AccountName $accountName -Name "TestJob" -Script $scriptToRun
+	$result = Wait-AzureRMDataLakeAnalyticsJob -ResourceGroupName $resourceGroupName -AccountName $accountName -JobId $jobInfo.JobId
+	Assert-AreEqual "Succeeded" $result.Result
+
+	# retrieve the list of databases and ensure the created DB is in it
+	$itemList = Get-AzureRMDataLakeAnalyticsCatalogItem -ResourceGroupName $resourceGroupName -AccountName $accountName -ItemType Database
+
+	Assert-NotNull $itemList "The database list is null"
+
+	Assert-True {$itemList.count -gt 0} "The database list is empty"
+	$found = $false
+	foreach($item in $itemList)
+	{
+		if($item.Name -eq $databaseName)
+		{
+			$found = $true
+			break
+		}
+	}
+
+	Assert-True {$found} "Could not find the database $databaseName in the database list"
+	
+	# retrieve the specific DB
+	$specificItem = Get-AzureRMDataLakeAnalyticsCatalogItem -ResourceGroupName $resourceGroupName -AccountName $accountName -ItemType Database -Path $databaseName
+	Assert-NotNull $specificItem "Could not retrieve the db by name"
+	Assert-AreEqual $databaseName $specificItem.Name
+
+	# retrieve the list of tables and ensure the created table is in it
+	$itemList = Get-AzureRMDataLakeAnalyticsCatalogItem -ResourceGroupName $resourceGroupName -AccountName $accountName -ItemType Table -Path "$databaseName.dbo"
+
+	Assert-NotNull $itemList "The table list is null"
+
+	Assert-True {$itemList.count -gt 0} "The table list is empty"
+	$found = $false
+	foreach($item in $itemList)
+	{
+		if($item.Name -eq $tableName)
+		{
+			$found = $true
+			break
+		}
+	}
+
+	Assert-True {$found} "Could not find the table $tableName in the table list"
+	
+	# retrieve the specific table
+	$specificItem = Get-AzureRMDataLakeAnalyticsCatalogItem -ResourceGroupName $resourceGroupName -AccountName $accountName -ItemType Table -Path "$databaseName.dbo.$tableName"
+	Assert-NotNull $specificItem "Could not retrieve the table by name"
+	Assert-AreEqual $tableName $specificItem.Name
+
+	# retrieve the list of table valued functions and ensure the created tvf is in it
+	$itemList = Get-AzureRMDataLakeAnalyticsCatalogItem -ResourceGroupName $resourceGroupName -AccountName $accountName -ItemType TableValuedFunction -Path "$databaseName.dbo"
+
+	Assert-NotNull $itemList "The TVF list is null"
+
+	Assert-True {$itemList.count -gt 0} "The TVF list is empty"
+	$found = $false
+	foreach($item in $itemList)
+	{
+		if($item.Name -eq $tvfName)
+		{
+			$found = $true
+			break
+		}
+	}
+
+	Assert-True {$found} "Could not find the TVF $tvfName in the TVF list"
+	
+	# retrieve the specific TVF
+	$specificItem = Get-AzureRMDataLakeAnalyticsCatalogItem -ResourceGroupName $resourceGroupName -AccountName $accountName -ItemType TableValuedFunction -Path "$databaseName.dbo.$tvfName"
+	Assert-NotNull $specificItem "Could not retrieve the TVF by name"
+	Assert-AreEqual $tvfName $specificItem.Name
+
+	# retrieve the list of procedures and ensure the created procedure is in it
+	$itemList = Get-AzureRMDataLakeAnalyticsCatalogItem -ResourceGroupName $resourceGroupName -AccountName $accountName -ItemType Procedure -Path "$databaseName.dbo"
+
+	Assert-NotNull $itemList "The procedure list is null"
+
+	Assert-True {$itemList.count -gt 0} "The procedure list is empty"
+	$found = $false
+	foreach($item in $itemList)
+	{
+		if($item.Name -eq $procName)
+		{
+			$found = $true
+			break
+		}
+	}
+
+	Assert-True {$found} "Could not find the procedure $procName in the procedure list"
+	
+	# retrieve the specific procedure
+	$specificItem = Get-AzureRMDataLakeAnalyticsCatalogItem -ResourceGroupName $resourceGroupName -AccountName $accountName -ItemType Procedure -Path "$databaseName.dbo.$procName"
+	Assert-NotNull $specificItem "Could not retrieve the procedure by name"
+	Assert-AreEqual $procName $specificItem.Name
+
+	# retrieve the list of views and ensure the created view is in it
+	$itemList = Get-AzureRMDataLakeAnalyticsCatalogItem -ResourceGroupName $resourceGroupName -AccountName $accountName -ItemType View -Path "$databaseName.dbo"
+
+	Assert-NotNull $itemList "The view list is null"
+
+	Assert-True {$itemList.count -gt 0} "The view list is empty"
+	$found = $false
+	foreach($item in $itemList)
+	{
+		if($item.Name -eq $viewName)
+		{
+			$found = $true
+			break
+		}
+	}
+	
+	Assert-True {$found} "Could not find the view $viewName in the view list"
+
+	# retrieve the specific view
+	$specificItem = Get-AzureRMDataLakeAnalyticsCatalogItem -ResourceGroupName $resourceGroupName -AccountName $accountName -ItemType View -Path "$databaseName.dbo.$viewName"
+	Assert-NotNull $specificItem "Could not retrieve the view by name"
+	Assert-AreEqual $viewName $specificItem.Name
+
+	# create the secret
+	$pw = ConvertTo-SecureString -String $secretPwd -AsPlainText -Force
+	$secret = New-Object System.Management.Automation.PSCredential($secretName,$pw)
+
+	New-AzureRmDataLakeAnalyticsCatalogSecret -ResourceGroupName $resourceGroupName -AccountName $accountName -secret $secret -DatabaseName $databaseName -Uri "https://pstest.contoso.com:443"
+
+	# verify that the credential can be retrieved
+	$getSecret = Get-AzureRMDataLakeAnalyticsCatalogItem -ResourceGroupName $resourceGroupName -AccountName $accountName -ItemType Secret -Path "$databaseName.$secretName"
+	Assert-NotNull $getSecret "Could not retrieve the secret"
+
+	# verify that attmepting to create the secret again throws
+	# TODO: enable once we actually do throw when re-creating a secret.
+	# Assert-Throws {New-AzureRmDataLakeAnalyticsCatalogSecret -ResourceGroupName $resourceGroupName -AccountName $accountName -secret $secret -DatabaseName $databaseName -Uri "https://pstest.contoso.com:8080"}
+
+	# credential job template
+	$credentialJobTemplate = @"
+USE {0};
+CREATE CREDENTIAL {1} WITH USER_NAME = "scope@rkm4grspxa", IDENTITY = "{2}";
+"@
+	$credentialJob = [string]::Format($credentialJobTemplate, $databaseName, $credentialName, $secretName)
+	
+	$jobInfo = Submit-AzureRmDataLakeAnalyticsJob -ResourceGroupName $resourceGroupName -AccountName $accountName -Name "TestJobCredential" -Script $credentialJob
+	$result = Wait-AzureRMDataLakeAnalyticsJob -ResourceGroupName $resourceGroupName -AccountName $accountName -JobId $jobInfo.JobId
+	Assert-AreEqual "Succeeded" $result.Result
+
+	# retrieve the list of credentials and ensure the created credential is in it
+	$itemList = Get-AzureRMDataLakeAnalyticsCatalogItem -ResourceGroupName $resourceGroupName -AccountName $accountName -ItemType Credential -Path $databaseName
+
+	Assert-NotNull $itemList "The credential list is null"
+
+	Assert-True {$itemList.count -gt 0} "The credential list is empty"
+	$found = $false
+	foreach($item in $itemList)
+	{
+		if($item.Name -eq $credentialName)
+		{
+			$found = $true
+			break
+		}
+	}
+	
+	# retrieve the specific credential
+	$specificItem = Get-AzureRMDataLakeAnalyticsCatalogItem -ResourceGroupName $resourceGroupName -AccountName $accountName -ItemType Credential -Path "$databaseName.$credentialName"
+	Assert-NotNull $specificItem "Could not retrieve the credential by name"
+	Assert-AreEqual $credentialName $specificItem.Name
+
+	# credential job template
+	$credentialJobTemplate = @"
+USE {0};
+DROP CREDENTIAL {1};
+"@
+	$credentialJob = [string]::Format($credentialJobTemplate, $databaseName, $credentialName)
+	
+	$jobInfo = Submit-AzureRmDataLakeAnalyticsJob -ResourceGroupName $resourceGroupName -AccountName $accountName -Name "TestJobCredential" -Script $credentialJob
+	$result = Wait-AzureRMDataLakeAnalyticsJob -ResourceGroupName $resourceGroupName -AccountName $accountName -JobId $jobInfo.JobId
+	Assert-AreEqual "Succeeded" $result.Result
+    
+	# delete the secret
+	Remove-AzureRmDataLakeAnalyticsCatalogSecret -ResourceGroupName $resourceGroupName -AccountName $accountName -Name $secretName -DatabaseName $databaseName -Force
+
+	# verify that the secret cannot be retrieved
+	Assert-Throws {Get-AzureRMDataLakeAnalyticsCatalogItem -ResourceGroupName $resourceGroupName -AccountName $accountName -ItemType Secret -Path "$databaseName.$secretName"}
+
+	# Delete the DataLakeAnalytics account
     Assert-True {Remove-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
 
 	# Verify that it is gone by trying to get it again
