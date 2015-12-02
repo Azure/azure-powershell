@@ -37,49 +37,49 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
            ResourcesController.NewInstance.RunPsTest("Test-RaAuthorizationChangeLog");
         }
 
-        [Fact(Skip = "tenantID NullException")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaClassicAdmins()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaClassicAdmins");
         }
 
-        [Fact(Skip = "tenantID NullException")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaNegativeScenarios()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaNegativeScenarios");
         }
 
-        [Fact(Skip = "tenantID NullException")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByScope()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaByScope");
         }
 
-        [Fact(Skip = "tenantID NullException")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByResourceGroup()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaByResourceGroup");
         }
 
-        [Fact(Skip = "tenantID NullException")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByResource()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaByResource");
         }
 
-        [Fact(Skip = "tenantID NullException")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByServicePrincipal()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaByServicePrincipal");
         }
 
-        [Fact(Skip = "tenantID NullException")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByUpn()
         {

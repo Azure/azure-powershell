@@ -38,6 +38,10 @@ namespace Microsoft.Azure.Commands.Resources
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [ValidateNotNullOrEmpty]
+        [Parameter(Mandatory = false, HelpMessage = "Scope of the existing role definition.")]
+        public string Scope { get; set; }
+
         [Parameter(Mandatory = false)]
         public SwitchParameter Force { get; set; }
 
@@ -47,19 +51,29 @@ namespace Microsoft.Azure.Commands.Resources
         protected override void ProcessRecord()
         {
             PSRoleDefinition roleDefinition = null;
-            Action action = null;
             string confirmMessage = null;
 
             if(Id != Guid.Empty)
             {
-                action = (() => roleDefinition = PoliciesClient.RemoveRoleDefinition(Id, DefaultProfile.Context.Subscription.Id.ToString()));
                 confirmMessage = string.Format(ProjectResources.RemoveRoleDefinition, Id);
             }
             else
             {
-                action = (() => roleDefinition = PoliciesClient.RemoveRoleDefinition(Name, DefaultProfile.Context.Subscription.Id.ToString()));
                 confirmMessage = string.Format(ProjectResources.RemoveRoleDefinitionWithName, Name);
             }
+
+            FilterRoleDefinitionOptions options = new FilterRoleDefinitionOptions
+            {
+                RoleDefinitionId = Id,
+                RoleDefinitionName = Name,
+                Scope = Scope,
+                ResourceIdentifier = new ResourceIdentifier
+                {
+                    Subscription = DefaultProfile.Context.Subscription.Id.ToString()
+                }
+            };
+
+            Action action = (() => roleDefinition = PoliciesClient.RemoveRoleDefinition(options));
 
             ConfirmAction(
                 Force.IsPresent,

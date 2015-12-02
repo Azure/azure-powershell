@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         {
             if(!string.IsNullOrEmpty(roleId))
             {
-                return assignments.Where(a => a.Properties.RoleDefinitionId == roleId);
+                return assignments.Where(a => a.Properties.RoleDefinitionId.GuidFromFullyQualifiedId() == roleId);
             }
 
             return assignments;
@@ -54,10 +54,25 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             return roleDefinition;
         }
 
-        public static IEnumerable<PSRoleAssignment> ToPSRoleAssignments(this IEnumerable<RoleAssignment> assignments, AuthorizationClient policyClient, ActiveDirectoryClient activeDirectoryClient, bool excludeAssignmentsForDeletedPrincipals = true)
+        public static PSRoleAssignment ToPSRoleAssignment(this RoleAssignment assignment, AuthorizationClient policyClient, ActiveDirectoryClient activeDirectoryClient, bool excludeAssignmentsForDeletedPrincipals = true)
+        {
+            List<PSRoleDefinition> roleDefinitions = new List<PSRoleDefinition> { policyClient.GetRoleDefinition(assignment.Properties.RoleDefinitionId) };
+            IEnumerable<RoleAssignment> assignments = new List<RoleAssignment> { assignment };
+
+            return assignments.ToPSRoleAssignments(roleDefinitions, policyClient, activeDirectoryClient, excludeAssignmentsForDeletedPrincipals).SingleOrDefault();
+        }
+
+        public static IEnumerable<PSRoleAssignment> ToPSRoleAssignments(this IEnumerable<RoleAssignment> assignments, AuthorizationClient policyClient, ActiveDirectoryClient activeDirectoryClient, string subscriptionId, bool excludeAssignmentsForDeletedPrincipals = true)
+        {
+            List<PSRoleDefinition> roleDefinitions = policyClient.GetAllRoleDefinitionsAtScopeAndBelow(AuthorizationHelper.GetSubscriptionScope(subscriptionId));
+
+            return assignments.ToPSRoleAssignments(roleDefinitions, policyClient, activeDirectoryClient, excludeAssignmentsForDeletedPrincipals);
+        }
+
+        private static IEnumerable<PSRoleAssignment> ToPSRoleAssignments(this IEnumerable<RoleAssignment> assignments, List<PSRoleDefinition> roleDefinitions, AuthorizationClient policyClient, ActiveDirectoryClient activeDirectoryClient, bool excludeAssignmentsForDeletedPrincipals)
         {
             List<PSRoleAssignment> psAssignments = new List<PSRoleAssignment>();
-            if(assignments ==null || !assignments.Any())
+            if (assignments == null || !assignments.Any())
             {
                 return psAssignments;
             }
@@ -65,16 +80,6 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             List<string> objectIds = new List<string>();
             objectIds.AddRange(assignments.Select(r => r.Properties.PrincipalId.ToString()));
             List<PSADObject> adObjects = activeDirectoryClient.GetObjectsByObjectId(objectIds);
-            List<PSRoleDefinition> roleDefinitions;
-
-            if (assignments.Count() == 1)
-            {
-                roleDefinitions = new List<PSRoleDefinition> { policyClient.GetRoleDefinition(assignments.Single().Properties.RoleDefinitionId) };
-            }
-            else
-            {
-                roleDefinitions = policyClient.GetRoleDefinitions();
-            }
 
             foreach (RoleAssignment assignment in assignments)
             {
@@ -148,7 +153,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 RoleDefinitionName = classicAdministrator.Properties.Role,
                 DisplayName = classicAdministrator.Properties.EmailAddress,
                 SignInName = classicAdministrator.Properties.EmailAddress,
-                Scope = "/subscriptions/" + currentSubscriptionId,
+                Scope = AuthorizationHelper.GetSubscriptionScope(currentSubscriptionId),
                 ObjectType = "User"
             };
         }
