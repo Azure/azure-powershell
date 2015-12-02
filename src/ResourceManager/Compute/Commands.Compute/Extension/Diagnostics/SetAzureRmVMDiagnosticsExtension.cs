@@ -142,12 +142,13 @@ namespace Microsoft.Azure.Commands.Compute
             }
         }
 
+        [Alias("HandlerVersion", "Version")]
         [Parameter(
             Mandatory = false,
             Position = 9,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The extension version.")]
-        public string Version
+        public string TypeHandlerVersion
         {
             get
             {
@@ -232,7 +233,7 @@ namespace Microsoft.Azure.Commands.Compute
                     ProtectedSettings = this.PrivateConfiguration,
                     Publisher = DiagnosticsExtensionConstants.ExtensionPublisher,
                     ExtensionType = DiagnosticsExtensionConstants.ExtensionType,
-                    TypeHandlerVersion = this.Version,
+                    TypeHandlerVersion = this.TypeHandlerVersion,
                     AutoUpgradeMinorVersion = this.AutoUpgradeMinorVersion
                 };
 
@@ -256,6 +257,13 @@ namespace Microsoft.Azure.Commands.Compute
             InitializeStorageAccountEndpoint(storageAccount);
         }
 
+        /// <summary>
+        /// Make sure the storage account name is set.
+        /// It can be defined in multiple places, we only take the one with higher precedence. And the precedence is:
+        /// 1. Directly specified from command line parameter
+        /// 2. The one get from StorageContext parameter
+        /// 3. The one parsed from the diagnostics configuration file
+        /// </summary>
         private void InitializeStorageAccountName()
         {
             if (string.IsNullOrEmpty(this.StorageAccountName))
@@ -281,6 +289,11 @@ namespace Microsoft.Azure.Commands.Compute
             }
         }
 
+        /// <summary>
+        /// Make sure the storage account key is set.
+        /// If user doesn't specify it in command line, we try to resolve the key for the user given the storage account.
+        /// </summary>
+        /// <param name="storageAccount">The storage account to list the key.</param>
         private void InitializeStorageAccountKey(StorageAccount storageAccount)
         {
             if (string.IsNullOrEmpty(this.StorageAccountKey))
@@ -296,6 +309,15 @@ namespace Microsoft.Azure.Commands.Compute
             }
         }
 
+        /// <summary>
+        /// Make sure we set the correct storage account endpoint.
+        /// We can get the value from multiple places, we only take the one with higher precedence. And the precedence is:
+        /// 1. Directly specified from command line parameter
+        /// 2. The one get from StorageContext parameter
+        /// 3. The one get from the storage account we list
+        /// 4. The one get from current Azure Environment
+        /// </summary>
+        /// <param name="storageAccount">The storage account to help get the endpoint.</param>
         private void InitializeStorageAccountEndpoint(StorageAccount storageAccount)
         {
             if (string.IsNullOrEmpty(this.StorageAccountEndpoint))
