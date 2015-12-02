@@ -146,7 +146,7 @@
   <!-- TODO: once CLU stablizes, see whether we need : DependsOnTargets="RestoreNugetPackages;BuildMsBuildTask" -->
   <Target Name="Build">
     <PropertyGroup>
-      <_TemporaryDnxFeeds>-s https://api.nuget.org/v3/index.json -s https://www.myget.org/F/xunit/api/v2 -s $(LibraryToolsFolder)\LocalFeed</_TemporaryDnxFeeds>
+      <_TemporaryDnxFeeds>-s https://api.nuget.org/v3/index.json -s $(LibraryToolsFolder)\LocalFeed</_TemporaryDnxFeeds>
     </PropertyGroup>
     <Exec Command="dnu restore $(_TemporaryDnxFeeds)" WorkingDirectory="$(CLURootDir)"/>
     <ItemGroup>
@@ -314,7 +314,8 @@
     <ItemGroup>
       <!--Exclude 2 test projects still in progress with build failures-->
       <_CLUTestProjects Include="$(CLURootDir)\*.Test\project.json"
-                        Exclude="$(CLURootDir)\Microsoft.Azure.Commands.Resources.Test\project.json;$(CLURootDir)\Microsoft.Azure.Commands.Websites.Test\project.json"></_CLUTestProjects>
+                        Exclude="$(CLURootDir)\Microsoft.Azure.Commands.Resources.Test\project.json;$(CLURootDir)\Microsoft.Azure.Commands.Websites.Test\project.json">
+      </_CLUTestProjects>
     </ItemGroup>
     <Exec Command="dnu build" WorkingDirectory="%(_CLUTestProjects.RootDir)%(_CLUTestProjects.Directory)" />
     <Exec Command="dnx test" WorkingDirectory="%(_CLUTestProjects.RootDir)%(_CLUTestProjects.Directory)" />
