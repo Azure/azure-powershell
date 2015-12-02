@@ -33,6 +33,7 @@
     <LibraryToolsFolder>$(LibraryRoot)tools</LibraryToolsFolder>
     <PublishDirectory>$(LibrarySourceFolder)\Publish</PublishDirectory>
     <PackageDirectory>$(LibrarySourceFolder)\Package</PackageDirectory>
+    <CLURootDir>$(LibrarySourceFolder)\CLU</CLURootDir>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <CodeSign Condition=" '$(CodeSign)' == '' ">false</CodeSign>
     <!--Set this true only if you want to test the code sign workflow locally-->
@@ -146,12 +147,11 @@
   <Target Name="Build">
     <PropertyGroup>
       <_TemporaryDnxFeeds>-s https://api.nuget.org/v3/index.json -s https://www.myget.org/F/xunit/api/v2 -s $(LibraryToolsFolder)\LocalFeed</_TemporaryDnxFeeds>
-      <_CLURootDir>$(LibrarySourceFolder)\CLU</_CLURootDir>
     </PropertyGroup>
-    <Exec Command="dnu restore $(_TemporaryDnxFeeds)" WorkingDirectory="$(_CLURootDir)"/>
+    <Exec Command="dnu restore $(_TemporaryDnxFeeds)" WorkingDirectory="$(CLURootDir)"/>
     <ItemGroup>
-      <_CLUProjects Include="$(_CLURootDir)\**\project.json"
-                    Exclude="$(_CLURootDir)\*.Test\project.json"></_CLUProjects>
+      <_CLUProjects Include="$(CLURootDir)\**\project.json"
+                    Exclude="$(CLURootDir)\*.Test\project.json"></_CLUProjects>
     </ItemGroup>
     <Exec Command="dnu build" WorkingDirectory="%(_CLUProjects.RootDir)%(_CLUProjects.Directory)" />    
     
@@ -312,9 +312,9 @@
   <Target Name="Test" DependsOnTargets="BeforeRunTests">
     <Message Importance="high" Text="Running check in tests..." />
     <ItemGroup>
-      <!--Exclude 2 test projects still in progress-->
-      <_CLUTestProjects Include="$(_CLURootDir)\*.Test\project.json"
-                        Exclude="$(_CLURootDir)\Microsoft.Azure.Commands.Resources.Test\project.json;$(_CLURootDir)\Microsoft.Azure.Commands.Websites.Test\project.json"></_CLUTestProjects>
+      <!--Exclude 2 test projects still in progress with build failures-->
+      <_CLUTestProjects Include="$(CLURootDir)\*.Test\project.json"
+                        Exclude="$(CLURootDir)\Microsoft.Azure.Commands.Resources.Test\project.json;$(CLURootDir)\Microsoft.Azure.Commands.Websites.Test\project.json"></_CLUTestProjects>
     </ItemGroup>
     <Exec Command="dnu build" WorkingDirectory="%(_CLUTestProjects.RootDir)%(_CLUTestProjects.Directory)" />
     <Exec Command="dnx test" WorkingDirectory="%(_CLUTestProjects.RootDir)%(_CLUTestProjects.Directory)" />
