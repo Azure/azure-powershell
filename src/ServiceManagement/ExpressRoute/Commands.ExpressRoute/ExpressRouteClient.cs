@@ -55,6 +55,37 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
             Client = client;
         }
 
+        public AzureDedicatedCircuitPeeringArpInfo GetAzureDedicatedCircuitPeeringArpInfo(Guid serviceKey, BgpPeeringAccessType accessType, DevicePath devicePath)
+        {
+            return Client.DedicatedCircuitPeeringArpInfo.Get(serviceKey.ToString(), accessType, devicePath).DedicatedCircuitPeeringArpInfo;
+        }
+
+        public AzureDedicatedCircuitPeeringRouteTableInfo GetAzureDedicatedCircuitPeeringRouteTableInfo(Guid serviceKey, BgpPeeringAccessType accessType, DevicePath devicePath)
+        {
+            return Client.DedicatedCircuitPeeringRouteTableInfo.Get(serviceKey.ToString(), accessType, devicePath).DedicatedCircuitPeeringRouteTableInfo;
+        }
+
+        public AzureDedicatedCircuitPeeringRouteTableSummary GetAzureDedicatedCircuitPeeringRouteTableSummary(Guid serviceKey, BgpPeeringAccessType accessType, DevicePath devicePath)
+        {
+            return Client.DedicatedCircuitPeeringRouteTableSummary.Get(serviceKey.ToString(), accessType, devicePath).DedicatedCircuitPeeringRouteTableSummary;
+        }
+
+        public AzureDedicatedCircuitStats GetAzureDedicatedCircuitPeeringStatsInfo(Guid serviceKey, BgpPeeringAccessType accessType)
+        {
+            var stats = Client.DedicatedCircuitPeeringStats.Get(serviceKey.ToString(), accessType).DedicatedCircuitPeeringStats;
+            return new AzureDedicatedCircuitStats()
+            {
+                PrimaryBytesIn = stats.PrimaryBytesIn,
+                PrimaryBytesOut = stats.PrimaryBytesOut,
+                SecondaryBytesIn = stats.SecondaryBytesIn,
+                SecondaryBytesOut = stats.SecondaryBytesOut
+            };
+        }
+
+        public AzureDedicatedCircuitStats GetAzureDedicatedCircuitStatspInfo(Guid serviceKey)
+        {
+            return Client.DedicatedCircuitStats.Get(serviceKey.ToString()).DedicatedCircuitStats;
+        }
         public AzureBgpPeering GetAzureBGPPeering(Guid serviceKey, BgpPeeringAccessType accessType)
         {
             return Client.BorderGatewayProtocolPeerings.Get(serviceKey.ToString(), accessType).BgpPeering;
