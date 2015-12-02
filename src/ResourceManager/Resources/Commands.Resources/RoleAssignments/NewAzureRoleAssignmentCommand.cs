@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Commands.Resources
         [ValidateGuidNotEmpty]
         public Guid RoleDefinitionId { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             FilterRoleAssignmentsOptions parameters = new FilterRoleAssignmentsOptions()
             {

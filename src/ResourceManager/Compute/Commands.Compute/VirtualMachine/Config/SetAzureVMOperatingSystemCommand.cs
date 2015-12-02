@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public SwitchParameter DisablePasswordAuthentication { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             this.VM.OSProfile = new OSProfile
             {

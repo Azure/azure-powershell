@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string Expand { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ListPoolOptions options = new ListPoolOptions(this.BatchContext, this.AdditionalBehaviors)
             {

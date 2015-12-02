@@ -21,6 +21,8 @@ using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using System.Collections.Generic;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Common;
+using Moq;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 {
@@ -32,6 +34,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         private static string DefaultSubscriptionName = "Contoso Subscription";
         private static string DefaultDomain = "contoso.com";
         private static Guid DefaultTenant = Guid.NewGuid();
+        private static AzureContext Context;
 
         private static RMProfileClient SetupTestEnvironment(List<string> tenants, params List<string>[] subscriptionLists)
         {
@@ -45,7 +48,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             }, true);
             mock.MoqClients = true;
             AzureSession.ClientFactory = mock;
-            var context = new AzureContext(new AzureSubscription()
+            Context = new AzureContext(new AzureSubscription()
                 {
                     Account = DefaultAccount,
                     Environment = EnvironmentName.AzureCloud,
@@ -56,8 +59,62 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud],
                 new AzureTenant() { Domain = DefaultDomain, Id = DefaultTenant });
             var profile = new AzureRMProfile();
-            profile.Context = context;
+            profile.Context = Context;
             return new RMProfileClient(profile);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TokenIdAndAccountIdMismatch()
+        {
+            var tenants = new List<string> { Guid.NewGuid().ToString(), DefaultTenant.ToString() };
+            var secondsubscriptionInTheFirstTenant = Guid.NewGuid().ToString();
+            var firstList = new List<string> { DefaultSubscription.ToString(), secondsubscriptionInTheFirstTenant };
+            var secondList = new List<string> { Guid.NewGuid().ToString() };
+            var thirdList = new List<string> { DefaultSubscription.ToString(), secondsubscriptionInTheFirstTenant };
+            var fourthList = new List<string> { DefaultSubscription.ToString(), secondsubscriptionInTheFirstTenant };
+            var client = SetupTestEnvironment(tenants, firstList, secondList, thirdList, fourthList);
+
+            var tokens = new Queue<MockAccessToken>();
+            tokens.Enqueue(new MockAccessToken
+            {
+                UserId = "aaa@contoso.com",
+                LoginType = LoginType.OrgId,
+                AccessToken = "bbb"
+            });
+            tokens.Enqueue(new MockAccessToken
+            {
+                UserId = "bbb@contoso.com",
+                LoginType = LoginType.OrgId,
+                AccessToken = "bbb",
+                TenantId = tenants.First()
+            });
+            tokens.Enqueue(new MockAccessToken
+            {
+                UserId = "ccc@notcontoso.com",
+                LoginType = LoginType.OrgId,
+                AccessToken = "bbb",
+                TenantId = tenants.Last()
+            });
+
+            ((MockTokenAuthenticationFactory)AzureSession.AuthenticationFactory).TokenProvider = (account, environment, tenant) => 
+                {
+                    var token = tokens.Dequeue();
+                    account.Id = token.UserId;
+                    return token;
+                };
+            
+            var azureRmProfile = client.Login(
+                Context.Account,
+                Context.Environment,
+                null,
+                secondsubscriptionInTheFirstTenant,
+                null,
+                null);
+
+            var tenantsInAccount = azureRmProfile.Context.Account.GetPropertyAsArray( AzureAccount.Property.Tenants);
+            Assert.Equal(1, tenantsInAccount.Length);
+            Assert.Equal(tenants.First(), tenantsInAccount[0]);
         }
 
         [Fact]

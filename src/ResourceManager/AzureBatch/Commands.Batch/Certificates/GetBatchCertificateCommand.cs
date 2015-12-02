@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string Select { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ListCertificateOptions options = new ListCertificateOptions(this.BatchContext, this.AdditionalBehaviors)
             {

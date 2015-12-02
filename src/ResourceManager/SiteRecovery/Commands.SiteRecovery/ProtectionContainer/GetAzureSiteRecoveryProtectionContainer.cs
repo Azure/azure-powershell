@@ -32,35 +32,36 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Gets or sets ID of the Protection Container.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByName, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByObjectWithName, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets name of the Protection Container.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByFriendlyName, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByObjectWithFriendlyName, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string FriendlyName { get; set; }
+
         #endregion Parameters
 
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             try
             {
                 switch (this.ParameterSetName)
                 {
-                    case ASRParameterSets.ByFriendlyName:
-                        this.GetByFriendlyName();
-                        break;
-                    case ASRParameterSets.ByName:
+                    case ASRParameterSets.ByObjectWithName:
                         this.GetByName();
                         break;
-                    case ASRParameterSets.Default:
-                        this.GetByDefault();
+                    case ASRParameterSets.ByObjectWithFriendlyName:
+                        this.GetByFriendlyName();
+                        break;
+                    default:
+                        this.GetAll();
                         break;
                 }
             }
@@ -71,25 +72,37 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         }
 
         /// <summary>
-        /// Queries by Friendly name.
+        /// Queries by friendly name.
         /// </summary>
         private void GetByFriendlyName()
         {
-            ProtectionContainerListResponse protectionContainerListResponse =
-                RecoveryServicesClient.GetAzureSiteRecoveryProtectionContainer();
-
+            ProtectionContainerListResponse protectionContainerListResponse;
             bool found = false;
-            foreach (
-                ProtectionContainer protectionContainer in
-                protectionContainerListResponse.ProtectionContainers)
+
+            FabricListResponse fabricListResponse = RecoveryServicesClient.GetAzureSiteRecoveryFabric();
+
+            foreach (Fabric fabric in fabricListResponse.Fabrics)
             {
-                if (0 == string.Compare(this.FriendlyName, protectionContainer.Properties.FriendlyName, true))
+                // Do not process for fabrictype other than Vmm|HyperVSite 
+                if (String.Compare(fabric.Properties.CustomDetails.InstanceType, Constants.VMM) != 0 && String.Compare(fabric.Properties.CustomDetails.InstanceType, Constants.HyperVSite) != 0)
+                    continue;
+
+                protectionContainerListResponse =
+                RecoveryServicesClient.GetAzureSiteRecoveryProtectionContainer(fabric.Name);
+
+                foreach (
+                    ProtectionContainer protectionContainer in
+                    protectionContainerListResponse.ProtectionContainers)
                 {
-                    this.WriteProtectionContainer(protectionContainer);
-                    found = true;
+                    if (0 == string.Compare(this.FriendlyName, protectionContainer.Properties.FriendlyName, true))
+                    {
+                        this.WriteProtectionContainer(protectionContainer);
+                        found = true;
+                        // break; //We can break if we are sure that we have clouds with unique name across fabrics
+                    }
                 }
             }
-
+            
             if (!found)
             {
                 throw new InvalidOperationException(
@@ -105,21 +118,63 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void GetByName()
         {
-            ProtectionContainerResponse protectionContainerResponse =
-                RecoveryServicesClient.GetAzureSiteRecoveryProtectionContainer(this.Name);
+            ProtectionContainerListResponse protectionContainerListResponse;
+            bool found = false;
 
-            this.WriteProtectionContainer(protectionContainerResponse.ProtectionContainer);
+            FabricListResponse fabricListResponse = RecoveryServicesClient.GetAzureSiteRecoveryFabric();
+
+            foreach (Fabric fabric in fabricListResponse.Fabrics)
+            {
+                // Do not process for fabrictype other than Vmm|HyperVSite 
+                if (String.Compare(fabric.Properties.CustomDetails.InstanceType, Constants.VMM) != 0 && String.Compare(fabric.Properties.CustomDetails.InstanceType, Constants.HyperVSite) != 0)
+                    continue;
+
+                protectionContainerListResponse =
+                RecoveryServicesClient.GetAzureSiteRecoveryProtectionContainer(fabric.Name);
+
+                foreach (
+                    ProtectionContainer protectionContainer in
+                    protectionContainerListResponse.ProtectionContainers)
+                {
+                    if (0 == string.Compare(this.Name, protectionContainer.Name, true))
+                    {
+                        this.WriteProtectionContainer(protectionContainer);
+                        found = true;
+                        // break; //We can break if we are sure that we have clouds with unique name across fabrics
+                    }
+                }
+            }
+
+            if (!found)
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                    Properties.Resources.ProtectionContainerNotFound,
+                    this.Name,
+                    PSRecoveryServicesClient.asrVaultCreds.ResourceName));
+            }
         }
 
         /// <summary>
-        /// Queries all, by default.
+        /// Queries all Protection Containers under given Fabric.
         /// </summary>
-        private void GetByDefault()
+        private void GetAll()
         {
-            ProtectionContainerListResponse protectionContainerListResponse =
-                RecoveryServicesClient.GetAzureSiteRecoveryProtectionContainer();
+            ProtectionContainerListResponse protectionContainerListResponse;
 
-            this.WriteProtectionContainers(protectionContainerListResponse.ProtectionContainers);
+            FabricListResponse fabricListResponse = RecoveryServicesClient.GetAzureSiteRecoveryFabric();
+
+            foreach (Fabric fabric in fabricListResponse.Fabrics)
+            {
+                // Do not process for fabrictype other than Vmm|HyperVSite 
+                if (String.Compare(fabric.Properties.CustomDetails.InstanceType, Constants.VMM) != 0 && String.Compare(fabric.Properties.CustomDetails.InstanceType, Constants.HyperVSite) != 0)
+                    continue;
+
+                protectionContainerListResponse =
+                RecoveryServicesClient.GetAzureSiteRecoveryProtectionContainer(fabric.Name);
+
+                this.WriteProtectionContainers(protectionContainerListResponse.ProtectionContainers);
+            }            
         }
 
         /// <summary>
@@ -127,8 +182,24 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         /// <param name="protectionContainers">List of Protection Containers</param>
         private void WriteProtectionContainers(IList<ProtectionContainer> protectionContainers)
-        {
-            this.WriteObject(protectionContainers.Select(pc => new ASRProtectionContainer(pc)), true);
+        {           
+            List<ASRProtectionContainer> asrProtectionContainers = new List<ASRProtectionContainer>();
+
+            foreach (ProtectionContainer protectionContainer in protectionContainers)
+            {
+                List<ASRPolicy> availablePolicies = new List<ASRPolicy>();
+
+                ProtectionContainerMappingListResponse protectionContainerMappingListResponse = RecoveryServicesClient.GetAzureSiteRecoveryProtectionContainerMapping(Utilities.GetValueFromArmId(protectionContainer.Id, ARMResourceTypeConstants.ReplicationFabrics), protectionContainer.Name);
+                foreach (ProtectionContainerMapping protectionContainerMapping in protectionContainerMappingListResponse.ProtectionContainerMappings)
+                {
+                    PolicyResponse policyResponse = RecoveryServicesClient.GetAzureSiteRecoveryPolicy(Utilities.GetValueFromArmId(protectionContainerMapping.Properties.PolicyId, ARMResourceTypeConstants.ReplicationPolicies));
+                    availablePolicies.Add(new ASRPolicy(policyResponse.Policy));          
+                }
+                
+                asrProtectionContainers.Add(new ASRProtectionContainer(protectionContainer, availablePolicies));
+            }
+
+            this.WriteObject(asrProtectionContainers, true);
         }
 
         /// <summary>
@@ -137,7 +208,16 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <param name="protectionContainer">Protection Container</param>
         private void WriteProtectionContainer(ProtectionContainer protectionContainer)
         {
-            this.WriteObject(new ASRProtectionContainer(protectionContainer));
+            List<ASRPolicy> availablePolicies = new List<ASRPolicy>();
+
+            ProtectionContainerMappingListResponse protectionContainerMappingListResponse = RecoveryServicesClient.GetAzureSiteRecoveryProtectionContainerMapping(Utilities.GetValueFromArmId(protectionContainer.Id, ARMResourceTypeConstants.ReplicationFabrics), protectionContainer.Name);
+            foreach (ProtectionContainerMapping protectionContainerMapping in protectionContainerMappingListResponse.ProtectionContainerMappings)
+            {
+                PolicyResponse policyResponse = RecoveryServicesClient.GetAzureSiteRecoveryPolicy(Utilities.GetValueFromArmId(protectionContainerMapping.Properties.PolicyId, ARMResourceTypeConstants.ReplicationPolicies));
+                availablePolicies.Add(new ASRPolicy(policyResponse.Policy));
+            }
+
+            this.WriteObject(new ASRProtectionContainer(protectionContainer, availablePolicies));
         }
     }
 }
