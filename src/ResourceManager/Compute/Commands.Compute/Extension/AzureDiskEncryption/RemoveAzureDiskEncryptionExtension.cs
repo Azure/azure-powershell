@@ -55,9 +55,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         [ValidateNotNullOrEmpty]
         public SwitchParameter Force { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             ExecuteClientAction(() =>
             {

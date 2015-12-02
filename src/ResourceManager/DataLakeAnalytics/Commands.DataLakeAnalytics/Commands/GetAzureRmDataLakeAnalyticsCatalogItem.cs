@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             var itemList = DataLakeAnalyticsClient.GetCatalogItem(ResourceGroupName, Account, Path, ItemType);
             if (itemList.Count == 1)

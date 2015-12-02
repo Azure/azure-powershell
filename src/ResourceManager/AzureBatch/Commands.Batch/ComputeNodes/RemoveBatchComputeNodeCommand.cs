@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter]
         public SwitchParameter Force { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             string computeNodeIds = ComputeNode == null ? string.Join(",", this.Ids) : ComputeNode.Id;
             RemoveComputeNodeParameters parameters = new RemoveComputeNodeParameters(this.BatchContext, this.PoolId,

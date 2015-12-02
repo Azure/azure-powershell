@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionCustom, HelpMessage = "If specified, displays the the roles at and below scope.")]
         public SwitchParameter ScopeAndBelow { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             FilterRoleDefinitionOptions options = new FilterRoleDefinitionOptions
             {
