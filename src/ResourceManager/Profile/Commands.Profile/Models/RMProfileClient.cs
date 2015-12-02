@@ -77,6 +77,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 var tenants = ListAccountTenants(account, environment, password, promptBehavior).Select(s => s.Id.ToString()).ToArray();
                 account.SetProperty(AzureAccount.Property.Tenants, null);
+                string accountId = null;
 
                 for (int i = 0; i < tenants.Count(); i++)
                 {
@@ -90,7 +91,26 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     try
                     {
                         token = AcquireAccessToken(account, environment, tenant, password, ShowDialog.Auto);
-                        account.SetOrAppendProperty(AzureAccount.Property.Tenants, tenant);
+
+                        if (accountId == null)
+                        {
+                            accountId = account.Id;
+                            account.SetOrAppendProperty(AzureAccount.Property.Tenants, tenant);
+                        }
+                        else if (accountId.Equals(account.Id, StringComparison.OrdinalIgnoreCase))
+                        {
+                            account.SetOrAppendProperty(AzureAccount.Property.Tenants, tenant);
+                        }
+                        else
+                        {   // if account ID is different from the first tenant account id we need to ignore current tenant
+                            WriteWarningMessage(string.Format(
+                                Microsoft.Azure.Commands.Profile.Properties.Resources.AccountIdMismatch, 
+                                account.Id, 
+                                tenant, 
+                                accountId));
+                            account.Id = accountId;
+                            token = null;
+                        }
                     }
                     catch
                     {
