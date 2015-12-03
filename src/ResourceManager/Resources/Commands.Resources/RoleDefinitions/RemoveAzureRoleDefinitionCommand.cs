@@ -25,21 +25,22 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Deletes a given role definition.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmRoleDefinition"), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmRoleDefinition", DefaultParameterSetName = ParameterSet.RoleDefinitionId), OutputType(typeof(bool))]
     public class RemoveAzureRoleDefinitionCommand : ResourcesBaseCmdlet
     {
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionId,
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionId,
             HelpMessage = "Role definition id")]
         [ValidateGuidNotEmpty]
         public Guid Id { get; set; }
 
-        [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionName,
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionName,
             HelpMessage = "Role definition name. For e.g. Reader, Contributor, Virtual Machine Contributor.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [ValidateNotNullOrEmpty]
-        [Parameter(Mandatory = false, HelpMessage = "Scope of the existing role definition.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionName, HelpMessage = "Scope of the existing role definition.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionId, HelpMessage = "Scope of the existing role definition.")]
         public string Scope { get; set; }
 
         [Parameter(Mandatory = false)]
@@ -53,7 +54,7 @@ namespace Microsoft.Azure.Commands.Resources
             PSRoleDefinition roleDefinition = null;
             string confirmMessage = null;
 
-            if(Id != Guid.Empty)
+            if (Id != Guid.Empty)
             {
                 confirmMessage = string.Format(ProjectResources.RemoveRoleDefinition, Id);
             }

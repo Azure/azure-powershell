@@ -101,16 +101,18 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
         public List<PSRoleDefinition> FilterRoleDefinitions(FilterRoleDefinitionOptions options)
         {
-            if(options.CustomOnly)
-            {
-                return FilterRoleDefinitionsByCustom(options.Scope, options.ScopeAndBelow);
-            }
-            else if (options.RoleDefinitionId != Guid.Empty)
+            if (options.RoleDefinitionId != Guid.Empty)
             {
                 return new List<PSRoleDefinition> { GetRoleDefinition(options.RoleDefinitionId, options.Scope) };
             }
+            else if(options.CustomOnly)
+            {
+                // Special case - if custom only flag is specified then you don't need to lookup on a specific id or name since it will be a bit redundant
+                return FilterRoleDefinitionsByCustom(options.Scope, options.ScopeAndBelow);
+            }
             else
             {
+                // If RoleDefinition name is not specified (null/empty), service will handle it and return all roles
                 return FilterRoleDefinitions(options.RoleDefinitionName, options.Scope, options.ScopeAndBelow);
             }
         }
@@ -249,8 +251,11 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 }
             }
 
+            // To look for RoleDefinitions at the stated scope - if scope is Null then default to subscription scope
+            string scopeForRoleDefinitions = string.IsNullOrEmpty(options.Scope) ? AuthorizationHelper.GetSubscriptionScope(currentSubscription) : options.Scope;
+
             result.AddRange(roleAssignments.FilterRoleAssignmentsOnRoleId(options.RoleDefinitionId)
-                .ToPSRoleAssignments(this, ActiveDirectoryClient, currentSubscription, options.ExcludeAssignmentsForDeletedPrincipals));
+                .ToPSRoleAssignments(this, ActiveDirectoryClient, scopeForRoleDefinitions, options.ExcludeAssignmentsForDeletedPrincipals));
 
             if (!string.IsNullOrEmpty(options.RoleDefinitionName))
             {
@@ -374,13 +379,17 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
         public PSRoleDefinition RemoveRoleDefinition(FilterRoleDefinitionOptions options)
         {
-            if(!string.IsNullOrEmpty(options.RoleDefinitionName))
+            if (options.RoleDefinitionId != Guid.Empty)
+            {
+                return this.RemoveRoleDefinition(options.RoleDefinitionId, options.Scope);
+            }
+            else if(!string.IsNullOrEmpty(options.RoleDefinitionName))
             {
                 return this.RemoveRoleDefinition(options.RoleDefinitionName, options.Scope);
             }
             else
             {
-                return this.RemoveRoleDefinition(options.RoleDefinitionId, options.Scope);
+                throw new InvalidOperationException("RoleDefinition Name or Id should be specified.");
             }
         }
 

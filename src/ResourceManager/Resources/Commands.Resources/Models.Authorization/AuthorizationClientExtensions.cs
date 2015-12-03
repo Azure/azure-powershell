@@ -12,10 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
 using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 using Microsoft.Azure.Management.Authorization.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 {
@@ -56,15 +58,50 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
         public static PSRoleAssignment ToPSRoleAssignment(this RoleAssignment assignment, AuthorizationClient policyClient, ActiveDirectoryClient activeDirectoryClient, bool excludeAssignmentsForDeletedPrincipals = true)
         {
-            List<PSRoleDefinition> roleDefinitions = new List<PSRoleDefinition> { policyClient.GetRoleDefinition(assignment.Properties.RoleDefinitionId) };
+            List<PSRoleDefinition> roleDefinitions = null;
+
+            try
+            {
+                roleDefinitions = new List<PSRoleDefinition> { policyClient.GetRoleDefinition(assignment.Properties.RoleDefinitionId) };
+            }
+            catch (CloudException ce)
+            {
+                if (ce.Response.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    //Swallow unauthorized errors on RoleDefinition when displaying RoleAssignments
+                    roleDefinitions = new List<PSRoleDefinition>();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
             IEnumerable<RoleAssignment> assignments = new List<RoleAssignment> { assignment };
 
             return assignments.ToPSRoleAssignments(roleDefinitions, policyClient, activeDirectoryClient, excludeAssignmentsForDeletedPrincipals).SingleOrDefault();
         }
 
-        public static IEnumerable<PSRoleAssignment> ToPSRoleAssignments(this IEnumerable<RoleAssignment> assignments, AuthorizationClient policyClient, ActiveDirectoryClient activeDirectoryClient, string subscriptionId, bool excludeAssignmentsForDeletedPrincipals = true)
+        public static IEnumerable<PSRoleAssignment> ToPSRoleAssignments(this IEnumerable<RoleAssignment> assignments, AuthorizationClient policyClient, ActiveDirectoryClient activeDirectoryClient, string scopeForRoleDefinitions, bool excludeAssignmentsForDeletedPrincipals = true)
         {
-            List<PSRoleDefinition> roleDefinitions = policyClient.GetAllRoleDefinitionsAtScopeAndBelow(AuthorizationHelper.GetSubscriptionScope(subscriptionId));
+            List<PSRoleDefinition> roleDefinitions = null;
+
+            try
+            {
+                roleDefinitions = policyClient.GetAllRoleDefinitionsAtScopeAndBelow(scopeForRoleDefinitions);
+            }
+            catch (CloudException ce)
+            {
+                if (ce.Response.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    //Swallow unauthorized errors on RoleDefinition when displaying RoleAssignments
+                    roleDefinitions = new List<PSRoleDefinition>();
+                }
+                else
+                {
+                    throw;
+                }
+            }
 
             return assignments.ToPSRoleAssignments(roleDefinitions, policyClient, activeDirectoryClient, excludeAssignmentsForDeletedPrincipals);
         }

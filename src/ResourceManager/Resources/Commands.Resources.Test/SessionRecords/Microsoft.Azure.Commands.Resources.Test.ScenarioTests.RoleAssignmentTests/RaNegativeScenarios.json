@@ -25,16 +25,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "14992"
+          "14993"
         ],
         "x-ms-request-id": [
-          "49679c18-38d8-4b3c-b263-a8e5903a6682"
+          "a7930cbf-bda9-4d14-a469-ba4f2e42385d"
         ],
         "x-ms-correlation-request-id": [
-          "49679c18-38d8-4b3c-b263-a8e5903a6682"
+          "a7930cbf-bda9-4d14-a469-ba4f2e42385d"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151202T024803Z:49679c18-38d8-4b3c-b263-a8e5903a6682"
+          "WESTUS:20151203T010329Z:a7930cbf-bda9-4d14-a469-ba4f2e42385d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -43,7 +43,55 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 02 Dec 2015 02:48:03 GMT"
+          "Thu, 03 Dec 2015 01:03:29 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnM/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Subscriptions.SubscriptionClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f\",\r\n      \"subscriptionId\": \"4004a9fd-d58e-48dc-aeb2-4a4aec58606f\",\r\n      \"displayName\": \"AAD_POLICY_ADMINISTRATION_SERVICE_TEST_CLI\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "306"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "14992"
+        ],
+        "x-ms-request-id": [
+          "981afde4-6cc3-45d1-bf49-9e419a58d6d6"
+        ],
+        "x-ms-correlation-request-id": [
+          "981afde4-6cc3-45d1-bf49-9e419a58d6d6"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20151203T010329Z:981afde4-6cc3-45d1-bf49-9e419a58d6d6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 03 Dec 2015 01:03:29 GMT"
         ]
       },
       "StatusCode": 200
@@ -76,13 +124,13 @@
           "14991"
         ],
         "x-ms-request-id": [
-          "ae16bebc-2a55-4a0a-980b-129667430dcc"
+          "c66607e0-e665-4f27-8b8e-24305bf25400"
         ],
         "x-ms-correlation-request-id": [
-          "ae16bebc-2a55-4a0a-980b-129667430dcc"
+          "c66607e0-e665-4f27-8b8e-24305bf25400"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151202T024803Z:ae16bebc-2a55-4a0a-980b-129667430dcc"
+          "WESTUS:20151203T010329Z:c66607e0-e665-4f27-8b8e-24305bf25400"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -91,55 +139,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 02 Dec 2015 02:48:03 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnM/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Subscriptions.SubscriptionClient/2.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f\",\r\n      \"subscriptionId\": \"4004a9fd-d58e-48dc-aeb2-4a4aec58606f\",\r\n      \"displayName\": \"AAD_POLICY_ADMINISTRATION_SERVICE_TEST_CLI\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    }\r\n  ]\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "306"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-tenant-reads": [
-          "14990"
-        ],
-        "x-ms-request-id": [
-          "003d4fdf-376a-44b0-8109-0226ddfd6ff3"
-        ],
-        "x-ms-correlation-request-id": [
-          "003d4fdf-376a-44b0-8109-0226ddfd6ff3"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20151202T024803Z:003d4fdf-376a-44b0-8109-0226ddfd6ff3"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 02 Dec 2015 02:48:03 GMT"
+          "Thu, 03 Dec 2015 01:03:29 GMT"
         ]
       },
       "StatusCode": 200
@@ -163,13 +163,13 @@
           "application/json; odata=minimalmetadata; charset=utf-8"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "iuPmgCujsBOHP5ZHyhzOWZQ0FRP7jUfzbegvNsa5PFc="
+          "ndOaDad62j02kfRa1Cq/gK60FrLF0w5RKl7ELizCzzo="
         ],
         "request-id": [
-          "21d3512b-81f8-4336-84c8-16e8416b8dbe"
+          "effdbdec-ce99-49e7-b809-09c1ae163d27"
         ],
         "client-request-id": [
-          "cbe995f9-3729-4d0b-abb8-068166378572"
+          "fb15ec9c-63ba-4fb0-be7c-b5eb6095f6e0"
         ],
         "x-ms-dirapi-data-contract-version": [
           "1.42-previewInternal"
@@ -178,7 +178,7 @@
           "false"
         ],
         "ocp-aad-session-key": [
-          "Wdm5Je55C1B9mMclMK3VaIoGZoqviyPK581LCxKtHRAQDMTcfCEvzhpR6CDxCeBQoCmuFjuirOcMDkEb8pLRNGmu3hTv7GS6NOQhHGvj9cQaW1ltM6XTvl-bh06PBG_t.p_gF8V6cR1QYmD9xmltbsFNfQVFxkkr2KhKDYG0LOY8"
+          "TzjAfVPbr4TlKxfYj_gHQxECo6MvjUFKMyJ4cImZZnq-qniT1CHPA8XbO2wnhZNln6Q5g0tVaIhvq-L0uWym1a4zuAqo6hZzRXfmcdUc7xhU_JccKwtc_GafOrhZypbS.pEN50QerNVjIT8l2Fr-Tik2cbDsTFdprhl59nPGQ4sc"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -187,7 +187,7 @@
           "*"
         ],
         "Duration": [
-          "920105"
+          "2009127"
         ],
         "Cache-Control": [
           "private"
@@ -203,7 +203,7 @@
           "ASP.NET"
         ],
         "Date": [
-          "Wed, 02 Dec 2015 02:48:03 GMT"
+          "Thu, 03 Dec 2015 01:03:26 GMT"
         ]
       },
       "StatusCode": 404
@@ -227,13 +227,13 @@
           "application/json; odata=minimalmetadata; charset=utf-8"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "jyobu/yER2daUFpJq2oLdeE79e2GnwqPEUOxSEatNo0="
+          "ndOaDad62j02kfRa1Cq/gK60FrLF0w5RKl7ELizCzzo="
         ],
         "request-id": [
-          "b5160bcf-bded-47c9-b23d-d18e0497aa9a"
+          "efeeb649-43f7-46aa-b8aa-b703b5550559"
         ],
         "client-request-id": [
-          "35e4fccd-db82-441a-9779-c128e3920832"
+          "b600752d-34a1-4643-b089-d6136a839a73"
         ],
         "x-ms-dirapi-data-contract-version": [
           "1.42-previewInternal"
@@ -242,7 +242,7 @@
           "false"
         ],
         "ocp-aad-session-key": [
-          "1bz-QPckgvJYPJcm65LyVbuv8QkLiXOzRTYFdgZKMCY64HiDz0HPoT6toKOBuEIx4PU84ct-ZQ0rqxBQdheAkExDAkpxMF7zH14z2eunPpUncYBlUs_AuAwmDGxHTyi8.t8LyXWXw4uSSw6iAXfU-_zANutmyy4B-ax_IktuOnds"
+          "FKmGhGUWoDtinwnDZ2ihPHexTsH5uvRU0XfrqsxOPINqHi3Cs90VhcRqAVK_dUkL8lxlF1iZ5x8GeJzwwJB9-avHNh985rizNuDXwr5GlXsDSwLxFsuktbgZrAVYK0i3.5QmhpxBsDeb0NEjlUPh6WFIThZiaUPTAGji04zxq0UI"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -251,7 +251,7 @@
           "*"
         ],
         "Duration": [
-          "914601"
+          "978747"
         ],
         "Cache-Control": [
           "private"
@@ -267,7 +267,7 @@
           "ASP.NET"
         ],
         "Date": [
-          "Wed, 02 Dec 2015 02:48:03 GMT"
+          "Thu, 03 Dec 2015 01:03:27 GMT"
         ]
       },
       "StatusCode": 404
@@ -291,13 +291,13 @@
           "application/json; odata=minimalmetadata; charset=utf-8"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "iuPmgCujsBOHP5ZHyhzOWZQ0FRP7jUfzbegvNsa5PFc="
+          "DwiZqbw4kpvacRTHgNp62Clzs32ouQbIngVZZ/qji78="
         ],
         "request-id": [
-          "2795256c-6866-4e6e-8dd9-8691667e905e"
+          "51c58fac-be7e-4915-80ae-23742a671d3d"
         ],
         "client-request-id": [
-          "eceac867-ea33-499c-b739-40cdd460f358"
+          "bbf30bb7-eb48-442c-a4b2-9e5fdb2e4d76"
         ],
         "x-ms-dirapi-data-contract-version": [
           "1.42-previewInternal"
@@ -306,7 +306,7 @@
           "false"
         ],
         "ocp-aad-session-key": [
-          "T3FOPwwM7twS-XGjXQYCTcyTyctFdtXyPXkIYFE7VmCsYUIkjhi9zchWcBg4XsTdVaBPAy5YCUHhTKVmERdRzb95FCAaef9oReABMSIkPHW0IB8WHEUwVfPrkh9Jfm-J.uwmExomMRP-cTMFQgXdLGEllWvrx24fUytkxiIgJ7Fs"
+          "wet2GRsWL6Qv_pNKKGGkYwBu0Ak1YnmLVWEv-Tx-jZb8EF1D5wHW8QzlRLozBlFAMZUgOuasdyfEKAwC7p9QrbJikDbjY69b4BTdjnBFZgcPn4uSh_H0v3AXMTi4hapc._oY2WBMTvBQSMsn339ToU6V8D2wn5vXL56xJWNxOEBM"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -315,7 +315,7 @@
           "*"
         ],
         "Duration": [
-          "886846"
+          "952957"
         ],
         "Cache-Control": [
           "private"
@@ -331,7 +331,7 @@
           "ASP.NET"
         ],
         "Date": [
-          "Wed, 02 Dec 2015 02:48:03 GMT"
+          "Thu, 03 Dec 2015 01:03:27 GMT"
         ]
       },
       "StatusCode": 404
@@ -361,13 +361,13 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "iuPmgCujsBOHP5ZHyhzOWZQ0FRP7jUfzbegvNsa5PFc="
+          "NmOhVwUmxtMXE2yVTyo+Rgxuh4SzBZla+ESSAHIGDQ8="
         ],
         "request-id": [
-          "7dfcb384-6d89-4099-848e-aacddfd105ea"
+          "e491fd4a-2849-4945-99b3-42702539c4b3"
         ],
         "client-request-id": [
-          "ab097689-6735-46eb-b147-8634d4ef7d84"
+          "64b3d5b0-9f81-4d9a-b6d9-bee8c432ecf7"
         ],
         "x-ms-dirapi-data-contract-version": [
           "1.42-previewInternal"
@@ -376,7 +376,7 @@
           "false"
         ],
         "ocp-aad-session-key": [
-          "w2Atch15ioksNg30s0i8h8BaQVSrxSdY8oYpDbBqycT3E3zzeP7xjgku6bD8c-GKqR8kGp9pslCD8msoisbEtn5OeyVEIvFTmdZtq3u03McRQCbCVllOMZN1YyzQCxs8.5MPXvHaINrUdl6PaDY0j9v0LXXmrWoIwdyFP6QWkaHA"
+          "hDvgUiu2bIO6rySvgfI6I7n8ldZhWxu971YIx5PnRR5iBbGz8jhAuYg32WL5I0NnGKEl-ULyoRNHftc1OIYQoNmlwtG4XuWMV9-a2W5A5ipn02yIY3pYN4ZRjGiTvwOP.10BbgP2PTG0CBJcFNP2UxB3oLWt_e8T4_Kwq3CFoFAE"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -391,7 +391,7 @@
           "*"
         ],
         "Duration": [
-          "864099"
+          "858343"
         ],
         "Cache-Control": [
           "no-cache"
@@ -407,7 +407,7 @@
           "ASP.NET"
         ],
         "Date": [
-          "Wed, 02 Dec 2015 02:48:03 GMT"
+          "Thu, 03 Dec 2015 01:03:27 GMT"
         ]
       },
       "StatusCode": 200
@@ -437,13 +437,13 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "jyobu/yER2daUFpJq2oLdeE79e2GnwqPEUOxSEatNo0="
+          "DwiZqbw4kpvacRTHgNp62Clzs32ouQbIngVZZ/qji78="
         ],
         "request-id": [
-          "4203a304-fac1-45a7-8e41-9781281a651b"
+          "10c05474-0727-4aab-bf27-71c571b2b137"
         ],
         "client-request-id": [
-          "24d1ce8b-b74e-4637-887c-bcd7f0dbae64"
+          "8f6d03ce-a9f6-4287-b514-732b787caadc"
         ],
         "x-ms-dirapi-data-contract-version": [
           "1.42-previewInternal"
@@ -452,7 +452,7 @@
           "false"
         ],
         "ocp-aad-session-key": [
-          "f_o0AAx3oYfjaULo0-oXRnTnz1ok_bgT_-yXBEaJFVhmiXxz9bASRdvn-tRNiMC_kq_1hgELSM9A_W9hPajB4EvWCkU-ng126JVUdDiiIyK7b-4WCLbD7w5L9Tz4MlOL.2L4Fd8DaOgV_iQPnrG4uHNGzWFxDhXEJAtJ-q1B3Muo"
+          "ZlOEa0c_Zw-GjgYgXNVhPSbwmuBcHe921RILfL2r1uSB6h8VI4NwWYeW0W8rVnNov4eotB4qNFXdOSzr2qduHGW3bJrmSSKtmEBaAMAIRxr3jx3ETApRg2RU9YQIjsIE.E48L0CzXZG4lIhOxG3bykoaCTTHx2nxXhXpwxnDuq_w"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -467,7 +467,7 @@
           "*"
         ],
         "Duration": [
-          "783659"
+          "817793"
         ],
         "Cache-Control": [
           "no-cache"
@@ -483,7 +483,7 @@
           "ASP.NET"
         ],
         "Date": [
-          "Wed, 02 Dec 2015 02:48:04 GMT"
+          "Thu, 03 Dec 2015 01:03:27 GMT"
         ]
       },
       "StatusCode": 200
@@ -516,13 +516,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "3a805bb3-fb7a-4ec5-9f80-476a4330da1d"
+          "7f98e9da-b4d3-4a4d-bf07-e728e8d3f3f9"
         ],
         "x-ms-correlation-request-id": [
-          "3a805bb3-fb7a-4ec5-9f80-476a4330da1d"
+          "7f98e9da-b4d3-4a4d-bf07-e728e8d3f3f9"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151202T024804Z:3a805bb3-fb7a-4ec5-9f80-476a4330da1d"
+          "WESTUS:20151203T010330Z:7f98e9da-b4d3-4a4d-bf07-e728e8d3f3f9"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -531,7 +531,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 02 Dec 2015 02:48:03 GMT"
+          "Thu, 03 Dec 2015 01:03:29 GMT"
         ]
       },
       "StatusCode": 404
