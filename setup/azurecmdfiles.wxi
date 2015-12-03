@@ -4419,9 +4419,6 @@
                         <Component Id="cmp74B0B7D2461EE67BC1B2C706CD41372F" Guid="*">
                             <File Id="filD84EC14AB325E2924B8FFE3A4D3D018A" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Sql\Azure.Storage.psd1" />
                         </Component>
-                        <Component Id="cmp572CBAA060A870457B636480C182F6E3" Guid="*">
-                            <File Id="filA870DB1BA05E5465BDE158B5DC54FD4F" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Sql\AzureStorageStartup.ps1" />
-                        </Component>
                         <Component Id="cmpD8BD7D4C976FE7FE527348B4E7F85B8D" Guid="*">
                             <File Id="filA1C13EA190ADD849F77BDADF0A1A0638" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Sql\Hyak.Common.dll" />
                         </Component>
@@ -6196,7 +6193,6 @@
             <ComponentRef Id="cmp65991ADC169007028A31A4F049E069EF" />
             <ComponentRef Id="cmp221C334CE6510BD95538F285D482251F" />
             <ComponentRef Id="cmp74B0B7D2461EE67BC1B2C706CD41372F" />
-            <ComponentRef Id="cmp572CBAA060A870457B636480C182F6E3" />
             <ComponentRef Id="cmpD8BD7D4C976FE7FE527348B4E7F85B8D" />
             <ComponentRef Id="cmpD5A2C7B5CF9A37015F3B71F2DC61EC0B" />
             <ComponentRef Id="cmp4C01FCB6C2D2D2591BAEDBA0D9284C3C" />
