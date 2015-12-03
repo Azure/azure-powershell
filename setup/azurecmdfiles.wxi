@@ -1648,6 +1648,9 @@
                         <Component Id="cmpEDB84317615898A496C0FF620B372C87" Guid="*">
                             <File Id="fil56F72CE4FFC9F006CE1B279238995FC8" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RecoveryServices\Microsoft.ApplicationInsights.dll" />
                         </Component>
+                        <Component Id="cmp66ECF842EEB4EB595925E310358E9750" Guid="*">
+                            <File Id="filF271979440640E53A189C08A7ADBAD7A" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RecoveryServices\Microsoft.Azure.Commands.RecoveryServices.ARM.dll-help.xml" />
+                        </Component>
                         <Component Id="cmp24701581A2FF7E953AF4E712D30C78F7" Guid="*">
                             <File Id="fil8B85106D82BEA73947AE480C4EB871F8" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RecoveryServices\Microsoft.Azure.Commands.RecoveryServices.dll" />
                         </Component>
@@ -5226,6 +5229,7 @@
             <ComponentRef Id="cmpC96DAF4A31F86D19246E39394F496F83" />
             <ComponentRef Id="cmpA77D5875EABE5151973A245C04E3858E" />
             <ComponentRef Id="cmpEDB84317615898A496C0FF620B372C87" />
+            <ComponentRef Id="cmp66ECF842EEB4EB595925E310358E9750" />
             <ComponentRef Id="cmp24701581A2FF7E953AF4E712D30C78F7" />
             <ComponentRef Id="cmpE7C8C6576C1069564C717CBBBD229F39" />
             <ComponentRef Id="cmpC9F93119DA28BCE2B325C737951EFABA" />
