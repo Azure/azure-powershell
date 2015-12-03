@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             IEnumerable<DscConfiguration> ret = null;
             if (this.ParameterSetName == AutomationCmdletParameterSets.ByConfigurationName)

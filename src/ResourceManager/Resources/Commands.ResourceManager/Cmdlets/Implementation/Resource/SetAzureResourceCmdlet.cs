@@ -135,26 +135,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private JToken GetResourceBody()
         {
-            var getResult = this.GetResource().Result;
-
-            JToken resourceBody;
-            if (getResult.CanConvertTo<Resource<JToken>>())
+            if(this.ShouldUsePatchSemantics())
             {
-                if (this.ShouldUsePatchSemantics())
-                {
-                    resourceBody = new Resource<JToken>()
-                    {
-                        Kind = this.Kind,
-                        Plan = this.Plan.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourcePlan>(),
-                        Sku = this.Sku.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourceSku>(),
-                        Tags = TagsHelper.GetTagsDictionary(this.Tag),
-                        Properties = this.Properties.ToResourcePropertiesBody(),
-                    }.ToJToken();
-                }
-                else
+                var resourceBody = this.GetPatchResourceBody();
+
+                return resourceBody == null ? null : resourceBody.ToJToken();
+            }
+            else
+            {
+                var getResult = this.GetResource().Result;
+
+                if (getResult.CanConvertTo<Resource<JToken>>())
                 {
                     var resource = getResult.ToResource();
-                    resourceBody = new Resource<JToken>()
+                    return new Resource<JToken>()
                     {
                         Kind = this.Kind ?? resource.Kind,
                         Plan = this.Plan.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourcePlan>() ?? resource.Plan,
@@ -164,11 +158,89 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         Properties = this.Properties == null ? resource.Properties : this.Properties.ToResourcePropertiesBody(),
                     }.ToJToken();
                 }
+                else
+                {
+                    return this.Properties.ToJToken();
+                }
             }
-            else
+
+        }
+
+        /// <summary>
+        /// Gets the resource body for PATCH calls
+        /// </summary>
+        private Resource<JToken> GetPatchResourceBody()
+        {
+            Resource<JToken> resourceBody = null;
+
+            if (this.Properties != null)
             {
-                resourceBody = this.Properties.ToJToken();
+                resourceBody = new Resource<JToken>()
+                {
+                    Properties = this.Properties.ToResourcePropertiesBody()
+                };
             }
+
+            if (this.Plan != null)
+            {
+                if(resourceBody != null)
+                {
+                    resourceBody.Plan = this.Plan.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourcePlan>();
+                }
+                else
+                {
+                    resourceBody = new Resource<JToken>()
+                    {
+                        Plan = this.Plan.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourcePlan>()
+                    };
+                }
+            }
+
+            if (this.Kind != null)
+            {
+                if(resourceBody != null)
+                {
+                    resourceBody.Kind = this.Kind;
+                }
+                else
+                {
+                    resourceBody = new Resource<JToken>()
+                    {
+                        Kind = this.Kind
+                    };
+                }
+            }
+
+            if (this.Sku != null)
+            {
+                if(resourceBody != null)
+                {
+                    resourceBody.Sku = this.Sku.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourceSku>();
+                }
+                else
+                {
+                    resourceBody = new Resource<JToken>()
+                    {
+                        Sku = this.Sku.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourceSku>()
+                    };
+                }
+            }
+
+            if (this.Tag != null)
+            {
+                if(resourceBody != null)
+                {
+                    resourceBody.Tags = TagsHelper.GetTagsDictionary(this.Tag);
+                }
+                else
+                {
+                    resourceBody = new Resource<JToken>()
+                    {
+                        Tags = TagsHelper.GetTagsDictionary(this.Tag)
+                    };
+                }
+            }
+
             return resourceBody;
         }
 

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
@@ -26,7 +27,7 @@ namespace Microsoft.Azure.Commands.Compute
         ProfileNouns.VirtualMachineDiagnosticsExtension),
     OutputType(
         typeof(PSVirtualMachineExtension))]
-    public class GetAzureVMDiagnosticsExtensionCommand : VirtualMachineExtensionBaseCmdlet
+    public class GetAzureRmVMDiagnosticsExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(
            Mandatory = true,
@@ -47,11 +48,10 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Alias("ExtensionName")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Extension Name.")]
-        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
@@ -61,12 +61,31 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public SwitchParameter Status { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             ExecuteClientAction(() =>
             {
+                if (string.IsNullOrEmpty(this.Name))
+                {
+                    var virtualMachine = ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName).VirtualMachine;
+                    var diagnosticsExtension = virtualMachine.Extensions != null
+                            ? virtualMachine.Extensions.FirstOrDefault(extension =>
+                                extension.Publisher.Equals(DiagnosticsExtensionConstants.ExtensionPublisher, StringComparison.InvariantCultureIgnoreCase) &&
+                                extension.ExtensionType.Equals(DiagnosticsExtensionConstants.ExtensionType, StringComparison.InvariantCultureIgnoreCase))
+                            : null;
+
+                    if (diagnosticsExtension == null)
+                    {
+                        WriteObject(null);
+                        return;
+                    }
+                    else {
+                        this.Name = diagnosticsExtension.Name;
+                    }
+                }
+
                 VirtualMachineExtensionGetResponse virtualMachineExtensionGetResponse = null;
                 if (Status.IsPresent)
                 {

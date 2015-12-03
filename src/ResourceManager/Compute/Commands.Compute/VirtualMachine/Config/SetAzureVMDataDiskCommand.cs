@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Compute
         [AllowNull]
         public int? DiskSizeInGB { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {            
             var storageProfile = this.VM.StorageProfile;            
 

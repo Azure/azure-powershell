@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [ValidateNotNull]
         public DataLakeStorePathInstance Path { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             var toReturn = DataLakeStoreFileSystemClient.GetFileStatus(Path.TransformedPath, Account);
             var itemName = string.Empty;

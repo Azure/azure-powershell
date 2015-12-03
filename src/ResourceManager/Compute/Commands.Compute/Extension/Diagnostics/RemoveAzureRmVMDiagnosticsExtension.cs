@@ -13,16 +13,18 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Management.Compute;
+using System.Globalization;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(
         VerbsCommon.Remove,
         ProfileNouns.VirtualMachineDiagnosticsExtension)]
-    public class RemoveAzureVMDiagnosticsExtensionCommand : VirtualMachineExtensionBaseCmdlet
+    public class RemoveAzureRmVMDiagnosticsExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(
            Mandatory = true,
@@ -43,19 +45,38 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Alias("ExtensionName")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Extension Name.")]
-        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             ExecuteClientAction(() =>
             {
+                if (string.IsNullOrEmpty(this.Name))
+                {
+                    var virtualMachine = ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName).VirtualMachine;
+                    var diagnosticsExtension = virtualMachine.Extensions != null
+                            ? virtualMachine.Extensions.FirstOrDefault(extension =>
+                                extension.Publisher.Equals(DiagnosticsExtensionConstants.ExtensionPublisher, StringComparison.InvariantCultureIgnoreCase) &&
+                                extension.ExtensionType.Equals(DiagnosticsExtensionConstants.ExtensionType, StringComparison.InvariantCultureIgnoreCase))
+                            : null;
+
+                    if (diagnosticsExtension == null)
+                    {
+                        WriteWarning(string.Format(CultureInfo.InvariantCulture, Properties.Resources.DiagnosticsExtensionNotFound, this.ResourceGroupName, this.VMName));
+                        return;
+                    }
+                    else
+                    {
+                        this.Name = diagnosticsExtension.Name;
+                    }
+                }
+
                 var op = this.VirtualMachineExtensionClient.Delete(this.ResourceGroupName, this.VMName,
                     this.Name);
                 WriteObject(op);

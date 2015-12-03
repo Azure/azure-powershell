@@ -46,9 +46,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         [ValidateNotNullOrEmpty]
         public SwitchParameter InstanceDetails { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
             WriteObject(WebsitesClient.GetWebAppUsageMetrics(ResourceGroupName, Name, Slot, Metrics, StartTime, EndTime, Granularity, InstanceDetails.IsPresent));
         }
     }
