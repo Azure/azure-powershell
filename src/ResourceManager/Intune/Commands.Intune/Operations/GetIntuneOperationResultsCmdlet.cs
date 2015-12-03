@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Intune
     /// <summary>
     /// Cmdlet to get existing Operation results.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmIntuneOperationResult", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmIntuneOperationResult"), OutputType(typeof(List<OperationResult>))]
     public sealed class GetIntuneOperationResultsCmdlet : IntuneBaseCmdlet
     {
         /// <summary>

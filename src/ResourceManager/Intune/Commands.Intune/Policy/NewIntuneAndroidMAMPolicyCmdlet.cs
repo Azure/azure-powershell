@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Intune
     /// <summary>
     /// A cmdlet that creates a new Android Intune MAM policy Azure resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmIntuneAndroidMAMPolicy", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.New, "AzureRmIntuneAndroidMAMPolicy"), OutputType(typeof(AndroidMAMPolicy))]
     public sealed class NewIntuneAndroidMAMPolicyCmdlet : IntuneBaseCmdlet
     {
         /// <summary>
@@ -145,9 +145,6 @@ namespace Microsoft.Azure.Commands.Intune
         [ValidateNotNullOrEmpty, PSDefaultValue(Value = FilterType.allow, Help = "Defaults to 'allow'")]
         public FilterType ScreenCapture { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Don't ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
         /// <summary>
         /// Executes the cmdlet.
         /// </summary>
@@ -157,18 +154,9 @@ namespace Microsoft.Azure.Commands.Intune
             ValidateNumericParameters();
 
             var policyId = (IntuneBaseCmdlet.AndroidPolicyIdsQueue.Count == 0 ? Guid.NewGuid() : IntuneBaseCmdlet.AndroidPolicyIdsQueue.Dequeue()).ToString();
-            
-            this.ConfirmAction(
-                this.Force,
-                string.Format(CultureInfo.CurrentCulture, Resources.NewResource_ActionMessage, Resources.AndroidPolicy, this.FriendlyName),
-                string.Format(CultureInfo.CurrentCulture, Resources.NewResource_ProcessMessage, Resources.AndroidPolicy, this.FriendlyName),
-                policyId,
-                () =>
-                {
-                    var policyObjToCreate = this.PrepareAndroidPolicyBody();
-                    var policyObj = this.IntuneClient.Android.CreateOrUpdateMAMPolicy(this.AsuHostName, policyId, this.PrepareAndroidPolicyBody());
-                    this.WriteObject(policyObj);
-                });
+            var policyObjToCreate = this.PrepareAndroidPolicyBody();
+            var policyObj = this.IntuneClient.Android.CreateOrUpdateMAMPolicy(this.AsuHostName, policyId, this.PrepareAndroidPolicyBody());
+            this.WriteObject(policyObj);            
         }
 
         /// <summary>

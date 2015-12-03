@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Intune
     /// <summary>
     /// Cmdlet to get existing groups associated to Android Intune MAM policy Azure resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmIntuneAndroidMAMPolicyGroup"), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmIntuneAndroidMAMPolicyGroup"), OutputType(typeof(List<GroupItem>))]
     public sealed class GetIntuneAndroidMAMPolicyGroupCmdlet : IntuneBaseCmdlet
     {
         /// <summary>

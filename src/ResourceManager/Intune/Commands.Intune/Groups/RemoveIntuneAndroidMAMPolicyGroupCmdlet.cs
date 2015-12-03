@@ -18,11 +18,13 @@ namespace Microsoft.Azure.Commands.Intune
     using Microsoft.Azure.Commands.Intune.Properties;
     using System.Globalization;
     using System.Management.Automation;
+    using System.Net;
+    using System.Net.Http;
 
     /// <summary>
     /// A cmdlet to remove a linked group from an Android Intune MAM policy Azure resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmIntuneAndroidMAMPolicyGroup", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmIntuneAndroidMAMPolicyGroup", SupportsShouldProcess = true)]
     public sealed class RemoveIntuneAndroidMAMPolicyGroupCmdlet : IntuneBaseCmdlet
     {
         /// <summary>
@@ -39,7 +41,7 @@ namespace Microsoft.Azure.Commands.Intune
         [ValidateNotNullOrEmpty]
         public string GroupName { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Don't ask for confirmation.")]
+        [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
         /// <summary>
         /// Executes the cmdlet.
@@ -66,13 +68,9 @@ namespace Microsoft.Azure.Commands.Intune
                 () =>
                 {
                     var result = IntuneClient.Android.DeleteGroupForMAMPolicyWithHttpMessagesAsync(this.AsuHostName, this.Name, this.GroupName).GetAwaiter().GetResult();
-                    if(result.Response.StatusCode == System.Net.HttpStatusCode.OK)
+                    if (result.Response.StatusCode == HttpStatusCode.NoContent)
                     {
-                        this.WriteObject(Resources.OneItemDeleted);
-                    }
-                    else
-                    {
-                        this.WriteObject(Resources.NoItemsDeleted); 
+                        this.WriteWarning(Resources.NoItemsDeleted);
                     }
                 });
         }

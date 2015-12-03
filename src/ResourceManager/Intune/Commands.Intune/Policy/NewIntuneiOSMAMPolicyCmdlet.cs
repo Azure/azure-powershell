@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Intune
     /// <summary>
     /// A cmdlet that creates a new iOS Intune MAM policy azure resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmIntuneiOSMAMPolicy", SupportsShouldProcess = true), OutputType(typeof(IOSMAMPolicy))]
+    [Cmdlet(VerbsCommon.New, "AzureRmIntuneiOSMAMPolicy"), OutputType(typeof(IOSMAMPolicy))]
     public sealed class NewIntuneiOSMAMPolicyCmdlet : IntuneBaseCmdlet
     {
         /// <summary>
@@ -144,9 +144,6 @@ namespace Microsoft.Azure.Commands.Intune
         [ValidateNotNullOrEmpty, PSDefaultValue(Value = OptionType.enable, Help ="Defaults to 'enable'")]
         public OptionType TouchId { get; set; }
         
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Don't ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
         /// <summary>
         /// Executes the cmdlet.
         /// </summary>
@@ -157,17 +154,8 @@ namespace Microsoft.Azure.Commands.Intune
             var policyId = (IntuneBaseCmdlet.iOSPolicyIdsQueue.Count == 0 ? Guid.NewGuid() : IntuneBaseCmdlet.iOSPolicyIdsQueue.Dequeue()).ToString();
 
             ValidateNumericParameters();
-
-            this.ConfirmAction(
-                this.Force,
-                string.Format(CultureInfo.CurrentCulture, Resources.NewResource_ActionMessage, Resources.IosPolicy, this.FriendlyName),
-                string.Format(CultureInfo.CurrentCulture, Resources.NewResource_ProcessMessage, Resources.IosPolicy, this.FriendlyName), 
-                policyId,
-                () =>
-                {
-                    var policyObj = this.IntuneClient.Ios.CreateOrUpdateMAMPolicy(this.AsuHostName, policyId, this.PrepareIOSPolicyBody());
-                    this.WriteObject(policyObj);
-                }); 
+            var policyObj = this.IntuneClient.Ios.CreateOrUpdateMAMPolicy(this.AsuHostName, policyId, this.PrepareIOSPolicyBody());
+            this.WriteObject(policyObj);
         }
 
         /// <summary>

@@ -17,11 +17,12 @@ namespace Microsoft.Azure.Commands.Intune
     using System.Globalization;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.Intune.Properties;
+    using System.Net;
 
     /// <summary>
     /// A cmdlet that removes Intune iOS MAM Policy.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmIntuneIOSMAMPolicy", SupportsShouldProcess = true, DefaultParameterSetName = IntuneBaseCmdlet.DefaultParameterSet), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmIntuneIOSMAMPolicy", SupportsShouldProcess = true, DefaultParameterSetName = IntuneBaseCmdlet.DefaultParameterSet)]
     public class RemoveIntuneiOSMAMPolicyCmdlet : IntuneBaseCmdlet
     {
         #region params
@@ -32,7 +33,7 @@ namespace Microsoft.Azure.Commands.Intune
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Don't ask for confirmation.")]
+        [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
         #endregion params
@@ -50,15 +51,10 @@ namespace Microsoft.Azure.Commands.Intune
                 this.Name,
                 () =>
                 {
-                    var res = this.IntuneClient.Ios.DeleteMAMPolicyWithHttpMessagesAsync(this.AsuHostName, this.Name).GetAwaiter().GetResult();
-                    
-                    if (res.Response.StatusCode == System.Net.HttpStatusCode.OK)
+                    var res = this.IntuneClient.Ios.DeleteMAMPolicyWithHttpMessagesAsync(this.AsuHostName, this.Name).GetAwaiter().GetResult();                                        
+                    if (res.Response.StatusCode == HttpStatusCode.NoContent)
                     {
-                        this.WriteObject(Resources.OneItemDeleted);
-                    }
-                    else if (res.Response.StatusCode == System.Net.HttpStatusCode.NoContent)
-                    {
-                        this.WriteObject(Resources.NoItemsDeleted);
+                        this.WriteWarning(Resources.NoItemsDeleted);
                     }
                 }
              );

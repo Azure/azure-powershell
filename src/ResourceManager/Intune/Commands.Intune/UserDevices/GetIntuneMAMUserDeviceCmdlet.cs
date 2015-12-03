@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Intune
     /// <summary>
     /// Cmdlet to get Devices for MAM User.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmIntuneMAMUserDevice"), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmIntuneMAMUserDevice"), OutputType(typeof(List<Device>), typeof(Device))]
     public sealed class GetIntuneUserDeviceCmdlet : IntuneBaseCmdlet
     {
         /// <summary>

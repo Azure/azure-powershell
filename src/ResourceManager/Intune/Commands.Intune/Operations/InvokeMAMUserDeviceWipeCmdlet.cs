@@ -15,13 +15,14 @@
 namespace Microsoft.Azure.Commands.Intune.Operations
 {
     using Microsoft.Azure.Commands.Intune.Properties;
+    using Management.Intune.Models;
     using System.Globalization;
     using System.Management.Automation;
 
     /// <summary>
     /// Cmdlet to Invoke user device wipe operation.
     /// </summary>
-    [Cmdlet("Invoke", "AzureRmIntuneMAMUserDeviceWipe", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
+    [Cmdlet("Invoke", "AzureRmIntuneMAMUserDeviceWipe", SupportsShouldProcess = true), OutputType(typeof(WipeDeviceOperationResult))]
     public sealed class InvokeMAMUserDeviceWipeCmdlet : IntuneBaseCmdlet
     {
         /// <summary>
@@ -38,7 +39,7 @@ namespace Microsoft.Azure.Commands.Intune.Operations
         [ValidateNotNullOrEmpty]
         public string DeviceName { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Don't ask for confirmation.")]
+        [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
         /// <summary>

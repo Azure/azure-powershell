@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Intune
     /// <summary>
     /// Cmdlet to get existing Android Intune MAM Policy.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmIntuneAndroidMAMPolicy"), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmIntuneAndroidMAMPolicy"), OutputType(typeof(List<AndroidMAMPolicy>), typeof(AndroidMAMPolicy))]
     public sealed class GetIntuneAndroidMAMPolicyCmdlet : IntuneBaseCmdlet
     {
         /// <summary>

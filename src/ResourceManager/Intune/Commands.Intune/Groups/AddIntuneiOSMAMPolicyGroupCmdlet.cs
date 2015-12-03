@@ -19,11 +19,12 @@ namespace Microsoft.Azure.Commands.Intune
     using Microsoft.Azure.Commands.Intune.Properties;
     using System.Globalization;
     using System.Management.Automation;
+    using System.Net;
 
     /// <summary>
     /// A cmdlet to link a group to iOS Intune MAM policy Azure resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, "AzureRmIntuneiOSMAMPolicyGroup", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Add, "AzureRmIntuneiOSMAMPolicyGroup")]
     public sealed class AddIntuneiOSMAMPolicyGroupCmdlet : IntuneBaseCmdlet
     {
         /// <summary>
@@ -40,36 +41,13 @@ namespace Microsoft.Azure.Commands.Intune
         [ValidateNotNullOrEmpty]
         public string GroupName { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Don't ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
         /// <summary>
         /// Executes the cmdlet.
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            this.ConfirmAction(
-                this.Force,
-                string.Format(
-                    CultureInfo.CurrentCulture, 
-                    Resources.AddLinkedResouce_ActionMessage, 
-                    Resources.Group, 
-                    this.GroupName, 
-                    Resources.IosPolicy, 
-                    this.Name),
-                string.Format(
-                    CultureInfo.CurrentCulture, 
-                    Resources.AddLinkedResources_ProcessMessage, 
-                    Resources.Group, 
-                    this.GroupName, 
-                    Resources.IosPolicy, 
-                    this.Name),
-                this.Name,
-                () =>
-                {
-                    var payLoad = AppOrGroupPayloadMaker.PrepareMAMPolicyPayload(this.IntuneClient, LinkType.Group, this.AsuHostName, this.GroupName);
-                    this.IntuneClient.Ios.AddGroupForMAMPolicy(this.AsuHostName, this.Name, this.GroupName, payLoad);
-                    this.WriteObject(Resources.OperationCompletedMessage);
-                });
+            var payLoad = AppOrGroupPayloadMaker.PrepareMAMPolicyPayload(this.IntuneClient, LinkType.Group, this.AsuHostName, this.GroupName);
+            this.IntuneClient.Ios.AddGroupForMAMPolicyWithHttpMessagesAsync(this.AsuHostName, this.Name, this.GroupName, payLoad).GetAwaiter().GetResult();            
         }        
     }
 }

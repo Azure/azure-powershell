@@ -87,11 +87,7 @@ namespace Microsoft.Azure.Commands.Intune.Test
                 .Returns(() => true);
 
             // Set cmdline args and execute the cmdlet
-            this.cmdlet.Force = true;
-            this.cmdlet.ExecuteCmdlet();
-
-            // Verify the result
-            commandRuntimeMock.Verify(f => f.WriteObject("Operation completed successfully."), Times.Once());
+            this.cmdlet.ExecuteCmdlet();            
         }
     }
 }

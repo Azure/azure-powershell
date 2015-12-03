@@ -86,12 +86,8 @@ namespace Microsoft.Azure.Commands.Intune.Test
             commandRuntimeMock.Setup(m => m.ShouldProcess(It.IsAny<string>(), It.IsAny<string>()))
                 .Returns(() => true);
 
-            // Set cmdline args and execute the cmdlet
-            this.cmdlet.Force = true;
-            this.cmdlet.ExecuteCmdlet();
-
-            // Verify the result
-            commandRuntimeMock.Verify(f => f.WriteObject("Operation completed successfully."), Times.Once());
+            // Set cmdline args and execute the cmdlet            
+            this.cmdlet.ExecuteCmdlet();            
         }
     }
 }

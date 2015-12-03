@@ -93,10 +93,7 @@ namespace Microsoft.Azure.Commands.Intune.Test
             this.cmdlet.Force = true;
             this.cmdlet.Name = expectedPolicyId;
 
-            this.cmdlet.ExecuteCmdlet();
-            
-            // Verify the params which are set with Deafult values
-            commandRuntimeMock.Verify(f => f.WriteObject("1 item deleted."), Times.Once());        
+            this.cmdlet.ExecuteCmdlet();               
         }
 
         /// <summary>
@@ -133,10 +130,7 @@ namespace Microsoft.Azure.Commands.Intune.Test
             this.cmdlet.Force = true;
             this.cmdlet.Name = expectedPolicyId;
 
-            this.cmdlet.ExecuteCmdlet();
-
-            // Verify the params which are set with Default values
-            commandRuntimeMock.Verify(f => f.WriteObject("0 item deleted."), Times.Once());
+            this.cmdlet.ExecuteCmdlet();            
         }
     }
 }

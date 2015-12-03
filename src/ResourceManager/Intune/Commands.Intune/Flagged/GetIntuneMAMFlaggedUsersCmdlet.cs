@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Intune.Flagged
     /// <summary>
     /// Cmdlet to get the flagged MAM users.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmIntuneMAMFlaggedUser", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmIntuneMAMFlaggedUser"), OutputType(typeof(List<FlaggedUser>), typeof(FlaggedUser))]
     public sealed class GetIntuneMAMFlaggedUsersCmdlet : IntuneBaseCmdlet
     {
         /// <summary>

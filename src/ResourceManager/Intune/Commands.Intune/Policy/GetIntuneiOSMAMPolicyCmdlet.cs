@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Intune
     /// <summary>
     /// Cmdlet to get existing iOS Intune MAM Policy.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmIntuneiOSMAMPolicy"), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmIntuneiOSMAMPolicy"), OutputType(typeof(List<IOSMAMPolicy>), typeof(IOSMAMPolicy))]
     public sealed class GetIntuneiOSMAMPolicyCmdlet : IntuneBaseCmdlet
     {
         /// <summary>

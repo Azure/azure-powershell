@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.Intune
         /// </summary>
         internal const string TypeBasedParameterSet = "Create a new Intune policy.";
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Don't ask for confirmation.")]
+        [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
         /// <summary>

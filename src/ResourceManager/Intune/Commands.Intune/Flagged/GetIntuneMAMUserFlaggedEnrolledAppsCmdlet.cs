@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Intune.Flagged
     /// <summary>
     /// Cmdlet to get the MAM flagged devices
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmIntuneMAMUserFlaggedEnrolledApp", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmIntuneMAMUserFlaggedEnrolledApp"), OutputType(typeof(List<FlaggedEnrolledApp>))]
     public sealed class GetIntuneMAMUserFlaggedEnrolledAppsCmdlet : IntuneBaseCmdlet
     {
         /// <summary>

@@ -15,12 +15,13 @@
 namespace Microsoft.Azure.Commands.Intune.Flagged
 {
     using Management.Intune;
+    using Management.Intune.Models;
     using System.Management.Automation;
 
     /// <summary>
     /// Cmdlet to get the MAM summary status.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmIntuneMAMStatus", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmIntuneMAMStatus"), OutputType(typeof(StatusesDefault))]
     public sealed class GetIntuneMAMStatusCmdlet : IntuneBaseCmdlet
     {
         /// <summary>

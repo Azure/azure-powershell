@@ -16,7 +16,7 @@
 	<maml:description>
 		<maml:para>A cmdlet to link an app to Android Intune MAM policy Azure resource.</maml:para>
 		<maml:para>SYNTAX
-    Add-AzureRmIntuneAndroidMAMPolicyApp -Name &lt;String&gt; -AppName &lt;String&gt; [-Force [&lt;SwitchParameter&gt;]] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf [&lt;SwitchParameter&gt;]] [-Confirm [&lt;SwitchParameter&gt;]] [&lt;CommonParameters&gt;]</maml:para>
+    Add-AzureRmIntuneAndroidMAMPolicyApp -Name &lt;String&gt; -AppName &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf [&lt;SwitchParameter&gt;]] [&lt;CommonParameters&gt;]</maml:para>
 		<maml:para>&lt;CommonParameters&gt;
     This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 </maml:para>
@@ -38,14 +38,6 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>If set to true, don&#39;t ask for confirmation.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
 				<maml:description>
@@ -66,14 +58,7 @@
 					<maml:para />
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Confirm</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
+			</command:parameter>	
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -100,19 +85,7 @@
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para>If set to true, don&#39;t ask for confirmation.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
+		</command:parameter>		
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>InformationAction</maml:name>
 			<maml:description>
@@ -148,19 +121,7 @@
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Confirm</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
+		</command:parameter>	
 	</command:parameters>
 	<command:inputTypes>
 		<command:inputType>
@@ -201,12 +162,12 @@
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code># First create the policy
-$p = New-AzureRmIntuneAndroidMAMPolicy -FriendlyName AndroidTestPolicy -Force
+$p = New-AzureRmIntuneAndroidMAMPolicy -FriendlyName AndroidTestPolicy
 # Get the list of apps
 $apps = Get-AzureRmIntuneAndroidMAMApp;
 
 # Finally, link the app to the Android Policy
-Add-AzureRmIntuneAndroidMAMPolicyApp -Name $p.name -AppName $apps[0].Name -Force;</dev:code>
+Add-AzureRmIntuneAndroidMAMPolicyApp -Name $p.name -AppName $apps[0].Name;</dev:code>
 			<dev:remarks>
 				<maml:para>After logging-in as a valid Intune Account, when this command is executed, this will add (link) the specified app to the Android Policy.
 After the command is executed, it will display the status.</maml:para>
@@ -244,7 +205,7 @@ After the command is executed, it will display the status.</maml:para>
 	<maml:description>
 		<maml:para>A cmdlet to link a group to Android Intune MAM policy Azure resource.</maml:para>
 		<maml:para>SYNTAX
-    Add-AzureRmIntuneAndroidMAMPolicyGroup -Name &lt;String&gt; -GroupName &lt;String&gt; [-Force [&lt;SwitchParameter&gt;]] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf [&lt;SwitchParameter&gt;]] [-Confirm [&lt;SwitchParameter&gt;]] [&lt;CommonParameters&gt;]</maml:para>
+    Add-AzureRmIntuneAndroidMAMPolicyGroup -Name &lt;String&gt; -GroupName &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf [&lt;SwitchParameter&gt;]] [&lt;CommonParameters&gt;]</maml:para>
 		<maml:para>&lt;CommonParameters&gt;
     This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 </maml:para>
@@ -266,14 +227,6 @@ After the command is executed, it will display the status.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>If set to true, don&#39;t ask for confirmation.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
 				<maml:description>
@@ -294,14 +247,7 @@ After the command is executed, it will display the status.</maml:para>
 					<maml:para />
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Confirm</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
+			</command:parameter>	
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -328,19 +274,7 @@ After the command is executed, it will display the status.</maml:para>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para>If set to true, don&#39;t ask for confirmation.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
+		</command:parameter>	
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>InformationAction</maml:name>
 			<maml:description>
@@ -376,19 +310,7 @@ After the command is executed, it will display the status.</maml:para>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Confirm</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
+		</command:parameter>	
 	</command:parameters>
 	<command:inputTypes>
 		<command:inputType>
@@ -429,13 +351,13 @@ After the command is executed, it will display the status.</maml:para>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code># First create the policy
-$p = New-AzureRmIntuneAndroidMAMPolicy -FriendlyName AndroidTestPolicy -Force
+$p = New-AzureRmIntuneAndroidMAMPolicy -FriendlyName AndroidTestPolicy
 
 # Get the list of AAD groups
 $groups = @(Get-AzureRmADGroup);
 
 # Now add the Group to the Android policy.
-Add-AzureRmIntuneAndroidMAMPolicyGroup -Name $p.Name -GroupName $groups[0].Id -Force
+Add-AzureRmIntuneAndroidMAMPolicyGroup -Name $p.Name -GroupName $groups[0].Id
 </dev:code>
 			<dev:remarks>
 				<maml:para>After logging-in as a valid Intune Account, when this command is executed, this will add (link) the specified group to the Android Policy.
@@ -475,7 +397,7 @@ After the command is executed, it will display the status.</maml:para>
 	<maml:description>
 		<maml:para>A cmdlet to link an app to iOS Intune MAM policy Azure resource.</maml:para>
 		<maml:para>SYNTAX
-    Add-AzureRmIntuneiOSMAMPolicyApp -Name &lt;String&gt; -AppName &lt;String&gt; [-Force [&lt;SwitchParameter&gt;]] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf [&lt;SwitchParameter&gt;]] [-Confirm [&lt;SwitchParameter&gt;]] [&lt;CommonParameters&gt;]</maml:para>
+    Add-AzureRmIntuneiOSMAMPolicyApp -Name &lt;String&gt; -AppName &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf [&lt;SwitchParameter&gt;]] [&lt;CommonParameters&gt;]</maml:para>
 		<maml:para>&lt;CommonParameters&gt;
     This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 </maml:para>
@@ -497,14 +419,6 @@ After the command is executed, it will display the status.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>If set to true, don&#39;t ask for confirmation.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
 				<maml:description>
@@ -525,14 +439,7 @@ After the command is executed, it will display the status.</maml:para>
 					<maml:para />
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Confirm</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
+			</command:parameter>		
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -559,19 +466,7 @@ After the command is executed, it will display the status.</maml:para>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para>If set to true, don&#39;t ask for confirmation.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
+		</command:parameter>		
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>InformationAction</maml:name>
 			<maml:description>
@@ -607,19 +502,7 @@ After the command is executed, it will display the status.</maml:para>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Confirm</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
+		</command:parameter>	
 	</command:parameters>
 	<command:inputTypes>
 		<command:inputType>
@@ -660,12 +543,12 @@ After the command is executed, it will display the status.</maml:para>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code># First create the policy
-$p = New-AzureRmIntuneiOSMAMPolicy -FriendlyName iOSTestPolicy -Force
+$p = New-AzureRmIntuneiOSMAMPolicy -FriendlyName iOSTestPolicy
 # Get the list of apps
 $apps = Get-AzureRmIntuneiOSMAMApp;
 
 # Finally, link the app to the iOS Policy
-Add-AzureRmIntuneiOSMAMPolicyApp -Name $p.name -AppName $apps[0].Name -Force;
+Add-AzureRmIntuneiOSMAMPolicyApp -Name $p.name -AppName $apps[0].Name;
 </dev:code>
 			<dev:remarks>
 				<maml:para>After logging-in as a valid Intune Account, when this command is executed, this will add (link) the specified app to the iOS Policy.
@@ -704,7 +587,7 @@ After the command is executed, it will display the status.</maml:para>
 	<maml:description>
 		<maml:para>A cmdlet to link a group to iOS Intune MAM policy Azure resource.</maml:para>
 		<maml:para>SYNTAX
-    Add-AzureRmIntuneiOSMAMPolicyGroup -Name &lt;String&gt; -GroupName &lt;String&gt; [-Force [&lt;SwitchParameter&gt;]] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf [&lt;SwitchParameter&gt;]] [-Confirm [&lt;SwitchParameter&gt;]] [&lt;CommonParameters&gt;]</maml:para>
+    Add-AzureRmIntuneiOSMAMPolicyGroup -Name &lt;String&gt; -GroupName &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf [&lt;SwitchParameter&gt;]] [&lt;CommonParameters&gt;]</maml:para>
 		<maml:para>&lt;CommonParameters&gt;
     This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 </maml:para>
@@ -726,14 +609,6 @@ After the command is executed, it will display the status.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>If set to true, don&#39;t ask for confirmation.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
 				<maml:description>
@@ -754,14 +629,7 @@ After the command is executed, it will display the status.</maml:para>
 					<maml:para />
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Confirm</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
+			</command:parameter>	
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -788,19 +656,7 @@ After the command is executed, it will display the status.</maml:para>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para>If set to true, don&#39;t ask for confirmation.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
+		</command:parameter>		
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>InformationAction</maml:name>
 			<maml:description>
@@ -836,19 +692,7 @@ After the command is executed, it will display the status.</maml:para>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Confirm</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
+		</command:parameter>	
 	</command:parameters>
 	<command:inputTypes>
 		<command:inputType>
@@ -889,13 +733,13 @@ After the command is executed, it will display the status.</maml:para>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code># First create the policy
-$p = New-AzureRmIntuneiOSMAMPolicy -FriendlyName iOSTestPolicy -Force
+$p = New-AzureRmIntuneiOSMAMPolicy -FriendlyName iOSTestPolicy 
 
 # Get the list of AAD groups
 $groups = @(Get-AzureRmADGroup);
 
 # Now add the Group to the iOS policy.
-Add-AzureRmIntuneiOSMAMPolicyGroup -Name $p.Name -GroupName $groups[0].Id -Force
+Add-AzureRmIntuneiOSMAMPolicyGroup -Name $p.Name -GroupName $groups[0].Id
 </dev:code>
 			<dev:remarks>
 				<maml:para>After logging-in as a valid Intune Account, when this command is executed, this will add (link) the specified group to the iOS Policy.
@@ -1170,7 +1014,7 @@ $apps;</dev:code>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code># Create a new Android Policy
-$p = New-AzureRmIntuneAndroidMAMPolicy -FriendlyName AndroidTestPolicy -Force
+$p = New-AzureRmIntuneAndroidMAMPolicy -FriendlyName AndroidTestPolicy
 
 # Now get it
 $policies = Get-AzureRmIntuneAndroidMAMPolicy
@@ -1197,7 +1041,7 @@ $policies </dev:code>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code># Create a new Android Policy
-$p = New-AzureRmIntuneAndroidMAMPolicy -FriendlyName AndroidTestPolicy -Force
+$p = New-AzureRmIntuneAndroidMAMPolicy -FriendlyName AndroidTestPolicy
 
 # Now get it
 $policy = Get-AzureRmIntuneAndroidMAMPolicy -Name $p.Name
@@ -1348,12 +1192,12 @@ $policy</dev:code>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code># First create the policy
-$p = New-AzureRmIntuneAndroidMAMPolicy -FriendlyName AndroidTestPolicy -Force
+$p = New-AzureRmIntuneAndroidMAMPolicy -FriendlyName AndroidTestPolicy
 # Get the list of apps
 $apps = Get-AzureRmIntuneAndroidMAMApp;
 
 # link the app to the Android Policy
-Add-AzureRmIntuneAndroidMAMPolicyApp -Name $p.name -AppName $apps[0].Name -Force;
+Add-AzureRmIntuneAndroidMAMPolicyApp -Name $p.name -AppName $apps[0].Name;
 
 # Get the linked apps
 $apps = Get-AzureRmIntuneAndroidMAMPolicyApp -Name $p.Name 
@@ -1504,13 +1348,13 @@ $apps;
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code># First create the policy
-$p = New-AzureRmIntuneAndroidMAMPolicy -FriendlyName AndroidTestPolicy -Force
+$p = New-AzureRmIntuneAndroidMAMPolicy -FriendlyName AndroidTestPolicy
 
 # Get the list of AAD groups
 $groups = @(Get-AzureRmADGroup);
 
 # Now add the Group to the Android policy.
-Add-AzureRmIntuneAndroidMAMPolicyGroup -Name $p.Name -GroupName $groups[0].Id -Force
+Add-AzureRmIntuneAndroidMAMPolicyGroup -Name $p.Name -GroupName $groups[0].Id
 
 # Get the linked groups
 $groups = Get-AzureRmIntuneAndroidMAMPolicyGroup -Name $p.Name 
@@ -1788,7 +1632,7 @@ $apps;</dev:code>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code># Create a new iOS Policy
-$p = New-AzureRmIntuneiOSMAMPolicy -FriendlyName iOSTestPolicy -Force
+$p = New-AzureRmIntuneiOSMAMPolicy -FriendlyName iOSTestPolicy
 
 # Now get it
 $policies = Get-AzureRmIntuneiOSMAMPolicy
@@ -1815,7 +1659,7 @@ $policies </dev:code>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code># Create a new iOS Policy
-$p = New-AzureRmIntuneiOSMAMPolicy -FriendlyName iOSTestPolicy -Force
+$p = New-AzureRmIntuneiOSMAMPolicy -FriendlyName iOSTestPolicy
 
 # Now get it
 $policy = Get-AzureRmIntuneiOSMAMPolicy -Name $p.Name
@@ -1966,13 +1810,13 @@ $policy</dev:code>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code># First create the policy
-$p = New-AzureRmIntuneiOSMAMPolicy -FriendlyName iOSTestPolicy -Force
+$p = New-AzureRmIntuneiOSMAMPolicy -FriendlyName iOSTestPolicy
 
 # Get the list of apps
 $apps = Get-AzureRmIntuneiOSMAMApp;
 
 # link the app to the iOS Policy
-Add-AzureRmIntuneiOSMAMPolicyApp -Name $p.name -AppName $apps[0].Name -Force;
+Add-AzureRmIntuneiOSMAMPolicyApp -Name $p.name -AppName $apps[0].Name;
 
 # Get the linked apps
 $apps = Get-AzureRmIntuneiOSMAMPolicyApp -Name $p.Name 
@@ -2124,13 +1968,13 @@ $apps;
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code># First create the policy
-$p = New-AzureRmIntuneiOSMAMPolicy -FriendlyName iOSTestPolicy -Force
+$p = New-AzureRmIntuneiOSMAMPolicy -FriendlyName iOSTestPolicy
 
 # Get the list of AAD groups
 $groups = @(Get-AzureRmADGroup);
 
 # Now add the Group to the iOS policy.
-Add-AzureRmIntuneiOSMAMPolicyGroup -Name $p.Name -GroupName $groups[0].Id -Force
+Add-AzureRmIntuneiOSMAMPolicyGroup -Name $p.Name -GroupName $groups[0].Id
 
 # Get the linked groups
 $groups = Get-AzureRmIntuneiOSMAMPolicyGroup -Name $p.Name 
@@ -2203,14 +2047,7 @@ $groups
 					<maml:para />
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Confirm</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
+			</command:parameter>		
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -2261,19 +2098,7 @@ $groups
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Confirm</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
+		</command:parameter>	
 	</command:parameters>
 	<command:inputTypes>
 		<command:inputType>
@@ -2406,14 +2231,7 @@ Location     :</maml:para>
 					<maml:para />
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Confirm</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
+			</command:parameter>		
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -2443,18 +2261,6 @@ Location     :</maml:para>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>WhatIf</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Confirm</maml:name>
 			<maml:description>
 				<maml:para />
 			</maml:description>
@@ -2755,14 +2561,7 @@ Get-AzureRmIntuneMAMUserDevice -Name $users[0].Id -DeviceName $devices[0].Name
 					<maml:para />
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Confirm</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
+			</command:parameter>	
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -2813,19 +2612,7 @@ Get-AzureRmIntuneMAMUserDevice -Name $users[0].Id -DeviceName $devices[0].Name
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Confirm</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
+		</command:parameter>	
 	</command:parameters>
 	<command:inputTypes>
 		<command:inputType>
@@ -2946,14 +2733,7 @@ Get-AzureRmIntuneMAMUserFlaggedEnrolledApp -Name $users[0].Id
 					<maml:para />
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Confirm</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
+			</command:parameter>		
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -2992,19 +2772,7 @@ Get-AzureRmIntuneMAMUserFlaggedEnrolledApp -Name $users[0].Id
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Confirm</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
+		</command:parameter>	
 	</command:parameters>
 	<command:inputTypes>
 		<command:inputType>
@@ -3117,7 +2885,7 @@ Get-AzureRmIntuneMAMUserFlaggedEnrolledApp -Name $users[0].Id
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Force</maml:name>
 				<maml:description>
 					<maml:para>Don&#39;t ask for confirmation.</maml:para>
@@ -3179,7 +2947,7 @@ Get-AzureRmIntuneMAMUserFlaggedEnrolledApp -Name $users[0].Id
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Force</maml:name>
 			<maml:description>
 				<maml:para>Don&#39;t ask for confirmation.</maml:para>
@@ -3324,7 +3092,7 @@ Wipe is a long running operation, and the output of the invoke call will show th
 	<maml:description>
 		<maml:para>A cmdlet that creates a new Android Intune MAM policy Azure resource.</maml:para>
 		<maml:para>SYNTAX
-    New-AzureRmIntuneAndroidMAMPolicy -FriendlyName &lt;String&gt; [-Description &lt;String&gt;] [-AppSharingFromLevel &lt;AppSharingType&gt;] [-AppSharingToLevel &lt;AppSharingType&gt;] [-Authentication &lt;ChoiceType&gt;] [-ClipboardSharingLevel &lt;ClipboardSharingLevelType&gt;] [-DataBackup &lt;FilterType&gt;] [-FileSharingSaveAs &lt;FilterType&gt;] [-Pin &lt;ChoiceType&gt;] [-PinNumRetry &lt;[Int32]&gt;] [-DeviceCompliance &lt;OptionType&gt;] [-ManagedBrowser &lt;ChoiceType&gt;] [-AccessRecheckOfflineTimeout &lt;[Int32]&gt;] [-AccessRecheckOnlineTimeout &lt;[Int32]&gt;] [-OfflineWipeTimeout &lt;[Int32]&gt;] [-FileEncryption &lt;ChoiceType&gt;] [-ScreenCapture &lt;FilterType&gt;] [-Force [&lt;SwitchParameter&gt;]] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf [&lt;SwitchParameter&gt;]] [-Confirm [&lt;SwitchParameter&gt;]] [&lt;CommonParameters&gt;]</maml:para>
+    New-AzureRmIntuneAndroidMAMPolicy -FriendlyName &lt;String&gt; [-Description &lt;String&gt;] [-AppSharingFromLevel &lt;AppSharingType&gt;] [-AppSharingToLevel &lt;AppSharingType&gt;] [-Authentication &lt;ChoiceType&gt;] [-ClipboardSharingLevel &lt;ClipboardSharingLevelType&gt;] [-DataBackup &lt;FilterType&gt;] [-FileSharingSaveAs &lt;FilterType&gt;] [-Pin &lt;ChoiceType&gt;] [-PinNumRetry &lt;[Int32]&gt;] [-DeviceCompliance &lt;OptionType&gt;] [-ManagedBrowser &lt;ChoiceType&gt;] [-AccessRecheckOfflineTimeout &lt;[Int32]&gt;] [-AccessRecheckOnlineTimeout &lt;[Int32]&gt;] [-OfflineWipeTimeout &lt;[Int32]&gt;] [-FileEncryption &lt;ChoiceType&gt;] [-ScreenCapture &lt;FilterType&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf [&lt;SwitchParameter&gt;]] [&lt;CommonParameters&gt;]</maml:para>
 		<maml:para>&lt;CommonParameters&gt;
     This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 </maml:para>
@@ -3451,14 +3219,6 @@ Wipe is a long running operation, and the output of the invoke call will show th
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">FilterType</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>If set to true, don&#39;t ask for confirmation.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
 				<maml:description>
@@ -3479,14 +3239,7 @@ Wipe is a long running operation, and the output of the invoke call will show th
 					<maml:para />
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Confirm</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
+			</command:parameter>	
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -3693,19 +3446,7 @@ Wipe is a long running operation, and the output of the invoke call will show th
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para>If set to true, don&#39;t ask for confirmation.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
+		</command:parameter>	
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>InformationAction</maml:name>
 			<maml:description>
@@ -3741,19 +3482,7 @@ Wipe is a long running operation, and the output of the invoke call will show th
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Confirm</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
+		</command:parameter>	
 	</command:parameters>
 	<command:inputTypes>
 		<command:inputType>
@@ -3793,7 +3522,7 @@ Wipe is a long running operation, and the output of the invoke call will show th
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>$p = New-AzureRmIntuneAndroidMAMPolicy -FriendlyName AndroidTestPolicy -Force
+			<dev:code>$p = New-AzureRmIntuneAndroidMAMPolicy -FriendlyName AndroidTestPolicy
 
 # Display the newly created policy
 $p</dev:code>
@@ -3833,7 +3562,7 @@ When an optional parameter is not passed, the default value is used during the c
 	<maml:description>
 		<maml:para>A cmdlet that creates a new iOS Intune MAM policy azure resource.</maml:para>
 		<maml:para>SYNTAX
-    New-AzureRmIntuneiOSMAMPolicy -FriendlyName &lt;String&gt; [-Description &lt;String&gt;] [-AppSharingFromLevel &lt;AppSharingType&gt;] [-AppSharingToLevel &lt;AppSharingType&gt;] [-Authentication &lt;ChoiceType&gt;] [-ClipboardSharingLevel &lt;ClipboardSharingLevelType&gt;] [-DataBackup &lt;FilterType&gt;] [-FileSharingSaveAs &lt;FilterType&gt;] [-Pin &lt;ChoiceType&gt;] [-PinNumRetry &lt;[Int32]&gt;] [-DeviceCompliance &lt;OptionType&gt;] [-ManagedBrowser &lt;ChoiceType&gt;] [-AccessRecheckOfflineTimeout &lt;[Int32]&gt;] [-AccessRecheckOnlineTimeout &lt;[Int32]&gt;] [-OfflineWipeTimeout &lt;[Int32]&gt;] [-FileEncryptionLevel &lt;DeviceLockType&gt;] [-TouchId &lt;OptionType&gt;] [-Force [&lt;SwitchParameter&gt;]] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf [&lt;SwitchParameter&gt;]] [-Confirm [&lt;SwitchParameter&gt;]] [&lt;CommonParameters&gt;]</maml:para>
+    New-AzureRmIntuneiOSMAMPolicy -FriendlyName &lt;String&gt; [-Description &lt;String&gt;] [-AppSharingFromLevel &lt;AppSharingType&gt;] [-AppSharingToLevel &lt;AppSharingType&gt;] [-Authentication &lt;ChoiceType&gt;] [-ClipboardSharingLevel &lt;ClipboardSharingLevelType&gt;] [-DataBackup &lt;FilterType&gt;] [-FileSharingSaveAs &lt;FilterType&gt;] [-Pin &lt;ChoiceType&gt;] [-PinNumRetry &lt;[Int32]&gt;] [-DeviceCompliance &lt;OptionType&gt;] [-ManagedBrowser &lt;ChoiceType&gt;] [-AccessRecheckOfflineTimeout &lt;[Int32]&gt;] [-AccessRecheckOnlineTimeout &lt;[Int32]&gt;] [-OfflineWipeTimeout &lt;[Int32]&gt;] [-FileEncryptionLevel &lt;DeviceLockType&gt;] [-TouchId &lt;OptionType&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf [&lt;SwitchParameter&gt;]] [&lt;CommonParameters&gt;]</maml:para>
 		<maml:para>
 &lt;CommonParameters&gt;
     This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
@@ -3961,14 +3690,6 @@ When an optional parameter is not passed, the default value is used during the c
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">OptionType</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>If set to true, don&#39;t ask for confirmation.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
 				<maml:description>
@@ -3989,14 +3710,7 @@ When an optional parameter is not passed, the default value is used during the c
 					<maml:para />
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Confirm</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
+			</command:parameter>	
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -4203,19 +3917,7 @@ When an optional parameter is not passed, the default value is used during the c
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para>If set to true, don&#39;t ask for confirmation.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
+		</command:parameter>	
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>InformationAction</maml:name>
 			<maml:description>
@@ -4251,19 +3953,7 @@ When an optional parameter is not passed, the default value is used during the c
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Confirm</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
+		</command:parameter>	
 	</command:parameters>
 	<command:inputTypes>
 		<command:inputType>
@@ -4303,7 +3993,7 @@ When an optional parameter is not passed, the default value is used during the c
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>$p = New-AzureRmIntuneiOSMAMPolicy -FriendlyName iOSTestPolicy -Force
+			<dev:code>$p = New-AzureRmIntuneiOSMAMPolicy -FriendlyName iOSTestPolicy
 
 # Display the newly created policy
 $p</dev:code>
@@ -4736,11 +4426,11 @@ Remove-AzureRmIntuneAndroidMAMPolicy -Name $p.Name -Force
 			<dev:code></dev:code>
 			<dev:remarks>
 				<maml:para># First create the policy
-$p = New-AzureRmIntuneAndroidMAMPolicy -FriendlyName AndroidTestPolicy -Force</maml:para>
+$p = New-AzureRmIntuneAndroidMAMPolicy -FriendlyName AndroidTestPolicy </maml:para>
 				<maml:para># Get the list of apps
 $apps = Get-AzureRmIntuneAndroidMAMApp;</maml:para>
 				<maml:para># Link the app to the Android Policy
-Add-AzureRmIntuneAndroidMAMPolicyApp -Name $p.name -AppName $apps[0].Name -Force;</maml:para>
+Add-AzureRmIntuneAndroidMAMPolicyApp -Name $p.name -AppName $apps[0].Name;</maml:para>
 				<maml:para># Now remove the link.
 Remove-AzureRmIntuneAndroidMAMPolicyApp -Name $p.name -AppName $apps[0].Name -Force;
 </maml:para>
@@ -4962,13 +4652,13 @@ Remove-AzureRmIntuneAndroidMAMPolicyApp -Name $p.name -AppName $apps[0].Name -Fo
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code># First create the policy
-$p = New-AzureRmIntuneAndroidMAMPolicy -FriendlyName AndroidTestPolicy -Force
+$p = New-AzureRmIntuneAndroidMAMPolicy -FriendlyName AndroidTestPolicy
 
 # Get the list of AAD groups
 $groups = @(Get-AzureRmADGroup);
 
 # Add the Group to the Android policy.
-Add-AzureRmIntuneAndroidMAMPolicyGroup -Name $p.Name -GroupName $groups[0].Id -Force
+Add-AzureRmIntuneAndroidMAMPolicyGroup -Name $p.Name -GroupName $groups[0].Id
 
 # Now remove the link.
 Remove-AzureRmIntuneAndroidMAMPolicyGroup -Name $p.name -GroupName $groups[0].Name -Force;
@@ -5399,13 +5089,13 @@ Remove-AzureRmIntuneiOSMAMPolicy -Name $p.Name -Force
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code># First create the policy
-$p = New-AzureRmIntuneiOSMAMPolicy -FriendlyName iOSTestPolicy -Force
+$p = New-AzureRmIntuneiOSMAMPolicy -FriendlyName iOSTestPolicy
 
 # Get the list of apps
 $apps = Get-AzureRmIntuneiOSMAMApp;
 
 # Link the app to the iOS Policy
-Add-AzureRmIntuneiOSMAMPolicyApp -Name $p.name -AppName $apps[0].Name -Force;
+Add-AzureRmIntuneiOSMAMPolicyApp -Name $p.name -AppName $apps[0].Name;
 
 # Now remove the link.
 Remove-AzureRmIntuneiOSMAMPolicyApp -Name $p.name -AppName $apps[0].Name -Force;
@@ -5628,13 +5318,13 @@ Remove-AzureRmIntuneiOSMAMPolicyApp -Name $p.name -AppName $apps[0].Name -Force;
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code># First create the policy
-$p = New-AzureRmIntuneiOSMAMPolicy -FriendlyName iOSTestPolicy -Force
+$p = New-AzureRmIntuneiOSMAMPolicy -FriendlyName iOSTestPolicy 
 
 # Get the list of AAD groups
 $groups = @(Get-AzureRmADGroup);
 
 # Add the Group to the iOS policy.
-Add-AzureRmIntuneiOSMAMPolicyGroup -Name $p.Name -GroupName $groups[0].Id -Force
+Add-AzureRmIntuneiOSMAMPolicyGroup -Name $p.Name -GroupName $groups[0].Id
 
 # Now remove the link.
 Remove-AzureRmIntuneiOSMAMPolicyGroup -Name $p.name -GroupName $groups[0].Name -Force;
@@ -6163,7 +5853,7 @@ Remove-AzureRmIntuneiOSMAMPolicyGroup -Name $p.name -GroupName $groups[0].Name -
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code># First create the policy
-$p = New-AzureRmIntuneAndroidMAMPolicy -FriendlyName AndroidTestPolicy -Force
+$p = New-AzureRmIntuneAndroidMAMPolicy -FriendlyName AndroidTestPolicy
 
 # Now patch it.
 $p = Set-AzureRmIntuneAndroidMAMPolicy -Name $p.Name -AppSharingToLevel allApps -FriendlyName &quot;New Android Policy Patched&quot; -Force
@@ -6694,7 +6384,7 @@ $p;</dev:code>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code># First create the policy
-$p = New-AzureRmIntuneiOSMAMPolicy -FriendlyName iOSTestPolicy -Force
+$p = New-AzureRmIntuneiOSMAMPolicy -FriendlyName iOSTestPolicy
 
 # Now patch it.
 $p = Set-AzureRmIntuneiOSMAMPolicy -Name $p.Name -AppSharingToLevel allApps -FriendlyName &quot;New iOS Policy Patched&quot; -Force

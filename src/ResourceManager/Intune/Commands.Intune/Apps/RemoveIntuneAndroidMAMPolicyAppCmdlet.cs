@@ -18,11 +18,12 @@ namespace Microsoft.Azure.Commands.Intune
     using Microsoft.Azure.Commands.Intune.Properties;
     using System.Globalization;
     using System.Management.Automation;
+    using System.Net;
 
     /// <summary>
     /// A cmdlet to remove a linked app from Android Intune MAM policy Azure resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmIntuneAndroidMAMPolicyApp", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmIntuneAndroidMAMPolicyApp", SupportsShouldProcess = true)]
     public sealed class RemoveIntuneAndroidMAMPolicyAppCmdlet : IntuneBaseCmdlet
     {
         /// <summary>
@@ -39,7 +40,7 @@ namespace Microsoft.Azure.Commands.Intune
         [ValidateNotNullOrEmpty]
         public string AppName { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Don't ask for confirmation.")]
+        [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
         /// <summary>
@@ -67,13 +68,9 @@ namespace Microsoft.Azure.Commands.Intune
                 () =>
                 {
                     var result = IntuneClient.Android.DeleteAppForMAMPolicyWithHttpMessagesAsync(this.AsuHostName, this.Name, this.AppName).GetAwaiter().GetResult();
-                    if (result.Response.StatusCode == System.Net.HttpStatusCode.OK)
+                    if (result.Response.StatusCode == HttpStatusCode.NoContent)
                     {
-                        this.WriteObject(Resources.OneItemDeleted);
-                    }
-                    else
-                    {
-                        this.WriteObject(Resources.NoItemsDeleted);
+                        this.WriteWarning(Resources.NoItemsDeleted);
                     }
                 });
         }

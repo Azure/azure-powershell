@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Intune
     /// <summary>
     /// Cmdlet to get apps for iOS platform.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmIntuneiOSMAMApp"), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmIntuneiOSMAMApp"), OutputType(typeof(List<Application>))]
     public sealed class GetIntuneiOSMAMAppCmdlet : IntuneBaseCmdlet
     {
         /// <summary>

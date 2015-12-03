@@ -89,8 +89,7 @@ namespace Microsoft.Azure.Commands.Intune.Test
             commandRuntimeMock.Setup(m => m.ShouldProcess(It.IsAny<string>(), It.IsAny<string>()))
                 .Returns(() => true);
               
-            // Set the cmdline args and Execute the cmdlet
-            this.cmdlet.Force = true;
+            // Set the cmdline args and Execute the cmdlet            
             this.cmdlet.FriendlyName = expectedMAMPolicy.FriendlyName;
 
             this.cmdlet.ExecuteCmdlet();
@@ -136,8 +135,7 @@ namespace Microsoft.Azure.Commands.Intune.Test
             commandRuntimeMock.Setup(m => m.ShouldProcess(It.IsAny<string>(), It.IsAny<string>()))
                 .Returns(() => true);
 
-            // Set cmdline args and Execute the cmdlet
-            this.cmdlet.Force = true;
+            // Set cmdline args and Execute the cmdlet            
             this.cmdlet.FriendlyName = expectedMAMPolicy.FriendlyName;     
             this.cmdlet.AccessRecheckOfflineTimeout = expectedMAMPolicy.AccessRecheckOfflineTimeout.Value.Minutes;
             this.cmdlet.AccessRecheckOnlineTimeout = expectedMAMPolicy.AccessRecheckOnlineTimeout.Value.Minutes;
@@ -179,8 +177,7 @@ namespace Microsoft.Azure.Commands.Intune.Test
                 .Returns(() => true);
 
             // Set the cmdline args and Execute the cmdlet
-            this.cmdlet.FriendlyName = "expectedPolicyFriendlyName";
-            this.cmdlet.Force = true;
+            this.cmdlet.FriendlyName = "expectedPolicyFriendlyName";            
             this.cmdlet.PinNumRetry = -1;
 
             try

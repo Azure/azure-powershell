@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Intune
     /// <summary>
     /// Cmdlet to get existing groups associated to iOS Intune MAM policy Azure resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmIntuneiOSMAMPolicyGroup"), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmIntuneiOSMAMPolicyGroup"), OutputType(typeof(List<GroupItem>))]
     public sealed class GetIntuneiOSMAMPolicyGroupCmdlet : IntuneBaseCmdlet
     {
         /// <summary>
