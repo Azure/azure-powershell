@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Commands.Intune
         /// <summary>
         /// The screen capture of the policy
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates whether Screen capture is allowed for the application.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates whether screen capture is allowed for the application.")]
         [ValidateNotNullOrEmpty]
         public FilterType? ScreenCapture { get; set; }
 

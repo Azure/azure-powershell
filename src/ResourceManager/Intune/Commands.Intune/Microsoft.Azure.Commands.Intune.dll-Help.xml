@@ -3447,7 +3447,7 @@ Wipe is a long running operation, and the output of the invoke call will show th
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>ScreenCapture</maml:name>
 				<maml:description>
-					<maml:para>Indicates whether Screen capture is allowed for the application.</maml:para>
+					<maml:para>Indicates whether screen capture is allowed for the application.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">FilterType</command:parameterValue>
 			</command:parameter>
@@ -3685,7 +3685,7 @@ Wipe is a long running operation, and the output of the invoke call will show th
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>ScreenCapture</maml:name>
 			<maml:description>
-				<maml:para>Indicates whether Screen capture is allowed for the application.</maml:para>
+				<maml:para>Indicates whether screen capture is allowed for the application.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">FilterType</command:parameterValue>
 			<dev:type>
@@ -5804,7 +5804,7 @@ Remove-AzureRmIntuneiOSMAMPolicyGroup -Name $p.name -GroupName $groups[0].Name -
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>ScreenCapture</maml:name>
 				<maml:description>
-					<maml:para>Indicates whether Screen capture is allowed for the application.</maml:para>
+					<maml:para>Indicates whether screen capture is allowed for the application.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">[FilterType]</command:parameterValue>
 			</command:parameter>
@@ -6054,7 +6054,7 @@ Remove-AzureRmIntuneiOSMAMPolicyGroup -Name $p.name -GroupName $groups[0].Name -
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>ScreenCapture</maml:name>
 			<maml:description>
-				<maml:para>Indicates whether Screen capture is allowed for the application.</maml:para>
+				<maml:para>Indicates whether screen capture is allowed for the application.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">[FilterType]</command:parameterValue>
 			<dev:type>
