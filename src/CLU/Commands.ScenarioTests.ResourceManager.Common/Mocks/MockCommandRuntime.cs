@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Common.Test.Mocks
 {
     public class MockCommandRuntime : ICommandRuntime
     {
-        public class PSHostConcrete : System.Management.Automation.Host.PSHost
+        /*public class PSHostConcrete : System.Management.Automation.Host.PSHost
         {
             public override CultureInfo CurrentCulture
             {
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.Common.Test.Mocks
                     throw new NotImplementedException();
                 }
             }
-        }
+        }*/
 
         public List<ErrorRecord> ErrorStream = new List<ErrorRecord>();
         public List<object> OutputPipeline = new List<object>();
