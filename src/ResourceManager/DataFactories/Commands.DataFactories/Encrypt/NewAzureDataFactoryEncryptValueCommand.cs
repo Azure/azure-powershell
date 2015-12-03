@@ -52,7 +52,8 @@ namespace Microsoft.Azure.Commands.DataFactories
             HelpMessage = "The linked service type.")]
         [ValidateSet("OnPremisesSqlLinkedService", "OnPremisesFileSystemLinkedService", "OnPremisesOracleLinkedService",
             "OnPremisesOdbcLinkedService", "OnPremisesPostgreSqlLinkedService", "OnPremisesTeradataLinkedService", 
-            "OnPremisesMySQLLinkedService", "OnPremisesDB2LinkedService", "OnPremisesSybaseLinkedService", 
+            "OnPremisesMySQLLinkedService", "OnPremisesDB2LinkedService", "OnPremisesSybaseLinkedService",
+            "HdfsLinkedService",
             IgnoreCase = true)]
         public string Type { get; set; }
 
