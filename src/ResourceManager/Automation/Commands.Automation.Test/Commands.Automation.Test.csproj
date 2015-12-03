@@ -138,6 +138,7 @@
     <Compile Include="UnitTests\GetAzureAutomationCertificateTest.cs" />
     <Compile Include="UnitTests\GetAzureAutomationConnectionTest.cs" />
     <Compile Include="UnitTests\GetAzureAutomationCredentialTest.cs" />
+    <Compile Include="UnitTests\GetAzureAutomationJobOutputRecord.cs" />
     <Compile Include="UnitTests\GetAzureAutomationJobTest.cs" />
     <Compile Include="UnitTests\GetAzureAutomationRunbookTest.cs" />
     <Compile Include="UnitTests\GetAzureAutomationScheduledRunbookTest.cs" />
