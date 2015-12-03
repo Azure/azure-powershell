@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// <summary>
         /// A mock of the client
         /// </summary>
-        private readonly Mock<IProviderOperations> providerOperationsMock;
+        private readonly Mock<IProvidersOperations> providerOperationsMock;
 
         /// <summary>
         /// A mock of the command runtime
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// </summary>
         public RegisterAzureProviderCmdletTests()
         {
-            this.providerOperationsMock = new Mock<IProviderOperations>();
+            this.providerOperationsMock = new Mock<IProvidersOperations>();
             var resourceManagementClient = new Mock<IResourceManagementClient>();
 
             resourceManagementClient
@@ -68,12 +68,13 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
             this.cmdlet = new RegisterAzureProviderCmdlet()
             {
-                CommandRuntime = commandRuntimeMock.Object,
+                //CommandRuntime = commandRuntimeMock.Object,
                 ResourcesClient = new ResourcesClient
                 {
                     ResourceManagementClient = resourceManagementClient.Object
                 }
             };
+            System.Reflection.TypeExtensions.GetProperty(cmdlet.GetType(), "CommandRuntime").SetValue(cmdlet, commandRuntimeMock.Object);
         }
 
         /// <summary>
@@ -87,23 +88,19 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
             var provider = new Provider
             {
-                Namespace = ProviderName,
+                NamespaceProperty = ProviderName,
                 RegistrationState = ResourcesClient.RegisteredStateName,
                 ResourceTypes = new[]
                 {
                     new ProviderResourceType
                     {
                         Locations = new[] {"West US", "East US"},
-                        Name = "TestResource2"
+                        //Name = "TestResource2"
                     }
                 }
             };
 
-            var registrationResult = new ProviderRegistionResult
-            {
-                Provider = provider,
-                RequestId = "requestId",
-            };
+            var registrationResult = provider;
 
             this.providerOperationsMock
                 .Setup(client => client.RegisterAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
@@ -113,12 +110,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
             this.providerOperationsMock
               .Setup(f => f.GetAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
-              .Returns(() => Task.FromResult(new ProviderGetResult
-              {
-                  Provider = provider,
-                  RequestId = "requestId",
-                  StatusCode = HttpStatusCode.OK,
-              }));
+              .Returns(() => Task.FromResult(provider));
 
             this.cmdlet.Force = true;
 
@@ -134,15 +126,15 @@ namespace Microsoft.Azure.Commands.Resources.Test
                     Assert.Equal(ProviderName, providerResult.ProviderNamespace, StringComparer.OrdinalIgnoreCase);
                 });
 
-            registrationResult.StatusCode = HttpStatusCode.OK;
+            //registrationResult.StatusCode = HttpStatusCode.OK;
 
             this.cmdlet.ExecuteCmdlet();
 
             this.VerifyCallPatternAndReset(succeeded: true);
 
             // 2. register fails w/ error
-            registrationResult.StatusCode = HttpStatusCode.NotFound;
-            registrationResult.Provider = null;
+            //registrationResult.StatusCode = HttpStatusCode.NotFound;
+            registrationResult = null;
 
             try
             {

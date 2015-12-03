@@ -21,25 +21,36 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
     public class RoleDefinitionTests : RMTestBase
     {
+        private const string CallingClass = "Microsoft.Azure.Commands.Resources.Test.ScenarioTests.RoleDefinitionTests";
+
         [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RoleDefinitionCreateTests()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RoleDefinitionCreateTests");
+            ResourcesController.NewInstance.RunPsTest(
+                CallingClass,
+                "RoleDefinitionCreateTests",
+                "Test-RoleDefinitionCreateTests");
         }
 
         [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RdNegativeScenarios()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RdNegativeScenarios");
+            ResourcesController.NewInstance.RunPsTest(
+                CallingClass,
+                "RdNegativeScenarios",
+                "Test-RdNegativeScenarios");
         }
 
         [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RdPositiveScenarios()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RDPositiveScenarios");
+            ResourcesController.NewInstance.RunPsTest(
+                CallingClass,
+                "RdPositiveScenarios",
+                "Test-RDPositiveScenarios");
         }
     }
 }

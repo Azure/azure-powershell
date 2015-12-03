@@ -21,18 +21,26 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
     public class PolicyTests : RMTestBase
     {
+        private const string CallingClass = "Microsoft.Azure.Commands.Resources.Test.ScenarioTests.PolicyTests";
+
         [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPolicyDefinitionCRUD()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-PolicyDefinitionCRUD");
+            ResourcesController.NewInstance.RunPsTest(
+                CallingClass,
+                "TestPolicyDefinitionCRUD",
+                "Test-PolicyDefinitionCRUD");
         }
 
         [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPolicyAssignmentCRUD()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-PolicyAssignmentCRUD");
+            ResourcesController.NewInstance.RunPsTest(
+                CallingClass,
+                "TestPolicyAssignmentCRUD",
+                "Test-PolicyAssignmentCRUD");
         }
     }
 }

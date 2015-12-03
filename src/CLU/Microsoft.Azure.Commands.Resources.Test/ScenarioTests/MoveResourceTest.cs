@@ -23,7 +23,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         //[Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMoveAzureResource()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-MoveAzureResource");
+            ResourcesController.NewInstance.RunPsTest(
+                "Microsoft.Azure.Commands.Resources.Test.ScenarioTests.MoveResourceTest",
+                "TestMoveAzureResource",
+                "Test-MoveAzureResource");
         }
     }
 }

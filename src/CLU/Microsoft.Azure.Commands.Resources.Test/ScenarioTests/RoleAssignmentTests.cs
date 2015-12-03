@@ -15,11 +15,13 @@
 
 using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.Commands.Test.Utilities.Common;
+using Microsoft.Azure.Commands.Utilities.Common;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Graph.RBAC.Models;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using System;
 using System.Linq;
 using Xunit;
@@ -28,60 +30,86 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
     public class RoleAssignmentTests : RMTestBase
     {
+        private const string CallingClass = "Microsoft.Azure.Commands.Resources.Test.ScenarioTests.RoleAssignmentTests";
+
         [Fact(Skip = "http://vstfrd:8080/Azure/RD/_workitems/edit/4616537")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaAuthorizationChangeLog()
         {
-           ResourcesController.NewInstance.RunPsTest("Test-RaAuthorizationChangeLog");
+           ResourcesController.NewInstance.RunPsTest(
+               CallingClass,
+               "RaAuthorizationChangeLog",
+               "Test-RaAuthorizationChangeLog");
         }
 
         [Fact(Skip = "tenantID NullException")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaClassicAdmins()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RaClassicAdmins");
+            ResourcesController.NewInstance.RunPsTest(
+                CallingClass,
+                "RaClassicAdmins",
+                "Test-RaClassicAdmins");
         }
 
         [Fact(Skip = "tenantID NullException")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaNegativeScenarios()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RaNegativeScenarios");
+            ResourcesController.NewInstance.RunPsTest(
+                CallingClass,
+                "RaNegativeScenarios",
+                "Test-RaNegativeScenarios");
         }
 
         [Fact(Skip = "tenantID NullException")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByScope()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RaByScope");
+            ResourcesController.NewInstance.RunPsTest(
+                CallingClass,
+                "RaByScope",
+                "Test-RaByScope");
         }
 
         [Fact(Skip = "tenantID NullException")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByResourceGroup()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RaByResourceGroup");
+            ResourcesController.NewInstance.RunPsTest(
+                CallingClass,
+                "RaByResourceGroup",
+                "Test-RaByResourceGroup");
         }
 
         [Fact(Skip = "tenantID NullException")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByResource()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RaByResource");
+            ResourcesController.NewInstance.RunPsTest(
+                CallingClass,
+                "RaByResource",
+                "Test-RaByResource");
         }
 
         [Fact(Skip = "tenantID NullException")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByServicePrincipal()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RaByServicePrincipal");
+            ResourcesController.NewInstance.RunPsTest(
+                CallingClass,
+                "RaByServicePrincipal",
+                "Test-RaByServicePrincipal");
         }
 
         [Fact(Skip = "tenantID NullException")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByUpn()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RaByUpn");
+            ResourcesController.NewInstance.RunPsTest(
+                CallingClass,
+                "RaByUpn",
+                "Test-RaByUpn");
         }
 
         [Fact(Skip = "Need to re-record test")]
@@ -113,18 +141,17 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                         DisplayName = userName,
                         AccountEnabled = true,
                         MailNickname = userName + "test",
-                        PasswordProfileSettings = new UserCreateParameters.PasswordProfile
+                        PasswordProfile = new UserCreateParametersPasswordProfile()
                         {
                             ForceChangePasswordNextLogin = false,
                             Password = userPass
                         }
                     };
 
-                    newUser = controllerAdmin.GraphClient.User.Create(parameter).User;
+                    newUser = controllerAdmin.GraphClient.User.Create(parameter);
 
                     resourceGroup = controllerAdmin.ResourceManagementClient.ResourceGroups
-                                        .List(new ResourceGroupListParameters())
-                                        .ResourceGroups
+                                        .List(null, null)
                                         .First();
 
                     // Wait to allow newly created object changes to propagate
@@ -144,8 +171,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 null,
                 // cleanup 
                 null,
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName() + "_Setup");
+                CallingClass,
+                "RaUserPermissions" + "_Setup");
 
             // login as different user and run the test
             var controllerUser = ResourcesController.NewInstance;
@@ -166,14 +193,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 {
                     if (newUser != null)
                     {
-                        testFactory.CustomEnvValues[TestEnvironment.UserIdKey] = userName + "@" + controllerAdmin.UserDomain;
-                        testFactory.CustomEnvValues[TestEnvironment.AADPasswordKey] = userPass;
+                        TestEnvironmentFactory.CustomEnvValues[TestEnvironment.UserIdKey] = userName + "@" + controllerAdmin.UserDomain;
+                        TestEnvironmentFactory.CustomEnvValues[TestEnvironment.AADPasswordKey] = userPass;
                     }
                 },
                 // cleanup 
                 null,
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName() + "_Test");
+                CallingClass,
+                "RaUserPermissions" + "_Test");
 
             // remove created user
             controllerAdmin = ResourcesController.NewInstance;
@@ -189,10 +216,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     {
                         controllerAdmin.GraphClient.User.Delete(newUser.ObjectId);
                     }
-                    controllerAdmin.AuthorizationManagementClient.RoleAssignments.Delete(resourceGroup.Id, new Guid(roleAssignmentId));
+                    controllerAdmin.AuthorizationManagementClient.RoleAssignments.Delete(resourceGroup.Id, roleAssignmentId);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName() + "_Cleanup");
+                CallingClass,
+                "RaUserPermissions" + "_Cleanup");
         }
     }
 }

@@ -18,16 +18,23 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
     public class DeploymentTests
     {
+        private const string CallingClass = "Microsoft.Azure.Commands.Resources.Test.ScenarioTests.DeploymentTests";
         [Fact (Skip = "Need to implement storage client mock.")]
         public void TestValidateDeployment()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-ValidateDeployment");
+            ResourcesController.NewInstance.RunPsTest(
+                CallingClass,
+                "TestValidateDeployment",
+                "Test-ValidateDeployment");
         }
 
         [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         public void TestNewDeploymentFromTemplateFile()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-NewDeploymentFromTemplateFile");
+            ResourcesController.NewInstance.RunPsTest(
+                CallingClass,
+                "TestNewDeploymentFromTemplateFile",
+                "Test-NewDeploymentFromTemplateFile");
         }
     }
 }
