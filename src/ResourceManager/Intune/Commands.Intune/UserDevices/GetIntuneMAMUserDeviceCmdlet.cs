@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Intune
     using System.Globalization;
 
     /// <summary>
-    /// Cmdlet to get apps for User.
+    /// Cmdlet to get Devices for MAM User.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmIntuneMAMUserDevice"), OutputType(typeof(PSObject))]
     public sealed class GetIntuneUserDeviceCmdlet : IntuneBaseCmdlet
@@ -29,12 +29,12 @@ namespace Microsoft.Azure.Commands.Intune
         /// <summary>
         /// Gets the User Name
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The user name to fetch.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the user to fetch the devices for.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets the Devcie name
+        /// Gets the Device name
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The device name for the user to fetch.")]
         [ValidateNotNullOrEmpty]

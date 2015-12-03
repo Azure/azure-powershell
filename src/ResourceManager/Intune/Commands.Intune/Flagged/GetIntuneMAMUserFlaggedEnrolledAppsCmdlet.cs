@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Intune.Flagged
         /// <summary>
         /// Gets the flagged user name
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The flagged user name to fetch.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The flagged user name to fetch the enrolled Apps for.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -37,13 +37,13 @@ namespace Microsoft.Azure.Commands.Intune.Flagged
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            GetMAMFlaggedEnrolledApps();
+            GetMAMUserFlaggedEnrolledApps();
         }
 
         /// <summary>
         /// Get MAM flagged devices
         /// </summary>
-        private void GetMAMFlaggedEnrolledApps()
+        private void GetMAMUserFlaggedEnrolledApps()
         {
             MultiPageGetter<FlaggedEnrolledApp> mpg = new MultiPageGetter<FlaggedEnrolledApp>();
             List<FlaggedEnrolledApp> items = mpg.GetAllResources(

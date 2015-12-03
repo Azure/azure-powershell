@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Intune.Operations
     using System.Management.Automation;
 
     /// <summary>
-    /// Cmdlet to Invoke user device wipe operation
+    /// Cmdlet to Invoke user device wipe operation.
     /// </summary>
     [Cmdlet("Invoke", "AzureRmIntuneMAMUserDeviceWipe", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
     public sealed class InvokeMAMUserDeviceWipeCmdlet : IntuneBaseCmdlet

@@ -22,13 +22,13 @@ namespace Microsoft.Azure.Commands.Intune.Flagged
 
 
     /// <summary>
-    /// Cmdlet to get the MAM flagged users
+    /// Cmdlet to get the flagged MAM users.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmIntuneMAMFlaggedUser", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
     public sealed class GetIntuneMAMFlaggedUsersCmdlet : IntuneBaseCmdlet
     {
         /// <summary>
-        /// Gets the flagged user name
+        /// Gets the flagged user name.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The flagged user name to fetch.")]
         [ValidateNotNullOrEmpty]

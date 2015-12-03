@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.Intune.Flagged
     using System.Management.Automation;
 
     /// <summary>
-    /// Cmdlet to get the MAM summary status
+    /// Cmdlet to get the MAM summary status.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmIntuneMAMStatus", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
     public sealed class GetIntuneMAMStatusCmdlet : IntuneBaseCmdlet
