@@ -51,9 +51,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 "Indicates that the ACL should be replaced on the file with the specified ACL without prompting.")]
         public SwitchParameter Force { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            var currentAcl = DataLakeStoreFileSystemClient.GetAclStatus(Path.Path, Account);
+            var currentAcl = DataLakeStoreFileSystemClient.GetAclStatus(Path.TransformedPath, Account);
             string group;
             string user;
             if (Type == DataLakeStoreEnums.Owner.Group)
@@ -71,15 +71,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             {
                 ConfirmAction(
                     Force.IsPresent,
-                    string.Format(Resources.SettingDataLakeStoreItemOwner, Path.FullyQualifiedPath),
-                    string.Format(Resources.SetDataLakeStoreItemOwner, Path.FullyQualifiedPath),
-                    Path.FullyQualifiedPath,
+                    string.Format(Resources.SettingDataLakeStoreItemOwner, Path.OriginalPath),
+                    string.Format(Resources.SetDataLakeStoreItemOwner, Path.OriginalPath),
+                    Path.OriginalPath,
                     () =>
-                        DataLakeStoreFileSystemClient.SetOwner(Path.Path, Account, user, group));
+                        DataLakeStoreFileSystemClient.SetOwner(Path.TransformedPath, Account, user, group));
             }
             else
             {
-                DataLakeStoreFileSystemClient.SetOwner(Path.Path, Account, user, group);
+                DataLakeStoreFileSystemClient.SetOwner(Path.TransformedPath, Account, user, group);
             }
         }
     }

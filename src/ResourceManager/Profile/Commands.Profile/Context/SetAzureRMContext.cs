@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(ParameterSetName = ContextParameterSet, Mandatory = true, HelpMessage = "Context", ValueFromPipeline = true)]
         public PSAzureContext Context { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ContextParameterSet)
             {

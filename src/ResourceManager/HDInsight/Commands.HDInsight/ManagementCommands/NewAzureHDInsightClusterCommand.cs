@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 parameters.HeadNodeSize = value.HeadNodeSize;
                 parameters.ZookeeperNodeSize = value.ZookeeperNodeSize;
                 HiveMetastore = value.HiveMetastore;
-                OozieMetastore = value.HiveMetastore;
+                OozieMetastore = value.OozieMetastore;
                 CertificateFilePath = value.CertificateFilePath;
                 AadTenantId = value.AADTenantId;
                 ObjectId = value.ObjectId;
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             ScriptActions = new Dictionary<ClusterNodeType, List<AzureHDInsightScriptAction>>();
         }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             parameters.UserName = HttpCredential.UserName;
             parameters.Password = HttpCredential.Password.ConvertToString();
@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             if (HiveMetastore != null)
             {
                 var metastore = HiveMetastore;
-                parameters.OozieMetastore = new Metastore(metastore.SqlAzureServerName, metastore.DatabaseName, metastore.Credential.UserName, metastore.Credential.Password.ConvertToString());
+                parameters.HiveMetastore = new Metastore(metastore.SqlAzureServerName, metastore.DatabaseName, metastore.Credential.UserName, metastore.Credential.Password.ConvertToString());
             }
             if (CertificateFilePath != null && CertificatePassword != null)
             {

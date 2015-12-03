@@ -120,6 +120,9 @@
   <data name="AccessTokenRequiresAccount" xml:space="preserve">
     <value>AccountId must be provided to use an AccessToken credential.</value>
   </data>
+  <data name="AccountIdMismatch" xml:space="preserve">
+    <value>Account ID '{0}' for tenant '{1}' does not match home Account ID '{2}'</value>
+  </data>
   <data name="AccountIdRequired" xml:space="preserve">
     <value>Access token credentials must provide the AccountId parameter.</value>
   </data>
@@ -161,5 +164,11 @@
   </data>
   <data name="TypeNotAccessToken" xml:space="preserve">
     <value>To create an access token credential, you must provide an access token account.</value>
+  </data>
+  <data name="UnableToAqcuireToken" xml:space="preserve">
+    <value>Unabe to acquire token for tenant '{0}'</value>
+  </data>
+  <data name="UnknownEnvironment" xml:space="preserve">
+    <value>Unable to find environment with name '{0}'</value>
   </data>
 </root>

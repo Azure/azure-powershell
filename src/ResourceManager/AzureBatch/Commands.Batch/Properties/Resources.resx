@@ -345,6 +345,12 @@
   <data name="RemoveCertificateConfirm" xml:space="preserve">
     <value>Are you sure you want to remove the certificate with thumbprint {0}?</value>
   </data>
+  <data name="RemoveComputeNode" xml:space="preserve">
+    <value>Removing compute node(s) from pool...</value>
+  </data>
+  <data name="RemoveComputeNodeConfirm" xml:space="preserve">
+    <value>Are you sure you want to remove compute node(s) {0} from the pool?</value>
+  </data>
   <data name="RemoveComputeNodeUser" xml:space="preserve">
     <value>Removing user ...</value>
   </data>
@@ -362,6 +368,12 @@
   </data>
   <data name="RemoveJobScheduleConfirm" xml:space="preserve">
     <value>Are you sure you want to remove job schedule {0}?</value>
+  </data>
+  <data name="RemoveNodeFile" xml:space="preserve">
+    <value>Deleting node file...</value>
+  </data>
+  <data name="RemoveNodeFileConfirm" xml:space="preserve">
+    <value>Are you sure you want to delete node file {0}?</value>
   </data>
   <data name="RemovePool" xml:space="preserve">
     <value>Removing pool ...</value>

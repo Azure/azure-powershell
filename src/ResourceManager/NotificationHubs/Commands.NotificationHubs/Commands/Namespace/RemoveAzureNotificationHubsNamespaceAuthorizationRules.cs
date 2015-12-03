@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
         [ValidateNotNullOrEmpty]
         public string AuthorizationRule { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             // Create a new namespace authorizationRule
             var deleteAuthRule = Client.DeleteNamespaceAuthorizationRules(ResourceGroup, Namespace, AuthorizationRule);

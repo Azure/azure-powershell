@@ -69,7 +69,7 @@ function Test-TestStreamingAnalyticsE2E
 	Assert-AreEqual $expected $actual.CurrentCount
 
     # Start Job
-    $actual = Start-AzureRmStreamAnalyticsJob -Name $jobName -ResourceGroupName $resourceGroup	
+    $actual = Start-AzureRmStreamAnalyticsJob -Name $jobName -ResourceGroupName $resourceGroup -OutputStartMode CustomTime -OutputStartTime 2012-12-12T12:12:12Z
 	$expected = "True"
 	Assert-AreEqual $expected $actual
 
