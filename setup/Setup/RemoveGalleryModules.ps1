@@ -12,12 +12,30 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-try 
+function Remove-Modules
 {
-  Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Force -ErrorAction "SilentlyContinue"
+  param([string]$basePath)
+  $paths = "Azure", "AzureRM", "AzureRM.*", "Azure.Storage"
+  $paths | ForEach-Object {
+    $modulePath = ([System.IO.Path]::Combine($basePath, $_))
+    try {
+      Write-Host Removing $_
+      if (Test-Path $modulePath)
+      {
+        Remove-Item -Recurse $modulePath -Force
+      }
+    }
+    catch {}
+  }
 }
-catch
+
+if (Test-Path 'Env:\ProgramFiles(x86)')
 {
-  # do not fail if execution policy cannot be set for this scope
+   Remove-Modules ([System.IO.Path]::Combine(${env:ProgramFiles(x86)}, "WindowsPowerShell", "Modules"))
+}
+
+if (Test-Path Env:\ProgramFiles)
+{
+   Remove-Modules ([System.IO.Path]::Combine($env:ProgramFiles, "WindowsPowerShell", "Modules"))
 }
 

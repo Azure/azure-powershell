@@ -1,4 +1,4 @@
-# ----------------------------------------------------------------------------------
+﻿# ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,12 +12,11 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-try 
-{
-  Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Force -ErrorAction "SilentlyContinue"
-}
-catch
-{
-  # do not fail if execution policy cannot be set for this scope
+$script:aliases = @{
+    # Storage aliases
+    "Get-AzureStorageContainerAcl" = "Get-AzureStorageContainer";
+    "Start-CopyAzureStorageBlob" = "Start-AzureStorageBlobCopy";
+    "Stop-CopyAzureStorageBlob" = "Stop-AzureStorageBlobCopy";
 }
 
+$aliases.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | New-Alias -Description "AzureAlias"
