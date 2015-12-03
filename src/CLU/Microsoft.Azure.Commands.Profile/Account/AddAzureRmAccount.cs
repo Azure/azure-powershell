@@ -47,17 +47,33 @@ namespace Microsoft.Azure.Commands.Profile
         [ValidateNotNullOrEmpty]
         public AzureEnvironment Environment { get; set; }
 
-        [Parameter(ParameterSetName = UserParameterSet, Mandatory = false, HelpMessage = "Optional credential")]
+        [Parameter(Mandatory = false, HelpMessage = "Name of the environment containing the account to log into")]
+        [ValidateNotNullOrEmpty]
+        public string EnvironmentName { get; set; }
+
         [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = true, HelpMessage = "Credential")]
         [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Optional credential")]
         [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "Optional credential")]
-        public PSCredential Credential { get; set; }
+        public string Secret { get; set; }
+
+        [Parameter(ParameterSetName = UserParameterSet, Mandatory = true, HelpMessage = "User name (in username@contoso.com format)")]
+        [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Account Id for access token")]
+        [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "Account Id for access token")]
+        [ValidateNotNullOrEmpty]
+        public string Username { get; set; }
+
+        [Parameter(ParameterSetName = UserParameterSet, Mandatory = true, HelpMessage = "Optional password")]
+        [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Account Id for access token")]
+        [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "Account Id for access token")]
+        [ValidateNotNullOrEmpty]
+        public string Password { get; set; }
 
         [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, Mandatory = true, HelpMessage = "Certificate Hash (Thumbprint)")]
         [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Certificate Hash (Thumbprint)")]
         [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "Certificate Hash (Thumbprint)")]
         public string CertificateThumbprint { get; set; }
 
+        [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = true, HelpMessage = "Credential")]
         [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, Mandatory = true, HelpMessage = "SPN")]
         [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "SPN")]
         [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "SPN")]
@@ -65,8 +81,6 @@ namespace Microsoft.Azure.Commands.Profile
 
         [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = true)]
         [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, Mandatory = true)]
-        [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false)]
-        [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false)]
         public SwitchParameter ServicePrincipal { get; set; }
 
         [Parameter(ParameterSetName = UserParameterSet, Mandatory = false, HelpMessage = "Optional tenant name or ID")]
@@ -92,10 +106,12 @@ namespace Microsoft.Azure.Commands.Profile
         public string AccountId { get; set; }
 
         [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Subscription", ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = false, HelpMessage = "Subscription", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string SubscriptionId { get; set; }
 
         [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "Subscription Name", ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = false, HelpMessage = "Subscription Name", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string SubscriptionName { get; set; }
 
@@ -110,9 +126,21 @@ namespace Microsoft.Azure.Commands.Profile
         protected override void BeginProcessing()
         {
             base.BeginProcessing();
-            if (Environment == null)
+            if (Environment == null && EnvironmentName == null)
             {
-                Environment = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
+                Environment = AzureEnvironment.PublicEnvironments[Common.Authentication.Models.EnvironmentName.AzureCloud];
+            }
+            else if (Environment == null && EnvironmentName != null)
+            {
+                if (DefaultProfile.Environments.ContainsKey(EnvironmentName))
+                {
+                    Environment = DefaultProfile.Environments[EnvironmentName];
+                }
+                else
+                {
+                    throw new PSInvalidOperationException(
+                        string.Format(Resources.UnknownEnvironment, EnvironmentName));
+                }
             }
         }
 
@@ -128,11 +156,12 @@ namespace Microsoft.Azure.Commands.Profile
                 if (!string.IsNullOrWhiteSpace(SubscriptionId) &&
                     !Guid.TryParse(SubscriptionId, out subscrptionIdGuid))
                 {
-                    throw new PSInvalidOperationException(Resources.InvalidSubscriptionId);
+                    throw new PSInvalidOperationException(
+                        string.Format(Resources.InvalidSubscriptionId, SubscriptionId));
                 }
 
                 AzureAccount azureAccount = new AzureAccount();
-
+                string password = null;
                 if (!string.IsNullOrEmpty(AccessToken))
                 {
                     if (string.IsNullOrWhiteSpace(AccountId))
@@ -147,24 +176,21 @@ namespace Microsoft.Azure.Commands.Profile
                 else if (ServicePrincipal.IsPresent)
                 {
                     azureAccount.Type = AzureAccount.AccountType.ServicePrincipal;
+                    azureAccount.Id = ApplicationId;
+                    password = Secret;
                 }
                 else
                 {
                     azureAccount.Type = AzureAccount.AccountType.User;
+                    azureAccount.Id = Username;
+                    password = Password;
                 }
 
                 if (!string.IsNullOrEmpty(CertificateThumbprint))
                 {
                     azureAccount.SetProperty(AzureAccount.Property.CertificateThumbprint, CertificateThumbprint);
                 }
-
-                string password = null;
-                if (Credential != null)
-                {
-                    azureAccount.Id = Credential.UserName;
-                    password = Credential.Password;
-                }
-
+                
                 if (!string.IsNullOrEmpty(ApplicationId))
                 {
                     azureAccount.Id = ApplicationId;

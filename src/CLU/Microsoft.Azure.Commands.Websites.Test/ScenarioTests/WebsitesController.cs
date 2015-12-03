@@ -12,27 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Gallery;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.WebSites;
-using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using LegacyTest = Microsoft.Azure.Test;
-using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
-using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 {
     public class WebsitesController
     {
-        private LegacyTest.CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
         private const string TenantIdKey = "TenantId";
         private const string DomainKey = "Domain";
@@ -45,9 +39,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         public WebSiteManagementClient WebsitesManagementClient { get; private set; }
 
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
-
-        public GalleryClient GalleryClient { get; private set; }
-
+        
         public string UserDomain { get; private set; }
 
         public static WebsitesController NewInstance
@@ -64,25 +56,21 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             helper = new EnvironmentSetupHelper();
         }
 
-        public void RunPsTest(params string[] scripts)
+        public void RunPsTest(string callingClass, string currentMethod, params string[] scripts)
         {
-            var callingClassType = TestUtilities.GetCallingClass(2);
-            var mockName = TestUtilities.GetCurrentMethodName(2);
-
             RunPsTestWorkflow(
                 () => scripts,
                 // no custom initializer
                 null,
                 // no custom cleanup 
                 null,
-                callingClassType,
-                mockName);
+                callingClass,
+                currentMethod);
         }
-
-
+        
         public void RunPsTestWorkflow(
             Func<string[]> scriptBuilder,
-            Action<LegacyTest.CSMTestEnvironmentFactory> initialize,
+            Action<TestEnvironment> initialize,
             Action cleanup,
             string callingClassType,
             string mockName)
@@ -93,10 +81,9 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 
             using (MockContext context = MockContext.Start(callingClassType, mockName))
             {
-                this.csmTestFactory = new LegacyTest.CSMTestEnvironmentFactory();
                 if (initialize != null)
                 {
-                    initialize(this.csmTestFactory);
+                    initialize(TestEnvironmentFactory.GetTestEnvironment());
                 }
                 SetupManagementClients(context);
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
@@ -135,43 +122,34 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 
         private void SetupManagementClients(MockContext context)
         {
-            ResourceManagementClient = GetResourceManagementClient();
-            SubscriptionClient = GetSubscriptionClient();
+            ResourceManagementClient = GetResourceManagementClient(context);
+            SubscriptionClient = GetSubscriptionClient(context);
             WebsitesManagementClient = GetWebsitesManagementClient(context);
-            AuthorizationManagementClient = GetAuthorizationManagementClient();
-            GalleryClient = GetGalleryClient();
+            AuthorizationManagementClient = GetAuthorizationManagementClient(context);
             helper.SetupManagementClients(ResourceManagementClient,
                 SubscriptionClient,
                 WebsitesManagementClient,
-                AuthorizationManagementClient,
-                GalleryClient
+                AuthorizationManagementClient
                 );
         }
-
-
-        private AuthorizationManagementClient GetAuthorizationManagementClient()
+        
+        private AuthorizationManagementClient GetAuthorizationManagementClient(MockContext context)
         {
-            return LegacyTest.TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
+            return context.GetServiceClient<AuthorizationManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private ResourceManagementClient GetResourceManagementClient()
+        private ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
-            return LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
+            return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private WebSiteManagementClient GetWebsitesManagementClient(MockContext context)
         {
             return context.GetServiceClient<WebSiteManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
-        private SubscriptionClient GetSubscriptionClient()
+        private SubscriptionClient GetSubscriptionClient(MockContext context)
         {
-            return LegacyTest.TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
+            return context.GetServiceClient<SubscriptionClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
-
-        private GalleryClient GetGalleryClient()
-        {
-            return LegacyTest.TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
-        }
-    
     }
 }

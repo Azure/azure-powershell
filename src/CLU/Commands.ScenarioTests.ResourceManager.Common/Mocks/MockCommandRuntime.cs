@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Common.Test.Mocks
         {
             get
             {
-                throw new NotImplementedException();
+                return null;
             }
         }
 

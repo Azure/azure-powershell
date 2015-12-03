@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.Models
 
         public string CurrentStorageAccountName { get; set; }
 
-        internal string CurrentStorageAccount { get; set; }
+        public string CurrentStorageAccount { get; set; }
 
         public override string ToString()
         {

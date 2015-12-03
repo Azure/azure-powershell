@@ -89,6 +89,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 {
                     handlers.Add(obj as DelegatingHandler);
                 }
+                else if (obj is DelegatingHandler[])
+                {
+                    handlers.AddRange(obj as DelegatingHandler[]);
+                }
                 else
                 {
                     types.Add(obj.GetType());
@@ -129,8 +133,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
             ServiceClientCredentials creds = AuthenticationFactory.GetSubscriptionCloudCredentials(context, endpoint);
             TClient client = CreateCustomClient<TClient>(
+                context.Environment.GetEndpointAsUri(endpoint),
                 creds, 
-                context.Environment.GetEndpointAsUri(endpoint), 
                 GetCustomHandlers());
 
             return client;

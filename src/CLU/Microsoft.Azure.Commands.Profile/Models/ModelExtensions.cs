@@ -13,7 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Utilities.Common;
 using Microsoft.Azure.Management.Resources.Models;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
@@ -31,5 +35,26 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 context.Tenant.Id.ToString());
             return subscription;
         }
+
+        public static List<AzureTenant> MergeTenants(this AzureAccount account, IEnumerable<TenantIdDescription> tenants,
+            IAccessToken token)
+        {
+            List<AzureTenant> result = null;
+            if (tenants != null)
+            {
+                var existingTenants = new List<AzureTenant>();
+                account.SetProperty(AzureAccount.Property.Tenants, null);
+                tenants.ForEach((t) =>
+                {
+                    existingTenants.Add(new AzureTenant {Id = new Guid(t.TenantId), Domain = token.GetDomain()});
+                    account.SetOrAppendProperty(AzureAccount.Property.Tenants, t.TenantId);
+                });
+
+                result = existingTenants;
+            }
+
+            return result;
+        }
+
     }
 }

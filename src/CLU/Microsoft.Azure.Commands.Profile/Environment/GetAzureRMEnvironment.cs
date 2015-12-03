@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Models;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -34,6 +35,11 @@ namespace Microsoft.Azure.Commands.Profile
         protected override void BeginProcessing()
         {
             // do not call begin processing there is no context needed for this cmdlet
+            var sessionProfile = GetSessionVariableValue<PSAzureProfile>(AzurePowerShell.ProfileVariable, (PSAzureProfile)(new AzureRMProfile()));
+            if (sessionProfile != null)
+            {
+                DefaultProfile = DefaultProfile ?? sessionProfile;
+            }
         }
 
 

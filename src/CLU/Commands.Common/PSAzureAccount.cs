@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.Common.Authentication.Models
 {
     public class PSAzureAccount
@@ -22,6 +23,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
         public string Subscriptions { get; set; }
 
-        public string Tenants { get; set; }
+        public List<string> Tenants { get; set; }
     }
 }
