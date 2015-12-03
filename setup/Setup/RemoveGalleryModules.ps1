@@ -31,11 +31,11 @@ function Remove-Modules
 
 if (Test-Path 'Env:\ProgramFiles(x86)')
 {
-   Remove-Module ([System.IO.Path]::Combine(${env:ProgramFiles(x86)}, "WindowsPowerShell", "Modules"))
+   Remove-Modules ([System.IO.Path]::Combine(${env:ProgramFiles(x86)}, "WindowsPowerShell", "Modules"))
 }
 
 if (Test-Path Env:\ProgramFiles)
 {
-   Remove-Module ([System.IO.Path]::Combine($env:ProgramFiles, "WindowsPowerShell", "Modules"))
+   Remove-Modules ([System.IO.Path]::Combine($env:ProgramFiles, "WindowsPowerShell", "Modules"))
 }
 
