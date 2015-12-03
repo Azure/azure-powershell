@@ -227,9 +227,10 @@
     <Compile Include="Extension\CustomScript\RemoveAzureVMCustomScriptExtensionCommand.cs" />
     <Compile Include="Extension\CustomScript\SetAzureVMCustomScriptExtensionCommand.cs" />
     <Compile Include="Extension\CustomScript\VirtualMachineCustomScriptExtensionContext.cs" />
-    <Compile Include="Extension\Diagnostics\GetAzureVMDiagnosticsExtension.cs" />
-    <Compile Include="Extension\Diagnostics\RemoveAzureVMDiagnosticsExtension.cs" />
-    <Compile Include="Extension\Diagnostics\SetAzureVMDiagnosticsExtension.cs" />
+    <Compile Include="Extension\Diagnostics\DiagnosticsExtensionConstants.cs" />
+    <Compile Include="Extension\Diagnostics\GetAzureRmVMDiagnosticsExtension.cs" />
+    <Compile Include="Extension\Diagnostics\RemoveAzureRmVMDiagnosticsExtension.cs" />
+    <Compile Include="Extension\Diagnostics\SetAzureRmVMDiagnosticsExtension.cs" />
     <Compile Include="Extension\DSC\GetAzureVMDscExtensionStatusCommand.cs" />
     <Compile Include="Extension\DSC\GetDscResourceException.cs" />
     <Compile Include="Extension\DSC\DscExtensionPublishCmdletCommonBase.cs" />
