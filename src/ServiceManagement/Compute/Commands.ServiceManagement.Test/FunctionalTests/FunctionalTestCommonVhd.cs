@@ -363,10 +363,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 CredentialHelper.CopyTestData(srcVhdContainer, srcVhdName, dstOSVhdContainer);
                 string osVhdLink = string.Format("{0}{1}/{2}", blobUrlRoot, dstOSVhdContainer, srcVhdName);
 
-                var dstDataVhdContainer = containerPrefix.ToLower() + "data" + vhdContainerName;
-                CredentialHelper.CopyTestData(srcVhdContainer, srcVhdName, dstDataVhdContainer);
-                string dataVhdLink = string.Format("{0}{1}/{2}", blobUrlRoot, dstDataVhdContainer, srcVhdName);
-
                 // VM Image OS/Data Disk Configuration
                 var addVMImageName = containerPrefix + "Image";
                 var diskConfig = new VirtualMachineImageDiskConfigSet
@@ -427,9 +423,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 Assert.IsTrue(vmImage.OSDiskConfiguration.OS == diskConfig.OSDiskConfiguration.OS);
                 Assert.IsTrue(vmImage.OSDiskConfiguration.OSState == diskConfig.OSDiskConfiguration.OSState);
                 Assert.IsTrue(vmImage.OSDiskConfiguration.MediaLink == diskConfig.OSDiskConfiguration.MediaLink);
-                Assert.IsTrue(vmImage.DataDiskConfigurations.First().HostCaching == diskConfig.DataDiskConfigurations.First().HostCaching);
-                Assert.IsTrue(vmImage.DataDiskConfigurations.First().Lun == diskConfig.DataDiskConfigurations.First().Lun);
-                Assert.IsTrue(vmImage.DataDiskConfigurations.First().MediaLink == diskConfig.DataDiskConfigurations.First().MediaLink);
 
                 // Remove-AzureVMImage
                 vmPowershellCmdlets.RemoveAzureVMImage(addVMImageName);
