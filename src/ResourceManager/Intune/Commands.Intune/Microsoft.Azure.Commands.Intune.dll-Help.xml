@@ -195,6 +195,34 @@
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Add (link) a Android App to the Android Policy  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code># First create the policy
+$p = New-AzureRmIntuneAndroidMAMPolicy -FriendlyName AndroidTestPolicy -Force
+# Get the list of apps
+$apps = Get-AzureRmIntuneAndroidMAMApp;
+
+# Finally, link the app to the Android Policy
+Add-AzureRmIntuneAndroidMAMPolicyApp -Name $p.name -AppName $apps[0].Name -Force;</dev:code>
+			<dev:remarks>
+				<maml:para>After logging-in as a valid Intune Account, when this command is executed, this will add (link) the specified app to the Android Policy.
+After the command is executed, it will display the status.</maml:para>
+				<maml:para>If any parameters are wrong, it will display &quot;BadRequest&quot; error message.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -395,6 +423,37 @@
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Add (link) a user Group to the Android Policy  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code># First create the policy
+$p = New-AzureRmIntuneAndroidMAMPolicy -FriendlyName AndroidTestPolicy -Force
+
+# Get the list of AAD groups
+$groups = @(Get-AzureRmADGroup);
+
+# Now add the Group to the Android policy.
+Add-AzureRmIntuneAndroidMAMPolicyGroup -Name $p.Name -GroupName $groups[0].Id -Force
+</dev:code>
+			<dev:remarks>
+				<maml:para>After logging-in as a valid Intune Account, when this command is executed, this will add (link) the specified group to the Android Policy.
+After the command is executed, it will display the status.</maml:para>
+				<maml:para>If any parameters are wrong, it will display &quot;BadRequest&quot; error message.
+</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -595,6 +654,35 @@
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Add (link) an iOS App to the iOS Policy  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code># First create the policy
+$p = New-AzureRmIntuneiOSMAMPolicy -FriendlyName iOSTestPolicy -Force
+# Get the list of apps
+$apps = Get-AzureRmIntuneiOSMAMApp;
+
+# Finally, link the app to the iOS Policy
+Add-AzureRmIntuneiOSMAMPolicyApp -Name $p.name -AppName $apps[0].Name -Force;
+</dev:code>
+			<dev:remarks>
+				<maml:para>After logging-in as a valid Intune Account, when this command is executed, this will add (link) the specified app to the iOS Policy.
+After the command is executed, it will display the status.</maml:para>
+				<maml:para>If any parameters are wrong, it will display &quot;BadRequest&quot; error message.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -795,6 +883,37 @@
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Add (link) a user Group to the iOS Policy  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code># First create the policy
+$p = New-AzureRmIntuneiOSMAMPolicy -FriendlyName iOSTestPolicy -Force
+
+# Get the list of AAD groups
+$groups = @(Get-AzureRmADGroup);
+
+# Now add the Group to the iOS policy.
+Add-AzureRmIntuneiOSMAMPolicyGroup -Name $p.Name -GroupName $groups[0].Id -Force
+</dev:code>
+			<dev:remarks>
+				<maml:para>After logging-in as a valid Intune Account, when this command is executed, this will add (link) the specified group to the iOS Policy.
+After the command is executed, it will display the status.</maml:para>
+				<maml:para>If any parameters are wrong, it will display &quot;BadRequest&quot; error message.
+</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -900,6 +1019,27 @@
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Get the list of all MAM Android Apps  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>$apps = Get-AzureRmIntuneAndroidMAMApp;
+$apps;</dev:code>
+			<dev:remarks>
+				<maml:para>After logging-in as a valid Intune Account, when this command is executed, this will show the list of all MAM Android Apps. In this example we have a single App for the logged in account.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -1024,6 +1164,60 @@
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Get all Intune Android MAM Policies  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code># Create a new Android Policy
+$p = New-AzureRmIntuneAndroidMAMPolicy -FriendlyName AndroidTestPolicy -Force
+
+# Now get it
+$policies = Get-AzureRmIntuneAndroidMAMPolicy
+
+# Display it.
+$policies </dev:code>
+			<dev:remarks>
+				<maml:para>After logging-in as a valid Intune Account, when this command is executed, this will get all the Android MAM policies for the logged in account.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Example 2: Get a single Intune Android MAM Policy  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code># Create a new Android Policy
+$p = New-AzureRmIntuneAndroidMAMPolicy -FriendlyName AndroidTestPolicy -Force
+
+# Now get it
+$policy = Get-AzureRmIntuneAndroidMAMPolicy -Name $p.Name
+
+# Display it.
+$policy</dev:code>
+			<dev:remarks>
+				<maml:para>After logging-in as a valid Intune Account, when this command is executed, this will get the Android MAM policy matching the specified Name for the logged in account.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -1148,6 +1342,38 @@
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Get the Android Apps linked to the Android Policy  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code># First create the policy
+$p = New-AzureRmIntuneAndroidMAMPolicy -FriendlyName AndroidTestPolicy -Force
+# Get the list of apps
+$apps = Get-AzureRmIntuneAndroidMAMApp;
+
+# link the app to the Android Policy
+Add-AzureRmIntuneAndroidMAMPolicyApp -Name $p.name -AppName $apps[0].Name -Force;
+
+# Get the linked apps
+$apps = Get-AzureRmIntuneAndroidMAMPolicyApp -Name $p.Name 
+$apps;
+</dev:code>
+			<dev:remarks>
+				<maml:para>After logging-in as a valid Intune Account, when this command is executed, this will show the linked Android Apps to the Android Policy.</maml:para>
+				<maml:para>If any parameters are wrong, it will display &quot;BadRequest&quot; error message.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -1272,6 +1498,40 @@
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Get the Groups linked to the Android Policy  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code># First create the policy
+$p = New-AzureRmIntuneAndroidMAMPolicy -FriendlyName AndroidTestPolicy -Force
+
+# Get the list of AAD groups
+$groups = @(Get-AzureRmADGroup);
+
+# Now add the Group to the Android policy.
+Add-AzureRmIntuneAndroidMAMPolicyGroup -Name $p.Name -GroupName $groups[0].Id -Force
+
+# Get the linked groups
+$groups = Get-AzureRmIntuneAndroidMAMPolicyGroup -Name $p.Name 
+$groups
+</dev:code>
+			<dev:remarks>
+				<maml:para>After logging-in as a valid Intune Account, when this command is executed, this will show the linked groups to the Android Policy.</maml:para>
+				<maml:para>If any parameters are wrong, it will display &quot;BadRequest&quot; error message.
+</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -1377,6 +1637,27 @@
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Get the list of all MAM iOS Apps  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>$apps = Get-AzureRmIntuneiOSMAMApp;
+$apps;</dev:code>
+			<dev:remarks>
+				<maml:para>After logging-in as a valid Intune Account, when this command is executed, this will show the list of all MAM iOS Apps. In this example we have two Apps for the logged in account.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -1501,6 +1782,60 @@
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Get all Intune iOS MAM Policies  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code># Create a new iOS Policy
+$p = New-AzureRmIntuneiOSMAMPolicy -FriendlyName iOSTestPolicy -Force
+
+# Now get it
+$policies = Get-AzureRmIntuneiOSMAMPolicy
+
+# Display it.
+$policies </dev:code>
+			<dev:remarks>
+				<maml:para>After logging-in as a valid Intune Account, when this command is executed, this will get all the iOS MAM policies for the logged in account.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Example 2: Get a single Intune iOS MAM Policy  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code># Create a new iOS Policy
+$p = New-AzureRmIntuneiOSMAMPolicy -FriendlyName iOSTestPolicy -Force
+
+# Now get it
+$policy = Get-AzureRmIntuneiOSMAMPolicy -Name $p.Name
+
+# Display it.
+$policy</dev:code>
+			<dev:remarks>
+				<maml:para>After logging-in as a valid Intune Account, when this command is executed, this will get the iOS MAM policy matching the specified Name for the logged in account.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -1625,6 +1960,40 @@
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Get the iOS Apps linked to the iOS Policy  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code># First create the policy
+$p = New-AzureRmIntuneiOSMAMPolicy -FriendlyName iOSTestPolicy -Force
+
+# Get the list of apps
+$apps = Get-AzureRmIntuneiOSMAMApp;
+
+# link the app to the iOS Policy
+Add-AzureRmIntuneiOSMAMPolicyApp -Name $p.name -AppName $apps[0].Name -Force;
+
+# Get the linked apps
+$apps = Get-AzureRmIntuneiOSMAMPolicyApp -Name $p.Name 
+$apps;
+</dev:code>
+			<dev:remarks>
+				<maml:para>After logging-in as a valid Intune Account, when this command is executed, this will show the linked iOS Apps to the iOS Policy.</maml:para>
+				<maml:para>If any parameters are wrong, it will display &quot;BadRequest&quot; error message.
+</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -1749,6 +2118,40 @@
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Get the Groups linked to the iOS Policy  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code># First create the policy
+$p = New-AzureRmIntuneiOSMAMPolicy -FriendlyName iOSTestPolicy -Force
+
+# Get the list of AAD groups
+$groups = @(Get-AzureRmADGroup);
+
+# Now add the Group to the iOS policy.
+Add-AzureRmIntuneiOSMAMPolicyGroup -Name $p.Name -GroupName $groups[0].Id -Force
+
+# Get the linked groups
+$groups = Get-AzureRmIntuneiOSMAMPolicyGroup -Name $p.Name 
+$groups
+</dev:code>
+			<dev:remarks>
+				<maml:para>After logging-in as a valid Intune Account, when this command is executed, this will show the linked groups to the iOS Policy.</maml:para>
+				<maml:para>If any parameters are wrong, it will display &quot;BadRequest&quot; error message.
+</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -3472,6 +3875,30 @@ Location :</maml:para>
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Create a new IntuneAndroidMAMPolicy  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>$p = New-AzureRmIntuneAndroidMAMPolicy -FriendlyName AndroidTestPolicy -Force
+
+# Display the newly created policy
+$p</dev:code>
+			<dev:remarks>
+				<maml:para>After logging-in as a valid Intune Account, when this command is executed, this will create a new IntuneAndroidMAMPolicy. 
+When an optional parameter is not passed, the default value is used during the creation of the policy.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -3958,6 +4385,30 @@ Location :</maml:para>
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Create a new IntuneiOSMAMPolicy  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>$p = New-AzureRmIntuneiOSMAMPolicy -FriendlyName iOSTestPolicy -Force
+
+# Display the newly created policy
+$p</dev:code>
+			<dev:remarks>
+				<maml:para>After logging-in as a valid Intune Account, when this command is executed, this will create a new IntuneiOSMAMPolicy. 
+When an optional parameter is not passed, the default value is used during the creation of the policy.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -4139,6 +4590,31 @@ Location :</maml:para>
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Remove an Intune Android MAM Policy  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code># First create the policy
+$p = New-AzureRmIntuneAndroidMAMPolicy -FriendlyName AndroidTestPolicy -Force
+
+# Now remove the policy
+Remove-AzureRmIntuneAndroidMAMPolicy -Name $p.Name -Force
+</dev:code>
+			<dev:remarks>
+				<maml:para>After logging-in as a valid Intune Account, when this command is executed, this will delete the policy specified by Name parameter.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -4339,6 +4815,34 @@ Location :</maml:para>
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Remove the link to an Android App from a Intune Android MAM Policy  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code></dev:code>
+			<dev:remarks>
+				<maml:para># First create the policy
+$p = New-AzureRmIntuneAndroidMAMPolicy -FriendlyName AndroidTestPolicy -Force</maml:para>
+				<maml:para># Get the list of apps
+$apps = Get-AzureRmIntuneAndroidMAMApp;</maml:para>
+				<maml:para># Link the app to the Android Policy
+Add-AzureRmIntuneAndroidMAMPolicyApp -Name $p.name -AppName $apps[0].Name -Force;</maml:para>
+				<maml:para># Now remove the link.
+Remove-AzureRmIntuneAndroidMAMPolicyApp -Name $p.name -AppName $apps[0].Name -Force;
+</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para>After logging-in as a valid Intune Account, when this command is executed, this will remove the link to an App specified by AppName parameter from a policy specified by Name parameter.</maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -4539,6 +5043,37 @@ Location :</maml:para>
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Remove the link to a group from a Intune Android MAM Policy  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code># First create the policy
+$p = New-AzureRmIntuneAndroidMAMPolicy -FriendlyName AndroidTestPolicy -Force
+
+# Get the list of AAD groups
+$groups = @(Get-AzureRmADGroup);
+
+# Add the Group to the Android policy.
+Add-AzureRmIntuneAndroidMAMPolicyGroup -Name $p.Name -GroupName $groups[0].Id -Force
+
+# Now remove the link.
+Remove-AzureRmIntuneAndroidMAMPolicyGroup -Name $p.name -GroupName $groups[0].Name -Force;
+</dev:code>
+			<dev:remarks>
+				<maml:para>After logging-in as a valid Intune Account, when this command is executed, this will remove the link to a group specified by GroupName parameter from a policy specified by Name parameter.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -4720,6 +5255,31 @@ Location :</maml:para>
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Remove an Intune iOS MAM Policy  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code># First create the policy
+$p = New-AzureRmIntuneiOSMAMPolicy -FriendlyName iOSTestPolicy -Force
+
+# Now remove the policy
+Remove-AzureRmIntuneiOSMAMPolicy -Name $p.Name -Force
+</dev:code>
+			<dev:remarks>
+				<maml:para>After logging-in as a valid Intune Account, when this command is executed, this will delete the policy specified by Name parameter.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -4920,6 +5480,37 @@ Location :</maml:para>
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Remove the link to an iOS App from a Intune iOS MAM Policy  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code># First create the policy
+$p = New-AzureRmIntuneiOSMAMPolicy -FriendlyName iOSTestPolicy -Force
+
+# Get the list of apps
+$apps = Get-AzureRmIntuneiOSMAMApp;
+
+# Link the app to the iOS Policy
+Add-AzureRmIntuneiOSMAMPolicyApp -Name $p.name -AppName $apps[0].Name -Force;
+
+# Now remove the link.
+Remove-AzureRmIntuneiOSMAMPolicyApp -Name $p.name -AppName $apps[0].Name -Force;
+</dev:code>
+			<dev:remarks>
+				<maml:para>After logging-in as a valid Intune Account, when this command is executed, this will remove the link to an App specified by AppName parameter from a policy specified by Name parameter.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -5118,6 +5709,37 @@ Location :</maml:para>
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Remove the link to a group from a Intune iOS MAM Policy  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code># First create the policy
+$p = New-AzureRmIntuneiOSMAMPolicy -FriendlyName iOSTestPolicy -Force
+
+# Get the list of AAD groups
+$groups = @(Get-AzureRmADGroup);
+
+# Add the Group to the iOS policy.
+Add-AzureRmIntuneiOSMAMPolicyGroup -Name $p.Name -GroupName $groups[0].Id -Force
+
+# Now remove the link.
+Remove-AzureRmIntuneiOSMAMPolicyGroup -Name $p.name -GroupName $groups[0].Name -Force;
+</dev:code>
+			<dev:remarks>
+				<maml:para>After logging-in as a valid Intune Account, when this command is executed, this will remove the link to a group specified by GroupName parameter from a policy specified by Name parameter.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -5622,6 +6244,33 @@ Location :</maml:para>
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Patch an existing IntuneAndroidMAMPolicy  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code># First create the policy
+$p = New-AzureRmIntuneAndroidMAMPolicy -FriendlyName AndroidTestPolicy -Force
+
+# Now patch it.
+$p = Set-AzureRmIntuneAndroidMAMPolicy -Name $p.Name -AppSharingToLevel allApps -FriendlyName &quot;New Android Policy Patched&quot; -Force
+
+# Display it
+$p;</dev:code>
+			<dev:remarks>
+				<maml:para>After logging-in as a valid Intune Account, when this command is executed, this will patch the existing IntuneAndroidMAMPolicy.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -6126,6 +6775,33 @@ Location :</maml:para>
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Patch an existing IntuneiOSMAMPolicy  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code># First create the policy
+$p = New-AzureRmIntuneiOSMAMPolicy -FriendlyName iOSTestPolicy -Force
+
+# Now patch it.
+$p = Set-AzureRmIntuneiOSMAMPolicy -Name $p.Name -AppSharingToLevel allApps -FriendlyName &quot;New iOS Policy Patched&quot; -Force
+
+# Display it
+$p;</dev:code>
+			<dev:remarks>
+				<maml:para>After logging-in as a valid Intune Account, when this command is executed, this will patch the existing IntuneiOSMAMPolicy.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
