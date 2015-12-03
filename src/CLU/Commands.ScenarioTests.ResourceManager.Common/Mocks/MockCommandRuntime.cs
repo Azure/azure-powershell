@@ -17,6 +17,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Management.Automation;
+using System.Management.Automation.Host;
 
 namespace Microsoft.Azure.Commands.Common.Test.Mocks
 {
