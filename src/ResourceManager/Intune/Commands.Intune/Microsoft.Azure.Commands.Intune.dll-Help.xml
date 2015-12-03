@@ -2508,21 +2508,6 @@ Location     :</maml:para>
 			<dev:remarks>
 				<maml:para>The command gets the Summary status for the logged-in Intune MAM user.</maml:para>
 				<maml:para />
-				<maml:para />
-				<maml:para>DeployedPolicies   : 0
-EnrolledUsers      : 0
-FlaggedUsers       : 0
-LastModifiedTime   : 12/2/2015 11:04:09 PM
-PolicyAppliedUsers : 0
-Status             : complete
-WipeFailedApps     : 0
-WipePendingApps    : 0
-WipeSucceededApps  : 0
-Id                 : /providers/Microsoft.Intune/locations/fef.bmsua01/statuses/default
-Name               : default
-Type               : Microsoft.Intune/locations/statuses
-Tags               :
-Location           :</maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -2675,34 +2660,15 @@ Location           :</maml:para>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>PS C:\&gt; Get-AzureRmIntuneMAMUserDevice -Name f4058390-f6d0-459b-9c36-3cf9d88e87f5</dev:code>
-			<dev:remarks>
+      <dev:code># Get the list of AAD users
+$users = @(Get-AzureRmADUser);
+
+# Now get the devices for the user
+Get-AzureRmIntuneMAMUserDevice -Name $users[0].Id
+      </dev:code>
+      <dev:remarks>
 				<maml:para>After logging-in as a valid Intune Account, when this command is executed, this will give the list of all the devices for the MAM user specified by the &quot;Name&quot; parameter, which is mandatory.</maml:para>
 				<maml:para />
-				<maml:para />
-				<maml:para>UserId          : f4058390-f6d0-459b-9c36-3cf9d88e87f5
-FriendlyName    : TestIpad
-Platform        : IOS
-PlatformVersion : 9.0
-DeviceType      : TestIpad
-Id              : /providers/Microsoft.Intune/locations/fef.bmsua01/users/f4058390-f6d0-459b-9c36-3cf9d88e87f5/devices/
-                  8693b393-a69c-4d12-a9c8-a1a415884fd2
-Name            : 8693b393-a69c-4d12-a9c8-a1a415884fd2
-Type            : Microsoft.Intune/locations/users/devices
-Tags            :
-Location        :
-
-UserId          : f4058390-f6d0-459b-9c36-3cf9d88e87f5
-FriendlyName    : iPad
-Platform        : IOS
-PlatformVersion : 8.1
-DeviceType      : iPad
-Id              : /providers/Microsoft.Intune/locations/fef.bmsua01/users/f4058390-f6d0-459b-9c36-3cf9d88e87f5/devices/
-                  38BBFA62-371F-4AA8-BFDB-846EBD47A86A
-Name            : 38BBFA62-371F-4AA8-BFDB-846EBD47A86A
-Type            : Microsoft.Intune/locations/users/devices
-Tags            :
-Location        :</maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -2717,23 +2683,18 @@ Location        :</maml:para>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>PS C:\&gt; Get-AzureRmIntuneMAMUserDevice -Name f4058390-f6d0-459b-9c36-3cf9d88e87f5 -DeviceName 38BBFA62-371F-4AA8-BFDB-84
-6EBD47A86A</dev:code>
-			<dev:remarks>
+      <dev:code># Get the list of AAD users
+$users = @(Get-AzureRmADUser);
+
+# Get the devices for the user
+$devices = Get-AzureRmIntuneMAMUserDevice -Name $users[0].Id
+
+# Get a single device for the user
+Get-AzureRmIntuneMAMUserDevice -Name $users[0].Id -DeviceName $devices[0].Name
+      </dev:code>
+      <dev:remarks>
 				<maml:para>After logging-in as a valid Intune Account, when this command is executed, this will return a single device specified with the &quot;DeviceName&quot; parameter for the MAM user specified by the &quot;Name&quot; parameter. Name is mandatory. </maml:para>
 				<maml:para />
-				<maml:para />
-				<maml:para>UserId          : f4058390-f6d0-459b-9c36-3cf9d88e87f5
-FriendlyName    : iPad
-Platform        : IOS
-PlatformVersion : 8.1
-DeviceType      : iPad
-Id              : /providers/Microsoft.Intune/locations/fef.bmsua01/users/f4058390-f6d0-459b-9c36-3cf9d88e87f5/devices/
-                  38BBFA62-371F-4AA8-BFDB-846EBD47A86A
-Name            : 38BBFA62-371F-4AA8-BFDB-846EBD47A86A
-Type            : Microsoft.Intune/locations/users/devices
-Tags            :
-Location        :</maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -2904,34 +2865,14 @@ Location        :</maml:para>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>PS C:\&gt; Get-AzureRmIntuneMAMUserFlaggedEnrolledApp -Name f4058390-f6d0-459b-9c36-3cf9d88e87f5</dev:code>
-			<dev:remarks>
+      <dev:code># Get the list of AAD users
+$users = @(Get-AzureRmADUser);
+
+Get-AzureRmIntuneMAMUserFlaggedEnrolledApp -Name $users[0].Id
+      </dev:code>
+      <dev:remarks>
 				<maml:para>After logging-in as a valid Intune Account, when this command is executed, this will give the list of all the flagged enrolled apps for the MAM user specified by the &quot;Name&quot; parameter, which is mandatory.</maml:para>
 				<maml:para />
-				<maml:para />
-				<maml:para>DeviceType       : TestIpad
-FriendlyName     : OneDrive
-LastModifiedTime : 11/19/2015 01:00:14
-Platform         : ios
-Errors           : {Microsoft.Azure.Management.Intune.Models.FlaggedEnrolledAppError}
-Id               : /providers/Microsoft.Intune/locations/fef.bmsua01/flaggedUsers/f4058390-f6d0-459b-9c36-3cf9d88e87f5/
-                   flaggedEnrolledApps/04045141-9ec3-4ecd-a302-3efca2b0be54
-Name             : 04045141-9ec3-4ecd-a302-3efca2b0be54
-Type             : Microsoft.Intune/locations/flaggedUsers/flaggedEnrolledApps
-Tags             :
-Location         :
-
-DeviceType       : TestIpad
-FriendlyName     : Excel
-LastModifiedTime : 11/19/2015 21:31:44
-Platform         : ios
-Errors           : {Microsoft.Azure.Management.Intune.Models.FlaggedEnrolledAppError}
-Id               : /providers/Microsoft.Intune/locations/fef.bmsua01/flaggedUsers/f4058390-f6d0-459b-9c36-3cf9d88e87f5/
-                   flaggedEnrolledApps/197103ab-43cf-46e9-87cc-a59a375a9f6c
-Name             : 197103ab-43cf-46e9-87cc-a59a375a9f6c
-Type             : Microsoft.Intune/locations/flaggedUsers/flaggedEnrolledApps
-Tags             :
-Location         :</maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -3103,36 +3044,12 @@ Location         :</maml:para>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>PS C:\&gt; Get-AzureRmIntuneOperationResult</dev:code>
+			<dev:code>Get-AzureRmIntuneOperationResult</dev:code>
 			<dev:remarks>
 				<maml:para>This command should be executed after any long running operation is triggered. One such example is Invoke-AzureRmIntuneMAMUserDeviceWipe.</maml:para>
 				<maml:para>After logging-in as a valid Intune Account, when this command is executed, this will give the list of all the OperationResults.
 </maml:para>
 				<maml:para />
-				<maml:para />
-				<maml:para>FriendlyName      : Wipe
-Category          : ApplicationManagement
-LastModifiedTime  : 12/03/2015 00:18:38
-State             : pending
-OperationMetadata : {app, userId, userName, deviceType}
-Id                : /providers/Microsoft.Intune/locations/fef.bmsua01/operationResults/f0873bca-a99f-ccf8-8315-568bd5b7
-                    c2bf
-Name              : f0873bca-a99f-ccf8-8315-568bd5b7c2bf
-Type              : Microsoft.Intune/locations/operationResults
-Tags              :
-Location          :
-
-FriendlyName      : Wipe
-Category          : ApplicationManagement
-LastModifiedTime  : 11/19/2015 23:35:31
-State             : pending
-OperationMetadata : {app, userId, userName, deviceType}
-Id                : /providers/Microsoft.Intune/locations/fef.bmsua01/operationResults/7dea2a9f-2e06-5fb5-e960-1f594d87
-                    d891
-Name              : 7dea2a9f-2e06-5fb5-e960-1f594d87d891
-Type              : Microsoft.Intune/locations/operationResults
-Tags              :
-Location          :</maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -3361,26 +3278,22 @@ Location          :</maml:para>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code># Get the list of devices for a given user specified by Name parameter
-$devices = Get-AzureRmIntuneMAMUserDevice -Name f4058390-f6d0-459b-9c36-3cf9d88e87f5
+      <dev:code># Get the list of AAD users
+$users = @(Get-AzureRmADUser);
+
+# Get the list of devices for a given user specified by Name parameter
+$devices = Get-AzureRmIntuneMAMUserDevice -Name $users[0].Id
 
 #Wipe the first device from the list.
-$wipeResult = Invoke-AzureRmIntuneMAMUserDeviceWipe -Name f4058390-f6d0-459b-9c36-3cf9d88e87f5 -DeviceName $devices[0].Name
+$wipeResult = Invoke-AzureRmIntuneMAMUserDeviceWipe -Name $users[0].Id -DeviceName $devices[0].Name
 
 #display the wipe result
-$wipeResult</dev:code>
+$wipeResult
+      </dev:code>
 			<dev:remarks>
 				<maml:para>After logging-in as a valid Intune Account, when this command is executed, this will issue the wipe coomand for the apps on the specified device. 
 Wipe is a long running operation, and the output of the invoke call will show the path to the OperationResults, which will provide the status of the wipe action overtime.</maml:para>
 				<maml:para />
-				<maml:para />
-				<maml:para>Value    : /operationResults/8693b393-a69c-4d12-a9c8-a1a415884fd2?$filter=category eq
-           &apos;8693b393-a69c-4d12-a9c8-a1a415884fd2&apos;
-Id       :
-Name     : 8693b393-a69c-4d12-a9c8-a1a415884fd2
-Type     : Microsoft.Intune/locations/users/devices
-Tags     :
-Location :</maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
