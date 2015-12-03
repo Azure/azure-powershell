@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
     using Microsoft.Azure.Management.Resources;
     using Microsoft.Azure.Management.Resources.Models;
     using Moq;
+    using ScenarioTest;
     using System;
     using System.Management.Automation;
     using System.Net;
@@ -40,7 +41,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// <summary>
         /// A mock of the client
         /// </summary>
-        private readonly Mock<IFeatures> featureOperationsMock;
+        private readonly Mock<IFeaturesOperations> featureOperationsMock;
 
         /// <summary>
         /// A mock of the command runtime
@@ -52,7 +53,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// </summary>
         public RegisterAzureProviderFeatureCmdletTests()
         {
-            this.featureOperationsMock = new Mock<IFeatures>();
+            this.featureOperationsMock = new Mock<IFeaturesOperations>();
             var featureClient = new Mock<IFeatureClient>();
 
             featureClient
@@ -67,12 +68,13 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
             this.cmdlet = new RegisterAzureProviderFeatureCmdlet()
             {
-                CommandRuntime = commandRuntimeMock.Object,
+                //CommandRuntime = commandRuntimeMock.Object,
                 ProviderFeatureClient = new ProviderFeatureClient
                 {
                     FeaturesManagementClient = featureClient.Object
                 }
             };
+            System.Reflection.TypeExtensions.GetProperty(cmdlet.GetType(), "CommandRuntime").SetValue(cmdlet, commandRuntimeMock.Object);
         }
 
         /// <summary>
@@ -85,7 +87,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
             const string ProviderName = "Providers.Test";
             const string FeatureName = "Feature1";
 
-            var registeredFeature = new FeatureResponse
+            var registeredFeature = new FeatureResult
             {
                 Id = "featureId1",
                 Name = ProviderName + "/" + FeatureName,
@@ -93,8 +95,6 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 {
                     State = ProviderFeatureClient.RegisteredStateName,
                 },
-                RequestId = "requestId",
-                StatusCode = HttpStatusCode.OK,
                 Type = "Microsoft.Features/feature"
             };
 

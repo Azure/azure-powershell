@@ -49,9 +49,12 @@ namespace Microsoft.Azure.Commands.Resources.Test
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new NewAzureResourceGroupCommand()
             {
-                CommandRuntime = commandRuntimeMock.Object,
+                //CommandRuntime = commandRuntimeMock.Object,
                 ResourcesClient = resourcesClientMock.Object
             };
+
+            //Using reflection
+            System.Reflection.TypeExtensions.GetProperty(cmdlet.GetType(), "CommandRuntime").SetValue(cmdlet, commandRuntimeMock.Object);
 
             tags = new[]
             {

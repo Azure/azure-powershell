@@ -23,7 +23,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureProviderFeature()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-AzureProviderFeature");
+            ResourcesController.NewInstance.RunPsTest(
+                "Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ProviderFeatureTests",
+                "TestAzureProviderFeature",
+                "Test-AzureProviderFeature");
         }
     }
 }

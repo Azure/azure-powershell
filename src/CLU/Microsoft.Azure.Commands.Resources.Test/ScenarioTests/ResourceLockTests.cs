@@ -23,7 +23,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         public void TestResourceLockCRUDTest()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-ResourceLockCRUD");
+            ResourcesController.NewInstance.RunPsTest(
+                "Microsoft.Azure.Commands.Resources.Test.ScenarioTests.TestResourceLockCRUDTest",
+                "TestResourceLockCRUDTest",
+                "Test-ResourceLockCRUD");
         }
     }
 }

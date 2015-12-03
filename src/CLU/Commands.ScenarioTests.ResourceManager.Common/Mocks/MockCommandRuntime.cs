@@ -16,12 +16,81 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.Management.Automation;
+using System.Management.Automation.Host;
 
 namespace Microsoft.Azure.Commands.Common.Test.Mocks
 {
     public class MockCommandRuntime : ICommandRuntime
     {
+        /*public class PSHostConcrete : System.Management.Automation.Host.PSHost
+        {
+            public override CultureInfo CurrentCulture
+            {
+                get
+                {
+                    throw new NotImplementedException();
+                }
+            }
+
+            public override CultureInfo CurrentUICulture
+            {
+                get
+                {
+                    throw new NotImplementedException();
+                }
+            }
+
+            public override Guid InstanceId
+            {
+                get
+                {
+                    throw new NotImplementedException();
+                }
+            }
+
+            public override bool IsInputRedirected
+            {
+                get
+                {
+                    throw new NotImplementedException();
+                }
+            }
+
+            public override bool IsOutputRedirected
+            {
+                get
+                {
+                    throw new NotImplementedException();
+                }
+            }
+
+            public override string Name
+            {
+                get
+                {
+                    throw new NotImplementedException();
+                }
+            }
+
+            public override PSHostUserInterface UI
+            {
+                get
+                {
+                    throw new NotImplementedException();
+                }
+            }
+
+            public override Version Version
+            {
+                get
+                {
+                    throw new NotImplementedException();
+                }
+            }
+        }*/
+
         public List<ErrorRecord> ErrorStream = new List<ErrorRecord>();
         public List<object> OutputPipeline = new List<object>();
         public List<string> WarningStream = new List<string>();

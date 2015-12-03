@@ -23,7 +23,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Fact(Skip = "TODO: Fix the broken test.")]
         public void TestAuthorizationEndToEnd()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-AuthorizationEndToEnd");
+            ResourcesController.NewInstance.RunPsTest(
+                "Microsoft.Azure.Commands.Resources.Test.ScenarioTests.AuthorizationTests",
+                "TestAuthorizationEndToEnd",
+                "Test-AuthorizationEndToEnd");
         }
     }
 }
