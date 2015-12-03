@@ -14,19 +14,11 @@
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    public class VirtualMachineDiagnosticsExtensionCmdletBase : VirtualMachineExtensionBaseCmdlet
+    public static class DiagnosticsExtensionConstants
     {
-        protected const string DiagnosticsExtensionNamespace = "Microsoft.Azure.Diagnostics";
-        protected const string DiagnosticsExtensionType = "IaaSDiagnostics";
-
-        protected string StorageAccountName { get; set; }
-        protected string StorageKey { get; set; }
-        protected string Endpoint { get; set; }
-
-        public VirtualMachineDiagnosticsExtensionCmdletBase()
-            : base()
-        {
-
-        }
+        public const string VirtualMachineExtensionResourceType = "Microsoft.Compute/virtualMachines/extensions";
+        public const string ExtensionDefaultName = "Microsoft.Insights.VMDiagnosticsSettings";
+        public const string ExtensionPublisher = "Microsoft.Azure.Diagnostics";
+        public const string ExtensionType = "IaaSDiagnostics";
     }
 }

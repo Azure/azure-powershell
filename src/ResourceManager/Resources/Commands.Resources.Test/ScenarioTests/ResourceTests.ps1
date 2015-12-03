@@ -273,6 +273,32 @@ function Test-SetAResource
 
 <#
 .SYNOPSIS
+Tests setting a resource using patch.
+#>
+function Test-SetAResourceWithPatch
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rname = Get-ResourceName
+	$rglocation = Get-ProviderLocation ResourceManagement
+	$apiversion = "2014-04-01"
+	$resourceType = "Providers.Test/statefulResources"
+
+	# Test
+	New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+	$resource = New-AzureRmResource -Name $rname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+	Set-AzureRmResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -Properties @{"key2" = "value2"} -Force
+	Set-AzureRmResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -SkuObject @{ Name = "A1" } -UsePatchSemantics -Force 
+
+	$modifiedResource = Get-AzureRmResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType
+
+	# Assert patch didn't overwrite existing properties
+	Assert-AreEqual $modifiedResource.Properties.key2 "value2"
+	Assert-AreEqual $modifiedResource.Sku.Name "A1" 
+}
+
+<#
+.SYNOPSIS
 Tests finding a resource.
 #>
 function Test-FindAResource
