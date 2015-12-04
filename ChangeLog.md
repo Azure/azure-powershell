@@ -5,6 +5,35 @@
 * Azure RemoteApp: New cmdlets for managing stale machine accounts in AD:
   * Get-AzureRemoteAppVmStaleAdObject
   * Clear-AzureRemoteAppVmStaleAdObject
+* Azure Intune: New cmdlets for Mobile Application management:
+   * Add-AzureRmIntuneAndroidMAMPolicyApp      
+   * Add-AzureRmIntuneAndroidMAMPolicyGroup    
+   * Add-AzureRmIntuneiOSMAMPolicyApp          
+   * Add-AzureRmIntuneiOSMAMPolicyGroup        
+   * Get-AzureRmIntuneAndroidMAMApp            
+   * Get-AzureRmIntuneAndroidMAMPolicy         
+   * Get-AzureRmIntuneAndroidMAMPolicyApp      
+   * Get-AzureRmIntuneAndroidMAMPolicyGroup    
+   * Get-AzureRmIntuneiOSMAMApp                
+   * Get-AzureRmIntuneiOSMAMPolicy             
+   * Get-AzureRmIntuneiOSMAMPolicyApp          
+   * Get-AzureRmIntuneiOSMAMPolicyGroup        
+   * Get-AzureRmIntuneMAMFlaggedUser           
+   * Get-AzureRmIntuneMAMStatus                
+   * Get-AzureRmIntuneMAMUserDevice            
+   * Get-AzureRmIntuneMAMUserFlaggedEnrolledApp
+   * Get-AzureRmIntuneOperationResult          
+   * Invoke-AzureRmIntuneMAMUserDeviceWipe     
+   * New-AzureRmIntuneAndroidMAMPolicy         
+   * New-AzureRmIntuneiOSMAMPolicy             
+   * Remove-AzureRmIntuneAndroidMAMPolicy      
+   * Remove-AzureRmIntuneAndroidMAMPolicyApp   
+   * Remove-AzureRmIntuneAndroidMAMPolicyGroup 
+   * Remove-AzureRmIntuneIOSMAMPolicy          
+   * Remove-AzureRmIntuneiOSMAMPolicyApp       
+   * Remove-AzureRmIntuneiOSMAMPolicyGroup     
+   * Set-AzureRmIntuneAndroidMAMPolicy         
+   * Set-AzureRmIntuneiOSMAMPolicy                   
   
 ## 2015.11.09 version 1.0.1
 * Azure Compute
