@@ -61,8 +61,9 @@
     <Reference Include="Microsoft.Azure.Common.NetFramework">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.OperationalInsights">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.OperationalInsights.0.10.0-preview\lib\net40\Microsoft.Azure.Management.OperationalInsights.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.OperationalInsights, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.OperationalInsights.0.11.0-preview\lib\net40\Microsoft.Azure.Management.OperationalInsights.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -124,12 +125,30 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Client\OperationalInsightsClient.Search.cs" />
     <Compile Include="Client\OperationalInsightsClient.StorageInsights.cs" />
     <Compile Include="Client\OperationalInsightsClient.Workspaces.cs" />
     <Compile Include="Client\OperationalInsightsClient.cs" />
     <Compile Include="CloudExceptionExtensions.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Models\PSCoreSummary.cs" />
+    <Compile Include="Models\PSError.cs" />
+    <Compile Include="Models\PSExtraction.cs" />
+    <Compile Include="Models\PSFacet.cs" />
+    <Compile Include="Models\PSHighlight.cs" />
     <Compile Include="Models\PSIntelligencePack.cs" />
+    <Compile Include="Models\PSMetadata.cs" />
+    <Compile Include="Models\PSMetadataSchema.cs" />
+    <Compile Include="Models\PSRange.cs" />
+    <Compile Include="Models\PSSavedSearchProperties.cs" />
+    <Compile Include="Models\PSSavedSearchValue.cs" />
+    <Compile Include="Models\PSSchemaValue.cs" />
+    <Compile Include="Models\PSSearchGetSavedSearchResponse.cs" />
+    <Compile Include="Models\PSSearchGetSchemaResponse.cs" />
+    <Compile Include="Models\PSSearchGetSearchResultParameters.cs" />
+    <Compile Include="Models\PSSearchGetSearchResultResponse.cs" />
+    <Compile Include="Models\PSSearchSavedSearchResponse.cs" />
+    <Compile Include="Models\PSSort.cs" />
     <Compile Include="Models\PSUsageMetric.cs" />
     <Compile Include="Models\PSManagementGroup.cs" />
     <Compile Include="Models\PSAccount.cs" />
@@ -149,6 +168,14 @@
     </Compile>
     <Compile Include="OperationalInsightsBaseCmdlet.cs" />
     <Compile Include="ProvisioningFailedException.cs" />
+    <Compile Include="Search\GetAzureOperationalInsightsSavedSearchCommand.cs" />
+    <Compile Include="Search\GetAzureOperationalInsightsSavedSearchesCommand.cs" />
+    <Compile Include="Search\GetAzureOperationalInsightsSavedSearchResultsCommand.cs" />
+    <Compile Include="Search\GetAzureOperationalInsightsSchemaCommand.cs" />
+    <Compile Include="Search\GetAzureOperationalInsightsSearchResultCommand.cs" />
+    <Compile Include="Search\GetAzureOperationalInsightsSearchResultUpdateCommand.cs" />
+    <Compile Include="Search\SetAzureOperationalInsightsSavedSearch.cs" />
+    <Compile Include="Search\RemoveAzureOperationalInsightsSavedSearchCommand.cs" />
     <Compile Include="StorageInsights\GetAzureOperationalInsightsStorageInsightCommand.cs" />
     <Compile Include="StorageInsights\SetAzureOperationalInsightsStorageInsightCommand.cs" />
     <Compile Include="StorageInsights\NewAzureOperationalInsightsStorageInsightCommand.cs" />
@@ -201,4 +228,11 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
 </Project>
