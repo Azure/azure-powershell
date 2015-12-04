@@ -213,6 +213,19 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             set;
         }
 
+        [Parameter(Position = 13, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = DomainParameterSet, HelpMessage = ExtensionParameterPropertyHelper.ExtensionIdHelpMessage)]
+        [Parameter(Position = 13, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = DomainThumbprintParameterSet, HelpMessage = ExtensionParameterPropertyHelper.ExtensionIdHelpMessage)]
+        [Parameter(Position = 13, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = DomainJoinOptionParameterSet, HelpMessage = ExtensionParameterPropertyHelper.ExtensionIdHelpMessage)]
+        [Parameter(Position = 13, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = DomainJoinOptionThumbprintParameterSet, HelpMessage = ExtensionParameterPropertyHelper.ExtensionIdHelpMessage)]
+        [Parameter(Position = 9, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = WorkgroupParameterSet, HelpMessage = ExtensionParameterPropertyHelper.ExtensionIdHelpMessage)]
+        [Parameter(Position = 9, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = WorkgroupThumbprintParameterSet, HelpMessage = ExtensionParameterPropertyHelper.ExtensionIdHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public override string ExtensionId
+        {
+            get;
+            set;
+        }
+
         protected override void ValidateParameters()
         {
             base.ValidateParameters();
@@ -228,6 +241,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             this.ValidateParameters();
             ExtensionConfigurationInput context = new ExtensionConfigurationInput
             {
+                Id = ExtensionId,
                 ProviderNameSpace = ProviderNamespace,
                 Type = ExtensionName,
                 CertificateThumbprint = CertificateThumbprint,
