@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Commands.Resources
                 }
             };
 
-            WriteObject(PoliciesClient.CreateRoleAssignment(parameters, DefaultProfile.Context.Subscription.Id.ToString()));
+            WriteObject(PoliciesClient.CreateRoleAssignment(parameters));
         }
     }
 }
