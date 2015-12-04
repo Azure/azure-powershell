@@ -30,11 +30,15 @@ namespace Microsoft.Azure.Commands.Network.Models
 
          public List<PSApplicationGatewayFrontendPort> FrontendPorts { get; set; }
 
+         public List<PSApplicationGatewayProbe> Probes { get; set; }
+
          public List<PSApplicationGatewayBackendAddressPool> BackendAddressPools { get; set; }
 
          public List<PSApplicationGatewayBackendHttpSettings> BackendHttpSettingsCollection { get; set; }
 
          public List<PSApplicationGatewayHttpListener> HttpListeners { get; set; }
+
+         public List<PSApplicationGatewayUrlPathMap> UrlPathMaps { get; set; }
 
          public List<PSApplicationGatewayRequestRoutingRule> RequestRoutingRules { get; set; }
 

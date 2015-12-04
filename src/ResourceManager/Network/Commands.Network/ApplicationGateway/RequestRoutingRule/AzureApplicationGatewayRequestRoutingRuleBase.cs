@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
         Mandatory = true,
         HelpMessage = "The type of rule")]
-        [ValidateSet("Basic", IgnoreCase = true)]
+        [ValidateSet("Basic", "PathBasedRouting", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string RuleType { get; set; }
 

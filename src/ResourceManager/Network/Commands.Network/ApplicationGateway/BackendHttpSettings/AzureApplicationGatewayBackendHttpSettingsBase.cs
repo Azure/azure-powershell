@@ -47,6 +47,35 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string CookieBasedAffinity { get; set; }
 
+        [Parameter(        
+               HelpMessage = "Request Timeout")]        
+        [ValidateNotNullOrEmpty]
+        public uint RequestTimeout { get; set; }
+
+        [Parameter(
+        ParameterSetName = "SetByResourceId",
+        HelpMessage = "ID of the application gateway Probe")]
+        [ValidateNotNullOrEmpty]
+        public string ProbeId { get; set; }
+
+        [Parameter(
+                ParameterSetName = "SetByResource",
+                HelpMessage = "Application gateway Probe")]
+        [ValidateNotNullOrEmpty]
+        public PSApplicationGatewayProbe Probe { get; set; }
+
+        public override void ExecuteCmdlet()
+        {
+            base.ExecuteCmdlet();
+
+            if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
+            {
+                if (Probe != null)
+                {
+                    this.ProbeId = this.Probe.Id;
+                }                
+            }
+        }
         public PSApplicationGatewayBackendHttpSettings NewObject()
         {
             var backendHttpSettings = new PSApplicationGatewayBackendHttpSettings();
@@ -54,6 +83,12 @@ namespace Microsoft.Azure.Commands.Network
             backendHttpSettings.Port = this.Port;
             backendHttpSettings.Protocol = this.Protocol;
             backendHttpSettings.CookieBasedAffinity = this.CookieBasedAffinity;
+            backendHttpSettings.RequestTimeout = this.RequestTimeout;
+            if (!string.IsNullOrEmpty(this.ProbeId))
+            {
+                backendHttpSettings.Probe = new PSResourceId();
+                backendHttpSettings.Probe.Id = this.ProbeId;
+            }
             backendHttpSettings.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
                                     this.NetworkClient.NetworkManagementClient.SubscriptionId,
                                     Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewaybackendHttpSettingsName,
