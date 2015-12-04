@@ -32,6 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.CloudService.Development
 {
     using ConfigConfigurationSetting = Utilities.Common.XmlSchema.ServiceConfigurationSchema.ConfigurationSetting;
     using DefinitionConfigurationSetting = Utilities.Common.XmlSchema.ServiceDefinitionSchema.ConfigurationSetting;
+    using Microsoft.WindowsAzure.Commands.Common;
 
     /// <summary>
     /// Enables memcache for specific role.
@@ -73,6 +74,7 @@ namespace Microsoft.WindowsAzure.Commands.CloudService.Development
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
+            WriteWarning("This cmdlet will be removed in a future release as we are retiring Managed Cache scaffolding support.");
             string rootPath = CommonUtilities.GetServiceRootPath(CurrentPath());
             RoleName = string.IsNullOrEmpty(RoleName) ? CommonUtilities.GetRoleName(rootPath, CurrentPath()) : RoleName;
 

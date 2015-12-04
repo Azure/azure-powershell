@@ -12,18 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Graph.RBAC;
+using Microsoft.Azure.Insights;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Subscriptions;
-using Microsoft.Azure.Utilities.HttpRecorder;
+using Microsoft.Azure.Test;
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Management.Monitoring.Events;
-using Microsoft.WindowsAzure.Testing;
-using System;
-using System.Linq;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
@@ -31,18 +38,21 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
     {
         private CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
-        protected const string TenantIdKey = "TenantId";
-        protected const string DomainKey = "Domain";
+        private const string TenantIdKey = "TenantId";
+        private const string DomainKey = "Domain";
+        private const string SubscriptionIdKey = "SubscriptionId";
 
         public GraphRbacManagementClient GraphClient { get; private set; }
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
+        public FeatureClient FeatureClient { get; private set; }
+
         public SubscriptionClient SubscriptionClient { get; private set; }
 
         public GalleryClient GalleryClient { get; private set; }
-
-        public EventsClient EventsClient { get; private set; }
+        
+        public InsightsClient InsightsClient { get; private set; }
 
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
@@ -101,10 +111,11 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 var callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
-                helper.SetupModules(
-                    AzureModule.AzureResourceManager, 
-                    "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + callingClassName + ".ps1");
+                helper.SetupModules(AzureModule.AzureResourceManager, 
+                    "ScenarioTests\\Common.ps1", 
+                    "ScenarioTests\\" + callingClassName + ".ps1", 
+                    helper.RMProfileModule, 
+                    helper.RMResourceModule);
 
                 try
                 {
@@ -130,29 +141,12 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         private void SetupManagementClients()
         {
-            ResourceManagementClient = GetResourceManagementClient();
-            SubscriptionClient = GetSubscriptionClient();
-            GalleryClient = GetGalleryClient();
-            EventsClient = GetEventsClient();
-            AuthorizationManagementClient = GetAuthorizationManagementClient();
-            GraphClient = GetGraphClient();
-
-            helper.SetupManagementClients(ResourceManagementClient,
-                SubscriptionClient,
-                GalleryClient,
-                EventsClient,
-                AuthorizationManagementClient,
-                GraphClient);
-        }
-
-        private GraphRbacManagementClient GetGraphClient()
-        {
             var environment = this.csmTestFactory.GetTestEnvironment();
             string tenantId = null;
 
             if (HttpMockServer.Mode == HttpRecorderMode.Record)
             {
-                tenantId = environment.AuthorizationContext.TenatId;
+                tenantId = environment.AuthorizationContext.TenantId;
                 UserDomain = environment.AuthorizationContext.UserDomain;
 
                 HttpMockServer.Variables[TenantIdKey] = tenantId;
@@ -168,35 +162,69 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 {
                     UserDomain = HttpMockServer.Variables[DomainKey];
                 }
+                if (HttpMockServer.Variables.ContainsKey(SubscriptionIdKey))
+                {
+                    helper.TestProfile.Context.Subscription.Id = new Guid(HttpMockServer.Variables[SubscriptionIdKey]);
+                }
             }
 
-            return TestBase.GetGraphServiceClient<GraphRbacManagementClient>(this.csmTestFactory, tenantId);
+            HttpClientHelperFactory.Instance = new TestHttpClientHelperFactory(this.csmTestFactory.GetTestEnvironment().Credentials as SubscriptionCloudCredentials);
+
         }
 
-        private AuthorizationManagementClient GetAuthorizationManagementClient()
+        /// <summary>
+        /// The test http client helper factory.
+        /// </summary>
+        private class TestHttpClientHelperFactory : HttpClientHelperFactory
         {
-            return TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
-        }
+            /// <summary>
+            /// The subscription cloud credentials.
+            /// </summary>
+            private readonly SubscriptionCloudCredentials credential;
 
-        private ResourceManagementClient GetResourceManagementClient()
-        {
-            return TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
-        }
+            /// <summary>
+            /// Initializes a new instance of the <see cref="TestHttpClientHelperFactory"/> class.
+            /// </summary>
+            /// <param name="credentials"></param>
+            public TestHttpClientHelperFactory(SubscriptionCloudCredentials credentials)
+            {
+                this.credential = credentials;
+            }
 
-        private SubscriptionClient GetSubscriptionClient()
-        {
-            return TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
-        }
+            /// <summary>
+            /// Creates new instances of the <see cref="HttpClientHelper"/> class.
+            /// </summary>
+            /// <param name="credentials">The credentials.</param>
+            /// <param name="headerValues">The headers.</param>
+            public override HttpClientHelper CreateHttpClientHelper(SubscriptionCloudCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues, Dictionary<string, string> cmdletHeaderValues)
+            {
+                return new HttpClientHelperImpl(credentials: this.credential, headerValues: headerValues, cmdletHeaderValues: cmdletHeaderValues);
+            }
 
-        private GalleryClient GetGalleryClient()
-        {
-            return TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
-        }
+            /// <summary>
+            /// An implementation of the <see cref="HttpClientHelper"/> abstract class.
+            /// </summary>
+            private class HttpClientHelperImpl : HttpClientHelper
+            {
+                /// <summary>
+                /// Initializes new instances of the <see cref="HttpClientHelperImpl"/> class.
+                /// </summary>
+                /// <param name="credentials">The credentials.</param>
+                /// <param name="headerValues">The headers.</param>
+                public HttpClientHelperImpl(SubscriptionCloudCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues, Dictionary<string, string> cmdletHeaderValues)
+                    : base(credentials: credentials, headerValues: headerValues, cmdletHeaderValues: cmdletHeaderValues)
+                {
+                }
 
-        private EventsClient GetEventsClient()
-        {
-            return TestBase.GetServiceClient<EventsClient>(this.csmTestFactory);
+                /// <summary>
+                /// Creates an <see cref="HttpClient"/>
+                /// </summary>
+                /// <param name="primaryHandlers">The handlers that will be added to the top of the chain.</param>
+                public override HttpClient CreateHttpClient(params DelegatingHandler[] primaryHandlers)
+                {
+                    return base.CreateHttpClient(HttpMockServer.CreateInstance().AsArray().Concat(primaryHandlers).ToArray());
+                }
+            }
         }
-
     }
 }

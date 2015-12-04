@@ -19,6 +19,7 @@ using System.Security.Permissions;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.CloudService.Development.Scaffolding
 {
@@ -26,7 +27,7 @@ namespace Microsoft.WindowsAzure.Commands.CloudService.Development.Scaffolding
     /// Creates new azure template for web/worker role.
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRoleTemplate"), OutputType(typeof(PSObject))]
-    public class NewAzureRoleTemplateCommand : AzurePSCmdlet
+    public class NewAzureRoleTemplateCommand : AzureSMCmdlet
     {
         const string DefaultWebRoleTemplate = "WebRoleTemplate";
 

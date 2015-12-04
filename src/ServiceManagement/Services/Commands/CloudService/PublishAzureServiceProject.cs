@@ -25,7 +25,7 @@ namespace Microsoft.WindowsAzure.Commands.CloudService
     /// of the same name or in the same slot when executing this command.
     /// </summary>
     [Cmdlet(VerbsData.Publish, "AzureServiceProject", DefaultParameterSetName = ServicePublishParamSet), OutputType(typeof(Deployment))]
-    public class PublishAzureServiceProjectCommand : AzurePSCmdlet
+    public class PublishAzureServiceProjectCommand : AzureSMCmdlet
     {
         private const string ServicePublishParamSet = "PublishFromServiceDefinition";
         private const string PackagePublishParamSet = "PublishFromPackage";
@@ -78,7 +78,8 @@ namespace Microsoft.WindowsAzure.Commands.CloudService
         public override void ExecuteCmdlet()
         {
             CloudServiceClient = CloudServiceClient ?? new CloudServiceClient(
-                CurrentContext.Subscription,
+                Profile,
+                Profile.Context.Subscription,
                 SessionState.Path.CurrentLocation.Path,
                 WriteDebug,
                 WriteVerbose,

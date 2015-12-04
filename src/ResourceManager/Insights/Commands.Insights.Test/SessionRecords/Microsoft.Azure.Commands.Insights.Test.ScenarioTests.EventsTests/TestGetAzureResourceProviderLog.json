@@ -1,0 +1,63 @@
+{
+    "Entries": [
+        {
+            "RequestUri": "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp%20ge%20%272015-03-03T15%3A42%3A50.0000000Z%27%20and%20eventTimestamp%20le%20%272015-03-03T16%3A42%3A50.0000000Z%27%20and%20resourceProvider%20eq%20%27microsoft.insights%27&$select=Authorization%2CCaller%2CCorrelationId%2CCategory%2CEventTimestamp%2COperationName%2CResourceGroupName%2CResourceUri%2CStatus%2CSubscriptionId%2CSubStatus",
+            "RequestMethod": "GET",
+            "RequestBody": "",
+            "RequestHeaders": {
+                "Accept": [ "application/json" ],
+                "User-Agent": [
+                    "Microsoft.Azure.Insights.InsightsClient/0.9.0.0 AzurePowershell/v0.8.14"
+                ]
+            },
+            "ResponseBody": "{\"value\":[{\"caller\":\"Microsoft.Insights/alertRules\",\"channels\":\"Admin, Operation\",\"claims\":{\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/spn\":\"Microsoft.Insights/alertRules\"},\"correlationId\":\"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d/incidents/L3N1YnNjcmlwdGlvbnMvYTkzZmIwN2MtNmM5My00MGJlLWJmM2ItNGYwZGViYTEwZjRiL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtV2ViLUVhc3RVUy9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL2FsZXJ0cnVsZXMvY2hlY2tydWxlMy00YjEzNTQwMS1hMzBjLTQyMjQtYWUyMS1mYTUzYTViZDI1M2QwNjM1NjA5MjE5ODU0NzQ1NDI0\",\"description\":\"'CpuTime GreaterThan 3 ([Count]) in the last 5 minutes' has been resolved for Website: garyyang1 (Default-Web-EastUS)\",\"eventDataId\":\"0f4f4885-2f32-46ed-9aac-e179132fb8be\",\"eventName\":{\"value\":\"Alert\",\"localizedValue\":\"Alert\"},\"category\":{\"value\":\"microsoft.insights/alertrules\",\"localizedValue\":\"Microsoft Insights Alert Settings\"},\"id\":\"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/garyyang1/events/0f4f4885-2f32-46ed-9aac-e179132fb8be/ticks/635609219854745424\",\"level\":\"Informational\",\"resourceGroupName\":\"Default-Web-EastUS\",\"resourceProviderName\":{\"value\":\"microsoft.web\",\"localizedValue\":\"Azure Web Sites\"},\"resourceUri\":\"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/garyyang1\",\"operationId\":\"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d/incidents/L3N1YnNjcmlwdGlvbnMvYTkzZmIwN2MtNmM5My00MGJlLWJmM2ItNGYwZGViYTEwZjRiL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtV2ViLUVhc3RVUy9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL2FsZXJ0cnVsZXMvY2hlY2tydWxlMy00YjEzNTQwMS1hMzBjLTQyMjQtYWUyMS1mYTUzYTViZDI1M2QwNjM1NjA5MjE5ODU0NzQ1NDI0\",\"operationName\":{\"value\":\"ResolveAlert\",\"localizedValue\":\"Resolve alert.\"},\"properties\":{\"RuleUri\":\"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d\",\"RuleName\":\"checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d\",\"RuleDescription\":\"\",\"Threshold\":\"3\",\"WindowSizeInMinutes\":\"5\",\"Aggregation\":\"Total\",\"Operator\":\"GreaterThan\",\"MetricName\":\"CpuTime\",\"MetricUnit\":\"Count\"},\"status\":{\"value\":\"Resolved\",\"localizedValue\":\"Resolved\"},\"subStatus\":{\"value\":null},\"eventTimestamp\":\"2015-03-02T19:39:45.4745424Z\",\"submissionTimestamp\":\"2015-03-02T19:39:45.5427015Z\",\"subscriptionId\":\"a93fb07c-6c93-40be-bf3b-4f0deba10f4b\"},{\"caller\":\"Microsoft.Insights/alertRules\",\"channels\":\"Admin, Operation\",\"claims\":{\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/spn\":\"Microsoft.Insights/alertRules\"},\"correlationId\":\"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d/incidents/L3N1YnNjcmlwdGlvbnMvYTkzZmIwN2MtNmM5My00MGJlLWJmM2ItNGYwZGViYTEwZjRiL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtV2ViLUVhc3RVUy9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL2FsZXJ0cnVsZXMvY2hlY2tydWxlMy00YjEzNTQwMS1hMzBjLTQyMjQtYWUyMS1mYTUzYTViZDI1M2QwNjM1NjA5MjE5ODU0NzQ1NDI0\",\"description\":\"'CpuTime GreaterThan 3 ([Count]) in the last 5 minutes' has been resolved for Website: garyyang1 (Default-Web-EastUS)\",\"eventDataId\":\"f20ff80c-909e-489b-85a0-1d97e3c5d62e\",\"eventName\":{\"value\":\"Alert\",\"localizedValue\":\"Alert\"},\"category\":{\"value\":\"microsoft.insights/alertrules\",\"localizedValue\":\"Microsoft Insights Alert Settings\"},\"id\":\"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d/events/f20ff80c-909e-489b-85a0-1d97e3c5d62e/ticks/635609219854745424\",\"level\":\"Informational\",\"resourceGroupName\":\"Default-Web-EastUS\",\"resourceProviderName\":{\"value\":\"microsoft.insights\",\"localizedValue\":\"Microsoft Insights\"},\"resourceUri\":\"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d\",\"operationId\":\"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d/incidents/L3N1YnNjcmlwdGlvbnMvYTkzZmIwN2MtNmM5My00MGJlLWJmM2ItNGYwZGViYTEwZjRiL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtV2ViLUVhc3RVUy9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL2FsZXJ0cnVsZXMvY2hlY2tydWxlMy00YjEzNTQwMS1hMzBjLTQyMjQtYWUyMS1mYTUzYTViZDI1M2QwNjM1NjA5MjE5ODU0NzQ1NDI0\",\"operationName\":{\"value\":\"ResolveAlert\",\"localizedValue\":\"Resolve alert.\"},\"properties\":{\"RuleUri\":\"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d\",\"RuleName\":\"checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d\",\"RuleDescription\":\"\",\"Threshold\":\"3\",\"WindowSizeInMinutes\":\"5\",\"Aggregation\":\"Total\",\"Operator\":\"GreaterThan\",\"MetricName\":\"CpuTime\",\"MetricUnit\":\"Count\"},\"status\":{\"value\":\"Resolved\",\"localizedValue\":\"Resolved\"},\"subStatus\":{\"value\":null},\"eventTimestamp\":\"2015-03-02T19:39:45.4745424Z\",\"submissionTimestamp\":\"2015-03-02T19:39:45.5417014Z\",\"subscriptionId\":\"a93fb07c-6c93-40be-bf3b-4f0deba10f4b\"}]}",
+            "ResponseHeaders": {
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Date": [
+                    "Mon, 02 Mar 2015 19:47:14 GMT"
+                ],
+                "Expires": [
+                    "-1"
+                ],
+                "Pragma": [
+                    "no-cache"
+                ],
+                "Vary": [
+                    "Accept-Encoding"
+                ],
+                "Content-Length": [
+                    "5453"
+                ],
+                "Content-Type": [
+                    "application/json; charset=utf-8"
+                ],
+                "x-ms-ratelimit-remaining-subscription-reads": [
+                    "31998"
+                ],
+                "x-ms-request-id": [
+                    "WestUS_d9e73d2735f24797a08dda5d8228e509_635609224343322694"
+                ],
+                "x-ms-correlation-request-id": [
+                    "45888041-1ede-478b-949f-13aa6e47e0ba"
+                ],
+                "x-ms-routing-request-id": [
+                    "WESTUS:20150302T194714Z:45888041-1ede-478b-949f-13aa6e47e0ba"
+                ],
+                "Strict-Transport-Security": [
+                    "max-age=31536000; includeSubDomains"
+                ]
+            },
+            "StatusCode": 200
+        }
+    ],
+    "Names": {
+        "Test-GetAzureResourceProviderLog": [
+            ""
+        ]
+    },
+    "Variables": {
+        "SubscriptionId": "a93fb07c-6c93-40be-bf3b-4f0deba10f4b"
+    }
+}

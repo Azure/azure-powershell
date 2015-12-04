@@ -76,6 +76,15 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         }
 
         /// <inheritdoc />
+        [Parameter(Position = 5, Mandatory = false, HelpMessage = "Rule for SSL errors with HDInsight client.",
+            ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByNameWithSpecificSubscriptionCredentials)]
+        public bool IgnoreSslErrors
+        {
+            get { return this.command.IgnoreSslErrors; }
+            set { this.command.IgnoreSslErrors = value; }
+        }
+
+        /// <inheritdoc />
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the HDInsight cluster to locate.", ValueFromPipeline = true,
             ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByNameWithSpecificSubscriptionCredentials)]
         [Alias(AzureHdInsightPowerShellConstants.AliasClusterName, AzureHdInsightPowerShellConstants.AliasDnsName)]
@@ -100,6 +109,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         /// </summary>
         protected override void EndProcessing()
         {
+            this.WriteWarning(string.Format(AzureHdInsightPowerShellConstants.AsmWarning, "Use-AzureRmHDInsightCluster"));
             try
             {
                 this.command.Logger = this.Logger;

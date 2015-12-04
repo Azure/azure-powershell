@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.DataFactories.Properties;
 using Microsoft.Azure.Management.DataFactories;
 using Microsoft.Azure.Management.DataFactories.Models;
 using Microsoft.WindowsAzure;
+using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
@@ -57,11 +58,21 @@ namespace Microsoft.Azure.Commands.DataFactories
             };
         }
 
-        public virtual List<PSLinkedService> ListLinkedServices(string resourceGroupName, string dataFactoryName)
+        public virtual List<PSLinkedService> ListLinkedServices(LinkedServiceFilterOptions filterOptions)
         {
             List<PSLinkedService> linkedServices = new List<PSLinkedService>();
 
-            var response = DataPipelineManagementClient.LinkedServices.List(resourceGroupName, dataFactoryName);
+            LinkedServiceListResponse response;
+            if (filterOptions.NextLink.IsNextPageLink())
+            {
+                response = DataPipelineManagementClient.LinkedServices.ListNext(filterOptions.NextLink);
+            }
+            else
+            {
+                response = DataPipelineManagementClient.LinkedServices.List(filterOptions.ResourceGroupName,
+                    filterOptions.DataFactoryName);
+            }
+            filterOptions.NextLink = response != null ? response.NextLink : null;
 
             if (response != null && response.LinkedServices != null)
             {
@@ -70,8 +81,8 @@ namespace Microsoft.Azure.Commands.DataFactories
                     linkedServices.Add(
                         new PSLinkedService(linkedService)
                         {
-                            ResourceGroupName = resourceGroupName,
-                            DataFactoryName = dataFactoryName
+                            ResourceGroupName = filterOptions.ResourceGroupName,
+                            DataFactoryName = filterOptions.DataFactoryName
                         });
                 }
             }
@@ -81,7 +92,7 @@ namespace Microsoft.Azure.Commands.DataFactories
 
         public virtual HttpStatusCode DeleteLinkedService(string resourceGroupName, string dataFactoryName, string linkedServiceName)
         {
-            OperationResponse response = DataPipelineManagementClient.LinkedServices.Delete(resourceGroupName,
+            AzureOperationResponse response = DataPipelineManagementClient.LinkedServices.Delete(resourceGroupName,
                 dataFactoryName, linkedServiceName);
 
             return response.StatusCode;
@@ -108,8 +119,7 @@ namespace Microsoft.Azure.Commands.DataFactories
             }
             else
             {
-                linkedServices.AddRange(ListLinkedServices(filterOptions.ResourceGroupName,
-                    filterOptions.DataFactoryName));
+                linkedServices.AddRange(ListLinkedServices(filterOptions));
             }
 
             return linkedServices;
@@ -134,6 +144,14 @@ namespace Microsoft.Azure.Commands.DataFactories
                         ResourceGroupName = parameters.ResourceGroupName,
                         DataFactoryName = parameters.DataFactoryName
                     };
+
+                if (!DataFactoryCommonUtilities.IsSucceededProvisioningState(linkedService.ProvisioningState))
+                {
+                    string errorMessage = linkedService.Properties == null
+                        ? string.Empty
+                        : linkedService.Properties.ErrorMessage;
+                    throw new ProvisioningFailedException(errorMessage);
+                }
             };
             
             if (parameters.Force)
@@ -160,14 +178,6 @@ namespace Microsoft.Azure.Commands.DataFactories
                             parameters.DataFactoryName),
                         parameters.Name,
                         createLinkedService);
-            }
-
-            if (!DataFactoryCommonUtilities.IsSucceededProvisioningState(linkedService.ProvisioningState))
-            {
-                string errorMessage = linkedService.Properties == null
-                    ? string.Empty
-                    : linkedService.Properties.ErrorMessage;
-                throw new ProvisioningFailedException(errorMessage);
             }
 
             return linkedService;

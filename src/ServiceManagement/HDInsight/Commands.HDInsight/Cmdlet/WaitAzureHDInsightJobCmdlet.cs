@@ -100,6 +100,15 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         }
 
         /// <inheritdoc />
+        [Parameter(Mandatory = false, HelpMessage = "Rule for SSL errors with HDInsight client.",
+            ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetJobHistoryByNameWithSpecificSubscriptionCredentials)]
+        public bool IgnoreSslErrors
+        {
+            get { return this.command.IgnoreSslErrors; }
+            set { this.command.IgnoreSslErrors = value; }
+        }
+
+        /// <inheritdoc />
         [Parameter(Mandatory = true, HelpMessage = "The Jobs to wait for.", ValueFromPipeline = true,
             ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetWaitJobByJob)]
         [Parameter(Mandatory = true, HelpMessage = "The Jobs to wait for.", ValueFromPipeline = true,
@@ -149,6 +158,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         /// <inheritdoc />
         protected override void EndProcessing()
         {
+            this.WriteWarning(string.Format(AzureHdInsightPowerShellConstants.AsmWarning, "Wait-AzureRmHDInsightJob"));
             try
             {
                 this.command.Logger = this.Logger;

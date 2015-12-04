@@ -15,6 +15,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Mocks;
 using Microsoft.WindowsAzure.Commands.Utilities.WAPackIaaS;
@@ -30,6 +31,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Operations
         private const string logicalNetworkName = "LogicalNetwork01";
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Type", "WAPackIaaS-All")]
         [Trait("Type", "WAPackIaaS-Unit")]
         public void ShouldReturnOneLogicalNetwork()
@@ -42,6 +44,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Operations
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Type", "WAPackIaaS-All")]
         [Trait("Type", "WAPackIaaS-Unit")]
         public void ShouldReturnOneLogicalNetworkByName()
@@ -57,6 +60,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Operations
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Type", "WAPackIaaS-All")]
         [Trait("Type", "WAPackIaaS-Unit")]
         public void ShouldReturnMultipleLogicalNetworks()
@@ -77,6 +81,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Operations
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Type", "WAPackIaaS-All")]
         [Trait("Type", "WAPackIaaS-Unit")]
         [Trait("Type", "WAPackIaaS-Negative")]

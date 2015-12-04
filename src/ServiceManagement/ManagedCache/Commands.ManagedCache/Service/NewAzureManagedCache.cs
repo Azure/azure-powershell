@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.ManagedCache
             string memory = memoryDynamicParameterSet.GetMemoryValue(Sku);
 
             PSCacheService cacheService = new PSCacheService(CacheClient.CreateCacheService(
-                CurrentContext.Subscription.Id.ToString(),
+                Profile.Context.Subscription.Id.ToString(),
                 cacheServiceName,
                 Location,
                 Sku,

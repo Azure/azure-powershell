@@ -20,11 +20,12 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
 using Microsoft.WindowsAzure.Commands.Utilities.Common.XmlSchema.ServiceConfigurationSchema;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests.Cmdlet
 {
-    public class SetAzureVMSizeTests : TestBase
+    public class SetAzureVMSizeTests : SMTestBase
     {
         private const string serviceName = "AzureService";
 
@@ -41,6 +42,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests.Cm
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureVMSizeProcessTestsNode()
         {
             string newRoleVMSize = "Large";
@@ -61,6 +63,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests.Cm
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureVMSizeProcessTestsPHP()
         {
             string newRoleVMSize = "Medium";
@@ -82,6 +85,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests.Cm
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureVMSizeProcessTestsRoleNameDoesNotExistFail()
         {
             string roleName = "WebRole1";
@@ -94,6 +98,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests.Cm
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureVMSizeProcessTestsNodeRoleNameDoesNotExistServiceContainsWebRoleFail()
         {
             string roleName = "WebRole1";
@@ -108,6 +113,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests.Cm
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureVMSizeProcessTestsPHPRoleNameDoesNotExistServiceContainsWebRoleFail()
         {
             string roleName = "WebRole1";
@@ -122,6 +128,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests.Cm
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureVMSizeProcessTestsNodeRoleNameDoesNotExistServiceContainsWorkerRoleFail()
         {
             string roleName = "WorkerRole1";
@@ -136,6 +143,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests.Cm
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureVMSizeProcessTestsPHPRoleNameDoesNotExistServiceContainsWorkerRoleFail()
         {
             string roleName = "WorkerRole1";
@@ -150,6 +158,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests.Cm
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureVMSizeProcessTestsEmptyRoleNameFail()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -160,6 +169,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests.Cm
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureVMSizeProcessTestsNullRoleNameFail()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -170,6 +180,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests.Cm
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureVMSizeProcessTestsCaseInsensitive()
         {
             string newRoleVMSize = "Large" /*RoleSize.Large.ToString()*/;
@@ -192,6 +203,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests.Cm
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureVMSizeProcessTestsCaseInsensitiveVMSizeSize()
         {
             string newRoleVMSize = "ExTraLaRge";

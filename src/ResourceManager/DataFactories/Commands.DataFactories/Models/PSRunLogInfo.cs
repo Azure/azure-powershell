@@ -58,7 +58,23 @@ namespace Microsoft.Azure.Commands.DataFactories.Models
         {
             get
             {
-                return this._runLogUri.AbsolutePath.TrimStart('/');
+                return this._runLogUri.AbsolutePath.Split('/')[1];
+            }
+        }
+
+        public string Directory
+        {
+            get
+            {
+                string[] subfolders = _runLogUri.LocalPath.TrimStart('/').Split('/');
+
+                if (subfolders.Length <= 1)
+                {
+                    return string.Empty;
+                }
+
+                // remove /<container>/ from the Absolute path to get the subfolder
+                return _runLogUri.LocalPath.TrimStart('/').Substring(this.Container.Length + 1);
             }
         }
 

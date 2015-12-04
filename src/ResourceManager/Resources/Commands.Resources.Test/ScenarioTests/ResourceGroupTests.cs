@@ -13,52 +13,60 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class ResourceGroupTests
+    public class ResourceGroupTests : RMTestBase
     {
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreatesNewSimpleResourceGroup()
         {
             ResourcesController.NewInstance.RunPsTest("Test-CreatesNewSimpleResourceGroup");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdatesExistingResourceGroup()
         {
             ResourcesController.NewInstance.RunPsTest("Test-UpdatesExistingResourceGroup");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreatesAndRemoveResourceGroupViaPiping()
         {
             ResourcesController.NewInstance.RunPsTest("Test-CreatesAndRemoveResourceGroupViaPiping");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetNonExistingResourceGroup()
         {
             ResourcesController.NewInstance.RunPsTest("Test-GetNonExistingResourceGroup");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewResourceGroupInNonExistingLocation()
         {
             ResourcesController.NewInstance.RunPsTest("Test-NewResourceGroupInNonExistingLocation");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveNonExistingResourceGroup()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RemoveNonExistingResourceGroup");
+        }
+
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFindResourceGroup()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-FindResourceGroup");
         }
 
         [Fact (Skip = "TODO: Fix the broken test.")]
@@ -74,11 +82,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest("Test-NewDeploymentAndProviderRegistration");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewResourceGroupWithTemplateThenGetWithAndWithoutDetails()
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
+        public void TestRemoveDeployment()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-NewResourceGroupWithTemplateThenGetWithAndWithoutDetails");
+            ResourcesController.NewInstance.RunPsTest("Test-RemoveDeployment");
         }
     }
 }

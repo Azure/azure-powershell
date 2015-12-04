@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.IO;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService.AzureTools;
@@ -23,9 +24,10 @@ using Moq;
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
 {
     
-    public class StorageEmulatorTests : TestBase
+    public class StorageEmulatorTests : SMTestBase
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Start_StorageEmulatorInstalled_UseCorrectCommand()
         {
             // Setup 
@@ -45,6 +47,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Stop_StorageEmulatorInstalled_UseCorrectCommand()
         {
             // Setup 
@@ -64,6 +67,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Start_StorageEmulatorNotInstalled_GetWarning()
         {
             // Setup 

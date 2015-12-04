@@ -16,14 +16,19 @@ using System;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
+using Microsoft.WindowsAzure.Commands.ServiceManagement;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
+using System.Net;
+using Microsoft.WindowsAzure.Management.Compute;
+using Microsoft.WindowsAzure.Management;
+using Hyak.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 {
     /// <summary>
     /// Set-AzureVMSqlServerExtension implementation.
-    /// This cmdlet can be used to set AutoPatching / AutoBackup settings,  disable, uninstalls Sql Extension
+    /// This cmdlet can be used to set AutoPatching / AutoBackup / Key Vault Credential settings,  disable, uninstalls Sql Extension
     /// </summary>
     [Cmdlet(
         VerbsCommon.Set,
@@ -33,8 +38,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         typeof(IPersistentVM))]
     public class SetAzureVMSqlServerExtensionCommand : VirtualMachineSqlServerExtensionCmdletBase
     {
-        protected const string EnableExtensionParamSetName             = "EnableSqlServerExtension";
-        protected const string DisableSqlServerExtensionParamSetName   = "DisableSqlServerExtension";
+        protected const string EnableExtensionParamSetName = "EnableSqlServerExtension";
+        protected const string DisableSqlServerExtensionParamSetName = "DisableSqlServerExtension";
         protected const string UninstallSqlServerExtensionParamSetName = "UninstallSqlServerExtension";
 
         [Parameter(
@@ -86,16 +91,31 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             HelpMessage = "The Automatic Backup configuration.")]
         [ValidateNotNullOrEmpty]
         public override AutoBackupSettings AutoBackupSettings { get; set; }
-
+        
+        [Parameter(
+            ParameterSetName = EnableExtensionParamSetName,
+            Mandatory = false,
+            Position = 5,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Azure Key Vault SQL Credentials configuration.")]
+        [ValidateNotNullOrEmpty]
+        public override KeyVaultCredentialSettings KeyVaultCredentialSettings { get; set; }
+        
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
-            ExecuteCommand();
+            this.ExecuteCommand();
         }
 
         internal void ExecuteCommand()
         {
             ValidateParameters();
+
+            if ((this.KeyVaultCredentialSettings != null) && !this.KeyVaultCredentialSettings.Enable)
+            {
+                WriteVerboseWithTimestamp("SQL Server Azure key vault disabled. Previously configured credentials are not removed but no status will be reported");
+            }
+
             RemovePredicateExtensions();
             AddResourceExtension();
             WriteObject(VM);
@@ -104,11 +124,59 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         protected override void ValidateParameters()
         {
             base.ValidateParameters();
-            this.ReferenceName = string.IsNullOrEmpty(this.ReferenceName) ? ExtensionDefaultName : this.ReferenceName;
-
+            this.ReferenceName = string.IsNullOrEmpty(this.ReferenceName) ? ExtensionPublishedName : this.ReferenceName;
+            this.SetupAutoTelemetrySettings();
             this.PublicConfiguration = GetPublicConfiguration();
             this.PrivateConfiguration = GetPrivateConfiguration();
             this.Version = this.Version ?? ExtensionDefaultVersion;
+        }
+
+        private void SetupAutoTelemetrySettings()
+        {
+            if (this.AutoTelemetrySettings == null || string.IsNullOrEmpty(this.AutoTelemetrySettings.Region))
+            {
+                foreach (var hs in this.ComputeClient.HostedServices.List().HostedServices)
+                {
+                    try
+                    {
+                        var deployment = this.ComputeClient.Deployments.GetBySlot(hs.ServiceName, Management.Compute.Models.DeploymentSlot.Production);
+                        if (deployment != null)
+                        {
+                            var role = deployment.RoleInstances.FirstOrDefault(r => r.RoleName == VM.GetInstance().RoleName);
+
+                            string location = String.Empty;
+                            if (role != null)
+                            {
+                                if (null != hs.Properties)
+                                {
+                                    if (!string.IsNullOrEmpty(hs.Properties.Location))
+                                    {
+                                        location = hs.Properties.Location;
+                                    }
+                                    else
+                                    {
+                                        if (!string.IsNullOrEmpty(hs.Properties.AffinityGroup))
+                                        {
+                                            location = this.ManagementClient.AffinityGroups.Get(hs.Properties.AffinityGroup).Location;
+                                        }
+                                    }
+                                }
+
+                                this.AutoTelemetrySettings = new AutoTelemetrySettings() { Region = location };
+                                WriteVerboseWithTimestamp("VM Location:" + location);
+                                break;
+                            }
+                        }
+                    }
+                    catch (CloudException e)
+                    {
+                        if (e.Response.StatusCode != HttpStatusCode.NotFound)
+                        {
+                            throw;
+                        }
+                    }
+                }
+            }
         }
     }
 }

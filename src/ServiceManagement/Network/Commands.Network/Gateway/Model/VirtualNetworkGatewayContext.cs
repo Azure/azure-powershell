@@ -12,12 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Network
-{
-    using System;
-    using WindowsAzure.Commands.Utilities.Common;
-    using WindowsAzure.Management.Network.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
 
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
+{
     public class VirtualNetworkGatewayContext : ManagementOperationContext
     {
         public string LastEventData { get; set; }
@@ -34,6 +33,6 @@ namespace Microsoft.Azure.Commands.Network
 
         public string DefaultSite { get; set; }
 
-        public GatewaySKU GatewaySKU { get; set; }
+        public string GatewaySKU { get; set; }
     }
 }

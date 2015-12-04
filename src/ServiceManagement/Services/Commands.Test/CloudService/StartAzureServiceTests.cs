@@ -19,11 +19,12 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
 using Moq;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService
 {
-    public class StartAzureServiceTests : TestBase
+    public class StartAzureServiceTests : SMTestBase
     {
         private const string serviceName = "AzureService";
 
@@ -49,6 +50,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStartAzureService()
         {
             stopServiceCmdlet.ServiceName = serviceName;

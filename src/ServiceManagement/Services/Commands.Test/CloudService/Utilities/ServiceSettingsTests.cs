@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
@@ -22,7 +23,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
 {
     
-    public class ServiceSettingsTests : TestBase
+    public class ServiceSettingsTests : SMTestBase
     {
         public ServiceSettingsTests()
         {
@@ -30,6 +31,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ServiceSettingsTest()
         {
 
@@ -43,6 +45,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         /// exception.
         /// </summary>
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void InvalidStorageAccountName()
         {
             // Create a temp directory that we'll use to "publish" our service
@@ -64,6 +67,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         /// sanitized to a storage account name.
         /// </summary>
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SanitizeServiceNameForStorageAccountName()
         {
             // Create a temp directory that we'll use to "publish" our service
@@ -85,6 +89,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         /// Verify that ServicSettings will accept unknown Microsoft Azure RDFE location.
         /// </summary>
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetDefaultLocationWithUnknwonLocation()
         {
             // Create a temp directory that we'll use to "publish" our service

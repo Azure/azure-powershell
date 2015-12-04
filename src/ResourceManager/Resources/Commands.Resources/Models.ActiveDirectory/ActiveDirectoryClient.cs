@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Graph.RBAC.Models;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common.Authentication;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
 {
@@ -31,11 +31,13 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
         /// <summary>
         /// Creates new ActiveDirectoryClient using WindowsAzureSubscription.
         /// </summary>
+        /// <param name="authenticationFactory"></param>
+        /// <param name="clientFactory"></param>
         /// <param name="context"></param>
-        public ActiveDirectoryClient(AzureContext context)
+        public ActiveDirectoryClient(IAuthenticationFactory authenticationFactory, IClientFactory clientFactory, AzureContext context)
         {
-            AccessTokenCredential creds = (AccessTokenCredential)AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(context);
-            GraphClient = AzureSession.ClientFactory.CreateCustomClient<GraphRbacManagementClient>(
+            AccessTokenCredential creds = (AccessTokenCredential)authenticationFactory.GetSubscriptionCloudCredentials(context);
+            GraphClient = clientFactory.CreateCustomClient<GraphRbacManagementClient>(
                 creds.TenantID,
                 creds,
                 context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.Graph));
@@ -47,7 +49,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
 
             Debug.Assert(options != null);
 
-            if (IsSet(options.Mail, options.UPN, options.Id))
+            if (IsSet(options.SignInName, options.Mail, options.UPN, options.Id))
             {
                 result = FilterUsers(options).FirstOrDefault();
             }
@@ -163,11 +165,11 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                     users.Add(user.ToPSADUser());
                 }
             }
-            else if (!string.IsNullOrEmpty(options.Mail))
+            else if (!string.IsNullOrEmpty(options.Mail) || !string.IsNullOrEmpty(options.SignInName))
             {
                 try
                 {
-                    user = GraphClient.User.GetBySignInName(options.Mail).Users.FirstOrDefault();
+                    user = GraphClient.User.GetBySignInName(Normalize(options.Mail) ?? Normalize(options.SignInName)).Users.FirstOrDefault();
                 }
                 catch {  /* The user does not exist, ignore the exception. */ }
 
@@ -222,6 +224,14 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
             var groupsResult = GraphClient.Objects.GetObjectsByObjectIds(new GetObjectsParameters { Ids = groupsIds });
             result.AddRange(groupsResult.AADObject.Select(g => g.ToPSADGroup()));
 
+            return result;
+        }
+
+        public List<PSADObject> GetObjectsByObjectId(List<string> objectIds)
+        {
+            List<PSADObject> result = new List<PSADObject>();
+            var adObjects = GraphClient.Objects.GetObjectsByObjectIds(new GetObjectsParameters { Ids = objectIds, IncludeDirectoryObjectReferences = true }).AADObject;
+            result.AddRange(adObjects.Select(o => o.ToPSADObject()));
             return result;
         }
 
@@ -342,6 +352,64 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
             }
 
             return principalId;
+        }
+
+        public PSADApplication CreateApplication(CreatePSApplicationParameters createParameters)
+        {
+            IList<PasswordCredential> passwordCredentials = createParameters.PasswordCredentials != null
+                ? createParameters.PasswordCredentials.Select(psCredential => psCredential.ToGraphPasswordCredential()).ToList()
+                : null;
+
+            IList<KeyCredential> keyCredentials = createParameters.KeyCredentials != null
+                ? createParameters.KeyCredentials.Select(psCredential => psCredential.ToGraphKeyCredential()).ToList()
+                : null;
+
+            ApplicationCreateParameters graphParameters = new ApplicationCreateParameters
+            {
+                DisplayName = createParameters.DisplayName,
+                Homepage = createParameters.HomePage,
+                IdentifierUris = createParameters.IdentifierUris,
+                PasswordCredentials = passwordCredentials,
+                KeyCredentials = keyCredentials
+            };
+
+            return GraphClient.Application.Create(graphParameters).Application.ToPSADApplication();
+        }
+
+        public void RemoveApplication(string applicationObjectId)
+        {
+            GraphClient.Application.Delete(applicationObjectId.ToString());
+        }
+
+        public PSADServicePrincipal CreateServicePrincipal(CreatePSServicePrincipalParameters createParameters)
+        {
+            ServicePrincipalCreateParameters graphParameters = new ServicePrincipalCreateParameters
+            {
+                AppId = createParameters.ApplicationId.ToString(),
+                AccountEnabled = createParameters.AccountEnabled
+            };
+
+            return GraphClient.ServicePrincipal.Create(graphParameters).ServicePrincipal.ToPSADServicePrincipal();
+        }
+
+        public PSADServicePrincipal RemoveServicePrincipal(string objectId)
+        {
+            ADObjectFilterOptions options = new ADObjectFilterOptions
+            {
+                Id = objectId.ToString()
+            };
+
+            PSADServicePrincipal servicePrincipal = FilterServicePrincipals(options).FirstOrDefault();
+            if (servicePrincipal != null)
+            {
+                GraphClient.ServicePrincipal.Delete(objectId);
+            }
+            else
+            {
+                throw new KeyNotFoundException(string.Format(ProjectResources.ServicePrincipalDoesntExist, objectId));
+            }
+
+            return servicePrincipal;
         }
     }
 }

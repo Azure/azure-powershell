@@ -19,6 +19,7 @@ using System.Management.Automation;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.Data;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandInterfaces;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightClusters;
@@ -78,6 +79,15 @@ namespace Microsoft.WindowsAzure.Commands.HDInsight.Cmdlet.PSCmdlets
         }
 
         /// <inheritdoc />
+        [Parameter(Mandatory = false, HelpMessage = "Rule for SSL errors with HDInsight client.",
+            ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByNameWithSpecificSubscriptionCredentials)]
+        public bool IgnoreSslErrors
+        {
+            get { return command.IgnoreSslErrors; }
+            set { command.IgnoreSslErrors = value; }
+        }
+
+        /// <inheritdoc />
         [Parameter(Mandatory = false, HelpMessage = "The name of the HDInsight cluster to set the size of.", ValueFromPipeline = false,
             ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByNameWithSpecificSubscriptionCredentials)]
         [Parameter(Mandatory = true, HelpMessage = "The name of the HDInsight cluster to set the size of", ValueFromPipeline = false,
@@ -114,6 +124,7 @@ namespace Microsoft.WindowsAzure.Commands.HDInsight.Cmdlet.PSCmdlets
 
         protected override void EndProcessing()
         {
+            this.WriteWarning(string.Format(AzureHdInsightPowerShellConstants.AsmWarning, "Set-AzureRmHDInsightClusterSize"));
             if (Cluster != null)
             {
                 Name = Cluster.Name;
@@ -139,6 +150,7 @@ namespace Microsoft.WindowsAzure.Commands.HDInsight.Cmdlet.PSCmdlets
                     getCommand.CurrentSubscription = currentSubscription;
                     getCommand.Name = Name;
                     var getTask = getCommand.EndProcessing();
+                    this.WriteObject("This operation may take several minutes...");
                     while (!getTask.IsCompleted)
                     {
                         WriteDebugLog();
@@ -159,11 +171,19 @@ namespace Microsoft.WindowsAzure.Commands.HDInsight.Cmdlet.PSCmdlets
                 command.Location = cluster.Location;
                 if (ClusterSizeInNodes < cluster.ClusterSizeInNodes)
                 {
-                    var task = ConfirmSetAction(
-                        "You are requesting a cluster size that is less than the current cluster size. We recommend not running jobs till the operation is complete as all running jobs will fail at end of resize operation and may impact the health of your cluster. Do you want to continue?",
-                        "Continuing with set cluster operation.",
-                        ClusterSizeInNodes.ToString(CultureInfo.InvariantCulture),
-                        action);
+                    Task task;
+                    if (cluster.ClusterType == ClusterType.Hadoop)
+                    {
+                        task = ConfirmSetAction(
+                            "You are requesting a cluster size that is less than the current cluster size. We recommend not running jobs till the operation is complete as all running jobs will fail at end of resize operation and may impact the health of your cluster. Do you want to continue?",
+                            "Continuing with set cluster operation.",
+                            ClusterSizeInNodes.ToString(CultureInfo.InvariantCulture),
+                            action);
+                    }
+                    else
+                    {
+                        task = action();
+                    }
                     if (task == null)
                     {
                         throw new OperationCanceledException("The change cluster size operation was aborted.");

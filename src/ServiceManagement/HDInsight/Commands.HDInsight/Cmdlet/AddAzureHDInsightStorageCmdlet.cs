@@ -52,19 +52,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         public AzureHDInsightConfig Config
         {
             get { return this.command.Config; }
-            set
-            {
-                if (value.IsNull())
-                {
-                    throw new ArgumentNullException("value", "The value for the configuration can not be null.");
-                }
-                this.command.Config.ClusterSizeInNodes = value.ClusterSizeInNodes;
-                this.command.Config.DefaultStorageAccount = value.DefaultStorageAccount;
-                this.command.Config.HiveMetastore = value.HiveMetastore ?? this.command.Config.HiveMetastore;
-                this.command.Config.OozieMetastore = value.OozieMetastore ?? this.command.Config.OozieMetastore;
-                this.command.Config.AdditionalStorageAccounts.AddRange(value.AdditionalStorageAccounts);
-                this.command.Config.ConfigActions.AddRange(value.ConfigActions);
-            }
+            set { this.command.Config.CopyFrom(value); }
         }
 
         /// <summary>
@@ -94,6 +82,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         {
             try
             {
+                this.WriteWarning(string.Format(AzureHdInsightPowerShellConstants.AsmWarning, "Add-AzureRmHDInsightStorage"));
                 this.command.EndProcessing().Wait();
                 foreach (AzureHDInsightConfig output in this.command.Output)
                 {

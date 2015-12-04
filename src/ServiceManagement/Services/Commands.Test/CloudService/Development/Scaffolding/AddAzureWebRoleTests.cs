@@ -14,6 +14,7 @@
 
 using System.IO;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.CloudService.Development.Scaffolding;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
@@ -26,7 +27,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Scaffolding
 {
     
-    public class AddAzureWebRoleTests : TestBase
+    public class AddAzureWebRoleTests : SMTestBase
     {
         private MockCommandRuntime mockCommandRuntime;
 
@@ -115,6 +116,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Scaffold
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddAzureWebRoleWithMissingScaffoldXmlFail()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))

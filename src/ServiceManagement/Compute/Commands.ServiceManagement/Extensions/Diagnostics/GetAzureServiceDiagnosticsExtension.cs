@@ -15,6 +15,7 @@
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
+using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
 {
@@ -71,8 +72,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
                                ProviderNameSpace = extension.ProviderNamespace,
                                Id = extension.Id,
                                Role = role,
-                               StorageAccountName = GetPublicConfigValue(extension, StorageNameElemStr),
-                               WadCfg = GetPublicConfigValue(extension, WadCfgElemStr)
+                               StorageAccountName = GetPublicConfigValue(extension, StorageAccountElemStr),
+                               WadCfg = GetPublicConfigValue(extension, WadCfgElemStr),
+                               PublicConfiguration = GetPublicConfigValue(extension, "PublicConfig"),
+                               Version = extension.Version
                            };
                 });
         }

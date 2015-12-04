@@ -23,7 +23,7 @@ using Moq;
 namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
 {
     [TestClass]
-    public class RemoveAzureAutomationScheduleTest : TestBase
+    public class RemoveAzureAutomationScheduleTest : SMTestBase
     {
         private Mock<IAutomationClient> mockAutomationClient;
 
@@ -41,25 +41,6 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
                 AutomationClient = this.mockAutomationClient.Object,
                 CommandRuntime = this.mockCommandRuntime
             };
-        }
-
-        [TestMethod]
-        public void RemoveAzureAutomationScheduleByIdSuccessfull()
-        {
-            // Setup
-            string accountName = "automation";
-            var scheduleId = new Guid();
-
-            this.mockAutomationClient.Setup(f => f.DeleteSchedule(accountName, scheduleId));
-
-            // Test
-            this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.Id = scheduleId;
-            this.cmdlet.Force = true;
-            this.cmdlet.ExecuteCmdlet();
-
-            // Assert
-            this.mockAutomationClient.Verify(f => f.DeleteSchedule(accountName, scheduleId), Times.Once());
         }
 
         [TestMethod]

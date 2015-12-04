@@ -12,8 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
 using System.Management.Automation;
 using System.Security.Permissions;
+using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Model;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
@@ -21,17 +23,33 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Registers an azure automation scheduled runbook.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Register, "AzureAutomationScheduledRunbook", DefaultParameterSetName = ByRunbookName)]
-    [OutputType(typeof(Runbook))]
-    public class RegisterAzureAutomationScheduledRunbook : StartAzureAutomationRunbookBase
+    [Cmdlet(VerbsLifecycle.Register, "AzureAutomationScheduledRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByRunbookName)]
+    [OutputType(typeof(JobSchedule))]
+    public class RegisterAzureAutomationScheduledRunbook : AzureAutomationBaseCmdlet
     {
+        /// <summary>
+        /// Gets or sets the runbook name
+        /// </summary>
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookNameAndScheduleName, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The runbook name.")]
+        [ValidateNotNullOrEmpty]
+        [Alias("Name")]
+        public string RunbookName { get; set; }
+
         /// <summary>
         /// Gets or sets the schedule that will be used to start the runbook.
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookNameAndScheduleName, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the schedule on which the runbook will be started.")]
         [ValidateNotNullOrEmpty]
         public string ScheduleName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the runbook parameters.
+        /// </summary>
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookNameAndScheduleName, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The runbook parameters.")]
+        public IDictionary Parameters { get; set; }
 
         /// <summary>
         /// Execute this cmdlet.
@@ -39,20 +57,12 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            Runbook runbook;
+            JobSchedule jobSchedule;
 
-            if (this.Id.HasValue)
-            {
-                runbook = this.AutomationClient.RegisterScheduledRunbook(
-                    this.AutomationAccountName, this.Id.Value, this.Parameters, this.ScheduleName);
-            }
-            else
-            {
-                runbook = this.AutomationClient.RegisterScheduledRunbook(
-                    this.AutomationAccountName, this.Name, this.Parameters, this.ScheduleName);
-            }
+            jobSchedule = this.AutomationClient.RegisterScheduledRunbook(
+                    this.AutomationAccountName, this.RunbookName, this.ScheduleName, this.Parameters);
 
-            this.WriteObject(runbook);
+            this.WriteObject(jobSchedule);
         }
     }
 }

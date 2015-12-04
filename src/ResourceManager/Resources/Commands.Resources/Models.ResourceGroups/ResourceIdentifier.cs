@@ -15,9 +15,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using AuthorizationResourceIdentity = Microsoft.Azure.Management.Authorization.Models.ResourceIdentity;
+using AuthorizationResourceIdentity = Microsoft.Azure.ResourceIdentity;
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
-using ResourcesResourceIdentity = Microsoft.Azure.Management.Resources.Models.ResourceIdentity;
+using ResourcesResourceIdentity = Microsoft.Azure.ResourceIdentity;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
@@ -72,6 +72,25 @@ namespace Microsoft.Azure.Commands.Resources.Models
                     ResourceType = string.Join("/", resourceTypeBuilder);
                 }
             }
+        }
+
+        public static ResourceIdentifier FromResourceGroupIdentifier(string resourceGroupId)
+        {
+            if (!string.IsNullOrEmpty(resourceGroupId))
+            {
+                string[] tokens = resourceGroupId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+                if (tokens.Length < 4)
+                {
+                    throw new ArgumentException(ProjectResources.InvalidFormatOfResourceGroupId, "resourceGroupId");
+                }
+                return new ResourceIdentifier
+                {
+                    Subscription = tokens[1],
+                    ResourceGroupName = tokens[3],
+                };
+            }
+
+            return new ResourceIdentifier();
         }
 
         public static string GetProviderFromResourceType(string resourceType)

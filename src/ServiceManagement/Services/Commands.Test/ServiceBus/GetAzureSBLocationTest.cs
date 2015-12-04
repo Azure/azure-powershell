@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Linq;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ServiceBus;
@@ -24,7 +26,7 @@ using Moq;
 namespace Microsoft.WindowsAzure.Commands.Test.ServiceBus
 {
     
-    public class GetAzureSBLocationTests : TestBase
+    public class GetAzureSBLocationTests : SMTestBase
     {
         public GetAzureSBLocationTests()
         {
@@ -32,6 +34,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ServiceBus
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureSBLocationSuccessfull()
         {
             // Setup
@@ -51,13 +54,15 @@ namespace Microsoft.WindowsAzure.Commands.Test.ServiceBus
             cmdlet.ExecuteCmdlet();
 
             // Assert
-            List<ServiceBusLocation> actual = mockCommandRuntime.OutputPipeline[0] as List<ServiceBusLocation>;
-            Assert.Equal<int>(expected.Count, actual.Count);
+            IEnumerable<ServiceBusLocation> actual = 
+                System.Management.Automation.LanguagePrimitives.GetEnumerable(mockCommandRuntime.OutputPipeline).Cast<ServiceBusLocation>();
+
+            Assert.Equal<int>(expected.Count, actual.Count());
 
             for (int i = 0; i < expected.Count; i++)
             {
-                Assert.Equal<string>(expected[i].Code, actual[i].Code);
-                Assert.Equal<string>(expected[i].FullName, actual[i].FullName);
+                Assert.True(actual.Any((account) => account.Code == expected[i].Code));
+                Assert.True(actual.Any((account) => account.FullName ==  expected[i].FullName));
             }
         }
     }

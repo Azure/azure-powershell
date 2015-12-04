@@ -14,7 +14,7 @@
 
 using System;
 using System.Linq;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightClusters.BaseInterfaces;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightClusters.Extensions;
 
@@ -24,9 +24,9 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
 
     internal class AzureHDInsightSubscriptionResolver : IAzureHDInsightSubscriptionResolver
     {
-        private readonly AzureProfile profile;
+        private readonly AzureSMProfile profile;
 
-        public AzureHDInsightSubscriptionResolver(AzureProfile profile)
+        public AzureHDInsightSubscriptionResolver(AzureSMProfile profile)
         {
             this.profile = profile;
         }

@@ -1,0 +1,63 @@
+{
+    "Entries": [
+        {
+            "RequestUri": "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp%20ge%20%272015-01-15T12%3A30%3A00.0000000Z%27%20and%20eventTimestamp%20le%20%272015-01-15T20%3A30%3A00.0000000Z%27&$select=Authorization%2CCaller%2CCorrelationId%2CCategory%2CEventTimestamp%2COperationName%2CResourceGroupName%2CResourceUri%2CStatus%2CSubscriptionId%2CSubStatus",
+            "RequestMethod": "GET",
+            "RequestBody": "",
+            "RequestHeaders": {
+                "Accept": [ "application/json" ],
+                "User-Agent": [
+                    "Microsoft.Azure.Insights.InsightsClient/0.9.0.0 AzurePowershell/v0.8.14"
+                ]
+            },
+            "ResponseBody": "{\"value\":[{\"caller\":\"Microsoft.Insights/alertRules\",\"correlationId\":\"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d/incidents/L3N1YnNjcmlwdGlvbnMvYTkzZmIwN2MtNmM5My00MGJlLWJmM2ItNGYwZGViYTEwZjRiL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtV2ViLUVhc3RVUy9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL2FsZXJ0cnVsZXMvY2hlY2tydWxlMy00YjEzNTQwMS1hMzBjLTQyMjQtYWUyMS1mYTUzYTViZDI1M2QwNjM1NTY5NTA1ODUzOTM2ODM2\",\"category\":{\"value\":\"microsoft.insights/alertrules\",\"localizedValue\":\"Microsoft Insights Alert Settings\"},\"id\":\"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d/events/9671a563-8b4d-4ba5-afe4-5b82340cbdea/ticks/635569505853936836\",\"resourceUri\":\"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d\",\"operationName\":{\"value\":\"ResolveAlert\",\"localizedValue\":\"Resolve alert.\"},\"status\":{\"value\":\"Resolved\",\"localizedValue\":\"Resolved\"},\"subStatus\":{\"value\":null},\"eventTimestamp\":\"2015-01-15T20:29:45.3936836Z\",\"subscriptionId\":\"a93fb07c-6c93-40be-bf3b-4f0deba10f4b\"}]}",
+            "ResponseHeaders": {
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Date": [
+                    "Mon, 03 Mar 2015 00:07:07 GMT"
+                ],
+                "Expires": [
+                    "-1"
+                ],
+                "Pragma": [
+                    "no-cache"
+                ],
+                "Vary": [
+                    "Accept-Encoding"
+                ],
+                "Content-Length": [
+                    "112177"
+                ],
+                "Content-Type": [
+                    "application/json; charset=utf-8"
+                ],
+                "x-ms-ratelimit-remaining-subscription-reads": [
+                    "31998"
+                ],
+                "x-ms-request-id": [
+                    "WestUS_d9e73d2735f24797a08dda5d8228e509_635609224343322694"
+                ],
+                "x-ms-correlation-request-id": [
+                    "45888041-1ede-478b-949f-13aa6e47e0ba"
+                ],
+                "x-ms-routing-request-id": [
+                    "WESTUS:20150302T194714Z:45888041-1ede-478b-949f-13aa6e47e0ba"
+                ],
+                "Strict-Transport-Security": [
+                    "max-age=31536000; includeSubDomains"
+                ]
+            },
+            "StatusCode": 200
+        }
+    ],
+  "Names": {
+    "Test-GetAzureSubscriptionIdLog": [
+      ""
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "a93fb07c-6c93-40be-bf3b-4f0deba10f4b"
+  }
+}

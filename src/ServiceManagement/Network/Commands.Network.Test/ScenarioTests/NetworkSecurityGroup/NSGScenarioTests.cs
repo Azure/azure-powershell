@@ -12,33 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Net;
-using Microsoft.WindowsAzure.Management.Network;
-
-namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests
 {
+    using System.Net;
+    using Microsoft.WindowsAzure.Management.Network;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
-    using Microsoft.WindowsAzure.Testing;
     using Xunit;
     using Microsoft.WindowsAzure.Management;
+    using Microsoft.Azure.Common.Authentication;
+    using Microsoft.Azure.Test;
 
     public class NSGScenarioTests
     {
-        public NSGScenarioTests()
-        {
-            this.RunPowerShellTest("Initialize-NetworkSecurityGroupTest");
-        }
-
         private readonly EnvironmentSetupHelper helper = new EnvironmentSetupHelper();
 
         [Fact]
         [Trait(Category.Service, Category.Network)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateAndRemoveNSG()
+        public void CreateAndRemoveNSG()
         {
             this.RunPowerShellTest("Test-CreateAndRemoveNetworkSecurityGroup");
         }
@@ -46,7 +41,7 @@ namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.Service, Category.Network)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveNSGWithNonExistingName()
+        public void RemoveNSGWithNonExistingName()
         {
             this.RunPowerShellTest("Test-RemoveNetworkSecurityGroupWithNonExistingName");
         }
@@ -54,7 +49,7 @@ namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.Service, Category.Network)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetMultipleNSGs()
+        public void GetMultipleNSGs()
         {
             this.RunPowerShellTest("Test-GetMultipleNetworkSecurityGroups");
         }
@@ -62,7 +57,7 @@ namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.Service, Category.Network)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetNSR()
+        public void SetNSR()
         {
             this.RunPowerShellTest("Test-SetNetworkSecurityRule");
         }
@@ -70,7 +65,7 @@ namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.Service, Category.Network)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetNSRWithInvalidParameter()
+        public void SetNSRWithInvalidParameter()
         {
             this.RunPowerShellTest("Test-SetNetworkSecurityRuleWithInvalidParameter");
         }
@@ -78,7 +73,7 @@ namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.Service, Category.Network)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveNSR()
+        public void RemoveNSR()
         {
             this.RunPowerShellTest("Test-RemoveNetworkSecurityRule");
         }
@@ -86,7 +81,7 @@ namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.Service, Category.Network)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetAndGetNSGForSubnet()
+        public void SetAndGetNSGForSubnet()
         {
             this.RunPowerShellTest("Test-SetAndGetNetworkSecurityGroupForSubnet");
         }
@@ -94,9 +89,33 @@ namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.Service, Category.Network)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveNSGFromSubnet()
+        public void RemoveNSGFromSubnet()
         {
             this.RunPowerShellTest("Test-RemoveNetworkSecurityGroupFromSubnet");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SetNSGToSubnetInDiffRegion()
+        {
+            this.RunPowerShellTest("Test-SetNetworkSecurityGroupToSubnetInDifferentRegion");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        public void SetNSGOnRoleAndUpdateVM()
+        {
+            this.RunPowerShellTest("Test-SetNSGOnRoleAndUpdateVM");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.Network)]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        public void SetNSGOnNICAndUpdateVM()
+        {
+            this.RunPowerShellTest("Test-SetNSGOnNICAndUpdateVM");
         }
 
         #region Test setup
@@ -114,6 +133,7 @@ namespace Microsoft.Azure.Commands.Network.Test.ScenarioTests
                 context.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2));
 
                 List<string> modules = Directory.GetFiles("ScenarioTests\\NetworkSecurityGroup", "*.ps1").ToList();
+                modules.AddRange(Directory.GetFiles("ScenarioTests", "*.ps1"));
                 modules.Add("Common.ps1"); 
                 
                 SetupManagementClients();

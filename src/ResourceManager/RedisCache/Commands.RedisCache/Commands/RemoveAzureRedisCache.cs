@@ -17,10 +17,10 @@ namespace Microsoft.Azure.Commands.RedisCache
     using Microsoft.Azure.Commands.RedisCache.Properties;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRedisCache"), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmRedisCache"), OutputType(typeof(bool))]
     public class RemoveAzureRedisCache : RedisCacheCmdletBase
     {
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of resource group under whcih cache exists.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of resource group under which cache exists.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.RedisCache
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             if (!Force.IsPresent)
             {

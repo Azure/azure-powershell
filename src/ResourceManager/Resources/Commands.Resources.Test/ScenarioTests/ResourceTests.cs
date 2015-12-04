@@ -14,34 +14,35 @@
 
 
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class ResourceTests 
+    public class ResourceTests : RMTestBase
     {
-        [Fact]
+        [Fact(Skip = "TODO: Re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreatesNewSimpleResource()
         {
             ResourcesController.NewInstance.RunPsTest("Test-CreatesNewSimpleResource");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO: Re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreatesNewComplexResource()
         {
             ResourcesController.NewInstance.RunPsTest("Test-CreatesNewComplexResource");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO: Re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetResourcesViaPiping()
         {
             ResourcesController.NewInstance.RunPsTest("Test-GetResourcesViaPiping");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO: Re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetResourcesFromEmptyGroup()
         {
@@ -55,25 +56,53 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest("Test-GetResourcesFromNonExisingGroup");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO: Re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetResourcesForNonExisingType()
         {
             ResourcesController.NewInstance.RunPsTest("Test-GetResourcesForNonExisingType");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO: Re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetResourceForNonExisingResource()
         {
             ResourcesController.NewInstance.RunPsTest("Test-GetResourceForNonExisingResource");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO: Re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetResourcesViaPipingFromAnotherResource()
         {
             ResourcesController.NewInstance.RunPsTest("Test-GetResourcesViaPipingFromAnotherResource");
+        }
+
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMoveAResourceTest()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-MoveAResource");
+        }
+
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetAResourceTest()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-SetAResource");
+        }
+
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFindAResourceTest()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-FindAResource");
+        }
+
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetResourceWithExpandProperties()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-GetResourceExpandProperties");
         }
     }
 }

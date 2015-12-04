@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.ResourceGroups;
 using Moq;
 using Xunit;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Resources
 {
@@ -47,7 +48,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
             commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
             
             cmdlet.ResourceGroupName = resourceGroupName;
-            cmdlet.PassThru = true;
             cmdlet.Force = true;
 
             cmdlet.ExecuteCmdlet();

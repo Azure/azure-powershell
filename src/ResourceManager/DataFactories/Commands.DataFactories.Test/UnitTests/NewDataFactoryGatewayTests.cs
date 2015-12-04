@@ -23,6 +23,7 @@ using Microsoft.Azure.Management.DataFactories.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using Xunit;
+using Hyak.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Gateway
 {
@@ -49,7 +50,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.Gateway
             var expectedOutput = new PSDataFactoryGateway
             {
                 Name = GatewayName,
-                Location = Location,
                 Status = GatewayStatus.Online,
                 Description = "New gateway description for test",
             };
@@ -71,7 +71,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.Gateway
 
             _cmdlet.Name = GatewayName;
             _cmdlet.DataFactoryName = DataFactoryName;
-            _cmdlet.Location = Location;
 
             _cmdlet.ExecuteCmdlet();
 
@@ -86,7 +85,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.Gateway
             var expectedOutput = new PSDataFactoryGateway
             {
                 Name = GatewayName,
-                Location = Location,
                 Status = GatewayStatus.Online,
                 Description = "New gateway description for test"
             };
@@ -97,7 +95,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.Gateway
 
             _cmdlet.Name = GatewayName;
             _cmdlet.DataFactoryName = DataFactoryName;
-            _cmdlet.Location = Location;
             
             Assert.Throws<PSInvalidOperationException>(() => _cmdlet.ExecuteCmdlet());
             

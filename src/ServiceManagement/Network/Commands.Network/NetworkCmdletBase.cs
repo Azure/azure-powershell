@@ -12,35 +12,38 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Network
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
 {
+    using Microsoft.Azure.Common.Authentication;
+    using Microsoft.Azure.Common.Authentication.Models;
     using WindowsAzure.Commands.Common;
-    using WindowsAzure.Commands.Common.Models;
     using WindowsAzure.Commands.Utilities.Common;
     using WindowsAzure.Commands.Utilities.Profile;
 
     /// <summary>
     /// The base class for all Microsoft Azure Network Gateway Management Cmdlets
     /// </summary>
-    public abstract class NetworkCmdletBase : AzurePSCmdlet
+    public abstract class NetworkCmdletBase : AzureSMCmdlet
     {
         private NetworkClient client;
 
         protected AzureSubscription CurrentSubscription
         {
-            get { return AzureSession.CurrentContext.Subscription; }
+            get { return Profile.Context.Subscription; }
         }
 
-        protected NetworkClient Client
+        public NetworkClient Client
         {
             get
             {
                 if (client == null)
                 {
-                    client = new NetworkClient(CurrentSubscription, CommandRuntime);
+                    client = new NetworkClient(Profile, CurrentSubscription, CommandRuntime);
                 }
                 return client;
             }
+
+            set { this.client = value; }
         }
     }
 }

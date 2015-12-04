@@ -51,6 +51,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                     Id = new Guid(obj.ObjectId),
                     Type = obj.ObjectType,
                     UserPrincipalName = obj.UserPrincipalName,
+                    SignInName = obj.SignInName,
                     Mail = obj.Mail
                 };
             }
@@ -60,10 +61,21 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                 {
                     DisplayName = obj.DisplayName,
                     Type = obj.ObjectType,
-                    Id = new Guid(obj.ObjectId)/*,
+                    Id = new Guid(obj.ObjectId),
+                    SecurityEnabled = obj.SecurityEnabled/*,
                     Mail = group.Mail*/
                 };
 
+            }
+            else if (obj.ObjectType == typeof(ServicePrincipal).Name)
+            {
+                return new PSADServicePrincipal()
+                {
+                    DisplayName = obj.DisplayName,
+                    Id = new Guid(obj.ObjectId),
+                    Type = obj.ObjectType,
+                    ServicePrincipalName = obj.ServicePrincipalNames.FirstOrDefault()
+                };
             }
             else
             {
@@ -92,7 +104,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                 DisplayName = user.DisplayName,
                 Id = new Guid(user.ObjectId),
                 UserPrincipalName = user.UserPrincipalName,
-                Mail = user.SignInName
+                Mail = user.SignInName,
+                SignInName = user.SignInName
             };
         }
 
@@ -101,7 +114,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
             return new PSADGroup()
             {
                 DisplayName = group.DisplayName,
-                Id = new Guid(group.ObjectId)/*,
+                Id = new Guid(group.ObjectId),
+                SecurityEnabled = group.SecurityEnabled/*,
                 Mail = group.Mail*/
             };
         }
@@ -112,7 +126,51 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
             {
                 DisplayName = servicePrincipal.DisplayName,
                 Id = new Guid(servicePrincipal.ObjectId),
+                ApplicationId = Guid.Parse(servicePrincipal.AppId),
                 ServicePrincipalName = servicePrincipal.ServicePrincipalNames.FirstOrDefault()
+            };
+        }
+
+        public static PSADApplication ToPSADApplication(this Application application)
+        {
+            if (application != null)
+            {
+                return new PSADApplication()
+                {
+                    ApplicationObjectId = Guid.Parse(application.ObjectId),
+                    Type = application.ObjectType,
+                    ApplicationId = Guid.Parse(application.AppId),
+                    AppPermissions = application.AppPermissions,
+                    AvailableToOtherTenants = application.AvailableToOtherTenants
+                };
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public static KeyCredential ToGraphKeyCredential(this PSADKeyCredential PSKeyCredential)
+        {
+            return new KeyCredential
+            {
+                StartDate = PSKeyCredential.StartDate,
+                EndDate = PSKeyCredential.EndDate,
+                KeyId = PSKeyCredential.KeyId,
+                Type = PSKeyCredential.Type,
+                Usage = PSKeyCredential.Usage,
+                Value = PSKeyCredential.Value
+            };
+        }
+
+        public static PasswordCredential ToGraphPasswordCredential(this PSADPasswordCredential PSPasswordCredential)
+        {
+            return new PasswordCredential
+            {
+                 StartDate = PSPasswordCredential.StartDate,
+                 EndDate = PSPasswordCredential.EndDate,
+                 KeyId = PSPasswordCredential.KeyId,
+                 Value = PSPasswordCredential.Value
             };
         }
     }

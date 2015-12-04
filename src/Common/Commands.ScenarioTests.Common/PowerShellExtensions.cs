@@ -27,7 +27,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         public static string CredentialImportFormat = "Import-AzurePublishSettingsFile '{0}'";
 
         /// <summary>
-        /// Gets a powershell varibale from the current session and convernts it back to it's original type.
+        /// Gets a powershell variable from the current session and converts it back to it's original type.
         /// </summary>
         /// <typeparam name="T">The powershell object original type</typeparam>
         /// <param name="powershell">The PowerShell instance</param>
@@ -206,7 +206,10 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 Console.WriteLine("---------------------------------------------------------------\n");
                 foreach (T item in stream)
                 {
-                    Console.WriteLine("{0}\n", item.ToString());
+                    if(item != null)
+                    {
+                        Console.WriteLine("{0}\n", item.ToString());
+                    }
                 }
                 Console.WriteLine("---------------------------------------------------------------\n");
                 Console.WriteLine("");

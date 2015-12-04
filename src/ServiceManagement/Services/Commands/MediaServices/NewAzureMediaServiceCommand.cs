@@ -44,7 +44,7 @@ namespace Microsoft.WindowsAzure.Commands.MediaServices
 
         public override void ExecuteCmdlet()
         {
-            MediaServicesClient = MediaServicesClient ?? new MediaServicesClient(CurrentContext.Subscription, WriteDebug);
+            MediaServicesClient = MediaServicesClient ?? new MediaServicesClient(Profile, Profile.Context.Subscription, WriteDebug);
 
             StorageAccountGetKeysResponse storageKeysResponse = null;
             Uri storageEndPoint = null;

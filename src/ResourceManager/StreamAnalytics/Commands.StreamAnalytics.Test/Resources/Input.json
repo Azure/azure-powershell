@@ -1,0 +1,30 @@
+{
+        "name": "Input",
+        "properties": {
+          "type": "stream",
+          "serialization": {
+            "type": "CSV",
+            "properties": {
+              "fieldDelimiter": ",",
+              "encoding": "UTF8"
+            }
+          },
+          "datasource": {
+            "type": "Microsoft.Storage/Blob",
+            "properties": {
+              "storageAccounts" : [
+                {
+                  "accountName": "azurenrtdogfood",
+                  "accountKey": "$EncryptedStringForTesting"
+                }
+              ],
+              "container": "samples",
+		      "blobName": "sample-blob",
+              "PathPattern": "",
+              "DateFormat": "yyyy/MM/dd",
+              "TimeFormat": "HH",
+              "SourcePartitionCount": null
+            }
+          }
+        }
+}

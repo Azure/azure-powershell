@@ -87,6 +87,14 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         }
 
         /// <inheritdoc />
+        [Parameter(Mandatory = false, HelpMessage = "Rule for SSL errors with HDInsight client.")]
+        public bool IgnoreSslErrors
+        {
+            get { return this.command.IgnoreSslErrors; }
+            set { this.command.IgnoreSslErrors = value; }
+        }
+
+        /// <inheritdoc />
         [Parameter(Mandatory = true, HelpMessage = "The JobID of the jobDetails to get details for.", ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
         [Alias(AzureHdInsightPowerShellConstants.JobId)]
@@ -132,25 +140,44 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         /// <inheritdoc />
         protected override void EndProcessing()
         {
+            this.WriteWarning(string.Format(AzureHdInsightPowerShellConstants.AsmWarning, "Get-AzureRmHDInsightJobOutput"));
             this.command.Logger = this.Logger;
             this.command.CurrentSubscription = this.GetCurrentSubscription(this.Subscription, this.Certificate);
             this.AssertTaskLogsDirectorySpecified(this.TaskLogsDirectory);
 
+            int numSpecifiedOutputTypes = 0;
+            string selectedOutputType = "Standard Output";
+            this.command.OutputType = JobOutputType.StandardOutput;
+
+            if (this.StandardOutput.IsPresent)
+            {
+                numSpecifiedOutputTypes++;
+            }
+
+            if (this.DownloadTaskLogs.IsPresent)
+            {
+                this.command.OutputType = JobOutputType.TaskLogs;
+                selectedOutputType = "Task Logs";
+                numSpecifiedOutputTypes++;
+            }
+
+            if (this.TaskSummary.IsPresent)
+            {
+                this.command.OutputType = JobOutputType.TaskSummary;
+                selectedOutputType = "Task Summary";
+                numSpecifiedOutputTypes++;
+            }
+
             if (this.StandardError.IsPresent)
             {
                 this.command.OutputType = JobOutputType.StandardError;
+                selectedOutputType = "Standard Error";
+                numSpecifiedOutputTypes++;
             }
-            else if (this.TaskSummary.IsPresent)
+
+            if (numSpecifiedOutputTypes > 1)
             {
-                this.command.OutputType = JobOutputType.TaskSummary;
-            }
-            else if (this.DownloadTaskLogs.IsPresent)
-            {
-                this.command.OutputType = JobOutputType.TaskLogs;
-            }
-            else
-            {
-                this.command.OutputType = JobOutputType.StandardOutput;
+                this.WriteWarning(String.Format("This cmdlet supports specifying only one job output type. Only {0} will be returned", selectedOutputType));
             }
 
             try

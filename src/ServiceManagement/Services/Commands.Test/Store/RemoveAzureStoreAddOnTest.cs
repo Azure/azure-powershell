@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Store;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -25,7 +26,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Store
     using Resource = Management.Store.Models.CloudServiceListResponse.CloudService.AddOnResource;
 
     
-    public class RemoveAzureStoreAddOnTests : TestBase
+    public class RemoveAzureStoreAddOnTests : SMTestBase
     {
         Mock<ICommandRuntime> mockCommandRuntime;
 
@@ -50,6 +51,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Store
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveAzureStoreAddOnWithSuccessful()
         {
             // Setup
@@ -73,6 +75,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Store
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveAzureStoreAddOnWithPassThru()
         {
             // Setup
@@ -98,6 +101,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Store
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveAzureStoreAddOnWithNo()
         {
             // Setup

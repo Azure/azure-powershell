@@ -19,6 +19,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService.AzureTools;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.WindowsAzure.Commands.CloudService.Development
 {
@@ -26,7 +27,7 @@ namespace Microsoft.WindowsAzure.Commands.CloudService.Development
     /// Packages the service project into cloud or local package.
     /// </summary>
     [Cmdlet(VerbsData.Save, "AzureServiceProjectPackage"), OutputType(typeof(PSObject))]
-    public class SaveAzureServiceProjectPackageCommand : AzurePSCmdlet
+    public class SaveAzureServiceProjectPackageCommand : AzureSMCmdlet
     {
         [Parameter(Mandatory = false)]
         [Alias("l")]

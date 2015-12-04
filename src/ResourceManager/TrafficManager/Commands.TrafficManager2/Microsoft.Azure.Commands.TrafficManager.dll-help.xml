@@ -1,0 +1,1293 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<helpItems xmlns="http://msh" schema="maml">
+  <!-- Updatable Help Version 1.0.0.0 -->
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Add-AzureRmTrafficManagerEndpointConfig</command:name>
+      <maml:description>
+        <maml:para>Adds an endpoint to an Azure Traffic Manager profile. </maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Add</command:verb>
+      <command:noun>AzureTrafficManagerEndpointConfig</command:noun>
+      <dev:version />
+    </command:details>
+    <maml:description>
+      <maml:para>The Add-AzureRmTrafficManagerEndpointConfig cmdlet adds an endpoint to a local Azure Traffic Manager profile object. You can get a profile by using the New-AzureRmTrafficManagerProfile or Get-AzureRmTrafficManagerProfile cmdlets. </maml:para>
+      <maml:para>This cmdlet operates on the local profile object. Commit your changes to the profile for Traffic Manager by using the Set-AzureRmTrafficManagerProfile cmdlet.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Add-AzureRmTrafficManagerEndpointConfig</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>EndpointLocation</maml:name>
+          <maml:description>
+            <maml:para>Specifies the location of the external endpoint. Specify this parameter for profiles that have a value of Performance for the TrafficRoutingMethod parameter. </maml:para>
+            <maml:para>You must specify for endpoints of the type ExternalEndpoints in a profile that has the load balancing method of Performance.</maml:para>
+            <maml:para>You can find a list of possible values for this parameter by using the List Locations operation. For more information, see <maml:navigationLink><maml:linkText>List Locations</maml:linkText><maml:uri></maml:uri></maml:navigationLink> (http://msdn.microsoft.com/en-us/library/gg441293.aspx) at the Microsoft Developer Network.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Priority</maml:name>
+          <maml:description>
+            <maml:para>Specifies the priority that Traffic Manager assigns to the endpoint. Specify this parameter only if the Traffic Manager profile is configured for priority traffic routing. Valid values are integers from 1 through 1000. Lower values represent higher priority.</maml:para>
+            <maml:para>If you specify a priority, you must specify priorities on all endpoints, and no two endpoints can share the same priority value. If you do not specify priorities, Traffic Manager assigns endpoints with default priority values, starting with one (1), in the order the profile lists the endpoints.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">UInt32</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Profile</maml:name>
+          <maml:description>
+            <maml:para>Specifies an Azure profile.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Weight</maml:name>
+          <maml:description>
+            <maml:para>Specifies the weight that Traffic Manager assigns to the endpoint. Valid values are integers from 1 through 1000. The default value is one (1). Specify this parameter only if the Traffic Manager profile has a value of Weighted for the TrafficRoutingMethod parameter. </maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">UInt32</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>EndpointName</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of the Traffic Manager endpoint that this cmdlet adds.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>EndpointStatus</maml:name>
+          <maml:description>
+            <maml:para>Specifies the status of the endpoint. If the status is Enabled, the endpoint is probed for endpoint health and is included in the traffic routing method. Valid values are: 
+
+-- Enabled
+-- Disabled</maml:para>
+          </maml:description>
+          <command:parameterValueGroup>
+            <command:parameterValue required="false" variableLength="false">Enabled</command:parameterValue>
+            <command:parameterValue required="false" variableLength="false">Disabled</command:parameterValue>
+          </command:parameterValueGroup>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Target</maml:name>
+          <maml:description>
+            <maml:para>Specifies the fully qualified DNS name of the endpoint. Traffic Manager returns this value in DNS responses when it directs traffic to this endpoint. </maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
+          <maml:name>TrafficManagerProfile</maml:name>
+          <maml:description>
+            <maml:para>Specifies a local TrafficManagerProfile object. This cmdlet modifies this local object. </maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">TrafficManagerProfile</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Type</maml:name>
+          <maml:description>
+            <maml:para>Specifies the type of endpoint that this cmdlet adds to the Azure Traffic Manager profile. Valid values are: 
+
+-- AzureEndpoints
+-- ExternalEndpoints
+-- NestedEndpoints</maml:para>
+            <maml:para>Azure Resource Manager is currently in Preview. The only supported type is ExternalEndpoints.</maml:para>
+          </maml:description>
+          <command:parameterValueGroup>
+            <command:parameterValue required="true" variableLength="false">AzureEndpoints</command:parameterValue>
+            <command:parameterValue required="true" variableLength="false">ExternalEndpoints</command:parameterValue>
+            <command:parameterValue required="true" variableLength="false">NestedEndpoints</command:parameterValue>
+          </command:parameterValueGroup>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>EndpointLocation</maml:name>
+        <maml:description>
+          <maml:para>Specifies the location of the external endpoint. Specify this parameter for profiles that have a value of Performance for the TrafficRoutingMethod parameter. </maml:para>
+          <maml:para>You must specify for endpoints of the type ExternalEndpoints in a profile that has the load balancing method of Performance.</maml:para>
+          <maml:para>You can find a list of possible values for this parameter by using the List Locations operation. For more information, see <maml:navigationLink><maml:linkText>List Locations</maml:linkText><maml:uri></maml:uri></maml:navigationLink> (http://msdn.microsoft.com/en-us/library/gg441293.aspx) at the Microsoft Developer Network.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>EndpointName</maml:name>
+        <maml:description>
+          <maml:para>Specifies the name of the Traffic Manager endpoint that this cmdlet adds.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>EndpointStatus</maml:name>
+        <maml:description>
+          <maml:para>Specifies the status of the endpoint. If the status is Enabled, the endpoint is probed for endpoint health and is included in the traffic routing method. Valid values are: 
+
+-- Enabled
+-- Disabled</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>Priority</maml:name>
+        <maml:description>
+          <maml:para>Specifies the priority that Traffic Manager assigns to the endpoint. Specify this parameter only if the Traffic Manager profile is configured for priority traffic routing. Valid values are integers from 1 through 1000. Lower values represent higher priority.</maml:para>
+          <maml:para>If you specify a priority, you must specify priorities on all endpoints, and no two endpoints can share the same priority value. If you do not specify priorities, Traffic Manager assigns endpoints with default priority values, starting with one (1), in the order the profile lists the endpoints.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">UInt32</command:parameterValue>
+        <dev:type>
+          <maml:name>UInt32</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>Profile</maml:name>
+        <maml:description>
+          <maml:para>Specifies an Azure profile.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+        <dev:type>
+          <maml:name>AzureProfile</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>Target</maml:name>
+        <maml:description>
+          <maml:para>Specifies the fully qualified DNS name of the endpoint. Traffic Manager returns this value in DNS responses when it directs traffic to this endpoint. </maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
+        <maml:name>TrafficManagerProfile</maml:name>
+        <maml:description>
+          <maml:para>Specifies a local TrafficManagerProfile object. This cmdlet modifies this local object. </maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">TrafficManagerProfile</command:parameterValue>
+        <dev:type>
+          <maml:name>TrafficManagerProfile</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>Type</maml:name>
+        <maml:description>
+          <maml:para>Specifies the type of endpoint that this cmdlet adds to the Azure Traffic Manager profile. Valid values are: 
+
+-- AzureEndpoints
+-- ExternalEndpoints
+-- NestedEndpoints</maml:para>
+          <maml:para>Azure Resource Manager is currently in Preview. The only supported type is ExternalEndpoints.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>Weight</maml:name>
+        <maml:description>
+          <maml:para>Specifies the weight that Traffic Manager assigns to the endpoint. Valid values are integers from 1 through 1000. The default value is one (1). Specify this parameter only if the Traffic Manager profile has a value of Weighted for the TrafficRoutingMethod parameter. </maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">UInt32</command:parameterValue>
+        <dev:type>
+          <maml:name>UInt32</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>Microsoft.Azure.Commands.Network.TrafficManagerProfile</maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>You can pipe a TrafficManagerProfile object to this cmdlet. </maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>Microsoft.Azure.Commands.Network.TrafficManagerProfile</maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>This cmdlet returns a modified TrafficManagerProfile object.</maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <command:examples>
+      <command:example>
+        <maml:title>Example 1: Add an endpoint to a profile</maml:title>
+        <maml:introduction>
+          <maml:para>
+          </maml:para>
+        </maml:introduction>
+        <dev:code>PS C:\&gt;$TrafficManagerProfile = Get-AzureRmTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11"
+PS C:\&gt; Add-AzureRmTrafficManagerEndpointConfig -EndpointName "contoso" -EndpointStatus Enabled -Target "www.contoso.com" -TrafficManagerProfile $TrafficManagerProfile -Type ExternalEndpoints -EndpointLocation "North Europe" -Priority 1 -Weight 10
+PS C:\&gt; Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $TrafficManagerProfile
+</dev:code>
+        <dev:remarks>
+          <maml:para>The first command gets an Azure Traffic Manager profile by using the Get-AzureRmTrafficManagerProfile cmdlet. The command stores the local profile in the $TrafficManagerProfile variable. </maml:para>
+          <maml:para>The second command adds an endpoint named contoso to the profile stored in $TrafficManagerProfile. The command includes configuration data for the endpoint. This command changes only the local object.</maml:para>
+          <maml:para>The final command updates the Traffic Manager profile named ContosoProfile to match the local value in $TrafficManagerProfile.</maml:para>
+          <maml:para />
+          <maml:para />
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Remove-AzureRmTrafficManagerEndpointConfig</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureRmTrafficManagerProfile</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Set-AzureRmTrafficManagerProfile</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+    </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, traffic, trafficmanager</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Get-AzureRmTrafficManagerProfile</command:name>
+      <maml:description>
+        <maml:para>Gets an Azure Traffic Manager profile.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>AzureTrafficManagerProfile</command:noun>
+      <dev:version />
+    </command:details>
+    <maml:description>
+      <maml:para>The Get-AzureRmTrafficManagerProfile cmdlet gets a Traffic Manager profile from Azure Traffic Manager, and returns an object that represents that profile. You can modify the local object, and then apply changes to the profile by using the Set-AzureRmTrafficManagerProfile cmdlet.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-AzureRmTrafficManagerProfile</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Profile</maml:name>
+          <maml:description>
+            <maml:para>Specifies an Azure profile.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">AzureProfile</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of the Traffic Manager profile to get.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>ResourceGroupName</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of a resource group that contains the Traffic Manager profile.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>Specifies the name of the Traffic Manager profile to get.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>Profile</maml:name>
+        <maml:description>
+          <maml:para>Specifies an Azure profile.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">AzureProfile</command:parameterValue>
+        <dev:type>
+          <maml:name>AzureProfile</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>ResourceGroupName</maml:name>
+        <maml:description>
+          <maml:para>Specifies the name of a resource group that contains the Traffic Manager profile.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>
+          </maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>
+          </maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>Microsoft.Azure.Commands.Network.TrafficManagerProfile</maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>This cmdlet returns a TrafficManagerProfile object. You can modify this object, and then apply changes to Traffic Manager by using Set-AzureRmTrafficManagerProfile. </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <command:examples>
+      <command:example>
+        <maml:title>Example 1: Get a profile</maml:title>
+        <maml:introduction>
+          <maml:para>
+          </maml:para>
+        </maml:introduction>
+        <dev:code>PS C:\&gt;Get-AzureRmTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11" 
+</dev:code>
+        <dev:remarks>
+          <maml:para>This command gets the profile named ContosoProfile in ResourceGroup11. </maml:para>
+          <maml:para />
+          <maml:para />
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>New-AzureRmTrafficManagerProfile</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Remove-AzureRmTrafficManagerProfile</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Set-AzureRmTrafficManagerProfile</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+    </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, traffic, trafficmanager</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>New-AzureRmTrafficManagerProfile</command:name>
+      <maml:description>
+        <maml:para>Creates an Azure Traffic Manager profile.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>New</command:verb>
+      <command:noun>AzureTrafficManagerProfile</command:noun>
+      <dev:version />
+    </command:details>
+    <maml:description>
+      <maml:para>The New-AzureRmTrafficManagerProfile cmdlet creates an Azure Traffic Manager profile. Specify a name and required settings. This cmdlet returns a local object that represents the new profile.</maml:para>
+      <maml:para>This cmdlet does not configure Traffic Manager endpoints. Update the local profile object by using the Add-AzureRmTrafficManagerEndpointConfig cmdlet. Then upload changes to Traffic Manager by using the Set-AzureRmTrafficManagerProfile cmdlet. </maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>New-AzureRmTrafficManagerProfile</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Profile</maml:name>
+          <maml:description>
+            <maml:para>Specifies an Azure profile.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">AzureProfile</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>MonitorPath</maml:name>
+          <maml:description>
+            <maml:para>Specifies the path used to monitor endpoint health. Specify a value relative to the endpoint domain name.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>MonitorPort</maml:name>
+          <maml:description>
+            <maml:para>Specifies the TCP port that is used to monitor endpoint health. Valid values are integers from 1 through 65535.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">UInt32</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>MonitorProtocol</maml:name>
+          <maml:description>
+            <maml:para>Specifies the protocol to use to monitor endpoint health. Valid values are: 
+
+-- HTTP
+-- HTTPS </maml:para>
+          </maml:description>
+          <command:parameterValueGroup>
+            <command:parameterValue required="true" variableLength="false">HTTP</command:parameterValue>
+            <command:parameterValue required="true" variableLength="false">HTTPS</command:parameterValue>
+          </command:parameterValueGroup>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>Specifies a name for the Traffic Manager profile that this cmdlet creates.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>RelativeDnsName</maml:name>
+          <maml:description>
+            <maml:para>Specifies the relative DNS name that this Traffic Manager profile provides. Traffic Manager combines this value and the DNS domain name that Azure Traffic Manager uses to form the fully qualified domain name (FQDN) of the profile.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>ResourceGroupName</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of a resource group. This cmdlet creates a Traffic Manager profile in the group that this parameter specifies. </maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>TrafficRoutingMethod</maml:name>
+          <maml:description>
+            <maml:para>Specifies the traffic routing method. This method determines which endpoint Traffic Manager returns in response to incoming DNS queries. Valid values are: 
+
+-- Performance
+-- Weighted
+-- Priority</maml:para>
+          </maml:description>
+          <command:parameterValueGroup>
+            <command:parameterValue required="true" variableLength="false">Performance</command:parameterValue>
+            <command:parameterValue required="true" variableLength="false">Weighted</command:parameterValue>
+            <command:parameterValue required="true" variableLength="false">Priority</command:parameterValue>
+          </command:parameterValueGroup>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Ttl</maml:name>
+          <maml:description>
+            <maml:para>Specifies a Time to Live (TTL) value.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">UInt32</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>MonitorPath</maml:name>
+        <maml:description>
+          <maml:para>Specifies the path used to monitor endpoint health. Specify a value relative to the endpoint domain name.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>MonitorPort</maml:name>
+        <maml:description>
+          <maml:para>Specifies the TCP port that is used to monitor endpoint health. Valid values are integers from 1 through 65535.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">UInt32</command:parameterValue>
+        <dev:type>
+          <maml:name>UInt32</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>MonitorProtocol</maml:name>
+        <maml:description>
+          <maml:para>Specifies the protocol to use to monitor endpoint health. Valid values are: 
+
+-- HTTP
+-- HTTPS </maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>Specifies a name for the Traffic Manager profile that this cmdlet creates.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>Profile</maml:name>
+        <maml:description>
+          <maml:para>Specifies an Azure profile.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">AzureProfile</command:parameterValue>
+        <dev:type>
+          <maml:name>AzureProfile</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>RelativeDnsName</maml:name>
+        <maml:description>
+          <maml:para>Specifies the relative DNS name that this Traffic Manager profile provides. Traffic Manager combines this value and the DNS domain name that Azure Traffic Manager uses to form the fully qualified domain name (FQDN) of the profile.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>ResourceGroupName</maml:name>
+        <maml:description>
+          <maml:para>Specifies the name of a resource group. This cmdlet creates a Traffic Manager profile in the group that this parameter specifies. </maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>TrafficRoutingMethod</maml:name>
+        <maml:description>
+          <maml:para>Specifies the traffic routing method. This method determines which endpoint Traffic Manager returns in response to incoming DNS queries. Valid values are: 
+
+-- Performance
+-- Weighted
+-- Priority</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>Ttl</maml:name>
+        <maml:description>
+          <maml:para>Specifies a Time to Live (TTL) value.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">UInt32</command:parameterValue>
+        <dev:type>
+          <maml:name>UInt32</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>
+          </maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>
+          </maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>Microsoft.Azure.Commands.Network.TrafficManagerProfile</maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>This cmdlet returns a new TrafficManagerProfile object. </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <command:examples>
+      <command:example>
+        <maml:title>Example 1: Create a profile</maml:title>
+        <maml:introduction>
+          <maml:para>
+          </maml:para>
+        </maml:introduction>
+        <dev:code>PS C:\&gt;New-AzureRmTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11" -ProfileStatus Enabled -TrafficRoutingMethod Performance -RelativeDnsName "contosoapp" -TTL 30 -MonitorProtocol HTTP -MonitorPort 80 -MonitorPath "/default.aspx" 
+</dev:code>
+        <dev:remarks>
+          <maml:para>This command creates an Azure Traffic Manager profile named ContosoProfile in resource group ResourceGroup11. The DNS FQDN is contosoapp.trafficmanager.net.</maml:para>
+          <maml:para />
+          <maml:para />
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureRmTrafficManagerProfile</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Remove-AzureRmTrafficManagerProfile</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Set-AzureRmTrafficManagerProfile</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Add-AzureRmTrafficManagerEndpointConfig</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+    </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, traffic, trafficmanager</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Remove-AzureRmTrafficManagerEndpointConfig</command:name>
+      <maml:description>
+        <maml:para>Removes an endpoint from an Azure Traffic Manager profile. </maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Remove</command:verb>
+      <command:noun>AzureTrafficManagerEndpointConfig</command:noun>
+      <dev:version />
+    </command:details>
+    <maml:description>
+      <maml:para>The Remove-AzureRmTrafficManagerEndpointConfig cmdlet removes an endpoint from a local Azure Traffic Manager profile object. You can get a profile by using the New-AzureRmTrafficManagerProfile or Get-AzureRmTrafficManagerProfile cmdlets. </maml:para>
+      <maml:para>This cmdlet operates on the local profile object. Commit your changes to the profile for Traffic Manager by using the Set-AzureRmTrafficManagerProfile cmdlet.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Remove-AzureRmTrafficManagerEndpointConfig</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Profile</maml:name>
+          <maml:description>
+            <maml:para>Specifies an Azure profile.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>EndpointName</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of the Traffic Manager endpoint that this cmdlet removes.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
+          <maml:name>TrafficManagerProfile</maml:name>
+          <maml:description>
+            <maml:para>Specifies a local TrafficManagerProfile object. This cmdlet modifies this local object.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">TrafficManagerProfile</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>EndpointName</maml:name>
+        <maml:description>
+          <maml:para>Specifies the name of the Traffic Manager endpoint that this cmdlet removes.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>Profile</maml:name>
+        <maml:description>
+          <maml:para>Specifies an Azure profile.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+        <dev:type>
+          <maml:name>AzureProfile</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
+        <maml:name>TrafficManagerProfile</maml:name>
+        <maml:description>
+          <maml:para>Specifies a local TrafficManagerProfile object. This cmdlet modifies this local object.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">TrafficManagerProfile</command:parameterValue>
+        <dev:type>
+          <maml:name>TrafficManagerProfile</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>Microsoft.Azure.Commands.Network.TrafficManagerProfile</maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>You can pipe a TrafficManagerProfile object to this cmdlet.</maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>Microsoft.Azure.Commands.Network.TrafficManagerProfile</maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>This cmdlet returns a modified TrafficManagerProfile object.</maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <command:examples>
+      <command:example>
+        <maml:title>Example 1: Remove a profile</maml:title>
+        <maml:introduction>
+          <maml:para>
+          </maml:para>
+        </maml:introduction>
+        <dev:code>PS C:\&gt;$TrafficManagerProfile = Get-AzureRmTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11"
+PS C:\&gt; Remove-AzureRmTrafficManagerEndpointConfig -EndpointName "contoso" -TrafficManagerProfile $TrafficManagerProfile 
+PS C:\&gt; Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $TrafficManagerProfile 
+</dev:code>
+        <dev:remarks>
+          <maml:para>The first command gets an Azure Traffic Manager profile by using the Get-AzureRmTrafficManagerProfile cmdlet. The command stores the local profile in the $TrafficManagerProfile variable. </maml:para>
+          <maml:para>The second command removes an endpoint named contoso from the profile stored in $TrafficManagerProfile. This command changes only the local object.</maml:para>
+          <maml:para>The final command updates the Traffic Manager profile named ContosoProfile to match the local value in $TrafficManagerProfile.</maml:para>
+          <maml:para />
+          <maml:para />
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>Example 2: Remove a profile by using the pipeline</maml:title>
+        <maml:introduction>
+          <maml:para>
+          </maml:para>
+        </maml:introduction>
+        <dev:code>PS C:\&gt;Get-AzureRmTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11" | Remove-AzureRmTrafficManagerEndpointConfig -EndpointName "contoso" | Set-AzureRmTrafficManagerProfile
+</dev:code>
+        <dev:remarks>
+          <maml:para>This command gets a profile, and then passes the local profile to Remove-AzureRmTrafficManagerEndpointConfig by using the pipeline operator. That cmdlet removes an endpoint named contoso from that profile, and then passes the result to Set-AzureRmTrafficManagerProfile. The final cmdlet updates the Traffic Manager profile to match the local value.</maml:para>
+          <maml:para />
+          <maml:para />
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Add-AzureRmTrafficManagerEndpointConfig</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureRmTrafficManagerProfile</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Set-AzureRmTrafficManagerProfile</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+    </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, traffic, trafficmanager</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Remove-AzureRmTrafficManagerProfile</command:name>
+      <maml:description>
+        <maml:para>Deletes an Azure Traffic Manager profile.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Remove</command:verb>
+      <command:noun>AzureTrafficManagerProfile</command:noun>
+      <dev:version />
+    </command:details>
+    <maml:description>
+      <maml:para>The Remove-AzureRmTrafficManagerProfile cmdlet deletes an Azure Traffic Manager profile. You can specify a profile to delete by name, or you can specify a profile object. You can delete a profile object from Traffic Manager by using the pipeline or as a parameter value.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Remove-AzureRmTrafficManagerProfile</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Force</maml:name>
+          <maml:description>
+            <maml:para>Forces the command to run without asking for user confirmation.</maml:para>
+          </maml:description>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Profile</maml:name>
+          <maml:description>
+            <maml:para>Specifies an Azure profile.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of the Traffic Manager profile that this cmdlet deletes.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>ResourceGroupName</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of a resource group. This cmdlet deletes a Traffic Manager profile in the group that this parameter specifies. </maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Remove-AzureRmTrafficManagerProfile</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Force</maml:name>
+          <maml:description>
+            <maml:para>Forces the command to run without asking for user confirmation.</maml:para>
+          </maml:description>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Profile</maml:name>
+          <maml:description>
+            <maml:para>Specifies an Azure profile.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
+          <maml:name>TrafficManagerProfile</maml:name>
+          <maml:description>
+            <maml:para>Specifies a TrafficManagerProfile object to delete.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">TrafficManagerProfile</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>Force</maml:name>
+        <maml:description>
+          <maml:para>Forces the command to run without asking for user confirmation.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>Specifies the name of the Traffic Manager profile that this cmdlet deletes.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>Profile</maml:name>
+        <maml:description>
+          <maml:para>Specifies an Azure profile.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+        <dev:type>
+          <maml:name>AzureProfile</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>ResourceGroupName</maml:name>
+        <maml:description>
+          <maml:para>Specifies the name of a resource group. This cmdlet deletes a Traffic Manager profile in the group that this parameter specifies. </maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
+        <maml:name>TrafficManagerProfile</maml:name>
+        <maml:description>
+          <maml:para>Specifies a TrafficManagerProfile object to delete.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">TrafficManagerProfile</command:parameterValue>
+        <dev:type>
+          <maml:name>TrafficManagerProfile</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>Microsoft.Azure.Commands.Network.TrafficManagerProfile</maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>You can pipe a TrafficManagerProfile object to this cmdlet. </maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>Boolean</maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>This cmdlet returns a value of $True, if it succeeds or, if the deletion fails, a value of $False. </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <command:examples>
+      <command:example>
+        <maml:title>Example 1: Delete a profile specified by name</maml:title>
+        <maml:introduction>
+          <maml:para>
+          </maml:para>
+        </maml:introduction>
+        <dev:code>PS C:\&gt;Remove-AzureRmTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11" 
+</dev:code>
+        <dev:remarks>
+          <maml:para>This command deletes the profile named ContosoProfile in ResourceGroup11. </maml:para>
+          <maml:para />
+          <maml:para />
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>Example 2: Delete a profile by using the pipeline</maml:title>
+        <maml:introduction>
+          <maml:para>
+          </maml:para>
+        </maml:introduction>
+        <dev:code>PS C:\&gt;Get-AzureRmTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11" | Remove-AzureRmTrafficManagerProfile 
+</dev:code>
+        <dev:remarks>
+          <maml:para>This command gets the profile named ContosoProfile in ResourceGroup11, and then passes that profile to the current cmdlet by using the pipeline operator. The current command deletes that profile. </maml:para>
+          <maml:para />
+          <maml:para />
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureRmTrafficManagerProfile</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>New-AzureRmTrafficManagerProfile</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Set-AzureRmTrafficManagerProfile</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+    </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, traffic, trafficmanager</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Set-AzureRmTrafficManagerProfile</command:name>
+      <maml:description>
+        <maml:para>Updates an Azure Traffic Manager profile. </maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Set</command:verb>
+      <command:noun>AzureTrafficManagerProfile</command:noun>
+      <dev:version />
+    </command:details>
+    <maml:description>
+      <maml:para>The Set-AzureRmTrafficManagerProfile cmdlet updates an Azure Traffic Manager profile. This cmdlet updates the settings of the profile from a local profile object. You can pass a profile object to Traffic Manager by using the pipeline or as a parameter value.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Set-AzureRmTrafficManagerProfile</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Profile</maml:name>
+          <maml:description>
+            <maml:para>Specifies an Azure profile.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
+          <maml:name>TrafficManagerProfile</maml:name>
+          <maml:description>
+            <maml:para>Specifies a local TrafficManagerProfile object. This cmdlet updates  Traffic Manager to match this local object.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">TrafficManagerProfile</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>Profile</maml:name>
+        <maml:description>
+          <maml:para>Specifies an Azure profile.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+        <dev:type>
+          <maml:name>AzureProfile</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
+        <maml:name>TrafficManagerProfile</maml:name>
+        <maml:description>
+          <maml:para>Specifies a local TrafficManagerProfile object. This cmdlet updates  Traffic Manager to match this local object.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">TrafficManagerProfile</command:parameterValue>
+        <dev:type>
+          <maml:name>TrafficManagerProfile</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>Microsoft.Azure.Commands.Network.TrafficManagerProfile</maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>You can pipe a TrafficManagerProfile object to this cmdlet. </maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>Microsoft.Azure.Commands.Network.TrafficManagerProfile</maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>This cmdlet returns a TrafficManagerProfile object. </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <command:examples>
+      <command:example>
+        <maml:title>Example 1: Update a profile</maml:title>
+        <maml:introduction>
+          <maml:para>
+          </maml:para>
+        </maml:introduction>
+        <dev:code>PS C:\&gt;$TrafficManagerProfile = Get-AzureRmTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11"
+PS C:\&gt; Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $TrafficManagerProfile 
+</dev:code>
+        <dev:remarks>
+          <maml:para>The first command gets an Azure Traffic Manager profile by using the Get-AzureRmTrafficManagerProfile cmdlet. The command stores the profile locally in the $TrafficManagerProfile variable. After you get that profile, you can change it locally.</maml:para>
+          <maml:para>The second command updates the Traffic Manager profile named ContosoProfile to match the local value in $TrafficManagerProfile.</maml:para>
+          <maml:para />
+          <maml:para />
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureRmTrafficManagerProfile</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>New-AzureRmTrafficManagerProfile</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Remove-AzureRmTrafficManagerProfile</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+    </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, traffic, trafficmanager</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+  </command:command>
+</helpItems>

@@ -19,11 +19,12 @@ using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.CloudService;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests.Cmdlet
 {
-    public class GetAzureServiceProjectRuntimesTests : TestBase
+    public class GetAzureServiceProjectRuntimesTests : SMTestBase
     {
         private const string serviceName = "AzureService";
 
@@ -42,6 +43,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests.Cm
         /// Verify that the correct runtimes are returned in the correct format from a given runtime manifest
         /// </summary>
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetRuntimes()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -52,9 +54,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests.Cm
 
                 cmdlet.GetAzureRuntimesProcess(string.Empty, manifest);
 
-                List<CloudRuntimePackage> actual = mockCommandRuntime.OutputPipeline[0] as List<CloudRuntimePackage>;
+                IEnumerable<CloudRuntimePackage> actual = System.Management.Automation.LanguagePrimitives.GetEnumerable( mockCommandRuntime.OutputPipeline).Cast<CloudRuntimePackage>();
 
-                Assert.Equal<int>(runtimes.Count, actual.Count);
+                Assert.Equal<int>(runtimes.Count, actual.Count());
                 Assert.True(runtimes.All<CloudRuntimePackage>(p => actual.Any<CloudRuntimePackage>(p2 => p2.PackageUri.Equals(p.PackageUri))));
             }
         }

@@ -99,6 +99,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Endpoints
             set;
         }
 
+        [Parameter(HelpMessage = "The Virtual IP Name of the Virtual IP on which the endpoint is to be added.")]
+        [ValidateNotNullOrEmpty]
+        public string VirtualIPName
+        {
+            get; 
+            set;
+        }
+
         internal void ExecuteCommand()
         {
             ValidateParameters();
@@ -154,6 +162,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Endpoints
             if (this.ParameterSpecified("LoadBalancerDistribution"))
             {
                 endpoint.LoadBalancerDistribution = this.LoadBalancerDistribution;
+            }
+
+            if (this.ParameterSpecified("VirtualIPName"))
+            {
+                endpoint.VirtualIPName = this.VirtualIPName;
             }
 
             WriteObject(VM, true);

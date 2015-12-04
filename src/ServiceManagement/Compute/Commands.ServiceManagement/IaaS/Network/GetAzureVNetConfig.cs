@@ -16,9 +16,11 @@ using System;
 using System.IO;
 using System.Management.Automation;
 using System.Net;
+using Hyak.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Management.Network;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 {
@@ -46,7 +48,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                     WriteVerboseWithTimestamp(string.Format(Resources.AzureVNetConfigBeginOperation, CommandRuntime.ToString()));
 
                     var netcfg = this.NetworkClient.Networks.GetConfiguration();
-                    var operation = GetOperationNewSM(netcfg.RequestId);
+                    var operation = GetOperation(netcfg.RequestId);
 
                     WriteVerboseWithTimestamp(string.Format(Resources.AzureVNetConfigCompletedOperation, CommandRuntime.ToString()));
 
@@ -79,7 +81,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                     }
                     else
                     {
-                        this.WriteExceptionDetails(ex);
+                        WriteExceptionError(ex);
                     }
                 }
             });

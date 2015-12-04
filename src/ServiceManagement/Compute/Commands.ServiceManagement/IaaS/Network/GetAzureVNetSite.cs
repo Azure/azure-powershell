@@ -21,7 +21,9 @@ using System.Net;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Management.Network;
 using Microsoft.WindowsAzure.Management.Network.Models;
+using Hyak.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 {
@@ -58,7 +60,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                         }
                     }
 
-                    var operation = GetOperationNewSM(response.RequestId);
+                    var operation = GetOperation(response.RequestId);
                     WriteVerboseWithTimestamp(string.Format(Resources.AzureVNetSiteCompletedOperation, CommandRuntime.ToString()));
                     result = sites.Select(site => ContextFactory<NetworkListResponse.VirtualNetworkSite, VirtualNetworkSiteContext>(site, operation));
                 }
@@ -70,7 +72,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                     }
                     else
                     {
-                        this.WriteExceptionDetails(ex);
+                        WriteExceptionError(ex);
                     }
                 }
             });

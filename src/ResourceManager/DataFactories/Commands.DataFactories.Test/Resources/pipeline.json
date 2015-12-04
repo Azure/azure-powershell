@@ -10,8 +10,8 @@
                 inputs: [ {name: "inputTable"} ],
                 outputs: [ {name: "outputTable"} ],
                 linkedServiceName: "foo2",
-                type: "CustomActivity",
-                transformation:
+                type: "DotNetActivity",
+                typeProperties:
                 {
 			        assemblyName: "mycode.dll",
                     entryPoint: "myclassname",

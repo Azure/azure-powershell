@@ -19,7 +19,7 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server;
@@ -32,7 +32,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cmdlet
 {
     [TestClass]
-    public class GetRestorableDroppedDatabaseCertAuthTests : TestBase
+    public class GetRestorableDroppedDatabaseCertAuthTests : SMTestBase
     {
         private const string deletionDateStringFormat = "yyyy-MM-ddTHH:mm:ss.FFFZ";
 

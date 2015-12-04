@@ -22,7 +22,7 @@ using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService.AzureTools;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService.Model;
@@ -41,6 +41,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
 {
     using ConfigCertificate = Common.XmlSchema.ServiceConfigurationSchema.Certificate;
     using ConfigConfigurationSetting = Common.XmlSchema.ServiceConfigurationSchema.ConfigurationSetting;
+    using Microsoft.Azure.Common.Authentication.Models;
+    using Microsoft.Azure.Common.Authentication;
+    using Hyak.Common;
 
     public class CloudServiceClient : ICloudServiceClient
     {
@@ -499,7 +502,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
             // If there's no storage service provided, try using the default one
             if (string.IsNullOrEmpty(storageServiceName))
             {
-                storageServiceName = Subscription.GetProperty(AzureSubscription.Property.StorageAccount);
+                storageServiceName = Subscription.GetStorageAccountName();
             }
 
             ServiceSettings serviceSettings = ServiceSettings.LoadDefault(
@@ -541,6 +544,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
         /// <param name="verboseStream">Action used to log detailed client progress</param>
         /// <param name="warningStream">Action used to log warning messages</param>
         public CloudServiceClient(
+            AzureSMProfile profile, 
             AzureSubscription subscription,
             string currentLocation = null,
             Action<string> debugStream = null,
@@ -551,9 +555,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
             Subscription = subscription;
             CloudBlobUtility = new CloudBlobUtility();
 
-            ManagementClient = AzureSession.ClientFactory.CreateClient<ManagementClient>(subscription, AzureEnvironment.Endpoint.ServiceManagement);
-            StorageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(subscription, AzureEnvironment.Endpoint.ServiceManagement);
-            ComputeClient = AzureSession.ClientFactory.CreateClient<ComputeManagementClient>(subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            ManagementClient = AzureSession.ClientFactory.CreateClient<ManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            StorageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            ComputeClient = AzureSession.ClientFactory.CreateClient<ComputeManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
         }
 
         private CloudServiceClient(string currentLocation, Action<string> debugStream, Action<string> verboseStream,
@@ -821,7 +825,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
 
             if (launch)
             {
-                GeneralUtilities.LaunchWebPage(deployment.Uri.ToString());
+                ProcessHelper.Start(deployment.Uri.ToString());
             }
             return deployment;
         }

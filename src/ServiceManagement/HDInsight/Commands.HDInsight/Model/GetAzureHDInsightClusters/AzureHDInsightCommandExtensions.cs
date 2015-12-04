@@ -12,18 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Linq;
-using System.Reflection;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Hadoop.Client;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Factories;
-using Microsoft.WindowsAzure.Commands.Common.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common.Authentication;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandImplementations;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightClusters.BaseInterfaces;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightClusters.Extensions;
+using System;
 using System.Diagnostics;
+using System.IO;
+using System.Reflection;
 
 namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightClusters
 {
@@ -33,7 +31,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
             this IAzureHDInsightCommonCommandBase command,
             AzureSubscription currentSubscription,
             AzureEnvironment environment,
-            AzureProfile profile)
+            AzureSMProfile profile)
         {
             var accountId = currentSubscription.Account;
             Debug.Assert(profile.Accounts.ContainsKey(accountId));
@@ -60,7 +58,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
             return new HDInsightCertificateCredential
             {
                 SubscriptionId = currentSubscription.Id,
-                Certificate = ProfileClient.DataStore.GetCertificate(currentSubscription.Account),
+                Certificate = AzureSession.DataStore.GetCertificate(currentSubscription.Account),
                 Endpoint = environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement),
             };
         }
@@ -68,13 +66,8 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
         public static IHDInsightSubscriptionCredentials GetAccessTokenCredentials(this IAzureHDInsightCommonCommandBase command, 
             AzureSubscription currentSubscription, AzureAccount azureAccount, AzureEnvironment environment)
         {
-            ProfileClient profileClient = new ProfileClient();
-            AzureContext azureContext = new AzureContext
-            {
-                Subscription = currentSubscription,
-                Environment = environment,
-                Account = azureAccount
-            };
+            ProfileClient profileClient = new ProfileClient(new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
+            AzureContext azureContext = new AzureContext(currentSubscription, azureAccount, environment);
 
             var cloudCredentials = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(azureContext) as AccessTokenCredential;
             if (cloudCredentials != null)
@@ -97,7 +90,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
             this IAzureHDInsightJobCommandCredentialsBase command,
             AzureSubscription currentSubscription,
             AzureEnvironment environment, string cluster,
-            AzureProfile profile)
+            AzureSMProfile profile)
         {
             IJobSubmissionClientCredential clientCredential = null;
             if (command.Credential != null)

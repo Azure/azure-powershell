@@ -15,6 +15,6 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
 {
     internal interface IAzureHDInsightClusterManagementClientFactory
     {
-        IHDInsightClient Create(IHDInsightSubscriptionCredentials credentials);
+        IHDInsightClient Create(IHDInsightSubscriptionCredentials credentials, bool ignoreSslErrors);
     }
 }

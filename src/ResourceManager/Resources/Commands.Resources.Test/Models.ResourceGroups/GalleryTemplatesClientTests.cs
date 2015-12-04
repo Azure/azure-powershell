@@ -21,17 +21,17 @@ using System.Security;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Resources.Models;
+using Microsoft.Azure.Common.OData;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Gallery.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Microsoft.WindowsAzure.Common.OData;
 using Moq;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Models
 {
-    public class GalleryTemplatesClientTests : TestBase
+    public class GalleryTemplatesClientTests : RMTestBase
     {
         private GalleryTemplatesClient galleryTemplatesClient;
 
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             galleryTemplatesClient = new GalleryTemplatesClient(galleryClientMock.Object);
         }
 
-        [Fact]
+        [Fact(Skip = "PowerShell runtime only")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ConstructsDynamicParameter()
         {
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Assert.Equal(int.Parse(value.MaxLength), validateLengthAttribute.MaxLength);
         }
 
-        [Fact]
+        [Fact(Skip = "PowerShell runtime only")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ResolvesDuplicatedDynamicParameterName()
         {
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Assert.Equal(int.Parse(value.MaxLength), validateLengthAttribute.MaxLength);
         }
 
-        [Fact]
+        [Fact(Skip="PowerShell runtime only")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ResolvesDuplicatedDynamicParameterNameSubstring()
         {
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Assert.Equal(int.Parse(value.MaxLength), validateLengthAttribute.MaxLength);
         }
 
-        [Fact]
+        [Fact(Skip = "PowerShell runtime only")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ResolvesDuplicatedDynamicParameterNameCaseInsensitive()
         {
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Assert.Equal(int.Parse(value.MaxLength), validateLengthAttribute.MaxLength);
         }
 
-        [Fact]
+        [Fact(Skip = "PowerShell runtime only")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ConstructsDynamicParameterNoValidation()
         {
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Assert.Equal(parameterSetNames[0], parameterAttribute.ParameterSetName);
         }
 
-        [Fact]
+        [Fact(Skip = "PowerShell runtime only")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ConstructsDynamicParameterWithNullAllowedValues()
         {

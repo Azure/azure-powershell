@@ -12,12 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.DataFactories.Models;
+using Microsoft.Azure.Commands.DataFactories.Properties;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.DataFactories.Models;
-using System.Globalization;
-using Microsoft.Azure.Commands.DataFactories.Properties;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
@@ -29,8 +30,14 @@ namespace Microsoft.Azure.Commands.DataFactories
         public string Name { get; set; }
 
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
+            // ValidationNotNullOrEmpty doesn't handle whitespaces well
+            if (Name != null && string.IsNullOrWhiteSpace(Name))
+            {
+                throw new PSArgumentNullException("Name");
+            }
+            
             if (ParameterSetName == ByFactoryObject)
             {
                 if (DataFactory == null)
@@ -49,19 +56,22 @@ namespace Microsoft.Azure.Commands.DataFactories
                 DataFactoryName = DataFactoryName
             };
 
-            List<PSHub> hubs = DataFactoryClient.FilterPSHubs(filterOptions);
-
-            if (hubs != null)
+            if (Name != null)
             {
-                if (hubs.Count == 1 && Name != null)
+                List<PSHub> hubs = DataFactoryClient.FilterPSHubs(filterOptions);
+
+                if (hubs != null && hubs.Any())
                 {
-                    WriteObject(hubs[0]);
+                    WriteObject(hubs.First());
                 }
-                else
-                {
-                    WriteObject(hubs, true);
-                }
+                return;
             }
+            
+            // List hubs until all pages are fetched
+            do
+            {
+                WriteObject(DataFactoryClient.FilterPSHubs(filterOptions), true);
+            } while (filterOptions.NextLink.IsNextPageLink());
         }
     }
 }

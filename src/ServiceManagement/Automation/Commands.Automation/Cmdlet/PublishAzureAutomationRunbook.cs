@@ -15,6 +15,7 @@
 using System;
 using System.Management.Automation;
 using System.Security.Permissions;
+using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Model;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
@@ -22,31 +23,14 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Publishes an azure automation runbook.
     /// </summary>
-    [Cmdlet(VerbsData.Publish, "AzureAutomationRunbook", DefaultParameterSetName = ByRunbookName)]
+    [Cmdlet(VerbsData.Publish, "AzureAutomationRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByRunbookName)]
     [OutputType(typeof(Runbook))]
     public class PublishAzureAutomationRunbook : AzureAutomationBaseCmdlet
     {
         /// <summary>
-        /// The publish runbook by runbook id parameter set.
-        /// </summary>
-        private const string ByRunbookId = "ByRunbookId";
-
-        /// <summary>
-        /// The publish runbook by runbook name parameter set.
-        /// </summary>
-        private const string ByRunbookName = "ByRunbookName";
-
-        /// <summary>
-        /// Gets or sets the runbook id
-        /// </summary>
-        [Parameter(ParameterSetName = ByRunbookId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook id.")]
-        [Alias("RunbookId")]
-        public Guid? Id { get; set; }
-
-        /// <summary>
         /// Gets or sets the runbook name
         /// </summary>
-        [Parameter(ParameterSetName = ByRunbookName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook name.")]
         [ValidateNotNullOrEmpty]
         [Alias("RunbookName")]
         public string Name { get; set; }
@@ -57,16 +41,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            Runbook runbook;
-
-            if (this.Id.HasValue)
-            {
-                runbook = this.AutomationClient.PublishRunbook(this.AutomationAccountName, this.Id.Value);
-            }
-            else
-            {
-                runbook = this.AutomationClient.PublishRunbook(this.AutomationAccountName, this.Name);
-            }
+            var runbook = this.AutomationClient.PublishRunbook(this.AutomationAccountName, this.Name);
 
             this.WriteObject(runbook);
         }

@@ -1,0 +1,62 @@
+﻿{
+  "location": "West US",
+  "tags": { "key": "value" },
+
+  "properties": {
+    "sku": { 
+      "name": "standard"
+    },
+    "inputs": [
+      {
+        "name": "Input",
+        "properties": {
+          "type": "stream",
+          "serialization": {
+            "type": "CSV",
+            "properties": {
+              "fieldDelimiter": ",",
+              "encoding": "UTF8"
+            }
+          },
+          "datasource": {
+            "type": "Microsoft.Storage/Blob",
+            "properties": {
+              "storageAccounts" : [
+                {
+                  "accountName": "azurenrtdogfood",
+                  "accountKey": "$EncryptedStringForTesting"
+                }
+              ],
+                "container": "samples",
+                "pathPattern": ""
+            }
+          }
+        }
+      }
+    ],
+    "transformation": {
+      "name": "transform1",
+      "properties": {
+        "streamingUnits": 1,
+        "query": "select Id, Name from Input"
+      }
+    },
+    "outputs": [
+      {
+        "name": "Output",
+        "properties": {
+          "datasource": {
+            "type": "Microsoft.Sql/Server/Database",
+            "properties": {
+              "server": "$EncryptedStringForTesting.database.windows.net",
+              "database": "azurenrtsql",
+			  "user": "azurenrt@$EncryptedStringForTesting",
+			  "password": "$EncryptedStringForTesting",
+              "table": "Samples"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

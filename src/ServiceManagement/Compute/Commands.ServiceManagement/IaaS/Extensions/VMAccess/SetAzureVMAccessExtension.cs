@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
+using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 {
@@ -97,6 +97,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         [ValidateNotNullOrEmpty]
         public override string Version { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            Position = 5,
+            HelpMessage = "Re-apply a configuration to an extension when the configuration has not been updated.")]
+        public override SwitchParameter ForceUpdate { get; set; }
+
         internal void ExecuteCommand()
         {
             ValidateParameters();
@@ -113,12 +119,21 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                 this.PublicConfiguration = GetLegacyConfiguration();
                 this.Version = VMAccessAgentLegacyVersion;
             }
-            else
+            else if (IsXmlExtension(this.Version))
             {
                 this.ReferenceName = string.IsNullOrEmpty(this.ReferenceName) ? ExtensionDefaultName : this.ReferenceName;
                 this.PublicConfiguration = GetPublicConfiguration();
                 this.PrivateConfiguration = GetPrivateConfiguration();
-                this.Version = ExtensionDefaultVersion;
+                if (string.IsNullOrEmpty(this.Version))
+                {
+                    this.Version = ExtensionDefaultVersion;
+                }
+            }
+            else
+            {
+                this.ReferenceName = string.IsNullOrEmpty(this.ReferenceName) ? ExtensionDefaultName : this.ReferenceName;
+                this.PublicConfiguration = GetJsonPublicConfiguration();
+                this.PrivateConfiguration = GetJsonPrivateConfiguration();
             }
         }
 

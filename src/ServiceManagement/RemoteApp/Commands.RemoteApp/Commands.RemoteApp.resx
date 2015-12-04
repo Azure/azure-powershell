@@ -1,0 +1,294 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AadInfoCanNotBeAddedToCloudOnlyCollectionMessage" xml:space="preserve">
+    <value>AdInfo cannot be added to a ClouldOnly Collection</value>
+  </data>
+  <data name="CollectionNotFoundByNameFormat" xml:space="preserve">
+    <value>RemoteApp collection name: {0} not found</value>
+  </data>
+  <data name="CreateJobFailedError" xml:space="preserve">
+    <value>Failed to create job</value>
+  </data>
+  <data name="DetailedUsageFailureMessage" xml:space="preserve">
+    <value>Failed to generate the detailed usage informaton. Please try again and if it still does not succeed, then call Microsoft support.</value>
+  </data>
+  <data name="FailedToGetSasUriError" xml:space="preserve">
+    <value>Couldn't get Sas for template image uri.</value>
+  </data>
+  <data name="FailedToValidateVhdPathError" xml:space="preserve">
+    <value>Could not validate path to VHD</value>
+  </data>
+  <data name="FailedToWriteToFileErrorFormat" xml:space="preserve">
+    <value>Failed to write file {0}. Error {1}</value>
+  </data>
+  <data name="GenericAreYouSureQuestion" xml:space="preserve">
+    <value>Are you sure?</value>
+  </data>
+  <data name="GettingStorageAccountKeyErrorFormat" xml:space="preserve">
+    <value>Couldn't get storage account keys. Error {0}</value>
+  </data>
+  <data name="ImportImageFeatureNotEnabledError" xml:space="preserve">
+    <value>"Import Image" Feature not enabled</value>
+  </data>
+  <data name="InvalidArgumentSubNetNameNotFoundMessageFormat" xml:space="preserve">
+    <value>Invalid Argument SubnetName: {0} not found</value>
+  </data>
+  <data name="InvalidArgumentVNetNameNotFoundMessageFormat" xml:space="preserve">
+    <value>Invalid Argument VNetName: {0} not found</value>
+  </data>
+  <data name="InvalidOsTypeErrorFormat" xml:space="preserve">
+    <value>Invalid Argument: OS Image type is {0}. It must be Windows.</value>
+  </data>
+  <data name="InvalidVmImageNameSpecifiedError" xml:space="preserve">
+    <value>Invalid Argument: Cannot use image because it is an Azure Gallery image. Only images created in this subscription can be used.</value>
+  </data>
+  <data name="JobCompletionStatusMessage" xml:space="preserve">
+    <value>ProcessJob completed</value>
+  </data>
+  <data name="LinkAzureVNetFeatureNotEnabledMessage" xml:space="preserve">
+    <value>"Link Azure VNet" Feature not enabled</value>
+  </data>
+  <data name="MessageFromPowerShellScriptRunErrorFormat" xml:space="preserve">
+    <value>Message: {0} Stack: {1}</value>
+  </data>
+  <data name="NoOsDiskFoundErrorFormat" xml:space="preserve">
+    <value>No OSDiskConfiguration found for image {0}.</value>
+  </data>
+  <data name="NoPlansFoundMessage" xml:space="preserve">
+    <value>No plans found.</value>
+  </data>
+  <data name="NoVmImageFoundErrorFormat" xml:space="preserve">
+    <value>No VM image found with name {0}.</value>
+  </data>
+  <data name="RequestTimedOutFormat" xml:space="preserve">
+    <value>Request timed out. To continue querying for the usage details operation status, please use Get-AzureRemoteAppOperationResult with tracking id: {0}</value>
+  </data>
+  <data name="SessionLogOffCaptionMessage" xml:space="preserve">
+    <value>Logging off user session...</value>
+  </data>
+  <data name="SessionLogOffWarningQuestionFormat" xml:space="preserve">
+    <value>This operation will log off {0}. Are you sure?</value>
+  </data>
+  <data name="StorageCreationFailedError" xml:space="preserve">
+    <value>Failed to create storage for collection</value>
+  </data>
+  <data name="TemplateImageCreationFailedErrorFormat" xml:space="preserve">
+    <value>Unable to create template image {0} in location {1}</value>
+  </data>
+  <data name="TemplateImageUploadFailedMessage" xml:space="preserve">
+    <value>Upload template image failed.</value>
+  </data>
+  <data name="TemplateImageUploadingStatusMessage" xml:space="preserve">
+    <value>Uploading template image</value>
+  </data>
+  <data name="TemplateImageUploadSuccessMessage" xml:space="preserve">
+    <value>Upload template image completed successfully.</value>
+  </data>
+  <data name="UnpublishProgramCaptionMessage" xml:space="preserve">
+    <value>This operation will unpublish all applications for this collection.</value>
+  </data>
+  <data name="UnpublishProgramConfirmationDescription" xml:space="preserve">
+    <value>Unpublishing all applications</value>
+  </data>
+  <data name="UploadScriptFailedError" xml:space="preserve">
+    <value>Template image upload script failed</value>
+  </data>
+  <data name="UploadTemplateImageJobDescriptionMessage" xml:space="preserve">
+    <value>Upload RemoteApp template image</value>
+  </data>
+  <data name="VnetSharedKeyResetCaptionMessage" xml:space="preserve">
+    <value>This operation will reset the shared key for the VNet's VPN device. This will interrupt connectivity to the on-premises network until you configure the VPN device to use the new shared key.</value>
+  </data>
+  <data name="VnetSharedKeyResetConfirmationDescriptionFormat" xml:space="preserve">
+    <value>Resetting the VPN shared key on {0}</value>
+  </data>
+  <data name="WaitingForStorageVerificationToCompleteMessage" xml:space="preserve">
+    <value>Waiting for storage verification to complete</value>
+  </data>
+  <data name="TemplateImageUploadPendingMessage" xml:space="preserve">
+    <value>Pending upload template image</value>
+  </data>
+  <data name="JobComplete" xml:space="preserve">
+    <value>ProcessJob completed</value>
+  </data>
+  <data name="Publish" xml:space="preserve">
+    <value>Publish RemoteApp</value>
+  </data>
+  <data name="Publishing" xml:space="preserve">
+    <value>Publishing application; use Get-Job to view status</value>
+  </data>
+  <data name="UpdateCollection" xml:space="preserve">
+    <value>Update collection</value>
+  </data>
+  <data name="UseageNotFound" xml:space="preserve">
+    <value>No usage found for the requested period.</value>
+  </data>
+  <data name="DownloadingUsageDetails" xml:space="preserve">
+    <value>Retrieving usage details</value>
+  </data>
+  <data name="RequestFailed" xml:space="preserve">
+    <value>The request failed.</value>
+  </data>
+  <data name="RequestSuccessful" xml:space="preserve">
+    <value>The request completed successfully.</value>
+  </data>
+  <data name="VNetTimeout" xml:space="preserve">
+    <value>The request took too long to complete.</value>
+  </data>
+  <data name="UsageDetails" xml:space="preserve">
+    <value>Get usage details</value>
+  </data>
+  <data name="InvalidADArguments" xml:space="preserve">
+    <value>Both domain name and credentials must be specified</value>
+  </data>
+  <data name="InvalidLocationArgument" xml:space="preserve">
+    <value>Location must be supplied for Cloud only environtments</value>
+  </data>
+  <data name="VNetDeprecatedUrl" xml:space="preserve">
+    <value>https://azure.microsoft.com/documentation/articles/remoteapp-migratevnet/</value>
+  </data>
+  <data name="VNetDeprecateed" xml:space="preserve">
+    <value>This cmdlet {0} has been deprecated. See x {1}</value>
+  </data>
+  <data name="DefaultLogoffMessage" xml:space="preserve">
+    <value>Please save your work and logoff. You will be logged off automatically after {0} seconds.</value>
+  </data>
+  <data name="NoVmInCollectionForUser" xml:space="preserve">
+    <value>No VM was found for user {0} in collection {1}.</value>
+  </data>
+  <data name="RestartVmWarningCaption" xml:space="preserve">
+    <value>Restart VM {0}</value>
+  </data>
+  <data name="RestartVmWarningMessage" xml:space="preserve">
+    <value>User {0} is on VM {1}. These users also have active sessions on this VM and will be logged off when the VM is rebooted: {2}</value>
+  </data>
+  <data name="GenericDeleteConfirmation" xml:space="preserve">
+    <value>{0} will be deleted. Are you sure?</value>
+  </data>
+  <data name="GenericDeleteVerboseDescription" xml:space="preserve">
+    <value>{0} will be deleted.</value>
+  </data>
+  <data name="GenericVerboseDelete" xml:space="preserve">
+    <value>Deleting {0}</value>
+  </data>
+  <data name="GenericVerboseSkip" xml:space="preserve">
+    <value>Skipping {0}</value>
+  </data>
+</root>

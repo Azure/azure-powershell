@@ -1,27 +1,40 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/f435d8e1-f7a0-4f79-adf7-b1a564728140/resourceGroups/redisruntimetestrg/providers/Microsoft.Cache/Redis/NonExistingRedisCache?api-version=2014-04-01-preview",
+      "RequestUri": "/subscriptions/19b520e4-39a7-4fac-b1da-d940f2d39a38/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/NonExistingRedisCache?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTliNTIwZTQtMzlhNy00ZmFjLWIxZGEtZDk0MGYyZDM5YTM4L3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL05vbkV4aXN0aW5nUmVkaXNDYWNoZT9hcGktdmVyc2lvbj0yMDE1LTA4LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"Resource not found.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Cache/Redis/NonExistingRedisCache' under resource group 'MyResourceGroup' was not found.\"\r\n  }\r\n}",
       "ResponseHeaders": {
+        "Content-Length": [
+          "162"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
         "Pragma": [
           "no-cache"
         ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
         "x-ms-request-id": [
-          "8e8de709-75e9-42ad-a8bb-72f33ac571dd"
+          "f00029de-2908-4df8-b43b-c6abdeb83e2d"
         ],
         "x-ms-correlation-request-id": [
-          "8e8de709-75e9-42ad-a8bb-72f33ac571dd"
+          "f00029de-2908-4df8-b43b-c6abdeb83e2d"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20140916T191257Z:8e8de709-75e9-42ad-a8bb-72f33ac571dd"
+          "CENTRALUS:20151016T002954Z:f00029de-2908-4df8-b43b-c6abdeb83e2d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -30,7 +43,7 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 16 Sep 2014 19:12:57 GMT"
+          "Fri, 16 Oct 2015 00:29:54 GMT"
         ]
       },
       "StatusCode": 404
@@ -38,6 +51,6 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "f435d8e1-f7a0-4f79-adf7-b1a564728140"
+    "SubscriptionId": "19b520e4-39a7-4fac-b1da-d940f2d39a38"
   }
 }

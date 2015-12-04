@@ -15,6 +15,7 @@
 using System;
 using System.Management.Automation;
 using System.Security.Permissions;
+using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Model;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
@@ -22,31 +23,14 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Sets an azure automation schedule.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureAutomationSchedule", DefaultParameterSetName = ByScheduleName)]
+    [Cmdlet(VerbsCommon.Set, "AzureAutomationSchedule", DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
     [OutputType(typeof(Schedule))]
     public class SetAzureAutomationSchedule : AzureAutomationBaseCmdlet
     {
         /// <summary>
-        /// The get schedule by schedule id parameter set.
-        /// </summary>
-        private const string ByScheduleId = "ByScheduleId";
-
-        /// <summary>
-        /// The get schedule by schedule name parameter set.
-        /// </summary>
-        private const string ByScheduleName = "ByScheduleName";
-
-        /// <summary>
-        /// Gets or sets the schedule id.
-        /// </summary>
-        [Parameter(ParameterSetName = ByScheduleId, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The schedule id.")]
-        public Guid? Id { get; set; }
-
-        /// <summary>
         /// Gets or sets the schedule name.
         /// </summary>
-        [Parameter(ParameterSetName = ByScheduleName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The schedule name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -55,7 +39,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets the indicator whether the schedule is enabled.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The schedule description.")]
+            HelpMessage = "Specifies whether the schedule is enabled. If a schedule is disabled, any runbooks using it will not run on the schedule until it is enabled.")]
         public bool? IsEnabled { get; set; }
 
         /// <summary>
@@ -71,20 +55,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            if (this.Id.HasValue)
-            {
-                // ByScheduleId
-                Schedule schedule = this.AutomationClient.UpdateSchedule(
-                    this.AutomationAccountName, this.Id.Value, this.IsEnabled, this.Description);
-                this.WriteObject(schedule);
-            }
-            else
-            {
-                // ByScheduleName
-                Schedule schedule = this.AutomationClient.UpdateSchedule(
-                    this.AutomationAccountName, this.Name, this.IsEnabled, this.Description);
-                this.WriteObject(schedule);
-            }
+            Schedule schedule = this.AutomationClient.UpdateSchedule(
+                this.AutomationAccountName, this.Name, this.IsEnabled, this.Description);
+            this.WriteObject(schedule);
         }
     }
 }

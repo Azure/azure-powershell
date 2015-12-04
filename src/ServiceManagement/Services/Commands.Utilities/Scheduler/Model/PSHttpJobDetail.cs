@@ -26,11 +26,5 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Scheduler.Model
         public string Body { get; internal set; }
 
         public IDictionary<string, string> Headers { get; internal set; }
-
-        public string ClientCertSubjectName { get; internal set; }
-
-        public string ClientCertThumbprint { get; internal set; }
-
-        public string ClientCertExpiryDate { get; internal set; }
     }
 }

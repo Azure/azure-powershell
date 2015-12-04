@@ -17,6 +17,8 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure;
+using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.DiskRepository
 {
@@ -51,7 +53,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.DiskRepository
                     this.CommandRuntime.ToString(),
                     () =>
                     {
-                        OperationResponse op = null;
+                        AzureOperationResponse op = null;
 
                         var imageType = new VirtualMachineImageHelper(this.ComputeClient).GetImageType(this.ImageName);
                         bool isOSImage = imageType.HasFlag(VirtualMachineImageType.OSImage);

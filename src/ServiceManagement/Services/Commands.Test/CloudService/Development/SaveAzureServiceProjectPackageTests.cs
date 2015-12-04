@@ -23,14 +23,16 @@ using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
 {
     /// <summary>
     /// Basic unit tests for the Enable-AzureServiceProjectRemoteDesktop enableRDCmdlet.
     /// </summary>
-    internal class SaveAzureServiceProjectPackageCommandTest : TestBase
+    internal class SaveAzureServiceProjectPackageCommandTest : SMTestBase
     {
         static private MockCommandRuntime mockCommandRuntime;
 
@@ -55,6 +57,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreatePackageSuccessfull()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -64,7 +67,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
                 string rootPath = Path.Combine(files.RootPath, "NEW_SERVICE");
                 string packagePath = Path.Combine(rootPath, Resources.CloudPackageFileName);
 
-                CloudServiceProject service = new CloudServiceProject(rootPath, FileUtilities.GetContentFilePath("Services"));
+                CloudServiceProject service = new CloudServiceProject(rootPath, FileUtilities.GetContentFilePath(@"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Services"));
                 service.AddWebRole(Test.Utilities.Common.Data.NodeWebRoleScaffoldingPath);
 
                 cmdlet.ExecuteCmdlet();
@@ -77,6 +80,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreatePackageWithEmptyServiceSuccessfull()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -96,6 +100,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreatePackageWithMultipleRolesSuccessfull()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -105,7 +110,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
                 string rootPath = Path.Combine(files.RootPath, "NEW_SERVICE");
                 string packagePath = Path.Combine(rootPath, Resources.CloudPackageFileName);
 
-                CloudServiceProject service = new CloudServiceProject(rootPath, FileUtilities.GetContentFilePath("Services"));
+                CloudServiceProject service = new CloudServiceProject(rootPath, FileUtilities.GetContentFilePath(@"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Services"));
                 service.AddWebRole(Test.Utilities.Common.Data.NodeWebRoleScaffoldingPath);
                 service.AddWorkerRole(Test.Utilities.Common.Data.NodeWorkerRoleScaffoldingPath);
                 service.AddWorkerRole(Test.Utilities.Common.Data.NodeWorkerRoleScaffoldingPath);
@@ -117,37 +122,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
                 Assert.Equal<string>(string.Format(Resources.PackageCreated, packagePath), mockCommandRuntime.VerboseStream[0]);
                 Assert.Equal<string>(packagePath, obj.GetVariableValue<string>(Parameters.PackagePath));
                 Assert.True(File.Exists(packagePath));
-            }
-        }
-
-        [Fact]
-        public void ThrowsErrorForInvalidCacheVersion()
-        {
-            using (FileSystemHelper files = new FileSystemHelper(this))
-            {
-                files.CreateAzureSdkDirectoryAndImportPublishSettings();
-                files.CreateNewService("NEW_SERVICE");
-                string rootPath = Path.Combine(files.RootPath, "NEW_SERVICE");
-                string packagePath = Path.Combine(rootPath, Resources.CloudPackageFileName);
-                string cacheRoleName = "WorkerRole1";
-                AddAzureCacheWorkerRoleCommand addCacheWorkerCmdlet = new AddAzureCacheWorkerRoleCommand()
-                {
-                    CommandRuntime = mockCommandRuntime
-                };
-                EnableAzureMemcacheRoleCommand enableCacheCmdlet = new EnableAzureMemcacheRoleCommand()
-                {
-                    CacheRuntimeVersion = "1.8.0",
-                    CommandRuntime = mockCommandRuntime
-                };
-
-                CloudServiceProject service = new CloudServiceProject(rootPath, FileUtilities.GetContentFilePath("Services"));
-                service.AddWebRole(Test.Utilities.Common.Data.NodeWebRoleScaffoldingPath);
-                addCacheWorkerCmdlet.AddAzureCacheWorkerRoleProcess(cacheRoleName, 1, rootPath);
-                enableCacheCmdlet.EnableAzureMemcacheRoleProcess("WebRole1", cacheRoleName, rootPath);
-
-                Testing.AssertThrows<Exception>(
-                    () => cmdlet.ExecuteCmdlet(),
-                    string.Format(Resources.CacheMismatchMessage, "WebRole1", "2.5.0"));
             }
         }
     }

@@ -240,6 +240,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             HelpMessage = "The Private Configuration's Reference Key.")]
         public override string PrivateConfigKey { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            Position = 11,
+            HelpMessage = "Re-apply a configuration to an extension when the configuration has not been updated.")]
+        public override SwitchParameter ForceUpdate { get; set; }
+
         internal void ExecuteCommand()
         {
             ValidateParameters();

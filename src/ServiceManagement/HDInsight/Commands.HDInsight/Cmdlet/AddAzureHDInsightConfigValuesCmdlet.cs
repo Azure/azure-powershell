@@ -54,34 +54,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         public AzureHDInsightConfig Config
         {
             get { return this.command.Config; }
-            set
-            {
-                if (value.IsNull())
-                {
-                    throw new ArgumentNullException("value", "The value for the configuration can not be null.");
-                }
-
-                this.command.Config.ClusterSizeInNodes = value.ClusterSizeInNodes;
-                this.command.Config.DefaultStorageAccount = value.DefaultStorageAccount;
-                this.command.Config.AdditionalStorageAccounts.AddRange(value.AdditionalStorageAccounts);
-                this.command.Config.ConfigActions.AddRange(value.ConfigActions);
-                this.command.Config.HiveMetastore = value.HiveMetastore ?? this.command.Config.HiveMetastore;
-                this.command.Config.OozieMetastore = value.OozieMetastore ?? this.command.Config.OozieMetastore;
-                this.command.Config.CoreConfiguration.AddRange(value.CoreConfiguration);
-                this.command.Config.YarnConfiguration.AddRange(value.YarnConfiguration);
-                this.command.Config.HdfsConfiguration.AddRange(value.HdfsConfiguration);
-                this.command.Config.MapReduceConfiguration.ConfigurationCollection.AddRange(value.MapReduceConfiguration.ConfigurationCollection);
-                this.command.Config.MapReduceConfiguration.CapacitySchedulerConfigurationCollection.AddRange(
-                    value.MapReduceConfiguration.CapacitySchedulerConfigurationCollection);
-                this.command.Config.HiveConfiguration.ConfigurationCollection.AddRange(value.HiveConfiguration.ConfigurationCollection);
-                this.command.Config.OozieConfiguration.ConfigurationCollection.AddRange(value.OozieConfiguration.ConfigurationCollection);
-                this.command.Config.HeadNodeVMSize = value.HeadNodeVMSize;
-                this.command.Config.ClusterType = value.ClusterType;
-                this.command.Config.VirtualNetworkId = value.VirtualNetworkId;
-                this.command.Config.SubnetName = value.SubnetName;
-                this.command.Config.StormConfiguration.AddRange(value.StormConfiguration);
-                this.command.Config.HBaseConfiguration.ConfigurationCollection.AddRange(value.HBaseConfiguration.ConfigurationCollection);
-            }
+            set { this.command.Config.CopyFrom(value); }
         }
 
         /// <summary>
@@ -162,6 +135,17 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         }
 
         /// <summary>
+        ///     Gets or sets a collection of configuration properties to customize the Spark service.
+        /// </summary>
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly", Justification = "Ease of use in Powershell")]
+        [Parameter(Mandatory = false, HelpMessage = "a collection of configuration properties to customize the Spark service.")]
+        public Hashtable Spark
+        {
+            get { return this.command.Spark; }
+            set { this.command.Spark = value; }
+        }
+
+        /// <summary>
         ///     Gets or sets a collection of configuration properties to customize the HBase service.
         /// </summary>
         [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly", Justification = "Ease of use in Powershell")]
@@ -177,6 +161,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         {
             try
             {
+                this.WriteWarning(string.Format(AzureHdInsightPowerShellConstants.AsmWarning, "AzureRmHDInsightConfigValues"));
                 this.command.EndProcessing().Wait();
                 foreach (AzureHDInsightConfig output in this.command.Output)
                 {

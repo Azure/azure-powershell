@@ -12,26 +12,31 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Network.Gateway
-{
-    using System.Management.Automation;
-    using WindowsAzure.Commands.Utilities.Common;
+using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Routes.Model;
 
-    [Cmdlet(VerbsCommon.New, "AzureRouteTable"), OutputType(typeof(ManagementOperationContext))]
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Routes
+{
+    [Cmdlet(VerbsCommon.New, "AzureRouteTable"), OutputType(typeof(IRouteTable))]
     public class NewAzureRouteTable : NetworkCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The new route table's name.")]
+        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = "The new route table's label.")]
-        public string Label { get; set; }
-
         [Parameter(Position = 1, Mandatory = true, HelpMessage = "The new route table's location.")]
+        [ValidateNotNullOrEmpty]
         public string Location { get; set; }
+
+        [Parameter(Position = 2, Mandatory = false, HelpMessage = "The new route table's label.")]
+        [ValidateNotNullOrEmpty]
+        public string Label { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            WriteObject(Client.CreateRouteTable(Name, Label, Location));
+            Client.CreateRouteTable(Name, Label, Location);
+            var routeTable = Client.GetRouteTable(Name, false);
+            WriteObject(routeTable);
         }
     }
 }

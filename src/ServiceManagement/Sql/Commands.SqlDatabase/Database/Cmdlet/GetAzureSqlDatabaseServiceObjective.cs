@@ -18,6 +18,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Common;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
 {
@@ -26,7 +27,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureSqlDatabaseServiceObjective", ConfirmImpact = ConfirmImpact.None,
         DefaultParameterSetName = "ByConnectionContext")]
-    public class GetAzureSqlDatabaseServiceObjective : AzurePSCmdlet
+    public class GetAzureSqlDatabaseServiceObjective : AzureSMCmdlet
     {
         #region Parameter Sets
 
@@ -97,7 +98,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
                     break;
 
                 case ByServerName:
-                    context = ServerDataServiceCertAuth.Create(this.ServerName, AzureSession.CurrentContext.Subscription);
+                    context = ServerDataServiceCertAuth.Create(this.ServerName, Profile, Profile.Context.Subscription);
                     break;
 
                 default:

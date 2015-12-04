@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ServiceConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" serviceName="HelloWorld" osFamily="2" osVersion="*" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration">
+	<Role name="HelloWorld_WebRole">
+		<ConfigurationSettings>
+			<Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=test;AccountKey=test" />
+		</ConfigurationSettings>
+		<Instances count="1" />
+	</Role>
+	<NetworkConfiguration>
+        <AddressAssignments>
+             <InstanceAddress roleName="HelloWorld_WebRole">
+                 <PublicIPs>
+                     <PublicIP name="PublicIP1"/> 
+                 </PublicIPs>
+             </InstanceAddress>
+        </AddressAssignments>
+     </NetworkConfiguration>
+</ServiceConfiguration>

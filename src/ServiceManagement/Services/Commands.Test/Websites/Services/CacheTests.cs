@@ -15,6 +15,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -25,7 +26,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 namespace Microsoft.WindowsAzure.Commands.Test.Websites.Services
 {
     
-    public class CacheTests : TestBase, IDisposable
+    public class CacheTests : SMTestBase, IDisposable
     {
         public static string SubscriptionName = "fakename";
 
@@ -78,6 +79,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites.Services
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddSiteTest()
         {
             Site site = new Site { Name = "newsite" };
@@ -89,6 +91,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites.Services
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveSiteTest()
         {
             Site site = new Site { Name = "newsite" };
@@ -105,6 +108,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites.Services
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetSetSitesTest()
         {
             Assert.Null(Cache.GetSites(SubscriptionName));

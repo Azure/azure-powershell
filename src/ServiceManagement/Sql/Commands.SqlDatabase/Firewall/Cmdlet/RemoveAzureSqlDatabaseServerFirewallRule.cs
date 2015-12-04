@@ -18,6 +18,7 @@ using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Model;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Properties;
 using Microsoft.WindowsAzure.Management.Sql;
+using Microsoft.Azure;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Firewall.Cmdlet
 {
@@ -76,7 +77,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Firewall.Cmdlet
             SqlManagementClient sqlManagementClient = GetCurrentSqlClient();
 
             // Delete the specified firewall rule.
-            OperationResponse response = sqlManagementClient.FirewallRules.Delete(serverName, ruleName);
+            AzureOperationResponse response = sqlManagementClient.FirewallRules.Delete(serverName, ruleName);
 
             SqlDatabaseServerOperationContext operationContext = new SqlDatabaseServerOperationContext()
             {

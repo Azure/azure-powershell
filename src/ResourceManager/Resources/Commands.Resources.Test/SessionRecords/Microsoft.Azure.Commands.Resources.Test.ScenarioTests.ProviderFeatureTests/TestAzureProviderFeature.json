@@ -1,0 +1,310 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/features?api-version=2014-08-01-preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.FeatureClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"Microsoft.Batch/betaAccess\",\r\n      \"properties\": {\r\n        \"state\": \"NotRegistered\"\r\n      },\r\n      \"id\": \"/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/Microsoft.Batch/features/betaAccess\",\r\n      \"type\": \"Microsoft.Features/providers/features\"\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.Cache/betaAccess3\",\r\n      \"properties\": {\r\n        \"state\": \"NotRegistered\"\r\n      },\r\n      \"id\": \"/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/Microsoft.Cache/features/betaAccess3\",\r\n      \"type\": \"Microsoft.Features/providers/features\"\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.Compute/armApiPreviewAccess\",\r\n      \"properties\": {\r\n        \"state\": \"NotRegistered\"\r\n      },\r\n      \"id\": \"/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/Microsoft.Compute/features/armApiPreviewAccess\",\r\n      \"type\": \"Microsoft.Features/providers/features\"\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.Compute/vmssApiPreviewAccess\",\r\n      \"properties\": {\r\n        \"state\": \"NotRegistered\"\r\n      },\r\n      \"id\": \"/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/Microsoft.Compute/features/vmssApiPreviewAccess\",\r\n      \"type\": \"Microsoft.Features/providers/features\"\r\n    },\r\n    {\r\n      \"name\": \"microsoft.dns/privatepreview\",\r\n      \"properties\": {\r\n        \"state\": \"NotRegistered\"\r\n      },\r\n      \"id\": \"/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/microsoft.dns/features/privatepreview\",\r\n      \"type\": \"Microsoft.Features/providers/features\"\r\n    },\r\n    {\r\n      \"name\": \"microsoft.insights/billing\",\r\n      \"properties\": {\r\n        \"state\": \"NotRegistered\"\r\n      },\r\n      \"id\": \"/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/microsoft.insights/features/billing\",\r\n      \"type\": \"Microsoft.Features/providers/features\"\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.KeyVault/previewAccess\",\r\n      \"properties\": {\r\n        \"state\": \"NotRegistered\"\r\n      },\r\n      \"id\": \"/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/Microsoft.KeyVault/features/previewAccess\",\r\n      \"type\": \"Microsoft.Features/providers/features\"\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.Network/armApiPreviewAccess\",\r\n      \"properties\": {\r\n        \"state\": \"NotRegistered\"\r\n      },\r\n      \"id\": \"/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/Microsoft.Network/features/armApiPreviewAccess\",\r\n      \"type\": \"Microsoft.Features/providers/features\"\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.NotificationHubs/betaAccess\",\r\n      \"properties\": {\r\n        \"state\": \"NotRegistered\"\r\n      },\r\n      \"id\": \"/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/Microsoft.NotificationHubs/features/betaAccess\",\r\n      \"type\": \"Microsoft.Features/providers/features\"\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.Sql/sqldbsterling\",\r\n      \"properties\": {\r\n        \"state\": \"NotRegistered\"\r\n      },\r\n      \"id\": \"/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/Microsoft.Sql/features/sqldbsterling\",\r\n      \"type\": \"Microsoft.Features/providers/features\"\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.Sql/sqldbtde\",\r\n      \"properties\": {\r\n        \"state\": \"NotRegistered\"\r\n      },\r\n      \"id\": \"/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/Microsoft.Sql/features/sqldbtde\",\r\n      \"type\": \"Microsoft.Features/providers/features\"\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.SqlVM/SqlVMDWaaS\",\r\n      \"properties\": {\r\n        \"state\": \"NotRegistered\"\r\n      },\r\n      \"id\": \"/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/Microsoft.SqlVM/features/SqlVMDWaaS\",\r\n      \"type\": \"Microsoft.Features/providers/features\"\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.Storage/armApiPreviewAccess\",\r\n      \"properties\": {\r\n        \"state\": \"NotRegistered\"\r\n      },\r\n      \"id\": \"/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/Microsoft.Storage/features/armApiPreviewAccess\",\r\n      \"type\": \"Microsoft.Features/providers/features\"\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.WinFab/alphaAccess\",\r\n      \"properties\": {\r\n        \"state\": \"NotRegistered\"\r\n      },\r\n      \"id\": \"/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/Microsoft.WinFab/features/alphaAccess\",\r\n      \"type\": \"Microsoft.Features/providers/features\"\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.Cache/betaAccess2\",\r\n      \"properties\": {\r\n        \"state\": \"Registered\"\r\n      },\r\n      \"id\": \"/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/Microsoft.Cache/features/betaAccess2\",\r\n      \"type\": \"Microsoft.Features/providers/features\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "4008"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "westus:b83734e7-e282-4848-bfc5-275cb90a7606"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "31999"
+        ],
+        "x-ms-correlation-request-id": [
+          "8e5e3c66-199e-4e1e-a55c-0fd68e3e2ff0"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20150305T002727Z:8e5e3c66-199e-4e1e-a55c-0fd68e3e2ff0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 05 Mar 2015 00:27:26 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/features?api-version=2014-08-01-preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.FeatureClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"Microsoft.Batch/betaAccess\",\r\n      \"properties\": {\r\n        \"state\": \"NotRegistered\"\r\n      },\r\n      \"id\": \"/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/Microsoft.Batch/features/betaAccess\",\r\n      \"type\": \"Microsoft.Features/providers/features\"\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.Cache/betaAccess3\",\r\n      \"properties\": {\r\n        \"state\": \"NotRegistered\"\r\n      },\r\n      \"id\": \"/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/Microsoft.Cache/features/betaAccess3\",\r\n      \"type\": \"Microsoft.Features/providers/features\"\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.Compute/armApiPreviewAccess\",\r\n      \"properties\": {\r\n        \"state\": \"NotRegistered\"\r\n      },\r\n      \"id\": \"/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/Microsoft.Compute/features/armApiPreviewAccess\",\r\n      \"type\": \"Microsoft.Features/providers/features\"\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.Compute/vmssApiPreviewAccess\",\r\n      \"properties\": {\r\n        \"state\": \"NotRegistered\"\r\n      },\r\n      \"id\": \"/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/Microsoft.Compute/features/vmssApiPreviewAccess\",\r\n      \"type\": \"Microsoft.Features/providers/features\"\r\n    },\r\n    {\r\n      \"name\": \"microsoft.dns/privatepreview\",\r\n      \"properties\": {\r\n        \"state\": \"NotRegistered\"\r\n      },\r\n      \"id\": \"/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/microsoft.dns/features/privatepreview\",\r\n      \"type\": \"Microsoft.Features/providers/features\"\r\n    },\r\n    {\r\n      \"name\": \"microsoft.insights/billing\",\r\n      \"properties\": {\r\n        \"state\": \"NotRegistered\"\r\n      },\r\n      \"id\": \"/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/microsoft.insights/features/billing\",\r\n      \"type\": \"Microsoft.Features/providers/features\"\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.KeyVault/previewAccess\",\r\n      \"properties\": {\r\n        \"state\": \"NotRegistered\"\r\n      },\r\n      \"id\": \"/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/Microsoft.KeyVault/features/previewAccess\",\r\n      \"type\": \"Microsoft.Features/providers/features\"\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.Network/armApiPreviewAccess\",\r\n      \"properties\": {\r\n        \"state\": \"NotRegistered\"\r\n      },\r\n      \"id\": \"/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/Microsoft.Network/features/armApiPreviewAccess\",\r\n      \"type\": \"Microsoft.Features/providers/features\"\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.NotificationHubs/betaAccess\",\r\n      \"properties\": {\r\n        \"state\": \"NotRegistered\"\r\n      },\r\n      \"id\": \"/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/Microsoft.NotificationHubs/features/betaAccess\",\r\n      \"type\": \"Microsoft.Features/providers/features\"\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.Sql/sqldbsterling\",\r\n      \"properties\": {\r\n        \"state\": \"NotRegistered\"\r\n      },\r\n      \"id\": \"/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/Microsoft.Sql/features/sqldbsterling\",\r\n      \"type\": \"Microsoft.Features/providers/features\"\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.Sql/sqldbtde\",\r\n      \"properties\": {\r\n        \"state\": \"NotRegistered\"\r\n      },\r\n      \"id\": \"/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/Microsoft.Sql/features/sqldbtde\",\r\n      \"type\": \"Microsoft.Features/providers/features\"\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.SqlVM/SqlVMDWaaS\",\r\n      \"properties\": {\r\n        \"state\": \"NotRegistered\"\r\n      },\r\n      \"id\": \"/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/Microsoft.SqlVM/features/SqlVMDWaaS\",\r\n      \"type\": \"Microsoft.Features/providers/features\"\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.Storage/armApiPreviewAccess\",\r\n      \"properties\": {\r\n        \"state\": \"NotRegistered\"\r\n      },\r\n      \"id\": \"/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/Microsoft.Storage/features/armApiPreviewAccess\",\r\n      \"type\": \"Microsoft.Features/providers/features\"\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.WinFab/alphaAccess\",\r\n      \"properties\": {\r\n        \"state\": \"NotRegistered\"\r\n      },\r\n      \"id\": \"/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/Microsoft.WinFab/features/alphaAccess\",\r\n      \"type\": \"Microsoft.Features/providers/features\"\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.Cache/betaAccess2\",\r\n      \"properties\": {\r\n        \"state\": \"Registered\"\r\n      },\r\n      \"id\": \"/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/Microsoft.Cache/features/betaAccess2\",\r\n      \"type\": \"Microsoft.Features/providers/features\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "4008"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "westus:fe3a3a75-1901-46ae-a26b-042ee212d5aa"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "31998"
+        ],
+        "x-ms-correlation-request-id": [
+          "badfabfb-641c-4fa5-a82e-0247cf68ccc5"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20150305T002727Z:badfabfb-641c-4fa5-a82e-0247cf68ccc5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 05 Mar 2015 00:27:27 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/Microsoft.Batch/features?api-version=2014-08-01-preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.FeatureClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"Microsoft.Batch/betaAccess\",\r\n      \"properties\": {\r\n        \"state\": \"NotRegistered\"\r\n      },\r\n      \"id\": \"/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/Microsoft.Batch/features/betaAccess\",\r\n      \"type\": \"Microsoft.Features/providers/features\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "269"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "westus:a9f46601-c755-4e86-8d67-9ae69a34f166"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "31997"
+        ],
+        "x-ms-correlation-request-id": [
+          "6743c2f0-08b4-492a-8d16-f041e2a4318d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20150305T002728Z:6743c2f0-08b4-492a-8d16-f041e2a4318d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 05 Mar 2015 00:27:27 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/Microsoft.Batch/features?api-version=2014-08-01-preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.FeatureClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"Microsoft.Batch/betaAccess\",\r\n      \"properties\": {\r\n        \"state\": \"NotRegistered\"\r\n      },\r\n      \"id\": \"/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/Microsoft.Batch/features/betaAccess\",\r\n      \"type\": \"Microsoft.Features/providers/features\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "269"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "westus:dd087cf2-f9cd-44c2-8b7e-fba4c0d74bf7"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "31996"
+        ],
+        "x-ms-correlation-request-id": [
+          "98facc48-677f-4129-8d57-d5823005ba89"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20150305T002728Z:98facc48-677f-4129-8d57-d5823005ba89"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 05 Mar 2015 00:27:27 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/Microsoft.Cache/features/betaAccess3/register?api-version=2014-08-01-preview",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.FeatureClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"Microsoft.Cache/betaAccess3\",\r\n  \"properties\": {\r\n    \"state\": \"Registered\"\r\n  },\r\n  \"id\": \"/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/Microsoft.Cache/features/betaAccess3\",\r\n  \"type\": \"Microsoft.Features/providers/features\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "256"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "westus:fa78d0c0-a8f1-49fb-bd1e-256c3d992293"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "3737bbc9-98e0-414c-96ef-fad947c4e23f"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20150305T002729Z:3737bbc9-98e0-414c-96ef-fad947c4e23f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 05 Mar 2015 00:27:28 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/Microsoft.Cache/features?api-version=2014-08-01-preview",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.FeatureClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"Microsoft.Cache/betaAccess2\",\r\n      \"properties\": {\r\n        \"state\": \"Registered\"\r\n      },\r\n      \"id\": \"/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/Microsoft.Cache/features/betaAccess2\",\r\n      \"type\": \"Microsoft.Features/providers/features\"\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.Cache/betaAccess3\",\r\n      \"properties\": {\r\n        \"state\": \"Registered\"\r\n      },\r\n      \"id\": \"/subscriptions/961b9df1-ea70-4a6c-bd33-49a84f66f10f/providers/Microsoft.Features/providers/Microsoft.Cache/features/betaAccess3\",\r\n      \"type\": \"Microsoft.Features/providers/features\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "525"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "westus:6f85fc44-b0f6-4537-976e-28eff8b8961e"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "31995"
+        ],
+        "x-ms-correlation-request-id": [
+          "7e845d41-df58-4179-9644-af0293eb88fc"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20150305T002729Z:7e845d41-df58-4179-9644-af0293eb88fc"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 05 Mar 2015 00:27:28 GMT"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "961b9df1-ea70-4a6c-bd33-49a84f66f10f",
+    "TenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+    "Domain": "microsoft.com"
+  }
+}

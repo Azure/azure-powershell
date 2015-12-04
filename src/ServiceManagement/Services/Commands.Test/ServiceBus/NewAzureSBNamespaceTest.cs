@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ServiceBus;
@@ -26,7 +27,7 @@ using Moq;
 namespace Microsoft.WindowsAzure.Commands.Test.ServiceBus
 {
     
-    public class NewAzureSBNamespaceTests : TestBase
+    public class NewAzureSBNamespaceTests : SMTestBase
     {
         public NewAzureSBNamespaceTests()
         {
@@ -34,6 +35,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ServiceBus
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureSBNamespaceSuccessfull()
         {
             // Setup
@@ -66,6 +68,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ServiceBus
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureSBNamespaceNoACSSuccessfull()
         {
             // Setup
@@ -99,6 +102,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ServiceBus
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureSBNamespaceGetsDefaultLocation()
         {
             // Setup
@@ -127,6 +131,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ServiceBus
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureSBNamespaceWithInvalidNamesFail()
         {
             // Setup
@@ -153,6 +158,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ServiceBus
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreatesNewSBCaseInsensitiveRegion()
         {
             // Setup

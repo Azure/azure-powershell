@@ -30,6 +30,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common.XmlSchema.ServiceDefiniti
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
 using Certificate = Microsoft.WindowsAzure.Commands.Utilities.Common.XmlSchema.ServiceConfigurationSchema.Certificate;
 using ConfigurationSetting = Microsoft.WindowsAzure.Commands.Utilities.Common.XmlSchema.ServiceConfigurationSchema.ConfigurationSetting;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.CloudService.Development
 {
@@ -38,7 +39,7 @@ namespace Microsoft.WindowsAzure.Commands.CloudService.Development
     /// ServiceDefinition.csdef and ServiceConfiguration.*.cscfg
     /// </summary>
     [Cmdlet(VerbsLifecycle.Enable, "AzureServiceProjectRemoteDesktop"), OutputType(typeof(bool))]
-    public class EnableAzureServiceProjectRemoteDesktopCommand : AzurePSCmdlet
+    public class EnableAzureServiceProjectRemoteDesktopCommand : AzureSMCmdlet
     {
         [Parameter(Position = 0, Mandatory = true)]
         [Alias("user")]

@@ -23,15 +23,11 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Service Key for the Azure Circuit")]
-        [ValidateGuid]
-        [ValidateNotNullOrEmpty]
-        public string ServiceKey { get; set; }
+        public Guid ServiceKey { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Authorization Id")]
-        [ValidateGuid]
-        [ValidateNotNullOrEmpty]
-        public string AuthorizationId { get; set; }
+        public Guid AuthorizationId { get; set; }
 
         [Parameter(HelpMessage = "Do not confirm")]
         public SwitchParameter Force { get; set; }

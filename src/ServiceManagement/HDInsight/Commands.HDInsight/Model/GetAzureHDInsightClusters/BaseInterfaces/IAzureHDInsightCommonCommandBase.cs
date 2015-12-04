@@ -36,6 +36,11 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
         Uri Endpoint { get; set; }
 
         /// <summary>
+        ///     Gets or sets rule for client SSL errors.
+        /// </summary>
+        bool IgnoreSslErrors { get; set; }
+
+        /// <summary>
         ///     Gets or sets a logger to write log messages to.
         /// </summary>
         ILogWriter Logger { get; set; }

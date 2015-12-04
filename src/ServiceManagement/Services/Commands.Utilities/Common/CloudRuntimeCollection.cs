@@ -18,6 +18,7 @@ using System.Linq;
 using System.Xml;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
 {
@@ -204,17 +205,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
                     this.documentStream.Close();
                 }
             }
-        }
-
-        public static string GetRuntimeUrl(string runtimeType, string runtimeVersion, string manifest = null)
-        {
-            CloudRuntimeCollection collection;
-            CloudRuntimeCollection.CreateCloudRuntimeCollection(out collection, manifest);
-            CloudRuntime desiredRuntime = CloudRuntime.CreateCloudRuntime(runtimeType, runtimeVersion, null, null);
-            CloudRuntimePackage foundPackage;
-            bool found = collection.TryFindMatch(desiredRuntime, out foundPackage);
-
-            return found ? foundPackage.PackageUri.AbsoluteUri : null;
         }
     }
 

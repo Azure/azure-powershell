@@ -37,6 +37,15 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Circuit Service Provider Name")]
         public string ServiceProviderName { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Circuit Sku")]
+        [ValidateSet("Standard", "Premium", IgnoreCase = true)]
+        public CircuitSku Sku { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Circuit Billing Type")]
+        [ValidateSet("MeteredData", "UnlimitedData", IgnoreCase = true)]
+        public BillingType billingType { get; set; }
+
+
         [Parameter(HelpMessage = "Do not confirm Azure Dedicated Circuit creation")]
         public SwitchParameter Force { get; set; }
 
@@ -50,7 +59,7 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
                () =>
                {
                    var circuit = ExpressRouteClient.NewAzureDedicatedCircuit(CircuitName, Bandwidth, Location,
-               ServiceProviderName);
+               ServiceProviderName, Sku, billingType);
                    WriteVerboseWithTimestamp(Resources.NewAzureDedicatedCircuitSucceeded);
                    WriteObject(circuit);
                });

@@ -20,11 +20,19 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 {
     public class SetAzureOSDiskCmdletInfo : CmdletsInfo
     {
-        public SetAzureOSDiskCmdletInfo(HostCaching hs, PersistentVM vm)
+        public SetAzureOSDiskCmdletInfo(HostCaching? hs, PersistentVM vm, int? resizedSize)
         {
             cmdletName = Utilities.SetAzureOSDiskCmdletName;
-            this.cmdletParams.Add(new CmdletParam("HostCaching", hs.ToString()));
+
+            if (hs != null)
+            {
+                this.cmdletParams.Add(new CmdletParam("HostCaching", hs.ToString()));
+            }
             this.cmdletParams.Add(new CmdletParam("VM", vm));
+            if (resizedSize != null)
+            {
+                this.cmdletParams.Add(new CmdletParam("ResizedSizeInGB", resizedSize));
+            }
         }
     }
 }

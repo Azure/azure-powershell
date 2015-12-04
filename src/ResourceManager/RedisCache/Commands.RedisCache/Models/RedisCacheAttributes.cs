@@ -15,8 +15,10 @@
 namespace Microsoft.Azure.Commands.RedisCache.Models
 {
     using Microsoft.Azure.Management.Redis.Models;
+    using System.Collections;
+    using System.Collections.Generic;
 
-    class RedisCacheAttributes
+    public class RedisCacheAttributes
     {
         public RedisCacheAttributes(RedisResource cache, string resourceGroupName)
         {
@@ -28,29 +30,22 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
             Port = cache.Properties.Port;
             ProvisioningState = cache.Properties.ProvisioningState;
             SslPort = cache.Properties.SslPort;
-            MaxMemoryPolicy = cache.Properties.MaxMemoryPolicy;
+            RedisConfiguration = cache.Properties.RedisConfiguration;
+            EnableNonSslPort = cache.Properties.EnableNonSslPort.Value;
             RedisVersion = cache.Properties.RedisVersion;
             Size = SizeConverter.GetSizeInUserSpecificFormat(cache.Properties.Sku.Family, cache.Properties.Sku.Capacity);
             Sku = cache.Properties.Sku.Name;
-            ResourceGroupName = resourceGroupName;
+            ResourceGroupName = resourceGroupName; 
+            VirtualNetwork = cache.Properties.VirtualNetwork;
+            Subnet = cache.Properties.Subnet;
+            StaticIP = cache.Properties.StaticIP;
+            TenantSettings = cache.Properties.TenantSettings;
+            ShardCount = cache.Properties.ShardCount;
         }
 
         public RedisCacheAttributes(RedisGetResponse cache, string resourceGroupName)
-        {
-            Id = cache.Id;
-            Location = cache.Location;
-            Name = cache.Name;
-            Type = cache.Type;
-            HostName = cache.Properties.HostName;
-            Port = cache.Properties.Port;
-            ProvisioningState = cache.Properties.ProvisioningState;
-            SslPort = cache.Properties.SslPort;
-            MaxMemoryPolicy = cache.Properties.MaxMemoryPolicy;
-            RedisVersion = cache.Properties.RedisVersion;
-            Size = SizeConverter.GetSizeInUserSpecificFormat(cache.Properties.Sku.Family, cache.Properties.Sku.Capacity);
-            Sku = cache.Properties.Sku.Name;
-            ResourceGroupName = resourceGroupName;
-        }
+            : this(cache.Resource, resourceGroupName)
+        {}
 
         public RedisCacheAttributes() { }
 
@@ -92,12 +87,24 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
 
         public int SslPort { get; protected set; }
 
-        public string MaxMemoryPolicy { get; protected set; }
+        public IDictionary<string, string> RedisConfiguration { get; protected set; }
+
+        public bool EnableNonSslPort { get; protected set; }
 
         public string RedisVersion { get; protected set; }
 
         public string Size { get; protected set; }
 
         public string Sku { get; protected set; }
+
+        public IDictionary<string, string> TenantSettings { get; protected set; }
+
+        public int? ShardCount { get; protected set; }
+
+        public string VirtualNetwork { get; protected set; }
+
+        public string Subnet { get; protected set; }
+
+        public string StaticIP { get; protected set; }
     }
 }

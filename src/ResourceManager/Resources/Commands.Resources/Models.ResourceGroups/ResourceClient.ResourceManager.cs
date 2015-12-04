@@ -18,10 +18,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.WindowsAzure;
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
+using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
@@ -79,7 +81,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
                     
                     ResourceCreateOrUpdateResult createOrUpdateResult = ResourceManagementClient.Resources.CreateOrUpdate(parameters.ResourceGroupName, 
                         resourceIdentity,
-                        new BasicResource
+                        new GenericResource
                             {
                                 Location = parameters.Location,
                                 Properties = SerializeHashtable(parameters.PropertyObject, addValueLayer: false),
@@ -137,7 +139,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(parameters.Tag, validate: true);
 
             ResourceManagementClient.Resources.CreateOrUpdate(parameters.ResourceGroupName, resourceIdentity,
-                        new BasicResource
+                        new GenericResource
                             {
                                 Location = getResource.Resource.Location,
                                 Properties = newProperty,
@@ -213,7 +215,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             bool createDeployment = !string.IsNullOrEmpty(parameters.GalleryTemplateIdentity) || !string.IsNullOrEmpty(parameters.TemplateFile);
             bool resourceExists = ResourceManagementClient.ResourceGroups.CheckExistence(parameters.ResourceGroupName).Exists;
 
-            ResourceGroup resourceGroup = null;
+            ResourceGroupExtended resourceGroup = null;
             Action createOrUpdateResourceGroup = () =>
             {
                 resourceGroup = CreateOrUpdateResourceGroup(parameters.ResourceGroupName, parameters.Location, parameters.Tag);
@@ -249,7 +251,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// <returns>The created resource group</returns>
         public virtual PSResourceGroup UpdatePSResourceGroup(UpdatePSResourceGroupParameters parameters)
         {
-            ResourceGroup resourceGroup = ResourceManagementClient.ResourceGroups.Get(parameters.ResourceGroupName).ResourceGroup;
+            ResourceGroupExtended resourceGroup = ResourceManagementClient.ResourceGroups.Get(parameters.ResourceGroupName).ResourceGroup;
 
             resourceGroup = CreateOrUpdateResourceGroup(parameters.ResourceGroupName, resourceGroup.Location, parameters.Tag);
             WriteVerbose(string.Format("Updated resource group '{0}' in location '{1}'", resourceGroup.Name, resourceGroup.Location));
@@ -262,9 +264,9 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// </summary>
         /// <param name="options">The filtering options</param>
         /// <returns>The filtered set of resources matching the filter criteria</returns>
-        public virtual List<Resource> FilterResources(FilterResourcesOptions options)
+        public virtual List<GenericResourceExtended> FilterResources(FilterResourcesOptions options)
         {
-            List<Resource> resources = new List<Resource>();
+            List<GenericResourceExtended> resources = new List<GenericResourceExtended>();
 
             if (!string.IsNullOrEmpty(options.ResourceGroup) && !string.IsNullOrEmpty(options.Name))
             {
@@ -300,30 +302,11 @@ namespace Microsoft.Azure.Commands.Resources.Models
         public virtual PSResourceGroupDeployment ExecuteDeployment(CreatePSResourceGroupDeploymentParameters parameters)
         {
             parameters.DeploymentName = GenerateDeploymentName(parameters);
-            BasicDeployment deployment = CreateBasicDeployment(parameters);
-            TemplateValidationInfo validationInfo = CheckBasicDeploymentErrors(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
-
-            if (validationInfo.Errors.Count != 0)
-            {
-                int counter = 1;
-                string errorFormat = "Error {0}: Code={1}; Message={2}\r\n";
-                StringBuilder errorsString = new StringBuilder();
-                validationInfo.Errors.ForEach(e => errorsString.AppendFormat(errorFormat, counter++, e.Code, e.Message));
-                throw new ArgumentException(errorsString.ToString());
-            }
-            else
-            {
-                WriteVerbose(ProjectResources.TemplateValid);
-            }
-
-            if (!string.IsNullOrEmpty(parameters.StorageAccountName))
-            {
-                WriteWarning("The StorageAccountName parameter is no longer used and will be removed in a future release. Please update scripts to remove this parameter.");
-            }
+            Deployment deployment = CreateBasicDeployment(parameters, parameters.DeploymentMode);
 
             ResourceManagementClient.Deployments.CreateOrUpdate(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
             WriteVerbose(string.Format("Create template deployment '{0}'.", parameters.DeploymentName));
-            Deployment result = ProvisionDeploymentStatus(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
+            DeploymentExtended result = ProvisionDeploymentStatus(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
 
             return result.ToPSResourceGroupDeployment(parameters.ResourceGroupName);
         }
@@ -353,19 +336,26 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// </summary>
         /// <param name="name">The resource group name.</param>
         /// <param name="tag">The resource group tag.</param>
+        /// <param name="detailed">Whether the  return is detailed or not.</param>
+        /// <param name="location">The resource group location.</param>
         /// <returns>The filtered resource groups</returns>
-        public virtual List<PSResourceGroup> FilterResourceGroups(string name, Hashtable tag, bool detailed)
+        public virtual List<PSResourceGroup> FilterResourceGroups(string name, Hashtable tag, bool detailed, string location = null)
         {
             List<PSResourceGroup> result = new List<PSResourceGroup>();
+            
             if (string.IsNullOrEmpty(name))
             {
                 var response = ResourceManagementClient.ResourceGroups.List(null);
-                List<ResourceGroup> resourceGroups = ResourceManagementClient.ResourceGroups.List(null).ResourceGroups.ToList();
+                List<ResourceGroupExtended> resourceGroups = ResourceManagementClient.ResourceGroups.List(null).ResourceGroups.ToList();
 
                 while (!string.IsNullOrEmpty(response.NextLink))
                 {
                     resourceGroups.AddRange(response.ResourceGroups);
                 }
+
+                resourceGroups = !string.IsNullOrEmpty(location)
+                    ? resourceGroups.Where(resourceGroup => this.NormalizeLetterOrDigitToUpperInvariant(resourceGroup.Location).Equals(this.NormalizeLetterOrDigitToUpperInvariant(location))).ToList()
+                    : resourceGroups;
 
                 // TODO: Replace with server side filtering when available
                 if (tag != null && tag.Count >= 1)
@@ -427,6 +417,23 @@ namespace Microsoft.Azure.Commands.Resources.Models
         }
 
         /// <summary>
+        /// Moves a number of resources from one resource group to another
+        /// </summary>
+        /// <param name="sourceResourceGroupName"></param>
+        /// <param name="destinationResourceGroup"></param>
+        /// <param name="resourceIds"></param>
+        public virtual AzureOperationResponse MoveResources(string sourceResourceGroupName, string destinationResourceGroup, string[] resourceIds)
+        {
+            var resourcesMoveInfo = new ResourcesMoveInfo
+            {
+                Resources = resourceIds,
+                TargetResourceGroup = destinationResourceGroup,
+            };
+
+            return ResourceManagementClient.Resources.MoveResources(sourceResourceGroupName, resourcesMoveInfo);
+        }
+
+        /// <summary>
         /// Deletes a given resource group
         /// </summary>
         /// <param name="name">The resource group name</param>
@@ -451,7 +458,6 @@ namespace Microsoft.Azure.Commands.Resources.Models
             string resourceGroup = options.ResourceGroupName;
             string name = options.DeploymentName;
             List<string> excludedProvisioningStates = options.ExcludedProvisioningStates ?? new List<string>();
-            List<string> provisioningStates = options.ProvisioningStates ?? new List<string>();
 
             if (!string.IsNullOrEmpty(resourceGroup) && !string.IsNullOrEmpty(name))
             {
@@ -459,14 +465,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             }
             else if (!string.IsNullOrEmpty(resourceGroup))
             {
-                DeploymentListParameters parameters = new DeploymentListParameters();
-
-                if (provisioningStates.Count == 1)
-                {
-                    parameters.ProvisioningState = provisioningStates.First();
-                }
-
-                DeploymentListResult result = ResourceManagementClient.Deployments.List(resourceGroup, parameters);
+                DeploymentListResult result = ResourceManagementClient.Deployments.List(resourceGroup, null);
 
                 deployments.AddRange(result.Deployments.Select(d => d.ToPSResourceGroupDeployment(options.ResourceGroupName)));
 
@@ -477,12 +476,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 }
             }
 
-            if (provisioningStates.Count > 1)
-            {
-                return deployments.Where(d => provisioningStates
-                    .Any(s => s.Equals(d.ProvisioningState, StringComparison.OrdinalIgnoreCase))).ToList();
-            }
-            else if (provisioningStates.Count == 0 && excludedProvisioningStates.Count > 0)
+            if(excludedProvisioningStates.Count > 0)
             {
                 return deployments.Where(d => excludedProvisioningStates
                     .All(s => !s.Equals(d.ProvisioningState, StringComparison.OrdinalIgnoreCase))).ToList();
@@ -539,13 +533,28 @@ namespace Microsoft.Azure.Commands.Resources.Models
         }
 
         /// <summary>
+        /// Deletes a deployment
+        /// </summary>
+        /// <param name="resourceGroup">The resource group name</param>
+        /// <param name="deploymentName">Deployment name</param>
+        public virtual void DeleteDeployment(string resourceGroup, string deploymentName)
+        {
+            if (!ResourceManagementClient.Deployments.CheckExistence(resourceGroup, deploymentName).Exists)
+            {
+                throw new ArgumentException(string.Format(ProjectResources.DeploymentDoesntExist, deploymentName, resourceGroup));
+            }
+
+            ResourceManagementClient.Deployments.Delete(resourceGroup, deploymentName);
+        }
+
+        /// <summary>
         /// Validates a given deployment.
         /// </summary>
         /// <param name="parameters">The deployment create options</param>
         /// <returns>True if valid, false otherwise.</returns>
-        public virtual List<PSResourceManagerError> ValidatePSResourceGroupDeployment(ValidatePSResourceGroupDeploymentParameters parameters)
+        public virtual List<PSResourceManagerError> ValidatePSResourceGroupDeployment(ValidatePSResourceGroupDeploymentParameters parameters, DeploymentMode deploymentMode)
         {
-            BasicDeployment deployment = CreateBasicDeployment(parameters);
+            Deployment deployment = CreateBasicDeployment(parameters, deploymentMode);
             TemplateValidationInfo validationInfo = CheckBasicDeploymentErrors(parameters.ResourceGroupName, Guid.NewGuid().ToString(), deployment);
 
             if (validationInfo.Errors.Count == 0)
@@ -560,14 +569,14 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// </summary>
         /// <param name="resourceTypes">The resource types</param>
         /// <returns>Mapping between each resource type and its available locations</returns>
-        public virtual List<PSResourceProviderType> GetLocations(params string[] resourceTypes)
+        public virtual List<PSResourceProviderLocationInfo> GetLocations(params string[] resourceTypes)
         {
             if (resourceTypes == null)
             {
                 resourceTypes = new string[0];
             }
             List<string> providerNames = resourceTypes.Select(r => r.Split('/').First()).ToList();
-            List<PSResourceProviderType> result = new List<PSResourceProviderType>();
+            List<PSResourceProviderLocationInfo> result = new List<PSResourceProviderLocationInfo>();
             List<Provider> providers = new List<Provider>();
 
             if (resourceTypes.Length == 0 || resourceTypes.Any(r => r.Equals(ResourceGroupTypeName, StringComparison.OrdinalIgnoreCase)))
@@ -576,7 +585,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 {
                     Name = ResourceGroupTypeName,
                     Locations = KnownLocations
-                }.ToPSResourceProviderType(null));
+                }.ToPSResourceProviderLocationInfo(null));
             }
 
             if (resourceTypes.Length > 0)
@@ -590,7 +599,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             }
 
             result.AddRange(providers.SelectMany(p => p.ResourceTypes
-                .Select(r => r.ToPSResourceProviderType(p.Namespace)))
+                .Select(r => r.ToPSResourceProviderLocationInfo(p.Namespace)))
                 .Where(r => r.Locations != null && r.Locations.Count > 0));
 
             return result;

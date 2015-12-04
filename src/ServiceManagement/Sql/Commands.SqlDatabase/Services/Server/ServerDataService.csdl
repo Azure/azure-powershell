@@ -325,7 +325,7 @@
         <Property Name="SessionActivityId" Type="Edm.Guid" Nullable="false" />
         <Property Name="DatabaseName" Type="Edm.String" />
         <Property Name="PercentComplete" Type="Edm.Int32" Nullable="false" />
-        <Property Name="ErrorCode" Type="Edm.Int32" />
+        <Property Name="Error.Code" Type="Edm.Int32" />
         <Property Name="Error" Type="Edm.String" />
         <Property Name="ErrorSeverity" Type="Edm.Int32" />
         <Property Name="ErrorState" Type="Edm.Int32" />

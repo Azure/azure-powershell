@@ -17,11 +17,12 @@ using Microsoft.WindowsAzure.Commands.CloudService;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
 using Moq;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService
 {
-    public class RemoveAzureServiceTests : TestBase
+    public class RemoveAzureServiceTests : SMTestBase
     {
         private Mock<ICloudServiceClient> clientMock;
 
@@ -48,6 +49,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAzureService()
         {
             // Setup
@@ -64,6 +66,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAzureServiceNoForce()
         {
             // Setup

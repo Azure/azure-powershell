@@ -22,14 +22,16 @@ using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common.XmlSchema.ServiceConfigurationSchema;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
 {
     /// <summary>
     /// Basic unit tests for the Enable-Enable-AzureServiceProjectRemoteDesktop command.
     /// </summary>
-    public class DisableAzureRemoteDesktopCommandTest : TestBase
+    public class DisableAzureRemoteDesktopCommandTest : SMTestBase
     {
         private MockCommandRuntime mockCommandRuntime;
 
@@ -68,6 +70,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
         /// Enable remote desktop for an empty service.
         /// </summary>
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DisableRemoteDesktopForEmptyService()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -101,6 +104,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
         /// Disable remote desktop for web and worker roles.
         /// </summary>
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DisableRemoteDesktopForWebAndWorkerRoles()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -119,6 +123,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
         /// Enable then disable remote desktop for a simple web role.
         /// </summary>
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableDisableRemoteDesktopForWebRole()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -131,7 +136,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
                 disableRDCmdlet.DisableRemoteDesktop();
                 // Verify the role has been setup with forwarding, access,
                 // and certs
-                CloudServiceProject service = new CloudServiceProject(rootPath, FileUtilities.GetContentFilePath("Services"));
+                CloudServiceProject service = new CloudServiceProject(rootPath, FileUtilities.GetContentFilePath(@"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Services"));
                 EnableAzureRemoteDesktopCommandTest.VerifyWebRole(service.Components.Definition.WebRole[0], true);
                 VerifyDisableRoleSettings(service);
             }
@@ -141,6 +146,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
         /// Enable then disable remote desktop for web and worker roles.
         /// </summary>
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableDisableRemoteDesktopForWebAndWorkerRoles()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -155,7 +161,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
                 disableRDCmdlet.DisableRemoteDesktop();
                 // Verify the roles have been setup with forwarding, access,
                 // and certs
-                CloudServiceProject service = new CloudServiceProject(rootPath, FileUtilities.GetContentFilePath("Services"));
+                CloudServiceProject service = new CloudServiceProject(rootPath, FileUtilities.GetContentFilePath(@"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Services"));
                 EnableAzureRemoteDesktopCommandTest.VerifyWebRole(service.Components.Definition.WebRole[0], false);
                 EnableAzureRemoteDesktopCommandTest.VerifyWorkerRole(service.Components.Definition.WorkerRole[0], true);
                 VerifyDisableRoleSettings(service);
@@ -166,6 +172,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
         /// Enable then disable remote desktop for web and worker roles.
         /// </summary>
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableDisableEnableRemoteDesktopForWebAndWorkerRoles()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -181,7 +188,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
                 EnableAzureRemoteDesktopCommandTest.EnableRemoteDesktop("user", "GoodPassword!");
                 // Verify the roles have been setup with forwarding, access,
                 // and certs
-                CloudServiceProject service = new CloudServiceProject(rootPath, FileUtilities.GetContentFilePath("Services"));
+                CloudServiceProject service = new CloudServiceProject(rootPath, FileUtilities.GetContentFilePath(@"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Services"));
                 EnableAzureRemoteDesktopCommandTest.VerifyWebRole(service.Components.Definition.WebRole[0], false);
                 EnableAzureRemoteDesktopCommandTest.VerifyWorkerRole(service.Components.Definition.WorkerRole[0], true);
                 EnableAzureRemoteDesktopCommandTest.VerifyRoleSettings(service);

@@ -14,7 +14,9 @@ using System.IO;
 using System.Xml;
 using System.Xml.Linq;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
+using Microsoft.WindowsAzure.Commands.ServiceManagement;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
+using Microsoft.WindowsAzure.Management.Storage;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
 {
@@ -22,7 +24,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
     {
         protected const string StorageAccountElemStr = "StorageAccount";
         protected const string LocalResourceDirElemStr = "LocalResourceDirectory";
-        protected const string StorageNameElemStr = "Name";
         protected const string StorageNameAttrStr = "name";
         protected const string PrivConfNameAttr = "name";
         protected const string PrivConfKeyAttr = "key";

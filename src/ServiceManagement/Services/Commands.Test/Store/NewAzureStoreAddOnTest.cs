@@ -14,6 +14,7 @@
 
 using System;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Store;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -24,7 +25,7 @@ using Moq;
 namespace Microsoft.WindowsAzure.Commands.Test.Store
 {
     
-    public class NewAzureStoreAddOnTests : TestBase
+    public class NewAzureStoreAddOnTests : SMTestBase
     {
         Mock<ICommandRuntime> mockCommandRuntime;
 
@@ -49,6 +50,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Store
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureStoreAddOnWithSuccessful()
         {
             // Setup
@@ -78,6 +80,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Store
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureStoreAddOnWithNoConfirmation()
         {
             // Setup
@@ -107,6 +110,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Store
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureStoreAddOnWithNameAlreadyUsed()
         {
             // Setup

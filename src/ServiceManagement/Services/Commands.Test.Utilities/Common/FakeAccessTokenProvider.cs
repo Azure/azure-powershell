@@ -13,9 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using System.Security;
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
-using Microsoft.WindowsAzure.Commands.Utilities.Common.Authentication;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 {
@@ -38,6 +38,11 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 
         public IAccessToken GetAccessToken(AdalConfiguration config, ShowDialog promptBehavior, string userId, SecureString password,
             AzureAccount.AccountType credentialType)
+        {
+            return this.accessToken;
+        }
+
+        public IAccessToken GetAccessTokenWithCertificate(AdalConfiguration config, string principalId, string certificateThumbprint, AzureAccount.AccountType credentialType)
         {
             return this.accessToken;
         }

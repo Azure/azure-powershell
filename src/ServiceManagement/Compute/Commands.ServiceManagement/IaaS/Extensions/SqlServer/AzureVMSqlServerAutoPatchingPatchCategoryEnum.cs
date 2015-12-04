@@ -27,11 +27,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         /// <summary>
         /// Important patches
         /// </summary>
-        Important = 0,
-
-        /// <summary>
-        /// Optional patches
-        /// </summary>
-        Optional = 1
+        Important = 1,
     }
 }

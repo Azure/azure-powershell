@@ -1,0 +1,38 @@
+{
+    "Entries": [
+        {
+            "RequestUri": "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/garyyang1/metricDefinitions?api-version=2014-04-01&$filter=",
+            "RequestMethod": "GET",
+            "RequestBody": "",
+            "RequestHeaders": {
+                "Accept": [ "application/json" ],
+                "User-Agent": [ "Microsoft.Azure.Insights.InsightsClient/0.9.0.0 AzurePowershell/v0.8.15" ],
+                "x-ms-version": [ "2014-04-01" ],
+                "Connection": [ "Keep-Alive" ]
+            },
+            "ResponseBody": "{\"value\":[{\"name\":{\"value\":\"CpuTime\",\"localizedValue\":\"CPU Time\"},\"unit\":\"Seconds\",\"primaryAggregationType\":\"Total\",\"resourceUri\":null,\"metricAvailabilities\":[{\"timeGrain\":\"PT1M\",\"retention\":\"P2D\"},{\"timeGrain\":\"PT1H\",\"retention\":\"P30D\"},{\"timeGrain\":\"P1D\",\"retention\":\"P90D\"}],\"properties\":[]},{\"name\":{\"value\":\"Requests\",\"localizedValue\":\"Requests\"},\"unit\":\"Count\",\"primaryAggregationType\":\"Total\",\"resourceUri\":null,\"metricAvailabilities\":[{\"timeGrain\":\"PT1M\",\"retention\":\"P2D\"},{\"timeGrain\":\"PT1H\",\"retention\":\"P30D\"},{\"timeGrain\":\"P1D\",\"retention\":\"P90D\"}],\"properties\":[]},{\"name\":{\"value\":\"BytesReceived\",\"localizedValue\":\"Data In\"},\"unit\":\"Bytes\",\"primaryAggregationType\":\"Total\",\"resourceUri\":null,\"metricAvailabilities\":[{\"timeGrain\":\"PT1M\",\"retention\":\"P2D\"},{\"timeGrain\":\"PT1H\",\"retention\":\"P30D\"},{\"timeGrain\":\"P1D\",\"retention\":\"P90D\"}],\"properties\":[]},{\"name\":{\"value\":\"BytesSent\",\"localizedValue\":\"Data Out\"},\"unit\":\"Bytes\",\"primaryAggregationType\":\"Total\",\"resourceUri\":null,\"metricAvailabilities\":[{\"timeGrain\":\"PT1M\",\"retention\":\"P2D\"},{\"timeGrain\":\"PT1H\",\"retention\":\"P30D\"},{\"timeGrain\":\"P1D\",\"retention\":\"P90D\"}],\"properties\":[]},{\"name\":{\"value\":\"Http2xx\",\"localizedValue\":\"Http 2xx\"},\"unit\":\"Count\",\"primaryAggregationType\":\"Total\",\"resourceUri\":null,\"metricAvailabilities\":[{\"timeGrain\":\"PT1M\",\"retention\":\"P2D\"},{\"timeGrain\":\"PT1H\",\"retention\":\"P30D\"},{\"timeGrain\":\"P1D\",\"retention\":\"P90D\"}],\"properties\":[]},{\"name\":{\"value\":\"Http3xx\",\"localizedValue\":\"Http 3xx\"},\"unit\":\"Count\",\"primaryAggregationType\":\"Total\",\"resourceUri\":null,\"metricAvailabilities\":[{\"timeGrain\":\"PT1M\",\"retention\":\"P2D\"},{\"timeGrain\":\"PT1H\",\"retention\":\"P30D\"},{\"timeGrain\":\"P1D\",\"retention\":\"P90D\"}],\"properties\":[]},{\"name\":{\"value\":\"Http401\",\"localizedValue\":\"Http 401\"},\"unit\":\"Count\",\"primaryAggregationType\":\"Total\",\"resourceUri\":null,\"metricAvailabilities\":[{\"timeGrain\":\"PT1M\",\"retention\":\"P2D\"},{\"timeGrain\":\"PT1H\",\"retention\":\"P30D\"},{\"timeGrain\":\"P1D\",\"retention\":\"P90D\"}],\"properties\":[]},{\"name\":{\"value\":\"Http403\",\"localizedValue\":\"Http 403\"},\"unit\":\"Count\",\"primaryAggregationType\":\"Total\",\"resourceUri\":null,\"metricAvailabilities\":[{\"timeGrain\":\"PT1M\",\"retention\":\"P2D\"},{\"timeGrain\":\"PT1H\",\"retention\":\"P30D\"},{\"timeGrain\":\"P1D\",\"retention\":\"P90D\"}],\"properties\":[]},{\"name\":{\"value\":\"Http404\",\"localizedValue\":\"Http 404\"},\"unit\":\"Count\",\"primaryAggregationType\":\"Total\",\"resourceUri\":null,\"metricAvailabilities\":[{\"timeGrain\":\"PT1M\",\"retention\":\"P2D\"},{\"timeGrain\":\"PT1H\",\"retention\":\"P30D\"},{\"timeGrain\":\"P1D\",\"retention\":\"P90D\"}],\"properties\":[]},{\"name\":{\"value\":\"Http406\",\"localizedValue\":\"Http 406\"},\"unit\":\"Count\",\"primaryAggregationType\":\"Total\",\"resourceUri\":null,\"metricAvailabilities\":[{\"timeGrain\":\"PT1M\",\"retention\":\"P2D\"},{\"timeGrain\":\"PT1H\",\"retention\":\"P30D\"},{\"timeGrain\":\"P1D\",\"retention\":\"P90D\"}],\"properties\":[]},{\"name\":{\"value\":\"Http4xx\",\"localizedValue\":\"Http 4xx\"},\"unit\":\"Count\",\"primaryAggregationType\":\"Total\",\"resourceUri\":null,\"metricAvailabilities\":[{\"timeGrain\":\"PT1M\",\"retention\":\"P2D\"},{\"timeGrain\":\"PT1H\",\"retention\":\"P30D\"},{\"timeGrain\":\"P1D\",\"retention\":\"P90D\"}],\"properties\":[]},{\"name\":{\"value\":\"Http5xx\",\"localizedValue\":\"Http Server Errors\"},\"unit\":\"Count\",\"primaryAggregationType\":\"Total\",\"resourceUri\":null,\"metricAvailabilities\":[{\"timeGrain\":\"PT1M\",\"retention\":\"P2D\"},{\"timeGrain\":\"PT1H\",\"retention\":\"P30D\"},{\"timeGrain\":\"P1D\",\"retention\":\"P90D\"}],\"properties\":[]},{\"name\":{\"value\":\"MemoryWorkingSet\",\"localizedValue\":\"Memory working set\"},\"unit\":\"Bytes\",\"primaryAggregationType\":\"Total\",\"resourceUri\":null,\"metricAvailabilities\":[{\"timeGrain\":\"PT1M\",\"retention\":\"P2D\"},{\"timeGrain\":\"PT1H\",\"retention\":\"P30D\"},{\"timeGrain\":\"P1D\",\"retention\":\"P90D\"}],\"properties\":[]},{\"name\":{\"value\":\"AverageMemoryWorkingSet\",\"localizedValue\":\"Average memory working set\"},\"unit\":\"Bytes\",\"primaryAggregationType\":\"Average\",\"resourceUri\":null,\"metricAvailabilities\":[{\"timeGrain\":\"PT1M\",\"retention\":\"P2D\"},{\"timeGrain\":\"PT1H\",\"retention\":\"P30D\"},{\"timeGrain\":\"P1D\",\"retention\":\"P90D\"}],\"properties\":[]},{\"name\":{\"value\":\"AverageResponseTime\",\"localizedValue\":\"Average Response Time\"},\"unit\":\"Seconds\",\"primaryAggregationType\":\"Average\",\"resourceUri\":null,\"metricAvailabilities\":[{\"timeGrain\":\"PT1M\",\"retention\":\"P2D\"},{\"timeGrain\":\"PT1H\",\"retention\":\"P30D\"},{\"timeGrain\":\"P1D\",\"retention\":\"P90D\"}],\"properties\":[]}]}",
+            "ResponseHeaders": {
+                "Cache-Control": [ "no-cache" ],
+                "Date": [ "Mon, 23 Mar 2015 20:57:46 GMT" ],
+                "Expires": [ "-1" ],
+                "Pragma": [ "no-cache" ],
+                "Content-Length": [ "4360" ],
+                "Content-Type": [ "application/json; charset=utf-8" ],
+                "x-ms-ratelimit-remaining-subscription-reads": [ "31999" ],
+                "x-ms-request-id": [ "63575ceb-f8d2-4a28-a571-edc783166245" ],
+                "x-ms-correlation-request-id": [ "4e8d2e93-0895-4cf1-aa40-5af880c3fb52" ],
+                "x-ms-routing-request-id": [ "WESTUS:20150323T205747Z:4e8d2e93-0895-4cf1-aa40-5af880c3fb52" ],
+                "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ]
+            },
+            "StatusCode": 200
+        }
+    ],
+    "Names": {
+        "Test-GetMetricDefinitions": [
+            ""
+        ]
+    },
+    "Variables": {
+        "SubscriptionId": "a93fb07c-6c93-40be-bf3b-4f0deba10f4b"
+    }
+}

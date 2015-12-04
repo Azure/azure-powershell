@@ -12,16 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.IO;
-using System.Threading;
-using System.Xml;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.ConfigDataInfo;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Newtonsoft.Json.Linq;
+using System;
+using System.IO;
+using System.Xml;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.ExtensionTests
 {
@@ -31,16 +30,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         private string serviceName;
         private string vmName;
         private const string referenceNamePrefix = "Reference";
-        private string vmAccessUserName;
-        private string vmAccessPassword;
-        private string publicConfiguration;
-        private string privateConfiguration;
-        private string publicConfigPath;
-        private string privateConfigPath;
-        private string version = "1.0";
-        string rdpPath = @".\AzureVM.rdp";
-        string dns;
-        int port;
+        private readonly string vmAccessUserName = Utilities.GetUniqueShortName();
+        private readonly string vmAccessPassword = Utilities.GetUniqueShortName("", 8);
+        private const string version = "1.0";
+        const string rdpPath = @".\AzureVM.rdp";
         private string referenceName;
 
         [ClassInitialize]
@@ -56,7 +49,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             serviceName = Utilities.GetUniqueShortName(serviceNamePrefix);
             vmName = Utilities.GetUniqueShortName(vmNamePrefix);
             testStartTime = DateTime.Now;
-            GetVmAccessConfiguration();
             referenceName = Utilities.GetUniqueShortName(referenceNamePrefix);
         }
 
@@ -75,15 +67,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         #region Test cases
 
         [TestMethod(), TestCategory(Category.Scenario), TestProperty("Feature", "IAAS"), Priority(0), Owner("hylee"), Description("Test the cmdlet ((Get,Set)-AzureVMAccessExtension)")]
-        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", "|DataDirectory|\\Resources\\package.csv", "package#csv", DataAccessMethod.Sequential)]
         public void CreateVMAccessExtensionTest()
         {
             try
             {
-                    //Deploy a new IaaS VM with Extension using Add-AzureVMExtension
+                    // Deploy a new IaaS VM with Extension using Add-AzureVMExtension
                     Console.WriteLine("Create a new VM with VM access extension.");
                     var vm = CreateIaaSVMObject(vmName);
-                    vm = vmPowershellCmdlets.SetAzureVMAccessExtension(vm, vmAccessUserName, vmAccessPassword, version, null,false);
+                    vm = vmPowershellCmdlets.SetAzureVMAccessExtension(
+                        vm, vmAccessUserName, vmAccessPassword, version, null, false, true);
 
                     vmPowershellCmdlets.NewAzureVM(serviceName, new[] { vm }, locationName, true);
                     Console.WriteLine("Created a new VM {0} with VM access extension. Service Name : {1}", vmName, serviceName);
@@ -91,11 +83,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     ValidateVMAccessExtension(vmName, serviceName, true);
 
                     Utilities.GetAzureVMAndWaitForReady(serviceName, vmName, 30000, 300000);
-                    //Verify that the extension actually work
+                    // Verify that the extension actually work
                     VerifyRDPExtension(vmName, serviceName);
 
-                    //Disbale extesnion
-                    DisableExtension(vmName, serviceName);
+                    // Disbale extesnion
+                    DisableExtension(vmName, serviceName, "1.*");
                     ValidateVMAccessExtension(vmName, serviceName, false);
                     pass = true;
 
@@ -107,19 +99,51 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             }
         }
 
+        [TestMethod(), TestCategory(Category.Scenario), TestProperty("Feature", "IAAS"), Priority(0), Owner("hylee"), Description("Test the cmdlet ((Get,Set)-AzureVMAccessExtension)")]
+        public void CreateVMAccessExtensionTest2()
+        {
+            try
+            {
+                // Deploy a new IaaS VM with Extension using Add-AzureVMExtension
+                Console.WriteLine("Create a new VM with VM access extension.");
+                var vm = CreateIaaSVMObject(vmName);
+                vm = vmPowershellCmdlets.SetAzureVMAccessExtension(
+                    vm, vmAccessUserName, vmAccessPassword, "2.*", null, false, true);
+
+                vmPowershellCmdlets.NewAzureVM(serviceName, new[] { vm }, locationName, true);
+                Console.WriteLine("Created a new VM {0} with VM access extension. Service Name : {1}", vmName, serviceName);
+
+                ValidateVMAccessExtension(vmName, serviceName, true, false);
+
+                Utilities.GetAzureVMAndWaitForReady(serviceName, vmName, 30000, 300000);
+                // Verify that the extension actually work
+                VerifyRDPExtension(vmName, serviceName);
+
+                // Disbale extesnion
+                DisableExtension(vmName, serviceName);
+                ValidateVMAccessExtension(vmName, serviceName, false, false);
+                pass = true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                throw;
+            }
+        }
+
         [TestMethod(), TestCategory(Category.Scenario), TestProperty("Feature", "IAAS"), Priority(0), Owner("hylee"), Description("Test the cmdlet ((Get,Set,Remove)-AzureVMAccessExtension)")]
-        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", "|DataDirectory|\\Resources\\package.csv", "package#csv", DataAccessMethod.Sequential)]
         public void UpdateVMAccessExtensionTest()
         {
             try
             {
-                //Deploy a new IaaS VM with Extension using Add-AzureVMExtension
+                // Deploy a new IaaS VM with Extension using Add-AzureVMExtension
                 var vm = CreateIaaSVMObject(vmName);
                 vmPowershellCmdlets.NewAzureVM(serviceName, new[] { vm }, locationName);
 
                 vm = GetAzureVM(vmName, serviceName);
-                //Set extension without version
-                vm = vmPowershellCmdlets.SetAzureVMAccessExtension(vm, vmAccessUserName, vmAccessPassword, null, null, false);
+                // Set extension without version
+                vm = vmPowershellCmdlets.SetAzureVMAccessExtension(
+                    vm, vmAccessUserName, vmAccessPassword, null, null, false, true);
                 vmPowershellCmdlets.UpdateAzureVM(vmName, serviceName, vm);
 
                 ValidateVMAccessExtension(vmName, serviceName, true);
@@ -137,19 +161,19 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         }
 
         [TestMethod(), TestCategory(Category.Scenario), TestProperty("Feature", "IAAS"), Priority(0), Owner("hylee"), Description("Test the cmdlet ((Get,Set)-AzureVMAccessExtension)")]
-        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", "|DataDirectory|\\Resources\\package.csv", "package#csv", DataAccessMethod.Sequential)]
         public void AddRoleVMAccessExtensionTest()
         {
             try
             {
-                //Create an deployment
+                // Create an deployment
                 var vm1 = CreateIaaSVMObject(vmName);
                 vmPowershellCmdlets.NewAzureVM(serviceName, new[] { vm1 }, locationName);
                 
-                //Add a role with extension enabled.
+                // Add a role with extension enabled.
                 string vmName2 = Utilities.GetUniqueShortName(vmNamePrefix);
                 var vm2 = CreateIaaSVMObject(vmName2);
-                vm2 = vmPowershellCmdlets.SetAzureVMAccessExtension(vm2, vmAccessUserName,vmAccessPassword, version, referenceName,false);
+                vm2 = vmPowershellCmdlets.SetAzureVMAccessExtension(
+                    vm2, vmAccessUserName,vmAccessPassword, version, referenceName, false, true);
                 vmPowershellCmdlets.NewAzureVM(serviceName, new[] { vm2 });
 
                 ValidateVMAccessExtension(vmName2, serviceName, true);
@@ -163,20 +187,20 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         }
 
         [TestMethod(), TestCategory(Category.Scenario), TestProperty("Feature", "IAAS"), Priority(0), Owner("hylee"), Description("Test the cmdlet ((Get,Set)-AzureVMAccessExtension)")]
-        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", "|DataDirectory|\\Resources\\package.csv", "package#csv", DataAccessMethod.Sequential)]
         public void UpdateRoleVMAccessExtensionTest()
         {
             try
             {
-                //Create an deployment and add 2 roles
+                // Create an deployment and add 2 roles
                 var vm1 = CreateIaaSVMObject(vmName);
                 string vmName2 = Utilities.GetUniqueShortName(vmNamePrefix);
                 var vm2 = CreateIaaSVMObject(vmName2);
                 vmPowershellCmdlets.NewAzureVM(serviceName, new[] { vm1, vm2 }, locationName);
 
-                //Set VM Access extension to the VM
+                // Set VM Access extension to the VM
                 var vmroleContext = vmPowershellCmdlets.GetAzureVM(vmName2, serviceName);
-                vmPowershellCmdlets.SetAzureVMAccessExtension(vm2, vmAccessUserName, vmAccessPassword, version, referenceName, false);
+                vmPowershellCmdlets.SetAzureVMAccessExtension(
+                    vm2, vmAccessUserName, vmAccessPassword, version, referenceName, false, true);
                 vmPowershellCmdlets.UpdateAzureVM(vmName2, serviceName, vm2);
 
                 var result = vmPowershellCmdlets.GetAzureVM(vmName2, serviceName);
@@ -196,20 +220,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         #region Helper Methods
 
-        private void GetVmAccessConfiguration()
-        {
-            privateConfigPath = Path.Combine(Directory.GetCurrentDirectory(), "PrivateConfig.xml");
-            publicConfigPath = Path.Combine(Directory.GetCurrentDirectory(), "PublicConfig.xml");
-            privateConfiguration = FileUtilities.DataStore.ReadFileAsText(privateConfigPath);
-            publicConfiguration = FileUtilities.DataStore.ReadFileAsText(publicConfigPath);
-
-            XmlDocument doc = new XmlDocument();
-            doc.LoadXml(publicConfiguration);
-            vmAccessUserName = doc.GetElementsByTagName("UserName")[0].InnerText;
-            doc.LoadXml(privateConfiguration);
-            vmAccessPassword = doc.GetElementsByTagName("Password")[0].InnerText;
-        }
-
         private PersistentVM CreateIaaSVMObject(string vmName)
         {
             //Create an IaaS VM with a static CA.
@@ -228,7 +238,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return vmExtension[0];
         }
 
-        private void ValidateVMAccessExtension(string vmName, string serviceName, bool enabled)
+        private void ValidateVMAccessExtension(string vmName, string serviceName, bool enabled, bool isXml = true)
         {
             var vmAccessExtension = GetAzureVMAccessExtesnion(vmName,serviceName);
             Utilities.PrintContext(vmAccessExtension);
@@ -238,9 +248,19 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 Assert.AreEqual(vmAccessUserName, vmAccessExtension.UserName, "Incorrect User name");
                 Assert.AreEqual("Enable", vmAccessExtension.State, "State is not Enable");
                 Assert.IsTrue(vmAccessExtension.Enabled, "Enabled is not true");
-                XmlDocument doc = new XmlDocument();
-                doc.LoadXml(vmAccessExtension.PublicConfiguration);
-                Assert.AreEqual(vmAccessUserName, doc.GetElementsByTagName("UserName")[0].InnerText,"Incorrect User name in public configuration");
+                if (isXml)
+                {
+                    XmlDocument doc = new XmlDocument();
+                    doc.LoadXml(vmAccessExtension.PublicConfiguration);
+                    Assert.AreEqual(vmAccessUserName, doc.GetElementsByTagName("UserName")[0].InnerText,
+                        "Incorrect User name in public configuration");
+                }
+                else
+                {
+                    var jsonObject = JObject.Parse(vmAccessExtension.PublicConfiguration);
+                    Assert.AreEqual(vmAccessUserName, jsonObject["UserName"].Value<string>(),
+                        "Incorrect User name in public configuration");
+                }
             }
             else
             {
@@ -275,30 +295,19 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             {
                 string firstLine = stream.ReadLine();
                 var dnsAndport = Utilities.FindSubstring(firstLine, ':', 2).Split(new char[] { ':' });
-                dns = dnsAndport[0];
-                port = int.Parse(dnsAndport[1]);
+                var dns = dnsAndport[0];
+                var port = int.Parse(dnsAndport[1]);
             }
             Console.WriteLine("Azure VM RDP file downloaded.");
-
-            Console.WriteLine("Waiting to sleep for 4 mins before trying to login VM ");
-            Thread.Sleep(300000);
-            ValidateLogin(dns, port, vmAccessUserName, vmAccessPassword);
-
         }
 
-        private void DisableExtension(string vmName, string serviceName)
+        private void DisableExtension(string vmName, string serviceName, string ver = "2.0")
         {
             var vm = GetAzureVM(vmName, serviceName);
             Console.WriteLine("Disabling the VM Access extesnion for the vm {0}",vmName);
-            vm = vmPowershellCmdlets.SetAzureVMAccessExtension(vm,disable:true);
+            vm = vmPowershellCmdlets.SetAzureVMAccessExtension(vm, disable:true, version:ver, forceUpdate:true);
             vmPowershellCmdlets.UpdateAzureVM(vmName, serviceName, vm);
             Console.WriteLine("Disabled VM Access extesnion for the vm {0}", vmName);
-        }
-
-
-        private void ValidateLogin(string dns, int port, string vmAccessUserName, string vmAccessPassword)
-        {
-            Assert.IsTrue((Utilities.RDPtestIaaS(dns, port, vmAccessUserName, vmAccessPassword, true)), "Cannot RDP to the instance!!");
         }
 
         #endregion Helper Methods

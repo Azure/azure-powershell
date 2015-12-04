@@ -54,7 +54,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Simulators
             this.InitializeSimulator();
         }
 
-        public void Dispose()
+        public new void Dispose()
         {
         }
 
@@ -65,17 +65,17 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Simulators
             throw new NotImplementedException();
         }
 
-        public void AddLogWriter(ILogWriter logWriter)
+        public new void AddLogWriter(ILogWriter logWriter)
         {
             this.logger.AddWriter(logWriter);
         }
 
-        public void RemoveLogWriter(ILogWriter logWriter)
+        public new void RemoveLogWriter(ILogWriter logWriter)
         {
             this.logger.RemoveWriter(logWriter);
         }
 
-        public void Cancel()
+        public new void Cancel()
         {
         }
 
@@ -329,12 +329,12 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Simulators
             return TaskEx2.FromResult(jobDetailList);
         }
 
-        public void SetCancellationSource(CancellationTokenSource tokenSource)
+        public new void SetCancellationSource(CancellationTokenSource tokenSource)
         {
             this.cancellationTokenSource = tokenSource;
         }
 
-        public bool IgnoreSslErrors { get; set; }
+        public new bool IgnoreSslErrors { get; set; }
 
         public JobDetails StopJob(string jobId)
         {
@@ -537,6 +537,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Simulators
             this.jobOutput[jobId] = stdoutContent;
         }
 
-        public ILogger Logger { get; private set; }
+        public new ILogger Logger { get; private set; }
     }
 }

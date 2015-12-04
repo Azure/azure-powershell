@@ -24,13 +24,14 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
 {
     using DatabaseCopyModel = Model.DatabaseCopy;
+    using Microsoft.Azure.Common.Authentication;
 
     /// <summary>
     /// Start a copy operation for a Microsoft Azure SQL Database in the given server context.
     /// </summary>
     [Cmdlet(VerbsLifecycle.Start, "AzureSqlDatabaseCopy", SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.Low)]
-    public class StartAzureSqlDatabaseCopy : AzurePSCmdlet
+    public class StartAzureSqlDatabaseCopy : AzureSMCmdlet
     {
         #region ParameterSets
 
@@ -187,7 +188,8 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
             // Use the provided ServerDataServiceContext or create one from the
             // provided ServerName and the active subscription.
             IServerDataServiceContext context = ServerDataServiceCertAuth.Create(this.ServerName,
-                AzureSession.CurrentContext.Subscription);
+                Profile,
+                Profile.Context.Subscription);
 
             try
             {

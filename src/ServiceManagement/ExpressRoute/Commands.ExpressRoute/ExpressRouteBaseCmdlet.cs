@@ -16,7 +16,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ExpressRoute
 {
-    public abstract class ExpressRouteBaseCmdlet : AzurePSCmdlet
+    public abstract class ExpressRouteBaseCmdlet : AzureSMCmdlet
     {
         private ExpressRouteClient expressRouteClient;
 
@@ -26,7 +26,7 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
             {
                 if (expressRouteClient == null)
                 {
-                    expressRouteClient = new ExpressRouteClient(CurrentContext.Subscription);
+                    expressRouteClient = new ExpressRouteClient(Profile, Profile.Context.Subscription);
                 }
                 return expressRouteClient;
             }

@@ -93,6 +93,14 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
             set { this.command.Endpoint = value; }
         }
 
+        [Parameter(Mandatory = false, HelpMessage = "Rule for SSL errors with HDInsight client.",
+            ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetStartJobByNameWithSpecificSubscriptionCredentials)]
+        public bool IgnoreSslErrors
+        {
+            get { return this.command.IgnoreSslErrors; }
+            set { this.command.IgnoreSslErrors = value; }
+        }
+
         /// <inheritdoc />
         [Parameter(Mandatory = true, HelpMessage = "The JobID of the jobDetails to stop.", ValueFromPipeline = true)]
         [Alias(AzureHdInsightPowerShellConstants.JobId)]
@@ -115,6 +123,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         /// <inheritdoc />
         protected override void EndProcessing()
         {
+            this.WriteWarning(string.Format(AzureHdInsightPowerShellConstants.AsmWarning, "Stop-AzureRmHDInsightJob"));
             try
             {
                 this.command.Logger = this.Logger;

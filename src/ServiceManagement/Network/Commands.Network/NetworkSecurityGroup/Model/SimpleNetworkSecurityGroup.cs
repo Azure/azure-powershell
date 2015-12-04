@@ -14,7 +14,7 @@
 
 using Microsoft.WindowsAzure.Management.Network.Models;
 
-namespace Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Model
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.NetworkSecurityGroup.Model
 {
     public class SimpleNetworkSecurityGroup : INetworkSecurityGroup
     {

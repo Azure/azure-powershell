@@ -12,10 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.DataFactories.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
+using System.Collections.Generic;
+using System.Management.Automation;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.DataFactories.Test
@@ -80,6 +82,30 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetHubWithEmptyName()
+        {
+            // Action
+            cmdlet.Name = String.Empty;
+            Exception exception = Assert.Throws<PSArgumentNullException>(() => cmdlet.ExecuteCmdlet());
+
+            // Assert
+            Assert.Contains("Value cannot be null", exception.Message);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetHubWithWhiteSpaceName()
+        {
+            // Action
+            cmdlet.Name = "   ";
+            Exception exception = Assert.Throws<PSArgumentNullException>(() => cmdlet.ExecuteCmdlet());
+
+            // Assert
+            Assert.Contains("Value cannot be null", exception.Message);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanListHubs()
         {
             // Arrange
@@ -107,12 +133,19 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
                                 options =>
                                     options.ResourceGroupName == ResourceGroupName &&
                                     options.DataFactoryName == DataFactoryName &&
-                                    options.Name == null)))
+                                    options.Name == null &&
+                                    options.NextLink == null)))
                 .CallBase()
                 .Verifiable();
 
             dataFactoriesClientMock
-                .Setup(f => f.ListHubs(ResourceGroupName, DataFactoryName))
+                .Setup(f => f.ListHubs(It.Is<HubFilterOptions>(
+                    options =>
+                        options.ResourceGroupName == ResourceGroupName &&
+                        options.DataFactoryName == DataFactoryName &&
+                        options.Name == null &&
+                        options.NextLink == null)))
+
                 .Returns(expected)
                 .Verifiable();
 

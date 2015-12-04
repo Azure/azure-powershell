@@ -30,11 +30,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 
         internal void ExecuteCommand()
         {
-            // We do not support this cmdlet for now...
-            throw new NotSupportedException();
+            ExtensionName = DiagnosticsExtensionType;
+            Publisher = DiagnosticsExtensionNamespace;
 
-        //    RemovePredicateExtensions();   
-        //    WriteObject(VM);
+            RemovePredicateExtensions();
+            WriteObject(VM);
         }
 
         protected override void ProcessRecord()

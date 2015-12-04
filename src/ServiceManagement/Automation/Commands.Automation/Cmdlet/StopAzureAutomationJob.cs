@@ -13,32 +13,35 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security.Permissions;
+using Microsoft.Azure.Commands.Automation.Model;
+using Microsoft.Azure.Commands.Automation.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
-    /// Stops an azure automation job.
+    /// Gets a Credential for automation.
     /// </summary>
     [Cmdlet(VerbsLifecycle.Stop, "AzureAutomationJob")]
     public class StopAzureAutomationJob : AzureAutomationBaseCmdlet
     {
-        /// <summary>
-        /// Gets or sets the job id.
-        /// </summary>
-        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The job id.")]
-        [Alias("JobId")]
-        public Guid Id { get; set; }
-
-        /// <summary>
-        /// Execute this cmdlet.
-        /// </summary>
-        [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        protected override void AutomationExecuteCmdlet()
-        {
-            this.AutomationClient.StopJob(this.AutomationAccountName, this.Id);
-        }
+        /// <summary> 
+        /// Gets or sets the job id. 
+        /// </summary> 
+        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, 
+            HelpMessage = "The job id.")] 
+        [Alias("JobId")] 
+        public Guid Id { get; set; } 
+ 
+        /// <summary> 
+        /// Execute this cmdlet. 
+        /// </summary> 
+        [PermissionSet(SecurityAction.Demand, Name = "FullTrust")] 
+        protected override void AutomationExecuteCmdlet() 
+        { 
+            this.AutomationClient.StopJob(this.AutomationAccountName, this.Id); 
+        } 
     }
 }

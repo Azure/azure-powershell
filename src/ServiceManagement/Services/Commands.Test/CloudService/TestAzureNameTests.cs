@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.CloudService;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
@@ -23,7 +24,7 @@ using Moq;
 
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService
 {
-    public class TestAzureNameTests : TestBase
+    public class TestAzureNameTests : SMTestBase
     {
         private Mock<ICloudServiceClient> cloudServiceClientMock;
         private Mock<IWebsitesClient> websitesClientMock;
@@ -49,6 +50,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureServiceNameUsed()
         {
             string name = "test";
@@ -61,6 +63,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureServiceNameIsNotUsed()
         {
             string name = "test";
@@ -73,6 +76,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureStorageNameUsed()
         {
             string name = "test";
@@ -85,6 +89,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureStorageNameIsNotUsed()
         {
             string name = "test";
@@ -97,6 +102,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureServiceBusNamespaceUsed()
         {
             string name = "test";
@@ -110,6 +116,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureServiceBusNamespaceIsNotUsed()
         {
             string name = "test";
@@ -123,6 +130,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureWebsiteNameUsed()
         {
             string name = "test";
@@ -135,6 +143,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureWebsiteNameIsNotUsed()
         {
             string name = "test";

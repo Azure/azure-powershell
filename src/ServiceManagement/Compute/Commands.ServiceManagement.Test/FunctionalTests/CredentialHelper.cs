@@ -12,15 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.Properties;
+using Microsoft.WindowsAzure.Commands.Storage.Common;
+using Microsoft.WindowsAzure.Storage.Auth;
+using Microsoft.WindowsAzure.Storage.Blob;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Diagnostics;
 using System.IO;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.Properties;
-using Microsoft.WindowsAzure.Storage.Auth;
-using Microsoft.WindowsAzure.Storage.Blob;
+using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 {
@@ -34,7 +36,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         private static string DefaultStorageAccountVariable = "AZURERT_DEFAULT_STORAGE_ACCOUNT";
         private static string DefaultLocationVariable = "AZURERT_DEFAULT_LOCATION";
         private static string CredentialBlobUriFormat = "https://{0}.blob.core.windows.net";
-        //private static string CredentialImportFormat = "Import-AzurePublishSettingsFile '{0}'";
         
         private static string publishSettingsFile = null;
         private static string defaultSubscriptionName = null;
@@ -42,6 +43,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         private static string defaultStorageName = null;
         private static string currentTestEnvironment = null;
         private static CloudBlobContainer blobContainer;
+        private const string VhdFilesContainerName = "vhdfiles";
+        private const string toolsContainerName = "tools";
 
         private static Dictionary<string, string> environment = new Dictionary<string, string>();
         public static Dictionary<string, string> PowerShellVariables { get; private set; }
@@ -59,7 +62,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             Assert.IsTrue(environment.ContainsKey(StorageAccountKeyVariable),
                 string.Format("You must define a storage account key for credential download using environment variable {0}", StorageAccountKeyVariable));
             string storageAccountKey = environment[StorageAccountKeyVariable];
+
             DownloadTestCredentials(currentTestEnvironment, downloadDirectoryPath, 
+                string.Format(CredentialBlobUriFormat, storageAccount),
+                storageAccount, storageAccountKey);
+
+            DownloadTestVhdsAndPackages(currentTestEnvironment, downloadDirectoryPath,
                 string.Format(CredentialBlobUriFormat, storageAccount),
                 storageAccount, storageAccountKey);
 
@@ -90,6 +98,33 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 ICloudBlob blob = blobClient.GetBlobReferenceFromServer(blobItem.Uri);
                 Console.WriteLine("Downloading file {0} from blob Uri {1}", blob.Name, blob.Uri);
                 FileStream blobStream = new FileStream(Path.Combine(downloadDirectoryPath, blob.Name), FileMode.Create);
+                blob.DownloadToStream(blobStream);
+                blobStream.Flush();
+                blobStream.Close();
+            }
+        }
+
+        private static void DownloadTestVhdsAndPackages(string testEnvironment, string downloadDirectoryPath, string blobUri, string storageAccount, string storageKey)
+        {
+            StorageCredentials credentials = new StorageCredentials(storageAccount, storageKey);
+            CloudBlobClient blobClient = new CloudBlobClient(new Uri(blobUri), credentials);
+            blobContainer = blobClient.GetContainerReference(VhdFilesContainerName);
+            foreach (IListBlobItem blobItem in blobContainer.ListBlobs())
+            {
+                ICloudBlob blob = blobClient.GetBlobReferenceFromServer(blobItem.Uri);
+                Console.WriteLine("Downloading file {0} from blob Uri {1}", blob.Name, blob.Uri);
+                FileStream blobStream = new FileStream(Path.Combine(downloadDirectoryPath, blob.Name), FileMode.Create);
+                blob.DownloadToStream(blobStream);
+                blobStream.Flush();
+                blobStream.Close();
+            }
+
+            blobContainer = blobClient.GetContainerReference(toolsContainerName);
+            foreach (IListBlobItem blobItem in blobContainer.ListBlobs())
+            {
+                ICloudBlob blob = blobClient.GetBlobReferenceFromServer(blobItem.Uri);
+                Console.WriteLine("Downloading file {0} from blob Uri {1}", blob.Name, blob.Uri);
+                FileStream blobStream = new FileStream(Path.Combine(downloadDirectoryPath, @"..\..\", blob.Name), FileMode.Create);
                 blob.DownloadToStream(blobStream);
                 blobStream.Flush();
                 blobStream.Close();
@@ -218,7 +253,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             }
         }
 
-        public static void CopyTestData(string srcContainer, string srcBlob, string destContainer, string destBlob)
+        public static void CopyTestData(string srcContainer, string srcBlob, string destContainer, string destBlob = null)
         {
             ServiceManagementCmdletTestHelper vmPowershellCmdlets = new ServiceManagementCmdletTestHelper();
             Process currentProcess = Process.GetCurrentProcess();
@@ -230,18 +265,30 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             // Create a container
             try
             {
-                vmPowershellCmdlets.RunPSScript("Get-AzureStorageContainer -Name " + destContainer);
+                vmPowershellCmdlets.RunPSScript(String.Format("{0}-{1} -Name {2}",
+                    VerbsCommon.Get, StorageNouns.Container, destContainer));
             }
             catch
             {
                 // Create a container.
-                vmPowershellCmdlets.RunPSScript("New-AzureStorageContainer -Name " + destContainer);
+                vmPowershellCmdlets.RunPSScript(String.Format("{0}-{1} -Name {2}",
+                    VerbsCommon.New, StorageNouns.Container, destContainer));
             }
 
             // Make SAS Uri for the source blob.
             string srcSasUri = Utilities.GenerateSasUri(CredentialHelper.CredentialBlobUriFormat, storageAccount, storageAccountKey, srcContainer, srcBlob);
 
-            vmPowershellCmdlets.RunPSScript(string.Format("Start-AzureStorageBlobCopy -SrcUri \"{0}\" -DestContainer {1} -DestBlob {2} -Force", srcSasUri, destContainer, destBlob));
+            if (string.IsNullOrEmpty(destBlob))
+            {
+                vmPowershellCmdlets.RunPSScript(string.Format("{0}-{1} -SrcContainer {2} -SrcBlob {3} -DestContainer {4} -Force",
+                    VerbsLifecycle.Start, StorageNouns.CopyBlob, srcContainer, srcBlob, destContainer));
+                destBlob = srcBlob;
+            }
+            else
+            {
+                vmPowershellCmdlets.RunPSScript(string.Format("{0}-{1} -SrcUri \"{2}\" -DestContainer {3} -DestBlob {4} -Force",
+                    VerbsLifecycle.Start, StorageNouns.CopyBlob, srcSasUri, destContainer, destBlob));
+            }
 
             for (int i = 0; i < 60; i++)
             {

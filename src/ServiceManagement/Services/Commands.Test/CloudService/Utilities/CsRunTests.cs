@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
@@ -23,9 +24,10 @@ using Moq;
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
 {
     
-    public class CsRunTests : TestBase
+    public class CsRunTests : SMTestBase
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RoleInfoIsExtractedFromEmulatorOutput()
         {
             var dummyEmulatorOutput = "Exported interface at http://127.0.0.1:81/.\r\nExported interface at tcp://127.0.0.1:8080/.";
@@ -35,12 +37,14 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void StartEmulatorUsingExpressMode_VerifyCommandLine()
         {
             StartEmulatorCommonTest(ComputeEmulatorMode.Express);
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void StartEmulatorUsingFullMode_VerifyCommandLine()
         {
             StartEmulatorCommonTest(ComputeEmulatorMode.Full);

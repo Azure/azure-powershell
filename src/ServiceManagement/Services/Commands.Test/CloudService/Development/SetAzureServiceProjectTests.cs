@@ -21,11 +21,12 @@ using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests.Cmdlet
 {
-    public class SetAzureServiceProjectTests : TestBase
+    public class SetAzureServiceProjectTests : SMTestBase
     {
         private MockCommandRuntime mockCommandRuntime;
 
@@ -42,6 +43,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests.Cm
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureServiceProjectTestsLocationValid()
         {
             string[] locations = { "West US", "East US", "East Asia", "North Europe" };
@@ -69,6 +71,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests.Cm
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureServiceProjectTestsLocationEmptyFail()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -84,6 +87,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests.Cm
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureServiceProjectTestsUnknownLocation()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -106,6 +110,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests.Cm
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureServiceProjectTestsStorageTests()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -129,6 +134,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests.Cm
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureServiceProjectTestsStorageTestsEmptyFail()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -144,6 +150,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests.Cm
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureServiceProjectTestsSlotTests()
         {
             string[] slots = { DeploymentSlotType.Production, DeploymentSlotType.Staging };
@@ -168,6 +175,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests.Cm
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureServiceProjectTestsSlotTestsEmptyFail()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -183,6 +191,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests.Cm
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureServiceProjectTestsSlotTestsInvalidFail()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))

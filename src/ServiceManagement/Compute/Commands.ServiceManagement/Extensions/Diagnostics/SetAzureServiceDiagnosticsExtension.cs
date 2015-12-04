@@ -96,6 +96,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             set;
         }
 
+        [Parameter(Position = 7, ValueFromPipelineByPropertyName = true, ParameterSetName = SetExtensionParameterSetName, HelpMessage = "WAD version")]
+        [Parameter(Position = 7, ValueFromPipelineByPropertyName = true, ParameterSetName = SetExtensionUsingThumbprintParameterSetName, HelpMessage = "WAD version")]
+        public override string Version
+        {
+            get;
+            set;
+        }
+
         protected override void ValidateParameters()
         {
             base.ValidateParameters();
@@ -112,6 +120,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             ValidateParameters();
             ExtensionConfigurationInput context = new ExtensionConfigurationInput
             {
+                Version = Version,
                 ProviderNameSpace = ProviderNamespace,
                 Type = ExtensionName,
                 CertificateThumbprint = CertificateThumbprint,
@@ -121,7 +130,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
                 PrivateConfiguration = PrivateConfiguration,
                 Roles = new ExtensionRoleList(Role != null && Role.Any() ? Role.Select(r => new ExtensionRole(r)) : Enumerable.Repeat(new ExtensionRole(), 1))
             };
-            var extConfig = ExtensionManager.InstallExtension(context, Slot, Deployment.ExtensionConfiguration);
+
+            var secondSlotDeployment = GetDeployment(this.Slot == DeploymentSlotType.Production ? DeploymentSlotType.Staging : DeploymentSlotType.Production);
+
+            var extConfig = ExtensionManager.InstallExtension(context, Slot, Deployment, secondSlotDeployment);
             ChangeDeployment(extConfig);
         }
 

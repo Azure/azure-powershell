@@ -16,6 +16,7 @@ using System;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
 {
+    using Microsoft.WindowsAzure.Management.Sql.Models;
     using DatabaseCopyModel = Model.DatabaseCopy;
 
     /// <summary>

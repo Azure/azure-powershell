@@ -13,25 +13,52 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 {
-    [Cmdlet(VerbsCommon.Remove, VirtualMachineDscExtensionCmdletNoun),
+    /// <summary>
+    /// This cmdlet is used to remove DSC extension handler from a given virtual machine(s)
+    /// in a cloud service. 
+    /// 
+    /// Note: To get detailed output -Verbose flag need to be specified. Output of this cmdlet needs to be piped to Update-AzureVM cmdlet 
+    /// 
+    /// Example Usage:
+    /// 
+    /// $vm = Get-AzureVM -ServiceName service -Name VM-name
+    /// Remove-AzureVMDscExtension -VM $vm | Update-AzureVM -Verbose
+    /// </summary>
+    [Cmdlet(
+        VerbsCommon.Remove,
+        DscExtensionCmdletCommonBase.VirtualMachineDscExtensionCmdletNoun,
+        SupportsShouldProcess = true),
     OutputType(typeof(IPersistentVM))]
-    public class RemoveAzureVMDscExtensionCommand : VirtualMachineDscExtensionCmdletBase
+    public class RemoveAzureVMDscExtensionCommand : VirtualMachineExtensionCmdletBase
     {
-
-        internal void ExecuteCommand()
-        {
-            RemovePredicateExtensions();
-            WriteObject(VM);
-        }
-
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
             ExecuteCommand();
+        }
+        private void ExecuteCommand()
+        {
+            extensionName = DscExtensionCmdletConstants.ExtensionPublishedName;
+            publisherName = DscExtensionCmdletConstants.ExtensionPublishedNamespace;
+
+            //this parameter needs to be true for remove to work
+            Uninstall = true;
+            Version = DscExtensionCmdletCommonBase.DefaultExtensionVersion;
+
+            if (ShouldProcess(Resources.DscExtensionRemovalConfirmation,
+                Resources.DscExtensionRemovalCaption))
+            {
+                RemovePredicateExtensions();
+                AddResourceExtension();
+                WriteObject(VM);
+            }
         }
     }
 }

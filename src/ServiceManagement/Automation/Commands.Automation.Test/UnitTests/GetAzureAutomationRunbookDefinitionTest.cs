@@ -23,7 +23,7 @@ using Moq;
 namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
 {
     [TestClass]
-    public class GetAzureAutomationRunbookDefinitionTest : TestBase
+    public class GetAzureAutomationRunbookDefinitionTest : SMTestBase
     {
         private Mock<IAutomationClient> mockAutomationClient;
 
@@ -41,43 +41,6 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
                                   AutomationClient = this.mockAutomationClient.Object,
                                   CommandRuntime = this.mockCommandRuntime
                               };
-        }
-
-        [TestMethod]
-        public void GetAzureAutomationRunbookDefinitionByRunbookIdWithoutSlotSuccessfull()
-        {
-            // Setup
-            string accountName = "automation";
-            var runbookId = new Guid();
-
-            this.mockAutomationClient.Setup(f => f.ListRunbookDefinitionsByRunbookId(accountName, runbookId, null));
-
-            // Test
-            this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.Id = runbookId;
-            this.cmdlet.ExecuteCmdlet();
-
-            // Assert
-            this.mockAutomationClient.Verify(f => f.ListRunbookDefinitionsByRunbookId(accountName, runbookId, null), Times.Once());
-        }
-
-        [TestMethod]
-        public void GetAzureAutomationRunbookDefinitionByRunbookIdSlotDraftSuccessfull()
-        {
-            // Setup
-            string accountName = "automation";
-            var runbookId = new Guid();
-
-            this.mockAutomationClient.Setup(f => f.ListRunbookDefinitionsByRunbookId(accountName, runbookId, true));
-
-            // Test
-            this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.Id = runbookId;
-            this.cmdlet.Slot = "Draft";
-            this.cmdlet.ExecuteCmdlet();
-
-            // Assert
-            this.mockAutomationClient.Verify(f => f.ListRunbookDefinitionsByRunbookId(accountName, runbookId, true), Times.Once());
         }
 
         [TestMethod]
@@ -115,25 +78,6 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
 
             // Assert
             this.mockAutomationClient.Verify(f => f.ListRunbookDefinitionsByRunbookName(accountName, runbookName, false), Times.Once());
-        }
-
-        [TestMethod]
-        public void GetAzureAutomationRunbookDefinitionByRunbookVersionIdWithoutSlotSuccessfull()
-        {
-            // Setup
-            string accountName = "automation";
-            var runbookVersionId = new Guid();
-
-            this.mockAutomationClient.Setup(
-                f => f.ListRunbookDefinitionsByRunbookVersionId(accountName, runbookVersionId, null));
-
-            // Test
-            this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.VersionId = runbookVersionId;
-            this.cmdlet.ExecuteCmdlet();
-
-            // Assert
-            this.mockAutomationClient.Verify(f => f.ListRunbookDefinitionsByRunbookVersionId(accountName, runbookVersionId, null), Times.Once());
         }
     }
 }

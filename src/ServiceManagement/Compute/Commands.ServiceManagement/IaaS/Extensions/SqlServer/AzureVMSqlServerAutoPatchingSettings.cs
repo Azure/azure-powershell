@@ -19,9 +19,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
     /// </summary>
     public class AutoPatchingSettings
     {
-        private const string Important = "important";
-        private const string Optional = "optional";
-
         /// <summary>
         /// Enable / Disable auto patching
         /// </summary>
@@ -36,53 +33,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         /// Maintainance Windows Start hour ( 0 to 23 ) 
         /// </summary>
         public int MaintenanceWindowStartingHour { get; set; }
-        
+
         /// <summary>
         /// Maintainance window duration in minutes
         /// </summary>
         public int MaintenanceWindowDuration { get; set; }
-        
-        /// <summary>
-        /// pathc category returned as string
-        /// </summary>
-        public string PatchCategory 
-        {
-            get
-            {
-                return this.patchCategory.ToString("G");
-            }
-        }
-
-        private AzureVMSqlServerAutoPatchingPatchCategoryEnum patchCategory = AzureVMSqlServerAutoPatchingPatchCategoryEnum.Unknown;
-
-        public void UpdatePatchingCategory(AzureVMSqlServerAutoPatchingPatchCategoryEnum category)
-        {
-            this.patchCategory = category;
-        }
 
         /// <summary>
-        /// Update patching category enum
+        /// Patch category returned as string
         /// </summary>
-        /// <param name="category"></param>
-        public void UpdatePatchingCategory(string category)
-        {
-            if (!string.IsNullOrEmpty(category))
-            {
-                switch (category.ToLower())
-                {
-                    case Important:
-                        this.patchCategory = AzureVMSqlServerAutoPatchingPatchCategoryEnum.Important;
-                        break;
-
-                    case Optional:
-                        this.patchCategory = AzureVMSqlServerAutoPatchingPatchCategoryEnum.Optional;
-                        break;
-
-                    default:
-                        this.patchCategory = AzureVMSqlServerAutoPatchingPatchCategoryEnum.Unknown;
-                        break;
-                }
-            }
-        }
+        public string PatchCategory { get; set; }
     }
 }

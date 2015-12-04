@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.Common.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightClusters.BaseInterfaces;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Simulators
 {
     internal class AzureHDInsightSubscriptionResolverSimulatorFactory : IAzureHDInsightSubscriptionResolverFactory
     {
-        public IAzureHDInsightSubscriptionResolver Create(AzureProfile profile)
+        public IAzureHDInsightSubscriptionResolver Create(AzureSMProfile profile)
         {
             return new AzureHDInsightSubscriptionResolverSimulator();
         }
