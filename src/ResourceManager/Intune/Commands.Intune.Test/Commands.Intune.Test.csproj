@@ -152,6 +152,7 @@
     <Compile Include="UnitTests\Groups\GetIntuneiOSMAMPolicyGroupCmdletTests.cs" />
     <Compile Include="UnitTests\Groups\RemoveIntuneAndroidMAMPolicyGroupCmdletTests.cs" />
     <Compile Include="UnitTests\Groups\RemoveIntuneiOSMAMPolicyGroupCmdletTests.cs" />
+    <Compile Include="UnitTests\Operations\GetIntuneOperationResultsCmdletTests.cs" />
     <Compile Include="UnitTests\Policy\GetIntuneiOSMAMPolicyCmdletTests.cs" />
     <Compile Include="UnitTests\Policy\SetIntuneAndroidMAMPolicyCmdletTests.cs" />
     <Compile Include="UnitTests\Policy\SetIntuneiOSMAMPolicyCmdletTests.cs" />
