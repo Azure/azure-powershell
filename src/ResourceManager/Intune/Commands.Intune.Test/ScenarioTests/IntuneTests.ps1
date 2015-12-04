@@ -34,7 +34,7 @@ function Test-E2EAndroidMAMPolicy
 		}
 
 		[Microsoft.Azure.Commands.Intune.IntuneBaseCmdlet]::AndroidPolicyIdsQueue.Enqueue("fa1a4d3b-2cca-406b-8956-6b6b32377641")
-		New-AzureRmIntuneAndroidMAMPolicy -FriendlyName $policyName -Force
+		New-AzureRmIntuneAndroidMAMPolicy -FriendlyName $policyName
 
 		$policies = Get-AzureRmIntuneAndroidMAMPolicy
 		$policy = $policies[0]
@@ -45,9 +45,9 @@ function Test-E2EAndroidMAMPolicy
 		$result = Get-AzureRmIntuneAndroidMAMApp
 	
 		# Assert
-		Assert-True { $result.Count -ge 10 }
+		Assert-True { $result.Count -ge 1}
 
-		Add-AzureRmIntuneAndroidMAMPolicyApp -Name $policy.Name -AppName $result[0].Name -Force
+		Add-AzureRmIntuneAndroidMAMPolicyApp -Name $policy.Name -AppName $result[0].Name
 		
 		$targettedApps = Get-AzureRmIntuneAndroidMAMPolicyApp -Name $policy.Name
 

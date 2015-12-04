@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Intune.Test.ScenarioTests
             using (MockContext context = MockContext.Start(callingClassType, mockName))
             {
                 SetupManagementClients(context);
-                helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                //helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
                 var callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
@@ -123,7 +123,9 @@ namespace Microsoft.Azure.Commands.Intune.Test.ScenarioTests
 
         internal static void InitializeEnvironment()
         {
-            Environment.SetEnvironmentVariable("AZURE_TEST_MODE", "Playback");
+            //Environment.SetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION", "SubscriptionId=None;Environment=Prod;UserId=admin@IntuneAzureCLIMSUA06.onmicrosoft.com;Password=XXXXXX");
+            //AZURE_TEST_MODE = None, Record, Playback
+            //Environment.SetEnvironmentVariable("AZURE_TEST_MODE", "Playback");
         }
     }
 }

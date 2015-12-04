@@ -1,25 +1,25 @@
 {
   "Entries": [
     {
-      "RequestUri": "/providers/Microsoft.Intune/locations/hostName?api-version=2015-01-11-alpha",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuSW50dW5lL2xvY2F0aW9ucy9ob3N0TmFtZT9hcGktdmVyc2lvbj0yMDE1LTAxLTExLWFscGhh",
+      "RequestUri": "/providers/Microsoft.Intune/locations/hostName?api-version=2015-01-14-preview",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuSW50dW5lL2xvY2F0aW9ucy9ob3N0TmFtZT9hcGktdmVyc2lvbj0yMDE1LTAxLTE0LXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "667c7146-d5f2-438e-8cc8-29117a573f62"
+          "db0a0a98-6348-4b28-aa79-2d68aa212dd7"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Intune.IntuneResourceManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Intune.IntuneResourceManagementClient/0.1.3.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Intune/locations/hostName\",\r\n  \"type\": \"Microsoft.Intune/locations\",\r\n  \"name\": \"hostname\",\r\n  \"properties\": {\r\n    \"hostName\": \"akdirtest\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Intune/locations/hostName\",\r\n  \"type\": \"Microsoft.Intune/locations\",\r\n  \"name\": \"hostname\",\r\n  \"properties\": {\r\n    \"hostName\": \"fef.msua06\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "147"
+          "148"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -34,13 +34,13 @@
           "14999"
         ],
         "x-ms-request-id": [
-          "b29a2b4a-745e-4597-9758-9ee9a8f385f6"
+          "dbfb8c45-8b4e-45d7-80a7-5697b720991a"
         ],
         "x-ms-correlation-request-id": [
-          "c37c2a81-f9af-4fe1-ab2c-4f5256ac2d86"
+          "d60c0411-8a95-4202-a58b-2af0607670b0"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20151118T213926Z:c37c2a81-f9af-4fe1-ab2c-4f5256ac2d86"
+          "WESTUS:20151204T005952Z:d60c0411-8a95-4202-a58b-2af0607670b0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -49,7 +49,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 18 Nov 2015 21:39:26 GMT"
+          "Fri, 04 Dec 2015 00:59:51 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -58,19 +58,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/providers/Microsoft.Intune/locations/akdirtest/androidPolicies?api-version=2015-01-11-alpha",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuSW50dW5lL2xvY2F0aW9ucy9ha2RpcnRlc3QvYW5kcm9pZFBvbGljaWVzP2FwaS12ZXJzaW9uPTIwMTUtMDEtMTEtYWxwaGE=",
+      "RequestUri": "/providers/Microsoft.Intune/locations/fef.msua06/androidPolicies?api-version=2015-01-14-preview",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuSW50dW5lL2xvY2F0aW9ucy9mZWYubXN1YTA2L2FuZHJvaWRQb2xpY2llcz9hcGktdmVyc2lvbj0yMDE1LTAxLTE0LXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "de0fd992-f1ab-4973-9b21-e7274ecdc73b"
+          "b08b1e0d-1a82-46b7-973b-e077f076d845"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Intune.IntuneResourceManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Intune.IntuneResourceManagementClient/0.1.3.0"
         ]
       },
       "ResponseBody": "{\r\n  \"value\": []\r\n}",
@@ -79,7 +79,7 @@
           "12"
         ],
         "Content-Type": [
-          "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
+          "application/json;odata=minimalmetadata;streaming=true;charset=utf-8,application/json;odata=minimalmetadata;streaming=true;charset=utf-8"
         ],
         "Expires": [
           "-1"
@@ -91,22 +91,22 @@
           "14998"
         ],
         "Elapsed-Time-Milliseconds": [
-          "65"
+          "250"
         ],
         "service-name": [
           "AdminExperienceService"
         ],
         "client-request-id": [
-          "de0fd992-f1ab-4973-9b21-e7274ecdc73b"
+          "b08b1e0d-1a82-46b7-973b-e077f076d845"
         ],
         "unique-request-id": [
-          "194d5a56-8cf3-4d5b-817e-77af1bd50c16"
+          "5fc89e46-9ed3-4c7b-87a6-36adf4724695"
         ],
         "x-ms-request-id": [
-          "194d5a56-8cf3-4d5b-817e-77af1bd50c16"
+          "5fc89e46-9ed3-4c7b-87a6-36adf4724695"
         ],
         "related-activity-id": [
-          "194d5a56-8cf3-4d5b-817e-77af1bd50c16"
+          "5fc89e46-9ed3-4c7b-87a6-36adf4724695"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -122,40 +122,40 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-correlation-request-id": [
-          "b7b2bdc3-339e-4ad7-850b-25938eb461de"
+          "584314ab-29fc-43c3-8a4c-d7cd13adc376"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20151118T213927Z:b7b2bdc3-339e-4ad7-850b-25938eb461de"
+          "WESTUS:20151204T005952Z:584314ab-29fc-43c3-8a4c-d7cd13adc376"
         ],
         "Date": [
-          "Wed, 18 Nov 2015 21:39:26 GMT"
+          "Fri, 04 Dec 2015 00:59:52 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/providers/Microsoft.Intune/locations/akdirtest/androidPolicies?api-version=2015-01-11-alpha",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuSW50dW5lL2xvY2F0aW9ucy9ha2RpcnRlc3QvYW5kcm9pZFBvbGljaWVzP2FwaS12ZXJzaW9uPTIwMTUtMDEtMTEtYWxwaGE=",
+      "RequestUri": "/providers/Microsoft.Intune/locations/fef.msua06/androidPolicies?api-version=2015-01-14-preview",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuSW50dW5lL2xvY2F0aW9ucy9mZWYubXN1YTA2L2FuZHJvaWRQb2xpY2llcz9hcGktdmVyc2lvbj0yMDE1LTAxLTE0LXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d1780256-5de5-4e31-804f-dad12ac6634a"
+          "33626a21-4329-4694-8d4e-ca52c62a6d1d"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Intune.IntuneResourceManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Intune.IntuneResourceManagementClient/0.1.3.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/providers/Microsoft.Intune/locations/akdirtest/androidPolicies/fa1a4d3b-2cca-406b-8956-6b6b32377641\",\r\n      \"name\": \"fa1a4d3b-2cca-406b-8956-6b6b32377641\",\r\n      \"type\": \"Microsoft.Intune/locations/androidPolicies\",\r\n      \"properties\": {\r\n        \"screenCapture\": \"allow\",\r\n        \"fileEncryption\": \"required\",\r\n        \"friendlyName\": \"policy1\",\r\n        \"description\": \"New Android policy\",\r\n        \"accessRecheckOfflineTimeout\": \"P0DT12H00M\",\r\n        \"accessRecheckOnlineTimeout\": \"P0DT00H30M\",\r\n        \"appSharingFromLevel\": \"none\",\r\n        \"appSharingToLevel\": \"none\",\r\n        \"authentication\": \"required\",\r\n        \"clipboardSharingLevel\": \"blocked\",\r\n        \"dataBackup\": \"allow\",\r\n        \"deviceCompliance\": \"enable\",\r\n        \"managedBrowser\": \"required\",\r\n        \"fileSharingSaveAs\": \"allow\",\r\n        \"offlineWipeTimeout\": \"P1D\",\r\n        \"pin\": \"required\",\r\n        \"pinNumRetry\": 15,\r\n        \"numOfApps\": 0,\r\n        \"groupStatus\": \"notTargeted\",\r\n        \"lastModifiedTime\": \"2015-11-18T21:39:27.8597841\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/providers/Microsoft.Intune/locations/fef.msua06/androidPolicies/fa1a4d3b-2cca-406b-8956-6b6b32377641\",\r\n      \"name\": \"fa1a4d3b-2cca-406b-8956-6b6b32377641\",\r\n      \"type\": \"Microsoft.Intune/locations/androidPolicies\",\r\n      \"properties\": {\r\n        \"screenCapture\": \"allow\",\r\n        \"fileEncryption\": \"required\",\r\n        \"friendlyName\": \"policy1\",\r\n        \"description\": \"New Android policy\",\r\n        \"accessRecheckOfflineTimeout\": \"P0DT12H00M\",\r\n        \"accessRecheckOnlineTimeout\": \"P0DT00H30M\",\r\n        \"appSharingFromLevel\": \"none\",\r\n        \"appSharingToLevel\": \"none\",\r\n        \"authentication\": \"required\",\r\n        \"clipboardSharingLevel\": \"blocked\",\r\n        \"dataBackup\": \"allow\",\r\n        \"deviceCompliance\": \"enable\",\r\n        \"managedBrowser\": \"required\",\r\n        \"fileSharingSaveAs\": \"allow\",\r\n        \"offlineWipeTimeout\": \"P1D\",\r\n        \"pin\": \"required\",\r\n        \"pinNumRetry\": 15,\r\n        \"numOfApps\": 0,\r\n        \"groupStatus\": \"notTargeted\",\r\n        \"lastModifiedTime\": \"2015-12-04T00:59:53.1357876\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "806"
+          "807"
         ],
         "Content-Type": [
-          "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
+          "application/json;odata=minimalmetadata;streaming=true;charset=utf-8,application/json;odata=minimalmetadata;streaming=true;charset=utf-8"
         ],
         "Expires": [
           "-1"
@@ -167,22 +167,22 @@
           "14997"
         ],
         "Elapsed-Time-Milliseconds": [
-          "37"
+          "159"
         ],
         "service-name": [
           "AdminExperienceService"
         ],
         "client-request-id": [
-          "d1780256-5de5-4e31-804f-dad12ac6634a"
+          "33626a21-4329-4694-8d4e-ca52c62a6d1d"
         ],
         "unique-request-id": [
-          "78862e21-dd33-4fd5-b83c-d40805327350"
+          "564950df-767a-4117-9b8e-8d8d8c56a029"
         ],
         "x-ms-request-id": [
-          "78862e21-dd33-4fd5-b83c-d40805327350"
+          "564950df-767a-4117-9b8e-8d8d8c56a029"
         ],
         "related-activity-id": [
-          "78862e21-dd33-4fd5-b83c-d40805327350"
+          "564950df-767a-4117-9b8e-8d8d8c56a029"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -198,20 +198,20 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-correlation-request-id": [
-          "ca1b21b6-d284-4b32-8de3-dd46de1fa63d"
+          "9177d2cb-4073-4b28-b4fb-f04bb63c37a5"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20151118T213928Z:ca1b21b6-d284-4b32-8de3-dd46de1fa63d"
+          "WESTUS:20151204T005954Z:9177d2cb-4073-4b28-b4fb-f04bb63c37a5"
         ],
         "Date": [
-          "Wed, 18 Nov 2015 21:39:27 GMT"
+          "Fri, 04 Dec 2015 00:59:53 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/providers/Microsoft.Intune/locations/akdirtest/androidPolicies/fa1a4d3b-2cca-406b-8956-6b6b32377641?api-version=2015-01-11-alpha",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuSW50dW5lL2xvY2F0aW9ucy9ha2RpcnRlc3QvYW5kcm9pZFBvbGljaWVzL2ZhMWE0ZDNiLTJjY2EtNDA2Yi04OTU2LTZiNmIzMjM3NzY0MT9hcGktdmVyc2lvbj0yMDE1LTAxLTExLWFscGhh",
+      "RequestUri": "/providers/Microsoft.Intune/locations/fef.msua06/androidPolicies/fa1a4d3b-2cca-406b-8956-6b6b32377641?api-version=2015-01-14-preview",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuSW50dW5lL2xvY2F0aW9ucy9mZWYubXN1YTA2L2FuZHJvaWRQb2xpY2llcy9mYTFhNGQzYi0yY2NhLTQwNmItODk1Ni02YjZiMzIzNzc2NDE/YXBpLXZlcnNpb249MjAxNS0wMS0xNC1wcmV2aWV3",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"screenCapture\": \"allow\",\r\n    \"fileEncryption\": \"required\",\r\n    \"friendlyName\": \"policy1\",\r\n    \"description\": \"New Android policy\",\r\n    \"appSharingFromLevel\": \"none\",\r\n    \"appSharingToLevel\": \"none\",\r\n    \"authentication\": \"required\",\r\n    \"clipboardSharingLevel\": \"blocked\",\r\n    \"dataBackup\": \"allow\",\r\n    \"fileSharingSaveAs\": \"allow\",\r\n    \"pin\": \"required\",\r\n    \"pinNumRetry\": 15,\r\n    \"deviceCompliance\": \"enable\",\r\n    \"managedBrowser\": \"required\",\r\n    \"accessRecheckOfflineTimeout\": \"PT12H\",\r\n    \"accessRecheckOnlineTimeout\": \"PT30M\",\r\n    \"offlineWipeTimeout\": \"P1D\"\r\n  }\r\n}",
       "RequestHeaders": {
@@ -222,28 +222,28 @@
           "617"
         ],
         "x-ms-client-request-id": [
-          "5b2bb017-ff61-4dad-b27c-40786c7eefa5"
+          "a26d8616-251e-41ae-86e9-63248debcfec"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Intune.IntuneResourceManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Intune.IntuneResourceManagementClient/0.1.3.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Intune/locations/akdirtest/androidPolicies/fa1a4d3b-2cca-406b-8956-6b6b32377641\",\r\n  \"name\": \"fa1a4d3b-2cca-406b-8956-6b6b32377641\",\r\n  \"type\": \"Microsoft.Intune/locations/androidPolicies\",\r\n  \"properties\": {\r\n    \"screenCapture\": \"allow\",\r\n    \"fileEncryption\": \"required\",\r\n    \"friendlyName\": \"policy1\",\r\n    \"description\": \"New Android policy\",\r\n    \"accessRecheckOfflineTimeout\": \"P0DT12H00M\",\r\n    \"accessRecheckOnlineTimeout\": \"P0DT00H30M\",\r\n    \"appSharingFromLevel\": \"none\",\r\n    \"appSharingToLevel\": \"none\",\r\n    \"authentication\": \"required\",\r\n    \"clipboardSharingLevel\": \"blocked\",\r\n    \"dataBackup\": \"allow\",\r\n    \"deviceCompliance\": \"enable\",\r\n    \"managedBrowser\": \"required\",\r\n    \"fileSharingSaveAs\": \"allow\",\r\n    \"offlineWipeTimeout\": \"P1D\",\r\n    \"pin\": \"required\",\r\n    \"pinNumRetry\": 15,\r\n    \"numOfApps\": 0,\r\n    \"groupStatus\": \"notTargeted\",\r\n    \"lastModifiedTime\": \"2015-11-18T21:39:27.8597841Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Intune/locations/fef.msua06/androidPolicies/fa1a4d3b-2cca-406b-8956-6b6b32377641\",\r\n  \"name\": \"fa1a4d3b-2cca-406b-8956-6b6b32377641\",\r\n  \"type\": \"Microsoft.Intune/locations/androidPolicies\",\r\n  \"properties\": {\r\n    \"screenCapture\": \"allow\",\r\n    \"fileEncryption\": \"required\",\r\n    \"friendlyName\": \"policy1\",\r\n    \"description\": \"New Android policy\",\r\n    \"accessRecheckOfflineTimeout\": \"P0DT12H00M\",\r\n    \"accessRecheckOnlineTimeout\": \"P0DT00H30M\",\r\n    \"appSharingFromLevel\": \"none\",\r\n    \"appSharingToLevel\": \"none\",\r\n    \"authentication\": \"required\",\r\n    \"clipboardSharingLevel\": \"blocked\",\r\n    \"dataBackup\": \"allow\",\r\n    \"deviceCompliance\": \"enable\",\r\n    \"managedBrowser\": \"required\",\r\n    \"fileSharingSaveAs\": \"allow\",\r\n    \"offlineWipeTimeout\": \"P1D\",\r\n    \"pin\": \"required\",\r\n    \"pinNumRetry\": 15,\r\n    \"numOfApps\": 0,\r\n    \"groupStatus\": \"notTargeted\",\r\n    \"lastModifiedTime\": \"2015-12-04T00:59:53.1357876Z\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "795"
+          "796"
         ],
         "Content-Type": [
-          "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
+          "application/json;odata=minimalmetadata;streaming=true;charset=utf-8,application/json;odata=minimalmetadata;streaming=true;charset=utf-8"
         ],
         "Expires": [
           "-1"
         ],
         "Last-Modified": [
-          "Wed, 18 Nov 2015 21:39:27 GMT"
+          "Fri, 04 Dec 2015 00:59:53 GMT"
         ],
         "Pragma": [
           "no-cache"
@@ -255,22 +255,22 @@
           "return-content"
         ],
         "Elapsed-Time-Milliseconds": [
-          "47"
+          "279"
         ],
         "service-name": [
           "AdminExperienceService"
         ],
         "client-request-id": [
-          "5b2bb017-ff61-4dad-b27c-40786c7eefa5"
+          "a26d8616-251e-41ae-86e9-63248debcfec"
         ],
         "unique-request-id": [
-          "a984a8c9-7b59-4d59-9979-206f8a9de3f1"
+          "12f0b89a-56a6-403f-9a0d-bb612e888ab1"
         ],
         "x-ms-request-id": [
-          "a984a8c9-7b59-4d59-9979-206f8a9de3f1"
+          "12f0b89a-56a6-403f-9a0d-bb612e888ab1"
         ],
         "related-activity-id": [
-          "a984a8c9-7b59-4d59-9979-206f8a9de3f1"
+          "12f0b89a-56a6-403f-9a0d-bb612e888ab1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -282,47 +282,47 @@
           "no-cache"
         ],
         "ETag": [
-          "\"b9d62cf0-f7a2-48f7-b110-746fd919b0b2\""
+          "\"97b10819-5bd6-4a42-a637-8e5206dd30d1\""
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-correlation-request-id": [
-          "4fc03f5f-6a70-4120-a1f9-58492334fddd"
+          "bbc7edec-5805-4193-9f1b-b0202e46de65"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20151118T213927Z:4fc03f5f-6a70-4120-a1f9-58492334fddd"
+          "WESTUS:20151204T005953Z:bbc7edec-5805-4193-9f1b-b0202e46de65"
         ],
         "Date": [
-          "Wed, 18 Nov 2015 21:39:27 GMT"
+          "Fri, 04 Dec 2015 00:59:52 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/providers/Microsoft.Intune/locations/akdirtest/apps?api-version=2015-01-11-alpha&$filter=platform%20eq%20'android'",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuSW50dW5lL2xvY2F0aW9ucy9ha2RpcnRlc3QvYXBwcz9hcGktdmVyc2lvbj0yMDE1LTAxLTExLWFscGhhJiRmaWx0ZXI9cGxhdGZvcm0lMjBlcSUyMCUyN2FuZHJvaWQlMjc=",
+      "RequestUri": "/providers/Microsoft.Intune/locations/fef.msua06/apps?api-version=2015-01-14-preview&$filter=platform%20eq%20'android'",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuSW50dW5lL2xvY2F0aW9ucy9mZWYubXN1YTA2L2FwcHM/YXBpLXZlcnNpb249MjAxNS0wMS0xNC1wcmV2aWV3JiRmaWx0ZXI9cGxhdGZvcm0lMjBlcSUyMCUyN2FuZHJvaWQlMjc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1baa00f9-5c01-46ec-b1cd-3edf44505683"
+          "12365a69-c053-43f1-acea-7107b270f4e0"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Intune.IntuneResourceManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Intune.IntuneResourceManagementClient/0.1.3.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/providers/Microsoft.Intune/locations/akdirtest/apps/com.microsoft.skydrive.Android\",\r\n      \"name\": \"com.microsoft.skydrive.Android\",\r\n      \"type\": \"Microsoft.Intune/locations/apps\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"OneDrive\",\r\n        \"platform\": \"android\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Intune/locations/akdirtest/apps/com.microsoft.skydrivedogfood.Android\",\r\n      \"name\": \"com.microsoft.skydrivedogfood.Android\",\r\n      \"type\": \"Microsoft.Intune/locations/apps\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"OneDrive(Dev)\",\r\n        \"platform\": \"android\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Intune/locations/akdirtest/apps/com.microsoft.office.excel.Android\",\r\n      \"name\": \"com.microsoft.office.excel.Android\",\r\n      \"type\": \"Microsoft.Intune/locations/apps\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"Excel\",\r\n        \"platform\": \"android\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Intune/locations/akdirtest/apps/com.microsoft.office.excel-dogfood.Android\",\r\n      \"name\": \"com.microsoft.office.excel-dogfood.Android\",\r\n      \"type\": \"Microsoft.Intune/locations/apps\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"Excel(Dev)\",\r\n        \"platform\": \"android\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Intune/locations/akdirtest/apps/com.microsoft.office.powerpoint.Android\",\r\n      \"name\": \"com.microsoft.office.powerpoint.Android\",\r\n      \"type\": \"Microsoft.Intune/locations/apps\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"PowerPoint\",\r\n        \"platform\": \"android\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Intune/locations/akdirtest/apps/com.microsoft.office.powerpoint-dogfood.Android\",\r\n      \"name\": \"com.microsoft.office.powerpoint-dogfood.Android\",\r\n      \"type\": \"Microsoft.Intune/locations/apps\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"PowerPoint(Dev)\",\r\n        \"platform\": \"android\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Intune/locations/akdirtest/apps/com.microsoft.office.word.Android\",\r\n      \"name\": \"com.microsoft.office.word.Android\",\r\n      \"type\": \"Microsoft.Intune/locations/apps\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"Word\",\r\n        \"platform\": \"android\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Intune/locations/akdirtest/apps/com.microsoft.office.word-dogfood.Android\",\r\n      \"name\": \"com.microsoft.office.word-dogfood.Android\",\r\n      \"type\": \"Microsoft.Intune/locations/apps\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"Word(Dev)\",\r\n        \"platform\": \"android\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Intune/locations/akdirtest/apps/com.microsoft.onenote.Android\",\r\n      \"name\": \"com.microsoft.onenote.Android\",\r\n      \"type\": \"Microsoft.Intune/locations/apps\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"OneNote\",\r\n        \"platform\": \"android\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Intune/locations/akdirtest/apps/com.microsoft.onenote-dogfood.Android\",\r\n      \"name\": \"com.microsoft.onenote-dogfood.Android\",\r\n      \"type\": \"Microsoft.Intune/locations/apps\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"OneNote(Dev)\",\r\n        \"platform\": \"android\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Intune/locations/akdirtest/apps/com.microsoft.office.outlook.Android\",\r\n      \"name\": \"com.microsoft.office.outlook.Android\",\r\n      \"type\": \"Microsoft.Intune/locations/apps\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"Outlook\",\r\n        \"platform\": \"android\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Intune/locations/akdirtest/apps/com.microsoft.office.outlook.dev.Android\",\r\n      \"name\": \"com.microsoft.office.outlook.dev.Android\",\r\n      \"type\": \"Microsoft.Intune/locations/apps\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"Outlook(Dev)\",\r\n        \"platform\": \"android\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Intune/locations/akdirtest/apps/com.microsft.office.outlook.stg.Android\",\r\n      \"name\": \"com.microsft.office.outlook.stg.Android\",\r\n      \"type\": \"Microsoft.Intune/locations/apps\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"Outlook(Stg)\",\r\n        \"platform\": \"android\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Intune/locations/akdirtest/apps/com.microsft.office.outlook.dawg.Android\",\r\n      \"name\": \"com.microsft.office.outlook.dawg.Android\",\r\n      \"type\": \"Microsoft.Intune/locations/apps\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"Outlook(Dawg)\",\r\n        \"platform\": \"android\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Intune/locations/akdirtest/apps/com.microsoft.intune.mam.imageviewer.Android\",\r\n      \"name\": \"com.microsoft.intune.mam.imageviewer.Android\",\r\n      \"type\": \"Microsoft.Intune/locations/apps\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"Image Viewer\",\r\n        \"platform\": \"android\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Intune/locations/akdirtest/apps/com.microsoft.intune.mam.managedbrowser.Android\",\r\n      \"name\": \"com.microsoft.intune.mam.managedbrowser.Android\",\r\n      \"type\": \"Microsoft.Intune/locations/apps\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"Managed Browser\",\r\n        \"platform\": \"android\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Intune/locations/akdirtest/apps/com.microsoft.intune.mam.pdfviewer.Android\",\r\n      \"name\": \"com.microsoft.intune.mam.pdfviewer.Android\",\r\n      \"type\": \"Microsoft.Intune/locations/apps\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"PDF Viewer\",\r\n        \"platform\": \"android\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Intune/locations/akdirtest/apps/com.microsoft.intune.mam.avplayer.Android\",\r\n      \"name\": \"com.microsoft.intune.mam.avplayer.Android\",\r\n      \"type\": \"Microsoft.Intune/locations/apps\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"AV Player\",\r\n        \"platform\": \"android\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Intune/locations/akdirtest/apps/com.microsoft.mdm.testapp1.Android\",\r\n      \"name\": \"com.microsoft.mdm.testapp1.Android\",\r\n      \"type\": \"Microsoft.Intune/locations/apps\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"MDMTestApp-1\",\r\n        \"platform\": \"android\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Intune/locations/akdirtest/apps/com.microsoft.mdm.testapp2.Android\",\r\n      \"name\": \"com.microsoft.mdm.testapp2.Android\",\r\n      \"type\": \"Microsoft.Intune/locations/apps\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"MDMTestApp-2\",\r\n        \"platform\": \"android\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Intune/locations/akdirtest/apps/com.microsoft.mdm.testapp3.Android\",\r\n      \"name\": \"com.microsoft.mdm.testapp3.Android\",\r\n      \"type\": \"Microsoft.Intune/locations/apps\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"MDMTestApp-3\",\r\n        \"platform\": \"android\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Intune/locations/akdirtest/apps/com.microsoft.mdm.testapp4.Android\",\r\n      \"name\": \"com.microsoft.mdm.testapp4.Android\",\r\n      \"type\": \"Microsoft.Intune/locations/apps\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"MDMTestApp-4\",\r\n        \"platform\": \"android\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/providers/Microsoft.Intune/locations/fef.msua06/apps/com.microsoft.skydrive.Android\",\r\n      \"name\": \"com.microsoft.skydrive.Android\",\r\n      \"type\": \"Microsoft.Intune/locations/apps\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"OneDrive\",\r\n        \"platform\": \"android\",\r\n        \"appId\": \"b26aadf8-566f-4478-926f-589f601d9c74\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "5606"
+          "295"
         ],
         "Content-Type": [
-          "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
+          "application/json;odata=minimalmetadata;streaming=true;charset=utf-8,application/json;odata=minimalmetadata;streaming=true;charset=utf-8"
         ],
         "Expires": [
           "-1"
@@ -334,22 +334,22 @@
           "14996"
         ],
         "Elapsed-Time-Milliseconds": [
-          "21"
+          "54"
         ],
         "service-name": [
           "AdminExperienceService"
         ],
         "client-request-id": [
-          "1baa00f9-5c01-46ec-b1cd-3edf44505683"
+          "12365a69-c053-43f1-acea-7107b270f4e0"
         ],
         "unique-request-id": [
-          "6495b691-19e2-4aba-8fb2-ff47e80b17ad"
+          "9282df60-3477-4351-b786-6cba070221f6"
         ],
         "x-ms-request-id": [
-          "6495b691-19e2-4aba-8fb2-ff47e80b17ad"
+          "9282df60-3477-4351-b786-6cba070221f6"
         ],
         "related-activity-id": [
-          "6495b691-19e2-4aba-8fb2-ff47e80b17ad"
+          "9282df60-3477-4351-b786-6cba070221f6"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -365,37 +365,37 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-correlation-request-id": [
-          "b7532bbb-6d43-48df-a14b-57c7acf7cc88"
+          "4175c516-341e-4e35-9933-7162e6e3d2cb"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20151118T213928Z:b7532bbb-6d43-48df-a14b-57c7acf7cc88"
+          "WESTUS:20151204T005954Z:4175c516-341e-4e35-9933-7162e6e3d2cb"
         ],
         "Date": [
-          "Wed, 18 Nov 2015 21:39:27 GMT"
+          "Fri, 04 Dec 2015 00:59:53 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/providers/Microsoft.Intune/locations/akdirtest/androidPolicies/fa1a4d3b-2cca-406b-8956-6b6b32377641/apps/com.microsoft.skydrive.Android?api-version=2015-01-11-alpha",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuSW50dW5lL2xvY2F0aW9ucy9ha2RpcnRlc3QvYW5kcm9pZFBvbGljaWVzL2ZhMWE0ZDNiLTJjY2EtNDA2Yi04OTU2LTZiNmIzMjM3NzY0MS9hcHBzL2NvbS5taWNyb3NvZnQuc2t5ZHJpdmUuQW5kcm9pZD9hcGktdmVyc2lvbj0yMDE1LTAxLTExLWFscGhh",
+      "RequestUri": "/providers/Microsoft.Intune/locations/fef.msua06/androidPolicies/fa1a4d3b-2cca-406b-8956-6b6b32377641/apps/com.microsoft.skydrive.Android?api-version=2015-01-14-preview",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuSW50dW5lL2xvY2F0aW9ucy9mZWYubXN1YTA2L2FuZHJvaWRQb2xpY2llcy9mYTFhNGQzYi0yY2NhLTQwNmItODk1Ni02YjZiMzIzNzc2NDEvYXBwcy9jb20ubWljcm9zb2Z0LnNreWRyaXZlLkFuZHJvaWQ/YXBpLXZlcnNpb249MjAxNS0wMS0xNC1wcmV2aWV3",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"url\": \"https://api-dogfood.resources.windows-int.net/providers/Microsoft.Intune/locations/akdirtest/apps/com.microsoft.skydrive.Android\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"url\": \"https://management.azure.com/providers/Microsoft.Intune/locations/fef.msua06/apps/com.microsoft.skydrive.Android\"\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "171"
+          "155"
         ],
         "x-ms-client-request-id": [
-          "f292db65-d5b7-4942-a436-d8a5be91ba17"
+          "eb8205f5-b0b6-4b9d-8d45-4a9cb4e9a5b7"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Intune.IntuneResourceManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Intune.IntuneResourceManagementClient/0.1.3.0"
         ]
       },
       "ResponseBody": "",
@@ -410,22 +410,22 @@
           "no-cache"
         ],
         "Elapsed-Time-Milliseconds": [
-          "51"
+          "236"
         ],
         "service-name": [
           "AdminExperienceService"
         ],
         "client-request-id": [
-          "f292db65-d5b7-4942-a436-d8a5be91ba17"
+          "eb8205f5-b0b6-4b9d-8d45-4a9cb4e9a5b7"
         ],
         "unique-request-id": [
-          "98566694-86c5-4be3-bbe5-0a0db0623ce2"
+          "7f69868a-a705-41b0-aadd-b0571c4b9a3f"
         ],
         "x-ms-request-id": [
-          "98566694-86c5-4be3-bbe5-0a0db0623ce2"
+          "7f69868a-a705-41b0-aadd-b0571c4b9a3f"
         ],
         "related-activity-id": [
-          "98566694-86c5-4be3-bbe5-0a0db0623ce2"
+          "7f69868a-a705-41b0-aadd-b0571c4b9a3f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -441,40 +441,40 @@
           "1198"
         ],
         "x-ms-correlation-request-id": [
-          "38235cca-b89f-44c5-98cd-55991906b753"
+          "d038d85a-7aa3-4109-93a1-1fa2c1938ec8"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20151118T213929Z:38235cca-b89f-44c5-98cd-55991906b753"
+          "WESTUS:20151204T005955Z:d038d85a-7aa3-4109-93a1-1fa2c1938ec8"
         ],
         "Date": [
-          "Wed, 18 Nov 2015 21:39:28 GMT"
+          "Fri, 04 Dec 2015 00:59:54 GMT"
         ]
       },
       "StatusCode": 204
     },
     {
-      "RequestUri": "/providers/Microsoft.Intune/locations/akdirtest/AndroidPolicies/fa1a4d3b-2cca-406b-8956-6b6b32377641/apps?api-version=2015-01-11-alpha",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuSW50dW5lL2xvY2F0aW9ucy9ha2RpcnRlc3QvQW5kcm9pZFBvbGljaWVzL2ZhMWE0ZDNiLTJjY2EtNDA2Yi04OTU2LTZiNmIzMjM3NzY0MS9hcHBzP2FwaS12ZXJzaW9uPTIwMTUtMDEtMTEtYWxwaGE=",
+      "RequestUri": "/providers/Microsoft.Intune/locations/fef.msua06/AndroidPolicies/fa1a4d3b-2cca-406b-8956-6b6b32377641/apps?api-version=2015-01-14-preview",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuSW50dW5lL2xvY2F0aW9ucy9mZWYubXN1YTA2L0FuZHJvaWRQb2xpY2llcy9mYTFhNGQzYi0yY2NhLTQwNmItODk1Ni02YjZiMzIzNzc2NDEvYXBwcz9hcGktdmVyc2lvbj0yMDE1LTAxLTE0LXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a79f2ff7-469e-426e-a94f-f4dba73b2f6c"
+          "724be5b5-df03-4e39-aa90-bbbbd2fcc013"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Intune.IntuneResourceManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Intune.IntuneResourceManagementClient/0.1.3.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/providers/Microsoft.Intune/locations/akdirtest/AndroidPolicies/fa1a4d3b-2cca-406b-8956-6b6b32377641/apps/com.microsoft.skydrive.Android\",\r\n      \"name\": \"com.microsoft.skydrive.Android\",\r\n      \"type\": \"Microsoft.Intune/locations/AndroidPolicies/apps\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"OneDrive\",\r\n        \"platform\": \"android\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/providers/Microsoft.Intune/locations/fef.msua06/AndroidPolicies/fa1a4d3b-2cca-406b-8956-6b6b32377641/apps/com.microsoft.skydrive.Android\",\r\n      \"name\": \"com.microsoft.skydrive.Android\",\r\n      \"type\": \"Microsoft.Intune/locations/AndroidPolicies/apps\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"OneDrive\",\r\n        \"platform\": \"android\",\r\n        \"appId\": \"b26aadf8-566f-4478-926f-589f601d9c74\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "316"
+          "364"
         ],
         "Content-Type": [
-          "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
+          "application/json;odata=minimalmetadata;streaming=true;charset=utf-8,application/json;odata=minimalmetadata;streaming=true;charset=utf-8"
         ],
         "Expires": [
           "-1"
@@ -486,22 +486,22 @@
           "14995"
         ],
         "Elapsed-Time-Milliseconds": [
-          "52"
+          "104"
         ],
         "service-name": [
           "AdminExperienceService"
         ],
         "client-request-id": [
-          "a79f2ff7-469e-426e-a94f-f4dba73b2f6c"
+          "724be5b5-df03-4e39-aa90-bbbbd2fcc013"
         ],
         "unique-request-id": [
-          "f89ac983-c7cd-4ddd-b834-516fed35368c"
+          "c7583519-7fc2-49a0-aaef-1006264f6dee"
         ],
         "x-ms-request-id": [
-          "f89ac983-c7cd-4ddd-b834-516fed35368c"
+          "c7583519-7fc2-49a0-aaef-1006264f6dee"
         ],
         "related-activity-id": [
-          "f89ac983-c7cd-4ddd-b834-516fed35368c"
+          "c7583519-7fc2-49a0-aaef-1006264f6dee"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -517,31 +517,31 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-correlation-request-id": [
-          "d7761bdf-0f6c-4996-9292-4934d3129095"
+          "8694bd34-e109-448a-8218-4afec297ad07"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20151118T213929Z:d7761bdf-0f6c-4996-9292-4934d3129095"
+          "WESTUS:20151204T005955Z:8694bd34-e109-448a-8218-4afec297ad07"
         ],
         "Date": [
-          "Wed, 18 Nov 2015 21:39:28 GMT"
+          "Fri, 04 Dec 2015 00:59:54 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/providers/Microsoft.Intune/locations/akdirtest/AndroidPolicies/fa1a4d3b-2cca-406b-8956-6b6b32377641/apps?api-version=2015-01-11-alpha",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuSW50dW5lL2xvY2F0aW9ucy9ha2RpcnRlc3QvQW5kcm9pZFBvbGljaWVzL2ZhMWE0ZDNiLTJjY2EtNDA2Yi04OTU2LTZiNmIzMjM3NzY0MS9hcHBzP2FwaS12ZXJzaW9uPTIwMTUtMDEtMTEtYWxwaGE=",
+      "RequestUri": "/providers/Microsoft.Intune/locations/fef.msua06/AndroidPolicies/fa1a4d3b-2cca-406b-8956-6b6b32377641/apps?api-version=2015-01-14-preview",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuSW50dW5lL2xvY2F0aW9ucy9mZWYubXN1YTA2L0FuZHJvaWRQb2xpY2llcy9mYTFhNGQzYi0yY2NhLTQwNmItODk1Ni02YjZiMzIzNzc2NDEvYXBwcz9hcGktdmVyc2lvbj0yMDE1LTAxLTE0LXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6cad654c-c586-484e-9beb-e5c9afed996b"
+          "359557c4-bcad-489b-a3b5-8df0896da4a7"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Intune.IntuneResourceManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Intune.IntuneResourceManagementClient/0.1.3.0"
         ]
       },
       "ResponseBody": "{\r\n  \"value\": []\r\n}",
@@ -550,7 +550,7 @@
           "12"
         ],
         "Content-Type": [
-          "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
+          "application/json;odata=minimalmetadata;streaming=true;charset=utf-8,application/json;odata=minimalmetadata;streaming=true;charset=utf-8"
         ],
         "Expires": [
           "-1"
@@ -562,22 +562,22 @@
           "14994"
         ],
         "Elapsed-Time-Milliseconds": [
-          "37"
+          "139"
         ],
         "service-name": [
           "AdminExperienceService"
         ],
         "client-request-id": [
-          "6cad654c-c586-484e-9beb-e5c9afed996b"
+          "359557c4-bcad-489b-a3b5-8df0896da4a7"
         ],
         "unique-request-id": [
-          "2c6b8817-2637-42ad-b42e-3cf932008b58"
+          "a68d3551-0f51-4c8e-8957-f7623b496c85"
         ],
         "x-ms-request-id": [
-          "2c6b8817-2637-42ad-b42e-3cf932008b58"
+          "a68d3551-0f51-4c8e-8957-f7623b496c85"
         ],
         "related-activity-id": [
-          "2c6b8817-2637-42ad-b42e-3cf932008b58"
+          "a68d3551-0f51-4c8e-8957-f7623b496c85"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -593,31 +593,31 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-correlation-request-id": [
-          "8aceb0f9-efd2-4f99-aef5-f7f9c6ce4e3f"
+          "db0a1703-bcc0-4020-a0d3-056d8d79651f"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20151118T213930Z:8aceb0f9-efd2-4f99-aef5-f7f9c6ce4e3f"
+          "WESTUS:20151204T005956Z:db0a1703-bcc0-4020-a0d3-056d8d79651f"
         ],
         "Date": [
-          "Wed, 18 Nov 2015 21:39:30 GMT"
+          "Fri, 04 Dec 2015 00:59:55 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/providers/Microsoft.Intune/locations/akdirtest/androidPolicies/fa1a4d3b-2cca-406b-8956-6b6b32377641/apps/com.microsoft.skydrive.Android?api-version=2015-01-11-alpha",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuSW50dW5lL2xvY2F0aW9ucy9ha2RpcnRlc3QvYW5kcm9pZFBvbGljaWVzL2ZhMWE0ZDNiLTJjY2EtNDA2Yi04OTU2LTZiNmIzMjM3NzY0MS9hcHBzL2NvbS5taWNyb3NvZnQuc2t5ZHJpdmUuQW5kcm9pZD9hcGktdmVyc2lvbj0yMDE1LTAxLTExLWFscGhh",
+      "RequestUri": "/providers/Microsoft.Intune/locations/fef.msua06/androidPolicies/fa1a4d3b-2cca-406b-8956-6b6b32377641/apps/com.microsoft.skydrive.Android?api-version=2015-01-14-preview",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuSW50dW5lL2xvY2F0aW9ucy9mZWYubXN1YTA2L2FuZHJvaWRQb2xpY2llcy9mYTFhNGQzYi0yY2NhLTQwNmItODk1Ni02YjZiMzIzNzc2NDEvYXBwcy9jb20ubWljcm9zb2Z0LnNreWRyaXZlLkFuZHJvaWQ/YXBpLXZlcnNpb249MjAxNS0wMS0xNC1wcmV2aWV3",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0355aad6-adc1-446f-96b5-f4056b57db33"
+          "f3067054-c4c5-4ebb-8a2c-df0609dbcf53"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Intune.IntuneResourceManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Intune.IntuneResourceManagementClient/0.1.3.0"
         ]
       },
       "ResponseBody": "",
@@ -635,22 +635,22 @@
           "1197"
         ],
         "Elapsed-Time-Milliseconds": [
-          "37"
+          "148"
         ],
         "service-name": [
           "AdminExperienceService"
         ],
         "client-request-id": [
-          "0355aad6-adc1-446f-96b5-f4056b57db33"
+          "f3067054-c4c5-4ebb-8a2c-df0609dbcf53"
         ],
         "unique-request-id": [
-          "febe8907-7800-4a88-a8e2-c80677d83e59"
+          "92c4c6e5-2a87-4ab7-baa0-68326c05637e"
         ],
         "x-ms-request-id": [
-          "febe8907-7800-4a88-a8e2-c80677d83e59"
+          "92c4c6e5-2a87-4ab7-baa0-68326c05637e"
         ],
         "related-activity-id": [
-          "febe8907-7800-4a88-a8e2-c80677d83e59"
+          "92c4c6e5-2a87-4ab7-baa0-68326c05637e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -663,31 +663,31 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-correlation-request-id": [
-          "707dc2dd-23ad-40a2-b9a5-03d1c3ae831a"
+          "e9c5b6f4-cbf4-4277-a91c-aaaee2983fef"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20151118T213930Z:707dc2dd-23ad-40a2-b9a5-03d1c3ae831a"
+          "WESTUS:20151204T005955Z:e9c5b6f4-cbf4-4277-a91c-aaaee2983fef"
         ],
         "Date": [
-          "Wed, 18 Nov 2015 21:39:30 GMT"
+          "Fri, 04 Dec 2015 00:59:54 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/providers/Microsoft.Intune/locations/akdirtest/androidPolicies/fa1a4d3b-2cca-406b-8956-6b6b32377641?api-version=2015-01-11-alpha",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuSW50dW5lL2xvY2F0aW9ucy9ha2RpcnRlc3QvYW5kcm9pZFBvbGljaWVzL2ZhMWE0ZDNiLTJjY2EtNDA2Yi04OTU2LTZiNmIzMjM3NzY0MT9hcGktdmVyc2lvbj0yMDE1LTAxLTExLWFscGhh",
+      "RequestUri": "/providers/Microsoft.Intune/locations/fef.msua06/androidPolicies/fa1a4d3b-2cca-406b-8956-6b6b32377641?api-version=2015-01-14-preview",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuSW50dW5lL2xvY2F0aW9ucy9mZWYubXN1YTA2L2FuZHJvaWRQb2xpY2llcy9mYTFhNGQzYi0yY2NhLTQwNmItODk1Ni02YjZiMzIzNzc2NDE/YXBpLXZlcnNpb249MjAxNS0wMS0xNC1wcmV2aWV3",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e5752a1e-45e9-45a9-8bcf-a6a1697e394f"
+          "7c716dc9-09c0-44b5-b577-b0c851c420de"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Intune.IntuneResourceManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Intune.IntuneResourceManagementClient/0.1.3.0"
         ]
       },
       "ResponseBody": "",
@@ -705,22 +705,22 @@
           "1196"
         ],
         "Elapsed-Time-Milliseconds": [
-          "88"
+          "268"
         ],
         "service-name": [
           "AdminExperienceService"
         ],
         "client-request-id": [
-          "e5752a1e-45e9-45a9-8bcf-a6a1697e394f"
+          "7c716dc9-09c0-44b5-b577-b0c851c420de"
         ],
         "unique-request-id": [
-          "23185f64-e2c2-461e-9096-01cea25144e0"
+          "934748e3-3899-43fc-9cb0-c44b16801f33"
         ],
         "x-ms-request-id": [
-          "23185f64-e2c2-461e-9096-01cea25144e0"
+          "934748e3-3899-43fc-9cb0-c44b16801f33"
         ],
         "related-activity-id": [
-          "23185f64-e2c2-461e-9096-01cea25144e0"
+          "934748e3-3899-43fc-9cb0-c44b16801f33"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -733,13 +733,13 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-correlation-request-id": [
-          "d79f5e99-0809-4e9f-a99b-3048bd314963"
+          "92ebd7c8-9959-48e1-87cd-65b90c7e19b9"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20151118T213931Z:d79f5e99-0809-4e9f-a99b-3048bd314963"
+          "WESTUS:20151204T005956Z:92ebd7c8-9959-48e1-87cd-65b90c7e19b9"
         ],
         "Date": [
-          "Wed, 18 Nov 2015 21:39:31 GMT"
+          "Fri, 04 Dec 2015 00:59:55 GMT"
         ]
       },
       "StatusCode": 200
@@ -747,6 +747,6 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "3e9e6f07-6225-4d10-8fd4-5f0236c28f5a"
+    "SubscriptionId": "None"
   }
 }
