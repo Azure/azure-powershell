@@ -279,6 +279,42 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to list storage account key. Can&apos;t find storage account &quot;{0}&quot; under current subscription..
+        /// </summary>
+        public static string DiagnosticsExtensionFailedToListKeyForNoStorageAccount {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionFailedToListKeyForNoStorageAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No diagnostics extension found under resource group &apos;{0}&apos;, virtual machine &apos;{1}&apos;..
+        /// </summary>
+        public static string DiagnosticsExtensionNotFound {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Storage account endpoint is not defined..
+        /// </summary>
+        public static string DiagnosticsExtensionStorageAccountEndpointNotDefined {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionStorageAccountEndpointNotDefined", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Storage account name is not defined..
+        /// </summary>
+        public static string DiagnosticsExtensionStorageAccountNameNotDefined {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionStorageAccountNameNotDefined", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove Extension.
         /// </summary>
         public static string DscExtensionRemovalCaption {

@@ -23,9 +23,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSResourceId FrontendIPConfiguration { get; set; }
 
         [JsonProperty(Order = 1)]
-        public PSResourceId BackendIPConfiguration { get; set; }
-
-        [JsonProperty(Order = 1)]
         public string Protocol { get; set; }
 
         [JsonProperty(Order = 1)]
@@ -43,16 +40,19 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 1)]
         public string ProvisioningState { get; set; }
 
+        [JsonProperty(Order = 1)]
+        public PSNetworkInterfaceIPConfiguration BackendIPConfiguration { get; set; }
+
         [JsonIgnore]
         public string FrontendIPConfigurationText
         {
-            get { return JsonConvert.SerializeObject(FrontendIPConfiguration, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(FrontendIPConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
         public string BackendIPConfigurationText
         {
-            get { return JsonConvert.SerializeObject(BackendIPConfiguration, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(BackendIPConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

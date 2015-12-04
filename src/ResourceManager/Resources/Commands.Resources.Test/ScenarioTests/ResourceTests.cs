@@ -93,6 +93,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetAResourceWithPatchTest()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-SetAResourceWithPatch");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestFindAResourceTest()
         {
             ResourcesController.NewInstance.RunPsTest("Test-FindAResource");

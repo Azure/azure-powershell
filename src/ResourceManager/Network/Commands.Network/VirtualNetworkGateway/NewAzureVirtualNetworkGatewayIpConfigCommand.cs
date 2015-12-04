@@ -54,11 +54,11 @@ namespace Microsoft.Azure.Commands.Network
             if (!string.IsNullOrEmpty(this.PrivateIpAddress))
             {
                 vnetGatewayIpConfig.PrivateIpAddress = this.PrivateIpAddress;
-                vnetGatewayIpConfig.PrivateIpAllocationMethod = Management.Network.Models.IpAllocationMethod.Static;
+                vnetGatewayIpConfig.PrivateIpAllocationMethod = Management.Network.Models.IPAllocationMethod.Static;
             }
             else
             {
-                vnetGatewayIpConfig.PrivateIpAllocationMethod = Management.Network.Models.IpAllocationMethod.Dynamic;
+                vnetGatewayIpConfig.PrivateIpAllocationMethod = Management.Network.Models.IPAllocationMethod.Dynamic;
             }
 
             if (!string.IsNullOrEmpty(this.PublicIpAddressId))
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Network
 
             vnetGatewayIpConfig.Id =
                 ChildResourceHelp.GetResourceNotSetId(
-                    this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
+                    this.NetworkClient.NetworkManagementClient.SubscriptionId,
                     Microsoft.Azure.Commands.Network.Properties.Resources.VirtualNetworkGatewayIpConfigName,
                     this.Name);
 

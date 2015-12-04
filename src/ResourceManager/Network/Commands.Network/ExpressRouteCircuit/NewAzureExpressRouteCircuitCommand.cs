@@ -96,15 +96,6 @@ namespace Microsoft.Azure.Commands.Network
         public List<PSExpressRouteCircuitAuthorization> Authorization { get; set; }
 
         [Parameter(
-              Mandatory = true,
-              ValueFromPipelineByPropertyName = true)]
-        [ValidateSet(
-            MNM.ExpressRouteCircuitBillingType.MeteredData,
-            MNM.ExpressRouteCircuitBillingType.UnlimitedData,
-            IgnoreCase = true)]
-        public string BillingType { get; set; }
-
-        [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "An array of hashtables which represents resource tags.")]
@@ -167,18 +158,15 @@ namespace Microsoft.Azure.Commands.Network
             circuit.Peerings = this.Peering;
             circuit.Authorizations = new List<PSExpressRouteCircuitAuthorization>();
             circuit.Authorizations = this.Authorization;
-            circuit.BillingType = this.BillingType;
 
             // Map to the sdk object
             var circuitModel = Mapper.Map<MNM.ExpressRouteCircuit>(circuit);
-            circuitModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.ExpressRouteCircuitType;
             circuitModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create ExpressRouteCircuit call
             this.ExpressRouteCircuitClient.CreateOrUpdate(this.ResourceGroupName, this.Name, circuitModel);
 
             var getExpressRouteCircuit = this.GetExpressRouteCircuit(this.ResourceGroupName, this.Name);
-            getExpressRouteCircuit.BillingType = this.BillingType;
             return getExpressRouteCircuit;
         }
     }
