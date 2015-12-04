@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Intune
             var result = this.IntuneClient.Ios.AddGroupForMAMPolicyWithHttpMessagesAsync(this.AsuHostName, this.Name, this.GroupName, payLoad).GetAwaiter().GetResult();
             if (PassThru)
             {
-                this.WriteObject(result.Response.StatusCode == HttpStatusCode.OK ? true : false);
+                this.WriteObject(result.Response.StatusCode == HttpStatusCode.NoContent ? true : false);
             }
         }        
     }

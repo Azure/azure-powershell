@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Intune
             
             if (PassThru)
             {
-                this.WriteObject(result.Response.StatusCode == HttpStatusCode.OK ? true : false);
+                this.WriteObject(result.Response.StatusCode == HttpStatusCode.NoContent ? true : false);
             }
         }        
     }
