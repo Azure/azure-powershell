@@ -52,19 +52,19 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonIgnore]
         public string FrontendIPConfigurationText
         {
-            get { return JsonConvert.SerializeObject(FrontendIPConfiguration, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(FrontendIPConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
         public string BackendAddressPoolText
         {
-            get { return JsonConvert.SerializeObject(BackendAddressPool, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(BackendAddressPool, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
         public string ProbeText
         {
-            get { return JsonConvert.SerializeObject(Probe, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(Probe, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
     }

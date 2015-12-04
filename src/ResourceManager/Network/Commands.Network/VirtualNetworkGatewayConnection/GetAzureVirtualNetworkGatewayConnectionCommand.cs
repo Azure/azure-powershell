@@ -49,10 +49,10 @@ namespace Microsoft.Azure.Commands.Network
             }
             else if (!string.IsNullOrEmpty(this.ResourceGroupName))
             {
-                var vnetGatewayConnectionGetResponse = this.VirtualNetworkGatewayConnectionClient.List(this.ResourceGroupName);
+                var connectionList = this.VirtualNetworkGatewayConnectionClient.List(this.ResourceGroupName);
 
                 var psVnetGatewayConnections = new List<PSVirtualNetworkGatewayConnection>();
-                foreach (var virtualNetworkGatewayConnection in vnetGatewayConnectionGetResponse.VirtualNetworkGatewayConnections)
+                foreach (var virtualNetworkGatewayConnection in connectionList)
                 {
                     var psVnetGatewayConnection = this.ToPsVirtualNetworkGatewayConnection(virtualNetworkGatewayConnection);
                     psVnetGatewayConnection.ResourceGroupName = this.ResourceGroupName;
