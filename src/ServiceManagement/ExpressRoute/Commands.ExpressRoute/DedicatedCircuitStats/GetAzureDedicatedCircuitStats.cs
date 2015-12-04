@@ -13,14 +13,15 @@
 // ----------------------------------------------------------------------------------
 
 
-using System.Collections.Generic;
+using System.ComponentModel;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Management.ExpressRoute.Models;
 using System;
+using System.Collections.Generic;
 
 namespace Microsoft.WindowsAzure.Commands.ExpressRoute
 {
-    [Cmdlet(VerbsCommon.Get, "AzureDedicatedCircuitStats"), OutputType(typeof(AzureDedicatedCircuitStats), typeof(IEnumerable<AzureDedicatedCircuitStats>))]
+    [Cmdlet(VerbsCommon.Get, "AzureDedicatedCircuitStats"), OutputType(typeof(AzureDedicatedCircuitPeeringStats), typeof(IEnumerable<AzureDedicatedCircuitPeeringStats>))]
     public class GetAzureDedicatedCircuitPeeringStatsCommand : ExpressRouteBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -29,20 +30,54 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Bgp Peering Access Type: Public or Private or Microsoft")]
-        public BgpPeeringAccessType AccessType { get; set; }
+        public string AccessType { get; set; }
 
+        
         public override void ExecuteCmdlet()
         {
-            if(AccessType.Equals(null))
+            if(string.IsNullOrEmpty(AccessType))
             {
-               var stats =  ExpressRouteClient.GetAzureDedicatedCircuitStatspInfo(ServiceKey);
-               WriteObject(stats);
-            }
-            else
-            {
-                var stats = ExpressRouteClient.GetAzureDedicatedCircuitPeeringStatsInfo(ServiceKey, AccessType);
+                AzureDedicatedCircuitStats stats = new AzureDedicatedCircuitStats
+                                                       {
+                                                           PrimaryBytesIn = (ulong)0,
+                                                           PrimaryBytesOut = (ulong)0,
+                                                           SecondaryBytesIn = (ulong)0,
+                                                           SecondaryBytesOut = (ulong)0
+                                                       };
+                AzureBgpPeering peering= ExpressRouteClient.GetAzureBGPPeering(ServiceKey, BgpPeeringAccessType.Private);
+                if (peering != null)
+                {
+                    stats = compute(stats, ServiceKey, BgpPeeringAccessType.Private);
+                }
+                peering = ExpressRouteClient.GetAzureBGPPeering(ServiceKey, BgpPeeringAccessType.Public);
+                if (peering != null)
+                {
+                    stats = compute(stats, ServiceKey, BgpPeeringAccessType.Public);
+                }
+                peering = ExpressRouteClient.GetAzureBGPPeering(ServiceKey, BgpPeeringAccessType.Microsoft);
+                if (peering != null)
+                {
+                    stats = compute(stats, ServiceKey, BgpPeeringAccessType.Microsoft);
+                }
                 WriteObject(stats);
-            }            
+                
+            }
+            BgpPeeringAccessType type; 
+            if (BgpPeeringAccessType.TryParse(AccessType, out type))
+            {
+                var stats = ExpressRouteClient.GetAzureDedicatedCircuitStatsInfo(ServiceKey, type);
+                WriteObject(stats);
+            }      
+        }
+
+        private AzureDedicatedCircuitStats compute(AzureDedicatedCircuitStats stats, Guid key, BgpPeeringAccessType type)
+        {
+            var tempstats = ExpressRouteClient.GetAzureDedicatedCircuitStatsInfo(key,type);
+            stats.PrimaryBytesIn += tempstats.PrimaryBytesIn;
+            stats.PrimaryBytesOut += tempstats.PrimaryBytesOut;
+            stats.SecondaryBytesIn += tempstats.SecondaryBytesIn;
+            stats.SecondaryBytesOut += tempstats.SecondaryBytesOut;
+            return stats;
         }
     }
 }

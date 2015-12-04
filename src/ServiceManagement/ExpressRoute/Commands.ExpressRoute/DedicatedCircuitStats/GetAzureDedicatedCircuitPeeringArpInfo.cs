@@ -20,7 +20,7 @@ using System;
 
 namespace Microsoft.WindowsAzure.Commands.ExpressRoute
 {
-    [Cmdlet(VerbsCommon.Get, "AzureDedicatedCircuitPeeringArpInfo"), OutputType(typeof(AzureDedicatedCircuitPeeringArpInfo), typeof(IEnumerable<AzureDedicatedCircuitPeeringArpInfo>))]
+    [Cmdlet(VerbsCommon.Get, "AzureDedicatedCircuitPeeringArpInfo"), OutputType(typeof(string), typeof(IEnumerable<string>))]
     public class GetAzureDedicatedCircuitPeeringArpInfoCommand : ExpressRouteBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -37,7 +37,8 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
 
         public override void ExecuteCmdlet()
         {
-            var arpInfo = ExpressRouteClient.GetAzureDedicatedCircuitPeeringArpInfo(ServiceKey, AccessType, BgpPeeringDevicePath);
+           var arpInfo = ExpressRouteClient.GetAzureDedicatedCircuitPeeringArpInfo(ServiceKey, AccessType, BgpPeeringDevicePath);
+            Console.WriteLine(arpInfo);
             WriteObject(arpInfo);
         }
     }
