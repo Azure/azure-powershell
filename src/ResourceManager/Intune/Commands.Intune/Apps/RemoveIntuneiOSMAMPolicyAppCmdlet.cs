@@ -42,6 +42,9 @@ namespace Microsoft.Azure.Commands.Intune
 
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "If specified will write true in case operation succeeds. This parameter is optional. Default value is false.")]
+        public SwitchParameter PassThru { get; set; }
         /// <summary>
         /// Executes the cmdlet.
         /// </summary>
@@ -70,6 +73,11 @@ namespace Microsoft.Azure.Commands.Intune
                     if (result.Response.StatusCode == HttpStatusCode.NoContent)
                     {
                         this.WriteWarning(Resources.NoItemsDeleted);
+                    }
+
+                    if (PassThru)
+                    {
+                        this.WriteObject(result.Response.StatusCode == HttpStatusCode.OK ? true : false);
                     }
                 });
         }

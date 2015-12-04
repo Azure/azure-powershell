@@ -41,13 +41,20 @@ namespace Microsoft.Azure.Commands.Intune
         [ValidateNotNullOrEmpty]
         public string AppName { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "If specified will write true in case operation succeeds. This parameter is optional. Default value is false.")]
+        public SwitchParameter PassThru { get; set; }
+
         /// <summary>
         /// Executes the cmdlet.
         /// </summary>
         public override void ExecuteCmdlet()
         {
             var payLoad = AppOrGroupPayloadMaker.PrepareMAMPolicyPayload(this.IntuneClient, LinkType.App, this.AsuHostName, this.AppName);
-            this.IntuneClient.Ios.AddAppForMAMPolicyWithHttpMessagesAsync(this.AsuHostName, this.Name, this.AppName, payLoad).GetAwaiter().GetResult();
+            var result = this.IntuneClient.Ios.AddAppForMAMPolicyWithHttpMessagesAsync(this.AsuHostName, this.Name, this.AppName, payLoad).GetAwaiter().GetResult();
+            if (PassThru)
+            {
+                this.WriteObject(result.Response.StatusCode == HttpStatusCode.OK ? true : false);
+            }
         }        
     }
 }
