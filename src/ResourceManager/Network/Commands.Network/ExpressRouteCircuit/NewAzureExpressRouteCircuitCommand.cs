@@ -90,6 +90,12 @@ namespace Microsoft.Azure.Commands.Network
         public List<PSPeering> Peering { get; set; }
 
         [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public List<PSExpressRouteCircuitAuthorization> Authorization { get; set; }
+
+        [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "An array of hashtables which represents resource tags.")]
@@ -150,7 +156,9 @@ namespace Microsoft.Azure.Commands.Network
 
             circuit.Peerings = new List<PSPeering>();
             circuit.Peerings = this.Peering;
-            
+            circuit.Authorizations = new List<PSExpressRouteCircuitAuthorization>();
+            circuit.Authorizations = this.Authorization;
+
             // Map to the sdk object
             var circuitModel = Mapper.Map<MNM.ExpressRouteCircuit>(circuit);
             circuitModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
