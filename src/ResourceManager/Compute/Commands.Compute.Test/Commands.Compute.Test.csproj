@@ -165,6 +165,7 @@
     <Compile Include="Common\ComputeTestController.cs" />
     <Compile Include="ScenarioTests\AddVhdTests.cs" />
     <Compile Include="ScenarioTests\ComputeCloudExceptionTests.cs" />
+    <Compile Include="ScenarioTests\DiagnosticsExtensionTests.cs" />
     <Compile Include="ScenarioTests\DscExtensionTests.cs" />
     <Compile Include="ScenarioTests\VirtualMachineBootDiagnosticsTests.cs" />
     <Compile Include="ScenarioTests\VMDynamicTests.cs" />
@@ -236,6 +237,9 @@
     <None Include="ScenarioTests\VirtualMachineBootDiagnosticsTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\DiagnosticsExtensionTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\VMDynamicTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -266,6 +270,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.ComputeCloudExceptionTests\RunComputeCloudExceptionTests.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.DiagnosticsExtensionTests\TestDiagnosticsExtensionBasic.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.DiagnosticsExtensionTests\TestDiagnosticsExtensionCantListSepcifyStorageAccountKey.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.DiagnosticsExtensionTests\TestDiagnosticsExtensionSepcifyStorageAccountName.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.DscExtensionTests\TestGetAzureRmVMDscExtension.json">
@@ -391,6 +404,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ConfigFiles\DiagnosticsExtensionConfig.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
