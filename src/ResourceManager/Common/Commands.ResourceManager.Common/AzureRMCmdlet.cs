@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             if (!TestMockSupport.RunningMocked)
             {
                 AzureSession.DataStore = new DiskDataStore();
-           }
+            }          
         }
 
         /// <summary>
