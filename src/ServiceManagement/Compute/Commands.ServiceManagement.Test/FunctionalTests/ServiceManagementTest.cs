@@ -341,7 +341,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         {
             // Re-import the subscription.
             vmPowershellCmdlets.ImportAzurePublishSettingsFile();
-            vmPowershellCmdlets.SetDefaultAzureSubscription(CredentialHelper.DefaultSubscriptionName);
+            vmPowershellCmdlets.SetDefaultAzureSubscription(defaultAzureSubscription.SubscriptionId);
             vmPowershellCmdlets.SetAzureSubscription(defaultAzureSubscription.SubscriptionId, defaultAzureSubscription.CurrentStorageAccountName);
         }
 

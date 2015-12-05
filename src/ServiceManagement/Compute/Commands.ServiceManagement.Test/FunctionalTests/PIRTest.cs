@@ -342,12 +342,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         private void SwitchToPublisher()
         {
-            vmPowershellCmdlets.SetDefaultAzureSubscription(publisher);
+            vmPowershellCmdlets.SetDefaultAzureSubscription(publisherSubId);
         }
 
         private void SwitchToNormalUser()
         {
-            vmPowershellCmdlets.SetDefaultAzureSubscription(normaluser);
+            vmPowershellCmdlets.SetDefaultAzureSubscription(normaluserSubId);
         }
 
         private void WaitForReplicationComplete(string imageName)
