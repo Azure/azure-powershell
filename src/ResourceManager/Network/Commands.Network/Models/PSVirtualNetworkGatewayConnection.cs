@@ -39,6 +39,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public ulong IngressBytesTransferred { get; set; }
 
+        public string ProvisioningState { get; set; }
+
         [JsonIgnore]
         public string VirtualNetworkGateway1Text
         {
