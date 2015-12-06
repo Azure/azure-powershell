@@ -78,7 +78,7 @@ Tests the flow in which re-setting the policy with storage account that has the 
 function Test-AuditingDatabaseUpdatePolicyWithSameNameStorageOnDifferentRegion
 {
 	# Setup
-	$testSuffix = 1739
+	$testSuffix = 2739
 	Create-TestEnvironmentWithStorageV2 $testSuffix
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
 
@@ -98,15 +98,14 @@ function Test-AuditingDatabaseUpdatePolicyWithSameNameStorageOnDifferentRegion
 		New-AzureRmResourceGroup -Location "japanwest" -ResourceGroupName $newResourceGroupName
 		New-AzureRmStorageAccount -StorageAccountName $params.storageAccount  -ResourceGroupName $newResourceGroupName -Location "japanwest" -Type Standard_GRS 
 
-		Set-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
+		Set-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -RetentionInDays 10
 		$policy = Get-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
 		# Assert
 		Assert-AreEqual $policy.StorageAccountName $params.storageAccount
 		Assert-AreEqual $policy.AuditState "Enabled"  
 		Assert-AreEqual $policy.UseServerDefault "Disabled"
-
-
+		Assert-AreEqual $policy.RetentionInDays 10
 	}
 	finally
 	{
@@ -434,6 +433,7 @@ function Test-AuditingDisableDatabaseAuditing
 	
 		# Assert
 		Assert-AreEqual $policy.AuditState "Disabled"
+		Assert-AreEqual $policy.StorageAccountName $params.storageAccount
 	}
 	finally
 	{
