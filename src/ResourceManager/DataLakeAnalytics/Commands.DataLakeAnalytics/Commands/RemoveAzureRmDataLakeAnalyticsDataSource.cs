@@ -15,10 +15,11 @@
 using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
+using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeAnalyticsDataSource")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeAnalyticsDataSource"), OutputType(typeof(bool))]
     public class RemoveAzureDataLakeAnalyticsDataSource : DataLakeAnalyticsCmdletBase
     {
         internal const string DataLakeParameterSetName = "Remove a Data Lake storage account";
@@ -45,26 +46,50 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [Alias("AzureBlob")]
         public string Blob { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false,
+        [Parameter(Mandatory = false, Position = 2, ParameterSetName = DataLakeParameterSetName, HelpMessage = "Do not ask for confirmation.")]
+        [Parameter(Mandatory = false, Position = 2, ParameterSetName = BlobParameterSetName, HelpMessage = "Do not ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
+
+        [Parameter(Mandatory = false, Position = 3, ParameterSetName = DataLakeParameterSetName, HelpMessage = "Return true upon successfull deletion.")]
+        [Parameter(Mandatory = false, Position = 3, ParameterSetName = BlobParameterSetName, HelpMessage = "Return true upon successfull deletion.")]
+        public SwitchParameter PassThru { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
             ParameterSetName = DataLakeParameterSetName,
             HelpMessage =
                 "Name of resource group under which the Data Lake Analytics account exists to add a data source to.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false,
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
             ParameterSetName = BlobParameterSetName,
             HelpMessage =
                 "Name of resource group under which the Data Lake Analytics account exists to add a data source to.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (ParameterSetName.Equals(DataLakeParameterSetName, StringComparison.InvariantCultureIgnoreCase))
             {
-                DataLakeAnalyticsClient.RemoveStorageAccount(ResourceGroupName, Account, Blob);
+                ConfirmAction(
+                    Force.IsPresent,
+                    string.Format(Resources.RemovingDataLakeAnalyticsDataLakeStore, DataLakeStore),
+                    string.Format(Resources.RemoveDataLakeAnalyticsCatalogSecret, DataLakeStore),
+                    DataLakeStore,
+                    () => DataLakeAnalyticsClient.RemoveDataLakeStoreAccount(ResourceGroupName, Account, DataLakeStore));
+                
             }
             else
             {
-                DataLakeAnalyticsClient.RemoveDataLakeStoreAccount(ResourceGroupName, Account, DataLakeStore);
+                ConfirmAction(
+                    Force.IsPresent,
+                    string.Format(Resources.RemovingDataLakeAnalyticsBlobAccount, Blob),
+                    string.Format(Resources.RemoveDataLakeAnalyticsBlobAccount, Blob),
+                    Blob,
+                    () => DataLakeAnalyticsClient.RemoveStorageAccount(ResourceGroupName, Account, Blob));
+            }
+
+            if (PassThru)
+            {
+                WriteObject(true);
             }
         }
     }

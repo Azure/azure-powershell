@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
             HelpMessage = "NotificationHub AuthorizationRule Name.")]
         public string AuthorizationRule { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (!string.IsNullOrEmpty(AuthorizationRule))
             {

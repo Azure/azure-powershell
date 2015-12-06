@@ -109,7 +109,8 @@ namespace Microsoft.Azure.Commands.KeyVault
             List<PSKeyVaultModels.PSVaultIdentityItem> vaults = new List<PSKeyVaultModels.PSVaultIdentityItem>();
             if (listResult.Resources != null)
             {
-                vaults.AddRange(listResult.Resources.Where(r => r.Type == KeyVaultManagementClient.VaultsResourceType).Select(r => new PSKeyVaultModels.PSVaultIdentityItem(r)));
+                vaults.AddRange(listResult.Resources.Where(r => r.Type.Equals(KeyVaultManagementClient.VaultsResourceType, StringComparison.OrdinalIgnoreCase))
+                    .Select(r => new PSKeyVaultModels.PSVaultIdentityItem(r)));
             }
 
             while (!string.IsNullOrEmpty(listResult.NextLink))
@@ -134,7 +135,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             if (resourcesByName != null && resourcesByName.Count > 0)            
             {
-                var vault = resourcesByName.Where(r => r.Name == vaultName).FirstOrDefault();
+                var vault = resourcesByName.FirstOrDefault(r => r.Name.Equals(vaultName, StringComparison.OrdinalIgnoreCase));
                 if (vault != null)                
                     rg = new PSResourceManagerModels.ResourceIdentifier(vault.Id).ResourceGroupName;                                                    
             }
@@ -194,7 +195,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         {
             var filter = new ADObjectFilterOptions()
                 {
-                    Id = (objectId != null && objectId != Guid.Empty) ? objectId.ToString() : null,
+                    Id = (objectId != Guid.Empty) ? objectId.ToString() : null,
                     UPN = upn,
                     SPN = spn,                    
                     Paging = true,
@@ -214,8 +215,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             if (obj != null)
                 return obj.Id;
-            else
-                throw new ArgumentException(string.Format(PSKeyVaultProperties.Resources.ADObjectNotFound, filter.ActiveFilter, ActiveDirectoryClient.GraphClient.TenantID));
+            throw new ArgumentException(string.Format(PSKeyVaultProperties.Resources.ADObjectNotFound, filter.ActiveFilter, ActiveDirectoryClient.GraphClient.TenantID));
         }
 
         protected readonly string[] DefaultPermissionsToKeys =

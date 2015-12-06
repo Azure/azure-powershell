@@ -15,7 +15,6 @@
 using System;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Management.KeyVault;
 using PSKeyVaultModels = Microsoft.Azure.Commands.KeyVault.Models;
 using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
@@ -125,7 +124,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         #endregion
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ForVault && !EnabledForDeployment.IsPresent &&
                 !EnabledForTemplateDeployment.IsPresent && !EnabledForDiskEncryption.IsPresent)
@@ -152,7 +151,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             // Update vault policies
             var updatedPolicies = existingVault.AccessPolicies;
-            if (!string.IsNullOrEmpty(UserPrincipalName) || !string.IsNullOrEmpty(ServicePrincipalName) || (ObjectId != null && ObjectId != Guid.Empty))
+            if (!string.IsNullOrEmpty(UserPrincipalName) || !string.IsNullOrEmpty(ServicePrincipalName) || (ObjectId != Guid.Empty))
             {
                 Guid objId = GetObjectId(this.ObjectId, this.UserPrincipalName, this.ServicePrincipalName);
                

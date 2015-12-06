@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [ValidateNotNullOrEmpty]
         public string EndpointLocation { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             // We are not supporting etags yet, NewAzureTrafficManagerEndpoint should not overwrite any existing endpoint.
             // Since our create operation is implemented using PUT, it will overwrite by default.

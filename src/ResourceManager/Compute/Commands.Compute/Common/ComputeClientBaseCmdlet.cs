@@ -49,9 +49,9 @@ namespace Microsoft.Azure.Commands.Compute
             set { computeClient = value; }
         }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
             ComputeAutoMapperProfile.Initialize();
         }
 
@@ -63,6 +63,15 @@ namespace Microsoft.Azure.Commands.Compute
             }
             catch (CloudException ex)
             {
+                try
+                {
+                    base.EndProcessing();
+                }
+                catch
+                {
+                    // Ignore exceptions during end processing
+                }
+
                 throw new ComputeCloudException(ex);
             }
         }

@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = true)]
         public Hashtable Tag { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (string.IsNullOrEmpty(this.AccountName))
             {

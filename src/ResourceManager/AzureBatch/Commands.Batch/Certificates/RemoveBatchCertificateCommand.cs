@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter]
         public SwitchParameter Force { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             CertificateOperationParameters parameters = new CertificateOperationParameters(this.BatchContext,
                 this.ThumbprintAlgorithm, this.Thumbprint, this.AdditionalBehaviors);
