@@ -989,6 +989,13 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     stream => this.CreateJobStreamFromJobStreamModel(stream, resourceGroupName, automationAccountName, jobId));
         }
 
+        public JobStreamRecord GetJobStreamRecord(string resourceGroupName, string automationAccountName, Guid jobId, string jobStreamId)
+        {
+            var response = this.automationManagementClient.JobStreams.Get(resourceGroupName, automationAccountName, jobId, jobStreamId);
+
+            return new JobStreamRecord(response.JobStream, resourceGroupName, automationAccountName, jobId);
+        }
+
         public Job GetJob(string resourceGroupName, string automationAccountName, Guid Id)
         {
             var job = this.automationManagementClient.Jobs.Get(resourceGroupName, automationAccountName, Id).Job;

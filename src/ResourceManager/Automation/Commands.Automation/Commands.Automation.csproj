@@ -227,6 +227,7 @@
     <Compile Include="Model\DscOnboardingMetaconfig.cs" />
     <Compile Include="Model\Job.cs" />
     <Compile Include="Model\JobSchedule.cs" />
+    <Compile Include="Model\JobStreamRecord.cs" />
     <Compile Include="Model\JobStream.cs" />
     <Compile Include="Model\Module.cs" />
     <Compile Include="Model\NodeConfiguration.cs" />
