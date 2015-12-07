@@ -67,13 +67,13 @@ namespace Microsoft.Azure.Commands.Common.Test.Mocks
 
             TokenProvider = ((account, environment, tenant) => Token);
         }
-
-
+        
         public IAccessToken Authenticate(
             AzureAccount account,
             AzureEnvironment environment,
             string tenant,
             string password,
+            AuthenticationBehavior behavior,
             IdentityModel.Clients.ActiveDirectory.TokenCache tokenCache,
             AzureEnvironment.Endpoint resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
@@ -104,7 +104,8 @@ namespace Microsoft.Azure.Commands.Common.Test.Mocks
             string password,
             AzureEnvironment.Endpoint resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
-            return Authenticate(account, environment, tenant, password, TokenCache.DefaultShared, resourceId);
+            return Authenticate(account, environment, tenant, password,
+                new AuthenticationBehavior { Type = AuthenticationType.Silent }, TokenCache.DefaultShared, resourceId);
         }
         
         public ServiceClientCredentials GetSubscriptionCloudCredentials(AzureContext context)

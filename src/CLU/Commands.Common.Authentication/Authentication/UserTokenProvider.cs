@@ -19,6 +19,7 @@ using System;
 using System.Runtime.InteropServices;
 using Commands.Common.Authentication.Properties;
 using Microsoft.Rest.Azure.Authentication;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -29,10 +30,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     /// </summary>
     internal class UserTokenProvider : ITokenProvider
     {
-
         public IAccessToken GetAccessToken(
             AdalConfiguration config, 
-            ShowDialog promptBehavior, 
+            AuthenticationBehavior behavior, 
             string userId, 
             string password,
             AzureAccount.AccountType credentialType)
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 throw new ArgumentException(string.Format(Resources.InvalidCredentialType, "User"), "credentialType");
             }
 
-            return new AdalAccessToken(AcquireToken(config, promptBehavior, userId, password), this, config);
+            return new AdalAccessToken(AcquireToken(config, behavior, userId, password), this, config);
         }
 
         private readonly static TimeSpan expirationThreshold = TimeSpan.FromMinutes(5);
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             if (IsExpired(token))
             {
                 ServiceClientTracing.Information(Resources.UPNExpiredTokenTrace);
-                AuthenticationResult result = AcquireToken(token.Configuration, ShowDialog.Never, token.UserId, null);
+                AuthenticationResult result = AcquireToken(token.Configuration, new AuthenticationBehavior { Type = AuthenticationType.Silent }, token.UserId, null);
 
                 if (result == null)
                 {
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         // We have to run this in a separate thread to guarantee that it's STA. This method
         // handles the threading details.
-        private AuthenticationResult AcquireToken(AdalConfiguration config, ShowDialog promptBehavior, string userId,
+        private AuthenticationResult AcquireToken(AdalConfiguration config, AuthenticationBehavior behavior, string userId,
             string password)
         {
             AuthenticationResult result = null;
@@ -121,31 +121,66 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 config.AdEndpoint,
                 config.ClientId,
                 config.ClientRedirectUri);
-            if (promptBehavior != ShowDialog.Never)
+            if (behavior.Type == AuthenticationType.DeviceCode)
             {
-                throw new NotImplementedException("Device based authencation is not implemented.");
-            }
-
-            try
-            {
-                UserCredential credential = new UserCredential(userId, password);
-                result = context.AcquireTokenAsync(
-                    config.ResourceClientUri,
-                    config.ClientId,
-                    credential)
-                    .ConfigureAwait(false).GetAwaiter().GetResult();
-                return result;
-            }
-            catch (AdalException adalException)
-            {
-                if (adalException.ErrorCode == AdalError.AuthenticationCanceled)
+                if(behavior.DeviceCodeHandler == null)
                 {
-                    throw new AadAuthenticationCanceledException(adalException.Message, adalException);
+                    throw new PSArgumentException("deviceCodeHandler");
                 }
 
-                throw new AadAuthenticationFailedException(adalException.Message, adalException);
-            }
+                try
+                {
+                    UserCredential credential = new UserCredential(userId, password);
 
+                    DeviceCodeResult codeResult = context.AcquireDeviceCodeAsync(
+                                                            config.ResourceClientUri,
+                                                            config.ClientId)
+                                                         .ConfigureAwait(false).GetAwaiter().GetResult();
+
+                    if (behavior.DeviceCodeHandler(codeResult))
+                    {
+                        return context.AcquireTokenByDeviceCodeAsync(codeResult)
+                                        .ConfigureAwait(false).GetAwaiter().GetResult();
+                    }
+
+                    throw new AadAuthenticationCanceledException("Authentication cancelled.", null);
+                }
+                catch (AdalException adalException)
+                {
+                    if (adalException.ErrorCode == AdalError.AuthenticationCanceled)
+                    {
+                        throw new AadAuthenticationCanceledException(adalException.Message, adalException);
+                    }
+
+                    throw new AadAuthenticationFailedException(adalException.Message, adalException);
+                }
+            }
+            else if(behavior.Type == AuthenticationType.Silent)
+            {
+                try
+                {
+                    UserCredential credential = new UserCredential(userId, password);
+                    return context.AcquireTokenAsync(
+                        config.ResourceClientUri,
+                        config.ClientId,
+                        credential)
+                        .ConfigureAwait(false).GetAwaiter().GetResult();
+                }
+                catch (AdalException adalException)
+                {
+                    if (adalException.ErrorCode == AdalError.AuthenticationCanceled)
+                    {
+                        throw new AadAuthenticationCanceledException(adalException.Message, adalException);
+                    }
+
+                    throw new AadAuthenticationFailedException(adalException.Message, adalException);
+                }
+            }
+            else
+            {
+                throw new NotImplementedException(
+                    string.Format("'{0}' authentication is not implemented.", behavior.Type));
+            }
         }
 
         /// <summary>
@@ -187,8 +222,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 }
             }
         }
-
-
+        
         private void ClearCookies()
         {
             NativeMethods.InternetSetOption(IntPtr.Zero, NativeMethods.INTERNET_OPTION_END_BROWSER_SESSION, IntPtr.Zero, 0);
