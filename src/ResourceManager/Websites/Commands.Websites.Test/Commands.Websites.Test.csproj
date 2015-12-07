@@ -63,9 +63,9 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.2.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.WebSites, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Websites.1.0.0-preview\lib\net45\Microsoft.Azure.Management.Websites.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.Azure.Management.Websites, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\azure-sdk-for-net\src\ResourceManagement\WebSite\artifacts\bin\Microsoft.Azure.Management.Websites\Debug\net45\Microsoft.Azure.Management.Websites.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -141,6 +141,7 @@
   <ItemGroup>
     <Compile Include="NewAzureWebsitesCommandTests.cs" />
     <Compile Include="ScenarioTests\AppServicePlanTests.cs" />
+    <Compile Include="ScenarioTests\SSLBindingTests.cs" />
     <Compile Include="ScenarioTests\WebAppSlotTests.cs" />
     <Compile Include="ScenarioTests\WebsitesController.cs" />
     <Compile Include="ScenarioTests\WebAppTests.cs" />
@@ -156,6 +157,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\AppServicePlanTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\SSLBindingTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\WebAppSlotTests.ps1">
@@ -179,6 +183,13 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.AppServicePlanTests\TestSetAppServicePlan.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.SSLBindingTests\TestCreateNewWebAppSSLBinding.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.SSLBindingTests\TestGetNewWebAppSSLBinding.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.SSLBindingTests\TestGetWebAppCertificate.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.SSLBindingTests\TestRemoveNewWebAppSSLBinding.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.SSLBindingTests\TestWebAppSSLBindingPipeSupport.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppSlotTests\TestCloneWebAppSlot.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 WriteProgress(progressRecord);
             }
 
-            WriteObject(list);
+            WriteObject(list[0]);
         }
 
         private void GetByResourceGroup()

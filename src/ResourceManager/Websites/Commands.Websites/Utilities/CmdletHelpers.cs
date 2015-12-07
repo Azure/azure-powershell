@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Microsoft.Azure.Management.WebSites.Models;
+using Microsoft.Azure.Commands.Resources.Models;
 
 namespace Microsoft.Azure.Commands.WebApps.Utilities
 {
@@ -205,6 +206,67 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             slotName = null;
 
             return false;
+        }
+
+        internal static HostNameSslState[] GetHostNameSslStatesFromSiteResponse(Site site, string hostName = null)
+        {
+            var hostNameSslState = new HostNameSslState[0];
+            if (site.HostNameSslStates != null)
+            {
+                hostNameSslState = site.HostNameSslStates.Where(h => h.SslState.HasValue && h.SslState.Value != SslState.Disabled).ToArray();
+                if (!string.IsNullOrEmpty(hostName))
+                {
+                    hostNameSslState = hostNameSslState.Where(h => string.Equals(h.Name, hostName)).ToArray();
+                }
+            }
+            return hostNameSslState;
+        }
+
+        internal static string GetResourceGroupFromResourceId(string resourceId)
+        {
+            return new ResourceIdentifier(resourceId).ResourceGroupName;
+        }
+
+        internal static void ExtractWebAppPropertiesFromWebApp(Site webapp, out string resourceGroupName, out string webAppName, out string slot)
+        {
+            resourceGroupName = GetResourceGroupFromResourceId(webapp.Id);
+
+            string webAppNameTemp, slotNameTemp;
+            if (TryParseAppAndSlotNames(webapp.SiteName, out webAppNameTemp, out slotNameTemp))
+            {
+                webAppName = webAppNameTemp;
+                slot = slotNameTemp;
+            }
+            else
+            {
+                webAppName = webapp.Name;
+                slot = null;
+            }
+        }
+
+        internal static Certificate[] GetCertificates(ResourcesClient resourceClient, WebsitesClient websitesClient, string resourceGroupName, string thumbPrint)
+        {
+            var certificateResources = resourceClient.FilterPSResources(new BasePSResourceParameters()
+            {
+                ResourceType = "Microsoft.Web/Certificates"
+            }).ToArray();
+
+            if (!string.IsNullOrEmpty(resourceGroupName))
+            {
+                certificateResources = certificateResources.Where(c => string.Equals(c.ResourceGroupName, resourceGroupName, StringComparison.OrdinalIgnoreCase)).ToArray();
+            }
+
+            var certificates =
+                certificateResources.Select(
+                    certificateResource =>
+                    websitesClient.GetCertificate(certificateResource.ResourceGroupName, certificateResource.Name));
+
+            if (!string.IsNullOrEmpty(thumbPrint))
+            {
+                certificates = certificates.Where(c => string.Equals(c.Thumbprint, thumbPrint, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
+            return certificates.ToArray();
         }
     }
 }
