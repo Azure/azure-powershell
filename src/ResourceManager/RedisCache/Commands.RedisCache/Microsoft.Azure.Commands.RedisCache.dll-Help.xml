@@ -1384,7 +1384,7 @@
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;New-AzureRmRedisCache -ResourceGroupName mygroup -Name mycache -RedisConfiguration @{"maxmemory-policy" = "allkeys-random"}
+          PS C:\&gt;Set-AzureRmRedisCache -ResourceGroupName mygroup -Name mycache -RedisConfiguration @{"maxmemory-policy" = "allkeys-random"}
 
           PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
