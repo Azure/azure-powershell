@@ -47,11 +47,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            if (StorageServiceType.File == ServiceType)
-            {
-                throw new PSInvalidOperationException(Resources.FileNotSupportMetrics);
-            }
-
             ServiceProperties serviceProperties = Channel.GetStorageServiceProperties(ServiceType, GetRequestOptions(ServiceType) , OperationContext);
 
             switch (MetricsType)

@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.WebApp.Properties
-{
-
-
+namespace Microsoft.Azure.Commands.WebApps.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.WebApp.Properties
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Websites.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.WebApps.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,24 @@ namespace Microsoft.Azure.Commands.WebApp.Properties
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing web app slot.
+        /// </summary>
+        internal static string RemoveWebappSlotMessage {
+            get {
+                return ResourceManager.GetString("RemoveWebappSlotMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the web app slot &quot;{0}({1})&quot;.
+        /// </summary>
+        internal static string RemoveWebappSlotWarning {
+            get {
+                return ResourceManager.GetString("RemoveWebappSlotWarning", resourceCulture);
             }
         }
         

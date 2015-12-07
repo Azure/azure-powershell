@@ -15,7 +15,6 @@
 using System;
 using System.Collections;
 using System.Management.Automation;
-using Microsoft.Azure.Management.KeyVault;
 using PSKeyVaultModels = Microsoft.Azure.Commands.KeyVault.Models;
 using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
@@ -65,10 +64,18 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         [Parameter(Mandatory = false,            
             ValueFromPipelineByPropertyName = true,
-            HelpMessage =
-                "If specified, enables secrets to be retrieved from this key vault by the Microsoft.Compute resource provider when referenced in resource creation."
-            )]
-        public SwitchParameter EnabledForDeployment { get; set; }        
+            HelpMessage = "If specified, enables secrets to be retrieved from this key vault by the Microsoft.Compute resource provider when referenced in resource creation.")]
+        public SwitchParameter EnabledForDeployment { get; set; }
+
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "If specified, enables secrets to be retrieved from this key vault by Azure Resource Manager when referenced in templates.")]
+        public SwitchParameter EnabledForTemplateDeployment { get; set; }
+
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "If specified, enables secrets to be retrieved from this key vault by Azure Disk Encryption.")]
+        public SwitchParameter EnabledForDiskEncryption { get; set; }
 
         [Parameter(Mandatory = false,            
             ValueFromPipelineByPropertyName = true,
@@ -84,7 +91,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         #endregion
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {            
             if (VaultExistsInCurrentSubscription(this.VaultName))
             {
@@ -97,6 +104,8 @@ namespace Microsoft.Azure.Commands.KeyVault
                 ResourceGroupName = this.ResourceGroupName,
                 Location = this.Location,
                 EnabledForDeployment = this.EnabledForDeployment.IsPresent,
+                EnabledForTemplateDeployment = EnabledForTemplateDeployment.IsPresent,
+                EnabledForDiskEncryption = EnabledForDiskEncryption.IsPresent,
                 SkuFamilyName = DefaultSkuFamily,
                 SkuName = string.IsNullOrWhiteSpace(this.Sku) ? DefaultSkuName : this.Sku,
                 TenantId = GetTenantId(),

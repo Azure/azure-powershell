@@ -1,7 +1,75 @@
-﻿* Azure Redis Cache
+* Azure SQL Database: new cmdlets for managing database threat detection policies:
+  * Get-AzureRmSqlDatabaseThreatDetectionPolicy
+  * Set-AzureRmSqlDatabaseThreatDetectionPolicy
+  * Remove-AzureRmSqlDatabaseThreatDetectionPolicy
+* Azure RemoteApp: New cmdlets for managing stale machine accounts in AD:
+  * Get-AzureRemoteAppVmStaleAdObject
+  * Clear-AzureRemoteAppVmStaleAdObject
+* Azure Intune: New cmdlets for Mobile Application management:
+   * Add-AzureRmIntuneAndroidMAMPolicyApp      
+   * Add-AzureRmIntuneAndroidMAMPolicyGroup    
+   * Add-AzureRmIntuneiOSMAMPolicyApp          
+   * Add-AzureRmIntuneiOSMAMPolicyGroup        
+   * Get-AzureRmIntuneAndroidMAMApp            
+   * Get-AzureRmIntuneAndroidMAMPolicy         
+   * Get-AzureRmIntuneAndroidMAMPolicyApp      
+   * Get-AzureRmIntuneAndroidMAMPolicyGroup    
+   * Get-AzureRmIntuneiOSMAMApp                
+   * Get-AzureRmIntuneiOSMAMPolicy             
+   * Get-AzureRmIntuneiOSMAMPolicyApp          
+   * Get-AzureRmIntuneiOSMAMPolicyGroup        
+   * Get-AzureRmIntuneMAMFlaggedUser           
+   * Get-AzureRmIntuneMAMStatus                
+   * Get-AzureRmIntuneMAMUserDevice            
+   * Get-AzureRmIntuneMAMUserFlaggedEnrolledApp
+   * Get-AzureRmIntuneOperationResult          
+   * Invoke-AzureRmIntuneMAMUserDeviceWipe     
+   * New-AzureRmIntuneAndroidMAMPolicy         
+   * New-AzureRmIntuneiOSMAMPolicy             
+   * Remove-AzureRmIntuneAndroidMAMPolicy      
+   * Remove-AzureRmIntuneAndroidMAMPolicyApp   
+   * Remove-AzureRmIntuneAndroidMAMPolicyGroup 
+   * Remove-AzureRmIntuneIOSMAMPolicy          
+   * Remove-AzureRmIntuneiOSMAMPolicyApp       
+   * Remove-AzureRmIntuneiOSMAMPolicyGroup     
+   * Set-AzureRmIntuneAndroidMAMPolicy         
+   * Set-AzureRmIntuneiOSMAMPolicy                   
+  
+## 2015.11.09 version 1.0.1
+* Azure Compute
+  * Added cmdlets for managing VM DiskEncryption extension
+* Azure KeyVault
+  * Added EnabledForDiskEncryption and EnabledForTemplateDeployment flags to Azure Key Vault access policy
+* Azure Websites 
+  * Fixed issues with website management client creation
+
+## 2015.11.05 version 1.0
+* Azure Compute
+  * AzureRmVM cmdlet bug fixes
+  * Fixes for DSC Extension cmdlets
+* Azure DataLake
+  * First release of Azure DataLake Store and Azure DataLake Analytics cmdlets
+* Azure Network
+  * Fixes to ExpressRoute cmdlets in Azure Resource Manager
+  * Changes to BGP cmdlets
+* Azure Notification Hubs
+  * First release of Azure Notification Hubs cmdlets
+* Azure Profile
+  * Enable Certificate login for AD Applications
+  * Get-AzureRmSubscription, Set-AzureRmContext search all tenants by default when no tenant is specified
+* Azure Redis Cache
   * Set-AzureRedisCache - Premium and vNet support for redis cache
   * New-AzureRedisCache - Premium and vNet support for redis cache
-
+* Azure Resource Manager
+  * Automatic RP Registration
+  * Updates for Find-Resource, Authorization cmdlets, and AzureAD cmdlets
+* Azure Sql
+  * Changes to Data Masking cmdlets
+* Azure Storage
+  * Added support for storage file and usage metrics in Azure Resource Manager cmdlets
+* Azure Websites
+  * New and rewritten cmdlets for Azure Web Application management
+  
 ## 2015.10.09 version 1.0 preview
 * Azure Resource Manager Management Cmdlets
   * New-AzureRmResourceGroup - Removed the template deployment parameters from this cmdlet. Template deployment will now be 

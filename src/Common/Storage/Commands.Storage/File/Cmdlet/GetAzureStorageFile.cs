@@ -16,6 +16,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
     using System.Globalization;
     using System.Management.Automation;
+    using System.Net;
+    using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.File;
 
     [Cmdlet(VerbsCommon.Get, Constants.FileCmdletName, DefaultParameterSetName = Constants.ShareNameParameterSetName)]
@@ -49,13 +51,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
         [Parameter(
             Position = 1,
-            HelpMessage = "Path to an existing directory.")]
+            HelpMessage = "Path to an existing file/directory.")]
         public string Path { get; set; }
 
         public override void ExecuteCmdlet()
         {
             CloudFileDirectory baseDirectory;
-            string[] subFolders = NamingUtil.ValidatePath(this.Path);
             switch (this.ParameterSetName)
             {
                 case Constants.DirectoryParameterSetName:
@@ -74,15 +75,65 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, "Invalid parameter set name: {0}", this.ParameterSetName));
             }
 
-            this.RunTask(async (taskId) =>
+            if (string.IsNullOrEmpty(this.Path))
             {
-                await this.Channel.EnumerateFilesAndDirectoriesAsync(
-                    baseDirectory.GetDirectoryReferenceByPath(subFolders),
-                    item => this.OutputStream.WriteObject(taskId, item),
-                    this.RequestOptions,
-                    this.OperationContext,
-                    this.CmdletCancellationToken);
-            });
+                this.RunTask(async (taskId) =>
+                {
+                    await this.Channel.EnumerateFilesAndDirectoriesAsync(
+                        baseDirectory,
+                        item => this.OutputStream.WriteObject(taskId, item),
+                        this.RequestOptions,
+                        this.OperationContext,
+                        this.CmdletCancellationToken);
+                });
+            }
+            else
+            {
+                this.RunTask(async (taskId) =>
+                {
+                    bool foundAFolder = true;
+                    string[] subfolders = NamingUtil.ValidatePath(this.Path);
+                    CloudFileDirectory targetDir = baseDirectory.GetDirectoryReferenceByPath(subfolders);
+                                        
+                    try
+                    {
+                        await this.Channel.FetchDirectoryAttributesAsync(
+                            targetDir,
+                            null,
+                            this.RequestOptions,
+                            this.OperationContext,
+                            this.CmdletCancellationToken);
+                    }
+                    catch (StorageException se)
+                    {
+                        if (null == se.RequestInformation
+                            || (int)HttpStatusCode.NotFound != se.RequestInformation.HttpStatusCode)
+                        {
+                            throw;
+                        }
+
+                        foundAFolder = false;
+                    }
+
+                    if (foundAFolder)
+                    {
+                        this.OutputStream.WriteObject(taskId, targetDir);
+                        return;
+                    }
+
+                    string[] filePath = NamingUtil.ValidatePath(this.Path, true);
+                    CloudFile targetFile = baseDirectory.GetFileReferenceByPath(filePath);
+
+                    await this.Channel.FetchFileAttributesAsync(
+                        targetFile,
+                        null,
+                        this.RequestOptions,
+                        this.OperationContext,
+                        this.CmdletCancellationToken);
+
+                    this.OutputStream.WriteObject(taskId, targetFile);
+                });
+            }
         }
     }
 }

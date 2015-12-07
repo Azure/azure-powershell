@@ -38,7 +38,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         protected readonly ConcurrentQueue<string> _debugMessages;
 
         private RecordingTracingInterceptor _httpTracingInterceptor;
-
+        
         private DebugStreamTraceListener _adalListener;
         protected static AzurePSDataCollectionProfile _dataCollectionProfile = null;
         protected static string _errorRecordFolderPath = null;
@@ -239,7 +239,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             DebugStreamTraceListener.RemoveAdalTracing(_adalListener);
             FlushDebugMessages();
 
-            AzureSession.ClientFactory.UserAgents.RemoveAll(u => u.Product.Name == ModuleName);
+            AzureSession.ClientFactory.UserAgents.RemoveWhere(u => u.Product.Name == ModuleName);
             AzureSession.ClientFactory.RemoveHandler(typeof(CmdletInfoHandler));
             base.EndProcessing();
         }
@@ -270,6 +270,12 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
             
             base.WriteError(errorRecord);
+        }
+
+        protected new void ThrowTerminatingError(ErrorRecord errorRecord)
+        {
+            FlushDebugMessages(IsDataCollectionAllowed());
+            base.ThrowTerminatingError(errorRecord);
         }
 
         protected new void WriteObject(object sendToPipeline)
@@ -487,6 +493,24 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
         }
 
+        public virtual void ExecuteCmdlet()
+        {
+            // Do nothing.
+        }
+
+        protected override void ProcessRecord()
+        {
+            try
+            {
+                base.ProcessRecord();
+                ExecuteCmdlet();
+            }
+            catch (Exception ex)
+            {
+                WriteExceptionError(ex);
+            }
+        }
+
         protected virtual void Dispose(bool disposing)
         {
             if (_adalListener != null)
@@ -497,6 +521,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         public void Dispose()
         {
+            try
+            {
+                FlushDebugMessages();
+            }
+            catch { }
             Dispose(true);
             GC.SuppressFinalize(this);
         }

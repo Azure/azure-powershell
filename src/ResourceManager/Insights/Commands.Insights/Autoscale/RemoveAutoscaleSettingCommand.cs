@@ -20,7 +20,7 @@ using Microsoft.Azure.Management.Insights;
 namespace Microsoft.Azure.Commands.Insights.Autoscale
 {
     /// <summary>
-    /// Remove an Alert rule
+    /// Remove an autoscale setting.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AutoscaleSetting"), OutputType(typeof(AzureOperationResponse))]
     public class RemoveAutoscaleSettingCommand : ManagementCmdletBase

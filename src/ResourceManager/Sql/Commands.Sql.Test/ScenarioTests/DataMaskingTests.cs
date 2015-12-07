@@ -20,19 +20,11 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
     public class DataMaskingTests : SqlTestsBase
     {
-
         [Fact]
         [Trait(Category.AcceptanceType, Category.BVT)]
-        public void TestDatabaseDataMaskingPolicyEnablementToggling()
+        public void TestDatabaseDataMaskingPrivilegedUsersChanges()
         {
-            RunPowerShellTest("Test-DatabaseDataMaskingPolicyEnablementToggling");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.BVT)]
-        public void TestDatabaseDataMaskingPrivilegedLoginsChanges()
-        {
-            RunPowerShellTest("Test-DatabaseDataMaskingPrivilegedLoginsChanges");
+            RunPowerShellTest("Test-DatabaseDataMaskingPrivilegedUsersChanges");
         }
 
         [Fact]
@@ -56,7 +48,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-DatabaseDataMaskingTextRuleLifecycle");
         }
 
-        [Fact]
+        [Fact(Skip = "Waiting for database structure validation")]
         [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestDatabaseDataMaskingRuleCreationFailures()
         {

@@ -34,9 +34,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The ExpressRouteCircuit")]
         public PSExpressRouteCircuit Circuit { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             // Verify if the subnet exists in the VirtualNetwork
             var peering = this.Circuit.Peerings.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
@@ -55,13 +55,18 @@ namespace Microsoft.Azure.Commands.Network
             peering.PeerASN = this.PeerASN;
             peering.VlanId = this.VlanId;
 
-            if (this.MircosoftConfigAdvertisedPublicPrefixes != null
-                && this.MircosoftConfigAdvertisedPublicPrefixes.Any())
+            if (!string.IsNullOrEmpty(this.SharedKey))
+            {
+                peering.SharedKey = this.SharedKey;
+            }
+
+            if (this.MicrosoftConfigAdvertisedPublicPrefixes != null
+                && this.MicrosoftConfigAdvertisedPublicPrefixes.Any())
             {
                 peering.MicrosoftPeeringConfig = new PSPeeringConfig();
-                peering.MicrosoftPeeringConfig.AdvertisedPublicPrefixes = this.MircosoftConfigAdvertisedPublicPrefixes;
-                peering.MicrosoftPeeringConfig.CustomerASN = this.MircosoftConfigCustomerAsn;
-                peering.MicrosoftPeeringConfig.RoutingRegistryName = this.MircosoftConfigRoutingRegistryName;
+                peering.MicrosoftPeeringConfig.AdvertisedPublicPrefixes = this.MicrosoftConfigAdvertisedPublicPrefixes;
+                peering.MicrosoftPeeringConfig.CustomerASN = this.MicrosoftConfigCustomerAsn;
+                peering.MicrosoftPeeringConfig.RoutingRegistryName = this.MicrosoftConfigRoutingRegistryName;
             }
 
             this.Circuit.Peerings.Add(peering);

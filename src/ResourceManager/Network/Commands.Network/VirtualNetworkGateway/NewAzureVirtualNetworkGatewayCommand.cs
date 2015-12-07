@@ -82,6 +82,13 @@ namespace Microsoft.Azure.Commands.Network
         public bool EnableBgp { get; set; }
 
         [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             ParameterSetName = "SetByResource",
+            HelpMessage = "GatewayDefaultSite")]
+        public PSLocalNetworkGateway GatewayDefaultSite { get; set; }
+
+        [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "An array of hashtables which represents resource tags.")]
@@ -92,9 +99,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             if (this.IsVirtualNetworkGatewayPresent(this.ResourceGroupName, this.Name))
             {
@@ -132,9 +139,18 @@ namespace Microsoft.Azure.Commands.Network
             vnetGateway.VpnType = this.VpnType;
             vnetGateway.EnableBgp = this.EnableBgp;
 
+            if (this.GatewayDefaultSite != null)
+            {
+                vnetGateway.GatewayDefaultSite = new PSResourceId();
+                vnetGateway.GatewayDefaultSite.Id = this.GatewayDefaultSite.Id;
+            }
+            else
+            {
+                vnetGateway.GatewayDefaultSite = null;
+            }
+
             // Map to the sdk object
             var vnetGatewayModel = Mapper.Map<MNM.VirtualNetworkGateway>(vnetGateway);
-            vnetGatewayModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.VirtualNetworkGatewayType;
             vnetGatewayModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create VirtualNetwork call

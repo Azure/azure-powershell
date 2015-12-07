@@ -45,6 +45,10 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         protected override DatabaseAuditingPolicyModel ApplyUserInputToModel(DatabaseAuditingPolicyModel model)
         {
             base.ApplyUserInputToModel(model);
+            if (model.AuditState == AuditStateType.New)
+            {
+                model.AuditState = AuditStateType.Enabled;
+            }       
             model.UseServerDefault = UseServerDefaultOptions.Enabled;
             model.StorageAccountName = GetStorageAccountName();
             return model;

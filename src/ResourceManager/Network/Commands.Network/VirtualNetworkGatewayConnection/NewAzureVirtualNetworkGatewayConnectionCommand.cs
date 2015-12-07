@@ -50,6 +50,13 @@ namespace Microsoft.Azure.Commands.Network
         public string Location { get; set; }
 
         [Parameter(
+         Mandatory = false,
+         ValueFromPipelineByPropertyName = true,
+         HelpMessage = "AuthorizationKey.")]
+        [ValidateNotNullOrEmpty]
+        public string AuthorizationKey { get; set; }
+
+        [Parameter(
              Mandatory = true,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "First virtual network gateway.")]
@@ -117,9 +124,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             if (this.IsVirtualNetworkGatewayConnectionPresent(this.ResourceGroupName, this.Name))
             {
@@ -152,6 +159,11 @@ namespace Microsoft.Azure.Commands.Network
             vnetGatewayConnection.ConnectionType = this.ConnectionType;
             vnetGatewayConnection.RoutingWeight = this.RoutingWeight;
             vnetGatewayConnection.SharedKey = this.SharedKey;
+            if (!string.IsNullOrEmpty(this.AuthorizationKey))
+            {
+                vnetGatewayConnection.AuthorizationKey = this.AuthorizationKey;
+            }
+            
 
             if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
             {
@@ -169,7 +181,6 @@ namespace Microsoft.Azure.Commands.Network
 
             // Map to the sdk object
             var vnetGatewayConnectionModel = Mapper.Map<MNM.VirtualNetworkGatewayConnection>(vnetGatewayConnection);
-            vnetGatewayConnectionModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.VirtualNetworkGatewayConnectionType;
             vnetGatewayConnectionModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create VirtualNetworkConnection call
