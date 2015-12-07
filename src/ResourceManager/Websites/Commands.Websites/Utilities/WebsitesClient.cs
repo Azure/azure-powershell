@@ -365,6 +365,126 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             }
         }
 
+        public BackupRequest GetWebAppBackupConfiguration(string resourceGroupName, string webSiteName, string slotName)
+        {
+            string qualifiedSiteName;
+            var useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
+            if (useSlot)
+            {
+                return WrappedWebsitesClient.Sites.GetSiteBackupConfigurationSlot(resourceGroupName, webSiteName, slotName);
+            }
+            else
+            {
+                return WrappedWebsitesClient.Sites.GetSiteBackupConfiguration(resourceGroupName,
+                    webSiteName);
+            }
+        }
+
+        public BackupRequest UpdateWebAppBackupConfiguration(string resourceGroupName, string webSiteName,
+            string slotName, BackupRequest newSchedule)
+        {
+            string qualifiedSiteName;
+            var useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
+            if (useSlot)
+            {
+                return WrappedWebsitesClient.Sites.UpdateSiteBackupConfigurationSlot(resourceGroupName,
+                    webSiteName, newSchedule, slotName);
+            }
+            else
+            {
+                return WrappedWebsitesClient.Sites.UpdateSiteBackupConfiguration(resourceGroupName, webSiteName, newSchedule);
+            }
+        }
+
+        public BackupItem BackupSite(string resourceGroupName, string webSiteName, string slotName,
+            BackupRequest request)
+        {
+            string qualifiedSiteName;
+            var useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
+            if (useSlot)
+            {
+                return WrappedWebsitesClient.Sites.BackupSiteSlot(resourceGroupName, webSiteName, request, slotName);
+            }
+            else
+            {
+                return WrappedWebsitesClient.Sites.BackupSite(resourceGroupName, webSiteName, request);
+            }
+        }
+
+        public BackupItemCollection ListSiteBackups(string resourceGroupName, string webSiteName, string slotName)
+        {
+            string qualifiedSiteName;
+            var useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
+            if (useSlot)
+            {
+                return WrappedWebsitesClient.Sites.ListSiteBackupsSlot(resourceGroupName, webSiteName, slotName);
+            }
+            else
+            {
+                return WrappedWebsitesClient.Sites.ListSiteBackups(resourceGroupName, webSiteName);
+            }
+        }
+
+        public BackupItem GetSiteBackupStatus(string resourceGroupName, string webSiteName, string slotName, string backupId)
+        {
+            string qualifiedSiteName;
+            var useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
+            if (useSlot)
+            {
+                return WrappedWebsitesClient.Sites.GetSiteBackupStatusSlot(resourceGroupName, webSiteName, backupId, slotName);
+            }
+            else
+            {
+                return WrappedWebsitesClient.Sites.GetSiteBackupStatus(resourceGroupName, webSiteName, backupId);
+            }
+        }
+
+        public BackupItem GetSiteBackupStatusSecrets(string resourceGroupName, string webSiteName, string slotName,
+            string backupId, BackupRequest request = null)
+        {
+            string qualifiedSiteName;
+            var useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
+            if (useSlot)
+            {
+                return WrappedWebsitesClient.Sites.GetSiteBackupStatusSecretsSlot(resourceGroupName, webSiteName,
+                    backupId, request, slotName);
+            }
+            else
+            {
+                return WrappedWebsitesClient.Sites.GetSiteBackupStatusSecrets(resourceGroupName, webSiteName, backupId, request);
+            }
+        }
+
+        public BackupItem DeleteBackup(string resourceGroupName, string webSiteName, string slotName,
+            string backupId)
+        {
+            string qualifiedSiteName;
+            var useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
+            if (useSlot)
+            {
+                return WrappedWebsitesClient.Sites.DeleteBackupSlot(resourceGroupName, webSiteName, backupId, slotName);
+            }
+            else
+            {
+                return WrappedWebsitesClient.Sites.DeleteBackup(resourceGroupName, webSiteName, backupId);
+            }
+        }
+
+        public void RestoreSite(string resourceGroupName, string webSiteName, string slotName,
+            string backupId, RestoreRequest request)
+        {
+            string qualifiedSiteName;
+            var useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
+            if (useSlot)
+            {
+                WrappedWebsitesClient.Sites.RestoreSiteSlot(resourceGroupName, webSiteName, backupId, request, slotName);
+            }
+            else
+            {
+                WrappedWebsitesClient.Sites.RestoreSite(resourceGroupName, webSiteName, backupId, request);
+            }
+        }
+
         private void WriteVerbose(string verboseFormat, params object[] args)
         {
             if (VerboseLogger != null)
