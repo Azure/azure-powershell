@@ -76,8 +76,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.2.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Network">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.3.0.3-preview\lib\net45\Microsoft.Azure.Management.Network.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Network, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.3.0.4-preview\lib\net45\Microsoft.Azure.Management.Network.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Data.Edm, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -104,8 +104,8 @@
       <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.1.4.1\lib\dotnet\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
-	<Reference Include="Microsoft.Rest.ClientRuntime.Azure">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.2.1.0\lib\dotnet\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.2.1.0\lib\portable-net45+win8+wpa81\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication">
@@ -207,6 +207,14 @@
     <Compile Include="ApplicationGateway\HttpListener\RemoveAzureApplicationGatewayHttpListenerCommand.cs" />
     <Compile Include="ApplicationGateway\HttpListener\SetAzureApplicationGatewayHttpListenerCommand.cs" />
     <Compile Include="ApplicationGateway\NewAzureApplicationGatewayCommand.cs" />
+    <Compile Include="ApplicationGateway\PathRule\AzureApplicationGatewayPathRuleConfigBase.cs" />
+    <Compile Include="ApplicationGateway\PathRule\NewAzureApplicationGatewayPathRuleConfigCommand.cs" />
+    <Compile Include="ApplicationGateway\Probe\AddAzureApplicationGatewayProbeConfigCommand.cs" />
+    <Compile Include="ApplicationGateway\Probe\AzureApplicationGatewayProbeConfigBase.cs" />
+    <Compile Include="ApplicationGateway\Probe\GetAzureApplicationGatewayProbeConfigCommand.cs" />
+    <Compile Include="ApplicationGateway\Probe\NewAzureApplicationGatewayProbeConfigCommand.cs" />
+    <Compile Include="ApplicationGateway\Probe\RemoveAzureApplicationGatewayProbeConfigCommand.cs" />
+    <Compile Include="ApplicationGateway\Probe\SetAzureApplicationGatewayProbeConfigCommand.cs" />
     <Compile Include="ApplicationGateway\RemoveAzureApplicationGatewayCommand.cs" />
     <Compile Include="ApplicationGateway\RequestRoutingRule\AddAzureApplicationGatewayRequestRoutingRuleCommand.cs" />
     <Compile Include="ApplicationGateway\RequestRoutingRule\AzureApplicationGatewayRequestRoutingRuleBase.cs" />
@@ -227,6 +235,12 @@
     <Compile Include="ApplicationGateway\SslCertificate\SetAzureApplicationGatewaySslCertificateCommand.cs" />
     <Compile Include="ApplicationGateway\StartAzureApplicationGatewayCommand.cs" />
     <Compile Include="ApplicationGateway\StopAzureApplicationGatewayCommand.cs" />
+    <Compile Include="ApplicationGateway\UrlPathMap\AddAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
+    <Compile Include="ApplicationGateway\UrlPathMap\AzureApplicationGatewayUrlPathMapConfigBase.cs" />
+    <Compile Include="ApplicationGateway\UrlPathMap\GetAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
+    <Compile Include="ApplicationGateway\UrlPathMap\NewAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
+    <Compile Include="ApplicationGateway\UrlPathMap\RemoveAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
+    <Compile Include="ApplicationGateway\UrlPathMap\SetAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
     <Compile Include="Common\NetworkBaseCmdlet.cs" />
     <Compile Include="Common\NetworkClient.cs" />
     <Compile Include="Common\NetworkResourceManagerProfile.cs" />
@@ -260,9 +274,12 @@
     <Compile Include="Models\PSApplicationGatewayFrontendPort.cs" />
     <Compile Include="Models\PSApplicationGatewayHttpListener.cs" />
     <Compile Include="Models\PSApplicationGatewayIPConfiguration.cs" />
+    <Compile Include="Models\PSApplicationGatewayPathRule.cs" />
+    <Compile Include="Models\PSApplicationGatewayProbe.cs" />
     <Compile Include="Models\PSApplicationGatewayRequestRoutingRule.cs" />
     <Compile Include="Models\PSApplicationGatewaySku.cs" />
     <Compile Include="Models\PSApplicationGatewaySslCertificate.cs" />
+    <Compile Include="Models\PSApplicationGatewayUrlPathMap.cs" />
     <Compile Include="Models\PSInboundNatPool.cs" />
     <Compile Include="Models\PSExpressRouteServiveProvider.cs" />
     <Compile Include="Models\PSExpressRouteCircuitArpTable.cs" />
