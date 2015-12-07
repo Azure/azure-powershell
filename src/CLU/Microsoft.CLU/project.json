@@ -1,0 +1,31 @@
+﻿{
+  "compilationOptions": {
+    "emitEntryPoint": true
+  },
+  "dependencies": {
+    "Microsoft.CLU.Common": {
+      "type": "build"
+    },
+    "Microsoft.NETCore": "5.0.1-beta-23516",
+    "Microsoft.NETCore.Platforms": "1.0.1-beta-23516",
+    "System.Console": "4.0.0-beta-23516",
+    "Newtonsoft.Json": "7.0.1",
+    "System.Diagnostics.Process": "4.1.0-beta-23516",
+    "System.IO": "4.0.11-beta-23516",
+    "System.Reflection": "4.1.0-beta-23516",
+    "System.Reflection.TypeExtensions": "4.1.0-beta-23516",
+    "System.Runtime.Serialization.Primitives": "4.1.0-beta-23516"
+  },
+  "contentExclude": [
+    "*.xproj*"
+  ],
+  "frameworks": {
+    "dnxcore50": { }
+  },
+  "runtimes": {
+    "osx.10.10-x64": { },
+    "ubuntu.14.04-x64": { },
+    "win7-x64": { },
+    "win7-x86": { }
+  }
+}
