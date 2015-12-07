@@ -78,6 +78,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             var urlPathMap = new PSApplicationGatewayUrlPathMap();
 
+            urlPathMap.Name = this.Name;
             urlPathMap.PathRules = this.PathRules;
 
             if (!string.IsNullOrEmpty(this.DefaultBackendAddressPoolId))
@@ -91,6 +92,11 @@ namespace Microsoft.Azure.Commands.Network
                 urlPathMap.DefaultBackendHttpSettings = new PSResourceId();
                 urlPathMap.DefaultBackendHttpSettings.Id = this.DefaultBackendHttpSettingsId;
             }
+
+            urlPathMap.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
+                this.NetworkClient.NetworkManagementClient.SubscriptionId,
+                Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewayUrlPathMapName,
+                this.Name);
 
             return urlPathMap;
         }

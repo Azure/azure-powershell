@@ -47,20 +47,21 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string CookieBasedAffinity { get; set; }
 
-        [Parameter(        
-               HelpMessage = "Request Timeout")]        
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Request Timeout. Default value 30 seconds.")]        
         [ValidateNotNullOrEmpty]
         public uint RequestTimeout { get; set; }
 
         [Parameter(
-        ParameterSetName = "SetByResourceId",
-        HelpMessage = "ID of the application gateway Probe")]
+            Mandatory = false,
+            HelpMessage = "ID of the application gateway Probe")]
         [ValidateNotNullOrEmpty]
         public string ProbeId { get; set; }
 
         [Parameter(
-                ParameterSetName = "SetByResource",
-                HelpMessage = "Application gateway Probe")]
+            Mandatory = false,
+            HelpMessage = "Application gateway Probe")]
         [ValidateNotNullOrEmpty]
         public PSApplicationGatewayProbe Probe { get; set; }
 
@@ -68,13 +69,10 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.ExecuteCmdlet();
 
-            if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
+            if (Probe != null)
             {
-                if (Probe != null)
-                {
-                    this.ProbeId = this.Probe.Id;
-                }                
-            }
+                this.ProbeId = this.Probe.Id;
+            }                
         }
         public PSApplicationGatewayBackendHttpSettings NewObject()
         {
@@ -83,7 +81,14 @@ namespace Microsoft.Azure.Commands.Network
             backendHttpSettings.Port = this.Port;
             backendHttpSettings.Protocol = this.Protocol;
             backendHttpSettings.CookieBasedAffinity = this.CookieBasedAffinity;
-            backendHttpSettings.RequestTimeout = this.RequestTimeout;
+            if (0 == this.RequestTimeout)
+            {
+                backendHttpSettings.RequestTimeout = 30;
+            }
+            else
+            {
+                backendHttpSettings.RequestTimeout = this.RequestTimeout;
+            }
             if (!string.IsNullOrEmpty(this.ProbeId))
             {
                 backendHttpSettings.Probe = new PSResourceId();

@@ -93,5 +93,17 @@ namespace Microsoft.Azure.Commands.Network.Models
          {
              get { return JsonConvert.SerializeObject(RequestRoutingRules, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
          }
+
+         [JsonIgnore]
+         public string ProbesText
+         {
+             get { return JsonConvert.SerializeObject(Probes, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+         }
+
+         [JsonIgnore]
+         public string UrlPathMapsText
+         {
+             get { return JsonConvert.SerializeObject(UrlPathMaps, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+         }
      }
 }

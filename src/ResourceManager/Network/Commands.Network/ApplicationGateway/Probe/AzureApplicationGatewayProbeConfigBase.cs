@@ -60,15 +60,9 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
            Mandatory = true,
-           HelpMessage = "Frontend port")]
-        [ValidateNotNullOrEmpty]
-        public uint UnhealthyThreshold { get; set; }
-
-        [Parameter(
-           Mandatory = true,
            HelpMessage = "Probe  retry count. Backend server is marked down after consecutive probe failure count reaches UnhealthyThreshold")]
         [ValidateNotNullOrEmpty]
-        public string ProvisioningState { get; set; }
+        public uint UnhealthyThreshold { get; set; }
 
         public PSApplicationGatewayProbe NewObject()
         {
