@@ -77,7 +77,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.2.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Network">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.3.0.2-preview\lib\net45\Microsoft.Azure.Management.Network.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.3.0.3-preview\lib\net45\Microsoft.Azure.Management.Network.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Data.Edm, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -230,6 +230,11 @@
     <Compile Include="Common\NetworkBaseCmdlet.cs" />
     <Compile Include="Common\NetworkClient.cs" />
     <Compile Include="Common\NetworkResourceManagerProfile.cs" />
+    <Compile Include="ExpressRouteCircuit\Authorization\AddAzureExpressRouteCircuitAuthorizationCommand.cs" />
+    <Compile Include="ExpressRouteCircuit\Authorization\AzureExpressRouteCircuitAuthorizationBase.cs" />
+    <Compile Include="ExpressRouteCircuit\Authorization\GetAzureExpressRouteCircuitAuthorizationCommand.cs" />
+    <Compile Include="ExpressRouteCircuit\Authorization\NewAzureExpressRouteCircuitAuthorizationCommand.cs" />
+    <Compile Include="ExpressRouteCircuit\Authorization\RemoveAzureExpressRouteCircuitAuthorizationCommand.cs" />
     <Compile Include="LoadBalancer\InboundNatPool\AddAzureLoadBalancerInboundNatPoolConfigCommand.cs" />
     <Compile Include="LoadBalancer\InboundNatPool\AzureLoadBalancerInboundNatPoolConfigBase.cs" />
     <Compile Include="LoadBalancer\InboundNatPool\GetAzureLoadBalancerInboundNatPoolConfigCommand.cs" />

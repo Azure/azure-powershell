@@ -192,3 +192,73 @@ function Test-ExpressRouteCircuitPeeringCRUD
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Tests ExpressRouteCircuitAuthorizationCRUD.
+#>
+function Test-ExpressRouteCircuitAuthorizationCRUD
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $circuitName = Get-ResourceName
+	$rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/expressRouteCircuits"
+    $location = Get-ProviderLocation $resourceTypeParent
+    $location = "brazilSouth"
+	$authorizationName = "testkey"
+
+    try 
+    {
+        # Create the resource group
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+        
+        # Create the ExpressRouteCircuit with authorization
+		$authorization = New-AzureRmExpressRouteCircuitAuthorization -Name $authorizationName
+		$circuit = New-AzureRmExpressRouteCircuit -Name $circuitName -Location $location -ResourceGroupName $rgname -SkuTier Standard -SkuFamily MeteredData  -ServiceProviderName "equinix" -PeeringLocation "Silicon Valley" -BandwidthInMbps 1000 -Authorization $authorization
+        
+        #verification
+        Assert-AreEqual $rgName $circuit.ResourceGroupName
+        Assert-AreEqual $circuitName $circuit.Name
+        Assert-NotNull $circuit.Location
+        Assert-NotNull $circuit.Etag
+        Assert-AreEqual 1 @($circuit.Authorizations).Count
+        Assert-AreEqual "Standard_MeteredData" $circuit.Sku.Name
+        Assert-AreEqual "Standard" $circuit.Sku.Tier
+        Assert-AreEqual "MeteredData" $circuit.Sku.Family
+        Assert-AreEqual "equinix" $circuit.ServiceProviderProperties.ServiceProviderName
+        Assert-AreEqual "Silicon Valley" $circuit.ServiceProviderProperties.PeeringLocation
+        Assert-AreEqual "1000" $circuit.ServiceProviderProperties.BandwidthInMbps
+		
+		# Verify the authorization
+		Assert-AreEqual $authorizationName $circuit.Authorizations[0].Name
+		
+
+		# get authorization
+		#$a = $circuit | Get-AzureRmExpressRouteCircuitAuthorization -Name $authorizationName
+		#Assert-AreEqual $authorizationName $a.Name
+
+		# add a new authorization
+		#$circuit = Get-AzureRmExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname | Add-AzureRmExpressRouteCircuitAuthorization -Name "testkey2" | Set-AzureRmExpressRouteCircuit
+
+		#$a = $circuit | Get-AzureRmExpressRouteCircuitAuthorization -Name "testkey2"
+		#Assert-AreEqual "testkey2" $a.Name
+		
+
+		#$listAuthorization = $circuit | Get-AzureRmExpressRouteCircuitAuthorization
+		#Assert-AreEqual 2 @($listAuthorization).Count
+
+        # Delete Circuit
+        $delete = Remove-AzureRmExpressRouteCircuit -ResourceGroupName $rgname -name $circuitName -PassThru -Force
+        Assert-AreEqual true $delete
+		        
+        $list = Get-AzureRmExpressRouteCircuit -ResourceGroupName $rgname
+        Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+

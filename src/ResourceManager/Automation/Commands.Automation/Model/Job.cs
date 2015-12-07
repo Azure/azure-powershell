@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
 
             if (job.Properties == null) return;
 
-            this.Id = job.Properties.JobId;
+            this.JobId = job.Properties.JobId;
             this.CreationTime = job.Properties.CreationTime.ToLocalTime();
             this.LastModifiedTime = job.Properties.LastModifiedTime.ToLocalTime();
             this.StartTime = job.Properties.StartTime.HasValue ? job.Properties.StartTime.Value.ToLocalTime() : (DateTimeOffset?)null;
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Gets or sets the job id.
         /// </summary>
-        public Guid Id { get; set; }
+        public Guid JobId { get; set; }
 
         /// <summary>
         /// Gets or sets the tags.
