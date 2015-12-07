@@ -29,9 +29,11 @@ $refFileText = ""
 $refFiles | %{$refFileText +=  ("        <reference file=""" + $_.Name + """/>`r`n")}
 $contentFileText = ""
 $contentFiles | %{ $contentFileText += ("    <file src=""" + $_.Name + """ target=""content""/>`r`n")}
-$contentFileText += "    <file src=""content\azure.lx"" target=""content""/>`r`n"
+if ($packageId -ne "Microsoft.CLU.Commands") 
+{
+	$contentFileText += "    <file src=""content\azure.lx"" target=""content""/>`r`n"
+}
 $contentFileText += "    <file src=""content\package.cfg"" target=""content""/>`r`n"
-$contentFileText += "    <file src=""tools\azure.bat"" target=""tools""/>`r`n"
 $sourceFileText = ""
 $refFiles | %{$sourceFileText += ("    <file src=""" + $_.Name + """ target=""lib\dnxcore50""/>`r`n")}
 $outputContent = $fileContent -replace "%PackageVersion%", $packageVersion 
