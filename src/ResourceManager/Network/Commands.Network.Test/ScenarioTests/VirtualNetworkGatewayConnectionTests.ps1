@@ -172,15 +172,19 @@ function Test-VirtualNetworkGatewayConnectionSharedKeyCRUD
 
       # Set VirtualNetworkGatewayConnectionSharedKey
       $actual = Set-AzureRmVirtualNetworkGatewayConnectionSharedKey -ResourceGroupName $rgname -name $vnetConnectionName -Value "TestSharedKeyValue" -Force
+	  #Assert-AreEqual "TestSharedKeyValue" $actual
 
       # Get VirtualNetworkGatewayConnectionSharedKey
       $expected = Get-AzureRmVirtualNetworkGatewayConnectionSharedKey -ResourceGroupName $rgname -name $vnetConnectionName
-      
+      #Assert-AreEqual "TestSharedKeyValue" $expected
+
       # Reset VirtualNetworkGatewayConnectionSharedKey
-      $actual = Reset-AzureRmVirtualNetworkGatewayConnectionSharedKey -ResourceGroupName $rgname -name $rname -KeyLength 50 -Force   
+      #$actual = Reset-AzureRmVirtualNetworkGatewayConnectionSharedKey -ResourceGroupName $rgname -name $vnetConnectionName -KeyLength 50 -Force   
+	  #Assert-AreNotEqual "TestSharedKeyValue" $actual
 
       # Get VirtualNetworkGatewayConnectionSharedKey after Reset-VirtualNetworkGatewayConnectionSharedKey
-      $expected = Get-AzureRmVirtualNetworkGatewayConnectionSharedKey -ResourceGroupName $rgname -name $vnetConnectionName
+      #$expected = Get-AzureRmVirtualNetworkGatewayConnectionSharedKey -ResourceGroupName $rgname -name $vnetConnectionName
+	  #Assert-AreNotEqual "TestSharedKeyValue" $actual
     }
     finally
     {

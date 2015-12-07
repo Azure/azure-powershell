@@ -25,45 +25,49 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmVirtualNetworkGatewayDefaultSite"), OutputType(typeof(PSVirtualNetworkGateway))]
-    public class SetAzureVirtualNetworkGatewayDefaultSiteCommand : VirtualNetworkGatewayBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureRmVpnClientPackage"), OutputType(typeof(string))]
+    public class GetAzureVpnClientPackage : VirtualNetworkGatewayBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The VirtualNetworkGateway")]
-        [ValidateNotNull]
-        public PSVirtualNetworkGateway VirtualNetworkGateway { get; set; }
+            HelpMessage = "ResourceGroup name")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "VirtualNetworkGateway name")]
+        [ValidateNotNullOrEmpty]
+        public string VirtualNetworkGatewayName { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = "SetByResource",
-            HelpMessage = "GatewayDefault local network Site.")]
-        [ValidateNotNull]
-        public PSLocalNetworkGateway GatewayDefaultSite { get; set; }
+            HelpMessage = "ProcessorArchitecture")]
+        [ValidateSet(
+        MNM.ProcessorArchitecture.Amd64,
+        MNM.ProcessorArchitecture.X86,
+        IgnoreCase = true)]
+        public string ProcessorArchitecture { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            if (!this.IsVirtualNetworkGatewayPresent(this.VirtualNetworkGateway.ResourceGroupName, this.VirtualNetworkGateway.Name))
+            if (!this.IsVirtualNetworkGatewayPresent(ResourceGroupName, VirtualNetworkGatewayName))
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
             }
 
-            this.VirtualNetworkGateway.GatewayDefaultSite = new PSResourceId();
-            this.VirtualNetworkGateway.GatewayDefaultSite.Id = this.GatewayDefaultSite.Id;
+            PSVpnClientParameters vpnClientParams = new PSVpnClientParameters();
+            vpnClientParams.ProcessorArchitecture = this.ProcessorArchitecture;
+            var vnetVpnClientParametersModel = Mapper.Map<MNM.VpnClientParameters>(vpnClientParams);
 
-            // Map to the sdk object
-            var virtualnetGatewayModel = Mapper.Map<MNM.VirtualNetworkGateway>(this.VirtualNetworkGateway);
-            virtualnetGatewayModel.Tags = TagsConversionHelper.CreateTagDictionary(this.VirtualNetworkGateway.Tag, validate: true);
+            string packageUrl = this.VirtualNetworkGatewayClient.Generatevpnclientpackage(ResourceGroupName, VirtualNetworkGatewayName, vnetVpnClientParametersModel);
 
-            this.VirtualNetworkGatewayClient.CreateOrUpdate(this.VirtualNetworkGateway.ResourceGroupName, this.VirtualNetworkGateway.Name, virtualnetGatewayModel);
-
-            var getvirtualnetGateway = this.GetVirtualNetworkGateway(this.VirtualNetworkGateway.ResourceGroupName, this.VirtualNetworkGateway.Name);
-
-            WriteObject(getvirtualnetGateway);
+            WriteObject(packageUrl);
         }
     }
 }
