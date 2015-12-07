@@ -336,9 +336,9 @@ namespace Microsoft.Azure.Commands.HDInsight
             }
             if (CertificateFilePath != null && CertificatePassword != null)
             {
-                Microsoft.Azure.Management.HDInsight.Models.ServicePrincipal servicePrincipal = 
-                    new Microsoft.Azure.Management.HDInsight.Models.ServicePrincipal(
-                        GetApplicationId(), GetTenantId(AadTenantId), File.ReadAllBytes(CertificateFilePath), CertificatePassword);
+                var servicePrincipal = new Management.HDInsight.Models.ServicePrincipal(
+                    GetApplicationId(), GetTenantId(AadTenantId), File.ReadAllBytes(CertificateFilePath),
+                    CertificatePassword);
                 parameters.Principal = servicePrincipal;
             }
 
