@@ -15,29 +15,29 @@
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
-namespace Commands.Network.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
-    public class ExpressRouteCircuitTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class DiagnosticsExtensionTests
     {
-        [Fact(Skip = "Rerecord tests")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestExpressRouteCircuitCRUD()
+        public void TestDiagnosticsExtensionBasic()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteCircuitCRUD");
-        }
-
-        [Fact(Skip = "Rerecord tests")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestExpressRouteCircuitPeeringCRUD()
-        {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteCircuitPeeringCRUD");
+            ComputeTestController.NewInstance.RunPsTest("Test-DiagnosticsExtensionBasic");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestExpressRouteCircuitAuthorizationCRUD()
+        public void TestDiagnosticsExtensionSepcifyStorageAccountName()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteCircuitAuthorizationCRUD");
+            ComputeTestController.NewInstance.RunPsTest("Test-DiagnosticsExtensionSepcifyStorageAccountName");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDiagnosticsExtensionCantListSepcifyStorageAccountKey()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-DiagnosticsExtensionCantListSepcifyStorageAccountKey");
         }
     }
 }
