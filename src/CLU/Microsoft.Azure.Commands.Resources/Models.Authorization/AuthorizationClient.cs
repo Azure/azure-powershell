@@ -23,6 +23,7 @@ using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Rest.Azure;
+using Microsoft.Rest.Azure.OData;
 
 namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 {
@@ -78,7 +79,9 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// <param name="roleId">RoleId guid</param>
         public PSRoleDefinition GetRoleDefinition(Guid roleId)
         {
-            return AuthorizationManagementClient.RoleDefinitions.Get(roleId.ToString()).ToPSRoleDefinition();
+            return AuthorizationManagementClient.RoleDefinitions.Get(
+                "subscription/" + AuthorizationManagementClient.SubscriptionId, 
+                roleId.ToString()).ToPSRoleDefinition();
         }
 
         /// <summary>
@@ -90,7 +93,10 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         public List<PSRoleDefinition> FilterRoleDefinitions(string name)
         {
             List<PSRoleDefinition> result = new List<PSRoleDefinition>();
-            result.AddRange(AuthorizationManagementClient.RoleDefinitions.List(item => item.Name == name).Select(r => r.ToPSRoleDefinition()));
+            result.AddRange(AuthorizationManagementClient.RoleDefinitions.List(
+                        "subscription/" + AuthorizationManagementClient.SubscriptionId,
+                        new ODataQuery<RoleDefinition>( item => item.Name == name))
+                  .Select(r => r.ToPSRoleDefinition()));
 
             return result;
         }
@@ -102,7 +108,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         public List<PSRoleDefinition> GetRoleDefinitions()
         {
             List<PSRoleDefinition> result = new List<PSRoleDefinition>();
-            result.AddRange(AuthorizationManagementClient.RoleDefinitions.List()
+            result.AddRange(AuthorizationManagementClient.RoleDefinitions.List(
+                        "subscription/" + AuthorizationManagementClient.SubscriptionId)
                 .Select(r => r.ToPSRoleDefinition()));
             return result;
         }
@@ -114,7 +121,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         public List<PSRoleDefinition> FilterRoleDefinitionsByCustom()
         {
             List<PSRoleDefinition> result = new List<PSRoleDefinition>();
-            result.AddRange(AuthorizationManagementClient.RoleDefinitions.List()
+            result.AddRange(AuthorizationManagementClient.RoleDefinitions.List(
+                        "subscription/" + AuthorizationManagementClient.SubscriptionId)
                 .Where(r => r.Properties.Type == AuthorizationClientExtensions.CustomRole)
                 .Select(r => r.ToPSRoleDefinition()));
             return result;
@@ -182,7 +190,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                     principalId = string.IsNullOrEmpty(options.ADObjectFilter.Id.ToString()) ? adObject.Id.ToString() : options.ADObjectFilter.Id;
                 }
 
-                var tempResult = AuthorizationManagementClient.RoleAssignments.List(false, principalId, assignedToPrincipalId);
+                var tempResult = AuthorizationManagementClient.RoleAssignments.List(
+                    new ODataQuery<RoleAssignmentFilter>( f => f.PrincipalId == principalId && f.AssignedTo(assignedToPrincipalId)));
                 result.AddRange(tempResult.FilterRoleAssignmentsOnRoleId(AuthorizationHelper.GetRoleDefinitionFullyQualifiedId(currentSubscription, options.RoleDefinitionId))
                     .ToPSRoleAssignments(this, ActiveDirectoryClient, options.ExcludeAssignmentsForDeletedPrincipals));
 
@@ -202,7 +211,11 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             else if (!string.IsNullOrEmpty(options.Scope))
             {
                 // Filter by scope and above directly
-                var tempResult = AuthorizationManagementClient.RoleAssignments.ListForScope(options.Scope, true, principalId, assignedToPrincipalId);
+                var tempResult = AuthorizationManagementClient.RoleAssignments.ListForScope(
+                    options.Scope,
+                    new ODataQuery<RoleAssignmentFilter>(
+                        f => f.AtScope() && f.PrincipalId == principalId && f.AssignedTo(assignedToPrincipalId)));
+
                 result.AddRange(tempResult.FilterRoleAssignmentsOnRoleId(AuthorizationHelper.GetRoleDefinitionFullyQualifiedId(currentSubscription, options.RoleDefinitionId))
                     .ToPSRoleAssignments(this, ActiveDirectoryClient, options.ExcludeAssignmentsForDeletedPrincipals));
 
@@ -215,7 +228,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             }
             else
             {
-                var tempResult = AuthorizationManagementClient.RoleAssignments.List(false, principalId, assignedToPrincipalId);
+                var tempResult = AuthorizationManagementClient.RoleAssignments.List(
+                    new ODataQuery<RoleAssignmentFilter>(f=> f.PrincipalId == principalId && f.AssignedTo(assignedToPrincipalId)));
                 result.AddRange(tempResult
                      .FilterRoleAssignmentsOnRoleId(AuthorizationHelper.GetRoleDefinitionFullyQualifiedId(currentSubscription, options.RoleDefinitionId))
                      .ToPSRoleAssignments(this, ActiveDirectoryClient, options.ExcludeAssignmentsForDeletedPrincipals));
@@ -270,7 +284,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// <returns>The deleted role assignments</returns>
         public IEnumerable<PSRoleAssignment> RemoveRoleAssignment(FilterRoleAssignmentsOptions options, string subscriptionId)
         {
-            // Match role assignments at exact scope. Ideally, atmost 1 roleAssignment should match the criteria 
+            // Match role assignments at exact scope. Ideally, at most 1 roleAssignment should match the criteria 
             // but an edge case can have multiple role assignments to the same role or multiple role assignments to different roles, with same name.
             // The FilterRoleAssignments takes care of paging internally
             IEnumerable<PSRoleAssignment> roleAssignments = FilterRoleAssignments(options, currentSubscription: subscriptionId)
@@ -355,7 +369,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         }
 
         /// <summary>
-        /// Updates a role definiton.
+        /// Updates a role definition.
         /// </summary>
         /// <param name="role">The role definition to update.</param>
         /// <returns>The updated role definition.</returns>

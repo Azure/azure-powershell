@@ -15,6 +15,7 @@
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.Rest.Azure;
+using Microsoft.Rest.Azure.OData;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -228,10 +229,11 @@ namespace Microsoft.Azure.Commands.Resources.Models
                         throw new ArgumentException(ProjectResources.InvalidTagFormat);
                     }
                 }
-                var listResult = ResourceManagementClient.Resources.List( item =>
-                    item.ResourceType == parameters.ResourceType &&
-                    item.Tagname == tagValuePair.Name && 
-                    item.Tagvalue == tagValuePair.Value);
+                var listResult = ResourceManagementClient.Resources.List( 
+                            new ODataQuery<GenericResourceFilter>( f => 
+                                f.ResourceType == parameters.ResourceType &&
+                                f.Tagname == tagValuePair.Name &&
+                                f.Tagvalue == tagValuePair.Value));
 
                 if (listResult != null)
                 {
@@ -317,11 +319,11 @@ namespace Microsoft.Azure.Commands.Resources.Models
             }
             else
             {
-
                 IPage<GenericResource> result;
                 if (options != null && options.ResourceType != null)
                 {
-                    result = ResourceManagementClient.Resources.List(item => item.ResourceType == options.ResourceType);
+                    result = ResourceManagementClient.Resources.List(
+                        new ODataQuery<GenericResourceFilter>( f => f.ResourceType == options.ResourceType));
                 }
                 else
                 {
