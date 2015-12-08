@@ -12,19 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Xunit;
+using System.Management.Automation;
+using Microsoft.Azure.Commands.Network.Models;
+using MNM = Microsoft.Azure.Management.Network.Models;
 
-namespace Commands.Network.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.Network
 {
-    public class ApplicationGatewayTests : RMTestBase
+    [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewayPathRuleConfig"), OutputType(typeof(PSApplicationGatewayPathRule))]
+    public class NewAzureApplicationGatewayPathRuleConfigCommand : AzureApplicationGatewayPathRuleConfigBase
     {
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestApplicationGatewayCRUD()
+        public override void ExecuteCmdlet()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-ApplicationGatewayCRUD");
+            base.ExecuteCmdlet();
+            WriteObject(base.NewObject());
         }
     }
 }
