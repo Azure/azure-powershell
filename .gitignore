@@ -20,6 +20,7 @@ app.config
 *.user
 *.sln.docstates
 *.lock.json
+launchSettings.json
 .vs/
 artifacts/
 
