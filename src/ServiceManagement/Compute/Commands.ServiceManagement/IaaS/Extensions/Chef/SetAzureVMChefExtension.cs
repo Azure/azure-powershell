@@ -97,6 +97,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         public SwitchParameter DeleteChefConfig { get; set; }
 
         [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Chef client version to be installed with the extension")]
+        [ValidateNotNullOrEmpty]
+        public string BootstrapVersion { get; set; }
+
+        [Parameter(
             Mandatory = true,
             ParameterSetName = LinuxParameterSetName,
             HelpMessage = "Set extension for Linux.")]
@@ -167,6 +173,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             bool IsBootstrapOptionsEmpty = string.IsNullOrEmpty(this.BootstrapOptions);
             string AutoUpdateChefClient = this.AutoUpdateChefClient.IsPresent ? "true" : "false";
             string DeleteChefConfig = this.DeleteChefConfig.IsPresent ? "true" : "false";
+            string BootstrapVersion = this.BootstrapVersion;
 
             //Cases handled:
             // 1. When clientRb given by user and:
@@ -223,7 +230,8 @@ validation_client_name 	\""{1}\""
                     this.PublicConfiguration = string.Format("{{{0},{1},{2}}}",
                         string.Format(AutoUpdateTemplate, AutoUpdateChefClient),
                         string.Format(DeleteChefConfigTemplate, DeleteChefConfig),
-                        string.Format(ClientRbTemplate, ClientConfig));
+                        string.Format(ClientRbTemplate, ClientConfig),
+                        string.Format(BootstrapVersionTemplate, BootstrapVersion));
                 }
                 else
                 {
@@ -231,7 +239,8 @@ validation_client_name 	\""{1}\""
                         string.Format(AutoUpdateTemplate, AutoUpdateChefClient),
                         string.Format(DeleteChefConfigTemplate, DeleteChefConfig),
                         string.Format(ClientRbTemplate, ClientConfig),
-                        string.Format(BootStrapOptionsTemplate, this.BootstrapOptions));
+                        string.Format(BootStrapOptionsTemplate, this.BootstrapOptions),
+                        string.Format(BootstrapVersionTemplate, BootstrapVersion));
                 }
             }
             else
@@ -242,7 +251,8 @@ validation_client_name 	\""{1}\""
                         string.Format(AutoUpdateTemplate, AutoUpdateChefClient),
                         string.Format(DeleteChefConfigTemplate, DeleteChefConfig),
                         string.Format(ClientRbTemplate, ClientConfig),
-                        string.Format(RunListTemplate, this.RunList));
+                        string.Format(RunListTemplate, this.RunList),
+                        string.Format(BootstrapVersionTemplate, BootstrapVersion));
                 }
                 else
                 {
@@ -251,7 +261,8 @@ validation_client_name 	\""{1}\""
                          string.Format(DeleteChefConfigTemplate, DeleteChefConfig),
                          string.Format(ClientRbTemplate, ClientConfig),
                          string.Format(RunListTemplate, this.RunList),
-                         string.Format(BootStrapOptionsTemplate, this.BootstrapOptions));
+                         string.Format(BootStrapOptionsTemplate, this.BootstrapOptions),
+                         string.Format(BootstrapVersionTemplate, BootstrapVersion));
                 }
             }
 

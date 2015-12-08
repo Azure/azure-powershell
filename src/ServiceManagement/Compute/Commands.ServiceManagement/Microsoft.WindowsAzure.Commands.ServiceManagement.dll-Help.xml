@@ -35126,6 +35126,12 @@ If this parameter is not specified, the default value is Standard_GRS. </maml:pa
           </maml:description>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+          <maml:name>BootstrapVersion</maml:name>
+          <maml:description>
+            <maml:para>Specifies the version of chef-client to be installed with the extension.</maml:para>
+          </maml:description>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>OrganizationName</maml:name>
           <maml:description>
             <maml:para>Specifies the organization name of the Chef extension.</maml:para>
