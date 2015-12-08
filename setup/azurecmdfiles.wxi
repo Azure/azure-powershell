@@ -1208,9 +1208,6 @@
                         </Component>
                     </Directory>
                     <Directory Id="dirF8BB5CC2A8AA03F23D432B214F947ADA" Name="AzureRM.Intune">
-                        <Component Id="cmp26757C9254980E46634DDBF7FA3DC0EE" Guid="*">
-                            <File Id="fil15F8D200C8D0DEF2FBDEC493EDAB1BB4" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Intune\AzureRM.Intune.psd1" />
-                        </Component>
                         <Component Id="cmp6A7508D641ABC42CBC47E8C71F5F7960" Guid="*">
                             <File Id="fil1C925E148CCDCEC0309363FC8D38D29F" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Intune\Hyak.Common.dll" />
                         </Component>
@@ -5242,7 +5239,6 @@
             <ComponentRef Id="cmpD0CBA309930AE994CD67A5EB7C9B5B10" />
             <ComponentRef Id="cmp7781002FCC3D1B3F0519A286C3E916E9" />
             <ComponentRef Id="cmp09C89A8B21C5D2C4595F1D35C982F73B" />
-            <ComponentRef Id="cmp26757C9254980E46634DDBF7FA3DC0EE" />
             <ComponentRef Id="cmp6A7508D641ABC42CBC47E8C71F5F7960" />
             <ComponentRef Id="cmpC40A93532FA1B6B3CC495C44287DD4FD" />
             <ComponentRef Id="cmpBA0E9AFF4B786F09AF8CA24A30DA0B3E" />
