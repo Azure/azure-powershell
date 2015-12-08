@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Microsoft.CLU.Commands</id>
+    <version>0.0.1</version>
+    <authors>Microsoft Corporation</authors>
+    <owners>Microsoft Corporation</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This library is used to test using NuGet for dynamic command utility acquisition.</description>
+    <releaseNotes>This is the first version of this package.</releaseNotes>
+    <copyright>Copyright 2015</copyright>
+    <tags>Azure CLI Operations</tags>
+  </metadata>
+  <files>
+    <file src="*.dll" target="lib/dnxcore50" />
+    <file src="content\*.*" target="content/" />
+    <file src="content/*.*" target="content/" />
+  </files>
+</package>

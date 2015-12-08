@@ -15,8 +15,6 @@
     }
   },
   "dependencies": {
-    "System.Linq": "4.0.1-beta-23516",
-    "Microsoft.CLU": "1.0.0",
     "Commands.Common": "",
     "Commands.Common.Authentication": "",
     "Commands.ResourceManager.Common": "",
@@ -49,7 +47,7 @@
     "System.Runtime.Extensions": "4.0.11-beta-23516",
     "System.Runtime.Serialization.Json": "4.0.1-beta-23516",
     "System.Runtime.Serialization.Primitives": "4.1.0-beta-23516",
-    "System.Runtime.Serialization.Xml": "4.0.11-beta-23409",
+    "System.Runtime.Serialization.Xml": "4.1.0-beta-23516",
     "System.Security.Cryptography.Algorithms": "4.0.0-beta-23516",
     "System.Security.Cryptography.X509Certificates": "4.0.0-beta-23516",
     "System.Text.Encoding": "4.0.11-beta-23516",
@@ -58,10 +56,12 @@
     "System.Threading.Tasks": "4.0.11-beta-23516",
     "System.Threading.Thread": "4.0.0-beta-23516",
     "System.Xml.ReaderWriter": "4.0.11-beta-23516",
-    "xunit": "2.2.0-beta1-build3220",
-    "xunit.assert": "2.1.0-rc1-build3168",
+    "xunit": "2.1.0",
+    "xunit.assert": "2.1.0",
     "xunit.runner.dnx": "2.1.0-rc1-build204",
-    "moq.netcore": "4.4.0"
+    "moq.netcore": "4.4.0-beta8",
+    "Microsoft.CLU": "1.0.0",
+    "System.Linq": "4.0.1-beta-23409"
   },
   "commands": {
     "test": "xunit.runner.dnx"

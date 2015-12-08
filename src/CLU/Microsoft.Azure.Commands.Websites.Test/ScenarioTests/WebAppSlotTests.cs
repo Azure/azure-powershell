@@ -12,69 +12,94 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.Azure.Commands.ScenarioTest;
+using Microsoft.Azure.Commands.Test.Utilities.Common;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 {
     public class WebAppSlotTests : RMTestBase
     {
+        private const string CallingClass = "Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppSlotTests";
+
         [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNewWebAppSlot()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-CreateNewWebAppSlot");
+            WebsitesController.NewInstance.RunPsTest(
+                CallingClass,
+                "TestCreateNewWebAppSlot",
+                "Test-CreateNewWebAppSlot");
         }
 
         [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetWebAppSlot()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-GetWebAppSlot");
+            WebsitesController.NewInstance.RunPsTest(
+                CallingClass,
+                "TestGetWebAppSlot",
+                "Test-GetWebAppSlot");
         }
 
         [Fact(Skip= "Needs investigation. Fails running playback")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetWebAppSlotMetrics()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-GetWebAppSlotMetrics");
+            WebsitesController.NewInstance.RunPsTest(
+                CallingClass,
+                "TestGetWebAppSlotMetrics",
+                "Test-GetWebAppSlotMetrics");
         }
 
         [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestWebAppSlotPublishingProfile()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-WebAppSlotPublishingProfile");
+            WebsitesController.NewInstance.RunPsTest(
+                CallingClass,
+                "TestWebAppSlotPublishingProfile",
+                "Test-WebAppSlotPublishingProfile");
         }
 
         [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCloneWebAppToSlot()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-CloneWebAppToSlot");
+            WebsitesController.NewInstance.RunPsTest(
+                CallingClass,
+                "TestCloneWebAppToSlot",
+                "Test-CloneWebAppToSlot");
         }
 
         [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCloneWebAppSlot()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-CloneWebAppSlot");
+            WebsitesController.NewInstance.RunPsTest(
+                CallingClass,
+                "TestCloneWebAppSlot",
+                "Test-CloneWebAppSlot");
         }
 
         [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStartStopRestartWebAppSlot()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-StartStopRestartWebAppSlot");
+            WebsitesController.NewInstance.RunPsTest(
+                CallingClass,
+                "TestStartStopRestartWebAppSlot",
+                "Test-StartStopRestartWebAppSlot");
         }
 
         [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetWebAppSlot()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-SetWebAppSlot");
+            WebsitesController.NewInstance.RunPsTest(
+                CallingClass,
+                "TestSetWebAppSlot",
+                "Test-SetWebAppSlot");
         }
     }
 }

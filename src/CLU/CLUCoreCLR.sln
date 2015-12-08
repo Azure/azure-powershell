@@ -25,6 +25,18 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Commands.Common.Storage", "
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Microsoft.Azure.Commands.Management.Storage", "Microsoft.Azure.Commands.Management.Storage\Microsoft.Azure.Commands.Management.Storage.xproj", "{3910613E-4ED2-49E2-8CCF-966D586665AC}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Microsoft.Azure.Commands.Websites.Test", "Microsoft.Azure.Commands.Websites.Test\Microsoft.Azure.Commands.Websites.Test.xproj", "{F4D46F77-36D6-4BDB-95D0-85B1FAD1E160}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Microsoft.Azure.Commands.Resources.Test", "Microsoft.Azure.Commands.Resources.Test\Microsoft.Azure.Commands.Resources.Test.xproj", "{A9CC2879-D45D-4DCB-A405-6EEDB749B15F}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "clurun", "clurun\clurun.xproj", "{2D9ADC64-E70F-4F6B-A74A-0954DA127179}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Microsoft.CLU.Common", "Microsoft.CLU.Common\Microsoft.CLU.Common.xproj", "{D96B77D5-C103-423B-BE16-27C3B2F6EC2F}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Microsoft.CLU.Run", "Microsoft.CLU.Run\Microsoft.CLU.Run.xproj", "{4CABFB3D-3DE0-4DF3-A163-8ED48F0FC0F9}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Microsoft.CLU", "Microsoft.CLU\Microsoft.CLU.xproj", "{D0A59671-088D-463B-B060-2ADAFFB9C3F6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +87,30 @@ Global
 		{3910613E-4ED2-49E2-8CCF-966D586665AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3910613E-4ED2-49E2-8CCF-966D586665AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3910613E-4ED2-49E2-8CCF-966D586665AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4D46F77-36D6-4BDB-95D0-85B1FAD1E160}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4D46F77-36D6-4BDB-95D0-85B1FAD1E160}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4D46F77-36D6-4BDB-95D0-85B1FAD1E160}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4D46F77-36D6-4BDB-95D0-85B1FAD1E160}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9CC2879-D45D-4DCB-A405-6EEDB749B15F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9CC2879-D45D-4DCB-A405-6EEDB749B15F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9CC2879-D45D-4DCB-A405-6EEDB749B15F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9CC2879-D45D-4DCB-A405-6EEDB749B15F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D9ADC64-E70F-4F6B-A74A-0954DA127179}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D9ADC64-E70F-4F6B-A74A-0954DA127179}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D9ADC64-E70F-4F6B-A74A-0954DA127179}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D9ADC64-E70F-4F6B-A74A-0954DA127179}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D96B77D5-C103-423B-BE16-27C3B2F6EC2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D96B77D5-C103-423B-BE16-27C3B2F6EC2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D96B77D5-C103-423B-BE16-27C3B2F6EC2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D96B77D5-C103-423B-BE16-27C3B2F6EC2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CABFB3D-3DE0-4DF3-A163-8ED48F0FC0F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CABFB3D-3DE0-4DF3-A163-8ED48F0FC0F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CABFB3D-3DE0-4DF3-A163-8ED48F0FC0F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CABFB3D-3DE0-4DF3-A163-8ED48F0FC0F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0A59671-088D-463B-B060-2ADAFFB9C3F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0A59671-088D-463B-B060-2ADAFFB9C3F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0A59671-088D-463B-B060-2ADAFFB9C3F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0A59671-088D-463B-B060-2ADAFFB9C3F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

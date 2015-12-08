@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.ResourceGroups;
+using Microsoft.Azure.Commands.ScenarioTest;
 using Moq;
 using System.Management.Automation;
 using Xunit;
@@ -36,9 +37,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new StopAzureResourceGroupDeploymentCommand()
             {
-                CommandRuntime = commandRuntimeMock.Object,
+                //CommandRuntime = commandRuntimeMock.Object,
                 ResourcesClient = resourcesClientMock.Object
             };
+            System.Reflection.TypeExtensions.GetProperty(cmdlet.GetType(), "CommandRuntime").SetValue(cmdlet, commandRuntimeMock.Object);
         }
 
         [Fact]

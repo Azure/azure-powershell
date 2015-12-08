@@ -20,6 +20,8 @@ namespace Microsoft.Azure.Commands.Resources.Test
     using Microsoft.Azure.Management.Resources;
     using Microsoft.Azure.Management.Resources.Models;
     using Moq;
+    using Rest.Azure;
+    using ScenarioTest;
     using System;
     using System.Linq;
     using System.Management.Automation;
@@ -46,14 +48,14 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// <summary>
         /// A mock of the client
         /// </summary>
-        private readonly Mock<IFeatures> featureOperationsMock;
+        private readonly Mock<IFeaturesOperations> featureOperationsMock;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GetAzureProviderFeatureCmdletTests"/> class.
         /// </summary>
         public GetAzureProviderFeatureCmdletTests()
         {
-            this.featureOperationsMock = new Mock<IFeatures>();
+            this.featureOperationsMock = new Mock<IFeaturesOperations>();
             var featureClient = new Mock<IFeatureClient>();
 
             featureClient
@@ -64,12 +66,13 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
             this.cmdlet = new GetAzureProviderFeatureCmdletTest
             {
-                CommandRuntime = commandRuntimeMock.Object,
+                //CommandRuntime = commandRuntimeMock.Object,
                 ProviderFeatureClient = new ProviderFeatureClient
                 {
                     FeaturesManagementClient = featureClient.Object
                 }
             };
+            System.Reflection.TypeExtensions.GetProperty(cmdlet.GetType(), "CommandRuntime").SetValue(cmdlet, commandRuntimeMock.Object);
         }
 
         /// <summary>
@@ -86,7 +89,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
             const string Provider2Namespace = "Providers.Test2";
             const string Feature2Name = "feature2";
 
-            var provider1RegisteredFeature = new FeatureResponse
+            var provider1RegisteredFeature = new FeatureResult
             {
                 Id = "featureId1",
                 Name = Provider1Namespace + "/" + Feature1Name,
@@ -94,12 +97,10 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 {
                     State = ProviderFeatureClient.RegisteredStateName,
                 },
-                RequestId = "requestId",
-                StatusCode = HttpStatusCode.OK,
                 Type = "Microsoft.Features/feature"
             };
 
-            var provider1UnregisteredFeature = new FeatureResponse
+            var provider1UnregisteredFeature = new FeatureResult
             {
                 Id = "featureId1",
                 Name = Provider1Namespace + "/" + Feature2Name,
@@ -107,12 +108,10 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 {
                     State = "Unregistered",
                 },
-                RequestId = "requestId",
-                StatusCode = HttpStatusCode.OK,
                 Type = "Microsoft.Features/feature"
             };
 
-            var provider2UnregisteredFeature = new FeatureResponse
+            var provider2UnregisteredFeature = new FeatureResult
             {
                 Id = "featureId2",
                 Name = Provider2Namespace + "/" + Feature1Name,
@@ -120,22 +119,16 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 {
                     State = "Unregistered",
                 },
-                RequestId = "requestId",
-                StatusCode = HttpStatusCode.OK,
                 Type = "Microsoft.Features/feature"
             };
 
-            var listResult = new FeatureOperationsListResult
-            {
-                Features = new[] { provider1RegisteredFeature, provider1UnregisteredFeature, provider2UnregisteredFeature },
-                NextLink = null,
-                RequestId = "requestId",
-                StatusCode = HttpStatusCode.OK
-            };
+            var listResult = new Page<FeatureResult>();
+            var pagableResult = new[] { provider1RegisteredFeature, provider1UnregisteredFeature, provider2UnregisteredFeature };
+            System.Reflection.TypeExtensions.GetProperty(listResult.GetType(), "Items").SetValue(listResult, pagableResult);
 
             this.featureOperationsMock
                 .Setup(f => f.ListAllAsync(It.IsAny<CancellationToken>()))
-                .Returns(() => Task.FromResult(listResult));
+                .Returns(() => Task.FromResult((IPage<FeatureResult>)listResult));
 
             // 1. List only registered features of providers
             this.commandRuntimeMock
@@ -168,7 +161,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
               {
                   Assert.IsType<PSProviderFeature[]>(obj);
                   var features = (PSProviderFeature[])obj;
-                  Assert.Equal(listResult.Features.Count, features.Length);
+                  Assert.Equal(listResult.Count(), features.Length);
               });
 
             this.cmdlet.ExecuteCmdlet();
@@ -179,12 +172,14 @@ namespace Microsoft.Azure.Commands.Resources.Test
             string providerOfChoice = Provider1Namespace;
             this.cmdlet.ListAvailable = false;
             this.cmdlet.ProviderNamespace = providerOfChoice;
-            listResult.Features = new[] { provider1RegisteredFeature, provider1UnregisteredFeature };
+            System.Reflection.TypeExtensions
+                .GetProperty(listResult.GetType(), "Items")
+                .SetValue(listResult, new[] { provider1RegisteredFeature, provider1UnregisteredFeature });
 
             this.featureOperationsMock
                 .Setup(f => f.ListAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
                 .Callback((string providerName, CancellationToken ignored) => Assert.Equal(providerOfChoice, providerName, StringComparer.OrdinalIgnoreCase))
-                .Returns(() => Task.FromResult(listResult));
+                .Returns(() => Task.FromResult((IPage<FeatureResult>)listResult ));
 
             this.commandRuntimeMock
                 .Setup(m => m.WriteObject(It.IsAny<object>()))
@@ -211,7 +206,9 @@ namespace Microsoft.Azure.Commands.Resources.Test
             providerOfChoice = Provider2Namespace;
             this.cmdlet.ListAvailable = false;
             this.cmdlet.ProviderNamespace = providerOfChoice;
-            listResult.Features = new[] { provider2UnregisteredFeature };
+            System.Reflection.TypeExtensions
+                .GetProperty(listResult.GetType(), "Items")
+                .SetValue(listResult, new[] { provider2UnregisteredFeature });
 
             this.commandRuntimeMock
                 .Setup(m => m.WriteObject(It.IsAny<object>()))
@@ -231,7 +228,9 @@ namespace Microsoft.Azure.Commands.Resources.Test
             providerOfChoice = Provider1Namespace;
             this.cmdlet.ProviderNamespace = providerOfChoice;
             this.cmdlet.ListAvailable = true;
-            listResult.Features = new[] { provider1RegisteredFeature, provider1UnregisteredFeature };
+            System.Reflection.TypeExtensions
+                .GetProperty(listResult.GetType(), "Items")
+                .SetValue(listResult, new[] { provider1RegisteredFeature, provider1UnregisteredFeature });
 
             this.commandRuntimeMock
               .Setup(m => m.WriteObject(It.IsAny<object>()))

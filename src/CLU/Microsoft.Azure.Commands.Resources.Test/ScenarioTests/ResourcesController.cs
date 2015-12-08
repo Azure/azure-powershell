@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Management.Authorization;
@@ -32,7 +33,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
     public sealed class ResourcesController
     {
-        private CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
         private const string TenantIdKey = "TenantId";
         private const string DomainKey = "Domain";
@@ -63,35 +63,30 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             helper = new EnvironmentSetupHelper();
         }
 
-        public void RunPsTest(params string[] scripts)
+        public void RunPsTest(string callingClass, string currentMethodName, params string[] scripts)
         {
-            var callingClassType = TestUtilities.GetCallingClass(2);
-            var mockName = TestUtilities.GetCurrentMethodName(2);
-
             RunPsTestWorkflow(
                 () => scripts, 
                 // no custom initializer
                 null, 
                 // no custom cleanup 
                 null,
-                callingClassType,
-                mockName);
+                callingClass,
+                currentMethodName);
         }
 
         public void RunPsTestWorkflow(
             Func<string[]> scriptBuilder, 
-            Action<CSMTestEnvironmentFactory> initialize, 
+            Action<TestEnvironment> initialize, 
             Action cleanup,
             string callingClassType,
             string mockName)
         {
             using (MockContext context = MockContext.Start(callingClassType, mockName))
             {
-                this.csmTestFactory = new CSMTestEnvironmentFactory();
-
                 if(initialize != null)
                 {
-                    initialize(this.csmTestFactory);
+                    initialize(TestEnvironmentFactory.GetTestEnvironment());
                 }
 
                 SetupManagementClients();
@@ -129,15 +124,28 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             }
         }
 
+        public static string GetDomain(string emailString)
+        {
+            string result = null;
+            if (emailString != null && emailString.Contains('@'))
+            {
+                result = emailString.Split(
+                    new[] { '@' },
+                    StringSplitOptions.RemoveEmptyEntries).Last();
+            }
+
+            return result;
+        }
+
         private void SetupManagementClients()
         {
-            var environment = this.csmTestFactory.GetTestEnvironment();
+            var environment = TestEnvironmentFactory.GetTestEnvironment();
             string tenantId = null;
 
             if (HttpMockServer.Mode == HttpRecorderMode.Record)
             {
-                tenantId = environment.AuthorizationContext.TenantId;
-                UserDomain = environment.AuthorizationContext.UserDomain;
+                tenantId = environment.Tenant;
+                UserDomain = GetDomain(tenantId);
 
                 HttpMockServer.Variables[TenantIdKey] = tenantId;
                 HttpMockServer.Variables[DomainKey] = UserDomain;
@@ -158,7 +166,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 }
             }
 
-            HttpClientHelperFactory.Instance = new TestHttpClientHelperFactory(this.csmTestFactory.GetTestEnvironment().Credentials as ServiceClientCredentials);
+            HttpClientHelperFactory.Instance = new TestHttpClientHelperFactory(TestEnvironmentFactory.GetTestEnvironment().Credentials as ServiceClientCredentials);
 
         }
 

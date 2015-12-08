@@ -20,72 +20,105 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
     public class ResourceGroupTests : RMTestBase
     {
+
+        private const string CallingClass = "Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ResourceGroupTests";
+
         [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreatesNewSimpleResourceGroup()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-CreatesNewSimpleResourceGroup");
+            ResourcesController.NewInstance.RunPsTest(
+                CallingClass,
+                "TestCreatesNewSimpleResourceGroup",
+                "Test-CreatesNewSimpleResourceGroup");
         }
 
         [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdatesExistingResourceGroup()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-UpdatesExistingResourceGroup");
+            ResourcesController.NewInstance.RunPsTest(
+                CallingClass,
+                "TestUpdatesExistingResourceGroup",
+                "Test-UpdatesExistingResourceGroup");
         }
 
         [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreatesAndRemoveResourceGroupViaPiping()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-CreatesAndRemoveResourceGroupViaPiping");
+            ResourcesController.NewInstance.RunPsTest(
+                CallingClass,
+                "TestCreatesAndRemoveResourceGroupViaPiping",
+                "Test-CreatesAndRemoveResourceGroupViaPiping");
         }
 
         [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetNonExistingResourceGroup()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-GetNonExistingResourceGroup");
+            ResourcesController.NewInstance.RunPsTest(
+                CallingClass,
+                "TestGetNonExistingResourceGroup",
+                "Test-GetNonExistingResourceGroup");
         }
 
         [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewResourceGroupInNonExistingLocation()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-NewResourceGroupInNonExistingLocation");
+            ResourcesController.NewInstance.RunPsTest(
+                CallingClass,
+                "TestNewResourceGroupInNonExistingLocation",
+                "Test-NewResourceGroupInNonExistingLocation");
         }
 
         [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveNonExistingResourceGroup()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RemoveNonExistingResourceGroup");
+            ResourcesController.NewInstance.RunPsTest(
+                CallingClass,
+                "TestRemoveNonExistingResourceGroup",
+                "Test-RemoveNonExistingResourceGroup");
         }
 
         [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestFindResourceGroup()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-FindResourceGroup");
+            ResourcesController.NewInstance.RunPsTest(
+                CallingClass,
+                "TestFindResourceGroup",
+                "Test-FindResourceGroup");
         }
 
         [Fact (Skip = "TODO: Fix the broken test.")]
         public void TestAzureTagsEndToEnd()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-AzureTagsEndToEnd");
+            ResourcesController.NewInstance.RunPsTest(
+                CallingClass,
+                "TestAzureTagsEndToEnd",
+                "Test-AzureTagsEndToEnd");
         }
 
         [Fact(Skip = "Depends on Bug 2040630")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDeploymentAndProviderRegistration()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-NewDeploymentAndProviderRegistration");
+            ResourcesController.NewInstance.RunPsTest(
+                CallingClass,
+                "TestNewDeploymentAndProviderRegistration",
+                "Test-NewDeploymentAndProviderRegistration");
         }
 
         [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         public void TestRemoveDeployment()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RemoveDeployment");
+            ResourcesController.NewInstance.RunPsTest(
+                CallingClass,
+                "TestRemoveDeployment",
+                "Test-RemoveDeployment");
         }
     }
 }

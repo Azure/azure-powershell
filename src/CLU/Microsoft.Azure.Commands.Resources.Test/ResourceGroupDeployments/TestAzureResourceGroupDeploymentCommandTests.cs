@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.ResourceGroupDeployments;
+using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.Management.Resources.Models;
 using Moq;
 using System.Collections.Generic;
@@ -40,9 +41,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new TestAzureResourceGroupDeploymentCommand()
             {
-                CommandRuntime = commandRuntimeMock.Object,
+                //CommandRuntime = commandRuntimeMock.Object,
                 ResourcesClient = resourcesClientMock.Object
             };
+            System.Reflection.TypeExtensions.GetProperty(cmdlet.GetType(), "CommandRuntime").SetValue(cmdlet, commandRuntimeMock.Object);
         }
 
         [Fact]

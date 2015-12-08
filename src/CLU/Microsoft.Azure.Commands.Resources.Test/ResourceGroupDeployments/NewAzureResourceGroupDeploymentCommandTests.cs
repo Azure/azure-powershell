@@ -46,9 +46,10 @@ namespace Microsoft.Azure.Commands.Resources.Test
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new NewAzureResourceGroupDeploymentCommand()
             {
-                CommandRuntime = commandRuntimeMock.Object,
+                //CommandRuntime = commandRuntimeMock.Object,
                 ResourcesClient = resourcesClientMock.Object
             };
+            System.Reflection.TypeExtensions.GetProperty(cmdlet.GetType(), "CommandRuntime").SetValue(cmdlet, commandRuntimeMock.Object);
         }
 
         [Fact]
@@ -78,12 +79,12 @@ namespace Microsoft.Azure.Commands.Resources.Test
                     { "Parameter2", new DeploymentVariable() { Value = "10", Type = "int" } },
                     { "Parameter3", new DeploymentVariable() { Value = "hello world", Type = "string" } }
                 },
-                ProvisioningState = ProvisioningState.Succeeded,
+                ProvisioningState = "Succeeded",
                 ResourceGroupName = resourceGroupName,
                 TemplateLink = new TemplateLink()
                 {
                     ContentVersion = "1.0",
-                    Uri = new Uri("http://mytemplate.com")
+                    Uri = "http://mytemplate.com"
                 },
                 Timestamp = new DateTime(2014, 2, 13)
             };
