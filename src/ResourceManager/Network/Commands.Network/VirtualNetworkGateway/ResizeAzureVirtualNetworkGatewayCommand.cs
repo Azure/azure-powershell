@@ -12,21 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
 using AutoMapper;
-using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.Resources.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
-using System.Collections;
 using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Management.Network;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Management.Automation;
+using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmVirtualNetworkGatewayDefaultSite"), OutputType(typeof(PSVirtualNetworkGateway))]
-    public class SetAzureVirtualNetworkGatewayDefaultSiteCommand : VirtualNetworkGatewayBaseCmdlet
+    [Cmdlet(VerbsCommon.Resize, "AzureRmVirtualNetworkGateway"), OutputType(typeof(PSVirtualNetworkGateway))]
+    public class ResizeAzureVirtualNetworkGatewayCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -38,10 +38,13 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = "SetByResource",
-            HelpMessage = "GatewayDefault local network Site.")]
-        [ValidateNotNull]
-        public PSLocalNetworkGateway GatewayDefaultSite { get; set; }
+            HelpMessage = "The gatway Sku:- Basic/Standard/HighPerformance")]
+        [ValidateSet(
+        MNM.VirtualNetworkGatewaySkuTier.Basic,
+        MNM.VirtualNetworkGatewaySkuTier.Standard,
+        MNM.VirtualNetworkGatewaySkuTier.HighPerformance,
+        IgnoreCase = true)]
+        public string GatewaySku { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -52,8 +55,15 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
             }
 
-            this.VirtualNetworkGateway.GatewayDefaultSite = new PSResourceId();
-            this.VirtualNetworkGateway.GatewayDefaultSite.Id = this.GatewayDefaultSite.Id;
+            var getvirtualnetGateway = this.GetVirtualNetworkGateway(this.VirtualNetworkGateway.ResourceGroupName, this.VirtualNetworkGateway.Name);
+            if (getvirtualnetGateway.Sku.Tier.Equals(this.GatewaySku))
+            {
+                throw new ArgumentException("Current Gateway SKU is same as Resize SKU size:{0} requested. No need to resize!", this.GatewaySku);
+            }
+
+            this.VirtualNetworkGateway.Sku = new PSVirtualNetworkGatewaySku();
+            this.VirtualNetworkGateway.Sku.Tier = this.GatewaySku;
+            this.VirtualNetworkGateway.Sku.Name = this.GatewaySku;
 
             // Map to the sdk object
             var virtualnetGatewayModel = Mapper.Map<MNM.VirtualNetworkGateway>(this.VirtualNetworkGateway);
@@ -61,10 +71,9 @@ namespace Microsoft.Azure.Commands.Network
 
             this.VirtualNetworkGatewayClient.CreateOrUpdate(this.VirtualNetworkGateway.ResourceGroupName, this.VirtualNetworkGateway.Name, virtualnetGatewayModel);
 
-            var getvirtualnetGateway = this.GetVirtualNetworkGateway(this.VirtualNetworkGateway.ResourceGroupName, this.VirtualNetworkGateway.Name);
+            getvirtualnetGateway = this.GetVirtualNetworkGateway(this.VirtualNetworkGateway.ResourceGroupName, this.VirtualNetworkGateway.Name);
 
             WriteObject(getvirtualnetGateway);
         }
     }
 }
-
