@@ -31,6 +31,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSResourceId GatewayDefaultSite { get; set; }
 
         public string ProvisioningState { get; set; }
+        public PSVirtualNetworkGatewaySku Sku { get; set; }
+
+        public PSVpnClientConfiguration VpnClientConfiguration { get; set; }
 
         [JsonIgnore]
         public string IpConfigurationsText
@@ -42,6 +45,18 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string GatewayDefaultSiteText
         {
             get { return JsonConvert.SerializeObject(GatewayDefaultSite, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string SkuText
+        {
+            get { return JsonConvert.SerializeObject(Sku, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string VpnClientConfigurationText
+        {
+            get { return JsonConvert.SerializeObject(VpnClientConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

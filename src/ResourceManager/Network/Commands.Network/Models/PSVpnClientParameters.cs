@@ -11,19 +11,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+using System.Collections.Generic;
 
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Xunit;
-
-namespace Commands.Network.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class LocalNetworkGatewayTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class PSVpnClientParameters
     {
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestLocalNetworkGatewayCRUD()
-        {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-LocalNetworkGatewayCRUD");
-        }
+        public string ProcessorArchitecture { get; set; }
     }
 }
