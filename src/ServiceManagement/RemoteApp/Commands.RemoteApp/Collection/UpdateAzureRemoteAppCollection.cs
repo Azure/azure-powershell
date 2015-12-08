@@ -40,7 +40,7 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "For Azure VNets only, the name of the subnet to patch the collection"
+            HelpMessage = "Name of the subnet to move the collection into."
         )]
         public string SubnetName { get; set; }
 
