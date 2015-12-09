@@ -201,6 +201,11 @@ namespace Microsoft.Azure.Commands.Profile
                 azureAccount.SetProperty(AzureAccount.Property.Tenants, new[] { TenantId });
             }
 
+            if (!string.IsNullOrEmpty(Secret))
+            {
+                azureAccount.SetProperty(AzureAccount.Property.ApplicationSecret, Secret);
+            }
+
             if (DefaultProfile == null)
             {
                 DefaultProfile = new AzureRMProfile();
