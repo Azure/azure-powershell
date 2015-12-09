@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Commands.RedisCache
 {
     using System.Collections;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using Microsoft.Azure.Common.Authentication;
     using Microsoft.Azure.Common.Authentication.Models;
     using Microsoft.Azure.Management.Insights;
@@ -134,6 +135,7 @@ namespace Microsoft.Azure.Commands.RedisCache
             return _client.Redis.ListKeys(resourceGroupName: resourceGroupName, name: cacheName);
         }
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
         internal void SetDiagnostics(string cacheId, string storageAccountName)
         {
             _insightsClient.ServiceDiagnosticSettingsOperations.Put(
