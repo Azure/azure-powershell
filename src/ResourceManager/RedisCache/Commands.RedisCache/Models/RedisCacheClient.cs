@@ -134,10 +134,10 @@ namespace Microsoft.Azure.Commands.RedisCache
             return _client.Redis.ListKeys(resourceGroupName: resourceGroupName, name: cacheName);
         }
 
-        public void SetDiagnostics(string cacheUri, string storageAccountName)
+        internal void SetDiagnostics(string cacheId, string storageAccountName)
         {
             _insightsClient.ServiceDiagnosticSettingsOperations.Put(
-                resourceUri: cacheUri,
+                resourceUri: cacheId,
                 parameters: new ServiceDiagnosticSettingsPutParameters
                 {
                     Properties = new ServiceDiagnosticSettings
