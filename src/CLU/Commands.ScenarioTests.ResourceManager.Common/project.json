@@ -20,9 +20,9 @@
     "Commands.Common": "",
     "Commands.Common.Authentication": "",
     "Commands.ResourceManager.Common": "",
-    "Microsoft.Azure.Management.Resources": "3.1.1-preview",
+    "Microsoft.Azure.Management.Resources": "3.2.0-preview",
     "Microsoft.IdentityModel.Clients.ActiveDirectory": "3.6.210231457-alpha",
-    "Microsoft.Rest.ClientRuntime": "1.4.1",
+    "Microsoft.Rest.ClientRuntime": "1.5.0",
     "Microsoft.Rest.ClientRuntime.Azure": "2.1.0",
     "Microsoft.Rest.ClientRuntime.Azure.Authentication": "1.0.0-preview",
     "Newtonsoft.Json": "7.0.1",
@@ -55,6 +55,7 @@
     "xunit": "2.1.0",
     "xunit.runner.dnx": "2.1.0-rc1-build204",
     "Microsoft.Azure.Test.HttpRecorder": "2.0.0",
-    "Microsoft.Rest.ClientRuntime.Azure.TestFramework": "1.0.0"
+    "Microsoft.Rest.ClientRuntime.Azure.TestFramework": "1.0.0",
+    "moq.netcore": "4.4.0-beta8"
   }
 }

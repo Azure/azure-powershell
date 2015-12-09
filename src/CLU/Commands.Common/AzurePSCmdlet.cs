@@ -152,12 +152,12 @@ namespace Microsoft.Azure.Commands.Utilities.Common
             {
                 if (string.Equals(value, bool.FalseString, StringComparison.OrdinalIgnoreCase))
                 {
-                    // Disable data collection only if it is explictly set to 'false'.
+                    // Disable data collection only if it is explicitly set to 'false'.
                     _dataCollectionProfile = new AzurePSDataCollectionProfile(true);
                 }
                 else if (string.Equals(value, bool.TrueString, StringComparison.OrdinalIgnoreCase))
                 {
-                    // Enable data collection only if it is explictly set to 'true'.
+                    // Enable data collection only if it is explicitly set to 'true'.
                     _dataCollectionProfile = new AzurePSDataCollectionProfile(false);
                 }
             }

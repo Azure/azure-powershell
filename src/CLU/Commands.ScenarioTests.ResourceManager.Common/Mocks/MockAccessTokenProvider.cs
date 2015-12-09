@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Test.Utilities.Common
             };
         }
 
-        public IAccessToken GetAccessToken(AdalConfiguration config, ShowDialog promptBehavior, string userId, string password,
+        public IAccessToken GetAccessToken(AdalConfiguration config, AuthenticationBehavior behavior, string userId, string password,
             AzureAccount.AccountType credentialType)
         {
             return this.accessToken;

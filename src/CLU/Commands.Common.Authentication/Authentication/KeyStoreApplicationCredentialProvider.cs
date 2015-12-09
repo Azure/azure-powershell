@@ -46,8 +46,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// <returns></returns>
         public async Task<AuthenticationResult> AuthenticateAsync(string clientId, string audience, AuthenticationContext context)
         {
-            
-
             return await context.AcquireTokenAsync(audience, new ClientCredential(clientId, _password));
         }
     }

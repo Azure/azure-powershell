@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Profile
     [Cmdlet("Add", "AzureRmAccount", DefaultParameterSetName = "User")]
     [Alias("Login-AzureRmAccount")]
     [OutputType(typeof(PSAzureProfile))]
-    public class AddAzureRMAccountCommand : AzureRMCmdlet 
+    public class AddAzureRMAccountCommand : AzureRMCmdlet
     {
         private const string UserParameterSet = "User";
         private const string ServicePrincipalParameterSet = "ServicePrincipal";
@@ -51,18 +51,18 @@ namespace Microsoft.Azure.Commands.Profile
         [ValidateNotNullOrEmpty]
         public string EnvironmentName { get; set; }
 
-        [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = true, HelpMessage = "Credential")]
-        [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Optional credential")]
-        [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "Optional credential")]
+        [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = true, HelpMessage = "Secret")]
+        [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Optional secret")]
+        [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "Optional secret")]
         public string Secret { get; set; }
 
-        [Parameter(ParameterSetName = UserParameterSet, Mandatory = true, HelpMessage = "User name (in username@contoso.com format)")]
+        [Parameter(ParameterSetName = UserParameterSet, Mandatory = false, HelpMessage = "User name (in username@contoso.com format)")]
         [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Account Id for access token")]
         [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "Account Id for access token")]
         [ValidateNotNullOrEmpty]
         public string Username { get; set; }
 
-        [Parameter(ParameterSetName = UserParameterSet, Mandatory = true, HelpMessage = "Optional password")]
+        [Parameter(ParameterSetName = UserParameterSet, Mandatory = false, HelpMessage = "Optional password")]
         [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Account Id for access token")]
         [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "Account Id for access token")]
         [ValidateNotNullOrEmpty]
@@ -146,72 +146,71 @@ namespace Microsoft.Azure.Commands.Profile
 
         protected override void ProcessRecord()
         {
-                if (!string.IsNullOrWhiteSpace(SubscriptionId) &&
-                    !string.IsNullOrWhiteSpace(SubscriptionName))
+            if (!string.IsNullOrWhiteSpace(SubscriptionId) &&
+                !string.IsNullOrWhiteSpace(SubscriptionName))
+            {
+                ThrowTerminatingError(new ErrorRecord(new PSInvalidOperationException(Resources.BothSubscriptionIdAndNameProvided), "BothSubscriptionIdAndNameProvided", ErrorCategory.InvalidArgument, this));
+            }
+
+            Guid subscrptionIdGuid;
+            if (!string.IsNullOrWhiteSpace(SubscriptionId) &&
+                !Guid.TryParse(SubscriptionId, out subscrptionIdGuid))
+            {
+                throw new PSInvalidOperationException(
+                    string.Format(Resources.InvalidSubscriptionId, SubscriptionId));
+            }
+
+            AzureAccount azureAccount = new AzureAccount();
+            string password = null;
+            if (!string.IsNullOrEmpty(AccessToken))
+            {
+                if (string.IsNullOrWhiteSpace(AccountId))
                 {
-                    ThrowTerminatingError( new ErrorRecord(new PSInvalidOperationException(Resources.BothSubscriptionIdAndNameProvided), "BothSubscriptionIdAndNameProvided", ErrorCategory.InvalidArgument, this));
+                    throw new PSInvalidOperationException(Resources.AccountIdRequired);
                 }
 
-                Guid subscrptionIdGuid;
-                if (!string.IsNullOrWhiteSpace(SubscriptionId) &&
-                    !Guid.TryParse(SubscriptionId, out subscrptionIdGuid))
-                {
-                    throw new PSInvalidOperationException(
-                        string.Format(Resources.InvalidSubscriptionId, SubscriptionId));
-                }
+                azureAccount.Type = AzureAccount.AccountType.AccessToken;
+                azureAccount.Id = AccountId;
+                azureAccount.SetProperty(AzureAccount.Property.AccessToken, AccessToken);
+            }
+            else if (ServicePrincipal.IsPresent)
+            {
+                azureAccount.Type = AzureAccount.AccountType.ServicePrincipal;
+                azureAccount.Id = ApplicationId;
+                password = Secret;
+            }
+            else
+            {
+                azureAccount.Type = AzureAccount.AccountType.User;
+                azureAccount.Id = Username;
+                password = Password;
+            }
 
-                AzureAccount azureAccount = new AzureAccount();
-                string password = null;
-                if (!string.IsNullOrEmpty(AccessToken))
-                {
-                    if (string.IsNullOrWhiteSpace(AccountId))
-                    {
-                        throw new PSInvalidOperationException(Resources.AccountIdRequired);
-                    }
+            if (!string.IsNullOrEmpty(CertificateThumbprint))
+            {
+                azureAccount.SetProperty(AzureAccount.Property.CertificateThumbprint, CertificateThumbprint);
+            }
 
-                    azureAccount.Type = AzureAccount.AccountType.AccessToken;
-                    azureAccount.Id = AccountId;
-                    azureAccount.SetProperty(AzureAccount.Property.AccessToken, AccessToken);
-                }
-                else if (ServicePrincipal.IsPresent)
-                {
-                    azureAccount.Type = AzureAccount.AccountType.ServicePrincipal;
-                    azureAccount.Id = ApplicationId;
-                    password = Secret;
-                }
-                else
-                {
-                    azureAccount.Type = AzureAccount.AccountType.User;
-                    azureAccount.Id = Username;
-                    password = Password;
-                }
+            if (!string.IsNullOrEmpty(ApplicationId))
+            {
+                azureAccount.Id = ApplicationId;
+            }
 
-                if (!string.IsNullOrEmpty(CertificateThumbprint))
-                {
-                    azureAccount.SetProperty(AzureAccount.Property.CertificateThumbprint, CertificateThumbprint);
-                }
-                
-                if (!string.IsNullOrEmpty(ApplicationId))
-                {
-                    azureAccount.Id = ApplicationId;
-                }
+            if (!string.IsNullOrEmpty(TenantId))
+            {
+                azureAccount.SetProperty(AzureAccount.Property.Tenants, new[] { TenantId });
+            }
 
-                if (!string.IsNullOrEmpty(TenantId))
-                {
-                    azureAccount.SetProperty(AzureAccount.Property.Tenants, new[] { TenantId });
-                }
+            if (DefaultProfile == null)
+            {
+                DefaultProfile = new AzureRMProfile();
+            }
 
-                if (DefaultProfile == null)
-                {
-                    DefaultProfile = new AzureRMProfile();
-                }
+            var profileClient = new RMProfileClient(AuthenticationFactory, ClientFactory, DefaultProfile);
+            profileClient.WarningLog = (s) => WriteObject(s);
 
-                var profileClient = new RMProfileClient(AuthenticationFactory, ClientFactory, DefaultProfile);
-
-                WriteObject((PSAzureProfile)profileClient.Login(azureAccount, Environment, TenantId, SubscriptionId,
-                    SubscriptionName, password));
+            WriteObject((PSAzureProfile)profileClient.Login(azureAccount, Environment, TenantId, SubscriptionId,
+                SubscriptionName, password));
         }
-
-
     }
 }
