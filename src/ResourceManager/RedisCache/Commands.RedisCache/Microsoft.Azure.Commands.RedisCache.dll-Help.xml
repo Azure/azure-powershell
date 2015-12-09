@@ -1455,9 +1455,9 @@
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-          <maml:name>StorageAccountUri</maml:name>
+          <maml:name>StorageAccountId</maml:name>
           <maml:description>
-            <maml:para>ARM resource uri of storage account where we want to store diagnostics data.</maml:para>
+            <maml:para>ARM resource id of storage account where we want to store diagnostics data.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -1491,9 +1491,9 @@
         </dev:defaultValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-        <maml:name>StorageAccountUri</maml:name>
+        <maml:name>StorageAccountId</maml:name>
         <maml:description>
-          <maml:para>ARM resource uri of storage account where we want to store diagnostics data.</maml:para>
+          <maml:para>ARM resource id of storage account where we want to store diagnostics data.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -1549,7 +1549,7 @@
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;Set-AzureRmRedisCacheDiagnostics -ResourceGroupName "resourceGroupName" -Name "cacheName" -StorageAccountUri "/subscriptions/fffff139-aaaa-bbbb-cccc-21f21f35806e/resourcegroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount"
+          PS C:\&gt;Set-AzureRmRedisCacheDiagnostics -ResourceGroupName "resourceGroupName" -Name "cacheName" -StorageAccountId "/subscriptions/fffff139-aaaa-bbbb-cccc-21f21f35806e/resourcegroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount"
         </dev:code>
         <dev:remarks>
           <maml:para>This command enables diagnostics on specified redis cache.</maml:para>

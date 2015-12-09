@@ -133,11 +133,11 @@ namespace Microsoft.Azure.Commands.RedisCache.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to StorageAccountUri is not valid ARM resource uri..
+        ///   Looks up a localized string similar to StorageAccountId is not valid ARM resource uri..
         /// </summary>
-        internal static string StorageAccountUriException {
+        internal static string StorageAccountIdException {
             get {
-                return ResourceManager.GetString("StorageAccountUriException", resourceCulture);
+                return ResourceManager.GetString("StorageAccountIdException", resourceCulture);
             }
         }
     }

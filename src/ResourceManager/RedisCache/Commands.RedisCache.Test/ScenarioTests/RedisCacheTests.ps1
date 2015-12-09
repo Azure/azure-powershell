@@ -407,12 +407,12 @@ function Test-SetAzureRedisCacheDiagnostics
     $cacheName = "sunnycache"
     
     # Set Diagnostics
-    Set-AzureRmRedisCacheDiagnostics -ResourceGroupName $resourceGroupName -Name $cacheName -StorageAccountUri "/subscriptions/f8f8f139-2fd5-4d86-afca-21f21f35806e/resourcegroups/SunnyAAPT6/providers/Microsoft.Storage/storageAccounts/sunnystoragenew"
+    Set-AzureRmRedisCacheDiagnostics -ResourceGroupName $resourceGroupName -Name $cacheName -StorageAccountId "/subscriptions/f8f8f139-2fd5-4d86-afca-21f21f35806e/resourcegroups/SunnyAAPT6/providers/Microsoft.Storage/storageAccounts/sunnystoragenew"
 }
 
 <#
 .SYNOPSIS
-Tests SetAzureRedisCacheDiagnostics
+Tests RemoveAzureRedisCacheDiagnostics
 #>
 function Test-RemoveAzureRedisCacheDiagnostics
 {

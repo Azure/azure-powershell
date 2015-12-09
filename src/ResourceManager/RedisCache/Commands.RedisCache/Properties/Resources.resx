@@ -141,7 +141,7 @@
   <data name="RemovingRedisCacheDiagnostics" xml:space="preserve">
     <value>Are you sure you want to disable diagnostics on redis cache '{0}'?</value>
   </data>
-  <data name="StorageAccountUriException" xml:space="preserve">
-    <value>StorageAccountUri is not valid ARM resource uri.</value>
+  <data name="StorageAccountIdException" xml:space="preserve">
+    <value>StorageAccountId is not valid ARM resource uri.</value>
   </data>
 </root>

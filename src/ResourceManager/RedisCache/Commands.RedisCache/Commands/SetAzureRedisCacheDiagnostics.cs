@@ -31,30 +31,30 @@ namespace Microsoft.Azure.Commands.RedisCache
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Resource Uri for storage account.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "ARM Resource Id for storage account.")]
         [ValidateNotNullOrEmpty]
-        public string StorageAccountUri { get; set; }
+        public string StorageAccountId { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            string storageAccountName = GetStorageAccountName(StorageAccountUri); 
+            string storageAccountName = GetStorageAccountName(StorageAccountId); 
             RedisCacheAttributes cache = new RedisCacheAttributes(CacheClient.GetCache(ResourceGroupName, Name), ResourceGroupName);
             CacheClient.SetDiagnostics(cache.Id,storageAccountName);
         }
 
-        private string GetStorageAccountName(string storageAccountUri)
+        private string GetStorageAccountName(string storageAccountId)
         {
-            if (string.IsNullOrEmpty(storageAccountUri))
+            if (string.IsNullOrEmpty(storageAccountId))
             {
-                throw new ArgumentException(Resources.StorageAccountUriException);
+                throw new ArgumentException(Resources.StorageAccountIdException);
             }
             else
             {
-                string[] resourceParts = storageAccountUri.Split('/');
+                string[] resourceParts = storageAccountId.Split('/');
                 // Valid ARM uri when split on '/' should have 9 parts. Ex: /subscriptions/<sub-id>/resourceGroups/<resource group name>/providers/Microsoft.ClassicStorage/storageAccounts/<account name>
                 if(resourceParts.Length != 9)
                 {
-                    throw new ArgumentException(Resources.StorageAccountUriException);
+                    throw new ArgumentException(Resources.StorageAccountIdException);
                 }
                 return resourceParts[8];
             }
