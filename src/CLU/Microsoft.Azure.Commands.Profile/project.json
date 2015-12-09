@@ -22,7 +22,7 @@
     "Commands.ResourceManager.Common": "",
     "Microsoft.Azure.Management.Resources": "3.1.1-preview",
     "Microsoft.IdentityModel.Clients.ActiveDirectory": "3.6.210231457-alpha",
-    "Microsoft.Rest.ClientRuntime": "1.4.1",
+    "Microsoft.Rest.ClientRuntime": "1.5.0",
     "Microsoft.Rest.ClientRuntime.Azure": "2.1.0",
     "Microsoft.Rest.ClientRuntime.Azure.Authentication": "1.0.0-preview",
     "Newtonsoft.Json": "7.0.1",

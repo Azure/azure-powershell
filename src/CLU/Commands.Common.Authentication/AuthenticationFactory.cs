@@ -46,7 +46,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             AzureAccount account, 
             AzureEnvironment environment, 
             string tenant, 
-            string password, 
+            string password,
+            AuthenticationBehavior behavior,
             TokenCache tokenCache, 
             AzureEnvironment.Endpoint resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
@@ -64,8 +65,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
             else
             {
-
-                token = TokenProvider.GetAccessToken(configuration, ShowDialog.Never, account.Id, password, account.Type);
+                token = TokenProvider.GetAccessToken(configuration, behavior, account.Id, password, account.Type);
             }
 
             account.Id = token.UserId;
@@ -79,7 +79,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             string password,
             AzureEnvironment.Endpoint resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
-            return Authenticate(account, environment, tenant, password, TokenCache.DefaultShared, resourceId);
+            return Authenticate(
+                account, 
+                environment, 
+                tenant, 
+                password, 
+                new AuthenticationBehavior { Type = AuthenticationType.Silent }, 
+                TokenCache.DefaultShared, 
+                resourceId);
         }
 
         public ServiceClientCredentials GetSubscriptionCloudCredentials(AzureContext context)
@@ -151,8 +158,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                     tokenCache = new TokenCache(context.TokenCache);
                 }
                 
-                var token = Authenticate(context.Account, context.Environment,
-                        tenant, null, tokenCache);
+                var token = Authenticate(
+                    context.Account, 
+                    context.Environment,
+                    tenant, null,
+                    new AuthenticationBehavior { Type = AuthenticationType.Silent },
+                    tokenCache);
 
                 if (context.TokenCache != null && context.TokenCache.Length > 0)
                 {
