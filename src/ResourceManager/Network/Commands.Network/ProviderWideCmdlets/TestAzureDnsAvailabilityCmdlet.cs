@@ -20,11 +20,12 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet(VerbsDiagnostic.Test, "AzureRmDnsAvailability"), OutputType(typeof(bool))]
     public class TestAzureDnsAvailabilityCmdlet : NetworkBaseCmdlet
     {
+        [Alias("DomainQualifiedName")]
         [Parameter(
             Mandatory = true,
             HelpMessage = "The Domain Qualified Name.")]
         [ValidateNotNullOrEmpty]
-        public string DomainQualifiedName { get; set; }
+        public string DomainNameLabel { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -32,11 +33,11 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             this.Location = this.Location.Replace(" ", string.Empty);
-            var result = this.NetworkClient.NetworkResourceProviderClient.CheckDnsNameAvailability(this.Location, this.DomainQualifiedName);
-            WriteObject(result.DnsNameAvailability);
+            var result = this.NetworkClient.NetworkManagementClient.CheckDnsNameAvailability(this.Location, this.DomainNameLabel);
+            WriteObject(result.Available);
         }
     }
 }

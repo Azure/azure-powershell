@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
     /// The possible states in which the user server's policy property may be in
     /// </summary>
     public enum UseServerDefaultOptions {Enabled, Disabled }
-    
+
     /// <summary>
     /// A class representing a database auditing policy
     /// </summary>

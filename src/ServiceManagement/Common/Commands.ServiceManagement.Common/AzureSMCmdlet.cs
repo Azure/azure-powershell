@@ -160,23 +160,5 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 AzureSMProfileProvider.Instance.SetTokenCacheForProfile(Profile);
             }
         }
-
-        public virtual void ExecuteCmdlet()
-        {
-            // Do nothing.
-        }
-
-        protected override void ProcessRecord()
-        {
-            try
-            {
-                base.ProcessRecord();
-                ExecuteCmdlet();
-            }
-            catch (Exception ex)
-            {
-                WriteExceptionError(ex);
-            }
-        }
     }
 }

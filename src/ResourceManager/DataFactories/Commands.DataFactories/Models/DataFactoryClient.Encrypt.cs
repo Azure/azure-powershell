@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.DataFactories
             string authenticationType, 
             string serverName, string databaseName)
         {
-            LinkedServiceType linkedServiceType = type == null ? LinkedServiceType.OnPremisesSqlLinkedService : (LinkedServiceType)Enum.Parse(typeof(LinkedServiceType), type, true);
+            LinkedServiceType linkedServiceType = type == null ? LinkedServiceType.OnPremisesSqlLinkedService : GetLinkedServiceType(type);
 
             if (linkedServiceType == LinkedServiceType.OnPremisesSqlLinkedService && linkedServiceType == LinkedServiceType.OnPremisesOracleLinkedService
                 && linkedServiceType == LinkedServiceType.OnPremisesFileSystemLinkedService && (value == null || value.Length == 0))
@@ -58,6 +58,18 @@ namespace Microsoft.Azure.Commands.DataFactories
             SecureString password = credential != null ? credential.Password : null;
             UserInputConnectionString connectionString = new UserInputConnectionString(value, nonCredentialValue, userName, password, linkedServiceType, authType, serverName, databaseName);
             return GatewayEncryptionClient.Encrypt(connectionString, gatewayEncryptionInfos);
+        }
+
+        internal static LinkedServiceType GetLinkedServiceType(string typeName)
+        {
+            LinkedServiceType result;
+            if (!Enum.TryParse<LinkedServiceType>(typeName, true, out result))
+            {
+                // Treat any non-existing type as a generic data source type for encryption
+                return LinkedServiceType.Unknown;
+            }
+
+            return result;
         }
     }
 }

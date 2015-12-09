@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
             if (!string.IsNullOrEmpty(this.Name))
             {
                 var applicationGateway = this.GetApplicationGateway(this.ResourceGroupName, this.Name);
@@ -49,11 +49,11 @@ namespace Microsoft.Azure.Commands.Network
             }
             else if (!string.IsNullOrEmpty(this.ResourceGroupName))
             {
-                var getAppGwResponse = this.ApplicationGatewayClient.List(this.ResourceGroupName);
+                var appGateway = this.ApplicationGatewayClient.List(this.ResourceGroupName);
 
                 var psApplicationGateways = new List<PSApplicationGateway>();
 
-                foreach (var appGw in getAppGwResponse.ApplicationGateways)
+                foreach (var appGw in appGateway)
                 {
                     var psAppGw = this.ToPsApplicationGateway(appGw);
                     psAppGw.ResourceGroupName = this.ResourceGroupName;
@@ -64,11 +64,11 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                var getAppGwResponse = this.ApplicationGatewayClient.ListAll();
+                var appGwResponseList = this.ApplicationGatewayClient.ListAll();
 
                 var psApplicationGateways = new List<PSApplicationGateway>();
 
-                foreach (var appGw in getAppGwResponse.ApplicationGateways)
+                foreach (var appGw in appGwResponseList)
                 {
                     var psAppGw = this.ToPsApplicationGateway(appGw);
                     psAppGw.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(appGw.Id);

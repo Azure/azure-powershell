@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             DataLakeStoreAccount defaultAccount = null;
             if (!string.IsNullOrEmpty(DefaultDataLakeStore))

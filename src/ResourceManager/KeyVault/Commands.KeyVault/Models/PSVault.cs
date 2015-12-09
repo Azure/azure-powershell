@@ -36,6 +36,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             TenantName = vaultTenantDisplayName;
             VaultUri = vault.Properties.VaultUri;
             EnabledForDeployment = vault.Properties.EnabledForDeployment;
+            EnabledForTemplateDeployment = vault.Properties.EnabledForTemplateDeployment;
+            EnabledForDiskEncryption = vault.Properties.EnabledForDiskEncryption;
             AccessPolicies = vault.Properties.AccessPolicies.Select(s => new PSVaultAccessPolicy(s, adClient)).ToArray();
             OriginalVault = vault;
         }
@@ -48,6 +50,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public string Sku { get; private set; }
 
         public bool EnabledForDeployment { get; private set; }
+
+        public bool? EnabledForTemplateDeployment { get; private set; }
+
+        public bool? EnabledForDiskEncryption { get; private set; }
 
         public PSVaultAccessPolicy[] AccessPolicies { get; private set; }
 

@@ -1,4 +1,4 @@
-$AzureMajorVersion = "0"
+$AzureMajorVersion = "1"
 
 $AzureRMModules = @(
   "AzureRM.ApiManagement",
@@ -12,9 +12,12 @@ $AzureRMModules = @(
   "AzureRM.Dns",
   "AzureRM.HDInsight",
   "AzureRM.Insights",
+  "AzureRM.Intune",
   "AzureRM.KeyVault",
   "AzureRM.Network",
+  "AzureRM.NotificationHubs",
   "AzureRM.OperationalInsights",
+  "AzureRM.RecoveryServices",
   "AzureRM.RedisCache",
   "AzureRM.Resources",
   "AzureRM.SiteRecovery",

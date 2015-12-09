@@ -43,7 +43,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         {
             BatchController controller = BatchController.NewInstance;
             BatchAccountContext context = null;
-            string thumbprintAlgorithm = null;
             string thumbprint = null;
             controller.RunPsTestWorkflow(
                 () => { return new string[] { string.Format("Test-GetCertificateByThumbprint '{0}' '{1}' '{2}'", accountName, BatchTestHelpers.TestCertificateAlgorithm, thumbprint) }; },
@@ -216,47 +215,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 },
                 TestUtilities.GetCallingClass(),
                 TestUtilities.GetCurrentMethodName());
-        }
-    }
-
-    // Cmdlets that use the HTTP Recorder interceptor for use with scenario tests
-    [Cmdlet(VerbsCommon.Get, "AzureBatchCertificate_ST", DefaultParameterSetName = Constants.ODataFilterParameterSet)]
-    public class GetBatchCertificateScenarioTestCommand : GetBatchCertificateCommand
-    {
-        protected override void ProcessRecord()
-        {
-            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
-            base.ProcessRecord();
-        }
-    }
-
-    [Cmdlet(VerbsCommon.New, "AzureBatchCertificate_ST", DefaultParameterSetName = FileParameterSet)]
-    public class NewBatchCertificateScenarioTestCommand : NewBatchCertificateCommand
-    {
-        protected override void ProcessRecord()
-        {
-            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
-            base.ProcessRecord();
-        }
-    }
-
-    [Cmdlet(VerbsCommon.Remove, "AzureBatchCertificate_ST")]
-    public class RemoveBatchCertificateScenarioTestCommand : RemoveBatchCertificateCommand
-    {
-        protected override void ProcessRecord()
-        {
-            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
-            base.ProcessRecord();
-        }
-    }
-
-    [Cmdlet(VerbsLifecycle.Stop, "AzureBatchCertificateDeletion_ST")]
-    public class StopBatchCertificateDeletionScenarioTestCommand : StopBatchCertificateDeletionCommand
-    {
-        protected override void ProcessRecord()
-        {
-            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
-            base.ProcessRecord();
         }
     }
 }

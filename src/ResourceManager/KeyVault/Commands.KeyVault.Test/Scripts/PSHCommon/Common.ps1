@@ -252,15 +252,6 @@ function Test-BinaryFile
 
 <#
 .SYNOPSIS
-Removes all current subscriptions.
-#>
-function Remove-AllSubscriptions
-{
-    Get-AzureRmSubscription | Remove-AzureRmSubscription -Force
-}
-
-<#
-.SYNOPSIS
 Waits on the specified job with the given timeout.
 
 .PARAMETER scriptBlock

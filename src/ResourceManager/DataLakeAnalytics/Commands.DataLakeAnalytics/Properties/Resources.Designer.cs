@@ -8,14 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.CodeDom.Compiler;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Runtime.CompilerServices;
-
 namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -23,27 +19,27 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [GeneratedCode("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
-    [DebuggerNonUserCode()]
-    [CompilerGenerated()]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
         
-        private static System.Resources.ResourceManager resourceMan;
+        private static global::System.Resources.ResourceManager resourceMan;
         
-        private static CultureInfo resourceCulture;
+        private static global::System.Globalization.CultureInfo resourceCulture;
         
-        [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal Resources() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        internal static System.Resources.ResourceManager ResourceManager {
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
-                if (ReferenceEquals(resourceMan, null)) {
-                    System.Resources.ResourceManager temp = new System.Resources.ResourceManager("Microsoft.Azure.Commands.DataLakeAnalytics.Properties.Resources", typeof(Resources).Assembly);
+                if (object.ReferenceEquals(resourceMan, null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.DataLakeAnalytics.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -54,13 +50,22 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        internal static CultureInfo Culture {
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot perform the requested operation because the specified account &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string AccountDoesNotExist {
+            get {
+                return ResourceManager.GetString("AccountDoesNotExist", resourceCulture);
             }
         }
         
@@ -83,7 +88,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DataLakeAnalytics account with name &apos;{0}&apos; already exists..
+        ///   Looks up a localized string similar to Data Lake Analytics account with name &apos;{0}&apos; already exists..
         /// </summary>
         internal static string DataLakeAnalyticsAccountExists {
             get {
@@ -128,11 +133,11 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Data Lake Accounts can only be modified by indicating that they are now the Default Data Lake account. Otherwise only Add and Remove are supported for Data Lake accounts associated with a Data Lake Analytics account..
+        ///   Looks up a localized string similar to Data Lake Store Accounts can only be modified by indicating that they are now the Default Data Lake Store account. Otherwise only Add and Remove are supported for Data Lake Store accounts associated with a Data Lake Analytics account..
         /// </summary>
-        internal static string InvalidDataLakeAccountModificationAttempt {
+        internal static string InvalidDataLakeStoreAccountModificationAttempt {
             get {
-                return ResourceManager.GetString("InvalidDataLakeAccountModificationAttempt", resourceCulture);
+                return ResourceManager.GetString("InvalidDataLakeStoreAccountModificationAttempt", resourceCulture);
             }
         }
         
@@ -146,7 +151,25 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DataLakeAnalytics account operation failed with the following error code: {0} and message: {1}.
+        ///   Looks up a localized string similar to U-SQL Secrets can only be returned by specific database secret name combination. There is no list support..
+        /// </summary>
+        internal static string InvalidUSqlSecretRequest {
+            get {
+                return ResourceManager.GetString("InvalidUSqlSecretRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to U-SQL Types can only be returned in a list of all types within a database and schema combination..
+        /// </summary>
+        internal static string InvalidUSqlTypeRequest {
+            get {
+                return ResourceManager.GetString("InvalidUSqlTypeRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data Lake Analytics account operation failed with the following error code: {0} and message: {1}.
         /// </summary>
         internal static string LongRunningOperationFailed {
             get {
@@ -164,7 +187,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Removing DataLakeAnalytics account &apos;{0}&apos; ....
+        ///   Looks up a localized string similar to Removing Data Lake Analytics account &apos;{0}&apos; ....
         /// </summary>
         internal static string RemoveDataLakeAnalyticsAccount {
             get {
@@ -173,7 +196,16 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Removing DataLakeAnalytics catalog secret &apos;{0}&apos; ....
+        ///   Looks up a localized string similar to Removing Data Lake Analytics Azure Blob account &apos;{0}&apos; ....
+        /// </summary>
+        internal static string RemoveDataLakeAnalyticsBlobAccount {
+            get {
+                return ResourceManager.GetString("RemoveDataLakeAnalyticsBlobAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing Data Lake Analytics catalog secret &apos;{0}&apos; ....
         /// </summary>
         internal static string RemoveDataLakeAnalyticsCatalogSecret {
             get {
@@ -182,7 +214,16 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove DataLakeAnalytics account &apos;{0}&apos;?.
+        ///   Looks up a localized string similar to Removing Data Lake Analytics Data Lake Store account &apos;{0}&apos; ....
+        /// </summary>
+        internal static string RemoveDataLakeAnalyticsDataLakeStore {
+            get {
+                return ResourceManager.GetString("RemoveDataLakeAnalyticsDataLakeStore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Data Lake Analytics account &apos;{0}&apos;?.
         /// </summary>
         internal static string RemovingDataLakeAnalyticsAccount {
             get {
@@ -191,11 +232,29 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove DataLakeAnalytics catalog secret &apos;{0}&apos;?.
+        ///   Looks up a localized string similar to Are you sure you want to remove Data Lake Analytics Azure Blob account &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemovingDataLakeAnalyticsBlobAccount {
+            get {
+                return ResourceManager.GetString("RemovingDataLakeAnalyticsBlobAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Data Lake Analytics catalog secret &apos;{0}&apos;?.
         /// </summary>
         internal static string RemovingDataLakeAnalyticsCatalogSecret {
             get {
                 return ResourceManager.GetString("RemovingDataLakeAnalyticsCatalogSecret", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Data Lake Analytics Data Lake Store account &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemovingDataLakeAnalyticsDataLakeStore {
+            get {
+                return ResourceManager.GetString("RemovingDataLakeAnalyticsDataLakeStore", resourceCulture);
             }
         }
         
@@ -209,7 +268,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stopping DataLakeAnalytics job with Id: &apos;{0}&apos; ....
+        ///   Looks up a localized string similar to Stopping Data Lake Analytics job with Id: &apos;{0}&apos; ....
         /// </summary>
         internal static string StopDataLakeAnalyticsJob {
             get {
@@ -218,7 +277,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to stop DataLakeAnalytics job with Id: &apos;{0}&apos;?.
+        ///   Looks up a localized string similar to Are you sure you want to stop Data Lake Analytics job with Id: &apos;{0}&apos;?.
         /// </summary>
         internal static string StoppingDataLakeAnalyticsJob {
             get {
@@ -236,7 +295,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DataLakeAnalytics Job with ID: {0} has not completed in {1} seconds. Check job runtime or increase the value of -TimeoutInSeconds.
+        ///   Looks up a localized string similar to Data Lake Analytics Job with ID: {0} has not completed in {1} seconds. Check job runtime or increase the value of -TimeoutInSeconds.
         /// </summary>
         internal static string WaitJobTimeoutExceeded {
             get {

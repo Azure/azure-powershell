@@ -16,12 +16,11 @@ using System;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Common.Authentication;
-
 namespace Microsoft.Azure.Commands.Network
 {
     public partial class NetworkClient
     {
-        public INetworkResourceProviderClient NetworkResourceProviderClient { get; set; }
+        public INetworkManagementClient NetworkManagementClient { get; set; }
 
         public Action<string> VerboseLogger { get; set; }
 
@@ -30,15 +29,13 @@ namespace Microsoft.Azure.Commands.Network
         public Action<string> WarningLogger { get; set; }
 
         public NetworkClient(AzureContext context)
-            : this(
-                AzureSession.ClientFactory.CreateClient<NetworkResourceProviderClient>(context, AzureEnvironment.Endpoint.ResourceManager))
+            : this(AzureSession.ClientFactory.CreateArmClient<NetworkManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
-
         }
 
-        public NetworkClient(INetworkResourceProviderClient networkResourceProviderClient)
+        public NetworkClient(INetworkManagementClient NetworkManagementClient)
         {
-            NetworkResourceProviderClient = networkResourceProviderClient;
+            this.NetworkManagementClient = NetworkManagementClient;
         }
 
         public NetworkClient()
