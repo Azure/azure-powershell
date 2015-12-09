@@ -142,6 +142,6 @@
     <value>Are you sure you want to disable diagnostics on redis cache '{0}'?</value>
   </data>
   <data name="StorageAccountIdException" xml:space="preserve">
-    <value>StorageAccountId is not valid ARM resource uri.</value>
+    <value>StorageAccountId is not valid ARM resource Id.</value>
   </data>
 </root>

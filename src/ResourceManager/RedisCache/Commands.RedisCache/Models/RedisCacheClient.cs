@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.RedisCache
                                                         Location = location,
                                                         Properties = new RedisProperties
                                                         {
-                                                            Sku = new Microsoft.Azure.Management.Redis.Models.Sku() { 
+                                                            Sku = new Microsoft.Azure.Management.Redis.Models.Sku { 
                                                                 Name = skuName,
                                                                 Family = skuFamily,
                                                                 Capacity = skuCapacity
@@ -138,9 +138,9 @@ namespace Microsoft.Azure.Commands.RedisCache
         {
             _insightsClient.ServiceDiagnosticSettingsOperations.Put(
                 resourceUri: cacheUri,
-                parameters: new ServiceDiagnosticSettingsPutParameters() 
+                parameters: new ServiceDiagnosticSettingsPutParameters
                 {
-                    Properties = new ServiceDiagnosticSettings() 
+                    Properties = new ServiceDiagnosticSettings
                     {
                         StorageAccountName = storageAccountName
                     }
