@@ -62,12 +62,31 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         }
 
         /// <summary>
+        /// Gets the database server threat detection policy for the given database server in the given resource group
+        /// </summary>
+        public ServerThreatDetectionPolicy GetServerThreatDetectionPolicy(string resourceGroupName, string serverName, string clientRequestId)
+        {
+            ISecurityAlertPolicyOperations operations = GetCurrentSqlClient(clientRequestId).SecurityAlertPolicy;
+            ServerSecurityAlertPolicyGetResponse response = operations.GetServerSecurityAlertPolicy(resourceGroupName, serverName);
+            return response.SecurityAlertPolicy;
+        }
+
+        /// <summary>
         /// Calls the set security alert APIs for the database security alert policy for the given database in the given database server in the given resource group
         /// </summary>
         public void SetDatabaseSecurityAlertPolicy(string resourceGroupName, string serverName, string databaseName, string clientRequestId, DatabaseSecurityAlertPolicyCreateOrUpdateParameters parameters)
         {
             ISecurityAlertPolicyOperations operations = GetCurrentSqlClient(clientRequestId).SecurityAlertPolicy;
             operations.CreateOrUpdateDatebaseSecurityAlertPolicy(resourceGroupName, serverName, databaseName, parameters);
+        }
+
+        /// <summary>
+        /// Calls the set security alert APIs for the server security alert policy for the given server in the given resource group
+        /// </summary>
+        public void SetServerSecurityAlertPolicy(string resourceGroupName, string serverName, string clientRequestId, ServerSecurityAlertPolicyCreateOrUpdateParameters parameters)
+        {
+            ISecurityAlertPolicyOperations operations = GetCurrentSqlClient(clientRequestId).SecurityAlertPolicy;
+            operations.CreateOrUpdateServerSecurityAlertPolicy(resourceGroupName, serverName, parameters);
         }
 
         /// <summary>
