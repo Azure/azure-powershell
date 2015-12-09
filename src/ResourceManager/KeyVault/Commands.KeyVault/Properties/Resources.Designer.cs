@@ -70,6 +70,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No account found in the context. Please login using Login-AzureRMAccount..
+        /// </summary>
+        internal static string ArmAccountNotFound {
+            get {
+                return ResourceManager.GetString("ArmAccountNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The backup key file &apos;{0}&apos; already exists..
         /// </summary>
         internal static string BackupKeyFileAlreadyExists {
@@ -241,7 +250,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your Azure credentials have not been set up or have expired, please run Add-AzureRmAccount to set up your Azure credentials..
+        ///   Looks up a localized string similar to Your Azure credentials have not been set up or have expired, please run Login-AzureRmAccount to set up your Azure credentials..
         /// </summary>
         internal static string InvalidSubscriptionState {
             get {
@@ -291,6 +300,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string NoDefaultUserAccount {
             get {
                 return ResourceManager.GetString("NoDefaultUserAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No tenant found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Login-AzureRMAccount to login..
+        /// </summary>
+        internal static string NoTenantInContext {
+            get {
+                return ResourceManager.GetString("NoTenantInContext", resourceCulture);
             }
         }
         
