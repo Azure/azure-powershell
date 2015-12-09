@@ -20,18 +20,22 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = "The name of the web app.", ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = "The name of the web app.")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string AppName { get; set; }
 
         [Parameter(Position = 2, Mandatory = true, HelpMessage = "The SAS URL for the Azure Storage container used to store the backup.")]
         [ValidateNotNullOrEmpty]
         public string StorageAccountUrl;
 
-        [Parameter(Position = 3, Mandatory = false, HelpMessage = "The databases to backup.")]
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = "The name of the backup.")]
+        [ValidateNotNullOrEmpty]
+        public string BackupName { get; set; }
+
+        [Parameter(Position = 4, Mandatory = false, HelpMessage = "The databases to backup.")]
         public IList<DatabaseBackupSetting> Databases;
 
-        [Parameter(Position = 4, Mandatory = false, HelpMessage = "The name of the web app slot.")]
+        [Parameter(Position = 5, Mandatory = false, HelpMessage = "The name of the web app slot.")]
         public string Slot { get; set; }
 
         public override void ExecuteCmdlet()
@@ -40,9 +44,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             BackupRequest request = new BackupRequest()
             {
                 StorageAccountUrl = this.StorageAccountUrl,
+                BackupRequestName = this.BackupName,
                 Databases = this.Databases
             };
-            WriteObject(WebsitesClient.BackupSite(ResourceGroupName, Name, Slot, request));
+            WriteObject(WebsitesClient.BackupSite(ResourceGroupName, AppName, Slot, request));
         }
     }
 }

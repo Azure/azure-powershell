@@ -141,6 +141,7 @@
   <ItemGroup>
     <Compile Include="NewAzureWebsitesCommandTests.cs" />
     <Compile Include="ScenarioTests\AppServicePlanTests.cs" />
+    <Compile Include="ScenarioTests\WebAppBackupRestoreTests.cs" />
     <Compile Include="ScenarioTests\WebAppSlotTests.cs" />
     <Compile Include="ScenarioTests\WebsitesController.cs" />
     <Compile Include="ScenarioTests\WebAppTests.cs" />
@@ -158,6 +159,7 @@
     <None Include="ScenarioTests\AppServicePlanTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\WebAppBackupRestoreTests.ps1" />
     <None Include="ScenarioTests\WebAppSlotTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

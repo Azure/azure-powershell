@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// Gets the status of an Azure Web App backup
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureWebAppBackup")]
+    [Cmdlet(VerbsCommon.Get, "AzureWebAppBackupList")]
     public class GetAzureWebAppBackupList : WebAppBaseClientCmdLet
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]
