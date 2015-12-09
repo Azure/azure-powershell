@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
     using Microsoft.Azure.Management.Resources;
     using Microsoft.Azure.Management.Resources.Models;
     using Moq;
+    using Rest.Azure;
     using ScenarioTest;
     using System;
     using System.Collections.Generic;
@@ -71,10 +72,11 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 //CommandRuntime = commandRuntimeMock.Object,
                 ResourcesClient = new ResourcesClient
                 {
-                    ResourceManagementClient = resourceManagementClient.Object
+                    ResourceManagementClient = resourceManagementClient.Object,
+                    DataStore = DataStore
                 }
             };
-            System.Reflection.TypeExtensions.GetProperty(cmdlet.GetType(), "CommandRuntime").SetValue(cmdlet, commandRuntimeMock.Object);
+            PSCmdletExtensions.SetCommandRuntimeMock(cmdlet, commandRuntimeMock.Object);
         }
 
         /// <summary>
@@ -103,14 +105,18 @@ namespace Microsoft.Azure.Commands.Resources.Test
             var registrationResult = provider;
 
             this.providerOperationsMock
-                .Setup(client => client.RegisterAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
-                .Callback((string providerName, CancellationToken ignored) =>
+                .Setup(client => client.RegisterWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>()))
+                .Callback((string providerName, Dictionary<string, List<string>> customHeaders, CancellationToken ignored) =>
                         Assert.Equal(ProviderName, providerName, StringComparer.OrdinalIgnoreCase))
-                .Returns(() => Task.FromResult(registrationResult));
+                .Returns(() => Task.FromResult(new AzureOperationResponse<Provider>() {
+                    Body = registrationResult
+                }));
 
             this.providerOperationsMock
-              .Setup(f => f.GetAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
-              .Returns(() => Task.FromResult(provider));
+              .Setup(f => f.GetWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>()))
+              .Returns(() => Task.FromResult( new AzureOperationResponse<Provider>() {
+                   Body = provider
+              }));
 
             this.cmdlet.Force = true;
 
@@ -152,7 +158,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// </summary>
         private void VerifyCallPatternAndReset(bool succeeded)
         {
-            this.providerOperationsMock.Verify(f => f.RegisterAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Once());
+            this.providerOperationsMock.Verify(f => f.RegisterWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>()), Times.Once());
             this.commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<object>()), succeeded? Times.Once() : Times.Never());
    
             this.providerOperationsMock.ResetCalls();

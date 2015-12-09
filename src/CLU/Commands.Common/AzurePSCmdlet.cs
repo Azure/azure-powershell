@@ -349,7 +349,11 @@ namespace Microsoft.Azure.Commands.Utilities.Common
         protected new void WriteObject(object sendToPipeline, bool enumerateCollection)
         {
             FlushDebugMessages();
+#if DEBUG
+            CommandRuntime.WriteObject(sendToPipeline, enumerateCollection);
+#else
             base.WriteObject(sendToPipeline, enumerateCollection);
+#endif
         }
 
         protected new void WriteVerbose(string text)

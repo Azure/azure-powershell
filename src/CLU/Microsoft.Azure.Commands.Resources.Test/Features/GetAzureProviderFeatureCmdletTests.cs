@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
     using Rest.Azure;
     using ScenarioTest;
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
     using System.Net;
@@ -72,7 +73,8 @@ namespace Microsoft.Azure.Commands.Resources.Test
                     FeaturesManagementClient = featureClient.Object
                 }
             };
-            System.Reflection.TypeExtensions.GetProperty(cmdlet.GetType(), "CommandRuntime").SetValue(cmdlet, commandRuntimeMock.Object);
+            //System.Reflection.TypeExtensions.GetProperty(cmdlet.GetType(), "CommandRuntime").SetValue(cmdlet, commandRuntimeMock.Object);
+            PSCmdletExtensions.SetCommandRuntimeMock(cmdlet, commandRuntimeMock.Object);
         }
 
         /// <summary>
@@ -122,13 +124,18 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 Type = "Microsoft.Features/feature"
             };
 
-            var listResult = new Page<FeatureResult>();
-            var pagableResult = new[] { provider1RegisteredFeature, provider1UnregisteredFeature, provider2UnregisteredFeature };
-            System.Reflection.TypeExtensions.GetProperty(listResult.GetType(), "Items").SetValue(listResult, pagableResult);
+            var pagableResult = new Page<FeatureResult>();
+            //var listResult = new[] { provider1RegisteredFeature, provider1UnregisteredFeature, provider2UnregisteredFeature };
+            var listResult = new List<FeatureResult>() { provider1RegisteredFeature, provider1UnregisteredFeature, provider2UnregisteredFeature };
+            pagableResult.SetItemValue<FeatureResult>(listResult);
+            var result = new AzureOperationResponse<IPage<FeatureResult>>()
+            {
+                Body = pagableResult
+            };
 
             this.featureOperationsMock
-                .Setup(f => f.ListAllAsync(It.IsAny<CancellationToken>()))
-                .Returns(() => Task.FromResult((IPage<FeatureResult>)listResult));
+                .Setup(f => f.ListAllWithHttpMessagesAsync(null, It.IsAny<CancellationToken>()))
+                .Returns(() => Task.FromResult(result));
 
             // 1. List only registered features of providers
             this.commandRuntimeMock
@@ -172,14 +179,16 @@ namespace Microsoft.Azure.Commands.Resources.Test
             string providerOfChoice = Provider1Namespace;
             this.cmdlet.ListAvailable = false;
             this.cmdlet.ProviderNamespace = providerOfChoice;
-            System.Reflection.TypeExtensions
-                .GetProperty(listResult.GetType(), "Items")
-                .SetValue(listResult, new[] { provider1RegisteredFeature, provider1UnregisteredFeature });
+            pagableResult.SetItemValue<FeatureResult>(new List<FeatureResult>() { provider1RegisteredFeature, provider1UnregisteredFeature });
 
             this.featureOperationsMock
-                .Setup(f => f.ListAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
-                .Callback((string providerName, CancellationToken ignored) => Assert.Equal(providerOfChoice, providerName, StringComparer.OrdinalIgnoreCase))
-                .Returns(() => Task.FromResult((IPage<FeatureResult>)listResult ));
+                .Setup(f => f.ListWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>()))
+                .Callback((string providerName, Dictionary<string, List<string>> customHeaders,  CancellationToken ignored) => Assert.Equal(providerOfChoice, providerName, StringComparer.OrdinalIgnoreCase))
+                .Returns(() => Task.FromResult( 
+                    new AzureOperationResponse<IPage<FeatureResult>>()
+                    {
+                        Body = pagableResult
+                    }));
 
             this.commandRuntimeMock
                 .Setup(m => m.WriteObject(It.IsAny<object>()))
@@ -206,9 +215,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
             providerOfChoice = Provider2Namespace;
             this.cmdlet.ListAvailable = false;
             this.cmdlet.ProviderNamespace = providerOfChoice;
-            System.Reflection.TypeExtensions
-                .GetProperty(listResult.GetType(), "Items")
-                .SetValue(listResult, new[] { provider2UnregisteredFeature });
+            pagableResult.SetItemValue<FeatureResult>(new List<FeatureResult>() { provider2UnregisteredFeature });
 
             this.commandRuntimeMock
                 .Setup(m => m.WriteObject(It.IsAny<object>()))
@@ -228,9 +235,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
             providerOfChoice = Provider1Namespace;
             this.cmdlet.ProviderNamespace = providerOfChoice;
             this.cmdlet.ListAvailable = true;
-            System.Reflection.TypeExtensions
-                .GetProperty(listResult.GetType(), "Items")
-                .SetValue(listResult, new[] { provider1RegisteredFeature, provider1UnregisteredFeature });
+            pagableResult.SetItemValue<FeatureResult>(new List<FeatureResult>() { provider1RegisteredFeature, provider1UnregisteredFeature });
 
             this.commandRuntimeMock
               .Setup(m => m.WriteObject(It.IsAny<object>()))
@@ -256,13 +261,16 @@ namespace Microsoft.Azure.Commands.Resources.Test
             this.cmdlet.ListAvailable = false;
 
             this.featureOperationsMock
-              .Setup(f => f.GetAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<CancellationToken>()))
-              .Callback((string providerName, string featureName, CancellationToken ignored) =>
+              .Setup(f => f.GetWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), null, It.IsAny<CancellationToken>()))
+              .Callback((string providerName, string featureName, Dictionary<string, List<string>> customHeaders, CancellationToken ignored) =>
               {
                   Assert.Equal(Provider2Namespace, providerName, StringComparer.OrdinalIgnoreCase);
                   Assert.Equal(Feature1Name, featureName, StringComparer.OrdinalIgnoreCase);
               })
-              .Returns(() => Task.FromResult(provider2UnregisteredFeature));
+              .Returns(() => Task.FromResult( new AzureOperationResponse<FeatureResult>()
+              {
+                   Body = provider2UnregisteredFeature
+              }));
 
             this.commandRuntimeMock
                 .Setup(m => m.WriteObject(It.IsAny<object>()))
@@ -298,11 +306,11 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// </summary>
         private void VerifyGetCallPatternAndReset()
         {
-            this.featureOperationsMock.Verify(f => f.GetAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Once());
-            this.featureOperationsMock.Verify(f => f.ListAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Never);
-            this.featureOperationsMock.Verify(f => f.ListAllAsync(It.IsAny<CancellationToken>()), Times.Never);
-            this.featureOperationsMock.Verify(f => f.ListNextAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Never);
-            this.featureOperationsMock.Verify(f => f.ListAllNextAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Never);
+            this.featureOperationsMock.Verify(f => f.GetWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), null, It.IsAny<CancellationToken>()), Times.Once());
+            this.featureOperationsMock.Verify(f => f.ListWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>()), Times.Never);
+            this.featureOperationsMock.Verify(f => f.ListAllWithHttpMessagesAsync(null, It.IsAny<CancellationToken>()), Times.Never);
+            this.featureOperationsMock.Verify(f => f.ListNextWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>()), Times.Never);
+            this.featureOperationsMock.Verify(f => f.ListAllNextWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>()), Times.Never);
             this.commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<object>(), It.IsAny<bool>()), Times.Once());
 
             this.ResetCalls();
@@ -313,8 +321,8 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// </summary>
         private void VerifyListAllCallPatternAndReset()
         {
-            this.featureOperationsMock.Verify(f => f.ListAllAsync(It.IsAny<CancellationToken>()), Times.Once());
-            this.featureOperationsMock.Verify(f => f.ListAllNextAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Never);
+            this.featureOperationsMock.Verify(f => f.ListAllWithHttpMessagesAsync(null, It.IsAny<CancellationToken>()), Times.Once());
+            this.featureOperationsMock.Verify(f => f.ListAllNextWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>()), Times.Never);
             this.commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<object>(), It.IsAny<bool>()), Times.Once());
 
             this.ResetCalls();
@@ -325,8 +333,8 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// </summary>
         private void VerifyListProviderFeaturesCallPatternAndReset()
         {
-            this.featureOperationsMock.Verify(f => f.ListAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Once());
-            this.featureOperationsMock.Verify(f => f.ListNextAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Never);
+            this.featureOperationsMock.Verify(f => f.ListWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>()), Times.Once());
+            this.featureOperationsMock.Verify(f => f.ListNextWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>()), Times.Never);
             this.commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<object>(), It.IsAny<bool>()), Times.Once());
 
             this.ResetCalls();

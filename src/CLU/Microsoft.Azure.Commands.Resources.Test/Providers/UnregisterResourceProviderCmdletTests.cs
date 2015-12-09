@@ -71,10 +71,11 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 //CommandRuntime = commandRuntimeMock.Object,
                 ResourcesClient = new ResourcesClient
                 {
-                    ResourceManagementClient = resourceManagementClient.Object
+                    ResourceManagementClient = resourceManagementClient.Object,
+                    DataStore = DataStore
                 }
             };
-            System.Reflection.TypeExtensions.GetProperty(cmdlet.GetType(), "CommandRuntime").SetValue(cmdlet, commandRuntimeMock.Object);
+            PSCmdletExtensions.SetCommandRuntimeMock(cmdlet, commandRuntimeMock.Object);
         }
 
         /// <summary>
