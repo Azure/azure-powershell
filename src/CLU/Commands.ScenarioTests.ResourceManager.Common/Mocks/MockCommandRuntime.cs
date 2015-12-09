@@ -15,6 +15,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Management.Automation;
@@ -96,6 +97,7 @@ namespace Microsoft.Azure.Commands.Common.Test.Mocks
         public List<string> WarningStream = new List<string>();
         public List<string> VerboseStream = new List<string>();
         public List<string> DebugStream = new List<string>();
+        PSHost _host = new MockPSHost();
 
         public override string ToString()
         {
@@ -105,11 +107,11 @@ namespace Microsoft.Azure.Commands.Common.Test.Mocks
 
         [SuppressMessage("Microsoft.Design", "CA1065:DoNotRaiseExceptionsInUnexpectedLocations",
             Justification = "Tests should not access this property")]
-        public System.Management.Automation.Host.PSHost Host
+        public PSHost Host
         {
             get
             {
-                return null;
+                return _host;
             }
         }
 
@@ -218,6 +220,131 @@ namespace Microsoft.Azure.Commands.Common.Test.Mocks
             OutputPipeline.Clear();
             WarningStream.Clear();
             VerboseStream.Clear();
+        }
+
+        class MockPSHost : PSHost
+        {
+            PSHostUserInterface _hostUI = new MockPSHostUI();
+            Version _version = new Version(1, 0, 0);
+            Guid _instanceId = Guid.NewGuid();
+            public override CultureInfo CurrentCulture
+            {
+                get { return CultureInfo.CurrentCulture; }
+            }
+
+            public override CultureInfo CurrentUICulture
+            {
+                get
+                {
+                    return CultureInfo.CurrentUICulture;
+                }
+            }
+
+            public override Guid InstanceId
+            {
+                get
+                {
+                    return _instanceId;
+                }
+            }
+
+            public override bool IsInputRedirected
+            {
+                get
+                {
+                    return false;
+                }
+            }
+
+            public override bool IsOutputRedirected
+            {
+                get
+                {
+                    return true;
+                }
+            }
+
+            public override string Name
+            {
+                get
+                {
+                    return "MockHost";
+                }
+            }
+
+            public override PSHostUserInterface UI
+            {
+                get { return _hostUI; }
+            }
+
+            public override Version Version
+            {
+                get
+                {
+                    return new Version(1, 0 , 0);
+                }
+            }
+
+            class MockPSHostUI : PSHostUserInterface
+            {
+                public override Dictionary<string, PSObject> Prompt(string caption, string message, Collection<FieldDescription> descriptions)
+                {
+                    return new Dictionary<string, PSObject>();
+                }
+
+                public override int PromptForChoice(string caption, string message, Collection<ChoiceDescription> choices, int defaultChoice)
+                {
+                    return 0;
+                }
+
+                public override PSCredential PromptForCredential(string caption, string message, string userName, string targetName)
+                {
+                    return new PSCredential("user@contoso.org", "P@$$w0rd!");
+                }
+
+                public override PSCredential PromptForCredential(string caption, string message, string userName, string targetName,
+                    PSCredentialTypes allowedCredentialTypes, PSCredentialUIOptions options)
+                {
+                    return new PSCredential("user@contoso.org", "P@$$w0rd!");
+                }
+
+                public override string ReadLine()
+                {
+                    return null;
+                }
+
+                public override void Write(string value)
+                {
+                }
+
+                public override void Write(ConsoleColor foregroundColor, ConsoleColor backgroundColor, string value)
+                {
+                }
+
+                public override void WriteDebugLine(string message)
+                {
+                }
+
+                public override void WriteErrorLine(string value)
+                {
+                }
+
+                public override void WriteLine(string value)
+                {
+                }
+
+                public override void WriteProgress(long sourceId, ProgressRecord record)
+                {
+                }
+
+                public override void WriteVerboseLine(string message)
+                {
+                }
+
+                public override void WriteWarningLine(string message)
+                {
+                }
+            }
         }
     }
 }

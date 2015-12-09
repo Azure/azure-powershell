@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
             _getCertificate = certificateFinder;
         }
-        public IAccessToken GetAccessToken(AdalConfiguration config, ShowDialog promptBehavior, string userId, string password,
+        public IAccessToken GetAccessToken(AdalConfiguration config, AuthenticationBehavior behavior, string userId, string password,
             AzureAccount.AccountType credentialType)
         {
             if (credentialType == AzureAccount.AccountType.User)

@@ -107,7 +107,16 @@ namespace Microsoft.Azure.Commands.Utilities.Common
             {
                 try
                 {
-                    returnValue = SessionState.PSVariable.Get<T>(name)?? defaultValue ;
+                    returnValue = SessionState.PSVariable.Get<T>(name) ?? defaultValue;
+                }
+                catch
+                {
+                }
+            }
+            else
+            {
+                try
+                {
                     var variablePath = GetPath(name);
                     var fileText = DataStore.ReadFileAsText(variablePath);
                     if (!string.IsNullOrEmpty(fileText))
@@ -117,6 +126,7 @@ namespace Microsoft.Azure.Commands.Utilities.Common
                 }
                 catch
                 {
+                    
                 }
             }
 
@@ -127,11 +137,15 @@ namespace Microsoft.Azure.Commands.Utilities.Common
         {
             return Path.Combine(Directory.GetCurrentDirectory(), "sessions", variableName);
         }
+
         protected virtual void SetSessionVariable<T>(string name, T value) where T : class
         {
             if (SessionState != null)
             {
                 SessionState.PSVariable.Set(name, value);
+            }
+            else
+            {
                 var variablePath = GetPath(name);
                 DataStore.WriteFile(variablePath, JsonConvert.SerializeObject(value));
             }
@@ -152,12 +166,12 @@ namespace Microsoft.Azure.Commands.Utilities.Common
             {
                 if (string.Equals(value, bool.FalseString, StringComparison.OrdinalIgnoreCase))
                 {
-                    // Disable data collection only if it is explictly set to 'false'.
+                    // Disable data collection only if it is explicitly set to 'false'.
                     _dataCollectionProfile = new AzurePSDataCollectionProfile(true);
                 }
                 else if (string.Equals(value, bool.TrueString, StringComparison.OrdinalIgnoreCase))
                 {
-                    // Enable data collection only if it is explictly set to 'true'.
+                    // Enable data collection only if it is explicitly set to 'true'.
                     _dataCollectionProfile = new AzurePSDataCollectionProfile(false);
                 }
             }
@@ -270,7 +284,7 @@ namespace Microsoft.Azure.Commands.Utilities.Common
                 WriteDebugWithTimestamp(string.Format("using account id '{0}'...", DefaultContext.Account.Id));
             }
 
-            DataStore = GetSessionVariableValue<IDataStore>(AzurePowerShell.DataStoreVariable, new DiskDataStore());
+            DataStore = DataStore?? GetSessionVariableValue<IDataStore>(AzurePowerShell.DataStoreVariable, new DiskDataStore());
             _adalListener = _adalListener ?? new DebugStreamTraceListener(_debugMessages);
             DebugStreamTraceListener.AddAdalTracing(_adalListener);
 
@@ -339,11 +353,7 @@ namespace Microsoft.Azure.Commands.Utilities.Common
         protected new void WriteObject(object sendToPipeline)
         {
             FlushDebugMessages();
-#if DEBUG
-            CommandRuntime.WriteObject(sendToPipeline);
-#else
             base.WriteObject(sendToPipeline);
-#endif
         }
 
         protected new void WriteObject(object sendToPipeline, bool enumerateCollection)

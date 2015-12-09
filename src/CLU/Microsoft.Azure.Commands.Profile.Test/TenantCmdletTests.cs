@@ -122,6 +122,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.TenantId = tenantId;
             cmdlt.DefaultProfile = _profile;
             cmdlt.AuthenticationFactory = _authFactory;
+            cmdlt.Username = "user@contoso.org";
+            cmdlt.Password = "Pa$$w0rd!";
 
             // Act
             cmdlt.InvokeBeginProcessing();
