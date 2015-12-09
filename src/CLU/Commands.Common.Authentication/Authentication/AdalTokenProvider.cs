@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public IAccessToken GetAccessToken(
             AdalConfiguration config, 
-            ShowDialog promptBehavior, 
+            AuthenticationBehavior behavior, 
             string userId, 
             string password,
             AzureAccount.AccountType credentialType)
@@ -43,9 +43,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             switch (credentialType)
             {
                 case AzureAccount.AccountType.User:
-                    return userTokenProvider.GetAccessToken(config, promptBehavior, userId, password, credentialType);
+                    return userTokenProvider.GetAccessToken(config, behavior, userId, password, credentialType);
                 case AzureAccount.AccountType.ServicePrincipal:
-                    return servicePrincipalTokenProvider.GetAccessToken(config, promptBehavior, userId, password, credentialType);
+                    return servicePrincipalTokenProvider.GetAccessToken(config, behavior, userId, password, credentialType);
                 default:
                     throw new ArgumentException(Resources.UnknownCredentialType, "credentialType");
             }

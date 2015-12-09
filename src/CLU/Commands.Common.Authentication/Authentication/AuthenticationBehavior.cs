@@ -12,12 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using System;
+
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
-    public enum ShowDialog
+    public enum AuthenticationType
     {
-        Auto,
-        Always,
-        Never
+        DeviceCode,
+        Silent
+    }
+
+    public class AuthenticationBehavior
+    {
+        public Func<DeviceCodeResult, bool> DeviceCodeHandler { get; set; }
+
+        public AuthenticationType Type { get; set; }
     }
 }

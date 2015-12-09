@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// <param name="environment">The azure environment object</param>
         /// <param name="tenant">The AD tenant in most cases should be 'common'</param>
         /// <param name="password">The AD account password</param>
+        /// <param name="behavior">The authentication behavior</param>
         /// <param name="tokenCache">Token Cache</param>
         /// <param name="resourceId">Optional, the AD resource id</param>
         /// <returns></returns>
@@ -35,7 +36,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             AzureAccount account, 
             AzureEnvironment environment, 
             string tenant, 
-            string password, 
+            string password,
+            AuthenticationBehavior behavior,
             TokenCache tokenCache,
             AzureEnvironment.Endpoint resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId);
 
@@ -56,6 +58,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             AzureEnvironment.Endpoint resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId);
 
         ServiceClientCredentials GetSubscriptionCloudCredentials(AzureContext context);
+
         ServiceClientCredentials GetSubscriptionCloudCredentials(AzureContext context, AzureEnvironment.Endpoint targetEndpoint);
        
         ServiceClientCredentials GetServiceClientCredentials(AzureContext context);
