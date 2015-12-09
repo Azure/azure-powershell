@@ -394,3 +394,33 @@ function Test-RedisCacheClustering
     # Delete cache
     Assert-True {Remove-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Force -PassThru} "Remove cache failed."
 }
+
+<#
+.SYNOPSIS
+Tests SetAzureRedisCacheDiagnostics
+#>
+function Test-SetAzureRedisCacheDiagnostics
+{
+    # Setup
+    # resource group should exists
+    $resourceGroupName = "SunnyAAPT6"
+    $cacheName = "sunnycache"
+    
+    # Set Diagnostics
+    Set-AzureRmRedisCacheDiagnostics -ResourceGroupName $resourceGroupName -Name $cacheName -StorageAccountUri "/subscriptions/f8f8f139-2fd5-4d86-afca-21f21f35806e/resourcegroups/SunnyAAPT6/providers/Microsoft.Storage/storageAccounts/sunnystoragenew"
+}
+
+<#
+.SYNOPSIS
+Tests SetAzureRedisCacheDiagnostics
+#>
+function Test-RemoveAzureRedisCacheDiagnostics
+{
+    # Setup
+    # resource group should exists
+    $resourceGroupName = "SunnyAAPT6"
+    $cacheName = "sunnycache"
+    
+    # Set Diagnostics
+    Remove-AzureRmRedisCacheDiagnostics -ResourceGroupName $resourceGroupName -Name $cacheName -Force
+}

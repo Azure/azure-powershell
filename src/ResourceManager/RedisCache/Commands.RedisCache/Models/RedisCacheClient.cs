@@ -14,21 +14,26 @@
 
 namespace Microsoft.Azure.Commands.RedisCache
 {
+    using System.Collections;
+    using System.Collections.Generic;
     using Microsoft.Azure.Common.Authentication;
     using Microsoft.Azure.Common.Authentication.Models;
+    using Microsoft.Azure.Management.Insights;
+    using Microsoft.Azure.Management.Insights.Models;
     using Microsoft.Azure.Management.Redis;
     using Microsoft.Azure.Management.Redis.Models;
     using Microsoft.WindowsAzure;
     using Microsoft.WindowsAzure.Commands.Common;
-    using System.Collections;
-    using System.Collections.Generic;
 
     public class RedisCacheClient
     {
         private RedisManagementClient _client;
+        private InsightsManagementClient _insightsClient;
+
         public RedisCacheClient(AzureContext context)
         {
             _client = AzureSession.ClientFactory.CreateClient<RedisManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            _insightsClient = AzureSession.ClientFactory.CreateClient<InsightsManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
         }
         public RedisCacheClient() { }
 
@@ -40,7 +45,7 @@ namespace Microsoft.Azure.Commands.RedisCache
                                                         Location = location,
                                                         Properties = new RedisProperties
                                                         {
-                                                            Sku = new Sku() { 
+                                                            Sku = new Microsoft.Azure.Management.Redis.Models.Sku() { 
                                                                 Name = skuName,
                                                                 Family = skuFamily,
                                                                 Capacity = skuCapacity
@@ -127,6 +132,20 @@ namespace Microsoft.Azure.Commands.RedisCache
         public RedisListKeysResponse GetAccessKeys(string resourceGroupName, string cacheName)
         {
             return _client.Redis.ListKeys(resourceGroupName: resourceGroupName, name: cacheName);
+        }
+
+        public void SetDiagnostics(string cacheUri, string storageAccountName)
+        {
+            _insightsClient.ServiceDiagnosticSettingsOperations.Put(
+                resourceUri: cacheUri,
+                parameters: new ServiceDiagnosticSettingsPutParameters() 
+                {
+                    Properties = new ServiceDiagnosticSettings() 
+                    {
+                        StorageAccountName = storageAccountName
+                    }
+                }
+            );
         }
     }
 }
