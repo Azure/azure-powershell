@@ -131,7 +131,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             resourceOperationsMock.Setup(f => f.ListWithHttpMessagesAsync(
                 null,
                 null,
-                null,
                 new CancellationToken()))
             .Returns(Task.Factory.StartNew(() => new AzureOperationResponse<IPage<GenericResource>>() {
                 Body = GetPagableType(result)
@@ -141,7 +140,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
         private void SetupListForResourceGroupAsync(string name, IPage<GenericResource> result)
         {
             resourceOperationsMock.Setup(f => f.ListAsync(
-                null,
                 null,
                 new CancellationToken()))
                     .Returns(Task.Factory.StartNew(() => result));
@@ -168,7 +166,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             deploymentOperationsMock = new Mock<IDeploymentOperationsOperations>();
             //eventDataOperationsMock = new Mock<IEventDataOperations>();
             providersMock = new Mock<IProvidersOperations>();
-            providersMock.Setup(f => f.ListWithHttpMessagesAsync(It.IsAny<int?>(), null, new CancellationToken()))
+            providersMock.Setup(f => f.ListWithHttpMessagesAsync(null, null, new CancellationToken()))
                 .Returns(Task.Factory.StartNew(() =>
                 new AzureOperationResponse<IPage<Provider>>()
                 {
@@ -328,7 +326,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 new CancellationToken()))
                     .Returns(Task.Factory.StartNew(() => new ResourceGroup() { Name = parameters.ResourceGroupName, Location = parameters.Location } ));
 
-            resourceOperationsMock.Setup(f => f.ListAsync(null, null, It.IsAny<CancellationToken>()))
+            resourceOperationsMock.Setup(f => f.ListAsync(null, It.IsAny<CancellationToken>()))
                 .Returns(() => Task.Factory.StartNew(() => 
                 {
                     var resources = new List<GenericResource>()
@@ -883,7 +881,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             resourceGroupMock.Setup(f => f.CheckExistenceAsync(parameters.ResourceGroupName, new CancellationToken()))
                 .Returns(Task.Factory.StartNew(() => (bool?) true));
 
-            resourceOperationsMock.Setup(f => f.ListAsync(null, null, It.IsAny<CancellationToken>()))
+            resourceOperationsMock.Setup(f => f.ListAsync(null, It.IsAny<CancellationToken>()))
                 .Returns(() => Task.Factory.StartNew(() => GetPagableType(new List<GenericResource>(new[]
                         {
                             (GenericResource) new Resource(location: "West US", id: null, name: "foo", type: null, tags: null),
@@ -1624,7 +1622,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             var listResult = new List<GenericResource>() { resource1, resource2 };
             var pagableResult = new Page<GenericResource>();
             System.Reflection.TypeExtensions.GetProperty(pagableResult.GetType(), "Items").SetValue(pagableResult, listResult);
-            resourceOperationsMock.Setup(f => f.ListAsync(null, null, new CancellationToken()))
+            resourceOperationsMock.Setup(f => f.ListAsync(null, new CancellationToken()))
                 .Returns(Task.Factory.StartNew(() => (IPage<GenericResource>)pagableResult))
                 .Callback((GenericResourceFilter p, CancellationToken ct) => { actualParameters = p; });
 
@@ -1645,7 +1643,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             var listResult = new List<GenericResource>() { resource1, resource2 };
             var pagableResult = new Page<GenericResource>();
             System.Reflection.TypeExtensions.GetProperty(pagableResult.GetType(), "Items").SetValue(pagableResult, listResult);
-            resourceOperationsMock.Setup(f => f.ListAsync(null, null, new CancellationToken()))
+            resourceOperationsMock.Setup(f => f.ListAsync(null, new CancellationToken()))
                 .Returns(Task.Factory.StartNew(() => (IPage<GenericResource>)pagableResult))
                 .Callback((GenericResourceFilter p, CancellationToken ct) => { actualParameters = p; });
 
@@ -1700,7 +1698,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             var listResult = new List<ResourceGroup>() { resourceGroup1, resourceGroup2, resourceGroup3, resourceGroup4 };
             var pagableResult = new Page<ResourceGroup>();
             System.Reflection.TypeExtensions.GetProperty(pagableResult.GetType(), "Items").SetValue(pagableResult, listResult);
-            resourceGroupMock.Setup(f => f.ListAsync(null, null, new CancellationToken()))
+            resourceGroupMock.Setup(f => f.ListAsync(null, new CancellationToken()))
                 .Returns(Task.Factory.StartNew(() => (IPage<ResourceGroup>) pagableResult));
             SetupListForResourceGroupAsync(resourceGroup1.Name, new List<GenericResource>() { CreateGenericResource(null, null, "resource") });
             SetupListForResourceGroupAsync(resourceGroup2.Name, new List<GenericResource>() { CreateGenericResource(null, null, "resource") });
@@ -1731,7 +1729,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             var listResult = new List<ResourceGroup>() { resourceGroup1, resourceGroup2, resourceGroup3, resourceGroup4 };
             var pagableResult = new Page<ResourceGroup>();
             System.Reflection.TypeExtensions.GetProperty(pagableResult.GetType(), "Items").SetValue(pagableResult, listResult);
-            resourceGroupMock.Setup(f => f.ListAsync(null, null, new CancellationToken()))
+            resourceGroupMock.Setup(f => f.ListAsync( null, new CancellationToken()))
                 .Returns(Task.Factory.StartNew(() => (IPage<ResourceGroup>)pagableResult));
             SetupListForResourceGroupAsync(resourceGroup1.Name, new List<GenericResource>() { CreateGenericResource(null, null, "resource") });
             SetupListForResourceGroupAsync(resourceGroup2.Name, new List<GenericResource>() { CreateGenericResource(null, null, "resource") });
@@ -1766,7 +1764,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             var listResult = new List<ResourceGroup>() { resourceGroup1, resourceGroup2, resourceGroup3, resourceGroup4 };
             var pagableResult = new Page<ResourceGroup>();
             System.Reflection.TypeExtensions.GetProperty(pagableResult.GetType(), "Items").SetValue(pagableResult, listResult);
-            resourceGroupMock.Setup(f => f.ListAsync(null, null, new CancellationToken()))
+            resourceGroupMock.Setup(f => f.ListAsync(null, new CancellationToken()))
                 .Returns(Task.Factory.StartNew(() => (IPage<ResourceGroup>)pagableResult));
             SetupListForResourceGroupAsync(resourceGroup1.Name, new List<GenericResource>() { CreateGenericResource(null, null, "resource") });
             SetupListForResourceGroupAsync(resourceGroup2.Name, new List<GenericResource>() { CreateGenericResource(null, null, "resource") });
@@ -1819,7 +1817,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             var listResult = new List<ResourceGroup>() { resourceGroup1, resourceGroup2, resourceGroup3, resourceGroup4 };
             var pagableResult = new Page<ResourceGroup>();
             System.Reflection.TypeExtensions.GetProperty(pagableResult.GetType(), "Items").SetValue(pagableResult, listResult);
-            resourceGroupMock.Setup(f => f.ListAsync(null, null, new CancellationToken()))
+            resourceGroupMock.Setup(f => f.ListAsync(null, new CancellationToken()))
                 .Returns(Task.Factory.StartNew(() => (IPage<ResourceGroup>)pagableResult));
             SetupListForResourceGroupAsync(resourceGroup1.Name, new List<GenericResource>() { CreateGenericResource(null, null, "resource") });
             SetupListForResourceGroupAsync(resourceGroup2.Name, new List<GenericResource>() { CreateGenericResource(null, null, "resource") });
@@ -2095,7 +2093,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 resourceGroupName,
                 null,
                 null,
-                null,
                 new CancellationToken()))
                 .Returns(Task.Factory.StartNew(() => new AzureOperationResponse<IPage<DeploymentExtended>>()
                 {
@@ -2202,7 +2199,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             };
             deploymentsMock.Setup(f => f.ListWithHttpMessagesAsync(
                 resourceGroupName,
-                null,
                 null,
                 null,
                 It.IsAny<CancellationToken>()))

@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     newUser = controllerAdmin.GraphClient.User.Create(parameter);
 
                     resourceGroup = controllerAdmin.ResourceManagementClient.ResourceGroups
-                                        .List(null, null)
+                                        .List(null)
                                         .First();
 
                     // Wait to allow newly created object changes to propagate
