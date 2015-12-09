@@ -65,6 +65,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
             else
             {
+                if (account.IsPropertySet(AzureAccount.Property.ApplicationSecret))
+                {
+                    password = password ?? account.GetProperty(AzureAccount.Property.ApplicationSecret);
+                }
                 token = TokenProvider.GetAccessToken(configuration, behavior, account.Id, password, account.Type);
             }
 

@@ -57,7 +57,12 @@ namespace Microsoft.Azure.Commands.Models
                 result.CertificateThumbprint = account.GetProperty(AzureAccount.Property.CertificateThumbprint);
             }
 
-           return result;
+            if (account.IsPropertySet(AzureAccount.Property.ApplicationSecret))
+            {
+                result.ApplicationSecret = account.GetProperty(AzureAccount.Property.ApplicationSecret);
+            }
+
+            return result;
         }
 
         /// <summary>
@@ -99,6 +104,11 @@ namespace Microsoft.Azure.Commands.Models
             {
                 result.SetProperty(AzureAccount.Property.CertificateThumbprint, account.CertificateThumbprint);
             }
+
+            if (!string.IsNullOrWhiteSpace(account.ApplicationSecret))
+            {
+                result.SetProperty(AzureAccount.Property.ApplicationSecret, account.ApplicationSecret);
+            }
             return result;
         }
 
@@ -125,6 +135,8 @@ namespace Microsoft.Azure.Commands.Models
         /// Gets or sets Thumbprint for associated certificate
         /// </summary>
         public string CertificateThumbprint { get; set; }
+
+        public string ApplicationSecret { get; set; }
 
         public override string ToString()
         {
