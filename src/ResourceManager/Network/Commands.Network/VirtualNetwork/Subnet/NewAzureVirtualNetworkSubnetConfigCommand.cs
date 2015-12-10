@@ -17,7 +17,7 @@ using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureVirtualNetworkSubnetConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSSubnet))]
+    [Cmdlet(VerbsCommon.New, "AzureRmVirtualNetworkSubnetConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSSubnet))]
     public class NewAzureVirtualNetworkSubnetConfigCommand : AzureVirtualNetworkSubnetConfigBase
     {
         [Parameter(
@@ -49,13 +49,13 @@ namespace Microsoft.Azure.Commands.Network
 
             if (!string.IsNullOrEmpty(this.NetworkSecurityGroupId))
             {
-                subnet.NetworkSecurityGroup = new PSResourceId();
+                subnet.NetworkSecurityGroup = new PSNetworkSecurityGroup();
                 subnet.NetworkSecurityGroup.Id = this.NetworkSecurityGroupId;
             }
 
             if (!string.IsNullOrEmpty(this.RouteTableId))
             {
-                subnet.RouteTable = new PSResourceId();
+                subnet.RouteTable = new PSRouteTable();
                 subnet.RouteTable.Id = this.RouteTableId;
             }
 

@@ -20,7 +20,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureLocalNetworkGateway"), OutputType(typeof(PSLocalNetworkGateway))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmLocalNetworkGateway"), OutputType(typeof(PSLocalNetworkGateway))]
     public class GetAzureLocalNetworkGatewayCommand : LocalNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -49,10 +49,10 @@ namespace Microsoft.Azure.Commands.Network
             }
             else if (!string.IsNullOrEmpty(this.ResourceGroupName))
             {
-                var localnetGatewayGetResponse = this.LocalNetworkGatewayClient.List(this.ResourceGroupName);
+                var localnetGatewayList = this.LocalNetworkGatewayClient.List(this.ResourceGroupName);
 
                 var psLocalnetGateways = new List<PSLocalNetworkGateway>();
-                foreach (var localNetworkGateway in localnetGatewayGetResponse.LocalNetworkGateways)
+                foreach (var localNetworkGateway in localnetGatewayList)
                 {
                     var psLocalnetGateway = this.ToPsLocalNetworkGateway(localNetworkGateway);
                     psLocalnetGateway.ResourceGroupName = this.ResourceGroupName;

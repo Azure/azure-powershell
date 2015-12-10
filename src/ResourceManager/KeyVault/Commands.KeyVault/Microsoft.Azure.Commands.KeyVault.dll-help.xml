@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <helpItems xmlns="http://msh" schema="maml">
   <!-- Updatable Help Version 1.0.0.0 -->
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
@@ -42,7 +42,7 @@ Note: To import a key from your own hardware security module, you must first gen
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2" aliases="KeyName">
           <maml:name>Name</maml:name>
           <maml:description>
-            <maml:para>Specifies the name of the key to add to the vault. This cmdlet constructs the fully qualified domain name (FQDN) of a key based on the name that this parameter specifies, the name of the vault, and your current environment. The name must be a string of 1 through 63 characters in length that contains only 0-9, a-z, A-Z, and � (the dash symbol).</maml:para>
+            <maml:para>Specifies the name of the key to add to the vault. This cmdlet constructs the fully qualified domain name (FQDN) of a key based on the name that this parameter specifies, the name of the vault, and your current environment. The name must be a string of 1 through 63 characters in length that contains only 0-9, a-z, A-Z, and â€“ (the dash symbol).</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -143,7 +143,7 @@ Note: To import a key from your own hardware security module, you must first gen
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2" aliases="KeyName">
           <maml:name>Name</maml:name>
           <maml:description>
-            <maml:para>Specifies the name of the key to add to the vault. This cmdlet constructs the fully qualified domain name (FQDN) of a key based on the name that this parameter specifies, the name of the vault, and your current environment. The name must be a string of 1 through 63 characters in length that contains only 0-9, a-z, A-Z, and � (the dash symbol).</maml:para>
+            <maml:para>Specifies the name of the key to add to the vault. This cmdlet constructs the fully qualified domain name (FQDN) of a key based on the name that this parameter specifies, the name of the vault, and your current environment. The name must be a string of 1 through 63 characters in length that contains only 0-9, a-z, A-Z, and â€“ (the dash symbol).</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -310,7 +310,7 @@ Note: To import a key from your own hardware security module, you must first gen
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2" aliases="KeyName">
         <maml:name>Name</maml:name>
         <maml:description>
-          <maml:para>Specifies the name of the key to add to the vault. This cmdlet constructs the fully qualified domain name (FQDN) of a key based on the name that this parameter specifies, the name of the vault, and your current environment. The name must be a string of 1 through 63 characters in length that contains only 0-9, a-z, A-Z, and � (the dash symbol).</maml:para>
+          <maml:para>Specifies the name of the key to add to the vault. This cmdlet constructs the fully qualified domain name (FQDN) of a key based on the name that this parameter specifies, the name of the vault, and your current environment. The name must be a string of 1 through 63 characters in length that contains only 0-9, a-z, A-Z, and â€“ (the dash symbol).</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -451,7 +451,7 @@ Note: To import a key from your own hardware security module, you must first gen
 PS C:\&gt; $Expires = (Get-Date).AddYears(2).ToUniversalTime() 
 PS C:\&gt; $NotBefore = (Get-Date).ToUniversalTime() 
 PS C:\&gt; $Tags = @{'Severity' = 'high'; 'Accounting' = null}
-PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITHsmNonDefault" -Destination "HSM" -Expires $Expires -NotBefore $NotBefore -KeyOps $KeyOperations �Disable -Tags $Tags
+PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITHsmNonDefault" -Destination "HSM" -Expires $Expires -NotBefore $NotBefore -KeyOps $KeyOperations â€“Disable -Tags $Tags
 </dev:code>
         <dev:remarks>
           <maml:para>The first command stores the values decrypt and verify in the $KeyOperations variable.</maml:para>
@@ -556,6 +556,11 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -758,6 +763,11 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -1010,7 +1020,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$Key = Get-AzureKeyVaultKey -VaultName "Contoso" -KeyName "ITPfx" �Version "5A12A276385949DB8B5F82AFEE85CAED"
+        <dev:code>PS C:\&gt;$Key = Get-AzureKeyVaultKey -VaultName "Contoso" -KeyName "ITPfx" â€“Version "5A12A276385949DB8B5F82AFEE85CAED"
 </dev:code>
         <dev:remarks>
           <maml:para>This command gets a specific version of the key named ITPfx in the vault named Contoso. After running this command, you can inspect various properties of the key by navigating the $Key object.</maml:para>
@@ -1042,6 +1052,11 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -1294,7 +1309,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureKeyVaultSecret -VaultName "Contoso" -Name "ITSecret" �Version "6A12A286385949DB8B5F82AFEF85CAE9"
+        <dev:code>PS C:\&gt;Get-AzureKeyVaultSecret -VaultName "Contoso" -Name "ITSecret" â€“Version "6A12A286385949DB8B5F82AFEF85CAE9"
 </dev:code>
         <dev:remarks>
           <maml:para>This command gets a specific version of the secret named ITSecret in the vault named Contoso. </maml:para>
@@ -1322,10 +1337,15 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>Get-AzureKeyVault</command:name>
+      <command:name>Get-AzureRmKeyVault</command:name>
       <maml:description>
         <maml:para>Gets Azure Key Vault instances.</maml:para>
       </maml:description>
@@ -1337,12 +1357,12 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Get-AzureKeyVault cmdlet gets information about the Azure Key Vault instances in a subscription. You can view all key vault instances in a subscription, or filter your results by a resource group or a particular key vault. </maml:para>
+      <maml:para>The Get-AzureRmKeyVault cmdlet gets information about the Azure Key Vault instances in a subscription. You can view all key vault instances in a subscription, or filter your results by a resource group or a particular key vault. </maml:para>
       <maml:para>Note that although specifying the resource group is optional for this cmdlet when you get a single key vault, you should do so for better performance. </maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Get-AzureKeyVault</maml:name>
+        <maml:name>Get-AzureRmKeyVault</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="none">
           <maml:name>VaultName</maml:name>
           <maml:description>
@@ -1366,7 +1386,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>Get-AzureKeyVault</maml:name>
+        <maml:name>Get-AzureRmKeyVault</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="2" aliases="none">
           <maml:name>ResourceGroupName</maml:name>
           <maml:description>
@@ -1383,7 +1403,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>Get-AzureKeyVault</maml:name>
+        <maml:name>Get-AzureRmKeyVault</maml:name>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Profile</maml:name>
           <maml:description>
@@ -1487,7 +1507,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureKeyVault
+        <dev:code>PS C:\&gt;Get-AzureRmKeyVault
 </dev:code>
         <dev:remarks>
           <maml:para>This command gets all the key vaults in your current subscription.</maml:para>
@@ -1506,7 +1526,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$MyVault = Get-AzureKeyVault -VaultName "Contoso03Vault"
+        <dev:code>PS C:\&gt;$MyVault = Get-AzureRmKeyVault -VaultName "Contoso03Vault"
 </dev:code>
         <dev:remarks>
           <maml:para>This command gets the key vault named Contoso03Vault in your current subscription, and then stores it in the $MyVault variable. You can inspect the properties of $MyVault to get details about the key vault.</maml:para>
@@ -1525,7 +1545,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureKeyVault -ResourceGroupName "ContosoPayRollResourceGroup"
+        <dev:code>PS C:\&gt;Get-AzureRmKeyVault -ResourceGroupName "ContosoPayRollResourceGroup"
 </dev:code>
         <dev:remarks>
           <maml:para>This command gets all the key vaults in the resource group named ContosoPayRollResourceGroup.</maml:para>
@@ -1545,18 +1565,23 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
         <maml:uri>http://go.microsoft.com/fwlink/?LinkId=522254</maml:uri>
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>New-AzureKeyVault</maml:linkText>
+        <maml:linkText>New-AzureRmKeyVault</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Remove-AzureKeyVault</maml:linkText>
+        <maml:linkText>Remove-AzureRmKeyVault</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>New-AzureKeyVault</command:name>
+      <command:name>New-AzureRmKeyVault</command:name>
       <maml:description>
         <maml:para>Creates an Azure Key Vault instance.</maml:para>
       </maml:description>
@@ -1568,11 +1593,11 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The New-AzureKeyVault cmdlet creates an Azure Key Vault instance in the specified resource group. This cmdlet also grants permissions to the currently logged on user to add, remove, or list keys and secrets in the vault.</maml:para>
+      <maml:para>The New-AzureRmKeyVault cmdlet creates an Azure Key Vault instance in the specified resource group. This cmdlet also grants permissions to the currently logged on user to add, remove, or list keys and secrets in the vault.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>New-AzureKeyVault</maml:name>
+        <maml:name>New-AzureRmKeyVault</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="none">
           <maml:name>VaultName</maml:name>
           <maml:description>
@@ -1590,7 +1615,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="3" aliases="none">
           <maml:name>Location</maml:name>
           <maml:description>
-            <maml:para>Specifies the Azure region in which to create the key vault. Use the command Get-AzureLocation to see your choices. For more information, type Get-Help Get-AzureLocation.</maml:para>
+            <maml:para>Specifies the Azure region in which to create the key vault. Use the command Get-AzureRmResourceProvider with the ProviderNamespace parameter to see your choices.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -1642,7 +1667,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="3" aliases="none">
         <maml:name>Location</maml:name>
         <maml:description>
-          <maml:para>Specifies the Azure region in which to create the key vault. Use the command Get-AzureLocation to see your choices. For more information, type Get-Help Get-AzureLocation.</maml:para>
+          <maml:para>Specifies the Azure region in which to create the key vault. Use the command Get-AzureRmResourceProvider with the ProviderNamespace parameter to see your choices.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -1753,7 +1778,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;New-AzureKeyVault -VaultName "Contoso03Vault" -ResourceGroupName "Group14" -Location "East US"
+        <dev:code>PS C:\&gt;New-AzureRmKeyVault -VaultName "Contoso03Vault" -ResourceGroupName "Group14" -Location "East US"
 </dev:code>
         <dev:remarks>
           <maml:para>This command creates a key vault named Contoso03Vault, in the Azure region East US. The command adds the key vault to the resource group named Group14. Because the command does not specify a value for the SKU parameter, it creates a Standard key vault. </maml:para>
@@ -1772,7 +1797,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;New-AzureKeyVault -VaultName "Contoso03Vault" -ResourceGroupName "Group14" -Location "East US" -Sku "Premium"
+        <dev:code>PS C:\&gt;New-AzureRmKeyVault -VaultName "Contoso03Vault" -ResourceGroupName "Group14" -Location "East US" -Sku "Premium"
 </dev:code>
         <dev:remarks>
           <maml:para>This command creates a key vault, just like the previous example. However, it specifies a value of Premium for the SKU parameter to create a Premium key vault. </maml:para>
@@ -1792,18 +1817,23 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
         <maml:uri>http://go.microsoft.com/fwlink/?LinkId=522255</maml:uri>
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureKeyVault</maml:linkText>
+        <maml:linkText>Get-AzureRmKeyVault</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Remove-AzureKeyVault</maml:linkText>
+        <maml:linkText>Remove-AzureRmKeyVault</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>Remove-AzureKeyVaultAccessPolicy</command:name>
+      <command:name>Remove-AzureRmKeyVaultAccessPolicy</command:name>
       <maml:description>
         <maml:para>Removes all permissions for a user or application from the Azure Key Vault.</maml:para>
       </maml:description>
@@ -1815,12 +1845,12 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Remove-AzureKeyVaultAccessPolicy cmdlet removes all permissions for a user or application or for all users and applications from the Azure Key Vault. Even if you remove all permissions, the owner of the Azure subscription that contains the vault can add permissions to the key vault.</maml:para>
+      <maml:para>The Remove-AzureRmKeyVaultAccessPolicy cmdlet removes all permissions for a user or application or for all users and applications from the Azure Key Vault. Even if you remove all permissions, the owner of the Azure subscription that contains the vault can add permissions to the key vault.</maml:para>
       <maml:para>Note that although specifying the resource group is optional for this cmdlet, you should do so for better performance. </maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Remove-AzureKeyVaultAccessPolicy</maml:name>
+        <maml:name>Remove-AzureRmKeyVaultAccessPolicy</maml:name>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="2" aliases="none">
           <maml:name>ResourceGroupName</maml:name>
           <maml:description>
@@ -1849,7 +1879,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>Remove-AzureKeyVaultAccessPolicy</maml:name>
+        <maml:name>Remove-AzureRmKeyVaultAccessPolicy</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="none">
           <maml:name>VaultName</maml:name>
           <maml:description>
@@ -1892,7 +1922,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>Remove-AzureKeyVaultAccessPolicy</maml:name>
+        <maml:name>Remove-AzureRmKeyVaultAccessPolicy</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="none">
           <maml:name>VaultName</maml:name>
           <maml:description>
@@ -1935,7 +1965,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>Remove-AzureKeyVaultAccessPolicy</maml:name>
+        <maml:name>Remove-AzureRmKeyVaultAccessPolicy</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="none">
           <maml:name>VaultName</maml:name>
           <maml:description>
@@ -2117,7 +2147,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Remove-AzureKeyVaultAccessPolicy -VaultName "Contoso03Vault" -UserPrincipalName "PattiFuller@contoso.com" 
+        <dev:code>PS C:\&gt;Remove-AzureRmKeyVaultAccessPolicy -VaultName "Contoso03Vault" -UserPrincipalName "PattiFuller@contoso.com" 
 </dev:code>
         <dev:remarks>
           <maml:para>This command removes all the permissions that a user PattiFuller@contoso.com has on the key vault named Contoso03Vault.</maml:para>
@@ -2136,7 +2166,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Remove-AzureKeyVaultAccessPolicy -VaultName "Contoso03Vault" -ServicePrincipalName "http://payroll.contoso.com" 
+        <dev:code>PS C:\&gt;Remove-AzureRmKeyVaultAccessPolicy -VaultName "Contoso03Vault" -ServicePrincipalName "http://payroll.contoso.com" 
 </dev:code>
         <dev:remarks>
           <maml:para>This command removes all the permissions that an application has on the vault named Contoso03Vault. This example identifies the application by using the service principal name registered in Azure Active Directory, http://payroll.contoso.com.</maml:para>
@@ -2155,7 +2185,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Remove-AzureKeyVaultAccessPolicy -VaultName "Contoso03Vault" -ObjectID 34595082-9346-41b6-8d6b-295a2808b8db 
+        <dev:code>PS C:\&gt;Remove-AzureRmKeyVaultAccessPolicy -VaultName "Contoso03Vault" -ObjectID 34595082-9346-41b6-8d6b-295a2808b8db 
 </dev:code>
         <dev:remarks>
           <maml:para>This command removes all the permissions that an application has on the vault named Contoso03Vault. This example identifies the application by the object ID of the service principal.</maml:para>
@@ -2175,10 +2205,15 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
         <maml:uri>http://go.microsoft.com/fwlink/?LinkId=522258</maml:uri>
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Set-AzureKeyVaultAccessPolicy</maml:linkText>
+        <maml:linkText>Set-AzureRmKeyVaultAccessPolicy</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -2406,6 +2441,11 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -2610,10 +2650,15 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>Remove-AzureKeyVault</command:name>
+      <command:name>Remove-AzureRmKeyVault</command:name>
       <maml:description>
         <maml:para>Deletes an Azure Key Vault instance.</maml:para>
       </maml:description>
@@ -2625,12 +2670,12 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Remove-AzureKeyVault cmdlet deletes the specified Azure Key Vault instance. It also deletes all keys and secrets contained in that instance.</maml:para>
+      <maml:para>The Remove-AzureRmKeyVault cmdlet deletes the specified Azure Key Vault instance. It also deletes all keys and secrets contained in that instance.</maml:para>
       <maml:para>Note that although specifying the resource group is optional for this cmdlet, you should so for better performance. </maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Remove-AzureKeyVault</maml:name>
+        <maml:name>Remove-AzureRmKeyVault</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1" aliases="none">
           <maml:name>VaultName</maml:name>
           <maml:description>
@@ -2752,7 +2797,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Remove-AzureKeyVault -VaultName "Contoso03Vault" 
+        <dev:code>PS C:\&gt;Remove-AzureRmKeyVault -VaultName "Contoso03Vault" 
 </dev:code>
         <dev:remarks>
           <maml:para>This command removes the key vault named Contoso03Vault from your current subscription.</maml:para>
@@ -2771,7 +2816,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Remove-AzureKeyVault -VaultName "Contoso03Vault" -ResourceGroupName "Group14"
+        <dev:code>PS C:\&gt;Remove-AzureRmKeyVault -VaultName "Contoso03Vault" -ResourceGroupName "Group14"
 </dev:code>
         <dev:remarks>
           <maml:para>This command removes the key vault named Contoso03Vault from the named resource group. If you do not specify the resource group name, the cmdlet searches for the named key vault to delete in your current subscription.</maml:para>
@@ -2791,14 +2836,19 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
         <maml:uri>http://go.microsoft.com/fwlink/?LinkId=522256</maml:uri>
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureKeyVault</maml:linkText>
+        <maml:linkText>Get-AzureRmKeyVault</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>New-AzureKeyVault</maml:linkText>
+        <maml:linkText>New-AzureRmKeyVault</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -2960,10 +3010,15 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>Set-AzureKeyVaultAccessPolicy</command:name>
+      <command:name>Set-AzureRmKeyVaultAccessPolicy</command:name>
       <maml:description>
         <maml:para>Grants or modifies existing permissions for a user or application to perform operations with the Azure Key Vault. </maml:para>
       </maml:description>
@@ -2975,7 +3030,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Set-AzureKeyVaultAccessPolicy cmdlet grants or modifies existing permissions for a user or application to perform the specified operations with the Azure Key Vault. It does not modify the permissions that other users or applications have on the key vault. </maml:para>
+      <maml:para>The Set-AzureRmKeyVaultAccessPolicy cmdlet grants or modifies existing permissions for a user or application to perform the specified operations with the Azure Key Vault. It does not modify the permissions that other users or applications have on the key vault. </maml:para>
       <maml:para>The following directories must all be the same Azure directory: 
 
 -- The Azure directory in which the key vault owner's user account resides. 
@@ -2989,7 +3044,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Set-AzureKeyVaultAccessPolicy</maml:name>
+        <maml:name>Set-AzureRmKeyVaultAccessPolicy</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="none">
           <maml:name>VaultName</maml:name>
           <maml:description>
@@ -3090,7 +3145,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>Set-AzureKeyVaultAccessPolicy</maml:name>
+        <maml:name>Set-AzureRmKeyVaultAccessPolicy</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="none">
           <maml:name>VaultName</maml:name>
           <maml:description>
@@ -3191,7 +3246,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>Set-AzureKeyVaultAccessPolicy</maml:name>
+        <maml:name>Set-AzureRmKeyVaultAccessPolicy</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="none">
           <maml:name>VaultName</maml:name>
           <maml:description>
@@ -3292,7 +3347,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>Set-AzureKeyVaultAccessPolicy</maml:name>
+        <maml:name>Set-AzureRmKeyVaultAccessPolicy</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="none">
           <maml:name>VaultName</maml:name>
           <maml:description>
@@ -3513,9 +3568,9 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Set-AzureKeyVaultAccessPolicy -VaultName "Contoso03Vault" -UserPrincipalName "PattiFuller@contoso.com" -PermissionsToKeys create,import,delete,list -PermissionsToSecrets set,delete
-PS C:\&gt; Set-AzureKeyVaultAccessPolicy -VaultName "Contoso03Vault" -UserPrincipalName "PattiFuller@contoso.com" -PermissionsToSecrets set,delete,get -PassThru
-PS C:\&gt; Set-AzureKeyVaultAccessPolicy -VaultName "Contoso03Vault" -UserPrincipalName "PattiFuller@contoso.com" -PermissionsToKeys @() -PassThru
+        <dev:code>PS C:\&gt;Set-AzureRmKeyVaultAccessPolicy -VaultName "Contoso03Vault" -UserPrincipalName "PattiFuller@contoso.com" -PermissionsToKeys create,import,delete,list -PermissionsToSecrets set,delete
+PS C:\&gt; Set-AzureRmKeyVaultAccessPolicy -VaultName "Contoso03Vault" -UserPrincipalName "PattiFuller@contoso.com" -PermissionsToSecrets set,delete,get -PassThru
+PS C:\&gt; Set-AzureRmKeyVaultAccessPolicy -VaultName "Contoso03Vault" -UserPrincipalName "PattiFuller@contoso.com" -PermissionsToKeys @() -PassThru
 </dev:code>
         <dev:remarks>
           <maml:para>The first command grants permissions for a user in your Azure Active Directory, PattiFuller@contoso.com, to perform operations on keys and secrets with a key vault named Contoso03Vault.</maml:para>
@@ -3536,7 +3591,7 @@ PS C:\&gt; Set-AzureKeyVaultAccessPolicy -VaultName "Contoso03Vault" -UserPrinci
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Set-AzureKeyVaultAccessPolicy -VaultName "Contoso03Vault" -ServicePrincipalName "http://payroll.contoso.com" -PermissionsToSecrets "get,set"
+        <dev:code>PS C:\&gt;Set-AzureRmKeyVaultAccessPolicy -VaultName "Contoso03Vault" -ServicePrincipalName "http://payroll.contoso.com" -PermissionsToSecrets "get,set"
 </dev:code>
         <dev:remarks>
           <maml:para>This command grants permissions for an application for a vault named Contoso03Vault. The ServicePrincipalName parameter specifies the application. The application must be registered in your Azure Active Directory. The value of the ServicePrincipalName parameter must be either the service principal name of the application or the application ID GUID. This example specifies the service principal name http://payroll.contoso.com, and the command grants the application permissions to read and write secrets.</maml:para>
@@ -3555,7 +3610,7 @@ PS C:\&gt; Set-AzureKeyVaultAccessPolicy -VaultName "Contoso03Vault" -UserPrinci
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Set-AzureKeyVaultAccessPolicy -VaultName "Contoso03Vault" -ObjectId 34595082-9346-41b6-8d6b-295a2808b8db -PermissionsToSecrets "get,set"
+        <dev:code>PS C:\&gt;Set-AzureRmKeyVaultAccessPolicy -VaultName "Contoso03Vault" -ObjectId 34595082-9346-41b6-8d6b-295a2808b8db -PermissionsToSecrets "get,set"
 </dev:code>
         <dev:remarks>
           <maml:para>This command grants the application permissions to read and write secrets. This example specifies the application using the object ID of the service principal of the application.</maml:para>
@@ -3574,7 +3629,7 @@ PS C:\&gt; Set-AzureKeyVaultAccessPolicy -VaultName "Contoso03Vault" -UserPrinci
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Set-AzureKeyVaultAccessPolicy -VaultName "Contoso03Vault" �ResourceGroupName "Group14" -EnabledForDeployment
+        <dev:code>PS C:\&gt;Set-AzureRmKeyVaultAccessPolicy -VaultName "Contoso03Vault" â€“ResourceGroupName "Group14" -EnabledForDeployment
 </dev:code>
         <dev:remarks>
           <maml:para>This command grants the permissions for secrets to be retrieved from the Contoso03Vault vault by the Microsoft.Compute resource provider. </maml:para>
@@ -3594,10 +3649,15 @@ PS C:\&gt; Set-AzureKeyVaultAccessPolicy -VaultName "Contoso03Vault" -UserPrinci
         <maml:uri>http://go.microsoft.com/fwlink/?LinkId=522257</maml:uri>
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Remove-AzureKeyVaultAccessPolicy</maml:linkText>
+        <maml:linkText>Remove-AzureRmKeyVaultAccessPolicy</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -3896,7 +3956,7 @@ PS C:\&gt; Set-AzureKeyVaultKeyAttribute -VaultName "Contoso" -Name "ITSoftware"
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Set-AzureKeyVaultKeyAttribute -VaultName "Contoso" -Name "ITSoftware" �Version "7EEA45C6EE50490B9C3176F80AC1A0DG" �Tags @{}
+        <dev:code>PS C:\&gt;Set-AzureKeyVaultKeyAttribute -VaultName "Contoso" -Name "ITSoftware" â€“Version "7EEA45C6EE50490B9C3176F80AC1A0DG" â€“Tags @{}
 </dev:code>
         <dev:remarks>
           <maml:para>This commands deletes all tags for a specific version of a key named ITSoftware. </maml:para>
@@ -3928,6 +3988,11 @@ PS C:\&gt; Set-AzureKeyVaultKeyAttribute -VaultName "Contoso" -Name "ITSoftware"
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -3979,7 +4044,7 @@ PS C:\&gt; Set-AzureKeyVaultKeyAttribute -VaultName "Contoso" -Name "ITSoftware"
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Enable</maml:name>
           <maml:description>
-            <maml:para>Indicates whether to enable a secret. Specify $False to disable a secret, or $True to enable a secret. If you do not specify this parameter, there is no change to the current secret�s enabled or disabled state.</maml:para>
+            <maml:para>Indicates whether to enable a secret. Specify $False to disable a secret, or $True to enable a secret. If you do not specify this parameter, there is no change to the current secretâ€“s enabled or disabled state.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
         </command:parameter>
@@ -4035,7 +4100,7 @@ PS C:\&gt; Set-AzureKeyVaultKeyAttribute -VaultName "Contoso" -Name "ITSoftware"
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
         <maml:name>Enable</maml:name>
         <maml:description>
-          <maml:para>Indicates whether to enable a secret. Specify $False to disable a secret, or $True to enable a secret. If you do not specify this parameter, there is no change to the current secret�s enabled or disabled state.</maml:para>
+          <maml:para>Indicates whether to enable a secret. Specify $False to disable a secret, or $True to enable a secret. If you do not specify this parameter, there is no change to the current secretâ€“s enabled or disabled state.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
         <dev:type>
@@ -4288,6 +4353,11 @@ PS C:\&gt; Get-AzureKeyVaultKey -VaultName $VaultName -Name $Name -IncludeVersio
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -4579,5 +4649,10 @@ PS C:\&gt; Set-AzureKeyVaultSecret -VaultName "Contoso" -Name "ITSecret" -Secret
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
 </helpItems>

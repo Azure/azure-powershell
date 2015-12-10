@@ -18,7 +18,13 @@ namespace Microsoft.Azure.Commands.Batch.Utils
     {
         public const int DefaultMaxCount = 1000;
 
-        // Cmdlet nouns
+        // ARM cmdlet nouns
+        public const string AzureRmBatchAccount = "AzureRmBatchAccount";
+        public const string AzureRmBatchAccountKey = "AzureRmBatchAccountKey";
+        public const string AzureRmBatchAccountKeys = "AzureRmBatchAccountKeys";
+        public const string AzureRmBatchSubscriptionQuotas = "AzureRmBatchSubscriptionQuotas";
+
+        // Batch Service cmdlet nouns
         public const string AzureBatchPool = "AzureBatchPool";
         public const string AzureBatchPoolResize = "AzureBatchPoolResize";
         public const string AzureBatchComputeNode = "AzureBatchComputeNode";
@@ -30,6 +36,9 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         public const string AzureBatchNodeFileContent = "AzureBatchNodeFileContent";
         public const string AzureBatchRemoteDesktopProtocolFile = "AzureBatchRemoteDesktopProtocolFile";
         public const string AzureBatchAutoScale = "AzureBatchAutoScale";
+        public const string AzureBatchPoolOSVersion = "AzureBatchPoolOSVersion";
+        public const string AzureBatchCertificate = "AzureBatchCertificate";
+        public const string AzureBatchCertificateDeletion = "AzureBatchCertificateDeletion";
 
         // Parameter sets
         public const string IdParameterSet = "Id";

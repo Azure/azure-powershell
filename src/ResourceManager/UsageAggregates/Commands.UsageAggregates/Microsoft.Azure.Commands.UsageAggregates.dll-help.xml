@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<helpItems xmlns="http://msh" schema="maml">
+  <!-- Updatable Help Version 2.0.0.0 -->
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Get-UsageAggregates</command:name>
+      <maml:description>
+        <maml:para>Gets the reported Azure subscription usage details. </maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>UsageAggregates</command:noun>
+      <dev:version />
+    </command:details>
+    <maml:description>
+      <maml:para>The Get-UsageAggregation cmdlet gets aggregated Azure subscription usage data by the following properties:
+
+-- Start and end times of when the usage was reported.
+
+-- Aggregation granularity, either daily or hourly.
+
+-- Instance level detail for multiple instances of the same resource.
+</maml:para>
+      <maml:para>For consistent results, the returned data is based on when the usage details were reported by the Azure resource.</maml:para>
+      <maml:para>For more information, see <maml:navigationLink><maml:linkText>Azure Billing REST API Reference</maml:linkText><maml:uri></maml:uri></maml:navigationLink> (https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c) in the Microsoft Developer Network library. </maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-UsageAggregates</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>AggregationGranularity</maml:name>
+          <maml:description>
+            <maml:para>Specifies the aggregation granularity of the data. Valid values are: Daily and Hourly.
+The default value is Daily. </maml:para>
+          </maml:description>
+          <command:parameterValueGroup>
+            <command:parameterValue required="false" variableLength="false">Daily</command:parameterValue>
+            <command:parameterValue required="false" variableLength="false">Hourly</command:parameterValue>
+          </command:parameterValueGroup>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>ContinuationToken</maml:name>
+          <maml:description>
+            <maml:para>Specifies the continuation token that was retrieved from the response body in the previous call. For a large result set, responses are paged by using continuation tokens. The continuation token serves as a bookmark for progress. If you do not specify this parameter, the data is retrieved from the beginning of the day or hour specified in ReportedStartTime. We recommend that you follow the next link in the response to page though the data.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>ShowDetails</maml:name>
+          <maml:description>
+            <maml:para>Indicates whether this cmdlet returns instance-level details with the usage data. </maml:para>
+            <maml:para>The default value is $True.</maml:para>
+            <maml:para>If $False, the service aggregates the results on the server side, and therefore returns fewer aggregate groups. For example, if you are running three websites, by default you will get three line items for website consumption. However, when the value is $False, all the data for the same subscriptionId, meterId, usageStartTime, and usageEndTime is collapsed into a single line item.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>ReportedEndTime</maml:name>
+          <maml:description>
+            <maml:para>Specifies the reported end time for when resource usage was recorded in the Azure billing system. </maml:para>
+            <maml:para>Azure is a distributed system, spanning multiple datacenters around the world, so there is a delay between when the resource was actually consumed, which is the resource usage time, and when the usage event reached the billing system, which is the resource usage reported time. In order to get all usage events for a subscription that are reported for a time period, you query by reported time. Even though you query by reported time, the cmdlet aggregates the response data by the resource usage time. The resource usage data is the useful pivot for analyzing the data.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>ReportedStartTime</maml:name>
+          <maml:description>
+            <maml:para>Specifies the reported start time for when resource usage was recorded in the Azure billing system. </maml:para>
+            <maml:para>
+            </maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>AggregationGranularity</maml:name>
+        <maml:description>
+          <maml:para>Specifies the aggregation granularity of the data. Valid values are: Daily and Hourly.
+The default value is Daily. </maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">AggregationGranularity</command:parameterValue>
+        <dev:type>
+          <maml:name>AggregationGranularity</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>ContinuationToken</maml:name>
+        <maml:description>
+          <maml:para>Specifies the continuation token that was retrieved from the response body in the previous call. For a large result set, responses are paged by using continuation tokens. The continuation token serves as a bookmark for progress. If you do not specify this parameter, the data is retrieved from the beginning of the day or hour specified in ReportedStartTime. We recommend that you follow the next link in the response to page though the data.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>ReportedEndTime</maml:name>
+        <maml:description>
+          <maml:para>Specifies the reported end time for when resource usage was recorded in the Azure billing system. </maml:para>
+          <maml:para>Azure is a distributed system, spanning multiple datacenters around the world, so there is a delay between when the resource was actually consumed, which is the resource usage time, and when the usage event reached the billing system, which is the resource usage reported time. In order to get all usage events for a subscription that are reported for a time period, you query by reported time. Even though you query by reported time, the cmdlet aggregates the response data by the resource usage time. The resource usage data is the useful pivot for analyzing the data.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+        <dev:type>
+          <maml:name>DateTime</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>ReportedStartTime</maml:name>
+        <maml:description>
+          <maml:para>Specifies the reported start time for when resource usage was recorded in the Azure billing system. </maml:para>
+          <maml:para>
+          </maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+        <dev:type>
+          <maml:name>DateTime</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>ShowDetails</maml:name>
+        <maml:description>
+          <maml:para>Indicates whether this cmdlet returns instance-level details with the usage data. </maml:para>
+          <maml:para>The default value is $True.</maml:para>
+          <maml:para>If $False, the service aggregates the results on the server side, and therefore returns fewer aggregate groups. For example, if you are running three websites, by default you will get three line items for website consumption. However, when the value is $False, all the data for the same subscriptionId, meterId, usageStartTime, and usageEndTime is collapsed into a single line item.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
+        <dev:type>
+          <maml:name>Boolean</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>
+          </maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>
+          </maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>
+          </maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <command:examples>
+      <command:example>
+        <maml:title>Example 1: Retrieve subscription data</maml:title>
+        <maml:introduction>
+          <maml:para>
+          </maml:para>
+        </maml:introduction>
+        <dev:code>PS C:\&gt;Get-UsageAggregates -ReportedStartTime "5/2/2015" -ReportedEndTime "5/5/2015"
+</dev:code>
+        <dev:remarks>
+          <maml:para>This command retrieves the reported usage data for the subscription between 5/2/2015 and 5/5/2015.</maml:para>
+          <maml:para />
+          <maml:para />
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+    </maml:relatedLinks>
+  </command:command>
+
+</helpItems>

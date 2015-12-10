@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// <summary>
     /// Retrieves Azure Site Recovery Vault Settings.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureSiteRecoveryVaultSettings")]
+    [Cmdlet(VerbsCommon.Set, "AzureRmSiteRecoveryVaultSettings")]
     [OutputType(typeof(ASRVaultSettings))]
     public class SetAzureSiteRecoveryVaultSettings : SiteRecoveryCmdletBase
     {
@@ -52,9 +52,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             // Change the vault context
             ASRVaultCreds vaultCreds = RecoveryServicesClient.ChangeVaultContext(this.Vault);
 
-            this.WriteObject(new ASRVaultSettings(
-                PSRecoveryServicesClient.asrVaultCreds.ResourceName,
-                PSRecoveryServicesClient.asrVaultCreds.ResourceGroupName));
+            this.WriteObject(new ASRVaultSettings(PSRecoveryServicesClient.asrVaultCreds));
         }
     }
 }

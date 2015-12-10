@@ -21,9 +21,9 @@ using Microsoft.Azure.Commands.Sql.Properties;
 namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureSqlServer cmdlet
+    /// Defines the Get-AzureRmSqlServer cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureSqlServer",
+    [Cmdlet(VerbsCommon.New, "AzureRmSqlServer",
         ConfirmImpact = ConfirmImpact.Low)]
     public class NewAzureSqlServer : AzureSqlServerCmdletBase
     {
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
 
             // The server already exists
             throw new PSArgumentException(
-                string.Format(Resources.ServerNameExists, this.ServerName),
+                string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ServerNameExists, this.ServerName),
                 "ServerName");
         }
 

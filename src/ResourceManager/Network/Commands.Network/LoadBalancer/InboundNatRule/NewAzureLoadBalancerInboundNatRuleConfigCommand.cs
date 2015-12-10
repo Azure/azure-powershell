@@ -19,7 +19,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureLoadBalancerInboundNatRuleConfig"), OutputType(typeof(PSInboundNatRule))]
+    [Cmdlet(VerbsCommon.New, "AzureRmLoadBalancerInboundNatRuleConfig"), OutputType(typeof(PSInboundNatRule))]
     public class NewAzureLoadBalancerInboundNatRuleConfigCommand : AzureLoadBalancerInboundNatRuleConfigBase
     {
         [Parameter(
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Network
 
             inboundNatRule.Id =
                 ChildResourceHelper.GetResourceNotSetId(
-                    this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
+                    this.NetworkClient.NetworkManagementClient.SubscriptionId,
                     Microsoft.Azure.Commands.Network.Properties.Resources.LoadBalancerInBoundNatRuleName,
                     this.Name);
 

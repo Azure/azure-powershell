@@ -25,7 +25,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureLocalNetworkGateway"), OutputType(typeof(PSLocalNetworkGateway))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmLocalNetworkGateway"), OutputType(typeof(PSLocalNetworkGateway))]
     public class SetAzureLocalNetworkGatewayCommand : LocalNetworkGatewayBaseCmdlet
     {
         [Parameter(
@@ -54,7 +54,6 @@ namespace Microsoft.Azure.Commands.Network
 
             // Map to the sdk object
             var localnetGatewayModel = Mapper.Map<MNM.LocalNetworkGateway>(this.LocalNetworkGateway);
-            localnetGatewayModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.LocalNetworkGatewayType;
             localnetGatewayModel.Tags = TagsConversionHelper.CreateTagDictionary(this.LocalNetworkGateway.Tag, validate: true);
 
             this.LocalNetworkGatewayClient.CreateOrUpdate(this.LocalNetworkGateway.ResourceGroupName, this.LocalNetworkGateway.Name, localnetGatewayModel);

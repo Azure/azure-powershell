@@ -23,9 +23,9 @@ using Microsoft.Azure.Common.Authentication.Models;
 namespace Microsoft.Azure.Commands.Sql.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureSqlDatabaseIndexRecommendations cmdlet
+    /// Defines the Get-AzureRmSqlDatabaseIndexRecommendations cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureSqlDatabaseIndexRecommendations", ConfirmImpact = ConfirmImpact.None)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseIndexRecommendations", ConfirmImpact = ConfirmImpact.None)]
     public class GetAzureSqlDatabaseIndexRecommendations : AzureSqlCmdletBase<IEnumerable<IndexRecommendation>, AzureSqlDatabaseIndexRecommendationAdapter>
     {
         /// <summary>
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Sql.Cmdlet
             }
 
             // If table property is set keep only indexes on corresponding table
-            if (MyInvocation.BoundParameters.ContainsKey("Table"))
+            if (MyInvocation.BoundParameters.ContainsKey("TableName"))
             {
                 results = results.Where(i => i.Table == TableName).ToList();
             }
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.Sql.Cmdlet
         /// <returns>The recommended index adapter</returns>
         protected override AzureSqlDatabaseIndexRecommendationAdapter InitModelAdapter(AzureSubscription subscription)
         {
-            return new AzureSqlDatabaseIndexRecommendationAdapter(Profile, subscription);
+            return new AzureSqlDatabaseIndexRecommendationAdapter(DefaultProfile.Context);
         }
     }
 }

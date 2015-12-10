@@ -24,9 +24,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets azure automation accounts, filterd by automation account name and location.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureAutomationAccount", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmAutomationAccount", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(AutomationAccount))]
-    public class GetAzureAutomationAccount : AzurePSCmdlet
+    public class GetAzureAutomationAccount : ResourceManager.Common.AzureRMCmdlet
     {
         /// <summary>
         /// The automation client.
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         {
             get
             {
-                return this.automationClient = this.automationClient ?? new AutomationClient(Profile, Profile.Context.Subscription);
+                return this.automationClient = this.automationClient ?? new AutomationClient(DefaultProfile.Context);
             }
 
             set

@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureApplicationGatewayBackendAddressPool"), OutputType(typeof(PSApplicationGatewayBackendAddressPool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmApplicationGatewayBackendAddressPool"), OutputType(typeof(PSApplicationGatewayBackendAddressPool))]
     public class RemoveAzureApplicationGatewayBackendAddressPoolCommand : NetworkBaseCmdlet
     {
         [Parameter(

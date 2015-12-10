@@ -24,7 +24,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureNetworkSecurityGroup"), OutputType(typeof(PSNetworkSecurityGroup))]
+    [Cmdlet(VerbsCommon.New, "AzureRmNetworkSecurityGroup"), OutputType(typeof(PSNetworkSecurityGroup))]
     public class NewAzureNetworkSecurityGroupCommand : NetworkSecurityGroupBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -99,7 +99,6 @@ namespace Microsoft.Azure.Commands.Network
 
             // Map to the sdk object
             var nsgModel = Mapper.Map<MNM.NetworkSecurityGroup>(nsg);
-            nsgModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.NetworkSecurityGroupType;
             nsgModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create NetworkSecurityGroup call

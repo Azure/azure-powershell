@@ -16,19 +16,16 @@ using System;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Batch.Protocol.Models;
-using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using System.Threading.Tasks;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Pools
 {
-    public class TestBatchAutoScaleCommandTests
+    public class TestBatchAutoScaleCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
         private TestBatchAutoScaleCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
@@ -62,18 +59,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.AutoScaleFormula = "formula";
 
             // Don't go to the service on an Evaluate AutoScale call
-            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
-            {
-                BatchRequest<CloudPoolEvaluateAutoScaleParameters, CloudPoolEvaluateAutoScaleResponse> request =
-                (BatchRequest<CloudPoolEvaluateAutoScaleParameters, CloudPoolEvaluateAutoScaleResponse>)baseRequest;
-
-                request.ServiceRequestFunc = (cancellationToken) =>
-                {
-                    CloudPoolEvaluateAutoScaleResponse response = new CloudPoolEvaluateAutoScaleResponse();
-                    Task<CloudPoolEvaluateAutoScaleResponse> task = Task.FromResult(response);
-                    return task;
-                };
-            });
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudPoolEvaluateAutoScaleParameters, CloudPoolEvaluateAutoScaleResponse>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameter is set
@@ -94,20 +80,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.AutoScaleFormula = formula;
 
             // Don't go to the service on an Evaluate AutoScale call
-            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
-            {
-                BatchRequest<CloudPoolEvaluateAutoScaleParameters, CloudPoolEvaluateAutoScaleResponse> request =
-                (BatchRequest<CloudPoolEvaluateAutoScaleParameters, CloudPoolEvaluateAutoScaleResponse>)baseRequest;
-
-                requestFormula = request.TypedParameters.AutoScaleFormula;
-
-                request.ServiceRequestFunc = (cancellationToken) =>
+            Action<BatchRequest<CloudPoolEvaluateAutoScaleParameters, CloudPoolEvaluateAutoScaleResponse>> extractFormulaAction =
+                (request) =>
                 {
-                    CloudPoolEvaluateAutoScaleResponse response = new CloudPoolEvaluateAutoScaleResponse();
-                    Task<CloudPoolEvaluateAutoScaleResponse> task = Task.FromResult(response);
-                    return task;
+                    requestFormula = request.TypedParameters.AutoScaleFormula;
                 };
-            });
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor(requestAction: extractFormulaAction);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             cmdlet.ExecuteCmdlet();

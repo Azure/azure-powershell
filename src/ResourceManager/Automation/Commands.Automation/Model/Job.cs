@@ -16,6 +16,8 @@ using Microsoft.Azure.Commands.Automation.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Automation.Model
 {
@@ -48,7 +50,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
 
             if (job.Properties == null) return;
 
-            this.Id = job.Properties.JobId;
+            this.JobId = job.Properties.JobId;
             this.CreationTime = job.Properties.CreationTime.ToLocalTime();
             this.LastModifiedTime = job.Properties.LastModifiedTime.ToLocalTime();
             this.StartTime = job.Properties.StartTime.HasValue ? job.Properties.StartTime.Value.ToLocalTime() : (DateTimeOffset?)null;
@@ -65,7 +67,20 @@ namespace Microsoft.Azure.Commands.Automation.Model
                 if (0 != String.Compare(kvp.Key, Constants.JobStartedByParameterName, CultureInfo.InvariantCulture, CompareOptions.IgnoreCase) && 
                     0 != String.Compare(kvp.Key, Constants.JobRunOnParameterName, CultureInfo.InvariantCulture, CompareOptions.IgnoreCase))
                 {
-                    this.JobParameters.Add(kvp.Key, (object)PowerShellJsonConverter.Deserialize(kvp.Value));
+                    object paramValue;
+                    try
+                    {
+                        paramValue = ((object) PowerShellJsonConverter.Deserialize(kvp.Value));
+                    }
+                    catch (CmdletInvocationException exception)
+                    {
+                        if (!exception.Message.Contains("Invalid JSON primitive"))
+                            throw;
+                        
+                        paramValue = kvp.Value;
+                    }
+                    this.JobParameters.Add(kvp.Key, paramValue);
+                   
                 }
             }
         }
@@ -90,7 +105,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Gets or sets the job id.
         /// </summary>
-        public Guid Id { get; set; }
+        public Guid JobId { get; set; }
 
         /// <summary>
         /// Gets or sets the tags.

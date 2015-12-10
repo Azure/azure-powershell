@@ -24,7 +24,7 @@ using Microsoft.Azure.Commands.Tags.Model;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureVirtualNetworkGatewayConnection"), OutputType(typeof(PSVirtualNetworkGatewayConnection))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmVirtualNetworkGatewayConnection"), OutputType(typeof(PSVirtualNetworkGatewayConnection))]
     public class SetAzureVirtualNetworkGatewayConnectionCommand : VirtualNetworkGatewayConnectionBaseCmdlet
     {
         [Parameter(
@@ -49,7 +49,6 @@ namespace Microsoft.Azure.Commands.Network
 
             // Map to the sdk object
             var vnetGatewayConnectionModel = Mapper.Map<MNM.VirtualNetworkGatewayConnection>(this.VirtualNetworkGatewayConnection);
-            vnetGatewayConnectionModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.VirtualNetworkGatewayConnectionType;
             vnetGatewayConnectionModel.Tags = TagsConversionHelper.CreateTagDictionary(this.VirtualNetworkGatewayConnection.Tag, validate: true);
 
             ConfirmAction(

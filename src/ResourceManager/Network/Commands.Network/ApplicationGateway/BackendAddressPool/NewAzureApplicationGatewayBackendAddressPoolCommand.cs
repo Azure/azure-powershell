@@ -18,7 +18,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureApplicationGatewayBackendAddressPool"), OutputType(typeof(PSApplicationGatewayBackendAddressPool))]
+    [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewayBackendAddressPool"), OutputType(typeof(PSApplicationGatewayBackendAddressPool))]
     public class NewAzureApplicationGatewayBackendAddressPoolCommand : AzureApplicationGatewayBackendAddressPoolBase
     {
         public override void ExecuteCmdlet()

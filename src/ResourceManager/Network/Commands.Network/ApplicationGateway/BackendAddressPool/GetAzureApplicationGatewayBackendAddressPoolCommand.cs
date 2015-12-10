@@ -19,7 +19,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureApplicationGatewayBackendAddressPool"),
+    [Cmdlet(VerbsCommon.Get, "AzureRmApplicationGatewayBackendAddressPool"),
         OutputType(typeof(PSApplicationGatewayBackendAddressPool), typeof(IEnumerable<PSApplicationGatewayBackendAddressPool>))]
     public class GetAzureApplicationGatewayBackendAddressPoolCommand : NetworkBaseCmdlet
     {

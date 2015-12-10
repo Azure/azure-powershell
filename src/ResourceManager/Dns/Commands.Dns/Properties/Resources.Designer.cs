@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.Dns.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Record set &apos;{0}&apos; was created in zone &apos;{1}&apos;.The record set is empty. Use Add-AzureDnsRecordConfig to add {2} records to it and Set-AzureDnsRecordSet to save your changes..
+        ///   Looks up a localized string similar to Record set &apos;{0}&apos; was created in zone &apos;{1}&apos;.The record set is empty. Use Add-AzureRmDnsRecordConfig to add {2} records to it and Set-AzureRmDnsRecordSet to save your changes..
         /// </summary>
         internal static string Success_NewRecordSet {
             get {
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Commands.Dns.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zone &apos;{0}&apos; was created in resource group &apos;{1}&apos;. The SOA and authoritative NS records for this zone have been created automatically. Use Get-AzureDnsRecordSet to retrieve them.
+        ///   Looks up a localized string similar to Zone &apos;{0}&apos; was created in resource group &apos;{1}&apos;. The SOA and authoritative NS records for this zone have been created automatically. Use Get-AzureRmDnsRecordSet to retrieve them.
         /// </summary>
         internal static string Success_NewZone {
             get {
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Commands.Dns.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Record added. Use Set-AzureDnsRecordSet to save your change to this record set..
+        ///   Looks up a localized string similar to Record added. Use Set-AzureRmDnsRecordSet to save your change to this record set..
         /// </summary>
         internal static string Success_RecordAdded {
             get {
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Commands.Dns.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Record removed. Use Set-AzureDnsRecordSet to save your change to this record set..
+        ///   Looks up a localized string similar to Record removed. Use Set-AzureRmDnsRecordSet to save your change to this record set..
         /// </summary>
         internal static string Success_RecordRemoved {
             get {

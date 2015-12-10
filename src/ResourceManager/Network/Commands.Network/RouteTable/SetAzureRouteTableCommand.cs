@@ -22,7 +22,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRouteTable"), OutputType(typeof(PSRouteTable))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmRouteTable"), OutputType(typeof(PSRouteTable))]
     public class SetAzureRouteTableCommand : RouteTableBaseCmdlet
     {
         [Parameter(
@@ -42,7 +42,6 @@ namespace Microsoft.Azure.Commands.Network
             
             // Map to the sdk object
             var routeTableModel = Mapper.Map<MNM.RouteTable>(this.RouteTable);
-            routeTableModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.RouteTableType;
             routeTableModel.Tags = TagsConversionHelper.CreateTagDictionary(this.RouteTable.Tag, validate: true);
 
             // Execute the PUT RouteTable call

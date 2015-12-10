@@ -20,7 +20,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureApplicationGateway"), OutputType(typeof(PSApplicationGateway), typeof(IEnumerable<PSApplicationGateway>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmApplicationGateway"), OutputType(typeof(PSApplicationGateway), typeof(IEnumerable<PSApplicationGateway>))]
     public class GetAzureApplicationGatewayCommand : ApplicationGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -49,11 +49,11 @@ namespace Microsoft.Azure.Commands.Network
             }
             else if (!string.IsNullOrEmpty(this.ResourceGroupName))
             {
-                var getAppGwResponse = this.ApplicationGatewayClient.List(this.ResourceGroupName);
+                var appGateway = this.ApplicationGatewayClient.List(this.ResourceGroupName);
 
                 var psApplicationGateways = new List<PSApplicationGateway>();
 
-                foreach (var appGw in getAppGwResponse.ApplicationGateways)
+                foreach (var appGw in appGateway)
                 {
                     var psAppGw = this.ToPsApplicationGateway(appGw);
                     psAppGw.ResourceGroupName = this.ResourceGroupName;
@@ -64,11 +64,11 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                var getAppGwResponse = this.ApplicationGatewayClient.ListAll();
+                var appGwResponseList = this.ApplicationGatewayClient.ListAll();
 
                 var psApplicationGateways = new List<PSApplicationGateway>();
 
-                foreach (var appGw in getAppGwResponse.ApplicationGateways)
+                foreach (var appGw in appGwResponseList)
                 {
                     var psAppGw = this.ToPsApplicationGateway(appGw);
                     psAppGw.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(appGw.Id);

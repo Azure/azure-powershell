@@ -31,13 +31,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.AzureBackupContainer, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public AzureBackupContainer Container { get; set; }
+        public AzureRMBackupContainer Container { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            WriteDebug(String.Format("Cmdlet called for ResourceGroupName: {0}, ResourceName: {1}, Location: {2}", Container.ResourceGroupName, Container.ResourceName, Container.Location));
+            WriteDebug(String.Format(Resources.CmdletCalled, Container.ResourceGroupName, Container.ResourceName, Container.Location));
 
             InitializeAzureBackupCmdlet(Container.ResourceGroupName, Container.ResourceName);
         }

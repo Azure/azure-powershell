@@ -53,7 +53,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         public const string AzureHDInsightDefaultStorage = "AzureHDInsightDefaultStorage";
         public const string AzureHDInsightHiveJobDefinition = "AzureHDInsightHiveJobDefinition";
         public const string AzureHDInsightHttpServicesAccess = "AzureHDInsightHttpServicesAccess";
-        public const string AzureHdinsightRdpAccess = "AzureHdinsightRdpAccess";
+        public const string AzureHdinsightRdpAccess = "AzureHDInsightRdpAccess";
         public const string AzureHDInsightJobOutput = "AzureHDInsightJobOutput";
         public const string AzureHDInsightJobs = "AzureHDInsightJob";
         public const string AzureHDInsightMapReduceJobDefinition = "AzureHDInsightMapReduceJobDefinition";
@@ -104,5 +104,9 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         public const string Show = "Show";
         public const string Skip = "Skip";
         public const string ToDateTime = "To";
+
+        public const string AsmWarning =
+            "The Azure Service Management (ASM) cmdlets for HDInsight are deprecated and will be removed in a future release. " +
+            "Please use the ARM version of this cmdlet: {0}";
     }
 }

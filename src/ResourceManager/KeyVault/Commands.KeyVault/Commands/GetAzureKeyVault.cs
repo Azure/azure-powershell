@@ -16,13 +16,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Management.KeyVault;
 using PSKeyVaultModels = Microsoft.Azure.Commands.KeyVault.Models;
 using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Get, "AzureKeyVault", HelpUri = Constants.KeyVaultHelpUri)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmKeyVault", HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(PSKeyVaultModels.PSVault), typeof(List<PSKeyVaultModels.PSVaultIdentityItem>))]
     public class GetAzureKeyVault : KeyVaultManagementCmdletBase
     {
@@ -89,8 +88,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                                                     ActiveDirectoryClient);
                     if (vault == null)
                         throw new ArgumentException(string.Format(PSKeyVaultProperties.Resources.VaultNotFound, VaultName, ResourceGroupName));
-                    else
-                        WriteObject(vault);
+                    WriteObject(vault);
                     break;
 
                 case ListVaultsByRGParameterSet:

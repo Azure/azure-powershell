@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// <summary>
     /// Imports Azure Site Recovery Vault Settings.
     /// </summary>
-    [Cmdlet(VerbsData.Import, "AzureSiteRecoveryVaultSettingsFile")]
+    [Cmdlet(VerbsData.Import, "AzureRmSiteRecoveryVaultSettingsFile")]
     [OutputType(typeof(ASRVaultSettings))]
     public class ImportAzureSiteRecoveryVaultSettingsFile : SiteRecoveryCmdletBase
     {
@@ -100,14 +100,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
             try
             {
+                Utilities.UpdateCurrentVaultContext(asrVaultCreds);
+
                 RecoveryServicesClient.ValidateVaultSettings(
                     asrVaultCreds.ResourceName,
                     asrVaultCreds.ResourceGroupName);
 
-                Utilities.UpdateVaultSettings(asrVaultCreds);
-                this.WriteObject(new ASRVaultSettings(
-                    asrVaultCreds.ResourceName,
-                    asrVaultCreds.ResourceGroupName));
+                this.WriteObject(new ASRVaultSettings(asrVaultCreds));
             }
             catch (Exception exception)
             {

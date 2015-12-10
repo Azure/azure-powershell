@@ -23,7 +23,14 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachine()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachine");
+            ComputeTestController.NewInstance.RunPsTest(@"Test-VirtualMachine $null");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachinePiping()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachinePiping");
         }
 
         [Fact]
@@ -77,6 +84,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineDataDiskNegative()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineDataDiskNegative");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachinePIRv2()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachinePIRv2");
@@ -117,11 +131,26 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-GetVMSizeFromAllLocations");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO: OOM issue when writing the result")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineListWithPaging()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineListWithPaging");
         }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineWithDifferentStorageResource()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineWithDifferentStorageResource");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineWithEmptyAuc()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineWithEmptyAuc");
+        }
+
     }
 }

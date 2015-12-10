@@ -753,4 +753,7 @@
     <value>Upload '{0}'</value>
     <comment>{0} is the name of an storage blob</comment>
   </data>
+  <data name="RemoveAzureVMShouldProcessAction" xml:space="preserve">
+    <value>Deleting VM</value>
+  </data>
 </root>

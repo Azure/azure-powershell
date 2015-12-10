@@ -23,7 +23,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureLoadBalancer"), OutputType(typeof(PSLoadBalancer))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmLoadBalancer"), OutputType(typeof(PSLoadBalancer))]
     public class SetAzureLoadBalancerCommand : LoadBalancerBaseCmdlet
     {
         [Parameter(
@@ -46,7 +46,6 @@ namespace Microsoft.Azure.Commands.Network
 
             // Map to the sdk object
             var lbModel = Mapper.Map<MNM.LoadBalancer>(this.LoadBalancer);
-            lbModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.LoadBalancerType;
             lbModel.Tags = TagsConversionHelper.CreateTagDictionary(this.LoadBalancer.Tag, validate: true);
 
             // Execute the Create VirtualNetwork call

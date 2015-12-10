@@ -19,7 +19,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureApplicationGatewayFrontendPort"), 
+    [Cmdlet(VerbsCommon.Get, "AzureRmApplicationGatewayFrontendPort"), 
         OutputType(typeof(PSApplicationGatewayFrontendPort), typeof(IEnumerable<PSApplicationGatewayFrontendPort>))]
     public class GetAzureApplicationGatewayFrontendPortCommand : NetworkBaseCmdlet
     {

@@ -18,7 +18,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureApplicationGatewayIPConfiguration"), OutputType(typeof(PSApplicationGatewayIPConfiguration))]
+    [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewayIPConfiguration"), OutputType(typeof(PSApplicationGatewayIPConfiguration))]
     public class NewAzureApplicationGatewayIPConfigurationCommand : AzureApplicationGatewayIPConfigurationBase
     {
         public override void ExecuteCmdlet()

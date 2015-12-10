@@ -13,13 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 
 namespace Commands.Network.Test.ScenarioTests
 {
-    public class ApplicationGatewayTests
+    public class ApplicationGatewayTests : RMTestBase
     {
-        [Fact]
+        [Fact(Skip = "Rerecord tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestApplicationGatewayCRUD()
         {

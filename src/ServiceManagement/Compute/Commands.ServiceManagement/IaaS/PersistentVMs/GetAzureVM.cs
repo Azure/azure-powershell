@@ -91,11 +91,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 
                 WriteObject(roleContexts, true);
             }
-            else
-            {
-                WriteWarning(
-                    string.Format(Resources.NoDeploymentFoundInService, ServiceName));
-            }
         }
 
         private List<T> GetVMContextList<T>(string serviceName, NSM.DeploymentGetResponse deployment)
@@ -183,6 +178,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                 OperationDescription        = CommandRuntime.ToString(),
                 NetworkInterfaces           = roleInstance == null ? null : Mapper.Map<PVM.NetworkInterfaceList>(roleInstance.NetworkInterfaces),
                 VirtualNetworkName          = deployment == null ? null : deployment.VirtualNetworkName,
+                RemoteAccessCertificateThumbprint =  roleInstance == null ? string.Empty : roleInstance.RemoteAccessCertificateThumbprint,
                 VM = new PVM.PersistentVM
                 {
                     AvailabilitySetName               = vmRole == null ? string.Empty : vmRole.AvailabilitySetName,

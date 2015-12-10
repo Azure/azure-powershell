@@ -18,7 +18,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureApplicationGatewayHttpListener"), OutputType(typeof(PSApplicationGatewayHttpListener))]
+    [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewayHttpListener"), OutputType(typeof(PSApplicationGatewayHttpListener))]
     public class NewAzureApplicationGatewayHttpListenerCommand : AzureApplicationGatewayHttpListenerBase
     {
         public override void ExecuteCmdlet()

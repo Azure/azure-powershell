@@ -1,4 +1,5 @@
-﻿// ----------------------------------------------------------------------------------
+﻿extern alias MicrosoftAzureCommandsResources;
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,8 +13,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-extern alias MicrosoftAzureCommandsResources;
-
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -26,8 +25,8 @@ using Microsoft.Azure.Commands.Sql.Services;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
-using MicrosoftAzureCommandsResourcesModelsActiveDirectory = MicrosoftAzureCommandsResources::Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 using Microsoft.Azure.Common.Authentication;
+using MicrosoftAzureCommandsResources::Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 
 namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Services
 {
@@ -44,7 +43,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureProfile Profile { get; set; }
+        public AzureContext Context { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure Subscription
@@ -54,18 +53,23 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         /// <summary>
         /// A private instance of ActiveDirectoryClient
         /// </summary>
-        private MicrosoftAzureCommandsResourcesModelsActiveDirectory.ActiveDirectoryClient _activeDirectoryClient;
+        private ActiveDirectoryClient _activeDirectoryClient;
 
         /// <summary>
         /// Gets or sets the Azure ActiveDirectoryClient instance
         /// </summary>
-        public MicrosoftAzureCommandsResourcesModelsActiveDirectory.ActiveDirectoryClient ActiveDirectoryClient
+        public ActiveDirectoryClient ActiveDirectoryClient
         {
             get
             {
                 if (_activeDirectoryClient == null)
                 {
-                    _activeDirectoryClient = new MicrosoftAzureCommandsResourcesModelsActiveDirectory.ActiveDirectoryClient(Profile.Context);
+                    _activeDirectoryClient = new ActiveDirectoryClient(Context);
+                    if (!Context.Environment.IsEndpointSet(AzureEnvironment.Endpoint.Graph))
+                    {
+                        throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.InvalidGraphEndpoint));
+                    }
+                    _activeDirectoryClient = new ActiveDirectoryClient(Context);
                 }
                 return this._activeDirectoryClient;
             }
@@ -78,11 +82,11 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         /// </summary>
         /// <param name="profile">The current azure profile</param>
         /// <param name="subscription">The current azure subscription</param>
-        public AzureSqlServerActiveDirectoryAdministratorAdapter(AzureProfile Profile, AzureSubscription subscription)
+        public AzureSqlServerActiveDirectoryAdministratorAdapter(AzureContext context)
         {
-            this.Profile = Profile;
-            this._subscription = subscription;
-            Communicator = new AzureSqlServerActiveDirectoryAdministratorCommunicator(Profile, subscription);
+            Context = context;
+            _subscription = context.Subscription;
+            Communicator = new AzureSqlServerActiveDirectoryAdministratorCommunicator(Context);
         }
 
         /// <summary>
@@ -171,9 +175,9 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
             Guid tenantId = GetTenantId();
 
             // Check for a Azure Active Directory group. Recommended to always use group.
-            IEnumerable<MicrosoftAzureCommandsResourcesModelsActiveDirectory.PSADGroup> groupList = null;
+            IEnumerable<PSADGroup> groupList = null;
 
-            var filter = new MicrosoftAzureCommandsResourcesModelsActiveDirectory.ADObjectFilterOptions()
+            var filter = new ADObjectFilterOptions()
             {
                 Id = (objectId != null && objectId != Guid.Empty) ? objectId.ToString() : null,
                 SearchString = displayName,
@@ -186,12 +190,19 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
             if (groupList.Count() > 1)
             {
                 // More than one group was found with that display name.
-                throw new ArgumentException(string.Format(Resources.ADGroupMoreThanOneFound, displayName));
+                throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ADGroupMoreThanOneFound, displayName));
             }
             else if (groupList.Count() == 1)
             {
                 // Only one group was found. Get the group display name and object id
                 var group = groupList.First();
+                
+                // Only support Security Groups
+                if (group.SecurityEnabled.HasValue && !group.SecurityEnabled.Value)
+                {
+                    throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.InvalidADGroupNotSecurity, displayName));
+                }
+
                 return new ServerAdministratorCreateOrUpdateProperties()
                 {
                     Login = group.DisplayName,
@@ -201,7 +212,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
             }
 
             // No group was found. Check for a user
-            filter = new MicrosoftAzureCommandsResourcesModelsActiveDirectory.ADObjectFilterOptions()
+            filter = new ADObjectFilterOptions()
             {
                 Id = (objectId != null && objectId != Guid.Empty) ? objectId.ToString() : null,
                 SearchString = displayName,
@@ -211,15 +222,29 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
             // Get a list of user from Azure Active Directory
             var userList = ActiveDirectoryClient.FilterUsers(filter).Where(gr => string.Equals(gr.DisplayName, displayName, StringComparison.OrdinalIgnoreCase));
 
+            // No user was found. Check if the display name is a UPN
+            if (userList == null || userList.Count() == 0)
+            {
+                // Check if the display name is the UPN
+                filter = new ADObjectFilterOptions()
+                {
+                    Id = (objectId != null && objectId != Guid.Empty) ? objectId.ToString() : null,
+                    UPN = displayName,
+                    Paging = true,
+                };
+
+                userList = ActiveDirectoryClient.FilterUsers(filter).Where(gr => string.Equals(gr.UserPrincipalName, displayName, StringComparison.OrdinalIgnoreCase));
+            }
+
             // No user was found
             if (userList == null || userList.Count() == 0)
             {
-                throw new ArgumentException(string.Format(Resources.ADObjectNotFound, displayName));
+                throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ADObjectNotFound, displayName));
             }
             else if (userList.Count() > 1)
             {
                 // More than one user was found.
-                throw new ArgumentException(string.Format(Resources.ADUserMoreThanOneFound, displayName));
+                throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ADUserMoreThanOneFound, displayName));
             }
             else
             {
@@ -228,7 +253,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
 
                 return new ServerAdministratorCreateOrUpdateProperties()
                 {
-                    Login = obj.DisplayName,
+                    Login = displayName,
                     Sid = obj.Id,
                     TenantId = tenantId,
                 };
@@ -241,15 +266,14 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         /// <returns></returns>
         protected Guid GetTenantId()
         {
-            var tenantIdStr =
-                Profile.Context.Subscription.GetPropertyAsArray(AzureSubscription.Property.Tenants).FirstOrDefault();
-            string adTenant = Profile.Context.Environment.GetEndpoint(AzureEnvironment.Endpoint.AdTenant);
-            string graph = Profile.Context.Environment.GetEndpoint(AzureEnvironment.Endpoint.Graph);
+            var tenantIdStr = Context.Tenant.Id.ToString();
+            string adTenant = Context.Environment.GetEndpoint(AzureEnvironment.Endpoint.AdTenant);
+            string graph = Context.Environment.GetEndpoint(AzureEnvironment.Endpoint.Graph);
             var tenantIdGuid = Guid.Empty;
             
             if (string.IsNullOrWhiteSpace(tenantIdStr) || !Guid.TryParse(tenantIdStr, out tenantIdGuid))
             {
-                throw new InvalidOperationException(Resources.InvalidTenantId);
+                throw new InvalidOperationException(Microsoft.Azure.Commands.Sql.Properties.Resources.InvalidTenantId);
             }
 
             return tenantIdGuid;

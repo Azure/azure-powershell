@@ -21,7 +21,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Add, "AzureLoadBalancerRuleConfig"), OutputType(typeof(PSLoadBalancer))]
+    [Cmdlet(VerbsCommon.Add, "AzureRmLoadBalancerRuleConfig"), OutputType(typeof(PSLoadBalancer))]
     public class AddAzureLoadBalancerRuleConfigCommand : AzureLoadBalancerRuleConfigBase
     {
         [Parameter(
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Network
 
             loadBalancingRule.Id =
                 ChildResourceHelper.GetResourceId(
-                    this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
+                    this.NetworkClient.NetworkManagementClient.SubscriptionId,
                     this.LoadBalancer.ResourceGroupName,
                     this.LoadBalancer.Name,
                     Microsoft.Azure.Commands.Network.Properties.Resources.LoadBalancerRuleName,

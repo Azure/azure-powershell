@@ -126,6 +126,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         /// <inheritdoc />
         protected override void EndProcessing()
         {
+            this.WriteWarning(string.Format(AzureHdInsightPowerShellConstants.AsmWarning, "Start-AzureRmHDInsightJob"));
             try
             {
                 this.command.Logger = this.Logger;

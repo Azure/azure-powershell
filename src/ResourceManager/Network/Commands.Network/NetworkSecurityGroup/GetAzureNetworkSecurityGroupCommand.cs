@@ -20,7 +20,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-     [Cmdlet(VerbsCommon.Get, "AzureNetworkSecurityGroup"), OutputType(typeof(PSNetworkSecurityGroup))]
+     [Cmdlet(VerbsCommon.Get, "AzureRmNetworkSecurityGroup"), OutputType(typeof(PSNetworkSecurityGroup))]
     public class GetAzureNetworkSecurityGroupCommand : NetworkSecurityGroupBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -49,11 +49,11 @@ namespace Microsoft.Azure.Commands.Network
             }
             else if (!string.IsNullOrEmpty(this.ResourceGroupName))
             {
-                var nsgGetResponse = this.NetworkSecurityGroupClient.List(this.ResourceGroupName);
+                var nsgList = this.NetworkSecurityGroupClient.List(this.ResourceGroupName);
 
                 var psNsgs = new List<PSNetworkSecurityGroup>();
-                
-                foreach (var networkSecurityGroup in nsgGetResponse.NetworkSecurityGroups)
+
+                foreach (var networkSecurityGroup in nsgList)
                 {
                     var psNsg = this.ToPsNetworkSecurityGroup(networkSecurityGroup);
                     psNsg.ResourceGroupName = this.ResourceGroupName;
@@ -64,11 +64,11 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                var nsgGetResponse = this.NetworkSecurityGroupClient.ListAll();
+                var nsgList = this.NetworkSecurityGroupClient.ListAll();
 
                 var psNsgs = new List<PSNetworkSecurityGroup>();
 
-                foreach (var networkSecurityGroup in nsgGetResponse.NetworkSecurityGroups)
+                foreach (var networkSecurityGroup in nsgList)
                 {
                     var psNsg = this.ToPsNetworkSecurityGroup(networkSecurityGroup);
                     psNsg.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(networkSecurityGroup.Id);

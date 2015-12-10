@@ -34,24 +34,19 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
         private Uri baseURI { get; set; }
 
         /// <summary>
-        /// ResourceGroup context for the operation
-        /// </summary>
-        private string resourceGroupName { get; set; }
-
-        /// <summary>
-        /// Resource context for the operation
-        /// </summary>
-        private string resourceName { get; set; }
-
-        /// <summary>
         /// Client request id.
         /// </summary>
         private string clientRequestId;
 
         /// <summary>
-        /// Azure backup client.
+        /// Azure vault backup client to talk to IdMgmt.
         /// </summary>
         private BackupVaultServicesManagementClient azureBackupVaultClient;
+
+        /// <summary>
+        /// Azure backup client to talk to BMS.
+        /// </summary>
+        private BackupServicesManagementClient azureBackupClient;
 
         /// <summary>
         /// Cancellation Token Source
@@ -68,19 +63,33 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
             {
                 if (this.azureBackupVaultClient == null)
                 {
-                    this.azureBackupVaultClient = AzureSession.ClientFactory.CreateCustomClient<BackupVaultServicesManagementClient>(resourceName, resourceGroupName, cloudCreds, baseURI);
+                    this.azureBackupVaultClient = AzureSession.ClientFactory.CreateCustomClient<BackupVaultServicesManagementClient>(cloudCreds, baseURI);
                 }
 
                 return this.azureBackupVaultClient;
             }
         }
 
-        public AzureBackupClientAdapter(SubscriptionCloudCredentials creds, Uri baseUri, string rgName, string rName)
+        /// <summary>
+        /// Get Azure backup client.
+        /// </summary>
+        private BackupServicesManagementClient AzureBackupClient
+        {
+            get
+            {
+                if (this.azureBackupClient == null)
+                {
+                    this.azureBackupClient = AzureSession.ClientFactory.CreateCustomClient<BackupServicesManagementClient>(cloudCreds, baseURI);
+                }
+
+                return this.azureBackupClient;
+            }
+        }
+
+        public AzureBackupClientAdapter(SubscriptionCloudCredentials creds, Uri baseUri)
         {
             cloudCreds = creds;
             baseURI = baseUri;
-            resourceGroupName = rgName;
-            resourceName = rName;
 
             RefreshClientRequestId();
 

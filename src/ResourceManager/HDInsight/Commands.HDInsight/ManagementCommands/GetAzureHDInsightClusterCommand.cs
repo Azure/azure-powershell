@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -43,8 +44,20 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         public override void ExecuteCmdlet()
         {
+            if (ClusterName != null && ResourceGroupName == null)
+            {
+                ResourceGroupName = GetResourceGroupByAccountName(ClusterName);
+            }
+
             var result = HDInsightManagementClient.GetCluster(ResourceGroupName, ClusterName);
-            var output = result.Select(cluster => new AzureHDInsightCluster(cluster)).ToList();
+
+            var output = result.Select(entry =>
+            {
+                string resourceGroupName = ClusterConfigurationUtils.GetResourceGroupFromClusterId(entry.Id);
+                var configuration = HDInsightManagementClient.GetClusterConfigurations(resourceGroupName, entry.Name, "core-site");
+                return new AzureHDInsightCluster(entry, configuration);
+            }).ToList();
+
             WriteObject(output, true);
         }
     }

@@ -14,7 +14,7 @@
 
 <#
 .SYNOPSIS
-Tests Test-AzureDnsAvailability command
+Tests Test-AzureRmDnsAvailability command
 #>
 function Test-DnsAvailability
 {
@@ -24,6 +24,6 @@ function Test-DnsAvailability
     $location = Get-ProviderLocation $resourceTypeParent
 
     # Checkdnsavailability
-    $checkdnsavailability = Test-AzureDnsAvailability -Location "westus" -DomainQualifiedName $domainQualifiedName
+    $checkdnsavailability = Test-AzureRmDnsAvailability -Location "westus" -DomainQualifiedName $domainQualifiedName
     Assert-AreEqual $checkdnsavailability true    
 }

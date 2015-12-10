@@ -16,12 +16,13 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Resources.Test
 {
-    public class GetAzureResourceGroupCommandTests
+    public class GetAzureResourceGroupCommandTests : RMTestBase
     {
         private GetAzureResourceGroupCommand cmdlet;
 
@@ -30,6 +31,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
         private Mock<ICommandRuntime> commandRuntimeMock;
 
         private string resourceGroupName = "myResourceGroup";
+        private string resourceGroupId = "/subscriptions/subId/resourceGroups/myResourceGroup";
 
         private string resourceGroupLocation = "West US";
 
@@ -56,7 +58,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 Resources = new List<PSResource>() { new PSResource() { Name = "resource1" } }
             };
             result.Add(expected);
-            resourcesClientMock.Setup(f => f.FilterResourceGroups(resourceGroupName, null, true)).Returns(result);
+            resourcesClientMock.Setup(f => f.FilterResourceGroups(resourceGroupName, null, false, null)).Returns(result);
 
             cmdlet.Name = resourceGroupName;
 
@@ -68,6 +70,30 @@ namespace Microsoft.Azure.Commands.Resources.Test
             Assert.Equal(1, result[0].Resources.Count);
 
             commandRuntimeMock.Verify(f => f.WriteObject(result, true), Times.Once());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetsResourcesGroupsById()
+        {
+            List<PSResourceGroup> result = new List<PSResourceGroup>();
+            PSResourceGroup expected = new PSResourceGroup()
+            {
+                Location = resourceGroupLocation,
+                ResourceGroupName = resourceGroupName,
+                Resources = new List<PSResource>() { new PSResource() { Name = "resource1" } }
+            };
+            result.Add(expected);
+            resourcesClientMock.Setup(f => f.FilterResourceGroups(null, null, true, null)).Returns(result);
+
+            cmdlet.Id = resourceGroupId;
+
+            cmdlet.ExecuteCmdlet();
+
+            Assert.Equal(1, result.Count);
+            Assert.Equal(resourceGroupName, result[0].ResourceGroupName);
+            Assert.Equal(resourceGroupLocation, result[0].Location);
+            Assert.Equal(1, result[0].Resources.Count);
         }
     }
 }

@@ -22,12 +22,15 @@ using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Graph.RBAC;
+using Microsoft.Azure.Insights;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
@@ -37,6 +40,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         private EnvironmentSetupHelper helper;
         private const string TenantIdKey = "TenantId";
         private const string DomainKey = "Domain";
+        private const string SubscriptionIdKey = "SubscriptionId";
 
         public GraphRbacManagementClient GraphClient { get; private set; }
 
@@ -48,15 +52,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         public GalleryClient GalleryClient { get; private set; }
 
-        // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
-        //public EventsClient EventsClient { get; private set; }
+        public InsightsClient InsightsClient { get; private set; }
 
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
         public string UserDomain { get; private set; }
 
-        public static ResourcesController NewInstance 
-        { 
+        public static ResourcesController NewInstance
+        {
             get
             {
                 return new ResourcesController();
@@ -74,9 +77,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             var mockName = TestUtilities.GetCurrentMethodName(2);
 
             RunPsTestWorkflow(
-                () => scripts, 
+                () => scripts,
                 // no custom initializer
-                null, 
+                null,
                 // no custom cleanup 
                 null,
                 callingClassType,
@@ -84,8 +87,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
 
         public void RunPsTestWorkflow(
-            Func<string[]> scriptBuilder, 
-            Action<CSMTestEnvironmentFactory> initialize, 
+            Func<string[]> scriptBuilder,
+            Action<CSMTestEnvironmentFactory> initialize,
             Action cleanup,
             string callingClassType,
             string mockName)
@@ -96,22 +99,23 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
                 this.csmTestFactory = new CSMTestEnvironmentFactory();
 
-                if(initialize != null)
+                if (initialize != null)
                 {
                     initialize(this.csmTestFactory);
                 }
 
+                helper.SetupEnvironment(AzureModule.AzureResourceManager);
+
                 SetupManagementClients();
 
-                helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                
                 var callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
-                helper.SetupModules(
-                    AzureModule.AzureResourceManager, 
+                helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + callingClassName + ".ps1");
+                    "ScenarioTests\\" + callingClassName + ".ps1",
+                    helper.RMProfileModule,
+                    helper.RMResourceModule);
 
                 try
                 {
@@ -127,7 +131,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 }
                 finally
                 {
-                    if(cleanup !=null)
+                    if (cleanup != null)
                     {
                         cleanup();
                     }
@@ -142,6 +146,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             GalleryClient = GetGalleryClient();
             AuthorizationManagementClient = GetAuthorizationManagementClient();
             GraphClient = GetGraphClient();
+            InsightsClient = GetInsightsClient();
             this.FeatureClient = this.GetFeatureClient();
             HttpClientHelperFactory.Instance = new TestHttpClientHelperFactory(this.csmTestFactory.GetTestEnvironment().Credentials as SubscriptionCloudCredentials);
 
@@ -150,6 +155,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 GalleryClient,
                 AuthorizationManagementClient,
                 GraphClient,
+                InsightsClient,
                 this.FeatureClient);
         }
 
@@ -175,6 +181,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 if (HttpMockServer.Variables.ContainsKey(DomainKey))
                 {
                     UserDomain = HttpMockServer.Variables[DomainKey];
+                }
+                if (HttpMockServer.Variables.ContainsKey(SubscriptionIdKey))
+                {
+                    AzureRmProfileProvider.Instance.Profile.Context.Subscription.Id = new Guid(HttpMockServer.Variables[SubscriptionIdKey]);
                 }
             }
 
@@ -206,6 +216,11 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             return TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
         }
 
+        private InsightsClient GetInsightsClient()
+        {
+            return TestBase.GetServiceClient<InsightsClient>(this.csmTestFactory);
+        }
+
         /// <summary>
         /// The test http client helper factory.
         /// </summary>
@@ -230,9 +245,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             /// </summary>
             /// <param name="credentials">The credentials.</param>
             /// <param name="headerValues">The headers.</param>
-            public override HttpClientHelper CreateHttpClientHelper(SubscriptionCloudCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues)
+            public override HttpClientHelper CreateHttpClientHelper(SubscriptionCloudCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues, Dictionary<string, string> cmdletHeaderValues)
             {
-                return new HttpClientHelperImpl(credentials: this.credential, headerValues: headerValues);
+                return new HttpClientHelperImpl(credentials: this.credential, headerValues: headerValues, cmdletHeaderValues: cmdletHeaderValues);
             }
 
             /// <summary>
@@ -245,8 +260,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 /// </summary>
                 /// <param name="credentials">The credentials.</param>
                 /// <param name="headerValues">The headers.</param>
-                public HttpClientHelperImpl(SubscriptionCloudCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues)
-                    : base(credentials: credentials, headerValues: headerValues)
+                public HttpClientHelperImpl(SubscriptionCloudCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues, Dictionary<string, string> cmdletHeaderValues)
+                    : base(credentials: credentials, headerValues: headerValues, cmdletHeaderValues: cmdletHeaderValues)
                 {
                 }
 

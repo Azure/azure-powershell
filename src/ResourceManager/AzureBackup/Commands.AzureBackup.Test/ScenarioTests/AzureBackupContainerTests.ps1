@@ -13,39 +13,92 @@
 # ----------------------------------------------------------------------------------
 
 $ResourceGroupName = "backuprg"
-$ResourceName = "backuprn1"
+$ResourceName = "backuprn"
 $ContainerName = "DPMDRSCALEINT1.DPMDOM02.SELFHOST.CORP.MICROSOFT.COM"
 $ContainerType = "Windows"
-$ContainerId = "10034"
+$ContainerId = "223719"
 $ContainerStatus = "Registered"
 
 function Test-AzureBackupMarsContainerScenario
 {
-	$vault = Get-AzureBackupVault -ResourceGroupName $ResourceGroupName -Name $ResourceName
-	
-	$containers = Get-AzureBackupContainer -vault $vault -type $ContainerType
-	Assert-AreEqual $containers[0].ContainerType $ContainerType;
-	Assert-AreEqual $containers[0].Id $ContainerId;
-	Assert-AreEqual $containers[0].Location $vault.Region;
-	Assert-AreEqual $containers[0].Name $ContainerName;
-	Assert-AreEqual $containers[0].ResourceGroupName $vault.ResourceGroupName;
-	Assert-AreEqual $containers[0].ResourceName $vault.Name;
-	Assert-AreEqual $containers[0].Status $ContainerStatus;
+    $vault = Get-AzureRmBackupVault -ResourceGroupName $ResourceGroupName -Name $ResourceName
+    
+    $containers = Get-AzureRmBackupContainer -vault $vault -type $ContainerType
+    Assert-AreEqual $containers[0].ContainerType $ContainerType;
+    Assert-AreEqual $containers[0].Id $ContainerId;
+    Assert-AreEqual $containers[0].Location $vault.Region;
+    Assert-AreEqual $containers[0].Name $ContainerName;
+    Assert-AreEqual $containers[0].ResourceGroupName $vault.ResourceGroupName;
+    Assert-AreEqual $containers[0].ResourceName $vault.Name;
+    Assert-AreEqual $containers[0].Status $ContainerStatus;
 
-	$namedContainers = Get-AzureBackupContainer -vault $vault -type $ContainerType -name $ContainerName
-	$container = $namedContainers[0];
-	Assert-AreEqual $container.ContainerType $ContainerType;
-	Assert-AreEqual $container.Id $ContainerId;
-	Assert-AreEqual $container.Location $vault.Region;
-	Assert-AreEqual $container.Name $ContainerName;
-	Assert-AreEqual $container.ResourceGroupName $vault.ResourceGroupName;
-	Assert-AreEqual $container.ResourceName $vault.Name;
-	Assert-AreEqual $container.Status $ContainerStatus;	
-	
-	Enable-AzureBackupContainerReregistration -Container $container	
-	
-	Unregister-AzureBackupContainer -Container $container -Force
+    $namedContainers = Get-AzureRmBackupContainer -vault $vault -type $ContainerType -name $ContainerName
+    $container = $namedContainers[0];
+    Assert-AreEqual $container.ContainerType $ContainerType;
+    Assert-AreEqual $container.Id $ContainerId;
+    Assert-AreEqual $container.Location $vault.Region;
+    Assert-AreEqual $container.Name $ContainerName;
+    Assert-AreEqual $container.ResourceGroupName $vault.ResourceGroupName;
+    Assert-AreEqual $container.ResourceName $vault.Name;
+    Assert-AreEqual $container.Status $ContainerStatus;	
+    
+    Enable-AzureRmBackupContainerReregistration -Container $container	
+    
+    Unregister-AzureRmBackupContainer -Container $container -Force
 
-	$unregContainers = Get-AzureBackupContainer -vault $vault -type $ContainerType -name $ContainerName
-	Assert-AreEqual $unregContainers.Count 0;
+    $unregContainers = Get-AzureRmBackupContainer -vault $vault -type $ContainerType -name $ContainerName
+    Assert-AreEqual $unregContainers.Count 0;
+}
+
+$IaasVMManagedResourceName = "hydrarecordvm"
+$IaasVMManagedResourceGroupName = "hydrarecordvm"
+$VaultResourceName = "backuprn"
+$VaultResourceRGName = "backuprg"
+
+
+function Test-RegisterAzureBackupContainer
+{ 
+    $vault = Get-AzureRmBackupVault -Name $VaultResourceName
+    $jobId = Register-AzureRmBackupContainer -vault $vault -Name $IaasVMManagedResourceName -ServiceName $IaasVMManagedResourceGroupName 
+     
+    Assert-NotNull $jobId 'Job should not be null'; 
+} 
+
+
+function Test-UnregisterAzureBackupContainer 
+{ 
+    $vault = Get-AzureRmBackupVault -Name $VaultResourceName
+    $container = Get-AzureRmBackupContainer -Name $IaasVMManagedResourceName -Type AzureVM -ManagedResourceGroupName $IaasVMManagedResourceGroupName -Vault $vault
+    $jobId = Unregister-AzureRmBackupContainer -Container $container 
+     
+    Assert-NotNull $jobId 'Job should not be null'; 
+}
+
+$BMSContainerType = "AzureVM"
+$BMSContainerUniqueName = "iaasvmcontainer;hydrarecordvm;hydrarecordvm"
+$BMSContainerName = "hydrarecordvm"
+$BMSContainerStatus = "Registered"
+
+function Test-AzureBackupContainerScenario
+{
+    $vault = Get-AzureRmBackupVault -ResourceGroupName $ResourceGroupName -Name $ResourceName
+    
+    $containers = Get-AzureRmBackupContainer -vault $vault -type $BMSContainerType
+    Assert-AreEqual $containers[0].ContainerType $BMSContainerType;
+    Assert-AreEqual $containers[0].ContainerUniqueName $BMSContainerUniqueName;
+    Assert-AreEqual $containers[0].Location $vault.Region;
+    Assert-AreEqual $containers[0].Name $BMSContainerName;
+    Assert-AreEqual $containers[0].ResourceGroupName $vault.ResourceGroupName;
+    Assert-AreEqual $containers[0].ResourceName $vault.Name;
+    Assert-AreEqual $containers[0].Status $BMSContainerStatus;
+
+    $namedContainers = Get-AzureRmBackupContainer -vault $vault -type $BMSContainerType -name $BMSContainerName
+    $container = $namedContainers[0];
+    Assert-AreEqual $container.ContainerType $BMSContainerType;
+    Assert-AreEqual $container.ContainerUniqueName $BMSContainerUniqueName;
+    Assert-AreEqual $container.Location $vault.Region;
+    Assert-AreEqual $container.Name $BMSContainerName;
+    Assert-AreEqual $container.ResourceGroupName $vault.ResourceGroupName;
+    Assert-AreEqual $container.ResourceName $vault.Name;
+    Assert-AreEqual $container.Status $BMSContainerStatus;
 }

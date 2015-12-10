@@ -23,7 +23,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureApplicationGateway"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmApplicationGateway"), OutputType(typeof(PSApplicationGateway))]
     public class SetAzureApplicationGatewayCommand : ApplicationGatewayBaseCmdlet
     {
         [Parameter(
@@ -46,7 +46,6 @@ namespace Microsoft.Azure.Commands.Network
 
             // Map to the sdk object
             var appGwModel = Mapper.Map<MNM.ApplicationGateway>(this.ApplicationGateway);
-            appGwModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewayType;
             appGwModel.Tags = TagsConversionHelper.CreateTagDictionary(this.ApplicationGateway.Tag, validate: true);
 
             // Execute the Create VirtualNetwork call

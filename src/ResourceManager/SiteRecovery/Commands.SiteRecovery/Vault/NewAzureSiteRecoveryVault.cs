@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// <summary>
     /// Used to initiate a vault create operation.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureSiteRecoveryVault")]
+    [Cmdlet(VerbsCommon.New, "AzureRmSiteRecoveryVault")]
     public class CreateAzureSiteRecoveryVault : SiteRecoveryCmdletBase
     {
         #region Parameters
@@ -58,6 +58,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             try
             {
+                this.WriteWarningWithTimestamp(
+                    string.Format(
+                    Properties.Resources.SiteRecoveryVaultTypeWillBeDeprecatedSoon));
+
                 VaultCreateArgs vaultCreateArgs = new VaultCreateArgs();
                 vaultCreateArgs.Location = this.Location;
                 vaultCreateArgs.Properties = new VaultProperties();

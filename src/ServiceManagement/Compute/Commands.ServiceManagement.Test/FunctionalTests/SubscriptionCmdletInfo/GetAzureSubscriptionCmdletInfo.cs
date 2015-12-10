@@ -18,21 +18,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 {
     public class GetAzureSubscriptionCmdletInfo : CmdletsInfo
     {
-        public GetAzureSubscriptionCmdletInfo(string subscriptionName, string subscriptionDataFile, bool extendedDetails, bool currentSubscription, bool defaultSubscription)
+        public GetAzureSubscriptionCmdletInfo(string subscriptionId, bool currentSubscription, bool defaultSubscription, bool extendedDetails)
         {
             cmdletName = Utilities.GetAzureSubscriptionCmdletName;
 
-            if (!string.IsNullOrEmpty(subscriptionName))
+            if (!string.IsNullOrEmpty(subscriptionId))
             {
-                this.cmdletParams.Add(new CmdletParam("SubscriptionName", subscriptionName));
-            }
-            if (!string.IsNullOrEmpty(subscriptionDataFile))
-            {
-                this.cmdletParams.Add(new CmdletParam("SubscriptionDataFile", subscriptionDataFile));
-            }
-            if (extendedDetails)
-            {
-                this.cmdletParams.Add(new CmdletParam("ExtendedDetails"));
+                this.cmdletParams.Add(new CmdletParam("SubscriptionId", subscriptionId));
             }
             if (currentSubscription)
             {
@@ -41,6 +33,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             if (defaultSubscription)
             {
                 this.cmdletParams.Add(new CmdletParam("Default"));
+            }
+            if (extendedDetails)
+            {
+                this.cmdletParams.Add(new CmdletParam("ExtendedDetails"));
             }
         }
     }

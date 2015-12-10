@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets azure automation schedules for a given account.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureAutomationSchedule", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmAutomationSchedule", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(Schedule))]
     public class GetAzureAutomationSchedule : AzureAutomationBaseCmdlet
     {
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        protected override void AutomationExecuteCmdlet()
+        protected override void AutomationProcessRecord()
         {
             IEnumerable<Schedule> schedules = null;
             if (this.ParameterSetName == AutomationCmdletParameterSets.ByName)

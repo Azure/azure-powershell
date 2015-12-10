@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.Properties;
 
-    [Cmdlet(VerbsCommon.Remove, "AzureApiManagement"), OutputType(typeof (bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmApiManagement"), OutputType(typeof (bool))]
     public class RemoveAzureApiManagement : AzureApiManagementCmdletBase
     {
         [Parameter(

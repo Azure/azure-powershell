@@ -24,7 +24,8 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsLifecycle.Disable, Constants.AzureBatchAutoScale)]
     public class DisableBatchAutoScaleCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "The id of the pool to disable automatic scaling on.")]
+        [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, 
+            Mandatory = true, HelpMessage = "The id of the pool to disable automatic scaling on.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 

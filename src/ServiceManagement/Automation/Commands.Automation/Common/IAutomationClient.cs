@@ -187,5 +187,11 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
 
         #endregion
+
+        #region ConnectionType
+
+        void DeleteConnectionType(string automationAccountName, string name);
+
+        #endregion
     }
 }

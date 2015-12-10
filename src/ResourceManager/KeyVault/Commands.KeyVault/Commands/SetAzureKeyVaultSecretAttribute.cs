@@ -14,7 +14,6 @@
 
 using System;
 using System.Collections;
-using System.Security;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.KeyVault.Models;
 

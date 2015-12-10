@@ -18,7 +18,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureApplicationGatewayRequestRoutingRule"), OutputType(typeof(PSApplicationGatewayRequestRoutingRule))]
+    [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewayRequestRoutingRule"), OutputType(typeof(PSApplicationGatewayRequestRoutingRule))]
     public class NewAzureApplicationGatewayRequestRoutingRuleCommand : AzureApplicationGatewayRequestRoutingRuleBase
     {
         public override void ExecuteCmdlet()

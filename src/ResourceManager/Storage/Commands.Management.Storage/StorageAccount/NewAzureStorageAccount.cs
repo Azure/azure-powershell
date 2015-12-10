@@ -12,20 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
+using StorageModels = Microsoft.Azure.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet(VerbsCommon.New, StorageAccountNounStr), OutputType(typeof(StorageAccount))]
+    [Cmdlet(VerbsCommon.New, StorageAccountNounStr), OutputType(typeof(StorageModels.StorageAccount))]
     public class NewAzureStorageAccountCommand : StorageAccountBaseCmdlet
     {
         [Parameter(
             Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Resource Group Name.")]
+            HelpMessage = "Resource Group StorageAccountName.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -33,7 +36,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Storage Account Name.")]
+            HelpMessage = "Storage Account StorageAccountName.")]
         [Alias(StorageAccountNameAlias, AccountNameAlias)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -60,6 +63,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
+        [Parameter(
+            Position = 4,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Storage Account Tags.")]
+        [ValidateNotNull]
+        public Hashtable[] Tags { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -67,7 +78,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
             StorageAccountCreateParameters createParameters = new StorageAccountCreateParameters()
             {
                 Location = this.Location,
-                AccountType = ParseAccountType(this.Type)
+                AccountType = ParseAccountType(this.Type),
+                Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true)
             };
 
             var createAccountResponse = this.StorageClient.StorageAccounts.Create(
@@ -75,9 +87,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 this.Name,
                 createParameters);
 
-            var getAccountResponse = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
+            var storageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name).StorageAccount;
 
-            this.WriteStorageAccount(getAccountResponse.StorageAccount);
+            this.WriteStorageAccount(storageAccount);
         }
     }
 }

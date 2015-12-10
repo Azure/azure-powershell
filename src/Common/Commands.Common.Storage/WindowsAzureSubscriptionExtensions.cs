@@ -27,17 +27,34 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
     {
         private static Dictionary<Guid, CloudStorageAccount> storageAccountCache = new Dictionary<Guid,CloudStorageAccount>();
 
-        public static CloudStorageAccount GetCloudStorageAccount(this AzureSubscription subscription, AzureProfile profile)
+        /// <summary>
+        /// Get storage account details from the current storage account
+        /// </summary>
+        /// <param name="subscription">The subscription continign the account.</param>
+        /// <param name="profile">The profile continaing the subscription.</param>
+        /// <returns>Storage account details, usable with the windows azure storage data plane library.</returns>
+        public static CloudStorageAccount GetCloudStorageAccount(this AzureSubscription subscription, AzureSMProfile profile)
         {
             if (subscription == null)
             {
                 return null;
             }
 
-            using (var storageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement))
+            var account = subscription.GetProperty(AzureSubscription.Property.StorageAccount);
+            try
             {
-                return StorageUtilities.GenerateCloudStorageAccount(
-                    storageClient, subscription.GetProperty(AzureSubscription.Property.StorageAccount));
+                return CloudStorageAccount.Parse(account);
+
+            }
+            catch
+            {
+                using (
+                    var storageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(profile,
+                        subscription, AzureEnvironment.Endpoint.ServiceManagement))
+                {
+                    return StorageUtilities.GenerateCloudStorageAccount(
+                        storageClient, account);
+                }
             }
         }
     }

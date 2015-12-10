@@ -30,21 +30,6 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
     public abstract class BuildAzureSqlDatabaseDataMaskingRule : SqlDatabaseDataMaskingRuleCmdletBase
     {
         /// <summary>
-        /// Gets or sets the schema name
-        /// </summary>
-        public virtual string SchemaName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the table name
-        /// </summary>
-        public virtual string TableName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the column name
-        /// </summary>
-        public virtual string ColumnName { get; set; }
-
-        /// <summary>
         /// Gets or sets the masking function - the definition of this property as a cmdlet parameter is done in the subclasses
         /// </summary>
         public virtual string MaskingFunction { get; set; }
@@ -91,12 +76,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
         /// <param name="model">A model object</param>
         protected override IEnumerable<DatabaseDataMaskingRuleModel> ApplyUserInputToModel(IEnumerable<DatabaseDataMaskingRuleModel> rules)
         {
-            string errorMessage = ValidateRuleTarget(rules);
-            if (string.IsNullOrEmpty(errorMessage))
-            {
-                errorMessage = ValidateOperation(rules);
-            }
-            
+            string errorMessage = ValidateOperation(rules);            
             if(!string.IsNullOrEmpty(errorMessage))
             {
                 throw new Exception(errorMessage);
@@ -107,29 +87,27 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
         }
 
         /// <summary>
-        /// Validation that the rule's target is set properly to be either a table and column for which there's no other rule, or an alias for which there's no other rule.
-        /// </summary>
-        /// <param name="rules">The data masking rules of the current database</param>
-        /// <returns>A string containing error message or null in case all is fine</returns>
-        protected string ValidateRuleTarget(IEnumerable<DatabaseDataMaskingRuleModel> rules)
-        {
-            if (rules.Any(r => r.TableName == TableName && r.ColumnName == ColumnName && r.RuleId != RuleId))
-            {
-                return string.Format(CultureInfo.InvariantCulture, Resources.DataMaskingTableAndColumnUsedError, TableName, ColumnName);
-            }
-            return null;
-        }
-
-        /// <summary>
         /// Update the rule this cmdlet is operating on based on the values provided by the user
         /// </summary>
         /// <param name="rule">The rule this cmdlet operates on</param>
         /// <returns>An updated rule model</returns>
         protected DatabaseDataMaskingRuleModel UpdateRule(DatabaseDataMaskingRuleModel rule)
         {
-            rule.SchemaName = SchemaName;
-            rule.TableName = TableName;
-            rule.ColumnName = ColumnName;
+            if (!string.IsNullOrEmpty(SchemaName)) // only update if the user provided this value
+            {
+                rule.SchemaName = SchemaName;
+            }
+
+            if (!string.IsNullOrEmpty(TableName)) // only update if the user provided this value
+            {
+                rule.TableName = TableName;
+            }
+
+            if (!string.IsNullOrEmpty(ColumnName)) // only update if the user provided this value
+            {
+                rule.ColumnName = ColumnName;
+            }
+
             if(!string.IsNullOrEmpty(MaskingFunction)) // only update if the user provided this value
             {
                 rule.MaskingFunction = ModelizeMaskingFunction();
@@ -192,7 +170,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
 
                 if(rule.NumberFrom > rule.NumberTo)
                 {
-                    throw new Exception(string.Format(CultureInfo.InvariantCulture, Resources.DataMaskingNumberRuleIntervalDefinitionError));
+                    throw new Exception(string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.DataMaskingNumberRuleIntervalDefinitionError));
                 }
             }
             return rule;
@@ -242,7 +220,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
         protected override IEnumerable<DatabaseDataMaskingRuleModel> PersistChanges(IEnumerable<DatabaseDataMaskingRuleModel> rules)
         {
-            ModelAdapter.SetDatabaseDataMaskingRule(rules.First(r => r.RuleId == RuleId), clientRequestId); 
+            ModelAdapter.SetDatabaseDataMaskingRule(rules.First(IsModelOfRule), clientRequestId); 
             return null;
         }
 

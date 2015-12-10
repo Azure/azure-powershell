@@ -16,10 +16,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.Models;
+    using ResourceManager.Common;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
-    [Cmdlet(VerbsCommon.New, "AzureApiManagementHostnameConfiguration"), OutputType(typeof (PsApiManagementHostnameConfiguration))]
-    public class NewAzureApiManagementHostnameConfiguration : AzurePSCmdlet
+    [Cmdlet(VerbsCommon.New, "AzureRmApiManagementHostnameConfiguration"), OutputType(typeof (PsApiManagementHostnameConfiguration))]
+    public class NewAzureApiManagementHostnameConfiguration : AzureRMCmdlet
     {
         [Parameter(
             ValueFromPipelineByPropertyName = false,

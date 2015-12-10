@@ -20,7 +20,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-     [Cmdlet(VerbsCommon.Get, "AzureVirtualNetwork"), OutputType(typeof(PSVirtualNetwork))]
+     [Cmdlet(VerbsCommon.Get, "AzureRmVirtualNetwork"), OutputType(typeof(PSVirtualNetwork))]
     public class GetAzureVirtualNetworkCommand : VirtualNetworkBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -49,10 +49,10 @@ namespace Microsoft.Azure.Commands.Network
             }
             else if (!string.IsNullOrEmpty(this.ResourceGroupName))
             {
-                var vnetGetResponse = this.VirtualNetworkClient.List(this.ResourceGroupName);
+                var vnetList = this.VirtualNetworkClient.List(this.ResourceGroupName);
 
                 var psVnets = new List<PSVirtualNetwork>();
-                foreach (var virtualNetwork in vnetGetResponse.VirtualNetworks)
+                foreach (var virtualNetwork in vnetList)
                 {
                     var psVnet = this.ToPsVirtualNetwork(virtualNetwork);
                     psVnet.ResourceGroupName = this.ResourceGroupName;
@@ -63,10 +63,10 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                var vnetGetResponse = this.VirtualNetworkClient.ListAll();
+                var vnetList = this.VirtualNetworkClient.ListAll();
 
                 var psVnets = new List<PSVirtualNetwork>();
-                foreach (var virtualNetwork in vnetGetResponse.VirtualNetworks)
+                foreach (var virtualNetwork in vnetList)
                 {
                     var psVnet = this.ToPsVirtualNetwork(virtualNetwork);
                     psVnet.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(virtualNetwork.Id);

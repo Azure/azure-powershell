@@ -22,18 +22,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsLifecycle.Stop, ProfileNouns.VirtualMachine)]
+    [Cmdlet(VerbsLifecycle.Stop, ProfileNouns.VirtualMachine, DefaultParameterSetName = ResourceGroupNameParameterSet)]
     [OutputType(typeof(PSComputeLongRunningOperation))]
-    public class StopAzureVMCommand : VirtualMachineBaseCmdlet
+    public class StopAzureVMCommand : VirtualMachineActionBaseCmdlet
     {
-        [Parameter(
-           Mandatory = true,
-           Position = 0,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
         [Parameter(
            Mandatory = true,
            Position = 1,
@@ -60,7 +52,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
-                if (this.Force.IsPresent || this.ShouldContinue(Properties.Resources.VirtualMachineStoppingConfirmation, Properties.Resources.VirtualMachineStoppingCaption))
+                if (this.Force.IsPresent || this.ShouldContinue(Microsoft.Azure.Commands.Compute.Properties.Resources.VirtualMachineStoppingConfirmation, Microsoft.Azure.Commands.Compute.Properties.Resources.VirtualMachineStoppingCaption))
                 {
                     Action<Func<string, string, ComputeLongRunningOperationResponse>> call = f =>
                     {

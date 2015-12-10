@@ -22,7 +22,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureNetworkInterface"), OutputType(typeof(PSNetworkInterface))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmNetworkInterface"), OutputType(typeof(PSNetworkInterface))]
     public class GetAzureNetworkInterfaceCommand : NetworkInterfaceBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -31,14 +31,30 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
-        public virtual string Name { get; set; }
+        public string Name { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
-        public virtual string ResourceGroupName { get; set; }
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Virtual Machine Scale Set Name.",
+            ParameterSetName = "ScaleSetNic")]
+        [ValidateNotNullOrEmpty]
+        public string VirtualMachineScaleSetName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Virtual Machine Index.",
+            ParameterSetName = "ScaleSetNic")]
+        [ValidateNotNullOrEmpty]
+        public string VirtualMachineIndex { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -46,17 +62,35 @@ namespace Microsoft.Azure.Commands.Network
             
             if (!string.IsNullOrEmpty(this.Name))
             {
-                var networkInterface = this.GetNetworkInterface(this.ResourceGroupName, this.Name);
+                PSNetworkInterface networkInterface;
+
+                if (ParameterSetName.Equals("ScaleSetNic"))
+                {
+                    networkInterface = this.GetScaleSetNetworkInterface(this.ResourceGroupName, this.VirtualMachineScaleSetName, this.VirtualMachineIndex, this.Name);
+                }
+                else
+                {
+                    networkInterface = this.GetNetworkInterface(this.ResourceGroupName, this.Name);
+                }
                 
                 WriteObject(networkInterface);
             }
             else if (!string.IsNullOrEmpty(this.ResourceGroupName))
             {
-                var getNetworkInterfaceResponse = this.NetworkInterfaceClient.List(this.ResourceGroupName);
+                IEnumerable<MNM.NetworkInterface> nicList;
 
+                if (ParameterSetName.Equals("ScaleSetNic"))
+                {
+                    nicList = this.NetworkInterfaceClient.ListVirtualMachineScaleSetNetworkInterfaces(this.ResourceGroupName, this.VirtualMachineScaleSetName);
+                }
+                else
+                {
+                    nicList = this.NetworkInterfaceClient.List(this.ResourceGroupName);
+                }
+                
                 var psNetworkInterfaces = new List<PSNetworkInterface>();
 
-                foreach (var nic in getNetworkInterfaceResponse.NetworkInterfaces)
+                foreach (var nic in nicList)
                 {
                     var psNic = this.ToPsNetworkInterface(nic);
                     psNic.ResourceGroupName = this.ResourceGroupName;
@@ -68,11 +102,11 @@ namespace Microsoft.Azure.Commands.Network
 
             else
             {
-                var getNetworkInterfaceResponse = this.NetworkInterfaceClient.ListAll();
+                var nicList = this.NetworkInterfaceClient.ListAll();
 
                 var psNetworkInterfaces = new List<PSNetworkInterface>();
 
-                foreach (var nic in getNetworkInterfaceResponse.NetworkInterfaces)
+                foreach (var nic in nicList)
                 {
                     var psNic = this.ToPsNetworkInterface(nic);
                     psNic.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(psNic.Id);

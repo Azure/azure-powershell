@@ -12,27 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
 using Microsoft.Azure.Batch;
-using Microsoft.Azure.Batch.Common;
 using Microsoft.Azure.Batch.Protocol;
-using Microsoft.Azure.Commands.Batch.Models;
-using Microsoft.Azure.Commands.Batch.Test.ScenarioTests;
-using Microsoft.Azure.Management.Batch;
 using Microsoft.Azure.Management.Batch.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using System.Reflection;
-using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Management.Resources.Models;
-using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
-using Microsoft.WindowsAzure.Storage.Shared.Protocol;
+using System.Threading.Tasks;
 using Xunit;
 using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
 
@@ -43,6 +31,11 @@ namespace Microsoft.Azure.Commands.Batch.Test
     /// </summary>
     public static class BatchTestHelpers
     {
+        internal const string TestCertificateFileName1 = "Resources\\BatchTestCert01.cer";
+        internal const string TestCertificateFileName2 = "Resources\\BatchTestCert02.cer";
+        internal const string TestCertificateAlgorithm = "sha1";
+        internal const string TestCertificatePassword = "Passw0rd";
+
         /// <summary>
         /// Builds an AccountResource object using the specified parameters
         /// </summary>
@@ -109,6 +102,113 @@ namespace Microsoft.Azure.Commands.Batch.Test
             Assert.Equal<string>(context1.Subscription, context2.Subscription);
             Assert.Equal<string>(context1.TagsTable, context2.TagsTable);
             Assert.Equal<string>(context1.TaskTenantUrl, context2.TaskTenantUrl);
+        }
+
+        /// <summary>
+        /// Creates a RequestInterceptor that does not contact the Batch Service but instead uses the supplied response body.
+        /// </summary>
+        /// <param name="responseToUse">The response the interceptor should return. If none is specified, then a new instance of the response type is instantiated.</param>
+        /// <param name="requestAction">An action to perform on the request.</param>
+        /// <typeparam name="TParameters">The type of the request parameters.</typeparam>
+        /// <typeparam name="TResponse">The type of the expected response.</typeparam>
+        public static RequestInterceptor CreateFakeServiceResponseInterceptor<TParameters, TResponse>(TResponse responseToUse = null, 
+            Action<BatchRequest<TParameters, TResponse>> requestAction = null)
+            where TParameters : ProxyModels.BatchParameters
+            where TResponse : ProxyModels.BatchOperationResponse, new()
+        {
+            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
+            {
+                BatchRequest<TParameters, TResponse> request = (BatchRequest<TParameters, TResponse>)baseRequest;
+
+                if (requestAction != null)
+                {
+                    requestAction(request);
+                }
+
+                request.ServiceRequestFunc = (cancellationToken) =>
+                {
+                    TResponse response = responseToUse ?? new TResponse();
+                    Task<TResponse> task = Task.FromResult(response);
+                    return task;
+                };
+            });
+            return interceptor;
+        }
+
+        /// <summary>
+        /// Creates a RequestInterceptor that does not contact the Batch Service on a Get NodeFile or a Get NodeFile Properties call.
+        /// The interceptor must handle both request types since it's possible for one OM node file method to perform both REST APIs.
+        /// </summary>
+        /// <param name="fileName">The name of the file to put in the response body.</param>
+        public static RequestInterceptor CreateFakGetFileAndPropertiesResponseInterceptor(string fileName)
+        {
+            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
+            {
+                BatchRequest<ProxyModels.NodeFileGetParameters, ProxyModels.NodeFileGetResponse> fileRequest = baseRequest as
+                    BatchRequest<ProxyModels.NodeFileGetParameters, ProxyModels.NodeFileGetResponse>;
+
+                if (fileRequest != null)
+                {
+                    fileRequest.ServiceRequestFunc = (cancellationToken) =>
+                    {
+                        ProxyModels.NodeFileGetResponse response = new ProxyModels.NodeFileGetResponse();
+                        Task<ProxyModels.NodeFileGetResponse> task = Task.FromResult(response);
+                        return task;
+                    };
+                }
+                else
+                {
+                    BatchRequest<ProxyModels.NodeFileGetPropertiesParameters, ProxyModels.NodeFileGetPropertiesResponse> propRequest =
+                        (BatchRequest<ProxyModels.NodeFileGetPropertiesParameters, ProxyModels.NodeFileGetPropertiesResponse>)baseRequest;
+
+                    propRequest.ServiceRequestFunc = (cancellationToken) =>
+                    {
+                        ProxyModels.NodeFileGetPropertiesResponse response = BatchTestHelpers.CreateNodeFileGetPropertiesResponse(fileName);
+                        Task<ProxyModels.NodeFileGetPropertiesResponse> task = Task.FromResult(response);
+                        return task;
+                    };
+                }
+            });
+
+            return interceptor;
+        }
+
+        /// <summary>
+        /// Builds a CertificateGetResponse object
+        /// </summary>
+        public static ProxyModels.CertificateGetResponse CreateCertificateGetResponse(string thumbprint)
+        {
+            ProxyModels.CertificateGetResponse response = new ProxyModels.CertificateGetResponse();
+            response.StatusCode = HttpStatusCode.OK;
+
+            ProxyModels.Certificate cert = new ProxyModels.Certificate();
+            cert.Thumbprint = thumbprint;
+
+            response.Certificate = cert;
+
+            return response;
+        }
+
+        /// <summary>
+        /// Builds a CertificateListResponse object
+        /// </summary>
+        public static ProxyModels.CertificateListResponse CreateCertificateListResponse(IEnumerable<string> certThumbprints)
+        {
+            ProxyModels.CertificateListResponse response = new ProxyModels.CertificateListResponse();
+            response.StatusCode = HttpStatusCode.OK;
+
+            List<ProxyModels.Certificate> certs = new List<ProxyModels.Certificate>();
+
+            foreach (string t in certThumbprints)
+            {
+                ProxyModels.Certificate cert = new ProxyModels.Certificate();
+                cert.Thumbprint = t;
+                certs.Add(cert);
+            }
+
+            response.Certificates = certs;
+
+            return response;
         }
 
         /// <summary>
@@ -337,6 +437,106 @@ namespace Microsoft.Azure.Commands.Batch.Test
             response.Files = files;
 
             return response;
+        }
+
+        /// <summary>
+        /// Fabricates a CloudJob that's in the bound state
+        /// </summary>
+        public static CloudJob CreateFakeBoundJob(BatchAccountContext context)
+        {
+            string jobId = "testJob";
+
+            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
+            {
+                BatchRequest<ProxyModels.CloudJobGetParameters, ProxyModels.CloudJobGetResponse> request =
+                (BatchRequest<ProxyModels.CloudJobGetParameters, ProxyModels.CloudJobGetResponse>)baseRequest;
+
+                request.ServiceRequestFunc = (cancellationToken) =>
+                {
+                    ProxyModels.CloudJobGetResponse response = new ProxyModels.CloudJobGetResponse();
+                    response.Job = new ProxyModels.CloudJob(jobId, new ProxyModels.PoolInformation());
+
+                    Task<ProxyModels.CloudJobGetResponse> task = Task.FromResult(response);
+                    return task;
+                };
+            });
+
+            return context.BatchOMClient.JobOperations.GetJob(jobId, additionalBehaviors: new BatchClientBehavior[] { interceptor });
+        }
+
+        /// <summary>
+        /// Fabricates a CloudJobSchedule that's in the bound state
+        /// </summary>
+        public static CloudJobSchedule CreateFakeBoundJobSchedule(BatchAccountContext context)
+        {
+            string jobScheduleId = "testJobSchedule";
+
+            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
+            {
+                BatchRequest<ProxyModels.CloudJobScheduleGetParameters, ProxyModels.CloudJobScheduleGetResponse> request =
+                (BatchRequest<ProxyModels.CloudJobScheduleGetParameters, ProxyModels.CloudJobScheduleGetResponse>)baseRequest;
+
+                request.ServiceRequestFunc = (cancellationToken) =>
+                {
+                    ProxyModels.CloudJobScheduleGetResponse response = new ProxyModels.CloudJobScheduleGetResponse();
+                    response.JobSchedule = new ProxyModels.CloudJobSchedule(jobScheduleId, new ProxyModels.Schedule(), new ProxyModels.JobSpecification());
+
+                    Task<ProxyModels.CloudJobScheduleGetResponse> task = Task.FromResult(response);
+                    return task;
+                };
+            });
+
+            return context.BatchOMClient.JobScheduleOperations.GetJobSchedule(jobScheduleId, additionalBehaviors: new BatchClientBehavior[] { interceptor });
+        }
+
+        /// <summary>
+        /// Fabricates a CloudPool that's in the bound state
+        /// </summary>
+        public static CloudPool CreateFakeBoundPool(BatchAccountContext context)
+        {
+            string poolId = "testPool";
+
+            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
+            {
+                BatchRequest<ProxyModels.CloudPoolGetParameters, ProxyModels.CloudPoolGetResponse> request =
+                (BatchRequest<ProxyModels.CloudPoolGetParameters, ProxyModels.CloudPoolGetResponse>)baseRequest;
+
+                request.ServiceRequestFunc = (cancellationToken) =>
+                {
+                    ProxyModels.CloudPoolGetResponse response = new ProxyModels.CloudPoolGetResponse();
+                    response.Pool = new ProxyModels.CloudPool(poolId, "small", "4");
+
+                    Task<ProxyModels.CloudPoolGetResponse> task = Task.FromResult(response);
+                    return task;
+                };
+            });
+
+            return context.BatchOMClient.PoolOperations.GetPool(poolId, additionalBehaviors: new BatchClientBehavior[] { interceptor });
+        }
+
+        /// <summary>
+        /// Fabricates a CloudTask that's in the bound state
+        /// </summary>
+        public static CloudTask CreateFakeBoundTask(BatchAccountContext context)
+        {
+            string taskId = "testTask";
+
+            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
+            {
+                BatchRequest<ProxyModels.CloudTaskGetParameters, ProxyModels.CloudTaskGetResponse> request =
+                (BatchRequest<ProxyModels.CloudTaskGetParameters, ProxyModels.CloudTaskGetResponse>)baseRequest;
+
+                request.ServiceRequestFunc = (cancellationToken) =>
+                {
+                    ProxyModels.CloudTaskGetResponse response = new ProxyModels.CloudTaskGetResponse();
+                    response.Task = new ProxyModels.CloudTask(taskId, "cmd /c dir /s");
+
+                    Task<ProxyModels.CloudTaskGetResponse> task = Task.FromResult(response);
+                    return task;
+                };
+            });
+
+            return context.BatchOMClient.JobOperations.GetTask("jobId", taskId, additionalBehaviors: new BatchClientBehavior[] { interceptor });
         }
 
         /// <summary>

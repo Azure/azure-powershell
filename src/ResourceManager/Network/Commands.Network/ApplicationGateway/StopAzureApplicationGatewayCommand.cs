@@ -23,7 +23,7 @@ using Microsoft.Azure.Commands.Tags.Model;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsLifecycle.Stop, "AzureApplicationGateway"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet(VerbsLifecycle.Stop, "AzureRmApplicationGateway"), OutputType(typeof(PSApplicationGateway))]
     public class StopAzureApplicationGatewayCommand : ApplicationGatewayBaseCmdlet
     {
         [Parameter(
@@ -43,7 +43,6 @@ namespace Microsoft.Azure.Commands.Network
 
             // Map to the sdk object
             var appGwModel = Mapper.Map<MNM.ApplicationGateway>(this.ApplicationGateway);
-            appGwModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewayType;
             appGwModel.Tags = TagsConversionHelper.CreateTagDictionary(this.ApplicationGateway.Tag, validate: true);
 
             this.ApplicationGatewayClient.Stop(this.ApplicationGateway.ResourceGroupName, this.ApplicationGateway.Name);

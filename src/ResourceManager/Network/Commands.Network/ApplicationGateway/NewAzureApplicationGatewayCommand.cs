@@ -24,7 +24,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureApplicationGateway"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet(VerbsCommon.New, "AzureRmApplicationGateway"), OutputType(typeof(PSApplicationGateway))]
     public class NewAzureApplicationGatewayCommand : ApplicationGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -200,7 +200,6 @@ namespace Microsoft.Azure.Commands.Network
 
             // Map to the sdk object
             var appGwModel = Mapper.Map<MNM.ApplicationGateway>(applicationGateway);
-            appGwModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewayType;
             appGwModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create ApplicationGateway call

@@ -19,10 +19,11 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.Azure.Test;
 using System;
 using System.Linq;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
 {
-    public sealed class TestsController
+    public sealed class TestsController : RMTestBase
     {
         private CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
@@ -85,10 +86,11 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
                 var callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
-                helper.SetupModules(
-                    AzureModule.AzureResourceManager, 
-                    "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + callingClassName + ".ps1");
+                helper.SetupModules(AzureModule.AzureResourceManager, 
+                    "ScenarioTests\\Common.ps1", 
+                    "ScenarioTests\\" + callingClassName + ".ps1", 
+                    helper.RMProfileModule,
+                    helper.GetRMModulePath("AzureRM.Insights.psd1"));
 
                 try
                 {

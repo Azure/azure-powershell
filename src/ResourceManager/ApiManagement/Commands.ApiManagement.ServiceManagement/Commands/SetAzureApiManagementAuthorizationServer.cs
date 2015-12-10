@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet(VerbsCommon.Set, "AzureApiManagementAuthorizationServer")]
+    [Cmdlet(VerbsCommon.Set, "AzureRmApiManagementAuthorizationServer")]
     [OutputType(typeof (PsApiManagementOAuth2AuthrozationServer))]
     public class SetAzureApiManagementAuthorizationServer : AzureApiManagementCmdletBase
     {

@@ -31,7 +31,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
             this IAzureHDInsightCommonCommandBase command,
             AzureSubscription currentSubscription,
             AzureEnvironment environment,
-            AzureProfile profile)
+            AzureSMProfile profile)
         {
             var accountId = currentSubscription.Account;
             Debug.Assert(profile.Accounts.ContainsKey(accountId));
@@ -66,7 +66,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
         public static IHDInsightSubscriptionCredentials GetAccessTokenCredentials(this IAzureHDInsightCommonCommandBase command, 
             AzureSubscription currentSubscription, AzureAccount azureAccount, AzureEnvironment environment)
         {
-            ProfileClient profileClient = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
+            ProfileClient profileClient = new ProfileClient(new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             AzureContext azureContext = new AzureContext(currentSubscription, azureAccount, environment);
 
             var cloudCredentials = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(azureContext) as AccessTokenCredential;
@@ -90,7 +90,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
             this IAzureHDInsightJobCommandCredentialsBase command,
             AzureSubscription currentSubscription,
             AzureEnvironment environment, string cluster,
-            AzureProfile profile)
+            AzureSMProfile profile)
         {
             IJobSubmissionClientCredential clientCredential = null;
             if (command.Credential != null)

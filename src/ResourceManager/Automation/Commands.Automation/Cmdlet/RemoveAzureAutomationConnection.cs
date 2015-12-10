@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Removes a Connection for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureAutomationConnection", DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmAutomationConnection", DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
     public class RemoveAzureAutomationConnection : AzureAutomationBaseCmdlet
     {
         /// <summary>
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        protected override void AutomationExecuteCmdlet()
+        protected override void AutomationProcessRecord()
         {
             ConfirmAction(
                        Force.IsPresent,

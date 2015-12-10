@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Sets an azure automation runbook definition.
     /// </summary>
-    [Cmdlet(VerbsData.Import, "AzureAutomationRunbook")]
+    [Cmdlet(VerbsData.Import, "AzureRmAutomationRunbook")]
     [OutputType(typeof(Runbook))]
     public class ImportAzureAutomationRunbook : AzureAutomationBaseCmdlet
     {
@@ -42,6 +42,13 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook description.")]
         public string Description { get; set; }
+
+        /// <summary>
+        /// Gets or sets the runbook name
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the runbook to import, if different from the file name. Not supported for PowerShell Workflow runbooks.")]
+        [Alias("RunbookName")]
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the runbook tags.
@@ -86,7 +93,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        protected override void AutomationExecuteCmdlet()
+        protected override void AutomationProcessRecord()
         {
             var runbook = this.AutomationClient.ImportRunbook(
                     this.ResourceGroupName, 
@@ -98,7 +105,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                     this.LogProgress, 
                     this.LogVerbose,
                     this.Published.IsPresent,
-                    this.Force.IsPresent);
+                    this.Force.IsPresent,
+                    this.Name);
 
             this.WriteObject(runbook);
         }

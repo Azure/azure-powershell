@@ -13,19 +13,20 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet(VerbsCommon.Get, StorageAccountNounStr), OutputType(typeof(StorageAccount))]
+    [Cmdlet(VerbsCommon.Get, StorageAccountNounStr), OutputType(typeof(PSStorageAccount))]
     public class GetAzureStorageAccountCommand : StorageAccountBaseCmdlet
     {
         [Parameter(
             Position = 0,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Resource Group Name.")]
+            HelpMessage = "Resource Group StorageAccountName.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -33,7 +34,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Position = 1,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Storage Account Name.")]
+            HelpMessage = "Storage Account StorageAccountName.")]
         [Alias(StorageAccountNameAlias, AccountNameAlias)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -44,23 +45,23 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
             if (string.IsNullOrEmpty(this.ResourceGroupName))
             {
-                var listResponse = this.StorageClient.StorageAccounts.List();
+                var storageAccounts = this.StorageClient.StorageAccounts.List().StorageAccounts;
 
-                WriteStorageAccountList(listResponse.StorageAccounts);
+                WriteStorageAccountList(storageAccounts);
             }
             else if (string.IsNullOrEmpty(this.Name))
             {
-                var listResponse = this.StorageClient.StorageAccounts.ListByResourceGroup(this.ResourceGroupName);
+                var storageAccounts = this.StorageClient.StorageAccounts.ListByResourceGroup(this.ResourceGroupName).StorageAccounts;
 
-                WriteStorageAccountList(listResponse.StorageAccounts);
+                WriteStorageAccountList(storageAccounts);
             }
             else
             {
-                var getResponse = this.StorageClient.StorageAccounts.GetProperties(
+                var storageAccount = this.StorageClient.StorageAccounts.GetProperties(
                     this.ResourceGroupName,
-                    this.Name);
+                    this.Name).StorageAccount;
 
-                WriteStorageAccount(getResponse.StorageAccount);
+                WriteStorageAccount(storageAccount);
             }
         }
     }

@@ -30,14 +30,11 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(
             Position = 0,
             Mandatory = true,
-            HelpMessage = "Gets or sets the name of the resource group.")]
-        public string ResourceGroupName { get; set; }
-
-        [Parameter(
-            Position = 1,
-            Mandatory = true,
             HelpMessage = "Gets or sets the name of the cluster.")]
         public string ClusterName { get; set; }
+
+        [Parameter(HelpMessage = "Gets or sets the name of the resource group.")]
+        public string ResourceGroupName { get; set; }
 
         #endregion
 
@@ -53,6 +50,11 @@ namespace Microsoft.Azure.Commands.HDInsight
                     }
                 }
             };
+
+            if (ResourceGroupName == null)
+            {
+                ResourceGroupName = GetResourceGroupByAccountName(ClusterName);
+            }
 
             HDInsightManagementClient.ConfigureRdp(ResourceGroupName, ClusterName, rdpParams);
         }

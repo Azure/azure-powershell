@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Compute
         ProfileNouns.DataDisk),
     OutputType(
         typeof(PSVirtualMachine))]
-    public class RemoveAzureVMDataDiskCommand : AzurePSCmdlet
+    public class RemoveAzureVMDataDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Alias("VMProfile")]
         [Parameter(

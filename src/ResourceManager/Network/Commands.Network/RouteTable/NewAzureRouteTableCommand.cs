@@ -24,7 +24,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRouteTable"), OutputType(typeof(PSRouteTable))]
+    [Cmdlet(VerbsCommon.New, "AzureRmRouteTable"), OutputType(typeof(PSRouteTable))]
     public class NewAzureRouteTableCommand : RouteTableBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -99,7 +99,6 @@ namespace Microsoft.Azure.Commands.Network
 
             // Map to the sdk object
             var routeTableModel = Mapper.Map<MNM.RouteTable>(psRouteTable);
-            routeTableModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.RouteTableType;
             routeTableModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create RouteTable call

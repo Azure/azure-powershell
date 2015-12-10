@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureApplicationGatewayIPConfiguration"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmApplicationGatewayIPConfiguration"), OutputType(typeof(PSApplicationGateway))]
     public class RemoveAzureApplicationGatewayIPConfigurationCommand : NetworkBaseCmdlet
     {
         [Parameter(

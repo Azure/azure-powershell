@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet(VerbsCommon.New, "AzureApiManagementUser")]
+    [Cmdlet(VerbsCommon.New, "AzureRmApiManagementUser")]
     [OutputType(typeof(PsApiManagementUser))]
     public class NewAzureApiManagementUser : AzureApiManagementCmdletBase
     {

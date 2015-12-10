@@ -232,6 +232,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to [Common.Authentication]: Authenticating for account {0} with single tenant {1}..
+        /// </summary>
+        public static string AuthenticatingForSingleTenant {
+            get {
+                return ResourceManager.GetString("AuthenticatingForSingleTenant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Windows Azure Powershell\.
         /// </summary>
         public static string AzureDirectory {
@@ -565,6 +574,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Changing public environment is not supported..
+        /// </summary>
+        public static string ChangingDefaultEnvironmentNotSupported {
+            get {
+                return ResourceManager.GetString("ChangingDefaultEnvironmentNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Choose which publish settings file to use:.
         /// </summary>
         public static string ChoosePublishSettingsFile {
@@ -687,6 +705,63 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         public static string DatacenterBlobQuery {
             get {
                 return ResourceManager.GetString("DatacenterBlobQuery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Microsoft Azure PowerShell Data Collection Confirmation.
+        /// </summary>
+        public static string DataCollectionActivity {
+            get {
+                return ResourceManager.GetString("DataCollectionActivity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You choose not to participate in Microsoft Azure PowerShell data collection..
+        /// </summary>
+        public static string DataCollectionConfirmNo {
+            get {
+                return ResourceManager.GetString("DataCollectionConfirmNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This confirmation message will be dismissed in &apos;{0}&apos; second(s)....
+        /// </summary>
+        public static string DataCollectionConfirmTime {
+            get {
+                return ResourceManager.GetString("DataCollectionConfirmTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You choose to participate in Microsoft Azure PowerShell data collection..
+        /// </summary>
+        public static string DataCollectionConfirmYes {
+            get {
+                return ResourceManager.GetString("DataCollectionConfirmYes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Microsoft Azure PowerShell collects data about how users use PowerShell cmdlets and some problems they encounter.  Microsoft uses this information to improve our PowerShell cmdlets.  Participation is voluntary and when you choose to participate your device automatically sends information to Microsoft about how you use Azure PowerShell. 
+        /// 
+        ///If you choose to participate, you can stop at any time by using Azure PowerShell as follows:
+        ///1.	Use the Disable-AzureDataCollection cmdlet to turn the feature Off. The  [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string DataCollectionPrompt {
+            get {
+                return ResourceManager.GetString("DataCollectionPrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The setting profile has been saved to the following path &apos;{0}&apos;..
+        /// </summary>
+        public static string DataCollectionSaveFileInformation {
+            get {
+                return ResourceManager.GetString("DataCollectionSaveFileInformation", resourceCulture);
             }
         }
         
@@ -889,6 +964,33 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Environment name needs to be specified..
+        /// </summary>
+        public static string EnvironmentNameNeedsToBeSpecified {
+            get {
+                return ResourceManager.GetString("EnvironmentNameNeedsToBeSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Environment needs to be specified..
+        /// </summary>
+        public static string EnvironmentNeedsToBeSpecified {
+            get {
+                return ResourceManager.GetString("EnvironmentNeedsToBeSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The environment name &apos;{0}&apos; is not found..
+        /// </summary>
+        public static string EnvironmentNotFound {
+            get {
+                return ResourceManager.GetString("EnvironmentNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to environments.xml.
         /// </summary>
         public static string EnvironmentsFileName {
@@ -930,6 +1032,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         public static string FailedJobErrorMessage {
             get {
                 return ResourceManager.GetString("FailedJobErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File path is not valid..
+        /// </summary>
+        public static string FilePathIsNotValid {
+            get {
+                return ResourceManager.GetString("FilePathIsNotValid", resourceCulture);
             }
         }
         
@@ -1416,6 +1527,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Must specify a non-null subscription name..
+        /// </summary>
+        public static string InvalidSubscriptionName {
+            get {
+                return ResourceManager.GetString("InvalidSubscriptionName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A valid subscription name is required. This can be provided using the  -Subscription parameter or by setting the subscription via the Set-AzureSubscription cmdlet.
         /// </summary>
         public static string InvalidSubscriptionNameMessage {
@@ -1751,6 +1871,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         public static string NoCloudsAvailable {
             get {
                 return ResourceManager.GetString("NoCloudsAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;There is no current context, please log in using Login-AzureRmAccount for Azure Resource Manager or Add-AzureAccount for Azure Service Management.&quot;.
+        /// </summary>
+        public static string NoCurrentContextForDataCmdlet {
+            get {
+                return ResourceManager.GetString("NoCurrentContextForDataCmdlet", resourceCulture);
             }
         }
         
@@ -2646,6 +2775,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The default subscription is being removed. Use Select-AzureSubscription -Default &lt;subscriptionName&gt; to select a new default subscription..
+        /// </summary>
+        public static string RemoveDefaultSubscription {
+            get {
+                return ResourceManager.GetString("RemoveDefaultSubscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing {0} deployment for {1} service.
         /// </summary>
         public static string RemoveDeploymentWaitMessage {
@@ -2894,6 +3032,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         public static string RemoveWebsiteWarning {
             get {
                 return ResourceManager.GetString("RemoveWebsiteWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing public environment is not supported..
+        /// </summary>
+        public static string RemovingDefaultEnvironmentsNotSupported {
+            get {
+                return ResourceManager.GetString("RemovingDefaultEnvironmentsNotSupported", resourceCulture);
             }
         }
         
@@ -3637,11 +3784,47 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The subscription id {0} doesn&apos;t exist..
+        /// </summary>
+        public static string SubscriptionIdNotFoundMessage {
+            get {
+                return ResourceManager.GetString("SubscriptionIdNotFoundMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Subscription must not be null.
         /// </summary>
         public static string SubscriptionMustNotBeNull {
             get {
                 return ResourceManager.GetString("SubscriptionMustNotBeNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Subscription name needs to be specified..
+        /// </summary>
+        public static string SubscriptionNameNeedsToBeSpecified {
+            get {
+                return ResourceManager.GetString("SubscriptionNameNeedsToBeSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The subscription name {0} doesn&apos;t exist..
+        /// </summary>
+        public static string SubscriptionNameNotFoundMessage {
+            get {
+                return ResourceManager.GetString("SubscriptionNameNotFoundMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Subscription needs to be specified..
+        /// </summary>
+        public static string SubscriptionNeedsToBeSpecified {
+            get {
+                return ResourceManager.GetString("SubscriptionNeedsToBeSpecified", resourceCulture);
             }
         }
         
@@ -3714,6 +3897,24 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         public static string UpdatedSettings {
             get {
                 return ResourceManager.GetString("UpdatedSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User name is not valid..
+        /// </summary>
+        public static string UserNameIsNotValid {
+            get {
+                return ResourceManager.GetString("UserNameIsNotValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User name needs to be specified..
+        /// </summary>
+        public static string UserNameNeedsToBeSpecified {
+            get {
+                return ResourceManager.GetString("UserNameNeedsToBeSpecified", resourceCulture);
             }
         }
         

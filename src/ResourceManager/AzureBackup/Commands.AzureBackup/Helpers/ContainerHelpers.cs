@@ -36,36 +36,125 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
 {
     internal class ContainerHelpers
     {
-        internal static AzureBackupContainerType GetContainerType(string customerType)
+        private static readonly Regex ResourceGroupRegex = new Regex(@"/subscriptions/(?<subscriptionsId>.+)/resourceGroups/(?<resourceGroupName>.+)/providers/(?<providersName>.+)/BackupVault/(?<BackupVaultName>.+)/containers/(?<containersName>.+)", RegexOptions.Compiled);
+
+        internal static AzureBackupContainerType GetContainerType(string customerTypeString)
         {
-            CustomerType type = (CustomerType)Enum.Parse(typeof(CustomerType), customerType);
+            AzureBackupContainerType containerType = 0;
+            CustomerType customerType = CustomerType.Invalid;
+
+            if (Enum.TryParse<CustomerType>(customerTypeString, out customerType))
+            {
+                switch (customerType)
+                {
+                    case CustomerType.DPM:
+                        containerType = AzureBackupContainerType.SCDPM;
+                        break;
+                    case CustomerType.OBS:
+                        containerType = AzureBackupContainerType.Windows;
+                        break;
+                    case CustomerType.SBS:
+                        containerType = AzureBackupContainerType.Windows;
+                        break;
+                    case CustomerType.DPMVenus:
+                        containerType = AzureBackupContainerType.AzureBackupServer;
+                        break;
+                    case CustomerType.Invalid:
+                        break;
+                    default:
+                        containerType = AzureBackupContainerType.Other;
+                        break;
+                }
+            }
+            else if (!string.IsNullOrEmpty(customerTypeString))
+            {
+                containerType = AzureBackupContainerType.Other;
+            }
+
+            return containerType;
+        }
+
+        internal static AzureBackupContainerType GetTypeForManagedContainer(string managedContainerTypeString)
+        {
+            ManagedContainerType managedContainerType = (ManagedContainerType)Enum.Parse(typeof(ManagedContainerType), managedContainerTypeString, true);
 
             AzureBackupContainerType containerType = 0;
 
-            switch (type)
+            switch (managedContainerType)
             {
-                case CustomerType.DPM:
-                    containerType = AzureBackupContainerType.SCDPM;
+                case ManagedContainerType.Invalid:
                     break;
-                case CustomerType.InMage:
+                case ManagedContainerType.IaasVM:
+                    containerType = AzureBackupContainerType.AzureVM;
                     break;
-                case CustomerType.Invalid:
-                    break;
-                case CustomerType.ManagedContainer:
-                    break;
-                case CustomerType.OBS:
-                    containerType = AzureBackupContainerType.Windows;
-                    break;
-                case CustomerType.SBS:
-                    containerType = AzureBackupContainerType.Windows;
-                    break;
-                case CustomerType.SqlPaaS:
+                case ManagedContainerType.IaasVMService:
                     break;
                 default:
                     break;
             }
 
             return containerType;
+        }
+
+        internal static string GetQueryFilter(ListContainerQueryParameter queryParams)
+        {
+            NameValueCollection collection = new NameValueCollection();
+            if (!String.IsNullOrEmpty(queryParams.ContainerTypeField))
+            {
+                collection.Add("ContainerType", queryParams.ContainerTypeField);
+            }
+
+            if (!String.IsNullOrEmpty(queryParams.ContainerStatusField))
+            {
+                collection.Add("ContainerStatus", queryParams.ContainerStatusField);
+            }
+
+            if (!String.IsNullOrEmpty(queryParams.ContainerFriendlyNameField))
+            {
+                collection.Add("FriendlyName", queryParams.ContainerFriendlyNameField);
+            }
+
+            if (collection == null || collection.Count == 0)
+            {
+                return String.Empty;
+            }
+
+            return CreateQueryString(collection);
+        }
+
+        internal static string GetRGNameFromId(string id)
+        {
+            var match = ResourceGroupRegex.Match(id);
+            if (match.Success)
+            {
+                var vmRGName = match.Groups["containersName"];
+                if (vmRGName != null && vmRGName.Success)
+                {
+                    return vmRGName.Value;
+                }
+            }
+
+            return null;
+        }
+
+        private static string CreateQueryString(NameValueCollection collection)
+        {
+            string filterValue = string.Empty;
+
+            if (collection == null)
+            {
+                throw new ArgumentNullException("collection");
+            }
+
+            if (collection.Count > 0)
+            {
+                foreach (string key in collection.Keys)
+                {
+                    filterValue += key + " eq '" + collection[key] + "' and ";
+                }
+                filterValue = filterValue.Remove(filterValue.Length - 5);
+            }
+            return filterValue;
         }
     }
 }

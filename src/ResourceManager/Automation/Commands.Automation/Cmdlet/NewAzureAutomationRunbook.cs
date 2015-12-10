@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets azure automation schedules for a given account.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureAutomationRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByRunbookName)]
+    [Cmdlet(VerbsCommon.New, "AzureRmAutomationRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByRunbookName)]
     [OutputType(typeof (Runbook))]
     public class NewAzureAutomationRunbook : AzureAutomationBaseCmdlet
     {
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        protected override void AutomationExecuteCmdlet()
+        protected override void AutomationProcessRecord()
         {
             Runbook runbook = null;
 

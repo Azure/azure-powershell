@@ -40,30 +40,31 @@ namespace Microsoft.Azure.Commands.Batch.Models
             // Get the single job schedule matching the specified id
             if (!string.IsNullOrWhiteSpace(options.JobScheduleId))
             {
-                WriteVerbose(string.Format(Resources.GBJS_GetById, options.JobScheduleId));
+                WriteVerbose(string.Format(Resources.GetJobScheduleById, options.JobScheduleId));
                 JobScheduleOperations jobScheduleOperations = options.Context.BatchOMClient.JobScheduleOperations;
-                CloudJobSchedule jobSchedule = jobScheduleOperations.GetJobSchedule(options.JobScheduleId, additionalBehaviors: options.AdditionalBehaviors);
+                ODATADetailLevel getDetailLevel = new ODATADetailLevel(selectClause: options.Select, expandClause: options.Expand);
+                CloudJobSchedule jobSchedule = jobScheduleOperations.GetJobSchedule(options.JobScheduleId, detailLevel: getDetailLevel, additionalBehaviors: options.AdditionalBehaviors);
                 PSCloudJobSchedule psJobSchedule = new PSCloudJobSchedule(jobSchedule);
                 return new PSCloudJobSchedule[] { psJobSchedule };
             }
             // List job schedules using the specified filter
             else
             {
-                ODATADetailLevel odata = null;
                 string verboseLogString = null;
+                ODATADetailLevel listDetailLevel = new ODATADetailLevel(selectClause: options.Select, expandClause: options.Expand);
                 if (!string.IsNullOrEmpty(options.Filter))
                 {
-                    verboseLogString = Resources.GBJS_GetByOData;
-                    odata = new ODATADetailLevel(filterClause: options.Filter);
+                    verboseLogString = Resources.GetJobScheduleByOData;
+                    listDetailLevel.FilterClause = options.Filter;
                 }
                 else
                 {
-                    verboseLogString = Resources.GBJS_NoFilter;
+                    verboseLogString = Resources.GetJobScheduleNoFilter;
                 }
                 WriteVerbose(verboseLogString);
 
                 JobScheduleOperations jobScheduleOperations = options.Context.BatchOMClient.JobScheduleOperations;
-                IPagedEnumerable<CloudJobSchedule> workItems = jobScheduleOperations.ListJobSchedules(odata, options.AdditionalBehaviors);
+                IPagedEnumerable<CloudJobSchedule> workItems = jobScheduleOperations.ListJobSchedules(listDetailLevel, options.AdditionalBehaviors);
                 Func<CloudJobSchedule, PSCloudJobSchedule> mappingFunction = j => { return new PSCloudJobSchedule(j); };
                 return PSPagedEnumerable<PSCloudJobSchedule, CloudJobSchedule>.CreateWithMaxCount(
                     workItems, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
@@ -107,8 +108,27 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     jobSchedule.Metadata.Add(metadata);
                 }
             }
-            WriteVerbose(string.Format(Resources.NBJS_CreatingJobSchedule, parameters.JobScheduleId));
+            WriteVerbose(string.Format(Resources.CreatingJobSchedule, parameters.JobScheduleId));
             jobSchedule.Commit(parameters.AdditionalBehaviors);
+        }
+
+        /// <summary>
+        /// Commits changes to a PSCloudJobSchedule object to the Batch Service.
+        /// </summary>
+        /// <param name="context">The account to use.</param>
+        /// <param name="jobSchedule">The PSCloudJobSchedule object representing the job schedule to update.</param>
+        /// <param name="additionBehaviors">Additional client behaviors to perform.</param>
+        public void UpdateJobSchedule(BatchAccountContext context, PSCloudJobSchedule jobSchedule, IEnumerable<BatchClientBehavior> additionBehaviors = null)
+        {
+            if (jobSchedule == null)
+            {
+                throw new ArgumentNullException("jobSchedule");
+            }
+
+            WriteVerbose(string.Format(Resources.UpdatingJobSchedule, jobSchedule.Id));
+
+            Utils.Utils.BoundJobScheduleSyncCollections(jobSchedule);
+            jobSchedule.omObject.Commit(additionBehaviors);
         }
 
         /// <summary>
@@ -126,6 +146,63 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             JobScheduleOperations jobScheduleOperations = context.BatchOMClient.JobScheduleOperations;
             jobScheduleOperations.DeleteJobSchedule(jobScheduleId, additionBehaviors);
+        }
+
+        /// <summary>
+        /// Enables the specified job schedule.
+        /// </summary>
+        /// <param name="context">The account to use.</param>
+        /// <param name="jobScheduleId">The id of the job schedule to enable.</param>
+        /// <param name="additionBehaviors">Additional client behaviors to perform.</param>
+        public void EnableJobSchedule(BatchAccountContext context, string jobScheduleId, IEnumerable<BatchClientBehavior> additionBehaviors = null)
+        {
+            if (string.IsNullOrWhiteSpace(jobScheduleId))
+            {
+                throw new ArgumentNullException("jobScheduleId");
+            }
+
+            WriteVerbose(string.Format(Resources.EnableJobSchedule, jobScheduleId));
+
+            JobScheduleOperations jobScheduleOperations = context.BatchOMClient.JobScheduleOperations;
+            jobScheduleOperations.EnableJobSchedule(jobScheduleId, additionBehaviors);
+        }
+
+        /// <summary>
+        /// Disables the specified job schedule.
+        /// </summary>
+        /// <param name="context">The account to use.</param>
+        /// <param name="jobScheduleId">The id of the job schedule to disable.</param>
+        /// <param name="additionBehaviors">Additional client behaviors to perform.</param>
+        public void DisableJobSchedule(BatchAccountContext context, string jobScheduleId, IEnumerable<BatchClientBehavior> additionBehaviors = null)
+        {
+            if (string.IsNullOrWhiteSpace(jobScheduleId))
+            {
+                throw new ArgumentNullException("jobScheduleId");
+            }
+
+            WriteVerbose(string.Format(Resources.DisableJobSchedule, jobScheduleId));
+
+            JobScheduleOperations jobScheduleOperations = context.BatchOMClient.JobScheduleOperations;
+            jobScheduleOperations.DisableJobSchedule(jobScheduleId, additionBehaviors);
+        }
+
+        /// <summary>
+        /// Terminates the specified job schedule.
+        /// </summary>
+        /// <param name="context">The account to use.</param>
+        /// <param name="jobScheduleId">The id of the job schedule to terminate.</param>
+        /// <param name="additionBehaviors">Additional client behaviors to perform.</param>
+        public void TerminateJobSchedule(BatchAccountContext context, string jobScheduleId, IEnumerable<BatchClientBehavior> additionBehaviors = null)
+        {
+            if (string.IsNullOrWhiteSpace(jobScheduleId))
+            {
+                throw new ArgumentNullException("jobScheduleId");
+            }
+
+            WriteVerbose(string.Format(Resources.TerminateJobSchedule, jobScheduleId));
+
+            JobScheduleOperations jobScheduleOperations = context.BatchOMClient.JobScheduleOperations;
+            jobScheduleOperations.TerminateJobSchedule(jobScheduleId, additionBehaviors);
         }
     }
 }
