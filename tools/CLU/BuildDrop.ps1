@@ -1,4 +1,4 @@
-param([string]$dropLocation, [string]$packageVersion="0.0.1", [string]$packageName="*", [switch] $excludeCommandPackages, [switch] $excludeCluRun)
+param([string]$dropLocation, [string]$packageVersion="0.0.1", [string] $commandPackagesToBuild = "*", [string] $exceptCommandPackagesToBuild, [switch] $excludeCluRun)
 
 $thisScriptDirectory = Split-Path $MyInvocation.MyCommand.Path -Parent
 
@@ -24,20 +24,20 @@ if (!(Test-Path -Path $dropLocation -PathType Container))
 $buildProfileScriptPath = "`"$thisScriptDirectory\BuildProfile.ps1`"" # Guard against spaces in the path
 $sourcesRoot = "$workspaceDirectory\src\clu"
 
-if (!($excludeCommandPackages.IsPresent))
+# Grab all command packages to build.
+# We'll assume that all directories that contain a *.nuspec.template file is a command package and that the name of the package is everything leading up to .nuspec.template
+$commandPackages = Get-ChildItem -path $sourcesRoot -Filter '*.nuspec.template' -Recurse -File | 
+                        ForEach-Object { New-Object PSObject -Property @{Directory=$_.DirectoryName; Package=$_.Name.Substring(0, $_.Name.Length - ".nuspec.template".Length)} } | 
+                        Where-Object -Property Package -Like -Value $commandPackagesToBuild  |
+                        Where-Object -Property Package -NotLike -Value $exceptCommandPackagesToBuild
+
+foreach($commandPackage in $commandPackages)
 {
-    # Grap all command packages to build.
-    # We'll assume that all directories that contain a *.nuspec.template file is a command package and that the name of the package is everything leading up to .nuspec.template
-    $commandPackages = Get-ChildItem -path $sourcesRoot -Filter "$packageName.nuspec.template" -Recurse -File | ForEach-Object { New-Object PSObject -Property @{Directory=$_.DirectoryName; Package=$_.Name.Substring(0, $_.Name.Length - ".nuspec.template".Length)} }
+    $commandPackageName = $commandPackage.Package
+    $commandPackageDir  = $commandPackage.Directory
+    $buildOutputDirectory = Join-Path -path $commandPackageDir -ChildPath "bin\Debug\publish"
 
-    foreach($commandPackage in $commandPackages)
-    {
-        $commandPackageName = $commandPackage.Package
-        $commandPackageDir  = $commandPackage.Directory
-        $buildOutputDirectory = Join-Path -path $commandPackageDir -ChildPath "bin\Debug\publish"
-
-        Invoke-Expression "& $buildProfileScriptPath $commandPackageDir $commandPackageName $buildOutputDirectory $packageVersion $dropLocation\CommandRepo"
-    }
+    Invoke-Expression "& $buildProfileScriptPath $commandPackageDir $commandPackageName $buildOutputDirectory $packageVersion $dropLocation\CommandRepo"
 }
 
 if (!($excludeCluRun))

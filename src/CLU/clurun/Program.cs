@@ -16,12 +16,10 @@ namespace CLURun
         /// <param name="args">The commandline arguments</param>
         public static void Main(string[] args)
         {
-            var envVarName = "DebugCLU";
-            var debugClu = Environment.GetEnvironmentVariable(envVarName);
+            var debugClu = Environment.GetEnvironmentVariable("DebugCLU");
             if (!String.IsNullOrEmpty(debugClu))
             {
-                System.Console.WriteLine(string.Format("This is your chance to attach a debugger.." + 
-                    "(to get rid of this prompt, clear the {0} env variable))", envVarName));
+                System.Console.WriteLine("This is your chance to attach a debugger...");
                 System.Console.ReadLine();
             }
             Microsoft.CLU.Run.CLURun.Main(args);
