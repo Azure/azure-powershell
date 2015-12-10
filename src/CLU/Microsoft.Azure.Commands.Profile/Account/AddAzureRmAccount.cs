@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Commands.Profile
             }
 
             var profileClient = new RMProfileClient(AuthenticationFactory, ClientFactory, DefaultProfile);
-            profileClient.WarningLog = (s) => WriteObject(s);
+            profileClient.WarningLog = (s) => WriteWarning(s);
 
             WriteObject((PSAzureProfile)profileClient.Login(azureAccount, Environment, TenantId, SubscriptionId,
                 SubscriptionName, password));
