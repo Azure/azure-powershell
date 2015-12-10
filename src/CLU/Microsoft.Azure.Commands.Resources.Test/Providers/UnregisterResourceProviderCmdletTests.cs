@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
     using Microsoft.Azure.Management.Resources;
     using Microsoft.Azure.Management.Resources.Models;
     using Moq;
+    using Rest.Azure;
     using ScenarioTest;
     using System;
     using System.Collections.Generic;
@@ -104,14 +105,14 @@ namespace Microsoft.Azure.Commands.Resources.Test
             var unregistrationResult = provider;
 
             this.providerOperationsMock
-                .Setup(client => client.UnregisterAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
-                .Callback((string providerName, CancellationToken ignored) =>
+                .Setup(client => client.UnregisterWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>()))
+                .Callback((string providerName, Dictionary<string, List<string>> customHeaders, CancellationToken ignored) =>
                         Assert.Equal(ProviderName, providerName, StringComparer.OrdinalIgnoreCase))
-                .Returns(() => Task.FromResult(unregistrationResult));
+                .Returns(() => Task.FromResult(new AzureOperationResponse<Provider>() { Body = unregistrationResult }));
 
             this.providerOperationsMock
-              .Setup(f => f.GetAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
-              .Returns(() => Task.FromResult(provider));
+              .Setup(f => f.GetWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>()))
+              .Returns(() => Task.FromResult(new AzureOperationResponse<Provider>() { Body = provider }));
 
             this.cmdlet.Force = true;
 
@@ -153,7 +154,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// </summary>
         private void VerifyCallPatternAndReset(bool succeeded)
         {
-            this.providerOperationsMock.Verify(f => f.UnregisterAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Once());
+            this.providerOperationsMock.Verify(f => f.UnregisterWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>()), Times.Once());
             this.commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<object>()), succeeded ? Times.Once() : Times.Never());
 
             this.providerOperationsMock.ResetCalls();

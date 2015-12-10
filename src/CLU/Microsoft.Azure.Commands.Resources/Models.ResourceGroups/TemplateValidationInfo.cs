@@ -26,11 +26,14 @@ namespace Microsoft.Azure.Commands.Resources.Models
             
             if (!isValid)
             {
-                if (validationResult.Error != null &&
-                    validationResult.Error.Details != null &&
-                    validationResult.Error.Details.Count > 0)
+                if (validationResult.Error != null)
                 {
-                    Errors.AddRange(validationResult.Error.Details);
+                    // Errors.Add(validationResult.Error);
+                    if (validationResult.Error.Details != null &&
+                        validationResult.Error.Details.Count > 0)
+                    {
+                        Errors.AddRange(validationResult.Error.Details);
+                    }
                 }
             }
 
