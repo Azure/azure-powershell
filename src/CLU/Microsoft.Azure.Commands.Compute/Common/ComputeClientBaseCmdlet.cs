@@ -51,6 +51,7 @@ namespace Microsoft.Azure.Commands.Compute
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
+            ComputeAutoMapperProfile.Initialize();
         }
 
         protected void ExecuteClientAction(Action action)
