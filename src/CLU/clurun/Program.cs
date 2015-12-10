@@ -21,7 +21,7 @@ namespace CLURun
             if (!String.IsNullOrEmpty(debugClu))
             {
                 System.Console.WriteLine(string.Format("This is your chance to attach a debugger.." + 
-                    "(to get rid of this prompt use {0} env variable ))", envVarName));
+                    "(to get rid of this prompt, clear the {0} env variable))", envVarName));
                 System.Console.ReadLine();
             }
             Microsoft.CLU.Run.CLURun.Main(args);

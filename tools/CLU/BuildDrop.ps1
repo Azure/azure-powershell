@@ -28,7 +28,6 @@ if (!($excludeCommandPackages.IsPresent))
 {
     # Grap all command packages to build.
     # We'll assume that all directories that contain a *.nuspec.template file is a command package and that the name of the package is everything leading up to .nuspec.template
-    Write-Host "AAAAAA$packageName"
     $commandPackages = Get-ChildItem -path $sourcesRoot -Filter "$packageName.nuspec.template" -Recurse -File | ForEach-Object { New-Object PSObject -Property @{Directory=$_.DirectoryName; Package=$_.Name.Substring(0, $_.Name.Length - ".nuspec.template".Length)} }
 
     foreach($commandPackage in $commandPackages)

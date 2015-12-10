@@ -1,9 +1,8 @@
 echo off
-Setlocal EnableDelayedExpansion
 
 where dotnet.exe
 if ERRORLEVEL 1 (
-    echo Please install the latest dotnet, say from 'https://azureclu.blob.core.windows.net/tools/dotnet-win-x64.latest.zip', add its bin folder to the PATH
+    echo Please install 'dotnet', say from 'https://azureclu.blob.core.windows.net/tools/dotnet-win-x64.latest.zip', unzip, then add its bin folder to the PATH
     exit /B
 )
 
@@ -31,3 +30,4 @@ set DebugCLU=
 %root%\drop\clurun\win7-x64\clurun.exe --install Microsoft.Azure.Commands.Websites
 %root%\drop\clurun\win7-x64\clurun.exe --install Microsoft.Azure.Commands.Management.Storage
 set DebugCLU=1
+set Path=%Path%;%root%\drop\clurun\win7-x64
