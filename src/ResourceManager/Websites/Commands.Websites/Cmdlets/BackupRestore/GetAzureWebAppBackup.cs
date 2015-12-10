@@ -19,20 +19,20 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = "The name of the web app.", ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = "The name of the web app.")]
         [ValidateNotNullOrEmpty]
-        public string AppName { get; set; }
+        public string WebAppName { get; set; }
         [Parameter(Position = 2, Mandatory = true, HelpMessage = "The id of the backup.")]
         [ValidateNotNullOrEmpty]
         public string BackupId { get; set; }
-        [Parameter(Position = 3, Mandatory = false, HelpMessage = "The name of the web app slot.", ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = "The name of the web app slot.")]
         [ValidateNotNullOrEmpty]
         public string Slot { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            WriteObject(WebsitesClient.GetSiteBackupStatus(ResourceGroupName, AppName, Slot, BackupId));
+            WriteObject(WebsitesClient.GetSiteBackupStatus(ResourceGroupName, WebAppName, Slot, BackupId));
         }
     }
 }

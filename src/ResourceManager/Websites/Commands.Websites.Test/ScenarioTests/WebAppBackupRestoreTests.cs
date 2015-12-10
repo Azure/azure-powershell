@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNewWebApp()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-NewWebAppBackup");
+            WebsitesController.NewInstance.RunPsTest("Test-CreateNewWebAppBackup");
         }
     }
 }
