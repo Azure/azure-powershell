@@ -25,7 +25,7 @@
     "Microsoft.Azure.Commands.Profile": "",
     "Microsoft.Azure.Graph.RBAC": "2.0.0-preview",
     "Microsoft.Azure.Management.Authorization": "2.1.0-preview",
-    "Microsoft.Azure.Management.Resources": "3.2.0-preview",
+    "Microsoft.Azure.Management.Resources": "3.3.0-preview",
     "Microsoft.Azure.Management.Websites": "1.0.0-preview",
     "Microsoft.IdentityModel.Clients.ActiveDirectory": "3.6.210231457-alpha",
     "Microsoft.Rest.ClientRuntime": "1.5.0",

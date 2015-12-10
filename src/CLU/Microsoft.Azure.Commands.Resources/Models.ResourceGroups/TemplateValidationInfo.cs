@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             {
                 if (validationResult.Error != null)
                 {
-                    // Errors.Add(validationResult.Error);
+                    Errors.Add(validationResult.Error);
                     if (validationResult.Error.Details != null &&
                         validationResult.Error.Details.Count > 0)
                     {
