@@ -237,7 +237,23 @@ namespace Microsoft.CLU.CommandBinder
             foreach (var parameter in parameters)
             {
                 JToken jtoken;
-                if (json.TryGetValue(parameter.Name, StringComparison.OrdinalIgnoreCase, out jtoken))
+
+                // First look up by name. If we didn't find a match on name, we'll go through all 
+                // aliases to try to find a match.
+                var foundMatch = json.TryGetValue(parameter.Name, StringComparison.OrdinalIgnoreCase, out jtoken);
+                if (!foundMatch)
+                {
+                    foreach (var alias in parameter.Aliases)
+                    {
+                        if (json.TryGetValue(alias, StringComparison.OrdinalIgnoreCase, out jtoken))
+                        {
+                            foundMatch = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (foundMatch)
                 {
                     parameterSets.IntersectWith(parameter.ParameterSets.Keys.ToSet());
                     if (parameter.ParameterType.Equals(typeof(string)) || parameter.ParameterType.GetTypeInfo().IsEnum)

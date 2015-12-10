@@ -130,8 +130,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
                 try
                 {
-                    UserCredential credential = new UserCredential(userId, password);
-
                     DeviceCodeResult codeResult = context.AcquireDeviceCodeAsync(
                                                             config.ResourceClientUri,
                                                             config.ClientId)
