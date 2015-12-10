@@ -1425,7 +1425,7 @@
     <command:details>
       <command:name>Set-AzureRmRedisCacheDiagnostics</command:name>
       <maml:description>
-        <maml:para>Enable diagnostics on azure redis cache.</maml:para>
+        <maml:para>Enable diagnostics on Azure Redis Cache.</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1435,7 +1435,7 @@
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Set-AzureRmRedisCacheDiagnostics cmdlet enables diagnostics on specified azure redis cache and stores diagnostics data in specified storage account.</maml:para>
+      <maml:para>Enable diagnostics for the specified Redis Cache. The data is stored in the specified Storage Account.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -1457,7 +1457,7 @@
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
           <maml:name>StorageAccountId</maml:name>
           <maml:description>
-            <maml:para>ARM resource id of storage account where we want to store diagnostics data.</maml:para>
+            <maml:para>Resource ID of the Storage account used to store diagnostics data.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -1493,7 +1493,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
         <maml:name>StorageAccountId</maml:name>
         <maml:description>
-          <maml:para>ARM resource id of storage account where we want to store diagnostics data.</maml:para>
+          <maml:para>Resource ID of the Storage account used to store diagnostics data.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -1552,7 +1552,10 @@
           PS C:\&gt;Set-AzureRmRedisCacheDiagnostics -ResourceGroupName "resourceGroupName" -Name "cacheName" -StorageAccountId "/subscriptions/fffff139-aaaa-bbbb-cccc-21f21f35806e/resourcegroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount"
         </dev:code>
         <dev:remarks>
-          <maml:para>This command enables diagnostics on specified redis cache.</maml:para>
+          <maml:para>
+            This enables diagnostics for the specified Azure Redis Cache.
+            Note: This will enable diagostics or update the Storage Account for all Redis Caches in the same region and subscription.
+          </maml:para>
         </dev:remarks>
         <command:commandLines>
           <command:commandLine>
@@ -1572,7 +1575,7 @@
     <command:details>
       <command:name>Remove-AzureRmRedisCacheDiagnostics</command:name>
       <maml:description>
-        <maml:para>Disable diagnostics on azure redis cache.</maml:para>
+        <maml:para>Disable diagnostics on Azure Redis Cache.</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1582,7 +1585,7 @@
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Remove-AzureRmRedisCacheDiagnostics cmdlet disables diagnostics on specified azure redis cache.</maml:para>
+      <maml:para>The Remove-AzureRmRedisCacheDiagnostics cmdlet disables diagnostics on specified Azure Redis Cache.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -1697,7 +1700,10 @@
           PS C:\&gt;Remove-AzureRmRedisCacheDiagnostics -ResourceGroupName "resourceGroupName" -Name "cacheName" -Force
         </dev:code>
         <dev:remarks>
-          <maml:para>This command disables diagnostics on specified redis cache.</maml:para>
+          <maml:para>
+            This command disables diagnostics on specified Azure Redis Cache.
+            Note: This will disable diagostics for all Redis Caches in the same region and subscription.
+          </maml:para>
         </dev:remarks>
         <command:commandLines>
           <command:commandLine>
