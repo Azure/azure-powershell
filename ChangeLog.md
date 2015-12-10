@@ -1,3 +1,6 @@
+* Azure Redis Cache: new cmdlets for enabling and disabling diagnostics
+  * Set-AzureRmRedisCacheDiagnostics
+  * Remove-AzureRmRedisCacheDiagnostics
 * Azure SQL Database: new cmdlets for managing database threat detection policies:
   * Get-AzureRmSqlDatabaseThreatDetectionPolicy
   * Set-AzureRmSqlDatabaseThreatDetectionPolicy
