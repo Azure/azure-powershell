@@ -21,7 +21,7 @@ if (!(Test-Path -Path $dropLocation -PathType Container))
     mkdir "$dropLocation\clurun"
 }
 
-$buildProfileScriptPath = "`"$thisScriptDirectory\BuildProfile.ps1`"" # Guard against spaces in the path
+$buildPackageScriptPath = "`"$thisScriptDirectory\BuildPackage.ps1`"" # Guard against spaces in the path
 $sourcesRoot = "$workspaceDirectory\src\clu"
 
 # Grab all command packages to build.
@@ -37,7 +37,7 @@ foreach($commandPackage in $commandPackages)
     $commandPackageDir  = $commandPackage.Directory
     $buildOutputDirectory = Join-Path -path $commandPackageDir -ChildPath "bin\Debug\publish"
 
-    Invoke-Expression "& $buildProfileScriptPath $commandPackageDir $commandPackageName $buildOutputDirectory $packageVersion $dropLocation\CommandRepo"
+    Invoke-Expression "& $buildPackageScriptPath $commandPackageDir $commandPackageName $buildOutputDirectory $packageVersion $dropLocation\CommandRepo"
 }
 
 if (!($excludeCluRun))
