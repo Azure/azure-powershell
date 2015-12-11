@@ -79,8 +79,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             XmlNamespaceManager ns = new XmlNamespaceManager(doc.NameTable);
             ns.AddNamespace("ns", XmlNamespace);
             doc.LoadXml(config);
-            XmlNode node = null;
-            //node = doc.SelectSingleNode("//ns:LocalResourceDirectory", ns);
+            XmlNode node = doc.SelectSingleNode("//ns:LocalResourceDirectory", ns);
             string localDirectory = (node != null && node.Attributes != null) ? node.Attributes[Path].Value : null;
             string localDirectoryExpand = (node != null && node.Attributes != null)
                 ? node.Attributes["expandEnvironment"].Value
