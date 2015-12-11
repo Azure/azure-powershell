@@ -15,15 +15,15 @@
     }
   },
   "dependencies": {
-    "System.Linq": "4.0.1-beta-23516",
-    "Microsoft.CLU": "1.0.0",
+    "AutoMapper": "4.1.1",
     "Commands.Common": "",
     "Commands.Common.Authentication": "",
     "Commands.Common.Storage": "",
     "Commands.ResourceManager.Common": "",
     "Microsoft.Azure.Management.Compute": "11.0.0-prerelease",
     "Microsoft.Azure.Management.Network": "3.0.3-preview",
-    "AutoMapper": "4.1.1",
+    "Microsoft.Azure.Management.Storage": "4.0.0-preview",
+    "Microsoft.CLU": "1.0.0",
     "Microsoft.IdentityModel.Clients.ActiveDirectory": "3.6.210231457-alpha",
     "Microsoft.Rest.ClientRuntime": "1.5.0",
     "Newtonsoft.Json": "7.0.1",
@@ -33,6 +33,7 @@
     "System.Diagnostics.Tracing": "4.0.21-beta-23516",
     "System.IO": "4.0.11-beta-23516",
     "System.IO.FileSystem": "4.0.1-beta-23516",
+    "System.Linq": "4.0.1-beta-23516",
     "System.Net.Http": "4.0.1-beta-23516",
     "System.Net.WebHeaderCollection": "4.0.1-beta-23516",
     "System.Reflection": "4.1.0-beta-23516",
@@ -50,9 +51,9 @@
     "System.Threading": "4.0.11-beta-23516",
     "System.Threading.Tasks": "4.0.11-beta-23516",
     "System.Threading.Thread": "4.0.0-beta-23516",
-    "WindowsAzure.Storage": "6.1.1-preview",
-    "Microsoft.Azure.Management.Storage": "4.0.0-preview",
-    "System.Xml.XmlDocument": "4.0.1-beta-23516"
+    "System.Xml.XmlDocument": "4.0.1-beta-23516",
+    "System.Xml.XPath.XmlDocument": "4.0.1-beta-23516",
+    "WindowsAzure.Storage": "6.1.1-preview"
   },
   "compilationOptions": {"emitEntryPoint": true}
 }
