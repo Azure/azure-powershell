@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Compute
             Mapper.CreateMap<FROM.VirtualMachineSize, TO.PSVirtualMachineSize>();
             //Mapper.CreateMap<Microsoft.Azure.AzureOperationResponse, TO.PSVirtualMachineSize>();
 
-            //Mapper.CreateMap<FROM.Usage, TO.PSUsage>();
+            Mapper.CreateMap<FROM.Usage, TO.PSUsage>();
             //Mapper.CreateMap<Microsoft.Azure.AzureOperationResponse, TO.PSUsage>();
         }
     }

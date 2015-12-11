@@ -51,7 +51,8 @@
     "System.Threading.Tasks": "4.0.11-beta-23516",
     "System.Threading.Thread": "4.0.0-beta-23516",
     "WindowsAzure.Storage": "6.1.1-preview",
-    "Microsoft.Azure.Management.Storage": "4.0.0-preview"
+    "Microsoft.Azure.Management.Storage": "4.0.0-preview",
+    "System.Xml.XmlDocument": "4.0.1-beta-23516"
   },
   "compilationOptions": {"emitEntryPoint": true}
 }

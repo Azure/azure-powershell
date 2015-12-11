@@ -36,10 +36,14 @@ namespace Microsoft.Azure.Commands.Resources.Models
             {
                 ResourceGroupName = resourceGroup.Name,
                 Location = resourceGroup.Location,
-                ProvisioningState = resourceGroup.Properties.ProvisioningState,
                 Tags = TagsConversionHelper.CreateTagHashtable(resourceGroup.Tags),
                 ResourceId = resourceGroup.Id
             };
+
+            if (resourceGroup.Properties != null)
+            {
+                result.ProvisioningState = resourceGroup.Properties.ProvisioningState;
+            }
 
             if (detailed)
             {
@@ -108,7 +112,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
                             {
                                 ResourceTypeName = resourceType.ResourceType,
                                 Locations = resourceType.Locations.ToArray(),
-                                ApiVersions = resourceType.ApiVersions.ToArray(),
+                                ApiVersions = (resourceType.ApiVersions == null) ? null : resourceType.ApiVersions.ToArray(),
                             }).ToArray(),
             };
         }
