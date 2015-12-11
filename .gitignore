@@ -1,6 +1,7 @@
 # Azure PowerShell specific
 src/Publish/
 src/Package/
+drop/
 
 obj
 TestResults
@@ -20,6 +21,7 @@ app.config
 *.user
 *.sln.docstates
 *.lock.json
+launchSettings.json
 .vs/
 artifacts/
 

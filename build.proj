@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  
+
   <!--
   Available Targets:
 
   /t:Clean
     Removes temporary build outputs.
-    
+
   /t:Build
     Builds assemblies.
 
@@ -17,14 +17,14 @@
     Code sign binaries, mainly for official release. Default is false.
 
   /p:CodeSign=True;DelaySign=True
-    Test the code sign workflow locally. 
+    Test the code sign workflow locally.
 
   /p:Scope
     'ServiceManagement': service management
     'AzureStorage': storage data plane cmdlets
     'Subfolder under src\ResourceManager': An individual cmdlet module
     By default, it builds all
-  -->  
+  -->
 
   <!-- Define build properties -->
   <PropertyGroup>
@@ -47,13 +47,13 @@
   </PropertyGroup>
   <ItemGroup>
     <CmdletSolutionsToBuild Include=".\src\CLU.sln" Condition=" '$(Scope)' == 'all' "/>
-    <CmdletSolutionsToBuild Include=".\src\ResourceManager\$(Scope)\*.sln" 
+    <CmdletSolutionsToBuild Include=".\src\ResourceManager\$(Scope)\*.sln"
                             Condition=" '$(Scope)' != 'all' and '$(Scope)' != 'ServiceManagement' and '$(Scope)' != 'AzureStorage' "/>
     <CmdletSolutionsToBuild Include=".\src\ServiceManagement\ServiceManagement.sln"
                             Condition=" '$(Scope)' == 'ServiceManagement' or '$(Scope)' == 'AzureStorage' "/>
     <SetupSln Include=".\setup\azurepowershell.sln" />
   </ItemGroup>
-  
+
   <!--
   CI build related
   -->
@@ -67,10 +67,10 @@
   <UsingTask Condition=" $(OnPremiseBuild) " TaskName="CorporateValidation" AssemblyFile="$(CIToolsPath)\Microsoft.WindowsAzure.Tools.Build.Tasks.OnPremise.dll" />
   <Import Condition=" $(OnPremiseBuild) " Project="$(CIToolsPath)\Microsoft.WindowsAzure.Build.OnPremise.msbuild" />
 
-  <UsingTask 
+  <UsingTask
     AssemblyFile="$(MSBuildProjectDirectory)\src\packages\xunit.MSBuild.2.0.0.0\tools\xunit.runner.msbuild.dll"
     TaskName="Xunit.Runner.MSBuild.xunit" />
-  
+
   <!-- Clean the build in all configurations -->
   <Target Name="Clean">
     <Message Importance="high" Text="Cleaning Cmdlets..." ContinueOnError="false" />
@@ -79,7 +79,7 @@
       Targets="Clean"
       Properties="Configuration=$(Configuration);Platform=Any CPU"
       ContinueOnError="false" />
-      
+
     <!-- Delete the publish files -->
     <Message Importance="high" Text="Cleaning publish files..." ContinueOnError="false" />
     <ItemGroup>
@@ -104,14 +104,14 @@
       Directories="$(PackageDirectory)"
       ContinueOnError="false" />
   </Target>
-  
+
   <PropertyGroup>
     <NuGetCommand>$(MSBuildProjectDirectory)\tools\NuGet.exe</NuGetCommand>
     <NuGetRestoreConfigFile>$(MSBuildProjectDirectory)\restore.config</NuGetRestoreConfigFile>
     <NuGetRestoreConfigSwitch>-ConfigFile &quot;$(NuGetRestoreConfigFile)&quot;</NuGetRestoreConfigSwitch>
     <PowerShellCommand>C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</PowerShellCommand>
   </PropertyGroup>
-  
+
   <!--
   Force nuget package restore so that packages that include .targets files
   don't need to be checked into source control.
@@ -122,7 +122,7 @@
       <NuGetCache Include="$(LOCALAPPDATA)\NuGet\Cache\*.nupkg"/>
     </ItemGroup>
     <Delete Files="@(NuGetCache)" />-->
-    
+
     <Delete Files="$(NuGetRestoreConfigFile)" />
     <WriteLinesToFile
       File="$(NuGetRestoreConfigFile)"
@@ -133,12 +133,12 @@
     <Exec Command="$(NuGetCommand) sources add -Name LocalFeed -Source &quot;$(MSBuildProjectDirectory)\tools\LocalFeed&quot; $(NuGetRestoreConfigSwitch)"/>
 
     <!-- Restore packages -->
-    <Exec Command="$(NuGetCommand) restore %(CmdletSolutionsToBuild.FullPath) $(NuGetRestoreConfigSwitch)" 
+    <Exec Command="$(NuGetCommand) restore %(CmdletSolutionsToBuild.FullPath) $(NuGetRestoreConfigSwitch)"
           ContinueOnError="false" />
 
     <!--Restore the xunit runner needed to run unit tests-->
     <Exec Command="$(NuGetCommand) restore $(MSBuildProjectDirectory)\packages.config -PackagesDirectory $(MSBuildProjectDirectory)\packages" />
-    
+
     <Delete Files="$(NuGetRestoreConfigFile)" />
   </Target>
 
@@ -153,45 +153,45 @@
       <_CLUProjects Include="$(CLURootDir)\**\project.json"
                     Exclude="$(CLURootDir)\*.Test\project.json"></_CLUProjects>
     </ItemGroup>
-    <Exec Command="dnu build" WorkingDirectory="%(_CLUProjects.RootDir)%(_CLUProjects.Directory)" />    
-    
+    <Exec Command="dnu build" WorkingDirectory="%(_CLUProjects.RootDir)%(_CLUProjects.Directory)" />
+
     <!--<Message Importance="high" Text="Building Cmdlets..." />
     <MSBuild
       Projects="@(CmdletSolutionsToBuild)"
       Targets="Build"
       Properties="Configuration=$(Configuration);Platform=Any CPU"
-      BuildInParallel="$(BuildInParallel)" 
+      BuildInParallel="$(BuildInParallel)"
       ContinueOnError="false" />
-      
+
     <CallTarget Targets="CodeSignBinaries" Condition=" '$(CodeSign)' == 'true' " />
-    
+
     <Message Importance="high" Text="Building Setup..." />-->
-    
+
     <!--<MSBuild
       Projects="@(SetupSln)"
       Targets="Build"
       Properties="Configuration=$(Configuration);Platform=Any CPU"
-      ContinueOnError="false" 
+      ContinueOnError="false"
       Condition=" '$(Scope)' == 'all' "/>
-    
-    <CallTarget Targets="CodeSignInstaller" 
+
+    <CallTarget Targets="CodeSignInstaller"
                 Condition=" '$(CodeSign)' == 'true' and '$(Scope)' == 'all'" />    -->
   </Target>
-  
-  <!--TODO: once CLU stablizes, see whether we need invoke 'clean' target. 
+
+  <!--TODO: once CLU stablizes, see whether we need invoke 'clean' target.
     Dnx uses dynamic compilation, 'clean' is unnecessary -->
   <Target
     Name="Full"
     DependsOnTargets="Build;Test" />
-  
+
   <Target Name="BuildMsBuildTask" DependsOnTargets="RestoreNugetPackages">
     <MSBuild Projects="$(LibraryToolsFolder)\BuildPackagesTask\Microsoft.Azure.Build.Tasks.csproj"
              Targets="Build" Properties="Configuration=Debug;Platform=AnyCPU" />
   </Target>
-  
+
   <UsingTask TaskName="ValidateStrongNameSignatureTask" AssemblyFile="$(LibraryToolsFolder)\Microsoft.Azure.Build.Tasks.dll"  />
-  <UsingTask TaskName="FilterOutAutoRestLibraries" AssemblyFile="$(LibraryToolsFolder)\Microsoft.Azure.Build.Tasks.dll"  />  
-  
+  <UsingTask TaskName="FilterOutAutoRestLibraries" AssemblyFile="$(LibraryToolsFolder)\Microsoft.Azure.Build.Tasks.dll"  />
+
   <Target Name="CodeSignBinaries">
     <PropertyGroup>
       <!--public token associated with MSSharedLibKey.snk-->
@@ -202,11 +202,11 @@
     </GetFrameworkSdkPath>
 
     <!-- Copying shortcut to be signed -->
-    <Copy SourceFiles="$(LibraryRoot)tools\AzureRM\AzureRM.psd1" 
+    <Copy SourceFiles="$(LibraryRoot)tools\AzureRM\AzureRM.psd1"
       DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" />
-    <Copy SourceFiles="$(LibraryRoot)tools\AzureRM\AzureRM.psm1" 
+    <Copy SourceFiles="$(LibraryRoot)tools\AzureRM\AzureRM.psm1"
       DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" />
-    
+
     <ItemGroup>
       <DelaySignedAssembliesToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\Microsoft*Azure*Commands*.dll" />
       <DelaySignedAssembliesToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\Microsoft.Azure.Common.Extensions.dll" />
@@ -214,16 +214,16 @@
       <ScriptsToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\*.psm1" />
       <ScriptsToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\*.ps1xml" />
     </ItemGroup>
-    
-    <Message Importance="high" Text="$(LibrarySourceFolder)\Package\$(Configuration) does not contains any files to sign. Code sign will skip." 
+
+    <Message Importance="high" Text="$(LibrarySourceFolder)\Package\$(Configuration) does not contains any files to sign. Code sign will skip."
              Condition="'@(DelaySignedAssembliesToSign)' == ''" />
-             
+
     <ValidateStrongNameSignatureTask
       WindowsSdkPath="$(WindowsSdkPath)"
       Assembly="%(DelaySignedAssembliesToSign.Identity)"
       ExpectedTokenSignature="$(StrongNameToken)"
       ExpectedDelaySigned="true"
-      ContinueOnError="false" 
+      ContinueOnError="false"
       Condition="'@(DelaySignedAssembliesToSign)' != ''"/>
 
     <CodeSigningTask
@@ -236,7 +236,7 @@
       SigningLogPath="$(LibraryRoot)\signing.log"
       ToolsPath="$(CIToolsPath)"
       Condition="!$(DelaySign) and '@(DelaySignedAssembliesToSign)' != ''"/>
-      
+
     <CodeSigningTask
       Description="Microsoft Azure PowerShell"
       Keywords="Microsoft Azure PowerShell"
@@ -246,23 +246,23 @@
       Certificates="10006"
       SigningLogPath="$(LibraryRoot)\signing-scripts.log"
       ToolsPath="$(CIToolsPath)"
-      Condition="!$(DelaySign) and '@(ScriptsToSign)' != ''"/> 
+      Condition="!$(DelaySign) and '@(ScriptsToSign)' != ''"/>
 
     <ValidateStrongNameSignatureTask
         WindowsSdkPath="$(WindowsSdkPath)"
         Assembly="%(DelaySignedAssembliesToSign.Identity)"
         ExpectedTokenSignature="$(StrongNameToken)"
         ExpectedDelaySigned="false"
-        ContinueOnError="false" 
+        ContinueOnError="false"
         Condition="!$(DelaySign) and '@(DelaySignedAssembliesToSign)' != ''"/>
-        
+
     <!-- Copying signed shortcut back -->
-    <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureRM.psd1" 
+    <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureRM.psd1"
       DestinationFolder="$(LibraryRoot)tools\AzureRM" />
-    <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureRM.psm1" 
+    <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureRM.psm1"
       DestinationFolder="$(LibraryRoot)tools\AzureRM" />
   </Target>
-  
+
   <Target Name="CodeSignInstaller">
     <PropertyGroup>
       <!--public token associated with MSSharedLibKey.snk-->
@@ -275,8 +275,8 @@
     <ItemGroup>
       <InstallersToSign Include="$(LibraryRoot)\setup*\build\**\*.msi" />
     </ItemGroup>
-    
-    <Message Importance="high" Text="$(LibraryRoot)\setup does not contains any installers to sign. Code sign will skip." 
+
+    <Message Importance="high" Text="$(LibraryRoot)\setup does not contains any installers to sign. Code sign will skip."
              Condition="'@(InstallersToSign)' == ''" />
 
     <CodeSigningTask
@@ -287,12 +287,12 @@
       SigningLogPath="$(LibraryRoot)\msi-signing.log"
       Certificates="10006"
       ToolsPath="$(CIToolsPath)"
-      Condition="!$(DelaySign) and '@(InstallersToSign)' != ''"/>  
-         
+      Condition="!$(DelaySign) and '@(InstallersToSign)' != ''"/>
+
     <!--If we are testing locally then we copy the binaries and do not submit to the code sign server-->
     <Copy SourceFiles="@(InstallersToSign)" DestinationFolder="signed" Condition="$(DelaySign)" />
   </Target>
-  
+
   <!-- Publish all packages -->
   <Target Name="Publish">
     <Error Condition=" '$(NuGetKey)' == '' " Text="You must provide the NuGetKey parameter to the build: /p:NuGetKey=YOUR_PUBLISHING_KEY" />
@@ -304,29 +304,28 @@
     <RunTestLive Condition="'$(RunTestLive)' == ''">false</RunTestLive>
     <XUnitIncludedTrait Condition="!$(RunTestLive)">AcceptanceType=CheckIn</XUnitIncludedTrait>
   </PropertyGroup>
-  
+
   <!-- Note: all testing related target should go to 'AzurePowershell.test.targets' file except the one used by CI run -->
   <Import Project="$(MSBuildThisFileDirectory)AzurePowershell.test.targets"/>
-  
+
   <!-- Run checkin tests for each pull request -->
   <Target Name="Test" DependsOnTargets="BeforeRunTests">
     <Message Importance="high" Text="Running check in tests..." />
     <ItemGroup>
       <!--Exclude 1 test projects still in progress with build failures-->
-      <_CLUTestProjects Include="$(CLURootDir)\*.Test\project.json"
-                        Exclude="$(CLURootDir)\Microsoft.Azure.Commands.Resources.Test\project.json">
+      <_CLUTestProjects Include="$(CLURootDir)\*.Test\project.json">
       </_CLUTestProjects>
     </ItemGroup>
     <Exec Command="dnu build" WorkingDirectory="%(_CLUTestProjects.RootDir)%(_CLUTestProjects.Directory)" />
     <Exec Command="dnx test" WorkingDirectory="%(_CLUTestProjects.RootDir)%(_CLUTestProjects.Directory)" />
     <!--<CallTarget Targets="InvokeXUnit"/>-->
   </Target>
-  
+
   <!-- Run Full switch with scenario tests -->
   <Target
     Name="FullWithScenarioTests"
     DependsOnTargets="Clean;Build;Test;RunOneSDKCIT" />
-  
+
   <!-- Run live tests and record mocks -->
     <Target
     Name="RunLiveTests"

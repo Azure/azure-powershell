@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 //CommandRuntime = commandRuntimeMock.Object,
                 ResourcesClient = resourcesClientMock.Object
             };
-            System.Reflection.TypeExtensions.GetProperty(cmdlet.GetType(), "CommandRuntime").SetValue(cmdlet, commandRuntimeMock.Object);
+            PSCmdletExtensions.SetCommandRuntimeMock(cmdlet, commandRuntimeMock.Object);
         }
 
         [Fact]

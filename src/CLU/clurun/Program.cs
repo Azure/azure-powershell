@@ -15,7 +15,7 @@ namespace CLURun
         /// </summary>
         /// <param name="args">The commandline arguments</param>
         public static void Main(string[] args)
-        { 
+        {
             var debugClu = Environment.GetEnvironmentVariable("DebugCLU");
             if (!String.IsNullOrEmpty(debugClu))
             {

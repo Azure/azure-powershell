@@ -17,7 +17,9 @@ if ([string]::IsNullOrWhiteSpace($env:WORKSPACE) -or !(Test-Path $env:WORKSPACE)
 $packageSource = $packageSource.TrimEnd('\\')
 Write-Host "using package id: $packageId, package source: $packageSource, packageVersion: $packageVersion"
 dotnet publish $cmdletsDir -f dnxcore50 -r win7-x64 -o $packageSource
-$nuSpecTemplate = (Get-ChildItem ([System.IO.Path]::Combine($packageSource, ($packageId + ".nuspec.template"))))
+Copy-Item -Path $cmdletsDir\content -Destination $packageSource\content -Recurse -Force
+
+$nuSpecTemplate = (Get-ChildItem ([System.IO.Path]::Combine($cmdletsDir, ($packageId + ".nuspec.template"))))
 $nuSpecOutput = [System.IO.Path]::Combine($packageSource, ($packageId + ".nuspec"))
 Write-Host "Creating dynamic nuspec package in: $nuSpecOutput"
 
