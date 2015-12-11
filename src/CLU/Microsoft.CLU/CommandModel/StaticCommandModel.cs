@@ -21,7 +21,7 @@ namespace Microsoft.CLU.CommandModel
         /// </summary>
         /// <param name="commandConfiguration">Date from the command configuration file.</param>
         /// <param name="arguments">The command-line arguments array</param>
-        public void Run(ConfigurationDictionary commandConfiguration, string[] arguments)
+        public CommandModelErrorCode Run(ConfigurationDictionary commandConfiguration, string[] arguments)
         {
             Debug.Assert(commandConfiguration != null);
             Debug.Assert(arguments != null);
@@ -46,6 +46,7 @@ namespace Microsoft.CLU.CommandModel
                         binderAndCommand.Invoke();
                     }
                 }
+                return CommandModelErrorCode.Success;
             }
         }
     }
