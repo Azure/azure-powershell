@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.Resources.Test
 {
     using Commands.Test.Utilities.Common;
+    using Common.Test.Mocks;
     using Microsoft.Azure.Commands.Providers;
     using Microsoft.Azure.Commands.Resources.Models;
     using Microsoft.Azure.Management.Resources;
@@ -22,9 +23,11 @@ namespace Microsoft.Azure.Commands.Resources.Test
     using Moq;
     using Rest.Azure;
     using ScenarioTest;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
     using System.Net;
+    using System.Reflection;
     using System.Threading;
     using System.Threading.Tasks;
     using Xunit;
@@ -43,6 +46,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// A mock of the command runtime
         /// </summary>
         private readonly Mock<ICommandRuntime> commandRuntimeMock;
+        private MockCommandRuntime mockRuntime;
 
         /// <summary>
         /// A mock of the client
@@ -66,10 +70,13 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 //CommandRuntime = commandRuntimeMock.Object,
                 ResourcesClient = new ResourcesClient
                 {
-                    ResourceManagementClient = resourceManagementClient.Object
+                    ResourceManagementClient = resourceManagementClient.Object,
+                    DataStore = DataStore
                 }
             };
-            System.Reflection.TypeExtensions.GetProperty(cmdlet.GetType(), "CommandRuntime").SetValue(cmdlet, commandRuntimeMock.Object);
+            PSCmdletExtensions.SetCommandRuntimeMock(cmdlet, commandRuntimeMock.Object);
+            mockRuntime = new MockCommandRuntime();
+            commandRuntimeMock.Setup(f => f.Host).Returns(mockRuntime.Host);
         }
 
         /// <summary>
@@ -79,7 +86,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetsResourceProviderTests()
         {
-            // setup return values
+            //setup return values
             const string RegisteredProviderNamespace = "Providers.Test1";
             const string UnregisteredProviderNamespace = "Providers.Test2";
 
@@ -99,7 +106,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 }
             };
 
-            var listResult = new[]
+            var listResult = new List<Provider>()
             {
                 new Provider
                 {
@@ -117,10 +124,14 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 unregisteredProvider,
             };
             var pagableResult = new Page<Provider>();
-            System.Reflection.TypeExtensions.GetProperty(listResult.GetType(), "Items").SetValue(listResult, pagableResult);
+            pagableResult.SetItemValue<Provider>(listResult);
+            var result = new AzureOperationResponse<IPage<Provider>>()
+            {
+                Body = pagableResult
+            };
             this.providerOperationsMock
-                .Setup(f => f.ListAsync(It.IsAny<int?>(), It.IsAny<CancellationToken>()))
-                .Returns(() => Task.FromResult( (IPage<Provider>)pagableResult ));
+                .Setup(f => f.ListWithHttpMessagesAsync(null, null, It.IsAny<CancellationToken>()))
+                .Returns(() => Task.FromResult(result));
 
             // 1. List only registered providers
             this.commandRuntimeMock
@@ -169,8 +180,11 @@ namespace Microsoft.Azure.Commands.Resources.Test
             this.cmdlet.ProviderNamespace = UnregisteredProviderNamespace;
 
             this.providerOperationsMock
-              .Setup(f => f.GetAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
-              .Returns(() => Task.FromResult(unregisteredProvider));
+              .Setup(f => f.GetWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>()))
+              .Returns((Task.FromResult(new AzureOperationResponse<Provider>()
+              {
+                  Body = unregisteredProvider
+              })));
 
             this.commandRuntimeMock
                 .Setup(m => m.WriteObject(It.IsAny<object>()))
@@ -252,9 +266,9 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// </summary>
         private void VerifyGetCallPatternAndReset()
         {
-            this.providerOperationsMock.Verify(f => f.GetAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Once());
-            this.providerOperationsMock.Verify(f => f.ListAsync(It.IsAny<int?>(), It.IsAny<CancellationToken>()), Times.Never);
-            this.providerOperationsMock.Verify(f => f.ListNextAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Never);
+            this.providerOperationsMock.Verify(f => f.GetWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>()), Times.Once());
+            this.providerOperationsMock.Verify(f => f.ListWithHttpMessagesAsync(null, null, It.IsAny<CancellationToken>()), Times.Never);
+            this.providerOperationsMock.Verify(f => f.ListNextWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>()), Times.Never);
             this.commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<object>(), It.IsAny<bool>()), Times.Once());
             this.ResetCalls();
         }
@@ -264,8 +278,8 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// </summary>
         private void VerifyListCallPatternAndReset()
         {
-            this.providerOperationsMock.Verify(f => f.ListAsync(It.IsAny<int?>(), It.IsAny<CancellationToken>()), Times.Once());
-            this.providerOperationsMock.Verify(f => f.ListNextAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Never);
+            this.providerOperationsMock.Verify(f => f.ListWithHttpMessagesAsync(null, null, It.IsAny<CancellationToken>()), Times.Once());
+            this.providerOperationsMock.Verify(f => f.ListNextWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>()), Times.Never());
             this.commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<object>(), It.IsAny<bool>()), Times.Once());
 
             this.ResetCalls();

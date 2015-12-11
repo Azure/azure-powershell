@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.Resources
     using Microsoft.Azure.Commands.Resources.Models;
     using Microsoft.Azure.Management.Resources.Models;
     using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
+    using Management.Authorization.Models;
 
     /// <summary>
     /// Get an existing resource.
@@ -132,12 +133,12 @@ namespace Microsoft.Azure.Commands.Resources
             return operations;
         }
 
-        private static bool IsUserOperation(Operation operation)
+        private static bool IsUserOperation(ProviderOperation operation)
         {
             return operation.Origin == null || operation.Origin.Contains("user");
         }
 
-        private static PSResourceProviderOperation ToPSResourceProviderOperation(Operation operation, string provider, string resource = null)
+        private static PSResourceProviderOperation ToPSResourceProviderOperation(ProviderOperation operation, string provider, string resource = null)
         {
             PSResourceProviderOperation psOperation = new PSResourceProviderOperation();
             psOperation.Operation = operation.Name;

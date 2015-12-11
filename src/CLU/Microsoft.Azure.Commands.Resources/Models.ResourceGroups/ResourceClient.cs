@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.Azure.Management.Authorization;
+using Microsoft.Azure.Management.Authorization.Models;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.Rest.Azure;
@@ -64,7 +65,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// <summary>
         /// Creates new ResourceManagementClient
         /// </summary>
-        /// <param name="clientFactory">Factory for management cleints</param>
+        /// <param name="clientFactory">Factory for management clients</param>
         /// <param name="context">Profile containing resources to manipulate</param>
         public ResourcesClient(IClientFactory clientFactory, AzureContext context, IDataStore dataStore)
             : this(
@@ -542,14 +543,14 @@ namespace Microsoft.Azure.Commands.Resources.Models
             return providersSupportingOperations;
         }
         
-        public Management.Resources.Models.ProviderOperationsMetadata GetProviderOperationsMetadata(string providerNamespace)
+        public ProviderOperationsMetadata GetProviderOperationsMetadata(string providerNamespace)
         {
-            return this.ResourceManagementClient.ProviderOperationsMetadata.Get(providerNamespace, this.ResourceManagementClient.ApiVersion);
+            return this.AuthorizationManagementClient.ProviderOperationsMetadata.Get(providerNamespace, this.ResourceManagementClient.ApiVersion);
         }
 
-        public IEnumerable<Management.Resources.Models.ProviderOperationsMetadata> ListProviderOperationsMetadata()
+        public IEnumerable<ProviderOperationsMetadata> ListProviderOperationsMetadata()
         {
-           return this.ResourceManagementClient.ProviderOperationsMetadata.List(this.ResourceManagementClient.ApiVersion).Value;
+           return this.AuthorizationManagementClient.ProviderOperationsMetadata.List(this.ResourceManagementClient.ApiVersion);
         }
     }
 }

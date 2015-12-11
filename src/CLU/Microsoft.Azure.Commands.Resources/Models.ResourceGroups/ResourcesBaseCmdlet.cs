@@ -45,7 +45,8 @@ namespace Microsoft.Azure.Commands.Resources.Models
                     {
                         VerboseLogger = WriteVerboseWithTimestamp,
                         ErrorLogger = WriteErrorWithTimestamp,
-                        WarningLogger = WriteWarningWithTimestamp
+                        WarningLogger = WriteWarningWithTimestamp,
+                        DataStore = DataStore
                     };
                 }
                 return this.resourcesClient;

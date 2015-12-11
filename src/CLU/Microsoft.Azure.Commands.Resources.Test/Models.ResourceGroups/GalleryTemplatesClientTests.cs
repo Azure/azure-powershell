@@ -42,6 +42,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
         public GalleryTemplatesClientTests()
         {
             deploymentCmdlet = new NewAzureResourceGroupDeploymentCommand();
+            deploymentCmdlet.DataStore = new Common.Authentication.Models.DiskDataStore();
         }
 
         [Fact(Skip = "PowerShell runtime only")]
@@ -291,7 +292,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Assert.Equal(typeof(int), result["int"].ParameterType);
 
             Assert.Equal("securestring", result["securestring"].Name);
-            Assert.Equal(typeof(string), result["securestring"].ParameterType);
+            Assert.Equal(typeof(object), result["securestring"].ParameterType);
 
             Assert.Equal("bool", result["bool"].Name);
             Assert.Equal(typeof(bool), result["bool"].ParameterType);
