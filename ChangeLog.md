@@ -15,6 +15,9 @@
 * Azure RemoteApp: New cmdlets for managing stale machine accounts in AD:
   * Get-AzureRemoteAppVmStaleAdObject
   * Clear-AzureRemoteAppVmStaleAdObject
+* ARM Storage:
+  * Fix alias missing issue
+
 
 ## 2015.11.09 version 1.0.1
 * Azure Compute
