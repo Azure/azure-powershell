@@ -199,17 +199,10 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     if (DateTime.UtcNow > giveUpAt)
                     {
-                        if (!string.IsNullOrEmpty(newHttpResponse.Content.ReadAsStringAsync().Result))
-                        {
-                            result.Body = newHttpResponse.Content.ReadAsStringAsync().Result;
-                        }
-                        else
-                        {
-                            string newResponseContent = await newHttpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new Exception(string.Format("Get-AzureRmVpnClientPackage Operation returned an invalid status code '{0}' with Exception:{1} while retrieving " +
-                                "the Vpnclient PackageUrl!",
-                                newHttpResponse.StatusCode, string.IsNullOrEmpty(newResponseContent) ? "NotAvailable" : newResponseContent));
-                        }
+                        string newResponseContent = await newHttpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+
+                        throw new Exception(string.Format("Get-AzureRmVpnClientPackage Operation returned an invalid status code '{0}' with Exception:{1} while retrieving " +
+                            "the Vpnclient PackageUrl!", newHttpResponse.StatusCode, string.IsNullOrEmpty(newResponseContent) ? "NotAvailable" : newResponseContent));
                     }
                     else
                     {
