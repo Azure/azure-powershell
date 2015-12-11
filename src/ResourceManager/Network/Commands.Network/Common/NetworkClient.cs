@@ -54,7 +54,6 @@ namespace Microsoft.Azure.Commands.Network
         public NetworkClient()
         {
         }
-
         public string Generatevpnclientpackage(string resourceGroupName, string virtualNetworkGatewayName, VpnClientParameters parameters)
         {
             return Task.Factory.StartNew(() => GeneratevpnclientpackageAsync(resourceGroupName, virtualNetworkGatewayName, parameters)).Unwrap().GetAwaiter().GetResult();
@@ -139,7 +138,9 @@ namespace Microsoft.Azure.Commands.Network
             }
             // Send Request
             cancellationToken.ThrowIfCancellationRequested();
-            HttpClient httpClient = new HttpClient();
+
+            var client = this.NetworkManagementClient as NetworkManagementClient;
+            HttpClient httpClient = client.HttpClient;
             HttpResponseMessage httpResponse = await httpClient.SendAsync(httpRequest, cancellationToken).ConfigureAwait(false);
 
             HttpStatusCode statusCode = httpResponse.StatusCode;
