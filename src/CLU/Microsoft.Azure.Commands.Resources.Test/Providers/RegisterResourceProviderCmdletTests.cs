@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.Resources.Test
 {
     using Commands.Test.Utilities.Common;
+    using Common.Test.Mocks;
     using Microsoft.Azure.Commands.Resources.Models;
     using Microsoft.Azure.Management.Resources;
     using Microsoft.Azure.Management.Resources.Models;
@@ -48,6 +49,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
         /// A mock of the command runtime
         /// </summary>
         private readonly Mock<ICommandRuntime> commandRuntimeMock;
+        private MockCommandRuntime mockRuntime;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RegisterAzureProviderCmdletTests"/> class.
@@ -77,6 +79,8 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 }
             };
             PSCmdletExtensions.SetCommandRuntimeMock(cmdlet, commandRuntimeMock.Object);
+            mockRuntime = new MockCommandRuntime();
+            commandRuntimeMock.Setup(f => f.Host).Returns(mockRuntime.Host);
         }
 
         /// <summary>
