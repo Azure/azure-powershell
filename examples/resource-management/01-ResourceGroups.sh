@@ -2,7 +2,7 @@
 
 printf "\n=== Managing Resource Groups in Azure ===\n"
 
-printf "\n1. Creating a new resource group: %s.\n" "$resourceGroupName"
+printf "\n1. Creating a new resource group: %s and location: %s.\n" "$resourceGroupName" "$resourceGroupLocation"
 azure resource group new --name "$resourceGroupName" --location "$resourceGroupLocation"
 
 printf "\n2. Updating the group %s with tags.\n" "$resourceGroupName"
