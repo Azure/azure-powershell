@@ -9,9 +9,6 @@ if (!($workspaceDirectory))
     $env:WORKSPACE = $workspaceDirectory
 }
 
-$buildProfileScriptPath = "`"$thisScriptDirectory\BuildProfile.ps1`"" # Guard against spaces in the path
-$sourcesRoot = "$workspaceDirectory\src\clu"
-
 if (!($dropLocation))
 {
     $dropLocation = "$workspaceDirectory\drop"
@@ -24,7 +21,8 @@ if (!(Test-Path -Path $dropLocation -PathType Container))
     mkdir "$dropLocation\clurun"
 }
 
-
+$buildProfileScriptPath = "`"$thisScriptDirectory\BuildProfile.ps1`"" # Guard against spaces in the path
+$sourcesRoot = "$workspaceDirectory\src\clu"
 
 # Grab all command packages to build.
 # We'll assume that all directories that contain a *.nuspec.template file is a command package and that the name of the package is everything leading up to .nuspec.template
@@ -38,7 +36,6 @@ foreach($commandPackage in $commandPackages)
     $commandPackageName = $commandPackage.Package
     $commandPackageDir  = $commandPackage.Directory
     $buildOutputDirectory = Join-Path -path $commandPackageDir -ChildPath "bin\Debug\publish"
-
 
     Invoke-Expression "& $buildProfileScriptPath $commandPackageDir $commandPackageName $buildOutputDirectory $packageVersion $dropLocation\CommandRepo"
 }
