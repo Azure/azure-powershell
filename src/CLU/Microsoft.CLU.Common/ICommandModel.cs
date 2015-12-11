@@ -1,4 +1,4 @@
-﻿namespace Microsoft.CLU.Common
+﻿namespace Microsoft.CLU
 {
     public enum CommandModelErrorCode
     {

@@ -315,6 +315,7 @@ namespace System.Management.Automation.Host
         /// <param name="errorRecord">An ErrorRecord object that describes the error condition</param>
         public void ThrowTerminatingError(ErrorRecord errorRecord)
         {
+            TerminatingErrorReported = true;
             throw new CmdletTerminateException(errorRecord);
         }
 
@@ -468,7 +469,10 @@ namespace System.Management.Automation.Host
         /// </summary>
         internal bool NonTerminatingErrorReported { get; private set; }
 
-
+        /// <summary>
+        /// At least one terminating error has been reported...
+        /// </summary>
+        internal bool TerminatingErrorReported { get; private set;  }
 
         private string InterpretStreamPreference(string variable, string input, string current)
         {

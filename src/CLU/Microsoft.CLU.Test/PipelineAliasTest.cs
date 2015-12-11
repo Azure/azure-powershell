@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.Resources.Test
+namespace Microsoft.CLU.Test
 {
 
     public class TestRecord

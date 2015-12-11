@@ -19,7 +19,7 @@ namespace Microsoft.CLU.Run
         /// </summary>
         /// <param name="commandConfiguration"></param>
         /// <param name="modelArguments"></param>
-        public static Microsoft.CLU.Common.CommandModelErrorCode Run(CommandConfig commandConfiguration, string[] modelArguments)
+        public static Microsoft.CLU.CommandModelErrorCode Run(CommandConfig commandConfiguration, string[] modelArguments)
         {
             CommandModel commandModel = new CommandModel()
             {

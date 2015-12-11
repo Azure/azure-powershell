@@ -77,7 +77,11 @@ namespace Microsoft.CLU.CommandModel
                         binderAndCommand.Invoke();
                     }
 
-                    if (runtimeHost.NonTerminatingErrorReported)
+                    if (runtimeHost.TerminatingErrorReported)
+                    {
+                        return CommandModelErrorCode.TerminatingError;
+                    }
+                    else if (runtimeHost.NonTerminatingErrorReported)
                     {
                         return CommandModelErrorCode.NonTerminatingError;
                     }

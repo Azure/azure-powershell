@@ -17,7 +17,7 @@ namespace Microsoft.CLU.Run
         /// Microsoft.CLU.Run (clurun.exe) main entry point.
         /// </summary>
         /// <param name="args">The commandline arguments</param>
-        public static Microsoft.CLU.Common.CommandModelErrorCode Execute(string[] args)
+        public static Microsoft.CLU.CommandModelErrorCode Execute(string[] args)
         {
             CLUEnvironment.Console = new ConsoleInputOutput(args);
 
@@ -36,7 +36,7 @@ namespace Microsoft.CLU.Run
             {
                 CLUEnvironment.Console.WriteErrorLine(exc.Message);
                 CLUEnvironment.Console.WriteDebugLine(exc.StackTrace);
-                return Microsoft.CLU.Common.CommandModelErrorCode.InternalFailure;
+                return Microsoft.CLU.CommandModelErrorCode.InternalFailure;
             }
         }
 
@@ -44,12 +44,12 @@ namespace Microsoft.CLU.Run
         /// Parse the commandline argument and bootstrap the command execution.
         /// </summary>
         /// <param name="arguments">The commandline arguments</param>
-        private Microsoft.CLU.Common.CommandModelErrorCode Parse(string [] arguments)
+        private Microsoft.CLU.CommandModelErrorCode Parse(string [] arguments)
         {
             if (arguments.Count() == 0)
             {
                 DisplayHelp();
-                return Common.CommandModelErrorCode.MissingParameters;
+                return CommandModelErrorCode.MissingParameters;
             }
 
             var mode = GetMode(arguments);
