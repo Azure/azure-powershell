@@ -156,9 +156,9 @@ function PingWebApp($webApp)
 # Create a SAS Uri
 function Get-SasUri
 {
-    param ([string] $storageAccount, [string] $storageKey, [string] $container, [string] $file, [TimeSpan] $duration, [Microsoft.WindowsAzure.Storage.Blob.SharedAccessBlobPermissions] $type)
+    param ([string] $storageAccount, [string] $storageKey, [string] $container, [TimeSpan] $duration, [Microsoft.WindowsAzure.Storage.Blob.SharedAccessBlobPermissions] $type)
 
-	$uri = [string]::Format("https://{0}.blob.core.windows.net/{1}/{2}", $storageAccount, $container, $file);
+	$uri = "https://$storageAccount.blob.core.windows.net/$container"
 
 	$destUri = New-Object -TypeName System.Uri($uri);
 	$cred = New-Object -TypeName Microsoft.WindowsAzure.Storage.Auth.StorageCredentials($storageAccount, $storageKey);

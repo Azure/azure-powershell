@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// Gets the status of an Azure Web App backup
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureWebAppBackup")]
+    [Cmdlet(VerbsCommon.Get, "AzureRMWebAppBackup")]
     public class GetAzureWebAppBackupCmdlet : WebAppBaseClientCmdLet
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.", ValueFromPipelineByPropertyName = true)]
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         public string ResourceGroupName { get; set; }
         [Parameter(Position = 1, Mandatory = true, HelpMessage = "The name of the web app.")]
         [ValidateNotNullOrEmpty]
-        public string WebAppName { get; set; }
+        public string AppName { get; set; }
         [Parameter(Position = 2, Mandatory = true, HelpMessage = "The id of the backup.")]
         [ValidateNotNullOrEmpty]
         public string BackupId { get; set; }
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            WriteObject(WebsitesClient.GetSiteBackupStatus(ResourceGroupName, WebAppName, Slot, BackupId));
+            WriteObject(WebsitesClient.GetSiteBackupStatus(ResourceGroupName, AppName, Slot, BackupId));
         }
     }
 }

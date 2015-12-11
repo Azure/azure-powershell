@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// Modifies the automatic backup configuration for an Azure Web App
     /// </summary>
-    [Cmdlet(VerbsData.Edit, "AzureWebAppBackupConfiguration")]
+    [Cmdlet(VerbsData.Edit, "AzureRMWebAppBackupConfiguration")]
     public class EditAzureWebAppBackupConfiguration : WebAppBaseClientCmdLet
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
         [Parameter(Position = 1, Mandatory = true, HelpMessage = "The name of the web app.", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string AppName { get; set; }
 
         [Parameter(Position = 2, Mandatory = true, HelpMessage = "The SAS URL for the Azure Storage container used to store the backup.")]
         [ValidateNotNullOrEmpty]
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         public DateTime StartTime { get; set; }
 
         [Parameter(Position = 7, Mandatory = false, HelpMessage = "True if one backup should always be kept in the storage account, regardless of how old it is.")]
-        public bool KeepAtLeastOneBackup { get; set; }
+        public SwitchParameter KeepAtLeastOneBackup { get; set; }
 
         [Parameter(Position = 8, Mandatory = false, HelpMessage = "The databases to backup.")]
         public IList<DatabaseBackupSetting> Databases;
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            BackupSchedule schedule = new BackupSchedule(FrequencyUnit, FrequencyInterval, KeepAtLeastOneBackup,
+            BackupSchedule schedule = new BackupSchedule(FrequencyUnit, FrequencyInterval, KeepAtLeastOneBackup.IsPresent,
                 RetentionPeriodInDays, StartTime);
             BackupRequest request = new BackupRequest()
             {
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 Databases = this.Databases,
                 BackupRequestType = BackupRestoreOperationType.Default
             };
-            WriteObject(WebsitesClient.UpdateWebAppBackupConfiguration(ResourceGroupName, Name, Slot, request));
+            WriteObject(WebsitesClient.UpdateWebAppBackupConfiguration(ResourceGroupName, AppName, Slot, request));
         }
     }
 }

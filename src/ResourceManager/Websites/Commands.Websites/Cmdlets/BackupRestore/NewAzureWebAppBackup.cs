@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// Creates a backup of an Azure Web App
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureWebAppBackup")]
+    [Cmdlet(VerbsCommon.New, "AzureRMWebAppBackup")]
     public class NewAzureWebAppBackup : WebAppBaseClientCmdLet
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]
@@ -24,13 +24,13 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [ValidateNotNullOrEmpty]
         public string AppName { get; set; }
 
-        [Parameter(Position = 2, Mandatory = true, HelpMessage = "The SAS URL for the Azure Storage container used to store the backup.")]
-        [ValidateNotNullOrEmpty]
-        public string StorageAccountUrl;
-
-        [Parameter(Position = 3, Mandatory = false, HelpMessage = "The name of the backup.")]
+        [Parameter(Position = 2, Mandatory = false, HelpMessage = "The name of the backup.")]
         [ValidateNotNullOrEmpty]
         public string BackupName { get; set; }
+
+        [Parameter(Position = 3, Mandatory = true, HelpMessage = "The SAS URL for the Azure Storage container used to store the backup.")]
+        [ValidateNotNullOrEmpty]
+        public string StorageAccountUrl;
 
         [Parameter(Position = 4, Mandatory = false, HelpMessage = "The databases to backup.")]
         public IList<DatabaseBackupSetting> Databases;

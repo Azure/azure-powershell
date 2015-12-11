@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// Deletes an Azure Web App backup
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureWebAppBackup")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRMWebAppBackup")]
     public class RemoveAzureWebAppBackup : WebAppBaseClientCmdLet
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         public string ResourceGroupName { get; set; }
         [Parameter(Position = 1, Mandatory = true, HelpMessage = "The name of the web app.", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string AppName { get; set; }
         [Parameter(Position = 2, Mandatory = true, HelpMessage = "The id of the backup.")]
         [ValidateNotNullOrEmpty]
         public string BackupId { get; set; }

@@ -12,16 +12,16 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// Gets the automatic backup configuration for an Azure Web App
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureWebAppBackupConfiguration")]
+    [Cmdlet(VerbsCommon.Get, "AzureRMWebAppBackupConfiguration")]
     public class GetAzureWebAppBackupConfiguration : WebAppBaseClientCmdLet
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = "The name of the web app.", ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = "The name of the web app.")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string AppName { get; set; }
 
         [Parameter(Position = 2, Mandatory = false, HelpMessage = "The name of the web app slot.")]
         public string Slot { get; set; }
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            WriteObject(WebsitesClient.GetWebAppBackupConfiguration(ResourceGroupName, Name, Slot));
+            WriteObject(WebsitesClient.GetWebAppBackupConfiguration(ResourceGroupName, AppName, Slot));
         }
     }
 }
