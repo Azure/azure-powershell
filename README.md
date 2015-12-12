@@ -1,4 +1,7 @@
 <meta name="google-site-verification" content="tZgbB2s-hTI0IePQQRCjHqL_Vf0j_XJmehXAHJerrn4" />
+
+This branch contains the on-going work for CLU cmdlets. Please read the [get start] (./clu-getstart.md) doc first.
+
 # Microsoft Azure PowerShell
 
 This repository contains a set of PowerShell cmdlets for developers and administrators to develop, deploy and manage Microsoft Azure applications.
