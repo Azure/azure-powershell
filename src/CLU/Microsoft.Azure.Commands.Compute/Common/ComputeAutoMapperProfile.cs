@@ -68,13 +68,13 @@ namespace Microsoft.Azure.Commands.Compute
         protected override void Configure()
         {
             //Mapper.CreateMap<Microsoft.Azure.AzureOperationResponse, TO.PSOperation>();
-            //Mapper.CreateMap<FROM.ComputeLongRunningOperationResponse, TO.PSComputeLongRunningOperation>();
+            Mapper.CreateMap<FROM.VirtualMachineCaptureResult, TO.PSComputeLongRunningOperation>();
             //Mapper.CreateMap<FROM.DeleteOperationResponse, TO.PSComputeLongRunningOperation>();
 
             Mapper.CreateMap<FROM.AvailabilitySet, TO.PSAvailabilitySet>();
             //Mapper.CreateMap<Microsoft.Azure.AzureOperationResponse, TO.PSAvailabilitySet>();
 
-            //Mapper.CreateMap<FROM.VirtualMachine, TO.PSVirtualMachine>();
+            Mapper.CreateMap<FROM.VirtualMachine, TO.PSVirtualMachine>();
             //Mapper.CreateMap<Microsoft.Azure.AzureOperationResponse, TO.PSVirtualMachine>();
 
             Mapper.CreateMap<FROM.VirtualMachineSize, TO.PSVirtualMachineSize>();
