@@ -62,7 +62,7 @@ To test on osx/linux boxes, do #1, open `<repo-root>\drop\clurun`, you should se
 
 ### Quick introductions on cmdlets
   *  Run commands using the ‘azure’ prefix, cmdlet nouns, and cmdlet verbs, for example, `azure environment get` maps to the cmdlet `Get-AzureRmEnvironment`
-  *  Cmdlet parameters use the double dash (--) so for example, getting a subscription with a particular name would be: `azure subscription get –SubscriptionName “name of subscription"`
+  *  Cmdlet parameters use the double dash (--) so for example, getting a subscription with a particular name would be: `azure subscription get –-SubscriptionName “name of subscription"`
   * To log in, 3 options
     * login interactively using device flow, this is the only option for msa account or any org-id with 2fa enforced, example: `azure account add`
     * login with user and password, this works on org-id w/o 2fa enforced, example: `azure account add --Username user@contoso.org  --Password password1`
