@@ -63,8 +63,8 @@ namespace System.Management.Automation
         {
             if (sendToPipeline != null)
             {
-                if (CommandRuntime.Host.IsOutputRedirected)
-                {
+                if (ShouldWriteJsonOutput())
+                { 
                     CommandRuntime.WriteObject(sendToPipeline);
                 }
                 else
@@ -78,7 +78,7 @@ namespace System.Management.Automation
         {
             if (sendToPipeline != null)
             {
-                if (CommandRuntime.Host.IsOutputRedirected)
+                if (ShouldWriteJsonOutput())
                 {
                     CommandRuntime.WriteObject(sendToPipeline, enumerateCollection);
                 }
@@ -151,6 +151,12 @@ namespace System.Management.Automation
             }
         }
 
+        internal bool ShouldWriteJsonOutput()
+        {
+            var requestedOutputFormat = CommandRuntime.Host.RequestedOutputFormat;
+            return (CommandRuntime.Host.IsOutputRedirected && requestedOutputFormat != OutputFormat.Formatted) 
+                || requestedOutputFormat == OutputFormat.JSON;
+        }
         protected void WriteProgress(ProgressRecord progressRecord) { if (progressRecord != null) CommandRuntime.WriteProgress(progressRecord); }
 
         protected void WriteVerbose(string text) { if (!string.IsNullOrEmpty(text)) CommandRuntime.WriteVerbose(text);  }

@@ -14,5 +14,6 @@ namespace System.Management.Automation.Host
         public abstract Version Version { get; }
         public abstract bool IsInputRedirected { get; }
         public abstract bool IsOutputRedirected { get; }
+        public abstract Microsoft.CLU.OutputFormat RequestedOutputFormat { get; set; }
     }
 }
