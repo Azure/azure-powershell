@@ -142,11 +142,11 @@ namespace System.Management.Automation
                     formattedType = obj.GetType();
                     if (!wroteHeader)
                     {
-                        CommandRuntime.WriteCommandDetail(view.FormatHeader(CLUEnvironment.Console.WindowWidth));
-                        CommandRuntime.WriteCommandDetail("");
+                        CommandRuntime.WriteObject(view.FormatHeader(CLUEnvironment.Console.WindowWidth));
+                        CommandRuntime.WriteObject("");
                         wroteHeader = true;
                     }
-                    CommandRuntime.WriteCommandDetail(view.FormatObject(obj));
+                    CommandRuntime.WriteObject(view.FormatObject(obj));
                 }
             }
         }
