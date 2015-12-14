@@ -24,7 +24,7 @@ $nuSpecOutput = [System.IO.Path]::Combine($packageSource, ($packageId + ".nuspec
 Write-Host "Creating dynamic nuspec package in: $nuSpecOutput"
 
 $fileContent = Get-Content $nuSpecTemplate
-$renameFileExists = Test-Path -Path [System.IO.Path]::Combine($packageSource, "content", "rename.cfg")
+$renameFileExists = Test-Path -Path ([System.IO.Path]::Combine($packageSource, "content", "rename.cfg"))
 $files = (Get-ChildItem $packageSource | Where -FilterScript {!$_.Name.Contains("nuspec")} | Select-Object -Property Name)
 $refFiles = $files | Where -FilterScript { $_.Name.EndsWith(".dll")}
 $contentFiles = $files | Where -FilterScript { $_.Name.EndsWith("xml")}

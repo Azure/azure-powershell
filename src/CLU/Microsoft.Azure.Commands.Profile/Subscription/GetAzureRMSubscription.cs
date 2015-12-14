@@ -32,13 +32,16 @@ namespace Microsoft.Azure.Commands.Profile
         private RMProfileClient _client;
 
         [Parameter(ParameterSetName= ListByIdInTenantParameterSet, ValueFromPipelineByPropertyName = true, Mandatory=false)]
+        [Alias("s", "id")]
         public string SubscriptionId { get; set; }
 
         [Parameter(ParameterSetName = ListByNameInTenantParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = false)]
+        [Alias("n", "name")]
         public string SubscriptionName { get; set; }
 
         [Parameter(ParameterSetName = ListByIdInTenantParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = false)]
         [Parameter(ParameterSetName = ListByNameInTenantParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = false)]
+        [Alias("domain", "t")]
         public string TenantId { get; set; }
 
         protected override void BeginProcessing()

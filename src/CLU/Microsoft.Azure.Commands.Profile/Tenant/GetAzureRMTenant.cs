@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Models;
@@ -30,7 +31,7 @@ namespace Microsoft.Azure.Commands.Profile
     public class GetAzureRMTenantCommand : AzureRMCmdlet
     {
         [Parameter(Mandatory = false, Position = 0, ValueFromPipelineByPropertyName = true)]
-        [Alias("Domain", "Tenant")]
+        [Alias("Domain", "Tenant", "t")]
         [ValidateNotNullOrEmpty]
         public string TenantId { get; set; }
         
