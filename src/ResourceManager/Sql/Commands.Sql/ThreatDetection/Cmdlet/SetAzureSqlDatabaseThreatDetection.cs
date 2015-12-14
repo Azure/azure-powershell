@@ -68,7 +68,6 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
             base.ApplyUserInputToModel(model);
 
             model.ThreatDetectionState = ThreatDetectionStateType.Enabled;
-            model.UseServerDefault = UseServerDefaultOptions.Disabled;
 
             if (NotificationRecipientsEmails != null)
             {
@@ -85,9 +84,50 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
                 model.ExcludedDetectionTypes = ExcludedDetectionType.Select(s => SecurityConstants.ExcludedDetectionToExcludedDetectionTypes[s]).ToArray();
             }
 
-            model.ValidateInput();
+            ValidateInput(model);
 
             return model;
+        }
+
+        /// <summary>
+        /// Preforms validity checks
+        /// </summary>
+        /// <param name="model">The model</param>
+        private void ValidateInput(DatabaseThreatDetectionPolicyModel model)
+        {
+            // Validity checks:
+            // 1. Check that EmailAddresses are in correct format 
+            bool areEmailAddressesInCorrectFormat = AreEmailAddressesInCorrectFormat(model.NotificationRecipientsEmails);
+            if (!areEmailAddressesInCorrectFormat)
+            {
+                throw new Exception(Properties.Resources.EmailsAreNotValid);
+            }
+
+            // 2. check that EmailAdmins is not False and NotificationRecipientsEmails is not empty
+            if (!model.EmailAdmins && string.IsNullOrEmpty(model.NotificationRecipientsEmails))
+            {
+                throw new Exception(Properties.Resources.NeedToProvideEmail);
+            }
+        }
+
+        /// <summary>
+        /// Checks if email addresses are in a correct format
+        /// </summary>
+        /// <param name="emailAddresses">The email addresses</param>
+        /// <returns>Returns whether the email addresses are in a correct format</returns>
+        private bool AreEmailAddressesInCorrectFormat(string emailAddresses)
+        {
+            if (string.IsNullOrEmpty(emailAddresses))
+            {
+                return true;
+            }
+
+            string[] emailAddressesArray = emailAddresses.Split(';').Where(s => !string.IsNullOrEmpty(s)).ToArray();
+            var emailRegex =
+                new Regex(string.Format("{0}{1}",
+                    @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))",
+                    @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$"));
+            return !emailAddressesArray.Any(e => !emailRegex.IsMatch(e));
         }
     }
 }
