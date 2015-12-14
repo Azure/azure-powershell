@@ -21,12 +21,13 @@ if (!(Test-Path -Path $dropLocation -PathType Container))
     mkdir "$dropLocation\clurun"
 }
 
-$buildProfileScriptPath = "`"$thisScriptDirectory\BuildProfile.ps1`"" # Guard against spaces in the path
+$buildPackageScriptPath = "`"$thisScriptDirectory\BuildPackage.ps1`"" # Guard against spaces in the path
 $sourcesRoot = "$workspaceDirectory\src\clu"
 
 # Grab all command packages to build.
+# Get-ChildItem -path $sourcesRoot -Filter '*.nuspec.template' -Recurse -File
 # We'll assume that all directories that contain a *.nuspec.template file is a command package and that the name of the package is everything leading up to .nuspec.template
-$commandPackages = Get-ChildItem -path $sourcesRoot -Filter '*.nuspec.template' -Recurse -File | 
+$commandPackages =  Get-ChildItem -path $sourcesRoot  | Get-ChildItem -File -Filter "*.nuspec.template" | Where -FilterScript {$_ -ne $null -and $_.Name -ne $null -and $_.Name.Contains(".nuspec.template")} |
                         ForEach-Object { New-Object PSObject -Property @{Directory=$_.DirectoryName; Package=$_.Name.Substring(0, $_.Name.Length - ".nuspec.template".Length)} } | 
                         Where-Object -Property Package -Like -Value $commandPackagesToBuild  |
                         Where-Object -Property Package -NotLike -Value $exceptCommandPackagesToBuild
@@ -37,7 +38,7 @@ foreach($commandPackage in $commandPackages)
     $commandPackageDir  = $commandPackage.Directory
     $buildOutputDirectory = Join-Path -path $commandPackageDir -ChildPath "bin\Debug\publish"
 
-    Invoke-Expression "& $buildProfileScriptPath $commandPackageDir $commandPackageName $buildOutputDirectory $packageVersion $dropLocation\CommandRepo"
+    Invoke-Expression "& $buildPackageScriptPath $commandPackageDir $commandPackageName $buildOutputDirectory $packageVersion $dropLocation\CommandRepo"
 }
 
 if (!($excludeCluRun))
