@@ -107,7 +107,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         private AuthenticationResult AcquireToken(AdalConfiguration config, AuthenticationBehavior behavior, string userId,
             string password)
         {
-            AuthenticationResult result = null;
             var context = CreateContext(config);
 
             ServiceClientTracing.Information(

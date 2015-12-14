@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///    Looks up a localized string similar to Access token credentials must provide the AccountId parameter..
+        ///    Looks up a localized string similar to Access token credentials must provide the Username parameter..
         /// </summary>
         internal static string AccountIdRequired {
             get {
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///    Looks up a localized string similar to Could not authenticate with tenant {0}. Please ensure that your account has access to this tenant and log in with Login-AzureRmAccount.
+        ///    Looks up a localized string similar to Could not authenticate with tenant {0}. Please ensure that your account has access to this tenant and log in again..
         /// </summary>
         internal static string TenantAuthFailed {
             get {
