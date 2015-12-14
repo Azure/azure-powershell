@@ -143,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cmdlets\AppServicePlans\GetAzureAppServicePlanMetrics.cs" />
+    <Compile Include="Cmdlets\BackupRestore\RestoreAzureWebAppBackup.cs" />
     <Compile Include="Cmdlets\DeploymentSlots\GetAzureWebAppSlot.cs" />
     <Compile Include="Cmdlets\DeploymentSlots\GetAzureWebAppSlotMetrics.cs" />
     <Compile Include="Cmdlets\DeploymentSlots\GetAzureWebAppSlotPublishingProfile.cs" />
@@ -175,9 +176,9 @@
     <Compile Include="Cmdlets\AppServicePlans\NewAzureAppServicePlan.cs" />
     <Compile Include="Cmdlets\AppServicePlans\RemoveAppServicePlan.cs" />
     <Compile Include="Models.WebApp\AppServicePlanBaseCmdlet.cs" />
-    <Compile Include="Models.WebApp\BackupFrequencyUnit.cs" />
     <Compile Include="Models.WebApp\WebAppBaseCmdlet.cs" />
     <Compile Include="Models.WebApp\WebAppBaseClient.cs" />
+    <Compile Include="Models.WebApp\WebAppOptionalSlotBaseCmdlet.cs" />
     <Compile Include="Models.WebApp\WebAppSlotBaseCmdlet.cs" />
     <Compile Include="Utilities\CmdletHelpers.cs" />
     <Compile Include="Utilities\WebsitesClient.cs" />

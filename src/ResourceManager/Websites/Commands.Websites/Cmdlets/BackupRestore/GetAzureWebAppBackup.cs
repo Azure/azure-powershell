@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Azure.Commands.WebApps.Models;
-using Microsoft.Azure.Management.WebSites.Models;
+﻿using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
@@ -14,25 +6,16 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// Gets the status of an Azure Web App backup
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRMWebAppBackup")]
-    public class GetAzureWebAppBackupCmdlet : WebAppBaseClientCmdLet
+    public class GetAzureWebAppBackupCmdlet : WebAppOptionalSlotBaseCmdlet
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.", ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = "The name of the web app.")]
-        [ValidateNotNullOrEmpty]
-        public string AppName { get; set; }
-        [Parameter(Position = 2, Mandatory = true, HelpMessage = "The id of the backup.")]
+        [Parameter(Position = 3, Mandatory = true, HelpMessage = "The id of the backup.", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string BackupId { get; set; }
-        [Parameter(Position = 3, Mandatory = false, HelpMessage = "The name of the web app slot.")]
-        [ValidateNotNullOrEmpty]
-        public string Slot { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            WriteObject(WebsitesClient.GetSiteBackupStatus(ResourceGroupName, AppName, Slot, BackupId));
+            WriteObject(WebsitesClient.GetSiteBackupStatus(ResourceGroupName, Name, Slot, BackupId));
         }
     }
 }

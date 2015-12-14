@@ -431,11 +431,12 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             var useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
             if (useSlot)
             {
-                return WrappedWebsitesClient.Sites.GetSiteBackupStatusSlot(resourceGroupName, webSiteName, backupId, slotName);
+                return WrappedWebsitesClient.Sites.GetSiteBackupStatusSecretsSlot(resourceGroupName, webSiteName, backupId, null, slotName);
             }
             else
             {
-                return WrappedWebsitesClient.Sites.GetSiteBackupStatus(resourceGroupName, webSiteName, backupId);
+                return WrappedWebsitesClient.Sites.GetSiteBackupStatusSecrets(resourceGroupName, webSiteName, backupId,
+                    null);
             }
         }
 

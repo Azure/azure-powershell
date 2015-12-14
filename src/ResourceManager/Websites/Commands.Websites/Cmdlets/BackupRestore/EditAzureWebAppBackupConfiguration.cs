@@ -4,7 +4,6 @@ using System.Linq;
 using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Management.WebSites.Models;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
@@ -13,44 +12,34 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// Modifies the automatic backup configuration for an Azure Web App
     /// </summary>
     [Cmdlet(VerbsData.Edit, "AzureRMWebAppBackupConfiguration")]
-    public class EditAzureWebAppBackupConfiguration : WebAppBaseClientCmdLet
+    public class EditAzureWebAppBackupConfiguration : WebAppOptionalSlotBaseCmdlet
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = "The name of the web app.", ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNullOrEmpty]
-        public string AppName { get; set; }
-
-        [Parameter(Position = 2, Mandatory = true, HelpMessage = "The SAS URL for the Azure Storage container used to store the backup.")]
+        [Parameter(Position = 3, Mandatory = true, HelpMessage = "The SAS URL for the Azure Storage container used to store the backup.")]
         [ValidateNotNullOrEmpty]
         public string StorageAccountUrl;
 
-        [Parameter(Position = 3, Mandatory = true, HelpMessage = "Numeric value for how often the backups should be made.")]
+        [Parameter(Position = 4, Mandatory = true, HelpMessage = "Numeric value for how often the backups should be made.")]
         [ValidateNotNullOrEmpty]
         public int FrequencyInterval { get; set; }
 
-        [Parameter(Position = 4, Mandatory = true, HelpMessage = "Unit of time for how often the backups should be made.")]
+        [Parameter(Position = 5, Mandatory = true, HelpMessage = "Unit of time for how often the backups should be made.")]
         [ValidateNotNullOrEmpty]
         public FrequencyUnit FrequencyUnit { get; set; }
 
-        [Parameter(Position = 5, Mandatory = true, HelpMessage = "How many days the automatic backups should be saved before being automatically deleted.")]
+        [Parameter(Position = 6, Mandatory = true, HelpMessage = "How many days the automatic backups should be saved before being automatically deleted.")]
         [ValidateNotNullOrEmpty]
         public int RetentionPeriodInDays { get; set; }
 
-        [Parameter(Position = 6, Mandatory = true, HelpMessage = "The time when the automatic backups should begin.")]
+        [Parameter(Position = 7, Mandatory = true, HelpMessage = "The time when the automatic backups should begin.")]
         [ValidateNotNullOrEmpty]
         public DateTime StartTime { get; set; }
 
-        [Parameter(Position = 7, Mandatory = false, HelpMessage = "True if one backup should always be kept in the storage account, regardless of how old it is.")]
+        [Parameter(Position = 8, Mandatory = false, HelpMessage = "True if one backup should always be kept in the storage account, regardless of how old it is.")]
         public SwitchParameter KeepAtLeastOneBackup { get; set; }
 
-        [Parameter(Position = 8, Mandatory = false, HelpMessage = "The databases to backup.")]
+        [Parameter(Position = 9, Mandatory = false, HelpMessage = "The databases to backup.")]
+        [ValidateNotNullOrEmpty]
         public IList<DatabaseBackupSetting> Databases;
-
-        [Parameter(Position = 9, Mandatory = false, HelpMessage = "The name of the web app slot.")]
-        public string Slot { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -65,7 +54,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 Databases = this.Databases,
                 BackupRequestType = BackupRestoreOperationType.Default
             };
-            WriteObject(WebsitesClient.UpdateWebAppBackupConfiguration(ResourceGroupName, AppName, Slot, request));
+            WriteObject(WebsitesClient.UpdateWebAppBackupConfiguration(ResourceGroupName, Name, Slot, request));
         }
     }
 }

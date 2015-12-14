@@ -165,7 +165,7 @@ function Get-SasUri
 	$destBlob = New-Object -TypeName Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob($destUri, $cred);
 	$policy = New-Object Microsoft.WindowsAzure.Storage.Blob.SharedAccessBlobPolicy;
 	$policy.Permissions = $type;
-	$policy.SharedAccessExpiryTime = [DateTime]::UtcNow.Add($duration);
+	$policy.SharedAccessExpiryTime = (Get-Date).Add($duration);
 	$uri += $destBlob.GetSharedAccessSignature($policy);
 
 	return $uri;
