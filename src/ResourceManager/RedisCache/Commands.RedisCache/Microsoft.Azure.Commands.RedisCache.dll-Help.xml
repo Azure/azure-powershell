@@ -1567,7 +1567,7 @@
     <maml:relatedLinks>
       <maml:navigationLink>
         <maml:linkText>Online Version:</maml:linkText>
-        <maml:uri>https://msdn.microsoft.com/en-us/library/azure/mt634513.aspx</maml:uri>
+        <maml:uri>http://go.microsoft.com/fwlink/?LinkId=717714</maml:uri>
       </maml:navigationLink>
     </maml:relatedLinks>
   </command:command>
@@ -1715,7 +1715,7 @@
     <maml:relatedLinks>
       <maml:navigationLink>
         <maml:linkText>Online Version:</maml:linkText>
-        <maml:uri>https://msdn.microsoft.com/en-us/library/azure/mt634513.aspx</maml:uri>
+        <maml:uri>http://go.microsoft.com/fwlink/?LinkId=717715</maml:uri>
       </maml:navigationLink>
     </maml:relatedLinks>
   </command:command>
