@@ -11,26 +11,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+using System.Collections.Generic;
 
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Xunit;
-
-namespace Commands.Network.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class VirtualNetworkGatewayConnectionTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class PSVpnClientRevokedCertificate : PSChildResource
     {
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualNetworkGatewayConnectionCRUD()
-        {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayConnectionCRUD");
-        }
+        public string ProvisioningState { get; set; }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualNetworkGatewayConnectionSharedKeyCRUD()
-        {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayConnectionSharedKeyCRUD");
-        }
+        public string Thumbprint { get; set; }
     }
 }
