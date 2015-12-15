@@ -2,9 +2,9 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>Microsoft.Azure.Commands.Profile.Models.PSAzureProfile</Name>
+      <Name>Microsoft.Azure.Commands.Models.PSAzureProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Profile.Models.PSAzureProfile</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Models.PSAzureProfile</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
@@ -21,27 +21,29 @@
       </ListControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.Profile.Models.PSAzureContext</Name>
+      <Name>Microsoft.Azure.Commands.Models.PSAzureContext</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Profile.Models.PSAzureContext</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Models.PSAzureContext</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
           <ListEntry>
             <ListItems>
               <ListItem>
+                <Label>Environment</Label>
                 <PropertyName>Environment</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>Account</Label>
                 <PropertyName>Account</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>TenantId</Label>
-                <Property>Tenant</Property>
+                <PropertyName>Tenant</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>SubscriptionId</Label>
-                <Property>Subscription</Property>
+                <PropertyName>Subscription</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -49,9 +51,9 @@
       </ListControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.Profile.Models.PSAzureSubscription</Name>
+      <Name>Microsoft.Azure.Commands.Models.PSAzureSubscription</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Profile.Models.PSAzureSubscription</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Models.PSAzureSubscription</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
@@ -75,9 +77,9 @@
       </ListControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.Profile.Models.PSAzureTenant</Name>
+      <Name>Microsoft.Azure.Commands.Models.PSAzureTenant</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Profile.Models.PSAzureTenant</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Models.PSAzureTenant</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
