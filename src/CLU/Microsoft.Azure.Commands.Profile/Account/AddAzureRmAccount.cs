@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Profile
     /// Cmdlet to log into an environment and download the subscriptions
     /// </summary>
     [Cmdlet("Add", "AzureRmAccount", DefaultParameterSetName = "User")]
-    [Alias("Login-AzureRmAccount")]
+    [Alias("Login-AzureRmAccount", "Login")]
     [OutputType(typeof(PSAzureProfile))]
     public class AddAzureRMAccountCommand : AzureRMCmdlet
     {
@@ -43,11 +43,10 @@ namespace Microsoft.Azure.Commands.Profile
         private const string SubscriptionNameParameterSet = "SubscriptionName";
         private const string SubscriptionIdParameterSet = "SubscriptionId";
 
-        [Parameter(Mandatory = false, HelpMessage = "Environment containing the account to log into")]
-        [ValidateNotNullOrEmpty]
         public AzureEnvironment Environment { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Name of the environment containing the account to log into")]
+        [Alias("e")]
         [ValidateNotNullOrEmpty]
         public string EnvironmentName { get; set; }
 
@@ -56,31 +55,37 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "Optional secret")]
         public string Secret { get; set; }
 
+        [Parameter(ParameterSetName = AccessTokenParameterSet, Mandatory = true, HelpMessage = "Account Id for access token")]
         [Parameter(ParameterSetName = UserParameterSet, Mandatory = false, HelpMessage = "User name (in username@contoso.com format)")]
         [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Account Id for access token")]
         [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "Account Id for access token")]
         [ValidateNotNullOrEmpty]
+        [Alias("u")]
         public string Username { get; set; }
 
         [Parameter(ParameterSetName = UserParameterSet, Mandatory = false, HelpMessage = "Optional password")]
-        [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Account Id for access token")]
-        [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "Account Id for access token")]
+        [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Optional password")]
+        [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "Optional password")]
         [ValidateNotNullOrEmpty]
+        [Alias("p")]
         public string Password { get; set; }
 
         [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, Mandatory = true, HelpMessage = "Certificate Hash (Thumbprint)")]
         [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Certificate Hash (Thumbprint)")]
         [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "Certificate Hash (Thumbprint)")]
+        [Alias("cert")]
         public string CertificateThumbprint { get; set; }
 
         [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = true, HelpMessage = "Credential")]
         [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, Mandatory = true, HelpMessage = "SPN")]
         [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "SPN")]
         [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "SPN")]
+        [Alias("appid")]
         public string ApplicationId { get; set; }
 
         [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = true)]
         [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, Mandatory = true)]
+        [Alias("spn")]
         public SwitchParameter ServicePrincipal { get; set; }
 
         [Parameter(ParameterSetName = UserParameterSet, Mandatory = false, HelpMessage = "Optional tenant name or ID")]
@@ -89,7 +94,7 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, Mandatory = true, HelpMessage = "TenantId name or ID")]
         [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "TenantId name or ID")]
         [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "TenantId name or ID")]
-        [Alias("Domain")]
+        [Alias("Domain", "t")]
         [ValidateNotNullOrEmpty]
         public string TenantId { get; set; }
 
@@ -97,22 +102,19 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "AccessToken")]
         [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "AccessToken")]
         [ValidateNotNullOrEmpty]
+        [Alias("token")]
         public string AccessToken { get; set; }
-
-        [Parameter(ParameterSetName = AccessTokenParameterSet, Mandatory = true, HelpMessage = "Account Id for access token")]
-        [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Account Id for access token")]
-        [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "Account Id for access token")]
-        [ValidateNotNullOrEmpty]
-        public string AccountId { get; set; }
 
         [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Subscription", ValueFromPipelineByPropertyName = true)]
         [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = false, HelpMessage = "Subscription", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
+        [Alias("s", "id")]
         public string SubscriptionId { get; set; }
 
         [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "Subscription Name", ValueFromPipelineByPropertyName = true)]
         [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = false, HelpMessage = "Subscription Name", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
+        [Alias("n", "name")]
         public string SubscriptionName { get; set; }
 
         protected override AzureContext DefaultContext
@@ -164,13 +166,13 @@ namespace Microsoft.Azure.Commands.Profile
             string password = null;
             if (!string.IsNullOrEmpty(AccessToken))
             {
-                if (string.IsNullOrWhiteSpace(AccountId))
+                if (string.IsNullOrWhiteSpace(Username))
                 {
                     throw new PSInvalidOperationException(Resources.AccountIdRequired);
                 }
 
                 azureAccount.Type = AzureAccount.AccountType.AccessToken;
-                azureAccount.Id = AccountId;
+                azureAccount.Id = Username;
                 azureAccount.SetProperty(AzureAccount.Property.AccessToken, AccessToken);
             }
             else if (ServicePrincipal.IsPresent)

@@ -124,7 +124,7 @@
     <value>Account ID '{0}' for tenant '{1}' does not match home Account ID '{2}'</value>
   </data>
   <data name="AccountIdRequired" xml:space="preserve">
-    <value>Access token credentials must provide the AccountId parameter.</value>
+    <value>Access token credentials must provide the Username parameter.</value>
   </data>
   <data name="AzureProfileMustNotBeNull" xml:space="preserve">
     <value>Selected profile must not be null.</value>
@@ -181,7 +181,7 @@
     <value>Subscription {0} was not found in tenant {1}. Please verify that the subscription exists in this tenant.</value>
   </data>
   <data name="TenantAuthFailed" xml:space="preserve">
-    <value>Could not authenticate with tenant {0}. Please ensure that your account has access to this tenant and log in with Login-AzureRmAccount</value>
+    <value>Could not authenticate with tenant {0}. Please ensure that your account has access to this tenant and log in again.</value>
   </data>
   <data name="TenantIdNotFound" xml:space="preserve">
     <value>Unable to find tenant '{0}'.</value>

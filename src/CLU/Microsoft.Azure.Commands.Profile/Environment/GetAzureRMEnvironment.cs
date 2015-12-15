@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.Profile
     public class GetAzureRMEnvironmentCommand : AzureRMCmdlet
     {
         [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The environment name")]
+        [Alias("n")]
         public string Name { get; set; }
 
         protected override void BeginProcessing()
