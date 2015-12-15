@@ -26,9 +26,11 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     public class NewAzureADServicePrincipalCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The application id for which service principal is created.")]
+        [Alias("id")]
         public Guid ApplicationId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Create the service principal with account disabled.")]
+        [Alias("d")]
         public SwitchParameter DisableAccount { get; set; }
 
         protected override void ProcessRecord()

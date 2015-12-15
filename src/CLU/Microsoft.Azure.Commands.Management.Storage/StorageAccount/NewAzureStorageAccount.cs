@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource Group StorageAccountName.")]
         [ValidateNotNullOrEmpty]
+        [Alias("group", "g")]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -38,8 +39,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account StorageAccountName.")]
-        [Alias(StorageAccountNameAlias, AccountNameAlias)]
         [ValidateNotNullOrEmpty]
+        [Alias(StorageAccountNameAlias, AccountNameAlias, "n")]
         public string Name { get; set; }
 
         [Parameter(
@@ -47,13 +48,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account Type.")]
-        [Alias(StorageAccountTypeAlias, AccountTypeAlias)]
         [ValidateSet(AccountTypeString.StandardLRS,
             AccountTypeString.StandardZRS,
             AccountTypeString.StandardGRS,
             AccountTypeString.StandardRAGRS,
             AccountTypeString.PremiumLRS,
             IgnoreCase = true)]
+        [Alias(StorageAccountTypeAlias, AccountTypeAlias, "t")]
         public string Type { get; set; }
 
         [Parameter(
@@ -62,6 +63,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account Location.")]
         [ValidateNotNullOrEmpty]
+        [Alias("l")]
         public string Location { get; set; }
 
         [Parameter(
@@ -70,6 +72,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account Tags.")]
         [ValidateNotNull]
+        [Alias("t")]
         public Hashtable[] Tags { get; set; }
 
         protected override void ProcessRecord()

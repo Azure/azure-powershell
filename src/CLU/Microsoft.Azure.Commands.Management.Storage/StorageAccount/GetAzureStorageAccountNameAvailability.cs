@@ -26,8 +26,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.StorageAccount
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account Name.")]
-        [Alias(StorageAccountNameAlias, AccountNameAlias)]
         [ValidateNotNullOrEmpty]
+        [Alias(StorageAccountNameAlias, AccountNameAlias, "n")]
         public string Name { get; set; }
 
         protected override void ProcessRecord()

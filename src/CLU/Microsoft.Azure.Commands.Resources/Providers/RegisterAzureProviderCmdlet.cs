@@ -30,12 +30,14 @@ namespace Microsoft.Azure.Commands.Resources
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource provider namespace.")]
         [ValidateNotNullOrEmpty]
+        [Alias("m", "namespace")]
         public string ProviderNamespace { get; set; }
 
         /// <summary>
         /// Gets or sets a switch that indicates if the user should be prompted for confirmation.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        [Alias("f")]
         public SwitchParameter Force { get; set; }
 
         /// <summary>

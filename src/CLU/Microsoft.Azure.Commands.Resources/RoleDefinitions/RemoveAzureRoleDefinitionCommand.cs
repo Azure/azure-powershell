@@ -36,9 +36,11 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionName,
             HelpMessage = "Role definition name. For e.g. Reader, Contributor, Virtual Machine Contributor.")]
         [ValidateNotNullOrEmpty]
+        [Alias("n")]
         public string Name { get; set; }
 
         [Parameter(Mandatory = false)]
+        [Alias("f")]
         public SwitchParameter Force { get; set; }
 
         [Parameter(Mandatory = false)]

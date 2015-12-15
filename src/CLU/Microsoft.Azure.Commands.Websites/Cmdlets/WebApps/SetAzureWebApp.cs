@@ -32,10 +32,12 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     public class SetAzureWebAppCmdlet : WebAppBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 2, Mandatory = false, HelpMessage = "The name of the app service plan eg: Default1.")]
+        [Alias("plan")]
         public string AppServicePlan { get; set; }
 
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 3, Mandatory = false, HelpMessage = "Default documents for web app")]
         [ValidateNotNullOrEmpty]
+        [Alias("docs")]
         public string[] DefaultDocuments { get; set; }
 
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 4, Mandatory = false, HelpMessage = ".NET Framework version")]
@@ -86,6 +88,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 15, Mandatory = false, HelpMessage = "Custom hostnames associated with web app")]
         [ValidateNotNullOrEmpty]
+        [Alias("hosts")]
         public string[] HostNames { get; set; }
 
         protected override void ProcessRecord()

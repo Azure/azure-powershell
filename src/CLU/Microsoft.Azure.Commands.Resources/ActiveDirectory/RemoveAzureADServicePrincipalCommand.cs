@@ -28,10 +28,11 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId,
                   HelpMessage = "The service principal object id.")]
-        [Alias("PrincipalId")]
+        [Alias("PrincipalId", "id")]
         public Guid ObjectId { get; set; }
 
         [Parameter(Mandatory = false)]
+        [Alias("f")]
         public SwitchParameter Force { get; set; }
 
         [Parameter(Mandatory = false)]

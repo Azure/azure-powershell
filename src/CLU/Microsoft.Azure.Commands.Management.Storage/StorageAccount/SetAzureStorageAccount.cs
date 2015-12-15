@@ -38,6 +38,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource Group StorageAccountName.")]
         [ValidateNotNullOrEmpty]
+        [Alias("group", "g")]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -45,8 +46,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account StorageAccountName.")]
-        [Alias(StorageAccountNameAlias, AccountNameAlias)]
         [ValidateNotNullOrEmpty]
+        [Alias(StorageAccountNameAlias, AccountNameAlias, "n")]
         public string Name { get; set; }
 
         [Parameter(
@@ -61,6 +62,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             AccountTypeString.StandardRAGRS,
             AccountTypeString.PremiumLRS,
             IgnoreCase = true)]
+        [Alias("t")]
         public string Type { get; set; }
 
         [Parameter(
@@ -89,6 +91,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             HelpMessage = "Storage Account Tags.")]
         [AllowEmptyCollection]
         [ValidateNotNull]
+        [Alias("t")]
         public Hashtable[] Tags { get; set; }
 
         protected override void ProcessRecord()
