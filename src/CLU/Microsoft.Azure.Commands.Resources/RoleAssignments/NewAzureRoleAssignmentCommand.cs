@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithSPN,
             HelpMessage = "Parent resource of the resource to assign the role to, if there is any.")]
         [ValidateNotNullOrEmpty]
-        [Alias("parent", "p")]
+        [Alias("parent")]
         public string ParentResource { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Empty,

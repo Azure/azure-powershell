@@ -41,7 +41,6 @@ namespace Microsoft.Azure.Commands.Resources
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionCustom,
             HelpMessage = "If specified, only displays the custom created roles in the directory.")]
-        [Alias("c")]
         public SwitchParameter Custom { get; set; }
 
         protected override void ProcessRecord()

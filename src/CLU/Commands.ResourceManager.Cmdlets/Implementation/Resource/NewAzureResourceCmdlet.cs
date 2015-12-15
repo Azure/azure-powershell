@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "A hash table which represents resource properties.")]
         [ValidateNotNullOrEmpty]
-        [Alias("PropertyObject", "p")]
+        [Alias("PropertyObject")]
         public PSObject Properties { get; set; }
 
         /// <summary>

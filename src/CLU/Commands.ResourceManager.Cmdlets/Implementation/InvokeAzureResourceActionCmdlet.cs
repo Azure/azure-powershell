@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "A hash table which represents resource properties.")]
         [ValidateNotNullOrEmpty]
-        [Alias("Object","p")]
+        [Alias("Object")]
         public Hashtable Parameters { get; set; }
 
         /// <summary>
