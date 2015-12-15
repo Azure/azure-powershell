@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             NetworkManagementClient = this.GetNetworkManagementClientClient(context);
             ComputeManagementClient = GetComputeManagementClient();
             AuthorizationManagementClient = GetAuthorizationManagementClient();
-            GraphClient = GetGraphClient();
+            // GraphClient = GetGraphClient();
 
             helper.SetupManagementClients(
                 ResourceManagementClient,
@@ -171,8 +171,8 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                 //eventsClient,
                 NetworkManagementClient,
                 ComputeManagementClient,
-                AuthorizationManagementClient,
-                GraphClient);
+                AuthorizationManagementClient);
+                // GraphClient);
         }
 
         private GraphRbacManagementClient GetGraphClient()
