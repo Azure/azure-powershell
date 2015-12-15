@@ -18,28 +18,57 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
     {
         protected const string LinuxParameterSetName = "Linux";
         protected const string WindowsParameterSetName = "Windows";
-        protected const string VirtualMachineChefExtensionNoun = "AzureVMChefExtension";
 
-        protected const string ExtensionDefaultPublisher = "Chef.Bootstrap.WindowsAzure";
-        protected const string ExtensionDefaultName = "ChefClient";
-        protected const string LinuxExtensionName = "LinuxChefClient";
-        protected const string PrivateConfigurationTemplate = "{{\"validation_key\":\"{0}\"}}";
-        protected const string AutoUpdateTemplate = "\"autoUpdateClient\":\"{0}\"";
-        protected const string DeleteChefConfigTemplate = "\"deleteChefConfig\":\"{0}\"";
-        protected const string ClientRbTemplate = "\"client_rb\":\"{0}\"";
-        protected const string BootStrapOptionsTemplate = "\"bootstrap_options\":{0}";
-        protected const string RunListTemplate = "\"runlist\": \"\\\"{0}\\\"\"";
+        private string ExtensionDefaultName = "ChefClient";
+        private string LinuxExtensionName = "LinuxChefClient";
+        private bool autoUpgradeMinorVersion = false;
+        private string ExtensionDefaultPublisher = "Chef.Bootstrap.WindowsAzure";
+        private string location;
+        private string version;
+        private string publicConfiguration;
+        private string privateConfiguration;
 
-        protected string extensionName;
-        protected string publisherName;
-        protected string publicConfiguration;
-        protected string privateConfiguration;
+        private string PrivateConfigurationTemplate = "{{\"validation_key\":\"{0}\"}}";
+        private string AutoUpdateTemplate = "\"autoUpdateClient\":\"{0}\"";
+        private string DeleteChefConfigTemplate = "\"deleteChefConfig\":\"{0}\"";
+        private string ClientRbTemplate = "\"client_rb\":\"{0}\"";
+        private string BootStrapOptionsTemplate = "\"bootstrap_options\":{0}";
+        private string RunListTemplate = "\"runlist\": \"\\\"{0}\\\"\"";
 
         [Parameter(
+            Mandatory = true,
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Extension Version. Default is the latest available version")]
+            HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
-        public override string Version { get; set; }
+        public string ResourceGroupName { get; set; }
+
+        [Alias("ResourceName")]
+        [Parameter(
+            Mandatory = true,
+            Position = 1,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The virtual machine name.")]
+        [ValidateNotNullOrEmpty]
+        public string VMName { get; set; }
+
+        [Alias("HandlerVersion", "Version")]
+        [Parameter(
+            Mandatory = false,
+            Position = 9,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The extension version.")]
+        public string TypeHandlerVersion
+        {
+            get
+            {
+                return this.version;
+            }
+            set
+            {
+                this.version = value;
+            }
+        }
 
         [Parameter(
             Mandatory = true,
@@ -109,26 +138,206 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
             HelpMessage = "Set extension for Windows.")]
         public SwitchParameter Windows { get; set; }
 
-        internal void ExecuteCommand()
+        [Parameter(
+            Mandatory = false,
+            Position = 7,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The location.")]
+        public string Location
         {
-            SetDefault();
-            ValidateParameters();
-            SetPrivateConfig();
-            SetPublicConfig();
-            //RemovePredicateExtensions();
-            //AddResourceExtension();
-            WriteObject(VM);
+            get
+            {
+                if (string.IsNullOrEmpty(this.location))
+                {
+                    this.Location = GetLocationFromVm(this.ResourceGroupName, this.VMName);
+                }
+                return this.location;
+            }
+            set
+            {
+                this.location = value;
+            }
         }
 
-        private string GetLatestChefExtensionVersion()
+        [Alias("ExtensionName")]
+        [Parameter(
+            Mandatory = false,
+            Position = 8,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The extension name.")]
+        public string Name
         {
-            var extensionList = this.ComputeClient.ComputeManagementClient.VirtualMachineExtensions.List();
-            var version = extensionList.ResourceExtensions.Where(
-                extension => extension.Publisher == ExtensionDefaultPublisher
-                && extension.Name == extensionName).Max(extension => extension.Version);
-            string[] separators = { "." };
-            string majorVersion = version.Split(separators, StringSplitOptions.None)[0];
-            return majorVersion + ".*";
+            get
+            {
+                return this.ExtensionDefaultName;
+            }
+            set
+            {
+                this.ExtensionDefaultName = value;
+            }
+        }
+
+        [Parameter(
+            Mandatory = false,
+            Position = 10,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Pass a boolean value indicating whether auto upgrade chef extension minor version.")]
+        public bool AutoUpgradeMinorVersion
+        {
+            get
+            {
+                return this.autoUpgradeMinorVersion;
+            }
+            set
+            {
+                this.autoUpgradeMinorVersion = value;
+            }
+        }
+
+        private string PublicConfiguration
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(this.publicConfiguration))
+                {
+                    string ClientConfig = string.Empty;
+                    bool IsClientRbEmpty = string.IsNullOrEmpty(this.ClientRb);
+                    bool IsChefServerUrlEmpty = string.IsNullOrEmpty(this.ChefServerUrl);
+                    bool IsValidationClientNameEmpty = string.IsNullOrEmpty(this.ValidationClientName);
+                    bool IsRunListEmpty = string.IsNullOrEmpty(this.RunList);
+                    bool IsBootstrapOptionsEmpty = string.IsNullOrEmpty(this.BootstrapOptions);
+                    string AutoUpdateChefClient = this.AutoUpdateChefClient.IsPresent ? "true" : "false";
+                    string DeleteChefConfig = this.DeleteChefConfig.IsPresent ? "true" : "false";
+
+                    //Cases handled:
+                    // 1. When clientRb given by user and:
+                    //    1.1 if ChefServerUrl and ValidationClientName given then append it to end of ClientRb
+                    //    1.2 if ChefServerUrl given then append it to end of ClientRb
+                    //    1.3 if ValidationClientName given then append it to end of ClientRb
+                    // 2. When ClientRb not given but ChefServerUrl and ValidationClientName given by user then
+                    //    create ClientRb config using these values.
+
+                    if (!IsClientRbEmpty)
+                    {
+                        ClientConfig = Regex.Replace(File.ReadAllText(this.ClientRb),
+                            "\"|'", "\\\"").TrimEnd('\r', '\n');
+                        // Append ChefServerUrl and ValidationClientName to end of ClientRb
+                        if (!IsChefServerUrlEmpty && !IsValidationClientNameEmpty)
+                        {
+                            string UserConfig = @"
+chef_server_url  \""{0}\""
+validation_client_name 	\""{1}\""
+";
+                            ClientConfig += string.Format(UserConfig, this.ChefServerUrl, this.ValidationClientName);
+                        }
+                        // Append ChefServerUrl to end of ClientRb
+                        else if (!IsChefServerUrlEmpty)
+                        {
+                            string UserConfig = @"
+chef_server_url  \""{0}\""
+";
+                            ClientConfig += string.Format(UserConfig, this.ChefServerUrl);
+                        }
+                        // Append ValidationClientName to end of ClientRb
+                        else if (!IsValidationClientNameEmpty)
+                        {
+                            string UserConfig = @"
+validation_client_name 	\""{0}\""
+";
+                            ClientConfig += string.Format(UserConfig, this.ValidationClientName);
+                        }
+                    }
+                    // Create ClientRb config using ChefServerUrl and ValidationClientName
+                    else if (!IsChefServerUrlEmpty && !IsValidationClientNameEmpty)
+                    {
+                        string UserConfig = @"
+chef_server_url  \""{0}\""
+validation_client_name 	\""{1}\""
+";
+                        ClientConfig = string.Format(UserConfig, this.ChefServerUrl, this.ValidationClientName);
+                    }
+                    if (IsRunListEmpty)
+                    {
+                        if (IsBootstrapOptionsEmpty)
+                        {
+                            this.publicConfiguration = string.Format("{{{0},{1},{2}}}",
+                                string.Format(AutoUpdateTemplate, AutoUpdateChefClient),
+                                string.Format(DeleteChefConfigTemplate, DeleteChefConfig),
+                                string.Format(ClientRbTemplate, ClientConfig));
+                        }
+                        else
+                        {
+                            this.publicConfiguration = string.Format("{{{0},{1},{2},{3}}}",
+                                string.Format(AutoUpdateTemplate, AutoUpdateChefClient),
+                                string.Format(DeleteChefConfigTemplate, DeleteChefConfig),
+                                string.Format(ClientRbTemplate, ClientConfig),
+                                string.Format(BootStrapOptionsTemplate, this.BootstrapOptions));
+                        }
+                    }
+                    else
+                    {
+                        if (IsBootstrapOptionsEmpty)
+                        {
+                            this.publicConfiguration = string.Format("{{{0},{1},{2},{3}}}",
+                                string.Format(AutoUpdateTemplate, AutoUpdateChefClient),
+                                string.Format(DeleteChefConfigTemplate, DeleteChefConfig),
+                                string.Format(ClientRbTemplate, ClientConfig),
+                                string.Format(RunListTemplate, this.RunList));
+                        }
+                        else
+                        {
+                            this.publicConfiguration = string.Format("{{{0},{1},{2},{3},{4}}}",
+                                 string.Format(AutoUpdateTemplate, AutoUpdateChefClient),
+                                 string.Format(DeleteChefConfigTemplate, DeleteChefConfig),
+                                 string.Format(ClientRbTemplate, ClientConfig),
+                                 string.Format(RunListTemplate, this.RunList),
+                                 string.Format(BootStrapOptionsTemplate, this.BootstrapOptions));
+                        }
+                    }
+                }
+
+                return this.publicConfiguration;
+            }
+        }
+
+        private string PrivateConfiguration
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(this.privateConfiguration))
+                {
+                    this.privateConfiguration = string.Format(PrivateConfigurationTemplate,
+                    File.ReadAllText(this.ValidationPem).TrimEnd('\r', '\n'));
+                }                
+
+                return this.privateConfiguration;
+            }
+        }
+
+        private void ExecuteCommand()
+        {
+            ExecuteClientAction(() =>
+            {
+                var parameters = new VirtualMachineExtension
+                {
+                    Location = this.Location,
+                    Name = this.Name,
+                    Type = VirtualMachineExtensionType,
+                    Settings = this.PublicConfiguration,
+                    ProtectedSettings = this.PrivateConfiguration,
+                    Publisher = ExtensionDefaultPublisher,
+                    ExtensionType = this.Name,
+                    TypeHandlerVersion = this.TypeHandlerVersion,
+                    AutoUpgradeMinorVersion = this.AutoUpgradeMinorVersion
+                };
+
+                var op = this.VirtualMachineExtensionClient.CreateOrUpdate(
+                    this.ResourceGroupName,
+                    this.VMName,
+                    parameters);
+
+                WriteObject(op);
+            });
         }
 
         private void SetDefault()
@@ -143,123 +352,25 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
 
             if (this.Linux.IsPresent)
             {
-                extensionName = LinuxExtensionName;
+                this.Name = LinuxExtensionName;
             }
             else if (this.Windows.IsPresent)
             {
-                extensionName = ExtensionDefaultName;
+                this.Name = ExtensionDefaultName;
             }
-            this.Version = this.Version ?? GetLatestChefExtensionVersion();
+            this.TypeHandlerVersion = this.TypeHandlerVersion ?? GetLatestChefExtensionVersion();
         }
 
-        private void SetPrivateConfig()
-        {
-            this.privateConfiguration = string.Format(PrivateConfigurationTemplate,
-                File.ReadAllText(this.ValidationPem).TrimEnd('\r', '\n'));
-        }
-
-        private void SetPublicConfig()
-        {
-            string ClientConfig = string.Empty;
-            bool IsClientRbEmpty = string.IsNullOrEmpty(this.ClientRb);
-            bool IsChefServerUrlEmpty = string.IsNullOrEmpty(this.ChefServerUrl);
-            bool IsValidationClientNameEmpty = string.IsNullOrEmpty(this.ValidationClientName);
-            bool IsRunListEmpty = string.IsNullOrEmpty(this.RunList);
-            bool IsBootstrapOptionsEmpty = string.IsNullOrEmpty(this.BootstrapOptions);
-            string AutoUpdateChefClient = this.AutoUpdateChefClient.IsPresent ? "true" : "false";
-            string DeleteChefConfig = this.DeleteChefConfig.IsPresent ? "true" : "false";
-
-            //Cases handled:
-            // 1. When clientRb given by user and:
-            //    1.1 if ChefServerUrl and ValidationClientName given then append it to end of ClientRb
-            //    1.2 if ChefServerUrl given then append it to end of ClientRb
-            //    1.3 if ValidationClientName given then append it to end of ClientRb
-            // 2. When ClientRb not given but ChefServerUrl and ValidationClientName given by user then
-            //    create ClientRb config using these values.
-
-            if (!IsClientRbEmpty)
-            {
-                ClientConfig = Regex.Replace(File.ReadAllText(this.ClientRb),
-                    "\"|'", "\\\"").TrimEnd('\r', '\n');
-                // Append ChefServerUrl and ValidationClientName to end of ClientRb
-                if (!IsChefServerUrlEmpty && !IsValidationClientNameEmpty)
-                {
-                    string UserConfig = @"
-chef_server_url  \""{0}\""
-validation_client_name 	\""{1}\""
-";
-                    ClientConfig += string.Format(UserConfig, this.ChefServerUrl, this.ValidationClientName);
-                }
-                // Append ChefServerUrl to end of ClientRb
-                else if (!IsChefServerUrlEmpty)
-                {
-                    string UserConfig = @"
-chef_server_url  \""{0}\""
-";
-                    ClientConfig += string.Format(UserConfig, this.ChefServerUrl);
-                }
-                // Append ValidationClientName to end of ClientRb
-                else if (!IsValidationClientNameEmpty)
-                {
-                    string UserConfig = @"
-validation_client_name 	\""{0}\""
-";
-                    ClientConfig += string.Format(UserConfig, this.ValidationClientName);
-                }
-            }
-            // Create ClientRb config using ChefServerUrl and ValidationClientName
-            else if (!IsChefServerUrlEmpty && !IsValidationClientNameEmpty)
-            {
-                string UserConfig = @"
-chef_server_url  \""{0}\""
-validation_client_name 	\""{1}\""
-";
-                ClientConfig = string.Format(UserConfig, this.ChefServerUrl, this.ValidationClientName);
-            }
-
-            if (IsRunListEmpty)
-            {
-                if (IsBootstrapOptionsEmpty)
-                {
-                    this.publicConfiguration = string.Format("{{{0},{1},{2}}}",
-                        string.Format(AutoUpdateTemplate, AutoUpdateChefClient),
-                        string.Format(DeleteChefConfigTemplate, DeleteChefConfig),
-                        string.Format(ClientRbTemplate, ClientConfig));
-                }
-                else
-                {
-                    this.publicConfiguration = string.Format("{{{0},{1},{2},{3}}}",
-                        string.Format(AutoUpdateTemplate, AutoUpdateChefClient),
-                        string.Format(DeleteChefConfigTemplate, DeleteChefConfig),
-                        string.Format(ClientRbTemplate, ClientConfig),
-                        string.Format(BootStrapOptionsTemplate, this.BootstrapOptions));
-                }
-            }
-            else
-            {
-                if (IsBootstrapOptionsEmpty)
-                {
-                    this.publicConfiguration = string.Format("{{{0},{1},{2},{3}}}",
-                        string.Format(AutoUpdateTemplate, AutoUpdateChefClient),
-                        string.Format(DeleteChefConfigTemplate, DeleteChefConfig),
-                        string.Format(ClientRbTemplate, ClientConfig),
-                        string.Format(RunListTemplate, this.RunList));
-                }
-                else
-                {
-                    this.publicConfiguration = string.Format("{{{0},{1},{2},{3},{4}}}",
-                         string.Format(AutoUpdateTemplate, AutoUpdateChefClient),
-                         string.Format(DeleteChefConfigTemplate, DeleteChefConfig),
-                         string.Format(ClientRbTemplate, ClientConfig),
-                         string.Format(RunListTemplate, this.RunList),
-                         string.Format(BootStrapOptionsTemplate, this.BootstrapOptions));
-                }
-            }
-
+        private string GetLatestChefExtensionVersion()
+        {       
+            //Right now chef extension's major version is freezed as 1210. 
+            //Todo: Implement proper logic to fetch the current major version number
+            return "1210.*";
         }
 
         protected override void ValidateParameters()
-        {                        
+        {
+            this.ValidateParameters();
             bool IsClientRbEmpty = string.IsNullOrEmpty(this.ClientRb);
             bool IsChefServerUrlEmpty = string.IsNullOrEmpty(this.ChefServerUrl);
             bool IsValidationClientNameEmpty = string.IsNullOrEmpty(this.ValidationClientName);
@@ -271,10 +382,12 @@ validation_client_name 	\""{1}\""
             }
         }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
+            SetDefault();
+            ValidateParameters();
             ExecuteCommand();
-        }       
+        }
     }
 }
