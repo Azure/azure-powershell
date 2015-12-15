@@ -182,7 +182,11 @@
     Dnx uses dynamic compilation, 'clean' is unnecessary -->
   <Target
     Name="Full"
-    DependsOnTargets="Build;Test" />
+    DependsOnTargets="Build;Test" >
+    <Exec Command="$(LibraryToolsFolder)\CLU\BuildAndInstallClu.bat" />
+    <!--do a simple verification-->
+    <Exec Command="$(LibraryRoot)drop\clurun\win7-x64\azure.bat help" />
+  </Target>
 
   <Target Name="BuildMsBuildTask" DependsOnTargets="RestoreNugetPackages">
     <MSBuild Projects="$(LibraryToolsFolder)\BuildPackagesTask\Microsoft.Azure.Build.Tasks.csproj"

@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.Tags.Tag
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Name of the tag to remove.")]
         [ValidateNotNullOrEmpty]
+        [Alias("n")]
         public string Name { get; set; }
 
         [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Value of the tag to remove. If not specified, remove the entire tag. If specified, only remove the tag value.")]
@@ -33,6 +34,7 @@ namespace Microsoft.Azure.Commands.Tags.Tag
         public string[] Value { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "If not specified, will prompt for confirmation. If specified, won't prompt.")]
+        [Alias("f")]
         public SwitchParameter Force { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Return object if specified.")]

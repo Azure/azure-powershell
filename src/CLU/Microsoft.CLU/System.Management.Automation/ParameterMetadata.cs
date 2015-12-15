@@ -196,6 +196,13 @@ namespace System.Management.Automation
 
         internal object InterpretValue(string strValue, Type argType)
         {
+            if (strValue != null && 
+                argType.GetTypeInfo().IsGenericType && 
+                argType.GetGenericTypeDefinition() == typeof(Nullable<>))
+            {
+                return InterpretValue(strValue, argType.GetGenericArguments()[0]);
+            }
+
             if (!argType.GetTypeInfo().IsClass)
             {
                 if (strValue == null) return null;

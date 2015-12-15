@@ -42,6 +42,7 @@ namespace Microsoft.Azure.Commands.Resources.ProviderFeatures
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource provider namespace.", ParameterSetName = GetAzureProviderFeatureCmdlet.GetFeatureParameterSet)]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource provider namespace.", ParameterSetName = GetAzureProviderFeatureCmdlet.ListAvailableParameterSet)]
         [ValidateNotNullOrEmpty]
+        [Alias("m", "namespace")]
         public string ProviderNamespace { get; set; }
 
         /// <summary>
@@ -49,12 +50,14 @@ namespace Microsoft.Azure.Commands.Resources.ProviderFeatures
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The feature name.", ParameterSetName = GetAzureProviderFeatureCmdlet.GetFeatureParameterSet)]
         [ValidateNotNullOrEmpty]
+        [Alias("n", "name")]
         public string FeatureName { get; set; }
 
         /// <summary>
         /// Gets or sets a switch indicating whether to list all available features or just the ones registered with the current subscription
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "When set, lists all available features including those not registered with the current subscription.", ParameterSetName = GetAzureProviderFeatureCmdlet.ListAvailableParameterSet)]
+        [Alias("a")]
         public SwitchParameter ListAvailable { get; set; }
 
         protected override void ProcessRecord()

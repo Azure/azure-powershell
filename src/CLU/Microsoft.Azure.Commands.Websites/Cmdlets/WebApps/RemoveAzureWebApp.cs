@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         private bool deleteMetricsByDefault = true;
 
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        [Alias("f")]
         public SwitchParameter Force { get; set; }
             
         protected override void ProcessRecord()

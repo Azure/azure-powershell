@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     {
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The user email address.")]
         [ValidateNotNullOrEmpty]
+        [Alias("id")]
         public Guid GroupObjectId { get; set; }
 
         protected override void ProcessRecord()
