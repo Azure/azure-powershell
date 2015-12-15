@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
         [Parameter(Position = 9, Mandatory = false, HelpMessage = "The databases to backup.")]
         [ValidateNotNullOrEmpty]
-        public IList<DatabaseBackupSetting> Databases;
+        public DatabaseBackupSetting[] Databases;
 
         public override void ExecuteCmdlet()
         {
@@ -48,6 +48,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 RetentionPeriodInDays, StartTime);
             BackupRequest request = new BackupRequest()
             {
+                Location = "",
                 Enabled = true,
                 StorageAccountUrl = this.StorageAccountUrl,
                 BackupSchedule = schedule,

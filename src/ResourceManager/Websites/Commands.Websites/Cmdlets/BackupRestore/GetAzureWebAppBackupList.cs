@@ -11,7 +11,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            WriteObject(WebsitesClient.ListSiteBackups(ResourceGroupName, Name, Slot));
+            var list = WebsitesClient.ListSiteBackups(ResourceGroupName, Name, Slot).Value;
+            WriteObject(list, true);
         }
     }
 }

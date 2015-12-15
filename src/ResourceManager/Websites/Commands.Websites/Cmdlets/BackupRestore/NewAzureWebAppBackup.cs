@@ -15,11 +15,11 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         public string StorageAccountUrl;
 
         [Parameter(Position = 4, Mandatory = false, HelpMessage = "The name of the backup.")]
-        [ValidateNotNullOrEmpty]
+        //[ValidateNotNullOrEmpty]
         public string BackupName { get; set; }
 
         [Parameter(Position = 5, Mandatory = false, HelpMessage = "The databases to backup.")]
-        [ValidateNotNullOrEmpty]
+        //[ValidateNotNullOrEmpty]
         public IList<DatabaseBackupSetting> Databases;
 
         public override void ExecuteCmdlet()
@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             base.ExecuteCmdlet();
             BackupRequest request = new BackupRequest()
             {
+                // Location is required by Resource (base class of BackupRequest)
+                // to not be null, but is not actually significant for the request.
+                Location = "",
                 StorageAccountUrl = this.StorageAccountUrl,
                 BackupRequestName = this.BackupName,
                 Databases = this.Databases
