@@ -183,7 +183,9 @@
   <Target
     Name="Full"
     DependsOnTargets="Build;Test" >
-    <Exec Command="$(LibraryToolsFolder)\CLU\BuildAndInstallClu.bat"></Exec>
+    <Exec Command="$(LibraryToolsFolder)\CLU\BuildAndInstallClu.bat" />
+    <!--do a simple verification-->
+    <Exec Command="$(LibraryRoot)drop\clurun\win7-x64\azure.bat help" />
   </Target>
 
   <Target Name="BuildMsBuildTask" DependsOnTargets="RestoreNugetPackages">
