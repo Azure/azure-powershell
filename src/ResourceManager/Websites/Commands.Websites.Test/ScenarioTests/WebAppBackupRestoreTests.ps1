@@ -38,7 +38,7 @@ function Test-CreateNewWebAppBackup
 		$dbBackupSetting = Get-DbBackupSetting $dbName $dbConnStr
 
 		# Create a backup of the web app
-		$result = New-AzureRMWebAppBackup -ResourceGroupName $rgName -Name $wName -StorageAccountUrl $sasUri -BackupName $backupName -Databases $dbBackupSetting
+		$result = New-AzureRmWebAppBackup -ResourceGroupName $rgName -Name $wName -StorageAccountUrl $sasUri -BackupName $backupName -Databases $dbBackupSetting
 
 		# Assert
 		Assert-AreEqual $backupName $result.BackupName
@@ -46,7 +46,7 @@ function Test-CreateNewWebAppBackup
 		Assert-AreEqualArray $dbBackupSetting $result.Databases
 
 		# Test piping
-		$pipeResult = $app | New-AzureRMWebAppBackup -StorageAccountUrl $sasUri -BackupName $pipeBackupName
+		$pipeResult = $app | New-AzureRmWebAppBackup -StorageAccountUrl $sasUri -BackupName $pipeBackupName
 
 		# Assert
 		Assert-AreEqual $pipeBackupName $pipeResult.BackupName
@@ -89,17 +89,17 @@ function Test-GetWebAppBackup
 		$dbBackupSetting = Get-DbBackupSetting $dbName $dbConnStr
 
 		# Create a backup of the web app
-		$newBackup = New-AzureRMWebAppBackup -ResourceGroupName $rgName -Name $wName -StorageAccountUrl $sasUri -BackupName $backupName -Databases $dbBackupSetting
+		$newBackup = New-AzureRmWebAppBackup -ResourceGroupName $rgName -Name $wName -StorageAccountUrl $sasUri -BackupName $backupName -Databases $dbBackupSetting
 
 		# Get the backup
-		$result = Get-AzureRMWebAppBackup -ResourceGroupName $rgName -Name $wName -BackupId $newBackup.Id
+		$result = Get-AzureRmWebAppBackup -ResourceGroupName $rgName -Name $wName -BackupId $newBackup.Id
 
 		# Assert
 		Assert-AreEqual $backupName $result.BackupName
 		Assert-AreEqualArray $dbBackupSetting $result.Databases
 
 		# Test piping
-		$pipeResult = $app | Get-AzureRMWebAppBackup -BackupId $newBackup.Id
+		$pipeResult = $app | Get-AzureRmWebAppBackup -BackupId $newBackup.Id
 
 		Assert-AreEqual $backupName $pipeResult.BackupName
 		Assert-AreEqualArray $dbBackupSetting $pipeResult.Databases
@@ -137,25 +137,25 @@ function Test-GetWebAppBackupList
 		$dbBackupSetting = Get-DbBackupSetting $dbName $dbConnStr
 		
 		# Create a backup of the web app
-		$backup1 = New-AzureRMWebAppBackup -ResourceGroupName $rgName -Name $wName -StorageAccountUrl $sasUri -BackupName $backupName -Databases $dbBackupSetting
+		$backup1 = New-AzureRmWebAppBackup -ResourceGroupName $rgName -Name $wName -StorageAccountUrl $sasUri -BackupName $backupName -Databases $dbBackupSetting
 
 		# Wait for that backup to complete, then make another one
 		Do
 		{
 			Start-Sleep -Seconds 5
-			$backupStatus = ($app | Get-AzureRMWebAppBackup -BackupId $backup1.Id).Status
+			$backupStatus = ($app | Get-AzureRmWebAppBackup -BackupId $backup1.Id).Status
 		} Until ($backupStatus -ne [Microsoft.Azure.Management.WebSites.Models.BackupItemStatus]::Created -and
 		         $backupStatus -ne [Microsoft.Azure.Management.WebSites.Models.BackupItemStatus]::InProgress)
-		$backup2 = New-AzureRMWebAppBackup -ResourceGroupName $rgName -Name $wName -StorageAccountUrl $sasUri -BackupName $backupName -Databases $dbBackupSetting
+		$backup2 = New-AzureRmWebAppBackup -ResourceGroupName $rgName -Name $wName -StorageAccountUrl $sasUri -BackupName $backupName -Databases $dbBackupSetting
 
 		# Wait for that backup to complete, then make a third one
 		Do
 		{
 			Start-Sleep -Seconds 5
-			$backupStatus = ($app | Get-AzureRMWebAppBackup -BackupId $backup2.Id).Status
+			$backupStatus = ($app | Get-AzureRmWebAppBackup -BackupId $backup2.Id).Status
 		} Until ($backupStatus -ne [Microsoft.Azure.Management.WebSites.Models.BackupItemStatus]::Created -and
 		         $backupStatus -ne [Microsoft.Azure.Management.WebSites.Models.BackupItemStatus]::InProgress)
-		$backup3 = New-AzureRMWebAppBackup -ResourceGroupName $rgName -Name $wName -StorageAccountUrl $sasUri -BackupName $backupName -Databases $dbBackupSetting
+		$backup3 = New-AzureRmWebAppBackup -ResourceGroupName $rgName -Name $wName -StorageAccountUrl $sasUri -BackupName $backupName -Databases $dbBackupSetting
 
 		# Get a list of the backups
 		$backupList = (Get-AzureWebAppBackupList -ResourceGroupName $rgName -Name $wName).Value
@@ -209,39 +209,39 @@ function Test-RemoveAzureWebAppBackup
 		$sasUri = Create-TestStorageAccount $rgName $location $stoName $stoType
 		$dbBackupSetting = Get-DbBackupSetting $dbName $dbConnStr
 
-		$backup1 = New-AzureRMWebAppBackup -ResourceGroupName $rgName -Name $wName -StorageAccountUrl $sasUri -BackupName $backupName -Databases $dbBackupSetting
+		$backup1 = New-AzureRmWebAppBackup -ResourceGroupName $rgName -Name $wName -StorageAccountUrl $sasUri -BackupName $backupName -Databases $dbBackupSetting
 		# Wait for that backup to complete, then delete it
 		Do
 		{
 			Start-Sleep -Seconds 5
-			$backupStatus = ($app | Get-AzureRMWebAppBackup -BackupId $backup1.Id).Status
+			$backupStatus = ($app | Get-AzureRmWebAppBackup -BackupId $backup1.Id).Status
 		} Until ($backupStatus -ne [Microsoft.Azure.Management.WebSites.Models.BackupItemStatus]::Created -and
 		         $backupStatus -ne [Microsoft.Azure.Management.WebSites.Models.BackupItemStatus]::InProgress)
-		$result = Remove-AzureRMWebAppBackup -ResourceGroupName $rgName -Name $wName -BackupId $backup1.Id
+		$result = Remove-AzureRmWebAppBackup -ResourceGroupName $rgName -Name $wName -BackupId $backup1.Id
 
 		# Assert
 		Assert-AreEqual $backupName $result.BackupName
 		Assert-AreEqualArray $dbBackupSetting $result.Databases
-		$status = ($app | Get-AzureRMWebAppBackup -BackupId $backup1.Id).Status
+		$status = ($app | Get-AzureRmWebAppBackup -BackupId $backup1.Id).Status
 		Assert-True (([Microsoft.Azure.Management.WebSites.Models.BackupItemStatus]::DeleteInProgress) -eq $status) -or
 					(([Microsoft.Azure.Management.WebSites.Models.BackupItemStatus]::Deleted) -eq $status) 
 
 		# Test piping
-		$backup2 = New-AzureRMWebAppBackup -ResourceGroupName $rgName -Name $wName -StorageAccountUrl $sasUri -BackupName $pipeBackupName -Databases $dbBackupSetting
+		$backup2 = New-AzureRmWebAppBackup -ResourceGroupName $rgName -Name $wName -StorageAccountUrl $sasUri -BackupName $pipeBackupName -Databases $dbBackupSetting
 		# Wait before deleting
 		Do
 		{
 			Start-Sleep -Seconds 5
-			$backupStatus = ($app | Get-AzureRMWebAppBackup -BackupId $backup2.Id).Status
+			$backupStatus = ($app | Get-AzureRmWebAppBackup -BackupId $backup2.Id).Status
 		} Until ($backupStatus -ne [Microsoft.Azure.Management.WebSites.Models.BackupItemStatus]::Created -and
 		         $backupStatus -ne [Microsoft.Azure.Management.WebSites.Models.BackupItemStatus]::InProgress)
-		$result = Remove-AzureRMWebAppBackup -ResourceGroupName $rgName -Name $wName -BackupId $backup2.Id
-		$pipeResult = $backup2 | Remove-AzureRMWebAppBackup $backup2.Id
+		$result = Remove-AzureRmWebAppBackup -ResourceGroupName $rgName -Name $wName -BackupId $backup2.Id
+		$pipeResult = $backup2 | Remove-AzureRmWebAppBackup $backup2.Id
 
 		# Assert
 		Assert-AreEqual $backupName $pipeResult.BackupName
 		Assert-AreEqualArray $dbBackupSetting $pipeResult.Databases
-		$status = ($app | Get-AzureRMWebAppBackup -BackupId $backup2.Id).Status
+		$status = ($app | Get-AzureRmWebAppBackup -BackupId $backup2.Id).Status
 		Assert-True (([Microsoft.Azure.Management.WebSites.Models.BackupItemStatus]::DeleteInProgress) -eq $status) -or
 					(([Microsoft.Azure.Management.WebSites.Models.BackupItemStatus]::Deleted) -eq $status) 
 	}
@@ -285,7 +285,7 @@ function Test-EditWebAppBackupConfiguration
 		$retentionPeriod = 3
 
 		# Set the backup configuration
-		$config = Edit-AzureRMWebAppBackupConfiguration `
+		$config = Edit-AzureRmWebAppBackupConfiguration `
 			-ResourceGroupName $rgName -Name $wName -StorageAccountUrl $sasUri `
 			-FrequencyInterval $frequencyInterval -FrequencyUnit $frequencyUnit `
 			-RetentionPeriodInDays $retentionPeriod -StartTime $startTime `
@@ -303,7 +303,7 @@ function Test-EditWebAppBackupConfiguration
 		Assert-AreEqual $retentionPeriod $configSchedule.RetentionPeriodInDays
 
 		# Test piping
-		$pipeConfig = $app | Edit-AzureRMWebAppBackupConfiguration `
+		$pipeConfig = $app | Edit-AzureRmWebAppBackupConfiguration `
 			-StorageAccountUrl $sasUri -FrequencyInterval $frequencyInterval `
 			-FrequencyUnit $frequencyUnit -RetentionPeriodInDays $retentionPeriod `
 			-StartTime $startTime -KeepAtLeastOneBackup -Databases $dbBackupSetting
@@ -325,7 +325,7 @@ function Test-EditWebAppBackupConfiguration
 		Remove-AzureRmStorageAccount -ResourceGroupName $rgName -Name $stoName
 		Remove-AzureRmSqlDatabase -ResourceGroupName $rgName -ServerName $dbServerName -DatabaseName $dbName -Force
 		Remove-AzureRmSqlServer -ResourceGroupName $rgName -ServerName $dbServerName -Force
-		Remove-AzureRMWebApp -ResourceGroupName $rgName -Name $wName -Force
+		Remove-AzureRmWebApp -ResourceGroupName $rgName -Name $wName -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgName -Name  $whpName -Force
 		Remove-AzureRmResourceGroup -Name $rgName -Force
     }
@@ -359,13 +359,13 @@ function Test-GetWebAppBackupConfiguration
 		$retentionPeriod = 3
 
 		# Set the backup configuration
-		Edit-AzureRMWebAppBackupConfiguration `
+		Edit-AzureRmWebAppBackupConfiguration `
 			-ResourceGroupName $rgName -Name $wName -StorageAccountUrl $sasUri `
 			-FrequencyInterval $frequencyInterval -FrequencyUnit $frequencyUnit `
 			-RetentionPeriodInDays $retentionPeriod -StartTime $startTime `
 			-KeepAtLeastOneBackup -Databases $dbBackupSetting
 
-		$config = Get-AzureRMWebAppBackupConfiguration -ResourceGroupName $rgName -Name $wName
+		$config = Get-AzureRmWebAppBackupConfiguration -ResourceGroupName $rgName -Name $wName
 
 		# Assert
 		Assert-True $config.Enabled
@@ -379,7 +379,7 @@ function Test-GetWebAppBackupConfiguration
 		Assert-AreEqual $retentionPeriod $configSchedule.RetentionPeriodInDays
 
 		# Test piping
-		$pipeConfig = $app | Get-AzureRMWebAppBackupConfiguration
+		$pipeConfig = $app | Get-AzureRmWebAppBackupConfiguration
 		# Assert
 		Assert-True $pipeConfig.Enabled
 		Assert-AreEqual $sasUri $pipeConfig.StorageAccountUrl
@@ -429,21 +429,21 @@ function Test-RestoreAzureWebAppBackup
 		$sasUri = Create-TestStorageAccount $rgName $location $stoName $stoType
 		$dbBackupSetting = Get-DbBackupSetting $dbName $dbConnStr
 
-		$backup = New-AzureRMWebAppBackup -ResourceGroupName $rgName -Name $wName -StorageAccountUrl $sasUri -BackupName $backupName -Databases $dbBackupSetting
+		$backup = New-AzureRmWebAppBackup -ResourceGroupName $rgName -Name $wName -StorageAccountUrl $sasUri -BackupName $backupName -Databases $dbBackupSetting
 		# Wait for that backup to complete, then restore it to a new site
 		Do
 		{
 			Start-Sleep -Seconds 5
-			$backup = $app | Get-AzureRMWebAppBackup -BackupId $backup.Id
+			$backup = $app | Get-AzureRmWebAppBackup -BackupId $backup.Id
 			$backupStatus = $backup.Status
 		} Until ($backupStatus -ne [Microsoft.Azure.Management.WebSites.Models.BackupItemStatus]::Created -and
 		         $backupStatus -ne [Microsoft.Azure.Management.WebSites.Models.BackupItemStatus]::InProgress)
-		Restore-AzureRMWebAppBackup -ResourceGroupName $rgName -Name $restoredSiteName -StorageAccountUrl $sasUri -BlobName $backup.BlobName -Databases $dbBackupSetting
+		Restore-AzureRmWebAppBackup -ResourceGroupName $rgName -Name $restoredSiteName -StorageAccountUrl $sasUri -BlobName $backup.BlobName -Databases $dbBackupSetting
 		# Wait a few seconds for the restore to start, then check that the new site exists
 		Start-Sleep -Seconds 10
 		Try
 		{
-			Get-AzureRMWebApp -ResourceGroupName $rgName -Name $restoredSiteName
+			Get-AzureRmWebApp -ResourceGroupName $rgName -Name $restoredSiteName
 		}
 		Catch [Microsoft.Rest.Azure.CloudException]
 		{
@@ -451,16 +451,16 @@ function Test-RestoreAzureWebAppBackup
 		}
 
 		# Test piping
-		$pBackup = New-AzureRMWebAppBackup -ResourceGroupName $rgName -Name $wName -StorageAccountUrl $sasUri -BackupName $pipeBackupName -Databases $dbBackupSetting
-		$pipeResult = $pBackup | Remove-AzureRMWebAppBackup $pBackup.Id
+		$pBackup = New-AzureRmWebAppBackup -ResourceGroupName $rgName -Name $wName -StorageAccountUrl $sasUri -BackupName $pipeBackupName -Databases $dbBackupSetting
+		$pipeResult = $pBackup | Remove-AzureRmWebAppBackup $pBackup.Id
 		Do
 		{
 			Start-Sleep -Seconds 5
-			$pBackup = $app | Get-AzureRMWebAppBackup -BackupId $pBackup.Id
+			$pBackup = $app | Get-AzureRmWebAppBackup -BackupId $pBackup.Id
 			$backupStatus = $pBackup.Status
 		} Until ($backupStatus -ne [Microsoft.Azure.Management.WebSites.Models.BackupItemStatus]::Created -and
 		         $backupStatus -ne [Microsoft.Azure.Management.WebSites.Models.BackupItemStatus]::InProgress)
-		$app | Restore-AzureRMWebAppBackup -StorageAccountUrl $sasUri -BlobName $pBackup.BlobName -Databases $dbBackupSetting -Overwrite
+		$app | Restore-AzureRmWebAppBackup -StorageAccountUrl $sasUri -BlobName $pBackup.BlobName -Databases $dbBackupSetting -Overwrite
 	}
     finally
 	{
@@ -470,10 +470,10 @@ function Test-RestoreAzureWebAppBackup
 		Remove-AzureRmSqlServer -ResourceGroupName $rgName -ServerName $dbServerName -Force
 		# Restore will create new server farms for restored websites, so we must clean those server farms up as well
 		# This code gets the web app's server farm name by selecting the last path segment of the server farm ID
-		$appSfName = (Get-AzureRMWebApp -ResourceGroupName $rgName -Name $wName).ServerFarmId.Split('/') | Select-Object -Last 1
-		$restoredAppSfName = (Get-AzureRMWebApp -ResourceGroupName $rgName -Name $restoredSiteName).ServerFarmId.Split('/') | Select-Object -Last 1
+		$appSfName = (Get-AzureRmWebApp -ResourceGroupName $rgName -Name $wName).ServerFarmId.Split('/') | Select-Object -Last 1
+		$restoredAppSfName = (Get-AzureRmWebApp -ResourceGroupName $rgName -Name $restoredSiteName).ServerFarmId.Split('/') | Select-Object -Last 1
 		Remove-AzureRmWebApp -ResourceGroupName $rgName -Name $wName -Force
-		Remove-AzureRMWebApp -ResourceGroupName $rgName -Name $restoredSiteName
+		Remove-AzureRmWebApp -ResourceGroupName $rgName -Name $restoredSiteName
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgName -Name $whpName -Force
 		# Must be careful because restore to new server farm is still a work in progress
 		# and old versions of restore will just restore to the original server farm

@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     ///     Gets the automatic backup configuration for an Azure Web App
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMWebAppBackupConfiguration")]
+    [Cmdlet(VerbsCommon.Get, "AzureRmWebAppBackupConfiguration")]
     public class GetAzureWebAppBackupConfiguration : WebAppOptionalSlotBaseCmdlet
     {
         public override void ExecuteCmdlet()
