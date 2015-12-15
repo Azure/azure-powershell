@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="utf-8"?>
+<helpItems xmlns="http://msh" schema="maml">
+	<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+		<command:details>
+			<command:name>
+				Get-AzureRmRecoveryServicesVaultSettingsFile
+			</command:name>
+			<maml:description>
+				<maml:para>Allows user to download the Azure Site Recovery Vault Settings File
+				</maml:para>
+			</maml:description>
+			<maml:copyright>
+				<maml:para></maml:para>
+			</maml:copyright>
+			<command:verb>Get</command:verb>
+			<command:noun>AzureRmRecoveryServicesVaultSettingsFile</command:noun>
+			<dev:version></dev:version>
+		</command:details>
+		<maml:description>
+			<maml:para>The Get-AzureRmRecoveryServicesVaultSettingsFile cmdlet gets the settings file for an Azure Site Recovery vault.
+			</maml:para>
+		</maml:description>
+		<!-- Cmdlet syntax section-->
+		<command:syntax>
+			<command:syntaxItem>
+				<maml:name>Get-AzureRmRecoveryServicesVaultSettingsFile</maml:name>
+				<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+					<maml:name>Vault</maml:name>
+					<maml:description>
+						<maml:para>Azure Site Recovery Vault object</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">ASRVault</command:parameterValue>
+				</command:parameter>
+				<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+					<maml:name>Path</maml:name>
+					<maml:description>
+						<maml:para>Path to the Azure site Recovery Vault Settings file. This file can be downloaded from Azure Site Recovery Vault portal and stored locally</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+				</command:parameter>
+			</command:syntaxItem>
+			<command:syntaxItem>
+				<maml:name>Get-AzureRmRecoveryServicesVaultSettingsFile</maml:name>
+				<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+					<maml:name>SiteFriendlyName</maml:name>
+					<maml:description>
+						<maml:para>The site friendly name if the vault credentials are to be downloaded for a Hyper-V site</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+				</command:parameter>
+				<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+					<maml:name>SiteIdentifier</maml:name>
+					<maml:description>
+						<maml:para>The site identifier if the vault credentials are to be downloaded for a Hyper-V site</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+				</command:parameter>
+				<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+					<maml:name>Vault</maml:name>
+					<maml:description>
+						<maml:para>Azure Site Recovery Vault object</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">ASRVault</command:parameterValue>
+				</command:parameter>
+				<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+					<maml:name>Path</maml:name>
+					<maml:description>
+						<maml:para>Path to the Azure site Recovery Vault Settings file. This file can be downloaded from Azure Site Recovery Vault portal and stored locally</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+				</command:parameter>
+			</command:syntaxItem>
+		</command:syntax>
+		<!-- Cmdlet parameter section  -->
+		<command:parameters>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Path</maml:name>
+				<maml:description>
+					<maml:para>Path to the Azure site Recovery Vault Settings file. This file can be downloaded from Azure Site Recovery Vault portal and stored locally</maml:para>
+
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+				<dev:type>
+					<maml:name>string</maml:name>
+					<maml:uri/>
+				</dev:type>
+				<dev:defaultValue></dev:defaultValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>SiteFriendlyName</maml:name>
+				<maml:description>
+					<maml:para>The site friendly name if the vault credentials are to be downloaded for a Hyper-V site</maml:para>
+
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+				<dev:type>
+					<maml:name>string</maml:name>
+					<maml:uri/>
+				</dev:type>
+				<dev:defaultValue></dev:defaultValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>SiteIdentifier</maml:name>
+				<maml:description>
+					<maml:para>The site identifier if the vault credentials are to be downloaded for a Hyper-V site</maml:para>
+
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+				<dev:type>
+					<maml:name>string</maml:name>
+					<maml:uri/>
+				</dev:type>
+				<dev:defaultValue></dev:defaultValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+				<maml:name>Vault</maml:name>
+				<maml:description>
+					<maml:para>Azure Site Recovery Vault object</maml:para>
+
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ASRVault</command:parameterValue>
+				<dev:type>
+					<maml:name>ASRVault</maml:name>
+					<maml:uri/>
+				</dev:type>
+				<dev:defaultValue></dev:defaultValue>
+			</command:parameter>
+		</command:parameters>
+		<!-- Input - Output section-->
+		<command:inputTypes>
+			<command:inputType>
+				<dev:type>
+					<maml:name></maml:name>
+					<maml:uri/>
+					<maml:description />
+				</dev:type>
+				<maml:description>
+					<maml:para>
+						<!-- description  -->
+
+					</maml:para>
+				</maml:description>
+			</command:inputType>
+		</command:inputTypes>
+		<command:returnValues>
+			<command:returnValue>
+				<dev:type>
+					<maml:name></maml:name>
+					<maml:uri />
+					<maml:description />
+				</dev:type>   
+				<maml:description>
+					<maml:para>
+						<!-- description  -->
+
+					</maml:para>
+				</maml:description> 
+			</command:returnValue>
+		</command:returnValues>
+		<!-- Error section-->
+		<command:terminatingErrors />
+		<command:nonTerminatingErrors />
+		<!-- Notes section  -->
+		<maml:alertSet>
+			<maml:title></maml:title>
+			<maml:alert>
+				<maml:para>
+
+				</maml:para>
+			</maml:alert>
+			<maml:alert>
+				<maml:para></maml:para>
+			</maml:alert>
+		</maml:alertSet>
+		<!-- Example section  --> 
+		<command:examples>
+		</command:examples>
+		<!-- Link section  -->
+		<maml:relatedLinks>
+			<maml:navigationLink>
+				<maml:linkText></maml:linkText>
+				<maml:uri/>
+			</maml:navigationLink>
+		</maml:relatedLinks>
+	</command:command>
+	<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+		<command:details>
+			<command:name>
+				Get-AzureRmRecoveryServicesVault
+			</command:name>
+			<maml:description>
+				<maml:para>Gets a list of Recovery Services vault in the current subscription
+				</maml:para>
+			</maml:description>
+			<maml:copyright>
+				<maml:para></maml:para>
+			</maml:copyright>
+			<command:verb>Get</command:verb>
+			<command:noun>AzureRmRecoveryServicesVault</command:noun>
+			<dev:version></dev:version>
+		</command:details>
+		<maml:description>
+			<maml:para>The Get-AzureRmRecoveryServicesVault cmdlet gets a list of Recovery Services vault in the current subscription
+			</maml:para>
+		</maml:description>
+		<!-- Cmdlet syntax section-->
+		<command:syntax>
+			<command:syntaxItem>
+				<maml:name>Get-AzureRmRecoveryServicesVault</maml:name>
+				<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+					<maml:name>Name</maml:name>
+					<maml:description>
+						<maml:para>The name of the vault to be queried for.</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+				</command:parameter>
+				<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+					<maml:name>ResourceGroupName</maml:name>
+					<maml:description>
+						<maml:para>The name of the Azure Resource group in which to create or from which to retrieve the specified recovery services object.</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+				</command:parameter>
+			</command:syntaxItem>
+		</command:syntax>
+		<!-- Cmdlet parameter section  -->
+		<command:parameters>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para>The name of the vault to be queried for.</maml:para>
+
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+				<dev:type>
+					<maml:name>string</maml:name>
+					<maml:uri/>
+				</dev:type>
+				<dev:defaultValue></dev:defaultValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ResourceGroupName</maml:name>
+				<maml:description>
+					<maml:para>The name of the Azure Resource group in which to create or from which to retrieve the specified recovery services object.</maml:para>
+
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+				<dev:type>
+					<maml:name>string</maml:name>
+					<maml:uri/>
+				</dev:type>
+				<dev:defaultValue></dev:defaultValue>
+			</command:parameter>
+		</command:parameters>
+		<!-- Input - Output section-->
+		<command:inputTypes>
+			<command:inputType>
+				<dev:type>
+					<maml:name></maml:name>
+					<maml:uri/>
+					<maml:description />
+				</dev:type>
+				<maml:description>
+					<maml:para>
+						<!-- description  -->
+
+					</maml:para>
+				</maml:description>
+			</command:inputType>
+		</command:inputTypes>
+		<command:returnValues>
+			<command:returnValue>
+				<dev:type>
+					<maml:name></maml:name>
+					<maml:uri />
+					<maml:description />
+				</dev:type>   
+				<maml:description>
+					<maml:para>
+						<!-- description  -->
+
+					</maml:para>
+				</maml:description> 
+			</command:returnValue>
+		</command:returnValues>
+		<!-- Error section-->
+		<command:terminatingErrors />
+		<command:nonTerminatingErrors />
+		<!-- Notes section  -->
+		<maml:alertSet>
+			<maml:title></maml:title>
+			<maml:alert>
+				<maml:para>
+
+				</maml:para>
+			</maml:alert>
+			<maml:alert>
+				<maml:para></maml:para>
+			</maml:alert>
+		</maml:alertSet>
+		<!-- Example section  --> 
+		<command:examples>
+		</command:examples>
+		<!-- Link section  -->
+		<maml:relatedLinks>
+			<maml:navigationLink>
+				<maml:linkText></maml:linkText>
+				<maml:uri/>
+			</maml:navigationLink>
+		</maml:relatedLinks>
+	</command:command>
+	<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+		<command:details>
+			<command:name>
+				New-AzureRmRecoveryServicesVault
+			</command:name>
+			<maml:description>
+				<maml:para>Creates a new Recovery services vault
+				</maml:para>
+			</maml:description>
+			<maml:copyright>
+				<maml:para></maml:para>
+			</maml:copyright>
+			<command:verb>New</command:verb>
+			<command:noun>AzureRmRecoveryServicesVault</command:noun>
+			<dev:version></dev:version>
+		</command:details>
+		<maml:description>
+			<maml:para>The New-AzureRmRecoveryServicesVault cmdlet creates a new Recovery services vault
+			</maml:para>
+		</maml:description>
+		<!-- Cmdlet syntax section-->
+		<command:syntax>
+			<command:syntaxItem>
+				<maml:name>New-AzureRmRecoveryServicesVault</maml:name>
+				<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+					<maml:name>Location</maml:name>
+					<maml:description>
+						<maml:para>Geo Location Name</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+				</command:parameter>
+				<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+					<maml:name>Name</maml:name>
+					<maml:description>
+						<maml:para>Name of the vault to be created</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+				</command:parameter>
+				<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+					<maml:name>ResourceGroupName</maml:name>
+					<maml:description>
+						<maml:para>The name of the Azure Resource group in which to create or from which to retrieve the specified recovery services object.</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+				</command:parameter>
+			</command:syntaxItem>
+		</command:syntax>
+		<!-- Cmdlet parameter section  -->
+		<command:parameters>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Location</maml:name>
+				<maml:description>
+					<maml:para>Geo Location Name</maml:para>
+
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+				<dev:type>
+					<maml:name>string</maml:name>
+					<maml:uri/>
+				</dev:type>
+				<dev:defaultValue></dev:defaultValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para>Name of the vault to be created</maml:para>
+
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+				<dev:type>
+					<maml:name>string</maml:name>
+					<maml:uri/>
+				</dev:type>
+				<dev:defaultValue></dev:defaultValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ResourceGroupName</maml:name>
+				<maml:description>
+					<maml:para>The name of the Azure Resource group in which to create or from which to retrieve the specified recovery services object.</maml:para>
+
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+				<dev:type>
+					<maml:name>string</maml:name>
+					<maml:uri/>
+				</dev:type>
+				<dev:defaultValue></dev:defaultValue>
+			</command:parameter>
+		</command:parameters>
+		<!-- Input - Output section-->
+		<command:inputTypes>
+			<command:inputType>
+				<dev:type>
+					<maml:name></maml:name>
+					<maml:uri/>
+					<maml:description />
+				</dev:type>
+				<maml:description>
+					<maml:para>
+						<!-- description  -->
+
+					</maml:para>
+				</maml:description>
+			</command:inputType>
+		</command:inputTypes>
+		<command:returnValues>
+			<command:returnValue>
+				<dev:type>
+					<maml:name></maml:name>
+					<maml:uri />
+					<maml:description />
+				</dev:type>   
+				<maml:description>
+					<maml:para>
+						<!-- description  -->
+
+					</maml:para>
+				</maml:description> 
+			</command:returnValue>
+		</command:returnValues>
+		<!-- Error section-->
+		<command:terminatingErrors />
+		<command:nonTerminatingErrors />
+		<!-- Notes section  -->
+		<maml:alertSet>
+			<maml:title></maml:title>
+			<maml:alert>
+				<maml:para>
+
+				</maml:para>
+			</maml:alert>
+			<maml:alert>
+				<maml:para></maml:para>
+			</maml:alert>
+		</maml:alertSet>
+		<!-- Example section  --> 
+		<command:examples>
+		</command:examples>
+		<!-- Link section  -->
+		<maml:relatedLinks>
+			<maml:navigationLink>
+				<maml:linkText></maml:linkText>
+				<maml:uri/>
+			</maml:navigationLink>
+		</maml:relatedLinks>
+	</command:command>
+	<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+		<command:details>
+			<command:name>
+				Remove-AzureRmRecoveryServicesVault
+			</command:name>
+			<maml:description>
+				<maml:para>Delete the recovery services vault</maml:para>
+			</maml:description>
+			<maml:copyright>
+				<maml:para></maml:para>
+			</maml:copyright>
+			<command:verb>Remove</command:verb>
+			<command:noun>AzureRmRecoveryServicesVault</command:noun>
+			<dev:version></dev:version>
+		</command:details>
+		<maml:description>
+			<maml:para>The Remove-AzureRmRecoveryServicesVault cmdlet deletes a recovery services vault</maml:para>
+		</maml:description>
+		<!-- Cmdlet syntax section-->
+		<command:syntax>
+			<command:syntaxItem>
+				<maml:name>Remove-AzureRmRecoveryServicesVault</maml:name>
+				<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+					<maml:name>Vault</maml:name>
+					<maml:description>
+						<maml:para>Azure Site Recovery Vault object</maml:para>
+					</maml:description>
+					<command:parameterValue required="true" variableLength="false">ASRVault</command:parameterValue>
+				</command:parameter>
+			</command:syntaxItem>
+		</command:syntax>
+		<!-- Cmdlet parameter section  -->
+		<command:parameters>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+				<maml:name>Vault</maml:name>
+				<maml:description>
+					<maml:para>Azure Site Recovery Vault object</maml:para>
+
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ASRVault</command:parameterValue>
+				<dev:type>
+					<maml:name>ASRVault</maml:name>
+					<maml:uri/>
+				</dev:type>
+				<dev:defaultValue></dev:defaultValue>
+			</command:parameter>
+		</command:parameters>
+		<!-- Input - Output section-->
+		<command:inputTypes>
+			<command:inputType>
+				<dev:type>
+					<maml:name></maml:name>
+					<maml:uri/>
+					<maml:description />
+				</dev:type>
+				<maml:description>
+					<maml:para>
+						<!-- description  -->
+
+					</maml:para>
+				</maml:description>
+			</command:inputType>
+		</command:inputTypes>
+		<command:returnValues>
+			<command:returnValue>
+				<dev:type>
+					<maml:name></maml:name>
+					<maml:uri />
+					<maml:description />
+				</dev:type>   
+				<maml:description>
+					<maml:para>
+						<!-- description  -->
+
+					</maml:para>
+				</maml:description> 
+			</command:returnValue>
+		</command:returnValues>
+		<!-- Error section-->
+		<command:terminatingErrors />
+		<command:nonTerminatingErrors />
+		<!-- Notes section  -->
+		<maml:alertSet>
+			<maml:title></maml:title>
+			<maml:alert>
+				<maml:para>
+
+				</maml:para>
+			</maml:alert>
+			<maml:alert>
+				<maml:para></maml:para>
+			</maml:alert>
+		</maml:alertSet>
+		<!-- Example section  --> 
+		<command:examples>
+		</command:examples>
+		<!-- Link section  -->
+		<maml:relatedLinks>
+			<maml:navigationLink>
+				<maml:linkText></maml:linkText>
+				<maml:uri/>
+			</maml:navigationLink>
+		</maml:relatedLinks>
+	</command:command>
+</helpItems>

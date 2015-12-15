@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
         [ValidateNotNullOrEmpty]
         public string Namespace { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             // delete a namespace 
             ExecuteLongRunningCmdletWrap(

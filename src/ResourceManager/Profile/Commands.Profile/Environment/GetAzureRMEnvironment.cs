@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Profile
         }
 
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
             var result = profileClient.ListEnvironments(Name).Select(s => (PSAzureEnvironment)s).ToList();

@@ -23,6 +23,7 @@ using System.Threading.Tasks;
 using Hyak.Common;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
 using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
@@ -34,6 +35,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
@@ -340,16 +342,21 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 //If nested deployment, get the operations under those deployments as well
                 if(operation.Properties.TargetResource.ResourceType.Equals(Constants.MicrosoftResourcesDeploymentType, StringComparison.OrdinalIgnoreCase))
                 {
-                    List<DeploymentOperation> newNestedOperations = new List<DeploymentOperation>();
-                    DeploymentOperationsListResult result;
+                    HttpStatusCode statusCode;
+                    Enum.TryParse<HttpStatusCode>(operation.Properties.StatusCode, out statusCode);
+                    if(!statusCode.IsClientFailureRequest())
+                    {
+                        List<DeploymentOperation> newNestedOperations = new List<DeploymentOperation>();
+                        DeploymentOperationsListResult result;
 
-                    result = ResourceManagementClient.DeploymentOperations.List(
-                        resourceGroupName: ResourceIdUtility.GetResourceGroupName(operation.Properties.TargetResource.Id),
-                        deploymentName: operation.Properties.TargetResource.ResourceName,
-                        parameters: null);
+                        result = ResourceManagementClient.DeploymentOperations.List(
+                            resourceGroupName: ResourceIdUtility.GetResourceGroupName(operation.Properties.TargetResource.Id),
+                            deploymentName: operation.Properties.TargetResource.ResourceName,
+                            parameters: null);
 
-                    newNestedOperations = GetNewOperations(operations, result.Operations);
-                    newOperations.AddRange(newNestedOperations);
+                        newNestedOperations = GetNewOperations(operations, result.Operations);
+                        newOperations.AddRange(newNestedOperations);
+                    }
                 }
             }
 

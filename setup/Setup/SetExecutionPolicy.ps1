@@ -12,7 +12,6 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-
 try 
 {
   Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Force -ErrorAction "SilentlyContinue"

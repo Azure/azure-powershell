@@ -12,21 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Compute
+using System.Management.Automation;
+using MNM = Microsoft.Azure.Management.Network.Models;
+
+namespace Microsoft.Azure.Commands.Network
 {
-    public class VirtualMachineDiagnosticsExtensionCmdletBase : VirtualMachineExtensionBaseCmdlet
+    using System.Collections.Generic;
+
+    public class AzureExpressRouteCircuitAuthorizationBase : NetworkBaseCmdlet
     {
-        protected const string DiagnosticsExtensionNamespace = "Microsoft.Azure.Diagnostics";
-        protected const string DiagnosticsExtensionType = "IaaSDiagnostics";
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The name of the Authorization")]
+        [ValidateNotNullOrEmpty]
+        public virtual string Name { get; set; }
 
-        protected string StorageAccountName { get; set; }
-        protected string StorageKey { get; set; }
-        protected string Endpoint { get; set; }
-
-        public VirtualMachineDiagnosticsExtensionCmdletBase()
-            : base()
-        {
-
-        }
     }
 }

@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Batch
         /// Get the keys associated with the specified account. If only the account name is passed in, then
         /// look up its resource group and construct a new BatchAccountContext to hold everything.
         /// </summary>
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             BatchAccountContext context = BatchClient.ListKeys(this.ResourceGroupName, this.AccountName);
             WriteObject(context);
