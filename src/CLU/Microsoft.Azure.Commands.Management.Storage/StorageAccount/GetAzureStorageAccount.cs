@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource Group StorageAccountName.")]
         [ValidateNotNullOrEmpty]
+        [Alias("group", "g")]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -35,7 +36,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account StorageAccountName.")]
-        [Alias(StorageAccountNameAlias, AccountNameAlias)]
+        [Alias(StorageAccountNameAlias, AccountNameAlias, "n")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
