@@ -28,17 +28,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the property object.
         /// </summary>
-        [Alias("Object")]
         [Parameter(Mandatory = false, HelpMessage = "A hash table which represents resource properties.")]
         [ValidateNotNullOrEmpty]
+        [Alias("Object")]
         public Hashtable Parameters { get; set; }
 
         /// <summary>
         /// Gets or sets the property object.
         /// </summary>
-        [Alias("ActionName")]
         [Parameter(Mandatory = true, HelpMessage = "The name of the action to invoke.")]
         [ValidateNotNullOrEmpty]
+        [Alias("ActionName","a")]
         public string Action { get; set; }
 
         /// <summary>

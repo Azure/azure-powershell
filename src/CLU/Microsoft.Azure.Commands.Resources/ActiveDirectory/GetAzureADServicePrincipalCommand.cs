@@ -29,11 +29,13 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SearchString,
             HelpMessage = "The service principal search string.")]
         [ValidateNotNullOrEmpty]
+        [Alias("s")]
         public string SearchString { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId,
             HelpMessage = "The service principal object id.")]
         [ValidateNotNullOrEmpty]
+        [Alias("id")]
         public Guid ObjectId { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Empty,

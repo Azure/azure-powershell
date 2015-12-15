@@ -36,13 +36,13 @@ namespace Microsoft.Azure.Commands.Resources
         /// </summary>
         internal const string ResourceGroupIdParameterSet = "Lists the resource group based in the Id.";
 
-        [Alias("ResourceGroupName")]
         [Parameter(Mandatory = true, ParameterSetName = ResourceGroupNameParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
+        [Alias("ResourceGroupName","n")]
         public string Name { get; set; }
 
-        [Alias("Tags")]
         [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, HelpMessage = "An array of hashtables which represents resource tags.")]
+        [Alias("Tags","t")]
         public Hashtable[] Tag { get; set; }
 
         [Alias("ResourceGroupId", "ResourceId")]
