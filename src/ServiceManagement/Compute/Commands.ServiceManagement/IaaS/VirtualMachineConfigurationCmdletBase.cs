@@ -25,6 +25,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
         protected const string PublicIPNoun = "AzurePublicIP";
         protected const string NetworkInterfaceConfig = "AzureNetworkInterfaceConfig";
         protected const string NetworkSecurityGroupConfig = "AzureNetworkSecurityGroupConfig";
+
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,

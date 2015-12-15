@@ -31,9 +31,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The RouteTable")]
         public PSRouteTable RouteTable { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             if (!this.IsRouteTablePresent(this.RouteTable.ResourceGroupName, this.RouteTable.Name))
             {
@@ -42,7 +42,6 @@ namespace Microsoft.Azure.Commands.Network
             
             // Map to the sdk object
             var routeTableModel = Mapper.Map<MNM.RouteTable>(this.RouteTable);
-            routeTableModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.RouteTableType;
             routeTableModel.Tags = TagsConversionHelper.CreateTagDictionary(this.RouteTable.Tag, validate: true);
 
             // Execute the PUT RouteTable call

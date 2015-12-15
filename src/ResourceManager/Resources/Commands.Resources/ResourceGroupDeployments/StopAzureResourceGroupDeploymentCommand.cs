@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroups
         [Parameter(Mandatory = false, HelpMessage = "Do not confirm the stop.")]
         public SwitchParameter Force { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(Name))
             {

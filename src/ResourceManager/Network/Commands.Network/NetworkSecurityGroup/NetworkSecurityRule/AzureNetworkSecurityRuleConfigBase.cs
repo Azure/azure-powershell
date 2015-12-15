@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateSet(
             MNM.SecurityRuleProtocol.Tcp,
             MNM.SecurityRuleProtocol.Udp,
-            MNM.SecurityRuleProtocol.All, 
+            MNM.SecurityRuleProtocol.Asterisk,
             IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string Protocol { get; set; }

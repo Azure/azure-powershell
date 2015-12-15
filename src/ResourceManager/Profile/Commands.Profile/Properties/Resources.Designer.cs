@@ -70,6 +70,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Account ID &apos;{0}&apos; for tenant &apos;{1}&apos; does not match home Account ID &apos;{2}&apos;.
+        /// </summary>
+        internal static string AccountIdMismatch {
+            get {
+                return ResourceManager.GetString("AccountIdMismatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Access token credentials must provide the AccountId parameter..
         /// </summary>
         internal static string AccountIdRequired {
@@ -192,6 +201,24 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string TypeNotAccessToken {
             get {
                 return ResourceManager.GetString("TypeNotAccessToken", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unabe to acquire token for tenant &apos;{0}&apos;.
+        /// </summary>
+        internal static string UnableToAqcuireToken {
+            get {
+                return ResourceManager.GetString("UnableToAqcuireToken", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to find environment with name &apos;{0}&apos;.
+        /// </summary>
+        internal static string UnknownEnvironment {
+            get {
+                return ResourceManager.GetString("UnknownEnvironment", resourceCulture);
             }
         }
     }

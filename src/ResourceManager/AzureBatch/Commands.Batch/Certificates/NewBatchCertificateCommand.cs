@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string Password { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             NewCertificateParameters parameters = new NewCertificateParameters(this.BatchContext, this.FilePath, this.RawData,
                 this.AdditionalBehaviors)

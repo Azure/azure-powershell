@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Alias("SPN")]
         public string ServicePrincipalName { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ADObjectFilterOptions options = new ADObjectFilterOptions
             {

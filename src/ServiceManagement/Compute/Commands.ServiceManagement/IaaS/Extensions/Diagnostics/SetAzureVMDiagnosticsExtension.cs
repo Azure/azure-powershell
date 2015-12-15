@@ -12,18 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.IO;
-using System.Linq;
-using System.Management.Automation;
-using System.Text;
-using System.Xml;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Storage;
 using Newtonsoft.Json;
+using System.Linq;
+using System.Management.Automation;
+
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 {
@@ -40,6 +36,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         private string storageKey;
         protected const string SetExtParamSetName = "SetDiagnosticsExtension";
         protected const string SetExtRefParamSetName = "SetDiagnosticsWithReferenceExtension";
+
         [Parameter(
             ParameterSetName = SetExtParamSetName,
             Mandatory = true,
@@ -174,7 +171,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             RemovePredicateExtensions();
             AddResourceExtension();
             WriteObject(VM);
-            UpdateAzureVMCommand cmd = new UpdateAzureVMCommand();
         }
 
         protected override void ValidateParameters()

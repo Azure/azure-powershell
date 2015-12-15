@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Dns
         [ValidateNotNullOrEmpty]
         public string EndsWith { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             RecordType recordType = default(RecordType);
             if (this.RecordType != null && !Enum.TryParse(this.RecordType, false, out recordType))
