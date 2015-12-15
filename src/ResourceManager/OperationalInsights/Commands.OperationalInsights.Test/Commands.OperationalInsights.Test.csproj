@@ -179,10 +179,18 @@
     <None Include="ScenarioTests\WorkspaceTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.OperationalInsights.Test.SearchTests\TestSearchGetSavedSearchesAndResults.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.OperationalInsights.Test.SearchTests\TestSearchGetSchema.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.OperationalInsights.Test.SearchTests\TestSearchGetSearchResultsAndUpdate.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.OperationalInsights.Test.SearchTests\TestSearchPutAndDeleteSavedSearches.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.OperationalInsights.Test.SearchTests\TestSearchGetSavedSearchesAndResults.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.OperationalInsights.Test.SearchTests\TestSearchGetSchema.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.OperationalInsights.Test.SearchTests\TestSearchGetSearchResultsAndUpdate.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.OperationalInsights.Test.SearchTests\TestSearchPutAndDeleteSavedSearches.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.OperationalInsights.Test.StorageInsightTests\TestStorageInsightCreateFailsWithoutWorkspace.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

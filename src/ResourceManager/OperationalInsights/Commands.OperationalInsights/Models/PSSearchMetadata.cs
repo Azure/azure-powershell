@@ -18,21 +18,20 @@ using Microsoft.Azure.Management.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
-    public class PSMetadata
+    public class PSSearchMetadata
     {
-        public PSMetadata()
+        public PSSearchMetadata()
         {
         }
 
-        public PSMetadata(Metadata metadata)
+        public PSSearchMetadata(SearchMetadata metadata)
         {
             if (metadata != null)
             {
                 this.ResultType = metadata.ResultType;
+                this.Top = metadata.Top;
                 this.Total = metadata.Total;
-                this.Skip = metadata.Skip;
                 this.Id = metadata.Id;
-                this.CoreResponses = metadata.CoreResponses;
                 List<PSCoreSummary> summaryList = new List<PSCoreSummary>();
                 for (int i = 0; i < metadata.CoreSummaries.Count; i++)
                 {
@@ -43,10 +42,10 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
                 this.StartTime = metadata.StartTime;
                 this.LastUpdated = metadata.LastUpdated;
                 this.ETag = metadata.ETag;
-                List<PSSort> sortList = new List<PSSort>();
+                List<PSSearchSort> sortList = new List<PSSearchSort>();
                 for (int j = 0; j < metadata.Sort.Count; j++)
                 {
-                    sortList.Add(new PSSort(metadata.Sort[j]));
+                    sortList.Add(new PSSearchSort(metadata.Sort[j]));
                 }
                 this.Sort = sortList;
                 this.RequestTime = metadata.RequestTime;
@@ -59,7 +58,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         }
         public string ResultType { get; set; }
         public int? Total { get; set; }
-        public int? Skip { get; set; }
+        public int? Top { get; set; }
         public Guid? Id { get; set; }
         public IEnumerable<object> CoreResponses { get; set; }
         public List<PSCoreSummary> CoreSummaries { get; set; }
@@ -67,7 +66,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         public DateTime? StartTime { get; set; }
         public DateTime? LastUpdated { get; set; }
         public string ETag { get; set; }
-        public List<PSSort> Sort { get; set; }
+        public List<PSSearchSort> Sort { get; set; }
         public int? RequestTime { get; set; }
         public string AggregatedValueField { get; set; }
         public string AggregatedGroupingFields { get; set; }

@@ -23,16 +23,15 @@ function Test-SearchGetSearchResultsAndUpdate
 
 	$top = 25
 
-	$searchResult = Get-AzureRmOperationalInsightsSearchResult -ResourceGroupName $rgname -WorkspaceName $wsname -Top $top -Skip 0 -Query "*"
+	$searchResult = Get-AzureRmOperationalInsightsSearchResults -ResourceGroupName $rgname -WorkspaceName $wsname -Top $top -Query "*"
 
 	Assert-NotNull $searchResult
 	Assert-NotNull $searchResult.Metadata
 	Assert-NotNull $searchResult.Value
 	Assert-AreEqual $searchResult.Value.Count $top
 
-	$idArray = $searchResult.Id.Split("/")
-	$id = $idArray[$idArray.Length-1]
-	$updatedResult = Get-AzureRmOperationalInsightsSearchResultUpdate -ResourceGroupName $rgname -WorkspaceName $wsname -Id $id
+	$id = $searchResult.Id
+	$updatedResult = Get-AzureRmOperationalInsightsSearchResultsUpdate -Id $id
 	
 	Assert-NotNull $updatedResult
 	Assert-NotNull $updatedResult.Metadata
@@ -69,10 +68,8 @@ function Test-SearchGetSavedSearchesAndResults
 	Assert-NotNull $savedSearches
 	Assert-NotNull $savedSearches.Value
 	
-	$idArray = $savedSearches.Value[0].Id.Split("/")
-	$id = $idArray[$idArray.Length-1]
-
-	$savedSearch = Get-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname -SavedSearchId $id
+	$id = $savedSearches.Value[0].Id
+	$savedSearch = Get-AzureRmOperationalInsightsSavedSearch -SavedSearchId $id
 
 	Assert-NotNull $savedSearch
 	Assert-NotNull $savedSearch.ETag
@@ -80,7 +77,7 @@ function Test-SearchGetSavedSearchesAndResults
 	Assert-NotNull $savedSearch.Properties
 	Assert-NotNull $savedSearch.Properties.Query
 
-	$savedSearchResult = Get-AzureRmOperationalInsightsSavedSearchResults -ResourceGroupName $rgname -WorkspaceName $wsname -SavedSearchId $id
+	$savedSearchResult = Get-AzureRmOperationalInsightsSavedSearchResults -SavedSearchId $id
 
 	Assert-NotNull $savedSearchResult
 	Assert-NotNull $savedSearchResult.Metadata
@@ -91,7 +88,7 @@ function Test-SearchGetSavedSearchesAndResults
 .SYNOPSIS
 Put a saved search and then delete it
 #>
-function Test-SearchPutAndDeleteSavedSearches
+function Test-SearchSetAndRemoveSavedSearches
 {
 	$rgname = "mms-eus"
     $wsname = "workspace-861bd466-5400-44be-9552-5ba40823c3aa"

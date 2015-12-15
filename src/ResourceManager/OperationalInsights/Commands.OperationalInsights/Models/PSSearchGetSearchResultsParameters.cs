@@ -18,21 +18,14 @@ using Microsoft.Azure.Management.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
-    public class PSError
+    public class PSSearchGetSearchResultsParameters : OperationalInsightsParametersBase
     {
-        public PSError()
-        {
-        }
-
-        public PSError(Error error)
-        {
-            if (error != null)
-            {
-                this.Type = error.Type;
-                this.Message = error.Message;
-            }
-        }
-        public string Type { get; set; }
-        public string Message { get; set; }
+        public int Top { get; set; }
+        public int Skip { get; set; }
+        public PSHighlight Highlight { get; set; }
+        public bool IncludeArchive { get; set; }
+        public string Query { get; set; }
+        public DateTime? Start { get; set; }
+        public DateTime? End { get; set; }
     }
 }

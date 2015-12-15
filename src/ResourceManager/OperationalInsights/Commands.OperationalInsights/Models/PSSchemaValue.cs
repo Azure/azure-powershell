@@ -34,10 +34,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
                 this.Indexed = value.Indexed;
                 this.Stored = value.Stored;
                 this.Facet = value.Facet;
-                this.Hidden = value.Hidden;
-                this.Display = value.Display;
                 this.OwnerType = value.OwnerType;
-                this.Extraction = new PSExtraction(value.Extraction);
             }
         }
         public string Name { get; set; }
@@ -46,9 +43,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         public bool Indexed { get; set; }
         public bool Stored { get; set; }
         public bool Facet { get; set; }
-        public bool Hidden { get; set; }
-        public bool Display { get; set; }
         public IEnumerable<string> OwnerType { get; set; }
-        public PSExtraction Extraction { get; set; }
     }
 }

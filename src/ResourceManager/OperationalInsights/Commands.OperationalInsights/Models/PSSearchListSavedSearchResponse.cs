@@ -18,15 +18,32 @@ using Microsoft.Azure.Management.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
-    public class PSSearchGetSearchResultParameters : OperationalInsightsParametersBase
+    public class PSSearchListSavedSearchResponse
     {
-        public int Top { get; set; }
-        public int Skip { get; set; }
-        public PSHighlight Highlight { get; set; }
-        public bool IncludeArchive { get; set; }
-        public string Query { get; set; }
-        public DateTime? Start { get; set; }
-        public DateTime? End { get; set; }
-        public PSFacet Facet { get; set; }
+        public PSSearchListSavedSearchResponse()
+        {
+        }
+
+        public PSSearchListSavedSearchResponse(SearchListSavedSearchResponse searchResponse)
+        {
+            if (searchResponse != null)
+            {
+                if (searchResponse == null)
+                {
+                    throw new ArgumentNullException("saved search response");
+                }
+                SearchMetadata m = searchResponse.Metadata;
+                this.Metadata = new PSSearchMetadata(searchResponse.Metadata);
+                this.Value = new List<PSSavedSearchValue>();
+                foreach (SavedSearchValue v in searchResponse.Value)
+                {
+                    this.Value.Add(new PSSavedSearchValue(v));
+                }
+            }
+        }
+
+        public PSSearchMetadata Metadata { get; set; }
+
+        public List<PSSavedSearchValue> Value { get; set; }
     }
 }

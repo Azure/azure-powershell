@@ -18,28 +18,17 @@ using Microsoft.Azure.Commands.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet(VerbsCommon.Get, Constants.SavedSearchResults), OutputType(typeof(PSSearchGetSearchResultResponse))]
+    [Cmdlet(VerbsCommon.Get, Constants.SavedSearchResults), OutputType(typeof(PSSearchGetSearchResultsResponse))]
     public class GetAzureOperationalInsightsSavedSeearchResultsCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
-        [Alias("Name")]
-        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The workspace name.")]
-        [ValidateNotNullOrEmpty]
-        public string WorkspaceName { get; set; }
-
-        [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The saved search id.")]
         [ValidateNotNullOrEmpty]
         public string SavedSearchId { get; set; }
 
         protected override void ProcessRecord()
         {
-            WriteObject(OperationalInsightsClient.GetSavedSearchResults(ResourceGroupName, WorkspaceName, SavedSearchId), true);
+            WriteObject(OperationalInsightsClient.GetSavedSearchResults(SavedSearchId), true);
         }
 
     }

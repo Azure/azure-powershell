@@ -40,8 +40,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         public const string Schema = "AzureRmOperationalInsightsSchema";
 
-        public const string SearchResult = "AzureRmOperationalInsightsSearchResult";
+        public const string SearchResults = "AzureRmOperationalInsightsSearchResults";
 
-        public const string SearchResultUpdate = "AzureRmOperationalInsightsSearchResultUpdate";
+        public const string SearchResultsUpdate = "AzureRmOperationalInsightsSearchResultsUpdate";
     }
 }

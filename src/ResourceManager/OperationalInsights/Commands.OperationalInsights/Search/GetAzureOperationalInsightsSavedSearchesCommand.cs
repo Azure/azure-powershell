@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet(VerbsCommon.Get, Constants.SavedSearches), OutputType(typeof(PSSearchSavedSearchResponse))]
+    [Cmdlet(VerbsCommon.Get, Constants.SavedSearches), OutputType(typeof(PSSearchListSavedSearchResponse))]
     public class GetAzureOperationalInsightsSavedSearchesCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,

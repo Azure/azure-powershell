@@ -35,24 +35,24 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             return response.StatusCode;
         }
 
-        public virtual PSSearchGetSavedSearchResponse GetSavedSearch(string resourceGroupName, string workspaceName, string savedSearchId)
+        public virtual PSSearchGetSavedSearchResponse GetSavedSearch(string savedSearchId)
         {
-            SearchGetSavedSearchResponse response = OperationalInsightsManagementClient.Search.GetSavedSearch(resourceGroupName, workspaceName, savedSearchId);
+            SearchGetSavedSearchResponse response = OperationalInsightsManagementClient.Search.GetSavedSearch(savedSearchId);
             PSSearchGetSavedSearchResponse searchResponse = new PSSearchGetSavedSearchResponse(response);
             return searchResponse;
         }
 
-        public virtual PSSearchSavedSearchResponse GetSavedSearches(string resourceGroupName, string workspaceName)
+        public virtual PSSearchListSavedSearchResponse GetSavedSearches(string resourceGroupName, string workspaceName)
         {
-            SearchSavedSearchResponse responses = OperationalInsightsManagementClient.Search.GetSavedSearches(resourceGroupName, workspaceName);
-            PSSearchSavedSearchResponse searchResponses = new PSSearchSavedSearchResponse(responses);
+            SearchListSavedSearchResponse responses = OperationalInsightsManagementClient.Search.ListSavedSearches(resourceGroupName, workspaceName);
+            PSSearchListSavedSearchResponse searchResponses = new PSSearchListSavedSearchResponse(responses);
             return searchResponses;
         }
 
-        public virtual PSSearchGetSearchResultResponse GetSavedSearchResults(string resourceGroupName, string workspaceName, string savedSearchId)
+        public virtual PSSearchGetSearchResultsResponse GetSavedSearchResults(string savedSearchId)
         {
-            SearchGetSearchResultResponse responses = OperationalInsightsManagementClient.Search.GetSavedSearchResults(resourceGroupName, workspaceName, savedSearchId);
-            PSSearchGetSearchResultResponse searchResponses = new PSSearchGetSearchResultResponse(responses);
+            SearchGetSearchResultsResponse responses = OperationalInsightsManagementClient.Search.GetSavedSearchResults(savedSearchId);
+            PSSearchGetSearchResultsResponse searchResponses = new PSSearchGetSearchResultsResponse(responses);
             return searchResponses;
         }
 
@@ -63,58 +63,41 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             return schemaResponse;
         }
 
-        public virtual PSSearchGetSearchResultResponse GetSearchResult(string resourceGroupName, string workspaceName, PSSearchGetSearchResultParameters psParameters)
+        public virtual PSSearchGetSearchResultsResponse GetSearchResults(string resourceGroupName, string workspaceName, PSSearchGetSearchResultsParameters psParameters)
         {
-            SearchGetSearchResultParameters parameters = new SearchGetSearchResultParameters();
+            SearchGetSearchResultsParameters parameters = new SearchGetSearchResultsParameters();
             parameters.Top = psParameters.Top;
-            parameters.Skip = psParameters.Skip;
             if (psParameters.Highlight != null)
             {
                 parameters.Highlight = new Highlight();
                 parameters.Highlight.Pre = psParameters.Highlight.Pre;
                 parameters.Highlight.Post = psParameters.Highlight.Post;
             }
-            parameters.IncludeArchive = psParameters.IncludeArchive;
             parameters.Query = psParameters.Query;
             parameters.Start = psParameters.Start;
             parameters.End = psParameters.End;
-            if (psParameters.Facet != null)
-            {
-                parameters.Facet = new Facet();
-                parameters.Facet.Field = psParameters.Facet.Field;
-                parameters.Facet.Limit = psParameters.Facet.Limit;
-                parameters.Facet.Mincount = psParameters.Facet.Mincount;
-                if (psParameters.Facet.Range != null)
-                {
-                    parameters.Facet.Range = new Range();
-                    parameters.Facet.Range.Field = psParameters.Facet.Range.Field;
-                    parameters.Facet.Range.Start = psParameters.Facet.Range.Start;
-                    parameters.Facet.Range.End = psParameters.Facet.Range.End;
-                    parameters.Facet.Range.Gap = psParameters.Facet.Range.Gap;
-                }
 
-            }
-            SearchGetSearchResultResponse response = OperationalInsightsManagementClient.Search.GetSearchResult(resourceGroupName, workspaceName, parameters);
-            PSSearchGetSearchResultResponse searchResponse = new PSSearchGetSearchResultResponse(response);
+            SearchGetSearchResultsResponse response = OperationalInsightsManagementClient.Search.GetSearchResults(resourceGroupName, workspaceName, parameters);
+            PSSearchGetSearchResultsResponse searchResponse = new PSSearchGetSearchResultsResponse(response);
             return searchResponse;
         }
 
-        public virtual PSSearchGetSearchResultResponse GetSearchResultUpdate(string resourceGroupName, string workspaceName, string id)
+        public virtual PSSearchGetSearchResultsResponse GetSearchResultsUpdate(string id)
         {
-            SearchGetSearchResultResponse response = OperationalInsightsManagementClient.Search.GetSearchResultUpdate(resourceGroupName, workspaceName, id);
-            PSSearchGetSearchResultResponse searchResponse = new PSSearchGetSearchResultResponse(response);
+            SearchGetSearchResultsResponse response = OperationalInsightsManagementClient.Search.UpdateSearchResults(id);
+            PSSearchGetSearchResultsResponse searchResponse = new PSSearchGetSearchResultsResponse(response);
             return searchResponse;
         }
 
-        public virtual HttpStatusCode PutSavedSearch(string resourceGroupName, string workspaceName, string savedSearchId, string category, string displayName, string query, int version)
+        public virtual HttpStatusCode CreateOrUpdateSavedSearch(string resourceGroupName, string workspaceName, string savedSearchId, string category, string displayName, string query, int version)
         {
-            SearchPutSavedSearchParameters parameters = new SearchPutSavedSearchParameters();
+            SearchCreateOrUpdateSavedSearchParameters parameters = new SearchCreateOrUpdateSavedSearchParameters();
             parameters.Properties = new SavedSearchProperties();
             parameters.Properties.Category = category;
             parameters.Properties.DisplayName = displayName;
             parameters.Properties.Query = query;
             parameters.Properties.Version = version;
-            AzureOperationResponse response = OperationalInsightsManagementClient.Search.PutSavedSearch(resourceGroupName, workspaceName, savedSearchId, parameters);
+            AzureOperationResponse response = OperationalInsightsManagementClient.Search.CreateOrUpdateSavedSearch(resourceGroupName, workspaceName, savedSearchId, parameters);
             return response.StatusCode;
         }
     }

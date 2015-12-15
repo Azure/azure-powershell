@@ -18,22 +18,21 @@ using Microsoft.Azure.Management.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
-    public class PSFacet
+    public class PSSearchError
     {
-        public PSFacet()
+        public PSSearchError()
         {
         }
 
-        public PSFacet(IList<string> field, int limit, int mincount, Range range)
+        public PSSearchError(SearchError error)
         {
-            this.Field = field;
-            this.Limit = limit;
-            this.Mincount = mincount;
-            this.Range = new PSRange(range);
+            if (error != null)
+            {
+                this.Type = error.Type;
+                this.Message = error.Message;
+            }
         }
-        public IList<string> Field { get; set; }
-        public int Limit { get; set; }
-        public int Mincount { get; set; }
-        public PSRange Range { get; set; }
+        public string Type { get; set; }
+        public string Message { get; set; }
     }
 }

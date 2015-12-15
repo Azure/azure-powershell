@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         {
             if (response != null)
             {
-                this.Metadata = new PSMetadata(response.Metadata);
+                this.Metadata = new PSSearchMetadata(response.Metadata);
                 this.Value = new List<PSSchemaValue>();
                 foreach (SchemaValue v in response.Value)
                 {
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
                 }
             }
         }
-        public PSMetadata Metadata { get; set; }
+        public PSSearchMetadata Metadata { get; set; }
         public List<PSSchemaValue> Value { get; set; }
     }
 }

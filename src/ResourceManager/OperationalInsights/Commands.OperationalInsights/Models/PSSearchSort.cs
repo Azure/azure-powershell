@@ -18,25 +18,23 @@ using Microsoft.Azure.Management.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
-    public class PSRange
+    public class PSSearchSort
     {
-        public PSRange()
+        public PSSearchSort()
         {
         }
 
-        public PSRange(Range range)
+        public PSSearchSort(SearchSort sort)
         {
-            if (range != null)
+            if (sort != null)
             {
-                this.Field = range.Field;
-                this.Start = range.Start;
-                this.End = range.End;
-                this.Gap = range.Gap;
+                this.Name = sort.Name;
+                this.Order = sort.Order;
             }
         }
-        public IList<string> Field { get; set; }
-        public DateTime? Start { get; set; }
-        public DateTime? End { get; set; }
-        public string Gap { get; set; }
+        public string Name { get; set; }
+
+        public string Order { get; set; }
+
     }
 }

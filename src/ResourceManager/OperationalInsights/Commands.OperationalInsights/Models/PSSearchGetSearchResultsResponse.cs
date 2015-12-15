@@ -18,25 +18,25 @@ using Microsoft.Azure.Management.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
-    public class PSSearchGetSearchResultResponse
+    public class PSSearchGetSearchResultsResponse
     {
-        public PSSearchGetSearchResultResponse()
+        public PSSearchGetSearchResultsResponse()
         {
         }
 
-        public PSSearchGetSearchResultResponse(SearchGetSearchResultResponse response)
+        public PSSearchGetSearchResultsResponse(SearchGetSearchResultsResponse response)
         {
             if (response != null)
             {
                 this.Id = response.Id;
-                this.Metadata = new PSMetadata(response.Metadata);
+                this.Metadata = new PSSearchMetadata(response.Metadata);
                 this.Value = response.Value;
-                this.Error = new PSError(response.Error);
+                this.Error = new PSSearchError(response.Error);
             }
         }
         public string Id { get; set; }
-        public PSMetadata Metadata { get; set; }
+        public PSSearchMetadata Metadata { get; set; }
         public IEnumerable<Object> Value { get; set; }
-        public PSError Error { get; set; }
+        public PSSearchError Error { get; set; }
     }
 }

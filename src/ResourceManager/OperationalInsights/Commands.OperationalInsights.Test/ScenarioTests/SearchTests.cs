@@ -42,9 +42,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSearchPutAndDeleteSavedSearches()
+        public void TestSearchSetAndRemoveSavedSearches()
         {
-            RunPowerShellTest("Test-SearchPutAndDeleteSavedSearches");
+            RunPowerShellTest("Test-SearchSetAndRemoveSavedSearches");
         }
 
     }
