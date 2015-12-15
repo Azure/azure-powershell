@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Websites.Test
         {
             string tenantUrlEnding = "batch-test.windows-int.net";
             string endpoint = string.Format("{0}.{1}", accountName, tenantUrlEnding);
-            string subscription = "00000000-0000-0000-0000-000000000000";
+            //string subscription = "00000000-0000-0000-0000-000000000000";
             string resourceGroup = resourceGroupName;
         }
     }
