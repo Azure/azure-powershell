@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Commands.Common.Authentication.Properties {
+namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
     using System;
     using System.Reflection;
     
@@ -38,7 +38,7 @@ namespace Commands.Common.Authentication.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Commands.Common.Authentication.Properties.Resources", typeof(Resources).GetTypeInfo().Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Common.Authentication.Properties.Resources", typeof(Resources).GetTypeInfo().Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -137,15 +137,6 @@ namespace Commands.Common.Authentication.Properties {
         internal static string AuthenticatingForSingleTenant {
             get {
                 return ResourceManager.GetString("AuthenticatingForSingleTenant", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///    Looks up a localized string similar to Windows Azure Powershell.
-        /// </summary>
-        internal static string AzureDirectoryName {
-            get {
-                return ResourceManager.GetString("AzureDirectoryName", resourceCulture);
             }
         }
         
