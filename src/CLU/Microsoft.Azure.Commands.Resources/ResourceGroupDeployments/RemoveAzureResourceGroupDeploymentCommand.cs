@@ -37,11 +37,12 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroups
 
         [Parameter(Position = 0, ParameterSetName = RemoveAzureResourceGroupDeploymentCommand.DeploymentNameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group.")]
         [ValidateNotNullOrEmpty]
+        [Alias("group", "g")]
         public string ResourceGroupName { get; set; }
 
-        [Alias("DeploymentName")]
         [Parameter(Position = 1, ParameterSetName = RemoveAzureResourceGroupDeploymentCommand.DeploymentNameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the deployment.")]
         [ValidateNotNullOrEmpty]
+        [Alias("DeploymentName","n")]
         public string Name { get; set; }
 
         [Alias("DeploymentId", "ResourceId")]
@@ -50,6 +51,7 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroups
         public string Id { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Do not confirm the remove.")]
+        [Alias("f")]
         public SwitchParameter Force { get; set; }
 
         protected override void ProcessRecord()

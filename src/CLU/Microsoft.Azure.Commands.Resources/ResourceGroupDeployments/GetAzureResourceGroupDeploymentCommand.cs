@@ -37,11 +37,12 @@ namespace Microsoft.Azure.Commands.Resources
 
         [Parameter(Position = 0, ParameterSetName = GetAzureResourceGroupDeploymentCommand.DeploymentNameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group.")]
         [ValidateNotNullOrEmpty]
+        [Alias("group", "g")]
         public string ResourceGroupName { get; set; }
 
-        [Alias("DeploymentName")]
         [Parameter(Position = 1, ParameterSetName = GetAzureResourceGroupDeploymentCommand.DeploymentNameParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group deployment.")]
         [ValidateNotNullOrEmpty]
+        [Alias("DeploymentName","n")]
         public string Name { get; set; }
 
         [Alias("DeploymentId", "ResourceId")]

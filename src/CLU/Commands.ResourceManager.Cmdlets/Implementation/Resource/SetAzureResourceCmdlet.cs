@@ -35,14 +35,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource kind.")]
         [ValidateNotNullOrEmpty]
+        [Alias("k")]
         public string Kind { get; set; }
 
         /// <summary>
         /// Gets or sets the property object.
         /// </summary>
-        [Alias("PropertyObject")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents resource properties.")]
         [ValidateNotNullOrEmpty]
+        [Alias("PropertyObject", "p")]
         public PSObject Properties { get; set; }
 
         /// <summary>
@@ -65,8 +66,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the tags.
         /// </summary>
-        [Alias("Tags")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents resource tags.")]
+        [Alias("Tags", "t")]
         public Hashtable[] Tag { get; set; }
 
         /// <summary>

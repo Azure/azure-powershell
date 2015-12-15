@@ -30,10 +30,12 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     public class SetAzureWebAppSlotCmdlet : WebAppSlotBaseCmdlet
     {
         [Parameter(Position = 3, Mandatory = false, HelpMessage = "The name of the app service plan eg: Default1.")]
+        [Alias("plan")]
         public string AppServicePlan { get; set; }
 
         [Parameter(Position = 4, Mandatory = false, HelpMessage = "Default documents for web app")]
         [ValidateNotNullOrEmpty]
+        [Alias("docs")]
         public string[] DefaultDocuments { get; set; }
 
         [Parameter(Position = 5, Mandatory = false, HelpMessage = ".NET Framework version")]
