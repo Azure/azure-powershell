@@ -220,6 +220,7 @@
     <Compile Include="Extension\AzureVMBackup\AzureVMBackupConfig.cs" />
     <Compile Include="Extension\AzureVMBackup\RemoveAzureVMBackup.cs" />
     <Compile Include="Extension\AzureVMBackup\SetAzureVMBackupExtension.cs" />
+    <Compile Include="Extension\BGInfo\VirtualMachineBGInfoExtensionContext.cs" />
     <Compile Include="Extension\CustomScript\GetAzureVMCustomScriptExtensionCommand.cs" />
     <Compile Include="Extension\CustomScript\CustomScriptExtensionPrivateSettings.cs" />
     <Compile Include="Extension\CustomScript\CustomScriptExtensionPublicSettings.cs" />

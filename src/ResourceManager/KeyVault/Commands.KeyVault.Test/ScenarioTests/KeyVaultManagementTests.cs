@@ -166,6 +166,19 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetVaultByNameCapitalized()
+        {
+            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
+                () => new[] { string.Format("{0} {1}", "Test-GetVaultByName", _data.preCreatedVault.ToUpper()) },
+                env => Initialize(),
+                null,
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName()
+                );
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetUnknownVaultFails()
         {
             KeyVaultManagementController.NewInstance.RunPsTestWorkflow(

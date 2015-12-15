@@ -67,3 +67,59 @@ function Test-NewDeploymentFromTemplateFile
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Tests deployment via template file and parameter file with KeyVault reference.
+#>
+function Test-NewDeploymentWithKeyVaultReference
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rname = Get-ResourceName
+	$keyVaultname = Get-ResourceName
+	$secretName = Get-ResourceName
+	$rglocation = Get-ProviderLocation ResourceManagement
+	$location = Get-ProviderLocation "Microsoft.Web/sites"
+	$hostplanName = "xDeploymentTestHost26668"
+
+	try
+	{
+		# Test
+		New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+
+		$context = Get-AzureRmContext
+		$subscriptionId = $context.Subscription.SubscriptionId
+		$tenantId = $context.Tenant.TenantId
+		$adUser = Get-AzureRmADUser -UserPrincipalName $context.Account.Id
+		$objectId = $adUser.Id
+		$KeyVaultResourceId = "/subscriptions/" + $subscriptionId + "/resourcegroups/" + $rgname + "/providers/Microsoft.KeyVault/vaults/" + $keyVaultname
+		
+		$parameters = @{ "keyVaultName" = $keyVaultname; "secretName" = $secretName; "secretValue" = $hostplanName; "tenantId" = $tenantId; "objectId" = $objectId }
+		$deployment = New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile keyVaultSetupTemplate.json -TemplateParameterObject $parameters
+
+		# Assert
+		Assert-AreEqual Succeeded $deployment.ProvisioningState
+
+		$content = (Get-Content keyVaultTemplateParams.json) -join '' | ConvertFrom-Json
+		$content.hostingPlanName.reference.KeyVault.id = $KeyVaultResourceId
+		$content.hostingPlanName.reference.SecretName = $secretName
+		$content | ConvertTo-Json -depth 999 | Out-File keyVaultTemplateParams.json
+
+		$deployment = New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile sampleTemplate.json -TemplateParameterFile keyVaultTemplateParams.json
+
+		# Assert
+		Assert-AreEqual Succeeded $deployment.ProvisioningState
+
+		$subId = (Get-AzureRmContext).Subscription.SubscriptionId
+		$deploymentId = "/subscriptions/$subId/resourcegroups/$rgname/providers/Microsoft.Resources/deployments/$rname"
+		$getById = Get-AzureRmResourceGroupDeployment -Id $deploymentId
+		Assert-AreEqual $getById.DeploymentName $deployment.DeploymentName
+	}
+	
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

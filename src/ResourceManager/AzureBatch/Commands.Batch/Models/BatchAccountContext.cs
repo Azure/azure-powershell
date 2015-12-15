@@ -15,10 +15,12 @@
 using System.Threading;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Auth;
+using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Commands.Batch.Properties;
 using Microsoft.Azure.Management.Batch.Models;
 using System;
 using System.Collections;
+using System.Net.Http.Headers;
 
 namespace Microsoft.Azure.Commands.Batch
 {
@@ -53,7 +55,7 @@ namespace Microsoft.Azure.Commands.Batch
         /// <summary>
         /// The name of the Batch account.
         /// </summary>
-        public string AccountName { get; private set; }
+        public string AccountName { get; protected set; }
 
         /// <summary>
         /// The region in which the account was created.
@@ -78,7 +80,7 @@ namespace Microsoft.Azure.Commands.Batch
         /// <summary>
         /// The Batch service endpoint.
         /// </summary>
-        public string TaskTenantUrl { get; private set; }
+        public string TaskTenantUrl { get; protected set; }
 
         /// <summary>
         /// Tags associated with the account resource.
@@ -137,8 +139,8 @@ namespace Microsoft.Azure.Commands.Batch
                         throw new InvalidOperationException(string.Format(Resources.KeyNotPresent, KeyInUse));
                     }
                     string key = KeyInUse == AccountKeyType.Primary ? PrimaryAccountKey : SecondaryAccountKey;
-                    BatchSharedKeyCredentials credentials = new BatchSharedKeyCredentials(TaskTenantUrl, AccountName, key);
-                    this.batchOMClient = Microsoft.Azure.Batch.BatchClient.Open(credentials);
+                    BatchRestClient restClient = CreateBatchRestClient(TaskTenantUrl, AccountName, key);
+                    this.batchOMClient = Microsoft.Azure.Batch.BatchClient.Open(restClient);
                 }
                 return this.batchOMClient;
             }
@@ -203,6 +205,18 @@ namespace Microsoft.Azure.Commands.Batch
             var baContext = new BatchAccountContext();
             baContext.ConvertAccountResourceToAccountContext(resource);
             return baContext;
+        }
+
+        protected virtual BatchRestClient CreateBatchRestClient(string url, string accountName, string key)
+        {
+            Microsoft.Azure.Batch.Protocol.BatchSharedKeyCredential credentials = new Microsoft.Azure.Batch.Protocol.BatchSharedKeyCredential(accountName, key);
+            BatchRestClient restClient = new BatchRestClient(credentials, new Uri(url));
+            restClient.HttpClient.DefaultRequestHeaders.UserAgent.Add(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.UserAgentValue);
+
+            restClient.SetRetryPolicy(Hyak.Common.TransientFaultHandling.RetryPolicy.NoRetry); //Force there to be no retries
+            restClient.HttpClient.Timeout = Timeout.InfiniteTimeSpan; //Client side timeout will be set per-request
+
+            return restClient;
         }
     }
 }
