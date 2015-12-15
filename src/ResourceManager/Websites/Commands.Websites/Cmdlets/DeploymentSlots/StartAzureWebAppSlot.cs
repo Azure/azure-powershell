@@ -24,9 +24,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     [Cmdlet(VerbsLifecycle.Start, "AzureRMWebAppSlot")]
     public class StartAzureWebAppSlotCmdlet : WebAppSlotBaseCmdlet
     {    
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
             WebsitesClient.StartWebApp(ResourceGroupName, Name, Slot);
             WriteObject(WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot));
         }

@@ -87,6 +87,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             pool.ResizeTimeout = parameters.ResizeTimeout;
             pool.MaxTasksPerComputeNode = parameters.MaxTasksPerComputeNode;
             pool.InterComputeNodeCommunicationEnabled = parameters.InterComputeNodeCommunicationEnabled;
+            pool.TargetOSVersion = parameters.TargetOSVersion;
 
             if (!string.IsNullOrEmpty(parameters.AutoScaleFormula))
             {

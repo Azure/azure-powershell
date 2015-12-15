@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
             if (!string.IsNullOrEmpty(this.Name))
             {
                 var routeTable = this.GetRouteTable(this.ResourceGroupName, this.Name);
@@ -49,11 +49,11 @@ namespace Microsoft.Azure.Commands.Network
             }
             else if (!string.IsNullOrEmpty(this.ResourceGroupName))
             {
-                var routeTableGetResponse = this.RouteTableClient.List(this.ResourceGroupName);
+                var routeTableList = this.RouteTableClient.List(this.ResourceGroupName);
 
                 var psRouteTables = new List<PSRouteTable>();
 
-                foreach (var routeTable in routeTableGetResponse.RouteTables)
+                foreach (var routeTable in routeTableList)
                 {
                     var psRouteTable = this.ToPsRouteTable(routeTable);
                     psRouteTable.ResourceGroupName = this.ResourceGroupName;
@@ -64,11 +64,11 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                var nsgGetResponse = this.RouteTableClient.ListAll();
+                var routeTableList = this.RouteTableClient.ListAll();
 
                 var psRouteTables = new List<PSRouteTable>();
 
-                foreach (var routeTable in nsgGetResponse.RouteTables)
+                foreach (var routeTable in routeTableList)
                 {
                     var psRouteTable = this.ToPsRouteTable(routeTable);
                     psRouteTable.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(routeTable.Id);

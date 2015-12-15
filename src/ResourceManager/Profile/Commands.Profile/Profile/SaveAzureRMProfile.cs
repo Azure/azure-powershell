@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true)]
         public string Path { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (Profile != null)
             {

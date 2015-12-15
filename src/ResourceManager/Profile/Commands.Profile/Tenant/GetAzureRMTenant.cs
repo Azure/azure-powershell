@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Profile
         [ValidateNotNullOrEmpty]
         public string TenantId { get; set; }
         
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
             

@@ -73,21 +73,21 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The MircosoftConfigAdvertisedPublicPrefixes",
             ParameterSetName = "MicrosoftPeeringConfig")]
         [ValidateNotNullOrEmpty]
-        public List<string> MircosoftConfigAdvertisedPublicPrefixes { get; set; }
+        public List<string> MicrosoftConfigAdvertisedPublicPrefixes { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "The customerAsn",
             ParameterSetName = "MicrosoftPeeringConfig")]
         [ValidateNotNullOrEmpty]
-        public int MircosoftConfigCustomerAsn { get; set; }
+        public int MicrosoftConfigCustomerAsn { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "The MircosoftConfigRoutingRegistryName",
             ParameterSetName = "MicrosoftPeeringConfig")]
         [ValidateNotNullOrEmpty]
-        public string MircosoftConfigRoutingRegistryName { get; set; }
+        public string MicrosoftConfigRoutingRegistryName { get; set; }
 
     }
 }

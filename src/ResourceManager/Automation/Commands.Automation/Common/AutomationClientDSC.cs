@@ -809,6 +809,7 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
             templateParameters.Add("rebootNodeIfNeeded", rebootFlag);
             templateParameters.Add("actionAfterReboot", actionAfterReboot);
             templateParameters.Add("allowModuleOverwrite", moduleOverwriteFlag);
+            templateParameters.Add("timestamp", DateTimeOffset.UtcNow.ToString("o"));
 
             // invoke the New-AzureRmResourceGroupDeployment cmdlet
             using (Pipeline pipe = Runspace.DefaultRunspace.CreateNestedPipeline())
