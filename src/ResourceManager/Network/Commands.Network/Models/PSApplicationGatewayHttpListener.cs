@@ -22,7 +22,9 @@ namespace Microsoft.Azure.Commands.Network.Models
          public PSResourceId FrontendIpConfiguration { get; set; }
          public PSResourceId FrontendPort { get; set; }
          public string Protocol { get; set; }
+         public string HostName { get; set; }
          public PSResourceId SslCertificate { get; set; }
+         public string RequireServerNameIndication { get; set; }
          public string ProvisioningState { get; set; }
 
          [JsonIgnore]
