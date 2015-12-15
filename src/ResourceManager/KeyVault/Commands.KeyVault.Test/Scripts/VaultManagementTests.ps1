@@ -264,6 +264,11 @@ function Initialize-VaultTest
     $tenantId = (Get-AzureRmContext).Tenant.TenantId
     $tagName = "testtag"
     $tagValue = "testvalue"
+    $sku = "premium"
+    if($global:standardVaultOnly)
+    {
+        $sku = "standard"
+    }
     $vaultId = @{
         "ResourceType" = $KeyVaultResourceType;
         "ApiVersion" = $KeyVaultApiVersion;
@@ -277,7 +282,7 @@ function Initialize-VaultTest
 
         "sku" = @{
             "family" = "A";
-            "name" = "premium";
+            "name" = $sku;
         }
         "accessPolicies" = @();
     }    
@@ -306,13 +311,18 @@ function Reset-PreCreatedVault
     $tagName = "testtag"
     $tagValue = "testvalue"
     $tenantId = (Get-AzureRmContext).Tenant.TenantId
+    $sku = "premium"
+    if($global:standardVaultOnly)
+    {
+        $sku = "standard"
+    }
     $vaultProperties = @{
         "enabledForDeployment" = $false;
         "tenantId" = $tenantId;
 
         "sku" = @{
             "family" = "A";
-            "name" = "premium";
+            "name" = $sku;
         }
         "accessPolicies" = @();
     } 
