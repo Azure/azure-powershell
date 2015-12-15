@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <returns>Job list response</returns>
         public JobListResponse GetAzureSiteRecoveryJob()
         {
-            return this.GetSiteRecoveryClient().Jobs.List(this.GetRequestHeaders(false));
+            return this.GetSiteRecoveryClient().Jobs.List(null, this.GetRequestHeaders(false));
         }
 
         /// <summary>

@@ -24,7 +24,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// Adds Azure Site Recovery Policy settings to a Protection Container.
     /// </summary>
     [Cmdlet(VerbsLifecycle.Start, "AzureRmSiteRecoveryPolicyDissociationJob", DefaultParameterSetName = ASRParameterSets.EnterpriseToAzure)]
-    [Alias("Start-AzureRmSiteRecoveryPolicyDissociationJob")]
     [OutputType(typeof(ASRJob))]
     public class StartAzureSiteRecoveryPolicyDissociationJob : SiteRecoveryCmdletBase
     {

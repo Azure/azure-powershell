@@ -36,11 +36,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the resouce group name
+        /// Gets or sets the resource group name
         /// </summary>
         [Parameter(Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public string ResouceGroupName { get; set; }
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the location of the vault
