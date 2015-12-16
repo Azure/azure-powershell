@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy assignment name.")]
         [ValidateNotNullOrEmpty]
+        [Alias("n")]
         public string Name { get; set; }
 
         /// <summary>

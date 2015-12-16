@@ -83,6 +83,7 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithSPN,
             HelpMessage = "Resource group to assign the role to.")]
         [ValidateNotNullOrEmpty]
+        [Alias("group","g")]
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Resource,
@@ -94,6 +95,7 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithSPN,
             HelpMessage = "Resource to assign the role to.")]
         [ValidateNotNullOrEmpty]
+        [Alias("resource", "r")]
         public string ResourceName { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Resource,
@@ -105,6 +107,7 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithSPN,
             HelpMessage = "Type of the resource to assign the role to.")]
         [ValidateNotNullOrEmpty]
+        [Alias("type", "t")]
         public string ResourceType { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Resource,
@@ -116,6 +119,7 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithSPN,
             HelpMessage = "Parent resource of the resource to assign the role to, if there is any.")]
         [ValidateNotNullOrEmpty]
+        [Alias("parent")]
         public string ParentResource { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Empty,
@@ -175,6 +179,7 @@ namespace Microsoft.Azure.Commands.Resources
             HelpMessage = "If specified, returns role assignments directly assigned to the principal as well as assignments to the principal's groups (transitive). Supported only for User Principals.")]
         [Parameter(Mandatory = false, ParameterSetName = ParameterSet.SignInName,
             HelpMessage = "If specified, returns role assignments directly assigned to the principal as well as assignments to the principal's groups (transitive). Supported only for User Principals.")]
+        [Alias("expand", "e")]
         public SwitchParameter ExpandPrincipalGroups { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = ParameterSet.Empty, 

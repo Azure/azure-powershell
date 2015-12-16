@@ -25,20 +25,22 @@ namespace Microsoft.Azure.Commands.Resources
     [Cmdlet(VerbsCommon.New, "AzureRmResourceGroupDeployment", DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(PSResourceGroupDeployment))]
     public class NewAzureResourceGroupDeploymentCommand : ResourceWithParameterBaseCmdlet, IDynamicParameters
     {
-        [Alias("DeploymentName")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, 
             HelpMessage = "The name of the deployment it's going to create. Only valid when a template is used. When a template is used, if the user doesn't specify a deployment name, use the current time, like \"20131223140835\".")]
         [ValidateNotNullOrEmpty]
+        [Alias("DeploymentName","n")]
         public string Name { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
+        [Alias("group", "g")]
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The deployment mode.")]
         public DeploymentMode Mode { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        [Alias("DeploymentName", "f")]
         public SwitchParameter Force { get; set; }
 
         public NewAzureResourceGroupDeploymentCommand()

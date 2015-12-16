@@ -60,11 +60,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the resource name parameter.
         /// </summary>
-        [Alias("Name")]
         [Parameter(ParameterSetName = FindAzureResourceCmdlet.ListResourcesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource name substring. e.g. if your resource name is testResource, you can specify test.")]
         [Parameter(ParameterSetName = FindAzureResourceCmdlet.ListTenantResourcesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource name substring. e.g. if your resource name is testResource, you can specify test.")]
         [Parameter(ParameterSetName = FindAzureResourceCmdlet.MultiSubscriptionListResourcesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource name substring. e.g. if your resource name is testResource, you can specify test.")]
         [ValidateNotNullOrEmpty]
+        [Alias("Name", "n")]
         public string ResourceNameContains { get; set; }
 
         /// <summary>
@@ -74,6 +74,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(ParameterSetName = FindAzureResourceCmdlet.ListTenantResourcesParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource type. e.g. Microsoft.Sql/Servers/Databases.")]
         [Parameter(ParameterSetName = FindAzureResourceCmdlet.MultiSubscriptionListResourcesParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource type. e.g. Microsoft.Sql/Servers/Databases.")]
         [ValidateNotNullOrEmpty]
+        [Alias("type","t")]
         public string ResourceType { get; set; }
 
         /// <summary>
@@ -120,10 +121,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the resource group name.
         /// </summary>
-        [Alias("ResourceGroupName")]
         [Parameter(Mandatory = false, ParameterSetName = FindAzureResourceCmdlet.ListResourcesParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name substring.")]
         [Parameter(Mandatory = false, ParameterSetName = FindAzureResourceCmdlet.MultiSubscriptionListResourcesParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name substring.")]
         [ValidateNotNullOrEmpty]
+        [Alias("ResourceGroupName", "group", "g")]
         public string ResourceGroupNameContains { get; set; }
 
         /// <summary>

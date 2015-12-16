@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "The resource location.")]
         [ValidateNotNullOrEmpty]
+        [Alias("l")]
         public string Location { get; set; }
 
         /// <summary>
@@ -41,14 +42,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "The resource kind.")]
         [ValidateNotNullOrEmpty]
+        [Alias("k")]
         public string Kind { get; set; }
 
         /// <summary>
         /// Gets or sets the property object.
         /// </summary>
-        [Alias("PropertyObject")]
         [Parameter(Mandatory = true, HelpMessage = "A hash table which represents resource properties.")]
         [ValidateNotNullOrEmpty]
+        [Alias("PropertyObject")]
         public PSObject Properties { get; set; }
 
         /// <summary>
@@ -56,21 +58,23 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "A hash table which represents resource plan properties.")]
         [ValidateNotNullOrEmpty]
+        [Alias("plan")]
         public Hashtable PlanObject { get; set; }
 
         /// <summary>  
         /// Gets or sets the plan object.  
         /// </summary>  
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents sku properties.")]  
-        [ValidateNotNullOrEmpty]  
+        [ValidateNotNullOrEmpty]
+        [Alias("sku")]
         public Hashtable SkuObject { get; set; }  
 
 
         /// <summary>
         /// Gets or sets the tags.
         /// </summary>
-        [Alias("Tags")]
         [Parameter(Mandatory = false, HelpMessage = "A hash table which represents resource tags.")]
+        [Alias("Tags", "t")]
         public Hashtable[] Tag { get; set; }
 
         /// <summary>

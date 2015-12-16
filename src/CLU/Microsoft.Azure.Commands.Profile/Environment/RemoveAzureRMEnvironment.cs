@@ -29,9 +29,11 @@ namespace Microsoft.Azure.Commands.Profile
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The environment name")]
+        [Alias("n")]
         public string Name { get; set; }
 
         [Parameter(Position = 1, HelpMessage = "Do not confirm deletion of subscription")]
+        [Alias("f")]
         public SwitchParameter Force { get; set; }
 
         protected override void BeginProcessing()

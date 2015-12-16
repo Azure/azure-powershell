@@ -30,22 +30,21 @@ namespace Microsoft.Azure.Commands.Websites.Test
 
         private Mock<ICommandRuntime> commandRuntimeMock;
 
- //       ResourceGroupName, WebsiteName, SlotName, Location, WebHostingPlan
+        //ResourceGroupName, WebsiteName, SlotName, Location, WebHostingPlan
 
+        //private string resourceGroupName = "Default-Web-WestUS";
 
-        private string resourceGroupName = "Default-Web-WestUS";
+        //private string websiteName = "ngoliPSWebsite";
 
-        private string websiteName = "ngoliPSWebsite";
-
-        private string slotName = null; 
+        //private string slotName = null; 
         
-        private string webHostingPlan = "myWHP";
+        //private string webHostingPlan = "myWHP";
 
-        private string location = "West US";
+        //private string location = "West US";
 
-        private Dictionary<string, object> properties;
+        //private Dictionary<string, object> properties;
 
-        private Hashtable[] tags;
+        //private Hashtable[] tags;
 
         public NewAzureWebAppCommandTests()
         {
