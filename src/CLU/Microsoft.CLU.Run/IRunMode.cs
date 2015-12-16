@@ -17,6 +17,6 @@
         /// IRunMode implementation.
         /// </summary>
         /// <param name="arguments">The arguments</param>
-        void Run(string[] arguments);
+        Microsoft.CLU.CommandModelErrorCode Run(string[] arguments);
     }
 }

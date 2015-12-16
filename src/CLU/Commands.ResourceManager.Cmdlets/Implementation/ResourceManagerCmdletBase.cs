@@ -301,7 +301,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             Resource<JToken> resultResource;
             if (resultString.TryConvertTo<Resource<JToken>>(out resultResource))
             {
-                this.WriteObject(resultResource.ToPsObject());
+                this.WriteObject(resultResource);
             }
             else
             {

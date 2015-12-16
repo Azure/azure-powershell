@@ -78,3 +78,36 @@ To test on osx/linux boxes, do #1, open `<repo-root>\drop\clurun`, you should se
 
     ```set CmdletSessionId=1010 ```
 
+### Testing Cmdlets
+
+#### Environment setup (Windows)
+- Install latest version of [Git for Windows](https://git-scm.com/download/win) that has `bash 4.x` available.
+- Install `jq` using chocolatey `choco install jq` (chocolatey can be installed from [here](https://chocolatey.org/)).
+
+#### Test Infrastructure
+Testing will consist of scenario tests and unit tests. Scenario tests should be written in a form of an example and be available in `.ps1` and `.sh` formats.
+
+#### Scenario Tests
+- Scenario tests should be saved under `./examples` directory and grouped by the package or service area. Each scenario tests should consist of both `.ps1` and `.sh` files and should cover "P0" scenarios.
+
+##### Bash Tests
+- Bash tests should be runnable from bash shell in windows/linux/mac environments.
+- To manually run the tests; please set the following envt. variables for authentication and run `./examples/lib/testrunner.sh`
+   ```bash
+   export azureuser=<username@contosocorp.com>
+   export azurepassword=<your_password>
+   export PATH=$PATH:/<path-to-drop>/clurun/win7-x64/
+   . /examples/lib/testrunner.sh
+   ```
+- All the parameters to the cmdlets should be passed in as envt. variables
+- The current test runners will provide a unique resource group name via `$groupName` but may not remove it at the end if the test fails.
+- The location for ARM will be provided via variable `$location`.
+- "jq" package and BASH assert (e.g. `[ "foo" == "bar" ]`) should be used to validate the responses.
+
+##### PowerShell Tests
+TODO: Add section on PowerShell testing
+
+#### Unit Tests
+TODO: Add section on unit testing
+
+

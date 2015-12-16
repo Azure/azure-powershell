@@ -22,6 +22,7 @@ echo ^(Get-Content "%mscluCfg%"^) ^| ForEach-Object { $_ -replace "TOFILL", "%ro
 %root%\drop\clurun\win7-x64\clurun.exe --install Microsoft.Azure.Commands.Resources.Cmdlets
 %root%\drop\clurun\win7-x64\clurun.exe --install Microsoft.Azure.Commands.Websites
 %root%\drop\clurun\win7-x64\clurun.exe --install Microsoft.Azure.Commands.Management.Storage
+%root%\drop\clurun\win7-x64\clurun.exe --install Microsoft.Azure.Commands.Compute
 
 REM setup osx and linux bits which can be xcopied and run. 
 REM note, for known nuget bugs, skip --install by copying over cmdlet packages.
@@ -45,4 +46,3 @@ copy /Y %azuresh% %root%\drop\clurun\ubuntu.14.04-x64
 
 REM, windows version also needs it for bash based testing
 copy /Y %azuresh% %root%\drop\clurun\win7-x64
-

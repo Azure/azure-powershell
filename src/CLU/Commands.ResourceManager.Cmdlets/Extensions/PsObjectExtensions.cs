@@ -86,9 +86,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
                 }
                 else
                 {
-                    var properties = (valueAsPsObject.TypeNames.Any(typeName => typeName.EqualsInsensitively(Constants.MicrosoftAzureResource)))
-                        ? valueAsPsObject.Properties.Where(property => !PsObjectExtensions.PropertiesToRemove.ContainsKey(property.Name))
-                        : valueAsPsObject.Properties.AsEnumerable();
+                    var properties = valueAsPsObject.Properties.AsEnumerable();
 
                     foreach (var member in properties)
                     {

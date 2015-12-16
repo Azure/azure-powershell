@@ -436,17 +436,11 @@ namespace Microsoft.Azure.Commands.Utilities.Common
             WriteError(new ErrorRecord(ex, string.Empty, ErrorCategory.CloseError, null));
         }
 
-        protected PSObject ConstructPSObject(string typeName, params object[] args)
+        protected PSObject ConstructPSObject(params object[] args)
         {
-            return PowerShellUtilities.ConstructPSObject(typeName, args);
+            return PowerShellUtilities.ConstructPSObject(args);
         }
-
-        protected void SafeWriteOutputPSObject(string typeName, params object[] args)
-        {
-            PSObject customObject = this.ConstructPSObject(typeName, args);
-            WriteObject(customObject);
-        }
-
+        
         private void FlushDebugMessages(bool record = false)
         {
             if (record)

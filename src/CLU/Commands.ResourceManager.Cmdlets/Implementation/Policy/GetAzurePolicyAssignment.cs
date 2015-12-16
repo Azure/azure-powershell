@@ -19,11 +19,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Newtonsoft.Json.Linq;
-
+    using Entities.Policy;
     /// <summary>
     /// Gets the policy assignment.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmPolicyAssignment", DefaultParameterSetName = GetAzurePolicyAssignmentCmdlet.ParameterlessSet), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmPolicyAssignment", DefaultParameterSetName = GetAzurePolicyAssignmentCmdlet.ParameterlessSet), OutputType(typeof(ResourcePolicyAssignment<JToken>))]
     public class GetAzurePolicyAssignmentCmdlet : PolicyAssignmentCmdletBase
     {
         /// <summary>
