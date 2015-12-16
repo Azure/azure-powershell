@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.Tags.Tag
     {
         [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Name of the tag. If not specified, return all the tags of the subscription.")]
         [ValidateNotNullOrEmpty]
+        [Alias("n")]
         public string Name { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Whether should get the tag values information as well.")]

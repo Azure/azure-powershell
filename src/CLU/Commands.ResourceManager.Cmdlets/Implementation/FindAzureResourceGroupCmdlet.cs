@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     public class FindAzureResourceGroupCmdlet : ResourceManagerCmdletBase
     {
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The tag filter for the OData query. The expected format is @{Name = 'tagName'} or @{Name = 'tagName'; Value = 'tagValue'}.")]
+        [Alias("t")]
         public Hashtable Tag { get; set; }
 
         /// <summary>

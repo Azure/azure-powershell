@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SearchString,
             HelpMessage = "The user or group name.")]
         [ValidateNotNullOrEmpty]
+        [Alias("s")]
         public string SearchString { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Empty,
@@ -36,6 +37,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId,
             HelpMessage = "The group id.")]
         [ValidateNotNullOrEmpty]
+        [Alias("id")]
         public Guid ObjectId { get; set; }
 
         protected override void ProcessRecord()

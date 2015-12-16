@@ -22,9 +22,11 @@ namespace Microsoft.Azure.Commands.Resources.Models.ProviderFeatures
     using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
     using Common.Authentication;
     using Common.Authentication.Models;
-    using Rest.Azure;/// <summary>
-                     /// Helper client for performing operations on features
-                     /// </summary>
+    using Rest.Azure;
+    
+    /// <summary>
+    /// Helper client for performing operations on features
+    /// </summary>
     public class ProviderFeatureClient
     {
         /// <summary>

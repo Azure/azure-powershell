@@ -27,14 +27,17 @@ namespace Microsoft.Azure.Commands.WebApps
 
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]
         [ValidateNotNullOrEmpty]
+        [Alias("group", "g")]
         public string ResourceGroupName { get; set; }
 
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 1, Mandatory = true, HelpMessage = "The name of the app service plan.")]
         [ValidateNotNullOrEmpty]
+        [Alias("n")]
         public string Name { get; set; }
 
         [Parameter(ParameterSetName = ParameterSet2Name, Position = 0, Mandatory = true, HelpMessage = "The app service plan object", ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
+        [Alias("plan")]
         public ServerFarmWithRichSku AppServicePlan { get; set; }
 
         protected override void ProcessRecord()
