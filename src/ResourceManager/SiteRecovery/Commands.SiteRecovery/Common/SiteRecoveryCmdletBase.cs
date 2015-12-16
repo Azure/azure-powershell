@@ -25,6 +25,7 @@ using Microsoft.Azure.Management.SiteRecovery;
 using Microsoft.Azure.Management.SiteRecovery.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Properties = Microsoft.Azure.Commands.SiteRecovery.Properties;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -74,36 +75,36 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             CloudException cloudException = ex as CloudException;
             if (cloudException != null)
             {
-                Error error = null;
+                ARMException error = null;
                 try
                 {
-                    using (Stream stream = new MemoryStream())
+                    if (cloudException.Message != null)
                     {
-                        if (cloudException.Message != null)
+                        string originalMessage = cloudException.Error.OriginalMessage;
+                        error = JsonConvert.DeserializeObject<ARMException>(originalMessage);
+
+                        string exceptionMessage = "Operation Failed.\n";
+                        foreach(ARMExceptionDetails detail in error.Details)
                         {
-                            byte[] data = System.Text.Encoding.UTF8.GetBytes(cloudException.Message);
-                            stream.Write(data, 0, data.Length);
-                            stream.Position = 0;
-
-                            var deserializer = new DataContractSerializer(typeof(ErrorInException));
-                            error = (Error)deserializer.ReadObject(stream);
-
-                            throw new InvalidOperationException(
-                                string.Format(
+                            exceptionMessage = exceptionMessage + string.Format(
                                 Properties.Resources.CloudExceptionDetails,
-                                error.Message,
-                                error.PossibleCauses,
-                                error.RecommendedAction,
-                                error.ClientRequestId));
+                                detail.ErrorCode,
+                                detail.Message,
+                                detail.PossibleCauses,
+                                detail.RecommendedAction,
+                                detail.ClientRequestId
+                                ) + "\n\n";
                         }
-                        else
-                        {
-                            throw new Exception(
-                                string.Format(
-                                Properties.Resources.InvalidCloudExceptionErrorMessage,
-                                clientRequestIdMsg + ex.Message),
-                                ex);
-                        }
+
+                        throw new InvalidOperationException(exceptionMessage);
+                    }
+                    else
+                    {
+                        throw new Exception(
+                            string.Format(
+                            Properties.Resources.InvalidCloudExceptionErrorMessage,
+                            clientRequestIdMsg + ex.Message),
+                            ex);
                     }
                 }
                 catch (XmlException)
