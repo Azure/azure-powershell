@@ -1,4 +1,0 @@
-#!/bin/bash
-BASEDIR=$(dirname $0)
-
-clurun.exe -s azure -r $BASEDIR/azure.lx $*

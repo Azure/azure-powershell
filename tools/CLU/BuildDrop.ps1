@@ -17,7 +17,15 @@ if (!($dropLocation))
 if (!(Test-Path -Path $dropLocation -PathType Container))
 {
     mkdir "$dropLocation"
+}
+
+if (!(Test-Path -Path "$dropLocation\CommandRepo" -PathType Container))
+{
     mkdir "$dropLocation\CommandRepo"
+}
+
+if (!(Test-Path -Path "$dropLocation\clurun" -PathType Container))
+{
     mkdir "$dropLocation\clurun"
 }
 
