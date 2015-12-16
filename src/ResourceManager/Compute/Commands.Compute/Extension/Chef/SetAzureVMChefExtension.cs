@@ -368,9 +368,8 @@ validation_client_name 	\""{1}\""
             return "1210.*";
         }
 
-        protected override void ValidateParameters()
-        {
-            this.ValidateParameters();
+        private void ValidateParameters()
+        {            
             bool IsClientRbEmpty = string.IsNullOrEmpty(this.ClientRb);
             bool IsChefServerUrlEmpty = string.IsNullOrEmpty(this.ChefServerUrl);
             bool IsValidationClientNameEmpty = string.IsNullOrEmpty(this.ValidationClientName);
