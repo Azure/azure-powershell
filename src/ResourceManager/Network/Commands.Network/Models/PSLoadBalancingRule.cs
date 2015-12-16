@@ -32,10 +32,10 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string Protocol { get; set; }
 
         [JsonProperty(Order = 1)]
-        public int FrontendPort { get; set; }
+        public int? FrontendPort { get; set; }
 
         [JsonProperty(Order = 1)]
-        public int BackendPort { get; set; }
+        public int? BackendPort { get; set; }
 
         [JsonProperty(Order = 1)]
         public int? IdleTimeoutInMinutes { get; set; }
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string LoadDistribution { get; set; }
 
         [JsonProperty(Order = 1)]
-        public bool EnableFloatingIP { get; set; }
+        public bool? EnableFloatingIP { get; set; }
 
         [JsonProperty(Order = 1)]
         public string ProvisioningState { get; set; }
