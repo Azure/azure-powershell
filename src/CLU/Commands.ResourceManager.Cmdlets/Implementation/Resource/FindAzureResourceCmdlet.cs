@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Cmdlet to get existing resources from ARM cache.
     /// </summary>
-    [Cmdlet(VerbsCommon.Find, "AzureRmResource", DefaultParameterSetName = FindAzureResourceCmdlet.ListResourcesParameterSet), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Find, "AzureRmResource", DefaultParameterSetName = FindAzureResourceCmdlet.ListResourcesParameterSet), OutputType(typeof(Resource<JToken>))]
     public sealed class FindAzureResourceCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>
@@ -191,14 +191,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                                 items = this.GetPopulatedResource(batch).Result;
                             }
 
-                            var powerShellObjects = items.SelectArray(genericResource => genericResource.ToPsObject());
+                            var powerShellObjects = items.SelectArray(genericResource => genericResource);
 
                             this.WriteObject(sendToPipeline: powerShellObjects, enumerateCollection: true);
                         }
                     }
                     else
                     {
-                        this.WriteObject(sendToPipeline: resources.CoalesceEnumerable().SelectArray(res => res.ToPsObject()), enumerateCollection: true);
+                        this.WriteObject(sendToPipeline: resources.CoalesceEnumerable().SelectArray(res => res.ToResource()), enumerateCollection: true);
                     }
                 });
 
