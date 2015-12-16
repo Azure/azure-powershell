@@ -22,6 +22,19 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 using System.Collections;
 using Microsoft.Azure.Commands.Tags.Model;
 using System.Collections.Generic;
+using System.Net.Http;
+using Microsoft.Rest.Azure;
+using Microsoft.Azure.Management.Network.Models;
+using Microsoft.Rest;
+using Microsoft.Azure.Common.Authentication;
+using Newtonsoft.Json;
+using System.Text;
+using System.Net.Http.Headers;
+using System.Net;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Threading;
+using Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -65,7 +78,11 @@ namespace Microsoft.Azure.Commands.Network
             vpnClientParams.ProcessorArchitecture = this.ProcessorArchitecture;
             var vnetVpnClientParametersModel = Mapper.Map<MNM.VpnClientParameters>(vpnClientParams);
 
-            string packageUrl = this.VirtualNetworkGatewayClient.Generatevpnclientpackage(ResourceGroupName, VirtualNetworkGatewayName, vnetVpnClientParametersModel);
+            //TODO:- This code is added just for current release of P2S feature as Generatevpnclientpackage API is broken & need to be fixed on server 
+            //side as well as in overall Poweshell flow
+            //string packageUrl = this.VirtualNetworkGatewayClient.Generatevpnclientpackage(ResourceGroupName, VirtualNetworkGatewayName, vnetVpnClientParametersModel);
+
+            string packageUrl = this.NetworkClient.Generatevpnclientpackage(ResourceGroupName, VirtualNetworkGatewayName, vnetVpnClientParametersModel);
 
             WriteObject(packageUrl);
         }
