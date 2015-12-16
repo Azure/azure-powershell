@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         #endregion
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             KeyBundle keyBundle;
             switch (ParameterSetName)
@@ -105,10 +105,12 @@ namespace Microsoft.Azure.Commands.KeyVault
                     WriteObject(keyBundle);
                     break;
                 case ByKeyVersionsParameterSet:
-                     keyBundle = DataServiceClient.GetKey(VaultName, Name, null);
+                    keyBundle = DataServiceClient.GetKey(VaultName, Name, null);
                     if (keyBundle != null)
+                    {
                         WriteObject(new KeyIdentityItem(keyBundle));
-                    GetAndWriteKeyVersions(VaultName, Name, keyBundle.Version);
+                        GetAndWriteKeyVersions(VaultName, Name, keyBundle.Version);
+                    }
                     break;
                 case ByVaultNameParameterSet:
                     GetAndWriteKeys(VaultName);
@@ -123,7 +125,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         {
             KeyVaultObjectFilterOptions options = new KeyVaultObjectFilterOptions
             {
-                VaultName = VaultName,
+                VaultName = vaultName,
                 NextLink = null
             };
           
@@ -138,7 +140,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         {
             KeyVaultObjectFilterOptions options = new KeyVaultObjectFilterOptions
             {
-                VaultName = VaultName,
+                VaultName = vaultName,
                 NextLink = null,
                 Name = name
             };

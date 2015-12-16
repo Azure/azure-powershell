@@ -80,15 +80,16 @@ namespace Microsoft.Azure.Commands.Compute
         public string Password { get; set; }
 
         [Parameter(
+            Mandatory = false,
             Position = 6,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The location.")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             ExecuteClientAction(() =>
             {
@@ -100,6 +101,11 @@ namespace Microsoft.Azure.Commands.Compute
 
                 var SettingString = JsonConvert.SerializeObject(publicSettings);
                 var ProtectedSettingString = JsonConvert.SerializeObject(privateSettings);
+
+                if (string.IsNullOrEmpty(this.Location))
+                {
+                    this.Location = GetLocationFromVm(this.ResourceGroupName, this.VMName);
+                }
 
                 var parameters = new VirtualMachineExtension
                 {

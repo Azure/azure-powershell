@@ -12,11 +12,11 @@ function Test-GetAzureRmVMDscExtension
 
 	# Setup
     $rgname = Get-ComputeTestResourceName
+	$loc = Get-ComputeVMLocation
 
     try
     {
         # Common
-        $loc = Get-ComputeVMLocation;
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware
@@ -72,7 +72,7 @@ function Test-GetAzureRmVMDscExtension
         New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
         # Test DSC Extension
-        $version = '2.3';
+        $version = '2.8';
 
 		# Publish DSC Configuration
 		#TODO: Find a way to mock calls with storage
@@ -89,7 +89,6 @@ function Test-GetAzureRmVMDscExtension
 		Assert-AreEqual $extension.Publisher "Microsoft.Powershell"
 		Assert-AreEqual $extension.ExtensionType "DSC"
 		Assert-AreEqual $extension.TypeHandlerVersion $version
-		Assert-AreEqual $extension.Location $loc
 		Assert-NotNull $extension.ProvisioningState
 
 		$status = Get-AzureRmVMDscExtensionStatus -ResourceGroupName $rgname -VMName $vmname 
@@ -105,8 +104,11 @@ function Test-GetAzureRmVMDscExtension
     }
     finally
     {
-        # Cleanup
-        Clean-ResourceGroup $rgname
+		# Cleanup
+		if(Get-AzureRmResourceGroup -Name $rgname -Location $loc)
+		{
+			#Remove-AzureRmResourceGroup -Name $rgname -Force;
+		}
     }
 }
 
