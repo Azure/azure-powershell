@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.RedisCache
     using Microsoft.Azure.Common.Authentication.Models;
     using Microsoft.Azure.Management.Insights;
     using Microsoft.Azure.Management.Insights.Models;
+    using Microsoft.Azure.Management.Internal.Resources;
     using Microsoft.Azure.Management.Redis;
     using Microsoft.Azure.Management.Redis.Models;
     using Microsoft.WindowsAzure;
@@ -30,17 +31,20 @@ namespace Microsoft.Azure.Commands.RedisCache
     {
         private RedisManagementClient _client;
         private InsightsManagementClient _insightsClient;
+        private ResourceManagementClient _resourceManagementClient;
 
         public RedisCacheClient(AzureContext context)
         {
             _client = AzureSession.ClientFactory.CreateClient<RedisManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
             _insightsClient = AzureSession.ClientFactory.CreateClient<InsightsManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            _resourceManagementClient  = AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
         }
         public RedisCacheClient() { }
 
         public RedisCreateOrUpdateResponse CreateOrUpdateCache(string resourceGroupName, string cacheName, string location, string skuFamily, int skuCapacity, string skuName,
                 Hashtable redisConfiguration, bool? enableNonSslPort, Hashtable tenantSettings, int? shardCount, string virtualNetwork, string subnet, string staticIP)
         {
+            _resourceManagementClient.Providers.Register("Microsoft.Cache");
             RedisCreateOrUpdateParameters parameters = new RedisCreateOrUpdateParameters
                                                     {
                                                         Location = location,
@@ -77,7 +81,10 @@ namespace Microsoft.Azure.Commands.RedisCache
                 }
             }
 
-            parameters.Properties.ShardCount = shardCount;
+            if (shardCount.HasValue)
+            {
+                parameters.Properties.ShardCount = shardCount.Value;
+            }
             
             if (!string.IsNullOrWhiteSpace(virtualNetwork))
             {

@@ -6,7 +6,7 @@ function Test-RedisCache
 {
     # Setup
     # resource group should exists
-    $resourceGroupName = "MyResourceGroup"
+    $resourceGroupName = "SunnyAAPT6"
     $cacheName = "powershelltest"
     $location = "North Central US"
 
@@ -145,7 +145,7 @@ function Test-SetNonExistingRedisCacheTest
 {
     # Setup
     # resource group should exists
-    $resourceGroupName = "MyResourceGroup"
+    $resourceGroupName = "SunnyAAPT6"
     $cacheName = "NonExistingRedisCache"
     $location = "North Central US"
 
@@ -161,7 +161,7 @@ function Test-RedisCachePipeline
 {
     # Setup
     # resource group should exists
-    $resourceGroupName = "MyResourceGroup"
+    $resourceGroupName = "SunnyAAPT6"
     $cacheName = "powershelltestpipe"
     $location = "North Central US"
 
@@ -247,7 +247,7 @@ function Test-SetRedisCacheBugFixTest
 {
     # Setup
     # resource group should exists
-    $resourceGroupName = "siddharth"
+    $resourceGroupName = "SunnyAAPT6"
     $cacheName = "siddharthchatrola"
     $location = "North Central US"
 
@@ -284,7 +284,7 @@ function Test-RedisCacheClustering
 {
     # Setup
     # resource group should exists
-    $resourceGroupName = "MyResourceGroup"
+    $resourceGroupName = "SunnyAAPT6"
     $cacheName = "powershellcluster"
     $location = "East US"
 
@@ -407,7 +407,7 @@ function Test-SetAzureRedisCacheDiagnostics
     $cacheName = "sunnycache"
     
     # Set Diagnostics
-    Set-AzureRmRedisCacheDiagnostics -ResourceGroupName $resourceGroupName -Name $cacheName -StorageAccountId "/subscriptions/f8f8f139-2fd5-4d86-afca-21f21f35806e/resourcegroups/SunnyAAPT6/providers/Microsoft.Storage/storageAccounts/sunnystoragenew"
+    Set-AzureRmRedisCacheDiagnostics -ResourceGroupName $resourceGroupName -Name $cacheName -StorageAccountId "/subscriptions/f8f8f139-2fd5-4d86-afca-21f21f35806e/resourceGroups/SunnyAAPT6/providers/Microsoft.ClassicStorage/storageAccounts/sunnystoragenew"
 }
 
 <#
