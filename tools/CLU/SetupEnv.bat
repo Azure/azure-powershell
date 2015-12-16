@@ -14,7 +14,7 @@ set DebugCLU=
 call %~dp0\BuildAndInstallClu.bat
 set Path=%Path%;%root%\drop\clurun\win7-x64
 REM run 'azure help' to verify all are wired up
-azure help
+azure.bat help
 if ERRORLEVEL 1 (
    echo Build and deploy clu package failed
    exit /B 1

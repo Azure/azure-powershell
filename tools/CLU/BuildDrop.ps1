@@ -50,8 +50,8 @@ if (!($excludeCluRun))
 
         if (!($runtime.StartsWith("win")))
         {
-            # Fix current x-plat dotnet publish by correctly renaming ConsoleHost to clurun
-            Move-Item -Path "$cluRunOutput\coreconsole" -Destination "$cluRunOutput\clurun" -Force
+            # use released coreconsole file from https://github.com/dotnet/cli
+            Copy-Item -Path "$workspaceDirectory\tools\CLU\$runtime\coreconsole" -Destination "$cluRunOutput\clurun" -Force
 
             # Remove all extra exes that end up in the output directory...
             Get-ChildItem -Path "$cluRunOutput" -Filter "*.exe" | Remove-Item
