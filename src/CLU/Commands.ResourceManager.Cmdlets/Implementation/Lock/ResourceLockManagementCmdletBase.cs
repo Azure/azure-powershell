@@ -158,8 +158,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 .SelectArray(resource =>
                 {
                     var rc = resource.ToResource();
-                    var resourceLock = rc.Cast<ResourceLock<JToken>>();
-                    resourceLock.LockId = rc.Properties["ResourceId"].ToString();
+                    var resourceLock = new ResourceLock<JToken>(rc);
+                    resourceLock.LockId = rc.Id;
                     return resourceLock;
                 });
         }

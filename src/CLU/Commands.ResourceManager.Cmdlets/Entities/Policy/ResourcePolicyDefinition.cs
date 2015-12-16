@@ -12,16 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
 using Newtonsoft.Json;
 
-namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy
 {
-    public class ResourceLock<TProperties> : Resource<TProperties>
+    public class ResourcePolicyDefinition<TProperties> : Resource<TProperties>
     {
+        public ResourcePolicyDefinition(Resource<TProperties> r)
+            : base(r)
+        {
+        }
+
         /// <summary>
-        /// Gets or sets the lock id for the resource.
+        /// Gets or sets the policy definition id for the resource.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
-        public string LockId { get; set; }
+        public string PolicyDefinitionId { get; set; }
     }
 }
