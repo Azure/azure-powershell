@@ -78,3 +78,34 @@ To test on osx/linux boxes, do #1, open `<repo-root>\drop\clurun`, you should se
 
     ```set CmdletSessionId=1010 ```
 
+### Testing Cmdlets
+
+#### Environment setup (Windows)
+- Install [git bash for windows](https://git-scm.com/download/win) if you dont have git installed on your system.
+- Install jq using chocolatey `choco install jq`. You can install chocolatey from [here](https://chocolatey.org/).
+
+#### Test Infrastructure
+Testing will consist of scenario tests and unit tests. We want scenario tests to be used as examples and be available in `.ps1` and `.sh` formats.
+
+#### Scenario Tests
+- Scenario tests should be saved under `./examples` directory and grouped by the package or service area. Each scenario tests should consist of both `.ps1` and `.sh` files and should cover "P0" scenarios.
+
+##### Bash Tests
+- Bash tests should be runnable from bash shell in windows/linux/mac environments.
+- To manually run the tests; please set the following envt. variables for authentication and run `./examples/lib/testrunner.sh`
+   ```bash
+   export azureuser=<username@contosocorp.com>
+   export azurepassword=<your_password>
+   . /examples/lib/testrunner.sh
+   ```
+- All the parameters to the cmdlets should be passed in as envt. variables
+- The test runners are guaranted to provide a unique resource group name via `$groupName` and reomve it at the end of the test execution.
+- The location for ARM will be provided via variable `$location`.
+- "jq" package and `./examples/lib/assert.sh` should be used to validate the responses.
+
+
+
+#### Unit Tests
+TODO: Add details on unit testing
+
+
