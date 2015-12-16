@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Cmdlet to get existing resources.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmResource", DefaultParameterSetName = GetAzureResourceCmdlet.ParameterlessSet), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmResource", DefaultParameterSetName = GetAzureResourceCmdlet.ParameterlessSet), OutputType(typeof(Resource<JToken>))]
     public sealed class GetAzureResourceCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>
@@ -228,14 +228,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                                 items = this.GetPopulatedResource(batch).Result;
                             }
 
-                            var powerShellObjects = items.SelectArray(genericResource => genericResource.ToPsObject());
+                            var powerShellObjects = items.SelectArray(genericResource => genericResource);
 
                             this.WriteObject(sendToPipeline: powerShellObjects, enumerateCollection: true);
                         }
                     }
                     else
                     {
-                        this.WriteObject(sendToPipeline: resources.CoalesceEnumerable().SelectArray(res => res.ToPsObject()), enumerateCollection: true);
+                        this.WriteObject(sendToPipeline: resources.CoalesceEnumerable().SelectArray(res => res.ToResource()), enumerateCollection: true);
                     }
                 });
 

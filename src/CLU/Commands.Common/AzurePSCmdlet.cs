@@ -440,13 +440,7 @@ namespace Microsoft.Azure.Commands.Utilities.Common
         {
             return PowerShellUtilities.ConstructPSObject(args);
         }
-
-        protected void SafeWriteOutputPSObject(params object[] args)
-        {
-            PSObject customObject = this.ConstructPSObject(args);
-            WriteObject(customObject);
-        }
-
+        
         private void FlushDebugMessages(bool record = false)
         {
             if (record)

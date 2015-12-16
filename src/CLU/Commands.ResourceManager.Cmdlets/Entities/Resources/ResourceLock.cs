@@ -12,19 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Newtonsoft.Json;
 
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Xunit;
-
-namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources
 {
-    public class ResourceLockTests : RMTestBase
+    public class ResourceLock<TProperties> : Resource<TProperties>
     {
-        [Fact]
-        public void TestResourceLockCRUDTest()
-        {
-            ResourcesController.NewInstance.RunPsTest("Test-ResourceLockCRUD");
-        }
+        /// <summary>
+        /// Gets or sets the lock id for the resource.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public string LockId { get; set; }
     }
 }
