@@ -27,12 +27,12 @@ namespace Microsoft.CLU.Run
         /// IRunMode implementation for executing command.
         /// </summary>
         /// <param name="arguments">The arguments</param>
-        public void Run(string[] arguments)
+        public Microsoft.CLU.CommandModelErrorCode Run(string[] arguments)
         {
             if (arguments.Length < 2)
             {
                 CLUEnvironment.Console.WriteErrorLine(Strings.CommandExecMode_Run_MissingCommandConfigFileArgument);
-                return;
+                return Microsoft.CLU.CommandModelErrorCode.MissingParameters;
             }
 
             try
@@ -52,7 +52,7 @@ namespace Microsoft.CLU.Run
                                 arguments[argsBase + 1].StartsWith("-", StringComparison.Ordinal))
                             {
                                 CLUEnvironment.Console.WriteErrorLine(Strings.CommandExecMode_Run_MissingScriptName);
-                                return;
+                                return Microsoft.CLU.CommandModelErrorCode.MissingParameters;
                             }
 
                             CLUEnvironment.ScriptName = arguments[argsBase + 1];
@@ -65,7 +65,7 @@ namespace Microsoft.CLU.Run
                                 arguments[argsBase + 1].StartsWith("-", StringComparison.Ordinal))
                             {
                                 CLUEnvironment.Console.WriteErrorLine(Strings.CommandExecMode_Run_MissingScriptConfigFileName);
-                                return;
+                                return Microsoft.CLU.CommandModelErrorCode.MissingParameters;
                             }
 
                             commandConfiguration = CommandConfig.Load(arguments[argsBase + 1]);
@@ -77,7 +77,7 @@ namespace Microsoft.CLU.Run
                     }
                 }
 
-                CommandModel.Run(commandConfiguration, GetModelArguments(arguments, argsBase));
+                return CommandModel.Run(commandConfiguration, GetModelArguments(arguments, argsBase));
             }
             catch (TargetInvocationException tie)
             {
@@ -89,6 +89,8 @@ namespace Microsoft.CLU.Run
                 CLUEnvironment.Console.WriteErrorLine(exc.Message);
                 CLUEnvironment.Console.WriteDebugLine($"{exc.GetType().FullName}\n{exc.StackTrace}");
             }
+
+            return CommandModelErrorCode.InternalFailure;
         }
 
         #endregion
