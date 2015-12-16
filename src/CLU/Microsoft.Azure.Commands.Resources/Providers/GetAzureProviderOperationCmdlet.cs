@@ -38,6 +38,7 @@ namespace Microsoft.Azure.Commands.Resources
         /// </summary>
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = false, ValueFromPipeline = true, HelpMessage = "The action string.")]
         [ValidateNotNullOrEmpty]
+        [Alias("s")]
         public string OperationSearchString { get; set; }
 
         /// <summary>

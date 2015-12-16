@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
     {
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 2, Mandatory = false, HelpMessage = "The name of the admin web app")]
         [ValidateNotNullOrEmpty]
+        [Alias("name", "n")]
         public string AdminSiteName { get; set; }
 
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 3, Mandatory = false, HelpMessage = "The App Service plan tier. Allowed values are [Free|Shared|Basic|Standard|Premium]")]
@@ -34,10 +35,12 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
         public string Tier { get; set; }
 
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 4, Mandatory = false, HelpMessage = "Number of Workers to be allocated.")]
+        [Alias("workers")]
         public int NumberofWorkers { get; set; }
 
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 5, Mandatory = false, HelpMessage = "Size of workers to be allocated. Allowed values are [Small|Medium|Large|ExtraLarge]")]
         [ValidateSet("Small", "Medium", "Large", "ExtraLarge", IgnoreCase = true)]
+        [Alias("size")]
         public string WorkerSize { get; set; }
 
         protected override void ProcessRecord()

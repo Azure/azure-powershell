@@ -35,11 +35,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(Mandatory=true, ParameterSetName=ResourceNameParameterSet, 
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
+        [Alias("group", "g")]
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory=true, ParameterSetName=ResourceNameParameterSet, 
         ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
+        [Alias("name", "n")]
         public string StorageAccountName { get; set; }
 
         protected override void ProcessRecord()

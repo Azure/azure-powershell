@@ -28,9 +28,11 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     public class RemoveAzureADApplicationCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The application object id.")]
+        [Alias("id")]
         public Guid ApplicationObjectId { get; set; }
 
         [Parameter(Mandatory = false)]
+        [Alias("f")]
         public SwitchParameter Force { get; set; }
 
         protected override void ProcessRecord()

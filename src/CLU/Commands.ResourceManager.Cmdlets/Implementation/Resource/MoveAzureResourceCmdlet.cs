@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = true,
             HelpMessage = "The name of the resource group into which the resources are to be moved.")]
         [ValidateNotNullOrEmpty]
-        [Alias("TargetResourceGroup")]
+        [Alias("TargetResourceGroup", "destination", "target", "group", "g")]
         public string DestinationResourceGroupName { get; set; }
 
         /// <summary>
@@ -50,13 +50,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, 
             HelpMessage = "The Id of the subscription to move the resources into.")]
         [ValidateNotNullOrEmpty]
-        [Alias("Id", "SubscriptionId")]
+        [Alias("Id", "SubscriptionId", "s")]
         public Guid? DestinationSubscriptionId { get; set; }
 
         /// <summary>
         /// Gets or sets a value that indicates if the user should be prompted for confirmation.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        [Alias("f")]
         public SwitchParameter Force { get; set; }
 
         /// <summary>

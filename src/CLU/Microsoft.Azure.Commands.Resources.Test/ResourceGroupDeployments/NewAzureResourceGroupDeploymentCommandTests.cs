@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
         private string templateFile = @"Resources\sampleTemplateFile.json";
 
-        private string storageAccountName = "myStorageAccount";
+        //private string storageAccountName = "myStorageAccount";
 
         public NewAzureResourceGroupDeploymentCommandTests()
         {

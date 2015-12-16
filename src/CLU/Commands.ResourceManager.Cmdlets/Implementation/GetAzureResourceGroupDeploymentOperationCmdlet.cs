@@ -31,9 +31,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the resource group name parameter.
         /// </summary>
-        [Alias("Name")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The deployment name.")]
         [ValidateNotNullOrEmpty]
+        [Alias("Name","n")]
         public string DeploymentName { get; set; }
 
         /// <summary>
@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The subscription to use.")]
         [ValidateNotNullOrEmpty]
+        [Alias("s", "id")]
         public Guid? SubscriptionId { get; set; }
 
         /// <summary>
@@ -48,6 +49,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
+        [Alias("group", "g")]
         public string ResourceGroupName { get; set; }
 
         /// <summary>

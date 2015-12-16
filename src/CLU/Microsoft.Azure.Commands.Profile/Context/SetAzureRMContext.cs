@@ -38,16 +38,18 @@ namespace Microsoft.Azure.Commands.Profile
 
         [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "TenantId name or ID", ValueFromPipelineByPropertyName = true)]
         [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "TenantId name or ID", ValueFromPipelineByPropertyName = true)]
-        [Alias("Domain")]
+        [Alias("Domain", "t")]
         [ValidateNotNullOrEmpty]
         public string TenantId { get; set; }
         
         [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Subscription", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
+        [Alias("s", "id")]
         public string SubscriptionId { get; set; }
 
         [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "Subscription Name", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
+        [Alias("n", "name")]
         public string SubscriptionName { get; set; }
 
         [Parameter(ParameterSetName = ContextParameterSet, Mandatory = true, HelpMessage = "Context", ValueFromPipeline = true)]

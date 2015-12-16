@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Commands.Providers
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource provider namespace.", ParameterSetName = GetAzureProviderCmdlet.IndividualProviderParameterSet)]
         [ValidateNotNullOrEmpty]
+        [Alias("m", "namespace")]
         public string ProviderNamespace { get; set; }
 
         /// <summary>
@@ -47,12 +48,14 @@ namespace Microsoft.Azure.Commands.Providers
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The location to look for provider namespace.")]
         [ValidateNotNullOrEmpty]
+        [Alias("l")]
         public string Location { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating if unregistered providers should be included in the listing
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "When specified, lists all the resource providers available, including those not registered with the current subscription.", ParameterSetName = GetAzureProviderCmdlet.ListAvailableParameterSet)]
+        [Alias("a")]
         public SwitchParameter ListAvailable { get; set; }
 
         /// <summary>
