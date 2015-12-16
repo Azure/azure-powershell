@@ -6,6 +6,17 @@ if ERRORLEVEL 1 (
     echo Please install 'dotnet', say from 'https://azureclu.blob.core.windows.net/tools/dotnet-win-x64.latest.zip', unzip, then add its bin folder to the PATH
     exit /B 1
 )
+
+pushd
+cd %root%\src\CLU
+call dnu.cmd restore
+if ERRORLEVEL 1 (
+    echo "dnu.cmd restore" failed under folder of "%root%\src\CLU"
+    popd
+    exit /B 1
+)
+popd
+
 @powershell -file %~dp0\BuildDrop.ps1
 
 REM cook a msclu.cfg with a correct local repro path. 
