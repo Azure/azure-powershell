@@ -70,7 +70,28 @@ namespace Microsoft.Azure.Commands.Compute.Test
             var computeManagementClientMock = new Mock<IComputeManagementClient>();
             vmSizesMock = new Mock<IVirtualMachineSizesOperations>();
             computeManagementClientMock.Setup(f => f.VirtualMachineSizes).Returns(vmSizesMock.Object);
-            SetupListForVirtualMachineSizeAsync("westus", new List<VirtualMachineSize>());
+            var vmSizeList = new List<VirtualMachineSize>
+            {
+                new VirtualMachineSize
+                {
+                    Name = "1",
+                    MaxDataDiskCount = 1,
+                    MemoryInMB = 1,
+                    NumberOfCores = 1,
+                    OsDiskSizeInMB = 1,
+                    ResourceDiskSizeInMB = 1
+                },
+                new VirtualMachineSize
+                {
+                    Name = "2",
+                    MaxDataDiskCount = 2,
+                    MemoryInMB = 2,
+                    NumberOfCores = 2,
+                    OsDiskSizeInMB = 2,
+                    ResourceDiskSizeInMB = 2
+                }
+            };
+            SetupListForVirtualMachineSizeAsync("westus", vmSizeList);
 
             var progressLoggerMock = new Mock<Action<string>>();
             var errorLoggerMock = new Mock<Action<string>>();
@@ -83,19 +104,32 @@ namespace Microsoft.Azure.Commands.Compute.Test
             var profile = new AzureRMProfile(_dataStore);
             profile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
             profile.Context = new AzureContext(new AzureSubscription(), new AzureAccount(), profile.Environments["foo"]);
-            GetAzureVMSizeCommand cmdlt = new GetAzureVMSizeCommand
+            GetAzureVMSizeCommand cmdlet = new GetAzureVMSizeCommand
             {
                 ComputeClient = computeClient,
                 Location = "westus"
             };
-            cmdlt.DataStore = _dataStore;
-            cmdlt.SetCommandRuntimeMock(_commandRuntimeMock);
-            cmdlt.DefaultProfile = profile;
+            cmdlet.DataStore = _dataStore;
+            cmdlet.SetCommandRuntimeMock(_commandRuntimeMock);
+            cmdlet.DefaultProfile = profile;
 
             // Act
-            cmdlt.InvokeBeginProcessing();
-            cmdlt.ExecuteCmdlet();
-            cmdlt.InvokeEndProcessing();
+            cmdlet.InvokeBeginProcessing();
+            cmdlet.ExecuteCmdlet();
+            cmdlet.InvokeEndProcessing();
+
+            var runtime = cmdlet.GetCommandRuntimeMock() as MockCommandRuntime;
+            Assert.True(runtime.OutputPipeline.Count == vmSizeList.Count);
+            for (int i = 0; i < runtime.OutputPipeline.Count; i++)
+            {
+                var item = runtime.OutputPipeline[i] as VirtualMachineSize;
+                Assert.True(item.Name == vmSizeList[i].Name);
+                Assert.True(item.MaxDataDiskCount == vmSizeList[i].MaxDataDiskCount);
+                Assert.True(item.MemoryInMB == vmSizeList[i].MemoryInMB);
+                Assert.True(item.NumberOfCores == vmSizeList[i].NumberOfCores);
+                Assert.True(item.OsDiskSizeInMB == vmSizeList[i].OsDiskSizeInMB);
+                Assert.True(item.ResourceDiskSizeInMB == vmSizeList[i].ResourceDiskSizeInMB);
+            }
             
             return;
         }
