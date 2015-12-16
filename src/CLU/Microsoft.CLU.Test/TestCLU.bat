@@ -1,30 +1,33 @@
 SETLOCAL EnableExtensions
 
 ECHO Test return code success case
-call azure success show
+call azure success show 2> out.error
 REM We expect that the commands above succeed (return 0)
-IF ERRORLEVEL 1 (EXIT /B 1)
+IF %ERRORLEVEL% NEQ 0 (
+	ECHO "Expected error level 0 for success, got " %ERRORLEVEL%
+	EXIT /B 1
+)
 
 ECHO Test return codes non terminating error case
-call azure success show --generatenonterminatingerror true
-if ERRORLEVEL 1 goto :verify_error_code_2
-REM We expect the error code to be 1 - so we shouldn't be here
-EXIT /B 1
-:verify_error_code_2
-IF ERRORLEVEL 2 (EXIT /B 1)
+call azure success show --generatenonterminatingerror true 2> out.error
+IF %ERRORLEVEL% NEQ 1 (
+	ECHO "Expected error level 1 for non-terminating error, got " %ERRORLEVEL%
+	EXIT /B 1
+)
 
 ECHO Test return codes terminating error case
-call azure success show --generateterminatingerror true
-if ERRORLEVEL 2 goto :verify_error_code_3
-REM We expect the error code to be 1 - so we shouldn't be here
-EXIT /B 1
-:verify_error_code_3
-IF ERRORLEVEL 3 (EXIT /B 1)
+call azure success show --generateterminatingerror true 2> out.error
+IF %ERRORLEVEL% NEQ 2 (
+	ECHO "Expected error level 2 for terminating error, got " %ERRORLEVEL%
+	EXIT /B 1
+)
 
 ECHO Test pipeline aliasing
-call azure test record new > testrecordnew.json
-call azure test record show < testrecordnew.json
+call azure test record new | azure test record show > out.txt
+IF %ERRORLEVEL% NEQ 0 (
+	ECHO "Expected error level 0 for success, got " %ERRORLEVEL%
+	EXIT /B 1
+)
 
-REM We expect that the commands above succeed
-IF ERRORLEVEL 1 (EXIT /B 1)
 
+ECHO ALL TESTS ARE HAPPY
