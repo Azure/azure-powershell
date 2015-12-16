@@ -81,11 +81,11 @@ To test on osx/linux boxes, do #1, open `<repo-root>\drop\clurun`, you should se
 ### Testing Cmdlets
 
 #### Environment setup (Windows)
-- Install [git bash for windows](https://git-scm.com/download/win) if you dont have git installed on your system.
-- Install jq using chocolatey `choco install jq`. You can install chocolatey from [here](https://chocolatey.org/).
+- Install latest version of [Git for Windows](https://git-scm.com/download/win) that has `bash 4.x` available.
+- Install `jq` using chocolatey `choco install jq` (chocolatey can be installed from [here](https://chocolatey.org/)).
 
 #### Test Infrastructure
-Testing will consist of scenario tests and unit tests. We want scenario tests to be used as examples and be available in `.ps1` and `.sh` formats.
+Testing will consist of scenario tests and unit tests. Scenario tests should be written in a form of an example and be available in `.ps1` and `.sh` formats.
 
 #### Scenario Tests
 - Scenario tests should be saved under `./examples` directory and grouped by the package or service area. Each scenario tests should consist of both `.ps1` and `.sh` files and should cover "P0" scenarios.
@@ -96,16 +96,18 @@ Testing will consist of scenario tests and unit tests. We want scenario tests to
    ```bash
    export azureuser=<username@contosocorp.com>
    export azurepassword=<your_password>
+   export PATH=$PATH:/<path-to-drop>/clurun/win7-x64/
    . /examples/lib/testrunner.sh
    ```
 - All the parameters to the cmdlets should be passed in as envt. variables
-- The test runners are guaranted to provide a unique resource group name via `$groupName` and reomve it at the end of the test execution.
+- The current test runners will provide a unique resource group name via `$groupName` but may not remove it at the end if the test fails.
 - The location for ARM will be provided via variable `$location`.
-- "jq" package and `./examples/lib/assert.sh` should be used to validate the responses.
+- "jq" package and BASH assert (e.g. `[ "foo" == "bar" ]`) should be used to validate the responses.
 
-
+##### PowerShell Tests
+TODO: Add section on PowerShell testing
 
 #### Unit Tests
-TODO: Add details on unit testing
+TODO: Add section on unit testing
 
 
