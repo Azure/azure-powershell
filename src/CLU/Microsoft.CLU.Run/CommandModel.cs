@@ -19,7 +19,7 @@ namespace Microsoft.CLU.Run
         /// </summary>
         /// <param name="commandConfiguration"></param>
         /// <param name="modelArguments"></param>
-        public static void Run(CommandConfig commandConfiguration, string[] modelArguments)
+        public static Microsoft.CLU.CommandModelErrorCode Run(CommandConfig commandConfiguration, string[] modelArguments)
         {
             CommandModel commandModel = new CommandModel()
             {
@@ -27,7 +27,7 @@ namespace Microsoft.CLU.Run
                 _modelArguments = modelArguments
             };
             commandModel.ResolveModel();
-            commandModel.Run();
+            return commandModel.Run();
         }
 
         /// <summary>
@@ -62,19 +62,21 @@ namespace Microsoft.CLU.Run
         /// <summary>
         /// Runs the model
         /// </summary>
-        private void Run()
+        private CommandModelErrorCode Run()
         {
+            object returnValue = null;
             if (_entryPoint.ClassType.GetInterfaces().Where(t => String.Equals(t.FullName, Common.Constants.CommandModelInterface, StringComparison.Ordinal)).FirstOrDefault() != null)
             {
                 var model = Activator.CreateInstance(_entryPoint.ClassType);
                 var configDict = ConfigurationDictionary.Create(_commandConfiguration.Items);
-                _entryPoint.Method.Invoke(model, new object[] { configDict, _modelArguments });
+                returnValue = _entryPoint.Method.Invoke(model, new object[] { configDict, _modelArguments });
             }
             else
             {
                 ValidateCustomEntryPoint();
-                _entryPoint.Method.Invoke(null, new object[] { _modelArguments });
+                returnValue = _entryPoint.Method.Invoke(null, new object[] { _modelArguments });
             }
+            return (CommandModelErrorCode) returnValue;
         }
 
         /// <summary>

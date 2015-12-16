@@ -35,3 +35,5 @@ xcopy %root%\drop\clurun\win7-x64\pkgs %root%\drop\clurun\ubuntu.14.04-x64\pkgs 
 copy /Y %root%\drop\clurun\win7-x64\azure.lx %root%\drop\clurun\ubuntu.14.04-x64
 copy /Y %root%\drop\clurun\win7-x64\msclu.cfg %root%\drop\clurun\ubuntu.14.04-x64
 copy /Y %~dp0\azure.sh %root%\drop\clurun\ubuntu.14.04-x64
+
+copy /Y %~dp0\azure %root%\drop\clurun\win7-x64

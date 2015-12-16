@@ -317,7 +317,7 @@
     <Message Importance="high" Text="Running check in tests..." />
     <ItemGroup>
       <!--Exclude 1 test projects still in progress with build failures-->
-      <_CLUTestProjects Include="$(CLURootDir)\*.Test\project.json">
+      <_CLUTestProjects Include="$(CLURootDir)\*.Test\project.json" Exclude="$(CLURootDir)\Microsoft.CLU.Test\project.json">
       </_CLUTestProjects>
     </ItemGroup>
     <Exec Command="dnu build" WorkingDirectory="%(_CLUTestProjects.RootDir)%(_CLUTestProjects.Directory)" />

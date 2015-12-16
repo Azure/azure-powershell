@@ -1,19 +1,21 @@
 #!/bin/bash
-
+set -e
 printf "\n=== Managing Resource Groups in Azure ===\n"
 
-printf "\n1. Creating a new resource group: %s and location: %s.\n" "$resourceGroupName" "$resourceGroupLocation"
-azure resource group new --name "$resourceGroupName" --location "$resourceGroupLocation"
+printf "\n1. Creating a new resource group: %s and location: %s.\n" "$groupName" "$location"
+azure group create --name "$groupName" --location "$location"
 
-printf "\n2. Updating the group %s with tags.\n" "$resourceGroupName"
-azure resource group set --name "$resourceGroupName" --tags "[{\"Value\":\"testval\",\"Name\":\"testtag\"}]"
+printf "\n2. Updating the group %s with tags.\n" "$groupName"
+azure group set --name "$groupName" --tags "[{\"Value\":\"testval\",\"Name\":\"testtag\"}]"
 
-printf "\n3. Get information about resource group : %s.\n" "$resourceGroupName"
-resourceGroupInfo=`azure resource group get --name $resourceGroupName`
-printf "\nThe resource group info is: \n %s\n" "$resourceGroupInfo"
+printf "\n3. Get information about resource group : %s.\n" "$groupName"
+resourceGroupInfo=`azure group get --name $groupName`
+
+printf "\nValidating resource group name is: %s\n" "$groupName"
+[ $(echo $resourceGroupInfo | jq '.ResourceGroupName' --raw-output) == "$groupName" ]
 
 printf "\n4. Listing all resource groups in the subscription.\n"
-azure resource group get
+azure group get
 
-printf "\n5. Removing resource group: %s.\n" "$resourceGroupName"
-azure resource group remove --name "$resourceGroupName" --force
+printf "\n5. Removing resource group: %s.\n" "$groupName"
+azure group remove --name "$groupName" --force

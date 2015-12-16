@@ -11,11 +11,13 @@ namespace Microsoft.CLU.Run
     /// </summary>
     public class CLURun
     {
+        public static void Main(string[] args) { }
+
         /// <summary>
         /// Microsoft.CLU.Run (clurun.exe) main entry point.
         /// </summary>
         /// <param name="args">The commandline arguments</param>
-        public static void Main(string[] args)
+        public static Microsoft.CLU.CommandModelErrorCode Execute(string[] args)
         {
             CLUEnvironment.Console = new ConsoleInputOutput(args);
 
@@ -24,15 +26,17 @@ namespace Microsoft.CLU.Run
                 Stopwatch sw = Stopwatch.StartNew();
 
                 CLURun cluRun = new CLURun();
-                cluRun.Parse(args);
+                var result = cluRun.Parse(args);
 
                 sw.Stop();
                 CLUEnvironment.Console.WriteDebugLine($"The command executed in {sw.ElapsedMilliseconds} ms");
+                return result;
             }
             catch (Exception exc)
             {
                 CLUEnvironment.Console.WriteErrorLine(exc.Message);
                 CLUEnvironment.Console.WriteDebugLine(exc.StackTrace);
+                return Microsoft.CLU.CommandModelErrorCode.InternalFailure;
             }
         }
 
@@ -40,12 +44,12 @@ namespace Microsoft.CLU.Run
         /// Parse the commandline argument and bootstrap the command execution.
         /// </summary>
         /// <param name="arguments">The commandline arguments</param>
-        private void Parse(string [] arguments)
+        private Microsoft.CLU.CommandModelErrorCode Parse(string [] arguments)
         {
             if (arguments.Count() == 0)
             {
                 DisplayHelp();
-                return;
+                return CommandModelErrorCode.MissingParameters;
             }
 
             var mode = GetMode(arguments);
@@ -55,7 +59,7 @@ namespace Microsoft.CLU.Run
             CLUEnvironment.SetRootPaths(rootPath);  
 
             // Run the command.
-            mode.Run(arguments);
+            return mode.Run(arguments);
         }
 
 
