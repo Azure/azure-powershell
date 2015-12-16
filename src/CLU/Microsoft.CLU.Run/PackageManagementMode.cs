@@ -33,7 +33,7 @@ namespace Microsoft.CLU.Run
         /// IRunMode implementation for package managment.
         /// </summary>
         /// <param name="arguments">The arguments</param>
-        public void Run(string[] arguments)
+        public Microsoft.CLU.CommandModelErrorCode Run(string[] arguments)
         {
             _packagesRootPath = CLUEnvironment.GetPackagesRootPath();
             try
@@ -44,13 +44,13 @@ namespace Microsoft.CLU.Run
             {
                 CLUEnvironment.Console.WriteErrorLine(tie.InnerException.Message);
                 CLUEnvironment.Console.WriteDebugLine($"{tie.InnerException.GetType().FullName}\n{tie.InnerException.StackTrace}");
-                return;
+                return Microsoft.CLU.CommandModelErrorCode.InternalFailure;
             }
             catch (Exception exc)
             {
                 CLUEnvironment.Console.WriteErrorLine(exc.Message);
                 CLUEnvironment.Console.WriteDebugLine($"{exc.GetType().FullName}\n{exc.StackTrace}");
-                return;
+                return Microsoft.CLU.CommandModelErrorCode.InternalFailure;
             }
 
             try
@@ -77,7 +77,7 @@ namespace Microsoft.CLU.Run
                                     arguments[argsBase + 1].StartsWith("-", StringComparison.Ordinal))
                                 {
                                     CLUEnvironment.Console.WriteLine(Strings.PackageManagementMode_Run_VersionIdMissing);
-                                    return;
+                                    return Microsoft.CLU.CommandModelErrorCode.MissingParameters;
                                 }
                                 version = arguments[argsBase + 1];
                                 argsBase += 2;
@@ -145,12 +145,16 @@ namespace Microsoft.CLU.Run
             {
                 CLUEnvironment.Console.WriteErrorLine(tie.InnerException.Message);
                 CLUEnvironment.Console.WriteDebugLine($"{tie.InnerException.GetType().FullName}\n{tie.InnerException.StackTrace}");
+                return Microsoft.CLU.CommandModelErrorCode.InternalFailure;
             }
             catch (Exception exc)
             {
                 CLUEnvironment.Console.WriteErrorLine(exc.Message);
                 CLUEnvironment.Console.WriteDebugLine($"{exc.GetType().FullName}\n{exc.StackTrace}");
+                return Microsoft.CLU.CommandModelErrorCode.InternalFailure;
             }
+
+            return CommandModelErrorCode.Success;
         }
 
         /// <summary>
