@@ -1047,12 +1047,12 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Gets or sets Start timestamp.
         /// </summary>
-        public DateTimeOffset? StartTime { get; set; }
+        public DateTime? StartTime { get; set; }
 
         /// <summary>
         /// Gets or sets End timestamp.
         /// </summary>
-        public DateTimeOffset? EndTime { get; set; }
+        public DateTime? EndTime { get; set; }
 
         /// <summary>
         /// Gets or sets TargetObjectId.

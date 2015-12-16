@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 vaultCreateArgs.Properties.Sku = new VaultSku();
                 vaultCreateArgs.Properties.Sku.Name = "standard";
 
-                VaultCreateResponse response = RecoveryServicesClient.CreateVault(this.ResouceGroupName, this.Name, vaultCreateArgs);
+                VaultCreateResponse response = RecoveryServicesClient.CreateVault(this.ResourceGroupName, this.Name, vaultCreateArgs);
 
                 this.WriteObject(new ASRVault(response));
             }
