@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             PSBatchSubscriptionQuotas quotas = BatchClient.GetSubscriptionQuotas(this.Location);
             WriteObject(quotas);

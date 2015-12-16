@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         public abstract void ExecuteApiManagementCmdlet();
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             try
             {

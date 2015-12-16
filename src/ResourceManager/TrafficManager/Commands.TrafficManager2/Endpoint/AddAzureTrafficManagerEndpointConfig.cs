@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [ValidateNotNullOrEmpty]
         public uint? MinChildEndpoints { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (this.TrafficManagerProfile.Endpoints == null)
             {

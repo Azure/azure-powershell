@@ -47,21 +47,21 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             HelpMessage = "Indicates that, if the file or folder exists, it should be overwritten")]
         public SwitchParameter Force { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             FileType fileType;
             if (Force &&
-                DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Destination.FullyQualifiedPath, Account,
+                DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Destination.TransformedPath, Account,
                     out fileType) && fileType == FileType.File)
                 // If it is a directory you are trying to overwrite with a concatenated file, we will error out.
             {
-                DataLakeStoreFileSystemClient.DeleteFileOrFolder(Destination.FullyQualifiedPath, Account, false);
+                DataLakeStoreFileSystemClient.DeleteFileOrFolder(Destination.TransformedPath, Account, false);
             }
 
-            DataLakeStoreFileSystemClient.ConcatenateFiles(Destination.Path, Account,
-                Paths.Select(path => path.Path).ToArray());
+            DataLakeStoreFileSystemClient.ConcatenateFiles(Destination.TransformedPath, Account,
+                Paths.Select(path => path.TransformedPath).ToArray());
 
-            WriteObject(Destination.FullyQualifiedPath);
+            WriteObject(Destination.OriginalPath);
         }
     }
 }
