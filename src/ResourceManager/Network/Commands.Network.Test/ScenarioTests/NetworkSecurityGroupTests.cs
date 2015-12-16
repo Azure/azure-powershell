@@ -19,14 +19,14 @@ namespace Commands.Network.Test.ScenarioTests
 {
     public class NetworkSecurityGroupTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNetworkSecurityGroupCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkSecurityGroupCRUD");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNetworkSecurityGroupSecurityRuleCRUD()
         {

@@ -183,10 +183,6 @@
       <Project>{E1F5201D-6067-430E-B303-4E367652991B}</Project>
       <Name>Commands.Resources</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Commands.HDInsight\Commands.HDInsight.csproj">
-      <Project>{6b7540c5-8ab3-4011-864b-0be76f282f9e}</Project>
-      <Name>Commands.HDInsight</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

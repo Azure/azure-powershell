@@ -34,11 +34,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <summary>
         /// Determines the API version.
         /// </summary>
+        /// <param name="authenticationFactory">The authentication provider for management cleints.</param>
+        /// <param name="clientFactory">The management client factory.</param>
         /// <param name="context">The azure profile.</param>
         /// <param name="resourceId">The resource Id.</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <param name="pre">When specified, indicates if pre-release API versions should be considered.</param>
-        internal static Task<string> DetermineApiVersion(AzureContext context, string resourceId, CancellationToken cancellationToken, bool? pre = null, Dictionary<string, string> cmdletHeaderValues = null)
+        internal static Task<string> DetermineApiVersion(IAuthenticationFactory authenticationFactory, IClientFactory clientFactory, AzureContext context, string resourceId, CancellationToken cancellationToken, bool? pre = null, Dictionary<string, string> cmdletHeaderValues = null)
         {
             var providerNamespace = ResourceIdUtility.GetExtensionProviderNamespace(resourceId)
                 ?? ResourceIdUtility.GetProviderNamespace(resourceId);
@@ -46,22 +48,26 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
             var resourceType = ResourceIdUtility.GetExtensionResourceType(resourceId: resourceId, includeProviderNamespace: false)
                 ?? ResourceIdUtility.GetResourceType(resourceId: resourceId, includeProviderNamespace: false);
 
-            return ApiVersionHelper.DetermineApiVersion(context: context, providerNamespace: providerNamespace, resourceType: resourceType, cancellationToken: cancellationToken, pre: pre, cmdletHeaderValues: cmdletHeaderValues);
+            return ApiVersionHelper.DetermineApiVersion(authenticationFactory, clientFactory, context: context, providerNamespace: providerNamespace, resourceType: resourceType, cancellationToken: cancellationToken, pre: pre, cmdletHeaderValues: cmdletHeaderValues);
         }
 
         /// <summary>
         /// Determines the API version.
         /// </summary>
+        /// <param name="authenticationFactory">The authentication provider for management cleints.</param>
+        /// <param name="clientFactory">The management client factory.</param>
         /// <param name="context">The azure profile.</param>
         /// <param name="providerNamespace">The provider namespace.</param>
         /// <param name="resourceType">The resource type.</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <param name="pre">When specified, indicates if pre-release API versions should be considered.</param>
-        internal static Task<string> DetermineApiVersion(AzureContext context, string providerNamespace, string resourceType, CancellationToken cancellationToken, bool? pre = null, Dictionary<string, string> cmdletHeaderValues = null)
+        internal static Task<string> DetermineApiVersion(IAuthenticationFactory authenticationFactory, IClientFactory clientFactory, AzureContext context, string providerNamespace, string resourceType, CancellationToken cancellationToken, bool? pre = null, Dictionary<string, string> cmdletHeaderValues = null)
         {
             var cacheKey = ApiVersionCache.GetCacheKey(providerNamespace: providerNamespace, resourceType: resourceType);
             var apiVersions = ApiVersionCache.Instance
                 .AddOrGetExisting(cacheKey: cacheKey, getFreshData: () => ApiVersionHelper.GetApiVersionsForResourceType(
+                    authenticationFactory, 
+                    clientFactory,
                     context,
                     providerNamespace: providerNamespace,
                     resourceType: resourceType,
@@ -94,13 +100,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <summary>
         /// Determines the list of api versions currently supported by the RP.
         /// </summary>
+        /// <param name="authenticationFactory">The authentication provider for management clients.</param>
+        /// <param name="clientFactory">The factory for manageemnt clients.</param>
         /// <param name="context">The azure profile.</param>
         /// <param name="providerNamespace">The provider namespace.</param>
         /// <param name="resourceType">The resource type.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
-        private static string[] GetApiVersionsForResourceType(AzureContext context, string providerNamespace, string resourceType, CancellationToken cancellationToken, Dictionary<string, string> cmdletHeaderValues = null)
+        private static string[] GetApiVersionsForResourceType(IAuthenticationFactory authenticationFactory, IClientFactory clientFactory, AzureContext context, string providerNamespace, string resourceType, CancellationToken cancellationToken, Dictionary<string, string> cmdletHeaderValues = null)
         {
-            var resourceManagerClient = ResourceManagerClientHelper.GetResourceManagerClient(context, cmdletHeaderValues);
+            var resourceManagerClient = ResourceManagerClientHelper.GetResourceManagerClient(authenticationFactory, clientFactory, context, cmdletHeaderValues);
 
             var defaultSubscription = context.Subscription;
 

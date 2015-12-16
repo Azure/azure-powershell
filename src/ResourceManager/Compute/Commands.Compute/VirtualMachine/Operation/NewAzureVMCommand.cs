@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Commands.Compute
         {                        
             var storageAccountName = GetStorageAccountNameFromStorageProfile();
             var storageClient =
-                    AzureSession.ClientFactory.CreateClient<StorageManagementClient>(DefaultProfile.Context,
+                    ClientFactory.CreateClient<StorageManagementClient>(DefaultProfile.Context,
                         AzureEnvironment.Endpoint.ResourceManager);
 
             if (!string.IsNullOrEmpty(storageAccountName))

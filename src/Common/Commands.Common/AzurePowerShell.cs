@@ -39,6 +39,12 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         public const string TokenCacheFile = "TokenCache.dat";
 
+        public const string ProfileVariable = "_azpsh_profile";
+
+        public const string UserAgentVariable = "_azpsh_user_agents";
+
+        public const string DataStoreVariable = "_azpsh_data_store";
+
         public static ProductInfoHeaderValue UserAgentValue = new ProductInfoHeaderValue(
             "AzurePowershell",
             string.Format("v{0}", AzurePowerShell.AssemblyVersion));

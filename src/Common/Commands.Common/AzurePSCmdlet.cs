@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Management.Automation;
 using System.Net.Http.Headers;
@@ -27,6 +28,7 @@ using System.Management.Automation.Host;
 using System.Text;
 using System.Linq;
 using System.Threading;
+using Microsoft.Azure.Common.Authentication.Factories;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
@@ -43,6 +45,12 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         protected static AzurePSDataCollectionProfile _dataCollectionProfile = null;
         protected static string _errorRecordFolderPath = null;
         protected const string _fileTimeStampSuffixFormat = "yyyy-MM-dd-THH-mm-ss-fff";
+
+        public IClientFactory ClientFactory { get; set; }
+
+        public IAuthenticationFactory AuthenticationFactory { get; set; }
+
+        public IDataStore DataStore { get; set; }
 
         protected AzurePSQoSEvent QosEvent;
 
@@ -77,8 +85,54 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         public AzurePSCmdlet()
         {
             _debugMessages = new ConcurrentQueue<string>();
+            // TODO: Instantiate ClientFactory and AuthenticationFactory
+            // remove
+            ClientFactory = new ClientFactory();
+            AuthenticationFactory = new AuthenticationFactory();
+#if DEBUG
+            if (!TestMockSupport.RunningMocked)
+            {
+#endif
+                DataStore = new DiskDataStore();
+#if DEBUG
+            }
+            else
+            {
+                DataStore = new MemoryDataStore();
+            }
+#endif
         }
 
+        protected virtual T GetSessionVariableValue<T>(string name, T defaultValue) where T : class
+        {
+            if (SessionState != null)
+            {
+                try
+                {
+                    var variablePath = GetPath(name);
+                    var fileText = DataStore.ReadFileAsText(variablePath);
+                    return JsonConvert.DeserializeObject<T>(fileText);
+                }
+                catch
+                {
+                }
+            }
+
+            return defaultValue;
+        }
+
+        protected virtual string GetPath(string variableName)
+        {
+            return Path.Combine(SessionState.Path.CurrentLocation.Path, "sessions", variableName);
+        }
+        protected virtual void SetSessionVariable<T>(string name, T value) where T : class
+        {
+            if (SessionState != null)
+            {
+                var variablePath = GetPath(name);
+                DataStore.WriteFile(variablePath, JsonConvert.SerializeObject(value));
+            }
+        }
         /// <summary>
         /// Initialize the data collection profile
         /// </summary>
@@ -108,7 +162,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             // If the environment value is null or empty, or not correctly set, try to read the setting from default file location.
             if (_dataCollectionProfile == null)
             {
-                string fileFullPath = Path.Combine(AzureSession.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
+                string fileFullPath = Path.Combine(AzurePowerShell.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
                 if (File.Exists(fileFullPath))
                 {
                     string contents = File.ReadAllText(fileFullPath);
@@ -155,30 +209,29 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// <summary>
         /// Save the current data collection profile Json data into the default file path
         /// </summary>
-        /// <param name="profile"></param>
         protected abstract void SaveDataCollectionProfile();
 
         protected bool CheckIfInteractive()
         {
-            bool interactive = true;
-            if (this.Host == null || 
-                this.Host.UI == null || 
-                this.Host.UI.RawUI == null ||
-                Environment.GetCommandLineArgs().Any(s => s.Equals("-NonInteractive", StringComparison.OrdinalIgnoreCase)))
-            {
-                interactive = false;
-            }
-            else
-            {
-                try
-                {
-                    var test = this.Host.UI.RawUI.KeyAvailable;
-                }
-                catch
-                {
-                    interactive = false;
-                }
-            }
+            bool interactive = false;
+            //if (this.Host == null || 
+            //    this.Host.UI == null || 
+            //    this.Host.UI.RawUI == null ||
+            //    Environment.GetCommandLineArgs().Any(s => s.Equals("-NonInteractive", StringComparison.OrdinalIgnoreCase)))
+            //{
+            //    interactive = false;
+            //}
+            //else
+            //{
+            //    try
+            //    {
+            //        var test = this.Host.UI.RawUI.KeyAvailable;
+            //    }
+            //    catch
+            //    {
+            //        interactive = false;
+            //    }
+            //}
 
             if (!interactive && !_dataCollectionProfile.EnableAzureDataCollection.HasValue)
             {
@@ -214,15 +267,23 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 WriteDebugWithTimestamp(string.Format("using account id '{0}'...", DefaultContext.Account.Id));
             }
 
+            DataStore = GetSessionVariableValue<IDataStore>(AzurePowerShell.DataStoreVariable, new DiskDataStore());
             _httpTracingInterceptor = _httpTracingInterceptor ?? new RecordingTracingInterceptor(_debugMessages);
             _adalListener = _adalListener ?? new DebugStreamTraceListener(_debugMessages);
             RecordingTracingInterceptor.AddToContext(_httpTracingInterceptor);
             DebugStreamTraceListener.AddAdalTracing(_adalListener);
 
+            List<ProductInfoHeaderValue> headerList =
+                GetSessionVariableValue(AzurePowerShell.UserAgentVariable, new List<ProductInfoHeaderValue>());
+            foreach (var header in headerList)
+            {
+                ClientFactory.UserAgents.Add(header);
+            }
+
             ProductInfoHeaderValue userAgentValue = new ProductInfoHeaderValue(
                 ModuleName, string.Format("v{0}", ModuleVersion));
-            AzureSession.ClientFactory.UserAgents.Add(userAgentValue);
-            AzureSession.ClientFactory.AddHandler(new CmdletInfoHandler(this.CommandRuntime.ToString(), this.ParameterSetName));
+            ClientFactory.UserAgents.Add(userAgentValue);
+            ClientFactory.AddHandler(new CmdletInfoHandler(this.CommandRuntime.ToString(), this.ParameterSetName));
             base.BeginProcessing();
         }
 
@@ -239,8 +300,20 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             DebugStreamTraceListener.RemoveAdalTracing(_adalListener);
             FlushDebugMessages();
 
-            AzureSession.ClientFactory.UserAgents.RemoveWhere(u => u.Product.Name == ModuleName);
-            AzureSession.ClientFactory.RemoveHandler(typeof(CmdletInfoHandler));
+            ClientFactory.UserAgents.RemoveWhere(u => u.Product.Name == ModuleName);
+            ClientFactory.RemoveHandler(typeof(CmdletInfoHandler));
+            var headerList = new List<ProductInfoHeaderValue>();
+            foreach (var userAgent in ClientFactory.UserAgents)
+            {
+                headerList.Add(userAgent);
+            }
+
+            SetSessionVariable(AzurePowerShell.UserAgentVariable, headerList);
+            if (!(DataStore is DiskDataStore))
+            {
+                SetSessionVariable(AzurePowerShell.DataStoreVariable, DataStore);
+            }
+
             base.EndProcessing();
         }
 
@@ -390,7 +463,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             // Create 'ErrorRecords' folder under profile directory, if not exists
             if (string.IsNullOrEmpty(_errorRecordFolderPath) || !Directory.Exists(_errorRecordFolderPath))
             {
-                _errorRecordFolderPath = Path.Combine(AzureSession.ProfileDirectory, "ErrorRecords");
+                _errorRecordFolderPath = Path.Combine(AzurePowerShell.ProfileDirectory, "ErrorRecords");
                 Directory.CreateDirectory(_errorRecordFolderPath);
             }
 
@@ -419,7 +492,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 sb.AppendLine(content);
             }
 
-            AzureSession.DataStore.WriteFile(filePath, sb.ToString());
+            DataStore.WriteFile(filePath, sb.ToString());
         }
 
         /// <summary>

@@ -617,10 +617,6 @@
       <Project>{3436a126-edc9-4060-8952-9a1be34cdd95}</Project>
       <Name>Commands.ScenarioTests.ResourceManager.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Commands.Batch\Commands.Batch.csproj">
-      <Project>{d470e50a-9607-48d6-a924-4f9f86502704}</Project>
-      <Name>Commands.Batch</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />

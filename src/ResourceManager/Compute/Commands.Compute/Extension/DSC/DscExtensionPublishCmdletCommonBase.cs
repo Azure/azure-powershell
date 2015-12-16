@@ -25,25 +25,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
 
         public void ValidatePsVersion()
         {
-            using (System.Management.Automation.PowerShell powershell = System.Management.Automation.PowerShell.Create())
-            {
-                powershell.AddScript("$PSVersionTable.PSVersion.Major");
-                int major = powershell.Invoke<int>().FirstOrDefault();
-                if (major < DscExtensionCmdletConstants.MinMajorPowerShellVersion)
-                {
-                    ThrowTerminatingError(
-                        new ErrorRecord(
-                            new InvalidOperationException(
-                                string.Format(
-                                CultureInfo.CurrentUICulture,
-                                Microsoft.Azure.Commands.Compute.Properties.Resources.PublishVMDscExtensionRequiredPsVersion,
-                                DscExtensionCmdletConstants.MinMajorPowerShellVersion,
-                                major)),
-                            "InvalidPowerShellVersion",
-                            ErrorCategory.InvalidOperation,
-                            null));
-                }
-            }
         }
 
         public void ValidateConfigurationPath(String configurationPath, String paramaterSetName)
@@ -254,38 +235,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
             foreach (var module in requiredModules)
             {
                 metadataModules.Add(module.Key);
-                using (System.Management.Automation.PowerShell powershell = System.Management.Automation.PowerShell.Create())
-                {
-                    // Wrapping script in a function to prevent script injection via $module variable.
-                    powershell.AddScript(
-                        @"function Copy-Module([string]$moduleName, [string]$moduleVersion, [string]$tempZipFolder) 
-                        {
-                            if([String]::IsNullOrEmpty($moduleVersion))
-                            {
-                                $module = Get-Module -List -Name $moduleName                                
-                            }
-                            else
-                            {
-                                $module = (Get-Module -List -Name $moduleName) | Where-Object{$_.Version -eq $moduleVersion}
-                            }
-                            
-                            $moduleFolder = Split-Path $module.Path
-                            Copy-Item -Recurse -Path $moduleFolder -Destination ""$tempZipFolder\$($module.Name)""
-                        }"
-                            );
-                    powershell.Invoke();
-                    powershell.Commands.Clear();
-                    powershell.AddCommand("Copy-Module")
-                        .AddParameter("moduleName", module.Key)
-                        .AddParameter("moduleVersion", module.Value)
-                        .AddParameter("tempZipFolder", tempZipFolder);
-                    WriteVerbose(String.Format(
-                        CultureInfo.CurrentUICulture,
-                            Microsoft.Azure.Commands.Compute.Properties.Resources.PublishVMDscExtensionCopyModuleVerbose,
-                            module,
-                            tempZipFolder));
-                    powershell.Invoke();
-                }
             }
 
             return metadataModules;

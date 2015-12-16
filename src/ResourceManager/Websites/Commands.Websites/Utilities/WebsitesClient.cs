@@ -33,9 +33,9 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 
         public Action<string> WarningLogger { get; set; }
 
-        public WebsitesClient(AzureContext context)
+        public WebsitesClient(IClientFactory clientFactory, AzureContext context)
         {
-            this.WrappedWebsitesClient = AzureSession.ClientFactory.CreateArmClient<WebSiteManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            this.WrappedWebsitesClient = clientFactory.CreateArmClient<WebSiteManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
 
         }
         public WebSiteManagementClient WrappedWebsitesClient

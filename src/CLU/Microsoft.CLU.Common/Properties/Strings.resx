@@ -1,0 +1,443 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BaseCommand_EntryPoint_EntryPointMethodArgumentMustBeStringArray" xml:space="preserve">
+    <value>The argument of entryPoint method must be of type string []</value>
+  </data>
+  <data name="BaseCommand_EntryPoint_EntryPointMethodMustAcceptZeroOrOneArgument" xml:space="preserve">
+    <value>The entryPoint method must have either zero or one argument</value>
+  </data>
+  <data name="BaseCommand_EntryPoint_EntryPointMethodMustBeStatic" xml:space="preserve">
+    <value>The entryPoint method must be a static method</value>
+  </data>
+  <data name="BindHandler_AddToAllArguments_DuplicateArgumentFound" xml:space="preserve">
+    <value>Duplicate argument found: {0}</value>
+  </data>
+  <data name="BindHandler_Bind_FileNotFound" xml:space="preserve">
+    <value>File '{0}' not found</value>
+  </data>
+  <data name="BindHandler_Bind_InvalidPositionalArgument" xml:space="preserve">
+    <value>Invalid positional argument '{0}'</value>
+  </data>
+  <data name="BindHandler_InterpretAndSetValueEntirelyFromFile_FileNotFound" xml:space="preserve">
+    <value>File '{0}' not found</value>
+  </data>
+  <data name="CmdletBinderAndCommand_BreakParameterSetTie_ParameterSetCannotBeResolved" xml:space="preserve">
+    <value>Parameter set cannot be resolved using the specified named parameters</value>
+  </data>
+  <data name="CmdletBinderAndCommand_CreateCmdlet_CmdletMissingConstructor" xml:space="preserve">
+    <value>The identified Cmdlet '{0}' cannot be invoked, it does not have a constructor</value>
+  </data>
+  <data name="CmdletBinderAndCommand_CreateCmdlet_CmdletMissingDefaultConstructor" xml:space="preserve">
+    <value>The identified Cmdlet '{0}' cannot be invoked, it does not have default constructor</value>
+  </data>
+  <data name="CmdletBinderAndCommand_FailIfAnyUnknownArguments_FoundUnknownArgument" xml:space="preserve">
+    <value>Parameter(s) cannot be found that matches parameter name(s) '{0}'.</value>
+  </data>
+  <data name="CmdletBinderAndCommand_HandleRecord_ConflictingParameterSet" xml:space="preserve">
+    <value>Conflicting parameter sets based on the arguments passed</value>
+  </data>
+  <data name="CmdletBinderAndCommand_HandleRecord_MissingMandatoryArguments" xml:space="preserve">
+    <value>The following mandatory arguments are missing: {0}</value>
+  </data>
+  <data name="CmdletBinderAndCommand_InvokeAsync_CmdletNotSupportAsyncInvoke" xml:space="preserve">
+    <value>Cmdlet model won't support async invocation</value>
+  </data>
+  <data name="CmdletCommandModel_Run_MissingMinimalArguments" xml:space="preserve">
+    <value>Missing minimal required arguments</value>
+  </data>
+  <data name="CmdletHelp_Generate_NoCommandAvailable" xml:space="preserve">
+    <value>No command starting with '{0} {1}' is available.
+To list available commands, use '{0} help'</value>
+  </data>
+  <data name="CommandEntryPointHelper_GetEntryPoint_EntryPointIsNotPulicOrStatic" xml:space="preserve">
+    <value>The '{0}' installation entry point '{1}' is not static and public.</value>
+  </data>
+  <data name="CommandEntryPointHelper_GetEntryPoint_MultipleEntryPoints" xml:space="preserve">
+    <value>More than one entry point method called '{0}' in the '{1}' package</value>
+  </data>
+  <data name="CommandEntryPointHelper_GetEntryPoint_NoEntryPoint" xml:space="preserve">
+    <value>No entry point specified in command configuration</value>
+  </data>
+  <data name="CommandEntryPointHelper_GetEntryPoint_NoEntryPointAssembly" xml:space="preserve">
+    <value>Unable to find assembly for command entry point '{0}' in the '{1}' package</value>
+  </data>
+  <data name="CommandEntryPointHelper_GetEntryPoint_NoEntryPointMethod" xml:space="preserve">
+    <value>Unable to find command entry point method '{0}' in the '{1}' package</value>
+  </data>
+  <data name="CommandEntryPointHelper_GetEntryPoint_NoPackage" xml:space="preserve">
+    <value>No package specified in command configuration</value>
+  </data>
+  <data name="CommandModel_GetCommandLineParser_ParserNotFound" xml:space="preserve">
+    <value>The configuration entry CommandlineParserName must implement ICommandLineParser and must have default constructor or single parameter constructor with parameter type ConfigurationDictionary</value>
+  </data>
+  <data name="CommandNotFoundException_Ctor_Message" xml:space="preserve">
+    <value>'{0}' was not found</value>
+  </data>
+  <data name="ConfigEntryNotFoundException_Ctor_Message" xml:space="preserve">
+    <value>A required configuration entry with name '{0}' missing in the configuration</value>
+  </data>
+  <data name="ConfigurationDictionary_Get_KeyNotFound" xml:space="preserve">
+    <value>A required configuration entry with name '{0}' not found in the command configuration</value>
+  </data>
+  <data name="Config_Ctor_FileNotFound" xml:space="preserve">
+    <value>Could not find the required configuration file '{0}'</value>
+  </data>
+  <data name="DiscriminatorBinder_EnsureBound_CommandCannotBeResolved" xml:space="preserve">
+    <value>Unable to resolve command from the given arguments</value>
+  </data>
+  <data name="EntryPoint_Ctor_MethodNameMustBeFullyQualified" xml:space="preserve">
+    <value>The method name must be a fully qualified name (Namespace.ClassName.MethodName)</value>
+  </data>
+  <data name="IndexBuilder_BuildStaticCommandIndex_MissingAssemblies" xml:space="preserve">
+    <value>Could not find any of the following required assemblies:
+ {0}</value>
+  </data>
+  <data name="IndexBuilder_FindCmdlets_InvalidVerbRenameRule" xml:space="preserve">
+    <value>Invalid verb rename: '{0}' -&gt; '{1}'. Indexing aborted.
+Please report this error to the provider of the '{2}' package</value>
+  </data>
+  <data name="LocalPackageNotFoundException_Ctor_Message" xml:space="preserve">
+    <value>Could not locate the local package: {0}</value>
+  </data>
+  <data name="MultiRecordSourceFileFinder_GetMultilineFiles_FileNotFound" xml:space="preserve">
+    <value>FileNotFound</value>
+  </data>
+  <data name="ObjectTypeParameterValue_Ctor_ParameterMustBeObjectType" xml:space="preserve">
+    <value>parameter must represents an object type</value>
+  </data>
+  <data name="ObjectTypePropertyValue_Ctor_PropertyMustBeObjectType" xml:space="preserve">
+    <value>property must represents an object type</value>
+  </data>
+  <data name="ParameterBindingException_FileBindingFailedMessage" xml:space="preserve">
+    <value>Binding the parameter '{0}' from the file '{1}' failed</value>
+  </data>
+  <data name="ParameterBindingException_PositionalBindingFailedMessage" xml:space="preserve">
+    <value>Binding the parameter '{0}' from the positional argument at '{1}' failed</value>
+  </data>
+  <data name="ParameterBindState_CandidateParameterSets_ConflictingParameterSet" xml:space="preserve">
+    <value>Parameters conflict based on parameter sets</value>
+  </data>
+  <data name="ParameterSetterFromFile_Ctor_FileNotFound" xml:space="preserve">
+    <value>Could not find the file '{0}'</value>
+  </data>
+  <data name="PipelineParametersBinder_BindParametersToDocumentDataByProperty_ParseDocumentAsJObjectFailed" xml:space="preserve">
+    <value>Could not parse given document as json object, expected format is {{ name:value, name:value, .. }}</value>
+  </data>
+  <data name="PipelineParametersFileBinder_Bind_PipelineParameterBindingFromFileFailed" xml:space="preserve">
+    <value>Binding pipeline-line parameter(s) from the file '{0}' failed</value>
+  </data>
+  <data name="PipelineParametersSingleRecordFilesBinder_InitJsonObject_ParseFileAsJObjectFailed" xml:space="preserve">
+    <value>Could not parse the document '{0}' as json object, expected format is {{ name:value, name:value, .. }}</value>
+  </data>
+  <data name="PipelineParametersSingleRecordFilesBinder_SetVaueFromJsonDocument_CouldNotBindFromFile" xml:space="preserve">
+    <value>Could not bind '{0}' (Type:{1}) from '{2}'. Reason: {3}</value>
+  </data>
+  <data name="PipelineParametersSingleRecordFilesBinder_SetVaueFromJsonDocument_ExpectedSingleJsonArray" xml:space="preserve">
+    <value>Input file is expected to contain single json array record represented either as a single-line json array e.g. [e1, e2, ..] or muti-line json objects e.g. {e1}\n{e2}\n{e3}. There should be only one file input with mutiple records or if input is redirected then only pipeline may contain mutiple records</value>
+  </data>
+  <data name="PipelineParametersSingleRecordFilesBinder_SetVaueFromJsonDocument_FileContentParameterTypeMismatch" xml:space="preserve">
+    <value>Input file contains an array but the parameters is non-array type</value>
+  </data>
+  <data name="PipelineParametersSingleRecordFilesBinder_SetVaueFromJsonDocument_UnExpectedMultiJsonArray" xml:space="preserve">
+    <value>Input file contains multiple json array records when it is expected to contain a single json array record. There should be only one file input with mutiple records or if input is redirected then only pipeline may contain mutiple records</value>
+  </data>
+  <data name="PipelineParametersSingleRecordFilesBinder_SetVaueFromJsonDocument_UnExpectedMultiJsonRecords" xml:space="preserve">
+    <value>Input file contains multiple json records when it is expected to contain a single json record. There should be only one file input with mutiple records or if input is redirected then only pipeline may contain mutiple records</value>
+  </data>
+  <data name="PipelineParametersStdinBinder_Bind_PipelineParameterBindingFromStdInFailed" xml:space="preserve">
+    <value>Binding pipeline-parameter(s) from stdin pipeline stream failed</value>
+  </data>
+  <data name="PositionalFilesBinder_Bind_ParseFileAsJObjectFailed" xml:space="preserve">
+    <value>Could not parse the document '{0}' as json object, expected format is {{ name:value, name:value, .. }}</value>
+  </data>
+  <data name="PrimitiveTypeParameterValue_Ctor_ParameterMustBePrimitiveType" xml:space="preserve">
+    <value>parameter must be a primtive type</value>
+  </data>
+  <data name="PrimitiveTypePropertyValue_Ctor_PropertyMustBePrimitiveType" xml:space="preserve">
+    <value>property must be a primtive type</value>
+  </data>
+  <data name="PrimitiveType_TryParse_InvalidCode" xml:space="preserve">
+    <value>Invalid type code</value>
+  </data>
+  <data name="StaticBinderAndCommand_EntryPoint_EntryPointMethodLastArgumentMustBeStringArray" xml:space="preserve">
+    <value>The last argument of entryPoint method must be of type string []</value>
+  </data>
+  <data name="StaticBinderAndCommand_EntryPoint_EntryPointMethodMustAcceptAtleastOneArgument" xml:space="preserve">
+    <value>The entryPoint method must have atleast one argument</value>
+  </data>
+  <data name="StaticBinderAndCommand_EntryPoint_EntryPointMethodMustBeStatic" xml:space="preserve">
+    <value>The entryPoint method must be a static method</value>
+  </data>
+  <data name="StaticBinderAndCommand_PopulateNamedParameters_CouldNotBindParameter" xml:space="preserve">
+    <value>Could not bind the value of argument '{0}' with parameter '{1}'</value>
+  </data>
+  <data name="StaticBinderAndCommand_PopulateNamedParameters_MatchingArgumentNotFound" xml:space="preserve">
+    <value>Could not find a matching argument for parameter '{0}'</value>
+  </data>
+  <data name="UnixCommandLineParser_Parse_UnknownArgumentCombination" xml:space="preserve">
+    <value>Unknown argument combination: {0}</value>
+  </data>
+  <data name="UnixCommandLineParser_Parse_UnknownArgumentName" xml:space="preserve">
+    <value>Unknown argument name '{0}'</value>
+  </data>
+  <data name="CLUSyncPipeline_Output_OutputNotAvailable" xml:space="preserve">
+    <value>Output not available</value>
+  </data>
+  <data name="CLUSyncPipeline_Streams_StreamsNotAvailable" xml:space="preserve">
+    <value>Streams not available</value>
+  </data>
+  <data name="InMemorySyncPipe_CheckReable_PipeClosed" xml:space="preserve">
+    <value>Pipe is closed</value>
+  </data>
+  <data name="InMemorySyncPipe_CheckReable_PipeNotReadable" xml:space="preserve">
+    <value>Pipe is not readable</value>
+  </data>
+  <data name="InMemorySyncPipe_CheckWritable_PipeClosed" xml:space="preserve">
+    <value>Pipe is closed</value>
+  </data>
+  <data name="InMemorySyncPipe_CheckWritable_PipeNotWritable" xml:space="preserve">
+    <value>Pipe is not writable</value>
+  </data>
+  <data name="CommandExecMode_Run_MissingCommandConfigFileArgument" xml:space="preserve">
+    <value>Missing command configuration file argument</value>
+  </data>
+  <data name="CommandExecMode_Run_MissingScriptConfigFileName" xml:space="preserve">
+    <value>Missing script configuration file name</value>
+  </data>
+  <data name="CommandExecMode_Run_MissingScriptName" xml:space="preserve">
+    <value>Missing script name</value>
+  </data>
+  <data name="CommandModel_CreateCLUModelCommandDictionary_CouldNotLoadType" xml:space="preserve">
+    <value>Could not load the type '{0}' from '{1}'</value>
+  </data>
+  <data name="CommandModel_CreateCLUModelCommandDictionary_CouldNotLocateDefaultPackageAssembly" xml:space="preserve">
+    <value>Could not locate or load default assembly from the runtime package '{0}'</value>
+  </data>
+  <data name="CommandModel_ResolveModel_EntryPointMethodNotFound" xml:space="preserve">
+    <value>Could not find the method specified in the entry point '{0}'</value>
+  </data>
+  <data name="CommandModel_ResolveModel_EntryPointTypeNotFound" xml:space="preserve">
+    <value>Could not find the type specified in the entry point '{0}'</value>
+  </data>
+  <data name="CommandModel_ResolveModel_CouldNotLoadAssemblyFromPackage" xml:space="preserve">
+    <value>Could not locate or load the assembly '{0}' from the package '{1}'</value>
+  </data>
+  <data name="CommandModel_ValidateCustomEntryPoint_EntryPointInvalidArgument" xml:space="preserve">
+    <value>The entry point '{0}' must accept only one argument, it's type must be string [].</value>
+  </data>
+  <data name="CommandModel_ValidateCustomEntryPoint_EntryPointMustBePulicAndStatic" xml:space="preserve">
+    <value>The entry point '{0}' must be static and public</value>
+  </data>
+  <data name="PackageManagementMode_Install_PackageVersionAlreadyInstalled" xml:space="preserve">
+    <value>The right version of '{0}' package is already installed</value>
+  </data>
+  <data name="PackageManagementMode_Install_PackageVersionNotAvailable" xml:space="preserve">
+    <value>The requested package ('{0}') or version is not available</value>
+  </data>
+  <data name="PackageManagementMode_PackageInstalled_PackageConfigNotFound" xml:space="preserve">
+    <value>The package '{0}' was found but the required package configuration file could not be located within it</value>
+  </data>
+  <data name="PackageManagementMode_PackageUninstalled_PackageRemoved" xml:space="preserve">
+    <value>Removed '{0}' package</value>
+  </data>
+  <data name="PackageManagementMode_PackageUninstalling_CannotRemoveInUsePackage" xml:space="preserve">
+    <value>Cannot remove '{0}' package, as it is used by the following package(s): {1}</value>
+  </data>
+  <data name="PackageManagementMode_Run_VersionIdMissing" xml:space="preserve">
+    <value>Version identifier missing</value>
+  </data>
+  <data name="PackageManagementMode_Upgrade_NothingToUpdate" xml:space="preserve">
+    <value>No package '{0}' installed, so there's nothing to update. Use '--install' to install for the first time.</value>
+  </data>
+  <data name="PackageManagmentMode_InvokeInstallationHooks_AssembliesFailedToLocate" xml:space="preserve">
+    <value>The following assemblies failed to locate: {0}</value>
+  </data>
+  <data name="PackageManagmentMode_InvokeInstallationHooks_InstallEntryPointMustBeStaticAndPublic" xml:space="preserve">
+    <value>The '{0}' installation entry point '{1}' is not static and public</value>
+  </data>
+  <data name="PackageManagmentMode_InvokeInstallationHooks_InstallEntryPointNotFound" xml:space="preserve">
+    <value>The '{0}' installation entry point '{1}' is not available anywhere in the package</value>
+  </data>
+  <data name="PackageManagmentMode_InvokeInstallationHooks_InstallEntryPointShouldNotAcceptArguments" xml:space="preserve">
+    <value>The '{0}' installation entry point '{1}' should not take any parameters</value>
+  </data>
+  <data name="PackageManagmentMode_Remove_NothingToRemove" xml:space="preserve">
+    <value>'{0}' either not installed or it's not a CLU package, so there's nothing to remove</value>
+  </data>
+  <data name="PackageManagmentMode_Upgrade_AlreadyUpToDate" xml:space="preserve">
+    <value>'{0}' is already up to date</value>
+  </data>
+  <data name="PackageManagmentMode_Upgrade_PackageOrVersionNotAvailable" xml:space="preserve">
+    <value>The requested package '{0}' or version is not available.</value>
+  </data>
+  <data name="PackageManagmentMode_Upgrade_UpdatingToVersion" xml:space="preserve">
+    <value>Updating '{0}' to version</value>
+  </data>
+  <data name="DebugLineFormat" xml:space="preserve">
+    <value>DEBUG: {0}</value>
+  </data>
+  <data name="ErrorLineFormat" xml:space="preserve">
+    <value>ERROR: {0}</value>
+  </data>
+  <data name="VerboseLineFormat" xml:space="preserve">
+    <value>VERBOSE: {0}</value>
+  </data>
+  <data name="WarningLineFormat" xml:space="preserve">
+    <value>WARNING: {0}</value>
+  </data>
+  <data name="CLURun_DisplayHelp_HelpMessage" xml:space="preserve">
+    <value>
+
+To install a package use:
+  clurun --install package-name [--version package-version]
+
+To run a command use:
+  clurun --run configuration-file [arguments]
+
+</value>
+  </data>
+  <data name="CLURunspace_CreatePipeline_RunspaceNotOpended" xml:space="preserve">
+    <value>Runspace is not opened</value>
+  </data>
+  <data name="CmdletHelp_GenerateSingleCommandHelp_TxtCommandSyntax" xml:space="preserve">
+    <value>Command Syntax:</value>
+  </data>
+  <data name="CmdletHelp_GenerateSingleCommandHelp_TxtInnerException" xml:space="preserve">
+    <value>Inner exception:</value>
+  </data>
+  <data name="CmdletHelp_GenerateSingleCommandHelp_TxtParameters" xml:space="preserve">
+    <value>Parameters:</value>
+  </data>
+  <data name="ConsoleDataStream_WriteProgress_StatusLineCompleted" xml:space="preserve">
+    <value>{0} - status: '{1}'</value>
+  </data>
+  <data name="ConsoleDataStream_WriteProgress_StatusLineInProgress" xml:space="preserve">
+    <value>{0} - status: '{1}' current: '{2}' remaining: {3} s</value>
+  </data>
+  <data name="PipeBase_Read_ArgumentMustBePositive" xml:space="preserve">
+    <value>must be a positive integer</value>
+  </data>
+  <data name="AssemblyResolver_ResolveEntryPoint_MethodNameMustBeFullyQualified" xml:space="preserve">
+    <value>The method name must be a fully qualified name (Namespace.ClassName.MethodName)</value>
+  </data>
+  <data name="AssemblyResolver_SearchDirectoriesMessage_TxtIncludingSubDirs" xml:space="preserve">
+    <value>[Including sub-directories]:</value>
+  </data>
+</root>

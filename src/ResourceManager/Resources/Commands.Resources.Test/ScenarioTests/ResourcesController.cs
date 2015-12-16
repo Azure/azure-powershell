@@ -141,26 +141,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         private void SetupManagementClients()
         {
-            ResourceManagementClient = GetResourceManagementClient();
-            SubscriptionClient = GetSubscriptionClient();
-            GalleryClient = GetGalleryClient();
-            AuthorizationManagementClient = GetAuthorizationManagementClient();
-            GraphClient = GetGraphClient();
-            InsightsClient = GetInsightsClient();
-            this.FeatureClient = this.GetFeatureClient();
-            HttpClientHelperFactory.Instance = new TestHttpClientHelperFactory(this.csmTestFactory.GetTestEnvironment().Credentials as SubscriptionCloudCredentials);
-
-            helper.SetupManagementClients(ResourceManagementClient,
-                SubscriptionClient,
-                GalleryClient,
-                AuthorizationManagementClient,
-                GraphClient,
-                InsightsClient,
-                this.FeatureClient);
-        }
-
-        private GraphRbacManagementClient GetGraphClient()
-        {
             var environment = this.csmTestFactory.GetTestEnvironment();
             string tenantId = null;
 
@@ -184,41 +164,12 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 }
                 if (HttpMockServer.Variables.ContainsKey(SubscriptionIdKey))
                 {
-                    AzureRmProfileProvider.Instance.Profile.Context.Subscription.Id = new Guid(HttpMockServer.Variables[SubscriptionIdKey]);
+                    helper.TestProfile.Context.Subscription.Id = new Guid(HttpMockServer.Variables[SubscriptionIdKey]);
                 }
             }
 
-            return TestBase.GetGraphServiceClient<GraphRbacManagementClient>(this.csmTestFactory, tenantId);
-        }
+            HttpClientHelperFactory.Instance = new TestHttpClientHelperFactory(this.csmTestFactory.GetTestEnvironment().Credentials as SubscriptionCloudCredentials);
 
-        private AuthorizationManagementClient GetAuthorizationManagementClient()
-        {
-            return TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
-        }
-
-        private FeatureClient GetFeatureClient()
-        {
-            return TestBase.GetServiceClient<FeatureClient>(this.csmTestFactory);
-        }
-
-        private ResourceManagementClient GetResourceManagementClient()
-        {
-            return TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
-        }
-
-        private SubscriptionClient GetSubscriptionClient()
-        {
-            return TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
-        }
-
-        private GalleryClient GetGalleryClient()
-        {
-            return TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
-        }
-
-        private InsightsClient GetInsightsClient()
-        {
-            return TestBase.GetServiceClient<InsightsClient>(this.csmTestFactory);
         }
 
         /// <summary>

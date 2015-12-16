@@ -31,11 +31,13 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
         /// <summary>
         /// Creates new ActiveDirectoryClient using WindowsAzureSubscription.
         /// </summary>
+        /// <param name="authenticationFactory"></param>
+        /// <param name="clientFactory"></param>
         /// <param name="context"></param>
-        public ActiveDirectoryClient(AzureContext context)
+        public ActiveDirectoryClient(IAuthenticationFactory authenticationFactory, IClientFactory clientFactory, AzureContext context)
         {
-            AccessTokenCredential creds = (AccessTokenCredential)AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(context);
-            GraphClient = AzureSession.ClientFactory.CreateCustomClient<GraphRbacManagementClient>(
+            AccessTokenCredential creds = (AccessTokenCredential)authenticationFactory.GetSubscriptionCloudCredentials(context);
+            GraphClient = clientFactory.CreateCustomClient<GraphRbacManagementClient>(
                 creds.TenantID,
                 creds,
                 context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.Graph));

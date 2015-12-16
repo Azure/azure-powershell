@@ -25,6 +25,7 @@ using System;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Models;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 {
@@ -48,6 +49,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             var cmdlt = new GetAzureRMContextCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
+            cmdlt.DefaultProfile = currentProfile;
 
             // Act
             cmdlt.InvokeBeginProcessing();
@@ -68,7 +70,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.TenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47";
-
+            cmdlt.DefaultProfile = currentProfile;
             // Act
             cmdlt.InvokeBeginProcessing();
             cmdlt.ExecuteCmdlet();
@@ -88,7 +90,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             var cmdlt = new SetAzureRMContextCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
-
+            cmdlt.DefaultProfile = currentProfile;
             // Act
             cmdlt.InvokeBeginProcessing();
             cmdlt.ExecuteCmdlet();

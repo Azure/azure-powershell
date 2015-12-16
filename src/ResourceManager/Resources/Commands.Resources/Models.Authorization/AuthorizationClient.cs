@@ -54,11 +54,13 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// <summary>
         /// Creates PoliciesClient using AzureContext instance.
         /// </summary>
-        /// <param name="context">The AzureContext instance</param>
-        public AuthorizationClient(AzureContext context)
+        /// <param name="authenticationFactory"></param>
+        /// <param name="clientFactory"></param>
+        /// <param name="context"></param>
+        public AuthorizationClient(IAuthenticationFactory authenticationFactory, IClientFactory clientFactory,  AzureContext context)
         {
-            ActiveDirectoryClient = new ActiveDirectoryClient(context);
-            AuthorizationManagementClient = AzureSession.ClientFactory.CreateClient<AuthorizationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            ActiveDirectoryClient = new ActiveDirectoryClient(authenticationFactory, clientFactory, context);
+            AuthorizationManagementClient = clientFactory.CreateClient<AuthorizationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
         }
 
         /// <summary>

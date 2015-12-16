@@ -57,54 +57,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             return fullPath;
         }
 
-        public static List<T> ExecuteScript<T>(this PSCmdlet cmdlet, string contents)
-        {
-            List<T> output = new List<T>();
-
-            using (System.Management.Automation.PowerShell powershell = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace))
-            {
-                powershell.AddScript(contents);
-                Collection<T> result = powershell.Invoke<T>();
-
-                if (cmdlet.SessionState != null)
-                {
-                    powershell.Streams.Error.ForEach(e => cmdlet.WriteError(e));
-                    powershell.Streams.Verbose.ForEach(r => cmdlet.WriteVerbose(r.Message));
-                    powershell.Streams.Warning.ForEach(r => cmdlet.WriteWarning(r.Message));
-                }
-
-                if (result != null && result.Count > 0)
-                {
-                    output.AddRange(result);
-                }
-            }
-
-            return output;
-        }
         #region PowerShell Commands
-
-        public static void RemoveModule(this PSCmdlet cmdlet, string moduleName)
-        {
-            string contents = string.Format("Remove-Module {0}", moduleName);
-            ExecuteScript<object>(cmdlet, contents);
-        }
-
-        public static List<PSModuleInfo> GetLoadedModules(this PSCmdlet cmdlet)
-        {
-            return ExecuteScript<PSModuleInfo>(cmdlet, "Get-Module");
-        }
-
-        public static void ImportModule(this PSCmdlet cmdlet, string modulePath)
-        {
-            string contents = string.Format("Import-Module '{0}'", modulePath);
-            ExecuteScript<object>(cmdlet, contents);
-        }
-
-        public static void RemoveAzureAliases(this PSCmdlet cmdlet)
-        {
-            string contents = "Get-Alias | where { $_.Description -eq 'AzureAlias' } | foreach { Remove-Item alias:\\$($_.Name) }";
-            ExecuteScript<object>(cmdlet, contents);
-        }
 
         public static void InvokeBeginProcessing(this PSCmdlet cmdlt)
         {

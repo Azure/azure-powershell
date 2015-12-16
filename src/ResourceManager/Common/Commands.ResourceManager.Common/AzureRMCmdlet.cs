@@ -13,10 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Management.Automation;
 using System.Management.Automation.Host;
+using System.Net.Http.Headers;
 using System.Threading;
+using Microsoft.Azure.Commands.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Properties;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
@@ -32,38 +35,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
     /// </summary>
     public abstract class AzureRMCmdlet : AzurePSCmdlet
     {
-        /// <summary>
-        /// Static constructor for AzureRMCmdlet.
-        /// </summary>
-        static AzureRMCmdlet()
-        {
-            if (!TestMockSupport.RunningMocked)
-            {
-                AzureSession.DataStore = new DiskDataStore();
-           }
-        }
-
-        /// <summary>
-        /// Creates new instance from AzureRMCmdlet and add the RPRegistration handler.
-        /// </summary>
-        public AzureRMCmdlet()
-        {
-            AzureSession.ClientFactory.RemoveHandler(typeof(RPRegistrationDelegatingHandler));
-            AzureSession.ClientFactory.AddHandler(new RPRegistrationDelegatingHandler(
-                () => new ResourceManagementClient(
-                    AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(DefaultContext, AzureEnvironment.Endpoint.ResourceManager),
-                    DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager)),
-                s => _debugMessages.Enqueue(s)));
-        }
+        public const string ProfileVariable = "_azpsh_profile";
 
         /// <summary>
         /// Gets or sets the global profile for ARM cmdlets.
         /// </summary>
-        public AzureRMProfile DefaultProfile
-        {
-            get { return AzureRmProfileProvider.Instance.Profile; }
-            set { AzureRmProfileProvider.Instance.Profile = value; }
-        }
+        public AzureRMProfile DefaultProfile { get; set; }
 
         /// <summary>
         /// Gets the current default context.
@@ -81,6 +58,30 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
         }
 
+        protected override void BeginProcessing()
+        {
+            // Deserialize session variables
+            var sessionProfile = GetSessionVariableValue<PSAzureProfile>(AzurePowerShell.ProfileVariable, null);
+            if (sessionProfile != null)
+            {
+                DefaultProfile = sessionProfile;
+            }
+            base.BeginProcessing();
+            ClientFactory.AddHandler(new RPRegistrationDelegatingHandler(
+                           () => new ResourceManagementClient(
+                               AuthenticationFactory.GetSubscriptionCloudCredentials(DefaultContext, AzureEnvironment.Endpoint.ResourceManager),
+                               DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager)),
+                           s => _debugMessages.Enqueue(s)));
+
+        }
+
+        protected override void EndProcessing()
+        {
+            SetSessionVariable(AzurePowerShell.ProfileVariable, ((PSAzureProfile)DefaultProfile));
+            ClientFactory.RemoveHandler(typeof(RPRegistrationDelegatingHandler));
+            base.EndProcessing();
+        }
+
         protected override void SaveDataCollectionProfile()
         {
             if (_dataCollectionProfile == null)
@@ -88,13 +89,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 InitializeDataCollectionProfile();
             }
 
-            string fileFullPath = Path.Combine(AzureSession.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
+            string fileFullPath = Path.Combine(AzurePowerShell.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
             var contents = JsonConvert.SerializeObject(_dataCollectionProfile);
-            if (!AzureSession.DataStore.DirectoryExists(AzureSession.ProfileDirectory))
+            if (!DataStore.DirectoryExists(AzurePowerShell.ProfileDirectory))
             {
-                AzureSession.DataStore.CreateDirectory(AzureSession.ProfileDirectory);
+                DataStore.CreateDirectory(AzurePowerShell.ProfileDirectory);
             }
-            AzureSession.DataStore.WriteFile(fileFullPath, contents);
+            DataStore.WriteFile(fileFullPath, contents);
             WriteWarning(string.Format(Resources.DataCollectionSaveFileInformation, fileFullPath));
         }
 
@@ -113,24 +114,24 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
                 var startTime = DateTime.Now;
                 var endTime = DateTime.Now;
-                double elapsedSeconds = 0;
+                //double elapsedSeconds = 0;
 
-                while (!this.Host.UI.RawUI.KeyAvailable && elapsedSeconds < timeToWaitInSeconds)
-                {
-                    Thread.Sleep(TimeSpan.FromMilliseconds(10));
-                    endTime = DateTime.Now;
+                //while (!this.Host.UI.RawUI.KeyAvailable && elapsedSeconds < timeToWaitInSeconds)
+                //{
+                //    Thread.Sleep(TimeSpan.FromMilliseconds(10));
+                //    endTime = DateTime.Now;
 
-                    elapsedSeconds = (endTime - startTime).TotalSeconds;
-                    record.PercentComplete = ((int)elapsedSeconds * 100 / (int)timeToWaitInSeconds);
-                    WriteProgress(record);
-                }
+                //    elapsedSeconds = (endTime - startTime).TotalSeconds;
+                //    record.PercentComplete = ((int)elapsedSeconds * 100 / (int)timeToWaitInSeconds);
+                //    WriteProgress(record);
+                //}
 
                 bool enabled = false;
-                if (this.Host.UI.RawUI.KeyAvailable)
-                {
-                    KeyInfo keyInfo = this.Host.UI.RawUI.ReadKey(ReadKeyOptions.NoEcho | ReadKeyOptions.AllowCtrlC | ReadKeyOptions.IncludeKeyDown);
-                    enabled = (keyInfo.Character == 'Y' || keyInfo.Character == 'y');
-                }
+                //if (this.Host.UI.RawUI.KeyAvailable)
+                //{
+                //    KeyInfo keyInfo = this.Host.UI.RawUI.ReadKey(ReadKeyOptions.NoEcho | ReadKeyOptions.AllowCtrlC | ReadKeyOptions.IncludeKeyDown);
+                //    enabled = (keyInfo.Character == 'Y' || keyInfo.Character == 'y');
+                //}
 
                 _dataCollectionProfile.EnableAzureDataCollection = enabled;
 

@@ -82,26 +82,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
             return false;
         }
-
-        public static string ReadMessageBody(ref Message originalMessage)
-        {
-            StringBuilder strBuilder = new StringBuilder();
-
-            using (MessageBuffer messageBuffer = originalMessage.CreateBufferedCopy(int.MaxValue))
-            {
-                Message message = messageBuffer.CreateMessage();
-                XmlWriter writer = XmlWriter.Create(strBuilder);
-                using (XmlDictionaryWriter dictionaryWriter = XmlDictionaryWriter.CreateDictionaryWriter(writer))
-                {
-                    message.WriteBodyContents(dictionaryWriter);
-                }
-
-                originalMessage = messageBuffer.CreateMessage();
-            }
-
-            return XmlUtilities.Beautify(strBuilder.ToString());
-        }
-
         public static string GetConfiguration(string configurationPath)
         {
             var configuration = string.Join(string.Empty, File.ReadAllLines(configurationPath));
@@ -410,11 +390,12 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// <summary>
         /// Ensure the default profile directory exists
         /// </summary>
-        public static void EnsureDefaultProfileDirectoryExists()
+        /// <param name="dataStore"></param>
+        public static void EnsureDefaultProfileDirectoryExists(IDataStore dataStore)
         {
-            if (!AzureSession.DataStore.DirectoryExists(AzureSession.ProfileDirectory))
+            if (dataStore.DirectoryExists(AzurePowerShell.ProfileDirectory))
             {
-                AzureSession.DataStore.CreateDirectory(AzureSession.ProfileDirectory);
+                dataStore.CreateDirectory(AzurePowerShell.ProfileDirectory);
             }
         }
 
@@ -423,18 +404,17 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// at a time.
         /// </summary>
         /// <param name="clearSMContext">Whenter to clear the service management context.</param>
-        public static void ClearCurrentStorageAccount(bool clearSMContext = false)
+        public static void ClearCurrentStorageAccount(IDataStore dataStore, AzureRMProfile profile, bool clearSMContext = false)
         {
-            var RMProfile = AzureRmProfileProvider.Instance.Profile;
-            if (RMProfile != null && RMProfile.Context != null && 
-                RMProfile.Context.Subscription != null && RMProfile.Context.Subscription.IsPropertySet(AzureSubscription.Property.StorageAccount))
+            if (profile != null && profile.Context != null && 
+                profile.Context.Subscription != null && profile.Context.Subscription.IsPropertySet(AzureSubscription.Property.StorageAccount))
             {
-                RMProfile.Context.Subscription.SetProperty(AzureSubscription.Property.StorageAccount, null);
+                profile.Context.Subscription.SetProperty(AzureSubscription.Property.StorageAccount, null);
             }
 
             if (clearSMContext)
             {
-                var SMProfile = AzureSMProfileProvider.Instance.Profile;
+                var SMProfile = AzureSMProfileProvider.Instance.GetProfile(dataStore);
                 if (SMProfile != null && SMProfile.Context != null && SMProfile.Context.Subscription != null &&
                     SMProfile.Context.Subscription.IsPropertySet(AzureSubscription.Property.StorageAccount))
                 {

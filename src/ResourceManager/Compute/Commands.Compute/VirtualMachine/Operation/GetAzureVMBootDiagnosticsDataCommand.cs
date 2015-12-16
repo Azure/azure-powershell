@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Commands.Compute
                 throw new ArgumentOutOfRangeException("Source", sourceUri.ToString());
             }
 
-            var storageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(
+            var storageClient = ClientFactory.CreateClient<StorageManagementClient>(
                         DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
 
 

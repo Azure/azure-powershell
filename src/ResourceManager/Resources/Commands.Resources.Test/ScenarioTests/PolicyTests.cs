@@ -21,14 +21,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
     public class PolicyTests : RMTestBase
     {
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPolicyDefinitionCRUD()
         {
             ResourcesController.NewInstance.RunPsTest("Test-PolicyDefinitionCRUD");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPolicyAssignmentCRUD()
         {

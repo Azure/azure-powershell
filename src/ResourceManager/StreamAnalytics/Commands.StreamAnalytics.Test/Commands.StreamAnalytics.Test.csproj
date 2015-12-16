@@ -182,10 +182,6 @@
       <Project>{3436a126-edc9-4060-8952-9a1be34cdd95}</Project>
       <Name>Commands.ScenarioTests.ResourceManager.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\DataFactories\Commands.DataFactories\Commands.DataFactories.csproj">
-      <Project>{9577252e-0a6b-4d61-86e8-95f7f309a987}</Project>
-      <Name>Commands.DataFactories</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />

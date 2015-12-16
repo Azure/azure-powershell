@@ -26,6 +26,7 @@ using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
+using Microsoft.Azure.Commands.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
@@ -51,12 +52,12 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         public AzureSMProfile SMProfile
         {
-            get { return AzureSMProfileProvider.Instance.Profile; }
+            get { return AzureSMProfileProvider.Instance.GetProfile(DataStore); }
         }
 
         public AzureRMProfile RMProfile
         {
-            get { return AzureRmProfileProvider.Instance.Profile; }
+            get { return GetSessionVariableValue<PSAzureProfile>(AzurePowerShell.ProfileVariable, null); }
         }
 
         protected override void SaveDataCollectionProfile()
@@ -66,13 +67,13 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 InitializeDataCollectionProfile();
             }
 
-            string fileFullPath = Path.Combine(AzureSession.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
+            string fileFullPath = Path.Combine(AzurePowerShell.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
             var contents = JsonConvert.SerializeObject(_dataCollectionProfile);
-            if (!AzureSession.DataStore.DirectoryExists(AzureSession.ProfileDirectory))
+            if (!DataStore.DirectoryExists(AzurePowerShell.ProfileDirectory))
             {
-                AzureSession.DataStore.CreateDirectory(AzureSession.ProfileDirectory);
+                DataStore.CreateDirectory(AzurePowerShell.ProfileDirectory);
             }
-            AzureSession.DataStore.WriteFile(fileFullPath, contents);
+            DataStore.WriteFile(fileFullPath, contents);
             WriteWarning(string.Format(Resources.DataCollectionSaveFileInformation, fileFullPath));
        }
 
@@ -91,26 +92,26 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
                 var startTime = DateTime.Now;
                 var endTime = DateTime.Now;
-                double elapsedSeconds = 0;
+                //double elapsedSeconds = 0;
 
-                while (!this.Host.UI.RawUI.KeyAvailable && elapsedSeconds < timeToWaitInSeconds)
-                {
-                    Thread.Sleep(TimeSpan.FromMilliseconds(10));
-                    endTime = DateTime.Now;
+                //while (!this.Host.UI.RawUI.KeyAvailable && elapsedSeconds < timeToWaitInSeconds)
+                //{
+                //    Thread.Sleep(TimeSpan.FromMilliseconds(10));
+                //    endTime = DateTime.Now;
 
-                    elapsedSeconds = (endTime - startTime).TotalSeconds;
-                    record.PercentComplete = ((int) elapsedSeconds*100/(int) timeToWaitInSeconds);
-                    WriteProgress(record);
-                }
+                //    elapsedSeconds = (endTime - startTime).TotalSeconds;
+                //    record.PercentComplete = ((int) elapsedSeconds*100/(int) timeToWaitInSeconds);
+                //    WriteProgress(record);
+                //}
 
                 bool enabled = false;
-                if (this.Host.UI.RawUI.KeyAvailable)
-                {
-                    KeyInfo keyInfo =
-                        this.Host.UI.RawUI.ReadKey(ReadKeyOptions.NoEcho | ReadKeyOptions.AllowCtrlC |
-                                                   ReadKeyOptions.IncludeKeyDown);
-                    enabled = (keyInfo.Character == 'Y' || keyInfo.Character == 'y');
-                }
+                //if (this.Host.UI.RawUI.KeyAvailable)
+                //{
+                //    KeyInfo keyInfo =
+                //        this.Host.UI.RawUI.ReadKey(ReadKeyOptions.NoEcho | ReadKeyOptions.AllowCtrlC |
+                //                                   ReadKeyOptions.IncludeKeyDown);
+                //    enabled = (keyInfo.Character == 'Y' || keyInfo.Character == 'y');
+                //}
 
                 _dataCollectionProfile.EnableAzureDataCollection = enabled;
 

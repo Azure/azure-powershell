@@ -160,10 +160,6 @@
       <Project>{3436a126-edc9-4060-8952-9a1be34cdd95}</Project>
       <Name>Commands.ScenarioTests.ResourceManager.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Commands.RedisCache\Commands.RedisCache.csproj">
-      <Project>{c972e3ef-4461-4758-ba31-93e0947b1253}</Project>
-      <Name>Commands.RedisCache</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="MSSharedLibKey.snk" />

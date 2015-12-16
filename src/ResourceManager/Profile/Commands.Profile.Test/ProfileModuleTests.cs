@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
 {
     public class ProfileModuleTests
     {
-        [Fact]
+        [Fact(Skip= "TODO, [#108248038]: Enable scenario tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void WarningOnIncompatibleVersions()
         {

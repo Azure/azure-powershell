@@ -22,6 +22,8 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System.Linq;
 using Xunit;
 using System;
+using System.Management.Automation;
+using Microsoft.Azure.Commands.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
@@ -37,7 +39,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             dataStore = new MemoryDataStore();
             AzureSession.DataStore = dataStore;
             commandRuntimeMock = new MockCommandRuntime();
-            AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
         }
 
         [Fact]
@@ -50,14 +51,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             // Setup
             cmdlt.Profile = profile;
             cmdlt.CommandRuntime = commandRuntimeMock;
-
             // Act
             cmdlt.InvokeBeginProcessing();
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
+            Assert.NotNull(commandRuntimeMock.OutputPipeline);
+            Assert.Equal(1, commandRuntimeMock.OutputPipeline.Count);
+            var newProfile = (AzureRMProfile)(commandRuntimeMock.OutputPipeline[0] as PSAzureProfile) ;
+            Assert.NotNull(newProfile);
             // Verify
-            Assert.True(AzureRmProfileProvider.Instance.Profile.Environments.ContainsKey("foo"));
+            Assert.True(newProfile.Environments.ContainsKey("foo"));
         }
 
         [Fact]
@@ -67,6 +71,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             SelectAzureRMProfileCommand cmdlt = new SelectAzureRMProfileCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
+            cmdlt.DefaultProfile = currentProfile;
 
             // Act
             cmdlt.InvokeBeginProcessing();
@@ -90,9 +95,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlt.InvokeBeginProcessing();
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
+            var prof = cmdlt.DefaultProfile;
 
             // Verify
-            Assert.True(AzureRmProfileProvider.Instance.Profile.Environments.ContainsKey("foo"));
+            Assert.True(prof.Environments.ContainsKey("foo"));
         }
 
         [Fact]
@@ -106,6 +112,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlt.Profile = profile;
             cmdlt.Path = "X:\\foo.json";
             cmdlt.CommandRuntime = commandRuntimeMock;
+            cmdlt.DefaultProfile = currentProfile;
 
             // Act
             cmdlt.InvokeBeginProcessing();
@@ -124,7 +131,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         {
             SaveAzureRMProfileCommand cmdlt = new SaveAzureRMProfileCommand();
             // Setup
-            AzureRmProfileProvider.Instance.Profile = null;
             cmdlt.Path = "X:\\foo.json";
             cmdlt.CommandRuntime = commandRuntimeMock;
 
@@ -139,11 +145,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             var profile = new AzureRMProfile();
             profile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
             profile.Context = new AzureContext(new AzureSubscription(), new AzureAccount(), profile.Environments["foo"]);
-            AzureRmProfileProvider.Instance.Profile = profile;
             SaveAzureRMProfileCommand cmdlt = new SaveAzureRMProfileCommand();
             // Setup
             cmdlt.Path = "X:\\foo.json";
             cmdlt.CommandRuntime = commandRuntimeMock;
+            cmdlt.DefaultProfile = profile;
 
             // Act
             cmdlt.InvokeBeginProcessing();
