@@ -77,7 +77,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.2.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Network, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.3.0.4-preview\lib\net45\Microsoft.Azure.Management.Network.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.3.0.5-preview\lib\net45\Microsoft.Azure.Management.Network.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Data.Edm, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -294,6 +294,10 @@
     <Compile Include="Models\PSPeeringStats.cs" />
     <Compile Include="Models\PSExpressRouteCircuitAuthorization.cs" />
     <Compile Include="Models\PSExpressRouteCircuit.cs" />
+    <Compile Include="NetworkInterface\AddAzureNetworkInterfaceIpConfiguration.cs" />
+    <Compile Include="NetworkInterface\NewAzureNetworkInterfaceIpConfiguration.cs" />
+    <Compile Include="NetworkInterface\RemoveAzureNetworkInterfaceIpConfiguration.cs" />
+    <Compile Include="NetworkInterface\SetAzureNetworkInterfaceIpConfiguration.cs" />
     <Compile Include="ProviderWideCmdlets\GetAzureExpressRouteServiceProviderCommand.cs" />
     <Compile Include="PublicIpAddress\GetAzurePublicIpAddressCommand.cs" />
     <Compile Include="PublicIpAddress\NewAzurePublicIpAddressCommand.cs" />
@@ -319,10 +323,10 @@
     <Compile Include="VirtualNetworkGateway\NewAzureVirtualNetworkGatewayCommand.cs" />
     <Compile Include="VirtualNetworkGateway\GetAzureVpnClientRootCertificateCommand.cs" />
     <Compile Include="VirtualNetworkGateway\GetAzureVpnClientRevokedCertificateCommand.cs" />
-    <Compile Include="VirtualNetworkGateway\AddAzureVpnClientRootCertificateCommand.cs" />	
-    <Compile Include="VirtualNetworkGateway\AddAzureVpnClientRevokedCertificateCommand.cs" />	
+    <Compile Include="VirtualNetworkGateway\AddAzureVpnClientRootCertificateCommand.cs" />
+    <Compile Include="VirtualNetworkGateway\AddAzureVpnClientRevokedCertificateCommand.cs" />
     <Compile Include="VirtualNetworkGateway\NewAzureVpnClientRootCertificateCommand.cs" />
-    <Compile Include="VirtualNetworkGateway\NewAzureVpnClientRevokedCertificateCommand.cs" />	
+    <Compile Include="VirtualNetworkGateway\NewAzureVpnClientRevokedCertificateCommand.cs" />
     <Compile Include="VirtualNetworkGateway\ResizeAzureVirtualNetworkGatewayCommand.cs" />
     <Compile Include="VirtualNetworkGateway\RemoveAzureVpnClientRevokedCertificateCommand.cs" />
     <Compile Include="VirtualNetworkGateway\RemoveAzureVpnClientRootCertificateCommand.cs" />
@@ -504,4 +508,11 @@
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
 </Project>
