@@ -17,12 +17,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Commands.Common.ScenarioTest
+namespace Microsoft.Azure.Commands.Common.ScenarioTest
 {
     public static class EnvironmentConstants
     {
         public const string UsernameKey = "Username";
         public const string PasswordKey = "Password";
         public const string ServicePrincipalKey = "ServicePrincipal";
+        public const string TenantKey = "TenantId";
+        public const string SubscriptionKey = "SubscriptionId";
+        public const string TestRunDirectory = "TestRunDirectory";
+        public const string ExampleDirectory = "ExamplesDirectory";
     }
 }

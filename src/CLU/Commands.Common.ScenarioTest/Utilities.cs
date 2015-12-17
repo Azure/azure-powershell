@@ -12,13 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using Microsoft.Azure.Commands.Common.Authentication;
+using System;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.Common.ScenarioTest
 {
-    public interface IScriptEnvironmentHelper
+    public static class Utilities
     {
-        bool TrySetupScriptEnvironment(TestContext testContext, IClientFactory clientFactory, IDictionary<string, string> settings );
+        public static bool TryGetEnvironmentVariable(string variableName, out string variableValue)
+        {
+            variableValue = Environment.GetEnvironmentVariable(variableName);
+            return !string.IsNullOrWhiteSpace(variableValue);
+        }
+
+        public static void EnsureDirectoryExists(string directoryPath)
+        {
+            if (!Directory.Exists(directoryPath))
+            {
+                Directory.CreateDirectory(directoryPath);
+            }
+        }
     }
 }

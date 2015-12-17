@@ -14,12 +14,12 @@
 
 using System;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Examples.Test;
+using Microsoft.Azure.Commands.Common.ScenarioTest;
 using Microsoft.Azure.Commands.Models;
 using Moq.Protected;
 using Newtonsoft.Json;
 
-namespace Commands.Common.ScenarioTest
+namespace Microsoft.Azure.Commands.Common.ScenarioTest
 {
     public class ScenarioTestFixture
     {

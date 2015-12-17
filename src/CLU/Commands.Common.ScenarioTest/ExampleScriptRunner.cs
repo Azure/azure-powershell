@@ -19,14 +19,14 @@ using System.IO;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.ScenarioTest;
+using Microsoft.Azure.Commands.Common.ScenarioTest;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.Rest;
 using Newtonsoft.Json.Linq;
 using Xunit;
 
-namespace Microsoft.Azure.Commands.Examples.Test
+namespace Microsoft.Azure.Commands.Common.ScenarioTest
 {
     public class ExampleScriptRunner
     {

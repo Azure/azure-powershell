@@ -12,26 +12,36 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Examples.Test;
-using Microsoft.Azure.Commands.ScenarioTest;
+using Microsoft.Azure.Commands.Common.ScenarioTest;
 
-namespace Commands.Common.ScenarioTest
+namespace Microsoft.Azure.Commands.Common.ScenarioTest
 {
+    /// <summary>
+    /// Add the given SPN credentials to the environment for the login script
+    /// </summary>
     public class ServiceAuthenticationHelper : IScriptEnvironmentHelper
     {    
         string _spn;
         string _secret;
+        string _tenant;
+        string _subscription;
         const string SecretKey = "secret";
         const string SPNKey = "spn";
-        public ServiceAuthenticationHelper(string spn, string secret)
+        const string TenantKey = "tenant";
+        const string SubscriptionKey = "subscription";
+        public ServiceAuthenticationHelper(string spn, string secret, string tenant)
+            : this(spn, secret, tenant, null)
+        {
+        }
+
+        public ServiceAuthenticationHelper(string spn, string secret, string tenant, string subscription)
         {
             _spn = spn;
             _secret = secret;
+            _tenant = tenant;
+            _subscription = subscription;
         }
 
         public bool TrySetupScriptEnvironment(TestContext testContext, IClientFactory clientFactory, IDictionary<string, string> settings)
@@ -39,6 +49,14 @@ namespace Commands.Common.ScenarioTest
             Logger.Instance.WriteMessage($"Logging in using ServicePrincipal: {_spn}");
             settings[SPNKey] = _spn;
             settings[SecretKey] = _secret;
+            Logger.Instance.WriteMessage($"Logging in using Tenant: {_tenant}");
+            settings[TenantKey] = _tenant;
+            if (!string.IsNullOrWhiteSpace(_subscription))
+            {
+                Logger.Instance.WriteMessage($"Logging in using Subscription: {_subscription}");
+                settings[SubscriptionKey] = _subscription;
+            }
+
             return true;
         }
     }

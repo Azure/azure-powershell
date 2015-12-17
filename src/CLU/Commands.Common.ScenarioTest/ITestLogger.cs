@@ -14,7 +14,7 @@
 
 using Xunit.Abstractions;
 
-namespace Microsoft.Azure.Commands.ScenarioTest
+namespace Microsoft.Azure.Commands.Common.ScenarioTest
 {
     public interface ITestLogger
     {

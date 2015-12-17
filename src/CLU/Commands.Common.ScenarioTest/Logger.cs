@@ -14,7 +14,7 @@
 
 using System.Diagnostics;
 
-namespace Microsoft.Azure.Commands.ScenarioTest
+namespace Microsoft.Azure.Commands.Common.ScenarioTest
 {
     public class Logger : ITestLogger
     {

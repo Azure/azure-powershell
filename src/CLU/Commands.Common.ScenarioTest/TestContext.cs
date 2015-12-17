@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.ScenarioTest;
 // ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
@@ -16,14 +14,13 @@ using Microsoft.Azure.Commands.ScenarioTest;
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Rest;
 
-namespace Microsoft.Azure.Commands.Examples.Test
+namespace Microsoft.Azure.Commands.Common.ScenarioTest
 {
     public struct TestContext
     {
         public AzureContext Context { get; set; }
-       public  string TestExecutableName { get; set; }
+        public string TestExecutableName { get; set; }
         public string TestScriptSuffix { get; set; }
         public string TestScriptDirectory { get; set; }
         public string ExecutionDirectory { get; set; }

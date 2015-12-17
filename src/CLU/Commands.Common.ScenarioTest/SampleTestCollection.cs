@@ -14,7 +14,7 @@
 
 using Xunit;
 
-namespace Commands.Common.ScenarioTest
+namespace Microsoft.Azure.Commands.Common.ScenarioTest
 {
     [CollectionDefinition("SampleCollection")]
     public class SampleTestCollection : ICollectionFixture<ScenarioTestFixture>

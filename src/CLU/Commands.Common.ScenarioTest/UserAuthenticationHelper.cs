@@ -15,21 +15,29 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Examples.Test;
+using Microsoft.Azure.Commands.Common.ScenarioTest;
 
-namespace Microsoft.Azure.Commands.ScenarioTest
+namespace Microsoft.Azure.Commands.Common.ScenarioTest
 {
     public class UserAuthenticationHelper : IScriptEnvironmentHelper
     {
         public const string UsernameVariable = "azureUser";
         public const string PasswordVariable = "password";
+        public const string SubscriptionVariable = "subscription";
         string _username;
         string _password;
+        string _subscription;
 
         public UserAuthenticationHelper(string username, string password)
+            : this(username, password, null)
+        {
+        }
+
+        public UserAuthenticationHelper(string username, string password, string subscription)
         {
             _username = username;
             _password = password;
+            _subscription = subscription;
         }
 
         public bool TrySetupScriptEnvironment(TestContext testContext, IClientFactory clientFactory, IDictionary<string, string> settings)
@@ -49,6 +57,11 @@ namespace Microsoft.Azure.Commands.ScenarioTest
             Logger.Instance.WriteMessage($"Setting process environment {UsernameVariable} = {_username}");
             settings[PasswordVariable] = _password;
             Logger.Instance.WriteMessage($"Setting process environment {PasswordVariable} = ***********");
+            if (!string.IsNullOrWhiteSpace(_subscription))
+            {
+                Logger.Instance.WriteMessage($"Logging in using Subscription: {_subscription}");
+                settings[SubscriptionVariable] = _subscription;
+            }
             return true;
 
         }

@@ -12,14 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using System.IO;
-using Commands.Common.ScenarioTest;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.ScenarioTest;
 
-namespace Microsoft.Azure.Commands.Examples.Test
+namespace Microsoft.Azure.Commands.Common.ScenarioTest
 {
     public class EnvironmentContextFactory
     {
@@ -35,8 +31,7 @@ namespace Microsoft.Azure.Commands.Examples.Test
         {
             var context = new TestContext();
             context.ExecutionDirectory = GetBaseDirectory();
-            context.TestScriptDirectory = Path.GetFullPath(Path.Combine(context.ExecutionDirectory, "..",
-                "..", "..", "examples", scriptDirectoryName));
+            context.TestScriptDirectory =GetExamplesDirectory(context.ExecutionDirectory, scriptDirectoryName);
             context.TestExecutableName = "bash.exe";
             context.TestScriptSuffix = ".sh";
             var helpers = new List<IScriptEnvironmentHelper>();
@@ -45,9 +40,27 @@ namespace Microsoft.Azure.Commands.Examples.Test
             return context;
         }
 
+        private string GetExamplesDirectory(string executionDirectory, string scriptDirectoryName)
+        {
+            string examplesDirectory;
+            if (!Utilities.TryGetEnvironmentVariable(EnvironmentConstants.ExampleDirectory, out examplesDirectory))
+            {
+                examplesDirectory = Path.GetFullPath(Path.Combine(executionDirectory, "..",
+                    "..", "..", "examples"));
+            }
+
+            return Path.Combine(examplesDirectory, scriptDirectoryName);
+        }
         private string GetBaseDirectory()
         {
-            return Path.GetFullPath(Directory.GetCurrentDirectory());
+            string baseDirectory;
+            if (!Utilities.TryGetEnvironmentVariable(EnvironmentConstants.TestRunDirectory, out baseDirectory))
+            {
+                baseDirectory = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), "..", "TestResults"));
+            }
+
+            Utilities.EnsureDirectoryExists(baseDirectory);
+            return baseDirectory;
         }
 
     }

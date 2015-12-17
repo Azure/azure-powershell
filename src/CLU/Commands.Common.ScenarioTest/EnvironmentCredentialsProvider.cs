@@ -17,9 +17,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.Azure.Commands.ScenarioTest;
+using Microsoft.Azure.Commands.Common.ScenarioTest;
 
-namespace Commands.Common.ScenarioTest
+namespace Microsoft.Azure.Commands.Common.ScenarioTest
 {
     public class EnvironmentCredentialsProvider : ICredentialsProvider
     {
@@ -67,12 +67,15 @@ namespace Commands.Common.ScenarioTest
         protected virtual bool TryInitializeServiceCredentials(IDictionary<string, string> settings )
         {
             if (settings.ContainsKey(EnvironmentConstants.ServicePrincipalKey) &&
-                settings.ContainsKey(EnvironmentConstants.PasswordKey))
+                settings.ContainsKey(EnvironmentConstants.PasswordKey) &&
+                settings.ContainsKey(EnvironmentConstants.TenantKey))
             {
                 LoginScriptName = serviceScript;
                 EnvironmentProvider = new ServiceAuthenticationHelper(
                     settings[EnvironmentConstants.ServicePrincipalKey], 
-                    settings[EnvironmentConstants.PasswordKey]);
+                    settings[EnvironmentConstants.PasswordKey],
+                    settings[EnvironmentConstants.TenantKey],
+                    settings.ContainsKey(EnvironmentConstants.SubscriptionKey) ? settings[EnvironmentConstants.SubscriptionKey] : null);
                 return true;
             }
             return false;
@@ -86,7 +89,8 @@ namespace Commands.Common.ScenarioTest
                 LoginScriptName = userScript;
                 EnvironmentProvider = new UserAuthenticationHelper(
                     settings[EnvironmentConstants.UsernameKey],
-                    settings[EnvironmentConstants.PasswordKey]);
+                    settings[EnvironmentConstants.PasswordKey],
+                    settings.ContainsKey(EnvironmentConstants.SubscriptionKey) ? settings[EnvironmentConstants.SubscriptionKey] : null);
                 return true;
             }
             return false;

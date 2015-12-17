@@ -18,10 +18,10 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Threading;
-using Microsoft.Azure.Commands.ScenarioTest;
+using Microsoft.Azure.Commands.Common.ScenarioTest;
 using Xunit;
 
-namespace Microsoft.Azure.Commands.Examples.Test
+namespace Microsoft.Azure.Commands.Common.ScenarioTest
 {
     public class ProcessHelper : IDisposable
     {

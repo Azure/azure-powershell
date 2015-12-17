@@ -17,12 +17,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.Azure.Commands.Examples.Test;
-using Microsoft.Azure.Commands.ScenarioTest;
+using Microsoft.Azure.Commands.Common.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace Commands.Common.ScenarioTest
+namespace Microsoft.Azure.Commands.Common.ScenarioTest
 {
     [Collection("SampleCollection")]
     public class SampleTest
