@@ -28,16 +28,15 @@ namespace Microsoft.Azure.Commands.ScenarioTest
         {
         }
 
+
         public void WriteMessage(string message)
         {
             Trace.WriteLine(message);
-            Debug.WriteLine(message);
         }
 
         public void WriteError(string message)
         {
-            Trace.WriteLine($"ERROR: {message}");
-            Debug.WriteLine($"ERROR: {message}");
+            Trace.WriteLine($"Error: {message}");
         }
     }
 }

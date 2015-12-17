@@ -19,11 +19,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Newtonsoft.Json.Linq;
-
+    using Entities.Resources;
     /// <summary>
     /// Gets the resource lock.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmResourceLock"), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmResourceLock"), OutputType(typeof(ResourceLock<JToken>))]
     public class GetAzureResourceLockCmdlet : ResourceLockManagementCmdletBase
     {
         /// <summary>

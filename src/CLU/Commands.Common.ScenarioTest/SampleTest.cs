@@ -14,21 +14,30 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Examples.Test;
+using Microsoft.Azure.Commands.ScenarioTest;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Commands.Common.ScenarioTest
 {
+    [Collection("SampleCollection")]
     public class SampleTest
     {
+        ScenarioTestFixture _collectionState;
+        public SampleTest(ScenarioTestFixture fixture)
+        {
+            _collectionState = fixture;
+        }
         [Fact]
         public void RunSampleTest()
         {
-            var helper = new ExampleTestHelper();
-            helper.RunTest("01-ResourceGroups");
-
+            var helper = new ExampleScriptRunner(_collectionState.SessionId) {TestContext = new EnvironmentTestContext("resource-management")};
+            helper.RunScript("01-ResourceGroups");
         }
+
     }
 }

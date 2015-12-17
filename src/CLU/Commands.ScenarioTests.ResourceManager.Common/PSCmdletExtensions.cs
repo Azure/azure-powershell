@@ -53,5 +53,11 @@ namespace Microsoft.Azure.Commands.ScenarioTest
             var property = GetInternalProperty("CommandRuntime", typeof (ICommandRuntime));
             property.SetValue(cmdlet, value);
         }
+
+        public static ICommandRuntime GetCommandRuntimeMock(this PSCmdlet cmdlet)
+        {
+            var property = GetInternalProperty("CommandRuntime", typeof(ICommandRuntime));
+            return (ICommandRuntime)property.GetValue(cmdlet);
+        }
     }
 }

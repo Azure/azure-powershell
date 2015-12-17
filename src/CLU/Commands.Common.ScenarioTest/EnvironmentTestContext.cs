@@ -13,23 +13,40 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.Examples.Test
 {
     public class EnvironmentTestContext : ITestContext
     {
-        public EnvironmentTestContext()
+        public EnvironmentTestContext(string _serviceDirectory)
         {
-            ServiceDirectoryName = "resource-management";
+            ServiceDirectoryName = _serviceDirectory;
         }
         public string ServiceDirectoryName { get; private set; }
-        public AzureContext Context { get; }
+        public string ExecutionDirectory { get { return Directory.GetCurrentDirectory(); } }
+
+        public AzureContext Context {
+            get { return new AzureContext(
+                new AzureAccount() {Id="user@contoso.org", Type=AzureAccount.AccountType.User},
+                AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud],
+                new AzureTenant()); }
+        }
         public string TestExecutableName { get {return "bash.exe";} }
         public string TestScriptSuffix { get { return ".sh"; } }
-        public string TestDirectory { get { return Path.Combine("..", "..", "..", "examples", ServiceDirectoryName);  } }
-        public string Username { get { return Environment.GetEnvironmentVariable("Username"); } }
-        public string Password { get { return Environment.GetEnvironmentVariable("Password"); } }
+        public string TestScriptDirectory { get { return Path.Combine("..", "..", "..", "examples", ServiceDirectoryName);  } }
+        public string Username { get { return ""; } }
+        public string Password { get { return ""; } }
+
+        public IEnumerable<IScriptEnvironmentHelper> EnvironmentHelpers
+        {
+            get
+            {
+                yield return new BasicAuthenticationEnvironmentHelper(Username, Password);
+            }
+        }
     }
 }

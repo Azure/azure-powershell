@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
@@ -23,35 +24,37 @@ using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.Rest;
 using Newtonsoft.Json.Linq;
+using Xunit;
 
 namespace Microsoft.Azure.Commands.Examples.Test
 {
-    public class ExampleTestHelper
+    public class ExampleScriptRunner
     {
+        string _sessionId;
+        static object locker = new object();
         Random _generator;
         string _resourceGroupName;
         IClientFactory _clientFactory = new ClientFactory();
-        ITestContext _context = new EnvironmentTestContext();
-        List<IScriptEnvironmentHelper> _environmentHelpers = new List<IScriptEnvironmentHelper> { new AuthenticationEnvironmentHelper()};
+        ITestContext _context;
         ResourceManagementClient _client;
-        const string DefaultLocation = "West US";
-        const string ResourceGroupNameKey = "resourceGroupName";
-        const string locationKey = "resourceGroupLocation";
-        const string SessionKey = "CmdletSessionId";
+        const string DefaultLocation = "westus";
+        const string ResourceGroupNameKey = "groupName";
+        const string locationKey = "location";
+        const string SessionKey = "CmdletSessionID";
 
-        public ExampleTestHelper() : this(new Random())
+        public ExampleScriptRunner(string sessionId) : this(new Random(), sessionId)
         {
         }
 
-        public ExampleTestHelper(int seed) : this(new Random(seed))
+        public ExampleScriptRunner(int seed, string sessionId) : this(new Random(seed), sessionId)
         {
         }
 
 
-        public ExampleTestHelper(Random generator)
+        public ExampleScriptRunner(Random generator, string sessionId)
         {
             _generator = generator;
-            _environmentHelpers.Add(new RandomNameEnvironmentHelper(_generator, SessionKey));
+            _sessionId = sessionId;
         }
 
         public IClientFactory ClientFactory
@@ -66,11 +69,13 @@ namespace Microsoft.Azure.Commands.Examples.Test
             set { _context = value; }
         }
 
-        public List<IScriptEnvironmentHelper> EnvironmentHelpers { get { return _environmentHelpers; } }
-        public void RunTest(string testName)
+        public void RunScript(string testName)
         {
-            var testDirectory = Path.GetFullPath(_context.TestDirectory);
+            var testDirectory = Path.GetFullPath(_context.TestScriptDirectory);
+            var executionDirectory = Path.GetFullPath(_context.ExecutionDirectory);
             string testFile = $"{testName}{_context.TestScriptSuffix}";
+            string logFile = $"{testName}.log";
+            string logFilePath = Path.Combine(executionDirectory, logFile);
             string testPath = Path.Combine(testDirectory, testFile);
             if (!File.Exists(testPath))
             {
@@ -78,31 +83,37 @@ namespace Microsoft.Azure.Commands.Examples.Test
             }
 
             string deploymentTemplatePath = Path.Combine(testDirectory, $"{testName}.json");
+            TraceListener listener = null;
             try
             {
-                _resourceGroupName = CreateRandomName();
-                if (File.Exists(deploymentTemplatePath))
+                using (var stream = new FileStream(logFilePath, FileMode.Create))
+                using (listener = new TextWriterTraceListener(stream))
+                using (var process = new ProcessHelper(executionDirectory, _context.TestExecutableName, testPath))
                 {
-                    DeployTemplate(deploymentTemplatePath, _resourceGroupName);
-                }
+                    Trace.Listeners.Add(listener);
+                    _resourceGroupName = CreateRandomName();
+                    if (File.Exists(deploymentTemplatePath))
+                    {
+                        DeployTemplate(deploymentTemplatePath, _resourceGroupName);
+                    }
 
-                using (var process = new ProcessHelper(testDirectory, _context.TestExecutableName, testPath))
-                {
+                    process.EnvironmentVariables[SessionKey] = _sessionId;
                     process.EnvironmentVariables[ResourceGroupNameKey] = _resourceGroupName;
                     process.EnvironmentVariables[locationKey] = DefaultLocation;
-                    foreach (var helper in _environmentHelpers)
+                    foreach (var helper in _context.EnvironmentHelpers)
                     {
                         helper.TrySetupScriptEnvironment(_context, _clientFactory, process.EnvironmentVariables);
                     }
                     int statusCode = process.StartAndWaitForExit();
-                    if (statusCode != 0)
-                    {
-                        throw new Exception($"Process exited with unexpected status code {statusCode}");
-                    }
+                    Assert.Equal(0, statusCode);
                 }
             }
             finally
             {
+                if (listener != null)
+                {
+                    Trace.Listeners.Remove(listener);
+                }
                 Cleanup();
             }
         }
@@ -153,7 +164,16 @@ namespace Microsoft.Azure.Commands.Examples.Test
         public void Cleanup()
         {
             if (_client != null && !string.IsNullOrWhiteSpace(_resourceGroupName))
-                _client.ResourceGroups.DeleteWithHttpMessagesAsync(_resourceGroupName).GetAwaiter().GetResult();
+            {
+                try
+                {
+                    _client.ResourceGroups.DeleteWithHttpMessagesAsync(_resourceGroupName).GetAwaiter().GetResult();
+                }
+                catch (Exception exception)
+                {
+                    Logger.Instance.WriteError($"Could not remove resource group: {exception}");
+                }
+            }
             _client = null;
             _resourceGroupName = null;
         }

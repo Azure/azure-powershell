@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Xunit.Abstractions;
+
 namespace Microsoft.Azure.Commands.ScenarioTest
 {
     public interface ITestLogger

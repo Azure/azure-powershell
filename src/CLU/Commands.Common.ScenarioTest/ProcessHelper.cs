@@ -16,7 +16,9 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Threading;
 using Microsoft.Azure.Commands.ScenarioTest;
+using Xunit;
 
 namespace Microsoft.Azure.Commands.Examples.Test
 {
@@ -62,9 +64,16 @@ namespace Microsoft.Azure.Commands.Examples.Test
 
         protected virtual void Dispose(bool disposing)
         {
-            if (disposing && _process != null && !_process.HasExited)
+            if (disposing && _process != null )
             {
-                EndProcess(_process);
+                try
+                {
+                    EndProcess();
+                }
+                catch
+                {
+                }
+
                 _process = null;
             }
         }
@@ -116,15 +125,7 @@ namespace Microsoft.Azure.Commands.Examples.Test
                 return _process.ExitCode;
             }
 
-            try
-            {
-                EndProcess(_process);
-            }
-            finally 
-            {
-                throw new TimeoutException($"Process using executable with path '{shellPath}' timed out");
-            }
-
+            throw new TimeoutException($"Process using executable with path '{shellPath}' timed out");
         }
 
         /// <summary>
@@ -153,6 +154,7 @@ namespace Microsoft.Azure.Commands.Examples.Test
             process.ErrorDataReceived += ProcessError;
             process.Start();
             process.BeginOutputReadLine();
+            process.BeginErrorReadLine();
             return process;
         }
 
@@ -174,11 +176,12 @@ namespace Microsoft.Azure.Commands.Examples.Test
             Logger.Instance.WriteMessage(e.Data);
         }
 
-        private static void EndProcess(Process process)
+        private void EndProcess()
         {
-            process.Kill();
-            process.WaitForExit(2000);
-            process.Dispose();
+            _process.CancelOutputRead();
+            _process.CancelErrorRead();
+            _process.WaitForExit(2000);
+            _process.Dispose();
         }
     }
 }

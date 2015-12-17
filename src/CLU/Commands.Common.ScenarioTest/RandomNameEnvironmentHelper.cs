@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest
 
         public string CreateRandomName()
         {
-            return "clutst" + _generator.Next(10000, 99999);
+            return "" + _generator.Next(10000, 99999);
         }
 
         public bool TrySetupScriptEnvironment(ITestContext testContext, IClientFactory clientFactory, IDictionary<string, string> settings)

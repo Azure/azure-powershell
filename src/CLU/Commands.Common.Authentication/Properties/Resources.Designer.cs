@@ -141,15 +141,6 @@ namespace Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
-        ///    Looks up a localized string similar to Windows Azure Powershell.
-        /// </summary>
-        internal static string AzureDirectoryName {
-            get {
-                return ResourceManager.GetString("AzureDirectoryName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///    Looks up a localized string similar to No certificate was found in the certificate store with thumbprint {0}.
         /// </summary>
         internal static string CertificateNotFoundInStore {

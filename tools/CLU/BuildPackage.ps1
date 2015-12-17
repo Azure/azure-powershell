@@ -2,16 +2,16 @@
 
 if (!(Test-Path $cmdletsDir))
 {
-	throw "cmdletsDir: '$cmdletsDir' must be an existing directory containing cmdlet code"
+    throw "cmdletsDir: '$cmdletsDir' must be an existing directory containing cmdlet code"
 }
 if (!(Test-Path $outputDir))
 {
-	throw "outputDir: '$outputDir' must be an existing directory"
+    throw "outputDir: '$outputDir' must be an existing directory"
 }
 
 if ([string]::IsNullOrWhiteSpace($env:WORKSPACE) -or !(Test-Path $env:WORKSPACE))
 {
-	throw "env:WORKSPACE: '$env:WORKSPACE' must be an existing directory"
+    throw "env:WORKSPACE: '$env:WORKSPACE' must be an existing directory"
 }
 
 $packageSource = $packageSource.TrimEnd('\\')
@@ -34,19 +34,19 @@ $contentFileText = ""
 $contentFiles | %{ $contentFileText += ("    <file src=""" + $_.Name + """ target=""content""/>`r`n")}
 if ($packageId -ne "Microsoft.CLU.Commands") 
 {
-	$contentFileText += "    <file src=""content\azure.lx"" target=""content""/>`r`n"
+    $contentFileText += "    <file src=""content\azure.lx"" target=""content""/>`r`n"
 }
 if ($renameFileExists)
 {
-	$contentFileText += "    <file src=""content\rename.cfg"" target=""content""/>`r`n"
+    $contentFileText += "    <file src=""content\rename.cfg"" target=""content""/>`r`n"
 }
 $contentFileText += "    <file src=""content\package.cfg"" target=""content""/>`r`n"
 $sourceFileText = ""
 $refFiles | %{$sourceFileText += ("    <file src=""" + $_.Name + """ target=""lib\dnxcore50""/>`r`n")}
 $outputContent = $fileContent -replace "%PackageVersion%", $packageVersion 
 $outputContent = $outputContent -replace "%ReferenceFiles%", $refFileText
- $outputContent = $outputContent -replace "%SourceFiles%", $sourceFileText 
- $outputContent = $outputContent -replace "%ContentFiles%", $contentFileText
+$outputContent = $outputContent -replace "%SourceFiles%", $sourceFileText 
+$outputContent = $outputContent -replace "%ContentFiles%", $contentFileText
 Set-Content -Value $outputContent -Path $nuspecOutput
 
 Write-Host "Creating nuget package..."
