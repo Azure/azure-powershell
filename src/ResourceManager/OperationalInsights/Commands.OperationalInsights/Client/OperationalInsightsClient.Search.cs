@@ -35,9 +35,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             return response.StatusCode;
         }
 
-        public virtual PSSearchGetSavedSearchResponse GetSavedSearch(string savedSearchId)
+        public virtual PSSearchGetSavedSearchResponse GetSavedSearch(string resourceGroupName, string workspaceName, string savedSearchId)
         {
-            SearchGetSavedSearchResponse response = OperationalInsightsManagementClient.Search.GetSavedSearch(savedSearchId);
+            SearchGetSavedSearchResponse response = OperationalInsightsManagementClient.Search.GetSavedSearch(resourceGroupName, workspaceName, savedSearchId);
             PSSearchGetSavedSearchResponse searchResponse = new PSSearchGetSavedSearchResponse(response);
             return searchResponse;
         }
@@ -49,9 +49,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             return searchResponses;
         }
 
-        public virtual PSSearchGetSearchResultsResponse GetSavedSearchResults(string savedSearchId)
+        public virtual PSSearchGetSearchResultsResponse GetSavedSearchResults(string resourceGroupName, string workspaceName, string savedSearchId)
         {
-            SearchGetSearchResultsResponse responses = OperationalInsightsManagementClient.Search.GetSavedSearchResults(savedSearchId);
+            SearchGetSearchResultsResponse responses = OperationalInsightsManagementClient.Search.GetSavedSearchResults(resourceGroupName, workspaceName, savedSearchId);
             PSSearchGetSearchResultsResponse searchResponses = new PSSearchGetSearchResultsResponse(responses);
             return searchResponses;
         }
@@ -82,9 +82,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             return searchResponse;
         }
 
-        public virtual PSSearchGetSearchResultsResponse GetSearchResultsUpdate(string id)
+        public virtual PSSearchGetSearchResultsResponse GetSearchResultsUpdate(string resourceGroupName, string workspaceName, string id)
         {
-            SearchGetSearchResultsResponse response = OperationalInsightsManagementClient.Search.UpdateSearchResults(id);
+            SearchGetSearchResultsResponse response = OperationalInsightsManagementClient.Search.UpdateSearchResults(resourceGroupName, workspaceName, id);
             PSSearchGetSearchResultsResponse searchResponse = new PSSearchGetSearchResultsResponse(response);
             return searchResponse;
         }

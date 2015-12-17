@@ -30,8 +30,9 @@ function Test-SearchGetSearchResultsAndUpdate
 	Assert-NotNull $searchResult.Value
 	Assert-AreEqual $searchResult.Value.Count $top
 
-	$id = $searchResult.Id
-	$updatedResult = Get-AzureRmOperationalInsightsSearchResultsUpdate -Id $id
+	$idArray = $searchResult.Id.Split("/")
+	$id = $idArray[$idArray.Length-1]
+	$updatedResult = Get-AzureRmOperationalInsightsSearchResultsUpdate -ResourceGroupName $rgname -WorkspaceName $wsname -Id $id
 	
 	Assert-NotNull $updatedResult
 	Assert-NotNull $updatedResult.Metadata
@@ -68,8 +69,10 @@ function Test-SearchGetSavedSearchesAndResults
 	Assert-NotNull $savedSearches
 	Assert-NotNull $savedSearches.Value
 	
-	$id = $savedSearches.Value[0].Id
-	$savedSearch = Get-AzureRmOperationalInsightsSavedSearch -SavedSearchId $id
+	$idArray = $savedSearches.Value[0].Id.Split("/")
+	$id = $idArray[$idArray.Length-1]
+
+	$savedSearch = Get-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname -SavedSearchId $id
 
 	Assert-NotNull $savedSearch
 	Assert-NotNull $savedSearch.ETag
@@ -77,7 +80,7 @@ function Test-SearchGetSavedSearchesAndResults
 	Assert-NotNull $savedSearch.Properties
 	Assert-NotNull $savedSearch.Properties.Query
 
-	$savedSearchResult = Get-AzureRmOperationalInsightsSavedSearchResults -SavedSearchId $id
+	$savedSearchResult = Get-AzureRmOperationalInsightsSavedSearchResults -ResourceGroupName $rgname -WorkspaceName $wsname -SavedSearchId $id
 
 	Assert-NotNull $savedSearchResult
 	Assert-NotNull $savedSearchResult.Metadata
