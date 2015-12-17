@@ -225,4 +225,13 @@
   <data name="ApplicationGatewayUrlPathMapName" xml:space="preserve">
     <value>urlPathMaps</value>
   </data>
+  <data name="InvalidPrimaryIPConfigurationCount" xml:space="preserve">
+    <value>The Nic {0} with multiple IPConfigurations can have one and only one Primary IPConfiguration</value>
+  </data>
+  <data name="IPConfigurationsNullOrEmpty" xml:space="preserve">
+    <value>No IPConfigurations are specified for Nic {0}</value>
+  </data>
+  <data name="UseIPConfigurations" xml:space="preserve">
+    <value>UseIPConfigurations</value>
+  </data>
 </root>

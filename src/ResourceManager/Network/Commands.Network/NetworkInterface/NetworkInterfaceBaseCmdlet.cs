@@ -55,6 +55,52 @@ namespace Microsoft.Azure.Commands.Network
             return true;
         }
 
+        public void SetNetworkInterfaceIpConfiguration(
+            PSNetworkInterfaceIPConfiguration nicIpConfiguration,
+            string privateIpAddress,
+            string subnetId,
+            string publicIpAddressId,
+            List<string> loadBalancerBackendAddressPoolId,
+            List<string> loadBalancerInboundNatRuleId,
+            bool primary
+            )
+        {
+            nicIpConfiguration.PrivateIpAllocationMethod = IPAllocationMethod.Dynamic;
+
+            if (!string.IsNullOrEmpty(privateIpAddress))
+            {
+                nicIpConfiguration.PrivateIpAddress = privateIpAddress;
+                nicIpConfiguration.PrivateIpAllocationMethod = IPAllocationMethod.Static;
+            }
+
+            nicIpConfiguration.Subnet = new PSSubnet();
+            nicIpConfiguration.Subnet.Id = subnetId;
+
+            if (!string.IsNullOrEmpty(publicIpAddressId))
+            {
+                nicIpConfiguration.PublicIpAddress = new PSPublicIpAddress();
+                nicIpConfiguration.PublicIpAddress.Id = publicIpAddressId;
+            }
+
+            if (loadBalancerBackendAddressPoolId != null)
+            {
+                nicIpConfiguration.LoadBalancerBackendAddressPools = new List<PSBackendAddressPool>();
+                foreach (var bepoolId in loadBalancerBackendAddressPoolId)
+                {
+                    nicIpConfiguration.LoadBalancerBackendAddressPools.Add(new PSBackendAddressPool { Id = bepoolId });
+                }
+            }
+
+            if (loadBalancerInboundNatRuleId != null)
+            {
+                nicIpConfiguration.LoadBalancerInboundNatRules = new List<PSInboundNatRule>();
+                foreach (var natruleId in loadBalancerInboundNatRuleId)
+                {
+                    nicIpConfiguration.LoadBalancerInboundNatRules.Add(new PSInboundNatRule { Id = natruleId });
+                }
+            }
+        }
+
         public PSNetworkInterface GetNetworkInterface(string resourceGroupName, string name)
         {
             var nic = this.NetworkInterfaceClient.Get(resourceGroupName, name);

@@ -26,6 +26,9 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
+    using System;
+    using System.Linq;
+
     [Cmdlet(VerbsCommon.New, "AzureRmNetworkInterface"), OutputType(typeof(PSNetworkInterface))]
     public class NewAzureNetworkInterfaceCommand : NetworkInterfaceBaseCmdlet
     {
@@ -51,9 +54,17 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
+
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResourceId",
+            HelpMessage = "The private ip address of the Network Interface " +
+                          "if static allocation is specified.")]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResource",
             HelpMessage = "The private ip address of the Network Interface " +
                           "if static allocation is specified.")]
         public string PrivateIpAddress { get; set; }
@@ -91,6 +102,12 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = "SetByResourceId",
+            HelpMessage = "NetworkSecurityGroupId")]
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "UseIPConfigurations",
             HelpMessage = "NetworkSecurityGroupId")]
         public string NetworkSecurityGroupId { get; set; }
 
@@ -132,10 +149,24 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResource",
+            HelpMessage = "The IpConfiguration name." +
+                          "default value: ipconfig1")]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResourceId",
             HelpMessage = "The IpConfiguration name." +
                           "default value: ipconfig1")]
         [ValidateNotNullOrEmpty]
         public string IpConfigurationName { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "UseIPConfigurations",
+            HelpMessage = "IPConfiguration List to be used on the Network interface")]
+        public List<PSNetworkInterfaceIPConfiguration> IpConfigurations { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -230,47 +261,50 @@ namespace Microsoft.Azure.Commands.Network
             networkInterface.EnableIPForwarding = this.EnableIPForwarding.IsPresent;
             networkInterface.IpConfigurations = new List<PSNetworkInterfaceIPConfiguration>();
 
-            var nicIpConfiguration = new PSNetworkInterfaceIPConfiguration();
-            nicIpConfiguration.Name = string.IsNullOrEmpty(this.IpConfigurationName) ? "ipconfig1" : this.IpConfigurationName;
-            nicIpConfiguration.PrivateIpAllocationMethod = MNM.IPAllocationMethod.Dynamic;
-
-            if (!string.IsNullOrEmpty(this.PrivateIpAddress))
+            if (!string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.UseIPConfigurations))
             {
-                nicIpConfiguration.PrivateIpAddress = this.PrivateIpAddress;
-                nicIpConfiguration.PrivateIpAllocationMethod = MNM.IPAllocationMethod.Static;
+                var nicIpConfiguration = new PSNetworkInterfaceIPConfiguration();
+                nicIpConfiguration.Name = string.IsNullOrEmpty(this.IpConfigurationName)
+                    ? "ipconfig1"
+                    : this.IpConfigurationName;
+
+                // By default it is the primary IpConfig
+
+                this.SetNetworkInterfaceIpConfiguration(
+                    nicIpConfiguration,
+                    this.PrivateIpAddress,
+                    this.SubnetId,
+                    this.PublicIpAddressId,
+                    this.LoadBalancerBackendAddressPoolId,
+                    this.LoadBalancerInboundNatRuleId,
+                    primary: true);
+
+                networkInterface.IpConfigurations.Add(nicIpConfiguration);
             }
-
-            nicIpConfiguration.Subnet = new PSSubnet();
-            nicIpConfiguration.Subnet.Id = this.SubnetId;
-
-            if (!string.IsNullOrEmpty(this.PublicIpAddressId))
+            else
             {
-                nicIpConfiguration.PublicIpAddress = new PSPublicIpAddress();
-                nicIpConfiguration.PublicIpAddress.Id = this.PublicIpAddressId;
+                // We can do more validations if required
+
+                if (this.IpConfigurations == null || !this.IpConfigurations.Any())
+                {
+                    throw new ArgumentException(
+                        string.Format(
+                            Microsoft.Azure.Commands.Network.Properties.Resources.IPConfigurationsNullOrEmpty, this.Name));
+                }
+                if (this.IpConfigurations.Count > 1 &&
+                    this.IpConfigurations.Count(ipconfig => ipconfig.Primary == true) != 1)
+                {
+                    throw new ArgumentException(
+                        string.Format(
+                            Microsoft.Azure.Commands.Network.Properties.Resources.IPConfigurationsNullOrEmpty, this.Name));
+                }
+
+                networkInterface.IpConfigurations.AddRange(this.IpConfigurations);
             }
 
             if (!string.IsNullOrEmpty(this.NetworkSecurityGroupId))
             {
-                networkInterface.NetworkSecurityGroup = new PSNetworkSecurityGroup();
-                networkInterface.NetworkSecurityGroup.Id = this.NetworkSecurityGroupId;
-            }
-
-            if (this.LoadBalancerBackendAddressPoolId != null)
-            {
-                nicIpConfiguration.LoadBalancerBackendAddressPools = new List<PSBackendAddressPool>();
-                foreach (var bepoolId in this.LoadBalancerBackendAddressPoolId)
-                {
-                    nicIpConfiguration.LoadBalancerBackendAddressPools.Add(new PSBackendAddressPool { Id = bepoolId });
-                }
-            }
-
-            if (this.LoadBalancerInboundNatRuleId != null)
-            {
-                nicIpConfiguration.LoadBalancerInboundNatRules = new List<PSInboundNatRule>();
-                foreach (var natruleId in this.LoadBalancerInboundNatRuleId)
-                {
-                    nicIpConfiguration.LoadBalancerInboundNatRules.Add(new PSInboundNatRule { Id = natruleId });
-                }
+                networkInterface.NetworkSecurityGroup = new PSNetworkSecurityGroup { Id = this.NetworkSecurityGroupId };
             }
 
             if (this.DnsServer != null || this.InternalDnsNameLabel != null)
@@ -286,8 +320,6 @@ namespace Microsoft.Azure.Commands.Network
                 }
 
             }
-
-            networkInterface.IpConfigurations.Add(nicIpConfiguration);
 
             var networkInterfaceModel = Mapper.Map<MNM.NetworkInterface>(networkInterface);
             networkInterfaceModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
