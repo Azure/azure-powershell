@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Creates a policy assignment.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmPolicyAssignment"), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.New, "AzureRmPolicyAssignment"), OutputType(typeof(ResourcePolicyAssignment<JToken>))]
     public class NewAzurePolicyAssignmentCmdlet : PolicyAssignmentCmdletBase
     {
         /// <summary>
@@ -51,8 +51,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the policy assignment policy definition parameter.
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The pollicy definition object.")]
-        public PSObject PolicyDefinition { get; set; }
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy definition id object.")]
+        public string PolicyDefinitionId { get; set; }
 
         /// <summary>
         /// Executes the cmdlet.
@@ -60,10 +60,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected override void OnProcessRecord()
         {
             base.OnProcessRecord();
-            if(this.PolicyDefinition.Properties["policyDefinitionId"] == null)
-            {
-                throw new PSInvalidOperationException("The supplied PolicyDefinition object is invalid.");
-            }
             string resourceId = GetResourceId();
             var apiVersion = this.DetermineApiVersion(resourceId: resourceId).Result;
             
@@ -111,7 +107,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 Properties = new PolicyAssignmentProperties
                 {
                     DisplayName = this.DisplayName ?? null,
-                    PolicyDefinitionId = this.PolicyDefinition.Properties["policyDefinitionId"].Value.ToString(),
+                    PolicyDefinitionId = PolicyDefinitionId,
                     Scope = this.Scope
                 }
             };

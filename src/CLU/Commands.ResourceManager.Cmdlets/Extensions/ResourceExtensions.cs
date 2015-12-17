@@ -61,16 +61,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
                 { "Sku", resource.Sku == null ? null : resource.Sku.ToJToken().ToPsObject() },
             };
 
-            var resourceTypeName = resourceType == null && extensionResourceType == null
-                ? null
-                : (resourceType + extensionResourceType).Replace('/', '.');
-
             var psObject =
                 PowerShellUtilities.ConstructPSObject(
-                resourceTypeName,
                 objectDefinition.Where(kvp => kvp.Value != null).SelectManyArray(kvp => new[] { kvp.Key, kvp.Value }));
-
-            psObject.TypeNames.Add(Constants.MicrosoftAzureResource);
+            
             return psObject;
         }
 

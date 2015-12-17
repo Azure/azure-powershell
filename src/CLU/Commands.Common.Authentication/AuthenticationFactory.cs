@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,11 +16,10 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using System;
 using System.Linq;
 using System.Management.Automation;
-using System.Security;
-using Commands.Common.Authentication.Properties;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest;
 using Microsoft.Rest.Azure.Authentication;
+using Commands.Common.Authentication.Properties;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 {

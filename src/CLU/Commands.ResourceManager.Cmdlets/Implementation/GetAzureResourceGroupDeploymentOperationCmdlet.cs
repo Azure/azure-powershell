@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Gets the deployment operation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmResourceGroupDeploymentOperation"), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmResourceGroupDeploymentOperation"), OutputType(typeof(Resource<JToken>))]
     public class GetAzureResourceGroupDeploymentOperationCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 getFirstPage: () => this.GetResources(),
                 getNextPage: nextLink => this.GetNextLink<JObject>(nextLink),
                 cancellationToken: this.CancellationToken,
-                action: resources => this.WriteObject(sendToPipeline: resources.CoalesceEnumerable().SelectArray(resource => resource.ToPsObject()), enumerateCollection: true));
+                action: resources => this.WriteObject(sendToPipeline: resources.CoalesceEnumerable().SelectArray(resource => resource.ToResource()), enumerateCollection: true));
         }
 
         /// <summary>
