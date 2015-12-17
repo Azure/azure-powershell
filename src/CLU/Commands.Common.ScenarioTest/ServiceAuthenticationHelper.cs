@@ -15,15 +15,31 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Examples.Test;
+using Microsoft.Azure.Commands.ScenarioTest;
 
-namespace Microsoft.Azure.Commands.ScenarioTest
+namespace Commands.Common.ScenarioTest
 {
-    public interface IScriptEnvironmentHelper
-    {
-        bool TrySetupScriptEnvironment(TestContext testContext, IClientFactory clientFactory, IDictionary<string, string> settings );
+    public class ServiceAuthenticationHelper : IScriptEnvironmentHelper
+    {    
+        string _spn;
+        string _secret;
+        const string SecretKey = "secret";
+        const string SPNKey = "spn";
+        public ServiceAuthenticationHelper(string spn, string secret)
+        {
+            _spn = spn;
+            _secret = secret;
+        }
+
+        public bool TrySetupScriptEnvironment(TestContext testContext, IClientFactory clientFactory, IDictionary<string, string> settings)
+        {
+            Logger.Instance.WriteMessage($"Logging in using ServicePrincipal: {_spn}");
+            settings[SPNKey] = _spn;
+            settings[SecretKey] = _secret;
+            return true;
+        }
     }
 }

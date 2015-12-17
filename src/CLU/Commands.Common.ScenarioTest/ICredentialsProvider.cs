@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.ScenarioTest;
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,17 +12,14 @@ using Microsoft.Azure.Commands.ScenarioTest;
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Rest;
+using Microsoft.Azure.Commands.ScenarioTest;
 
-namespace Microsoft.Azure.Commands.Examples.Test
+namespace Commands.Common.ScenarioTest
 {
-    public interface ITestContext
+    public interface ICredentialsProvider
     {
-        AzureContext Context { get; }
-        string TestExecutableName { get; }
-        string TestScriptSuffix { get; }
-        string TestScriptDirectory { get; }
-        string ExecutionDirectory { get; }
-        IEnumerable<IScriptEnvironmentHelper> EnvironmentHelpers { get; }
+        void Initialize(string key);
+        string LoginScriptName { get; }
+        IScriptEnvironmentHelper EnvironmentProvider { get; }
     }
 }

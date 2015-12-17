@@ -31,11 +31,10 @@ namespace Microsoft.Azure.Commands.Examples.Test
     public class ExampleScriptRunner
     {
         string _sessionId;
-        static object locker = new object();
         Random _generator;
         string _resourceGroupName;
         IClientFactory _clientFactory = new ClientFactory();
-        ITestContext _context;
+        TestContext _context;
         ResourceManagementClient _client;
         const string DefaultLocation = "westus";
         const string ResourceGroupNameKey = "groupName";
@@ -63,13 +62,15 @@ namespace Microsoft.Azure.Commands.Examples.Test
             set { _clientFactory = value; }
         }
 
-        public ITestContext TestContext
+        public TestContext TestContext
         {
             get { return _context; }
             set { _context = value; }
         }
 
-        public void RunScript(string testName)
+        public string ScriptOutput { get; protected set; }
+
+        public string RunScript(string testName)
         {
             var testDirectory = Path.GetFullPath(_context.TestScriptDirectory);
             var executionDirectory = Path.GetFullPath(_context.ExecutionDirectory);
@@ -106,6 +107,7 @@ namespace Microsoft.Azure.Commands.Examples.Test
                     }
                     int statusCode = process.StartAndWaitForExit();
                     Assert.Equal(0, statusCode);
+                    return process.Output;
                 }
             }
             finally

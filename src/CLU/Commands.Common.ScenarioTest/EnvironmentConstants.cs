@@ -15,15 +15,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Examples.Test;
 
-namespace Microsoft.Azure.Commands.ScenarioTest
+namespace Commands.Common.ScenarioTest
 {
-    public interface IScriptEnvironmentHelper
+    public static class EnvironmentConstants
     {
-        bool TrySetupScriptEnvironment(TestContext testContext, IClientFactory clientFactory, IDictionary<string, string> settings );
+        public const string UsernameKey = "Username";
+        public const string PasswordKey = "Password";
+        public const string ServicePrincipalKey = "ServicePrincipal";
     }
 }

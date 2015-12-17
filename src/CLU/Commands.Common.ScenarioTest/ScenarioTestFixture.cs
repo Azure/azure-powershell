@@ -13,21 +13,43 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Examples.Test;
+using Microsoft.Azure.Commands.Models;
+using Moq.Protected;
+using Newtonsoft.Json;
 
 namespace Commands.Common.ScenarioTest
 {
     public class ScenarioTestFixture
     {
+        protected EnvironmentContextFactory _contextFactory;
         public ScenarioTestFixture()
         {
             Generator = new Random();
             SessionId = $"{Generator.Next(10000, 99999)}";
-            var helper = new ExampleScriptRunner( Generator, SessionId) {TestContext = new EnvironmentTestContext("lib")};
-            helper.RunScript("loginPassword");
+            var credentials = new EnvironmentCredentialsProvider();
+            credentials.Initialize("TestCredentials");
+            _contextFactory = new EnvironmentContextFactory(credentials);
+            var helper = GetRunner("lib");
+            var profileText = helper.RunScript(credentials.LoginScriptName);
+            var profile = JsonConvert.DeserializeObject<PSAzureProfile>(profileText);
+            AzureContext = (AzureContext) (profile.Context);
         }
 
         public string SessionId { get; protected set; }
         public Random Generator { get; protected set; }
+
+        public ExampleScriptRunner GetRunner(string directoryName)
+        {
+            var context = _contextFactory.GetTestContext(directoryName);
+            context.Context = AzureContext;
+            return new ExampleScriptRunner(Generator, SessionId)
+            {
+                TestContext = context
+            };
+        }
+
+        public AzureContext AzureContext { get; protected set;}
     }
 }

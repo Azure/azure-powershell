@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Text;
 using System.Threading;
 using Microsoft.Azure.Commands.ScenarioTest;
 using Xunit;
@@ -29,6 +30,8 @@ namespace Microsoft.Azure.Commands.Examples.Test
         /// </summary>
 
         string _executableName = "bash.exe";
+
+        StringBuilder _processOutput = new StringBuilder();
 
         string _arguments;
         string _directory;
@@ -45,6 +48,8 @@ namespace Microsoft.Azure.Commands.Examples.Test
             get { return _executableName; }
             set { _executableName = value; }
         }
+
+        public string Output { get { return _processOutput.ToString(); }}
 
         public ProcessHelper(string directory, string executableName, params string[] arguments)
         {
@@ -174,6 +179,7 @@ namespace Microsoft.Azure.Commands.Examples.Test
         private void ProcessOutput(object sender, DataReceivedEventArgs e)
         {
             Logger.Instance.WriteMessage(e.Data);
+            _processOutput.Append(e.Data);
         }
 
         private void EndProcess()

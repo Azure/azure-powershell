@@ -19,40 +19,38 @@ using Microsoft.Azure.Commands.Examples.Test;
 
 namespace Microsoft.Azure.Commands.ScenarioTest
 {
-    public class RandomNameEnvironmentHelper : IScriptEnvironmentHelper
+    public class UserAuthenticationHelper : IScriptEnvironmentHelper
     {
-        Random _generator;
-        string _environmentKey;
+        public const string UsernameVariable = "azureUser";
+        public const string PasswordVariable = "password";
+        string _username;
+        string _password;
 
-        public RandomNameEnvironmentHelper(string environmentKey) : this(new Random(), environmentKey)
+        public UserAuthenticationHelper(string username, string password)
         {
-        }
-
-        public RandomNameEnvironmentHelper(int seed, string environmentKey) : this(new Random(seed), environmentKey)
-        {
-        }
-        public RandomNameEnvironmentHelper(Random generator, string environmentKey)
-        {
-            _generator = generator;
-            _environmentKey = environmentKey;
-        }
-
-        public string CreateRandomName()
-        {
-            return "" + _generator.Next(10000, 99999);
+            _username = username;
+            _password = password;
         }
 
         public bool TrySetupScriptEnvironment(TestContext testContext, IClientFactory clientFactory, IDictionary<string, string> settings)
         {
+            if (string.IsNullOrWhiteSpace(_username) || string.IsNullOrWhiteSpace(_password))
+            {
+                throw new ArgumentOutOfRangeException("textContext",
+                    "Username and Password must be provided for user accounts");
+            }
+
             if (settings == null)
             {
                 throw new ArgumentNullException("settings");
             }
 
-            var settingValue = CreateRandomName();
-            settings[_environmentKey] = settingValue;
-            Logger.Instance.WriteMessage($"Setting process environment {_environmentKey} = {settingValue}");
+            settings[UsernameVariable] = _username;
+            Logger.Instance.WriteMessage($"Setting process environment {UsernameVariable} = {_username}");
+            settings[PasswordVariable] = _password;
+            Logger.Instance.WriteMessage($"Setting process environment {PasswordVariable} = ***********");
             return true;
+
         }
     }
 }

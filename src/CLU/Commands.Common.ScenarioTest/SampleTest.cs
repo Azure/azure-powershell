@@ -35,7 +35,7 @@ namespace Commands.Common.ScenarioTest
         [Fact]
         public void RunSampleTest()
         {
-            var helper = new ExampleScriptRunner(_collectionState.SessionId) {TestContext = new EnvironmentTestContext("resource-management")};
+            var helper = _collectionState.GetRunner("resource-management");
             helper.RunScript("01-ResourceGroups");
         }
 
