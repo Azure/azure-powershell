@@ -30,7 +30,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         public DataManagementWrapper(int concurrency)
         {
             TransferManager.Configurations.ParallelOperations = concurrency;
-            TransferManager.Configurations.UserAgentSuffix = Microsoft.WindowsAzure.Storage.Shared.Protocol.Constants.HeaderConstants.UserAgent + " " + ApiConstants.UserAgentHeaderValue;
+            TransferManager.Configurations.UserAgentPrefix = ApiConstants.UserAgentHeaderValue;
         }
 
 
