@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 namespace System.Management.Automation
@@ -23,14 +24,15 @@ namespace System.Management.Automation
             if (element != null)
             {
                 string strVal = null;
-
-                if (element.GetType().GetTypeInfo().IsEnum)
-                {
-                    strVal = element.ToString();
-                }
-                else if (element is string)
+                
+                if (element is string)
                 {
                     strVal = element as string;
+                }
+                else if (element.GetType().GetTypeInfo().IsEnum ||
+                         element.GetType().GetTypeInfo().IsValueType)
+                {
+                    strVal = element.ToString();
                 }
 
                 if (strVal != null)
@@ -43,7 +45,12 @@ namespace System.Management.Automation
                 }
             }
 
-            throw new ValidationException("is not one of the valid values");
+            throw new ValidationException(
+                string.Format(
+                    "Cannot validate element '{0}' within ValidValues '{1}'", 
+                    element, 
+                    string.Join(", ", ValidValues.ToArray())
+                    ));
         }
     }
 }
