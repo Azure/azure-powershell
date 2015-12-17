@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Newtonsoft.Json.Linq;
-
+    using Entities.Policy;
     /// <summary>
     /// Base class for policy definition cmdlets.
     /// </summary>
@@ -42,16 +42,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Converts the resource object to policy definition object.
         /// </summary>
         /// <param name="resources">The policy definition resource object.</param>
-        protected PSObject[] GetOutputObjects(params JToken[] resources)
+        protected ResourcePolicyDefinition<JToken>[] GetOutputObjects(params JToken[] resources)
         {
             return resources
                 .CoalesceEnumerable()
                 .Where(resource => resource != null)
                 .SelectArray(resource =>
                 {
-                    var psobject = resource.ToResource().ToPsObject();
-                    psobject.Properties.Add(new PSNoteProperty("PolicyDefinitionId", psobject.Properties["ResourceId"].Value));
-                    return psobject;
+                    var rc = resource.ToResource();
+                    var res = new ResourcePolicyDefinition<JToken>(rc);
+                    res.PolicyDefinitionId = rc.Id;
+                    return res;
                 });
         }
     }
