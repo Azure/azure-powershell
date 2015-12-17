@@ -55,9 +55,9 @@ namespace Microsoft.Azure.Commands.Network
             return true;
         }
 
-        public PSRouteTable GetRouteTable(string resourceGroupName, string name)
+        public PSRouteTable GetRouteTable(string resourceGroupName, string name, string expandResource = null)
         {
-            var routeTable = this.RouteTableClient.Get(resourceGroupName, name);
+            var routeTable = this.RouteTableClient.Get(resourceGroupName, name, expandResource);
 
             var psRouteTable = Mapper.Map<PSRouteTable>(routeTable);
             psRouteTable.ResourceGroupName = resourceGroupName;
