@@ -36,6 +36,10 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Common.General
             }
 
             // TODO: CLU
+            return (
+                (exception is OutOfMemoryException) ||
+                (exception is SEHException)
+                );
             /*
             return (
                 (exception is AccessViolationException) ||
@@ -46,10 +50,6 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Common.General
                 (exception is ThreadAbortException)
                 );
             */
-            return (
-                (exception is OutOfMemoryException) ||
-                (exception is SEHException)
-                );
         }
 
         public static Exception PrepareServerStackForRethrow(

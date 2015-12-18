@@ -94,6 +94,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model
                 if (disposing)
                 {
                     // TODO: CLU
+                    this.reader.Dispose();
                     //this.reader.Close();
                 }
                 if(Parent != null)

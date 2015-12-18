@@ -70,13 +70,13 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
             if (numBytes == 1)
             {
                 // TODO: CLU
+                yield return CompletionPort.SingleOperation;
+                n = this.reader.BaseStream.Read(m_buffer, 0, numBytes);
                 /*
                 this.reader.BaseStream.BeginRead(m_buffer, 0, numBytes, machine.CompletionCallback, null);
                 yield return CompletionPort.SingleOperation;
                 n = this.reader.BaseStream.EndRead(machine.CompletionResult);
                 */
-                yield return CompletionPort.SingleOperation;
-                n = this.reader.BaseStream.Read(m_buffer, 0, numBytes);
                 if (n == -1)
                 {
                     throw new EndOfStreamException();
@@ -87,13 +87,13 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
             do
             {
                 // TODO: CLU
+                yield return CompletionPort.SingleOperation;
+                n = this.reader.BaseStream.Read(m_buffer, bytesRead, numBytes);
                 /*
                 this.reader.BaseStream.BeginRead(m_buffer, bytesRead, numBytes - bytesRead, machine.CompletionCallback, null);
                 yield return CompletionPort.SingleOperation;
                 n = this.reader.BaseStream.EndRead(machine.CompletionResult);
                 */
-                yield return CompletionPort.SingleOperation;
-                n = this.reader.BaseStream.Read(m_buffer, bytesRead, numBytes);
 
                 if (n == 0)
                 {

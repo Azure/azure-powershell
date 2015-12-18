@@ -31,13 +31,17 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model
         {
             return (from p in typeof(T).GetProperties(BindingFlags.Instance | BindingFlags.Public)
                     let vhdPropertyAttributes = p.GetCustomAttributes(typeof(VhdPropertyAttribute), false)
+                    // TODO: CLU
                     let exists = vhdPropertyAttributes.Count() > 0
+                    //let exists = vhdPropertyAttributes.Length > 0
                     let getter = p.GetGetMethod(true)
                     let setter = p.GetSetMethod(true)
                     where exists
                     select new VhdPropertyDescriptor
                                {
+                                   // TODO: CLU
                                    Attribute = (VhdPropertyAttribute)(vhdPropertyAttributes.ElementAt(0)),
+                                   //Attribute = (VhdPropertyAttribute)(vhdPropertyAttributes[0]),
                                    Getter = getter,
                                    Setter = setter
                                }).ToList();

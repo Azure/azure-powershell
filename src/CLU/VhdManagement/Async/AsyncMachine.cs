@@ -657,6 +657,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Common.General
                 if (this.waitHandle != null)
                 {
                     // TODO: CLU
+                    this.waitHandle.Dispose();
                     //this.waitHandle.Close();
                     this.waitHandle = null;
                 }

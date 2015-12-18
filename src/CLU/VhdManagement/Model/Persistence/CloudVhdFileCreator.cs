@@ -52,15 +52,15 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
             destination.Seek(-VhdConstants.VHD_FOOTER_SIZE, SeekOrigin.End);
 
             // TODO: CLU
+            yield return CompletionPort.SingleOperation;
+            destination.Write(buffer, 0, buffer.Length);
+            destination.Flush();
             /*
             destination.BeginWrite(buffer, 0, buffer.Length, machine.CompletionCallback, null);
             yield return CompletionPort.SingleOperation;
             destination.EndWrite(machine.CompletionResult);
             destination.Flush();
             */
-            yield return CompletionPort.SingleOperation;
-            destination.Write(buffer, 0, buffer.Length);
-            destination.Flush();
         }
     }
 }

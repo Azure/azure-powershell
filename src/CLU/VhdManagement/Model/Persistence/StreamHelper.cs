@@ -48,13 +48,13 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
             while (remaining > 0)
             {
                 // TODO: CLU
+                yield return CompletionPort.SingleOperation;
+                var currentRead = stream.Read(buffer, readCount, remaining);
                 /*
                 stream.BeginRead(buffer, readCount, remaining, machine.CompletionCallback, null);
                 yield return CompletionPort.SingleOperation;
                 var currentRead = stream.EndRead(machine.CompletionResult);
                 */
-                yield return CompletionPort.SingleOperation;
-                var currentRead = stream.Read(buffer, readCount, remaining);
                 if (currentRead == 0)
                 {
                     break;

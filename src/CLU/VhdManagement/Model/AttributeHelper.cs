@@ -30,6 +30,12 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model
         public VhdEntityAttribute GetEntityAttribute()
         {
             // TODO: CLU
+            var attributes = type.GetTypeInfo().GetCustomAttributes(typeof(VhdEntityAttribute), false);
+            if (attributes.Count() == 0)
+            {
+                throw new InvalidOperationException(String.Format("Entity must have the attribute:{0}", typeof(VhdEntityAttribute).Name));
+            }
+            return (VhdEntityAttribute)attributes.ElementAt(0);
             /*
             var attributes = type.GetCustomAttributes(typeof(VhdEntityAttribute), false);
             if (attributes.Length == 0)
@@ -38,7 +44,6 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model
             }
             return (VhdEntityAttribute)attributes[0];
             */
-            return null;
         }
 
         public VhdPropertyAttribute GetAttribute(Expression<Func<object>> propertyNameProvider)
@@ -62,9 +67,13 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model
 
             var attributes = from p in type.GetProperties(BindingFlags.Instance | BindingFlags.Public)
                              let vhdPropertyAttributes = p.GetCustomAttributes(typeof(VhdPropertyAttribute), false)
+                             // TODO: CLU
                              let exists = vhdPropertyAttributes.Count() > 0
+                             // let exists = vhdPropertyAttributes.Length > 0
                              where p.Name == propertyName
+                             // TODO: CLU
                              select (VhdPropertyAttribute)(vhdPropertyAttributes.ElementAt(0));
+                             // select (VhdPropertyAttribute)(vhdPropertyAttributes[0]);
             return attributes.FirstOrDefault();
         }
 
@@ -89,9 +98,13 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model
 
             var attributes = from p in type.GetProperties(BindingFlags.Instance | BindingFlags.Public)
                              let vhdPropertyAttributes = p.GetCustomAttributes(typeof(VhdPropertyAttribute), false)
+                             // TODO: CLU
                              let exists = vhdPropertyAttributes.Count() > 0
+                             // let exists = vhdPropertyAttributes.Length > 0
                              where p.Name == propertyName
+                             // TODO: CLU
                              select (VhdPropertyAttribute)(vhdPropertyAttributes.ElementAt(0));
+                             // select (VhdPropertyAttribute)(vhdPropertyAttributes[0]);
             return attributes.FirstOrDefault();
         }
     }
