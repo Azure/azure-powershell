@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ContextCannotBeNull" xml:space="preserve">
-    <value>Context cannot be null.  Please log in using Add-AzureRmAccount.</value>
+    <value>Your credentials have not been set up.  Please add your account.</value>
   </data>
   <data name="DataCollectionActivity" xml:space="preserve">
     <value>Microsoft Azure PowerShell Data Collection Confirmation</value>
@@ -161,7 +161,7 @@ Select Y to enable data collection [Y/N]:</value>
     <value>The provided account {0} does not have access to any subscriptions. Please try logging in with different credentials.</value>
   </data>
   <data name="ProfileCannotBeNull" xml:space="preserve">
-    <value>Profile cannot be null.  Please run Add-AzureRmAccount.</value>
+    <value>Your credentials have not been set up.  Please add your account.</value>
   </data>
   <data name="ResourceProviderRegisterAttempt" xml:space="preserve">
     <value>Attempting to register resource provider '{0}'</value>

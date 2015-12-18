@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Common.Properties {
         }
         
         /// <summary>
-        ///    Looks up a localized string similar to To switch to a different subscription, please use Select-AzureSubscription..
+        ///    Looks up a localized string similar to To switch to a different subscription, please select a new context..
         /// </summary>
         internal static string AddAccountChangeSubscription {
             get {
@@ -1883,7 +1883,7 @@ namespace Microsoft.Azure.Commands.Common.Properties {
         }
         
         /// <summary>
-        ///    Looks up a localized string similar to &quot;There is no current context, please log in using Login-AzureRmAccount for Azure Resource Manager or Add-AzureAccount for Azure Service Management.&quot;.
+        ///    Looks up a localized string similar to &quot;There is no current context, please log in by adding an account.&quot;.
         /// </summary>
         internal static string NoCurrentContextForDataCmdlet {
             get {
