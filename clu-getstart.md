@@ -94,10 +94,10 @@ Testing will consist of scenario tests and unit tests. Scenario tests should be 
 - The ```Commands.Common.ScenarioTest``` project contains classes that enable executing bash scenario tests in Visual Studio, or cross-platform using dnx.
 
 - To implement an xunit bash scenario test you must
-  - Add a ```[TestCollection("SampleTestCollection")]``` attribute to your test class
+  - Add a ```[Collection("SampleCollection")]``` attribute to your test class
   - Add a field to your class of type ```ScenarioTestFixture``` and add a constructor that initializes it
     ```C#
-    [TestCollection("SampleTestCollection")]
+    [Collection("SampleCollection")]
     public class SampleTestClass
     {
         ScenarioTestFixture _fixture;
