@@ -966,8 +966,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             this.ClientRequestId = job.Properties.ActivityId;
             this.State = job.Properties.State;
             this.StateDescription = job.Properties.StateDescription;
-            this.EndTime = job.Properties.EndTime;
-            this.StartTime = job.Properties.StartTime;
+            this.EndTime = job.Properties.EndTime.Value.ToLocalTime();
+            this.StartTime = job.Properties.StartTime.Value.ToLocalTime();
             this.Name = job.Name;
             this.TargetObjectId = job.Properties.TargetObjectId;
             this.TargetObjectName = job.Properties.TargetObjectName;

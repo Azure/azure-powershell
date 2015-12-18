@@ -130,12 +130,12 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
             if (this.StartTime.HasValue)
             {
-                jqp.StartTime = this.StartTime.Value.ToBinary().ToString();
+                jqp.StartTime = this.StartTime.Value.ToUniversalTime().ToString("o");
             }
 
             if (this.EndTime.HasValue)
             {
-                jqp.EndTime = this.EndTime.Value.ToBinary().ToString();
+                jqp.EndTime = this.EndTime.Value.ToUniversalTime().ToString("o");
             }
 
             if (this.State != null)
