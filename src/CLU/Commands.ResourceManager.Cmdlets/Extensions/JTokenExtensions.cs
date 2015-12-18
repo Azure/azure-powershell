@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
         /// </summary>
         /// <param name="jtoken">The <see cref="JObject"/></param>
         /// <param name="objectType">The type of the object.</param>
-        internal static PSObject ToPsObject(this JToken jtoken, string objectType = null)
+        internal static PSObject ToPsObject(this JToken jtoken)
         {
             if (jtoken == null)
             {
@@ -63,12 +63,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
 
             var jobject = (JObject)jtoken;
             var psObject = new PSObject();
-
-            if (!string.IsNullOrWhiteSpace(objectType))
-            {
-                psObject.TypeNames.Add(objectType);
-            }
-
+            
             foreach (var property in jobject.Properties())
             {
                 psObject.Properties.Add(new PSNoteProperty(

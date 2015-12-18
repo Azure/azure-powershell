@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Commands.Common.Authentication.Properties;
 using System;
 using System.Collections.Generic;
-using Commands.Common.Authentication.Properties;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Models
 {
@@ -372,7 +372,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
         public const string USGovernmentSqlDatabaseDnsSuffix = ".database.usgovcloudapi.net";
 
-        public const string AzureActiveDirectoryEndpoint = "https://login.windows.net/";
+        public const string AzureActiveDirectoryEndpoint = "https://login.microsoftonline.com/";
 
         public const string ChinaActiveDirectoryEndpoint = "https://login.chinacloudapi.cn/";
 
