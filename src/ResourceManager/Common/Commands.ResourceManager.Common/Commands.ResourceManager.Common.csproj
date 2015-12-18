@@ -276,6 +276,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="RPRegistrationDelegatingHandler.cs" />
+    <None Include="app.config" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
