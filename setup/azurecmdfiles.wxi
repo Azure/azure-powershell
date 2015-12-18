@@ -1844,9 +1844,6 @@
                         <Component Id="cmp97DCE18753534AD69AF7E7D8D9E44502" Guid="*">
                             <File Id="fil90907D4E09BBD5280D1418AC997233C0" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RedisCache\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll" />
                         </Component>
-                        <Component Id="cmpB32ADC3C63EDA08D6532967360D34D43" Guid="*">
-                            <File Id="filE08640EF6FC290EA9D7AE25D975604D9" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RedisCache\Microsoft.Rest.ClientRuntime.Azure.dll" />
-                        </Component>
                         <Component Id="cmpDE6C92AC2ECEED1C03C8D6728B42EA70" Guid="*">
                             <File Id="filB8103ADF161FDE5CAC0F8629BB53738D" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RedisCache\Microsoft.Rest.ClientRuntime.dll" />
                         </Component>
@@ -5409,7 +5406,6 @@
             <ComponentRef Id="cmpD5D6E28B9232D19A4D3FC543B56214DB" />
             <ComponentRef Id="cmp6DCD11F46E1DCE998C423CD0BC09CD15" />
             <ComponentRef Id="cmp97DCE18753534AD69AF7E7D8D9E44502" />
-            <ComponentRef Id="cmpB32ADC3C63EDA08D6532967360D34D43" />
             <ComponentRef Id="cmpDE6C92AC2ECEED1C03C8D6728B42EA70" />
             <ComponentRef Id="cmpC601580257AEA8DA8522AD7F32FE545C" />
             <ComponentRef Id="cmp1BF396A297DE4BB9EFCE53AA38D5EF41" />
