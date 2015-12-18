@@ -53,7 +53,9 @@
     "Microsoft.Azure.Management.Compute": "11.0.0-prerelease",
     "Microsoft.Azure.Management.Network": "3.0.3-preview",
     "Microsoft.Azure.Management.Storage": "4.0.0-preview",
-    "AutoMapper": "4.1.1"
+    "AutoMapper": "4.1.1",
+    "VhdManagement": "1.0.0-*",
+    "Sync": "1.0.0-*"
   },
   "compilationOptions": {"emitEntryPoint": true}
 }
