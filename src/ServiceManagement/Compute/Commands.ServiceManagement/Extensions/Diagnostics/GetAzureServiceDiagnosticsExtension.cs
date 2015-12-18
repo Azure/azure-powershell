@@ -25,7 +25,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
     [Cmdlet(VerbsCommon.Get, "AzureServiceDiagnosticsExtension"), OutputType(typeof(DiagnosticExtensionContext))]
     public class GetAzureServiceDiagnosticsExtensionCommand : BaseAzureServiceDiagnosticsExtensionCmdlet
     {
-        [Parameter(Position = 0, ValueFromPipelineByPropertyName = true, HelpMessage = "Service Name")]
+        [Parameter(Position = 0, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Service Name")]
+        [ValidateNotNullOrEmpty]
         public override string ServiceName
         {
             get;
@@ -40,11 +41,19 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             set;
         }
 
+        [Parameter(Position = 2, ValueFromPipelineByPropertyName = true, ParameterSetName = RemoveByRolesParameterSet, HelpMessage = ExtensionParameterPropertyHelper.RoleHelpMessage)]
+        public override string[] Role
+        {
+            get;
+            set;
+        }
+
         protected override void ValidateParameters()
         {
             base.ValidateParameters();
             ValidateService();
             ValidateDeployment();
+            ValidateRoles();
         }
 
         public void ExecuteCommand()
@@ -57,6 +66,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
                 (s, r) =>
                 {
                     var extensionRoleList = (from dr in Deployment.Roles
+                                             where Role.Count() == 0 || Role.Contains(dr.RoleName)
                                              select new ExtensionRole(dr.RoleName)).ToList().Union(new ExtensionRole[] { new ExtensionRole() });
 
                     return from role in extensionRoleList
