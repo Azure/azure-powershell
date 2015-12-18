@@ -88,9 +88,53 @@ To test on osx/linux boxes, do #1, open `<repo-root>\drop\clurun`, you should se
 Testing will consist of scenario tests and unit tests. Scenario tests should be written in a form of an example and be available in `.ps1` and `.sh` formats.
 
 #### Scenario Tests
-- Scenario tests should be saved under `./examples` directory and grouped by the package or service area. Each scenario tests should consist of both `.ps1` and `.sh` files and should cover "P0" scenarios.
+- Scenario tests should be saved under `./examples` directory with one directory per package. Each scenario tests should (eventually) consist of both `.ps1` and `.sh` files and should cover "P0" scenarios.
 
-##### Bash Tests
+##### XUnit Automation For Bash Scenario Tests
+- The ```Commands.Common.ScenarioTest``` project contains classes that enable executing bash scenario tests in Visual Studio, or cross-platform using dnx.
+
+- To implement an xunit bash scenario test you must
+  - Add a ```[TestCollection("SampleTestCollection")]``` attribute to your test class
+  - Add a field to your class of type ```ScenarioTestFixture``` and add a constructor that initializes it
+    ```C#
+    [TestCollection("SampleTestCollection")]
+    public class SampleTestClass
+    {
+        ScenarioTestFixture _fixture;
+        public SampleTestClass(ScenarioTestFixture fixture)
+        {
+            _fixture = fixture;
+        }
+    ```
+    - Use the fixture in your test method to create a script runner for your directory and to run your test script:
+    ```C#
+    [Fact]
+    public void RunSampleTest()
+    {
+        _fixture.GetRunner("resource-management").RunScript("01-ResourceGroups");
+    }
+    ```
+    - Set the environment variable 'TestCredentials' to a connection string providing the credentials to use during test execution. Possible fields include:
+    
+      |  Field        |  Description  |
+      | ------------- |:-------------|
+      |  Username     | an OrgId user name |
+      | ServicePrincipal | a service principal name |
+      | Password      | the password or application secret to sue for authentication |
+      | TenantId      | (required for Service authentication) The tenant guid to authenticate against |
+      | SubscriptionID | (optional) Selects a particular subscription by id.  If not provided, the first listed subscription will be selected |
+    - The infrastructure automatically generates a resource group name and assigns the value to the bash variable ```"$resourceGroupName"```.  If your scripts require additional variables, you can add these to your environment before running tests, or you can generate values using the ScriptRunner (for the tests using that runner).
+    ```C#
+        runner.EnvironmentVariables.Add("myVariableName", runner.GenerateName("myres"));
+    ```
+    - Tests can be executed in vs, or by runnign ```dnx test project.json```.  If you execute dnx test from the project directory, it will work without modification and a log file for each script will be written to the test results directory ```..\TestResults```.  If you execute dnx test from a different directory, you must set the following environment variables to provide the path to the examples directory and where to write log files:
+    
+      |  Environment Variable  |  Description  |
+      | ------------- |:-------------|
+      |  ExamplesDirectory     | The path to the 'examples' directory ($pshome/examples) |
+      | TestDirectory | The path to the directory where logs will be written |
+      
+##### Running Bash Tests using Bash shell
 - Bash tests should be runnable from bash shell in windows/linux/mac environments.
 - To manually run the tests; please set the following envt. variables for authentication and run `./examples/lib/testrunner.sh`
    ```bash
