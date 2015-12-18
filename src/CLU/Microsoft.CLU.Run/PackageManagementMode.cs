@@ -548,7 +548,7 @@ namespace Microsoft.CLU.Run
                     "  export CmdletSessionID=$PPID",
                     "fi",
                     "SCRIPTPATH=$(dirname \"$0\")",
-                    $"$SCRIPTPATH/clurun -s {scriptName} -r $SCRIPTPATH/{Path.GetFileName(cfgPath)} $*"
+                    $"$SCRIPTPATH/clurun -s {scriptName} -r $SCRIPTPATH/{Path.GetFileName(cfgPath)} \"$@\""
                 });
                 System.Diagnostics.Process.Start("chmod", $"777 {scriptPath}");
             }
