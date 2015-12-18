@@ -23,6 +23,7 @@
     "Commands.ScenarioTests.ResourceManager.Common": "",
     "Microsoft.Azure.Commands.Profile": "",
     "Microsoft.Azure.Management.Resources": "3.3.0-preview",
+    "Microsoft.Extensions.Logging.Console": "1.0.0-rc1-final",
     "Microsoft.IdentityModel.Clients.ActiveDirectory": "3.6.212041202-alpha",
     "Microsoft.Rest.ClientRuntime": "1.8.0",
     "Microsoft.Rest.ClientRuntime.Azure": "2.5.1",
