@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
-        ///    Looks up a localized string similar to Your Microsoft Azure credential in the Windows PowerShell session has expired. Please log in again. .
+        ///    Looks up a localized string similar to Your Microsoft Azure credential has expired. Please log in again..
         /// </summary>
         internal static string ExpiredRefreshToken {
             get {

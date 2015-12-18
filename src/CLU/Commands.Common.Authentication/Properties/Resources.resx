@@ -139,7 +139,7 @@
     <value>The environment name '{0}' is not found.</value>
   </data>
   <data name="ExpiredRefreshToken" xml:space="preserve">
-    <value>Your Microsoft Azure credential in the Windows PowerShell session has expired. Please log in again. </value>
+    <value>Your Microsoft Azure credential has expired. Please log in again.</value>
   </data>
   <data name="FilePathIsNotValid" xml:space="preserve">
     <value>File path is not valid</value>
