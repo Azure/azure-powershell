@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Position = 3, HelpMessage = "Force confirmation of the removal of the configuration")]
+        [Parameter(Position = 3, HelpMessage = "Force confirmation of the removal of the Node configuration")]
         public SwitchParameter Force { get; set; }
 
         /// <summary>
