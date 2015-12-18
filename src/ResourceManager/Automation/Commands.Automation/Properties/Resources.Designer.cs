@@ -556,7 +556,7 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Automation {0} ? This action doesn&apos;t remove DSC node configurations under this DSC configuration..
+        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Automation {0}? Note: Any DSC node configurations under this DSC configuration will not be removed..
         /// </summary>
         internal static string RemovingAzureAutomationDscConfigurationWarning {
             get {
