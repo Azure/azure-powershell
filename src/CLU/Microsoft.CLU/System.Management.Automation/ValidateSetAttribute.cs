@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 
@@ -32,7 +33,29 @@ namespace System.Management.Automation
                 else if (element.GetType().GetTypeInfo().IsEnum ||
                          element.GetType().GetTypeInfo().IsValueType)
                 {
-                    strVal = element.ToString();
+                    var cultureIndependentStringify = element.GetType()
+                                                           .GetTypeInfo()
+                                                           .GetDeclaredMethods("ToString")
+                                                           .Where(m =>
+                                                           {
+                                                               var parameters = m.GetParameters();
+                                                               if (parameters != null &&
+                                                                   parameters.Count() == 1 &&
+                                                                   parameters.First().ParameterType == typeof(IFormatProvider))
+                                                               {
+                                                                   return true;
+                                                               }
+                                                               return false;
+                                                           }).FirstOrDefault();
+
+                    if (cultureIndependentStringify != null)
+                    {
+                        strVal = (string)cultureIndependentStringify.Invoke(element, new[] { CultureInfo.InvariantCulture });
+                    }
+                    else
+                    {
+                        strVal = element.ToString();
+                    }
                 }
 
                 if (strVal != null)
