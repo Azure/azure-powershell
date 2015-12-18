@@ -18,8 +18,8 @@ using Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model;
 
 namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerCommunicationLink", 
-        ConfirmImpact = ConfirmImpact.None)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerCommunicationLink",
+        ConfirmImpact = ConfirmImpact.None), OutputType(typeof(AzureSqlServerCommunicationLinkModel))]
     public class GetAzureSqlServerCommunicationLink : AzureSqlServerCommunicationLinkCmdletBase
     {
         /// <summary>

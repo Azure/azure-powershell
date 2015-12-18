@@ -21,8 +21,8 @@ using Microsoft.Azure.Commands.Sql.Properties;
 namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Cmdlet
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRmSqlServerCommunicationLink",
-        SupportsShouldProcess = true, 
-        ConfirmImpact = ConfirmImpact.High)]
+        SupportsShouldProcess = true,
+        ConfirmImpact = ConfirmImpact.High), OutputType(typeof(AzureSqlServerCommunicationLinkModel))]
     public class RemoveAzureSqlServerCommunicationLink : AzureSqlServerCommunicationLinkCmdletBase
     {
         /// <summary>

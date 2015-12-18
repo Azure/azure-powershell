@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Cmdlet
     /// Cmdlet to create a new Azure Sql Database server communication link
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRmSqlServerCommunicationLink",
-        ConfirmImpact = ConfirmImpact.Medium)]
+        ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlServerCommunicationLinkModel))]
     public class SetAzureSqlServerCommunicationLink : AzureSqlServerCommunicationLinkCmdletBase
     {
         /// <summary>
