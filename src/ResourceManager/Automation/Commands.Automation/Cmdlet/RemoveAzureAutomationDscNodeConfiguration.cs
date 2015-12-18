@@ -28,13 +28,16 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets the Configuration name.
         /// </summary>
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Node configuration name.")]
+            HelpMessage = "The node configuration name.")]
         [Alias("NodeConfigurationName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Position = 3, HelpMessage = "Force confirmation of the removal of the Node configuration")]
+        [Parameter(Position = 3, HelpMessage = "Force confirmation of the removal of the node configuration")]
         public SwitchParameter Force { get; set; }
+
+        [Parameter(Position = 4, HelpMessage = "Delete even if the node configuration is mapped to a node")]
+        public SwitchParameter IgnoreNodeMappings { get; set; }
 
         /// <summary>
         /// Execute this cmdlet.
@@ -44,13 +47,14 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         {
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Resources.RemovingAzureAutomationResourceWarning, "DSC NodeConfiguration"),
-                string.Format(Resources.RemoveAzureAutomationResourceDescription, "DSC NodeConfiguration"),
+                string.Format(Resources.RemovingAzureAutomationResourceWarning, "DSC node configuration"),
+                string.Format(Resources.RemoveAzureAutomationResourceDescription, "DSC node configuration"),
                 Name,
                 () => this.AutomationClient.DeleteNodeConfiguration(
                     this.ResourceGroupName,
                     this.AutomationAccountName,
-                    this.Name));
+                    this.Name,
+                    IgnoreNodeMappings.IsPresent));
         }
     }
 }

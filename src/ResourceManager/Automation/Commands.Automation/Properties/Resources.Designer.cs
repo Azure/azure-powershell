@@ -97,6 +97,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Node configuration is mapped a node. Specify IgnoreNodeMappings to delete the node configuration {0}..
+        /// </summary>
+        internal static string CannotDeleteNodeConfiguration {
+            get {
+                return ResourceManager.GetString("CannotDeleteNodeConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The certificate already exists. Certificate name: {0}..
         /// </summary>
         internal static string CertificateAlreadyExists {

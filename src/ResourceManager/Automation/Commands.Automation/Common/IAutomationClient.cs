@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         NodeConfiguration CreateNodeConfiguration(string resourceGroupName, string automationAccountName, string sourcePath, string nodeConfiguraionName, bool overWrite);
 
-        void DeleteNodeConfiguration(string resourceGroupName, string automationAccountName, string name);
+        void DeleteNodeConfiguration(string resourceGroupName, string automationAccountName, string name, bool ignoreNodeMappings);
         #endregion
 
         #region Configurations

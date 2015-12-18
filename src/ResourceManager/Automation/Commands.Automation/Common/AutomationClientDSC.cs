@@ -591,7 +591,7 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
 
                 IEnumerable<AutomationManagement.Models.DscNode> dscNodes;
 
-                if (!String.IsNullOrEmpty(status))
+                if (!string.IsNullOrEmpty(status))
                 {
                     dscNodes = AutomationManagementClient.ContinuationTokenHandler(
                         skipToken =>
@@ -1285,17 +1285,31 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
             }
         }
 
-        public void DeleteNodeConfiguration(string resourceGroupName, string automationAccountName, string name)
+        public void DeleteNodeConfiguration(string resourceGroupName, string automationAccountName, string name, bool ignoreNodeMappings)
         {
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
             Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
-            Requires.Argument("NodeConfigurationname", name).NotNull();
+            Requires.Argument("NodeConfigurationName", name).NotNull();
 
             using (var request = new RequestSettings(this.automationManagementClient))
             {
                 try
                 {
-                    this.automationManagementClient.NodeConfigurations.Delete(resourceGroupName, automationAccountName, name);
+                    if (ignoreNodeMappings)
+                    {
+                        this.automationManagementClient.NodeConfigurations.Delete(resourceGroupName, automationAccountName,
+                            name);
+                    }
+                    else
+                    {
+                        var nodeList = this.ListDscNodesByNodeConfiguration(resourceGroupName, automationAccountName, name, null);
+                        if (nodeList.Any())
+                        {
+                            throw new ResourceNotFoundException(
+                                typeof(Model.NodeConfiguration),
+                                string.Format(CultureInfo.CurrentCulture, Resources.CannotDeleteNodeConfiguration, name));
+                        }
+                    }
                 }
                 catch (CloudException cloudException)
                 {
@@ -1309,6 +1323,7 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
                 }
             }
         }
+
         #endregion
 
         #region dsc reports
