@@ -1285,6 +1285,30 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
             }
         }
 
+        public void DeleteNodeConfiguration(string resourceGroupName, string automationAccountName, string name)
+        {
+            Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
+            Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
+            Requires.Argument("NodeConfigurationname", name).NotNull();
+
+            using (var request = new RequestSettings(this.automationManagementClient))
+            {
+                try
+                {
+                    this.automationManagementClient.NodeConfigurations.Delete(resourceGroupName, automationAccountName, name);
+                }
+                catch (CloudException cloudException)
+                {
+                    if (cloudException.Response.StatusCode == HttpStatusCode.NotFound)
+                    {
+                        throw new ResourceNotFoundException(
+                            typeof(Model.NodeConfiguration), 
+                            string.Format(CultureInfo.CurrentCulture, Resources.NodeConfigurationNotFound, name));
+                    }
+                    throw;
+                }
+            }
+        }
         #endregion
 
         #region dsc reports
