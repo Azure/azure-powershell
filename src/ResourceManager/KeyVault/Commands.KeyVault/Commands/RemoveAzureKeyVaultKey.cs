@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;

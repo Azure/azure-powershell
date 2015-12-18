@@ -23,7 +23,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzurePublicIpAddress"), OutputType(typeof(PSPublicIpAddress))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmPublicIpAddress"), OutputType(typeof(PSPublicIpAddress))]
     public class SetAzurePublicIpAddressCommand : PublicIpAddressBaseCmdlet
     {
         [Parameter(
@@ -42,8 +42,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // Map to the sdk object
-            var publicIpModel = Mapper.Map<MNM.PublicIpAddress>(this.PublicIpAddress);
-            publicIpModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.PublicIpAddressType;
+            var publicIpModel = Mapper.Map<MNM.PublicIPAddress>(this.PublicIpAddress);
             publicIpModel.Tags = TagsConversionHelper.CreateTagDictionary(this.PublicIpAddress.Tag, validate: true);
 
             this.PublicIpAddressClient.CreateOrUpdate(this.PublicIpAddress.ResourceGroupName, this.PublicIpAddress.Name, publicIpModel);

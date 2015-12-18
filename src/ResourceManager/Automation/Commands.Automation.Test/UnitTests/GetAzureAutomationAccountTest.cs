@@ -18,14 +18,14 @@ using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Moq;
-
-namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
+using Moq; 
+namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 {
     [TestClass]
-    public class GetAzureAutomationAccountTest : TestBase
+    public class GetAzureAutomationAccountTest : RMTestBase
     {
         private Mock<IAutomationClient> mockAutomationClient;
 
@@ -55,6 +55,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             this.mockAutomationClient.Setup(f => f.ListAutomationAccounts(resourceGroupName, ref nextLink)).Returns((string a, string b) => new List<AutomationAccount>());
 
             // Test
+            this.cmdlet.ResourceGroupName = resourceGroupName;
             this.cmdlet.ExecuteCmdlet();
 
             // Assert

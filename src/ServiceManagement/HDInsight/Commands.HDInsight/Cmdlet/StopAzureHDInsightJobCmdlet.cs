@@ -123,6 +123,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         /// <inheritdoc />
         protected override void EndProcessing()
         {
+            this.WriteWarning(string.Format(AzureHdInsightPowerShellConstants.AsmWarning, "Stop-AzureRmHDInsightJob"));
             try
             {
                 this.command.Logger = this.Logger;

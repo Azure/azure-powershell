@@ -260,6 +260,8 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         }
 
         [Parameter(Position = 19, Mandatory = false, HelpMessage = "Rule for SSL errors with HDInsight client.",
+            ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByConfigWithSpecificSubscriptionCredentials)]
+        [Parameter(Position = 19, Mandatory = false, HelpMessage = "Rule for SSL errors with HDInsight client.",
             ParameterSetName = AzureHdInsightPowerShellConstants.ParameterSetClusterByNameWithSpecificSubscriptionCredentials)]
         public bool IgnoreSslErrors
         {
@@ -434,6 +436,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         /// <inheritdoc />
         protected override void EndProcessing()
         {
+            this.WriteWarning(string.Format(AzureHdInsightPowerShellConstants.AsmWarning, "New-AzureRmHDInsightCluster"));
             DateTime start = DateTime.Now;
             string msg = string.Format(CultureInfo.CurrentCulture, "Create Cluster Started : {0}", start.ToString(CultureInfo.CurrentCulture));
             this.Logger.Log(Severity.Informational, Verbosity.Detailed, msg);

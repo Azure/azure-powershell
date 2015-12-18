@@ -26,9 +26,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Creates azure automation accounts based on automation account name and location.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureAutomationAccount")]
+    [Cmdlet(VerbsCommon.New, "AzureRmAutomationAccount")]
     [OutputType(typeof(AutomationAccount))]
-    public class NewAzureAutomationAccount : AzurePSCmdlet
+    public class NewAzureAutomationAccount : ResourceManager.Common.AzureRMCmdlet
     {
         /// <summary>
         /// The automation client.
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         {
             get
             {
-                return this.automationClient = this.automationClient ?? new AutomationClient(Profile, Profile.Context.Subscription);
+                return this.automationClient = this.automationClient ?? new AutomationClient(DefaultProfile.Context);
             }
 
             set

@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.Properties;
 
-    [Cmdlet(VerbsCommon.Remove, "AzureApiManagement"), OutputType(typeof (bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmApiManagement"), OutputType(typeof (bool))]
     public class RemoveAzureApiManagement : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -47,12 +47,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         public override void ExecuteCmdlet()
         {
             var actionDescription = string.Format(
-                    CultureInfo.InvariantCulture,
+                    CultureInfo.CurrentCulture,
                     Resources.RemoveAzureApiManagementDescription,
                     Name);
 
             var actionWarning = string.Format(
-                CultureInfo.InvariantCulture,
+                CultureInfo.CurrentCulture,
                 Resources.RemoveAzureApiManagementWarning,
                 Name);
 

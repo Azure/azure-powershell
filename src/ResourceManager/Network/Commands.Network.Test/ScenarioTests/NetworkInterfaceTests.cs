@@ -17,7 +17,7 @@ using Xunit;
 
 namespace Commands.Network.Test.ScenarioTests
 {
-    public class NetworkInterfaceTests
+    public class NetworkInterfaceTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -52,6 +52,27 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestNetworkInterfaceSet()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceSet");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNetworkInterfaceIDns()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceIDns");
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNetworkInterfaceEnableIPForwarding()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceEnableIPForwarding");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNetworkInterfaceExpandResource()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceExpandResource");
         }
     }
 }

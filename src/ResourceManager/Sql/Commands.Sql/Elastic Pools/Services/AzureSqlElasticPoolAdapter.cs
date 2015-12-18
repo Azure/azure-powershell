@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureProfile Profile { get; set; }
+        public AzureContext Context { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure Subscription
@@ -50,11 +50,11 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// </summary>
         /// <param name="profile">The current azure profile</param>
         /// <param name="subscription">The current azure subscription</param>
-        public AzureSqlElasticPoolAdapter(AzureProfile Profile, AzureSubscription subscription)
+        public AzureSqlElasticPoolAdapter(AzureContext context)
         {
-            this._subscription = subscription;
-            this.Profile = Profile;
-            Communicator = new AzureSqlElasticPoolCommunicator(Profile, subscription);
+            _subscription = context.Subscription;
+            Context = context;
+            Communicator = new AzureSqlElasticPoolCommunicator(Context);
         }
 
         /// <summary>
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <returns></returns>
         public string GetServerLocation(string resourceGroupName, string serverName)
         {
-            AzureSqlServerAdapter serverAdapter = new AzureSqlServerAdapter(Profile, _subscription);
+            AzureSqlServerAdapter serverAdapter = new AzureSqlServerAdapter(Context);
             var server = serverAdapter.GetServer(resourceGroupName, serverName);
             return server.Location;
         }

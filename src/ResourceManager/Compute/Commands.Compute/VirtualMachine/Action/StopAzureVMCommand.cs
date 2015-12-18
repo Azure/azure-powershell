@@ -22,18 +22,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsLifecycle.Stop, ProfileNouns.VirtualMachine)]
+    [Cmdlet(VerbsLifecycle.Stop, ProfileNouns.VirtualMachine, DefaultParameterSetName = ResourceGroupNameParameterSet)]
     [OutputType(typeof(PSComputeLongRunningOperation))]
-    public class StopAzureVMCommand : VirtualMachineBaseCmdlet
+    public class StopAzureVMCommand : VirtualMachineActionBaseCmdlet
     {
-        [Parameter(
-           Mandatory = true,
-           Position = 0,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
         [Parameter(
            Mandatory = true,
            Position = 1,
@@ -58,25 +50,27 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            if (this.Force.IsPresent
-             || this.ShouldContinue(Properties.Resources.VirtualMachineStoppingConfirmation, Properties.Resources.VirtualMachineStoppingCaption))
+            ExecuteClientAction(() =>
             {
-                Action<Func<string, string, ComputeLongRunningOperationResponse>> call = f =>
+                if (this.Force.IsPresent || this.ShouldContinue(Microsoft.Azure.Commands.Compute.Properties.Resources.VirtualMachineStoppingConfirmation, Microsoft.Azure.Commands.Compute.Properties.Resources.VirtualMachineStoppingCaption))
                 {
-                    var op = f(this.ResourceGroupName, this.Name);
-                    var result = Mapper.Map<PSComputeLongRunningOperation>(op);
-                    WriteObject(result);
-                };
+                    Action<Func<string, string, ComputeLongRunningOperationResponse>> call = f =>
+                    {
+                        var op = f(this.ResourceGroupName, this.Name);
+                        var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+                        WriteObject(result);
+                    };
 
-                if (this.StayProvisioned)
-                {
-                    call(this.VirtualMachineClient.PowerOff);
+                    if (this.StayProvisioned)
+                    {
+                        call(this.VirtualMachineClient.PowerOff);
+                    }
+                    else
+                    {
+                        call(this.VirtualMachineClient.Deallocate);
+                    }
                 }
-                else
-                {
-                    call(this.VirtualMachineClient.Deallocate);
-                }
-            }
+            });
         }
     }
 }

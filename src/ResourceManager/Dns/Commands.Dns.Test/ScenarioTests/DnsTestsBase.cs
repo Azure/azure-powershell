@@ -12,21 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+using Microsoft.Azure.Test.HttpRecorder;
+
 namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 {
-    using System; 
-    using System.Linq; 
-    using Microsoft.Azure.Common.Authentication; 
-    using Microsoft.Azure.Gallery; 
-    using Microsoft.Azure.Management.Authorization; 
-    using Microsoft.Azure.Management.Resources; 
-    using Microsoft.Azure.Subscriptions.Csm; 
-    using Microsoft.Azure.Test; 
+    using System;
+    using System.Linq;
+    using Microsoft.Azure.Common.Authentication;
+    using Microsoft.Azure.Gallery;
+    using Microsoft.Azure.Management.Authorization;
+    using Microsoft.Azure.Management.Resources;
+    using Microsoft.Azure.Test;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Microsoft.Azure.Management.Dns;
+    using Microsoft.Azure.Subscriptions;
+    using WindowsAzure.Commands.Test.Utilities.Common;
 
-
-    public class DnsTestsBase 
+    public class DnsTestsBase : RMTestBase
     { 
         private CSMTestEnvironmentFactory csmTestFactory; 
 
@@ -105,7 +108,11 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
             Action cleanup, 
             string callingClassType, 
             string mockName) 
-        { 
+        {
+            Dictionary<string, string> d = new Dictionary<string, string>();
+            d.Add("Microsoft.Authorization", null);
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
+
             using (UndoContext context = UndoContext.Current) 
             { 
                 context.Start(callingClassType, mockName); 
@@ -128,14 +135,13 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 
                 string callingClassName = callingClassType 
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries) 
-                                        .Last(); 
+                                        .Last();
 
 
-                this.helper.SetupModules( 
-                    AzureModule.AzureResourceManager, 
-                    "ScenarioTests\\Common.ps1", 
-                    "ScenarioTests\\" + callingClassName + ".ps1"); 
-
+                this.helper.SetupModules(AzureModule.AzureResourceManager, "ScenarioTests\\Common.ps1", "ScenarioTests\\" + callingClassName + ".ps1", 
+                    helper.RMProfileModule,
+                    helper.RMResourceModule,
+                    helper.GetRMModulePath("AzureRM.Dns.psd1")); 
 
                 try 
                 { 

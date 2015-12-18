@@ -22,7 +22,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
     public class GetAzureVNetGatewayIPsecParameters : NetworkCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The virtual network name.")]
-        [ValidateGuid]
         [ValidateNotNullOrEmpty]
         public string VNetName
         {
@@ -30,7 +29,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
         }
 
         [Parameter(Position = 1, Mandatory = true, HelpMessage = "The local network site name.")]
-        [ValidateGuid]
         [ValidateNotNullOrEmpty]
         public string LocalNetworkSiteName
         {

@@ -24,6 +24,7 @@ using Microsoft.Azure.Insights.Models;
 using Microsoft.Azure.Management.Insights.Models;
 using Moq;
 using Xunit;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.Insights.Test
 {
@@ -50,7 +51,7 @@ namespace Microsoft.Azure.Commands.Insights.Test
                     LocalizedValue = "Start request",
                     Value = "Start request",
                 },
-                EventSource = new LocalizableString()
+                Category = new LocalizableString()
                 {
                     LocalizedValue = "Microsoft Resources",
                     Value = "Microsoft Resources",
@@ -96,7 +97,7 @@ namespace Microsoft.Azure.Commands.Insights.Test
                     LocalizedValue = ResourceProvider,
                     Value = ResourceProvider,
                 },
-                ResourceUri = ResourceUri,
+                ResourceId = ResourceUri,
                 HttpRequest = new HttpRequestInfo
                 {
                     Uri = "http://path/subscriptions/ffce8037-a374-48bf-901d-dac4e3ea8c09/resourcegroups/foo/deployments/testdeploy",

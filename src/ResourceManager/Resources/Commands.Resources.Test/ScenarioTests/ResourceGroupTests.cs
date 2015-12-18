@@ -13,11 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class ResourceGroupTests
+    public class ResourceGroupTests : RMTestBase
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -61,6 +62,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest("Test-RemoveNonExistingResourceGroup");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFindResourceGroup()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-FindResourceGroup");
+        }
+
         [Fact (Skip = "TODO: Fix the broken test.")]
         public void TestAzureTagsEndToEnd()
         {
@@ -75,9 +83,15 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
 
         [Fact]
-        public void TestNewResourceGroupWithTemplate()
+        public void TestRemoveDeployment()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-NewResourceGroupWithTemplateThenGetWithAndWithoutDetails");
+            ResourcesController.NewInstance.RunPsTest("Test-RemoveDeployment");
+        }
+
+        [Fact]
+        public void TestGetNonExistingResourceGroupWithDebugStream()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-GetNonExistingResourceGroupWithDebugStream");
         }
     }
 }

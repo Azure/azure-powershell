@@ -18,44 +18,25 @@ namespace Microsoft.Azure.Commands.Network.Models
 
     using Newtonsoft.Json;
 
-    public class PSNetworkInterfaceIpConfiguration : PSChildResource
+    public class PSNetworkInterfaceIPConfiguration : PSIPConfiguration
     {
-        public string PrivateIpAddress { get; set; }
+        [JsonProperty(Order = 2)]
+        public List<PSBackendAddressPool> LoadBalancerBackendAddressPools { get; set; }
 
-        public string PrivateIpAllocationMethod { get; set; }
+        [JsonProperty(Order = 2)]
+        public List<PSInboundNatRule> LoadBalancerInboundNatRules { get; set; }
 
-        public PSResourceId Subnet { get; set; }
-
-        public PSResourceId PublicIpAddress { get; set; }
-
-        public List<PSResourceId> LoadBalancerBackendAddressPools { get; set; }
-
-        public List<PSResourceId> LoadBalancerInboundNatRules { get; set; }
-
-        public string ProvisioningState { get; set; }
-
-        [JsonIgnore]
-        public string SubnetText
-        {
-            get { return JsonConvert.SerializeObject(Subnet, Formatting.Indented); }
-        }
-
-        [JsonIgnore]
-        public string PublicIpAddressText
-        {
-            get { return JsonConvert.SerializeObject(PublicIpAddress, Formatting.Indented); }
-        }
 
         [JsonIgnore]
         public string LoadBalancerBackendAddressPoolsText
         {
-            get { return JsonConvert.SerializeObject(LoadBalancerBackendAddressPools, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(LoadBalancerBackendAddressPools, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
         public string LoadBalancerInboundNatRulesText
         {
-            get { return JsonConvert.SerializeObject(LoadBalancerInboundNatRules, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(LoadBalancerInboundNatRules, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

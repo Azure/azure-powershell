@@ -12,17 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using System;
-using System.Net;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
-using Hyak.Common;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
-using Microsoft.WindowsAzure.Management.Compute;
-
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 {
@@ -86,7 +83,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         protected const string GetStatusByServiceAndVmNameParamSet = "GetStatusByServiceAndVMName";
         protected const string GetStatusByVmParamSet = "GetStatusByVM";
 
-        internal string Service;
         internal string VmName;
 
         /// <summary>
@@ -97,12 +93,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         {
             ServiceManagementProfile.Initialize();
             GetService(ServiceName, VM);
-            GetCurrentDeployment();
+
+            base.ExecuteCommand();
 
             if (CurrentDeploymentNewSM == null)
             {
-                WriteWarning(
-                    string.Format(CultureInfo.CurrentUICulture, Resources.NoDeploymentFoundInService, Service));
                 return;
             }
             
@@ -123,7 +118,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         {
             if (!string.IsNullOrEmpty(serviceName))
             {
-                Service = serviceName;
+                this.ServiceName = serviceName;
             }
             else
             {
@@ -132,35 +127,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                 if (vmRoleContext == null)
                     return;
 
-                Service = vmRoleContext.ServiceName;
+                this.ServiceName = vmRoleContext.ServiceName;
                 VmName = vmRoleContext.Name;
             }
-        }
-
-        /// <summary>
-        /// Retrieves deployment information for a cloud service from service api's 
-        /// </summary>
-        internal void GetCurrentDeployment()
-        {
-            InvokeInOperationContext(() =>
-            {
-                try
-                {
-                    if (string.IsNullOrEmpty(Service))
-                        return;
-                    
-                    CurrentDeploymentNewSM = ComputeClient.Deployments.GetBySlot(Service, NSM.DeploymentSlot.Production);
-                    GetDeploymentOperationNewSM = GetOperationNewSM(CurrentDeploymentNewSM.RequestId);
-                    WriteVerboseWithTimestamp(Resources.GetDeploymentCompletedOperation);
-                }
-                catch (CloudException ex)
-                {
-                    if (ex.Response.StatusCode != HttpStatusCode.NotFound)
-                    {
-                        throw;
-                    }
-                }
-            });
         }
 
         /// <summary>
@@ -209,8 +178,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         internal VirtualMachineDscExtensionStatusContext CreateDscStatusContext(NSM.Role vmRole, NSM.RoleInstance roleInstance) 
         {
             var message = string.Empty;
-            var extension = VirtualMachineDscExtensionCmdletBase.ExtensionPublishedNamespace + "." 
-                               + VirtualMachineDscExtensionCmdletBase.ExtensionPublishedName;
+            var extension = DscExtensionCmdletConstants.ExtensionPublishedNamespace + "."
+                               + DscExtensionCmdletConstants.ExtensionPublishedName;
             NSM.ResourceExtensionConfigurationStatus extensionSettingStatus = null;
             
             if (roleInstance != null && roleInstance.ResourceExtensionStatusList != null)
@@ -238,7 +207,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 
             var dscStatusContext = new VirtualMachineDscExtensionStatusContext
             {
-                ServiceName = Service,
+                ServiceName = this.ServiceName,
                 Name = vmRole == null ? string.Empty : vmRole.RoleName,
                 Status = extensionSettingStatus.Status ?? string.Empty,
                 StatusCode = extensionSettingStatus.Code ?? -1,
@@ -250,7 +219,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             };
             return dscStatusContext;
         }
-
     }
 }
 

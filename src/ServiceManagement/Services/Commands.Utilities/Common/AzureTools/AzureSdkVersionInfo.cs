@@ -18,7 +18,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common.AzureTools
     {
         //When intergrate with new Azure SDK, please update the versions here.
         //If you find there are other version strings to update, please move them to here.
-        public const string SupportAzureSdkVersionRegKey = "v2.5";
-        public const string SupportAzureSdkVersion = "2.5.0";
+        public const string DefaultAzureSdkVersionRegKey = "v2.7";
     }
 }

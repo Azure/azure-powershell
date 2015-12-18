@@ -21,22 +21,25 @@ namespace Microsoft.Azure.Commands.Network.Models
 
     public class PSBackendAddressPool : PSChildResource
     {
-        public List<PSResourceId> BackendIpConfigurations { get; set; }
+        [JsonProperty(Order = 1)]
+        public List<PSNetworkInterfaceIPConfiguration> BackendIpConfigurations { get; set; }
 
+        [JsonProperty(Order = 1)]
         public List<PSResourceId> LoadBalancingRules { get; set; }
 
+        [JsonProperty(Order = 1)]
         public string ProvisioningState { get; set; }
 
         [JsonIgnore]
         public string BackendIpConfigurationsText
         {
-            get { return JsonConvert.SerializeObject(BackendIpConfigurations, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(BackendIpConfigurations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
         public string LoadBalancingRulesText
         {
-            get { return JsonConvert.SerializeObject(LoadBalancingRules, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(LoadBalancingRules, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

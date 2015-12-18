@@ -117,6 +117,27 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers
             return roleNamesCollection;
         }
 
+        // Return the list of role names that match any of the given query.
+        public static RoleNamesCollection GetRoleNames(IList<RoleInstance> roleInstanceList, string[] roleNameQueries)
+        {
+            List<string> distinctRoleNameList = new List<string>();
+
+            foreach (var roleNameQuery in roleNameQueries)
+            {
+                var unionResult = distinctRoleNameList.Union(GetRoleNames(roleInstanceList, roleNameQuery));
+                distinctRoleNameList = unionResult.Distinct(StringComparer.OrdinalIgnoreCase).ToList();
+            }
+
+            var roleNamesCollection = new RoleNamesCollection();
+
+            foreach (var roleName in distinctRoleNameList)
+            {
+                roleNamesCollection.Add(roleName);
+            }
+
+            return roleNamesCollection;
+        }
+
         public static Collection<ConfigurationSet> MapConfigurationSets(IList<Management.Compute.Models.ConfigurationSet> configurationSets)
         {
             var result = new Collection<ConfigurationSet>();

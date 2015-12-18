@@ -590,7 +590,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 Utilities.ExecuteAndLog(() => vmPowershellCmdlets.NewAzureReservedIP(reservedIpName, locationName, reservedIpLabel), "Reserve a new IP");
                 VerifyReservedIpNotInUse(input);
                 Utilities.ExecuteAndLog(() => vmPowershellCmdlets.NewAzureAffinityGroup(affinityGroup, locationName, affinityGroup, affinityGroup), "Create a new affinity group");
-                Utilities.ExecuteAndLog(() => vmPowershellCmdlets.NewAzureQuickVM(OS.Linux, vmName, serviceName, imageName, username, password, locationName, InstanceSize.Small.ToString(), null,  reservedIpName), "Create a new Azure windows Quick VM with reserved ip.");
+                Utilities.ExecuteAndLog(() => vmPowershellCmdlets.NewAzureQuickVM(OS.Linux,
+                    vmName, serviceName, imageName, username, password, locationName,
+                    InstanceSize.Small.ToString(), false,  reservedIpName),
+                    "Create a new Azure windows Quick VM with reserved ip.");
                 VerifyReservedIpInUse(serviceName, input);
                 Utilities.ExecuteAndLog(() => vmPowershellCmdlets.StopAzureVM(vmName, serviceName,true), "Stop Azure VM and stay provisioned.");
                 VerifyReservedIpInUse(serviceName, input);

@@ -46,7 +46,7 @@ function Test-CreateDatabaseInternal ($serverVersion, $location = "Japan East")
 		{
 			# Create with default values
 			$databaseName = Get-DatabaseName
-			$db = New-AzureSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+			$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
 			Assert-AreEqual $db.DatabaseName $databaseName
 			Assert-NotNull $db.MaxSizeBytes
 			Assert-NotNull $db.Edition
@@ -55,7 +55,7 @@ function Test-CreateDatabaseInternal ($serverVersion, $location = "Japan East")
 
 			# Create with default values via piping
 			$databaseName = Get-DatabaseName
-			$db = $server | New-AzureSqlDatabase -DatabaseName $databaseName
+			$db = $server | New-AzureRmSqlDatabase -DatabaseName $databaseName
 			Assert-AreEqual $db.DatabaseName $databaseName
 			Assert-NotNull $db.MaxSizeBytes
 			Assert-NotNull $db.Edition
@@ -66,7 +66,7 @@ function Test-CreateDatabaseInternal ($serverVersion, $location = "Japan East")
 			$databaseName = Get-DatabaseName
 			$collationName = "SQL_Latin1_General_CP1_CI_AS"
 			$maxSizeBytes = 250GB
-			$dwdb = New-AzureSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
+			$dwdb = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
 					-CollationName $collationName -MaxSizeBytes $maxSizeBytes -Edition DataWarehouse -RequestedServiceObjectiveName DW100
 			Assert-AreEqual $dwdb.DatabaseName $databaseName
 			Assert-AreEqual $dwdb.MaxSizeBytes $maxSizeBytes
@@ -77,7 +77,7 @@ function Test-CreateDatabaseInternal ($serverVersion, $location = "Japan East")
 		
 		# Create with all parameters
 		$databaseName = Get-DatabaseName
-		$db = New-AzureSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
+		$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
 			-CollationName "Japanese_Bushu_Kakusu_100_CS_AS" -MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic
 		Assert-AreEqual $db.DatabaseName $databaseName
 		Assert-AreEqual $db.MaxSizeBytes 1GB
@@ -87,7 +87,7 @@ function Test-CreateDatabaseInternal ($serverVersion, $location = "Japan East")
 
 		# Create with all parameters
 		$databaseName = Get-DatabaseName
-		$db = $server | New-AzureSqlDatabase -DatabaseName $databaseName `
+		$db = $server | New-AzureRmSqlDatabase -DatabaseName $databaseName `
 			-CollationName "Japanese_Bushu_Kakusu_100_CS_AS" -MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic
 		Assert-AreEqual $db.DatabaseName $databaseName
 		Assert-AreEqual $db.MaxSizeBytes 1GB
@@ -130,7 +130,7 @@ function Test-UpdateDatabaseInternal ($serverVersion, $location = "Japan East")
 	$server = Create-ServerForTest $rg $serverVersion $location
 	
 	$databaseName = Get-DatabaseName
-	$db = New-AzureSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
+	$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
 		-Edition Standard -MaxSizeBytes 250GB -RequestedServiceObjectiveName S0
 	Assert-AreEqual $db.DatabaseName $databaseName
 
@@ -141,7 +141,7 @@ function Test-UpdateDatabaseInternal ($serverVersion, $location = "Japan East")
 		if($serverVersion -eq "12.0")
 		{
 			# Alter all properties
-			$db1 = Set-AzureSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+			$db1 = Set-AzureRmSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
 				-MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic
 			Assert-AreEqual $db1.DatabaseName $db.DatabaseName
 			Assert-AreEqual $db1.MaxSizeBytes 1GB
@@ -150,7 +150,7 @@ function Test-UpdateDatabaseInternal ($serverVersion, $location = "Japan East")
 			Assert-AreEqual $db1.CollationName $db.CollationName
 
 			# Alter all properties using piping
-			$db2 = $db1 | Set-AzureSqlDatabase -MaxSizeBytes 100GB -Edition Standard -RequestedServiceObjectiveName S1
+			$db2 = $db1 | Set-AzureRmSqlDatabase -MaxSizeBytes 100GB -Edition Standard -RequestedServiceObjectiveName S1
 			Assert-AreEqual $db2.DatabaseName $db.DatabaseName
 			Assert-AreEqual $db2.MaxSizeBytes 100GB
 			Assert-AreEqual $db2.Edition Standard
@@ -161,10 +161,10 @@ function Test-UpdateDatabaseInternal ($serverVersion, $location = "Japan East")
 			$databaseName = Get-DatabaseName
 			$collationName = "SQL_Latin1_General_CP1_CI_AS"
 			$maxSizeBytes = 250GB
-			$dwdb = New-AzureSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
+			$dwdb = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
 			-CollationName $collationName -MaxSizeBytes $maxSizeBytes -Edition DataWarehouse -RequestedServiceObjectiveName DW100
 
-			$dwdb2 = Set-AzureSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName `
+			$dwdb2 = Set-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName `
 					-MaxSizeBytes $maxSizeBytes -RequestedServiceObjectiveName DW200 -Edition DataWarehouse
 			Assert-AreEqual $dwdb2.DatabaseName $dwdb.DatabaseName
 			Assert-AreEqual $dwdb2.MaxSizeBytes $maxSizeBytes
@@ -175,7 +175,7 @@ function Test-UpdateDatabaseInternal ($serverVersion, $location = "Japan East")
 		else 
 		{
 			# Alter all properties
-			$db1 = Set-AzureSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+			$db1 = Set-AzureRmSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
 				-MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic
 			Assert-AreEqual $db1.DatabaseName $db.DatabaseName
 			Assert-AreEqual $db1.MaxSizeBytes 250GB
@@ -184,7 +184,7 @@ function Test-UpdateDatabaseInternal ($serverVersion, $location = "Japan East")
 			Assert-AreEqual $db1.CollationName $db.CollationName
 
 			# Alter all properties using piping
-			$db2 = $db1 | Set-AzureSqlDatabase -MaxSizeBytes 100GB -Edition Standard -RequestedServiceObjectiveName S1
+			$db2 = $db1 | Set-AzureRmSqlDatabase -MaxSizeBytes 100GB -Edition Standard -RequestedServiceObjectiveName S1
 			Assert-AreEqual $db2.DatabaseName $db.DatabaseName
 			Assert-AreEqual $db2.MaxSizeBytes 1GB
 			Assert-AreEqual $db2.Edition Basic
@@ -229,12 +229,12 @@ function Test-GetDatabaseInternal  ($serverVersion, $location = "Japan East")
 	
 	# Create with default values
 	$databaseName = Get-DatabaseName
-	$db1 = New-AzureSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -MaxSizeBytes 1GB
+	$db1 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -MaxSizeBytes 1GB
 	Assert-AreEqual $db1.DatabaseName $databaseName
 
     # Create database with non-defaults
 	$databaseName = Get-DatabaseName
-	$db2 = New-AzureSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
+	$db2 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
 		-CollationName "Japanese_Bushu_Kakusu_100_CS_AS" -MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic
     Assert-AreEqual $db2.DatabaseName $databaseName
 
@@ -244,25 +244,25 @@ function Test-GetDatabaseInternal  ($serverVersion, $location = "Japan East")
 		{
 			# Create data warehouse database.
 			$databaseName = Get-DatabaseName
-			$dwdb = New-AzureSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
+			$dwdb = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
 					-CollationName SQL_Latin1_General_CP1_CI_AS -MaxSizeBytes 250GB -Edition DataWarehouse -RequestedServiceObjectiveName DW100
-			$dwdb2 = Get-AzureSqlDatabase -ResourceGroupName $rg.ResourceGroupname -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName
+			$dwdb2 = Get-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupname -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName
 			Assert-AreEqual $dwdb2.DatabaseName $dwdb.DatabaseName
 			Assert-AreEqual $dwdb2.MaxSizeBytes $dwdb.MaxSizeBytes
 			Assert-AreEqual $dwdb2.Edition $dwdb.Edition
 			Assert-AreEqual $dwdb2.CurrentServiceObjectiveName $dwdb.CurrentServiceObjectiveName
 			Assert-AreEqual $dwdb2.CollationName $dwdb.CollationName
 
-			$all = $server | Get-AzureSqlDatabase
+			$all = $server | Get-AzureRmSqlDatabase
 			Assert-AreEqual $all.Count 4 # 4 because master database is included
 		}
 		else
 		{
-			$all = $server | Get-AzureSqlDatabase
+			$all = $server | Get-AzureRmSqlDatabase
 			Assert-AreEqual $all.Count 3 # 3 because master database is included
 		}
 
-        $gdb1 = Get-AzureSqlDatabase -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $db1.DatabaseName
+        $gdb1 = Get-AzureRmSqlDatabase -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $db1.DatabaseName
         Assert-NotNull $gdb1
         Assert-AreEqual $db1.DatabaseName $gdb1.DatabaseName
         Assert-AreEqual $db1.Edition $gdb1.Edition
@@ -270,7 +270,7 @@ function Test-GetDatabaseInternal  ($serverVersion, $location = "Japan East")
         Assert-AreEqual $db1.CurrentServiceObjectiveName $gdb1.CurrentServiceObjectiveName
         Assert-AreEqual $db1.MaxSizeBytes $gdb1.MaxSizeBytes
 
-        $gdb2 = $db2 | Get-AzureSqlDatabase
+        $gdb2 = $db2 | Get-AzureRmSqlDatabase
         Assert-NotNull $gdb2
         Assert-AreEqual $db2.DatabaseName $gdb2.DatabaseName
         Assert-AreEqual $db2.Edition $gdb2.Edition
@@ -315,12 +315,12 @@ function Test-RemoveDatabaseInternal  ($serverVersion, $location = "Japan East")
 	
 	# Create with default values
 	$databaseName = Get-DatabaseName
-	$db1 = New-AzureSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -MaxSizeBytes 1GB
+	$db1 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -MaxSizeBytes 1GB
 	Assert-AreEqual $db1.DatabaseName $databaseName
 
     # Create database with non-defaults
 	$databaseName = Get-DatabaseName
-	$db2 = New-AzureSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
+	$db2 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
 		-CollationName "Japanese_Bushu_Kakusu_100_CS_AS" -MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic
     Assert-AreEqual $db2.DatabaseName $databaseName
 
@@ -330,21 +330,21 @@ function Test-RemoveDatabaseInternal  ($serverVersion, $location = "Japan East")
 		{
 			# Create data warehouse database
 			$databaseName = Get-DatabaseName
-			$dwdb = New-AzureSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
+			$dwdb = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
 				-CollationName "SQL_Latin1_General_CP1_CI_AS" -MaxSizeBytes 250GB -Edition DataWarehouse -RequestedServiceObjectiveName DW100
 			Assert-AreEqual $dwdb.DatabaseName $databaseName
 
-			Remove-AzureSqlDatabase -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName -Force
+			Remove-AzureRmSqlDatabase -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName -Force
 		}
 		
-		$all = $server | Get-AzureSqlDatabase
+		$all = $server | Get-AzureRmSqlDatabase
 		Assert-AreEqual $all.Count 3 # 3 because master database is included
         
-        Remove-AzureSqlDatabase -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $db1.DatabaseName -Force
+        Remove-AzureRmSqlDatabase -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $db1.DatabaseName -Force
 
-        $db2 | Remove-AzureSqlDatabase -Force
+        $db2 | Remove-AzureRmSqlDatabase -Force
 
-        $all = $server | Get-AzureSqlDatabase
+        $all = $server | Get-AzureRmSqlDatabase
         Assert-AreEqual $all.Count 1 # 1 because master database is included
 	}
 	finally

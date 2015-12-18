@@ -23,7 +23,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureVirtualNetwork"), OutputType(typeof(PSVirtualNetwork))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmVirtualNetwork"), OutputType(typeof(PSVirtualNetwork))]
     public class SetAzureVirtualNetworkCommand : VirtualNetworkBaseCmdlet
     {
         [Parameter(
@@ -43,7 +43,6 @@ namespace Microsoft.Azure.Commands.Network
             
             // Map to the sdk object
             var vnetModel = Mapper.Map<MNM.VirtualNetwork>(this.VirtualNetwork);
-            vnetModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.VirtualNetworkType;
             vnetModel.Tags = TagsConversionHelper.CreateTagDictionary(this.VirtualNetwork.Tag, validate: true);
 
             // Execute the Create VirtualNetwork call

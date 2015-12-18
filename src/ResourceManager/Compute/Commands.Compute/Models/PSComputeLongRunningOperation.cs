@@ -17,6 +17,7 @@
 using Microsoft.Azure.Management.Compute.Models;
 using Newtonsoft.Json;
 using System;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.Compute.Models
 {
@@ -27,6 +28,8 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public string RequestId { get; set; }
 
         public ComputeOperationStatus Status { get; set; }
+
+        public HttpStatusCode StatusCode { get; set; }
 
         public string Output { get; set; }
 
@@ -39,7 +42,11 @@ namespace Microsoft.Azure.Commands.Compute.Models
         [JsonIgnore]
         public string ErrorText
         {
-            get { return JsonConvert.SerializeObject(Error, Formatting.Indented); }
+            get
+            {
+                var errorStr = JsonConvert.SerializeObject(Error, Formatting.Indented);
+                return String.IsNullOrEmpty(errorStr) || "null".Equals(errorStr) ? "" : errorStr;
+            }
         }
     }
 }

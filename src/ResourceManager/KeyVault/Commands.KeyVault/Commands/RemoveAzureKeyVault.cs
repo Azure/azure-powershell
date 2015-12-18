@@ -15,13 +15,12 @@
 using System;
 using System.Globalization;
 using System.Management.Automation;
-using Microsoft.Azure.Management.KeyVault;
 using PSKeyVaultModels = Microsoft.Azure.Commands.KeyVault.Models;
 using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureKeyVault",
+    [Cmdlet(VerbsCommon.Remove, "AzureRmKeyVault",
         SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.High, 
         HelpUri = Constants.KeyVaultHelpUri)]    

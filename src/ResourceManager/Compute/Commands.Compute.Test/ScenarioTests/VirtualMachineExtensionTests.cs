@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineExtension");
         }
-        
-        [Fact(Skip = "Set-AzureVMExtension does not return (for a long period of time).")]
+
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineExtensionUsingHashTable()
         {
@@ -42,9 +42,30 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineCustomScriptExtensionFileUri()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineCustomScriptExtensionFileUri");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineAccessExtension()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineAccessExtension");
+        }
+
+        [Fact(Skip = "TODO: only works for live mode")]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        public void TestAzureDiskEncryptionExtension()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-AzureDiskEncryptionExtension");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineBginfoExtension()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineBginfoExtension");
         }
     }
 }

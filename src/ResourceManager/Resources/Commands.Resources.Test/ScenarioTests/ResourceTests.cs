@@ -14,11 +14,12 @@
 
 
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class ResourceTests 
+    public class ResourceTests : RMTestBase
     {
         [Fact(Skip = "TODO: Re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -77,6 +78,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMoveAResourceTest()
         {
             ResourcesController.NewInstance.RunPsTest("Test-MoveAResource");
@@ -87,6 +89,27 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public void TestSetAResourceTest()
         {
             ResourcesController.NewInstance.RunPsTest("Test-SetAResource");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetAResourceWithPatchTest()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-SetAResourceWithPatch");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFindAResourceTest()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-FindAResource");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetResourceWithExpandProperties()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-GetResourceExpandProperties");
         }
     }
 }

@@ -24,6 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.Azure;
+    using Microsoft.WindowsAzure.Commands.RemoteApp.Test.Common;
 
 
     public class RemoteAppClientCredentials : SubscriptionCloudCredentials
@@ -37,11 +38,15 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
         }
     }
 
-    public abstract class RemoteAppClientTest : TestBase
+    public abstract class RemoteAppClientTest : SMTestBase
     {
         protected const string subscriptionId = "foo";
 
         protected const string collectionName = "test1";
+
+        protected const string vmName = "testVm";
+
+        protected const string loggedInUserUpn = "test@somedomain.com";
 
         protected const string templateName = "Fake_Windows.vhd";
 
@@ -92,6 +97,7 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             {
                 CommandRuntime = mockCommandRuntime,
                 Client = remoteAppManagementClientMock.Object,
+                ActiveDirectoryHelper = new MockAdHelper(),
                 MgmtClient = mgmtClient.Object
             };
 

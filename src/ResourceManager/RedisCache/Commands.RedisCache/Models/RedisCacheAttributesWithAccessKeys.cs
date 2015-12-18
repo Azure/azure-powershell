@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
 {
     using Microsoft.Azure.Management.Redis.Models;
 
-    class RedisCacheAttributesWithAccessKeys : RedisCacheAttributes
+    public class RedisCacheAttributesWithAccessKeys : RedisCacheAttributes
     {
         public RedisCacheAttributesWithAccessKeys(RedisCreateOrUpdateResponse cache, string resourceGroupName)
         {
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
             ProvisioningState = cache.Resource.Properties.ProvisioningState;
             SslPort = cache.Resource.Properties.SslPort;
             RedisConfiguration = cache.Resource.Properties.RedisConfiguration;
-            EnableNonSslPort = cache.Resource.Properties.EnableNonSslPort;
+            EnableNonSslPort = cache.Resource.Properties.EnableNonSslPort.Value;
             RedisVersion = cache.Resource.Properties.RedisVersion;
             Size = SizeConverter.GetSizeInUserSpecificFormat(cache.Resource.Properties.Sku.Family, cache.Resource.Properties.Sku.Capacity);
             Sku = cache.Resource.Properties.Sku.Name;
@@ -37,6 +37,12 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
             PrimaryKey = cache.Resource.Properties.AccessKeys.PrimaryKey;
             SecondaryKey = cache.Resource.Properties.AccessKeys.SecondaryKey;
             ResourceGroupName = resourceGroupName;
+
+            VirtualNetwork = cache.Resource.Properties.VirtualNetwork;
+            Subnet = cache.Resource.Properties.Subnet;
+            StaticIP = cache.Resource.Properties.StaticIP;
+            TenantSettings = cache.Resource.Properties.TenantSettings;
+            ShardCount = cache.Resource.Properties.ShardCount;
         }
 
         public string PrimaryKey { get; private set; }

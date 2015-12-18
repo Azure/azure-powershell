@@ -116,6 +116,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         /// </summary>
         protected override void EndProcessing()
         {
+            this.WriteWarning(string.Format(AzureHdInsightPowerShellConstants.AsmWarning, "New-AzureRmHDInsightHiveJobDefinition"));
             if (this.File.IsNullOrEmpty() && this.Query.IsNullOrEmpty())
             {
                 throw new PSArgumentException("Either File or Query should be specified for Hive jobs.");

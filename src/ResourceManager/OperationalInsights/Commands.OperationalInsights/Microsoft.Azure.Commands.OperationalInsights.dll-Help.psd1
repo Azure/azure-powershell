@@ -9,7 +9,7 @@
 @{
 
 # Version number of this module.
-ModuleVersion = '0.9.2'
+ModuleVersion = '0.9.10'
 
 # ID used to uniquely identify this module
 GUID = '5BE35A94-C20F-4659-AA29-9B9AEBCFAF36'
@@ -21,7 +21,7 @@ Author = 'Microsoft Corporation'
 CompanyName = 'Microsoft Corporation'
 
 # Copyright statement for this module
-Copyright = '© Microsoft Corporation. All rights reserved.'  
+Copyright = 'Microsoft Corporation. All rights reserved.'  
 
 # Description of the functionality provided by this module
 Description = ''
@@ -55,12 +55,12 @@ ScriptsToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = @(
-    '..\..\..\Package\Debug\ResourceManager\AzureResourceManager\OperationalInsights\Microsoft.Azure.Commands.OperationalInsights.format.ps1xml'
+    '..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.OperationalInsights\Microsoft.Azure.Commands.OperationalInsights.format.ps1xml'
 )
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
 NestedModules = @(
-    '..\..\..\Package\Debug\ResourceManager\AzureResourceManager\OperationalInsights\Microsoft.Azure.Commands.OperationalInsights.dll'
+    '..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.OperationalInsights\Microsoft.Azure.Commands.OperationalInsights.dll'
 )
 
 # Functions to export from this module

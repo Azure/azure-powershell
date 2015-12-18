@@ -27,7 +27,8 @@ using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Management.KeyVault;
 using Microsoft.Azure.Common.Authentication.Models;
 using System.Collections.Generic;
-
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.KeyVault.Test
 {
@@ -49,8 +50,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
                 var testSubscription = new AzureSubscription()
                 {
                     Id = new Guid(csmEnvironment.SubscriptionId),
-                    Name = ProfileClient.Profile.DefaultSubscription.Name,
-                    Environment = ProfileClient.Profile.DefaultSubscription.Environment,
+                    Name = AzureRmProfileProvider.Instance.Profile.Context.Subscription.Name,
+                    Environment = AzureRmProfileProvider.Instance.Profile.Context.Environment.Name,
                     Account = user,
                     Properties = new Dictionary<AzureSubscription.Property, string>
                     {
@@ -73,12 +74,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
                     }
                 };
 
-                ProfileClient.Profile.Accounts.Remove(ProfileClient.Profile.DefaultSubscription.Account);
-                ProfileClient.Profile.Subscriptions[testSubscription.Id] = testSubscription;
-                ProfileClient.Profile.Accounts[testAccount.Id] = testAccount;                
-                ProfileClient.SetSubscriptionAsDefault(testSubscription.Name, testSubscription.Account);
-                
-                ProfileClient.Profile.Save();
+                AzureRmProfileProvider.Instance.Profile.Context = new AzureContext(testSubscription, testAccount, AzureRmProfileProvider.Instance.Profile.Context.Environment, new AzureTenant { Id = new Guid(tenantId) });
             }
         }
 
@@ -86,8 +82,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
         {
             if (HttpMockServer.Mode == HttpRecorderMode.Record)
             {
-                HttpMockServer.Variables["TenantId"] = environment.AuthorizationContext.TenatId;
-                return environment.AuthorizationContext.TenatId;
+                HttpMockServer.Variables["TenantId"] = environment.AuthorizationContext.TenantId;
+                return environment.AuthorizationContext.TenantId;
             }
             else
             {

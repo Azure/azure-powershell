@@ -20,18 +20,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Remove, ProfileNouns.VirtualMachine)]
+    [Cmdlet(VerbsCommon.Remove, ProfileNouns.VirtualMachine, DefaultParameterSetName = ResourceGroupNameParameterSet)]
     [OutputType(typeof(PSComputeLongRunningOperation))]
-    public class RemoveAzureVMCommand : VirtualMachineBaseCmdlet
+    public class RemoveAzureVMCommand : VirtualMachineActionBaseCmdlet
     {
-        [Parameter(
-           Mandatory = true,
-           Position = 0,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
         [Alias("ResourceName", "VMName")]
         [Parameter(
             Mandatory = true,
@@ -50,14 +42,15 @@ namespace Microsoft.Azure.Commands.Compute
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-
-            if (this.Force.IsPresent
-             || this.ShouldContinue(Properties.Resources.VirtualMachineRemovalConfirmation, Properties.Resources.VirtualMachineRemovalCaption))
+            ExecuteClientAction(() =>
             {
-                var op = this.VirtualMachineClient.Delete(this.ResourceGroupName, this.Name);
-                var result = Mapper.Map<PSComputeLongRunningOperation>(op);
-                WriteObject(result);
-            }
+                if (this.Force.IsPresent || this.ShouldContinue(Microsoft.Azure.Commands.Compute.Properties.Resources.VirtualMachineRemovalConfirmation, Microsoft.Azure.Commands.Compute.Properties.Resources.VirtualMachineRemovalCaption))
+                {
+                    var op = this.VirtualMachineClient.Delete(this.ResourceGroupName, this.Name);
+                    var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+                    WriteObject(result);
+                }
+            });
         }
     }
 }

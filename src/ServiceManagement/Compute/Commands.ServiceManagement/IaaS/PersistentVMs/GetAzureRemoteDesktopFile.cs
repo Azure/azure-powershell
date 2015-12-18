@@ -12,15 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Management.Compute;
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
 {
@@ -79,7 +78,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
                     }
                 }
 
-                var operation = GetOperationNewSM(desktopFileResponse.RequestId);
+                var operation = GetOperation(desktopFileResponse.RequestId);
 
                 WriteVerboseWithTimestamp(string.Format(Resources.AzureRemoteDesktopCompletedOperation, CommandRuntime));
 
@@ -108,8 +107,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
                     {
                         var writer = new StreamWriter(scriptStream);
                         writer.WriteLine("start /wait mstsc.exe " + rdpFilePath);
-                        writer.WriteLine("del " + rdpFilePath);
-                        writer.WriteLine("del " + launchRDPScript);
                         writer.Flush();
                     }
 

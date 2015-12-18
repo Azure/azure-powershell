@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project name="Project_Writer">
+  <!--MiddleTier Name-->
+  <MTFile value="POWERSHELL.middletier.config" />
+  <!--Team -->
+  <Team value="Writer" />
+  <!--Writer (only for stand alone import)-->
+  <Writer value="redmond\v-matwin" /> 
+  <!--Doc Type-->
+  <DocumentType value="PSCmdlet"/>
+  <!--Working folder (only for stand alone import)-->
+  <WorkingFolder value="C:\DXWork\WSPOWERSHELL\Projects\PSProject_Writer" />
+  <!--PSMaml location-->
+  <Psmaml value=".\psmaml" />
+  <!--Topic disambiguater-->
+  <Disambiguator value=""/>
+  <!--Cmdlet Names-->
+  <Cmdlets>
+    <RawXmlFile value="PSRawData.xml" />
+  </Cmdlets>
+</Project>
+

@@ -16,7 +16,6 @@ using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -33,9 +32,10 @@ namespace Microsoft.Azure.Commands.Compute
         DefaultParameterSetName = WindowsParamSet),
     OutputType(
         typeof(PSVirtualMachine))]
-    public class SetAzureVMOperatingSystemCommand : AzurePSCmdlet
+    public class SetAzureVMOperatingSystemCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         protected const string WindowsParamSet = "Windows";
+        protected const string WinRmHttpsParamSet = "WindowsWinRmHttps";
         protected const string LinuxParamSet = "Linux";
 
         [Alias("VMProfile")]
@@ -50,6 +50,12 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             ParameterSetName = WindowsParamSet,
+            Mandatory = true,
+            Position = 1,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Windows")]
+        [Parameter(
+            ParameterSetName = WinRmHttpsParamSet,
             Mandatory = true,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
@@ -94,11 +100,21 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 5,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Provision VM Agent.")]
+        [Parameter(
+            ParameterSetName = WinRmHttpsParamSet,
+            Position = 5,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Provision VM Agent.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter ProvisionVMAgent { get; set; }
 
         [Parameter(
             ParameterSetName = WindowsParamSet,
+            Position = 6,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Enable Automatic Update")]
+        [Parameter(
+            ParameterSetName = WinRmHttpsParamSet,
             Position = 6,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Enable Automatic Update")]
@@ -110,6 +126,11 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 7,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Time Zone")]
+        [Parameter(
+            ParameterSetName = WinRmHttpsParamSet,
+            Position = 7,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Time Zone")]
         [ValidateNotNullOrEmpty]
         public string TimeZone { get; set; }
 
@@ -118,11 +139,17 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 8,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Enable WinRM Http protocol")]
+        [Parameter(
+            ParameterSetName = WinRmHttpsParamSet,
+            Position = 8,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Enable WinRM Http protocol")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter WinRMHttp { get; set; }
 
         [Parameter(
-            ParameterSetName = WindowsParamSet,
+            Mandatory = true,
+            ParameterSetName = WinRmHttpsParamSet,
             Position = 9,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Enable WinRM Https protocol")]
@@ -130,7 +157,8 @@ namespace Microsoft.Azure.Commands.Compute
         public SwitchParameter WinRMHttps { get; set; }
 
         [Parameter(
-            ParameterSetName = WindowsParamSet,
+            Mandatory = true,
+            ParameterSetName = WinRmHttpsParamSet,
             Position = 10,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Url for WinRM certificate")]
@@ -160,7 +188,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 if (this.VM.OSProfile.WindowsConfiguration != null)
                 {
-                    throw new ArgumentException(Properties.Resources.BothWindowsAndLinuxConfigurationsSpecified);
+                    throw new ArgumentException(Microsoft.Azure.Commands.Compute.Properties.Resources.BothWindowsAndLinuxConfigurationsSpecified);
                 }
 
                 if (this.VM.OSProfile.LinuxConfiguration == null)
@@ -177,7 +205,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 if (this.VM.OSProfile.LinuxConfiguration != null)
                 {
-                    throw new ArgumentException(Properties.Resources.BothWindowsAndLinuxConfigurationsSpecified);
+                    throw new ArgumentException(Microsoft.Azure.Commands.Compute.Properties.Resources.BothWindowsAndLinuxConfigurationsSpecified);
                 }
 
                 if (this.VM.OSProfile.WindowsConfiguration == null)

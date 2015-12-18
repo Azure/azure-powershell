@@ -14,13 +14,25 @@
 
 function get_all_vm_locations
 {
-    $st = Write-Verbose 'Getting all Azure location - Start';
-
-    $locations = Get-AzureLocation | where { $_.Name -eq 'Microsoft.Compute/virtualMachines' } | select -ExpandProperty Locations;
+	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+	{
+		$namespace = "Microsoft.Compute" 
+		$type = "virtualMachines" 
+		$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}  
+  
+		if ($location -eq $null) 
+		{  
+			$st = Write-Verbose 'Getting all Azure location - End';
+			return @("West US", "East US")
+		} else 
+		{  
+			$st = Write-Verbose 'Getting all Azure location - End';
+			return $location.Locations  
+		}  
+	}
 
     $st = Write-Verbose 'Getting all Azure location - End';
-
-    return $locations;
+	return @("West US", "East US")
 }
 
 function get_all_standard_vm_sizes
@@ -29,7 +41,7 @@ function get_all_standard_vm_sizes
 
     $st = Write-Verbose "Getting all VM sizes in location '${location}' - Start";
 
-    $vmsizes = Get-AzureVMSize -Location $location | where { $_.Name -like 'Standard_A*' -and $_.NumberOfCores -le 4 } | select -ExpandProperty Name;
+    $vmsizes = Get-AzureRmVMSize -Location $location | where { $_.Name -like 'Standard_A*' -and $_.NumberOfCores -le 4 } | select -ExpandProperty Name;
 
     $st = Write-Verbose "Getting all VM sizes in location [${location}] - End";
 
@@ -92,7 +104,7 @@ function get_vm_config_object
     $st = Write-Verbose "Creating VM Config Object - Start";
 
     $vmname = $rgname + 'vm';
-    $p = New-AzureVMConfig -VMName $vmname -VMSize $vmsize;
+    $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
 
     $st = Write-Verbose "Creating VM Config Object - End";
 
@@ -115,9 +127,9 @@ function get_created_storage_account_name
 
     $st = Write-Verbose "Creating and getting storage account for '${loc}' and '${rgname}' - '${stotype}' & '${stoname}'";
 
-    $st = New-AzureStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-    $st = Set-AzureStorageAccount -ResourceGroupName $rgname -Name $stoname -Tags (Get-ComputeTestTag $global:ps_test_tag_name);
-    $st = Get-AzureStorageAccount -ResourceGroupName $rgname -Name $stoname;
+    $st = New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+    $st = Set-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Tags (Get-ComputeTestTag $global:ps_test_tag_name);
+    $st = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname;
     
     $st = Write-Verbose "Creating and getting storage account for '${loc}' and '${rgname}' - End";
 
@@ -139,9 +151,9 @@ function create_and_setup_nic_ids
 
     $st = Write-Verbose "Creating and getting NICs for '${loc}' and '${rgname}' - Start";
 
-    $subnet = New-AzureVirtualNetworkSubnetConfig -Name ($rgname + 'subnet') -AddressPrefix "10.0.0.0/24";
-    $vnet = New-AzureVirtualNetwork -Force -Name ($rgname + 'vnet') -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet -Tag (Get-ComputeTestTag $global:ps_test_tag_name);
-    $vnet = Get-AzureVirtualNetwork -Name ($rgname + 'vnet') -ResourceGroupName $rgname;
+    $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ($rgname + 'subnet') -AddressPrefix "10.0.0.0/24";
+    $vnet = New-AzureRmVirtualNetwork -Force -Name ($rgname + 'vnet') -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet -Tag (Get-ComputeTestTag $global:ps_test_tag_name);
+    $vnet = Get-AzureRmVirtualNetwork -Name ($rgname + 'vnet') -ResourceGroupName $rgname;
     $subnetId = $vnet.Subnets[0].Id;
 
 '@;
@@ -175,9 +187,9 @@ function create_and_setup_nic_ids
         $fn_body +=
 @"
 
-    ${nic_var_name} = New-AzureNetworkInterface -Force -Name ${nic_name_str} -ResourceGroupName `$rgname -Location `$loc -SubnetId `$subnetId -Tag (Get-ComputeTestTag `$global:ps_test_tag_name);
+    ${nic_var_name} = New-AzureRmNetworkInterface -Force -Name ${nic_name_str} -ResourceGroupName `$rgname -Location `$loc -SubnetId `$subnetId -Tag (Get-ComputeTestTag `$global:ps_test_tag_name);
     `$nic_ids[$i] = ${nic_var_name}.Id;
-    `$vmconfig = Add-AzureVMNetworkInterface -VM `$vmconfig -Id ${nic_var_name}.Id${primary_switch_text};
+    `$vmconfig = Add-AzureRmVMNetworkInterface -VM `$vmconfig -Id ${nic_var_name}.Id${primary_switch_text};
 
 "@;
     }
@@ -211,7 +223,7 @@ function create_and_setup_vm_config_object
     $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
     $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
     $computerName = $rgname + "cn";
-    $vmconfig = Set-AzureVMOperatingSystem -VM $vmconfig -Windows -ComputerName $computerName -Credential $cred;
+    $vmconfig = Set-AzureRmVMOperatingSystem -VM $vmconfig -Windows -ComputerName $computerName -Credential $cred;
 
     $st = Write-Verbose "Creating and setting up the VM config object for '${loc}', '${rgname}' and '${vmsize}' - End";
 
@@ -235,11 +247,11 @@ function setup_image_and_disks
     $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/os.vhd";
     $osDiskCaching = 'ReadWrite';
 
-    $vmconfig = Set-AzureVMOSDisk -VM $vmconfig -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
+    $vmconfig = Set-AzureRmVMOSDisk -VM $vmconfig -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
 
     # Image Reference
     $imgRef = Get-DefaultCRPImage -loc $loc;
-    $vmconfig = ($imgRef | Set-AzureVMSourceImage -VM $vmconfig);
+    $vmconfig = ($imgRef | Set-AzureRmVMSourceImage -VM $vmconfig);
 
     # Do not add any data disks
     $vmconfig.StorageProfile.DataDisks = $null;
@@ -354,7 +366,7 @@ function ${generated_func_name}
         `$st = Write-Verbose `"Running Test ${generated_func_name} - Start `${rgname}, `${loc} & `${vmsize}`";
 
         `$st = Write-Verbose 'Running Test ${generated_func_name} - Creating Resource Group';
-        `$st = New-AzureResourceGroup -Location `$loc -Name `$rgname -Tag (Get-ComputeTestTag `$global:ps_test_tag_name) -Force;
+        `$st = New-AzureRmResourceGroup -Location `$loc -Name `$rgname -Tag (Get-ComputeTestTag `$global:ps_test_tag_name) -Force;
 
         `$vmconfig = create_and_setup_vm_config_object `$loc `$rgname `$vmsize;
 
@@ -372,15 +384,15 @@ function ${generated_func_name}
 
         `$vmname = `$rgname + 'vm';
         
-        `$st = New-AzureVM -ResourceGroupName `$rgname -Location `$loc -Name `$vmname -VM `$vmconfig -Tags (Get-ComputeTestTag `$global:ps_test_tag_name);
+        `$st = New-AzureRmVM -ResourceGroupName `$rgname -Location `$loc -VM `$vmconfig -Tags (Get-ComputeTestTag `$global:ps_test_tag_name);
 
         # Get VM
         `$st = Write-Verbose 'Running Test ${generated_func_name} - Getting VM';
-        `$vm1 = Get-AzureVM -Name `$vmname -ResourceGroupName `$rgname;
+        `$vm1 = Get-AzureRmVM -Name `$vmname -ResourceGroupName `$rgname;
 
         # Remove
         `$st = Write-Verbose 'Running Test ${generated_func_name} - Removing VM';
-        `$st = Remove-AzureVM -Name `$vmname -ResourceGroupName `$rgname -Force;
+        `$st = Remove-AzureRmVM -Name `$vmname -ResourceGroupName `$rgname -Force;
 
         `$st = Write-Verbose 'Running Test ${generated_func_name} - End';
     }

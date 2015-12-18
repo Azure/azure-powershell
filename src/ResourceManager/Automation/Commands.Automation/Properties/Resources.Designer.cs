@@ -142,6 +142,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ConfigurationData cannot be part of the job parameters. You can specify the ConfigurationData using the {0} switch.
+        /// </summary>
+        internal static string ConfigurationDataShouldNotBeInJobParameters {
+            get {
+                return ResourceManager.GetString("ConfigurationDataShouldNotBeInJobParameters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Configuration content can not be in edit/draft mode in current preview. Use the Published option..
         /// </summary>
         internal static string ConfigurationDraftMode {
@@ -232,6 +241,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The connection type was not found. ConnectionType name: {0}..
+        /// </summary>
+        internal static string ConnectionTypeNotFound {
+            get {
+                return ResourceManager.GetString("ConnectionTypeNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The credential was not found. Credential name: {0}..
         /// </summary>
         internal static string CredentialNotFound {
@@ -268,6 +286,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to File name and runbook name must be the same for PowerShell Workflow runbooks..
+        /// </summary>
+        internal static string FileNameRunbookNameMismatch {
+            get {
+                return ResourceManager.GetString("FileNameRunbookNameMismatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid configuration parameters..
         /// </summary>
         internal static string InvalidConfigurationParameters {
@@ -295,11 +322,29 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Imported file should be  either .ps1 or .graphrunbook..
+        /// </summary>
+        internal static string InvalidImportFile {
+            get {
+                return ResourceManager.GetString("InvalidImportFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid runbook parameters..
         /// </summary>
         internal static string InvalidRunbookParameters {
             get {
                 return ResourceManager.GetString("InvalidRunbookParameters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The runbook type is invalid for the file extension. PowerShell workflow and scripts should be .ps1. Graph runbook extension should be .graphrunbook. Provided file extension: {0}  .
+        /// </summary>
+        internal static string InvalidRunbookTypeForExtension {
+            get {
+                return ResourceManager.GetString("InvalidRunbookTypeForExtension", resourceCulture);
             }
         }
         
@@ -354,6 +399,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         internal static string NodeConfigurationAlreadyExists {
             get {
                 return ResourceManager.GetString("NodeConfigurationAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid node configuration name. Please specify in the format &lt;config name&gt;.&lt;node name&gt;.
+        /// </summary>
+        internal static string NodeConfigurationNameInvalid {
+            get {
+                return ResourceManager.GetString("NodeConfigurationNameInvalid", resourceCulture);
             }
         }
         
@@ -475,6 +529,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This connection type has connections associated with it. If you delete this connection type, all connections associated with it will be unusable and should be removed, unless you create a new connection type with the same name that has the same field definitions as the deleted connection type. However, it can have additional fields as well. Are you sure you want to remove the Azure Automation {0} ?.
+        /// </summary>
+        internal static string RemoveConnectionTypeThatHasConnectionWarning {
+            get {
+                return ResourceManager.GetString("RemoveConnectionTypeThatHasConnectionWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing the Dsc node with Id {0}..
         /// </summary>
         internal static string RemoveDscNodeDescription {
@@ -534,6 +597,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         internal static string RunbookAlreadyHasDraft {
             get {
                 return ResourceManager.GetString("RunbookAlreadyHasDraft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Runbook file already exists. Specify the force switch switch overwrite. Runbook file name: {0}.
+        /// </summary>
+        internal static string RunbookFileAlreadyExists {
+            get {
+                return ResourceManager.GetString("RunbookFileAlreadyExists", resourceCulture);
             }
         }
         

@@ -16,35 +16,50 @@ using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.Azure.Test;
+using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Management.Authorization;
+using System;
+using System.Collections.Generic;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.WindowsAzure.Commands.Common;
+
 
 namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 {
-    public class SqlTestsBase
+    public class SqlTestsBase : RMTestBase
     {
-        private EnvironmentSetupHelper helper;
+        protected SqlEvnSetupHelper helper;
+
+        private const string TenantIdKey = "TenantId";
+        private const string DomainKey = "Domain";
+
+        public string UserDomain { get; private set; }
 
         protected SqlTestsBase()
         {
-            helper = new EnvironmentSetupHelper();
+            helper = new SqlEvnSetupHelper();
         }
 
-        protected void SetupManagementClients()
+        protected virtual void SetupManagementClients()
         {
             var sqlCSMClient = GetSqlClient(); // to interact with the security endpoints
             var storageClient = GetStorageClient();
             var resourcesClient = GetResourcesClient();
             var authorizationClient = GetAuthorizationManagementClient();
-            helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, resourcesClient, authorizationClient);
+            var graphClient = GetGraphClient();
+            helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, resourcesClient, authorizationClient, graphClient);
         }
 
         protected void RunPowerShellTest(params string[] scripts)
         {
-            HttpMockServer.Matcher = new PermissiveRecordMatcher();
+            //HttpMockServer.Matcher = new PermissiveRecordMatcher();
+            Dictionary<string, string> d = new Dictionary<string, string>();
+            d.Add("Microsoft.Authorization", null);
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
             // Enable undo functionality as well as mock recording
             using (UndoContext context = UndoContext.Current)
             {
@@ -53,11 +68,17 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
                 SetupManagementClients();
 
-                helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                helper.SetupEnvironment();
 
-                helper.SetupModules(AzureModule.AzureProfile, "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + this.GetType().Name + ".ps1");
-
+                helper.SetupModules(AzureModule.AzureResourceManager, 
+                    "ScenarioTests\\Common.ps1", 
+                    "ScenarioTests\\" + this.GetType().Name + ".ps1", 
+                    helper.RMProfileModule, 
+                    helper.RMResourceModule, 
+                    helper.RMStorageDataPlaneModule, 
+                    helper.RMStorageModule, 
+                    helper.GetRMModulePath(@"AzureRM.Insights.psd1"), 
+                    helper.GetRMModulePath(@"AzureRM.Sql.psd1"));
                 helper.RunPowerShellTest(scripts);
             }
         }
@@ -95,7 +116,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             return client;
         }
 
-        private AuthorizationManagementClient GetAuthorizationManagementClient()
+        protected AuthorizationManagementClient GetAuthorizationManagementClient()
         {   
             AuthorizationManagementClient client = TestBase.GetServiceClient<AuthorizationManagementClient>(new CSMTestEnvironmentFactory());
             if (HttpMockServer.Mode == HttpRecorderMode.Playback)
@@ -104,7 +125,50 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                 client.LongRunningOperationRetryTimeout = 0;
             }
             return client;
+        }
 
+        protected GraphRbacManagementClient GetGraphClient()
+        {
+            var testFactory = new CSMTestEnvironmentFactory();
+            var environment = testFactory.GetTestEnvironment();
+            string tenantId = Guid.Empty.ToString();
+
+            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            {
+                tenantId = environment.AuthorizationContext.TenantId;
+                UserDomain = environment.AuthorizationContext.UserDomain;
+
+                HttpMockServer.Variables[TenantIdKey] = tenantId;
+                HttpMockServer.Variables[DomainKey] = UserDomain;
+            }
+            else if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                if (HttpMockServer.Variables.ContainsKey(TenantIdKey))
+                {
+                    tenantId = HttpMockServer.Variables[TenantIdKey];
+                    AzureRmProfileProvider.Instance.Profile.Context.Tenant.Id = new Guid(tenantId);
+                }
+                if (HttpMockServer.Variables.ContainsKey(DomainKey))
+                {
+                    UserDomain = HttpMockServer.Variables[DomainKey];
+                    AzureRmProfileProvider.Instance.Profile.Context.Tenant.Domain = UserDomain;
+                }
+            }
+
+            return TestBase.GetGraphServiceClient<GraphRbacManagementClient>(testFactory, tenantId);
+        }
+
+        protected Management.Storage.StorageManagementClient GetStorageV2Client()
+        {
+            var client =
+                TestBase.GetServiceClient<Management.Storage.StorageManagementClient>(new CSMTestEnvironmentFactory());
+
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                client.LongRunningOperationInitialTimeout = 0;
+                client.LongRunningOperationRetryTimeout = 0;
+            }
+            return client;
         }
     }
 }

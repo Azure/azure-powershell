@@ -22,7 +22,7 @@ using System.Security.Cryptography;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
-    [Cmdlet(VerbsData.Import, "AzureStorSimpleLegacyApplianceConfig")]
+    [Cmdlet(VerbsData.Import, "AzureStorSimpleLegacyApplianceConfig"), OutputType(typeof(LegacyApplianceConfiguration))]
     public class ImportAzureStorSimpleLegacyApplianceConfig : StorSimpleCmdletBase
     {
 
@@ -99,11 +99,11 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         internal override void HandleException(Exception exception)
         {
             // Parser throws missing member exception if any expected fields are missing, handling this as special case.
-            if (typeof (MissingMemberException) == exception.GetType())
+            if (typeof(MissingMemberException) == exception.GetType())
             {
                 WriteError(new ErrorRecord(exception, string.Empty, ErrorCategory.ParserError, null));
             }
-            else if (typeof (CryptographicException) == exception.GetType())
+            else if (typeof(CryptographicException) == exception.GetType())
             {
                 WriteError(
                     new ErrorRecord(

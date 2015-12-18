@@ -12,38 +12,50 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
-using Newtonsoft.Json;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 {
     /// <summary>
     /// Gets the settings of the DSC extension on a particular VM.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, VirtualMachineDscExtensionCmdletNoun),
+    [Cmdlet(
+        VerbsCommon.Get,
+        DscExtensionCmdletCommonBase.VirtualMachineDscExtensionCmdletNoun),
     OutputType(typeof(VirtualMachineDscExtensionContext))]
-    public class GetAzureVMDscExtensionCommand : VirtualMachineDscExtensionCmdletBase
+    public class GetAzureVMDscExtensionCommand : VirtualMachineExtensionCmdletBase
     {
-        internal void ExecuteCommand()
+        protected override void ProcessRecord()
         {
+            base.ProcessRecord();
+            ExecuteCommand();
+        }
+
+        private void ExecuteCommand()
+        {
+            extensionName = DscExtensionCmdletConstants.ExtensionPublishedName;
+            publisherName = DscExtensionCmdletConstants.ExtensionPublishedNamespace;
+
             List<ResourceExtensionReference> extensionRefs = GetPredicateExtensionList();
             WriteObject(
                 extensionRefs == null ? null : extensionRefs.Select(
                 r =>
                 {
                     GetExtensionValues(r);
-                    DscPublicSettings publicSettings = null;
+                    DscExtensionPublicSettings extensionPublicSettings = null;
                     try
                     {
-                        publicSettings = DscSettingsSerializer.DeserializePublicSettings(PublicConfiguration);
+                        extensionPublicSettings = DscExtensionSettingsSerializer.DeserializePublicSettings(PublicConfiguration);
                     }
                     catch (JsonException e)
                     {
@@ -71,7 +83,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                         PrivateConfiguration = SecureStringHelper.GetSecureString(PrivateConfiguration)
                     };
 
-                    if (publicSettings == null)
+                    if (extensionPublicSettings == null)
                     {
                         context.ModulesUrl = string.Empty;
                         context.ConfigurationFunction = string.Empty;
@@ -79,9 +91,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                     }
                     else
                     {
-                        context.ModulesUrl = publicSettings.ModulesUrl;
-                        context.ConfigurationFunction = publicSettings.ConfigurationFunction;
-                        context.Properties = new Hashtable(publicSettings.Properties.ToDictionary( x => x.Name, x => x.Value ));
+                        context.ModulesUrl = extensionPublicSettings.ModulesUrl;
+                        context.ConfigurationFunction = extensionPublicSettings.ConfigurationFunction;
+                        if (extensionPublicSettings.Properties != null)
+                        {
+                            context.Properties =
+                                new Hashtable(extensionPublicSettings.Properties.ToDictionary(x => x.Name, x => x.Value));
+                        }
                     }
 
                     return context;
@@ -89,13 +105,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                 
                 ).FirstOrDefault());
         }
-
-        protected override void ProcessRecord()
-        {
-            base.ProcessRecord();
-            ExecuteCommand();
-        }
-
     }
 }
 

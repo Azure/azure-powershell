@@ -23,7 +23,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureNetworkInterface"), OutputType(typeof(PSNetworkInterface))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmNetworkInterface"), OutputType(typeof(PSNetworkInterface))]
     public class SetAzureNetworkInterfaceCommand : NetworkInterfaceBaseCmdlet
     {
         [Parameter(
@@ -53,7 +53,6 @@ namespace Microsoft.Azure.Commands.Network
             
             // Map to the sdk object
             var networkInterfaceModel = Mapper.Map<MNM.NetworkInterface>(this.NetworkInterface);
-            networkInterfaceModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.NetworkInterfaceType;
             networkInterfaceModel.Tags = TagsConversionHelper.CreateTagDictionary(this.NetworkInterface.Tag, validate: true);
 
             this.NetworkInterfaceClient.CreateOrUpdate(this.NetworkInterface.ResourceGroupName, this.NetworkInterface.Name, networkInterfaceModel);

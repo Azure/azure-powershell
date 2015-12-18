@@ -20,6 +20,11 @@ namespace Microsoft.Azure.Commands.Resources.Models
     public class PSResourceProviderOperation
     {
         /// <summary>
+        /// Gets or sets the operation id
+        /// </summary>
+        public string Operation { get; set; }
+
+        /// <summary>
         /// Gets or sets the name of the provider operation.
         /// </summary>
         public string OperationName { get; set; }
