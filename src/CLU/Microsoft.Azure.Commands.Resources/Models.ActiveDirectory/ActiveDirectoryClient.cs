@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Graph.RBAC.Models;
 using Microsoft.Rest.Azure;
+using Microsoft.Rest.Azure.OData;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -39,9 +40,10 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
         {
             AccessTokenCredential creds = (AccessTokenCredential)authenticationFactory.GetSubscriptionCloudCredentials(context);
             GraphClient = clientFactory.CreateCustomArmClient<GraphRbacManagementClient>(
-                creds.TenantID,
-                creds,
-                context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.Graph));
+                context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.Graph),
+                creds);
+            GraphClient.TenantID = creds.TenantID;
+            GraphClient.SubscriptionId = creds.SubscriptionId;
         }
 
         public PSADObject GetADObject(ADObjectFilterOptions options)
@@ -101,7 +103,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                 try
                 {
                     servicePrincipal = GraphClient.ServicePrincipal
-                                        .List(item => item.ServicePrincipalNames.Contains(options.SPN))
+                                        .List(new ODataQuery<ServicePrincipal>(item => item.ServicePrincipalNames.Contains(options.SPN)))
                                         .FirstOrDefault();
                 }
                 catch {  /* The user does not exist, ignore the exception. */ }
@@ -120,7 +122,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                     if (string.IsNullOrEmpty(options.NextLink))
                     {
                         result = GraphClient.ServicePrincipal
-                                    .List(item => item.DisplayName.StartsWith(options.SearchString) );
+                                    .List(new ODataQuery<ServicePrincipal>(item => item.DisplayName.StartsWith(options.SearchString)));
                     }
                     else
                     {
@@ -132,7 +134,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                 }
                 else
                 {
-                    result = GraphClient.ServicePrincipal.List(item => item.DisplayName.StartsWith(options.SearchString));
+                    result = GraphClient.ServicePrincipal.List(new ODataQuery<ServicePrincipal>(item => item.DisplayName.StartsWith(options.SearchString)));
                     servicePrincipals.AddRange(result.Select(u => u.ToPSADServicePrincipal()));
 
                     while (!string.IsNullOrEmpty(result.NextPageLink))
@@ -175,7 +177,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                 try
                 {
                     user = GraphClient.User
-                            .List(item => item.SignInName == (Normalize(options.Mail) ?? Normalize(options.SignInName)))
+                            .List(new ODataQuery<User>(item => item.SignInName == (Normalize(options.Mail) ?? Normalize(options.SignInName))))
                             .FirstOrDefault();
                 }
                 catch {  /* The user does not exist, ignore the exception. */ }
@@ -191,7 +193,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                 {
                     if (string.IsNullOrEmpty(options.NextLink))
                     {
-                        result = GraphClient.User.List(item => item.DisplayName.StartsWith(options.SearchString));
+                        result = GraphClient.User.List(new ODataQuery<User>(item => item.DisplayName.StartsWith(options.SearchString)));
                     }
                     else
                     {
@@ -203,7 +205,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                 }
                 else
                 {
-                    result = GraphClient.User.List(item => item.DisplayName.StartsWith(options.SearchString));
+                    result = GraphClient.User.List(new ODataQuery<User>(item => item.DisplayName.StartsWith(options.SearchString)));
                     users.AddRange(result.Select(u => u.ToPSADUser()));
 
                     while (!string.IsNullOrEmpty(result.NextPageLink))
@@ -273,8 +275,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                 {
                     if (string.IsNullOrEmpty(options.NextLink))
                     {
-                        result = GraphClient.Group.List(
-                            item => item.Mail == options.Mail && item.DisplayName.StartsWith(options.SearchString));
+                        result = GraphClient.Group.List(new ODataQuery<ADGroup>(
+                            item => item.Mail == options.Mail && item.DisplayName.StartsWith(options.SearchString)));
                     }
                     else
                     {
@@ -286,8 +288,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                 }
                 else
                 {
-                    result = GraphClient.Group.List(
-                        item => item.Mail == options.Mail && item.DisplayName.StartsWith(options.SearchString));
+                    result = GraphClient.Group.List(new ODataQuery<ADGroup>(
+                        item => item.Mail == options.Mail && item.DisplayName.StartsWith(options.SearchString)));
                     groups.AddRange(result.Select(g => g.ToPSADGroup()));
 
                     while (!string.IsNullOrEmpty(result.NextPageLink))
