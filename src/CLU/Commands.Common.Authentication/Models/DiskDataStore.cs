@@ -16,7 +16,7 @@ using System;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Commands.Common.Authentication.Properties;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Models
 {

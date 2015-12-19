@@ -19,7 +19,7 @@ using System;
 using System.Runtime.InteropServices;
 using Microsoft.Rest.Azure.Authentication;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Commands.Common.Authentication.Properties;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {

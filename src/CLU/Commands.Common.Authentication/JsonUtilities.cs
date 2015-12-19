@@ -17,7 +17,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Commands.Common.Authentication.Properties;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {

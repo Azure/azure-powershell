@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using System;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Commands.Common.Authentication.Properties;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {

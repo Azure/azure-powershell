@@ -15,7 +15,7 @@
 using System;
 using System.IO;
 using System.Linq;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Commands.Common.Authentication.Properties;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {

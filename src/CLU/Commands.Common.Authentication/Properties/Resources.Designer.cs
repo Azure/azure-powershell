@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
+namespace Commands.Common.Authentication.Properties {
     using System;
     using System.Reflection;
     

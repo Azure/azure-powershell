@@ -14,7 +14,7 @@
 
 using System;
 using System.Collections.Generic;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Commands.Common.Authentication.Properties;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Models
 {
