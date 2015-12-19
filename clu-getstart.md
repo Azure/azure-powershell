@@ -46,15 +46,17 @@ CLUPackages require some additional files to direct generation of indexing, and 
 ``` 
    
 ### Package Creation and Testing
-   2 options
-   * Run `<repo-root>\tools\CLU\SetupEnv.bat` which build and generate all cmdlet packages and deploy to under `<repo root>\drop` folder. When you have a clean environment, you should always do this first.
-   * Run `<repo-root>\tools\CLU\BuildCmdlet` <name like: Microsoft.Azure.Commands.Profile>", this will build and refresh an individual cmdlet package.
+   Two options
+   1. Run `<repo-root>\tools\CLU\BuildAndInstallClu.bat` which build and generate all cmdlet packages and deploy to under `<repo root>\drop\clurun` folder, with 3 flavors `win7-x64`, `osx.10.10-x64` and `ubuntu.14.04-x64`. When you have a clean environment or just pull from upstream, you should clean temporary bits such as `git clean -xdf`, and run this command.
+   2. Run `<repo-root>\tools\CLU\BuildCmdlet <package name like Microsoft.Azure.Commands.Profile>` <name like: Microsoft.Azure.Commands.Profile>", this will build and refresh an individual cmdlet package.
 
-Once you are done with #1, in the same command window, you can type "azure help" to explore and run cmdlets. 
+After #1 above is finished, you can run `drop\clurun\<platform>\azure.bat help` to explore.
 
-To debug, set environment variable of `DebugCLU` to "1"(#1 should set it up already). When you run any command, you will see a prompt telling you to attach debugger. 
+To debug, set environment variable of `DebugCLU` to "1". Then on running any command, you will be prompted to attach a debugger.
 
-To test on osx/linux boxes, do #1, open `<repo-root>\drop\clurun`, you should see subfolders for "osx" and "ubuntu", copy the folder to your target machine, and run the "azure.sh" inside. Make sure set execution permission using `chmod +x azure.sh clurun`
+There is also `<repo-root>\tools\CLU\SetupEnv.bat` which is a windows batch wrapping around the `BuildAndInstallClu.bat`, plus set the `DebugCLU` for you, and add the `drop\clurun\win7-x64\azure.bat` to the PATH environment variable.
+
+To test on osx/linux boxes, do #1, open `<repo-root>\drop\clurun`, copy the flavor folder to your target machine, and run the "azure.sh" inside. Make sure set execution permission using `chmod +x azure.sh clurun`
 
 (All of those are subject to change, contact yugangw or adxsdkdev for any questions)
 
