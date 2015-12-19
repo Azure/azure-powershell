@@ -124,7 +124,7 @@
     <value>No certificate was found in the certificate store with thumbprint {0}</value>
   </data>
   <data name="ChangingDefaultEnvironmentNotSupported" xml:space="preserve">
-    <value>Changing public environment is not supported.</value>
+    <value>Changing a public environment is not supported.</value>
   </data>
   <data name="CredentialOrganizationIdMessage" xml:space="preserve">
     <value>-Credential parameter can only be used with Organization ID credentials. For more information, please refer to http://go.microsoft.com/fwlink/?linkid=331007&amp;clcid=0x409 for more information about the difference between an organizational account and a Microsoft account.</value>
