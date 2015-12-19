@@ -54,9 +54,9 @@ namespace Microsoft.Azure.Commands.Network
             return true;
         }
 
-        public PSLoadBalancer GetLoadBalancer(string resourceGroupName, string name)
+        public PSLoadBalancer GetLoadBalancer(string resourceGroupName, string name, string expandResource = null)
         {
-            var lb = this.LoadBalancerClient.Get(resourceGroupName, name);
+            var lb = this.LoadBalancerClient.Get(resourceGroupName, name, expandResource);
 
             var psLoadBalancer = Mapper.Map<PSLoadBalancer>(lb);
             psLoadBalancer.ResourceGroupName = resourceGroupName;

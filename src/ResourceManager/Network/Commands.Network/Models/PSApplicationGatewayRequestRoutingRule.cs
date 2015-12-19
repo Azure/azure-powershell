@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.Network.Models
          public PSResourceId BackendAddressPool { get; set; }
          public PSResourceId BackendHttpSettings { get; set; }
          public PSResourceId HttpListener { get; set; }
+         public PSResourceId UrlPathMap { get; set; }
          public string ProvisioningState { get; set; }
 
          [JsonIgnore]
@@ -42,6 +43,12 @@ namespace Microsoft.Azure.Commands.Network.Models
          public string HttpListenerText
          {
              get { return JsonConvert.SerializeObject(HttpListener, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+         }
+
+         [JsonIgnore]
+         public string UrlPathMapText
+         {
+             get { return JsonConvert.SerializeObject(UrlPathMap, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
          }
      }
 }
