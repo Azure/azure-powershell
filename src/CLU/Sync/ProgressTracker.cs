@@ -57,7 +57,6 @@ namespace Microsoft.WindowsAzure.Commands.Sync
             try
             {
                 // TODO: CLU
-                progressTimer = new Timer(progressTimerOnElapsed, null, TimeSpan.MinValue, TimeSpan.FromMilliseconds(progressInterval.TotalMilliseconds));
                 progressTimerOnElapsed = (state) =>
                 {
                     ProgressRecord pr;
@@ -65,9 +64,10 @@ namespace Microsoft.WindowsAzure.Commands.Sync
                     {
                         this.progress(pr);
                     }
-                    progressTimer.Change(TimeSpan.MinValue, TimeSpan.FromMilliseconds(progressInterval.TotalMilliseconds));
+                    //progressTimer.Change(TimeSpan.Zero, TimeSpan.FromMilliseconds(progressInterval.TotalMilliseconds));
                 };
-                progressTimer.Change(TimeSpan.MinValue, TimeSpan.FromMilliseconds(progressInterval.TotalMilliseconds));
+
+                progressTimer = new Timer(progressTimerOnElapsed, null, TimeSpan.Zero, TimeSpan.FromMilliseconds(progressInterval.TotalMilliseconds));
                 /*
                 progressTimer = new Timer
                 {
@@ -97,7 +97,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync
                 if(throwing && progressTimer != null)
                 {
                     // TODO: CLU
-                    progressTimer.Change(Timeout.Infinite, Timeout.Infinite);
+                    //progressTimer.Change(Timeout.Infinite, Timeout.Infinite);
                     /*
                     progressTimer.Elapsed -= progressTimerOnElapsed;
                     progressTimer.Enabled = false;
@@ -124,7 +124,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync
             if(disposing)
             {
                 // TODO: CLU
-                progressTimer.Change(Timeout.Infinite, Timeout.Infinite);
+                //progressTimer.Change(Timeout.Infinite, Timeout.Infinite);
                 /*
                 progressTimer.Elapsed -= progressTimerOnElapsed;
                 progressTimer.Enabled = false;

@@ -187,7 +187,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
         {
             this.blob = blob;
             // TODO: CLU
-            this.blob.FetchAttributesAsync();
+            this.blob.FetchAttributesAsync().Wait();
             //this.blob.FetchAttributes();
             this.Current = blob;
         }

@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             HelpMessage = "Uri to blob")]
         [ValidateNotNullOrEmpty]
         [Alias("dst")]
-        public Uri Destination
+        public string Destination
         {
             get;
             set;
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             HelpMessage = "Local path of the vhd file")]
         [ValidateNotNullOrEmpty]
         [Alias("lf")]
-        public FileInfo LocalFilePath
+        public string LocalFilePath
         {
             get;
             set;
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             HelpMessage = "Uri to a base image in a blob storage account to apply the difference")]
         [ValidateNotNullOrEmpty]
         [Alias("bs")]
-        public Uri BaseImageUriToPatch
+        public string BaseImageUriToPatch
         {
             get;
             set;
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
         public UploadParameters ValidateParameters()
         {
             BlobUri destinationUri;
-            if (!BlobUri.TryParseUri(Destination, out destinationUri))
+            if (!BlobUri.TryParseUri(new Uri(Destination), out destinationUri))
             {
                 throw new ArgumentOutOfRangeException("Destination", this.Destination.ToString());
             }
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             BlobUri baseImageUri = null;
             if (this.BaseImageUriToPatch != null)
             {
-                if (!BlobUri.TryParseUri(BaseImageUriToPatch, out baseImageUri))
+                if (!BlobUri.TryParseUri(new Uri(BaseImageUriToPatch), out baseImageUri))
                 {
                     throw new ArgumentOutOfRangeException("BaseImageUriToPatch", this.BaseImageUriToPatch.ToString());
                 }
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             var storageCredentialsFactory = CreateStorageCredentialsFactory();
 
             // TODO: CLU
-            FileInfo filePath = new FileInfo(Directory.GetCurrentDirectory());
+            FileInfo filePath = new FileInfo(LocalFilePath);
             /*
             PathIntrinsics currentPath = SessionState.Path;
             var filePath = new FileInfo(currentPath.GetUnresolvedProviderPathFromPSPath(LocalFilePath.ToString()));
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                         DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
             */
 
-            if (StorageCredentialsFactory.IsChannelRequired(Destination))
+            if (StorageCredentialsFactory.IsChannelRequired(new Uri(Destination)))
             {
                 storageCredentialsFactory = new StorageCredentialsFactory(this.ResourceGroupName, storageClient, DefaultContext.Subscription);
             }

@@ -141,8 +141,8 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Download
             BlobName = blobName;
             QueryString = queryString;
             // TODO: CLU
+            BaseUri = uri.Scheme + "://" + uri.DnsSafeHost;
             //BaseUri = uri.Scheme + Uri.SchemeDelimiter + uri.DnsSafeHost;
-            BaseUri = uri.Scheme + "//" + uri.DnsSafeHost;
             BlobPath = this.BaseUri + uri.LocalPath;
         }
 
