@@ -78,36 +78,32 @@ namespace Microsoft.Azure.Commands.Compute.Models
 
         private void LogProgress(int activityId, string activity, double precentComplete, TimeSpan remainingTime, double avgThroughputMbps)
         {
-            var message = String.Format(Rsrc.PSSyncOutputEventsLogProgress,
-                                        precentComplete,
-                                        FormatDuration(remainingTime),
-                                        avgThroughputMbps);
-            var progressCommand = String.Format(@"Write-Progress -Id {0} -Activity '{1}' -Status '{2}' -SecondsRemaining {3} -PercentComplete {4}", activityId, activity, message, (int)remainingTime.TotalSeconds, (int)precentComplete);
-            // TODO: CLU
-            /*
             using (var ps = System.Management.Automation.PowerShell.Create())
             {
                 ps.Runspace = runspace;
+                var message = String.Format(Rsrc.PSSyncOutputEventsLogProgress,
+                                            precentComplete,
+                                            FormatDuration(remainingTime),
+                                            avgThroughputMbps);
+                var progressCommand = String.Format(@"Write-Progress -Id {0} -Activity '{1}' -Status '{2}' -SecondsRemaining {3} -PercentComplete {4}", activityId, activity, message, (int)remainingTime.TotalSeconds, (int)precentComplete);
                 // TODO: CLU
+                Console.WriteLine(progressCommand);
                 //ps.AddScript(progressCommand);
                 //ps.Invoke();
             }
-            */
         }
 
         private void LogProgressComplete(int activityId, string activity)
         {
-            var progressCommand = String.Format(@"Write-Progress -Id {0} -Activity '{1}' -Status '{2}' -Completed", activityId, activity, Rsrc.PSSyncOutputEventsLogProgressCompleteCompleted);
-            // TODO: CLU
-            /*
             using (var ps = System.Management.Automation.PowerShell.Create())
             {
-                ps.Runspace = runspace;
+                var progressCommand = String.Format(@"Write-Progress -Id {0} -Activity '{1}' -Status '{2}' -Completed", activityId, activity, Rsrc.PSSyncOutputEventsLogProgressCompleteCompleted);
                 // TODO: CLU
+                Console.WriteLine(progressCommand);
+                ps.Runspace = runspace;
                 //ps.AddScript(progressCommand);
                 //ps.Invoke();
             }
-            */
         }
 
         public void MessageCreatingNewPageBlob(long pageBlobSize)
@@ -117,32 +113,29 @@ namespace Microsoft.Azure.Commands.Compute.Models
 
         private void LogMessage(string format, params object[] parameters)
         {
-            var message = String.Format(format, parameters);
-            var verboseMessage = String.Format("Write-Host '{0}'", message);
-            // TODO: CLU
-            /*
             using (var ps = System.Management.Automation.PowerShell.Create())
             {
                 ps.Runspace = runspace;
+                var message = String.Format(format, parameters);
+                var verboseMessage = String.Format("Write-Host '{0}'", message);
                 // TODO: CLU
+                Console.WriteLine(verboseMessage);
                 //ps.AddScript(verboseMessage);
                 //ps.Invoke();
             }
-            */
         }
 
         private void LogError(Exception e)
         {
-            // TODO: CLU
-            /*
             using (var ps = System.Management.Automation.PowerShell.Create())
             {
                 ps.Runspace = runspace;
-                ps.AddCommand("Write-Error");
-                ps.AddParameter("ErrorRecord", new ErrorRecord(e, String.Empty, ErrorCategory.NotSpecified, null));
+                // TODO: CLU
+                Console.Error.WriteLine(new ErrorRecord(e, String.Empty, ErrorCategory.NotSpecified, null));
+                //ps.AddCommand("Write-Error");
+                //ps.AddParameter("ErrorRecord", new ErrorRecord(e, String.Empty, ErrorCategory.NotSpecified, null));
                 //ps.Invoke();
             }
-            */
         }
 
         public void MessageResumingUpload()
@@ -247,24 +240,20 @@ namespace Microsoft.Azure.Commands.Compute.Models
 
         private void LogDebug(string format, params object[] parameters)
         {
-            var message = String.Format(format, parameters);
-            var debugMessage = String.Format("Write-Debug -Message '{0}'", message);
-            // TODO: CLU
-            /*
             using (var ps = System.Management.Automation.PowerShell.Create())
             {
                 ps.Runspace = runspace;
                 // TODO: CLU
+                var message = String.Format(format, parameters);
+                var debugMessage = String.Format("Write-Debug -Message '{0}'", message);
+                Console.WriteLine(debugMessage);
                 //ps.AddScript(debugMessage);
                 //ps.Invoke();
             }
-            */
         }
 
         public void ProgressEmptyBlockDetection(int processedRangeCount, int totalRangeCount)
         {
-            // TODO: CLU
-            /*
             using (var ps = System.Management.Automation.PowerShell.Create())
             {
                 if (processedRangeCount >= totalRangeCount)
@@ -273,6 +262,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
                     var progressCommand1 = String.Format(@"Write-Progress -Id {0} -Activity '{1}' -Status '{2}' -Completed", 2, Rsrc.PSSyncOutputEventsProgressEmptyBlockDetection, Rsrc.PSSyncOutputEventsEmptyBlockDetectionCompleted);
                     ps.Runspace = runspace;
                     // TODO: CLU
+                    Console.WriteLine(progressCommand1);
                     //ps.AddScript(progressCommand1);
                     //ps.Invoke();
                     return;
@@ -281,18 +271,19 @@ namespace Microsoft.Azure.Commands.Compute.Models
                 var progressCommand = String.Format(@"Write-Progress -Id {0} -Activity '{1}' -Status '{2}' -SecondsRemaining {3} -PercentComplete {4}", 2, Rsrc.PSSyncOutputEventsProgressEmptyBlockDetection, Rsrc.PSSyncOutputEventsEmptyBlockDetectionDetecting, -1, ((double)processedRangeCount / totalRangeCount) * 100);
                 ps.Runspace = runspace;
                 // TODO: CLU
+                Console.WriteLine(progressCommand);
                 //ps.AddScript(progressCommand);
                 //ps.Invoke();
             }
-            */
         }
 
         public void WriteVerboseWithTimestamp(string message, params object[] args)
         {
             // TODO: CLU
-            /*
             var messageWithTimeStamp = string.Format(CultureInfo.CurrentCulture, "{0:T} - {1}", DateTime.Now, string.Format(message, args));
             var progressCommand = String.Format(@"Write-Verbose -Message {0}", messageWithTimeStamp);
+            Console.WriteLine(progressCommand);
+            /*
             using (var ps = System.Management.Automation.PowerShell.Create())
             {
                 ps.Runspace = runspace;
