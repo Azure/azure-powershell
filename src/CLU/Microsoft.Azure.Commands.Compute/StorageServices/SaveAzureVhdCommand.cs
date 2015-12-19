@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             HelpMessage = "Uri to blob")]
         [ValidateNotNullOrEmpty]
         [Alias("src", "Source")]
-        public Uri SourceUri { get; set; }
+        public string SourceUri { get; set; }
 
         [Parameter(
             Position = 2,
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             HelpMessage = "Local path of the vhd file")]
         [ValidateNotNullOrEmpty]
         [Alias("lf")]
-        public FileInfo LocalFilePath { get; set; }
+        public string LocalFilePath { get; set; }
 
         private int numberOfThreads = DefaultNumberOfUploaderThreads;
 
@@ -91,8 +91,8 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
         {
             var result = DownloadFromBlobUri(
                 this,
-                this.SourceUri,
-                this.LocalFilePath,
+                new Uri(this.SourceUri),
+                new FileInfo(this.LocalFilePath),
                 this.StorageKey,
                 this.ResourceGroupName,
                 this.NumberOfThreads,
