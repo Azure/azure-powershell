@@ -97,6 +97,83 @@ namespace Microsoft.Azure.Commands.HDInsight
             set { parameters.DefaultStorageAccountKey = value; }
         }
 
+        [Parameter(ValueFromPipeline = true,
+            HelpMessage = "The HDInsight cluster configuration to use when creating the new cluster.")]
+        public AzureHDInsightConfig Config
+        {
+            get
+            {
+                var result = new AzureHDInsightConfig
+                {
+                    ClusterType = parameters.ClusterType,
+                    DefaultStorageAccountName = parameters.DefaultStorageAccountName,
+                    DefaultStorageAccountKey = parameters.DefaultStorageAccountKey,
+                    WorkerNodeSize = parameters.WorkerNodeSize,
+                    HeadNodeSize = parameters.HeadNodeSize,
+                    ZookeeperNodeSize = parameters.ZookeeperNodeSize,
+                    HiveMetastore = HiveMetastore,
+                    OozieMetastore = OozieMetastore,
+                    ObjectId = ObjectId,
+                    AADTenantId = AadTenantId,
+                    CertificateFilePath = CertificateFilePath,
+                    CertificatePassword = CertificatePassword
+                };
+                foreach (
+                    var storageAccount in
+                        parameters.AdditionalStorageAccounts.Where(
+                            storageAccount => !result.AdditionalStorageAccounts.ContainsKey(storageAccount.Key)))
+                {
+                    result.AdditionalStorageAccounts.Add(storageAccount.Key, storageAccount.Value);
+                }
+                foreach (var val in parameters.Configurations.Where(val => !result.Configurations.ContainsKey(val.Key)))
+                {
+                    result.Configurations.Add(val.Key, DictionaryToHashtable(val.Value));
+                }
+                foreach (var action in parameters.ScriptActions.Where(action => !result.ScriptActions.ContainsKey(action.Key)))
+                {
+                    result.ScriptActions.Add(action.Key, action.Value.Select(a => new AzureHDInsightScriptAction(a)).ToList());
+                }
+                return result;
+            }
+            set
+            {
+                parameters.ClusterType = value.ClusterType;
+                if (parameters.DefaultStorageAccountName == null)
+                {
+                    parameters.DefaultStorageAccountName = value.DefaultStorageAccountName;
+                }
+                if (parameters.DefaultStorageAccountKey == null)
+                {
+                    parameters.DefaultStorageAccountKey = value.DefaultStorageAccountKey;
+                }
+                parameters.WorkerNodeSize = value.WorkerNodeSize;
+                parameters.HeadNodeSize = value.HeadNodeSize;
+                parameters.ZookeeperNodeSize = value.ZookeeperNodeSize;
+                HiveMetastore = value.HiveMetastore;
+                OozieMetastore = value.OozieMetastore;
+                CertificateFilePath = value.CertificateFilePath;
+                AadTenantId = value.AADTenantId;
+                ObjectId = value.ObjectId;
+                CertificatePassword = value.CertificatePassword;
+
+                foreach (
+                    var storageAccount in
+                        value.AdditionalStorageAccounts.Where(
+                            storageAccount => !parameters.AdditionalStorageAccounts.ContainsKey(storageAccount.Key)))
+                {
+                    parameters.AdditionalStorageAccounts.Add(storageAccount.Key, storageAccount.Value);
+                }
+                foreach (var val in value.Configurations.Where(val => !parameters.Configurations.ContainsKey(val.Key)))
+                {
+                    parameters.Configurations.Add(val.Key, HashtableToDictionary(val.Value));
+                }
+                foreach (var action in value.ScriptActions.Where(action => !parameters.ScriptActions.ContainsKey(action.Key)))
+                {
+                    parameters.ScriptActions.Add(action.Key, action.Value.Select(a => a.GetScriptActionFromPSModel()).ToList());
+                }
+            }
+        }
+
         [Parameter(HelpMessage = "Gets or sets the database to store the metadata for Oozie.")]
         public AzureHDInsightMetastore OozieMetastore { get; set; }
 
@@ -203,76 +280,6 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(HelpMessage = "Gets or sets the Service Principal AAD Tenant Id for accessing Azure Data Lake.", ParameterSetName = "ServicePrincipal")]
         public Guid AadTenantId { get; set; }
 
-        [Parameter(ValueFromPipeline = true,
-            HelpMessage = "The HDInsight cluster configuration to use when creating the new cluster.")]
-        public AzureHDInsightConfig Config {
-            get
-            {
-                var result = new AzureHDInsightConfig
-                {
-                    ClusterType = parameters.ClusterType,
-                    DefaultStorageAccountName = parameters.DefaultStorageAccountName,
-                    DefaultStorageAccountKey = parameters.DefaultStorageAccountKey,
-                    WorkerNodeSize = parameters.WorkerNodeSize,
-                    HeadNodeSize = parameters.HeadNodeSize,
-                    ZookeeperNodeSize = parameters.ZookeeperNodeSize,
-                    HiveMetastore = HiveMetastore,
-                    OozieMetastore = OozieMetastore,
-                    ObjectId = ObjectId,
-                    AADTenantId = AadTenantId,
-                    CertificateFilePath = CertificateFilePath,
-                    CertificatePassword = CertificatePassword
-                };
-                foreach (
-                    var storageAccount in
-                        parameters.AdditionalStorageAccounts.Where(
-                            storageAccount => !result.AdditionalStorageAccounts.ContainsKey(storageAccount.Key)))
-                {
-                    result.AdditionalStorageAccounts.Add(storageAccount.Key, storageAccount.Value);
-                }
-                foreach (var val in parameters.Configurations.Where(val => !result.Configurations.ContainsKey(val.Key)))
-                {
-                    result.Configurations.Add(val.Key, DictionaryToHashtable(val.Value));
-                }
-                foreach (var action in parameters.ScriptActions.Where(action => !result.ScriptActions.ContainsKey(action.Key)))
-                {
-                    result.ScriptActions.Add(action.Key, action.Value.Select(a => new AzureHDInsightScriptAction(a)).ToList());
-                }
-                return result;
-            }
-            set
-            {
-                parameters.ClusterType = value.ClusterType;
-                parameters.DefaultStorageAccountName = value.DefaultStorageAccountName;
-                parameters.DefaultStorageAccountKey = value.DefaultStorageAccountKey;
-                parameters.WorkerNodeSize = value.WorkerNodeSize;
-                parameters.HeadNodeSize = value.HeadNodeSize;
-                parameters.ZookeeperNodeSize = value.ZookeeperNodeSize;
-                HiveMetastore = value.HiveMetastore;
-                OozieMetastore = value.OozieMetastore;
-                CertificateFilePath = value.CertificateFilePath;
-                AadTenantId = value.AADTenantId;
-                ObjectId = value.ObjectId;
-                CertificatePassword = value.CertificatePassword;
-
-                foreach (
-                    var storageAccount in
-                        value.AdditionalStorageAccounts.Where(
-                            storageAccount => !parameters.AdditionalStorageAccounts.ContainsKey(storageAccount.Key)))
-                {
-                    parameters.AdditionalStorageAccounts.Add(storageAccount.Key, storageAccount.Value);
-                }
-                foreach (var val in value.Configurations.Where(val => !parameters.Configurations.ContainsKey(val.Key)))
-                {
-                    parameters.Configurations.Add(val.Key, HashtableToDictionary(val.Value));
-                }
-                foreach (var action in value.ScriptActions.Where(action => !parameters.ScriptActions.ContainsKey(action.Key)))
-                {
-                    parameters.ScriptActions.Add(action.Key, action.Value.Select(a => a.GetScriptActionFromPSModel()).ToList());
-                }
-            } 
-        }
-
         #endregion
 
 
@@ -336,9 +343,9 @@ namespace Microsoft.Azure.Commands.HDInsight
             }
             if (CertificateFilePath != null && CertificatePassword != null)
             {
-                Microsoft.Azure.Management.HDInsight.Models.ServicePrincipal servicePrincipal = 
-                    new Microsoft.Azure.Management.HDInsight.Models.ServicePrincipal(
-                        GetApplicationId(), GetTenantId(AadTenantId), File.ReadAllBytes(CertificateFilePath), CertificatePassword);
+                var servicePrincipal = new Management.HDInsight.Models.ServicePrincipal(
+                    GetApplicationId(), GetTenantId(AadTenantId), File.ReadAllBytes(CertificateFilePath),
+                    CertificatePassword);
                 parameters.Principal = servicePrincipal;
             }
 

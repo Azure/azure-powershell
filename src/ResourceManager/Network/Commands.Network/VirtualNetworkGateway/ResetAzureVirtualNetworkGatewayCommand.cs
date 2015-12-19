@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The virtualNetworkGateway")]
+        [ValidateNotNull]
         public PSVirtualNetworkGateway VirtualNetworkGateway { get; set; }
 
         public override void ExecuteCmdlet()

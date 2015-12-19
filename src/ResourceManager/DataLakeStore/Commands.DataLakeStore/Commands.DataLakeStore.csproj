@@ -170,6 +170,9 @@
       <Link>AzureRM.DataLakeStore.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Content Include="Microsoft.Azure.Commands.DataLakeStore.dll-help.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Microsoft.Azure.Commands.DataLakeStoreFileSystem.format.ps1xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

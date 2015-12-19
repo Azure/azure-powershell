@@ -238,6 +238,11 @@ namespace Microsoft.Azure.Commands.Network
             Mapper.CreateMap<CNM.PSLocalNetworkGateway, MNM.LocalNetworkGateway>();
             Mapper.CreateMap<CNM.PSVirtualNetworkGatewayConnection, MNM.VirtualNetworkGatewayConnection>();
             Mapper.CreateMap<CNM.PSVirtualNetworkGatewayIpConfiguration, MNM.VirtualNetworkGatewayIPConfiguration>();
+            Mapper.CreateMap<CNM.PSVirtualNetworkGatewaySku, MNM.VirtualNetworkGatewaySku>();
+            Mapper.CreateMap<CNM.PSVpnClientConfiguration, MNM.VpnClientConfiguration>();
+            Mapper.CreateMap<CNM.PSVpnClientParameters, MNM.VpnClientParameters>();
+            Mapper.CreateMap<CNM.PSVpnClientRevokedCertificate, MNM.VpnClientRevokedCertificate>();
+            Mapper.CreateMap<CNM.PSVpnClientRootCertificate, MNM.VpnClientRootCertificate>();
 
             // MNM to CNM
             Mapper.CreateMap<MNM.VirtualNetworkGateway, CNM.PSVirtualNetworkGateway>();
@@ -246,6 +251,11 @@ namespace Microsoft.Azure.Commands.Network
             Mapper.CreateMap<MNM.LocalNetworkGateway, CNM.PSLocalNetworkGateway>();
             Mapper.CreateMap<MNM.VirtualNetworkGatewayConnection, CNM.PSVirtualNetworkGatewayConnection>();
             Mapper.CreateMap<MNM.VirtualNetworkGatewayIPConfiguration, CNM.PSVirtualNetworkGatewayIpConfiguration>();
+            Mapper.CreateMap<MNM.VirtualNetworkGatewaySku, CNM.PSVirtualNetworkGatewaySku>();
+            Mapper.CreateMap<MNM.VpnClientConfiguration, CNM.PSVpnClientConfiguration>();
+            Mapper.CreateMap<MNM.VpnClientParameters, CNM.PSVpnClientParameters>();
+            Mapper.CreateMap<MNM.VpnClientRevokedCertificate, CNM.PSVpnClientRevokedCertificate>();
+            Mapper.CreateMap<MNM.VpnClientRootCertificate, CNM.PSVpnClientRootCertificate>();
 
             // Application Gateways
             // CNM to MNM
