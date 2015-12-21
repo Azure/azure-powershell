@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public DisableComputeNodeSchedulingOption? DisableSchedulingOption { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             DisableComputeNodeSchedulingParameters parameters = new DisableComputeNodeSchedulingParameters(this.BatchContext, 
                 this.PoolId, this.Id, this.ComputeNode, this.AdditionalBehaviors)

@@ -54,6 +54,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         // MPI requires a special pool configuration. When recording, the Storage environment variables need to be
         // set so we can upload the MPI installer for use as a start task resource file.
+        // TO DO: MPI currently needs its own Batch account as well, since it's only enabled in a few regions.  Once it's
+        // enabled everywhere, the MPI tests can just use the default shared account.
+        internal const string MpiAccount = "batchtest";
         internal const string MpiPoolId = "mpiPool";
         internal const string MpiSetupFileContainer = "mpi";
         internal const string MpiSetupFileName = "MSMpiSetup.exe";

@@ -415,7 +415,6 @@ namespace Microsoft.Azure.Commands.Batch.Test
             {
                 ProxyModels.SubtaskInformation subtask = new ProxyModels.SubtaskInformation();
                 subtask.Id = id;
-                subtask.SchedulingError = new ProxyModels.TaskSchedulingError();
                 subtasks.Add(subtask);
             }
 

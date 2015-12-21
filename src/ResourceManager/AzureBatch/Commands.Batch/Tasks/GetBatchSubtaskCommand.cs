@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Batch
             set { this.maxCount = value; }
         }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ListSubtaskOptions options = new ListSubtaskOptions(this.BatchContext, this.JobId,
                 this.TaskId, this.Task, this.AdditionalBehaviors)

@@ -229,11 +229,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
             else
             {
-                // TO DO: Use JobOperations API when available. 
-                // For now, fetch the parent task first and use its method.
                 JobOperations jobOperations = options.Context.BatchOMClient.JobOperations;
-                CloudTask parentTask = jobOperations.GetTask(options.JobId, options.TaskId, additionalBehaviors: options.AdditionalBehaviors);
-                subtasks = parentTask.ListSubtasks(additionalBehaviors: options.AdditionalBehaviors);
+                subtasks = jobOperations.ListSubtasks(options.JobId, options.TaskId, additionalBehaviors: options.AdditionalBehaviors);
             }
             Func<SubtaskInformation, PSSubtaskInformation> mappingFunction = s => { return new PSSubtaskInformation(s); };
             return PSPagedEnumerable<PSSubtaskInformation, SubtaskInformation>.CreateWithMaxCount(

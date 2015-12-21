@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public TimeSpan? AutoScaleEvaluationInterval { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             EnableAutoScaleParameters parameters = new EnableAutoScaleParameters(this.BatchContext, this.Id,
                 pool: null, additionalBehaviors: this.AdditionalBehaviors)
