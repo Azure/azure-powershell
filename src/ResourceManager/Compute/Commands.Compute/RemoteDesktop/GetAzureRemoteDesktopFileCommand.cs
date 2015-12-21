@@ -87,11 +87,11 @@ namespace Microsoft.Azure.Commands.Compute
 
                 // Get the NIC
                 var nicResourceGroupName =
-                    this.GetResourceGroupName(vmResponse.VirtualMachine.NetworkProfile.NetworkInterfaces.First().ReferenceUri);
+                    this.GetResourceGroupName(vmResponse.NetworkProfile.NetworkInterfaces.First().Id);
 
                 var nicName =
                     this.GetResourceName(
-                        vmResponse.VirtualMachine.NetworkProfile.NetworkInterfaces.First().ReferenceUri, "networkInterfaces");
+                        vmResponse.NetworkProfile.NetworkInterfaces.First().Id, "networkInterfaces");
 
                 var nic =
                     this.NetworkClient.NetworkManagementClient.NetworkInterfaces.Get(nicResourceGroupName, nicName);

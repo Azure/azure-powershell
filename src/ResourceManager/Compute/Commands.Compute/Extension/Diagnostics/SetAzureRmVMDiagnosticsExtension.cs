@@ -17,7 +17,9 @@ using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 using System.Xml.Linq;
+using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
@@ -35,6 +37,7 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet(
         VerbsCommon.Set,
         ProfileNouns.VirtualMachineDiagnosticsExtension)]
+    [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureRmVMDiagnosticsExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         private string publicConfiguration;
@@ -226,12 +229,10 @@ namespace Microsoft.Azure.Commands.Compute
                 var parameters = new VirtualMachineExtension
                 {
                     Location = this.Location,
-                    Name = this.Name,
-                    Type = DiagnosticsExtensionConstants.VirtualMachineExtensionResourceType,
                     Settings = this.PublicConfiguration,
                     ProtectedSettings = this.PrivateConfiguration,
                     Publisher = DiagnosticsExtensionConstants.ExtensionPublisher,
-                    ExtensionType = DiagnosticsExtensionConstants.ExtensionType,
+                    VirtualMachineExtensionType = DiagnosticsExtensionConstants.ExtensionType,
                     TypeHandlerVersion = this.TypeHandlerVersion,
                     AutoUpgradeMinorVersion = this.AutoUpgradeMinorVersion
                 };
@@ -239,9 +240,11 @@ namespace Microsoft.Azure.Commands.Compute
                 var op = this.VirtualMachineExtensionClient.CreateOrUpdate(
                     this.ResourceGroupName,
                     this.VMName,
+                    this.Name,
                     parameters);
 
-                WriteObject(op);
+                var result = Mapper.Map<PSAzureOperationResponse>(op);
+                WriteObject(result);
             });
         }
 
