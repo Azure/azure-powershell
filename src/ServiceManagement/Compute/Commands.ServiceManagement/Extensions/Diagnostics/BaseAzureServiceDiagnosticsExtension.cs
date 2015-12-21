@@ -106,10 +106,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
                     throw new ArgumentException(Resources.PaaSDiagnosticsWrongHeader);
                 }
 
-                PublicConfiguration = sr.ReadToEnd();
+                var config = sr.ReadToEnd();
+                PublicConfiguration = this.ExtractPublicConfig(config);
             }
 
-            // the element <StorageAccount> is not meant to be set by teh user in the public config. 
+            // the element <StorageAccount> is not meant to be set by the user in the public config.
             // Make sure it matches the storage account in the private config.
             XmlDocument doc = new XmlDocument();
             XmlNamespaceManager ns = new XmlNamespaceManager(doc.NameTable);
@@ -141,7 +142,38 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             SetPrivateConfigAttribute(StorageAccountElemStr, PrivConfKeyAttr, StorageKey);
             SetPrivateConfigAttribute(StorageAccountElemStr, PrivConfEndpointAttr, Endpoint);
             PrivateConfiguration = PrivateConfigurationXml.ToString();
+        }
 
+        private string ExtractPublicConfig(string config)
+        {
+            int publicConfigBeginIndex = config.IndexOf("<PublicConfig");
+            if (publicConfigBeginIndex == -1)
+            {
+                throw new ArgumentException("Cannot find the PublicConfig element in the config.");
+            }
+
+            int publicConfigEndIndex = config.IndexOf("</PublicConfig>");
+            if (publicConfigEndIndex == -1)
+            {
+                throw new ArgumentException("Cannot find the PublicConfig end element in the config.");
+            }
+
+            if (publicConfigEndIndex <= publicConfigBeginIndex)
+            {
+                throw new ArgumentException("PublicConfig start element in the config is not matching the end element.");
+            }
+
+            var publicConfig = config.Substring(publicConfigBeginIndex, publicConfigEndIndex + "</PublicConfig>".Length - publicConfigBeginIndex);
+
+            // Add namespace on PublicConfig element
+            var doc = new XmlDocument();
+            doc.LoadXml(publicConfig);
+            doc.DocumentElement.SetAttribute("xmlns", XmlNamespace);
+
+            StringWriter sw = new StringWriter();
+            XmlTextWriter xw = new XmlTextWriter(sw);
+            doc.WriteTo(xw);
+            return sw.ToString();
         }
     }
 }
