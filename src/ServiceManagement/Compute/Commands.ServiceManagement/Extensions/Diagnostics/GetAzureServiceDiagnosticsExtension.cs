@@ -65,8 +65,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
                 () => this.ComputeClient.HostedServices.ListExtensions(this.ServiceName),
                 (s, r) =>
                 {
+                    // If Role is not specified, get extensions for all roles. Otherwise, filter on the given role array.
                     var extensionRoleList = (from dr in Deployment.Roles
-                                             where Role.Count() == 0 || Role.Contains(dr.RoleName)
+                                             where (Role == null || !Role.Any()) || Role.Contains(dr.RoleName)
                                              select new ExtensionRole(dr.RoleName)).ToList().Union(new ExtensionRole[] { new ExtensionRole() });
 
                     return from role in extensionRoleList

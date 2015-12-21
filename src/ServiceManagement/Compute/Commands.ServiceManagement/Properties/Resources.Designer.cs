@@ -1691,6 +1691,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No existing {0}.{1} extensions enabled on role: {2}..
+        /// </summary>
+        public static string ServiceExtensionNoExistingExtensionsEnabledOnRole {
+            get {
+                return ResourceManager.GetString("ServiceExtensionNoExistingExtensionsEnabledOnRole", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No existing {0}.{1} extensions enabled on given roles..
         /// </summary>
         public static string ServiceExtensionNoExistingExtensionsEnabledOnRoles {

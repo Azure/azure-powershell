@@ -12,9 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Management.Compute.Models;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
 {
@@ -66,7 +69,62 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
         public void ExecuteCommand()
         {
             ValidateParameters();
-            RemoveExtension();
+
+            ExtensionConfigurationBuilder configBuilder = ExtensionManager.GetBuilder(Deployment != null ? Deployment.ExtensionConfiguration : null);
+            if (UninstallConfiguration && configBuilder.ExistAny(ProviderNamespace, ExtensionName))
+            {
+                configBuilder.RemoveAny(ProviderNamespace, ExtensionName);
+                WriteWarning(string.Format(Resources.ServiceExtensionRemovingFromAllRoles, ExtensionName, ServiceName));
+                ChangeDeployment(configBuilder.ToConfiguration());
+            }
+            else if ((Role == null || !Role.Any()) && configBuilder.ExistAny(ProviderNamespace, ExtensionName))
+            {
+                // If Role is not specified, remove extension defined at all places (allRoles, namedRoles)
+                configBuilder.RemoveAny(ProviderNamespace, ExtensionName);
+                WriteWarning(string.Format(Resources.ServiceExtensionRemovingFromAllRoles, ExtensionName, ServiceName));
+
+                ChangeDeployment(configBuilder.ToConfiguration());
+            }
+            else if (Role != null && Role.Any() && configBuilder.Exist(Role, ProviderNamespace, ExtensionName))
+            {
+                // If Role is specified and extension exist, remove the extension defined in the namedRoles
+                bool defaultExists = configBuilder.ExistDefault(ProviderNamespace, ExtensionName);
+                foreach (var r in Role)
+                {
+                    var singleRoleAsArray = new string[] { r };
+                    if (configBuilder.Exist(singleRoleAsArray, ProviderNamespace, ExtensionName))
+                    {
+                        configBuilder.Remove(singleRoleAsArray, ProviderNamespace, ExtensionName);
+                        WriteWarning(string.Format(Resources.ServiceExtensionRemovingFromSpecificRoles, ExtensionName, r, ServiceName));
+                    }
+                    else
+                    {
+                        WriteWarning(string.Format(Resources.ServiceExtensionNoExistingExtensionsEnabledOnRole, ProviderNamespace, ExtensionName, r));
+                    }
+
+                    if (defaultExists)
+                    {
+                        WriteWarning(string.Format(Resources.ServiceExtensionRemovingSpecificAndApplyingDefault, ExtensionName, r));
+                    }
+                }
+
+                ChangeDeployment(configBuilder.ToConfiguration());
+            }
+            else
+            {
+                WriteWarning(string.Format(Resources.ServiceExtensionNoExistingExtensionsEnabledOnRoles, ProviderNamespace, ExtensionName));
+            }
+
+            if (UninstallConfiguration)
+            {
+                var allConfig = ExtensionManager.GetBuilder();
+                var deploymentList = (from slot in (new string[] { DeploymentSlot.Production.ToString(), DeploymentSlot.Staging.ToString() })
+                                      let d = GetDeployment(slot)
+                                      where d != null
+                                      select d).ToList();
+                deploymentList.ForEach(d => allConfig.Add(d.ExtensionConfiguration));
+                ExtensionManager.Uninstall(ProviderNamespace, ExtensionName, allConfig.ToConfiguration());
+            }
         }
 
         protected override void OnProcessRecord()

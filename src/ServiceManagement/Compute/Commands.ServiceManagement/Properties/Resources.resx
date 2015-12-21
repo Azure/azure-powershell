@@ -756,4 +756,7 @@
   <data name="RemoveAzureVMShouldProcessAction" xml:space="preserve">
     <value>Deleting VM</value>
   </data>
+  <data name="ServiceExtensionNoExistingExtensionsEnabledOnRole" xml:space="preserve">
+    <value>No existing {0}.{1} extensions enabled on role: {2}.</value>
+  </data>
 </root>
