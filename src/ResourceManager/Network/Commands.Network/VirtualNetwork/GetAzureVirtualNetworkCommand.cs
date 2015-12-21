@@ -20,39 +20,60 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-     [Cmdlet(VerbsCommon.Get, "AzureRmVirtualNetwork"), OutputType(typeof(PSVirtualNetwork))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmVirtualNetwork"), OutputType(typeof(PSVirtualNetwork))]
     public class GetAzureVirtualNetworkCommand : VirtualNetworkBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource name.")]
+            HelpMessage = "The resource name.",
+            ParameterSetName = "NoExpand")]
+        [Parameter(
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource name.",
+           ParameterSetName = "Expand")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.")]
+            HelpMessage = "The resource group name.",
+            ParameterSetName = "NoExpand")]
+        [Parameter(
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource group name.",
+           ParameterSetName = "Expand")]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource reference to be expanded.",
+            ParameterSetName = "Expand")]
+        [ValidateNotNullOrEmpty]
+        public string ExpandResource { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+
             if (!string.IsNullOrEmpty(this.Name))
             {
-                var vnet = this.GetVirtualNetwork(this.ResourceGroupName, this.Name);
+                var vnet = this.GetVirtualNetwork(this.ResourceGroupName, this.Name, this.ExpandResource);
 
                 WriteObject(vnet);
             }
             else if (!string.IsNullOrEmpty(this.ResourceGroupName))
             {
-                var vnetGetResponse = this.VirtualNetworkClient.List(this.ResourceGroupName);
+                var vnetList = this.VirtualNetworkClient.List(this.ResourceGroupName);
 
                 var psVnets = new List<PSVirtualNetwork>();
-                foreach (var virtualNetwork in vnetGetResponse.VirtualNetworks)
+                foreach (var virtualNetwork in vnetList)
                 {
                     var psVnet = this.ToPsVirtualNetwork(virtualNetwork);
                     psVnet.ResourceGroupName = this.ResourceGroupName;
@@ -63,10 +84,10 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                var vnetGetResponse = this.VirtualNetworkClient.ListAll();
+                var vnetList = this.VirtualNetworkClient.ListAll();
 
                 var psVnets = new List<PSVirtualNetwork>();
-                foreach (var virtualNetwork in vnetGetResponse.VirtualNetworks)
+                foreach (var virtualNetwork in vnetList)
                 {
                     var psVnet = this.ToPsVirtualNetwork(virtualNetwork);
                     psVnet.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(virtualNetwork.Id);

@@ -31,15 +31,6 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The ExpressRouteCircuit")]
         public PSExpressRouteCircuit ExpressRouteCircuit { get; set; }
 
-        [Parameter(
-        Mandatory = true,
-        ValueFromPipelineByPropertyName = true)]
-        [ValidateSet(
-            MNM.ExpressRouteCircuitBillingType.MeteredData,
-            MNM.ExpressRouteCircuitBillingType.UnlimitedData,
-            IgnoreCase = true)]
-        public string BillingType { get; set; }
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -48,11 +39,9 @@ namespace Microsoft.Azure.Commands.Network
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
             }
-            ExpressRouteCircuit.BillingType = BillingType;
-
+            
             // Map to the sdk object
             var circuitModel = Mapper.Map<MNM.ExpressRouteCircuit>(this.ExpressRouteCircuit);
-            circuitModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.ExpressRouteCircuitType;
             circuitModel.Tags = TagsConversionHelper.CreateTagDictionary(this.ExpressRouteCircuit.Tag, validate: true);
 
             // Execute the Create ExpressRouteCircuit call

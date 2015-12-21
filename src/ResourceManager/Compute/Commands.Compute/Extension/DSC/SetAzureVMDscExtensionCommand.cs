@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         public SwitchParameter Force { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Location of the resource.")]
         [ValidateNotNullOrEmpty]
@@ -323,9 +323,14 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                 privateSettings.DataBlobUri = configurationUris.DataBlobUri;
             }
 
+            if (string.IsNullOrEmpty(this.Location))
+            {
+                this.Location = GetLocationFromVm(this.ResourceGroupName, this.VMName);
+            }
+
             var parameters = new VirtualMachineExtension
             {
-                Location = Location,
+                Location = this.Location,
                 Name = Name ?? DscExtensionCmdletConstants.ExtensionPublishedNamespace + "." + DscExtensionCmdletConstants.ExtensionPublishedName,
                 Type = VirtualMachineExtensionType,
                 Publisher = DscExtensionCmdletConstants.ExtensionPublishedNamespace,

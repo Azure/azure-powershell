@@ -113,8 +113,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 if (string.IsNullOrEmpty(this.location))
                 {
-                    var virtualMachine = ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName).VirtualMachine;
-                    this.location = virtualMachine.Location;
+                    this.Location = GetLocationFromVm(this.ResourceGroupName, this.VMName);
                 }
                 return this.location;
             }

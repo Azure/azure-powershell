@@ -63,6 +63,17 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public PSApplicationGatewaySslCertificate SslCertificate { get; set; }
 
+        [Parameter(               
+               HelpMessage = "Host name")]        
+        [ValidateNotNullOrEmpty]
+        public string HostName { get; set; }
+
+        [Parameter(
+               HelpMessage = "RequireServerNameIndication")]
+        [ValidateSet("true", "false", IgnoreCase = true)]
+        [ValidateNotNullOrEmpty]
+        public string RequireServerNameIndication { get; set; }
+
         [Parameter(
                Mandatory = true,
                HelpMessage = "Protocol")]
@@ -96,6 +107,8 @@ namespace Microsoft.Azure.Commands.Network
             var httpListener = new PSApplicationGatewayHttpListener();
             httpListener.Name = this.Name;
             httpListener.Protocol = this.Protocol;
+            httpListener.HostName = this.HostName;
+            httpListener.RequireServerNameIndication = this.RequireServerNameIndication;
 
             if (!string.IsNullOrEmpty(this.FrontendIPConfigurationId))
             {
@@ -115,7 +128,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             httpListener.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
-                                this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
+                                this.NetworkClient.NetworkManagementClient.SubscriptionId,
                                 Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewayHttpListenerName,
                                 this.Name);
 

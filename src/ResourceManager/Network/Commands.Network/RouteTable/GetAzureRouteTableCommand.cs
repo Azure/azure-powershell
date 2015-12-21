@@ -27,33 +27,53 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource name.")]
+            HelpMessage = "The resource name.",
+            ParameterSetName = "NoExpand")]
+        [Parameter(
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource name.",
+           ParameterSetName = "Expand")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.")]
+            HelpMessage = "The resource group name.",
+            ParameterSetName = "NoExpand")]
+        [Parameter(
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource group name.",
+           ParameterSetName = "Expand")]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource reference to be expanded.",
+            ParameterSetName = "Expand")]
+        [ValidateNotNullOrEmpty]
+        public string ExpandResource { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
             if (!string.IsNullOrEmpty(this.Name))
             {
-                var routeTable = this.GetRouteTable(this.ResourceGroupName, this.Name);
+                var routeTable = this.GetRouteTable(this.ResourceGroupName, this.Name, this.ExpandResource);
 
                 WriteObject(routeTable);
             }
             else if (!string.IsNullOrEmpty(this.ResourceGroupName))
             {
-                var routeTableGetResponse = this.RouteTableClient.List(this.ResourceGroupName);
+                var routeTableList = this.RouteTableClient.List(this.ResourceGroupName);
 
                 var psRouteTables = new List<PSRouteTable>();
 
-                foreach (var routeTable in routeTableGetResponse.RouteTables)
+                foreach (var routeTable in routeTableList)
                 {
                     var psRouteTable = this.ToPsRouteTable(routeTable);
                     psRouteTable.ResourceGroupName = this.ResourceGroupName;
@@ -64,11 +84,11 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                var nsgGetResponse = this.RouteTableClient.ListAll();
+                var routeTableList = this.RouteTableClient.ListAll();
 
                 var psRouteTables = new List<PSRouteTable>();
 
-                foreach (var routeTable in nsgGetResponse.RouteTables)
+                foreach (var routeTable in routeTableList)
                 {
                     var psRouteTable = this.ToPsRouteTable(routeTable);
                     psRouteTable.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(routeTable.Id);

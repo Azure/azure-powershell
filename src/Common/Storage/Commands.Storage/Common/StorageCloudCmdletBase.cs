@@ -106,10 +106,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
         }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             Validate.ValidateInternetConnection();
             InitChannelCurrentSubscription();
+            base.ProcessRecord();
        }
 
 
