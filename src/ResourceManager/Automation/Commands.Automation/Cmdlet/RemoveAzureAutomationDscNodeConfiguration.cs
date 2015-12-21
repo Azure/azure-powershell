@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [Parameter(Position = 3, HelpMessage = "Force confirmation of the removal of the node configuration")]
         public SwitchParameter Force { get; set; }
 
-        [Parameter(Position = 4, HelpMessage = "Delete even if the node configuration is mapped to a node")]
+        [Parameter(Position = 4, HelpMessage = "Remove the node configuration even if the node configuration is mapped to one or more nodes")]
         public SwitchParameter IgnoreNodeMappings { get; set; }
 
         /// <summary>

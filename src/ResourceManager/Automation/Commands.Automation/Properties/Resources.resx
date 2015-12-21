@@ -389,7 +389,7 @@
     <comment>Automation</comment>
   </data>
   <data name="CannotDeleteNodeConfiguration" xml:space="preserve">
-    <value>The Node configuration is mapped a node. Specify IgnoreNodeMappings to delete the node configuration {0}.</value>
+    <value>The node configuration '{0}' is currently assigned to one or more nodes. Either specify the IgnoreNodeMappings parameter, or reassign these nodes to a different node configuration, to delete this node configuration.</value>
     <comment>Automation</comment>
   </data>
   <data name="WebhookNotFound" xml:space="preserve">

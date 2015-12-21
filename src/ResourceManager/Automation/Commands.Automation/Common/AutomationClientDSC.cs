@@ -1297,17 +1297,20 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
                 {
                     if (ignoreNodeMappings)
                     {
-                        this.automationManagementClient.NodeConfigurations.Delete(resourceGroupName, automationAccountName,
-                            name);
+                        this.automationManagementClient.NodeConfigurations.Delete(resourceGroupName, automationAccountName, name);
                     }
                     else
                     {
                         var nodeList = this.ListDscNodesByNodeConfiguration(resourceGroupName, automationAccountName, name, null);
                         if (nodeList.Any())
                         {
-                            throw new ResourceNotFoundException(
-                                typeof(Model.NodeConfiguration),
+                            throw new ResourceCommonException(
+                                typeof (Model.NodeConfiguration),
                                 string.Format(CultureInfo.CurrentCulture, Resources.CannotDeleteNodeConfiguration, name));
+                        }
+                        else
+                        {
+                            this.automationManagementClient.NodeConfigurations.Delete(resourceGroupName, automationAccountName, name);
                         }
                     }
                 }

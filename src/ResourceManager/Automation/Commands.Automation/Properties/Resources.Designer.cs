@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The Node configuration is mapped a node. Specify IgnoreNodeMappings to delete the node configuration {0}..
+        ///   Looks up a localized string similar to The node configuration &apos;{0}&apos; is currently assigned to one or more nodes. Either specify the IgnoreNodeMappings parameter, or reassign these nodes to a different node configuration, to delete this node configuration..
         /// </summary>
         internal static string CannotDeleteNodeConfiguration {
             get {
