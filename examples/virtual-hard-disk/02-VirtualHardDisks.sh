@@ -6,10 +6,10 @@ printf "\n1. Creating a new resource group: %s and location: %s.\n" "$groupName"
 azure group create -n "$groupName" --location "$location"
 
 printf "\n2. Creating a new storage account"
-azure storage account new --resourcegroupname "$groupName" --name "$groupName" --location "$location" --type "$storageAccountType"
+result=`azure storage account new --resourcegroupname "$groupName" --name "$groupName" --location "$location" --type "$storageAccountType"`
 
 printf "\n3. Uploading a virtual hard disk"
-azure vhd add --resourcegroupname "$groupName" --destination https://"$groupName".blob.core.windows.net/test/test.vhd --localfilepath $(dirname $0)/test.vhd
+result=`azure vhd add -o --resourcegroupname "$groupName" --destination https://"$groupName".blob.core.windows.net/test/test.vhd --localfilepath $(dirname $0)/test.vhd`
 
 printf "\n4. Downloading a virtual hard disk"
 
