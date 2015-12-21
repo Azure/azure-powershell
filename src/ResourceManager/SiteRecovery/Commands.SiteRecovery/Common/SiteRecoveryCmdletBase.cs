@@ -75,24 +75,24 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             CloudException cloudException = ex as CloudException;
             if (cloudException != null)
             {
-                ARMException error = null;
+                ARMError error = null;
                 try
                 {
                     if (cloudException.Message != null)
                     {
                         string originalMessage = cloudException.Error.OriginalMessage;
-                        error = JsonConvert.DeserializeObject<ARMException>(originalMessage);
+                        error = JsonConvert.DeserializeObject<ARMError>(originalMessage);
 
                         string exceptionMessage = "Operation Failed.\n";
-                        foreach(ARMExceptionDetails detail in error.Details)
+                        foreach (ARMExceptionDetails detail in error.Error.Details)
                         {
                             exceptionMessage = exceptionMessage + string.Format(
                                 Properties.Resources.CloudExceptionDetails,
-                                detail.ErrorCode,
-                                detail.Message,
-                                detail.PossibleCauses,
-                                detail.RecommendedAction,
-                                detail.ClientRequestId
+                                string.IsNullOrEmpty(detail.ErrorCode) ? "" : detail.ErrorCode,
+                                string.IsNullOrEmpty(detail.Message)? "" : detail.Message,
+                                string.IsNullOrEmpty(detail.PossibleCauses)? "" : detail.PossibleCauses,
+                                string.IsNullOrEmpty(detail.RecommendedAction)? "" : detail.RecommendedAction,
+                                string.IsNullOrEmpty(detail.ClientRequestId)? "": detail.ClientRequestId
                                 ) + "\n\n";
                         }
 

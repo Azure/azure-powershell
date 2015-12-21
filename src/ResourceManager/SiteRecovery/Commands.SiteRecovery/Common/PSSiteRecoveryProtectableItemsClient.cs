@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             List<ProtectableItem> protectableItems = new List<ProtectableItem>();
             ProtectableItemListResponse response = this
                 .GetSiteRecoveryClient()
-                .ProtectableItem.List(fabricName, protectionContainerName, "All", null, null, this.GetRequestHeaders());
+                .ProtectableItem.List(fabricName, protectionContainerName, null, null, null, this.GetRequestHeaders());
             protectableItems.AddRange(response.ProtectableItems);
             while(response.NextLink != null)
             {

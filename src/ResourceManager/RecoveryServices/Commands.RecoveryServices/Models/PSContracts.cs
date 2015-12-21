@@ -87,6 +87,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     }
 
     /// <summary>
+    /// ARM specified Error
+    /// </summary>
+    public class ARMError
+    {
+        /// <summary>
+        /// Gets ARM formatted exception.
+        /// </summary>
+        [JsonProperty(PropertyName = "error")]
+        public ARMException Error { get; private set; }
+    }
+
+    /// <summary>
     /// ARM exception class.
     /// </summary>
     [System.Diagnostics.CodeAnalysis.SuppressMessage(
