@@ -77,7 +77,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.SubscriptionResourceLevelLock, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource name. e.g. to specify a database MyServer/MyDatabase.")]
         [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.TenantResourceLevelLock, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource name. e.g. to specify a database MyServer/MyDatabase.")]
         [ValidateNotNullOrEmpty]
-        [Alias("name", "n")]
         public string ResourceName { get; set; }
 
         /// <summary>
@@ -151,16 +150,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Converts the resource object to output that can be piped to the lock cmdlets.
         /// </summary>
         /// <param name="resources">The lock resource object.</param>
-        protected PSObject[] GetOutputObjects(params JToken[] resources)
+        protected ResourceLock<JToken>[] GetOutputObjects(params JToken[] resources)
         {
             return resources
                 .CoalesceEnumerable()
                 .Where(resource => resource != null)
                 .SelectArray(resource =>
                 {
-                    var psobject = resource.ToResource().ToPsObject();
-                    psobject.Properties.Add(new PSNoteProperty("LockId", psobject.Properties["ResourceId"].Value));
-                    return psobject;
+                    var rc = resource.ToResource();
+                    var resourceLock = new ResourceLock<JToken>(rc);
+                    resourceLock.LockId = rc.Id;
+                    return resourceLock;
                 });
         }
     }

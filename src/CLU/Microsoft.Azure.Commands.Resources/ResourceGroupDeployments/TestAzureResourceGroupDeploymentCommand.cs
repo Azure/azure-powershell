@@ -23,7 +23,8 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroupDeployments
     /// <summary>
     /// Validate a template to see whether it's using the right syntax, resource providers, resource types, etc.
     /// </summary>
-    [Cmdlet(VerbsDiagnostic.Test, "AzureRmResourceGroupDeployment", DefaultParameterSetName = ParameterlessTemplateFileParameterSetName), OutputType(typeof(List<PSResourceManagerError>))]
+    [Cmdlet(VerbsDiagnostic.Test, "AzureRmResourceGroupDeployment", DefaultParameterSetName = ParameterlessTemplateFileParameterSetName), 
+        OutputType(typeof(PSResourceManagerError))]
     public class TestAzureResourceGroupDeploymentCommand : ResourceWithParameterBaseCmdlet, IDynamicParameters
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
@@ -49,7 +50,7 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroupDeployments
                 ParameterUri = TemplateParameterUri
             };
 
-            WriteObject(ResourcesClient.ValidatePSResourceGroupDeployment(parameters, Mode));
+            WriteObject(ResourcesClient.ValidatePSResourceGroupDeployment(parameters, Mode), enumerateCollection: true);
         }
     }
 }

@@ -96,4 +96,18 @@ namespace Microsoft.CLU.Test
             WriteObject(new TestRecord() { Name = $"Matched {RecordName}", Value = $"Matched {Value}", SomethingElse = $"Matched {SomethingElse}" });
         }
     }
+
+    [Cmdlet(VerbsCommon.Show, "TestRecordFromParameter")]
+    public class ShowTestRecordFromParameter : PSCmdlet
+    {
+
+        [Parameter(Mandatory = true, ValueFromPipeline = true)]
+        [Alias("Rec")]
+        public TestRecord Record { get; set; }
+
+        protected override void ProcessRecord()
+        {
+            WriteObject(Record);
+        }
+    }
 }

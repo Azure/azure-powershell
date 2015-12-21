@@ -64,6 +64,11 @@ namespace Microsoft.Azure.Commands.Models
             get { return _env; }
         }
 
+        public string EnvironmentNames
+        {
+            get { return _env == null || _env.Keys == null? null : string.Join(", ", _env.Keys.ToArray()); }
+        }
+
         /// <summary>
         /// The current credentials and metadata for connecting with the current Azure cloud instance.
         /// </summary>
@@ -71,7 +76,7 @@ namespace Microsoft.Azure.Commands.Models
 
         public override string ToString()
         {
-            return Context!= null? Context.ToString() : null;
+            return Context?.ToString();
         }
     }
 }

@@ -51,7 +51,6 @@ namespace Microsoft.Azure.Commands.Tags.Tag
                     {
                         List<PSObject> output = new List<PSObject>();
                         tags.ForEach(t => output.Add(base.ConstructPSObject(
-                            null,
                             "Name", t.Name,
                             "Count", t.Count)));
 

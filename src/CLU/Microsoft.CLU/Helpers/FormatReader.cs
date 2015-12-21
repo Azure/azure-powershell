@@ -136,13 +136,13 @@ namespace Microsoft.CLU.Helpers
             }
         }
 
-        private static void GetListItems(ListDescriptor list, XElement tableControl)
+        private static void GetListItems(ListDescriptor list, XElement listControl)
         {
-            var tableHeaders = GetChildrenMatching(tableControl, "ListEntries").FirstOrDefault();
+            var listEntries = GetChildrenMatching(listControl, "ListEntries").FirstOrDefault();
 
-            if (tableHeaders != null)
+            if (listEntries != null)
             {
-                foreach (var entry in GetChildrenMatching(tableHeaders, "ListEntry"))
+                foreach (var entry in GetChildrenMatching(listEntries, "ListEntry"))
                 {
                     foreach (var items in GetChildrenMatching(entry, "ListItems"))
                     {
@@ -152,6 +152,7 @@ namespace Microsoft.CLU.Helpers
 
                             var label = GetChildrenMatching(item, "Label").FirstOrDefault();
                             var propertyName = GetChildrenMatching(item, "PropertyName").FirstOrDefault();
+                            var property = GetChildrenMatching(item, "Property").FirstOrDefault();
 
                             if (label != null && !string.IsNullOrEmpty(label.Value))
                             {
@@ -160,6 +161,16 @@ namespace Microsoft.CLU.Helpers
                             if (propertyName != null && !string.IsNullOrEmpty(propertyName.Value))
                             {
                                 column.ItemName = propertyName.Value;
+                                if (string.IsNullOrEmpty(column.Header))
+                                {
+                                    column.Header = propertyName.Value;
+                                }
+                            }
+
+                            if (property != null && !string.IsNullOrEmpty(property.Value) &&
+                                string.IsNullOrEmpty(column.ItemName))
+                            {
+                                column.ItemName = property.Value;
                             }
 
                             if (!string.IsNullOrEmpty(column.ItemName) && !string.IsNullOrEmpty(column.Header))

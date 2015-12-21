@@ -34,7 +34,7 @@ $contentFileText = ""
 $contentFiles | %{ $contentFileText += ("    <file src=""" + $_.Name + """ target=""content""/>`r`n")}
 if ($packageId -ne "Microsoft.CLU.Commands") 
 {
-	$contentFileText += "    <file src=""content\azure.lx"" target=""content""/>`r`n"
+	$contentFileText += "    <file src=""content\*.lx"" target=""content""/>`r`n"
 }
 if ($renameFileExists)
 {

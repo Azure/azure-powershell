@@ -124,7 +124,7 @@
     <value>Account "{0}" has been added.</value>
   </data>
   <data name="AddAccountChangeSubscription" xml:space="preserve">
-    <value>To switch to a different subscription, please use Select-AzureSubscription.</value>
+    <value>To switch to a different subscription, please select a new context.</value>
   </data>
   <data name="AddAccountShowDefaultSubscription" xml:space="preserve">
     <value>Subscription "{0}" is selected as the default subscription.</value>
@@ -1542,7 +1542,7 @@ Select Y to enable data collection [Y/N]:</value>
     <value>User name needs to be specified.</value>
   </data>
   <data name="NoCurrentContextForDataCmdlet" xml:space="preserve">
-    <value>"There is no current context, please log in using Login-AzureRmAccount for Azure Resource Manager or Add-AzureAccount for Azure Service Management."</value>
+    <value>"There is no current context, please log in by adding an account."</value>
   </data>
   <data name="CertificateNotFoundInStore" xml:space="preserve">
     <value>No certificate was found in the certificate store with thumbprint {0}</value>
