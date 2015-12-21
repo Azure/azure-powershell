@@ -15,7 +15,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Microsoft.Azure.Commands.Common.Resources.Properties;
+using Commands.ResourceManager.Common.Properties;
 
 namespace Microsoft.Azure.Commands.Tags.Model
 {

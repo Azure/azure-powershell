@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Common.Resources.Properties {
+namespace Commands.ResourceManager.Common.Properties {
     using System;
     using System.Reflection;
     
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Common.Resources.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Common.Resources.Properties.Resources", typeof(Resources).GetTypeInfo().Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Commands.ResourceManager.Common.Properties.Resources", typeof(Resources).GetTypeInfo().Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
