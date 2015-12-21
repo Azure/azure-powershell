@@ -47,6 +47,7 @@ function Test-NewPool
         # Create a complicated pool using AutoScale parameter set
         $maxTasksPerComputeNode = 2
         $autoScaleFormula = '$TargetDedicated=2'
+        $evalInterval = [TimeSpan]::FromMinutes(7)
         
         $startTask = New-Object Microsoft.Azure.Commands.Batch.Models.PSStartTask
         $startTaskCmd = "cmd /c dir /s"
@@ -69,7 +70,7 @@ function Test-NewPool
         
         $displayName = "displayName"
 
-        New-AzureBatchPool -Id $poolId2 -VirtualMachineSize $vmSize -OSFamily $osFamily -TargetOSVersion $targetOSVersion -DisplayName $displayName -MaxTasksPerComputeNode $maxTasksPerComputeNode -AutoScaleFormula $autoScaleFormula -StartTask $startTask -TaskSchedulingPolicy $schedulingPolicy -InterComputeNodeCommunicationEnabled -Metadata $metadata -BatchContext $context
+        New-AzureBatchPool -Id $poolId2 -VirtualMachineSize $vmSize -OSFamily $osFamily -TargetOSVersion $targetOSVersion -DisplayName $displayName -MaxTasksPerComputeNode $maxTasksPerComputeNode -AutoScaleFormula $autoScaleFormula -AutoScaleEvaluationInterval $evalInterval -StartTask $startTask -TaskSchedulingPolicy $schedulingPolicy -InterComputeNodeCommunicationEnabled -Metadata $metadata -BatchContext $context
         
         $pool2 = Get-AzureBatchPool -Id $poolId2 -BatchContext $context
         
@@ -82,6 +83,7 @@ function Test-NewPool
         Assert-AreEqual $maxTasksPerComputeNOde $pool2.MaxTasksPerComputeNode
         Assert-AreEqual $true $pool2.AutoScaleEnabled
         Assert-AreEqual $autoScaleFormula $pool2.AutoScaleFormula
+        Assert-AreEqual $evalInterval $pool2.AutoScaleEvaluationInterval
         Assert-AreEqual $true $pool2.InterComputeNodeCommunicationEnabled
         Assert-AreEqual $startTaskCmd $pool2.StartTask.CommandLine
         Assert-AreEqual $resourceFileCount $pool2.StartTask.ResourceFiles.Count

@@ -92,6 +92,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             if (!string.IsNullOrEmpty(parameters.AutoScaleFormula))
             {
                 pool.AutoScaleEnabled = true;
+                pool.AutoScaleEvaluationInterval = parameters.AutoScaleEvaluationInterval;
                 pool.AutoScaleFormula = parameters.AutoScaleFormula;
             }
             else if (parameters.TargetDedicated.HasValue)

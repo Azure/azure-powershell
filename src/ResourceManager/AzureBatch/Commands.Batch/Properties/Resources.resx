@@ -265,10 +265,10 @@
     <value>Getting accounts in resource group {0}</value>
   </data>
   <data name="GetSubtaskNoFilter" xml:space="preserve">
-    <value>Getting all subtasks under task {0}.</value>
+    <value>Getting all subtask information for task {0}.</value>
   </data>
   <data name="GetSubtaskOData" xml:space="preserve">
-    <value>Getting subtasks matching the specified OData filter under task {0}.</value>
+    <value>Getting subtask information matching the specified OData filter for task {0}.</value>
   </data>
   <data name="GetTaskById" xml:space="preserve">
     <value>Getting task "{0}" from job "{1}"</value>

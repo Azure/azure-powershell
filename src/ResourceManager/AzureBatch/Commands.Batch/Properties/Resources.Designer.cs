@@ -502,7 +502,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting all subtasks under task {0}..
+        ///   Looks up a localized string similar to Getting all subtask information for task {0}..
         /// </summary>
         internal static string GetSubtaskNoFilter {
             get {
@@ -511,7 +511,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting subtasks matching the specified OData filter under task {0}..
+        ///   Looks up a localized string similar to Getting subtask information matching the specified OData filter for task {0}..
         /// </summary>
         internal static string GetSubtaskOData {
             get {
