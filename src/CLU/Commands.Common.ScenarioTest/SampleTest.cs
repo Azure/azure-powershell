@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
         {
             _collectionState = fixture;
         }
+
         [Fact]
         public void RunSampleTest()
         {
@@ -38,5 +39,11 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
             helper.RunScript("01-ResourceGroups");
         }
 
+        [Fact]
+        public void RunVirtualHardDiskTest()
+        {
+            var helper = _collectionState.GetRunner("virtual-hard-disk");
+            helper.RunScript("02-VirtualHardDisks");
+        }
     }
 }

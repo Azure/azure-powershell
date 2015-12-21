@@ -40,6 +40,8 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
         const string ResourceGroupNameKey = "groupName";
         const string locationKey = "location";
         const string SessionKey = "CmdletSessionID";
+        const string storageAccountTypeKey = "storageAccountType";
+        const string DefaultStorageAccountType = "Standard_GRS";
 
         public ExampleScriptRunner(string sessionId) : this(new Random(), sessionId)
         {
@@ -104,6 +106,8 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
                     process.EnvironmentVariables[SessionKey] = _sessionId;
                     process.EnvironmentVariables[ResourceGroupNameKey] = _resourceGroupName;
                     process.EnvironmentVariables[locationKey] = DefaultLocation;
+                    process.EnvironmentVariables[locationKey] = DefaultLocation;
+                    process.EnvironmentVariables[storageAccountTypeKey] = DefaultStorageAccountType;
                     foreach (var helper in _context.EnvironmentHelpers)
                     {
                         helper.TrySetupScriptEnvironment(_context, _clientFactory, process.EnvironmentVariables);
