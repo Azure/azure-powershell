@@ -144,7 +144,20 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             var secondSlotDeployment = GetDeployment(this.Slot == DeploymentSlotType.Production ? DeploymentSlotType.Staging : DeploymentSlotType.Production);
 
             var extConfig = ExtensionManager.InstallExtension(context, Slot, Deployment, secondSlotDeployment);
-            ChangeDeployment(extConfig);
+
+            // When Role is not specified, the extension is applied to allRoles.
+            // However, we must clear the extension defined in any namedRoles. Otherwise, it will fail for trying to apply the same extension.
+            // We only apply the fix here but not in ExtensionManager, so other commands won't get affected.
+            ExtensionConfigurationBuilder builder = ExtensionManager.GetBuilder(extConfig);
+            if (Role == null || !Role.Any())
+            {
+                foreach (var role in Deployment.Roles)
+                {
+                    builder.Remove(role.RoleName, ProviderNamespace, ExtensionName);
+                }
+            }
+
+            ChangeDeployment(builder.ToConfiguration());
         }
 
         protected override void OnProcessRecord()
