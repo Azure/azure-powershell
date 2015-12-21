@@ -52,11 +52,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         internal const string SharedPoolStartTaskStdOut = "startup\\stdout.txt";
         internal const string SharedPoolStartTaskStdOutContent = "hello";
 
+        // TO DO: MPI and online/offline node scheduling are only enabled in a few regions, so they need a dedicated account.  Once the features are
+        // enabled everywhere, the tests for these features can just use the default shared account.
+        internal const string MpiOnlineAccount = "batchtest";
+
         // MPI requires a special pool configuration. When recording, the Storage environment variables need to be
         // set so we can upload the MPI installer for use as a start task resource file.
-        // TO DO: MPI currently needs its own Batch account as well, since it's only enabled in a few regions.  Once it's
-        // enabled everywhere, the MPI tests can just use the default shared account.
-        internal const string MpiAccount = "batchtest";
         internal const string MpiPoolId = "mpiPool";
         internal const string MpiSetupFileContainer = "mpi";
         internal const string MpiSetupFileName = "MSMpiSetup.exe";
@@ -294,7 +295,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 PoolId = poolId
             };
 
-            DateTime timeout = DateTime.Now.AddMinutes(2);
+            DateTime timeout = DateTime.Now.AddMinutes(5);
             PSCloudPool pool = client.ListPools(options).First();
             while (pool.CurrentOSVersion != pool.TargetOSVersion)
             {
@@ -462,7 +463,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
             PSMultiInstanceSettings multiInstanceSettings = null;
-            if (numInstances > 0)
+            if (numInstances > 1)
             {
                 multiInstanceSettings = new PSMultiInstanceSettings(numInstances);
                 multiInstanceSettings.CoordinationCommandLine = "cmd /c echo coordinating";
@@ -472,7 +473,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             {
                 CommandLine = cmdLine,
                 MultiInstanceSettings = multiInstanceSettings,
-                RunElevated = true
+                RunElevated = numInstances <= 1
             };
             
             client.CreateTask(parameters);
@@ -568,12 +569,13 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
             ListComputeNodeOptions options = new ListComputeNodeOptions(context, poolId, null)
             {
-                ComputeNodeId = computeNodeId
+                ComputeNodeId = computeNodeId,
+                Select = "id,state"
             };
 
-            DateTime timeout = DateTime.Now.AddMinutes(2);
+            DateTime timeout = DateTime.Now.AddMinutes(5);
             PSComputeNode computeNode = client.ListComputeNodes(options).First();
-            if (computeNode.State != ComputeNodeState.Idle)
+            while (computeNode.State != ComputeNodeState.Idle)
             {
                 if (DateTime.Now > timeout)
                 {

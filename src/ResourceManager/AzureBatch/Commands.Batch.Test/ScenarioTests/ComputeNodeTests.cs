@@ -274,10 +274,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             BatchAccountContext context = null;
             string computeNodeId = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-DisableAndEnableComputeNodeScheduling '{0}' '{1}' '{2}' '{3}'", accountName, poolId, computeNodeId, usePipeline ? 1 : 0) }; },
+                () => { return new string[] { string.Format("Test-DisableAndEnableComputeNodeScheduling '{0}' '{1}' '{2}' '{3}'", ScenarioTestHelpers.MpiOnlineAccount, poolId, computeNodeId, usePipeline ? 1 : 0) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, ScenarioTestHelpers.MpiOnlineAccount);
                     computeNodeId = ScenarioTestHelpers.GetComputeNodeId(controller, context, poolId);
                     ScenarioTestHelpers.WaitForIdleComputeNode(controller, context, poolId, computeNodeId);
                 },

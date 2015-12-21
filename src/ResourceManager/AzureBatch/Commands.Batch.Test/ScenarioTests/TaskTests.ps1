@@ -56,14 +56,14 @@ function Test-CreateTask
     $commonResource = New-Object Microsoft.Azure.Commands.Batch.Models.PSResourceFile -ArgumentList @($commonResourceBlob,$commonResourceFile)
     $multiInstanceSettings.CommonResourceFiles.Add($commonResource)
 
-    New-AzureBatchTask -JobId $jobId -Id $taskId2 -CommandLine $cmd -RunElevated -EnvironmentSettings $envSettings -ResourceFiles $resourceFiles -AffinityInformation $affinityInfo -Constraints $taskConstraints -MultiInstanceSettings $multiInstanceSettings -BatchContext $context
+    New-AzureBatchTask -JobId $jobId -Id $taskId2 -CommandLine $cmd -EnvironmentSettings $envSettings -ResourceFiles $resourceFiles -AffinityInformation $affinityInfo -Constraints $taskConstraints -MultiInstanceSettings $multiInstanceSettings -BatchContext $context
         
     $task2 = Get-AzureBatchTask -JobId $jobId -Id $taskId2 -BatchContext $context
         
     # Verify created task matches expectations
     Assert-AreEqual $taskId2 $task2.Id
     Assert-AreEqual $cmd $task2.CommandLine
-    Assert-AreEqual $true $task2.RunElevated
+    Assert-AreEqual $false $task2.RunElevated
     Assert-AreEqual $affinityId $task2.AffinityInformation.AffinityId
     Assert-AreEqual $maxWallClockTime $task2.Constraints.MaxWallClockTime
     Assert-AreEqual $retentionTime $task2.Constraints.RetentionTime

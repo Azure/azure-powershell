@@ -342,7 +342,7 @@ function Test-StopResizePoolById
 
     # Start a resize and then stop it
     $pool = Get-AzureBatchPool -Id $poolId -BatchContext $context
-    $initialTargetDedicated = $pool.TargetDedicated
+    $initialTargetDedicated = $pool.CurrentDedicated
 
     $newTargetDedicated = $initialTargetDedicated + 2
     Start-AzureBatchPoolResize -Id $poolId -TargetDedicated $newTargetDedicated -BatchContext $context
@@ -365,7 +365,7 @@ function Test-StopResizePoolByPipeline
 
     # Start a resize and then stop it
     $pool = Get-AzureBatchPool -Id $poolId -BatchContext $context
-    $initialTargetDedicated = $pool.TargetDedicated
+    $initialTargetDedicated = $pool.CurrentDedicated
 
     $newTargetDedicated = $initialTargetDedicated + 2
     $pool | Start-AzureBatchPoolResize -TargetDedicated $newTargetDedicated -BatchContext $context
