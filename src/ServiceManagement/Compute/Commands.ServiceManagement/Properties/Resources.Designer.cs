@@ -971,6 +971,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The config file doesn&apos;t have the PublicConfig element..
+        /// </summary>
+        public static string PaaSDiagnosticsNullPublicConfig {
+            get {
+                return ResourceManager.GetString("PaaSDiagnosticsNullPublicConfig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The element StorageAccount cannot be empty. It is recommended to not use this element in the config. It will be set automatically by the cmdlet..
         /// </summary>
         public static string PaaSDiagnosticsNullStorageAccount {
@@ -980,11 +989,38 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Storage account endpoint is not specified or can not be retrieved automatically..
+        /// </summary>
+        public static string PaaSDiagnosticsNullStorageAccountEndpoint {
+            get {
+                return ResourceManager.GetString("PaaSDiagnosticsNullStorageAccountEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Storage account key is not specified or can not be retrieved automatically..
+        /// </summary>
+        public static string PaaSDiagnosticsNullStorageAccountKey {
+            get {
+                return ResourceManager.GetString("PaaSDiagnosticsNullStorageAccountKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your xml configuration file doesn&apos;t start with the required header &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;.
         /// </summary>
         public static string PaaSDiagnosticsWrongHeader {
             get {
                 return ResourceManager.GetString("PaaSDiagnosticsWrongHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The element StorageAccount in PrivateConfig doesn&apos;t match. It is recommended to not use the element StorageAccount as it is automatically set by the cmdlet..
+        /// </summary>
+        public static string PassDiagnosticsNoMatchPrivateStorageAccount {
+            get {
+                return ResourceManager.GetString("PassDiagnosticsNoMatchPrivateStorageAccount", resourceCulture);
             }
         }
         

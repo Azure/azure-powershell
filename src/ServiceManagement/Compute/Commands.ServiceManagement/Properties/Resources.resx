@@ -759,4 +759,16 @@
   <data name="ServiceExtensionNoExistingExtensionsEnabledOnRole" xml:space="preserve">
     <value>No existing {0}.{1} extensions enabled on role: {2}.</value>
   </data>
+  <data name="PaaSDiagnosticsNullPublicConfig" xml:space="preserve">
+    <value>The config file doesn't have the PublicConfig element.</value>
+  </data>
+  <data name="PassDiagnosticsNoMatchPrivateStorageAccount" xml:space="preserve">
+    <value>The element StorageAccount in PrivateConfig doesn't match. It is recommended to not use the element StorageAccount as it is automatically set by the cmdlet.</value>
+  </data>
+  <data name="PaaSDiagnosticsNullStorageAccountKey" xml:space="preserve">
+    <value>Storage account key is not specified or can not be retrieved automatically.</value>
+  </data>
+  <data name="PaaSDiagnosticsNullStorageAccountEndpoint" xml:space="preserve">
+    <value>Storage account endpoint is not specified or can not be retrieved automatically.</value>
+  </data>
 </root>

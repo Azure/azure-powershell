@@ -78,8 +78,35 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             set;
         }
 
-        [Parameter(Position = 5, ValueFromPipelineByPropertyName = true, Mandatory = true, ParameterSetName = "SetExtension", HelpMessage = "Diagnostics Storage Account Context")]
-        [Parameter(Position = 5, ValueFromPipelineByPropertyName = true, Mandatory = true, ParameterSetName = "SetExtensionUsingThumbprint", HelpMessage = "Diagnostics Storage Account Context")]
+        [Parameter(Position = 5, ValueFromPipelineByPropertyName = true, ParameterSetName = SetExtensionParameterSetName, HelpMessage = "Diagnostics Storage Account Name")]
+        [Parameter(Position = 5, ValueFromPipelineByPropertyName = true, ParameterSetName = SetExtensionUsingThumbprintParameterSetName, HelpMessage = "Diagnostics Storage Account Name")]
+        [ValidateNotNullOrEmpty]
+        public override string StorageAccountName
+        {
+            get;
+            set;
+        }
+
+        [Parameter(Position = 6, ValueFromPipelineByPropertyName = true, ParameterSetName = SetExtensionParameterSetName, HelpMessage = "Diagnostics Storage Account Key")]
+        [Parameter(Position = 6, ValueFromPipelineByPropertyName = true, ParameterSetName = SetExtensionUsingThumbprintParameterSetName, HelpMessage = "Diagnostics Storage Account Key")]
+        [ValidateNotNullOrEmpty]
+        public override string StorageAccountKey
+        {
+            get;
+            set;
+        }
+
+        [Parameter(Position = 7, ValueFromPipelineByPropertyName = true, ParameterSetName = SetExtensionParameterSetName, HelpMessage = "Diagnostics Storage Account Endpoint")]
+        [Parameter(Position = 7, ValueFromPipelineByPropertyName = true, ParameterSetName = SetExtensionUsingThumbprintParameterSetName, HelpMessage = "Diagnostics Storage Account Endpoint")]
+        [ValidateNotNullOrEmpty]
+        public override string StorageAccountEndpoint
+        {
+            get;
+            set;
+        }
+
+        [Parameter(Position = 8, ValueFromPipelineByPropertyName = true, ParameterSetName = SetExtensionParameterSetName, HelpMessage = "Diagnostics Storage Account Context")]
+        [Parameter(Position = 8, ValueFromPipelineByPropertyName = true, ParameterSetName = SetExtensionUsingThumbprintParameterSetName, HelpMessage = "Diagnostics Storage Account Context")]
         [ValidateNotNullOrEmpty]
         public override AzureStorageContext StorageContext
         {
@@ -87,8 +114,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             set;
         }
 
-        [Parameter(Position = 6, ValueFromPipelineByPropertyName = true, ParameterSetName = SetExtensionParameterSetName, HelpMessage = "Diagnostics Configuration")]
-        [Parameter(Position = 6, ValueFromPipelineByPropertyName = true, ParameterSetName = SetExtensionUsingThumbprintParameterSetName, HelpMessage = "Diagnostics Configuration")]
+        [Parameter(Position = 9, ValueFromPipelineByPropertyName = true, ParameterSetName = SetExtensionParameterSetName, HelpMessage = "Diagnostics Configuration")]
+        [Parameter(Position = 9, ValueFromPipelineByPropertyName = true, ParameterSetName = SetExtensionUsingThumbprintParameterSetName, HelpMessage = "Diagnostics Configuration")]
         [ValidateNotNullOrEmpty]
         public override string DiagnosticsConfigurationPath
         {
@@ -96,16 +123,16 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             set;
         }
 
-        [Parameter(Position = 7, ValueFromPipelineByPropertyName = true, ParameterSetName = SetExtensionParameterSetName, HelpMessage = "WAD version")]
-        [Parameter(Position = 7, ValueFromPipelineByPropertyName = true, ParameterSetName = SetExtensionUsingThumbprintParameterSetName, HelpMessage = "WAD version")]
+        [Parameter(Position = 10, ValueFromPipelineByPropertyName = true, ParameterSetName = SetExtensionParameterSetName, HelpMessage = "WAD version")]
+        [Parameter(Position = 10, ValueFromPipelineByPropertyName = true, ParameterSetName = SetExtensionUsingThumbprintParameterSetName, HelpMessage = "WAD version")]
         public override string Version
         {
             get;
             set;
         }
 
-        [Parameter(Position = 8, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = SetExtensionParameterSetName, HelpMessage = ExtensionParameterPropertyHelper.ExtensionIdHelpMessage)]
-        [Parameter(Position = 8, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = SetExtensionUsingThumbprintParameterSetName, HelpMessage = ExtensionParameterPropertyHelper.ExtensionIdHelpMessage)]
+        [Parameter(Position = 11, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = SetExtensionParameterSetName, HelpMessage = ExtensionParameterPropertyHelper.ExtensionIdHelpMessage)]
+        [Parameter(Position = 11, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = SetExtensionUsingThumbprintParameterSetName, HelpMessage = ExtensionParameterPropertyHelper.ExtensionIdHelpMessage)]
         [ValidateNotNullOrEmpty]
         public override string ExtensionId
         {
