@@ -1,0 +1,27 @@
+{
+    '$schema':'http://schema.management.azure.com/providers/Microsoft.Logic/schemas/2014-12-01-preview/workflowdefinition.json#',
+    'contentVersion':'1.0.0.0',
+    'parameters':{
+    },
+    'triggers':{
+        'httpTrigger':{
+            'type':'Http',
+            'inputs':{
+                'method':'GET',
+                'uri':'invalidUri'
+            },
+            'recurrence':{
+                'frequency':'Minute',
+                'interval':60
+            }
+        }
+    },
+    'actions':{
+    },
+    'outputs':{
+        'output1':{
+            'type':'string',
+            'value':'@trigger().outputs',
+        }
+    }
+}
