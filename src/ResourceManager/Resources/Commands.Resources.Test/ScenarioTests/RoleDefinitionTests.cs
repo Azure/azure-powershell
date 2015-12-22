@@ -41,5 +41,19 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             ResourcesController.NewInstance.RunPsTest("Test-RDPositiveScenarios");
         }
+
+        [Fact(Skip = "Unskip after service side change")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RDRemoveScenario()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RDRemove");
+        }
+
+        [Fact(Skip = "Unskip after service side change")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RDGetScenario()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RDGet");
+        }
     }
 }

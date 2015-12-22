@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Resources
             }
 
             role = role ?? Role;
-            WriteObject(PoliciesClient.UpdateRoleDefinition(role, DefaultProfile.Context.Subscription.Id.ToString()));
+            WriteObject(PoliciesClient. UpdateRoleDefinition(role));
         }
     }
 }

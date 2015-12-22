@@ -20,7 +20,7 @@ namespace Commands.Network.Test.ScenarioTests
 {
     public class ApplicationGatewayTests : RMTestBase
     {
-        [Fact(Skip = "Rerecord tests")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestApplicationGatewayCRUD()
         {

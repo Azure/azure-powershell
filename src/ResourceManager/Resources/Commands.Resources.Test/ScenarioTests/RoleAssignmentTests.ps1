@@ -23,7 +23,7 @@ function Test-RaClassicAdmins
 	$subscription = Get-AzureRmSubscription
 
 	# Test
-	$classic =  Get-AzureRmRoleAssignment -IncludeClassicAdministrators  | Where-Object { $_.Scope -ieq ('/subscriptions/' + $subscription.SubscriptionId) -and $_.RoleDefinitionName.ToLower().Contains('administrator')}	
+	$classic =  Get-AzureRmRoleAssignment -IncludeClassicAdministrators  | Where-Object { $_.Scope -ieq ('/subscriptions/' + $subscription[0].SubscriptionId) -and $_.RoleDefinitionName.ToLower().Contains('administrator')}	
 	
 	# Assert
 	Assert-NotNull $classic
@@ -55,7 +55,7 @@ function Test-RaNegativeScenarios
     Assert-Throws { Get-AzureRmRoleAssignment -ServicePrincipalName $badSpn } $badObjectResult
     
     # Bad Scope
-    $badScope = '/subscriptions/'+ $subscription.SubscriptionId +'/providers/nonexistent'
+    $badScope = '/subscriptions/'+ $subscription[0].SubscriptionId +'/providers/nonexistent'
     $badScopeException = "InvalidResourceNamespace: The resource namespace 'nonexistent' is invalid."
     Assert-Throws { Get-AzureRmRoleAssignment -Scope $badScope } $badScopeException
 }
@@ -73,7 +73,7 @@ function Test-RaByScope
     $users = Get-AzureRmADUser | Select-Object -First 1 -Wait
     $subscription = Get-AzureRmSubscription
     $resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 1 -Wait
-    $scope = '/subscriptions/'+ $subscription.SubscriptionId +'/resourceGroups/' + $resourceGroups[0].ResourceGroupName
+    $scope = '/subscriptions/'+ $subscription[0].SubscriptionId +'/resourceGroups/' + $resourceGroups[0].ResourceGroupName
     Assert-AreEqual 1 $users.Count "There should be at least one user to run the test."
     
     # Test
@@ -140,9 +140,9 @@ function Test-RaByResource
     $definitionName = 'Owner'
     $groups = Get-AzureRmADGroup | Select-Object -Last 1 -Wait
     Assert-AreEqual 1 $groups.Count "There should be at least one group to run the test."
-	$resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 1 -Wait
-	Assert-AreEqual 1 $resourceGroups.Count "No resource group found. Unable to run the test."
-    $resource = Get-AzureRmResource -ResourceGroupName $resourceGroups[0].ResourceGroupName | Select-Object -Last 1 -Wait
+    $resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 1 -Wait
+    Assert-AreEqual 1 $resourceGroups.Count "No resource group found. Unable to run the test."
+    $resource = Get-AzureRmResource | Select-Object -Last 1 -Wait
     Assert-NotNull $resource "Cannot find any resource to continue test execution."
 
     # Test
@@ -150,7 +150,7 @@ function Test-RaByResource
     $newAssignment = New-AzureRmRoleAssignment `
                         -ObjectId $groups[0].Id.Guid `
                         -RoleDefinitionName $definitionName `
-                        -ResourceGroupName $resourceGroups[0].ResourceGroupName `
+                        -ResourceGroupName $resource.ResourceGroupName `
                         -ResourceType $resource.ResourceType `
                         -ResourceName $resource.Name
     
@@ -178,7 +178,7 @@ function Test-RaByServicePrincipal
     $servicePrincipals = Get-AzureRmADServicePrincipal | Select-Object -Last 1 -Wait
     $subscription = Get-AzureRmSubscription
     $resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 1 -Wait
-    $scope = '/subscriptions/'+ $subscription.SubscriptionId +'/resourceGroups/' + $resourceGroups[0].ResourceGroupName
+    $scope = '/subscriptions/'+ $subscription[0].SubscriptionId +'/resourceGroups/' + $resourceGroups[0].ResourceGroupName
     Assert-AreEqual 1 $servicePrincipals.Count "No service principals found. Unable to run the test."
 
     # Test
