@@ -212,6 +212,12 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public string ClientRequestId { get; private set; }
 
         /// <summary>
+        /// Gets the activity Id for the session.
+        /// </summary>
+        [JsonProperty(PropertyName = "activityId")]
+        public string ActivityId { get; private set; }
+
+        /// <summary>
         /// Gets exception target.
         /// </summary>
         [JsonProperty(PropertyName = "target",

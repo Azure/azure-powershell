@@ -79,11 +79,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ErrorCode: {0}
-        ///Message: {1}
-        ///Possible Causes: {2}
-        ///Recommended Action: {3}
-        ///ClientRequestId: {4}.
+        ///   Looks up a localized string similar to Operation Failed.
+        ///.
         /// </summary>
         internal static string CloudExceptionDetails {
             get {

@@ -754,7 +754,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public ASRProtectionEntity(ProtectableItem pi, ReplicationProtectedItem rpi, Policy policy = null) : this(pi)
         {
             this.Type = rpi.Type;
-            this.ProtectionStateDescription = rpi.Properties.ProtectionState;
+            this.ProtectionStateDescription = rpi.Properties.ProtectionStateDescription;
 
             if (rpi.Properties.AllowedOperations != null)
             {

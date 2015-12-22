@@ -83,17 +83,28 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                         string originalMessage = cloudException.Error.OriginalMessage;
                         error = JsonConvert.DeserializeObject<ARMError>(originalMessage);
 
-                        string exceptionMessage = "Operation Failed.\n";
-                        foreach (ARMExceptionDetails detail in error.Error.Details)
+                        string exceptionMessage = Properties.Resources.CloudExceptionDetails;
+
+                        if (error.Error.Details != null)
                         {
-                            exceptionMessage = exceptionMessage + string.Format(
-                                Properties.Resources.CloudExceptionDetails,
-                                string.IsNullOrEmpty(detail.ErrorCode) ? "" : detail.ErrorCode,
-                                string.IsNullOrEmpty(detail.Message)? "" : detail.Message,
-                                string.IsNullOrEmpty(detail.PossibleCauses)? "" : detail.PossibleCauses,
-                                string.IsNullOrEmpty(detail.RecommendedAction)? "" : detail.RecommendedAction,
-                                string.IsNullOrEmpty(detail.ClientRequestId)? "": detail.ClientRequestId
-                                ) + "\n\n";
+                            foreach (ARMExceptionDetails detail in error.Error.Details)
+                            {
+                                exceptionMessage = exceptionMessage + string.Concat(
+                                    string.IsNullOrEmpty(detail.ErrorCode) ? "" : "\nErrorCode: " + detail.ErrorCode,
+                                    string.IsNullOrEmpty(detail.Message) ? "" : "\nMessage: " + detail.Message,
+                                    string.IsNullOrEmpty(detail.PossibleCauses) ? "" : "\nPossible Causes: " + detail.PossibleCauses,
+                                    string.IsNullOrEmpty(detail.RecommendedAction) ? "" : "\nRecommended Action: " + detail.RecommendedAction,
+                                    string.IsNullOrEmpty(detail.ClientRequestId) ? "" : "\nClientRequestId: " + detail.ClientRequestId,
+                                    string.IsNullOrEmpty(detail.ActivityId) ? "" : "\nActivityId: " + detail.ActivityId,
+                                    "\n");
+                            }
+                        }
+                        else
+                        {
+                            exceptionMessage = exceptionMessage + string.Concat(
+                                    string.IsNullOrEmpty(error.Error.ErrorCode) ? "" : "\nErrorCode: " + error.Error.ErrorCode,
+                                    string.IsNullOrEmpty(error.Error.Message) ? "" : "\nMessage: " + error.Error.Message,
+                                    "\n");
                         }
 
                         throw new InvalidOperationException(exceptionMessage);

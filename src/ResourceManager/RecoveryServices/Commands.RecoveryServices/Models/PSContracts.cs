@@ -175,6 +175,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string ClientRequestId { get; private set; }
 
+                /// <summary>
+        /// Gets the activity Id for the session.
+        /// </summary>
+        [JsonProperty(PropertyName = "activityId")]
+        public string ActivityId { get; private set; }
+
         /// <summary>
         /// Gets exception target.
         /// </summary>

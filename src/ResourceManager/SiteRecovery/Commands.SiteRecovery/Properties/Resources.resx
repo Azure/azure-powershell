@@ -118,11 +118,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CloudExceptionDetails" xml:space="preserve">
-    <value>ErrorCode: {0}
-Message: {1}
-Possible Causes: {2}
-Recommended Action: {3}
-ClientRequestId: {4}</value>
+    <value>Operation Failed.
+</value>
   </data>
   <data name="CloudServiceNameNullOrEmpty" xml:space="preserve">
     <value>Cloud Service name mentioned is either null or empty</value>

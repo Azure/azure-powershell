@@ -27,10 +27,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     [OutputType(typeof(ASRJob))]
     public class StartAzureSiteRecoveryPolicyDissociationJob : SiteRecoveryCmdletBase
     {
-        /// <summary>
-        /// Job response.
-        /// </summary>
-        private LongRunningOperationResponse response = null;
 
         #region Parameters
 

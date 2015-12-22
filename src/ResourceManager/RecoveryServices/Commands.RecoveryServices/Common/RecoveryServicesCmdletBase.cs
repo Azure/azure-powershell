@@ -77,14 +77,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                         string originalMessage = cloudException.Error.OriginalMessage;
                         error = JsonConvert.DeserializeObject<ARMError>(originalMessage);
 
-                        string exceptionMessage = "Operation Failed.\n";
-                        foreach (ARMExceptionDetails detail in error.Error.Details)
+                        string exceptionMessage = Properties.Resources.CloudExceptionDetails;
+
+                        if (error.Error.Details != null)
                         {
-                            exceptionMessage = exceptionMessage + string.Format(
-                                Properties.Resources.CloudExceptionDetails,
-                                string.IsNullOrEmpty(detail.ErrorCode) ? "" : detail.ErrorCode,
-                                string.IsNullOrEmpty(detail.Message)? "" : detail.Message
-                                ) + "\n\n";
+                            foreach (ARMExceptionDetails detail in error.Error.Details)
+                            {
+                                exceptionMessage = exceptionMessage + string.Concat(
+                                    string.IsNullOrEmpty(detail.ErrorCode) ? "" : "\nErrorCode: " + detail.ErrorCode,
+                                    string.IsNullOrEmpty(detail.Message) ? "" : "\nMessage: " + detail.Message,
+                                    "\n");
+                            }
+                        }
+                        else
+                        {
+                            exceptionMessage = exceptionMessage + string.Concat(
+                                   string.IsNullOrEmpty(error.Error.ErrorCode) ? "" : "\nErrorCode: " + error.Error.ErrorCode,
+                                   string.IsNullOrEmpty(error.Error.Message) ? "" : "\nMessage: " + error.Error.Message,
+                                   "\n");
                         }
 
                         throw new InvalidOperationException(exceptionMessage);

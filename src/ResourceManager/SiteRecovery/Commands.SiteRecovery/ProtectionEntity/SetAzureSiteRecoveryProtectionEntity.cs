@@ -226,13 +226,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                             };
 
                             // fetch the latest PE object
-                            //ProtectableItemListResponse protectableItemListResponse =
-                            //                            RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(Utilities.GetValueFromArmId(this.ProtectionEntity.ID, ARMResourceTypeConstants.ReplicationFabrics),
-                            //                            this.ProtectionEntity.ProtectionContainerId);
                             ProtectableItemResponse protectableItemResponse =
                                                         RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(Utilities.GetValueFromArmId(this.ProtectionEntity.ID, ARMResourceTypeConstants.ReplicationFabrics),
                                                         this.ProtectionEntity.ProtectionContainerId, this.ProtectionEntity.Name);
-                            //ProtectableItem protectableItem = protectableItemListResponse.ProtectableItems.SingleOrDefault(t => t.Name.CompareTo(this.ProtectionEntity.Name) == 0);
                             ProtectableItem protectableItem = protectableItemResponse.ProtectableItem;
 
                             this.response =
