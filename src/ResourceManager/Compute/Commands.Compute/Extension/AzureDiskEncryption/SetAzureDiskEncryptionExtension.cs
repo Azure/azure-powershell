@@ -424,11 +424,11 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
                     VirtualMachineExtension parameters = GetVmExtensionParameters(virtualMachineResponse);
 
-                    this.VirtualMachineExtensionClient.CreateOrUpdate(
+                    this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
                         this.ResourceGroupName,
                         this.VMName,
                         this.Name,
-                        parameters);
+                        parameters).GetAwaiter().GetResult();
 
                     var op = UpdateVmEncryptionSettings();
                     var result = Mapper.Map<PSAzureOperationResponse>(op);

@@ -225,11 +225,11 @@ namespace Microsoft.Azure.Commands.Compute
 
                 try
                 {
-                    var op = this.VirtualMachineExtensionClient.CreateOrUpdate(
+                    var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
                     this.ResourceGroupName,
                     this.VMName,
                     this.Name,
-                    parameters);
+                    parameters).GetAwaiter().GetResult();
                     var result = Mapper.Map<PSAzureOperationResponse>(op);
                     WriteObject(result);
 

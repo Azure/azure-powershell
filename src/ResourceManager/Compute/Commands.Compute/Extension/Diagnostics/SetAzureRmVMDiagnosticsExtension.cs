@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections;
 using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
@@ -40,8 +41,8 @@ namespace Microsoft.Azure.Commands.Compute
     [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureRmVMDiagnosticsExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
-        private string publicConfiguration;
-        private string privateConfiguration;
+        private Hashtable publicConfiguration;
+        private Hashtable privateConfiguration;
         private string extensionName = "Microsoft.Insights.VMDiagnosticsSettings";
         private string location;
         private string version = "1.5";
@@ -179,29 +180,30 @@ namespace Microsoft.Azure.Commands.Compute
             }
         }
 
-        private string PublicConfiguration
+        private Hashtable PublicConfiguration
         {
             get
             {
-                if (string.IsNullOrEmpty(this.publicConfiguration))
+                if (this.publicConfiguration == null)
                 {
                     this.publicConfiguration =
-                        DiagnosticsHelper.GetJsonSerializedPublicDiagnosticsConfigurationFromFile(
-                            this.DiagnosticsConfigurationPath, this.StorageAccountName);
+                        DiagnosticsHelper.GetPublicDiagnosticsConfigurationFromFile(this.DiagnosticsConfigurationPath,
+                            this.StorageAccountName);
                 }
 
                 return this.publicConfiguration;
             }
         }
 
-        private string PrivateConfiguration
+        private Hashtable PrivateConfiguration
         {
             get
             {
-                if (string.IsNullOrEmpty(this.privateConfiguration))
+                if (this.privateConfiguration == null)
                 {
-                    this.privateConfiguration = DiagnosticsHelper.GetJsonSerializedPrivateDiagnosticsConfiguration(this.StorageAccountName, this.StorageAccountKey,
-                            this.StorageAccountEndpoint);
+                    this.privateConfiguration = DiagnosticsHelper.GetPrivateDiagnosticsConfiguration(this.StorageAccountName,
+                        this.StorageAccountKey,
+                        this.StorageAccountEndpoint);
                 }
 
                 return this.privateConfiguration;
@@ -237,11 +239,11 @@ namespace Microsoft.Azure.Commands.Compute
                     AutoUpgradeMinorVersion = this.AutoUpgradeMinorVersion
                 };
 
-                var op = this.VirtualMachineExtensionClient.CreateOrUpdate(
+                var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
                     this.ResourceGroupName,
                     this.VMName,
                     this.Name,
-                    parameters);
+                    parameters).GetAwaiter().GetResult();
 
                 var result = Mapper.Map<PSAzureOperationResponse>(op);
                 WriteObject(result);
