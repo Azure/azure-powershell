@@ -67,9 +67,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw new ArgumentNullException("parameters.SkuFamilyName");
             if (parameters.TenantId == null || parameters.TenantId == Guid.Empty)
                 throw new ArgumentException("parameters.TenantId");
-            if (parameters.ObjectId == null || parameters.ObjectId == Guid.Empty)
-                throw new ArgumentException("parameters.ObjectId");
-            
+
             var response = this.KeyVaultManagementClient.Vaults.CreateOrUpdate(
                 resourceGroupName: parameters.ResourceGroupName,
                 vaultName: parameters.VaultName,
@@ -90,19 +88,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                         EnabledForDiskEncryption = parameters.EnabledForDiskEncryption,
                         TenantId = parameters.TenantId,
                         VaultUri = "",
-                        AccessPolicies = new []
-                        {
-                            new AccessPolicyEntry
-                            {
-                                TenantId = parameters.TenantId,
-                                ObjectId = parameters.ObjectId,
-                                PermissionsToKeys = parameters.PermissionsToKeys,                                    
-                                PermissionsToSecrets = parameters.PermissionsToSecrets
-                            }
-                        }
+                        AccessPolicies = (parameters.AccessPolicy != null) ? new[] { parameters.AccessPolicy } : new AccessPolicyEntry[] { }
                     }
-                }
-                );
+                });
 
             return new PSVault(response.Vault, adClient);
         }
