@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         public AuthorizationClient(IAuthenticationFactory authenticationFactory, IClientFactory clientFactory,  AzureContext context)
         {
             ActiveDirectoryClient = new ActiveDirectoryClient(authenticationFactory, clientFactory, context);
-            AuthorizationManagementClient = clientFactory.CreateClient<AuthorizationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            AuthorizationManagementClient = clientFactory.CreateArmClient<AuthorizationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         public PSRoleDefinition GetRoleDefinition(Guid roleId)
         {
             return AuthorizationManagementClient.RoleDefinitions.Get(
-                "subscription/" + AuthorizationManagementClient.SubscriptionId, 
+                "subscriptions/" + AuthorizationManagementClient.SubscriptionId, 
                 roleId.ToString()).ToPSRoleDefinition();
         }
 
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         {
             List<PSRoleDefinition> result = new List<PSRoleDefinition>();
             result.AddRange(AuthorizationManagementClient.RoleDefinitions.List(
-                        "subscription/" + AuthorizationManagementClient.SubscriptionId,
+                        "subscriptions/" + AuthorizationManagementClient.SubscriptionId,
                         new ODataQuery<RoleDefinition>( item => item.Name == name))
                   .Select(r => r.ToPSRoleDefinition()));
 
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         {
             List<PSRoleDefinition> result = new List<PSRoleDefinition>();
             result.AddRange(AuthorizationManagementClient.RoleDefinitions.List(
-                        "subscription/" + AuthorizationManagementClient.SubscriptionId)
+                        "subscriptions/" + AuthorizationManagementClient.SubscriptionId)
                 .Select(r => r.ToPSRoleDefinition()));
             return result;
         }
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         {
             List<PSRoleDefinition> result = new List<PSRoleDefinition>();
             result.AddRange(AuthorizationManagementClient.RoleDefinitions.List(
-                        "subscription/" + AuthorizationManagementClient.SubscriptionId)
+                        "subscriptions/" + AuthorizationManagementClient.SubscriptionId)
                 .Where(r => r.Properties.Type == AuthorizationClientExtensions.CustomRole)
                 .Select(r => r.ToPSRoleDefinition()));
             return result;

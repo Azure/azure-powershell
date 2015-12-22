@@ -9,7 +9,7 @@ if ERRORLEVEL 1 (
 
 pushd
 cd %root%\src\CLU
-call dnu.cmd restore
+call dnu.cmd restore -s https://api.nuget.org/v3/index.json -s "%root%\tools\LocalFeed"
 if ERRORLEVEL 1 (
     echo "dnu.cmd restore" failed under folder of "%root%\src\CLU"
     popd

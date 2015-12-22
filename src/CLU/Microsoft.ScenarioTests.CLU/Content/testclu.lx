@@ -1,5 +1,4 @@
 RtPackage: Microsoft.CLU.Commands
 RtEntry: Microsoft.CLU.CommandModel.CmdletCommandModel.Run
 RtAssembly: Microsoft.CLU.dll
-Modules: Microsoft.CLU.Test
-NounPrefix: AzureRm
+Modules: Microsoft.ScenarioTests.CLU

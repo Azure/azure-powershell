@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using System;
+using Commands.Common.Authentication.Properties;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
