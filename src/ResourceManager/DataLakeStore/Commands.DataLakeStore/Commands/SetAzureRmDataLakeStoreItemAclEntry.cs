@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 "Indicates that the ACL entries should be set on the file with the specified ACL without prompting.")]
         public SwitchParameter Force { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             var aclSpec = ParameterSetName.Equals(BaseParameterSetName)
                 ? Acl.GetAclSpec()
@@ -98,16 +98,16 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             {
                 ConfirmAction(
                     Force.IsPresent,
-                    string.Format(Resources.SettingDataLakeStoreItemAcl, Path.FullyQualifiedPath),
-                    string.Format(Resources.SetDataLakeStoreItemAcl, Path.FullyQualifiedPath),
-                    Path.FullyQualifiedPath,
+                    string.Format(Resources.SettingDataLakeStoreItemAcl, Path.OriginalPath),
+                    string.Format(Resources.SetDataLakeStoreItemAcl, Path.OriginalPath),
+                    Path.OriginalPath,
                     () =>
-                        DataLakeStoreFileSystemClient.ModifyAcl(Path.Path, Account,
+                        DataLakeStoreFileSystemClient.ModifyAcl(Path.TransformedPath, Account,
                             aclSpec));
             }
             else
             {
-                DataLakeStoreFileSystemClient.ModifyAcl(Path.Path, Account,
+                DataLakeStoreFileSystemClient.ModifyAcl(Path.TransformedPath, Account,
                     aclSpec);
             }
         }

@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Profile
     [Alias("Disable-AzureDataCollection")]
     public class DisableAzureRmDataCollectionCommand : EnableAzureRmDataCollectionCommand
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             SetDataCollectionProfile(false);
         }

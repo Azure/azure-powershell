@@ -144,3 +144,70 @@ function Test-WorkspaceActions
     Assert-AreEqual "Bytes" $usages[0].Unit
     Assert-AreEqual ([Timespan]::FromDays(1)) $usages[0].QuotaPeriod
 }
+
+<#
+.SYNOPSIS
+Enable, disable, and list intelligence packs and verify the results
+#>
+function Test-WorkspaceEnableDisableListIntelligencePacks
+{
+
+    $wsname = Get-ResourceName
+    $rgname = Get-ResourceGroupName
+    $wslocation = Get-ProviderLocation
+
+	New-AzureRmResourceGroup -Name $rgname -Location $wslocation -Force
+
+	# Create and get a workspace
+    $workspace = New-AzureRmOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Sku free -Tags @{"tag1" = "val1"} -Force
+    Assert-AreEqual $rgname $workspace.ResourceGroupName
+    Assert-AreEqual $wsname $workspace.Name
+    Assert-AreEqual $wslocation $workspace.Location
+    Assert-AreEqual "free" $workspace.Sku
+    Assert-NotNull $workspace.ResourceId
+    Assert-AreEqual 1 $workspace.Tags.Count
+    Assert-NotNull $workspace.CustomerId
+    Assert-NotNull $workspace.PortalUrl
+
+    # Enable intelligence packs
+	Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $rgname -WorkspaceName $wsname -IntelligencePackName "ChangeTracking" -Enabled $true
+	Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $rgname -WorkspaceName $wsname -IntelligencePackName "SiteRecovery" -Enabled $true
+
+	# List to verify that the IP's have been enabled
+	$ipList = Get-AzureRmOperationalInsightsIntelligencePacks -ResourceGroupName $rgname -WorkspaceName $wsname
+	Foreach ($ip in $ipList)
+	{
+		if (($ip.Name -eq "ChangeTracking") -or ($ip.Name -eq "SiteRecovery") -or ($ip.Name -eq "LogManagement"))
+		{
+			Assert-True $ip.Enabled
+		}
+		else
+		{
+			Assert-False $ip.Enabled
+		}
+	}
+
+	# Disable intelligence packs
+	Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $rgname -WorkspaceName $wsname -IntelligencePackName "ChangeTracking" -Enabled $false
+	Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $rgname -WorkspaceName $wsname -IntelligencePackName "SiteRecovery" -Enabled $false
+
+	# List to verify that the IP's have been disabled
+	$ipList = Get-AzureRmOperationalInsightsIntelligencePacks -ResourceGroupName $rgname -WorkspaceName $wsname
+	Foreach ($ip in $ipList)
+	{
+		if ($ip.Name -eq "LogManagement")
+		{
+			Assert-True $ip.Enabled
+		}
+		else
+		{
+			Assert-False $ip.Enabled
+		}
+	}
+
+	# Delete the original workspace via piping
+    $workspace | Remove-AzureRmOperationalInsightsWorkspace -Force
+    $workspaces = Get-AzureRmOperationalInsightsWorkspace -ResourceGroupName $rgname
+    Assert-AreEqual 0 $workspaces.Count
+    Assert-ThrowsContains { Get-AzureRmOperationalInsightsWorkspace -ResourceGroupName $rgname -Name wsname } "ResourceNotFound"
+}

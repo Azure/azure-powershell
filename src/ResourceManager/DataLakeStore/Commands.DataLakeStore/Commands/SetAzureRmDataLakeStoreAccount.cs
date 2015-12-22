@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             // TODO: Define what can be updated for DataLakeStore accounts
             var currentAccount = DataLakeStoreClient.GetAccount(ResourceGroupName, Name);

@@ -80,9 +80,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         [ValidateNotNullOrEmpty]
         public bool Use32BitWorkerProcess { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
             SiteConfig siteConfig = null;
             string location = null;
             switch (ParameterSetName)

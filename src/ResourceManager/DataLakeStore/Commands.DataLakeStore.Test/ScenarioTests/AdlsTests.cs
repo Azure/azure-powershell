@@ -29,6 +29,20 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAdlsFileSystem()
+        {
+            RunPowerShellTest(string.Format("Test-DataLakeStoreFileSystem -resourceGroupName {0} -accountName {1} -fileToCopy '{2}' -location '{3}'", this.resourceGroupName, this.dataLakeAccountName, ".\\ScenarioTests\\" + this.GetType().Name + ".ps1", AdlsTestsBase.resourceGroupLocation));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAdlsFileSystemPermissions()
+        {
+            RunPowerShellTest(string.Format("Test-DataLakeStoreFileSystemPermissions -resourceGroupName {0} -accountName {1} -location '{2}'", this.resourceGroupName, this.dataLakeAccountName, AdlsTestsBase.resourceGroupLocation));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNegativeAdlsAccount()
         {
             RunPowerShellTest(string.Format("Test-NegativeDataLakeStoreAccount -resourceGroupName {0} -accountName {1} -location '{2}'", this.resourceGroupName, this.dataLakeAccountName, AdlsTestsBase.resourceGroupLocation));

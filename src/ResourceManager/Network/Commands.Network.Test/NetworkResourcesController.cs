@@ -23,6 +23,8 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Common.Authentication;
 
+using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+
 namespace Commands.Network.Test
 {
     public sealed class NetworkResourcesController
@@ -36,11 +38,9 @@ namespace Commands.Network.Test
 
         public GalleryClient GalleryClient { get; private set; }
 
-        //public EventsClient EventsClient { get; private set; }
-
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
-        public NetworkResourceProviderClient NetworkResourceProviderClient { get; private set; }
+        public NetworkManagementClient NetworkManagementClient { get; private set; }
 
         public static NetworkResourcesController NewInstance 
         { 
@@ -77,10 +77,8 @@ namespace Commands.Network.Test
             string callingClassType,
             string mockName)
         {
-            using (UndoContext context = UndoContext.Current)
+            using (RestTestFramework.MockContext context = RestTestFramework.MockContext.Start(callingClassType, mockName))
             {
-                context.Start(callingClassType, mockName);
-
                 this.csmTestFactory = new CSMTestEnvironmentFactory();
 
                 if(initialize != null)
@@ -88,7 +86,7 @@ namespace Commands.Network.Test
                     initialize(this.csmTestFactory);
                 }
 
-                SetupManagementClients();
+                SetupManagementClients(context);
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
                 
@@ -124,22 +122,20 @@ namespace Commands.Network.Test
             }
         }
 
-        private void SetupManagementClients()
+        private void SetupManagementClients(RestTestFramework.MockContext context)
         {
-            ResourceManagementClient = GetResourceManagementClient();
-            SubscriptionClient = GetSubscriptionClient();
-            GalleryClient = GetGalleryClient();
-            //EventsClient = GetEventsClient();
-            NetworkResourceProviderClient = GetNetworkResourceProviderClient();
-            AuthorizationManagementClient = GetAuthorizationManagementClient();
+            this.ResourceManagementClient = this.GetResourceManagementClient();
+            this.SubscriptionClient = this.GetSubscriptionClient();
+            this.GalleryClient = this.GetGalleryClient();
+            this.NetworkManagementClient = this.GetNetworkManagementClient(context);
+            this.AuthorizationManagementClient = this.GetAuthorizationManagementClient();
 
             helper.SetupManagementClients(
                 ResourceManagementClient,
                 SubscriptionClient,
                 GalleryClient,
-                //EventsClient,
                 AuthorizationManagementClient,
-                NetworkResourceProviderClient);
+                this.NetworkManagementClient);
         }
 
         private AuthorizationManagementClient GetAuthorizationManagementClient()
@@ -157,18 +153,13 @@ namespace Commands.Network.Test
             return TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
         }
 
-        private NetworkResourceProviderClient GetNetworkResourceProviderClient()
+        private NetworkManagementClient GetNetworkManagementClient(RestTestFramework.MockContext context)
         {
-            return TestBase.GetServiceClient<NetworkResourceProviderClient>(this.csmTestFactory);
+            return context.GetServiceClient<NetworkManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
         private GalleryClient GetGalleryClient()
         {
             return TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
         }
-
-        //private EventsClient GetEventsClient()
-        //{
-        //    return TestBase.GetServiceClient<EventsClient>(this.csmTestFactory);
-        //}
     }
 }

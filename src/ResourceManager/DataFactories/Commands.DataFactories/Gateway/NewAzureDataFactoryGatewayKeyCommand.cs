@@ -37,7 +37,7 @@ HelpMessage = "The data factory object.")]
         [ValidateNotNullOrEmpty]
         public string GatewayName { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ByFactoryObject)
             {

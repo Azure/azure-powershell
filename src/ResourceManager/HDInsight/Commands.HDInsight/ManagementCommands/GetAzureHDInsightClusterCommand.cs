@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         #endregion
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (ClusterName != null && ResourceGroupName == null)
             {

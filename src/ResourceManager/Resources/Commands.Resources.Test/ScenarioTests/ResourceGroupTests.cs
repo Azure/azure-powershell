@@ -87,5 +87,11 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             ResourcesController.NewInstance.RunPsTest("Test-RemoveDeployment");
         }
+
+        [Fact]
+        public void TestGetNonExistingResourceGroupWithDebugStream()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-GetNonExistingResourceGroupWithDebugStream");
+        }
     }
 }
