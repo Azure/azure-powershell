@@ -63,7 +63,6 @@ namespace System.Management.Automation
         {
             if (record == null)
             {
-                Console.CursorVisible = true;
                 throw new ArgumentNullException("record");
             }
 
@@ -80,14 +79,12 @@ namespace System.Management.Automation
                     _console.Write(" ");
                 }
                 _console.WriteLine();
-                Console.CursorVisible = true;
             }
             else
             {
-                Console.CursorVisible = false;
                 var statusLine = string.Format(Strings.ConsoleDataStream_WriteProgress_StatusLineInProgress, record.Activity, record.StatusDescription, record.CurrentOperation, record.SecondsRemaining);
                 // Subtract what's already known to be needed:
-                width -= statusLine.Length + 3;
+                width = Math.Max(1, width - (statusLine.Length + 3));
 
                 var chunkSize = (100 / width) + 1;
 
