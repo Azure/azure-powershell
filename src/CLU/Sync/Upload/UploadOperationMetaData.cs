@@ -117,7 +117,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
             return new SystemInformation
                        {
                            // TODO: CLU
-                           MachineName = Environment.GetEnvironmentVariable("MachineName"),
+                           MachineName = Environment.GetEnvironmentVariable("%COMPUTERNAME%"),
                            //MachineName = Environment.MachineName,
                            CsUploadProcessId = Process.GetCurrentProcess().Id
                        };
