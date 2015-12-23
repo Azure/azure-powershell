@@ -11,7 +11,9 @@
   [Parameter(Mandatory=$false, Position=4)]
   [string]$ResourceGroup = "",
   [Parameter(Mandatory=$false, Position=5)]
-  [bool]$StandardVaultOnly = $false
+  [bool]$StandardVaultOnly = $false,
+  [Parameter(Mandatory=$false, Position=6)]
+  [Guid]$UserObjectId
 )
 
 $invocationPath = Split-Path $MyInvocation.MyCommand.Definition;
@@ -35,6 +37,26 @@ $global:location = $location
 $global:testVault = $Vault
 $global:resourceGroupName = $ResourceGroup
 $global:standardVaultOnly = $StandardVaultOnly
+$global:objectId = $UserObjectId
+$global:noADCmdLetMode = $false
+
+if (-not $global:objectId)
+{
+    $upn = (Get-AzureRmContext).Account.Id 
+    $user = Get-AzureRmADUser -UserPrincipalName $upn
+    if ($user -eq $null)
+    {
+        $user = Get-AzureRmADUser -Mail $upn
+    }
+    Assert-NotNull $user
+    $global:objectId = $user.Id
+}
+
+# AD powershell APIs are broken in Fairfax
+if ((Get-AzureRmContext).Environment.AzureKeyVaultDnsSuffix -eq 'vault.usgovcloudapi.net')
+{
+    $global:noADCmdLetMode = $true
+}
 
 function Run-TestProtected
 {
