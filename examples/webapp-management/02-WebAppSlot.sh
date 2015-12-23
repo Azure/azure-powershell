@@ -40,7 +40,6 @@ slot1=`azure webapp slot get -g "$groupName" -n "$appName" --slot "$slotname1"`
 [ $(echo $slot1 | jq '.name' --raw-output) == "$appWithSlotName1" ]
 
 printf "\nValidating web app slot via pipline obj for %s " "$slotname1"
-# !Not able to test pipeline for now
 slot1=`echo "$webappInfo" | azure webapp slot get --slot "$slotname1"`
 
 printf "\n4. Create another web app slot %s " "$slotname2"
@@ -49,13 +48,13 @@ appWithSlotName2="$appName/$slotname2"
 
 printf "\n5. Get the webapp slots:"
 slots=`azure webapp slot get -g "$groupName" -n "$appName"`
-slotN1=`echo $slots | jq '[0].name'`
-slotN2=`echo $slots | jq '[1].name'`
-slotNames=`echo "$slotN1" "$slotN2"`
+slotN1=`echo $slots | jq '.[0].name'`
+slotN2=`echo $slots | jq '.[1].name'`
+slotNames=`echo $slotN1 $slotN2`
 
 printf "\nValidating web app slots %s " "$slotname1 and $slotname2" 
-[ $(echo $slotNames ) == "$appWithSlotName1" ]
-[ $(echo $slotNames ) == "$appWithSlotName2" ]
+[[ $slotNames == *"$appWithSlotName1"* ]]
+[[ $slotNames == *"$appWithSlotName2"* ]]
 
 printf "\n6. Change web app slot %s service plan" "$slotname2"
 printf "\n7. Set web app slot %s config properties" "$slotname2"
@@ -72,10 +71,10 @@ done
 
 endTime=`date +"%A, %B %d, %Y %X"`
 startTime=`date +"%A, %B %d, %Y %X" --date "3 hour ago"`
-$metricsNames='[ "CPU" ]'
+$metricsNames="\"('CPU', 'Requests')\""
 
+# !Not able to test since complex object issue.
 metrics=`azure webapp slot metrics get -g "$groupName" -n "$appName" --slot "$slotname1" --granularity PT1M --starttime "$startTime" --endtime "$endTime" --metrics "$metricsNames"`
-# azure webapp slot metrics get -g testrg12068 -n testweb121 --slot staging --granularity PT1M --metrics "CPU, Requests" --starttime "Monday, December 21, 2015 3:31:26 PM" --endtime "Monday, December 2
 
 printf "\nValidating web app slot metrics %s " "$slotname1" 
 for i in $metricsNames
@@ -87,52 +86,57 @@ done
 printf "\nValidating web app slot metrics via pipline obj %s " "$slotname1" 
 
 printf "\n12. Stop web app slot: %s." "$slotname1"
-slot1=`echo "$slot1" | azure web app slot stop`
+slot1=`echo "$slot1" | azure webapp slot stop`
 printf "\nValidating web app slot %s stopped " "$slotname1" 
-[ $(echo $slot1 | jq '.State' ) == "Stopped" ]
+[ $(echo $slot1 | jq '."properties.state"' --raw-output) == "Stopped" ]
 
 printf "\n13 Stop web app slot: %s." "$slotname1"
-slot1=`echo "$slot1" | azure web app slot start`
+slot1=`echo "$slot1" | azure webapp slot start`
 printf "\nValidating web app slot %s running " "$slotname1" 
-[ $(echo $slot1 | jq '.State' ) == "Running" ]
-
+[ $(echo $slot1 | jq '."properties.state"' --raw-output) == "Running" ]
 
 printf "\n14 Stop web app slot: %s." "$slotname1"
-slot1=`echo "$slot1" | azure web app slot stop`
+slot1=`echo "$slot1" | azure webapp slot stop`
 printf "\nValidating web app slot %s stopped " "$slotname1" 
-[ $(echo $slot1 | jq '.State' ) == "Stopped" ]
+[ $(echo $slot1 | jq '."properties.state"' --raw-output) == "Stopped" ]
 
 printf "\n15 Stop web app slot: %s." "$slotname1"
-slot1=`echo "$slot1" | azure web app slot start`
+slot1=`echo "$slot1" | azure webapp slot start`
 printf "\nValidating web app slot %s running " "$slotname1" 
-[ $(echo $slot1 | jq '.State' ) == "Running" ]
-
+[ $(echo $slot1 | jq '."properties.state"' --raw-output) == "Running" ]
 
 printf "\n16 Restart web app slot: %s." "$slotname1"
-slot1=`echo "$slot1" | azure web app slot restart`
+slot1=`echo "$slot1" | azure webapp slot restart`
 printf "\nValidating web app slot %s Running " "$slotname1" 
-[ $(echo $slot1 | jq '.State' ) == "Stopped" ]
+[ $(echo $slot1 | jq '."properties.state"' --raw-output) == "Running" ]
 
 printf "\n17 Restart web app slot: %s." "$slotname1"
-slot1=`echo "$slot1" | azure web app slot restart`
+slot1=`echo "$slot1" | azure webapp slot restart`
 printf "\nValidating web app slot %s Running " "$slotname1" 
-[ $(echo $slot1 | jq '.State' ) == "Stopped" ]
+[ $(echo $slot1 | jq '."properties.state"' --raw-output) == "Running" ]
 
 # Clone ------
-printf "\n10. Clone web app slot: %s." "$slotname1"
-slotClone=`azure web app slot clone`
-appWithSlotNameClone="$appName/slotname1"
+# !Not able to test since complex object input issue.
+# printf "\n10. Clone web app slot: %s." "$slotname1"
+# slotClone=`azure web app slot clone`
+# appWithSlotNameClone="$appName/slotname1"
 
-printf "\nValidating cloned web app slot %s " "$slotname1"
-[ $(echo $slotClone | jq '.name' --raw-output) == "$appWithSlotNameClone" ]
+# printf "\nValidating cloned web app slot %s " "$slotname1"
+# [ $(echo $slotClone | jq '.name' --raw-output) == "$appWithSlotNameClone" ]
 
-printf "\nValidating web app slot get for %s " "$slotname1"
-slot1=`azure webapp slot get -g "$groupName" -n "$appName" --slot "$slotname1"`
-[ $(echo $slot1 | jq '.name' --raw-output) == "$appWithSlotNameClone" ]
+# printf "\nValidating web app slot get for %s " "$slotname1"
+# slot1=`azure webapp slot get -g "$groupName" -n "$appName" --slot "$slotname1"`
+# [ $(echo $slot1 | jq '.name' --raw-output) == "$appWithSlotNameClone" ]
 #------- 
 
 # Cleanup
 printf "\n20. Remove web app slot: %s." "$slotname1"
+azure webapp slot remove -g "$groupName" -n "$appName" --slot "$slotname1"
+
 printf "\n20. Remove web app: %s." "$appName"
+azure webapp remove -g "$groupName" -n "$appName"
+
 printf "\n20. Remove app service plan: %s." "$planName"
+azure app service plan remove -g "$groupName" -n "$planName"
+
 printf "\n20. Remove resource group: %s." "$groupName"
