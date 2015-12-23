@@ -771,4 +771,7 @@
   <data name="PaaSDiagnosticsNullStorageAccountEndpoint" xml:space="preserve">
     <value>Storage account endpoint is not specified or can not be retrieved automatically.</value>
   </data>
+  <data name="PaaSDiagnosticsNullStorageAccountName" xml:space="preserve">
+    <value>Storage account name is not specified.</value>
+  </data>
 </root>

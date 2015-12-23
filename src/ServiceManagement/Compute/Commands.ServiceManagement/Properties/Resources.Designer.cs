@@ -1007,6 +1007,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Storage account name is not specified..
+        /// </summary>
+        public static string PaaSDiagnosticsNullStorageAccountName {
+            get {
+                return ResourceManager.GetString("PaaSDiagnosticsNullStorageAccountName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your xml configuration file doesn&apos;t start with the required header &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;.
         /// </summary>
         public static string PaaSDiagnosticsWrongHeader {

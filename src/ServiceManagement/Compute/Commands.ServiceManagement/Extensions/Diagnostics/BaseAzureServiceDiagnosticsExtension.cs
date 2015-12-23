@@ -122,10 +122,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
                         this.StorageAccountName = storageNode.Value;
                     }
                 }
-                else
-                {
-                    throw new ArgumentNullException(Properties.Resources.PaaSDiagnosticsNullStorageAccount);
-                }
+            }
+
+            if (string.IsNullOrEmpty(this.StorageAccountName))
+            {
+                throw new ArgumentException(Properties.Resources.PaaSDiagnosticsNullStorageAccountName);
             }
         }
 
@@ -252,7 +253,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             var node = doc.SelectSingleNode("//ns:StorageAccount", ns);
             if(node != null)
             {
-                if (!string.IsNullOrEmpty(node.InnerText) && string.Compare(node.InnerText, StorageAccountName, true) != 0)
+                // The StorageAccount is empty, we must set it
+                if (string.IsNullOrEmpty(node.InnerText))
+                {
+                    var insertIndex = PublicConfiguration.IndexOf("</StorageAccount>");
+                    PublicConfiguration = PublicConfiguration.Insert(insertIndex, StorageAccountName);
+                }
+                else if (!string.IsNullOrEmpty(node.InnerText) && string.Compare(node.InnerText, StorageAccountName, true) != 0)
                 {
                     throw new ArgumentException(Resources.PassDiagnosticsNoMatchStorageAccount);
                 }
