@@ -32,7 +32,7 @@ function Test-SearchGetSearchResultsAndUpdate
 
 	$idArray = $searchResult.Id.Split("/")
 	$id = $idArray[$idArray.Length-1]
-	$updatedResult = Get-AzureRmOperationalInsightsSearchResultsUpdate -ResourceGroupName $rgname -WorkspaceName $wsname -Id $id
+	$updatedResult = Get-AzureRmOperationalInsightsSearchResults -ResourceGroupName $rgname -WorkspaceName $wsname -Id $id
 	
 	Assert-NotNull $updatedResult
 	Assert-NotNull $updatedResult.Metadata
@@ -64,7 +64,7 @@ function Test-SearchGetSavedSearchesAndResults
 	$rgname = "mms-eus"
     $wsname = "workspace-861bd466-5400-44be-9552-5ba40823c3aa"
 
-	$savedSearches = Get-AzureRmOperationalInsightsSavedSearches -ResourceGroupName $rgname -WorkspaceName $wsname
+	$savedSearches = Get-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname
 	
 	Assert-NotNull $savedSearches
 	Assert-NotNull $savedSearches.Value
@@ -89,33 +89,59 @@ function Test-SearchGetSavedSearchesAndResults
 
 <#
 .SYNOPSIS
-Put a saved search and then delete it
+Create a new saved search, update, and then remove it
 #>
 function Test-SearchSetAndRemoveSavedSearches
 {
 	$rgname = "mms-eus"
     $wsname = "workspace-861bd466-5400-44be-9552-5ba40823c3aa"
 
-	$id = "put saved search test id"
-	$displayName = "put saved search test"
-	$category = "put saved search test category"
+	$id = "test-new-saved-search-id-2015"
+	$displayName = "TestingSavedSearch"
+	$category = "Saved Search Test Category"
 	$version = 1
 	$query = "* | measure Count() by Type"
 
 	# Get the count of saved searches
-	$savedSearches = Get-AzureRmOperationalInsightsSavedSearches -ResourceGroupName $rgname -WorkspaceName $wsname
+	$savedSearches = Get-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname
 	$count = $savedSearches.Value.Count
 	$newCount = $count + 1
 
-	Set-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname -SavedSearchId $id -DisplayName $displayName -Category $category -Query $query -Version $version
+	New-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname -SavedSearchId $id -DisplayName $displayName -Category $category -Query $query -Version $version -Force
 	
 	# Check that the search was saved
-	$savedSearches = Get-AzureRmOperationalInsightsSavedSearches -ResourceGroupName $rgname -WorkspaceName $wsname
+	$savedSearches = Get-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname
 	Assert-AreEqual $savedSearches.Value.Count $newCount
 
-	Remove-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname -SavedSearchId $id
+	$etag = ""
+	ForEach ($s in $savedSearches.Value)
+	{
+		If ($s.Properties.DisplayName.Equals($displayName)) {
+			$etag = $s.ETag
+		}
+	}
+
+	# Test updating the search
+	$query = "*"
+	Set-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname -SavedSearchId $id -DisplayName $displayName -Category $category -Query $query -Version $version -ETag $etag
+	
+	# Check that the search was updated
+	$savedSearches = Get-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname
+	Assert-AreEqual $savedSearches.Value.Count $newCount
+
+	$found = 0
+	ForEach ($s in $savedSearches.Value)
+	{
+		If ($s.Properties.DisplayName.Equals($displayName) -And $s.Properties.Query.Equals($query)) {
+			$found = 1
+		}
+	}
+	Assert-AreEqual $found 1
+
+
+	Remove-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname -SavedSearchId $id -Force
 	
 	# Check that the search was deleted
-	$savedSearches = Get-AzureRmOperationalInsightsSavedSearches -ResourceGroupName $rgname -WorkspaceName $wsname
+	$savedSearches = Get-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname
 	Assert-AreEqual $savedSearches.Value.Count $count
 }

@@ -89,9 +89,13 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             return searchResponse;
         }
 
-        public virtual HttpStatusCode CreateOrUpdateSavedSearch(string resourceGroupName, string workspaceName, string savedSearchId, string category, string displayName, string query, int version)
+        public virtual HttpStatusCode CreateOrUpdateSavedSearch(string resourceGroupName, string workspaceName, string savedSearchId, string displayName, string category, string query, int version, string ETag = null)
         {
             SearchCreateOrUpdateSavedSearchParameters parameters = new SearchCreateOrUpdateSavedSearchParameters();
+            if (ETag != null && ETag != "")
+            {
+                parameters.ETag = ETag;
+            }
             parameters.Properties = new SavedSearchProperties();
             parameters.Properties.Category = category;
             parameters.Properties.DisplayName = displayName;

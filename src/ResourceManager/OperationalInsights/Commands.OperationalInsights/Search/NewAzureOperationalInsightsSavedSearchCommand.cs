@@ -18,8 +18,8 @@ using Microsoft.Azure.Commands.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet(VerbsCommon.Get, Constants.SearchResultsUpdate), OutputType(typeof(PSSearchGetSearchResultsResponse))]
-    public class GetAzureOperationalInsightsSearchResultsUpdateCommand : OperationalInsightsBaseCmdlet
+    [Cmdlet(VerbsCommon.New, Constants.SavedSearch)]
+    public class NewAzureOperationalInsightsSavedSearchCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
@@ -33,13 +33,36 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         public string WorkspaceName { get; set; }
 
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The search id.")]
+            HelpMessage = "The saved search id.")]
         [ValidateNotNullOrEmpty]
-        public string Id { get; set; }
+        public string SavedSearchId { get; set; }
+
+        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true,
+        HelpMessage = "The saved search display name.")]
+        [ValidateNotNullOrEmpty]
+        public string DisplayName { get; set; }
+
+        [Parameter(Position = 4, Mandatory = true, ValueFromPipelineByPropertyName = true,
+        HelpMessage = "The saved search category.")]
+        [ValidateNotNullOrEmpty]
+        public string Category { get; set; }
+
+        [Parameter(Position = 5, Mandatory = true, ValueFromPipelineByPropertyName = true,
+        HelpMessage = "The saved search query.")]
+        [ValidateNotNullOrEmpty]
+        public string Query { get; set; }
+
+        [Parameter(Position = 6, Mandatory = false, ValueFromPipelineByPropertyName = true,
+        HelpMessage = "The saved search version.")]
+        [ValidateNotNullOrEmpty]
+        public int Version { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
 
         protected override void ProcessRecord()
         {
-            WriteObject(OperationalInsightsClient.GetSearchResultsUpdate(ResourceGroupName, WorkspaceName, Id), true);
+            WriteObject(OperationalInsightsClient.CreateOrUpdateSavedSearch(ResourceGroupName, WorkspaceName, SavedSearchId, DisplayName, Category, Query, Version), true);
         }
 
     }

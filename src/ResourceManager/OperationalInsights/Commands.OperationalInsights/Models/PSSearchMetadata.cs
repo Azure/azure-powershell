@@ -33,9 +33,12 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
                 this.Total = metadata.Total;
                 this.Id = metadata.Id;
                 List<PSCoreSummary> summaryList = new List<PSCoreSummary>();
-                for (int i = 0; i < metadata.CoreSummaries.Count; i++)
+                if (metadata.CoreSummaries != null)
                 {
-                    summaryList.Add(new PSCoreSummary(metadata.CoreSummaries[i]));
+                    for (int i = 0; i < metadata.CoreSummaries.Count; i++)
+                    {
+                        summaryList.Add(new PSCoreSummary(metadata.CoreSummaries[i]));
+                    }
                 }
                 this.CoreSummaries = summaryList;
                 this.Status = metadata.Status;
@@ -43,9 +46,12 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
                 this.LastUpdated = metadata.LastUpdated;
                 this.ETag = metadata.ETag;
                 List<PSSearchSort> sortList = new List<PSSearchSort>();
-                for (int j = 0; j < metadata.Sort.Count; j++)
+                if (metadata.Sort != null)
                 {
-                    sortList.Add(new PSSearchSort(metadata.Sort[j]));
+                    for (int j = 0; j < metadata.Sort.Count; j++)
+                    {
+                        sortList.Add(new PSSearchSort(metadata.Sort[j]));
+                    }
                 }
                 this.Sort = sortList;
                 this.RequestTime = metadata.RequestTime;

@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.OperationalInsights.Models;
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
     [Cmdlet(VerbsCommon.Get, Constants.SavedSearchResults), OutputType(typeof(PSSearchGetSearchResultsResponse))]
-    public class GetAzureOperationalInsightsSavedSeearchResultsCommand : OperationalInsightsBaseCmdlet
+    public class GetAzureOperationalInsightsSavedSearchResultsCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]

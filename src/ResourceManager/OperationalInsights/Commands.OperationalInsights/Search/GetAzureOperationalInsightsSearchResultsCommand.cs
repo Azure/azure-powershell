@@ -63,24 +63,36 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [ValidateNotNullOrEmpty]
         public DateTime? End { get; set; }
 
+        [Parameter(Position = 8, Mandatory = false, ValueFromPipelineByPropertyName = true,
+        HelpMessage = "If an id is given, the search results for that id are updated.")]
+        [ValidateNotNullOrEmpty]
+        public string Id { get; set; }
+
 
         protected override void ProcessRecord()
         {
-            PSHighlight highlight = new PSHighlight()
+            if (Id != null)
             {
-                Pre = PreHighlight,
-                Post = PostHighlight
-            };
-            PSSearchGetSearchResultsParameters parameters = new PSSearchGetSearchResultsParameters()
+                WriteObject(OperationalInsightsClient.GetSearchResultsUpdate(ResourceGroupName, WorkspaceName, Id), true);
+            }
+            else
             {
-                Top = Top,
-                Highlight = highlight,
-                Query = Query,
-                Start = Start,
-                End = End,
-            };
+                PSHighlight highlight = new PSHighlight()
+                {
+                    Pre = PreHighlight,
+                    Post = PostHighlight
+                };
+                PSSearchGetSearchResultsParameters parameters = new PSSearchGetSearchResultsParameters()
+                {
+                    Top = Top,
+                    Highlight = highlight,
+                    Query = Query,
+                    Start = Start,
+                    End = End,
+                };
 
-            WriteObject(OperationalInsightsClient.GetSearchResults(ResourceGroupName, WorkspaceName, parameters), true);
+                WriteObject(OperationalInsightsClient.GetSearchResults(ResourceGroupName, WorkspaceName, parameters), true);
+            }
         }
 
     }

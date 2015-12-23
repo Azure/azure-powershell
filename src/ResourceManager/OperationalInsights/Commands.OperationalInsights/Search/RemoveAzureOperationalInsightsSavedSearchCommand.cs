@@ -12,9 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Globalization;
 using System.Collections.Generic;
 using System.Management.Automation;
+using System.Net;
 using Microsoft.Azure.Commands.OperationalInsights.Models;
+using Microsoft.Azure.Commands.OperationalInsights.Properties;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
@@ -37,9 +40,34 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [ValidateNotNullOrEmpty]
         public string SavedSearchId { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
+
         protected override void ProcessRecord()
         {
-            WriteObject(OperationalInsightsClient.DeleteSavedSearch(ResourceGroupName, WorkspaceName, SavedSearchId), true);
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.SavedSearchDeleteConfirmationMessage,
+                    SavedSearchId,
+                    WorkspaceName),
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.SavedSearchRemoving,
+                    SavedSearchId,
+                    WorkspaceName),
+                SavedSearchId,
+                ExecuteDelete);
+        }
+        public void ExecuteDelete()
+        {
+            HttpStatusCode response = OperationalInsightsClient.DeleteSavedSearch(ResourceGroupName, WorkspaceName, SavedSearchId);
+
+            if (response == HttpStatusCode.NoContent)
+            {
+                WriteWarning(string.Format(CultureInfo.InvariantCulture, Resources.SavedSearchNotFound, SavedSearchId, WorkspaceName));
+            }
         }
 
     }

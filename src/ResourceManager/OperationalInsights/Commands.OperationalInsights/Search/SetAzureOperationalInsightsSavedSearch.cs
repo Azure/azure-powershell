@@ -52,14 +52,19 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [ValidateNotNullOrEmpty]
         public string Query { get; set; }
 
-        [Parameter(Position = 6, Mandatory = true, ValueFromPipelineByPropertyName = true,
+        [Parameter(Position = 6, Mandatory = false, ValueFromPipelineByPropertyName = true,
         HelpMessage = "The saved search version.")]
         [ValidateNotNullOrEmpty]
         public int Version { get; set; }
 
+        [Parameter(Position = 7, Mandatory = false, ValueFromPipelineByPropertyName = true,
+        HelpMessage = "The ETag of the saved search.")]
+        [ValidateNotNullOrEmpty]
+        public string ETag { get; set; }
+
         protected override void ProcessRecord()
         {
-            WriteObject(OperationalInsightsClient.CreateOrUpdateSavedSearch(ResourceGroupName, WorkspaceName, SavedSearchId, DisplayName, Category, Query, Version), true);
+            WriteObject(OperationalInsightsClient.CreateOrUpdateSavedSearch(ResourceGroupName, WorkspaceName, SavedSearchId, DisplayName, Category, Query, Version, ETag), true);
         }
 
     }

@@ -34,14 +34,10 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         public const string SavedSearch = "AzureRmOperationalInsightsSavedSearch";
 
-        public const string SavedSearches = "AzureRmOperationalInsightsSavedSearches";
-
         public const string SavedSearchResults = "AzureRmOperationalInsightsSavedSearchResults";
 
         public const string Schema = "AzureRmOperationalInsightsSchema";
 
         public const string SearchResults = "AzureRmOperationalInsightsSearchResults";
-
-        public const string SearchResultsUpdate = "AzureRmOperationalInsightsSearchResultsUpdate";
     }
 }
