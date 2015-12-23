@@ -12,24 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Reflection;
-using System.Runtime.InteropServices;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-[assembly: AssemblyTitle("Microsoft.CLU.Test")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Microsoft.CLU.Test")]
-[assembly: AssemblyCopyright("Copyright © Microsoft")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-
-[assembly: ComVisible(false)]
-
-[assembly: Guid("CE4E634B-0219-4357-9EA5-AFA92667A9D3")]
-
-[assembly: AssemblyVersion("1.0.0")]
-[assembly: AssemblyFileVersion("1.0.0")]
+namespace Microsoft.Azure.Commands
+{
+    public class EntryStub
+    {
+        public static void Main(string[] args)
+        {
+            // empty entry point
+        }
+    }
+}

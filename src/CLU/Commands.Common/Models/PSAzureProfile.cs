@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Models
 
         public string EnvironmentNames
         {
-            get { return _env == null? null : $"{string.Join(", ", _env.Keys.ToArray())}"; }
+            get { return _env == null || _env.Keys == null? null : string.Join(", ", _env.Keys.ToArray()); }
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Models
 
         public override string ToString()
         {
-            return Context!= null? Context.ToString() : null;
+            return Context?.ToString();
         }
     }
 }

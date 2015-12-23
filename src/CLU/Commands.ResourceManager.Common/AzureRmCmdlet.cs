@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Commands.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Common.Resources.Properties;
+using Commands.ResourceManager.Common.Properties;
 using Microsoft.Azure.Commands.Models;
 using Microsoft.Azure.Commands.Utilities.Common;
 using Newtonsoft.Json;
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 if (DefaultProfile == null || DefaultProfile.Context == null)
                 {
-                    throw new PSInvalidOperationException("Run Login-AzureRmAccount to login.");
+                    throw new PSInvalidOperationException(Resources.ProfileCannotBeNull);
                 }
 
                 return DefaultProfile.Context;

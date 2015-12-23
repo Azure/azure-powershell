@@ -1,6 +1,6 @@
 {
   "version": "1.0.0-*",
-  "description": "Microsoft.Azure.Commands.Common.Resources Class Library",
+  "description": "Commands.ResourceManager.Common Class Library",
   "authors": [ "markcowl" ],
   "tags": [ "" ],
   "projectUrl": "",
@@ -10,7 +10,7 @@
       "dependencies": {
         "Microsoft.NETCore": "5.0.1-beta-23516",
         "Microsoft.NETCore.Platforms": "1.0.1-beta-23516",
-       "Microsoft.CSharp": "4.0.1-beta-23516"
+        "Microsoft.CSharp": "4.0.1-beta-23516"
       }
     }
   },
@@ -20,7 +20,7 @@
     "Commands.Common": "",
     "Commands.Common.Authentication": "",
     "Microsoft.IdentityModel.Clients.ActiveDirectory": "3.6.212041202-alpha",
-    "Microsoft.Rest.ClientRuntime": "1.8.0",
+    "Microsoft.Rest.ClientRuntime": "1.9.0",
     "Newtonsoft.Json": "7.0.1",
     "System.Collections": "4.0.11-beta-23516",
     "System.Collections.Concurrent": "4.0.11-beta-23516",
