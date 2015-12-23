@@ -9,7 +9,7 @@ printf "\n2. Creating a new storage account"
 result=`azure storage account new --resourcegroupname "$groupName" --name "$groupName" --location "$location" --type "$storageAccountType"`
 
 printf "\n3. Uploading a virtual hard disk"
-result=`azure vhd add -o --resourcegroupname "$groupName" --destination https://"$groupName".blob.core.windows.net/test/test.vhd --localfilepath $(dirname $0)/test.vhd`
+result=`azure vhd add -o --resourcegroupname "$groupName" --destination https://"$groupName".blob.core.windows.net/test/test.vhd --localfilepath $BASEDIR/virtual-hard-disk/test.vhd`
 
 printf "\n4. Downloading a virtual hard disk"
 
