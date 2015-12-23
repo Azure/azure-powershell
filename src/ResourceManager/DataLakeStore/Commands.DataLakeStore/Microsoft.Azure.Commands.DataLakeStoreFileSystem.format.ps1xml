@@ -2,9 +2,9 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>Microsoft.Azure.Management.DataLake.StoreFileSystem.Models.FileStatusProperties</Name>
+      <Name>Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItem</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Management.DataLake.StoreFileSystem.Models.FileStatusProperties</TypeName>
+        <TypeName>Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItem</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -14,8 +14,8 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>LastWriteTime</Label>
-            <Alignment>Left</Alignment>
-            <Width>16</Width>
+            <Alignment>Right</Alignment>
+            <Width>20</Width>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Length</Label>
@@ -38,13 +38,13 @@
                 <PropertyName>Permission</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>ModificationTime</PropertyName>
+                <PropertyName>LastWriteTime</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Length</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>PathSuffix</PropertyName>
+                <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Type</PropertyName>

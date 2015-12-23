@@ -25,5 +25,11 @@ namespace Microsoft.Azure.Commands.Compute
                 return ComputeClient.ComputeManagementClient.VirtualMachineExtensions;
             }
         }
+
+        protected string GetLocationFromVm(string rgName, string vmName)
+        {
+            var vm = this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(rgName, vmName);
+            return vm.VirtualMachine.Location;
+        }
     }
 }

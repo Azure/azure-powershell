@@ -106,11 +106,15 @@ function Test_SetRemoveAccessPolicyBySPN
 {     
     Reset-PreCreatedVault
 
+    $sp = 'testapp'
+
     #Create an app and service principal
-    $appName = [Guid]::NewGuid().ToString("N")
-    $uri = 'http://localhost:8080/'+$appName
-    $app = New-AzureRmADApplication -DisplayName $appName -HomePage 'http://contoso.com' -IdentifierUris $uri -Password $appName
-    $sp = New-AzureRmADServicePrincipal -ApplicationId $app.ApplicationId
+    if (-not $global:noADCmdLetMode) {
+        $appName = [Guid]::NewGuid().ToString("N")
+        $uri = 'http://localhost:8080/'+$appName
+        $app = New-AzureRmADApplication -DisplayName $appName -HomePage 'http://contoso.com' -IdentifierUris $uri -Password $appName
+        $sp = New-AzureRmADServicePrincipal -ApplicationId $app.ApplicationId
+    }
 
     try
     {
@@ -118,85 +122,77 @@ function Test_SetRemoveAccessPolicyBySPN
     }
     finally
     {
-        Remove-AzureRmADApplication -ApplicationObjectId $app.ApplicationObjectId -Force
+        if (-not $global:noADCmdLetMode) {        
+            Remove-AzureRmADApplication -ApplicationObjectId $app.ApplicationObjectId -Force
+        }
     }
 
 }
 
 function Test_SetRemoveAccessPolicyByObjectId
 {
-    $user = (Get-AzureRmContext).Account.Id 
     Reset-PreCreatedVault
-    Test-SetRemoveAccessPolicyByObjectId $global:precreatedVaultName $global:resourceGroupName $user
+    Test-SetRemoveAccessPolicyByObjectId $global:precreatedVaultName $global:resourceGroupName $global:objectId
 }
 
 
 function Test_SetRemoveAccessPolicyByCompoundId
 {
-    $user = (Get-AzureRmContext).Account.Id 
     $appId = [System.Guid]::NewGuid()
     Reset-PreCreatedVault
-    Test-SetRemoveAccessPolicyByCompoundId $global:precreatedVaultName $global:resourceGroupName $user $appId
+    Test-SetRemoveAccessPolicyByCompoundId $global:precreatedVaultName $global:resourceGroupName $appId $global:objectId
 }
 
 function Test_RemoveAccessPolicyWithCompoundIdPolicies
 {
-    $user = (Get-AzureRmContext).Account.Id 
     $appId1 = [System.Guid]::NewGuid()
     $appId2 = [System.Guid]::NewGuid()
     Reset-PreCreatedVault
-    Test-RemoveAccessPolicyWithCompoundIdPolicies $global:precreatedVaultName $global:resourceGroupName $user $appId1 $appId2
+    Test-RemoveAccessPolicyWithCompoundIdPolicies $global:precreatedVaultName $global:resourceGroupName $appId1 $appId2 $global:objectId
 }
 
 function Test_SetCompoundIdAccessPolicy
-{
-    $user = (Get-AzureRmContext).Account.Id 
+{ 
     $appId = [System.Guid]::NewGuid()
     Reset-PreCreatedVault
-    Test-SetCompoundIdAccessPolicy $global:precreatedVaultName $global:resourceGroupName $user $appId
+    Test-SetCompoundIdAccessPolicy $global:precreatedVaultName $global:resourceGroupName $appId $global:objectId
 }
 
 function Test_ModifyAccessPolicy
 {
-    $user = (Get-AzureRmContext).Account.Id 
     Reset-PreCreatedVault
-    Test-ModifyAccessPolicy $global:precreatedVaultName $global:resourceGroupName $user
+    Test-ModifyAccessPolicy $global:precreatedVaultName $global:resourceGroupName $global:objectId
 }
 
 function Test_ModifyAccessPolicyEnabledForDeployment
 {
-    $user = (Get-AzureRmContext).Account.Id 
     Reset-PreCreatedVault
-    Test-ModifyAccessPolicyEnabledForDeployment $global:precreatedVaultName $global:resourceGroupName $user
+    Test-ModifyAccessPolicyEnabledForDeployment $global:precreatedVaultName $global:resourceGroupName
 }
 
 function Test_ModifyAccessPolicyEnabledForTemplateDeployment
 {
-    $user = (Get-AzureRmContext).Account.Id 
     Reset-PreCreatedVault
-    Test-ModifyAccessPolicyEnabledForTemplateDeployment $global:precreatedVaultName $global:resourceGroupName $user
+    Test-ModifyAccessPolicyEnabledForTemplateDeployment $global:precreatedVaultName $global:resourceGroupName
 }
 
 function Test_ModifyAccessPolicyEnabledForDiskEncryption
 {
-    $user = (Get-AzureRmContext).Account.Id 
     Reset-PreCreatedVault
-    Test-ModifyAccessPolicyEnabledForDiskEncryption $global:precreatedVaultName $global:resourceGroupName $user
+    Test-ModifyAccessPolicyEnabledForDiskEncryption $global:precreatedVaultName $global:resourceGroupName
 }
 
 function Test_ModifyAccessPolicyNegativeCases
 {
-    $user = (Get-AzureRmContext).Account.Id 
     Reset-PreCreatedVault
-    Test-ModifyAccessPolicyNegativeCases $global:precreatedVaultName $global:resourceGroupName $user
+    Test-ModifyAccessPolicyNegativeCases $global:precreatedVaultName $global:resourceGroupName $user $global:objectId
 }
 
 
 function Test_RemoveNonExistentAccessPolicyDoesNotThrow
 {
-    $user = (Get-AzureRmContext).Account.Id 
     Reset-PreCreatedVault
-    Test-RemoveNonExistentAccessPolicyDoesNotThrow $global:precreatedVaultName $global:resourceGroupName $user
+    Test-RemoveNonExistentAccessPolicyDoesNotThrow $global:precreatedVaultName $global:resourceGroupName $global:objectId
 }
 #-------------------------------------------------------------------------------------
 
@@ -264,6 +260,11 @@ function Initialize-VaultTest
     $tenantId = (Get-AzureRmContext).Tenant.TenantId
     $tagName = "testtag"
     $tagValue = "testvalue"
+    $sku = "premium"
+    if($global:standardVaultOnly)
+    {
+        $sku = "standard"
+    }
     $vaultId = @{
         "ResourceType" = $KeyVaultResourceType;
         "ApiVersion" = $KeyVaultApiVersion;
@@ -277,7 +278,7 @@ function Initialize-VaultTest
 
         "sku" = @{
             "family" = "A";
-            "name" = "premium";
+            "name" = $sku;
         }
         "accessPolicies" = @();
     }    
@@ -306,13 +307,18 @@ function Reset-PreCreatedVault
     $tagName = "testtag"
     $tagValue = "testvalue"
     $tenantId = (Get-AzureRmContext).Tenant.TenantId
+    $sku = "premium"
+    if($global:standardVaultOnly)
+    {
+        $sku = "standard"
+    }
     $vaultProperties = @{
         "enabledForDeployment" = $false;
         "tenantId" = $tenantId;
 
         "sku" = @{
             "family" = "A";
-            "name" = "premium";
+            "name" = $sku;
         }
         "accessPolicies" = @();
     } 
