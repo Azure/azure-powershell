@@ -95,8 +95,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             set;
         }
 
-        [Parameter(Position = 7, ValueFromPipelineByPropertyName = true, ParameterSetName = NewExtensionParameterSetName, HelpMessage = "Diagnostics Configuration")]
-        [Parameter(Position = 7, ValueFromPipelineByPropertyName = true, ParameterSetName = NewExtensionUsingThumbprintParameterSetName, HelpMessage = "Diagnostics Configuration")]
+        [Parameter(Position = 7, ValueFromPipelineByPropertyName = true, Mandatory = true, ParameterSetName = NewExtensionParameterSetName, HelpMessage = "Diagnostics Configuration")]
+        [Parameter(Position = 7, ValueFromPipelineByPropertyName = true, Mandatory = true, ParameterSetName = NewExtensionUsingThumbprintParameterSetName, HelpMessage = "Diagnostics Configuration")]
         [ValidateNotNullOrEmpty]
         public override string DiagnosticsConfigurationPath
         {
