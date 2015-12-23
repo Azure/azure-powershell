@@ -32,8 +32,8 @@ namespace Microsoft.Azure.Commands.Compute.Models
 
             return new VhdDownloadContext
             {
-                LocalFilePath = new FileInfo(downloadParameters.LocalFilePath),
-                Source = downloadParameters.BlobUri.Uri
+                LocalFilePath = downloadParameters.LocalFilePath,
+                Source = downloadParameters.BlobUri.Uri.ToString()
             };
         }
     }

@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
         string _sessionId;
         Random _generator;
         string _resourceGroupName;
+        string _storageAccountName;
         IClientFactory _clientFactory = new ClientFactory();
         TestContext _context;
         ResourceManagementClient _client;
@@ -41,6 +42,7 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
         const string locationKey = "location";
         const string SessionKey = "CmdletSessionID";
         const string storageAccountTypeKey = "storageAccountType";
+        const string storageAccountNameKey = "storageAccountName";
         const string DefaultStorageAccountType = "Standard_GRS";
 
         public ExampleScriptRunner(string sessionId) : this(new Random(), sessionId)
@@ -98,6 +100,7 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
                 {
                     Trace.Listeners.Add(listener);
                     _resourceGroupName = CreateRandomName();
+                    _storageAccountName = CreateRandomName() + "sto";
                     if (File.Exists(deploymentTemplatePath))
                     {
                         DeployTemplate(deploymentTemplatePath, _resourceGroupName);
@@ -106,8 +109,8 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
                     process.EnvironmentVariables[SessionKey] = _sessionId;
                     process.EnvironmentVariables[ResourceGroupNameKey] = _resourceGroupName;
                     process.EnvironmentVariables[locationKey] = DefaultLocation;
-                    process.EnvironmentVariables[locationKey] = DefaultLocation;
                     process.EnvironmentVariables[storageAccountTypeKey] = DefaultStorageAccountType;
+                    process.EnvironmentVariables[storageAccountNameKey] = _storageAccountName;
                     foreach (var helper in _context.EnvironmentHelpers)
                     {
                         helper.TrySetupScriptEnvironment(_context, _clientFactory, process.EnvironmentVariables);

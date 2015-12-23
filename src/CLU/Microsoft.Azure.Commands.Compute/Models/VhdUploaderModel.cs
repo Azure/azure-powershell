@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
                 var synchronizer = new BlobSynchronizer(uploadContext, uploadParameters.NumberOfUploaderThreads);
                 if (synchronizer.Synchronize())
                 {
-                    return new VhdUploadContext { LocalFilePath = uploadParameters.LocalFilePath, DestinationUri = uploadParameters.DestinationUri.Uri };
+                    return new VhdUploadContext { LocalFilePath = uploadParameters.LocalFilePath.ToString(), DestinationUri = uploadParameters.DestinationUri.Uri.ToString() };
                 }
                 return null;
             }
