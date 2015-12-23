@@ -12,6 +12,10 @@ printf "\n3. Uploading a virtual hard disk to: %s" "$storageAccountName"
 azure vhd add -o --resourcegroupname "$groupName" --destination https://"$storageAccountName".blob.core.windows.net/test/test.vhd --localfilepath $BASEDIR/test.vhd
 
 printf "\n4. Downloading a virtual hard disk"
+azure vhd save -o --resourcegroupname "$groupName" --sourceuri https://"$storageAccountName".blob.core.windows.net/test/test.vhd --localfilepath ./test_downloaded_by_clu.vhd
 
-printf "\n5. Removing resource group: %s.\n" "$groupName"
+printf "\n5. Validating the downloaded file is the same"
+diffResult=`diff ./test_downloaded_by_clu.vhd $BASEDIR/test_uploaded_byps.vhd`
+
+printf "\n6. Removing resource group: %s.\n" "$groupName"
 azure group remove -n "$groupName" -f
