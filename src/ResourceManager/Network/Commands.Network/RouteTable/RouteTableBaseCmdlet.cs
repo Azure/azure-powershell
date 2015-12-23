@@ -27,11 +27,11 @@ namespace Microsoft.Azure.Commands.Network
 
     public abstract class RouteTableBaseCmdlet : NetworkBaseCmdlet
     {
-        public IRouteTableOperations RouteTableClient
+        public IRouteTablesOperations RouteTableClient
         {
             get
             {
-                return NetworkClient.NetworkResourceProviderClient.RouteTables;
+                return NetworkClient.NetworkManagementClient.RouteTables;
             }
         }
 
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 this.GetRouteTable(resourceGroupName, name);
             }
-            catch (CloudException exception)
+            catch (Microsoft.Rest.Azure.CloudException exception)
             {
                 if (exception.Response.StatusCode == HttpStatusCode.NotFound)
                 {
@@ -55,16 +55,16 @@ namespace Microsoft.Azure.Commands.Network
             return true;
         }
 
-        public PSRouteTable GetRouteTable(string resourceGroupName, string name)
+        public PSRouteTable GetRouteTable(string resourceGroupName, string name, string expandResource = null)
         {
-            var getRouteTableResponse = this.RouteTableClient.Get(resourceGroupName, name);
+            var routeTable = this.RouteTableClient.Get(resourceGroupName, name, expandResource);
 
-            var routeTable = Mapper.Map<PSRouteTable>(getRouteTableResponse.RouteTable);
-            routeTable.ResourceGroupName = resourceGroupName;
+            var psRouteTable = Mapper.Map<PSRouteTable>(routeTable);
+            psRouteTable.ResourceGroupName = resourceGroupName;
 
-            routeTable.Tag = TagsConversionHelper.CreateTagHashtable(getRouteTableResponse.RouteTable.Tags);
+            psRouteTable.Tag = TagsConversionHelper.CreateTagHashtable(routeTable.Tags);
 
-            return routeTable;
+            return psRouteTable;
         }
 
         public PSRouteTable ToPsRouteTable(RouteTable routeTable)

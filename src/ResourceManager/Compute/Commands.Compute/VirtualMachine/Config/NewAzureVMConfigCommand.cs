@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Compute
             get { return true; }
         }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             var vm = new PSVirtualMachine
             {

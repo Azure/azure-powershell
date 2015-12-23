@@ -120,6 +120,9 @@
   <data name="AccessTokenRequiresAccount" xml:space="preserve">
     <value>AccountId must be provided to use an AccessToken credential.</value>
   </data>
+  <data name="AccountIdMismatch" xml:space="preserve">
+    <value>Account ID '{0}' for tenant '{1}' does not match home Account ID '{2}'</value>
+  </data>
   <data name="AccountIdRequired" xml:space="preserve">
     <value>Access token credentials must provide the AccountId parameter.</value>
   </data>

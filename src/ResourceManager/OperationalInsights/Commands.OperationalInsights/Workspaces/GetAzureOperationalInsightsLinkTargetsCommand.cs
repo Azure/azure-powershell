@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
     [Cmdlet(VerbsCommon.Get, Constants.LinkTargets), OutputType(typeof(List<PSAccount>))]
     public class GetAzureOperationalInsightsLinkTargetsCommand : OperationalInsightsBaseCmdlet
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             WriteObject(OperationalInsightsClient.GetLinkTargets(), true);
         }

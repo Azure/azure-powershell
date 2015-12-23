@@ -55,17 +55,24 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         private Tuple<IAccessToken, string> GetToken(IAuthenticationFactory authFactory, AzureContext context)
         {
-            if (context.Subscription == null)
-                throw new ArgumentException(KeyVaultProperties.Resources.InvalidCurrentSubscription);
             if (context.Account == null)
-                throw new ArgumentException(KeyVaultProperties.Resources.InvalidSubscriptionState);
-            if (context.Account.Type != AzureAccount.AccountType.User)
+                throw new ArgumentException(KeyVaultProperties.Resources.ArmAccountNotFound);
+
+            if (context.Account.Type != AzureAccount.AccountType.User &&
+                context.Account.Type != AzureAccount.AccountType.ServicePrincipal )
                 throw new ArgumentException(string.Format(KeyVaultProperties.Resources.UnsupportedAccountType, context.Account.Type));
-            var tenant = context.Subscription.GetPropertyAsArray(AzureSubscription.Property.Tenants)
-                  .Intersect(context.Account.GetPropertyAsArray(AzureAccount.Property.Tenants))
-                  .FirstOrDefault();
-            if (tenant == null)
-                throw new ArgumentException(KeyVaultProperties.Resources.InvalidSubscriptionState);
+
+            string tenant = null;
+            if (context.Subscription != null && context.Account != null)
+                tenant = context.Subscription.GetPropertyAsArray(AzureSubscription.Property.Tenants)
+                       .Intersect(context.Account.GetPropertyAsArray(AzureAccount.Property.Tenants))
+                       .FirstOrDefault();               
+            
+            if (tenant == null && context.Tenant != null && context.Tenant.Id != Guid.Empty)
+                tenant = context.Tenant.Id.ToString();                      
+
+            if (string.IsNullOrWhiteSpace(tenant))
+                throw new ArgumentException(KeyVaultProperties.Resources.NoTenantInContext);
           
             try
             {
