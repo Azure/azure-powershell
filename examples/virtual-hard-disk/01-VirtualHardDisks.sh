@@ -16,6 +16,7 @@ azure vhd save -o --resourcegroupname "$groupName" --sourceuri https://"$storage
 
 printf "\n5. Validating the downloaded file is the same.\n"
 diffResult=`diff ./test_downloaded_by_clu.vhd $BASEDIR/test_uploaded_byps.vhd`
+printf "Difference Result = '%s'.\n" "$diffResult"
 if [ "$diffResult" = "" ]; then
     echo "Checked"
 else
