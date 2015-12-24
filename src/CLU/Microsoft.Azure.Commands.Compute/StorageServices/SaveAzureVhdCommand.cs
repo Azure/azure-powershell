@@ -11,137 +11,139 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-// TODO: Rewrite for removing Sync
-//using Microsoft.Azure.Commands.Compute.Common;
-//using Microsoft.Azure.Commands.Compute.Models;
-//using Microsoft.Azure.Common.Authentication;
-//using Microsoft.Azure.Common.Authentication.Models;
-//using Microsoft.Azure.Management.Storage;
-//using Microsoft.WindowsAzure.Commands.Sync.Download;
-//using System;
-//using System.IO;
-//using System.Management.Automation;
 
-//namespace Microsoft.Azure.Commands.Compute.StorageServices
-//{
-//    [Cmdlet(VerbsData.Save, ProfileNouns.Vhd), OutputType(typeof(VhdDownloadContext))]
-//    public class SaveAzureVhdCommand : ComputeClientBaseCmdlet
-//    {
-//        private const int DefaultNumberOfUploaderThreads = 8;
-//        private const string ResourceGroupParameterSet = "ResourceGroupParameterSetName";
-//        private const string StorageKeyParameterSet = "StorageKeyParameterSetName";
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Management.Storage;
+using Microsoft.WindowsAzure.Commands.Sync.Download;
+using System;
+using System.IO;
+using System.Management.Automation;
 
-//        [Parameter(
-//            Position = 0,
-//            Mandatory = true,
-//            ParameterSetName = ResourceGroupParameterSet,
-//            ValueFromPipelineByPropertyName = true)]
-//        [ValidateNotNullOrEmpty]
-//        public string ResourceGroupName { get; set; }
+namespace Microsoft.Azure.Commands.Compute.StorageServices
+{
+    [Cmdlet(VerbsData.Save, ProfileNouns.Vhd), OutputType(typeof(VhdDownloadContext))]
+    public class SaveAzureVhdCommand : ComputeClientBaseCmdlet
+    {
+        private const int DefaultNumberOfUploaderThreads = 8;
+        private const string ResourceGroupParameterSet = "ResourceGroupParameterSetName";
+        private const string StorageKeyParameterSet = "StorageKeyParameterSetName";
 
-//        [Parameter(
-//            Position = 0,
-//            Mandatory = true,
-//            ParameterSetName = StorageKeyParameterSet,
-//            HelpMessage = "Key of the storage account")]
-//        [ValidateNotNullOrEmpty]
-//        [Alias("sk")]
-//        public string StorageKey  { get; set; }
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ParameterSetName = ResourceGroupParameterSet,
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
 
-//        [Parameter(
-//            Position = 1,
-//            Mandatory = true,
-//            ValueFromPipelineByPropertyName = true,
-//            HelpMessage = "Uri to blob")]
-//        [ValidateNotNullOrEmpty]
-//        [Alias("src", "Source")]
-//        public Uri SourceUri  { get; set; }
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ParameterSetName = StorageKeyParameterSet,
+            HelpMessage = "Key of the storage account")]
+        [ValidateNotNullOrEmpty]
+        [Alias("sk")]
+        public string StorageKey { get; set; }
 
-//        [Parameter(
-//            Position = 2,
-//            Mandatory = true,
-//            HelpMessage = "Local path of the vhd file")]
-//        [ValidateNotNullOrEmpty]
-//        [Alias("lf")]
-//        public FileInfo LocalFilePath  { get; set; }
+        [Parameter(
+            Position = 1,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Uri to blob")]
+        [ValidateNotNullOrEmpty]
+        [Alias("src", "Source")]
+        public string SourceUri { get; set; }
 
-//        private int numberOfThreads = DefaultNumberOfUploaderThreads;
+        [Parameter(
+            Position = 2,
+            Mandatory = true,
+            HelpMessage = "Local path of the vhd file")]
+        [ValidateNotNullOrEmpty]
+        [Alias("lf")]
+        public string LocalFilePath { get; set; }
 
-//        [Parameter(
-//            Position = 3,
-//            Mandatory = false,
-//            HelpMessage = "Number of downloader threads")]
-//        [ValidateNotNullOrEmpty]
-//        [ValidateRange(1, 64)]
-//        [Alias("th")]
-//        public int NumberOfThreads
-//        {
-//            get { return this.numberOfThreads; }
-//            set { this.numberOfThreads = value; }
-//        }
+        private int numberOfThreads = DefaultNumberOfUploaderThreads;
 
-//        [Parameter(
-//            Position = 4,
-//            Mandatory = false,
-//            HelpMessage = "Delete the local file if already exists")]
-//        [ValidateNotNullOrEmpty]
-//        [Alias("o")]
-//        public SwitchParameter OverWrite  { get; set; }
+        [Parameter(
+            Position = 3,
+            Mandatory = false,
+            HelpMessage = "Number of downloader threads")]
+        [ValidateNotNullOrEmpty]
+        [ValidateRange(1, 64)]
+        [Alias("th")]
+        public int NumberOfThreads
+        {
+            get { return this.numberOfThreads; }
+            set { this.numberOfThreads = value; }
+        }
 
-//        protected override void ProcessRecord()
-//        {
-//            var result = DownloadFromBlobUri(
-//                this,
-//                this.SourceUri,
-//                this.LocalFilePath,
-//                this.StorageKey,
-//                this.ResourceGroupName,
-//                this.NumberOfThreads,
-//                this.OverWrite);
-//            WriteObject(result);
-//        }
+        [Parameter(
+            Position = 4,
+            Mandatory = false,
+            HelpMessage = "Delete the local file if already exists")]
+        [ValidateNotNullOrEmpty]
+        [Alias("o")]
+        public SwitchParameter OverWrite { get; set; }
 
-
-//        private VhdDownloadContext DownloadFromBlobUri(
-//            ComputeClientBaseCmdlet cmdlet,
-//            Uri sourceUri,
-//            FileInfo localFileInfo,
-//            string storagekey,
-//            string resourceGroupName,
-//            int numThreads,
-//            bool overwrite)
-//        {
-//            BlobUri blobUri;
-//            if (!BlobUri.TryParseUri(sourceUri, out blobUri))
-//            {
-//                throw new ArgumentOutOfRangeException("Source", sourceUri.ToString());
-//            }
-
-//            if (storagekey == null)
-//            {
-//                var storageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(
-//                        DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
+        protected override void ProcessRecord()
+        {
+            var result = DownloadFromBlobUri(
+                this,
+                new Uri(this.SourceUri),
+                new FileInfo(this.LocalFilePath),
+                this.StorageKey,
+                this.ResourceGroupName,
+                this.NumberOfThreads,
+                this.OverWrite);
+            WriteObject(result);
+        }
 
 
-//                var storageService = storageClient.StorageAccounts.GetProperties(resourceGroupName, blobUri.StorageAccountName);
-//                if (storageService != null)
-//                {
-//                    var storageKeys = storageClient.StorageAccounts.ListKeys(resourceGroupName, storageService.StorageAccount.Name);
-//                    storagekey = storageKeys.StorageAccountKeys.Key1;
-//                }
-//            }
+        private VhdDownloadContext DownloadFromBlobUri(
+            ComputeClientBaseCmdlet cmdlet,
+            Uri sourceUri,
+            FileInfo localFileInfo,
+            string storagekey,
+            string resourceGroupName,
+            int numThreads,
+            bool overwrite)
+        {
+            BlobUri blobUri;
+            if (!BlobUri.TryParseUri(sourceUri, out blobUri))
+            {
+                throw new ArgumentOutOfRangeException("Source", sourceUri.ToString());
+            }
 
-//            var downloaderParameters = new DownloaderParameters
-//            {
-//                BlobUri = blobUri,
-//                LocalFilePath = localFileInfo.FullName,
-//                ConnectionLimit = numThreads,
-//                StorageAccountKey = storagekey,
-//                ValidateFreeDiskSpace = true,
-//                OverWrite = overwrite
-//            };
+            if (storagekey == null)
+            {
+                // TODO: CLU
+                var storageClient = ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
+                /*
+                var storageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(
+                        DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
+                */
 
-//            return VhdDownloaderModel.Download(downloaderParameters, cmdlet);
-//        }
-//    }
-//}
+                var storageService = storageClient.StorageAccounts.GetProperties(resourceGroupName, blobUri.StorageAccountName);
+                if (storageService != null)
+                {
+                    var storageKeys = storageClient.StorageAccounts.ListKeys(resourceGroupName, storageService.Name);
+                    storagekey = storageKeys.Key1;
+                }
+            }
+
+            var downloaderParameters = new DownloaderParameters
+            {
+                BlobUri = blobUri,
+                LocalFilePath = localFileInfo.FullName,
+                ConnectionLimit = numThreads,
+                StorageAccountKey = storagekey,
+                ValidateFreeDiskSpace = true,
+                OverWrite = overwrite
+            };
+
+            return VhdDownloaderModel.Download(downloaderParameters, cmdlet);
+        }
+    }
+}
