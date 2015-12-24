@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
         public void RunVirtualHardDiskTest()
         {
             var helper = _collectionState.GetRunner("virtual-hard-disk");
-            helper.RunScript("02-VirtualHardDisks");
+            helper.RunScript("01-VirtualHardDisks");
         }
     }
 }
