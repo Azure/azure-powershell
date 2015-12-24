@@ -61,6 +61,18 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Retrieving object ID from Azure Active Directory failed. {0}
+        ///
+        ///Please provide object ID for the user or service principle to set a vault access policy.
+        ///You can find the object ID using Azure Active Directory Module for Windows PowerShell..
+        /// </summary>
+        internal static string ADObjectIDRetrievalFailed {
+            get {
+                return ResourceManager.GetString("ADObjectIDRetrievalFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot find the Active Directory object &apos;{0}&apos; in tenant &apos;{1}&apos;. Please make sure that the user or application service principal you are authorizing is registered in the current subscription&apos;s Azure Active directory. The TenantID displayed by the cmdlet &apos;Get-AzureRmContext&apos; is the current subscription&apos;s Azure Active directory..
         /// </summary>
         internal static string ADObjectNotFound {
@@ -408,6 +420,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string VaultAlreadyExists {
             get {
                 return ResourceManager.GetString("VaultAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Access policy is not set. No user or application have access permission to use this vault. Please use Set-AzureRmKeyVaultAccessPolicy to set access policies..
+        /// </summary>
+        internal static string VaultNoAccessPolicyWarning {
+            get {
+                return ResourceManager.GetString("VaultNoAccessPolicyWarning", resourceCulture);
             }
         }
         
