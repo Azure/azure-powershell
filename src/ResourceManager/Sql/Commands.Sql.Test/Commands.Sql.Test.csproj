@@ -73,6 +73,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Sql">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.43.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
@@ -207,6 +208,10 @@
     <None Include="ScenarioTests\ServerActiveDirectoryAdministratorTest.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\ServerCommunicationLinkCrudTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+
+    </None>
     <None Include="ScenarioTests\ServiceTierAdvisorTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -224,6 +229,7 @@
     </None>
     <Compile Include="ScenarioTests\LocationCapabilitiesTests.cs" />
     <Compile Include="ScenarioTests\ServerActiveDirectoryAdministratorTest.cs" />
+    <Compile Include="ScenarioTests\ServerCommunicationLinkCrudTests.cs" />
     <Compile Include="ScenarioTests\ServiceTierAdvisorTests.cs" />
     <Compile Include="ScenarioTests\RecommendedElasticPoolTests.cs" />
     <Compile Include="ScenarioTests\ElasticPoolCrudTests.cs" />
