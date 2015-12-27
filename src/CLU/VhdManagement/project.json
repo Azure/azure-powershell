@@ -1,0 +1,56 @@
+{
+  "version": "1.0.0-*",
+  "description": "Microsoft.WindowsAzure.Commands.Tools.Vhd",
+  "authors": [ "huangpf, markcowl, hovsepm, haocs" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+  "frameworks": {
+    "dnxcore50": {
+      "dependencies": {
+        "Microsoft.NETCore": "5.0.1-beta-23516",
+        "Microsoft.NETCore.Platforms": "1.0.1-beta-23516",
+        "Microsoft.CSharp": "4.0.1-beta-23516"
+      }
+    }
+  },
+  "dependencies": {
+    "System.Linq": "4.0.1-beta-23516",
+    "Microsoft.CLU": "1.0.0",
+    "Commands.Common": "",
+    "Commands.Common.Authentication": "",
+    "Commands.Common.Storage": "",
+    "Commands.ResourceManager.Common": "",
+    "Microsoft.IdentityModel.Clients.ActiveDirectory": "3.6.212041202-alpha",
+    "Microsoft.Rest.ClientRuntime": "1.8.1",
+    "Newtonsoft.Json": "7.0.1",
+    "System.Collections": "4.0.11-beta-23516",
+    "System.Collections.Concurrent": "4.0.11-beta-23516",
+    "System.Diagnostics.TraceSource": "4.0.0-beta-23516",
+    "System.Diagnostics.Tracing": "4.0.21-beta-23516",
+    "System.IO": "4.0.11-beta-23516",
+    "System.IO.FileSystem": "4.0.1-beta-23516",
+    "System.Net.Http": "4.0.1-beta-23516",
+    "System.Net.WebHeaderCollection": "4.0.1-beta-23516",
+    "System.Reflection": "4.1.0-beta-23516",
+    "System.Reflection.Extensions": "4.0.1-beta-23516",
+    "System.Reflection.Primitives": "4.0.1-beta-23516",
+    "System.Reflection.TypeExtensions": "4.1.0-beta-23516",
+    "System.Runtime": "4.0.21-beta-23516",
+    "System.Runtime.Extensions": "4.0.11-beta-23516",
+    "System.Runtime.Serialization.Primitives": "4.1.0-beta-23516",
+    "System.Runtime.Serialization.Json": "4.0.1-beta-23516",
+    "System.Runtime.Serialization.Xml": "4.1.0-beta-23516",
+    "System.Security.Cryptography.Algorithms": "4.0.0-beta-23516",
+    "System.Security.Cryptography.X509Certificates": "4.0.0-beta-23516",
+    "System.Text.Encoding": "4.0.11-beta-23516",
+    "System.Text.Encoding.Extensions": "4.0.11-beta-23516",
+    "System.Threading": "4.0.11-beta-23516",
+    "System.Threading.Tasks": "4.0.11-beta-23516",
+    "System.Threading.Thread": "4.0.0-beta-23516",
+    "System.Xml.XmlDocument": "4.0.1-beta-23516",
+    "System.Xml.XPath.XmlDocument": "4.0.1-beta-23516",
+    "WindowsAzure.Storage": "6.1.1-preview"
+  },
+  "compilationOptions": { "emitEntryPoint": true }
+}
