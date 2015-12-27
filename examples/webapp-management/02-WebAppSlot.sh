@@ -2,84 +2,141 @@
 set -e
 printf "\n=== Managing Web App Slot in Azure ===\n"
 
+pingwebapp() {
+	# a helper function to ping a webapp
+}
+
 #setup
 printf "\nSetup: Creating a new resource group: %s at location: %s.\n" "$groupName" "$location"
 
-appName = `randomName testweb`
-slotname1 = "staging"
-slotname2 = "testing"
-planName = `randomName testplan`
-tier = "Standard"
-apiversion = "2015-08-01"
-resourceType = "Microsoft.Web/sites"
+appName=`randomName testweb`
+slotname1="staging"
+slotname2="testing"
+planName=`randomName testplan`
+tier="Standard"
+apiversion="2015-08-01"
+resourceType="Microsoft.Web/sites"
 
-azure group create --name "$groupName" --location "$location" --plan "$planName"
+azure group create --name "$groupName" --location "$location"
 
-printf "\n1. Create a new web app %s " "$appName"
-webapp=`azure webapp create -g "$groupName" -n "$appName" -l "$location"`
-#azure app service plan create -n "$appName" -g "$groupName" -l "$location" --tier "$tier" --size "$size" --workers "$capacity"
+printf "\n1. Create a new app service plan %s " "$planName"
+azure app service plan create -n "$planName" -g "$groupName" -l "$location" --tier "$tier"
 
-printf "\n2. Create a web app slot %s " "$slotname1"
+printf "\n2. Create a new web app %s " "$appName"
+webappInfo=`azure webapp create -g "$groupName" -n "$appName" -l "$location" --plan "$planName"`
+
+printf "\nValidating web app name %s " "$appName"
+[ $(echo $webappInfo | jq '.name' --raw-output) == "$appName" ]
+
+printf "\n3. Create a web app slot %s " "$slotname1"
 slot1=`azure webapp slot create -g "$groupName" --plan "$planName" -n "$appName" --slot "$slotname1"`
-appWithSlotName1=""
+appWithSlotName1="$appName/$slotname1"
 
-printf "\n2. Create a web app slot %s " "$slotname2"
+printf "\nValidating web app slot %s " "$slotname1"
+[ $(echo $slot1 | jq '.name' --raw-output) == "$appWithSlotName1" ]
+
+printf "\nValidating web app slot get for %s " "$slotname1"
+slot1=`azure webapp slot get -g "$groupName" -n "$appName" --slot "$slotname1"`
+[ $(echo $slot1 | jq '.name' --raw-output) == "$appWithSlotName1" ]
+
+printf "\nValidating web app slot via pipline obj for %s " "$slotname1"
+slot1=`echo "$webappInfo" | azure webapp slot get --slot "$slotname1"`
+
+printf "\n4. Create another web app slot %s " "$slotname2"
 slot2=`azure webapp slot create -g "$groupName" --plan "$planName" -n "$appName" --slot "$slotname2"`
-appWithSlotName2=""
+appWithSlotName2="$appName/$slotname2"
 
-printf "\n3. Set the webapp slots: "
-slots=`azure webapp get -g "$groupName" -n "$appName"` 
+printf "\n5. Get the webapp slots:"
+slots=`azure webapp slot get -g "$groupName" -n "$appName"`
+slotN1=`echo $slots | jq '.[0].name'`
+slotN2=`echo $slots | jq '.[1].name'`
+slotNames=`echo $slotN1 $slotN2`
 
-# Things below are not interested.
-#========================================================================================
+printf "\nValidating web app slots %s " "$slotname1 and $slotname2" 
+[[ $slotNames == *"$appWithSlotName1"* ]]
+[[ $slotNames == *"$appWithSlotName2"* ]]
 
-printf "\nValidating app service plan name: %s\n" "$whpName"
-[ $(echo $whpInfo | jq '.name' --raw-output) == "$whpName" ]
-[ $(echo $whpInfo | jq '.location' --raw-output) == "West US" ]
-[ $(echo $whpInfo | jq '.sku.tier' --raw-output) == "$tier" ]
-[ $(echo $whpInfo | jq '.sku.name' --raw-output) == "$skuName" ]
-[ $(echo $whpInfo | jq '.sku.capacity' --raw-output) -eq $capacity ]
+printf "\n6. Change web app slot %s service plan" "$slotname2"
+printf "\n7. Set web app slot %s config properties" "$slotname2"
+printf "\n8. Set web app slot %s settings and connection strings" "$slotname2"
 
-printf "\n3. Set the appservice plan: %s " "$whpName"
-newTier="Shared"
-newCapacity=0
-newSize="Medium"
-setPlanInfo=`azure app service plan set -n $whpName -g $groupName --tier $newTier --workers --workers $newCapacity --size $newSize`
-[ $(echo $setPlanInfo | jq '.name' --raw-output) == "$whpName" ]
-[ $(echo $setPlanInfo | jq '.sku.tier' --raw-output) == "$newTier" ]
-[ $(echo $setPlanInfo | jq '.sku.capacity' --raw-output) -eq $newCapacity ]
-[ $(echo $setPlanInfo | jq '.sku.name' --raw-output) == "D1" ]
-[ $(echo $setPlanInfo | jq '.["properties.geoRegion"]' --raw-output) == "West US" ]
+printf "\n9. Get web app slot %s publishing profile" "$slotname1"
+printf "\n10. Get web app slot %s publishing profile via pipline obj" "$slotname1"
 
-whpName2=`randomName testplan`
-printf "\n4. Creating a new app service plan: %s" "$whpName2"
-location2="East US"
-azure app service plan create -n "$whpName2" -g "$groupName" -l "$location2" --tier "$tier" --size "$size" --workers "$capacity"
+printf "\n11. Get web app slot metrics %s " "$slotname1"
+for i in {1..10}
+do
+	pingwebapp $slot1
+done
 
-printf "\n5. Get All app service plans by name: %s" "$whpName2"
-whpInfo2=`azure app service plan get --name $whpName2`
-[ $(echo $whpInfo | jq '.name' --raw-output) == "$whpName2" ]
-[ $(echo $whpInfo | jq '.location' --raw-output) == "$location2" ]
-[ $(echo $whpInfo | jq '.sku.tier' --raw-output) == "$tier" ]
-[ $(echo $whpInfo | jq '.sku.name' --raw-output) == "$skuName" ]
-[ $(echo $whpInfo | jq '.sku.capacity' --raw-output) -eq $capacity ]
+endTime=`date +"%A, %B %d, %Y %X"`
+startTime=`date +"%A, %B %d, %Y %X" --date "3 hour ago"`
+$metricsNames="\"('CPU', 'Requests')\""
 
-printf "\n6. Get All app service plans by resource group: %s" "$groupName"
-plansByGroup=`azure app service plan get --group $groupName`
-[  $plansByGroup == *"$whpName"* ]
-[  $plansByGroup == *"$whpName2"* ]
+# !Not able to test since complex object issue.
+metrics=`azure webapp slot metrics get -g "$groupName" -n "$appName" --slot "$slotname1" --granularity PT1M --starttime "$startTime" --endtime "$endTime" --metrics "$metricsNames"`
 
-printf "\n7. Get All app service plans by location: %s" "$location2"
-plansByLocation=`azure app service plan get -l $location2`
-[  $plansByLocation == *"$whpName2"* ]
+printf "\nValidating web app slot metrics %s " "$slotname1" 
+for i in $metricsNames
+do
+	[ $(echo $metrics ) == "$i" ]
+done
 
-printf "\n8. Get All app service plans in a subscription."
-plansInSubscription=`azure app service plan get`
-[  $plansInSubscription == *"$whpName"* ]
-[  $plansInSubscription == *"$whpName2"* ]
+# !Not able to test pipeline for now
+printf "\nValidating web app slot metrics via pipline obj %s " "$slotname1" 
 
-printf "\n9. Remove app service plan: %s." "$whpName"
-azure app service plan remove -n $whpName -g $groupName
+printf "\n12. Stop web app slot: %s." "$slotname1"
+slot1=`echo "$slot1" | azure webapp slot stop`
+printf "\nValidating web app slot %s stopped " "$slotname1" 
+[ $(echo $slot1 | jq '."properties.state"' --raw-output) == "Stopped" ]
 
-printf "\n10. Remove app service plan: %s." "$whpName2"
-azure app service plan remove -n $whpName2 -g $groupName
+printf "\n13 Stop web app slot: %s." "$slotname1"
+slot1=`echo "$slot1" | azure webapp slot start`
+printf "\nValidating web app slot %s running " "$slotname1" 
+[ $(echo $slot1 | jq '."properties.state"' --raw-output) == "Running" ]
+
+printf "\n14 Stop web app slot: %s." "$slotname1"
+slot1=`echo "$slot1" | azure webapp slot stop`
+printf "\nValidating web app slot %s stopped " "$slotname1" 
+[ $(echo $slot1 | jq '."properties.state"' --raw-output) == "Stopped" ]
+
+printf "\n15 Stop web app slot: %s." "$slotname1"
+slot1=`echo "$slot1" | azure webapp slot start`
+printf "\nValidating web app slot %s running " "$slotname1" 
+[ $(echo $slot1 | jq '."properties.state"' --raw-output) == "Running" ]
+
+printf "\n16 Restart web app slot: %s." "$slotname1"
+slot1=`echo "$slot1" | azure webapp slot restart`
+printf "\nValidating web app slot %s Running " "$slotname1" 
+[ $(echo $slot1 | jq '."properties.state"' --raw-output) == "Running" ]
+
+printf "\n17 Restart web app slot: %s." "$slotname1"
+slot1=`echo "$slot1" | azure webapp slot restart`
+printf "\nValidating web app slot %s Running " "$slotname1" 
+[ $(echo $slot1 | jq '."properties.state"' --raw-output) == "Running" ]
+
+# Clone ------
+# !Not able to test since complex object input issue.
+# printf "\n10. Clone web app slot: %s." "$slotname1"
+# slotClone=`azure web app slot clone`
+# appWithSlotNameClone="$appName/slotname1"
+
+# printf "\nValidating cloned web app slot %s " "$slotname1"
+# [ $(echo $slotClone | jq '.name' --raw-output) == "$appWithSlotNameClone" ]
+
+# printf "\nValidating web app slot get for %s " "$slotname1"
+# slot1=`azure webapp slot get -g "$groupName" -n "$appName" --slot "$slotname1"`
+# [ $(echo $slot1 | jq '.name' --raw-output) == "$appWithSlotNameClone" ]
+#------- 
+
+# Cleanup
+printf "\n20. Remove web app slot: %s." "$slotname1"
+azure webapp slot remove -g "$groupName" -n "$appName" --slot "$slotname1"
+
+printf "\n20. Remove web app: %s." "$appName"
+azure webapp remove -g "$groupName" -n "$appName"
+
+printf "\n20. Remove app service plan: %s." "$planName"
+azure app service plan remove -g "$groupName" -n "$planName"
+
+printf "\n20. Remove resource group: %s." "$groupName"
