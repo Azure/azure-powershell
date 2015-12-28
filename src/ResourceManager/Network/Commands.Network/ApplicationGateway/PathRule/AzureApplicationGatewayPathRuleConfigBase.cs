@@ -22,6 +22,12 @@ namespace Microsoft.Azure.Commands.Network
     public class AzureApplicationGatewayPathRuleConfigBase : NetworkBaseCmdlet
     {
         [Parameter(
+            Mandatory = true,
+            HelpMessage = "Name of the path rule")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
+        [Parameter(
                Mandatory = true, 
                HelpMessage = "List of URL paths")]        
         [ValidateNotNullOrEmpty]
@@ -72,6 +78,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             var pathRule = new PSApplicationGatewayPathRule();
 
+            pathRule.Name = this.Name;
             pathRule.Paths = this.Paths;
 
             if (!string.IsNullOrEmpty(this.BackendAddressPoolId))
