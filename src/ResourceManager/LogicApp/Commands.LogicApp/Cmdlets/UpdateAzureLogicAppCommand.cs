@@ -16,17 +16,21 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
+    using System.Globalization;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using Microsoft.Azure.Management.Logic.Models;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Newtonsoft.Json.Linq;
+    using Newtonsoft.Json;
+    using System.Collections;
 
     /// <summary>
-    /// Creates a new LogicApp workflow 
+    /// Updates a LogicApp workflow 
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureLogicApp"), OutputType(typeof (object))]
-    public class NewAzureLogicAppCommand : LogicAppBaseCmdlet
+    [Cmdlet(VerbsCommon.Set, "AzureLogicApp"), OutputType(typeof (object))]
+    public class UpdateAzureLogicAppCommand : LogicAppBaseCmdlet
     {
         #region private Variables
 
@@ -145,7 +149,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                     LogicAppClient.LogicManagementClient.SubscriptionId);
             }            
 
-            this.WriteObject(LogicAppClient.CreateWorkflow(this.ResourceGroupName, this.Name, new Workflow
+            this.WriteObject(LogicAppClient.UpdateWorkflow(this.ResourceGroupName, this.Name, new Workflow
             {
                 Location = this.Location,
                 Definition = this.Definition,
@@ -167,7 +171,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 State = (WorkflowState) Enum.Parse(typeof (WorkflowState), this.State),
                 Sku = new Sku
                 {
-                    Name = (SkuName)Enum.Parse(typeof(SkuName), this.SkuName),
+                    Name = (SkuName) Enum.Parse(typeof (SkuName), this.SkuName),
                     Plan = new ResourceReference
                     {
                         Id = this.PlanId

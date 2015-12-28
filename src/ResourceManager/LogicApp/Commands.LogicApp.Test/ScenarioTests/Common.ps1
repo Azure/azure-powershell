@@ -69,3 +69,19 @@ function TestSetup-CreateResourceGroup
     $resourceGroup = New-AzureRmResourceGroup -Name $resourceGroupName -location $rglocation -Force
 	return $resourceGroup
 }
+
+<#
+.SYNOPSIS
+Creates a new workflow
+#>
+function TestSetup-CreateWorkflow ([string]$resourceGroupName)
+{		
+	$rglocation = Get-ProviderLocation "North Europe"
+    $resourceGroup = New-AzureRmResourceGroup -Name $resourceGroupName -location $rglocation -Force
+
+	$workflowName = getAssetname	
+	$definitionFilePath = "Resources\TestSimpleWorkflowDefinition.json"
+	$parameterFilePath = "Resources\TestSimpleWorkflowParameter.json"
+	$workflow = $resourceGroup | New-AzureLogicApp -Name $workflowName -PlanName "StandardServicePlan" -SkuName "Standard" -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath
+    return $workflow
+}

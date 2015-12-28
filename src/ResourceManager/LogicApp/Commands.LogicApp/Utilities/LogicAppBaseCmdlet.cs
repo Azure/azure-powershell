@@ -15,8 +15,6 @@
 namespace Microsoft.Azure.Commands.LogicApp.Utilities
 {
     using ResourceManager.Common;
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
-    using Microsoft.Azure.Management.Logic;
 
     public abstract class LogicAppBaseCmdlet : AzureRMCmdlet
     {

@@ -86,5 +86,41 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
                 return ResourceManager.GetString("ParameterNeedsToBeSpecified", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing logic app..
+        /// </summary>
+        internal static string RemoveLogicAppMessage {
+            get {
+                return ResourceManager.GetString("RemoveLogicAppMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the logic app &quot;{0}&quot;..
+        /// </summary>
+        internal static string RemoveLogicAppWarning {
+            get {
+                return ResourceManager.GetString("RemoveLogicAppWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Resource &apos;Microsoft.Logic/workflows/{0}&apos; under resource group &apos;{1}&apos; already exists..
+        /// </summary>
+        internal static string ResourceAlreadyExists {
+            get {
+                return ResourceManager.GetString("ResourceAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Resource &apos;Microsoft.Logic/workflows/{0}&apos; under resource group &apos;{1}&apos; was not found..
+        /// </summary>
+        internal static string ResourceNotFound {
+            get {
+                return ResourceManager.GetString("ResourceNotFound", resourceCulture);
+            }
+        }
     }
 }

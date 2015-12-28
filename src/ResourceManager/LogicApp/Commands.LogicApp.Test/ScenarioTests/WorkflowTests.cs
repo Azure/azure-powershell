@@ -36,6 +36,16 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
+        /// Test New-AzurelogicApp command to create workflow with duplicate name.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewLogicAppWithDuplicateName()
+        {
+            WorkflowController.NewInstance.RunPowerShellTest("Test-NewLogicAppWithDuplicateName");
+        }        
+
+        /// <summary>
         /// Test New-AzurelogicApp command with Definition and parameter object as parameter.
         /// </summary>
         [Fact]
@@ -123,6 +133,59 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         public void TestNewLogicAppUsingDefinitionWithActions()
         {
             WorkflowController.NewInstance.RunPowerShellTest("Test-NewLogicAppUsingDefinitionWithActions");
+        }
+
+        /// <summary>
+        /// Test Get-AzurelogicApp command to get newly created workflow
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetLogicAppWithWorkflowName()
+        {
+            WorkflowController.NewInstance.RunPowerShellTest("Test-GetLogicAppWithWorkflowName");
+        }
+
+        /// <summary>
+        /// Test Remove-AzurelogicApp command to delete newly created workflow
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveLogicAppWithWorkflowName()
+        {
+            WorkflowController.NewInstance.RunPowerShellTest("Test-RemoveLogicAppWithWorkflowName");
+        }
+
+        /// <summary>
+        /// Test Remove-AzurelogicApp command to remove by invalid workflow name
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveLogicAppWithInvalidWorkflowName()
+        {
+            WorkflowController.NewInstance.RunPowerShellTest("Test-RemoveLogicAppWithInvalidWorkflowName");
+        }
+       
+        /// <summary>
+        /// Test Set-Azurelogicapp command to update the workflow
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateLogicApp()
+        {
+            WorkflowController.NewInstance.RunPowerShellTest("Test-UpdateLogicApp");
         }                         
+
+        /// <summary>
+        /// Test Set-Azurelogicapp command to update a non-existing workflow
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateNonExistingLogicApp()
+        {
+            WorkflowController.NewInstance.RunPowerShellTest("Test-UpdateNonExistingLogicApp");
+        }                         
+
+
+        
     }
 }

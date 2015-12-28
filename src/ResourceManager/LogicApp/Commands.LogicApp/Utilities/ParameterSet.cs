@@ -15,8 +15,7 @@
 namespace Microsoft.Azure.Commands.LogicApp.Utilities
 {
     internal static class ParameterSet
-    {
-        
+    {        
         /// <summary>
         /// Parameter set top create Logic app with definition object
         /// </summary>
@@ -31,6 +30,5 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// Parameter set top create Logic app with definition file
         /// </summary>
         public const string LogicAppWithDefinitionFile = "LogicAppWithDefinitionFileParameterSet";
-
     }
 }

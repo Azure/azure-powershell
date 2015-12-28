@@ -126,4 +126,16 @@
   <data name="ParameterNeedsToBeSpecified" xml:space="preserve">
     <value>{0} needs to be specified.</value>
   </data>
+  <data name="RemoveLogicAppMessage" xml:space="preserve">
+    <value>Removing logic app.</value>
+  </data>
+  <data name="RemoveLogicAppWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the logic app "{0}".</value>
+  </data>
+  <data name="ResourceAlreadyExists" xml:space="preserve">
+    <value>The Resource 'Microsoft.Logic/workflows/{0}' under resource group '{1}' already exists.</value>
+  </data>
+  <data name="ResourceNotFound" xml:space="preserve">
+    <value>The Resource 'Microsoft.Logic/workflows/{0}' under resource group '{1}' was not found.</value>
+  </data>
 </root>

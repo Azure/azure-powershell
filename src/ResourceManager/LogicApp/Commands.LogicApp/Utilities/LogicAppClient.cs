@@ -17,14 +17,11 @@ using System.Globalization;
 namespace Microsoft.Azure.Commands.LogicApp.Utilities
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using Microsoft.Azure.Common.Authentication;
     using Microsoft.Azure.Common.Authentication.Models;
     using Microsoft.Azure.Management.Logic;
     using Microsoft.Azure.Management.Logic.Models;
+    using System.Management.Automation;
 
     /// <summary>
     /// LogicApp client class
@@ -73,7 +70,27 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         public ILogicManagementClient LogicManagementClient { get; set; }
 
         /// <summary>
-        /// Creates a workflow in the azure resource group
+        /// Updates workflow in the azure resource group
+        /// </summary>
+        /// <param name="resourceGroupName">Name of the resource group</param>
+        /// <param name="workflowName">Workflow name</param>
+        /// <param name="workflow">Workflow object</param>
+        /// <returns>Newly created workflow object</returns>
+        public Workflow UpdateWorkflow(string resourceGroupName, string workflowName, Workflow workflow)
+        {
+            if (this.DoesLogicAppExist(resourceGroupName, workflowName))
+            {
+                return this.LogicManagementClient.Workflows.CreateOrUpdate(resourceGroupName, workflowName, workflow);
+            }
+            else
+            {
+                throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture,
+                    Properties.Resource.ResourceNotFound, workflowName, resourceGroupName));
+            }
+        }
+
+        /// <summary>
+        /// Creates workflow in the azure resource group
         /// </summary>
         /// <param name="resourceGroupName">Name of the resource group</param>
         /// <param name="workflowName">Workflow name</param>
@@ -81,7 +98,57 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <returns>Newly created workflow object</returns>
         public Workflow CreateWorkflow(string resourceGroupName, string workflowName, Workflow workflow)
         {
-            return this.LogicManagementClient.Workflows.CreateOrUpdate(resourceGroupName, workflowName, workflow);
+            if (!this.DoesLogicAppExist(resourceGroupName, workflowName))
+            {
+                return this.LogicManagementClient.Workflows.CreateOrUpdate(resourceGroupName, workflowName, workflow);
+            }
+            else
+            {
+                throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture,
+                    Properties.Resource.ResourceAlreadyExists, workflowName, resourceGroupName));
+            }
+        }
+
+        /// <summary>
+        /// Gets the workflow by name from given resource group.
+        /// </summary>
+        /// <param name="resourceGroupName">Name of the resource group</param>
+        /// <param name="workflowName">Workflow name</param>
+        /// <returns>Workflow object</returns>
+        public Workflow GetWorkflow(string resourceGroupName, string workflowName)
+        {            
+            return this.LogicManagementClient.Workflows.Get(resourceGroupName, workflowName);
+        }
+
+        /// <summary>
+        /// Removes the specified workflow from the given resource group.
+        /// </summary>
+        /// <param name="resourceGroupName">Name of the resource group</param>
+        /// <param name="workflowName">Workflow name</param>
+        public void RemoveWorkflow(string resourceGroupName, string workflowName)
+        {
+            this.LogicManagementClient.Workflows.Delete(resourceGroupName, workflowName);
+        }
+
+        /// <summary>
+        /// Checks whether logic app exists or not 
+        /// </summary>
+        /// <param name="resourceGroupName">Name of the resource group</param>
+        /// <param name="workflowName">Name of the workflow</param>
+        /// <returns>Boolean result</returns>
+        public bool DoesLogicAppExist(string resourceGroupName, string workflowName)
+        {
+            bool result = false;
+            try
+            {
+                var workflow = this.LogicManagementClient.Workflows.GetAsync(resourceGroupName, workflowName).Result;
+                result = workflow != null;
+            }
+            catch
+            {
+                result = false;
+            }
+            return result;
         }
     }
 }
