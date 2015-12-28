@@ -12,166 +12,171 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-// TODO: Rewrite for removing Sync
-//using Microsoft.Azure.Commands.Compute.Common;
-//using Microsoft.Azure.Commands.Compute.Models;
-//using Microsoft.Azure.Common.Authentication;
-//using Microsoft.Azure.Common.Authentication.Models;
-//using Microsoft.WindowsAzure.Commands.Sync.Download;
-//using System;
-//using System.IO;
-//using System.Management.Automation;
-//using Rsrc = Microsoft.Azure.Commands.Compute.Properties.Resources;
-//using Microsoft.Azure.Management.Storage;
-//using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Sync.Download;
+using System;
+using System.IO;
+using System.Management.Automation;
+using Rsrc = Microsoft.Azure.Commands.Compute.Properties.Resources;
+using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 
-//namespace Microsoft.Azure.Commands.Compute.StorageServices
-//{
-//    /// <summary>
-//    /// Uploads a vhd as fixed disk format vhd to a blob in Microsoft Azure Storage
-//    /// </summary>
-//    [Cmdlet(VerbsCommon.Add, ProfileNouns.Vhd), OutputType(typeof(VhdUploadContext))]
-//    public class AddAzureVhdCommand : ComputeClientBaseCmdlet
-//    {
-//        private const int DefaultNumberOfUploaderThreads = 8;
+namespace Microsoft.Azure.Commands.Compute.StorageServices
+{
+    /// <summary>
+    /// Uploads a vhd as fixed disk format vhd to a blob in Microsoft Azure Storage
+    /// </summary>
+    [Cmdlet(VerbsCommon.Add, ProfileNouns.Vhd), OutputType(typeof(VhdUploadContext))]
+    public class AddAzureVhdCommand : ComputeClientBaseCmdlet
+    {
+        private const int DefaultNumberOfUploaderThreads = 8;
 
-//        [Parameter(
-//            Position = 0,
-//            Mandatory = false,
-//            ValueFromPipelineByPropertyName = true)]
-//        [ValidateNotNullOrEmpty]
-//        public string ResourceGroupName { get; set; }
+        [Parameter(
+            Position = 0,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
 
-//        [Parameter(
-//            Position = 1,
-//            Mandatory = true,
-//            ValueFromPipelineByPropertyName = true,
-//            HelpMessage = "Uri to blob")]
-//        [ValidateNotNullOrEmpty]
-//        [Alias("dst")]
-//        public Uri Destination
-//        {
-//            get;
-//            set;
-//        }
+        [Parameter(
+            Position = 1,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Uri to blob")]
+        [ValidateNotNullOrEmpty]
+        [Alias("dst")]
+        public string Destination
+        {
+            get;
+            set;
+        }
 
-//        [Parameter(
-//            Position = 2,
-//            Mandatory = true,
-//            ValueFromPipelineByPropertyName = true,
-//            HelpMessage = "Local path of the vhd file")]
-//        [ValidateNotNullOrEmpty]
-//        [Alias("lf")]
-//        public FileInfo LocalFilePath
-//        {
-//            get;
-//            set;
-//        }
+        [Parameter(
+            Position = 2,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Local path of the vhd file")]
+        [ValidateNotNullOrEmpty]
+        [Alias("lf")]
+        public string LocalFilePath
+        {
+            get;
+            set;
+        }
 
-//        [Parameter(
-//            Position = 3,
-//            Mandatory = false,
-//            ValueFromPipelineByPropertyName = true,
-//            HelpMessage = "Number of uploader threads")]
-//        [ValidateNotNullOrEmpty]
-//        [ValidateRange(1, 64)]
-//        [Alias("th")]
-//        public int? NumberOfUploaderThreads
-//        {
-//            get;
-//            set;
-//        }
+        [Parameter(
+            Position = 3,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Number of uploader threads")]
+        [ValidateNotNullOrEmpty]
+        [ValidateRange(1, 64)]
+        [Alias("th")]
+        public int? NumberOfUploaderThreads
+        {
+            get;
+            set;
+        }
 
-//        [Parameter(
-//            Position = 4,
-//            Mandatory = false,
-//            ValueFromPipelineByPropertyName = true,
-//            HelpMessage = "Uri to a base image in a blob storage account to apply the difference")]
-//        [ValidateNotNullOrEmpty]
-//        [Alias("bs")]
-//        public Uri BaseImageUriToPatch
-//        {
-//            get;
-//            set;
-//        }
+        [Parameter(
+            Position = 4,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Uri to a base image in a blob storage account to apply the difference")]
+        [ValidateNotNullOrEmpty]
+        [Alias("bs")]
+        public string BaseImageUriToPatch
+        {
+            get;
+            set;
+        }
 
-//        [Parameter(
-//            Position = 5,
-//            Mandatory = false,
-//            ValueFromPipelineByPropertyName = true,
-//            ParameterSetName="Vhd",
-//            HelpMessage = "Delete the blob if already exists")]
-//        [ValidateNotNullOrEmpty]
-//        [Alias("o")]
-//        public SwitchParameter OverWrite
-//        {
-//            get;
-//            set;
-//        }
+        [Parameter(
+            Position = 5,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "Vhd",
+            HelpMessage = "Delete the blob if already exists")]
+        [ValidateNotNullOrEmpty]
+        [Alias("o")]
+        public SwitchParameter OverWrite
+        {
+            get;
+            set;
+        }
 
-//        public UploadParameters ValidateParameters()
-//        {
-//            BlobUri destinationUri;
-//            if (!BlobUri.TryParseUri(Destination, out destinationUri))
-//            {
-//                throw new ArgumentOutOfRangeException("Destination", this.Destination.ToString());
-//            }
+        public UploadParameters ValidateParameters()
+        {
+            BlobUri destinationUri;
+            if (!BlobUri.TryParseUri(new Uri(Destination), out destinationUri))
+            {
+                throw new ArgumentOutOfRangeException("Destination", this.Destination.ToString());
+            }
 
-//            BlobUri baseImageUri = null;
-//            if (this.BaseImageUriToPatch != null)
-//            {
-//                if (!BlobUri.TryParseUri(BaseImageUriToPatch, out baseImageUri))
-//                {
-//                    throw new ArgumentOutOfRangeException("BaseImageUriToPatch", this.BaseImageUriToPatch.ToString());
-//                }
+            BlobUri baseImageUri = null;
+            if (this.BaseImageUriToPatch != null)
+            {
+                if (!BlobUri.TryParseUri(new Uri(BaseImageUriToPatch), out baseImageUri))
+                {
+                    throw new ArgumentOutOfRangeException("BaseImageUriToPatch", this.BaseImageUriToPatch.ToString());
+                }
 
-//                if (!String.IsNullOrEmpty(destinationUri.Uri.Query))
-//                {
-//                    var message = String.Format(Rsrc.AddAzureVhdCommandSASUriNotSupportedInPatchMode, destinationUri.Uri);
-//                    throw new ArgumentOutOfRangeException("Destination", message);
-//                }
-//            }
+                if (!String.IsNullOrEmpty(destinationUri.Uri.Query))
+                {
+                    var message = String.Format(Rsrc.ResourceManager.GetString("AddAzureVhdCommandSASUriNotSupportedInPatchMode"), destinationUri.Uri);
+                    throw new ArgumentOutOfRangeException("Destination", message);
+                }
+            }
 
-//            var storageCredentialsFactory = CreateStorageCredentialsFactory();
+            var storageCredentialsFactory = CreateStorageCredentialsFactory();
 
-//            PathIntrinsics currentPath = SessionState.Path;
-//            var filePath = new FileInfo(currentPath.GetUnresolvedProviderPathFromPSPath(LocalFilePath.ToString()));
+            // TODO: CLU
+            FileInfo filePath = new FileInfo(LocalFilePath);
+            /*
+            PathIntrinsics currentPath = SessionState.Path;
+            var filePath = new FileInfo(currentPath.GetUnresolvedProviderPathFromPSPath(LocalFilePath.ToString()));
+            */
 
-//            var parameters = new UploadParameters(
-//                destinationUri, baseImageUri, filePath, OverWrite.IsPresent,
-//                (NumberOfUploaderThreads) ?? DefaultNumberOfUploaderThreads)
-//            {
-//                Cmdlet = this,
-//                BlobObjectFactory = new CloudPageBlobObjectFactory(storageCredentialsFactory, TimeSpan.FromMinutes(1))
-//            };
+            var parameters = new UploadParameters(
+                destinationUri, baseImageUri, filePath, OverWrite.IsPresent,
+                (NumberOfUploaderThreads) ?? DefaultNumberOfUploaderThreads)
+            {
+                Cmdlet = this,
+                BlobObjectFactory = new CloudPageBlobObjectFactory(storageCredentialsFactory, TimeSpan.FromMinutes(1))
+            };
 
-//            return parameters;
-//        }
+            return parameters;
+        }
 
-//        private StorageCredentialsFactory CreateStorageCredentialsFactory()
-//        {
-//            StorageCredentialsFactory storageCredentialsFactory;
+        private StorageCredentialsFactory CreateStorageCredentialsFactory()
+        {
+            StorageCredentialsFactory storageCredentialsFactory;
 
-//            var storageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(
-//                        DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
+            // TODO: CLU
+            var storageClient = ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
+            /*
+            var storageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(
+                        DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
+            */
 
-//            if (StorageCredentialsFactory.IsChannelRequired(Destination))
-//            {
-//                storageCredentialsFactory = new StorageCredentialsFactory(this.ResourceGroupName, storageClient, DefaultContext.Subscription);
-//            }
-//            else
-//            {
-//                storageCredentialsFactory = new StorageCredentialsFactory();
-//            }
+            if (StorageCredentialsFactory.IsChannelRequired(new Uri(Destination)))
+            {
+                storageCredentialsFactory = new StorageCredentialsFactory(this.ResourceGroupName, storageClient, DefaultContext.Subscription);
+            }
+            else
+            {
+                storageCredentialsFactory = new StorageCredentialsFactory();
+            }
 
-//            return storageCredentialsFactory;
-//        }
+            return storageCredentialsFactory;
+        }
 
-//        protected override void ProcessRecord()
-//        {
-//            var parameters = ValidateParameters();
-//            var vhdUploadContext = VhdUploaderModel.Upload(parameters);
-//            WriteObject(vhdUploadContext);
-//        }
-//    }
-//}
+        protected override void ProcessRecord()
+        {
+            var parameters = ValidateParameters();
+            var vhdUploadContext = VhdUploaderModel.Upload(parameters);
+            WriteObject(vhdUploadContext);
+        }
+    }
+}
