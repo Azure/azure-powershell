@@ -423,11 +423,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// </summary>
         private string ExtractStorageAccountTableEndpoint(string storageName, string endpointSuffix)
         {
-            if (IgnoreStorage)
-            {
-                return null;
-            }
-            if (storageName == FetchedStorageAccountName && FetchedStorageAccountTableEndpoint != null)
+            if (IgnoreStorage || (storageName == FetchedStorageAccountName && FetchedStorageAccountTableEndpoint != null))
             {
                 return FetchedStorageAccountTableEndpoint;
             }
@@ -439,11 +435,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// </summary>
         private string ExtractStorageAccountSubscriptionId(string storageName)
         {
-            if (IgnoreStorage)
-            {
-                return null;
-            }
-            if (storageName == FetchedStorageAccountName && FetchedStorageAccountSubscription != null)
+            if (IgnoreStorage || (storageName == FetchedStorageAccountName && FetchedStorageAccountSubscription != null))
             {
                 return FetchedStorageAccountSubscription;
             }
@@ -455,11 +447,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// </summary>
         private string ExtractStorageAccountResourceGroup(string storageName)
         {
-            if (IgnoreStorage)
-            {
-                return null;
-            }
-            if (storageName == FetchedStorageAccountName && FetchedStorageAccountResourceGroup != null)
+            if (IgnoreStorage || (storageName == FetchedStorageAccountName && FetchedStorageAccountResourceGroup != null))
             {
                 return FetchedStorageAccountResourceGroup;
             }
@@ -471,11 +459,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// </summary>
         private string ExtractStorageAccountKey(string storageName, BaseAuditingPolicyModel model, string storageAccountResourceGroup, StorageKeyKind keyType)
         {
-            if (IgnoreStorage)
-            {
-                return null;
-            }
-            if (model.StorageKeyType == keyType)
+            if (IgnoreStorage || (model.StorageKeyType == keyType))
             {
                 return AzureCommunicator.GetStorageKeys(storageAccountResourceGroup, storageName)[keyType];
             }
