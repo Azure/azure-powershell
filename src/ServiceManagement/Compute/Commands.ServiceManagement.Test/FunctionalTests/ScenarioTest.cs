@@ -67,8 +67,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             try
             {
                 if (string.IsNullOrEmpty(imageName))
-                    imageName = vmPowershellCmdlets.GetAzureVMImageName(new[] { "Windows" }, false);
-                
+                    imageName = vmPowershellCmdlets.GetAzureVMImageName(new[] {"Windows"}, false);
+
                 var retriableErrorMessages = new string[]
                 {
                     "The server encountered an internal error. Please retry the request.",
@@ -90,19 +90,23 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                         vmPowershellCmdlets.RemoveAzureService(serviceName, true);
                     }
 
-                    vmPowershellCmdlets.NewAzureQuickVM(OS.Windows, newAzureQuickVMName1, serviceName, imageName, username, password, locationName);
+                    vmPowershellCmdlets.NewAzureQuickVM(OS.Windows, newAzureQuickVMName1, serviceName, imageName,
+                        username, password, locationName);
                 }, retriableErrorMessages, 10, 30);
 
                 // Verify
-                Assert.AreEqual(newAzureQuickVMName1, vmPowershellCmdlets.GetAzureVM(newAzureQuickVMName1, serviceName).Name, true);
+                Assert.AreEqual(newAzureQuickVMName1,
+                    vmPowershellCmdlets.GetAzureVM(newAzureQuickVMName1, serviceName).Name, true);
 
                 Utilities.RetryActionUntilSuccess(() =>
                 {
-                    vmPowershellCmdlets.NewAzureQuickVM(OS.Windows, newAzureQuickVMName2, serviceName, imageName, username, password, locationName);
+                    vmPowershellCmdlets.NewAzureQuickVM(OS.Windows, newAzureQuickVMName2, serviceName, imageName,
+                        username, password, locationName);
                 }, retriableErrorMessages, 10, 30);
 
                 // Verify
-                Assert.AreEqual(newAzureQuickVMName2, vmPowershellCmdlets.GetAzureVM(newAzureQuickVMName2, serviceName).Name, true);
+                Assert.AreEqual(newAzureQuickVMName2,
+                    vmPowershellCmdlets.GetAzureVM(newAzureQuickVMName2, serviceName).Name, true);
 
                 try
                 {
@@ -118,23 +122,26 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 vmPowershellCmdlets.RemoveAzureVM(newAzureQuickVMName1, serviceName);
                 Assert.AreEqual(null, vmPowershellCmdlets.GetAzureVM(newAzureQuickVMName1, serviceName));
 
-                Assert.AreEqual(newAzureQuickVMName2, vmPowershellCmdlets.GetAzureVM(newAzureQuickVMName2, serviceName).Name, true);
+                Assert.AreEqual(newAzureQuickVMName2,
+                    vmPowershellCmdlets.GetAzureVM(newAzureQuickVMName2, serviceName).Name, true);
                 vmPowershellCmdlets.RemoveAzureVM(newAzureQuickVMName2, serviceName);
                 Assert.AreEqual(null, vmPowershellCmdlets.GetAzureVM(newAzureQuickVMName2, serviceName));
 
                 Utilities.RetryActionUntilSuccess(() =>
                 {
-                    vmPowershellCmdlets.NewAzureQuickVM(OS.Windows, newAzureQuickVMName2, serviceName, imageName, username, password);
+                    vmPowershellCmdlets.NewAzureQuickVM(OS.Windows, newAzureQuickVMName2, serviceName, imageName,
+                        username, password);
                 }, retriableErrorMessages, 10, 30);
-                Assert.AreEqual(newAzureQuickVMName2, vmPowershellCmdlets.GetAzureVM(newAzureQuickVMName2, serviceName).Name, true);
+                Assert.AreEqual(newAzureQuickVMName2,
+                    vmPowershellCmdlets.GetAzureVM(newAzureQuickVMName2, serviceName).Name, true);
 
                 //Remove the service after removing the VM above
                 vmPowershellCmdlets.RemoveAzureService(serviceName);
 
                 //DisableWinRMHttps Test Case
                 vmPowershellCmdlets.NewAzureQuickVM(OS.Windows,
-                     newAzureQuickVMName2, serviceName, imageName, username, password,
-                     locationName, null, true);
+                    newAzureQuickVMName2, serviceName, imageName, username, password,
+                    locationName, null, true);
                 pass = true;
             }
             finally

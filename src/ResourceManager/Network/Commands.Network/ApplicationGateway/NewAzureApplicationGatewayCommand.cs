@@ -82,6 +82,12 @@ namespace Microsoft.Azure.Commands.Network
         public List<PSApplicationGatewayFrontendPort> FrontendPorts { get; set; }
 
         [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "The list of probe")]
+        public List<PSApplicationGatewayProbe> Probes { get; set; }
+
+        [Parameter(
              Mandatory = true,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of backend address pool")]
@@ -100,6 +106,12 @@ namespace Microsoft.Azure.Commands.Network
         public List<PSApplicationGatewayHttpListener> HttpListeners { get; set; }
 
         [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "The list of UrlPathMap")]
+        public List<PSApplicationGatewayUrlPathMap> UrlPathMaps { get; set; }
+
+        [Parameter(
              Mandatory = true,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of request routing rule")]
@@ -116,9 +128,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             if (this.IsApplicationGatewayPresent(this.ResourceGroupName, this.Name))            
             {
@@ -171,6 +183,12 @@ namespace Microsoft.Azure.Commands.Network
                 applicationGateway.FrontendPorts = this.FrontendPorts;
             }
 
+            if (this.Probes != null)
+            {
+                applicationGateway.Probes = new List<PSApplicationGatewayProbe>();
+                applicationGateway.Probes = this.Probes;
+            }
+
             if (this.BackendAddressPools != null)
             {
                 applicationGateway.BackendAddressPools = new List<PSApplicationGatewayBackendAddressPool>();
@@ -189,6 +207,12 @@ namespace Microsoft.Azure.Commands.Network
                 applicationGateway.HttpListeners = this.HttpListeners;
             }
 
+            if (this.UrlPathMaps != null)
+            {
+                applicationGateway.UrlPathMaps = new List<PSApplicationGatewayUrlPathMap>();
+                applicationGateway.UrlPathMaps = this.UrlPathMaps;
+            }
+
             if (this.RequestRoutingRules != null)
             {
                 applicationGateway.RequestRoutingRules = new List<PSApplicationGatewayRequestRoutingRule>();
@@ -200,7 +224,6 @@ namespace Microsoft.Azure.Commands.Network
 
             // Map to the sdk object
             var appGwModel = Mapper.Map<MNM.ApplicationGateway>(applicationGateway);
-            appGwModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewayType;
             appGwModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create ApplicationGateway call

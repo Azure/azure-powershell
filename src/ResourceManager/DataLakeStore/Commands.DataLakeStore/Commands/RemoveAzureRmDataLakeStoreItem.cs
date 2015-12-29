@@ -56,29 +56,29 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             )]
         public SwitchParameter PassThru { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             bool[] success = {true};
             foreach (var path in Paths)
             {
                 FileType testClean;
-                var pathExists = DataLakeStoreFileSystemClient.TestFileOrFolderExistence(path.Path,
+                var pathExists = DataLakeStoreFileSystemClient.TestFileOrFolderExistence(path.TransformedPath,
                     Account, out testClean);
 
                 ConfirmAction(
                     Force.IsPresent,
-                    string.Format(Resources.RemovingDataLakeStoreItem, path.FullyQualifiedPath),
-                    string.Format(Resources.RemoveDataLakeStoreItem, path.FullyQualifiedPath),
-                    path.FullyQualifiedPath,
+                    string.Format(Resources.RemovingDataLakeStoreItem, path.OriginalPath),
+                    string.Format(Resources.RemoveDataLakeStoreItem, path.OriginalPath),
+                    path.OriginalPath,
                     () =>
                         success[0] =
-                            success[0] && DataLakeStoreFileSystemClient.DeleteFileOrFolder(path.Path, Account,
+                            success[0] && DataLakeStoreFileSystemClient.DeleteFileOrFolder(path.TransformedPath, Account,
                                 Recurse));
 
                 if (pathExists && testClean == FileType.Directory && Clean)
                 {
                     // recreate the directory as an empty directory if clean was specified.
-                    DataLakeStoreFileSystemClient.CreateDirectory(path.Path, Account);
+                    DataLakeStoreFileSystemClient.CreateDirectory(path.TransformedPath, Account);
                 }
             }
 

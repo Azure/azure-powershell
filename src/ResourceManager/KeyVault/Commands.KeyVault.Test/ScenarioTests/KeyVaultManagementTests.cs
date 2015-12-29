@@ -15,7 +15,6 @@
 
 using System.Linq;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.Azure.Management.Resources;
 using Xunit;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Graph.RBAC;
@@ -166,6 +165,19 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetVaultByNameCapitalized()
+        {
+            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
+                () => new[] { string.Format("{0} {1}", "Test-GetVaultByName", _data.preCreatedVault.ToUpper()) },
+                env => Initialize(),
+                null,
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName()
+                );
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetUnknownVaultFails()
         {
             KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
@@ -287,10 +299,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         {
             string upn = "";
             _data.ResetPreCreatedVault();
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
+
+            KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
+            controller.RunPsTestWorkflow(
                 () =>
                 {
-                    return new[] { string.Format("{0} {1} {2} {3}", "Test-SetRemoveAccessPolicyByObjectId", _data.preCreatedVault, _data.resourceGroupName, upn) };
+                    var objId = GetUserObjectId(controller, upn);
+                    return new[] { string.Format("{0} {1} {2} {3}", "Test-SetRemoveAccessPolicyByObjectId", _data.preCreatedVault, _data.resourceGroupName, objId) };
                 },
                 (env) =>
                 {
@@ -332,10 +347,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
             string upn = "";
             Guid? appId = null;
             _data.ResetPreCreatedVault();
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
+
+            KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
+            controller.RunPsTestWorkflow(
                 () =>
                 {
-                    return new[] { string.Format("{0} {1} {2} {3} {4}", "Test-SetRemoveAccessPolicyByCompoundId", _data.preCreatedVault, _data.resourceGroupName, upn, appId) };
+                    var objId = GetUserObjectId(controller, upn);
+                    return new[] { string.Format("{0} {1} {2} {3} {4}", "Test-SetRemoveAccessPolicyByCompoundId", _data.preCreatedVault, _data.resourceGroupName, appId, objId) };
                 },
                 (env) =>
                 {
@@ -354,13 +372,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         public void TestRemoveAccessPolicyWithCompoundIdPolicies()
         {
             string upn = "";
+
             Guid? appId1 = null;
             Guid? appId2 = null;
             _data.ResetPreCreatedVault();
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
+
+            KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
+            controller.RunPsTestWorkflow(
                 () =>
                 {
-                    return new[] { string.Format("{0} {1} {2} {3} {4} {5}", "Test-RemoveAccessPolicyWithCompoundIdPolicies", _data.preCreatedVault, _data.resourceGroupName, upn, appId1, appId2) };
+                    var objId = GetUserObjectId(controller, upn);
+                    return new[] { string.Format("{0} {1} {2} {3} {4} {5}", "Test-RemoveAccessPolicyWithCompoundIdPolicies", _data.preCreatedVault, _data.resourceGroupName, appId1, appId2, objId) };
                 },
                 (env) =>
                 {
@@ -382,10 +404,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
             string upn = "";
             Guid? appId = null;
             _data.ResetPreCreatedVault();
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
+
+            KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
+            controller.RunPsTestWorkflow(
                 () =>
                 {
-                    return new[] { string.Format("{0} {1} {2} {3} {4}", "Test-SetCompoundIdAccessPolicy", _data.preCreatedVault, _data.resourceGroupName, upn, appId) };
+                    var objId = GetUserObjectId(controller, upn);
+                    return new[] { string.Format("{0} {1} {2} {3} {4}", "Test-SetCompoundIdAccessPolicy", _data.preCreatedVault, _data.resourceGroupName, appId, objId) };
                 },
                 (env) =>
                 {
@@ -442,14 +467,18 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         {
             string upn = "";
 
+            KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
             _data.ResetPreCreatedVault();
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
+
+            controller.RunPsTestWorkflow(
                 () =>
                 {
-                    return new[] { string.Format("{0} {1} {2} {3}", "Test-ModifyAccessPolicy", _data.preCreatedVault, _data.resourceGroupName, upn) };
+
+                    var objId = GetUserObjectId(controller, upn);
+                    return new[] { string.Format("{0} {1} {2} {3}", "Test-ModifyAccessPolicy", _data.preCreatedVault, _data.resourceGroupName, objId) };
                 },
                 (env) =>
-                {                    
+                {
                     Initialize();
                     upn = GetUser(env.GetTestEnvironment());
                 },
@@ -471,6 +500,54 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
                 () =>
                 {
                     return new[] { string.Format("{0} {1} {2} {3}", "Test-ModifyAccessPolicyEnabledForDeployment", _data.preCreatedVault, _data.resourceGroupName, upn) };
+                },
+                (env) =>
+                {
+                    Initialize();
+                    upn = GetUser(env.GetTestEnvironment());
+                },
+                null,
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName()
+                );
+        }
+
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestModifyAccessPolicyEnabledForTemplateDeployment()
+        {
+            string upn = "";
+
+            _data.ResetPreCreatedVault();
+            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
+                () =>
+                {
+                    return new[] { string.Format("{0} {1} {2} {3}", "Test-ModifyAccessPolicyEnabledForTemplateDeployment", _data.preCreatedVault, _data.resourceGroupName, upn) };
+                },
+                (env) =>
+                {
+                    Initialize();
+                    upn = GetUser(env.GetTestEnvironment());
+                },
+                null,
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName()
+                );
+        }
+
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestModifyAccessPolicyEnabledForDiskEncryption()
+        {
+            string upn = "";
+
+            _data.ResetPreCreatedVault();
+            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
+                () =>
+                {
+                    return new[] { string.Format("{0} {1} {2} {3}", "Test-ModifyAccessPolicyEnabledForDiskEncryption", _data.preCreatedVault, _data.resourceGroupName, upn) };
                 },
                 (env) =>
                 {
@@ -512,15 +589,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         public void TestRemoveNonExistentAccessPolicyDoesNotThrow()
         {
             string upn = "";
-
             _data.ResetPreCreatedVault();
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
+
+            KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
+            controller.RunPsTestWorkflow(
                 () =>
                 {
-                    return new[] { string.Format("{0} {1} {2} {3}", "Test-RemoveNonExistentAccessPolicyDoesNotThrow", _data.preCreatedVault, _data.resourceGroupName, upn) };
+                    var objId = GetUserObjectId(controller, upn);
+                    return new[] { string.Format("{0} {1} {2} {3}", "Test-RemoveNonExistentAccessPolicyDoesNotThrow", _data.preCreatedVault, _data.resourceGroupName, objId) };
                 },
                 (env) =>
-                {                    
+                {
                     Initialize();
                     upn = GetUser(env.GetTestEnvironment());
                 },
@@ -559,6 +638,20 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
             else
             {
                 return HttpMockServer.Variables["User"];
+            }
+        }
+
+        private string GetUserObjectId(KeyVaultManagementController controllerAdmin, string upn)
+        {
+            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            {
+                var result = controllerAdmin.GraphClient.User.Get(upn);
+                HttpMockServer.Variables["ObjectId"] = result.User.ObjectId;
+                return result.User.ObjectId;
+            }
+            else
+            {
+                return HttpMockServer.Variables["ObjectId"];
             }
         }
 

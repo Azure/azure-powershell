@@ -608,6 +608,34 @@
         </ListEntries>
       </ListControl>
     </View>
-    
+
+    <View>
+      <Name>Microsoft.Azure.Commands.Compute.Models.AzureDiskEncryptionStatusContext</Name>
+      <OutOfBand />
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Compute.Models.AzureDiskEncryptionStatusContext</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>OsVolumeEncrypted</Label>
+                <PropertyName>OsVolumeEncrypted</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>OsVolumeEncryptionSettings</Label>
+                <PropertyName>OsVolumeEncryptionSettingsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>DataVolumesEncrypted</Label>
+                <PropertyName>DataVolumesEncrypted</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+
   </ViewDefinitions>
 </Configuration>

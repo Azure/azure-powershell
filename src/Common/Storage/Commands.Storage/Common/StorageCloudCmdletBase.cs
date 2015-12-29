@@ -77,7 +77,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
         }
 
-                public T Channel
+        public T Channel
         {
             get;
             set;
@@ -106,16 +106,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
         }
 
-        public virtual void ExecuteCmdlet()
-        {
-        }
-
-
         protected override void ProcessRecord()
         {
             Validate.ValidateInternetConnection();
             InitChannelCurrentSubscription();
-            ExecuteCmdlet();
+            base.ProcessRecord();
        }
 
 

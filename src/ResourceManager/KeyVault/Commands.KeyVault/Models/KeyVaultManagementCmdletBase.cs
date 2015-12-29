@@ -27,6 +27,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using PSKeyVaultModels = Microsoft.Azure.Commands.KeyVault.Models;
 using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
+using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -109,7 +110,8 @@ namespace Microsoft.Azure.Commands.KeyVault
             List<PSKeyVaultModels.PSVaultIdentityItem> vaults = new List<PSKeyVaultModels.PSVaultIdentityItem>();
             if (listResult.Resources != null)
             {
-                vaults.AddRange(listResult.Resources.Where(r => r.Type == KeyVaultManagementClient.VaultsResourceType).Select(r => new PSKeyVaultModels.PSVaultIdentityItem(r)));
+                vaults.AddRange(listResult.Resources.Where(r => r.Type.Equals(KeyVaultManagementClient.VaultsResourceType, StringComparison.OrdinalIgnoreCase))
+                    .Select(r => new PSKeyVaultModels.PSVaultIdentityItem(r)));
             }
 
             while (!string.IsNullOrEmpty(listResult.NextLink))
@@ -134,7 +136,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             if (resourcesByName != null && resourcesByName.Count > 0)            
             {
-                var vault = resourcesByName.Where(r => r.Name == vaultName).FirstOrDefault();
+                var vault = resourcesByName.FirstOrDefault(r => r.Name.Equals(vaultName, StringComparison.OrdinalIgnoreCase));
                 if (vault != null)                
                     rg = new PSResourceManagerModels.ResourceIdentifier(vault.Id).ResourceGroupName;                                                    
             }
@@ -176,46 +178,63 @@ namespace Microsoft.Azure.Commands.KeyVault
                 throw new InvalidOperationException(PSKeyVaultProperties.Resources.NoDefaultUserAccount);
 
 
-            try
-            {
-                return GetObjectId(
+            return GetObjectId(
                     upn: DefaultContext.Account.Id,
                     objectId: Guid.Empty,
                     spn: null
-                );
-            }
-            catch
-            {
-                throw new InvalidOperationException(string.Format(PSKeyVaultProperties.Resources.ADObjectNotFound, DefaultContext.Subscription.Account, ActiveDirectoryClient.GraphClient.TenantID));
-            }
+                    );
         }
 
         protected Guid GetObjectId(Guid objectId, string upn, string spn)
         {
             var filter = new ADObjectFilterOptions()
                 {
-                    Id = (objectId != null && objectId != Guid.Empty) ? objectId.ToString() : null,
+                    Id = (objectId != Guid.Empty) ? objectId.ToString() : null,
                     UPN = upn,
                     SPN = spn,                    
                     Paging = true,
                 };
 
-            var obj = ActiveDirectoryClient.GetADObject(filter);
-
-            if (obj == null && !string.IsNullOrWhiteSpace(upn))
+            var exceptionMessage = string.Empty;
+            PSADObject obj = null;
+            try
             {
-                filter = new ADObjectFilterOptions()
-                {
-                    Mail = upn,
-                    Paging = true,
-                };
                 obj = ActiveDirectoryClient.GetADObject(filter);
+
+                if (obj == null && !string.IsNullOrWhiteSpace(upn))
+                {
+                    filter = new ADObjectFilterOptions()
+                    {
+                        Mail = upn,
+                        Paging = true,
+                    };
+                    obj = ActiveDirectoryClient.GetADObject(filter);
+                }
+            }
+            catch (CloudException ex)
+            {
+                // There is a bug/feature in the Azure Active Directory client in PowerShell that it does not show any exception when
+                // calling graph unless it is trying to list groups. For the filter that we set, only if the mail and paging is set 
+                // in Fairfax environment we get the following exception.
+                exceptionMessage = string.Format("Error: {0}", ex.Message);
             }
 
             if (obj != null)
                 return obj.Id;
-            else
-                throw new ArgumentException(string.Format(PSKeyVaultProperties.Resources.ADObjectNotFound, filter.ActiveFilter, ActiveDirectoryClient.GraphClient.TenantID));
+
+            // In the Fairfax environment the Graph access token does not have a correct audiance
+            // and this scenario is broken. So, we cannot verify that the object ID belongs to the user directory.
+            // User can define their own environment, thereby we only compare key vault DNS suffix.
+            // TODO: replace "vault.usgovcloudapi.net" with AzureEnvironmentConstants.USGovernmentKeyVaultDnsSuffix when the environment variable is added.
+            // TODO: Remove this if condition when the issue with graph API is fixed.
+            if (string.Compare(DefaultContext.Environment.Endpoints[AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix], "vault.usgovcloudapi.net", true) == 0)
+            {
+                if (objectId != Guid.Empty)
+                    return objectId;
+                else throw new NotSupportedException(string.Format(PSKeyVaultProperties.Resources.ADObjectIDRetrievalFailed, exceptionMessage));
+            }
+
+            throw new ArgumentException(string.Format(PSKeyVaultProperties.Resources.ADObjectNotFound, filter.ActiveFilter, ActiveDirectoryClient.GraphClient.TenantID));
         }
 
         protected readonly string[] DefaultPermissionsToKeys =

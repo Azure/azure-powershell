@@ -5993,6 +5993,13 @@ TrackingId
           </maml:description>
           <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+          <maml:name>SubnetName</maml:name>
+          <maml:description>
+            <maml:para>Name of subnet to move the collection into.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">string</command:parameterValue>
+        </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>ForceLogoffWhenUpdateComplete</maml:name>
           <maml:description>
@@ -6047,6 +6054,19 @@ TrackingId
           <maml:para>Name of Microsoft Azure RemoteApp template image.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+        <maml:name>SubnetName</maml:name>
+        <maml:description>
+          <maml:para>Name of the subnet to move the collection into.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">string</command:parameterValue>
         <dev:type>
           <maml:name>string</maml:name>
           <maml:uri />

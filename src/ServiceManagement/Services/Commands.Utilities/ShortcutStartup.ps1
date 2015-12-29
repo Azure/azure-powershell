@@ -12,30 +12,9 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-function Get-ScriptDirectory
-{
-    $Invocation = (Get-Variable MyInvocation -Scope 1).Value
-    Split-Path $Invocation.MyCommand.Path
-}
-
-$modulePath = Join-Path $(Split-Path ( Get-ScriptDirectory)) "Azure.psd1"
-$resourceModulePath = Join-Path $(Split-Path (Get-ScriptDirectory)) "..\..\ResourceManager\AzureResourceManager\AzureResourceManager.psd1"
-Import-Module $modulePath
-
-if(Test-Path $resourceModulePath)
-{
-	Import-Module $resourceModulePath
-}
-
 cd c:\
 $welcomeMessage = @"
 For a list of all Azure cmdlets type 'get-help azure'.
 For a list of Windows Azure Pack cmdlets type 'Get-Command *wapack*'.
 "@
 Write-Output $welcomeMessage
-
-Set-ExecutionPolicy -Scope Process Undefined -Force
-if ($(Get-ExecutionPolicy) -eq "Restricted")
-{
-    Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned -Force
-}

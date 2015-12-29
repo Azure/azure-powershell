@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.RedisCache
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "The number of shards to create on a Premium Cluster Cache.")]
         public int? ShardCount { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (!string.IsNullOrEmpty(MaxMemoryPolicy))
             {
@@ -93,6 +93,11 @@ namespace Microsoft.Azure.Commands.RedisCache
                 Size = SizeConverter.GetSizeInRedisSpecificFormat(Size, SkuStrings.Premium.Equals(Sku));
                 skuFamily = Size.Substring(0, 1);
                 int.TryParse(Size.Substring(1), out skuCapacity);
+            }
+
+            if (!ShardCount.HasValue && response.Resource.Properties.ShardCount.HasValue)
+            {
+                ShardCount = response.Resource.Properties.ShardCount;
             }
             
             

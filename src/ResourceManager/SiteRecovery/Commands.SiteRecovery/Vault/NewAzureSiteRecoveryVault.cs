@@ -54,10 +54,14 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             try
             {
+                this.WriteWarningWithTimestamp(
+                    string.Format(
+                    Properties.Resources.SiteRecoveryVaultTypeWillBeDeprecatedSoon));
+
                 VaultCreateArgs vaultCreateArgs = new VaultCreateArgs();
                 vaultCreateArgs.Location = this.Location;
                 vaultCreateArgs.Properties = new VaultProperties();

@@ -20,7 +20,7 @@ using Microsoft.PowerShell.Commands;
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet(VerbsCommon.Add, "AzureRmDataLakeStoreItemContent"), OutputType(typeof (bool))]
-    public class AddAzureDataLakeStoreContent : DataLakeStoreFileSystemCmdletBase
+    public class AddAzureDataLakeStoreItemContent : DataLakeStoreFileSystemCmdletBase
     {
         private FileSystemCmdletProviderEncoding _encoding = FileSystemCmdletProviderEncoding.UTF8;
 
@@ -52,9 +52,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             set { _encoding = value; }
         }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            DataLakeStoreFileSystemClient.AppendToFile(Path.Path, Account, new MemoryStream(GetBytes(Value, Encoding)));
+            DataLakeStoreFileSystemClient.AppendToFile(Path.TransformedPath, Account, new MemoryStream(GetBytes(Value, Encoding)));
             WriteObject(true);
         }
     }

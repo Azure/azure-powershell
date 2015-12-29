@@ -61,11 +61,32 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot find the Active Directory object &apos;{0}&apos; in tenant &apos;{1}&apos;. Please make sure that the user or application service principal you are authorizing is registered in the current subscription&apos;s Azure Active directory. The TenantID displayed by the cmdlet &apos;get-AzureRmSubscription -current&apos; is the current subscription&apos;s Azure Active directory..
+        ///   Looks up a localized string similar to Retrieving object ID from Azure Active Directory failed. {0}
+        ///
+        ///Please provide object ID for the user or service principle to set a vault access policy.
+        ///You can find the object ID using Azure Active Directory Module for Windows PowerShell..
+        /// </summary>
+        internal static string ADObjectIDRetrievalFailed {
+            get {
+                return ResourceManager.GetString("ADObjectIDRetrievalFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot find the Active Directory object &apos;{0}&apos; in tenant &apos;{1}&apos;. Please make sure that the user or application service principal you are authorizing is registered in the current subscription&apos;s Azure Active directory. The TenantID displayed by the cmdlet &apos;Get-AzureRmContext&apos; is the current subscription&apos;s Azure Active directory..
         /// </summary>
         internal static string ADObjectNotFound {
             get {
                 return ResourceManager.GetString("ADObjectNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No account found in the context. Please login using Login-AzureRMAccount..
+        /// </summary>
+        internal static string ArmAccountNotFound {
+            get {
+                return ResourceManager.GetString("ArmAccountNotFound", resourceCulture);
             }
         }
         
@@ -124,7 +145,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No current subscription has been designated. Use Select-AzureRmSubscription -Current &lt;subscriptionName&gt; to set the current subscription..
+        ///   Looks up a localized string similar to No current subscription has been designated. Use Set-AzureRmContext -SubscriptionName &lt;subscriptionName&gt; to set the current subscription..
         /// </summary>
         internal static string InvalidCurrentSubscription {
             get {
@@ -232,7 +253,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No subscription is currently selected. Use Select-Subscription to activate a subscription..
+        ///   Looks up a localized string similar to No subscription is currently selected. Use Set-AzureRmContext to activate a subscription..
         /// </summary>
         internal static string InvalidSelectedSubscription {
             get {
@@ -241,7 +262,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your Azure credentials have not been set up or have expired, please run Add-AzureRmAccount to set up your Azure credentials..
+        ///   Looks up a localized string similar to Your Azure credentials have not been set up or have expired, please run Login-AzureRmAccount to set up your Azure credentials..
         /// </summary>
         internal static string InvalidSubscriptionState {
             get {
@@ -291,6 +312,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string NoDefaultUserAccount {
             get {
                 return ResourceManager.GetString("NoDefaultUserAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No tenant found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Login-AzureRMAccount to login..
+        /// </summary>
+        internal static string NoTenantInContext {
+            get {
+                return ResourceManager.GetString("NoTenantInContext", resourceCulture);
             }
         }
         
@@ -394,11 +424,29 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Access policy is not set. No user or application have access permission to use this vault. Please use Set-AzureRmKeyVaultAccessPolicy to set access policies..
+        /// </summary>
+        internal static string VaultNoAccessPolicyWarning {
+            get {
+                return ResourceManager.GetString("VaultNoAccessPolicyWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot find vault &apos;{0}&apos; in resource group &apos;{1}&apos;..
         /// </summary>
         internal static string VaultNotFound {
             get {
                 return ResourceManager.GetString("VaultNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to At least one of -EnabledForDeployment, -EnabledForTemplateDeployment, or -EnabledForDiskEncryption must be specified..
+        /// </summary>
+        internal static string VaultPermissionFlagMissing {
+            get {
+                return ResourceManager.GetString("VaultPermissionFlagMissing", resourceCulture);
             }
         }
     }

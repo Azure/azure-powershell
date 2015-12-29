@@ -114,12 +114,29 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
+            // Normalize Probe
+            if (applicationGateway.Probes != null)
+            {
+                foreach (var probe in applicationGateway.Probes)
+                {
+                    probe.Id = string.Empty;
+                }
+            }
+
             // Normalize BackendHttpSettings
             if (applicationGateway.BackendHttpSettingsCollection != null)
             {
                 foreach (var backendHttpSettings in applicationGateway.BackendHttpSettingsCollection)
                 {
                     backendHttpSettings.Id = string.Empty;
+
+                    if (null != backendHttpSettings.Probe)
+                    {
+                        backendHttpSettings.Probe.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                                    backendHttpSettings.Probe.Id,
+                                                    applicationGateway.ResourceGroupName,
+                                                    applicationGateway.Name);
+                    }
                 }
             }
 
@@ -153,6 +170,38 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
+            // Normalize UrlPathMap
+            if (applicationGateway.UrlPathMaps != null)
+            {
+                foreach (var urlPathMap in applicationGateway.UrlPathMaps)
+                {
+                    urlPathMap.Id = string.Empty;
+
+                    urlPathMap.DefaultBackendAddressPool.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                                    urlPathMap.DefaultBackendAddressPool.Id,
+                                                    applicationGateway.ResourceGroupName,
+                                                    applicationGateway.Name);
+
+                    urlPathMap.DefaultBackendHttpSettings.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                                    urlPathMap.DefaultBackendHttpSettings.Id,
+                                                    applicationGateway.ResourceGroupName,
+                                                    applicationGateway.Name);
+
+                    foreach (var pathRule in urlPathMap.PathRules)
+                    {
+                        pathRule.BackendAddressPool.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                      pathRule.BackendAddressPool.Id,
+                                      applicationGateway.ResourceGroupName,
+                                      applicationGateway.Name);
+
+                        pathRule.BackendHttpSettings.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                                        pathRule.BackendHttpSettings.Id,
+                                                        applicationGateway.ResourceGroupName,
+                                                        applicationGateway.Name);
+                    }
+                }
+            }
+
             // Normalize RequestRoutingRule
             if (applicationGateway.RequestRoutingRules != null)
             {
@@ -165,15 +214,29 @@ namespace Microsoft.Azure.Commands.Network
                                                                     applicationGateway.ResourceGroupName,
                                                                     applicationGateway.Name);
 
-                    requestRoutingRule.BackendAddressPool.Id = NormalizeApplicationGatewayNameChildResourceIds(
-                                                                    requestRoutingRule.BackendAddressPool.Id,
-                                                                    applicationGateway.ResourceGroupName,
-                                                                    applicationGateway.Name);
+                    if (null != requestRoutingRule.BackendAddressPool)
+                    {
+                        requestRoutingRule.BackendAddressPool.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                                                        requestRoutingRule.BackendAddressPool.Id,
+                                                                        applicationGateway.ResourceGroupName,
+                                                                        applicationGateway.Name);
+                    }
 
-                    requestRoutingRule.BackendHttpSettings.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                    if (null != requestRoutingRule.BackendHttpSettings)
+                    {
+                        requestRoutingRule.BackendHttpSettings.Id = NormalizeApplicationGatewayNameChildResourceIds(
                                                                     requestRoutingRule.BackendHttpSettings.Id,
                                                                     applicationGateway.ResourceGroupName,
                                                                     applicationGateway.Name);
+                    }
+
+                    if (null != requestRoutingRule.UrlPathMap)
+                    {
+                        requestRoutingRule.UrlPathMap.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                                                    requestRoutingRule.UrlPathMap.Id,
+                                                                    applicationGateway.ResourceGroupName,
+                                                                    applicationGateway.Name);
+                    }
                 }
             }
         }

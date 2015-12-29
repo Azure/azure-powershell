@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ConfirmAction(
                 Force.IsPresent,
