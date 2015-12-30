@@ -209,6 +209,12 @@
     <None Include="ScenarioTests\UsageMetricsTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AzureRmDiagnosticSettingTests\TestSetAzureRmDiagnosticSettingTimegrainsOnly.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AzureRmDiagnosticSettingTests\TestSetAzureRmDiagnosticSettingCategoriesOnly.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AzureRmDiagnosticSettingTests\TestSetAzureRmDiagnosticSetting.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
