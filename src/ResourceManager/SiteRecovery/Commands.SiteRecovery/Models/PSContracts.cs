@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using Microsoft.Azure.Commands.SiteRecovery;
 using Microsoft.Azure.Management.SiteRecovery.Models;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -122,15 +123,107 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     }
 
     /// <summary>
-    /// Error contract returned when some exception occurs in ASR REST API.
+    /// ARM specified Error
     /// </summary>
-    [SuppressMessage(
+    public class ARMError
+    {
+        /// <summary>
+        /// Gets ARM formatted exception.
+        /// </summary>
+        [JsonProperty(PropertyName = "error")]
+        public ARMException Error { get; private set; }
+    }
+
+    /// <summary>
+    /// ARM exception class.
+    /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage(
         "Microsoft.StyleCop.CSharp.MaintainabilityRules",
         "SA1402:FileMayOnlyContainASingleClass",
-        Justification = "Keeping all contracts together.")]
-    [DataContract]
-    public class ErrorInException : Error
+        Justification = "Keeping all related classes together.")]
+    public class ARMException
     {
+        /// <summary>
+        /// Gets HTTP status code for the error.
+        /// </summary>
+        [JsonProperty(PropertyName = "code")]
+        public string ErrorCode { get; private set; }
+
+        /// <summary>
+        /// Gets exception message.
+        /// </summary>
+        [JsonProperty(PropertyName = "message")]
+        public string Message { get; private set; }
+
+        /// <summary>
+        /// Gets exception target.
+        /// </summary>
+        [JsonProperty(PropertyName = "target", 
+            NullValueHandling = NullValueHandling.Ignore, 
+            DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string Target { get; private set; }
+
+        /// <summary>
+        /// Gets service based error details.
+        /// </summary>
+        [JsonProperty(PropertyName = "details")]
+        public List<ARMExceptionDetails> Details { get; private set; }
+    }
+
+    /// <summary>
+    /// Service based exception details.
+    /// </summary>
+    public class ARMExceptionDetails
+    {
+        /// <summary>
+        /// Gets service error code.
+        /// </summary>
+        [JsonProperty(PropertyName = "code")]
+        public string ErrorCode { get; private set; }
+
+        /// <summary>
+        /// Gets error message.
+        /// </summary>
+        [JsonProperty(PropertyName = "message")]
+        public string Message { get; private set; }
+
+        /// <summary>
+        /// Gets possible cause for error.
+        /// </summary>
+        [JsonProperty(PropertyName = "possibleCauses",
+            NullValueHandling = NullValueHandling.Ignore,
+            DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string PossibleCauses { get; private set; }
+
+        /// <summary>
+        /// Gets recommended action for the error.
+        /// </summary>
+        [JsonProperty(PropertyName = "recommendedAction",
+            NullValueHandling = NullValueHandling.Ignore,
+            DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string RecommendedAction { get; private set; }
+
+        /// <summary>
+        /// Gets the client request Id for the session.
+        /// </summary>
+        [JsonProperty(PropertyName = "clientRequestId",
+        NullValueHandling = NullValueHandling.Ignore,
+        DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string ClientRequestId { get; private set; }
+
+        /// <summary>
+        /// Gets the activity Id for the session.
+        /// </summary>
+        [JsonProperty(PropertyName = "activityId")]
+        public string ActivityId { get; private set; }
+
+        /// <summary>
+        /// Gets exception target.
+        /// </summary>
+        [JsonProperty(PropertyName = "target",
+            NullValueHandling = NullValueHandling.Ignore,
+            DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string Target { get; private set; }
     }
 
     /// <summary>
