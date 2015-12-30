@@ -45,8 +45,7 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
             var environmentValue = Environment.GetEnvironmentVariable(key);
             if (string.IsNullOrWhiteSpace(environmentValue))
             {
-                throw new InvalidOperationException($"Unable to create credentials.  " +
-                    "Please set environment ${key}");
+                throw new InvalidOperationException($"Unable to create credentials. Please set environment variable `{key}`");
             }
             IDictionary<string, string> settings = new Dictionary<string, string>();
             foreach (

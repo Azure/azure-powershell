@@ -56,4 +56,4 @@ copy /Y %root%\drop\clurun\win7-x64\msclu.cfg %root%\drop\clurun\ubuntu.14.04-x6
 copy /Y %azuresh% %root%\drop\clurun\ubuntu.14.04-x64
 
 REM, windows version also needs it for bash based testing
-copy /Y %azuresh% %root%\drop\clurun\win7-x64\azure
+copy /Y %~dp0\azure.win.sh %root%\drop\clurun\win7-x64\azure
