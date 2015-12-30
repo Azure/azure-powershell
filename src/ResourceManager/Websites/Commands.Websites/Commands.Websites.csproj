@@ -143,10 +143,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cmdlets\AppServicePlans\GetAzureAppServicePlanMetrics.cs" />
-    <Compile Include="Cmdlets\Certificates\GetAzureRMWebAppCertificate.cs" />
-    <Compile Include="Cmdlets\Certificates\GetAzureRMWebAppSSLBinding.cs" />
-    <Compile Include="Cmdlets\Certificates\NewAzureRMWebAppSSLBinding.cs" />
-    <Compile Include="Cmdlets\Certificates\RemoveAzureRMWebAppSSLBinding.cs" />
+    <Compile Include="Cmdlets\Certificates\GetAzureWebAppCertificate.cs" />
+    <Compile Include="Cmdlets\Certificates\GetAzureWebAppSSLBinding.cs" />
+    <Compile Include="Cmdlets\Certificates\NewAzureWebAppSSLBinding.cs" />
+    <Compile Include="Cmdlets\Certificates\RemoveAzureWebAppSSLBinding.cs" />
     <Compile Include="Cmdlets\DeploymentSlots\GetAzureWebAppSlot.cs" />
     <Compile Include="Cmdlets\DeploymentSlots\GetAzureWebAppSlotMetrics.cs" />
     <Compile Include="Cmdlets\DeploymentSlots\GetAzureWebAppSlotPublishingProfile.cs" />

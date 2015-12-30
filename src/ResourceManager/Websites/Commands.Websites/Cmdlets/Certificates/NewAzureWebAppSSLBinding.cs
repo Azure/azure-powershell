@@ -29,8 +29,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// this commandlet will let you create a new Azure Web app using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRMWebAppSSLBinding")]
-    public class NewAzureRMWebAppSSLBinding : WebAppBaseClientCmdLet
+    [Cmdlet(VerbsCommon.New, "AzureRmWebAppSSLBinding")]
+    public class NewAzureWebAppSSLBinding : WebAppBaseClientCmdLet
     {
         const string CertNamePostFixSeparator = "_";
         const string ParameterSet1Name = "S1";

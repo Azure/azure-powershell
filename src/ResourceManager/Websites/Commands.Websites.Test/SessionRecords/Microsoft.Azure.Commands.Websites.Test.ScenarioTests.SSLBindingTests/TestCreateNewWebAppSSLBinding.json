@@ -7,19 +7,22 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "301e4d16-42fb-4239-8450-28600a16a2b0"
+          "0b950e2b-a07f-4328-bece-84e847054646"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.2"
+        ],
+        "Accept": [
+          "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/webappsslbindingrb/providers/Microsoft.Web/sites/webappsslbindingtest\",\r\n  \"name\": \"webappsslbindingtest\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"name\": \"webappsslbindingtest\",\r\n    \"state\": \"Running\",\r\n    \"hostNames\": [\r\n      \"api.webappsslbindingtests.com\",\r\n      \"webappsslbindingtests.com\",\r\n      \"www.webappsslbindingtests.com\",\r\n      \"webappsslbindingtest.asedemo.p.azurewebsites.net\"\r\n    ],\r\n    \"webSpace\": \"appdemorg-asedemoappseWestUSwebspace\",\r\n    \"selfLink\": \"https://waws-prod-bay-0a93c57e.api.p.azurewebsites.windows.net:454/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/webspaces/appdemorg-asedemoappseWestUSwebspace/sites/webappsslbindingtest\",\r\n    \"repositorySiteName\": \"webappsslbindingtest\",\r\n    \"owner\": null,\r\n    \"usageState\": 0,\r\n    \"enabled\": true,\r\n    \"adminEnabled\": true,\r\n    \"enabledHostNames\": [\r\n      \"api.webappsslbindingtests.com\",\r\n      \"webappsslbindingtests.com\",\r\n      \"www.webappsslbindingtests.com\",\r\n      \"webappsslbindingtest.asedemo.p.azurewebsites.net\",\r\n      \"webappsslbindingtest.scm.asedemo.p.azurewebsites.net\"\r\n    ],\r\n    \"siteProperties\": {\r\n      \"metadata\": null,\r\n      \"properties\": [],\r\n      \"appSettings\": null\r\n    },\r\n    \"availabilityState\": 0,\r\n    \"sslCertificates\": null,\r\n    \"csrs\": [],\r\n    \"cers\": null,\r\n    \"siteMode\": null,\r\n    \"hostNameSslStates\": [\r\n      {\r\n        \"name\": \"api.webappsslbindingtests.com\",\r\n        \"sslState\": 1,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": \"40D6600B0B8740C41BA4B3D13B967DDEF6ED1918\",\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"webappsslbindingtest.asedemo.p.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"webappsslbindingtest.scm.asedemo.p.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 1\r\n      },\r\n      {\r\n        \"name\": \"webappsslbindingtests.com\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"www.webappsslbindingtests.com\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      }\r\n    ],\r\n    \"computeMode\": null,\r\n    \"serverFarm\": null,\r\n    \"serverFarmId\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/serverfarms/travel_production_plan\",\r\n    \"lastModifiedTimeUtc\": \"2015-12-07T16:30:19.477\",\r\n    \"storageRecoveryDefaultState\": \"Running\",\r\n    \"contentAvailabilityState\": 0,\r\n    \"runtimeAvailabilityState\": 0,\r\n    \"siteConfig\": null,\r\n    \"deploymentId\": \"webappsslbindingtest\",\r\n    \"trafficManagerHostNames\": null,\r\n    \"sku\": \"Premium\",\r\n    \"premiumAppDeployed\": null,\r\n    \"scmSiteAlsoStopped\": false,\r\n    \"targetSwapSlot\": null,\r\n    \"hostingEnvironment\": \"asedemo\",\r\n    \"hostingEnvironmentProfile\": {\r\n      \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemo\",\r\n      \"name\": \"asedemo\",\r\n      \"type\": \"Microsoft.Web/hostingEnvironments\"\r\n    },\r\n    \"microService\": \"WebSites\",\r\n    \"gatewaySiteName\": null,\r\n    \"clientAffinityEnabled\": true,\r\n    \"clientCertEnabled\": false,\r\n    \"domainVerificationIdentifiers\": null,\r\n    \"kind\": null,\r\n    \"outboundIpAddresses\": \"104.45.218.185\",\r\n    \"cloningInfo\": null,\r\n    \"hostingEnvironmentId\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemo\",\r\n    \"tags\": null\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/webappsslbindingrb/providers/Microsoft.Web/sites/webappsslbindingtest\",\r\n  \"name\": \"webappsslbindingtest\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {\r\n    \"hidden-related:/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/serverfarms/travel_production_plan\": \"Resource\"\r\n  },\r\n  \"properties\": {\r\n    \"name\": \"webappsslbindingtest\",\r\n    \"state\": \"Running\",\r\n    \"hostNames\": [\r\n      \"api.webappsslbindingtests.com\",\r\n      \"webappsslbindingtests.com\",\r\n      \"www.webappsslbindingtests.com\",\r\n      \"webappsslbindingtest.asedemo.p.azurewebsites.net\"\r\n    ],\r\n    \"webSpace\": \"appdemorg-asedemoappseWestUSwebspace\",\r\n    \"selfLink\": \"https://waws-prod-bay-0a93c57e.api.p.azurewebsites.windows.net:454/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/webspaces/appdemorg-asedemoappseWestUSwebspace/sites/webappsslbindingtest\",\r\n    \"repositorySiteName\": \"webappsslbindingtest\",\r\n    \"owner\": null,\r\n    \"usageState\": 0,\r\n    \"enabled\": true,\r\n    \"adminEnabled\": true,\r\n    \"enabledHostNames\": [\r\n      \"api.webappsslbindingtests.com\",\r\n      \"webappsslbindingtests.com\",\r\n      \"www.webappsslbindingtests.com\",\r\n      \"webappsslbindingtest.asedemo.p.azurewebsites.net\",\r\n      \"webappsslbindingtest.scm.asedemo.p.azurewebsites.net\"\r\n    ],\r\n    \"siteProperties\": {\r\n      \"metadata\": null,\r\n      \"properties\": [],\r\n      \"appSettings\": null\r\n    },\r\n    \"availabilityState\": 0,\r\n    \"sslCertificates\": null,\r\n    \"csrs\": [],\r\n    \"cers\": null,\r\n    \"siteMode\": null,\r\n    \"hostNameSslStates\": [\r\n      {\r\n        \"name\": \"api.webappsslbindingtests.com\",\r\n        \"sslState\": 1,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": \"40D6600B0B8740C41BA4B3D13B967DDEF6ED1918\",\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"webappsslbindingtest.asedemo.p.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"webappsslbindingtest.scm.asedemo.p.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 1\r\n      },\r\n      {\r\n        \"name\": \"webappsslbindingtests.com\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"www.webappsslbindingtests.com\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      }\r\n    ],\r\n    \"computeMode\": null,\r\n    \"serverFarm\": null,\r\n    \"serverFarmId\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/serverfarms/travel_production_plan\",\r\n    \"lastModifiedTimeUtc\": \"2015-12-23T23:23:20.69\",\r\n    \"storageRecoveryDefaultState\": \"Running\",\r\n    \"contentAvailabilityState\": 0,\r\n    \"runtimeAvailabilityState\": 0,\r\n    \"siteConfig\": null,\r\n    \"deploymentId\": \"webappsslbindingtest\",\r\n    \"trafficManagerHostNames\": null,\r\n    \"sku\": \"Premium\",\r\n    \"premiumAppDeployed\": null,\r\n    \"scmSiteAlsoStopped\": false,\r\n    \"targetSwapSlot\": null,\r\n    \"hostingEnvironment\": \"asedemo\",\r\n    \"hostingEnvironmentProfile\": {\r\n      \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemo\",\r\n      \"name\": \"asedemo\",\r\n      \"type\": \"Microsoft.Web/hostingEnvironments\"\r\n    },\r\n    \"microService\": \"WebSites\",\r\n    \"gatewaySiteName\": null,\r\n    \"clientAffinityEnabled\": true,\r\n    \"clientCertEnabled\": false,\r\n    \"hostNamesDisabled\": false,\r\n    \"domainVerificationIdentifiers\": null,\r\n    \"kind\": null,\r\n    \"outboundIpAddresses\": \"104.45.218.185\",\r\n    \"cloningInfo\": null,\r\n    \"hostingEnvironmentId\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemo\",\r\n    \"tags\": {\r\n      \"hidden-related:/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/serverfarms/travel_production_plan\": \"Resource\"\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "3377"
+          "3724"
         ],
         "Content-Type": [
           "application/json"
@@ -34,25 +37,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "7d4bbb5b-49ed-4d60-9b1c-331967ef0b06"
+          "774d332b-269a-464f-8695-bcab566d5de7"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14979"
+          "14936"
         ],
         "x-ms-correlation-request-id": [
-          "c2b0ca73-fe42-4b1d-81df-2336e18a3890"
+          "e892d0c0-2c0c-464d-8ce6-e7d66a03a410"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151207T163351Z:c2b0ca73-fe42-4b1d-81df-2336e18a3890"
+          "CENTRALUS:20151230T060757Z:e892d0c0-2c0c-464d-8ce6-e7d66a03a410"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 07 Dec 2015 16:33:51 GMT"
+          "Wed, 30 Dec 2015 06:07:56 GMT"
         ],
         "ETag": [
-          "\"1D1310C8FF12850\""
+          "\"1D13DD8E94E2D20\""
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -73,19 +76,22 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "81442302-570e-45ef-a18a-3b692cc17694"
+          "b308acd3-1550-45de-b018-07be0038dc28"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.2"
+        ],
+        "Accept": [
+          "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/webappsslbindingrb/providers/Microsoft.Web/sites/webappsslbindingtest\",\r\n  \"name\": \"webappsslbindingtest\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"name\": \"webappsslbindingtest\",\r\n    \"state\": \"Running\",\r\n    \"hostNames\": [\r\n      \"api.webappsslbindingtests.com\",\r\n      \"webappsslbindingtests.com\",\r\n      \"www.webappsslbindingtests.com\",\r\n      \"webappsslbindingtest.asedemo.p.azurewebsites.net\"\r\n    ],\r\n    \"webSpace\": \"appdemorg-asedemoappseWestUSwebspace\",\r\n    \"selfLink\": \"https://waws-prod-bay-0a93c57e.api.p.azurewebsites.windows.net:454/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/webspaces/appdemorg-asedemoappseWestUSwebspace/sites/webappsslbindingtest\",\r\n    \"repositorySiteName\": \"webappsslbindingtest\",\r\n    \"owner\": null,\r\n    \"usageState\": 0,\r\n    \"enabled\": true,\r\n    \"adminEnabled\": true,\r\n    \"enabledHostNames\": [\r\n      \"api.webappsslbindingtests.com\",\r\n      \"webappsslbindingtests.com\",\r\n      \"www.webappsslbindingtests.com\",\r\n      \"webappsslbindingtest.asedemo.p.azurewebsites.net\",\r\n      \"webappsslbindingtest.scm.asedemo.p.azurewebsites.net\"\r\n    ],\r\n    \"siteProperties\": {\r\n      \"metadata\": null,\r\n      \"properties\": [],\r\n      \"appSettings\": null\r\n    },\r\n    \"availabilityState\": 0,\r\n    \"sslCertificates\": null,\r\n    \"csrs\": [],\r\n    \"cers\": null,\r\n    \"siteMode\": null,\r\n    \"hostNameSslStates\": [\r\n      {\r\n        \"name\": \"api.webappsslbindingtests.com\",\r\n        \"sslState\": 1,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": \"40D6600B0B8740C41BA4B3D13B967DDEF6ED1918\",\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"webappsslbindingtest.asedemo.p.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"webappsslbindingtest.scm.asedemo.p.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 1\r\n      },\r\n      {\r\n        \"name\": \"webappsslbindingtests.com\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"www.webappsslbindingtests.com\",\r\n        \"sslState\": 1,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": \"40D6600B0B8740C41BA4B3D13B967DDEF6ED1918\",\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      }\r\n    ],\r\n    \"computeMode\": null,\r\n    \"serverFarm\": null,\r\n    \"serverFarmId\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/serverfarms/travel_production_plan\",\r\n    \"lastModifiedTimeUtc\": \"2015-12-07T16:30:19.477\",\r\n    \"storageRecoveryDefaultState\": \"Running\",\r\n    \"contentAvailabilityState\": 0,\r\n    \"runtimeAvailabilityState\": 0,\r\n    \"siteConfig\": null,\r\n    \"deploymentId\": \"webappsslbindingtest\",\r\n    \"trafficManagerHostNames\": null,\r\n    \"sku\": \"Premium\",\r\n    \"premiumAppDeployed\": null,\r\n    \"scmSiteAlsoStopped\": false,\r\n    \"targetSwapSlot\": null,\r\n    \"hostingEnvironment\": \"asedemo\",\r\n    \"hostingEnvironmentProfile\": {\r\n      \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemo\",\r\n      \"name\": \"asedemo\",\r\n      \"type\": \"Microsoft.Web/hostingEnvironments\"\r\n    },\r\n    \"microService\": \"WebSites\",\r\n    \"gatewaySiteName\": null,\r\n    \"clientAffinityEnabled\": true,\r\n    \"clientCertEnabled\": false,\r\n    \"domainVerificationIdentifiers\": null,\r\n    \"kind\": null,\r\n    \"outboundIpAddresses\": \"104.45.218.185\",\r\n    \"cloningInfo\": null,\r\n    \"hostingEnvironmentId\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemo\",\r\n    \"tags\": null\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/webappsslbindingrb/providers/Microsoft.Web/sites/webappsslbindingtest\",\r\n  \"name\": \"webappsslbindingtest\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"name\": \"webappsslbindingtest\",\r\n    \"state\": \"Running\",\r\n    \"hostNames\": [\r\n      \"api.webappsslbindingtests.com\",\r\n      \"webappsslbindingtests.com\",\r\n      \"www.webappsslbindingtests.com\",\r\n      \"webappsslbindingtest.asedemo.p.azurewebsites.net\"\r\n    ],\r\n    \"webSpace\": \"appdemorg-asedemoappseWestUSwebspace\",\r\n    \"selfLink\": \"https://waws-prod-bay-0a93c57e.api.p.azurewebsites.windows.net:454/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/webspaces/appdemorg-asedemoappseWestUSwebspace/sites/webappsslbindingtest\",\r\n    \"repositorySiteName\": \"webappsslbindingtest\",\r\n    \"owner\": null,\r\n    \"usageState\": 0,\r\n    \"enabled\": true,\r\n    \"adminEnabled\": true,\r\n    \"enabledHostNames\": [\r\n      \"api.webappsslbindingtests.com\",\r\n      \"webappsslbindingtests.com\",\r\n      \"www.webappsslbindingtests.com\",\r\n      \"webappsslbindingtest.asedemo.p.azurewebsites.net\",\r\n      \"webappsslbindingtest.scm.asedemo.p.azurewebsites.net\"\r\n    ],\r\n    \"siteProperties\": {\r\n      \"metadata\": null,\r\n      \"properties\": [],\r\n      \"appSettings\": null\r\n    },\r\n    \"availabilityState\": 0,\r\n    \"sslCertificates\": null,\r\n    \"csrs\": [],\r\n    \"cers\": null,\r\n    \"siteMode\": null,\r\n    \"hostNameSslStates\": [\r\n      {\r\n        \"name\": \"api.webappsslbindingtests.com\",\r\n        \"sslState\": 1,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": \"40D6600B0B8740C41BA4B3D13B967DDEF6ED1918\",\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"webappsslbindingtest.asedemo.p.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"webappsslbindingtest.scm.asedemo.p.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 1\r\n      },\r\n      {\r\n        \"name\": \"webappsslbindingtests.com\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"www.webappsslbindingtests.com\",\r\n        \"sslState\": 1,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": \"40D6600B0B8740C41BA4B3D13B967DDEF6ED1918\",\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      }\r\n    ],\r\n    \"computeMode\": null,\r\n    \"serverFarm\": null,\r\n    \"serverFarmId\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/serverfarms/travel_production_plan\",\r\n    \"lastModifiedTimeUtc\": \"2015-12-23T23:23:20.69\",\r\n    \"storageRecoveryDefaultState\": \"Running\",\r\n    \"contentAvailabilityState\": 0,\r\n    \"runtimeAvailabilityState\": 0,\r\n    \"siteConfig\": null,\r\n    \"deploymentId\": \"webappsslbindingtest\",\r\n    \"trafficManagerHostNames\": null,\r\n    \"sku\": \"Premium\",\r\n    \"premiumAppDeployed\": null,\r\n    \"scmSiteAlsoStopped\": false,\r\n    \"targetSwapSlot\": null,\r\n    \"hostingEnvironment\": \"asedemo\",\r\n    \"hostingEnvironmentProfile\": {\r\n      \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemo\",\r\n      \"name\": \"asedemo\",\r\n      \"type\": \"Microsoft.Web/hostingEnvironments\"\r\n    },\r\n    \"microService\": \"WebSites\",\r\n    \"gatewaySiteName\": null,\r\n    \"clientAffinityEnabled\": true,\r\n    \"clientCertEnabled\": false,\r\n    \"hostNamesDisabled\": false,\r\n    \"domainVerificationIdentifiers\": null,\r\n    \"kind\": null,\r\n    \"outboundIpAddresses\": \"104.45.218.185\",\r\n    \"cloningInfo\": null,\r\n    \"hostingEnvironmentId\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemo\",\r\n    \"tags\": null\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "3415"
+          "3440"
         ],
         "Content-Type": [
           "application/json"
@@ -100,25 +106,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "a895ca49-b19c-47f1-bfde-83337d4b0b18"
+          "3a827651-8b96-4374-ad9a-64e1d115d2f8"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14975"
+          "14932"
         ],
         "x-ms-correlation-request-id": [
-          "fa2542d0-379e-4d5b-867a-54e40189bbc8"
+          "c6f3a762-e59d-483b-983b-4c32de544c8f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151207T163400Z:fa2542d0-379e-4d5b-867a-54e40189bbc8"
+          "CENTRALUS:20151230T060808Z:c6f3a762-e59d-483b-983b-4c32de544c8f"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 07 Dec 2015 16:33:59 GMT"
+          "Wed, 30 Dec 2015 06:08:08 GMT"
         ],
         "ETag": [
-          "\"1D1310C8FF12850\""
+          "\"1D13DD8E94E2D20\""
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -139,19 +145,22 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d038eab1-6422-48fa-b38b-9760be08598b"
+          "2bd37a2d-5c48-4b58-97fc-bec0dae492cf"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.2"
+        ],
+        "Accept": [
+          "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/webappsslbindingrb/providers/Microsoft.Web/sites/webappsslbindingtest/config/web\",\r\n  \"name\": \"webappsslbindingtest\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"numberOfWorkers\": 1,\r\n    \"defaultDocuments\": [\r\n      \"Default.htm\",\r\n      \"Default.html\",\r\n      \"Default.asp\",\r\n      \"index.htm\",\r\n      \"index.html\",\r\n      \"iisstart.htm\",\r\n      \"default.aspx\",\r\n      \"index.php\",\r\n      \"hostingstart.html\"\r\n    ],\r\n    \"netFrameworkVersion\": \"v4.0\",\r\n    \"phpVersion\": \"5.4\",\r\n    \"pythonVersion\": \"\",\r\n    \"requestTracingEnabled\": false,\r\n    \"requestTracingExpirationTime\": null,\r\n    \"remoteDebuggingEnabled\": false,\r\n    \"remoteDebuggingVersion\": null,\r\n    \"httpLoggingEnabled\": false,\r\n    \"logsDirectorySizeLimit\": 35,\r\n    \"detailedErrorLoggingEnabled\": false,\r\n    \"publishingUsername\": \"$webappsslbindingtest\",\r\n    \"publishingPassword\": null,\r\n    \"appSettings\": null,\r\n    \"metadata\": null,\r\n    \"connectionStrings\": null,\r\n    \"handlerMappings\": null,\r\n    \"documentRoot\": null,\r\n    \"scmType\": \"None\",\r\n    \"use32BitWorkerProcess\": true,\r\n    \"webSocketsEnabled\": false,\r\n    \"alwaysOn\": false,\r\n    \"javaVersion\": null,\r\n    \"javaContainer\": null,\r\n    \"javaContainerVersion\": null,\r\n    \"managedPipelineMode\": 0,\r\n    \"virtualApplications\": [\r\n      {\r\n        \"virtualPath\": \"/\",\r\n        \"physicalPath\": \"site\\\\wwwroot\",\r\n        \"preloadEnabled\": false,\r\n        \"virtualDirectories\": null\r\n      }\r\n    ],\r\n    \"winAuthAdminState\": 0,\r\n    \"winAuthTenantState\": 0,\r\n    \"customAppPoolIdentityAdminState\": false,\r\n    \"customAppPoolIdentityTenantState\": false,\r\n    \"runtimeADUser\": null,\r\n    \"runtimeADUserPassword\": null,\r\n    \"loadBalancing\": 1,\r\n    \"routingRules\": [],\r\n    \"experiments\": {\r\n      \"rampUpRules\": []\r\n    },\r\n    \"limits\": null,\r\n    \"autoHealEnabled\": false,\r\n    \"autoHealRules\": null,\r\n    \"tracingOptions\": null,\r\n    \"vnetName\": \"\",\r\n    \"siteAuthEnabled\": false,\r\n    \"siteAuthSettings\": {\r\n      \"enabled\": null,\r\n      \"httpApiPrefixPath\": null,\r\n      \"unauthenticatedClientAction\": null,\r\n      \"tokenStoreEnabled\": null,\r\n      \"allowedExternalRedirectUrls\": null,\r\n      \"defaultProvider\": null,\r\n      \"clientId\": null,\r\n      \"clientSecret\": null,\r\n      \"issuer\": null,\r\n      \"allowedAudiences\": null,\r\n      \"isAadAutoProvisioned\": false,\r\n      \"googleClientId\": null,\r\n      \"googleClientSecret\": null,\r\n      \"googleOAuthScopes\": null,\r\n      \"facebookAppId\": null,\r\n      \"facebookAppSecret\": null,\r\n      \"facebookOAuthScopes\": null,\r\n      \"twitterConsumerKey\": null,\r\n      \"twitterConsumerSecret\": null,\r\n      \"microsoftAccountClientId\": null,\r\n      \"microsoftAccountClientSecret\": null,\r\n      \"microsoftAccountOAuthScopes\": null\r\n    },\r\n    \"cors\": null,\r\n    \"apiDefinition\": null,\r\n    \"autoSwapSlotName\": null\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/webappsslbindingrb/providers/Microsoft.Web/sites/webappsslbindingtest/config/web\",\r\n  \"name\": \"webappsslbindingtest\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {\r\n    \"hidden-related:/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/serverfarms/travel_production_plan\": \"Resource\"\r\n  },\r\n  \"properties\": {\r\n    \"numberOfWorkers\": 1,\r\n    \"defaultDocuments\": [\r\n      \"Default.htm\",\r\n      \"Default.html\",\r\n      \"Default.asp\",\r\n      \"index.htm\",\r\n      \"index.html\",\r\n      \"iisstart.htm\",\r\n      \"default.aspx\",\r\n      \"index.php\",\r\n      \"hostingstart.html\"\r\n    ],\r\n    \"netFrameworkVersion\": \"v4.0\",\r\n    \"phpVersion\": \"5.4\",\r\n    \"pythonVersion\": \"\",\r\n    \"requestTracingEnabled\": false,\r\n    \"requestTracingExpirationTime\": null,\r\n    \"remoteDebuggingEnabled\": false,\r\n    \"remoteDebuggingVersion\": null,\r\n    \"httpLoggingEnabled\": false,\r\n    \"logsDirectorySizeLimit\": 35,\r\n    \"detailedErrorLoggingEnabled\": false,\r\n    \"publishingUsername\": \"$webappsslbindingtest\",\r\n    \"publishingPassword\": null,\r\n    \"appSettings\": null,\r\n    \"metadata\": null,\r\n    \"connectionStrings\": null,\r\n    \"handlerMappings\": null,\r\n    \"documentRoot\": null,\r\n    \"scmType\": \"None\",\r\n    \"use32BitWorkerProcess\": true,\r\n    \"webSocketsEnabled\": false,\r\n    \"alwaysOn\": false,\r\n    \"javaVersion\": null,\r\n    \"javaContainer\": null,\r\n    \"javaContainerVersion\": null,\r\n    \"managedPipelineMode\": 0,\r\n    \"virtualApplications\": [\r\n      {\r\n        \"virtualPath\": \"/\",\r\n        \"physicalPath\": \"site\\\\wwwroot\",\r\n        \"preloadEnabled\": false,\r\n        \"virtualDirectories\": null\r\n      }\r\n    ],\r\n    \"winAuthAdminState\": 0,\r\n    \"winAuthTenantState\": 0,\r\n    \"customAppPoolIdentityAdminState\": false,\r\n    \"customAppPoolIdentityTenantState\": false,\r\n    \"runtimeADUser\": null,\r\n    \"runtimeADUserPassword\": null,\r\n    \"loadBalancing\": 1,\r\n    \"routingRules\": [],\r\n    \"experiments\": {\r\n      \"rampUpRules\": []\r\n    },\r\n    \"limits\": null,\r\n    \"autoHealEnabled\": false,\r\n    \"autoHealRules\": null,\r\n    \"tracingOptions\": null,\r\n    \"vnetName\": \"\",\r\n    \"siteAuthEnabled\": false,\r\n    \"siteAuthSettings\": {\r\n      \"enabled\": null,\r\n      \"httpApiPrefixPath\": null,\r\n      \"unauthenticatedClientAction\": null,\r\n      \"tokenStoreEnabled\": null,\r\n      \"allowedExternalRedirectUrls\": null,\r\n      \"defaultProvider\": null,\r\n      \"clientId\": null,\r\n      \"clientSecret\": null,\r\n      \"issuer\": null,\r\n      \"allowedAudiences\": null,\r\n      \"isAadAutoProvisioned\": false,\r\n      \"googleClientId\": null,\r\n      \"googleClientSecret\": null,\r\n      \"googleOAuthScopes\": null,\r\n      \"facebookAppId\": null,\r\n      \"facebookAppSecret\": null,\r\n      \"facebookOAuthScopes\": null,\r\n      \"twitterConsumerKey\": null,\r\n      \"twitterConsumerSecret\": null,\r\n      \"microsoftAccountClientId\": null,\r\n      \"microsoftAccountClientSecret\": null,\r\n      \"microsoftAccountOAuthScopes\": null\r\n    },\r\n    \"cors\": null,\r\n    \"apiDefinition\": null,\r\n    \"autoSwapSlotName\": null\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "2212"
+          "2373"
         ],
         "Content-Type": [
           "application/json"
@@ -166,22 +175,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "3f3280f8-e623-488b-970b-6b890f85d57e"
+          "15c9cb52-2b61-4505-aedd-4eda8d5ef2c8"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14978"
+          "14935"
         ],
         "x-ms-correlation-request-id": [
-          "dba36060-d406-46c5-9c5b-5230a563141a"
+          "6bcd1be1-9e05-4c10-a09b-4eb2c911e160"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151207T163352Z:dba36060-d406-46c5-9c5b-5230a563141a"
+          "CENTRALUS:20151230T060757Z:6bcd1be1-9e05-4c10-a09b-4eb2c911e160"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 07 Dec 2015 16:33:51 GMT"
+          "Wed, 30 Dec 2015 06:07:56 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -202,13 +211,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "94823b45-e556-42a4-90f9-a517f2c6d899"
+          "64f2730c-ac83-4e58-9d46-1a836e23d9b6"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.2"
+        ],
+        "Accept": [
+          "application/json"
         ]
       },
       "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/webappsslbindingrb/providers/Microsoft.Web/sites/webappsslbindingtest/config/web\",\r\n  \"name\": \"webappsslbindingtest\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"numberOfWorkers\": 1,\r\n    \"defaultDocuments\": [\r\n      \"Default.htm\",\r\n      \"Default.html\",\r\n      \"Default.asp\",\r\n      \"index.htm\",\r\n      \"index.html\",\r\n      \"iisstart.htm\",\r\n      \"default.aspx\",\r\n      \"index.php\",\r\n      \"hostingstart.html\"\r\n    ],\r\n    \"netFrameworkVersion\": \"v4.0\",\r\n    \"phpVersion\": \"5.4\",\r\n    \"pythonVersion\": \"\",\r\n    \"requestTracingEnabled\": false,\r\n    \"requestTracingExpirationTime\": null,\r\n    \"remoteDebuggingEnabled\": false,\r\n    \"remoteDebuggingVersion\": null,\r\n    \"httpLoggingEnabled\": false,\r\n    \"logsDirectorySizeLimit\": 35,\r\n    \"detailedErrorLoggingEnabled\": false,\r\n    \"publishingUsername\": \"$webappsslbindingtest\",\r\n    \"publishingPassword\": null,\r\n    \"appSettings\": null,\r\n    \"metadata\": null,\r\n    \"connectionStrings\": null,\r\n    \"handlerMappings\": null,\r\n    \"documentRoot\": null,\r\n    \"scmType\": \"None\",\r\n    \"use32BitWorkerProcess\": true,\r\n    \"webSocketsEnabled\": false,\r\n    \"alwaysOn\": false,\r\n    \"javaVersion\": null,\r\n    \"javaContainer\": null,\r\n    \"javaContainerVersion\": null,\r\n    \"managedPipelineMode\": 0,\r\n    \"virtualApplications\": [\r\n      {\r\n        \"virtualPath\": \"/\",\r\n        \"physicalPath\": \"site\\\\wwwroot\",\r\n        \"preloadEnabled\": false,\r\n        \"virtualDirectories\": null\r\n      }\r\n    ],\r\n    \"winAuthAdminState\": 0,\r\n    \"winAuthTenantState\": 0,\r\n    \"customAppPoolIdentityAdminState\": false,\r\n    \"customAppPoolIdentityTenantState\": false,\r\n    \"runtimeADUser\": null,\r\n    \"runtimeADUserPassword\": null,\r\n    \"loadBalancing\": 1,\r\n    \"routingRules\": [],\r\n    \"experiments\": {\r\n      \"rampUpRules\": []\r\n    },\r\n    \"limits\": null,\r\n    \"autoHealEnabled\": false,\r\n    \"autoHealRules\": null,\r\n    \"tracingOptions\": null,\r\n    \"vnetName\": \"\",\r\n    \"siteAuthEnabled\": false,\r\n    \"siteAuthSettings\": {\r\n      \"enabled\": null,\r\n      \"httpApiPrefixPath\": null,\r\n      \"unauthenticatedClientAction\": null,\r\n      \"tokenStoreEnabled\": null,\r\n      \"allowedExternalRedirectUrls\": null,\r\n      \"defaultProvider\": null,\r\n      \"clientId\": null,\r\n      \"clientSecret\": null,\r\n      \"issuer\": null,\r\n      \"allowedAudiences\": null,\r\n      \"isAadAutoProvisioned\": false,\r\n      \"googleClientId\": null,\r\n      \"googleClientSecret\": null,\r\n      \"googleOAuthScopes\": null,\r\n      \"facebookAppId\": null,\r\n      \"facebookAppSecret\": null,\r\n      \"facebookOAuthScopes\": null,\r\n      \"twitterConsumerKey\": null,\r\n      \"twitterConsumerSecret\": null,\r\n      \"microsoftAccountClientId\": null,\r\n      \"microsoftAccountClientSecret\": null,\r\n      \"microsoftAccountOAuthScopes\": null\r\n    },\r\n    \"cors\": null,\r\n    \"apiDefinition\": null,\r\n    \"autoSwapSlotName\": null\r\n  }\r\n}",
@@ -229,22 +241,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "b6f42611-cf76-4d25-8c35-33fe2138f264"
+          "d5844eb4-9b83-4e36-afad-d314ddc04e5b"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14974"
+          "14931"
         ],
         "x-ms-correlation-request-id": [
-          "669cd8a6-5679-47ee-81d6-8813bf681804"
+          "3a117cfb-5bdd-4682-8580-b395672882c6"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151207T163400Z:669cd8a6-5679-47ee-81d6-8813bf681804"
+          "CENTRALUS:20151230T060808Z:3a117cfb-5bdd-4682-8580-b395672882c6"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 07 Dec 2015 16:33:59 GMT"
+          "Wed, 30 Dec 2015 06:08:08 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -265,19 +277,22 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "49e681f3-a2b4-4ef9-a639-dbe66004b2f1"
+          "aa299475-7539-4278-ac01-cedbffdf8f72"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.2"
+        ],
+        "Accept": [
+          "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/webappsslbindingrb/providers/Microsoft.Web/sites/webappsslbindingtest/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"WEBSITE_NODE_DEFAULT_VERSION\": \"4.1.2\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/webappsslbindingrb/providers/Microsoft.Web/sites/webappsslbindingtest/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {\r\n    \"hidden-related:/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/serverfarms/travel_production_plan\": \"Resource\"\r\n  },\r\n  \"properties\": {\r\n    \"WEBSITE_NODE_DEFAULT_VERSION\": \"4.1.2\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "308"
+          "469"
         ],
         "Content-Type": [
           "application/json"
@@ -292,22 +307,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "b0c3e6bc-41ff-45ea-9b67-d5ccd2cc6315"
+          "fed27eec-b8b6-44eb-ae06-b0ee398d628a"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "11999"
+          "11992"
         ],
         "x-ms-correlation-request-id": [
-          "8dc22ef8-7330-40b1-9317-6e6ac04097f2"
+          "6e0bd85f-b053-4fc6-ae42-9462f818b822"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151207T163352Z:8dc22ef8-7330-40b1-9317-6e6ac04097f2"
+          "CENTRALUS:20151230T060757Z:6e0bd85f-b053-4fc6-ae42-9462f818b822"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 07 Dec 2015 16:33:52 GMT"
+          "Wed, 30 Dec 2015 06:07:56 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -328,13 +343,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "119f0663-e587-4e02-8778-f2cf47fe2e31"
+          "18a1c719-230e-49af-abb1-6368fb24cbf2"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.2"
+        ],
+        "Accept": [
+          "application/json"
         ]
       },
       "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/webappsslbindingrb/providers/Microsoft.Web/sites/webappsslbindingtest/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"WEBSITE_NODE_DEFAULT_VERSION\": \"4.1.2\"\r\n  }\r\n}",
@@ -355,22 +373,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "0bc66335-9452-4382-ba5c-9ae749d0a8ae"
+          "760eae32-9add-41d5-92fc-ec04f8c6f0fa"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "11997"
+          "11990"
         ],
         "x-ms-correlation-request-id": [
-          "a7d36e4b-0bcb-4a7a-aa0f-6f64c9c355bf"
+          "453770a0-66d9-4005-927b-b13bf0de8465"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151207T163400Z:a7d36e4b-0bcb-4a7a-aa0f-6f64c9c355bf"
+          "CENTRALUS:20151230T060808Z:453770a0-66d9-4005-927b-b13bf0de8465"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 07 Dec 2015 16:33:59 GMT"
+          "Wed, 30 Dec 2015 06:08:08 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -391,19 +409,22 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "acf6e154-301c-4f76-9d76-1d709dd62b8a"
+          "1d730576-4810-40ed-8c65-39f0332b7e34"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.2"
+        ],
+        "Accept": [
+          "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/webappsslbindingrb/providers/Microsoft.Web/sites/webappsslbindingtest/config/connectionstrings\",\r\n  \"name\": \"connectionstrings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {}\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/webappsslbindingrb/providers/Microsoft.Web/sites/webappsslbindingtest/config/connectionstrings\",\r\n  \"name\": \"connectionstrings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {\r\n    \"hidden-related:/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/serverfarms/travel_production_plan\": \"Resource\"\r\n  },\r\n  \"properties\": {}\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "282"
+          "443"
         ],
         "Content-Type": [
           "application/json"
@@ -418,22 +439,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "7df41db3-a84a-4982-ae2c-b33393d3f02b"
+          "246ea7de-e391-4aa7-be44-9d74d7235cf0"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "11998"
+          "11991"
         ],
         "x-ms-correlation-request-id": [
-          "b328d01b-3763-44f4-8080-530658674a9f"
+          "fc0c483d-e105-47aa-b760-70e779caa7cf"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151207T163352Z:b328d01b-3763-44f4-8080-530658674a9f"
+          "CENTRALUS:20151230T060757Z:fc0c483d-e105-47aa-b760-70e779caa7cf"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 07 Dec 2015 16:33:52 GMT"
+          "Wed, 30 Dec 2015 06:07:56 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -454,13 +475,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ba809708-09a1-4edb-acb2-b9c1e9825264"
+          "41bb81a5-f0c5-4f30-8571-dcbd7501c04b"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.2"
+        ],
+        "Accept": [
+          "application/json"
         ]
       },
       "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/webappsslbindingrb/providers/Microsoft.Web/sites/webappsslbindingtest/config/connectionstrings\",\r\n  \"name\": \"connectionstrings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {}\r\n}",
@@ -481,22 +505,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "6ae27428-6db7-4e1f-9058-f56d60b4869a"
+          "dda37dce-d68c-405e-b34d-6a05ff393356"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "11996"
+          "11989"
         ],
         "x-ms-correlation-request-id": [
-          "1ecbc681-e4df-49f4-a5cf-00903024eb2c"
+          "660ac801-0cab-4e77-88d0-18eb325a759c"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151207T163400Z:1ecbc681-e4df-49f4-a5cf-00903024eb2c"
+          "CENTRALUS:20151230T060808Z:660ac801-0cab-4e77-88d0-18eb325a759c"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 07 Dec 2015 16:34:00 GMT"
+          "Wed, 30 Dec 2015 06:08:08 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -523,19 +547,22 @@
           "285"
         ],
         "x-ms-client-request-id": [
-          "c0604501-490e-40b6-9a11-868a4604ae68"
+          "978ef6a8-720a-4333-95f0-354ff1f285fd"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.2"
+        ],
+        "Accept": [
+          "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/webappsslbindingrb/providers/Microsoft.Web/sites/webappsslbindingtest\",\r\n  \"name\": \"webappsslbindingtest\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"name\": \"webappsslbindingtest\",\r\n    \"state\": \"Running\",\r\n    \"hostNames\": [\r\n      \"api.webappsslbindingtests.com\",\r\n      \"webappsslbindingtests.com\",\r\n      \"www.webappsslbindingtests.com\",\r\n      \"webappsslbindingtest.asedemo.p.azurewebsites.net\"\r\n    ],\r\n    \"webSpace\": \"appdemorg-asedemoappseWestUSwebspace\",\r\n    \"selfLink\": \"https://waws-prod-bay-0a93c57e.api.p.azurewebsites.windows.net:454/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/webspaces/appdemorg-asedemoappseWestUSwebspace/sites/webappsslbindingtest\",\r\n    \"repositorySiteName\": \"webappsslbindingtest\",\r\n    \"owner\": null,\r\n    \"usageState\": 0,\r\n    \"enabled\": true,\r\n    \"adminEnabled\": true,\r\n    \"enabledHostNames\": [\r\n      \"api.webappsslbindingtests.com\",\r\n      \"webappsslbindingtests.com\",\r\n      \"www.webappsslbindingtests.com\",\r\n      \"webappsslbindingtest.asedemo.p.azurewebsites.net\",\r\n      \"webappsslbindingtest.scm.asedemo.p.azurewebsites.net\"\r\n    ],\r\n    \"siteProperties\": {\r\n      \"metadata\": null,\r\n      \"properties\": [],\r\n      \"appSettings\": null\r\n    },\r\n    \"availabilityState\": 0,\r\n    \"sslCertificates\": null,\r\n    \"csrs\": [],\r\n    \"cers\": null,\r\n    \"siteMode\": null,\r\n    \"hostNameSslStates\": [\r\n      {\r\n        \"name\": \"api.webappsslbindingtests.com\",\r\n        \"sslState\": 1,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": \"40D6600B0B8740C41BA4B3D13B967DDEF6ED1918\",\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"webappsslbindingtest.asedemo.p.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"webappsslbindingtest.scm.asedemo.p.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 1\r\n      },\r\n      {\r\n        \"name\": \"webappsslbindingtests.com\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"www.webappsslbindingtests.com\",\r\n        \"sslState\": 1,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": \"40D6600B0B8740C41BA4B3D13B967DDEF6ED1918\",\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      }\r\n    ],\r\n    \"computeMode\": null,\r\n    \"serverFarm\": null,\r\n    \"serverFarmId\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/serverfarms/travel_production_plan\",\r\n    \"lastModifiedTimeUtc\": \"2015-12-07T16:30:19.477\",\r\n    \"storageRecoveryDefaultState\": \"Running\",\r\n    \"contentAvailabilityState\": 0,\r\n    \"runtimeAvailabilityState\": 0,\r\n    \"siteConfig\": null,\r\n    \"deploymentId\": \"webappsslbindingtest\",\r\n    \"trafficManagerHostNames\": null,\r\n    \"sku\": \"Premium\",\r\n    \"premiumAppDeployed\": null,\r\n    \"scmSiteAlsoStopped\": false,\r\n    \"targetSwapSlot\": null,\r\n    \"hostingEnvironment\": \"asedemo\",\r\n    \"hostingEnvironmentProfile\": {\r\n      \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemo\",\r\n      \"name\": \"asedemo\",\r\n      \"type\": \"Microsoft.Web/hostingEnvironments\"\r\n    },\r\n    \"microService\": \"WebSites\",\r\n    \"gatewaySiteName\": null,\r\n    \"clientAffinityEnabled\": true,\r\n    \"clientCertEnabled\": false,\r\n    \"domainVerificationIdentifiers\": null,\r\n    \"kind\": null,\r\n    \"outboundIpAddresses\": \"104.45.218.185\",\r\n    \"cloningInfo\": null,\r\n    \"hostingEnvironmentId\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemo\",\r\n    \"tags\": null\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/webappsslbindingrb/providers/Microsoft.Web/sites/webappsslbindingtest\",\r\n  \"name\": \"webappsslbindingtest\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"name\": \"webappsslbindingtest\",\r\n    \"state\": \"Running\",\r\n    \"hostNames\": [\r\n      \"api.webappsslbindingtests.com\",\r\n      \"webappsslbindingtests.com\",\r\n      \"www.webappsslbindingtests.com\",\r\n      \"webappsslbindingtest.asedemo.p.azurewebsites.net\"\r\n    ],\r\n    \"webSpace\": \"appdemorg-asedemoappseWestUSwebspace\",\r\n    \"selfLink\": \"https://waws-prod-bay-0a93c57e.api.p.azurewebsites.windows.net:454/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/webspaces/appdemorg-asedemoappseWestUSwebspace/sites/webappsslbindingtest\",\r\n    \"repositorySiteName\": \"webappsslbindingtest\",\r\n    \"owner\": null,\r\n    \"usageState\": 0,\r\n    \"enabled\": true,\r\n    \"adminEnabled\": true,\r\n    \"enabledHostNames\": [\r\n      \"api.webappsslbindingtests.com\",\r\n      \"webappsslbindingtests.com\",\r\n      \"www.webappsslbindingtests.com\",\r\n      \"webappsslbindingtest.asedemo.p.azurewebsites.net\",\r\n      \"webappsslbindingtest.scm.asedemo.p.azurewebsites.net\"\r\n    ],\r\n    \"siteProperties\": {\r\n      \"metadata\": null,\r\n      \"properties\": [],\r\n      \"appSettings\": null\r\n    },\r\n    \"availabilityState\": 0,\r\n    \"sslCertificates\": null,\r\n    \"csrs\": [],\r\n    \"cers\": null,\r\n    \"siteMode\": null,\r\n    \"hostNameSslStates\": [\r\n      {\r\n        \"name\": \"api.webappsslbindingtests.com\",\r\n        \"sslState\": 1,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": \"40D6600B0B8740C41BA4B3D13B967DDEF6ED1918\",\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"webappsslbindingtest.asedemo.p.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"webappsslbindingtest.scm.asedemo.p.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 1\r\n      },\r\n      {\r\n        \"name\": \"webappsslbindingtests.com\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"www.webappsslbindingtests.com\",\r\n        \"sslState\": 1,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": \"40D6600B0B8740C41BA4B3D13B967DDEF6ED1918\",\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      }\r\n    ],\r\n    \"computeMode\": null,\r\n    \"serverFarm\": null,\r\n    \"serverFarmId\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/serverfarms/travel_production_plan\",\r\n    \"lastModifiedTimeUtc\": \"2015-12-23T23:23:20.69\",\r\n    \"storageRecoveryDefaultState\": \"Running\",\r\n    \"contentAvailabilityState\": 0,\r\n    \"runtimeAvailabilityState\": 0,\r\n    \"siteConfig\": null,\r\n    \"deploymentId\": \"webappsslbindingtest\",\r\n    \"trafficManagerHostNames\": null,\r\n    \"sku\": \"Premium\",\r\n    \"premiumAppDeployed\": null,\r\n    \"scmSiteAlsoStopped\": false,\r\n    \"targetSwapSlot\": null,\r\n    \"hostingEnvironment\": \"asedemo\",\r\n    \"hostingEnvironmentProfile\": {\r\n      \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemo\",\r\n      \"name\": \"asedemo\",\r\n      \"type\": \"Microsoft.Web/hostingEnvironments\"\r\n    },\r\n    \"microService\": \"WebSites\",\r\n    \"gatewaySiteName\": null,\r\n    \"clientAffinityEnabled\": true,\r\n    \"clientCertEnabled\": false,\r\n    \"hostNamesDisabled\": false,\r\n    \"domainVerificationIdentifiers\": null,\r\n    \"kind\": null,\r\n    \"outboundIpAddresses\": \"104.45.218.185\",\r\n    \"cloningInfo\": null,\r\n    \"hostingEnvironmentId\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemo\",\r\n    \"tags\": null\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "3415"
+          "3440"
         ],
         "Content-Type": [
           "application/json"
@@ -550,25 +577,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "bb9eba96-8ed8-429f-87fb-1f2226ae0714"
+          "c015c907-d829-4f80-8abd-947ccbd6cf5f"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1198"
         ],
         "x-ms-correlation-request-id": [
-          "9e0ee8eb-1347-453a-bfe7-f2c54145ce97"
+          "7e995f6f-9fb3-4322-ad8e-fb151afae097"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151207T163355Z:9e0ee8eb-1347-453a-bfe7-f2c54145ce97"
+          "CENTRALUS:20151230T060802Z:7e995f6f-9fb3-4322-ad8e-fb151afae097"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 07 Dec 2015 16:33:55 GMT"
+          "Wed, 30 Dec 2015 06:08:01 GMT"
         ],
         "ETag": [
-          "\"1D1310C8FF12850\""
+          "\"1D13DD8E94E2D20\""
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -595,19 +622,22 @@
           "216"
         ],
         "x-ms-client-request-id": [
-          "4555a326-f45c-47a3-9825-c5709d999f8c"
+          "8e90dfe6-288d-43a9-80a3-4c899f575b27"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.2"
+        ],
+        "Accept": [
+          "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/webappsslbindingrb/providers/Microsoft.Web/sites/webappsslbindingtest\",\r\n  \"name\": \"webappsslbindingtest\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"name\": \"webappsslbindingtest\",\r\n    \"state\": \"Running\",\r\n    \"hostNames\": [\r\n      \"api.webappsslbindingtests.com\",\r\n      \"webappsslbindingtests.com\",\r\n      \"www.webappsslbindingtests.com\",\r\n      \"webappsslbindingtest.asedemo.p.azurewebsites.net\"\r\n    ],\r\n    \"webSpace\": \"appdemorg-asedemoappseWestUSwebspace\",\r\n    \"selfLink\": \"https://waws-prod-bay-0a93c57e.api.p.azurewebsites.windows.net:454/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/webspaces/appdemorg-asedemoappseWestUSwebspace/sites/webappsslbindingtest\",\r\n    \"repositorySiteName\": \"webappsslbindingtest\",\r\n    \"owner\": null,\r\n    \"usageState\": 0,\r\n    \"enabled\": true,\r\n    \"adminEnabled\": true,\r\n    \"enabledHostNames\": [\r\n      \"api.webappsslbindingtests.com\",\r\n      \"webappsslbindingtests.com\",\r\n      \"www.webappsslbindingtests.com\",\r\n      \"webappsslbindingtest.asedemo.p.azurewebsites.net\",\r\n      \"webappsslbindingtest.scm.asedemo.p.azurewebsites.net\"\r\n    ],\r\n    \"siteProperties\": {\r\n      \"metadata\": null,\r\n      \"properties\": [],\r\n      \"appSettings\": null\r\n    },\r\n    \"availabilityState\": 0,\r\n    \"sslCertificates\": null,\r\n    \"csrs\": [],\r\n    \"cers\": null,\r\n    \"siteMode\": null,\r\n    \"hostNameSslStates\": [\r\n      {\r\n        \"name\": \"api.webappsslbindingtests.com\",\r\n        \"sslState\": 1,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": \"40D6600B0B8740C41BA4B3D13B967DDEF6ED1918\",\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"webappsslbindingtest.asedemo.p.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"webappsslbindingtest.scm.asedemo.p.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 1\r\n      },\r\n      {\r\n        \"name\": \"webappsslbindingtests.com\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"www.webappsslbindingtests.com\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      }\r\n    ],\r\n    \"computeMode\": null,\r\n    \"serverFarm\": null,\r\n    \"serverFarmId\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/serverfarms/travel_production_plan\",\r\n    \"lastModifiedTimeUtc\": \"2015-12-07T16:30:19.477\",\r\n    \"storageRecoveryDefaultState\": \"Running\",\r\n    \"contentAvailabilityState\": 0,\r\n    \"runtimeAvailabilityState\": 0,\r\n    \"siteConfig\": null,\r\n    \"deploymentId\": \"webappsslbindingtest\",\r\n    \"trafficManagerHostNames\": null,\r\n    \"sku\": \"Premium\",\r\n    \"premiumAppDeployed\": null,\r\n    \"scmSiteAlsoStopped\": false,\r\n    \"targetSwapSlot\": null,\r\n    \"hostingEnvironment\": \"asedemo\",\r\n    \"hostingEnvironmentProfile\": {\r\n      \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemo\",\r\n      \"name\": \"asedemo\",\r\n      \"type\": \"Microsoft.Web/hostingEnvironments\"\r\n    },\r\n    \"microService\": \"WebSites\",\r\n    \"gatewaySiteName\": null,\r\n    \"clientAffinityEnabled\": true,\r\n    \"clientCertEnabled\": false,\r\n    \"domainVerificationIdentifiers\": null,\r\n    \"kind\": null,\r\n    \"outboundIpAddresses\": \"104.45.218.185\",\r\n    \"cloningInfo\": null,\r\n    \"hostingEnvironmentId\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemo\",\r\n    \"tags\": null\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/webappsslbindingrb/providers/Microsoft.Web/sites/webappsslbindingtest\",\r\n  \"name\": \"webappsslbindingtest\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"name\": \"webappsslbindingtest\",\r\n    \"state\": \"Running\",\r\n    \"hostNames\": [\r\n      \"api.webappsslbindingtests.com\",\r\n      \"webappsslbindingtests.com\",\r\n      \"www.webappsslbindingtests.com\",\r\n      \"webappsslbindingtest.asedemo.p.azurewebsites.net\"\r\n    ],\r\n    \"webSpace\": \"appdemorg-asedemoappseWestUSwebspace\",\r\n    \"selfLink\": \"https://waws-prod-bay-0a93c57e.api.p.azurewebsites.windows.net:454/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/webspaces/appdemorg-asedemoappseWestUSwebspace/sites/webappsslbindingtest\",\r\n    \"repositorySiteName\": \"webappsslbindingtest\",\r\n    \"owner\": null,\r\n    \"usageState\": 0,\r\n    \"enabled\": true,\r\n    \"adminEnabled\": true,\r\n    \"enabledHostNames\": [\r\n      \"api.webappsslbindingtests.com\",\r\n      \"webappsslbindingtests.com\",\r\n      \"www.webappsslbindingtests.com\",\r\n      \"webappsslbindingtest.asedemo.p.azurewebsites.net\",\r\n      \"webappsslbindingtest.scm.asedemo.p.azurewebsites.net\"\r\n    ],\r\n    \"siteProperties\": {\r\n      \"metadata\": null,\r\n      \"properties\": [],\r\n      \"appSettings\": null\r\n    },\r\n    \"availabilityState\": 0,\r\n    \"sslCertificates\": null,\r\n    \"csrs\": [],\r\n    \"cers\": null,\r\n    \"siteMode\": null,\r\n    \"hostNameSslStates\": [\r\n      {\r\n        \"name\": \"api.webappsslbindingtests.com\",\r\n        \"sslState\": 1,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": \"40D6600B0B8740C41BA4B3D13B967DDEF6ED1918\",\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"webappsslbindingtest.asedemo.p.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"webappsslbindingtest.scm.asedemo.p.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 1\r\n      },\r\n      {\r\n        \"name\": \"webappsslbindingtests.com\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"www.webappsslbindingtests.com\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      }\r\n    ],\r\n    \"computeMode\": null,\r\n    \"serverFarm\": null,\r\n    \"serverFarmId\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/serverfarms/travel_production_plan\",\r\n    \"lastModifiedTimeUtc\": \"2015-12-23T23:23:20.69\",\r\n    \"storageRecoveryDefaultState\": \"Running\",\r\n    \"contentAvailabilityState\": 0,\r\n    \"runtimeAvailabilityState\": 0,\r\n    \"siteConfig\": null,\r\n    \"deploymentId\": \"webappsslbindingtest\",\r\n    \"trafficManagerHostNames\": null,\r\n    \"sku\": \"Premium\",\r\n    \"premiumAppDeployed\": null,\r\n    \"scmSiteAlsoStopped\": false,\r\n    \"targetSwapSlot\": null,\r\n    \"hostingEnvironment\": \"asedemo\",\r\n    \"hostingEnvironmentProfile\": {\r\n      \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemo\",\r\n      \"name\": \"asedemo\",\r\n      \"type\": \"Microsoft.Web/hostingEnvironments\"\r\n    },\r\n    \"microService\": \"WebSites\",\r\n    \"gatewaySiteName\": null,\r\n    \"clientAffinityEnabled\": true,\r\n    \"clientCertEnabled\": false,\r\n    \"hostNamesDisabled\": false,\r\n    \"domainVerificationIdentifiers\": null,\r\n    \"kind\": null,\r\n    \"outboundIpAddresses\": \"104.45.218.185\",\r\n    \"cloningInfo\": null,\r\n    \"hostingEnvironmentId\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemo\",\r\n    \"tags\": null\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "3377"
+          "3402"
         ],
         "Content-Type": [
           "application/json"
@@ -622,25 +652,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "a045f65d-82e0-41e0-92a7-058e23dbc3be"
+          "7dec6357-ccfb-4f9f-a76d-712f22daa0c4"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1197"
+          "1196"
         ],
         "x-ms-correlation-request-id": [
-          "83f49506-c709-4281-be4d-20de07e6fee2"
+          "244b98ed-f703-4e7f-9a74-430bbb3e5db4"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151207T163402Z:83f49506-c709-4281-be4d-20de07e6fee2"
+          "CENTRALUS:20151230T060811Z:244b98ed-f703-4e7f-9a74-430bbb3e5db4"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 07 Dec 2015 16:34:01 GMT"
+          "Wed, 30 Dec 2015 06:08:11 GMT"
         ],
         "ETag": [
-          "\"1D1310C8FF12850\""
+          "\"1D13DD8E94E2D20\""
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -661,19 +691,22 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d0c58099-16d2-4a18-9524-9e42f3c7ce15"
+          "fbd40540-3c95-403b-9a23-4235d7dc1799"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.2"
+        ],
+        "Accept": [
+          "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/webappsslbindingrb/providers/Microsoft.Web/sites/webappsslbindingtest/slots/testslot\",\r\n  \"name\": \"webappsslbindingtest/testslot\",\r\n  \"type\": \"Microsoft.Web/sites/slots\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"name\": \"webappsslbindingtest(testslot)\",\r\n    \"state\": \"Running\",\r\n    \"hostNames\": [\r\n      \"testslot.webappsslbindingtests.com\",\r\n      \"webappsslbindingtest-testslot.asedemo.p.azurewebsites.net\"\r\n    ],\r\n    \"webSpace\": \"appdemorg-asedemoappseWestUSwebspace\",\r\n    \"selfLink\": \"https://waws-prod-bay-0a93c57e.api.p.azurewebsites.windows.net:454/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/webspaces/appdemorg-asedemoappseWestUSwebspace/sites/webappsslbindingtest\",\r\n    \"repositorySiteName\": \"webappsslbindingtest\",\r\n    \"owner\": null,\r\n    \"usageState\": 0,\r\n    \"enabled\": true,\r\n    \"adminEnabled\": true,\r\n    \"enabledHostNames\": [\r\n      \"testslot.webappsslbindingtests.com\",\r\n      \"webappsslbindingtest-testslot.asedemo.p.azurewebsites.net\",\r\n      \"webappsslbindingtest-testslot.scm.asedemo.p.azurewebsites.net\"\r\n    ],\r\n    \"siteProperties\": {\r\n      \"metadata\": null,\r\n      \"properties\": [],\r\n      \"appSettings\": null\r\n    },\r\n    \"availabilityState\": 0,\r\n    \"sslCertificates\": null,\r\n    \"csrs\": [],\r\n    \"cers\": null,\r\n    \"siteMode\": null,\r\n    \"hostNameSslStates\": [\r\n      {\r\n        \"name\": \"testslot.webappsslbindingtests.com\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"webappsslbindingtest-testslot.asedemo.p.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"webappsslbindingtest-testslot.scm.asedemo.p.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 1\r\n      }\r\n    ],\r\n    \"computeMode\": null,\r\n    \"serverFarm\": null,\r\n    \"serverFarmId\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/serverfarms/travel_production_plan\",\r\n    \"lastModifiedTimeUtc\": \"2015-12-07T16:30:19.477\",\r\n    \"storageRecoveryDefaultState\": \"Running\",\r\n    \"contentAvailabilityState\": 0,\r\n    \"runtimeAvailabilityState\": 0,\r\n    \"siteConfig\": null,\r\n    \"deploymentId\": \"webappsslbindingtest__b951\",\r\n    \"trafficManagerHostNames\": null,\r\n    \"sku\": \"Premium\",\r\n    \"premiumAppDeployed\": null,\r\n    \"scmSiteAlsoStopped\": false,\r\n    \"targetSwapSlot\": null,\r\n    \"hostingEnvironment\": \"asedemo\",\r\n    \"hostingEnvironmentProfile\": {\r\n      \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemo\",\r\n      \"name\": \"asedemo\",\r\n      \"type\": \"Microsoft.Web/hostingEnvironments\"\r\n    },\r\n    \"microService\": \"WebSites\",\r\n    \"gatewaySiteName\": null,\r\n    \"clientAffinityEnabled\": true,\r\n    \"clientCertEnabled\": false,\r\n    \"domainVerificationIdentifiers\": null,\r\n    \"kind\": null,\r\n    \"outboundIpAddresses\": \"104.45.218.185\",\r\n    \"cloningInfo\": null,\r\n    \"hostingEnvironmentId\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemo\",\r\n    \"tags\": null\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/webappsslbindingrb/providers/Microsoft.Web/sites/webappsslbindingtest/slots/testslot\",\r\n  \"name\": \"webappsslbindingtest/testslot\",\r\n  \"type\": \"Microsoft.Web/sites/slots\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"name\": \"webappsslbindingtest(testslot)\",\r\n    \"state\": \"Running\",\r\n    \"hostNames\": [\r\n      \"testslot.webappsslbindingtests.com\",\r\n      \"webappsslbindingtest-testslot.asedemo.p.azurewebsites.net\"\r\n    ],\r\n    \"webSpace\": \"appdemorg-asedemoappseWestUSwebspace\",\r\n    \"selfLink\": \"https://waws-prod-bay-0a93c57e.api.p.azurewebsites.windows.net:454/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/webspaces/appdemorg-asedemoappseWestUSwebspace/sites/webappsslbindingtest\",\r\n    \"repositorySiteName\": \"webappsslbindingtest\",\r\n    \"owner\": null,\r\n    \"usageState\": 0,\r\n    \"enabled\": true,\r\n    \"adminEnabled\": true,\r\n    \"enabledHostNames\": [\r\n      \"testslot.webappsslbindingtests.com\",\r\n      \"webappsslbindingtest-testslot.asedemo.p.azurewebsites.net\",\r\n      \"webappsslbindingtest-testslot.scm.asedemo.p.azurewebsites.net\"\r\n    ],\r\n    \"siteProperties\": {\r\n      \"metadata\": null,\r\n      \"properties\": [],\r\n      \"appSettings\": null\r\n    },\r\n    \"availabilityState\": 0,\r\n    \"sslCertificates\": null,\r\n    \"csrs\": [],\r\n    \"cers\": null,\r\n    \"siteMode\": null,\r\n    \"hostNameSslStates\": [\r\n      {\r\n        \"name\": \"testslot.webappsslbindingtests.com\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"webappsslbindingtest-testslot.asedemo.p.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"webappsslbindingtest-testslot.scm.asedemo.p.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 1\r\n      }\r\n    ],\r\n    \"computeMode\": null,\r\n    \"serverFarm\": null,\r\n    \"serverFarmId\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/serverfarms/travel_production_plan\",\r\n    \"lastModifiedTimeUtc\": \"2015-12-23T23:23:20.69\",\r\n    \"storageRecoveryDefaultState\": \"Running\",\r\n    \"contentAvailabilityState\": 0,\r\n    \"runtimeAvailabilityState\": 0,\r\n    \"siteConfig\": null,\r\n    \"deploymentId\": \"webappsslbindingtest__b951\",\r\n    \"trafficManagerHostNames\": null,\r\n    \"sku\": \"Premium\",\r\n    \"premiumAppDeployed\": null,\r\n    \"scmSiteAlsoStopped\": false,\r\n    \"targetSwapSlot\": null,\r\n    \"hostingEnvironment\": \"asedemo\",\r\n    \"hostingEnvironmentProfile\": {\r\n      \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemo\",\r\n      \"name\": \"asedemo\",\r\n      \"type\": \"Microsoft.Web/hostingEnvironments\"\r\n    },\r\n    \"microService\": \"WebSites\",\r\n    \"gatewaySiteName\": null,\r\n    \"clientAffinityEnabled\": true,\r\n    \"clientCertEnabled\": false,\r\n    \"hostNamesDisabled\": false,\r\n    \"domainVerificationIdentifiers\": null,\r\n    \"kind\": null,\r\n    \"outboundIpAddresses\": \"104.45.218.185\",\r\n    \"cloningInfo\": null,\r\n    \"hostingEnvironmentId\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemo\",\r\n    \"tags\": null\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "2953"
+          "2978"
         ],
         "Content-Type": [
           "application/json"
@@ -688,25 +721,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "ba103d82-1d7f-482f-a986-c95a4627b912"
+          "5aaaa1a0-cf1b-4273-a9b9-a755ed4f403f"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14977"
+          "14934"
         ],
         "x-ms-correlation-request-id": [
-          "efb6d3c8-ab34-4d75-821f-ab82c2ab60b3"
+          "6e059294-6a73-4e99-ac34-8421f59c97ef"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151207T163356Z:efb6d3c8-ab34-4d75-821f-ab82c2ab60b3"
+          "CENTRALUS:20151230T060803Z:6e059294-6a73-4e99-ac34-8421f59c97ef"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 07 Dec 2015 16:33:55 GMT"
+          "Wed, 30 Dec 2015 06:08:03 GMT"
         ],
         "ETag": [
-          "\"1D1310C8FF12850\""
+          "\"1D13DD8E94E2D20\""
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -727,19 +760,22 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "bd2f6899-3cee-43c4-905f-952034ba0863"
+          "8e5645a2-d9d7-42b6-b2f3-f093d8b92816"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.2"
+        ],
+        "Accept": [
+          "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/webappsslbindingrb/providers/Microsoft.Web/sites/webappsslbindingtest/slots/testslot\",\r\n  \"name\": \"webappsslbindingtest/testslot\",\r\n  \"type\": \"Microsoft.Web/sites/slots\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"name\": \"webappsslbindingtest(testslot)\",\r\n    \"state\": \"Running\",\r\n    \"hostNames\": [\r\n      \"testslot.webappsslbindingtests.com\",\r\n      \"webappsslbindingtest-testslot.asedemo.p.azurewebsites.net\"\r\n    ],\r\n    \"webSpace\": \"appdemorg-asedemoappseWestUSwebspace\",\r\n    \"selfLink\": \"https://waws-prod-bay-0a93c57e.api.p.azurewebsites.windows.net:454/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/webspaces/appdemorg-asedemoappseWestUSwebspace/sites/webappsslbindingtest\",\r\n    \"repositorySiteName\": \"webappsslbindingtest\",\r\n    \"owner\": null,\r\n    \"usageState\": 0,\r\n    \"enabled\": true,\r\n    \"adminEnabled\": true,\r\n    \"enabledHostNames\": [\r\n      \"testslot.webappsslbindingtests.com\",\r\n      \"webappsslbindingtest-testslot.asedemo.p.azurewebsites.net\",\r\n      \"webappsslbindingtest-testslot.scm.asedemo.p.azurewebsites.net\"\r\n    ],\r\n    \"siteProperties\": {\r\n      \"metadata\": null,\r\n      \"properties\": [],\r\n      \"appSettings\": null\r\n    },\r\n    \"availabilityState\": 0,\r\n    \"sslCertificates\": null,\r\n    \"csrs\": [],\r\n    \"cers\": null,\r\n    \"siteMode\": null,\r\n    \"hostNameSslStates\": [\r\n      {\r\n        \"name\": \"testslot.webappsslbindingtests.com\",\r\n        \"sslState\": 1,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": \"40D6600B0B8740C41BA4B3D13B967DDEF6ED1918\",\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"webappsslbindingtest-testslot.asedemo.p.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"webappsslbindingtest-testslot.scm.asedemo.p.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 1\r\n      }\r\n    ],\r\n    \"computeMode\": null,\r\n    \"serverFarm\": null,\r\n    \"serverFarmId\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/serverfarms/travel_production_plan\",\r\n    \"lastModifiedTimeUtc\": \"2015-12-07T16:30:19.477\",\r\n    \"storageRecoveryDefaultState\": \"Running\",\r\n    \"contentAvailabilityState\": 0,\r\n    \"runtimeAvailabilityState\": 0,\r\n    \"siteConfig\": null,\r\n    \"deploymentId\": \"webappsslbindingtest__b951\",\r\n    \"trafficManagerHostNames\": null,\r\n    \"sku\": \"Premium\",\r\n    \"premiumAppDeployed\": null,\r\n    \"scmSiteAlsoStopped\": false,\r\n    \"targetSwapSlot\": null,\r\n    \"hostingEnvironment\": \"asedemo\",\r\n    \"hostingEnvironmentProfile\": {\r\n      \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemo\",\r\n      \"name\": \"asedemo\",\r\n      \"type\": \"Microsoft.Web/hostingEnvironments\"\r\n    },\r\n    \"microService\": \"WebSites\",\r\n    \"gatewaySiteName\": null,\r\n    \"clientAffinityEnabled\": true,\r\n    \"clientCertEnabled\": false,\r\n    \"domainVerificationIdentifiers\": null,\r\n    \"kind\": null,\r\n    \"outboundIpAddresses\": \"104.45.218.185\",\r\n    \"cloningInfo\": null,\r\n    \"hostingEnvironmentId\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemo\",\r\n    \"tags\": null\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/webappsslbindingrb/providers/Microsoft.Web/sites/webappsslbindingtest/slots/testslot\",\r\n  \"name\": \"webappsslbindingtest/testslot\",\r\n  \"type\": \"Microsoft.Web/sites/slots\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"name\": \"webappsslbindingtest(testslot)\",\r\n    \"state\": \"Running\",\r\n    \"hostNames\": [\r\n      \"testslot.webappsslbindingtests.com\",\r\n      \"webappsslbindingtest-testslot.asedemo.p.azurewebsites.net\"\r\n    ],\r\n    \"webSpace\": \"appdemorg-asedemoappseWestUSwebspace\",\r\n    \"selfLink\": \"https://waws-prod-bay-0a93c57e.api.p.azurewebsites.windows.net:454/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/webspaces/appdemorg-asedemoappseWestUSwebspace/sites/webappsslbindingtest\",\r\n    \"repositorySiteName\": \"webappsslbindingtest\",\r\n    \"owner\": null,\r\n    \"usageState\": 0,\r\n    \"enabled\": true,\r\n    \"adminEnabled\": true,\r\n    \"enabledHostNames\": [\r\n      \"testslot.webappsslbindingtests.com\",\r\n      \"webappsslbindingtest-testslot.asedemo.p.azurewebsites.net\",\r\n      \"webappsslbindingtest-testslot.scm.asedemo.p.azurewebsites.net\"\r\n    ],\r\n    \"siteProperties\": {\r\n      \"metadata\": null,\r\n      \"properties\": [],\r\n      \"appSettings\": null\r\n    },\r\n    \"availabilityState\": 0,\r\n    \"sslCertificates\": null,\r\n    \"csrs\": [],\r\n    \"cers\": null,\r\n    \"siteMode\": null,\r\n    \"hostNameSslStates\": [\r\n      {\r\n        \"name\": \"testslot.webappsslbindingtests.com\",\r\n        \"sslState\": 1,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": \"40D6600B0B8740C41BA4B3D13B967DDEF6ED1918\",\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"webappsslbindingtest-testslot.asedemo.p.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"webappsslbindingtest-testslot.scm.asedemo.p.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 1\r\n      }\r\n    ],\r\n    \"computeMode\": null,\r\n    \"serverFarm\": null,\r\n    \"serverFarmId\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/serverfarms/travel_production_plan\",\r\n    \"lastModifiedTimeUtc\": \"2015-12-23T23:23:20.69\",\r\n    \"storageRecoveryDefaultState\": \"Running\",\r\n    \"contentAvailabilityState\": 0,\r\n    \"runtimeAvailabilityState\": 0,\r\n    \"siteConfig\": null,\r\n    \"deploymentId\": \"webappsslbindingtest__b951\",\r\n    \"trafficManagerHostNames\": null,\r\n    \"sku\": \"Premium\",\r\n    \"premiumAppDeployed\": null,\r\n    \"scmSiteAlsoStopped\": false,\r\n    \"targetSwapSlot\": null,\r\n    \"hostingEnvironment\": \"asedemo\",\r\n    \"hostingEnvironmentProfile\": {\r\n      \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemo\",\r\n      \"name\": \"asedemo\",\r\n      \"type\": \"Microsoft.Web/hostingEnvironments\"\r\n    },\r\n    \"microService\": \"WebSites\",\r\n    \"gatewaySiteName\": null,\r\n    \"clientAffinityEnabled\": true,\r\n    \"clientCertEnabled\": false,\r\n    \"hostNamesDisabled\": false,\r\n    \"domainVerificationIdentifiers\": null,\r\n    \"kind\": null,\r\n    \"outboundIpAddresses\": \"104.45.218.185\",\r\n    \"cloningInfo\": null,\r\n    \"hostingEnvironmentId\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemo\",\r\n    \"tags\": null\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "2991"
+          "3016"
         ],
         "Content-Type": [
           "application/json"
@@ -754,25 +790,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "97724ed0-32ae-4b8b-9714-66106ca62679"
+          "3a71cde8-d11d-4f0b-ba86-fb9147537a3e"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14970"
+          "14927"
         ],
         "x-ms-correlation-request-id": [
-          "1ba3f1bf-1896-4af8-9cdd-ebd5a4a375de"
+          "6c86815f-9b01-4144-b6c3-02a2b737d735"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151207T163408Z:1ba3f1bf-1896-4af8-9cdd-ebd5a4a375de"
+          "CENTRALUS:20151230T060816Z:6c86815f-9b01-4144-b6c3-02a2b737d735"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 07 Dec 2015 16:34:08 GMT"
+          "Wed, 30 Dec 2015 06:08:16 GMT"
         ],
         "ETag": [
-          "\"1D1310C8FF12850\""
+          "\"1D13DD8E94E2D20\""
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -793,13 +829,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1cb26df6-0894-47c0-bfee-4c8a03bf5cd2"
+          "e2cb6d35-e0ec-48c6-8c33-d39bbd82ce26"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.2"
+        ],
+        "Accept": [
+          "application/json"
         ]
       },
       "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/webappsslbindingrb/providers/Microsoft.Web/sites/webappsslbindingtest/slots/testslot/config/web\",\r\n  \"name\": \"webappsslbindingtest\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"numberOfWorkers\": 1,\r\n    \"defaultDocuments\": [\r\n      \"Default.htm\",\r\n      \"Default.html\",\r\n      \"Default.asp\",\r\n      \"index.htm\",\r\n      \"index.html\",\r\n      \"iisstart.htm\",\r\n      \"default.aspx\",\r\n      \"index.php\",\r\n      \"hostingstart.html\"\r\n    ],\r\n    \"netFrameworkVersion\": \"v4.0\",\r\n    \"phpVersion\": \"5.4\",\r\n    \"pythonVersion\": \"\",\r\n    \"requestTracingEnabled\": false,\r\n    \"requestTracingExpirationTime\": null,\r\n    \"remoteDebuggingEnabled\": false,\r\n    \"remoteDebuggingVersion\": null,\r\n    \"httpLoggingEnabled\": false,\r\n    \"logsDirectorySizeLimit\": 35,\r\n    \"detailedErrorLoggingEnabled\": false,\r\n    \"publishingUsername\": \"$webappsslbindingtest__testslot\",\r\n    \"publishingPassword\": null,\r\n    \"appSettings\": null,\r\n    \"metadata\": null,\r\n    \"connectionStrings\": null,\r\n    \"handlerMappings\": null,\r\n    \"documentRoot\": null,\r\n    \"scmType\": \"None\",\r\n    \"use32BitWorkerProcess\": true,\r\n    \"webSocketsEnabled\": false,\r\n    \"alwaysOn\": false,\r\n    \"javaVersion\": null,\r\n    \"javaContainer\": null,\r\n    \"javaContainerVersion\": null,\r\n    \"managedPipelineMode\": 0,\r\n    \"virtualApplications\": [\r\n      {\r\n        \"virtualPath\": \"/\",\r\n        \"physicalPath\": \"site\\\\wwwroot\",\r\n        \"preloadEnabled\": false,\r\n        \"virtualDirectories\": null\r\n      }\r\n    ],\r\n    \"winAuthAdminState\": 0,\r\n    \"winAuthTenantState\": 0,\r\n    \"customAppPoolIdentityAdminState\": false,\r\n    \"customAppPoolIdentityTenantState\": false,\r\n    \"runtimeADUser\": null,\r\n    \"runtimeADUserPassword\": null,\r\n    \"loadBalancing\": 1,\r\n    \"routingRules\": [],\r\n    \"experiments\": {\r\n      \"rampUpRules\": []\r\n    },\r\n    \"limits\": null,\r\n    \"autoHealEnabled\": false,\r\n    \"autoHealRules\": null,\r\n    \"tracingOptions\": null,\r\n    \"vnetName\": \"\",\r\n    \"siteAuthEnabled\": false,\r\n    \"siteAuthSettings\": {\r\n      \"enabled\": null,\r\n      \"httpApiPrefixPath\": null,\r\n      \"unauthenticatedClientAction\": null,\r\n      \"tokenStoreEnabled\": null,\r\n      \"allowedExternalRedirectUrls\": null,\r\n      \"defaultProvider\": null,\r\n      \"clientId\": null,\r\n      \"clientSecret\": null,\r\n      \"issuer\": null,\r\n      \"allowedAudiences\": null,\r\n      \"isAadAutoProvisioned\": false,\r\n      \"googleClientId\": null,\r\n      \"googleClientSecret\": null,\r\n      \"googleOAuthScopes\": null,\r\n      \"facebookAppId\": null,\r\n      \"facebookAppSecret\": null,\r\n      \"facebookOAuthScopes\": null,\r\n      \"twitterConsumerKey\": null,\r\n      \"twitterConsumerSecret\": null,\r\n      \"microsoftAccountClientId\": null,\r\n      \"microsoftAccountClientSecret\": null,\r\n      \"microsoftAccountOAuthScopes\": null\r\n    },\r\n    \"cors\": null,\r\n    \"apiDefinition\": null,\r\n    \"autoSwapSlotName\": null\r\n  }\r\n}",
@@ -820,22 +859,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "dd000429-b771-44da-b943-1300a6b91bc7"
+          "ee424cf4-05f2-454c-83a1-35df10ea9ece"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14976"
+          "14933"
         ],
         "x-ms-correlation-request-id": [
-          "8f19b495-8075-4cae-8f98-48f3280af385"
+          "8103e6f2-9906-4c21-b1fe-aa6530637d16"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151207T163356Z:8f19b495-8075-4cae-8f98-48f3280af385"
+          "CENTRALUS:20151230T060804Z:8103e6f2-9906-4c21-b1fe-aa6530637d16"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 07 Dec 2015 16:33:55 GMT"
+          "Wed, 30 Dec 2015 06:08:03 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -856,13 +895,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f9b13560-72a8-40ca-93b5-6ab2c0484e36"
+          "ebf95ed0-5dbc-4064-9b05-fbf50f8dcba5"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.2"
+        ],
+        "Accept": [
+          "application/json"
         ]
       },
       "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/webappsslbindingrb/providers/Microsoft.Web/sites/webappsslbindingtest/slots/testslot/config/web\",\r\n  \"name\": \"webappsslbindingtest\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"numberOfWorkers\": 1,\r\n    \"defaultDocuments\": [\r\n      \"Default.htm\",\r\n      \"Default.html\",\r\n      \"Default.asp\",\r\n      \"index.htm\",\r\n      \"index.html\",\r\n      \"iisstart.htm\",\r\n      \"default.aspx\",\r\n      \"index.php\",\r\n      \"hostingstart.html\"\r\n    ],\r\n    \"netFrameworkVersion\": \"v4.0\",\r\n    \"phpVersion\": \"5.4\",\r\n    \"pythonVersion\": \"\",\r\n    \"requestTracingEnabled\": false,\r\n    \"requestTracingExpirationTime\": null,\r\n    \"remoteDebuggingEnabled\": false,\r\n    \"remoteDebuggingVersion\": null,\r\n    \"httpLoggingEnabled\": false,\r\n    \"logsDirectorySizeLimit\": 35,\r\n    \"detailedErrorLoggingEnabled\": false,\r\n    \"publishingUsername\": \"$webappsslbindingtest__testslot\",\r\n    \"publishingPassword\": null,\r\n    \"appSettings\": null,\r\n    \"metadata\": null,\r\n    \"connectionStrings\": null,\r\n    \"handlerMappings\": null,\r\n    \"documentRoot\": null,\r\n    \"scmType\": \"None\",\r\n    \"use32BitWorkerProcess\": true,\r\n    \"webSocketsEnabled\": false,\r\n    \"alwaysOn\": false,\r\n    \"javaVersion\": null,\r\n    \"javaContainer\": null,\r\n    \"javaContainerVersion\": null,\r\n    \"managedPipelineMode\": 0,\r\n    \"virtualApplications\": [\r\n      {\r\n        \"virtualPath\": \"/\",\r\n        \"physicalPath\": \"site\\\\wwwroot\",\r\n        \"preloadEnabled\": false,\r\n        \"virtualDirectories\": null\r\n      }\r\n    ],\r\n    \"winAuthAdminState\": 0,\r\n    \"winAuthTenantState\": 0,\r\n    \"customAppPoolIdentityAdminState\": false,\r\n    \"customAppPoolIdentityTenantState\": false,\r\n    \"runtimeADUser\": null,\r\n    \"runtimeADUserPassword\": null,\r\n    \"loadBalancing\": 1,\r\n    \"routingRules\": [],\r\n    \"experiments\": {\r\n      \"rampUpRules\": []\r\n    },\r\n    \"limits\": null,\r\n    \"autoHealEnabled\": false,\r\n    \"autoHealRules\": null,\r\n    \"tracingOptions\": null,\r\n    \"vnetName\": \"\",\r\n    \"siteAuthEnabled\": false,\r\n    \"siteAuthSettings\": {\r\n      \"enabled\": null,\r\n      \"httpApiPrefixPath\": null,\r\n      \"unauthenticatedClientAction\": null,\r\n      \"tokenStoreEnabled\": null,\r\n      \"allowedExternalRedirectUrls\": null,\r\n      \"defaultProvider\": null,\r\n      \"clientId\": null,\r\n      \"clientSecret\": null,\r\n      \"issuer\": null,\r\n      \"allowedAudiences\": null,\r\n      \"isAadAutoProvisioned\": false,\r\n      \"googleClientId\": null,\r\n      \"googleClientSecret\": null,\r\n      \"googleOAuthScopes\": null,\r\n      \"facebookAppId\": null,\r\n      \"facebookAppSecret\": null,\r\n      \"facebookOAuthScopes\": null,\r\n      \"twitterConsumerKey\": null,\r\n      \"twitterConsumerSecret\": null,\r\n      \"microsoftAccountClientId\": null,\r\n      \"microsoftAccountClientSecret\": null,\r\n      \"microsoftAccountOAuthScopes\": null\r\n    },\r\n    \"cors\": null,\r\n    \"apiDefinition\": null,\r\n    \"autoSwapSlotName\": null\r\n  }\r\n}",
@@ -883,22 +925,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "0b49f25e-5daf-4340-8705-7ebf2c4bdb6a"
+          "37ce936a-0aed-4be9-8ace-2d81ce06aad2"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14969"
+          "14926"
         ],
         "x-ms-correlation-request-id": [
-          "73396eda-f4aa-4355-b9ec-b19680c92d88"
+          "dccac51f-8f70-40bf-8d04-c51c24837f55"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151207T163410Z:73396eda-f4aa-4355-b9ec-b19680c92d88"
+          "CENTRALUS:20151230T060816Z:dccac51f-8f70-40bf-8d04-c51c24837f55"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 07 Dec 2015 16:34:10 GMT"
+          "Wed, 30 Dec 2015 06:08:16 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -919,13 +961,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "63921848-e5a5-4b8c-9870-d2004a79c886"
+          "90fc98b4-a524-4369-8322-59207da1edb6"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.2"
+        ],
+        "Accept": [
+          "application/json"
         ]
       },
       "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/webappsslbindingrb/providers/Microsoft.Web/sites/webappsslbindingtest/slots/testslot/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"WEBSITE_NODE_DEFAULT_VERSION\": \"4.1.2\"\r\n  }\r\n}",
@@ -946,22 +991,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "2f02d813-b2aa-4703-893b-aa7f9da166c8"
+          "a98ac731-2ea6-49cb-9b87-8f0ebe92f150"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "546eade0-e698-45be-9efc-01c3062db429"
+          "0153d165-4d1b-484c-b418-08f3a7e9da0c"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151207T163356Z:546eade0-e698-45be-9efc-01c3062db429"
+          "CENTRALUS:20151230T060804Z:0153d165-4d1b-484c-b418-08f3a7e9da0c"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 07 Dec 2015 16:33:56 GMT"
+          "Wed, 30 Dec 2015 06:08:04 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -982,13 +1027,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c827ac8b-d133-406e-8287-ea42fb325e14"
+          "1c4e2a20-bc90-4eaf-b9a0-9af1f0a5b9f6"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.2"
+        ],
+        "Accept": [
+          "application/json"
         ]
       },
       "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/webappsslbindingrb/providers/Microsoft.Web/sites/webappsslbindingtest/slots/testslot/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"WEBSITE_NODE_DEFAULT_VERSION\": \"4.1.2\"\r\n  }\r\n}",
@@ -1009,22 +1057,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "8f54ec3c-de80-43ca-9bc2-964a99b30df6"
+          "8975720e-44b0-40d0-908e-dc8c11c656ba"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "11997"
         ],
         "x-ms-correlation-request-id": [
-          "5edfa887-0087-47f4-85b0-836b51510adb"
+          "1abf8ad2-b701-4ad7-bc4e-c58cb89a8a28"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151207T163412Z:5edfa887-0087-47f4-85b0-836b51510adb"
+          "CENTRALUS:20151230T060816Z:1abf8ad2-b701-4ad7-bc4e-c58cb89a8a28"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 07 Dec 2015 16:34:11 GMT"
+          "Wed, 30 Dec 2015 06:08:16 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -1045,13 +1093,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a16b362d-fb81-46fc-b99d-1f1162146178"
+          "22e9cf1e-b55c-4bb1-80c2-2ad8b218ea6d"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.2"
+        ],
+        "Accept": [
+          "application/json"
         ]
       },
       "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/webappsslbindingrb/providers/Microsoft.Web/sites/webappsslbindingtest/slots/testslot/config/connectionstrings\",\r\n  \"name\": \"connectionstrings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {}\r\n}",
@@ -1072,22 +1123,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "8b562412-7569-4893-b06d-95ccb318bce0"
+          "e6293c25-4153-4b07-957f-d1b45a9de720"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "11998"
         ],
         "x-ms-correlation-request-id": [
-          "122e4398-79fc-433f-ab18-e527cc70ff2c"
+          "420fc848-fe11-4bc4-91ba-18d749bcbb48"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151207T163356Z:122e4398-79fc-433f-ab18-e527cc70ff2c"
+          "CENTRALUS:20151230T060804Z:420fc848-fe11-4bc4-91ba-18d749bcbb48"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 07 Dec 2015 16:33:56 GMT"
+          "Wed, 30 Dec 2015 06:08:04 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -1108,13 +1159,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0d9fa6b0-d308-42a4-af94-78475ad4e16c"
+          "db060408-0427-48b6-b8d4-e3faf725464f"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.2"
+        ],
+        "Accept": [
+          "application/json"
         ]
       },
       "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/webappsslbindingrb/providers/Microsoft.Web/sites/webappsslbindingtest/slots/testslot/config/connectionstrings\",\r\n  \"name\": \"connectionstrings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {}\r\n}",
@@ -1135,22 +1189,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "4ddcd540-5d88-4b71-ba30-ee9808309cc0"
+          "00cf3f3f-c94e-46a8-a66e-5c7bc66eb8b4"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "11996"
         ],
         "x-ms-correlation-request-id": [
-          "6dd0a741-dcf3-4c26-8b6e-02a2c02b40f7"
+          "2d0d3bc5-a938-4537-aa7e-7545f07a1c4b"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151207T163413Z:6dd0a741-dcf3-4c26-8b6e-02a2c02b40f7"
+          "CENTRALUS:20151230T060817Z:2d0d3bc5-a938-4537-aa7e-7545f07a1c4b"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 07 Dec 2015 16:34:12 GMT"
+          "Wed, 30 Dec 2015 06:08:16 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -1177,19 +1231,22 @@
           "290"
         ],
         "x-ms-client-request-id": [
-          "270e7fcc-4466-4b0e-91f5-f06925596934"
+          "e8cdc0ee-47d3-4229-a242-0a44111b85bd"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.2"
+        ],
+        "Accept": [
+          "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/webappsslbindingrb/providers/Microsoft.Web/sites/webappsslbindingtest/slots/testslot\",\r\n  \"name\": \"webappsslbindingtest/testslot\",\r\n  \"type\": \"Microsoft.Web/sites/slots\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"name\": \"webappsslbindingtest(testslot)\",\r\n    \"state\": \"Running\",\r\n    \"hostNames\": [\r\n      \"testslot.webappsslbindingtests.com\",\r\n      \"webappsslbindingtest-testslot.asedemo.p.azurewebsites.net\"\r\n    ],\r\n    \"webSpace\": \"appdemorg-asedemoappseWestUSwebspace\",\r\n    \"selfLink\": \"https://waws-prod-bay-0a93c57e.api.p.azurewebsites.windows.net:454/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/webspaces/appdemorg-asedemoappseWestUSwebspace/sites/webappsslbindingtest\",\r\n    \"repositorySiteName\": \"webappsslbindingtest\",\r\n    \"owner\": null,\r\n    \"usageState\": 0,\r\n    \"enabled\": true,\r\n    \"adminEnabled\": true,\r\n    \"enabledHostNames\": [\r\n      \"testslot.webappsslbindingtests.com\",\r\n      \"webappsslbindingtest-testslot.asedemo.p.azurewebsites.net\",\r\n      \"webappsslbindingtest-testslot.scm.asedemo.p.azurewebsites.net\"\r\n    ],\r\n    \"siteProperties\": {\r\n      \"metadata\": null,\r\n      \"properties\": [],\r\n      \"appSettings\": null\r\n    },\r\n    \"availabilityState\": 0,\r\n    \"sslCertificates\": null,\r\n    \"csrs\": [],\r\n    \"cers\": null,\r\n    \"siteMode\": null,\r\n    \"hostNameSslStates\": [\r\n      {\r\n        \"name\": \"testslot.webappsslbindingtests.com\",\r\n        \"sslState\": 1,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": \"40D6600B0B8740C41BA4B3D13B967DDEF6ED1918\",\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"webappsslbindingtest-testslot.asedemo.p.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"webappsslbindingtest-testslot.scm.asedemo.p.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 1\r\n      }\r\n    ],\r\n    \"computeMode\": null,\r\n    \"serverFarm\": null,\r\n    \"serverFarmId\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/serverfarms/travel_production_plan\",\r\n    \"lastModifiedTimeUtc\": \"2015-12-07T16:30:19.477\",\r\n    \"storageRecoveryDefaultState\": \"Running\",\r\n    \"contentAvailabilityState\": 0,\r\n    \"runtimeAvailabilityState\": 0,\r\n    \"siteConfig\": null,\r\n    \"deploymentId\": \"webappsslbindingtest__b951\",\r\n    \"trafficManagerHostNames\": null,\r\n    \"sku\": \"Premium\",\r\n    \"premiumAppDeployed\": null,\r\n    \"scmSiteAlsoStopped\": false,\r\n    \"targetSwapSlot\": null,\r\n    \"hostingEnvironment\": \"asedemo\",\r\n    \"hostingEnvironmentProfile\": {\r\n      \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemo\",\r\n      \"name\": \"asedemo\",\r\n      \"type\": \"Microsoft.Web/hostingEnvironments\"\r\n    },\r\n    \"microService\": \"WebSites\",\r\n    \"gatewaySiteName\": null,\r\n    \"clientAffinityEnabled\": true,\r\n    \"clientCertEnabled\": false,\r\n    \"domainVerificationIdentifiers\": null,\r\n    \"kind\": null,\r\n    \"outboundIpAddresses\": \"104.45.218.185\",\r\n    \"cloningInfo\": null,\r\n    \"hostingEnvironmentId\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemo\",\r\n    \"tags\": null\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/webappsslbindingrb/providers/Microsoft.Web/sites/webappsslbindingtest/slots/testslot\",\r\n  \"name\": \"webappsslbindingtest/testslot\",\r\n  \"type\": \"Microsoft.Web/sites/slots\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"name\": \"webappsslbindingtest(testslot)\",\r\n    \"state\": \"Running\",\r\n    \"hostNames\": [\r\n      \"testslot.webappsslbindingtests.com\",\r\n      \"webappsslbindingtest-testslot.asedemo.p.azurewebsites.net\"\r\n    ],\r\n    \"webSpace\": \"appdemorg-asedemoappseWestUSwebspace\",\r\n    \"selfLink\": \"https://waws-prod-bay-0a93c57e.api.p.azurewebsites.windows.net:454/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/webspaces/appdemorg-asedemoappseWestUSwebspace/sites/webappsslbindingtest\",\r\n    \"repositorySiteName\": \"webappsslbindingtest\",\r\n    \"owner\": null,\r\n    \"usageState\": 0,\r\n    \"enabled\": true,\r\n    \"adminEnabled\": true,\r\n    \"enabledHostNames\": [\r\n      \"testslot.webappsslbindingtests.com\",\r\n      \"webappsslbindingtest-testslot.asedemo.p.azurewebsites.net\",\r\n      \"webappsslbindingtest-testslot.scm.asedemo.p.azurewebsites.net\"\r\n    ],\r\n    \"siteProperties\": {\r\n      \"metadata\": null,\r\n      \"properties\": [],\r\n      \"appSettings\": null\r\n    },\r\n    \"availabilityState\": 0,\r\n    \"sslCertificates\": null,\r\n    \"csrs\": [],\r\n    \"cers\": null,\r\n    \"siteMode\": null,\r\n    \"hostNameSslStates\": [\r\n      {\r\n        \"name\": \"testslot.webappsslbindingtests.com\",\r\n        \"sslState\": 1,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": \"40D6600B0B8740C41BA4B3D13B967DDEF6ED1918\",\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"webappsslbindingtest-testslot.asedemo.p.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"webappsslbindingtest-testslot.scm.asedemo.p.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 1\r\n      }\r\n    ],\r\n    \"computeMode\": null,\r\n    \"serverFarm\": null,\r\n    \"serverFarmId\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/serverfarms/travel_production_plan\",\r\n    \"lastModifiedTimeUtc\": \"2015-12-23T23:23:20.69\",\r\n    \"storageRecoveryDefaultState\": \"Running\",\r\n    \"contentAvailabilityState\": 0,\r\n    \"runtimeAvailabilityState\": 0,\r\n    \"siteConfig\": null,\r\n    \"deploymentId\": \"webappsslbindingtest__b951\",\r\n    \"trafficManagerHostNames\": null,\r\n    \"sku\": \"Premium\",\r\n    \"premiumAppDeployed\": null,\r\n    \"scmSiteAlsoStopped\": false,\r\n    \"targetSwapSlot\": null,\r\n    \"hostingEnvironment\": \"asedemo\",\r\n    \"hostingEnvironmentProfile\": {\r\n      \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemo\",\r\n      \"name\": \"asedemo\",\r\n      \"type\": \"Microsoft.Web/hostingEnvironments\"\r\n    },\r\n    \"microService\": \"WebSites\",\r\n    \"gatewaySiteName\": null,\r\n    \"clientAffinityEnabled\": true,\r\n    \"clientCertEnabled\": false,\r\n    \"hostNamesDisabled\": false,\r\n    \"domainVerificationIdentifiers\": null,\r\n    \"kind\": null,\r\n    \"outboundIpAddresses\": \"104.45.218.185\",\r\n    \"cloningInfo\": null,\r\n    \"hostingEnvironmentId\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemo\",\r\n    \"tags\": null\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "2991"
+          "3016"
         ],
         "Content-Type": [
           "application/json"
@@ -1204,25 +1261,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "2be4264a-bfa3-4bce-b891-8214e20a3331"
+          "d6896737-1bf4-46b4-8cf5-f4db04122ac9"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1197"
         ],
         "x-ms-correlation-request-id": [
-          "171676ec-bef5-4bf4-967e-4a5f176d588e"
+          "088a25e0-16c1-4cdf-b471-c2ce777fab98"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151207T163359Z:171676ec-bef5-4bf4-967e-4a5f176d588e"
+          "CENTRALUS:20151230T060808Z:088a25e0-16c1-4cdf-b471-c2ce777fab98"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 07 Dec 2015 16:33:59 GMT"
+          "Wed, 30 Dec 2015 06:08:07 GMT"
         ],
         "ETag": [
-          "\"1D1310C8FF12850\""
+          "\"1D13DD8E94E2D20\""
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -1249,19 +1306,22 @@
           "221"
         ],
         "x-ms-client-request-id": [
-          "1d21412d-c53f-4bc7-bbcd-e7739af08b7e"
+          "8297d353-614e-41b8-9ca9-89abfdd88897"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.2"
+        ],
+        "Accept": [
+          "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/webappsslbindingrb/providers/Microsoft.Web/sites/webappsslbindingtest/slots/testslot\",\r\n  \"name\": \"webappsslbindingtest/testslot\",\r\n  \"type\": \"Microsoft.Web/sites/slots\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"name\": \"webappsslbindingtest(testslot)\",\r\n    \"state\": \"Running\",\r\n    \"hostNames\": [\r\n      \"testslot.webappsslbindingtests.com\",\r\n      \"webappsslbindingtest-testslot.asedemo.p.azurewebsites.net\"\r\n    ],\r\n    \"webSpace\": \"appdemorg-asedemoappseWestUSwebspace\",\r\n    \"selfLink\": \"https://waws-prod-bay-0a93c57e.api.p.azurewebsites.windows.net:454/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/webspaces/appdemorg-asedemoappseWestUSwebspace/sites/webappsslbindingtest\",\r\n    \"repositorySiteName\": \"webappsslbindingtest\",\r\n    \"owner\": null,\r\n    \"usageState\": 0,\r\n    \"enabled\": true,\r\n    \"adminEnabled\": true,\r\n    \"enabledHostNames\": [\r\n      \"testslot.webappsslbindingtests.com\",\r\n      \"webappsslbindingtest-testslot.asedemo.p.azurewebsites.net\",\r\n      \"webappsslbindingtest-testslot.scm.asedemo.p.azurewebsites.net\"\r\n    ],\r\n    \"siteProperties\": {\r\n      \"metadata\": null,\r\n      \"properties\": [],\r\n      \"appSettings\": null\r\n    },\r\n    \"availabilityState\": 0,\r\n    \"sslCertificates\": null,\r\n    \"csrs\": [],\r\n    \"cers\": null,\r\n    \"siteMode\": null,\r\n    \"hostNameSslStates\": [\r\n      {\r\n        \"name\": \"testslot.webappsslbindingtests.com\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"webappsslbindingtest-testslot.asedemo.p.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"webappsslbindingtest-testslot.scm.asedemo.p.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 1\r\n      }\r\n    ],\r\n    \"computeMode\": null,\r\n    \"serverFarm\": null,\r\n    \"serverFarmId\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/serverfarms/travel_production_plan\",\r\n    \"lastModifiedTimeUtc\": \"2015-12-07T16:30:19.477\",\r\n    \"storageRecoveryDefaultState\": \"Running\",\r\n    \"contentAvailabilityState\": 0,\r\n    \"runtimeAvailabilityState\": 0,\r\n    \"siteConfig\": null,\r\n    \"deploymentId\": \"webappsslbindingtest__b951\",\r\n    \"trafficManagerHostNames\": null,\r\n    \"sku\": \"Premium\",\r\n    \"premiumAppDeployed\": null,\r\n    \"scmSiteAlsoStopped\": false,\r\n    \"targetSwapSlot\": null,\r\n    \"hostingEnvironment\": \"asedemo\",\r\n    \"hostingEnvironmentProfile\": {\r\n      \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemo\",\r\n      \"name\": \"asedemo\",\r\n      \"type\": \"Microsoft.Web/hostingEnvironments\"\r\n    },\r\n    \"microService\": \"WebSites\",\r\n    \"gatewaySiteName\": null,\r\n    \"clientAffinityEnabled\": true,\r\n    \"clientCertEnabled\": false,\r\n    \"domainVerificationIdentifiers\": null,\r\n    \"kind\": null,\r\n    \"outboundIpAddresses\": \"104.45.218.185\",\r\n    \"cloningInfo\": null,\r\n    \"hostingEnvironmentId\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemo\",\r\n    \"tags\": null\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/webappsslbindingrb/providers/Microsoft.Web/sites/webappsslbindingtest/slots/testslot\",\r\n  \"name\": \"webappsslbindingtest/testslot\",\r\n  \"type\": \"Microsoft.Web/sites/slots\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"name\": \"webappsslbindingtest(testslot)\",\r\n    \"state\": \"Running\",\r\n    \"hostNames\": [\r\n      \"testslot.webappsslbindingtests.com\",\r\n      \"webappsslbindingtest-testslot.asedemo.p.azurewebsites.net\"\r\n    ],\r\n    \"webSpace\": \"appdemorg-asedemoappseWestUSwebspace\",\r\n    \"selfLink\": \"https://waws-prod-bay-0a93c57e.api.p.azurewebsites.windows.net:454/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/webspaces/appdemorg-asedemoappseWestUSwebspace/sites/webappsslbindingtest\",\r\n    \"repositorySiteName\": \"webappsslbindingtest\",\r\n    \"owner\": null,\r\n    \"usageState\": 0,\r\n    \"enabled\": true,\r\n    \"adminEnabled\": true,\r\n    \"enabledHostNames\": [\r\n      \"testslot.webappsslbindingtests.com\",\r\n      \"webappsslbindingtest-testslot.asedemo.p.azurewebsites.net\",\r\n      \"webappsslbindingtest-testslot.scm.asedemo.p.azurewebsites.net\"\r\n    ],\r\n    \"siteProperties\": {\r\n      \"metadata\": null,\r\n      \"properties\": [],\r\n      \"appSettings\": null\r\n    },\r\n    \"availabilityState\": 0,\r\n    \"sslCertificates\": null,\r\n    \"csrs\": [],\r\n    \"cers\": null,\r\n    \"siteMode\": null,\r\n    \"hostNameSslStates\": [\r\n      {\r\n        \"name\": \"testslot.webappsslbindingtests.com\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"webappsslbindingtest-testslot.asedemo.p.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"webappsslbindingtest-testslot.scm.asedemo.p.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 1\r\n      }\r\n    ],\r\n    \"computeMode\": null,\r\n    \"serverFarm\": null,\r\n    \"serverFarmId\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/serverfarms/travel_production_plan\",\r\n    \"lastModifiedTimeUtc\": \"2015-12-23T23:23:20.69\",\r\n    \"storageRecoveryDefaultState\": \"Running\",\r\n    \"contentAvailabilityState\": 0,\r\n    \"runtimeAvailabilityState\": 0,\r\n    \"siteConfig\": null,\r\n    \"deploymentId\": \"webappsslbindingtest__b951\",\r\n    \"trafficManagerHostNames\": null,\r\n    \"sku\": \"Premium\",\r\n    \"premiumAppDeployed\": null,\r\n    \"scmSiteAlsoStopped\": false,\r\n    \"targetSwapSlot\": null,\r\n    \"hostingEnvironment\": \"asedemo\",\r\n    \"hostingEnvironmentProfile\": {\r\n      \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemo\",\r\n      \"name\": \"asedemo\",\r\n      \"type\": \"Microsoft.Web/hostingEnvironments\"\r\n    },\r\n    \"microService\": \"WebSites\",\r\n    \"gatewaySiteName\": null,\r\n    \"clientAffinityEnabled\": true,\r\n    \"clientCertEnabled\": false,\r\n    \"hostNamesDisabled\": false,\r\n    \"domainVerificationIdentifiers\": null,\r\n    \"kind\": null,\r\n    \"outboundIpAddresses\": \"104.45.218.185\",\r\n    \"cloningInfo\": null,\r\n    \"hostingEnvironmentId\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemo\",\r\n    \"tags\": null\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "2953"
+          "2978"
         ],
         "Content-Type": [
           "application/json"
@@ -1276,25 +1336,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "e8ac595d-c072-4799-872d-41a7d3f0b39e"
+          "1087ed3b-ad80-4395-942b-58384d8f5514"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1195"
+          "1194"
         ],
         "x-ms-correlation-request-id": [
-          "a2335c8f-60e8-4714-a5f5-0fda385eb72f"
+          "7acb9e59-7708-4198-9a4a-3add0ac822bd"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151207T163415Z:a2335c8f-60e8-4714-a5f5-0fda385eb72f"
+          "CENTRALUS:20151230T060819Z:7acb9e59-7708-4198-9a4a-3add0ac822bd"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 07 Dec 2015 16:34:15 GMT"
+          "Wed, 30 Dec 2015 06:08:19 GMT"
         ],
         "ETag": [
-          "\"1D1310C8FF12850\""
+          "\"1D13DD8E94E2D20\""
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -1333,16 +1393,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14986"
+          "14807"
         ],
         "x-ms-request-id": [
-          "c240133c-475c-4765-a887-fc27397292cd"
+          "b05d3ef5-d1cf-4648-8c0f-7094c853efd1"
         ],
         "x-ms-correlation-request-id": [
-          "c240133c-475c-4765-a887-fc27397292cd"
+          "b05d3ef5-d1cf-4648-8c0f-7094c853efd1"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151207T163403Z:c240133c-475c-4765-a887-fc27397292cd"
+          "CENTRALUS:20151230T060811Z:b05d3ef5-d1cf-4648-8c0f-7094c853efd1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1351,7 +1411,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 07 Dec 2015 16:34:03 GMT"
+          "Wed, 30 Dec 2015 06:08:10 GMT"
         ]
       },
       "StatusCode": 200
@@ -1381,16 +1441,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14985"
+          "14806"
         ],
         "x-ms-request-id": [
-          "0a56171a-cf61-4f9b-bef2-bc5e8b563723"
+          "20a541ca-d3a8-481a-9085-2dbd75487f5b"
         ],
         "x-ms-correlation-request-id": [
-          "0a56171a-cf61-4f9b-bef2-bc5e8b563723"
+          "20a541ca-d3a8-481a-9085-2dbd75487f5b"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151207T163415Z:0a56171a-cf61-4f9b-bef2-bc5e8b563723"
+          "CENTRALUS:20151230T060819Z:20a541ca-d3a8-481a-9085-2dbd75487f5b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1399,7 +1459,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 07 Dec 2015 16:34:15 GMT"
+          "Wed, 30 Dec 2015 06:08:19 GMT"
         ]
       },
       "StatusCode": 200
@@ -1429,199 +1489,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "58caf60e-cff6-4c7d-81c0-6cea49eb62cc"
+          "00908562-10d9-41aa-abb8-5cdc7057097f"
         ],
         "x-ms-gateway-service-instanceid": [
-          "PASFE_IN_3"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14980"
-        ],
-        "x-ms-correlation-request-id": [
-          "275e7b8f-9e5a-4176-be49-e2457e04dd05"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20151207T163403Z:275e7b8f-9e5a-4176-be49-e2457e04dd05"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Mon, 07 Dec 2015 16:34:03 GMT"
-        ],
-        "Set-Cookie": [
-          "x-ms-gateway-slice=productionb; path=/"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.5"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourcegroups/appdemorg/providers/Microsoft.Web//certificates/40D6600B0B8740C41BA4B3D13B967DDEF6ED1918_asedemo_West%20US_webappsslbindingrb/providers/Microsoft.Authorization/permissions?api-version=2015-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWY5MGU5MzAtOWQ3Zi00YTYwLThhOTktNzQ4ZTBlZWE2OWRlL3Jlc291cmNlZ3JvdXBzL2FwcGRlbW9yZy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi8vY2VydGlmaWNhdGVzLzQwRDY2MDBCMEI4NzQwQzQxQkE0QjNEMTNCOTY3RERFRjZFRDE5MThfYXNlZGVtb19XZXN0JTIwVVNfd2ViYXBwc3NsYmluZGluZ3JiL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wZXJtaXNzaW9ucz9hcGktdmVyc2lvbj0yMDE1LTA3LTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/2.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"actions\": [\r\n        \"*\"\r\n      ],\r\n      \"notActions\": []\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "61"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "713ed079-f487-49fe-8826-97a16c60a4ce"
-        ],
-        "x-ms-gateway-service-instanceid": [
-          "PASFE_IN_3"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14974"
-        ],
-        "x-ms-correlation-request-id": [
-          "a5dc0b2a-4ae1-4186-bbca-6077aa622e1a"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20151207T163415Z:a5dc0b2a-4ae1-4186-bbca-6077aa622e1a"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Mon, 07 Dec 2015 16:34:15 GMT"
-        ],
-        "Set-Cookie": [
-          "x-ms-gateway-slice=productionb; path=/"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.5"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourcegroups/appdemorg/providers/Microsoft.Web//certificates/487D8A28A8EBCD3E5B8027746410B95B37CD4A22%23asedemo%23West%20US%23appdemorg-asedemoappseWestUSwebspace/providers/Microsoft.Authorization/permissions?api-version=2015-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWY5MGU5MzAtOWQ3Zi00YTYwLThhOTktNzQ4ZTBlZWE2OWRlL3Jlc291cmNlZ3JvdXBzL2FwcGRlbW9yZy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi8vY2VydGlmaWNhdGVzLzQ4N0Q4QTI4QThFQkNEM0U1QjgwMjc3NDY0MTBCOTVCMzdDRDRBMjIlMjNhc2VkZW1vJTIzV2VzdCUyMFVTJTIzYXBwZGVtb3JnLWFzZWRlbW9hcHBzZVdlc3RVU3dlYnNwYWNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wZXJtaXNzaW9ucz9hcGktdmVyc2lvbj0yMDE1LTA3LTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/2.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"actions\": [\r\n        \"*\"\r\n      ],\r\n      \"notActions\": []\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "61"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "b74ce190-8fc3-476d-ba7b-e5b6c8920f31"
-        ],
-        "x-ms-gateway-service-instanceid": [
-          "PASFE_IN_3"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14979"
-        ],
-        "x-ms-correlation-request-id": [
-          "c0fa0bed-830c-479b-baf1-52f094c97d12"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20151207T163403Z:c0fa0bed-830c-479b-baf1-52f094c97d12"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Mon, 07 Dec 2015 16:34:03 GMT"
-        ],
-        "Set-Cookie": [
-          "x-ms-gateway-slice=productionb; path=/"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.5"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourcegroups/appdemorg/providers/Microsoft.Web//certificates/487D8A28A8EBCD3E5B8027746410B95B37CD4A22%23asedemo%23West%20US%23appdemorg-asedemoappseWestUSwebspace/providers/Microsoft.Authorization/permissions?api-version=2015-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWY5MGU5MzAtOWQ3Zi00YTYwLThhOTktNzQ4ZTBlZWE2OWRlL3Jlc291cmNlZ3JvdXBzL2FwcGRlbW9yZy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi8vY2VydGlmaWNhdGVzLzQ4N0Q4QTI4QThFQkNEM0U1QjgwMjc3NDY0MTBCOTVCMzdDRDRBMjIlMjNhc2VkZW1vJTIzV2VzdCUyMFVTJTIzYXBwZGVtb3JnLWFzZWRlbW9hcHBzZVdlc3RVU3dlYnNwYWNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wZXJtaXNzaW9ucz9hcGktdmVyc2lvbj0yMDE1LTA3LTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/2.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"actions\": [\r\n        \"*\"\r\n      ],\r\n      \"notActions\": []\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "61"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "4dc33fa0-44e5-4707-aced-479bcb008e11"
-        ],
-        "x-ms-gateway-service-instanceid": [
-          "PASFE_IN_3"
+          "PASFE_IN_2"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -1633,19 +1504,16 @@
           "14973"
         ],
         "x-ms-correlation-request-id": [
-          "342c33d7-0d13-4c8a-aea2-ca2d59a5fbdf"
+          "7e771610-38fd-4167-b45b-3b4d5fa85c95"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151207T163415Z:342c33d7-0d13-4c8a-aea2-ca2d59a5fbdf"
+          "CENTRALUS:20151230T060812Z:7e771610-38fd-4167-b45b-3b4d5fa85c95"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 07 Dec 2015 16:34:15 GMT"
-        ],
-        "Set-Cookie": [
-          "x-ms-gateway-slice=productionb; path=/"
+          "Wed, 30 Dec 2015 06:08:11 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -1657,8 +1525,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourcegroups/appdemorg/providers/Microsoft.Web//certificates/487D8A28A8EBCD3E5B8027746410B95B37CD4A22%23asedemoeu%23North%20Europe%23appdemorg-asedemoeuappseNorthEuropewebspace/providers/Microsoft.Authorization/permissions?api-version=2015-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWY5MGU5MzAtOWQ3Zi00YTYwLThhOTktNzQ4ZTBlZWE2OWRlL3Jlc291cmNlZ3JvdXBzL2FwcGRlbW9yZy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi8vY2VydGlmaWNhdGVzLzQ4N0Q4QTI4QThFQkNEM0U1QjgwMjc3NDY0MTBCOTVCMzdDRDRBMjIlMjNhc2VkZW1vZXUlMjNOb3J0aCUyMEV1cm9wZSUyM2FwcGRlbW9yZy1hc2VkZW1vZXVhcHBzZU5vcnRoRXVyb3Bld2Vic3BhY2UvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRob3JpemF0aW9uL3Blcm1pc3Npb25zP2FwaS12ZXJzaW9uPTIwMTUtMDctMDE=",
+      "RequestUri": "/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourcegroups/appdemorg/providers/Microsoft.Web//certificates/40D6600B0B8740C41BA4B3D13B967DDEF6ED1918_asedemo_West%20US_webappsslbindingrb/providers/Microsoft.Authorization/permissions?api-version=2015-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWY5MGU5MzAtOWQ3Zi00YTYwLThhOTktNzQ4ZTBlZWE2OWRlL3Jlc291cmNlZ3JvdXBzL2FwcGRlbW9yZy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi8vY2VydGlmaWNhdGVzLzQwRDY2MDBCMEI4NzQwQzQxQkE0QjNEMTNCOTY3RERFRjZFRDE5MThfYXNlZGVtb19XZXN0JTIwVVNfd2ViYXBwc3NsYmluZGluZ3JiL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wZXJtaXNzaW9ucz9hcGktdmVyc2lvbj0yMDE1LTA3LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1681,10 +1549,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "2dd53069-7335-4f88-bfc2-5846f9e77559"
+          "a22e5792-ef50-4d1d-a656-404978068724"
         ],
         "x-ms-gateway-service-instanceid": [
-          "PASFE_IN_3"
+          "PASFE_IN_1"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -1693,22 +1561,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14978"
+          "14967"
         ],
         "x-ms-correlation-request-id": [
-          "55cfa50d-78da-450b-a7ad-26e594050772"
+          "127059dc-143e-4092-b6e4-e538302d1ec3"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151207T163403Z:55cfa50d-78da-450b-a7ad-26e594050772"
+          "CENTRALUS:20151230T060820Z:127059dc-143e-4092-b6e4-e538302d1ec3"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 07 Dec 2015 16:34:03 GMT"
-        ],
-        "Set-Cookie": [
-          "x-ms-gateway-slice=productionb; path=/"
+          "Wed, 30 Dec 2015 06:08:19 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -1720,8 +1585,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourcegroups/appdemorg/providers/Microsoft.Web//certificates/487D8A28A8EBCD3E5B8027746410B95B37CD4A22%23asedemoeu%23North%20Europe%23appdemorg-asedemoeuappseNorthEuropewebspace/providers/Microsoft.Authorization/permissions?api-version=2015-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWY5MGU5MzAtOWQ3Zi00YTYwLThhOTktNzQ4ZTBlZWE2OWRlL3Jlc291cmNlZ3JvdXBzL2FwcGRlbW9yZy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi8vY2VydGlmaWNhdGVzLzQ4N0Q4QTI4QThFQkNEM0U1QjgwMjc3NDY0MTBCOTVCMzdDRDRBMjIlMjNhc2VkZW1vZXUlMjNOb3J0aCUyMEV1cm9wZSUyM2FwcGRlbW9yZy1hc2VkZW1vZXVhcHBzZU5vcnRoRXVyb3Bld2Vic3BhY2UvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRob3JpemF0aW9uL3Blcm1pc3Npb25zP2FwaS12ZXJzaW9uPTIwMTUtMDctMDE=",
+      "RequestUri": "/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourcegroups/appdemorg/providers/Microsoft.Web//certificates/487D8A28A8EBCD3E5B8027746410B95B37CD4A22%23asedemo%23West%20US%23appdemorg-asedemoappseWestUSwebspace/providers/Microsoft.Authorization/permissions?api-version=2015-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWY5MGU5MzAtOWQ3Zi00YTYwLThhOTktNzQ4ZTBlZWE2OWRlL3Jlc291cmNlZ3JvdXBzL2FwcGRlbW9yZy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi8vY2VydGlmaWNhdGVzLzQ4N0Q4QTI4QThFQkNEM0U1QjgwMjc3NDY0MTBCOTVCMzdDRDRBMjIlMjNhc2VkZW1vJTIzV2VzdCUyMFVTJTIzYXBwZGVtb3JnLWFzZWRlbW9hcHBzZVdlc3RVU3dlYnNwYWNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wZXJtaXNzaW9ucz9hcGktdmVyc2lvbj0yMDE1LTA3LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1744,10 +1609,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "c2888697-66b6-4a1a-943e-7092e3b9e8d5"
+          "bdd8f92b-ca7e-4d42-94e3-0394ba9cc20d"
         ],
         "x-ms-gateway-service-instanceid": [
-          "PASFE_IN_3"
+          "PASFE_IN_1"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -1759,19 +1624,16 @@
           "14972"
         ],
         "x-ms-correlation-request-id": [
-          "fe660e05-662e-4bd2-ac5f-63e3742aa5a4"
+          "675f0b6b-0fa0-4783-b801-e6245aa60e7b"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151207T163416Z:fe660e05-662e-4bd2-ac5f-63e3742aa5a4"
+          "CENTRALUS:20151230T060812Z:675f0b6b-0fa0-4783-b801-e6245aa60e7b"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 07 Dec 2015 16:34:15 GMT"
-        ],
-        "Set-Cookie": [
-          "x-ms-gateway-slice=productionb; path=/"
+          "Wed, 30 Dec 2015 06:08:11 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -1783,8 +1645,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourcegroups/Default-Web-NorthEurope/providers/Microsoft.Web//certificates/B75CBF7439274AE4135E3E69CE6A19693F68D40F/providers/Microsoft.Authorization/permissions?api-version=2015-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWY5MGU5MzAtOWQ3Zi00YTYwLThhOTktNzQ4ZTBlZWE2OWRlL3Jlc291cmNlZ3JvdXBzL0RlZmF1bHQtV2ViLU5vcnRoRXVyb3BlL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViLy9jZXJ0aWZpY2F0ZXMvQjc1Q0JGNzQzOTI3NEFFNDEzNUUzRTY5Q0U2QTE5NjkzRjY4RDQwRi9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcGVybWlzc2lvbnM/YXBpLXZlcnNpb249MjAxNS0wNy0wMQ==",
+      "RequestUri": "/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourcegroups/appdemorg/providers/Microsoft.Web//certificates/487D8A28A8EBCD3E5B8027746410B95B37CD4A22%23asedemo%23West%20US%23appdemorg-asedemoappseWestUSwebspace/providers/Microsoft.Authorization/permissions?api-version=2015-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWY5MGU5MzAtOWQ3Zi00YTYwLThhOTktNzQ4ZTBlZWE2OWRlL3Jlc291cmNlZ3JvdXBzL2FwcGRlbW9yZy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi8vY2VydGlmaWNhdGVzLzQ4N0Q4QTI4QThFQkNEM0U1QjgwMjc3NDY0MTBCOTVCMzdDRDRBMjIlMjNhc2VkZW1vJTIzV2VzdCUyMFVTJTIzYXBwZGVtb3JnLWFzZWRlbW9hcHBzZVdlc3RVU3dlYnNwYWNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wZXJtaXNzaW9ucz9hcGktdmVyc2lvbj0yMDE1LTA3LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1807,7 +1669,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "a06fe0e5-7689-4ba5-8842-e6229d987974"
+          "787e352c-97cd-4e1d-8576-4b664a36c13c"
         ],
         "x-ms-gateway-service-instanceid": [
           "PASFE_IN_2"
@@ -1819,22 +1681,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14977"
+          "14966"
         ],
         "x-ms-correlation-request-id": [
-          "3e984fab-6ab2-460e-994b-a34ae80334a0"
+          "77c557c2-09ec-4d35-a1c8-5ec4de3961ed"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151207T163403Z:3e984fab-6ab2-460e-994b-a34ae80334a0"
+          "CENTRALUS:20151230T060820Z:77c557c2-09ec-4d35-a1c8-5ec4de3961ed"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 07 Dec 2015 16:34:03 GMT"
-        ],
-        "Set-Cookie": [
-          "x-ms-gateway-slice=productionb; path=/"
+          "Wed, 30 Dec 2015 06:08:19 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -1846,8 +1705,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourcegroups/Default-Web-NorthEurope/providers/Microsoft.Web//certificates/B75CBF7439274AE4135E3E69CE6A19693F68D40F/providers/Microsoft.Authorization/permissions?api-version=2015-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWY5MGU5MzAtOWQ3Zi00YTYwLThhOTktNzQ4ZTBlZWE2OWRlL3Jlc291cmNlZ3JvdXBzL0RlZmF1bHQtV2ViLU5vcnRoRXVyb3BlL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViLy9jZXJ0aWZpY2F0ZXMvQjc1Q0JGNzQzOTI3NEFFNDEzNUUzRTY5Q0U2QTE5NjkzRjY4RDQwRi9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcGVybWlzc2lvbnM/YXBpLXZlcnNpb249MjAxNS0wNy0wMQ==",
+      "RequestUri": "/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourcegroups/appdemorg/providers/Microsoft.Web//certificates/487D8A28A8EBCD3E5B8027746410B95B37CD4A22%23asedemoeu%23North%20Europe%23appdemorg-asedemoeuappseNorthEuropewebspace/providers/Microsoft.Authorization/permissions?api-version=2015-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWY5MGU5MzAtOWQ3Zi00YTYwLThhOTktNzQ4ZTBlZWE2OWRlL3Jlc291cmNlZ3JvdXBzL2FwcGRlbW9yZy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi8vY2VydGlmaWNhdGVzLzQ4N0Q4QTI4QThFQkNEM0U1QjgwMjc3NDY0MTBCOTVCMzdDRDRBMjIlMjNhc2VkZW1vZXUlMjNOb3J0aCUyMEV1cm9wZSUyM2FwcGRlbW9yZy1hc2VkZW1vZXVhcHBzZU5vcnRoRXVyb3Bld2Vic3BhY2UvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRob3JpemF0aW9uL3Blcm1pc3Npb25zP2FwaS12ZXJzaW9uPTIwMTUtMDctMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1870,10 +1729,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "f634955c-c8ac-47c9-a284-315b06c318d1"
+          "beeaf8e1-b734-47db-a651-61a2aa13b8b0"
         ],
         "x-ms-gateway-service-instanceid": [
-          "PASFE_IN_3"
+          "PASFE_IN_2"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -1885,19 +1744,16 @@
           "14971"
         ],
         "x-ms-correlation-request-id": [
-          "ddc13653-1f9d-4913-826c-bf2c1e3193f0"
+          "3789f291-eac4-4448-a147-96acd5b77e68"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151207T163416Z:ddc13653-1f9d-4913-826c-bf2c1e3193f0"
+          "CENTRALUS:20151230T060812Z:3789f291-eac4-4448-a147-96acd5b77e68"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 07 Dec 2015 16:34:15 GMT"
-        ],
-        "Set-Cookie": [
-          "x-ms-gateway-slice=productionb; path=/"
+          "Wed, 30 Dec 2015 06:08:11 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -1909,8 +1765,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourcegroups/Default-Web-WestUS/providers/Microsoft.Web//certificates/6BD61F8B1250FF73790CB997A763985502951DC3/providers/Microsoft.Authorization/permissions?api-version=2015-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWY5MGU5MzAtOWQ3Zi00YTYwLThhOTktNzQ4ZTBlZWE2OWRlL3Jlc291cmNlZ3JvdXBzL0RlZmF1bHQtV2ViLVdlc3RVUy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi8vY2VydGlmaWNhdGVzLzZCRDYxRjhCMTI1MEZGNzM3OTBDQjk5N0E3NjM5ODU1MDI5NTFEQzMvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRob3JpemF0aW9uL3Blcm1pc3Npb25zP2FwaS12ZXJzaW9uPTIwMTUtMDctMDE=",
+      "RequestUri": "/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourcegroups/appdemorg/providers/Microsoft.Web//certificates/487D8A28A8EBCD3E5B8027746410B95B37CD4A22%23asedemoeu%23North%20Europe%23appdemorg-asedemoeuappseNorthEuropewebspace/providers/Microsoft.Authorization/permissions?api-version=2015-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWY5MGU5MzAtOWQ3Zi00YTYwLThhOTktNzQ4ZTBlZWE2OWRlL3Jlc291cmNlZ3JvdXBzL2FwcGRlbW9yZy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi8vY2VydGlmaWNhdGVzLzQ4N0Q4QTI4QThFQkNEM0U1QjgwMjc3NDY0MTBCOTVCMzdDRDRBMjIlMjNhc2VkZW1vZXUlMjNOb3J0aCUyMEV1cm9wZSUyM2FwcGRlbW9yZy1hc2VkZW1vZXVhcHBzZU5vcnRoRXVyb3Bld2Vic3BhY2UvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRob3JpemF0aW9uL3Blcm1pc3Npb25zP2FwaS12ZXJzaW9uPTIwMTUtMDctMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1933,10 +1789,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "25d82bad-c292-424c-ab8b-64f0e370b802"
+          "80bd8541-cd9a-454c-ba13-7aaabeefc1f8"
         ],
         "x-ms-gateway-service-instanceid": [
-          "PASFE_IN_3"
+          "PASFE_IN_2"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -1945,22 +1801,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14976"
+          "14965"
         ],
         "x-ms-correlation-request-id": [
-          "4a8ecb91-e3d0-4efd-be11-c413b6687525"
+          "3469e1d6-9595-466b-8436-5e5099f5b7e0"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151207T163404Z:4a8ecb91-e3d0-4efd-be11-c413b6687525"
+          "CENTRALUS:20151230T060820Z:3469e1d6-9595-466b-8436-5e5099f5b7e0"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 07 Dec 2015 16:34:03 GMT"
-        ],
-        "Set-Cookie": [
-          "x-ms-gateway-slice=productionb; path=/"
+          "Wed, 30 Dec 2015 06:08:19 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -1972,8 +1825,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourcegroups/Default-Web-WestUS/providers/Microsoft.Web//certificates/6BD61F8B1250FF73790CB997A763985502951DC3/providers/Microsoft.Authorization/permissions?api-version=2015-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWY5MGU5MzAtOWQ3Zi00YTYwLThhOTktNzQ4ZTBlZWE2OWRlL3Jlc291cmNlZ3JvdXBzL0RlZmF1bHQtV2ViLVdlc3RVUy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi8vY2VydGlmaWNhdGVzLzZCRDYxRjhCMTI1MEZGNzM3OTBDQjk5N0E3NjM5ODU1MDI5NTFEQzMvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRob3JpemF0aW9uL3Blcm1pc3Npb25zP2FwaS12ZXJzaW9uPTIwMTUtMDctMDE=",
+      "RequestUri": "/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourcegroups/Default-Web-NorthEurope/providers/Microsoft.Web//certificates/B75CBF7439274AE4135E3E69CE6A19693F68D40F/providers/Microsoft.Authorization/permissions?api-version=2015-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWY5MGU5MzAtOWQ3Zi00YTYwLThhOTktNzQ4ZTBlZWE2OWRlL3Jlc291cmNlZ3JvdXBzL0RlZmF1bHQtV2ViLU5vcnRoRXVyb3BlL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViLy9jZXJ0aWZpY2F0ZXMvQjc1Q0JGNzQzOTI3NEFFNDEzNUUzRTY5Q0U2QTE5NjkzRjY4RDQwRi9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcGVybWlzc2lvbnM/YXBpLXZlcnNpb249MjAxNS0wNy0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1996,10 +1849,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "185c4591-dc5f-4340-8d95-93b7b12d057d"
+          "787a2dca-1422-4aed-8b9b-6c998b8625b3"
         ],
         "x-ms-gateway-service-instanceid": [
-          "PASFE_IN_2"
+          "PASFE_IN_1"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -2011,19 +1864,16 @@
           "14970"
         ],
         "x-ms-correlation-request-id": [
-          "35a09372-4759-4a0a-9ecd-1e14b29d1124"
+          "a466d92f-75e0-42da-abd8-fcd0dbe753cc"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151207T163416Z:35a09372-4759-4a0a-9ecd-1e14b29d1124"
+          "CENTRALUS:20151230T060812Z:a466d92f-75e0-42da-abd8-fcd0dbe753cc"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 07 Dec 2015 16:34:15 GMT"
-        ],
-        "Set-Cookie": [
-          "x-ms-gateway-slice=productionb; path=/"
+          "Wed, 30 Dec 2015 06:08:11 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -2035,8 +1885,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourcegroups/Default-Web-WestUS/providers/Microsoft.Web//certificates/B75CBF7439274AE4135E3E69CE6A19693F68D40F/providers/Microsoft.Authorization/permissions?api-version=2015-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWY5MGU5MzAtOWQ3Zi00YTYwLThhOTktNzQ4ZTBlZWE2OWRlL3Jlc291cmNlZ3JvdXBzL0RlZmF1bHQtV2ViLVdlc3RVUy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi8vY2VydGlmaWNhdGVzL0I3NUNCRjc0MzkyNzRBRTQxMzVFM0U2OUNFNkExOTY5M0Y2OEQ0MEYvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRob3JpemF0aW9uL3Blcm1pc3Npb25zP2FwaS12ZXJzaW9uPTIwMTUtMDctMDE=",
+      "RequestUri": "/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourcegroups/Default-Web-NorthEurope/providers/Microsoft.Web//certificates/B75CBF7439274AE4135E3E69CE6A19693F68D40F/providers/Microsoft.Authorization/permissions?api-version=2015-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWY5MGU5MzAtOWQ3Zi00YTYwLThhOTktNzQ4ZTBlZWE2OWRlL3Jlc291cmNlZ3JvdXBzL0RlZmF1bHQtV2ViLU5vcnRoRXVyb3BlL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViLy9jZXJ0aWZpY2F0ZXMvQjc1Q0JGNzQzOTI3NEFFNDEzNUUzRTY5Q0U2QTE5NjkzRjY4RDQwRi9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcGVybWlzc2lvbnM/YXBpLXZlcnNpb249MjAxNS0wNy0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2059,10 +1909,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "2b1b1fed-2214-4803-8bec-77fdb5a69645"
+          "a9f1039b-a710-4b72-871a-418ffa0a3605"
         ],
         "x-ms-gateway-service-instanceid": [
-          "PASFE_IN_3"
+          "PASFE_IN_0"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -2071,22 +1921,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14975"
+          "14964"
         ],
         "x-ms-correlation-request-id": [
-          "8bc06bda-3646-4207-afbc-061e1e51a488"
+          "5d2ef2e4-0568-4a5a-928c-d80df1ed897c"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151207T163404Z:8bc06bda-3646-4207-afbc-061e1e51a488"
+          "CENTRALUS:20151230T060820Z:5d2ef2e4-0568-4a5a-928c-d80df1ed897c"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 07 Dec 2015 16:34:04 GMT"
-        ],
-        "Set-Cookie": [
-          "x-ms-gateway-slice=productionb; path=/"
+          "Wed, 30 Dec 2015 06:08:19 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -2098,8 +1945,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourcegroups/Default-Web-WestUS/providers/Microsoft.Web//certificates/B75CBF7439274AE4135E3E69CE6A19693F68D40F/providers/Microsoft.Authorization/permissions?api-version=2015-07-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWY5MGU5MzAtOWQ3Zi00YTYwLThhOTktNzQ4ZTBlZWE2OWRlL3Jlc291cmNlZ3JvdXBzL0RlZmF1bHQtV2ViLVdlc3RVUy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi8vY2VydGlmaWNhdGVzL0I3NUNCRjc0MzkyNzRBRTQxMzVFM0U2OUNFNkExOTY5M0Y2OEQ0MEYvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRob3JpemF0aW9uL3Blcm1pc3Npb25zP2FwaS12ZXJzaW9uPTIwMTUtMDctMDE=",
+      "RequestUri": "/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourcegroups/Default-Web-WestUS/providers/Microsoft.Web//certificates/6BD61F8B1250FF73790CB997A763985502951DC3/providers/Microsoft.Authorization/permissions?api-version=2015-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWY5MGU5MzAtOWQ3Zi00YTYwLThhOTktNzQ4ZTBlZWE2OWRlL3Jlc291cmNlZ3JvdXBzL0RlZmF1bHQtV2ViLVdlc3RVUy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi8vY2VydGlmaWNhdGVzLzZCRDYxRjhCMTI1MEZGNzM3OTBDQjk5N0E3NjM5ODU1MDI5NTFEQzMvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRob3JpemF0aW9uL3Blcm1pc3Npb25zP2FwaS12ZXJzaW9uPTIwMTUtMDctMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2122,10 +1969,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "6168b24c-8b5c-49b9-bd9c-b0f91adeccfb"
+          "a65a9553-6d35-4769-9129-7af83f8de59e"
         ],
         "x-ms-gateway-service-instanceid": [
-          "PASFE_IN_3"
+          "PASFE_IN_0"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -2137,19 +1984,196 @@
           "14969"
         ],
         "x-ms-correlation-request-id": [
-          "7587603b-b60e-4e7d-b4f3-9c589c2f2f14"
+          "7dc3a271-7f4d-4ac9-be1a-be34ee2ea815"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151207T163416Z:7587603b-b60e-4e7d-b4f3-9c589c2f2f14"
+          "CENTRALUS:20151230T060812Z:7dc3a271-7f4d-4ac9-be1a-be34ee2ea815"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 07 Dec 2015 16:34:15 GMT"
+          "Wed, 30 Dec 2015 06:08:11 GMT"
         ],
-        "Set-Cookie": [
-          "x-ms-gateway-slice=productionb; path=/"
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourcegroups/Default-Web-WestUS/providers/Microsoft.Web//certificates/6BD61F8B1250FF73790CB997A763985502951DC3/providers/Microsoft.Authorization/permissions?api-version=2015-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWY5MGU5MzAtOWQ3Zi00YTYwLThhOTktNzQ4ZTBlZWE2OWRlL3Jlc291cmNlZ3JvdXBzL0RlZmF1bHQtV2ViLVdlc3RVUy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi8vY2VydGlmaWNhdGVzLzZCRDYxRjhCMTI1MEZGNzM3OTBDQjk5N0E3NjM5ODU1MDI5NTFEQzMvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRob3JpemF0aW9uL3Blcm1pc3Npb25zP2FwaS12ZXJzaW9uPTIwMTUtMDctMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"actions\": [\r\n        \"*\"\r\n      ],\r\n      \"notActions\": []\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "61"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "c6e422c0-e51f-4742-a8e3-a2e3f5904ba2"
+        ],
+        "x-ms-gateway-service-instanceid": [
+          "PASFE_IN_2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14963"
+        ],
+        "x-ms-correlation-request-id": [
+          "426c6123-891c-4418-80bb-8f9291f687b2"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20151230T060820Z:426c6123-891c-4418-80bb-8f9291f687b2"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 30 Dec 2015 06:08:20 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourcegroups/Default-Web-WestUS/providers/Microsoft.Web//certificates/B75CBF7439274AE4135E3E69CE6A19693F68D40F/providers/Microsoft.Authorization/permissions?api-version=2015-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWY5MGU5MzAtOWQ3Zi00YTYwLThhOTktNzQ4ZTBlZWE2OWRlL3Jlc291cmNlZ3JvdXBzL0RlZmF1bHQtV2ViLVdlc3RVUy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi8vY2VydGlmaWNhdGVzL0I3NUNCRjc0MzkyNzRBRTQxMzVFM0U2OUNFNkExOTY5M0Y2OEQ0MEYvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRob3JpemF0aW9uL3Blcm1pc3Npb25zP2FwaS12ZXJzaW9uPTIwMTUtMDctMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"actions\": [\r\n        \"*\"\r\n      ],\r\n      \"notActions\": []\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "61"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "de574556-8d51-460d-bf1b-d3ccf289990e"
+        ],
+        "x-ms-gateway-service-instanceid": [
+          "PASFE_IN_1"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14968"
+        ],
+        "x-ms-correlation-request-id": [
+          "6d216a62-db4b-449e-abce-227bade0e2a3"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20151230T060812Z:6d216a62-db4b-449e-abce-227bade0e2a3"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 30 Dec 2015 06:08:12 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourcegroups/Default-Web-WestUS/providers/Microsoft.Web//certificates/B75CBF7439274AE4135E3E69CE6A19693F68D40F/providers/Microsoft.Authorization/permissions?api-version=2015-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWY5MGU5MzAtOWQ3Zi00YTYwLThhOTktNzQ4ZTBlZWE2OWRlL3Jlc291cmNlZ3JvdXBzL0RlZmF1bHQtV2ViLVdlc3RVUy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi8vY2VydGlmaWNhdGVzL0I3NUNCRjc0MzkyNzRBRTQxMzVFM0U2OUNFNkExOTY5M0Y2OEQ0MEYvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRob3JpemF0aW9uL3Blcm1pc3Npb25zP2FwaS12ZXJzaW9uPTIwMTUtMDctMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"actions\": [\r\n        \"*\"\r\n      ],\r\n      \"notActions\": []\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "61"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "c63e0a2e-90e6-46a7-8efb-6d7c25b2cc12"
+        ],
+        "x-ms-gateway-service-instanceid": [
+          "PASFE_IN_2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14962"
+        ],
+        "x-ms-correlation-request-id": [
+          "08f3d4f6-d776-442e-835e-9eb34c71f2ce"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20151230T060820Z:08f3d4f6-d776-442e-835e-9eb34c71f2ce"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 30 Dec 2015 06:08:20 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -2167,13 +2191,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "bdc86241-c21d-4ee3-b9d5-856ea568abed"
+          "94826c74-b381-4c91-9ac4-87e233badb07"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.2"
+        ],
+        "Accept": [
+          "application/json"
         ]
       },
       "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/certificates/40D6600B0B8740C41BA4B3D13B967DDEF6ED1918_asedemo_West US_webappsslbindingrb\",\r\n  \"name\": \"40D6600B0B8740C41BA4B3D13B967DDEF6ED1918_asedemo_West US_webappsslbindingrb\",\r\n  \"type\": \"Microsoft.Web/certificates\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"friendlyName\": \"\",\r\n    \"subjectName\": \"*.webappsslbindingtests.com\",\r\n    \"hostNames\": [\r\n      \"*.webappsslbindingtests.com\"\r\n    ],\r\n    \"pfxBlob\": null,\r\n    \"siteName\": null,\r\n    \"selfLink\": null,\r\n    \"issuer\": \"*.webappsslbindingtests.com\",\r\n    \"issueDate\": \"2015-12-06T15:40:49-08:00\",\r\n    \"expirationDate\": \"2039-12-31T15:59:59-08:00\",\r\n    \"password\": null,\r\n    \"thumbprint\": \"40D6600B0B8740C41BA4B3D13B967DDEF6ED1918\",\r\n    \"valid\": null,\r\n    \"toDelete\": null,\r\n    \"cerBlob\": null,\r\n    \"publicKeyHash\": null,\r\n    \"hostingEnvironment\": null,\r\n    \"hostingEnvironmentProfile\": {\r\n      \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemo\",\r\n      \"name\": \"asedemo\",\r\n      \"type\": \"Microsoft.Web/hostingEnvironments\"\r\n    },\r\n    \"keyVaultId\": \"\",\r\n    \"keyVaultSecretName\": \"\",\r\n    \"webSpace\": \"appdemorg-asedemoappseWestUSwebspace\",\r\n    \"tags\": null\r\n  }\r\n}",
@@ -2194,22 +2221,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "b54046d2-7a8d-417e-8207-cf31dfbcc072"
+          "b961b26e-274f-45f6-94a5-d866887dd5df"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14973"
+          "14930"
         ],
         "x-ms-correlation-request-id": [
-          "739009b5-60ae-4577-9340-35cd0544147d"
+          "e0cf772a-dcdc-4543-8939-7589696992db"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151207T163405Z:739009b5-60ae-4577-9340-35cd0544147d"
+          "CENTRALUS:20151230T060813Z:e0cf772a-dcdc-4543-8939-7589696992db"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 07 Dec 2015 16:34:04 GMT"
+          "Wed, 30 Dec 2015 06:08:13 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -2230,13 +2257,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2ff48343-7a95-41d1-a133-0dd8117ff89f"
+          "169aac86-9188-41a2-ac6b-53218809b9c7"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.2"
+        ],
+        "Accept": [
+          "application/json"
         ]
       },
       "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/certificates/40D6600B0B8740C41BA4B3D13B967DDEF6ED1918_asedemo_West US_webappsslbindingrb\",\r\n  \"name\": \"40D6600B0B8740C41BA4B3D13B967DDEF6ED1918_asedemo_West US_webappsslbindingrb\",\r\n  \"type\": \"Microsoft.Web/certificates\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"friendlyName\": \"\",\r\n    \"subjectName\": \"*.webappsslbindingtests.com\",\r\n    \"hostNames\": [\r\n      \"*.webappsslbindingtests.com\"\r\n    ],\r\n    \"pfxBlob\": null,\r\n    \"siteName\": null,\r\n    \"selfLink\": null,\r\n    \"issuer\": \"*.webappsslbindingtests.com\",\r\n    \"issueDate\": \"2015-12-06T15:40:49-08:00\",\r\n    \"expirationDate\": \"2039-12-31T15:59:59-08:00\",\r\n    \"password\": null,\r\n    \"thumbprint\": \"40D6600B0B8740C41BA4B3D13B967DDEF6ED1918\",\r\n    \"valid\": null,\r\n    \"toDelete\": null,\r\n    \"cerBlob\": null,\r\n    \"publicKeyHash\": null,\r\n    \"hostingEnvironment\": null,\r\n    \"hostingEnvironmentProfile\": {\r\n      \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemo\",\r\n      \"name\": \"asedemo\",\r\n      \"type\": \"Microsoft.Web/hostingEnvironments\"\r\n    },\r\n    \"keyVaultId\": \"\",\r\n    \"keyVaultSecretName\": \"\",\r\n    \"webSpace\": \"appdemorg-asedemoappseWestUSwebspace\",\r\n    \"tags\": null\r\n  }\r\n}",
@@ -2257,22 +2287,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "42eba918-87ac-458a-a259-f16cd2e5daf4"
+          "c64a3158-c97e-4b8b-941d-5c0f33b5bcbc"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14968"
+          "14925"
         ],
         "x-ms-correlation-request-id": [
-          "5b5edc3c-4980-464c-9187-807d65ec1e59"
+          "80c42b24-553c-4bfb-92f0-106f8d8e7f24"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151207T163416Z:5b5edc3c-4980-464c-9187-807d65ec1e59"
+          "CENTRALUS:20151230T060820Z:80c42b24-553c-4bfb-92f0-106f8d8e7f24"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 07 Dec 2015 16:34:16 GMT"
+          "Wed, 30 Dec 2015 06:08:20 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -2293,13 +2323,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "84b449cd-4dbf-4f14-8718-40fcffd10a0c"
+          "2dd3552b-5fa4-4554-8c64-08540d9eab1f"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.2"
+        ],
+        "Accept": [
+          "application/json"
         ]
       },
       "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/certificates/487D8A28A8EBCD3E5B8027746410B95B37CD4A22#asedemo#West US#appdemorg-asedemoappseWestUSwebspace\",\r\n  \"name\": \"487D8A28A8EBCD3E5B8027746410B95B37CD4A22#asedemo#West US#appdemorg-asedemoappseWestUSwebspace\",\r\n  \"type\": \"Microsoft.Web/certificates\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"friendlyName\": \"\",\r\n    \"subjectName\": \"*.contosoweb.net,contosoweb.net\",\r\n    \"hostNames\": [\r\n      \"*.contosoweb.net\",\r\n      \"contosoweb.net\"\r\n    ],\r\n    \"pfxBlob\": null,\r\n    \"siteName\": null,\r\n    \"selfLink\": null,\r\n    \"issuer\": \"COMODO RSA Domain Validation Secure Server CA\",\r\n    \"issueDate\": \"2015-10-07T17:00:00-07:00\",\r\n    \"expirationDate\": \"2016-10-07T16:59:59-07:00\",\r\n    \"password\": null,\r\n    \"thumbprint\": \"487D8A28A8EBCD3E5B8027746410B95B37CD4A22\",\r\n    \"valid\": null,\r\n    \"toDelete\": null,\r\n    \"cerBlob\": null,\r\n    \"publicKeyHash\": null,\r\n    \"hostingEnvironment\": null,\r\n    \"hostingEnvironmentProfile\": {\r\n      \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemo\",\r\n      \"name\": \"asedemo\",\r\n      \"type\": \"Microsoft.Web/hostingEnvironments\"\r\n    },\r\n    \"webSpace\": \"appdemorg-asedemoappseWestUSwebspace\",\r\n    \"tags\": null\r\n  }\r\n}",
@@ -2320,22 +2353,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "9caac12b-e46f-4f5f-b470-952013d73fa4"
+          "41b3b88e-22d0-4b29-a081-917e638ed653"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14972"
+          "14929"
         ],
         "x-ms-correlation-request-id": [
-          "78ce0e24-9425-4a62-907e-bbb300e64cbf"
+          "71380537-b88c-4a16-91bd-7c627173385f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151207T163406Z:78ce0e24-9425-4a62-907e-bbb300e64cbf"
+          "CENTRALUS:20151230T060813Z:71380537-b88c-4a16-91bd-7c627173385f"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 07 Dec 2015 16:34:05 GMT"
+          "Wed, 30 Dec 2015 06:08:13 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -2356,13 +2389,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ab2abe6e-2a94-47e9-b6dc-ef18c9905add"
+          "0a99ecea-db52-4803-8f95-0129a57fa973"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.2"
+        ],
+        "Accept": [
+          "application/json"
         ]
       },
       "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/certificates/487D8A28A8EBCD3E5B8027746410B95B37CD4A22#asedemo#West US#appdemorg-asedemoappseWestUSwebspace\",\r\n  \"name\": \"487D8A28A8EBCD3E5B8027746410B95B37CD4A22#asedemo#West US#appdemorg-asedemoappseWestUSwebspace\",\r\n  \"type\": \"Microsoft.Web/certificates\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"friendlyName\": \"\",\r\n    \"subjectName\": \"*.contosoweb.net,contosoweb.net\",\r\n    \"hostNames\": [\r\n      \"*.contosoweb.net\",\r\n      \"contosoweb.net\"\r\n    ],\r\n    \"pfxBlob\": null,\r\n    \"siteName\": null,\r\n    \"selfLink\": null,\r\n    \"issuer\": \"COMODO RSA Domain Validation Secure Server CA\",\r\n    \"issueDate\": \"2015-10-07T17:00:00-07:00\",\r\n    \"expirationDate\": \"2016-10-07T16:59:59-07:00\",\r\n    \"password\": null,\r\n    \"thumbprint\": \"487D8A28A8EBCD3E5B8027746410B95B37CD4A22\",\r\n    \"valid\": null,\r\n    \"toDelete\": null,\r\n    \"cerBlob\": null,\r\n    \"publicKeyHash\": null,\r\n    \"hostingEnvironment\": null,\r\n    \"hostingEnvironmentProfile\": {\r\n      \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemo\",\r\n      \"name\": \"asedemo\",\r\n      \"type\": \"Microsoft.Web/hostingEnvironments\"\r\n    },\r\n    \"webSpace\": \"appdemorg-asedemoappseWestUSwebspace\",\r\n    \"tags\": null\r\n  }\r\n}",
@@ -2383,22 +2419,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "e1bb11a3-e9d8-4149-a550-16fafccea29c"
+          "a093cc12-b879-40a7-ab75-01d4705acb07"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14967"
+          "14924"
         ],
         "x-ms-correlation-request-id": [
-          "5344d683-e45e-4910-b32f-7b70b8c76a2b"
+          "295276d8-cc89-44ca-93a4-de31d73f126b"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151207T163416Z:5344d683-e45e-4910-b32f-7b70b8c76a2b"
+          "CENTRALUS:20151230T060820Z:295276d8-cc89-44ca-93a4-de31d73f126b"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 07 Dec 2015 16:34:16 GMT"
+          "Wed, 30 Dec 2015 06:08:20 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -2419,13 +2455,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e00f0342-ee7a-44ce-ada1-83b5078e149f"
+          "ea2a87f8-f448-41d3-a0b3-e86afe98156d"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.2"
+        ],
+        "Accept": [
+          "application/json"
         ]
       },
       "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/certificates/487D8A28A8EBCD3E5B8027746410B95B37CD4A22#asedemoeu#North Europe#appdemorg-asedemoeuappseNorthEuropewebspace\",\r\n  \"name\": \"487D8A28A8EBCD3E5B8027746410B95B37CD4A22#asedemoeu#North Europe#appdemorg-asedemoeuappseNorthEuropewebspace\",\r\n  \"type\": \"Microsoft.Web/certificates\",\r\n  \"location\": \"North Europe\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"friendlyName\": \"\",\r\n    \"subjectName\": \"*.contosoweb.net,contosoweb.net\",\r\n    \"hostNames\": [\r\n      \"*.contosoweb.net\",\r\n      \"contosoweb.net\"\r\n    ],\r\n    \"pfxBlob\": null,\r\n    \"siteName\": null,\r\n    \"selfLink\": null,\r\n    \"issuer\": \"COMODO RSA Domain Validation Secure Server CA\",\r\n    \"issueDate\": \"2015-10-07T17:00:00-07:00\",\r\n    \"expirationDate\": \"2016-10-07T16:59:59-07:00\",\r\n    \"password\": null,\r\n    \"thumbprint\": \"487D8A28A8EBCD3E5B8027746410B95B37CD4A22\",\r\n    \"valid\": null,\r\n    \"toDelete\": null,\r\n    \"cerBlob\": null,\r\n    \"publicKeyHash\": null,\r\n    \"hostingEnvironment\": null,\r\n    \"hostingEnvironmentProfile\": {\r\n      \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemoeu\",\r\n      \"name\": \"asedemoeu\",\r\n      \"type\": \"Microsoft.Web/hostingEnvironments\"\r\n    },\r\n    \"keyVaultId\": \"\",\r\n    \"keyVaultSecretName\": \"\",\r\n    \"webSpace\": \"appdemorg-asedemoeuappseNorthEuropewebspace\",\r\n    \"tags\": null\r\n  }\r\n}",
@@ -2446,22 +2485,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "6283b495-0179-4e12-af67-f715159c7f11"
+          "afa9cfb7-a544-4520-9d2c-023cf2834317"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14971"
+          "14928"
         ],
         "x-ms-correlation-request-id": [
-          "3e57a64a-f25f-4fc6-9bb3-e9ff1f6ae065"
+          "0b4f243a-a5c1-44be-9164-57a613d55f65"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151207T163406Z:3e57a64a-f25f-4fc6-9bb3-e9ff1f6ae065"
+          "CENTRALUS:20151230T060815Z:0b4f243a-a5c1-44be-9164-57a613d55f65"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 07 Dec 2015 16:34:05 GMT"
+          "Wed, 30 Dec 2015 06:08:15 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -2482,13 +2521,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a643fd7a-7189-46bc-93ff-292049e97cad"
+          "9aae6dda-de03-4204-ac60-3aefc8e7eb06"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.2"
+        ],
+        "Accept": [
+          "application/json"
         ]
       },
       "ResponseBody": "{\r\n  \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/certificates/487D8A28A8EBCD3E5B8027746410B95B37CD4A22#asedemoeu#North Europe#appdemorg-asedemoeuappseNorthEuropewebspace\",\r\n  \"name\": \"487D8A28A8EBCD3E5B8027746410B95B37CD4A22#asedemoeu#North Europe#appdemorg-asedemoeuappseNorthEuropewebspace\",\r\n  \"type\": \"Microsoft.Web/certificates\",\r\n  \"location\": \"North Europe\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"friendlyName\": \"\",\r\n    \"subjectName\": \"*.contosoweb.net,contosoweb.net\",\r\n    \"hostNames\": [\r\n      \"*.contosoweb.net\",\r\n      \"contosoweb.net\"\r\n    ],\r\n    \"pfxBlob\": null,\r\n    \"siteName\": null,\r\n    \"selfLink\": null,\r\n    \"issuer\": \"COMODO RSA Domain Validation Secure Server CA\",\r\n    \"issueDate\": \"2015-10-07T17:00:00-07:00\",\r\n    \"expirationDate\": \"2016-10-07T16:59:59-07:00\",\r\n    \"password\": null,\r\n    \"thumbprint\": \"487D8A28A8EBCD3E5B8027746410B95B37CD4A22\",\r\n    \"valid\": null,\r\n    \"toDelete\": null,\r\n    \"cerBlob\": null,\r\n    \"publicKeyHash\": null,\r\n    \"hostingEnvironment\": null,\r\n    \"hostingEnvironmentProfile\": {\r\n      \"id\": \"/subscriptions/ef90e930-9d7f-4a60-8a99-748e0eea69de/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemoeu\",\r\n      \"name\": \"asedemoeu\",\r\n      \"type\": \"Microsoft.Web/hostingEnvironments\"\r\n    },\r\n    \"keyVaultId\": \"\",\r\n    \"keyVaultSecretName\": \"\",\r\n    \"webSpace\": \"appdemorg-asedemoeuappseNorthEuropewebspace\",\r\n    \"tags\": null\r\n  }\r\n}",
@@ -2509,22 +2551,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "d70c043f-cb95-4d7c-8b04-144809cdbcfd"
+          "135e3330-32f0-40a9-9d27-8ab0864e8c78"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14966"
+          "14923"
         ],
         "x-ms-correlation-request-id": [
-          "2f13f888-4263-482e-a447-3bb0f6b271c9"
+          "06020ff5-1ec7-4d38-ad2d-1ec66d5bb676"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151207T163417Z:2f13f888-4263-482e-a447-3bb0f6b271c9"
+          "CENTRALUS:20151230T060821Z:06020ff5-1ec7-4d38-ad2d-1ec66d5bb676"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 07 Dec 2015 16:34:16 GMT"
+          "Wed, 30 Dec 2015 06:08:20 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -2545,13 +2587,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "94fd55e1-545d-4401-a70d-65da2d7f0a89"
+          "d2ac7097-11dd-4b7c-bebf-aae9c7e2261d"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.2"
+        ],
+        "Accept": [
+          "application/json"
         ]
       },
       "ResponseBody": "{\r\n  \"Code\": \"Conflict\",\r\n  \"Message\": \"Cannot remove certificate with thumbprint 40D6600B0B8740C41BA4B3D13B967DDEF6ED1918 because it is used for hostname api.webappsslbindingtests.com.\",\r\n  \"Target\": null,\r\n  \"Details\": [\r\n    {\r\n      \"Message\": \"Cannot remove certificate with thumbprint 40D6600B0B8740C41BA4B3D13B967DDEF6ED1918 because it is used for hostname api.webappsslbindingtests.com.\"\r\n    },\r\n    {\r\n      \"Code\": \"Conflict\"\r\n    },\r\n    {\r\n      \"ErrorEntity\": {\r\n        \"Code\": \"Conflict\",\r\n        \"Message\": \"Cannot remove certificate with thumbprint 40D6600B0B8740C41BA4B3D13B967DDEF6ED1918 because it is used for hostname api.webappsslbindingtests.com.\",\r\n        \"ExtendedCode\": \"04035\",\r\n        \"MessageTemplate\": \"Cannot remove certificate with thumbprint {0} because it is used for hostname {1}.\",\r\n        \"Parameters\": [\r\n          \"40D6600B0B8740C41BA4B3D13B967DDEF6ED1918\",\r\n          \"api.webappsslbindingtests.com\"\r\n        ],\r\n        \"InnerErrors\": null\r\n      }\r\n    }\r\n  ],\r\n  \"Innererror\": null\r\n}",
@@ -2572,22 +2617,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1196"
+          "1195"
         ],
         "x-ms-request-id": [
-          "3e4ea008-6977-42c0-b968-61c57a7a1dbe"
+          "9bc772d4-9d1e-47af-9f85-16d288b84f70"
         ],
         "x-ms-correlation-request-id": [
-          "3e4ea008-6977-42c0-b968-61c57a7a1dbe"
+          "9bc772d4-9d1e-47af-9f85-16d288b84f70"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151207T163407Z:3e4ea008-6977-42c0-b968-61c57a7a1dbe"
+          "CENTRALUS:20151230T060816Z:9bc772d4-9d1e-47af-9f85-16d288b84f70"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 07 Dec 2015 16:34:06 GMT"
+          "Wed, 30 Dec 2015 06:08:15 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"
@@ -2608,13 +2653,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6ddaba8a-ce42-47ec-bbc9-973d640968cb"
+          "1f1b8b1e-654a-4dec-889e-b55b2ff8ad24"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.2"
+        ],
+        "Accept": [
+          "application/json"
         ]
       },
       "ResponseBody": "{\r\n  \"Code\": \"Conflict\",\r\n  \"Message\": \"Cannot remove certificate with thumbprint 40D6600B0B8740C41BA4B3D13B967DDEF6ED1918 because it is used for hostname api.webappsslbindingtests.com.\",\r\n  \"Target\": null,\r\n  \"Details\": [\r\n    {\r\n      \"Message\": \"Cannot remove certificate with thumbprint 40D6600B0B8740C41BA4B3D13B967DDEF6ED1918 because it is used for hostname api.webappsslbindingtests.com.\"\r\n    },\r\n    {\r\n      \"Code\": \"Conflict\"\r\n    },\r\n    {\r\n      \"ErrorEntity\": {\r\n        \"Code\": \"Conflict\",\r\n        \"Message\": \"Cannot remove certificate with thumbprint 40D6600B0B8740C41BA4B3D13B967DDEF6ED1918 because it is used for hostname api.webappsslbindingtests.com.\",\r\n        \"ExtendedCode\": \"04035\",\r\n        \"MessageTemplate\": \"Cannot remove certificate with thumbprint {0} because it is used for hostname {1}.\",\r\n        \"Parameters\": [\r\n          \"40D6600B0B8740C41BA4B3D13B967DDEF6ED1918\",\r\n          \"api.webappsslbindingtests.com\"\r\n        ],\r\n        \"InnerErrors\": null\r\n      }\r\n    }\r\n  ],\r\n  \"Innererror\": null\r\n}",
@@ -2635,22 +2683,22 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1194"
+          "1193"
         ],
         "x-ms-request-id": [
-          "70418ccd-7593-4eba-8320-81ab09209c29"
+          "091bd469-b6f9-41ca-899d-12e1a13cae20"
         ],
         "x-ms-correlation-request-id": [
-          "70418ccd-7593-4eba-8320-81ab09209c29"
+          "091bd469-b6f9-41ca-899d-12e1a13cae20"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151207T163417Z:70418ccd-7593-4eba-8320-81ab09209c29"
+          "CENTRALUS:20151230T060821Z:091bd469-b6f9-41ca-899d-12e1a13cae20"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Mon, 07 Dec 2015 16:34:17 GMT"
+          "Wed, 30 Dec 2015 06:08:21 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.0"

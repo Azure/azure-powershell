@@ -20,8 +20,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// this commandlet will let you delete an existing Web app Ssl binding
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRMWebAppSSLBinding")]
-    public class RemoveAzureRMWebAppSSLBinding : WebAppSSLBindingBaseCmdlet
+    [Cmdlet(VerbsCommon.Remove, "AzureRmWebAppSSLBinding")]
+    public class RemoveAzureWebAppSSLBinding : WebAppSSLBindingBaseCmdlet
     {
         [Parameter(Position = 3, Mandatory = true, HelpMessage = "The name of the host name.")]
         [ValidateNotNullOrEmpty]

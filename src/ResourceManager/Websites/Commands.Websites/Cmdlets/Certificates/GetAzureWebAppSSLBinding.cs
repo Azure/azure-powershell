@@ -8,28 +8,26 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
-using Microsoft.Azure.Commands.WebApps.Models;
+
 using Microsoft.Azure.Commands.WebApps.Utilities;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
     /// <summary>
-    /// this commandlet will let you get existing web app certificates using ARM APIs
+    /// this commandlet will let you get an existing web app Ssl binding using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMWebAppCertificate")]
-    public class GetAzureRMWebAppCertificate : WebAppBaseClientCmdLet
+    [Cmdlet(VerbsCommon.Get, "AzureRmWebAppSSLBinding")]
+    public class GetAzureWebAppSSLBinding : WebAppSSLBindingBaseCmdlet
     {
-        [Parameter(Position = 0, Mandatory = false, HelpMessage = "The name of the resource group.")]
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = "The name of the host name.")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
-        [Parameter(Position = 1, Mandatory = false, HelpMessage = "Thumbprint of the certificate that already exists in web space")]
-        [ValidateNotNullOrEmpty]
-        public string Thumbprint { get; set; }
+        public string Name { get; set; }
 
         protected override void ProcessRecord()
         {
-            WriteObject(CmdletHelpers.GetCertificates(this.ResourcesClient, this.WebsitesClient, ResourceGroupName, Thumbprint));
+            base.ProcessRecord();
+            var webapp = WebsitesClient.GetWebApp(resourceGroupName, webAppName, slot);
+            WriteObject(CmdletHelpers.GetHostNameSslStatesFromSiteResponse(webapp, Name));
         }
     }
 }
