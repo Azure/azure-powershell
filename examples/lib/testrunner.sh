@@ -6,6 +6,7 @@ export location="westus"
 export CmdletSessionID=1010
 export MSYS_NO_PATHCONV=1
 
+echo "Logging in as user"
 . $BASEDIR/loginUser.sh
 
 for d in $( ls $BASEDIR/.. --ignore=lib ); do
