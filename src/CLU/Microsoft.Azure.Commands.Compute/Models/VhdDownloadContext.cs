@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
 {
     public class VhdDownloadContext
     {
-        public FileInfo LocalFilePath { get; set; }
-        public Uri Source { get; set; }
+        public string LocalFilePath { get; set; }
+        public string Source { get; set; }
     }
 }
