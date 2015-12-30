@@ -20,6 +20,7 @@ using Hyak.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -77,27 +78,30 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                         string originalMessage = cloudException.Error.OriginalMessage;
                         error = JsonConvert.DeserializeObject<ARMError>(originalMessage);
 
-                        string exceptionMessage = Properties.Resources.CloudExceptionDetails;
+                        StringBuilder exceptionMessage = new StringBuilder();
+                        exceptionMessage.Append(Properties.Resources.CloudExceptionDetails);
 
                         if (error.Error.Details != null)
                         {
                             foreach (ARMExceptionDetails detail in error.Error.Details)
                             {
-                                exceptionMessage = exceptionMessage + string.Concat(
-                                    string.IsNullOrEmpty(detail.ErrorCode) ? "" : "\nErrorCode: " + detail.ErrorCode,
-                                    string.IsNullOrEmpty(detail.Message) ? "" : "\nMessage: " + detail.Message,
-                                    "\n");
+                                if (!string.IsNullOrEmpty(detail.ErrorCode))
+                                    exceptionMessage.AppendLine("ErrorCode: " + detail.ErrorCode);
+                                if (!string.IsNullOrEmpty(detail.Message))
+                                    exceptionMessage.AppendLine("Message: " + detail.Message);
+
+                                exceptionMessage.AppendLine();
                             }
                         }
                         else
                         {
-                            exceptionMessage = exceptionMessage + string.Concat(
-                                   string.IsNullOrEmpty(error.Error.ErrorCode) ? "" : "\nErrorCode: " + error.Error.ErrorCode,
-                                   string.IsNullOrEmpty(error.Error.Message) ? "" : "\nMessage: " + error.Error.Message,
-                                   "\n");
+                            if (!string.IsNullOrEmpty(error.Error.ErrorCode))
+                                exceptionMessage.AppendLine("ErrorCode: " + error.Error.ErrorCode);
+                            if (!string.IsNullOrEmpty(error.Error.Message))
+                                exceptionMessage.AppendLine("Message: " + error.Error.Message);
                         }
 
-                        throw new InvalidOperationException(exceptionMessage);
+                        throw new InvalidOperationException(exceptionMessage.ToString());
                     }
                     else
                     {
