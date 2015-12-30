@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
     [Cmdlet(
         VerbsCommon.Set,
         ProfileNouns.VirtualMachineChefExtension)]
-    public class SetAzureVMChefExtension : VirtualMachineExtensionBaseCmdlet
+    public class SetAzureVMChefExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         protected const string LinuxParameterSetName = "Linux";
         protected const string WindowsParameterSetName = "Windows";
