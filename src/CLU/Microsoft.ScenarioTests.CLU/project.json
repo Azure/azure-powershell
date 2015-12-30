@@ -18,5 +18,6 @@
   },
   "dependencies": {
     "Microsoft.CLU": ""
-  }
+  },
+  "compilationOptions": { "emitEntryPoint": true }
 }

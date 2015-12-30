@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
         string _sessionId;
         Random _generator;
         string _resourceGroupName;
+        string _storageAccountName;
         IClientFactory _clientFactory = new ClientFactory();
         TestContext _context;
         ResourceManagementClient _client;
@@ -40,6 +41,9 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
         const string ResourceGroupNameKey = "groupName";
         const string locationKey = "location";
         const string SessionKey = "CmdletSessionID";
+        const string storageAccountTypeKey = "storageAccountType";
+        const string storageAccountNameKey = "storageAccountName";
+        const string DefaultStorageAccountType = "Standard_GRS";
 
         public ExampleScriptRunner(string sessionId) : this(new Random(), sessionId)
         {
@@ -54,6 +58,7 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
         {
             _generator = generator;
             _sessionId = sessionId;
+            EnvironmentVariables = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         }
 
         public IClientFactory ClientFactory
@@ -67,6 +72,8 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
             get { return _context; }
             set { _context = value; }
         }
+
+        public IDictionary<string, string> EnvironmentVariables { get; private set; } 
 
         public string ScriptOutput { get; protected set; }
 
@@ -93,6 +100,7 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
                 {
                     Trace.Listeners.Add(listener);
                     _resourceGroupName = CreateRandomName();
+                    _storageAccountName = CreateRandomName() + "sto";
                     if (File.Exists(deploymentTemplatePath))
                     {
                         DeployTemplate(deploymentTemplatePath, _resourceGroupName);
@@ -101,10 +109,18 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
                     process.EnvironmentVariables[SessionKey] = _sessionId;
                     process.EnvironmentVariables[ResourceGroupNameKey] = _resourceGroupName;
                     process.EnvironmentVariables[locationKey] = DefaultLocation;
+                    process.EnvironmentVariables[storageAccountTypeKey] = DefaultStorageAccountType;
+                    process.EnvironmentVariables[storageAccountNameKey] = _storageAccountName;
                     foreach (var helper in _context.EnvironmentHelpers)
                     {
                         helper.TrySetupScriptEnvironment(_context, _clientFactory, process.EnvironmentVariables);
                     }
+
+                    foreach (var environmentVar in EnvironmentVariables.Keys)
+                    {
+                        process.EnvironmentVariables.Add(environmentVar, EnvironmentVariables[environmentVar]);
+                    }
+
                     int statusCode = process.StartAndWaitForExit();
                     Assert.Equal(0, statusCode);
                     return process.Output;
@@ -136,7 +152,12 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
 
         public string CreateRandomName()
         {
-            return "clutst" + _generator.Next(10000, 99999);
+            return GenerateName("clutst");
+        }
+
+        public string GenerateName(string prefix)
+        {
+            return $"{prefix}{_generator.Next(10000, 99999)}";
         }
 
         private void EnsureClient()

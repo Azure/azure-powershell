@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Common.Resources.Properties {
+namespace Commands.ResourceManager.Common.Properties {
     using System;
     using System.Reflection;
     
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Common.Resources.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Common.Resources.Properties.Resources", typeof(Resources).GetTypeInfo().Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Commands.ResourceManager.Common.Properties.Resources", typeof(Resources).GetTypeInfo().Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Common.Resources.Properties {
         }
         
         /// <summary>
-        ///    Looks up a localized string similar to Context cannot be null.  Please log in using Add-AzureRmAccount..
+        ///    Looks up a localized string similar to Your credentials have not been set up.  Please add your account..
         /// </summary>
         internal static string ContextCannotBeNull {
             get {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Commands.Common.Resources.Properties {
         }
         
         /// <summary>
-        ///    Looks up a localized string similar to Profile cannot be null.  Please run Add-AzureRmAccount..
+        ///    Looks up a localized string similar to Your credentials have not been set up.  Please add your account..
         /// </summary>
         internal static string ProfileCannotBeNull {
             get {

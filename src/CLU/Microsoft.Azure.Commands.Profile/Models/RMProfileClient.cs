@@ -403,7 +403,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 catch (AadAuthenticationException)
                 {
                     WriteWarningMessage(string.Format("Could not authenticate user account {0} with tenant {1}.  " +
-                       "Subscriptions in this tenant will not be listed. Please login again using Login-AzureRmAccount " +
+                       "Subscriptions in this tenant will not be listed. Please add your account again " +
                        "to view the subscriptions in this tenant.", _profile.Context.Account, tenant));
                 }
 

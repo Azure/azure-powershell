@@ -12,7 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Diagnostics;
+using Microsoft.Extensions.Logging;
 
 namespace Microsoft.Azure.Commands.Common.ScenarioTest
 {
@@ -26,17 +28,39 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
 
         private Logger()
         {
+            var factory = new LoggerFactory();
+            _consoleLogger = factory.CreateLogger<Logger>();
+            factory.AddConsole();
         }
 
+        private ILogger _consoleLogger;
 
         public void WriteMessage(string message)
         {
             Trace.WriteLine(message);
+            LogMessageInChunks(message);
+        }
+
+        /// <summary>
+        /// The dnx logger fails with large messages
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        private void LogMessageInChunks(string message, int chunkSize = 5000)
+        {
+            if (!string.IsNullOrWhiteSpace(message))
+            {
+                for (int i = 0; i < message.Length; i += Math.Min(chunkSize, message.Length - i))
+                {
+                    _consoleLogger.LogInformation(message.Substring(i, Math.Min(chunkSize, message.Length - i)));
+                }
+            }
         }
 
         public void WriteError(string message)
         {
             Trace.WriteLine($"Error: {message}");
+            LogMessageInChunks($"Error: {message}");
         }
     }
 }
