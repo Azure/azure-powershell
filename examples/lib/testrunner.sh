@@ -5,6 +5,7 @@ export BASEDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 . $BASEDIR/setup.sh
 export groupName=`randomName testrg`
 export location="westus"
+export MSYS_NO_PATHCONV=1
 
 login
 
@@ -16,3 +17,5 @@ for d in $( ls $BASEDIR/.. --ignore=lib ); do
         echo "success: $f"
     done
 done
+
+export MSYS_NO_PATHCONV=
