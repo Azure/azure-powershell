@@ -173,13 +173,16 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
 
         private void ProcessError(object sender, DataReceivedEventArgs e)
         {
-            Logger.Instance.WriteError(e.Data);
+            if (e.Data != null)
+            {
+                Logger.Instance.WriteError(e.Data);
+            }
         }
 
         private void ProcessOutput(object sender, DataReceivedEventArgs e)
         {
-            Logger.Instance.WriteMessage(e.Data);
             _processOutput.Append(e.Data);
+            Logger.Instance.WriteMessage(e.Data);
         }
 
         private void EndProcess()
