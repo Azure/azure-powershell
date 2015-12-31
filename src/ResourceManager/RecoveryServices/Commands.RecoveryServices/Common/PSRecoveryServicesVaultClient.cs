@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <returns>vault list response object.</returns>
         public VaultListResponse GetVaultsInResouceGroup(string resouceGroupName)
         {
-            return this.GetRecoveryServicesClient.Vaults.Get(resouceGroupName, this.GetRequestHeaders());
+            return this.GetRecoveryServicesClient.Vaults.List(resouceGroupName, this.GetRequestHeaders());
         }
 
         /// <summary>
