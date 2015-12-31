@@ -302,8 +302,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             var publicSettings = new DscExtensionPublicSettings();
             var privateSettings = new DscExtensionPrivateSettings();
 
-            publicSettings.WmfVersion = string.IsNullOrEmpty(WmfVersion) ? "latest" : WmfVersion;
-
             if (!string.IsNullOrEmpty(ArchiveBlobName))
             {
                 ConfigurationUris configurationUris = UploadConfigurationDataToBlob();
@@ -321,6 +319,11 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                 privateSettings.Items = settings.Item2;
 
                 privateSettings.DataBlobUri = configurationUris.DataBlobUri;
+
+                if (!string.IsNullOrEmpty(WmfVersion))
+                {
+                    publicSettings.WmfVersion = WmfVersion;
+                }
             }
 
             if (string.IsNullOrEmpty(this.Location))

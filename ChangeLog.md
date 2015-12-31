@@ -1,3 +1,6 @@
+* Azure Redis Cache: new cmdlets for enabling and disabling diagnostics
+  * Set-AzureRmRedisCacheDiagnostics
+  * Remove-AzureRmRedisCacheDiagnostics
 ## 2015.12.14 version 1.0.2
 * Azure Compute (ARM):
   * Enable BGInfo extension by default
