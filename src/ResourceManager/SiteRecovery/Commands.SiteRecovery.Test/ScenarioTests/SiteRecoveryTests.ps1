@@ -69,7 +69,7 @@ function Test-SiteRecoveryCreateProfile
 	Import-AzureRmSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
 
 	# Create profile
-	$job = New-AzureRmSiteRecoveryPolicy -Name ppAzure -ReplicationProvider HyperVReplicaAzure -ReplicationFrequencyInSeconds 30 -RecoveryPoints 1 -ApplicationConsistentSnapshotFrequencyInHours 0 -RecoveryAzureStorageAccountId "/subscriptions/00a07ea0-ad8b-491c-9de8-77bf10881499/resourceGroups/testsitegroup/providers/Microsoft.Storage/storageAccounts/sa5151"
+	$job = New-AzureRmSiteRecoveryPolicy -Name ppAzure -ReplicationProvider HyperVReplicaAzure -ReplicationFrequencyInSeconds 30 -RecoveryPoints 1 -ApplicationConsistentSnapshotFrequencyInHours 0 -RecoveryAzureStorageAccountId "/subscriptions/aef7cd8f-a06f-407d-b7f0-cc78cfebaab0/resourceGroups/Default-Storage-WestUS/providers/Microsoft.ClassicStorage/storageAccounts/b2astorageversion1"
 
 	# WaitForJobCompletion -JobId $job.Name
 }
@@ -107,7 +107,7 @@ function Test-SiteRecoveryAssociateProfile
 	Import-AzureRmSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
 
 	# Get the primary cloud, recovery cloud, and protection profile
-	$pri = Get-AzureRmSiteRecoveryProtectionContainer -FriendlyName cloud9
+	$pri = Get-AzureRmSiteRecoveryProtectionContainer -FriendlyName B2asite1
 	$pp = Get-AzureRmSiteRecoveryPolicy -Name ppAzure;
 
 	# Associate the profile
@@ -127,7 +127,7 @@ function Test-SiteRecoveryDissociateProfile
 	Import-AzureRmSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
 
 	# Get the primary cloud, recovery cloud, and protection profile
-	$pri = Get-AzureRmSiteRecoveryProtectionContainer -FriendlyName cloud9
+	$pri = Get-AzureRmSiteRecoveryProtectionContainer -FriendlyName B2asite1
 	$pp = Get-AzureRmSiteRecoveryPolicy -Name ppAzure;
 
 	# Dissociate the profile
@@ -166,7 +166,7 @@ Site Recovery Vault CRUD Tests
 function Test-SiteRecoveryVaultCRUDTests
 {
 	# Create vault
-	$vaultCreationResponse = New-AzureRmSiteRecoveryVault -Name rsv1 -ResouceGroupName testsitegroup -Location westus
+	$vaultCreationResponse = New-AzureRmSiteRecoveryVault -Name rsv1 -ResourceGroupName S91-1 -Location westus
 	Assert-NotNull($vaultCreationResponse.Name)
 	Assert-NotNull($vaultCreationResponse.ID)
 	Assert-NotNull($vaultCreationResponse.Type)
@@ -183,13 +183,13 @@ function Test-SiteRecoveryVaultCRUDTests
 	}
 
 	# Get the created vault
-	$vaultToBeRemoved = Get-AzureRmSiteRecoveryVault -ResourceGroupName testsitegroup -Name rsv1
+	$vaultToBeRemoved = Get-AzureRmSiteRecoveryVault -ResourceGroupName S91-1 -Name rsv1
 	Assert-NotNull($vaultToBeRemoved.Name)
 	Assert-NotNull($vaultToBeRemoved.ID)
 	Assert-NotNull($vaultToBeRemoved.Type)
 
 	# Remove Vault
 	Remove-AzureRmSiteRecoveryVault -Vault $vaultToBeRemoved
-	$vaults = Get-AzureRmSiteRecoveryVault -ResourceGroupName testsitegroup -Name rsv1
+	$vaults = Get-AzureRmSiteRecoveryVault -ResourceGroupName S91-1 -Name rsv1
 	Assert-True { $vaults.Count -eq 0 }
 }
