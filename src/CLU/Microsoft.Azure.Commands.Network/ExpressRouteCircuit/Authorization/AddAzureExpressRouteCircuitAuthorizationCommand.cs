@@ -24,12 +24,6 @@ namespace Microsoft.Azure.Commands.Network
     public class AddAzureExpressRouteCircuitAuthorizationCommand : AzureExpressRouteCircuitAuthorizationBase
     {
         [Parameter(
-            Mandatory = true,
-            HelpMessage = "The name of the Authorization")]
-        [ValidateNotNullOrEmpty]
-        public override string Name { get; set; }
-
-        [Parameter(
            Mandatory = true,
            ValueFromPipeline = true,
            HelpMessage = "The Circuit")]

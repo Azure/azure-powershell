@@ -24,12 +24,6 @@ namespace Microsoft.Azure.Commands.Network
     {
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The name of the route")]
-        [ValidateNotNullOrEmpty]
-        public override string Name { get; set; }
-
-        [Parameter(
-            Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The RouteTable")]
         public PSRouteTable RouteTable { get; set; }

@@ -23,12 +23,6 @@ namespace Microsoft.Azure.Commands.Network
     public class SetAzureRouteConfigCommand : AzureRouteConfigBase
     {
         [Parameter(
-           Mandatory = true,
-           HelpMessage = "The name of the route")]
-        [ValidateNotNullOrEmpty]
-        public override string Name { get; set; }
-
-        [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The RouteTable")]

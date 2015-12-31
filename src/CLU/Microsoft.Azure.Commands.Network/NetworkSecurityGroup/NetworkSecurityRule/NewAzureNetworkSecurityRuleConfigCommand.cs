@@ -20,12 +20,6 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet(VerbsCommon.New, "AzureRmNetworkSecurityRuleConfig"), OutputType(typeof(PSSecurityRule))]
     public class NewAzureNetworkSecurityRuleConfigCommand : AzureNetworkSecurityRuleConfigBase
     {
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The name of the rule")]
-        [ValidateNotNullOrEmpty]
-        public override string Name { get; set; }
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();

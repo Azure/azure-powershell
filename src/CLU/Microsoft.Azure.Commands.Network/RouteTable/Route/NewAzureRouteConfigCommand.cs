@@ -20,12 +20,6 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet(VerbsCommon.New, "AzureRmRouteConfig"), OutputType(typeof(PSRoute))]
     public class NewAzureRouteConfigCommand : AzureRouteConfigBase
     {
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The name of the route")]
-        [ValidateNotNullOrEmpty]
-        public override string Name { get; set; }
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();

@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.Network
     public class AzureLoadBalancerRuleConfigBase : NetworkBaseCmdlet
     {
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The name of the load balancer rule")]
         [ValidateNotNullOrEmpty]
-        public virtual string Name { get; set; }
+        public string Name { get; set; }
 
         [Parameter(
            ParameterSetName = "SetByResourceId",

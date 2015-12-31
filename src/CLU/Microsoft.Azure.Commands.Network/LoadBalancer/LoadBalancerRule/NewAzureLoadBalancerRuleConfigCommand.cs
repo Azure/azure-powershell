@@ -22,12 +22,6 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet(VerbsCommon.New, "AzureRmLoadBalancerRuleConfig"), OutputType(typeof(PSLoadBalancingRule))]
     public class NewAzureLoadBalancerRuleConfigCommand : AzureLoadBalancerRuleConfigBase
     {
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The name of the load balancer rule")]
-        [ValidateNotNullOrEmpty]
-        public override string Name { get; set; }
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();

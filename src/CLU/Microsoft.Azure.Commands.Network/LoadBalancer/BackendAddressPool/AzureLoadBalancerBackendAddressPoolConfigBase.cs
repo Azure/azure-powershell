@@ -19,9 +19,9 @@ namespace Microsoft.Azure.Commands.Network
     public class AzureLoadBalancerBackendAddressPoolConfigBase : NetworkBaseCmdlet
     {
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The name of the BackendAddressPool")]
         [ValidateNotNullOrEmpty]
-        public virtual string Name { get; set; }
+        public string Name { get; set; }
     }
 }

@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.Network
     public class AzureExpressRouteCircuitAuthorizationBase : NetworkBaseCmdlet
     {
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The name of the Authorization")]
         [ValidateNotNullOrEmpty]
-        public virtual string Name { get; set; }
+        public string Name { get; set; }
 
     }
 }

@@ -22,12 +22,6 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet(VerbsCommon.New, "AzureRmExpressRouteCircuitPeeringConfig"), OutputType(typeof(PSPeering))]
     public class NewAzureExpressRouteCircuitPeeringConfigCommand : AzureExpressRouteCircuitPeeringConfigBase
     {
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The name of the Peering")]
-        [ValidateNotNullOrEmpty]
-        public override string Name { get; set; }
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();

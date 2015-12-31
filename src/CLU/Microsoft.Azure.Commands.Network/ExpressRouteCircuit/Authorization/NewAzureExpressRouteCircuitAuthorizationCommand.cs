@@ -12,8 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
 
@@ -22,12 +20,6 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet(VerbsCommon.New, "AzureRmExpressRouteCircuitAuthorization"), OutputType(typeof(PSExpressRouteCircuitAuthorization))]
     public class NewAzureExpressRouteCircuitAuthorizationCommand : AzureExpressRouteCircuitAuthorizationBase
     {
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The name of the Authorization")]
-        [ValidateNotNullOrEmpty]
-        public override string Name { get; set; }
-
         protected override void ProcessRecord()
         {
             base.ProcessRecord();

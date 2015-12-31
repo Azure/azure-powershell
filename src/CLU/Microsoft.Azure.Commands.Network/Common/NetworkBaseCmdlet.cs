@@ -45,11 +45,12 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.ProcessRecord();
             NetworkResourceManagerProfile.Initialize();
+            this.ExecuteCmdlet();
         }
 
         public virtual void ExecuteCmdlet()
         {
-            this.ProcessRecord();
+            
         }
 
         public static string GetResourceGroup(string resourceId)

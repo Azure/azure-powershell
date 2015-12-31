@@ -20,10 +20,10 @@ namespace Microsoft.Azure.Commands.Network
     public class AzureLoadBalancerFrontendIpConfigBase : NetworkBaseCmdlet
     {
         [Parameter(
-            Mandatory = false,
-            HelpMessage = "The name of the FrontendIpConfiguration")]
+            Mandatory = true,
+            HelpMessage = "The name of the IPConfiguration")]
         [ValidateNotNullOrEmpty]
-        public virtual string Name { get; set; }
+        public string Name { get; set; }
 
         [Parameter(
             Mandatory = false,

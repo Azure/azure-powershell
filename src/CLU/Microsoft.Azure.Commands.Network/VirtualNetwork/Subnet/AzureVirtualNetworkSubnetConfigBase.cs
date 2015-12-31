@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Commands.Network
     public class AzureVirtualNetworkSubnetConfigBase : NetworkBaseCmdlet
     {
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The name of the subnet")]
         [ValidateNotNullOrEmpty]
-        public virtual string Name { get; set; }
+        public string Name { get; set; }
 
         [Parameter(
             Mandatory = true,

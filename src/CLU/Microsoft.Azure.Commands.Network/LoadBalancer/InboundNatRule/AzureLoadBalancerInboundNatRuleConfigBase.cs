@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.Network
     public class AzureLoadBalancerInboundNatRuleConfigBase : NetworkBaseCmdlet
     {
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The name of the Inbound NAT rule")]
         [ValidateNotNullOrEmpty]
-        public virtual string Name { get; set; }
+        public string Name { get; set; }
 
         [Parameter(
             ParameterSetName = "SetByResourceId",
