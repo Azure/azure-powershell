@@ -8,8 +8,8 @@ namespace System.Management.Automation
         public CommandTypes CommandType { get { return CommandTypes.Cmdlet; } }
         public string Name { get; protected set; }
         public abstract ReadOnlyCollection<PSTypeName> OutputType { get;  }
-        public virtual Dictionary<string, ParameterMetadata> Parameters { get; private set; }
-        public ReadOnlyCollection<CommandParameterSetInfo> ParameterSets { get; protected set; }
+        public virtual Dictionary<string, ParameterMetadata> Parameters { get; }
+        public ReadOnlyCollection<CommandParameterSetInfo> ParameterSets { get; }
         public PSModuleInfo Module { get; protected set; }
         public string ModuleName { get { return Module.Name; } }
 
