@@ -12,14 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.Common.Storage;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Management.Storage;
-using Newtonsoft.Json;
 using System.Linq;
 using System.Management.Automation;
-
+using Microsoft.WindowsAzure.Commands.Common.Storage;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Common;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
+using Microsoft.WindowsAzure.Management.Storage;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 {
@@ -140,9 +138,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             {
                 if (string.IsNullOrEmpty(this.publicConfiguration))
                 {
-                    this.publicConfiguration =
-                        JsonConvert.SerializeObject(DiagnosticsHelper.GetPublicDiagnosticsConfigurationFromFile(this.DiagnosticsConfigurationPath,
-                            this.StorageAccountName));
+                    this.publicConfiguration = DiagnosticsHelper.GetJsonSerializedPublicDiagnosticsConfigurationFromFile(this.DiagnosticsConfigurationPath,
+                            this.StorageAccountName);
                 }
 
                 return this.publicConfiguration;
@@ -155,9 +152,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             {
                 if (string.IsNullOrEmpty(this.privateConfiguration))
                 {
-                    this.privateConfiguration =
-                        JsonConvert.SerializeObject(DiagnosticsHelper.GetPrivateDiagnosticsConfiguration(this.StorageAccountName, this.StorageKey,
-                            this.Endpoint));
+                    this.privateConfiguration = DiagnosticsHelper.GetJsonSerializedPrivateDiagnosticsConfiguration(this.StorageAccountName, this.StorageKey,
+                            this.Endpoint);
                 }
 
                 return this.privateConfiguration;
