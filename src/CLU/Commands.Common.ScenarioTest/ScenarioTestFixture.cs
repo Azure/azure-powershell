@@ -16,7 +16,6 @@ using System;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.ScenarioTest;
 using Microsoft.Azure.Commands.Models;
-using Moq.Protected;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Common.ScenarioTest
@@ -34,6 +33,10 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
             var helper = GetRunner("lib");
             var profileText = helper.RunScript(credentials.LoginScriptName);
             var profile = JsonConvert.DeserializeObject<PSAzureProfile>(profileText);
+            if (profile == null)
+            {
+                throw new ArgumentOutOfRangeException(nameof(profile), $"Deserialized profile is null: `{profileText}`");
+            }
             AzureContext = (AzureContext) (profile.Context);
         }
 

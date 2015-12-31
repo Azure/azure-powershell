@@ -31,12 +31,19 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
         {
             _collectionState = fixture;
         }
+
         [Fact]
-        public void RunSampleTest()
+        public void ResourceGroupsTest()
         {
             var helper = _collectionState.GetRunner("resource-management");
             helper.RunScript("01-ResourceGroups");
         }
 
+        [Fact]
+        public void VirtualHardDisksTest()
+        {
+            var helper = _collectionState.GetRunner("virtual-hard-disk");
+            helper.RunScript("01-VirtualHardDisks");
+        }
     }
 }

@@ -20,7 +20,6 @@
     "Commands.Common": "",
     "Commands.Common.Authentication": "",
     "Commands.ResourceManager.Common": "",
-    "Commands.ScenarioTests.ResourceManager.Common": "",
     "Microsoft.Azure.Commands.Profile": "",
     "Microsoft.Azure.Management.Resources": "3.3.0-preview",
     "Microsoft.Extensions.Logging.Console": "1.0.0-rc1-final",

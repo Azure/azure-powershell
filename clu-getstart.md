@@ -118,13 +118,13 @@ Testing will consist of scenario tests and unit tests. Scenario tests should be 
     ```
     - Set the environment variable 'TestCredentials' to a connection string providing the credentials to use during test execution. Possible fields include:
     
-      |  Field        |  Description  |
+      |  Field (case sensitive) |  Description  |
       | ------------- |:-------------|
       |  Username     | an OrgId user name |
       | ServicePrincipal | a service principal name |
       | Password      | the password or application secret to sue for authentication |
       | TenantId      | (required for Service authentication) The tenant guid to authenticate against |
-      | SubscriptionID | (optional) Selects a particular subscription by id.  If not provided, the first listed subscription will be selected |
+      | SubscriptionId | (optional) Selects a particular subscription by id.  If not provided, the first listed subscription will be selected |
     - The infrastructure automatically generates a resource group name and assigns the value to the bash variable ```"$resourceGroupName"```.  If your scripts require additional variables, you can add these to your environment before running tests, or you can generate values using the ScriptRunner (for the tests using that runner).
     ```C#
         runner.EnvironmentVariables.Add("myVariableName", runner.GenerateName("myres"));
