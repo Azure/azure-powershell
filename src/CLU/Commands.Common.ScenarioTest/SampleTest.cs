@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
         }
 
         [Fact]
-        public void RunVirtualMachineSizeTest()
+        public void VirtualMachineSizeTest()
         {
             var helper = _collectionState.GetRunner("compute-management");
             helper.RunScript("01-VirtualMachineSizes");
