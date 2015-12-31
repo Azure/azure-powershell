@@ -502,7 +502,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
                 State = (ProvisioningState)Enum.Parse(typeof(ProvisioningState), response.State, true),
                 VIPAddress = response.VipAddress,
                 DefaultSite = (response.DefaultSite != null ? response.DefaultSite.Name : null),
-                GatewaySKU = response.GatewaySKU,
+                GatewaySKU = response.GatewaySKU, 
             };
             PopulateOperationContext(response.RequestId, gatewayContext);
 
@@ -1096,6 +1096,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
                 VnetId = response.VnetId,
                 SubnetId = response.SubnetId,
                 EnableBgp = response.EnableBgp.ToString(),
+                Asn = response.BgpSettings.Asn,
+                BgpPeeringAddress = response.BgpSettings.BgpPeeringAddress,
+                PeerWeight = response.BgpSettings.PeerWeight,
             };
             PopulateOperationContext(response.RequestId, gatewayContext);
 
@@ -1123,6 +1126,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
                 GatewayConnectionType = response.GatewayConnectionType,
                 RoutingWeight = response.RoutingWeight,
                 SharedKey = response.SharedKey,
+                EnableBgp = response.EnableBgp.ToString(),
             };
             PopulateOperationContext(response.RequestId, gatewayContext);
 
@@ -1144,6 +1148,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
                 GatewayName = response.GatewayName,
                 IpAddress = response.IpAddress,
                 AddressSpace = response.AddressSpace.ToList(),
+                Asn = response.BgpSettings.Asn,
+                BgpPeeringAddress = response.BgpSettings.BgpPeeringAddress,
+                PeerWeight = response.BgpSettings.PeerWeight,
             };
             PopulateOperationContext(response.RequestId, gatewayContext);
 
@@ -1215,6 +1222,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
                         GatewayName = localNetworkGateway.GatewayName,
                         IpAddress = localNetworkGateway.IpAddress,
                         AddressSpace = localNetworkGateway.AddressSpace.ToList(),
+                        Asn = localNetworkGateway.BgpSettings.Asn,
+                        BgpPeeringAddress = localNetworkGateway.BgpSettings.BgpPeeringAddress,
+                        PeerWeight = localNetworkGateway.BgpSettings.PeerWeight,
                     };
                 });
             PopulateOperationContext(response.RequestId, localNetworkGateways);
@@ -1249,7 +1259,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
             return sharedKeyContext;
         }
 
-        public GatewayGetOperationStatusResponse CreateVirtualNetworkGateway(string vnetName, string gatewayName, string gatewayType, string gatewaySKU, string location, string vnetId)
+        public GatewayGetOperationStatusResponse CreateVirtualNetworkGateway(string vnetName, string gatewayName, string gatewayType, string gatewaySKU, string location, string vnetId,
+            uint Asn, string BgpPeeringAddress, int PeerWeight)
         {
             VirtualNetworkGatewayCreateParameters parameters = new VirtualNetworkGatewayCreateParameters()
             {
@@ -1258,13 +1269,18 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
                 GatewayType = gatewayType,
                 Location = location,
                 VnetId = vnetId,
+                BgpSettings = Asn > 0?new BgpSettings {
+                    Asn = Asn,
+                    BgpPeeringAddress = BgpPeeringAddress,
+                    PeerWeight = PeerWeight
+                }:null,
             };
 
             return client.Gateways.CreateVirtualNetworkGateway(vnetName, parameters);
         }
 
         public GatewayGetOperationStatusResponse CreateVirtualNetworkGatewayConnection(string connectedEntityId, string gatewayConnectionName, string gatewayConnectionType,
-            int routingWeight, string sharedKey, Guid virtualNetworkGatewayId)
+            int routingWeight, string sharedKey, Guid virtualNetworkGatewayId, bool EnableBgp)
         {
             GatewayConnectionCreateParameters parameters = new GatewayConnectionCreateParameters()
             {
@@ -1273,19 +1289,26 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
                 GatewayConnectionType = gatewayConnectionType,
                 VirtualNetworkGatewayId = virtualNetworkGatewayId,
                 RoutingWeight = routingWeight,
-                SharedKey = sharedKey,               
+                SharedKey = sharedKey,  
+                EnableBgp = EnableBgp,
             };
 
             return client.Gateways.CreateGatewayConnection(parameters);
         }
 
-        public LocalNetworkGatewayCreateResponse CreateLocalNetworkGateway(string gatewayName, string ipAddress, List<string> addressSpace)
+        public LocalNetworkGatewayCreateResponse CreateLocalNetworkGateway(string gatewayName, string ipAddress, List<string> addressSpace,
+            uint Asn, string BgpPeeringAddress, int PeerWeight)
         {
             LocalNetworkGatewayCreateParameters parameters = new LocalNetworkGatewayCreateParameters()
             {
                 AddressSpace = addressSpace,
                 GatewayName = gatewayName,
                 IpAddress = ipAddress,
+                BgpSettings = Asn > 0? new BgpSettings {
+                    Asn = Asn,
+                    BgpPeeringAddress = BgpPeeringAddress,
+                    PeerWeight = PeerWeight,
+                }:null,
             };
 
             return client.Gateways.CreateLocalNetworkGateway(parameters);
@@ -1340,21 +1363,27 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
             return client.Gateways.ResizeVirtualNetworkGateway(gatewayId, parameters);
         }
 
-        public GatewayGetOperationStatusResponse UpdateVirtualNetworkGatewayConnection(string gatewayId, string connectedentityId, int routingWeight, string sharedKey)
+        public GatewayGetOperationStatusResponse UpdateVirtualNetworkGatewayConnection(string gatewayId, string connectedentityId, int routingWeight, string sharedKey, bool EnableBgp)
         {
             UpdateGatewayConnectionParameters parameters = new UpdateGatewayConnectionParameters()
             {
                 RoutingWeight = routingWeight,
                 SharedKey = sharedKey,
+                EnableBgp = EnableBgp,
             };
             return client.Gateways.UpdateGatewayConnection(gatewayId, connectedentityId, parameters);
         }
 
-        public AzureOperationResponse UpdateLocalNetworkGateway(string gatewayId, List<string> addressSpace)
+        public AzureOperationResponse UpdateLocalNetworkGateway(string gatewayId, List<string> addressSpace, uint Asn, string BgpPeeringAddress, int PeerWeight)
         {
             UpdateLocalNetworkGatewayParameters parameters = new UpdateLocalNetworkGatewayParameters()
             {
                 AddressSpace = addressSpace,
+                BgpSettings = Asn > 0?new BgpSettings {
+                    Asn = Asn,
+                    BgpPeeringAddress = BgpPeeringAddress,
+                    PeerWeight = PeerWeight,
+                }:null,
             };
 
             return client.Gateways.UpdateLocalNetworkGateway(gatewayId, parameters);

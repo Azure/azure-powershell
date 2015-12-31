@@ -31,5 +31,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
         public int RoutingWeight { get; set; }
 
         public string SharedKey { get; set; }
+
+        public string EnableBgp { get; set; }
     }
 }
