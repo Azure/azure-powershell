@@ -39,10 +39,11 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
         ResourceManagementClient _client;
         const string DefaultLocation = "westus";
         const string ResourceGroupNameKey = "groupName";
-        const string locationKey = "location";
+        const string LocationKey = "location";
+        const string BaseDir = "BASEDIR";
         const string SessionKey = "CmdletSessionID";
-        const string storageAccountTypeKey = "storageAccountType";
-        const string storageAccountNameKey = "storageAccountName";
+        const string StorageAccountTypeKey = "storageAccountType";
+        const string StorageAccountNameKey = "storageAccountName";
         const string DefaultStorageAccountType = "Standard_GRS";
 
         public ExampleScriptRunner(string sessionId) : this(new Random(), sessionId)
@@ -106,11 +107,12 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
                         DeployTemplate(deploymentTemplatePath, _resourceGroupName);
                     }
 
+                    process.EnvironmentVariables[BaseDir] = testDirectory;
                     process.EnvironmentVariables[SessionKey] = _sessionId;
                     process.EnvironmentVariables[ResourceGroupNameKey] = _resourceGroupName;
-                    process.EnvironmentVariables[locationKey] = DefaultLocation;
-                    process.EnvironmentVariables[storageAccountTypeKey] = DefaultStorageAccountType;
-                    process.EnvironmentVariables[storageAccountNameKey] = _storageAccountName;
+                    process.EnvironmentVariables[LocationKey] = DefaultLocation;
+                    process.EnvironmentVariables[StorageAccountTypeKey] = DefaultStorageAccountType;
+                    process.EnvironmentVariables[StorageAccountNameKey] = _storageAccountName;
                     foreach (var helper in _context.EnvironmentHelpers)
                     {
                         helper.TrySetupScriptEnvironment(_context, _clientFactory, process.EnvironmentVariables);
