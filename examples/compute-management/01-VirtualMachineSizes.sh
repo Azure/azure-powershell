@@ -2,33 +2,39 @@
 set -e
 printf "\n=== Managing Virtual Machine Sizes in Azure Compute ===\n"
 
-printf "\nShowing VM size results in location: %s.\n" "$location"
+printf "\n1. Showing VM size results in location: %s.\n" "$location"
 azure vmsize get --location "$location"
 
-printf "\nChecking VM size results in location: %s.\n" "$location"
+printf "\n2. Checking VM size results in location: %s.\n" "$location"
 vmSizeResult=`azure vmsize get --location "$location"`
 
-if [ "$vmSizeResult" = "" ]; then
+if [[ $vmSizeResult == "" ]]; then
     echo "Failure: No VM sizes!" 1>&2
     exit 1
 else
-    printf "\nSuccess: Non-empty Results.\n"
+    echo "Success: Non-empty Results."
 fi
 
-queryString=Standard_A0
-result=`echo "$vmSizeResult" | grep -q "$queryString"`
-if [ "$vmSizeResult" = "" ] ; then
-    printf "\nFailure: VM Size Not Found: '%s'.\n" "$queryString"
+filterResult=`azure vmsize get --location "$location" | cat | jq 'select(.name | contains("Standard_A0"))' --raw-output`
+if [[ "$filterResult" == "" ]]; then
+    echo "Failure: Standard_A0 vm size not found." 1>&2
     exit 1
 else
-    printf "\nSuccess: VM Size Found in Results: '%s'.\n" "$queryString"
+    echo "Success: Standard_A0 vm size found."
 fi
 
-queryString=Standard_G1
-result=`echo "$vmSizeResult" | grep -q "$queryString"`
-if [ "$vmSizeResult" = "" ] ; then
-    printf "\nFailure: VM Size Not Found: '%s'.\n" "$queryString"
+filterResult=`azure vmsize get --location "$location" | cat | jq 'select(.name | contains("Standard_G1"))' --raw-output`
+if [[ "$filterResult" == "" ]]; then
+    echo "Failure: Standard_G1 vm size not found." 1>&2
     exit 1
 else
-    printf "\nSuccess: VM Size Found in Results: '%s'.\n" "$queryString"
+    echo "Success: Standard_G1 vm size found."
 fi
+
+filterResult=`azure vmsize get --location "$location" | cat | jq 'select(.name | contains("NonStandard_A1"))' --raw-output`
+if [[ "$filterResult" == "" ]]; then
+    echo "Success: NonStandard_A1 vm size not found."
+else
+    echo "Failure: NonStandard_A1 vm size found." 1>&2
+    exit 1
+fi 
