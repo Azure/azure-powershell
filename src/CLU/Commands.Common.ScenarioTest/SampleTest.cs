@@ -45,5 +45,12 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
             var helper = _collectionState.GetRunner("virtual-hard-disk");
             helper.RunScript("01-VirtualHardDisks");
         }
+
+        [Fact]
+        public void VirtualMachineSizeTest()
+        {
+            var helper = _collectionState.GetRunner("compute-management");
+            helper.RunScript("01-VirtualMachineSizes");
+        }
     }
 }
