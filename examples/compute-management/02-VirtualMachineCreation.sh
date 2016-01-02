@@ -22,6 +22,8 @@ echo -n "$subnetId" > "$BASEDIR/$groupName.subnetIdFile"
 printf "\n4. Create network interface with:\r\nsubId='%s' \r\n& \r\nsubnetId='$subnetId'.\n" "$subId"
 azure network interface create --name test --resourcegroupname "$groupName" --location "$location" --subnetid @"$BASEDIR/$groupName.subnetIdFile"
 
+rm -f "$BASEDIR/$groupName.subnetIdFile"
+
 nicId="/subscriptions/$subId/resourceGroups/$groupName/providers/Microsoft.Network/networkInterfaces/test"
 
 vhdUri="https://$storageAccountName.blob.core.windows.net/$storageAccountName/$storageAccountName.vhd"

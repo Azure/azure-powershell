@@ -85,7 +85,9 @@ namespace Microsoft.Azure.Commands.Compute
                 };
 
                 var op = this.VirtualMachineClient.CreateOrUpdate(this.ResourceGroupName, this.VM.Name, parameters);
-                var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+                // TODO: CLU
+                var result = op;
+                //var result = Mapper.Map<PSComputeLongRunningOperation>(op);
                 WriteObject(result);
             });
         }
