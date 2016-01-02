@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.Compute
         {                        
             var storageAccountName = GetStorageAccountNameFromStorageProfile();
             var storageClient =
-                    ClientFactory.CreateClient<StorageManagementClient>(DefaultProfile.Context,
+                    ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.Context,
                         AzureEnvironment.Endpoint.ResourceManager);
 
             if (!string.IsNullOrEmpty(storageAccountName))
@@ -113,12 +113,12 @@ namespace Microsoft.Azure.Commands.Compute
                     if (e.Message.Contains("ResourceNotFound"))
                     {
                         WriteWarning(string.Format(
-                            Properties.Resources.ResourceManager.GetString("StorageAccountNotFoundForBootDiagnostics"), storageAccountName));
+                            Properties.Resources.StorageAccountNotFoundForBootDiagnostics, storageAccountName));
                     }
                     else
                     {
                         WriteWarning(string.Format(
-                            Properties.Resources.ResourceManager.GetString("ErrorDuringGettingStorageAccountForBootDiagnostics"), storageAccountName, e.Message));
+                            Properties.Resources.ErrorDuringGettingStorageAccountForBootDiagnostics, storageAccountName, e.Message));
                     }
                 }
             }
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.Compute
                 return CreateStandardStorageAccount(storageClient);
             }
 
-            WriteWarning(string.Format(Properties.Resources.ResourceManager.GetString("UsingExistingStorageAccountForBootDiagnostics"), storageAccount.Name));
+            WriteWarning(string.Format(Properties.Resources.UsingExistingStorageAccountForBootDiagnostics, storageAccount.Name));
 
             return new Uri(storageAccount.PrimaryEndpoints.Blob);
         }
@@ -197,14 +197,14 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 client.StorageAccounts.Create(this.ResourceGroupName, storageAccountName, storaeAccountParameter);
                 var getresponse = client.StorageAccounts.GetProperties(this.ResourceGroupName, storageAccountName);
-                WriteWarning(string.Format(Resources.ResourceManager.GetString("CreatingStorageAccountForBootDiagnostics"), storageAccountName));
+                WriteWarning(string.Format(Resources.CreatingStorageAccountForBootDiagnostics, storageAccountName));
 
                 return new Uri(getresponse.PrimaryEndpoints.Blob);
             }
             catch (Exception e)
             {
                 // Failed to create a storage account for boot diagnostics.
-                WriteWarning(string.Format(Properties.Resources.ResourceManager.GetString("ErrorDuringCreatingStorageAccountForBootDiagnostics"), e));
+                WriteWarning(string.Format(Properties.Resources.ErrorDuringCreatingStorageAccountForBootDiagnostics, e));
                 return null;
             }
         }
