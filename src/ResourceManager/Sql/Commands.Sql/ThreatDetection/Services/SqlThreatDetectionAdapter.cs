@@ -133,13 +133,10 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         private void ModelizeDisabledAlerts(DatabaseThreatDetectionPolicyModel model, string disabledAlerts)
         {
             HashSet<DetectionType> detectionTypes = new HashSet<DetectionType>();
-            if (disabledAlerts.IndexOf(SecurityConstants.Successful_SQLi) != -1) detectionTypes.Add(DetectionType.Successful_SQLi);
-            if (disabledAlerts.IndexOf(SecurityConstants.Attempted_SQLi) != -1) detectionTypes.Add(DetectionType.Attempted_SQLi);
-            if (disabledAlerts.IndexOf(SecurityConstants.Client_GEO_Anomaly) != -1) detectionTypes.Add(DetectionType.Client_GEO_Anomaly);
-            if (disabledAlerts.IndexOf(SecurityConstants.Failed_Logins_Anomaly) != -1) detectionTypes.Add(DetectionType.Failed_Logins_Anomaly);
-            if (disabledAlerts.IndexOf(SecurityConstants.Failed_Queries_Anomaly) != -1) detectionTypes.Add(DetectionType.Failed_Queries_Anomaly);
-            if (disabledAlerts.IndexOf(SecurityConstants.Data_Extraction_Anomaly) != -1) detectionTypes.Add(DetectionType.Data_Extraction_Anomaly);
-            if (disabledAlerts.IndexOf(SecurityConstants.Data_Alteration_Anomaly) != -1) detectionTypes.Add(DetectionType.Data_Alteration_Anomaly); 
+            if (disabledAlerts.IndexOf(SecurityConstants.Sql_Injection) != -1) detectionTypes.Add(DetectionType.Sql_Injection);
+            if (disabledAlerts.IndexOf(SecurityConstants.Sql_Injection_Vulnerability) != -1) detectionTypes.Add(DetectionType.Sql_Injection_Vulnerability);
+            if (disabledAlerts.IndexOf(SecurityConstants.Access_Anomaly) != -1) detectionTypes.Add(DetectionType.Access_Anomaly);
+            if (disabledAlerts.IndexOf(SecurityConstants.Usage_Anomaly) != -1) detectionTypes.Add(DetectionType.Usage_Anomaly);
             model.ExcludedDetectionTypes = detectionTypes.ToArray();
         }
 
@@ -212,33 +209,21 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
             }
 
             StringBuilder detectionTypes = new StringBuilder();
-            if (IsDetectionTypeOn(DetectionType.Successful_SQLi, model.ExcludedDetectionTypes))
+            if (IsDetectionTypeOn(DetectionType.Sql_Injection, model.ExcludedDetectionTypes))
             {
-                detectionTypes.Append(SecurityConstants.Successful_SQLi).Append(";");
+                detectionTypes.Append(SecurityConstants.Sql_Injection).Append(";");
             }
-            if (IsDetectionTypeOn(DetectionType.Attempted_SQLi, model.ExcludedDetectionTypes))
+            if (IsDetectionTypeOn(DetectionType.Sql_Injection_Vulnerability, model.ExcludedDetectionTypes))
             {
-                detectionTypes.Append(SecurityConstants.Attempted_SQLi).Append(";");
+                detectionTypes.Append(SecurityConstants.Sql_Injection_Vulnerability).Append(";");
             }
-            if (IsDetectionTypeOn(DetectionType.Client_GEO_Anomaly, model.ExcludedDetectionTypes))
+            if (IsDetectionTypeOn(DetectionType.Access_Anomaly, model.ExcludedDetectionTypes))
             {
-                detectionTypes.Append(SecurityConstants.Client_GEO_Anomaly).Append(";");
+                detectionTypes.Append(SecurityConstants.Access_Anomaly).Append(";");
             }
-            if (IsDetectionTypeOn(DetectionType.Failed_Logins_Anomaly, model.ExcludedDetectionTypes))
+            if (IsDetectionTypeOn(DetectionType.Usage_Anomaly, model.ExcludedDetectionTypes))
             {
-                detectionTypes.Append(SecurityConstants.Failed_Logins_Anomaly).Append(";");
-            }
-            if (IsDetectionTypeOn(DetectionType.Failed_Queries_Anomaly, model.ExcludedDetectionTypes))
-            {
-                detectionTypes.Append(SecurityConstants.Failed_Queries_Anomaly).Append(";");
-            }
-            if (IsDetectionTypeOn(DetectionType.Data_Extraction_Anomaly, model.ExcludedDetectionTypes))
-            {
-                detectionTypes.Append(SecurityConstants.Data_Extraction_Anomaly).Append(";");
-            }
-            if (IsDetectionTypeOn(DetectionType.Data_Alteration_Anomaly, model.ExcludedDetectionTypes))
-            {
-                detectionTypes.Append(SecurityConstants.Data_Alteration_Anomaly).Append(";");
+                detectionTypes.Append(SecurityConstants.Usage_Anomaly).Append(";");
             }
             if (detectionTypes.Length != 0)
             {
