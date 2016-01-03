@@ -35126,6 +35126,12 @@ If this parameter is not specified, the default value is Standard_GRS. </maml:pa
           </maml:description>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+          <maml:name>BootstrapVersion</maml:name>
+          <maml:description>
+            <maml:para>Specifies the version of chef-client to be installed with the extension.</maml:para>
+          </maml:description>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>OrganizationName</maml:name>
           <maml:description>
             <maml:para>Specifies the organization name of the Chef extension.</maml:para>
@@ -35212,6 +35218,12 @@ If this parameter is not specified, the default value is Standard_GRS. </maml:pa
           <maml:name>DeleteChefConfig</maml:name>
           <maml:description>
             <maml:para>Indicates that this cmdlet deletes the Chef configuration on the virtual machine.</maml:para>
+          </maml:description>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+          <maml:name>BootstrapVersion</maml:name>
+          <maml:description>
+            <maml:para>Specifies the version of chef-client to be installed with the extension.</maml:para>
           </maml:description>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
@@ -35326,6 +35338,18 @@ If this parameter is not specified, the default value is Standard_GRS. </maml:pa
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+        <maml:name>BootstrapVersion</maml:name>
+        <maml:description>
+          <maml:para>Specifies the version of chef-client to be installed with the extension.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>

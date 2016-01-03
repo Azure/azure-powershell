@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         {
             if (ParameterSetName.Equals(GetAll))
             {
-                var groups = Client.GroupsList(Context, null, null, null);
+                var groups = Client.GroupsList(Context, Name, null, null);
                 WriteObject(groups, true);
             }
             else if (ParameterSetName.Equals(GetById))

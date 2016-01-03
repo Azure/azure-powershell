@@ -8,8 +8,12 @@
   [string]$Location = 'eastus2',
   [Parameter(Mandatory=$false, Position=3)]
   [string]$Vault = "",
-  [Parameter(Mandatory=$false, Position=3)]
-  [string]$ResourceGroup = ""
+  [Parameter(Mandatory=$false, Position=4)]
+  [string]$ResourceGroup = "",
+  [Parameter(Mandatory=$false, Position=5)]
+  [bool]$StandardVaultOnly = $false,
+  [Parameter(Mandatory=$false, Position=6)]
+  [Guid]$UserObjectId
 )
 
 $invocationPath = Split-Path $MyInvocation.MyCommand.Definition;
@@ -32,6 +36,27 @@ $global:testns = $TestRunNameSpace
 $global:location = $location
 $global:testVault = $Vault
 $global:resourceGroupName = $ResourceGroup
+$global:standardVaultOnly = $StandardVaultOnly
+$global:objectId = $UserObjectId
+$global:noADCmdLetMode = $false
+
+if (-not $global:objectId)
+{
+    $upn = (Get-AzureRmContext).Account.Id 
+    $user = Get-AzureRmADUser -UserPrincipalName $upn
+    if ($user -eq $null)
+    {
+        $user = Get-AzureRmADUser -Mail $upn
+    }
+    Assert-NotNull $user
+    $global:objectId = $user.Id
+}
+
+# AD powershell APIs are broken in Fairfax
+if ((Get-AzureRmContext).Environment.AzureKeyVaultDnsSuffix -eq 'vault.usgovcloudapi.net')
+{
+    $global:noADCmdLetMode = $true
+}
 
 function Run-TestProtected
 {
@@ -76,8 +101,11 @@ function Run-AllControlPlaneTests
     try
     {        
         #New-AzureRmKeyVault tests
+        if($global:standardVaultOnly -eq $false)
+        {
+          Run-TestProtected { Run-VaultTest { Test_CreateNewPremiumVaultEnabledForDeployment } "Test_CreateNewPremiumVaultEnabledForDeployment" } "Test_CreateNewPremiumVaultEnabledForDeployment"
+        }
         Run-TestProtected { Run-VaultTest { Test_CreateNewVault } "Test_CreateNewVault" } "Test_CreateNewVault"
-        Run-TestProtected { Run-VaultTest { Test_CreateNewPremiumVaultEnabledForDeployment } "Test_CreateNewPremiumVaultEnabledForDeployment" } "Test_CreateNewPremiumVaultEnabledForDeployment"
         Run-TestProtected { Run-VaultTest { Test_RecreateVaultFails } "Test_RecreateVaultFails" } "Test_RecreateVaultFails"
         Run-TestProtected { Run-VaultTest { Test_CreateVaultInUnknownResGrpFails } "Test_CreateVaultInUnknownResGrpFails" } "Test_CreateVaultInUnknownResGrpFails"
         Run-TestProtected { Run-VaultTest { Test_CreateVaultPositionalParams } "Test_CreateVaultPositionalParams" } "Test_CreateVaultPositionalParams"
@@ -130,16 +158,22 @@ function Run-AllDataPlaneTests
     # Add-AzureKeyVaultKey tests
     Run-TestProtected { Run-KeyTest {Test_CreateSoftwareKeyWithDefaultAttributes} "Test_CreateSoftwareKeyWithDefaultAttributes" } "Test_CreateSoftwareKeyWithDefaultAttributes"
     Run-TestProtected { Run-KeyTest {Test_CreateSoftwareKeyWithCustomAttributes} "Test_CreateSoftwareKeyWithCustomAttributes" } "Test_CreateSoftwareKeyWithCustomAttributes"
-    Run-TestProtected { Run-KeyTest {Test_CreateHsmKeyWithDefaultAttributes} "Test_CreateHsmKeyWithDefaultAttributes" } "Test_CreateHsmKeyWithDefaultAttributes"
-    Run-TestProtected { Run-KeyTest {Test_CreateHsmKeyWithCustomAttributes} "Test_CreateHsmKeyWithCustomAttributes" } "Test_CreateHsmKeyWithCustomAttributes"
+    
+    # All operations involving HSM keys
+    if($global:standardVaultOnly -eq $false)
+    {
+      Run-TestProtected { Run-KeyTest {Test_CreateHsmKeyWithDefaultAttributes} "Test_CreateHsmKeyWithDefaultAttributes" } "Test_CreateHsmKeyWithDefaultAttributes"
+      Run-TestProtected { Run-KeyTest {Test_CreateHsmKeyWithCustomAttributes} "Test_CreateHsmKeyWithCustomAttributes" } "Test_CreateHsmKeyWithCustomAttributes"
+      Run-TestProtected { Run-KeyTest {Test_ImportPfxAsHsmWithDefaultAttributes} "Test_ImportPfxAsHsmWithDefaultAttributes" } "Test_ImportPfxAsHsmWithDefaultAttributes"
+      Run-TestProtected { Run-KeyTest {Test_ImportPfxAsHsmWithCustomAttributes} "Test_ImportPfxAsHsmWithCustomAttributes" } "Test_ImportPfxAsHsmWithCustomAttributes"
+      Run-TestProtected { Run-KeyTest {Test_ImportByokWithDefaultAttributes} "Test_ImportByokWithDefaultAttributes" } "Test_ImportByokWithDefaultAttributes"
+      Run-TestProtected { Run-KeyTest {Test_ImportByokWith1024BitKey} "Test_ImportByokWith1024BitKey" } "Test_ImportByokWith1024BitKey"
+      Run-TestProtected { Run-KeyTest {Test_ImportByokWithCustomAttributes} "Test_ImportByokWithCustomAttributes" } "Test_ImportByokWithCustomAttributes"
+    }
+    
     Run-TestProtected { Run-KeyTest {Test_ImportPfxWithDefaultAttributes} "Test_ImportPfxWithDefaultAttributes" } "Test_ImportPfxWithDefaultAttributes"
     Run-TestProtected { Run-KeyTest {Test_ImportPfxWith1024BitKey} "Test_ImportPfxWith1024BitKey" } "Test_ImportPfxWith1024BitKey"
     Run-TestProtected { Run-KeyTest {Test_ImportPfxWithCustomAttributes} "Test_ImportPfxWithCustomAttributes" } "Test_ImportPfxWithCustomAttributes"
-    Run-TestProtected { Run-KeyTest {Test_ImportPfxAsHsmWithDefaultAttributes} "Test_ImportPfxAsHsmWithDefaultAttributes" } "Test_ImportPfxAsHsmWithDefaultAttributes"
-    Run-TestProtected { Run-KeyTest {Test_ImportPfxAsHsmWithCustomAttributes} "Test_ImportPfxAsHsmWithCustomAttributes" } "Test_ImportPfxAsHsmWithCustomAttributes"
-    Run-TestProtected { Run-KeyTest {Test_ImportByokWithDefaultAttributes} "Test_ImportByokWithDefaultAttributes" } "Test_ImportByokWithDefaultAttributes"
-    Run-TestProtected { Run-KeyTest {Test_ImportByokWith1024BitKey} "Test_ImportByokWith1024BitKey" } "Test_ImportByokWith1024BitKey"
-    Run-TestProtected { Run-KeyTest {Test_ImportByokWithCustomAttributes} "Test_ImportByokWithCustomAttributes" } "Test_ImportByokWithCustomAttributes"
     Run-TestProtected { Run-KeyTest {Test_AddKeyPositionalParameter} "Test_AddKeyPositionalParameter" } "Test_AddKeyPositionalParameter"
     Run-TestProtected { Run-KeyTest {Test_AddKeyAliasParameter} "Test_AddKeyAliasParameter" } "Test_AddKeyAliasParameter"
     Run-TestProtected { Run-KeyTest {Test_ImportNonExistPfxFile} "Test_ImportNonExistPfxFile" } "Test_ImportNonExistPfxFile"

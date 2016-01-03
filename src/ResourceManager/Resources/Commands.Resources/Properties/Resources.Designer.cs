@@ -88,6 +88,24 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You are a guest user in the directory and are not allowed to create an application. Please contact the administrator of the directory..
+        /// </summary>
+        internal static string CreateApplicationNotAllowedGuestUser {
+            get {
+                return ResourceManager.GetString("CreateApplicationNotAllowedGuestUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are a guest user in the directory and are not allowed to create a service principal. Please contact the administrator of the directory..
+        /// </summary>
+        internal static string CreateServicePrincipalNotAllowedGuestUser {
+            get {
+                return ResourceManager.GetString("CreateServicePrincipalNotAllowedGuestUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to delete the deployment &apos;{0}&apos;?.
         /// </summary>
         internal static string DeleteResourceGroupDeployment {

@@ -219,4 +219,10 @@
   <data name="LoadBalancerInboundNatPoolsName" xml:space="preserve">
     <value>inboundNatPools</value>
   </data>
+  <data name="ApplicationGatewayProbeName" xml:space="preserve">
+    <value>probes</value>
+  </data>
+  <data name="ApplicationGatewayUrlPathMapName" xml:space="preserve">
+    <value>urlPathMaps</value>
+  </data>
 </root>

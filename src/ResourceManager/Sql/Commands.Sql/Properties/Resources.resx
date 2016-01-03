@@ -252,6 +252,15 @@
   <data name="ServerNotApplicableForDataMasking" xml:space="preserve">
     <value>Dynamic Data Masking is only available in the latest SQL Database Update (V12). Please upgrade to set it up on your database.</value>
   </data>
+  <data name="RemoveAzureSqlServerCommunicationLinkDescription" xml:space="preserve">
+    <value>Permanently removing Azure Sql Server communication link '{0}' on server '{1}'.</value>
+  </data>
+  <data name="RemoveAzureSqlServerCommunicationLinkWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Azure Sql Server communication link '{0}' on server '{1}'?</value>
+  </data>
+  <data name="ServerCommunicationLinkNameExists" xml:space="preserve">
+    <value>Server communication link with name: '{0}' already exists in server '{1}'.</value>
+  </data>
   <data name="EmailsAreNotValid" xml:space="preserve">
     <value>One or more of the email addresses you entered are not valid.</value>
   </data>
