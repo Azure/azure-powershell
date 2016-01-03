@@ -132,11 +132,13 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// </summary>
         private void ModelizeDisabledAlerts(DatabaseThreatDetectionPolicyModel model, string disabledAlerts)
         {
+            List<string> disabledAlertsArray = disabledAlerts.Split(';').Select(p => p.Trim()).ToList();
+
             HashSet<DetectionType> detectionTypes = new HashSet<DetectionType>();
-            if (disabledAlerts.IndexOf(SecurityConstants.Sql_Injection) != -1) detectionTypes.Add(DetectionType.Sql_Injection);
-            if (disabledAlerts.IndexOf(SecurityConstants.Sql_Injection_Vulnerability) != -1) detectionTypes.Add(DetectionType.Sql_Injection_Vulnerability);
-            if (disabledAlerts.IndexOf(SecurityConstants.Access_Anomaly) != -1) detectionTypes.Add(DetectionType.Access_Anomaly);
-            if (disabledAlerts.IndexOf(SecurityConstants.Usage_Anomaly) != -1) detectionTypes.Add(DetectionType.Usage_Anomaly);
+            if (disabledAlertsArray.Contains(SecurityConstants.Sql_Injection)) detectionTypes.Add(DetectionType.Sql_Injection);
+            if (disabledAlertsArray.Contains(SecurityConstants.Sql_Injection_Vulnerability)) detectionTypes.Add(DetectionType.Sql_Injection_Vulnerability);
+            if (disabledAlertsArray.Contains(SecurityConstants.Access_Anomaly)) detectionTypes.Add(DetectionType.Access_Anomaly);
+            if (disabledAlertsArray.Contains(SecurityConstants.Usage_Anomaly)) detectionTypes.Add(DetectionType.Usage_Anomaly);
             model.ExcludedDetectionTypes = detectionTypes.ToArray();
         }
 
@@ -227,7 +229,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
             }
             if (detectionTypes.Length != 0)
             {
-                detectionTypes.Remove(detectionTypes.Length - 1, 1); // remove trailing comma
+                detectionTypes.Remove(detectionTypes.Length - 1, 1); // remove trailing semi-colon
             }
             return detectionTypes.ToString();
         }

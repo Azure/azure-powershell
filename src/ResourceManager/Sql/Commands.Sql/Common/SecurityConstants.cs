@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         // Threat Detection disabled types:
         public const string Sql_Injection = "Sql_Injection";
         public const string Sql_Injection_Vulnerability = "Sql_Injection_Vulnerability";
-        public const string Access_Anomaly = "Client_GEO_Anomaly";
+        public const string Access_Anomaly = "Access_Anomaly";
         public const string Usage_Anomaly = "Usage_Anomaly";
 
         public static readonly Dictionary<string, DetectionType> ExcludedDetectionToExcludedDetectionTypes = new Dictionary
