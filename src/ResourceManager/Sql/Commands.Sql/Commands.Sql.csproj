@@ -51,6 +51,12 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ThreatDetection\Cmdlet\UseAzureSqlServerThreatDetectionPolicy.cs" />
+    <Compile Include="ThreatDetection\Cmdlet\GetAzureSqlServerThreatDetection.cs" />
+    <Compile Include="ThreatDetection\Cmdlet\RemoveSqlServerThreatDetection.cs" />
+    <Compile Include="ThreatDetection\Cmdlet\SetAzureSqlServerThreatDetection.cs" />
+    <Compile Include="ThreatDetection\Cmdlet\SqlServerThreatDetectionCmdletBase.cs" />
+    <Compile Include="ThreatDetection\Model\ServerThreatDetectionPolicyModel.cs" />
     <Compile Include="ThreatDetection\Cmdlet\SqlDatabaseThreatDetectionCmdletBase.cs" />
     <Compile Include="ThreatDetection\Cmdlet\GetAzureSqlDatabaseThreatDetection.cs" />
     <Compile Include="ThreatDetection\Cmdlet\SetAzureSqlDatabaseThreatDetection.cs" />
@@ -95,7 +101,7 @@
     <Compile Include="Auditing\Cmdlet\UseAzureSqlServerAuditingPolicy.cs" />
     <Compile Include="Auditing\Model\BaseAuditingPolicyModel.cs" />
     <Compile Include="ThreatDetection\Model\BaseThreatDetectionPolicyModel.cs" />
-    <Compile Include="ThreatDetection\Model\DatabaseThreatDetectionPolicyModel .cs" />
+    <Compile Include="ThreatDetection\Model\DatabaseThreatDetectionPolicyModel.cs" />
     <Compile Include="Auditing\Model\DatabaseAuditingPolicyModel.cs" />
     <Compile Include="Auditing\Model\ServerAuditingPolicyModel.cs" />
     <Compile Include="Auditing\Services\AuditingEndpointsCommunicator.cs" />

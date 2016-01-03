@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// <summary>
         /// The Threat Detection endpoints communicator used by this adapter
         /// </summary>
-        private ThreatDetectionEndpointsCommunicator ThreatDetectionCommunicator { get; set; }
+        private ThreatDetectionEndpointsCommunicator Communicator { get; set; }
        
         /// <summary>
         /// The Azure endpoints communicator used by this adapter
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         {
             Context = context;
             Subscription = context.Subscription;
-            ThreatDetectionCommunicator = new ThreatDetectionEndpointsCommunicator(Context);
+            Communicator = new ThreatDetectionEndpointsCommunicator(Context);
             AzureCommunicator = new AzureEndpointsCommunicator(Context);
             AuditingAdapter = new SqlAuditAdapter(context);
         }
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
             return server.Properties.Version == "12.0";
         }
 
-       /// <summary>
+        /// <summary>
         /// Provides a database threat detection policy model for the given database
         /// </summary>
         public DatabaseThreatDetectionPolicyModel GetDatabaseThreatDetectionPolicy(string resourceGroup, string serverName, string databaseName, string requestId)
@@ -85,13 +85,31 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
                 throw new Exception(Properties.Resources.ServerNotApplicableForThreatDetection);
             }
 
-            DatabaseSecurityAlertPolicy threatDetectionPolicy = ThreatDetectionCommunicator.GetDatabaseSecurityAlertPolicy(resourceGroup, serverName, databaseName, requestId);
+            DatabaseSecurityAlertPolicy threatDetectionPolicy = Communicator.GetDatabaseSecurityAlertPolicy(resourceGroup, serverName, databaseName, requestId);
 
             DatabaseThreatDetectionPolicyModel databaseThreatDetectionPolicyModel = ModelizeDatabaseThreatDetectionPolicy(threatDetectionPolicy);
             databaseThreatDetectionPolicyModel.ResourceGroupName = resourceGroup;
             databaseThreatDetectionPolicyModel.ServerName = serverName;
             databaseThreatDetectionPolicyModel.DatabaseName = databaseName;
             return databaseThreatDetectionPolicyModel;
+        }
+
+        /// <summary>
+        /// Provides a server threat detection policy model for the given server
+        /// </summary>
+        public ServerThreatDetectionPolicyModel GetServerThreatDetectionPolicy(string resourceGroup, string serverName, string requestId)
+        {
+            if (!IsRightServerVersionForThreatDetection(resourceGroup, serverName, requestId))
+            {
+                throw new Exception(Properties.Resources.ServerNotApplicableForThreatDetection);
+            }
+
+            ServerSecurityAlertPolicy threatDetectionPolicy = Communicator.GetServerSecurityAlertPolicy(resourceGroup, serverName, requestId);
+
+            ServerThreatDetectionPolicyModel serverThreatDetectionPolicyModel = ModelizeServerThreatDetectionPolicy(threatDetectionPolicy);
+            serverThreatDetectionPolicyModel.ResourceGroupName = resourceGroup;
+            serverThreatDetectionPolicyModel.ServerName = serverName;
+            return serverThreatDetectionPolicyModel;
         }
 
         /// <summary>
@@ -104,8 +122,23 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
             databaseThreatDetectionPolicyModel.ThreatDetectionState = ModelizeThreatDetectionState(threatDetectionProperties.State);
             databaseThreatDetectionPolicyModel.NotificationRecipientsEmails = threatDetectionProperties.EmailAddresses;
             databaseThreatDetectionPolicyModel.EmailAdmins = ModelizeThreatDetectionEmailAdmins(threatDetectionProperties.EmailAccountAdmins);
+            databaseThreatDetectionPolicyModel.UseServerDefault = properties.UseServerDefault == SecurityConstants.ThreatDetectionEndpoint.Enabled ? Microsoft.Azure.Commands.Sql.ThreatDetection.Model.UseServerDefaultOptions.Enabled : Microsoft.Azure.Commands.Sql.ThreatDetection.Model.UseServerDefaultOptions.Disabled;
             ModelizeDisabledAlerts(databaseThreatDetectionPolicyModel, threatDetectionProperties.DisabledAlerts);
             return databaseThreatDetectionPolicyModel;
+        }
+
+        /// <summary>
+        /// Transforms the given server policy object to its cmdlet model representation
+        /// </summary>
+        private ServerThreatDetectionPolicyModel ModelizeServerThreatDetectionPolicy(ServerSecurityAlertPolicy threatDetectionPolicy)
+        {
+            ServerThreatDetectionPolicyModel serverThreatDetectionPolicyModel = new ServerThreatDetectionPolicyModel();
+            ServerSecurityAlertPolicyProperties threatDetectionProperties = threatDetectionPolicy.Properties;
+            serverThreatDetectionPolicyModel.ThreatDetectionState = ModelizeThreatDetectionState(threatDetectionProperties.State);
+            serverThreatDetectionPolicyModel.NotificationRecipientsEmails = threatDetectionProperties.EmailAddresses;
+            serverThreatDetectionPolicyModel.EmailAdmins = ModelizeThreatDetectionEmailAdmins(threatDetectionProperties.EmailAccountAdmins);
+            ModelizeDisabledAlerts(databaseThreatDetectionPolicyModel, threatDetectionProperties.DisabledAlerts);
+            return serverThreatDetectionPolicyModel;
         }
 
         /// <summary>
@@ -186,9 +219,26 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
             }
 
             DatabaseSecurityAlertPolicyCreateOrUpdateParameters databaseSecurityAlertPolicyParameters = PolicizeDatabaseSecurityAlertModel(model);
-            ThreatDetectionCommunicator.SetDatabaseSecurityAlertPolicy(model.ResourceGroupName, model.ServerName, model.DatabaseName, clientId, databaseSecurityAlertPolicyParameters);
+            Communicator.SetDatabaseSecurityAlertPolicy(model.ResourceGroupName, model.ServerName, model.DatabaseName, clientId, databaseSecurityAlertPolicyParameters);
         }
 
+        /// <summary>
+        /// Transforms the given model to its endpoints acceptable structure and sends it to the endpoint
+        /// </summary>
+        public void SetServerThreatDetectionPolicy(ServerThreatDetectionPolicyModel model, String clientId)
+        {
+            if (model.ThreatDetectionState == ThreatDetectionStateType.Enabled)
+            {
+                if (!IsRightServerVersionForThreatDetection(model.ResourceGroupName, model.ServerName, clientId))
+                {
+                    throw new Exception(Properties.Resources.ServerNotApplicableForThreatDetection);
+                }
+            }
+
+            ServerSecurityAlertPolicyCreateOrUpdateParameters serverSecurityAlertPolicyParameters = PolicizeServerSecurityAlertModel(model);
+            Communicator.SetServerSecurityAlertPolicy(model.ResourceGroupName, model.ServerName, clientId, serverSecurityAlertPolicyParameters);
+        }
+        
         /// <summary>
         /// Checks whether the given alert type was used
         /// </summary>
@@ -256,6 +306,28 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         {
             DatabaseSecurityAlertPolicyCreateOrUpdateParameters updateParameters = new DatabaseSecurityAlertPolicyCreateOrUpdateParameters();
             DatabaseSecurityAlertPolicyProperties properties = new DatabaseSecurityAlertPolicyProperties();
+            updateParameters.Properties = properties;
+            properties.State = PolicizeThreatDetectionState(model.ThreatDetectionState);
+            properties.UseServerDefault = (model.UseServerDefault == UseServerDefaultOptions.Enabled) ? SecurityConstants.ThreatDetectionEndpoint.Enabled : SecurityConstants.ThreatDetectionEndpoint.Disabled;
+
+            properties.EmailAddresses = model.NotificationRecipientsEmails ?? "";
+            properties.EmailAccountAdmins = model.EmailAdmins
+                ? SecurityConstants.ThreatDetectionEndpoint.Enabled
+                : SecurityConstants.ThreatDetectionEndpoint.Disabled;
+            properties.DisabledAlerts = ExtractExcludedDetectionType(model);
+            return updateParameters;
+        }
+
+
+        /// <summary>
+        /// Takes the cmdlets model object and transform it to the policy as expected by the endpoint
+        /// </summary>
+        /// <param name="model">The SecurityAlert model object</param>
+        /// <returns>The communication model object</returns>
+        private ServerSecurityAlertPolicyCreateOrUpdateParameters PolicizeServerSecurityAlertModel(ServerThreatDetectionPolicyModel model)
+        {
+            ServerSecurityAlertPolicyCreateOrUpdateParameters updateParameters = new ServerSecurityAlertPolicyCreateOrUpdateParameters();
+            ServerSecurityAlertPolicyProperties properties = new ServerSecurityAlertPolicyProperties();
             updateParameters.Properties = properties;
             properties.State = PolicizeThreatDetectionState(model.ThreatDetectionState);
             properties.EmailAddresses = model.NotificationRecipientsEmails ?? "";
