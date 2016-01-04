@@ -349,11 +349,29 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Job completion maximum wait time reached..
+        /// </summary>
+        internal static string JobCompletionMaxWaitReached {
+            get {
+                return ResourceManager.GetString("JobCompletionMaxWaitReached", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Job having Id: {0} was not found..
         /// </summary>
         internal static string JobNotFound {
             get {
                 return ResourceManager.GetString("JobNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;Job state : {0}, time {1}&quot;.
+        /// </summary>
+        internal static string JobProgressState {
+            get {
+                return ResourceManager.GetString("JobProgressState", resourceCulture);
             }
         }
         
@@ -372,6 +390,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         internal static string JobScheduleWithIdNotFound {
             get {
                 return ResourceManager.GetString("JobScheduleWithIdNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;Job terminal state : {0}, time {1}&quot;.
+        /// </summary>
+        internal static string JobTerminalState {
+            get {
+                return ResourceManager.GetString("JobTerminalState", resourceCulture);
             }
         }
         
