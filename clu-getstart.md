@@ -136,7 +136,7 @@ Please set the environment variables for either Username/Password (no 2FA) or Se
         _fixture.GetRunner("resource-management").RunScript("01-ResourceGroups");
     }
     ```
-    - Set the [environment variables](#Environment_Variables_for_Authentication) for either Username/Password (no 2FA) or ServicePrincipal authentication
+    - Set the [environment variables](#environment-variables-for-authentication) for either Username/Password (no 2FA) or ServicePrincipal authentication
    - The infrastructure automatically generates the following environment variables:
 	   - `BASEDIR` - directory path where test script is located
 	   - `location` - default "WestUS" location 
@@ -156,7 +156,7 @@ runner.EnvironmentVariables.Add("myVariableName", runner.GenerateName("myres"));
       
 ##### Running Bash Tests using Bash shell
 - Bash tests should be runnable from bash shell in windows/linux/mac environments.
-- To manually run the tests; please set [environment variables](#Environment_Variables_for_Authentication) for authentication as well as update PATH and run `./examples/lib/testrunner.sh`
+- To manually run the tests; please set [environment variables](#environment-variables-for-authentication) for authentication as well as update PATH and run `./examples/lib/testrunner.sh`
 
    ```bash
    export azureUser=<username@contosocorp.com>
