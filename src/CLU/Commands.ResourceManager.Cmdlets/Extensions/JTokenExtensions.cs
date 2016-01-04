@@ -54,12 +54,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
             {
                 return null;
             }
-
-            // TODO CORECLR does not exist in coreclr50
-            /*if (jtoken.Type != JTokenType.Object)
+            
+            if (jtoken.Type != JTokenType.Object)
             {
-                return new PSObject(JTokenExtensions.ConvertPropertyValueForPsObject(propertyValue: jtoken));
-            }*/
+                var retObject = new PSObject();
+                retObject.Properties.Add(new PSNoteProperty(
+                    name: JTokenExtensions.ConvertToPascalCase(propertyName: jtoken.Type.ToString()),
+                    value: JTokenExtensions.ConvertPropertyValueForPsObject(propertyValue: jtoken)));
+                return retObject;
+            }
 
             var jobject = (JObject)jtoken;
             var psObject = new PSObject();
