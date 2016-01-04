@@ -136,8 +136,12 @@ Please set the environment variables for either Username/Password (no 2FA) or Se
         _fixture.GetRunner("resource-management").RunScript("01-ResourceGroups");
     }
     ```
-    - Set the [environment variables](#environment-variables-for-authentication) for either Username/Password (no 2FA) or ServicePrincipal authentication
-   - The infrastructure automatically generates the following environment variables:
+    - Set the [environment variables](#Environment_Variables_for_Authentication) for either Username/Password (no 2FA) or ServicePrincipal authentication
+    - Update PATH to include location of CLU bin drop.
+    ```bash
+   export PATH=/<path-to-drop>/clurun/win7-x64/:$PATH
+    ```
+    - The infrastructure automatically generates the following environment variables:
 	   - `BASEDIR` - directory path where test script is located
 	   - `location` - default "WestUS" location 
 	   - `groupName` - randomly generated resource group name (note: the test guarantees that this resource group is deleted at the end of a test run; any other resource groups generated as part of the test run need to be deleted by the test)
@@ -156,13 +160,12 @@ runner.EnvironmentVariables.Add("myVariableName", runner.GenerateName("myres"));
       
 ##### Running Bash Tests using Bash shell
 - Bash tests should be runnable from bash shell in windows/linux/mac environments.
-- To manually run the tests; please set [environment variables](#environment-variables-for-authentication) for authentication as well as update PATH and run `./examples/lib/testrunner.sh`
+- To manually run the tests; please set [environment variables](#Environment_Variables_for_Authentication) for authentication as well as update PATH and run `./examples/lib/testrunner.sh`
 
    ```bash
    export azureUser=<username@contosocorp.com>
    export password=<your_password>
-   export PATH=$PATH:/<path-to-drop>/clurun/win7-x64/
-   . /examples/lib/testrunner.sh
+   export PATH=/<path-to-drop>/clurun/win7-x64/:$PATH
    ```
 - All the parameters to the cmdlets should be passed in as environment variables
 - The current test runners will provide a unique resource group name via `$groupName` but may not remove it at the end if the test fails.
