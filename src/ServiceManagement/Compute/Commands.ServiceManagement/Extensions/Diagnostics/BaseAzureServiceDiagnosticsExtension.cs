@@ -76,7 +76,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
 
             if (string.IsNullOrEmpty(this.StorageAccountName))
             {
-                throw new ArgumentException(Resources.PaaSDiagnosticsNullStorageAccountName);
+                throw new ArgumentException(Resources.DiagnosticsExtensionNullStorageAccountName);
             }
         }
 
@@ -87,7 +87,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
 
             if (string.IsNullOrEmpty(this.StorageAccountKey))
             {
-                throw new ArgumentException(Resources.PaaSDiagnosticsNullStorageAccountKey);
+                throw new ArgumentException(Resources.DiagnosticsExtensionNullStorageAccountKey);
             }
         }
 
@@ -99,7 +99,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
 
             if (string.IsNullOrEmpty(this.StorageAccountEndpoint))
             {
-                throw new ArgumentNullException(Resources.PaaSDiagnosticsNullStorageAccountEndpoint);
+                throw new ArgumentNullException(Resources.DiagnosticsExtensionNullStorageAccountEndpoint);
             }
         }
 
@@ -111,14 +111,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
                 // make sure it is the header
                 if (!header.Trim().StartsWith("<?xml"))
                 {
-                    throw new ArgumentException(Resources.PaaSDiagnosticsWrongHeader);
+                    throw new ArgumentException(Resources.DiagnosticsExtensionWrongHeader);
                 }
             }
 
             var publicConfigElem = DiagnosticsHelper.GetPublicConfigElement(this.DiagnosticsConfigurationPath);
             if (publicConfigElem == null)
             {
-                throw new ArgumentException(Resources.PaaSDiagnosticsNullPublicConfig);
+                throw new ArgumentException(Resources.DiagnosticsExtensionNullPublicConfig);
             }
             publicConfigElem.SetAttributeValue("xmlns", XmlNamespace);
             PublicConfiguration = publicConfigElem.ToString();
@@ -140,7 +140,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
                 }
                 else if (!string.IsNullOrEmpty(node.InnerText) && string.Compare(node.InnerText, StorageAccountName, true) != 0)
                 {
-                    throw new ArgumentException(Resources.PassDiagnosticsNoMatchStorageAccount);
+                    throw new ArgumentException(Resources.DiagnosticsExtensionNoMatchStorageAccount);
                 }
             }
             else
@@ -157,7 +157,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             if (!string.IsNullOrEmpty(privateConfigStorageAccountName)
                 && !string.Equals(StorageAccountName, privateConfigStorageAccountName, StringComparison.OrdinalIgnoreCase))
             {
-                throw new ArgumentException(Resources.PassDiagnosticsNoMatchPrivateStorageAccount);
+                throw new ArgumentException(Resources.DiagnosticsExtensionNoMatchPrivateStorageAccount);
             }
 
             PrivateConfigurationXml = new XDocument(PrivateConfigurationXmlTemplate);
