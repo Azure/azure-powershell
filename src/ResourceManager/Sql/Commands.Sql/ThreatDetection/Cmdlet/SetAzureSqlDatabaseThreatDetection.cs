@@ -17,6 +17,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.Sql.Common;
+using Microsoft.Azure.Commands.Sql.Services;
 using Microsoft.Azure.Commands.Sql.ThreatDetection.Model;
 
 namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
@@ -50,7 +51,9 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         /// Gets or sets the names of the detection types to filter.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Detection types to exclude")]
-        [ValidateSet(SecurityConstants.Successful_SQLi, SecurityConstants.Attempted_SQLi, SecurityConstants.Client_GEO_Anomaly, SecurityConstants.Failed_Logins_Anomaly, SecurityConstants.Failed_Queries_Anomaly, SecurityConstants.Data_Extraction_Anomaly, SecurityConstants.Data_Alteration_Anomaly, IgnoreCase = false)]
+        [ValidateSet(SecurityConstants.Sql_Injection,
+            SecurityConstants.Sql_Injection_Vulnerability, SecurityConstants.Access_Anomaly,
+            SecurityConstants.Usage_Anomaly, SecurityConstants.None, IgnoreCase = false)]
         public string[] ExcludedDetectionType { get; set; }
 
         /// <summary>
@@ -78,6 +81,8 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
             {
                 model.EmailAdmins = (bool)EmailAdmins;
             }
+
+            ExcludedDetectionType = Util.ProcessExcludedDetectionTypes(ExcludedDetectionType);
 
             if (ExcludedDetectionType != null)
             {
