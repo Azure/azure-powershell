@@ -44,9 +44,9 @@
     <Reference Include="Hyak.Common">
       <HintPath>..\..\..\packages\Hyak.Common.1.0.2\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Batch, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Azure.Batch.2.0.2\lib\net45\Microsoft.Azure.Batch.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Batch, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Azure.Batch.3.0.0\lib\net45\Microsoft.Azure.Batch.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Common">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
@@ -157,6 +157,8 @@
     <Compile Include="Certificates\RemoveBatchCertificateCommand.cs" />
     <Compile Include="Certificates\NewBatchCertificateCommand.cs" />
     <Compile Include="Certificates\StopBatchCertificateDeletionCommand.cs" />
+    <Compile Include="ComputeNodes\DisableBatchComputeNodeSchedulingCommand.cs" />
+    <Compile Include="ComputeNodes\EnableBatchComputeNodeSchedulingCommand.cs" />
     <Compile Include="ComputeNodes\RemoveBatchComputeNodeCommand.cs" />
     <Compile Include="ComputeNodes\ResetBatchComputeNodeCommand.cs" />
     <Compile Include="ComputeNodes\RestartBatchComputeNodeCommand.cs" />
@@ -191,12 +193,16 @@
     <Compile Include="Models.Generated\PSJobReleaseTaskExecutionInformation.cs" />
     <Compile Include="Models.Generated\PSJobScheduleExecutionInformation.cs" />
     <Compile Include="Models.Generated\PSJobScheduleStatistics.cs" />
+    <Compile Include="Models.Generated\PSMultiInstanceSettings.cs" />
     <Compile Include="Models.Generated\PSNodeFile.cs" />
     <Compile Include="Models.Generated\PSPoolInformation.cs" />
     <Compile Include="Models.Generated\PSPoolUsageMetrics.cs" />
     <Compile Include="Models.Generated\PSSchedule.cs" />
     <Compile Include="Models.Generated\PSTaskSchedulingPolicy.cs" />
-    <Compile Include="Models\AutoScaleParameters.cs" />
+    <Compile Include="Models.Generated\PSSubtaskInformation.cs" />
+    <Compile Include="Models\DisableComputeNodeSchedulingParameters.cs" />
+    <Compile Include="Models\EnableAutoScaleParameters.cs" />
+    <Compile Include="Models\EvaluateAutoScaleParameters.cs" />
     <Compile Include="Models\BatchClient.Accounts.cs" />
     <Compile Include="Models\BatchClient.Certificates.cs" />
     <Compile Include="Models\BatchClient.cs" />
@@ -223,6 +229,7 @@
     <Compile Include="Models\ListJobOptions.cs" />
     <Compile Include="Models\ListNodeFileOptions.cs" />
     <Compile Include="Models\ListPoolOptions.cs" />
+    <Compile Include="Models\ListSubtaskOptions.cs" />
     <Compile Include="Models\ListTaskOptions.cs" />
     <Compile Include="Models\ListComputeNodeOptions.cs" />
     <Compile Include="Models\ListJobScheduleOptions.cs" />
@@ -295,6 +302,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Subscriptions\GetBatchSubscriptionQuotasCommand.cs" />
+    <Compile Include="Tasks\GetBatchSubtaskCommand.cs" />
     <Compile Include="Tasks\GetBatchTaskCommand.cs" />
     <Compile Include="Tasks\NewBatchTaskCommand.cs" />
     <Compile Include="Tasks\RemoveBatchTaskCommand.cs" />
