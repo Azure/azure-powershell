@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             }
             else
             {
-                roleDefinitions = policyClient.GetRoleDefinitions();
+                roleDefinitions = policyClient.GetRoleDefinitionsAtScopeAndBelow();
             }
 
             foreach (RoleAssignment assignment in assignments)
