@@ -45,7 +45,9 @@
     <Scope Condition=" $(Scope) == '' " >all</Scope>
   </PropertyGroup>
   <ItemGroup>
-    <CmdletSolutionsToBuild Include=".\src\ResourceManager\**\*.sln;.\src\ServiceManagement\ServiceManagement.sln" Condition=" '$(Scope)' == 'all' "/>
+    <CmdletSolutionsToBuild Include=".\src\ResourceManager\**\*.sln;.\src\ServiceManagement\ServiceManagement.sln"
+                            Exclude=".\src\ResourceManager\Intune\*.sln"
+                            Condition=" '$(Scope)' == 'all' "/>
     <CmdletSolutionsToBuild Include=".\src\ResourceManager\$(Scope)\*.sln" 
                             Condition=" '$(Scope)' != 'all' and '$(Scope)' != 'ServiceManagement' and '$(Scope)' != 'AzureStorage' "/>
     <CmdletSolutionsToBuild Include=".\src\ServiceManagement\ServiceManagement.sln"

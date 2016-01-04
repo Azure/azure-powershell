@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 
         public IList<Site> ListWebAppsForAppServicePlan(string resourceGroupName, string appServicePlanName)
         {
-            return WrappedWebsitesClient.ServerFarms.GetServerFarmSites(resourceGroupName, appServicePlanName).Value;
+            return WrappedWebsitesClient.ServerFarms.GetServerFarmSites(resourceGroupName, appServicePlanName).ToList();
         }
 
         public string GetWebAppPublishingProfile(string resourceGroupName, string webSiteName, string slotName, string outputFile, string format)
@@ -363,6 +363,56 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             {
                 //ignore if this call fails as it will for reader RBAC
             }
+        }
+
+        public Certificate CreateCertificate(string resourceGroupName, string certificateName, Certificate certificate)
+        {
+            return WrappedWebsitesClient.Certificates.CreateOrUpdateCertificate(resourceGroupName, certificateName, certificate);
+        }
+
+        public Certificate GetCertificate(string resourceGroupName, string certificateName)
+        {
+            return WrappedWebsitesClient.Certificates.GetCertificate(resourceGroupName, certificateName);
+        }
+
+        public HttpStatusCode RemoveCertificate(string resourceGroupName, string certificateName)
+        {
+            WrappedWebsitesClient.Certificates.DeleteCertificate(resourceGroupName, certificateName);
+            return HttpStatusCode.OK;
+        }
+
+        public Site UpdateHostNameSslState(string resourceGroupName, string webAppName, string slotName, string location, string hostName, SslState sslState, string thumbPrint)
+        {
+            Site updateWebSite;
+            string qualifiedSiteName;
+
+            var shouldUseDeploymentSlot = CmdletHelpers.ShouldUseDeploymentSlot(webAppName, slotName, out qualifiedSiteName);
+
+            var webappWithNewSslBinding = new Site
+            {
+                HostNameSslStates = new List<HostNameSslState>{new HostNameSslState
+                {
+                    Name = hostName,
+                    Thumbprint = thumbPrint,
+                    ToUpdate = true,
+                    SslState = sslState
+                }},
+                Location = location
+            };
+
+            if (shouldUseDeploymentSlot)
+            {
+                updateWebSite = WrappedWebsitesClient.Sites.CreateOrUpdateSiteSlot(
+                        resourceGroupName, webAppName, slot: slotName, siteEnvelope:
+                        webappWithNewSslBinding);
+            }
+            else
+            {
+                updateWebSite = WrappedWebsitesClient.Sites.CreateOrUpdateSite(
+                        resourceGroupName, webAppName, siteEnvelope:
+                        webappWithNewSslBinding);
+            }
+            return updateWebSite;
         }
 
         private void WriteVerbose(string verboseFormat, params object[] args)

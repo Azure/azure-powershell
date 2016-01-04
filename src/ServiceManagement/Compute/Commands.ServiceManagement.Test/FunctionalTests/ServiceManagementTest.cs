@@ -103,9 +103,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         {
             if (!string.IsNullOrEmpty(GetDefaultStorage(CredentialHelper.DefaultStorageName, CredentialHelper.Location)))
             {
-                defaultAzureSubscription = vmPowershellCmdlets.SetAzureSubscription(defaultAzureSubscription.SubscriptionName, defaultAzureSubscription.SubscriptionId, CredentialHelper.DefaultStorageName);
+                defaultAzureSubscription = vmPowershellCmdlets.SetAzureSubscription(defaultAzureSubscription.SubscriptionId, CredentialHelper.DefaultStorageName);
                 defaultAzureSubscription.CurrentStorageAccountName = CredentialHelper.DefaultStorageName;
-                vmPowershellCmdlets.SelectAzureSubscription(defaultAzureSubscription.SubscriptionName, true);
+                vmPowershellCmdlets.SelectAzureSubscription(defaultAzureSubscription.SubscriptionId);
                 storageAccountKey = vmPowershellCmdlets.GetAzureStorageAccountKey(CredentialHelper.DefaultStorageName);
                 Assert.AreEqual(CredentialHelper.DefaultStorageName, storageAccountKey.StorageAccountName);
                 blobUrlRoot = (vmPowershellCmdlets.GetAzureStorageAccount(CredentialHelper.DefaultStorageName)[0].Endpoints.ToArray())[0];
@@ -134,6 +134,22 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             }
 
             return null;
+        }
+
+        private static string GetSubscriptionId(string publishSettingsFile)
+        {
+            try
+            {
+                XDocument psf = XDocument.Load(publishSettingsFile);
+                XElement pubData = psf.Descendants().FirstOrDefault();
+                XElement pubProfile = pubData.Elements().ToList()[0];
+                return pubProfile.Element("Subscription").Attribute("Id").Value;
+            }
+            catch
+            {
+                Console.WriteLine("Error occurred during getting subscription Id from publish settings file...");
+                throw;
+            }
         }
 
         private static string GetServiceManagementUrl(string publishSettingsFile)
@@ -190,6 +206,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
             List<PSAzureEnvironment> environments = vmPowershellCmdlets.GetAzureEnvironment();
             var serviceManagementUrl = GetServiceManagementUrl(CredentialHelper.PublishSettingsFile);
+            var subscriptionId = GetSubscriptionId(CredentialHelper.PublishSettingsFile);
 
             foreach (var env in environments)
             {
@@ -245,21 +262,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 vmPowershellCmdlets.ImportAzurePublishSettingsFile(CredentialHelper.PublishSettingsFile, currentEnvName);
             }
 
-            var firstSub = vmPowershellCmdlets.GetAzureSubscription().First();
-            vmPowershellCmdlets.SelectAzureSubscription(firstSub.SubscriptionName);
-
-            if (string.IsNullOrEmpty(CredentialHelper.DefaultSubscriptionName))
-            {
-                defaultAzureSubscription = vmPowershellCmdlets.GetCurrentAzureSubscription();
-                if (string.IsNullOrEmpty(Resource.DefaultSubscriptionName))
-                {
-                    CredentialHelper.DefaultSubscriptionName = defaultAzureSubscription.SubscriptionName;
-                }
-            }
-            else
-            {
-                defaultAzureSubscription = vmPowershellCmdlets.SetDefaultAzureSubscription(CredentialHelper.DefaultSubscriptionName);
-            }
+            var firstSub = vmPowershellCmdlets.GetAzureSubscription(subscriptionId);
+            vmPowershellCmdlets.SelectAzureSubscription(firstSub.SubscriptionId);
+            defaultAzureSubscription = vmPowershellCmdlets.GetCurrentAzureSubscription();
+            CredentialHelper.DefaultSubscriptionName = defaultAzureSubscription.SubscriptionName;
 
             locationName = vmPowershellCmdlets.GetAzureLocationName(new[] { CredentialHelper.Location }); // Get-AzureLocation
 
@@ -336,7 +342,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             // Re-import the subscription.
             vmPowershellCmdlets.ImportAzurePublishSettingsFile();
             vmPowershellCmdlets.SetDefaultAzureSubscription(CredentialHelper.DefaultSubscriptionName);
-            vmPowershellCmdlets.SetAzureSubscription(defaultAzureSubscription.SubscriptionName, defaultAzureSubscription.SubscriptionId, defaultAzureSubscription.CurrentStorageAccountName);
+            vmPowershellCmdlets.SetAzureSubscription(defaultAzureSubscription.SubscriptionId, defaultAzureSubscription.CurrentStorageAccountName);
         }
 
         protected static void CleanupService(string svcName)

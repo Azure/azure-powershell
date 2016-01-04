@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [Parameter(Position = 4, Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ConfirmAction(
                 Force.IsPresent,

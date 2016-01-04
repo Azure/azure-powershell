@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [ValidateNotNull]
         public DataLakeStorePathInstance Path { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             WriteObject(
                 DataLakeStoreItemPermissionInstance.Parse(

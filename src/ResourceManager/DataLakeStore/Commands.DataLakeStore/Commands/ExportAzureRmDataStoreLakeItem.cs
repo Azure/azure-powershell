@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             HelpMessage = "Indicates that, if the file or folder exists, it should be overwritten")]
         public SwitchParameter Force { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             // We will let this throw itself if the path they give us is invalid
             // TODO: perhaps in the future catch this and throw a cmdlet specific exception

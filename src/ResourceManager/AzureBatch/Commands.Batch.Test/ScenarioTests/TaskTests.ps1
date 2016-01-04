@@ -47,14 +47,23 @@ function Test-CreateTask
 
     $envSettings = @{"env1"="value1";"env2"="value2"}
 
-    New-AzureBatchTask -JobId $jobId -Id $taskId2 -CommandLine $cmd -RunElevated -EnvironmentSettings $envSettings -ResourceFiles $resourceFiles -AffinityInformation $affinityInfo -Constraints $taskConstraints -BatchContext $context
+    $numInstances = 3
+    $multiInstanceSettings = New-Object Microsoft.Azure.Commands.Batch.Models.PSMultiInstanceSettings -ArgumentList @($numInstances)
+    $multiInstanceSettings.CoordinationCommandLine = $coordinationCommandLine = "cmd /c echo coordinating"
+    $multiInstanceSettings.CommonResourceFiles = New-Object System.Collections.Generic.List``1[Microsoft.Azure.Commands.Batch.Models.PSResourceFile]
+    $commonResourceBlob = "https://common.blob.core.windows.net/"
+    $commonResourceFile = "common.exe"
+    $commonResource = New-Object Microsoft.Azure.Commands.Batch.Models.PSResourceFile -ArgumentList @($commonResourceBlob,$commonResourceFile)
+    $multiInstanceSettings.CommonResourceFiles.Add($commonResource)
+
+    New-AzureBatchTask -JobId $jobId -Id $taskId2 -CommandLine $cmd -EnvironmentSettings $envSettings -ResourceFiles $resourceFiles -AffinityInformation $affinityInfo -Constraints $taskConstraints -MultiInstanceSettings $multiInstanceSettings -BatchContext $context
         
     $task2 = Get-AzureBatchTask -JobId $jobId -Id $taskId2 -BatchContext $context
         
     # Verify created task matches expectations
     Assert-AreEqual $taskId2 $task2.Id
     Assert-AreEqual $cmd $task2.CommandLine
-    Assert-AreEqual $true $task2.RunElevated
+    Assert-AreEqual $false $task2.RunElevated
     Assert-AreEqual $affinityId $task2.AffinityInformation.AffinityId
     Assert-AreEqual $maxWallClockTime $task2.Constraints.MaxWallClockTime
     Assert-AreEqual $retentionTime $task2.Constraints.RetentionTime
@@ -69,6 +78,11 @@ function Test-CreateTask
     {
         Assert-AreEqual $envSettings[$e.Name] $e.Value
     }
+    Assert-AreEqual $numInstances $task2.MultiInstanceSettings.NumberOfInstances
+    Assert-AreEqual $coordinationCommandLine $task2.MultiInstanceSettings.CoordinationCommandLine
+    Assert-AreEqual 1 $task2.MultiInstanceSettings.CommonResourceFiles.Count
+    Assert-AreEqual $commonResourceBlob $task2.MultiInstanceSettings.CommonResourceFiles[0].BlobSource
+    Assert-AreEqual $commonResourceFile $task2.MultiInstanceSettings.CommonResourceFiles[0].FilePath
 }
 
 <#
@@ -282,4 +296,45 @@ function Test-TerminateTask
     {
         Assert-AreEqual 'completed' $task.State.ToString().ToLower()
     }
+}
+
+<#
+.SYNOPSIS
+Tests querying for Batch subtasks and supplying a max count
+#>
+function Test-ListSubtasksWithMaxCount
+{
+    param([string]$accountName, [string]$jobId, [string]$taskId, [string]$maxCount)
+
+    $context = Get-ScenarioTestContext $accountName
+    $subtasks = Get-AzureBatchSubtask $jobId $taskId -MaxCount $maxCount -BatchContext $context
+
+    Assert-AreEqual $maxCount $subtasks.Length
+
+    # Verify parent object parameter set also works
+    $task = Get-AzureBatchTask $jobId $taskId -BatchContext $context
+    $subtasks = $task | Get-AzureBatchSubtask -MaxCount $maxCount -BatchContext $context
+
+    Assert-AreEqual $maxCount $subtasks.Length
+}
+
+<#
+.SYNOPSIS
+Tests querying for all subtasks under a task
+#>
+function Test-ListAllSubtasks
+{
+    param([string]$accountName, [string] $jobId, [string]$taskId, [string]$numInstances)
+
+    $numSubTasksExpected = $numInstances - 1
+
+    $context = Get-ScenarioTestContext $accountName
+    $subtasks = Get-AzureBatchSubtask $jobId $taskId -BatchContext $context
+
+    Assert-AreEqual $numSubTasksExpected $subtasks.Length
+
+    # Verify pipeline also works
+    $subtasks = Get-AzureBatchTask $jobId $taskId -BatchContext $context | Get-AzureBatchSubtask -BatchContext $context
+
+    Assert-AreEqual $numSubTasksExpected $subtasks.Length
 }

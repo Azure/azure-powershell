@@ -469,4 +469,18 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
   <data name="VMOSDiskDiskEncryptionBothKekVaultIdAndKekUrlRequired" xml:space="preserve">
     <value>You have to specify either both of KeyEncryptionKeyVaultId and KeyEncryptionKeyUrl or none of them.</value>
   </data>
+  <data name="DiagnosticsExtensionNotFound" xml:space="preserve">
+    <value>No diagnostics extension found under resource group '{0}', virtual machine '{1}'.</value>
+    <comment>{0} = resource group name, {1} = virtual machine name</comment>
+  </data>
+  <data name="DiagnosticsExtensionFailedToListKeyForNoStorageAccount" xml:space="preserve">
+    <value>Failed to list storage account key. Can't find storage account "{0}" under current subscription.</value>
+    <comment>{0} = storage account name</comment>
+  </data>
+  <data name="DiagnosticsExtensionStorageAccountNameNotDefined" xml:space="preserve">
+    <value>Storage account name is not defined.</value>
+  </data>
+  <data name="DiagnosticsExtensionStorageAccountEndpointNotDefined" xml:space="preserve">
+    <value>Storage account endpoint is not defined.</value>
+  </data>
 </root>

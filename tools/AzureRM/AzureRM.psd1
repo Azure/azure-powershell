@@ -12,7 +12,7 @@
 RootModule = '.\AzureRM.psm1'
   
 # Version number of this module.  
-ModuleVersion = '1.0.3'  
+ModuleVersion = '1.0.4'  
   
 # ID used to uniquely identify this module  
 GUID = 'B433E830-B479-4F7F-9C80-9CC6C28E1B51'  

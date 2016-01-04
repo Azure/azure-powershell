@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Resources
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             UpdatePSResourceGroupParameters parameters = new UpdatePSResourceGroupParameters
             {

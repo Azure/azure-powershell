@@ -54,10 +54,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             cmdlet.Id = "testPool";
 
-            Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
-
-            cmdlet.AutoScaleFormula = "formula";
-
             // Don't go to the service on an Enable AutoScale call
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudPoolEnableAutoScaleParameters, CloudPoolEnableAutoScaleResponse>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
@@ -74,24 +70,29 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.BatchContext = context;
 
             string formula = "$TargetDedicated=2";
+            TimeSpan? interval = TimeSpan.FromMinutes(6);
             string requestFormula = null;
+            TimeSpan? requestInterval = null;
 
             cmdlet.Id = "testPool";
             cmdlet.AutoScaleFormula = formula;
+            cmdlet.AutoScaleEvaluationInterval = interval;
 
             // Don't go to the service on an Enable AutoScale call
             Action<BatchRequest<CloudPoolEnableAutoScaleParameters, CloudPoolEnableAutoScaleResponse>> extractFormulaAction =
                 (request) =>
                 {
                     requestFormula = request.TypedParameters.AutoScaleFormula;
+                    requestInterval = request.TypedParameters.AutoScaleEvaluationInterval;
                 };
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor(requestAction: extractFormulaAction);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             cmdlet.ExecuteCmdlet();
 
-            // Verify that the autoscale formula was properly set on the outgoing request
+            // Verify that the autoscale parameters were properly set on the outgoing request
             Assert.Equal(formula, requestFormula);
+            Assert.Equal(interval, requestInterval);
         }
     }
 }

@@ -77,6 +77,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             set;
         }
 
+        [Parameter(Position = 5, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = NewExtensionParameterSetName, HelpMessage = ExtensionParameterPropertyHelper.ExtensionIdHelpMessage)]
+        [Parameter(Position = 5, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = NewExtensionUsingThumbprintParameterSetName, HelpMessage = ExtensionParameterPropertyHelper.ExtensionIdHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public override string ExtensionId
+        {
+            get;
+            set;
+        }
+
         protected override void ValidateParameters()
         {
             base.ValidateParameters();
@@ -90,6 +99,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             ValidateParameters();
             WriteObject(new ExtensionConfigurationInput
             {
+                Id = ExtensionId,
                 CertificateThumbprint = CertificateThumbprint,
                 ThumbprintAlgorithm = ThumbprintAlgorithm,
                 ProviderNameSpace = ProviderNamespace,
