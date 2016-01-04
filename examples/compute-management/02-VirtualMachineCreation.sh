@@ -17,12 +17,10 @@ subId=`echo $contextResult | jq '.Subscription.SubscriptionId' --raw-output`
 
 subnetId="/subscriptions/$subId/resourceGroups/$groupName/providers/Microsoft.Network/virtualNetworks/test/subnets/test"
 
-echo -n "$subnetId" > "$BASEDIR/$groupName.subnetIdFile"
-
 printf "\n4. Create network interface with:\r\nsubId='%s' \r\n& \r\nsubnetId='$subnetId'.\n" "$subId"
-azure network interface create --name test --resourcegroupname "$groupName" --location "$location" --subnetid @"$BASEDIR/$groupName.subnetIdFile"
-
-rm -f "$BASEDIR/$groupName.subnetIdFile"
+export MSYS_NO_PATHCONV=1
+azure network interface create --name test --resourcegroupname "$groupName" --location "$location" --subnetid "$subnetId"
+export MSYS_NO_PATHCONV=
 
 nicId="/subscriptions/$subId/resourceGroups/$groupName/providers/Microsoft.Network/networkInterfaces/test"
 
