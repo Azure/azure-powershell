@@ -60,6 +60,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         [ValidateNotNullOrEmpty]
         public Hashtable AppSettingsOverrides { get; set; }
 
+        [Parameter(Position = 9, Mandatory = false, HelpMessage = "Name of application service environment")]
+        [ValidateNotNullOrEmpty]
+        public string AseName { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -78,7 +82,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 
             var webApp = WebsitesClient.GetWebApp(ResourceGroupName, Name, null);
 
-            WriteObject(WebsitesClient.CreateWebApp(ResourceGroupName, Name, Slot, webApp.Location, AppServicePlan, cloningInfo));
+            WriteObject(WebsitesClient.CreateWebApp(ResourceGroupName, Name, Slot, webApp.Location, AppServicePlan, cloningInfo, AseName));
         }
     }
 }

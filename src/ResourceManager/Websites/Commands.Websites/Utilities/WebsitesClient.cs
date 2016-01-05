@@ -44,10 +44,22 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             private set;
         }
 
-        public Site CreateWebApp(string resourceGroupName, string webAppName, string slotName, string location, string serverFarmId, CloningInfo cloningInfo)
+        public Site CreateWebApp(string resourceGroupName, string webAppName, string slotName, string location, string serverFarmId, CloningInfo cloningInfo, string aseName)
         {
             Site createdWebSite = null;
             string qualifiedSiteName;
+            HostingEnvironmentProfile profile = null;
+            if (!string.IsNullOrEmpty(aseName))
+            {
+                var aseResourceId = CmdletHelpers.GetApplicationServiceEnvironmentResourceId(WrappedWebsitesClient.SubscriptionId, resourceGroupName, aseName);
+                profile = new HostingEnvironmentProfile
+                {
+                    Id = aseResourceId,
+                    Type = CmdletHelpers.ApplicationServiceEnvironmentResourcesName,
+                    Name = aseName
+                };
+            }
+
             if (CmdletHelpers.ShouldUseDeploymentSlot(webAppName, slotName, out qualifiedSiteName))
             {
                 createdWebSite = WrappedWebsitesClient.Sites.CreateOrUpdateSiteSlot(
@@ -57,7 +69,8 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                             SiteName = qualifiedSiteName,
                             Location = location,
                             ServerFarmId = serverFarmId,
-                            CloningInfo =  cloningInfo
+                            CloningInfo =  cloningInfo,
+                            HostingEnvironmentProfile = profile
                         });
             }
             else
@@ -69,9 +82,12 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                             SiteName = qualifiedSiteName,
                             Location = location,
                             ServerFarmId = serverFarmId,
-                            CloningInfo = cloningInfo
+                            CloningInfo = cloningInfo,
+                            HostingEnvironmentProfile = profile
                         });
             }
+
+            
 
             GetWebAppConfiguration(resourceGroupName, webAppName, slotName, createdWebSite);
             return createdWebSite;
