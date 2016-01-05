@@ -82,7 +82,6 @@ do
 	[ $(echo $metrics ) == "$i" ]
 done
 
-# !Not able to test pipeline for now
 printf "\nValidating web app slot metrics via pipline obj %s " "$slotname1" 
 
 printf "\n12. Stop web app slot: %s." "$slotname1"
@@ -116,17 +115,17 @@ printf "\nValidating web app slot %s Running " "$slotname1"
 [ $(echo $slot1 | jq '."properties.state"' --raw-output) == "Running" ]
 
 # Clone ------
-# !Not able to test since complex object input issue.
-# printf "\n10. Clone web app slot: %s." "$slotname1"
-# slotClone=`azure web app slot clone`
-# appWithSlotNameClone="$appName/slotname1"
+!Not able to test since complex object input issue.
+printf "\n18. Clone web app slot to a slot."
+slotClone=`azure web app slot create -g "$groupName" -n "$appName" --slot "$slotname1" --sourcewebapp $webappInfo`
+appWithSlotNameClone="$appName/slotname1"
 
-# printf "\nValidating cloned web app slot %s " "$slotname1"
-# [ $(echo $slotClone | jq '.name' --raw-output) == "$appWithSlotNameClone" ]
+printf "\nValidating cloned web app slot %s " "$slotname1"
+[ $(echo $slotClone | jq '.name' --raw-output) == "$appWithSlotNameClone" ]
 
-# printf "\nValidating web app slot get for %s " "$slotname1"
-# slot1=`azure webapp slot get -g "$groupName" -n "$appName" --slot "$slotname1"`
-# [ $(echo $slot1 | jq '.name' --raw-output) == "$appWithSlotNameClone" ]
+printf "\nValidating web app slot get for %s " "$slotname1"
+slot1=`azure webapp slot get -g "$groupName" -n "$appName" --slot "$slotname1"`
+[ $(echo $slot1 | jq '.name' --raw-output) == "$appWithSlotNameClone" ]
 #------- 
 
 # Cleanup
