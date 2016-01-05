@@ -96,7 +96,6 @@ namespace Microsoft.Azure.Commands.Compute
                     parameters);
                 var wait = op.GetAwaiter();
                 var resultop = wait.GetResult();
-                    //.GetAwaiter().GetResult();
                 var result = Mapper.Map<PSAzureOperationResponse>(resultop);
 
                 if (!(this.DisableBginfoExtension.IsPresent || IsLinuxOs()))
@@ -110,12 +109,9 @@ namespace Microsoft.Azure.Commands.Compute
                         {
                             Location = this.Location,
                             Publisher = VirtualMachineBGInfoExtensionContext.ExtensionDefaultPublisher,
-                            //VirtualMachineExtensionType = VirtualMachineExtensionType,
                             VirtualMachineExtensionType = VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
                             TypeHandlerVersion = currentBginfoVersion,
                             AutoUpgradeMinorVersion = true,
-                            //Settings = "{}",
-                            //ProtectedSettings = "{}"
                         };
 
                         typeof(Resource).GetRuntimeProperty("Name").SetValue(extensionParameters, VirtualMachineBGInfoExtensionContext.ExtensionDefaultName);

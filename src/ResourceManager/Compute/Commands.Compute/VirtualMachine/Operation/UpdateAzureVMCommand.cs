@@ -50,7 +50,6 @@ namespace Microsoft.Azure.Commands.Compute
                     Plan = this.VM.Plan,
                     AvailabilitySet = this.VM.AvailabilitySetReference,
                     Location = this.VM.Location,
-                    //Name = this.VM.Name,
                     Tags = this.Tags != null ? this.Tags.ToDictionary() : this.VM.Tags
                 };
 

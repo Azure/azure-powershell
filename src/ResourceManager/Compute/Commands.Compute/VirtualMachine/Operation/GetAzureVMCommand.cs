@@ -86,10 +86,6 @@ namespace Microsoft.Azure.Commands.Compute
                     {
                         var result = this.VirtualMachineClient.GetWithHttpMessagesAsync(
                             this.ResourceGroupName, this.Name).GetAwaiter().GetResult();
-                        //var op = this.VirtualMachineClient.GetWithHttpMessagesAsync(
-                        //    this.ResourceGroupName, this.Name);
-                        //var wait = op.GetAwaiter();
-                        //var result = wait.GetResult();
 
                         var psResult = Mapper.Map<PSVirtualMachine>(result);
                         if (result.Body != null)
