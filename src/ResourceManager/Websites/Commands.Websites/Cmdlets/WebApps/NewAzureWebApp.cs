@@ -76,6 +76,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [ValidateNotNullOrEmpty]
         public string AseName { get; set; }
 
+        [Parameter(Position = 9, Mandatory = false, HelpMessage = "Resource group of Application Service environment")]
+        [ValidateNotNullOrEmpty]
+        public string AseResourceGroupName { get; set; }
+
         public override void ExecuteCmdlet()
         {
             CloningInfo cloningInfo = null;
@@ -93,7 +97,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 };
             }
 
-            WriteObject(WebsitesClient.CreateWebApp(ResourceGroupName, Name, null, Location, AppServicePlan, cloningInfo, AseName));
+            WriteObject(WebsitesClient.CreateWebApp(ResourceGroupName, Name, null, Location, AppServicePlan, cloningInfo, AseName, AseResourceGroupName));
         }
     }
 }
