@@ -329,7 +329,9 @@ namespace Microsoft.Azure.Commands.Resources.Models
             }
             else
             {
-                deployment.Properties.Template = JObject.Parse(DataStore.ReadFileAsText(parameters.TemplateFile));
+                var textData = DataStore.ReadFileAsText(parameters.TemplateFile);
+                deployment.Properties.Template = string.IsNullOrEmpty(textData) ?
+                    (object)textData : JObject.Parse(DataStore.ReadFileAsText(parameters.TemplateFile));
             }
 
             if (Uri.IsWellFormedUriString(parameters.ParameterUri, UriKind.Absolute))
@@ -341,7 +343,9 @@ namespace Microsoft.Azure.Commands.Resources.Models
             }
             else
             {
-                deployment.Properties.Parameters = JObject.Parse(GetDeploymentParameters(parameters.TemplateParameterObject));
+                var deploymentParameters = GetDeploymentParameters(parameters.TemplateParameterObject);
+                deployment.Properties.Parameters = string.IsNullOrEmpty(deploymentParameters) ?
+                    (object) deploymentParameters : JObject.Parse(deploymentParameters);
             }
 
             return deployment;
