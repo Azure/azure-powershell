@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.Compute
             ThrowTerminatingError
                 (new ErrorRecord(
                     new InvalidOperationException(string.Format(CultureInfo.InvariantCulture,
-                        Resources.ResourceManager.GetString("DataDiskNotAssignedForVM"), missingDisk)),
+                        Resources.DataDiskNotAssignedForVM, missingDisk)),
                     string.Empty,
                     ErrorCategory.InvalidData,
                     null));

@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             {
                 if (currentSubscription == null)
                 {
-                    throw new ArgumentException(Rsrc.ResourceManager.GetString("StorageCredentialsFactoryCurrentSubscriptionNotSet"), "SubscriptionId");
+                    throw new ArgumentException(Rsrc.StorageCredentialsFactoryCurrentSubscriptionNotSet, "currentSubscription");
                 }
                 var storageKeys = this.client.StorageAccounts.ListKeys(this.resourceGroupName, destination.StorageAccountName);
                 return new StorageCredentials(destination.StorageAccountName, storageKeys.Key1);

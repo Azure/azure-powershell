@@ -12,14 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.Azure.Commands.Common.ScenarioTest;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Common.ScenarioTest
 {
@@ -51,6 +44,13 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
         {
             var helper = _collectionState.GetRunner("compute-management");
             helper.RunScript("01-VirtualMachineSizes");
+        }
+
+        [Fact]
+        public void VirtualMachineCreationTest()
+        {
+            var helper = _collectionState.GetRunner("compute-management");
+            helper.RunScript("02-VirtualMachineCreation");
         }
     }
 }

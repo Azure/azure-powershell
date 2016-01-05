@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
             Generator = new Random();
             SessionId = $"{Generator.Next(10000, 99999)}";
             var credentials = new EnvironmentCredentialsProvider();
-            credentials.Initialize("TestCredentials");
+            credentials.Initialize();
             _contextFactory = new EnvironmentContextFactory(credentials);
             var helper = GetRunner("lib");
             var profileText = helper.RunScript(credentials.LoginScriptName);
