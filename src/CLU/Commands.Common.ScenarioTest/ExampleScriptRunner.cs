@@ -113,10 +113,6 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
                     process.EnvironmentVariables[LocationKey] = DefaultLocation;
                     process.EnvironmentVariables[StorageAccountTypeKey] = DefaultStorageAccountType;
                     process.EnvironmentVariables[StorageAccountNameKey] = _storageAccountName;
-                    foreach (var helper in _context.EnvironmentHelpers)
-                    {
-                        helper.TrySetupScriptEnvironment(_context, _clientFactory, process.EnvironmentVariables);
-                    }
 
                     foreach (var environmentVar in EnvironmentVariables.Keys)
                     {

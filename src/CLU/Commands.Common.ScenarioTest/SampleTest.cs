@@ -12,14 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.Azure.Commands.Common.ScenarioTest;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Common.ScenarioTest
 {
