@@ -72,9 +72,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [ValidateNotNullOrEmpty]
         public Hashtable AppSettingsOverrides { get; set; }
 
-        [Parameter(Position = 9, Mandatory = false, HelpMessage = "Application Service environment resource Id.")]
+        [Parameter(Position = 9, Mandatory = false, HelpMessage = "Application Service environment Name")]
         [ValidateNotNullOrEmpty]
-        public string ApplicationServiceEnvironmentId { get; set; }
+        public string AseName { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 };
             }
 
-            WriteObject(WebsitesClient.CreateWebApp(ResourceGroupName, Name, null, Location, AppServicePlan, cloningInfo, ApplicationServiceEnvironmentId));
+            WriteObject(WebsitesClient.CreateWebApp(ResourceGroupName, Name, null, Location, AppServicePlan, cloningInfo, AseName));
         }
     }
 }
