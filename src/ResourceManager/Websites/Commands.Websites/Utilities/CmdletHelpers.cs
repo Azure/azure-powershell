@@ -37,6 +37,10 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 
         private static readonly Dictionary<string, int> WorkerSizes = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase) { { "Small", 1 }, { "Medium", 2 }, { "Large", 3 }, { "ExtraLarge", 4 } };
 
+        public const string ApplicationServiceEnvironmentResourcesName = "hostingEnvironments";
+        private const string ApplicationServiceEnvironmentResourceIdFormat =
+            "/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Web/{2}/{3}";
+
         public static Dictionary<string, string> ConvertToStringDictionary(this Hashtable hashtable)
         {
             return hashtable == null ? null : hashtable.Cast<DictionaryEntry>()
@@ -206,6 +210,12 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             slotName = null;
 
             return false;
+        }
+
+        internal static string GetApplicationServiceEnvironmentResourceId(string subscriptionId, string resourceGroupName, string applicationServiceEnvironmentName)
+        {
+            return string.Format(ApplicationServiceEnvironmentResourceIdFormat, subscriptionId, resourceGroupName, ApplicationServiceEnvironmentResourcesName,
+                applicationServiceEnvironmentName);
         }
 
         internal static HostNameSslState[] GetHostNameSslStatesFromSiteResponse(Site site, string hostName = null)

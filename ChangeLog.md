@@ -6,6 +6,7 @@
   * New-AzureRmWebAppSSLBinding
   * Get-AzureRmWebAppSSLBinding
   * Remove-AzureRmWebAppSSLBinding
+* Azure Websites: Added AseName and AseResourceGroupName parameters in New-AzureRmAppServicePlan cmdlet
   
 ## 2015.12.14 version 1.0.2
 * Azure Compute (ARM):

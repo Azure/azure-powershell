@@ -41,6 +41,14 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
         [ValidateSet("Small", "Medium", "Large", "ExtraLarge", IgnoreCase = true)]
         public string WorkerSize { get; set; }
 
+        [Parameter(Position = 6, Mandatory = false, HelpMessage = "Name of application service environment")]
+        [ValidateNotNullOrEmpty]
+        public string AseName { get; set; }
+
+        [Parameter(Position = 7, Mandatory = false, HelpMessage = "Name of the application service environment resource group")]
+        [ValidateNotNullOrEmpty]
+        public string AseResourceGroupName { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (string.IsNullOrWhiteSpace(Tier))
@@ -53,6 +61,14 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
                 WorkerSize = "Small";
             }
 
+            var aseResourceGroupName = AseResourceGroupName;
+
+            if (!string.IsNullOrEmpty(AseName)
+                && string.IsNullOrEmpty(aseResourceGroupName))
+            {
+                aseResourceGroupName = ResourceGroupName;
+            }
+
             var capacity = NumberofWorkers < 1 ? 1 : NumberofWorkers;
             var skuName = CmdletHelpers.GetSkuName(Tier, WorkerSize);
 
@@ -63,7 +79,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
                 Capacity = capacity
             };
 
-            WriteObject(WebsitesClient.CreateAppServicePlan(ResourceGroupName, Name, Location, null, sku), true);
+            WriteObject(WebsitesClient.CreateAppServicePlan(ResourceGroupName, Name, Location, null, sku, AseName, aseResourceGroupName), true);
         }
     }
 }
