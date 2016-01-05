@@ -43,6 +43,15 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
         }
 
         [Fact]
+        public void DeploymentsTest()
+        {
+            var helper = _collectionState
+                .GetRunner("resource-management");
+            helper.EnvironmentVariables.Add("resourceName", helper.GenerateName("csmr"));
+            helper.RunScript("03-Deployments");
+        }
+
+        [Fact]
         public void RoleAssignmentsTest()
         {
             var helper = _collectionState

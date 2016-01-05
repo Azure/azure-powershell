@@ -3,7 +3,6 @@ export TESTDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 . $TESTDIR/helper.sh
 export groupName=`randomName testrg`
 export location="westus"
-export CmdletSessionID=1010
 export MSYS_NO_PATHCONV=1
 
 echo "Logging in as user"

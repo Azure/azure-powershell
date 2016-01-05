@@ -38,27 +38,24 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
             SessionId = $"{Generator.Next(10000, 99999)}";
         }
 
-        private ScenarioTestFixture(AzureContext conext, string sessionId)
-        {
-            Generator = new Random();
-            SessionId = sessionId;
-            AzureContext = conext;
-        }
-
         public string SessionId { get; protected set; }
         public Random Generator { get; protected set; }
 
         public ScenarioTestFixture LoginAsUser()
         {
-            return new ScenarioTestFixture(Login(EnvironmentCredentialsProvider.LoginUserScript), SessionId);
+            var newTestFixture = new ScenarioTestFixture();
+            newTestFixture.Login(EnvironmentCredentialsProvider.LoginUserScript);
+            return newTestFixture;
         }
 
         public ScenarioTestFixture LoginAsService()
         {
-            return new ScenarioTestFixture(Login(EnvironmentCredentialsProvider.LoginServiceScript), SessionId);
+            var newTestFixture = new ScenarioTestFixture();
+            newTestFixture.Login(EnvironmentCredentialsProvider.LoginServiceScript);
+            return newTestFixture;
         }
 
-        private AzureContext Login(string loginScript)
+        private void Login(string loginScript)
         {
             var helper = new ExampleScriptRunner(Generator, SessionId)
             {
@@ -70,7 +67,7 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
             {
                 throw new ArgumentOutOfRangeException(nameof(profile), $"Deserialized profile is null: `{profileText}`");
             }
-            return profile.Context;
+            AzureContext = profile.Context;
         }
 
         public ExampleScriptRunner GetRunner(string directoryName)
@@ -79,7 +76,7 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
             {
                 var credentials = new EnvironmentCredentialsProvider();
                 credentials.Initialize();
-                AzureContext = Login(credentials.LoginScriptName);
+                Login(credentials.LoginScriptName);
             }
             var context = EnvironmentContextFactory.GetTestContext(directoryName);
             context.Context = AzureContext;
