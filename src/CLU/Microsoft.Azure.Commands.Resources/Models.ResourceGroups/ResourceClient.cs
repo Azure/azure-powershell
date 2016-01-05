@@ -23,6 +23,7 @@ using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.Rest.Azure;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -328,7 +329,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             }
             else
             {
-                deployment.Properties.Template = DataStore.ReadFileAsText(parameters.TemplateFile);
+                deployment.Properties.Template = JObject.Parse(DataStore.ReadFileAsText(parameters.TemplateFile));
             }
 
             if (Uri.IsWellFormedUriString(parameters.ParameterUri, UriKind.Absolute))
@@ -340,7 +341,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             }
             else
             {
-                deployment.Properties.Parameters = GetDeploymentParameters(parameters.TemplateParameterObject);
+                deployment.Properties.Parameters = JObject.Parse(GetDeploymentParameters(parameters.TemplateParameterObject));
             }
 
             return deployment;
