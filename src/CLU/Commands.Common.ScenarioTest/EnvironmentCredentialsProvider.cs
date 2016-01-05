@@ -18,25 +18,33 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
 {
     public class EnvironmentCredentialsProvider : ICredentialsProvider
     {
-        public const string userScript = "loginUser";
-        public const string serviceScript = "loginService";
+        public const string LoginUserScript = "loginUser";
+        public const string LoginServiceScript = "loginService";
 
         public const string SecretVariable = "secret";
         public const string SpnVariable = "spn";
         public const string TenantVariable = "tenant";
+        public const string SpnSubscriptionVariable = "spnSubscription";
 
         public const string UsernameVariable = "azureUser";
         public const string PasswordVariable = "password";
+        public const string UserSubscriptionVariable = "userSubscription";
+
         public const string SubscriptionVariable = "subscription";
 
         public string LoginScriptName { get; protected set; }
 
         public virtual void Initialize()
         {
-            if (!TryInitializeServiceCredentials() && !TryInitializeUserCredentials())
+            var isSpnSetup = TryInitializeServiceCredentials();
+            if (!isSpnSetup)
             {
-                throw new InvalidOperationException($"Unable to create credentials. " +
-                    "Please ensure your environment is correctly set up.");
+                var isUserSetup = TryInitializeUserCredentials();
+                if (!isUserSetup)
+                {
+                    throw new InvalidOperationException($"Unable to create credentials. " +
+                        "Please ensure your environment is correctly set up.");
+                }
             }
         }
         
@@ -46,13 +54,13 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
                 !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable(SecretVariable)) &&
                 !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable(TenantVariable)))
             {
-                LoginScriptName = serviceScript;
+                LoginScriptName = LoginServiceScript;
                 Logger.Instance.WriteMessage($"Logging in using ServicePrincipal: {Environment.GetEnvironmentVariable(SpnVariable)}");
                 Logger.Instance.WriteMessage($"Logging in using Key: *********");
                 Logger.Instance.WriteMessage($"Logging in using Tenant: {Environment.GetEnvironmentVariable(TenantVariable)}");
-                if (!string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable(SubscriptionVariable)))
+                if (!string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable(SpnSubscriptionVariable)))
                 {
-                    Logger.Instance.WriteMessage($"Logging in using Subscription: {Environment.GetEnvironmentVariable(SubscriptionVariable)}");
+                    Logger.Instance.WriteMessage($"Logging in using Subscription: {Environment.GetEnvironmentVariable(SpnSubscriptionVariable)}");
                 }
                 return true;
             }
@@ -64,12 +72,12 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
             if (!string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable(UsernameVariable)) &&
                 !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable(PasswordVariable)))
             {
-                LoginScriptName = userScript;
+                LoginScriptName = LoginUserScript;
                 Logger.Instance.WriteMessage($"Logging in using UserName: {Environment.GetEnvironmentVariable(UsernameVariable)}");
                 Logger.Instance.WriteMessage($"Logging in using Password: *********");
-                if (!string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable(SubscriptionVariable)))
+                if (!string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable(UserSubscriptionVariable)))
                 {
-                    Logger.Instance.WriteMessage($"Logging in using Subscription: {Environment.GetEnvironmentVariable(SubscriptionVariable)}");
+                    Logger.Instance.WriteMessage($"Logging in using Subscription: {Environment.GetEnvironmentVariable(UserSubscriptionVariable)}");
                 }
                 return true;
             }

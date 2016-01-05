@@ -20,39 +20,76 @@ using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Common.ScenarioTest
 {
+    internal enum ContextType
+    {
+        None,
+        Auto,
+        User,
+        ServicePrincipal
+    }
+
     public class ScenarioTestFixture
     {
-        protected EnvironmentContextFactory _contextFactory;
+        public AzureContext AzureContext { get; protected set; }
+
         public ScenarioTestFixture()
         {
             Generator = new Random();
             SessionId = $"{Generator.Next(10000, 99999)}";
-            var credentials = new EnvironmentCredentialsProvider();
-            credentials.Initialize();
-            _contextFactory = new EnvironmentContextFactory(credentials);
-            var helper = GetRunner("lib");
-            var profileText = helper.RunScript(credentials.LoginScriptName);
-            var profile = JsonConvert.DeserializeObject<PSAzureProfile>(profileText);
-            if (profile == null)
-            {
-                throw new ArgumentOutOfRangeException(nameof(profile), $"Deserialized profile is null: `{profileText}`");
-            }
-            AzureContext = (AzureContext) (profile.Context);
         }
 
         public string SessionId { get; protected set; }
         public Random Generator { get; protected set; }
 
+        public ScenarioTestFixture LoginAsUser()
+        {
+            var newTestFixture = new ScenarioTestFixture();
+            newTestFixture.Login(EnvironmentCredentialsProvider.LoginUserScript);
+            return newTestFixture;
+        }
+
+        public ScenarioTestFixture LoginAsService()
+        {
+            var newTestFixture = new ScenarioTestFixture();
+            newTestFixture.Login(EnvironmentCredentialsProvider.LoginServiceScript);
+            return newTestFixture;
+        }
+
+        private void Login(string loginScript)
+        {
+            var helper = new ExampleScriptRunner(Generator, SessionId)
+            {
+                TestContext = EnvironmentContextFactory.GetTestContext("lib")
+            };
+            var profileText = helper.RunScript(loginScript);
+            var profile = JsonConvert.DeserializeObject<PSAzureProfile>(profileText);
+            if (profile == null)
+            {
+                throw new ArgumentOutOfRangeException(nameof(profile), $"Deserialized profile is null: `{profileText}`");
+            }
+            AzureContext = profile.Context;
+        }
+
         public ExampleScriptRunner GetRunner(string directoryName)
         {
-            var context = _contextFactory.GetTestContext(directoryName);
+            if (AzureContext == null)
+            {
+                var credentials = new EnvironmentCredentialsProvider();
+                credentials.Initialize();
+                Login(credentials.LoginScriptName);
+            }
+            var context = EnvironmentContextFactory.GetTestContext(directoryName);
             context.Context = AzureContext;
-            return new ExampleScriptRunner(Generator, SessionId)
+            var scriptRunner = new ExampleScriptRunner(Generator, SessionId)
             {
                 TestContext = context
             };
+            if (context.Context != null && context.Context.Subscription != null)
+            {
+                scriptRunner.EnvironmentVariables[EnvironmentCredentialsProvider.SubscriptionVariable] = 
+                    context.Context.Subscription.Id.ToString();
+            }
+            return scriptRunner;
         }
-
-        public AzureContext AzureContext { get; protected set;}
     }
 }

@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
         const string ResourceGroupNameKey = "groupName";
         const string LocationKey = "location";
         const string BaseDir = "BASEDIR";
-        const string SessionKey = "CmdletSessionID";
+        const string SessionKey = "AzureProfile";
         const string StorageAccountTypeKey = "storageAccountType";
         const string StorageAccountNameKey = "storageAccountName";
         const string DefaultStorageAccountType = "Standard_GRS";

@@ -1,17 +1,17 @@
 #!/bin/bash
-export BASEDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
-. $BASEDIR/helper.sh
+export TESTDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+. $TESTDIR/helper.sh
 export groupName=`randomName testrg`
 export location="westus"
-export CmdletSessionID=1010
 export MSYS_NO_PATHCONV=1
 
 echo "Logging in as user"
-. $BASEDIR/loginUser.sh
+. $TESTDIR/loginUser.sh
 
-for d in $( ls $BASEDIR/.. --ignore=lib ); do
-    for f in $( ls $BASEDIR/../$d/*.sh ); do
+for d in $( ls $TESTDIR/.. --ignore=lib ); do
+    for f in $( ls $TESTDIR/../$d/*.sh ); do
         echo "running: $f"
+        BASEDIR=$(cd "$(dirname "$f")" && pwd)
         . $f
         set +e
         printf "\nCleanup: removing resource group: %s\n" $groupName
