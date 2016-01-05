@@ -12,14 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.Azure.Commands.Common.ScenarioTest;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Common.ScenarioTest
 {
@@ -33,17 +26,24 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
         }
 
         [Fact]
-        public void RunSampleTest()
+        public void ResourceGroupsTest()
         {
             var helper = _collectionState.GetRunner("resource-management");
             helper.RunScript("01-ResourceGroups");
         }
 
         [Fact]
-        public void RunVirtualHardDiskTest()
+        public void VirtualHardDisksTest()
         {
             var helper = _collectionState.GetRunner("virtual-hard-disk");
             helper.RunScript("01-VirtualHardDisks");
+        }
+
+        [Fact]
+        public void VirtualMachineSizeTest()
+        {
+            var helper = _collectionState.GetRunner("compute-management");
+            helper.RunScript("01-VirtualMachineSizes");
         }
     }
 }

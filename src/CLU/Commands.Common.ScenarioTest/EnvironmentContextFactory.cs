@@ -34,9 +34,6 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
             context.TestScriptDirectory =GetExamplesDirectory(context.ExecutionDirectory, scriptDirectoryName);
             context.TestExecutableName = "bash.exe";
             context.TestScriptSuffix = ".sh";
-            var helpers = new List<IScriptEnvironmentHelper>();
-            helpers.Add(_credentials.EnvironmentProvider);
-            context.EnvironmentHelpers = helpers;
             return context;
         }
 

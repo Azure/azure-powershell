@@ -17,7 +17,7 @@ namespace Microsoft.CLU.Metadata
         /// <summary>
         /// The metadata information of the cmdlet instance.
         /// </summary>
-        public InstanceMetadata Instance { get; set; }
+        public InstanceMetadata Instance { get; private set; }
 
         /// <summary>
         /// Creates an instance of CmdletMetadata.

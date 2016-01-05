@@ -77,6 +77,15 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// Gets a single role definition by the role Id guid.
         /// </summary>
         /// <param name="roleId">RoleId guid</param>
+        public PSRoleDefinition GetRoleDefinition(string roleId, string scope)
+        {
+            return AuthorizationManagementClient.RoleDefinitions.Get(scope, roleId).ToPSRoleDefinition();
+        }
+
+        /// <summary>
+        /// Gets a single role definition by the role Id guid.
+        /// </summary>
+        /// <param name="roleId">RoleId guid</param>
         public PSRoleDefinition GetRoleDefinition(Guid roleId)
         {
             return AuthorizationManagementClient.RoleDefinitions.Get(
@@ -90,22 +99,51 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// </summary>
         /// <param name="name">The role name</param>
         /// <returns>The matched role Definitions</returns>
-        public List<PSRoleDefinition> FilterRoleDefinitions(string name)
+        public List<PSRoleDefinition> FilterRoleDefinitions(string name, string scope, bool scopeAndBelow = false)
         {
             List<PSRoleDefinition> result = new List<PSRoleDefinition>();
+
+            ODataQuery<RoleDefinitionFilter> odataFilter = null;
+
+            if (scopeAndBelow)
+            {
+                odataFilter = new ODataQuery<RoleDefinitionFilter>(item => item.AtScopeAndBelow() && item.RoleName == name);
+            }
+            else
+            {
+                odataFilter = new ODataQuery<RoleDefinitionFilter>(item => item.RoleName == name);
+            }
+
             result.AddRange(AuthorizationManagementClient.RoleDefinitions.List(
-                        "subscriptions/" + AuthorizationManagementClient.SubscriptionId,
-                        new ODataQuery<RoleDefinition>( item => item.Name == name))
+                        scope,
+                        odataFilter)
                   .Select(r => r.ToPSRoleDefinition()));
 
             return result;
+        }
+        public List<PSRoleDefinition> FilterRoleDefinitions(FilterRoleDefinitionOptions options)
+        {
+            if (options.RoleDefinitionId != Guid.Empty)
+            {
+                return new List<PSRoleDefinition> { GetRoleDefinition(options.RoleDefinitionId.ToString(), options.Scope) };
+            }
+            else if (options.CustomOnly)
+            {
+                // Special case - if custom only flag is specified then you don't need to lookup on a specific id or name since it will be a bit redundant
+                return FilterRoleDefinitionsByCustom(options.Scope, options.ScopeAndBelow);
+            }
+            else
+            {
+                // If RoleDefinition name is not specified (null/empty), service will handle it and return all roles
+                return FilterRoleDefinitions(options.RoleDefinitionName, options.Scope, options.ScopeAndBelow);
+            }
         }
 
         /// <summary>
         /// Fetches all existing role Definitions.
         /// </summary>
         /// <returns>role Definitions</returns>
-        public List<PSRoleDefinition> GetRoleDefinitions()
+        public List<PSRoleDefinition> GetRoleDefinitionsAtScopeAndBelow()
         {
             List<PSRoleDefinition> result = new List<PSRoleDefinition>();
             result.AddRange(AuthorizationManagementClient.RoleDefinitions.List(
@@ -118,11 +156,13 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// Filters the existing role Definitions by CustomRole.
         /// </summary>
         /// <returns>The custom role Definitions</returns>
-        public List<PSRoleDefinition> FilterRoleDefinitionsByCustom()
+        public List<PSRoleDefinition> FilterRoleDefinitionsByCustom(string scope, bool scopeAndBelow)
         {
             List<PSRoleDefinition> result = new List<PSRoleDefinition>();
+
             result.AddRange(AuthorizationManagementClient.RoleDefinitions.List(
-                        "subscriptions/" + AuthorizationManagementClient.SubscriptionId)
+                        scope,
+                        scopeAndBelow ? new ODataQuery<RoleDefinitionFilter>(filter => filter.AtScopeAndBelow()) : null)
                 .Where(r => r.Properties.Type == AuthorizationClientExtensions.CustomRole)
                 .Select(r => r.ToPSRoleDefinition()));
             return result;
@@ -138,7 +178,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             Guid principalId = ActiveDirectoryClient.GetObjectId(parameters.ADObjectFilter);
             Guid roleAssignmentId = RoleAssignmentNames.Count == 0 ? Guid.NewGuid() : RoleAssignmentNames.Dequeue();
             string roleDefinitionId = !string.IsNullOrEmpty(parameters.RoleDefinitionName)
-                ? AuthorizationHelper.GetRoleDefinitionFullyQualifiedId(subscriptionId, GetRoleRoleDefinition(parameters.RoleDefinitionName).Id)
+                ? AuthorizationHelper.GetRoleDefinitionFullyQualifiedId(subscriptionId, GetSingleRoleDefinitionByName(parameters.RoleDefinitionName, parameters.Scope).Id)
                 : AuthorizationHelper.GetRoleDefinitionFullyQualifiedId(subscriptionId, parameters.RoleDefinitionId);
 
             var createParameters =  new RoleAssignmentProperties
@@ -318,9 +358,9 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             return roleAssignments;
         }
 
-        public PSRoleDefinition GetRoleRoleDefinition(string name)
+        public PSRoleDefinition GetSingleRoleDefinitionByName(string name, string scope)
         {
-            List<PSRoleDefinition> roles = FilterRoleDefinitions(name);
+            List<PSRoleDefinition> roles = FilterRoleDefinitions(name, scope);
 
             if (roles == null || !roles.Any())
             {
@@ -334,38 +374,52 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             return roles.First();
         }
 
+        public PSRoleDefinition RemoveRoleDefinition(FilterRoleDefinitionOptions options)
+        {
+            if (options.RoleDefinitionId != Guid.Empty)
+            {
+                return this.RemoveRoleDefinition(options.RoleDefinitionId, options.Scope);
+            }
+            else if (!string.IsNullOrEmpty(options.RoleDefinitionName))
+            {
+                return this.RemoveRoleDefinition(options.RoleDefinitionName, options.Scope);
+            }
+            else
+            {
+                throw new InvalidOperationException("RoleDefinition Name or Id should be specified.");
+            }
+        }
         /// <summary>
         /// Deletes a role definition based on the id.
         /// </summary>
         /// <param name="roleDefinitionId">The role definition id to delete</param>
         /// <param name="subscriptionId">Current subscription id</param>
         /// <returns>The deleted role definition.</returns>
-        public PSRoleDefinition RemoveRoleDefinition(Guid roleDefinitionId, string subscriptionId)
+        public PSRoleDefinition RemoveRoleDefinition(Guid roleDefinitionId, string scope)
         {
             string id = roleDefinitionId.ToString();
 
-            PSRoleDefinition roleDefinition = this.GetRoleDefinition(roleDefinitionId);
+            PSRoleDefinition roleDefinition = this.GetRoleDefinition(id, scope);
             if (roleDefinition != null)
             {
-                return AuthorizationManagementClient.RoleDefinitions
-                    .Delete(roleDefinition.AssignableScopes.First(), roleDefinitionId.ToString()).ToPSRoleDefinition();
+                return AuthorizationManagementClient.RoleDefinitions.Delete(scope, id).ToPSRoleDefinition();
             }
             else
             {
-                throw new KeyNotFoundException(string.Format(ProjectResources.RoleDefinitionWithIdNotFound, id));
+                throw new KeyNotFoundException(string.Format(ProjectResources.RoleDefinitionWithIdNotFound, roleDefinitionId));
             }
         }
-
+        
         /// <summary>
         /// Deletes a role definition based on the name.
         /// </summary>
         /// <param name="roleDefinitionName">The role definition name.</param>
         /// <returns>The deleted role definition.</returns>
-        public PSRoleDefinition RemoveRoleDefinition(string roleDefinitionName, string subscriptionId)
+        public PSRoleDefinition RemoveRoleDefinition(string roleDefinitionName, string scope)
         {
-            PSRoleDefinition roleDefinition = this.GetRoleRoleDefinition(roleDefinitionName);
+            PSRoleDefinition roleDefinition = this.GetSingleRoleDefinitionByName(roleDefinitionName, scope);
             return AuthorizationManagementClient.RoleDefinitions
-                .Delete(roleDefinition.AssignableScopes.First(), roleDefinition.Id).ToPSRoleDefinition();
+                .Delete(scope, roleDefinition.Id).ToPSRoleDefinition();
         }
 
         /// <summary>
@@ -381,34 +435,26 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 throw new InvalidOperationException(ProjectResources.RoleDefinitionIdShouldBeAGuid);
             }
 
-            PSRoleDefinition roleDefinition = this.GetRoleDefinition(roleDefinitionId);
+            PSRoleDefinition roleDefinition = this.GetRoleDefinition(roleDefinitionId.ToString(), role.AssignableScopes.First());
             if (roleDefinition == null)
             {
                 throw new KeyNotFoundException(string.Format(ProjectResources.RoleDefinitionWithIdNotFound, role.Id));
             }
-
-            string roleDefinitionFullyQualifiedId = AuthorizationHelper.GetRoleDefinitionFullyQualifiedId(subscriptionId, role.Id);
-
-            roleDefinition.Name = role.Name ?? roleDefinition.Name;
-            roleDefinition.Actions = role.Actions ?? roleDefinition.Actions;
-            roleDefinition.NotActions = role.NotActions ?? roleDefinition.NotActions;
-            roleDefinition.AssignableScopes = role.AssignableScopes ?? roleDefinition.AssignableScopes;
-            roleDefinition.Description = role.Description ?? roleDefinition.Description;
-
+            
             ValidateRoleDefinition(roleDefinition);
 
             return
                 AuthorizationManagementClient.RoleDefinitions.CreateOrUpdate(
-                    roleDefinitionId.ToString(),
                     roleDefinition.AssignableScopes.First(),
+                    roleDefinitionId.ToString(),
                     new RoleDefinition()
                         {
-                            Id = roleDefinitionFullyQualifiedId,
                             Name = roleDefinitionId.ToString(),
                             Properties =
                                 new RoleDefinitionProperties()
                                 {
-                                    RoleName = roleDefinition.Name,
+                                    AssignableScopes = roleDefinition.AssignableScopes,
+                                    Description = roleDefinition.Description,
                                     Permissions =
                                         new List<Permission>()
                                         {
@@ -418,8 +464,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                                                 NotActions = roleDefinition.NotActions
                                             }
                                         },
-                                    AssignableScopes = roleDefinition.AssignableScopes,
-                                    Description = roleDefinition.Description
+                                    RoleName = roleDefinition.Name
                                 }
                         }
                     ).ToPSRoleDefinition();
