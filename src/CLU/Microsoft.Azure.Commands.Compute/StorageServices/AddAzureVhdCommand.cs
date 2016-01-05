@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
 
                 if (!String.IsNullOrEmpty(destinationUri.Uri.Query))
                 {
-                    var message = String.Format(Rsrc.ResourceManager.GetString("AddAzureVhdCommandSASUriNotSupportedInPatchMode"), destinationUri.Uri);
+                    var message = String.Format(Rsrc.AddAzureVhdCommandSASUriNotSupportedInPatchMode, destinationUri.Uri);
                     throw new ArgumentOutOfRangeException("Destination", message);
                 }
             }
