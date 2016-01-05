@@ -78,14 +78,41 @@ namespace Microsoft.Azure.Commands.Sql.Services
             {
                 if (eventTypes.Contains(SecurityConstants.All))
                 {
-                    throw new Exception(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.InvalidEventTypeSet, SecurityConstants.All));
+                    throw new Exception(string.Format(Properties.Resources.InvalidEventTypeSet, SecurityConstants.All));
                 }
                 if (eventTypes.Contains(SecurityConstants.None))
                 {
-                    throw new Exception(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.InvalidEventTypeSet, SecurityConstants.None));
+                    throw new Exception(string.Format(Properties.Resources.InvalidEventTypeSet, SecurityConstants.None));
                 }
             }
             return eventTypes;
-        }        
+        } 
+ 
+        /// <summary>
+        /// In cases where the user decided to use the shortcut NONE, this method sets the value of the ExcludedDetectionType property to reflect the correct values.
+        /// </summary>
+        internal static string[] ProcessExcludedDetectionTypes(string[] excludedDetectionTypes)
+        {
+            if (excludedDetectionTypes == null || excludedDetectionTypes.Length == 0)
+            {
+                return excludedDetectionTypes;
+            }
+
+            if (excludedDetectionTypes.Length == 1)
+            {
+                if (excludedDetectionTypes[0] == SecurityConstants.None)
+                {
+                    return new string[] { };
+                }
+            }
+            else
+            {
+                if (excludedDetectionTypes.Contains(SecurityConstants.None))
+                {
+                    throw new Exception(string.Format(Properties.Resources.InvalidExcludedDetectionTypeSet, SecurityConstants.None));
+                }
+            }
+            return excludedDetectionTypes;
+        } 
     }
 }
