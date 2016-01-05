@@ -17,7 +17,7 @@ namespace System.Management.Automation
         public SessionState()
         {
             PSVariable = new PSVariableIntrinsics();
-            _stateFileFullPath = System.IO.Path.Combine(CLUEnvironment.Session.Directory, "session.state.json");
+            _stateFileFullPath = CLUEnvironment.Session.SessionPath;
         }
 
         /// <summary>
