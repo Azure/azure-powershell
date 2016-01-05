@@ -89,20 +89,67 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             return searchResponse;
         }
 
-        public virtual HttpStatusCode CreateOrUpdateSavedSearch(string resourceGroupName, string workspaceName, string savedSearchId, string displayName, string category, string query, int version, string ETag = null)
+        public virtual HttpStatusCode CreateOrUpdateSavedSearch(string resourceGroupName, string workspaceName, string savedSearchId, string displayName, string category, string query, int version, bool force, Action<bool, string, string, string, Action> ConfirmAction, string ETag = null)
         {
-            SearchCreateOrUpdateSavedSearchParameters parameters = new SearchCreateOrUpdateSavedSearchParameters();
-            if (ETag != null && ETag != "")
+            HttpStatusCode status = HttpStatusCode.Ambiguous;
+            Action createSavedSearch = () =>
+                {
+                    SearchCreateOrUpdateSavedSearchParameters parameters = new SearchCreateOrUpdateSavedSearchParameters();
+                    if (ETag != null && ETag != "")
+                    {
+                        parameters.ETag = ETag;
+                    }
+                    parameters.Properties = new SavedSearchProperties();
+                    parameters.Properties.Category = category;
+                    parameters.Properties.DisplayName = displayName;
+                    parameters.Properties.Query = query;
+                    parameters.Properties.Version = version;
+                    AzureOperationResponse response = OperationalInsightsManagementClient.Search.CreateOrUpdateSavedSearch(resourceGroupName, workspaceName, savedSearchId, parameters);
+                    status = response.StatusCode;
+                };
+            if (force)
             {
-                parameters.ETag = ETag;
+                createSavedSearch();
             }
-            parameters.Properties = new SavedSearchProperties();
-            parameters.Properties.Category = category;
-            parameters.Properties.DisplayName = displayName;
-            parameters.Properties.Query = query;
-            parameters.Properties.Version = version;
-            AzureOperationResponse response = OperationalInsightsManagementClient.Search.CreateOrUpdateSavedSearch(resourceGroupName, workspaceName, savedSearchId, parameters);
-            return response.StatusCode;
+            else
+            {
+                bool savedSearchExists = CheckSavedSearchExists(resourceGroupName, workspaceName, savedSearchId);
+
+                ConfirmAction(
+                    !savedSearchExists,    // prompt only if the saved search exists
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.SavedSearchExists,
+                        savedSearchId,
+                        workspaceName),
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.SavedSearchCreating,
+                        savedSearchId,
+                        workspaceName),
+                    savedSearchId,
+                    createSavedSearch);
+            }
+            return status;
+        }
+
+        private bool CheckSavedSearchExists(string resourceGroupName, string workspaceName, string savedSearchId)
+        {
+            try
+            {
+                PSSearchGetSavedSearchResponse savedSearch = GetSavedSearch(resourceGroupName, workspaceName, savedSearchId);
+                return true;
+            }
+            catch (CloudException e)
+            {
+                // Get throws NotFound exception if the saved search does not exist
+                if (e.Response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    return false;
+                }
+
+                throw;
+            }
         }
     }
 }

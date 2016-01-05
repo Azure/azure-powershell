@@ -81,13 +81,37 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Properties {
                 return ResourceManager.GetString("ResourceGroupNameCannotBeEmpty", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Creating saved search &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string SavedSearchCreating
+        {
+            get
+            {
+                return ResourceManager.GetString("SavedSearchCreating", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove saved search &apos;{0}&apos; in workspace &apos;{1}&apos;?.
         /// </summary>
         internal static string SavedSearchDeleteConfirmationMessage {
             get {
                 return ResourceManager.GetString("SavedSearchDeleteConfirmationMessage", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to A saved search with the id &apos;{0}&apos; in workspace &apos;{1}&apos; exists. 
+        ///Continuing execution may overwrite the exisiting one. 
+        ///Are you sure you want to continue?.
+        /// </summary>
+        internal static string SavedSearchExists
+        {
+            get
+            {
+                return ResourceManager.GetString("SavedSearchExists", resourceCulture);
             }
         }
         
