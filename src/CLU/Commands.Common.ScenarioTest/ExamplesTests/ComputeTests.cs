@@ -17,19 +17,12 @@ using Xunit;
 namespace Microsoft.Azure.Commands.Common.ScenarioTest
 {
     [Collection("SampleCollection")]
-    public class SampleTest
+    public class ComputeTests
     {
         ScenarioTestFixture _collectionState;
-        public SampleTest(ScenarioTestFixture fixture)
+        public ComputeTests(ScenarioTestFixture fixture)
         {
             _collectionState = fixture;
-        }
-
-        [Fact]
-        public void ResourceGroupsTest()
-        {
-            var helper = _collectionState.GetRunner("resource-management");
-            helper.RunScript("01-ResourceGroups");
         }
 
         [Fact]
@@ -44,6 +37,13 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
         {
             var helper = _collectionState.GetRunner("compute-management");
             helper.RunScript("01-VirtualMachineSizes");
+        }
+
+        [Fact]
+        public void VirtualMachineCreationTest()
+        {
+            var helper = _collectionState.GetRunner("compute-management");
+            helper.RunScript("02-VirtualMachineCreation");
         }
     }
 }
