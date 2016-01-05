@@ -4,7 +4,6 @@ printf "\n=== Managing Resources in Azure ===\n"
 
 printf "\n1. Creating a new resource group: %s and location: %s.\n" "$groupName" "$location"
 azure group create --name "$groupName" --location "$location"
-resourceName="CluResource"
 destinationGroupName=$groupName"Destination"
 
 printf "\n2. Registering Resource Provider Namespace.\n"
@@ -23,14 +22,14 @@ resourceInfo=$(azure resource get -n $resourceName)
 printf "\nValidating Resource name is: %s\n" "$resourceName"
 [ $(echo $resourceInfo | jq '.Name' --raw-output) == "$resourceName" ]
 
-printf "\n5. Find Resource with name = %s and type =.\n" "$resourceName" "$resourceType"
-foundResource=$(azure resource find -n "clu" -t $resourceType)
-printf "\nValidating Resource name is: %s\n" "$resourceName"
+printf "\n5. Find Resource with name '%s' and type '%s'.\n" "$resourceName" "$resourceType"
+foundResource=$(azure resource find -n "$resourceName" -t $resourceType)
+printf "\nValidating Resource name is: %s.\n" "$resourceName"
 [ $(echo $foundResource | jq '.Name' --raw-output) == "$resourceName" ]
 
 printf "\n6. Update Resource.\n" 
 tagsUpdate='[{"Name": "testtagUpdated", "Value": "testvalueUpdated"}]'
-azure resource set  --ResourceGroupName $groupName --ResourceName $resourceName --ResourceType $resourceType --Tags "$tagsUpdate" -f
+azure resource set --ResourceGroupName $groupName --ResourceName $resourceName --ResourceType $resourceType --Tags "$tagsUpdate" -f
 
 printf "\n7. Move Resource to resource group: %s.\n" "$destinationGroupName"
 azure group create --name "$destinationGroupName" --location "$location"
@@ -39,6 +38,9 @@ arrayId="[$resourceId]"
 azure resource move -g "$destinationGroupName" --ResourceId "$arrayId" -f
 
 printf "\n8. Removing resource: %s.\n" "$resourceName"
-foundResource=$(azure resource find -n "clu" -t $resourceType)
+foundResource=$(azure resource find -n "$resourceName" -t $resourceType)
 resourceId=$(echo $foundResource | jq '.Id' --raw-output)
+echo $resourceId
+export MSYS_NO_PATHCONV=1
 azure resource remove --Id "$resourceId" -f
+export MSYS_NO_PATHCONV=
