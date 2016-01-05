@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 WriteProgress(progressRecord);
             }
 
-            WriteObject(list);
+            WriteObject(list, true);
         }
 
         private void GetByResourceGroup()
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 WriteExceptionError(e);
             }
             
-            WriteObject(list);
+            WriteObject(list, true);
         }
 
         private void GetBySubscription()
@@ -210,13 +210,13 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 WriteProgress(progressRecord);
             }
 
-            WriteObject(list);
+            WriteObject(list, true);
         }
 
         private void GetByAppServicePlan()
         {
             WriteObject(WebsitesClient.ListWebAppsForAppServicePlan(AppServicePlan.ResourceGroup,
-                AppServicePlan.ServerFarmWithRichSkuName).ToList());
+                AppServicePlan.ServerFarmWithRichSkuName).ToList(), true);
         }
     }
 }
