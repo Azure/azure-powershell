@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Compute
             base.ProcessRecord();
             ExecuteClientAction(() =>
             {
-                if (this.Force.IsPresent || this.ShouldContinue(Resources.ResourceManager.GetString("VirtualMachineRemovalConfirmation"), Resources.ResourceManager.GetString("VirtualMachineRemovalCaption")))
+                if (this.Force.IsPresent || this.ShouldContinue(Resources.VirtualMachineRemovalConfirmation, Resources.VirtualMachineRemovalCaption))
                 {
                     this.VirtualMachineClient.Delete(this.ResourceGroupName, this.Name);
                 }

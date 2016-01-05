@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Commands.Compute
 
                         if (string.IsNullOrEmpty(this.Run))
                         {
-                            WriteWarning(Microsoft.Azure.Commands.Compute.Properties.Resources.ResourceManager.GetString("CustomScriptExtensionTryToUseTheFirstSpecifiedFileAsRunScript"));
+                            WriteWarning(Microsoft.Azure.Commands.Compute.Properties.Resources.CustomScriptExtensionTryToUseTheFirstSpecifiedFileAsRunScript);
                             this.Run = this.FileName[0];
                         }
                     }
