@@ -101,7 +101,7 @@ Please set the environment variables for either Username/Password (no 2FA) or Se
 | ------------- |:-------------|
 | azureUser | an OrgId user name |
 | password | a service principal name |
-| subscription | (optional) Selects a particular subscription by id.  If not provided, the first listed subscription will be selected |
+| userSubscription | (optional) Selects a particular subscription by id.  If not provided, the first listed subscription will be selected |
 
 **Service Principal:**
 
@@ -110,7 +110,7 @@ Please set the environment variables for either Username/Password (no 2FA) or Se
 | spn | The tenant guid to authenticate against |
 | secret | the password or application secret to sue for authentication |
 | tenant | The tenant guid to authenticate against |
-| subscription | (optional) Selects a particular subscription by id.  If not provided, the first listed subscription will be selected |
+| spnSubscription | (optional) Selects a particular subscription by id.  If not provided, the first listed subscription will be selected |
 
 ##### XUnit Automation For Bash Scenario Tests
 - The ```Commands.Common.ScenarioTest``` project contains classes that enable executing bash scenario tests in Visual Studio, or cross-platform using dnx.
