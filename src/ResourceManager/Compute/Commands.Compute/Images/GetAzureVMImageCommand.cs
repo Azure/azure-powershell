@@ -15,10 +15,9 @@
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
-using System.Collections.Generic;
+using Microsoft.Rest.Azure.OData;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -88,13 +87,14 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 if (this.ParameterSetName.Equals(ListVMImageParamSetName))
                 {
+                    var filter = new ODataQuery<VirtualMachineImageResource>(this.FilterExpression);
+
                     var result = this.VirtualMachineImageClient.ListWithHttpMessagesAsync(
                         this.Location.Canonicalize(),
                         this.PublisherName,
                         this.Offer,
                         this.Skus,
-                        //this.FilterExpression).GetAwaiter().GetResult();
-                        null).GetAwaiter().GetResult(); // BUG: ODataUriParser.ParseFilter
+                        odataQuery: filter).GetAwaiter().GetResult();
 
                     var images = from r in result.Body
                                  select new PSVirtualMachineImage
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Compute
                         this.PublisherName,
                         this.Offer,
                         this.Skus,
-                        this.Version).GetAwaiter().GetResult();
+                        version: this.Version).GetAwaiter().GetResult();
 
                     var image = new PSVirtualMachineImageDetail
                     {

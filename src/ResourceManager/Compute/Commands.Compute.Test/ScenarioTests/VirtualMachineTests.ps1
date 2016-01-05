@@ -400,7 +400,7 @@ function Test-VirtualMachineList
             Assert-NotNull $s2[0].Id;
         }
 
-        Assert-ThrowsContains { $s3 = Get-AzureRmVM -NextLink "http://www.test.com/test"; } "Unexpected character"
+        Assert-ThrowsContains { $s3 = Get-AzureRmVM -NextLink "http://www.test.com/test"; } "Unable to deserialize the response"
 
         $passed = $true;
     }
@@ -455,11 +455,6 @@ function Test-VirtualMachineImageList
                             {
                                 $versions = $s4 | select -ExpandProperty Version;
 
-                                $s5 = Get-AzureRmVMImage -Location $locStr -PublisherName $pub -Offer $offer -Sku $sku -FilterExpression ('name -eq *');
-                                Assert-NotNull $s5;
-                                Assert-NotNull $s5.Count -gt 0;
-                                $verNames = $s5 | select -ExpandProperty Version;
-
                                 foreach ($ver in $versions)
                                 {
                                     if ($ver -eq $null -or $ver -eq '') { continue; }
@@ -467,8 +462,8 @@ function Test-VirtualMachineImageList
                                     Assert-NotNull $s6;
                                     $s6;
 
-                                    Assert-True { $verNames -contains $ver };
-                                    Assert-True { $verNames -contains $s6.Name };
+                                    Assert-True { $versions -contains $ver };
+                                    Assert-True { $versions -contains $s6.Name };
 
                                     $s6.Id;
 
@@ -498,15 +493,14 @@ function Test-VirtualMachineImageList
             {
                 foreach ($type in $types)
                 {
-                    $s2 = Get-AzureRmVMExtensionImage -Location $locStr -PublisherName $pub -Type $type -FilterExpression '*';
+                    $s2 = Get-AzureRmVMExtensionImage -Location $locStr -PublisherName $pub -Type $type -FilterExpression "startswith(name,'1')";
                     $versions = $s2 | select -ExpandProperty Version;
                     foreach ($ver in $versions)
                     {
-                        $s3 = Get-AzureRmVMExtensionImage -Location $locStr -PublisherName $pub -Type $type -Version $ver -FilterExpression '*';
+                        $s3 = Get-AzureRmVMExtensionImage -Location $locStr -PublisherName $pub -Type $type -Version $ver;
                 
                         Assert-NotNull $s3;
                         Assert-True { $s3.Version -eq $ver; }
-                        
                         $s3.Id;
 
                         $foundAnyExtensionImage = $true;

@@ -14,6 +14,8 @@
 
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Rest.Azure.OData;
 using System.Linq;
 using System.Management.Automation;
 
@@ -47,12 +49,13 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 if (string.IsNullOrEmpty(this.Version))
                 {
+                    var filter = new ODataQuery<VirtualMachineImageResource>(this.FilterExpression);
+
                     var result = this.VirtualMachineExtensionImageClient.ListVersionsWithHttpMessagesAsync(
                         this.Location.Canonicalize(),
                         this.PublisherName,
                         this.Type,
-                        //this.FilterExpression).GetAwaiter().GetResult();
-                        null).GetAwaiter().GetResult(); // Bug:
+                        odataQuery: filter).GetAwaiter().GetResult();
 
                     var images = from r in result.Body
                                  select new PSVirtualMachineExtensionImage
