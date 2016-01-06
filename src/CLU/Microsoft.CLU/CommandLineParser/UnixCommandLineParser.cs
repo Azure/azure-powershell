@@ -185,11 +185,9 @@ namespace Microsoft.CLU.CommandLineParser
 
         private void PresentCommandHelp(ICommandBinder commandBinder, string[] arguments, bool prefix)
         {
-            var helplines = commandBinder.GenerateCommandHelp(this, arguments, prefix);
-            foreach (var entry in helplines)
-            {
-                CLUEnvironment.Console.WriteLine(entry);
-            }
+            // BUGBUG - NYI!
+            var concatenatedArgs = string.Join(" ", arguments);
+            Console.WriteLine($"Look up help corresponding to the arguments '{concatenatedArgs}'");
         }
 
         /// <summary>
