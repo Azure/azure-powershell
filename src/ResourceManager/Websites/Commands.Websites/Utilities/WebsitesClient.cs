@@ -283,7 +283,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             return usageMetrics.Value;
         }
 
-        public ServerFarmWithRichSku CreateAppServicePlan(string resourceGroupName, string appServicePlanName, string location, string adminSiteName, SkuDescription sku)
+        public ServerFarmWithRichSku CreateAppServicePlan(string resourceGroupName, string appServicePlanName, string location, string adminSiteName, SkuDescription sku, string aseName = null, string aseResourceGroupName = null)
         {
             var serverFarm = new ServerFarmWithRichSku
             {
@@ -292,6 +292,17 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 Sku = sku,
                 AdminSiteName = adminSiteName
             };
+
+            if(!string.IsNullOrEmpty(aseName)
+                && !string.IsNullOrEmpty(aseResourceGroupName))
+            {
+                serverFarm.HostingEnvironmentProfile = new HostingEnvironmentProfile
+                {
+                    Id = CmdletHelpers.GetApplicationServiceEnvironmentResourceId(WrappedWebsitesClient.SubscriptionId, aseResourceGroupName, aseName),
+                    Type = CmdletHelpers.ApplicationServiceEnvironmentResourcesName,
+                    Name = aseName
+                };
+            }
             
             return WrappedWebsitesClient.ServerFarms.CreateOrUpdateServerFarm(resourceGroupName, appServicePlanName, serverFarm);
         }
