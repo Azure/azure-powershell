@@ -14,39 +14,18 @@
 // limitations under the License.
 // 
 
-using Microsoft.Azure.Management.Compute.Models;
-using Newtonsoft.Json;
-using System;
 using System.Net;
 
 namespace Microsoft.Azure.Commands.Compute.Models
 {
-    public class PSComputeLongRunningOperation
-    {
-        public string TrackingOperationId { get; set; }
-        
+    public class PSAzureOperationResponse
+    {   
         public string RequestId { get; set; }
 
-        public ComputeOperationStatus Status { get; set; }
+        public bool IsSuccessStatusCode { get; set; }
 
         public HttpStatusCode StatusCode { get; set; }
 
-        public string Output { get; set; }
-
-        public DateTimeOffset StartTime { get; set; }
-        
-        public DateTimeOffset? EndTime { get; set; }
-
-        public ApiError Error { get; set; }
-
-        [JsonIgnore]
-        public string ErrorText
-        {
-            get
-            {
-                var errorStr = JsonConvert.SerializeObject(Error, Formatting.Indented);
-                return String.IsNullOrEmpty(errorStr) || "null".Equals(errorStr) ? "" : errorStr;
-            }
-        }
+        public string ReasonPhrase { get; set; }
     }
 }
