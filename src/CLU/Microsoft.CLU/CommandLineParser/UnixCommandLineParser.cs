@@ -186,8 +186,15 @@ namespace Microsoft.CLU.CommandLineParser
         private void PresentCommandHelp(ICommandBinder commandBinder, string[] arguments, bool prefix)
         {
             // BUGBUG - NYI!
-            var concatenatedArgs = string.Join(" ", arguments);
-            Console.WriteLine($"Look up help corresponding to the arguments '{concatenatedArgs}'");
+            if (arguments.Length == 0)
+            {
+                var concatenatedArgs = string.Join(" ", arguments);
+                Console.WriteLine($"Look up help corresponding to the arguments '{concatenatedArgs}'");
+            }
+            else
+            {
+                Console.WriteLine("Present help for Azure itself...");
+            }
         }
 
         /// <summary>
