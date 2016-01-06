@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 else
                 {
-                    var storageClient = ClientFactory.CreateClient<StorageManagementClient>(
+                    var storageClient = ClientFactory.CreateArmClient<StorageManagementClient>(
                         DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
                     var storageAccount = storageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.StorageAccountName);
 
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.Compute
             ThrowTerminatingError
                 (new ErrorRecord(
                     new InvalidOperationException(string.Format(CultureInfo.InvariantCulture,
-                        Resources.ResourceManager.GetString("PremiumStorageAccountForBootDiagnostics"), storageAccountName)),
+                        Compute.Properties.Resources.PremiumStorageAccountForBootDiagnostics, storageAccountName)),
                     string.Empty,
                     ErrorCategory.InvalidData,
                     null));
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Commands.Compute
         {
             ThrowTerminatingError
                 (new ErrorRecord(
-                    new InvalidOperationException(Resources.ResourceManager.GetString("BootDiagnosticsNoStorageAccountError")),
+                    new InvalidOperationException(Compute.Properties.Resources.BootDiagnosticsNoStorageAccountError),
                     string.Empty,
                     ErrorCategory.InvalidData,
                     null));

@@ -342,6 +342,18 @@ namespace Microsoft.CLU.CommandBinder
                 // If Cmdlet instance support dynamic parameters then rerun the parser to bind dynamic parameters.
                 _dynamicParameterBindInProgress = true;
                 this.ParserSeekBeginAndRun();
+                var psCmdlet = _cmdlet as PSCmdlet;
+                if (psCmdlet != null)
+                {
+                    // We need to add all dynamic parameters that were bound
+                    foreach (var boundParam in _cmdletMetadata.Instance.Parameters)
+                    {
+                        if (boundParam.Value.IsBound && boundParam.Value.IsDynamic && !psCmdlet.MyInvocation.BoundParameters.ContainsKey(boundParam.Value.Name))
+                        {
+                            psCmdlet.MyInvocation.BoundParameters[boundParam.Value.Name] = boundParam.Value;
+                        }
+                    }
+                }
                 _dynamicParameterBindInProgress = false;
             }
         }

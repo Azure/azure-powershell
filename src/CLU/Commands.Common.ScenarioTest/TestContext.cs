@@ -24,6 +24,5 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
         public string TestScriptSuffix { get; set; }
         public string TestScriptDirectory { get; set; }
         public string ExecutionDirectory { get; set; }
-        public IEnumerable<IScriptEnvironmentHelper> EnvironmentHelpers { get; set; }
     }
 }

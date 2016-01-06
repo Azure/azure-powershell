@@ -212,12 +212,12 @@ namespace Microsoft.CLU.Common
         /// <summary>
         /// The environment variable holding current session ID.
         /// </summary>
-        internal const string SessionID = "CmdletSessionID";
+        internal const string SessionID = "AzureProfile";
 
         /// <summary>
-        /// The global session ID.
+        /// The default session ID.
         /// </summary>
-        internal const string GlobalSessionID = "global";
+        internal const string DefaultSessionID = "default";
 
         #endregion
     }

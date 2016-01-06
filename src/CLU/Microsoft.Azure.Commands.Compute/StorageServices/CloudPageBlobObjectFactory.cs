@@ -12,50 +12,51 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-// TODO: Rewrite for removing Sync
-//using Microsoft.WindowsAzure.Commands.Sync.Download;
-//using Microsoft.WindowsAzure.Commands.Sync.Upload;
-//using Microsoft.WindowsAzure.Storage.Blob;
-//using Microsoft.WindowsAzure.Storage.RetryPolicies;
-//using System;
+using Microsoft.WindowsAzure.Commands.Sync.Download;
+using Microsoft.WindowsAzure.Commands.Sync.Upload;
+using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.WindowsAzure.Storage.RetryPolicies;
+using System;
 
-//namespace Microsoft.Azure.Commands.Compute.StorageServices
-//{
-//    public class CloudPageBlobObjectFactory : ICloudPageBlobObjectFactory
-//    {
-//        private readonly TimeSpan delayBetweenRetries = TimeSpan.FromSeconds(10);
-//        private readonly StorageCredentialsFactory credentialsFactory;
-//        private TimeSpan operationTimeout;
+namespace Microsoft.Azure.Commands.Compute.StorageServices
+{
+    public class CloudPageBlobObjectFactory : ICloudPageBlobObjectFactory
+    {
+        private readonly TimeSpan delayBetweenRetries = TimeSpan.FromSeconds(10);
+        private readonly StorageCredentialsFactory credentialsFactory;
+        private TimeSpan operationTimeout;
 
 
-//        public CloudPageBlobObjectFactory(StorageCredentialsFactory credentialsFactory, TimeSpan operationTimeout)
-//        {
-//            this.credentialsFactory = credentialsFactory;
-//            this.operationTimeout = operationTimeout;
-//        }
+        public CloudPageBlobObjectFactory(StorageCredentialsFactory credentialsFactory, TimeSpan operationTimeout)
+        {
+            this.credentialsFactory = credentialsFactory;
+            this.operationTimeout = operationTimeout;
+        }
 
-//        public CloudPageBlob Create(BlobUri destination)
-//        {
-//            return new CloudPageBlob(new Uri(destination.BlobPath), credentialsFactory.Create(destination));
-//        }
+        public CloudPageBlob Create(BlobUri destination)
+        {
+            return new CloudPageBlob(new Uri(destination.BlobPath), credentialsFactory.Create(destination));
+        }
 
-//        public bool CreateContainer(BlobUri destination)
-//        {
-//            if (String.IsNullOrEmpty(destination.Uri.Query))
-//            {
-//                var destinationBlob = Create(destination);
-//                return destinationBlob.Container.CreateIfNotExists(this.CreateRequestOptions());
-//            }
-//            return true;
-//        }
+        public bool CreateContainer(BlobUri destination)
+        {
+            if (String.IsNullOrEmpty(destination.Uri.Query))
+            {
+                var destinationBlob = Create(destination);
+                // TODO: CLU
+                return destinationBlob.Container.CreateIfNotExistsAsync(this.CreateRequestOptions(), null).Result;
+                //return destinationBlob.Container.CreateIfNotExists(this.CreateRequestOptions());
+            }
+            return true;
+        }
 
-//        public BlobRequestOptions CreateRequestOptions()
-//        {
-//            return new BlobRequestOptions
-//                       {
-//                           ServerTimeout = this.operationTimeout,
-//                           RetryPolicy = new LinearRetry(delayBetweenRetries, 5)
-//                       };
-//        }
-//    }
-//}
+        public BlobRequestOptions CreateRequestOptions()
+        {
+            return new BlobRequestOptions
+            {
+                ServerTimeout = this.operationTimeout,
+                RetryPolicy = new LinearRetry(delayBetweenRetries, 5)
+            };
+        }
+    }
+}

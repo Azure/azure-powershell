@@ -13,84 +13,72 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.Azure.Commands.Common.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.Common.ScenarioTest
 {
     public class EnvironmentCredentialsProvider : ICredentialsProvider
     {
-        public const string userScript = "loginUser";
-        public const string serviceScript = "loginService";
+        public const string LoginUserScript = "loginUser";
+        public const string LoginServiceScript = "loginService";
 
-        public IScriptEnvironmentHelper EnvironmentProvider { get; protected set; }
+        public const string SecretVariable = "secret";
+        public const string SpnVariable = "spn";
+        public const string TenantVariable = "tenant";
+        public const string SpnSubscriptionVariable = "spnSubscription";
+
+        public const string UsernameVariable = "azureUser";
+        public const string PasswordVariable = "password";
+        public const string UserSubscriptionVariable = "userSubscription";
+
+        public const string SubscriptionVariable = "subscription";
 
         public string LoginScriptName { get; protected set; }
 
-        public virtual void Initialize(string key)
+        public virtual void Initialize()
         {
-            IDictionary<string, string> settings = GetSettings(key);
-            if (!TryInitializeServiceCredentials(settings) && !TryInitializeUserCredentials(settings))
+            var isSpnSetup = TryInitializeServiceCredentials();
+            if (!isSpnSetup)
             {
-                throw new InvalidOperationException($"Unable to create credentials using key {key}. " +
-                    "Please ensure your environment is correctly set up.");
+                var isUserSetup = TryInitializeUserCredentials();
+                if (!isUserSetup)
+                {
+                    throw new InvalidOperationException($"Unable to create credentials. " +
+                        "Please ensure your environment is correctly set up.");
+                }
             }
         }
-
-        protected virtual IDictionary<string, string> GetSettings(string key)
+        
+        protected virtual bool TryInitializeServiceCredentials()
         {
-            var environmentValue = Environment.GetEnvironmentVariable(key);
-            if (string.IsNullOrWhiteSpace(environmentValue))
+            if (!string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable(SpnVariable)) &&
+                !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable(SecretVariable)) &&
+                !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable(TenantVariable)))
             {
-                throw new InvalidOperationException($"Unable to create credentials.  " +
-                    "Please set environment ${key}");
-            }
-            IDictionary<string, string> settings = new Dictionary<string, string>();
-            foreach (
-                var setting in
-                    environmentValue.Split(new string[] {$"{Path.PathSeparator}"}, 
-                    StringSplitOptions.RemoveEmptyEntries)
-                )
-            {
-                string[] pair = setting.Split(new char[] { '='}, 2, StringSplitOptions.RemoveEmptyEntries);
-                var pairKey = pair[0].Trim();
-                var pairValue = pair[1].Trim();
-                settings[pairKey] = pairValue;
-            }
-
-            return settings;
-        }
-
-        protected virtual bool TryInitializeServiceCredentials(IDictionary<string, string> settings )
-        {
-            if (settings.ContainsKey(EnvironmentConstants.ServicePrincipalKey) &&
-                settings.ContainsKey(EnvironmentConstants.PasswordKey) &&
-                settings.ContainsKey(EnvironmentConstants.TenantKey))
-            {
-                LoginScriptName = serviceScript;
-                EnvironmentProvider = new ServiceAuthenticationHelper(
-                    settings[EnvironmentConstants.ServicePrincipalKey], 
-                    settings[EnvironmentConstants.PasswordKey],
-                    settings[EnvironmentConstants.TenantKey],
-                    settings.ContainsKey(EnvironmentConstants.SubscriptionKey) ? settings[EnvironmentConstants.SubscriptionKey] : null);
+                LoginScriptName = LoginServiceScript;
+                Logger.Instance.WriteMessage($"Logging in using ServicePrincipal: {Environment.GetEnvironmentVariable(SpnVariable)}");
+                Logger.Instance.WriteMessage($"Logging in using Key: *********");
+                Logger.Instance.WriteMessage($"Logging in using Tenant: {Environment.GetEnvironmentVariable(TenantVariable)}");
+                if (!string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable(SpnSubscriptionVariable)))
+                {
+                    Logger.Instance.WriteMessage($"Logging in using Subscription: {Environment.GetEnvironmentVariable(SpnSubscriptionVariable)}");
+                }
                 return true;
             }
             return false;
         }
 
-        protected virtual bool TryInitializeUserCredentials(IDictionary<string, string> settings )
+        protected virtual bool TryInitializeUserCredentials()
         {
-            if (settings.ContainsKey(EnvironmentConstants.UsernameKey) &&
-                settings.ContainsKey(EnvironmentConstants.PasswordKey))
+            if (!string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable(UsernameVariable)) &&
+                !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable(PasswordVariable)))
             {
-                LoginScriptName = userScript;
-                EnvironmentProvider = new UserAuthenticationHelper(
-                    settings[EnvironmentConstants.UsernameKey],
-                    settings[EnvironmentConstants.PasswordKey],
-                    settings.ContainsKey(EnvironmentConstants.SubscriptionKey) ? settings[EnvironmentConstants.SubscriptionKey] : null);
+                LoginScriptName = LoginUserScript;
+                Logger.Instance.WriteMessage($"Logging in using UserName: {Environment.GetEnvironmentVariable(UsernameVariable)}");
+                Logger.Instance.WriteMessage($"Logging in using Password: *********");
+                if (!string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable(UserSubscriptionVariable)))
+                {
+                    Logger.Instance.WriteMessage($"Logging in using Subscription: {Environment.GetEnvironmentVariable(UserSubscriptionVariable)}");
+                }
                 return true;
             }
             return false;

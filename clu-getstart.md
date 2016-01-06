@@ -92,6 +92,26 @@ Testing will consist of scenario tests and unit tests. Scenario tests should be 
 #### Scenario Tests
 - Scenario tests should be saved under `./examples` directory with one directory per package. Each scenario tests should (eventually) consist of both `.ps1` and `.sh` files and should cover "P0" scenarios.
 
+##### Environment Variables for Authentication
+Please set the environment variables for either Username/Password (no 2FA) or ServicePrincipal authentication:
+
+**Username/Password (without 2-factor auth):**
+
+|  Field (case sensitive) |  Description  |
+| ------------- |:-------------|
+| azureUser | an OrgId user name |
+| password | a service principal name |
+| userSubscription | (optional) Selects a particular subscription by id.  If not provided, the first listed subscription will be selected |
+
+**Service Principal:**
+
+|  Field (case sensitive) |  Description  |
+| ------------- |:-------------|
+| spn | The tenant guid to authenticate against |
+| secret | the password or application secret to sue for authentication |
+| tenant | The tenant guid to authenticate against |
+| spnSubscription | (optional) Selects a particular subscription by id.  If not provided, the first listed subscription will be selected |
+
 ##### XUnit Automation For Bash Scenario Tests
 - The ```Commands.Common.ScenarioTest``` project contains classes that enable executing bash scenario tests in Visual Studio, or cross-platform using dnx.
 
@@ -116,20 +136,22 @@ Testing will consist of scenario tests and unit tests. Scenario tests should be 
         _fixture.GetRunner("resource-management").RunScript("01-ResourceGroups");
     }
     ```
-    - Set the environment variable 'TestCredentials' to a connection string providing the credentials to use during test execution. Possible fields include:
-    
-      |  Field        |  Description  |
-      | ------------- |:-------------|
-      |  Username     | an OrgId user name |
-      | ServicePrincipal | a service principal name |
-      | Password      | the password or application secret to sue for authentication |
-      | TenantId      | (required for Service authentication) The tenant guid to authenticate against |
-      | SubscriptionID | (optional) Selects a particular subscription by id.  If not provided, the first listed subscription will be selected |
-    - The infrastructure automatically generates a resource group name and assigns the value to the bash variable ```"$resourceGroupName"```.  If your scripts require additional variables, you can add these to your environment before running tests, or you can generate values using the ScriptRunner (for the tests using that runner).
-    ```C#
-        runner.EnvironmentVariables.Add("myVariableName", runner.GenerateName("myres"));
+    - Set the [environment variables](#Environment_Variables_for_Authentication) for either Username/Password (no 2FA) or ServicePrincipal authentication
+    - Update PATH to include location of CLU bin drop.
+    ```bash
+   export PATH=/<path-to-drop>/clurun/win7-x64/:$PATH
     ```
-    - Tests can be executed in vs, or by runnign ```dnx test project.json```.  If you execute dnx test from the project directory, it will work without modification and a log file for each script will be written to the test results directory ```..\TestResults```.  If you execute dnx test from a different directory, you must set the following environment variables to provide the path to the examples directory and where to write log files:
+    - The infrastructure automatically generates the following environment variables:
+	   - `BASEDIR` - directory path where test script is located
+	   - `location` - default "WestUS" location 
+	   - `groupName` - randomly generated resource group name (note: the test guarantees that this resource group is deleted at the end of a test run; any other resource groups generated as part of the test run need to be deleted by the test)
+	   - `storageAccountType` - default "Standard_GRS" storage account type 
+	   - `storageAccountName` - randomly generated storage account name 
+   - If the script require additional variables, you can add these to your environment before running tests, or you can generate values using the ScriptRunner (for the tests using that runner).
+    ```C#
+runner.EnvironmentVariables.Add("myVariableName", runner.GenerateName("myres"));
+    ```
+    - Tests can be executed in Visual Studio, or by running ```dnx test project.json```.  If you execute dnx test from the project directory, it will work without modification and a log file for each script will be written to the test results directory ```..\TestResults```.  If you execute dnx test from a different directory, you must set the following environment variables to provide the path to the examples directory and where to write log files:
     
       |  Environment Variable  |  Description  |
       | ------------- |:-------------|
@@ -138,14 +160,14 @@ Testing will consist of scenario tests and unit tests. Scenario tests should be 
       
 ##### Running Bash Tests using Bash shell
 - Bash tests should be runnable from bash shell in windows/linux/mac environments.
-- To manually run the tests; please set the following envt. variables for authentication and run `./examples/lib/testrunner.sh`
+- To manually run the tests; please set [environment variables](#Environment_Variables_for_Authentication) for authentication as well as update PATH and run `./examples/lib/testrunner.sh`
+
    ```bash
-   export azureuser=<username@contosocorp.com>
-   export azurepassword=<your_password>
-   export PATH=$PATH:/<path-to-drop>/clurun/win7-x64/
-   . /examples/lib/testrunner.sh
+   export azureUser=<username@contosocorp.com>
+   export password=<your_password>
+   export PATH=/<path-to-drop>/clurun/win7-x64/:$PATH
    ```
-- All the parameters to the cmdlets should be passed in as envt. variables
+- All the parameters to the cmdlets should be passed in as environment variables
 - The current test runners will provide a unique resource group name via `$groupName` but may not remove it at the end if the test fails.
 - The location for ARM will be provided via variable `$location`.
 - "jq" package and BASH assert (e.g. `[ "foo" == "bar" ]`) should be used to validate the responses.

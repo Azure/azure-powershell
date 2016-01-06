@@ -18,8 +18,7 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
 {
     public interface ICredentialsProvider
     {
-        void Initialize(string key);
+        void Initialize();
         string LoginScriptName { get; }
-        IScriptEnvironmentHelper EnvironmentProvider { get; }
     }
 }
