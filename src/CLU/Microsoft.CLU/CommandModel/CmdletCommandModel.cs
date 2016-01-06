@@ -92,7 +92,7 @@ namespace Microsoft.CLU.CommandModel
                 }
                 catch (CommandNotFoundException)
                 {
-                    var helplines = binderAndCommand.GenerateCommandHelp(commandParser, binderAndCommand.Discriminators.ToArray(), true);
+                    var helplines = binderAndCommand.ListCommands(binderAndCommand.Discriminators.ToArray());
                     foreach (var entry in helplines)
                     {
                         CLUEnvironment.Console.WriteLine(entry);
