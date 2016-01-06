@@ -2,9 +2,11 @@
 
 ### Prerequsites
 
-Visual Studio 2015 RTM with ASP.NET. For details, check out the [installation doc](http://docs.asp.net/en/latest/getting-started/installing-on-windows.html). 
+* Visual Studio 2015 RTM with ASP.NET. For details, check out the [installation doc](http://docs.asp.net/en/latest/getting-started/installing-on-windows.html). 
   
 Note, after done, run `dnvm list` command to check the 'coreclr' runtime is installed with right version of `1.0.0-rc1-final`. If not, run `dnvm install 1.0.0-rc1-final -r coreclr -a x64 -p`. Remember always use `-p` flag, so the selection can persist. 
+
+* Get the latest dotnet from "https://azureclu.blob.core.windows.net/tools/dotnet-win-x64.latest.zip", unzip, then add its bin folder to the PATH
 
 ### Project Artifacts
 
