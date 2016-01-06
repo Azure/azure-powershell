@@ -43,8 +43,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
             base.ProcessRecord();
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Properties.Resources.RemoveWebappSlotWarning, Name, Slot),
-                Properties.Resources.RemoveWebappSlotMessage,
+                string.Format(WebSites.Properties.Resources.RemoveWebappSlotWarning, Name, Slot),
+                WebSites.Properties.Resources.RemoveWebappSlotMessage,
                 Name,
                 () => WebsitesClient.RemoveWebApp(ResourceGroupName, Name, Slot, deleteEmptyServerFarmByDefault, deleteMetricsByDefault, deleteSlotsByDefault));
         }
