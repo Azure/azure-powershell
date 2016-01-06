@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
 
         [Alias("HandlerVersion", "Version")]
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             Position = 9,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The extension version.")]
@@ -358,14 +358,16 @@ validation_client_name 	\""{1}\""
             {
                 this.Name = ExtensionDefaultName;
             }
-            this.TypeHandlerVersion = this.TypeHandlerVersion ?? GetLatestChefExtensionVersion();
+
+            //Uncomment this when GetLatestChefExtensionVersion() is implemented
+            //this.TypeHandlerVersion = this.TypeHandlerVersion ?? GetLatestChefExtensionVersion();
         }
 
         private string GetLatestChefExtensionVersion()
         {       
             //Right now chef extension's major version is freezed as 1210. 
-            //Todo: Implement proper logic to fetch the current major version number
-            return "1210.*";
+            //Todo: Implement proper logic to fetch the current major.minor version number
+            return "1210.12";
         }
 
         private void ValidateParameters()
