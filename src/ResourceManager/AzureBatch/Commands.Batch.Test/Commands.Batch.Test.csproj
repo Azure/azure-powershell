@@ -43,9 +43,9 @@
     <Reference Include="Hyak.Common">
       <HintPath>..\..\..\packages\Hyak.Common.1.0.2\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Batch, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Azure.Batch.2.0.2\lib\net45\Microsoft.Azure.Batch.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Batch, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Azure.Batch.3.0.0\lib\net45\Microsoft.Azure.Batch.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Common">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
@@ -180,6 +180,8 @@
     <Compile Include="Certificates\NewBatchCertificateCommandTests.cs" />
     <Compile Include="Certificates\RemoveBatchCertificateCommandTests.cs" />
     <Compile Include="Certificates\StopBatchCertificateDeletionCommandTests.cs" />
+    <Compile Include="ComputeNodes\DisableBatchComputeNodeSchedulingCommandTests.cs" />
+    <Compile Include="ComputeNodes\EnableBatchComputeNodeSchedulingCommandTests.cs" />
     <Compile Include="ComputeNodes\RemoveBatchComputeNodeCommandTests.cs" />
     <Compile Include="ComputeNodes\ResetBatchComputeNodeCommandTests.cs" />
     <Compile Include="ComputeNodes\RestartBatchComputeNodeCommandTests.cs" />
@@ -225,6 +227,7 @@
     <Compile Include="ScenarioTests\ComputeNodeTests.cs" />
     <Compile Include="ScenarioTests\JobScheduleTests.cs" />
     <Compile Include="Subscriptions\GetBatchSubscriptionQuotasCommandTests.cs" />
+    <Compile Include="Tasks\GetBatchSubtaskCommandTests.cs" />
     <Compile Include="Tasks\GetBatchTaskCommandTests.cs" />
     <Compile Include="Tasks\NewBatchTaskCommandTests.cs" />
     <Compile Include="Tasks\RemoveBatchTaskCommandTests.cs" />
@@ -333,6 +336,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.CertificateTests\TestListCertificatesWithMaxCount.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ComputeNodeTests\TestDisableAndEnableComputeNodeSchedulingById.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ComputeNodeTests\TestDisableAndEnableComputeNodeSchedulingPipeline.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ComputeNodeTests\TestGetAndListComputeNodesWithSelect.json">
@@ -608,7 +617,13 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.TaskTests\TestGetTaskById.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.TaskTests\TestListAllSubtasks.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.TaskTests\TestListAllTasks.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.TaskTests\TestListSubtasksWithMaxCount.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.TaskTests\TestListTaskPipeline.json">
@@ -650,6 +665,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="about.txt" />
+    <Content Include="Resources\MSMpiSetup.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

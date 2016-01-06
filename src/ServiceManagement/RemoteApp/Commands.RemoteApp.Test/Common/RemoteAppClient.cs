@@ -64,6 +64,8 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
 
         protected const string remoteApplication = "Mohoro Test App";
 
+        protected const string appAlias = "9bd99659-9772-4689-af10-7ac72e43c28e";
+
         protected Action<string> logger { get; private set; }
 
         public MockCommandRuntime mockCommandRuntime { get; private set; }
