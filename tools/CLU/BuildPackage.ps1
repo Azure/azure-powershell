@@ -28,11 +28,9 @@ $fileContent = Get-Content $nuSpecTemplate
 $renameFileExists = Test-Path -Path ([System.IO.Path]::Combine($packageSource, "content", "rename.cfg"))
 $files = (Get-ChildItem $packageSource | Where -FilterScript {!$_.Name.Contains("nuspec")} | Select-Object -Property Name)
 $refFiles = $files | Where -FilterScript { $_.Name.EndsWith(".dll")}
-$contentFiles = $files | Where -FilterScript { $_.Name.EndsWith("xml")}
 $refFileText = ""
 $refFiles | %{$refFileText +=  ("        <reference file=""" + $_.Name + """/>`r`n")}
 $contentFileText = ""
-$contentFiles | %{ $contentFileText += ("    <file src=""" + $_.Name + """ target=""content""/>`r`n")}
 if ($packageId -ne "Microsoft.CLU.Commands") 
 {
     $contentFileText += "    <file src=""content\*.lx"" target=""content""/>`r`n"
