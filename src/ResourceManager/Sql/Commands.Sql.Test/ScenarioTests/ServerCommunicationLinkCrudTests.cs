@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
     public class ServerCommunicationLinkCrudTests : SqlTestsBase
     {
-        // TODO: adumitr: re-enable the tests when feature is fully enabled in the region the tests use
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerCommunicationLinkCreate()
@@ -28,7 +27,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-CreateServerCommunicationLink");
         }
 
-        // TODO: adumitr: re-enable the tests when feature is fully enabled in the region the tests use
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerCommunicationLinkGet()
@@ -36,7 +34,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-GetServerCommunicationLink");
         }
 
-        // TODO: adumitr: re-enable the tests when feature is fully enabled in the region the tests use
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerCommunicationLinkRemove()
