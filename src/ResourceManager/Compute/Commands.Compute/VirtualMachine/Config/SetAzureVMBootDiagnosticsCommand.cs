@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.Compute
                         ThrowPremiumStorageError(this.StorageAccountName);
                     }
 
-                    diagnosticsProfile.BootDiagnostics.StorageUri = storageAccount.StorageAccount.PrimaryEndpoints.Blob;
+                    diagnosticsProfile.BootDiagnostics.StorageUri = storageAccount.StorageAccount.PrimaryEndpoints.Blob.ToString();
                 }
             }
 
