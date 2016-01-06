@@ -1,6 +1,15 @@
+* Azure SQL Database: Threat Detection policies:
+  * Using new Threat Detection Types
 * Azure Redis Cache: new cmdlets for enabling and disabling diagnostics
   * Set-AzureRmRedisCacheDiagnostics
   * Remove-AzureRmRedisCacheDiagnostics
+* Azure Websites: New cmdlets for managing SSL binding
+  * Get-AzureRmWebAppCertificate
+  * New-AzureRmWebAppSSLBinding
+  * Get-AzureRmWebAppSSLBinding
+  * Remove-AzureRmWebAppSSLBinding
+* Azure Websites: Added AseName and AseResourceGroupName parameters in New-AzureRmAppServicePlan cmdlet
+  
 ## 2015.12.14 version 1.0.2
 * Azure Compute (ARM):
   * Enable BGInfo extension by default

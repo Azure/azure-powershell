@@ -13,11 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections;
 using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 using System.Xml.Linq;
+using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
@@ -35,10 +38,11 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet(
         VerbsCommon.Set,
         ProfileNouns.VirtualMachineDiagnosticsExtension)]
+    [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureRmVMDiagnosticsExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
-        private string publicConfiguration;
-        private string privateConfiguration;
+        private Hashtable publicConfiguration;
+        private Hashtable privateConfiguration;
         private string extensionName = "Microsoft.Insights.VMDiagnosticsSettings";
         private string location;
         private string version = "1.5";
@@ -176,29 +180,30 @@ namespace Microsoft.Azure.Commands.Compute
             }
         }
 
-        private string PublicConfiguration
+        private Hashtable PublicConfiguration
         {
             get
             {
-                if (string.IsNullOrEmpty(this.publicConfiguration))
+                if (this.publicConfiguration == null)
                 {
                     this.publicConfiguration =
-                        DiagnosticsHelper.GetJsonSerializedPublicDiagnosticsConfigurationFromFile(
-                            this.DiagnosticsConfigurationPath, this.StorageAccountName);
+                        DiagnosticsHelper.GetPublicDiagnosticsConfigurationFromFile(this.DiagnosticsConfigurationPath,
+                            this.StorageAccountName);
                 }
 
                 return this.publicConfiguration;
             }
         }
 
-        private string PrivateConfiguration
+        private Hashtable PrivateConfiguration
         {
             get
             {
-                if (string.IsNullOrEmpty(this.privateConfiguration))
+                if (this.privateConfiguration == null)
                 {
-                    this.privateConfiguration = DiagnosticsHelper.GetJsonSerializedPrivateDiagnosticsConfiguration(this.StorageAccountName, this.StorageAccountKey,
-                            this.StorageAccountEndpoint);
+                    this.privateConfiguration = DiagnosticsHelper.GetPrivateDiagnosticsConfiguration(this.StorageAccountName,
+                        this.StorageAccountKey,
+                        this.StorageAccountEndpoint);
                 }
 
                 return this.privateConfiguration;
@@ -226,22 +231,22 @@ namespace Microsoft.Azure.Commands.Compute
                 var parameters = new VirtualMachineExtension
                 {
                     Location = this.Location,
-                    Name = this.Name,
-                    Type = DiagnosticsExtensionConstants.VirtualMachineExtensionResourceType,
                     Settings = this.PublicConfiguration,
                     ProtectedSettings = this.PrivateConfiguration,
                     Publisher = DiagnosticsExtensionConstants.ExtensionPublisher,
-                    ExtensionType = DiagnosticsExtensionConstants.ExtensionType,
+                    VirtualMachineExtensionType = DiagnosticsExtensionConstants.ExtensionType,
                     TypeHandlerVersion = this.TypeHandlerVersion,
                     AutoUpgradeMinorVersion = this.AutoUpgradeMinorVersion
                 };
 
-                var op = this.VirtualMachineExtensionClient.CreateOrUpdate(
+                var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
                     this.ResourceGroupName,
                     this.VMName,
-                    parameters);
+                    this.Name,
+                    parameters).GetAwaiter().GetResult();
 
-                WriteObject(op);
+                var result = Mapper.Map<PSAzureOperationResponse>(op);
+                WriteObject(result);
             });
         }
 
