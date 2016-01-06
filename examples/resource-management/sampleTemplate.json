@@ -1,5 +1,5 @@
 {
-  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "siteName": {
@@ -10,16 +10,6 @@
     },
     "siteLocation": {
       "type": "string"
-    },
-    "sku": {
-      "type": "string",
-      "allowedValues": [
-        "Free",
-        "Shared",
-        "Basic",
-        "Standard"
-      ],
-      "defaultValue": "Free"
     },
     "workerSize": {
       "type": "int",
@@ -33,13 +23,17 @@
   },
   "resources": [
     {
-      "apiVersion": "2014-04-01",
+      "apiVersion": "2015-08-01",
       "name": "[parameters('hostingPlanName')]",
       "type": "Microsoft.Web/serverfarms",
       "location": "[parameters('siteLocation')]",
+      "sku": {
+        "name": "S1",
+        "tier": "Standard",
+        "capacity": 1
+      },
       "properties": {
         "name": "[parameters('hostingPlanName')]",
-        "sku": "[parameters('sku')]",
         "workerSize": "[parameters('workerSize')]",
         "numberOfWorkers": 1
       }
