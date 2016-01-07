@@ -68,6 +68,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 10, Mandatory = false, HelpMessage = "Web app connection strings. Example: -ConnectionStrings @{ ConnectionString1 = @{ Type = \"MySql\"; Value = \"MySql Connection string\"}; ConnectionString2 = @{ Type = \"SQLAzure\"; Value = \"SqlAzure Connection string 2\"} }")]
         [ValidateNotNullOrEmpty]
         [ValidateConnectionStrings]
+        // TODO: CLU
+        //public Hashtable ConnectionStrings { get; set; }
         public Dictionary<string, ConnStringValueTypePair> ConnectionStrings { get; set; }
 
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 11, Mandatory = false, HelpMessage = "Web app handler mappings")]
