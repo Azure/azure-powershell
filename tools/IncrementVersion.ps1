@@ -47,7 +47,12 @@ function IncrementVersion([string]$FilePath)
     Write-Output "Updating version of $FilePath from $packageVersion to $version"
     $content = $content.Replace("ModuleVersion = '$packageVersion'", "ModuleVersion = '$version'")
     
-    Set-Content -path $FilePath -value $content
+    Set-Content -Path $FilePath -Value $content -Encoding UTF8
+}
+
+if (!$Folder) 
+{
+    $Folder = "$PSScriptRoot\..\src\ResourceManager"
 }
 
 $modules = Get-ChildItem -Path $Folder -Filter *.psd1 -Recurse -Exclude *.dll-help.psd1
