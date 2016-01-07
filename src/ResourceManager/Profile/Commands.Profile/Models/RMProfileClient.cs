@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 var token = AcquireAccessToken(account, environment, tenantId, password, promptBehavior);
                 if(TryGetTenantSubscription(token, account, environment, tenantId, subscriptionId, subscriptionName, out newSubscription, out newTenant))
                 {
-                    account.SetProperty(AzureAccount.Property.Tenants, new[] { newTenant.Id.ToString() });
+                    account.SetOrAppendProperty(AzureAccount.Property.Tenants, new[] { newTenant.Id.ToString() });
                 }
             }
             // (tenant is not provided and subscription is present) OR
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         public List<AzureTenant> ListTenants(string tenant)
         {
-            return ListAccountTenants(_profile.Context.Account, _profile.Context.Environment, null, ShowDialog.Auto)
+            return ListAccountTenants(_profile.Context.Account, _profile.Context.Environment, null, ShowDialog.Never)
                 .Where(t => tenant == null ||
                             tenant.Equals(t.Id.ToString(), StringComparison.OrdinalIgnoreCase) ||
                             tenant.Equals(t.Domain, StringComparison.OrdinalIgnoreCase))
@@ -380,7 +380,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 try
                 {
-                    subscriptions.AddRange(ListSubscriptions(tenant.Id.ToString()));
+                    subscriptions.AddRange(
+                        ListSubscriptions(
+                            (tenant.Id == Guid.Empty) ? tenant.Domain:tenant.Id.ToString()));
                 }
                 catch (AadAuthenticationException)
                 {
@@ -569,10 +571,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 {
                     result =
                         account.GetPropertyAsArray(AzureAccount.Property.Tenants)
-                            .Select( ti => new AzureTenant() 
-                            {
-                                Id = new Guid(ti),
-                                Domain = AccessTokenExtensions.GetDomain(account.Id)
+                            .Select( ti => {
+                                var tenant = new AzureTenant();
+                                
+                                Guid guid;
+                                if(Guid.TryParse(ti, out guid))
+                                {
+                                    tenant.Id = guid;
+                                    tenant.Domain = AccessTokenExtensions.GetDomain(account.Id);
+                                }
+                                else
+                                {
+                                    tenant.Domain = ti;
+                                }
+
+                                return tenant;
                             }).ToList();
                 }
                 
@@ -608,7 +621,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                         subscriptions.Subscriptions.Select(
                             (s) =>
                                 s.ToAzureSubscription(new AzureContext(_profile.Context.Subscription, account,
-                                    environment, CreateTenantFromString(tenantId))));
+                                    environment, CreateTenantFromString(tenantId, accessToken.TenantId))));
                 }
 
                 return new List<AzureSubscription>();
@@ -623,7 +636,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
         }
 
-        private static AzureTenant CreateTenantFromString(string tenantOrDomain)
+        private static AzureTenant CreateTenantFromString(string tenantOrDomain, string accessTokenTenantId)
         {
             AzureTenant result = new AzureTenant();
             Guid id;
@@ -633,6 +646,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
             else
             {
+                result.Id = Guid.Parse(accessTokenTenantId);
                 result.Domain = tenantOrDomain;
             }
 
