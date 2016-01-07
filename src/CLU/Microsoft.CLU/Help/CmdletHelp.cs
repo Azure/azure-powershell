@@ -1,4 +1,5 @@
-﻿using Microsoft.CLU.Common;
+﻿#if PSCMDLET_HELP
+using Microsoft.CLU.Common;
 using Microsoft.CLU.Metadata;
 using Microsoft.CLU.Common.Properties;
 using System;
@@ -277,3 +278,4 @@ namespace Microsoft.CLU.Help
         }
     }
 }
+#endif
