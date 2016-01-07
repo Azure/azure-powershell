@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Assert.Equal("abc123", id.Subscription);
             Assert.Equal("group1", id.ResourceGroupName);
             Assert.Equal("Microsoft.Test/db", id.ResourceType);
-            Assert.Equal(0, id.ParentResource.Length);
+            Assert.Null(id.ParentResource);
             Assert.Equal("r45678db", id.ResourceName);
         }
 
@@ -108,14 +108,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Assert.Null(id.Subscription);
             Assert.Null(id.ResourceGroupName);
             Assert.Null(id.ResourceType);
-            Assert.Equal(0, id.ParentResource.Length);
+            Assert.Null(id.ParentResource);
             Assert.Null(id.ResourceName);
 
             id = new ResourceIdentifier("");
             Assert.Null(id.Subscription);
             Assert.Null(id.ResourceGroupName);
             Assert.Null(id.ResourceType);
-            Assert.Equal(0, id.ParentResource.Length);
+            Assert.Null(id.ParentResource);
             Assert.Null(id.ResourceName);
         }
     }

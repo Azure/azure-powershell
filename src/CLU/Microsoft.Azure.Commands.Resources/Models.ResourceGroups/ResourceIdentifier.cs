@@ -35,8 +35,6 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
         public ResourceIdentifier(string idFromServer)
         {
-            ParentResource = "";
-
             if (!string.IsNullOrEmpty(idFromServer))
             {
                 string[] tokens = idFromServer.Split(new[] {'/'}, StringSplitOptions.RemoveEmptyEntries);
