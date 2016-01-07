@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
             Assert.Equal(expectedParameters.TemplateFile, actualParameters.TemplateFile);
             Assert.NotNull(actualParameters.TemplateParameterObject);
 
-            commandRuntimeMock.Verify(f => f.WriteObject(expected), Times.Once());
+            commandRuntimeMock.Verify(f => f.WriteObject(expected, true), Times.Once());
         }
     }
 }

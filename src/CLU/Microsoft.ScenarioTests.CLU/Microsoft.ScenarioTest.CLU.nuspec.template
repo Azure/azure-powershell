@@ -1,0 +1,30 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata minClientVersion="2.5">
+    <id>Microsoft.ScenarioTests.CLU</id>
+    <title>Microsoft CLU CommandLine test command packge</title>
+    <version>%PackageVersion%</version>
+    <authors>Microsoft</authors>
+    <owners>azure-sdk, PowerShell, Microsoft</owners>
+    <licenseUrl>http://aka.ms/windowsazureapache2</licenseUrl>
+    <projectUrl>https://github.com/Azure/azure-powershell</projectUrl>
+    <iconUrl>http://go.microsoft.com/fwlink/?LinkID=288890</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <summary>Execution package for Microsoft CLU packages</summary>
+    <description>
+      Cross-Platform command package for clurun
+
+      Supported Library Platforms:
+      - .NET Framework 5.0
+    </description>
+    <copyright>Copyright © Microsoft Corporation</copyright>
+    <tags>Private test</tags>
+    <references>
+      <group targetFramework="dnxcore50">
+%ReferenceFiles%      </group>
+    </references>
+    <dependencies/>
+  </metadata>
+  <files>
+%SourceFiles%%ContentFiles%  </files>
+</package>

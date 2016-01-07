@@ -14,12 +14,15 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using Entities.Resources;
+    using Newtonsoft.Json.Linq;
     using System.Management.Automation;
 
     /// <summary>
     /// The set resource lock cmdlet.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmResourceLock", SupportsShouldProcess = true, DefaultParameterSetName = ResourceLockManagementCmdletBase.SubscriptionResourceLevelLock), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmResourceLock", SupportsShouldProcess = true, DefaultParameterSetName = ResourceLockManagementCmdletBase.SubscriptionResourceLevelLock), 
+        OutputType(typeof(ResourceLock<JToken>))]
     public class SetAzureResourceLockCmdlet : NewAzureResourceLockCmdlet
     {
         /// <summary>

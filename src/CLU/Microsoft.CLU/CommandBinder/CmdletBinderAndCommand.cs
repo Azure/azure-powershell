@@ -164,20 +164,33 @@ namespace Microsoft.CLU.CommandBinder
         }
 
         /// <summary>
-        /// Generates a list of text lines containing help information for a specific command.
+        /// Generates a list of matching commands for the given set of parameters
         /// </summary>
-        /// <param name="parser">The active command-line parser</param>
         /// <param name="args">The command-line arguments to be considered in the help logic.</param>
-        /// <param name="prefix">True if the help argument comes first, false if last.</param>
         /// <returns>A list of lines containing help information.</returns>
-        public IEnumerable<string> GenerateCommandHelp(ICommandLineParser parser, string[] args, bool prefix)
+        public IEnumerable<string> ListCommands(string[] args)
         {
+#if PSCMDLET_HELP
             return CmdletHelp.Generate(parser.FormatParameterName, _discriminatorBinder.Modules, args, prefix);
+#else
+            var commands = Microsoft.CLU.Help.CommandDispatchHelper.CompleteCommands(CLUEnvironment.GetPackagesRootPath(), args).ToArray();
+            if (commands.Length > 0)
+            {
+                foreach (var command in commands)
+                {
+                    yield return command.Discriminators.Replace(';', ' ');
+                }
+            }
+            else
+            {
+                yield return string.Format(Strings.CmdletHelp_Generate_NoCommandAvailable, CLUEnvironment.ScriptName, String.Join(" ", args));
+            }
+#endif
         }
 
-        #endregion
+#endregion
 
-        #region ICommand implementation
+#region ICommand implementation
 
         /// <summary>
         /// Tells whether the command is synchronous or asynchronous.
@@ -256,7 +269,7 @@ namespace Microsoft.CLU.CommandBinder
             throw new InvalidOperationException(Strings.CmdletBinderAndCommand_InvokeAsync_CmdletNotSupportAsyncInvoke);
         }
 
-        #endregion
+#endregion
 
         public void MarkStaticParameterBindFinished()
         {
@@ -342,6 +355,18 @@ namespace Microsoft.CLU.CommandBinder
                 // If Cmdlet instance support dynamic parameters then rerun the parser to bind dynamic parameters.
                 _dynamicParameterBindInProgress = true;
                 this.ParserSeekBeginAndRun();
+                var psCmdlet = _cmdlet as PSCmdlet;
+                if (psCmdlet != null)
+                {
+                    // We need to add all dynamic parameters that were bound
+                    foreach (var boundParam in _cmdletMetadata.Instance.Parameters)
+                    {
+                        if (boundParam.Value.IsBound && boundParam.Value.IsDynamic && !psCmdlet.MyInvocation.BoundParameters.ContainsKey(boundParam.Value.Name))
+                        {
+                            psCmdlet.MyInvocation.BoundParameters[boundParam.Value.Name] = boundParam.Value;
+                        }
+                    }
+                }
                 _dynamicParameterBindInProgress = false;
             }
         }
@@ -508,7 +533,7 @@ namespace Microsoft.CLU.CommandBinder
             return parameterSet == null || parameter.ParameterSets.ContainsKey(parameterSet);
         }
 
-        #region Private fields
+#region Private fields
 
         /// <summary>
         /// Configuration of the current command.
@@ -575,6 +600,6 @@ namespace Microsoft.CLU.CommandBinder
         /// </summary>
         private bool _positionalArgumentsBounded;
 
-        #endregion
+#endregion
     }
 }

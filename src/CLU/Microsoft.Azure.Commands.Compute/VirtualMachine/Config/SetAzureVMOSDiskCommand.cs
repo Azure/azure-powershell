@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Commands.Compute
                 || (!string.IsNullOrEmpty(this.KeyEncryptionKeyVaultId) && string.IsNullOrEmpty(this.KeyEncryptionKeyUrl)))
             {
                 WriteError(new ErrorRecord(
-                        new Exception(Properties.Resources.ResourceManager.GetString("VMOSDiskDiskEncryptionBothKekVaultIdAndKekUrlRequired")),
+                        new Exception(Properties.Resources.VMOSDiskDiskEncryptionBothKekVaultIdAndKekUrlRequired),
                         string.Empty, ErrorCategory.InvalidArgument, null));
             }
 

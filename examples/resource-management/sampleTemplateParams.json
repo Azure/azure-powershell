@@ -1,0 +1,14 @@
+{
+  "siteName": {
+    "value": "hao"
+    },
+  "hostingPlanName": {
+    "value": "xDeploymentTestHost26668"
+  },
+  "siteLocation": {
+    "value": "West US"
+  },
+  "workerSize": {
+    "value": 0
+  }
+}

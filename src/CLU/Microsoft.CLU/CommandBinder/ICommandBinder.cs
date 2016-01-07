@@ -36,21 +36,8 @@ namespace Microsoft.CLU
         bool SupportsAutomaticHelp { get; }
 
         /// <summary>
-        /// Generates a list of text lines containing help information for a specific command.
-        /// </summary>
-        /// <param name="parser">The active command-line parser</param>
-        /// <param name="args">The command-line arguments to be considered in the help logic.</param>
-        /// <param name="prefix">True if the help argument comes first, false if last.</param>
-        /// <returns>A list of lines containing help information.</returns>
-        /// <remarks>
-        /// This should be called for generating help for a commands, for example,
-        /// 
-        ///     azure vm start --help   (prefix = false)
-        ///     azure help vm start     (prefix = true)
-        /// 
-        /// If the arguments provide sufficient detail to identify a single command, the details about
-        /// that command are listed. Otherwise, all commands matching what is available are listed, with
-        /// brief summaries on what they do.
-        IEnumerable<string> GenerateCommandHelp(ICommandLineParser parser, string[] args, bool prefix);
+        /// List the set of possible command matches for the given set of commands
+        /// </summary>  
+        IEnumerable<string> ListCommands(string[] args);
     }
 }

@@ -48,27 +48,25 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
         /// </summary>
         /// <param name="jtoken">The <see cref="JObject"/></param>
         /// <param name="objectType">The type of the object.</param>
-        internal static PSObject ToPsObject(this JToken jtoken, string objectType = null)
+        internal static PSObject ToPsObject(this JToken jtoken)
         {
             if (jtoken == null)
             {
                 return null;
             }
-
-            // TODO CORECLR does not exist in coreclr50
-            /*if (jtoken.Type != JTokenType.Object)
+            
+            if (jtoken.Type != JTokenType.Object)
             {
-                return new PSObject(JTokenExtensions.ConvertPropertyValueForPsObject(propertyValue: jtoken));
-            }*/
+                var retObject = new PSObject();
+                retObject.Properties.Add(new PSNoteProperty(
+                    name: JTokenExtensions.ConvertToPascalCase(propertyName: jtoken.Type.ToString()),
+                    value: JTokenExtensions.ConvertPropertyValueForPsObject(propertyValue: jtoken)));
+                return retObject;
+            }
 
             var jobject = (JObject)jtoken;
             var psObject = new PSObject();
-
-            if (!string.IsNullOrWhiteSpace(objectType))
-            {
-                psObject.TypeNames.Add(objectType);
-            }
-
+            
             foreach (var property in jobject.Properties())
             {
                 psObject.Properties.Add(new PSNoteProperty(

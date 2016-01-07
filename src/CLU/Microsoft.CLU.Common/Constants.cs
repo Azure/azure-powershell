@@ -17,20 +17,16 @@ namespace Microsoft.CLU.Common
         public const string CLUConfigFileName = "msclu.cfg";
 
         /// <summary>
-        /// The standard name of a command index file on disk.
-        /// </summary>
-        internal const string StaticCommandIndex = "_index";
-
-        /// <summary>
         /// The standard name of a cmdlet index file on disk.
         /// </summary>
         internal const string CmdletsIndexFileName = "_cmdlets.idx";
 
+#if PSCMDLET_HELP
         /// <summary>
         /// The standard name of a name mapping file on disk.
         /// </summary>
         internal const string NameMappingFileName = "_namemap.idx";
-
+#endif
         /// <summary>
         /// The name of a package's index folder.
         /// </summary>
@@ -55,11 +51,6 @@ namespace Microsoft.CLU.Common
         /// The canonical name of the folder containing all installed command packages.
         /// </summary>
         public const string PackageFolderName = "pkgs";
-
-        /// <summary>
-        /// The canonical name of the root folder for all command package working directories.
-        /// </summary>
-        public const string WorkFolderName = "workdirs";
 
         /// <summary>
         /// Package installation marker file name.
@@ -212,12 +203,12 @@ namespace Microsoft.CLU.Common
         /// <summary>
         /// The environment variable holding current session ID.
         /// </summary>
-        internal const string SessionID = "CmdletSessionID";
+        internal const string SessionID = "AzureProfile";
 
         /// <summary>
-        /// The global session ID.
+        /// The default session ID.
         /// </summary>
-        internal const string GlobalSessionID = "global";
+        internal const string DefaultSessionID = "default";
 
         #endregion
     }

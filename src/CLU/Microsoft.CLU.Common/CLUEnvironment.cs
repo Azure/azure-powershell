@@ -23,11 +23,6 @@ namespace Microsoft.CLU
         private static string PackagesRootPathEnvVaribleName = "PackagesRootPath";
 
         /// <summary>
-        /// Name of the environment variable holding working directory root path.
-        /// </summary>
-        private static string WorkDirsRootPathEnvVaribleName = "WorkDirsRootPath";
-
-        /// <summary>
         /// Set the root paths.
         /// </summary>
         /// <param name="cluRootPath"></param>
@@ -41,7 +36,6 @@ namespace Microsoft.CLU
                 rootPathPrefix = "/";
             }
             SetEnvironmentVariable(PackagesRootPathEnvVaribleName, rootPathPrefix + Path.Combine(cluRootPath, Common.Constants.PackageFolderName));
-            SetEnvironmentVariable(WorkDirsRootPathEnvVaribleName, Path.Combine(cluRootPath, Common.Constants.WorkFolderName));
         }
 
         /// <summary>
@@ -108,6 +102,27 @@ namespace Microsoft.CLU
         }
 
         /// <summary>
+        /// Get the home path according to the platform...
+        /// </summary>
+        /// <returns></returns>
+        private static string GetHomePath()
+        {
+            if (Platform.IsWindows)
+            {
+                string[] items = {
+                        GetEnvironmentVariable("USERPROFILE"),
+                        GetEnvironmentVariable("HOMEDRIVE") + GetEnvironmentVariable("HOMEPATH")
+                    };
+
+                return items.First((s) => !String.IsNullOrEmpty(s));
+            }
+            else
+            {
+                return GetEnvironmentVariable("HOME");
+            }
+        }
+
+        /// <summary>
         /// Keeps the script name used to invoke a command, e.g. 'azure'.
         /// </summary>
         public static string ScriptName
@@ -169,7 +184,7 @@ namespace Microsoft.CLU
         {
             if (IsThreadSafe)
             {
-                lock(_cacheLock)
+                lock (_cacheLock)
                 {
                     _cache[envVariableName] = value;
                 }
@@ -281,25 +296,27 @@ namespace Microsoft.CLU
             /// <summary>
             /// Gets the current session ID.
             /// </summary>
-            public static string ID { get; private set;  }
+            private static string ID { get; set; }
 
             /// <summary>
-            /// The backing field for Directory property.
+            /// The backing field for SessionPath property.
             /// </summary>
-            private static string _directory;
+            private static string _path;
             /// <summary>
             /// The directory to store session specific resources.
             /// </summary>
-            public static string Directory
+            public static string SessionPath
             {
                 get
                 {
-                    if (_directory == null)
+                    if (_path == null)
                     {
-                        _directory = System.IO.Directory.CreateDirectory(Path.Combine(CLUEnvironment.GetRootPath(), "sessions", $"session_{ID}")).FullName;
+                        var directory = Path.Combine(CLUEnvironment.GetHomePath(), ".azure");
+                        System.IO.Directory.CreateDirectory(directory);
+                        _path = Path.Combine(directory, $"{ID}.profile.json");
                     }
 
-                    return _directory;
+                    return _path;
                 }
             }
 
@@ -313,21 +330,7 @@ namespace Microsoft.CLU
                 ID = Environment.GetEnvironmentVariable(Constants.SessionID);
                 if (string.IsNullOrEmpty(ID))
                 {
-                    if (Platform.IsWindows)
-                    {
-                        var ancestorProcessId = Windows.Process.GetPPID();
-                        ID = Convert.ToString(ancestorProcessId);
-                    }
-                    else if (Platform.IsUnixOrMacOSX)
-                    {
-                        var processGroupId = Unix.Process.GetPGRP();
-                        ID = Convert.ToString(processGroupId);
-                    }
-                    else
-                    {
-                        // Unknown platform - use global session
-                        ID = Constants.GlobalSessionID;
-                    }
+                    ID = Constants.DefaultSessionID;
 
                     Environment.SetEnvironmentVariable(Constants.SessionID, ID);
                 }

@@ -1,6 +1,8 @@
-﻿using System.Collections.ObjectModel;
+﻿using Microsoft.CLU.Metadata;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
+using System.Collections.Generic;
 
 namespace System.Management.Automation
 {
@@ -25,6 +27,9 @@ namespace System.Management.Automation
                 cmdlet.GetTypeInfo().GetCustomAttributes(typeof(OutputTypeAttribute), true)
                 .Select(a => a as OutputTypeAttribute)
                 .SelectMany(ot => ot.Type).ToList());
+
+            _typeMetadata = new TypeMetadata(cmdlet);
+            _typeMetadata.Load();
         }
 
         public string Noun
@@ -37,6 +42,13 @@ namespace System.Management.Automation
             get; private set;
         }
 
+        public override Dictionary<string, ParameterMetadata> Parameters
+        {
+            get
+            {
+                return _typeMetadata.Parameters;
+            }
+        }
         public override ReadOnlyCollection<PSTypeName> OutputType
         {
             get
@@ -67,6 +79,7 @@ namespace System.Management.Automation
             return Name;
         }
 
+        private TypeMetadata _typeMetadata;
         private ReadOnlyCollection<PSTypeName> _outputTypes;
     }
 }

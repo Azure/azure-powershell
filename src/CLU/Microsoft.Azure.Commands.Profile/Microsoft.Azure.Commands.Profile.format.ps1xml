@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Configuration>
   <ViewDefinitions>
-    <View>
-      <Name>Microsoft.Azure.Commands.Profile.Models.PSAzureProfile</Name>
+   <View>
+      <Name>Microsoft.Azure.Commands.Models.PSAzureProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Profile.Models.PSAzureProfile</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Models.PSAzureProfile</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
@@ -12,36 +12,41 @@
             <ListItems>
               <ListItem>
                 <Label>Context</Label>
-                
                 <Property>Context</Property>
               </ListItem>
-            </ListItems>
+               <ListItem>
+                <Label>Environments</Label>
+                <Property>EnvironmentNames</Property>
+              </ListItem>
+           </ListItems>
           </ListEntry>
         </ListEntries>
       </ListControl>
-    </View>
+    </View>-->
     <View>
-      <Name>Microsoft.Azure.Commands.Profile.Models.PSAzureContext</Name>
+      <Name>Microsoft.Azure.Commands.Models.PSAzureContext</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Profile.Models.PSAzureContext</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Models.PSAzureContext</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
           <ListEntry>
             <ListItems>
               <ListItem>
+                <Label>Environment</Label>
                 <PropertyName>Environment</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>Account</Label>
                 <PropertyName>Account</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>TenantId</Label>
-                <Property>Tenant</Property>
+                <PropertyName>Tenant</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>SubscriptionId</Label>
-                <Property>Subscription</Property>
+                <PropertyName>Subscription</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -49,9 +54,9 @@
       </ListControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.Profile.Models.PSAzureSubscription</Name>
+      <Name>Microsoft.Azure.Commands.Models.PSAzureSubscription</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Profile.Models.PSAzureSubscription</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Models.PSAzureSubscription</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
@@ -75,9 +80,9 @@
       </ListControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.Profile.Models.PSAzureTenant</Name>
+      <Name>Microsoft.Azure.Commands.Models.PSAzureTenant</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Profile.Models.PSAzureTenant</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Models.PSAzureTenant</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
@@ -88,6 +93,59 @@
               </ListItem>
               <ListItem>
                 <PropertyName>Domain</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Models.PSAzureEnvironment</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Models.PSAzureEnvironment</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ActiveDirectory</Label>
+                <Property>ActiveDirectoryAuthority</Property>
+              </ListItem>
+              <ListItem>
+                <Label>ResourceManager</Label>
+                <Property>ResourceManagerUrl</Property>
+              </ListItem>
+              <ListItem>
+                <Label>Graph</Label>
+                <Property>GraphUrl</Property>
+              </ListItem>
+              <ListItem>
+                <Label>Gallery</Label>
+                <Property>GalleryUrl</Property>
+              </ListItem>
+               <ListItem>
+                <Label>DefaultTenant</Label>
+                <Property>AdTenant</Property>
+              </ListItem>
+              <ListItem>
+                <Label>TokenAudience</Label>
+                <Property>ActiveDirectoryServiceEndpointResourceId</Property>
+              </ListItem>
+             <ListItem>
+                <Label>KeyVaultAudience</Label>
+                <Property>AzureKeyVaultServiceEndpointResourceId</Property>
+              </ListItem>
+             <ListItem>
+                <Label>KeyVaultSuffix</Label>
+                <Property>AzureKeyVaultDnsSuffix</Property>
+              </ListItem>
+             <ListItem>
+                <Label>ADFS</Label>
+                <Property>EnableAdfsAuthentication</Property>
               </ListItem>
             </ListItems>
           </ListEntry>

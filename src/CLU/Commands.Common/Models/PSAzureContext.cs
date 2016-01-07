@@ -86,5 +86,14 @@ namespace Microsoft.Azure.Commands.Models
         public PSAzureTenant Tenant { get; set; }
 
         public byte[] TokenCache { get; set; }
+
+        public override string ToString()
+        {
+            var account = Account != null ? Account.Id : string.Empty;
+            var subscription = Subscription != null ? Subscription.SubscriptionId : string.Empty;
+            var tenant = Tenant != null ? Tenant.TenantId : string.Empty;
+            var environment = Environment != null ? Environment.Name : EnvironmentName.AzureCloud;
+            return $"{{Account: {account}, Subscription: {subscription}, Tenant: {tenant}, Environment: {environment}}}";
+        }
     }
 }

@@ -543,12 +543,8 @@ namespace Microsoft.CLU.Run
                 File.WriteAllLines(scriptPath, new string[]
                 {
                     "#!/bin/bash",
-                    "if [ -z ${CmdletSessionID} ]",
-                    "then",
-                    "  export CmdletSessionID=$PPID",
-                    "fi",
                     "SCRIPTPATH=$(dirname \"$0\")",
-                    $"$SCRIPTPATH/clurun -s {scriptName} -r $SCRIPTPATH/{Path.GetFileName(cfgPath)} $*"
+                    $"$SCRIPTPATH/clurun -s {scriptName} -r $SCRIPTPATH/{Path.GetFileName(cfgPath)} \"$@\""
                 });
                 System.Diagnostics.Process.Start("chmod", $"777 {scriptPath}");
             }

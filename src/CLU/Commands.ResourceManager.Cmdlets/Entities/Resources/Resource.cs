@@ -23,6 +23,27 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources
     /// </summary>
     public class Resource<TProperties>
     {
+        public Resource()
+        {
+
+        }
+
+        public Resource(Resource<TProperties> r)
+        {
+            this.ChangedTime = r.ChangedTime;
+            this.CreatedTime = r.CreatedTime;
+            this.ETag = r.ETag;
+            this.Id = r.Id;
+            this.Kind = r.Kind;
+            this.Location = r.Location;
+            this.Name = r.Name;
+            this.Plan = r.Plan;
+            this.Properties = r.Properties;
+            this.Sku = r.Sku;
+            this.Tags = r.Tags;
+            this.Type = r.Type;
+        }
+
         /// <summary>
         /// Gets or sets the properties.
         /// </summary>

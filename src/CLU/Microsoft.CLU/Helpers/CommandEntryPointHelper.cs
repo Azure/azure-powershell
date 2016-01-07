@@ -65,32 +65,15 @@ namespace Microsoft.CLU.Helpers
                 throw new LocalPackageNotFoundException(commandPackage);
             }
 
-            var index = ConfigurationDictionary.Load(Path.Combine(package.FullPath, Common.Constants.IndexFolder, Common.Constants.StaticCommandIndex + Constants.IndexFileExtension));
+            var methods = package.LoadCommandAssemblies(resolver).Select(a => a.GetEntryPointMethod(commandEntryPoint)).Where(a => a != null).ToArray();
 
-            if (index != null && index.ContainsKey(commandEntryPoint))
-            {
-                var asm = package.LoadAssembly(index[commandEntryPoint], resolver);
+            if (methods.Length == 0)
+                throw new ArgumentException(string.Format(Strings.CommandEntryPointHelper_GetEntryPoint_NoEntryPointMethod, commandEntryPoint, commandPackage));
 
-                if (asm == null)
-                    throw new ArgumentException(string.Format(Strings.CommandEntryPointHelper_GetEntryPoint_NoEntryPointAssembly, commandEntryPoint, commandPackage));
+            if (methods.Length > 1)
+                throw new ArgumentException(string.Format(Strings.CommandEntryPointHelper_GetEntryPoint_MultipleEntryPoints, commandEntryPoint, commandPackage));
 
-                method = asm.GetEntryPointMethod(commandEntryPoint);
-
-                if (method == null)
-                    throw new ArgumentException(string.Format(Strings.CommandEntryPointHelper_GetEntryPoint_NoEntryPointMethod, commandEntryPoint, commandPackage));
-            }
-            else
-            {
-                var methods = package.LoadCommandAssemblies(resolver).Select(a => a.GetEntryPointMethod(commandEntryPoint)).Where(a => a != null).ToArray();
-
-                if (methods.Length == 0)
-                    throw new ArgumentException(string.Format(Strings.CommandEntryPointHelper_GetEntryPoint_NoEntryPointMethod, commandEntryPoint, commandPackage));
-
-                if (methods.Length > 1)
-                    throw new ArgumentException(string.Format(Strings.CommandEntryPointHelper_GetEntryPoint_MultipleEntryPoints, commandEntryPoint, commandPackage));
-
-                method = methods[0];
-            }
+            method = methods[0];
 
             if (!method.IsStatic || !method.IsPublic)
                 throw new ArgumentException(string.Format(Strings.CommandEntryPointHelper_GetEntryPoint_EntryPointIsNotPulicOrStatic, package.Name, commandEntryPoint));
