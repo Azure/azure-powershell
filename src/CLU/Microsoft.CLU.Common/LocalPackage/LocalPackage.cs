@@ -344,6 +344,7 @@ namespace Microsoft.CLU.Common
             return new List<PackageAssembly>();
         }
 
+#if PSCMDLET_HELP
         /// <summary>
         /// Loads the name mapping rules defined in this package.
         /// </summary>
@@ -352,6 +353,7 @@ namespace Microsoft.CLU.Common
         {
            return ConfigurationDictionary.Load(Path.Combine(FullPath, Constants.IndexFolder, Constants.NameMappingFileName));
         }
+#endif 
 
         /// <summary>
         /// Locate an existing package in the local file system under the given packages root directory.
@@ -372,10 +374,10 @@ namespace Microsoft.CLU.Common
                 FirstOrDefault();
         }
 
-        #region Private fields
+#region Private fields
 
         private PackageMarker _marker;
 
-        #endregion
+#endregion
     }
 }
