@@ -485,8 +485,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     {
                         var subscriptions = (subscriptionClient.Subscriptions.List().Subscriptions ?? 
                                                 new List<Microsoft.Azure.Subscriptions.Models.Subscription>())
-                                            .Where(s => s.State.Equals("enabled", StringComparison.OrdinalIgnoreCase) || 
-                                                        s.State.Equals("warned", StringComparison.OrdinalIgnoreCase));
+                                            .Where(s => "enabled".Equals(s.State, StringComparison.OrdinalIgnoreCase) ||
+                                                        "warned".Equals(s.State, StringComparison.OrdinalIgnoreCase));
 
                         if (subscriptions.Any())
                         {
