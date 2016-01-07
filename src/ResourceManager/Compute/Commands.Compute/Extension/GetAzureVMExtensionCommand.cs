@@ -69,7 +69,8 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 else
                 {
-                    var result = this.VirtualMachineExtensionClient.Get(this.ResourceGroupName, this.VMName, this.Name);
+                    var result = this.VirtualMachineExtensionClient.GetWithHttpMessagesAsync(this.ResourceGroupName,
+                        this.VMName, this.Name).GetAwaiter().GetResult();
                     WriteObject(result.ToPSVirtualMachineExtension(this.ResourceGroupName));
                 }
             });

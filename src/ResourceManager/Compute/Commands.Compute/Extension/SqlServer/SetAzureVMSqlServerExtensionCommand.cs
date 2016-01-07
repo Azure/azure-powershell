@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet(
         VerbsCommon.Set,
         ProfileNouns.VirtualMachineSqlServerExtension)]
+    [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureSqlServerExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         /// <summary>
@@ -98,10 +99,8 @@ namespace Microsoft.Azure.Commands.Compute
             var parameters = new VirtualMachineExtension
             {
                 Location = this.Location,
-                Name = Name ?? VirtualMachineSqlServerExtensionContext.ExtensionPublishedNamespace + "." + VirtualMachineSqlServerExtensionContext.ExtensionPublishedName,
-                Type = VirtualMachineExtensionType,
                 Publisher = VirtualMachineSqlServerExtensionContext.ExtensionPublishedNamespace,
-                ExtensionType = VirtualMachineSqlServerExtensionContext.ExtensionPublishedName,
+                VirtualMachineExtensionType = VirtualMachineSqlServerExtensionContext.ExtensionPublishedName,
                 TypeHandlerVersion = string.IsNullOrEmpty(this.Version) ? VirtualMachineSqlServerExtensionContext.ExtensionDefaultVersion : this.Version,
                 Settings = this.GetPublicConfiguration(),
                 ProtectedSettings = this.GetPrivateConfiguration(),
@@ -110,24 +109,33 @@ namespace Microsoft.Azure.Commands.Compute
             // Add retry logic due to CRP service restart known issue CRP bug: 3564713
             // Similair approach taken in DSC cmdlet as well
             var count = 1;
-            ComputeLongRunningOperationResponse op = null;
+            Rest.Azure.AzureOperationResponse<VirtualMachineExtension> op = null;
             while (count <= 2)
             {
-                op = VirtualMachineExtensionClient.CreateOrUpdate(
+                try
+                {
+                    op = VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
                         ResourceGroupName,
                         VMName,
-                        parameters);
-
-                if (ComputeOperationStatus.Failed.Equals(op.Status) && op.Error != null && "InternalExecutionError".Equals(op.Error.Code))
-                {
-                    count++;
+                        Name ?? VirtualMachineSqlServerExtensionContext.ExtensionPublishedNamespace + "." + VirtualMachineSqlServerExtensionContext.ExtensionPublishedName,
+                        parameters).GetAwaiter().GetResult();
                 }
-                else
+                catch (Rest.Azure.CloudException ex)
                 {
-                    break;
+                    var errorReturned = JsonConvert.DeserializeObject<ComputeLongRunningOperationError>(ex.Response.Content.ReadAsStringAsync().Result);
+
+                    if (ComputeOperationStatus.Failed.Equals(errorReturned.Status)
+                        && errorReturned.Error != null && "InternalExecutionError".Equals(errorReturned.Error.Code))
+                    {
+                        count++;
+                    }
+                    else
+                    {
+                        break;
+                    }
                 }
             }
-            var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+            var result = Mapper.Map<PSAzureOperationResponse>(op);
             WriteObject(result);
         }
 
@@ -135,30 +143,29 @@ namespace Microsoft.Azure.Commands.Compute
         /// Returns the public configuration as string
         /// </summary>
         /// <returns></returns>
-        private string GetPublicConfiguration()
+        private SqlServerPublicSettings GetPublicConfiguration()
         {
-            return JsonConvert.SerializeObject(
-               new SqlServerPublicSettings
-               {
-                   AutoPatchingSettings = this.AutoPatchingSettings,
-                   AutoBackupSettings = this.AutoBackupSettings,
-                   AutoTelemetrySettings = new AutoTelemetrySettings() { Region = this.Location}
-               });
+            return new SqlServerPublicSettings
+            {
+                AutoPatchingSettings = this.AutoPatchingSettings,
+                AutoBackupSettings = this.AutoBackupSettings,
+                AutoTelemetrySettings = new AutoTelemetrySettings() {Region = this.Location}
+            };
         }
 
         /// <summary>
         /// Returns private configuration as string
         /// </summary>
         /// <returns></returns>
-        private string GetPrivateConfiguration()
+        private SqlServerPrivateSettings GetPrivateConfiguration()
         {
-            return JsonConvert.SerializeObject(
-                       new SqlServerPrivateSettings
-                       {
-                           StorageUrl = (this.AutoBackupSettings == null) ? string.Empty : this.AutoBackupSettings.StorageUrl,
-                           StorageAccessKey = (this.AutoBackupSettings == null) ? string.Empty : this.AutoBackupSettings.StorageAccessKey,
-                           Password = (this.AutoBackupSettings == null) ? string.Empty : this.AutoBackupSettings.Password
-                       });
+            return new SqlServerPrivateSettings
+            {
+                StorageUrl = (this.AutoBackupSettings == null) ? string.Empty : this.AutoBackupSettings.StorageUrl,
+                StorageAccessKey =
+                    (this.AutoBackupSettings == null) ? string.Empty : this.AutoBackupSettings.StorageAccessKey,
+                Password = (this.AutoBackupSettings == null) ? string.Empty : this.AutoBackupSettings.Password
+            };
         }
     }
 }

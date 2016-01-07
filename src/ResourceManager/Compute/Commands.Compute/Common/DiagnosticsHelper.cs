@@ -33,14 +33,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         private static string StorageAccountKeyTag = "storageAccountKey";
         private static string StorageAccountEndPointTag = "storageAccountEndPoint";
 
-        public static string GetJsonSerializedPublicDiagnosticsConfigurationFromFile(string configurationPath,
-            string storageAccountName)
-        {
-            return
-                JsonConvert.SerializeObject(
-                    DiagnosticsHelper.GetPublicDiagnosticsConfigurationFromFile(configurationPath, storageAccountName));
-        }
-
         public static Hashtable GetPublicDiagnosticsConfigurationFromFile(string configurationPath, string storageAccountName)
         {
             using (StreamReader reader = new StreamReader(configurationPath))
@@ -105,12 +97,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
 
             return hashTable;
-        }
-
-        public static string GetJsonSerializedPrivateDiagnosticsConfiguration(string storageAccountName,
-            string storageKey, string endpoint)
-        {
-            return JsonConvert.SerializeObject(GetPrivateDiagnosticsConfiguration( storageAccountName, storageKey, endpoint));
         }
 
         public static Hashtable GetPrivateDiagnosticsConfiguration(string storageAccountName, string storageKey, string endpoint)

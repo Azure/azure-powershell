@@ -61,5 +61,19 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
         {
             RunPowerShellTest("Test-RedisCacheClustering");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetAzureRedisCacheDiagnostics()
+        {
+            RunPowerShellTest("Test-SetAzureRedisCacheDiagnostics");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveAzureRedisCacheDiagnostics()
+        {
+            RunPowerShellTest("Test-RemoveAzureRedisCacheDiagnostics");
+        }
     }
 }
