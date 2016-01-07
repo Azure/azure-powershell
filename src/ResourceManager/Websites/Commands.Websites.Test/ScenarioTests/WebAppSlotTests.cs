@@ -30,6 +30,13 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateNewWebAppSlotOnAse()
+        {
+            WebsitesController.NewInstance.RunPsTest("Test-CreateNewWebAppSlotOnAse");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetWebAppSlot()
         {
             WebsitesController.NewInstance.RunPsTest("Test-GetWebAppSlot");
