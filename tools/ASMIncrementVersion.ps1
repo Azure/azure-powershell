@@ -13,8 +13,11 @@ Param(
 # Function to update nuspec file
 function IncrementVersion([string]$FilePath)
 {
-    Write-Output "Updating File: $FilePath"   
-    $content = Get-Content $FilePath
+
+    $psd1Path = Join-Path $FilePath "\Services\Commands.Utilities\Azure.psd1"
+
+    Write-Output "Updating File: $psd1Path"   
+    $content = Get-Content $psd1Path
     $matches = ([regex]::matches($content, "ModuleVersion = '([\d\.]+)'"))
 
     $packageVersion = $matches.Groups[1].Value
@@ -44,30 +47,22 @@ function IncrementVersion([string]$FilePath)
     
     $version = [String]::Join(".", $version)
     
-    Write-Output "Updating version of $FilePath from $packageVersion to $version"
+    Write-Output "Updating version of $psd1Path from $packageVersion to $version"
     $content = $content.Replace("ModuleVersion = '$packageVersion'", "ModuleVersion = '$version'")
     
-    Set-Content -Path $FilePath -Value $content -Encoding UTF8
-    return $version
-}
+    Set-Content -Path $psd1Path -Value $content -Encoding UTF8
 
-# Function to sync assembly version with module version
-function SyncVersion([string]$FilePath, [string] $packageVersion)
-{ 
     Write-Output "Updating AssemblyInfo.cs inside of $FilePath to $packageVersion"
 
     $assemblyInfos = Get-ChildItem -Path $FilePath -Filter AssemblyInfo.cs -Recurse
     ForEach ($assemblyInfo in $assemblyInfos)
     {
         $content = Get-Content $assemblyInfo.FullName
-        $content = $content -replace "\[assembly: AssemblyVersion\([\w\`"\.]+\)\]", "[assembly: AssemblyVersion(`"$packageVersion`")]"
-        $content = $content -replace "\[assembly: AssemblyFileVersion\([\w\`"\.]+\)\]", "[assembly: AssemblyFileVersion(`"$packageVersion`")]"
+        $content = $content -replace "\[assembly: AssemblyVersion\([\w\`"\.]+\)\]", "[assembly: AssemblyVersion(`"$version`")]"
+        $content = $content -replace "\[assembly: AssemblyFileVersion\([\w\`"\.]+\)\]", "[assembly: AssemblyFileVersion(`"$version`")]"
         Write-Output "Updating assembly version in " $assemblyInfo.FullName
         Set-Content -Path $assemblyInfo.FullName -Value $content -Encoding UTF8
     }   
-    #$content = $content.Replace("ModuleVersion = '$packageVersion'", "ModuleVersion = '$version'")
-    
-    #Set-Content -path $FilePath -value $content
 }
 
 if (!$Folder) 
@@ -75,7 +70,4 @@ if (!$Folder)
     $Folder = "$PSScriptRoot\..\src\ServiceManagement"
 }
 
-
-$psd1Path = $Folder + "\Services\Commands.Utilities\Azure.psd1"
-$version = IncrementVersion $psd1Path
-SyncVersion $Folder
+IncrementVersion $Folder
