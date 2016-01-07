@@ -432,6 +432,65 @@ function Test-CreateNewWebAppSlot
 
 <#
 .SYNOPSIS
+Tests creating a new web app slot on ASE.
+#>
+function Test-CreateNewWebAppSlotOnAse
+{
+	# Setup
+	$rgname = "appdemorg"
+	$appname = Get-WebsiteName
+	$slotname = "staging"
+	$location = "West US"
+	$planName = "travel_production_plan"
+	$aseName = "asedemo"
+
+	$apiversion = "2015-08-01"
+	$resourceType = "Microsoft.Web/sites"
+	try
+	{
+		#Setup
+		$serverFarm = Get-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName
+		
+		# Create new web app
+		$actual = New-AzureRmWebApp -ResourceGroupName $rgname -Name $appname -Location $location -AppServicePlan $planName -AseName $aseName
+		
+		# Assert
+		Assert-AreEqual $appname $actual.Name
+		Assert-AreEqual $serverFarm.Id $actual.ServerFarmId
+
+		# Get new web app
+		$result = Get-AzureRmWebApp -ResourceGroupName $rgname -Name $appname
+		
+		# Assert
+		Assert-AreEqual $appname $result.Name
+		Assert-AreEqual $serverFarm.Id $result.ServerFarmId
+
+		# Create deployment slot
+		$slot1 = New-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppServicePlan $planName -AseName $aseName
+		$appWithSlotName = "$appname/$slotname"
+
+		# Assert
+		Assert-AreEqual $appWithSlotName $slot1.Name
+		Assert-AreEqual $serverFarm.Id $slot1.ServerFarmId
+
+		# Get new web app slot
+		$slot1 = Get-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname
+
+		# Assert
+		Assert-AreEqual $appWithSlotName $slot1.Name
+		Assert-AreEqual $serverFarm.Id $slot1.ServerFarmId
+
+	}
+    finally
+	{
+		# Cleanup
+		Remove-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -Force
+		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $appname -Force
+    }
+}
+
+<#
+.SYNOPSIS
 Tests retrieving web app slots
 #>
 function Test-SetWebAppSlot
