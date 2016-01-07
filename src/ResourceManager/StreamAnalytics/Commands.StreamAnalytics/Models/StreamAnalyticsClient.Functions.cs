@@ -20,34 +20,35 @@ using Microsoft.Azure.Commands.StreamAnalytics.Properties;
 using Microsoft.Azure.Management.StreamAnalytics;
 using Microsoft.Azure.Management.StreamAnalytics.Models;
 using Hyak.Common;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics.Models
 {
     public partial class StreamAnalyticsClient
     {
-        public virtual PSOutput GetOutput(string resourceGroupName, string jobName, string name)
+        public virtual PSFunction GetFunction(string resourceGroupName, string jobName, string name)
         {
-            var response = StreamAnalyticsManagementClient.Outputs.Get(
+            var response = StreamAnalyticsManagementClient.Functions.Get(
                 resourceGroupName, jobName, name);
 
-            return new PSOutput(response.Output)
+            return new PSFunction(response.Function)
             {
                 ResourceGroupName = resourceGroupName,
                 JobName = jobName
             };
         }
 
-        public virtual List<PSOutput> ListOutputs(string resourceGroupName, string jobName)
+        public virtual List<PSFunction> ListFunctions(string resourceGroupName, string jobName)
         {
-            List<PSOutput> outputs = new List<PSOutput>();
+            List<PSFunction> functions = new List<PSFunction>();
 
-            var response = StreamAnalyticsManagementClient.Outputs.ListOutputInJob(resourceGroupName, jobName, new OutputListParameters("*"));
+            var response = StreamAnalyticsManagementClient.Functions.ListFunctionsInJob(resourceGroupName, jobName);
 
             if (response != null && response.Value != null)
             {
-                foreach (var output in response.Value)
+                foreach (var function in response.Value)
                 {
-                    outputs.Add(new PSOutput(output)
+                    functions.Add(new PSFunction(function)
                     {
                         ResourceGroupName = resourceGroupName,
                         JobName = jobName
@@ -55,10 +56,10 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
                 }
             }
 
-            return outputs;
+            return functions;
         }
 
-        public virtual List<PSOutput> FilterPSOutputs(OutputFilterOptions filterOptions)
+        public virtual List<PSFunction> FilterPSFunctions(FunctionFilterOptions filterOptions)
         {
             if (filterOptions == null)
             {
@@ -75,21 +76,21 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
                 throw new ArgumentException(Resources.JobNameCannotBeEmpty);
             }
 
-            List<PSOutput> outputs = new List<PSOutput>();
+            List<PSFunction> functions = new List<PSFunction>();
 
             if (!string.IsNullOrWhiteSpace(filterOptions.Name))
             {
-                outputs.Add(GetOutput(filterOptions.ResourceGroupName, filterOptions.JobName, filterOptions.Name));
+                functions.Add(GetFunction(filterOptions.ResourceGroupName, filterOptions.JobName, filterOptions.Name));
             }
             else
             {
-                outputs.AddRange(ListOutputs(filterOptions.ResourceGroupName, filterOptions.JobName));
+                functions.AddRange(ListFunctions(filterOptions.ResourceGroupName, filterOptions.JobName));
             }
 
-            return outputs;
+            return functions;
         }
 
-        protected virtual Output CreateOrUpdatePSOutput(string resourceGroupName, string jobName, string outputName, string rawJsonContent)
+        protected virtual Function CreateOrUpdatePSFunction(string resourceGroupName, string jobName, string functionName, string rawJsonContent)
         {
             if (string.IsNullOrWhiteSpace(rawJsonContent))
             {
@@ -97,83 +98,101 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             }
 
             // If create failed, the current behavior is to throw
-            var response = StreamAnalyticsManagementClient.Outputs.CreateOrUpdateWithRawJsonContent(
+            var response = StreamAnalyticsManagementClient.Functions.CreateOrUpdateWithRawJsonContent(
                     resourceGroupName,
                     jobName,
-                    outputName,
-                    new OutputCreateOrUpdateWithRawJsonContentParameters() { Content = rawJsonContent });
+                    functionName,
+                    new FunctionCreateOrUpdateWithRawJsonContentParameters() { Content = rawJsonContent });
 
-            return response.Output;
+            return response.Function;
         }
 
-        public virtual PSOutput CreatePSOutput(CreatePSOutputParameter parameter)
+        public virtual PSFunction CreatePSFunction(CreatePSFunctionParameter parameter)
         {
             if (parameter == null)
             {
                 throw new ArgumentNullException("parameter");
             }
 
-            PSOutput output = null;
-            Action createOutput = () =>
+            PSFunction function = null;
+            Action createFunction = () =>
             {
-                output =
-                    new PSOutput(CreateOrUpdatePSOutput(parameter.ResourceGroupName,
+                function = new PSFunction(
+                    CreateOrUpdatePSFunction(parameter.ResourceGroupName,
                         parameter.JobName,
-                        parameter.OutputName,
+                        parameter.FunctionName,
                         parameter.RawJsonContent))
-                    {
-                        ResourceGroupName = parameter.ResourceGroupName,
-                        JobName = parameter.JobName
-                    };
+                {
+                    ResourceGroupName = parameter.ResourceGroupName,
+                    JobName = parameter.JobName
+                };
             };
 
             if (parameter.Force)
             {
                 // If user decides to overwrite anyway, then there is no need to check if the linked service exists or not.
-                createOutput();
+                createFunction();
             }
             else
             {
-                bool outputExists = CheckOutputExists(parameter.ResourceGroupName, parameter.JobName, parameter.OutputName);
+                bool functionExists = CheckFunctionExists(parameter.ResourceGroupName, parameter.JobName, parameter.FunctionName);
 
                 parameter.ConfirmAction(
-                        !outputExists,
+                        !functionExists,
                         string.Format(
                             CultureInfo.InvariantCulture,
-                            Resources.OutputExists,
-                            parameter.OutputName,
+                            Resources.FunctionExists,
+                            parameter.FunctionName,
                             parameter.JobName,
                             parameter.ResourceGroupName),
                         string.Format(
                             CultureInfo.InvariantCulture,
-                            Resources.OutputCreating,
-                            parameter.OutputName,
+                            Resources.FunctionCreating,
+                            parameter.FunctionName,
                             parameter.JobName,
                             parameter.ResourceGroupName),
-                        parameter.OutputName,
-                        createOutput);
+                        parameter.FunctionName,
+                        createFunction);
             }
 
-            return output;
+            return function;
         }
 
-        public virtual HttpStatusCode RemovePSOutput(string resourceGroupName, string jobName, string outputName)
+        public virtual HttpStatusCode RemovePSFunction(string resourceGroupName, string jobName, string functionName)
         {
-            AzureOperationResponse response = StreamAnalyticsManagementClient.Outputs.Delete(resourceGroupName, jobName, outputName);
+            AzureOperationResponse response = StreamAnalyticsManagementClient.Functions.Delete(resourceGroupName, jobName, functionName);
 
             return response.StatusCode;
         }
 
-        public virtual ResourceTestConnectionResponse TestPSOutput(string resourceGroupName, string jobName, string outputName)
+        public virtual ResourceTestConnectionResponse TestPSFunction(string resourceGroupName, string jobName, string functionName)
         {
-            return StreamAnalyticsManagementClient.Outputs.TestConnection(resourceGroupName, jobName, outputName);
+            return StreamAnalyticsManagementClient.Functions.TestConnection(resourceGroupName, jobName, functionName);
         }
 
-        private bool CheckOutputExists(string resourceGroupName, string jobName, string outputName)
+        public virtual PSFunction RetrieveDefaultPSFunctionDefinition(RetrieveDefaultPSFunctionDefinitionParameter parameter)
+        {
+            if (parameter == null)
+            {
+                throw new ArgumentNullException("parameter");
+            }
+
+            var response = StreamAnalyticsManagementClient.Functions.RetrieveDefaultDefinitionWithRawJsonContent(
+                parameter.ResourceGroupName, parameter.JobName, parameter.FunctionName,
+                new FunctionRetrieveDefaultDefinitionWithRawJsonContentParameters() {Content = parameter.RawJsonContent});
+
+            return new PSFunction(response.Function)
+            {
+                ResourceGroupName = parameter.ResourceGroupName,
+                JobName = parameter.JobName
+            };
+        }
+
+        private bool CheckFunctionExists(string resourceGroupName, string jobName, string functionName)
         {
             try
             {
-                PSOutput output = GetOutput(resourceGroupName, jobName, outputName);
+                PSFunction function = GetFunction(resourceGroupName, jobName, functionName);
                 return true;
             }
             catch (CloudException e)

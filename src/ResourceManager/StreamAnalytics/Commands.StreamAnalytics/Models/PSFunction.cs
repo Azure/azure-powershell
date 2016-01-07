@@ -17,56 +17,56 @@ using Microsoft.Azure.Management.StreamAnalytics.Models;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics.Models
 {
-    public class PSOutput
+    public class PSFunction
     {
-        private Output output;
+        private Function function;
 
-        public PSOutput()
+        public PSFunction()
         {
-            output = new Output();
+            function = new Function();
         }
 
-        public PSOutput(Output output)
+        public PSFunction(Function function)
         {
-            if (output == null)
+            if (function == null)
             {
-                throw new ArgumentNullException("output");
+                throw new ArgumentNullException("function");
             }
 
-            this.output = output;
+            this.function = function;
         }
 
         public string Name
         {
             get
             {
-                return output.Name;
+                return function.Name;
             }
             internal set
             {
-                output.Name = value;
+                function.Name = value;
             }
         }
 
         public string JobName { get; set; }
 
         public string ResourceGroupName { get; set; }
-
-        public OutputProperties Properties
+        
+        public FunctionProperties Properties
         {
             get
             {
-                return output.Properties;
+                return function.Properties;
             }
             internal set
             {
-                output.Properties = value;
+                function.Properties = value;
             }
         }
 
         public string PropertiesInJson
         {
-            get { return output.ToFormattedString(); }
+            get { return function.ToFormattedString(); }
         }
     }
 }

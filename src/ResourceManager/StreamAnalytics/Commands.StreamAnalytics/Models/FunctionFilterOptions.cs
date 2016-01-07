@@ -12,24 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-
-namespace Microsoft.Azure.Commands.StreamAnalytics
+namespace Microsoft.Azure.Commands.StreamAnalytics.Models
 {
-    internal static class Constants
+    public class FunctionFilterOptions
     {
-        public const string StreamAnalyticsJob = "AzureRmStreamAnalyticsJob";
+        public string Name { get; set; }
 
-        public const string StreamAnalyticsInput = "AzureRmStreamAnalyticsInput";
+        public string JobName { get; set; }
 
-        public const string StreamAnalyticsOutput = "AzureRmStreamAnalyticsOutput";
-
-        public const string StreamAnalyticsTransformation = "AzureRmStreamAnalyticsTransformation";
-
-        public const string StreamAnalyticsFunction = "AzureRmStreamAnalyticsFunction";
-
-        public const string StreamAnalyticsDefaultFunctionDefinition = "AzureRmStreamAnalyticsDefaultFunctionDefinition";
-
-        public const string StreamAnalyticsQuota = "AzureRmStreamAnalyticsQuota";
+        public string ResourceGroupName { get; set; }
     }
 }
