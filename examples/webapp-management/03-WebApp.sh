@@ -198,4 +198,4 @@ azure webapp remove -g "$groupName" -n "$appName3" -f
 #azure webapp remove -g "$groupName" -n "$appName4" -f
 
 printf "\n30:Remove the resource group: %s.\n" "$groupName"
-deleterg=`azure group remove -n "$groupName" --force"`
+deleterg=`azure group remove -n "$groupName" --force`
