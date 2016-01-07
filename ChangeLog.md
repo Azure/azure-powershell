@@ -1,3 +1,4 @@
+## 2016.01.12 version 1.1.0
 * Azure SQL Database: Threat Detection policies:
   * Using new Threat Detection Types
 * Azure Redis Cache: new cmdlets for enabling and disabling diagnostics
