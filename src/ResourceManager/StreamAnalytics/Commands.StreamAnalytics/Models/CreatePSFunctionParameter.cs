@@ -14,22 +14,16 @@
 
 using System;
 
-namespace Microsoft.Azure.Commands.StreamAnalytics
+namespace Microsoft.Azure.Commands.StreamAnalytics.Models
 {
-    internal static class Constants
+    public class CreatePSFunctionParameter : JobParametersBase
     {
-        public const string StreamAnalyticsJob = "AzureRmStreamAnalyticsJob";
+        public string FunctionName { get; set; }
 
-        public const string StreamAnalyticsInput = "AzureRmStreamAnalyticsInput";
+        public string RawJsonContent { get; set; }
 
-        public const string StreamAnalyticsOutput = "AzureRmStreamAnalyticsOutput";
+        public bool Force { get; set; }
 
-        public const string StreamAnalyticsTransformation = "AzureRmStreamAnalyticsTransformation";
-
-        public const string StreamAnalyticsFunction = "AzureRmStreamAnalyticsFunction";
-
-        public const string StreamAnalyticsDefaultFunctionDefinition = "AzureRmStreamAnalyticsDefaultFunctionDefinition";
-
-        public const string StreamAnalyticsQuota = "AzureRmStreamAnalyticsQuota";
+        public Action<bool, string, string, string, Action> ConfirmAction { get; set; }
     }
 }

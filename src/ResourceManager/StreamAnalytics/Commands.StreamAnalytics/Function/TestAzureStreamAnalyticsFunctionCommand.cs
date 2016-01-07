@@ -22,14 +22,14 @@ using Microsoft.Azure.Management.StreamAnalytics.Models;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics
 {
-    [Cmdlet(VerbsDiagnostic.Test, Constants.StreamAnalyticsOutput)]
-    public class TestAzureStreamAnalyticsOutputCommand : StreamAnalyticsResourceProviderBaseCmdlet
+    [Cmdlet(VerbsDiagnostic.Test, Constants.StreamAnalyticsFunction)]
+    public class TestAzureStreamAnalyticsFunctionCommand : StreamAnalyticsResourceProviderBaseCmdlet
     {
         [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The azure stream analytics job name.")]
         [ValidateNotNullOrEmpty]
         public string JobName { get; set; }
 
-        [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The stream analytics output name.")]
+        [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The stream analytics function name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -53,14 +53,14 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
 
             try
             {
-                ResourceTestConnectionResponse response = StreamAnalyticsClient.TestPSOutput(ResourceGroupName, JobName, Name);
+                ResourceTestConnectionResponse response = StreamAnalyticsClient.TestPSFunction(ResourceGroupName, JobName, Name);
                 if (response.StatusCode == HttpStatusCode.OK && response.ResourceTestStatus == ResourceTestStatus.TestSucceeded)
                 {
                     WriteObject(true);
                 }
                 else if (response.StatusCode == HttpStatusCode.NoContent)
                 {
-                    WriteWarning(string.Format(CultureInfo.InvariantCulture, Resources.OutputNotFound, Name, JobName, ResourceGroupName));
+                    WriteWarning(string.Format(CultureInfo.InvariantCulture, Resources.FunctionNotFound, Name, JobName, ResourceGroupName));
                 }
                 else
                 {
