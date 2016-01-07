@@ -19,12 +19,14 @@ using Microsoft.Azure.Management.Compute.Models;
 using Newtonsoft.Json;
 using System.Collections;
 using System.Management.Automation;
+using AutoMapper;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(
         VerbsCommon.Set,
         ProfileNouns.VirtualMachineAccessExtension)]
+    [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureVMAccessExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         private const string userNameKey = "UserName";
@@ -80,6 +82,7 @@ namespace Microsoft.Azure.Commands.Compute
         public string Password { get; set; }
 
         [Parameter(
+            Mandatory = false,
             Position = 6,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The location.")]
@@ -98,27 +101,29 @@ namespace Microsoft.Azure.Commands.Compute
                 Hashtable privateSettings = new Hashtable();
                 privateSettings.Add(passwordKey, Password ?? "");
 
-                var SettingString = JsonConvert.SerializeObject(publicSettings);
-                var ProtectedSettingString = JsonConvert.SerializeObject(privateSettings);
+                if (string.IsNullOrEmpty(this.Location))
+                {
+                    this.Location = GetLocationFromVm(this.ResourceGroupName, this.VMName);
+                }
 
                 var parameters = new VirtualMachineExtension
                 {
                     Location = this.Location,
-                    Name = this.Name,
-                    Type = VirtualMachineExtensionType,
+                    VirtualMachineExtensionType = VirtualMachineAccessExtensionContext.ExtensionDefaultName,
                     Publisher = VirtualMachineAccessExtensionContext.ExtensionDefaultPublisher,
-                    ExtensionType = VirtualMachineAccessExtensionContext.ExtensionDefaultName,
                     TypeHandlerVersion = (this.TypeHandlerVersion) ?? VirtualMachineAccessExtensionContext.ExtensionDefaultVersion,
-                    Settings = SettingString,
-                    ProtectedSettings = ProtectedSettingString,
+                    Settings = publicSettings,
+                    ProtectedSettings = privateSettings,
+                    AutoUpgradeMinorVersion = true
                 };
 
-                var op = this.VirtualMachineExtensionClient.CreateOrUpdate(
+                var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
                     this.ResourceGroupName,
                     this.VMName,
-                    parameters);
-
-                WriteObject(op);
+                    this.Name,
+                    parameters).GetAwaiter().GetResult();
+                var result = Mapper.Map<PSAzureOperationResponse>(op);
+                WriteObject(result);
             });
         }
     }

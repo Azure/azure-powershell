@@ -61,16 +61,16 @@ namespace Microsoft.Azure.Commands.Compute
             var vm = new PSVirtualMachine
             {
                 Name = this.VMName,
-                AvailabilitySetReference = string.IsNullOrEmpty(this.AvailabilitySetId) ? null : new AvailabilitySetReference
+                AvailabilitySetReference = string.IsNullOrEmpty(this.AvailabilitySetId) ? null : new SubResource
                 {
-                    ReferenceUri = this.AvailabilitySetId
+                    Id = this.AvailabilitySetId
                 }
             };
 
             if (!string.IsNullOrEmpty(this.VMSize))
             {
                 vm.HardwareProfile = new HardwareProfile();
-                vm.HardwareProfile.VirtualMachineSize = this.VMSize;
+                vm.HardwareProfile.VmSize = this.VMSize;
             }
 
             WriteObject(vm);

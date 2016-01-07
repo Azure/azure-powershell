@@ -754,7 +754,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public ASRProtectionEntity(ProtectableItem pi, ReplicationProtectedItem rpi, Policy policy = null) : this(pi)
         {
             this.Type = rpi.Type;
-            this.ProtectionStateDescription = rpi.Properties.ProtectionState;
+            this.ProtectionStateDescription = rpi.Properties.ProtectionStateDescription;
 
             if (rpi.Properties.AllowedOperations != null)
             {
@@ -966,11 +966,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             this.ClientRequestId = job.Properties.ActivityId;
             this.State = job.Properties.State;
             this.StateDescription = job.Properties.StateDescription;
-            this.EndTime = job.Properties.EndTime;
-            this.StartTime = job.Properties.StartTime;
             this.Name = job.Name;
             this.TargetObjectId = job.Properties.TargetObjectId;
             this.TargetObjectName = job.Properties.TargetObjectName;
+            if(job.Properties.EndTime.HasValue)
+                this.EndTime =  job.Properties.EndTime.Value.ToLocalTime();
+            if(job.Properties.StartTime.HasValue)
+                this.StartTime = job.Properties.StartTime.Value.ToLocalTime();
             if (job.Properties.AllowedActions != null && job.Properties.AllowedActions.Count > 0)
             {
                 this.AllowedActions = new List<string>();
@@ -1047,12 +1049,12 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Gets or sets Start timestamp.
         /// </summary>
-        public DateTimeOffset? StartTime { get; set; }
+        public DateTime? StartTime { get; set; }
 
         /// <summary>
         /// Gets or sets End timestamp.
         /// </summary>
-        public DateTimeOffset? EndTime { get; set; }
+        public DateTime? EndTime { get; set; }
 
         /// <summary>
         /// Gets or sets TargetObjectId.

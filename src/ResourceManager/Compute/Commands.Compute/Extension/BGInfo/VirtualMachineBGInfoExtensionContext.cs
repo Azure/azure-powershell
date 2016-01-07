@@ -18,6 +18,6 @@ namespace Microsoft.Azure.Commands.Compute.Models
     {
         public const string ExtensionDefaultPublisher = "Microsoft.Compute";
         public const string ExtensionDefaultName = "BGInfo";
-        public const string ExtensionDefaultVersion = "2.*";
+        public const string ExtensionDefaultVersion = "2.1";
     }
 }

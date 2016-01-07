@@ -28,34 +28,44 @@ namespace Microsoft.Azure.Commands.Resources
     [Cmdlet(VerbsCommon.Get, "AzureRmRoleDefinition"), OutputType(typeof(List<PSRoleDefinition>))]
     public class GetAzureRoleDefinitionCommand : ResourcesBaseCmdlet
     {
-        [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionName,
-            HelpMessage = "Role definition name. For e.g. Reader, Contributor, Virtual Machine Contributor.")]
+        [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionName, HelpMessage = "Role definition name. For e.g. Reader, Contributor, Virtual Machine Contributor.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionId,
-            HelpMessage = "Role definition id.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionId, HelpMessage = "Role definition id.")]
         [ValidateGuidNotEmpty]
         public Guid Id { get; set; }
+
+        [ValidateNotNullOrEmpty]
+        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ParameterSet.RoleDefinitionName, HelpMessage = "Scope of the existing role definition.")]
+        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ParameterSet.RoleDefinitionId, HelpMessage = "Scope of the existing role definition.")]
+        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ParameterSet.RoleDefinitionCustom, HelpMessage = "Scope of the existing role definition.")]
+        public string Scope { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionCustom,
             HelpMessage = "If specified, only displays the custom created roles in the directory.")]
         public SwitchParameter Custom { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionName, HelpMessage = "If specified, displays the the roles at and below scope.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionCustom, HelpMessage = "If specified, displays the the roles at and below scope.")]
+        public SwitchParameter AtScopeAndBelow { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            if (Custom.IsPresent)
+            FilterRoleDefinitionOptions options = new FilterRoleDefinitionOptions
             {
-                WriteObject(PoliciesClient.FilterRoleDefinitionsByCustom(), enumerateCollection: true);
-            }
-            else if (Id != Guid.Empty)
-            {
-                WriteObject(PoliciesClient.GetRoleDefinition(Id));
-            }
-            else
-            {
-                WriteObject(PoliciesClient.FilterRoleDefinitions(Name), enumerateCollection: true);
-            }
+                CustomOnly = Custom.IsPresent ? true : false,
+                ScopeAndBelow = AtScopeAndBelow.IsPresent ? true : false,
+                Scope = Scope,
+                ResourceIdentifier = new ResourceIdentifier
+                {
+                    Subscription = DefaultProfile.Context.Subscription.Id.ToString()
+                },
+                RoleDefinitionId = Id,
+                RoleDefinitionName = Name,
+            };
+
+            WriteObject(PoliciesClient.FilterRoleDefinitions(options), enumerateCollection: true);
         }
     }
 }

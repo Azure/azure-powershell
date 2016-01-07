@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.KeyVault;
 using System;
 using System.Collections;
 using System.Management.Automation;
@@ -98,6 +99,30 @@ namespace Microsoft.Azure.Commands.KeyVault
                 throw new ArgumentException(PSKeyVaultProperties.Resources.VaultAlreadyExists);
             }
 
+            var userObjectId = Guid.Empty;
+            AccessPolicyEntry accessPolicy = null;
+
+            try
+            {
+                userObjectId = GetCurrentUsersObjectId();
+            }
+            catch (Exception ex)
+            {
+                // Show the graph exceptions as a warning, but still proceed to create a vault with no access policy
+                // This is to unblock Key Vault in Fairfax as Graph has issues in this environment.
+                WriteWarning(ex.Message);
+            }
+            if (userObjectId != Guid.Empty)
+            {
+                accessPolicy = new AccessPolicyEntry()
+                {
+                    TenantId = GetTenantId(),
+                    ObjectId = userObjectId,
+                    PermissionsToKeys = DefaultPermissionsToKeys,
+                    PermissionsToSecrets = DefaultPermissionsToSecrets
+                };
+            }
+
             var newVault = KeyVaultManagementClient.CreateNewVault(new PSKeyVaultModels.VaultCreationParameters()
             {
                 VaultName = this.VaultName,
@@ -109,15 +134,18 @@ namespace Microsoft.Azure.Commands.KeyVault
                 SkuFamilyName = DefaultSkuFamily,
                 SkuName = string.IsNullOrWhiteSpace(this.Sku) ? DefaultSkuName : this.Sku,
                 TenantId = GetTenantId(),
-                ObjectId = GetCurrentUsersObjectId(),
-                PermissionsToKeys = DefaultPermissionsToKeys,
-                PermissionsToSecrets = DefaultPermissionsToSecrets,
+                AccessPolicy = accessPolicy,
                 Tags = this.Tag
-            }, 
+            },
             ActiveDirectoryClient
             );
-            
+
             this.WriteObject(newVault);
+
+            if (accessPolicy == null)
+            {
+                WriteWarning(PSKeyVaultProperties.Resources.VaultNoAccessPolicyWarning);
+            }
         }
 
 

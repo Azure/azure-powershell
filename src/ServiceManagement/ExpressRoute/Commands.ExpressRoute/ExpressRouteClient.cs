@@ -55,6 +55,25 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
             Client = client;
         }
 
+        public string GetAzureDedicatedCircuitPeeringArpInfo(Guid serviceKey, BgpPeeringAccessType accessType, DevicePath devicePath)
+        {
+            return Client.DedicatedCircuitPeeringArpInfo.Get(serviceKey.ToString(), accessType, devicePath).Data.ToString();
+        }
+
+        public string GetAzureDedicatedCircuitPeeringRouteTableInfo(Guid serviceKey, BgpPeeringAccessType accessType, DevicePath devicePath)
+        {
+            return Client.DedicatedCircuitPeeringRouteTableInfo.Get(serviceKey.ToString(), accessType, devicePath).Data.ToString();
+        }
+
+        public string GetAzureDedicatedCircuitPeeringRouteTableSummary(Guid serviceKey, BgpPeeringAccessType accessType, DevicePath devicePath)
+        {
+            return Client.DedicatedCircuitPeeringRouteTableSummary.Get(serviceKey.ToString(), accessType, devicePath).Data.ToString();
+        }
+
+        public AzureDedicatedCircuitStats GetAzureDedicatedCircuitStatsInfo(Guid serviceKey, BgpPeeringAccessType accessType)
+        {
+            return Client.DedicatedCircuitStats.Get(serviceKey.ToString(), accessType).DedicatedCircuitStats;
+        }
         public AzureBgpPeering GetAzureBGPPeering(Guid serviceKey, BgpPeeringAccessType accessType)
         {
             return Client.BorderGatewayProtocolPeerings.Get(serviceKey.ToString(), accessType).BgpPeering;
