@@ -17,7 +17,10 @@ using System.Collections;
 using System.Linq;
 using System.Management.Automation;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json;
 using Microsoft.Azure.Management.WebSites.Models;
+using Newtonsoft.Json.Linq;
+
 
 namespace Microsoft.Azure.Commands.WebApps.Validations
 {
@@ -25,6 +28,14 @@ namespace Microsoft.Azure.Commands.WebApps.Validations
     {
         protected override void Validate(object arguments, EngineIntrinsics engineIntrinsics)
         {
+            /*
+            This would be required for Powershell as it is easy to construct Hashtables in Posh vs Dictionary. For CLU when the user passes
+            this - "{ \"connstring1\": { \"Type\": \"MySql1212\", \"Value\": \"string value 1\" }}" as the connectionstring then 
+            JsonConvert.Deserialize() correctly converts it into a Dictionary<string, ConnStringValueTypePair>. Inbuilt model validation 
+            in the website MAML library works well. Hence this is not required for CLU. When we port this to master branch then we need to 
+            use #if def and have two definitions for connectionstrings, each for CLU and Powershell resp. as follows:
+            - public Dictionary<string, ConnStringValueTypePair> ConnectionStrings { get; set; }
+            - public Hashtable ConnectionStrings { get; set; }
             var hashtable = arguments as Hashtable;
             if (hashtable == null)
             {
@@ -60,7 +71,7 @@ namespace Microsoft.Azure.Commands.WebApps.Validations
                 {
                     throw new PSArgumentException("Connection string value must be specified.");
                 }
-            }
+            }*/
         }
     }
 }

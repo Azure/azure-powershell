@@ -64,7 +64,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 
         [Parameter(Position = 11, Mandatory = false, HelpMessage = "Web app connection strings")]
         [ValidateNotNullOrEmpty]
-        public Hashtable ConnectionStrings { get; set; }
+        // TODO: CLU
+        //public Hashtable ConnectionStrings { get; set; }
+        public Dictionary<string, ConnStringValueTypePair> ConnectionStrings { get; set; }
 
         [Parameter(Position = 12, Mandatory = false, HelpMessage = "Web app handler mappings")]
         [ValidateNotNullOrEmpty]
@@ -117,7 +119,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                     }
 
                     // Update web app configuration
-                    WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, location, Name, Slot, siteConfig, AppSettings.ConvertToStringDictionary(), ConnectionStrings.ConvertToConnectionStringDictionary());
+                    WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, location, Name, Slot, siteConfig, AppSettings.ConvertToStringDictionary(), ConnectionStrings);
 
                     if (parameters.Contains("AppServicePlan"))
                     {

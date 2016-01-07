@@ -38,8 +38,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
 
             ConfirmAction(
                     Force.IsPresent,
-                    string.Format(Properties.Resources.RemovingAppServicePlan, Name),
-                    Properties.Resources.RemovingAppServicePlan,
+                    string.Format(WebSites.Properties.Resources.RemovingAppServicePlan, Name),
+                    WebSites.Properties.Resources.RemovingAppServicePlan,
                     Name,
                     () => WebsitesClient.RemoveAppServicePlan(ResourceGroupName, Name));
         }
