@@ -154,7 +154,7 @@ namespace System.Management.Automation
         internal bool ShouldWriteJsonOutput()
         {
             var requestedOutputFormat = CommandRuntime.Host.RequestedOutputFormat;
-            return (CommandRuntime.Host.IsOutputRedirected && requestedOutputFormat != OutputFormat.Formatted) 
+            return (CommandRuntime.Host.IsOutputRedirected && requestedOutputFormat == OutputFormat.Auto) 
                 || requestedOutputFormat == OutputFormat.JSON;
         }
         protected void WriteProgress(ProgressRecord progressRecord) { if (progressRecord != null) CommandRuntime.WriteProgress(progressRecord); }

@@ -50,13 +50,13 @@ namespace System.Management.Automation.Host
                 _doVerbose = Constants.CmdletPreferencesContinue;
             }
 
-            if (RemoveArgumentIfFound(argList, "formatjson"))
+            if (RemoveArgumentIfFound(argList, "json"))
             {
                 this.RequestedOutputFormat = OutputFormat.JSON;
             }
-            else if (RemoveArgumentIfFound(argList, "formattable"))
+            else if (RemoveArgumentIfFound(argList, "display"))
             {
-                this.RequestedOutputFormat = OutputFormat.Formatted;
+                this.RequestedOutputFormat = OutputFormat.Display;
             }
 
             args = argList.ToArray();

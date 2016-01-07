@@ -9,6 +9,6 @@ namespace Microsoft.CLU
     {
         Auto = 0,
         JSON = 1,
-        Formatted = 2
+        Display = 2
     }
 }
