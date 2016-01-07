@@ -102,6 +102,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             {
                 string primaryFabricName = 
                     Utilities.GetValueFromArmId(networkMapping.Id, ARMResourceTypeConstants.ReplicationFabrics);
+
+                // Skip azure cases 
+                if (!networkMapping.Properties.RecoveryNetworkId.ToLower().Contains(ARMResourceTypeConstants.ReplicationFabrics.ToLower()))
+                    continue;
+
                 string recoveryFabricName =
                     Utilities.GetValueFromArmId(networkMapping.Properties.RecoveryNetworkId, ARMResourceTypeConstants.ReplicationFabrics);
 

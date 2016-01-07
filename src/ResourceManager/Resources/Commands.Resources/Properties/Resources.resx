@@ -339,4 +339,10 @@
   <data name="RemoveRoleDefinitionWithName" xml:space="preserve">
     <value>Are you sure you want to remove role definition with name '{0}'.</value>
   </data>
+  <data name="CreateApplicationNotAllowedGuestUser" xml:space="preserve">
+    <value>You are a guest user in the directory and are not allowed to create an application. Please contact the administrator of the directory.</value>
+  </data>
+  <data name="CreateServicePrincipalNotAllowedGuestUser" xml:space="preserve">
+    <value>You are a guest user in the directory and are not allowed to create a service principal. Please contact the administrator of the directory.</value>
+  </data>
 </root>
