@@ -107,21 +107,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         [Alias("f")]
         public SwitchParameter Force { get; set; }
-
-        /// <summary>
-        /// Gets or sets the subscription id.
-        /// </summary>
-        public Guid SubscriptionId { get; set; }
-
+        
         /// <summary>
         /// Initializes the default subscription id if needed.
         /// </summary>
         public ResourceManipulationCmdletBase()
         {
-            if (string.IsNullOrEmpty(this.ResourceId))
-            {
-                this.SubscriptionId = DefaultContext.Subscription.Id;
-            }
         }
 
         protected override void OnProcessRecord()
@@ -149,7 +140,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private string GetResourceIdWithoutParentResource()
         {
             return ResourceIdUtility.GetResourceId(
-                subscriptionId: this.SubscriptionId,
+                subscriptionId: DefaultContext.Subscription.Id,
                 resourceGroupName: this.ResourceGroupName,
                 resourceType: this.ResourceType,
                 resourceName: this.ResourceName,

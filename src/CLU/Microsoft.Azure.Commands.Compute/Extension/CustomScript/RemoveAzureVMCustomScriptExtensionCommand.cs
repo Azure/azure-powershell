@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
-                if (this.Force.IsPresent || this.ShouldContinue(Microsoft.Azure.Commands.Compute.Properties.Resources.ResourceManager.GetString("VirtualMachineExtensionRemovalConfirmation"), Microsoft.Azure.Commands.Compute.Properties.Resources.ResourceManager.GetString("VirtualMachineExtensionRemovalCaption")))
+                if (this.Force.IsPresent || this.ShouldContinue(Microsoft.Azure.Commands.Compute.Properties.Resources.VirtualMachineExtensionRemovalConfirmation, Microsoft.Azure.Commands.Compute.Properties.Resources.VirtualMachineExtensionRemovalCaption))
                 {
                     this.VirtualMachineExtensionClient.Delete(this.ResourceGroupName, this.VMName, this.Name);
                 }

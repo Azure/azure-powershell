@@ -300,7 +300,9 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
             Mutex singleInstanceMutex = null;
             try
             {
-                singleInstanceMutex = new Mutex(false, @"Global\" + mutexName);
+                // TODO: CLU
+                singleInstanceMutex = new Mutex(false);
+                //singleInstanceMutex = new Mutex(false, @"Global\" + mutexName);
                 // TODO: CLU
                 if (!singleInstanceMutex.WaitOne(TimeSpan.FromSeconds(5)))
                 //if (!singleInstanceMutex.WaitOne(TimeSpan.FromSeconds(5), false))

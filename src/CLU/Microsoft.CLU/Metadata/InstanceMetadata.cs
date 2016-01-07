@@ -51,7 +51,7 @@ namespace Microsoft.CLU.Metadata
             }
         }
 
-        Dictionary<string, ParameterMetadata> _dynamicParameters;
+        Dictionary<string, ParameterMetadata> _dynamicParameters = new Dictionary<string, ParameterMetadata>();
         /// <summary>
         /// Get dynamic parameter metadata dictionary. The key is name of the dynamic
         /// parameter and value is the dynamic parameter metadata.

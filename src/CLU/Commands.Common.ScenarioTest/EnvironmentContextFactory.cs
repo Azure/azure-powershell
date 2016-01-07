@@ -19,28 +19,17 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
 {
     public class EnvironmentContextFactory
     {
-        ICredentialsProvider _credentials;
-
-
-        public EnvironmentContextFactory(ICredentialsProvider credentials)
-        {
-            _credentials = credentials;
-        }
-
-        public TestContext GetTestContext(string scriptDirectoryName)
+        public static TestContext GetTestContext(string scriptDirectoryName)
         {
             var context = new TestContext();
             context.ExecutionDirectory = GetBaseDirectory();
             context.TestScriptDirectory =GetExamplesDirectory(context.ExecutionDirectory, scriptDirectoryName);
             context.TestExecutableName = "bash.exe";
             context.TestScriptSuffix = ".sh";
-            var helpers = new List<IScriptEnvironmentHelper>();
-            helpers.Add(_credentials.EnvironmentProvider);
-            context.EnvironmentHelpers = helpers;
             return context;
         }
 
-        private string GetExamplesDirectory(string executionDirectory, string scriptDirectoryName)
+        private static string GetExamplesDirectory(string executionDirectory, string scriptDirectoryName)
         {
             string examplesDirectory;
             if (!Utilities.TryGetEnvironmentVariable(EnvironmentConstants.ExampleDirectory, out examplesDirectory))
@@ -51,7 +40,7 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
 
             return Path.Combine(examplesDirectory, scriptDirectoryName);
         }
-        private string GetBaseDirectory()
+        private static string GetBaseDirectory()
         {
             string baseDirectory;
             if (!Utilities.TryGetEnvironmentVariable(EnvironmentConstants.TestRunDirectory, out baseDirectory))
@@ -62,6 +51,5 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
             Utilities.EnsureDirectoryExists(baseDirectory);
             return baseDirectory;
         }
-
     }
 }

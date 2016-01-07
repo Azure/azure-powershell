@@ -72,8 +72,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         [Alias("sku")]
         public Hashtable SkuObject { get; set; }  
-
-
+        
         /// <summary>
         /// Gets or sets the tags.
         /// </summary>

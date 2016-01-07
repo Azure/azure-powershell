@@ -3,7 +3,7 @@ set -e
 printf "\n=== Managing Web App Slot in Azure ===\n"
 
 pingwebapp() {
-	# a helper function to ping a webapp
+    # a helper function to ping a webapp
 }
 
 #setup
@@ -66,7 +66,7 @@ printf "\n10. Get web app slot %s publishing profile via pipline obj" "$slotname
 printf "\n11. Get web app slot metrics %s " "$slotname1"
 for i in {1..10}
 do
-	pingwebapp $slot1
+    pingwebapp $slot1
 done
 
 endTime=`date +"%A, %B %d, %Y %X"`
@@ -79,7 +79,7 @@ metrics=`azure webapp slot metrics get -g "$groupName" -n "$appName" --slot "$sl
 printf "\nValidating web app slot metrics %s " "$slotname1" 
 for i in $metricsNames
 do
-	[ $(echo $metrics ) == "$i" ]
+    [ $(echo $metrics ) == "$i" ]
 done
 
 # !Not able to test pipeline for now
