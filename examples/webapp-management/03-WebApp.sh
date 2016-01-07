@@ -1,21 +1,6 @@
 #!/bin/bash
 printf "\n=== Managing Web Apps in Azure ===\n"
 
-#setup
-login() {
-    echo "Executing Login..."
-    export CmdletSessionID=1010
-    azure account add --username $azureuser --password $azurepassword
-}
-export -f login
-randomName() {
-    echo "$1$RANDOM"
-} 
-export -f randomName 
-login
-export groupName=`randomName testrg`
-export location="westus"
-
 printf "\nSetup: Creating a new resource group: %s at location: %s.\n" "$groupName" "$location"
 azure group create --name "$groupName" --location "$location"
 
@@ -180,7 +165,7 @@ azure webapp profile reset -g "$groupName" -n "$appName3"
 filename2=`randomName pf`
 filename2+=".xml"
 printf "\n27: Get the publish profile for webapp: %s after resetting and save it to %s file\n." "$appName3" "$filename2"
-pubprof2=`azure webapp profile get -g "$groupName" -n "$appName3" --outputfile "filename2"`
+pubprof2=`azure webapp profile get -g "$groupName" -n "$appName3" --outputfile "$filename2"`
 [ -e "$filename2" ]
 [ -s "$filename2" ]
 
