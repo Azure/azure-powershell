@@ -53,8 +53,8 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
 
             try
             {
-                DataSourceTestConnectionResponse response = StreamAnalyticsClient.TestPSOutput(ResourceGroupName, JobName, Name);
-                if (response.StatusCode == HttpStatusCode.OK && response.DataSourceTestStatus == DataSourceTestStatus.TestSucceeded)
+                ResourceTestConnectionResponse response = StreamAnalyticsClient.TestPSOutput(ResourceGroupName, JobName, Name);
+                if (response.StatusCode == HttpStatusCode.OK && response.ResourceTestStatus == ResourceTestStatus.TestSucceeded)
                 {
                     WriteObject(true);
                 }

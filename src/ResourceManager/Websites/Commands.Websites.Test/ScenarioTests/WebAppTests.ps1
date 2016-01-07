@@ -410,6 +410,46 @@ function Test-CreateNewWebApp
 
 <#
 .SYNOPSIS
+Tests creating a new website on an ase
+#>
+function Test-CreateNewWebAppOnAse
+{
+	# Setup
+	$rgname = "appdemorg"
+	$wname = Get-WebsiteName
+	$location = "West US"
+	$whpName = "travel_production_plan"
+	$aseName = "asedemo"
+	$apiversion = "2015-08-01"
+	$resourceType = "Microsoft.Web/sites"
+	try
+	{
+		#Setup
+		$serverFarm = Get-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName
+
+		# Create new web app
+		$actual = New-AzureRmWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -AseName $aseName
+		
+		# Assert
+		Assert-AreEqual $wname $actual.Name
+		Assert-AreEqual $serverFarm.Id $actual.ServerFarmId
+
+		# Get new web app
+		$result = Get-AzureRmWebApp -ResourceGroupName $rgname -Name $wname
+		
+		# Assert
+		Assert-AreEqual $wname $result.Name
+		Assert-AreEqual $serverFarm.Id $result.ServerFarmId
+	}
+    finally
+	{
+		# Cleanup
+		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $wname -Force
+    }
+}
+
+<#
+.SYNOPSIS
 Tests retrieving websites
 #>
 function Test-SetWebApp
