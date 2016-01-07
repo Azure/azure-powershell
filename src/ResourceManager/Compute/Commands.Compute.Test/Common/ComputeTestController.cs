@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             GalleryClient = GetGalleryClient();
             //var eventsClient = GetEventsClient();
             NetworkManagementClient = this.GetNetworkManagementClientClient(context);
-            ComputeManagementClient = GetComputeManagementClient();
+            ComputeManagementClient = GetComputeManagementClient(context);
             AuthorizationManagementClient = GetAuthorizationManagementClient();
             GraphClient = GetGraphClient();
 
@@ -242,10 +242,10 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                 : TestBase.GetServiceClient<NetworkManagementClient>(new RDFETestEnvironmentFactory());
         }
 
-        private ComputeManagementClient GetComputeManagementClient()
+        private ComputeManagementClient GetComputeManagementClient(RestTestFramework.MockContext context)
         {
             return testViaCsm
-                ? TestBase.GetServiceClient<ComputeManagementClient>(this.csmTestFactory)
+                ? context.GetServiceClient<ComputeManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment())
                 : TestBase.GetServiceClient<ComputeManagementClient>(new RDFETestEnvironmentFactory());
         }
     }

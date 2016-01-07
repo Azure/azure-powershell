@@ -273,4 +273,7 @@
   <data name="AuditingIsTurnedOff" xml:space="preserve">
     <value>In order to enable Threat Detection, please enable database auditing.</value>
   </data>
+  <data name="InvalidExcludedDetectionTypeSet" xml:space="preserve">
+    <value>Cannot use the '{0}' option with other excluded detection types.</value>
+  </data>
 </root>
