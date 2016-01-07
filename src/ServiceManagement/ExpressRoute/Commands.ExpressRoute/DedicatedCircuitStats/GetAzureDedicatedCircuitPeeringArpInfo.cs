@@ -67,11 +67,11 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Device Path: Primary or Secondary")]
-        public DevicePath BgpPeeringDevicePath { get; set; }
+        public DevicePath Path { get; set; }
 
         public override void ExecuteCmdlet()
         {
-           var arpInfo = ExpressRouteClient.GetAzureDedicatedCircuitPeeringArpInfo(ServiceKey, AccessType, BgpPeeringDevicePath);
+            var arpInfo = ExpressRouteClient.GetAzureDedicatedCircuitPeeringArpInfo(ServiceKey, AccessType, Path);
             // parse output to a more user-friendly output
            StringBuilder sb = new StringBuilder();
            sb.AppendLine("");
