@@ -12,20 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Collections.Generic;
-using Xunit;
+using System;
 
-namespace Microsoft.Azure.Commands.Websites.Test
+namespace Microsoft.Azure.Commands.StreamAnalytics.Models
 {
-    public static class WebsitesTestHelpers
+    public class CreatePSFunctionParameter : JobParametersBase
     {
-        public static void CreateAccountResource(string accountName, string resourceGroupName, Hashtable[] tags = null)
-        {
-            string tenantUrlEnding = "batch-test.windows-int.net";
-            string endpoint = string.Format("{0}.{1}", accountName, tenantUrlEnding);
-            string subscription = "00000000-0000-0000-0000-000000000000";
-            string resourceGroup = resourceGroupName;
-        }
+        public string FunctionName { get; set; }
+
+        public string RawJsonContent { get; set; }
+
+        public bool Force { get; set; }
+
+        public Action<bool, string, string, string, Action> ConfirmAction { get; set; }
     }
 }

@@ -16,6 +16,7 @@ using AutoMapper;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Rest.Azure;
 using FROM = Microsoft.Azure.Management.Compute.Models;
 using TO = Microsoft.Azure.Commands.Compute.Models;
 
@@ -68,21 +69,66 @@ namespace Microsoft.Azure.Commands.Compute
 
         protected override void Configure()
         {
-            Mapper.CreateMap<Microsoft.Azure.AzureOperationResponse, TO.PSOperation>();
-            Mapper.CreateMap<FROM.ComputeLongRunningOperationResponse, TO.PSComputeLongRunningOperation>();
-            Mapper.CreateMap<FROM.DeleteOperationResponse, TO.PSComputeLongRunningOperation>();
+            // => PSAzureOperationResponse
+            Mapper.CreateMap<Rest.Azure.AzureOperationResponse, TO.PSAzureOperationResponse>()
+                .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode))
+                .ForMember(c => c.IsSuccessStatusCode, o => o.MapFrom(r => r.Response.IsSuccessStatusCode))
+                .ForMember(c => c.ReasonPhrase, o => o.MapFrom(r => r.Response.ReasonPhrase));
 
-            Mapper.CreateMap<FROM.AvailabilitySet, TO.PSAvailabilitySet>();
-            Mapper.CreateMap<Microsoft.Azure.AzureOperationResponse, TO.PSAvailabilitySet>();
+            Mapper.CreateMap<AzureOperationResponse<FROM.VirtualMachine>, TO.PSAzureOperationResponse>()
+                .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode))
+                .ForMember(c => c.IsSuccessStatusCode, o => o.MapFrom(r => r.Response.IsSuccessStatusCode))
+                .ForMember(c => c.ReasonPhrase, o => o.MapFrom(r => r.Response.ReasonPhrase));
 
-            Mapper.CreateMap<FROM.VirtualMachine, TO.PSVirtualMachine>();
-            Mapper.CreateMap<Microsoft.Azure.AzureOperationResponse, TO.PSVirtualMachine>();
+            Mapper.CreateMap<AzureOperationResponse<FROM.VirtualMachineCaptureResult>, TO.PSAzureOperationResponse>()
+                .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode))
+                .ForMember(c => c.IsSuccessStatusCode, o => o.MapFrom(r => r.Response.IsSuccessStatusCode))
+                .ForMember(c => c.ReasonPhrase, o => o.MapFrom(r => r.Response.ReasonPhrase));
 
+            Mapper.CreateMap<AzureOperationResponse<FROM.VirtualMachineExtension>, TO.PSAzureOperationResponse>()
+                .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode))
+                .ForMember(c => c.IsSuccessStatusCode, o => o.MapFrom(r => r.Response.IsSuccessStatusCode))
+                .ForMember(c => c.ReasonPhrase, o => o.MapFrom(r => r.Response.ReasonPhrase));
+
+            // AvailabilitySet => PSAvailabilitySet
+            Mapper.CreateMap<FROM.AvailabilitySet, TO.PSAvailabilitySet>()
+                .ForMember(c => c.VirtualMachinesReferences, o => o.MapFrom(r => r.VirtualMachines));
+
+            Mapper.CreateMap<AzureOperationResponse<FROM.AvailabilitySet>, TO.PSAvailabilitySet>()
+                .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
+
+            Mapper.CreateMap<AzureOperationResponse<IPage<FROM.AvailabilitySet>>, TO.PSAvailabilitySet>()
+                .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
+
+            // VirtualMachine => PSVirtualMachine
+            Mapper.CreateMap<FROM.VirtualMachine, TO.PSVirtualMachine>()
+                .ForMember(c => c.AvailabilitySetReference, o => o.MapFrom(r => r.AvailabilitySet))
+                .ForMember(c => c.Extensions, o => o.MapFrom(r => r.Resources))
+                .ForMember(c => c.OSProfile, o => o.MapFrom(r => r.OsProfile));
+
+            Mapper.CreateMap<AzureOperationResponse<FROM.VirtualMachine>, TO.PSVirtualMachine>()
+                .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
+
+            Mapper.CreateMap<AzureOperationResponse<IPage<FROM.VirtualMachine>>, TO.PSVirtualMachine>()
+                .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
+
+            // VirtualMachineSize => PSVirtualMachineSize
             Mapper.CreateMap<FROM.VirtualMachineSize, TO.PSVirtualMachineSize>();
-            Mapper.CreateMap<Microsoft.Azure.AzureOperationResponse, TO.PSVirtualMachineSize>();
 
+            Mapper.CreateMap<AzureOperationResponse<FROM.VirtualMachineSize>, TO.PSVirtualMachineSize>()
+                .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
+
+            Mapper.CreateMap<AzureOperationResponse<IPage<FROM.VirtualMachineSize>>, TO.PSVirtualMachineSize>()
+                .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
+
+            // Usage => PSUsage
             Mapper.CreateMap<FROM.Usage, TO.PSUsage>();
-            Mapper.CreateMap<Microsoft.Azure.AzureOperationResponse, TO.PSUsage>();
+
+            Mapper.CreateMap<AzureOperationResponse<FROM.Usage>, TO.PSUsage>()
+                .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
+
+            Mapper.CreateMap<AzureOperationResponse<IPage<FROM.Usage>>, TO.PSUsage>()
+                .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
         }
     }
 }

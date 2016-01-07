@@ -310,3 +310,48 @@ function Test-GetAppServicePlanMetrics
 		Remove-AzureRmResourceGroup -Name $rgname -Force
     }
 }
+
+<#
+.SYNOPSIS
+Tests creating a new Web Hosting Plan.
+#>
+function Test-CreateNewAppServicePlanInAse
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$whpName = Get-WebHostPlanName
+	$location = "West US"
+	$capacity = 1
+	$skuName = "S2"
+	$aseName = "asedemo"
+	$aseResourceGroupName = "appdemorg"
+
+	try
+	{
+		#Setup
+		New-AzureRmResourceGroup -Name $rgname -Location $location
+
+		# Test
+		$createResult = New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier "Standard" -WorkerSize Medium -NumberOfWorkers $capacity -AseName $aseName -AseResourceGroupName $aseResourceGroupName
+		
+		# Assert
+		Assert-AreEqual $whpName $createResult.Name
+		Assert-AreEqual "Standard" $createResult.Sku.Tier
+		Assert-AreEqual $skuName $createResult.Sku.Name
+		Assert-AreEqual $capacity $createResult.Sku.Capacity
+
+		# Assert
+
+		$getResult = Get-AzureRmAppServicePlan -ResourceGroupName $rgname -Name $whpName
+		Assert-AreEqual $whpName $getResult.Name
+		Assert-AreEqual "Standard" $getResult.Sku.Tier
+		Assert-AreEqual $skuName $getResult.Sku.Name
+		Assert-AreEqual $capacity $getResult.Sku.Capacity
+	}
+    finally
+    {
+		# Cleanup
+		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
+		Remove-AzureRmResourceGroup -Name $rgname -Force
+    }
+}

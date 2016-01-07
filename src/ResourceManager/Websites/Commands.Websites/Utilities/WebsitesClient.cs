@@ -44,10 +44,23 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             private set;
         }
 
-        public Site CreateWebApp(string resourceGroupName, string webAppName, string slotName, string location, string serverFarmId, CloningInfo cloningInfo)
+        public Site CreateWebApp(string resourceGroupName, string webAppName, string slotName, string location, string serverFarmId, CloningInfo cloningInfo, string aseName, string aseResourceGroupName)
         {
             Site createdWebSite = null;
             string qualifiedSiteName;
+            HostingEnvironmentProfile profile = null;
+            if (!string.IsNullOrEmpty(aseName))
+            {
+                var rg = string.IsNullOrEmpty(aseResourceGroupName) ? resourceGroupName : aseResourceGroupName;
+                var aseResourceId = CmdletHelpers.GetApplicationServiceEnvironmentResourceId(WrappedWebsitesClient.SubscriptionId, rg, aseName);
+                profile = new HostingEnvironmentProfile
+                {
+                    Id = aseResourceId,
+                    Type = CmdletHelpers.ApplicationServiceEnvironmentResourcesName,
+                    Name = aseName
+                };
+            }
+
             if (CmdletHelpers.ShouldUseDeploymentSlot(webAppName, slotName, out qualifiedSiteName))
             {
                 createdWebSite = WrappedWebsitesClient.Sites.CreateOrUpdateSiteSlot(
@@ -57,7 +70,8 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                             SiteName = qualifiedSiteName,
                             Location = location,
                             ServerFarmId = serverFarmId,
-                            CloningInfo =  cloningInfo
+                            CloningInfo =  cloningInfo,
+                            HostingEnvironmentProfile = profile
                         });
             }
             else
@@ -69,9 +83,12 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                             SiteName = qualifiedSiteName,
                             Location = location,
                             ServerFarmId = serverFarmId,
-                            CloningInfo = cloningInfo
+                            CloningInfo = cloningInfo,
+                            HostingEnvironmentProfile = profile
                         });
             }
+
+            
 
             GetWebAppConfiguration(resourceGroupName, webAppName, slotName, createdWebSite);
             return createdWebSite;
@@ -266,7 +283,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             return usageMetrics.Value;
         }
 
-        public ServerFarmWithRichSku CreateAppServicePlan(string resourceGroupName, string appServicePlanName, string location, string adminSiteName, SkuDescription sku)
+        public ServerFarmWithRichSku CreateAppServicePlan(string resourceGroupName, string appServicePlanName, string location, string adminSiteName, SkuDescription sku, string aseName = null, string aseResourceGroupName = null)
         {
             var serverFarm = new ServerFarmWithRichSku
             {
@@ -275,6 +292,17 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 Sku = sku,
                 AdminSiteName = adminSiteName
             };
+
+            if(!string.IsNullOrEmpty(aseName)
+                && !string.IsNullOrEmpty(aseResourceGroupName))
+            {
+                serverFarm.HostingEnvironmentProfile = new HostingEnvironmentProfile
+                {
+                    Id = CmdletHelpers.GetApplicationServiceEnvironmentResourceId(WrappedWebsitesClient.SubscriptionId, aseResourceGroupName, aseName),
+                    Type = CmdletHelpers.ApplicationServiceEnvironmentResourcesName,
+                    Name = aseName
+                };
+            }
             
             return WrappedWebsitesClient.ServerFarms.CreateOrUpdateServerFarm(resourceGroupName, appServicePlanName, serverFarm);
         }
