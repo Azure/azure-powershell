@@ -12,26 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Globalization;
 using System.Management.Automation;
 using System.Net;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.StreamAnalytics.Properties;
-using Microsoft.Azure.Management.StreamAnalytics.Models;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics
 {
-    [Cmdlet(VerbsDiagnostic.Test, Constants.StreamAnalyticsOutput)]
-    public class TestAzureStreamAnalyticsOutputCommand : StreamAnalyticsResourceProviderBaseCmdlet
+    [Cmdlet(VerbsCommon.Remove, Constants.StreamAnalyticsFunction)]
+    public class RemoveAzureStreamAnalyticsFunctionCommand : StreamAnalyticsResourceProviderBaseCmdlet
     {
         [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The azure stream analytics job name.")]
         [ValidateNotNullOrEmpty]
         public string JobName { get; set; }
 
-        [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The stream analytics output name.")]
+        [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The stream analytics function name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
 
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
@@ -51,39 +52,34 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
                 throw new PSArgumentNullException("Name");
             }
 
-            try
-            {
-                ResourceTestConnectionResponse response = StreamAnalyticsClient.TestPSOutput(ResourceGroupName, JobName, Name);
-                if (response.StatusCode == HttpStatusCode.OK && response.ResourceTestStatus == ResourceTestStatus.TestSucceeded)
-                {
-                    WriteObject(true);
-                }
-                else if (response.StatusCode == HttpStatusCode.NoContent)
-                {
-                    WriteWarning(string.Format(CultureInfo.InvariantCulture, Resources.OutputNotFound, Name, JobName, ResourceGroupName));
-                }
-                else
-                {
-                    string errorId = null;
-                    string errorMessage = null;
-                    string innerErrorMessage = null;
-                    if (response.Error != null)
-                    {
-                        errorId = response.Error.Code;
-                        errorMessage = response.Error.Message;
-                        if (response.Error.Details != null)
-                        {
-                            innerErrorMessage = response.Error.Details.Message;
-                        }
-                    }
+            this.ConfirmAction(
+                this.Force.IsPresent,
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.FunctionRemovalConfirmationMessage,
+                    this.Name,
+                    this.JobName,
+                    this.ResourceGroupName),
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.FunctionRemoving,
+                    this.Name,
+                    this.JobName,
+                    this.ResourceGroupName),
+                this.Name,
+                this.ExecuteDelete);
+        }
 
-                    Exception ex = new Exception(errorMessage, new Exception(innerErrorMessage));
-                    WriteError(new ErrorRecord(ex, errorId, ErrorCategory.ConnectionError, null));
-                }
-            }
-            catch
+        private void ExecuteDelete()
+        {
+            HttpStatusCode statusCode = StreamAnalyticsClient.RemovePSFunction(ResourceGroupName, JobName, Name);
+            if (statusCode == HttpStatusCode.NoContent)
             {
-                WriteObject(false);
+                WriteWarning(string.Format(CultureInfo.InvariantCulture, Resources.FunctionNotFound, Name, JobName, ResourceGroupName));
+            }
+            else
+            {
+                WriteObject(true);
             }
         }
     }
