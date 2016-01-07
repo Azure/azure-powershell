@@ -17,33 +17,33 @@ using Xunit;
 namespace Microsoft.Azure.Commands.Common.ScenarioTest
 {
     [Collection("SampleCollection")]
-    public class ComputeTests
+    public class WebsitesTests
     {
         ScenarioTestFixture _collectionState;
-        public ComputeTests(ScenarioTestFixture fixture)
+        public WebsitesTests(ScenarioTestFixture fixture)
         {
             _collectionState = fixture;
         }
 
-        [Fact (Skip = "TODO: Re-enable once fixed in Azure Storage CoreCLR package.")]
-        public void VirtualHardDisksTest()
+        [Fact (Skip = "TODO: Work in progress")]
+        public void AppServicePlanTest()
         {
-            var helper = _collectionState.GetRunner("virtual-hard-disk");
-            helper.RunScript("01-VirtualHardDisks");
+            var helper = _collectionState.GetRunner("webapp-management");
+            helper.RunScript("01-AppServicePlan");
+        }
+
+        [Fact(Skip = "TODO: Work in progress")]
+        public void WebAppSlotTest()
+        {
+            var helper = _collectionState.GetRunner("webapp-management");
+            helper.RunScript("02-WebAppSlot");
         }
 
         [Fact]
-        public void VirtualMachineSizeTest()
+        public void WebAppTest()
         {
-            var helper = _collectionState.GetRunner("compute-management");
-            helper.RunScript("01-VirtualMachineSizes");
-        }
-
-        [Fact]
-        public void VirtualMachineCreationTest()
-        {
-            var helper = _collectionState.GetRunner("compute-management");
-            helper.RunScript("02-VirtualMachineCreation");
+            var helper = _collectionState.GetRunner("webapp-management");
+            helper.RunScript("03-WebApp");
         }
     }
 }
