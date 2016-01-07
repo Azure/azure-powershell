@@ -483,19 +483,24 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     }
                     else
                     {
-                        var subscriptions = subscriptionClient.Subscriptions.List().Subscriptions;
-                        if (subscriptions != null && subscriptions.Any())
+                        var subscriptions = (subscriptionClient.Subscriptions.List().Subscriptions ?? 
+                                                new List<Microsoft.Azure.Subscriptions.Models.Subscription>())
+                                            .Where(s => s.State.Equals("enabled", StringComparison.OrdinalIgnoreCase) || 
+                                                        s.State.Equals("warned", StringComparison.OrdinalIgnoreCase));
+
+                        if (subscriptions.Any())
                         {
                             if (subscriptionName != null)
                             {
-                                subscriptionFromServer = subscriptions.FirstOrDefault(s => s.DisplayName.Equals(subscriptionName, StringComparison.OrdinalIgnoreCase));
+                                subscriptionFromServer = subscriptions.FirstOrDefault(
+                                    s => s.DisplayName.Equals(subscriptionName, StringComparison.OrdinalIgnoreCase));
                             }
                             else
                             {
-                                if (subscriptions.Count > 1)
+                                if (subscriptions.Count() > 1)
                                 {
                                     WriteWarningMessage(string.Format(
-                                        "TenantId '{0}' contains more than one subscription. First one will be selected for further use. " +
+                                        "TenantId '{0}' contains more than one active subscription. First one will be selected for further use. " +
                                         "To select another subscription, use Set-AzureRmContext.",
                                         tenantId));
                                 }
