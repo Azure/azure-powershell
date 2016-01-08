@@ -197,58 +197,61 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
 
         private List<ExtensionConfigurationInput> GetConfigurations()
         {
-            var initConfigs = ParameterSetName == SetExtensionUsingDiagnosticsConfigurationParameterSetName
-                        ? DiagnosticsConfiguration
-                        : new ExtensionConfigurationInput[] {
-                            new ExtensionConfigurationInput
-                            {
-                                Id = ExtensionId,
-                                Version = Version,
-                                ProviderNameSpace = ProviderNamespace,
-                                Type = ExtensionName,
-                                CertificateThumbprint = CertificateThumbprint,
-                                ThumbprintAlgorithm = ThumbprintAlgorithm,
-                                X509Certificate = X509Certificate,
-                                PublicConfiguration = PublicConfiguration,
-                                PrivateConfiguration = PrivateConfiguration,
-                                Roles = new ExtensionRoleList(Role != null && Role.Any()
-                                                                ? Role.Select(r => new ExtensionRole(r))
-                                                                : Enumerable.Repeat(new ExtensionRole(), 1))
-                            }
-                        };
-
-            // Remove duplicate configuration for the same role.
-            // This not only improve the efficieny, one more important reason is current InstallExtension() implementation assumes
-            // we call change deployment directly after installation. Calling InstallExtension() multiple times for the same role
-            // may result in removing the extension which is still working.
             var result = new List<ExtensionConfigurationInput>();
-            for (var i = 0; i < initConfigs.Length; i++)
+
+            if (ParameterSetName == SetExtensionUsingDiagnosticsConfigurationParameterSetName)
             {
-                var currentConfig = initConfigs[i];
-                for (var j = i + 1; j < initConfigs.Length && currentConfig.Roles.Any(); j++)
+                // If user specified multiple configurations for the same role, we only take the later configuration for that role.
+                // This not only improve the efficieny, one more important reason is current InstallExtension() implementation assumes
+                // we call change deployment directly after installation. Calling InstallExtension() multiple times for the same role
+                // may result in removing the extension which is still working.
+                for (var i = 0; i < DiagnosticsConfiguration.Length; i++)
                 {
-                    var followingConfig = initConfigs[j];
-
-                    // If the following configuration is applied to all roles, we simply ingore the whole current config.
-                    if (followingConfig.Roles.Any(r => r.Default))
+                    var currentConfig = DiagnosticsConfiguration[i];
+                    for (var j = i + 1; j < DiagnosticsConfiguration.Length && currentConfig.Roles.Any(); j++)
                     {
-                        currentConfig.Roles.Clear();
-                    }
+                        var followingConfig = DiagnosticsConfiguration[j];
 
-                    // If the role appears in following config, we will take the later one and remove the role from current config.
-                    foreach(var role in currentConfig.Roles.ToArray())
-                    {
-                        if (followingConfig.Roles.Any(r => r.RoleName == role.RoleName))
+                        // If the following configuration is applied to all roles, we simply ingore the whole current config.
+                        if (followingConfig.Roles.Any(r => r.Default))
                         {
-                            currentConfig.Roles.Remove(role);
+                            currentConfig.Roles.Clear();
+                        }
+
+                        // If the role appears in following config, we will take the later one and remove the role from current config.
+                        foreach (var role in currentConfig.Roles.ToArray())
+                        {
+                            if (followingConfig.Roles.Any(r => r.RoleName == role.RoleName))
+                            {
+                                currentConfig.Roles.Remove(role);
+                            }
                         }
                     }
-                }
 
-                if (currentConfig.Roles.Any())
-                {
-                    result.Add(currentConfig);
+                    if (currentConfig.Roles.Any())
+                    {
+                        result.Add(currentConfig);
+                    }
                 }
+            }
+            else
+            {
+                // If user specified a config file path, then there is only one configuration.
+                result.Add(new ExtensionConfigurationInput
+                {
+                    Id = ExtensionId,
+                    Version = Version,
+                    ProviderNameSpace = ProviderNamespace,
+                    Type = ExtensionName,
+                    CertificateThumbprint = CertificateThumbprint,
+                    ThumbprintAlgorithm = ThumbprintAlgorithm,
+                    X509Certificate = X509Certificate,
+                    PublicConfiguration = PublicConfiguration,
+                    PrivateConfiguration = PrivateConfiguration,
+                    Roles = new ExtensionRoleList(Role != null && Role.Any()
+                                                ? Role.Select(r => new ExtensionRole(r))
+                                                : Enumerable.Repeat(new ExtensionRole(), 1))
+                });
             }
 
             return result;

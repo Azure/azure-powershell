@@ -70,24 +70,19 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
         {
             ValidateParameters();
 
+            bool removeAll = Role == null || !Role.Any();
             ExtensionConfigurationBuilder configBuilder = ExtensionManager.GetBuilder(Deployment != null ? Deployment.ExtensionConfiguration : null);
-            if (UninstallConfiguration && configBuilder.ExistAny(ProviderNamespace, ExtensionName))
+            if ((UninstallConfiguration || removeAll) && configBuilder.ExistAny(ProviderNamespace, ExtensionName))
             {
-                configBuilder.RemoveAny(ProviderNamespace, ExtensionName);
-                WriteWarning(string.Format(Resources.ServiceExtensionRemovingFromAllRoles, ExtensionName, ServiceName));
-                ChangeDeployment(configBuilder.ToConfiguration());
-            }
-            else if ((Role == null || !Role.Any()) && configBuilder.ExistAny(ProviderNamespace, ExtensionName))
-            {
-                // If Role is not specified, remove extension defined at all places (allRoles, namedRoles)
+                // Remove extension for all roles
                 configBuilder.RemoveAny(ProviderNamespace, ExtensionName);
                 WriteWarning(string.Format(Resources.ServiceExtensionRemovingFromAllRoles, ExtensionName, ServiceName));
 
                 ChangeDeployment(configBuilder.ToConfiguration());
             }
-            else if (Role != null && Role.Any() && configBuilder.Exist(Role, ProviderNamespace, ExtensionName))
+            else if (!removeAll && configBuilder.Exist(Role, ProviderNamespace, ExtensionName))
             {
-                // If Role is specified and extension exist, remove the extension defined in the namedRoles
+                // Remove extension for the specified roles
                 bool defaultExists = configBuilder.ExistDefault(ProviderNamespace, ExtensionName);
                 foreach (var r in Role)
                 {
