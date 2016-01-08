@@ -14,40 +14,44 @@ Param(
 function IncrementVersion([string]$FilePath)
 {
     Write-Output "Updating File: $FilePath"   
-    $content = Get-Content $FilePath
-    $matches = ([regex]::matches($content, "ModuleVersion = '([\d\.]+)'"))
+    (Get-Content $FilePath) | 
+    ForEach-Object {
+        $matches = ([regex]::matches($_, "ModuleVersion = '([\d\.]+)'"))
 
-    $packageVersion = $matches.Groups[1].Value
-    $version = $packageVersion.Split(".")
-    
-    $cMajor = $Major
-    $cMinor = $Minor
-    $cPatch = $Patch
-       
-    if ($cMajor)
-    {
-        $version[0] = 1 + $version[0]
-        $version[1] = "0"
-        $version[2] = "0"
-    }
-    
-    if ($cMinor)
-    {
-        $version[1] = 1 + $version[1]
-        $version[2] = "0"
-    }
-    
-    if ($cPatch)
-    {
-        $version[2] = 1 + $version[2]
-    }
-    
-    $version = [String]::Join(".", $version)
-    
-    Write-Output "Updating version of $FilePath from $packageVersion to $version"
-    $content = $content.Replace("ModuleVersion = '$packageVersion'", "ModuleVersion = '$version'")
-    
-    Set-Content -Path $FilePath -Value $content -Encoding UTF8
+        if($matches.Count -eq 1)
+        {
+            $packageVersion = $matches.Groups[1].Value
+            $version = $packageVersion.Split(".")
+            
+            $cMajor = $Major
+            $cMinor = $Minor
+            $cPatch = $Patch
+               
+            if ($cMajor)
+            {
+                $version[0] = 1 + $version[0]
+                $version[1] = "0"
+                $version[2] = "0"
+            }
+            
+            if ($cMinor)
+            {
+                $version[1] = 1 + $version[1]
+                $version[2] = "0"
+            }
+            
+            if ($cPatch)
+            {
+                $version[2] = 1 + $version[2]
+            }
+            
+            $version = [String]::Join(".", $version)
+            $_.Replace("ModuleVersion = '$packageVersion'", "ModuleVersion = '$version'")
+        } else {
+            $_
+        }
+
+    } | Set-Content -Path $FilePath -Encoding UTF8
 }
 
 if (!$Folder) 
