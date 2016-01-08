@@ -21,6 +21,7 @@ az role assignment create --ObjectId "$userId" --RoleDefinitionId "$roleDefiniti
 
 printf "\n3. Delete last created Role Assignment.\n"
 assignments=$(az role assignment get)
-assignmentId=$(echo $assignments | cat | jq '.[-1].ObjectId' -s --raw-output)
+assignmentId=$(echo $assignments | cat | jq '.[-1:][0].ObjectId' -s --raw-output)
+echo "Deleting assignment: $assignmentId"
 az role assignment remove --ObjectId "$assignmentId" --Scope "$scope" --RoleDefinitionId "$roleDefinitionId" -f
 export MSYS_NO_PATHCONV=
