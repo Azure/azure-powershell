@@ -23,11 +23,6 @@ namespace Microsoft.CLU
         private static string PackagesRootPathEnvVaribleName = "PackagesRootPath";
 
         /// <summary>
-        /// Name of the environment variable holding working directory root path.
-        /// </summary>
-        private static string WorkDirsRootPathEnvVaribleName = "WorkDirsRootPath";
-
-        /// <summary>
         /// Set the root paths.
         /// </summary>
         /// <param name="cluRootPath"></param>
@@ -41,7 +36,6 @@ namespace Microsoft.CLU
                 rootPathPrefix = "/";
             }
             SetEnvironmentVariable(PackagesRootPathEnvVaribleName, rootPathPrefix + Path.Combine(cluRootPath, Common.Constants.PackageFolderName));
-            SetEnvironmentVariable(WorkDirsRootPathEnvVaribleName, Path.Combine(cluRootPath, Common.Constants.WorkFolderName));
         }
 
         /// <summary>
