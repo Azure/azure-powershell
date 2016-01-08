@@ -25,7 +25,7 @@ CLUPackages require some additional files to direct generation of indexing, and 
     | ------------- |:-------------:|
     | CommandAssemblies      | File name of cmdlets assembly(ies) |
     | NounPrefix      | ‘AzureRm’  The part of the cmdlet noun to remove in clu commands|
-    | NounFirst       | if true, the verb comes at the end of the command (e.g. azure resource get)|
+    | NounFirst       | if true, the verb comes at the end of the command (e.g. az resource get)|
     
 * \<modulename\>.nuspec.template, which contains nuspec format metadata about the package – the base temaplate is in tools\clu\Microsoft.Azure.Commands.nuspec.template.  Here are the special fields defined in this template:
    * %PackageId% - replace with the module name (Microsoft.Azure.Commands.\<rp-name\>)
@@ -52,31 +52,31 @@ CLUPackages require some additional files to direct generation of indexing, and 
    1. Run `<repo-root>\tools\CLU\BuildAndInstallClu.bat` which build and generate all cmdlet packages and deploy to under `<repo root>\drop\clurun` folder, with 3 flavors `win7-x64`, `osx.10.10-x64` and `ubuntu.14.04-x64`. When you have a clean environment or just pull from upstream, you should clean temporary bits such as `git clean -xdf`, and run this command.
    2. Run `<repo-root>\tools\CLU\BuildCmdlet <package name like Microsoft.Azure.Commands.Profile>` <name like: Microsoft.Azure.Commands.Profile>", this will build and refresh an individual cmdlet package.
 
-After #1 above is finished, you can run `drop\clurun\<platform>\azure.bat help` to explore.
+After #1 above is finished, you can run `drop\clurun\<platform>\az.bat help` to explore.
 
 To debug, set environment variable of `DebugCLU` to "1". Then on running any command, you will be prompted to attach a debugger.
 
-There is also `<repo-root>\tools\CLU\SetupEnv.bat` which is a windows batch wrapping around the `BuildAndInstallClu.bat`, plus set the `DebugCLU` for you, and add the `drop\clurun\win7-x64\azure.bat` to the PATH environment variable.
+There is also `<repo-root>\tools\CLU\SetupEnv.bat` which is a windows batch wrapping around the `BuildAndInstallClu.bat`, plus set the `DebugCLU` for you, and add the `drop\clurun\win7-x64\az.bat` to the PATH environment variable.
 
-To test on osx/linux boxes, do #1, open `<repo-root>\drop\clurun`, copy the flavor folder to your target machine, and run the "azure.sh" inside. Make sure set execution permission using `chmod +x azure.sh clurun`
+To test on osx/linux boxes, do #1, open `<repo-root>\drop\clurun`, copy the flavor folder to your target machine, and run the "az.sh" inside. Make sure set execution permission using `chmod +x az.sh clurun`
 
 (All of those are subject to change, contact yugangw or adxsdkdev for any questions)
 
 ### Quick introductions on cmdlets
-  *  Run commands using the ‘azure’ prefix, cmdlet nouns, and cmdlet verbs, for example, `azure environment get` maps to the cmdlet `Get-AzureRmEnvironment`
-  *  Cmdlet parameters use the double dash (--) so for example, getting a subscription with a particular name would be: `azure subscription get –-SubscriptionName “name of subscription"`
+  *  Run commands using the ‘az’ prefix, cmdlet nouns, and cmdlet verbs, for example, `az environment get` maps to the cmdlet `Get-AzureRmEnvironment`
+  *  Cmdlet parameters use the double dash (--) so for example, getting a subscription with a particular name would be: `az subscription get –-SubscriptionName “name of subscription"`
   * To log in, 3 options
-    * login interactively using device flow, this is the only option for msa account or any org-id with 2fa enforced, example: `azure account add`
-    * login with user and password, this works on org-id w/o 2fa enforced, example: `azure account add --Username user@contoso.org  --Password password1`
-    * login as service principal. Example: `azure account add --ServicePrincipal --TenantId <tenant> --ApplicationId <id> --Secret <secret>`
+    * login interactively using device flow, this is the only option for msa account or any org-id with 2fa enforced, example: `az account add`
+    * login with user and password, this works on org-id w/o 2fa enforced, example: `az account add --Username user@contoso.org  --Password password1`
+    * login as service principal. Example: `az account add --ServicePrincipal --TenantId <tenant> --ApplicationId <id> --Secret <secret>`
   * Piping between cmdlets should work the same way that Powerhell piping works
-    ```azure subscription get --SubscriptionName | azure context set```
+    ```az subscription get --SubscriptionName | az context set```
   * You can capture piped output using redirection to a file - the result will be the json serialization of the output object.
-    ```azure subscription get > subscriptions.json```
+    ```az subscription get > subscriptions.json```
   * You can use file input tu aparameter using '@' notation:
-    ```azure command --param1 @file1.json```
+    ```az command --param1 @file1.json```
     Reads input from file1.json and attempts to deserialize the .net object that is the Parameter type for ```param1```
-    ```azure command --param1 @@file1.json```
+    ```az command --param1 @@file1.json```
     Does the same thing, but treats the input from ```file1.json``` as if it come from the pipeline, so that multiple objects will result in multiple invocations of ```ProcessRecord()``` for the target cmdlet.
   * There are some known issues with the current approach to sessions, which can cause session variables to not be propagated when running cmdlets in a pipeline, to work around this, set the 'CmdletSessionId' environment variable to a numeric value - all cmdlets running from the shell will use that session id, and sessions will work with pipelining 
 
