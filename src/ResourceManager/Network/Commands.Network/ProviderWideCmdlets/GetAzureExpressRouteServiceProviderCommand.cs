@@ -20,6 +20,8 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
+    using System.Linq;
+
     using AutoMapper;
 
     [Cmdlet(VerbsCommon.Get, "AzureRmExpressRouteServiceProvider"), OutputType(typeof(PSExpressRouteServiceProvider))]
@@ -36,6 +38,8 @@ namespace Microsoft.Azure.Commands.Network
             foreach (var provider in serviceProviderList)
             {
                 var psProvider = Mapper.Map<PSExpressRouteServiceProvider>(provider);
+                psProvider.BandwidthsOffered = Mapper.Map<List<PSExpressRouteServiceProviderBandwidthsOffered>>(provider.Properties.BandwidthsOffered);
+                psProvider.PeeringLocations = provider.Properties.PeeringLocations.ToList();
                 psProviders.Add(psProvider);
             }
 
