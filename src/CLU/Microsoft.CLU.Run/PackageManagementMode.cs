@@ -534,6 +534,7 @@ namespace Microsoft.CLU.Run
         {
             var scriptPath = GetScriptPath(cfgPath);
             var scriptName = Path.GetFileNameWithoutExtension(scriptPath);
+            var ScriptBaseName = "az";
 
             if (File.Exists(scriptPath))
                 return;
@@ -544,7 +545,7 @@ namespace Microsoft.CLU.Run
                 {
                     "#!/bin/bash",
                     "SCRIPTPATH=$(dirname \"$0\")",
-                    $"$SCRIPTPATH/clurun -s {scriptName} -r $SCRIPTPATH/{Path.GetFileName(cfgPath)} \"$@\""
+                    $"$SCRIPTPATH/clurun -s {ScriptBaseName} -r $SCRIPTPATH/{Path.GetFileName(cfgPath)} \"$@\""
                 });
                 System.Diagnostics.Process.Start("chmod", $"777 {scriptPath}");
             }
@@ -553,7 +554,7 @@ namespace Microsoft.CLU.Run
                 File.WriteAllLines(scriptPath, new string[]
                 {
                     "@echo off",
-                    $@"%~dp0\clurun.exe -s {scriptName} -r %~dp0\{Path.GetFileName(cfgPath)} %*"
+                    $@"%~dp0\clurun.exe -s {ScriptBaseName} -r %~dp0\{Path.GetFileName(cfgPath)} %*"
                 });
             }
         }
