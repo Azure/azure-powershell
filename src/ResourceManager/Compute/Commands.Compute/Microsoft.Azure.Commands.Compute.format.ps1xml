@@ -101,7 +101,7 @@
         </ListEntries>
       </ListControl>
     </View>
-    <!--<View>
+    <View>
       <Name>Microsoft.Azure.Commands.Compute.Models.PSOperation</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Compute.Models.PSOperation</TypeName>
@@ -122,7 +122,7 @@
           </ListEntry>
         </ListEntries>
       </ListControl>
-    </View>-->
+    </View>
     <View>
       <Name>Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineImageBase</Name>
       <ViewSelectedBy>

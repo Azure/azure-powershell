@@ -19,6 +19,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Set, ProfileNouns.VirtualMachine, DefaultParameterSetName = ResourceGroupNameParameterSet)]
+    [OutputType(typeof(void))]
     public class SetAzureVMCommand : VirtualMachineActionBaseCmdlet
     {
         [Parameter(
