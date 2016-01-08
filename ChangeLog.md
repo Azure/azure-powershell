@@ -9,6 +9,13 @@
   * Get-AzureRmWebAppSSLBinding
   * Remove-AzureRmWebAppSSLBinding
 * Azure Websites: Added AseName and AseResourceGroupName parameters in New-AzureRmWebApp and New-AzureRmAppServicePlan cmdlet
+* Azure Stream Analytics: Added new cmdlet support for Functions.
+  * New-AzureRmStreamAnalyticsFunction
+  * Get-AzureRmStreamAnalyticsFunction
+  * Test-AzureRmStreamAnalyticsFunction
+  * Get-AzureRmStreamAnalyticsDefaultFunctionDefinition
+  * Remove-AzureRmStreamAnalyticsFunction
+
   
 ## 2015.12.14 version 1.0.2
 * Azure Compute (ARM):
