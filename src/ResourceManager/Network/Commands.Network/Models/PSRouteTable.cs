@@ -38,5 +38,15 @@ namespace Microsoft.Azure.Commands.Network.Models
          {
              get { return JsonConvert.SerializeObject(Subnets, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
          }
+
+         public bool ShouldSerializeSubnets()
+         {
+             return !string.IsNullOrEmpty(this.Name);
+         }
+
+         public bool ShouldSerializeRoutes()
+         {
+             return !string.IsNullOrEmpty(this.Name);
+         }
      }
 }

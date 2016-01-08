@@ -512,7 +512,7 @@
               </ListItem>
               <ListItem>
                 <Label>FrontendIPConfigurations</Label>
-                <PropertyName>FrontendIPConfigurationsText</PropertyName>
+                <PropertyName>FrontendIpConfigurationsText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>BackendAddressPools</Label>
