@@ -15,7 +15,7 @@ for d in $( ls $TESTDIR/.. --ignore=lib ); do
         . $f
         set +e
         printf "\nCleanup: removing resource group: %s\n" $groupName
-        azure group remove --name "$groupName" --force
+        az group remove --name "$groupName" --force
         set -e
         echo "success: $f"
     done
