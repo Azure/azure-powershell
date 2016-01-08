@@ -9,13 +9,13 @@ tier="Standard"
 size="Medium"
 capacity=2
 skuName="S2"
-azure group create --name "$groupName" --location "$location"
+az group create --name "$groupName" --location "$location"
 
 printf "\n1. Create a new app service plan %s " "$whpName"
-azure app service plan create -n "$whpName" -g "$groupName" -l "$location" --tier "$tier" --size "$size" --workers "$capacity"
+az app service plan create -n "$whpName" -g "$groupName" -l "$location" --tier "$tier" --size "$size" --workers "$capacity"
 
 printf "\n2. Get information about the app service plan : %s.\n" "$whpName"
-whpInfo=`azure app service plan get --name $whpName --group $groupName`
+whpInfo=`az app service plan get --name $whpName --group $groupName`
 
 printf "\nValidating app service plan name: %s\n" "$whpName"
 [ $(echo $whpInfo | jq '.name' --raw-output) == "$whpName" ]
@@ -28,7 +28,7 @@ printf "\n3. Set the appservice plan: %s " "$whpName"
 newTier="Shared"
 newCapacity=0
 newSize="Medium"
-setPlanInfo=`azure app service plan set -n $whpName -g $groupName --tier $newTier --workers --workers $newCapacity --size $newSize`
+setPlanInfo=`az app service plan set -n $whpName -g $groupName --tier $newTier --workers --workers $newCapacity --size $newSize`
 [ $(echo $setPlanInfo | jq '.name' --raw-output) == "$whpName" ]
 [ $(echo $setPlanInfo | jq '.sku.tier' --raw-output) == "$newTier" ]
 [ $(echo $setPlanInfo | jq '.sku.capacity' --raw-output) -eq $newCapacity ]
@@ -38,10 +38,10 @@ setPlanInfo=`azure app service plan set -n $whpName -g $groupName --tier $newTie
 whpName2=`randomName testplan`
 printf "\n4. Creating a new app service plan: %s" "$whpName2"
 location2="East US"
-azure app service plan create -n "$whpName2" -g "$groupName" -l "$location2" --tier "$tier" --size "$size" --workers "$capacity"
+az app service plan create -n "$whpName2" -g "$groupName" -l "$location2" --tier "$tier" --size "$size" --workers "$capacity"
 
 printf "\n5. Get All app service plans by name: %s" "$whpName2"
-whpInfo2=`azure app service plan get --name $whpName2`
+whpInfo2=`az app service plan get --name $whpName2`
 [ $(echo $whpInfo | jq '.name' --raw-output) == "$whpName2" ]
 [ $(echo $whpInfo | jq '.location' --raw-output) == "$location2" ]
 [ $(echo $whpInfo | jq '.sku.tier' --raw-output) == "$tier" ]
@@ -49,21 +49,21 @@ whpInfo2=`azure app service plan get --name $whpName2`
 [ $(echo $whpInfo | jq '.sku.capacity' --raw-output) -eq $capacity ]
 
 printf "\n6. Get All app service plans by resource group: %s" "$groupName"
-plansByGroup=`azure app service plan get --group $groupName`
+plansByGroup=`az app service plan get --group $groupName`
 [  $plansByGroup == *"$whpName"* ]
 [  $plansByGroup == *"$whpName2"* ]
 
 printf "\n7. Get All app service plans by location: %s" "$location2"
-plansByLocation=`azure app service plan get -l $location2`
+plansByLocation=`az app service plan get -l $location2`
 [  $plansByLocation == *"$whpName2"* ]
 
 printf "\n8. Get All app service plans in a subscription."
-plansInSubscription=`azure app service plan get`
+plansInSubscription=`az app service plan get`
 [  $plansInSubscription == *"$whpName"* ]
 [  $plansInSubscription == *"$whpName2"* ]
 
 printf "\n9. Remove app service plan: %s." "$whpName"
-azure app service plan remove -n $whpName -g $groupName
+az app service plan remove -n $whpName -g $groupName
 
 printf "\n10. Remove app service plan: %s." "$whpName2"
-azure app service plan remove -n $whpName2 -g $groupName
+az app service plan remove -n $whpName2 -g $groupName
