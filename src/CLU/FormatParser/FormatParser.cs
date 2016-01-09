@@ -12,6 +12,7 @@ namespace FormatParser
     public class FormatParser
     {
         private XDocument _formatFile;
+        private string _target;
         private IEnumerable<XElement> _views;
         private IToolsLogger _logger;
         public FormatParser(IToolsLogger logger, string path)
@@ -27,6 +28,7 @@ namespace FormatParser
                 throw new ArgumentNullException(nameof(path));
             }
 
+            _target = path;
             if (!File.Exists(path))
             {
                 throw new ArgumentOutOfRangeException(nameof(path), "Path to xml document must exist");
@@ -109,6 +111,8 @@ namespace FormatParser
                     }
 
                     _logger.WriteError(error);
+                    _logger.LogRecord(new ValidationRecord {Target = typeName, Severity = 0, Description = error,
+                        Remediation = $"Replace unsupported format elements in {_target} table control for {typeName}"});
                     result = false;
                 }
             }
@@ -138,6 +142,8 @@ namespace FormatParser
                     }
 
                     _logger.WriteError(error);
+                    _logger.LogRecord(new ValidationRecord { Target = typeName, Severity = 0, Description = error,
+                        Remediation = $"Replace unsupported format elements in {_target} table control for {typeName}" });
                     result = false;
                 }
             }

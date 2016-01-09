@@ -7,6 +7,7 @@
   "licenseUrl": "",
 
   "dependencies": {
+    "Commands.ResourceManager.Cmdlets": "1.0.0",
     "Microsoft.Azure.Commands.Compute": "1.0.0-*",
     "Microsoft.Azure.Commands.Management.Storage": "1.0.0-*",
     "Microsoft.Azure.Commands.Network": "1.0.0-*",

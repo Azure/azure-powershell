@@ -10,5 +10,6 @@ namespace FormatParser
         void WriteError(string error);
         void WriteMessage(string message);
         void WriteWarning(string message);
+        void LogRecord(ValidationRecord record);
     }
 }
