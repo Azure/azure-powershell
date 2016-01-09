@@ -63,7 +63,7 @@ To test on osx/linux boxes, do #1, open `<repo-root>\drop\clurun`, copy the flav
 (All of those are subject to change, contact yugangw or adxsdkdev for any questions)
 
 ### Quick introductions on cmdlets
-  *  Run commands using the ‘az’ prefix, cmdlet nouns, and cmdlet verbs, for example, `az environment get` maps to the cmdlet `Get-AzureRmEnvironment`
+  *  Run commands using the ‘az’ prefix, cmdlet nouns, and cmdlet verbs, for example, `az env get` maps to the cmdlet `Get-AzureRmEnvironment`
   *  Cmdlet parameters use the double dash (--) so for example, getting a subscription with a particular name would be: `az subscription get –-SubscriptionName “name of subscription"`
   * To log in, 3 options
     * login interactively using device flow, this is the only option for msa account or any org-id with 2fa enforced, example: `az account add`
