@@ -172,6 +172,7 @@
     <Compile Include="Cmdlets\AppServicePlans\NewAzureAppServicePlan.cs" />
     <Compile Include="Cmdlets\AppServicePlans\RemoveAppServicePlan.cs" />
     <Compile Include="Models.WebApp\AppServicePlanBaseCmdlet.cs" />
+    <Compile Include="Models.WebApp\DeploymentTemplate.cs" />
     <Compile Include="Models.WebApp\WebAppBaseCmdlet.cs" />
     <Compile Include="Models.WebApp\WebAppBaseClient.cs" />
     <Compile Include="Models.WebApp\WebAppSlotBaseCmdlet.cs" />
