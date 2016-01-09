@@ -21,7 +21,7 @@ namespace Microsoft.WindowsAzure.Setup
 
     public class CustomAction
     {
-        // The exception object which will store (if) exception which is occured in our sta thread
+        // The exception object which will store (if) exception which is occurred in our sta thread
         private static Exception _STAThreadException; 
 
         private static uint[] powerShellDefaultColorTable = new uint[] 
@@ -30,7 +30,7 @@ namespace Microsoft.WindowsAzure.Setup
                 0x808080, 0xFF0000, 0xFF00, 0xFFFF00, 0xFF, 0xFF00FF, 0xFFFF, 0xFFFFFF 
             };
 
-        // Method which contains our custom action behaviour
+        // Method which contains our custom action behavior
         private static void RunSTAThread(object sessionObject)
         {
             try
