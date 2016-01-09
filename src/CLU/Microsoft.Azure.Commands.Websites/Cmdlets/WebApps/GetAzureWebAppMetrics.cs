@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
-            WriteObject(WebsitesClient.GetWebAppUsageMetrics(ResourceGroupName, Name, null, Metrics, StartTime, EndTime, Granularity, InstanceDetails.IsPresent));
+            WriteObject(WebsitesClient.GetWebAppUsageMetrics(ResourceGroupName, Name, null, Metrics, StartTime, EndTime, Granularity, InstanceDetails.IsPresent), true);
         }
     }
 }

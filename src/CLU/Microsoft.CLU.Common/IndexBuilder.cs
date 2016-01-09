@@ -27,7 +27,6 @@ namespace Microsoft.CLU
             var indexFolderPath = GetIndexDirectoryPath(package);
             if (!Directory.Exists(indexFolderPath))
                 Directory.CreateDirectory(indexFolderPath);
-            BuildStaticCommandIndex(package, resolver);
             BuildCmdletIndex(package, resolver);
         }
 
@@ -51,39 +50,6 @@ namespace Microsoft.CLU
         {
             return Path.Combine(package.FullPath, Constants.IndexFolder);
         }
-
-        /// <summary>
-        /// Index static commands in the given package.
-        /// </summary>
-        /// <param name="package">The package</param>
-        /// <param name="resolver">The assembly resolver</param>
-        private static void BuildStaticCommandIndex(LocalPackage package, AssemblyResolver resolver)
-        {
-            var indexFilePath = Path.Combine(package.FullPath, Constants.IndexFolder, Constants.StaticCommandIndex + Constants.IndexFileExtension);
-
-            if (File.Exists(indexFilePath)) return;
-
-            CLUEnvironment.Console.WriteLine($"Building indexes for {package.Name}");
-
-            var pkgAssemblies = package.LoadCommandAssemblies(resolver);
-
-            var missingAssemblies = pkgAssemblies.Where(a => a.Assembly == null).Select(a => a.Name);
-            if (missingAssemblies.Any())
-            {
-                throw new DllNotFoundException(string.Format(Strings.IndexBuilder_BuildStaticCommandIndex_MissingAssemblies, string.Join("\n    ", missingAssemblies)));
-            }
-
-            Func<MethodInfo, bool> filter = m => m.IsPublic && m.IsStatic && !m.IsSpecialName;
-
-            // For now, build the package's static command index.
-            var index = ConfigurationDictionary.Create(pkgAssemblies
-                .SelectMany(a => a.GetEntryPoints(filter)
-                                  .Select(mthd => new Tuple<string, string>(mthd.DeclaringType.FullName + "." + mthd.Name, a.Name))));
-
-            if (index.Count > 0)
-                index.Store(indexFilePath);
-        }
-
         /// <summary>
         /// Index cmdlet commands in the given package.
         /// </summary>
@@ -101,8 +67,9 @@ namespace Microsoft.CLU
 
             _index.Save(Path.Combine(package.FullPath, Constants.IndexFolder));
 
+#if PSCMDLET_HELP
             _nameMap.Store(Path.Combine(package.FullPath, Constants.IndexFolder, Constants.NameMappingFileName));
-
+#endif
             _index.Clear();
         }
 
@@ -133,55 +100,76 @@ namespace Microsoft.CLU
 
             foreach (var type in assembly.Assembly.GetExportedTypes())
             {
-                foreach (var attr in type.GetTypeInfo().GetCustomAttributes())
+                var aliasEntryAdded = false;
                 {
-                    var attrType = attr.GetType();
+                    var cmdletAliasAttributes = type.GetTypeInfo().GetCustomAttributes()
+                                                .Where((at) => at.GetType().FullName.Equals("System.Management.Automation.CliCommandAliasAttribute")).ToArray();
 
-                    if (attrType.FullName.Equals("System.Management.Automation.CmdletAttribute"))
+                    foreach (var cmdletAliasAttribute in cmdletAliasAttributes)
                     {
-                        // We caught ourselves a Cmdlet! The CLU runtime must be loaded at this point.
-                        var verbProp = attrType.GetProperty("VerbName");
-                        var nounProp = attrType.GetProperty("NounName");
+                        var attrType = cmdletAliasAttribute.GetType();
+                        var keys = ((string)attrType.GetProperty("CommandName").GetValue(cmdletAliasAttribute)).Split(';').ToList();
+                        AddEntry(_index, keys, $"{assembly.Name}{Constants.CmdletIndexItemValueSeparator}{type.FullName}");
+                        aliasEntryAdded = true;
+                    }
+                }
+                if (!aliasEntryAdded)
+                {
+                    var cmdletAttributes = type.GetTypeInfo().GetCustomAttributes()
+                                                .Where((at) => at.GetType().FullName.Equals("System.Management.Automation.CmdletAttribute")).ToArray();
 
-                        if (verbProp == null || nounProp == null)
-                            continue;
+                    foreach (var cmdletAttribute in cmdletAttributes)
+                    {
+                        var attrType = cmdletAttribute.GetType();
 
-                        var origVerb = (verbProp.GetValue(attr) as string).Trim();
-                        var origNoun = (nounProp.GetValue(attr) as string).Trim();
-
-                        var verb = origVerb.ToLowerInvariant();
-                        var noun = origNoun; // DO NOT LOWER HERE!
-
-                        if (!string.IsNullOrEmpty(noun))
+                        if (attrType.FullName.Equals("System.Management.Automation.CmdletAttribute"))
                         {
-                            if (!string.IsNullOrEmpty(nounPrefix) && noun.StartsWith(nounPrefix, StringComparison.CurrentCultureIgnoreCase))
-                                noun = noun.Substring(nounPrefix.Length);
+                            // We caught ourselves a Cmdlet! The CLU runtime must be loaded at this point.
+                            var verbProp = attrType.GetProperty("VerbName");
+                            var nounProp = attrType.GetProperty("NounName");
 
-                        }
+                            if (verbProp == null || nounProp == null)
+                                continue;
 
-                        if (!string.IsNullOrEmpty(verb))
-                        {
-                            string replacedVerb = verb;
-                            if (renamingRules.TryGetValue(verb, out replacedVerb))
+                            var origVerb = (verbProp.GetValue(cmdletAttribute) as string).Trim();
+                            var origNoun = (nounProp.GetValue(cmdletAttribute) as string).Trim();
+
+                            var verb = origVerb.ToLowerInvariant();
+                            var noun = origNoun; // DO NOT LOWER HERE!
+
+                            if (!string.IsNullOrEmpty(noun))
                             {
-                                replacedVerb = replacedVerb.Trim();
-                                if (replacedVerb.Contains(' '))
-                                    // No verb splitting!!!
-                                    throw new ArgumentException(string.Format(Strings.IndexBuilder_FindCmdlets_InvalidVerbRenameRule, verb, replacedVerb, package.Name));
-                                verb = replacedVerb;
+                                if (!string.IsNullOrEmpty(nounPrefix) && noun.StartsWith(nounPrefix, StringComparison.CurrentCultureIgnoreCase))
+                                    noun = noun.Substring(nounPrefix.Length);
+
                             }
 
-                            var keys = SplitNoun(noun, renamingRules);
-                            if (nounFirst)
-                                keys.Add(verb);
-                            else
-                                keys.Insert(0, verb);
+                            if (!string.IsNullOrEmpty(verb))
+                            {
+                                string replacedVerb = verb;
+                                if (renamingRules.TryGetValue(verb, out replacedVerb))
+                                {
+                                    replacedVerb = replacedVerb.Trim();
+                                    if (replacedVerb.Contains(' '))
+                                        // No verb splitting!!!
+                                        throw new ArgumentException(string.Format(Strings.IndexBuilder_FindCmdlets_InvalidVerbRenameRule, verb, replacedVerb, package.Name));
+                                    verb = replacedVerb;
+                                }
 
-                            AddEntry(_index, keys, 0, $"{assembly.Name}{Constants.CmdletIndexItemValueSeparator}{type.FullName}");
+                                var keys = SplitNoun(noun, renamingRules);
+                                if (nounFirst)
+                                    keys.Add(verb);
+                                else
+                                    keys.Insert(0, verb);
+
+                                AddEntry(_index, keys, $"{assembly.Name}{Constants.CmdletIndexItemValueSeparator}{type.FullName}");
+#if PSCMDLET_HELP
                             if (!string.IsNullOrEmpty(origNoun))
                                 _nameMap.Add(string.Join(";", keys), $"{origVerb}-{origNoun}");
                             else
                                 _nameMap.Add(string.Join(";", keys), $"{origVerb}");
+#endif
+                            }
                         }
                     }
                 }
@@ -210,7 +198,7 @@ namespace Microsoft.CLU
 
             foreach (var entry in renamingRules)
             {
-                var idx = noun.IndexOf(entry.Key, StringComparison.OrdinalIgnoreCase); 
+                var idx = noun.IndexOf(entry.Key, StringComparison.OrdinalIgnoreCase);
                 if (idx > -1)
                 {
                     var len = entry.Key.Length;
@@ -252,37 +240,26 @@ namespace Microsoft.CLU
         /// <param name="primary">The cmdlet primary identifier</param>
         /// <param name="secondary">The cmdlet secondary identifier</param>
         /// <param name="value">The identifier that identifies the cmdlet</param>
-        private static void AddEntry(CmdletIndex root, List<string> keys, int level, string value)
+        private static void AddEntry(CmdletIndex root, List<string> keys, string value)
         {
             root.Entries.Add(string.Join(Constants.CmdletIndexWordSeparator, keys), value);
-
-            if (level < keys.Count)
-            {
-                CmdletIndex idx;
-                if (!root.Children.TryGetValue(keys[level], out idx))
-                {
-                    idx = new CmdletIndex { Name = keys[level] };
-                    root.Children.Add(keys[level], idx);
-                }
-
-                AddEntry(idx, keys, level + 1, value);
-            }
         }
 
-#region Private fields
+        #region Private fields
 
         /// <summary>
         /// All indicies of commands exposed in a given package.
         /// </summary>
         private static CmdletIndex _index = new CmdletIndex();
 
+#if PSCMDLET_HELP
         /// <summary>
         /// At installation time, we build a mapping from the CLI name, a sequence of keys, to
         /// the official PS name, Verb-Noun. This is necessary in order to identify the help
         /// content for a command.
         /// </summary>
         private static ConfigurationDictionary _nameMap = new ConfigurationDictionary();
-
-#endregion
+#endif
+        #endregion
     }
 }

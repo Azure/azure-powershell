@@ -30,8 +30,7 @@ namespace Microsoft.CLU.Common
         {
             Debug.Assert(commandDiscriminators !=null);
             Debug.Assert(commandDiscriminators.Count() >= 1);
-            var indexName = commandDiscriminators.First();
-            var index = LoadFromCache(indexName);
+            var index = LoadFromCache();
             if (index != null)
             {
                 string key = string.Join(Constants.CmdletIndexWordSeparator, commandDiscriminators);
@@ -57,8 +56,7 @@ namespace Microsoft.CLU.Common
         {
             Debug.Assert(commandDiscriminators != null);
             var directorySeparator = new string(Path.DirectorySeparatorChar, 1);
-            var indexName = string.Join(directorySeparator, commandDiscriminators);
-            return LoadFromCache(indexName).Entries;
+            return LoadFromCache().Entries;
         }
 
         /// <summary>
@@ -92,52 +90,30 @@ namespace Microsoft.CLU.Common
         }
 
         /// <summary>
-        /// Find all the matching Cmdlets for the given command discriminators from a package list.
-        /// e.g. Suppose the command discriminators are [ 'vm', 'image'], this method returns
-        /// collection of matching information for the cmdlets corrosponding to the commands
-        /// starting "vm image".
-        /// </summary>
-        /// <param name="commandDiscriminators">The command command discriminators</param>
-        /// <returns>Collection of matching commands details as key-value collections</returns>
-        public static IEnumerable<ConfigurationDictionary> FindMatchingCmdlets(IEnumerable<string> packageNames, IEnumerable<string> commandDiscriminators)
-        {
-            Debug.Assert(packageNames != null);
-            Debug.Assert(commandDiscriminators != null);
-
-            var matches = from packageName in packageNames
-                           let package = LoadCmdletPackage(packageName)
-                           where package != null
-                           select package.FindMatchingCmdlets(commandDiscriminators);
-
-            return matches;
-        }
-
-        /// <summary>
         /// Load an index of this package identified by the given index name.
         /// </summary>
-        /// <param name="indexName">The name of the index to load</param>
         /// <returns>The index</returns>
-        private CmdletIndex LoadFromCache(string indexName)
+        private CmdletIndex LoadFromCache()
         {
-            var indexFilePath = Path.Combine(FullPath, Constants.IndexFolder, indexName);
+            var indexFilePath = Path.Combine(FullPath, Constants.IndexFolder);
             CmdletIndex index;
             if (CLUEnvironment.IsThreadSafe)
             {
                 lock (_cachelock)
                 {
-                    if (!_cache.TryGetValue(indexFilePath, out index))
+                    if (!_cache.TryGetValue(this.Name, out index))
                     {
-                        index = CmdletIndex.Load(new string[] { indexName }, indexFilePath, false);
-                        _cache.Add(indexFilePath, index);
+                        index = CmdletIndex.Load(indexFilePath);
+                        _cache[this.Name] = index;
                     }
                 }
             }
             else
             {
-                if (!_cache.TryGetValue(indexFilePath, out index))
+                if (!_cache.TryGetValue(this.Name, out index))
                 {
-                    index = CmdletIndex.Load(new string[] { indexName }, indexFilePath, false);
-                    _cache.Add(indexFilePath, index);
+                    index = CmdletIndex.Load(indexFilePath);
+                    _cache[this.Name] = index;
                 }
             }
 
@@ -155,7 +131,7 @@ namespace Microsoft.CLU.Common
         /// Cache of loaded command indicies.
         /// The cache is shared across all instances of CmdletLocalPackage.
         /// </summary>
-        private static IDictionary<string, CmdletIndex> _cache = new Dictionary<string, CmdletIndex>();
+        private static Dictionary<string, CmdletIndex> _cache = new Dictionary<string, CmdletIndex>();
 
         #endregion
     }

@@ -41,8 +41,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             base.ProcessRecord();
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Properties.Resources.RemoveWebsiteWarning, Name),
-                Properties.Resources.RemoveWebsiteMessage,
+                string.Format(WebSites.Properties.Resources.RemoveWebsiteWarning, Name),
+                WebSites.Properties.Resources.RemoveWebsiteMessage,
                 Name,
                 () =>
                 {
