@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
 using Microsoft.Azure.KeyVault;
 using Microsoft.Azure.KeyVault.WebKey;
 using Microsoft.Azure.Common.Authentication;
@@ -40,7 +39,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             if (httpClient == null)
                 throw new ArgumentNullException("httpClient");
             
-            var credential = new DataServiceCredential(authFactory, context);
+            var credential = new DataServiceCredential(authFactory, context, AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId);
             this.keyVaultClient = new KeyVaultClient(
                 credential.OnAuthentication,
                 httpClient);
