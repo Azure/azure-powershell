@@ -27,6 +27,7 @@ using System;
 using System.Collections;
 using System.Management.Automation;
 using System.Linq;
+using AutoMapper;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -34,6 +35,7 @@ namespace Microsoft.Azure.Commands.Compute
         VerbsCommon.Set,
         ProfileNouns.VirtualMachineCustomScriptExtension,
         DefaultParameterSetName = SetCustomScriptExtensionByContainerBlobsParamSetName)]
+    [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureVMCustomScriptExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         protected const string SetCustomScriptExtensionByContainerBlobsParamSetName = "SetCustomScriptExtensionByContainerAndFileNames";
@@ -209,26 +211,35 @@ namespace Microsoft.Azure.Commands.Compute
                 Hashtable publicSettings = new Hashtable();
                 publicSettings.Add(commandToExecuteKey, commandToExecute ?? "");
                 publicSettings.Add(fileUrisKey, FileUri ?? new string[] { });
-                var SettingString = JsonConvert.SerializeObject(publicSettings);
 
                 var parameters = new VirtualMachineExtension
                 {
                     Location = this.Location,
-                    Name = this.Name,
-                    Type = VirtualMachineExtensionType,
                     Publisher = VirtualMachineCustomScriptExtensionContext.ExtensionDefaultPublisher,
-                    ExtensionType = VirtualMachineCustomScriptExtensionContext.ExtensionDefaultName,
+                    VirtualMachineExtensionType = VirtualMachineCustomScriptExtensionContext.ExtensionDefaultName,
                     TypeHandlerVersion = (this.TypeHandlerVersion) ?? VirtualMachineCustomScriptExtensionContext.ExtensionDefaultVersion,
-                    Settings = SettingString,
+                    Settings = publicSettings,
                     ProtectedSettings = GetPrivateConfiguration(),
+                    AutoUpgradeMinorVersion = true
                 };
 
-                var op = this.VirtualMachineExtensionClient.CreateOrUpdate(
+                try
+                {
+                    var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
                     this.ResourceGroupName,
                     this.VMName,
-                    parameters);
+                    this.Name,
+                    parameters).GetAwaiter().GetResult();
+                    var result = Mapper.Map<PSAzureOperationResponse>(op);
+                    WriteObject(result);
 
-                WriteObject(op);
+                }
+                catch (Rest.Azure.CloudException ex)
+                {
+                    var errorReturned = JsonConvert.DeserializeObject<ComputeLongRunningOperationError>(
+                        ex.Response.Content.ReadAsStringAsync().Result);
+                    WriteObject(errorReturned);
+                }
             });
         }
 
@@ -286,7 +297,7 @@ namespace Microsoft.Azure.Commands.Compute
             return cloudBlob.Uri + sasToken;
         }
 
-        protected string GetPrivateConfiguration()
+        protected Hashtable GetPrivateConfiguration()
         {
             if (string.IsNullOrEmpty(this.StorageAccountName) || string.IsNullOrEmpty(this.StorageAccountKey))
             {
@@ -297,7 +308,7 @@ namespace Microsoft.Azure.Commands.Compute
                 var privateSettings = new Hashtable();
                 privateSettings.Add(storageAccountNameKey, StorageAccountName);
                 privateSettings.Add(storageAccountKeyKey, StorageAccountKey);
-                return JsonUtilities.TryFormatJson(JsonConvert.SerializeObject(privateSettings));
+                return privateSettings;
             }
         }
     }

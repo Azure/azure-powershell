@@ -156,28 +156,28 @@ namespace Microsoft.Azure.Commands.Network
             var result = new AzureOperationResponse<string>();
             result.Request = httpRequest;
             result.Response = httpResponse;
-            if (httpResponse.Headers.Contains("x-ms-request-id"))
+            string locationResultsUrl = string.Empty;
+
+            // Retrieve the location from LocationUri
+            if (httpResponse.Headers.Contains("Location"))
             {
-                result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                locationResultsUrl = httpResponse.Headers.GetValues("Location").FirstOrDefault();
             }
             else
             {
-                throw new Exception(string.Format("Get-AzureRmVpnClientPackage Operation Failed as no valid status code received in response!"));
+                throw new Exception(string.Format("Get-AzureRmVpnClientPackage Operation Failed as no valid Location header received in response!"));
             }
 
-            string operationId = result.RequestId;
+            if(string.IsNullOrEmpty(locationResultsUrl))
+            {
+                throw new Exception(string.Format("Get-AzureRmVpnClientPackage Operation Failed as no valid Location header value received in response!"));
+            }
             #endregion
 
             #region 2. Wait for Async operation to succeed and then Get the content i.e. VPN Client package Url from locationResults
             //Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport.Delay(60000);
 
             // 2. Wait for Async operation to succeed           
-            var locationResultsUrl = new Uri(new Uri(baseUrl + (baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Network/" +
-                "locations/westus.validation/operationResults/{operationId}").ToString();
-            locationResultsUrl = locationResultsUrl.Replace("{operationId}", Uri.EscapeDataString(operationId));
-            locationResultsUrl = locationResultsUrl.Replace("{subscriptionId}", Uri.EscapeDataString(NetworkManagementClient.SubscriptionId));
-            locationResultsUrl += "?" + string.Join("&", string.Format("api-version={0}", Uri.EscapeDataString(apiVersion)));
-
             DateTime startTime = DateTime.UtcNow;
             DateTime giveUpAt = DateTime.UtcNow.AddMinutes(3);
 

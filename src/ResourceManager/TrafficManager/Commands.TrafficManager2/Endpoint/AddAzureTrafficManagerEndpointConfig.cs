@@ -64,6 +64,10 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [ValidateNotNullOrEmpty]
         public string EndpointLocation { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The minimum number of endpoints that must be available in the child profile in order for the Nested Endpoint in the parent profile to be considered available. Only applicable to endpoint of type 'NestedEndpoints'.")]
+        [ValidateNotNullOrEmpty]
+        public uint? MinChildEndpoints { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.TrafficManagerProfile.Endpoints == null)
@@ -86,7 +90,8 @@ namespace Microsoft.Azure.Commands.TrafficManager
                     EndpointStatus = this.EndpointStatus,
                     Weight = this.Weight,
                     Priority = this.Priority,
-                    Location = this.EndpointLocation
+                    Location = this.EndpointLocation,
+                    MinChildEndpoints = this.MinChildEndpoints,
                 });
 
             this.WriteVerbose(ProjectResources.Success);

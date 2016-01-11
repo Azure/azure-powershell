@@ -82,8 +82,8 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 if (i == this.VM.OSProfile.Secrets.Count)
                 {
-                    var sourceVault = new SourceVaultReference {
-                        ReferenceUri = this.SourceVaultId
+                    var sourceVault = new SubResource {
+                        Id = this.SourceVaultId
                     };
 
                     var vaultCertificates = new List<VaultCertificate>{
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.Compute
                     break;
                 }
 
-                if (this.VM.OSProfile.Secrets[i].SourceVault != null && this.VM.OSProfile.Secrets[i].SourceVault.ReferenceUri.Equals(this.SourceVaultId))
+                if (this.VM.OSProfile.Secrets[i].SourceVault != null && this.VM.OSProfile.Secrets[i].SourceVault.Id.Equals(this.SourceVaultId))
                 {
                     if (this.VM.OSProfile.Secrets[i].VaultCertificates == null)
                     {

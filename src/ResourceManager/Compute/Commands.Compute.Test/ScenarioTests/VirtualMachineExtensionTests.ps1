@@ -31,7 +31,7 @@ function Test-VirtualMachineExtension
         $vmsize = 'Standard_A2';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
-        Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
+        Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
@@ -47,7 +47,7 @@ function Test-VirtualMachineExtension
 
         $p = Add-AzureRmVMNetworkInterface -VM $p -Id $nicId;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
-        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
 
         # Storage Account (SA)
         $stoname = 'sto' + $rgname;
@@ -72,16 +72,16 @@ function Test-VirtualMachineExtension
         
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
         Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
-        Assert-AreEqual $p.StorageProfile.OSDisk.VirtualHardDisk.Uri $osDiskVhdUri;
+        Assert-AreEqual $p.StorageProfile.OSDisk.Vhd.Uri $osDiskVhdUri;
         Assert-AreEqual $p.StorageProfile.DataDisks.Count 2;
         Assert-AreEqual $p.StorageProfile.DataDisks[0].Caching 'ReadOnly';
         Assert-AreEqual $p.StorageProfile.DataDisks[0].DiskSizeGB 10;
         Assert-AreEqual $p.StorageProfile.DataDisks[0].Lun 1;
-        Assert-AreEqual $p.StorageProfile.DataDisks[0].VirtualHardDisk.Uri $dataDiskVhdUri1;
+        Assert-AreEqual $p.StorageProfile.DataDisks[0].Vhd.Uri $dataDiskVhdUri1;
         Assert-AreEqual $p.StorageProfile.DataDisks[1].Caching 'ReadOnly';
         Assert-AreEqual $p.StorageProfile.DataDisks[1].DiskSizeGB 11;
         Assert-AreEqual $p.StorageProfile.DataDisks[1].Lun 2;
-        Assert-AreEqual $p.StorageProfile.DataDisks[1].VirtualHardDisk.Uri $dataDiskVhdUri2;
+        Assert-AreEqual $p.StorageProfile.DataDisks[1].Vhd.Uri $dataDiskVhdUri2;
 
         # OS & Image
         $user = "Foo12";
@@ -171,7 +171,7 @@ function Test-VirtualMachineExtensionUsingHashTable
         $vmsize = 'Standard_A2';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
-        Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
+        Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
@@ -187,7 +187,7 @@ function Test-VirtualMachineExtensionUsingHashTable
 
         $p = Add-AzureRmVMNetworkInterface -VM $p -Id $nicId;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
-        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
 
         # Storage Account (SA)
         $stoname = 'sto' + $rgname;
@@ -212,16 +212,16 @@ function Test-VirtualMachineExtensionUsingHashTable
         
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
         Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
-        Assert-AreEqual $p.StorageProfile.OSDisk.VirtualHardDisk.Uri $osDiskVhdUri;
+        Assert-AreEqual $p.StorageProfile.OSDisk.Vhd.Uri $osDiskVhdUri;
         Assert-AreEqual $p.StorageProfile.DataDisks.Count 2;
         Assert-AreEqual $p.StorageProfile.DataDisks[0].Caching 'ReadOnly';
         Assert-AreEqual $p.StorageProfile.DataDisks[0].DiskSizeGB 10;
         Assert-AreEqual $p.StorageProfile.DataDisks[0].Lun 1;
-        Assert-AreEqual $p.StorageProfile.DataDisks[0].VirtualHardDisk.Uri $dataDiskVhdUri1;
+        Assert-AreEqual $p.StorageProfile.DataDisks[0].Vhd.Uri $dataDiskVhdUri1;
         Assert-AreEqual $p.StorageProfile.DataDisks[1].Caching 'ReadOnly';
         Assert-AreEqual $p.StorageProfile.DataDisks[1].DiskSizeGB 11;
         Assert-AreEqual $p.StorageProfile.DataDisks[1].Lun 2;
-        Assert-AreEqual $p.StorageProfile.DataDisks[1].VirtualHardDisk.Uri $dataDiskVhdUri2;
+        Assert-AreEqual $p.StorageProfile.DataDisks[1].Vhd.Uri $dataDiskVhdUri2;
 
         # OS & Image
         $user = "Foo12";
@@ -284,7 +284,7 @@ function Test-VirtualMachineExtensionUsingHashTable
         $vm1 = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname;
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
-        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
+        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].Id $nicId;
 
         Assert-AreEqual $vm1.StorageProfile.ImageReference.Offer $imgRef.Offer;
         Assert-AreEqual $vm1.StorageProfile.ImageReference.Publisher $imgRef.PublisherName;
@@ -293,14 +293,14 @@ function Test-VirtualMachineExtensionUsingHashTable
 
         Assert-AreEqual $vm1.OSProfile.AdminUsername $user;
         Assert-AreEqual $vm1.OSProfile.ComputerName $computerName;
-        Assert-AreEqual $vm1.HardwareProfile.VirtualMachineSize $vmsize;
+        Assert-AreEqual $vm1.HardwareProfile.VmSize $vmsize;
 
         # Check Extensions in VM
         Assert-AreEqual $vm1.Extensions.Count 2;
         Assert-AreEqual $vm1.Extensions[1].Name $extname;
         Assert-AreEqual $vm1.Extensions[1].Type 'Microsoft.Compute/virtualMachines/extensions';
         Assert-AreEqual $vm1.Extensions[1].Publisher $publisher;
-        Assert-AreEqual $vm1.Extensions[1].ExtensionType $exttype;
+        Assert-AreEqual $vm1.Extensions[1].VirtualMachineExtensionType $exttype;
         Assert-AreEqual $vm1.Extensions[1].TypeHandlerVersion $extver;
         Assert-NotNull $vm1.Extensions[1].Settings;
 
@@ -333,7 +333,7 @@ function Test-VirtualMachineCustomScriptExtension
         $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
-        Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
+        Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
@@ -349,7 +349,7 @@ function Test-VirtualMachineCustomScriptExtension
 
         $p = Add-AzureRmVMNetworkInterface -VM $p -Id $nicId;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
-        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
 
         # Storage Account (SA)
         $stoname = 'sto' + $rgname;
@@ -371,16 +371,16 @@ function Test-VirtualMachineCustomScriptExtension
 
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
         Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
-        Assert-AreEqual $p.StorageProfile.OSDisk.VirtualHardDisk.Uri $osDiskVhdUri;
+        Assert-AreEqual $p.StorageProfile.OSDisk.Vhd.Uri $osDiskVhdUri;
         Assert-AreEqual $p.StorageProfile.DataDisks.Count 2;
         Assert-AreEqual $p.StorageProfile.DataDisks[0].Caching 'ReadOnly';
         Assert-AreEqual $p.StorageProfile.DataDisks[0].DiskSizeGB 10;
         Assert-AreEqual $p.StorageProfile.DataDisks[0].Lun 1;
-        Assert-AreEqual $p.StorageProfile.DataDisks[0].VirtualHardDisk.Uri $dataDiskVhdUri1;
+        Assert-AreEqual $p.StorageProfile.DataDisks[0].Vhd.Uri $dataDiskVhdUri1;
         Assert-AreEqual $p.StorageProfile.DataDisks[1].Caching 'ReadOnly';
         Assert-AreEqual $p.StorageProfile.DataDisks[1].DiskSizeGB 11;
         Assert-AreEqual $p.StorageProfile.DataDisks[1].Lun 2;
-        Assert-AreEqual $p.StorageProfile.DataDisks[1].VirtualHardDisk.Uri $dataDiskVhdUri2;
+        Assert-AreEqual $p.StorageProfile.DataDisks[1].Vhd.Uri $dataDiskVhdUri2;
 
         # OS & Image
         $user = "Foo12";
@@ -451,7 +451,7 @@ function Test-VirtualMachineCustomScriptExtension
         $vm1 = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname;
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
-        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
+        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].Id $nicId;
 
         # TODO : The test is outdated, need re-recording and re-enabling these fields for validation
         #
@@ -462,14 +462,14 @@ function Test-VirtualMachineCustomScriptExtension
 
         Assert-AreEqual $vm1.OSProfile.AdminUsername $user;
         Assert-AreEqual $vm1.OSProfile.ComputerName $computerName;
-        Assert-AreEqual $vm1.HardwareProfile.VirtualMachineSize $vmsize;
+        Assert-AreEqual $vm1.HardwareProfile.VmSize $vmsize;
 
         # Check Extensions in VM
         Assert-AreEqual $vm1.Extensions.Count 2;
         Assert-AreEqual $vm1.Extensions[1].Name $extname;
         Assert-AreEqual $vm1.Extensions[1].Type 'Microsoft.Compute/virtualMachines/extensions';
         Assert-AreEqual $vm1.Extensions[1].Publisher $publisher;
-        Assert-AreEqual $vm1.Extensions[1].ExtensionType $exttype;
+        Assert-AreEqual $vm1.Extensions[1].VirtualMachineExtensionType $exttype;
         Assert-AreEqual $vm1.Extensions[1].TypeHandlerVersion $extver;
         Assert-NotNull $vm1.Extensions[1].Settings;
 
@@ -502,7 +502,7 @@ function Test-VirtualMachineCustomScriptExtensionFileUri
         $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
-        Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
+        Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
@@ -518,7 +518,7 @@ function Test-VirtualMachineCustomScriptExtensionFileUri
 
         $p = Add-AzureRmVMNetworkInterface -VM $p -Id $nicId;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
-        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
 
         # Storage Account (SA)
         $stoname = 'sto' + $rgname;
@@ -540,16 +540,16 @@ function Test-VirtualMachineCustomScriptExtensionFileUri
 
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
         Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
-        Assert-AreEqual $p.StorageProfile.OSDisk.VirtualHardDisk.Uri $osDiskVhdUri;
+        Assert-AreEqual $p.StorageProfile.OSDisk.Vhd.Uri $osDiskVhdUri;
         Assert-AreEqual $p.StorageProfile.DataDisks.Count 2;
         Assert-AreEqual $p.StorageProfile.DataDisks[0].Caching 'ReadOnly';
         Assert-AreEqual $p.StorageProfile.DataDisks[0].DiskSizeGB 10;
         Assert-AreEqual $p.StorageProfile.DataDisks[0].Lun 1;
-        Assert-AreEqual $p.StorageProfile.DataDisks[0].VirtualHardDisk.Uri $dataDiskVhdUri1;
+        Assert-AreEqual $p.StorageProfile.DataDisks[0].Vhd.Uri $dataDiskVhdUri1;
         Assert-AreEqual $p.StorageProfile.DataDisks[1].Caching 'ReadOnly';
         Assert-AreEqual $p.StorageProfile.DataDisks[1].DiskSizeGB 11;
         Assert-AreEqual $p.StorageProfile.DataDisks[1].Lun 2;
-        Assert-AreEqual $p.StorageProfile.DataDisks[1].VirtualHardDisk.Uri $dataDiskVhdUri2;
+        Assert-AreEqual $p.StorageProfile.DataDisks[1].Vhd.Uri $dataDiskVhdUri2;
 
         # OS & Image
         $user = "Foo12";
@@ -619,18 +619,18 @@ function Test-VirtualMachineCustomScriptExtensionFileUri
         $vm1 = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname;
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
-        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
+        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].Id $nicId;
 
         Assert-AreEqual $vm1.OSProfile.AdminUsername $user;
         Assert-AreEqual $vm1.OSProfile.ComputerName $computerName;
-        Assert-AreEqual $vm1.HardwareProfile.VirtualMachineSize $vmsize;
+        Assert-AreEqual $vm1.HardwareProfile.VmSize $vmsize;
 
         # Check Extensions in VM
         Assert-AreEqual $vm1.Extensions.Count 2;
         Assert-AreEqual $vm1.Extensions[1].Name $extname;
         Assert-AreEqual $vm1.Extensions[1].Type 'Microsoft.Compute/virtualMachines/extensions';
         Assert-AreEqual $vm1.Extensions[1].Publisher $publisher;
-        Assert-AreEqual $vm1.Extensions[1].ExtensionType $exttype;
+        Assert-AreEqual $vm1.Extensions[1].VirtualMachineExtensionType $exttype;
         Assert-AreEqual $vm1.Extensions[1].TypeHandlerVersion $extver;
         Assert-NotNull $vm1.Extensions[1].Settings;
     }
@@ -660,7 +660,7 @@ function Test-VirtualMachineAccessExtension
         $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
-        Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
+        Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
@@ -676,7 +676,7 @@ function Test-VirtualMachineAccessExtension
 
         $p = Add-AzureRmVMNetworkInterface -VM $p -Id $nicId;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
-        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
 
         # Storage Account (SA)
         $stoname = 'sto' + $rgname;
@@ -698,16 +698,16 @@ function Test-VirtualMachineAccessExtension
 
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
         Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
-        Assert-AreEqual $p.StorageProfile.OSDisk.VirtualHardDisk.Uri $osDiskVhdUri;
+        Assert-AreEqual $p.StorageProfile.OSDisk.Vhd.Uri $osDiskVhdUri;
         Assert-AreEqual $p.StorageProfile.DataDisks.Count 2;
         Assert-AreEqual $p.StorageProfile.DataDisks[0].Caching 'ReadOnly';
         Assert-AreEqual $p.StorageProfile.DataDisks[0].DiskSizeGB 10;
         Assert-AreEqual $p.StorageProfile.DataDisks[0].Lun 1;
-        Assert-AreEqual $p.StorageProfile.DataDisks[0].VirtualHardDisk.Uri $dataDiskVhdUri1;
+        Assert-AreEqual $p.StorageProfile.DataDisks[0].Vhd.Uri $dataDiskVhdUri1;
         Assert-AreEqual $p.StorageProfile.DataDisks[1].Caching 'ReadOnly';
         Assert-AreEqual $p.StorageProfile.DataDisks[1].DiskSizeGB 11;
         Assert-AreEqual $p.StorageProfile.DataDisks[1].Lun 2;
-        Assert-AreEqual $p.StorageProfile.DataDisks[1].VirtualHardDisk.Uri $dataDiskVhdUri2;
+        Assert-AreEqual $p.StorageProfile.DataDisks[1].Vhd.Uri $dataDiskVhdUri2;
 
         # OS & Image
         $user = "Foo12";
@@ -768,18 +768,18 @@ function Test-VirtualMachineAccessExtension
         $vm1 = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname;
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
-        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
+        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].Id $nicId;
 
         Assert-AreEqual $vm1.OSProfile.AdminUsername $user;
         Assert-AreEqual $vm1.OSProfile.ComputerName $computerName;
-        Assert-AreEqual $vm1.HardwareProfile.VirtualMachineSize $vmsize;
+        Assert-AreEqual $vm1.HardwareProfile.VmSize $vmsize;
 
         # Check Extensions in VM
         Assert-AreEqual $vm1.Extensions.Count 2;
         Assert-AreEqual $vm1.Extensions[1].Name $extname;
         Assert-AreEqual $vm1.Extensions[1].Type 'Microsoft.Compute/virtualMachines/extensions';
         Assert-AreEqual $vm1.Extensions[1].Publisher $publisher;
-        Assert-AreEqual $vm1.Extensions[1].ExtensionType $exttype;
+        Assert-AreEqual $vm1.Extensions[1].VirtualMachineExtensionType $exttype;
         Assert-AreEqual $vm1.Extensions[1].TypeHandlerVersion $extver;
         Assert-NotNull $vm1.Extensions[1].Settings;
 
@@ -915,7 +915,7 @@ function Test-AzureDiskEncryptionExtension
         $p.StorageProfile.ImageReference = $null;
         $p.OSProfile = $null;
         $p.StorageProfile.DataDisks = $null;
-        $p = Set-AzureRmVMOSDisk -VM $p -Name $p.StorageProfile.OSDisk.Name -VhdUri $p.StorageProfile.OSDisk.VirtualHardDisk.Uri -Caching ReadWrite -CreateOption attach -DiskEncryptionKeyUrl $encryptionStatus.OsVolumeEncryptionSettings.DiskEncryptionKey.SecretUrl -DiskEncryptionKeyVaultId $encryptionStatus.OsVolumeEncryptionSettings.DiskEncryptionKey.SourceVault.ReferenceUri -Windows;
+        $p = Set-AzureRmVMOSDisk -VM $p -Name $p.StorageProfile.OSDisk.Name -VhdUri $p.StorageProfile.OSDisk.Vhd.Uri -Caching ReadWrite -CreateOption attach -DiskEncryptionKeyUrl $encryptionStatus.OsVolumeEncryptionSettings.DiskEncryptionKey.SecretUrl -DiskEncryptionKeyVaultId $encryptionStatus.OsVolumeEncryptionSettings.DiskEncryptionKey.SourceVault.Id -Windows;
 
         New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
@@ -946,7 +946,7 @@ function Test-VirtualMachineBginfoExtension
         $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
-        Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
+        Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
@@ -962,7 +962,7 @@ function Test-VirtualMachineBginfoExtension
 
         $p = Add-AzureRmVMNetworkInterface -VM $p -Id $nicId;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
-        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
 
         # Storage Account (SA)
         $stoname = 'sto' + $rgname;
@@ -984,16 +984,16 @@ function Test-VirtualMachineBginfoExtension
 
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
         Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
-        Assert-AreEqual $p.StorageProfile.OSDisk.VirtualHardDisk.Uri $osDiskVhdUri;
+        Assert-AreEqual $p.StorageProfile.OSDisk.Vhd.Uri $osDiskVhdUri;
         Assert-AreEqual $p.StorageProfile.DataDisks.Count 2;
         Assert-AreEqual $p.StorageProfile.DataDisks[0].Caching 'ReadOnly';
         Assert-AreEqual $p.StorageProfile.DataDisks[0].DiskSizeGB 10;
         Assert-AreEqual $p.StorageProfile.DataDisks[0].Lun 1;
-        Assert-AreEqual $p.StorageProfile.DataDisks[0].VirtualHardDisk.Uri $dataDiskVhdUri1;
+        Assert-AreEqual $p.StorageProfile.DataDisks[0].Vhd.Uri $dataDiskVhdUri1;
         Assert-AreEqual $p.StorageProfile.DataDisks[1].Caching 'ReadOnly';
         Assert-AreEqual $p.StorageProfile.DataDisks[1].DiskSizeGB 11;
         Assert-AreEqual $p.StorageProfile.DataDisks[1].Lun 2;
-        Assert-AreEqual $p.StorageProfile.DataDisks[1].VirtualHardDisk.Uri $dataDiskVhdUri2;
+        Assert-AreEqual $p.StorageProfile.DataDisks[1].Vhd.Uri $dataDiskVhdUri2;
 
         # OS & Image
         $user = "Foo12";
@@ -1019,11 +1019,11 @@ function Test-VirtualMachineBginfoExtension
         $vm1 = Get-AzureRmVM -ResourceGroupName $rgname -Name $vmname;
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
-        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
+        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].Id $nicId;
 
         Assert-AreEqual $vm1.OSProfile.AdminUsername $user;
         Assert-AreEqual $vm1.OSProfile.ComputerName $computerName;
-        Assert-AreEqual $vm1.HardwareProfile.VirtualMachineSize $vmsize;
+        Assert-AreEqual $vm1.HardwareProfile.VmSize $vmsize;
 
         # Virtual Machine Extension
         $extname = 'csetest';
@@ -1053,24 +1053,24 @@ function Test-VirtualMachineBginfoExtension
         Assert-AreEqual $ext.TypeHandlerVersion $extver;
         Assert-NotNull $ext.ProvisioningState;
         Assert-NotNull $ext.Statuses;
-        Assert-NotNull $ext.SubStatuses;
+        #Assert-NotNull $ext.SubStatuses;
 
         # Get VM
         $vm1 = Get-AzureRmVM -ResourceGroupName $rgname -Name $vmname;
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
-        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
+        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].Id $nicId;
 
         Assert-AreEqual $vm1.OSProfile.AdminUsername $user;
         Assert-AreEqual $vm1.OSProfile.ComputerName $computerName;
-        Assert-AreEqual $vm1.HardwareProfile.VirtualMachineSize $vmsize;
+        Assert-AreEqual $vm1.HardwareProfile.VmSize $vmsize;
 
         # Check Extensions in VM
         Assert-AreEqual $vm1.Extensions.Count 1;
         Assert-AreEqual $vm1.Extensions[0].Name $extname;
         Assert-AreEqual $vm1.Extensions[0].Type 'Microsoft.Compute/virtualMachines/extensions';
         Assert-AreEqual $vm1.Extensions[0].Publisher $publisher;
-        Assert-AreEqual $vm1.Extensions[0].ExtensionType $exttype;
+        Assert-AreEqual $vm1.Extensions[0].VirtualMachineExtensionType $exttype;
         Assert-AreEqual $vm1.Extensions[0].TypeHandlerVersion $extver;
     }
     finally
