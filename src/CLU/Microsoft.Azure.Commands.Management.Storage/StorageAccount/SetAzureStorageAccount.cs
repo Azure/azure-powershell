@@ -91,7 +91,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
             HelpMessage = "Storage Account Tags.")]
         [AllowEmptyCollection]
         [ValidateNotNull]
-        [Alias("t")]
         public Hashtable[] Tags { get; set; }
 
         protected override void ProcessRecord()

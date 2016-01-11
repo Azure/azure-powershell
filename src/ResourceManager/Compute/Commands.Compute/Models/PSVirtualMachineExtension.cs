@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Management.Compute.Models;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Compute.Models
 {
@@ -42,6 +43,21 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public string ProvisioningState { get; set; }
 
         public IList<InstanceViewStatus> Statuses { get; set; }
+
+        [JsonIgnore]
+        public string StatusesText
+        {
+            get { return JsonConvert.SerializeObject(Statuses, Formatting.Indented); }
+        }
+
+        public IList<InstanceViewStatus> SubStatuses { get; set; }
+
+        [JsonIgnore]
+        public string SubStatusesText
+        {
+            get { return JsonConvert.SerializeObject(SubStatuses, Formatting.Indented); }
+        }
+
     }
 
     public static class PSVirtualMachineExtensionConversions
@@ -64,14 +80,15 @@ namespace Microsoft.Azure.Commands.Compute.Models
                 Name = ext.Name,
                 Location = ext.Location,
                 Etag = null, // TODO: Update CRP library for this field
-                Publisher = ext == null ? null : ext.Publisher,
-                ExtensionType = ext == null ? null : ext.ExtensionType,
-                TypeHandlerVersion = ext == null ? null : ext.TypeHandlerVersion,
+                Publisher = ext.Publisher,
+                ExtensionType = ext.ExtensionType,
+                TypeHandlerVersion = ext.TypeHandlerVersion,
                 Id = ext.Id,
-                PublicSettings = ext == null ? null : ext.Settings,
-                ProtectedSettings = ext == null ? null : ext.ProtectedSettings,
-                ProvisioningState = ext == null ? null : ext.ProvisioningState,
-                Statuses = ext == null || ext.InstanceView == null ? null : ext.InstanceView.Statuses
+                PublicSettings = ext.Settings,
+                ProtectedSettings = ext.ProtectedSettings,
+                ProvisioningState = ext.ProvisioningState,
+                Statuses = ext.InstanceView == null ? null : ext.InstanceView.Statuses,
+                SubStatuses = ext.InstanceView == null ? null : ext.InstanceView.SubStatuses,
             };
 
             return result;

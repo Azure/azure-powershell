@@ -50,6 +50,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account Key StorageAccountName.")]
         [ValidateSet(Key1, Key2, IgnoreCase = true)]
+        [Alias("k")]
         public string KeyName { get; set; }
 
         protected override void ProcessRecord()
