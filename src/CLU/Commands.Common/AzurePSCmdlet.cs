@@ -29,6 +29,8 @@ using System.Text;
 using System.Linq;
 using System.Threading;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
+using Microsoft.ApplicationInsights;
+using System.Security.Cryptography;
 
 namespace Microsoft.Azure.Commands.Utilities.Common
 {
@@ -38,6 +40,7 @@ namespace Microsoft.Azure.Commands.Utilities.Common
     public abstract class AzurePSCmdlet : PSCmdlet, IDisposable
     {
         protected readonly ConcurrentQueue<string> _debugMessages;
+        protected TelemetryClient _telemetryClient = new TelemetryClient();
 
 
         private DebugStreamTraceListener _adalListener;
@@ -84,6 +87,7 @@ namespace Microsoft.Azure.Commands.Utilities.Common
         public AzurePSCmdlet()
         {
             _debugMessages = new ConcurrentQueue<string>();
+            _telemetryClient.InstrumentationKey = "963c4276-ec20-48ad-b9ab-3968e9da5578";            
 #if DEBUG
             if (!TestMockSupport.RunningMocked)
             {
@@ -208,6 +212,35 @@ namespace Microsoft.Azure.Commands.Utilities.Common
         }
 
         /// <summary>
+        /// Collects basic telemetry
+        /// </summary>
+        protected void CollectTelemetry()
+        {
+            // TODO: Uncomment this once data collection profile is enabled
+            //if (!IsDataCollectionAllowed())
+            //{
+            //    return;
+            //}
+            SHA256 sha = SHA256.Create();
+            // Calculating sha2 from the account ID to avoid accidental PII data
+            _telemetryClient.Context.User.Id = Encoding.UTF8.GetString(sha.ComputeHash(Encoding.UTF8.GetBytes(DefaultContext.Account.Id)));
+            _telemetryClient.TrackPageView(this.MyInvocation.MyCommand.Name);
+
+            Dictionary<string, string> executeCommandParams = new Dictionary<string, string>();
+            List<string> boundParameters = new List<string>();
+            if (this.MyInvocation.BoundParameters != null)
+            {
+                foreach (var parameter in this.MyInvocation.BoundParameters)
+                {
+                    boundParameters.Add(parameter.Key);
+                }
+            }
+            executeCommandParams.Add("Name", this.MyInvocation.MyCommand.Name);
+            executeCommandParams.Add("BoundParameters", string.Join(",", boundParameters));
+            _telemetryClient.TrackEvent("ExecuteCommand", executeCommandParams);
+        } 
+
+        /// <summary>
         /// Check whether the data collection is opted in from user
         /// </summary>
         /// <returns>true if allowed</returns>
@@ -269,6 +302,7 @@ namespace Microsoft.Azure.Commands.Utilities.Common
         protected override void BeginProcessing()
         {
             PromptForDataCollectionProfileIfNotExists();
+            CollectTelemetry();
             InitializeQosEvent();
             if (string.IsNullOrEmpty(ParameterSetName))
             {
@@ -348,6 +382,16 @@ namespace Microsoft.Azure.Commands.Utilities.Common
             }
             
             base.WriteError(errorRecord);
+
+            // TODO: Uncomment this once data collection profile is enabled
+            //if (!IsDataCollectionAllowed())
+            //{
+            //    return;
+            //}
+            if (errorRecord != null && errorRecord.Exception != null)
+            {
+                _telemetryClient.TrackException(errorRecord.Exception);
+            }
         }
 
         protected new void WriteObject(object sendToPipeline)
