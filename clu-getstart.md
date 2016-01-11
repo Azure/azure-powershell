@@ -63,7 +63,7 @@ To test on osx/linux boxes, do #1, open `<repo-root>\drop\clurun`, copy the flav
 (All of those are subject to change, contact yugangw or adxsdkdev for any questions)
 
 ### Quick introductions on cmdlets
-  *  Run commands using the ‘az’ prefix, cmdlet nouns, and cmdlet verbs, for example, `az environment get` maps to the cmdlet `Get-AzureRmEnvironment`
+  *  Run commands using the ‘az’ prefix, cmdlet nouns, and cmdlet verbs, for example, `az env get` maps to the cmdlet `Get-AzureRmEnvironment`
   *  Cmdlet parameters use the double dash (--) so for example, getting a subscription with a particular name would be: `az subscription get –-SubscriptionName “name of subscription"`
   * To log in, 3 options
     * login interactively using device flow, this is the only option for msa account or any org-id with 2fa enforced, example: `az account add`
@@ -73,14 +73,14 @@ To test on osx/linux boxes, do #1, open `<repo-root>\drop\clurun`, copy the flav
     ```az subscription get --SubscriptionName | az context set```
   * You can capture piped output using redirection to a file - the result will be the json serialization of the output object.
     ```az subscription get > subscriptions.json```
-  * You can use file input tu aparameter using '@' notation:
+  * You can use file input to a parameter using '@' notation:
     ```az command --param1 @file1.json```
     Reads input from file1.json and attempts to deserialize the .net object that is the Parameter type for ```param1```
     ```az command --param1 @@file1.json```
     Does the same thing, but treats the input from ```file1.json``` as if it come from the pipeline, so that multiple objects will result in multiple invocations of ```ProcessRecord()``` for the target cmdlet.
   * There are some known issues with the current approach to sessions, which can cause session variables to not be propagated when running cmdlets in a pipeline, to work around this, set the 'CmdletSessionId' environment variable to a numeric value - all cmdlets running from the shell will use that session id, and sessions will work with pipelining 
 
-    ```set CmdletSessionId=1010 ```
+    ```set AzureProfile=1010 ```
 
 ### Testing Cmdlets
 
@@ -119,7 +119,8 @@ Please set the environment variables for either Username/Password (no 2FA) or Se
 
 - To implement an xunit bash scenario test you must
   - Add a ```[Collection("SampleCollection")]``` attribute to your test class
-  - Add a field to your class of type ```ScenarioTestFixture``` and add a constructor that initializes it
+  - Add a field to your class of type ```ScenarioTestFixture``` and add a constructor that initializes it.
+  
     ```C#
     [Collection("SampleCollection")]
     public class SampleTestClass
