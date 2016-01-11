@@ -138,21 +138,26 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         protected override void InitializeQosEvent()
         {
-            //QosEvent = new AzurePSQoSEvent()
-            //{
-            //    CmdletType = this.GetType().Name,
-            //    IsSuccess = true,
-            //};
+            QosEvent = new AzurePSQoSEvent()
+            {
+                CommandName = this.MyInvocation?.MyCommand?.Name,
+                IsSuccess = true,
+            };
 
-            //if (this.Context != null && this.Context.Subscription != null)
-            //{
-            //    QosEvent.Uid = MetricHelper.GenerateSha256HashString(
-            //        this.Context.Subscription.Id.ToString());
-            //}
-            //else
-            //{
-            //    QosEvent.Uid = "defaultid";
-            //}
+            if (this.MyInvocation != null && this.MyInvocation.BoundParameters != null)
+            {
+                QosEvent.Parameters = string.Join(",", this.MyInvocation.BoundParameters.Keys);
+            }
+
+            if (this.DefaultProfile?.Context?.Account?.Id != null)
+            {
+                QosEvent.Uid = MetricHelper.GenerateSha256HashString(
+                    this.DefaultProfile.Context.Account.Id.ToString());
+            }
+            else
+            {
+                QosEvent.Uid = "defaultid";
+            }
         }
     }
 }

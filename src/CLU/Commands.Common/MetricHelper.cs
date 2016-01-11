@@ -18,26 +18,73 @@ using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.Extensibility;
+using Microsoft.ApplicationInsights.DataContracts;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common
 {
     public static class MetricHelper
     {
         private const int FlushTimeoutInMilli = 5000;
-        //private static readonly TelemetryClient TelemetryClient;
+
+        /// <summary>
+        /// The collection of telemetry clients.
+        /// </summary>
+        private static readonly List<TelemetryClient> _telemetryClients =
+            new List<TelemetryClient>();
+
+        /// <summary>
+        /// A read-only, thread-safe collection of telemetry clients.  Since
+        /// List is only thread-safe for reads (and adding/removing tracing
+        /// interceptors isn't a very common operation), we simply replace the
+        /// entire collection of interceptors so any enumeration of the list
+        /// in progress on a different thread will not be affected by the
+        /// change.
+        /// </summary>
+        private static List<TelemetryClient> _threadSafeTelemetryClients =
+            new List<TelemetryClient>();
+
+        /// <summary>
+        /// Lock used to synchronize mutation of the tracing interceptors.
+        /// </summary>
+        private static readonly object _lock = new object();
 
         static MetricHelper()
-        {            
-            //TelemetryClient = new TelemetryClient();
-            //// TODO: InstrumentationKey shall be injected in build server
-            //TelemetryClient.InstrumentationKey = "7df6ff70-8353-4672-80d6-568517fed090";
-            //// Disable IP collection
-            //TelemetryClient.Context.Location.Ip = "0.0.0.0";
+        {
+            if (TestMockSupport.RunningMocked)
+            {
+                TelemetryConfiguration.Active.DisableTelemetry = true;
+            }
+        }
 
-            //if (TestMockSupport.RunningMocked)
-            //{
-            //    TelemetryConfiguration.Active.DisableTelemetry = true;
-            //}
+        /// <summary>
+        /// Gets a sequence of the telemetry clients to notify of changes.
+        /// </summary>
+        internal static IEnumerable<TelemetryClient> TelemetryClients
+        {
+            get { return _threadSafeTelemetryClients; }
+        }
+
+        /// <summary>
+        /// Add a telemetry client.
+        /// </summary>
+        /// <param name="client">The telemetry client.</param>
+        public static void AddTelemetryClient(TelemetryClient client)
+        {
+            if (client == null)
+            {
+                throw new ArgumentNullException("interceptor");
+            }
+
+            lock (_lock)
+            {
+                // Disable IP collection
+                client.Context.Location.Ip = "0.0.0.0";
+                _telemetryClients.Add(client);
+                _threadSafeTelemetryClients = new List<TelemetryClient>(_telemetryClients);
+            }
         }
 
         public static void LogQoSEvent(AzurePSQoSEvent qos, bool isUsageMetricEnabled, bool isErrorMetricEnabled)
@@ -60,30 +107,39 @@ namespace Microsoft.Azure.Commands.Common
 
         private static void LogUsageEvent(AzurePSQoSEvent qos)
         {
-            //var tcEvent = new RequestTelemetry(qos.CmdletType, qos.StartTime, qos.Duration, string.Empty, qos.IsSuccess);
-            //tcEvent.Context.User.Id = qos.Uid;
-            //tcEvent.Context.User.UserAgent = AzurePowerShell.UserAgentValue.ToString();
+            var tcEvent = new RequestTelemetry(qos.CommandName, qos.StartTime, qos.Duration, string.Empty, qos.IsSuccess);
+            tcEvent.Context.User.Id = qos.Uid;
+            tcEvent.Properties.Add("CommandName", qos.CommandName);
+            tcEvent.Properties.Add("CommandParameters", qos.Parameters);
+            tcEvent.Context.User.UserAgent = AzurePowerShell.UserAgentValue.ToString();
             //tcEvent.Context.Device.OperatingSystem = Environment.OSVersion.VersionString;
 
-            //TelemetryClient.TrackRequest(tcEvent);
+            foreach (TelemetryClient client in TelemetryClients)
+            {
+                client.TrackRequest(tcEvent);
+            }
         }
 
         private static void LogExceptionEvent(AzurePSQoSEvent qos)
         {
-            //Log as custome event to exclude actual exception message
-            //var tcEvent = new EventTelemetry("CmdletError");
-            //tcEvent.Properties.Add("ExceptionType", qos.Exception.GetType().FullName);
-            //tcEvent.Properties.Add("StackTrace", qos.Exception.StackTrace);
-            //if (qos.Exception.InnerException != null)
-            //{
-            //    tcEvent.Properties.Add("InnerExceptionType", qos.Exception.InnerException.GetType().FullName);
-            //    tcEvent.Properties.Add("InnerStackTrace", qos.Exception.InnerException.StackTrace);
-            //}
+            //Log as customer event to exclude actual exception message
+            var tcEvent = new EventTelemetry("CmdletError");
+            tcEvent.Properties.Add("ExceptionType", qos.Exception.GetType().FullName);
+            tcEvent.Properties.Add("StackTrace", qos.Exception.StackTrace);
+            if (qos.Exception.InnerException != null)
+            {
+                tcEvent.Properties.Add("InnerExceptionType", qos.Exception.InnerException.GetType().FullName);
+                tcEvent.Properties.Add("InnerStackTrace", qos.Exception.InnerException.StackTrace);
+            }
 
-            //tcEvent.Context.User.Id = qos.Uid;
-            //tcEvent.Properties.Add("CmdletType", qos.CmdletType);
+            tcEvent.Context.User.Id = qos.Uid;
+            tcEvent.Properties.Add("CommandName", qos.CommandName);
+            tcEvent.Properties.Add("CommandParameters", qos.Parameters);
 
-            //TelemetryClient.TrackEvent(tcEvent);
+            foreach (TelemetryClient client in TelemetryClients)
+            {
+                client.TrackEvent(tcEvent);
+            }
         }
 
         public static bool IsMetricTermAccepted()
@@ -109,7 +165,10 @@ namespace Microsoft.Azure.Commands.Common
         {
             try
             {
-                //TelemetryClient.Flush();
+                foreach (TelemetryClient client in TelemetryClients)
+                {
+                    client.Flush();
+                }
             }
             catch
             {
@@ -138,7 +197,8 @@ public class AzurePSQoSEvent
     public DateTimeOffset StartTime { get; set; }
     public TimeSpan Duration { get; set; }
     public bool IsSuccess { get; set; }
-    public string CmdletType { get; set; }
+    public string CommandName { get; set; }
+    public string Parameters { get; set; }
     public Exception Exception { get; set; }
     public string Uid { get; set; }
 
@@ -168,7 +228,7 @@ public class AzurePSQoSEvent
     public override string ToString()
     {
         return string.Format(
-            "AzureQoSEvent: CmdletType - {0}; IsSuccess - {1}; Duration - {2}; Exception - {3};",
-            CmdletType, IsSuccess, Duration, Exception);
+            "AzureQoSEvent: CommandName - {0}; IsSuccess - {1}; Duration - {2}; Exception - {3};",
+            CommandName, IsSuccess, Duration, Exception);
     }
 }
