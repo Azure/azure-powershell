@@ -65,6 +65,13 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCloneNewWebAppAndDeploymentSlots()
+        {
+            WebsitesController.NewInstance.RunPsTest("Test-CloneNewWebAppAndDeploymentSlots");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCloneNewWebAppWithNewTrafficManager()
         {
             WebsitesController.NewInstance.RunPsTest("Test-CloneNewWebAppWithTrafficManager");
