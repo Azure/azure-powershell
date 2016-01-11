@@ -4,16 +4,16 @@ printf "\n=== Managing Web Apps in Azure ===\n"
 printf "\nSetup: Creating a new resource group: %s at location: %s.\n" "$groupName" "$location"
 az group create --name "$groupName" --location "$location"
 
-appName1=`randomName testweb`
-appName2=`randomName testweb`
-appName3=`randomName testweb`
-appName4=`randomName testweb`
+# appName1=`randomName testweb`
+# appName2=`randomName testweb`
+# appName3=`randomName testweb`
+# appName4=`randomName testweb`
 slotname1="staging"
 slotname2="testing"
-planName1=`randomName testplan`
-planName2=`randomName testplan`
-planName3=`randomName testplan`
-planName4=`randomName testplan`
+# planName1=`randomName testplan`
+# planName2=`randomName testplan`
+# planName3=`randomName testplan`
+# planName4=`randomName testplan`
 tier1="Shared"
 tier2="Standard"
 tier3="Premium"

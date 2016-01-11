@@ -36,6 +36,12 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
         public void WebAppSlotTest()
         {
             var helper = _collectionState.GetRunner("webapp-management");
+            helper.EnvironmentVariables.Add("appName1", helper.GenerateName("testweb"));
+            helper.EnvironmentVariables.Add("appName2", helper.GenerateName("testweb"));
+            helper.EnvironmentVariables.Add("appName3", helper.GenerateName("testweb"));
+            helper.EnvironmentVariables.Add("planName1", helper.GenerateName("testplan"));
+            helper.EnvironmentVariables.Add("planName2", helper.GenerateName("testplan"));
+            helper.EnvironmentVariables.Add("planName3", helper.GenerateName("testplan"));
             helper.RunScript("02-WebAppSlot");
         }
 
@@ -43,6 +49,14 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
         public void WebAppTest()
         {
             var helper = _collectionState.GetRunner("webapp-management");
+            helper.EnvironmentVariables.Add("appName1", helper.GenerateName("testweb"));
+            helper.EnvironmentVariables.Add("appName2", helper.GenerateName("testweb"));
+            helper.EnvironmentVariables.Add("appName3", helper.GenerateName("testweb"));
+            helper.EnvironmentVariables.Add("appName4", helper.GenerateName("testweb"));
+            helper.EnvironmentVariables.Add("planName1", helper.GenerateName("testplan"));
+            helper.EnvironmentVariables.Add("planName2", helper.GenerateName("testplan"));
+            helper.EnvironmentVariables.Add("planName3", helper.GenerateName("testplan"));
+            helper.EnvironmentVariables.Add("planName4", helper.GenerateName("testplan"));
             helper.RunScript("03-WebApp");
         }
     }
