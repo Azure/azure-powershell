@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/env/bash
 export TESTDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 . $TESTDIR/helper.sh
 export groupName=`randomName testrg`

@@ -82,10 +82,10 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             var credentials = StorageUtilities.GenerateStorageCredentials(client, result.ResourceGroupName, result.StorageAccountName);
             CloudStorageAccount account = new CloudStorageAccount(
                 credentials,
-                new Uri(storageAccount.PrimaryEndpoints.Blob), 
-                new Uri(storageAccount.PrimaryEndpoints.Queue), 
-                new Uri(storageAccount.PrimaryEndpoints.Table), 
-                new Uri(storageAccount.PrimaryEndpoints.File));
+                null == storageAccount.PrimaryEndpoints.Blob ? null : new Uri(storageAccount.PrimaryEndpoints.Blob),
+                null == storageAccount.PrimaryEndpoints.Queue ? null : new Uri(storageAccount.PrimaryEndpoints.Queue),
+                null == storageAccount.PrimaryEndpoints.Table ? null : new Uri(storageAccount.PrimaryEndpoints.Table),
+                null == storageAccount.PrimaryEndpoints.File ? null : new Uri(storageAccount.PrimaryEndpoints.File));
             result.Context = new AzureStorageContext(account);
             return result;
         }

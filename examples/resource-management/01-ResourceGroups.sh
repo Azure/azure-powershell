@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/env/bash
 set -e
 printf "\n=== Managing Resource Groups in Azure ===\n"
 
