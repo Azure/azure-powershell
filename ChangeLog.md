@@ -10,6 +10,13 @@
   * Remove-AzureRmWebAppSSLBinding
   * Added AseName and AseResourceGroupName parameters in New-AzureRmWebApp and New-AzureRmAppServicePlan cmdlet
   * Added support for cloning all deployment slots associated with source website
+* Azure Stream Analytics: Added new cmdlet support for Functions.
+  * New-AzureRmStreamAnalyticsFunction
+  * Get-AzureRmStreamAnalyticsFunction
+  * Test-AzureRmStreamAnalyticsFunction
+  * Get-AzureRmStreamAnalyticsDefaultFunctionDefinition
+  * Remove-AzureRmStreamAnalyticsFunction
+
   
 ## 2015.12.14 version 1.0.2
 * Azure Compute (ARM):
