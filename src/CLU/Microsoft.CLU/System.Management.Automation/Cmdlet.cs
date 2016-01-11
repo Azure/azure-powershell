@@ -63,8 +63,8 @@ namespace System.Management.Automation
         {
             if (sendToPipeline != null)
             {
-                if (CommandRuntime.Host.IsOutputRedirected)
-                {
+                if (ShouldWriteJsonOutput())
+                { 
                     CommandRuntime.WriteObject(sendToPipeline);
                 }
                 else
@@ -78,7 +78,7 @@ namespace System.Management.Automation
         {
             if (sendToPipeline != null)
             {
-                if (CommandRuntime.Host.IsOutputRedirected)
+                if (ShouldWriteJsonOutput())
                 {
                     CommandRuntime.WriteObject(sendToPipeline, enumerateCollection);
                 }
@@ -142,15 +142,21 @@ namespace System.Management.Automation
                     formattedType = obj.GetType();
                     if (!wroteHeader)
                     {
-                        CommandRuntime.WriteCommandDetail(view.FormatHeader(CLUEnvironment.Console.WindowWidth));
-                        CommandRuntime.WriteCommandDetail("");
+                        CommandRuntime.WriteObject(view.FormatHeader(CLUEnvironment.Console.WindowWidth));
+                        CommandRuntime.WriteObject("");
                         wroteHeader = true;
                     }
-                    CommandRuntime.WriteCommandDetail(view.FormatObject(obj));
+                    CommandRuntime.WriteObject(view.FormatObject(obj));
                 }
             }
         }
 
+        internal bool ShouldWriteJsonOutput()
+        {
+            var requestedOutputFormat = CommandRuntime.Host.RequestedOutputFormat;
+            return (CommandRuntime.Host.IsOutputRedirected && requestedOutputFormat == OutputFormat.Auto) 
+                || requestedOutputFormat == OutputFormat.JSON;
+        }
         protected void WriteProgress(ProgressRecord progressRecord) { if (progressRecord != null) CommandRuntime.WriteProgress(progressRecord); }
 
         protected void WriteVerbose(string text) { if (!string.IsNullOrEmpty(text)) CommandRuntime.WriteVerbose(text);  }
