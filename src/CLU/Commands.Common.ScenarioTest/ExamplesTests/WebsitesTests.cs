@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
             helper.RunScript("01-AppServicePlan");
         }
 
-        [Fact(Skip = "TODO: Work in progress")]
+        [Fact]
         public void WebAppSlotTest()
         {
             var helper = _collectionState.GetRunner("webapp-management");
