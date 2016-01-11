@@ -16,7 +16,11 @@
   * Test-AzureRmStreamAnalyticsFunction
   * Get-AzureRmStreamAnalyticsDefaultFunctionDefinition
   * Remove-AzureRmStreamAnalyticsFunction
-
+* Azure Batch
+  * New-AzureBatchTask now accepts a MultiInstanceSettings parameter
+  * Get-AzureBatchSubtask cmdlet added
+  * Enable-AzureBatchComputeNodeScheduling / Disable-AzureBatchComputeNodeScheduling cmdlets added
+  * Enable-AzureBatchAutoScale and New-AzureBatchPool now accept an AutoScaleEvaluationInterval parameter.
   
 ## 2015.12.14 version 1.0.2
 * Azure Compute (ARM):
