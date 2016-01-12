@@ -21,7 +21,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRmNetworkInterface")]
-    [CliCommandAlias("network;interface;rm")]
+    [CliCommandAlias("networkinterface;rm")]
     public class RemoveAzureNetworkInterfaceCommand : NetworkInterfaceBaseCmdlet
     {
         [Alias("ResourceName")]

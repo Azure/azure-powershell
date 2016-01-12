@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Add, "AzureRmExpressRouteCircuitAuthorization"), OutputType(typeof(PSExpressRouteCircuit))]
-    [CliCommandAlias("network;expressroute;circuit;authorization;add")]
+    [CliCommandAlias("expressroute;circuit;authorization;add")]
     public class AddAzureExpressRouteCircuitAuthorizationCommand : AzureExpressRouteCircuitAuthorizationBase
     {
         [Parameter(

@@ -12,13 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Http;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Utilities.Common;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Rest;
 
 namespace Microsoft.Azure.Commands.Common
 {
-    public class DebugStreamTraceListener : TraceListener
+    public class DebugStreamTraceListener : TraceListener, IServiceClientTracingInterceptor
     {
         public DebugStreamTraceListener(ConcurrentQueue<string> queue)
         {
@@ -45,6 +51,41 @@ namespace Microsoft.Azure.Commands.Common
         public static void RemoveAdalTracing(DebugStreamTraceListener listener)
         {
             //AdalTrace.TraceSource.Listeners.Remove(listener);
+        }
+
+        public void Configuration(string source, string name, string value)
+        {
+        }
+
+        public void ExitMethod(string invocationId, object returnValue)
+        {
+            WriteLine($"{invocationId}: End method with return value {returnValue}");
+        }
+
+        public void Information(string message)
+        {
+        }
+
+        public void TraceError(string invocationId, Exception exception)
+        {
+            WriteLine($"{invocationId}: Exception {exception}");
+        }
+
+        public void SendRequest(string invocationId, HttpRequestMessage request)
+        {
+            WriteLine($"{invocationId} REQUEST:");
+            WriteLine($"{GeneralUtilities.GetLog(request)}");
+        }
+
+        public void ReceiveResponse(string invocationId, HttpResponseMessage response)
+        {
+            WriteLine($"{invocationId} RESPONSE:");
+            WriteLine($"{GeneralUtilities.GetLog(response)}");
+        }
+
+        public void EnterMethod(string invocationId, object instance, string method, IDictionary<string, object> parameters)
+        {
+            WriteLine($"{invocationId}: Start method {method} with return value");
         }
     }
 }

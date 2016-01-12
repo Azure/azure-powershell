@@ -26,7 +26,7 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Set, "AzureRmVirtualNetworkGatewayVpnClientConfig"), OutputType(typeof(PSVirtualNetworkGateway))]
-    [CliCommandAlias("network;vnet;gateway;network;vpn;client;config;set")]
+    [CliCommandAlias("vnet;gateway;network;vpn;client;config;set")]
     public class SetAzureVirtualNetworkGatewayVpnClientConfigCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Parameter(

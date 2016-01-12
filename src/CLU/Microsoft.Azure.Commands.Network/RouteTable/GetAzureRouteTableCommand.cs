@@ -21,7 +21,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmRouteTable"), OutputType(typeof(PSRouteTable))]
-    [CliCommandAlias("network;route;table;ls")]
+    [CliCommandAlias("route;table;ls")]
     public class GetAzureRouteTableCommand : RouteTableBaseCmdlet
     {
         [Alias("ResourceName")]

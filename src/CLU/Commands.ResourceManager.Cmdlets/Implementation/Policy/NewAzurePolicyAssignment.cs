@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Creates a policy assignment.
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmPolicyAssignment"), OutputType(typeof(ResourcePolicyAssignment<JToken>))]
-    [CliCommandAlias("security;policy;assignment;create")]
+    [CliCommandAlias("networksecurity;policy;assignment;create")]
     public class NewAzurePolicyAssignmentCmdlet : PolicyAssignmentCmdletBase
     {
         /// <summary>

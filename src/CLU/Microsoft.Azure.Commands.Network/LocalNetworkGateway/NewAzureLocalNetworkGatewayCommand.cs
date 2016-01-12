@@ -24,7 +24,7 @@ using Microsoft.Azure.Commands.Tags.Model;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New, "AzureRmLocalNetworkGateway"), OutputType(typeof(PSLocalNetworkGateway))]
-    [CliCommandAlias("network;localgateway;new")]
+    [CliCommandAlias("localgateway;new")]
     public class NewAzureLocalNetworkGatewayCommand : LocalNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]

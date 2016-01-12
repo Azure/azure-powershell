@@ -12,7 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 {
@@ -28,8 +31,48 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
         public List<string> Actions { get; set; }
 
+        public string ActionsText
+        {
+            get
+            {
+                return FormatList(Actions);
+            }
+        }
+
         public List<string> NotActions { get; set; }
 
+        public string NotActionsText
+        {
+            get
+            {
+                return FormatList(NotActions);
+            }
+        }
+
         public List<string> AssignableScopes { get; set; }
+
+        public string AssignableScopesText
+        {
+            get
+            {
+                return FormatList(AssignableScopes);
+            }
+        }
+
+        private string FormatList(IList<string> list)
+        {
+            if(list.Count <=1)
+            {
+                return string.Format("[{0}]", list.Count == 0 ? "" : string.Format("\"{0}\"",list.First()));
+            }
+            var sb = new StringBuilder();
+            sb.AppendLine("[");
+            foreach (var textLine in list.Select(s => string.Format("    \"{0}\",", s)))
+            {
+                sb.AppendLine(textLine);
+            }
+            sb.Append("]");
+            return sb.ToString();
+        }
     }
 }

@@ -19,7 +19,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
      [Cmdlet(VerbsCommon.Remove, "AzureRmNetworkSecurityGroup")]
-    [CliCommandAlias("network;security;group;rm")]
+    [CliCommandAlias("networksecurity;group;rm")]
     public class RemoveAzureNetworkSecurityGroupCommand : NetworkSecurityGroupBaseCmdlet
     {
         [Alias("ResourceName")]

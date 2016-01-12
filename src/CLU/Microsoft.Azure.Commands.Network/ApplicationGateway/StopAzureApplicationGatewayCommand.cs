@@ -23,7 +23,7 @@ using Microsoft.Azure.Commands.Tags.Model;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsLifecycle.Stop, "AzureRmApplicationGateway"), OutputType(typeof(PSApplicationGateway))]
-    [CliCommandAlias("network;applicationgateway;stop")]
+    [CliCommandAlias("applicationgateway;stop")]
     public class StopAzureApplicationGatewayCommand : ApplicationGatewayBaseCmdlet
     {
         [Parameter(

@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// Filters role assignments
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmRoleAssignment", DefaultParameterSetName = ParameterSet.Empty), OutputType(typeof(List<PSRoleAssignment>))]
-    [CliCommandAlias("security;role;assignment;ls")]
+    [CliCommandAlias("networksecurity;role;assignment;ls")]
     public class GetAzureRoleAssignmentCommand : ResourcesBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId,
