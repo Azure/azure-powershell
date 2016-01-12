@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/env/bash
 printf "\n=== Managing Web Apps in Azure ===\n"
 
 printf "\nSetup: Creating a new resource group: %s at location: %s.\n" "$groupName" "$location"

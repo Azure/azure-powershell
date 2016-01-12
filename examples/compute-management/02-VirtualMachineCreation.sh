@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/env/bash
 set -e
 printf "\n=== Managing Virtual Machine Creation in Azure Compute ===\n"
 

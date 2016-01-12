@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/env/bash
 set -e
 printf "\n=== Managing Virtual Hard Disks in Azure Compute ===\n"
 
