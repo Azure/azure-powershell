@@ -172,12 +172,7 @@ appWithSlotName3="$appName4/$slotname3"
 # Cleanup
 printf "\n22. Remove web app slot: %s." "$slotname1"
 az webapp slot remove -g "$groupName" -n "$appName1" --slot "$slotname1" --force
-
-printf "\n23. Remove web app: %s." "$appName1"
-az webapp remove -g "$groupName" -n "$appName1" --force
-
-printf "\n24. Remove app service plan: %s." "$planName1"
-az app service plan remove -g "$groupName" -n "$planName1" --force
+az webapp slot remove -g "$groupName" -n "$appName1" --slot "$slotname2" --force
 
 printf "\n25. Remove resource group: %s." "$groupName"
 az group remove --name "$groupName" --force
