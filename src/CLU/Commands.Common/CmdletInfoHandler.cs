@@ -35,32 +35,43 @@ namespace Microsoft.Azure.Commands.Common
         public string ParameterSet { get; private set; }
 
         /// <summary>
+        /// The unique client request id.
+        /// </summary>
+        public string ClientRequestId { get; private set; }
+
+        /// <summary>
         /// Initializes an instance of a CmdletInfoHandler with the name of the cmdlet and the parameter set.
         /// </summary>
         /// <param name="cmdlet">the name of the cmdlet</param>
         /// <param name="parameterSet">the name of the parameter set specified by user</param>
-        public CmdletInfoHandler(string cmdlet, string parameterSet)
+        /// <param name="clientRequestId">the unique clientRequestId</param>
+        public CmdletInfoHandler(string cmdlet, string parameterSet, string clientRequestId)
         {
             this.Cmdlet = cmdlet;
             this.ParameterSet = parameterSet;
+            this.ClientRequestId = clientRequestId;
         }
         
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             if (Cmdlet != null)
             {
-                request.Headers.Add("CommandName", Cmdlet);
+                request.Headers.TryAddWithoutValidation("CommandName", Cmdlet);
             }
             if (ParameterSet != null)
             {
-                request.Headers.Add("ParameterSetName", ParameterSet);
+                request.Headers.TryAddWithoutValidation("ParameterSetName", ParameterSet);
+            }
+            if (ClientRequestId != null)
+            {
+                request.Headers.TryAddWithoutValidation("x-ms-client-request-id", ClientRequestId);
             }
             return base.SendAsync(request, cancellationToken);
         }
 
         public object Clone()
         {
-            return new CmdletInfoHandler(this.Cmdlet, this.ParameterSet);
+            return new CmdletInfoHandler(this.Cmdlet, this.ParameterSet, this.ClientRequestId);
         }
     }
 }

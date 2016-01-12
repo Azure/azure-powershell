@@ -30,6 +30,7 @@ using System.Linq;
 using System.Threading;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.Extensibility;
 
 namespace Microsoft.Azure.Commands.Utilities.Common
 {
@@ -45,7 +46,7 @@ namespace Microsoft.Azure.Commands.Utilities.Common
         protected static AzurePSDataCollectionProfile _dataCollectionProfile = null;
         protected static string _errorRecordFolderPath = null;
         protected const string _fileTimeStampSuffixFormat = "yyyy-MM-dd-THH-mm-ss-fff";
-
+        protected string _clientRequestId = Guid.NewGuid().ToString();
         public IClientFactory ClientFactory { get; set; }
 
         public IAuthenticationFactory AuthenticationFactory { get; set; }
@@ -55,7 +56,7 @@ namespace Microsoft.Azure.Commands.Utilities.Common
         protected AzurePSQoSEvent QosEvent;
 
         protected virtual bool IsUsageMetricEnabled {
-            get { return false; }
+            get { return true; }
         }
 
         protected virtual bool IsErrorMetricEnabled
@@ -85,14 +86,11 @@ namespace Microsoft.Azure.Commands.Utilities.Common
         public AzurePSCmdlet()
         {
             _debugMessages = new ConcurrentQueue<string>();
-            MetricHelper.AddTelemetryClient(new TelemetryClient
-            {
-                InstrumentationKey = "7df6ff70-8353-4672-80d6-568517fed090"
-            });
+            //TODO: Inject from CI server
             MetricHelper.AddTelemetryClient(new TelemetryClient
             {
                 InstrumentationKey = "963c4276-ec20-48ad-b9ab-3968e9da5578"
-            });          
+            });
 #if DEBUG
             if (!TestMockSupport.RunningMocked)
             {
@@ -222,6 +220,9 @@ namespace Microsoft.Azure.Commands.Utilities.Common
         /// <returns>true if allowed</returns>
         public static bool IsDataCollectionAllowed()
         {
+            //TODO: CLU - remove before final release
+            return true;
+
             if (_dataCollectionProfile != null &&
                 _dataCollectionProfile.EnableAzureDataCollection.HasValue &&
                 _dataCollectionProfile.EnableAzureDataCollection.Value)
@@ -307,7 +308,7 @@ namespace Microsoft.Azure.Commands.Utilities.Common
             ProductInfoHeaderValue userAgentValue = new ProductInfoHeaderValue(
                 ModuleName, string.Format("v{0}", ModuleVersion));
             ClientFactory.UserAgents.Add(userAgentValue);
-            ClientFactory.AddHandler(new CmdletInfoHandler(this.CommandRuntime.ToString(), this.ParameterSetName));
+            ClientFactory.AddHandler(new CmdletInfoHandler(this.CommandRuntime.ToString(), this.ParameterSetName, this._clientRequestId));
             base.BeginProcessing();
         }
 

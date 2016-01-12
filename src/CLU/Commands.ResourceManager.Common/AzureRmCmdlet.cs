@@ -21,6 +21,8 @@ using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Management.Automation;
+using System.Management.Automation.Host;
+using System.Reflection;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
@@ -141,6 +143,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             QosEvent = new AzurePSQoSEvent()
             {
                 CommandName = this.MyInvocation?.MyCommand?.Name,
+                ModuleName = this.GetType().GetTypeInfo().Assembly.GetName().Name,
+                ModuleVersion = this.GetType().GetTypeInfo().Assembly.GetName().Version.ToString(),
+                ClientRequestId = this._clientRequestId,
                 IsSuccess = true,
             };
 
@@ -157,6 +162,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             else
             {
                 QosEvent.Uid = "defaultid";
+            }
+
+            var cluHost = this.Host as CLUHost;
+            if (cluHost != null)
+            {
+                QosEvent.InputFromPipeline = cluHost.IsInputRedirected;
+                QosEvent.OutputToPipeline = cluHost.IsOutputRedirected;
+                QosEvent.HostVersion = cluHost.Version.ToString();
             }
         }
     }

@@ -75,12 +75,12 @@ namespace Microsoft.Azure.Commands.Common
         {
             if (client == null)
             {
-                throw new ArgumentNullException("interceptor");
+                throw new ArgumentNullException(nameof(client));
             }
 
             lock (_lock)
             {
-                // Disable IP collection
+                // TODO: Investigate whether this needs to be disabled
                 client.Context.Location.Ip = "0.0.0.0";
                 _telemetryClients.Add(client);
                 _threadSafeTelemetryClients = new List<TelemetryClient>(_telemetryClients);
@@ -107,39 +107,84 @@ namespace Microsoft.Azure.Commands.Common
 
         private static void LogUsageEvent(AzurePSQoSEvent qos)
         {
-            var tcEvent = new RequestTelemetry(qos.CommandName, qos.StartTime, qos.Duration, string.Empty, qos.IsSuccess);
-            tcEvent.Context.User.Id = qos.Uid;
-            tcEvent.Properties.Add("CommandName", qos.CommandName);
-            tcEvent.Properties.Add("CommandParameters", qos.Parameters);
-            tcEvent.Context.User.UserAgent = AzurePowerShell.UserAgentValue.ToString();
-            //tcEvent.Context.Device.OperatingSystem = Environment.OSVersion.VersionString;
+            Dictionary<string, double> eventMetrics = new Dictionary<string, double>();
+            eventMetrics.Add("Duration", qos.Duration.TotalMilliseconds);
+            Dictionary<string, string> eventProperties = GetPropertiesFromQos(qos);
 
             foreach (TelemetryClient client in TelemetryClients)
             {
-                client.TrackRequest(tcEvent);
+                LoadTelemetryClientContext(qos, client);
+                client.TrackEvent(qos.CommandName, eventProperties, eventMetrics);
+            }
+        }
+        private static void LogExceptionEvent(AzurePSQoSEvent qos)
+        {
+            Dictionary<string, double> eventMetrics = new Dictionary<string, double>();
+            eventMetrics.Add("Duration", qos.Duration.TotalMilliseconds);
+            Dictionary<string, string> eventProperties = GetPropertiesFromQos(qos);
+
+            foreach (TelemetryClient client in TelemetryClients)
+            {
+                LoadTelemetryClientContext(qos, client);
+                client.TrackException(qos.Exception, eventProperties, eventMetrics);
             }
         }
 
-        private static void LogExceptionEvent(AzurePSQoSEvent qos)
+        private static void LoadTelemetryClientContext(AzurePSQoSEvent qos, TelemetryClient client)
         {
-            //Log as customer event to exclude actual exception message
-            var tcEvent = new EventTelemetry("CmdletError");
-            tcEvent.Properties.Add("ExceptionType", qos.Exception.GetType().FullName);
-            tcEvent.Properties.Add("StackTrace", qos.Exception.StackTrace);
-            if (qos.Exception.InnerException != null)
+            client.Context.User.Id = qos.Uid;
+            client.Context.Session.Id = qos.ClientRequestId;
+            client.Context.User.AuthenticatedUserId = qos.Uid;
+            if (CLU.CLUEnvironment.Platform.IsMacOSX)
             {
-                tcEvent.Properties.Add("InnerExceptionType", qos.Exception.InnerException.GetType().FullName);
-                tcEvent.Properties.Add("InnerStackTrace", qos.Exception.InnerException.StackTrace);
+                client.Context.Device.OperatingSystem = "MacOS";
             }
-
-            tcEvent.Context.User.Id = qos.Uid;
-            tcEvent.Properties.Add("CommandName", qos.CommandName);
-            tcEvent.Properties.Add("CommandParameters", qos.Parameters);
-
-            foreach (TelemetryClient client in TelemetryClients)
+            else if (CLU.CLUEnvironment.Platform.IsUnix)
             {
-                client.TrackEvent(tcEvent);
+                client.Context.Device.OperatingSystem = "Unix";
             }
+            else
+            {
+                client.Context.Device.OperatingSystem = "Windows";
+            }
+        }
+
+        private static Dictionary<string, string> GetPropertiesFromQos(AzurePSQoSEvent qos)
+        {
+            Dictionary<string, string> eventProperties = new Dictionary<string, string>();
+            eventProperties.Add("IsSuccess", qos.IsSuccess.ToString());
+            eventProperties.Add("ModuleName", qos.ModuleName);
+            eventProperties.Add("ModuleVersion", qos.ModuleVersion);
+            eventProperties.Add("HostVersion", qos.HostVersion);
+            if (CLU.CLUEnvironment.Platform.IsMacOSX)
+            {
+                eventProperties.Add("OS", "MacOS");
+            }
+            else if (CLU.CLUEnvironment.Platform.IsUnix)
+            {
+                eventProperties.Add("OS", "Unix");
+            }
+            else
+            {
+                eventProperties.Add("OS", "Windows");
+            }
+            eventProperties.Add("CommandParameters", qos.Parameters);
+            eventProperties.Add("UserId", qos.Uid);
+            eventProperties.Add("x-ms-client-request-id", qos.ClientRequestId);
+            eventProperties.Add("UserAgent", AzurePowerShell.UserAgentValue.ToString());
+            if (qos.InputFromPipeline != null)
+            {
+                eventProperties.Add("InputFromPipeline", qos.InputFromPipeline.Value.ToString());
+            }
+            if (qos.OutputToPipeline != null)
+            {
+                eventProperties.Add("OutputToPipeline", qos.OutputToPipeline.Value.ToString());
+            }
+            foreach(var key in qos.CustomProperties.Keys)
+            {
+                eventProperties[key] = qos.CustomProperties[key];
+            }
+            return eventProperties;
         }
 
         public static bool IsMetricTermAccepted()
@@ -185,7 +230,7 @@ namespace Microsoft.Azure.Commands.Common
         {
             SHA256 sha256 = SHA256.Create();
             var bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(originInput));
-            return Encoding.UTF8.GetString(bytes);
+            return BitConverter.ToString(bytes);
         }
     }
 }
@@ -198,15 +243,23 @@ public class AzurePSQoSEvent
     public TimeSpan Duration { get; set; }
     public bool IsSuccess { get; set; }
     public string CommandName { get; set; }
+    public string ModuleName { get; set; }
+    public string ModuleVersion { get; set; }
+    public string HostVersion { get; set; }
     public string Parameters { get; set; }
+    public bool? InputFromPipeline { get; set; }
+    public bool? OutputToPipeline { get; set; }
     public Exception Exception { get; set; }
     public string Uid { get; set; }
+    public string ClientRequestId { get; set; }
+    public Dictionary<string, string> CustomProperties { get; private set; }
 
     public AzurePSQoSEvent()
     {
         StartTime = DateTimeOffset.Now;
         _timer = new Stopwatch();
         _timer.Start();
+        CustomProperties = new Dictionary<string, string>();
     }
 
     public void PauseQoSTimer()
@@ -232,3 +285,4 @@ public class AzurePSQoSEvent
             CommandName, IsSuccess, Duration, Exception);
     }
 }
+
