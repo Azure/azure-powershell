@@ -21,6 +21,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRmLoadBalancer")]
+    [CliCommandAlias("network;loadbalancer;rm")]
     public class RemoveAzureLoadBalancerCommand : LoadBalancerBaseCmdlet
     {
         [Alias("ResourceName")]

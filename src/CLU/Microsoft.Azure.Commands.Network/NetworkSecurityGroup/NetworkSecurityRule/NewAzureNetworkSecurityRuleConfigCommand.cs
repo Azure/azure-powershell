@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New, "AzureRmNetworkSecurityRuleConfig"), OutputType(typeof(PSSecurityRule))]
+    [CliCommandAlias("network;security;rule;config;new")]
     public class NewAzureNetworkSecurityRuleConfigCommand : AzureNetworkSecurityRuleConfigBase
     {
         public override void ExecuteCmdlet()

@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineUsage)]
     [OutputType(typeof(PSUsage))]
+    [CliCommandAlias("vm;usage;ls")]
     public class GetAzureVMUsageCommand : VirtualMachineUsageBaseCmdlet
     {
         [Parameter(

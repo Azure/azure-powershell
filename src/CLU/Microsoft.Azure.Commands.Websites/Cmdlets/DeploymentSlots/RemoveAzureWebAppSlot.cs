@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     /// this commandlet will let you delete an Azure web app slot
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRMWebAppSlot"), OutputType(typeof(AzureOperationResponse))]
+    [CliCommandAlias("webapp;slot;rm")]
     public class RemoveAzureWebAppSlotCmdlet : WebAppSlotBaseCmdlet
     {
        //always delete the slots, 

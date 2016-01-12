@@ -21,6 +21,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Add, "AzureRmLoadBalancerProbeConfig"), OutputType(typeof(PSLoadBalancer))]
+    [CliCommandAlias("network;loadbalancer;probe;config;add")]
     public class AddAzureLoadBalancerProbeConfigCommand : AzureLoadBalancerProbeConfigBase
     {
         [Parameter(

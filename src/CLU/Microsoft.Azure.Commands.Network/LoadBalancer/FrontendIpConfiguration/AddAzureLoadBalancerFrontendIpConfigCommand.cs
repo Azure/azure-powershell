@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Add, "AzureRmLoadBalancerFrontendIpConfig"), OutputType(typeof(PSLoadBalancer))]
+    [CliCommandAlias("network;loadbalancer;frontendip;config;add")]
     public class AddAzureLoadBalancerFrontendIpConfigCommand : AzureLoadBalancerFrontendIpConfigBase
     {
         [Parameter(

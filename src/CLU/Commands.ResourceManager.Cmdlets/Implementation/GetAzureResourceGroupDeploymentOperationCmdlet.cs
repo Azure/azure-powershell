@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Gets the deployment operation.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmResourceGroupDeploymentOperation"), OutputType(typeof(Resource<JToken>))]
+    [CliCommandAlias("resourcemanager;group;deployment;operation;ls")]
     public class GetAzureResourceGroupDeploymentOperationCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>

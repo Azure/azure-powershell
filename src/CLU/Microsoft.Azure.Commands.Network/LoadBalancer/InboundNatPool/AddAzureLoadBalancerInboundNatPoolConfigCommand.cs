@@ -21,6 +21,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Add, "AzureRmLoadBalancerInboundNatPoolConfig"), OutputType(typeof(PSLoadBalancer))]
+    [CliCommandAlias("network;loadbalancer;inboundnat;pool;config;add")]
     public class AddAzureLoadBalancerInboundNatPoolConfigCommand : AzureLoadBalancerInboundNatPoolConfigBase
     {
         [Parameter(

@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.Network
     using System.Linq;
 
     [Cmdlet(VerbsCommon.New, "AzureRmExpressRouteCircuitPeeringConfig"), OutputType(typeof(PSPeering))]
+    [CliCommandAlias("network;expressroute;circuit;peering;config;new")]
     public class NewAzureExpressRouteCircuitPeeringConfigCommand : AzureExpressRouteCircuitPeeringConfigBase
     {
         public override void ExecuteCmdlet()

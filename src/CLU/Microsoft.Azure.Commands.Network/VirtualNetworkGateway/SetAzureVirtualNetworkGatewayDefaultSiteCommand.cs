@@ -26,6 +26,7 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Set, "AzureRmVirtualNetworkGatewayDefaultSite"), OutputType(typeof(PSVirtualNetworkGateway))]
+    [CliCommandAlias("network;vnet;gateway;default;site;set")]
     public class SetAzureVirtualNetworkGatewayDefaultSiteCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Parameter(

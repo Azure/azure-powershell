@@ -19,6 +19,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New, "AzureRmLoadBalancerProbeConfig"), OutputType(typeof(PSProbe))]
+    [CliCommandAlias("network;loadbalancer;probe;config;new")]
     public class NewAzureLoadBalancerProbeConfigCommand : AzureLoadBalancerProbeConfigBase
     {
         public override void ExecuteCmdlet()

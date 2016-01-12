@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.Compute
         DefaultParameterSetName = WindowsParamSet),
     OutputType(
         typeof(PSVirtualMachine))]
+    [CliCommandAlias("vm;os;set")]
     public class SetAzureVMOperatingSystemCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         protected const string WindowsParamSet = "Windows";

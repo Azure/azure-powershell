@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmApplicationGatewayBackendHttpSettings"),
         OutputType(typeof(PSApplicationGatewayBackendHttpSettings), typeof(IEnumerable<PSApplicationGatewayBackendHttpSettings>))]
+    [CliCommandAlias("network;applicationgateway;backend;http;settings;ls")]
     public class GetAzureApplicationGatewayBackendHttpSettings : NetworkBaseCmdlet
     {
         [Parameter(

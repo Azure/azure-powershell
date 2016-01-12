@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Add, "AzureRmNetworkSecurityRuleConfig"), OutputType(typeof(PSNetworkSecurityGroup))]
+    [CliCommandAlias("network;security;rule;config;add")]
     public class AddAzureNetworkSecurityRuleConfigCommand : AzureNetworkSecurityRuleConfigBase
     {
         [Parameter(

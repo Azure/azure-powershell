@@ -2,7 +2,7 @@
 printf "\n=== Managing Web Apps in Azure ===\n"
 
 printf "\nSetup: Creating a new resource group: %s at location: %s.\n" "$groupName" "$location"
-az group create --name "$groupName" --location "$location"
+az resourcemanager group create --name "$groupName" --location "$location"
 
 appName1=`randomName testweb`
 appName2=`randomName testweb`
@@ -19,13 +19,13 @@ tier2="Standard"
 tier3="Premium"
 
 printf "\nSetup: Creating a new app service plan: %s under resource group: %s.\n" "$planName1" "$groupName"
-serverFarm=`az app service plan create -n "$planName1" -g "$groupName" -l "$location" --tier "$tier1"`
+serverFarm=`az appservice plan create -n "$planName1" -g "$groupName" -l "$location" --tier "$tier1"`
 
 printf "\n1: Creating a new webapp: %s under resource group: %s.\n" "$appName1" "$groupName"
 actual1=`az webapp create -g "$groupName" -l "$location" -n "$appName1" --plan "$planName1"`
 
 printf "\n2: Getting info about webapp: %s.\n" "$appName1"
-result=`az webapp get -g "$groupName" -n "$appName1"`
+result=`az webapp ls -g "$groupName" -n "$appName1"`
 [ $(echo $result | jq '.Name' --raw-output) == "$appName1" ]
 [ $(echo $result | jq '.serverFarmId' --raw-output) == $(echo $serverFarm | jq '.id' --raw-output) ]
 
@@ -35,30 +35,30 @@ actual2=`az webapp create -g "$groupName" -l "$location" -n "$appName2" --plan "
 [ $(echo $actual2 | jq '."properties.serverFarmId"' --raw-output) == $(echo $serverFarm | jq '.id' --raw-output) ]
 
 printf "\n4: Get WebApp by ResourceGroup: %s.\n" "$groupName"
-count=`az webapp get -g "$groupName"`
+count=`az webapp ls -g "$groupName"`
 [ $(echo $count | jq -s '. | length') -eq 2 ]
 
 printf "\n5: Get WebApp by App Plan :%s.\n" "$planName1"
-count=`az webapp get --plan "$serverFarm"`
+count=`az webapp ls --plan "$serverFarm"`
 [ $(echo $count | jq -s '. | length') -eq 2 ]
 
 printf "\n6: Get WebApp by location :%s.\n" "$location"
-count=`az webapp get -l "$location"`
+count=`az webapp ls -l "$location"`
 [ $(echo $count | jq -s '. | length') -ge 2 ]
 
 printf "\n7: Get WebApp under the current subscription.\n"
-count=`az webapp get`
+count=`az webapp ls`
 [ $(echo $count | jq -s '. | length') -ge 2 ]
 
 printf "\n8: Get WebApp metrics ['CPU', 'Requests'] for webapp: %s" "$appName1"
 start=`date +"%Y-%m-%dT%H:%M:%SZ"`
-metricsInfo=`az webapp metrics get -g "$groupName" -n "$appName1" --starttime "$start" --granularity PT1M --metrics "[\"CPU\", \"Requests\"]"`
+metricsInfo=`az webapp metrics ls -g "$groupName" -n "$appName1" --starttime "$start" --granularity PT1M --metrics "[\"CPU\", \"Requests\"]"`
 [ $(echo $metricsInfo | jq -s '. | length') -eq 2 ]
 [ $(echo $metricsInfo | jq -sr '. [0].name.value') == "Requests" ] || [ $(echo $metricsInfo | jq -sr '. [0].name.value') == "CPU" ]
 [ $(echo $metricsInfo | jq -sr '. [1].name.value') == "CPU" ] || [ $(echo $metricsInfo | jq -sr '. [1].name.value') == "Requests" ]
 
 printf "\n9: Creating a new app service plan: %s under resource group: %s.\n" "$planName2" "$groupName"
-serverFarm2=`az app service plan create -n "$planName2" -g "$groupName" -l "$location" --tier "$tier2"`
+serverFarm2=`az appservice plan create -n "$planName2" -g "$groupName" -l "$location" --tier "$tier2"`
 
 printf "\n10: Change webapp: %s to new service plan: %s\n" "$appName2" "$planName2"
 changePlan=`az webapp set -g "$groupName" -n $appName2 --plan $planName2`
@@ -123,11 +123,11 @@ start=`az webapp restart -g "$groupName" -n "$appName2"`
 [ $(echo $start | jq '."properties.state"' --raw-output) == "Running" ]
 
 printf "\n18: Creating a new app service plan: %s under resource group: %s with Premium tier.\n" "$planName3" "$groupName"
-serverFarm3=`az app service plan create -n "$planName3" -g "$groupName" -l "$location" --tier "$tier3"`
+serverFarm3=`az appservice plan create -n "$planName3" -g "$groupName" -l "$location" --tier "$tier3"`
 [ $(echo $serverFarm3 | jq '.name' --raw-output) == "$planName3" ]
 
 printf "\n19: Changing plan: %s to Premium tier.\n" "$planName1"
-plan1set=`az app service plan set -n "$planName1" -g "$groupName" --tier "$tier3"`
+plan1set=`az appservice plan set -n "$planName1" -g "$groupName" --tier "$tier3"`
 [ $(echo $plan1set | jq '.sku.tier' --raw-output) == "$tier3" ]
 
 printf "\n20: Cloning a new webapp: %s from an existing webapp: %s.\n" "$appName3" "$appName1"
@@ -135,12 +135,12 @@ clone=`az webapp create -g "$groupName" -l "$location" -n "$appName3" --plan "$p
 [ $(echo $clone | jq '.name' --raw-output) == "$appName3" ]
 
 printf "\n21: Get the newly created webapp: %s.\n" "$appName3"
-result3=`az webapp get -g "$groupName" -n "$appName3"`
+result3=`az webapp ls -g "$groupName" -n "$appName3"`
 [ $(echo $result3 | jq '.name' --raw-output) == "$appName3" ]
 
 #Need to ask the webapp team about the creation of traffic manager profile
 #printf "\n22: Creating a new app service plan: %s under resource group: %s with Premium tier.\n" "$planName4" "$groupName"
-#serverFarm4=`az app service plan create -n "$planName4" -g "$groupName" -l "$location" --tier "$tier3"`
+#serverFarm4=`az appservice plan create -n "$planName4" -g "$groupName" -l "$location" --tier "$tier3"`
 #[ $(echo $serverFarm4 | jq '.name' --raw-output) == "$planName4" ]
 
 #profileName=`randomName profile`
@@ -149,13 +149,13 @@ result3=`az webapp get -g "$groupName" -n "$appName3"`
 #[ $(echo $cloneTraffic | jq '.name' --raw-output) == "$appName4" ]
 
 #printf "\n24: Get the newly created webapp: %s.\n" "$appName4"
-#result4=`az webapp get -g "$groupName" -n "$appName4"`
+#result4=`az webapp ls -g "$groupName" -n "$appName4"`
 #[ $(echo $result4 | jq '.name' --raw-output) == "$appName4" ]
 
 filename=`randomName pf`
 filename+=".xml"
 printf "\n25: Get the publish profile for webapp: %s and save it to %s file\n." "$appName3" "$filename"
-pubprof=`az webapp profile get -g "$groupName" -n "$appName3" --outputfile "$filename"`
+pubprof=`az webapp profile ls -g "$groupName" -n "$appName3" --outputfile "$filename"`
 [ -e "$filename" ]
 [ -s "$filename" ]
 
@@ -165,22 +165,22 @@ az webapp profile reset -g "$groupName" -n "$appName3"
 filename2=`randomName pf`
 filename2+=".xml"
 printf "\n27: Get the publish profile for webapp: %s after resetting and save it to %s file\n." "$appName3" "$filename2"
-pubprof2=`az webapp profile get -g "$groupName" -n "$appName3" --outputfile "$filename2"`
+pubprof2=`az webapp profile ls -g "$groupName" -n "$appName3" --outputfile "$filename2"`
 [ -e "$filename2" ]
 [ -s "$filename2" ]
 
 filename3=`randomName pf`
 filename3+=".xml"
 printf "\n28: Get the publish profile for webapp: %s in format FileZilla3 and save it to %s file\n." "$appName3" "$filename3"
-az webapp profile get -g "$groupName" -n "$appName3" --outputfile "$filename3" --format "FileZilla3"
+az webapp profile ls -g "$groupName" -n "$appName3" --outputfile "$filename3" --format "FileZilla3"
 [ -e "$filename3" ]
 [ -s "$filename3" ]
 
 printf "\n29:Remove created webapps: %s, %s, %s, %s.\n" "$appName1" "$appName2" "$appName3" "$appName4"
-az webapp remove -g "$groupName" -n "$appName1" -f
-az webapp remove -g "$groupName" -n "$appName2" -f
-az webapp remove -g "$groupName" -n "$appName3" -f
-#az webapp remove -g "$groupName" -n "$appName4" -f
+az webapp rm -g "$groupName" -n "$appName1" -f
+az webapp rm -g "$groupName" -n "$appName2" -f
+az webapp rm -g "$groupName" -n "$appName3" -f
+#az webapp rm -g "$groupName" -n "$appName4" -f
 
 printf "\n30:Remove the resource group: %s.\n" "$groupName"
-deleterg=`az group remove -n "$groupName" --force`
+deleterg=`az resourcemanager group rm -n "$groupName" --force`

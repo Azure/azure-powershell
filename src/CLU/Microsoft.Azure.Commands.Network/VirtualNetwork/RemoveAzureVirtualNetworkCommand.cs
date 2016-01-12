@@ -19,6 +19,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
      [Cmdlet(VerbsCommon.Remove, "AzureRmVirtualNetwork")]
+    [CliCommandAlias("network;vnet;rm")]
     public class RemoveAzureVirtualNetworkCommand : VirtualNetworkBaseCmdlet
     {
         [Alias("ResourceName")]

@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// this commandlet will let you stop an Azure Web app
     /// </summary>
     [Cmdlet(VerbsLifecycle.Stop, "AzureRmWebApp")]
+    [CliCommandAlias("webapp;stop")]
     public class StopAzureWebAppCmdlet : WebAppBaseCmdlet
     {
         protected override void ProcessRecord()

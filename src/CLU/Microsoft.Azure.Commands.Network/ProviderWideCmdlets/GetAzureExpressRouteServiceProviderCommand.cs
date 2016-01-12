@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.Network
     using AutoMapper;
 
     [Cmdlet(VerbsCommon.Get, "AzureRmExpressRouteServiceProvider"), OutputType(typeof(PSExpressRouteServiceProvider))]
+    [CliCommandAlias("network;expressroute;service;resourcemanager;provider;ls")]
     public class GetAzureExpressRouteServiceProviderCommand : NetworkBaseCmdlet
     {
         public override void ExecuteCmdlet()

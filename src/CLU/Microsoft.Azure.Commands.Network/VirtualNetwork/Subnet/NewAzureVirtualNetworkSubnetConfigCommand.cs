@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New, "AzureRmVirtualNetworkSubnetConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSSubnet))]
+    [CliCommandAlias("network;vnet;subnet;config;new")]
     public class NewAzureVirtualNetworkSubnetConfigCommand : AzureVirtualNetworkSubnetConfigBase
     {
         public override void ExecuteCmdlet()

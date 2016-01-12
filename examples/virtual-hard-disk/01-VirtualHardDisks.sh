@@ -3,7 +3,7 @@ set -e
 printf "\n=== Managing Virtual Hard Disks in Azure Compute ===\n"
 
 printf "\n1. Creating a new resource group: %s and location: %s.\n" "$groupName" "$location"
-az group create -n "$groupName" --location "$location"
+az resourcemanager group create -n "$groupName" --location "$location"
 
 printf "\n2. Creating a new storage account '%s' in type '%s'.\n" "$storageAccountName" "$storageAccountType"
 az storage account new --resourcegroupname "$groupName" --name "$storageAccountName" --location "$location" --type "$storageAccountType"
@@ -25,4 +25,4 @@ else
 fi
 
 printf "\n6. Removing resource group: %s.\n" "$groupName"
-az group remove -n "$groupName" -f
+az resourcemanager group rm -n "$groupName" -f

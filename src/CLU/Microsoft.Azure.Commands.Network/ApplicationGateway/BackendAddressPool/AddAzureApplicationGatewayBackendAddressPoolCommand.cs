@@ -21,6 +21,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Add, "AzureRmApplicationGatewayBackendAddressPool"), OutputType(typeof(PSApplicationGateway))]
+    [CliCommandAlias("network;applicationgateway;backendaddress;pool;add")]
     public class AddAzureApplicationGatewayBackendAddressPoolCommand : AzureApplicationGatewayBackendAddressPoolBase
     {
         [Parameter(

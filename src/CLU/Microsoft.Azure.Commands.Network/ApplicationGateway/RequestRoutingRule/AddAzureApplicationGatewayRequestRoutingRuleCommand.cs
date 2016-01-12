@@ -21,6 +21,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Add, "AzureRmApplicationGatewayRequestRoutingRule"), OutputType(typeof(PSApplicationGateway))]
+    [CliCommandAlias("network;applicationgateway;request;routing;rule;add")]
     public class AddAzureApplicationGatewayRequestRoutingRuleCommand : AzureApplicationGatewayRequestRoutingRuleBase
     {
         [Parameter(

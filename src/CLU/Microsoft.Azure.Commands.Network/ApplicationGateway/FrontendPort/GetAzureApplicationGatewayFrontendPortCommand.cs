@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmApplicationGatewayFrontendPort"), 
         OutputType(typeof(PSApplicationGatewayFrontendPort), typeof(IEnumerable<PSApplicationGatewayFrontendPort>))]
+    [CliCommandAlias("network;applicationgateway;frontendipconfig;ls")]
     public class GetAzureApplicationGatewayFrontendPortCommand : NetworkBaseCmdlet
     {
         [Parameter(

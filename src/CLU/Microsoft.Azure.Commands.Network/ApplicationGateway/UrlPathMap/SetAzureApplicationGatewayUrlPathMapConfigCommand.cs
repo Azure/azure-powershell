@@ -21,6 +21,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Set, "AzureRmApplicationGatewayUrlPathMapConfig"), OutputType(typeof(PSApplicationGateway))]
+    [CliCommandAlias("network;applicationgateway;url;path;map;config;set")]
     public class SetAzureApplicationGatewayUrlPathMapConfigCommand : AzureApplicationGatewayUrlPathMapConfigBase
     {
         [Parameter(

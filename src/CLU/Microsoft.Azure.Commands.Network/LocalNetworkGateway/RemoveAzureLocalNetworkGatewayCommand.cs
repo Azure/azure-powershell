@@ -19,6 +19,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRmLocalNetworkGateway")]
+    [CliCommandAlias("network;localgateway;rm")]
     public class RemoveAzureLocalNetworkGatewayCommand : LocalNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]

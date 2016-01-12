@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsLifecycle.Stop, ProfileNouns.VirtualMachine, DefaultParameterSetName = ResourceGroupNameParameterSet)]
     [OutputType(typeof(PSComputeLongRunningOperation))]
+    [CliCommandAlias("vm;stop")]
     public class StopAzureVMCommand : VirtualMachineActionBaseCmdlet
     {
         [Parameter(

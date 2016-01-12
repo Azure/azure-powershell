@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmApplicationGatewayProbeConfig"), 
         OutputType(typeof(PSApplicationGatewayProbe), typeof(IEnumerable<PSApplicationGatewayProbe>))]
+    [CliCommandAlias("network;applicationgateway;probe;config;ls")]
     public class GetAzureApplicationGatewayProbeConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(

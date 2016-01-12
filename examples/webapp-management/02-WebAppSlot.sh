@@ -17,10 +17,10 @@ tier="Standard"
 apiversion="2015-08-01"
 resourceType="Microsoft.Web/sites"
 
-az group create --name "$groupName" --location "$location"
+az resourcemanager group create --name "$groupName" --location "$location"
 
 printf "\n1. Create a new app service plan %s " "$planName"
-az app service plan create -n "$planName" -g "$groupName" -l "$location" --tier "$tier"
+az appservice plan create -n "$planName" -g "$groupName" -l "$location" --tier "$tier"
 
 printf "\n2. Create a new web app %s " "$appName"
 webappInfo=`az webapp create -g "$groupName" -n "$appName" -l "$location" --plan "$planName"`
@@ -36,18 +36,18 @@ printf "\nValidating web app slot %s " "$slotname1"
 [ $(echo $slot1 | jq '.name' --raw-output) == "$appWithSlotName1" ]
 
 printf "\nValidating web app slot get for %s " "$slotname1"
-slot1=`az webapp slot get -g "$groupName" -n "$appName" --slot "$slotname1"`
+slot1=`az webapp slot ls -g "$groupName" -n "$appName" --slot "$slotname1"`
 [ $(echo $slot1 | jq '.name' --raw-output) == "$appWithSlotName1" ]
 
 printf "\nValidating web app slot via pipline obj for %s " "$slotname1"
-slot1=`echo "$webappInfo" | az webapp slot get --slot "$slotname1"`
+slot1=`echo "$webappInfo" | az webapp slot ls --slot "$slotname1"`
 
 printf "\n4. Create another web app slot %s " "$slotname2"
 slot2=`az webapp slot create -g "$groupName" --plan "$planName" -n "$appName" --slot "$slotname2"`
 appWithSlotName2="$appName/$slotname2"
 
 printf "\n5. Get the webapp slots:"
-slots=`az webapp slot get -g "$groupName" -n "$appName"`
+slots=`az webapp slot ls -g "$groupName" -n "$appName"`
 slotN1=`echo $slots | jq '.[0].name'`
 slotN2=`echo $slots | jq '.[1].name'`
 slotNames=`echo $slotN1 $slotN2`
@@ -74,7 +74,7 @@ startTime=`date +"%A, %B %d, %Y %X" --date "3 hour ago"`
 $metricsNames="\"('CPU', 'Requests')\""
 
 # !Not able to test since complex object issue.
-metrics=`az webapp slot metrics get -g "$groupName" -n "$appName" --slot "$slotname1" --granularity PT1M --starttime "$startTime" --endtime "$endTime" --metrics "$metricsNames"`
+metrics=`az webapp slot metrics ls -g "$groupName" -n "$appName" --slot "$slotname1" --granularity PT1M --starttime "$startTime" --endtime "$endTime" --metrics "$metricsNames"`
 
 printf "\nValidating web app slot metrics %s " "$slotname1" 
 for i in $metricsNames
@@ -125,18 +125,18 @@ printf "\nValidating web app slot %s Running " "$slotname1"
 # [ $(echo $slotClone | jq '.name' --raw-output) == "$appWithSlotNameClone" ]
 
 # printf "\nValidating web app slot get for %s " "$slotname1"
-# slot1=`az webapp slot get -g "$groupName" -n "$appName" --slot "$slotname1"`
+# slot1=`az webapp slot ls -g "$groupName" -n "$appName" --slot "$slotname1"`
 # [ $(echo $slot1 | jq '.name' --raw-output) == "$appWithSlotNameClone" ]
 #------- 
 
 # Cleanup
 printf "\n20. Remove web app slot: %s." "$slotname1"
-az webapp slot remove -g "$groupName" -n "$appName" --slot "$slotname1"
+az webapp slot rm -g "$groupName" -n "$appName" --slot "$slotname1"
 
 printf "\n20. Remove web app: %s." "$appName"
-az webapp remove -g "$groupName" -n "$appName"
+az webapp rm -g "$groupName" -n "$appName"
 
 printf "\n20. Remove app service plan: %s." "$planName"
-az app service plan remove -g "$groupName" -n "$planName"
+az appservice plan rm -g "$groupName" -n "$planName"
 
 printf "\n20. Remove resource group: %s." "$groupName"

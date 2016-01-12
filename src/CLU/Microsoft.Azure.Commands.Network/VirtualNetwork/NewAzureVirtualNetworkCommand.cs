@@ -25,6 +25,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New, "AzureRmVirtualNetwork"), OutputType(typeof(PSVirtualNetwork))]
+    [CliCommandAlias("network;vnet;new")]
     public class NewAzureVirtualNetworkCommand : VirtualNetworkBaseCmdlet
     {
         [Alias("ResourceName")]
