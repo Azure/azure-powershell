@@ -20,6 +20,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Management.Automation;
 using System.Management.Automation.Host;
+using Microsoft.CLU;
 
 namespace Microsoft.Azure.Commands.Common.Test.Mocks
 {
@@ -284,6 +285,8 @@ namespace Microsoft.Azure.Commands.Common.Test.Mocks
                     return new Version(1, 0 , 0);
                 }
             }
+
+            public override OutputFormat RequestedOutputFormat { get; set;  }
 
             class MockPSHostUI : PSHostUserInterface
             {
