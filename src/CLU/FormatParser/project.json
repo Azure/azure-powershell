@@ -5,23 +5,10 @@
   "tags": [ "" ],
   "projectUrl": "",
   "licenseUrl": "",
-
-  "dependencies": {
-    "Commands.ResourceManager.Cmdlets": "1.0.0",
-    "Microsoft.Azure.Commands.Compute": "1.0.0-*",
-    "Microsoft.Azure.Commands.Management.Storage": "1.0.0-*",
-    "Microsoft.Azure.Commands.Network": "1.0.0-*",
-    "Microsoft.Azure.Commands.Profile": "1.0.0-*",
-    "Microsoft.Azure.Commands.Resources": "1.0.0-*",
-    "Microsoft.Azure.Commands.Websites": "1.0.0-preview"
-  },
-
   "commands": {
     "FormatParser": "FormatParser"
   },
-
   "frameworks": {
-
     "dnxcore50": {
       "dependencies": {
         "Microsoft.NETCore": "5.0.1-beta-23516",
@@ -45,5 +32,14 @@
         "Microsoft.CLU": "1.0.0-*"
       }
     }
+  },
+  "dependencies": {
+    "Commands.ResourceManager.Cmdlets": "",
+    "Microsoft.Azure.Commands.Compute": "",
+    "Microsoft.Azure.Commands.Management.Storage": "",
+    "Microsoft.Azure.Commands.Network": "",
+    "Microsoft.Azure.Commands.Profile": "",
+    "Microsoft.Azure.Commands.Resources": "",
+    "Microsoft.Azure.Commands.Websites": ""
   }
 }
