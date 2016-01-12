@@ -19,10 +19,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Newtonsoft.Json.Linq;
     using Commands.Common;
+    using Models;    
+    
     /// <summary>
     /// A cmdlet that invokes a resource action.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Invoke, "AzureRmResourceAction", SupportsShouldProcess = true, DefaultParameterSetName = ResourceManipulationCmdletBase.ResourceIdParameterSet), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsLifecycle.Invoke, "AzureRmResourceAction", SupportsShouldProcess = true, DefaultParameterSetName = ResourceManipulationCmdletBase.ResourceIdParameterSet), 
+        OutputType(typeof(PSResourceObject))]
     public sealed class InvokAzureResourceActionCmdlet : ResourceManipulationCmdletBase
     {
         /// <summary>
