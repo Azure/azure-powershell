@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
             helper.EnvironmentVariables.Add("appName1", helper.GenerateName("testweb"));
             helper.EnvironmentVariables.Add("appName2", helper.GenerateName("testweb"));
             helper.EnvironmentVariables.Add("appName3", helper.GenerateName("testweb"));
+            helper.EnvironmentVariables.Add("appName4", helper.GenerateName("testweb"));
             helper.EnvironmentVariables.Add("planName1", helper.GenerateName("testplan"));
             helper.EnvironmentVariables.Add("planName2", helper.GenerateName("testplan"));
             helper.EnvironmentVariables.Add("planName3", helper.GenerateName("testplan"));

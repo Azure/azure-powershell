@@ -13,6 +13,7 @@ printf "\nSetup: Creating a new resource group: %s at location: %s.\n" "$groupNa
 # appName1=`randomName testweb`
 # appName2=`randomName testweb`
 # appName3=`randomName testweb`
+# appName4=`randomName testweb`
 # planName1=`randomName testplan`
 # planName2=`randomName testplan`
 # planName3=`randomName testplan`
@@ -143,30 +144,29 @@ printf "\n18. Create a new web app for clone testing"
 location1="eastus"
 
 az app service plan set -n "$planName1" -g "$groupName" --tier "$tier2"
-webappInfo2=`az webapp create -g "$groupName" -n "$appName2" -l "$location" --plan "$planName2"`
+webappInfo2=`az webapp create -g "$groupName" -n "$appName3" -l "$location" --plan "$planName1"`
 
 printf "\n19. Clone web app slot to a slot."
-slotClone=`az webapp slot create -g "$groupName" -n "$appName2" --slot "$slotname3" --sourcewebapp "$webappInfo2"`
-appWithSlotNameClone="$appName2/$slotname3"
+slotClone=`az webapp slot create -g "$groupName" -n "$appName3" --slot "$slotname3" --sourcewebapp "$webappInfo2"`
+appWithSlotNameClone="$appName3/$slotname3"
 
 printf "\nValidating cloned web app slot %s " "$slotname3"
 [ $(echo $slotClone | jq '.name' --raw-output) == "$appWithSlotNameClone" ]
 
 printf "\nValidating web app slot get for %s " "$slotname3"
-slotClone=`az webapp slot get -g "$groupName" -n "$appName2" --slot "$slotname3"`
+slotClone=`az webapp slot get -g "$groupName" -n "$appName3" --slot "$slotname3"`
 [ $(echo $slotClone | jq '.name' --raw-output) == "$appWithSlotNameClone" ]
 
 printf "\n20. Create a new web app for clone testing"
-slot2=`az webapp slot create -g "$groupName" --plan "$planName2" -n "$appName2" --slot "$slotname3"`
-slotN1="$appName2/$slotname3"
+slot2=`az webapp slot create -g "$groupName" --plan "$planName1" -n "$appName3" --slot "$slotname3"`
 
 printf "\n21. Create a new web app for clone testing"
 servicePlan=`az app service plan create -n "$planName3" -g "$groupName" -l "$location1" --tier "$tier2"`
-webappInfo3=`az webapp create -g "$groupName" -n "$appName3" -l "$location1" --plan "$planName3"`
-slot3=`az webapp slot create -g "$groupName" -n "$appName3" --slot "$slotname3" --sourcewebapp "$webappInfo3"`
+webappInfo3=`az webapp create -g "$groupName" -n "$appName4" -l "$location1" --plan "$planName3"`
+slot3=`az webapp slot create -g "$groupName" --plan "$planName3" -n "$appName4" --slot "$slotname3" --sourcewebapp "$slot2"`
 
 printf "\nValidating web app slot get for %s " "$slotname3" 
-appWithSlotName3="$appName3/$slotname3"
+appWithSlotName3="$appName4/$slotname3"
 [ $(echo $slot3 | jq '.name' --raw-output) == "$appWithSlotName3" ]
 
 # Cleanup
