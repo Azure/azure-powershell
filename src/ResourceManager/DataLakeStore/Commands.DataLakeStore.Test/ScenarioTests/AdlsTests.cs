@@ -24,28 +24,28 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAdlsAccount()
         {
-            RunPowerShellTest(string.Format("Test-DataLakeStoreAccount -resourceGroupName {0} -accountName {1} -location '{2}'", this.resourceGroupName, this.dataLakeAccountName, AdlsTestsBase.resourceGroupLocation));
+            NewInstance.RunPsTest(string.Format("Test-DataLakeStoreAccount -location '{0}'", AdlsTestsBase.resourceGroupLocation));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAdlsFileSystem()
         {
-            RunPowerShellTest(string.Format("Test-DataLakeStoreFileSystem -resourceGroupName {0} -accountName {1} -fileToCopy '{2}' -location '{3}'", this.resourceGroupName, this.dataLakeAccountName, ".\\ScenarioTests\\" + this.GetType().Name + ".ps1", AdlsTestsBase.resourceGroupLocation));
+            NewInstance.RunPsTest(string.Format("Test-DataLakeStoreFileSystem -fileToCopy '{0}' -location '{1}'", ".\\ScenarioTests\\" + this.GetType().Name + ".ps1", AdlsTestsBase.resourceGroupLocation));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAdlsFileSystemPermissions()
         {
-            RunPowerShellTest(string.Format("Test-DataLakeStoreFileSystemPermissions -resourceGroupName {0} -accountName {1} -location '{2}'", this.resourceGroupName, this.dataLakeAccountName, AdlsTestsBase.resourceGroupLocation));
+            NewInstance.RunPsTest(string.Format("Test-DataLakeStoreFileSystemPermissions -location '{0}'", AdlsTestsBase.resourceGroupLocation));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNegativeAdlsAccount()
         {
-            RunPowerShellTest(string.Format("Test-NegativeDataLakeStoreAccount -resourceGroupName {0} -accountName {1} -location '{2}'", this.resourceGroupName, this.dataLakeAccountName, AdlsTestsBase.resourceGroupLocation));
+            NewInstance.RunPsTest(string.Format("Test-NegativeDataLakeStoreAccount -location '{0}'", AdlsTestsBase.resourceGroupLocation));
         }
     }
 }

@@ -15,6 +15,7 @@
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
@@ -26,8 +27,8 @@ using Hyak.Common;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Common.Authentication.Properties;
-using Microsoft.Azure.Management.DataLake.StoreFileSystem;
-using Microsoft.Azure.Management.DataLake.StoreFileSystem.Models;
+using Microsoft.Azure.Management.DataLake.Store;
+using Microsoft.Azure.Management.DataLake.Store.Models;
 using Microsoft.Azure.Management.DataLake.StoreUploader;
 
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
@@ -54,9 +55,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             }
 
             var creds = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(context);
-            _client = AzureSession.ClientFactory.CreateCustomClient<DataLakeStoreFileSystemManagementClient>(creds,
+            _client = AzureSession.ClientFactory.CreateCustomArmClient<DataLakeStoreFileSystemManagementClient>(creds,
                 context.Environment.GetEndpoint(AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix));
-            _client.UserAgentSuffix = " - PowerShell Client";
             uniqueActivityIdGenerator = new Random();
         }
 
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             try
             {
                 var status = _client.FileSystem.GetFileStatus(path, accountName);
-                itemType = status.FileStatus.Type;
+                itemType = status.FileStatus.Type ?? FileType.File;
                 return true;
             }
             catch (CloudException)
@@ -154,12 +154,14 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         public bool SetReplication(string filePath, string accountName, short replicationValue)
         {
-            return _client.FileSystem.SetReplication(filePath, accountName, replicationValue).OperationResult;
+            var boolean = _client.FileSystem.SetReplication(filePath, accountName, replicationValue).Boolean;
+            return boolean != null && boolean.Value;
         }
 
         public bool RenameFileOrDirectory(string sourcePath, string accountName, string destinationPath)
         {
-            return _client.FileSystem.Rename(sourcePath, accountName, destinationPath).OperationResult;
+            var boolean = _client.FileSystem.Rename(sourcePath, accountName, destinationPath).Boolean;
+            return boolean != null && boolean.Value;
         }
 
         public void DownloadFile(string filePath, string accountName, string destinationFilePath,
@@ -180,7 +182,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 Directory.CreateDirectory(Path.GetDirectoryName(destinationFilePath));
             }
 
-            var lengthToUse = GetFileStatus(filePath, accountName).Length;
+            var lengthToUse = GetFileStatus(filePath, accountName).Length.Value;
             var numRequests = Math.Ceiling(lengthToUse/MaximumBytesPerDownloadRequest);
 
             using (var fileStream = new FileStream(destinationFilePath, FileMode.CreateNew))
@@ -202,14 +204,14 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                         cmdletCancellationToken.ThrowIfCancellationRequested();
                         progress.PercentComplete = (int) Math.Ceiling((i/numRequests)*100);
                         UpdateProgress(progress, cmdletRunningRequest);
-                        var responseBytes =
+                        var responseStream =
                             ReadFromFile(
                                 filePath,
                                 accountName,
                                 currentOffset,
                                 bytesToRequest);
-
-                        fileStream.Write(responseBytes, 0, responseBytes.Length);
+                        
+                        responseStream.CopyTo(fileStream);
                         currentOffset += bytesToRequest;
                     }
                 }
@@ -231,7 +233,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         public Stream PreviewFile(string filePath, string accountName, long bytesToPreview,
             CancellationToken cmdletCancellationToken, Cmdlet cmdletRunningRequest = null)
         {
-            var lengthToUse = GetFileStatus(filePath, accountName).Length;
+            var lengthToUse = GetFileStatus(filePath, accountName).Length.Value;
             if (bytesToPreview <= lengthToUse && bytesToPreview > 0)
             {
                 lengthToUse = bytesToPreview;
@@ -267,14 +269,14 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                         lengthToUse -= bytesToRequest;
                     }
 
-                    var responseBytes =
+                    var responseStream =
                         ReadFromFile(
                             filePath,
                             accountName,
                             currentOffset,
                             bytesToRequest);
 
-                    byteStream.Write(responseBytes, 0, responseBytes.Length);
+                    responseStream.CopyTo(byteStream);
                     currentOffset += bytesToRequest;
                 }
             }
@@ -294,15 +296,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             return byteStream;
         }
 
-        public byte[] ReadFromFile(string filePath, string accountName, long offset, long bytesToRead)
+        public Stream ReadFromFile(string filePath, string accountName, long offset, long bytesToRead)
         {
-            var parameters = new FileOpenParameters
-            {
-                Length = bytesToRead,
-                Offset = offset
-            };
-
-            return _client.FileSystem.DirectOpen(filePath, accountName, parameters).FileContents;
+            return _client.FileSystem.Open(filePath, accountName, bytesToRead, offset);   
         }
 
         public string GetHomeDirectory(string accountName)
@@ -312,12 +308,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         public FileStatuses GetFileStatuses(string folderPath, string accountName, int maxEntriesReturned = 100)
         {
-            var parameters = new DataLakeStoreFileSystemListParameters
-            {
-                Top = maxEntriesReturned
-            };
-
-            return _client.FileSystem.ListFileStatus(folderPath, accountName, parameters).FileStatuses;
+            return _client.FileSystem.ListFileStatus(folderPath, accountName, maxEntriesReturned).FileStatuses;
         }
 
         public FileStatusProperties GetFileStatus(string filePath, string accountName)
@@ -332,7 +323,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         public bool DeleteFileOrFolder(string path, string accountName, bool isRecursive)
         {
-            return _client.FileSystem.Delete(path, accountName, isRecursive).OperationResult;
+            var boolean = _client.FileSystem.Delete(path, accountName, isRecursive).Boolean;
+            return boolean != null && boolean.Value;
         }
 
         public void CreateSymLink(string sourcePath, string accountName, string destinationPath,
@@ -352,21 +344,18 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         public void CreateFile(string filePath, string accountName, Stream contents = null, bool overwrite = false,
             string permissions = null)
         {
-            _client.FileSystem.DirectCreate(filePath, accountName, contents, new FileCreateParameters
-            {
-                Overwrite = overwrite,
-                Permission = permissions
-            });
+            _client.FileSystem.Create(filePath, accountName, contents, overwrite: overwrite, permission: permissions);
         }
 
         public bool CreateDirectory(string dirPath, string accountName, string permissions = null)
         {
-            return _client.FileSystem.Mkdirs(dirPath, accountName, permissions).OperationResult;
+            var boolean = _client.FileSystem.Mkdirs(dirPath, accountName, permissions).Boolean;
+            return boolean != null && boolean.Value;
         }
 
         public void AppendToFile(string filePath, string accountName, Stream contents)
         {
-            _client.FileSystem.DirectAppend(filePath, accountName, contents, null);
+            _client.FileSystem.Append(filePath, accountName, contents, null);
         }
 
         public void CopyFile(string destinationPath, string accountName, string sourcePath,

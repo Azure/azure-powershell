@@ -6,12 +6,13 @@ function Test-DataLakeStoreAccount
 {
     param
 	(
-		$resourceGroupName,
-		$accountName,
 		$location = "West US"
 	)
 	
     # Creating Account
+	$resourceGroupName = Get-ResourceGroupName
+	$accountName = Get-DataLakeStoreAccountName
+	New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
     $accountCreated = New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location
     
     Assert-AreEqual $accountName $accountCreated.Name
@@ -99,13 +100,14 @@ function Test-DataLakeStoreFileSystem
 {
 	param
 	(
-		$resourceGroupName,
-		$accountName,
 		$fileToCopy,
 		$location = "West US"
 	)
 
     # Creating Account
+	$resourceGroupName = Get-ResourceGroupName
+	$accountName = Get-DataLakeStoreAccountName
+	New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
     $accountCreated = New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location
     
     Assert-AreEqual $accountName $accountCreated.Name
@@ -235,12 +237,13 @@ function Test-DataLakeStoreFileSystemPermissions
 {
 	param
 	(
-		$resourceGroupName,
-		$accountName,
 		$location = "West US"
 	)
 
     # Creating Account
+	$resourceGroupName = Get-ResourceGroupName
+	$accountName = Get-DataLakeStoreAccountName
+	New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
     $accountCreated = New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location
     
     Assert-AreEqual $accountName $accountCreated.Name
@@ -319,13 +322,14 @@ function Test-NegativeDataLakeStoreAccount
 {
     param
 	(
-		$resourceGroupName,
-		$accountName,
 		$location = "West US",
 		$fakeaccountName = "psfakedataLakeaccounttest"
 	)
 	
     # Creating Account
+	$resourceGroupName = Get-ResourceGroupName
+	$accountName = Get-DataLakeStoreAccountName
+	New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
     $accountCreated = New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location
     
     Assert-AreEqual $accountName $accountCreated.Name

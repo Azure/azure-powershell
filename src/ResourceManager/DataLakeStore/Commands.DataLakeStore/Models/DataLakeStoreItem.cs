@@ -18,7 +18,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Hyak.Common;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
-using Microsoft.Azure.Management.DataLake.StoreFileSystem.Models;
+using Microsoft.Azure.Management.DataLake.Store.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             this.Type = property.Type;
 
             // create two new properties
-            this.LastWriteTime = new DateTime(1970, 1, 1, 0, 0, 0, 0).AddMilliseconds(this.ModificationTime).ToLocalTime();
+            this.LastWriteTime = new DateTime(1970, 1, 1, 0, 0, 0, 0).AddMilliseconds((long)this.ModificationTime).ToLocalTime();
             this.Name = this.PathSuffix;
         }
     }

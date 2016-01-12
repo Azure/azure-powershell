@@ -17,7 +17,7 @@ using System.Management.Automation;
 using Hyak.Common;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
-using Microsoft.Azure.Management.DataLake.StoreFileSystem.Models;
+using Microsoft.Azure.Management.DataLake.Store.Models;
 using Microsoft.PowerShell.Commands;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
@@ -74,7 +74,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 }
             }
 
-            string toReturn;
             if (Folder)
             {
                 DataLakeStoreFileSystemClient.CreateDirectory(Path.TransformedPath, Account);
