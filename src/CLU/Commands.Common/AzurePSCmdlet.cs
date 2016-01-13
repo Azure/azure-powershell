@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Commands.Utilities.Common
         /// </summary>
         protected override void EndProcessing()
         {
-            LogQosEvent();
+            LogQosEvent(true);
             string message = string.Format("{0} end processing.", this.GetType().Name);
             WriteDebugWithTimestamp(message);
 
@@ -354,7 +354,7 @@ namespace Microsoft.Azure.Commands.Utilities.Common
             {
                 QosEvent.Exception = errorRecord.Exception;
                 QosEvent.IsSuccess = false;
-                LogQosEvent(true);
+                LogQosEvent();
             }
             
             base.WriteError(errorRecord);
@@ -507,7 +507,7 @@ namespace Microsoft.Azure.Commands.Utilities.Common
         /// <summary>
         /// Invoke this method when the cmdlet is completed or terminated.
         /// </summary>
-        protected void LogQosEvent(bool waitForMetricSending = false)
+        protected void LogQosEvent()
         {
             if (QosEvent == null)
             {
@@ -531,7 +531,7 @@ namespace Microsoft.Azure.Commands.Utilities.Common
             try
             {
                 MetricHelper.LogQoSEvent(QosEvent, IsUsageMetricEnabled, IsErrorMetricEnabled);
-                MetricHelper.FlushMetric(waitForMetricSending);
+                MetricHelper.FlushMetric();
                 WriteDebug("Finish sending metric.");
             }
             catch (Exception e)

@@ -107,51 +107,54 @@ namespace Microsoft.Azure.Commands.Common
 
         private static void LogUsageEvent(AzurePSQoSEvent qos)
         {
-            Dictionary<string, double> eventMetrics = new Dictionary<string, double>();
-            eventMetrics.Add("Duration", qos.Duration.TotalMilliseconds);
-            Dictionary<string, string> eventProperties = GetPropertiesFromQos(qos);
-
             foreach (TelemetryClient client in TelemetryClients)
             {
-                LoadTelemetryClientContext(qos, client);
-                client.TrackEvent(qos.CommandName, eventProperties, eventMetrics);
+                var pageViewTelemetry = new PageViewTelemetry
+                {
+                    Name = qos.CommandName,
+                    Duration = qos.Duration,
+                    Timestamp = qos.StartTime
+                };
+                LoadTelemetryClientContext(qos, pageViewTelemetry.Context);
+                PopulatePropertiesFromQos(qos, pageViewTelemetry.Properties);
+                client.TrackPageView(pageViewTelemetry);
             }
         }
         private static void LogExceptionEvent(AzurePSQoSEvent qos)
         {
             Dictionary<string, double> eventMetrics = new Dictionary<string, double>();
             eventMetrics.Add("Duration", qos.Duration.TotalMilliseconds);
-            Dictionary<string, string> eventProperties = GetPropertiesFromQos(qos);
-
+            
             foreach (TelemetryClient client in TelemetryClients)
             {
-                LoadTelemetryClientContext(qos, client);
+                Dictionary<string, string> eventProperties = new Dictionary<string, string>();
+                LoadTelemetryClientContext(qos, client.Context);
+                PopulatePropertiesFromQos(qos, eventProperties);
                 client.TrackException(qos.Exception, eventProperties, eventMetrics);
             }
         }
 
-        private static void LoadTelemetryClientContext(AzurePSQoSEvent qos, TelemetryClient client)
+        private static void LoadTelemetryClientContext(AzurePSQoSEvent qos, TelemetryContext clientContext)
         {
-            client.Context.User.Id = qos.Uid;
-            client.Context.Session.Id = qos.ClientRequestId;
-            client.Context.User.AuthenticatedUserId = qos.Uid;
+            clientContext.User.Id = qos.Uid;
+            clientContext.User.AuthenticatedUserId = qos.Uid;
+            clientContext.Session.Id = qos.ClientRequestId;
             if (CLU.CLUEnvironment.Platform.IsMacOSX)
             {
-                client.Context.Device.OperatingSystem = "MacOS";
+                clientContext.Device.OperatingSystem = "MacOS";
             }
             else if (CLU.CLUEnvironment.Platform.IsUnix)
             {
-                client.Context.Device.OperatingSystem = "Unix";
+                clientContext.Device.OperatingSystem = "Unix";
             }
             else
             {
-                client.Context.Device.OperatingSystem = "Windows";
+                clientContext.Device.OperatingSystem = "Windows";
             }
         }
 
-        private static Dictionary<string, string> GetPropertiesFromQos(AzurePSQoSEvent qos)
+        private static void PopulatePropertiesFromQos(AzurePSQoSEvent qos, IDictionary<string, string> eventProperties)
         {
-            Dictionary<string, string> eventProperties = new Dictionary<string, string>();
             eventProperties.Add("IsSuccess", qos.IsSuccess.ToString());
             eventProperties.Add("ModuleName", qos.ModuleName);
             eventProperties.Add("ModuleVersion", qos.ModuleVersion);
@@ -184,7 +187,6 @@ namespace Microsoft.Azure.Commands.Common
             {
                 eventProperties[key] = qos.CustomProperties[key];
             }
-            return eventProperties;
         }
 
         public static bool IsMetricTermAccepted()
@@ -192,22 +194,13 @@ namespace Microsoft.Azure.Commands.Common
             return AzurePSCmdlet.IsDataCollectionAllowed();
         }
 
-        public static void FlushMetric(bool waitForMetricSending)
+        public static void FlushMetric()
         {
             if (!IsMetricTermAccepted())
             {
                 return;
             }
 
-            var flushTask = Task.Run(() => FlushAi());
-            if (waitForMetricSending)
-            {
-                Task.WaitAll(new[] { flushTask }, FlushTimeoutInMilli);
-            }
-        }
-
-        private static void FlushAi()
-        {
             try
             {
                 foreach (TelemetryClient client in TelemetryClients)
