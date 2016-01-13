@@ -557,6 +557,33 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot find the WadCfg end element in the config..
+        /// </summary>
+        public static string DiagnosticsExtensionXmlConfigNoWadCfgEndTag {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionXmlConfigNoWadCfgEndTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot find the WadCfg element in the config..
+        /// </summary>
+        public static string DiagnosticsExtensionXmlConfigNoWadCfgStartTag {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionXmlConfigNoWadCfgStartTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WadCfg start element in the config is not matching the end element..
+        /// </summary>
+        public static string DiagnosticsExtensionXmlConfigWadCfgTagNotMatch {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionXmlConfigWadCfgTagNotMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot find the // in the endpoint {0}.
         /// </summary>
         public static string DiagnosticsSlashNotFound {

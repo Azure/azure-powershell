@@ -71,18 +71,18 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
             int wadCfgBeginIndex = config.IndexOf("<WadCfg>");
             if (wadCfgBeginIndex == -1)
             {
-                throw new ArgumentException("Cannot find the WadCfg element in the config.");
+                throw new ArgumentException(Properties.Resources.DiagnosticsExtensionXmlConfigNoWadCfgStartTag);
             }
 
             int wadCfgEndIndex = config.IndexOf("</WadCfg>");
             if (wadCfgEndIndex == -1)
             {
-                throw new ArgumentException("Cannot find the WadCfg end element in the config.");
+                throw new ArgumentException(Properties.Resources.DiagnosticsExtensionXmlConfigNoWadCfgEndTag);
             }
 
             if (wadCfgEndIndex <= wadCfgBeginIndex)
             {
-                throw new ArgumentException("WadCfg start element in the config is not matching the end element.");
+                throw new ArgumentException(Properties.Resources.DiagnosticsExtensionXmlConfigWadCfgTagNotMatch);
             }
 
             string encodedConfiguration = Convert.ToBase64String(
