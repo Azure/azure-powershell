@@ -10,13 +10,6 @@ pingwebapp() {
 #setup
 printf "\nSetup: Creating a new resource group: %s at location: %s.\n" "$groupName" "$location"
 
-# appName1=`randomName testweb`
-# appName2=`randomName testweb`
-# appName3=`randomName testweb`
-# appName4=`randomName testweb`
-# planName1=`randomName testplan`
-# planName2=`randomName testplan`
-# planName3=`randomName testplan`
 slotname1="staging"
 slotname2="testing"
 slotname3="staging"
