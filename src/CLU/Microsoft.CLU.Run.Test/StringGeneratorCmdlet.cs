@@ -8,9 +8,10 @@ using System.Management.Automation;
 namespace Microsoft.CLU.Test
 {
     [Cmdlet(VerbsCommon.New, "String")]
-    public class StringGenerator : PSCmdlet
+    [CliCommandAlias("_generatedstring;create")]
+    public class StringGeneratorCmdlet : PSCmdlet
     {
-        public StringGenerator()
+        public StringGeneratorCmdlet()
         {
             Count = 10;
             StringFormat = "String {0}";
