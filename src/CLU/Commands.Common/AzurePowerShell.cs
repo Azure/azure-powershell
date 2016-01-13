@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Common
         public const string DataStoreVariable = "_azpsh_data_store";
 
         public static ProductInfoHeaderValue UserAgentValue = new ProductInfoHeaderValue(
-            "AzurePowershell",
+            "CLU",
             string.Format("v{0}", AzurePowerShell.AssemblyVersion));
 
         public static String ProfileDirectory = Directory.GetCurrentDirectory();
