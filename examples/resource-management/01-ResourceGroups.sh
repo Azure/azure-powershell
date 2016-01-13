@@ -6,7 +6,7 @@ printf "\n1. Creating a new resource group: %s and location: %s.\n" "$groupName"
 az resourcemanager group create -n "$groupName" --location "$location"
 
 printf "\n2. Updating the group %s with tags.\n" "$groupName"
-resourcemanager group set -n "$groupName" --tags "[{\"Value\":\"testval\",\"Name\":\"testtag\"}]"
+az resourcemanager group set -n "$groupName" --tags "[{\"Value\":\"testval\",\"Name\":\"testtag\"}]"
 
 printf "\n3. Get information about resource group : %s.\n" "$groupName"
 resourceGroupInfo=`az resourcemanager group ls -n $groupName`
