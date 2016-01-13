@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Commands.Utilities.Common
         /// </summary>
         protected override void EndProcessing()
         {
-            LogQosEvent(true);
+            LogQosEvent();
             string message = string.Format("{0} end processing.", this.GetType().Name);
             WriteDebugWithTimestamp(message);
 
