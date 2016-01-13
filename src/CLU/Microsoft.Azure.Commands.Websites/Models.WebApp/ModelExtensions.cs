@@ -1,5 +1,4 @@
-﻿
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,27 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
-using System.Management.Automation;
-using Microsoft.Azure.Commands.Websites.Models.WebApp;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.Azure.Management.WebSites.Models;
+using Newtonsoft.Json;
 
-namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
+namespace Microsoft.Azure.Commands.Websites.Models.WebApp
 {
-    /// <summary>
-    /// this commandlet will let you stop an Azure Web app slot
-    /// </summary>
-    [Cmdlet(VerbsLifecycle.Stop, "AzureRMWebAppSlot"), OutputType(typeof(PSSite))]
-    public class StopAzureWebAppSlotCmdlet : WebAppSlotBaseCmdlet
+    public static class ModelExtensions
     {
-        protected override void ProcessRecord()
+        public static IEnumerable<PSServerFarmWithRichSku> GetValues(this ServerFarmCollection collection)
         {
-            base.ProcessRecord();
-            WebsitesClient.StopWebApp(ResourceGroupName, Name, Slot);
-            WriteObject((PSSite)WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot));
+            return collection?.Value.Select(f => (PSServerFarmWithRichSku)f );
         }
+
     }
 }
-
-
-

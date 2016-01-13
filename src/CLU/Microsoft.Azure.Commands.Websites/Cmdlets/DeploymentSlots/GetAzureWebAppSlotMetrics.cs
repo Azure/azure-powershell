@@ -15,6 +15,8 @@
 
 using System;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Websites.Models.WebApp;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 {
@@ -22,6 +24,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     /// this commandlet will let you get Azure Web App slot metrics
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRMWebAppSlotMetrics")]
+    [OutputType(typeof(PSResourceMetric))]
     public class GetAzureWebAppSlotMetricsCmdlet : WebAppSlotBaseCmdlet
     {
         [Parameter(Position = 3, Mandatory = true, HelpMessage = "Names of web app metrics")]
@@ -47,7 +50,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
-            WriteObject(WebsitesClient.GetWebAppUsageMetrics(ResourceGroupName, Name, Slot, Metrics, StartTime, EndTime, Granularity, InstanceDetails.IsPresent));
+            WriteObject(WebsitesClient.GetWebAppUsageMetrics(ResourceGroupName, Name, Slot, Metrics, StartTime, EndTime, Granularity, InstanceDetails.IsPresent).Select(m => (PSResourceMetric)m), true);
         }
     }
 }
