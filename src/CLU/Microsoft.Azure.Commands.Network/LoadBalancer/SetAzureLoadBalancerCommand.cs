@@ -23,6 +23,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Set, "AzureRmLoadBalancer"), OutputType(typeof(PSLoadBalancer))]
+    [CliCommandAlias("loadbalancer;set")]
     public class SetAzureLoadBalancerCommand : LoadBalancerBaseCmdlet
     {
         [Parameter(

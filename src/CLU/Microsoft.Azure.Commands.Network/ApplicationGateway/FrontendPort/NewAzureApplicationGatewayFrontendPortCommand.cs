@@ -19,6 +19,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewayFrontendPort"), OutputType(typeof(PSApplicationGatewayFrontendPort))]
+    [CliCommandAlias("applicationgateway;frontendipconfig;new")]
     public class NewAzureApplicationGatewayFrontendPortCommand : AzureApplicationGatewayFrontendPortBase
     {
         public override void ExecuteCmdlet()

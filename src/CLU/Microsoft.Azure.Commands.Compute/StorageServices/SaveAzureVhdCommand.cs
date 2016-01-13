@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,6 +24,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute.StorageServices
 {
     [Cmdlet(VerbsData.Save, ProfileNouns.Vhd), OutputType(typeof(VhdDownloadContext))]
+    [CliCommandAlias("vhd;save")]
     public class SaveAzureVhdCommand : ComputeClientBaseCmdlet
     {
         private const int DefaultNumberOfUploaderThreads = 8;

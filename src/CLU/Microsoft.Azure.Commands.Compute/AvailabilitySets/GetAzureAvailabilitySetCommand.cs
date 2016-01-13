@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Get, ProfileNouns.AvailabilitySet)]
     [OutputType(typeof(PSAvailabilitySet))]
+    [CliCommandAlias("vm;availabilityset;ls")]
     public class GetAzureAvailabilitySetCommand : AvailabilitySetBaseCmdlet
     {
         [Parameter(

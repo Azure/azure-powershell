@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// Removes the AD application.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmADApplication")]
+    [CliCommandAlias("activedirectory;app;rm")]
     public class RemoveAzureADApplicationCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The application object id.")]

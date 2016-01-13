@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// Filters resource group deployments.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmResourceGroupDeployment", DefaultParameterSetName = GetAzureResourceGroupDeploymentCommand.DeploymentNameParameterSet), OutputType(typeof(List<PSResourceGroupDeployment>))]
+    [CliCommandAlias("resourcemanager;group;deployment;ls")]
     public class GetAzureResourceGroupDeploymentCommand : ResourcesBaseCmdlet
     {
         /// <summary>
