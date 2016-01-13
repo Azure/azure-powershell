@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.Profile
     [Cmdlet("Add", "AzureRmAccount", DefaultParameterSetName = "User")]
     [Alias("Login-AzureRmAccount", "Login")]
     [OutputType(typeof(PSAzureProfile))]
+    [CliCommandAlias("account;add")]
     public class AddAzureRMAccountCommand : AzureRMCmdlet
     {
         private const string UserParameterSet = "User";

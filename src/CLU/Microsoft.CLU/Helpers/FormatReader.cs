@@ -71,14 +71,18 @@ namespace Microsoft.CLU.Helpers
                 }
             }
 
-            // No formatting file -- just get the public properties.
+            // No formatting file
 
             var list = new ListDescriptor();
 
             foreach (var property in outputType.GetProperties())
             {
-                var column = new ColumnDescriptor { Header = property.Name, ItemName = property.Name };
-                list.Properties.Add(column);
+                bool hasOnlyObjectToString = property.PropertyType.GetMethod("ToString", new Type[] { })?.DeclaringType == typeof(object);
+                if (!hasOnlyObjectToString)
+                {
+                    var column = new ColumnDescriptor { Header = property.Name, ItemName = property.Name };
+                    list.Properties.Add(column);
+                }
             }
 
             return list;

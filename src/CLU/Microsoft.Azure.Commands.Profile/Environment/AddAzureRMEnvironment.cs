@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.Profile
     /// </summary>
     [Cmdlet(VerbsCommon.Add, "AzureRmEnvironment")]
     [OutputType(typeof(PSAzureEnvironment))]
+    [CliCommandAlias("env;add")]
     public class AddAzureRMEnvironmentCommand : AzureRMCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true)]

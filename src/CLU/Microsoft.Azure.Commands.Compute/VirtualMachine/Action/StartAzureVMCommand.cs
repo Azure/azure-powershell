@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsLifecycle.Start, ProfileNouns.VirtualMachine, DefaultParameterSetName = ResourceGroupNameParameterSet)]
     [OutputType(typeof(void))]
+    [CliCommandAlias("vm;start")]
     public class StartAzureVMCommand : VirtualMachineActionBaseCmdlet
     {
         [Parameter(

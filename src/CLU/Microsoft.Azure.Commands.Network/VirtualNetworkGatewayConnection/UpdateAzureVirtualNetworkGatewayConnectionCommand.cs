@@ -25,6 +25,7 @@ using Microsoft.Azure.Commands.Tags.Model;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Set, "AzureRmVirtualNetworkGatewayConnection"), OutputType(typeof(PSVirtualNetworkGatewayConnection))]
+    [CliCommandAlias("vnet;gateway;connection;set")]
     public class SetAzureVirtualNetworkGatewayConnectionCommand : VirtualNetworkGatewayConnectionBaseCmdlet
     {
         [Parameter(
@@ -35,7 +36,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
            Mandatory = false,
-           HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
+           HelpMessage = "Do not ask for confirmation if you want to overwrite a resource")]
         public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
