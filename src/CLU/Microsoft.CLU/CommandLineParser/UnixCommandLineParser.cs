@@ -56,7 +56,7 @@ namespace Microsoft.CLU.CommandLineParser
                     {
                         if (commandBinder.SupportsAutomaticHelp && arg.Equals("--help", System.StringComparison.OrdinalIgnoreCase))
                         {
-                            PresentCommandHelp(commandBinder, arguments.Take(position).ToArray(), false);
+                            PresentCommandHelp(arguments.Take(position).ToArray());
                             return false;
                         }
 
@@ -121,11 +121,11 @@ namespace Microsoft.CLU.CommandLineParser
                 }
                 else
                 {
-                    if (position == 0 && 
-                        commandBinder.SupportsAutomaticHelp && 
+                    if (position == 0 &&
+                        commandBinder.SupportsAutomaticHelp &&
                         arg.Equals("help", System.StringComparison.OrdinalIgnoreCase))
                     {
-                        PresentCommandHelp(commandBinder, arguments.Skip(position + 1).ToArray(), true);
+                        PresentCommandCompletion(arguments.Skip(position + 1).ToArray());
                         return false;
                     }
 
@@ -166,7 +166,7 @@ namespace Microsoft.CLU.CommandLineParser
         /// </example>
         public string FormatParameterName(string name, string type, bool isMandatory, bool isPositional)
         {
-            Func<string,string> nameFunc = n => n.Length == 1 ? "-" + n : "--" + n.ToLowerInvariant();
+            Func<string, string> nameFunc = n => n.Length == 1 ? "-" + n : "--" + n.ToLowerInvariant();
 
             var builder = new System.Text.StringBuilder();
             if (!isMandatory)
@@ -183,17 +183,42 @@ namespace Microsoft.CLU.CommandLineParser
             return builder.ToString();
         }
 
-        private void PresentCommandHelp(ICommandBinder commandBinder, string[] arguments, bool prefix)
+        private void PresentCommandCompletion(string[] arguments)
+        {
+            foreach (var cmd in Help.CommandDispatchHelper.CompleteCommands(CLUEnvironment.GetPackagesRootPath(), arguments).OrderBy((cmd) => cmd.Commandline))
+            {
+                Console.WriteLine(cmd.Commandline);
+            }
+        }
+
+        private void PresentCommandHelp(string[] arguments)
         {
             // BUGBUG - NYI!
             if (arguments.Length == 0)
             {
-                var concatenatedArgs = string.Join(" ", arguments);
-                Console.WriteLine($"Look up help corresponding to the arguments '{concatenatedArgs}'");
+                Console.WriteLine("UNDONE: Present help for Azure itself...");
             }
             else
             {
-                Console.WriteLine("Present help for Azure itself...");
+                var helpFile = Help.CommandDispatchHelper.FindBestHelp(CLUEnvironment.GetPackagesRootPath(), arguments);
+                if (helpFile != null)
+                {
+                    // Found appropriate help...
+                    var cmdLine = string.Join(" ", arguments);
+                    Console.WriteLine($"Help for command {cmdLine}");
+                    Console.WriteLine();
+
+                    foreach (var line in helpFile.GetHelpContent())
+                    {
+                        Console.WriteLine(line);
+                    }
+                    return;
+                }
+                else
+                {
+                    var joinedArgs = string.Join(" ", arguments);
+                    Console.WriteLine($"UNDONE - unable to find help for command {joinedArgs}");
+                }
             }
         }
 
