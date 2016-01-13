@@ -1,3 +1,4 @@
+## 2016.01.12 version 1.1.0
 * Azure SQL Database: Threat Detection policies:
   * Using new Threat Detection Types
 * Azure Redis Cache: new cmdlets for enabling and disabling diagnostics
@@ -8,14 +9,19 @@
   * New-AzureRmWebAppSSLBinding
   * Get-AzureRmWebAppSSLBinding
   * Remove-AzureRmWebAppSSLBinding
-* Azure Websites: Added AseName and AseResourceGroupName parameters in New-AzureRmWebApp and New-AzureRmAppServicePlan cmdlet
+  * Added AseName and AseResourceGroupName parameters in New-AzureRmWebApp and New-AzureRmAppServicePlan cmdlet
+  * Added support for cloning all deployment slots associated with source website
 * Azure Stream Analytics: Added new cmdlet support for Functions.
   * New-AzureRmStreamAnalyticsFunction
   * Get-AzureRmStreamAnalyticsFunction
   * Test-AzureRmStreamAnalyticsFunction
   * Get-AzureRmStreamAnalyticsDefaultFunctionDefinition
   * Remove-AzureRmStreamAnalyticsFunction
-
+* Azure Batch
+  * New-AzureBatchTask now accepts a MultiInstanceSettings parameter
+  * Get-AzureBatchSubtask cmdlet added
+  * Enable-AzureBatchComputeNodeScheduling / Disable-AzureBatchComputeNodeScheduling cmdlets added
+  * Enable-AzureBatchAutoScale and New-AzureBatchPool now accept an AutoScaleEvaluationInterval parameter.
   
 ## 2015.12.14 version 1.0.2
 * Azure Compute (ARM):
