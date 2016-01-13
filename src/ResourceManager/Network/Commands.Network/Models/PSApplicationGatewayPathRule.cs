@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-    public class PSApplicationGatewayPathRule
+    public class PSApplicationGatewayPathRule : PSChildResource
      {
         public List<string> Paths { get; set; }
         public PSResourceId BackendAddressPool { get; set; }

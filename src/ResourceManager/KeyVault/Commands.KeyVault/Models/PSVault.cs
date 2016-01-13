@@ -16,20 +16,21 @@ using System;
 using System.Linq;
 using Microsoft.Azure.Commands.Tags.Model;
 using KeyVaultManagement = Microsoft.Azure.Management.KeyVault;
-using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
+using Microsoft.Azure.ActiveDirectory.GraphClient;
+using Microsoft.Azure.Commands.Resources.Models;
 
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     public class PSVault : PSVaultIdentityItem
     {
-        public PSVault(KeyVaultManagement.Vault vault, PSResourceManagerModels.ActiveDirectory.ActiveDirectoryClient adClient)
+        public PSVault(KeyVaultManagement.Vault vault, ActiveDirectoryClient adClient)
         {
             var vaultTenantDisplayName = ModelExtensions.GetDisplayNameForTenant(vault.Properties.TenantId, adClient);
             VaultName = vault.Name;
             Location = vault.Location;
             ResourceId = vault.Id;
-            ResourceGroupName = (new PSResourceManagerModels.ResourceIdentifier(vault.Id)).ResourceGroupName;
+            ResourceGroupName = (new ResourceIdentifier(vault.Id)).ResourceGroupName;
             Tags = TagsConversionHelper.CreateTagHashtable(vault.Tags);
             Sku = vault.Properties.Sku.Name;
             TenantId = vault.Properties.TenantId;

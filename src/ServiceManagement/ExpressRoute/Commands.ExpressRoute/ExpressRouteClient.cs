@@ -145,11 +145,11 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
             var result = Client.DedicatedCircuits.New(new DedicatedCircuitNewParameters()
             {
                 Bandwidth = bandwidth,
+                BillingType = billingType,
                 CircuitName = circuitName,
                 Location = location,
                 ServiceProviderName = serviceProviderName,
                 Sku = sku,
-                BillingType = billingType
             });
 
             if (result.HttpStatusCode.Equals(HttpStatusCode.OK))

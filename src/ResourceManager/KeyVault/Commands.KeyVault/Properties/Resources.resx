@@ -117,8 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ADObjectIDRetrievalFailed" xml:space="preserve">
+    <value>Retrieving object ID from Azure Active Directory failed. {0}
+
+Please provide object ID for the user or service principle to set a vault access policy.
+You can find the object ID using Azure Active Directory Module for Windows PowerShell.</value>
+  </data>
   <data name="ADObjectNotFound" xml:space="preserve">
     <value>Cannot find the Active Directory object '{0}' in tenant '{1}'. Please make sure that the user or application service principal you are authorizing is registered in the current subscription's Azure Active directory. The TenantID displayed by the cmdlet 'Get-AzureRmContext' is the current subscription's Azure Active directory.</value>
+  </data>
+  <data name="ArmAccountNotFound" xml:space="preserve">
+    <value>No account found in the context. Please login using Login-AzureRMAccount.</value>
   </data>
   <data name="BackupKeyFileAlreadyExists" xml:space="preserve">
     <value>The backup key file '{0}' already exists.</value>
@@ -178,7 +187,7 @@
     <value>No subscription is currently selected. Use Set-AzureRmContext to activate a subscription.</value>
   </data>
   <data name="InvalidSubscriptionState" xml:space="preserve">
-    <value>Your Azure credentials have not been set up or have expired, please run Add-AzureRmAccount to set up your Azure credentials.</value>
+    <value>Your Azure credentials have not been set up or have expired, please run Login-AzureRmAccount to set up your Azure credentials.</value>
   </data>
   <data name="InvalidTagFormat" xml:space="preserve">
     <value>Invalid tag format. Expect @{Name = "tagName"} or @{Name = "tagName"; Value = "tagValue"}</value>
@@ -194,6 +203,9 @@
   </data>
   <data name="NoDefaultUserAccount" xml:space="preserve">
     <value>There is no default user account associated with this subscription. Certificate accounts are not supported with Azure Key Vault.</value>
+  </data>
+  <data name="NoTenantInContext" xml:space="preserve">
+    <value>No tenant found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Login-AzureRMAccount to login.</value>
   </data>
   <data name="PermissionSetIncludesAllPlusOthers" xml:space="preserve">
     <value>Invalid permissions to {0}. The list contains "all" along with other permissions. Please remove "all" from the list or include only "all" in the list.</value>
@@ -227,6 +239,9 @@
   </data>
   <data name="VaultAlreadyExists" xml:space="preserve">
     <value>The specified vault already exists.</value>
+  </data>
+  <data name="VaultNoAccessPolicyWarning" xml:space="preserve">
+    <value>Access policy is not set. No user or application have access permission to use this vault. Please use Set-AzureRmKeyVaultAccessPolicy to set access policies.</value>
   </data>
   <data name="VaultNotFound" xml:space="preserve">
     <value>Cannot find vault '{0}' in resource group '{1}'.</value>

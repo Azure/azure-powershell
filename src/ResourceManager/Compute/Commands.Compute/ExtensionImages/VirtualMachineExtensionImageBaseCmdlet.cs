@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.Compute
 {
     public abstract class VirtualMachineExtensionImageBaseCmdlet : ComputeClientBaseCmdlet
     {
-        public IVirtualMachineExtensionImageOperations VirtualMachineExtensionImageClient
+        public IVirtualMachineExtensionImagesOperations VirtualMachineExtensionImageClient
         {
             get
             {

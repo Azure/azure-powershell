@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.Network.Models
 {
     using System.Collections.Generic;
+    using System.Runtime.CompilerServices;
 
     using Newtonsoft.Json;
 
@@ -51,6 +52,11 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string RouteTableText
         {
             get { return JsonConvert.SerializeObject(RouteTable, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        public bool ShouldSerializeIpConfigurations()
+        {
+            return !string.IsNullOrEmpty(this.Name);
         }
     }
 }

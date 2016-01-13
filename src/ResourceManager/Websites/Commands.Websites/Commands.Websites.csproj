@@ -55,7 +55,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.Authentication">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.4.1-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.5.2-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.NetFramework">
@@ -67,15 +67,15 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Graph.RBAC">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Graph.RBAC.1.7.0-preview\lib\net40\Microsoft.Azure.Graph.RBAC.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Graph.RBAC.1.8.0-preview\lib\net40\Microsoft.Azure.Graph.RBAC.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Authorization, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.2.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Websites, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Websites.1.0.0-preview\lib\net45\Microsoft.Azure.Management.Websites.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Websites, Version=1.0.0.2, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Websites.1.0.2-preview\lib\net45\Microsoft.Azure.Management.Websites.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -93,11 +93,11 @@
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.1.4.1\lib\dotnet\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.1.8.2\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.2.1.0\lib\dotnet\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.2.5.4\lib\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication">
@@ -143,6 +143,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cmdlets\AppServicePlans\GetAzureAppServicePlanMetrics.cs" />
+    <Compile Include="Cmdlets\Certificates\GetAzureWebAppCertificate.cs" />
+    <Compile Include="Cmdlets\Certificates\GetAzureWebAppSSLBinding.cs" />
+    <Compile Include="Cmdlets\Certificates\NewAzureWebAppSSLBinding.cs" />
+    <Compile Include="Cmdlets\Certificates\RemoveAzureWebAppSSLBinding.cs" />
     <Compile Include="Cmdlets\DeploymentSlots\GetAzureWebAppSlot.cs" />
     <Compile Include="Cmdlets\DeploymentSlots\GetAzureWebAppSlotMetrics.cs" />
     <Compile Include="Cmdlets\DeploymentSlots\GetAzureWebAppSlotPublishingProfile.cs" />
@@ -168,9 +172,11 @@
     <Compile Include="Cmdlets\AppServicePlans\NewAzureAppServicePlan.cs" />
     <Compile Include="Cmdlets\AppServicePlans\RemoveAppServicePlan.cs" />
     <Compile Include="Models.WebApp\AppServicePlanBaseCmdlet.cs" />
+    <Compile Include="Models.WebApp\DeploymentTemplate.cs" />
     <Compile Include="Models.WebApp\WebAppBaseCmdlet.cs" />
     <Compile Include="Models.WebApp\WebAppBaseClient.cs" />
     <Compile Include="Models.WebApp\WebAppSlotBaseCmdlet.cs" />
+    <Compile Include="Models.WebApp\WebAppSSLBindingBaseCmdlet.cs" />
     <Compile Include="Utilities\CmdletHelpers.cs" />
     <Compile Include="Utilities\WebsitesClient.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -215,8 +221,6 @@
       <Name>Commands.Resources</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Cmdlets\Certificates\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
