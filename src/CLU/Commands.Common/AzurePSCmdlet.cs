@@ -31,6 +31,7 @@ using System.Threading;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.ApplicationInsights;
 using Microsoft.ApplicationInsights.Extensibility;
+using Microsoft.Rest;
 
 namespace Microsoft.Azure.Commands.Utilities.Common
 {
@@ -309,6 +310,8 @@ namespace Microsoft.Azure.Commands.Utilities.Common
                 ModuleName, string.Format("v{0}", ModuleVersion));
             ClientFactory.UserAgents.Add(userAgentValue);
             ClientFactory.AddHandler(new CmdletInfoHandler(this.CommandRuntime.ToString(), this.ParameterSetName, this._clientRequestId));
+            ServiceClientTracing.AddTracingInterceptor(_adalListener);
+            ServiceClientTracing.IsEnabled = true;
             base.BeginProcessing();
         }
 

@@ -72,7 +72,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account Tags.")]
         [ValidateNotNull]
-        [Alias("t")]
         public Hashtable[] Tags { get; set; }
 
         protected override void ProcessRecord()

@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+    using Models;
     using Newtonsoft.Json.Linq;
     using System.Collections;
     using System.Linq;
@@ -30,7 +31,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             "AzureRmResource", 
             SupportsShouldProcess = true, 
             DefaultParameterSetName = ResourceManipulationCmdletBase.ResourceIdParameterSet), 
-    OutputType(typeof(Resource<JToken>))]
+    OutputType(typeof(PSResourceObject))]
     public sealed class NewAzureResourceCmdlet : ResourceManipulationCmdletBase
     {
         /// <summary>

@@ -43,7 +43,7 @@ namespace Microsoft.CLU.CommandModel
             // The runtime host is a Cmdlet's path to accessing system features, such as Console I/O
             // and session state. The runtime instance is created here and passed into the binder,
             // which will be creating the Cmdlet instance.
-            var runtimeHost = new System.Management.Automation.Host.CLUHost(arguments, hostStreamInfo);
+            var runtimeHost = new System.Management.Automation.Host.CLUHost(ref arguments, hostStreamInfo);
 
             // Create instance of ICommandBinder and ICommand implementation for cmdlet model
             var binderAndCommand = new CmdletBinderAndCommand(commandConfiguration, runtimeHost);

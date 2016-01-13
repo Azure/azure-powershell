@@ -22,7 +22,7 @@ namespace System.Management.Automation.Host
         /// Creates an instance of CLUHost.
         /// </summary>
         /// <param name="args">The commandline arguments</param>
-        internal CLUHost(string[] args, HostStreamInfo hostStreamInfo)
+        internal CLUHost(ref string[] args, HostStreamInfo hostStreamInfo)
         {
             Debug.Assert(args != null);
             Debug.Assert(hostStreamInfo != null);
@@ -37,12 +37,29 @@ namespace System.Management.Automation.Host
             if (!string.IsNullOrEmpty(vpref))
                 _doVerbose = InterpretStreamPreference(Constants.VerbosePreference, vpref, _doVerbose);
 
+            var argList = args.ToList();
+
             // Command-line switch overrides environment variable
-            if (args.Select(arg => arg.ToLowerInvariant()).Where(arg => arg.Equals("--debug") || arg.Equals("/debug")).Any())
+            if (RemoveArgumentIfFound(argList, "debug"))
+            {
                 _doDebug = Constants.CmdletPreferencesInquire;
-                    
-            if (args.Select(arg => arg.ToLowerInvariant()).Where(arg => arg.Equals("--verbose") || arg.Equals("/verbose")).Any())
+            }
+
+            if (RemoveArgumentIfFound(argList, "verbose"))
+            {
                 _doVerbose = Constants.CmdletPreferencesContinue;
+            }
+
+            if (RemoveArgumentIfFound(argList, "json"))
+            {
+                this.RequestedOutputFormat = OutputFormat.JSON;
+            }
+            else if (RemoveArgumentIfFound(argList, "display"))
+            {
+                this.RequestedOutputFormat = OutputFormat.Display;
+            }
+
+            args = argList.ToArray();
         }
 
         internal CLUHost(string[] args, HostStreamInfo hostStreamInfo, string debugPreference, string verbosePreference)
@@ -81,6 +98,11 @@ namespace System.Management.Automation.Host
         /// </summary>
         /// <remarks>If this is true, your code is not doing console I/O</remarks>
         public override bool IsInputRedirected { get { return _hostStreamInfo.IsInputRedirected; } }
+
+        /// <summary>
+        /// Command line override of requested output format...
+        /// </summary>
+        public override OutputFormat RequestedOutputFormat { get; set;  }
 
         /// <summary>
         /// Tells whether the STDOUT byte stream has been redirected to a file or pipe
@@ -514,6 +536,19 @@ namespace System.Management.Automation.Host
                 new ChoiceDescription("&Halt Command", "Stop this command.")
         };
         private HostStreamInfo _hostStreamInfo;
+        private bool RemoveArgumentIfFound(List<string> args, string argName)
+        {
+            int index = args.FindIndex(arg => arg.ToLowerInvariant().Equals($"--{argName}") || arg.ToLowerInvariant().Equals($"/{argName}"));
+            if (index > -1)
+            {
+                args.RemoveAt(index);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
         #endregion
 

@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
     using Commands.Utilities.Common;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
+    using Models;
     using Newtonsoft.Json.Linq;
     using System.Collections.Generic;
     using System.Linq;
@@ -26,11 +27,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
     /// </summary>
     internal static class ResourceExtensions
     {
-        /// <summary>
-        /// Converts a <see cref="Resource{JToken}"/> object into a <see cref="PSObject"/> object.
-        /// </summary>
-        /// <param name="resource">The <see cref="Resource{JToken}"/> object.</param>
-        internal static PSObject ToPsObject(this Resource<JToken> resource)
+        internal static PSResourceObject ToPSResourceObject(this Resource<JToken> resource)
         {
             var resourceType = string.IsNullOrEmpty(resource.Id)
                 ? null
@@ -42,28 +39,34 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
 
             var objectDefinition = new Dictionary<string, object>
             {
-                { "Name", resource.Name },
-                { "ResourceId", string.IsNullOrEmpty(resource.Id) ? null : resource.Id },
-                { "ResourceName", string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetResourceName(resource.Id) },
-                { "ResourceType", resourceType },
                 { "ExtensionResourceName", string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetExtensionResourceName(resource.Id) },
                 { "ExtensionResourceType", extensionResourceType },
                 { "Kind", resource.Kind },
-                { "ResourceGroupName", string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetResourceGroupName(resource.Id) },
-                { "Location", resource.Location },
-                { "SubscriptionId", string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetSubscriptionId(resource.Id) },
                 { "Tags", TagsHelper.GetTagsHashtables(resource.Tags) },
-                { "Plan", resource.Plan == null ? null : resource.Plan.ToJToken().ToPsObject() },
+                { "Plan", resource.Plan == null ? null : resource.Plan.ToJToken() },
                 { "Properties", ResourceExtensions.GetProperties(resource) },
                 { "CreatedTime", resource.CreatedTime },
                 { "ChangedTime", resource.ChangedTime },
                 { "ETag", resource.ETag },
-                { "Sku", resource.Sku == null ? null : resource.Sku.ToJToken().ToPsObject() },
+                { "Sku", resource.Sku == null ? null : resource.Sku.ToJToken() },
             };
 
-            var psObject =
-                PowerShellUtilities.ConstructPSObject(
-                objectDefinition.Where(kvp => kvp.Value != null).SelectManyArray(kvp => new[] { kvp.Key, kvp.Value }));
+            var psObject = new PSResourceObject();
+            psObject.Name = resource.Name;
+            psObject.ResourceId = string.IsNullOrEmpty(resource.Id) ? null : resource.Id;
+            psObject.ResourceName = string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetResourceName(resource.Id);
+            psObject.ResourceType = resourceType;
+            psObject.ResourceGroupName = string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetResourceGroupName(resource.Id);
+            psObject.Location = resource.Location;
+            psObject.SubscriptionId = string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetSubscriptionId(resource.Id);
+
+
+            var objectProperties = objectDefinition.Where(kvp => kvp.Value != null).SelectManyArray(kvp => new[] { kvp.Key, kvp.Value });
+
+            for(int i=0; i< objectProperties.Length; i+=2)
+            {
+                psObject.Properties.Add(objectProperties[i].ToString(), objectProperties[i + 1].ToString());
+            }
             
             return psObject;
         }
