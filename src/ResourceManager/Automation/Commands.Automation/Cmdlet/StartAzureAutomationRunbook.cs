@@ -17,11 +17,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Runspaces;
 using System.Security.Permissions;
 using System.Threading;
 using Microsoft.Azure.Commands.Automation.Common;
+using Microsoft.Azure.Commands.Automation.Model;
 using Job = Microsoft.Azure.Commands.Automation.Model.Job;
 using JobStream = Microsoft.Azure.Commands.Automation.Model.JobStream;
 using Microsoft.Azure.Commands.Automation.Properties;
@@ -34,7 +36,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// </summary>
     [Cmdlet(VerbsLifecycle.Start, "AzureRmAutomationRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByAsynchronousReturnJob)]
     [OutputType(typeof(Job), ParameterSetName = new []{ AutomationCmdletParameterSets.ByAsynchronousReturnJob })]
-    [OutputType(typeof(JobStream), ParameterSetName = new []{ AutomationCmdletParameterSets.BySynchronousReturnJobOutput })]
+    [OutputType(typeof(PSObject), ParameterSetName = new []{ AutomationCmdletParameterSets.BySynchronousReturnJobOutput })]
     public class StartAzureAutomationRunbook : AzureAutomationBaseCmdlet
     {
         /// <summary>
@@ -50,7 +52,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Polling interval
         /// </summary>        
-        private const int pollingInterval = 5;
+        private const int pollingIntervalInSeconds = 5;
 
         /// <summary>
         /// Gets or sets the runbook name
@@ -80,7 +82,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the switch parameter to wait for job output
         /// </summary>
-        [Parameter(Mandatory = false, ParameterSetName = AutomationCmdletParameterSets.BySynchronousReturnJobOutput, HelpMessage = "Wait for job output")]
+        [Parameter(Mandatory = false, ParameterSetName = AutomationCmdletParameterSets.BySynchronousReturnJobOutput, HelpMessage = "Wait for job to complete, suspend, or fail.")]
         public SwitchParameter Wait
         {
             get { return this.wait; }
@@ -115,17 +117,19 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             // wait for job completion
             if (!PollJobCompletion(job.JobId))
             {
-                throw new ResourceCommonException(typeof (Job),
-                    string.Format(CultureInfo.CurrentCulture, Resources.JobCompletionMaxWaitReached));
+                throw new ResourceCommonException(typeof(Job), string.Format(CultureInfo.CurrentCulture, Resources.JobCompletionMaxWaitReached));
             }
 
             // retrieve job streams
             var nextLink = string.Empty;
             do
             {
-                var jobOutput = this.AutomationClient.GetJobStream(this.ResourceGroupName, this.AutomationAccountName, job.JobId, null, null, ref nextLink);
-                this.GenerateCmdletOutput(jobOutput);
-
+                var jobOutputList = this.AutomationClient.GetJobStream(this.ResourceGroupName, this.AutomationAccountName, job.JobId, null, StreamType.Output.ToString(), ref nextLink);
+                foreach (var jobOutputRecord in jobOutputList)
+                {
+                    var response = this.AutomationClient.GetJobStreamRecordAsPsObject(this.ResourceGroupName, this.AutomationAccountName, job.JobId, jobOutputRecord.StreamRecordId);
+                    this.GenerateCmdletOutput(response);
+                }
             } while (!string.IsNullOrEmpty(nextLink));
         }
 
@@ -134,21 +138,20 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             var timeoutIncrement = 0;
             do
             {
-                Thread.Sleep(new TimeSpan(0, 0, 0, pollingInterval));
-                timeoutIncrement += pollingInterval;
+                Thread.Sleep(TimeSpan.FromSeconds(pollingIntervalInSeconds));
+                timeoutIncrement += pollingIntervalInSeconds;
  
                 var job = this.AutomationClient.GetJob(this.ResourceGroupName, this.AutomationAccountName, jobId);
                 if (!IsJobTerminalState(job))
                 {
-                    if (IsVerbose()) WriteVerbose(string.Format(Resources.JobProgressState, job.Status, DateTime.Now));
+                    if (IsVerbose()) WriteVerbose(string.Format(Resources.JobProgressState, job.JobId, job.Status, DateTime.Now));
                 }
                 else
                 {
-                    if (IsVerbose()) WriteVerbose(string.Format(Resources.JobTerminalState, job.Status, DateTime.Now));
+                    if (IsVerbose()) WriteVerbose(string.Format(Resources.JobTerminalState, job.JobId, job.Status, DateTime.Now));
                     return true;
                 }
-
-            } while (timeoutIncrement <= this.MaxWaitSeconds || this.MaxWaitSeconds < 0);
+            } while (this.MaxWaitSeconds < 0 || timeoutIncrement <= this.MaxWaitSeconds);
 
             return false;
         }

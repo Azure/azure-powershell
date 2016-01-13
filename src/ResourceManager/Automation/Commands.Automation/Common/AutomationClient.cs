@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.IO;
+using System.Management.Automation;
 using System.Net;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
@@ -994,6 +995,47 @@ namespace Microsoft.Azure.Commands.Automation.Common
             var response = this.automationManagementClient.JobStreams.Get(resourceGroupName, automationAccountName, jobId, jobStreamId);
 
             return new JobStreamRecord(response.JobStream, resourceGroupName, automationAccountName, jobId);
+        }
+
+        public object GetJobStreamRecordAsPsObject(string resourceGroupName, string automationAccountName, Guid jobId, string jobStreamId)
+        {
+            var response = this.automationManagementClient.JobStreams.Get(resourceGroupName, automationAccountName, jobId, jobStreamId);
+
+            if (response.JobStream.Properties == null || response.JobStream.Properties.Value == null) return null;
+
+            // PowerShell Workflow runbook jobs would have the below additional properties, remove them from job output
+            // we do not know the runbook type, remove will only remove if exists 
+            response.JobStream.Properties.Value.Remove("PSComputerName");
+            response.JobStream.Properties.Value.Remove("PSShowComputerName");
+            response.JobStream.Properties.Value.Remove("PSSourceJobInstanceId");
+            
+            var paramTable = new Hashtable();
+
+            foreach (var kvp in response.JobStream.Properties.Value)
+            {
+                object paramValue;
+                try
+                {
+                    paramValue = ((object)PowerShellJsonConverter.Deserialize(kvp.Value.ToString()));
+                }
+                catch (CmdletInvocationException exception)
+                {
+                    if (!exception.Message.Contains("Invalid JSON primitive"))
+                        throw;
+
+                    paramValue = kvp.Value;
+                }
+
+                // for primitive outputs, the record will be in form "value" : "primitive type value". Return the key and return the primitive type value  
+                if (response.JobStream.Properties.Value.Count == 1 && response.JobStream.Properties.Value.ContainsKey("value"))
+                {
+                    return paramValue;
+                }
+
+                paramTable.Add(kvp.Key, paramValue);
+            }
+
+            return paramTable;
         }
 
         public Job GetJob(string resourceGroupName, string automationAccountName, Guid Id)
