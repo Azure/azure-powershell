@@ -9,7 +9,7 @@ printf "\n2. Creating a new storage account '%s' in type '%s'.\n" "$storageAccou
 az storage account new --resourcegroupname "$groupName" --name "$storageAccountName" --location "$location" --type "$storageAccountType"
 
 printf "\n3. Create virtual network.\n"
-result=`az network vnet new --resourcegroupname "$groupName" --name test --location "$location" --addressprefix "[\"10.0.0.0/16\"]" --subnet "[{\"Name\":\"test\",\"AddressPrefix\":\"10.0.0.0/24\"}]" --force`
+result=`az vnet new --resourcegroupname "$groupName" --name test --location "$location" --addressprefix "[\"10.0.0.0/16\"]" --subnet "[{\"Name\":\"test\",\"AddressPrefix\":\"10.0.0.0/24\"}]" --force`
 
 contextResult=`az context ls`
 
@@ -19,7 +19,7 @@ subnetId="/subscriptions/$subId/resourceGroups/$groupName/providers/Microsoft.Ne
 
 printf "\n4. Create network interface with:\r\nsubId='%s' \r\n& \r\nsubnetId='$subnetId'.\n" "$subId"
 export MSYS_NO_PATHCONV=1
-az network interface new --name test --resourcegroupname "$groupName" --location "$location" --subnetid "$subnetId"
+az networkinterface new --name test --resourcegroupname "$groupName" --location "$location" --subnetid "$subnetId"
 export MSYS_NO_PATHCONV=
 
 nicId="/subscriptions/$subId/resourceGroups/$groupName/providers/Microsoft.Network/networkInterfaces/test"

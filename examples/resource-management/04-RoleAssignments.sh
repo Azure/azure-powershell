@@ -10,18 +10,18 @@ export MSYS_NO_PATHCONV=1
 users=$(az activedirectory users ls)
 userId=$(echo $users | cat | jq '.[0].Id' -s --raw-output)
 echo "UserID: $userId"
-roleDefinitions=$(az security role definition ls)
+roleDefinitions=$(az networksecurityrole definition ls)
 roleDefinitionId=$(echo $roleDefinitions | cat | jq '.[0].Id' -s --raw-output)
 echo "RoleDefinitionId: $roleDefinitionId"
 subsciptions=$(az subscription ls)
 subscriptionId=$(echo $subsciptions | cat | jq '.[0].SubscriptionId' -s --raw-output)
 scope="/subscriptions/$subscriptionId/resourceGroups/$groupName"
 echo "Scope: $scope"
-az security role assignment create --ObjectId "$userId" --RoleDefinitionId "$roleDefinitionId" --Scope "$scope"
+az networksecurityrole assignment create --ObjectId "$userId" --RoleDefinitionId "$roleDefinitionId" --Scope "$scope"
 
 printf "\n3. Delete last created Role Assignment.\n"
-assignments=$(az security role assignment ls)
+assignments=$(az networksecurityrole assignment ls)
 assignmentId=$(echo $assignments | cat | jq '.[-1:][0].ObjectId' -s --raw-output)
 echo "Deleting assignment: $assignmentId"
-az security role assignment rm --ObjectId "$assignmentId" --Scope "$scope" --RoleDefinitionId "$roleDefinitionId" -f
+az networksecurityrole assignment rm --ObjectId "$assignmentId" --Scope "$scope" --RoleDefinitionId "$roleDefinitionId" -f
 export MSYS_NO_PATHCONV=
