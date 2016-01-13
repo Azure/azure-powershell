@@ -19,7 +19,6 @@ using System.Net;
 using Microsoft.Azure.Commands.StreamAnalytics.Properties;
 using Microsoft.Azure.Management.StreamAnalytics;
 using Microsoft.Azure.Management.StreamAnalytics.Models;
-using Microsoft.WindowsAzure;
 using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics.Models
@@ -165,7 +164,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             return response.StatusCode;
         }
 
-        public virtual DataSourceTestConnectionResponse TestPSInput(string resourceGroupName, string jobName, string inputName)
+        public virtual ResourceTestConnectionResponse TestPSInput(string resourceGroupName, string jobName, string inputName)
         {
             return StreamAnalyticsManagementClient.Inputs.TestConnection(resourceGroupName, jobName, inputName);
         }

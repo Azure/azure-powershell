@@ -29,15 +29,23 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, 
-            HelpMessage = "The formula for the desired number of compute nodes in the pool.")]
+        [Parameter(Position = 1)]
         [ValidateNotNullOrEmpty]
         public string AutoScaleFormula { get; set; }
 
+        [Parameter(Position = 2)]
+        [ValidateNotNullOrEmpty]
+        public TimeSpan? AutoScaleEvaluationInterval { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            AutoScaleParameters parameters = new AutoScaleParameters(this.BatchContext, this.Id, null,
-                this.AutoScaleFormula, this.AdditionalBehaviors);
+            EnableAutoScaleParameters parameters = new EnableAutoScaleParameters(this.BatchContext, this.Id,
+                pool: null, additionalBehaviors: this.AdditionalBehaviors)
+            {
+                AutoScaleFormula = this.AutoScaleFormula,
+                AutoScaleEvaluationInterval = this.AutoScaleEvaluationInterval
+            };
+
             BatchClient.EnableAutoScale(parameters);
         }
     }

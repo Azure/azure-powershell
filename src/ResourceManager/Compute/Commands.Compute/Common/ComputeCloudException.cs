@@ -14,21 +14,25 @@
 
 using System;
 using System.Linq;
+using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using Hyak.Common;
+using Microsoft.Azure.Management.Compute.Models;
+using Newtonsoft.Json;
 
-namespace Microsoft.WindowsAzure.Commands.Common
+namespace Microsoft.Azure.Commands.Compute.Common
 {
-    public class ComputeCloudException : CloudException
+    public class ComputeCloudException : Rest.Azure.CloudException
     {
         protected const string RequestIdHeaderInResponse = "x-ms-request-id";
 
-        public ComputeCloudException(CloudException ex)
+        public ComputeCloudException(Rest.Azure.CloudException ex)
             : base(GetErrorMessageWithRequestIdInfo(ex), ex)
         {
         }
 
-        protected static string GetErrorMessageWithRequestIdInfo(CloudException cloudException)
+        protected static string GetErrorMessageWithRequestIdInfo(Rest.Azure.CloudException cloudException)
         {
             if (cloudException == null)
             {
@@ -42,19 +46,59 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 sb.Append(cloudException.Message);
             }
 
-            if (cloudException.Response != null &&
-                cloudException.Response.Headers != null)
+            if (cloudException.Response == null)
             {
-                var headers = cloudException.Response.Headers;
-                if (headers.ContainsKey(RequestIdHeaderInResponse))
-                {
-                    sb.AppendLine().AppendFormat(
-                        "OperationID : '{0}'",
-                        headers[RequestIdHeaderInResponse].FirstOrDefault());
-                }
+                return sb.ToString();
             }
 
+            if (cloudException.Response.StatusCode.Equals(HttpStatusCode.OK)
+                && cloudException.Response.Content != null)
+            {
+                var errorReturned = JsonConvert.DeserializeObject<ComputeLongRunningOperationError>(cloudException.Response.Content.ReadAsStringAsync().Result);
+
+                sb.AppendLine().AppendFormat("StartTime: {0}", errorReturned.StartTime);
+                sb.AppendLine().AppendFormat("EndTime: {0}", errorReturned.EndTime);
+                sb.AppendLine().AppendFormat("OperationID: {0}", errorReturned.OperationId);
+                sb.AppendLine().AppendFormat("Status: {0}", errorReturned.Status);
+                if (errorReturned.Error == null)
+                {
+                    return sb.ToString();
+                }
+
+                sb.AppendLine().AppendFormat("ErrorCode: {0}", errorReturned.Error.Code);
+                sb.AppendLine().AppendFormat("ErrorMessage: {0}", errorReturned.Error.Message);
+            }
+            else
+            {
+                sb.AppendLine().AppendFormat("StatusCode: {0}", cloudException.Response.StatusCode.GetHashCode());
+                sb.AppendLine().AppendFormat("ReasonPhrase: {0}", cloudException.Response.ReasonPhrase);
+                if (cloudException.Response.Headers == null
+                    || !cloudException.Response.Headers.Contains(RequestIdHeaderInResponse))
+                {
+                    return sb.ToString();
+                }
+
+                var headers = cloudException.Response.Headers;
+
+                var match = Regex.Match(headers.ToString(),
+                    @"x-ms-request-id: ([a-z0-9]{8}\-[a-z0-9]{4}\-[a-z0-9]{4}\-[a-z0-9]{4}\-[a-z0-9]{12})",
+                    RegexOptions.IgnoreCase);
+                string operationId = (match.Success) ? match.Groups[1].Value : "";
+
+                sb.AppendLine().AppendFormat(
+                    "OperationID : '{0}'",
+                    operationId);
+            }
             return sb.ToString();
         }
+    }
+
+    public class ComputeLongRunningOperationError
+    {
+        public string OperationId;
+        public ComputeOperationStatus Status;
+        public DateTime? StartTime;
+        public DateTime? EndTime;
+        public ApiError Error;
     }
 }

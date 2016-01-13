@@ -25,7 +25,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// Creates Azure Site Recovery Policy object in memory.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoveryPolicy")]
-    [Alias("Remove-AzureRmSiteRecoveryProtectionProfile")]
     public class RemoveAzureSiteRecoveryPolicy : SiteRecoveryCmdletBase
     {
         #region Parameters

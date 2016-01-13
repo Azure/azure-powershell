@@ -18,8 +18,11 @@ using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
+using Microsoft.Azure.Commands.Resources.Models;
+using Microsoft.Azure.Commands.WebApps.Models.WebApp;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.Azure.Management.WebSites;
 using Microsoft.Azure.Management.WebSites.Models;
 
@@ -44,10 +47,12 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             private set;
         }
 
-        public Site CreateWebApp(string resourceGroupName, string webAppName, string slotName, string location, string serverFarmId, CloningInfo cloningInfo)
+        public Site CreateWebApp(string resourceGroupName, string webAppName, string slotName, string location, string serverFarmId, CloningInfo cloningInfo, string aseName, string aseResourceGroupName)
         {
             Site createdWebSite = null;
             string qualifiedSiteName;
+            var profile = CreateHostingEnvironmentProfile(resourceGroupName, aseResourceGroupName, aseName);
+
             if (CmdletHelpers.ShouldUseDeploymentSlot(webAppName, slotName, out qualifiedSiteName))
             {
                 createdWebSite = WrappedWebsitesClient.Sites.CreateOrUpdateSiteSlot(
@@ -57,7 +62,8 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                             SiteName = qualifiedSiteName,
                             Location = location,
                             ServerFarmId = serverFarmId,
-                            CloningInfo =  cloningInfo
+                            CloningInfo =  cloningInfo,
+                            HostingEnvironmentProfile = profile
                         });
             }
             else
@@ -69,12 +75,25 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                             SiteName = qualifiedSiteName,
                             Location = location,
                             ServerFarmId = serverFarmId,
-                            CloningInfo = cloningInfo
+                            CloningInfo = cloningInfo,
+                            HostingEnvironmentProfile = profile
                         });
             }
 
+            
+
             GetWebAppConfiguration(resourceGroupName, webAppName, slotName, createdWebSite);
             return createdWebSite;
+        }
+
+        public HostingEnvironmentProfile CreateHostingEnvironmentProfile(string resourceGroupName, string aseResourceGroupName, string aseName)
+        {
+            if (string.IsNullOrEmpty(aseName))
+            {
+                return null;
+            }
+
+            return CmdletHelpers.CreateHostingEnvironmentProfile(WrappedWebsitesClient.SubscriptionId, resourceGroupName, aseResourceGroupName, aseName);
         }
 
         public void UpdateWebApp(string resourceGroupName, string location, string webAppName, string slotName, string appServicePlan)
@@ -266,7 +285,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             return usageMetrics.Value;
         }
 
-        public ServerFarmWithRichSku CreateAppServicePlan(string resourceGroupName, string appServicePlanName, string location, string adminSiteName, SkuDescription sku)
+        public ServerFarmWithRichSku CreateAppServicePlan(string resourceGroupName, string appServicePlanName, string location, string adminSiteName, SkuDescription sku, string aseName = null, string aseResourceGroupName = null)
         {
             var serverFarm = new ServerFarmWithRichSku
             {
@@ -275,6 +294,17 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 Sku = sku,
                 AdminSiteName = adminSiteName
             };
+
+            if(!string.IsNullOrEmpty(aseName)
+                && !string.IsNullOrEmpty(aseResourceGroupName))
+            {
+                serverFarm.HostingEnvironmentProfile = new HostingEnvironmentProfile
+                {
+                    Id = CmdletHelpers.GetApplicationServiceEnvironmentResourceId(WrappedWebsitesClient.SubscriptionId, aseResourceGroupName, aseName),
+                    Type = CmdletHelpers.ApplicationServiceEnvironmentResourcesName,
+                    Name = aseName
+                };
+            }
             
             return WrappedWebsitesClient.ServerFarms.CreateOrUpdateServerFarm(resourceGroupName, appServicePlanName, serverFarm);
         }
@@ -363,6 +393,56 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             {
                 //ignore if this call fails as it will for reader RBAC
             }
+        }
+
+        public Certificate CreateCertificate(string resourceGroupName, string certificateName, Certificate certificate)
+        {
+            return WrappedWebsitesClient.Certificates.CreateOrUpdateCertificate(resourceGroupName, certificateName, certificate);
+        }
+
+        public Certificate GetCertificate(string resourceGroupName, string certificateName)
+        {
+            return WrappedWebsitesClient.Certificates.GetCertificate(resourceGroupName, certificateName);
+        }
+
+        public HttpStatusCode RemoveCertificate(string resourceGroupName, string certificateName)
+        {
+            WrappedWebsitesClient.Certificates.DeleteCertificate(resourceGroupName, certificateName);
+            return HttpStatusCode.OK;
+        }
+
+        public Site UpdateHostNameSslState(string resourceGroupName, string webAppName, string slotName, string location, string hostName, SslState sslState, string thumbPrint)
+        {
+            Site updateWebSite;
+            string qualifiedSiteName;
+
+            var shouldUseDeploymentSlot = CmdletHelpers.ShouldUseDeploymentSlot(webAppName, slotName, out qualifiedSiteName);
+
+            var webappWithNewSslBinding = new Site
+            {
+                HostNameSslStates = new List<HostNameSslState>{new HostNameSslState
+                {
+                    Name = hostName,
+                    Thumbprint = thumbPrint,
+                    ToUpdate = true,
+                    SslState = sslState
+                }},
+                Location = location
+            };
+
+            if (shouldUseDeploymentSlot)
+            {
+                updateWebSite = WrappedWebsitesClient.Sites.CreateOrUpdateSiteSlot(
+                        resourceGroupName, webAppName, slot: slotName, siteEnvelope:
+                        webappWithNewSslBinding);
+            }
+            else
+            {
+                updateWebSite = WrappedWebsitesClient.Sites.CreateOrUpdateSite(
+                        resourceGroupName, webAppName, siteEnvelope:
+                        webappWithNewSslBinding);
+            }
+            return updateWebSite;
         }
 
         private void WriteVerbose(string verboseFormat, params object[] args)

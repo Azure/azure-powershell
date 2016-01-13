@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <helpItems xmlns="http://msh" schema="maml">
-  <!-- Updatable Help Version 2.0.2.0 -->
+  <!-- Updatable Help Version 2.0.3.0 -->
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Disable-AzureBatchAutoScale</command:name>
@@ -496,7 +496,14 @@
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2" aliases="none">
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3" aliases="none">
+          <maml:name>AutoScaleEvaluationInterval</maml:name>
+          <maml:description>
+            <maml:para>Specifies time interval at which to automatically adjust the pool size according to the AutoScale formula. The default value is 15 minutes. The minimum allowed value is 5 minutes.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">TimeSpan</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2" aliases="none">
           <maml:name>AutoScaleFormula</maml:name>
           <maml:description>
             <maml:para>Specifies the formula for the desired number of compute nodes in the pool.</maml:para>
@@ -513,7 +520,19 @@
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2" aliases="none">
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="3" aliases="none">
+        <maml:name>AutoScaleEvaluationInterval</maml:name>
+        <maml:description>
+          <maml:para>Specifies time interval at which to automatically adjust the pool size according to the AutoScale formula. The default value is 15 minutes. The minimum allowed value is 5 minutes.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">TimeSpan</command:parameterValue>
+        <dev:type>
+          <maml:name>TimeSpan</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2" aliases="none">
         <maml:name>AutoScaleFormula</maml:name>
         <maml:description>
           <maml:para>Specifies the formula for the desired number of compute nodes in the pool.</maml:para>
@@ -6101,6 +6120,13 @@
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>AutoScaleEvaluationInterval</maml:name>
+          <maml:description>
+            <maml:para>Specifies time interval at which to automatically adjust the pool size according to the AutoScale formula. The default value is 15 minutes. The minimum allowed value is 5 minutes.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">TimeSpan</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>AutoScaleFormula</maml:name>
           <maml:description>
             <maml:para>Specifies the formula for automatically scaling the pool. </maml:para>
@@ -6316,6 +6342,18 @@
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>AutoScaleEvaluationInterval</maml:name>
+        <maml:description>
+          <maml:para>Specifies time interval at which to automatically adjust the pool size according to the AutoScale formula. The default value is 15 minutes. The minimum allowed value is 5 minutes.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">TimeSpan</command:parameterValue>
+        <dev:type>
+          <maml:name>TimeSpan</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
         <maml:name>AutoScaleFormula</maml:name>
         <maml:description>
@@ -6657,6 +6695,13 @@
           <command:parameterValue required="false" variableLength="false">IDictionary</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>MultiInstanceSettings</maml:name>
+          <maml:description>
+            <maml:para>Specifies information about how to run the multi-instance task.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">PSMultiInstanceSettings</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>ResourceFiles</maml:name>
           <maml:description>
             <maml:para>Specifies resource files, as key/value pairs, that the task requires. The key is the resource file path. The value is the resource file blob source.</maml:para>
@@ -6734,6 +6779,13 @@
             <maml:para>Specifies the job under which this cmdlet creates the task. To obtain a PSCloudJob object, use the Get-AzureBatchJob cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">PSCloudJob</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>MultiInstanceSettings</maml:name>
+          <maml:description>
+            <maml:para>Specifies information about how to run the multi-instance task.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">PSMultiInstanceSettings</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>ResourceFiles</maml:name>
@@ -6876,6 +6928,18 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>MultiInstanceSettings</maml:name>
+        <maml:description>
+          <maml:para>Specifies information about how to run the multi-instance task.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">PSMultiInstanceSettings</command:parameterValue>
+        <dev:type>
+          <maml:name>PSTaskConstraints</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -7590,6 +7654,304 @@
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
+      <command:name>Remove-AzureBatchComputeNode</command:name>
+      <maml:description>
+        <maml:para>Removes compute nodes from a pool. </maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Remove</command:verb>
+      <command:noun>AzureBatchComputeNode</command:noun>
+      <dev:version />
+    </command:details>
+    <maml:description>
+      <maml:para>The Remove-AzureBatchComputeNode cmdlet removes Azure Batch compute nodes from a pool.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Remove-AzureBatchComputeNode</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1" aliases="none">
+          <maml:name>PoolId</maml:name>
+          <maml:description>
+            <maml:para>Specifies the ID of the pool that contains the compute nodes that this cmdlet removes. </maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="false" position="2" aliases="Id">
+          <maml:name>Ids</maml:name>
+          <maml:description>
+            <maml:para>Specifies an array of IDs of compute nodes that this cmdlet removes from the pool.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>DeallocationOption</maml:name>
+          <maml:description>
+            <maml:para>Specifies a deallocation option for the removal operation that this cmdlet starts. The default value is Requeue.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">ComputeNodeDeallocationOption</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Force</maml:name>
+          <maml:description>
+            <maml:para>Forces the command to run without asking for user confirmation.</maml:para>
+          </maml:description>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>ResizeTimeout</maml:name>
+          <maml:description>
+            <maml:para>Specifies the time-out interval for removal of the compute nodes from the pool. The default value is 10 minutes. The minimum value is 5 minutes.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">TimeSpan</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
+          <maml:name>BatchContext</maml:name>
+          <maml:description>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRmBatchAccountKeys cmdlet. </maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Remove-AzureBatchComputeNode</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1" aliases="none">
+          <maml:name>ComputeNode</maml:name>
+          <maml:description>
+            <maml:para>Specifies the PSComputeNode object that represents the compute node that this cmdlet removes. </maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">PSComputeNode</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>DeallocationOption</maml:name>
+          <maml:description>
+            <maml:para>Specifies a deallocation option for the removal operation that this cmdlet starts. The default value is Requeue.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">ComputeNodeDeallocationOption</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Force</maml:name>
+          <maml:description>
+            <maml:para>Forces the command to run without asking for user confirmation.</maml:para>
+          </maml:description>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>ResizeTimeout</maml:name>
+          <maml:description>
+            <maml:para>Specifies the time-out interval for removal of the compute nodes from the pool. The default value is 10 minutes. The minimum value is 5 minutes.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">TimeSpan</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
+          <maml:name>BatchContext</maml:name>
+          <maml:description>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRmBatchAccountKeys cmdlet. </maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRmBatchAccountKeys cmdlet. </maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        <dev:type>
+          <maml:name>BatchAccountContext</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1" aliases="none">
+        <maml:name>ComputeNode</maml:name>
+        <maml:description>
+          <maml:para>Specifies the PSComputeNode object that represents the compute node that this cmdlet removes. </maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">PSComputeNode</command:parameterValue>
+        <dev:type>
+          <maml:name>PSComputeNode</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>DeallocationOption</maml:name>
+        <maml:description>
+          <maml:para>Specifies a deallocation option for the removal operation that this cmdlet starts. The default value is Requeue.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">ComputeNodeDeallocationOption</command:parameterValue>
+        <dev:type>
+          <maml:name>ComputeNodeDeallocationOption</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>Force</maml:name>
+        <maml:description>
+          <maml:para>Forces the command to run without asking for user confirmation.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="false" position="2" aliases="Id">
+        <maml:name>Ids</maml:name>
+        <maml:description>
+          <maml:para>Specifies an array of IDs of compute nodes that this cmdlet removes from the pool.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
+        <dev:type>
+          <maml:name>String[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1" aliases="none">
+        <maml:name>PoolId</maml:name>
+        <maml:description>
+          <maml:para>Specifies the ID of the pool that contains the compute nodes that this cmdlet removes. </maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>ResizeTimeout</maml:name>
+        <maml:description>
+          <maml:para>Specifies the time-out interval for removal of the compute nodes from the pool. The default value is 10 minutes. The minimum value is 5 minutes.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">TimeSpan</command:parameterValue>
+        <dev:type>
+          <maml:name>TimeSpan</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>
+          </maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>
+          </maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>
+          </maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <command:examples>
+      <command:example>
+        <maml:title>Example 1: Remove a compute node</maml:title>
+        <maml:introduction>
+          <maml:para>
+          </maml:para>
+        </maml:introduction>
+        <dev:code>
+          PS C:\&gt;Remove-AzureBatchComputeNode -PoolId "Pool07" -Ids "tvm-2316545714_1-20150725t213220z" -DeallocationOption Terminate -ResizeTimeout ([TimeSpan]::FromMinutes(10)) -BatchContext $Context
+        </dev:code>
+        <dev:remarks>
+          <maml:para>This command removes compute node that has the specified ID from pool that has the ID Pool07. The command specifies the Terminate deallocation option. The resize time-out is of 10 minutes.</maml:para>
+          <maml:para />
+          <maml:para />
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>Example 2: Remove a compute node by using the pipeline</maml:title>
+        <maml:introduction>
+          <maml:para>
+          </maml:para>
+        </maml:introduction>
+        <dev:code>
+          PS C:\&gt;Get-AzureBatchComputeNode -PoolId "Pool07" -Id "tvm-2316545714_1-20150725t213220z" -BatchContext $Context | Remove-AzureBatchComputeNode -Force -BatchContext $Context
+        </dev:code>
+        <dev:remarks>
+          <maml:para>This command gets the compute node that has the specified ID from pool that has the ID Pool07 by using the Get-AzureBatchComputeNode cmdlet. The command passes that node to the current cmdlet by using the pipeline. The current cmdlet removes the compute node. The command specifies the Force parameter. Therefore, the command does not prompt you for confirmation.</maml:para>
+          <maml:para />
+          <maml:para />
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>Example 3: Remove multiple nodes</maml:title>
+        <maml:introduction>
+          <maml:para>
+          </maml:para>
+        </maml:introduction>
+        <dev:code>
+          PS C:\&gt;Remove-AzureBatchComputeNode -PoolId "Pool07" @("tvm-1783593343_28-20151117t214257z","tvm-1783593343_29-20151117t214257z") -Force -BatchContext $Context
+        </dev:code>
+        <dev:remarks>
+          <maml:para>This command removes two compute nodes from the pool that has the ID Pool07. The command does not prompt you for confirmation. </maml:para>
+          <maml:para />
+          <maml:para />
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureRmBatchAccountKeys</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureBatchComputeNode</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Restart-AzureBatchComputeNode</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
       <command:name>Remove-AzureBatchComputeNodeUser</command:name>
       <maml:description>
         <maml:para>Deletes a user account from a Batch compute node.</maml:para>
@@ -8120,6 +8482,332 @@
       </maml:navigationLink>
       <maml:navigationLink>
         <maml:linkText>Stop-AzureBatchJobSchedule</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Remove-AzureBatchNodeFile</command:name>
+      <maml:description>
+        <maml:para>Deletes a node file for a task or compute node.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Remove</command:verb>
+      <command:noun>AzureBatchNodeFile</command:noun>
+      <dev:version />
+    </command:details>
+    <maml:description>
+      <maml:para>The Remove-AzureBatchNodeFile cmdlet deletes an Azure Batch node file for a task or compute node.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Remove-AzureBatchNodeFile</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Force</maml:name>
+          <maml:description>
+            <maml:para>Forces the command to run without asking for user confirmation.</maml:para>
+          </maml:description>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
+          <maml:name>BatchContext</maml:name>
+          <maml:description>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRmBatchAccountKeys cmdlet. </maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named" aliases="none">
+          <maml:name>JobId</maml:name>
+          <maml:description>
+            <maml:para>Specifies the ID of the job that contains the task. </maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of the node file that this cmdlet deletes.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named" aliases="none">
+          <maml:name>TaskId</maml:name>
+          <maml:description>
+            <maml:para>Specifies the ID of the task.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Remove-AzureBatchNodeFile</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="none">
+          <maml:name>PoolId</maml:name>
+          <maml:description>
+            <maml:para>Specifies the ID of the pool that contains the compute nodes for which this cmdlet removes a file. </maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="2" aliases="none">
+          <maml:name>ComputeNodeId</maml:name>
+          <maml:description>
+            <maml:para>Specifies the ID of the compute node that contains the Batch node file that this cmdlet deletes. </maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="3" aliases="none">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of the node file that this cmdlet deletes.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Force</maml:name>
+          <maml:description>
+            <maml:para>Forces the command to run without asking for user confirmation.</maml:para>
+          </maml:description>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
+          <maml:name>BatchContext</maml:name>
+          <maml:description>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRmBatchAccountKeys cmdlet. </maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Remove-AzureBatchNodeFile</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1" aliases="none">
+          <maml:name>InputObject</maml:name>
+          <maml:description>
+            <maml:para>Specifies PSNodeFile object that represent the node file tha this cmdlet deletes. To obtain a PSNodeFile, use the Get-AzureBatchNodeFile cmdlet.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">PSNodeFile</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Force</maml:name>
+          <maml:description>
+            <maml:para>Forces the command to run without asking for user confirmation.</maml:para>
+          </maml:description>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
+          <maml:name>BatchContext</maml:name>
+          <maml:description>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRmBatchAccountKeys cmdlet. </maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRmBatchAccountKeys cmdlet. </maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        <dev:type>
+          <maml:name>BatchAccountContext</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="2" aliases="none">
+        <maml:name>ComputeNodeId</maml:name>
+        <maml:description>
+          <maml:para>Specifies the ID of the compute node that contains the Batch node file that this cmdlet deletes. </maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>Force</maml:name>
+        <maml:description>
+          <maml:para>Forces the command to run without asking for user confirmation.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1" aliases="none">
+        <maml:name>InputObject</maml:name>
+        <maml:description>
+          <maml:para>Specifies PSNodeFile object that represent the node file tha this cmdlet deletes. To obtain a PSNodeFile, use the Get-AzureBatchNodeFile cmdlet.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">PSNodeFile</command:parameterValue>
+        <dev:type>
+          <maml:name>PSNodeFile</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named" aliases="none">
+        <maml:name>JobId</maml:name>
+        <maml:description>
+          <maml:para>Specifies the ID of the job that contains the task. </maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>Specifies the name of the node file that this cmdlet deletes.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="none">
+        <maml:name>PoolId</maml:name>
+        <maml:description>
+          <maml:para>Specifies the ID of the pool that contains the compute nodes for which this cmdlet removes a file. </maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named" aliases="none">
+        <maml:name>TaskId</maml:name>
+        <maml:description>
+          <maml:para>Specifies the ID of the task.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>
+          </maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>
+          </maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>
+          </maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <command:examples>
+      <command:example>
+        <maml:title>Example 1: Delete a file assocated with a task</maml:title>
+        <maml:introduction>
+          <maml:para>
+          </maml:para>
+        </maml:introduction>
+        <dev:code>
+          PS C:\&gt;Remove-AzureBatchNodeFile -JobId "Job-000001" -TaskId "Task26" -Name "wd\testFile.txt" -BatchContext $Context
+        </dev:code>
+        <dev:remarks>
+          <maml:para>This command deletes the node file that is named wd\testFile.txt. That file is associated with the task that has the ID Task26 under the job Job-000001.</maml:para>
+          <maml:para />
+          <maml:para />
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>Example 2: Delete a file from a compute node</maml:title>
+        <maml:introduction>
+          <maml:para>
+          </maml:para>
+        </maml:introduction>
+        <dev:code>
+          PS C:\&gt;Remove-AzureBatchNodeFile -PoolId "Pool07" -ComputeNodeId "tvm-2316545714_1-20150725t213220z" -Name "startup\testFile.txt" -BatchContext $Context
+        </dev:code>
+        <dev:remarks>
+          <maml:para>This command deletes the node file that is named startup\testFile.txt from the specified compute node in the pool that has the ID Pool07.</maml:para>
+          <maml:para />
+          <maml:para />
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>Example 3: Remove a file by using the pipeline</maml:title>
+        <maml:introduction>
+          <maml:para>
+          </maml:para>
+        </maml:introduction>
+        <dev:code>
+          PS C:\&gt;Get-AzureBatchNodeFile -JobId "Job-000001" -TaskId "Task26" -Name "wd\testFile2.txt" -BatchContext $Context | Remove-AzureBatchNodeFile -Force -BatchContext $Context
+        </dev:code>
+        <dev:remarks>
+          <maml:para>This command gets the node file by using Get-AzureBatchNodeFile. That file is associated with the task that has the ID Task26 under the job Job-000001. The command passes that file to the current cmdlet by using the pipeline. The current cmdlet removes the node file. The command specifies the Force parameter. Therefore, the command does not prompt you for confirmation. </maml:para>
+          <maml:para />
+          <maml:para />
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureRmBatchAccountKeys</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureBatchNodeFile</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Get-AzureBatchNodeFileContent</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
@@ -9824,7 +10512,7 @@
           <maml:name>TargetOSVersion</maml:name>
           <maml:description>
             <maml:para>
-              Specifies the Azure Guest OS version to install on the virtual machines in the pool. For more information on Azure Guest OS versions, see <maml:navigationLink>
+              Specifies the Azure Guest operating system version to install on the virtual machines in the pool. For more information on Azure Guest operating system versions, see <maml:navigationLink>
                 <maml:linkText>Azure Guest OS Releases and SDK Compatibility Matrix</maml:linkText>
                 <maml:uri></maml:uri>
               </maml:navigationLink> (http://azure.microsoft.com/en-us/documentation/articles/cloud-services-guestos-update-matrix/).
@@ -9870,7 +10558,7 @@
         <maml:name>TargetOSVersion</maml:name>
         <maml:description>
           <maml:para>
-            Specifies the Azure Guest OS version to install on the virtual machines in the pool. For more information on Azure Guest OS versions, see <maml:navigationLink>
+            Specifies the Azure Guest operating system version to install on the virtual machines in the pool. For more information on Azure Guest operating system versions, see <maml:navigationLink>
               <maml:linkText>Azure Guest OS Releases and SDK Compatibility Matrix</maml:linkText>
               <maml:uri></maml:uri>
             </maml:navigationLink> (http://azure.microsoft.com/en-us/documentation/articles/cloud-services-guestos-update-matrix/).
@@ -9922,7 +10610,7 @@
     <command:nonTerminatingErrors />
     <command:examples>
       <command:example>
-        <maml:title>Example 1: Set the target OS version of a pool</maml:title>
+        <maml:title>Example 1: Set the target operating system version of a pool</maml:title>
         <maml:introduction>
           <maml:para>
           </maml:para>
@@ -9931,7 +10619,7 @@
           PS C:\&gt;Set-AzureBatchPoolOSVersion -Id "MyPool" -TargetOSVersion "WA-GUEST-OS-4.20_201505-01" -BatchContext $Context
         </dev:code>
         <dev:remarks>
-          <maml:para>This command sets the target OS version of pool MyPool to WA-GUEST-OS-4.20_201505-01.</maml:para>
+          <maml:para>This command sets the target operating system version of pool MyPool to WA-GUEST-OS-4.20_201505-01.</maml:para>
           <maml:para />
           <maml:para />
         </dev:remarks>
@@ -11487,42 +12175,41 @@
   </command:command>
 
 
-
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
-        Remove-AzureBatchComputeNode
+        Disable-AzureBatchComputeNodeScheduling
       </command:name>
       <maml:description>
-        <maml:para>Removes the specified compute nodes from the specified pool</maml:para>
+        <maml:para>Disables task scheduling on the specified compute node.</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para></maml:para>
       </maml:copyright>
-      <command:verb>Remove</command:verb>
-      <command:noun>AzureBatchComputeNode</command:noun>
+      <command:verb>Disable</command:verb>
+      <command:noun>AzureBatchComputeNodeScheduling</command:noun>
       <dev:version></dev:version>
     </command:details>
     <maml:description>
-      <maml:para>Removes the specified compute nodes from the specified pool</maml:para>
+      <maml:para>Disables task scheduling on the specified compute node.</maml:para>
     </maml:description>
     <!-- Cmdlet syntax section-->
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Remove-AzureBatchComputeNode</maml:name>
+        <maml:name>Disable-AzureBatchComputeNodeScheduling</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
           <maml:name>PoolId</maml:name>
           <maml:description>
-            <maml:para>The id of the pool that contains the compute nodes.</maml:para>
+            <maml:para>The id of the pool.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="false" position="2">
-          <maml:name>Ids</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
+          <maml:name>Id</maml:name>
           <maml:description>
-            <maml:para>The ids of the compute nodes to remove from the pool.</maml:para>
+            <maml:para>The id of the compute node.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
           <maml:name>BatchContext</maml:name>
@@ -11532,32 +12219,19 @@
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>DeallocationOption</maml:name>
+          <maml:name>DisableSchedulingOption</maml:name>
           <maml:description>
-            <maml:para>Specifies when the compute nodes may be removed from the pool. The default is Requeue.</maml:para>
+            <maml:para>Specifies what to do with currently running tasks. The default is Requeue.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">ComputeNodeDeallocationOption</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>Force</maml:name>
-          <maml:description>
-            <maml:para>If this parameter is not present, then you will be prompted for confirmation before the compute nodes are removed from the pool. Use this parameter to remove the compute nodes from the pool without being asked for confirmation.</maml:para>
-          </maml:description>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>ResizeTimeout</maml:name>
-          <maml:description>
-            <maml:para>Specifies the timeout for removal of the compute nodes from the pool. The default value is 10 minutes. The minimum value is 5 minutes.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">TimeSpan</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">DisableComputeNodeSchedulingOption</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>Remove-AzureBatchComputeNode</maml:name>
+        <maml:name>Disable-AzureBatchComputeNodeScheduling</maml:name>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
           <maml:name>ComputeNode</maml:name>
           <maml:description>
-            <maml:para>The PSComputeNode object representing the compute node to remove from the pool.</maml:para>
+            <maml:para>The PSComputeNode object representing the compute node to disable task scheduling on.  Use the Get-AzureBatchComputeNode cmdlet to get a PSComputeNode instance.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">PSComputeNode</command:parameterValue>
         </command:parameter>
@@ -11569,24 +12243,11 @@
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>DeallocationOption</maml:name>
+          <maml:name>DisableSchedulingOption</maml:name>
           <maml:description>
-            <maml:para>Specifies when the compute nodes may be removed from the pool. The default is Requeue.</maml:para>
+            <maml:para>Specifies what to do with currently running tasks. The default is Requeue.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">ComputeNodeDeallocationOption</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>Force</maml:name>
-          <maml:description>
-            <maml:para>If this parameter is not present, then you will be prompted for confirmation before the compute nodes are removed from the pool. Use this parameter to remove the compute nodes from the pool without being asked for confirmation.</maml:para>
-          </maml:description>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>ResizeTimeout</maml:name>
-          <maml:description>
-            <maml:para>Specifies the timeout for removal of the compute nodes from the pool. The default value is 10 minutes. The minimum value is 5 minutes.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">TimeSpan</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">DisableComputeNodeSchedulingOption</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -11608,7 +12269,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
         <maml:name>ComputeNode</maml:name>
         <maml:description>
-          <maml:para>The PSComputeNode object representing the compute node to remove from the pool.</maml:para>
+          <maml:para>The PSComputeNode object representing the compute node to disable task scheduling on.  Use the Get-AzureBatchComputeNode cmdlet to get a PSComputeNode instance.</maml:para>
 
         </maml:description>
         <command:parameterValue required="true" variableLength="false">PSComputeNode</command:parameterValue>
@@ -11619,48 +12280,22 @@
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>DeallocationOption</maml:name>
+        <maml:name>DisableSchedulingOption</maml:name>
         <maml:description>
-          <maml:para>Specifies when the compute nodes may be removed from the pool. The default is Requeue.</maml:para>
+          <maml:para>Specifies what to do with currently running tasks. The default is Requeue.</maml:para>
 
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">ComputeNodeDeallocationOption</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">DisableComputeNodeSchedulingOption</command:parameterValue>
         <dev:type>
-          <maml:name>ComputeNodeDeallocationOption</maml:name>
+          <maml:name>DisableComputeNodeSchedulingOption</maml:name>
           <maml:uri/>
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>Force</maml:name>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
+        <maml:name>Id</maml:name>
         <maml:description>
-          <maml:para>If this parameter is not present, then you will be prompted for confirmation before the compute nodes are removed from the pool. Use this parameter to remove the compute nodes from the pool without being asked for confirmation.</maml:para>
-
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        <dev:type>
-          <maml:name>SwitchParameter</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="false" position="2">
-        <maml:name>Ids</maml:name>
-        <maml:description>
-          <maml:para>The ids of the compute nodes to remove from the pool.</maml:para>
-
-        </maml:description>
-        <command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
-        <dev:type>
-          <maml:name>string[]</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
-        <maml:name>PoolId</maml:name>
-        <maml:description>
-          <maml:para>The id of the pool that contains the compute nodes.</maml:para>
+          <maml:para>The id of the compute node.</maml:para>
 
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
@@ -11670,15 +12305,15 @@
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>ResizeTimeout</maml:name>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+        <maml:name>PoolId</maml:name>
         <maml:description>
-          <maml:para>Specifies the timeout for removal of the compute nodes from the pool. The default value is 10 minutes. The minimum value is 5 minutes.</maml:para>
+          <maml:para>The id of the pool.</maml:para>
 
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">TimeSpan</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         <dev:type>
-          <maml:name>TimeSpan</maml:name>
+          <maml:name>string</maml:name>
           <maml:uri/>
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
@@ -11741,12 +12376,12 @@
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          Remove-AzureBatchComputeNode &quot;myPool&quot; &quot;tvm-2316545714_1-20150725t213220z&quot; -DeallocationOption Terminate -ResizeTimeout ([TimeSpan]::FromMinutes(10)) -BatchContext $context
+          Disable-AzureBatchComputeNodeScheduling &quot;myPool&quot; &quot;tvm-1783593343_34-20151117t222514z&quot; -BatchContext $context
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
           <maml:para>-----------</maml:para>
-          <maml:para>Removes compute node &quot;tvm-2316545714_1-20150725t213220z&quot; from pool &quot;myPool&quot;. The Terminate deallocation option is specified, and a resize timeout of 10 minutes is specified.</maml:para>
+          <maml:para>Disables task scheduling on compute node &quot;tvm-1783593343_34-20151117t222514z&quot; in pool &quot;myPool&quot;.</maml:para>
           <maml:para></maml:para>
           <maml:para></maml:para>
           <maml:para></maml:para>
@@ -11767,38 +12402,12 @@
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          Get-AzureBatchComputeNode -PoolId &quot;myPool&quot; -Id &quot;tvm-2316545714_1-20150725t213220z&quot; -BatchContext $ccontext | Remove-AzureBatchComputeNode -Force -BatchContext $context
+          Get-AzureBatchComputeNode &quot;myPool&quot; &quot;tvm-1783593343_34-20151117t222514z&quot; -BatchContext $context | Disable-AzureBatchComputeNodeScheduling -BatchContext $context
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
           <maml:para>-----------</maml:para>
-          <maml:para>Removes compute node &quot;tvm-2316545714_1-20150725t213220z&quot; from pool &quot;myPool&quot; using the pipeline. Since the Force switch is specified, the user is not asked for confirmation.</maml:para>
-          <maml:para></maml:para>
-          <maml:para></maml:para>
-          <maml:para></maml:para>
-          <maml:para></maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText></command:commandText>
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-
-      <command:example>
-        <maml:title>
-          -------------------------- EXAMPLE 3 --------------------------
-        </maml:title>
-        <maml:introduction>
-          <maml:para>C:\PS&gt;</maml:para>
-        </maml:introduction>
-        <dev:code>
-          Remove-AzureBatchComputeNode &quot;myPool&quot; @(&quot;tvm-1783593343_28-20151117t214257z&quot;,&quot;tvm-1783593343_29-20151117t214257z&quot;) -Force -BatchContext $context
-        </dev:code>
-        <dev:remarks>
-          <maml:para>Description</maml:para>
-          <maml:para>-----------</maml:para>
-          <maml:para>Removes two compute nodes from pool &quot;myPool&quot;</maml:para>
+          <maml:para>Disables task scheduling on compute node &quot;tvm-1783593343_34-20151117t222514z&quot; in pool &quot;myPool&quot;.</maml:para>
           <maml:para></maml:para>
           <maml:para></maml:para>
           <maml:para></maml:para>
@@ -11822,34 +12431,34 @@
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
-        Remove-AzureBatchNodeFile
+        Enable-AzureBatchComputeNodeScheduling
       </command:name>
       <maml:description>
-        <maml:para>Deletes the specified node file.</maml:para>
+        <maml:para>Enables task scheduling on the specified compute node.</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para></maml:para>
       </maml:copyright>
-      <command:verb>Remove</command:verb>
-      <command:noun>AzureBatchNodeFile</command:noun>
+      <command:verb>Enable</command:verb>
+      <command:noun>AzureBatchComputeNodeScheduling</command:noun>
       <dev:version></dev:version>
     </command:details>
     <maml:description>
-      <maml:para>Deletes the specified node file.</maml:para>
+      <maml:para>Enables task scheduling on the specified compute node.</maml:para>
     </maml:description>
     <!-- Cmdlet syntax section-->
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Remove-AzureBatchNodeFile</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+        <maml:name>Enable-AzureBatchComputeNodeScheduling</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
           <maml:name>PoolId</maml:name>
           <maml:description>
-            <maml:para>The id of the pool containing the compute node.</maml:para>
+            <maml:para>The id of the pool.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
-          <maml:name>ComputeNodeId</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
+          <maml:name>Id</maml:name>
           <maml:description>
             <maml:para>The id of the compute node.</maml:para>
           </maml:description>
@@ -11862,28 +12471,15 @@
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>Name</maml:name>
-          <maml:description>
-            <maml:para>The name of the node file to delete.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>Force</maml:name>
-          <maml:description>
-            <maml:para>If this parameter is not present, then you will be prompted for confirmation before the node file is deleted. Use this parameter to delete the node file without being asked for confirmation.</maml:para>
-          </maml:description>
-        </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>Remove-AzureBatchNodeFile</maml:name>
+        <maml:name>Enable-AzureBatchComputeNodeScheduling</maml:name>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
-          <maml:name>InputObject</maml:name>
+          <maml:name>ComputeNode</maml:name>
           <maml:description>
-            <maml:para>The PSNodeFile object representing the node file to delete. Use the Get-AzureBatchNodeFile cmdlet to get a PSNodeFile instance.</maml:para>
+            <maml:para>The PSComputeNode object representing the compute node to enable task scheduling on.  Use the Get-AzureBatchComputeNode cmdlet to get a PSComputeNode instance.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">PSNodeFile</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">PSComputeNode</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
           <maml:name>BatchContext</maml:name>
@@ -11891,49 +12487,6 @@
             <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>Force</maml:name>
-          <maml:description>
-            <maml:para>If this parameter is not present, then you will be prompted for confirmation before the node file is deleted. Use this parameter to delete the node file without being asked for confirmation.</maml:para>
-          </maml:description>
-        </command:parameter>
-      </command:syntaxItem>
-      <command:syntaxItem>
-        <maml:name>Remove-AzureBatchNodeFile</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
-          <maml:name>BatchContext</maml:name>
-          <maml:description>
-            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-          <maml:name>JobId</maml:name>
-          <maml:description>
-            <maml:para>The id of the job containing the task.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-          <maml:name>TaskId</maml:name>
-          <maml:description>
-            <maml:para>The id of the task.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>Force</maml:name>
-          <maml:description>
-            <maml:para>If this parameter is not present, then you will be prompted for confirmation before the node file is deleted. Use this parameter to delete the node file without being asked for confirmation.</maml:para>
-          </maml:description>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>Name</maml:name>
-          <maml:description>
-            <maml:para>The name of the node file to delete.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -11952,8 +12505,21 @@
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
-        <maml:name>ComputeNodeId</maml:name>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+        <maml:name>ComputeNode</maml:name>
+        <maml:description>
+          <maml:para>The PSComputeNode object representing the compute node to enable task scheduling on.  Use the Get-AzureBatchComputeNode cmdlet to get a PSComputeNode instance.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSComputeNode</command:parameterValue>
+        <dev:type>
+          <maml:name>PSComputeNode</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
+        <maml:name>Id</maml:name>
         <maml:description>
           <maml:para>The id of the compute node.</maml:para>
 
@@ -11965,36 +12531,10 @@
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>Force</maml:name>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+        <maml:name>PoolId</maml:name>
         <maml:description>
-          <maml:para>If this parameter is not present, then you will be prompted for confirmation before the node file is deleted. Use this parameter to delete the node file without being asked for confirmation.</maml:para>
-
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        <dev:type>
-          <maml:name>SwitchParameter</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
-        <maml:name>InputObject</maml:name>
-        <maml:description>
-          <maml:para>The PSNodeFile object representing the node file to delete. Use the Get-AzureBatchNodeFile cmdlet to get a PSNodeFile instance.</maml:para>
-
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">PSNodeFile</command:parameterValue>
-        <dev:type>
-          <maml:name>PSNodeFile</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-        <maml:name>JobId</maml:name>
-        <maml:description>
-          <maml:para>The id of the job containing the task.</maml:para>
+          <maml:para>The id of the pool.</maml:para>
 
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
@@ -12004,23 +12544,211 @@
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>Name</maml:name>
+    </command:parameters>
+    <!-- Input - Output section-->
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri/>
+          <maml:description />
+        </dev:type>
         <maml:description>
-          <maml:para>The name of the node file to delete.</maml:para>
+          <maml:para>
+            <!-- description  -->
+
+          </maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri />
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
+
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <!-- Error section-->
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <!-- Notes section  -->
+    <maml:alertSet>
+      <maml:title></maml:title>
+      <maml:alert>
+        <maml:para>
+
+        </maml:para>
+      </maml:alert>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <!-- Example section  -->
+    <command:examples>
+
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 1 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          Enable-AzureBatchComputeNodeScheduling &quot;myPool&quot; &quot;tvm-1783593343_34-20151117t222514z&quot; -BatchContext $context
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>Enables task scheduling on compute node &quot;tvm-1783593343_34-20151117t222514z&quot; in pool &quot;myPool&quot;.</maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 2 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          Get-AzureBatchComputeNode &quot;myPool&quot; &quot;tvm-1783593343_34-20151117t222514z&quot; -BatchContext $context | Enable-AzureBatchComputeNodeScheduling -BatchContext $context
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>Enables task scheduling on compute node &quot;tvm-1783593343_34-20151117t222514z&quot; in pool &quot;myPool&quot;.</maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <!-- Link section  -->
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText></maml:linkText>
+        <maml:uri/>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>
+        Get-AzureBatchSubtask
+      </command:name>
+      <maml:description>
+        <maml:para>Gets the subtask information of the specified task.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para></maml:para>
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>AzureBatchSubtask</command:noun>
+      <dev:version></dev:version>
+    </command:details>
+    <maml:description>
+      <maml:para>Gets the subtask information of the specified task.</maml:para>
+    </maml:description>
+    <!-- Cmdlet syntax section-->
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-AzureBatchSubtask</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+          <maml:name>JobId</maml:name>
+          <maml:description>
+            <maml:para>The id of the job.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+          <maml:name>TaskId</maml:name>
+          <maml:description>
+            <maml:para>The id of the task.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+          <maml:name>BatchContext</maml:name>
+          <maml:description>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>MaxCount</maml:name>
+          <maml:description>
+            <maml:para>The maximum number of subtasks to return. If a value of 0 or less is specified, then no upper limit will be used. If no value is specified, a default value of 1000 will be used.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Get-AzureBatchSubtask</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+          <maml:name>Task</maml:name>
+          <maml:description>
+            <maml:para>The PSCloudTask object representing the task.  Use the Get-AzureBatchTask cmdlet to get a PSCloudTask instance.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSCloudTask</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+          <maml:name>BatchContext</maml:name>
+          <maml:description>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>MaxCount</maml:name>
+          <maml:description>
+            <maml:para>The maximum number of subtasks to return. If a value of 0 or less is specified, then no upper limit will be used. If no value is specified, a default value of 1000 will be used.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <!-- Cmdlet parameter section  -->
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+        <maml:name>BatchContext</maml:name>
+        <maml:description>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
 
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         <dev:type>
-          <maml:name>string</maml:name>
+          <maml:name>BatchAccountContext</maml:name>
           <maml:uri/>
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
-        <maml:name>PoolId</maml:name>
+        <maml:name>JobId</maml:name>
         <maml:description>
-          <maml:para>The id of the pool containing the compute node.</maml:para>
+          <maml:para>The id of the job.</maml:para>
 
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
@@ -12030,7 +12758,33 @@
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>MaxCount</maml:name>
+        <maml:description>
+          <maml:para>The maximum number of subtasks to return. If a value of 0 or less is specified, then no upper limit will be used. If no value is specified, a default value of 1000 will be used.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">int</command:parameterValue>
+        <dev:type>
+          <maml:name>int</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+        <maml:name>Task</maml:name>
+        <maml:description>
+          <maml:para>The PSCloudTask object representing the task.  Use the Get-AzureBatchTask cmdlet to get a PSCloudTask instance.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSCloudTask</command:parameterValue>
+        <dev:type>
+          <maml:name>PSCloudTask</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
         <maml:name>TaskId</maml:name>
         <maml:description>
           <maml:para>The id of the task.</maml:para>
@@ -12063,7 +12817,7 @@
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name></maml:name>
+          <maml:name>PSSubtaskInformation</maml:name>
           <maml:uri />
           <maml:description />
         </dev:type>
@@ -12101,12 +12855,34 @@
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          Remove-AzureBatchNodeFile -JobId &quot;job1&quot; -TaskId &quot;task1 -Name &quot;wd\testFile.txt&quot; -BatchContext $context
+          Get-AzureBatchSubtask &quot;job-01&quot; &quot;myTask&quot; -BatchContext $context
+
+          ComputeNodeInformation      : Microsoft.Azure.Commands.Batch.Models.PSComputeNodeInformation
+          EndTime                     : 1/1/1601 12:01:45 AM
+          ExitCode                    : 0
+          Id                          : 1
+          PreviousState               : Running
+          PreviousStateTransitionTime : 1/1/1601 12:01:37 AM
+          SchedulingError             :
+          StartTime                   : 1/1/1601 12:01:37 AM
+          State                       : Completed
+          StateTransitionTime         : 1/1/1601 12:01:45 AM
+
+          ComputeNodeInformation      : Microsoft.Azure.Commands.Batch.Models.PSComputeNodeInformation
+          EndTime                     : 1/1/1601 12:01:45 AM
+          ExitCode                    : 0
+          Id                          : 2
+          PreviousState               : Running
+          PreviousStateTransitionTime : 1/1/1601 12:01:37 AM
+          SchedulingError             :
+          StartTime                   : 1/1/1601 12:01:37 AM
+          State                       : Completed
+          StateTransitionTime         : 1/1/1601 12:01:45 AM
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
           <maml:para>-----------</maml:para>
-          <maml:para>Deletes the node file named &quot;wd\testFile.txt&quot; that's associated with task &quot;task1&quot; under job &quot;job1&quot;.</maml:para>
+          <maml:para>Gets the subtask information for task &quot;myTask&quot; under job &quot;job-01&quot;.</maml:para>
           <maml:para></maml:para>
           <maml:para></maml:para>
           <maml:para></maml:para>
@@ -12127,40 +12903,34 @@
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          Remove-AzureBatchNodeFile &quot;myPool&quot; &quot;tvm-2316545714_1-20150725t213220z&quot; &quot;startup\testFile.txt&quot; -BatchContext $context
+          Get-AzureBatchTask &quot;job-01&quot; &quot;myTask&quot; -BatchContext $context | Get-AzureBatchSubtask -BatchContext $context
 
-          Deletes the node file named &quot;startup\testFile.txt&quot; from compute node &quot;tvm-2316545714_1-20150725t213220z&quot; in pool &quot;myPool&quot;.
+          ComputeNodeInformation      : Microsoft.Azure.Commands.Batch.Models.PSComputeNodeInformation
+          EndTime                     : 1/1/1601 12:01:45 AM
+          ExitCode                    : 0
+          Id                          : 1
+          PreviousState               : Running
+          PreviousStateTransitionTime : 1/1/1601 12:01:37 AM
+          SchedulingError             :
+          StartTime                   : 1/1/1601 12:01:37 AM
+          State                       : Completed
+          StateTransitionTime         : 1/1/1601 12:01:45 AM
+
+          ComputeNodeInformation      : Microsoft.Azure.Commands.Batch.Models.PSComputeNodeInformation
+          EndTime                     : 1/1/1601 12:01:45 AM
+          ExitCode                    : 0
+          Id                          : 2
+          PreviousState               : Running
+          PreviousStateTransitionTime : 1/1/1601 12:01:37 AM
+          SchedulingError             :
+          StartTime                   : 1/1/1601 12:01:37 AM
+          State                       : Completed
+          StateTransitionTime         : 1/1/1601 12:01:45 AM
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
           <maml:para>-----------</maml:para>
-          <maml:para></maml:para>
-          <maml:para></maml:para>
-          <maml:para></maml:para>
-          <maml:para></maml:para>
-          <maml:para></maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText></command:commandText>
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-
-      <command:example>
-        <maml:title>
-          -------------------------- EXAMPLE 3 --------------------------
-        </maml:title>
-        <maml:introduction>
-          <maml:para>C:\PS&gt;</maml:para>
-        </maml:introduction>
-        <dev:code>
-          Get-AzureBatchNodeFile -JobId &quot;job1&quot;-TaskId &quot;task2&quot; -Name &quot;wd\testFile2.txt&quot; -BatchContext $context | Remove-AzureBatchNodeFile -Force -BatchContext $context
-        </dev:code>
-        <dev:remarks>
-          <maml:para>Description</maml:para>
-          <maml:para>-----------</maml:para>
-          <maml:para>Deletes the node file named &quot;wd\testFile2.txt&quot; that's associated with task &quot;task2&quot; under job &quot;job1&quot;. Since the Force switch is specified, the user is not asked for confirmation before the node file is deleted.</maml:para>
+          <maml:para>Gets the subtask information for task &quot;myTask&quot; under job &quot;job-01&quot;.</maml:para>
           <maml:para></maml:para>
           <maml:para></maml:para>
           <maml:para></maml:para>
@@ -12181,5 +12951,4 @@
       </maml:navigationLink>
     </maml:relatedLinks>
   </command:command>
-
 </helpItems>
