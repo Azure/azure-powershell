@@ -205,7 +205,6 @@ namespace Microsoft.CLU.CommandLineParser
                 {
                     // Found appropriate help...
                     var cmdLine = string.Join(" ", arguments);
-                    Console.WriteLine($"Help for command {cmdLine}");
                     Console.WriteLine();
 
                     foreach (var line in helpFile.GetHelpContent())
@@ -217,7 +216,7 @@ namespace Microsoft.CLU.CommandLineParser
                 else
                 {
                     var joinedArgs = string.Join(" ", arguments);
-                    Console.WriteLine($"UNDONE - unable to find help for command {joinedArgs}");
+                    Console.WriteLine($"unable to find help for command {joinedArgs}, try az help to see available commands");
                 }
             }
         }
