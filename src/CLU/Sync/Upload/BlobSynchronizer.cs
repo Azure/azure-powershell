@@ -61,7 +61,9 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
                                                               {
                                                                   b.Properties.ContentMD5 = md5HashOfDataChunk;
                                                                   // TODO: CLU
-                                                                  b.WritePagesAsync(stream, dwr.Range.StartIndex, md5HashOfDataChunk).Wait();
+                                                                  Program.SyncOutput.WriteVerboseWithTimestamp(
+                                                                      string.Format("Range Start Index = {0}, ContentMD5 = {1}", dwr.Range.StartIndex, md5HashOfDataChunk));
+                                                                  b.WritePagesAsync(stream, dwr.Range.StartIndex, null).Wait();
                                                                   //b.WritePages(stream, dwr.Range.StartIndex);
                                                               }
                                                           }

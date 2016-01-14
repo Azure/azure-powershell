@@ -20,7 +20,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Remove, ProfileNouns.AvailabilitySet)]
-    [OutputType(typeof(PSOperation))]
+    [OutputType(typeof(void))]
     [CliCommandAlias("vm;availabilityset;rm")]
     public class RemoveAzureAvailabilitySetCommand : AvailabilitySetBaseCmdlet
     {
