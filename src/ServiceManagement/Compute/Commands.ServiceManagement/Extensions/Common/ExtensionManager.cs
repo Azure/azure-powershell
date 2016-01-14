@@ -140,15 +140,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
                 thumbprintAlgorithm = string.Empty;
             }
         }
-        
+
         public ExtensionConfiguration InstallExtension(ExtensionConfigurationInput context, string slot,
-            DeploymentGetResponse deployment, DeploymentGetResponse peerDeployment)
+            ExtensionConfiguration extConfig, ExtensionConfiguration secondSlotExtConfig)
         {
-            Func<DeploymentGetResponse, ExtensionConfiguration> func = (d) => d == null ? null : d.ExtensionConfiguration;
-
-            ExtensionConfiguration extConfig = func(deployment);
-            ExtensionConfiguration secondSlotExtConfig = func(peerDeployment);
-
             ExtensionConfigurationBuilder builder = GetBuilder(extConfig);
             ExtensionConfigurationBuilder secondSlotConfigBuilder = null;
             if (secondSlotExtConfig != null)
@@ -238,6 +233,17 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             }
 
             return builder.ToConfiguration();
+        }
+
+        public ExtensionConfiguration InstallExtension(ExtensionConfigurationInput context, string slot,
+            DeploymentGetResponse deployment, DeploymentGetResponse peerDeployment)
+        {
+            Func<DeploymentGetResponse, ExtensionConfiguration> func = (d) => d == null ? null : d.ExtensionConfiguration;
+
+            ExtensionConfiguration extConfig = func(deployment);
+            ExtensionConfiguration secondSlotExtConfig = func(peerDeployment);
+
+            return InstallExtension(context, slot, extConfig, secondSlotExtConfig);
         }
 
         public void Uninstall(string nameSpace, string type, Microsoft.WindowsAzure.Management.Compute.Models.ExtensionConfiguration extConfig)

@@ -203,6 +203,12 @@
     <None Include="Resources\CredentialTests\Common.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Resources\DiagnosticsExtension\DiagnosticsExtensionTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\DiagnosticsExtension\Files\diagnostics.wadcfgx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\DscExtension\DscExtensionTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -240,6 +246,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.AutomationTests\TestAutomationSuspendAndResumeJob.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.DiagnosticsExtensionTests\TestAzureServiceDiagnosticsExtensionBasic.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.DiagnosticsExtensionTests\TestAzureServiceDiagnosticsExtensionConfigurationArray.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.DscExtensionTests\TestGetAzureVMDscExtension.json">
@@ -356,6 +368,7 @@
     <Compile Include="CredentialTests\AddAccountForArmTests.cs" />
     <Compile Include="CredentialTests\CredentialTestBase.cs" />
     <Compile Include="CredentialTests\CredentialTestHelper.cs" />
+    <Compile Include="DiagnosticsExtension\DiagnosticsExtensionTests.cs" />
     <Compile Include="DscExtension\DscExtensionTests.cs" />
     <Compile Include="MediaServicesTests\MediaServicesTests.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -582,6 +595,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\DiagnosticsExtension\Files\CloudServiceConfig.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\CloudService\Cache\index.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
