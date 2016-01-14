@@ -15,13 +15,16 @@
 
 using System;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Websites.Models.WebApp;
+using Microsoft.Azure.Management.WebSites.Models;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
     /// <summary>
     /// this commandlet will let you get Azure servce plan metrics
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMAppServicePlanMetrics")]
+    [Cmdlet(VerbsCommon.Get, "AzureRMAppServicePlanMetrics"), OutputType(typeof(PSResourceMetric))]
     [CliCommandAlias("appservice;plan;metrics;ls")]
     public class GetAzureAppServicePlanMetricsCmdlet : AppServicePlanBaseCmdlet
     {
@@ -48,7 +51,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
-            WriteObject(WebsitesClient.GetAppServicePlanHistoricalUsageMetrics(ResourceGroupName, Name, Metrics, StartTime, EndTime, Granularity, InstanceDetails.IsPresent));
+            WriteObject(WebsitesClient.GetAppServicePlanHistoricalUsageMetrics(ResourceGroupName, Name, Metrics, StartTime, EndTime, Granularity, InstanceDetails.IsPresent).Select(m => (PSResourceMetric)m), true);
         }
     }
 }

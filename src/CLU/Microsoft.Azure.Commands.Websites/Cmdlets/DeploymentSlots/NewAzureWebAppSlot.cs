@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.WebApps.Models;
+using Microsoft.Azure.Commands.Websites.Models.WebApp;
 using Microsoft.Azure.Management.WebSites.Models;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
@@ -27,6 +28,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     /// this commandlet will let you create a new Azure Web app slot using ARM APIs
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRMWebAppSlot")]
+    [OutputType(typeof(PSSite))]
     [CliCommandAlias("appservice;slot;create")]
     public class NewAzureWebAppSlotCmdlet : WebAppBaseClientCmdLet
     {
@@ -82,7 +84,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 
             var webApp = WebsitesClient.GetWebApp(ResourceGroupName, Name, null);
 
-            WriteObject(WebsitesClient.CreateWebApp(ResourceGroupName, Name, Slot, webApp.Location, AppServicePlan, cloningInfo));
+            WriteObject((PSSite)WebsitesClient.CreateWebApp(ResourceGroupName, Name, Slot, webApp.Location, AppServicePlan, cloningInfo));
         }
     }
 }

@@ -15,6 +15,7 @@
 using System.Management.Automation;
 using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Commands.WebApps.Validations;
+using Microsoft.Azure.Commands.Websites.Models.WebApp;
 using Microsoft.Azure.Management.WebSites.Models;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
@@ -62,7 +63,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
             AppServicePlan.Sku.Size = AppServicePlan.Sku.Name;
             AppServicePlan.Sku.Family = AppServicePlan.Sku.Name.Substring(0, 1);
 
-            WriteObject(WebsitesClient.CreateAppServicePlan(ResourceGroupName, Name, AppServicePlan.Location, AdminSiteName, AppServicePlan.Sku), true);
+            WriteObject((PSServerFarmWithRichSku)WebsitesClient.CreateAppServicePlan(ResourceGroupName, Name, AppServicePlan.Location, AdminSiteName, AppServicePlan.Sku), true);
         }
     }
 }

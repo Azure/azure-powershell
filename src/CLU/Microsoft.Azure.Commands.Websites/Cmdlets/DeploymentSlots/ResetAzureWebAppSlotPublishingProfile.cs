@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     /// <summary>
     /// This commandlet resets the publishing creds of the given Azure Web app slot
     /// </summary>
-    [Cmdlet(VerbsCommon.Reset, "AzureRMWebAppSlotPublishingProfile")]
+    [Cmdlet(VerbsCommon.Reset, "AzureRMWebAppSlotPublishingProfile"), OutputType(typeof(string))]
     [CliCommandAlias("appservice;slot;profile;reset")]
     public class ResetAzureWebAppPSlotublishingProfileCmdlet : WebAppSlotBaseCmdlet
     {

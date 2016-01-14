@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.WebApps.Models;
+using Microsoft.Azure.Commands.Websites.Models.WebApp;
 using Microsoft.Azure.Management.WebSites.Models;
 using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
 
@@ -26,7 +27,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
     /// <summary>
     /// this commandlet will let you Get an Azure App Service Plan using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMAppServicePlan"), OutputType(typeof(ServerFarmWithRichSku), typeof(ServerFarmCollection))]
+    [Cmdlet(VerbsCommon.Get, "AzureRMAppServicePlan"), OutputType(typeof(PSServerFarmWithRichSku), typeof(ServerFarmCollection))]
     [CliCommandAlias("appservice;plan;ls")]
     public class GetAppServicePlanCmdlet : WebAppBaseClientCmdLet
     {
@@ -79,7 +80,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
 
         private void GetAppServicePlan()
         {
-            WriteObject(WebsitesClient.GetAppServicePlan(ResourceGroupName, Name), true);
+            WriteObject((PSServerFarmWithRichSku)WebsitesClient.GetAppServicePlan(ResourceGroupName, Name), true);
         }
 
         private void GetByAppServicePlanName()
@@ -116,12 +117,12 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
                 WriteProgress(progressRecord);
             }
 
-            WriteObject(list, true);
+            WriteObject(list.Select(f => (PSServerFarmWithRichSku)f), true);
         }
 
         private void GetByResourceGroup()
         {
-            WriteObject(WebsitesClient.ListAppServicePlans(ResourceGroupName).Value, true);
+            WriteObject(WebsitesClient.ListAppServicePlans(ResourceGroupName).GetValues(), true);
         }
 
         private void GetBySubscription()
@@ -165,7 +166,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
                 WriteProgress(progressRecord);
             }
 
-            WriteObject(list, true);
+            WriteObject(list.Select(f => (PSServerFarmWithRichSku)f), true);
         }
 
         private void GetByLocation()
@@ -202,7 +203,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
                 WriteProgress(progressRecord);
             }
 
-            WriteObject(list, true);
+            WriteObject(list.Select(f => (PSServerFarmWithRichSku)f), true);
         }
     }
 }

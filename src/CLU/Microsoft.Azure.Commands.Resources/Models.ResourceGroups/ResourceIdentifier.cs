@@ -65,6 +65,10 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 {
                     ParentResource = string.Join("/", parentResourceBuilder);
                 }
+                else
+                {
+                    ParentResource = string.Empty;
+                }
                 if (resourceTypeBuilder.Count > 0)
                 {
                     ResourceType = string.Join("/", resourceTypeBuilder);

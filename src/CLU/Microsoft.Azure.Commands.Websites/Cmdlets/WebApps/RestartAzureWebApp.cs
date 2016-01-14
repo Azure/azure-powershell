@@ -15,6 +15,7 @@
 
 
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Websites.Models.WebApp;
 using Microsoft.Azure.Management.WebSites.Models;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
@@ -22,7 +23,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// this commandlet will let you restart an Azure Web app
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Restart, "AzureRmWebApp")]
+    [Cmdlet(VerbsLifecycle.Restart, "AzureRmWebApp"), OutputType(typeof(PSSite))]
     [CliCommandAlias("appservice;restart")]
     public class RestartAzureWebAppCmdlet : WebAppBaseCmdlet
     {
@@ -30,7 +31,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         {
             base.ProcessRecord();
             WebsitesClient.RestartWebApp(ResourceGroupName, Name, null);
-            WriteObject(WebsitesClient.GetWebApp(ResourceGroupName, Name, null));
+            WriteObject((PSSite)WebsitesClient.GetWebApp(ResourceGroupName, Name, null));
         }
     }
 }

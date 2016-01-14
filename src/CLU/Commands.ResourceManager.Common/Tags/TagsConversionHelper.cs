@@ -15,7 +15,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using Commands.ResourceManager.Common.Properties;
+using Microsoft.Azure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Tags.Model
 {
@@ -96,6 +99,11 @@ namespace Microsoft.Azure.Commands.Tags.Model
                 });
             }
             return tagHashtable.ToArray();
+        }
+
+        public static string SerializeTags(IDictionary<string, string> tags)
+        {
+            return tags == null? null : $"{{ {string.Join(",", tags.Where(t => !t.Key.StartsWith("hidden-")).Select(p => $"{p.Key}: {p.Value}"))} }}";
         }
     }
 }

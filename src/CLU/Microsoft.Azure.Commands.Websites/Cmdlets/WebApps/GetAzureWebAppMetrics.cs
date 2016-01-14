@@ -15,6 +15,8 @@
 
 using System;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Websites.Models.WebApp;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
@@ -22,6 +24,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// this commandlet will let you get Azure Web App metrics
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRMWebAppMetrics")]
+    [OutputType(typeof(PSResourceMetric))]
     [CliCommandAlias("appservice;metrics;ls")]
     public class GetAzureWebAppMetricsCmdlet : WebAppBaseCmdlet
     {
@@ -48,7 +51,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
-            WriteObject(WebsitesClient.GetWebAppUsageMetrics(ResourceGroupName, Name, null, Metrics, StartTime, EndTime, Granularity, InstanceDetails.IsPresent), true);
+            WriteObject(WebsitesClient.GetWebAppUsageMetrics(ResourceGroupName, Name, null, Metrics, StartTime, EndTime, Granularity, InstanceDetails.IsPresent).Select(m => (PSResourceMetric)m), true);
         }
     }
 }

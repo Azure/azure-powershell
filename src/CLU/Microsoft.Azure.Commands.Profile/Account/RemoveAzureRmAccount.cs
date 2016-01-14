@@ -1,5 +1,4 @@
-﻿
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,22 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 
-namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
+namespace Microsoft.Azure.Commands.Profile
 {
     /// <summary>
-    /// This commandlet resets the publishing creds of the given Azure Web app
+    /// Cmdlet to log into an environment and download the subscriptions
     /// </summary>
-    [Cmdlet(VerbsCommon.Reset, "AzureRMWebAppPublishingProfile"), OutputType(typeof(string))]
-    [CliCommandAlias("appservice;profile;reset")]
-    public class ResetAzureWebAppPublishingProfileCmdlet : WebAppBaseCmdlet
+    [Cmdlet("Remove", "AzureRmAccount")]
+    [OutputType(typeof(void))]
+    [CliCommandAlias("logout")]
+    public class RemoveAzureRmAccount : AzureRMCmdlet
     {
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
-            WriteObject(WebsitesClient.ResetWebAppPublishingCredentials(ResourceGroupName, Name, null));
+            DefaultProfile = new AzureRMProfile(DataStore);
+            WriteVerbose("User logged out");
         }
     }
 }

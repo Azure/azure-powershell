@@ -17,6 +17,7 @@
 using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.WebApps.Utilities;
+using Microsoft.Azure.Commands.Websites.Models.WebApp;
 using Microsoft.Azure.Management.WebSites.Models;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
@@ -24,7 +25,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// this commandlet will let you Start an Azure Web app
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, "AzureRmWebApp")]
+    [Cmdlet(VerbsLifecycle.Start, "AzureRmWebApp"), OutputType(typeof(PSSite))]
     [CliCommandAlias("appservice;start")]
     public class StartAzureWebAppCmdlet : WebAppBaseCmdlet
     {   
@@ -32,7 +33,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         {
             base.ProcessRecord();
             WebsitesClient.StartWebApp(ResourceGroupName, Name, null);
-            WriteObject(WebsitesClient.GetWebApp(ResourceGroupName, Name, null));
+            WriteObject((PSSite)WebsitesClient.GetWebApp(ResourceGroupName, Name, null));
         }
     }
 }

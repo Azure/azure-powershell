@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Resources;
+
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
 {
     using Commands.Utilities.Common;
@@ -42,9 +44,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
                 { "ExtensionResourceName", string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetExtensionResourceName(resource.Id) },
                 { "ExtensionResourceType", extensionResourceType },
                 { "Kind", resource.Kind },
-                { "Tags", TagsHelper.GetTagsHashtables(resource.Tags) },
                 { "Plan", resource.Plan == null ? null : resource.Plan.ToJToken() },
-                { "Properties", ResourceExtensions.GetProperties(resource) },
+                { "Properties", (ResourceExtensions.GetProperties(resource) as PSObject).SerializeAsJson() },
                 { "CreatedTime", resource.CreatedTime },
                 { "ChangedTime", resource.ChangedTime },
                 { "ETag", resource.ETag },
@@ -59,6 +60,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
             psObject.ResourceGroupName = string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetResourceGroupName(resource.Id);
             psObject.Location = resource.Location;
             psObject.SubscriptionId = string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetSubscriptionId(resource.Id);
+            psObject.Tags = TagsHelper.GetTagsHashtables(resource.Tags);
 
 
             var objectProperties = objectDefinition.Where(kvp => kvp.Value != null).SelectManyArray(kvp => new[] { kvp.Key, kvp.Value });

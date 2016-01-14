@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.WebApps.Models;
+using Microsoft.Azure.Commands.Websites.Models.WebApp;
 using Microsoft.Azure.Management.WebSites.Models;
 using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
 
@@ -26,7 +27,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// this commandlet will let you get a new Azure Websites using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMWebApp")]
+    [Cmdlet(VerbsCommon.Get, "AzureRMWebApp"), OutputType(typeof(PSSite))]
     [CliCommandAlias("appservice;ls")]
     public class GetAzureWebAppCmdlet : WebAppBaseClientCmdLet
     {
@@ -61,7 +62,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 case ParameterSet1:
                     if (!string.IsNullOrWhiteSpace(ResourceGroupName) && !string.IsNullOrWhiteSpace(Name))
                     {
-                        WriteObject(WebsitesClient.GetWebApp(ResourceGroupName, Name, null));
+                        WriteObject((PSSite)WebsitesClient.GetWebApp(ResourceGroupName, Name, null));
                     }
                     else if (!string.IsNullOrWhiteSpace(ResourceGroupName))
                     {
@@ -97,14 +98,14 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 ResourceType = "Microsoft.Web/Sites"
             }).Where(s => string.Equals(s.Name, Name, StringComparison.OrdinalIgnoreCase)).ToArray();
 
-            var list = new List<Site>();
+            var list = new List<PSSite>();
             for (var i = 0; i < sites.Length; i++)
             {
                 var s = sites[i];
                 var result = WebsitesClient.GetWebApp(s.ResourceGroupName, s.Name, null);
                 if (result != null)
                 {
-                    list.Add(result);
+                    list.Add((PSSite)result);
                 }
 
                 progressRecord.StatusDescription = string.Format(progressDescriptionFormat, i + 1, sites.Length);
@@ -117,10 +118,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
         private void GetByResourceGroup()
         {
-            var list = new List<Site>();
+            var list = new List<PSSite>();
             try
             {
-                var result = WebsitesClient.ListWebApps(ResourceGroupName, null);
+                var result = WebsitesClient.ListWebApps(ResourceGroupName, null).Select(s => (PSSite)s);
                 if (result != null)
                 {
                     list.AddRange(result);
@@ -150,14 +151,14 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 ResourceType = "Microsoft.Web/Sites"
             }).Select(s => s.ResourceGroupName).Distinct(StringComparer.OrdinalIgnoreCase).ToArray();
 
-            var list = new List<Site>();
+            var list = new List<PSSite>();
 
             for (var i = 0; i < resourceGroups.Length; i++)
             {
                 var rg = resourceGroups[i];
                 try
                 {
-                    var result = WebsitesClient.ListWebApps(rg, null);
+                    var result = WebsitesClient.ListWebApps(rg, null).Select(s => (PSSite)s);
                     if (result != null)
                     {
                         list.AddRange(result);
@@ -189,13 +190,13 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 ResourceType = "Microsoft.Web/Sites"
             }).Where(s => string.Equals(s.Location, Location.Replace(" ", string.Empty), StringComparison.OrdinalIgnoreCase)).ToArray();
 
-            var list = new List<Site>();
+            var list = new List<PSSite>();
             for (var i = 0; i < sites.Length; i++)
             {
                 try
                 {
                     var sf = sites[i];
-                    var result = WebsitesClient.GetWebApp(sf.ResourceGroupName, sf.Name, null);
+                    var result = (PSSite)WebsitesClient.GetWebApp(sf.ResourceGroupName, sf.Name, null);
                     if (result != null)
                     {
                         list.Add(result);
@@ -217,7 +218,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         private void GetByAppServicePlan()
         {
             WriteObject(WebsitesClient.ListWebAppsForAppServicePlan(AppServicePlan.ResourceGroup,
-                AppServicePlan.ServerFarmWithRichSkuName).ToList(), true);
+                AppServicePlan.ServerFarmWithRichSkuName).Select(s => (PSSite)s), true);
         }
     }
 }

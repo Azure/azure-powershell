@@ -15,13 +15,15 @@
 
 
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Websites.Models.WebApp;
+using Microsoft.Azure.Management.WebSites.Models;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 {
     /// <summary>
     /// this commandlet will let you Start an Azure Web app slot
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, "AzureRMWebAppSlot")]
+    [Cmdlet(VerbsLifecycle.Start, "AzureRMWebAppSlot"), OutputType(typeof(PSSite))]
     [CliCommandAlias("appservice;slot;start")]
     public class StartAzureWebAppSlotCmdlet : WebAppSlotBaseCmdlet
     {    
@@ -29,7 +31,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         {
             base.ProcessRecord();
             WebsitesClient.StartWebApp(ResourceGroupName, Name, Slot);
-            WriteObject(WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot));
+            WriteObject((PSSite)WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot));
         }
     }
 }
