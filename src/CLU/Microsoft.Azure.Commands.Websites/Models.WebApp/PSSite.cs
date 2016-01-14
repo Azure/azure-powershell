@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Websites.Models.WebApp
             RepositorySiteName = site.RepositorySiteName;
             ScmSiteAlsoStopped = site.ScmSiteAlsoStopped;
             ServerFarmId = site.ServerFarmId;
-            SiteConfig = site.SiteConfig;
+            SiteConfig = (PSSiteConfig)site.SiteConfig;
             SiteName = site.SiteName;
             State = site.State;
             TargetSwapSlot = site.TargetSwapSlot;
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.Websites.Models.WebApp
         /// <summary>
         /// Configuration of web app
         /// </summary>
-        public SiteConfig SiteConfig { get; set; }
+        public PSSiteConfig SiteConfig { get; set; }
 
         [JsonIgnore]
         public string SiteConfigText { get { return SiteConfig.SerializeJson(); } }

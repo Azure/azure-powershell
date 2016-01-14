@@ -12,9 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Management.Automation;
 using Newtonsoft.Json;
 using System.Reflection;
 
@@ -34,6 +36,43 @@ namespace Microsoft.Azure.Commands.Common.Resources
             {
 
                 var serializer = new JsonSerializer {Formatting = Formatting.Indented};
+                stringWriter.NewLine += "    ";
+                stringWriter.WriteLine();
+                serializer.Serialize(writer, property);
+                writer.Flush();
+                return stringWriter.ToString();
+            }
+        }
+
+        public static IDictionary<string, object> GetDictionary(this PSObject other)
+        {
+            var result = new Dictionary<string, object>();
+            foreach (var property in other.Properties)
+            {
+                object objValue = property.Value;
+                PSObject psValue = objValue as PSObject;
+                if (psValue != null)
+                {
+                    objValue = psValue.GetDictionary();
+                }
+
+                result.Add(property.Name, objValue);
+            }
+
+            return result;
+        }
+        public static string SerializeAsJson(this PSObject psProperty)
+        {
+            if (psProperty == null)
+            {
+                return null;
+            }
+
+            using (var stringWriter = new StringWriter())
+            using (var writer = new JsonTextWriter(stringWriter))
+            {
+                IDictionary<string, object> property = psProperty.GetDictionary();
+                var serializer = new JsonSerializer { Formatting = Formatting.Indented };
                 stringWriter.NewLine += "    ";
                 stringWriter.WriteLine();
                 serializer.Serialize(writer, property);

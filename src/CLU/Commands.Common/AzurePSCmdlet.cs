@@ -224,14 +224,14 @@ namespace Microsoft.Azure.Commands.Utilities.Common
             //TODO: CLU - remove before final release
             return true;
 
-            if (_dataCollectionProfile != null &&
-                _dataCollectionProfile.EnableAzureDataCollection.HasValue &&
-                _dataCollectionProfile.EnableAzureDataCollection.Value)
-            {
-                return true;
-            }
+            //if (_dataCollectionProfile != null &&
+            //    _dataCollectionProfile.EnableAzureDataCollection.HasValue &&
+            //    _dataCollectionProfile.EnableAzureDataCollection.Value)
+            //{
+            //    return true;
+            //}
 
-            return false;
+            //return false;
         }
 
         /// <summary>

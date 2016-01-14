@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
         public void RoleAssignmentsTest()
         {
             var helper = _collectionState
-                .LoginAsUser()
+                .LoginAsService()
                 .GetRunner("resource-management")
                 .RunScript("04-RoleAssignments");
         }
