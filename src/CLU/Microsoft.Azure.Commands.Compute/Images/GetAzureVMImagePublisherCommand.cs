@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineImagePublisher)]
     [OutputType(typeof(PSVirtualMachineImagePublisher))]
-    [CliCommandAlias("vm;image;publisher;ls")]
+    [CliCommandAlias("vm image publisher ls")]
     public class GetAzureVMImagePublisherCommand : VirtualMachineImageBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]

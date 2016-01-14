@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.Common
             {
                 var pageViewTelemetry = new PageViewTelemetry
                 {
-                    Name = qos.CommandName,
+                    Name = qos.CommandName ?? "empty",
                     Duration = qos.Duration,
                     Timestamp = qos.StartTime
                 };

@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
     /// this commandlet will let you Get an Azure App Service Plan using ARM APIs
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRMAppServicePlan"), OutputType(typeof(PSServerFarmWithRichSku), typeof(ServerFarmCollection))]
-    [CliCommandAlias("appservice;plan;ls")]
+    [CliCommandAlias("appservice plan ls")]
     public class GetAppServicePlanCmdlet : WebAppBaseClientCmdLet
     {
         private const string ParameterSet1 = "S1";

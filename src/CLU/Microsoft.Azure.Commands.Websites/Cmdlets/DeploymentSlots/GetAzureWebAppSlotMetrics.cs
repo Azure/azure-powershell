@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRMWebAppSlotMetrics")]
     [OutputType(typeof(PSResourceMetric))]
-    [CliCommandAlias("appservice;slot;metrics;ls")]
+    [CliCommandAlias("appservice slot metrics ls")]
     public class GetAzureWebAppSlotMetricsCmdlet : WebAppSlotBaseCmdlet
     {
         [Parameter(Position = 3, Mandatory = true, HelpMessage = "Names of web app metrics")]

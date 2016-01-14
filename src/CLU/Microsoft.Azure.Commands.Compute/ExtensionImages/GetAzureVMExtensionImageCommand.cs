@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineExtensionImage)]
     [OutputType(typeof(PSVirtualMachineExtensionImage))]
     [OutputType(typeof(PSVirtualMachineExtensionImageDetails))]
-    [CliCommandAlias("vm;extension;image;ls")]
+    [CliCommandAlias("vm extension image ls")]
     public class GetAzureVMExtensionImageCommand : VirtualMachineExtensionImageBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]

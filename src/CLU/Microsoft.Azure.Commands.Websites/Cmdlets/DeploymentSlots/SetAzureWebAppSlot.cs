@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     /// this commandlet will let you create a new Azure Web app using ARM APIs
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRMWebAppSlot"), OutputType(typeof(PSSite))]
-    [CliCommandAlias("appservice;slot;set")]
+    [CliCommandAlias("appservice slot set")]
     public class SetAzureWebAppSlotCmdlet : WebAppSlotBaseCmdlet
     {
         [Parameter(Position = 3, Mandatory = false, HelpMessage = "The name of the app service plan eg: Default1.")]

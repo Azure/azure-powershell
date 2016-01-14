@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Profile
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmEnvironment")]
     [OutputType(typeof(PSAzureEnvironment))]
-    [CliCommandAlias("env;rm")]
+    [CliCommandAlias("env rm")]
     public class RemoveAzureRMEnvironmentCommand : AzureRMCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
