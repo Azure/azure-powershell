@@ -485,6 +485,24 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to WadCfg or xmlCfg is not defined in configuration file..
+        /// </summary>
+        public static string DiagnosticsExtensionConfigNoWadCfgOrXmlCfg {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionConfigNoWadCfgOrXmlCfg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid diagnostics configuration file. It should be in either xml or json format..
+        /// </summary>
+        public static string DiagnosticsExtensionInvalidConfigFileFormat {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionInvalidConfigFileFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The element StorageAccount in PrivateConfig doesn&apos;t match. It is recommended to not use the element StorageAccount as it is automatically set by the cmdlet..
         /// </summary>
         public static string DiagnosticsExtensionNoMatchPrivateStorageAccount {
