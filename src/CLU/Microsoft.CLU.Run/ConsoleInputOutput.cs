@@ -296,7 +296,6 @@ namespace Microsoft.CLU.Run
         /// <param name="message">The message to write</param>
         public void WriteErrorLine(string message)
         {
-            CLUEnvironment.Console.WriteLine(message);
             WriteLine(ConsoleColor.Red, GetConsoleBgColor(), string.Format(Strings.ErrorLineFormat, message));
         }
 
