@@ -66,8 +66,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the runbook parameters.
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByAsynchronousReturnJob, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook parameters.")]
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.BySynchronousReturnJobOutput, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook parameters.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByAsynchronousReturnJob, Mandatory = false, HelpMessage = "The runbook parameters.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.BySynchronousReturnJobOutput, Mandatory = false, HelpMessage = "The runbook parameters.")]
         public IDictionary Parameters { get; set; }
 
         /// <summary>
