@@ -513,8 +513,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                                 if (subscriptions.Any())
                                 {
                                     WriteWarningMessage(string.Format(
-                                        "TenantId '{0}' contains more than one subscription. First one will be selected for further use. " +
-                                        "To select another subscription, use Set-AzureRmContext.",
+                                        Resources.TooManyTenants,
                                         tenantId));
                                 }
                                 subscriptionFromServer = subscriptions.First();
