@@ -1,6 +1,6 @@
 ﻿namespace System.Management.Automation
 {
-    [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = true, Inherited = false)]
     public sealed class CliCommandAliasAttribute : System.Attribute
     {
         /// <summary>

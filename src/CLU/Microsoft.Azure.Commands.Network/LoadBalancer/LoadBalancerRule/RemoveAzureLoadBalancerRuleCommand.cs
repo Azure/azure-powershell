@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRmLoadBalancerRuleConfig"), OutputType(typeof(PSLoadBalancer))]
+    [CliCommandAlias("loadbalancer;rule;config;rm")]
     public class RemoveAzureLoadBalancerRuleCommand : NetworkBaseCmdlet
     {
         [Parameter(

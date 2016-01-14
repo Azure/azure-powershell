@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Commands.Compute
         DefaultParameterSetName = GetCustomScriptExtensionParamSetName),
     OutputType(
         typeof(VirtualMachineCustomScriptExtensionContext))]
+    [CliCommandAlias("vm;customscriptextension;ls")]
     public class GetAzureVMCustomScriptExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         protected const string GetCustomScriptExtensionParamSetName = "GetCustomScriptExtension";

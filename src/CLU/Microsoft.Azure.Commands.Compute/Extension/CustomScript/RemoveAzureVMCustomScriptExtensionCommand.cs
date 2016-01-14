@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet(
         VerbsCommon.Remove,
         ProfileNouns.VirtualMachineCustomScriptExtension)]
+    [CliCommandAlias("vm;customscriptextension;rm")]
     public class RemoveAzureVMCustomScriptExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(

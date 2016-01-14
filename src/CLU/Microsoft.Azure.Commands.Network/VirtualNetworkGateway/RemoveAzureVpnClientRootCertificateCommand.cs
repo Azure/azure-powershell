@@ -23,6 +23,7 @@ using Microsoft.Azure.Commands.Tags.Model;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRmVpnClientRootCertificate")]
+    [CliCommandAlias("vpn;client;root;certificate;rm")]
     public class RemoveAzureVpnClientRootCertificateCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]

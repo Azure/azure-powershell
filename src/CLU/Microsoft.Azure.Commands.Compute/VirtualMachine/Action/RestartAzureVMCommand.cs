@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsLifecycle.Restart, ProfileNouns.VirtualMachine, DefaultParameterSetName = ResourceGroupNameParameterSet)]
     [OutputType(typeof(PSComputeLongRunningOperation))]
+    [CliCommandAlias("vm;restart")]
     public class RestartAzureVMCommand : VirtualMachineActionBaseCmdlet
     {
         [Parameter(

@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRMWebAppSlotPublishingProfile")]
     [OutputType(typeof(string))]
+    [CliCommandAlias("appservice;slot;profile;ls")]
     public class GetAzureWebAppSlotPublishingProfileCmdlet : WebAppSlotBaseCmdlet
     {
         private const string DefaultFormat = "WebDeploy";

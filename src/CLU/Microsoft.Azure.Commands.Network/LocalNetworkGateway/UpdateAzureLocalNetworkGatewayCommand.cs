@@ -26,6 +26,7 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Set, "AzureRmLocalNetworkGateway"), OutputType(typeof(PSLocalNetworkGateway))]
+    [CliCommandAlias("localgateway;set")]
     public class SetAzureLocalNetworkGatewayCommand : LocalNetworkGatewayBaseCmdlet
     {
         [Parameter(

@@ -16,7 +16,7 @@ namespace System.Management.Automation.Host
     /// Internal implementation of the runtime host interfaces, used by Cmdlet code to access system
     /// features such as Console I/O and session state.
     /// </summary>
-    internal class CLUHost : PSHost, ICommandRuntime
+    public class CLUHost : PSHost, ICommandRuntime
     {
         /// <summary>
         /// Creates an instance of CLUHost.
