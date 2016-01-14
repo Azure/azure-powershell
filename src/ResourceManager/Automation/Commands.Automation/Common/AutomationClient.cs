@@ -22,14 +22,16 @@ using System.Management.Automation;
 using System.Net;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
-using Microsoft.Azure.Commands.Automation.Cmdlet;
 using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.Azure.Commands.Automation.Properties;
 using Microsoft.Azure.Management.Automation;
 using Microsoft.Azure.Management.Automation.Models;
 using Microsoft.Azure.Common.Authentication.Models;
 using Newtonsoft.Json;
+using Microsoft.Azure.Common.Authentication;
+using Hyak.Common;
 
+using AutomationManagement = Microsoft.Azure.Management.Automation;
 using AutomationAccount = Microsoft.Azure.Commands.Automation.Model.AutomationAccount;
 using Module = Microsoft.Azure.Commands.Automation.Model.Module;
 using Runbook = Microsoft.Azure.Commands.Automation.Model.Runbook;
@@ -44,11 +46,6 @@ using Connection = Microsoft.Azure.Commands.Automation.Model.Connection;
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
-    using AutomationManagement = Azure.Management.Automation;
-    using Microsoft.Azure.Common.Authentication;
-    using Hyak.Common;
-
-
     public partial class AutomationClient : IAutomationClient
     {
         private readonly AutomationManagement.IAutomationManagementClient automationManagementClient;

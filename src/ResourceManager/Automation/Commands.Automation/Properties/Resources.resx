@@ -426,7 +426,7 @@
     <comment>Automation</comment>
   </data>
   <data name="JobProgressState" xml:space="preserve">
-    <value>"Job state : Id {0}, state {1}, time {2}"</value>
+    <value>"Job progress state : Id {0}, state {1}, time {2}"</value>
   </data>
   <data name="JobTerminalState" xml:space="preserve">
     <value>"Job terminal state : Id {0}, state {1}, time {2}"</value>

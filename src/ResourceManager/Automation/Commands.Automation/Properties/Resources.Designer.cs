@@ -367,7 +367,7 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &quot;Job state : Id {0}, state {1}, time {2}&quot;.
+        ///   Looks up a localized string similar to &quot;Job progress state : Id {0}, state {1}, time {2}&quot;.
         /// </summary>
         internal static string JobProgressState {
             get {
