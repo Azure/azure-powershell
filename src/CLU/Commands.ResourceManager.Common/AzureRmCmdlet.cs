@@ -23,6 +23,8 @@ using System.IO;
 using System.Management.Automation;
 using System.Management.Automation.Host;
 using System.Reflection;
+using System.Linq;
+using System.Globalization;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
@@ -140,9 +142,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         protected override void InitializeQosEvent()
         {
+            var commandAlias = this.GetType().GetTypeInfo().GetCustomAttribute<CliCommandAliasAttribute>();
             QosEvent = new AzurePSQoSEvent()
             {
-                CommandName = this.MyInvocation?.MyCommand?.Name,
+                CommandName = commandAlias != null ? "az " + commandAlias.CommandName : this.MyInvocation?.MyCommand?.Name,
                 ModuleName = this.GetType().GetTypeInfo().Assembly.GetName().Name,
                 ModuleVersion = this.GetType().GetTypeInfo().Assembly.GetName().Version.ToString(),
                 ClientRequestId = this._clientRequestId,
@@ -151,7 +154,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
             if (this.MyInvocation != null && this.MyInvocation.BoundParameters != null)
             {
-                QosEvent.Parameters = string.Join(",", this.MyInvocation.BoundParameters.Keys);
+                QosEvent.Parameters = string.Join(" ", 
+                    this.MyInvocation.BoundParameters.Keys.Select(
+                        s => string.Format(CultureInfo.InvariantCulture, "--{0} xxx", s.ToLowerInvariant())));
             }
 
             if (this.DefaultProfile?.Context?.Account?.Id != null)
