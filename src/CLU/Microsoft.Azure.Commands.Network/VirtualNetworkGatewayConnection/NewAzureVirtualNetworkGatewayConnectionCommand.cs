@@ -25,7 +25,7 @@ using Microsoft.Azure.Commands.Tags.Model;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New, "AzureRmVirtualNetworkGatewayConnection", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSVirtualNetworkGatewayConnection))]
-    [CliCommandAlias("vnet;gateway;connection;new")]
+    [CliCommandAlias("vnet gateway connection new")]
     public class NewAzureVirtualNetworkGatewayConnectionCommand : VirtualNetworkGatewayConnectionBaseCmdlet
     {
         [Alias("ResourceName")]

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet(
         VerbsCommon.Set,
         ProfileNouns.VirtualMachineAccessExtension)]
-    [CliCommandAlias("vm;accessextension;set")]
+    [CliCommandAlias("vm accessextension set")]
     [OutputType(typeof(void))]
     public class SetAzureVMAccessExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {

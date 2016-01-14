@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Remove, ProfileNouns.AvailabilitySet)]
     [OutputType(typeof(void))]
-    [CliCommandAlias("vm;availabilityset;rm")]
+    [CliCommandAlias("vm availabilityset rm")]
     public class RemoveAzureAvailabilitySetCommand : AvailabilitySetBaseCmdlet
     {
         [Parameter(

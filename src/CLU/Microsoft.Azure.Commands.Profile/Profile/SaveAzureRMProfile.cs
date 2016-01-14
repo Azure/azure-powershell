@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Profile
     /// Saves Microsoft Azure profile.
     /// </summary>
     [Cmdlet(VerbsData.Save, "AzureRmProfile"), OutputType(typeof(PSAzureProfile))]
-    [CliCommandAlias("profile;save")]
+    [CliCommandAlias("profile save")]
     public class SaveAzureRMProfileCommand : AzureRMCmdlet
     {
         [Parameter(Mandatory = false, Position = 0, ValueFromPipelineByPropertyName = true)]

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRMWebAppMetrics")]
     [OutputType(typeof(PSResourceMetric))]
-    [CliCommandAlias("appservice;metrics;ls")]
+    [CliCommandAlias("appservice metrics ls")]
     public class GetAzureWebAppMetricsCmdlet : WebAppBaseCmdlet
     {
         [Parameter(Position = 2, Mandatory = true, HelpMessage = "Names of web app metrics")]

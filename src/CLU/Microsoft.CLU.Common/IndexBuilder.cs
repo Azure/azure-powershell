@@ -108,7 +108,7 @@ namespace Microsoft.CLU
                     foreach (var cmdletAliasAttribute in cmdletAliasAttributes)
                     {
                         var attrType = cmdletAliasAttribute.GetType();
-                        var keys = ((string)attrType.GetProperty("CommandName").GetValue(cmdletAliasAttribute)).Split(';').ToList();
+                        var keys = ((string)attrType.GetProperty("CommandName").GetValue(cmdletAliasAttribute)).Split(' ').ToList();
                         AddEntry(_index, keys, $"{assembly.Name}{Constants.CmdletIndexItemValueSeparator}{type.FullName}");
                         aliasEntryAdded = true;
                     }

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsData.Update, ProfileNouns.VirtualMachine, DefaultParameterSetName = ResourceGroupNameParameterSet)]
     [OutputType(typeof(PSComputeLongRunningOperation))]
-    [CliCommandAlias("vm;update")]
+    [CliCommandAlias("vm update")]
     public class UpdateAzureVMCommand : VirtualMachineActionBaseCmdlet
     {
         [Alias("VMProfile")]

@@ -19,7 +19,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewayPathRuleConfig"), OutputType(typeof(PSApplicationGatewayPathRule))]
-    [CliCommandAlias("applicationgateway;path;rule;config;new")]
+    [CliCommandAlias("applicationgateway path rule config new")]
     public class NewAzureApplicationGatewayPathRuleConfigCommand : AzureApplicationGatewayPathRuleConfigBase
     {
         public override void ExecuteCmdlet()

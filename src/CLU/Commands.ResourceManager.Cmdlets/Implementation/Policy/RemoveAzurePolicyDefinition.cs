@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Removes the policy definition.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmPolicyDefinition", DefaultParameterSetName = RemoveAzurePolicyDefinitionCmdlet.PolicyDefinitionNameParameterSet), OutputType(typeof(bool))]
-    [CliCommandAlias("networksecuritypolicy;definition;rm")]
+    [CliCommandAlias("networksecuritypolicy definition rm")]
     public class RemoveAzurePolicyDefinitionCmdlet : PolicyDefinitionCmdletBase
     {
         /// <summary>
