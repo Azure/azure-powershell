@@ -1,0 +1,42 @@
+
+New-AzureRmPublicIpAddress: Creates a public IP address.
+
+
+The New-AzureRmPublicIpAddress cmdlet creates a public IP address.
+
+
+Command syntax
+
+az publicip address new [--name <string>] --resourcegroupname <string> [--location <string>] --allocationmethod <string> [--domainnamelabel <string>] [--reversefqdn <string>] [--idletimeoutinminutes <int>] [--tag <Hashtable[]>] [--force]
+
+
+Parameters
+
+--name
+Specifies the name of the public IP address to create.
+
+--resourcegroupname
+Specifies the name of the resource group in which to create a public IP address.
+
+--location
+Specifies the region in which to create a public IP address.
+
+--allocationmethod
+Specifies the method with which to allocate the public IP address. The acceptable values for this parameter are:Static or Dynamic.
+
+--domainnamelabel
+Specifies the relative DNS name for a public IP address.
+
+--reversefqdn
+Specifies a reverse fully qualified domain name (FQDN).
+
+--idletimeoutinminutes
+Specifies the idle time-out, in minutes.
+
+--tag
+Specifies a dictionary of tags to associate with a public IP address.
+
+--force
+Forces the command to run without asking for user confirmation.
+
+

@@ -1,0 +1,33 @@
+
+New-AzureRmVM: Creates a virtual machine.
+
+
+The New-AzureRmVM cmdlet creates a virtual machine in Azure. This cmdlet takes a virtual machine object as input. Use the New-AzureRmVMConfig cmdlet to create a virtual machine object. Configure the virtual machine object by using other cmdlets, such as Set-AzureRmVMOperatingSystem, Set-AzureRmVMSourceImage, Add-AzureRmVMNetworkInterface, and Set-AzureRmVMOSDisk.
+
+
+Command syntax
+
+az vm new --resourcegroupname <string> --location <string> --vm <PSVirtualMachine> [--tags <Hashtable[]>] [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+
+Parameters
+
+--resourcegroupname
+Specifies the name of a resource group.
+
+--location
+Specifies a location for the virtual machine.
+
+--vm
+Specifies a local virtual machine to create. To obtain a virtual machine object, use the New-AzureRmVMConfig cmdlet. Configure the virtual machine by using other cmdlets, such as Set-AzureRmVMOperatingSystem, Set-AzureRmVMSourceImage, and Add-AzureRmVMNetworkInterface.
+
+--tags
+
+
+--informationaction
+
+
+--informationvariable
+
+
+

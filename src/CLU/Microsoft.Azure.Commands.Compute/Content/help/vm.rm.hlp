@@ -1,0 +1,35 @@
+
+Remove-AzureRmVM: Removes a virtual machine from Azure.
+
+
+The Remove-AzureRmVM cmdlet removes a virtual machine from Azure.
+
+
+Command syntax
+
+az vm rm [--resourcegroupname] <string> [--name] <string> [[--force]] [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+az vm rm [--id] <string> [--name] <string> [[--force]] [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+
+Parameters
+
+--resourcegroupname
+Specifies the name of a resource group.
+
+--name
+Specifies the name of the virtual machine to remove.
+
+--force
+Forces the command to run without asking for user confirmation.
+
+--informationaction
+
+
+--informationvariable
+
+
+--id
+
+
+

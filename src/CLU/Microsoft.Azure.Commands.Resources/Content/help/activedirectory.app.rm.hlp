@@ -1,0 +1,26 @@
+
+Remove-AzureRmADApplication: Deletes the azure active directory application.
+
+
+This is the Description section
+
+Deletes the azure active directory application.
+
+
+Command syntax
+
+az activedirectory app rm --applicationobjectid <Guid> [--force] [--profile <AzureProfile>]
+
+
+Parameters
+
+--applicationobjectid
+
+
+--force
+
+
+--profile
+
+
+

@@ -1,0 +1,21 @@
+
+Remove-AzureRmRouteConfig: Removes a route from a route table.
+
+
+The Remove-AzureRmRouteConfig cmdlet removes a route from an Azure route table.
+
+
+Command syntax
+
+az route config rm --name <string> --routetable <PSRouteTable>
+
+
+Parameters
+
+--name
+Specifies the name of the route that this cmdlet removes.
+
+--routetable
+Specifies the route table that contains the route that this cmdlet deletes.
+
+

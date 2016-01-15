@@ -1,0 +1,34 @@
+
+Add-AzureRmApplicationGatewayBackendAddressPool: Adds a back-end address pool to an application gateway.
+
+
+The Add-AzureRmApplicationGatewayBackendAddressPool cmdlet adds a back-end address pool to an application gateway. A back-end address can be specified using an IP address, a fully-qualified domain name (FQDN) or IP configuration IDs.
+
+
+Command syntax
+
+az applicationgateway backendaddress pool add --applicationgateway <PSApplicationGateway> --name <string> [--backendipconfigurationids <List`1[String]>]
+
+az applicationgateway backendaddress pool add --applicationgateway <PSApplicationGateway> --name <string> [--backendipaddresses <List`1[String]>]
+
+az applicationgateway backendaddress pool add --applicationgateway <PSApplicationGateway> --name <string> [--backendfqdns <List`1[String]>]
+
+
+Parameters
+
+--applicationgateway
+Specifies the application gateway to which this cmdlet adds a back-end address pool.
+
+--name
+Specifies the name of the back-end server pool that this cmdlet adds.
+
+--backendipconfigurationids
+Specifies a list of back-end server IP configuration IDs that this cmdlet adds as a back-end server pool.
+
+--backendipaddresses
+Specifies a list of back-end IP addresses which this cmdlet adds as a back-end server pool.
+
+--backendfqdns
+Specifies a list of backend FQDNs which this cmdlet adds as a back-end server pool.
+
+

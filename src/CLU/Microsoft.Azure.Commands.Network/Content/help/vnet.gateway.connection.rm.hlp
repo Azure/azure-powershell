@@ -1,0 +1,27 @@
+
+Remove-AzureRmVirtualNetworkGatewayConnection
+
+
+
+
+
+Command syntax
+
+az vnet gateway connection rm --name <string> --resourcegroupname <string> [--force] [--passthru]
+
+
+Parameters
+
+--name
+
+
+--resourcegroupname
+
+
+--force
+
+
+--passthru
+
+
+

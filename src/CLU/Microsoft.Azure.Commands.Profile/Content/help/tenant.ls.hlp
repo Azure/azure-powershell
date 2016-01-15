@@ -1,0 +1,24 @@
+
+Get-AzureRmTenant: Get detailed information about tenants authorized for the current user
+
+
+Get detailed information about tenants authorized for the current user
+
+
+Command syntax
+
+az tenant ls [[--tenantid] <string>] [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+
+Parameters
+
+--tenantid
+TenantId to get information about.  If not provided, all authorized tenants are returned.
+
+--informationaction
+
+
+--informationvariable
+
+
+

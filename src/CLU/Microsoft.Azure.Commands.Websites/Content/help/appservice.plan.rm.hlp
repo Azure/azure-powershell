@@ -1,0 +1,8 @@
+
+Remove-AzureRmAppServicePlan
+
+
+Command syntax
+
+az appservice plan rm
+

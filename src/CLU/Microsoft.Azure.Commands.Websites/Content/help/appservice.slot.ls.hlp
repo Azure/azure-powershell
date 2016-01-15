@@ -1,0 +1,8 @@
+
+Get-AzureRMWebAppSlot
+
+
+Command syntax
+
+az appservice slot ls
+

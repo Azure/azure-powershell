@@ -1,0 +1,18 @@
+
+Get-AzureRmApplicationGatewaySku: Gets the SKU of an application gateway.
+
+
+The Get-AzureRmApplicationGatewaySku cmdlet gets the stock keeping unit (SKU) of an application gateway.
+
+
+Command syntax
+
+az applicationgateway sku ls --applicationgateway <PSApplicationGateway>
+
+
+Parameters
+
+--applicationgateway
+Specifies the application gateway object.
+
+

@@ -1,0 +1,18 @@
+
+Set-AzureRmExpressRouteCircuit
+
+
+
+
+
+Command syntax
+
+az expressroute circuit set --expressroutecircuit <PSExpressRouteCircuit>
+
+
+Parameters
+
+--expressroutecircuit
+
+
+

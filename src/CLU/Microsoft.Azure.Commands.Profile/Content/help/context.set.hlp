@@ -1,0 +1,33 @@
+
+Set-AzureRmContext: Set the tenant, subscription, and environment to be used by cmdlets in this session.
+
+
+Set authentication information for cmdlets executed in the current session.  Includes subscription, tenant, and environment information.
+
+
+Command syntax
+
+az context set --tenantid <string> [--subscriptionid <string>] [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+az context set --tenantid <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+az context set --subscriptionid <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+az context set --tenantid <AzureTenant> --subscriptionid <AzureSubscription> [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+
+Parameters
+
+--tenantid
+The tenant for Azure Resource Manager cmdlets to target.
+
+--subscriptionid
+The Subscription Id for executed cmdlets to use.
+
+--informationaction
+
+
+--informationvariable
+
+
+

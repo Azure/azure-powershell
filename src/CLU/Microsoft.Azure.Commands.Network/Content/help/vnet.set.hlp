@@ -1,0 +1,18 @@
+
+Set-AzureRmVirtualNetwork: Sets the goal state for a virtual network.
+
+
+The Set-AzureRmVirtualNetwork cmdlet sets the goal state for an Azure virtual network.
+
+
+Command syntax
+
+az vnet set --virtualnetwork <PSVirtualNetwork>
+
+
+Parameters
+
+--virtualnetwork
+Specifies a VirtualNetwork object that represents the goal state.
+
+

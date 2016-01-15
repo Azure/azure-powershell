@@ -1,0 +1,35 @@
+
+Update-AzureRmVM: Updates the state of an Azure virtual machine.
+
+
+The Update-AzureRmVM cmdlet updates the state of an Azure virtual machine to the state of a virtual machine object.
+
+
+Command syntax
+
+az vm update [--resourcegroupname] <string> --vm <PSVirtualMachine> [--tags <Hashtable[]>] [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+az vm update [--id] <string> --vm <PSVirtualMachine> [--tags <Hashtable[]>] [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+
+Parameters
+
+--resourcegroupname
+Specifies the name of a resource group.
+
+--vm
+Specifies a local virtual machine object. To obtain a virtual machine object, use the Get-AzureRmVM cmdlet. This virtual machine object contains the updated state for the virtual machine.
+
+--tags
+
+
+--informationaction
+
+
+--informationvariable
+
+
+--id
+
+
+

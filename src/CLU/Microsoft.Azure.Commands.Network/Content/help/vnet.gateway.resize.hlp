@@ -1,0 +1,8 @@
+
+Resize-AzureRmVirtualNetworkGateway
+
+
+Command syntax
+
+az vnet gateway resize
+

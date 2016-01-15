@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace Microsoft.CLU.Help
@@ -60,10 +61,13 @@ namespace Microsoft.CLU.Help
 
             Func<string, bool> matcher = (hlp) =>
             {
-                return hlp.Length <= semiColonSeparatedArgs.Length && CommandDispatchHelper.MatchScore(hlp, semiColonSeparatedArgs) == hlp.Length;
+                return hlp.Length <= semiColonSeparatedArgs.Length && 
+                CommandDispatchHelper.MatchScore(hlp, semiColonSeparatedArgs) == hlp.Length;
             };
 
-            return FindHelpMatches(pkgRoot, args, matcher).OrderByDescending((hi) => CommandDispatchHelper.MatchScore(hi.Discriminators, semiColonSeparatedArgs)).ThenBy((hi) => hi.Discriminators).FirstOrDefault();
+            return FindHelpMatches(pkgRoot, args, matcher).OrderByDescending((hi) => 
+                   CommandDispatchHelper.MatchScore(hi.Discriminators, semiColonSeparatedArgs)).ThenBy((hi) => 
+                   hi.Discriminators).FirstOrDefault();
         }
 
         public static IEnumerable<HelpInfo> FindHelpMatches(string pkgRoot, string[] args, Func<string, bool> matchFunc)
@@ -179,9 +183,9 @@ namespace Microsoft.CLU.Help
 
             public virtual IEnumerable<HelpInfo> GetHelp()
             {
-                if (System.IO.Directory.Exists(HelpPath))
+                if (Directory.Exists(HelpPath))
                 {
-                    return System.IO.Directory.EnumerateFiles(HelpPath, "*.hlp", System.IO.SearchOption.TopDirectoryOnly).Select((f) =>
+                    return Directory.EnumerateFiles(HelpPath, "*.hlp", SearchOption.TopDirectoryOnly).Select((f) =>
                     {
                         return new HelpInfo(f);
                     });

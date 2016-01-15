@@ -1,0 +1,34 @@
+
+Set-AzureRmApplicationGatewayBackendAddressPool: Updates a back-end address pool for an application gateway.
+
+
+The Set-AzureRmApplicationGatewayBackendAddressPool cmdlet updates a back-end address pool for an Azure application gateway. Back-end addresses can be specified as IP addresses, fully-qualified domain names (FQDN) or IP configurations IDs.
+
+
+Command syntax
+
+az applicationgateway backendaddress pool set --applicationgateway <PSApplicationGateway> --name <string> [--backendipconfigurationids <List`1[String]>]
+
+az applicationgateway backendaddress pool set --applicationgateway <PSApplicationGateway> --name <string> [--backendipaddresses <List`1[String]>]
+
+az applicationgateway backendaddress pool set --applicationgateway <PSApplicationGateway> --name <string> [--backendfqdns <List`1[String]>]
+
+
+Parameters
+
+--applicationgateway
+Specifies the application gateway with which this cmdlet associates the back-end address pool.
+
+--name
+Specifies the name of the back-end address pool. This back-end address pool must exist in the application gateway.
+
+--backendipconfigurationids
+Specifies a list of back-end IP configuration IDs to use for the back-end server pool.
+
+--backendipaddresses
+Specifies a list of back-end IP addresses to use as a back-end server pool.
+
+--backendfqdns
+Specifies a list of back-end FQDNs to use as a back-end server pool.
+
+

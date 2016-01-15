@@ -1,0 +1,30 @@
+
+Set-AzureRmApplicationGatewayBackendHttpSettings: Updates back-end HTTP settings for an application gateway.
+
+
+The Set-AzureRmApplicationGatewayBackendHttpSettings cmdlet updates the back-end Hypertext Transfer Protocol (HTTP) settings for an Azure application gateway. Back-end HTTP settings are applied to all back-end servers in a pool.
+
+
+Command syntax
+
+az applicationgateway backend http settings set --applicationgateway <PSApplicationGateway> --name <string> --port <int> --protocol <string> --cookiebasedaffinity <string>
+
+
+Parameters
+
+--applicationgateway
+Specifies an application gateway object with which this cmdlet associates back-end HTTP settings.
+
+--name
+Specifies the name of the back-end HTTP settings object.
+
+--port
+Specifies the port to use for each server in the back-end server pool.
+
+--protocol
+Specifies the protocol to use for communication between the application gateway and back-end servers. The acceptable values for this parameter are: Http. This parameter is case-sensitive.
+
+--cookiebasedaffinity
+Specifies whether cookie-based affinity should be enabled or disabled for the backend server pool. The acceptable values for this parameter are: Disabled, Enabled.
+
+

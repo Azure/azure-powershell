@@ -1,0 +1,52 @@
+
+Add-AzureRmVMDataDisk: Adds a data disk to a virtual machine.
+
+
+The Add-AzureRmVMDataDisk cmdlet adds a data disk to a virtual machine. You can add a data disk when you create a virtual machine, or you can add a data disk to an existing virtual machine.
+
+
+Command syntax
+
+az vm datadisk add [--vm] <PSVirtualMachine> [--name] <string> [[--vhduri] <string>] [[--caching] <string>] [--disksizeingb] <Nullable`1[Int32]> [[--lun] <Nullable`1[Int32]>] [--createoption] <string> [[--sourceimageuri] <string>] [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+
+Parameters
+
+--vm
+Specifies the local virtual machine object to which to add a data disk. To obtain a virtual machine object, use the Get-AzureRmVM cmdlet. Create a virtual machine object by using the New-AzureRmVMConfig cmdlet.
+
+--name
+Specifies the name of the data disk to add.
+
+--vhduri
+Specifies the Uniform Resource Identifier (URI) for the virtual hard disk (VHD) file to create when a platform image or user image is used. This cmdlet copies the image binary large object (BLOB) to this location. This is the location from which to start the virtual machine.
+
+--caching
+Specifies the caching mode of the disk. Valid values are:
+-- ReadOnly
+-- ReadWrite
+The default value is ReadWrite. Changing this value causes the virtual machine to restart.
+This setting affects the consistency and performance of the disk.
+
+--disksizeingb
+Specifies the size, in gigabytes, of an empty disk to attach to a virtual machine.
+
+--lun
+Specifies the logical unit number (LUN) for a data disk.
+
+--createoption
+Specifies whether this cmldet creates a disk in the virtual machine from a platform or user image, creates an empty disk, or attaches an existing disk. Valid values are: 
+-- Attach 
+-- Empty 
+-- FromImage
+
+--sourceimageuri
+Specifies the source URI of the disk that this cmdlet attaches.
+
+--informationaction
+
+
+--informationvariable
+
+
+

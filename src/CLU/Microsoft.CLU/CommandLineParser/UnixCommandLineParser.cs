@@ -185,7 +185,8 @@ namespace Microsoft.CLU.CommandLineParser
 
         private void PresentCommandCompletion(string[] arguments)
         {
-            foreach (var cmd in Help.CommandDispatchHelper.CompleteCommands(CLUEnvironment.GetPackagesRootPath(), arguments).OrderBy((cmd) => cmd.Commandline))
+            foreach (var cmd in Help.CommandDispatchHelper.CompleteCommands(CLUEnvironment.GetPackagesRootPath(), 
+                    arguments).OrderBy((cmd) => cmd.Commandline))
             {
                 Console.WriteLine(cmd.Commandline);
             }
@@ -196,7 +197,8 @@ namespace Microsoft.CLU.CommandLineParser
             // BUGBUG - NYI!
             if (arguments.Length == 0)
             {
-                Console.WriteLine("TODO: Present help for Azure itself...");
+                // TODO
+                Console.WriteLine("Present help for Azure itself...");
             }
             else
             { 
@@ -205,7 +207,6 @@ namespace Microsoft.CLU.CommandLineParser
                 {
                     // Found appropriate help...
                     var cmdLine = string.Join(" ", arguments);
-                    Console.WriteLine($"Help for command {cmdLine}");
                     Console.WriteLine();
 
                     foreach (var line in helpFile.GetHelpContent())

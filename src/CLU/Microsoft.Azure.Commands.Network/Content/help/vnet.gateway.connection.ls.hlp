@@ -1,0 +1,21 @@
+
+Get-AzureRmVirtualNetworkGatewayConnection
+
+
+
+
+
+Command syntax
+
+az vnet gateway connection ls [--name <string>] --resourcegroupname <string>
+
+
+Parameters
+
+--name
+
+
+--resourcegroupname
+
+
+

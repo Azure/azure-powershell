@@ -1,0 +1,36 @@
+
+New-AzureRmLocalNetworkGateway
+
+
+
+
+
+Command syntax
+
+az localgateway new --name <string> --resourcegroupname <string> --location <string> [--gatewayipaddress <string>] [--addressprefix <List`1[String]>] [--tag <Hashtable[]>] [--force]
+
+
+Parameters
+
+--name
+
+
+--resourcegroupname
+
+
+--location
+
+
+--gatewayipaddress
+
+
+--addressprefix
+
+
+--tag
+
+
+--force
+
+
+

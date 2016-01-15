@@ -1,0 +1,18 @@
+
+Reset-AzureRmVirtualNetworkGateway
+
+
+
+
+
+Command syntax
+
+az vnet gateway reset --virtualnetworkgateway <PSVirtualNetworkGateway>
+
+
+Parameters
+
+--virtualnetworkgateway
+
+
+

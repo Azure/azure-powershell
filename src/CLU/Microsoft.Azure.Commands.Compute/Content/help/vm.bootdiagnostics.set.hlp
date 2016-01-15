@@ -1,0 +1,38 @@
+
+Set-AzureRmVMBootDiagnostics
+
+
+
+
+
+Command syntax
+
+az vm bootdiagnostics set [--vm] <PSVirtualMachine> [--enable] [--resourcegroupname] <string> [[--storageaccountname] <string>] [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+az vm bootdiagnostics set [--vm] <PSVirtualMachine> [--disable] [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+
+Parameters
+
+--vm
+
+
+--enable
+
+
+--resourcegroupname
+
+
+--storageaccountname
+
+
+--informationaction
+
+
+--informationvariable
+
+
+--disable
+
+
+
