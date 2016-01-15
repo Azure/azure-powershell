@@ -55,7 +55,7 @@ namespace Microsoft.CLU.Run
             var mode = GetMode(arguments);
             //TODO: #26 Decide the best way to find rootPath
             var assemblyLocation = typeof(Microsoft.CLU.Common.EntryPoint).GetTypeInfo().Assembly.Location;
-            var rootPath = System.IO.Path.GetDirectoryName(assemblyLocation);
+            var rootPath = @"C:\azure-powershell\drop\clurun\win7-x64";// System.IO.Path.GetDirectoryName(assemblyLocation);
             CLUEnvironment.SetRootPaths(rootPath);  
 
             // Run the command.

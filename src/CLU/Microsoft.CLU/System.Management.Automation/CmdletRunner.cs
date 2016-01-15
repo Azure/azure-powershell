@@ -99,7 +99,7 @@ namespace System.Management.Automation.Runspaces
         {
             CLUEnvironment.IsThreadSafe = true;
             var assemblyLocation = typeof(Microsoft.CLU.Common.EntryPoint).GetTypeInfo().Assembly.Location;
-            var rootPath = System.IO.Path.GetDirectoryName(assemblyLocation);
+            var rootPath = @"C:\azure-powershell\drop\clurun\win7-x64";//System.IO.Path.GetDirectoryName(assemblyLocation);
             CLUEnvironment.SetRootPaths(rootPath);
 
             PSDataStream = new PSDataStream(new PSDataStreams());

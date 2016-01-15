@@ -18,7 +18,7 @@ namespace Microsoft.CLU.Help
         /// <param name="pkgRoot"></param>
         /// <param name="args"></param>
         /// <returns></returns>
-        public static IEnumerable<CommandInfo> FindCommands(string pkgRoot, string[] args)
+        public static IEnumerable<CommandInfo> FindCommands(IHelpPackageFinder helpPackageFinder, string[] args)
         {
             var semiColonSeparatedArgs = String.Join(";", args) + ";";
 
@@ -27,7 +27,7 @@ namespace Microsoft.CLU.Help
                 return CommandDispatchHelper.MatchScore(cmd, semiColonSeparatedArgs) >= cmd.Length;
             };
 
-            return FindMatches(pkgRoot, args, matcher);
+            return FindMatches(helpPackageFinder, args, matcher);
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace Microsoft.CLU.Help
         /// <param name="pkgRoot"></param>
         /// <param name="args"></param>
         /// <returns></returns>
-        public static IEnumerable<CommandInfo> CompleteCommands(string pkgRoot, string[] args)
+        public static IEnumerable<CommandInfo> CompleteCommands(IHelpPackageFinder helpPackageFinder, string[] args)
         {
             var semiColonSeparatedArgs = String.Join(";", args);
 
@@ -51,12 +51,12 @@ namespace Microsoft.CLU.Help
                 return CommandDispatchHelper.MatchScore(cmd, semiColonSeparatedArgs) >= semiColonSeparatedArgs.Length;
             };
 
-            return FindMatches(pkgRoot, args, matcher);
+            return FindMatches(helpPackageFinder, args, matcher);
         }
 
-        public static IEnumerable<CommandInfo> FindMatches(string pkgRoot, string[] args, Func<string, bool> matchFunc)
+        public static IEnumerable<CommandInfo> FindMatches(IHelpPackageFinder helpPackageFinder, string[] args, Func<string, bool> matchFunc)
         {
-            foreach (var commandIndex in GetCommandIndexes(pkgRoot).SelectMany((s) => { return s; }))
+            foreach (var commandIndex in GetCommandIndexes(helpPackageFinder).SelectMany((s) => { return s; }))
             {
                 var semiColonSeparatedCommand = commandIndex.Discriminators + ";";
                 if (matchFunc(semiColonSeparatedCommand))
@@ -67,26 +67,12 @@ namespace Microsoft.CLU.Help
         }
 
 
-        public static IEnumerable<CommandInfo[]> GetCommandIndexes(string pkgsRootPath)
+        public static IEnumerable<CommandInfo[]> GetCommandIndexes(IHelpPackageFinder helpPackageFinder)
         {
-            foreach (var pkgInfo in GetPackages(pkgsRootPath))
+            foreach (var pkgInfo in helpPackageFinder.FindPackages())
             {
                 yield return pkgInfo.GetCommands().ToArray();
             }
-        }
-
-        public static IEnumerable<PkgInfo> GetPackages(string pkgsRootPath)
-        {
-            var rootInfo = new System.IO.DirectoryInfo(pkgsRootPath);
-
-            foreach (var pkgPath in rootInfo.EnumerateDirectories())
-            {
-                foreach (var versionPath in pkgPath.EnumerateDirectories())
-                {
-                    yield return new PkgInfo(pkgPath.Name, versionPath.Name, pkgPath.FullName);
-                }
-            }
-
         }
 
         public static int MatchScore(string semiColonSeparatedArgs, string semiColonSeparatedCommand)

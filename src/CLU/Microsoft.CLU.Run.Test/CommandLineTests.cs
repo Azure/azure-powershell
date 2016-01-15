@@ -14,7 +14,10 @@ namespace Microsoft.CLU.Run.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBasicCommandLineExecution()
         {
-            CLURun.Execute(new string[] { "-r", "az env" });
+            //CLUEnvironment.Console = new MemoryConsoleInputOutput();
+            //CLURun.Execute(new string[] { "-s", "az", "-r", "C:\\azure-powershell\\drop\\clurun\\win7-x64\\\\azure.lx", "env", "ls" });
+
+            
         }
     }
 }
