@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// Creates new role assignment.
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmRoleAssignment", DefaultParameterSetName = ParameterSet.Empty), OutputType(typeof(PSRoleAssignment))]
-    [CliCommandAlias("networksecurityrole;assignment;create")]
+    [CliCommandAlias("networksecurityrole assignment create")]
     public class NewAzureRoleAssignmentCommand : ResourcesBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithObjectId,

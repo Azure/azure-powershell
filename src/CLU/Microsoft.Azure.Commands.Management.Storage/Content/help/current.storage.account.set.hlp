@@ -1,0 +1,8 @@
+
+Set-AzureRmCurrentStorageAccount
+
+
+Command syntax
+
+az current storage account set
+

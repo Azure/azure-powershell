@@ -21,7 +21,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Add, "AzureRmApplicationGatewayHttpListener"), OutputType(typeof(PSApplicationGateway))]
-    [CliCommandAlias("applicationgateway;httplistener;add")]
+    [CliCommandAlias("applicationgateway httplistener add")]
     public class AddAzureApplicationGatewayHttpListenerCommand : AzureApplicationGatewayHttpListenerBase
     {
         [Parameter(

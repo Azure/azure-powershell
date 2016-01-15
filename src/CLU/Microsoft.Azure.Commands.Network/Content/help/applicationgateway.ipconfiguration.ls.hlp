@@ -1,0 +1,21 @@
+
+Get-AzureRmApplicationGatewayIPConfiguration: Gets the IP configuration of an application gateway.
+
+
+The Get-AzureRmApplicationGatewayIPConfiguration cmdlet gets the IP configuration of an application gateway. The IP configuration contains the subnet in which the application gateway is deployed.
+
+
+Command syntax
+
+az applicationgateway ipconfiguration ls [--name <string>] --applicationgateway <PSApplicationGateway>
+
+
+Parameters
+
+--name
+Specifies the name of the IP configuration which this cmdlet gets.
+
+--applicationgateway
+Specifies the application gateway object that contains IP configuration.
+
+

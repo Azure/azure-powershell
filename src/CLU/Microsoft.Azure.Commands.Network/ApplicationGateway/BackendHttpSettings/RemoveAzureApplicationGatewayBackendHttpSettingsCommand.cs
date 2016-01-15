@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRmApplicationGatewayBackendHttpSettings"), OutputType(typeof(PSApplicationGateway))]
-    [CliCommandAlias("applicationgateway;backend;http;settings;rm")]
+    [CliCommandAlias("applicationgateway backend http settings rm")]
     public class RemoveAzureApplicationGatewayBackendHttpSettingsCommand : NetworkBaseCmdlet
     {
         [Parameter(

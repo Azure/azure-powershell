@@ -1,0 +1,27 @@
+
+Get-AzureRmVMExtensionImageType: Gets the type of an Azure extension.
+
+
+The Get-AzureRmVMExtensionImageType cmdlet gets the type of an Azure extension.
+
+
+Command syntax
+
+az vm extension image type ls --location <string> --publishername <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+
+Parameters
+
+--location
+Specifies the location of an extension. This cmdlet gets the type for an extension at the location that this parameter specifies.
+
+--publishername
+Specifies the name of a publisher of an extension. To obtain an extension publisher, use the Get-AzureRmVMImagePublisher cmdlet. This cmdlet gets the type for an extension from the publisher that this parameter specifies.
+
+--informationaction
+
+
+--informationvariable
+
+
+

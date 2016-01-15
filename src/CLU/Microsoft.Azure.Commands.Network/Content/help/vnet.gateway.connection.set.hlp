@@ -1,0 +1,21 @@
+
+Set-AzureRmVirtualNetworkGatewayConnection
+
+
+
+
+
+Command syntax
+
+az vnet gateway connection set --virtualnetworkgatewayconnection <PSVirtualNetworkGatewayConnection> [--force]
+
+
+Parameters
+
+--virtualnetworkgatewayconnection
+
+
+--force
+
+
+

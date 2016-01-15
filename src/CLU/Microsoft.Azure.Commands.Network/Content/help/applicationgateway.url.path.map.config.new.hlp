@@ -1,0 +1,8 @@
+
+New-AzureRmApplicationGatewayUrlPathMapConfig
+
+
+Command syntax
+
+az applicationgateway url path map config new
+

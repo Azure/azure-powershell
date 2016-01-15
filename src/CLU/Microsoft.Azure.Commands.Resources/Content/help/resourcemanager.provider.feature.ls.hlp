@@ -1,0 +1,29 @@
+
+Get-AzureRmProviderFeature
+
+
+
+
+
+Command syntax
+
+az resourcemanager provider feature ls [--providernamespace <string>] [--listavailable] [--profile <AzureProfile>]
+
+az resourcemanager provider feature ls [--providernamespace <string>] --featurename <string> [--profile <AzureProfile>]
+
+
+Parameters
+
+--providernamespace
+
+
+--listavailable
+
+
+--profile
+
+
+--featurename
+
+
+

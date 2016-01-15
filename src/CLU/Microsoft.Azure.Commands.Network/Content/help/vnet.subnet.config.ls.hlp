@@ -1,0 +1,21 @@
+
+Get-AzureRmVirtualNetworkSubnetConfig: Gets a subnet in a virtual network.
+
+
+The Get-AzureRmVirtualNetworkSubnetConfig cmdlet gets one or more subnet configurations in an Azure virtual network.
+
+
+Command syntax
+
+az vnet subnet config ls [--name <string>] --virtualnetwork <PSVirtualNetwork>
+
+
+Parameters
+
+--name
+Specifies the name of the subnet configuration to get.
+
+--virtualnetwork
+Specifies the VirtualNetwork object that contains the subnet configuration to get.
+
+

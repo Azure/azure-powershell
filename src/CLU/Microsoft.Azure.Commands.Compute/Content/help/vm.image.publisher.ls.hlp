@@ -1,0 +1,24 @@
+
+Get-AzureRmVMImagePublisher: Gets the VMImage publishers.
+
+
+The Get-AzureRmVMImagePublisher cmdlet gets the VMImage publishers.
+
+
+Command syntax
+
+az vm image publisher ls --location <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+
+Parameters
+
+--location
+Specifies the location of the VMImage.
+
+--informationaction
+
+
+--informationvariable
+
+
+

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace Microsoft.CLU.Help
@@ -27,7 +28,7 @@ namespace Microsoft.CLU.Help
                 return CommandDispatchHelper.MatchScore(cmd, semiColonSeparatedArgs) >= cmd.Length;
             };
 
-            return FindMatches(helpPackageFinder, args, matcher);
+            return FindCommandMatches(helpPackageFinder, args, matcher);
         }
 
         /// <summary>
@@ -51,10 +52,37 @@ namespace Microsoft.CLU.Help
                 return CommandDispatchHelper.MatchScore(cmd, semiColonSeparatedArgs) >= semiColonSeparatedArgs.Length;
             };
 
-            return FindMatches(helpPackageFinder, args, matcher);
+            return FindCommandMatches(helpPackageFinder, args, matcher);
         }
 
-        public static IEnumerable<CommandInfo> FindMatches(IHelpPackageFinder helpPackageFinder, string[] args, Func<string, bool> matchFunc)
+        public static HelpInfo FindBestHelp(IHelpPackageFinder helpPackageFinder, string[] args)
+        {
+            var semiColonSeparatedArgs = String.Join(";", args) + ";";
+
+            Func<string, bool> matcher = (hlp) =>
+            {
+                return hlp.Length <= semiColonSeparatedArgs.Length && 
+                CommandDispatchHelper.MatchScore(hlp, semiColonSeparatedArgs) == hlp.Length;
+            };
+
+            return FindHelpMatches(helpPackageFinder, args, matcher).OrderByDescending((hi) => 
+                   CommandDispatchHelper.MatchScore(hi.Discriminators, semiColonSeparatedArgs)).ThenBy((hi) => 
+                   hi.Discriminators).FirstOrDefault();
+        }
+
+        public static IEnumerable<HelpInfo> FindHelpMatches(IHelpPackageFinder helpPackageFinder, string[] args, Func<string, bool> matchFunc)
+        {
+            foreach (var helpInfo in GetPackages(helpPackageFinder).SelectMany((p) => p.GetHelp()))
+            {
+                var semiColonSeparatedCommand = helpInfo.Discriminators + ";";
+                if (matchFunc(semiColonSeparatedCommand))
+                {
+                    yield return helpInfo;
+                }
+            }
+        }
+
+        public static IEnumerable<CommandInfo> FindCommandMatches(IHelpPackageFinder helpPackageFinder, string[] args, Func<string, bool> matchFunc)
         {
             foreach (var commandIndex in GetCommandIndexes(helpPackageFinder).SelectMany((s) => { return s; }))
             {
@@ -116,6 +144,13 @@ namespace Microsoft.CLU.Help
                 }
             }
 
+            public string HelpPath
+            {
+                get
+                {
+                    return System.IO.Path.Combine(Path, Version, "content", "help");
+                }
+            }
             public virtual IEnumerable<CommandInfo> GetCommands()
             {
                 if (System.IO.File.Exists(IndexPath))
@@ -131,12 +166,61 @@ namespace Microsoft.CLU.Help
                     return new CommandInfo[] { };
                 }
             }
+
+            public virtual IEnumerable<HelpInfo> GetHelp()
+            {
+                if (Directory.Exists(HelpPath))
+                {
+                    return Directory.EnumerateFiles(HelpPath, "*.hlp", SearchOption.TopDirectoryOnly).Select((f) =>
+                    {
+                        return new HelpInfo(f);
+                    });
+                }
+                else
+                {
+                    return new HelpInfo[] { };
+                }
+            }
+        }
+
+        public class HelpInfo
+        {
+            private string _path;
+
+            public HelpInfo(string path)
+            {
+                _path = path;
+
+                Discriminators = System.IO.Path.GetFileNameWithoutExtension(path).Replace('.', ';');
+            }
+
+            public IEnumerable<string> GetHelpContent()
+            {
+                if (System.IO.File.Exists(_path))
+                {
+                    return System.IO.File.ReadAllLines(_path);
+                }
+                else
+                {
+                    return new string[] { };
+                }
+            }
+
+            public string Discriminators { get; private set; }
         }
 
         public class CommandInfo
         {
             public PkgInfo Package { get; set; }
             public string Discriminators { get; set; }
+
+            public string Commandline
+            {
+                get
+                {
+                    return Discriminators.Replace(';', ' ');
+                }
+            }
         }
     }
 }

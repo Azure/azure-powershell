@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Profile
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmEnvironment")]
     [OutputType(typeof(PSAzureEnvironment))]
-    [CliCommandAlias("env;ls")]
+    [CliCommandAlias("env ls")]
     public class GetAzureRMEnvironmentCommand : AzureRMCmdlet
     {
         [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The environment name")]

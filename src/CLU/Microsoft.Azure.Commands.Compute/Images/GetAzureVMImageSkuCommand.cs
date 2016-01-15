@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineImageSku)]
     [OutputType(typeof(PSVirtualMachineImageSku))]
-    [CliCommandAlias("vm;image;sku;ls")]
+    [CliCommandAlias("vm image sku ls")]
     public class GetAzureVMImageSkuCommand : VirtualMachineImageBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]

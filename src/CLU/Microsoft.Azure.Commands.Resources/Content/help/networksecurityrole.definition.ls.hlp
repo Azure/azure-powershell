@@ -1,0 +1,34 @@
+
+Get-AzureRmRoleDefinition: Lists all Azure RBAC roles that are available for assignment.
+
+
+Use the Get-AzureRmRoleDefinition command with a particular role name to view its details. To inspect individual operations that a role grants access to, review the Actions and NotActions properties of the role.
+
+
+Command syntax
+
+az networksecurityrole definition ls [[--name] <string>] [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+az networksecurityrole definition ls [--id] <Guid> [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+az networksecurityrole definition ls --custom [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+
+Parameters
+
+--name
+Role definition name. For e.g. Reader, Contributor, Virtual Machine Contributor.
+
+--informationaction
+
+
+--informationvariable
+
+
+--id
+Role definition Id.
+
+--custom
+If specified, only displays the custom created roles in the directory.
+
+

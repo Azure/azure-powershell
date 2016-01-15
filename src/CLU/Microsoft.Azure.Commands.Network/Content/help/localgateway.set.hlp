@@ -1,0 +1,21 @@
+
+Set-AzureRmLocalNetworkGateway
+
+
+
+
+
+Command syntax
+
+az localgateway set --localnetworkgateway <PSLocalNetworkGateway> --addressprefix <List`1[String]>
+
+
+Parameters
+
+--localnetworkgateway
+
+
+--addressprefix
+
+
+

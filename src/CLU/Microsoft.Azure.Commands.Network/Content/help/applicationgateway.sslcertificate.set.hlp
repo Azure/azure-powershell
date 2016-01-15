@@ -1,0 +1,27 @@
+
+Set-AzureRmApplicationGatewaySslCertificate: Sets the goal state of an SSL certificate.
+
+
+The Set-AzureRmApplicationGatewaySslCertificate cmdlet sets the goal state of an SSL certificate.
+
+
+Command syntax
+
+az applicationgateway sslcertificate set --applicationgateway <PSApplicationGateway> --name <string> --certificatefile <string> --password <string>
+
+
+Parameters
+
+--applicationgateway
+Specifies the application gateway with which the SSL certificate is associated.
+
+--name
+Specifies the name of the SSL certificate.
+
+--certificatefile
+Specifies the path of the SSL certificate.
+
+--password
+Specifies the password of the SSL certificate.
+
+

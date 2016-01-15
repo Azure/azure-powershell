@@ -1,0 +1,21 @@
+
+Remove-AzureRmNetworkSecurityRuleConfig: Removes a network security rule from a network security group.
+
+
+The Remove-AzureRmNetworkSecurityRuleConfig cmdlet removes a network security rule configuration from an Azure network security group.
+
+
+Command syntax
+
+az networksecurityrule config rm [--name <string>] --networksecuritygroup <PSNetworkSecurityGroup>
+
+
+Parameters
+
+--name
+Specifies the name of the network security rule configuration to remove.
+
+--networksecuritygroup
+Specifies a NetworkSecurityGroup object. This object contains the network security rule configuration to remove.
+
+

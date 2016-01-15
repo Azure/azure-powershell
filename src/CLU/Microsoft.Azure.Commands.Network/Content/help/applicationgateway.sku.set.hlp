@@ -1,0 +1,27 @@
+
+Set-AzureRmApplicationGatewaySku: Modifies the SKU of an application gateway.
+
+
+The Set-AzureRmApplicationGatewaySku cmdlet modifies the stock keeping unit (SKU) of an application gateway.
+
+
+Command syntax
+
+az applicationgateway sku set --applicationgateway <PSApplicationGateway> --name <string> --tier <string> --capacity <int>
+
+
+Parameters
+
+--applicationgateway
+Specifies the application gateway object with which this cmdlet associates the SKU.
+
+--name
+Specifies the name of the application gateway.
+
+--tier
+Specifies the tier of the application gateway.
+
+--capacity
+Specifies the instance count of the application gateway.
+
+

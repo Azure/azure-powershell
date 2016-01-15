@@ -17,8 +17,10 @@
 using System.Management.Automation;
 using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Commands.WebApps.Utilities;
+using Microsoft.Azure.Commands.Websites.Models.WebApp;
 using Microsoft.Azure.Management.WebSites.Models;
 using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 {
@@ -26,7 +28,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     /// this commandlet will let you get a new Azure Web app slot using ARM APIs
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRMWebAppSlot")]
-    [CliCommandAlias("appservice;slot;ls")]
+    [OutputType(typeof(PSSite))]
+    [CliCommandAlias("appservice slot ls")]
     public class GetAzureWebAppSlotCmdlet : WebAppBaseClientCmdLet
     {
         protected const string ParameterSet1Name = "S1";
@@ -67,11 +70,11 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 
             if (string.IsNullOrWhiteSpace(Slot))
             {
-                WriteObject(WebsitesClient.ListWebApps(ResourceGroupName, Name));
+                WriteObject(WebsitesClient.ListWebApps(ResourceGroupName, Name).Select(s => (PSSite)s));
             }
             else
             {
-                WriteObject(WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot));
+                WriteObject((PSSite)WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot));
             }
         }
     }

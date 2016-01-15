@@ -23,7 +23,7 @@ using Microsoft.Azure.Commands.Tags.Model;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRmVpnClientRevokedCertificate")]
-    [CliCommandAlias("vpn;client;revoked;certificate;rm")]
+    [CliCommandAlias("vpn client revoked certificate rm")]
     public class RemoveAzureVpnClientRevokedCertificateCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]

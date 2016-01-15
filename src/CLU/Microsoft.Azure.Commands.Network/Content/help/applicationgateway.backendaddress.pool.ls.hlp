@@ -1,0 +1,21 @@
+
+Get-AzureRmApplicationGatewayBackendAddressPool: Gets a back-end address pool for an application gateway.
+
+
+
+
+
+Command syntax
+
+az applicationgateway backendaddress pool ls [--name <string>] --applicationgateway <PSApplicationGateway>
+
+
+Parameters
+
+--name
+Specifies the name of the back-end address pool that this cmdlet gets.
+
+--applicationgateway
+The Get-AzureRmApplicationGatewayBackendAddressPool cmdlet gets a back-end address pool for an application gateway.
+
+

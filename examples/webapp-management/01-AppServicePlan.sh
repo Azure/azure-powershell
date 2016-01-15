@@ -33,7 +33,7 @@ setPlanInfo=`az appservice plan set -n $whpName -g $groupName --tier $newTier --
 [ $(echo $setPlanInfo | jq '.sku.tier' --raw-output) == "$newTier" ]
 [ $(echo $setPlanInfo | jq '.sku.capacity' --raw-output) -eq $newCapacity ]
 [ $(echo $setPlanInfo | jq '.sku.name' --raw-output) == "D1" ]
-[ $(echo $setPlanInfo | jq '.["properties.geoRegion"]' --raw-output) == "West US" ]
+[ $(echo $setPlanInfo | jq '.["geoRegion"]' --raw-output) == "West US" ]
 
 whpName2=`randomName testplan`
 printf "\n4. Creating a new app service plan: %s" "$whpName2"

@@ -1,0 +1,18 @@
+
+Set-AzureRmNetworkSecurityGroup: Sets the goal state for a network security group.
+
+
+The Set-AzureRmNetworkSecurityGroup cmdlet sets the goal state for an Azure network security group.
+
+
+Command syntax
+
+az networksecuritygroup set --networksecuritygroup <PSNetworkSecurityGroup>
+
+
+Parameters
+
+--networksecuritygroup
+A Network Security Group object representing the goal state to which the Network Security Group should be set.
+
+

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsData.Save, ProfileNouns.VirtualMachineImage, DefaultParameterSetName = ResourceGroupNameParameterSet)]
     [OutputType(typeof(PSComputeLongRunningOperation))]
-    [CliCommandAlias("vm;image;save")]
+    [CliCommandAlias("vm image save")]
     public class SaveAzureVMImageCommand : VirtualMachineActionBaseCmdlet
     {
         [Alias("VMName")]

@@ -1,0 +1,30 @@
+
+Get-AzureRmVMImageSku: Gets VMImage SKUs.
+
+
+The Get-AzureRmVMImageSku cmdlet gets VMImage SKUs.
+
+
+Command syntax
+
+az vm image sku ls --location <string> --publishername <string> --offer <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+
+Parameters
+
+--location
+Specifies the location of the VMImage.
+
+--publishername
+Specifies the publisher of a VMImage.
+
+--offer
+Specifies the type of VMImage offer.
+
+--informationaction
+
+
+--informationvariable
+
+
+

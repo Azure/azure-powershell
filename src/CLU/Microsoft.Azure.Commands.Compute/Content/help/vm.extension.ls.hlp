@@ -1,0 +1,33 @@
+
+Get-AzureRmVMExtension: Gets properties of Virtual Machine Extensions installed on a virtual machine.
+
+
+The Get-AzureRmVMExtension cmdlet gets properties of Virtual Machine Extensions installed on a virtual machine. Specify the name of an extension for which to get properties. To get only the instance view of an extension, specify the Status parameter.
+
+
+Command syntax
+
+az vm extension ls [--resourcegroupname] <string> [--vmname] <string> [--name] <string> [[--status]] [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+
+Parameters
+
+--resourcegroupname
+Specifies the name of a resource group.
+
+--vmname
+Specifies the name of a virtual machine. This cmdlet gets properties of an extension from the virtual machine that this parameter specifies.
+
+--name
+Specifies the name of an extension. This cmdlet gets properties for the extension that this parameter specifies.
+
+--status
+Indicates that this cmdlet gets only the instance view of an extension.
+
+--informationaction
+
+
+--informationvariable
+
+
+

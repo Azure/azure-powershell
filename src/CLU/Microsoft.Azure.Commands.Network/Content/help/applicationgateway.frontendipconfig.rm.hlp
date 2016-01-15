@@ -1,0 +1,21 @@
+
+Remove-AzureRmApplicationGatewayFrontendPort: Removes a front-end port from an application gateway.
+
+
+The Remove-AzureRmApplicationGatewayFrontendPort cmdlet removes a front-end port from an Azure application gateway.
+
+
+Command syntax
+
+az applicationgateway frontendipconfig rm --name <string> --applicationgateway <PSApplicationGateway>
+
+
+Parameters
+
+--name
+Specifies name of the frontend port to remove.
+
+--applicationgateway
+Specifies the application gateway from which to remove a front-end port.
+
+

@@ -15,6 +15,7 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.WebApps.Utilities;
+using Microsoft.Azure.Commands.Websites.Models.WebApp;
 using Microsoft.Azure.Management.WebSites.Models;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
@@ -23,7 +24,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
     /// this commandlet will let you create a new Azure App service Plan using ARM APIs
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRMAppServicePlan"), OutputType(typeof(ServerFarmWithRichSku))]
-    [CliCommandAlias("appservice;plan;create")]
+    [CliCommandAlias("appservice plan create")]
     public class NewAzureAppServicePlanCmdlet : AppServicePlanBaseCmdlet
     {
         [Parameter(Position = 2, Mandatory = true, HelpMessage = "The location of the app service plan.")]
@@ -67,7 +68,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
                 Capacity = capacity
             };
 
-            WriteObject(WebsitesClient.CreateAppServicePlan(ResourceGroupName, Name, Location, null, sku), true);
+            WriteObject((PSServerFarmWithRichSku)WebsitesClient.CreateAppServicePlan(ResourceGroupName, Name, Location, null, sku), true);
         }
     }
 }

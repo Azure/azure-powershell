@@ -1,0 +1,31 @@
+
+New-AzureRmApplicationGatewayBackendAddressPool: Creates a back-end address pool for an application gateway.
+
+
+The New-AzureRmApplicationGatewayBackendAddressPool cmdlet creates a back-end address pool for an Azure application gateway. A back-end address can be specified as an IP address, a fully-qualified domain name (FQDN) or an IP configuration ID.
+
+
+Command syntax
+
+az applicationgateway backendaddress pool new --name <string> [--backendipconfigurationids <List`1[String]>]
+
+az applicationgateway backendaddress pool new --name <string> [--backendipaddresses <List`1[String]>]
+
+az applicationgateway backendaddress pool new --name <string> [--backendfqdns <List`1[String]>]
+
+
+Parameters
+
+--name
+Specifies the name of the back-end server pool that this cmdlet creates.
+
+--backendipconfigurationids
+Specifies a list of back-end server IP configuration IDs that this cmdlet associates with the back-end server pool.
+
+--backendipaddresses
+Specifies a list of back-end IP addresses that this cmdlet associates with the back-end server pool.
+
+--backendfqdns
+Specifies a list of back-end FQDNs that this cmdlet associates with the back-end server pool.
+
+

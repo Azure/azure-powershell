@@ -1,0 +1,8 @@
+
+Start-AzureRmWebApp
+
+
+Command syntax
+
+az appservice start
+

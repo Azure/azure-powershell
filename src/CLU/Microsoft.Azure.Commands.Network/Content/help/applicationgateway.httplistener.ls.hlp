@@ -1,0 +1,21 @@
+
+Get-AzureRmApplicationGatewayHttpListener: Gets the HTTP listener of an application gateway.
+
+
+The Get-AzureRmApplicationGatewayHttpListener cmdlet gets the HTTP listener of an application gateway.
+
+
+Command syntax
+
+az applicationgateway httplistener ls [--name <string>] --applicationgateway <PSApplicationGateway>
+
+
+Parameters
+
+--name
+Specifies the name of the HTTP listener which this cmdlet gets.
+
+--applicationgateway
+Specifies the application gateway object that contains the HTTP listener.
+
+

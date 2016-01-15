@@ -1,0 +1,11 @@
+
+Get-AzureRmExpressRouteServiceProvider
+
+
+
+
+
+Command syntax
+
+az expressroute service resourcemanager provider ls
+

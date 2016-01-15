@@ -1,0 +1,33 @@
+
+New-AzureRmRouteTable: Creates a route table.
+
+
+The New-AzureRmRouteTable cmdlet creates an Azure route table.
+
+
+Command syntax
+
+az route table new --name <string> --resourcegroupname <string> --location <string> [--route <List`1[PSRoute]>] [--tag <Hashtable[]>] [--force]
+
+
+Parameters
+
+--name
+Specifies a name for the route table.
+
+--resourcegroupname
+Specifies the name of the resource group in which this cmdlet creates a route table.
+
+--location
+Specifies the Azure region in which this cmdlet creates a route table. For more information, see Azure Regions (http://azure.microsoft.com/en-us/regions/).
+
+--route
+Specifies an array of Route objects to associate with the route table.
+
+--tag
+Specifies a dictionary of tags to associate with the route table.
+
+--force
+Indicates that this cmdlet creates a route table even if a route table that has the same name already exists.
+
+
