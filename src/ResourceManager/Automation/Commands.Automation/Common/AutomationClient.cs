@@ -1676,15 +1676,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     string.Format(CultureInfo.CurrentCulture, Resources.InvalidRunbookParameters));
             }
 
-            var hasJobStartedBy =
-                filteredParameters.Any(filteredParameter => filteredParameter.Key == Constants.JobStartedByParameterName);
-
-            if (!hasJobStartedBy)
-            {
-                filteredParameters.Add(Constants.JobStartedByParameterName,
-                    PowerShellJsonConverter.Serialize(Constants.ClientIdentity));
-            }
-
             return filteredParameters;
         }
 
