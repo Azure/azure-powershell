@@ -1,0 +1,27 @@
+
+New-AzureRmApplicationGatewayBackendHttpSettings: Creates back-end HTTP settings for an application gateway.
+
+
+The New-AzureRmApplicationGatewayBackendHttpSettings cmdlet creates back-end HTTP settings for an application gateway. Back-end HTTP settings are applied to all back-end servers in a pool.
+
+
+Command syntax
+
+az applicationgateway backend http settings new --name <string> --port <int> --protocol <string> --cookiebasedaffinity <string>
+
+
+Parameters
+
+--name
+Specifies the name of the back-end HTTP settings that this cmdlet creates.
+
+--port
+Specifies the port of the back-end server pool.
+
+--protocol
+Specifies the protocol to use for communication between the application gateway and the back-end servers.
+
+--cookiebasedaffinity
+Specifies whether cookie-based affinity should be enabled or disabled for the back-end server pool.
+
+

@@ -1,0 +1,44 @@
+
+Add-AzureRmApplicationGatewayHttpListener: Adds an HTTP listener to an application gateway.
+
+
+The Add-AzureRmApplicationGatewayHttpListener cmdlet adds a HTTP listener to an application gateway.
+
+
+Command syntax
+
+az applicationgateway httplistener add --applicationgateway <PSApplicationGateway> --name <string> [--frontendipconfigurationid <string>] [--frontendportid <string>] [--sslcertificateid <string>] --protocol <string>
+
+az applicationgateway httplistener add --applicationgateway <PSApplicationGateway> --name <string> [--frontendipconfiguration <PSApplicationGatewayFrontendIPConfiguration>] [--frontendport <PSApplicationGatewayFrontendPort>] [--sslcertificate <PSApplicationGatewaySslCertificate>] --protocol <string>
+
+
+Parameters
+
+--applicationgateway
+Specifies the application gateway to which this cmdlet adds an HTTP listener.
+
+--name
+Specifies the name of the front-end port that this command adds.
+
+--frontendipconfigurationid
+Specifies the application gateway front-end IP ID.
+
+--frontendportid
+Specifies the application gateway front-end port ID.
+
+--sslcertificateid
+Specifies the SSL certificate ID of the HTTP listener. Must be specified if HTTPS is chosen as listener protocol.
+
+--protocol
+Specifies the protocol of the HTTP listener. Both HTTP and HTTPS are supported.
+
+--frontendipconfiguration
+Specifies the application gateway front-end IP resource object.
+
+--frontendport
+Specifies the application gateway front-end port object.
+
+--sslcertificate
+Specifies the SSL certificate of the HTTP listener. Must be specified if HTTPS is chosen as listener protocol.
+
+

@@ -1,0 +1,8 @@
+
+Set-AzureRMAppServicePlan
+
+
+Command syntax
+
+az appservice plan set
+

@@ -1,0 +1,21 @@
+
+Get-AzureRmApplicationGatewayRequestRoutingRule: Gets the request routing rule of an application gateway.
+
+
+The Get-AzureRmApplicationGatewayRequestRoutingRule cmdlet gets the request routing rule of an application gateway.
+
+
+Command syntax
+
+az applicationgateway request routing rule ls [--name <string>] --applicationgateway <PSApplicationGateway>
+
+
+Parameters
+
+--name
+Specifies the name of the request routing rule which this cmdlet gets.
+
+--applicationgateway
+Specifies the application gateway object that contains request routing rule.
+
+

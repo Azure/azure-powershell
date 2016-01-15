@@ -1,0 +1,8 @@
+
+New-AzureRmTag
+
+
+Command syntax
+
+az tag create
+

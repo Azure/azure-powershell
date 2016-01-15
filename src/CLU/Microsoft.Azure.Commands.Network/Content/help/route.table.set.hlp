@@ -1,0 +1,18 @@
+
+Set-AzureRmRouteTable: Sets the goal state for a route table.
+
+
+The Set-AzureRmRouteTable cmdlet sets the goal state for an Azure route table.
+
+
+Command syntax
+
+az route table set --routetable <PSRouteTable>
+
+
+Parameters
+
+--routetable
+Specifies a route table object that represents the goal state to which this cmdlet sets the route table.
+
+

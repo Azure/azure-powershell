@@ -1,0 +1,21 @@
+
+Remove-AzureRmApplicationGatewayRequestRoutingRule: Removes a request routing rule from an application gateway.
+
+
+The Remove-AzureRmApplicationGatewayRequestRoutingRule cmdlet removes a request routing rule from an Azure application gateway.
+
+
+Command syntax
+
+az applicationgateway request routing rule rm --name <string> --applicationgateway <PSApplicationGateway>
+
+
+Parameters
+
+--name
+Specifies the name of the request routing rule to remove.
+
+--applicationgateway
+Specifies the application gateway from which to remove a request routing rule.
+
+

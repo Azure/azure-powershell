@@ -1,0 +1,23 @@
+
+Get-AzureRmADGroupMember: Get a group members.
+
+
+This is the Description section
+
+Get a group members.
+
+
+Command syntax
+
+az activedirectory resourcemanager group member ls [--groupobjectid <Guid>] [--profile <AzureProfile>]
+
+
+Parameters
+
+--groupobjectid
+Object id of the group.
+
+--profile
+
+
+

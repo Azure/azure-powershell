@@ -1,0 +1,41 @@
+
+New-AzureRmApplicationGatewayHttpListener: Creates an HTTP listener for an application gateway.
+
+
+The New-AzureRmApplicationGatewayHttpListener cmdlet creates an HTTP listener for an Azure application gateway.
+
+
+Command syntax
+
+az applicationgateway httplistener new --name <string> [--frontendipconfigurationid <string>] [--frontendportid <string>] [--sslcertificateid <string>] --protocol <string>
+
+az applicationgateway httplistener new --name <string> [--frontendipconfiguration <PSApplicationGatewayFrontendIPConfiguration>] [--frontendport <PSApplicationGatewayFrontendPort>] [--sslcertificate <PSApplicationGatewaySslCertificate>] --protocol <string>
+
+
+Parameters
+
+--name
+Specifies the name of the HTTP listener that this cmdlet creates.
+
+--frontendipconfigurationid
+Specifies the ID of the front-end IP configuration for the HTTP listener.
+
+--frontendportid
+Specifies the ID of the front-end port object for the HTTP listener.
+
+--sslcertificateid
+Specifies the ID of the SSL certificate for the HTTP listener.
+
+--protocol
+Specifies the protocol that the HTTP listener uses.
+
+--frontendipconfiguration
+Specifies front-end IP configuration object for the HTTP listener.
+
+--frontendport
+Specifies the front-end port for the HTTP listener.
+
+--sslcertificate
+Specifies the SSL certificate object for  the HTTP listener.
+
+

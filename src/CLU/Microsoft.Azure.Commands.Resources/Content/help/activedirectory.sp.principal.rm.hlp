@@ -1,0 +1,29 @@
+
+Remove-AzureRmADServicePrincipal: Deletes the azure active directory service principal.
+
+
+This is the Description section
+
+Deletes the azure active directory service principal.
+
+
+Command syntax
+
+az activedirectory sp principal rm --objectid <Guid> [--force] [--passthru] [--profile <AzureProfile>]
+
+
+Parameters
+
+--objectid
+
+
+--force
+
+
+--passthru
+
+
+--profile
+
+
+

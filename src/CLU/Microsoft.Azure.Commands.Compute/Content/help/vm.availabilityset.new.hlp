@@ -1,0 +1,36 @@
+
+New-AzureRmAvailabilitySet: Creates an Azure availability set.
+
+
+The New-AzureRmAvailabilitySet cmdlet creates an Azure availability set.
+
+
+Command syntax
+
+az vm availabilityset new [--resourcegroupname] <string> [--name] <string> [--location] <string> [[--platformupdatedomaincount] <Nullable`1[Int32]>] [[--platformfaultdomaincount] <Nullable`1[Int32]>] [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+
+Parameters
+
+--resourcegroupname
+Specifies the name of a resource group.
+
+--name
+Specifies a name for the availability set.
+
+--location
+Specifies the location for the availability set.
+
+--platformupdatedomaincount
+Specifies the platform update domain count.
+
+--platformfaultdomaincount
+Specifies the platform fault domain count.
+
+--informationaction
+
+
+--informationvariable
+
+
+

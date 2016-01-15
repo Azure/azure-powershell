@@ -1,0 +1,18 @@
+
+Set-AzureRmNetworkInterface: Sets the goal state for a network interface.
+
+
+The Set-AzureRmNetworkInterface sets the goal state for an Azure network interface.
+
+
+Command syntax
+
+az networkinterface set --networkinterface <PSNetworkInterface>
+
+
+Parameters
+
+--networkinterface
+Specifies a NetworkInterface object that represents the goal state for a network interface.
+
+

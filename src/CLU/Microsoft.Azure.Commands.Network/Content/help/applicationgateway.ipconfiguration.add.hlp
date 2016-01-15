@@ -1,0 +1,29 @@
+
+Add-AzureRmApplicationGatewayIPConfiguration: Adds an IP configuration to an application gateway.
+
+
+The Add-AzureRmApplicationGatewayIPConfiguration cmdlet adds an IP configuration to an application gateway. IP configurations contain the subnet in which the application gateway is deployed.
+
+
+Command syntax
+
+az applicationgateway ipconfiguration add --applicationgateway <PSApplicationGateway> --name <string> [--subnetid <string>]
+
+az applicationgateway ipconfiguration add --applicationgateway <PSApplicationGateway> --name <string> [--subnet <PSSubnet>]
+
+
+Parameters
+
+--applicationgateway
+Specifies the application gateway to which this cmdlet adds an IP configuration.
+
+--name
+Specifies the name of the IP configuration to add.
+
+--subnetid
+Specifies a subnet ID. This is the subnet in which the application gateway is deployed.
+
+--subnet
+Specifies a subnet. This is the subnet in which the application gateway is deployed.
+
+

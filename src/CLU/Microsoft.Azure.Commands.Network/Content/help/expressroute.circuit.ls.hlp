@@ -1,0 +1,21 @@
+
+Get-AzureRmExpressRouteCircuit
+
+
+
+
+
+Command syntax
+
+az expressroute circuit ls [--name <string>] [--resourcegroupname <string>]
+
+
+Parameters
+
+--name
+
+
+--resourcegroupname
+
+
+

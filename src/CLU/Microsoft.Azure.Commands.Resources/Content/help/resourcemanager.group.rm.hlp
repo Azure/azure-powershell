@@ -1,0 +1,28 @@
+
+Remove-AzureRmResourceGroup: Deletes a resource group.
+
+
+This is the Description section
+
+The Remove-AzureRmResourceGroup cmdlet deletes a resource group and its resources from your subscription. By default, Remove-AzureRmResourceGroup prompts you for confirmation. To suppress the prompt, use the Force parameter.To delete a resource, but leave the resource group, use the Remove-AzureRmResource cmdlet.
+
+
+Command syntax
+
+az resourcemanager group rm [--name] <string> [--force]
+
+az resourcemanager group rm [--id] <string> [--force]
+
+
+Parameters
+
+--name
+Specifies the names of resource groups to delete. This parameter is required. Wildcards are not permitted.Use -Name or its alias, -ResourceGroupName.
+
+--force
+Suppresses the confirmation prompt. By default, Remove-AzureRmResource prompts you to confirm before deleting a resource group.
+
+--id
+Specifies the Id of resource groups to delete. This parameter is required. Wildcards are not permitted.
+
+

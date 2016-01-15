@@ -1,0 +1,21 @@
+
+Remove-AzureRmApplicationGatewayIPConfiguration: Removes an IP configuration from an application gateway.
+
+
+The Remove-AzureRmApplicationGatewayIPConfiguration cmdlet removes an IP configuration from an Azure application gateway.
+
+
+Command syntax
+
+az applicationgateway ipconfiguration rm --name <string> --applicationgateway <PSApplicationGateway>
+
+
+Parameters
+
+--name
+Specifies the name of the IP configuration to remove.
+
+--applicationgateway
+Specifies the application gateway from which to remove an IP configuration.
+
+

@@ -1,0 +1,32 @@
+
+Start-AzureRmVM: Starts an Azure virtual machine.
+
+
+The Start-AzureRmVM cmdlet starts an Azure virtual machine.
+
+
+Command syntax
+
+az vm start [--resourcegroupname] <string> [--name] <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+az vm start [--id] <string> [--name] <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+
+Parameters
+
+--resourcegroupname
+Specifies the name of a resource group.
+
+--name
+Specifies the name of the virtual machine to start.
+
+--informationaction
+
+
+--informationvariable
+
+
+--id
+
+
+

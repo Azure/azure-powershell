@@ -1,0 +1,8 @@
+
+Get-AzureRmTag
+
+
+Command syntax
+
+az tag ls
+

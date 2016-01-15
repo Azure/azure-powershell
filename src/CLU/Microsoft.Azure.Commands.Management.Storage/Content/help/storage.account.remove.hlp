@@ -1,0 +1,24 @@
+
+Remove-AzureRmStorageAccount: Remove Storage Account from Azure
+
+
+Remove Storage Account from Azure
+
+
+Command syntax
+
+az storage account remove [--resourcegroupname] <string> [--name] <string> [--profile <AzureProfile>]
+
+
+Parameters
+
+--resourcegroupname
+Name of the Resource Group
+
+--name
+Name of the VM
+
+--profile
+
+
+

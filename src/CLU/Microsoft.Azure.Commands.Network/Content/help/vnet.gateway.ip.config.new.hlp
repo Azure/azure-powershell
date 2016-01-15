@@ -1,0 +1,35 @@
+
+New-AzureRmVirtualNetworkGatewayIpConfig
+
+
+
+
+
+Command syntax
+
+az vnet gateway ip config new --name <string> [--privateipaddress <string>] [--subnetid <string>] [--publicipaddressid <string>]
+
+az vnet gateway ip config new --name <string> [--privateipaddress <string>] [--subnet <PSSubnet>] [--publicipaddress <PSPublicIpAddress>]
+
+
+Parameters
+
+--name
+
+
+--privateipaddress
+
+
+--subnetid
+
+
+--publicipaddressid
+
+
+--subnet
+
+
+--publicipaddress
+
+
+

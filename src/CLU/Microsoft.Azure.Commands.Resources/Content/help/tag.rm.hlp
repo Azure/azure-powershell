@@ -1,0 +1,8 @@
+
+Remove-AzureRmTag
+
+
+Command syntax
+
+az tag rm
+

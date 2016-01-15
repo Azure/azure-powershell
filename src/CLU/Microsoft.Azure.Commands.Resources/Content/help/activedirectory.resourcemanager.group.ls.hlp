@@ -1,0 +1,30 @@
+
+Get-AzureRmADGroup: Filters active directory groups.
+
+
+This is the Description section
+
+Filters active directory groups.
+
+
+Command syntax
+
+az activedirectory resourcemanager group ls [--objectid <Guid>] [--profile <AzureProfile>]
+
+az activedirectory resourcemanager group ls --searchstring <string> [--profile <AzureProfile>]
+
+az activedirectory resourcemanager group ls [--objectid <Guid>] [--profile <AzureProfile>]
+
+
+Parameters
+
+--objectid
+Object id of the group.
+
+--profile
+
+
+--searchstring
+The group display name
+
+

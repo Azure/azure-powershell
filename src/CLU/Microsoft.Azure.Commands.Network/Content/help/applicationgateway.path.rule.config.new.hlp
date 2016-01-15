@@ -1,0 +1,8 @@
+
+New-AzureRmApplicationGatewayPathRuleConfig
+
+
+Command syntax
+
+az applicationgateway path rule config new
+

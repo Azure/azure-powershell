@@ -1,0 +1,36 @@
+
+Set-AzureRmVMSourceImage: Specifies the platform image for a virtual machine.
+
+
+The Set-AzureRmVMSourceImage cmdlet specifies the platform image to use for a virtual machine.
+
+
+Command syntax
+
+az vm source image set [--vm] <PSVirtualMachine> [--publishername] <string> [--offer] <string> [--skus] <string> [--version] <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+
+Parameters
+
+--vm
+Specifies the local virtual machine object to configure.
+
+--publishername
+Specifies the name of a publisher of a VMImage. To obtain a publisher, use the Get-AzureRmVMImagePublisher cmdlet.
+
+--offer
+Specifies the type of VMImage offer. To obtain an image offer, use the Get-AzureRmVMImageOffer cmdlet.
+
+--skus
+Specfies a VMImage SKU. To obtain SKUs, use the Get-AzureRmVMImageSku cmdlet.
+
+--version
+Specifies a version of a VMImage. To use the latest version, specify a value of latest instead of a particular version.
+
+--informationaction
+
+
+--informationvariable
+
+
+

@@ -1,0 +1,26 @@
+
+New-AzureRmApplicationGatewayIPConfiguration: Creates an IP configuration for an application gateway.
+
+
+The New-AzureRmApplicationGatewayIPConfiguration cmdlet creates an IP configuration for an application gateway. The IP configuration contains the subnet in which application gateway is deployed.
+
+
+Command syntax
+
+az applicationgateway ipconfiguration new --name <string> [--subnetid <string>]
+
+az applicationgateway ipconfiguration new --name <string> [--subnet <PSSubnet>]
+
+
+Parameters
+
+--name
+Specifies the name of the IP configuration to create.
+
+--subnetid
+Specifies the subnet ID. This is the subnet in which the application gateway would be deployed.
+
+--subnet
+Specifies the subnet object. This is the subnet in which the application gateway is deployed.
+
+

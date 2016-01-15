@@ -1,0 +1,27 @@
+
+Remove-AzureRmVMNetworkInterface: Removes a network interface from a virtual machine.
+
+
+The Remove-AzureRmVMNetworkInterface cmdlet removes a network interface from a virtual machine.
+
+
+Command syntax
+
+az vm network interface rm [--vm] <PSVirtualMachine> [--networkinterfaceids] <String[]> [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+
+Parameters
+
+--vm
+Specifies the virtual machine from which this cmdlet removes a network interface. To obtain a virtual machine object, use the Get-AzureRmVM cmdlet.
+
+--networkinterfaceids
+
+
+--informationaction
+
+
+--informationvariable
+
+
+
