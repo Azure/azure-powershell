@@ -1,0 +1,18 @@
+
+Start-AzureRmApplicationGateway: Starts an application gateway.
+
+
+The Start-AzureRmApplicationGateway cmdlet starts an Azure application gateway
+
+
+Command syntax
+
+az applicationgateway start --applicationgateway <PSApplicationGateway>
+
+
+Parameters
+
+--applicationgateway
+Specifies the application gateway to start.
+
+

@@ -21,8 +21,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// this commandlet will get the publishing creds of the given Azure Web app using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMWebAppPublishingProfile")]
-    [CliCommandAlias("appservice;profile;ls")]
+    [Cmdlet(VerbsCommon.Get, "AzureRMWebAppPublishingProfile"), OutputType(typeof(string))]
+    [CliCommandAlias("appservice profile ls")]
     public class GetAzureWebAppPublishingProfileCmdlet : WebAppBaseCmdlet
     {
         private const string DefaultFormat = "WebDeploy";

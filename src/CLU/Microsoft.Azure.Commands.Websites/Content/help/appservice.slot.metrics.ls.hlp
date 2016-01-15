@@ -1,0 +1,8 @@
+
+Get-AzureRMWebAppSlotMetrics
+
+
+Command syntax
+
+az appservice slot metrics ls
+

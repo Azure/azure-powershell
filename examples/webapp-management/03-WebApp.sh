@@ -24,7 +24,7 @@ result=`az appservice ls -g "$groupName" -n "$appName1"`
 printf "\n3: Creating a new webapp: %s under resource group: %s.\n" "$appName2" "$groupName"
 actual2=`az appservice create -g "$groupName" -l "$location" -n "$appName2" --plan "$planName1"`
 [ $(echo $actual2 | jq '.name' --raw-output) == "$appName2" ]
-[ $(echo $actual2 | jq '."properties.serverFarmId"' --raw-output) == $(echo $serverFarm | jq '.id' --raw-output) ]
+[ $(echo $actual2 | jq '."serverFarmId"' --raw-output) == $(echo $serverFarm | jq '.id' --raw-output) ]
 
 printf "\n4: Get WebApp by ResourceGroup: %s.\n" "$groupName"
 count=`az appservice ls -g "$groupName"`
@@ -55,16 +55,16 @@ serverFarm2=`az appservice plan create -n "$planName2" -g "$groupName" -l "$loca
 printf "\n10: Change webapp: %s to new service plan: %s\n" "$appName2" "$planName2"
 changePlan=`az appservice set -g "$groupName" -n $appName2 --plan $planName2`
 [ $(echo $changePlan | jq '.name' --raw-output) == "$appName2" ]
-[ $(echo $changePlan | jq '."properties.serverFarmId"' --raw-output) == $(echo $serverFarm2 | jq '.id' --raw-output) ]
+[ $(echo $changePlan | jq '."serverFarmId"' --raw-output) == $(echo $serverFarm2 | jq '.id' --raw-output) ]
 
 printf "\n11: Set config properties 'httpLoggingEnabled' & 'requestTracingEnabled' of the webapp: %s to true.\n" "$appName2"
-changePlan=`echo $changePlan | jq '."properties.siteConfig"."properties.httpLoggingEnabled"'=true`
-changePlan=`echo $changePlan | jq '."properties.siteConfig"."properties.requestTracingEnabled"'=true`
+changePlan=`echo $changePlan | jq '."siteConfig"."httpLoggingEnabled"'=true`
+changePlan=`echo $changePlan | jq '."siteConfig"."requestTracingEnabled"'=true`
 changePlan=`echo $changePlan | az appservice set`
 [ $(echo $changePlan | jq '.name' --raw-output) == "$appName2" ]
-[ $(echo $changePlan | jq '."properties.serverFarmId"' --raw-output) == $(echo $serverFarm2 | jq '.id' --raw-output) ]
-[ $(echo $changePlan | jq '."properties.siteConfig"."properties.httpLoggingEnabled"' --raw-output) == true ]
-[ $(echo $changePlan | jq '."properties.siteConfig"."properties.requestTracingEnabled"' --raw-output) == true ]
+[ $(echo $changePlan | jq '."serverFarmId"' --raw-output) == $(echo $serverFarm2 | jq '.id' --raw-output) ]
+[ $(echo $changePlan | jq '."siteConfig"."httpLoggingEnabled"' --raw-output) == true ]
+[ $(echo $changePlan | jq '."siteConfig"."requestTracingEnabled"' --raw-output) == true ]
 
 printf "\n12: Set appsettings and connectionstrings of the webapp: %s.\n" "$appName2"
 appsettings="{\"setting1\":\"valueA\",\"setting2\":\"valueB\"}"
@@ -72,16 +72,16 @@ constr="{ \"connstring1\": { \"Type\": \"MySql\", \"Value\": \"string value 1\" 
 
 setconn=`az appservice set -g "$groupName" -n "$appName2" --appsettings "$appsettings" --connectionstrings "$constr"`
 [ $(echo $setconn | jq '.name' --raw-output) == "$appName2" ]
-[ $(echo $setconn | jq '."properties.siteConfig"."properties.appSettings" | length') -eq 2 ]
-[ $(echo $setconn | jq '."properties.siteConfig"."properties.connectionStrings" | length') -eq 2 ]
+[ $(echo $setconn | jq '."siteConfig"."appSettings" | length') -eq 2 ]
+[ $(echo $setconn | jq '."siteConfig"."connectionStrings" | length') -eq 2 ]
 
-app=`echo $setconn | jq -r '."properties.siteConfig"."properties.appSettings"'`
+app=`echo $setconn | jq -r '."siteConfig"."appSettings"'`
 [ $(echo $app | jq -r '.[0].name') == "setting2" ]
 [ $(echo $app | jq -r '.[0].value') == "valueB" ]
 [ $(echo $app | jq -r '.[0].name') == "setting1" ]
 [ $(echo $app | jq -r '.[0].value') == "valueA" ]
 
-conexn=`echo $setconn | jq -r '."properties.siteConfig"."properties.connectionStrings"'`
+conexn=`echo $setconn | jq -r '."siteConfig"."connectionStrings"'`
 [ $(echo $conexn | jq -r '.[0].name') == "connstring1" ]
 [[ $(echo $conexn | jq -r '.[0].connectionString') == "string value 1" ]]
 [ $(echo $conexn | jq -r '.[0].type') == "MySql" ]
@@ -92,27 +92,27 @@ conexn=`echo $setconn | jq -r '."properties.siteConfig"."properties.connectionSt
 printf "\n13: Stop the webapp: %s.\n" "$appName2"
 stop=`az appservice stop -g "$groupName" -n "$appName2"`
 [ $(echo $stop | jq '.name' --raw-output) == "$appName2" ]
-[ $(echo $stop | jq '."properties.state"' --raw-output) == "Stopped" ]
+[ $(echo $stop | jq '."state"' --raw-output) == "Stopped" ]
 
 printf "\n14: Start the webapp: %s.\n" "$appName2"
 start=`az appservice start -g "$groupName" -n "$appName2"`
 [ $(echo $start | jq '.name' --raw-output) == "$appName2" ]
-[ $(echo $start | jq '."properties.state"' --raw-output) == "Running" ]
+[ $(echo $start | jq '."state"' --raw-output) == "Running" ]
 
 printf "\n15: Stop the webapp: %s again.\n" "$appName2"
 stop=`az appservice stop -g "$groupName" -n "$appName2"`
 [ $(echo $stop | jq '.name' --raw-output) == "$appName2" ]
-[ $(echo $stop | jq '."properties.state"' --raw-output) == "Stopped" ]
+[ $(echo $stop | jq '."state"' --raw-output) == "Stopped" ]
 
 printf "\n16: Start the webapp: %s again.\n" "$appName2"
 start=`az appservice start -g "$groupName" -n "$appName2"`
 [ $(echo $start | jq '.name' --raw-output) == "$appName2" ]
-[ $(echo $start | jq '."properties.state"' --raw-output) == "Running" ]
+[ $(echo $start | jq '."state"' --raw-output) == "Running" ]
 
 printf "\n17: Restart the webapp: %s.\n" "$appName2"
 start=`az appservice restart -g "$groupName" -n "$appName2"`
 [ $(echo $start | jq '.name' --raw-output) == "$appName2" ]
-[ $(echo $start | jq '."properties.state"' --raw-output) == "Running" ]
+[ $(echo $start | jq '."state"' --raw-output) == "Running" ]
 
 printf "\n18: Creating a new app service plan: %s under resource group: %s with Premium tier.\n" "$planName3" "$groupName"
 serverFarm3=`az appservice plan create -n "$planName3" -g "$groupName" -l "$location" --tier "$tier3"`

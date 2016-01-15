@@ -21,8 +21,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// This commandlet resets the publishing creds of the given Azure Web app
     /// </summary>
-    [Cmdlet(VerbsCommon.Reset, "AzureRMWebAppPublishingProfile")]
-    [CliCommandAlias("appservice;profile;reset")]
+    [Cmdlet(VerbsCommon.Reset, "AzureRMWebAppPublishingProfile"), OutputType(typeof(string))]
+    [CliCommandAlias("appservice profile reset")]
     public class ResetAzureWebAppPublishingProfileCmdlet : WebAppBaseCmdlet
     {
         protected override void ProcessRecord()

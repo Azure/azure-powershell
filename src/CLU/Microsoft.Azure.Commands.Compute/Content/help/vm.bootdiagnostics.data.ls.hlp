@@ -1,0 +1,38 @@
+
+Get-AzureRmVMBootDiagnosticsData
+
+
+
+
+
+Command syntax
+
+az vm bootdiagnostics data ls [--resourcegroupname] <string> [--name] <string> [--windows] [--localpath] <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+az vm bootdiagnostics data ls [--resourcegroupname] <string> [--name] <string> [--linux] [--localpath] <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+
+Parameters
+
+--resourcegroupname
+
+
+--name
+
+
+--windows
+
+
+--localpath
+
+
+--informationaction
+
+
+--informationvariable
+
+
+--linux
+
+
+

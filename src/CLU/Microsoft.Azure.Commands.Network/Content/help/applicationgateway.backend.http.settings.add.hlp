@@ -1,0 +1,31 @@
+
+Add-AzureRmApplicationGatewayBackendHttpSettings
+
+
+Adds back-end HTTP settings to an application gateway.
+
+
+Command syntax
+
+az applicationgateway backend http settings add --applicationgateway <PSApplicationGateway> --name <string> --port <int> --protocol <string> --cookiebasedaffinity <string>
+
+
+Parameters
+
+--applicationgateway
+The Add-AzureRmApplicationGatewayBackendHttpSettings cmdlet adds back-end HTTP settings to an application gateway. 
+Back-end HTTP settings are applied to all back-end servers in the pool.
+
+--name
+Specifies the name of the back-end HTTP settings which this cmdlet adds.
+
+--port
+Specifies the port of the back-end server pool.
+
+--protocol
+Specifies the protocol for communication between application gateway and back-end servers.
+
+--cookiebasedaffinity
+Specifies whether cookie-based affinity should be enabled or disabled for the backend server pool. The acceptable values for this parameter are: Disabled, Enabled.
+
+

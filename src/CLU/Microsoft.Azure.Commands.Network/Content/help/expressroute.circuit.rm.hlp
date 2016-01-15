@@ -1,0 +1,27 @@
+
+Remove-AzureRmExpressRouteCircuit
+
+
+
+
+
+Command syntax
+
+az expressroute circuit rm --name <string> --resourcegroupname <string> [--force] [--passthru]
+
+
+Parameters
+
+--name
+
+
+--resourcegroupname
+
+
+--force
+
+
+--passthru
+
+
+

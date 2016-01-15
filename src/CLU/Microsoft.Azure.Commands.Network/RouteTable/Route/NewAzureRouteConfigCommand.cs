@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New, "AzureRmRouteConfig"), OutputType(typeof(PSRoute))]
-    [CliCommandAlias("route;config;new")]
+    [CliCommandAlias("route config new")]
     public class NewAzureRouteConfigCommand : AzureRouteConfigBase
     {
         public override void ExecuteCmdlet()

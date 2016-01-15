@@ -8,7 +8,7 @@ destinationGroupName=$groupName"Destination"
 
 printf "\n2. Registering Resource Provider Namespace.\n"
 providerNamespace="Providers.Test"
-az resourcemanager resource resourcemanager provider register --ProviderNamespace $providerNamespace --Force
+az resourcemanager resource provider register --ProviderNamespace $providerNamespace --Force
 
 printf "\n3. Creating a new Resource: %s.\n" "$resourceName"
 resourceType="$providerNamespace/statefulResources"
@@ -33,13 +33,13 @@ az resourcemanager resource set --ResourceGroupName $groupName --ResourceName $r
 
 printf "\n7. Move Resource to resource group: %s.\n" "$destinationGroupName"
 az resourcemanager group create --name "$destinationGroupName" --location "$location"
-resourceId=$(echo $resourceInfo | jq '.Id')
+resourceId=$(echo $resourceInfo | jq '.ResourceId')
 arrayId="[$resourceId]"
 az resourcemanager resource move -g "$destinationGroupName" --ResourceId "$arrayId" -f
 
 printf "\n8. Removing resource: %s.\n" "$resourceName"
 foundResource=$(az resourcemanager resource find -n "$resourceName" -t $resourceType)
-resourceId=$(echo $foundResource | jq '.Id' --raw-output)
+resourceId=$(echo $foundResource | jq '.ResourceId' --raw-output)
 echo $resourceId
 export MSYS_NO_PATHCONV=1
 az resourcemanager resource rm --Id "$resourceId" -f

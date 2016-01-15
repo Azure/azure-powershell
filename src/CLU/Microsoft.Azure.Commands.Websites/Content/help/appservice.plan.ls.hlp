@@ -1,0 +1,8 @@
+
+Get-AzureRMAppServicePlan
+
+
+Command syntax
+
+az appservice plan ls
+

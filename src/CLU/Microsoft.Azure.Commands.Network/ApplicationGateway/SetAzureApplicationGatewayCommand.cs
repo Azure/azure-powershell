@@ -23,7 +23,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Set, "AzureRmApplicationGateway"), OutputType(typeof(PSApplicationGateway))]
-    [CliCommandAlias("applicationgateway;set")]
+    [CliCommandAlias("applicationgateway set")]
     public class SetAzureApplicationGatewayCommand : ApplicationGatewayBaseCmdlet
     {
         [Parameter(

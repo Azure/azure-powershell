@@ -1,0 +1,24 @@
+
+Get-AzureRmStorageAccountNameAvailability: Check the availability of a storage account name.
+
+
+This cmdlet allows you to check whether the specified storage account name is valid or available to use.
+
+
+Command syntax
+
+az storage account name availability get [--name] <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+
+Parameters
+
+--name
+Storage account name to be checked.
+
+--informationaction
+
+
+--informationvariable
+
+
+

@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineExtension)]
     [OutputType(typeof(PSVirtualMachineExtension))]
-    [CliCommandAlias("vm;extension;ls")]
+    [CliCommandAlias("vm extension ls")]
     public class GetAzureVMExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(

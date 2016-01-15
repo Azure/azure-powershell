@@ -11,6 +11,8 @@ using Microsoft.CLU.Common;
 using Microsoft.CLU.Help;
 using Microsoft.CLU.Metadata;
 using Microsoft.CLU.Common.Properties;
+using Microsoft.ApplicationInsights;
+using System.Management.Automation.Host;
 
 namespace Microsoft.CLU.CommandBinder
 {
@@ -63,6 +65,7 @@ namespace Microsoft.CLU.CommandBinder
             _runtime = runtime;
             _commandConfiguration = commandConfiguration;
             _staticParameterBindInProgress = true;
+            InitTelemetry();
             InitCmdlet(cmdletValue.LoadCmdlet(), cmdletValue.PackageAssembly.FullPath);
             Action<Type, uint, string> discriminatorBindFinished = (Type cmdletType, uint seekBackOffset, string fullPath) =>
             {
@@ -83,6 +86,7 @@ namespace Microsoft.CLU.CommandBinder
             Debug.Assert(runtime != null);
             _runtime = runtime;
             _commandConfiguration = commandConfiguration;
+            InitTelemetry();
             Action<Type, uint, string> discriminatorBindFinished = (Type cmdletType, uint seekBackOffset, string fullPath) =>
             {
                 _staticParameterBindInProgress = true;
@@ -253,11 +257,17 @@ namespace Microsoft.CLU.CommandBinder
             }
             catch (CmdletTerminateException terminateException)
             {
+                _telemetryClient.TrackException(terminateException, GetErrorTelemetryProperties());
                 _cmdlet.CommandRuntime.WriteError(terminateException.ErrorRecord);
             }
             catch (Exception exception)
             {
+                _telemetryClient.TrackException(exception, GetErrorTelemetryProperties());
                 _cmdlet.CommandRuntime.WriteError(new ErrorRecord(exception, "", ErrorCategory.InvalidResult, _cmdlet));
+            }
+            finally
+            {
+                _telemetryClient.Flush();
             }
         }
 
@@ -339,6 +349,56 @@ namespace Microsoft.CLU.CommandBinder
             _cmdletMetadata = CmdletMetadata.Load(_cmdlet);
             _staticParametersBindState = new ParameterBindState(_cmdletMetadata.Type);
             _staticParametersBindHandler = new BindHandler(_cmdlet, _staticParametersBindState);
+        }
+
+        private IDictionary<string, string> GetErrorTelemetryProperties()
+        {
+            Dictionary<string, string> eventProperties = new Dictionary<string, string>();
+            eventProperties.Add("IsSuccess", "False");
+            if (_cmdlet != null)
+            {
+                eventProperties.Add("ModuleName", _cmdlet.GetType().GetTypeInfo().Assembly.GetName().Name);
+                eventProperties.Add("ModuleVersion", _cmdlet.GetType().GetTypeInfo().Assembly.GetName().Version.ToString());
+                var cmdletAliasAttribute = _cmdlet.GetType().GetTypeInfo().GetCustomAttributes()
+                         .FirstOrDefault((at) => at.GetType().FullName.Equals("System.Management.Automation.CliCommandAliasAttribute"));
+
+                if (cmdletAliasAttribute != null)
+                {
+                    var attrType = cmdletAliasAttribute.GetType();
+                    eventProperties.Add("CommandName", "az " + (string)attrType.GetProperty("CommandName").GetValue(cmdletAliasAttribute));
+                }
+            }
+            var _cluHost = _runtime as CLUHost;
+            if (_cluHost != null)
+            {
+                eventProperties.Add("HostVersion", _cluHost.Version.ToString());
+                eventProperties.Add("InputFromPipeline", _cluHost.IsInputRedirected.ToString());
+                eventProperties.Add("OutputToPipeline", _cluHost.IsOutputRedirected.ToString());
+            }
+            if (CLUEnvironment.Platform.IsMacOSX)
+            {
+                eventProperties.Add("OS", "MacOS");
+            }
+            else if (CLUEnvironment.Platform.IsUnix)
+            {
+                eventProperties.Add("OS", "Unix");
+            }
+            else
+            {
+                eventProperties.Add("OS", "Windows");
+            }
+            return eventProperties;
+        }
+
+        /// <summary>
+        /// Initializes TelemetryClient using default channel.
+        /// </summary>
+        private void InitTelemetry()
+        {
+            _telemetryClient = new TelemetryClient
+            {
+                InstrumentationKey = "963c4276-ec20-48ad-b9ab-3968e9da5578"
+            };
         }
 
         /// <summary>
@@ -533,7 +593,11 @@ namespace Microsoft.CLU.CommandBinder
             return parameterSet == null || parameter.ParameterSets.ContainsKey(parameterSet);
         }
 
-#region Private fields
+        #region Private fields
+        /// <summary>
+        /// Telemetry client.
+        /// </summary>
+        private TelemetryClient _telemetryClient;
 
         /// <summary>
         /// Configuration of the current command.

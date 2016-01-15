@@ -1,0 +1,18 @@
+
+Set-AzureRmPublicIpAddress: Sets the goal state for a public IP address.
+
+
+The Set-AzureRmPublicIpAddress cmdlet sets the goal state for a public IP address.
+
+
+Command syntax
+
+az publicip address set --publicipaddress <PSPublicIpAddress>
+
+
+Parameters
+
+--publicipaddress
+Specifis a PublicIpAddress object that represents the goal state to which the public IP address should be set.
+
+

@@ -1,0 +1,40 @@
+
+New-AzureRmApplicationGatewayFrontendIPConfig: Creates a front-end IP configuration for an application gateway.
+
+
+The New-AzureRmApplicationGatewayFrontendIPConfig cmdlet creates a front-end IP configuraton for an Azure application gateway. An application gateway supports two types of front-end IP configuration: 
+
+-- Public IP addresses 
+ -- Private IP addresses using internal load balancing (ILB). 
+
+ An application gateway can have at most one public IP address and one private IP address. The public IP address and private IP address should be added separately as front-end IP addresses.
+
+
+Command syntax
+
+az applicationgateway frontend port new --name <string> [--privateipaddress <string>] [--subnet <PSSubnet>] [--publicipaddress <PSPublicIpAddress>]
+
+az applicationgateway frontend port new --name <string> [--privateipaddress <string>] [--subnetid <string>] [--publicipaddressid <string>]
+
+
+Parameters
+
+--name
+Specifies the name of the front-end IP configuration that this cmdlet creates.
+
+--privateipaddress
+Specifies the private IP address which this cmdlet associates with the front-end IP address of the application gateway. This can be specified only if a subnet is specified. This IP is statically allocated from the subnet.
+
+--subnet
+Specifies the subnet object which this cmdlet associates with the front-end IP address of the application gateway. If you specify this parameter, it implies that the gateway uses a private IP address. If PrivateIPAddresss is specified, it should belong to the subnet specified by this parameter. If PrivateIPAddress is not specified, one of the IP addresses from this subnet is dynamically picked up as the front-end IP address of the application gateway.
+
+--publicipaddress
+Specifies the public IP address object which this cmdlet associates with the front-end IP address of the application gateway.
+
+--subnetid
+Specifies the subnet ID which this cmdlet associates with the front-end IP configuration of the application gateway. If you specify Subnet, it implies that the gateway uses a private IP address. If PrivateIPAddress is specified, it should belong to the subnet specified by Subnet. If PrivateIPAddress is not specified, one of the IP addresses from this subnet is dynamically picked up as the front-end IP address of the application gateway.
+
+--publicipaddressid
+Specifies the public IP address ID which this cmdlet associates with the front-end IP of the application gateway.
+
+

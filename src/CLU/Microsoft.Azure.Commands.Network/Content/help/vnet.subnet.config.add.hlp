@@ -1,0 +1,38 @@
+
+Add-AzureRmVirtualNetworkSubnetConfig: Adds a subnet configuration to a virtual network.
+
+
+The Add-AzureRmVirtualNetworkSubnetConfig cmdlet adds a subnet configuration to an existing Azure virtual network.
+
+
+Command syntax
+
+az vnet subnet config add --name <string> --virtualnetwork <PSVirtualNetwork> --addressprefix <string> [--networksecuritygroup <PSNetworkSecurityGroup>] [--routetable <PSRouteTable>]
+
+az vnet subnet config add --name <string> --virtualnetwork <PSVirtualNetwork> --addressprefix <string> [--networksecuritygroupid <string>] [--routetableid <string>]
+
+
+Parameters
+
+--name
+Specifies the name of the subnet configuration to add.
+
+--virtualnetwork
+Specifies the VirtualNetwork object in which to add a subnet configuration.
+
+--addressprefix
+Specifies a range of IP addresses for a subnet configuration.
+
+--networksecuritygroup
+Specifies a NetworkSecurityGroup object. This cmdlet adds a virtual network subnet configuration to the object that this parameter specifies.
+
+--routetable
+
+
+--networksecuritygroupid
+Specifies the ID of a network security group.
+
+--routetableid
+
+
+

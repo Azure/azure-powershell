@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachine, DefaultParameterSetName = ListAllVirtualMachinesParamSet)]
     [OutputType(typeof(PSVirtualMachine), typeof(PSVirtualMachineInstanceView))]
-    [CliCommandAlias("vm;ls")]
+    [CliCommandAlias("vm ls")]
     public class GetAzureVMCommand : VirtualMachineBaseCmdlet
     {
         protected const string GetVirtualMachineInResourceGroupParamSet = "GetVirtualMachineInResourceGroupParamSet";

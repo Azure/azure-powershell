@@ -1,0 +1,46 @@
+
+Set-AzureRmStorageAccount: Update the Storage Account properties
+
+
+This cmdlet allows you to update the Storage Account properties.
+
+
+Command syntax
+
+az storage account set [--resourcegroupname] <string> [--name] <string> [--type] <string> [--profile <AzureProfile>]
+
+az storage account set [--resourcegroupname] <string> [--name] <string> [--customdomainname] <string> [[--usesubdomain] <Nullable`1[Boolean]>] [--profile <AzureProfile>]
+
+az storage account set [--resourcegroupname] <string> [--name] <string> [--tags] <Hashtable[]> [--profile <AzureProfile>]
+
+
+Parameters
+
+--resourcegroupname
+Name of the Resource Group
+
+--name
+Name of the Storage Account
+
+--type
+Specifies the account type of the storage account. One of four options:
+            • Standard_LRS (Locally-redundant storage)
+            • Standard_GRS (Geo-redundant storage)
+            • Standard_RAGRS (Read access geo-redundant storage)
+            • Standard_ZRS
+          
+            Note that Standard_ZRS accounts cannot be changed to other account types, and other account types cannot be changed to Standard_ZRS.
+
+--profile
+
+
+--customdomainname
+The name of the custom domain.
+
+--usesubdomain
+Indicates whether indirect CName validation is enabled.
+
+--tags
+Tags to set on the storage account.
+
+

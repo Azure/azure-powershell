@@ -1,0 +1,8 @@
+
+Remove-AzureRmResourceGroupDeployment
+
+
+Command syntax
+
+az resourcemanager group deployment rm
+

@@ -1,0 +1,8 @@
+
+Get-AzureRMWebAppMetrics
+
+
+Command syntax
+
+az appservice metrics ls
+

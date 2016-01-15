@@ -1,0 +1,44 @@
+
+Set-AzureRmApplicationGatewayFrontendIPConfig: Modifies a front-end IP address configuration.
+
+
+The Set-AzureRmApplicationGatewayFrontendIPConfig cmdlet updates a front-end IP configuration. 
+
+An application gateway supports two types of front-end IP addresses: 
+-- Public IP addresses
+-- Private IP addresses for which the configuration uses Internal Load Balancing (ILB)
+
+An application gateway can have at most one public IP address and one private IP address. A public IP address and a private IP address should be added separately as front-end IP addresses.
+
+
+Command syntax
+
+az applicationgateway frontend port set --applicationgateway <PSApplicationGateway> --name <string> [--privateipaddress <string>] [--subnet <PSSubnet>] [--publicipaddress <PSPublicIpAddress>]
+
+az applicationgateway frontend port set --applicationgateway <PSApplicationGateway> --name <string> [--privateipaddress <string>] [--subnetid <string>] [--publicipaddressid <string>]
+
+
+Parameters
+
+--applicationgateway
+Specifies an application gateway object in which to modify the front-end IP configuration.
+
+--name
+Specifies the name of the front-end IP configuration to modify.
+
+--privateipaddress
+Specifies the private IP address. If specified, this IP is statically allocated from the subnet.
+
+--subnet
+Specifies the subnet that the application gateway uses. Specify this parameter if the gateway uses a private IP address. If PrivateIPAddress is specified, it should belong to this subnet. If PrivateIPAddress is not specified, one of the IP addresses from this subnet is dynamically picked up as the fron-tend IP address of the application gateway.
+
+--publicipaddress
+Specifies the public IP address.
+
+--subnetid
+Specifies the subnet ID. Specify this parameter if the gateway uses a private IP address. If PrivateIPAddress is specified, it should belong to this subnet. If PrivateIPAddress is not specified, one of the IP addresses from this subnet is dynamically picked up as the front-end IP address of the application gateway.
+
+--publicipaddressid
+Specifies the ID of the public IP address.
+
+

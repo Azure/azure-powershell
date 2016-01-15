@@ -1,0 +1,27 @@
+
+Remove-AzureRmNetworkInterface: Removes a network interface.
+
+
+The Remove-AzureRmNetworkInterface cmdlet removes an Azure network interface.
+
+
+Command syntax
+
+az networkinterface rm --name <string> --resourcegroupname <string> [--force] [--passthru]
+
+
+Parameters
+
+--name
+Specifies the name of the network interface to remove.
+
+--resourcegroupname
+Specifies the name of a resource group. This cmdlet removes a network interface from the resource group that this parameter specifies.
+
+--force
+Forces the command to run without asking for user confirmation.
+
+--passthru
+Returns an object representing the item with which you are working. By default, this cmdlet does not generate any output.
+
+

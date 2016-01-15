@@ -21,6 +21,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Commands.WebApps.Validations;
+using Microsoft.Azure.Commands.Websites.Models.WebApp;
 using Microsoft.Azure.Management.WebSites.Models;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
@@ -28,8 +29,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// this commandlet will let you create a new Azure Web app using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRMWebApp")]
-    [CliCommandAlias("appservice;set")]
+    [Cmdlet(VerbsCommon.Set, "AzureRMWebApp"), OutputType(typeof(PSSite))]
+    [CliCommandAlias("appservice set")]
     public class SetAzureWebAppCmdlet : WebAppBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 2, Mandatory = false, HelpMessage = "The name of the app service plan eg: Default1.")]
@@ -158,7 +159,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                     break;
             }
 
-            WriteObject(WebsitesClient.GetWebApp(ResourceGroupName, Name, null));
+            WriteObject((PSSite)WebsitesClient.GetWebApp(ResourceGroupName, Name, null));
         }
     }
 }
