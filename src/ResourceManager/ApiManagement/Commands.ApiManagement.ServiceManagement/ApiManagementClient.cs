@@ -1039,12 +1039,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 
         public void PolicySetProductLevel(PsApiManagementContext context, string format, Stream stream, string productId)
         {
-            Client.ProductPolicy.Set(context.ResourceGroupName, context.ServiceName, productId, format, stream);
+            Client.ProductPolicy.Set(context.ResourceGroupName, context.ServiceName, productId, format, stream, "*");
         }
 
         public void PolicySetApiLevel(PsApiManagementContext context, string format, Stream stream, string apiId)
         {
-            Client.ApiPolicy.Set(context.ResourceGroupName, context.ServiceName, apiId, format, stream);
+            Client.ApiPolicy.Set(context.ResourceGroupName, context.ServiceName, apiId, format, stream, "*");
         }
 
         public void PolicySetOperationLevel(PsApiManagementContext context, string format, Stream stream, string apiId, string operationId)

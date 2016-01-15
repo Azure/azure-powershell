@@ -47,15 +47,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 "Indicates that the ACL should be replaced on the file with the specified ACL without prompting.")]
         public SwitchParameter Force { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Resources.SettingDataLakeStoreItemAcl, Path.FullyQualifiedPath),
-                string.Format(Resources.SetDataLakeStoreItemAcl, Path.FullyQualifiedPath),
-                Path.FullyQualifiedPath,
+                string.Format(Resources.SettingDataLakeStoreItemAcl, Path.OriginalPath),
+                string.Format(Resources.SetDataLakeStoreItemAcl, Path.OriginalPath),
+                Path.OriginalPath,
                 () =>
-                    DataLakeStoreFileSystemClient.SetAcl(Path.Path, Account,
+                    DataLakeStoreFileSystemClient.SetAcl(Path.TransformedPath, Account,
                         Acl.GetAclSpec()));
 
         }

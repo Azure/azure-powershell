@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// this commandlet will get the publishing creds of the given Azure Web app using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMWebAppPublishingProfile")]
+    [Cmdlet(VerbsCommon.Get, "AzureRmWebAppPublishingProfile")]
     public class GetAzureWebAppPublishingProfileCmdlet : WebAppBaseCmdlet
     {
         private const string DefaultFormat = "WebDeploy";
@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             Format = Format ?? DefaultFormat;
         }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
             WriteObject(WebsitesClient.GetWebAppPublishingProfile(ResourceGroupName, Name, null, OutputFile, Format));
         }
 

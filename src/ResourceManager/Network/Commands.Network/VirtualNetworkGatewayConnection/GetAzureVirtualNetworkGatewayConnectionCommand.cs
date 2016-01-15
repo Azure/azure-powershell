@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
             if (!string.IsNullOrEmpty(this.Name))
             {
                 var vnetGatewayConnection = this.GetVirtualNetworkGatewayConnection(this.ResourceGroupName, this.Name);
@@ -49,10 +49,10 @@ namespace Microsoft.Azure.Commands.Network
             }
             else if (!string.IsNullOrEmpty(this.ResourceGroupName))
             {
-                var vnetGatewayConnectionGetResponse = this.VirtualNetworkGatewayConnectionClient.List(this.ResourceGroupName);
+                var connectionList = this.VirtualNetworkGatewayConnectionClient.List(this.ResourceGroupName);
 
                 var psVnetGatewayConnections = new List<PSVirtualNetworkGatewayConnection>();
-                foreach (var virtualNetworkGatewayConnection in vnetGatewayConnectionGetResponse.VirtualNetworkGatewayConnections)
+                foreach (var virtualNetworkGatewayConnection in connectionList)
                 {
                     var psVnetGatewayConnection = this.ToPsVirtualNetworkGatewayConnection(virtualNetworkGatewayConnection);
                     psVnetGatewayConnection.ResourceGroupName = this.ResourceGroupName;

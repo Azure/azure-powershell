@@ -55,12 +55,12 @@ ScriptsToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = @(
-    '..\..\..\Package\Debug\ResourceManager\AzureResourceManager\StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.format.ps1xml'
+    '..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.format.ps1xml'
 )
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
 NestedModules = @(
-    '..\..\..\Package\Debug\ResourceManager\AzureResourceManager\StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.dll'
+    '..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.dll'
 )
 
 # Functions to export from this module

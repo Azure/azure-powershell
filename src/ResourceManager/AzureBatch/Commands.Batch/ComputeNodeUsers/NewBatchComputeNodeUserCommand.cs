@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter]
         public SwitchParameter IsAdmin { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             NewComputeNodeUserParameters parameters = new NewComputeNodeUserParameters(this.BatchContext, this.PoolId, this.ComputeNodeId,
                 this.ComputeNode, this.AdditionalBehaviors)

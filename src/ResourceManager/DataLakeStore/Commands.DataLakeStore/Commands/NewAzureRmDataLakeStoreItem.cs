@@ -62,35 +62,35 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             HelpMessage = "Indicates that, if the file or folder exists, it should be overwritten")]
         public SwitchParameter Force { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             FileType ignored;
 
-            if (DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Path.Path, Account, out ignored))
+            if (DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Path.TransformedPath, Account, out ignored))
             {
                 if (!Force)
                 {
-                    throw new CloudException(string.Format(Resources.ServerFileAlreadyExists, Path.Path));
+                    throw new CloudException(string.Format(Resources.ServerFileAlreadyExists, Path.TransformedPath));
                 }
             }
 
             string toReturn;
             if (Folder)
             {
-                DataLakeStoreFileSystemClient.CreateDirectory(Path.Path, Account);
+                DataLakeStoreFileSystemClient.CreateDirectory(Path.TransformedPath, Account);
             }
             else
             {
-                if (Path.Path.EndsWith("/"))
+                if (Path.TransformedPath.EndsWith("/"))
                 {
-                    throw new CloudException(string.Format(Resources.InvalidFilePath, Path.Path));
+                    throw new CloudException(string.Format(Resources.InvalidFilePath, Path.TransformedPath));
                 }
 
-                DataLakeStoreFileSystemClient.CreateFile(Path.Path, Account,
+                DataLakeStoreFileSystemClient.CreateFile(Path.TransformedPath, Account,
                     Value != null ? new MemoryStream(GetBytes(Value, Encoding)) : new MemoryStream(), Force);
             }
 
-            WriteObject(Path.FullyQualifiedPath);
+            WriteObject(Path.OriginalPath);
         }
     }
 }

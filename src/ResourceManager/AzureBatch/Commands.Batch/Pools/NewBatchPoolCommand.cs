@@ -58,6 +58,10 @@ namespace Microsoft.Azure.Commands.Batch
 
         [Parameter(ParameterSetName = AutoScaleParameterSet)]
         [ValidateNotNullOrEmpty]
+        public TimeSpan? AutoScaleEvaluationInterval { get; set; }
+
+        [Parameter(ParameterSetName = AutoScaleParameterSet)]
+        [ValidateNotNullOrEmpty]
         public string AutoScaleFormula { get; set; }
 
         [Parameter]
@@ -83,7 +87,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSCertificateReference[] CertificateReferences { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             NewPoolParameters parameters = new NewPoolParameters(this.BatchContext, this.Id, this.AdditionalBehaviors)
             {
@@ -93,6 +97,7 @@ namespace Microsoft.Azure.Commands.Batch
                 TargetOSVersion = this.TargetOSVersion,
                 ResizeTimeout = this.ResizeTimeout,
                 TargetDedicated = this.TargetDedicated,
+                AutoScaleEvaluationInterval = this.AutoScaleEvaluationInterval,
                 AutoScaleFormula = this.AutoScaleFormula,
                 MaxTasksPerComputeNode = this.MaxTasksPerComputeNode,
                 TaskSchedulingPolicy = this.TaskSchedulingPolicy,
