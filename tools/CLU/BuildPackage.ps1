@@ -35,6 +35,10 @@ if ($packageId -ne "Microsoft.CLU.Commands")
 {
     $contentFileText += "    <file src=""content\*.lx"" target=""content""/>`r`n"
     $contentFileText += "    <file src=""content\*xml"" target=""content""/>`r`n"
+    if (Test-Path "$packageSource\content\help") 
+    {
+        $contentFileText += "    <file src=""content\help\*.hlp"" target=""content\help""/>`r`n"
+    }
 }
 if ($renameFileExists)
 {
