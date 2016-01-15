@@ -170,6 +170,7 @@
     <Compile Include="ProfileClientExtensions.cs" />
     <Compile Include="ClientCreatedArgs.cs" />
     <Compile Include="CmdletExtensions.cs" />
+    <Compile Include="ServiceClientTracingListener.cs" />
     <Compile Include="TestMockSupport.cs" />
     <Compile Include="PSAzureAccount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
