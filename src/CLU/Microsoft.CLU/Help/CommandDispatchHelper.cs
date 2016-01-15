@@ -72,7 +72,7 @@ namespace Microsoft.CLU.Help
 
         public static IEnumerable<HelpInfo> FindHelpMatches(IHelpPackageFinder helpPackageFinder, string[] args, Func<string, bool> matchFunc)
         {
-            foreach (var helpInfo in GetPackages(helpPackageFinder).SelectMany((p) => p.GetHelp()))
+            foreach (var helpInfo in helpPackageFinder.FindPackages().SelectMany((p) => p.GetHelp()))
             {
                 var semiColonSeparatedCommand = helpInfo.Discriminators + ";";
                 if (matchFunc(semiColonSeparatedCommand))
