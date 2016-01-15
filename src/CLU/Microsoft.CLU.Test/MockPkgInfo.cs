@@ -21,5 +21,10 @@ namespace Microsoft.CLU.Test
                 Package = this
             };
         }
+
+        public override IEnumerable<CommandDispatchHelper.HelpInfo> GetHelp()
+        {
+            yield return new CommandDispatchHelper.HelpInfo(Path);
+        }
     }
 }

@@ -21,10 +21,10 @@ namespace Microsoft.CLU.Test
                 {
                     return new List<CommandDispatchHelper.PkgInfo>()
                     {
-                        new MockPkgInfo("abc", "1.0.0", "foo"),
-                        new MockPkgInfo("abc def", "1.0.0", "foo"),
-                        new MockPkgInfo("abc def ghi", "1.0.0", "foo"),
-                        new MockPkgInfo("ddd eee aaa", "1.0.0", "foo"),
+                        new MockPkgInfo("abc", "1.0.0", "abc.ext"),
+                        new MockPkgInfo("abc def", "1.0.0", "abc.def.ext"),
+                        new MockPkgInfo("abc def ghi", "1.0.0", "abc.def.ghi.ext"),
+                        new MockPkgInfo("ddd eee aaa", "1.0.0", "ddd.eee.aaa.ext"),
                     };
                 });
         }
@@ -33,40 +33,36 @@ namespace Microsoft.CLU.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestHelpStartsWith()
         {
-            var commandInfos = CommandDispatchHelper.CompleteCommands(helpPackageFinderMock.Object, new string[] { "a" });
+            var commandInfos = CommandDispatchHelper.CompleteCommands(this.helpPackageFinderMock.Object, new string[] { "a" });
             Assert.Equal(3, commandInfos.Count());
             Assert.Equal(commandInfos.Count(), commandInfos.Where(c => c.Discriminators.StartsWith("a")).Count());
 
-            commandInfos = CommandDispatchHelper.CompleteCommands(helpPackageFinderMock.Object, new string[] { "abc" });
+            commandInfos = CommandDispatchHelper.CompleteCommands(this.helpPackageFinderMock.Object, new string[] { "abc" });
             Assert.Equal(3, commandInfos.Count());
             Assert.Equal(commandInfos.ElementAt(0).Discriminators, "abc");
             Assert.Equal(commandInfos.ElementAt(1).Discriminators, "abc def");
             Assert.Equal(commandInfos.ElementAt(2).Discriminators, "abc def ghi");
 
-            commandInfos = CommandDispatchHelper.CompleteCommands(helpPackageFinderMock.Object, new string[] { "dd" });
+            commandInfos = CommandDispatchHelper.CompleteCommands(this.helpPackageFinderMock.Object, new string[] { "dd" });
             Assert.Equal(1, commandInfos.Count());
             Assert.Equal(commandInfos.Count(), commandInfos.Where(c => c.Discriminators.StartsWith("dd")).Count());
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestHelpParams()
+        public void TestHelpFileSearch()
         {
-            var commandInfos = CommandDispatchHelper.CompleteCommands(helpPackageFinderMock.Object, new string[] { "help" });
-            int count = commandInfos.Count();
-            Assert.True(count > 0);
+            var helpInfo = CommandDispatchHelper.FindBestHelp(this.helpPackageFinderMock.Object, new string[] { "abc" });
+            Assert.NotNull(helpInfo);
+            Assert.Equal(helpInfo.Discriminators, "abc");
 
-            commandInfos = CommandDispatchHelper.CompleteCommands(helpPackageFinderMock.Object, new string[] { "--help" });
-            Assert.True(commandInfos.Count() == count);
+            helpInfo = CommandDispatchHelper.FindBestHelp(this.helpPackageFinderMock.Object, new string[] { "abc", "def" });
+            Assert.NotNull(helpInfo);
+            Assert.Equal(helpInfo.Discriminators, "abc;def");
 
-            commandInfos = CommandDispatchHelper.CompleteCommands(helpPackageFinderMock.Object, new string[] { "-help" });
-            Assert.True(commandInfos.Count() == count);
-
-            commandInfos = CommandDispatchHelper.CompleteCommands(helpPackageFinderMock.Object, new string[] { "-h" });
-            Assert.True(commandInfos.Count() == count);
-
-            commandInfos = CommandDispatchHelper.CompleteCommands(helpPackageFinderMock.Object, new string[] { "--h" });
-            Assert.True(commandInfos.Count() == count);
+            helpInfo = CommandDispatchHelper.FindBestHelp(this.helpPackageFinderMock.Object, new string[] { "abc", "def", "ghi" });
+            Assert.NotNull(helpInfo);
+            Assert.Equal(helpInfo.Discriminators, "abc;def;ghi");
         }
     }
 }
