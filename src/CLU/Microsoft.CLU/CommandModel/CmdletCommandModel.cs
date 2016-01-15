@@ -30,7 +30,15 @@ namespace Microsoft.CLU.CommandModel
             }
 
             Init(commandConfiguration);
-            HostStreamInfo hostStreamInfo = GetHostStreamInfo();
+            IPipe<string> pipe = new ConsolePipe(CLUEnvironment.Console);
+            HostStreamInfo hostStreamInfo = new HostStreamInfo
+            {
+                DataStream = new ConsoleDataStream(CLUEnvironment.Console),
+                IsInputRedirected = CLUEnvironment.Console.IsInputRedirected,
+                IsOutputRedirected = CLUEnvironment.Console.IsOutputRedirected,
+                ReadFromPipe = pipe,
+                WriteToPipe = pipe
+            };
 
             // The runtime host is a Cmdlet's path to accessing system features, such as Console I/O
             // and session state. The runtime instance is created here and passed into the binder,
@@ -97,20 +105,6 @@ namespace Microsoft.CLU.CommandModel
                 }
             }
             return CommandModelErrorCode.Success;
-        }
-
-        internal static HostStreamInfo GetHostStreamInfo()
-        {
-            IPipe<string> pipe = new ConsolePipe(CLUEnvironment.Console);
-            HostStreamInfo hostStreamInfo = new HostStreamInfo
-            {
-                DataStream = new ConsoleDataStream(CLUEnvironment.Console),
-                IsInputRedirected = CLUEnvironment.Console.IsInputRedirected,
-                IsOutputRedirected = CLUEnvironment.Console.IsOutputRedirected,
-                ReadFromPipe = pipe,
-                WriteToPipe = pipe
-            };
-            return hostStreamInfo;
         }
     }
 }

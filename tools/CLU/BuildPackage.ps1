@@ -35,10 +35,6 @@ if ($packageId -ne "Microsoft.CLU.Commands")
 {
     $contentFileText += "    <file src=""content\*.lx"" target=""content""/>`r`n"
     $contentFileText += "    <file src=""content\*xml"" target=""content""/>`r`n"
-    if (Test-Path "$packageSource\content\help") 
-    {
-        $contentFileText += "    <file src=""content\help\*.hlp"" target=""content\help""/>`r`n"
-    }
 }
 if ($renameFileExists)
 {
@@ -56,4 +52,3 @@ Set-Content -Value $outputContent -Path $nuspecOutput
 Write-Host "Creating nuget package..."
 cmd /c "$env:WORKSPACE\tools\Nuget.exe pack $nuspecOutput -OutputDirectory $outputDir"
 Pop-Location
-	
