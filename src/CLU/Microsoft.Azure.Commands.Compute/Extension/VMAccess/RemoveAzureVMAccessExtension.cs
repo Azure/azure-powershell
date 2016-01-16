@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet(
         VerbsCommon.Remove,
         ProfileNouns.VirtualMachineAccessExtension)]
-    [CliCommandAlias("vm;accessextension;rm")]
+    [CliCommandAlias("vm;extension;access;rm")]
     public class RemoveAzureVMAccessExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(
