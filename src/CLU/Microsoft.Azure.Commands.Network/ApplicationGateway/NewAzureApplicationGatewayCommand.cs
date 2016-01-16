@@ -24,7 +24,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New, "AzureRmApplicationGateway"), OutputType(typeof(PSApplicationGateway))]
-    [CliCommandAlias("applicationgateway;new")]
+    [CliCommandAlias("network;application;gateway;create")]
     public class NewAzureApplicationGatewayCommand : ApplicationGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
