@@ -1,0 +1,27 @@
+
+Get-AzureRmNetworkInterface: Gets a network interface.
+
+
+The Get-AzureRmNetworkInterface cmdlet gets an Azure network interface or a list of Azure network interfaces in a resource group.
+
+
+Command syntax
+
+az networkinterface ls [--name <string>] [--resourcegroupname <string>] [--virtualmachinescalesetname <string>] [--virtualmachineindex <string>]
+
+
+Parameters
+
+--name
+Specifies the name of the network interface to get.
+
+--resourcegroupname
+Specifies the name of the resource group that contains the network interface to get.
+
+--virtualmachinescalesetname
+
+
+--virtualmachineindex
+
+
+

@@ -1,0 +1,21 @@
+
+Get-AzureRmApplicationGateway: Gets an application gateway.
+
+
+The Get-AzureRmApplicationGateway cmdlet gets an application gateway.
+
+
+Command syntax
+
+az applicationgateway ls [--name <string>] [--resourcegroupname <string>]
+
+
+Parameters
+
+--name
+Specifies the name of the application gateway that this cmdlet gets.
+
+--resourcegroupname
+Specifies the name of the resource group that contains the application gateway.
+
+

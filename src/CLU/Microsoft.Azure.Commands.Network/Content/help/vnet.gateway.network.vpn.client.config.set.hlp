@@ -1,0 +1,8 @@
+
+Set-AzureRmVirtualNetworkGatewayVpnClientConfig
+
+
+Command syntax
+
+az vnet gateway network vpn client config set
+

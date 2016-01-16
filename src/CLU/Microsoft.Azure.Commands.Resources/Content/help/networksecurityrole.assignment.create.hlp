@@ -1,0 +1,82 @@
+
+New-AzureRmRoleAssignment: Assigns the specified RBAC role to the specified principal, at the specified scope.
+
+
+Use the New-AzureRMRoleAssignment command to grant access. Access is granted by assigning the appropriate RBAC role to them at the right scope. To grant access to the entire subscription, assign a role at the subscription scope. To grant access to a specific resource group within a subscription, assign a role at the resource group scope.
+
+The subject of the assignment must be specified. To specify a user, use SignInName or Azure AD ObjectId parameters. To specify a security group, use Azure AD ObjectId parameter. And to specify an Azure AD application, use ServicePrincipalName or ObjectId parameters. 
+
+The role that is being assigned must be specified using the RoleDefinitionName parameter. 
+
+
+        The scope at which access is being granted may be specified. It defaults to the selected subscription.  The scope of the assignment can be specified using one of the following parameter combinations
+        a. Scope - This is the fully qualified scope starting with /subscriptions/<subscriptionId>
+        b. ResourceGroupName - to grant access to the specified resource group.
+        c. ResourceName, ResourceType, ResourceGroupName and (optionally) ParentResource – to specify a particular resource within a resource group to grant access to.
+      
+
+
+Command syntax
+
+az networksecurityrole assignment create --objectid <Guid> --scope <string> --roledefinitionname <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+az networksecurityrole assignment create --objectid <Guid> --scope <string> --roledefinitionname <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+az networksecurityrole assignment create --objectid <Guid> --resourcegroupname <string> --roledefinitionname <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+az networksecurityrole assignment create --objectid <Guid> --resourcegroupname <string> --resourcename <string> --resourcetype <string> [--parentresource <string>] --roledefinitionname <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+az networksecurityrole assignment create --objectid <Guid> --scope <string> --roledefinitionid <Guid> [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+az networksecurityrole assignment create --signinname <string> --scope <string> --roledefinitionname <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+az networksecurityrole assignment create --signinname <string> --resourcegroupname <string> --roledefinitionname <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+az networksecurityrole assignment create --signinname <string> --resourcegroupname <string> --resourcename <string> --resourcetype <string> [--parentresource <string>] --roledefinitionname <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+az networksecurityrole assignment create --serviceprincipalname <string> --resourcegroupname <string> --roledefinitionname <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+az networksecurityrole assignment create --serviceprincipalname <string> --resourcegroupname <string> --resourcename <string> --resourcetype <string> [--parentresource <string>] --roledefinitionname <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+az networksecurityrole assignment create --serviceprincipalname <string> --scope <string> --roledefinitionname <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+
+Parameters
+
+--objectid
+Azure AD Objectid of the user, group or service principal.
+
+--scope
+The Scope of the role assignment. In the format of relative URI. For e.g. "/subscriptions/9004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/TestRG". If not specified, will create the role assignment at subscription level. If specified, it should start with "/subscriptions/{id}".
+
+--roledefinitionname
+Name of the RBAC role that needs to be assigned to the principal i.e. Reader, Contributor, Virtual Network Administrator, etc.
+
+--informationaction
+
+
+--informationvariable
+
+
+--resourcegroupname
+The resource group name. Creates an assignment that is effective at the specified resource group. When used in conjunction with ResourceName, ResourceType and (optionally)ParentResource parameters, the command constructs a hierarchical scope in the form of a relative URI that identifies a resource.
+
+--resourcename
+The resource name. For e.g. storageaccountprod. Should only be used in conjunction with ResourceGroupName, ResourceType and (optionally)ParentResource parameters to construct a hierarchical scope in the form of a  relative URI that identifies a resource.
+
+--resourcetype
+The resource type. For e.g. Microsoft.Network/virtualNetworks. Should only be used in conjunction with ResourceGroupName, ResourceName and (optionally)ParentResource parameters to construct a hierarchical scope in  the form of a relative URI that identifies a resource.
+
+--parentresource
+The parent resource in the hierarchy(of the resource specified using ResourceName parameter). Should only be  used in conjunction with ResourceGroupName, ResourceType and ResourceName parameters to construct a hierarchical scope in the form of a relative URI that identifies a resource.
+
+--roledefinitionid
+Id of the RBAC role that needs to be assigned to the principal.
+
+--signinname
+The email address or the user principal name of the user.
+
+--serviceprincipalname
+The ServicePrincipalName of the Azure AD application
+
+

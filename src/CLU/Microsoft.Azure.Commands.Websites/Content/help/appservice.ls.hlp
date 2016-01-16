@@ -1,0 +1,8 @@
+
+Get-AzureRMWebApp
+
+
+Command syntax
+
+az appservice ls
+

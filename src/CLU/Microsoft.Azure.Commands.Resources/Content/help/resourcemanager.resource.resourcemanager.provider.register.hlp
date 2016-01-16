@@ -1,0 +1,24 @@
+
+Register-AzureRmResourceProvider
+
+
+
+
+
+Command syntax
+
+az resourcemanager resource resourcemanager provider register --providernamespace <string> [--force] [--profile <AzureProfile>]
+
+
+Parameters
+
+--providernamespace
+
+
+--force
+
+
+--profile
+
+
+

@@ -1,0 +1,27 @@
+
+Remove-AzureRmLocalNetworkGateway
+
+
+
+
+
+Command syntax
+
+az localgateway rm --name <string> --resourcegroupname <string> [--force] [--passthru]
+
+
+Parameters
+
+--name
+
+
+--resourcegroupname
+
+
+--force
+
+
+--passthru
+
+
+

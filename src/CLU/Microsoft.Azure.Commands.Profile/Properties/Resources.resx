@@ -186,6 +186,9 @@
   <data name="TenantIdNotFound" xml:space="preserve">
     <value>Unable to find tenant '{0}'.</value>
   </data>
+  <data name="TooManyTenants" xml:space="preserve">
+    <value>TenantId '{0}' contains more than one subscription. First one will be selected for further use. To select another subscription, use 'context set' cmdlet.</value>
+  </data>
   <data name="TypeNotAccessToken" xml:space="preserve">
     <value>To create an access token credential, you must provide an access token account.</value>
   </data>

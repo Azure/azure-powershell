@@ -1,0 +1,29 @@
+
+Select-AzureRmProfile: Load authentication information from the given file.  This sets the current context and azure environment metadata used by all cmdlets in the current session.
+
+
+Load authentication information from the given file.  This sets the current context and azure environment metadata used by all cmdlets in the current session.
+
+
+Command syntax
+
+az profile select [--profile] <AzureRmProfile> [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+az profile select [--path] <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+
+Parameters
+
+--profile
+The profile to select as the current profile in the given session.
+
+--informationaction
+
+
+--informationvariable
+
+
+--path
+The path to profile information previously saved using Save-AzureRmProfile. Cmdlets executed in the current session will use this information to authenticate requests to Azure Resource Manager.
+
+

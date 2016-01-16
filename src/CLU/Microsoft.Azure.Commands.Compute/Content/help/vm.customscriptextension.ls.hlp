@@ -1,0 +1,33 @@
+
+Get-AzureRmVMCustomScriptExtension: Gets information about a custom script extension.
+
+
+The Get-AzureRmVMCustomScriptExtension cmdlet gets information about a custom script Virtual Machine Extension on a virtual machine.
+
+
+Command syntax
+
+az vm customscriptextension ls [--resourcegroupname] <string> [--vmname] <string> [--name] <string> [[--status]] [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+
+Parameters
+
+--resourcegroupname
+Specifies the name of the resource group of the virtual machine.
+
+--vmname
+Specifies the name of a virtual machine for which this cmdlet gets the custom script extension.
+
+--name
+Specifies the name of the custom script extension about which this cmdlet gets information.
+
+--status
+Indicates that this cmdlet gets the instance view of the custom script extension.
+
+--informationaction
+
+
+--informationvariable
+
+
+

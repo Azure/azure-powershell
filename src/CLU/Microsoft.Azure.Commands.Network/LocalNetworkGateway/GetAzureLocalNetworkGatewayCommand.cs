@@ -21,7 +21,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmLocalNetworkGateway"), OutputType(typeof(PSLocalNetworkGateway))]
-    [CliCommandAlias("localgateway;ls")]
+    [CliCommandAlias("localgateway ls")]
     public class GetAzureLocalNetworkGatewayCommand : LocalNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]

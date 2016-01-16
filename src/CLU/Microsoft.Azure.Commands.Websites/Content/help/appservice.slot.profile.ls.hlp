@@ -1,0 +1,8 @@
+
+Get-AzureRMWebAppSlotPublishingProfile
+
+
+Command syntax
+
+az appservice slot profile ls
+

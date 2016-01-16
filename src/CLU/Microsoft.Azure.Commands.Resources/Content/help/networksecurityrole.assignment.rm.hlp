@@ -1,0 +1,88 @@
+
+Remove-AzureRmRoleAssignment: Removes a role assignment to the specified principal who is assigned to a particular role at a particular scope. Use the Get-AzureRMRoleAssignment commandlet to retrieve assignments under the subscription
+
+
+Use the Remove-AzureRmRoleAssignment commandlet to revoke access to any principal at given scope and given role. 
+
+The object of the assignment i.e. the principal MUST be specified. The principal can be a user (use SignInName or ObjectId parameters to identify a user), security group (use ObjectId parameter to identify a group) or service principal (use ServicePrincipalName or ObjectId parameters to identify a ServicePrincipal. 
+
+The role that the principal is assigned to MUST be specified using the RoleDefinitionName parameter. 
+
+
+        The scope of the assignment MAY be specified and if not specified, defaults to the subscription scope i.e. it will try to delete an assignment to the specified principal and role at the subscription scope. The scope of the assignment can be specified using one of the following parameters.
+        a. Scope - This is the fully qualified scope starting with /subscriptions/<subscriptionId>
+        b. ResourceGroupName - Name of any resource group under the subscription.
+        c. ResourceName, ResourceType, ResourceGroupName and (optionally) ParentResource - Identifies a particular resource under the subscription.
+      
+
+
+Command syntax
+
+az networksecurityrole assignment rm --objectid <Guid> [--scope <string>] --roledefinitionname <string> [--force] [--passthru] [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+az networksecurityrole assignment rm --objectid <Guid> --resourcegroupname <string> --resourcename <string> --resourcetype <string> [--parentresource <string>] --roledefinitionname <string> [--force] [--passthru] [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+az networksecurityrole assignment rm --objectid <Guid> [--scope <string>] --roledefinitionname <string> [--force] [--passthru] [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+az networksecurityrole assignment rm --objectid <Guid> [--scope <string>] --roledefinitionid <Guid> [--force] [--passthru] [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+az networksecurityrole assignment rm --objectid <Guid> --resourcegroupname <string> --roledefinitionname <string> [--force] [--passthru] [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+az networksecurityrole assignment rm --signinname <string> --resourcegroupname <string> --resourcename <string> --resourcetype <string> [--parentresource <string>] --roledefinitionname <string> [--force] [--passthru] [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+az networksecurityrole assignment rm --signinname <string> --resourcegroupname <string> --roledefinitionname <string> [--force] [--passthru] [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+az networksecurityrole assignment rm --signinname <string> [--scope <string>] --roledefinitionname <string> [--force] [--passthru] [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+az networksecurityrole assignment rm --serviceprincipalname <string> --resourcegroupname <string> --resourcename <string> --resourcetype <string> [--parentresource <string>] --roledefinitionname <string> [--force] [--passthru] [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+az networksecurityrole assignment rm --serviceprincipalname <string> --resourcegroupname <string> --roledefinitionname <string> [--force] [--passthru] [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+az networksecurityrole assignment rm --serviceprincipalname <string> [--scope <string>] --roledefinitionname <string> [--force] [--passthru] [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+
+Parameters
+
+--objectid
+Azure AD ObjectId of the user, group or service principal.
+
+--scope
+The Scope of the role assignment to be deleted. In the format of relative URI. For e.g. "/subscriptions/9004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/TestRG". If not specified, will attempt to delete the role at subscription level. If specified, it should start with "/subscriptions/{id}".
+
+--roledefinitionname
+Name of the RBAC role for which the assignment needs to be deleted i.e. Reader, Contributor, Virtual Network Administrator, etc.
+
+--force
+If specified, the command does not prompt for a confirmation before deleting the role assignment.
+
+--passthru
+If specified, displays the deleted role assignment
+
+--informationaction
+
+
+--informationvariable
+
+
+--resourcegroupname
+The resource group name that the role is assigned to. Attempts to delete an assignment at the specified resource group scope. When used in conjunction with ResourceName, ResourceType and (optionally)ParentResource parameters, the command constructs a hierarchical scope in the form of a relative URI that identifies a resource.
+
+--resourcename
+The resource name. For e.g. storageaccountprod. Must be used in conjunction with ResourceGroupName, ResourceType and (optionally)ParentResource parameters, to construct a hierarchical scope in the form of a relative URI that identifies the resource and delete an assignment at that scope.
+
+--resourcetype
+The resource type. For e.g. Microsoft.Network/virtualNetworks. Must be used in conjunction with ResourceGroupName, ResourceName and (optionally)ParentResource parameters to construct a hierarchical scope in the form of a relative URI that identifies the resource and delete an assignment at that resource scope.
+
+--parentresource
+The parent resource in the hierarchy(of the resource specified using ResourceName parameter), if any. Must be used in conjunction with ResourceGroupName, ResourceType and ResourceName parameters to construct a hierarchical scope in the form of a relative URI that identifies the resource.
+
+--roledefinitionid
+Id of the RBAC role for which the assignment needs to be deleted.
+
+--signinname
+The email address or the user principal name of the user.
+
+--serviceprincipalname
+The ServicePrincipalName of the Azure AD application
+
+

@@ -1,0 +1,44 @@
+
+Set-AzureRmApplicationGatewayHttpListener: Modifies an HTTP listener for an application gateway.
+
+
+The Set-AzureRmApplicationGatewayHttpListener cmdlet modifies an HTTP listener for an Azure application gateway.
+
+
+Command syntax
+
+az applicationgateway httplistener set --applicationgateway <PSApplicationGateway> --name <string> [--frontendipconfigurationid <string>] [--frontendportid <string>] [--sslcertificateid <string>] --protocol <string>
+
+az applicationgateway httplistener set --applicationgateway <PSApplicationGateway> --name <string> [--frontendipconfiguration <PSApplicationGatewayFrontendIPConfiguration>] [--frontendport <PSApplicationGatewayFrontendPort>] [--sslcertificate <PSApplicationGatewaySslCertificate>] --protocol <string>
+
+
+Parameters
+
+--applicationgateway
+Specifies the application gateway with which this cmdlet associates the HTTP listener.
+
+--name
+Specifies the name of the HTTP listener.
+
+--frontendipconfigurationid
+Specifies the ID of the front-end IP address of the application gateway.
+
+--frontendportid
+Specifies the application gateway front-end port ID.
+
+--sslcertificateid
+Specifies the SSL certificate ID of the HTTP listener.
+
+--protocol
+Specifies the protocol that the HTTP listener uses.
+
+--frontendipconfiguration
+Specifies the front-end IP address of the application gateway.
+
+--frontendport
+Specifies the application gateway front-end port.
+
+--sslcertificate
+Specifies the SSL certificate of the HTTP listener.
+
+

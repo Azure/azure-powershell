@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRMWebAppSlot")]
     [OutputType(typeof(PSSite))]
-    [CliCommandAlias("appservice;slot;create")]
+    [CliCommandAlias("appservice slot create")]
     public class NewAzureWebAppSlotCmdlet : WebAppBaseClientCmdLet
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]

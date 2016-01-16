@@ -1,0 +1,8 @@
+
+Remove-AzureRMWebApp
+
+
+Command syntax
+
+az appservice rm
+

@@ -1,0 +1,8 @@
+
+Start-AzureRMWebAppSlot
+
+
+Command syntax
+
+az appservice slot start
+

@@ -1,0 +1,8 @@
+
+New-AzureRMWebAppSlot
+
+
+Command syntax
+
+az appservice slot create
+

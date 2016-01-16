@@ -1,0 +1,35 @@
+
+New-AzureRmVirtualNetworkSubnetConfig: Creates a virtual network subnet configuration.
+
+
+The New-AzureRmVirtualNetworkSubnetConfig cmdlet creates a virtual network subnet configuration.
+
+
+Command syntax
+
+az vnet subnet config new --name <string> --addressprefix <string> [--networksecuritygroup <PSNetworkSecurityGroup>] [--routetable <PSRouteTable>]
+
+az vnet subnet config new --name <string> --addressprefix <string> [--networksecuritygroupid <string>] [--routetableid <string>]
+
+
+Parameters
+
+--name
+Specifies the name of the subnet configuration to create.
+
+--addressprefix
+Specifies a range of IP addresses for a subnet configuration.
+
+--networksecuritygroup
+Specifies a NetworkSecurityGroup object.
+
+--routetable
+
+
+--networksecuritygroupid
+Specifies the ID of a network security group.
+
+--routetableid
+
+
+

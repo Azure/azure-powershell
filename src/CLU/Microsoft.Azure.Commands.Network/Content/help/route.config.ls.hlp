@@ -1,0 +1,21 @@
+
+Get-AzureRmRouteConfig: Gets routes from a route table.
+
+
+The Get-AzureRmRouteConfig cmdlet gets routes from an Azure route table. You can specify a route by name.
+
+
+Command syntax
+
+az route config ls [--name <string>] --routetable <PSRouteTable>
+
+
+Parameters
+
+--name
+Specifies the name of the route that this cmdlet gets.
+
+--routetable
+Specifies the route table from which this cmdlet gets routes.
+
+

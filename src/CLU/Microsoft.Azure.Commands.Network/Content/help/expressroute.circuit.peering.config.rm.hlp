@@ -1,0 +1,21 @@
+
+Remove-AzureRmExpressRouteCircuitPeeringConfig
+
+
+
+
+
+Command syntax
+
+az expressroute circuit peering config rm [--name <string>] --circuit <PSExpressRouteCircuit>
+
+
+Parameters
+
+--name
+
+
+--circuit
+
+
+

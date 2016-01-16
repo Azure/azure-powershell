@@ -1,0 +1,24 @@
+
+Add-AzureRmApplicationGatewayFrontendPort: Adds a front-end port to an application gateway.
+
+
+The Add-AzureRmApplicationGatewayFrontendPort cmdlet adds a front-end port to an application gateway.
+
+
+Command syntax
+
+az applicationgateway frontendipconfig add --applicationgateway <PSApplicationGateway> --name <string> --port <int>
+
+
+Parameters
+
+--applicationgateway
+Specifies the application gateway to which this cmdlet adds a front-end port.
+
+--name
+Specifies the name of the front-end port.
+
+--port
+Specifies the port number.
+
+
