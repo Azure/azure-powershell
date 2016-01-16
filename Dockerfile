@@ -14,7 +14,8 @@ RUN apt-get update && \
     libicu-dev \
     uuid-dev \
     curl \
-    unzip
+    unzip \
+    jq
 
 RUN curl -sSL https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.sh | DNX_USER_HOME=$DNX_USER_HOME DNX_BRANCH=v$DNX_VERSION sh
    
