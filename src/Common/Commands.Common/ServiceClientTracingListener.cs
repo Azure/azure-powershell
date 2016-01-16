@@ -68,5 +68,13 @@ namespace Microsoft.WindowsAzure.Commands.Common
         {
             // Ignore 
         }
+
+        public static void RemoveTracingInterceptor(ServiceClientTracingListener interceptor)
+        {
+            if (interceptor != null)
+            {
+                ServiceClientTracing.RemoveTracingInterceptor(interceptor);
+            }
+        }
     }
 }

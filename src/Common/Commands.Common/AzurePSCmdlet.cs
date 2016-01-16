@@ -243,7 +243,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
             RecordingTracingInterceptor.RemoveFromContext(_httpTracingInterceptor);
             DebugStreamTraceListener.RemoveAdalTracing(_adalListener);
-            ServiceClientTracing.RemoveTracingInterceptor(_serviceClientListener);
+            ServiceClientTracingListener.RemoveTracingInterceptor(_serviceClientListener);
             FlushDebugMessages();
 
             AzureSession.ClientFactory.UserAgents.RemoveWhere(u => u.Product.Name == ModuleName);
