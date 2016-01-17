@@ -28,6 +28,10 @@ namespace Microsoft.WindowsAzure.Commands.Websites
         [ValidateNotNullOrEmpty]
         public Hashtable ConnectionString { get; set; }
 
+        [Parameter(ParameterSetName = "Package", Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The configuration tokens to use for the deployment.")]
+        [ValidateNotNullOrEmpty]
+        public Hashtable Tokens { get; set; }
+
         [Parameter(Mandatory = false, ParameterSetName = "Package", HelpMessage = "The WebDeploy SetParameters.xml file to transform configuration within the package.")]
         public string SetParametersFile { get; set; }
 
@@ -81,6 +85,20 @@ namespace Microsoft.WindowsAzure.Commands.Websites
                         }
                     }
                 }
+            }
+
+            // If tokens are passed in, update the parameters file if there is one
+            if (Tokens != null && !string.IsNullOrEmpty(fullSetParametersFile))
+            {
+                WriteVerbose(string.Format("Replacing tokens in {0}", fullSetParametersFile));
+                var fileContents = File.ReadAllText(fullSetParametersFile);
+
+                foreach (DictionaryEntry pair in Tokens)
+                {
+                    fileContents = fileContents.Replace(string.Format("__{0}__", pair.Key), pair.Value.ToString());
+                }
+
+                File.WriteAllText(fullSetParametersFile, fileContents);
             }
 
             try
