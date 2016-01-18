@@ -19,6 +19,7 @@ using Microsoft.WindowsAzure.Storage.File;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Storage.DataMovement;
     using LocalConstants = Microsoft.WindowsAzure.Commands.Storage.File.Constants;
     using LocalDirectory = System.IO.Directory;
@@ -158,7 +159,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     string.Format(CultureInfo.CurrentCulture, Resources.ReceiveAzureFileActivity, fileToBeDownloaded.GetFullPath(), targetFile),
                     Resources.PrepareDownloadingFile);
 
-                await this.DoTransfer(() =>
+                await DataMovementTransferHelper.DoTransfer(() =>
                     {
                         return this.TransferManager.DownloadAsync(
                             fileToBeDownloaded,
@@ -167,7 +168,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                             this.GetTransferContext(progressRecord, fileToBeDownloaded.Properties.Length),
                             CmdletCancellationToken);
                     }, 
-                    progressRecord);
+                    progressRecord,
+                    this.OutputStream);
                 
                 if (this.PassThru)
                 {

@@ -19,6 +19,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using System.Management.Automation;
     using System.Net;
     using System.Threading.Tasks;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.DataMovement;
     using Microsoft.WindowsAzure.Storage.File;
@@ -93,7 +94,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     string.Format(CultureInfo.CurrentCulture, Resources.SendAzureFileActivity, localFile.Name, cloudFileToBeUploaded.GetFullPath(), cloudFileToBeUploaded.Share.Name),
                     Resources.PrepareUploadingFile);
 
-                await this.DoTransfer(() =>
+                await DataMovementTransferHelper.DoTransfer(() =>
                     {
                         return this.TransferManager.UploadAsync(
                         localFile.FullName,
@@ -102,7 +103,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                         this.GetTransferContext(progressRecord, localFile.Length),
                         this.CmdletCancellationToken);
                     },
-                    progressRecord);
+                    progressRecord,
+                    this.OutputStream);
 
 
                 if (this.PassThru)

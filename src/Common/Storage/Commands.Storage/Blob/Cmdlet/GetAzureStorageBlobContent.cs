@@ -132,7 +132,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 TotalSize = blob.Properties.Length
             };
 
-            await this.DoTransfer(() =>
+            await DataMovementTransferHelper.DoTransfer(() =>
                 {
                     return this.TransferManager.DownloadAsync(blob, filePath,
                         new DownloadOptions()
@@ -141,7 +141,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                         },
                         this.GetTransferContext(data),
                         this.CmdletCancellationToken);
-                }, data);
+                }, 
+                data.Record,
+                this.OutputStream);
 
             this.WriteCloudBlobObject(data.TaskId, data.Channel, blob);
         }

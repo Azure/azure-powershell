@@ -20,6 +20,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
     using System.Threading.Tasks;
     using Microsoft.WindowsAzure.Commands.Storage.Blob;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.DataMovement;
     using Microsoft.WindowsAzure.Storage.File;
 
@@ -77,39 +78,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
             finally
             {
                 this.TransferManager = null;
-            }
-        }
-
-        protected async Task DoTransfer(Func<Task> doTransfer, ProgressRecord record)
-        {
-            try
-            {
-                await doTransfer();
-
-                if (record != null)
-                {
-                    record.PercentComplete = 100;
-                    record.StatusDescription = Resources.TransmitSuccessfully;
-                    this.OutputStream.WriteProgress(record);
-                }
-            }
-            catch (OperationCanceledException)
-            {
-                if (record != null)
-                {
-                    record.StatusDescription = Resources.TransmitCancelled;
-                    this.OutputStream.WriteProgress(record);
-                }
-            }
-            catch (Exception e)
-            {
-                if (record != null)
-                {
-                    record.StatusDescription = string.Format(CultureInfo.CurrentCulture, Resources.TransmitFailed, e.Message);
-                    this.OutputStream.WriteProgress(record);
-                }
-
-                throw;
             }
         }
 

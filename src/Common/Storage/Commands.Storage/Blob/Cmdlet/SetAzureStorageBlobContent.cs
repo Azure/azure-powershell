@@ -195,14 +195,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 TotalSize = fileInfo.Length
             };
 
-            await this.DoTransfer(() =>
+            await DataMovementTransferHelper.DoTransfer(() =>
                 {
                     return this.TransferManager.UploadAsync(filePath,
                         blob,
                         null,
                         this.GetTransferContext(data),
                         this.CmdletCancellationToken);
-                }, data);
+                }, 
+                data.Record,
+                this.OutputStream);
 
             if (this.BlobProperties != null || this.BlobMetadata != null)
             {

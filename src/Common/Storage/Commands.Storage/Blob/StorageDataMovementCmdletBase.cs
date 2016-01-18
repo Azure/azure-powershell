@@ -19,6 +19,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
     using System.Management.Automation;
     using System.Threading.Tasks;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
     using Microsoft.WindowsAzure.Storage.DataMovement;
 
@@ -69,39 +70,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             base.BeginProcessing();
 
             this.TransferManager = TransferManagerFactory.CreateTransferManager(this.GetCmdletConcurrency());
-        }
-
-        protected async Task DoTransfer(Func<Task> doTransfer, DataMovementUserData userData)
-        {
-            try
-            {
-                await doTransfer();
-
-                if (userData.Record != null)
-                {
-                    userData.Record.PercentComplete = 100;
-                    userData.Record.StatusDescription = Resources.TransmitSuccessfully;
-                    this.OutputStream.WriteProgress(userData.Record);
-                }
-            }
-            catch (OperationCanceledException)
-            {
-                if (userData.Record != null)
-                {
-                    userData.Record.StatusDescription = Resources.TransmitCancelled;
-                    this.OutputStream.WriteProgress(userData.Record);
-                }
-            }
-            catch (Exception e)
-            {
-                if (userData.Record != null)
-                {
-                    userData.Record.StatusDescription = string.Format(CultureInfo.CurrentCulture, Resources.TransmitFailed, e.Message);
-                    this.OutputStream.WriteProgress(userData.Record);
-                }
-
-                throw;
-            }
         }
 
         protected TransferContext GetTransferContext(DataMovementUserData userData)
