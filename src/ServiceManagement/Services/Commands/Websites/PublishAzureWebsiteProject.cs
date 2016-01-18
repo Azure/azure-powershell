@@ -87,6 +87,15 @@ namespace Microsoft.WindowsAzure.Commands.Websites
                 }
             }
 
+            if (!File.Exists(fullSetParametersFile))
+            {
+                if (File.Exists(Path.GetDirectoryName(fullPackage) + "\\" + fullSetParametersFile))
+                {
+                    WriteVerbose("Setting path for Parameters file to local one to package: " + Path.GetDirectoryName(fullPackage) + "\\" + fullSetParametersFile);
+                    fullSetParametersFile = Path.GetDirectoryName(fullPackage) + "\\" + fullSetParametersFile;
+                }
+            }
+
             // If tokens are passed in, update the parameters file if there is one
             if (Tokens != null && !string.IsNullOrEmpty(fullSetParametersFile))
             {
