@@ -50,6 +50,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
                 PrefixName = RoleName = roleName.Trim();
                 PrefixName = PrefixName.Replace(".", string.Empty);
                 PrefixName = PrefixName.Replace(" ", string.Empty);
+                PrefixName = PrefixName.Replace("_", string.Empty);
                 RoleType = ExtensionRoleType.NamedRoles;
                 Default = false;
             }
