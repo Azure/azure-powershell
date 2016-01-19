@@ -20,7 +20,7 @@ using Microsoft.Azure.Management.Storage.Models;
 namespace Microsoft.Azure.Commands.Management.Storage
 {
     [Cmdlet(VerbsCommon.New, StorageAccountKeyNounStr), OutputType(typeof(StorageAccountKeys))]
-    [CliCommandAlias("storage;key;create")]
+    [CliCommandAlias("storage key create")]
     public class NewAzureStorageAccountKeyCommand : StorageAccountBaseCmdlet
     {
         private const string Key1 = "Key1";

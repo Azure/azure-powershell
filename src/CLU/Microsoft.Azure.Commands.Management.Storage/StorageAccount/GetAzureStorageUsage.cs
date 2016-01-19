@@ -19,7 +19,7 @@ using Microsoft.Azure.Management.Storage;
 namespace Microsoft.Azure.Commands.Management.Storage.StorageAccount
 {
     [Cmdlet(VerbsCommon.Get, StorageUsageNounStr), OutputType(typeof(PSUsage))]
-    [CliCommandAlias("storage;usage;ls")]
+    [CliCommandAlias("storage usage ls")]
     public class GetAzureStorageUsageCommand : StorageAccountBaseCmdlet
     {
         protected override void ProcessRecord()
