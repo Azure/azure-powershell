@@ -1,33 +1,36 @@
-$AzureMajorVersion = "1"
+$AzureRMDependencies = @{
+  "Azure.Storage" = "1.0";
+  "AzureRM.Profile" = "1.0";
+}
 
-$AzureRMModules = @(
-  "AzureRM.ApiManagement",
-  "AzureRM.Automation",
-  "AzureRM.Backup",
-  "AzureRM.Batch",
-  "AzureRM.Compute",
-  "AzureRM.DataFactories",
-  "AzureRM.DataLakeAnalytics",
-  "AzureRM.DataLakeStore",
-  "AzureRM.Dns",
-  "AzureRM.HDInsight",
-  "AzureRM.Insights",
-  "AzureRM.KeyVault",
-  "AzureRM.Network",
-  "AzureRM.NotificationHubs",
-  "AzureRM.OperationalInsights",
-  "AzureRM.RecoveryServices",
-  "AzureRM.RedisCache",
-  "AzureRM.Resources",
-  "AzureRM.SiteRecovery",
-  "AzureRM.Sql",
-  "AzureRM.Storage",
-  "AzureRM.StreamAnalytics",
-  "AzureRM.Tags",
-  "AzureRM.TrafficManager",
-  "AzureRM.UsageAggregates",
-  "AzureRM.Websites"
-)
+$AzureRMModules = @{
+  "AzureRM.ApiManagement" = "1.0";
+  "AzureRM.Automation" = "1.0";
+  "AzureRM.Backup" = "1.0";
+  "AzureRM.Batch" = "1.0";
+  "AzureRM.Compute" = "1.2";
+  "AzureRM.DataFactories" = "1.0";
+  "AzureRM.DataLakeAnalytics" = "1.0";
+  "AzureRM.DataLakeStore" = "1.0";
+  "AzureRM.Dns" = "1.0";
+  "AzureRM.HDInsight" = "1.0";
+  "AzureRM.Insights" = "1.0";
+  "AzureRM.KeyVault" = "1.1";
+  "AzureRM.Network" = "1.0";
+  "AzureRM.NotificationHubs" = "1.0";
+  "AzureRM.OperationalInsights" = "1.0";
+  "AzureRM.RecoveryServices" = "1.0";
+  "AzureRM.RedisCache" = "1.1";
+  "AzureRM.Resources" = "1.0";
+  "AzureRM.SiteRecovery" = "1.1";
+  "AzureRM.Sql" = "1.0";
+  "AzureRM.Storage" = "1.0";
+  "AzureRM.StreamAnalytics" = "1.0";
+  "AzureRM.Tags" = "1.0";
+  "AzureRM.TrafficManager" = "1.0";
+  "AzureRM.UsageAggregates" = "1.0";
+  "AzureRM.Websites" = "1.0";
+}
 
 function Test-AdminRights([string]$Scope)
 {
@@ -64,10 +67,10 @@ function CheckIncompatibleVersion([bool]$Force)
   }
 }
 
-function Install-ModuleWithVersionCheck([string]$Name,[string]$MajorVersion,[string]$Repository,[string]$Scope)
+function Install-ModuleWithVersionCheck([string]$Name,[string]$MinimumVersion,[string]$Repository,[string]$Scope)
 {
-  $_MinVer = "$MajorVersion.0.0.0"
-  $_MaxVer = "$MajorVersion.9999.9999.9999"
+  $_MinVer = $MinimumVersion
+  $_MaxVer = "$($_MinVer.Split(".")[0]).9999.0"
   $script:InstallCounter ++
   try {
     $_ExistingModule = Get-Module -ListAvailable -Name $Name
@@ -82,7 +85,7 @@ function Install-ModuleWithVersionCheck([string]$Name,[string]$MajorVersion,[str
       Install-Module -Name $Name -Repository $Repository -Scope $Scope -MinimumVersion $_MinVer -MaximumVersion $_MaxVer -ErrorAction Stop
     }
     $v = (Get-InstalledModule -Name $Name -ErrorAction Ignore)[0].Version.ToString()
-    Write-Output "$Name $v $_ModuleAction [$script:InstallCounter/$($AzureRMModules.Count + 2)]..." 
+    Write-Output "$Name $v $_ModuleAction [$script:InstallCounter/$($AzureRMModules.Count + $AzureRMDependencies.Count)]..." 
   } catch {
     Write-Warning "Skipping $Name package..."
     Write-Warning $_
@@ -111,7 +114,7 @@ function Update-AzureRM
   param(
   [Parameter(Position=0, Mandatory = $false)]
   [string]
-  $MajorVersion = $AzureMajorVersion,
+  $MinVersion,
   [Parameter(Position=1, Mandatory = $false)]
   [string]
   $Repository = "PSGallery",
@@ -134,12 +137,17 @@ function Update-AzureRM
   {
     Set-PSRepository -Name $Repository -InstallationPolicy Trusted
 
-    Install-ModuleWithVersionCheck "AzureRM.Profile" $MajorVersion $Repository $Scope
-    Install-ModuleWithVersionCheck "Azure.Storage" $MajorVersion $Repository $Scope
+    # Update Profile and Storage 
+    Install-ModuleWithVersionCheck "AzureRM.Profile" $AzureRMDependencies["AzureRM.Profile"] $Repository $Scope
+    Install-ModuleWithVersionCheck "Azure.Storage" $AzureRMDependencies["Azure.Storage"] $Repository $Scope
 
     # Start new job
-    $AzureRMModules | ForEach {
-      Install-ModuleWithVersionCheck $_ $MajorVersion $Repository $Scope
+    $AzureRMModules.Keys | ForEach {
+      $_MinVer = $MinVersion 
+      if(!$MinVersion) {
+        $_MinVer = $AzureRMModules[$_]
+      }
+      Install-ModuleWithVersionCheck $_ $_MinVer $Repository $Scope
     }    
   } finally {
     # Clean up
@@ -162,14 +170,17 @@ function Import-AzureRM
   param(
   [Parameter(Position=0, Mandatory = $false)]
   [string]
-  $MajorVersion = $AzureMajorVersion)
+  $MinorVersion)
   Write-Output "Importing AzureRM modules."
 
-  $_MinVer = "$MajorVersion.0.0.0"
-  $_MaxVer = "$MajorVersion.9999.9999.9999"
-
-  $AzureRMModules | ForEach {
+  $AzureRMModules.Keys | ForEach {
     $moduleName = $_
+    $_MinVer = $MinorVersion
+    if(!MinorVersion) {
+      $_MinVer = $AzureRMModules[$_]
+    }
+    $_MaxVer = "$($_MinVer.Split(".")[0]).9999.0"
+
     $_MatchedModule = Get-InstalledModule -Name $moduleName -MinimumVersion $_MinVer -MaximumVersion $_MaxVer -ErrorAction Ignore | where {$_.Name -eq $moduleName}
     if ($_MatchedModule -ne $null) {
       try {
@@ -183,10 +194,10 @@ function Import-AzureRM
   }
 }
 
-function Uninstall-ModuleWithVersionCheck([string]$Name,[string]$MajorVersion)
+function Uninstall-ModuleWithVersionCheck([string]$Name,[string]$MinVersion)
 {
-  $_MinVer = "$MajorVersion.0.0.0"
-  $_MaxVer = "$MajorVersion.9999.9999.9999"
+  $_MinVer = $MinVersion
+  $_MaxVer = "$($_MinVer.Split(".")[0]).9999.9999.9999"
   # This is a workaround for a bug in PowerShellGet that uses "start with" matching for module name
   $_MatchedModule = Get-InstalledModule -Name $Name -MinimumVersion $_MinVer -MaximumVersion $_MaxVer -ErrorAction Ignore | where {$_.Name -eq $Name}
   if ($_MatchedModule -ne $null) {
@@ -223,19 +234,23 @@ function Uninstall-AzureRM
   param(
   [Parameter(Position=0, Mandatory = $false)]
   [string]
-  $MajorVersion = $AzureMajorVersion)
+  $MinVersion)
 
   Test-AdminRights "AllUsers"
 
   Write-Output "Uninstalling AzureRM modules."
 
-  $AzureRMModules | ForEach {
+  $AzureRMModules.Keys | ForEach {
     $moduleName = $_
-    Uninstall-ModuleWithVersionCheck $_ $MajorVersion
+    $_MinVer = $MinVersion 
+    if(!$MinVersion) {
+      $_MinVer = $AzureRMModules[$_]
+    }
+    Uninstall-ModuleWithVersionCheck $_ $_MinVer
   }
 
-  Uninstall-ModuleWithVersionCheck "Azure.Storage" $MajorVersion
-  Uninstall-ModuleWithVersionCheck "AzureRM.Profile" $MajorVersion
+  Uninstall-ModuleWithVersionCheck "Azure.Storage" $AzureRMDependencies["Azure.Storage"]
+  Uninstall-ModuleWithVersionCheck "AzureRM.Profile" $AzureRMDependencies["AzureRM.Profile"]
 }
 
 New-Alias -Name Install-AzureRM -Value Update-AzureRM
