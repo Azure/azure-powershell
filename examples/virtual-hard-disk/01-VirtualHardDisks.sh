@@ -3,10 +3,10 @@ set -e
 printf "\n=== Managing Virtual Hard Disks in Azure Compute ===\n"
 
 printf "\n1. Creating a new resource group: %s and location: %s.\n" "$groupName" "$location"
-az resourcemanager group create -n "$groupName" --location "$location"
+az resource group create -n "$groupName" --location "$location"
 
 printf "\n2. Creating a new storage account '%s' in type '%s'.\n" "$storageAccountName" "$storageAccountType"
-az storage account new --resourcegroupname "$groupName" --name "$storageAccountName" --location "$location" --type "$storageAccountType"
+az storage account create --resourcegroupname "$groupName" --name "$storageAccountName" --location "$location" --type "$storageAccountType"
 
 printf "\n3. Uploading a virtual hard disk to: %s.\n" "$storageAccountName"
 az vhd add -o --resourcegroupname "$groupName" --destination https://"$storageAccountName".blob.core.windows.net/test/test.vhd --localfilepath $BASEDIR/test.vhd
@@ -25,4 +25,4 @@ else
 fi
 
 printf "\n6. Removing resource group: %s.\n" "$groupName"
-az resourcemanager group rm -n "$groupName" -f
+az resource group rm -n "$groupName" -f

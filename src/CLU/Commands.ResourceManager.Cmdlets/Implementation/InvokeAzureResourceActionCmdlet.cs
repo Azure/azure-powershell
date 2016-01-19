@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// </summary>
     [Cmdlet(VerbsLifecycle.Invoke, "AzureRmResourceAction", SupportsShouldProcess = true, DefaultParameterSetName = ResourceManipulationCmdletBase.ResourceIdParameterSet), 
         OutputType(typeof(PSResourceObject))]
-    [CliCommandAlias("resourcemanager resource action invoke")]
+    [CliCommandAlias("resource action invoke")]
     public sealed class InvokAzureResourceActionCmdlet : ResourceManipulationCmdletBase
     {
         /// <summary>

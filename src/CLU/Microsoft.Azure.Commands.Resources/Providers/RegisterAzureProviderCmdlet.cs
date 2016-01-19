@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// Register the previewed features of a certain azure resource provider.
     /// </summary>
     [Cmdlet(VerbsLifecycle.Register, "AzureRmResourceProvider"), OutputType(typeof(PSResourceProvider))]
-    [CliCommandAlias("resourcemanager resource provider register")]
+    [CliCommandAlias("resource provider register")]
     public class RegisterAzureProviderCmdlet : ResourcesBaseCmdlet
     {
         /// <summary>
