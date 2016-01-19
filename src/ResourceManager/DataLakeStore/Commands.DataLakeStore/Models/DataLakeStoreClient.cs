@@ -24,7 +24,9 @@ using Microsoft.Azure.Management.DataLake.Store.Models;
 using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Rest.Azure;
 using Microsoft.Rest.Azure.OData;
-using CloudException = Hyak.Common.CloudException;
+using System.Reflection;
+using System.Linq;
+using System.Diagnostics;
 
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
@@ -43,6 +45,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             _subscriptionId = context.Subscription.Id;
             _client = AzureSession.ClientFactory.CreateArmClient<DataLakeStoreManagementClient>(context,
                 AzureEnvironment.Endpoint.ResourceManager);
+
+            // Update the user agent
+            UpdateUserAgentAssemblyVersion(_client);
         }
 
         public DataLakeStoreClient()
@@ -144,7 +149,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             };
 
             var accountList = new List<DataLakeStoreAccount>();
-            var response = _client.DataLakeStoreAccount.List(resourceGroupName, parameters);
+            var response = string.IsNullOrEmpty(resourceGroupName) ? 
+                _client.DataLakeStoreAccount.List(parameters) : 
+                _client.DataLakeStoreAccount.ListByResourceGroup(resourceGroupName, parameters);
+
             accountList.AddRange(response);
 
             while (!string.IsNullOrEmpty(response.NextPageLink))
@@ -179,6 +187,29 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 throw new CloudException(string.Format(Properties.Resources.FailedToDiscoverResourceGroup, accountName,
                     _subscriptionId));
             }
+        }
+
+        /// <summary>
+        /// Get the assembly version of a service client.
+        /// </summary>
+        /// <returns>The assembly version of the client.</returns>        
+        private void UpdateUserAgentAssemblyVersion(IAzureClient clientToUpdate)
+        {
+            var type = clientToUpdate.GetType();
+
+            var newVersion = FileVersionInfo.GetVersionInfo(type.Assembly.Location).FileVersion;
+
+            foreach (
+                var info in
+                    clientToUpdate.HttpClient.DefaultRequestHeaders.UserAgent.Where(
+                        info => info.Product.Name.Equals(type.FullName, StringComparison.OrdinalIgnoreCase)))
+            {
+                clientToUpdate.HttpClient.DefaultRequestHeaders.UserAgent.Remove(info);
+                clientToUpdate.HttpClient.DefaultRequestHeaders.UserAgent.Add(
+                    new System.Net.Http.Headers.ProductInfoHeaderValue(type.FullName, newVersion));
+                break;
+            }
+
         }
 
         #endregion

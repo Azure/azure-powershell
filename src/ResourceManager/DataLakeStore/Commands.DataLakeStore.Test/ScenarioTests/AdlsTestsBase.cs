@@ -16,7 +16,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Reflection;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Management.Authorization;
@@ -37,8 +36,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
     {
         private LegacyTest.CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
-        private const string TenantIdKey = "TenantId";
-        private const string DomainKey = "Domain";
         private const string AuthorizationApiVersion = "2014-07-01-preview";
         internal const string resourceGroupLocation = "East US 2";
 
@@ -157,7 +154,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
 
         private AuthorizationManagementClient GetAuthorizationManagementClient(MockContext context)
         {
-            return context.GetServiceClient<AuthorizationManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return LegacyTest.TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
         }
 
         private ResourceManagementClient GetResourceManagementClient()
@@ -180,6 +177,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
         {
             var currentEnvironment = TestEnvironmentFactory.GetTestEnvironment();
             var toReturn = context.GetServiceClient<DataLakeStoreFileSystemManagementClient>(currentEnvironment);
+            toReturn.BaseUri = new System.Uri("https://accountname.datalakeserviceuri");
             toReturn.Datalakeserviceuri =
                 currentEnvironment.Endpoints.DataLakeStoreServiceUri.OriginalString.Replace("https://", "");
             return toReturn;

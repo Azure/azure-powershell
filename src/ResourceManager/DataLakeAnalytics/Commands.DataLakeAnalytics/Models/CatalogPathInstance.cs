@@ -14,8 +14,8 @@
 
 using System;
 using System.Text.RegularExpressions;
-using Hyak.Common;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 {
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
             var regex =
                 new Regex(
-                    @"^(?<firstPart>\w+|\[[a-zA-Z_0-9.]+\])(\.(?<secondPart>\w+|\[[a-zA-Z_0-9.]+\]))?(\.(?<thirdPart>\w+|\[[a-zA-Z_0-9.]+\]))?\.(?<fourthPart>\w+|\[[a-zA-Z_0-9.]+\])$");
+                    @"^(?<firstPart>\w+|\[.+\])(\.(?<secondPart>\w+|\[.+\]))?(\.(?<thirdPart>\w+|\[.+\]))?\.(?<fourthPart>\w+|\[.+\])$");
 
             if (!regex.IsMatch(path))
             {

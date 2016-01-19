@@ -14,7 +14,7 @@
 
 using System.Management.Automation;
 using System.Net;
-using Hyak.Common;
+
 using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics

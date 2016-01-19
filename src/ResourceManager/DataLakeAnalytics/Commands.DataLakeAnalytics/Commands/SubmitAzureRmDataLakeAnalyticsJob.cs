@@ -15,10 +15,10 @@
 using System;
 using System.IO;
 using System.Management.Automation;
-using Hyak.Common;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
-using Microsoft.Azure.Management.DataLake.AnalyticsJob.Models;
+using Microsoft.Azure.Management.DataLake.Analytics.Models;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
@@ -151,15 +151,6 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             set { _priority = value; }
         }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPath, Position = 8,
-            Mandatory = false, HelpMessage = "Name of resource group under which the job will be submitted.")]
-        // [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = HiveJobWithScriptPath, Mandatory = false, HelpMessage = "Name of resource group under which the job will be submitted.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetName, Position = 8,
-            Mandatory = false, HelpMessage = "Name of resource group under which the job will be submitted.")]
-        // [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = HiveJobParameterSetName, Mandatory = false, HelpMessage = "Name of resource group under which the job will be submitted.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
         public override void ExecuteCmdlet()
         {
             // error handling for not passing or passing both script and script path
@@ -182,14 +173,13 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                 Script = File.ReadAllText(powerShellDestinationPath);
             }
 
-            string jobType;
+            JobType jobType;
             JobProperties properties;
             if (USql)
             {
                 jobType = JobType.USql;
                 var sqlIpProperties = new USqlProperties
                 {
-                    Type = jobType,
                     Script = Script
                 };
 
@@ -210,8 +200,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                 jobType = JobType.Hive;
                 properties = new HiveProperties
                 {
-                    Script = Script,
-                    Type = jobType
+                    Script = Script
                 };
             }
             else
@@ -221,7 +210,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
             var jobInfo = new JobInformation
             {
-                JobId = Guid.NewGuid(),
+                JobId = Guid.NewGuid().ToString(),
                 Name = Name,
                 Properties = properties,
                 Type = jobType,
@@ -230,8 +219,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             };
 
             WriteObject(CompileOnly
-                ? DataLakeAnalyticsClient.BuildJob(ResourceGroupName, Account, jobInfo)
-                : DataLakeAnalyticsClient.SubmitJob(ResourceGroupName, Account, jobInfo));
+                ? DataLakeAnalyticsClient.BuildJob(Account, jobInfo)
+                : DataLakeAnalyticsClient.SubmitJob(Account, jobInfo));
         }
     }
 }

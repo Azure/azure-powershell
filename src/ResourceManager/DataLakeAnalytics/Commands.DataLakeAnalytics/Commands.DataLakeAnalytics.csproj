@@ -51,15 +51,8 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.DataLake.Analytics, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataLake.Analytics.0.9.4-preview\lib\net40\Microsoft.Azure.Management.DataLake.Analytics.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Management.DataLake.AnalyticsCatalog, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataLake.AnalyticsCatalog.0.9.3-preview\lib\net40\Microsoft.Azure.Management.DataLake.AnalyticsCatalog.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Management.DataLake.AnalyticsJob, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataLake.AnalyticsJob.0.9.6-preview\lib\net40\Microsoft.Azure.Management.DataLake.AnalyticsJob.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataLake.Analytics.0.9.10-preview\lib\net45\Microsoft.Azure.Management.DataLake.Analytics.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -75,6 +68,10 @@
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime">
       <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.1.8.2\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.2.5.4\lib\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication">
@@ -97,8 +94,8 @@
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.1.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

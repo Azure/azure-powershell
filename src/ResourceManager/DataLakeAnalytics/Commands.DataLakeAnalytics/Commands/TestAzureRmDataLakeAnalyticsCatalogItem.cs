@@ -40,14 +40,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [ValidateNotNullOrEmpty]
         public CatalogPathInstance Path { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
-            HelpMessage = "Name of resource group under which the Data Lake Analytics account and catalog exists.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
         public override void ExecuteCmdlet()
         {
-            WriteObject(DataLakeAnalyticsClient.TestCatalogItem(ResourceGroupName, Account, Path, ItemType));
+            WriteObject(DataLakeAnalyticsClient.TestCatalogItem(Account, Path, ItemType));
         }
     }
 }

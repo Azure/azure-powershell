@@ -48,10 +48,10 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
         public override void ExecuteCmdlet()
         {
-            DataLakeStoreAccount defaultAccount = null;
+            DataLakeStoreAccountInfo defaultAccount = null;
             if (!string.IsNullOrEmpty(DefaultDataLakeStore))
             {
-                defaultAccount = new DataLakeStoreAccount
+                defaultAccount = new DataLakeStoreAccountInfo
                 {
                     Name = DefaultDataLakeStore
                 };

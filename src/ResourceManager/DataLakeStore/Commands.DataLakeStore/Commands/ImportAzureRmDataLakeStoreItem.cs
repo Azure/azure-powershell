@@ -14,7 +14,7 @@
 
 using System.IO;
 using System.Management.Automation;
-using Hyak.Common;
+
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
 

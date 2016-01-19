@@ -24,11 +24,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAdlaAccount()
         {
-            RunPowerShellTest(true,
+            AdlaTestsBase.NewInstance.RunPsTest(true,
                 string.Format(
-                    "Test-DataLakeAnalyticsAccount -resourceGroupName {0} -accountName {1} -dataLakeAccountName {2} -secondDataLakeAccountName {3} -blobAccountName {4} -blobAccountKey {5} -location '{6}'",
-                    this.resourceGroupName, this.dataLakeAnalyticsAccountName, this.dataLakeStoreAccountName,
-                    this.secondDataLakeStoreAccountName, this.azureBlobStoreName, this.azureBlobStoreAccessKey,
+                    "Test-DataLakeAnalyticsAccount -blobAccountKey -location '{0}'",
                     AdlaTestsBase.resourceGroupLocation));
         }
 
@@ -36,12 +34,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAdlaCatalog()
         {
-            RunPowerShellTest(false,
+            AdlaTestsBase.NewInstance.RunPsTest(false,
                 string.Format(
-                    "Test-DataLakeAnalyticsCatalog -resourceGroupName {0} -accountName {1} -dataLakeAccountName {2} -databaseName {3} -tableName {4} -tvfName {5} -viewName {6} -procName {7} -secretName {8} -secretPwd {9} -credentialName {10} -location '{11}'",
-                    this.resourceGroupName, this.dataLakeAnalyticsAccountName, this.dataLakeStoreAccountName,
-                    this.dbName, this.tableName, this.tvfName, this.viewName, this.procName, this.secretName,
-                    this.secretPwd, this.credName,
+                    "Test-DataLakeAnalyticsCatalog -location '{0}'",
                     AdlaTestsBase.resourceGroupLocation));
         }
 
@@ -49,10 +44,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAdlaJob()
         {
-            RunPowerShellTest(false,
+            AdlaTestsBase.NewInstance.RunPsTest(false,
                 string.Format(
-                    "Test-DataLakeAnalyticsJob -resourceGroupName {0} -accountName {1} -dataLakeAccountName {2} -location '{3}'",
-                    this.resourceGroupName, this.dataLakeAnalyticsAccountName, this.dataLakeStoreAccountName,
+                    "Test-DataLakeAnalyticsJob -location '{0}'",
                     AdlaTestsBase.resourceGroupLocation));
         }
 
@@ -60,10 +54,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNegativeAdlaAccount()
         {
-            RunPowerShellTest(false,
+            AdlaTestsBase.NewInstance.RunPsTest(false,
                 string.Format(
-                    "Test-NegativeDataLakeAnalyticsAccount -resourceGroupName {0} -accountName {1} -dataLakeAccountName {2} -location '{3}'",
-                    this.resourceGroupName, this.dataLakeAnalyticsAccountName, this.dataLakeStoreAccountName,
+                    "Test-NegativeDataLakeAnalyticsAccount -location '{0}'",
                     AdlaTestsBase.resourceGroupLocation));
         }
 
@@ -71,10 +64,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNegativeAdlaJob()
         {
-            RunPowerShellTest(false,
+            AdlaTestsBase.NewInstance.RunPsTest(false,
                 string.Format(
-                    "Test-NegativeDataLakeAnalyticsJob -resourceGroupName {0} -accountName {1} -dataLakeAccountName {2} -location '{3}'",
-                    this.resourceGroupName, this.dataLakeAnalyticsAccountName, this.dataLakeStoreAccountName,
+                    "Test-NegativeDataLakeAnalyticsJob -location '{0}'",
                     AdlaTestsBase.resourceGroupLocation));
         }
     }

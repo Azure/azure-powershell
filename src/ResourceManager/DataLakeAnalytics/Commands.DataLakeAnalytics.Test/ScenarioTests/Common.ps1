@@ -23,6 +23,15 @@ function Get-DataLakeStoreAccountName
 
 <#
 .SYNOPSIS
+Gets a Data Lake Analytics account name to use for testing
+#>
+function Get-DataLakeAnalyticsAccountName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
 Gets a resource group name for testing.
 #>
 function Get-ResourceGroupName

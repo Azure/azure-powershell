@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         {
             if (ParameterSetName.Equals(BlobParameterSetName, StringComparison.InvariantCultureIgnoreCase))
             {
-                var toAdd = new StorageAccount
+                var toAdd = new StorageAccountInfo
                 {
                     Name = Blob,
                     Properties = new StorageAccountProperties
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             }
             else if (Default)
             {
-                var toAdd = new DataLakeStoreAccount
+                var toAdd = new DataLakeStoreAccountInfo
                 {
                     Name = DataLakeStore
                 };
