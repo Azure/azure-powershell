@@ -42,7 +42,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         
         private DebugStreamTraceListener _adalListener;
 
-        private ServiceClientTracingListener _serviceClientListener;
+        private ServiceClientTracingInterceptor _serviceClientTracingInterceptor;
 
         protected static AzurePSDataCollectionProfile _dataCollectionProfile = null;
         protected static string _errorRecordFolderPath = null;
@@ -220,10 +220,10 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
             _httpTracingInterceptor = _httpTracingInterceptor ?? new RecordingTracingInterceptor(_debugMessages);
             _adalListener = _adalListener ?? new DebugStreamTraceListener(_debugMessages);
-            _serviceClientListener = _serviceClientListener ?? new ServiceClientTracingListener(_debugMessages);
+            _serviceClientTracingInterceptor = _serviceClientTracingInterceptor ?? new ServiceClientTracingInterceptor(_debugMessages);
             RecordingTracingInterceptor.AddToContext(_httpTracingInterceptor);
             DebugStreamTraceListener.AddAdalTracing(_adalListener);
-            ServiceClientTracing.AddTracingInterceptor(_serviceClientListener);
+            ServiceClientTracing.AddTracingInterceptor(_serviceClientTracingInterceptor);
 
             ProductInfoHeaderValue userAgentValue = new ProductInfoHeaderValue(
                 ModuleName, string.Format("v{0}", ModuleVersion));
@@ -243,7 +243,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
             RecordingTracingInterceptor.RemoveFromContext(_httpTracingInterceptor);
             DebugStreamTraceListener.RemoveAdalTracing(_adalListener);
-            ServiceClientTracingListener.RemoveTracingInterceptor(_serviceClientListener);
+            ServiceClientTracingInterceptor.RemoveTracingInterceptor(_serviceClientTracingInterceptor);
             FlushDebugMessages();
 
             AzureSession.ClientFactory.UserAgents.RemoveWhere(u => u.Product.Name == ModuleName);

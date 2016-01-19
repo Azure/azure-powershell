@@ -23,9 +23,9 @@ using System.Threading.Tasks;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
-    class ServiceClientTracingListener : IServiceClientTracingInterceptor
+    class ServiceClientTracingInterceptor : IServiceClientTracingInterceptor
     {
-        public ServiceClientTracingListener(ConcurrentQueue<string> queue)
+        public ServiceClientTracingInterceptor(ConcurrentQueue<string> queue)
         {
             MessageQueue = queue;
         }
@@ -69,7 +69,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
             // Ignore 
         }
 
-        public static void RemoveTracingInterceptor(ServiceClientTracingListener interceptor)
+        public static void RemoveTracingInterceptor(ServiceClientTracingInterceptor interceptor)
         {
             if (interceptor != null)
             {
