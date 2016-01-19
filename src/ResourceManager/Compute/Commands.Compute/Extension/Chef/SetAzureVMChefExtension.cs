@@ -5,6 +5,7 @@ using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System.Management.Automation;
 using System.Text.RegularExpressions;
+using System.Collections;
 using System.Linq;
 using System;
 using System.IO;
@@ -14,6 +15,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
     [Cmdlet(
         VerbsCommon.Set,
         ProfileNouns.VirtualMachineChefExtension)]
+    [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureVMChefExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         protected const string LinuxParameterSetName = "Linux";
@@ -25,15 +27,15 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
         private string ExtensionDefaultPublisher = "Chef.Bootstrap.WindowsAzure";
         private string location;
         private string version;
-        private string publicConfiguration;
-        private string privateConfiguration;
+        private Hashtable publicConfiguration;
+        private Hashtable privateConfiguration;
 
-        private string PrivateConfigurationTemplate = "{{\"validation_key\":\"{0}\"}}";
-        private string AutoUpdateTemplate = "\"autoUpdateClient\":\"{0}\"";
-        private string DeleteChefConfigTemplate = "\"deleteChefConfig\":\"{0}\"";
-        private string ClientRbTemplate = "\"client_rb\":\"{0}\"";
-        private string BootStrapOptionsTemplate = "\"bootstrap_options\":{0}";
-        private string RunListTemplate = "\"runlist\": \"\\\"{0}\\\"\"";
+        private string PrivateConfigurationTemplate = "validation_key";
+        private string AutoUpdateTemplate = "autoUpdateClient";
+        private string DeleteChefConfigTemplate = "deleteChefConfig";
+        private string ClientRbTemplate = "client_rb";
+        private string BootStrapOptionsTemplate = "bootstrap_options";
+        private string RunListTemplate = "runlist";
 
         [Parameter(
             Mandatory = true,
@@ -194,11 +196,11 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
             }
         }
 
-        private string PublicConfiguration
+        private Hashtable PublicConfiguration
         {
             get
             {
-                if (string.IsNullOrEmpty(this.publicConfiguration))
+                if (this.publicConfiguration == null)
                 {
                     string ClientConfig = string.Empty;
                     bool IsClientRbEmpty = string.IsNullOrEmpty(this.ClientRb);
@@ -260,38 +262,42 @@ validation_client_name 	\""{1}\""
                     {
                         if (IsBootstrapOptionsEmpty)
                         {
-                            this.publicConfiguration = string.Format("{{{0},{1},{2}}}",
-                                string.Format(AutoUpdateTemplate, AutoUpdateChefClient),
-                                string.Format(DeleteChefConfigTemplate, DeleteChefConfig),
-                                string.Format(ClientRbTemplate, ClientConfig));
+                            var hashTable = new Hashtable();
+                            hashTable.Add(AutoUpdateTemplate, AutoUpdateChefClient);
+                            hashTable.Add(DeleteChefConfigTemplate, DeleteChefConfig);
+                            hashTable.Add(ClientRbTemplate, ClientConfig);
+                            this.publicConfiguration = hashTable;
                         }
                         else
                         {
-                            this.publicConfiguration = string.Format("{{{0},{1},{2},{3}}}",
-                                string.Format(AutoUpdateTemplate, AutoUpdateChefClient),
-                                string.Format(DeleteChefConfigTemplate, DeleteChefConfig),
-                                string.Format(ClientRbTemplate, ClientConfig),
-                                string.Format(BootStrapOptionsTemplate, this.BootstrapOptions));
+                            var hashTable = new Hashtable();
+                            hashTable.Add(AutoUpdateTemplate, AutoUpdateChefClient);
+                            hashTable.Add(DeleteChefConfigTemplate, DeleteChefConfig);
+                            hashTable.Add(ClientRbTemplate, ClientConfig);
+                            hashTable.Add(BootStrapOptionsTemplate, this.BootstrapOptions);
+                            this.publicConfiguration = hashTable;
                         }
                     }
                     else
                     {
                         if (IsBootstrapOptionsEmpty)
                         {
-                            this.publicConfiguration = string.Format("{{{0},{1},{2},{3}}}",
-                                string.Format(AutoUpdateTemplate, AutoUpdateChefClient),
-                                string.Format(DeleteChefConfigTemplate, DeleteChefConfig),
-                                string.Format(ClientRbTemplate, ClientConfig),
-                                string.Format(RunListTemplate, this.RunList));
+                            var hashTable = new Hashtable();
+                            hashTable.Add(AutoUpdateTemplate, AutoUpdateChefClient);
+                            hashTable.Add(DeleteChefConfigTemplate, DeleteChefConfig);
+                            hashTable.Add(ClientRbTemplate, ClientConfig);
+                            hashTable.Add(RunListTemplate, this.RunList);
+                            this.publicConfiguration = hashTable;
                         }
                         else
                         {
-                            this.publicConfiguration = string.Format("{{{0},{1},{2},{3},{4}}}",
-                                 string.Format(AutoUpdateTemplate, AutoUpdateChefClient),
-                                 string.Format(DeleteChefConfigTemplate, DeleteChefConfig),
-                                 string.Format(ClientRbTemplate, ClientConfig),
-                                 string.Format(RunListTemplate, this.RunList),
-                                 string.Format(BootStrapOptionsTemplate, this.BootstrapOptions));
+                            var hashTable = new Hashtable();
+                            hashTable.Add(AutoUpdateTemplate, AutoUpdateChefClient);
+                            hashTable.Add(DeleteChefConfigTemplate, DeleteChefConfig);
+                            hashTable.Add(ClientRbTemplate, ClientConfig);
+                            hashTable.Add(RunListTemplate, this.RunList);
+                            hashTable.Add(BootStrapOptionsTemplate, this.BootstrapOptions);
+                            this.publicConfiguration = hashTable;                            
                         }
                     }
                 }
@@ -300,14 +306,15 @@ validation_client_name 	\""{1}\""
             }
         }
 
-        private string PrivateConfiguration
+        private Hashtable PrivateConfiguration
         {
             get
             {
-                if (string.IsNullOrEmpty(this.privateConfiguration))
+                if (this.privateConfiguration == null)
                 {
-                    this.privateConfiguration = string.Format(PrivateConfigurationTemplate,
-                    File.ReadAllText(this.ValidationPem).TrimEnd('\r', '\n'));
+                    var hashTable = new Hashtable();
+                    hashTable.Add(PrivateConfigurationTemplate, File.ReadAllText(this.ValidationPem).TrimEnd('\r', '\n'));
+                    this.privateConfiguration = hashTable;
                 }                
 
                 return this.privateConfiguration;
@@ -320,23 +327,23 @@ validation_client_name 	\""{1}\""
             {
                 var parameters = new VirtualMachineExtension
                 {
-                    Location = this.Location,
-                    Name = this.Name,
-                    Type = VirtualMachineExtensionType,
+                    Location = this.Location,                    
                     Settings = this.PublicConfiguration,
                     ProtectedSettings = this.PrivateConfiguration,
                     Publisher = ExtensionDefaultPublisher,
-                    ExtensionType = this.Name,
+                    VirtualMachineExtensionType = this.Name,
                     TypeHandlerVersion = this.TypeHandlerVersion,
                     AutoUpgradeMinorVersion = this.AutoUpgradeMinorVersion
                 };
 
-                var op = this.VirtualMachineExtensionClient.CreateOrUpdate(
+                var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
                     this.ResourceGroupName,
                     this.VMName,
-                    parameters);
+                    this.Name,
+                    parameters).GetAwaiter().GetResult();
 
-                WriteObject(op);
+                var result = Mapper.Map<PSAzureOperationResponse>(op);
+                WriteObject(result);
             });
         }
 
