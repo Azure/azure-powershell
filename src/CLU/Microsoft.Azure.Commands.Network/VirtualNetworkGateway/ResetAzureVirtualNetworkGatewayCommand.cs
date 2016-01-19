@@ -24,7 +24,7 @@ using Microsoft.Azure.Commands.Tags.Model;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Reset, "AzureRmVirtualNetworkGateway"), OutputType(typeof(PSVirtualNetworkGateway))]
-    [CliCommandAlias("vnet;gateway;reset")]
+    [CliCommandAlias("vnet gateway reset")]
     public class ResetAzureVirtualNetworkGatewayCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Parameter(

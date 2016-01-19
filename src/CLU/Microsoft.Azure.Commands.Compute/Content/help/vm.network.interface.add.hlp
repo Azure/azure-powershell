@@ -1,0 +1,35 @@
+
+Add-AzureRmVMNetworkInterface: Adds a network interface to a virtual machine.
+
+
+The Add-AzureRmVMNetworkInterface cmdlet adds a network interface to a virtual machine. You can add an interface when you create a virtual machine or add one to an existing virtual machine.
+
+
+Command syntax
+
+az vm network interface add [--vm] <PSVirtualMachine> [--id] <string> [[--primary]] [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+az vm network interface add [--vm] <PSVirtualMachine> [--networkinterface] <List`1[PSNetworkInterface]> [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+
+Parameters
+
+--vm
+Specifies a local virtual machine object to which to add a network interface. To create a virtual machine, use the New-AzureRmVMConfig cmdlet. To obtain an existing virtual machine, use the Get-AzureRmVM cmdlet.
+
+--id
+Specifies the ID of a network interface to add to a virtual machine. To obtain a network interface, use the Get-AzureRmNetworkInterface cmdlet.
+
+--primary
+Indicates that this cmdlet adds the network interface as the primary interface.
+
+--informationaction
+
+
+--informationvariable
+
+
+--networkinterface
+
+
+

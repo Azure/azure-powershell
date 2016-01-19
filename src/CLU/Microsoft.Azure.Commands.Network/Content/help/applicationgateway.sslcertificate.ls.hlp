@@ -1,0 +1,21 @@
+
+Get-AzureRmApplicationGatewaySslCertificate: Gets an SSL certificate for an application gateway.
+
+
+The Get-AzureRmApplicationGatewaySslCertificate cmdlet gets an SSL certificate for an application gateway.
+
+
+Command syntax
+
+az applicationgateway sslcertificate ls [--name <string>] --applicationgateway <PSApplicationGateway>
+
+
+Parameters
+
+--name
+Specifies the name of SSL certificate pool that this cmdlet gets.
+
+--applicationgateway
+Specifies the application gateway object that contains the SSL certificate.
+
+

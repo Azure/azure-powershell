@@ -1,0 +1,27 @@
+
+Add-AzureRmApplicationGatewaySslCertificate: Adds an SSL certificate to an application gateway.
+
+
+The Add-AzureRmApplicationGatewaySslCertificate cmdlet adds an SSL certificate to an application gateway.
+
+
+Command syntax
+
+az applicationgateway sslcertificate add --applicationgateway <PSApplicationGateway> --name <string> --certificatefile <string> --password <string>
+
+
+Parameters
+
+--applicationgateway
+Specifies the name of application gateway to which this cmdlet adds an SSL certificate.
+
+--name
+Specifies the name of the SSL certificate that this cmdlet adds.
+
+--certificatefile
+Specifies the .pfx file of an SSL certificate that this cmdlet adds.
+
+--password
+Specifies the password of the SSL certificate that this cmdlet adds.
+
+

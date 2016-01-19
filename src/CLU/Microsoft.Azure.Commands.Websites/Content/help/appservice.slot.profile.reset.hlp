@@ -1,0 +1,8 @@
+
+Reset-AzureRMWebAppSlotPublishingProfile
+
+
+Command syntax
+
+az appservice slot profile reset
+

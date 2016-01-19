@@ -1,0 +1,21 @@
+
+Get-AzureRmNetworkSecurityGroup: Gets a network security group.
+
+
+The Get-AzureRmNetworkSecurityGroup cmdlet gets an Azure network security group.
+
+
+Command syntax
+
+az networksecuritygroup ls [--name <string>] [--resourcegroupname <string>]
+
+
+Parameters
+
+--name
+Specifies the name of the network security group to get.
+
+--resourcegroupname
+Specifies the name of the resource group that contains the network security group to get.
+
+

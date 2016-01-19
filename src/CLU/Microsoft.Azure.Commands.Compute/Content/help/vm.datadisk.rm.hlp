@@ -1,0 +1,27 @@
+
+Remove-AzureRmVMDataDisk: Removes a data disk from a virtual machine.
+
+
+The Remove-AzureRmVMDataDisk cmdlet removes a data disk from a virtual machine.
+
+
+Command syntax
+
+az vm datadisk rm [--vm] <PSVirtualMachine> [--datadisknames] <String[]> [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+
+Parameters
+
+--vm
+Specifies the local virtual machine object from which to remove a data disk. To obtain a virtual machine object, use the Get-AzureRmVM cmdlet.
+
+--datadisknames
+
+
+--informationaction
+
+
+--informationvariable
+
+
+

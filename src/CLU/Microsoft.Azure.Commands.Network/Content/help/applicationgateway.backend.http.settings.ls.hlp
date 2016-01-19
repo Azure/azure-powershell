@@ -1,0 +1,21 @@
+
+Get-AzureRmApplicationGatewayBackendHttpSettings: Gets the back-end HTTP settings of an application gateway.
+
+
+The Get-AzureRmApplicationGatewayBackendHttpSettings cmdlet gets the back-end HTTP settings of an application gateway.
+
+
+Command syntax
+
+az applicationgateway backend http settings ls [--name <string>] --applicationgateway <PSApplicationGateway>
+
+
+Parameters
+
+--name
+Specifies the name of the backend HTTP settings that this cmdlet gets.
+
+--applicationgateway
+Specifies an application gateway object that contains back-end HTTP settings.
+
+

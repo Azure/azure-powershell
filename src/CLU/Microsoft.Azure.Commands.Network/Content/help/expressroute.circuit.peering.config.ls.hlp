@@ -1,0 +1,21 @@
+
+Get-AzureRmExpressRouteCircuitPeeringConfig
+
+
+
+
+
+Command syntax
+
+az expressroute circuit peering config ls [--name <string>] --circuit <PSExpressRouteCircuit>
+
+
+Parameters
+
+--name
+
+
+--circuit
+
+
+

@@ -1,0 +1,21 @@
+
+Get-AzureRmApplicationGatewayFrontendIPConfig: Gets the front-end IP configuration of an application gateway.
+
+
+The Get-AzureRmApplicationGatewayFrontendIPConfig cmdlet gets the front-end IP configuration of an application gateway.
+
+
+Command syntax
+
+az applicationgateway frontend port ls [--name <string>] --applicationgateway <PSApplicationGateway>
+
+
+Parameters
+
+--name
+Specifies the name of the front-end IP configuration that this cmdlet gets.
+
+--applicationgateway
+Specifies the application gateway object that contains the front-end IP configuration.
+
+

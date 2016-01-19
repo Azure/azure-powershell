@@ -1,0 +1,8 @@
+
+Reset-AzureRMWebAppPublishingProfile
+
+
+Command syntax
+
+az appservice profile reset
+

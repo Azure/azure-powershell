@@ -1,0 +1,27 @@
+
+Register-AzureRmProviderFeature
+
+
+
+
+
+Command syntax
+
+az resourcemanager provider feature register --featurename <string> --providernamespace <string> [--force] [--profile <AzureProfile>]
+
+
+Parameters
+
+--featurename
+
+
+--providernamespace
+
+
+--force
+
+
+--profile
+
+
+

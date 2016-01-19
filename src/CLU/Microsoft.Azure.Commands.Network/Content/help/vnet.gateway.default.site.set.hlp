@@ -1,0 +1,8 @@
+
+Set-AzureRmVirtualNetworkGatewayDefaultSite
+
+
+Command syntax
+
+az vnet gateway default site set
+

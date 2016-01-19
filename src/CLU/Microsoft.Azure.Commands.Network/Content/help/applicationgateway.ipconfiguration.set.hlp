@@ -1,0 +1,29 @@
+
+Set-AzureRmApplicationGatewayIPConfiguration: Modifies an IP configuration for an application gateway.
+
+
+The Set-AzureRmApplicationGatewayIPConfiguration cmdlet modifies an IP configuration. An IP configuration contains the subnet in which an application gateway is deployed.
+
+
+Command syntax
+
+az applicationgateway ipconfiguration set --applicationgateway <PSApplicationGateway> --name <string> [--subnetid <string>]
+
+az applicationgateway ipconfiguration set --applicationgateway <PSApplicationGateway> --name <string> [--subnet <PSSubnet>]
+
+
+Parameters
+
+--applicationgateway
+Specifies an application gateway object with which this cmdlet associates an IP configuration.
+
+--name
+Specifies the name of the IP configuration.
+
+--subnetid
+Specifies the subnet ID. This is the subnet in which the application gateway is deployed.
+
+--subnet
+Specifies the subnet. This is the subnet in which the application gateway is deployed.
+
+

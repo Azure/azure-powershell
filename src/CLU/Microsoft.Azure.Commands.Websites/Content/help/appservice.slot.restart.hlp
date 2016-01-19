@@ -1,0 +1,8 @@
+
+Restart-AzureRMWebAppSlot
+
+
+Command syntax
+
+az appservice slot restart
+

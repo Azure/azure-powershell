@@ -1,0 +1,36 @@
+
+Get-AzureRmVmExtensionImage: Gets all versions for an Azure extension.
+
+
+The Get-AzureRmVMExtensionImage cmdlet gets all versions for an Azure extension.
+
+
+Command syntax
+
+az vm extension image ls --location <string> --publishername <string> --type <string> [--filterexpression <string>] [--version <string>] [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+
+Parameters
+
+--location
+Specifies the location of an extension.
+
+--publishername
+Specifies the name of an extension publisher. To obtain an extension publisher, use the Get-AzureRmVMImagePublisher cmdlet.
+
+--type
+Specifies the type of the extension. To obtain an extension type, use the Get-AzureRmVMExtensionImageType cmdlet.
+
+--filterexpression
+Specifies a filter expression.
+
+--version
+
+
+--informationaction
+
+
+--informationvariable
+
+
+

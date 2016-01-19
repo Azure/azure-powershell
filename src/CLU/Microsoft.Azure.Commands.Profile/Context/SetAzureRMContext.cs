@@ -30,7 +30,8 @@ namespace Microsoft.Azure.Commands.Profile
     [Cmdlet(VerbsCommon.Set, "AzureRmContext", DefaultParameterSetName = SubscriptionNameParameterSet)]
     [Alias("Select-AzureRmSubscription")]
     [OutputType(typeof(PSAzureContext))]
-    [CliCommandAlias("context;set")]
+    [CliCommandAlias("context set")]
+    [CliCommandAlias("subscription set")]
     public class SetAzureRMContextCommand : AzureRMCmdlet
     {
         private const string SubscriptionNameParameterSet = "SubscriptionName";

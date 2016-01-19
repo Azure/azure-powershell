@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// Creates a new AD application.
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmADApplication", DefaultParameterSetName = ParameterSet.ApplicationWithoutCredential), OutputType(typeof(PSADApplication))]
-    [CliCommandAlias("ad;app;create")]
+    [CliCommandAlias("ad app create")]
     public class NewAzureADApplicationCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithoutCredential,

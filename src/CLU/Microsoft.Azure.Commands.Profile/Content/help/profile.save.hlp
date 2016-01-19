@@ -1,0 +1,27 @@
+
+Save-AzureRmProfile: Save the current authentication information for use in other PowerShell sessions.
+
+
+Save the current authentication information for use in other PowerShell sessions.
+
+
+Command syntax
+
+az profile save [[--profile] <AzureRmProfile>] [--path] <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+
+Parameters
+
+--profile
+If provided, saves the given profile to the provided path.  If no profile is provided, the currently active profile will be saved.
+
+--path
+The full path of the file to save authentication information to.
+
+--informationaction
+
+
+--informationvariable
+
+
+

@@ -64,6 +64,10 @@ namespace Microsoft.Azure.Commands.Common
             }
             if (ClientRequestId != null)
             {
+                if (request.Headers.Contains("x-ms-client-request-id"))
+                {
+                    request.Headers.Remove("x-ms-client-request-id");
+                }
                 request.Headers.TryAddWithoutValidation("x-ms-client-request-id", ClientRequestId);
             }
             return base.SendAsync(request, cancellationToken);

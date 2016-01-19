@@ -1,0 +1,8 @@
+
+Set-AzureRMWebApp
+
+
+Command syntax
+
+az appservice set
+

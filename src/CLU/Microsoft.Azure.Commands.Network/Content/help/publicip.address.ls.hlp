@@ -1,0 +1,21 @@
+
+Get-AzureRmPublicIpAddress: Gets a public IP address.
+
+
+The Get-AzureRmPublicIPAddress cmdlet gets one or more public IP addresses in a resource group.
+
+
+Command syntax
+
+az publicip address ls [--name <string>] [--resourcegroupname <string>]
+
+
+Parameters
+
+--name
+Specifies the name of the public IP address to get.
+
+--resourcegroupname
+Specifies the name of the resource group that contains the public IP address to get.
+
+

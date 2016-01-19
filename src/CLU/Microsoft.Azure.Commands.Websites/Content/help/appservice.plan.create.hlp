@@ -1,0 +1,8 @@
+
+New-AzureRMAppServicePlan
+
+
+Command syntax
+
+az appservice plan create
+

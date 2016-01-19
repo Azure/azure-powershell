@@ -3,7 +3,7 @@ set -e
 printf "\n=== Managing Virtual Machine Creation in Azure Compute ===\n"
 
 printf "\n1. Creating a new resource group: %s and location: %s.\n" "$groupName" "$location"
-az resourcemanager group create -n "$groupName" --location "$location"
+az resource group create -n "$groupName" --location "$location"
 
 printf "\n2. Creating a new storage account '%s' in type '%s'.\n" "$storageAccountName" "$storageAccountType"
 az storage account create--resourcegroupname "$groupName" --name "$storageAccountName" --location "$location" --type "$storageAccountType"
@@ -33,4 +33,4 @@ printf "\n5. Create virtual machine with\r\nnicId='%s'\r\nvhdUri='%s'\r\nvmStr='
 az vm create--resourcegroupname "$groupName" --location "$location" --vmprofile "$vmStr"
 
 printf "\n6. Removing resource group: %s.\n" "$groupName"
-az resourcemanager group rm -n "$groupName" -f
+az resource group rm -n "$groupName" -f

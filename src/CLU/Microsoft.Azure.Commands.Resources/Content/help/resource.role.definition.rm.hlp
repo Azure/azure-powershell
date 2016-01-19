@@ -1,0 +1,38 @@
+
+Remove-AzureRmRoleDefinition: Deletes a custom role in Azure RBAC. The role to be deleted is specified using the Id property of the role. Delete will fail if there are existing role assignments made to the custom role.
+
+
+
+        The Remove-AzureRmRoleDefinition cmdlet deletes a custom role in Azure Role-Based Access Control.
+        Provide the Id parameter of an existing custom role to delete that custom role. By default, Remove-AzureRmRoleDefinition prompts you for confirmation. To suppress the prompt, use the Force parameter. If there are existing role assignments made to the custom role to be deleted, the delete will fail.
+      
+
+
+Command syntax
+
+az networksecurityrole definition rm [--id] <Guid> [--force] [--passthru] [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+az networksecurityrole definition rm [[--name] <string>] [--force] [--passthru] [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+
+Parameters
+
+--id
+Id of the Role definition to be deleted
+
+--force
+If set, does not prompt for a confirmation before deleting the custom role
+
+--passthru
+
+
+--informationaction
+
+
+--informationvariable
+
+
+--name
+Name of the Role definition to be deleted.
+
+

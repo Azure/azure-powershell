@@ -1,0 +1,21 @@
+
+Remove-AzureRmApplicationGatewayHttpListener: Removes an HTTP listener from an application gateway.
+
+
+The Remove-AzureRmApplicationGatewayHttpListener cmdlet removes an HTTP listener from an Azureapplication gateway.
+
+
+Command syntax
+
+az applicationgateway httplistener rm --name <string> --applicationgateway <PSApplicationGateway>
+
+
+Parameters
+
+--name
+Specifies the name of the HTTP listener to remove.
+
+--applicationgateway
+Specifies the application gateway from which to remove an HTTP listener.
+
+

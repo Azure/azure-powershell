@@ -1,0 +1,32 @@
+
+Add-AzureRmVMAdditionalUnattendContent: Adds information to the unattended Windows Setup answer file.
+
+
+The Add-AzureRmVMAdditionalUnattendContent cmdlet adds information to the unattended Windows Setup answer file. Specify additional base 64 encoded XML formatted information that this cmdlet adds to the unattend.xml file.
+
+
+Command syntax
+
+az vm additional unattend content add [--vm] <PSVirtualMachine> [[--content] <string>] [[--settingname] <string>] [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+
+Parameters
+
+--vm
+Specifies the virtual machine object that this cmdlet modifies. To obtain a virtual machine object, use the Get-AzureRmVM cmdlet. Create a virtual machine object by using the New-AzureRmVMConfig cmdlet.
+
+--content
+Specifies base 64 encoded XML formatted content. This cmdlet adds the content to the unattend.xml file. The XML content must be less than 4 KB and must include the root element for the setting or feature that this cmdlet inserts.
+
+--settingname
+Specifies the name of the setting to which the content applies. Valid values are: 
+-- FirstLogonCommands
+-- AutoLogon
+
+--informationaction
+
+
+--informationvariable
+
+
+

@@ -1,0 +1,30 @@
+
+Remove-AzureRmAvailabilitySet: Removes an availability set from Azure.
+
+
+The Remove-AzureRmAvailabilitySet cmdlet removes an availability set from Azure.
+
+
+Command syntax
+
+az vm availabilityset rm [--resourcegroupname] <string> [[--name] <string>] [[--force]] [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+
+Parameters
+
+--resourcegroupname
+Specifies the name of a resource group.
+
+--name
+Specifies the name of the availability set to remove.
+
+--force
+Forces the command to run without asking for user confirmation.
+
+--informationaction
+
+
+--informationvariable
+
+
+

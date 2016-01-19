@@ -1,0 +1,21 @@
+
+Get-AzureRmApplicationGatewayFrontendPort: Gets the front-end port of an application gateway.
+
+
+The Get-AzureRmApplicationGatewayFrontendPort cmdlet gets the front-end port of an application gateway.
+
+
+Command syntax
+
+az applicationgateway frontendipconfig ls [--name <string>] --applicationgateway <PSApplicationGateway>
+
+
+Parameters
+
+--name
+Specifies the name of the front-end port to get.
+
+--applicationgateway
+Specifies the application gateway object that contains the front-end port.
+
+

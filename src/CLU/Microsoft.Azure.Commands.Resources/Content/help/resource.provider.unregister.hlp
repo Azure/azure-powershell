@@ -1,0 +1,24 @@
+
+Unregister-AzureRmResourceProvider
+
+
+
+
+
+Command syntax
+
+az resourcemanager resource resourcemanager provider unregister --providernamespace <string> [--force] [--profile <AzureProfile>]
+
+
+Parameters
+
+--providernamespace
+
+
+--force
+
+
+--profile
+
+
+

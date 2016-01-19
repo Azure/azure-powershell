@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Profile
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRmEnvironment")]
     [OutputType(typeof(PSAzureEnvironment))]
-    [CliCommandAlias("env;set")]
+    [CliCommandAlias("env set")]
     public class SetAzureRMEnvironmentCommand : AzureRMCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true)]

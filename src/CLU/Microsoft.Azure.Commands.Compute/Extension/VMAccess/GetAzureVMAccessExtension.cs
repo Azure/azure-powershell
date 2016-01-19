@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Compute
         VerbsCommon.Get,
         ProfileNouns.VirtualMachineAccessExtension),
     OutputType(typeof(VirtualMachineAccessExtensionContext))]
-    [CliCommandAlias("vm;extension;access;ls")]
+    [CliCommandAlias("vm extension access ls")]
     public class GetAzureVMAccessExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(

@@ -1,0 +1,67 @@
+
+New-AzureRmApplicationGateway: Creates an application gateway.
+
+
+The New-AzureRmApplicationGateway cmdlet creates an Azure application gateway.
+
+An application gateway requires the following: 
+
+-- A resource group.
+-- A virtual network. 
+-- A back-end server pool, containing the IP addresses of the back-end servers.
+-- Back-end server pool settings. Each pool has settings such as port, protocol and cookie-based affinity, that are applied to all servers within the pool.
+-- Front-end IP addresses, which are the IP addresses opened on the application gateway. A front-end IP address can be a public IP address or an internal IP address.
+-- Front-end ports, which are the public ports opened on the application gateway. Traffic that hits these ports is redirected to the back-end servers. 
+-- A request routing rule that binds the listener and the back-end server pool. The rule defines which back-end server pool the traffic should be directed to when it hits a particular listener. A listener has a front-end port, front-end IP address, protocol (http or https) and Secure Sockets Layer (SSL) certificate name (if configuring SSL offload).
+
+
+Command syntax
+
+az applicationgateway new --name <string> --resourcegroupname <string> --location <string> --sku <PSApplicationGatewaySku> --gatewayipconfigurations <List`1[PSApplicationGatewayIPConfiguration]> [--sslcertificates <List`1[PSApplicationGatewaySslCertificate]>] [--frontendipconfigurations <List`1[PSApplicationGatewayFrontendIPConfiguration]>] --frontendports <List`1[PSApplicationGatewayFrontendPort]> --backendaddresspools <List`1[PSApplicationGatewayBackendAddressPool]> --backendhttpsettingscollection <List`1[PSApplicationGatewayBackendHttpSettings]> --httplisteners <List`1[PSApplicationGatewayHttpListener]> --requestroutingrules <List`1[PSApplicationGatewayRequestRoutingRule]> [--tag <Hashtable[]>] [--force]
+
+
+Parameters
+
+--name
+Specifies the name of application gateway.
+
+--resourcegroupname
+Specifies the name of the resource group in which to create the application gateway.
+
+--location
+Specifies the region in which to create the application gateway.
+
+--sku
+Specifies the stock keeping unit (SKU) of the application gateway.
+
+--gatewayipconfigurations
+Specifies a list of IP configurations for the application gateway.
+
+--sslcertificates
+Specifies the list of Secure Sockets Layer (SSL) certificates for the application gateway.
+
+--frontendipconfigurations
+Specifies a list of front-end IP configurations for the application gateway.
+
+--frontendports
+Specifies a list of front-end ports for the application gateway.
+
+--backendaddresspools
+Specifies the list of back-end address pools for the application gateway.
+
+--backendhttpsettingscollection
+Specifies the list of back-end HTTP settings for the application gateway.
+
+--httplisteners
+Specifies a list of HTTP listeners for the application gateway.
+
+--requestroutingrules
+Specifies a list of request routing rules for the application gateway.
+
+--tag
+Specifies the dictionary of tags associated with the application gateway.
+
+--force
+Forces the creation of the application gateway even if an application gateway with the same name already exists.
+
+

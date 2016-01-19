@@ -1,0 +1,41 @@
+
+Save-AzureRmVhd
+
+
+
+
+
+Command syntax
+
+az vhd save [--resourcegroupname] <string> [--sourceuri] <Uri> [--localfilepath] <FileInfo> [[--numberofthreads] <int>] [[--overwrite]] [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+az vhd save [--storagekey] <string> [--sourceuri] <Uri> [--localfilepath] <FileInfo> [[--numberofthreads] <int>] [[--overwrite]] [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+
+Parameters
+
+--resourcegroupname
+
+
+--sourceuri
+
+
+--localfilepath
+
+
+--numberofthreads
+
+
+--overwrite
+
+
+--informationaction
+
+
+--informationvariable
+
+
+--storagekey
+
+
+

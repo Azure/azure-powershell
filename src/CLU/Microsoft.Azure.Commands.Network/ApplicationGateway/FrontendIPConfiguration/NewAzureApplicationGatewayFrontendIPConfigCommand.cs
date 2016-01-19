@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewayFrontendIPConfig"), OutputType(typeof(PSApplicationGatewayFrontendIPConfiguration))]
-    [CliCommandAlias("applicationgateway;frontend;port;new")]
+    [CliCommandAlias("applicationgateway frontend port new")]
     public class NewAzureApplicationGatewayFrontendIPConfigCommand : AzureApplicationGatewayFrontendIPConfigBase
     {
         public override void ExecuteCmdlet()

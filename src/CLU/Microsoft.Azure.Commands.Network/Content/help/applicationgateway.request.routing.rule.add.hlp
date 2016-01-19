@@ -1,0 +1,44 @@
+
+Add-AzureRmApplicationGatewayRequestRoutingRule: Adds a request routing rule to an application gateway.
+
+
+The Add-AzureRmApplicationGatewayRequestRoutingRule cmdlet adds a request routing rule to an application gateway.
+
+
+Command syntax
+
+az applicationgateway request routing rule add --applicationgateway <PSApplicationGateway> --name <string> --ruletype <string> [--backendhttpsettingsid <string>] [--httplistenerid <string>] [--backendaddresspoolid <string>]
+
+az applicationgateway request routing rule add --applicationgateway <PSApplicationGateway> --name <string> --ruletype <string> [--backendhttpsettings <PSApplicationGatewayBackendHttpSettings>] [--httplistener <PSApplicationGatewayHttpListener>] [--backendaddresspool <PSApplicationGatewayBackendAddressPool>]
+
+
+Parameters
+
+--applicationgateway
+Specifies an application gateway to which this cmdlet adds a request routing rule.
+
+--name
+Specifies the name of request routing rule this cmdlet adds.
+
+--ruletype
+Specifies the type of request routing rule.
+
+--backendhttpsettingsid
+Specifies a backend HTTP settings ID for an application gateway.
+
+--httplistenerid
+Specifies application gateway HTTP listener ID.
+
+--backendaddresspoolid
+Specifies an application gateway back-end address pool ID.
+
+--backendhttpsettings
+Specifies a back-end HTTP settings object for an application gateway.
+
+--httplistener
+Specifies application gateway HTTP listener object.
+
+--backendaddresspool
+Specifies an application gateway back-end address pool object.
+
+

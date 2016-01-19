@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineExtensionImageType)]
     [OutputType(typeof(PSVirtualMachineExtensionImageType))]
-    [CliCommandAlias("vm;extension;image;type;ls")]
+    [CliCommandAlias("vm extension image type ls")]
     public class GetAzureVMExtensionImageTypeCommand : VirtualMachineExtensionImageBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]

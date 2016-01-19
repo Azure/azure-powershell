@@ -1,0 +1,8 @@
+
+Test-AzureRmResourceGroupDeployment
+
+
+Command syntax
+
+az resourcemanager group deployment test
+
