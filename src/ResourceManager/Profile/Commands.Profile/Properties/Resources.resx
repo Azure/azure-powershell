@@ -168,6 +168,9 @@
   <data name="UnableToAqcuireToken" xml:space="preserve">
     <value>Unable to acquire token for tenant '{0}'</value>
   </data>
+  <data name="UnableToLogin" xml:space="preserve">
+    <value>Could not authenticate user account '{0}' with tenant '{1}'. Subscriptions in this tenant will not be listed. Please login again using Login-AzureRmAccount to view the subscriptions in this tenant.</value>
+  </data>
   <data name="UnknownEnvironment" xml:space="preserve">
     <value>Unable to find environment with name '{0}'</value>
   </data>
