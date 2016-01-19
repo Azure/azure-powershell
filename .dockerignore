@@ -1,0 +1,9 @@
+.git
+drop/clurun/osx.10.10-x64
+drop/clurun/win7-x64
+drop/CommandRepo
+setup/*
+src/artifacts
+src/Common
+src/ResourceManager
+src/ServiceManagement
