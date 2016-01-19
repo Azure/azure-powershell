@@ -29,6 +29,22 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     [OutputType(typeof(IEnumerable<ASRStorageClassification>))]
     public class GetAzureSiteRecoveryStorageClassification : SiteRecoveryCmdletBase
     {
+        #region Parameters
+        /// <summary>
+        /// Gets or sets name of classification.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.ByName, Mandatory = true, ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets friendly name of classification.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.ByFriendlyName, Mandatory = true, ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
+        public string FriendlyName { get; set; }
+        #endregion
+
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
@@ -36,8 +52,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             List<Fabric> fabrics = new List<Fabric>();
             List<StorageClassification> storageClassifications = new List<StorageClassification>();
-            List<StorageClassificationMapping> storageClassificationMappings
-                = new List<StorageClassificationMapping>();
 
             Task fabricTask = RecoveryServicesClient.EnumerateFabricsAsync((entities) =>
                 {
@@ -50,28 +64,42 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     storageClassifications.AddRange(entities);
                 });
 
-            Task mappingsTask = 
-                RecoveryServicesClient.EnumerateStorageClassificationMappingsAsync((entities) =>
-                {
-                    storageClassificationMappings.AddRange(entities);
-                });
-
-            Task.WaitAll(fabricTask, storageClassificationTask, mappingsTask);
+            Task.WaitAll(fabricTask, storageClassificationTask);
 
             var fabricMap = fabrics.ToDictionary(item => item.Id, item => item);
-            var classificationMap = storageClassifications
-                .ToDictionary(item => item.Id, item => item);
-            var mappingsDict = storageClassificationMappings
-                .GroupBy(item => item.GetPrimaryStorageClassificationId())
-                .ToDictionary(item => item.Key, item => item.ToList());
 
-            List<ASRStorageClassification> psStorageClassifications
-                = new List<ASRStorageClassification>();
+            switch (this.ParameterSetName)
+            {
+                case ASRParameterSets.ByFriendlyName:
+                    storageClassifications = storageClassifications.Where(item =>
+                        item.Properties.FriendlyName.Equals(
+                            this.FriendlyName, 
+                            StringComparison.InvariantCultureIgnoreCase))
+                        .ToList();
+                    break;
+                case ASRParameterSets.ByName:
+                    storageClassifications = storageClassifications.Where(item =>
+                        item.Name.Equals(
+                            this.Name, 
+                            StringComparison.InvariantCultureIgnoreCase))
+                        .ToList();
+                    break;
+            }
 
-            var psObject = storageClassifications.ConvertAll(item => 
-                item.GetPSObject(classificationMap, fabricMap, mappingsDict));
+            var psObject = storageClassifications.ConvertAll(item =>
+                {
+                    var fabric = fabricMap[item.GetFabricId()];
 
-            base.WriteObject(psObject);
+                    return new ASRStorageClassification()
+                    {
+                        FabricFriendlyName = fabric.Properties.FriendlyName,
+                        FriendlyName = item.Properties.FriendlyName,
+                        Id = item.Id,
+                        Name = item.Name
+                    };
+                });
+
+            this.WriteObject(psObject, true);
         }
     }
 }

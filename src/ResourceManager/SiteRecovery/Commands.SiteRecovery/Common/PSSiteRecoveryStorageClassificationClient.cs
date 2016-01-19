@@ -89,73 +89,42 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Starts job for unmapping storage classifications.
         /// </summary>
         /// <param name="mapping">Classification mapping.</param>
-        /// <returns>Job object.</returns>
-        public ASRJob UnmapStorageClassifications(StorageClassificationMapping mapping)
+        /// <returns>Operation response.</returns>
+        public LongRunningOperationResponse UnmapStorageClassifications(
+            StorageClassificationMapping mapping)
         {
             string[] tokens = mapping.Id.UnFormatArmId(
                 ARMResourceIdPaths.StorageClassificationMappingResourceIdPath);
-            LongRunningOperationResponse operationResponse =
-                this.GetSiteRecoveryClient().StorageClassificationMapping
+            return this.GetSiteRecoveryClient().StorageClassificationMapping
                 .BeginUnpairStorageClassification(
                 tokens[0],
                 tokens[1],
                 tokens[2],
                 this.GetRequestHeaders());
-
-            JobResponse jobResponse =
-                this.GetAzureSiteRecoveryJobDetails(
-                PSRecoveryServicesClient.GetJobIdFromReponseLocation(operationResponse.Location));
-
-            return new ASRJob(jobResponse.Job);
         }
 
         /// <summary>
         /// Starts job for mapping storage classification.
         /// </summary>
         /// <param name="primaryClassification">Primary classification.</param>
-        /// <param name="recoveryClassification">Recovery classification.</param>
+        /// <param name="input">Mapping input.</param>
         /// <param name="armName">Optional. ARM name of the mapping.</param>
-        /// <returns>Job object.</returns>
-        public ASRJob MapStorageClassification(
+        /// <returns>Operation response.</returns>
+        public LongRunningOperationResponse MapStorageClassification(
             ASRStorageClassification primaryClassification,
-            ASRStorageClassification recoveryClassification,
-            string armName = null)
+            StorageClassificationMappingInput input,
+            string armName)
         {
-            string[] tokens = primaryClassification.StorageClassificationId.UnFormatArmId(
+            string[] tokens = primaryClassification.Id.UnFormatArmId(
                 ARMResourceIdPaths.StorageClassificationResourceIdPath);
 
-            if (string.IsNullOrEmpty(armName))
-            {
-                armName = string.Format(
-                    "StrgMap_{0}_{1}",
-                    primaryClassification.StorageClassificationFriendlyName,
-                    recoveryClassification.StorageClassificationFriendlyName);
-            }
-
-            var props = new StorageClassificationMappingInputProperties()
-            {
-                TargetStorageClassificationId = recoveryClassification.StorageClassificationId
-            };
-
-            var input = new StorageClassificationMappingInput()
-            {
-                Properties = props
-            };
-
-            LongRunningOperationResponse operationResponse =
-                this.GetSiteRecoveryClient().StorageClassificationMapping
+            return this.GetSiteRecoveryClient().StorageClassificationMapping
                 .BeginPairStorageClassification(
                 tokens[0],
                 tokens[1],
                 armName,
                 input,
                 this.GetRequestHeaders());
-
-            JobResponse jobResponse =
-                this.GetAzureSiteRecoveryJobDetails(
-                PSRecoveryServicesClient.GetJobIdFromReponseLocation(operationResponse.Location));
-
-            return new ASRJob(jobResponse.Job);
         }
     }
 
@@ -199,44 +168,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             return vaultId + "/" + string.Format(
                 ARMResourceIdPaths.FabricResourceIdPath,
                 tokens[0]);
-        }
-
-        /// <summary>
-        /// Gets powershell object from Storage classification object.
-        /// </summary>
-        /// <param name="classification">Classification to process.</param>
-        /// <param name="classificationMap">Dictionary of all possible classifications.</param>
-        /// <param name="fabricMap">Dictionary of list of fabrics.</param>
-        /// <param name="mappingsDict">Dictionary of mapping objects.</param>
-        /// <returns>Powershell representation of storage classification.</returns>
-        public static ASRStorageClassification GetPSObject(
-            this StorageClassification classification,
-            Dictionary<string, StorageClassification> classificationMap,
-            Dictionary<string, Fabric> fabricMap,
-            Dictionary<string, List<StorageClassificationMapping>> mappingsDict)
-        {
-            var fabric = fabricMap[classification.GetFabricId()];
-            List<StorageClassificationMapping> targetClassifications;
-
-            return new ASRStorageClassification()
-            {
-                FabricFriendlyName = fabric.Properties.FriendlyName,
-                FabricId = fabric.Id,
-                StorageClassificationFriendlyName =
-                    classification.Properties.FriendlyName,
-                StorageClassificationId = classification.Id,
-                TargetClassifications = 
-                    mappingsDict.TryGetValue(
-                        classification.Id, 
-                        out targetClassifications) ?
-                    targetClassifications.ConvertAll(item => 
-                        classificationMap[item.Properties.TargetStorageClassificationId]
-                        .GetPSObject(
-                        classificationMap,
-                        fabricMap,
-                        mappingsDict)) :
-                    new List<ASRStorageClassification>()
-            };
         }
     }
 }

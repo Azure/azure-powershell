@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No storage classification mapping found between {0} and {1}.
+        ///   Looks up a localized string similar to No storage classification mapping found with Id {0}.
         /// </summary>
         internal static string NoClassificationMappingFound {
             get {

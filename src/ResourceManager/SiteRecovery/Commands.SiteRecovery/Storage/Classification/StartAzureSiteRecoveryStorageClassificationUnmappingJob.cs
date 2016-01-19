@@ -35,14 +35,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByObject, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public ASRStorageClassification PrimaryStorageClassification { get; set; }
-
-        /// <summary>
-        /// Gets or sets recovery storage classification.
-        /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByObject, Mandatory = true)]
-        [ValidateNotNullOrEmpty]
-        public ASRStorageClassification RecoveryStorageClassification { get; set; }
+        public ASRStorageClassificationMapping StorageClassificationMapping { get; set; }
         #endregion
 
         /// <summary>
@@ -63,22 +56,24 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
             StorageClassificationMapping selectedMap = storageClassificationMappings
                 .Where(item =>
-                    item.Properties.TargetStorageClassificationId.Equals(
-                    RecoveryStorageClassification.StorageClassificationId))
-                .Where(item => item.GetPrimaryStorageClassificationId().Equals(
-                    PrimaryStorageClassification.StorageClassificationId))
+                    item.Id.Equals(StorageClassificationMapping.Id))
                 .FirstOrDefault();
 
             if (selectedMap == null)
             {
                 throw new ArgumentException(
                     string.Format(Properties.Resources.NoClassificationMappingFound,
-                    PrimaryStorageClassification.StorageClassificationFriendlyName,
-                    RecoveryStorageClassification.StorageClassificationFriendlyName));
+                    StorageClassificationMapping.Id));
             }
             else
             {
-                base.WriteObject(RecoveryServicesClient.UnmapStorageClassifications(selectedMap));
+                var operationResponse =
+                    RecoveryServicesClient.UnmapStorageClassifications(selectedMap);
+                JobResponse jobResponse =
+                    RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
+                    PSRecoveryServicesClient.GetJobIdFromReponseLocation(operationResponse.Location));
+
+                base.WriteObject(new ASRJob(jobResponse.Job));
             }
         }
     }

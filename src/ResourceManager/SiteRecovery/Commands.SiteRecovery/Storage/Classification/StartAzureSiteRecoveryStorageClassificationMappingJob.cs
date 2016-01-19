@@ -14,6 +14,7 @@
 
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -46,9 +47,32 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            base.WriteObject(RecoveryServicesClient.MapStorageClassification(
+            string armName = string.Format(
+                    "StrgMap_{0}_{1}",
+                    PrimaryStorageClassification.Name,
+                    RecoveryStorageClassification.Name);
+
+            var props = new StorageClassificationMappingInputProperties()
+            {
+                TargetStorageClassificationId = RecoveryStorageClassification.Id
+            };
+
+            var input = new StorageClassificationMappingInput()
+            {
+                Properties = props
+            };
+
+            LongRunningOperationResponse operationResponse =
+                RecoveryServicesClient.MapStorageClassification(
                 PrimaryStorageClassification,
-                RecoveryStorageClassification));
+                input,
+                armName);
+
+            JobResponse jobResponse =
+                RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
+                PSRecoveryServicesClient.GetJobIdFromReponseLocation(operationResponse.Location));
+
+            base.WriteObject(new ASRJob(jobResponse.Job));
         }
     }
 }
