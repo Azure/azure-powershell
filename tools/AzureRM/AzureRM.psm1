@@ -64,7 +64,7 @@ function CheckIncompatibleVersion([bool]$Force)
   }
 }
 
-function Install-ModuleWithVersionCheck([string]$Name,[string]$MajorVersion,[string]$Repository,[string]$Scope)
+function Install-ModuleWithVersionCheck([string]$Name,[string]$MajorVersion,[string]$Repository,[string]$Scope,[switch]$Force)
 {
   $_MinVer = "$MajorVersion.0.0.0"
   $_MaxVer = "$MajorVersion.9999.9999.9999"
@@ -74,7 +74,7 @@ function Install-ModuleWithVersionCheck([string]$Name,[string]$MajorVersion,[str
     $_ModuleAction = "installed"
     if ($_ExistingModule -ne $null)
     {
-      Install-Module -Name $Name -Repository $Repository -Scope $Scope -MinimumVersion $_MinVer -MaximumVersion $_MaxVer -Force -ErrorAction Stop
+      Install-Module -Name $Name -Repository $Repository -Scope $Scope -MinimumVersion $_MinVer -MaximumVersion $_MaxVer -Force:$force -ErrorAction Stop
       $_ModuleAction = "updated"
     }
     else 
@@ -104,6 +104,9 @@ function Install-ModuleWithVersionCheck([string]$Name,[string]$MajorVersion,[str
  
  .Parameter Scope
   Specifies the parameter scope.
+
+ .Parameter Force
+  Force download and installation of modules already installed.
 #>
 function Update-AzureRM
 {
@@ -134,12 +137,12 @@ function Update-AzureRM
   {
     Set-PSRepository -Name $Repository -InstallationPolicy Trusted
 
-    Install-ModuleWithVersionCheck "AzureRM.Profile" $MajorVersion $Repository $Scope
-    Install-ModuleWithVersionCheck "Azure.Storage" $MajorVersion $Repository $Scope
+    Install-ModuleWithVersionCheck "AzureRM.Profile" $MajorVersion $Repository $Scope -Force:$false
+    Install-ModuleWithVersionCheck "Azure.Storage" $MajorVersion $Repository $Scope -Force:$false
 
     # Start new job
     $AzureRMModules | ForEach {
-      Install-ModuleWithVersionCheck $_ $MajorVersion $Repository $Scope
+      Install-ModuleWithVersionCheck $_ $MajorVersion $Repository $Scope -Force:$false
     }    
   } finally {
     # Clean up
