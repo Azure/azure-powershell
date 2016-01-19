@@ -25,7 +25,7 @@ CLUPackages require some additional files to direct generation of indexing, and 
     | ------------- |:-------------:|
     | CommandAssemblies      | File name of cmdlets assembly(ies) |
     | NounPrefix      | ‘AzureRm’  The part of the cmdlet noun to remove in clu commands|
-    | NounFirst       | if true, the verb comes at the end of the command (e.g. az resourcemanager resource ls)|
+    | NounFirst       | if true, the verb comes at the end of the command (e.g. az resource ls)|
     
 * \<modulename\>.nuspec.template, which contains nuspec format metadata about the package – the base temaplate is in tools\clu\Microsoft.Azure.Commands.nuspec.template.  Here are the special fields defined in this template:
    * %PackageId% - replace with the module name (Microsoft.Azure.Commands.\<rp-name\>)

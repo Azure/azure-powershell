@@ -186,8 +186,8 @@ namespace Microsoft.CLU.CommandLineParser
 
         private void PresentCommandCompletion(string[] arguments)
         {
-            foreach (var cmd in Help.CommandDispatchHelper.CompleteCommands(new HelpPackageFinder(CLUEnvironment.GetPackagesRootPath()), 
-                    arguments).OrderBy((cmd) => cmd.Commandline))
+            foreach (var cmd in CommandDispatchHelper.CompleteCommands(new HelpPackageFinder(CLUEnvironment.GetPackagesRootPath()), arguments)
+                .OrderBy((cmd) => cmd.Commandline))
             {
                 Console.WriteLine(cmd.Commandline);
             }
@@ -203,7 +203,7 @@ namespace Microsoft.CLU.CommandLineParser
             }
             else
             { 
-                var helpFile = Help.CommandDispatchHelper.FindBestHelp(new HelpPackageFinder(CLUEnvironment.GetPackagesRootPath()), arguments);
+                var helpFile = CommandDispatchHelper.FindBestHelp(new HelpPackageFinder(CLUEnvironment.GetPackagesRootPath()), arguments);
                 if (helpFile != null)
                 {
                     // Found appropriate help...

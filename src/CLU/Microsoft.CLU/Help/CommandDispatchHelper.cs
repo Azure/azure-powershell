@@ -70,7 +70,8 @@ namespace Microsoft.CLU.Help
                    hi.Discriminators).FirstOrDefault();
         }
 
-        public static IEnumerable<HelpInfo> FindHelpMatches(IHelpPackageFinder helpPackageFinder, string[] args, Func<string, bool> matchFunc)
+        public static IEnumerable<HelpInfo> FindHelpMatches(IHelpPackageFinder helpPackageFinder, string[] args, 
+            Func<string, bool> matchFunc)
         {
             foreach (var helpInfo in helpPackageFinder.FindPackages().SelectMany((p) => p.GetHelp()))
             {
@@ -82,7 +83,8 @@ namespace Microsoft.CLU.Help
             }
         }
 
-        public static IEnumerable<CommandInfo> FindCommandMatches(IHelpPackageFinder helpPackageFinder, string[] args, Func<string, bool> matchFunc)
+        public static IEnumerable<CommandInfo> FindCommandMatches(IHelpPackageFinder helpPackageFinder, string[] args, 
+            Func<string, bool> matchFunc)
         {
             foreach (var commandIndex in GetCommandIndexes(helpPackageFinder).SelectMany((s) => { return s; }))
             {
