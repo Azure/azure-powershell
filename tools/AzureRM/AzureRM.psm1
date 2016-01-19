@@ -142,7 +142,7 @@ function Update-AzureRM
 
     # Start new job
     $AzureRMModules | ForEach {
-      Install-ModuleWithVersionCheck $_ $MajorVersion $Repository $Scope -Force:$false
+      Install-ModuleWithVersionCheck $_ $MajorVersion $Repository $Scope -Force:$force
     }    
   } finally {
     # Clean up
