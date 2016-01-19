@@ -116,6 +116,40 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.Equal(1, tenantsInAccount.Length);
             Assert.Equal(tenants.First(), tenantsInAccount[0]);
         }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void AdalExceptionsArePropagatedToCaller()
+        {
+            var tenants = new List<string> { Guid.NewGuid().ToString(), DefaultTenant.ToString() };
+            var secondsubscriptionInTheFirstTenant = Guid.NewGuid().ToString();
+            var firstList = new List<string> { DefaultSubscription.ToString(), secondsubscriptionInTheFirstTenant };
+            var secondList = new List<string> { Guid.NewGuid().ToString() };
+            var thirdList = new List<string> { DefaultSubscription.ToString(), secondsubscriptionInTheFirstTenant };
+            var fourthList = new List<string> { DefaultSubscription.ToString(), secondsubscriptionInTheFirstTenant };
+            var client = SetupTestEnvironment(tenants, firstList, secondList, thirdList, fourthList);
+
+            var tokens = new Queue<MockAccessToken>();
+            tokens.Enqueue(new MockAccessToken
+            {
+                UserId = "aaa@contoso.com",
+                LoginType = LoginType.OrgId,
+                AccessToken = "bbb"
+            });
+
+            ((MockTokenAuthenticationFactory)AzureSession.AuthenticationFactory).TokenProvider = (account, environment, tenant) =>
+            {
+                throw new AadAuthenticationCanceledException("Login window was closed", null);
+            };
+
+            Assert.Throws<AadAuthenticationCanceledException>( () => client.Login(
+                Context.Account,
+                Context.Environment,
+                null,
+                secondsubscriptionInTheFirstTenant,
+                null,
+                null));
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
