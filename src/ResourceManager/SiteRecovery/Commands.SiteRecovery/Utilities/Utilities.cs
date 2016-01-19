@@ -187,5 +187,90 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             resourceProviderNamespace = dictionary[ARMResourceTypeConstants.Providers];
             resourceType = dictionary.ContainsKey("SiteRecoveryVault") ? "SiteRecoveryVault" : "RecoveryServicesVault";
         }
+
+        /// <summary>
+        /// Returns tokens based on format provided. This works on ARM IDs only.
+        /// </summary>
+        /// <param name="data">String to unformat.</param>
+        /// <param name="format">Format reference.</param>
+        /// <returns>Array of string tokens.</returns>
+        public static string[] UnFormatArmId(this string data, string format)
+        {
+            // Creates a new copy of the strings.
+            string dataCopy = string.Copy(data);
+            string processFormat = string.Copy(format);
+
+            try
+            {
+                List<string> tokens = new List<string>();
+                string processData = string.Empty;
+
+                // First truncate data string to point from where format string starts.
+                // We start from 1 index so that if url starts with / we avoid picking the first /.
+                int firstTokenEnd = format.IndexOf("/", 1);
+                int matchIndex = dataCopy.ToLower().IndexOf(format.Substring(0, firstTokenEnd).ToLower());
+
+                if (matchIndex == -1 || string.IsNullOrEmpty(dataCopy))
+                {
+                    throw new Exception("Invalid ARM Id - " + data);
+                }
+
+                processData = dataCopy.Substring(matchIndex);
+
+                int counter = 0;
+                while (true)
+                {
+                    int markerStartIndex = processFormat.IndexOf("{" + counter + "}");
+
+                    if (markerStartIndex == -1)
+                    {
+                        break;
+                    }
+
+                    int markerEndIndex = processData.IndexOf("/", markerStartIndex);
+
+                    if (markerEndIndex == -1)
+                    {
+                        tokens.Add(processData.Substring(markerStartIndex));
+                    }
+                    else
+                    {
+                        tokens.Add(processData.Substring(markerStartIndex, markerEndIndex - markerStartIndex));
+                        processData = processData.Substring(markerEndIndex);
+                        processFormat = processFormat.Substring(markerStartIndex + 3);
+                    }
+
+                    counter++;
+                }
+
+                // Similar formats like /a/{0}/b/{1} and /c/{0}/d/{1} can return incorrect tokens
+                // therefore, adding another check to ensure that the data is unformatted correctly.
+                if (data.ToLower().Contains(string.Format(format, tokens.ToArray()).ToLower()))
+                {
+                    return tokens.ToArray();
+                }
+                else
+                {
+                    throw new Exception("Invalid ARM Id - " + data);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(
+                    string.Format("Invalid ARM Id - {0}. Exception - {1} ", data, ex));
+            }
+        }
+
+        /// <summary>
+        /// Returns ARM Id of the vault from ARM ID of the contained resource.
+        /// </summary>
+        /// <param name="data">ARM Id of the resource.</param>
+        /// <returns>ARM Id of the vault.</returns>
+        public static string GetVaultArmId(this string data)
+        {
+            return string.Format(
+                ARMResourceIdPaths.SRSArmUrlPattern,
+                data.UnFormatArmId(ARMResourceIdPaths.SRSArmUrlPattern));
+        }
     }
 }

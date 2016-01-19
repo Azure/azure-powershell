@@ -261,6 +261,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No storage classification mapping found between {0} and {1}.
+        /// </summary>
+        internal static string NoClassificationMappingFound {
+            get {
+                return ResourceManager.GetString("NoClassificationMappingFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to RecoveryServices client is null, please check Resource, Cloud Service information in Vault Settings.
         /// </summary>
         internal static string NullRecoveryServicesClient {

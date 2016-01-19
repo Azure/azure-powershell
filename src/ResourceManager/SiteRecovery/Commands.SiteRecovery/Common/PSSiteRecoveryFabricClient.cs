@@ -13,6 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using Microsoft.Azure.Management.SiteRecovery;
 using Microsoft.Azure.Management.SiteRecovery.Models;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
@@ -24,6 +27,31 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// </summary>
     public partial class PSRecoveryServicesClient
     {
+        /// <summary>
+        /// Gets all fabrics associated with a vault.
+        /// </summary>
+        /// <param name="callback">Callback to execute on the result.</param>
+        /// <returns>Task object tracking async operation.</returns>
+        public Task EnumerateFabricsAsync(Action<IEnumerable<Fabric>> callback)
+        {
+            CancellationToken cancellationToken = new CancellationToken();
+
+            Task backgroundTask = new Task(new Action(() =>
+            {
+                Task<FabricListResponse> storageTask =
+                    this.GetSiteRecoveryClient().Fabrics.ListAsync(
+                    this.GetRequestHeaders(),
+                    cancellationToken);
+
+                Task.WaitAll(storageTask);
+
+                callback(storageTask.Result.Fabrics);
+            }));
+
+            backgroundTask.Start();
+            return backgroundTask;
+        }
+
         /// <summary>
         /// Gets Azure Site Recovery Fabrics.
         /// </summary>
