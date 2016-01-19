@@ -1,0 +1,8 @@
+
+Get-AzureRMAppServicePlanMetrics
+
+
+Command syntax
+
+az appservice plan metrics ls
+

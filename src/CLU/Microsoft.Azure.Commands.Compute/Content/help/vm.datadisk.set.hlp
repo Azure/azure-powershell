@@ -1,0 +1,38 @@
+
+Set-AzureRmVMDataDisk
+
+
+
+
+
+Command syntax
+
+az vm datadisk set [--vm] <PSVirtualMachine> [--name] <string> [[--caching] <string>] [[--disksizeingb] <Nullable`1[Int32]>] [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+az vm datadisk set [--vm] <PSVirtualMachine> [--lun] <Nullable`1[Int32]> [[--caching] <string>] [[--disksizeingb] <Nullable`1[Int32]>] [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+
+Parameters
+
+--vm
+
+
+--name
+
+
+--caching
+
+
+--disksizeingb
+
+
+--informationaction
+
+
+--informationvariable
+
+
+--lun
+
+
+

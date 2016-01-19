@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Compute
         ParameterSetName = new [] {ListVMImageParamSetName})]
     [OutputType(typeof(PSVirtualMachineImageDetail),
         ParameterSetName = new [] {GetVMImageDetailParamSetName})]
-    [CliCommandAlias("vm;image;ls")]
+    [CliCommandAlias("vm image ls")]
     public class GetAzureVMImageCommand : VirtualMachineImageBaseCmdlet
     {
         protected const string ListVMImageParamSetName = "ListVMImage";

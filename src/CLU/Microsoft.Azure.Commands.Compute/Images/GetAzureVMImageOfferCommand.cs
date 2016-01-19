@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineImageOffer)]
     [OutputType(typeof(PSVirtualMachineImageOffer))]
-    [CliCommandAlias("vm;image;offer;ls")]
+    [CliCommandAlias("vm image offer ls")]
     public class GetAzureVMImageOfferCommand : VirtualMachineImageBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]

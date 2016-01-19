@@ -1,0 +1,56 @@
+
+Set-AzureRmVMExtension: Updates extension properties or adds an extension to a virtual machine.
+
+
+The Set-AzureRmVMExtension cmdlet updates properties for existing Virtual Machine Extensions or adds an extension to a virtual machine.
+
+
+Command syntax
+
+az vm extension set [--resourcegroupname] <string> [--vmname] <string> [--name] <string> [--publisher] <string> [--extensiontype] <string> [--typehandlerversion] <string> [[--settings] <Hashtable>] [[--protectedsettings] <Hashtable>] [[--location] <string>] [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+az vm extension set [--resourcegroupname] <string> [--vmname] <string> [--name] <string> [--publisher] <string> [--extensiontype] <string> [--typehandlerversion] <string> [[--settingstring] <string>] [[--protectedsettingstring] <string>] [[--location] <string>] [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+
+Parameters
+
+--resourcegroupname
+Specifies the name of a resource group.
+
+--vmname
+Specifies the name of a virtual machine. This cmdlet modifies extensions for the virtual machine that this parameter specifies.
+
+--name
+Specifies the name of an extension.
+
+--publisher
+Specifies the name of the extension publisher. The publisher provides a name when the publisher registers an extension.
+
+--extensiontype
+Specifies the extension type.
+
+--typehandlerversion
+Specifies the version of the extension to use for this virtual machine.
+
+--settings
+Specifies public configuration for the extension, as a hash table. This cmdlet does not encrypt public configuration.
+
+--protectedsettings
+Specifies private configuration for the extension, as a hash table. This cmdlet encrypts the private configuration.
+
+--location
+Specifies the location of the virtual machine.
+
+--informationaction
+
+
+--informationvariable
+
+
+--settingstring
+Specifies public configuration for the extension, as a string. This cmdlet does not encrypt public configuration.
+
+--protectedsettingstring
+Specifies private configuration for the extension, as a string. This cmdlet encrypts the private configuration.
+
+

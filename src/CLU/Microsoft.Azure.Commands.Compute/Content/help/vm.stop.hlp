@@ -1,0 +1,38 @@
+
+Stop-AzureRmVM: Stops an Azure virtual machine.
+
+
+The Stop-AzureRmVM cmdlet stops an Azure virtual machine.
+
+
+Command syntax
+
+az vm stop [--resourcegroupname] <string> [--name] <string> [--force] [--stayprovisioned] [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+az vm stop [--id] <string> [--name] <string> [--force] [--stayprovisioned] [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+
+Parameters
+
+--resourcegroupname
+Specifies the name of a resource group.
+
+--name
+Specifies the name of the virtual machine to stop.
+
+--force
+Forces the command to run without asking for user confirmation.
+
+--stayprovisioned
+Indicates that this cmdlet uses the stay provisioned setting.
+
+--informationaction
+
+
+--informationvariable
+
+
+--id
+
+
+

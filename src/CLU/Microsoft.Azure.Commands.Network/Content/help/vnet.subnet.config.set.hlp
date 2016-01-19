@@ -1,0 +1,38 @@
+
+Set-AzureRmVirtualNetworkSubnetConfig: Sets the goal state for a subnet configuration in a virtual network.
+
+
+The Set-AzureRmVirtualNetworkSubnetConfig cmdlet sets the goal state for a subnet configuration in an Azure virtual network.
+
+
+Command syntax
+
+az vnet subnet config set --name <string> --virtualnetwork <PSVirtualNetwork> --addressprefix <string> [--networksecuritygroup <PSNetworkSecurityGroup>] [--routetable <PSRouteTable>]
+
+az vnet subnet config set --name <string> --virtualnetwork <PSVirtualNetwork> --addressprefix <string> [--networksecuritygroupid <string>] [--routetableid <string>]
+
+
+Parameters
+
+--name
+Specifies the name of a subnet configuration.
+
+--virtualnetwork
+Specifies the VirtualNetwork object that contains the subnet configuration.
+
+--addressprefix
+Specifies a range of IP addresses for a subnet configuration.
+
+--networksecuritygroup
+Specifies a NetworkSecurityGroup object.
+
+--routetable
+
+
+--networksecuritygroupid
+Specifies the ID of a network security group.
+
+--routetableid
+
+
+

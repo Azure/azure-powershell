@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// The remove azure resource lock cmdlet.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmResourceLock", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    [CliCommandAlias("resource;lock;rm")]
+    [CliCommandAlias("resource lock rm")]
     public class RemoveAzureResourceLockCmdlet : ResourceLockManagementCmdletBase 
     {
         /// <summary>

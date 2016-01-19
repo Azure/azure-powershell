@@ -62,7 +62,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
             psObject.SubscriptionId = string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetSubscriptionId(resource.Id);
             psObject.Tags = TagsHelper.GetTagsHashtables(resource.Tags);
 
-
             var objectProperties = objectDefinition.Where(kvp => kvp.Value != null).SelectManyArray(kvp => new[] { kvp.Key, kvp.Value });
 
             for(int i=0; i< objectProperties.Length; i+=2)

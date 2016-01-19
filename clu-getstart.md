@@ -1,6 +1,6 @@
 # Work on CLU cmdlets
 
-### Prerequsites
+## Prerequsites
 
 * Visual Studio 2015 RTM with ASP.NET. For details, check out the [installation doc](http://docs.asp.net/en/latest/getting-started/installing-on-windows.html). 
   
@@ -8,7 +8,7 @@ Note, after done, run `dnvm list` command to check the 'coreclr' runtime is inst
 
 * Get the latest dotnet from "https://azureclu.blob.core.windows.net/tools/dotnet-win-x64.latest.zip", unzip, then add its bin folder to the PATH
 
-### Project Artifacts
+## Project Artifacts
 
 CLUPackages require some additional files to direct generation of indexing, and to provide shortcuts when files are installed.  These files can be copied from the Profile project and updated for each package.   
 
@@ -47,7 +47,7 @@ CLUPackages require some additional files to direct generation of indexing, and 
       }
 ``` 
    
-### Package Creation and Testing
+## Package Creation and Testing
    Two options
    1. Run `<repo-root>\tools\CLU\BuildAndInstallClu.bat` which build and generate all cmdlet packages and deploy to under `<repo root>\drop\clurun` folder, with 3 flavors `win7-x64`, `osx.10.10-x64` and `ubuntu.14.04-x64`. When you have a clean environment or just pull from upstream, you should clean temporary bits such as `git clean -xdf`, and run this command.
    2. Run `<repo-root>\tools\CLU\BuildCmdlet <package name like Microsoft.Azure.Commands.Profile>` <name like: Microsoft.Azure.Commands.Profile>", this will build and refresh an individual cmdlet package.
@@ -62,7 +62,7 @@ To test on osx/linux boxes, do #1, open `<repo-root>\drop\clurun`, copy the flav
 
 (All of those are subject to change, contact yugangw or adxsdkdev for any questions)
 
-### Quick introductions on cmdlets
+## Quick introductions on cmdlets
   *  Run commands using the ‘az’ prefix, cmdlet nouns, and cmdlet verbs, for example, `az env get` maps to the cmdlet `Get-AzureRmEnvironment`
   *  Cmdlet parameters use the double dash (--) so for example, getting a subscription with a particular name would be: `az subscription get –-SubscriptionName “name of subscription"`
   * To log in, 3 options
@@ -82,19 +82,19 @@ To test on osx/linux boxes, do #1, open `<repo-root>\drop\clurun`, copy the flav
 
     ```set AzureProfile=1010 ```
 
-### Testing Cmdlets
+## Testing Cmdlets
 
-#### Environment setup (Windows)
+### Environment setup (Windows)
 - Install latest version of [Git for Windows](https://git-scm.com/download/win) that has `bash 4.x` available.
 - Install `jq` using chocolatey `choco install jq` (chocolatey can be installed from [here](https://chocolatey.org/)).
 
-#### Test Infrastructure
+### Test Infrastructure
 Testing will consist of scenario tests and unit tests. Scenario tests should be written in a form of an example and be available in `.ps1` and `.sh` formats.
 
-#### Scenario Tests
+### Scenario Tests
 - Scenario tests should be saved under `./examples` directory with one directory per package. Each scenario tests should (eventually) consist of both `.ps1` and `.sh` files and should cover "P0" scenarios.
 
-##### Environment Variables for Authentication
+#### Environment Variables for Authentication
 Please set the environment variables for either Username/Password (no 2FA) or ServicePrincipal authentication:
 
 **Username/Password (without 2-factor auth):**
@@ -114,7 +114,7 @@ Please set the environment variables for either Username/Password (no 2FA) or Se
 | tenant | The tenant guid to authenticate against |
 | spnSubscription | (optional) Selects a particular subscription by id.  If not provided, the first listed subscription will be selected |
 
-##### XUnit Automation For Bash Scenario Tests
+#### XUnit Automation For Bash Scenario Tests
 - The ```Commands.Common.ScenarioTest``` project contains classes that enable executing bash scenario tests in Visual Studio, or cross-platform using dnx.
 
 - To implement an xunit bash scenario test you must
@@ -161,11 +161,55 @@ runner.EnvironmentVariables.Add("myVariableName", runner.GenerateName("myres"));
       |  ExamplesDirectory     | The path to the 'examples' directory ($pshome/examples) |
       | TestDirectory | The path to the directory where logs will be written |
       
-##### Running Bash Tests using Bash shell
+#### Running Tests in Docker
+##### Docker Setup
+**Option 1 - VirtualBox:**
+Install ToolBox from this link - https://docs.docker.com/engine/installation/windows/ 
+
+**Option 2 - Hyper-V:**
+
+1. Install ToolBox from this link - https://docs.docker.com/engine/installation/windows/ (uninstall VirtualBox afterwards)
+2.	http://sa.muel.be/2015/run-docker-on-hyper-v-with-docker-machine/ 
+    *  Increase VHD to 100GB (--hyperv-disk-size 100000)
+    *  List of other switches for create command - https://docs.docker.com/machine/drivers/hyper-v/
+
+##### Workflow
+1. Build packages (see [instructions](#package-creation-and-testing))
+2. From command line with admin priveleges navigate to azure-powershell root folder and run ```docker build .```
+3. Copy image id from the output. For example in the output below the image id is *26f067684da3*:
+
+   ```
+   Successfully built 26f067684da3
+   ```
+4. Run ```docker run -it [IMAGEID]``` to SSH into the Docker image
+5. In the SSH window run:
+
+   ```bash
+   export azureUser=<username@contosocorp.com>
+   export password=<your_password>
+   export userSubscription=<subscription>
+   export spn=<spn-guid>
+   export secret=<spn-secret>
+   export tenant=<spn-tenant>
+   export spnSubscription=<subscription>
+   export azureUser=<username@contosocorp.com>
+   export password=<your_password>
+   dnx test
+   ```
+	
+
+#### Running Bash Tests using Bash shell
 - Bash tests should be runnable from bash shell in windows/linux/mac environments.
 - To manually run the tests; please set [environment variables](#Environment_Variables_for_Authentication) for authentication as well as update PATH and run `./examples/lib/testrunner.sh`
 
    ```bash
+   export azureUser=<username@contosocorp.com>
+   export password=<your_password>
+   export userSubscription=<subscription>
+   export spn=<spn-guid>
+   export secret=<spn-secret>
+   export tenant=<spn-tenant>
+   export spnSubscription=<subscription>
    export azureUser=<username@contosocorp.com>
    export password=<your_password>
    export PATH=/<path-to-drop>/clurun/win7-x64/:$PATH
@@ -175,10 +219,10 @@ runner.EnvironmentVariables.Add("myVariableName", runner.GenerateName("myres"));
 - The location for ARM will be provided via variable `$location`.
 - "jq" package and BASH assert (e.g. `[ "foo" == "bar" ]`) should be used to validate the responses.
 
-##### PowerShell Tests
+#### PowerShell Tests
 TODO: Add section on PowerShell testing
 
-#### Unit Tests
+### Unit Tests
 TODO: Add section on unit testing
 
 

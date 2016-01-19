@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.New, ProfileNouns.VirtualMachine)]
     [OutputType(typeof(PSComputeLongRunningOperation))]
-    [CliCommandAlias("vm;create")]
+    [CliCommandAlias("vm create")]
     public class NewAzureVMCommand : VirtualMachineBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]

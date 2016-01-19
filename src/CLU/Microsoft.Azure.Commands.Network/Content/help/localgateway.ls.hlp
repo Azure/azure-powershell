@@ -1,0 +1,21 @@
+
+Get-AzureRmLocalNetworkGateway
+
+
+
+
+
+Command syntax
+
+az localgateway ls [--name <string>] --resourcegroupname <string>
+
+
+Parameters
+
+--name
+
+
+--resourcegroupname
+
+
+

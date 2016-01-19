@@ -1,0 +1,8 @@
+
+Add-AzureRmVpnClientRevokedCertificate
+
+
+Command syntax
+
+az vpn client revoked certificate add
+

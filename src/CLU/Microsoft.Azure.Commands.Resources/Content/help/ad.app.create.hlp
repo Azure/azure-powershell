@@ -1,0 +1,61 @@
+
+New-AzureRmADApplication: Creates a new azure active directory application.
+
+
+This is the Description section
+
+Creates a new azure active directory application.
+
+
+Command syntax
+
+az activedirectory app create --displayname <string> --homepage <string> --identifieruris <String[]> [--profile <AzureProfile>]
+
+az activedirectory app create --displayname <string> --homepage <string> --identifieruris <String[]> --password <string> [--startdate <DateTime>] [--enddate <DateTime>] [--profile <AzureProfile>]
+
+az activedirectory app create --displayname <string> --homepage <string> --identifieruris <String[]> --passwordcredentials <PSADPasswordCredential[]> [--profile <AzureProfile>]
+
+az activedirectory app create --displayname <string> --homepage <string> --identifieruris <String[]> --keyvalue <string> [--keytype <string>] [--keyusage <string>] [--startdate <DateTime>] [--enddate <DateTime>] [--profile <AzureProfile>]
+
+az activedirectory app create --displayname <string> --homepage <string> --identifieruris <String[]> --keycredentials <PSADKeyCredential[]> [--profile <AzureProfile>]
+
+
+Parameters
+
+--displayname
+
+
+--homepage
+
+
+--identifieruris
+
+
+--profile
+
+
+--password
+
+
+--startdate
+
+
+--enddate
+
+
+--passwordcredentials
+
+
+--keyvalue
+
+
+--keytype
+
+
+--keyusage
+
+
+--keycredentials
+
+
+

@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Profile
     [Cmdlet(VerbsCommon.Get, "AzureRmTenant")]
     [Alias("Get-AzureRmDomain")]
     [OutputType(typeof(PSAzureTenant))]
-    [CliCommandAlias("tenant;ls")]
+    [CliCommandAlias("tenant ls")]
     public class GetAzureRMTenantCommand : AzureRMCmdlet
     {
         [Parameter(Mandatory = false, Position = 0, ValueFromPipelineByPropertyName = true)]

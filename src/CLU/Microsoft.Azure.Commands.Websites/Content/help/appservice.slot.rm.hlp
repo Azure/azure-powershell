@@ -1,0 +1,8 @@
+
+Remove-AzureRMWebAppSlot
+
+
+Command syntax
+
+az appservice slot rm
+

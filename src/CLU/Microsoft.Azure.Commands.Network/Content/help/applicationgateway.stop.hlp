@@ -1,0 +1,18 @@
+
+Stop-AzureRmApplicationGateway: Stops an application gateway
+
+
+
+
+
+Command syntax
+
+az applicationgateway stop --applicationgateway <PSApplicationGateway>
+
+
+Parameters
+
+--applicationgateway
+Specifies the application gateway to stop.
+
+

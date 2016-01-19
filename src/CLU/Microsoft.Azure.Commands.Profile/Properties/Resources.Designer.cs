@@ -267,6 +267,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///    Looks up a localized string similar to TenantId &apos;{0}&apos; contains more than one subscription. First one will be selected for further use. To select another subscription, use &apos;context set&apos; cmdlet..
+        /// </summary>
+        internal static string TooManyTenants {
+            get {
+                return ResourceManager.GetString("TooManyTenants", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///    Looks up a localized string similar to To create an access token credential, you must provide an access token account..
         /// </summary>
         internal static string TypeNotAccessToken {

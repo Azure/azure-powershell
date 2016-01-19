@@ -1,0 +1,62 @@
+
+Set-AzureRmVMOperatingSystem: Sets operating system properties for a virtual machine.
+
+
+The Set-AzureRmVMOperatingSystem cmdlet sets operating system properties for a virtual machine. You can specify logon credentials computer name, and operating system type.
+
+
+Command syntax
+
+az vm os set [--vm] <PSVirtualMachine> [--windows] [--computername] <string> [--credential] <PSCredential> [[--customdata] <string>] [[--provisionvmagent]] [[--enableautoupdate]] [[--timezone] <string>] [[--winrmhttp]] [[--winrmhttps]] [[--winrmcertificateurl] <Uri>] [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+az vm os set [--vm] <PSVirtualMachine> [--linux] [--computername] <string> [--credential] <PSCredential> [[--customdata] <string>] [[--disablepasswordauthentication]] [--informationaction <ActionPreference>] [--informationvariable <string>]
+
+
+Parameters
+
+--vm
+Specifies the local virtual machine object on which to set operating system properties. To obtain a virtual machine object, use the Get-AzureRmVM cmdlet. Create a virtual machine object by using the New-AzureRmVMConfig cmdlet.
+
+--windows
+Indicates that the type of operating system is Windows.
+
+--computername
+Specifies the name of the computer.
+
+--credential
+Specifies the user name and password for the virtual machine as a PSCredential object. To obtain a credential, use the Get-Credential cmdlet. For more information, type Get-Help Get-Credential.
+
+--customdata
+Specifies a base-64 encoded string of custom data. This is decoded to a binary array that is saved as a file on the virtual machine. The maximum length of the binary array is 65535 bytes.
+
+--provisionvmagent
+Indicates that the settings require that the virtual machine agent be installed on the virtual machine.
+
+--enableautoupdate
+Indicates that this cmdlet enables auto update.
+
+--timezone
+Specifies the time zone for the virtual machine.
+
+--winrmhttp
+Indicates that this operating system uses HTTP WinRM.
+
+--winrmhttps
+Indicates that this operating system uses HTTPS WinRM.
+
+--winrmcertificateurl
+Specifies the URI of a WinRM certificate. This needs to be stored in a Key Vault.
+
+--informationaction
+
+
+--informationvariable
+
+
+--linux
+Indicates that the type of operating system is Linux.
+
+--disablepasswordauthentication
+Indicates that this cmdlet disables password authentication.
+
+

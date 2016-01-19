@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Compute
         ProfileNouns.VirtualMachineExtension,
         DefaultParameterSetName = SettingsParamSet)]
     [OutputType(typeof(PSComputeLongRunningOperation))]
-    [CliCommandAlias("vm;extension;set")]
+    [CliCommandAlias("vm extension set")]
     public class SetAzureVMExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         protected const string SettingStringParamSet = "SettingString";

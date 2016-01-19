@@ -1,0 +1,21 @@
+
+Remove-AzureRmApplicationGatewayBackendAddressPool: Removes a back-end address pool from an application gateway.
+
+
+The Remove-AzureRmApplicationGatewayBackendAddressPool cmdlet removes a back-end address pool from an Azure application gateway.
+
+
+Command syntax
+
+az applicationgateway backendaddress pool rm --name <string> --applicationgateway <PSApplicationGateway>
+
+
+Parameters
+
+--name
+Specifies the name of the back-end address pool that this cmdlet removes.
+
+--applicationgateway
+Specifies the application gateway from which this cmdlet removes a back-end address pool.
+
+

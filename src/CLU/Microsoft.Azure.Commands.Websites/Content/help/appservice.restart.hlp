@@ -1,0 +1,8 @@
+
+Restart-AzureRmWebApp
+
+
+Command syntax
+
+az appservice restart
+

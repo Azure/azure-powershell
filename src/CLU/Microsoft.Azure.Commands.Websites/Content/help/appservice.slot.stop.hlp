@@ -1,0 +1,8 @@
+
+Stop-AzureRMWebAppSlot
+
+
+Command syntax
+
+az appservice slot stop
+

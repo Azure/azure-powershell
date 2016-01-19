@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// this commandlet will let you get Azure servce plan metrics
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRMAppServicePlanMetrics"), OutputType(typeof(PSResourceMetric))]
-    [CliCommandAlias("appservice;plan;metrics;ls")]
+    [CliCommandAlias("appservice plan metrics ls")]
     public class GetAzureAppServicePlanMetricsCmdlet : AppServicePlanBaseCmdlet
     {
         [Parameter(Position = 2, Mandatory = true, HelpMessage = "Names of web app metrics")]

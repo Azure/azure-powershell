@@ -1,0 +1,77 @@
+
+New-AzureRmNetworkInterface: Creates a network interface.
+
+
+The New-AzureRmNetworkInterface cmdlet creates an Azure  network interface.
+
+
+Command syntax
+
+az networkinterface new --name <string> --resourcegroupname <string> --location <string> [--privateipaddress <string>] --subnetid <string> [--publicipaddressid <string>] [--networksecuritygroupid <string>] [--loadbalancerbackendaddresspoolid <List`1[String]>] [--loadbalancerinboundnatruleid <List`1[String]>] [--ipconfigurationname <string>] [--dnsserver <List`1[String]>] [--internaldnsnamelabel <string>] [--enableipforwarding] [--tag <Hashtable[]>] [--force]
+
+az networkinterface new --name <string> --resourcegroupname <string> --location <string> [--privateipaddress <string>] --subnet <PSSubnet> [--publicipaddress <PSPublicIpAddress>] [--networksecuritygroup <PSNetworkSecurityGroup>] [--loadbalancerbackendaddresspool <List`1[PSBackendAddressPool]>] [--loadbalancerinboundnatrule <List`1[PSInboundNatRule]>] [--ipconfigurationname <string>] [--dnsserver <List`1[String]>] [--internaldnsnamelabel <string>] [--enableipforwarding] [--tag <Hashtable[]>] [--force]
+
+
+Parameters
+
+--name
+Specifies the name of the network interface to create.
+
+--resourcegroupname
+Specifies the name of a resource group. This cmdlet creates a network interface for the resource group that this parameter specifies.
+
+--location
+Specifies the region for a network interface.
+
+--privateipaddress
+Specifies a static IPv4 IP address to assign to this network interface. This parameter is optional.
+
+--subnetid
+Specifies the ID of the subnet for which to create a network interface.
+
+--publicipaddressid
+Specifies the ID of a PublicIPAddress object to assign to a network interface.
+
+--networksecuritygroupid
+Specifies the ID of a network security group.
+
+--loadbalancerbackendaddresspoolid
+Specifies the ID of a BackendAddressPool object.
+
+--loadbalancerinboundnatruleid
+Specifies the ID of an inbound NAT rule configuration for a load balancer.
+
+--ipconfigurationname
+Specifies the name of an IP configuration.
+
+--dnsserver
+Specifies the DNS server for the network interface.
+
+--internaldnsnamelabel
+
+
+--enableipforwarding
+
+
+--tag
+Specifies a dictionary of tags to associate with a network interface.
+
+--force
+Forces the creation of the network interface even if a network interface with the same name already exists.
+
+--subnet
+Specifies a Subnet object. This cmdlet creates a network interface for the subnet that this parameter specifies.
+
+--publicipaddress
+Specifies a PublicIPAddress object to assign to a network interface.
+
+--networksecuritygroup
+Specifies a NetworkSecurityGroup object.
+
+--loadbalancerbackendaddresspool
+Specifies a BackendAddressPool object.
+
+--loadbalancerinboundnatrule
+Specifies an inbound NAT rule configuration for a load balancer.
+
+
