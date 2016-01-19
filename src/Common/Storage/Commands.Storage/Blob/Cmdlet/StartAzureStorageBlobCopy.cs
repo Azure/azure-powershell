@@ -36,6 +36,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
        OutputType(typeof(AzureStorageBlob))]
     public class StartAzureStorageBlobCopy : StorageDataMovementCmdletBase, IModuleAssemblyInitializer
     {
+        private const string BlobTypeMismatch = "Blob type of the blob reference doesn't match blob type of the blob.";
+
         /// <summary>
         /// Blob Pipeline parameter set name
         /// </summary>
@@ -472,7 +474,20 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
         private async Task StartCopyFromBlob(long taskId, IStorageBlobManagement destChannel, CloudBlob srcBlob, CloudBlob destBlob)
         {
-            await StartCopyFromUri(taskId, destChannel, srcBlob.GenerateUriWithCredentials(), destBlob);
+            try
+            {
+                await StartCopyFromUri(taskId, destChannel, srcBlob.GenerateUriWithCredentials(), destBlob);
+            }
+            catch (StorageException ex)
+            {
+                if (0 == string.Compare(ex.Message, BlobTypeMismatch, StringComparison.OrdinalIgnoreCase))
+                {
+                    // Current use error message to decide whether it caused by blob type mismatch,
+                    // We should ask xscl to expose an error code for this..
+                    // Opened workitem 1487579 to track this.
+                    throw new InvalidOperationException(Resources.DestinationBlobTypeNotMatch);
+                }
+            }
         }
 
         private async Task StartCopyFromUri(long taskId, IStorageBlobManagement destChannel, Uri srcUri, CloudBlob destBlob)

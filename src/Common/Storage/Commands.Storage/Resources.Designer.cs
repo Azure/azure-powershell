@@ -466,6 +466,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to User specified blob type does not match the blob type of the existing destination blob..
+        /// </summary>
+        internal static string DestinationBlobTypeNotMatch {
+            get {
+                return ResourceManager.GetString("DestinationBlobTypeNotMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Directory &apos;{0}&apos; doesn&apos;t exist..
         /// </summary>
         internal static string DirectoryNotExists {
