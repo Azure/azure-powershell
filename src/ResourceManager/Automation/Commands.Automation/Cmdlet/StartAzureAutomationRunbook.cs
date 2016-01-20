@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the switch parameter to wait for job output
         /// </summary>
-        [Parameter(Mandatory = false, ParameterSetName = AutomationCmdletParameterSets.BySynchronousReturnJobOutput, HelpMessage = "Maximum time in seconds to wait for job completion. Default max wait time is 5400 seconds.")]
+        [Parameter(Mandatory = false, ParameterSetName = AutomationCmdletParameterSets.BySynchronousReturnJobOutput, HelpMessage = "Maximum time in seconds to wait for job completion. Default max wait time is 10800 seconds.")]
         public int MaxWaitSeconds
         {
             get { return this.timeout; }
