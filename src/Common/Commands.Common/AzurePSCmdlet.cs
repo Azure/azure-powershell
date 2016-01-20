@@ -27,6 +27,7 @@ using System.Management.Automation.Host;
 using System.Text;
 using System.Linq;
 using System.Threading;
+using Microsoft.Rest;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
@@ -40,6 +41,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         private RecordingTracingInterceptor _httpTracingInterceptor;
         
         private DebugStreamTraceListener _adalListener;
+
+        private ServiceClientTracingInterceptor _serviceClientTracingInterceptor;
+
         protected static AzurePSDataCollectionProfile _dataCollectionProfile = null;
         protected static string _errorRecordFolderPath = null;
         protected const string _fileTimeStampSuffixFormat = "yyyy-MM-dd-THH-mm-ss-fff";
@@ -216,8 +220,10 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
             _httpTracingInterceptor = _httpTracingInterceptor ?? new RecordingTracingInterceptor(_debugMessages);
             _adalListener = _adalListener ?? new DebugStreamTraceListener(_debugMessages);
+            _serviceClientTracingInterceptor = _serviceClientTracingInterceptor ?? new ServiceClientTracingInterceptor(_debugMessages);
             RecordingTracingInterceptor.AddToContext(_httpTracingInterceptor);
             DebugStreamTraceListener.AddAdalTracing(_adalListener);
+            ServiceClientTracing.AddTracingInterceptor(_serviceClientTracingInterceptor);
 
             ProductInfoHeaderValue userAgentValue = new ProductInfoHeaderValue(
                 ModuleName, string.Format("v{0}", ModuleVersion));
@@ -237,6 +243,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
             RecordingTracingInterceptor.RemoveFromContext(_httpTracingInterceptor);
             DebugStreamTraceListener.RemoveAdalTracing(_adalListener);
+            ServiceClientTracingInterceptor.RemoveTracingInterceptor(_serviceClientTracingInterceptor);
             FlushDebugMessages();
 
             AzureSession.ClientFactory.UserAgents.RemoveWhere(u => u.Product.Name == ModuleName);

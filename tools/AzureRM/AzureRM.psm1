@@ -67,7 +67,7 @@ function CheckIncompatibleVersion([bool]$Force)
   }
 }
 
-function Install-ModuleWithVersionCheck([string]$Name,[string]$MinimumVersion,[string]$Repository,[string]$Scope)
+function Install-ModuleWithVersionCheck([string]$Name,[string]$MinimumVersion,[string]$Repository,[string]$Scope,[switch]$Force)
 {
   $_MinVer = $MinimumVersion
   $_MaxVer = "$($_MinVer.Split(".")[0]).9999.0"
@@ -77,7 +77,7 @@ function Install-ModuleWithVersionCheck([string]$Name,[string]$MinimumVersion,[s
     $_ModuleAction = "installed"
     if ($_ExistingModule -ne $null)
     {
-      Install-Module -Name $Name -Repository $Repository -Scope $Scope -MinimumVersion $_MinVer -MaximumVersion $_MaxVer -Force -ErrorAction Stop
+      Install-Module -Name $Name -Repository $Repository -Scope $Scope -MinimumVersion $_MinVer -MaximumVersion $_MaxVer -Force:$force -ErrorAction Stop
       $_ModuleAction = "updated"
     }
     else 
@@ -107,6 +107,9 @@ function Install-ModuleWithVersionCheck([string]$Name,[string]$MinimumVersion,[s
  
  .Parameter Scope
   Specifies the parameter scope.
+
+ .Parameter Force
+  Force download and installation of modules already installed.
 #>
 function Update-AzureRM
 {
@@ -137,9 +140,9 @@ function Update-AzureRM
   {
     Set-PSRepository -Name $Repository -InstallationPolicy Trusted
 
-    # Update Profile and Storage 
-    Install-ModuleWithVersionCheck "AzureRM.Profile" $AzureRMDependencies["AzureRM.Profile"] $Repository $Scope
-    Install-ModuleWithVersionCheck "Azure.Storage" $AzureRMDependencies["Azure.Storage"] $Repository $Scope
+    # Update Profile and Storage
+    Install-ModuleWithVersionCheck "AzureRM.Profile" $AzureRMDependencies["AzureRM.Profile"] $Repository $Scope -Force:$force
+    Install-ModuleWithVersionCheck "Azure.Storage" $AzureRMDependencies["Azure.Storage"] $Repository $Scope -Force:$force
 
     # Start new job
     $AzureRMModules.Keys | ForEach {
@@ -147,7 +150,7 @@ function Update-AzureRM
       if(!$MinVersion) {
         $_MinVer = $AzureRMModules[$_]
       }
-      Install-ModuleWithVersionCheck $_ $_MinVer $Repository $Scope
+      Install-ModuleWithVersionCheck $_ $_MinVer $Repository $Scope -Force:$force
     }    
   } finally {
     # Clean up
