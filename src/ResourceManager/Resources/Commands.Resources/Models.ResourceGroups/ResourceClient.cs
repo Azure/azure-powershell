@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             }
         }
 
-        private DeploymentExtended ProvisionDeploymentStatus(string resourceGroup, string deploymentName, Deployment deployment)
+        public DeploymentExtended ProvisionDeploymentStatus(string resourceGroup, string deploymentName, Deployment deployment)
         {
             operations = new List<DeploymentOperation>();
 

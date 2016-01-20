@@ -17,12 +17,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using Hyak.Common;
-using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.KeyVault;
 using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
+using Microsoft.Azure.ActiveDirectory.GraphClient;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
