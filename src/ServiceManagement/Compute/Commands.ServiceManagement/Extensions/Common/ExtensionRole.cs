@@ -65,6 +65,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
         {
             var normalizedExtName = extensionName.Replace(".", string.Empty);
             normalizedExtName = normalizedExtName.Replace(" ", string.Empty);
+            normalizedExtName = normalizedExtName.Replace("_", string.Empty);
 
             var suffix = new StringBuilder();
             suffix.AppendFormat(ExtensionIdSuffixTemplate, normalizedExtName, slot, index);
