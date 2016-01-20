@@ -96,40 +96,34 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteCmdlet()
+        public override void ExecuteSiteRecoveryCmdlet()
         {
-            try
-            {
-                switch(this.ParameterSetName)
-                {
-                    case ASRParameterSets.ByPEObjectWithVMNetwork:
-                        this.networkType = "VmNetworkAsInput"; 
-                        this.networkId = this.VMNetwork.ID;
-                        break;
-                    //case ASRParameterSets.ByPEObjectWithLogicalVMNetwork:
-                    //    this.networkType = "LogicalNetworkAsInput"; 
-                    //    this.networkId = this.LogicalVMNetwork.ID;
-                    //    break;
-                    case ASRParameterSets.ByPEObjectWithAzureVMNetworkId:
-                        this.networkType = "VmNetworkAsInput"; 
-                        this.networkId = this.AzureVMNetworkId;
-                        break;
-                    case ASRParameterSets.ByPEObject:
-                        this.networkType = "NoNetworkAttachAsInput"; 
-                        this.networkId = null;
-                        break;
-                }
+            base.ExecuteSiteRecoveryCmdlet();
 
-                this.protectionEntityName = this.ProtectionEntity.Name;
-                this.protectionContainerName = this.ProtectionEntity.ProtectionContainerId;
-                this.fabricName = Utilities.GetValueFromArmId(this.ProtectionEntity.ID, ARMResourceTypeConstants.ReplicationFabrics);
-                this.StartPETestFailover();
-           }
-            
-            catch (Exception exception)
+            switch (this.ParameterSetName)
             {
-                this.HandleException(exception);
+                case ASRParameterSets.ByPEObjectWithVMNetwork:
+                    this.networkType = "VmNetworkAsInput";
+                    this.networkId = this.VMNetwork.ID;
+                    break;
+                //case ASRParameterSets.ByPEObjectWithLogicalVMNetwork:
+                //    this.networkType = "LogicalNetworkAsInput"; 
+                //    this.networkId = this.LogicalVMNetwork.ID;
+                //    break;
+                case ASRParameterSets.ByPEObjectWithAzureVMNetworkId:
+                    this.networkType = "VmNetworkAsInput";
+                    this.networkId = this.AzureVMNetworkId;
+                    break;
+                case ASRParameterSets.ByPEObject:
+                    this.networkType = "NoNetworkAttachAsInput";
+                    this.networkId = null;
+                    break;
             }
+
+            this.protectionEntityName = this.ProtectionEntity.Name;
+            this.protectionContainerName = this.ProtectionEntity.ProtectionContainerId;
+            this.fabricName = Utilities.GetValueFromArmId(this.ProtectionEntity.ID, ARMResourceTypeConstants.ReplicationFabrics);
+            this.StartPETestFailover();
         }
 
         /// <summary>
@@ -157,7 +151,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
             ReplicationProtectedItemResponse replicationProtectedItemResponse =
                         RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(this.fabricName,
-                        this.ProtectionEntity.ProtectionContainerId, Utilities.GetValueFromArmId(protectableItemResponse.ProtectableItem.Properties.ReplicationProtectedItemId,  ARMResourceTypeConstants.ReplicationProtectedItems));
+                        this.ProtectionEntity.ProtectionContainerId, Utilities.GetValueFromArmId(protectableItemResponse.ProtectableItem.Properties.ReplicationProtectedItemId, ARMResourceTypeConstants.ReplicationProtectedItems));
 
             PolicyResponse policyResponse = RecoveryServicesClient.GetAzureSiteRecoveryPolicy(Utilities.GetValueFromArmId(replicationProtectedItemResponse.ReplicationProtectedItem.Properties.PolicyID, ARMResourceTypeConstants.ReplicationPolicies));
 
@@ -188,14 +182,14 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 RecoveryServicesClient.StartAzureSiteRecoveryTestFailover(
                 this.fabricName,
                 this.protectionContainerName,
-                Utilities.GetValueFromArmId(replicationProtectedItemResponse.ReplicationProtectedItem.Id,  ARMResourceTypeConstants.ReplicationProtectedItems),
+                Utilities.GetValueFromArmId(replicationProtectedItemResponse.ReplicationProtectedItem.Id, ARMResourceTypeConstants.ReplicationProtectedItems),
                 input);
 
             JobResponse jobResponse =
                 RecoveryServicesClient
                 .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-            WriteObject(new ASRJob(jobResponse.Job));       
+            WriteObject(new ASRJob(jobResponse.Job));
         }
     }
 }

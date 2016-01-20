@@ -48,8 +48,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteCmdlet()
+        public override void ExecuteSiteRecoveryCmdlet()
         {
+            base.ExecuteSiteRecoveryCmdlet();
+
             List<Fabric> fabrics = new List<Fabric>();
             List<StorageClassification> storageClassifications = new List<StorageClassification>();
 

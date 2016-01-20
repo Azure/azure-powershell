@@ -27,8 +27,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteCmdlet()
+        public override void ExecuteSiteRecoveryCmdlet()
         {
+            base.ExecuteSiteRecoveryCmdlet();
+
             List<StorageClassificationMapping> mappings = new List<StorageClassificationMapping>();
             Task mappingTask = 
                 RecoveryServicesClient.EnumerateStorageClassificationMappingsAsync((entities) =>

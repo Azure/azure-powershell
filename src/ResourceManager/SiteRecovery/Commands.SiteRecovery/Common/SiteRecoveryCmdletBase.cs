@@ -62,13 +62,22 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         }
 
         /// <summary>
-        /// Overrides base implementation of Process record.
+        /// Virtual method to be implemented by Site Recovery cmdlets.
         /// </summary>
-        protected override void ProcessRecord()
+        public virtual void ExecuteSiteRecoveryCmdlet()
+        {
+            // Do Nothing
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public override void ExecuteCmdlet()
         {
             try
             {
-                base.ProcessRecord();
+                base.ExecuteCmdlet();
+                ExecuteSiteRecoveryCmdlet();
             }
             catch (Exception ex)
             {

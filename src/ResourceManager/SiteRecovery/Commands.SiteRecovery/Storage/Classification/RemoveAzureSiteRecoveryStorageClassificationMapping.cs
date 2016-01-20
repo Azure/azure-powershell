@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// Pairs storage classification
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoveryStorageClassificationMapping", DefaultParameterSetName = ASRParameterSets.Default)]
-    [OutputType(typeof(IEnumerable<ASRStorageClassification>))]
+    [OutputType(typeof(IEnumerable<ASRJob>))]
     public class RemoveAzureSiteRecoveryStorageClassificationMapping : SiteRecoveryCmdletBase
     {
         #region Parameters
@@ -41,8 +41,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteCmdlet()
+        public override void ExecuteSiteRecoveryCmdlet()
         {
+            base.ExecuteSiteRecoveryCmdlet();
+
             string[] tokens = StorageClassificationMapping.Id.UnFormatArmId(
                 ARMResourceIdPaths.StorageClassificationMappingResourceIdPath);
             var operationResponse = RecoveryServicesClient.UnmapStorageClassifications(

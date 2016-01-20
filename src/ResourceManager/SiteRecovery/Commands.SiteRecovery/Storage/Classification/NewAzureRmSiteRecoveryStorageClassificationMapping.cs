@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// Pairs storage classification
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmSiteRecoveryStorageClassificationMapping", DefaultParameterSetName = ASRParameterSets.Default)]
-    [OutputType(typeof(IEnumerable<ASRStorageClassification>))]
+    [OutputType(typeof(IEnumerable<ASRJob>))]
     public class NewAzureRmSiteRecoveryStorageClassificationMapping : SiteRecoveryCmdletBase
     {
         #region Parameters
@@ -46,8 +46,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteCmdlet()
+        public override void ExecuteSiteRecoveryCmdlet()
         {
+            base.ExecuteSiteRecoveryCmdlet();
+
+            throw new Exception("BlahBlahBlah");
             string armName = string.Format(
                     "StrgMap_{0}_{1}_{2}",
                     PrimaryStorageClassification.Name,

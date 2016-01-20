@@ -42,8 +42,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteCmdlet()
+        public override void ExecuteSiteRecoveryCmdlet()
         {
+            base.ExecuteSiteRecoveryCmdlet();
+
             // Validate the Vault
             RecoveryServicesClient.ValidateVaultSettings(
                 this.Vault.Name,

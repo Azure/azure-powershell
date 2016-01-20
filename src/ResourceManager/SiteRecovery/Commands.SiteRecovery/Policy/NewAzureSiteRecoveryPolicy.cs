@@ -152,24 +152,18 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteCmdlet()
+        public override void ExecuteSiteRecoveryCmdlet()
         {
-            try
-            {
-                switch (this.ParameterSetName)
-                {
-                    case ASRParameterSets.EnterpriseToEnterprise:
-                        this.EnterpriseToEnterprisePolicyObject();
-                        break;
-                    case ASRParameterSets.EnterpriseToAzure:
-                        this.EnterpriseToAzurePolicyObject();
-                        break;
-                }
+            base.ExecuteSiteRecoveryCmdlet();
 
-            }
-            catch (Exception exception)
+            switch (this.ParameterSetName)
             {
-                this.HandleException(exception);
+                case ASRParameterSets.EnterpriseToEnterprise:
+                    this.EnterpriseToEnterprisePolicyObject();
+                    break;
+                case ASRParameterSets.EnterpriseToAzure:
+                    this.EnterpriseToAzurePolicyObject();
+                    break;
             }
         }
 

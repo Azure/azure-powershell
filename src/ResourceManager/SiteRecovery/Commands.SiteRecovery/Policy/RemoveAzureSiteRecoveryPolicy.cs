@@ -40,22 +40,17 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteCmdlet()
+        public override void ExecuteSiteRecoveryCmdlet()
         {
-            try
-            {
-                LongRunningOperationResponse responseBlue =  RecoveryServicesClient.DeletePolicy(this.Policy.Name);
-                
-                JobResponse jobResponseBlue =
-                    RecoveryServicesClient
-                    .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(responseBlue.Location));
+            base.ExecuteSiteRecoveryCmdlet();
 
-                WriteObject(new ASRJob(jobResponseBlue.Job));
-            }
-            catch (Exception exception)
-            {
-                this.HandleException(exception);
-            }
+            LongRunningOperationResponse responseBlue =  RecoveryServicesClient.DeletePolicy(this.Policy.Name);
+                
+            JobResponse jobResponseBlue =
+                RecoveryServicesClient
+                .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(responseBlue.Location));
+
+            WriteObject(new ASRJob(jobResponseBlue.Job));
         }
     }
 }
