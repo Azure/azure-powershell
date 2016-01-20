@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Creates the policy definition.
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmPolicyDefinition"), OutputType(typeof(ResourcePolicyDefinition<JToken>))]
-    [CliCommandAlias("networksecuritypolicy definition create")]
+    [CliCommandAlias("resource policy definition create")]
     public class NewAzurePolicyDefinitionCmdlet : PolicyDefinitionCmdletBase
     {
         /// <summary>

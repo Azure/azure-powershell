@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroups
     /// Deletes a deployment.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmResourceGroupDeployment", DefaultParameterSetName = RemoveAzureResourceGroupDeploymentCommand.DeploymentNameParameterSet), OutputType(typeof(bool))]
-    [CliCommandAlias("resourcemanager group deployment rm")]
+    [CliCommandAlias("resource group deployment rm")]
     public class RemoveAzureResourceGroupDeploymentCommand : ResourcesBaseCmdlet
     {
         /// <summary>

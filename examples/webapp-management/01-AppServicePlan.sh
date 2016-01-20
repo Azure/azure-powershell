@@ -9,7 +9,7 @@ tier="Standard"
 size="Medium"
 capacity=2
 skuName="S2"
-az resourcemanager group create --name "$groupName" --location "$location"
+az resource group create --name "$groupName" --location "$location"
 
 printf "\n1. Create a new app service plan %s " "$whpName"
 az appservice plan create -n "$whpName" -g "$groupName" -l "$location" --tier "$tier" --size "$size" --workers "$capacity"

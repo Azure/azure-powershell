@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Compute
         ProfileNouns.VaultSecretGroup),
     OutputType(
         typeof(PSVirtualMachine))]
-    [CliCommandAlias("vm secret add")]
+    [CliCommandAlias("vm config secret add")]
     public class NewAzureVaultSecretGroupCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Alias("VMProfile")]

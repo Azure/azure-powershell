@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Cmdlet to get existing resources from ARM cache.
     /// </summary>
     [Cmdlet(VerbsCommon.Find, "AzureRmResource", DefaultParameterSetName = FindAzureResourceCmdlet.ListResourcesParameterSet), OutputType(typeof(PSResourceObject))]
-    [CliCommandAlias("resourcemanager resource find")]
+    [CliCommandAlias("resource find")]
     public sealed class FindAzureResourceCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>

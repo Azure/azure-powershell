@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// Deletes a given role definition.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmRoleDefinition"), OutputType(typeof(bool))]
-    [CliCommandAlias("networksecurityrole definition rm")]
+    [CliCommandAlias("resource role definition rm")]
     public class RemoveAzureRoleDefinitionCommand : ResourcesBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionId,

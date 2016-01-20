@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         protected override void InitializeQosEvent()
         {
-            var commandAlias = this.GetType().GetTypeInfo().GetCustomAttribute<CliCommandAliasAttribute>();
+            var commandAlias = GetType().GetTypeInfo().GetCustomAttributes<CliCommandAliasAttribute>().First();
             QosEvent = new AzurePSQoSEvent()
             {
                 CommandName = commandAlias != null ? "az " + commandAlias.CommandName : this.MyInvocation?.MyCommand?.Name,

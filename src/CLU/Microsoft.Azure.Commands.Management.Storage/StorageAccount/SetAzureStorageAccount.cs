@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
     /// Lists all storage services underneath the subscription.
     /// </summary>
     [Cmdlet(VerbsCommon.Set, StorageAccountNounStr, DefaultParameterSetName = UpdateAccountTypeParamSet), OutputType(typeof(StorageModels.StorageAccount))]
+    [CliCommandAlias("storage account set")]
     public class SetAzureStorageAccountCommand : StorageAccountBaseCmdlet
     {
         protected const string UpdateAccountTypeParamSet = "UpdateAccountType";

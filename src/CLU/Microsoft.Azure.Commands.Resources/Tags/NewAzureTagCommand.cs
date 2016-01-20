@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Tags.Tag
     /// Creates a new tag with the specified values
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmTag"), OutputType(typeof(PSTag))]
-    [CliCommandAlias("tag create")]
+    [CliCommandAlias("resource tag create")]
     public class NewAzureTagCommand : TagBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Name of the tag. If the tag name doesn't exist, create the tag name. Otherwise, add the value to the existing tag name.")]
