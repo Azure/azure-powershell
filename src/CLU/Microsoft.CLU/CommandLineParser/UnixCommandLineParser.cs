@@ -197,8 +197,31 @@ namespace Microsoft.CLU.CommandLineParser
             // BUGBUG - NYI!
             if (arguments.Length == 0)
             {
-                // TODO
-                Console.WriteLine("Present help for Azure itself...");
+                System.IO.DirectoryInfo di = new System.IO.DirectoryInfo(CLUEnvironment.GetPackagesRootPath());
+                //var tmpHelp = new Help.CommandDispatchHelper.HelpInfo(tmpPath);
+                String rootPath = CLUEnvironment.GetPackagesRootPath();
+                try
+                {
+                    var files = from file in System.IO.Directory.EnumerateFiles(@rootPath, "az.hlp", System.IO.SearchOption.AllDirectories)
+                                from line in System.IO.File.ReadLines(file)
+                                select new
+                                {
+                                    File = file,
+                                    Line = line
+                                };
+
+                    foreach (var f in files)
+                    {
+                        Console.WriteLine(f.Line);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+             
+                return;
+                    
             }
             else
             { 
