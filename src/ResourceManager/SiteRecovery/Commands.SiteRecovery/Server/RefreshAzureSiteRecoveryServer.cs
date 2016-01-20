@@ -38,16 +38,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteCmdlet()
+        public override void ExecuteSiteRecoveryCmdlet()
         {
-            try
-            {
-                RefreshServer();
-            }
-            catch (Exception exception)
-            {
-                this.HandleException(exception);
-            }
+            base.ExecuteSiteRecoveryCmdlet();
+            RefreshServer();
         }
 
         /// <summary>

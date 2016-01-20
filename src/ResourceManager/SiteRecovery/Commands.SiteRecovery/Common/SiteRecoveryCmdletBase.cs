@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         }
 
         /// <summary>
-        /// 
+        /// Overriding base implementation go execute cmdlet.
         /// </summary>
         public override void ExecuteCmdlet()
         {
