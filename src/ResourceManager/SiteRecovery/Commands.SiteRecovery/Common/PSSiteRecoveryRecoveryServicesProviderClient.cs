@@ -66,5 +66,16 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             return this.GetSiteRecoveryClient().RecoveryServicesProvider.BeginPurging(fabricId, providerId, this.GetRequestHeaders());
         }
+
+        /// <summary>
+        /// Refresh Azure Site Recovery Provider.
+        /// </summary>
+        /// <param name="fabricId">Fabric ID</param>
+        /// <param name="providerId">Provider ID</param>
+        /// <returns>Operation response</returns>
+        public LongRunningOperationResponse RefreshAzureSiteRecoveryProvider(string fabricId, string providerId)
+        {
+            return this.GetSiteRecoveryClient().RecoveryServicesProvider.BeginRefreshing(fabricId, providerId, this.GetRequestHeaders());
+        }
     }
 }
