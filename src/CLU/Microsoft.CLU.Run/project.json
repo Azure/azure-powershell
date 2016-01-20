@@ -15,7 +15,7 @@
     "System.Runtime.Loader": "4.0.0-beta-23516",
     "System.Runtime.InteropServices.RuntimeInformation": "4.0.0-beta-23516",
     "System.IO.Compression": "4.1.0-beta-23516",
-    "NuGet.Commands": "3.3.0-local-*",
+    "NuGet.Commands": "3.3.0",
     "NuGet.Versioning": "3.3.0-local-*",
     "Newtonsoft.Json": "7.0.1",
 

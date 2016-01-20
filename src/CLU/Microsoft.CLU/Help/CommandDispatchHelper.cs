@@ -19,7 +19,7 @@ namespace Microsoft.CLU.Help
         /// <param name="pkgRoot"></param>
         /// <param name="args"></param>
         /// <returns></returns>
-        public static IEnumerable<CommandInfo> FindCommands(string pkgRoot, string[] args)
+        public static IEnumerable<CommandInfo> FindCommands(IHelpPackageFinder helpPackageFinder, string[] args)
         {
             var semiColonSeparatedArgs = String.Join(";", args) + ";";
 
@@ -28,7 +28,7 @@ namespace Microsoft.CLU.Help
                 return CommandDispatchHelper.MatchScore(cmd, semiColonSeparatedArgs) >= cmd.Length;
             };
 
-            return FindCommandMatches(pkgRoot, args, matcher);
+            return FindCommandMatches(helpPackageFinder, args, matcher);
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Microsoft.CLU.Help
         /// <param name="pkgRoot"></param>
         /// <param name="args"></param>
         /// <returns></returns>
-        public static IEnumerable<CommandInfo> CompleteCommands(string pkgRoot, string[] args)
+        public static IEnumerable<CommandInfo> CompleteCommands(IHelpPackageFinder helpPackageFinder, string[] args)
         {
             var semiColonSeparatedArgs = String.Join(";", args);
 
@@ -52,10 +52,10 @@ namespace Microsoft.CLU.Help
                 return CommandDispatchHelper.MatchScore(cmd, semiColonSeparatedArgs) >= semiColonSeparatedArgs.Length;
             };
 
-            return FindCommandMatches(pkgRoot, args, matcher);
+            return FindCommandMatches(helpPackageFinder, args, matcher);
         }
 
-        public static HelpInfo FindBestHelp(string pkgRoot, string[] args)
+        public static HelpInfo FindBestHelp(IHelpPackageFinder helpPackageFinder, string[] args)
         {
             var semiColonSeparatedArgs = String.Join(";", args) + ";";
 
@@ -65,14 +65,15 @@ namespace Microsoft.CLU.Help
                 CommandDispatchHelper.MatchScore(hlp, semiColonSeparatedArgs) == hlp.Length;
             };
 
-            return FindHelpMatches(pkgRoot, args, matcher).OrderByDescending((hi) => 
+            return FindHelpMatches(helpPackageFinder, args, matcher).OrderByDescending((hi) => 
                    CommandDispatchHelper.MatchScore(hi.Discriminators, semiColonSeparatedArgs)).ThenBy((hi) => 
                    hi.Discriminators).FirstOrDefault();
         }
 
-        public static IEnumerable<HelpInfo> FindHelpMatches(string pkgRoot, string[] args, Func<string, bool> matchFunc)
+        public static IEnumerable<HelpInfo> FindHelpMatches(IHelpPackageFinder helpPackageFinder, string[] args, 
+            Func<string, bool> matchFunc)
         {
-            foreach (var helpInfo in GetPackages(pkgRoot).SelectMany((p) => p.GetHelp()))
+            foreach (var helpInfo in helpPackageFinder.FindPackages().SelectMany((p) => p.GetHelp()))
             {
                 var semiColonSeparatedCommand = helpInfo.Discriminators + ";";
                 if (matchFunc(semiColonSeparatedCommand))
@@ -82,9 +83,10 @@ namespace Microsoft.CLU.Help
             }
         }
 
-        public static IEnumerable<CommandInfo> FindCommandMatches(string pkgRoot, string[] args, Func<string, bool> matchFunc)
+        public static IEnumerable<CommandInfo> FindCommandMatches(IHelpPackageFinder helpPackageFinder, string[] args, 
+            Func<string, bool> matchFunc)
         {
-            foreach (var commandIndex in GetCommandIndexes(pkgRoot).SelectMany((s) => { return s; }))
+            foreach (var commandIndex in GetCommandIndexes(helpPackageFinder).SelectMany((s) => { return s; }))
             {
                 var semiColonSeparatedCommand = commandIndex.Discriminators + ";";
                 if (matchFunc(semiColonSeparatedCommand))
@@ -95,26 +97,12 @@ namespace Microsoft.CLU.Help
         }
 
 
-        public static IEnumerable<CommandInfo[]> GetCommandIndexes(string pkgsRootPath)
+        public static IEnumerable<CommandInfo[]> GetCommandIndexes(IHelpPackageFinder helpPackageFinder)
         {
-            foreach (var pkgInfo in GetPackages(pkgsRootPath))
+            foreach (var pkgInfo in helpPackageFinder.FindPackages())
             {
                 yield return pkgInfo.GetCommands().ToArray();
             }
-        }
-
-        public static IEnumerable<PkgInfo> GetPackages(string pkgsRootPath)
-        {
-            var rootInfo = new System.IO.DirectoryInfo(pkgsRootPath);
-
-            foreach (var pkgPath in rootInfo.EnumerateDirectories())
-            {
-                foreach (var versionPath in pkgPath.EnumerateDirectories())
-                {
-                    yield return new PkgInfo(pkgPath.Name, versionPath.Name, pkgPath.FullName);
-                }
-            }
-
         }
 
         public static int MatchScore(string semiColonSeparatedArgs, string semiColonSeparatedCommand)
