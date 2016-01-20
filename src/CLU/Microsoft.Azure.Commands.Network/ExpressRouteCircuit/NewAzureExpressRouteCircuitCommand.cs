@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Network
     using System.Linq;
 
     [Cmdlet(VerbsCommon.New, "AzureRmExpressRouteCircuit"), OutputType(typeof(PSExpressRouteCircuit))]
-    [CliCommandAlias("expressroute circuit new")]
+    [CliCommandAlias("network expressroute circuit create")]
     public class NewAzureExpressRouteCircuitCommand : ExpressRouteCircuitBaseCmdlet
     {
         [Alias("ResourceName")]

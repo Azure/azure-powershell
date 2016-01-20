@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRmLoadBalancerFrontendIpConfig"), OutputType(typeof(PSLoadBalancer))]
-    [CliCommandAlias("loadbalancer frontendip config rm")]
+    [CliCommandAlias("network load balancer frontend ipconfig rm")]
     public class RemoveAzureLoadBalancerFrontendIpConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(

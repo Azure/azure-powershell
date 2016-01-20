@@ -21,7 +21,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Add, "AzureRmApplicationGatewayIPConfiguration"), OutputType(typeof(PSApplicationGateway))]
-    [CliCommandAlias("applicationgateway ipconfiguration add")]
+    [CliCommandAlias("network app gateway ipconfig add")]
     public class AddAzureApplicationGatewayIPConfigurationCommand : AzureApplicationGatewayIPConfigurationBase
     {
         [Parameter(

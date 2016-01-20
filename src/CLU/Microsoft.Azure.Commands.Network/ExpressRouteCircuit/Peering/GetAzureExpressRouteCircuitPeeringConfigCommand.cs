@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmExpressRouteCircuitPeeringConfig"), OutputType(typeof(PSPeering))]
-    [CliCommandAlias("expressroute circuit peering config ls")]
+    [CliCommandAlias("network expressroute circuit peering ls")]
     public class GetAzureExpressRouteCircuitPeeringConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(

@@ -26,7 +26,7 @@ using System;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Add, "AzureRmVpnClientRevokedCertificate"), OutputType(typeof(PSVpnClientRevokedCertificate))]
-    [CliCommandAlias("vpn client revoked certificate add")]
+    [CliCommandAlias("vnet gateway vpn client revoked cert add")]
     public class AddAzureVpnClientRevokedCertificateCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]

@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New, "AzureRmVirtualNetworkGatewayIpConfig"), OutputType(typeof(PSVirtualNetworkGatewayIpConfiguration))]
-    [CliCommandAlias("vnet gateway ip config new")]
+    [CliCommandAlias("vnet gateway ipconfig create")]
     public class NewAzureVirtualNetworkGatewayIpConfigCommand : AzureLoadBalancerFrontendIpConfigBase
     {
         public override void ExecuteCmdlet()

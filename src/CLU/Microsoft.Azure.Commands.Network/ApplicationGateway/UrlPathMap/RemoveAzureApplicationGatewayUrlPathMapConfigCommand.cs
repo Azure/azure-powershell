@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRmApplicationGatewayUrlPathMapConfig"), OutputType(typeof(PSApplicationGateway))]
-    [CliCommandAlias("applicationgateway url path map config rm")]
+    [CliCommandAlias("network app gateway url path map rm")]
     public class RemoveAzureApplicationGatewayUrlPathMapConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(

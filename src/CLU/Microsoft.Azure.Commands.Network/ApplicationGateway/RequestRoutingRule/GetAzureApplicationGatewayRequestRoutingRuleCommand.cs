@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmApplicationGatewayRequestRoutingRule"),
         OutputType(typeof(PSApplicationGatewayRequestRoutingRule), typeof(IEnumerable<PSApplicationGatewayRequestRoutingRule>))]
-    [CliCommandAlias("applicationgateway request routing rule ls")]
+    [CliCommandAlias("network app gateway request routing rule ls")]
     public class GetAzureApplicationGatewayRequestRoutingRuleCommand : NetworkBaseCmdlet
     {
         [Parameter(

@@ -21,7 +21,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
      [Cmdlet(VerbsCommon.Get, "AzureRmExpressRouteCircuit"), OutputType(typeof(PSExpressRouteCircuit))]
-    [CliCommandAlias("expressroute circuit ls")]
+    [CliCommandAlias("network expressroute circuit ls")]
     public class GetAzureExpressRouteCircuitCommand : ExpressRouteCircuitBaseCmdlet
     {
         [Alias("ResourceName")]

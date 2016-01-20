@@ -21,7 +21,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmPublicIpAddress"), OutputType(typeof(PSPublicIpAddress))]
-    [CliCommandAlias("publicip address ls")]
+    [CliCommandAlias("network ip ls")]
     public class GetAzurePublicIpAddressCommand : PublicIpAddressBaseCmdlet
     {
         [Alias("ResourceName")]

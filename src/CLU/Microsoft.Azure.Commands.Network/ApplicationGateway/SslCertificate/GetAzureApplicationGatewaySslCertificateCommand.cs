@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmApplicationGatewaySslCertificate"), 
         OutputType(typeof(PSApplicationGatewaySslCertificate), typeof(IEnumerable<PSApplicationGatewaySslCertificate>))]
-    [CliCommandAlias("applicationgateway sslcertificate ls")]
+    [CliCommandAlias("network app gateway ssl cert ls")]
     public class GetAzureApplicationGatewaySslCertificate : NetworkBaseCmdlet
     {
         [Parameter(

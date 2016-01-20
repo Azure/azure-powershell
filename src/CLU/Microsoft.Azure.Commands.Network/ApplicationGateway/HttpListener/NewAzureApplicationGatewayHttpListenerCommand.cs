@@ -19,7 +19,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewayHttpListener"), OutputType(typeof(PSApplicationGatewayHttpListener))]
-    [CliCommandAlias("applicationgateway httplistener new")]
+    [CliCommandAlias("network app gateway http listener create")]
     public class NewAzureApplicationGatewayHttpListenerCommand : AzureApplicationGatewayHttpListenerBase
     {
         public override void ExecuteCmdlet()

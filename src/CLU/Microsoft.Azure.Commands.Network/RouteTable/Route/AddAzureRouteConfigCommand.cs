@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Add, "AzureRmRouteConfig"), OutputType(typeof(PSRouteTable))]
-    [CliCommandAlias("route config add")]
+    [CliCommandAlias("network route add")]
     public class AddAzureRouteConfigCommand : AzureRouteConfigBase
     {
         [Parameter(

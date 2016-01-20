@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmApplicationGatewayHttpListener"), 
         OutputType(typeof(PSApplicationGatewayHttpListener), typeof(IEnumerable<PSApplicationGatewayHttpListener>))]
-    [CliCommandAlias("applicationgateway httplistener ls")]
+    [CliCommandAlias("network app gateway http listener ls")]
     public class GetAzureApplicationGatewayHttpListenerCommand : NetworkBaseCmdlet
     {
         [Parameter(

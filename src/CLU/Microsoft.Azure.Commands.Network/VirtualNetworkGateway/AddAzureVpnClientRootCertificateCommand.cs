@@ -26,7 +26,7 @@ using System;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Add, "AzureRmVpnClientRootCertificate"), OutputType(typeof(PSVpnClientRootCertificate))]
-    [CliCommandAlias("vpn client root certificate add")]
+    [CliCommandAlias("vnet gateway vpn client root certificate add")]
     public class AddAzureVpnClientRootCertificateCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]

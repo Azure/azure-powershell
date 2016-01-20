@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmLoadBalancerRuleConfig"), OutputType(typeof(PSLoadBalancingRule))]
-    [CliCommandAlias("loadbalancer rule config ls")]
+    [CliCommandAlias("network load balancer rule ls")]
     public class GetAzureLoadBalancerRuleConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(

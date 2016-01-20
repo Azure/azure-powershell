@@ -19,7 +19,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
      [Cmdlet(VerbsCommon.Remove, "AzureRmExpressRouteCircuit")]
-    [CliCommandAlias("expressroute circuit rm")]
+    [CliCommandAlias("network expressroute circuit rm")]
     public class RemoveAzureExpressRouteCircuitCommand : ExpressRouteCircuitBaseCmdlet
     {
         [Alias("ResourceName")]

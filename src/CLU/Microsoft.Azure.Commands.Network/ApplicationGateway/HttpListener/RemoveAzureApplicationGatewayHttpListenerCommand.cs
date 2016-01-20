@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRmApplicationGatewayHttpListener"), OutputType(typeof(PSApplicationGatewayHttpListener))]
-    [CliCommandAlias("applicationgateway httplistener rm")]
+    [CliCommandAlias("network app gateway http listener rm")]
     public class RemoveAzureApplicationGatewayHttpListenerCommand : NetworkBaseCmdlet
     {
         [Parameter(

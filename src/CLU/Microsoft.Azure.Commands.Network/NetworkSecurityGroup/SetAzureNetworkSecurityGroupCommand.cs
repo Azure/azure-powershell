@@ -23,7 +23,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Set, "AzureRmNetworkSecurityGroup"), OutputType(typeof(PSNetworkSecurityGroup))]
-    [CliCommandAlias("networksecuritygroup set")]
+    [CliCommandAlias("network security group set")]
     public class SetAzureNetworkSecurityGroupCommand : NetworkSecurityGroupBaseCmdlet
     {
         [Parameter(

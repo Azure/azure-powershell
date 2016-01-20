@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRmApplicationGatewayProbeConfig"), OutputType(typeof(PSApplicationGateway))]
-    [CliCommandAlias("applicationgateway probe config rm")]
+    [CliCommandAlias("network app gateway probe config rm")]
     public class RemoveAzureApplicationGatewayProbeConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(

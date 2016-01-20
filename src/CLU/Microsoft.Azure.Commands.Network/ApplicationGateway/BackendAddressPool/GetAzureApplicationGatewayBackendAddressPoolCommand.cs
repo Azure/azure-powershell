@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmApplicationGatewayBackendAddressPool"),
         OutputType(typeof(PSApplicationGatewayBackendAddressPool), typeof(IEnumerable<PSApplicationGatewayBackendAddressPool>))]
-    [CliCommandAlias("applicationgateway backendaddress pool ls")]
+    [CliCommandAlias("network app gateway backend address pool ls")]
     public class GetAzureApplicationGatewayBackendAddressPoolCommand : NetworkBaseCmdlet
     {
         [Parameter(

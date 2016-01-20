@@ -21,7 +21,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Set, "AzureRmApplicationGatewayBackendHttpSettings"), OutputType(typeof(PSApplicationGateway))]
-    [CliCommandAlias("applicationgateway backend http settings set")]
+    [CliCommandAlias("network app gateway backend http settings set")]
     public class SetAzureApplicationGatewayBackendHttpSettingsCommand : AzureApplicationGatewayBackendHttpSettingsBase
     {
         [Parameter(

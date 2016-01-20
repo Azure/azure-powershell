@@ -21,7 +21,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Set, "AzureRmLoadBalancerInboundNatRuleConfig"), OutputType(typeof(PSLoadBalancer))]
-    [CliCommandAlias("loadbalancer inboundnat rule config set")]
+    [CliCommandAlias("network load balancer inbound nat rule set")]
     public class SetAzureLoadBalancerInboundNatRuleConfigCommand : AzureLoadBalancerInboundNatRuleConfigBase
     {
         [Parameter(

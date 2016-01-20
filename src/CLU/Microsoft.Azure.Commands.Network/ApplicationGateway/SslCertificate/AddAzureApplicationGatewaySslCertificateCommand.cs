@@ -22,7 +22,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Add, "AzureRmApplicationGatewaySslCertificate"), OutputType(typeof(PSApplicationGateway))]
-    [CliCommandAlias("applicationgateway sslcertificate add")]
+    [CliCommandAlias("network app gateway ssl cert add")]
     public class AddAzureApplicationGatewaySslCertificateCommand : AzureApplicationGatewaySslCertificateBase
     {
         [Parameter(

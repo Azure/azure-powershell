@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRmApplicationGatewayRequestRoutingRule"), OutputType(typeof(PSApplicationGatewayRequestRoutingRule))]
-    [CliCommandAlias("applicationgateway request routing rule rm")]
+    [CliCommandAlias("network app gateway request routing rule rm")]
     public class RemoveAzureApplicationGatewayRequestRoutingRuleCommand : NetworkBaseCmdlet
     {
         [Parameter(
