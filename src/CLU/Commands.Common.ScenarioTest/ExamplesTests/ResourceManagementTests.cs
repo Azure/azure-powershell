@@ -54,8 +54,9 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
         [Fact]
         public void RoleAssignmentsTest()
         {
+            // Must login as a user due to restricted use of old graph api
             var helper = _collectionState
-                .LoginAsService()
+                .LoginAsUser()
                 .GetRunner("resource-management")
                 .RunScript("04-RoleAssignments");
         }
@@ -64,7 +65,6 @@ namespace Microsoft.Azure.Commands.Common.ScenarioTest
         public void RoleDefinitionsTest()
         {
             var helper = _collectionState
-                .LoginAsService()
                 .GetRunner("resource-management")
                 .RunScript("05-RoleDefinitions");
         }
