@@ -20,6 +20,7 @@ using Microsoft.Azure.Management.Storage;
 namespace Microsoft.Azure.Commands.Management.Storage
 {
     [Cmdlet(VerbsCommon.Get, StorageAccountNounStr), OutputType(typeof(PSStorageAccount))]
+    [CliCommandAlias("storage account ls")]
     public class GetAzureStorageAccountCommand : StorageAccountBaseCmdlet
     {
         [Parameter(

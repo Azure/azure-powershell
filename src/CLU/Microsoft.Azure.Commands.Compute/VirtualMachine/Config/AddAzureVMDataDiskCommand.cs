@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Compute
         ProfileNouns.DataDisk),
     OutputType(
         typeof(PSVirtualMachine))]
-    [CliCommandAlias("vm datadisk add")]
+    [CliCommandAlias("vm config datadisk add")]
     public class AddAzureVMDataDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Alias("VMProfile")]

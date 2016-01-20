@@ -19,6 +19,7 @@ using Microsoft.Azure.Management.Storage.Models;
 namespace Microsoft.Azure.Commands.Management.Storage.StorageAccount
 {
     [Cmdlet(VerbsCommon.Get, StorageAccountNameAvailabilityStr), OutputType(typeof(CheckNameAvailabilityResult))]
+    [CliCommandAlias("storage name test")]
     public class GetAzureStorageAccountNameAvailability : StorageAccountBaseCmdlet
     {
         [Parameter(
