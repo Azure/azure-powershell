@@ -221,8 +221,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
 
                     if (!IsClientRbEmpty)
                     {
-                        ClientConfig = Regex.Replace(File.ReadAllText(this.ClientRb),
-                            "\"|'", "\\\"").TrimEnd('\r', '\n');
+                        ClientConfig = File.ReadAllText(this.ClientRb).TrimEnd('\r', '\n');
                         // Append ChefServerUrl and ValidationClientName to end of ClientRb
                         if (!IsChefServerUrlEmpty && !IsValidationClientNameEmpty)
                         {
