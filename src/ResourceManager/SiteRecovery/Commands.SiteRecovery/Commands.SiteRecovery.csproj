@@ -136,6 +136,7 @@
     <Compile Include="Models\PSNetworkObjects.cs" />
     <Compile Include="Network\GetAzureRMSiteRecoveryNetwork.cs" />
     <Compile Include="Network\GetAzureRMSiteRecoveryNetworkMapping.cs" />
+    <Compile Include="Server\RefreshAzureSiteRecoveryServer.cs" />
     <Compile Include="Network\NewAzureRMSiteRecoveryNetworkMapping.cs" />
     <Compile Include="Network\RemoveAzureRMSiteRecoveryNetworkMapping.cs" />
     <Compile Include="Server\RemoveAzureSiteRecoveryServer.cs" />
