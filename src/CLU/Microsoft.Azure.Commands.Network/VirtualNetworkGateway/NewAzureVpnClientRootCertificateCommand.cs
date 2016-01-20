@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New, "AzureRmVpnClientRootCertificate"), OutputType(typeof(PSVpnClientRootCertificate))]
-    [CliCommandAlias("vpn client root certificate new")]
+    [CliCommandAlias("vnet gateway vpn client root cert create")]
     public class NewAzureVpnClientRootCertificateCommand : NetworkBaseCmdlet
     {
         [Parameter(

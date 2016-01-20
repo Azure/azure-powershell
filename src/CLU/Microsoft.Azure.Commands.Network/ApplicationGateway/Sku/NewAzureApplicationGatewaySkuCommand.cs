@@ -19,7 +19,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewaySku"), OutputType(typeof(PSApplicationGatewaySku))]
-    [CliCommandAlias("applicationgateway sku new")]
+    [CliCommandAlias("network app gateway sku create")]
     public class NewAzureApplicationGatewaySkuCommand : AzureApplicationGatewaySkuBase
     {
         public override void ExecuteCmdlet()

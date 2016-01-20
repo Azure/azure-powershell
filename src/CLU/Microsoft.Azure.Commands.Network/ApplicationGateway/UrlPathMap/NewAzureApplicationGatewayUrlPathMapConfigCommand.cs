@@ -19,7 +19,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewayUrlPathMapConfig"), OutputType(typeof(PSApplicationGatewayUrlPathMap))]
-    [CliCommandAlias("applicationgateway url path map config new")]
+    [CliCommandAlias("network app gateway url path map create")]
     public class NewAzureApplicationGatewayUrlPathMapConfigCommand : AzureApplicationGatewayUrlPathMapConfigBase
     {
         public override void ExecuteCmdlet()

@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New, "AzureRmVpnClientRevokedCertificate"), OutputType(typeof(PSVpnClientRevokedCertificate))]
-    [CliCommandAlias("vpn client revoked certificate new")]
+    [CliCommandAlias("vnet gateway vpn client revoked cert create")]
     public class NewAzureVpnClientRevokedCertificateCommand : NetworkBaseCmdlet
     {
         [Parameter(

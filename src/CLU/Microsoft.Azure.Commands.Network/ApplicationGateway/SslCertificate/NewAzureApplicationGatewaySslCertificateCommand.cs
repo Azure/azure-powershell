@@ -19,7 +19,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewaySslCertificate"), OutputType(typeof(PSApplicationGatewaySslCertificate))]
-    [CliCommandAlias("applicationgateway sslcertificate new")]
+    [CliCommandAlias("network app gateway ssl cert create")]
     public class NewAzureApplicationGatewaySslCertificateCommand : AzureApplicationGatewaySslCertificateBase
     {
         public override void ExecuteCmdlet()

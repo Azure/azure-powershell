@@ -25,7 +25,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New, "AzureRmRouteTable"), OutputType(typeof(PSRouteTable))]
-    [CliCommandAlias("route table new")]
+    [CliCommandAlias("network route table create")]
     public class NewAzureRouteTableCommand : RouteTableBaseCmdlet
     {
         [Alias("ResourceName")]

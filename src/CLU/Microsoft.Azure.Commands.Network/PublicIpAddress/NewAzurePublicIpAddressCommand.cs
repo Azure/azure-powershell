@@ -26,7 +26,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New, "AzureRmPublicIpAddress"), OutputType(typeof(PSPublicIpAddress))]
-    [CliCommandAlias("publicip address new")]
+    [CliCommandAlias("network ip create")]
     public class NewAzurePublicIpAddressCommand : PublicIpAddressBaseCmdlet
     {
         [Alias("ResourceName")]

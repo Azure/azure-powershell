@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmRouteConfig"), OutputType(typeof(PSRoute))]
-    [CliCommandAlias("route config ls")]
+    [CliCommandAlias("network route ls")]
     public class GetAzureRouteConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(

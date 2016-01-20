@@ -21,7 +21,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Set, "AzureRmApplicationGatewayFrontendPort"), OutputType(typeof(PSApplicationGateway))]
-    [CliCommandAlias("network;application;gateway;frontend;port;set")]
+    [CliCommandAlias("network app gateway frontend port set")]
     public class SetAzureApplicationGatewayFrontendPortCommand : AzureApplicationGatewayFrontendPortBase
     {
 

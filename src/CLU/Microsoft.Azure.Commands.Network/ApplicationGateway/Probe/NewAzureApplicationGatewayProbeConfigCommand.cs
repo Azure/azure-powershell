@@ -19,7 +19,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewayProbeConfig"), OutputType(typeof(PSApplicationGatewayProbe))]
-    [CliCommandAlias("applicationgateway probe config new")]
+    [CliCommandAlias("network app gateway probe config new")]
     public class NewAzureApplicationGatewayProbeConfigCommand : AzureApplicationGatewayProbeConfigBase
     {
         public override void ExecuteCmdlet()

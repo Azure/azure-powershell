@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmApplicationGatewayIPConfiguration"),
         OutputType(typeof(PSApplicationGatewayIPConfiguration), typeof(IEnumerable<PSApplicationGatewayIPConfiguration>))]
-    [CliCommandAlias("network;application;gateway;ipconfig;ls")]
+    [CliCommandAlias("network app gateway ipconfig ls")]
     public class GetAzureApplicationGatewayIPConfigurationCommand : NetworkBaseCmdlet
     {
         [Parameter(
