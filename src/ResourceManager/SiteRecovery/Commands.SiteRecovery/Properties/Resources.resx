@@ -310,7 +310,4 @@ Please provide a storage account with the same location as that of the vault.</v
   <data name="SiteRecoveryVaultTypeWillBeDeprecatedSoon" xml:space="preserve">
     <value>SiteRecovery vault type will be deprecated soon. Please use RecoveryServices vault type instead.</value>
   </data>
-  <data name="NoClassificationMappingFound" xml:space="preserve">
-    <value>No storage classification mapping found with Id {0}</value>
-  </data>
 </root>

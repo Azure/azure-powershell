@@ -24,9 +24,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     // <summary>
     /// Pairs storage classification
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, "AzureRmSiteRecoveryStorageClassificationUnmappingJob", DefaultParameterSetName = ASRParameterSets.Default)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoveryStorageClassificationMapping", DefaultParameterSetName = ASRParameterSets.Default)]
     [OutputType(typeof(IEnumerable<ASRStorageClassification>))]
-    public class StartAzureSiteRecoveryStorageClassificationUnmappingJob : SiteRecoveryCmdletBase
+    public class RemoveAzureSiteRecoveryStorageClassificationMapping : SiteRecoveryCmdletBase
     {
         #region Parameters
 
@@ -43,38 +43,17 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            List<StorageClassificationMapping> storageClassificationMappings
-                = new List<StorageClassificationMapping>();
+            string[] tokens = StorageClassificationMapping.Id.UnFormatArmId(
+                ARMResourceIdPaths.StorageClassificationMappingResourceIdPath);
+            var operationResponse = RecoveryServicesClient.UnmapStorageClassifications(
+                fabricName: tokens[0],
+                storageClassificationName: tokens[1],
+                mappingName: tokens[2]);
+            JobResponse jobResponse =
+                RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
+                PSRecoveryServicesClient.GetJobIdFromReponseLocation(operationResponse.Location));
 
-            Task mappingsTask =
-                RecoveryServicesClient.EnumerateStorageClassificationMappingsAsync((entities) =>
-                {
-                    storageClassificationMappings.AddRange(entities);
-                });
-
-            Task.WaitAll(mappingsTask);
-
-            StorageClassificationMapping selectedMap = storageClassificationMappings
-                .Where(item =>
-                    item.Id.Equals(StorageClassificationMapping.Id))
-                .FirstOrDefault();
-
-            if (selectedMap == null)
-            {
-                throw new ArgumentException(
-                    string.Format(Properties.Resources.NoClassificationMappingFound,
-                    StorageClassificationMapping.Id));
-            }
-            else
-            {
-                var operationResponse =
-                    RecoveryServicesClient.UnmapStorageClassifications(selectedMap);
-                JobResponse jobResponse =
-                    RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
-                    PSRecoveryServicesClient.GetJobIdFromReponseLocation(operationResponse.Location));
-
-                base.WriteObject(new ASRJob(jobResponse.Job));
-            }
+            base.WriteObject(new ASRJob(jobResponse.Job));
         }
     }
 }

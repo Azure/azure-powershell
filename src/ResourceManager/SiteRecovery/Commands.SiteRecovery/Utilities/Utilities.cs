@@ -205,14 +205,19 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 List<string> tokens = new List<string>();
                 string processData = string.Empty;
 
+                if (string.IsNullOrEmpty(dataCopy))
+                {
+                    throw new Exception("Null and empty strings are not valid resource Ids - " + data);
+                }
+
                 // First truncate data string to point from where format string starts.
                 // We start from 1 index so that if url starts with / we avoid picking the first /.
                 int firstTokenEnd = format.IndexOf("/", 1);
                 int matchIndex = dataCopy.ToLower().IndexOf(format.Substring(0, firstTokenEnd).ToLower());
 
-                if (matchIndex == -1 || string.IsNullOrEmpty(dataCopy))
+                if (matchIndex == -1)
                 {
-                    throw new Exception("Invalid ARM Id - " + data);
+                    throw new Exception("Invalid resource Id - " + data);
                 }
 
                 processData = dataCopy.Substring(matchIndex);
@@ -251,13 +256,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 }
                 else
                 {
-                    throw new Exception("Invalid ARM Id - " + data);
+                    throw new Exception("Invalid resource Id - " + data);
                 }
             }
             catch (Exception ex)
             {
                 throw new Exception(
-                    string.Format("Invalid ARM Id - {0}. Exception - {1} ", data, ex));
+                    string.Format("Invalid resource Id - {0}. Exception - {1} ", data, ex));
             }
         }
 

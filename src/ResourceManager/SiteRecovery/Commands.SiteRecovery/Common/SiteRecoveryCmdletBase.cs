@@ -62,6 +62,21 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         }
 
         /// <summary>
+        /// Overrides base implementation of Process record.
+        /// </summary>
+        protected override void ProcessRecord()
+        {
+            try
+            {
+                base.ProcessRecord();
+            }
+            catch (Exception ex)
+            {
+                this.HandleException(ex);
+            }
+        }
+
+        /// <summary>
         /// Exception handler.
         /// </summary>
         /// <param name="ex">Exception to handle.</param>

@@ -86,21 +86,23 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         }
 
         /// <summary>
-        /// Starts job for unmapping storage classifications.
+        /// Starts job for unmapping classifications
         /// </summary>
-        /// <param name="mapping">Classification mapping.</param>
-        /// <returns>Operation response.</returns>
+        /// <param name="fabricName">Fabric name name.</param>
+        /// <param name="storageClassificationName">Storage classification name.</param>
+        /// <param name="mappingName">Classification mapping name.</param>
+        /// <returns>Operation result.</returns>
         public LongRunningOperationResponse UnmapStorageClassifications(
-            StorageClassificationMapping mapping)
+            string fabricName,
+            string storageClassificationName,
+            string mappingName)
         {
-            string[] tokens = mapping.Id.UnFormatArmId(
-                ARMResourceIdPaths.StorageClassificationMappingResourceIdPath);
             return this.GetSiteRecoveryClient().StorageClassificationMapping
                 .BeginUnpairStorageClassification(
-                tokens[0],
-                tokens[1],
-                tokens[2],
-                this.GetRequestHeaders());
+                fabricName,
+                storageClassificationName,
+                mappingName,
+                customRequestHeaders: this.GetRequestHeaders());
         }
 
         /// <summary>

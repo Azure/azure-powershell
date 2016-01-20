@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Management.SiteRecovery.Models;
@@ -21,9 +22,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// <summary>
     /// Pairs storage classification
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, "AzureRmSiteRecoveryStorageClassificationMappingJob", DefaultParameterSetName = ASRParameterSets.Default)]
+    [Cmdlet(VerbsCommon.New, "AzureRmSiteRecoveryStorageClassificationMapping", DefaultParameterSetName = ASRParameterSets.Default)]
     [OutputType(typeof(IEnumerable<ASRStorageClassification>))]
-    public class StartAzureSiteRecoveryStorageClassificationMappingJob : SiteRecoveryCmdletBase
+    public class NewAzureRmSiteRecoveryStorageClassificationMapping : SiteRecoveryCmdletBase
     {
         #region Parameters
 
@@ -48,9 +49,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public override void ExecuteCmdlet()
         {
             string armName = string.Format(
-                    "StrgMap_{0}_{1}",
+                    "StrgMap_{0}_{1}_{2}",
                     PrimaryStorageClassification.Name,
-                    RecoveryStorageClassification.Name);
+                    RecoveryStorageClassification.Name,
+                    Guid.NewGuid());
 
             var props = new StorageClassificationMappingInputProperties()
             {

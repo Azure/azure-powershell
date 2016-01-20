@@ -170,8 +170,8 @@
     <Compile Include="Server\GetAzureSiteRecoveryServer.cs" />
     <Compile Include="Storage\Classification\GetAzureSiteRecoveryStorageClassification.cs" />
     <Compile Include="Storage\Classification\GetAzureSiteRecoveryStorageClassificationMapping.cs" />
-    <Compile Include="Storage\Classification\StartAzureSiteRecoveryStorageClassificationMappingJob.cs" />
-    <Compile Include="Storage\Classification\StartAzureSiteRecoveryStorageClassificationUnmappingJob.cs" />
+    <Compile Include="Storage\Classification\NewAzureRmSiteRecoveryStorageClassificationMapping.cs" />
+    <Compile Include="Storage\Classification\RemoveAzureSiteRecoveryStorageClassificationMapping.cs" />
     <Compile Include="Utilities\CertUtils.cs" />
     <Compile Include="Utilities\Utilities.cs" />
     <Compile Include="Vault\RemoveAzureSiteRecoveryVault.cs" />
