@@ -17,32 +17,34 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
+using Microsoft.WindowsAzure.Storage.Blob;
 using Microsoft.WindowsAzure.Storage.DataMovement;
+using Microsoft.WindowsAzure.Storage.File;
 
 namespace Microsoft.WindowsAzure.Management.Storage.Test.Common
 {
-    internal sealed class MockTransferJobRunner : ITransferJobRunner
+    abstract class MockTransferManager : ITransferManager
     {
-        private Func<TransferJob, Task> runnerValidation;
+        private AssertFailedException assertException = null;
 
-        private AssertFailedException assertException;
-
-        public MockTransferJobRunner(Func<TransferJob, Task> runnerValidation)
+        public virtual Task DownloadAsync(CloudFile sourceFile, string destPath, DownloadOptions options, TransferContext context, CancellationToken cancellationToken)
         {
-            this.runnerValidation = runnerValidation;
+            throw new NotImplementedException();
         }
 
-        public Task RunTransferJob(TransferJob job, Action<double, double> progressReport, CancellationToken cancellationToken)
+        public virtual Task DownloadAsync(CloudBlob sourceBlob, string destPath, DownloadOptions options, TransferContext context, CancellationToken cancellationToken)
         {
-            try
-            {
-                return runnerValidation(job);
-            }
-            catch (AssertFailedException e)
-            {
-                this.assertException = e;
-                throw new MockupException("AssertFailed");
-            }
+            throw new NotImplementedException();
+        }
+
+        public virtual Task UploadAsync(string sourcePath, CloudFile destFile, UploadOptions options, TransferContext context, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual Task UploadAsync(string sourcePath, CloudBlob destBlob, UploadOptions options, TransferContext context, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
         }
 
         public void ThrowAssertExceptionIfAvailable()
@@ -51,10 +53,6 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Common
             {
                 throw this.assertException;
             }
-        }
-
-        public void Dispose()
-        {
         }
     }
 }
