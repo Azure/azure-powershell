@@ -6,7 +6,7 @@
   
 Note, after done, run `dnvm list` command to check the 'coreclr' runtime is installed with right version of `1.0.0-rc1-final`. If not, run `dnvm install 1.0.0-rc1-final -r coreclr -a x64 -p`. Remember always use `-p` flag, so the selection can persist. 
 
-* Get the latest dotnet from "https://azureclu.blob.core.windows.net/tools/dotnet-win-x64.latest.zip", unzip, then add its bin folder to the PATH
+* Get the latest dotnet from "https://azureclu.blob.core.windows.net/tools/dotnet-win-x64.latest.zip", unzip, then add its bin folder to the PATH.  NOTE: With this version of dotnet, the path to dotnet.exe must not contain any spaces.
 
 ## Project Artifacts
 
