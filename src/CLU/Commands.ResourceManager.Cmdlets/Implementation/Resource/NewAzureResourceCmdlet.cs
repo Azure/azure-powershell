@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             SupportsShouldProcess = true, 
             DefaultParameterSetName = ResourceManipulationCmdletBase.ResourceIdParameterSet), 
     OutputType(typeof(PSResourceObject))]
-    [CliCommandAlias("resourcemanager resource create")]
+    [CliCommandAlias("resource create")]
     public sealed class NewAzureResourceCmdlet : ResourceManipulationCmdletBase
     {
         /// <summary>

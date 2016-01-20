@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRmRouteConfig"), OutputType(typeof(PSRouteTable))]
-    [CliCommandAlias("route config rm")]
+    [CliCommandAlias("network route rm")]
     public class RemoveAzurReouteConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(

@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Tags.Tag
     /// Creates a new tag with the specified values
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmTag"), OutputType(typeof(PSTag))]
-    [CliCommandAlias("tag rm")]
+    [CliCommandAlias("resource tag rm")]
     public class RemoveAzureTagCommand : TagBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Name of the tag to remove.")]

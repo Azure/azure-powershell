@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Compute
         DefaultParameterSetName = NicIdParamSetName),
     OutputType(
         typeof(PSVirtualMachine))]
-    [CliCommandAlias("vm network interface add")]
+    [CliCommandAlias("vm config network interface add")]
     public class AddAzureVMNetworkInterfaceCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         protected const string NicIdParamSetName = "GetNicFromNicId";

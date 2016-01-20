@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// Creates a new resource group deployment.
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmResourceGroupDeployment", DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(PSResourceGroupDeployment))]
-    [CliCommandAlias("resourcemanager group deployment create")]
+    [CliCommandAlias("resource group deployment create")]
     public class NewAzureResourceGroupDeploymentCommand : ResourceWithParameterBaseCmdlet, IDynamicParameters
     {
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, 

@@ -21,7 +21,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmVpnClientPackage"), OutputType(typeof(string))]
-    [CliCommandAlias("vpn client package ls")]
+    [CliCommandAlias("vnet gateway vpn client package get")]
     public class GetAzureVpnClientPackage : VirtualNetworkGatewayBaseCmdlet
     {
         [Parameter(

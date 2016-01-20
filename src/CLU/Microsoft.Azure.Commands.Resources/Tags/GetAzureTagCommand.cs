@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Tags.Tag
     /// Creates a new tag with the specified values
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmTag"), OutputType(typeof(List<PSTag>))]
-    [CliCommandAlias("tag ls")]
+    [CliCommandAlias("resource tag ls")]
     public class GetAzureTagCommand : TagBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Name of the tag. If not specified, return all the tags of the subscription.")]

@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.New, ProfileNouns.AvailabilitySet)]
     [OutputType(typeof(PSAvailabilitySet))]
-    [CliCommandAlias("vm availabilityset new")]
+    [CliCommandAlias("vm availabilityset create")]
     public class NewAzureAvailabilitySetCommand : AvailabilitySetBaseCmdlet
     {
         [Parameter(

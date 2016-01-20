@@ -24,7 +24,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Set, "AzureRmNetworkInterface"), OutputType(typeof(PSNetworkInterface))]
-    [CliCommandAlias("networkinterface set")]
+    [CliCommandAlias("network interface set")]
     public class SetAzureNetworkInterfaceCommand : NetworkInterfaceBaseCmdlet
     {
         [Parameter(

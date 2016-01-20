@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
     /// Lists all storage services underneath the subscription.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, StorageAccountNounStr)]
+    [CliCommandAlias("storage account rm")]
     public class RemoveAzureStorageAccountCommand : StorageAccountBaseCmdlet
     {
         [Parameter(

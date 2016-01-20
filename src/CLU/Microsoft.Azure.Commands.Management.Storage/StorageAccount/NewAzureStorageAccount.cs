@@ -23,6 +23,7 @@ using StorageModels = Microsoft.Azure.Management.Storage.Models;
 namespace Microsoft.Azure.Commands.Management.Storage
 {
     [Cmdlet(VerbsCommon.New, StorageAccountNounStr), OutputType(typeof(PSStorageAccount))]
+    [CliCommandAlias("storage account create")]
     public class NewAzureStorageAccountCommand : StorageAccountBaseCmdlet
     {
         [Parameter(

@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRmVirtualNetworkSubnetConfig"), OutputType(typeof(PSVirtualNetwork))]
-    [CliCommandAlias("vnet subnet config rm")]
+    [CliCommandAlias("vnet subnet rm")]
     public class RemoveAzureVirtualNetworkSubnetConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(

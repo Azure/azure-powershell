@@ -3,7 +3,7 @@ set -e
 printf "\n=== Managing Virtual Machine Creation in Azure Compute ===\n"
 
 printf "\n1. Creating a new resource group: %s and location: %s.\n" "$groupName" "$location"
-az resourcemanager group create -n "$groupName" --location "$location"
+az resource group create -n "$groupName" --location "$location"
 
 printf "\n2. Creating a new storage account '%s' in type '%s'.\n" "$storageAccountName" "$storageAccountType"
 az storage account create--resourcegroupname "$groupName" --name "$storageAccountName" --location "$location" --type "$storageAccountType"
@@ -19,7 +19,7 @@ subnetId="/subscriptions/$subId/resourceGroups/$groupName/providers/Microsoft.Ne
 
 printf "\n4. Create network interface with:\r\nsubId='%s' \r\n& \r\nsubnetId='$subnetId'.\n" "$subId"
 export MSYS_NO_PATHCONV=1
-az networkinterface create--name test --resourcegroupname "$groupName" --location "$location" --subnetid "$subnetId"
+az vnet create--name test --resourcegroupname "$groupName" --location "$location" --subnetid "$subnetId"
 export MSYS_NO_PATHCONV=
 
 nicId="/subscriptions/$subId/resourceGroups/$groupName/providers/Microsoft.Network/networkInterfaces/test"
@@ -33,4 +33,4 @@ printf "\n5. Create virtual machine with\r\nnicId='%s'\r\nvhdUri='%s'\r\nvmStr='
 az vm create--resourcegroupname "$groupName" --location "$location" --vmprofile "$vmStr"
 
 printf "\n6. Removing resource group: %s.\n" "$groupName"
-az resourcemanager group rm -n "$groupName" -f
+az resource group rm -n "$groupName" -f

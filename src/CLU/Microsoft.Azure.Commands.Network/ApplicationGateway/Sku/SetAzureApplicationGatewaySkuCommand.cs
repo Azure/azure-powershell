@@ -21,7 +21,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Set, "AzureRmApplicationGatewaySku"), OutputType(typeof(PSApplicationGateway))]
-    [CliCommandAlias("applicationgateway sku set")]
+    [CliCommandAlias("network app gateway sku set")]
     public class SetAzureApplicationGatewaySkuCommand : AzureApplicationGatewaySkuBase
     {
         [Parameter(

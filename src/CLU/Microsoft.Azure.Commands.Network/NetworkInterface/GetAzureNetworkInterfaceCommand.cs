@@ -23,7 +23,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmNetworkInterface", DefaultParameterSetName = "NoExpandStandAloneNic"), OutputType(typeof(PSNetworkInterface))]
-    [CliCommandAlias("networkinterface ls")]
+    [CliCommandAlias("network interface ls")]
     public class GetAzureNetworkInterfaceCommand : NetworkInterfaceBaseCmdlet
     {
         [Parameter(

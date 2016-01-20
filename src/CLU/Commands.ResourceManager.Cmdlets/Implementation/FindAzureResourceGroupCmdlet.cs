@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Finds the resource group.
     /// </summary>
     [Cmdlet(VerbsCommon.Find, "AzureRmResourceGroup"), OutputType(typeof(PSObject))]
-    [CliCommandAlias("resourcemanager group find")]
+    [CliCommandAlias("resource group find")]
     public class FindAzureResourceGroupCmdlet : ResourceManagerCmdletBase
     {
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The tag filter for the OData query. The expected format is @{Name = 'tagName'} or @{Name = 'tagName'; Value = 'tagValue'}.")]

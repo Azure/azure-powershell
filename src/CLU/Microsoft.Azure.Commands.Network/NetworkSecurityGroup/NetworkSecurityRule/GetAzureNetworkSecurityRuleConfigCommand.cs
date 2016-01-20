@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmNetworkSecurityRuleConfig"), OutputType(typeof(PSSecurityRule))]
-    [CliCommandAlias("networksecurityrule config ls")]
+    [CliCommandAlias("network security rule ls")]
     public class GetAzureNetworkSecurityRuleConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(

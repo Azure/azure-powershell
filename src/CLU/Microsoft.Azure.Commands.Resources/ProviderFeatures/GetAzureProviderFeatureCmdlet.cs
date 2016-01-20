@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Resources.ProviderFeatures
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmProviderFeature", DefaultParameterSetName = GetAzureProviderFeatureCmdlet.ListAvailableParameterSet)]
     [OutputType(typeof(List<PSProviderFeature>))]
-    [CliCommandAlias("resourcemanager provider feature ls")]
+    [CliCommandAlias("resource provider feature ls")]
     public class GetAzureProviderFeatureCmdlet : AzureProviderFeatureCmdletBase
     {
         /// <summary>

@@ -36,4 +36,5 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyFileVersion("1.0.0.0")]
 
 // The friend assemblies of Microsoft.CLU
-[assembly: InternalsVisibleTo("Microsoft.CLU.Tests")]
+[assembly: InternalsVisibleTo("Microsoft.CLU.Test")]
+[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]

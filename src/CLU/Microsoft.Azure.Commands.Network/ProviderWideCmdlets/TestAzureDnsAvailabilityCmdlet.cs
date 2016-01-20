@@ -18,7 +18,7 @@ using Microsoft.Azure.Management.Network;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsDiagnostic.Test, "AzureRmDnsAvailability"), OutputType(typeof(bool))]
-    [CliCommandAlias("dns availability test")]
+    [CliCommandAlias("network dns test")]
     public class TestAzureDnsAvailabilityCmdlet : NetworkBaseCmdlet
     {
         [Alias("DomainQualifiedName")]

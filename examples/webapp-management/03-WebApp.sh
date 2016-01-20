@@ -2,7 +2,7 @@
 printf "\n=== Managing Web Apps in Azure ===\n"
 
 printf "\nSetup: Creating a new resource group: %s at location: %s.\n" "$groupName" "$location"
-az resourcemanager group create --name "$groupName" --location "$location"
+az resource group create --name "$groupName" --location "$location"
 
 slotname1="staging"
 slotname2="testing"
@@ -175,4 +175,4 @@ az appservice rm -g "$groupName" -n "$appName3" -f
 #az appservice rm -g "$groupName" -n "$appName4" -f
 
 printf "\n30:Remove the resource group: %s.\n" "$groupName"
-deleterg=`az resourcemanager group rm -n "$groupName" --force`
+deleterg=`az resource group rm -n "$groupName" --force`

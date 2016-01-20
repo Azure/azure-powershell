@@ -24,7 +24,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute.StorageServices
 {
     [Cmdlet(VerbsData.Save, ProfileNouns.Vhd), OutputType(typeof(VhdDownloadContext))]
-    [CliCommandAlias("vhd save")]
+    [CliCommandAlias("vm vhd save")]
     public class SaveAzureVhdCommand : ComputeClientBaseCmdlet
     {
         private const int DefaultNumberOfUploaderThreads = 8;

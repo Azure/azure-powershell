@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Removes the policy assignment.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmPolicyAssignment", DefaultParameterSetName = RemoveAzurePolicyAssignmentCmdlet.PolicyAssignmentNameParameterSet), OutputType(typeof(bool))]
-    [CliCommandAlias("networksecuritypolicy assignment rm")]
+    [CliCommandAlias("resource policy assignment rm")]
     public class RemoveAzurePolicyAssignmentCmdlet : PolicyAssignmentCmdletBase
     {
         /// <summary>

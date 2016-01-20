@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.Profile
     [Alias("Select-AzureRmSubscription")]
     [OutputType(typeof(PSAzureContext))]
     [CliCommandAlias("context set")]
+    [CliCommandAlias("subscription set")]
     public class SetAzureRMContextCommand : AzureRMCmdlet
     {
         private const string SubscriptionNameParameterSet = "SubscriptionName";

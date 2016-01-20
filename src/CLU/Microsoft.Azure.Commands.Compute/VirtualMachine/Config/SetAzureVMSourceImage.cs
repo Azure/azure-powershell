@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Set, ProfileNouns.SourceImage, DefaultParameterSetName = ImageReferenceParameterSet),
     OutputType(typeof(PSVirtualMachine))]
-    [CliCommandAlias("vm source image set")]
+    [CliCommandAlias("vm config source image set")]
     public class SetAzureVMSourceImageCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         protected const string ImageReferenceParameterSet = "ImageReferenceParameterSet";

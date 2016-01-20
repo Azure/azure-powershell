@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmResourceLock", SupportsShouldProcess = true, DefaultParameterSetName = ResourceLockManagementCmdletBase.SubscriptionResourceLevelLock), 
         OutputType(typeof(ResourceLock<JToken>))]
-    [CliCommandAlias("resourcemanager resource lock create")]
+    [CliCommandAlias("resource lock create")]
     public class NewAzureResourceLockCmdlet : ResourceLockManagementCmdletBase
     {
         /// <summary>

@@ -22,7 +22,7 @@ using System;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmVpnClientRootCertificate"), OutputType(typeof(PSVpnClientRootCertificate))]
-    [CliCommandAlias("vpn client root certificate ls")]
+    [CliCommandAlias("vnet gateway vpn client root certificate ls")]
     public class GetAzureVpnClientRootCertificates : VirtualNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
