@@ -122,6 +122,11 @@ namespace Microsoft.WindowsAzure.Commands.Common
         }
         private void LogExceptionEvent(AzurePSQoSEvent qos)
         {
+            if(qos == null || qos.Exception == null)
+            {
+                return;
+            }
+
             Dictionary<string, double> eventMetrics = new Dictionary<string, double>();
             eventMetrics.Add("Duration", qos.Duration.TotalMilliseconds);
 
@@ -130,7 +135,11 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 Dictionary<string, string> eventProperties = new Dictionary<string, string>();
                 LoadTelemetryClientContext(qos, client.Context);
                 PopulatePropertiesFromQos(qos, eventProperties);
-                client.TrackException(qos.Exception, eventProperties, eventMetrics);
+                // qos.Exception contains exception message which may contain Users specific data. 
+                // We should not collect users specific data. 
+                eventProperties.Add("StackTrace", qos.Exception.StackTrace);
+                eventProperties.Add("ExceptionType", qos.Exception.GetType().ToString());
+                client.TrackException(null, eventProperties, eventMetrics);
             }
         }
 
