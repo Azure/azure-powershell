@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// Get the available role Definitions for certain resource types.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmRoleDefinition"), OutputType(typeof(List<PSRoleDefinition>))]
-    [CliCommandAlias("networksecurityrole definition ls")]
+    [CliCommandAlias("resource role definition ls")]
     public class GetAzureRoleDefinitionCommand : ResourcesBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionName,

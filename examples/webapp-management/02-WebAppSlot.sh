@@ -18,7 +18,7 @@ tier2="Premium"
 apiversion="2015-08-01"
 resourceType="Microsoft.Web/sites"
 
-az resourcemanager group create --name "$groupName" --location "$location"
+az resource group create --name "$groupName" --location "$location"
 
 printf "\n1. Create a new app service plan %s " "$planName1"
 az appservice plan create -n "$planName1" -g "$groupName" -l "$location" --tier "$tier1"
@@ -168,4 +168,4 @@ az appservice slot rm -g "$groupName" -n "$appName1" --slot "$slotname1" --force
 az appservice slot rm -g "$groupName" -n "$appName1" --slot "$slotname2" --force
 
 printf "\n23. Remove resource group: %s." "$groupName"
-az resourcemanager group rm --name "$groupName" --force
+az resource group rm --name "$groupName" --force

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// Updates an existing resource group.
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRmResourceGroup", DefaultParameterSetName = ResourceGroupNameParameterSet), OutputType(typeof(PSResourceGroup))]
-    [CliCommandAlias("resourcemanager group set")]
+    [CliCommandAlias("resource group set")]
     public class SetAzureResourceGroupCommand : ResourcesBaseCmdlet
     {
         /// <summary>

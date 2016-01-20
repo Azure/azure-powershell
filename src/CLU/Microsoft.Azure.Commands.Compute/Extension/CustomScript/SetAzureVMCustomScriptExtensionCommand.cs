@@ -33,9 +33,8 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet(
         VerbsCommon.Set,
         ProfileNouns.VirtualMachineCustomScriptExtension,
-        DefaultParameterSetName = SetCustomScriptExtensionByContainerBlobsParamSetName)]
-    [CliCommandAlias("vm customscriptextension set")]
-    [OutputType(typeof(void))]
+        DefaultParameterSetName = SetCustomScriptExtensionByContainerBlobsParamSetName), OutputType(typeof(void))]
+    [CliCommandAlias("vm extension script set")]
     public class SetAzureVMCustomScriptExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         protected const string SetCustomScriptExtensionByContainerBlobsParamSetName = "SetCustomScriptExtensionByContainerAndFileNames";

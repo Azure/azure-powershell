@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Compute
         ProfileNouns.AdditionalUnattendContent),
     OutputType(
         typeof(PSVirtualMachine))]
-    [CliCommandAlias("vm additional unattend content add")]
+    [CliCommandAlias("vm config additionalunattendcontent add")]
     public class NewAzureAdditionalUnattendContentCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         private const string defaultComponentName = "Microsoft-Windows-Shell-Setup";

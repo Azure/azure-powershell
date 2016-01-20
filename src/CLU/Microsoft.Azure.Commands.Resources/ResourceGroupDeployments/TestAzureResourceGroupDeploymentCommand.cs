@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroupDeployments
     /// </summary>
     [Cmdlet(VerbsDiagnostic.Test, "AzureRmResourceGroupDeployment", DefaultParameterSetName = ParameterlessTemplateFileParameterSetName), 
         OutputType(typeof(PSResourceManagerError))]
-    [CliCommandAlias("resourcemanager group deployment test")]
+    [CliCommandAlias("resource group deployment test")]
     public class TestAzureResourceGroupDeploymentCommand : ResourceWithParameterBaseCmdlet, IDynamicParameters
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]

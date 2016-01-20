@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Gets the resource lock.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmResourceLock"), OutputType(typeof(ResourceLock<JToken>))]
-    [CliCommandAlias("resourcemanager resource lock ls")]
+    [CliCommandAlias("resource lock ls")]
     public class GetAzureResourceLockCmdlet : ResourceLockManagementCmdletBase
     {
         /// <summary>

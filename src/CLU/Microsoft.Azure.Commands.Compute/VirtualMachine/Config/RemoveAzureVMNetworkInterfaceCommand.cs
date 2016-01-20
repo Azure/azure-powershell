@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Compute
         ProfileNouns.NetworkInterface),
     OutputType(
         typeof(PSVirtualMachine))]
-    [CliCommandAlias("vm network interface rm")]
+    [CliCommandAlias("vm config network interface rm")]
     public class RemoveAzureVMNetworkInterfaceCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Alias("VMProfile")]
