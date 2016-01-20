@@ -1,35 +1,35 @@
 $AzureRMDependencies = @{
-  "Azure.Storage" = "1.0";
-  "AzureRM.Profile" = "1.0";
+  "Azure.Storage" = "1.0.3";
+  "AzureRM.Profile" = "1.0.3";
 }
 
 $AzureRMModules = @{
-  "AzureRM.ApiManagement" = "1.0";
-  "AzureRM.Automation" = "1.0";
-  "AzureRM.Backup" = "1.0";
-  "AzureRM.Batch" = "1.0";
-  "AzureRM.Compute" = "1.2";
-  "AzureRM.DataFactories" = "1.0";
-  "AzureRM.DataLakeAnalytics" = "1.0";
-  "AzureRM.DataLakeStore" = "1.0";
-  "AzureRM.Dns" = "1.0";
-  "AzureRM.HDInsight" = "1.0";
-  "AzureRM.Insights" = "1.0";
-  "AzureRM.KeyVault" = "1.1";
-  "AzureRM.Network" = "1.0";
-  "AzureRM.NotificationHubs" = "1.0";
-  "AzureRM.OperationalInsights" = "1.0";
-  "AzureRM.RecoveryServices" = "1.0";
-  "AzureRM.RedisCache" = "1.1";
-  "AzureRM.Resources" = "1.0";
-  "AzureRM.SiteRecovery" = "1.1";
-  "AzureRM.Sql" = "1.0";
-  "AzureRM.Storage" = "1.0";
-  "AzureRM.StreamAnalytics" = "1.0";
-  "AzureRM.Tags" = "1.0";
-  "AzureRM.TrafficManager" = "1.0";
-  "AzureRM.UsageAggregates" = "1.0";
-  "AzureRM.Websites" = "1.0";
+  "AzureRM.ApiManagement" = "1.0.3";
+  "AzureRM.Automation" = "1.0.3";
+  "AzureRM.Backup" = "1.0.3";
+  "AzureRM.Batch" = "1.0.3";
+  "AzureRM.Compute" = "1.2.1";
+  "AzureRM.DataFactories" = "1.0.3";
+  "AzureRM.DataLakeAnalytics" = "1.0.3";
+  "AzureRM.DataLakeStore" = "1.0.3";
+  "AzureRM.Dns" = "1.0.3";
+  "AzureRM.HDInsight" = "1.0.4";
+  "AzureRM.Insights" = "1.0.3";
+  "AzureRM.KeyVault" = "1.1.2";
+  "AzureRM.Network" = "1.0.3";
+  "AzureRM.NotificationHubs" = "1.0.3";
+  "AzureRM.OperationalInsights" = "1.0.3";
+  "AzureRM.RecoveryServices" = "1.0.4";
+  "AzureRM.RedisCache" = "1.1.1";
+  "AzureRM.Resources" = "1.0.3";
+  "AzureRM.SiteRecovery" = "1.1.2";
+  "AzureRM.Sql" = "1.0.3";
+  "AzureRM.Storage" = "1.0.3";
+  "AzureRM.StreamAnalytics" = "1.0.3";
+  "AzureRM.Tags" = "1.0.3";
+  "AzureRM.TrafficManager" = "1.0.3";
+  "AzureRM.UsageAggregates" = "1.0.3";
+  "AzureRM.Websites" = "1.0.3";
 }
 
 function Test-AdminRights([string]$Scope)
@@ -70,7 +70,7 @@ function CheckIncompatibleVersion([bool]$Force)
 function Install-ModuleWithVersionCheck([string]$Name,[string]$MinimumVersion,[string]$Repository,[string]$Scope,[switch]$Force)
 {
   $_MinVer = $MinimumVersion
-  $_MaxVer = "$($_MinVer.Split(".")[0]).9999.0"
+  $_MaxVer = "$($_MinVer.Split(".")[0]).9999.9999.9999"
   $script:InstallCounter ++
   try {
     $_ExistingModule = Get-Module -ListAvailable -Name $Name
@@ -117,7 +117,7 @@ function Update-AzureRM
   param(
   [Parameter(Position=0, Mandatory = $false)]
   [string]
-  $MinVersion,
+  $MajorVersion,
   [Parameter(Position=1, Mandatory = $false)]
   [string]
   $Repository = "PSGallery",
@@ -146,8 +146,8 @@ function Update-AzureRM
 
     # Start new job
     $AzureRMModules.Keys | ForEach {
-      $_MinVer = $MinVersion 
-      if(!$MinVersion) {
+      $_MinVer = $MajorVersion 
+      if(!$MajorVersion) {
         $_MinVer = $AzureRMModules[$_]
       }
       Install-ModuleWithVersionCheck $_ $_MinVer $Repository $Scope -Force:$force
@@ -173,16 +173,16 @@ function Import-AzureRM
   param(
   [Parameter(Position=0, Mandatory = $false)]
   [string]
-  $MinorVersion)
+  $MajorVersion )
   Write-Output "Importing AzureRM modules."
 
   $AzureRMModules.Keys | ForEach {
     $moduleName = $_
-    $_MinVer = $MinorVersion
-    if(!MinorVersion) {
+    $_MinVer = $MajorVersion 
+    if(!MajorVersion ) {
       $_MinVer = $AzureRMModules[$_]
     }
-    $_MaxVer = "$($_MinVer.Split(".")[0]).9999.0"
+    $_MaxVer = "$($_MinVer.Split(".")[0]).9999.9999.9999"
 
     $_MatchedModule = Get-InstalledModule -Name $moduleName -MinimumVersion $_MinVer -MaximumVersion $_MaxVer -ErrorAction Ignore | where {$_.Name -eq $moduleName}
     if ($_MatchedModule -ne $null) {
