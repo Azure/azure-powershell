@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Compute
         ProfileNouns.BootDiagnostics),
     OutputType(
         typeof(PSVirtualMachine))]
-    [CliCommandAlias("vm bootdiagnostics set")]
+    [CliCommandAlias("vm config bootdiagnostics set")]
     public class SetAzureVMBootDiagnosticsCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         private const string EnableParameterSet = "EnableBootDiagnostics";

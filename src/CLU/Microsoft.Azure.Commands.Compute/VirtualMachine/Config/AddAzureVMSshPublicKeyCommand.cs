@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Compute
         ProfileNouns.SshPublicKey),
     OutputType(
         typeof(PSVirtualMachine))]
-    [CliCommandAlias("vm ssh public key add")]
+    [CliCommandAlias("vm config ssh public key add")]
     public class NewAzureSshPublicKeyCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Alias("VMProfile")]

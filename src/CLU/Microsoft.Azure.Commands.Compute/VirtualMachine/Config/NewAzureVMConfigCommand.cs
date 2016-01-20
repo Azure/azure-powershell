@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Compute
         ProfileNouns.VirtualMachineConfig),
     OutputType(
         typeof(PSVirtualMachine))]
-    [CliCommandAlias("vm config new")]
+    [CliCommandAlias("vm config create")]
     public class NewAzureVMConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Alias("ResourceName", "Name")]

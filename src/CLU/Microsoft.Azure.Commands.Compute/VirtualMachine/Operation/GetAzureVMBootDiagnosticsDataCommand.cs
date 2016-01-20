@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Get, ProfileNouns.BootDiagnosticsData, DefaultParameterSetName = WindowsParamSet)]
     [OutputType(typeof(PSVirtualMachine), typeof(PSVirtualMachineInstanceView))]
-    [CliCommandAlias("vm bootdiagnostics data ls")]
+    [CliCommandAlias("vm bootdiagnostics ls")]
     public class GetAzureVMBootDiagnosticsDataCommand : VirtualMachineBaseCmdlet
     {
         private const string WindowsParamSet = "WindowsParamSet";

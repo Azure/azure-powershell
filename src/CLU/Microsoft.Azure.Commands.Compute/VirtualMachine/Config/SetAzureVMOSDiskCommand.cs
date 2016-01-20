@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Compute
         DefaultParameterSetName = DefaultParamSet),
     OutputType(
         typeof(PSVirtualMachine))]
-    [CliCommandAlias("vm os disk set")]
+    [CliCommandAlias("vm config osdisk set")]
     public class SetAzureVMOSDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         protected const string DefaultParamSet = "DefaultParamSet";
