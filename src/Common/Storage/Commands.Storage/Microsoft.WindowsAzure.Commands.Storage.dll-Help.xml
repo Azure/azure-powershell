@@ -2059,7 +2059,7 @@ echo "Total $total containers"</dev:code>
     <command:details>
       <command:name>Get-AzureStorageFile</command:name>
       <maml:description>
-        <maml:para>List the files and directories in a specific path.</maml:para>
+        <maml:para>List the files and directories in the specified file share or directory, or return an instance of a directory or file in the specified path.</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2070,7 +2070,7 @@ echo "Total $total containers"</dev:code>
     </command:details>
     <maml:description>
       <!--This is the Description section-->
-      <maml:para>List the files and directories in a specific path.</maml:para>
+      <maml:para>If you omit the Path parameter, Get-AzureStorageFile lists the directories and files in the specified file share or directory. If you include the Path parameter, Get-AzureStorageFiles returns an instance of a directory or file in the specified path.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
