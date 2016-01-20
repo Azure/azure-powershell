@@ -39,8 +39,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             ResourceExtendedInformationResponse response =
                 await this.recoveryServicesClient.VaultExtendedInfo.GetExtendedInfoAsync(
-                asrVaultCreds.ResourceGroupName,
-                asrVaultCreds.ResourceName,
+                arsVaultCreds.ResourceGroupName,
+                arsVaultCreds.ResourceName,
                 this.GetRequestHeaders());
 
             return response.ResourceExtendedInformation;
@@ -54,8 +54,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public AzureOperationResponse CreateExtendedInfo(ResourceExtendedInformationArgs extendedInfoArgs)
         {
             return this.recoveryServicesClient.VaultExtendedInfo.CreateExtendedInfo(
-                asrVaultCreds.ResourceGroupName,
-                asrVaultCreds.ResourceName,
+                arsVaultCreds.ResourceGroupName,
+                arsVaultCreds.ResourceName,
                 extendedInfoArgs,
                 this.GetRequestHeaders());
         }
@@ -68,8 +68,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public async Task<UploadCertificateResponse> UpdateVaultCertificate(CertificateArgs args, string certFriendlyName)
         {
             return await this.recoveryServicesClient.VaultExtendedInfo.UploadCertificateAsync(
-                asrVaultCreds.ResourceGroupName, 
-                asrVaultCreds.ResourceName,
+                arsVaultCreds.ResourceGroupName, 
+                arsVaultCreds.ResourceName,
                 args, certFriendlyName, 
                 this.GetRequestHeaders());
         }
@@ -80,15 +80,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <param name="managementCert">certificate to be uploaded</param>
         /// <param name="vault">vault object</param>
         /// <returns>credential object</returns>
-        public ASRVaultCreds GenerateVaultCredential(X509Certificate2 managementCert, ARSVault vault, ASRSite site)
+        public ARSVaultCreds GenerateVaultCredential(X509Certificate2 managementCert, ARSVault vault, ASRSite site)
         {
-            ASRVaultCreds currentVaultContext = PSRecoveryServicesClient.asrVaultCreds;
+            ARSVaultCreds currentVaultContext = PSRecoveryServicesClient.arsVaultCreds;
 
             string resourceProviderNamespace = string.Empty;
             string resourceType = string.Empty;
             Utilities.GetResourceProviderNamespaceAndType(vault.ID, out resourceProviderNamespace, out resourceType);
             // Update vault settings with the working vault to generate file
-            Utilities.UpdateCurrentVaultContext(new ASRVaultCreds()
+            Utilities.UpdateCurrentVaultContext(new ARSVaultCreds()
             {
                 ResourceGroupName = vault.ResouceGroupName,
                 ResourceName = vault.Name,
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             acsDetails = uploadCertificate.Result;
             channelIntegrityKey = getChannelIntegrityKey.Result;
 
-            ASRVaultCreds asrVaultCreds = this.GenerateCredentialObject(
+            ARSVaultCreds arsVaultCreds = this.GenerateCredentialObject(
                                                 managementCert,
                                                 acsDetails,
                                                 channelIntegrityKey,
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             // Update back the original vault settings
             Utilities.UpdateCurrentVaultContext(currentVaultContext);
 
-            return asrVaultCreds;
+            return arsVaultCreds;
         }
 
         /// <summary>
@@ -130,12 +130,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         /// <param name="vault">vault object</param>
         /// <returns>credential object</returns>
-        public ASRVaultCreds ChangeVaultContext(ARSVault vault)
+        public ARSVaultCreds ChangeVaultContext(ARSVault vault)
         {
             string resourceProviderNamespace = string.Empty;
             string resourceType = string.Empty;
             Utilities.GetResourceProviderNamespaceAndType(vault.ID, out resourceProviderNamespace, out resourceType);
-            Utilities.UpdateCurrentVaultContext(new ASRVaultCreds()
+            Utilities.UpdateCurrentVaultContext(new ARSVaultCreds()
             {
                 ResourceGroupName = vault.ResouceGroupName,
                 ResourceName = vault.Name,
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             getChannelIntegrityKey.Wait();
 
             // Update vault settings along with Channel integrity key
-            Utilities.UpdateCurrentVaultContext(new ASRVaultCreds()
+            Utilities.UpdateCurrentVaultContext(new ARSVaultCreds()
             {
                 ResourceGroupName = vault.ResouceGroupName,
                 ResourceName = vault.Name,
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 ARMResourceType = resourceType
             });
 
-            return asrVaultCreds;
+            return arsVaultCreds;
         }
 
         /// <summary>
@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <param name="vault">vault object</param>
         /// <param name="site">site object</param>
         /// <returns>vault credential object</returns>
-        private ASRVaultCreds GenerateCredentialObject(X509Certificate2 managementCert, UploadCertificateResponse acsDetails, string channelIntegrityKey, ARSVault vault, ASRSite site)
+        private ARSVaultCreds GenerateCredentialObject(X509Certificate2 managementCert, UploadCertificateResponse acsDetails, string channelIntegrityKey, ARSVault vault, ASRSite site)
         {
             string serializedCertifivate = Convert.ToBase64String(managementCert.Export(X509ContentType.Pfx));
 
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             string resourceProviderNamespace = string.Empty;
             string resourceType = string.Empty;
             Utilities.GetResourceProviderNamespaceAndType(vault.ID, out resourceProviderNamespace, out resourceType);
-            ASRVaultCreds vaultCreds = new ASRVaultCreds(
+            ARSVaultCreds vaultCreds = new ARSVaultCreds(
                                             vault.SubscriptionId,
                                             vault.Name,
                                             serializedCertifivate,

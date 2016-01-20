@@ -16,7 +16,7 @@ using System;
 using System.Management.Automation;
 using System.Net;
 using Microsoft.Azure.Commands.SiteRecovery.Properties;
-using Microsoft.Azure.Management.RecoveryServices.Models;
+using Microsoft.Azure.Management.SiteRecoveryVault.Models;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
