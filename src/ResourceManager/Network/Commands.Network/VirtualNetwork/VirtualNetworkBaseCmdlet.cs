@@ -27,11 +27,11 @@ namespace Microsoft.Azure.Commands.Network
 
     public abstract class VirtualNetworkBaseCmdlet : NetworkBaseCmdlet
     {
-        public IVirtualNetworkOperations VirtualNetworkClient
+        public IVirtualNetworksOperations VirtualNetworkClient
         {
             get
             {
-                return NetworkClient.NetworkResourceProviderClient.VirtualNetworks;
+                return NetworkClient.NetworkManagementClient.VirtualNetworks;
             }
         }
 
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 GetVirtualNetwork(resourceGroupName, name);
             }
-            catch (CloudException exception)
+            catch (Microsoft.Rest.Azure.CloudException exception)
             {
                 if (exception.Response.StatusCode == HttpStatusCode.NotFound)
                 {
@@ -55,22 +55,22 @@ namespace Microsoft.Azure.Commands.Network
             return true;
         }
 
-        public PSVirtualNetwork GetVirtualNetwork(string resourceGroupName, string name)
+        public PSVirtualNetwork GetVirtualNetwork(string resourceGroupName, string name, string expandResource = null)
         {
-            var getNetworkInterfaceResponse = this.VirtualNetworkClient.Get(resourceGroupName, name);
+            var vnet = this.VirtualNetworkClient.Get(resourceGroupName, name, expandResource);
 
-            var virtualNetwork = Mapper.Map<PSVirtualNetwork>(getNetworkInterfaceResponse.VirtualNetwork);
-            virtualNetwork.ResourceGroupName = resourceGroupName;
+            var psVirtualNetwork = Mapper.Map<PSVirtualNetwork>(vnet);
+            psVirtualNetwork.ResourceGroupName = resourceGroupName;
 
-            virtualNetwork.Tag =
-                TagsConversionHelper.CreateTagHashtable(getNetworkInterfaceResponse.VirtualNetwork.Tags);
+            psVirtualNetwork.Tag =
+                TagsConversionHelper.CreateTagHashtable(vnet.Tags);
 
-            if (virtualNetwork.DhcpOptions == null)
+            if (psVirtualNetwork.DhcpOptions == null)
             {
-                virtualNetwork.DhcpOptions = new PSDhcpOptions();
+                psVirtualNetwork.DhcpOptions = new PSDhcpOptions();
             }
 
-            return virtualNetwork;
+            return psVirtualNetwork;
         }
 
         public PSVirtualNetwork ToPsVirtualNetwork(VirtualNetwork vnet)

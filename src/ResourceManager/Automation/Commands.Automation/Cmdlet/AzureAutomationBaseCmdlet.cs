@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             // Do nothing.
         }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             try
             {

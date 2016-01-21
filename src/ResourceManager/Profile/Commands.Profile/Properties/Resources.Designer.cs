@@ -70,6 +70,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Account ID &apos;{0}&apos; for tenant &apos;{1}&apos; does not match home Account ID &apos;{2}&apos;.
+        /// </summary>
+        internal static string AccountIdMismatch {
+            get {
+                return ResourceManager.GetString("AccountIdMismatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Access token credentials must provide the AccountId parameter..
         /// </summary>
         internal static string AccountIdRequired {
@@ -106,6 +115,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Current tenant with Id &apos;{0}&apos; will be used..
+        /// </summary>
+        internal static string CurrentTenantInUse {
+            get {
+                return ResourceManager.GetString("CurrentTenantInUse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The provided subscription ID &quot;{0}&quot; is not a valid Guid..
         /// </summary>
         internal static string InvalidSubscriptionId {
@@ -133,6 +151,24 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please provide either a subscription ID, subscription name, tenant Id or domain..
+        /// </summary>
+        internal static string SetAzureRmContextNoParameterSet {
+            get {
+                return ResourceManager.GetString("SetAzureRmContextNoParameterSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to find subscription with name &apos;{0}&apos;..
+        /// </summary>
+        internal static string SubscriptionNameNotFoundError {
+            get {
+                return ResourceManager.GetString("SubscriptionNameNotFoundError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Subscription {0} was not found in tenant {1}. Please verify that the subscription exists in this tenant..
         /// </summary>
         internal static string SubscriptionNotFoundError {
@@ -151,11 +187,47 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to find tenant &apos;{0}&apos;..
+        /// </summary>
+        internal static string TenantIdNotFound {
+            get {
+                return ResourceManager.GetString("TenantIdNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to To create an access token credential, you must provide an access token account..
         /// </summary>
         internal static string TypeNotAccessToken {
             get {
                 return ResourceManager.GetString("TypeNotAccessToken", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to acquire token for tenant &apos;{0}&apos;.
+        /// </summary>
+        internal static string UnableToAqcuireToken {
+            get {
+                return ResourceManager.GetString("UnableToAqcuireToken", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not authenticate user account &apos;{0}&apos; with tenant &apos;{1}&apos;. Subscriptions in this tenant will not be listed. Please login again using Login-AzureRmAccount to view the subscriptions in this tenant..
+        /// </summary>
+        internal static string UnableToLogin {
+            get {
+                return ResourceManager.GetString("UnableToLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to find environment with name &apos;{0}&apos;.
+        /// </summary>
+        internal static string UnknownEnvironment {
+            get {
+                return ResourceManager.GetString("UnknownEnvironment", resourceCulture);
             }
         }
     }

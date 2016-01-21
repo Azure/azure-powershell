@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
     public class PSVirtualNetworkGatewayConnection : PSTopLevelResource
     {
+        public string AuthorizationKey { get; set; }
         public PSVirtualNetworkGateway VirtualNetworkGateway1 { get; set; }
 
         public PSVirtualNetworkGateway VirtualNetworkGateway2 { get; set; }
@@ -32,28 +33,36 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string SharedKey { get; set; }
 
+        public string ConnectionStatus { get; set; }
+
+        public ulong EgressBytesTransferred { get; set; }
+
+        public ulong IngressBytesTransferred { get; set; }
+
+        public string ProvisioningState { get; set; }
+
         [JsonIgnore]
         public string VirtualNetworkGateway1Text
         {
-            get { return JsonConvert.SerializeObject(VirtualNetworkGateway1.Id, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(VirtualNetworkGateway1.Id, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
         public string VirtualNetworkGateway2Text
         {
-            get { return JsonConvert.SerializeObject(VirtualNetworkGateway2.Id, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(VirtualNetworkGateway2.Id, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
         public string LocalNetworkGateway2Text
         {
-            get { return JsonConvert.SerializeObject(LocalNetworkGateway2.Id, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(LocalNetworkGateway2.Id, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
         public string PeerText
         {
-            get { return JsonConvert.SerializeObject(Peer.Id, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(Peer.Id, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
+using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Management.Automation;
 
@@ -34,7 +35,9 @@ namespace Microsoft.Azure.Commands.Resources
             HelpMessage = "The user or group object id.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Empty,
             HelpMessage = "The user or group object id.")]
-        [ValidateNotNullOrEmpty]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleIdWithScopeAndObjectId,
+            HelpMessage = "The user or group object id.")]
+        [ValidateGuidNotEmpty]
         [Alias("Id", "PrincipalId")]
         public Guid ObjectId { get; set; }
 
@@ -108,19 +111,46 @@ namespace Microsoft.Azure.Commands.Resources
             HelpMessage = "Scope of the role assignment. In the format of relative URI. If not specified, will assign the role at subscription level. If specified, it can either start with \"/subscriptions/<id>\" or the part after that. If it's latter, the current subscription id will be used.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithSPN,
             HelpMessage = "Scope of the role assignment. In the format of relative URI. If not specified, will assign the role at subscription level. If specified, it can either start with \"/subscriptions/<id>\" or the part after that. If it's latter, the current subscription id will be used.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleIdWithScopeAndObjectId,
+            HelpMessage = "Scope of the role assignment. In the format of relative URI. If not specified, will assign the role at subscription level. If specified, it can either start with \"/subscriptions/<id>\" or the part after that. If it's latter, the current subscription id will be used.")]
         [ValidateNotNullOrEmpty]
         public string Scope { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Role to assign the principals with.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Empty,
+            HelpMessage = "Role name to assign the principals with.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithObjectId,
+            HelpMessage = "Role name to assign the principals with.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithSignInName,
+            HelpMessage = "Role name to assign the principals with.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithSPN,
+            HelpMessage = "Role name to assign the principals with.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithObjectId,
+            HelpMessage = "Role name to assign the principals with.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithObjectId,
+            HelpMessage = "Role name to assign the principals with.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithSignInName,
+            HelpMessage = "Role name to assign the principals with.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithSignInName,
+            HelpMessage = "Role name to assign the principals with.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithSPN,
+            HelpMessage = "Role name to assign the principals with.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithSPN,
+            HelpMessage = "Role name to assign the principals with.")]
         [ValidateNotNullOrEmpty]
         public string RoleDefinitionName { get; set; }
 
-        protected override void ProcessRecord()
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleIdWithScopeAndObjectId,
+            HelpMessage = "Role Id the principal is assigned to.")]
+        [ValidateGuidNotEmpty]
+        public Guid RoleDefinitionId { get; set; }
+
+        public override void ExecuteCmdlet()
         {
             FilterRoleAssignmentsOptions parameters = new FilterRoleAssignmentsOptions()
             {
                 Scope = Scope,
-                RoleDefinition = RoleDefinitionName,
+                RoleDefinitionName = RoleDefinitionName,
+                RoleDefinitionId = RoleDefinitionId == Guid.Empty ? null : RoleDefinitionId.ToString(),
                 ADObjectFilter = new ADObjectFilterOptions
                 {
                     SignInName = SignInName,

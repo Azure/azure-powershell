@@ -79,11 +79,29 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adding a new certificate with thumbprint {0}. .
+        /// </summary>
+        internal static string AddingCertificate {
+            get {
+                return ResourceManager.GetString("AddingCertificate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Begin {0} call to RP.
         /// </summary>
         internal static string BeginMAMLCall {
             get {
                 return ResourceManager.GetString("BeginMAMLCall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Canceling deletion of the certificate with thumbprint {0}..
+        /// </summary>
+        internal static string CancelCertificateDelete {
+            get {
+                return ResourceManager.GetString("CancelCertificateDelete", resourceCulture);
             }
         }
         
@@ -160,6 +178,15 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disabling task scheduling on compute node {0}..
+        /// </summary>
+        internal static string DisableComputeNodeScheduling {
+            get {
+                return ResourceManager.GetString("DisableComputeNodeScheduling", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Disabling job {0}..
         /// </summary>
         internal static string DisableJob {
@@ -205,6 +232,15 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enabling task scheduling on compute node {0}..
+        /// </summary>
+        internal static string EnableComputeNodeScheduling {
+            get {
+                return ResourceManager.GetString("EnableComputeNodeScheduling", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enabling job {0}..
         /// </summary>
         internal static string EnableJob {
@@ -246,6 +282,33 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string GetAllAccounts {
             get {
                 return ResourceManager.GetString("GetAllAccounts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting the certificate with thumbprint {0}..
+        /// </summary>
+        internal static string GetCertificateByThumbprint {
+            get {
+                return ResourceManager.GetString("GetCertificateByThumbprint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting certificates matching the specified OData filter..
+        /// </summary>
+        internal static string GetCertificatesByFilter {
+            get {
+                return ResourceManager.GetString("GetCertificatesByFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting all certificates that have been added to the Batch account..
+        /// </summary>
+        internal static string GetCertificatesNoFilter {
+            get {
+                return ResourceManager.GetString("GetCertificatesNoFilter", resourceCulture);
             }
         }
         
@@ -439,6 +502,24 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Getting all subtask information for task {0}..
+        /// </summary>
+        internal static string GetSubtaskNoFilter {
+            get {
+                return ResourceManager.GetString("GetSubtaskNoFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting subtask information matching the specified OData filter for task {0}..
+        /// </summary>
+        internal static string GetSubtaskOData {
+            get {
+                return ResourceManager.GetString("GetSubtaskOData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Getting task &quot;{0}&quot; from job &quot;{1}&quot;.
         /// </summary>
         internal static string GetTaskById {
@@ -471,6 +552,15 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string GettingAccountKeys {
             get {
                 return ResourceManager.GetString("GettingAccountKeys", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting the quotas of the subscription in the Batch Service for region: {0}..
+        /// </summary>
+        internal static string GettingSubscriptionQuotas {
+            get {
+                return ResourceManager.GetString("GettingSubscriptionQuotas", resourceCulture);
             }
         }
         
@@ -543,6 +633,15 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string MissingResGroupName {
             get {
                 return ResourceManager.GetString("MissingResGroupName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No certificate data was specified. Supply the path to a certificate file, or provide the raw certificate data..
+        /// </summary>
+        internal static string NoCertificateData {
+            get {
+                return ResourceManager.GetString("NoCertificateData", resourceCulture);
             }
         }
         
@@ -664,6 +763,42 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing certificate ....
+        /// </summary>
+        internal static string RemoveCertificate {
+            get {
+                return ResourceManager.GetString("RemoveCertificate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the certificate with thumbprint {0}?.
+        /// </summary>
+        internal static string RemoveCertificateConfirm {
+            get {
+                return ResourceManager.GetString("RemoveCertificateConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing compute node(s) from pool....
+        /// </summary>
+        internal static string RemoveComputeNode {
+            get {
+                return ResourceManager.GetString("RemoveComputeNode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove compute node(s) {0} from the pool?.
+        /// </summary>
+        internal static string RemoveComputeNodeConfirm {
+            get {
+                return ResourceManager.GetString("RemoveComputeNodeConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing user ....
         /// </summary>
         internal static string RemoveComputeNodeUser {
@@ -714,6 +849,24 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string RemoveJobScheduleConfirm {
             get {
                 return ResourceManager.GetString("RemoveJobScheduleConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting node file....
+        /// </summary>
+        internal static string RemoveNodeFile {
+            get {
+                return ResourceManager.GetString("RemoveNodeFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete node file {0}?.
+        /// </summary>
+        internal static string RemoveNodeFileConfirm {
+            get {
+                return ResourceManager.GetString("RemoveNodeFileConfirm", resourceCulture);
             }
         }
         

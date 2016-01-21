@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public Stream DestinationStream { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             DownloadNodeFileOptions options = new DownloadNodeFileOptions(this.BatchContext, this.JobId, this.TaskId, this.PoolId, 
                 this.ComputeNodeId, this.Name, this.InputObject, this.DestinationPath, this.DestinationStream, this.AdditionalBehaviors);

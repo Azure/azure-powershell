@@ -22,6 +22,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using Hyak.Common;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
 using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
@@ -33,6 +35,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
@@ -106,7 +109,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
         {
             if (templateParameterObject != null)
             {
-                return SerializeHashtable(templateParameterObject, addValueLayer: true);
+                return SerializeHashtable(templateParameterObject, addValueLayer: false);
             }
             else
             {
@@ -204,7 +207,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             }
         }
 
-        private DeploymentExtended ProvisionDeploymentStatus(string resourceGroup, string deploymentName, Deployment deployment)
+        public DeploymentExtended ProvisionDeploymentStatus(string resourceGroup, string deploymentName, Deployment deployment)
         {
             operations = new List<DeploymentOperation>();
 
@@ -335,6 +338,26 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 {
                     newOperations.Add(operation);
                 }
+
+                //If nested deployment, get the operations under those deployments as well
+                if(operation.Properties.TargetResource.ResourceType.Equals(Constants.MicrosoftResourcesDeploymentType, StringComparison.OrdinalIgnoreCase))
+                {
+                    HttpStatusCode statusCode;
+                    Enum.TryParse<HttpStatusCode>(operation.Properties.StatusCode, out statusCode);
+                    if(!statusCode.IsClientFailureRequest())
+                    {
+                        List<DeploymentOperation> newNestedOperations = new List<DeploymentOperation>();
+                        DeploymentOperationsListResult result;
+
+                        result = ResourceManagementClient.DeploymentOperations.List(
+                            resourceGroupName: ResourceIdUtility.GetResourceGroupName(operation.Properties.TargetResource.Id),
+                            deploymentName: operation.Properties.TargetResource.ResourceName,
+                            parameters: null);
+
+                        newNestedOperations = GetNewOperations(operations, result.Operations);
+                        newOperations.AddRange(newNestedOperations);
+                    }
+                }
             }
 
             return newOperations;
@@ -391,18 +414,6 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 deployment);
 
             return new TemplateValidationInfo(validationResult);
-        }
-
-        internal List<PSPermission> GetResourceGroupPermissions(string resourceGroup)
-        {
-            PermissionGetResult permissionsResult = AuthorizationManagementClient.Permissions.ListForResourceGroup(resourceGroup);
-
-            if (permissionsResult != null)
-            {
-                return permissionsResult.Permissions.Select(p => p.ToPSPermission()).ToList();
-            }
-
-            return null;
         }
 
         internal List<PSPermission> GetResourcePermissions(ResourceIdentifier identity)

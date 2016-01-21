@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// <summary>
     /// The base class for all Azure Sql Database security Management Cmdlets
     /// </summary>
-    public abstract class SqlDatabaseAuditingCmdletBase  : AzureSqlDatabaseCmdletBase<DatabaseAuditingPolicyModel, SqlAuditAdapter>
+    public abstract class SqlDatabaseAuditingCmdletBase : AzureSqlDatabaseCmdletBase<DatabaseAuditingPolicyModel, SqlAuditAdapter>
     {
         /// <summary>
         /// Provides the model element that this cmdlet operates on
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
         protected override DatabaseAuditingPolicyModel PersistChanges(DatabaseAuditingPolicyModel model)
         {
-            ModelAdapter.SetDatabaseAuditingPolicy(model, clientRequestId);
+            ModelAdapter.SetDatabaseAuditingPolicy(model, clientRequestId, DefaultContext.Environment.Endpoints[AzureEnvironment.Endpoint.StorageEndpointSuffix]);
             return null;
         }
     }

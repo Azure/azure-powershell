@@ -30,6 +30,8 @@
     <HDInsightTestDebug>.\src\ServiceManagement\HDInsight\Commands.HDInsight.Test\bin\Debug\Microsoft.WindowsAzure.Commands.HDInsight.Test.dll</HDInsightTestDebug>
     <StorageTestDebug>.\src\Common\Storage\Commands.Storage.Test\bin\Debug\Microsoft.WindowsAzure.Commands.Storage.Test.dll</StorageTestDebug>
     <KeyVaultTestDebug>.\src\ResourceManager\KeyVault\Commands.KeyVault.Test\bin\Debug\Microsoft.Azure.Commands.KeyVault.Test.dll</KeyVaultTestDebug>
+    <DataLakeAnalyticsTestDebug>.\src\ResourceManager\DataLakeAnalytics\Commands.DataLakeAnalytics.Test\bin\Debug\Microsoft.Azure.Commands.DataLakeAnalytics.Test.dll</DataLakeAnalyticsTestDebug>
+    <DataLakeStoreTestDebug>.\src\ResourceManager\DataLakeStore\Commands.DataLakeStore.Test\bin\Debug\Microsoft.Azure.Commands.DataLakeStore.Test.dll</DataLakeStoreTestDebug>
     <UsageAggregationTestDebug>.\src\ResourceManager\UsageAggregates\Commands.UsageAggregates.Test\bin\Debug\Microsoft.Azure.Commands.UsageAggregates.Test.dll</UsageAggregationTestDebug>
     <TestFilter>"!Functional&#x26;!Scenario&#x26;!AzureRTScenario&#x26;!Sequential&#x26;!PIRTest&#x26;!Preview&#x26;!ADDomain&#x26;!Network&#x26;!AzureRTUpload&#x26;!AzureRTCleanUp"</TestFilter>
     <ScenarioTestFilter>All</ScenarioTestFilter>
@@ -80,6 +82,7 @@
       <XUnitTests Include=".\src\ResourceManager\ApiManagement\Commands.ApiManagement.Test\bin\Debug\Microsoft.Azure.Commands.ApiManagement.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\Profile\Commands.Profile.Test\bin\Debug\Microsoft.Azure.Commands.Profile.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\AzureBackup\Commands.AzureBackup.Test\bin\Debug\Microsoft.Azure.Commands.AzureBackup.Test.dll"/>
+      <XUnitTests Include=".\src\ResourceManager\NotificationHubs\Commands.NotificationHubs.Test\bin\Debug\Microsoft.Azure.Commands.NotificationHubs.Test.dll"/>	                      
       <XUnitTests Include="@(AsmXUnitTests)"/>
     </ItemGroup>
     <ItemGroup Condition=" '$(scope)' == 'ServiceManagement' ">
@@ -261,6 +264,20 @@
       IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false"/>
   </Target>
 
+  <!-- Run the DataLakeAnalytics tests -->
+  <Target Name="DataLakeAnalyticsTests">
+    <Message Importance="high" Text="Running DataLakeAnalytics tests" />
+    <Xunit.Runner.MSBuild.xunit Assemblies="$(DataLakeAnalyticsTestDebug)" Html="$(TestOutputDirectory)\DataLakeAnalyticsTests.xunit.dll.html" Verbose="true"
+      IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false"/>
+  </Target>
+  
+  <!-- Run the DataLakeStore tests -->
+  <Target Name="DataLakeStoreTests">
+    <Message Importance="high" Text="Running DataLakeStore tests" />
+    <Xunit.Runner.MSBuild.xunit Assemblies="$(DataLakeStoreTestDebug)" Html="$(TestOutputDirectory)\DataLakeStoreTests.xunit.dll.html" Verbose="true"
+      IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false"/>
+  </Target>
+  
   <!-- run the UsageAggregationTests -->
   <Target Name="UsageAggregationTests">
     <Message Importance="high" Text="Running UsageAggregates tests" />

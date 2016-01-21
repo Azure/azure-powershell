@@ -129,4 +129,16 @@
   <data name="RemovingWebsite" xml:space="preserve">
     <value>Are you sure you want to remove web app '{0}'</value>
   </data>
+  <data name="RemoveWebappSlotMessage" xml:space="preserve">
+    <value>Removing web app slot</value>
+  </data>
+  <data name="RemoveWebappSlotWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the web app slot "{0}({1})"</value>
+  </data>
+  <data name="RemoveWebAppSSLBinding" xml:space="preserve">
+    <value>Removing web app ssl binding</value>
+  </data>
+  <data name="RemovingWebAppSSLBinding" xml:space="preserve">
+    <value>Are you sure you want to remove the web app ssl binding for hostname '{0}'</value>
+  </data>
 </root>

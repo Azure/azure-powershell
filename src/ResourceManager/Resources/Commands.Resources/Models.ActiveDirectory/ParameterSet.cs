@@ -67,5 +67,21 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
         public const string InputFile = "InputFileParameterSet";
 
         public const string RoleDefinition = "RoleDefinitionParameterSet";
+
+        public const string RoleDefinitionName = "RoleDefinitionNameParameterSet";
+
+        public const string RoleDefinitionId = "RoleDefinitionIdParameterSet";
+
+        public const string RoleIdWithScopeAndObjectId = "RoleIdWithScopeAndObjectIdParameterSet";
+
+        public const string RoleDefinitionCustom = "RoleDefinitionCustomParameterSet";
+
+        public const string ApplicationObjectId = "ApplicationObjectIdParameterSet";
+
+        public const string ApplicationId = "ApplicationIdParameterSet";
+
+        public const string ApplicationDisplayName = "ApplicationDisplayNameParameterSet";
+
+        public const string ApplicationIdentifierUri = "ApplicationIdentifierUriParameterSet";
     }
 }

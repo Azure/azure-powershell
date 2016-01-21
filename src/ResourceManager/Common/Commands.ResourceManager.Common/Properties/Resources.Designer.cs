@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties
-{
-
-
+namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -57,6 +57,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Context cannot be null.  Please log in using Add-AzureRmAccount..
+        /// </summary>
+        public static string ContextCannotBeNull {
+            get {
+                return ResourceManager.GetString("ContextCannotBeNull", resourceCulture);
             }
         }
         
@@ -136,6 +145,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Profile cannot be null.  Please run Add-AzureRmAccount..
+        /// </summary>
+        public static string ProfileCannotBeNull {
+            get {
+                return ResourceManager.GetString("ProfileCannotBeNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Attempting to register resource provider &apos;{0}&apos;.
         /// </summary>
         public static string ResourceProviderRegisterAttempt {
@@ -163,7 +181,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The provided account {0} does not have access to subscription ID &quot;{1}&quot;. Please try logging in with different credentials not a different subscription ID..
+        ///   Looks up a localized string similar to The provided account {0} does not have access to subscription ID &quot;{1}&quot;. Please try logging in with different credentials or a different subscription ID..
         /// </summary>
         public static string SubscriptionIdNotFound {
             get {
@@ -172,7 +190,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The provided account {0} does not have access to subscription name &quot;{1}&quot;. Please try logging in with different credentials not a different subscription name..
+        ///   Looks up a localized string similar to The provided account {0} does not have access to subscription name &quot;{1}&quot;. Please try logging in with different credentials or a different subscription name..
         /// </summary>
         public static string SubscriptionNameNotFound {
             get {

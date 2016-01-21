@@ -20,11 +20,10 @@ function Test-RaClassicAdmins
 {
 	# Setup
 	Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
-	$subscription = Get-AzureRmSubscription -Current
+	$subscription = Get-AzureRmSubscription
 
 	# Test
-	[Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("8D7DD69E-9AE2-44A1-94D8-F7BC8E12645E")
-	$classic =  Get-AzureRmRoleAssignment -IncludeClassicAdministrators  | Where-Object { $_.Scope -ieq ('/subscriptions/' + $subscription.SubscriptionId) -and $_.RoleDefinitionName.ToLower().Contains('administrator')}	
+	$classic =  Get-AzureRmRoleAssignment -IncludeClassicAdministrators  | Where-Object { $_.Scope -ieq ('/subscriptions/' + $subscription[0].SubscriptionId) -and $_.RoleDefinitionName.ToLower().Contains('administrator')}	
 	
 	# Assert
 	Assert-NotNull $classic
@@ -40,25 +39,23 @@ function Test-RaNegativeScenarios
     # Setup
     Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
 
-    $subscription = Get-AzureRmSubscription -Current
+    $subscription = Get-AzureRmSubscription
 
     # Bad OID does not throw when getting a non-existing role assignment
     $badOid = 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'
-    $badOidResult = Get-AzureRmRoleAssignment -ObjectId $badOid
-    Assert-Null $badOidResult
+    $badObjectResult = "Cannot find principal using the specified options"
+    Assert-Throws { Get-AzureRmRoleAssignment -ObjectId $badOid} $badObjectResult
 
     # Bad UPN
     $badUpn = 'nonexistent@provider.com'
-    $badUpnException = "The provided information does not map to an AD object id."
-    Assert-Throws { Get-AzureRmRoleAssignment -UserPrincipalName $badUpn } $badUpnException
+    Assert-Throws { Get-AzureRmRoleAssignment -UserPrincipalName $badUpn } $badObjectResult
     
     # Bad SPN
     $badSpn = 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb'
-    $badSpnException = "The provided information does not map to an AD object id."
-    Assert-Throws { Get-AzureRmRoleAssignment -ServicePrincipalName $badSpn } $badSpnException
+    Assert-Throws { Get-AzureRmRoleAssignment -ServicePrincipalName $badSpn } $badObjectResult
     
     # Bad Scope
-    $badScope = '/subscriptions/'+ $subscription.SubscriptionId +'/providers/nonexistent'
+    $badScope = '/subscriptions/'+ $subscription[0].SubscriptionId +'/providers/nonexistent'
     $badScopeException = "InvalidResourceNamespace: The resource namespace 'nonexistent' is invalid."
     Assert-Throws { Get-AzureRmRoleAssignment -Scope $badScope } $badScopeException
 }
@@ -74,9 +71,9 @@ function Test-RaByScope
 
     $definitionName = 'Reader'
     $users = Get-AzureRmADUser | Select-Object -First 1 -Wait
-    $subscription = Get-AzureRmSubscription -Current
+    $subscription = Get-AzureRmSubscription
     $resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 1 -Wait
-    $scope = '/subscriptions/'+ $subscription.SubscriptionId +'/resourceGroups/' + $resourceGroups[0].ResourceGroupName
+    $scope = '/subscriptions/'+ $subscription[0].SubscriptionId +'/resourceGroups/' + $resourceGroups[0].ResourceGroupName
     Assert-AreEqual 1 $users.Count "There should be at least one user to run the test."
     
     # Test
@@ -143,9 +140,9 @@ function Test-RaByResource
     $definitionName = 'Owner'
     $groups = Get-AzureRmADGroup | Select-Object -Last 1 -Wait
     Assert-AreEqual 1 $groups.Count "There should be at least one group to run the test."
-	$resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 1 -Wait
-	Assert-AreEqual 1 $resourceGroups.Count "No resource group found. Unable to run the test."
-    $resource = Get-AzureRmResource -ResourceGroupName $resourceGroups[0].ResourceGroupName
+    $resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 1 -Wait
+    Assert-AreEqual 1 $resourceGroups.Count "No resource group found. Unable to run the test."
+    $resource = Get-AzureRmResource | Select-Object -Last 1 -Wait
     Assert-NotNull $resource "Cannot find any resource to continue test execution."
 
     # Test
@@ -153,7 +150,7 @@ function Test-RaByResource
     $newAssignment = New-AzureRmRoleAssignment `
                         -ObjectId $groups[0].Id.Guid `
                         -RoleDefinitionName $definitionName `
-                        -ResourceGroupName $resourceGroups[0].ResourceGroupName `
+                        -ResourceGroupName $resource.ResourceGroupName `
                         -ResourceType $resource.ResourceType `
                         -ResourceName $resource.Name
     
@@ -179,9 +176,9 @@ function Test-RaByServicePrincipal
 
     $definitionName = 'Reader'
     $servicePrincipals = Get-AzureRmADServicePrincipal | Select-Object -Last 1 -Wait
-    $subscription = Get-AzureRmSubscription -Current
+    $subscription = Get-AzureRmSubscription
     $resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 1 -Wait
-    $scope = '/subscriptions/'+ $subscription.SubscriptionId +'/resourceGroups/' + $resourceGroups[0].ResourceGroupName
+    $scope = '/subscriptions/'+ $subscription[0].SubscriptionId +'/resourceGroups/' + $resourceGroups[0].ResourceGroupName
     Assert-AreEqual 1 $servicePrincipals.Count "No service principals found. Unable to run the test."
 
     # Test
@@ -222,7 +219,7 @@ function Test-RaByUpn
     # Test
     [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("8d7dd69e-9ae2-44a1-94d8-f7bc8e12645e")
     $newAssignment = New-AzureRmRoleAssignment `
-                        -UPN $users[0].Mail `
+                        -SignInName $users[0].Mail `
                         -RoleDefinitionName $definitionName `
                         -ResourceGroupName $resourceGroups[0].ResourceGroupName
     
@@ -310,6 +307,6 @@ function VerifyRoleAssignmentDeleted
     
     $deletedRoleAssignment = Get-AzureRmRoleAssignment -ObjectId $roleAssignment.ObjectId.Guid `
                                                      -Scope $roleAssignment.Scope `
-                                                     -RoleDefinitionName $roleAssignment.RoleDefinitionName 
+                                                     -RoleDefinitionName $roleAssignment.RoleDefinitionName  | where {$_.roleAssignmentId -eq $roleAssignment.roleAssignmentId}
     Assert-Null $deletedRoleAssignment
 }

@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// The auditing endpoints communicator used by this adapter
         /// </summary>
         private AuditingEndpointsCommunicator Communicator { get; set; }
-       
+
         /// <summary>
         /// The Azure endpoints communicator used by this adapter
         /// </summary>
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         {
             return Communicator.GetServerAuditingPolicy(resourceGroupName, serverName, requestId).Properties.StorageAccountName;
         }
-        
+
         /// <summary>
         /// Provides a database audit policy model for the given database
         /// </summary>
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             FetchedStorageAccountResourceGroup = policy.Properties.StorageAccountResourceGroupName;
             FetchedStorageAccountSubscription = policy.Properties.StorageAccountSubscriptionId;
             FetchedStorageAccountTableEndpoint = policy.Properties.StorageTableEndpoint;
-            
+
             return dbPolicyModel;
         }
 
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// </summary>
         private string PolicizeAuditState(AuditStateType auditState)
         {
-            switch(auditState)
+            switch (auditState)
             {
                 case AuditStateType.Enabled:
                     return SecurityConstants.AuditingEndpoint.Enabled;
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// Updates the given model with all the event types information
         /// </summary>
         private void ModelizeEventTypesInfo(BaseAuditingPolicyModel model, string eventTypesToAudit)
-        { 
+        {
             HashSet<AuditEventType> events = new HashSet<AuditEventType>();
             if (eventTypesToAudit.IndexOf(SecurityConstants.PlainSQL_Success) != -1) events.Add(AuditEventType.PlainSQL_Success);
             if (eventTypesToAudit.IndexOf(SecurityConstants.PlainSQL_Failure) != -1) events.Add(AuditEventType.PlainSQL_Failure);
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             if (eventTypesToAudit.IndexOf(SecurityConstants.TransactionManagement_Failure) != -1) events.Add(AuditEventType.TransactionManagement_Failure);
             model.EventType = events.ToArray();
         }
-        
+
         /// <summary>
         /// Updates the content of the model object with all the retention information
         /// </summary>
@@ -243,22 +243,22 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// <summary>
         /// Transforms the given model to its endpoints acceptable structure and sends it to the endpoint
         /// </summary>
-        public void SetServerAuditingPolicy(ServerAuditingPolicyModel model, String clientId)
+        public void SetServerAuditingPolicy(ServerAuditingPolicyModel model, String clientId, string storageEndpointSuffix)
         {
-            ServerAuditingPolicyCreateOrUpdateParameters parameters = PolicizeServerAuditingModel(model);
+            ServerAuditingPolicyCreateOrUpdateParameters parameters = PolicizeServerAuditingModel(model, storageEndpointSuffix);
             Communicator.SetServerAuditingPolicy(model.ResourceGroupName, model.ServerName, clientId, parameters);
         }
 
         /// <summary>
         /// Transforms the given model to its endpoints acceptable structure and sends it to the endpoint
         /// </summary>
-        public void SetDatabaseAuditingPolicy(DatabaseAuditingPolicyModel model, String clientId)
+        public void SetDatabaseAuditingPolicy(DatabaseAuditingPolicyModel model, String clientId, string storageEndpointSuffix)
         {
             if (!IsDatabaseInServiceTierForPolicy(model, clientId))
             {
                 throw new Exception(Microsoft.Azure.Commands.Sql.Properties.Resources.DatabaseNotInServiceTierForAuditingPolicy);
             }
-            DatabaseAuditingPolicyCreateOrUpdateParameters parameters = PolicizeDatabaseAuditingModel(model);
+            DatabaseAuditingPolicyCreateOrUpdateParameters parameters = PolicizeDatabaseAuditingModel(model, storageEndpointSuffix);
             Communicator.SetDatabaseAuditingPolicy(model.ResourceGroupName, model.ServerName, model.DatabaseName, clientId, parameters);
         }
 
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             Management.Sql.Models.Database database = dbCommunicator.Get(model.ResourceGroupName, model.ServerName, model.DatabaseName, clientId);
             DatabaseEdition edition = DatabaseEdition.None;
             Enum.TryParse<DatabaseEdition>(database.Properties.Edition, true, out edition);
-            if(edition == DatabaseEdition.Basic || edition == DatabaseEdition.Standard || edition == DatabaseEdition.Premium || edition == DatabaseEdition.DataWarehouse)
+            if (edition == DatabaseEdition.Basic || edition == DatabaseEdition.Standard || edition == DatabaseEdition.Premium || edition == DatabaseEdition.DataWarehouse)
             {
                 return true;
             }
@@ -280,7 +280,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// </summary>
         /// <param name="model">The AuditingPolicy model object</param>
         /// <returns>The communication model object</returns>
-        private DatabaseAuditingPolicyCreateOrUpdateParameters PolicizeDatabaseAuditingModel(DatabaseAuditingPolicyModel model)
+        private DatabaseAuditingPolicyCreateOrUpdateParameters PolicizeDatabaseAuditingModel(DatabaseAuditingPolicyModel model, string storageEndpointSuffix)
         {
             DatabaseAuditingPolicyCreateOrUpdateParameters updateParameters = new DatabaseAuditingPolicyCreateOrUpdateParameters();
             DatabaseAuditingPolicyProperties properties = new DatabaseAuditingPolicyProperties();
@@ -290,7 +290,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             properties.StorageAccountName = ExtractStorageAccountName(model);
             properties.StorageAccountResourceGroupName = ExtractStorageAccountResourceGroup(properties.StorageAccountName);
             properties.StorageAccountSubscriptionId = ExtractStorageAccountSubscriptionId(properties.StorageAccountName);
-            properties.StorageTableEndpoint = ExtractStorageAccountTableEndpoint(properties.StorageAccountName);
+            properties.StorageTableEndpoint = ExtractStorageAccountTableEndpoint(properties.StorageAccountName, storageEndpointSuffix);
             properties.StorageAccountKey = ExtractStorageAccountKey(properties.StorageAccountName, model, properties.StorageAccountResourceGroupName, StorageKeyKind.Primary);
             properties.StorageAccountSecondaryKey = ExtractStorageAccountKey(properties.StorageAccountName, model, properties.StorageAccountResourceGroupName, StorageKeyKind.Secondary);
             properties.EventTypesToAudit = ExtractEventTypes(model);
@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// </summary>
         /// <param name="model">The AuditingPolicy model object</param>
         /// <returns>The communication model object</returns>
-        private ServerAuditingPolicyCreateOrUpdateParameters PolicizeServerAuditingModel(ServerAuditingPolicyModel model)
+        private ServerAuditingPolicyCreateOrUpdateParameters PolicizeServerAuditingModel(ServerAuditingPolicyModel model, string storageEndpointSuffix)
         {
             ServerAuditingPolicyCreateOrUpdateParameters updateParameters = new ServerAuditingPolicyCreateOrUpdateParameters();
             ServerAuditingPolicyProperties properties = new ServerAuditingPolicyProperties();
@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             properties.StorageAccountName = ExtractStorageAccountName(model);
             properties.StorageAccountResourceGroupName = ExtractStorageAccountResourceGroup(properties.StorageAccountName);
             properties.StorageAccountSubscriptionId = ExtractStorageAccountSubscriptionId(properties.StorageAccountName);
-            properties.StorageTableEndpoint = ExtractStorageAccountTableEndpoint(properties.StorageAccountName);
+            properties.StorageTableEndpoint = ExtractStorageAccountTableEndpoint(properties.StorageAccountName, storageEndpointSuffix);
             properties.StorageAccountKey = ExtractStorageAccountKey(properties.StorageAccountName, model, properties.StorageAccountResourceGroupName, StorageKeyKind.Primary);
             properties.StorageAccountSecondaryKey = ExtractStorageAccountKey(properties.StorageAccountName, model, properties.StorageAccountResourceGroupName, StorageKeyKind.Secondary);
             properties.EventTypesToAudit = ExtractEventTypes(model);
@@ -399,7 +399,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             {
                 events.Append(SecurityConstants.AuditingEndpoint.TransactionManagement_Failure).Append(",");
             }
-            if(events.Length != 0) 
+            if (events.Length != 0)
             {
                 events.Remove(events.Length - 1, 1); // remove trailing comma
             }
@@ -415,23 +415,19 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             {
                 return true;
             }
-            return false;    
+            return false;
         }
 
         /// <summary>
         /// Extracts the storage account endpoint
         /// </summary>
-        private string ExtractStorageAccountTableEndpoint(string storageName)
+        private string ExtractStorageAccountTableEndpoint(string storageName, string endpointSuffix)
         {
-            if (IgnoreStorage)
-            {
-                return null;
-            }
-            if (storageName == FetchedStorageAccountName && FetchedStorageAccountTableEndpoint != null)
+            if (IgnoreStorage || (storageName == FetchedStorageAccountName && FetchedStorageAccountTableEndpoint != null))
             {
                 return FetchedStorageAccountTableEndpoint;
             }
-            return AzureCommunicator.GetStorageTableEndpoint(Context, storageName);
+            return string.Format("https://{0}.table.{1}", storageName, endpointSuffix);
         }
 
         /// <summary>
@@ -439,11 +435,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// </summary>
         private string ExtractStorageAccountSubscriptionId(string storageName)
         {
-             if (IgnoreStorage)
-            {
-                return null;
-            }
-             if (storageName == FetchedStorageAccountName && FetchedStorageAccountSubscription!= null)
+            if (IgnoreStorage || (storageName == FetchedStorageAccountName && FetchedStorageAccountSubscription != null))
             {
                 return FetchedStorageAccountSubscription;
             }
@@ -455,11 +447,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// </summary>
         private string ExtractStorageAccountResourceGroup(string storageName)
         {
-            if (IgnoreStorage)
-            {
-                return null;
-            }
-            if (storageName == FetchedStorageAccountName && FetchedStorageAccountResourceGroup != null)
+            if (IgnoreStorage || (storageName == FetchedStorageAccountName && FetchedStorageAccountResourceGroup != null))
             {
                 return FetchedStorageAccountResourceGroup;
             }
@@ -471,11 +459,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// </summary>
         private string ExtractStorageAccountKey(string storageName, BaseAuditingPolicyModel model, string storageAccountResourceGroup, StorageKeyKind keyType)
         {
-            if (IgnoreStorage)
-            {
-                return null;
-            }
-            if (model.StorageKeyType == keyType)
+            if (IgnoreStorage || (model.StorageKeyType == keyType))
             {
                 return AzureCommunicator.GetStorageKeys(storageAccountResourceGroup, storageName)[keyType];
             }

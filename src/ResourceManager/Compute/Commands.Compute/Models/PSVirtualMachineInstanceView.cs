@@ -88,15 +88,15 @@ namespace Microsoft.Azure.Commands.Compute.Models
                 Statuses = virtualMachineInstanceView.Statuses,
                 PlatformFaultDomain = virtualMachineInstanceView.PlatformFaultDomain,
                 PlatformUpdateDomain = virtualMachineInstanceView.PlatformUpdateDomain,
-                RemoteDesktopThumbprint = virtualMachineInstanceView.RemoteDesktopThumbprint,
-                VMAgent = virtualMachineInstanceView.VMAgent
+                RemoteDesktopThumbprint = virtualMachineInstanceView.RdpThumbPrint,
+                VMAgent = virtualMachineInstanceView.VmAgent
             };
 
             return result;
         }
 
         public static PSVirtualMachineInstanceView ToPSVirtualMachineInstanceView(
-            this VirtualMachineGetResponse response,
+            this VirtualMachine response,
             string resourceGroupName = null,
             string vmName = null)
         {
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
                 return null;
             }
 
-            return response.VirtualMachine.InstanceView.ToPSVirtualMachineInstanceView(resourceGroupName, vmName);
+            return response.InstanceView.ToPSVirtualMachineInstanceView(resourceGroupName, vmName);
         }
     }
 }
