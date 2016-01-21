@@ -15,7 +15,7 @@
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Disable-AzureBatchAutoScale cmdlet disables automatic scaling of the specified pool.</maml:para>
+      <maml:para>Hello World.,.Fantastic. The Disable-AzureBatchAutoScale cmdlet disables automatic scaling of the specified pool.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
