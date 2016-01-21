@@ -195,11 +195,10 @@ namespace Microsoft.CLU.CommandLineParser
 
         private void PresentCommandHelp(string[] arguments)
         {
-            // BUGBUG - NYI!
+            // Static help implementation of "az --help"
             if (arguments.Length == 0)
             {
                 System.IO.DirectoryInfo di = new System.IO.DirectoryInfo(CLUEnvironment.GetPackagesRootPath());
-                //var tmpHelp = new Help.CommandDispatchHelper.HelpInfo(tmpPath);
                 String rootPath = CLUEnvironment.GetPackagesRootPath();
                 try
                 {
