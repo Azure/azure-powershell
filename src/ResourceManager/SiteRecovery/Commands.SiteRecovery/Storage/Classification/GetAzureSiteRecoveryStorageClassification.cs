@@ -43,6 +43,12 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         [Parameter(ParameterSetName = ASRParameterSets.ByFriendlyName, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public string FriendlyName { get; set; }
+
+        /// <summary>
+        /// Gets or sets friendly name of classification.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.ByObject, Mandatory = true, ValueFromPipeline = true)]
+        public ASRServer Server { get; set; }
         #endregion
 
         /// <summary>
@@ -85,6 +91,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                             this.Name, 
                             StringComparison.InvariantCultureIgnoreCase))
                         .ToList();
+                    break;
+                case ASRParameterSets.ByObject:
+                    storageClassifications = storageClassifications.Where(item =>
+                        item.GetFabricId().Equals(Server.GetFabricId())).ToList();
                     break;
             }
 

@@ -109,4 +109,23 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 this.GetRequestHeaders());
         }
     }
+
+    /// <summary>
+    /// Fabric extensions.
+    /// </summary>
+    public static class FabricExtensions
+    {
+        /// <summary>
+        /// Gets ARM Id of fabric from provider's ARM Id.
+        /// </summary>
+        /// <param name="provider">Provider ARM Id.</param>
+        /// <returns>ARM Id of fabric.</returns>
+        public static string GetFabricId(this ASRServer provider)
+        {
+            return provider.ID.GetVaultArmId() + "/" + 
+                string.Format(ARMResourceIdPaths.FabricResourceIdPath,
+                provider.ID.UnFormatArmId(
+                    ARMResourceIdPaths.RecoveryServicesProviderResourceIdPath));
+        }
+    }
 }
