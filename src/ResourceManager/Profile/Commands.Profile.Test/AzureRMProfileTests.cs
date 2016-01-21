@@ -23,6 +23,8 @@ using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Common;
 using Moq;
+using System.Collections.Concurrent;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 {
@@ -243,7 +245,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-      public void SetContextPreservesTokenCache()
+        public void SetContextPreservesTokenCache()
         {
             AzureRMProfile profile = null;
             AzureContext context = new AzureContext(null, null, null, null);
@@ -252,6 +254,22 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.Throws<ArgumentNullException>(() => profile.SetContextWithCache(null));
             profile.SetContextWithCache(context);
             Assert.Equal(TokenCache.DefaultShared.Serialize(), profile.Context.TokenCache);
+        }
+
+        [Fact]
+        public void AzurePSComletMessageQueue()
+        {
+            ConcurrentQueue<string> queue = new ConcurrentQueue<string>();
+      
+            Parallel.For(0, 5, i =>
+            {
+                for (int j = 0; j < 300; j++)
+                {
+                    queue.CheckAndEnqueue(j.ToString());
+                }
+            });
+
+            Assert.Equal(500, queue.Count);
         }
     }
 }

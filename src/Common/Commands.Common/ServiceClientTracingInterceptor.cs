@@ -20,7 +20,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace Microsoft.WindowsAzure.Commands.Common
 {
     class ServiceClientTracingInterceptor : IServiceClientTracingInterceptor
@@ -49,19 +48,19 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         public void Information(string message)
         {
-            MessageQueue.Enqueue(message);
+            MessageQueue.CheckAndEnqueue(message);
         }
 
         public void ReceiveResponse(string invocationId, System.Net.Http.HttpResponseMessage response)
         {
             string responseAsString = response == null ? string.Empty : response.AsFormattedString();
-            MessageQueue.Enqueue(responseAsString);
+            MessageQueue.CheckAndEnqueue(responseAsString);
         }
 
         public void SendRequest(string invocationId, System.Net.Http.HttpRequestMessage request)
         {
             string requestAsString = request == null ? string.Empty : request.AsFormattedString();
-            MessageQueue.Enqueue(requestAsString);
+            MessageQueue.CheckAndEnqueue(requestAsString);
         }
 
         public void TraceError(string invocationId, Exception exception)
