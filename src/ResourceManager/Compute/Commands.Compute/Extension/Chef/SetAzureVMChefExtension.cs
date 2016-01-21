@@ -226,8 +226,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
                         if (!IsChefServerUrlEmpty && !IsValidationClientNameEmpty)
                         {
                             string UserConfig = @"
-chef_server_url  \""{0}\""
-validation_client_name 	\""{1}\""
+chef_server_url  '{0}'
+validation_client_name 	'{1}'
 ";
                             ClientConfig += string.Format(UserConfig, this.ChefServerUrl, this.ValidationClientName);
                         }
@@ -235,7 +235,7 @@ validation_client_name 	\""{1}\""
                         else if (!IsChefServerUrlEmpty)
                         {
                             string UserConfig = @"
-chef_server_url  \""{0}\""
+chef_server_url  '{0}'
 ";
                             ClientConfig += string.Format(UserConfig, this.ChefServerUrl);
                         }
@@ -243,7 +243,7 @@ chef_server_url  \""{0}\""
                         else if (!IsValidationClientNameEmpty)
                         {
                             string UserConfig = @"
-validation_client_name 	\""{0}\""
+validation_client_name 	'{0}'
 ";
                             ClientConfig += string.Format(UserConfig, this.ValidationClientName);
                         }
@@ -252,8 +252,8 @@ validation_client_name 	\""{0}\""
                     else if (!IsChefServerUrlEmpty && !IsValidationClientNameEmpty)
                     {
                         string UserConfig = @"
-chef_server_url  \""{0}\""
-validation_client_name 	\""{1}\""
+chef_server_url  '{0}'
+validation_client_name 	'{1}'
 ";
                         ClientConfig = string.Format(UserConfig, this.ChefServerUrl, this.ValidationClientName);
                     }
