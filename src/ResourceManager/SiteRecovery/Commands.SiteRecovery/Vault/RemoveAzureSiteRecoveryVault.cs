@@ -40,23 +40,18 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteCmdlet()
+        public override void ExecuteSiteRecoveryCmdlet()
         {
-            try
-            {
-                RecoveryServicesOperationStatusResponse response = RecoveryServicesClient.DeleteVault(this.Vault.ResouceGroupName, this.Vault.Name);
+            base.ExecuteSiteRecoveryCmdlet();
 
-                VaultOperationOutput output = new VaultOperationOutput()
-                {
-                    Response = response.StatusCode == HttpStatusCode.OK ? Resources.VaultDeletionSuccessMessage : response.StatusCode.ToString()
-                };
+            RecoveryServicesOperationStatusResponse response = RecoveryServicesClient.DeleteVault(this.Vault.ResouceGroupName, this.Vault.Name);
 
-                this.WriteObject(output, true);
-            }
-            catch (Exception exception)
+            VaultOperationOutput output = new VaultOperationOutput()
             {
-                this.HandleException(exception);
-            }
+                Response = response.StatusCode == HttpStatusCode.OK ? Resources.VaultDeletionSuccessMessage : response.StatusCode.ToString()
+            };
+
+            this.WriteObject(output, true);
         }
     }
 }

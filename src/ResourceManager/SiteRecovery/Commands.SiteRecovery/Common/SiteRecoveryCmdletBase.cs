@@ -62,6 +62,30 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         }
 
         /// <summary>
+        /// Virtual method to be implemented by Site Recovery cmdlets.
+        /// </summary>
+        public virtual void ExecuteSiteRecoveryCmdlet()
+        {
+            // Do Nothing
+        }
+
+        /// <summary>
+        /// Overriding base implementation go execute cmdlet.
+        /// </summary>
+        public override void ExecuteCmdlet()
+        {
+            try
+            {
+                base.ExecuteCmdlet();
+                ExecuteSiteRecoveryCmdlet();
+            }
+            catch (Exception ex)
+            {
+                this.HandleException(ex);
+            }
+        }
+
+        /// <summary>
         /// Exception handler.
         /// </summary>
         /// <param name="ex">Exception to handle.</param>

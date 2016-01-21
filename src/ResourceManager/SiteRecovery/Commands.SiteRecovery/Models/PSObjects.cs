@@ -1331,6 +1331,53 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     }
 
     /// <summary>
+    /// Represents Azure site recovery storage classification.
+    /// </summary>
+    public class ASRStorageClassification
+    {
+        /// <summary>
+        /// Gets or sets Storage classification ARM Id.
+        /// </summary>
+        public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets Storage classification ARM name.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets Storage classification friendly name.
+        /// </summary>
+        public string FriendlyName { get; set; }
+    }
+    
+    /// <summary>
+    /// Represents Azure site recovery storage classification mapping.
+    /// </summary>
+    public class ASRStorageClassificationMapping
+    {
+        /// <summary>
+        /// Gets or sets Storage classification ARM Id.
+        /// </summary>
+        public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets Storage classification ARM name.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets primary classification ARM Id.
+        /// </summary>
+        public string PrimaryClassificationId { get; set; }
+
+        /// <summary>
+        /// Gets or sets recovery classification ARM Id.
+        /// </summary>
+        public string RecoveryClassificationId { get; set; }
+    }
+
+    /// <summary>
     /// Disk details.
     /// </summary>
     [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]

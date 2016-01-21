@@ -12,28 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
-    /// <summary>
-    /// Retrieves Azure Site Recovery Server.
+    // <summary>
+    /// Pairs storage classification
     /// </summary>
-    [Cmdlet(VerbsData.Update, "AzureRmSiteRecoveryServer", DefaultParameterSetName = ASRParameterSets.Default)]
-    public class UpdateAzureRmSiteRecoveryServer : SiteRecoveryCmdletBase
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoveryStorageClassificationMapping")]
+    [OutputType(typeof(ASRJob))]
+    public class RemoveAzureSiteRecoveryStorageClassificationMapping : SiteRecoveryCmdletBase
     {
         #region Parameters
 
         /// <summary>
-        /// Gets or sets the Server.
+        /// Gets or sets primary storage classification.
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public ASRServer Server { get; set; }
-
-        #endregion Parameters
+        public ASRStorageClassificationMapping StorageClassificationMapping { get; set; }
+        #endregion
 
         /// <summary>
         /// ProcessRecord of the command.
@@ -41,27 +41,18 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public override void ExecuteSiteRecoveryCmdlet()
         {
             base.ExecuteSiteRecoveryCmdlet();
-            RefreshServer();
-        }
 
-        /// <summary>
-        /// Refresh Server
-        /// </summary>
-        private void RefreshServer()
-        {
-            if ((String.Compare(this.Server.FabricType, Constants.VMM) != 0 && String.Compare(this.Server.FabricType, Constants.HyperVSite) != 0))
-            {
-                throw new PSInvalidOperationException(Properties.Resources.InvalidServerType);
-            }
-
-            LongRunningOperationResponse response =
-                RecoveryServicesClient.RefreshAzureSiteRecoveryProvider(Utilities.GetValueFromArmId(this.Server.ID, ARMResourceTypeConstants.ReplicationFabrics), this.Server.Name);
-
+            string[] tokens = StorageClassificationMapping.Id.UnFormatArmId(
+                ARMResourceIdPaths.StorageClassificationMappingResourceIdPath);
+            var operationResponse = RecoveryServicesClient.UnmapStorageClassifications(
+                fabricName: tokens[0],
+                storageClassificationName: tokens[1],
+                mappingName: tokens[2]);
             JobResponse jobResponse =
-                RecoveryServicesClient
-                .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+                RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
+                PSRecoveryServicesClient.GetJobIdFromReponseLocation(operationResponse.Location));
 
-            WriteObject(new ASRJob(jobResponse.Job));
+            base.WriteObject(new ASRJob(jobResponse.Job));
         }
     }
 }
