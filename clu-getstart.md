@@ -60,7 +60,14 @@ There is also `<repo-root>\tools\CLU\SetupEnv.bat` which is a windows batch wrap
 
 To test on osx/linux boxes, do #1, open `<repo-root>\drop\clurun`, copy the flavor folder to your target machine, and run the "az.sh" inside. Make sure set execution permission using `chmod +x az.sh clurun`
 
-(All of those are subject to change, contact yugangw or adxsdkdev for any questions)
+### Nightly Builds
+You can also consume tarballs from the nightly build.  The latest drops are available at:
+- ubuntu: [download](https://azurecludrops.blob.core.windows.net/drops/ubuntu.14.04-x64.latest.tar.gz)
+- osx: [download](https://azurecludrops.blob.core.windows.net/drops/osx.10.10-x64.latest.tar.gz)
+- windows: [download](https://azurecludrops.blob.core.windows.net/drops/win7-x64.latest.tar.gz)
+
+
+(All of those are subject to change, contact adxsdkdev for any questions)
 
 ## Quick introductions on cmdlets
   *  Run commands using the ‘az’ prefix, cmdlet nouns, and cmdlet verbs, for example, `az env ls` maps to the cmdlet `Get-AzureRmEnvironment`
