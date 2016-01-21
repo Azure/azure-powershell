@@ -7,7 +7,7 @@ az resource group create --name "$groupName" --location "$location"
 
 printf "\n2. Creating a new Role Assignment.\n"
 export MSYS_NO_PATHCONV=1
-users=$(az ad users ls)
+users=$(az ad user ls)
 userId=$(echo $users | cat | jq '.[0].Id' -s --raw-output)
 echo "UserID: $userId"
 roleDefinitions=$(az resource role definition ls)
