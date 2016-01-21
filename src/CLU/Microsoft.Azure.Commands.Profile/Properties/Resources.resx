@@ -142,27 +142,20 @@
     <value>Current tenant with Id '{0}' will be used.</value>
   </data>
   <data name="DataCollectionActivity" xml:space="preserve">
-    <value>Microsoft Azure PowerShell Data Collection Confirmation</value>
+    <value>Microsoft Azure CLU Data Collection Confirmation</value>
   </data>
   <data name="DataCollectionConfirmNo" xml:space="preserve">
-    <value>You choose not to participate in Microsoft Azure PowerShell data collection.</value>
-  </data>
-  <data name="DataCollectionConfirmTime" xml:space="preserve">
-    <value>This confirmation message will be dismissed in '{0}' second(s)...</value>
+    <value>You choose not to participate in Microsoft Azure CLU data collection.</value>
   </data>
   <data name="DataCollectionConfirmYes" xml:space="preserve">
-    <value>You choose to participate in Microsoft Azure PowerShell data collection.</value>
+    <value>You choose to participate in Microsoft Azure CLU data collection.</value>
   </data>
   <data name="DataCollectionPrompt" xml:space="preserve">
-    <value>Microsoft Azure PowerShell collects data about how users use PowerShell cmdlets and some problems they encounter.  Microsoft uses this information to improve our PowerShell cmdlets.  Participation is voluntary and when you choose to participate your device automatically sends information to Microsoft about how you use Azure PowerShell. 
+    <value>Microsoft Azure CLU collects data about how users use CLU commands and some problems they encounter.  Microsoft uses this information to improve our CLU commands.  Participation is voluntary and when you choose to participate your device automatically sends information to Microsoft about how you use Azure CLU. 
  
-If you choose to participate, you can stop at any time by using Azure PowerShell as follows:
-1.	Use the Disable-AzureDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the AzureResourceManager module
-To disable data collection: PS &gt; Disable-AzureDataCollection
+If you choose to participate, you may stop later at any time. To stop participation run `az telemetry --disable`.
 
-If you choose to not participate, you can enable at any time by using Azure PowerShell as follows:
-1.	Use the Enable-AzureDataCollection cmdlet to turn the feature On. The cmdlet can be found in the AzureResourceManager module
-To enable data collection: PS &gt; Enable-AzureDataCollection
+If you choose to not participate, you may start later at any time. To start participation run `az telemetry --enable`.
  
 Select Y to enable data collection [Y/N]:</value>
   </data>

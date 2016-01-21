@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Profile
         private const string AccessTokenParameterSet = "AccessToken";
         private const string SubscriptionNameParameterSet = "SubscriptionName";
         private const string SubscriptionIdParameterSet = "SubscriptionId";
-        private const string CollectTelemetryEnvironmentVariable = "Azure_PS_Data_Collection";
+        internal const string CollectTelemetryEnvironmentVariable = "Azure_PS_Data_Collection";
 
         public AzureEnvironment Environment { get; set; }
 
@@ -212,13 +212,13 @@ namespace Microsoft.Azure.Commands.Profile
 
             bool isInteractive = azureAccount.Id == null;
 
+            PromptForDataCollectionProfileIfNotExists(isInteractive);
+
             var profileClient = new RMProfileClient(AuthenticationFactory, ClientFactory, DefaultProfile);
             profileClient.WarningLog = (s) => WriteWarning(s);
-
+            
             WriteObject((PSAzureProfile)profileClient.Login(azureAccount, Environment, TenantId, SubscriptionId,
                 SubscriptionName, password));
-
-            PromptForDataCollectionProfileIfNotExists(isInteractive);
         }
 
         private void PromptForDataCollectionProfileIfNotExists(bool isInteractive)
@@ -236,8 +236,8 @@ namespace Microsoft.Azure.Commands.Profile
             if (!DefaultProfile.IsTelemetryCollectionEnabled.HasValue && isInteractive)
             {
                 Collection<ChoiceDescription> choices = new Collection<ChoiceDescription>();
-                choices.Add(new ChoiceDescription("Yes", Resources.DataCollectionConfirmYes));
-                choices.Add(new ChoiceDescription("No", Resources.DataCollectionConfirmNo));
+                choices.Add(new ChoiceDescription("&Yes", Resources.DataCollectionConfirmYes));
+                choices.Add(new ChoiceDescription("&No", Resources.DataCollectionConfirmNo));
                 try
                 {
                     int choice = this.Host.UI.PromptForChoice(Resources.DataCollectionActivity, Resources.DataCollectionPrompt, choices, 1);

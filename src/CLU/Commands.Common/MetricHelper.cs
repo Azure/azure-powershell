@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Commands.Common
             {
                 foreach (TelemetryClient client in TelemetryClients)
                 {
-                    client.Flush();
+                    Task.Run(() => client.Flush()).Wait(TimeSpan.FromSeconds(5));
                 }
             }
             catch

@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///    Looks up a localized string similar to Microsoft Azure PowerShell Data Collection Confirmation.
+        ///    Looks up a localized string similar to Microsoft Azure CLU Data Collection Confirmation.
         /// </summary>
         internal static string DataCollectionActivity {
             get {
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///    Looks up a localized string similar to You choose not to participate in Microsoft Azure PowerShell data collection..
+        ///    Looks up a localized string similar to You choose not to participate in Microsoft Azure CLU data collection..
         /// </summary>
         internal static string DataCollectionConfirmNo {
             get {
@@ -150,16 +150,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///    Looks up a localized string similar to This confirmation message will be dismissed in &apos;{0}&apos; second(s)....
-        /// </summary>
-        internal static string DataCollectionConfirmTime {
-            get {
-                return ResourceManager.GetString("DataCollectionConfirmTime", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///    Looks up a localized string similar to You choose to participate in Microsoft Azure PowerShell data collection..
+        ///    Looks up a localized string similar to You choose to participate in Microsoft Azure CLU data collection..
         /// </summary>
         internal static string DataCollectionConfirmYes {
             get {
@@ -168,10 +159,11 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///    Looks up a localized string similar to  Microsoft Azure PowerShell collects data about how users use PowerShell cmdlets and some problems they encounter.  Microsoft uses this information to improve our PowerShell cmdlets.  Participation is voluntary and when you choose to participate your device automatically sends information to Microsoft about how you use Azure PowerShell. 
+        ///    Looks up a localized string similar to  Microsoft Azure CLU collects data about how users use CLU commands and some problems they encounter.  Microsoft uses this information to improve our CLU commands.  Participation is voluntary and when you choose to participate your device automatically sends information to Microsoft about how you use Azure CLU. 
         /// 
-        ///If you choose to participate, you can stop at any time by using Azure PowerShell as follows:
-        ///1.	Use the Disable-AzureDataCollection cmdlet to turn the feature Off. The  [rest of string was truncated]&quot;;.
+        ///If you choose to participate, you may stop later at any time. To stop participation run `az telemetry --disable`.
+        ///
+        ///If you choose to not participate, you may start later at any time. To start pa [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string DataCollectionPrompt {
             get {
