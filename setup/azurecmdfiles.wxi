@@ -3277,6 +3277,9 @@
                         <Component Id="cmp524E28243CC9788C41819437014F3F7D" Guid="*">
                             <File Id="fil6BD7B8BB425C2B1E0D24EEEDD1C1FDD8" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\HDInsight\Microsoft.Azure.Common.NetFramework.dll" />
                         </Component>
+                        <Component Id="cmp0165D93E848BF589D3E0D3863617F9F0" Guid="*">
+                            <File Id="fil55AE55B88AC94CD6CC79AD1D084BF659" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\HDInsight\Microsoft.Azure.KeyVault.Core.dll" />
+                        </Component>
                         <Component Id="cmp63E7146E10A0CADBB072FDBAAEC2FDB2" Guid="*">
                             <File Id="fil92D5EE3C92A0580B16CAF05E40354F28" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\HDInsight\Microsoft.Azure.ResourceManager.dll" />
                         </Component>
@@ -5915,6 +5918,7 @@
             <ComponentRef Id="cmp430193C6FCC710357C2AD0A4D74B05CB" />
             <ComponentRef Id="cmp42B92586860E12CFF7E8A202F62CA257" />
             <ComponentRef Id="cmp524E28243CC9788C41819437014F3F7D" />
+            <ComponentRef Id="cmp0165D93E848BF589D3E0D3863617F9F0" />
             <ComponentRef Id="cmp63E7146E10A0CADBB072FDBAAEC2FDB2" />
             <ComponentRef Id="cmpF2A2CF41D51D7B7599694EC16CFEB929" />
             <ComponentRef Id="cmpFC1978EF7F3366DA07E6556C3996E222" />
