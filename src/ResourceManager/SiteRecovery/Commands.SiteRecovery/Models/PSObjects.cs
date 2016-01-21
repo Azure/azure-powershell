@@ -1349,11 +1349,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Gets or sets Storage classification friendly name.
         /// </summary>
         public string FriendlyName { get; set; }
-
-        /// <summary>
-        /// Gets or sets Fabric friendly name.
-        /// </summary>
-        public string FabricFriendlyName { get; set; }
     }
     
     /// <summary>

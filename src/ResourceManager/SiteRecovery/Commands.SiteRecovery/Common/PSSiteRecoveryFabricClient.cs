@@ -28,31 +28,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     public partial class PSRecoveryServicesClient
     {
         /// <summary>
-        /// Gets all fabrics associated with a vault.
-        /// </summary>
-        /// <param name="callback">Callback to execute on the result.</param>
-        /// <returns>Task object tracking async operation.</returns>
-        public Task EnumerateFabricsAsync(Action<IEnumerable<Fabric>> callback)
-        {
-            CancellationToken cancellationToken = new CancellationToken();
-
-            Task backgroundTask = new Task(new Action(() =>
-            {
-                Task<FabricListResponse> storageTask =
-                    this.GetSiteRecoveryClient().Fabrics.ListAsync(
-                    this.GetRequestHeaders(),
-                    cancellationToken);
-
-                Task.WaitAll(storageTask);
-
-                callback(storageTask.Result.Fabrics);
-            }));
-
-            backgroundTask.Start();
-            return backgroundTask;
-        }
-
-        /// <summary>
         /// Gets Azure Site Recovery Fabrics.
         /// </summary>
         /// <param name="shouldSignRequest">Boolean indicating if the request should be signed ACIK</param>

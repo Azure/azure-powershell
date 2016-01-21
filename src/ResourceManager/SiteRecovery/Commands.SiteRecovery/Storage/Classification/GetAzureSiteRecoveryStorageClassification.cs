@@ -58,23 +58,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            List<Fabric> fabrics = new List<Fabric>();
             List<StorageClassification> storageClassifications = new List<StorageClassification>();
-
-            Task fabricTask = RecoveryServicesClient.EnumerateFabricsAsync((entities) =>
-                {
-                    fabrics.AddRange(entities);
-                });
 
             Task storageClassificationTask =
                 RecoveryServicesClient.EnumerateStorageClassificationsAsync((entities) =>
                 {
                     storageClassifications.AddRange(entities);
                 });
-
-            Task.WaitAll(fabricTask, storageClassificationTask);
-
-            var fabricMap = fabrics.ToDictionary(item => item.Id, item => item);
 
             switch (this.ParameterSetName)
             {
@@ -100,11 +90,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
             var psObject = storageClassifications.ConvertAll(item =>
                 {
-                    var fabric = fabricMap[item.GetFabricId()];
-
                     return new ASRStorageClassification()
                     {
-                        FabricFriendlyName = fabric.Properties.FriendlyName,
                         FriendlyName = item.Properties.FriendlyName,
                         Id = item.Id,
                         Name = item.Name
