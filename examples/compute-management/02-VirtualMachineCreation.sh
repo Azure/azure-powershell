@@ -19,7 +19,7 @@ subnetId="/subscriptions/$subId/resourceGroups/$groupName/providers/Microsoft.Ne
 
 printf "\n4. Create network interface with:\r\nsubId='%s' \r\n& \r\nsubnet='$subnetId'.\n" "$subId"
 export MSYS_NO_PATHCONV=1
-az vnet create --name test --resourcegroupname "$groupName" --location "$location" --subnet "$subnetId"
+az network interface create --name test --resourcegroupname "$groupName" --location "$location" --subnetId "$subnetId"
 export MSYS_NO_PATHCONV=
 
 nicId="/subscriptions/$subId/resourceGroups/$groupName/providers/Microsoft.Network/networkInterfaces/test"
