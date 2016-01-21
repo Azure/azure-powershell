@@ -18,12 +18,15 @@ using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsLifecycle.Stop, ProfileNouns.VirtualMachine, DefaultParameterSetName = ResourceGroupNameParameterSet)]
-    [OutputType(typeof(PSComputeLongRunningOperation))]
+    [OutputType(typeof(PSAzureOperationResponse))]
     public class StopAzureVMCommand : VirtualMachineActionBaseCmdlet
     {
         [Parameter(
@@ -52,22 +55,22 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
-                if (this.Force.IsPresent || this.ShouldContinue(Microsoft.Azure.Commands.Compute.Properties.Resources.VirtualMachineStoppingConfirmation, Microsoft.Azure.Commands.Compute.Properties.Resources.VirtualMachineStoppingCaption))
+                if (this.Force.IsPresent || this.ShouldContinue(Properties.Resources.VirtualMachineStoppingConfirmation, Properties.Resources.VirtualMachineStoppingCaption))
                 {
-                    Action<Func<string, string, ComputeLongRunningOperationResponse>> call = f =>
+                    Action<Func<string, string, Dictionary<string, List<string>>, CancellationToken, Task<Rest.Azure.AzureOperationResponse>>> call = f =>
                     {
-                        var op = f(this.ResourceGroupName, this.Name);
-                        var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+                        Rest.Azure.AzureOperationResponse op = f(this.ResourceGroupName, this.Name, null, CancellationToken.None).GetAwaiter().GetResult();
+                        var result = Mapper.Map<PSAzureOperationResponse>(op);
                         WriteObject(result);
                     };
 
                     if (this.StayProvisioned)
                     {
-                        call(this.VirtualMachineClient.PowerOff);
+                        call(this.VirtualMachineClient.PowerOffWithHttpMessagesAsync);
                     }
                     else
                     {
-                        call(this.VirtualMachineClient.Deallocate);
+                        call(this.VirtualMachineClient.DeallocateWithHttpMessagesAsync);
                     }
                 }
             });

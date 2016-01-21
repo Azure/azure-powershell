@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ActiveDirectory.GraphClient;
 using System;
 using System.Collections.Generic;
 using KeyVaultManagement = Microsoft.Azure.Management.KeyVault;
-using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             PermissionsToSecrets = permissionsToSecrets == null ? new List<string>() : new List<string>(permissionsToSecrets);
             PermissionsToKeys = permissionsToKeys == null ? new List<string>() : new List<string>(permissionsToKeys);
         }
-        public PSVaultAccessPolicy(KeyVaultManagement.AccessPolicyEntry s, PSResourceManagerModels.ActiveDirectory.ActiveDirectoryClient adClient)
+        public PSVaultAccessPolicy(KeyVaultManagement.AccessPolicyEntry s, ActiveDirectoryClient adClient)
         {            
             ObjectId = s.ObjectId;
             DisplayName = ModelExtensions.GetDisplayNameForADObject(s.ObjectId, adClient);

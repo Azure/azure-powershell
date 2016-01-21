@@ -12,14 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.Common.Storage;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Management.Storage;
-using Newtonsoft.Json;
+using System;
 using System.Linq;
 using System.Management.Automation;
-
+using Microsoft.WindowsAzure.Commands.Common.Storage;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Common;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 {
@@ -33,7 +32,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
     {
         private string publicConfiguration;
         private string privateConfiguration;
-        private string storageKey;
         protected const string SetExtParamSetName = "SetDiagnosticsExtension";
         protected const string SetExtRefParamSetName = "SetDiagnosticsWithReferenceExtension";
 
@@ -59,80 +57,89 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         [Parameter(ParameterSetName = SetExtParamSetName,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
-            Mandatory = true,
-            HelpMessage = "The storage connection context")]
+            HelpMessage = "The storage account name")]
         [Parameter(ParameterSetName = SetExtRefParamSetName,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
-            Mandatory = true,
+            HelpMessage = "The storage account name")]
+        public string StorageAccountName
+        {
+            get;
+            set;
+        }
+
+        [Parameter(ParameterSetName = SetExtParamSetName,
+            Position = 2,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The storage account key")]
+        [Parameter(ParameterSetName = SetExtRefParamSetName,
+            Position = 2,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The storage account key")]
+        public string StorageAccountKey
+        {
+            get;
+            set;
+        }
+
+        [Parameter(ParameterSetName = SetExtParamSetName,
+            Position = 3,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The storage account endpoint")]
+        [Parameter(ParameterSetName = SetExtRefParamSetName,
+            Position = 3,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The storage account endpoint")]
+        public string StorageAccountEndpoint
+        {
+            get;
+            set;
+        }
+
+        [Parameter(ParameterSetName = SetExtParamSetName,
+            Position = 4,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The storage connection context")]
-        [ValidateNotNullOrEmpty]
+        [Parameter(ParameterSetName = SetExtRefParamSetName,
+            Position = 4,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The storage connection context")]
         public AzureStorageContext StorageContext
         {
             get;
             set;
         }
- 
 
         [Parameter(
         ParameterSetName = SetExtParamSetName,
-        Position = 2,
+        Position = 5,
         ValueFromPipelineByPropertyName = false,
         HelpMessage = "WAD Version")]
         [Parameter(
         ParameterSetName = SetExtRefParamSetName,
-        Position = 2,
+        Position = 5,
         ValueFromPipelineByPropertyName = false,
         HelpMessage = "WAD Version")]
         public override string Version { get; set; }
 
         [Parameter(
             ParameterSetName = SetExtParamSetName,
-            Position = 3,
+            Position = 6,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "To Set the Extension State to 'Disable'.")]
         [Parameter(
             ParameterSetName = SetExtRefParamSetName,
-            Position = 3,
+            Position = 6,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "To Set the Extension State to 'Disable'.")]
         public override SwitchParameter Disable { get; set; }
 
         [Parameter(
             ParameterSetName = SetExtRefParamSetName,
-            Position = 4,
+            Position = 7,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "To specify the reference name.")]
         public override string ReferenceName { get; set; }
-
-        public string StorageAccountName
-        {
-            get
-            {
-                return this.StorageContext.StorageAccountName;
-            }
-        }
-
-        public string Endpoint
-        {
-            get
-            {
-                return "https://" + this.StorageContext.EndPointSuffix;
-            }
-        }
-
-        public string StorageKey
-        {
-            get
-            {
-                if (string.IsNullOrEmpty(this.storageKey))
-                {
-                    this.storageKey = GetStorageKey();
-                }
-
-                return this.storageKey;
-            }
-        }
 
         public override string PublicConfiguration
         {
@@ -140,9 +147,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             {
                 if (string.IsNullOrEmpty(this.publicConfiguration))
                 {
-                    this.publicConfiguration =
-                        JsonConvert.SerializeObject(DiagnosticsHelper.GetPublicDiagnosticsConfigurationFromFile(this.DiagnosticsConfigurationPath,
-                            this.StorageAccountName));
+                    this.publicConfiguration = DiagnosticsHelper.GetJsonSerializedPublicDiagnosticsConfigurationFromFile(this.DiagnosticsConfigurationPath,
+                            this.StorageAccountName);
                 }
 
                 return this.publicConfiguration;
@@ -155,15 +161,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             {
                 if (string.IsNullOrEmpty(this.privateConfiguration))
                 {
-                    this.privateConfiguration =
-                        JsonConvert.SerializeObject(DiagnosticsHelper.GetPrivateDiagnosticsConfiguration(this.StorageAccountName, this.StorageKey,
-                            this.Endpoint));
+                    this.privateConfiguration = DiagnosticsHelper.GetJsonSerializedPrivateDiagnosticsConfiguration(this.StorageAccountName, this.StorageAccountKey,
+                            this.StorageAccountEndpoint);
                 }
 
                 return this.privateConfiguration;
             }
         }
-
 
         internal void ExecuteCommand()
         {
@@ -174,10 +178,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         }
 
         protected override void ValidateParameters()
-        {     
+        {
             base.ValidateParameters();
             ExtensionName = DiagnosticsExtensionType;
             Publisher = DiagnosticsExtensionNamespace;
+            Version = Version ?? DefaultVersion;
 
             // If the user didn't specify an extension reference name and the input VM already has a diagnostics extension,
             // reuse its reference name
@@ -189,26 +194,44 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                     ReferenceName = diagnosticsExtension.ReferenceName;
                 }
             }
+
+            ValidateStorageAccountName();
+            ValidateStorageAccountKey();
+            ValidateStorageAccountEndpoint();
         }
 
-        protected string GetStorageKey()
+        private void ValidateStorageAccountName()
         {
-            string storageKey = string.Empty;
+            this.StorageAccountName = this.StorageAccountName ??
+                DiagnosticsHelper.InitializeStorageAccountName(this.StorageContext, this.DiagnosticsConfigurationPath);
 
-            if (!string.IsNullOrEmpty(StorageAccountName))
+            if (string.IsNullOrEmpty(this.StorageAccountName))
             {
-                var storageAccount = this.StorageClient.StorageAccounts.Get(StorageAccountName);
-                if (storageAccount != null)
-                {
-                    var keys = this.StorageClient.StorageAccounts.GetKeys(StorageAccountName);
-                    if (keys != null)
-                    {
-                        storageKey = !string.IsNullOrEmpty(keys.PrimaryKey) ? keys.PrimaryKey : keys.SecondaryKey;
-                    }
-                }
+                throw new ArgumentException(Resources.DiagnosticsExtensionNullStorageAccountName);
             }
+        }
 
-            return storageKey;
+        private void ValidateStorageAccountKey()
+        {
+            this.StorageAccountKey = this.StorageAccountKey ??
+                DiagnosticsHelper.InitializeStorageAccountKey(this.StorageClient, this.StorageAccountName, this.DiagnosticsConfigurationPath);
+
+            if (string.IsNullOrEmpty(this.StorageAccountKey))
+            {
+                throw new ArgumentException(Resources.DiagnosticsExtensionNullStorageAccountKey);
+            }
+        }
+
+        private void ValidateStorageAccountEndpoint()
+        {
+            this.StorageAccountEndpoint = this.StorageAccountEndpoint ??
+                DiagnosticsHelper.InitializeStorageAccountEndpoint(this.StorageAccountName, this.StorageAccountKey, this.StorageClient,
+                    this.StorageContext, this.DiagnosticsConfigurationPath, this.DefaultContext);
+
+            if (string.IsNullOrEmpty(this.StorageAccountEndpoint))
+            {
+                throw new ArgumentNullException(Resources.DiagnosticsExtensionNullStorageAccountEndpoint);
+            }
         }
 
         protected override void ProcessRecord()

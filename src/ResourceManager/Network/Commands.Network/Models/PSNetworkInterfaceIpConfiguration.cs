@@ -38,5 +38,15 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             get { return JsonConvert.SerializeObject(LoadBalancerInboundNatRules, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
+
+        public bool ShouldSerializeLoadBalancerBackendAddressPools()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
+        public bool ShouldSerializeLoadBalancerInboundNatRules()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
     }
 }

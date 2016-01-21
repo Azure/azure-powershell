@@ -12,20 +12,29 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
+using System;
 using System.Collections.Generic;
-using Xunit;
+using Microsoft.Azure.Management.OperationalInsights.Models;
 
-namespace Microsoft.Azure.Commands.Websites.Test
+namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
-    public static class WebsitesTestHelpers
+    public class PSSearchSort
     {
-        public static void CreateAccountResource(string accountName, string resourceGroupName, Hashtable[] tags = null)
+        public PSSearchSort()
         {
-            string tenantUrlEnding = "batch-test.windows-int.net";
-            string endpoint = string.Format("{0}.{1}", accountName, tenantUrlEnding);
-            string subscription = "00000000-0000-0000-0000-000000000000";
-            string resourceGroup = resourceGroupName;
         }
+
+        public PSSearchSort(SearchSort sort)
+        {
+            if (sort != null)
+            {
+                this.Name = sort.Name;
+                this.Order = sort.Order;
+            }
+        }
+        public string Name { get; set; }
+
+        public string Order { get; set; }
+
     }
 }

@@ -219,7 +219,7 @@
       UnsignedFiles="@(DelaySignedAssembliesToSign)"
       DestinationPath="$(LibrarySourceFolder)\Package\$(Configuration)"
       BasePath="$(LibrarySourceFolder)\Package\$(Configuration)"
-      Certificates="72, 10006"
+      Certificates="72, 401"
       SigningLogPath="$(LibraryRoot)\signing.log"
       ToolsPath="$(CIToolsPath)"
       Condition="!$(DelaySign) and '@(DelaySignedAssembliesToSign)' != ''"/>
@@ -230,7 +230,7 @@
       UnsignedFiles="@(ScriptsToSign)"
       DestinationPath="$(LibrarySourceFolder)\Package\$(Configuration)"
       BasePath="$(LibrarySourceFolder)\Package\$(Configuration)"
-      Certificates="10006"
+      Certificates="402"
       SigningLogPath="$(LibraryRoot)\signing-scripts.log"
       ToolsPath="$(CIToolsPath)"
       Condition="!$(DelaySign) and '@(ScriptsToSign)' != ''"/> 
@@ -272,7 +272,7 @@
       UnsignedFiles="@(InstallersToSign)"
       DestinationPath="$(LibraryRoot)\signed"
       SigningLogPath="$(LibraryRoot)\msi-signing.log"
-      Certificates="10006"
+      Certificates="402"
       ToolsPath="$(CIToolsPath)"
       Condition="!$(DelaySign) and '@(InstallersToSign)' != ''"/>  
          

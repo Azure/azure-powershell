@@ -18,7 +18,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.WebApps.Models;
+using Microsoft.Azure.Commands.WebApps.Models.WebApp;
+using Microsoft.Azure.Commands.WebApps.Utilities;
+using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.Azure.Management.WebSites.Models;
 using Microsoft.PowerShell;
 using Microsoft.WindowsAzure.Commands.Common;
@@ -72,6 +77,18 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [ValidateNotNullOrEmpty]
         public Hashtable AppSettingsOverrides { get; set; }
 
+        [Parameter(Position = 9, Mandatory = false, HelpMessage = "Application Service environment Name")]
+        [ValidateNotNullOrEmpty]
+        public string AseName { get; set; }
+
+        [Parameter(Position = 9, Mandatory = false, HelpMessage = "Resource group of Application Service environment")]
+        [ValidateNotNullOrEmpty]
+        public string AseResourceGroupName { get; set; }
+
+        [Parameter(Position = 10, Mandatory = false, HelpMessage = "Clones slots associated with source web app")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter IncludeSourceWebAppSlots { get; set; }
+
         public override void ExecuteCmdlet()
         {
             CloningInfo cloningInfo = null;
@@ -89,7 +106,56 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 };
             }
 
-            WriteObject(WebsitesClient.CreateWebApp(ResourceGroupName, Name, null, Location, AppServicePlan, cloningInfo));
+            var cloneWebAppSlots = false;
+            string[] slotNames = null;
+            string srcResourceGroupName = null;
+            string srcwebAppName = null;
+            string srcSlotName = null;
+            if (IncludeSourceWebAppSlots.IsPresent)
+            {
+                CmdletHelpers.TryParseWebAppMetadataFromResourceId(SourceWebApp.Id, out srcResourceGroupName,
+                    out srcwebAppName, out srcSlotName);
+                var slots = WebsitesClient.ListWebApps(srcResourceGroupName, srcwebAppName);
+                if (slots != null && slots.Any())
+                {
+                    slotNames = slots.Select(s => s.Name.Replace(srcwebAppName + "/", string.Empty)).ToArray();
+                    cloneWebAppSlots = true;
+                }
+            }
+
+            if (cloneWebAppSlots)
+            {
+                WriteVerboseWithTimestamp("Cloning source web app '{0}' to destination web app {1}", srcwebAppName, Name);
+            }
+
+            WriteObject(WebsitesClient.CreateWebApp(ResourceGroupName, Name, null, Location, AppServicePlan, cloningInfo, AseName, AseResourceGroupName));
+
+            if (cloneWebAppSlots)
+            {
+                WriteVerboseWithTimestamp("Cloning all deployment slots of source web app '{0}' to destination web app {1}", srcwebAppName, Name);
+                CloneSlots(slotNames);
+            }
+        }
+
+        private void CloneSlots(string[] slotNames)
+        {
+            var hostingEnvironmentProfile = WebsitesClient.CreateHostingEnvironmentProfile(ResourceGroupName, AseResourceGroupName, AseName);
+            var template = DeploymentTemplateHelper.CreateSlotCloneDeploymentTemplate(Location, AppServicePlan, Name, SourceWebApp.Id,
+                slotNames, hostingEnvironmentProfile, WebsitesClient.WrappedWebsitesClient.ApiVersion);
+
+            var deployment = new Management.Resources.Models.Deployment
+            {
+                Properties = new DeploymentProperties
+                {
+                    Mode = DeploymentMode.Incremental,
+                    Template = template
+                }
+            };
+
+            var deploymentName = string.Format("CloneSlotsFor{0}", Name);
+            ResourcesClient.ResourceManagementClient.Deployments.CreateOrUpdate(ResourceGroupName, deploymentName, deployment);
+            var result = ResourcesClient.ProvisionDeploymentStatus(ResourceGroupName, deploymentName, deployment);
+            WriteObject(result.ToPSResourceGroupDeployment(ResourceGroupName));
         }
     }
 }

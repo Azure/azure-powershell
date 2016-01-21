@@ -17,28 +17,25 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Management.KeyVault;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using PSKeyVaultModels = Microsoft.Azure.Commands.KeyVault.Models;
 using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
-using Hyak.Common;
+using Microsoft.Azure.ActiveDirectory.GraphClient;
+using Microsoft.Azure.Common.Authentication;
+using System.Threading.Tasks;
+using Microsoft.Azure.Commands.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
     public class KeyVaultManagementCmdletBase : AzureRMCmdlet
     {
-        public KeyVaultManagementCmdletBase()
-        {
-
-        }
 
         private PSKeyVaultModels.VaultManagementClient _keyVaultManagementClient;
+        private DataServiceCredential _dataServiceCredential;
         public PSKeyVaultModels.VaultManagementClient KeyVaultManagementClient
         {
             get
@@ -61,7 +58,10 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 if (_activeDirectoryClient == null)
                 {
-                    _activeDirectoryClient = new ActiveDirectoryClient(DefaultContext);
+                    _dataServiceCredential = new DataServiceCredential(AzureSession.AuthenticationFactory, DefaultProfile.Context, AzureEnvironment.Endpoint.Graph);
+                    _activeDirectoryClient = new ActiveDirectoryClient(new Uri(string.Format("{0}/{1}",
+                        DefaultProfile.Context.Environment.Endpoints[AzureEnvironment.Endpoint.Graph], _dataServiceCredential.TenantId)),
+                        () => Task.FromResult(_dataServiceCredential.AccessToken));
                 }
                 return this._activeDirectoryClient;
             }
@@ -187,54 +187,39 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         protected Guid GetObjectId(Guid objectId, string upn, string spn)
         {
-            var filter = new ADObjectFilterOptions()
-                {
-                    Id = (objectId != Guid.Empty) ? objectId.ToString() : null,
-                    UPN = upn,
-                    SPN = spn,                    
-                    Paging = true,
-                };
+            Guid objId = Guid.Empty;
+            string objectFilter = objectId.ToString();
 
-            var exceptionMessage = string.Empty;
-            PSADObject obj = null;
-            try
+            if (!string.IsNullOrWhiteSpace(upn))
             {
-                obj = ActiveDirectoryClient.GetADObject(filter);
-
-                if (obj == null && !string.IsNullOrWhiteSpace(upn))
-                {
-                    filter = new ADObjectFilterOptions()
-                    {
-                        Mail = upn,
-                        Paging = true,
-                    };
-                    obj = ActiveDirectoryClient.GetADObject(filter);
-                }
+                objectFilter = upn;
+                var user = ActiveDirectoryClient.Users.Where(u =>
+                        u.UserPrincipalName.Equals(upn) || u.Mail.Equals(upn) || u.OtherMails.Any(m => m.Equals(upn))).
+                        ExecuteAsync().GetAwaiter().GetResult().CurrentPage.FirstOrDefault();
+                if (user != null)
+                    objId = Guid.Parse(user.ObjectId);
             }
-            catch (CloudException ex)
+            else if(!string.IsNullOrWhiteSpace(spn))
             {
-                // There is a bug/feature in the Azure Active Directory client in PowerShell that it does not show any exception when
-                // calling graph unless it is trying to list groups. For the filter that we set, only if the mail and paging is set 
-                // in Fairfax environment we get the following exception.
-                exceptionMessage = string.Format("Error: {0}", ex.Message);
+                objectFilter = spn;
+                var servicePrincipal = ActiveDirectoryClient.ServicePrincipals.Where(s =>
+                    s.ServicePrincipalNames.Any(n => n.Equals(spn)))
+                    .ExecuteAsync().GetAwaiter().GetResult().CurrentPage.FirstOrDefault();
+                if(servicePrincipal != null)
+                    objId = Guid.Parse(servicePrincipal.ObjectId);
+            }
+            else if(objectId != Guid.Empty)
+            {
+                var objectCollection = ActiveDirectoryClient.GetObjectsByObjectIdsAsync(new []{objectId.ToString()}, new string[] {}).GetAwaiter().GetResult();
+                if(objectCollection.Any())
+                    objId = objectId;
             }
 
-            if (obj != null)
-                return obj.Id;
+            if (objId != Guid.Empty)
+                return objId;
 
-            // In the Fairfax environment the Graph access token does not have a correct audiance
-            // and this scenario is broken. So, we cannot verify that the object ID belongs to the user directory.
-            // User can define their own environment, thereby we only compare key vault DNS suffix.
-            // TODO: replace "vault.usgovcloudapi.net" with AzureEnvironmentConstants.USGovernmentKeyVaultDnsSuffix when the environment variable is added.
-            // TODO: Remove this if condition when the issue with graph API is fixed.
-            if (string.Compare(DefaultContext.Environment.Endpoints[AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix], "vault.usgovcloudapi.net", true) == 0)
-            {
-                if (objectId != Guid.Empty)
-                    return objectId;
-                else throw new NotSupportedException(string.Format(PSKeyVaultProperties.Resources.ADObjectIDRetrievalFailed, exceptionMessage));
-            }
-
-            throw new ArgumentException(string.Format(PSKeyVaultProperties.Resources.ADObjectNotFound, filter.ActiveFilter, ActiveDirectoryClient.GraphClient.TenantID));
+            throw new ArgumentException(string.Format(PSKeyVaultProperties.Resources.ADObjectNotFound, objectFilter, 
+                (_dataServiceCredential != null)? _dataServiceCredential.TenantId : string.Empty));
         }
 
         protected readonly string[] DefaultPermissionsToKeys =
