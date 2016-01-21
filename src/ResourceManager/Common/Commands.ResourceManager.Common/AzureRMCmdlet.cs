@@ -14,6 +14,7 @@
 
 using System;
 using System.IO;
+using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Host;
 using System.Threading;
@@ -24,6 +25,7 @@ using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
+using System.Globalization;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
@@ -142,21 +144,41 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         protected override void InitializeQosEvent()
         {
-            //QosEvent = new AzurePSQoSEvent()
-            //{
-            //    CmdletType = this.GetType().Name,
-            //    IsSuccess = true,
-            //};
+            var commandAlias = this.GetType().Name; 
+            if(this.MyInvocation != null && this.MyInvocation.MyCommand != null)
+            {
+                commandAlias = this.MyInvocation.MyCommand.Name;
+            }
 
-            //if (this.Context != null && this.Context.Subscription != null)
-            //{
-            //    QosEvent.Uid = MetricHelper.GenerateSha256HashString(
-            //        this.Context.Subscription.Id.ToString());
-            //}
-            //else
-            //{
-            //    QosEvent.Uid = "defaultid";
-            //}
+            QosEvent = new AzurePSQoSEvent()
+            {
+                CommandName = commandAlias,
+                ModuleName = this.GetType().Assembly.GetName().Name,
+                ModuleVersion = this.GetType().Assembly.GetName().Version.ToString(),
+                ClientRequestId = this._clientRequestId,
+                SessionId = _sessionId,
+                IsSuccess = true,
+            };
+
+            if (this.MyInvocation != null && this.MyInvocation.BoundParameters != null)
+            {
+                QosEvent.Parameters = string.Join(" ", 
+                    this.MyInvocation.BoundParameters.Keys.Select(
+                        s => string.Format(CultureInfo.InvariantCulture, "-{0} ***", s)));
+            }
+
+            if (this.DefaultProfile != null && 
+                this.DefaultProfile.Context != null &&
+                this.DefaultProfile.Context.Account != null &&
+                this.DefaultProfile.Context.Account.Id != null)
+            {
+                QosEvent.Uid = MetricHelper.GenerateSha256HashString(
+                    this.DefaultProfile.Context.Account.Id.ToString());
+            }
+            else
+            {
+                QosEvent.Uid = "defaultid";
+            }
         }
     }
 }
