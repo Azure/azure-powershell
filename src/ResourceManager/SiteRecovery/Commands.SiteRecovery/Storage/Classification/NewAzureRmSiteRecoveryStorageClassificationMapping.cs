@@ -22,8 +22,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// <summary>
     /// Pairs storage classification
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmSiteRecoveryStorageClassificationMapping", DefaultParameterSetName = ASRParameterSets.Default)]
-    [OutputType(typeof(IEnumerable<ASRJob>))]
+    [Cmdlet(VerbsCommon.New, "AzureRmSiteRecoveryStorageClassificationMapping")]
+    [OutputType(typeof(ASRJob))]
     public class NewAzureRmSiteRecoveryStorageClassificationMapping : SiteRecoveryCmdletBase
     {
         #region Parameters

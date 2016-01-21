@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// Retrieves Azure Site Recovery storage classification.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmSiteRecoveryStorageClassificationMapping", DefaultParameterSetName = ASRParameterSets.Default)]
-    [OutputType(typeof(IEnumerable<ASRStorageClassification>))]
+    [OutputType(typeof(IEnumerable<ASRStorageClassificationMapping>))]
     public class GetAzureSiteRecoveryStorageClassificationMapping : SiteRecoveryCmdletBase
     {
         #region Parameters

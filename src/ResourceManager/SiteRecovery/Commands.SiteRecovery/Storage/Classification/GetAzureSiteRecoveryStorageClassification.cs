@@ -33,14 +33,14 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Gets or sets name of classification.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByName, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByName, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets friendly name of classification.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByFriendlyName, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByFriendlyName, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string FriendlyName { get; set; }
 

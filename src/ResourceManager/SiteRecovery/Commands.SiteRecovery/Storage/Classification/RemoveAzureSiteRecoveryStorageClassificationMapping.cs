@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// Pairs storage classification
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoveryStorageClassificationMapping")]
-    [OutputType(typeof(IEnumerable<ASRJob>))]
+    [OutputType(typeof(ASRJob))]
     public class RemoveAzureSiteRecoveryStorageClassificationMapping : SiteRecoveryCmdletBase
     {
         #region Parameters
