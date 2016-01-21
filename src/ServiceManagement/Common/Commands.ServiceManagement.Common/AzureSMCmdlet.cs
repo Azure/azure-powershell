@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Linq;
 using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.IO;
@@ -25,6 +26,7 @@ using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Newtonsoft.Json;
 using System.Threading;
 using System.Management.Automation.Host;
+using System.Globalization;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
@@ -60,8 +62,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 AzureSession.DataStore = new DiskDataStore();
            }
         }
-
-
 
         protected override void SaveDataCollectionProfile()
         {
@@ -120,16 +120,35 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected override void InitializeQosEvent()
         {
+            var commandAlias = this.GetType().Name;
+            if (this.MyInvocation != null && this.MyInvocation.MyCommand != null)
+            {
+                commandAlias = this.MyInvocation.MyCommand.Name;
+            }
+
             QosEvent = new AzurePSQoSEvent()
             {
-                CmdletType = this.GetType().Name,
+                CommandName = commandAlias,
+                ModuleName = this.GetType().Assembly.GetName().Name,
+                ModuleVersion = this.GetType().Assembly.GetName().Version.ToString(),
+                ClientRequestId = this._clientRequestId,
+                SessionId = _sessionId,
                 IsSuccess = true,
             };
 
-            if (this.Profile != null && this.Profile.DefaultSubscription != null)
+            if (this.MyInvocation != null && this.MyInvocation.BoundParameters != null)
+            {
+                QosEvent.Parameters = string.Join(" ",
+                    this.MyInvocation.BoundParameters.Keys.Select(
+                        s => string.Format(CultureInfo.InvariantCulture, "-{0} ***", s)));
+            }
+
+            if (this.DefaultContext != null &&
+                this.DefaultContext.Account != null &&
+                this.DefaultContext.Account.Id != null)
             {
                 QosEvent.Uid = MetricHelper.GenerateSha256HashString(
-                    this.Profile.DefaultSubscription.Id.ToString());
+                    this.DefaultContext.Account.Id.ToString());
             }
             else
             {
