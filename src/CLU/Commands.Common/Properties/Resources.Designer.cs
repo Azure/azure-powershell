@@ -717,63 +717,6 @@ namespace Microsoft.Azure.Commands.Common.Properties {
         }
         
         /// <summary>
-        ///    Looks up a localized string similar to Microsoft Azure PowerShell Data Collection Confirmation.
-        /// </summary>
-        internal static string DataCollectionActivity {
-            get {
-                return ResourceManager.GetString("DataCollectionActivity", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///    Looks up a localized string similar to You choose not to participate in Microsoft Azure PowerShell data collection..
-        /// </summary>
-        internal static string DataCollectionConfirmNo {
-            get {
-                return ResourceManager.GetString("DataCollectionConfirmNo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///    Looks up a localized string similar to This confirmation message will be dismissed in &apos;{0}&apos; second(s)....
-        /// </summary>
-        internal static string DataCollectionConfirmTime {
-            get {
-                return ResourceManager.GetString("DataCollectionConfirmTime", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///    Looks up a localized string similar to You choose to participate in Microsoft Azure PowerShell data collection..
-        /// </summary>
-        internal static string DataCollectionConfirmYes {
-            get {
-                return ResourceManager.GetString("DataCollectionConfirmYes", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///    Looks up a localized string similar to  Microsoft Azure PowerShell collects data about how users use PowerShell cmdlets and some problems they encounter.  Microsoft uses this information to improve our PowerShell cmdlets.  Participation is voluntary and when you choose to participate your device automatically sends information to Microsoft about how you use Azure PowerShell. 
-        /// 
-        ///If you choose to participate, you can stop at any time by using Azure PowerShell as follows:
-        ///1.	Use the Disable-AzureDataCollection cmdlet to turn the feature Off. The  [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string DataCollectionPrompt {
-            get {
-                return ResourceManager.GetString("DataCollectionPrompt", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///    Looks up a localized string similar to The setting profile has been saved to the following path &apos;{0}&apos;..
-        /// </summary>
-        internal static string DataCollectionSaveFileInformation {
-            get {
-                return ResourceManager.GetString("DataCollectionSaveFileInformation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///    Looks up a localized string similar to Setting: {0} as the default and current subscription. To view other subscriptions use Get-AzureSubscription.
         /// </summary>
         internal static string DefaultAndCurrentSubscription {
