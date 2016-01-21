@@ -97,7 +97,7 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
          *              (#([0-9A-Fa-f]{2})+)
          * 
          * Or a Unicode grapheme
-         *              \P{M}\p{M}*+
+         *              (?>\P{M}\p{M}*)
          * 
          * There will be 1 or more characters matching this pattern
          *          )+
