@@ -233,5 +233,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// For Disable replication group parameter set.
         /// </summary>
         internal const string DisableReplicationGroup = "DisableReplicationGroup";
+
+        /// <summary>
+        /// Handle ASR Vault.
+        /// </summary>
+        internal const string ASRVault = "AzureSiteRecoveryVault";
+
+        /// <summary>
+        /// Handle ARS Vault.
+        /// </summary>
+        internal const string ARSVault = "AzureRecoveryServicesVault";
     }
 }
