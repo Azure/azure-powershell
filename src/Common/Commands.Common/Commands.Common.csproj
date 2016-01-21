@@ -149,6 +149,7 @@
     <Compile Include="AzureRmProfileProvider.cs" />
     <Compile Include="AzureSMProfileProvder.cs" />
     <Compile Include="AzureSubscriptionExtensions.cs" />
+    <Compile Include="ConcurrentQueueExtensions.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="ContextExtensions.cs" />
     <Compile Include="IProfileProvider.cs" />
