@@ -50,7 +50,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            throw new Exception("BlahBlahBlah");
             string armName = string.Format(
                     "StrgMap_{0}_{1}_{2}",
                     PrimaryStorageClassification.Name,
