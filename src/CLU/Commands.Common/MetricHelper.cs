@@ -89,11 +89,6 @@ namespace Microsoft.Azure.Commands.Common
 
         public static void LogQoSEvent(AzurePSQoSEvent qos, bool isUsageMetricEnabled, bool isErrorMetricEnabled)
         {
-            if (!IsMetricTermAccepted())
-            {
-                return;
-            }
-
             if (isUsageMetricEnabled)
             {
                 LogUsageEvent(qos);
@@ -189,14 +184,9 @@ namespace Microsoft.Azure.Commands.Common
             }
         }
 
-        public static bool IsMetricTermAccepted()
+        public static void FlushMetric(bool isTelemetryEnabled)
         {
-            return AzurePSCmdlet.IsDataCollectionAllowed();
-        }
-
-        public static void FlushMetric()
-        {
-            if (!IsMetricTermAccepted())
+            if (!isTelemetryEnabled)
             {
                 return;
             }
