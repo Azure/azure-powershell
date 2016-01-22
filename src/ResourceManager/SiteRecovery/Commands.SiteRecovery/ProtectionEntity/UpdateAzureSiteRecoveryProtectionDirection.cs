@@ -44,17 +44,26 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public string fabricName;
 
         #region Parameters
+
+        /// <summary>
+        /// Gets or sets Recovery Plan object.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.ByRPObject, Mandatory = true, ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
+        public ASRRecoveryPlan RecoveryPlan { get; set; }
+
         /// <summary>
         /// Gets or sets Protection Entity Object.
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByPEObject, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRProtectionEntity ProtectionEntity { get; set; }
 
         /// <summary>
         /// Gets or sets Failover direction for the recovery plan.
         /// </summary>
-        [Parameter(Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByRPObject, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByPEObject, Mandatory = true, ValueFromPipeline = false)]
         [ValidateSet(
             Constants.PrimaryToRecovery,
             Constants.RecoveryToPrimary)]
@@ -69,11 +78,18 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             try
             {
-                this.protectionEntityName = this.ProtectionEntity.Name;
-                this.protectionContainerName = this.ProtectionEntity.ProtectionContainerId;
-                this.fabricName = Utilities.GetValueFromArmId(this.ProtectionEntity.ID, ARMResourceTypeConstants.ReplicationFabrics);
-                this.SetPEReprotect();               
-                
+                switch (this.ParameterSetName)
+                {
+                    case ASRParameterSets.ByPEObject:
+                        this.protectionEntityName = this.ProtectionEntity.Name;
+                        this.protectionContainerName = this.ProtectionEntity.ProtectionContainerId;
+                        this.fabricName = Utilities.GetValueFromArmId(this.ProtectionEntity.ID, ARMResourceTypeConstants.ReplicationFabrics);
+                        this.SetPEReprotect();
+                        break;
+                    case ASRParameterSets.ByRPObject:
+                        this.SetRPReprotect();
+                        break;
+                }          
             }
             catch (Exception exception)
             {
@@ -82,7 +98,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         }
 
         /// <summary>
-        /// Set PE protection.
+        /// PE Reprotect.
         /// </summary>
         private void SetPEReprotect()
         {
@@ -146,6 +162,21 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
             WriteObject(new ASRJob(jobResponse.Job));                                          
+        }
+
+        /// <summary>
+        /// Starts RP Reprotect.
+        /// </summary>
+        private void SetRPReprotect()
+        {           
+            LongRunningOperationResponse response = RecoveryServicesClient.UpdateAzureSiteRecoveryProtection(
+                this.RecoveryPlan.Name);
+
+            JobResponse jobResponse =
+                RecoveryServicesClient
+                .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+
+            WriteObject(new ASRJob(jobResponse.Job));
         }
     }
 }

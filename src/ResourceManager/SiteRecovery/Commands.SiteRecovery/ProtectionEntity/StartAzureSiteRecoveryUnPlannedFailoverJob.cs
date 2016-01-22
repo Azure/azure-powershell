@@ -19,6 +19,7 @@ using System.Management.Automation;
 using System.Threading;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.Azure.Management.SiteRecovery.Models;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -47,6 +48,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         #region Parameters
 
         /// <summary>
+        /// Gets or sets Recovery Plan object.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.ByRPObject, Mandatory = true, ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
+        public ASRRecoveryPlan RecoveryPlan { get; set; }
+
+        /// <summary>
         /// Gets or sets Protection Entity object.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByPEObject, Mandatory = true, ValueFromPipeline = true)]
@@ -56,7 +64,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Gets or sets Failover direction for the recovery plan.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByPEObject, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByRPObject, Mandatory = true, ValueFromPipeline = false)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByPEObject, Mandatory = true, ValueFromPipeline = false)]
         [ValidateSet(
             Constants.PrimaryToRecovery,
             Constants.RecoveryToPrimary)]
@@ -65,7 +74,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Gets or sets switch parameter. This is required to PerformSourceSideActions.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByPEObject, Mandatory = false)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByRPObject, Mandatory = false, ValueFromPipeline = false)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByPEObject, Mandatory = false, ValueFromPipeline = false)]
         public SwitchParameter PerformSourceSideActions { get; set; }
 
         #endregion Parameters
@@ -84,6 +94,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                         this.protectionContainerName = this.ProtectionEntity.ProtectionContainerId;
                         this.fabricName = Utilities.GetValueFromArmId(this.ProtectionEntity.ID, ARMResourceTypeConstants.ReplicationFabrics);
                         this.StartPEUnplannedFailover();
+                        break;
+                    case ASRParameterSets.ByRPObject:
+                        this.StartRpUnplannedFailover();
                         break;
                 }
             }
@@ -146,6 +159,59 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 this.protectionContainerName,
                 Utilities.GetValueFromArmId(replicationProtectedItemResponse.ReplicationProtectedItem.Id,  ARMResourceTypeConstants.ReplicationProtectedItems),
                 input);
+
+            JobResponse jobResponse =
+                RecoveryServicesClient
+                .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+
+            WriteObject(new ASRJob(jobResponse.Job));
+        }
+
+        /// <summary>
+        /// Starts RP Unplanned failover.
+        /// </summary>
+        private void StartRpUnplannedFailover()
+        {
+            // Refresh RP Object
+            var rp = RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlan(this.RecoveryPlan.Name);
+            this.RecoveryPlan = new ASRRecoveryPlan(rp.RecoveryPlan);
+
+            RecoveryPlanUnplannedFailoverInputProperties recoveryPlanUnplannedFailoverInputProperties = new RecoveryPlanUnplannedFailoverInputProperties()
+            {
+                FailoverDirection = this.Direction,
+                SourceSiteOperations = this.PerformSourceSideActions ? "Required" : "NotRequired", //Required|NotRequired
+                ProviderSpecificDetails = new List<RecoveryPlanProviderSpecificFailoverInput>()
+            };
+
+            foreach (string replicationProvider in this.RecoveryPlan.ReplicationProvider)
+            {
+                if (0 == string.Compare(
+                                    replicationProvider,
+                                    Constants.HyperVReplicaAzure,
+                                    StringComparison.OrdinalIgnoreCase))
+                {
+                    if (this.Direction == Constants.PrimaryToRecovery)
+                    {
+                        RecoveryPlanHyperVReplicaAzureFailoverInput recoveryPlanHyperVReplicaAzureFailoverInput = new RecoveryPlanHyperVReplicaAzureFailoverInput()
+                        {
+                            InstanceType = replicationProvider,
+                            PrimaryKekCertificatePfx = null,
+                            SecondaryKekCertificatePfx = null,
+                            VaultLocation = this.GetCurrentValutLocation()
+                        };
+                        recoveryPlanUnplannedFailoverInputProperties.ProviderSpecificDetails.Add(recoveryPlanHyperVReplicaAzureFailoverInput);
+                    }
+                }  
+            }
+
+            RecoveryPlanUnplannedFailoverInput recoveryPlanUnplannedFailoverInput = new RecoveryPlanUnplannedFailoverInput()
+            {
+                Properties = recoveryPlanUnplannedFailoverInputProperties
+            };
+
+            LongRunningOperationResponse response = RecoveryServicesClient.StartAzureSiteRecoveryUnplannedFailover(
+                this.RecoveryPlan.Name,
+                recoveryPlanUnplannedFailoverInput);
 
             JobResponse jobResponse =
                 RecoveryServicesClient

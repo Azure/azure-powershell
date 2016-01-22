@@ -22,18 +22,18 @@ using Properties = Microsoft.Azure.Commands.SiteRecovery.Properties;
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
     /// <summary>
-    /// Removes Azure Site Recovery Policy.
+    /// Remove Azure Site Recovery Recovery Plan.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoveryPolicy")]
-    public class RemoveAzureSiteRecoveryPolicy : SiteRecoveryCmdletBase
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoveryRecoveryPlan")]
+    public class RemoveAzureSiteRecoveryRecoveryPlan : SiteRecoveryCmdletBase
     {
         #region Parameters
 
         /// <summary>
-        /// Gets or sets Name of the Policy.
+        /// Gets or sets Name of the Recovery Plan.
         /// </summary>
         [Parameter(Mandatory = true)]
-        public ASRPolicy Policy { get; set; }
+        public ASRRecoveryPlan RecoveryPlan { get; set; }
 
         #endregion Parameters
 
@@ -44,13 +44,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             try
             {
-                LongRunningOperationResponse responseBlue =  RecoveryServicesClient.DeletePolicy(this.Policy.Name);
-                
-                JobResponse jobResponseBlue =
-                    RecoveryServicesClient
-                    .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(responseBlue.Location));
+                LongRunningOperationResponse response = RecoveryServicesClient.RemoveAzureSiteRecoveryRecoveryPlan(this.RecoveryPlan.Name);
 
-                WriteObject(new ASRJob(jobResponseBlue.Job));
+                JobResponse jobResponse =
+                    RecoveryServicesClient
+                    .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+
+                WriteObject(new ASRJob(jobResponse.Job));
             }
             catch (Exception exception)
             {

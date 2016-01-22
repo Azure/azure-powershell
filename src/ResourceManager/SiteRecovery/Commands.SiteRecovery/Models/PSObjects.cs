@@ -773,6 +773,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             {
                 this.Policy = new ASRPolicy(policy);
             }
+            this.ReplicationProtectedItemId = rpi.Id;
         }
 
         private void UpdateDiskDetails(IList<DiskDetails> diskDetails)
@@ -882,6 +883,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Gets or sets Replication provider.
         /// </summary>
         public string ReplicationProvider { get; set; }
+
+        /// <summary>
+        /// Gets or sets Replication protected item id.
+        /// </summary>
+        public string ReplicationProtectedItemId { get; set; }
     }
 
     /// <summary>

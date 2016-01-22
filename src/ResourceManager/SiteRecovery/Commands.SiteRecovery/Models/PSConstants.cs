@@ -296,6 +296,36 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Nic Selection Type - SelectedByUser
         /// </summary>
         public const string SelectedByUser = "SelectedByUser";
+
+        /// <summary>
+        /// Failover deployment model: NotApplicable
+        /// </summary>
+        public const string NotApplicable = "NotApplicable";
+
+        /// <summary>
+        /// Failover deployment model: Classic
+        /// </summary>
+        public const string Classic = "Classic";
+
+        /// <summary>
+        /// Failover deployment model: ResourceMananger
+        /// </summary>
+        public const string ResourceManager = "ResourceManager";
+
+        /// <summary>
+        /// Group Type: Shutdown
+        /// </summary>
+        public const string Shutdown = "Shutdown";
+
+        /// <summary>
+        /// Group Type: Boot
+        /// </summary>
+        public const string Boot = "Boot";
+
+        /// <summary>
+        /// Group Type: Failover
+        /// </summary>
+        public const string Failover = "Failover";
     }
 
      /// <summary>

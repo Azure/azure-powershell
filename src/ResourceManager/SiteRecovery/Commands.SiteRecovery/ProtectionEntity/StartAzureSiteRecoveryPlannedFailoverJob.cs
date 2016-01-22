@@ -17,6 +17,7 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.Azure.Management.SiteRecovery.Models;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -43,6 +44,14 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public string fabricName;
 
         #region Parameters
+
+        /// <summary>
+        /// Gets or sets Recovery Plan object.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.ByRPObject, Mandatory = true, ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
+        public ASRRecoveryPlan RecoveryPlan { get; set; }
+
         /// <summary>
         /// Gets or sets Protection Entity object.
         /// </summary>
@@ -84,6 +93,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                         this.protectionContainerName = this.ProtectionEntity.ProtectionContainerId;
                         this.fabricName = Utilities.GetValueFromArmId(this.ProtectionEntity.ID, ARMResourceTypeConstants.ReplicationFabrics);
                         this.StartPEPlannedFailover();
+                        break;
+                    case ASRParameterSets.ByRPObject:
+                        this.StartRpPlannedFailover();
                         break;
                 }
             }
@@ -156,6 +168,68 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 this.protectionContainerName,
                 Utilities.GetValueFromArmId(replicationProtectedItemResponse.ReplicationProtectedItem.Id,  ARMResourceTypeConstants.ReplicationProtectedItems),
                 input);
+
+            JobResponse jobResponse =
+                RecoveryServicesClient
+                .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+
+            WriteObject(new ASRJob(jobResponse.Job));
+        }
+
+        /// <summary>
+        /// Starts RP Planned failover.
+        /// </summary>
+        private void StartRpPlannedFailover()
+        {
+            // Refresh RP Object
+            var rp = RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlan(this.RecoveryPlan.Name);
+            this.RecoveryPlan = new ASRRecoveryPlan(rp.RecoveryPlan);
+
+            RecoveryPlanPlannedFailoverInputProperties recoveryPlanPlannedFailoverInputProperties = new RecoveryPlanPlannedFailoverInputProperties()
+            {
+                FailoverDirection = this.Direction,
+                ProviderSpecificDetails = new List<RecoveryPlanProviderSpecificFailoverInput>()
+            };
+
+            foreach (string replicationProvider in this.RecoveryPlan.ReplicationProvider)
+            {
+                if (0 == string.Compare(
+                    replicationProvider,
+                    Constants.HyperVReplicaAzure,
+                    StringComparison.OrdinalIgnoreCase))
+                {
+                    if (this.Direction == Constants.PrimaryToRecovery)
+                    {
+                        RecoveryPlanHyperVReplicaAzureFailoverInput recoveryPlanHyperVReplicaAzureFailoverInput = new RecoveryPlanHyperVReplicaAzureFailoverInput()
+                        {
+                            InstanceType = replicationProvider,
+                            PrimaryKekCertificatePfx = null,
+                            SecondaryKekCertificatePfx = null,
+                            VaultLocation = this.GetCurrentValutLocation()
+                        };
+                        recoveryPlanPlannedFailoverInputProperties.ProviderSpecificDetails.Add(recoveryPlanHyperVReplicaAzureFailoverInput);
+                    }
+                    else
+                    {
+                        RecoveryPlanHyperVReplicaAzureFailbackInput recoveryPlanHyperVReplicaAzureFailbackInput = new RecoveryPlanHyperVReplicaAzureFailbackInput()
+                        {
+                            InstanceType = replicationProvider + "Failback",
+                            DataSyncOption = this.Optimize == Constants.ForDowntime ? Constants.ForDowntime : Constants.ForSynchronization,
+                            RecoveryVmCreationOption = "CreateVmIfNotFound" //CreateVmIfNotFound | NoAction
+                        };
+                        recoveryPlanPlannedFailoverInputProperties.ProviderSpecificDetails.Add(recoveryPlanHyperVReplicaAzureFailbackInput);
+                    }
+                }              
+            }
+            
+            RecoveryPlanPlannedFailoverInput recoveryPlanPlannedFailoverInput = new RecoveryPlanPlannedFailoverInput()
+            {
+                Properties = recoveryPlanPlannedFailoverInputProperties
+            };
+
+            LongRunningOperationResponse response = RecoveryServicesClient.StartAzureSiteRecoveryPlannedFailover(
+                this.RecoveryPlan.Name,
+                recoveryPlanPlannedFailoverInput);
 
             JobResponse jobResponse =
                 RecoveryServicesClient

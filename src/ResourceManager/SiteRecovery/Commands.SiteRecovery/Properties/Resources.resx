@@ -310,4 +310,13 @@ Please provide a storage account with the same location as that of the vault.</v
   <data name="SiteRecoveryVaultTypeWillBeDeprecatedSoon" xml:space="preserve">
     <value>SiteRecovery vault type will be deprecated soon. Please use RecoveryServices vault type instead.</value>
   </data>
+  <data name="RPJSONPath" xml:space="preserve">
+    <value>Generated JSON for Recovery Plan {0} at {1}</value>
+  </data>
+  <data name="DirectoryNotFound" xml:space="preserve">
+    <value>Directory {0} Not Found</value>
+  </data>
+  <data name="FileNotFound" xml:space="preserve">
+    <value>File {0} Not Found</value>
+  </data>
 </root>

@@ -22,7 +22,7 @@ using Properties = Microsoft.Azure.Commands.SiteRecovery.Properties;
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
     /// <summary>
-    /// Retrieves Azure Site Recovery Server.
+    /// Retrieves Azure Site Recovery Policy.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmSiteRecoveryPolicy", DefaultParameterSetName = ASRParameterSets.Default)]
     [OutputType(typeof(IEnumerable<ASRPolicy>))]
@@ -30,14 +30,14 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     {
         #region Parameters
         /// <summary>
-        /// Gets or sets ID of the Server.
+        /// Gets or sets name of the Policy.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByName, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets name of the Server.
+        /// Gets or sets friendly name of the Policy.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByFriendlyName, Mandatory = true)]
         [ValidateNotNullOrEmpty]
@@ -141,16 +141,16 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Write Policies.
         /// </summary>
-        /// <param name="policy">List of Profiles</param>
+        /// <param name="policy">List of Policies</param>
         private void WritePolicies(IList<Policy> policy)
         {
             this.WriteObject(policy.Select(p => new ASRPolicy(p)), true);
         }
 
         /// <summary>
-        /// Write Profile.
+        /// Write Policy.
         /// </summary>
-        /// <param name="policy">Profile object</param>
+        /// <param name="policy">Policy object</param>
         private void WritePolicy(Policy policy)
         {
             this.WriteObject(new ASRPolicy(policy));

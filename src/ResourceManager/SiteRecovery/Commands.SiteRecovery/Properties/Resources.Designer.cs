@@ -107,6 +107,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Directory {0} Not Found.
+        /// </summary>
+        internal static string DirectoryNotFound {
+            get {
+                return ResourceManager.GetString("DirectoryNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure want to disable protection on {0}.
         /// </summary>
         internal static string DisableProtectionWarning {
@@ -121,6 +130,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Properties {
         internal static string DisableProtectionWhatIfMessage {
             get {
                 return ResourceManager.GetString("DisableProtectionWhatIfMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File {0} Not Found.
+        /// </summary>
+        internal static string FileNotFound {
+            get {
+                return ResourceManager.GetString("FileNotFound", resourceCulture);
             }
         }
         
@@ -428,6 +446,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Properties {
         internal static string ResourceNameNullOrEmpty {
             get {
                 return ResourceManager.GetString("ResourceNameNullOrEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generated JSON for Recovery Plan {0} at {1}.
+        /// </summary>
+        internal static string RPJSONPath {
+            get {
+                return ResourceManager.GetString("RPJSONPath", resourceCulture);
             }
         }
         
