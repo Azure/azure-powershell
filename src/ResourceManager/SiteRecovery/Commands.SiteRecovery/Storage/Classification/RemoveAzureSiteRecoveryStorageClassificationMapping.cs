@@ -12,29 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using System.Collections.Generic;
 using System.Management.Automation;
-using System.Net;
-using Microsoft.Azure.Commands.SiteRecovery.Properties;
-using Microsoft.Azure.Management.SiteRecoveryVault.Models;
+using Microsoft.Azure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
-    /// <summary>
-    /// Used to initiate a vault delete operation.
+    // <summary>
+    /// Pairs storage classification
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoveryVault")]
-    public class RemoveAzureSiteRecoveryVault : SiteRecoveryCmdletBase
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoveryStorageClassificationMapping")]
+    [OutputType(typeof(ASRJob))]
+    public class RemoveAzureSiteRecoveryStorageClassificationMapping : SiteRecoveryCmdletBase
     {
         #region Parameters
 
         /// <summary>
-        /// Gets or sets vault Object.
+        /// Gets or sets primary storage classification.
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public ASRVault Vault { get; set; }
-
+        public ASRStorageClassificationMapping StorageClassificationMapping { get; set; }
         #endregion
 
         /// <summary>
@@ -44,14 +42,17 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            RecoveryServicesOperationStatusResponse response = RecoveryServicesClient.DeleteVault(this.Vault.ResouceGroupName, this.Vault.Name);
+            string[] tokens = StorageClassificationMapping.Id.UnFormatArmId(
+                ARMResourceIdPaths.StorageClassificationMappingResourceIdPath);
+            var operationResponse = RecoveryServicesClient.UnmapStorageClassifications(
+                fabricName: tokens[0],
+                storageClassificationName: tokens[1],
+                mappingName: tokens[2]);
+            JobResponse jobResponse =
+                RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
+                PSRecoveryServicesClient.GetJobIdFromReponseLocation(operationResponse.Location));
 
-            VaultOperationOutput output = new VaultOperationOutput()
-            {
-                Response = response.StatusCode == HttpStatusCode.OK ? Resources.VaultDeletionSuccessMessage : response.StatusCode.ToString()
-            };
-
-            this.WriteObject(output, true);
+            base.WriteObject(new ASRJob(jobResponse.Job));
         }
     }
 }

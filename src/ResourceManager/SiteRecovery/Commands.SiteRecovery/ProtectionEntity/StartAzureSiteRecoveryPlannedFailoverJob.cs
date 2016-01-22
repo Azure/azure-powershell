@@ -82,27 +82,21 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteCmdlet()
+        public override void ExecuteSiteRecoveryCmdlet()
         {
-            try
+            base.ExecuteSiteRecoveryCmdlet();
+            switch (this.ParameterSetName)
             {
-                switch (this.ParameterSetName)
-                {
-                    case ASRParameterSets.ByPEObject:
-                        this.protectionEntityName = this.ProtectionEntity.Name;
-                        this.protectionContainerName = this.ProtectionEntity.ProtectionContainerId;
-                        this.fabricName = Utilities.GetValueFromArmId(this.ProtectionEntity.ID, ARMResourceTypeConstants.ReplicationFabrics);
-                        this.StartPEPlannedFailover();
-                        break;
-                    case ASRParameterSets.ByRPObject:
-                        this.StartRpPlannedFailover();
-                        break;
-                }
-            }
-            catch (Exception exception)
-            {
-                this.HandleException(exception);
-            }
+                case ASRParameterSets.ByPEObject:
+                    this.protectionEntityName = this.ProtectionEntity.Name;
+                    this.protectionContainerName = this.ProtectionEntity.ProtectionContainerId;
+                    this.fabricName = Utilities.GetValueFromArmId(this.ProtectionEntity.ID, ARMResourceTypeConstants.ReplicationFabrics);
+                    this.StartPEPlannedFailover();
+                    break;
+                case ASRParameterSets.ByRPObject:
+                    this.StartRpPlannedFailover();
+                    break;
+            }       
         }
 
         /// <summary>
@@ -128,13 +122,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
             ReplicationProtectedItemResponse replicationProtectedItemResponse =
                         RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(this.fabricName,
-                        this.ProtectionEntity.ProtectionContainerId, Utilities.GetValueFromArmId(protectableItemResponse.ProtectableItem.Properties.ReplicationProtectedItemId,  ARMResourceTypeConstants.ReplicationProtectedItems));
+                        this.ProtectionEntity.ProtectionContainerId, Utilities.GetValueFromArmId(protectableItemResponse.ProtectableItem.Properties.ReplicationProtectedItemId, ARMResourceTypeConstants.ReplicationProtectedItems));
 
-            PolicyResponse policyResponse = RecoveryServicesClient.GetAzureSiteRecoveryPolicy(Utilities.GetValueFromArmId(replicationProtectedItemResponse.ReplicationProtectedItem.Properties.PolicyID,  ARMResourceTypeConstants.ReplicationPolicies));
+            PolicyResponse policyResponse = RecoveryServicesClient.GetAzureSiteRecoveryPolicy(Utilities.GetValueFromArmId(replicationProtectedItemResponse.ReplicationProtectedItem.Properties.PolicyID, ARMResourceTypeConstants.ReplicationPolicies));
 
             this.ProtectionEntity = new ASRProtectionEntity(protectableItemResponse.ProtectableItem, replicationProtectedItemResponse.ReplicationProtectedItem);
 
-            
+
             if (0 == string.Compare(
                 this.ProtectionEntity.ReplicationProvider,
                 Constants.HyperVReplicaAzure,
@@ -154,7 +148,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 {
                     HyperVReplicaAzureFailbackProviderInput failbackInput = new HyperVReplicaAzureFailbackProviderInput()
                     {
-                        DataSyncOption = this.Optimize == Constants.ForDowntime ? Constants.ForDowntime : Constants.ForSynchronization, 
+                        DataSyncOption = this.Optimize == Constants.ForDowntime ? Constants.ForDowntime : Constants.ForSynchronization,
                         //ProviderIdForAlternateRecovery = "",
                         RecoveryVmCreationOption = "CreateVmIfNotFound" //CreateVmIfNotFound | NoAction
                     };
@@ -166,7 +160,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 RecoveryServicesClient.StartAzureSiteRecoveryPlannedFailover(
                 this.fabricName,
                 this.protectionContainerName,
-                Utilities.GetValueFromArmId(replicationProtectedItemResponse.ReplicationProtectedItem.Id,  ARMResourceTypeConstants.ReplicationProtectedItems),
+                Utilities.GetValueFromArmId(replicationProtectedItemResponse.ReplicationProtectedItem.Id, ARMResourceTypeConstants.ReplicationProtectedItems),
                 input);
 
             JobResponse jobResponse =

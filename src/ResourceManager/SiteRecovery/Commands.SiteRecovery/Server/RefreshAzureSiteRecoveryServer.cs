@@ -19,26 +19,20 @@ using Microsoft.Azure.Management.SiteRecovery.Models;
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
     /// <summary>
-    /// Resumes Azure Site Recovery Job.
+    /// Retrieves Azure Site Recovery Server.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Stop, "AzureRmSiteRecoveryJob", DefaultParameterSetName = ASRParameterSets.ByObject)]
-    [OutputType(typeof(ASRJob))]
-    public class StopAzureSiteRecoveryJob : SiteRecoveryCmdletBase
+    [Cmdlet(VerbsData.Update, "AzureRmSiteRecoveryServer", DefaultParameterSetName = ASRParameterSets.Default)]
+    public class UpdateAzureRmSiteRecoveryServer : SiteRecoveryCmdletBase
     {
         #region Parameters
-        /// <summary>
-        /// Gets or sets Job ID.
-        /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByName, Mandatory = true)]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets Job Object.
+        /// Gets or sets the Server.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByObject, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public ASRJob Job { get; set; }
+        public ASRServer Server { get; set; }
+
         #endregion Parameters
 
         /// <summary>
@@ -47,26 +41,21 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public override void ExecuteSiteRecoveryCmdlet()
         {
             base.ExecuteSiteRecoveryCmdlet();
-
-            switch (this.ParameterSetName)
-            {
-                case ASRParameterSets.ByObject:
-                    this.Name = this.Job.Name;
-                    this.StopByName();
-                    break;
-
-                case ASRParameterSets.ByName:
-                    this.StopByName();
-                    break;
-            }
+            RefreshServer();
         }
 
         /// <summary>
-        /// Restart by Name.
+        /// Refresh Server
         /// </summary>
-        private void StopByName()
+        private void RefreshServer()
         {
-            LongRunningOperationResponse response = RecoveryServicesClient.CancelAzureSiteRecoveryJob(this.Name);
+            if ((String.Compare(this.Server.FabricType, Constants.VMM) != 0 && String.Compare(this.Server.FabricType, Constants.HyperVSite) != 0))
+            {
+                throw new PSInvalidOperationException(Properties.Resources.InvalidServerType);
+            }
+
+            LongRunningOperationResponse response =
+                RecoveryServicesClient.RefreshAzureSiteRecoveryProvider(Utilities.GetValueFromArmId(this.Server.ID, ARMResourceTypeConstants.ReplicationFabrics), this.Server.Name);
 
             JobResponse jobResponse =
                 RecoveryServicesClient

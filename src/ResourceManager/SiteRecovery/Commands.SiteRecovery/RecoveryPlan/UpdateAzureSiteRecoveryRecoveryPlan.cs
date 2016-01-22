@@ -49,33 +49,28 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteCmdlet()
+        public override void ExecuteSiteRecoveryCmdlet()
         {
-            try
+            base.ExecuteSiteRecoveryCmdlet();
+
+            switch (this.ParameterSetName)
             {
-                switch (this.ParameterSetName)
-                {
-                    case ASRParameterSets.ByRPObject:
-                        UpdateReplicationPlan(this.RecoveryPlan);
-                        break;
-                    case ASRParameterSets.ByRPFile:
-                        if (!File.Exists(this.Path))
-                        {
-                            throw new FileNotFoundException(string.Format(Properties.Resources.FileNotFound, this.Path)); ;
-                        }
-                        string filePath = this.Path;
-                        RecoveryPlan recoveryPlan = null;
-                        using (System.IO.StreamReader file = new System.IO.StreamReader(filePath))
-                        {
-                            recoveryPlan = JsonConvert.DeserializeObject<RecoveryPlan>(file.ReadToEnd());
-                        }
-                        UpdateReplicationPlan(recoveryPlan);                       
-                        break;
-                }
-            }
-            catch (Exception exception)
-            {
-                this.HandleException(exception);
+                case ASRParameterSets.ByRPObject:
+                    UpdateReplicationPlan(this.RecoveryPlan);
+                    break;
+                case ASRParameterSets.ByRPFile:
+                    if (!File.Exists(this.Path))
+                    {
+                        throw new FileNotFoundException(string.Format(Properties.Resources.FileNotFound, this.Path)); ;
+                    }
+                    string filePath = this.Path;
+                    RecoveryPlan recoveryPlan = null;
+                    using (System.IO.StreamReader file = new System.IO.StreamReader(filePath))
+                    {
+                        recoveryPlan = JsonConvert.DeserializeObject<RecoveryPlan>(file.ReadToEnd());
+                    }
+                    UpdateReplicationPlan(recoveryPlan);                       
+                    break;
             }
         }
 

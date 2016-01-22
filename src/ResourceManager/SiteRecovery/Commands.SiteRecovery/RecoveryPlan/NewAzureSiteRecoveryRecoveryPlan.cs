@@ -104,35 +104,30 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteCmdlet()
+        public override void ExecuteSiteRecoveryCmdlet()
         {
-            try
-            {
-                switch(this.ParameterSetName)
-                {
-                    case ASRParameterSets.EnterpriseToEnterprise:
-                        failoverDeploymentModel = Constants.NotApplicable;
-                        this.primaryserver = RecoveryServicesClient.GetAzureSiteRecoveryFabric(Utilities.GetValueFromArmId(this.PrimaryServer.ID, ARMResourceTypeConstants.ReplicationFabrics)).Fabric.Id;
-                        this.recoveryserver = RecoveryServicesClient.GetAzureSiteRecoveryFabric(Utilities.GetValueFromArmId(this.RecoveryServer.ID, ARMResourceTypeConstants.ReplicationFabrics)).Fabric.Id;
-                        break;
-                    case ASRParameterSets.EnterpriseToAzure:
-                        failoverDeploymentModel = this.FailoverDeploymentModel;
-                        this.primaryserver = RecoveryServicesClient.GetAzureSiteRecoveryFabric(Utilities.GetValueFromArmId(this.PrimaryServer.ID, ARMResourceTypeConstants.ReplicationFabrics)).Fabric.Id;
-                        this.recoveryserver = Constants.AzureContainer;
-                        break;
-                    case ASRParameterSets.HyperVSiteToAzure:
-                        failoverDeploymentModel = this.FailoverDeploymentModel;
-                        this.primaryserver = this.PrimarySite.ID;
-                        this.recoveryserver = Constants.AzureContainer;
-                        break;
+            base.ExecuteSiteRecoveryCmdlet();
 
-                }
-                this.CreateReplicationPlan();
-            }
-            catch (Exception exception)
+            switch(this.ParameterSetName)
             {
-                this.HandleException(exception);
+                case ASRParameterSets.EnterpriseToEnterprise:
+                    failoverDeploymentModel = Constants.NotApplicable;
+                    this.primaryserver = RecoveryServicesClient.GetAzureSiteRecoveryFabric(Utilities.GetValueFromArmId(this.PrimaryServer.ID, ARMResourceTypeConstants.ReplicationFabrics)).Fabric.Id;
+                    this.recoveryserver = RecoveryServicesClient.GetAzureSiteRecoveryFabric(Utilities.GetValueFromArmId(this.RecoveryServer.ID, ARMResourceTypeConstants.ReplicationFabrics)).Fabric.Id;
+                    break;
+                case ASRParameterSets.EnterpriseToAzure:
+                    failoverDeploymentModel = this.FailoverDeploymentModel;
+                    this.primaryserver = RecoveryServicesClient.GetAzureSiteRecoveryFabric(Utilities.GetValueFromArmId(this.PrimaryServer.ID, ARMResourceTypeConstants.ReplicationFabrics)).Fabric.Id;
+                    this.recoveryserver = Constants.AzureContainer;
+                    break;
+                case ASRParameterSets.HyperVSiteToAzure:
+                    failoverDeploymentModel = this.FailoverDeploymentModel;
+                    this.primaryserver = this.PrimarySite.ID;
+                    this.recoveryserver = Constants.AzureContainer;
+                    break;
+
             }
+            this.CreateReplicationPlan();
         }
 
         /// <summary>

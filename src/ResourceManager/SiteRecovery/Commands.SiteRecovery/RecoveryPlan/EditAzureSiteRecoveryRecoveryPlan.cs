@@ -74,86 +74,82 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteCmdlet()
+        public override void ExecuteSiteRecoveryCmdlet()
         {
-            try
+            base.ExecuteSiteRecoveryCmdlet();
+
+            ASRRecoveryPlanGroup tempGroup;
+
+            switch (this.ParameterSetName)
             {
-                ASRRecoveryPlanGroup tempGroup;
+                case ASRParameterSets.AppendGroup:
+                    RecoveryPlanGroup recoveryPlanGroup = new RecoveryPlanGroup()
+                    {
+                        GroupType = Constants.Boot,
+                        ReplicationProtectedItems = new List<RecoveryPlanProtectedItem>(),
+                        StartGroupActions = new List<RecoveryPlanAction>(),
+                        EndGroupActions = new List<RecoveryPlanAction>()
+                    };
 
-                switch (this.ParameterSetName)
-                {
-                    case ASRParameterSets.AppendGroup:
-                        RecoveryPlanGroup recoveryPlanGroup = new RecoveryPlanGroup()
-                        {
-                            GroupType = Constants.Boot,
-                            ReplicationProtectedItems = new List<RecoveryPlanProtectedItem>(),
-                            StartGroupActions = new List<RecoveryPlanAction>(),
-                            EndGroupActions = new List<RecoveryPlanAction>()
-                        };
+                    this.RecoveryPlan.Groups.Add(new ASRRecoveryPlanGroup("Group " + (RecoveryPlan.Groups.Count - 1).ToString(), recoveryPlanGroup));
+                    break;
+                case ASRParameterSets.RemoveGroup:
+                    tempGroup = this.RecoveryPlan.Groups.FirstOrDefault(g => String.CompareOrdinal(g.Name, RemoveGroup.Name) == 0);
+                    if (tempGroup != null)
+                    {
+                        this.RecoveryPlan.Groups.Remove(tempGroup);
+                        this.RecoveryPlan = this.RecoveryPlan.RefreshASRRecoveryPlanGroupNames();
+                    }
+                    break;
+                case ASRParameterSets.AddProtectedEntities:
+                    foreach (ASRProtectionEntity pe in AddProtectedEntities)
+                    {
+                        string fabricName = Utilities.GetValueFromArmId(pe.ID, ARMResourceTypeConstants.ReplicationFabrics);
+                        // fetch the latest PE object
+                        ProtectableItemResponse protectableItemResponse =
+                        RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(fabricName,
+                        pe.ProtectionContainerId, pe.Name);
 
-                        this.RecoveryPlan.Groups.Add(new ASRRecoveryPlanGroup("Group " + (RecoveryPlan.Groups.Count - 1).ToString(), recoveryPlanGroup));
-                        break;
-                    case ASRParameterSets.RemoveGroup:
-                        tempGroup = this.RecoveryPlan.Groups.FirstOrDefault(g => String.CompareOrdinal(g.Name, RemoveGroup.Name) == 0);
+                        ReplicationProtectedItemResponse replicationProtectedItemResponse =
+                        RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(fabricName,
+                        pe.ProtectionContainerId, Utilities.GetValueFromArmId(protectableItemResponse.ProtectableItem.Properties.ReplicationProtectedItemId, ARMResourceTypeConstants.ReplicationProtectedItems));
+
+                        RecoveryPlanProtectedItem recoveryPlanProtectedItem = new RecoveryPlanProtectedItem();
+                        recoveryPlanProtectedItem.Id = replicationProtectedItemResponse.ReplicationProtectedItem.Id;
+                        tempGroup = this.RecoveryPlan.Groups.FirstOrDefault(g => String.CompareOrdinal(g.Name, Group.Name) == 0);
                         if (tempGroup != null)
                         {
-                            this.RecoveryPlan.Groups.Remove(tempGroup);
-                            this.RecoveryPlan = this.RecoveryPlan.RefreshASRRecoveryPlanGroupNames();
-                        }
-                        break;
-                    case ASRParameterSets.AddProtectedEntities:
-                        foreach (ASRProtectionEntity pe in AddProtectedEntities)
+                            this.RecoveryPlan.Groups[RecoveryPlan.Groups.IndexOf(tempGroup)].ReplicationProtectedItems.Add(recoveryPlanProtectedItem);
+                        }                            
+                    }
+                    break;
+                case ASRParameterSets.RemoveProtectedEntities:
+                    foreach (ASRProtectionEntity pe in RemoveProtectedEntities)
+                    {
+                        string fabricName = Utilities.GetValueFromArmId(pe.ID, ARMResourceTypeConstants.ReplicationFabrics);
+                        // fetch the latest PE object
+                        ProtectableItemResponse protectableItemResponse =
+                        RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(fabricName,
+                        pe.ProtectionContainerId, pe.Name);
+
+                        ReplicationProtectedItemResponse replicationProtectedItemResponse =
+                        RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(fabricName,
+                        pe.ProtectionContainerId, Utilities.GetValueFromArmId(protectableItemResponse.ProtectableItem.Properties.ReplicationProtectedItemId, ARMResourceTypeConstants.ReplicationProtectedItems));
+
+                        tempGroup = this.RecoveryPlan.Groups.FirstOrDefault(g => String.CompareOrdinal(g.Name, Group.Name) == 0);
+                        if (tempGroup != null)
                         {
-                            string fabricName = Utilities.GetValueFromArmId(pe.ID, ARMResourceTypeConstants.ReplicationFabrics);
-                            // fetch the latest PE object
-                            ProtectableItemResponse protectableItemResponse =
-                            RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(fabricName,
-                            pe.ProtectionContainerId, pe.Name);
-
-                            ReplicationProtectedItemResponse replicationProtectedItemResponse =
-                            RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(fabricName,
-                            pe.ProtectionContainerId, Utilities.GetValueFromArmId(protectableItemResponse.ProtectableItem.Properties.ReplicationProtectedItemId, ARMResourceTypeConstants.ReplicationProtectedItems));
-
-                            RecoveryPlanProtectedItem recoveryPlanProtectedItem = new RecoveryPlanProtectedItem();
-                            recoveryPlanProtectedItem.Id = replicationProtectedItemResponse.ReplicationProtectedItem.Id;
-                            tempGroup = this.RecoveryPlan.Groups.FirstOrDefault(g => String.CompareOrdinal(g.Name, Group.Name) == 0);
-                            if (tempGroup != null)
+                            RecoveryPlanProtectedItem tempRecoveryPlanProtectedItem = this.RecoveryPlan.Groups[RecoveryPlan.Groups.IndexOf(tempGroup)].ReplicationProtectedItems.FirstOrDefault(pi => String.CompareOrdinal(pi.Id, replicationProtectedItemResponse.ReplicationProtectedItem.Id) == 0);
+                            if (tempRecoveryPlanProtectedItem != null)
                             {
-                                this.RecoveryPlan.Groups[RecoveryPlan.Groups.IndexOf(tempGroup)].ReplicationProtectedItems.Add(recoveryPlanProtectedItem);
-                            }                            
-                        }
-                        break;
-                    case ASRParameterSets.RemoveProtectedEntities:
-                        foreach (ASRProtectionEntity pe in RemoveProtectedEntities)
-                        {
-                            string fabricName = Utilities.GetValueFromArmId(pe.ID, ARMResourceTypeConstants.ReplicationFabrics);
-                            // fetch the latest PE object
-                            ProtectableItemResponse protectableItemResponse =
-                            RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(fabricName,
-                            pe.ProtectionContainerId, pe.Name);
+                                this.RecoveryPlan.Groups[RecoveryPlan.Groups.IndexOf(tempGroup)].ReplicationProtectedItems.Remove(tempRecoveryPlanProtectedItem);
+                            }
+                        }  
+                    }
+                    break;
+            };
 
-                            ReplicationProtectedItemResponse replicationProtectedItemResponse =
-                            RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(fabricName,
-                            pe.ProtectionContainerId, Utilities.GetValueFromArmId(protectableItemResponse.ProtectableItem.Properties.ReplicationProtectedItemId, ARMResourceTypeConstants.ReplicationProtectedItems));
-
-                            tempGroup = this.RecoveryPlan.Groups.FirstOrDefault(g => String.CompareOrdinal(g.Name, Group.Name) == 0);
-                            if (tempGroup != null)
-                            {
-                                RecoveryPlanProtectedItem tempRecoveryPlanProtectedItem = this.RecoveryPlan.Groups[RecoveryPlan.Groups.IndexOf(tempGroup)].ReplicationProtectedItems.FirstOrDefault(pi => String.CompareOrdinal(pi.Id, replicationProtectedItemResponse.ReplicationProtectedItem.Id) == 0);
-                                if (tempRecoveryPlanProtectedItem != null)
-                                {
-                                    this.RecoveryPlan.Groups[RecoveryPlan.Groups.IndexOf(tempGroup)].ReplicationProtectedItems.Remove(tempRecoveryPlanProtectedItem);
-                                }
-                            }  
-                        }
-                        break;
-                };
-                this.WriteObject(this.RecoveryPlan);
-            }
-            catch (Exception exception)
-            {
-                this.HandleException(exception);
-            }
+            this.WriteObject(this.RecoveryPlan);
         }
     }
 }

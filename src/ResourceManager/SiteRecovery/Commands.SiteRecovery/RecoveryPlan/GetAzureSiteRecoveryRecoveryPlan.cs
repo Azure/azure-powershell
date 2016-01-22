@@ -57,27 +57,21 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteCmdlet()
+        public override void ExecuteSiteRecoveryCmdlet()
         {
-            try
+            base.ExecuteSiteRecoveryCmdlet();
+            switch (this.ParameterSetName)
             {
-                switch (this.ParameterSetName)
-                {
-                    case ASRParameterSets.ByFriendlyName:
-                        this.GetByFriendlyName();
-                        break;
-                    case ASRParameterSets.ByName:
-                        this.GetByName();
-                        break;
-                    case ASRParameterSets.Default:
-                        this.GetAll();
-                        break;
-                }
-            }
-            catch (Exception exception)
-            {
-                this.HandleException(exception);
-            }
+                case ASRParameterSets.ByFriendlyName:
+                    this.GetByFriendlyName();
+                    break;
+                case ASRParameterSets.ByName:
+                    this.GetByName();
+                    break;
+                case ASRParameterSets.Default:
+                    this.GetAll();
+                    break;
+            }           
         }
 
         /// <summary>
@@ -93,12 +87,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             {
                 if (0 == string.Compare(this.FriendlyName, recoveryPlan.Properties.FriendlyName, true))
                 {
+                    var rp = RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlan(recoveryPlan.Name).RecoveryPlan;
                     if (!string.IsNullOrEmpty(this.Path))
                     {
-                        GetRecoveryPlanFile(recoveryPlan);
+                        GetRecoveryPlanFile(rp);
                     }
 
-                    this.WriteRecoveryPlan(recoveryPlan);
+                    this.WriteRecoveryPlan(rp);
                     found = true;
                 }
             }
@@ -118,38 +113,33 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void GetByName()
         {
-            this.WriteRecoveryPlan(RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlan(this.Name).RecoveryPlan);
-            if (!string.IsNullOrEmpty(this.Path))
+            RecoveryPlanListResponse recoveryPlanListResponse =
+                 RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlan();
+            bool found = false;
+
+            foreach (RecoveryPlan recoveryPlan in recoveryPlanListResponse.RecoveryPlans)
             {
-                GetRecoveryPlanFile(RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlan(this.Name).RecoveryPlan);
+                if (0 == string.Compare(this.Name, recoveryPlan.Name, true))
+                {
+                    var rp = RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlan(recoveryPlan.Name).RecoveryPlan;
+                    if (!string.IsNullOrEmpty(this.Path))
+                    {
+                        GetRecoveryPlanFile(rp);
+                    }
+
+                    this.WriteRecoveryPlan(rp);
+                    found = true;
+                }
             }
 
-            //RecoveryPlanListResponse recoveryPlanListResponse =
-            //     RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlan();
-            //bool found = false;
-
-            //foreach (RecoveryPlan recoveryPlan in recoveryPlanListResponse.RecoveryPlans)
-            //{
-            //    if (0 == string.Compare(this.Name, recoveryPlan.Name, true))
-            //    {
-            //        if (!string.IsNullOrEmpty(this.Path))
-            //        {
-            //            GetRecoveryPlanFile(recoveryPlan);
-            //        }
-
-            //        this.WriteRecoveryPlan(recoveryPlan);
-            //        found = true;
-            //    }
-            //}
-
-            //if (!found)
-            //{
-            //    throw new InvalidOperationException(
-            //        string.Format(
-            //        Properties.Resources.RecoveryPlanNotFound,
-            //        this.Name,
-            //        PSRecoveryServicesClient.asrVaultCreds.ResourceName));
-            //}
+            if (!found)
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                    Properties.Resources.RecoveryPlanNotFound,
+                    this.Name,
+                    PSRecoveryServicesClient.asrVaultCreds.ResourceName));
+            }
         }
 
         /// <summary>

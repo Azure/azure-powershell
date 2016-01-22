@@ -16,7 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Management.RecoveryServices.Models;
+using Microsoft.Azure.Management.SiteRecoveryVault.Models;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -44,24 +44,17 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteCmdlet()
+        public override void ExecuteSiteRecoveryCmdlet()
         {
-            base.ExecuteCmdlet();
+            base.ExecuteSiteRecoveryCmdlet();
 
-            try
+            if (string.IsNullOrEmpty(this.ResourceGroupName))
             {
-                if (string.IsNullOrEmpty(this.ResourceGroupName))
-                {
-                    this.GetVaultsUnderAllResourceGroups();
-                }
-                else
-                {
-                    this.GetVaultsUnderResourceGroup();
-                }
+                this.GetVaultsUnderAllResourceGroups();
             }
-            catch (Exception exception)
+            else
             {
-                this.HandleException(exception);
+                this.GetVaultsUnderResourceGroup();
             }
         }
 

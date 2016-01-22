@@ -56,26 +56,21 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteCmdlet()
+        public override void ExecuteSiteRecoveryCmdlet()
         {
-            try
+            base.ExecuteSiteRecoveryCmdlet();
+
+            switch (this.ParameterSetName)
             {
-                switch (this.ParameterSetName)
-                {
-                    case ASRParameterSets.ByObject:
-                        this.GetAll();
-                        break;
-                    case ASRParameterSets.ByObjectWithName:
-                        this.GetByName();
-                        break;
-                    case ASRParameterSets.ByObjectWithFriendlyName:
-                        this.GetByFriendlyName();
-                        break;
-                }
-            }
-            catch (Exception exception)
-            {
-                this.HandleException(exception);
+                case ASRParameterSets.ByObject:
+                    this.GetAll();
+                    break;
+                case ASRParameterSets.ByObjectWithName:
+                    this.GetByName();
+                    break;
+                case ASRParameterSets.ByObjectWithFriendlyName:
+                    this.GetByFriendlyName();
+                    break;
             }
         }
 
@@ -162,7 +157,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     replicationProtectedItemResponse = RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(
                         Utilities.GetValueFromArmId(this.ProtectionContainer.ID, ARMResourceTypeConstants.ReplicationFabrics),
                         this.ProtectionContainer.Name,
-                        Utilities.GetValueFromArmId(protectableItem.Properties.ReplicationProtectedItemId,  ARMResourceTypeConstants.ReplicationProtectedItems));
+                        Utilities.GetValueFromArmId(protectableItem.Properties.ReplicationProtectedItemId, ARMResourceTypeConstants.ReplicationProtectedItems));
                 }
 
                 if (replicationProtectedItemResponse != null && replicationProtectedItemResponse.ReplicationProtectedItem != null)
@@ -191,7 +186,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 replicationProtectedItemResponse = RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(
                     Utilities.GetValueFromArmId(this.ProtectionContainer.ID, ARMResourceTypeConstants.ReplicationFabrics),
                     this.ProtectionContainer.Name,
-                    Utilities.GetValueFromArmId(protectableItem.Properties.ReplicationProtectedItemId,  ARMResourceTypeConstants.ReplicationProtectedItems));
+                    Utilities.GetValueFromArmId(protectableItem.Properties.ReplicationProtectedItemId, ARMResourceTypeConstants.ReplicationProtectedItems));
             }
 
             if (replicationProtectedItemResponse != null && replicationProtectedItemResponse.ReplicationProtectedItem != null)

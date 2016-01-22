@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     public class RemoveAzureSiteRecoverySite : SiteRecoveryCmdletBase
     {
         #region Parameters
-       
+
         /// <summary>
         /// Gets or sets the site name
         /// </summary>
@@ -42,37 +42,32 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteCmdlet()
+        public override void ExecuteSiteRecoveryCmdlet()
         {
-            try
+            base.ExecuteSiteRecoveryCmdlet();
+
+            RecoveryServicesProviderListResponse recoveryServicesProviderListResponse =
+                    RecoveryServicesClient.GetAzureSiteRecoveryProvider(
+                    this.Site.Name);
+
+            if (recoveryServicesProviderListResponse.RecoveryServicesProviders.Count != 0)
             {
-                RecoveryServicesProviderListResponse recoveryServicesProviderListResponse =
-                        RecoveryServicesClient.GetAzureSiteRecoveryProvider(
-                        this.Site.Name);
-
-                if (recoveryServicesProviderListResponse.RecoveryServicesProviders.Count != 0)
-                {
-                    throw new PSInvalidOperationException(Properties.Resources.SiteRemovalWithRegisteredHyperVHostsError);
-                }
-
-                FabricDeletionInput input = new FabricDeletionInput()
-                {
-                    Properties = new FabricDeletionInputProperties()
-                };
-
-                LongRunningOperationResponse response =
-                 RecoveryServicesClient.DeleteAzureSiteRecoveryFabric(this.Site.Name, input);
-
-                JobResponse jobResponse =
-                    RecoveryServicesClient
-                    .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
-
-                WriteObject(new ASRJob(jobResponse.Job));
+                throw new PSInvalidOperationException(Properties.Resources.SiteRemovalWithRegisteredHyperVHostsError);
             }
-            catch (Exception exception)
+
+            FabricDeletionInput input = new FabricDeletionInput()
             {
-                this.HandleException(exception);
-            }
+                Properties = new FabricDeletionInputProperties()
+            };
+
+            LongRunningOperationResponse response =
+             RecoveryServicesClient.DeleteAzureSiteRecoveryFabric(this.Site.Name, input);
+
+            JobResponse jobResponse =
+                RecoveryServicesClient
+                .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+
+            WriteObject(new ASRJob(jobResponse.Job));
         }
     }
 }
