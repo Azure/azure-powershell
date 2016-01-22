@@ -173,6 +173,10 @@
     <value>Are you sure you want to remove the Azure Automation {0} ?</value>
     <comment>Automation</comment>
   </data>
+  <data name="RemovingAzureAutomationDscConfigurationWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Azure Automation {0}? Note: Any DSC node configurations under this DSC configuration will not be removed.</value>
+    <comment>Automation</comment>
+  </data>
   <data name="ResourceExists" xml:space="preserve">
     <value>Resource exist.</value>
     <comment>Automation</comment>
@@ -382,6 +386,10 @@
   </data>
   <data name="ConfigurationNotFound" xml:space="preserve">
     <value>The Dsc Configuration was not found. Configuration name {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="CannotDeleteNodeConfiguration" xml:space="preserve">
+    <value>The node configuration '{0}' is currently assigned to one or more nodes. Either specify the IgnoreNodeMappings parameter, or reassign these nodes to a different node configuration, to delete this node configuration.</value>
     <comment>Automation</comment>
   </data>
   <data name="WebhookNotFound" xml:space="preserve">
