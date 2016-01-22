@@ -31,11 +31,11 @@
       <RegistrySearch Id="PSCOMPATIBLEVERSION" Root="HKLM" Key="SOFTWARE\Microsoft\PowerShell\3\PowerShellEngine" Name="PSCompatibleVersion" Type="raw" />
     </Property>
 
-    <SetProperty Action="SetBase64" Id="BaseModulesFolder" Value="[ProgramFiles64Folder]WindowsPowerShell\Modules" Before="AppSearch">
+    <SetProperty Action="SetBase64" Id="BaseModulesFolder" Value="[ProgramFiles64Folder]WindowsPowerShell\Modules\" Before="AppSearch">
       VersionNT64
     </SetProperty>
 
-    <SetProperty Action="SetBase32" Id="BaseModulesFolder" Value="[ProgramFilesFolder]WindowsPowerShell\Modules" Before="AppSearch">
+    <SetProperty Action="SetBase32" Id="BaseModulesFolder" Value="[ProgramFilesFolder]WindowsPowerShell\Modules\" Before="AppSearch">
       NOT VersionNT64
     </SetProperty>
 
@@ -81,7 +81,7 @@
       <Component Id="PSModulePath.System" Guid="273525B9-7AAB-421A-90C8-8E50A1840B8D">
         <CreateFolder />
         <!-- Work around bug that PowerShell does not always consider default module paths. -->
-        <Environment Id="PSModulePath.SystemAppRoot" Action="set" Name="PSMODULEPATH" Part="last" Value="[BaseModulesFolder];[PowerShellFolder]ResourceManager\AzureResourceManager;[PowerShellFolder]ServiceManagement" System="yes" />
+        <Environment Id="PSModulePath.SystemAppRoot" Action="set" Name="PSMODULEPATH" Part="last" Value="[BaseModulesFolder];[PowerShellFolder]ResourceManager\AzureResourceManager\;[PowerShellFolder]ServiceManagement\" System="yes" />
      </Component>
     </DirectoryRef>
 
