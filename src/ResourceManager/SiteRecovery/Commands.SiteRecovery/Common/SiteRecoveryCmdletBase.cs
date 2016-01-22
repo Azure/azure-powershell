@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Gets the current vault location.
         /// </summary>
         /// <returns>The current vault location.</returns>
-        protected string GetCurrentValutLocation()
+        protected string GetCurrentVaultLocation()
         {
             string location = string.Empty;
 

@@ -19,6 +19,7 @@ using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.Azure.Management.SiteRecovery.Models;
 using Properties = Microsoft.Azure.Commands.SiteRecovery.Properties;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -29,7 +30,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     [OutputType(typeof(ASRJob))]
     public class StartAzureSiteRecoveryTestFailoverJob : SiteRecoveryCmdletBase
     {
-        #region Parameters
+        #region local parameters
 
         /// <summary>
         /// Network ID.
@@ -57,13 +58,18 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public string fabricName;
 
         /// <summary>
-        /// Gets or sets failover direction for the recovery plan.
+        /// Primary Kek Cert pfx file.
         /// </summary>
-        [Parameter(Mandatory = true)]
-        [ValidateSet(
-          Constants.PrimaryToRecovery,
-          Constants.RecoveryToPrimary)]
-        public string Direction { get; set; }
+        string primaryKekCertpfx = null;
+
+        /// <summary>
+        /// Secondary Kek Cert pfx file.
+        /// </summary>
+        string secondaryKekCertpfx = null;
+
+        #endregion local parameters
+
+        #region Parameters
 
         /// <summary>
         /// Gets or sets Recovery Plan object.
@@ -82,6 +88,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         [Parameter(ParameterSetName = ASRParameterSets.ByPEObjectWithAzureVMNetworkId, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRProtectionEntity ProtectionEntity { get; set; }
+
+        /// <summary>
+        /// Gets or sets failover direction for the recovery plan.
+        /// </summary>
+        [Parameter(Mandatory = true)]
+        [ValidateSet(Constants.PrimaryToRecovery, Constants.RecoveryToPrimary)]
+        public string Direction { get; set; }
 
         /// <summary>
         /// Gets or sets Network.
@@ -103,6 +116,20 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         [Parameter(ParameterSetName = ASRParameterSets.ByPEObjectWithAzureVMNetworkId, Mandatory = true)]
         public string AzureVMNetworkId { get; set; }
 
+        /// <summary>
+        /// Gets or sets Data encryption certificate file path for failover of Protected Item.
+        /// </summary>
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public string DataEncryptionPrimaryCertFile { get; set; }
+
+        /// <summary>
+        /// Gets or sets Data encryption certificate file path for failover of Protected Item.
+        /// </summary>
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public string DataEncryptionSecondaryCertFile { get; set; }
+
         #endregion Parameters
 
         /// <summary>
@@ -112,11 +139,23 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            switch(this.ParameterSetName)
+            if (!string.IsNullOrEmpty(this.DataEncryptionPrimaryCertFile))
+            {
+                byte[] certBytesPrimary = File.ReadAllBytes(this.DataEncryptionPrimaryCertFile);
+                primaryKekCertpfx = Convert.ToBase64String(certBytesPrimary);
+            }
+
+            if (!string.IsNullOrEmpty(this.DataEncryptionSecondaryCertFile))
+            {
+                byte[] certBytesSecondary = File.ReadAllBytes(this.DataEncryptionSecondaryCertFile);
+                secondaryKekCertpfx = Convert.ToBase64String(certBytesSecondary);
+            }
+
+            switch (this.ParameterSetName)
             {
                 case ASRParameterSets.ByPEObjectWithVMNetwork:
                 case ASRParameterSets.ByRPObjectWithVMNetwork:
-                    this.networkType = "VmNetworkAsInput"; 
+                    this.networkType = "VmNetworkAsInput";
                     this.networkId = this.VMNetwork.ID;
                     break;
                 //case ASRParameterSets.ByPEObjectWithLogicalVMNetwork:
@@ -126,12 +165,12 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 //    break;
                 case ASRParameterSets.ByPEObjectWithAzureVMNetworkId:
                 case ASRParameterSets.ByRPObjectWithAzureVMNetworkId:
-                    this.networkType = "VmNetworkAsInput"; 
+                    this.networkType = "VmNetworkAsInput";
                     this.networkId = this.AzureVMNetworkId;
                     break;
                 case ASRParameterSets.ByPEObject:
                 case ASRParameterSets.ByRPObject:
-                    this.networkType = "NoNetworkAttachAsInput"; 
+                    this.networkType = "NoNetworkAttachAsInput";
                     this.networkId = null;
                     break;
             }
@@ -148,7 +187,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 this.protectionContainerName = this.ProtectionEntity.ProtectionContainerId;
                 this.fabricName = Utilities.GetValueFromArmId(this.ProtectionEntity.ID, ARMResourceTypeConstants.ReplicationFabrics);
                 this.StartPETestFailover();
-            }     
+            }
         }
 
         /// <summary>
@@ -156,7 +195,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void StartPETestFailover()
         {
-            TestFailoverInputProperties testFailoverInputProperties = new TestFailoverInputProperties()
+            var testFailoverInputProperties = new TestFailoverInputProperties()
             {
                 FailoverDirection = this.Direction,
                 NetworkId = this.networkId,
@@ -164,7 +203,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 ProviderSpecificDetails = new ProviderSpecificFailoverInput()
             };
 
-            TestFailoverInput input = new TestFailoverInput()
+            var input = new TestFailoverInput()
             {
                 Properties = testFailoverInputProperties
             };
@@ -189,12 +228,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             {
                 if (this.Direction == Constants.PrimaryToRecovery)
                 {
-                    HyperVReplicaAzureFailoverProviderInput failoverInput = new HyperVReplicaAzureFailoverProviderInput()
+                    var failoverInput = new HyperVReplicaAzureFailoverProviderInput()
                     {
-                        PrimaryKekCertificatePfx = null,
-                        SecondaryKekCertificatePfx = null,
-                        VaultLocation = this.GetCurrentValutLocation()
+                        PrimaryKekCertificatePfx = primaryKekCertpfx,
+                        SecondaryKekCertificatePfx = secondaryKekCertpfx,
+                        VaultLocation = this.GetCurrentVaultLocation()
                     };
+
                     input.Properties.ProviderSpecificDetails = failoverInput;
                 }
                 else
@@ -217,7 +257,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             WriteObject(new ASRJob(jobResponse.Job));
         }
 
-         /// <summary>
+        /// <summary>
         /// Starts RP Test failover.
         /// </summary>
         private void StartRpTestFailover()
@@ -226,7 +266,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             var rp = RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlan(this.RecoveryPlan.Name);
             this.RecoveryPlan = new ASRRecoveryPlan(rp.RecoveryPlan);
 
-            RecoveryPlanTestFailoverInputProperties recoveryPlanTestFailoverInputProperties = new RecoveryPlanTestFailoverInputProperties()
+            var recoveryPlanTestFailoverInputProperties = new RecoveryPlanTestFailoverInputProperties()
             {
                 FailoverDirection = this.Direction,
                 NetworkId = this.networkId,
@@ -243,12 +283,12 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 {
                     if (this.Direction == Constants.PrimaryToRecovery)
                     {
-                        RecoveryPlanHyperVReplicaAzureFailoverInput recoveryPlanHyperVReplicaAzureFailoverInput = new RecoveryPlanHyperVReplicaAzureFailoverInput()
+                        var recoveryPlanHyperVReplicaAzureFailoverInput = new RecoveryPlanHyperVReplicaAzureFailoverInput()
                         {
                             InstanceType = replicationProvider,
-                            PrimaryKekCertificatePfx = null,
-                            SecondaryKekCertificatePfx = null,
-                            VaultLocation = this.GetCurrentValutLocation()
+                            PrimaryKekCertificatePfx = primaryKekCertpfx,
+                            SecondaryKekCertificatePfx = secondaryKekCertpfx,
+                            VaultLocation = this.GetCurrentVaultLocation()
                         };
                         recoveryPlanTestFailoverInputProperties.ProviderSpecificDetails.Add(recoveryPlanHyperVReplicaAzureFailoverInput);
                     }
@@ -256,10 +296,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     {
                         new ArgumentException(Properties.Resources.UnsupportedDirectionForTFO);// Throw Unsupported Direction Exception
                     }
-                }  
+                }
             }
 
-            RecoveryPlanTestFailoverInput recoveryPlanTestFailoverInput = new RecoveryPlanTestFailoverInput()
+            var recoveryPlanTestFailoverInput = new RecoveryPlanTestFailoverInput()
             {
                 Properties = recoveryPlanTestFailoverInputProperties
             };

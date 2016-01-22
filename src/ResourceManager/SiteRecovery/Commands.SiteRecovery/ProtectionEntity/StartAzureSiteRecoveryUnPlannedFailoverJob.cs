@@ -20,6 +20,7 @@ using System.Threading;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.Azure.Management.SiteRecovery.Models;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -30,6 +31,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     [OutputType(typeof(ASRJob))]
     public class StartAzureSiteRecoveryUnplannedFailoverJob : SiteRecoveryCmdletBase
     {
+        #region local parameters
+
         /// <summary>
         /// Gets or sets Name of the PE.
         /// </summary>
@@ -44,6 +47,18 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Gets or sets Name of the Fabric.
         /// </summary>
         public string fabricName;
+
+        /// <summary>
+        /// Primary Kek Cert pfx file.
+        /// </summary>
+        string primaryKekCertpfx = null;
+
+        /// <summary>
+        /// Secondary Kek Cert pfx file.
+        /// </summary>
+        string secondaryKekCertpfx = null;
+
+        #endregion local parameters
 
         #region Parameters
 
@@ -64,19 +79,29 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Gets or sets Failover direction for the recovery plan.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByRPObject, Mandatory = true, ValueFromPipeline = false)]
-        [Parameter(ParameterSetName = ASRParameterSets.ByPEObject, Mandatory = true, ValueFromPipeline = false)]
-        [ValidateSet(
-            Constants.PrimaryToRecovery,
-            Constants.RecoveryToPrimary)]
+        [Parameter(Mandatory = true)]
+        [ValidateSet(Constants.PrimaryToRecovery, Constants.RecoveryToPrimary)]
         public string Direction { get; set; }
 
         /// <summary>
         /// Gets or sets switch parameter. This is required to PerformSourceSideActions.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByRPObject, Mandatory = false, ValueFromPipeline = false)]
-        [Parameter(ParameterSetName = ASRParameterSets.ByPEObject, Mandatory = false, ValueFromPipeline = false)]
+        [Parameter]
         public SwitchParameter PerformSourceSideActions { get; set; }
+
+        /// <summary>
+        /// Gets or sets Data encryption certificate file path for failover of Protected Item.
+        /// </summary>
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public string DataEncryptionPrimaryCertFile { get; set; }
+
+        /// <summary>
+        /// Gets or sets Data encryption certificate file path for failover of Protected Item.
+        /// </summary>
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public string DataEncryptionSecondaryCertFile { get; set; }
 
         #endregion Parameters
 
@@ -86,6 +111,18 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public override void ExecuteSiteRecoveryCmdlet()
         {
             base.ExecuteSiteRecoveryCmdlet();
+
+            if (!string.IsNullOrEmpty(this.DataEncryptionPrimaryCertFile))
+            {
+                byte[] certBytesPrimary = File.ReadAllBytes(this.DataEncryptionPrimaryCertFile);
+                primaryKekCertpfx = Convert.ToBase64String(certBytesPrimary);
+            }
+
+            if (!string.IsNullOrEmpty(this.DataEncryptionSecondaryCertFile))
+            {
+                byte[] certBytesSecondary = File.ReadAllBytes(this.DataEncryptionSecondaryCertFile);
+                secondaryKekCertpfx = Convert.ToBase64String(certBytesSecondary);
+            }
 
             switch (this.ParameterSetName)
             {
@@ -106,14 +143,14 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void StartPEUnplannedFailover()
         {
-            UnplannedFailoverInputProperties unplannedFailoverInputProperties = new UnplannedFailoverInputProperties()
+            var unplannedFailoverInputProperties = new UnplannedFailoverInputProperties()
             {
                 FailoverDirection = this.Direction,
                 SourceSiteOperations = this.PerformSourceSideActions ? "Required" : "NotRequired", //Required|NotRequired
                 ProviderSpecificDetails = new ProviderSpecificFailoverInput()
             };
 
-            UnplannedFailoverInput input = new UnplannedFailoverInput()
+            var input = new UnplannedFailoverInput()
             {
                 Properties = unplannedFailoverInputProperties
             };
@@ -138,11 +175,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             {
                 if (this.Direction == Constants.PrimaryToRecovery)
                 {
-                    HyperVReplicaAzureFailoverProviderInput failoverInput = new HyperVReplicaAzureFailoverProviderInput()
+                    var failoverInput = new HyperVReplicaAzureFailoverProviderInput()
                     {
-                        PrimaryKekCertificatePfx = null,
-                        SecondaryKekCertificatePfx = null,
-                        VaultLocation = this.GetCurrentValutLocation()
+                        PrimaryKekCertificatePfx = primaryKekCertpfx,
+                        SecondaryKekCertificatePfx = secondaryKekCertpfx,
+                        VaultLocation = this.GetCurrentVaultLocation()
                     };
                     input.Properties.ProviderSpecificDetails = failoverInput;
                 }
@@ -171,7 +208,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             var rp = RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlan(this.RecoveryPlan.Name);
             this.RecoveryPlan = new ASRRecoveryPlan(rp.RecoveryPlan);
 
-            RecoveryPlanUnplannedFailoverInputProperties recoveryPlanUnplannedFailoverInputProperties = new RecoveryPlanUnplannedFailoverInputProperties()
+            var recoveryPlanUnplannedFailoverInputProperties = new RecoveryPlanUnplannedFailoverInputProperties()
             {
                 FailoverDirection = this.Direction,
                 SourceSiteOperations = this.PerformSourceSideActions ? "Required" : "NotRequired", //Required|NotRequired
@@ -181,25 +218,25 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             foreach (string replicationProvider in this.RecoveryPlan.ReplicationProvider)
             {
                 if (0 == string.Compare(
-                                    replicationProvider,
-                                    Constants.HyperVReplicaAzure,
-                                    StringComparison.OrdinalIgnoreCase))
+                    replicationProvider,
+                    Constants.HyperVReplicaAzure,
+                    StringComparison.OrdinalIgnoreCase))
                 {
                     if (this.Direction == Constants.PrimaryToRecovery)
                     {
-                        RecoveryPlanHyperVReplicaAzureFailoverInput recoveryPlanHyperVReplicaAzureFailoverInput = new RecoveryPlanHyperVReplicaAzureFailoverInput()
+                        var recoveryPlanHyperVReplicaAzureFailoverInput = new RecoveryPlanHyperVReplicaAzureFailoverInput()
                         {
                             InstanceType = replicationProvider,
-                            PrimaryKekCertificatePfx = null,
-                            SecondaryKekCertificatePfx = null,
-                            VaultLocation = this.GetCurrentValutLocation()
+                            PrimaryKekCertificatePfx = primaryKekCertpfx,
+                            SecondaryKekCertificatePfx = secondaryKekCertpfx,
+                            VaultLocation = this.GetCurrentVaultLocation()
                         };
                         recoveryPlanUnplannedFailoverInputProperties.ProviderSpecificDetails.Add(recoveryPlanHyperVReplicaAzureFailoverInput);
                     }
-                }  
+                }
             }
 
-            RecoveryPlanUnplannedFailoverInput recoveryPlanUnplannedFailoverInput = new RecoveryPlanUnplannedFailoverInput()
+            var recoveryPlanUnplannedFailoverInput = new RecoveryPlanUnplannedFailoverInput()
             {
                 Properties = recoveryPlanUnplannedFailoverInputProperties
             };
