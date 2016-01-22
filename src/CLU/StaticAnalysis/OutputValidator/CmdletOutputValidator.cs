@@ -1,57 +1,32 @@
-﻿using System;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using Microsoft.Azure.Commands.Network;
 using Newtonsoft.Json;
 
-namespace FormatParser
+namespace StaticAnalysis.OutputValidator
 {
-    public class Program
+    public class CmdletOutputValidator : IAssemblyValidator
     {
-        public static readonly string[] Modules = new string[]
-        {
-            "Microsoft.Azure.Commands.Compute",
-            "Microsoft.Azure.Commands.Management.Storage",
-            "Microsoft.Azure.Commands.Profile",
-            "Microsoft.Azure.Commands.Resources",
-            "Microsoft.Azure.Commands.Websites",
-            "Commands.ResourceManager.Cmdlets"
-        };
-
         public IToolsLogger Logger { get; set; }
-        public void Main(string[] args)
-        {
-            var cluDirectory = Path.Combine(Directory.GetCurrentDirectory(), "..");
-            var reportFile = Path.Combine(Directory.GetCurrentDirectory(), "outputTypes.csv");
-            Logger = new ConsoleLogger();
-            foreach (var assemblyIdentity in Modules)
-            {
-                (Logger as ConsoleLogger).Assembly = assemblyIdentity;
-                var moduleDirectory = Path.Combine(cluDirectory, assemblyIdentity);
-                Validate(moduleDirectory, assemblyIdentity);
-            }
 
-
-            Console.WriteLine("Processing Complete");
-            var records = (Logger as ConsoleLogger).Records;
-            if (records != null && records.Count > 0)
-            {
-                using (var writer = new StreamWriter(File.OpenWrite(reportFile)))
-                {
-                    writer.WriteLine(records[0].PrintHeaders());
-                    foreach (var record in records)
-                    {
-                        writer.WriteLine(record.ToString());
-                    }
-                }
-            }
-
-            Console.ReadLine();
-        }
+        public string Name { get { return "Cmdlet Output Validator"; } }
 
         public void Validate(string baseDirectory, string assemblyIdentity)
         {
@@ -106,8 +81,13 @@ namespace FormatParser
                         if (invalidTypes != null && invalidTypes.Contains(type.FullName))
                         {
                             logger.WriteError($"### INVALID FORMAT: Cmdlet {validationRecord.CmdletName} has INVALID format for output type {type.FullName}");
-                            logger.LogRecord(new ValidationRecord {Target = validationRecord.CmdletName, Description = $"Invalid format for cmdlet output type {type.FullName}",
-                                Severity = 0, Remediation = $"Fix output format for type {type.FullName} in {assemblyIdentity}.format.ps1xml" });
+                            logger.LogRecord(new ValidationRecord
+                            {
+                                Target = validationRecord.CmdletName,
+                                Description = $"Invalid format for cmdlet output type {type.FullName}",
+                                Severity = 0,
+                                Remediation = $"Fix output format for type {type.FullName} in {assemblyIdentity}.format.ps1xml"
+                            });
                         }
 
                         if (validationRecord.IsComplex && (validTypes == null || !validTypes.Contains(type.FullName)))
@@ -184,8 +164,8 @@ namespace FormatParser
             var result = false;
             if (property.HasAttribute<JsonPropertyAttribute>())
             {
-                var attribute = property.GetAttribute<JsonPropertyAttribute>() as JsonPropertyAttribute;
-                result = attribute != null &&
+                var attribute = property.GetAttribute<JsonPropertyAttribute>();
+                result = attribute != null && !string.IsNullOrWhiteSpace(attribute.PropertyName) &&
                          !string.Equals(attribute.PropertyName, property.Name, StringComparison.OrdinalIgnoreCase);
             }
 

@@ -1,12 +1,12 @@
 {
   "version": "1.0.0-*",
-  "description": "FormatParser Console Application",
+  "description": "Static Analysis Console Application",
   "authors": [ "markcowl" ],
   "tags": [ "" ],
   "projectUrl": "",
   "licenseUrl": "",
   "commands": {
-    "FormatParser": "FormatParser"
+    "StaticAnalysis": "StaticAnalysis"
   },
   "frameworks": {
     "dnxcore50": {

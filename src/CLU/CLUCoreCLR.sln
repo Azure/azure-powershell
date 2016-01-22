@@ -66,7 +66,7 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Sync", "Sync\Sync.xproj", "
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Microsoft.Azure.Commands.Network", "Microsoft.Azure.Commands.Network\Microsoft.Azure.Commands.Network.xproj", "{C4DCF4EA-62E7-431E-ADB5-16FD6CFEA5D6}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "FormatParser", "FormatParser\FormatParser.xproj", "{84F9573A-449E-4159-8493-EFD6C3C8F0A5}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "StaticAnalysis", "StaticAnalysis\StaticAnalysis.xproj", "{84F9573A-449E-4159-8493-EFD6C3C8F0A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
