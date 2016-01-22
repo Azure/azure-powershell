@@ -105,9 +105,10 @@ namespace StaticAnalysis.HelpGenerator
             return result.ToString();
         }
 
-        private object GetPlural(string noun)
+        private string GetPlural(string noun)
         {
-            return noun.EndsWith("y") ? $"{noun.Substring(0, noun.Length - 1)}" : $"{noun}s";
+            var normalized = Regex.Replace(noun, "[^aeiou]y$", "ie");
+            return $"{normalized}s";
         }
 
         private string GetArticle(string noun)
@@ -124,7 +125,8 @@ namespace StaticAnalysis.HelpGenerator
         private string NormalizeNounName(string nounName)
         {
             var result = Regex.Replace(nounName, "([a-z])([A-Z])", "$1 $2");
-            return Regex.Replace(result, "VM([A-Z])", "VM $1");
+            result = Regex.Replace(result, "VM([A-Z])", "VM $1");
+            return Regex.Replace(result, "AD([A-Z])", "Active Directory $1");
         }
 
         private string NormalizeVerbName(string verb)
