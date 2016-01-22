@@ -66,6 +66,7 @@ namespace StaticAnalysis.HelpGenerator
             var cluAttributes = cmdlet.GetAttributes<CliCommandAliasAttribute>();
             result.NounName = cmdletAttribute.NounName;
             result.VerbName = cmdletAttribute.VerbName;
+            result.Synopsis = result.GetDefaultSynopsis();
             cluAttributes.ForEach(a => result.CluNames.Add(a.CommandName));
             var defaultParameterSetName = string.IsNullOrWhiteSpace(cmdletAttribute.DefaultParameterSetName)
                 ? "default"

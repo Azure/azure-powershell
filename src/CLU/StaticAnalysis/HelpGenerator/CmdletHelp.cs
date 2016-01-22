@@ -16,6 +16,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace StaticAnalysis.HelpGenerator
@@ -30,7 +32,9 @@ namespace StaticAnalysis.HelpGenerator
         private IList<CmdletHelpReference> _references = new List<CmdletHelpReference>();
         private IList<Type> _output = new List<Type>();
         private string _noun;
-
+        private string _synopsis = null;
+        public string ClassName { get; set; }
+        public string AssemblyName { get; set; }
         public string NounName
         {
             get
@@ -81,5 +85,61 @@ namespace StaticAnalysis.HelpGenerator
         public IList<ExampleHelp> Examples {  get { return _examples;} } 
 
         public IList<CmdletHelpReference> References { get { return _references; } }
+
+        public string GetDefaultSynopsis()
+        {
+            var result = new StringBuilder();
+            if (!string.IsNullOrWhiteSpace(VerbName) && !string.IsNullOrWhiteSpace(NounName))
+            {
+                string noun = NormalizeNounName(NounName);
+                if (string.Equals("Get", VerbName, StringComparison.OrdinalIgnoreCase))
+                {
+                    result.Append($"Get {noun} details or list matching {GetPlural(noun)}.");
+                }
+                else
+                {
+                    result.Append($"{NormalizeVerbName(VerbName)} {GetArticle(noun)} {noun}.");
+                }
+            }
+
+            return result.ToString();
+        }
+
+        private object GetPlural(string noun)
+        {
+            return noun.EndsWith("y") ? $"{noun.Substring(0, noun.Length - 1)}" : $"{noun}s";
+        }
+
+        private string GetArticle(string noun)
+        {
+            return (noun.StartsWith("a", StringComparison.OrdinalIgnoreCase) ||
+             noun.StartsWith("e", StringComparison.OrdinalIgnoreCase) ||
+             noun.StartsWith("i", StringComparison.OrdinalIgnoreCase) ||
+             noun.StartsWith("o", StringComparison.OrdinalIgnoreCase) ||
+             noun.StartsWith("u", StringComparison.OrdinalIgnoreCase))
+                ? "an"
+                : "a";
+        }
+
+        private string NormalizeNounName(string nounName)
+        {
+            var result = Regex.Replace(nounName, "([a-z])([A-Z])", "$1 $2");
+            return Regex.Replace(result, "VM([A-Z])", "VM $1");
+        }
+
+        private string NormalizeVerbName(string verb)
+        {
+            var result = verb;
+            if (string.Equals("New", VerbName, StringComparison.OrdinalIgnoreCase))
+            {
+                result = "Create";
+            }
+
+            if (string.Equals("Set", VerbName, StringComparison.OrdinalIgnoreCase))
+            {
+                result = "Update";
+            }
+            return result;
+        }
     }
 }
