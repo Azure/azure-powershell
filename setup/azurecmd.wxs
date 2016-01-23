@@ -6,8 +6,6 @@
   <?define caSourceDir="$(var.SolutionDir)setup\bin\$(var.Configuration)" ?>
 
   <?define version="1.1.0" ?>
-  <?define versionedStartMenuFolder="Microsoft Azure" ?>
-  <?define staleStartMenuFolder="Windows Azure" ?>
 
   <Product Id="*"
            Name="$(var.productName)"
@@ -63,10 +61,6 @@
           </Directory>
         </Directory>
       </Directory>
-      <Directory Id="ProgramMenuFolder">
-        <Directory Id="AzureSdkMenu" Name="$(var.versionedStartMenuFolder)"/>
-        <Directory Id="StaleAzureSdkMenu" Name="$(var.staleStartMenuFolder)"/>
-      </Directory>
     </Directory>
 
     <Property Id="POWERSHELLPATH">
@@ -97,40 +91,16 @@
       </Component>
     </DirectoryRef>
 
-    <DirectoryRef Id="AzureSdkMenu">
-      <Component Id="AzureSdkShortcut" Guid="A9B58A22-F746-451D-8840-F887D8014C3C">
-        <Shortcut Id="AzureSdkStartMenuShortcut"
-                  Name="Microsoft Azure PowerShell"
-                  Description="Microsoft PowerShell cmdlets"
-                  Target="[POWERSHELLPATH]\powershell.exe"
-                  Arguments="-NoExit -ExecutionPolicy Bypass -File &quot;[PowerShellFolder]ServiceManagement\Azure\Services\ShortcutStartup.ps1&quot;"/>
-        <RemoveFolder Id="AzureSdkMenu" On="uninstall"/>
-        <RemoveFile Id="RemoveStaleFiles" Directory="StaleAzureSdkMenu" Name="Windows Azure PowerShell.lnk" On="both"/>
-        <RegistryValue Root="HKCU" Key="SOFTWARE\Microsoft\Microsoft SDKs\WindowsAzure\$(var.version)" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
-      </Component>
-    </DirectoryRef>
-
     <Feature Id="azurecmd" Title="Microsoft Azure PowerShell" Level="1" Description="Windows PowerShell commandlets">
       <ComponentGroupRef Id="azurecmdfiles" />
       <ComponentRef Id="PSModulePath.System" />
-      <ComponentRef Id="AzureSdkShortcut" />
       <ComponentRef Id="AzureSdkExecutionPolicyScript" />
       <ComponentRef Id="AzureSdkRemoveModulesScript" />
    </Feature>
 
     <Binary Id="CustomActions" SourceFile="$(var.caSourceDir)\Microsoft.WindowsAzure.Setup.CA.dll"/>
-    <CustomAction Id="UpdatePSShortcut" BinaryKey="CustomActions" DllEntry="UpdatePSShortcut" Execute ="deferred" Impersonate="no"/>
-    <CustomAction Id="SetCustomActionDataValue" Return="check" Property="UpdatePSShortcut"
-                     Value="ShortcutPath=[AzureSdkMenu]Microsoft Azure PowerShell.lnk;DefaultShortcutPath=[ProgramMenuFolder]System Tools\Windows PowerShell.lnk" />
     <CustomAction Id="SetExecutionPolicy" Property="POWERSHELLEXE" ExeCommand="-NoLogo -NoProfile -WindowStyle Hidden -NonInteractive -ExecutionPolicy Bypass -Command &quot;. \&quot;[PowerShellFolder]SetExecutionPolicy.ps1\&quot;&quot;" Execute="deferred" Impersonate="no" Return="check"/>
     <CustomAction Id="RemoveGalleryModules" Property="POWERSHELLEXE" ExeCommand="-NoLogo -NoProfile -WindowStyle Hidden -NonInteractive -ExecutionPolicy Bypass -Command &quot;. \&quot;[PowerShellFolder]RemoveGalleryModules.ps1\&quot;&quot;" Execute="deferred" Impersonate="no" Return="check"/>
-
-    <InstallExecuteSequence>
-      <Custom Action="SetCustomActionDataValue" After="CreateShortcuts">NOT Installed</Custom>
-      <Custom Action="RemoveGalleryModules" After="SetCustomActionDataValue">NOT Installed</Custom>
-      <Custom Action="UpdatePSShortcut" After="RemoveGalleryModules">NOT Installed</Custom>
-      <Custom Action="SetExecutionPolicy" After="UpdatePSShortcut">NOT Installed</Custom>
-    </InstallExecuteSequence>
 
     <WixVariable Id="WixUILicenseRtf" Value="$(var.ProjectDir)\media\License.rtf" />
     <UIRef Id="WixUI_Minimal" />
