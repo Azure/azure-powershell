@@ -386,9 +386,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 }
                 catch (AadAuthenticationException)
                 {
-                    WriteWarningMessage(string.Format("Could not authenticate user account {0} with tenant {1}.  " +
-                       "Subscriptions in this tenant will not be listed. Please login again using Login-AzureRmAccount " +
-                       "to view the subscriptions in this tenant.", _profile.Context.Account, tenant));
+                    WriteWarningMessage(string.Format(
+                        Microsoft.Azure.Commands.Profile.Properties.Resources.UnableToLogin, 
+                        _profile.Context.Account, 
+                        tenant));
                 }
 
             }
@@ -576,11 +577,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 {
                     result =
                         account.GetPropertyAsArray(AzureAccount.Property.Tenants)
-                            .Select( ti => {
+                            .Select(ti =>
+                            {
                                 var tenant = new AzureTenant();
-                                
+
                                 Guid guid;
-                                if(Guid.TryParse(ti, out guid))
+                                if (Guid.TryParse(ti, out guid))
                                 {
                                     tenant.Id = guid;
                                     tenant.Domain = AccessTokenExtensions.GetDomain(account.Id);
@@ -593,8 +595,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                                 return tenant;
                             }).ToList();
                 }
-                
-             }
+                if(!result.Any())
+                {
+                    throw;
+                }
+
+            }
 
             return result;
         }
@@ -640,7 +646,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 WarningLog(message);
             }
         }
-
+        
         private static AzureTenant CreateTenantFromString(string tenantOrDomain, string accessTokenTenantId)
         {
             AzureTenant result = new AzureTenant();
