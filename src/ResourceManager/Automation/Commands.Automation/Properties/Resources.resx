@@ -429,4 +429,14 @@
   <data name="ConfigurationDataShouldNotBeInJobParameters" xml:space="preserve">
     <value>ConfigurationData cannot be part of the job parameters. You can specify the ConfigurationData using the {0} switch</value>
   </data>
+  <data name="JobCompletionMaxWaitReached" xml:space="preserve">
+    <value>Job completion maximum wait time reached.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="JobProgressState" xml:space="preserve">
+    <value>"Job progress state : Id {0}, state {1}, time {2}"</value>
+  </data>
+  <data name="JobTerminalState" xml:space="preserve">
+    <value>"Job terminal state : Id {0}, state {1}, time {2}"</value>
+  </data>
 </root>

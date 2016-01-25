@@ -241,6 +241,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         JobStreamRecord GetJobStreamRecord(string resourceGroupName, string automationAccountName, Guid jobId, string jobStreamId);
 
+        object GetJobStreamRecordAsPsObject(string resourceGroupName, string automationAccountName, Guid jobId, string jobStreamId);
+
         #endregion
 
         #region Certificates
