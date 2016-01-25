@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Updates current Vault context.
         /// </summary>
         /// <param name="arsVaultCreds">ARS Vault credentials</param>
-        public static void UpdateCurrentVaultContext(ARSVaultCreds arsVaultCreds)
+        public static void UpdateCurrentVaultContext(ASRVaultCreds arsVaultCreds)
         {
             object updateVaultContextOneAtATime = new object();
             lock (updateVaultContextOneAtATime)

@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         "Microsoft.StyleCop.CSharp.MaintainabilityRules",
         "SA1401:FieldsMustBePrivate",
         Justification = "For Resource Credentials.")]
-        public static ARSVaultCreds arsVaultCreds = new ARSVaultCreds();
+        public static ASRVaultCreds arsVaultCreds = new ASRVaultCreds();
 
         /// <summary>
         /// Recovery Services client.
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                         : appSettings.Settings["ProviderNamespace"].Value;
                 }
 
-                Utilities.UpdateCurrentVaultContext(new ARSVaultCreds()
+                Utilities.UpdateCurrentVaultContext(new ASRVaultCreds()
                 {
                     ResourceNamespace = resourceNamespace,
                     ARMResourceType = resourceType

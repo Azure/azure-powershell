@@ -53,20 +53,19 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             this.WriteVerbose("Vault Settings File path: " + this.Path);
 
             ASRVaultCreds asrVaultCreds = null;
-            ARSVaultCreds arsVaultCreds = null;
 
             if (File.Exists(this.Path))
             {
                 try
                 {
-                    var serializer = new DataContractSerializer(typeof(ARSVaultCreds));
+                    var serializer = new DataContractSerializer(typeof(ASRVaultCreds));
                     using (var s = new FileStream(
                         this.Path,
                         FileMode.Open,
                         FileAccess.Read,
                         FileShare.Read))
                     {
-                        arsVaultCreds = (ARSVaultCreds)serializer.ReadObject(s);
+                        asrVaultCreds = (ASRVaultCreds)serializer.ReadObject(s);
                     }
                 }
                 catch (XmlException xmlException)
@@ -76,34 +75,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 }
                 catch (SerializationException serializationException)
                 {
-                    try
-                    {
-                        // moved here as ASR Vault is short lived
-                        var serializer = new DataContractSerializer(typeof(ASRVaultCreds));
-                        using (var s = new FileStream(
-                            this.Path,
-                            FileMode.Open,
-                            FileAccess.Read,
-                            FileShare.Read))
-                        {
-                            asrVaultCreds = (ASRVaultCreds)serializer.ReadObject(s);
-                        }
-                    }
-                    catch
-                    {
-                        throw new SerializationException(
-                            string.Format(Properties.Resources.InvalidXml, serializationException));
-                    }
-                }
-                if (null == asrVaultCreds)
-                {
-                    // Copy ars to asr
-                    asrVaultCreds = new ASRVaultCreds();
-                    asrVaultCreds.ResourceName = arsVaultCreds.ResourceName;
-                    asrVaultCreds.ResourceGroupName = arsVaultCreds.ResourceGroupName;
-                    asrVaultCreds.ResourceNamespace = arsVaultCreds.ResourceNamespace;
-                    asrVaultCreds.ARMResourceType = arsVaultCreds.ARMResourceType;
-                    asrVaultCreds.ChannelIntegrityKey = arsVaultCreds.ChannelIntegrityKey;
+                    throw new SerializationException(
+                        string.Format(Properties.Resources.InvalidXml, serializationException));
                 }
             }
             else

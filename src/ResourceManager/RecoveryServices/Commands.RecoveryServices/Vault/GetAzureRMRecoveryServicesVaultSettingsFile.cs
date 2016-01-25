@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
 
             // Generate file.
-            ARSVaultCreds vaultCreds = RecoveryServicesClient.GenerateVaultCredential(
+            ASRVaultCreds vaultCreds = RecoveryServicesClient.GenerateVaultCredential(
                                             cert,
                                             this.Vault,
                                             site);
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             // write the content to a file.
             VaultSettingsFilePath output = new VaultSettingsFilePath()
             {
-                FilePath = Utilities.WriteToFile<ARSVaultCreds>(vaultCreds, filePath, fileName)
+                FilePath = Utilities.WriteToFile<ASRVaultCreds>(vaultCreds, filePath, fileName)
             };
 
             // print the path to the user.

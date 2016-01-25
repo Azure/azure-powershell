@@ -362,19 +362,19 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         "Microsoft.StyleCop.CSharp.MaintainabilityRules",
         "SA1402:FileMayOnlyContainASingleClass",
         Justification = "Keeping all contracts together.")]
-    public class ARSVaultCreds : VaultCreds
+    public class ASRVaultCreds : VaultCreds
     {
         #region Constructores
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ARSVaultCreds"/> class.
+        /// Initializes a new instance of the <see cref="ASRVaultCreds"/> class.
         /// </summary>
-        public ARSVaultCreds()
+        public ASRVaultCreds()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ARSVaultCreds"/> class.
+        /// Initializes a new instance of the <see cref="ASRVaultCreds"/> class.
         /// </summary>
         /// <param name="subscriptionId">subscription Id</param>
         /// <param name="resourceName">resource name</param>
@@ -384,7 +384,7 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// <param name="resourceGroupName">cloud service name</param>
         /// <param name="siteId">custom site Id</param>
         /// <param name="siteName">custom site name</param>
-        public ARSVaultCreds(
+        public ASRVaultCreds(
             string subscriptionId,
             string resourceName,
             string managementCert,
