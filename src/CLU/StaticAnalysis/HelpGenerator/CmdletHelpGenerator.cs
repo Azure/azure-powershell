@@ -22,7 +22,7 @@ using Microsoft.Azure.Commands.Utilities.Common;
 
 namespace StaticAnalysis.HelpGenerator
 {
-    public class CmdletHelpGenerator : IAssemblyValidator
+    public class CmdletHelpGenerator : IAssemblyActor
     {
         private IDictionary<string, CmdletHelp> _helpData = new Dictionary<string, CmdletHelp>(StringComparer.OrdinalIgnoreCase);
         private Dictionary<Type, IList<string>> cmdletOutputTypes = new Dictionary<Type, IList<string>>();
@@ -68,7 +68,7 @@ namespace StaticAnalysis.HelpGenerator
             get { return "Help Validator"; }
         }
 
-        public void Validate(string baseDirectory, string assemblyIdentity)
+        public void ExecuteAssemblyAction(string baseDirectory, string assemblyIdentity)
         {
             var helpDirectory = Path.Combine(Directory.GetCurrentDirectory(), "..", assemblyIdentity, "content",
                 "help");

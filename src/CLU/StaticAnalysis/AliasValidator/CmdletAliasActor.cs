@@ -21,11 +21,11 @@ using System.Threading.Tasks;
 
 namespace StaticAnalysis.AliasValidator
 {
-    public class CmdletAliasValidator : IAssemblyValidator
+    public class CmdletAliasActor : IAssemblyActor
     {
         public IToolsLogger Logger { get; set; }
         public string Name { get { return "CLU Alias Validator"; } }
-        public void Validate(string baseDirectory, string assemblyIdentity)
+        public void ExecuteAssemblyAction(string baseDirectory, string assemblyIdentity)
         {
             foreach (var cmdlet in Assembly.Load(new AssemblyName(assemblyIdentity)).GetCmdletTypes())
             {

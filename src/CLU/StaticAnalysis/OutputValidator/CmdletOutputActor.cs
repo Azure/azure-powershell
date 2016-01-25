@@ -22,13 +22,13 @@ using Newtonsoft.Json;
 
 namespace StaticAnalysis.OutputValidator
 {
-    public class CmdletOutputValidator : IAssemblyValidator
+    public class CmdletOutputActor : IAssemblyActor
     {
         public IToolsLogger Logger { get; set; }
 
         public string Name { get { return "Cmdlet Output Validator"; } }
 
-        public void Validate(string baseDirectory, string assemblyIdentity)
+        public void ExecuteAssemblyAction(string baseDirectory, string assemblyIdentity)
         {
             var formatPath = Path.Combine(baseDirectory, $"{assemblyIdentity}.format.ps1xml");
             bool validateFormat = File.Exists(formatPath);

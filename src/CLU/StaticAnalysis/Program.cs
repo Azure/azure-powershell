@@ -38,10 +38,10 @@ namespace StaticAnalysis
             "Commands.ResourceManager.Cmdlets"
         };
 
-        public static readonly IAssemblyValidator[] Validators = new IAssemblyValidator[]
+        public static readonly IAssemblyActor[] Actors = new IAssemblyActor[]
         {
-            new CmdletOutputValidator(),
-            new CmdletAliasValidator(),
+            new CmdletOutputActor(),
+            new CmdletAliasActor(),
             new CmdletHelpGenerator()
         };
 
@@ -76,11 +76,11 @@ namespace StaticAnalysis
             {
                 Logger.Decorator.AddDecorator(r => r.Assembly = assemblyIdentity, "Assembly");
                 var moduleDirectory = Path.Combine(cluDirectory, assemblyIdentity);
-                foreach (var  validator in Validators)
+                foreach (var  validator in Actors)
                 {
                     Logger.Decorator.AddDecorator(r => r.Validator =  validator.Name, "Validator");
                     validator.Logger = Logger;
-                    validator.Validate(moduleDirectory, assemblyIdentity);
+                    validator.ExecuteAssemblyAction(moduleDirectory, assemblyIdentity);
                     Logger.Decorator.Remove("Validator");
                 }
                 Logger.Decorator.Remove("Assembly");

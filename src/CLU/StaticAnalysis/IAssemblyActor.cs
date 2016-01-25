@@ -20,7 +20,7 @@ using System.Threading.Tasks;
 
 namespace StaticAnalysis
 {
-    public interface IAssemblyValidator
+    public interface IAssemblyActor
     {
         /// <summary>
         /// The logger where validation records should be written
@@ -37,6 +37,6 @@ namespace StaticAnalysis
         /// </summary>
         /// <param name="baseDirectory">The directory containing the assembly</param>
         /// <param name="assemblyIdentity">The assembly identity (name without extension)</param>
-        void Validate(string baseDirectory, string assemblyIdentity);
+        void ExecuteAssemblyAction(string baseDirectory, string assemblyIdentity);
     }
 }
