@@ -46,19 +46,19 @@ function CreateRunbook
     param([string] $runbookPath, [boolean] $byName=$false, [string[]] $tag, [string] $description)
 
     $runbookName = gci $runbookPath | %{$_.BaseName}
-    $runbook = Get-AzureAutomationRunbook $accountName | where {$_.Name -eq $runbookName} 
+    $runbook = Get-AzureRmAutomationRunbook $accountName | where {$_.Name -eq $runbookName} 
     if ($runbook.Count -eq 1)
     {
-        Remove-AzureAutomationRunbook $accountName -Name $runbookName -Force
+        Remove-AzureRmAutomationRunbook $accountName -Name $runbookName -Force
     }
 
     if(!$byName)
     {
-        return New-AzureAutomationRunbook $accountName -Path $runbookPath -Tag $tag -Description $description
+        return New-AzureRmAutomationRunbook $accountName -Path $runbookPath -Tag $tag -Description $description
     }
     else 
     {
-        return New-AzureAutomationRunbook $accountName -Name $runbookName -Tag $tag -Description $description
+        return New-AzureRmAutomationRunbook $accountName -Name $runbookName -Tag $tag -Description $description
     }
 }
 
@@ -81,7 +81,7 @@ function WaitForJobStatus
     {
         Wait-Seconds $interval
         $timeElapse = $timeElapse + $interval
-        $job = Get-AzureAutomationJob -AutomationAccount $accountName -Id $Id
+        $job = Get-AzureRmAutomationJob -AutomationAccount $accountName -Id $Id
         if($job.Status -eq $Status)
         {
             break
@@ -104,19 +104,19 @@ function Test-RunbookWithParameter
     param([string] $runbookPath, [HashTable] $parameters, [int]$expectedResult)
 
     #Setup
-    $automationAccount = Get-AzureAutomationAccount -Name $accountName
+    $automationAccount = Get-AzureRmAutomationAccount -Name $accountName
     Assert-NotNull $automationAccount "Automation account $accountName does not exist."
 
     $runbook = CreateRunbook  $runbookPath
     Assert-NotNull $runbook  "runBook $runbookPath does not import successfully."
-    $automationAccount | Publish-AzureAutomationRunbook -Name $runbook.Name
+    $automationAccount | Publish-AzureRmAutomationRunbook -Name $runbook.Name
 
     #Test
-    $job = $automationAccount | Start-AzureAutomationRunbook -Name $runbook.Name -Parameters $parameters
+    $job = $automationAccount | Start-AzureRmAutomationRunbook -Name $runbook.Name -Parameters $parameters
     WaitForJobStatus -Id $job.Id -Status "Completed"
-    $jobOutput = $automationAccount | Get-AzureAutomationJobOutput -Id $job.Id -Stream Output
-    $automationAccount | Remove-AzureAutomationRunbook -Name $runbook.Name -Force 
-    Assert-Throws { $automationAccount | Get-AzureAutomationRunbook -Name $runbook.Name}
+    $jobOutput = $automationAccount | Get-AzureRmAutomationJobOutput -Id $job.Id -Stream Output
+    $automationAccount | Remove-AzureRmAutomationRunbook -Name $runbook.Name -Force 
+    Assert-Throws { $automationAccount | Get-AzureRmAutomationRunbook -Name $runbook.Name}
 }
 
 <#
@@ -127,20 +127,20 @@ function Test-AutomationStartAndStopRunbook
 {
     param([string] $runbookPath)
         
-	$automationAccount = Get-AzureAutomationAccount -Name $accountName
+	$automationAccount = Get-AzureRmAutomationAccount -Name $accountName
     Assert-NotNull $automationAccount "Automation account $accountName does not exist."
 
     $runbook = CreateRunbook $runbookPath
     Assert-NotNull $runbook  "runBook $runbookPath does not import successfully."
-    $automationAccount | Publish-AzureAutomationRunbook -Name $runbook.Name
+    $automationAccount | Publish-AzureRmAutomationRunbook -Name $runbook.Name
     
     #Test
-    $job = Start-AzureAutomationRunbook -Name $runbook.Name -AutomationAccountName $accountName
+    $job = Start-AzureRmAutomationRunbook -Name $runbook.Name -AutomationAccountName $accountName
     WaitForJobStatus -Id $job.Id -Status "Running"
-    $automationAccount | Stop-AzureAutomationJob -Id $job.Id
+    $automationAccount | Stop-AzureRmAutomationJob -Id $job.Id
     WaitForJobStatus -Id $job.Id -Status "Stopped"
-    $automationAccount | Remove-AzureAutomationRunbook -Name $runbook.Name  -Force 
-    Assert-Throws { $automationAccount | Get-AzureAutomationRunbook -Name $runbook.Name}
+    $automationAccount | Remove-AzureRmAutomationRunbook -Name $runbook.Name  -Force 
+    Assert-Throws { $automationAccount | Get-AzureRmAutomationRunbook -Name $runbook.Name}
 }
 
 <#
@@ -154,27 +154,27 @@ function Test-AutomationPublishAndEditRunbook
     $runbook = CreateRunbook $runbookPath $true
 
     #Publish Runbook
-    Publish-AzureAutomationRunbook $accountName -Name $runbook.Name
-	$publishedRunbook = Get-AzureAutomationRunbook  $accountName -Name $runbook.Name
+    Publish-AzureRmAutomationRunbook $accountName -Name $runbook.Name
+	$publishedRunbook = Get-AzureRmAutomationRunbook  $accountName -Name $runbook.Name
 	$runbookState = "Published"
     Assert-AreEqual $publishedRunbook.State $runbookState "Runbook should be in $runbookState state"
-    $publishedRunbookDefn = Get-AzureAutomationRunbookDefinition $accountName -Name $runbook.Name
+    $publishedRunbookDefn = Get-AzureRmAutomationRunbookDefinition $accountName -Name $runbook.Name
     
     #Edit Runbook
-    Set-AzureAutomationRunbookDefinition $accountName -Name $runbook.Name -Path $runbookPath -Overwrite
-    $runbook = Get-AzureAutomationRunbook  $accountName -Name $runbook.Name
+    Set-AzureRmAutomationRunbookDefinition $accountName -Name $runbook.Name -Path $runbookPath -Overwrite
+    $runbook = Get-AzureRmAutomationRunbook  $accountName -Name $runbook.Name
 	$runbookState = "Edit"
     Assert-AreEqual $runbook.State $runbookState "Runbook should be in $runbookState state"
-    $editedRunbookDefn = Get-AzureAutomationRunbookDefinition $accountName -Name $runbook.Name -Slot "Draft"
+    $editedRunbookDefn = Get-AzureRmAutomationRunbookDefinition $accountName -Name $runbook.Name -Slot "Draft"
     Assert-AreNotEqual $editedRunbookDefn.Content $publishedRunbookDefn.Content "Old content and edited content of the runbook shouldn't be equal"
     
-    Assert-Throws {Set-AzureAutomationRunbookDefinition $accountName -Name $runbook.Name -Path $editRunbookPath -PassThru -ErrorAction Stop} 
-    Set-AzureAutomationRunbookDefinition $accountName -Name $runbook.Name -Path $editRunbookPath -Overwrite
-    $editedRunbookDefn2 = Get-AzureAutomationRunbookDefinition $accountName -Name $runbook.Name -Slot "Draft"
+    Assert-Throws {Set-AzureRmAutomationRunbookDefinition $accountName -Name $runbook.Name -Path $editRunbookPath -PassThru -ErrorAction Stop} 
+    Set-AzureRmAutomationRunbookDefinition $accountName -Name $runbook.Name -Path $editRunbookPath -Overwrite
+    $editedRunbookDefn2 = Get-AzureRmAutomationRunbookDefinition $accountName -Name $runbook.Name -Slot "Draft"
     Assert-AreNotEqual $editedRunbookDefn2.Content $editedRunbookDefn.Content "Old content and edited content of the runbook shouldn't be equal"
 
-    Remove-AzureAutomationRunbook $accountName -Name $runbook.Name -Force
-    Assert-Throws {Get-AzureAutomationRunbook $accountName -Name $runbook.Name}
+    Remove-AzureRmAutomationRunbook $accountName -Name $runbook.Name -Force
+    Assert-Throws {Get-AzureRmAutomationRunbook $accountName -Name $runbook.Name}
 
 }
 
@@ -187,56 +187,56 @@ function Test-AutomationConfigureRunbook
     param([string] $runbookPath)
     
     #Setup
-    $automationAccount = Get-AzureAutomationAccount -Name $accountName
+    $automationAccount = Get-AzureRmAutomationAccount -Name $accountName
     Assert-NotNull $automationAccount "Automation account $accountName does not exist."
     $runbook = CreateRunbook $runbookPath
     Assert-NotNull $runbook  "runbook ($runbookPath) isn't imported successfully."
-    Publish-AzureAutomationRunbook -Name $runbook.Name -AutomationAccountName $accountName
+    Publish-AzureRmAutomationRunbook -Name $runbook.Name -AutomationAccountName $accountName
     
     #Test
 
     #Change the runbook configuration
-    $automationAccount | Set-AzureAutomationRunbook -Name $runbook.Name -LogVerbose $true -LogProgress $false
-    $runbook = $automationAccount | Get-AzureAutomationRunbook -Name $runbook.Name
+    $automationAccount | Set-AzureRmAutomationRunbook -Name $runbook.Name -LogVerbose $true -LogProgress $false
+    $runbook = $automationAccount | Get-AzureRmAutomationRunbook -Name $runbook.Name
     Assert-NotNull $runbook "Runbook shouldn't be Null"
     Assert-AreEqual $true $runbook.LogVerbose "Log Verbose mode should be true."
     Assert-AreEqual $false $runbook.LogProgress "Log Progress mode should be false."
 
     #Start runbook and wait for job complete
-    $job = $automationAccount | Start-AzureAutomationRunbook -Name $runbook.Name
+    $job = $automationAccount | Start-AzureRmAutomationRunbook -Name $runbook.Name
     WaitForJobStatus -Id $job.Id -Status "Completed"
 
     #Check job output streams
-    $jobOutputs = $automationAccount | Get-AzureAutomationJobOutput -Id $job.Id -Stream "Output"
+    $jobOutputs = $automationAccount | Get-AzureRmAutomationJobOutput -Id $job.Id -Stream "Output"
     Assert-AreEqual 1 $jobOutputs.Count
     AssertContains $jobOutputs[0].Text "output message" "The output stream is wrong."
     #Verify that verbose streams are logged
-    $jobVerboseOutputs = Get-AzureAutomationJobOutput $accountName -Id $job.Id -Stream "Verbose"
+    $jobVerboseOutputs = Get-AzureRmAutomationJobOutput $accountName -Id $job.Id -Stream "Verbose"
     Assert-AreEqual 1 $jobVerboseOutputs.Count
     AssertContains $jobVerboseOutputs[0].Text "verbose message" "The verbose stream is wrong."
     #Verify that progress stream isn't logged
-    $jobProgressOutputs = Get-AzureAutomationJobOutput -AutomationAccountName $accountName -Id $job.Id -Stream "Progress"
+    $jobProgressOutputs = Get-AzureRmAutomationJobOutput -AutomationAccountName $accountName -Id $job.Id -Stream "Progress"
     Assert-AreEqual 0 $jobProgressOutputs.Count
     
     #Change the runbook configuration again and start the runbook
-    Set-AzureAutomationRunbook $accountName -Name $runbook.Name -LogVerbose $false -LogProgress $true
-    $job = Start-AzureAutomationRunbook $accountName -Name $runbook.Name
+    Set-AzureRmAutomationRunbook $accountName -Name $runbook.Name -LogVerbose $false -LogProgress $true
+    $job = Start-AzureRmAutomationRunbook $accountName -Name $runbook.Name
     WaitForJobStatus -Id $job.Id -Status "Completed"
     #Verify that progress stream is logged
-    $jobProgressOutputs = Get-AzureAutomationJobOutput $accountName -Id $job.Id -Stream "Progress"
+    $jobProgressOutputs = Get-AzureRmAutomationJobOutput $accountName -Id $job.Id -Stream "Progress"
     Assert-AreNotEqual 0 $jobProgressOutputs.Count
     Assert-AreEqual $jobProgressOutputs[0].Type "Progress"
     #Verify that verbose streams aren't logged
-    $jobVerboseOutputs = Get-AzureAutomationJobOutput $accountName -Id $job.Id -Stream "Verbose"
+    $jobVerboseOutputs = Get-AzureRmAutomationJobOutput $accountName -Id $job.Id -Stream "Verbose"
     Assert-AreEqual 0 $jobVerboseOutputs.Count
     
     #Check whether the total number of jobs for the runbook is correct
-    $jobs = Get-AzureAutomationJob $accountName -RunbookName $runbook.Name
+    $jobs = Get-AzureRmAutomationJob $accountName -RunbookName $runbook.Name
     Assert-AreEqual 2 $jobs.Count "There should be 2 jobs in total for this runbook."
     
     #Remove runbook
-    $automationAccount | Remove-AzureAutomationRunbook -Name $runbook.Name -Force 
-    Assert-Throws {$automationAccount | Get-AzureAutomationRunbook -Name $runbook.Name}
+    $automationAccount | Remove-AzureRmAutomationRunbook -Name $runbook.Name -Force 
+    Assert-Throws {$automationAccount | Get-AzureRmAutomationRunbook -Name $runbook.Name}
 }
 
 <#
@@ -248,24 +248,24 @@ function Test-AutomationSuspendAndResumeJob
     param([string] $runbookPath)
     
     #Setup
-    $automationAccount = Get-AzureAutomationAccount $accountName
+    $automationAccount = Get-AzureRmAutomationAccount $accountName
     Assert-NotNull $automationAccount "Automation account $accountName does not exist."
     $runbook = CreateRunbook $runbookPath
     
     #Test
 
-    $automationAccount | Publish-AzureAutomationRunbook -Name $runbook.Name
+    $automationAccount | Publish-AzureRmAutomationRunbook -Name $runbook.Name
     #Start, suspend, and then resume job
-    $job = Start-AzureAutomationRunbook $accountName -Name $runbook.Name
+    $job = Start-AzureRmAutomationRunbook $accountName -Name $runbook.Name
     WaitForJobStatus -Id $job.Id -Status "Running"
-    Suspend-AzureAutomationJob $accountName -Id $job.Id
+    Suspend-AzureRmAutomationJob $accountName -Id $job.Id
     WaitForJobStatus -Id $job.Id -Status "Suspended"
-    $automationAccount | Resume-AzureAutomationJob -Id $job.Id
+    $automationAccount | Resume-AzureRmAutomationJob -Id $job.Id
     WaitForJobStatus -Id $job.Id -Status "Completed"
 
     #Remove runbook
-    Remove-AzureAutomationRunbook -AutomationAccountName $accountName -Name $runbook.Name -Force 
-    Assert-Throws {Get-AzureAutomationRunbook $accountName -Name $runbook.Name}
+    Remove-AzureRmAutomationRunbook -AutomationAccountName $accountName -Name $runbook.Name -Force 
+    Assert-Throws {Get-AzureRmAutomationRunbook $accountName -Name $runbook.Name}
 }
 
 <#
@@ -277,67 +277,67 @@ function Test-AutomationStartRunbookOnASchedule
     param([string] $runbookPath)
     
     #Setup
-    $automationAccount = Get-AzureAutomationAccount -Name $accountName
+    $automationAccount = Get-AzureRmAutomationAccount -Name $accountName
     $runbook = CreateRunbook $runbookPath
-    Publish-AzureAutomationRunbook $accountName -Name $runbook.Name
+    Publish-AzureRmAutomationRunbook $accountName -Name $runbook.Name
     
     #Test
 
     #Create one time schedule
     $oneTimeScheName = "oneTimeSchedule"
-    $schedule = Get-AzureAutomationSchedule $accountName | where {$_.Name -eq $oneTimeScheName} 
+    $schedule = Get-AzureRmAutomationSchedule $accountName | where {$_.Name -eq $oneTimeScheName} 
     if ($schedule.Count -eq 1)
     {
-        Remove-AzureAutomationSchedule $accountName -Name $oneTimeScheName -Force
+        Remove-AzureRmAutomationSchedule $accountName -Name $oneTimeScheName -Force
     }
     $startTime = (Get-Date).AddMinutes(7)
-    New-AzureAutomationSchedule $accountName -Name $oneTimeScheName -OneTime -StartTime $startTime
-    $oneTimeSchedule = Get-AzureAutomationSchedule $accountName -Name $oneTimeScheName
+    New-AzureRmAutomationSchedule $accountName -Name $oneTimeScheName -OneTime -StartTime $startTime
+    $oneTimeSchedule = Get-AzureRmAutomationSchedule $accountName -Name $oneTimeScheName
     Assert-NotNull $oneTimeSchedule "$oneTimeScheName doesn't exist!"
     
     #Create daily schedule
     $dailyScheName = "dailySchedule"
-    $schedule = Get-AzureAutomationSchedule $accountName | where {$_.Name -eq $dailyScheName} 
+    $schedule = Get-AzureRmAutomationSchedule $accountName | where {$_.Name -eq $dailyScheName} 
     if ($schedule.Count -eq 1)
     {
-        Remove-AzureAutomationSchedule $accountName -Name $dailyScheName -Force
+        Remove-AzureRmAutomationSchedule $accountName -Name $dailyScheName -Force
     }
     $startTime = (Get-Date).AddDays(1)
     $expiryTime = (Get-Date).AddDays(3)
-    New-AzureAutomationSchedule $accountName -Name $DailyScheName -StartTime $startTime -ExpiryTime $expiryTime -DayInterval 1
-    $dailySchedule = Get-AzureAutomationSchedule $accountName -Name $dailyScheName
+    New-AzureRmAutomationSchedule $accountName -Name $DailyScheName -StartTime $startTime -ExpiryTime $expiryTime -DayInterval 1
+    $dailySchedule = Get-AzureRmAutomationSchedule $accountName -Name $dailyScheName
     Assert-NotNull $dailySchedule "$dailyScheName doesn't exist!"
 
-    $runbook = Register-AzureAutomationScheduledRunbook $accountName -Name $runbook.Name -ScheduleName $oneTimeScheName
+    $runbook = Register-AzureRmAutomationScheduledRunbook $accountName -Name $runbook.Name -ScheduleName $oneTimeScheName
     Assert-AreEqual $oneTimeScheName $runbook.ScheduleNames "The runbook should be associated with $oneTimeScheName"
-    $runbook = Register-AzureAutomationScheduledRunbook $accountName -Name $runbook.Name -ScheduleName $dailyScheName
+    $runbook = Register-AzureRmAutomationScheduledRunbook $accountName -Name $runbook.Name -ScheduleName $dailyScheName
     Assert-True { $runbook.ScheduleNames -Contains $dailyScheName} "The runbook should be associated with $dailyScheName"
    
     #waiting for seven minutes
     Wait-Seconds 420 
-    $job = Get-AzureAutomationJob $accountName -Name $runbook.Name | where {$_.ScheduleName -eq $oneTimeScheName}
-	$jobSchedule = Get-AzureAutomationScheduledRunbook $accountName -RunbookName $runbook.Name -ScheduleName $oneTimeScheName
+    $job = Get-AzureRmAutomationJob $accountName -Name $runbook.Name | where {$_.ScheduleName -eq $oneTimeScheName}
+	$jobSchedule = Get-AzureRmAutomationScheduledRunbook $accountName -RunbookName $runbook.Name -ScheduleName $oneTimeScheName
 	Assert-AreEqual 1 $jobSchedule.Count
     Assert-AreEqual 1 $job.Count
     WaitForJobStatus -Id $job.Id -Status "Completed"
 
     #Edit schedule
     $description = "Daily Schedule Description"
-    Set-AzureAutomationSchedule $accountName -Name $dailyScheName -Description $description
-    $dailySchedule = Get-AzureAutomationSchedule $accountName -Name $dailyScheName
+    Set-AzureRmAutomationSchedule $accountName -Name $dailyScheName -Description $description
+    $dailySchedule = Get-AzureRmAutomationSchedule $accountName -Name $dailyScheName
     Assert-AreEqual $description $dailySchedule.Description
 
-    Unregister-AzureAutomationScheduledRunbook $accountName -Name $runbook.Name -ScheduleName $dailyScheName
-	$jobSchedule = Get-AzureAutomationScheduledRunbook $accountName -RunbookName $runbook.Name -ScheduleName $dailyScheName
+    Unregister-AzureRmAutomationScheduledRunbook $accountName -Name $runbook.Name -ScheduleName $dailyScheName
+	$jobSchedule = Get-AzureRmAutomationScheduledRunbook $accountName -RunbookName $runbook.Name -ScheduleName $dailyScheName
     Assert-Null $jobSchedule "The runbook shouldn't have an association with $dailyScheName"
 
     #Remove runbook and schedule
-    Remove-AzureAutomationSchedule $accountName -Name $oneTimeScheName -Force
-    Assert-Throws {$automationAccount | Get-AzureAutomationSchedule -Name $oneTimeScheName}
-    $automationAccount | Remove-AzureAutomationSchedule -Name $dailyScheName -Force
-    Assert-Throws {$automationAccount | Get-AzureAutomationSchedule -Name $dailyScheName}
-    Remove-AzureAutomationRunbook $accountName -Name $runbook.Name -Force
-    Assert-Throws {Get-AzureAutomationRunbook $accountName -Name $runbook.Name}
+    Remove-AzureRmAutomationSchedule $accountName -Name $oneTimeScheName -Force
+    Assert-Throws {$automationAccount | Get-AzureRmAutomationSchedule -Name $oneTimeScheName}
+    $automationAccount | Remove-AzureRmAutomationSchedule -Name $dailyScheName -Force
+    Assert-Throws {$automationAccount | Get-AzureRmAutomationSchedule -Name $dailyScheName}
+    Remove-AzureRmAutomationRunbook $accountName -Name $runbook.Name -Force
+    Assert-Throws {Get-AzureRmAutomationRunbook $accountName -Name $runbook.Name}
 }
 
 <#
@@ -356,8 +356,8 @@ function Test-AutomationStartUnpublishedRunbook
     Assert-NotNull $runbook "runBook $runbookPath does not import successfully."
     Assert-NotNull $runbook.Tags "Tags of the runbook shouldn't be Null."
     Assert-NotNull $runbook.Description "Description of the runbook shouldn't be Null."
-    Assert-Throws {Start-AzureAutomationRunbook $accountName -Name $runbook.Name -Parameters $runbookParameters -PassThru -ErrorAction Stop} 
+    Assert-Throws {Start-AzureRmAutomationRunbook $accountName -Name $runbook.Name -Parameters $runbookParameters -PassThru -ErrorAction Stop} 
     
-    Remove-AzureAutomationRunbook $accountName -Name $runbook.Name -Force 
-    Assert-Throws {Get-AzureAutomationRunbook $accountName -Name $runbook.Name -Parameters $runbookParameters -PassThru -ErrorAction Stop}
+    Remove-AzureRmAutomationRunbook $accountName -Name $runbook.Name -Force 
+    Assert-Throws {Get-AzureRmAutomationRunbook $accountName -Name $runbook.Name -Parameters $runbookParameters -PassThru -ErrorAction Stop}
 }
