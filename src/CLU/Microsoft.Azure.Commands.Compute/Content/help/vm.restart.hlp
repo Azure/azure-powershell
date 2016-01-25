@@ -1,32 +1,21 @@
+az vm restart
 
-Restart-AzureRmVM: Restarts an Azure virtual machine.
+Restart a VM.
 
+USAGE:
 
-The Restart-AzureRmVM cmdlet restarts an Azure virtual machine.
+az vm restart [--resourceGroupName] <resourceGroupName> [--name] <name>
 
+az vm restart [--id] <id> [--name] <name>
 
-Command syntax
-
-az vm restart [--resourcegroupname] <string> [--name] <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-az vm restart [--id] <string> [--name] <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-
-Parameters
-
---resourcegroupname
-Specifies the name of the resource group.
-
---name
-Specifies the name of the virtual machine to restart.
-
---informationaction
-
-
---informationvariable
-
+PARAMETERS:
 
 --id
+  [string] The identity of this resource. Resource identity is a Uri path that uniquely identifies the resource.
 
+--name
+  [string] The virtual machine name.
 
+--resourceGroupName
+  [string] The name of the resource group containing this resource
 

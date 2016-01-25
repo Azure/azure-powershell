@@ -1,8 +1,23 @@
-
-Get-AzureRMAppServicePlan
-
-
-Command syntax
-
 az appservice plan ls
+
+Get App Service Plan details.
+
+USAGE:
+
+az appservice plan ls 
+
+az appservice plan ls [[-g] <resourceGroupName>] [[-n] <name>]
+
+az appservice plan ls [-l] <location>
+
+PARAMETERS:
+
+-g (--group, --resourceGroupName)
+  [string] The name of the resource group containing this resource
+
+-l (--location)
+  [string] The region that will contain this resource.  Possible values include 'East US', 'North Europe', 'East Asia'
+
+-n (--name)
+  [string] The name of the app service plan.
 

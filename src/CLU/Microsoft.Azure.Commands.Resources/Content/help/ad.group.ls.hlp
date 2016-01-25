@@ -1,30 +1,20 @@
+az ad group ls
 
-Get-AzureRmADGroup: Filters active directory groups.
+Get Active Directory Group details.
 
+USAGE:
 
-This is the Description section
+az ad group ls [--objectId <objectId>]
 
-Filters active directory groups.
+az ad group ls -s <searchString>
 
+az ad group ls --objectId <objectId>
 
-Command syntax
+PARAMETERS:
 
-az activedirectory resourcemanager group ls [--objectid <Guid>] [--profile <AzureProfile>]
+--objectId (--id)
+  [guid] The group id.
 
-az activedirectory resourcemanager group ls --searchstring <string> [--profile <AzureProfile>]
-
-az activedirectory resourcemanager group ls [--objectid <Guid>] [--profile <AzureProfile>]
-
-
-Parameters
-
---objectid
-Object id of the group.
-
---profile
-
-
---searchstring
-The group display name
-
+-s (--searchString)
+  [string] The user or group name.
 

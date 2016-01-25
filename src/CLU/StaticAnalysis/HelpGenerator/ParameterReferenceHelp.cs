@@ -15,6 +15,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management.Automation;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace StaticAnalysis.HelpGenerator
@@ -24,5 +26,39 @@ namespace StaticAnalysis.HelpGenerator
         public ParameterHelp Parameter { get; set; }
         public int? Order { get; set; }
         public bool Required { get; set; }
+
+        public override string ToString()
+        {
+            StringBuilder builder = new StringBuilder();
+            if (!Required)
+            {
+                builder.Append("[");
+            }
+            if (Order.HasValue && Parameter.Type != typeof(SwitchParameter))
+            {
+                builder.Append("[");
+            }
+            builder.Append("-");
+            if (Parameter.PreferredName.Length > 1)
+            {
+                builder.Append("-");
+            }
+            builder.Append(Parameter.PreferredName.ToCamelCase());
+            if (Order.HasValue && Parameter.Type != typeof(SwitchParameter))
+            {
+                builder.Append("]");
+            }
+            if (!Parameter.IsSwitch)
+            {
+                builder.Append($" <{Parameter.Name.ToCamelCase()}>");
+            }
+            if (!Required)
+            {
+                builder.Append("]");
+            }
+
+            return builder.ToString();
+
+        }
     }
 }

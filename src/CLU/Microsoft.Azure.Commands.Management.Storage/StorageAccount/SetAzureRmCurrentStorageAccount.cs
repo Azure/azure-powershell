@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         private const string ResourceNameParameterSet = "UsingResourceGroupAndNameParameterSet";
 
         [Parameter(Mandatory=true, ParameterSetName=StorageContextParameterSet, ValueFromPipeline=true, 
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = true, HelpMessage = "The Storage context for the storage account.")]
         [ValidateNotNull]
         public AzureStorageContext Context { get; set; }
 

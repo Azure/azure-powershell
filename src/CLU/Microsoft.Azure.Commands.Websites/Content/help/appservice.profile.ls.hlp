@@ -1,8 +1,29 @@
-
-Get-AzureRMWebAppPublishingProfile
-
-
-Command syntax
-
 az appservice profile ls
+
+Get Web App Publishing Profile details.
+
+USAGE:
+
+az appservice profile ls [--outputFile] <outputFile> [[--format] <format>]
+
+az appservice profile ls [-g] <resourceGroupName> [-n] <name> [--outputFile] <outputFile> [[--format] <format>]
+
+az appservice profile ls [--webApp] <webApp> [--outputFile] <outputFile> [[--format] <format>]
+
+PARAMETERS:
+
+--format
+  [string] The format of the profile. Allowed values are [WebDeploy|FileZilla3|Ftp]. Default value is WebDeploy
+
+-g (--group, --resourceGroupName)
+  [string] The name of the resource group containing this resource
+
+-n (--name)
+  [string] The name of the web app.
+
+--outputFile
+  [string] The file the publishing profile will we saved as
+
+--webApp
+  [object] The web app object
 

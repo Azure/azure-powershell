@@ -1,35 +1,24 @@
+az vm set
 
-Set-AzureRmVM: Marks a virtual machine as generalized.
+Update a VM.
 
+USAGE:
 
-The Set-AzureRmVM cmdlet marks a virtual machine as generalized. Before you run this cmdlet, log on to the virtual machine and use Sysprep to prepare the hard disk.
+az vm set [--resourceGroupName] <resourceGroupName> [--name] <name> --generalized
 
+az vm set [--id] <id> [--name] <name> --generalized
 
-Command syntax
-
-az vm set [--resourcegroupname] <string> [--name] <string> [--generalized] [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-az vm set [--id] <string> [--name] <string> [--generalized] [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-
-Parameters
-
---resourcegroupname
-Specifies the name of the resource group of the virtual machine.
-
---name
-Specifies the name of the virtual machine on which this cmdlet operates.
+PARAMETERS:
 
 --generalized
-Indicates that this cmdlet marks a virtual machine as generalized.
-
---informationaction
-
-
---informationvariable
-
+  [flag] To generalize virtual machine.
 
 --id
+  [string] The identity of this resource. Resource identity is a Uri path that uniquely identifies the resource.
 
+--name
+  [string] The virtual machine name.
 
+--resourceGroupName
+  [string] The name of the resource group containing this resource
 

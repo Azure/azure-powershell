@@ -1,67 +1,63 @@
+az network app gateway create
 
-New-AzureRmApplicationGateway: Creates an application gateway.
+Create an Application Gateway.
 
+USAGE:
 
-The New-AzureRmApplicationGateway cmdlet creates an Azure application gateway.
+az network app gateway create --name <name> --resourceGroupName <resourceGroupName> --location <location> --sku <sku> --gatewayIPConfigurations <gatewayIPConfigurations> --frontendPorts <frontendPorts> --backendAddressPools <backendAddressPools> --backendHttpSettingsCollection <backendHttpSettingsCollection> --httpListeners <httpListeners> --requestRoutingRules <requestRoutingRules> [--sslCertificates <sslCertificates>] [--frontendIPConfigurations <frontendIPConfigurations>] [--probes <probes>] [--urlPathMaps <urlPathMaps>] [--tag <tag>] [--force]
 
-An application gateway requires the following: 
+PARAMETERS:
 
--- A resource group.
--- A virtual network. 
--- A back-end server pool, containing the IP addresses of the back-end servers.
--- Back-end server pool settings. Each pool has settings such as port, protocol and cookie-based affinity, that are applied to all servers within the pool.
--- Front-end IP addresses, which are the IP addresses opened on the application gateway. A front-end IP address can be a public IP address or an internal IP address.
--- Front-end ports, which are the public ports opened on the application gateway. Traffic that hits these ports is redirected to the back-end servers. 
--- A request routing rule that binds the listener and the back-end server pool. The rule defines which back-end server pool the traffic should be directed to when it hits a particular listener. A listener has a front-end port, front-end IP address, protocol (http or https) and Secure Sockets Layer (SSL) certificate name (if configuring SSL offload).
+--backendAddressPools
+  [object[]] The list of backend address pool
 
-
-Command syntax
-
-az applicationgateway new --name <string> --resourcegroupname <string> --location <string> --sku <PSApplicationGatewaySku> --gatewayipconfigurations <List`1[PSApplicationGatewayIPConfiguration]> [--sslcertificates <List`1[PSApplicationGatewaySslCertificate]>] [--frontendipconfigurations <List`1[PSApplicationGatewayFrontendIPConfiguration]>] --frontendports <List`1[PSApplicationGatewayFrontendPort]> --backendaddresspools <List`1[PSApplicationGatewayBackendAddressPool]> --backendhttpsettingscollection <List`1[PSApplicationGatewayBackendHttpSettings]> --httplisteners <List`1[PSApplicationGatewayHttpListener]> --requestroutingrules <List`1[PSApplicationGatewayRequestRoutingRule]> [--tag <Hashtable[]>] [--force]
-
-
-Parameters
-
---name
-Specifies the name of application gateway.
-
---resourcegroupname
-Specifies the name of the resource group in which to create the application gateway.
-
---location
-Specifies the region in which to create the application gateway.
-
---sku
-Specifies the stock keeping unit (SKU) of the application gateway.
-
---gatewayipconfigurations
-Specifies a list of IP configurations for the application gateway.
-
---sslcertificates
-Specifies the list of Secure Sockets Layer (SSL) certificates for the application gateway.
-
---frontendipconfigurations
-Specifies a list of front-end IP configurations for the application gateway.
-
---frontendports
-Specifies a list of front-end ports for the application gateway.
-
---backendaddresspools
-Specifies the list of back-end address pools for the application gateway.
-
---backendhttpsettingscollection
-Specifies the list of back-end HTTP settings for the application gateway.
-
---httplisteners
-Specifies a list of HTTP listeners for the application gateway.
-
---requestroutingrules
-Specifies a list of request routing rules for the application gateway.
-
---tag
-Specifies the dictionary of tags associated with the application gateway.
+--backendHttpSettingsCollection
+  [object[]] The list of backend http settings
 
 --force
-Forces the creation of the application gateway even if an application gateway with the same name already exists.
+  [flag] Perform this action without prompting, even if permanent changes are made.
 
+--frontendIPConfigurations
+  [object[]] The list of frontend IP config
+
+--frontendPorts
+  [object[]] The list of frontend port
+
+--gatewayIPConfigurations
+  [object[]] The list of IPConfiguration (subnet)
+
+--httpListeners
+  [object[]] The list of http listener
+
+--location
+  [string] The region that will contain this resource.  Possible values include 'East US', 'North Europe', 'East Asia'
+
+--name (--resourceName)
+  [string] The resource name.
+
+--probes
+  [object[]] The list of probe
+
+--requestRoutingRules
+  [object[]] The list of request routing rule
+
+--resourceGroupName
+  [string] The name of the resource group containing this resource
+
+--sku
+  [object] The SKU of application gateway. You may use commands including 'az network app gateway sku create' or 'az network app gateway sku ls' to produce a Sku. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network app gateway create --Sku @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
+
+--sslCertificates
+  [object[]] The list of ssl certificate
+
+--tag
+  [hashtable[]] An array of hashtables which represents resource tags.
+
+--urlPathMaps
+  [object[]] The list of UrlPathMap
+
+RELATED COMMANDS:
+az network app gateway sku create (produces Sku)
+
+az network app gateway sku ls (produces Sku)
 

@@ -1,0 +1,28 @@
+az network load balancer probe create
+
+Create a Load Balancer Probe Config.
+
+USAGE:
+
+az network load balancer probe create --name <name> --port <port> --intervalInSeconds <intervalInSeconds> --probeCount <probeCount> [--requestPath <requestPath>] [--protocol <protocol>]
+
+PARAMETERS:
+
+--intervalInSeconds
+  [int32] IntervalInSeconds
+
+--name
+  [string] The name of the probe
+
+--port
+  [int32] The probe port
+
+--probeCount
+  [int32] NumberOfProbes
+
+--protocol
+  [string] The transport protocol for the external endpoint.
+
+--requestPath
+  [string] Request path
+

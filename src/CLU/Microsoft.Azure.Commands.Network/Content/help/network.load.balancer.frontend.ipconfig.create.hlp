@@ -1,0 +1,43 @@
+az network load balancer frontend ipconfig create
+
+Create a Load Balancer Frontend Ip Config.
+
+USAGE:
+
+az network load balancer frontend ipconfig create --name <name> [--privateIpAddress <privateIpAddress>]
+
+az network load balancer frontend ipconfig create --name <name> [--privateIpAddress <privateIpAddress>] [--subnetId <subnetId>] [--publicIpAddressId <publicIpAddressId>]
+
+az network load balancer frontend ipconfig create --name <name> [--privateIpAddress <privateIpAddress>] [--subnet <subnet>] [--publicIpAddress <publicIpAddress>]
+
+PARAMETERS:
+
+--name
+  [string] The name of the IPConfiguration
+
+--privateIpAddress
+  [string] The private ip address of the frontendIpConfiguration if static allocation is specified.
+
+--publicIpAddress
+  [object] PublicIpAddress. You may use commands including 'az network ip create' or 'az network ip ls' or 'az network ip set' to produce a PublicIpAddress. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network load balancer frontend ipconfig create --PublicIpAddress @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
+
+--publicIpAddressId
+  [string] PublicIpAddressId
+
+--subnet
+  [object] Subnet. You may use commands including 'az vnet subnet create' or 'az vnet subnet ls' to produce a Subnet. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network load balancer frontend ipconfig create --Subnet @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
+
+--subnetId
+  [string] SubnetId
+
+RELATED COMMANDS:
+az vnet subnet create (produces Subnet)
+
+az vnet subnet ls (produces Subnet)
+
+az network ip create (produces PublicIpAddress)
+
+az network ip ls (produces PublicIpAddress)
+
+az network ip set (produces PublicIpAddress)
+

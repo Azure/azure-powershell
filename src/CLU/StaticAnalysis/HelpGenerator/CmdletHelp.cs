@@ -14,17 +14,18 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace StaticAnalysis.HelpGenerator
 {
     public class CmdletHelp
     {
-        private IList<string> _cluNames = new List<string>();
         private IList<string> _aliases = new List<string>();
         private IList<ParameterSetHelp> _parameterSets = new List<ParameterSetHelp>();
         private IList<ParameterHelp> _parameters = new List<ParameterHelp>();
@@ -63,7 +64,7 @@ namespace StaticAnalysis.HelpGenerator
 
         public string VerbName { get; set; }
         public string PowerShellName {  get { return $"{VerbName}-{NounName}"; } }
-        public IList<string> CluNames { get { return _cluNames; } }  
+        public string CluName { get; set; }  
         public IList<string> Aliases { get { return _aliases; } } 
         public string Synopsis { get; set; }
         public string Description { get; set; } 
@@ -94,7 +95,7 @@ namespace StaticAnalysis.HelpGenerator
                 string noun = NormalizeNounName(NounName);
                 if (string.Equals("Get", VerbName, StringComparison.OrdinalIgnoreCase))
                 {
-                    result.Append($"Get {noun} details or list matching {GetPlural(noun)}.");
+                    result.Append($"Get {noun} details.");
                 }
                 else
                 {
@@ -103,12 +104,6 @@ namespace StaticAnalysis.HelpGenerator
             }
 
             return result.ToString();
-        }
-
-        private string GetPlural(string noun)
-        {
-            var normalized = Regex.Replace(noun, "[^aeiou]y$", "ie");
-            return $"{normalized}s";
         }
 
         private string GetArticle(string noun)
@@ -142,6 +137,85 @@ namespace StaticAnalysis.HelpGenerator
                 result = "Update";
             }
             return result;
+        }
+
+        public string ToString(string cluName)
+        {
+            cluName = $"az {cluName}";
+            using (var writer = new StringWriter())
+            {
+                writer.WriteLine(cluName);
+                writer.WriteLine();
+                writer.WriteLine(Synopsis);
+                writer.WriteLine();
+                writer.WriteLine("USAGE:");
+                writer.WriteLine();
+                foreach (var parameterSet in ParameterSets)
+                {
+                    writer.WriteLine($"{cluName} {parameterSet}");
+                    writer.WriteLine();
+                }
+
+                if (Parameters != null && Parameters.Count > 0)
+                {
+                    writer.WriteLine("PARAMETERS:");
+                    writer.WriteLine();
+                    foreach (var parameter in Parameters.OrderBy(p => p.PreferredName))
+                    {
+                        writer.Write(GetParameterDisplay(parameter.PreferredName));
+                        StringBuilder aliasString = new StringBuilder();
+                        foreach (var alias in parameter.Aliases)
+                        {
+                            if (!string.Equals(alias, parameter.PreferredName))
+                            {
+                                aliasString.Append($"{GetParameterDisplay(alias)}, ");
+                            }
+                        }
+                        if (!string.Equals(parameter.Name, parameter.PreferredName))
+                        {
+                            aliasString.Append($"{GetParameterDisplay(parameter.Name)}");
+                        }
+                        else if (aliasString.Length > 2)
+                        {
+                            aliasString.Remove(aliasString.Length - 2, 2);
+                        }
+                        if (aliasString.Length > 0)
+                        {
+                            writer.WriteLine($" ({aliasString})");
+                        }
+                        else
+                        {
+                            writer.WriteLine();
+                        }
+                        writer.WriteLine($"  [{parameter.Type.GetDisplayName()}] {parameter.Description}");
+                        writer.WriteLine();
+                    }
+                }
+
+                if (References.Any(r=>r.HelpTarget == HelpTarget.CLU))
+                {
+                    writer.WriteLine("RELATED COMMANDS:");
+                    foreach (var reference in References.Where(r => r.HelpTarget == HelpTarget.CLU))
+                    {
+                        writer.WriteLine(reference.Name);
+                        writer.WriteLine();
+                    }
+                }
+
+                return writer.ToString();
+            }
+        }
+
+        private static string GetParameterDisplay(string name)
+        {
+            var builder = new StringBuilder();
+            builder.Append("-");
+            if (name != null && name.Length > 1)
+            {
+                builder.Append("-");
+            }
+            builder.Append(name.ToCamelCase());
+            return builder.ToString();
         }
     }
 }

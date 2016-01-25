@@ -1,8 +1,0 @@
-
-New-AzureRmApplicationGatewayProbeConfig
-
-
-Command syntax
-
-az applicationgateway probe config new
-

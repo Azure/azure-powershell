@@ -1,8 +1,16 @@
+az resource tag ls
 
-Get-AzureRmTag
+Get Tag details.
 
+USAGE:
 
-Command syntax
+az resource tag ls [[-n] <name>] [--detailed]
 
-az tag ls
+PARAMETERS:
+
+--detailed
+  [flag] Whether should get the tag values information as well.
+
+-n (--name)
+  [string] Name of the tag. If not specified, return all the tags of the subscription.
 

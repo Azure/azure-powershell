@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Resource Group StorageAccountName.")]
+            HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
         [Alias("group", "g")]
         public string ResourceGroupName { get; set; }
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Storage Account StorageAccountName.")]
+            HelpMessage = "Storage Account Name.")]
         [ValidateNotNullOrEmpty]
         [Alias(StorageAccountNameAlias, AccountNameAlias, "n")]
         public string Name { get; set; }
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Position = 2,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Storage Account Key StorageAccountName.")]
+            HelpMessage = "Storage Account Key Name ('Key1' or 'Key2'.")]
         [ValidateSet(Key1, Key2, IgnoreCase = true)]
         [Alias("k")]
         public string KeyName { get; set; }

@@ -26,7 +26,7 @@ namespace StaticAnalysis
 {
     public class Program
     {
-        public const int MaxSeverity = 2;
+        public static int MaxSeverity = 0;
         public static readonly string[] Modules = new string[]
         {
             "Microsoft.Azure.Commands.Compute",
@@ -40,8 +40,8 @@ namespace StaticAnalysis
 
         public static readonly IAssemblyValidator[] Validators = new IAssemblyValidator[]
         {
-            //new CmdletOutputValidator(),
-           // new CmdletAliasValidator(),
+            new CmdletOutputValidator(),
+            new CmdletAliasValidator(),
             new CmdletHelpGenerator()
         };
 
@@ -49,18 +49,41 @@ namespace StaticAnalysis
         public void Main(string[] args)
         {
             var cluDirectory = Path.Combine(Directory.GetCurrentDirectory(), "..");
-            var reportFile = Path.Combine(Directory.GetCurrentDirectory(), "outputTypes.csv");
+            var testDirectory = Environment.GetEnvironmentVariable("CLUDirectory");
+            if ( Directory.Exists(testDirectory) && Directory.Exists(Path.Combine(testDirectory, 
+                "Microsoft.Azure.Commands.Profile")))
+            {
+                cluDirectory = testDirectory;
+            }
+            var reportFile = Path.Combine(cluDirectory, "artifacts", "outputTypes.csv");
+            if (args != null && args.Length > 0)
+            {
+                if (!int.TryParse(args[0], out MaxSeverity))
+                {
+                    MaxSeverity = 0;
+                }
+
+                if (args.Length > 1)
+                {
+                    if (Directory.Exists(Path.GetDirectoryName(args[1])))
+                    {
+                        reportFile = args[1];
+                    }
+                }
+            }
             Logger = new ConsoleLogger();
             foreach (var assemblyIdentity in Modules)
             {
-                Logger.Assembly = assemblyIdentity;
+                Logger.Decorator.AddDecorator(r => r.Assembly = assemblyIdentity, "Assembly");
                 var moduleDirectory = Path.Combine(cluDirectory, assemblyIdentity);
                 foreach (var  validator in Validators)
                 {
-                    Logger.Validator = validator.Name;
+                    Logger.Decorator.AddDecorator(r => r.Validator =  validator.Name, "Validator");
                     validator.Logger = Logger;
                     validator.Validate(moduleDirectory, assemblyIdentity);
+                    Logger.Decorator.Remove("Validator");
                 }
+                Logger.Decorator.Remove("Assembly");
             }
 
 

@@ -1,27 +1,22 @@
+az vnet rm
 
-Remove-AzureRmVirtualNetwork: Removes a virtual network.
+Remove a Virtual Network.
 
+USAGE:
 
-The Remove-AzureRmVirtualNetwork cmdlet removes an Azure virtual network.
+az vnet rm --name <name> --resourceGroupName <resourceGroupName> [--force] [--passThru]
 
-
-Command syntax
-
-az vnet rm --name <string> --resourcegroupname <string> [--force] [--passthru]
-
-
-Parameters
-
---name
-Specifies the name of the virtual network to remove.
-
---resourcegroupname
-Specifies the name of the resource group that contains the virtual network to remove.
+PARAMETERS:
 
 --force
-Forces the command to run without asking for user confirmation.
+  [flag] Perform this action without prompting, even if permanent changes are made.
 
---passthru
-Returns an object representing the item with which you are working. By default, this cmdlet does not generate any output.
+--name (--resourceName)
+  [string] The resource name.
 
+--passThru
+  [flag] Forces true or false output.  Without this flag, the command will return nothing if successful.
+
+--resourceGroupName
+  [string] The name of the resource group containing this resource
 

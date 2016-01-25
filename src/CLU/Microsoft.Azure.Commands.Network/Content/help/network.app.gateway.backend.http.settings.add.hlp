@@ -1,31 +1,109 @@
+az network app gateway backend http settings add
 
-Add-AzureRmApplicationGatewayBackendHttpSettings
+Add an Application Gateway Backend Http Settings.
 
+USAGE:
 
-Adds back-end HTTP settings to an application gateway.
+az network app gateway backend http settings add --applicationGateway <applicationGateway> --name <name> --port <port> --protocol <protocol> --cookieBasedAffinity <cookieBasedAffinity> [--requestTimeout <requestTimeout>] [--probeId <probeId>] [--probe <probe>]
 
+PARAMETERS:
 
-Command syntax
+--applicationGateway
+  [object] The applicationGateway. You may use commands including 'az network app gateway create' or 'az network app gateway ls' or 'az network app gateway ls' or 'az network app gateway set' to produce a ApplicationGateway. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network app gateway backend http settings add --ApplicationGateway @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
 
-az applicationgateway backend http settings add --applicationgateway <PSApplicationGateway> --name <string> --port <int> --protocol <string> --cookiebasedaffinity <string>
-
-
-Parameters
-
---applicationgateway
-The Add-AzureRmApplicationGatewayBackendHttpSettings cmdlet adds back-end HTTP settings to an application gateway. 
-Back-end HTTP settings are applied to all back-end servers in the pool.
+--cookieBasedAffinity
+  [string] Cookie Based Affinity
 
 --name
-Specifies the name of the back-end HTTP settings which this cmdlet adds.
+  [string] The name of the backend http settings
 
 --port
-Specifies the port of the back-end server pool.
+  [int32] Port
+
+--probe
+  [object] Application gateway Probe. You may use commands including 'az network app gateway probe config ls' or 'az network app gateway probe config ls' or 'az network app gateway probe config new' to produce a Probe. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network app gateway backend http settings add --Probe @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
+
+--probeId
+  [string] ID of the application gateway Probe
 
 --protocol
-Specifies the protocol for communication between application gateway and back-end servers.
+  [string] Protocol
 
---cookiebasedaffinity
-Specifies whether cookie-based affinity should be enabled or disabled for the backend server pool. The acceptable values for this parameter are: Disabled, Enabled.
+--requestTimeout
+  [uInt32] Request Timeout. Default value 30 seconds.
 
+RELATED COMMANDS:
+az network app gateway create (produces ApplicationGateway)
+
+az network app gateway ls (produces ApplicationGateway)
+
+az network app gateway ls (produces ApplicationGateway)
+
+az network app gateway set (produces ApplicationGateway)
+
+az network app gateway start (produces ApplicationGateway)
+
+az applicationgateway stop (produces ApplicationGateway)
+
+az network app gateway backend address pool add (produces ApplicationGateway)
+
+az network app gateway backend address pool set (produces ApplicationGateway)
+
+az network app gateway backend http settings add (produces ApplicationGateway)
+
+az network app gateway backend http settings rm (produces ApplicationGateway)
+
+az network app gateway backend http settings set (produces ApplicationGateway)
+
+az network app gateway frontend ipconfig add (produces ApplicationGateway)
+
+az network app gateway frontend ipconfig rm (produces ApplicationGateway)
+
+az network app gateway frontend ipconfig set (produces ApplicationGateway)
+
+az network app gateway frontend port add (produces ApplicationGateway)
+
+az network app gateway frontend port rm (produces ApplicationGateway)
+
+az network app gateway frontend port set (produces ApplicationGateway)
+
+az network app gateway ipconfig add (produces ApplicationGateway)
+
+az network app gateway ipconfig rm (produces ApplicationGateway)
+
+az network app gateway ipconfig set (produces ApplicationGateway)
+
+az network app gateway http listener add (produces ApplicationGateway)
+
+az network app gateway http listener set (produces ApplicationGateway)
+
+az network app gateway probe config add (produces ApplicationGateway)
+
+az network app gateway probe config rm (produces ApplicationGateway)
+
+az network app gateway probe config set (produces ApplicationGateway)
+
+az network app gateway request routing rule add (produces ApplicationGateway)
+
+az network app gateway request routing rule set (produces ApplicationGateway)
+
+az network app gateway sku set (produces ApplicationGateway)
+
+az network app gateway ssl cert add (produces ApplicationGateway)
+
+az network app gateway ssl cert rm (produces ApplicationGateway)
+
+az network app gateway ssl cert set (produces ApplicationGateway)
+
+az network app gateway url path map add (produces ApplicationGateway)
+
+az network app gateway url path map rm (produces ApplicationGateway)
+
+az network app gateway url path map set (produces ApplicationGateway)
+
+az network app gateway probe config ls (produces Probe)
+
+az network app gateway probe config ls (produces Probe)
+
+az network app gateway probe config new (produces Probe)
 

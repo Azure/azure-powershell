@@ -1,48 +1,46 @@
+az network expressroute circuit create
 
-New-AzureRmExpressRouteCircuit
+Create an Express Route Circuit.
 
+USAGE:
 
+az network expressroute circuit create --name <name> --resourceGroupName <resourceGroupName> --location <location> --serviceProviderName <serviceProviderName> --bandwidthInMbps <bandwidthInMbps> [--skuTier <skuTier>] [--skuFamily <skuFamily>] [--peeringLocation <peeringLocation>] [--peering <peering>] [--authorization <authorization>] [--tag <tag>] [--force]
 
+PARAMETERS:
 
+--authorization
+  [object[]] 
 
-Command syntax
-
-az expressroute circuit new --name <string> --resourcegroupname <string> --location <string> [--skutier <string>] [--skufamily <string>] --serviceprovidername <string> [--peeringlocation <string>] --bandwidthinmbps <int> [--peering <List`1[PSPeering]>] [--tag <Hashtable[]>] [--force]
-
-
-Parameters
-
---name
-
-
---resourcegroupname
-
-
---location
-
-
---skutier
-
-
---skufamily
-
-
---serviceprovidername
-
-
---peeringlocation
-
-
---bandwidthinmbps
-
-
---peering
-
-
---tag
-
+--bandwidthInMbps
+  [int32] 
 
 --force
+  [flag] Perform this action without prompting, even if permanent changes are made.
 
+--location
+  [string] The region that will contain this resource.  Possible values include 'East US', 'North Europe', 'East Asia'
 
+--name (--resourceName)
+  [string] The resource name.
+
+--peering
+  [object[]] 
+
+--peeringLocation
+  [string] 
+
+--resourceGroupName
+  [string] The name of the resource group containing this resource
+
+--serviceProviderName
+  [string] The express route circuit name.
+
+--skuFamily
+  [string] 
+
+--skuTier
+  [string] 
+
+--tag
+  [hashtable[]] An array of hashtables which represents resource tags.
 

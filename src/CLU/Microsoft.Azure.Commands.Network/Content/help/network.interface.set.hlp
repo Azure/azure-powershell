@@ -1,18 +1,20 @@
+az network interface set
 
-Set-AzureRmNetworkInterface: Sets the goal state for a network interface.
+Update a Network Interface.
 
+USAGE:
 
-The Set-AzureRmNetworkInterface sets the goal state for an Azure network interface.
+az network interface set --networkInterface <networkInterface>
 
+PARAMETERS:
 
-Command syntax
+--networkInterface
+  [object] The NetworkInterface. You may use commands including 'az network interface create' or 'az network interface ls' or 'az network interface set' to produce a NetworkInterface. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network interface set --NetworkInterface @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
 
-az networkinterface set --networkinterface <PSNetworkInterface>
+RELATED COMMANDS:
+az network interface create (produces NetworkInterface)
 
+az network interface ls (produces NetworkInterface)
 
-Parameters
-
---networkinterface
-Specifies a NetworkInterface object that represents the goal state for a network interface.
-
+az network interface set (produces NetworkInterface)
 

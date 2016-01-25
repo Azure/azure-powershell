@@ -1,33 +1,28 @@
+az network security group create
 
-New-AzureRmNetworkSecurityGroup: Creates a network security group.
+Create a Network Security Group.
 
+USAGE:
 
-The New-AzureRmNetworkSecurityGroup cmdlet creates an  Azure network security group.
+az network security group create --name <name> --resourceGroupName <resourceGroupName> --location <location> [--securityRules <securityRules>] [--tag <tag>] [--force]
 
-
-Command syntax
-
-az networksecuritygroup new --name <string> --resourcegroupname <string> --location <string> [--securityrules <List`1[PSSecurityRule]>] [--tag <Hashtable[]>] [--force]
-
-
-Parameters
-
---name
-Specifies the name of the network security group to create.
-
---resourcegroupname
-Specifies the name of a resource group. This cmdlet creates a network security group in the resource group that this parameter specifies.
-
---location
-Specifies the region for which to create a network security group.
-
---securityrules
-Specifies a list of network security rule objects to create in a network security group.
-
---tag
-Specifies a dictionary of tags to associate with a network security group.
+PARAMETERS:
 
 --force
-Forces the command to run without asking for user confirmation.
+  [flag] Perform this action without prompting, even if permanent changes are made.
 
+--location
+  [string] The region that will contain this resource.  Possible values include 'East US', 'North Europe', 'East Asia'
+
+--name (--resourceName)
+  [string] The resource name.
+
+--resourceGroupName
+  [string] The name of the resource group containing this resource
+
+--securityRules
+  [object[]] The list of NetworkSecurityRules
+
+--tag
+  [hashtable[]] An array of hashtables which represents resource tags.
 

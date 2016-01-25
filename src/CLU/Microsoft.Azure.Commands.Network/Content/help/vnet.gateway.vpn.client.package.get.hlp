@@ -1,8 +1,19 @@
+az vnet gateway vpn client package get
 
-Get-AzureRmVpnClientPackage
+Get Vpn Client Package details.
 
+USAGE:
 
-Command syntax
+az vnet gateway vpn client package get --resourceGroupName <resourceGroupName> --virtualNetworkGatewayName <virtualNetworkGatewayName> --processorArchitecture <processorArchitecture>
 
-az vpn client package ls
+PARAMETERS:
+
+--processorArchitecture
+  [string] ProcessorArchitecture
+
+--resourceGroupName
+  [string] The name of the resource group containing this resource
+
+--virtualNetworkGatewayName
+  [string] VirtualNetworkGateway name
 

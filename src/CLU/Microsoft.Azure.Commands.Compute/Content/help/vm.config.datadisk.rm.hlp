@@ -1,27 +1,47 @@
+az vm config datadisk rm
 
-Remove-AzureRmVMDataDisk: Removes a data disk from a virtual machine.
+Remove a VM Data Disk.
 
+USAGE:
 
-The Remove-AzureRmVMDataDisk cmdlet removes a data disk from a virtual machine.
+az vm config datadisk rm [--vm] <vm> [--dataDiskNames] <dataDiskNames>
 
+PARAMETERS:
 
-Command syntax
+--dataDiskNames (--name)
+  [string[]] The virtual machine data disk's name.
 
-az vm datadisk rm [--vm] <PSVirtualMachine> [--datadisknames] <String[]> [--informationaction <ActionPreference>] [--informationvariable <string>]
+--vm (--vmProfile)
+  [object] The virtual machine profile. You may use commands including 'az vm config create' or 'az vm bootdiagnostics ls' or 'az vm ls' or 'az vm config additionalunattendcontent add' to produce a VM. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az vm config datadisk rm --VM @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
 
+RELATED COMMANDS:
+az vm config create (produces VM)
 
-Parameters
+az vm bootdiagnostics ls (produces VM)
 
---vm
-Specifies the local virtual machine object from which to remove a data disk. To obtain a virtual machine object, use the Get-AzureRmVM cmdlet.
+az vm ls (produces VM)
 
---datadisknames
+az vm config additionalunattendcontent add (produces VM)
 
+az vm config datadisk add (produces VM)
 
---informationaction
+az vm config network interface add (produces VM)
 
+az vm config secret add (produces VM)
 
---informationvariable
+az vm config ssh public key add (produces VM)
 
+az vm config datadisk rm (produces VM)
 
+az vm config network interface rm (produces VM)
+
+az vm config bootdiagnostics set (produces VM)
+
+az vm config datadisk set (produces VM)
+
+az vm config os set (produces VM)
+
+az vm config osdisk set (produces VM)
+
+az vm config source image set (produces VM)
 

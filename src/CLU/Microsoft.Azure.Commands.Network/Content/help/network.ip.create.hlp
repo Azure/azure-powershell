@@ -1,42 +1,37 @@
+az network ip create
 
-New-AzureRmPublicIpAddress: Creates a public IP address.
+Create a Public Ip Address.
 
+USAGE:
 
-The New-AzureRmPublicIpAddress cmdlet creates a public IP address.
+az network ip create --resourceGroupName <resourceGroupName> --allocationMethod <allocationMethod> [--name <name>] [--location <location>] [--domainNameLabel <domainNameLabel>] [--reverseFqdn <reverseFqdn>] [--idleTimeoutInMinutes <idleTimeoutInMinutes>] [--tag <tag>] [--force]
 
+PARAMETERS:
 
-Command syntax
+--allocationMethod
+  [string] The public IP address allocation method.
 
-az publicip address new [--name <string>] --resourcegroupname <string> [--location <string>] --allocationmethod <string> [--domainnamelabel <string>] [--reversefqdn <string>] [--idletimeoutinminutes <int>] [--tag <Hashtable[]>] [--force]
-
-
-Parameters
-
---name
-Specifies the name of the public IP address to create.
-
---resourcegroupname
-Specifies the name of the resource group in which to create a public IP address.
-
---location
-Specifies the region in which to create a public IP address.
-
---allocationmethod
-Specifies the method with which to allocate the public IP address. The acceptable values for this parameter are:Static or Dynamic.
-
---domainnamelabel
-Specifies the relative DNS name for a public IP address.
-
---reversefqdn
-Specifies a reverse fully qualified domain name (FQDN).
-
---idletimeoutinminutes
-Specifies the idle time-out, in minutes.
-
---tag
-Specifies a dictionary of tags to associate with a public IP address.
+--domainNameLabel
+  [string] The Domain Name label.
 
 --force
-Forces the command to run without asking for user confirmation.
+  [flag] Perform this action without prompting, even if permanent changes are made.
 
+--idleTimeoutInMinutes
+  [int32] IdleTimeoutInMinutes
+
+--location
+  [string] The region that will contain this resource.  Possible values include 'East US', 'North Europe', 'East Asia'
+
+--name (--resourceName)
+  [string] The resource name.
+
+--resourceGroupName
+  [string] The name of the resource group containing this resource
+
+--reverseFqdn
+  [string] The Reverse FQDN.
+
+--tag
+  [hashtable[]] An array of hashtables which represents resource tags.
 

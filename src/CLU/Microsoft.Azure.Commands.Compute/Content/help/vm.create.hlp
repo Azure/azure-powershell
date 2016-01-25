@@ -1,33 +1,53 @@
+az vm create
 
-New-AzureRmVM: Creates a virtual machine.
+Create a VM.
 
+USAGE:
 
-The New-AzureRmVM cmdlet creates a virtual machine in Azure. This cmdlet takes a virtual machine object as input. Use the New-AzureRmVMConfig cmdlet to create a virtual machine object. Configure the virtual machine object by using other cmdlets, such as Set-AzureRmVMOperatingSystem, Set-AzureRmVMSourceImage, Add-AzureRmVMNetworkInterface, and Set-AzureRmVMOSDisk.
+az vm create --resourceGroupName <resourceGroupName> --location <location> --vm <vm> [--tags <tags>]
 
-
-Command syntax
-
-az vm new --resourcegroupname <string> --location <string> --vm <PSVirtualMachine> [--tags <Hashtable[]>] [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-
-Parameters
-
---resourcegroupname
-Specifies the name of a resource group.
+PARAMETERS:
 
 --location
-Specifies a location for the virtual machine.
+  [string] The region that will contain this resource.  Possible values include 'East US', 'North Europe', 'East Asia'
 
---vm
-Specifies a local virtual machine to create. To obtain a virtual machine object, use the New-AzureRmVMConfig cmdlet. Configure the virtual machine by using other cmdlets, such as Set-AzureRmVMOperatingSystem, Set-AzureRmVMSourceImage, and Add-AzureRmVMNetworkInterface.
+--resourceGroupName
+  [string] The name of the resource group containing this resource
 
 --tags
+  [hashtable[]] 
 
+--vm (--vmProfile)
+  [object] . You may use commands including 'az vm config create' or 'az vm bootdiagnostics ls' or 'az vm ls' or 'az vm config additionalunattendcontent add' to produce a VM. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az vm create --VM @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
 
---informationaction
+RELATED COMMANDS:
+az vm config create (produces VM)
 
+az vm bootdiagnostics ls (produces VM)
 
---informationvariable
+az vm ls (produces VM)
 
+az vm config additionalunattendcontent add (produces VM)
 
+az vm config datadisk add (produces VM)
+
+az vm config network interface add (produces VM)
+
+az vm config secret add (produces VM)
+
+az vm config ssh public key add (produces VM)
+
+az vm config datadisk rm (produces VM)
+
+az vm config network interface rm (produces VM)
+
+az vm config bootdiagnostics set (produces VM)
+
+az vm config datadisk set (produces VM)
+
+az vm config os set (produces VM)
+
+az vm config osdisk set (produces VM)
+
+az vm config source image set (produces VM)
 

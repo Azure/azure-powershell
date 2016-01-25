@@ -1,8 +1,0 @@
-
-Get-AzureRmVpnClientRootCertificate
-
-
-Command syntax
-
-az vpn client root certificate ls
-

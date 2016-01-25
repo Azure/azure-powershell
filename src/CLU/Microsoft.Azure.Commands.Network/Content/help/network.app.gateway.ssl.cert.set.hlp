@@ -1,27 +1,91 @@
+az network app gateway ssl cert set
 
-Set-AzureRmApplicationGatewaySslCertificate: Sets the goal state of an SSL certificate.
+Update an Application Gateway Ssl Certificate.
 
+USAGE:
 
-The Set-AzureRmApplicationGatewaySslCertificate cmdlet sets the goal state of an SSL certificate.
+az network app gateway ssl cert set --applicationGateway <applicationGateway> --name <name> --certificateFile <certificateFile> --password <password>
 
+PARAMETERS:
 
-Command syntax
+--applicationGateway
+  [object] The applicationGateway. You may use commands including 'az network app gateway create' or 'az network app gateway ls' or 'az network app gateway ls' or 'az network app gateway set' to produce a ApplicationGateway. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network app gateway ssl cert set --ApplicationGateway @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
 
-az applicationgateway sslcertificate set --applicationgateway <PSApplicationGateway> --name <string> --certificatefile <string> --password <string>
-
-
-Parameters
-
---applicationgateway
-Specifies the application gateway with which the SSL certificate is associated.
+--certificateFile
+  [string] Path of certificate PFX file
 
 --name
-Specifies the name of the SSL certificate.
-
---certificatefile
-Specifies the path of the SSL certificate.
+  [string] The name of the ssl certificate
 
 --password
-Specifies the password of the SSL certificate.
+  [string] Certificate password
 
+RELATED COMMANDS:
+az network app gateway create (produces ApplicationGateway)
+
+az network app gateway ls (produces ApplicationGateway)
+
+az network app gateway ls (produces ApplicationGateway)
+
+az network app gateway set (produces ApplicationGateway)
+
+az network app gateway start (produces ApplicationGateway)
+
+az applicationgateway stop (produces ApplicationGateway)
+
+az network app gateway backend address pool add (produces ApplicationGateway)
+
+az network app gateway backend address pool set (produces ApplicationGateway)
+
+az network app gateway backend http settings add (produces ApplicationGateway)
+
+az network app gateway backend http settings rm (produces ApplicationGateway)
+
+az network app gateway backend http settings set (produces ApplicationGateway)
+
+az network app gateway frontend ipconfig add (produces ApplicationGateway)
+
+az network app gateway frontend ipconfig rm (produces ApplicationGateway)
+
+az network app gateway frontend ipconfig set (produces ApplicationGateway)
+
+az network app gateway frontend port add (produces ApplicationGateway)
+
+az network app gateway frontend port rm (produces ApplicationGateway)
+
+az network app gateway frontend port set (produces ApplicationGateway)
+
+az network app gateway ipconfig add (produces ApplicationGateway)
+
+az network app gateway ipconfig rm (produces ApplicationGateway)
+
+az network app gateway ipconfig set (produces ApplicationGateway)
+
+az network app gateway http listener add (produces ApplicationGateway)
+
+az network app gateway http listener set (produces ApplicationGateway)
+
+az network app gateway probe config add (produces ApplicationGateway)
+
+az network app gateway probe config rm (produces ApplicationGateway)
+
+az network app gateway probe config set (produces ApplicationGateway)
+
+az network app gateway request routing rule add (produces ApplicationGateway)
+
+az network app gateway request routing rule set (produces ApplicationGateway)
+
+az network app gateway sku set (produces ApplicationGateway)
+
+az network app gateway ssl cert add (produces ApplicationGateway)
+
+az network app gateway ssl cert rm (produces ApplicationGateway)
+
+az network app gateway ssl cert set (produces ApplicationGateway)
+
+az network app gateway url path map add (produces ApplicationGateway)
+
+az network app gateway url path map rm (produces ApplicationGateway)
+
+az network app gateway url path map set (produces ApplicationGateway)
 

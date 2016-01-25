@@ -1,21 +1,23 @@
+az vnet ls
 
-Get-AzureRmVirtualNetwork: Gets a virtual network in a resource group.
+Get Virtual Network details.
 
+USAGE:
 
-The Get-AzureRmVirtualNetwork cmdlet gets one or more virtual networks n a resource group.
+az vnet ls 
 
+az vnet ls [--name <name>] [--resourceGroupName <resourceGroupName>]
 
-Command syntax
+az vnet ls --name <name> --resourceGroupName <resourceGroupName> --expandResource <expandResource>
 
-az vnet ls [--name <string>] [--resourcegroupname <string>]
+PARAMETERS:
 
+--expandResource
+  [string] The resource reference to be expanded.
 
-Parameters
+--name (--resourceName)
+  [string] The resource name.
 
---name
-Specifies the name of the virtual network to get.
-
---resourcegroupname
-Specifies the name of the resource group that contains the virtual network.
-
+--resourceGroupName
+  [string] The name of the resource group containing this resource
 

@@ -1,45 +1,61 @@
+az vnet gateway create
 
-New-AzureRmVirtualNetworkGateway
+Create a Virtual Network Gateway.
 
+USAGE:
 
+az vnet gateway create --name <name> --resourceGroupName <resourceGroupName> --location <location> [--ipConfigurations <ipConfigurations>] [--gatewayType <gatewayType>] [--vpnType <vpnType>] [--enableBgp <enableBgp>] [--gatewaySku <gatewaySku>] [--vpnClientAddressPool <vpnClientAddressPool>] [--vpnClientRootCertificates <vpnClientRootCertificates>] [--vpnClientRevokedCertificates <vpnClientRevokedCertificates>] [--tag <tag>] [--force]
 
+az vnet gateway create --name <name> --resourceGroupName <resourceGroupName> --location <location> [--ipConfigurations <ipConfigurations>] [--gatewayType <gatewayType>] [--vpnType <vpnType>] [--enableBgp <enableBgp>] [--gatewaySku <gatewaySku>] [--gatewayDefaultSite <gatewayDefaultSite>] [--vpnClientAddressPool <vpnClientAddressPool>] [--vpnClientRootCertificates <vpnClientRootCertificates>] [--vpnClientRevokedCertificates <vpnClientRevokedCertificates>] [--tag <tag>] [--force]
 
+PARAMETERS:
 
-Command syntax
-
-az vnet gateway new --name <string> --resourcegroupname <string> --location <string> [--ipconfigurations <List`1[PSVirtualNetworkGatewayIpConfiguration]>] [--gatewaytype <string>] [--vpntype <string>] [--enablebgp <bool>] [--gatewaydefaultsite <PSLocalNetworkGateway>] [--tag <Hashtable[]>] [--force]
-
-
-Parameters
-
---name
-
-
---resourcegroupname
-
-
---location
-
-
---ipconfigurations
-
-
---gatewaytype
-
-
---vpntype
-
-
---enablebgp
-
-
---gatewaydefaultsite
-
-
---tag
-
+--enableBgp
+  [boolean] EnableBgp Flag
 
 --force
+  [flag] Perform this action without prompting, even if permanent changes are made.
 
+--gatewayDefaultSite
+  [object] GatewayDefaultSite. You may use commands including 'az network local gateway create' or 'az network local gateway ls' or 'az network local gateway set' to produce a GatewayDefaultSite. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az vnet gateway create --GatewayDefaultSite @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
 
+--gatewaySku
+  [string] The type of the Vpn:PolicyBased/RouteBased
+
+--gatewayType
+  [string] The type of this virtual network gateway: Vpn, ExoressRoute
+
+--ipConfigurations
+  [object[]] The IpConfigurations for Virtual network gateway.
+
+--location
+  [string] The region that will contain this resource.  Possible values include 'East US', 'North Europe', 'East Asia'
+
+--name (--resourceName)
+  [string] The resource name.
+
+--resourceGroupName
+  [string] The name of the resource group containing this resource
+
+--tag
+  [hashtable[]] An array of hashtables which represents resource tags.
+
+--vpnClientAddressPool
+  [string[]] P2S VpnClient AddressPool
+
+--vpnClientRevokedCertificates
+  [object[]] The list of VpnClientCertificates to be revoked.
+
+--vpnClientRootCertificates
+  [object[]] The list of VpnClientRootCertificates to be added.
+
+--vpnType
+  [string] The type of the Vpn:PolicyBased/RouteBased
+
+RELATED COMMANDS:
+az network local gateway create (produces GatewayDefaultSite)
+
+az network local gateway ls (produces GatewayDefaultSite)
+
+az network local gateway set (produces GatewayDefaultSite)
 

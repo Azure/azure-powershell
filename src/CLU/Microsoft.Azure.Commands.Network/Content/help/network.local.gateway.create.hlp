@@ -1,36 +1,31 @@
+az network local gateway create
 
-New-AzureRmLocalNetworkGateway
+Create a Local Network Gateway.
 
+USAGE:
 
+az network local gateway create --name <name> --resourceGroupName <resourceGroupName> --location <location> [--gatewayIpAddress <gatewayIpAddress>] [--addressPrefix <addressPrefix>] [--tag <tag>] [--force]
 
+PARAMETERS:
 
-
-Command syntax
-
-az localgateway new --name <string> --resourcegroupname <string> --location <string> [--gatewayipaddress <string>] [--addressprefix <List`1[String]>] [--tag <Hashtable[]>] [--force]
-
-
-Parameters
-
---name
-
-
---resourcegroupname
-
-
---location
-
-
---gatewayipaddress
-
-
---addressprefix
-
-
---tag
-
+--addressPrefix
+  [string[]] The address prefixes of the virtual network
 
 --force
+  [flag] Perform this action without prompting, even if permanent changes are made.
 
+--gatewayIpAddress
+  [string] IP address of local network gateway.
 
+--location
+  [string] The region that will contain this resource.  Possible values include 'East US', 'North Europe', 'East Asia'
+
+--name (--resourceName)
+  [string] The resource name.
+
+--resourceGroupName
+  [string] The name of the resource group containing this resource
+
+--tag
+  [hashtable[]] An array of hashtables which represents resource tags.
 

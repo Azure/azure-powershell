@@ -14,6 +14,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace StaticAnalysis.HelpGenerator
@@ -27,5 +28,21 @@ namespace StaticAnalysis.HelpGenerator
             get { return _parameters; }
         }
         public bool IsDefault { get; set; }
+
+        public override string ToString()
+        {
+            StringBuilder builder = new StringBuilder();
+            IOrderedEnumerable<ParameterReferenceHelp> orderedParams = _parameters.OrderBy( p => p.Required? 0 : 1);
+            if (_parameters.Any(p => p.Order.HasValue))
+            {
+                orderedParams = _parameters.OrderBy(p => p.Order.HasValue ? p.Order  : int.MaxValue);
+            }
+            foreach (var parameter in orderedParams)
+            {
+                builder.Append($"{parameter} ");
+            }
+
+            return builder.ToString().TrimEnd(' ');
+        }
     }
 }

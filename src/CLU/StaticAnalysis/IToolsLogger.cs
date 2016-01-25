@@ -18,8 +18,7 @@ namespace StaticAnalysis
 {
     public interface IToolsLogger
     {
-        string Validator { get; set; }
-        string Assembly { get; set; }
+        Decorator<ValidationRecord> Decorator { get; }
         IList<ValidationRecord> Records { get; } 
         void WriteError(string error);
         void WriteMessage(string message);

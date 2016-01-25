@@ -23,13 +23,10 @@ namespace StaticAnalysis
     public class ConsoleLogger : IToolsLogger
     {
         private List<ValidationRecord> _records = new List<ValidationRecord>();
+        private Decorator<ValidationRecord> _decorator = Decorator<ValidationRecord>.Create();
 
+        public Decorator<ValidationRecord> Decorator { get { return _decorator; } }
         public IList<ValidationRecord> Records { get { return _records; } }
-
-        public string Assembly { get; set; }
-
-        public string Validator { get; set; }
-
         public void WriteError(string error)
         {
             Console.WriteLine($"### ERROR {error}");
@@ -47,15 +44,7 @@ namespace StaticAnalysis
 
         public void LogRecord(ValidationRecord record)
         {
-            if (!string.IsNullOrWhiteSpace(Assembly))
-            {
-                record.Assembly = Assembly;
-            }
-            if (!string.IsNullOrWhiteSpace(Validator))
-            {
-                record.Validator = Validator;
-            }
-
+            Decorator.Apply(record);
             _records.Add(record);
         }
     }

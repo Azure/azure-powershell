@@ -1,21 +1,23 @@
+az vnet gateway connection set
 
-Set-AzureRmVirtualNetworkGatewayConnection
+Update a Virtual Network Gateway Connection.
 
+USAGE:
 
+az vnet gateway connection set --virtualNetworkGatewayConnection <virtualNetworkGatewayConnection> [--force]
 
-
-
-Command syntax
-
-az vnet gateway connection set --virtualnetworkgatewayconnection <PSVirtualNetworkGatewayConnection> [--force]
-
-
-Parameters
-
---virtualnetworkgatewayconnection
-
+PARAMETERS:
 
 --force
+  [flag] Perform this action without prompting, even if permanent changes are made.
 
+--virtualNetworkGatewayConnection
+  [object] The VirtualNetworkGatewayConnection. You may use commands including 'az vnet gateway connection create' or 'az vnet gateway connection ls' or 'az vnet gateway connection set' to produce a VirtualNetworkGatewayConnection. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az vnet gateway connection set --VirtualNetworkGatewayConnection @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
 
+RELATED COMMANDS:
+az vnet gateway connection create (produces VirtualNetworkGatewayConnection)
+
+az vnet gateway connection ls (produces VirtualNetworkGatewayConnection)
+
+az vnet gateway connection set (produces VirtualNetworkGatewayConnection)
 

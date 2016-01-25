@@ -1,21 +1,23 @@
+az network security group ls
 
-Get-AzureRmNetworkSecurityGroup: Gets a network security group.
+Get Network Security Group details.
 
+USAGE:
 
-The Get-AzureRmNetworkSecurityGroup cmdlet gets an Azure network security group.
+az network security group ls 
 
+az network security group ls [--name <name>] [--resourceGroupName <resourceGroupName>]
 
-Command syntax
+az network security group ls --name <name> --resourceGroupName <resourceGroupName> --expandResource <expandResource>
 
-az networksecuritygroup ls [--name <string>] [--resourcegroupname <string>]
+PARAMETERS:
 
+--expandResource
+  [string] The resource reference to be expanded.
 
-Parameters
+--name (--resourceName)
+  [string] The resource name.
 
---name
-Specifies the name of the network security group to get.
-
---resourcegroupname
-Specifies the name of the resource group that contains the network security group to get.
-
+--resourceGroupName
+  [string] The name of the resource group containing this resource
 

@@ -1,18 +1,26 @@
+az vnet set
 
-Set-AzureRmVirtualNetwork: Sets the goal state for a virtual network.
+Update a Virtual Network.
 
+USAGE:
 
-The Set-AzureRmVirtualNetwork cmdlet sets the goal state for an Azure virtual network.
+az vnet set --virtualNetwork <virtualNetwork>
 
+PARAMETERS:
 
-Command syntax
+--virtualNetwork
+  [object] The virtualNetwork. You may use commands including 'az vnet create' or 'az vnet ls' or 'az vnet set' or 'az vnet subnet add' to produce a VirtualNetwork. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az vnet set --VirtualNetwork @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
 
-az vnet set --virtualnetwork <PSVirtualNetwork>
+RELATED COMMANDS:
+az vnet create (produces VirtualNetwork)
 
+az vnet ls (produces VirtualNetwork)
 
-Parameters
+az vnet set (produces VirtualNetwork)
 
---virtualnetwork
-Specifies a VirtualNetwork object that represents the goal state.
+az vnet subnet add (produces VirtualNetwork)
 
+az vnet subnet rm (produces VirtualNetwork)
+
+az vnet subnet set (produces VirtualNetwork)
 

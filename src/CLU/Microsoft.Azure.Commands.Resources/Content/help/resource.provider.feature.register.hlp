@@ -1,27 +1,19 @@
+az resource provider feature register
 
-Register-AzureRmProviderFeature
+Register a Provider Feature.
 
+USAGE:
 
+az resource provider feature register -n <featureName> -m <providerNamespace> [-f]
 
+PARAMETERS:
 
+-f (--force)
+  [flag] Perform this action without prompting, even if permanent changes are made.
 
-Command syntax
+-m (--namespace, --providerNamespace)
+  [string] The resource provider namespace.
 
-az resourcemanager provider feature register --featurename <string> --providernamespace <string> [--force] [--profile <AzureProfile>]
-
-
-Parameters
-
---featurename
-
-
---providernamespace
-
-
---force
-
-
---profile
-
-
+-n (--name, --featureName)
+  [string] The feature name.
 

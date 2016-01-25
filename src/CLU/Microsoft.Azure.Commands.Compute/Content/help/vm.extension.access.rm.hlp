@@ -1,33 +1,22 @@
+az vm extension access rm
 
-Remove-AzureRmVMAccessExtension: Removes the VMAccess extension from a virtual machine.
+Remove a VM Access Extension.
 
+USAGE:
 
-The Remove-AzureRmVMAccessExtension cmdlet removes the Virtual Machine Access (VMAccess) Virtual Machine Extension from a virtual machine.
+az vm extension access rm [--resourceGroupName] <resourceGroupName> [--vmName] <vmName> [--name] <name> [--force]
 
-
-Command syntax
-
-az vm accessextension rm [--resourcegroupname] <string> [--vmname] <string> [--name] <string> [--force] [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-
-Parameters
-
---resourcegroupname
-Specifies the name of the resource group of the virtual machine.
-
---vmname
-Specifies the name of a virtual machine. This cmdlet removes VMAccess for the virtual machine that this parameter specifies.
-
---name
-Specifies the name of the extension that this cmdlet removes.
+PARAMETERS:
 
 --force
-Forces the command to run without asking for user confirmation.
+  [flag] Perform this action without prompting, even if permanent changes are made.
 
---informationaction
+--name (--extensionName)
+  [string] The extension name.
 
+--resourceGroupName
+  [string] The name of the resource group containing this resource
 
---informationvariable
-
-
+--vmName (--resourceName)
+  [string] The virtual machine name.
 

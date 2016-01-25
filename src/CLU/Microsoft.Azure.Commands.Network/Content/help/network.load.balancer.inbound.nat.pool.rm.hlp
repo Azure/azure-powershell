@@ -1,0 +1,57 @@
+az network load balancer inbound nat pool rm
+
+Remove a Load Balancer Inbound Nat Pool Config.
+
+USAGE:
+
+az network load balancer inbound nat pool rm --loadBalancer <loadBalancer> [--name <name>]
+
+PARAMETERS:
+
+--loadBalancer
+  [object] The loadbalancer. You may use commands including 'az network load balancer create' or 'az network load balancer ls' or 'az network load balancer set' or 'az network load balancer backend address pool add' to produce a LoadBalancer. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network load balancer inbound nat pool rm --LoadBalancer @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
+
+--name
+  [string] The name of the Inbound NAT pool
+
+RELATED COMMANDS:
+az network load balancer create (produces LoadBalancer)
+
+az network load balancer ls (produces LoadBalancer)
+
+az network load balancer set (produces LoadBalancer)
+
+az network load balancer backend address pool add (produces LoadBalancer)
+
+az network load balancer backend address pool rm (produces LoadBalancer)
+
+az network load balancer frontend ipconfig add (produces LoadBalancer)
+
+az network load balancer frontend ipconfig rm (produces LoadBalancer)
+
+az network load balancer frontend ipconfig set (produces LoadBalancer)
+
+az network load balancer inbound nat pool add (produces LoadBalancer)
+
+az network load balancer inbound nat pool rm (produces LoadBalancer)
+
+az network load balancer inbound nat pool set (produces LoadBalancer)
+
+az network load balancer inbound nat rule add (produces LoadBalancer)
+
+az network load balancer inbound nat rule rm (produces LoadBalancer)
+
+az network load balancer inbound nat rule set (produces LoadBalancer)
+
+az network load balancer rule add (produces LoadBalancer)
+
+az network load balancer rule rm (produces LoadBalancer)
+
+az network load balancer rule set (produces LoadBalancer)
+
+az network load balancer probe add (produces LoadBalancer)
+
+az network load balancer probe rm (produces LoadBalancer)
+
+az network load balancer probe set (produces LoadBalancer)
+

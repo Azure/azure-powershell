@@ -1,0 +1,85 @@
+az network app gateway probe config rm
+
+Remove an Application Gateway Probe Config.
+
+USAGE:
+
+az network app gateway probe config rm --name <name> --applicationGateway <applicationGateway>
+
+PARAMETERS:
+
+--applicationGateway
+  [object] The applicationGateway. You may use commands including 'az network app gateway create' or 'az network app gateway ls' or 'az network app gateway ls' or 'az network app gateway set' to produce a ApplicationGateway. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network app gateway probe config rm --ApplicationGateway @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
+
+--name
+  [string] Name of probe
+
+RELATED COMMANDS:
+az network app gateway create (produces ApplicationGateway)
+
+az network app gateway ls (produces ApplicationGateway)
+
+az network app gateway ls (produces ApplicationGateway)
+
+az network app gateway set (produces ApplicationGateway)
+
+az network app gateway start (produces ApplicationGateway)
+
+az applicationgateway stop (produces ApplicationGateway)
+
+az network app gateway backend address pool add (produces ApplicationGateway)
+
+az network app gateway backend address pool set (produces ApplicationGateway)
+
+az network app gateway backend http settings add (produces ApplicationGateway)
+
+az network app gateway backend http settings rm (produces ApplicationGateway)
+
+az network app gateway backend http settings set (produces ApplicationGateway)
+
+az network app gateway frontend ipconfig add (produces ApplicationGateway)
+
+az network app gateway frontend ipconfig rm (produces ApplicationGateway)
+
+az network app gateway frontend ipconfig set (produces ApplicationGateway)
+
+az network app gateway frontend port add (produces ApplicationGateway)
+
+az network app gateway frontend port rm (produces ApplicationGateway)
+
+az network app gateway frontend port set (produces ApplicationGateway)
+
+az network app gateway ipconfig add (produces ApplicationGateway)
+
+az network app gateway ipconfig rm (produces ApplicationGateway)
+
+az network app gateway ipconfig set (produces ApplicationGateway)
+
+az network app gateway http listener add (produces ApplicationGateway)
+
+az network app gateway http listener set (produces ApplicationGateway)
+
+az network app gateway probe config add (produces ApplicationGateway)
+
+az network app gateway probe config rm (produces ApplicationGateway)
+
+az network app gateway probe config set (produces ApplicationGateway)
+
+az network app gateway request routing rule add (produces ApplicationGateway)
+
+az network app gateway request routing rule set (produces ApplicationGateway)
+
+az network app gateway sku set (produces ApplicationGateway)
+
+az network app gateway ssl cert add (produces ApplicationGateway)
+
+az network app gateway ssl cert rm (produces ApplicationGateway)
+
+az network app gateway ssl cert set (produces ApplicationGateway)
+
+az network app gateway url path map add (produces ApplicationGateway)
+
+az network app gateway url path map rm (produces ApplicationGateway)
+
+az network app gateway url path map set (produces ApplicationGateway)
+

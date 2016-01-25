@@ -1,0 +1,8 @@
+az storage usage ls
+
+Get Storage Usage details.
+
+USAGE:
+
+az storage usage ls 
+

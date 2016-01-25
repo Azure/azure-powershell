@@ -1,45 +1,42 @@
+az network expressroute circuit peering create
 
-New-AzureRmExpressRouteCircuitPeeringConfig
+Create an Express Route Circuit Peering Config.
 
+USAGE:
 
+az network expressroute circuit peering create --name <name> --peeringType <peeringType> --primaryPeerAddressPrefix <primaryPeerAddressPrefix> --secondaryPeerAddressPrefix <secondaryPeerAddressPrefix> --vlanId <vlanId> [--peerASN <peerASN>] [--sharedKey <sharedKey>]
 
+az network expressroute circuit peering create --name <name> --peeringType <peeringType> --primaryPeerAddressPrefix <primaryPeerAddressPrefix> --secondaryPeerAddressPrefix <secondaryPeerAddressPrefix> --vlanId <vlanId> [--peerASN <peerASN>] [--sharedKey <sharedKey>] [--microsoftConfigAdvertisedPublicPrefixes <microsoftConfigAdvertisedPublicPrefixes>] [--microsoftConfigCustomerAsn <microsoftConfigCustomerAsn>] [--microsoftConfigRoutingRegistryName <microsoftConfigRoutingRegistryName>]
 
+PARAMETERS:
 
-Command syntax
+--microsoftConfigAdvertisedPublicPrefixes
+  [string[]] The MircosoftConfigAdvertisedPublicPrefixes
 
-az expressroute circuit peering config new --name <string> --peeringtype <string> [--peerasn <int>] --primarypeeraddressprefix <string> --secondarypeeraddressprefix <string> --vlanid <int> [--sharedkey <string>] [--microsoftconfigadvertisedpublicprefixes <List`1[String]>] [--microsoftconfigcustomerasn <int>] [--microsoftconfigroutingregistryname <string>]
+--microsoftConfigCustomerAsn
+  [int32] The customerAsn
 
-
-Parameters
+--microsoftConfigRoutingRegistryName
+  [string] The MircosoftConfigRoutingRegistryName
 
 --name
+  [string] The name of the Peering
 
+--peerASN
+  [int32] The PeerAsn
 
---peeringtype
+--peeringType
+  [string] The PeeringType
 
+--primaryPeerAddressPrefix
+  [string] The PrimaryPeerAddressPrefix
 
---peerasn
+--secondaryPeerAddressPrefix
+  [string] The SecondaryPeerAddressPrefix
 
+--sharedKey
+  [string] The SharedKey
 
---primarypeeraddressprefix
-
-
---secondarypeeraddressprefix
-
-
---vlanid
-
-
---sharedkey
-
-
---microsoftconfigadvertisedpublicprefixes
-
-
---microsoftconfigcustomerasn
-
-
---microsoftconfigroutingregistryname
-
-
+--vlanId
+  [int32] The vlanId
 

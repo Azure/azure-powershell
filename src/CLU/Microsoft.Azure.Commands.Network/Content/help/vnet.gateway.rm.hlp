@@ -1,27 +1,22 @@
+az vnet gateway rm
 
-Remove-AzureRmVirtualNetworkGateway
+Remove a Virtual Network Gateway.
 
+USAGE:
 
+az vnet gateway rm --name <name> --resourceGroupName <resourceGroupName> [--force] [--passThru]
 
-
-
-Command syntax
-
-az vnet gateway rm --name <string> --resourcegroupname <string> [--force] [--passthru]
-
-
-Parameters
-
---name
-
-
---resourcegroupname
-
+PARAMETERS:
 
 --force
+  [flag] Perform this action without prompting, even if permanent changes are made.
 
+--name (--resourceName)
+  [string] The resource name.
 
---passthru
+--passThru
+  [flag] Forces true or false output.  Without this flag, the command will return nothing if successful.
 
-
+--resourceGroupName
+  [string] The name of the resource group containing this resource
 

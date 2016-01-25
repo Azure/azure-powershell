@@ -1,46 +1,33 @@
+az vm image save
 
-Save-AzureRmVMImage: Captures a virtual machine as a VMImage.
+Save a VM Image.
 
+USAGE:
 
-The Save-AzureRmVMImage cmdlet captures a virtual machine as a VMImage. Before you create a virtual machine image, sysprep the virtual machine, and then mark it as generalized by using the Set-AzureRmVM cmdlet.
+az vm image save [--resourceGroupName] <resourceGroupName> [--name] <name> [--destinationContainerName] <destinationContainerName> [--vHDNamePrefix] <vHDNamePrefix> [--overwrite] [[--path] <path>]
 
-The output of this cmdlet is a JavaScript Object Notation (JSON) template. You can deploy virtual machines from your captured image.
+az vm image save [--id] <id> [--name] <name> [--destinationContainerName] <destinationContainerName> [--vHDNamePrefix] <vHDNamePrefix> [--overwrite] [[--path] <path>]
 
+PARAMETERS:
 
-Command syntax
-
-az vm image save [--resourcegroupname] <string> [--name] <string> [--destinationcontainername] <string> [--vhdnameprefix] <string> [[--overwrite]] [[--path] <string>] [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-az vm image save [--id] <string> [--name] <string> [--destinationcontainername] <string> [--vhdnameprefix] <string> [[--overwrite]] [[--path] <string>] [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-
-Parameters
-
---resourcegroupname
-Specifies the name of the resource group of the virtual machine.
-
---name
-
-
---destinationcontainername
-Specifies the name of a container. The virtual hard disks (VHDs) that constitute the VMImage reside in the container that this parameter specifies. If the VHDs are spread across multiple storage accounts, this cmdlet creates one container that has this name in each storage account.
-
---vhdnameprefix
-Specifies the prefix in the name of the blobs that constitute the storage profile of the VMImage. For example, a prefix vhdPrefix for operating system disk results in the name vhdPrefix-osdisk.
-
---overwrite
-Indicates that this cmdlet overwrites any VHDs that have the same prefix in the destination container.
-
---path
-
-
---informationaction
-
-
---informationvariable
-
+--destinationContainerName
+  [string] The Destination Container Name.
 
 --id
+  [string] The identity of this resource. Resource identity is a Uri path that uniquely identifies the resource.
 
+--name (--vmName)
+  [string] The virtual machine name.
 
+--overwrite
+  [flag] To Overwrite.
+
+--path
+  [string] The path to a file.
+
+--resourceGroupName
+  [string] The name of the resource group containing this resource
+
+--vHDNamePrefix (--virtualHardDiskNamePrefix)
+  [string] The Virtual Hard Disk Name Prefix.
 

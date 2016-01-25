@@ -1,48 +1,62 @@
+az network expressroute circuit peering add
 
-Add-AzureRmExpressRouteCircuitPeeringConfig
+Add an Express Route Circuit Peering Config.
 
+USAGE:
 
+az network expressroute circuit peering add --circuit <circuit> --name <name> --peeringType <peeringType> --primaryPeerAddressPrefix <primaryPeerAddressPrefix> --secondaryPeerAddressPrefix <secondaryPeerAddressPrefix> --vlanId <vlanId> [--peerASN <peerASN>] [--sharedKey <sharedKey>]
 
+az network expressroute circuit peering add --circuit <circuit> --name <name> --peeringType <peeringType> --primaryPeerAddressPrefix <primaryPeerAddressPrefix> --secondaryPeerAddressPrefix <secondaryPeerAddressPrefix> --vlanId <vlanId> [--peerASN <peerASN>] [--sharedKey <sharedKey>] [--microsoftConfigAdvertisedPublicPrefixes <microsoftConfigAdvertisedPublicPrefixes>] [--microsoftConfigCustomerAsn <microsoftConfigCustomerAsn>] [--microsoftConfigRoutingRegistryName <microsoftConfigRoutingRegistryName>]
 
-
-Command syntax
-
-az expressroute circuit peering config add --name <string> --circuit <PSExpressRouteCircuit> --peeringtype <string> [--peerasn <int>] --primarypeeraddressprefix <string> --secondarypeeraddressprefix <string> --vlanid <int> [--sharedkey <string>] [--microsoftconfigadvertisedpublicprefixes <List`1[String]>] [--microsoftconfigcustomerasn <int>] [--microsoftconfigroutingregistryname <string>]
-
-
-Parameters
-
---name
-
+PARAMETERS:
 
 --circuit
+  [object] The ExpressRouteCircuit. You may use commands including 'az network expressroute circuit create' or 'az network expressroute circuit ls' or 'az network expressroute circuit set' or 'az network expressroute circuit auth add' to produce a Circuit. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network expressroute circuit peering add --Circuit @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
 
+--microsoftConfigAdvertisedPublicPrefixes
+  [string[]] The MircosoftConfigAdvertisedPublicPrefixes
 
---peeringtype
+--microsoftConfigCustomerAsn
+  [int32] The customerAsn
 
+--microsoftConfigRoutingRegistryName
+  [string] The MircosoftConfigRoutingRegistryName
 
---peerasn
+--name
+  [string] The name of the Peering
 
+--peerASN
+  [int32] The PeerAsn
 
---primarypeeraddressprefix
+--peeringType
+  [string] The PeeringType
 
+--primaryPeerAddressPrefix
+  [string] The PrimaryPeerAddressPrefix
 
---secondarypeeraddressprefix
+--secondaryPeerAddressPrefix
+  [string] The SecondaryPeerAddressPrefix
 
+--sharedKey
+  [string] The SharedKey
 
---vlanid
+--vlanId
+  [int32] The vlanId
 
+RELATED COMMANDS:
+az network expressroute circuit create (produces Circuit)
 
---sharedkey
+az network expressroute circuit ls (produces Circuit)
 
+az network expressroute circuit set (produces Circuit)
 
---microsoftconfigadvertisedpublicprefixes
+az network expressroute circuit auth add (produces Circuit)
 
+az network expressroute circuit auth rm (produces Circuit)
 
---microsoftconfigcustomerasn
+az network expressroute circuit peering add (produces Circuit)
 
+az network expressroute circuit peering rm (produces Circuit)
 
---microsoftconfigroutingregistryname
-
-
+az network expressroute circuit peering set (produces Circuit)
 

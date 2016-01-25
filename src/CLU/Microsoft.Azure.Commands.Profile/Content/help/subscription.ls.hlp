@@ -1,34 +1,21 @@
+az subscription ls
 
-Get-AzureRmSubscription: Get detailed information about subscriptions the current account can access.
+Get Subscription details.
 
+USAGE:
 
-Get detailed information, including subscription id, subscription name, and home tenant about subscriptions the current account can access.
+az subscription ls [-s <subscriptionId>] [-t <tenantId>]
 
+az subscription ls [-n <subscriptionName>] [-t <tenantId>]
 
-Command syntax
+PARAMETERS:
 
-az subscription ls [--subscriptionid <string>] [--tenantid <string>] [--informationaction <ActionPreference>] [--informationvariable <string>]
+-n (--name, --subscriptionName)
+  [string] The friendly name of the subscription.
 
-az subscription ls [--subscriptionname <string>] [--tenantid <string>] [--informationaction <ActionPreference>] [--informationvariable <string>]
+-s (--id, --subscriptionId)
+  [string] The subscription identity, a global unique identifier (GUID) that uniquely identifies the subscription.
 
-az subscription ls [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-
-Parameters
-
---subscriptionid
-The subscription to target.
-
---tenantid
-The tenant containing subscriptions to get or list details about.
-
---informationaction
-
-
---informationvariable
-
-
---subscriptionname
-
-
+-t (--domain, --tenantId)
+  [string] The tenant identity (GUID) or the domain name.
 

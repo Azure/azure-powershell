@@ -1,0 +1,27 @@
+az resource policy definition rm
+
+Remove a Policy Definition.
+
+USAGE:
+
+az resource policy definition rm -n <name> [-f] [--apiVersion <apiVersion>] [--pre]
+
+az resource policy definition rm --id <id> [-f] [--apiVersion <apiVersion>] [--pre]
+
+PARAMETERS:
+
+--apiVersion
+  [string] When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.
+
+-f (--force)
+  [flag] Perform this action without prompting, even if permanent changes are made.
+
+--id (--resourceId)
+  [string] The identity of this resource. Resource identity is a Uri path that uniquely identifies the resource.
+
+-n (--name)
+  [string] The policy definition name.
+
+--pre
+  [flag] When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.
+

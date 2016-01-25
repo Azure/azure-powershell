@@ -1,26 +1,28 @@
+az network app gateway ipconfig create
 
-New-AzureRmApplicationGatewayIPConfiguration: Creates an IP configuration for an application gateway.
+Create an Application Gateway IPConfiguration.
 
+USAGE:
 
-The New-AzureRmApplicationGatewayIPConfiguration cmdlet creates an IP configuration for an application gateway. The IP configuration contains the subnet in which application gateway is deployed.
+az network app gateway ipconfig create --name <name>
 
+az network app gateway ipconfig create --name <name> [--subnetId <subnetId>]
 
-Command syntax
+az network app gateway ipconfig create --name <name> [--subnet <subnet>]
 
-az applicationgateway ipconfiguration new --name <string> [--subnetid <string>]
-
-az applicationgateway ipconfiguration new --name <string> [--subnet <PSSubnet>]
-
-
-Parameters
+PARAMETERS:
 
 --name
-Specifies the name of the IP configuration to create.
-
---subnetid
-Specifies the subnet ID. This is the subnet in which the application gateway would be deployed.
+  [string] The name of the application gateway IP configuration
 
 --subnet
-Specifies the subnet object. This is the subnet in which the application gateway is deployed.
+  [object] Subnet where application gateway gets its address from. You may use commands including 'az vnet subnet create' or 'az vnet subnet ls' to produce a Subnet. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network app gateway ipconfig create --Subnet @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
 
+--subnetId
+  [string] ID of subnet where application gateway gets its address from
+
+RELATED COMMANDS:
+az vnet subnet create (produces Subnet)
+
+az vnet subnet ls (produces Subnet)
 

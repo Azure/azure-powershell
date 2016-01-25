@@ -1,44 +1,134 @@
+az network app gateway http listener set
 
-Set-AzureRmApplicationGatewayHttpListener: Modifies an HTTP listener for an application gateway.
+Update an Application Gateway Http Listener.
 
+USAGE:
 
-The Set-AzureRmApplicationGatewayHttpListener cmdlet modifies an HTTP listener for an Azure application gateway.
+az network app gateway http listener set --applicationGateway <applicationGateway> --name <name> --protocol <protocol> [--hostName <hostName>] [--requireServerNameIndication <requireServerNameIndication>]
 
+az network app gateway http listener set --applicationGateway <applicationGateway> --name <name> --protocol <protocol> [--frontendIPConfigurationId <frontendIPConfigurationId>] [--frontendPortId <frontendPortId>] [--sslCertificateId <sslCertificateId>] [--hostName <hostName>] [--requireServerNameIndication <requireServerNameIndication>]
 
-Command syntax
+az network app gateway http listener set --applicationGateway <applicationGateway> --name <name> --protocol <protocol> [--frontendIPConfiguration <frontendIPConfiguration>] [--frontendPort <frontendPort>] [--sslCertificate <sslCertificate>] [--hostName <hostName>] [--requireServerNameIndication <requireServerNameIndication>]
 
-az applicationgateway httplistener set --applicationgateway <PSApplicationGateway> --name <string> [--frontendipconfigurationid <string>] [--frontendportid <string>] [--sslcertificateid <string>] --protocol <string>
+PARAMETERS:
 
-az applicationgateway httplistener set --applicationgateway <PSApplicationGateway> --name <string> [--frontendipconfiguration <PSApplicationGatewayFrontendIPConfiguration>] [--frontendport <PSApplicationGatewayFrontendPort>] [--sslcertificate <PSApplicationGatewaySslCertificate>] --protocol <string>
+--applicationGateway
+  [object] The applicationGateway. You may use commands including 'az network app gateway create' or 'az network app gateway ls' or 'az network app gateway ls' or 'az network app gateway set' to produce a ApplicationGateway. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network app gateway http listener set --ApplicationGateway @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
 
+--frontendIPConfiguration
+  [object] Application gateway FrontendIPConfiguration. You may use commands including 'az network app gateway frontend ipconfig create' or 'az network app gateway frontend ipconfig ls' or 'az network app gateway frontend ipconfig ls' to produce a FrontendIPConfiguration. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network app gateway http listener set --FrontendIPConfiguration @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
 
-Parameters
+--frontendIPConfigurationId
+  [string] ID of the application gateway FrontendIPConfiguration
 
---applicationgateway
-Specifies the application gateway with which this cmdlet associates the HTTP listener.
+--frontendPort
+  [object] Application gateway FrontendPort. You may use commands including 'az network app gateway frontend port create' or 'az network app gateway frontend port ls' or 'az network app gateway frontend port ls' to produce a FrontendPort. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network app gateway http listener set --FrontendPort @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
+
+--frontendPortId
+  [string] ID of the application gateway FrontendPort
+
+--hostName
+  [string] Host name
 
 --name
-Specifies the name of the HTTP listener.
-
---frontendipconfigurationid
-Specifies the ID of the front-end IP address of the application gateway.
-
---frontendportid
-Specifies the application gateway front-end port ID.
-
---sslcertificateid
-Specifies the SSL certificate ID of the HTTP listener.
+  [string] The name of the HTTP listener
 
 --protocol
-Specifies the protocol that the HTTP listener uses.
+  [string] Protocol
 
---frontendipconfiguration
-Specifies the front-end IP address of the application gateway.
+--requireServerNameIndication
+  [string] RequireServerNameIndication
 
---frontendport
-Specifies the application gateway front-end port.
+--sslCertificate
+  [object] Application gateway SslCertificate. You may use commands including 'az network app gateway ssl cert create' or 'az network app gateway ssl cert ls' or 'az network app gateway ssl cert ls' to produce a SslCertificate. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network app gateway http listener set --SslCertificate @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
 
---sslcertificate
-Specifies the SSL certificate of the HTTP listener.
+--sslCertificateId
+  [string] ID of the application gateway SslCertificate
 
+RELATED COMMANDS:
+az network app gateway create (produces ApplicationGateway)
+
+az network app gateway ls (produces ApplicationGateway)
+
+az network app gateway ls (produces ApplicationGateway)
+
+az network app gateway set (produces ApplicationGateway)
+
+az network app gateway start (produces ApplicationGateway)
+
+az applicationgateway stop (produces ApplicationGateway)
+
+az network app gateway backend address pool add (produces ApplicationGateway)
+
+az network app gateway backend address pool set (produces ApplicationGateway)
+
+az network app gateway backend http settings add (produces ApplicationGateway)
+
+az network app gateway backend http settings rm (produces ApplicationGateway)
+
+az network app gateway backend http settings set (produces ApplicationGateway)
+
+az network app gateway frontend ipconfig add (produces ApplicationGateway)
+
+az network app gateway frontend ipconfig rm (produces ApplicationGateway)
+
+az network app gateway frontend ipconfig set (produces ApplicationGateway)
+
+az network app gateway frontend port add (produces ApplicationGateway)
+
+az network app gateway frontend port rm (produces ApplicationGateway)
+
+az network app gateway frontend port set (produces ApplicationGateway)
+
+az network app gateway ipconfig add (produces ApplicationGateway)
+
+az network app gateway ipconfig rm (produces ApplicationGateway)
+
+az network app gateway ipconfig set (produces ApplicationGateway)
+
+az network app gateway http listener add (produces ApplicationGateway)
+
+az network app gateway http listener set (produces ApplicationGateway)
+
+az network app gateway probe config add (produces ApplicationGateway)
+
+az network app gateway probe config rm (produces ApplicationGateway)
+
+az network app gateway probe config set (produces ApplicationGateway)
+
+az network app gateway request routing rule add (produces ApplicationGateway)
+
+az network app gateway request routing rule set (produces ApplicationGateway)
+
+az network app gateway sku set (produces ApplicationGateway)
+
+az network app gateway ssl cert add (produces ApplicationGateway)
+
+az network app gateway ssl cert rm (produces ApplicationGateway)
+
+az network app gateway ssl cert set (produces ApplicationGateway)
+
+az network app gateway url path map add (produces ApplicationGateway)
+
+az network app gateway url path map rm (produces ApplicationGateway)
+
+az network app gateway url path map set (produces ApplicationGateway)
+
+az network app gateway frontend ipconfig create (produces FrontendIPConfiguration)
+
+az network app gateway frontend ipconfig ls (produces FrontendIPConfiguration)
+
+az network app gateway frontend ipconfig ls (produces FrontendIPConfiguration)
+
+az network app gateway frontend port create (produces FrontendPort)
+
+az network app gateway frontend port ls (produces FrontendPort)
+
+az network app gateway frontend port ls (produces FrontendPort)
+
+az network app gateway ssl cert create (produces SslCertificate)
+
+az network app gateway ssl cert ls (produces SslCertificate)
+
+az network app gateway ssl cert ls (produces SslCertificate)
 

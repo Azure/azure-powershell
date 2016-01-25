@@ -1,21 +1,16 @@
+az network expressroute circuit ls
 
-Get-AzureRmExpressRouteCircuit
+Get Express Route Circuit details.
 
+USAGE:
 
+az network expressroute circuit ls [--name <name>] [--resourceGroupName <resourceGroupName>]
 
+PARAMETERS:
 
+--name (--resourceName)
+  [string] The resource name.
 
-Command syntax
-
-az expressroute circuit ls [--name <string>] [--resourcegroupname <string>]
-
-
-Parameters
-
---name
-
-
---resourcegroupname
-
-
+--resourceGroupName
+  [string] The name of the resource group containing this resource
 

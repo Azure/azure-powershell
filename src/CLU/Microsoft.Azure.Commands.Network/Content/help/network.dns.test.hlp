@@ -1,0 +1,16 @@
+az network dns test
+
+Test a Dns Availability.
+
+USAGE:
+
+az network dns test --domainNameLabel <domainNameLabel> --location <location>
+
+PARAMETERS:
+
+--domainNameLabel (--domainQualifiedName)
+  [string] The Domain Qualified Name.
+
+--location
+  [string] The region that will contain this resource.  Possible values include 'East US', 'North Europe', 'East Asia'
+

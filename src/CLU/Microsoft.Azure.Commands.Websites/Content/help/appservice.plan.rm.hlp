@@ -1,8 +1,26 @@
-
-Remove-AzureRmAppServicePlan
-
-
-Command syntax
-
 az appservice plan rm
+
+Remove an App Service Plan.
+
+USAGE:
+
+az appservice plan rm [-f]
+
+az appservice plan rm [-g] <resourceGroupName> [-n] <name> [-f]
+
+az appservice plan rm [--appServicePlan] <appServicePlan> [-f]
+
+PARAMETERS:
+
+--appServicePlan (--plan)
+  [object] The app service plan object
+
+-f (--force)
+  [flag] Perform this action without prompting, even if permanent changes are made.
+
+-g (--group, --resourceGroupName)
+  [string] The name of the resource group containing this resource
+
+-n (--name)
+  [string] The name of the app service plan.
 

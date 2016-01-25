@@ -1,82 +1,60 @@
+az resource role assignment create
 
-New-AzureRmRoleAssignment: Assigns the specified RBAC role to the specified principal, at the specified scope.
+Create a Role Assignment.
 
+USAGE:
 
-Use the New-AzureRMRoleAssignment command to grant access. Access is granted by assigning the appropriate RBAC role to them at the right scope. To grant access to the entire subscription, assign a role at the subscription scope. To grant access to a specific resource group within a subscription, assign a role at the resource group scope.
+az resource role assignment create --objectId <objectId> --scope <scope> --roleDefinitionName <roleDefinitionName>
 
-The subject of the assignment must be specified. To specify a user, use SignInName or Azure AD ObjectId parameters. To specify a security group, use Azure AD ObjectId parameter. And to specify an Azure AD application, use ServicePrincipalName or ObjectId parameters. 
+az resource role assignment create --objectId <objectId> -g <resourceGroupName> --roleDefinitionName <roleDefinitionName>
 
-The role that is being assigned must be specified using the RoleDefinitionName parameter. 
+az resource role assignment create --objectId <objectId> -g <resourceGroupName> -r <resourceName> -t <resourceType> --roleDefinitionName <roleDefinitionName> [--parentResource <parentResource>]
 
+az resource role assignment create --objectId <objectId> --roleDefinitionName <roleDefinitionName> [--scope <scope>]
 
-        The scope at which access is being granted may be specified. It defaults to the selected subscription.  The scope of the assignment can be specified using one of the following parameter combinations
-        a. Scope - This is the fully qualified scope starting with /subscriptions/<subscriptionId>
-        b. ResourceGroupName - to grant access to the specified resource group.
-        c. ResourceName, ResourceType, ResourceGroupName and (optionally) ParentResource – to specify a particular resource within a resource group to grant access to.
-      
+az resource role assignment create --objectId <objectId> --scope <scope> --roleDefinitionId <roleDefinitionId>
 
+az resource role assignment create --signInName <signInName> -g <resourceGroupName> --roleDefinitionName <roleDefinitionName>
 
-Command syntax
+az resource role assignment create --signInName <signInName> -g <resourceGroupName> -r <resourceName> -t <resourceType> --roleDefinitionName <roleDefinitionName> [--parentResource <parentResource>]
 
-az networksecurityrole assignment create --objectid <Guid> --scope <string> --roledefinitionname <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
+az resource role assignment create --signInName <signInName> --roleDefinitionName <roleDefinitionName> [--scope <scope>]
 
-az networksecurityrole assignment create --objectid <Guid> --scope <string> --roledefinitionname <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
+az resource role assignment create --servicePrincipalName <servicePrincipalName> -g <resourceGroupName> --roleDefinitionName <roleDefinitionName>
 
-az networksecurityrole assignment create --objectid <Guid> --resourcegroupname <string> --roledefinitionname <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
+az resource role assignment create --servicePrincipalName <servicePrincipalName> -g <resourceGroupName> -r <resourceName> -t <resourceType> --roleDefinitionName <roleDefinitionName> [--parentResource <parentResource>]
 
-az networksecurityrole assignment create --objectid <Guid> --resourcegroupname <string> --resourcename <string> --resourcetype <string> [--parentresource <string>] --roledefinitionname <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
+az resource role assignment create --servicePrincipalName <servicePrincipalName> --roleDefinitionName <roleDefinitionName> [--scope <scope>]
 
-az networksecurityrole assignment create --objectid <Guid> --scope <string> --roledefinitionid <Guid> [--informationaction <ActionPreference>] [--informationvariable <string>]
+PARAMETERS:
 
-az networksecurityrole assignment create --signinname <string> --scope <string> --roledefinitionname <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
+-g (--group, --resourceGroupName)
+  [string] The name of the resource group containing this resource
 
-az networksecurityrole assignment create --signinname <string> --resourcegroupname <string> --roledefinitionname <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
+--objectId (--id, --principalId)
+  [guid] The user or group object id.
 
-az networksecurityrole assignment create --signinname <string> --resourcegroupname <string> --resourcename <string> --resourcetype <string> [--parentresource <string>] --roledefinitionname <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
+--parentResource (--parent)
+  [string] Parent resource of the resource to assign the role to, if there is any.
 
-az networksecurityrole assignment create --serviceprincipalname <string> --resourcegroupname <string> --roledefinitionname <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
+-r (--resource, --resourceName)
+  [string] Resource to assign the role to.
 
-az networksecurityrole assignment create --serviceprincipalname <string> --resourcegroupname <string> --resourcename <string> --resourcetype <string> [--parentresource <string>] --roledefinitionname <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
+--roleDefinitionId
+  [guid] Role Id the principal is assigned to.
 
-az networksecurityrole assignment create --serviceprincipalname <string> --scope <string> --roledefinitionname <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-
-Parameters
-
---objectid
-Azure AD Objectid of the user, group or service principal.
+--roleDefinitionName
+  [string] Role name to assign the principals with.
 
 --scope
-The Scope of the role assignment. In the format of relative URI. For e.g. "/subscriptions/9004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/TestRG". If not specified, will create the role assignment at subscription level. If specified, it should start with "/subscriptions/{id}".
+  [string] Scope of the role assignment. In the format of relative URI. If not specified, will assign the role at subscription level. If specified, it can either start with "/subscriptions/<id>" or the part after that. If it's latter, the current subscription id will be used.
 
---roledefinitionname
-Name of the RBAC role that needs to be assigned to the principal i.e. Reader, Contributor, Virtual Network Administrator, etc.
+--servicePrincipalName (--spn)
+  [string] The app SPN.
 
---informationaction
+--signInName (--email, --userPrincipalName)
+  [string] The user SignInName.
 
-
---informationvariable
-
-
---resourcegroupname
-The resource group name. Creates an assignment that is effective at the specified resource group. When used in conjunction with ResourceName, ResourceType and (optionally)ParentResource parameters, the command constructs a hierarchical scope in the form of a relative URI that identifies a resource.
-
---resourcename
-The resource name. For e.g. storageaccountprod. Should only be used in conjunction with ResourceGroupName, ResourceType and (optionally)ParentResource parameters to construct a hierarchical scope in the form of a  relative URI that identifies a resource.
-
---resourcetype
-The resource type. For e.g. Microsoft.Network/virtualNetworks. Should only be used in conjunction with ResourceGroupName, ResourceName and (optionally)ParentResource parameters to construct a hierarchical scope in  the form of a relative URI that identifies a resource.
-
---parentresource
-The parent resource in the hierarchy(of the resource specified using ResourceName parameter). Should only be  used in conjunction with ResourceGroupName, ResourceType and ResourceName parameters to construct a hierarchical scope in the form of a relative URI that identifies a resource.
-
---roledefinitionid
-Id of the RBAC role that needs to be assigned to the principal.
-
---signinname
-The email address or the user principal name of the user.
-
---serviceprincipalname
-The ServicePrincipalName of the Azure AD application
-
+-t (--type, --resourceType)
+  [string] Type of the resource to assign the role to.
 

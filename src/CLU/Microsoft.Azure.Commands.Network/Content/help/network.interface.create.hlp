@@ -1,77 +1,97 @@
+az network interface create
 
-New-AzureRmNetworkInterface: Creates a network interface.
+Create a Network Interface.
 
+USAGE:
 
-The New-AzureRmNetworkInterface cmdlet creates an Azure  network interface.
+az network interface create --name <name> --resourceGroupName <resourceGroupName> --location <location> [--privateIpAddress <privateIpAddress>] [--ipConfigurationName <ipConfigurationName>] [--dnsServer <dnsServer>] [--internalDnsNameLabel <internalDnsNameLabel>] [--enableIPForwarding] [--tag <tag>] [--force]
 
+az network interface create --name <name> --resourceGroupName <resourceGroupName> --location <location> --subnetId <subnetId> [--privateIpAddress <privateIpAddress>] [--publicIpAddressId <publicIpAddressId>] [--networkSecurityGroupId <networkSecurityGroupId>] [--loadBalancerBackendAddressPoolId <loadBalancerBackendAddressPoolId>] [--loadBalancerInboundNatRuleId <loadBalancerInboundNatRuleId>] [--ipConfigurationName <ipConfigurationName>] [--dnsServer <dnsServer>] [--internalDnsNameLabel <internalDnsNameLabel>] [--enableIPForwarding] [--tag <tag>] [--force]
 
-Command syntax
+az network interface create --name <name> --resourceGroupName <resourceGroupName> --location <location> --subnet <subnet> [--privateIpAddress <privateIpAddress>] [--publicIpAddress <publicIpAddress>] [--networkSecurityGroup <networkSecurityGroup>] [--loadBalancerBackendAddressPool <loadBalancerBackendAddressPool>] [--loadBalancerInboundNatRule <loadBalancerInboundNatRule>] [--ipConfigurationName <ipConfigurationName>] [--dnsServer <dnsServer>] [--internalDnsNameLabel <internalDnsNameLabel>] [--enableIPForwarding] [--tag <tag>] [--force]
 
-az networkinterface new --name <string> --resourcegroupname <string> --location <string> [--privateipaddress <string>] --subnetid <string> [--publicipaddressid <string>] [--networksecuritygroupid <string>] [--loadbalancerbackendaddresspoolid <List`1[String]>] [--loadbalancerinboundnatruleid <List`1[String]>] [--ipconfigurationname <string>] [--dnsserver <List`1[String]>] [--internaldnsnamelabel <string>] [--enableipforwarding] [--tag <Hashtable[]>] [--force]
+PARAMETERS:
 
-az networkinterface new --name <string> --resourcegroupname <string> --location <string> [--privateipaddress <string>] --subnet <PSSubnet> [--publicipaddress <PSPublicIpAddress>] [--networksecuritygroup <PSNetworkSecurityGroup>] [--loadbalancerbackendaddresspool <List`1[PSBackendAddressPool]>] [--loadbalancerinboundnatrule <List`1[PSInboundNatRule]>] [--ipconfigurationname <string>] [--dnsserver <List`1[String]>] [--internaldnsnamelabel <string>] [--enableipforwarding] [--tag <Hashtable[]>] [--force]
+--dnsServer
+  [string[]] The list of Dns Servers
 
-
-Parameters
-
---name
-Specifies the name of the network interface to create.
-
---resourcegroupname
-Specifies the name of a resource group. This cmdlet creates a network interface for the resource group that this parameter specifies.
-
---location
-Specifies the region for a network interface.
-
---privateipaddress
-Specifies a static IPv4 IP address to assign to this network interface. This parameter is optional.
-
---subnetid
-Specifies the ID of the subnet for which to create a network interface.
-
---publicipaddressid
-Specifies the ID of a PublicIPAddress object to assign to a network interface.
-
---networksecuritygroupid
-Specifies the ID of a network security group.
-
---loadbalancerbackendaddresspoolid
-Specifies the ID of a BackendAddressPool object.
-
---loadbalancerinboundnatruleid
-Specifies the ID of an inbound NAT rule configuration for a load balancer.
-
---ipconfigurationname
-Specifies the name of an IP configuration.
-
---dnsserver
-Specifies the DNS server for the network interface.
-
---internaldnsnamelabel
-
-
---enableipforwarding
-
-
---tag
-Specifies a dictionary of tags to associate with a network interface.
+--enableIPForwarding
+  [flag] EnableIPForwarding
 
 --force
-Forces the creation of the network interface even if a network interface with the same name already exists.
+  [flag] Perform this action without prompting, even if permanent changes are made.
+
+--internalDnsNameLabel
+  [string] The Internal Dns name
+
+--ipConfigurationName
+  [string] The IpConfiguration name.default value: ipconfig1
+
+--loadBalancerBackendAddressPool
+  [object[]] LoadBalancerBackendAddressPools
+
+--loadBalancerBackendAddressPoolId
+  [string[]] LoadBalancerBackendAddressPoolId
+
+--loadBalancerInboundNatRule
+  [object[]] LoadBalancerInboundNatRule
+
+--loadBalancerInboundNatRuleId
+  [string[]] LoadBalancerInboundNatRuleId
+
+--location
+  [string] The region that will contain this resource.  Possible values include 'East US', 'North Europe', 'East Asia'
+
+--name (--resourceName)
+  [string] The resource name.
+
+--networkSecurityGroup
+  [object] NetworkSecurityGroup. You may use commands including 'az network security group create' or 'az network security group ls' or 'az network security group set' or 'az network security rule add' to produce a NetworkSecurityGroup. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network interface create --NetworkSecurityGroup @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
+
+--networkSecurityGroupId
+  [string] NetworkSecurityGroupId
+
+--privateIpAddress
+  [string] The private ip address of the Network Interface if static allocation is specified.
+
+--publicIpAddress
+  [object] PublicIpAddress. You may use commands including 'az network ip create' or 'az network ip ls' or 'az network ip set' to produce a PublicIpAddress. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network interface create --PublicIpAddress @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
+
+--publicIpAddressId
+  [string] PublicIpAddressId
+
+--resourceGroupName
+  [string] The name of the resource group containing this resource
 
 --subnet
-Specifies a Subnet object. This cmdlet creates a network interface for the subnet that this parameter specifies.
+  [object] Subnet. You may use commands including 'az vnet subnet create' or 'az vnet subnet ls' to produce a Subnet. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network interface create --Subnet @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
 
---publicipaddress
-Specifies a PublicIPAddress object to assign to a network interface.
+--subnetId
+  [string] SubnetId
 
---networksecuritygroup
-Specifies a NetworkSecurityGroup object.
+--tag
+  [hashtable[]] An array of hashtables which represents resource tags.
 
---loadbalancerbackendaddresspool
-Specifies a BackendAddressPool object.
+RELATED COMMANDS:
+az vnet subnet create (produces Subnet)
 
---loadbalancerinboundnatrule
-Specifies an inbound NAT rule configuration for a load balancer.
+az vnet subnet ls (produces Subnet)
 
+az network ip create (produces PublicIpAddress)
+
+az network ip ls (produces PublicIpAddress)
+
+az network ip set (produces PublicIpAddress)
+
+az network security group create (produces NetworkSecurityGroup)
+
+az network security group ls (produces NetworkSecurityGroup)
+
+az network security group set (produces NetworkSecurityGroup)
+
+az network security rule add (produces NetworkSecurityGroup)
+
+az network security rule rm (produces NetworkSecurityGroup)
+
+az network security rule set (produces NetworkSecurityGroup)
 

@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Profile
         internal const string ProfileFromDiskParameterSet = "ProfileFromDisk";
 
         [Parameter(ParameterSetName = InMemoryProfileParameterSet, Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true)]
-        public AzureRMProfile Profile { get; set; }
+        public PSAzureProfile Profile { get; set; }
 
         [Parameter(ParameterSetName = ProfileFromDiskParameterSet, Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true)]
         public string Path { get; set; }

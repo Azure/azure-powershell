@@ -1,39 +1,34 @@
+az vnet create
 
-New-AzureRmVirtualNetwork: Creates a virtual network.
+Create a Virtual Network.
 
+USAGE:
 
-The New-AzureRmVirtualNetwork cmdlet creates an Azure virtual network.
+az vnet create --name <name> --resourceGroupName <resourceGroupName> --location <location> [--addressPrefix <addressPrefix>] [--dnsServer <dnsServer>] [--subnet <subnet>] [--tag <tag>] [--force]
 
+PARAMETERS:
 
-Command syntax
+--addressPrefix
+  [string[]] The address prefixes of the virtual network
 
-az vnet new --name <string> --resourcegroupname <string> --location <string> [--addressprefix <List`1[String]>] [--dnsserver <List`1[String]>] [--subnet <List`1[PSSubnet]>] [--tag <Hashtable[]>] [--force]
-
-
-Parameters
-
---name
-Specifies the name of the virtual network to create.
-
---resourcegroupname
-Specifies the name of a resource group to contain the virtual network.
-
---location
-Specifies the region for the virtual network.
-
---addressprefix
-Specifies a range of IP addresses for a virtual network.
-
---dnsserver
-Specifies the DNS server for a subnet.
-
---subnet
-Specifies a list of subnets to associate with the virtual network.
-
---tag
-Specifies a dictionary of tags to associate with the network interface.
+--dnsServer
+  [string[]] The list of Dns Servers
 
 --force
-Forces the command to run without asking for user confirmation.
+  [flag] Perform this action without prompting, even if permanent changes are made.
 
+--location
+  [string] The region that will contain this resource.  Possible values include 'East US', 'North Europe', 'East Asia'
+
+--name (--resourceName)
+  [string] The resource name.
+
+--resourceGroupName
+  [string] The name of the resource group containing this resource
+
+--subnet
+  [object[]] The list of subnets
+
+--tag
+  [hashtable[]] An array of hashtables which represents resource tags.
 
