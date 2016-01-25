@@ -86,7 +86,7 @@ function WaitForJobStatus
         {
             break
         }
-        elseif($endStatus -ccontains $job.Status.ToLower())
+        elseif($endStatus -contains $job.Status.ToLower())
         {	    
             Write-Output ("The Job with ID $($job.Id) reached $($job.Status) Status already.")
             return
@@ -145,7 +145,7 @@ function Test-AutomationStartAndStopRunbook
 
 <#
 .SYNOPSIS
-Tests publishing runbook and editing runbook with and without Overrite parameter
+Tests publishing runbook and editing runbook with and without Overwrite parameter
 #>
 function Test-AutomationPublishAndEditRunbook
 {
