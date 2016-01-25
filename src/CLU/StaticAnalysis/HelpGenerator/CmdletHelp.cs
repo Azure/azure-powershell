@@ -33,7 +33,6 @@ namespace StaticAnalysis.HelpGenerator
         private IList<CmdletHelpReference> _references = new List<CmdletHelpReference>();
         private IList<Type> _output = new List<Type>();
         private string _noun;
-        private string _synopsis = null;
         public string ClassName { get; set; }
         public string AssemblyName { get; set; }
         public string NounName

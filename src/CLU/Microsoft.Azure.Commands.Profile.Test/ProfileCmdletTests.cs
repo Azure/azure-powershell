@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             profile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
             SaveAzureRMProfileCommand cmdlt = new SaveAzureRMProfileCommand();
             // Setup
-            cmdlt.Profile = profile;
+            cmdlt.Profile = (PSAzureProfile)profile;
             cmdlt.Path = "X:\\foo.json";
             cmdlt.DataStore = _dataStore;
             cmdlt.SetCommandRuntimeMock(_commandRuntimeMock);

@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Profile
         {
             if (Profile != null)
             {
-                ((AzureRMProfile)Profile).Save(Path);
+                ((AzureRMProfile) Profile).Save(DataStore, Path);
             }
             else
             {
