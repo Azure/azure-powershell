@@ -750,7 +750,7 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
                         automationAccountName,
                         new DscNodePatchParameters
                             {
-                                Id = nodeId,
+                                NodeId = nodeId,
                                 NodeConfiguration = nodeConfiguration
                             }).Node;
 
