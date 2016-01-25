@@ -12,19 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.IO;
 using System.Management.Automation;
-using System.Reflection;
-using System.Security;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common;
 using System;
 using Microsoft.Azure.Commands.Models;
-using Microsoft.Azure.Commands.Profile;
 using Microsoft.Azure.Commands.Profile.Properties;
+using System.Management.Automation.Host;
+using System.Collections.ObjectModel;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -45,6 +40,7 @@ namespace Microsoft.Azure.Commands.Profile
         private const string UserSubscriptionNameParameterSet = "UserSubscriptionName";
         private const string AccessTokenNameParameterSet = "AccessTokenName";
         private const string AccessTokenIdParameterSet = "AccessTokenId";
+        internal const string CollectTelemetryEnvironmentVariable = "Azure_PS_Data_Collection";
 
         public AzureEnvironment Environment { get; set; }
 
@@ -220,11 +216,45 @@ namespace Microsoft.Azure.Commands.Profile
                 DefaultProfile = new AzureRMProfile();
             }
 
+            bool isInteractive = azureAccount.Id == null;
+
+            PromptForDataCollectionProfileIfNotExists(isInteractive);
+
             var profileClient = new RMProfileClient(AuthenticationFactory, ClientFactory, DefaultProfile);
             profileClient.WarningLog = (s) => WriteWarning(s);
-
+            
             WriteObject((PSAzureProfile)profileClient.Login(azureAccount, Environment, TenantId, SubscriptionId,
                 SubscriptionName, password));
+        }
+
+        private void PromptForDataCollectionProfileIfNotExists(bool isInteractive)
+        {
+            var collectTelemetryEnv = System.Environment.GetEnvironmentVariable(CollectTelemetryEnvironmentVariable);
+            if (!string.IsNullOrEmpty(collectTelemetryEnv))
+            {
+                bool collectTelemetry = false;
+                if (bool.TryParse(collectTelemetryEnv, out collectTelemetry))
+                {
+                    DefaultProfile.IsTelemetryCollectionEnabled = collectTelemetry;
+                }
+            }
+
+            if (!DefaultProfile.IsTelemetryCollectionEnabled.HasValue && isInteractive)
+            {
+                Collection<ChoiceDescription> choices = new Collection<ChoiceDescription>();
+                choices.Add(new ChoiceDescription("&Yes", Resources.DataCollectionConfirmYes));
+                choices.Add(new ChoiceDescription("&No", Resources.DataCollectionConfirmNo));
+                try
+                {
+                    int choice = this.Host.UI.PromptForChoice(Resources.DataCollectionActivity, Resources.DataCollectionPrompt, choices, 1);
+                    DefaultProfile.IsTelemetryCollectionEnabled = choice == 0;
+                    WriteWarning(choice == 0 ? Resources.DataCollectionConfirmYes : Resources.DataCollectionConfirmNo);
+                }
+                catch (PSInvalidOperationException)
+                {
+                    // Ignore Exception
+                }
+            }
         }
     }
 }

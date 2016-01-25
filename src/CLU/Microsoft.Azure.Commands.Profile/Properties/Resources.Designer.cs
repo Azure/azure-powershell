@@ -132,6 +132,46 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///    Looks up a localized string similar to Microsoft Azure CLU Data Collection Confirmation.
+        /// </summary>
+        internal static string DataCollectionActivity {
+            get {
+                return ResourceManager.GetString("DataCollectionActivity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Looks up a localized string similar to You choose not to participate in Microsoft Azure CLU data collection..
+        /// </summary>
+        internal static string DataCollectionConfirmNo {
+            get {
+                return ResourceManager.GetString("DataCollectionConfirmNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Looks up a localized string similar to You choose to participate in Microsoft Azure CLU data collection..
+        /// </summary>
+        internal static string DataCollectionConfirmYes {
+            get {
+                return ResourceManager.GetString("DataCollectionConfirmYes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///    Looks up a localized string similar to  Microsoft Azure CLU collects data about how users use CLU commands and some problems they encounter.  Microsoft uses this information to improve our CLU commands.  Participation is voluntary and when you choose to participate your device automatically sends information to Microsoft about how you use Azure CLU. 
+        /// 
+        ///If you choose to participate, you may stop later at any time. To stop participation run `az telemetry --disable`.
+        ///
+        ///If you choose to not participate, you may start later at any time. To start pa [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string DataCollectionPrompt {
+            get {
+                return ResourceManager.GetString("DataCollectionPrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///    Looks up a localized string similar to Environment name needs to be specified.
         /// </summary>
         internal static string EnvironmentNameNeedsToBeSpecified {

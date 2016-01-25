@@ -1468,34 +1468,6 @@ The file needs to be a PowerShell script (.ps1 or .psm1).</value>
   <data name="CannotChangeBuiltinEnvironment" xml:space="preserve">
     <value>Cannot change built-in environment {0}.</value>
   </data>
-  <data name="DataCollectionPrompt" xml:space="preserve">
-    <value>Microsoft Azure PowerShell collects data about how users use PowerShell cmdlets and some problems they encounter.  Microsoft uses this information to improve our PowerShell cmdlets.  Participation is voluntary and when you choose to participate your device automatically sends information to Microsoft about how you use Azure PowerShell. 
- 
-If you choose to participate, you can stop at any time by using Azure PowerShell as follows:
-1.	Use the Disable-AzureDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the AzureResourceManager module
-To disable data collection: PS &gt; Disable-AzureDataCollection
-
-If you choose to not participate, you can enable at any time by using Azure PowerShell as follows:
-1.	Use the Enable-AzureDataCollection cmdlet to turn the feature On. The cmdlet can be found in the AzureResourceManager module
-To enable data collection: PS &gt; Enable-AzureDataCollection
- 
-Select Y to enable data collection [Y/N]:</value>
-  </data>
-  <data name="DataCollectionActivity" xml:space="preserve">
-    <value>Microsoft Azure PowerShell Data Collection Confirmation</value>
-  </data>
-  <data name="DataCollectionConfirmNo" xml:space="preserve">
-    <value>You choose not to participate in Microsoft Azure PowerShell data collection.</value>
-  </data>
-  <data name="DataCollectionConfirmTime" xml:space="preserve">
-    <value>This confirmation message will be dismissed in '{0}' second(s)...</value>
-  </data>
-  <data name="DataCollectionConfirmYes" xml:space="preserve">
-    <value>You choose to participate in Microsoft Azure PowerShell data collection.</value>
-  </data>
-  <data name="DataCollectionSaveFileInformation" xml:space="preserve">
-    <value>The setting profile has been saved to the following path '{0}'.</value>
-  </data>
   <data name="AuthenticatingForSingleTenant" xml:space="preserve">
     <value>[Common.Authentication]: Authenticating for account {0} with single tenant {1}.</value>
   </data>

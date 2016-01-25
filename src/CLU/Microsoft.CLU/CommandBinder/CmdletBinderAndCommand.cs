@@ -177,7 +177,8 @@ namespace Microsoft.CLU.CommandBinder
 #if PSCMDLET_HELP
             return CmdletHelp.Generate(parser.FormatParameterName, _discriminatorBinder.Modules, args, prefix);
 #else
-            var commands = Microsoft.CLU.Help.CommandDispatchHelper.CompleteCommands(CLUEnvironment.GetPackagesRootPath(), args).ToArray();
+            var commands = CommandDispatchHelper
+                .CompleteCommands(new HelpPackageFinder(CLUEnvironment.GetPackagesRootPath()), args).ToArray();
             if (commands.Length > 0)
             {
                 foreach (var command in commands)
@@ -267,7 +268,7 @@ namespace Microsoft.CLU.CommandBinder
             }
             finally
             {
-                _telemetryClient.Flush();
+                Task.Run(() => _telemetryClient.Flush()).Wait(TimeSpan.FromSeconds(5));
             }
         }
 

@@ -1,4 +1,4 @@
-# Work on CLU cmdlets
+﻿# Work on CLU cmdlets
 
 ## Prerequsites
 
@@ -6,7 +6,7 @@
   
 Note, after done, run `dnvm list` command to check the 'coreclr' runtime is installed with right version of `1.0.0-rc1-final`. If not, run `dnvm install 1.0.0-rc1-final -r coreclr -a x64 -p`. Remember always use `-p` flag, so the selection can persist. 
 
-* Get the latest dotnet from "https://azureclu.blob.core.windows.net/tools/dotnet-win-x64.latest.zip", unzip, then add its bin folder to the PATH
+* Get the latest dotnet from "https://azureclu.blob.core.windows.net/tools/dotnet-win-x64.latest.zip", unzip, then add its bin folder to the PATH.  NOTE: With this version of dotnet, the path to dotnet.exe must not contain any spaces.
 
 ## Project Artifacts
 
@@ -25,7 +25,7 @@ CLUPackages require some additional files to direct generation of indexing, and 
     | ------------- |:-------------:|
     | CommandAssemblies      | File name of cmdlets assembly(ies) |
     | NounPrefix      | ‘AzureRm’  The part of the cmdlet noun to remove in clu commands|
-    | NounFirst       | if true, the verb comes at the end of the command (e.g. az resource get)|
+    | NounFirst       | if true, the verb comes at the end of the command (e.g. az resource ls)|
     
 * \<modulename\>.nuspec.template, which contains nuspec format metadata about the package – the base temaplate is in tools\clu\Microsoft.Azure.Commands.nuspec.template.  Here are the special fields defined in this template:
    * %PackageId% - replace with the module name (Microsoft.Azure.Commands.\<rp-name\>)
@@ -60,19 +60,26 @@ There is also `<repo-root>\tools\CLU\SetupEnv.bat` which is a windows batch wrap
 
 To test on osx/linux boxes, do #1, open `<repo-root>\drop\clurun`, copy the flavor folder to your target machine, and run the "az.sh" inside. Make sure set execution permission using `chmod +x az.sh clurun`
 
-(All of those are subject to change, contact yugangw or adxsdkdev for any questions)
+### Nightly Builds
+You can also consume tarballs from the nightly build.  The latest drops are available at:
+- ubuntu: [download](https://azurecludrops.blob.core.windows.net/drops/ubuntu.14.04-x64.latest.tar.gz)
+- osx: [download](https://azurecludrops.blob.core.windows.net/drops/osx.10.10-x64.latest.tar.gz)
+- windows: [download](https://azurecludrops.blob.core.windows.net/drops/win7-x64.latest.tar.gz)
+
+
+(All of those are subject to change, contact adxsdkdev for any questions)
 
 ## Quick introductions on cmdlets
-  *  Run commands using the ‘az’ prefix, cmdlet nouns, and cmdlet verbs, for example, `az env get` maps to the cmdlet `Get-AzureRmEnvironment`
-  *  Cmdlet parameters use the double dash (--) so for example, getting a subscription with a particular name would be: `az subscription get –-SubscriptionName “name of subscription"`
+  *  Run commands using the ‘az’ prefix, cmdlet nouns, and cmdlet verbs, for example, `az env ls` maps to the cmdlet `Get-AzureRmEnvironment`
+  *  Cmdlet parameters use the double dash (--) so for example, getting a subscription with a particular name would be: `az subscription ls –-SubscriptionName “name of subscription"`
   * To log in, 3 options
-    * login interactively using device flow, this is the only option for msa account or any org-id with 2fa enforced, example: `az account add`
-    * login with user and password, this works on org-id w/o 2fa enforced, example: `az account add --Username user@contoso.org  --Password password1`
-    * login as service principal. Example: `az account add --ServicePrincipal --TenantId <tenant> --ApplicationId <id> --Secret <secret>`
+    * login interactively using device flow, this is the only option for msa account or any org-id with 2fa enforced, example: `az login`
+    * login with user and password, this works on org-id w/o 2fa enforced, example: `az login --Username user@contoso.org  --Password password1`
+    * login as service principal. Example: `az login --ServicePrincipal --TenantId <tenant> --ApplicationId <id> --Secret <secret>`
   * Piping between cmdlets should work the same way that Powerhell piping works
-    ```az subscription get --SubscriptionName | az context set```
+    ```az subscription ls --SubscriptionName | az context set```
   * You can capture piped output using redirection to a file - the result will be the json serialization of the output object.
-    ```az subscription get > subscriptions.json```
+    ```az subscription ls > subscriptions.json```
   * You can use file input to a parameter using '@' notation:
     ```az command --param1 @file1.json```
     Reads input from file1.json and attempts to deserialize the .net object that is the Parameter type for ```param1```

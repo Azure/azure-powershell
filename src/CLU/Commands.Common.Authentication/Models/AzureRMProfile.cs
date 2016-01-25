@@ -71,19 +71,20 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         [JsonIgnore]
         public string ProfilePath { get; private set; }
 
+        /// <summary>
+        /// When set to true, collects telemetry information.
+        /// </summary>
+        public bool? IsTelemetryCollectionEnabled { get; set; }
+        
         private void Load(string path)
         {
             this.ProfilePath = path;
             if (_dataStore.FileExists(ProfilePath))
             {
                 string contents = _dataStore.ReadFileAsText(ProfilePath);
-                AzureRMProfile profile = JsonConvert.DeserializeObject<AzureRMProfile>(contents);
-                Debug.Assert(profile != null);
-                this.Context = profile.Context;
-                this.Environments = profile.Environments;
+                JsonConvert.PopulateObject(contents, this);
             }
         }
-
 
         /// <summary>
         /// Writes profile to the disk it was opened from disk.

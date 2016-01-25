@@ -14,9 +14,13 @@
                 <Label>Context</Label>
                 <Property>Context</Property>
               </ListItem>
-               <ListItem>
+              <ListItem>
                 <Label>Environments</Label>
                 <Property>EnvironmentNames</Property>
+              </ListItem>
+              <ListItem>
+                <Label>TelemetryEnabled</Label>
+                <Property>IsTelemetryCollectionEnabled</Property>
               </ListItem>
            </ListItems>
           </ListEntry>

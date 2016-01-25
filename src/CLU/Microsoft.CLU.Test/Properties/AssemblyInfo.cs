@@ -12,28 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.IO;
-using Newtonsoft.Json;
-using Microsoft.Azure.Commands.Common.Authentication;
+using System.Reflection;
+using System.Runtime.InteropServices;
 
-namespace Microsoft.Azure.Commands.Common
-{
-    public class AzurePSDataCollectionProfile
-    {
-        public const string EnvironmentVariableName = "Azure_PS_Data_Collection";
-        public static string DefaultFileName = "AzureDataCollectionProfile.json";
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+[assembly: AssemblyTitle("Microsoft.CLU.Test")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("Microsoft.CLU.Test")]
+[assembly: AssemblyCopyright("Copyright © Microsoft")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
 
-        public AzurePSDataCollectionProfile()
-        {
-        }
+[assembly: ComVisible(false)]
 
-        public AzurePSDataCollectionProfile(bool enable)
-        {
-            EnableAzureDataCollection = enable;
-        }
+[assembly: Guid("28fe3fc0-6fdf-4f01-8a82-d7b4a834ddd3")]
 
-        [JsonProperty(PropertyName = "enableAzureDataCollection")]
-        public bool? EnableAzureDataCollection { get; set; }
-    }
-}
+[assembly: AssemblyVersion("1.0.0")]
+[assembly: AssemblyFileVersion("1.0.0")]
