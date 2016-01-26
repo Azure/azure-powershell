@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
         {
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Authorization", "2014-07-01-preview");
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d);
             using (UndoContext context = UndoContext.Current)
             {
                 context.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2));

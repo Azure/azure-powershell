@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
         {
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Authorization", null);
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d);
 
             using (UndoContext context = UndoContext.Current)
             {

@@ -59,7 +59,15 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             //HttpMockServer.Matcher = new PermissiveRecordMatcher();
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Authorization", null);
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
+
+            var userAgents = new Dictionary<string, string>();
+            userAgents.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2014-04-01-preview");
+            
+
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(
+                false,
+                d,
+                userAgents);
             // Enable undo functionality as well as mock recording
             using (UndoContext context = UndoContext.Current)
             {

@@ -24,6 +24,8 @@ using Microsoft.Azure.Test;
 using Microsoft.Azure.Common.Authentication;
 
 using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Microsoft.Azure.Test.HttpRecorder;
+using System.Collections.Generic;
 
 namespace Commands.Network.Test
 {
@@ -77,6 +79,9 @@ namespace Commands.Network.Test
             string callingClassType,
             string mockName)
         {
+            Dictionary<string, string> d = new Dictionary<string, string>();
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d);
+
             using (RestTestFramework.MockContext context = RestTestFramework.MockContext.Start(callingClassType, mockName))
             {
                 this.csmTestFactory = new CSMTestEnvironmentFactory();

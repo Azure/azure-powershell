@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         {
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Authorization", AuthorizationApiVersion);
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d);
 
             using (MockContext context = MockContext.Start(callingClassType, mockName))
             {
