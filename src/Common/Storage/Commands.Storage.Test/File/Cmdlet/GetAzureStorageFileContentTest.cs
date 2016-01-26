@@ -127,7 +127,6 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
 
             mockupTransferManager.ThrowAssertExceptionIfAvailable();
             this.MockCmdRunTime.OutputPipeline.AssertNoObject();
-            this.MockCmdRunTime.ErrorStream.AssertNoObject();
         }
 
         private sealed class DownloadTransferManager : MockTransferManager
