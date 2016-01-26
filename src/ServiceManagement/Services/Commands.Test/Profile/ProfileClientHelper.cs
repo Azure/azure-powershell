@@ -254,6 +254,11 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             return Task.FromResult(result);
         }
 
+        public Task<Azure.Subscriptions.Models.SubscriptionListResult> ListNextAsync(string nextLink, System.Threading.CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<Azure.Subscriptions.Models.LocationListResult> ListLocationsAsync(string subscriptionId, System.Threading.CancellationToken cancellationToken)
         {
             var result = new Azure.Subscriptions.Models.LocationListResult();
@@ -283,6 +288,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
 
             return result;
         }
+
     }
 
     public static class ProfileClientHelper
