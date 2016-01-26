@@ -1,0 +1,54 @@
+az resource lock rm
+
+Remove a Resource Lock.
+
+USAGE:
+
+az resource lock rm [-f] [--apiVersion <apiVersion>] [--pre]
+
+az resource lock rm -n <lockName> -g <resourceGroupName> [-f] [--apiVersion <apiVersion>] [--pre]
+
+az resource lock rm -n <lockName> --resourceName <resourceName> -t <resourceType> -g <resourceGroupName> [-f] [--apiVersion <apiVersion>] [--pre]
+
+az resource lock rm -n <lockName> --scope <scope> [-f] [--apiVersion <apiVersion>] [--pre]
+
+az resource lock rm -n <lockName> [-f] [--apiVersion <apiVersion>] [--pre]
+
+az resource lock rm -n <lockName> --resourceName <resourceName> -t <resourceType> [-f] [--apiVersion <apiVersion>] [--pre]
+
+az resource lock rm -n <lockName> --resourceName <resourceName> -t <resourceType> --tenantLevel [-f] [--apiVersion <apiVersion>] [--pre]
+
+az resource lock rm --lockId <lockId> [-f] [--apiVersion <apiVersion>] [--pre]
+
+PARAMETERS:
+
+--apiVersion
+  [string] When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.
+
+-f (--force)
+  [flag] Perform this action without prompting, even if permanent changes are made.
+
+-g (--group, --resourceGroupName)
+  [string] The name of the resource group containing this resource
+
+--lockId
+  [string] The Id of the lock.
+
+-n (--extensionResourceName, --name, --lockName)
+  [string] The name of the lock.
+
+--pre
+  [flag] When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.
+
+--resourceName
+  [string] The resource name. e.g. to specify a database MyServer/MyDatabase.
+
+--scope (--id, --resourceId)
+  [string] The scope. e.g. to specify a database '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaserName}', to specify a resoruce group: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}'
+
+-t (--type, --resourceType)
+  [string] The resource type. e.g. Microsoft.Sql/Servers/Databases.
+
+--tenantLevel
+  [flag] Indicates that this is a tenant level operation.
+

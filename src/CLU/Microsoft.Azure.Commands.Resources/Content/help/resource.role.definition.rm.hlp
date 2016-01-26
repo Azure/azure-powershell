@@ -1,38 +1,29 @@
+az resource role definition rm
 
-Remove-AzureRmRoleDefinition: Deletes a custom role in Azure RBAC. The role to be deleted is specified using the Id property of the role. Delete will fail if there are existing role assignments made to the custom role.
+Remove a Role Definition.
 
+USAGE:
 
+az resource role definition rm [-f] [--passThru]
 
-        The Remove-AzureRmRoleDefinition cmdlet deletes a custom role in Azure Role-Based Access Control.
-        Provide the Id parameter of an existing custom role to delete that custom role. By default, Remove-AzureRmRoleDefinition prompts you for confirmation. To suppress the prompt, use the Force parameter. If there are existing role assignments made to the custom role to be deleted, the delete will fail.
-      
+az resource role definition rm [--id] <id> [--scope <scope>] [-f] [--passThru]
 
+az resource role definition rm [[-n] <name>] [--scope <scope>] [-f] [--passThru]
 
-Command syntax
+PARAMETERS:
 
-az networksecurityrole definition rm [--id] <Guid> [--force] [--passthru] [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-az networksecurityrole definition rm [[--name] <string>] [--force] [--passthru] [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-
-Parameters
+-f (--force)
+  [flag] Perform this action without prompting, even if permanent changes are made.
 
 --id
-Id of the Role definition to be deleted
+  [guid] The identity of this resource. Resource identity is a Uri path that uniquely identifies the resource.
 
---force
-If set, does not prompt for a confirmation before deleting the custom role
+-n (--name)
+  [string] Role definition name. For e.g. Reader, Contributor, Virtual Machine Contributor.
 
---passthru
+--passThru
+  [flag] Forces true or false output.  Without this flag, the command will return nothing if successful.
 
-
---informationaction
-
-
---informationvariable
-
-
---name
-Name of the Role definition to be deleted.
-
+--scope
+  [string] Scope of the existing role definition.
 

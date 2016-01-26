@@ -1,32 +1,50 @@
+az vm config additionalunattendcontent add
 
-Add-AzureRmVMAdditionalUnattendContent: Adds information to the unattended Windows Setup answer file.
+Add a VM Additional Unattend Content.
 
+USAGE:
 
-The Add-AzureRmVMAdditionalUnattendContent cmdlet adds information to the unattended Windows Setup answer file. Specify additional base 64 encoded XML formatted information that this cmdlet adds to the unattend.xml file.
+az vm config additionalunattendcontent add [--vm] <vm> [[--content] <content>] [[--settingName] <settingName>]
 
-
-Command syntax
-
-az vm additional unattend content add [--vm] <PSVirtualMachine> [[--content] <string>] [[--settingname] <string>] [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-
-Parameters
-
---vm
-Specifies the virtual machine object that this cmdlet modifies. To obtain a virtual machine object, use the Get-AzureRmVM cmdlet. Create a virtual machine object by using the New-AzureRmVMConfig cmdlet.
+PARAMETERS:
 
 --content
-Specifies base 64 encoded XML formatted content. This cmdlet adds the content to the unattend.xml file. The XML content must be less than 4 KB and must include the root element for the setting or feature that this cmdlet inserts.
+  [string] XML Formatted Content.
 
---settingname
-Specifies the name of the setting to which the content applies. Valid values are: 
--- FirstLogonCommands
--- AutoLogon
+--settingName
+  [string] Setting Name.
 
---informationaction
+--vm (--vmProfile)
+  [object] The virtual machine profile. You may use commands including 'az vm config create' or 'az vm bootdiagnostics ls' or 'az vm ls' or 'az vm config additionalunattendcontent add' to produce a VM. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az vm config additionalunattendcontent add --VM @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
 
+RELATED COMMANDS:
+az vm config create (produces VM)
 
---informationvariable
+az vm bootdiagnostics ls (produces VM)
 
+az vm ls (produces VM)
 
+az vm config additionalunattendcontent add (produces VM)
+
+az vm config datadisk add (produces VM)
+
+az vm config network interface add (produces VM)
+
+az vm config secret add (produces VM)
+
+az vm config ssh public key add (produces VM)
+
+az vm config datadisk rm (produces VM)
+
+az vm config network interface rm (produces VM)
+
+az vm config bootdiagnostics set (produces VM)
+
+az vm config datadisk set (produces VM)
+
+az vm config os set (produces VM)
+
+az vm config osdisk set (produces VM)
+
+az vm config source image set (produces VM)
 

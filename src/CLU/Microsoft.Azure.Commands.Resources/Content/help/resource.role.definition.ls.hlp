@@ -1,34 +1,31 @@
+az resource role definition ls
 
-Get-AzureRmRoleDefinition: Lists all Azure RBAC roles that are available for assignment.
+Get Role Definition details.
 
+USAGE:
 
-Use the Get-AzureRmRoleDefinition command with a particular role name to view its details. To inspect individual operations that a role grants access to, review the Actions and NotActions properties of the role.
+az resource role definition ls 
 
+az resource role definition ls [[-n] <name>] [--scope <scope>] [--atScopeAndBelow]
 
-Command syntax
+az resource role definition ls [--id] <id> [--scope <scope>]
 
-az networksecurityrole definition ls [[--name] <string>] [--informationaction <ActionPreference>] [--informationvariable <string>]
+az resource role definition ls --custom [--scope <scope>] [--atScopeAndBelow]
 
-az networksecurityrole definition ls [--id] <Guid> [--informationaction <ActionPreference>] [--informationvariable <string>]
+PARAMETERS:
 
-az networksecurityrole definition ls --custom [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-
-Parameters
-
---name
-Role definition name. For e.g. Reader, Contributor, Virtual Machine Contributor.
-
---informationaction
-
-
---informationvariable
-
-
---id
-Role definition Id.
+--atScopeAndBelow
+  [flag] If specified, displays the roles at and below scope.
 
 --custom
-If specified, only displays the custom created roles in the directory.
+  [flag] If specified, only displays the custom created roles in the directory.
 
+--id
+  [guid] The identity of this resource. Resource identity is a Uri path that uniquely identifies the resource.
+
+-n (--name)
+  [string] Role definition name. For e.g. Reader, Contributor, Virtual Machine Contributor.
+
+--scope
+  [string] Scope of the existing role definition.
 

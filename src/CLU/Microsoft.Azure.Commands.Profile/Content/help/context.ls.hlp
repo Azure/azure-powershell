@@ -1,21 +1,8 @@
+az context ls
 
-Get-AzureRmContext: Get the current metadata used to authenticate Azure Resource Manager requests.  Includes the active directory account, Active Directory tenant, Azure subscription, and the targeted azure environemtn.  Azure Resource Manager cmdlets use these settings by default when making Azure Resource Manager Requests.
+Get Context details.
 
+USAGE:
 
-Get the current metadata used to authenticate Azure Resource Manager requests.  Includes the active directory account, Active Directory tenant, Azure subscription, and the targeted azure environemtn.  Azure Resource Manager cmdlets use these settings by default when making Azure Resource Manager Requests.
-
-
-Command syntax
-
-az context ls [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-
-Parameters
-
---informationaction
-
-
---informationvariable
-
-
+az context ls 
 

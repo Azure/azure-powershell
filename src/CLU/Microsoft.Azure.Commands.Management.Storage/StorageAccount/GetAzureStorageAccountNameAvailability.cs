@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.StorageAccount
             Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Storage Account Name.")]
+            HelpMessage = "Storage Account Name to test for uniqueness.")]
         [ValidateNotNullOrEmpty]
         [Alias(StorageAccountNameAlias, AccountNameAlias, "n")]
         public string Name { get; set; }

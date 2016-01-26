@@ -1,35 +1,25 @@
+az ad service principal ls
 
-Get-AzureRmADServicePrincipal: Filters active directory service principals.
+Get Active Directory Service Principal details.
 
+USAGE:
 
-This is the Description section
+az ad service principal ls [--servicePrincipalName <servicePrincipalName>]
 
-Filters active directory service principals.
+az ad service principal ls -s <searchString>
 
+az ad service principal ls --objectId <objectId>
 
-Command syntax
+az ad service principal ls --servicePrincipalName <servicePrincipalName>
 
-az activedirectory sp principal ls [--serviceprincipalname <string>] [--profile <AzureProfile>]
+PARAMETERS:
 
-az activedirectory sp principal ls --searchstring <string> [--profile <AzureProfile>]
+--objectId (--id)
+  [guid] The service principal object id.
 
-az activedirectory sp principal ls --objectid <Guid> [--profile <AzureProfile>]
+-s (--searchString)
+  [string] The service principal search string.
 
-az activedirectory sp principal ls [--serviceprincipalname <string>] [--profile <AzureProfile>]
-
-
-Parameters
-
---serviceprincipalname
-SPN of the service.
-
---profile
-
-
---searchstring
-The service principal display name
-
---objectid
-Object id of the service principal.
-
+--servicePrincipalName (--spn)
+  [string] The user SPN.
 

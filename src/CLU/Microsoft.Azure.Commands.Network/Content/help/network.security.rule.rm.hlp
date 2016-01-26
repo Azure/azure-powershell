@@ -1,21 +1,29 @@
+az network security rule rm
 
-Remove-AzureRmNetworkSecurityRuleConfig: Removes a network security rule from a network security group.
+Remove a Network Security Rule Config.
 
+USAGE:
 
-The Remove-AzureRmNetworkSecurityRuleConfig cmdlet removes a network security rule configuration from an Azure network security group.
+az network security rule rm --networkSecurityGroup <networkSecurityGroup> [--name <name>]
 
-
-Command syntax
-
-az networksecurityrule config rm [--name <string>] --networksecuritygroup <PSNetworkSecurityGroup>
-
-
-Parameters
+PARAMETERS:
 
 --name
-Specifies the name of the network security rule configuration to remove.
+  [string] The name of the rule
 
---networksecuritygroup
-Specifies a NetworkSecurityGroup object. This object contains the network security rule configuration to remove.
+--networkSecurityGroup
+  [object] The NetworkSecurityGroup. You may use commands including 'az network security group create' or 'az network security group ls' or 'az network security group set' or 'az network security rule add' to produce a NetworkSecurityGroup. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network security rule rm --NetworkSecurityGroup @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
 
+RELATED COMMANDS:
+az network security group create (produces NetworkSecurityGroup)
+
+az network security group ls (produces NetworkSecurityGroup)
+
+az network security group set (produces NetworkSecurityGroup)
+
+az network security rule add (produces NetworkSecurityGroup)
+
+az network security rule rm (produces NetworkSecurityGroup)
+
+az network security rule set (produces NetworkSecurityGroup)
 

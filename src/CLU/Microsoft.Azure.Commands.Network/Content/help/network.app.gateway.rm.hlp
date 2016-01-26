@@ -1,27 +1,22 @@
+az network app gateway rm
 
-Remove-AzureRmApplicationGateway: Removes an application gateway.
+Remove an Application Gateway.
 
+USAGE:
 
-The Remove-AzureRmApplicationGateway cmdlet removes an application gateway.
+az network app gateway rm --name <name> --resourceGroupName <resourceGroupName> [--force] [--passThru]
 
-
-Command syntax
-
-az applicationgateway rm --name <string> --resourcegroupname <string> [--force] [--passthru]
-
-
-Parameters
-
---name
-Specifies the name of the application gateway to be removed.
-
---resourcegroupname
-Specifies the name of the resource group name that contains the application gateway.
+PARAMETERS:
 
 --force
-Forces the deletion of the application gateway regardless of whether resources are assigned to it.
+  [flag] Perform this action without prompting, even if permanent changes are made.
 
---passthru
-Returns an object representing the item with which you are working. By default, this cmdlet does not generate any output.
+--name (--resourceName)
+  [string] The resource name.
 
+--passThru
+  [flag] Forces true or false output.  Without this flag, the command will return nothing if successful.
+
+--resourceGroupName
+  [string] The name of the resource group containing this resource
 

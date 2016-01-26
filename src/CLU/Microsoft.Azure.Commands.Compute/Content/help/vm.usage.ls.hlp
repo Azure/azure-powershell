@@ -1,24 +1,13 @@
+az vm usage ls
 
-Get-AzureRmVMUsage: Gets the virtual machine core count usage for a location.
+Get VM Usage details.
 
+USAGE:
 
-The Get-AzureRmVMUsage cmdlet gets the virtual machine core count usage for a location.
+az vm usage ls [--location] <location>
 
-
-Command syntax
-
-az vm usage ls [--location] <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-
-Parameters
+PARAMETERS:
 
 --location
-Specifies the location for which this cmdlet gets virtual machine core count usage.
-
---informationaction
-
-
---informationvariable
-
-
+  [string] The region that will contain this resource.  Possible values include 'East US', 'North Europe', 'East Asia'
 

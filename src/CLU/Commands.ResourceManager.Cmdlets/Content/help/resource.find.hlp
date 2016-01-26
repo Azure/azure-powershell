@@ -1,0 +1,50 @@
+az resource find
+
+Find a Resource.
+
+USAGE:
+
+az resource find [-n <resourceNameContains>] [-t <resourceType>] [--extensionResourceType <extensionResourceType>] [--top <top>] [--oDataQuery <oDataQuery>] [--tagName <tagName>] [--tagValue <tagValue>] [-g <resourceGroupNameContains>] [--expandProperties] [--apiVersion <apiVersion>] [--pre]
+
+az resource find -t <resourceType> --tenantLevel [-n <resourceNameContains>] [--extensionResourceType <extensionResourceType>] [--top <top>] [--oDataQuery <oDataQuery>] [--expandProperties] [--apiVersion <apiVersion>] [--pre]
+
+az resource find -t <resourceType> [-n <resourceNameContains>] [--extensionResourceType <extensionResourceType>] [--top <top>] [--oDataQuery <oDataQuery>] [--tagName <tagName>] [--tagValue <tagValue>] [-g <resourceGroupNameContains>] [--expandProperties] [--apiVersion <apiVersion>] [--pre]
+
+PARAMETERS:
+
+--apiVersion
+  [string] When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.
+
+--expandProperties
+  [flag] When specified, expands the properties of the resource.
+
+--extensionResourceType
+  [string] The extension resource type. e.g. Microsoft.Sql/Servers/{serverName}/Databases/myDatabase.
+
+-g (--resourceGroupName, --group, --resourceGroupNameContains)
+  [string] The resource group name substring.
+
+-n (--name, --resourceNameContains)
+  [string] The resource name substring. e.g. if your resource name is testResource, you can specify test.
+
+--oDataQuery
+  [string] An OData style filter which will be appended to the request in addition to any other filters.
+
+--pre
+  [flag] When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.
+
+-t (--type, --resourceType)
+  [string] The resource type. e.g. Microsoft.Sql/Servers/Databases.
+
+--tagName
+  [string] The name of the tag to query by.
+
+--tagValue
+  [string] The value of the tag to query by.
+
+--tenantLevel
+  [flag] Indicates that this is a tenant level operation.
+
+--top
+  [int32] The number of resources to retrieve.
+

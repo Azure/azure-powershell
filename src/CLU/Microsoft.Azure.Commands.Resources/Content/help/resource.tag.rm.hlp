@@ -1,8 +1,22 @@
+az resource tag rm
 
-Remove-AzureRmTag
+Remove a Tag.
 
+USAGE:
 
-Command syntax
+az resource tag rm [-n] <name> [[--value] <value>] [-f] [--passThru]
 
-az tag rm
+PARAMETERS:
+
+-f (--force)
+  [flag] Perform this action without prompting, even if permanent changes are made.
+
+-n (--name)
+  [string] Name of the tag to remove.
+
+--passThru
+  [flag] Forces true or false output.  Without this flag, the command will return nothing if successful.
+
+--value
+  [string[]] Value of the tag to remove. If not specified, remove the entire tag. If specified, only remove the tag value.
 

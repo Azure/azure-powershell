@@ -1,35 +1,55 @@
+az vm update
 
-Update-AzureRmVM: Updates the state of an Azure virtual machine.
+Update a VM.
 
+USAGE:
 
-The Update-AzureRmVM cmdlet updates the state of an Azure virtual machine to the state of a virtual machine object.
+az vm update [--resourceGroupName] <resourceGroupName> --vm <vm> [--tags <tags>]
 
+az vm update [--id] <id> --vm <vm> [--tags <tags>]
 
-Command syntax
-
-az vm update [--resourcegroupname] <string> --vm <PSVirtualMachine> [--tags <Hashtable[]>] [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-az vm update [--id] <string> --vm <PSVirtualMachine> [--tags <Hashtable[]>] [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-
-Parameters
-
---resourcegroupname
-Specifies the name of a resource group.
-
---vm
-Specifies a local virtual machine object. To obtain a virtual machine object, use the Get-AzureRmVM cmdlet. This virtual machine object contains the updated state for the virtual machine.
-
---tags
-
-
---informationaction
-
-
---informationvariable
-
+PARAMETERS:
 
 --id
+  [string] The identity of this resource. Resource identity is a Uri path that uniquely identifies the resource.
 
+--resourceGroupName
+  [string] The name of the resource group containing this resource
 
+--tags
+  [hashtable[]] 
+
+--vm (--vmProfile)
+  [object] . You may use commands including 'az vm config create' or 'az vm bootdiagnostics ls' or 'az vm ls' or 'az vm config additionalunattendcontent add' to produce a VM. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az vm update --VM @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
+
+RELATED COMMANDS:
+az vm config create (produces VM)
+
+az vm bootdiagnostics ls (produces VM)
+
+az vm ls (produces VM)
+
+az vm config additionalunattendcontent add (produces VM)
+
+az vm config datadisk add (produces VM)
+
+az vm config network interface add (produces VM)
+
+az vm config secret add (produces VM)
+
+az vm config ssh public key add (produces VM)
+
+az vm config datadisk rm (produces VM)
+
+az vm config network interface rm (produces VM)
+
+az vm config bootdiagnostics set (produces VM)
+
+az vm config datadisk set (produces VM)
+
+az vm config os set (produces VM)
+
+az vm config osdisk set (produces VM)
+
+az vm config source image set (produces VM)
 

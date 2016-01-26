@@ -1,29 +1,21 @@
+az resource provider feature ls
 
-Get-AzureRmProviderFeature
+Get Provider Feature details.
 
+USAGE:
 
+az resource provider feature ls [-m <providerNamespace>] [-a]
 
+az resource provider feature ls -m <providerNamespace> -n <featureName>
 
+PARAMETERS:
 
-Command syntax
+-a (--listAvailable)
+  [flag] When set, lists all available features including those not registered with the current subscription.
 
-az resourcemanager provider feature ls [--providernamespace <string>] [--listavailable] [--profile <AzureProfile>]
+-m (--namespace, --providerNamespace)
+  [string] The resource provider namespace.
 
-az resourcemanager provider feature ls [--providernamespace <string>] --featurename <string> [--profile <AzureProfile>]
-
-
-Parameters
-
---providernamespace
-
-
---listavailable
-
-
---profile
-
-
---featurename
-
-
+-n (--name, --featureName)
+  [string] The feature name.
 

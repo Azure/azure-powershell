@@ -1,37 +1,26 @@
+az vm size ls
 
-Get-AzureRmVMSize: Gets available virtual machine sizes.
+Get VM Size details.
 
+USAGE:
 
-The Get-AzureRmVMSize cmdlet gets available virtual machine sizes.
+az vm size ls [--location] <location>
 
+az vm size ls [--resourceGroupName] <resourceGroupName> [--availabilitySetName] <availabilitySetName>
 
-Command syntax
+az vm size ls [--resourceGroupName] <resourceGroupName> [--vmName] <vmName>
 
-az vm size ls [--location] <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
+PARAMETERS:
 
-az vm size ls [--resourcegroupname] <string> [--vmname] <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-az vm size ls [--resourcegroupname] <string> [--availabilitysetname] <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-
-Parameters
+--availabilitySetName
+  [string] The availability set name.
 
 --location
-Specifies the location for which this cmdlet gets the available virtual machine sizes.
+  [string] The region that will contain this resource.  Possible values include 'East US', 'North Europe', 'East Asia'
 
---informationaction
+--resourceGroupName
+  [string] The name of the resource group containing this resource
 
-
---informationvariable
-
-
---resourcegroupname
-Specifies the name of the resource group of the virtual machine.
-
---vmname
-Specifies the name of the virtual machine that this cmdlet gets the available virtual machine sizes for resizing.
-
---availabilitysetname
-Specifies the name of the Availability Set for which this cmdlet gets the available virtual machine sizes.
-
+--vmName
+  [string] The virtual machine name.
 

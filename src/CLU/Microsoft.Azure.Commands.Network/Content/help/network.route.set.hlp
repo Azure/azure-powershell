@@ -1,35 +1,38 @@
+az network route set
 
-Set-AzureRmRouteConfig: Sets the goal state for a route.
+Update a Route Config.
 
+USAGE:
 
-The Set-AzureRmRouteConfig cmdlet sets the goal state for an Azure route.
+az network route set --routeTable <routeTable> --name <name> --nextHopType <nextHopType> [--addressPrefix <addressPrefix>] [--nextHopIpAddress <nextHopIpAddress>]
 
+PARAMETERS:
 
-Command syntax
-
-az route config set --name <string> --routetable <PSRouteTable> [--addressprefix <string>] --nexthoptype <string> [--nexthopipaddress <string>]
-
-
-Parameters
+--addressPrefix
+  [string] The destination CIDR to which the route applies
 
 --name
-Specifies the name of the route that this cmdlet modifies.
+  [string] The name of the route
 
---routetable
-Specifies the route table with which this route is associated.
+--nextHopIpAddress
+  [string] The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
 
---addressprefix
-Specifies the destination, in Classless Interdomain Routing (CIDR) format, to which the route applies.
+--nextHopType
+  [string] The type of Azure hop the packet should be sent to.
 
---nexthoptype
-Specifies how this route forwards packets. Valid values are: 
--- Internet. The default Internet gateway provided by Azure. 
--- None. If you specify this value, the route does not forward packets. 
--- VirtualAppliance. A virtual appliance that you add to your Azure virtual network. 
--- VirtualNetworkGateway. An Azure server-to-server virtual private network gateway. 
--- VnetLocal. The local virtual network. If you have two subnets, 10.1.0.0/16 and 10.2.0.0/16 in the same virtual network, select a value of VnetLocal for each subnet to forward to the other subnet.
+--routeTable
+  [object] The RouteTable. You may use commands including 'az network route table create' or 'az newtork route table ls' or 'az network route table set' or 'az network route add' to produce a RouteTable. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network route set --RouteTable @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
 
---nexthopipaddress
-Specifies the IP address of a virtual appliance that you add to your Azure virtual network. This route forwards packets to that address. Specify this parameter only if you specify a value of VirtualAppliance for the NextHopType parameter.
+RELATED COMMANDS:
+az network route table create (produces RouteTable)
 
+az newtork route table ls (produces RouteTable)
+
+az network route table set (produces RouteTable)
+
+az network route add (produces RouteTable)
+
+az network route rm (produces RouteTable)
+
+az network route set (produces RouteTable)
 

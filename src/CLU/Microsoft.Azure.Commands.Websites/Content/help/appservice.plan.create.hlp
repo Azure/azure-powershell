@@ -1,8 +1,35 @@
-
-New-AzureRMAppServicePlan
-
-
-Command syntax
-
 az appservice plan create
+
+Create an App Service Plan.
+
+USAGE:
+
+az appservice plan create [-l] <location> [[--tier] <tier>] [[--numberofWorkers] <numberofWorkers>] [[--workerSize] <workerSize>]
+
+az appservice plan create [-g] <resourceGroupName> [-n] <name> [-l] <location> [[--tier] <tier>] [[--numberofWorkers] <numberofWorkers>] [[--workerSize] <workerSize>]
+
+az appservice plan create [--appServicePlan] <appServicePlan> [-l] <location> [[--tier] <tier>] [[--numberofWorkers] <numberofWorkers>] [[--workerSize] <workerSize>]
+
+PARAMETERS:
+
+--appServicePlan (--plan)
+  [object] The app service plan object
+
+-g (--group, --resourceGroupName)
+  [string] The name of the resource group containing this resource
+
+-l (--location)
+  [string] The region that will contain this resource.  Possible values include 'East US', 'North Europe', 'East Asia'
+
+-n (--name)
+  [string] The name of the app service plan.
+
+--numberofWorkers (--workers)
+  [int32] Number of Workers to be allocated.
+
+--tier
+  [string] The App Service plan tier. Allowed values are [Free|Shared|Basic|Standard|Premium]
+
+--workerSize (--size)
+  [string] Size of workers to be allocated. Allowed values are [Small|Medium|Large|ExtraLarge]
 

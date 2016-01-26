@@ -1,8 +1,65 @@
-
-Set-AzureRMWebAppSlot
-
-
-Command syntax
-
 az appservice slot set
+
+Update a Web App Slot.
+
+USAGE:
+
+az appservice slot set [[--appServicePlan] <appServicePlan>] [[--defaultDocuments] <defaultDocuments>] [[--netFrameworkVersion] <netFrameworkVersion>] [[--phpVersion] <phpVersion>] [[--requestTracingEnabled] <requestTracingEnabled>] [[--httpLoggingEnabled] <httpLoggingEnabled>] [[--detailedErrorLoggingEnabled] <detailedErrorLoggingEnabled>] [[--appSettings] <appSettings>] [[--connectionStrings] <connectionStrings>] [[--handlerMappings] <handlerMappings>] [[--managedPipelineMode] <managedPipelineMode>] [[--webSocketsEnabled] <webSocketsEnabled>] [[--use32BitWorkerProcess] <use32BitWorkerProcess>]
+
+az appservice slot set [-g] <resourceGroupName> [-n] <name> [--slot] <slot> [[--appServicePlan] <appServicePlan>] [[--defaultDocuments] <defaultDocuments>] [[--netFrameworkVersion] <netFrameworkVersion>] [[--phpVersion] <phpVersion>] [[--requestTracingEnabled] <requestTracingEnabled>] [[--httpLoggingEnabled] <httpLoggingEnabled>] [[--detailedErrorLoggingEnabled] <detailedErrorLoggingEnabled>] [[--appSettings] <appSettings>] [[--connectionStrings] <connectionStrings>] [[--handlerMappings] <handlerMappings>] [[--managedPipelineMode] <managedPipelineMode>] [[--webSocketsEnabled] <webSocketsEnabled>] [[--use32BitWorkerProcess] <use32BitWorkerProcess>]
+
+az appservice slot set [--webApp] <webApp> [[--appServicePlan] <appServicePlan>] [[--defaultDocuments] <defaultDocuments>] [[--netFrameworkVersion] <netFrameworkVersion>] [[--phpVersion] <phpVersion>] [[--requestTracingEnabled] <requestTracingEnabled>] [[--httpLoggingEnabled] <httpLoggingEnabled>] [[--detailedErrorLoggingEnabled] <detailedErrorLoggingEnabled>] [[--appSettings] <appSettings>] [[--connectionStrings] <connectionStrings>] [[--handlerMappings] <handlerMappings>] [[--managedPipelineMode] <managedPipelineMode>] [[--webSocketsEnabled] <webSocketsEnabled>] [[--use32BitWorkerProcess] <use32BitWorkerProcess>]
+
+PARAMETERS:
+
+--appServicePlan (--plan)
+  [string] The name of the app service plan eg: Default1.
+
+--appSettings
+  [hashtable] Web app settings
+
+--connectionStrings
+  [hashtable] Web app connection strings
+
+--defaultDocuments (--docs)
+  [string[]] Default documents for web app
+
+--detailedErrorLoggingEnabled
+  [boolean] Whether or not detailed error logging is enabled
+
+-g (--group, --resourceGroupName)
+  [string] The name of the resource group containing this resource
+
+--handlerMappings
+  [object[]] Web app handler mappings
+
+--httpLoggingEnabled
+  [boolean] Whether or not http logging is enabled
+
+--managedPipelineMode
+  [string] Web app managed pipeline mode. Allowed Values [Classic|Integrated]
+
+-n (--name)
+  [string] The name of the web app.
+
+--netFrameworkVersion
+  [string] .NET Framework version
+
+--phpVersion
+  [string] PHP version
+
+--requestTracingEnabled
+  [boolean] Whether or not request tracing is enabled
+
+--slot
+  [string] The name of the web app slot.
+
+--use32BitWorkerProcess
+  [boolean] Whether or not to use 32-bit worker process. By default worker process is 64-bit
+
+--webApp
+  [object] The web app object
+
+--webSocketsEnabled
+  [boolean] Whether or not detailed error logging is enabled
 

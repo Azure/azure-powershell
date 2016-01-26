@@ -1,24 +1,19 @@
+az network app gateway sku create
 
-New-AzureRmApplicationGatewaySku: Creates a SKU for an application gateway.
+Create an Application Gateway Sku.
 
+USAGE:
 
-The New-AzureRmApplicationGatewaySku cmdlet creates a stock keeping unit (SKU) for an Azure application gateway.
+az network app gateway sku create --name <name> --tier <tier> --capacity <capacity>
 
-
-Command syntax
-
-az applicationgateway sku new --name <string> --tier <string> --capacity <int>
-
-
-Parameters
-
---name
-Specifies the name of the SKU.
-
---tier
-Specifies the tier of SKU.
+PARAMETERS:
 
 --capacity
-Specifies the number of instances of an application gateway.
+  [int32] Application gateway instance count
 
+--name
+  [string] The name of the SKU
+
+--tier
+  [string] Application gateway tier
 

@@ -1,0 +1,47 @@
+az network app gateway url path map create
+
+Create an Application Gateway Url Path Map Config.
+
+USAGE:
+
+az network app gateway url path map create --name <name> --pathRules <pathRules>
+
+az network app gateway url path map create --name <name> --pathRules <pathRules> [--defaultBackendAddressPoolId <defaultBackendAddressPoolId>] [--defaultBackendHttpSettingsId <defaultBackendHttpSettingsId>]
+
+az network app gateway url path map create --name <name> --pathRules <pathRules> [--defaultBackendAddressPool <defaultBackendAddressPool>] [--defaultBackendHttpSettings <defaultBackendHttpSettings>]
+
+PARAMETERS:
+
+--defaultBackendAddressPool
+  [object] Application gateway BackendAddressPool. You may use commands including 'az network app gateway backend address pool create' or 'az network app gateway backend address pool ls' or 'az network app gateway backend address pool ls' or 'az network app gateway backend address pool rm' to produce a DefaultBackendAddressPool. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network app gateway url path map create --DefaultBackendAddressPool @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
+
+--defaultBackendAddressPoolId
+  [string] ID of the application gateway BackendAddressPool
+
+--defaultBackendHttpSettings
+  [object] Application gateway BackendHttpSettings. You may use commands including 'az network app gateway backend http settings create' or 'az network app gateway backend http settings ls' or 'az network app gateway backend http settings ls' to produce a DefaultBackendHttpSettings. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network app gateway url path map create --DefaultBackendHttpSettings @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
+
+--defaultBackendHttpSettingsId
+  [string] ID of the application gateway BackendHttpSettings
+
+--name
+  [string] Name of the URL path map
+
+--pathRules
+  [object[]] List of path rules
+
+RELATED COMMANDS:
+az network app gateway backend address pool create (produces DefaultBackendAddressPool)
+
+az network app gateway backend address pool ls (produces DefaultBackendAddressPool)
+
+az network app gateway backend address pool ls (produces DefaultBackendAddressPool)
+
+az network app gateway backend address pool rm (produces DefaultBackendAddressPool)
+
+az network app gateway backend http settings create (produces DefaultBackendHttpSettings)
+
+az network app gateway backend http settings ls (produces DefaultBackendHttpSettings)
+
+az network app gateway backend http settings ls (produces DefaultBackendHttpSettings)
+

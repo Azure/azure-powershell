@@ -1,8 +1,31 @@
+az vnet gateway vpn client set
 
-Set-AzureRmVirtualNetworkGatewayVpnClientConfig
+Update a Virtual Network Gateway Vpn Client Config.
 
+USAGE:
 
-Command syntax
+az vnet gateway vpn client set --virtualNetworkGateway <virtualNetworkGateway> --vpnClientAddressPool <vpnClientAddressPool>
 
-az vnet gateway network vpn client config set
+PARAMETERS:
+
+--virtualNetworkGateway
+  [object] The VirtualNetworkGateway. You may use commands including 'az vnet gateway create' or 'az vnet gateway ls' or 'az vnet gateway default site rm' or 'az vnet gateway reset' to produce a VirtualNetworkGateway. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az vnet gateway vpn client set --VirtualNetworkGateway @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
+
+--vpnClientAddressPool
+  [string[]] P2S VpnClient AddressPool
+
+RELATED COMMANDS:
+az vnet gateway create (produces VirtualNetworkGateway)
+
+az vnet gateway ls (produces VirtualNetworkGateway)
+
+az vnet gateway default site rm (produces VirtualNetworkGateway)
+
+az vnet gateway reset (produces VirtualNetworkGateway)
+
+az vnet gateway resize (produces VirtualNetworkGateway)
+
+az vnet gateway default site set (produces VirtualNetworkGateway)
+
+az vnet gateway vpn client set (produces VirtualNetworkGateway)
 

@@ -1,8 +1,44 @@
+az network app gateway path rule config create
 
-New-AzureRmApplicationGatewayPathRuleConfig
+Create an Application Gateway Path Rule Config.
 
+USAGE:
 
-Command syntax
+az network app gateway path rule config create --paths <paths>
 
-az applicationgateway path rule config new
+az network app gateway path rule config create --paths <paths> [--backendAddressPoolId <backendAddressPoolId>] [--backendHttpSettingsId <backendHttpSettingsId>]
+
+az network app gateway path rule config create --paths <paths> [--backendAddressPool <backendAddressPool>] [--backendHttpSettings <backendHttpSettings>]
+
+PARAMETERS:
+
+--backendAddressPool
+  [object] Application gateway BackendAddressPool. You may use commands including 'az network app gateway backend address pool create' or 'az network app gateway backend address pool ls' or 'az network app gateway backend address pool ls' or 'az network app gateway backend address pool rm' to produce a BackendAddressPool. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network app gateway path rule config create --BackendAddressPool @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
+
+--backendAddressPoolId
+  [string] ID of the application gateway BackendAddressPool
+
+--backendHttpSettings
+  [object] Application gateway BackendHttpSettings. You may use commands including 'az network app gateway backend http settings create' or 'az network app gateway backend http settings ls' or 'az network app gateway backend http settings ls' to produce a BackendHttpSettings. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network app gateway path rule config create --BackendHttpSettings @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
+
+--backendHttpSettingsId
+  [string] ID of the application gateway BackendHttpSettings
+
+--paths
+  [string[]] List of URL paths
+
+RELATED COMMANDS:
+az network app gateway backend address pool create (produces BackendAddressPool)
+
+az network app gateway backend address pool ls (produces BackendAddressPool)
+
+az network app gateway backend address pool ls (produces BackendAddressPool)
+
+az network app gateway backend address pool rm (produces BackendAddressPool)
+
+az network app gateway backend http settings create (produces BackendHttpSettings)
+
+az network app gateway backend http settings ls (produces BackendHttpSettings)
+
+az network app gateway backend http settings ls (produces BackendHttpSettings)
 

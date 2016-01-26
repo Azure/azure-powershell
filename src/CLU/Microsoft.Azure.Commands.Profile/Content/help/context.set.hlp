@@ -1,33 +1,33 @@
+az context set
 
-Set-AzureRmContext: Set the tenant, subscription, and environment to be used by cmdlets in this session.
+Update a Context.
 
+USAGE:
 
-Set authentication information for cmdlets executed in the current session.  Includes subscription, tenant, and environment information.
+az context set [-t <tenantId>] [-n <subscriptionName>]
 
+az context set [-t <tenantId>] [-s <subscriptionId>]
 
-Command syntax
+az context set --context <context>
 
-az context set --tenantid <string> [--subscriptionid <string>] [--informationaction <ActionPreference>] [--informationvariable <string>]
+PARAMETERS:
 
-az context set --tenantid <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
+--context
+  [object] Context. You may use commands including 'az context ls' or 'az context set' or 'az subscription set' to produce a Context. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az context set --Context @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
 
-az context set --subscriptionid <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
+-n (--name, --subscriptionName)
+  [string] The friendly name of the subscription.
 
-az context set --tenantid <AzureTenant> --subscriptionid <AzureSubscription> [--informationaction <ActionPreference>] [--informationvariable <string>]
+-s (--id, --subscriptionId)
+  [string] The subscription identity, a global unique identifier (GUID) that uniquely identifies the subscription.
 
+-t (--domain, --tenantId)
+  [string] The tenant identity (GUID) or the domain name.
 
-Parameters
+RELATED COMMANDS:
+az context ls (produces Context)
 
---tenantid
-The tenant for Azure Resource Manager cmdlets to target.
+az context set (produces Context)
 
---subscriptionid
-The Subscription Id for executed cmdlets to use.
-
---informationaction
-
-
---informationvariable
-
-
+az subscription set (produces Context)
 

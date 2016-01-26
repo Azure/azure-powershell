@@ -1,38 +1,27 @@
+az vm bootdiagnostics ls
 
-Get-AzureRmVMBootDiagnosticsData
+Get VM Boot Diagnostics Data details.
 
+USAGE:
 
+az vm bootdiagnostics ls [--resourceGroupName] <resourceGroupName> [--name] <name> --windows [--localPath] <localPath>
 
+az vm bootdiagnostics ls [--resourceGroupName] <resourceGroupName> [--name] <name> --linux [[--localPath] <localPath>]
 
-
-Command syntax
-
-az vm bootdiagnostics data ls [--resourcegroupname] <string> [--name] <string> [--windows] [--localpath] <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-az vm bootdiagnostics data ls [--resourcegroupname] <string> [--name] <string> [--linux] [--localpath] <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-
-Parameters
-
---resourcegroupname
-
-
---name
-
-
---windows
-
-
---localpath
-
-
---informationaction
-
-
---informationvariable
-
+PARAMETERS:
 
 --linux
+  [flag] 
 
+--localPath
+  [string] Path and name of the output RDP file.
 
+--name (--resourceName, --vmName)
+  [string] The virtual machine boot diagnostics data name.
+
+--resourceGroupName
+  [string] The name of the resource group containing this resource
+
+--windows
+  [flag] 
 

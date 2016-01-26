@@ -1,0 +1,66 @@
+az network load balancer rule create
+
+Create a Load Balancer Rule Config.
+
+USAGE:
+
+az network load balancer rule create --name <name> [--protocol <protocol>] [--frontendPort <frontendPort>] [--backendPort <backendPort>] [--idleTimeoutInMinutes <idleTimeoutInMinutes>] [--loadDistribution <loadDistribution>] [--enableFloatingIP]
+
+az network load balancer rule create --name <name> [--frontendIpConfigurationId <frontendIpConfigurationId>] [--backendAddressPoolId <backendAddressPoolId>] [--probeId <probeId>] [--protocol <protocol>] [--frontendPort <frontendPort>] [--backendPort <backendPort>] [--idleTimeoutInMinutes <idleTimeoutInMinutes>] [--loadDistribution <loadDistribution>] [--enableFloatingIP]
+
+az network load balancer rule create --name <name> [--frontendIpConfiguration <frontendIpConfiguration>] [--backendAddressPool <backendAddressPool>] [--probe <probe>] [--protocol <protocol>] [--frontendPort <frontendPort>] [--backendPort <backendPort>] [--idleTimeoutInMinutes <idleTimeoutInMinutes>] [--loadDistribution <loadDistribution>] [--enableFloatingIP]
+
+PARAMETERS:
+
+--backendAddressPool
+  [object] The list of frontend Ip config. You may use commands including 'az network load balancer backend address pool create' or 'az network load balancer backend address pool ls' to produce a BackendAddressPool. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network load balancer rule create --BackendAddressPool @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
+
+--backendAddressPoolId
+  [string] ID of the BackendAddressPool
+
+--backendPort
+  [int32] The frontend port
+
+--enableFloatingIP
+  [flag] EnableFloatingIP
+
+--frontendIpConfiguration
+  [object] Frontend Ip config. You may use commands including 'az network load balancer frontend ipconfig create' or 'az network load balancer frontend ipconfig ls' to produce a FrontendIpConfiguration. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network load balancer rule create --FrontendIpConfiguration @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
+
+--frontendIpConfigurationId
+  [string] ID of the FrontendIpConfiguration
+
+--frontendPort
+  [int32] The frontend port
+
+--idleTimeoutInMinutes
+  [int32] IdleTimeoutInMinutes
+
+--loadDistribution
+  [string] The distribution type of the load balancer.
+
+--name
+  [string] The name of the load balancer rule
+
+--probe
+  [object] The list of frontend Ip config. You may use commands including 'az network load balancer probe create' or 'az network load balancer probe ls' to produce a Probe. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network load balancer rule create --Probe @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
+
+--probeId
+  [string] ID of the Probe
+
+--protocol
+  [string] The transport protocol for the external endpoint.
+
+RELATED COMMANDS:
+az network load balancer frontend ipconfig create (produces FrontendIpConfiguration)
+
+az network load balancer frontend ipconfig ls (produces FrontendIpConfiguration)
+
+az network load balancer backend address pool create (produces BackendAddressPool)
+
+az network load balancer backend address pool ls (produces BackendAddressPool)
+
+az network load balancer probe create (produces Probe)
+
+az network load balancer probe ls (produces Probe)
+

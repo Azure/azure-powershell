@@ -1,8 +1,16 @@
+az resource tag create
 
-New-AzureRmTag
+Create a Tag.
 
+USAGE:
 
-Command syntax
+az resource tag create [-n] <name> [[--value] <value>]
 
-az tag create
+PARAMETERS:
+
+-n (--name)
+  [string] Name of the tag. If the tag name doesn't exist, create the tag name. Otherwise, add the value to the existing tag name.
+
+--value
+  [string] Value of the tag. If specified, add the tag value to the tag name. Otherwise, keep the tag value unchanged.
 

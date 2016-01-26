@@ -1,61 +1,51 @@
+az ad app create
 
-New-AzureRmADApplication: Creates a new azure active directory application.
+Create an Active Directory Application.
 
+USAGE:
 
-This is the Description section
+az ad app create --displayName <displayName> --homePage <homePage> --identifierUris <identifierUris>
 
-Creates a new azure active directory application.
+az ad app create --displayName <displayName> --homePage <homePage> --identifierUris <identifierUris> -p <password> [--startDate <startDate>] [--endDate <endDate>]
 
+az ad app create --displayName <displayName> --homePage <homePage> --identifierUris <identifierUris> --passwordCredentials <passwordCredentials>
 
-Command syntax
+az ad app create --displayName <displayName> --homePage <homePage> --identifierUris <identifierUris> --keyValue <keyValue> [--keyType <keyType>] [--keyUsage <keyUsage>] [--startDate <startDate>] [--endDate <endDate>]
 
-az activedirectory app create --displayname <string> --homepage <string> --identifieruris <String[]> [--profile <AzureProfile>]
+az ad app create --displayName <displayName> --homePage <homePage> --identifierUris <identifierUris> --keyCredentials <keyCredentials>
 
-az activedirectory app create --displayname <string> --homepage <string> --identifieruris <String[]> --password <string> [--startdate <DateTime>] [--enddate <DateTime>] [--profile <AzureProfile>]
+PARAMETERS:
 
-az activedirectory app create --displayname <string> --homepage <string> --identifieruris <String[]> --passwordcredentials <PSADPasswordCredential[]> [--profile <AzureProfile>]
+--displayName (--name)
+  [string] The display name for the application.
 
-az activedirectory app create --displayname <string> --homepage <string> --identifieruris <String[]> --keyvalue <string> [--keytype <string>] [--keyusage <string>] [--startdate <DateTime>] [--enddate <DateTime>] [--profile <AzureProfile>]
+--endDate
+  [dateTime] The end date till which password or key is valid. Default value is one year after current time.
 
-az activedirectory app create --displayname <string> --homepage <string> --identifieruris <String[]> --keycredentials <PSADKeyCredential[]> [--profile <AzureProfile>]
+--homePage
+  [string] The URL to the application’s homepage.
 
+--identifierUris
+  [string[]] The URIs that identify the application.
 
-Parameters
+--keyCredentials
+  [object] The collection of key credentials associated with the application.
 
---displayname
+--keyType
+  [string] The type of the key credentials associated with the application. Acceptable values are 'AsymmetricX509Cert', 'Password' and 'Symmetric'. Default is 'AsymmetricX509Cert'
 
+--keyUsage
+  [string] The usage of the key credentials associated with the application. Acceptable values are 'Sign' and 'Verify'. Default is 'Verify'
 
---homepage
+--keyValue
+  [string] The value for the key credentials associated with the application that will be valid for one year by default.
 
+-p (--password)
+  [string] The value for the password credential associated with the application that will be valid for one year by default.
 
---identifieruris
+--passwordCredentials
+  [object] The collection of password credentials associated with the application.
 
-
---profile
-
-
---password
-
-
---startdate
-
-
---enddate
-
-
---passwordcredentials
-
-
---keyvalue
-
-
---keytype
-
-
---keyusage
-
-
---keycredentials
-
-
+--startDate
+  [dateTime] The start date after which password or key would be valid. Default value is current time.
 

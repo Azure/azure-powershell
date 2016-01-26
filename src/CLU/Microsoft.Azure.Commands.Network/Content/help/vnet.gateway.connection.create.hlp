@@ -1,56 +1,93 @@
+az vnet gateway connection create
 
-New-AzureRmVirtualNetworkGatewayConnection
+Create a Virtual Network Gateway Connection.
 
+USAGE:
 
+az vnet gateway connection create --name <name> --resourceGroupName <resourceGroupName> --location <location> --virtualNetworkGateway1 <virtualNetworkGateway1> --connectionType <connectionType> [--authorizationKey <authorizationKey>] [--virtualNetworkGateway2 <virtualNetworkGateway2>] [--localNetworkGateway2 <localNetworkGateway2>] [--routingWeight <routingWeight>] [--sharedKey <sharedKey>] [--peer <peer>] [--tag <tag>] [--force]
 
+az vnet gateway connection create --name <name> --resourceGroupName <resourceGroupName> --location <location> --virtualNetworkGateway1 <virtualNetworkGateway1> --connectionType <connectionType> [--authorizationKey <authorizationKey>] [--virtualNetworkGateway2 <virtualNetworkGateway2>] [--localNetworkGateway2 <localNetworkGateway2>] [--routingWeight <routingWeight>] [--sharedKey <sharedKey>] [--peerId <peerId>] [--tag <tag>] [--force]
 
+PARAMETERS:
 
-Command syntax
+--authorizationKey
+  [string] AuthorizationKey.
 
-az vnet gateway connection new --name <string> --resourcegroupname <string> --location <string> --virtualnetworkgateway1 <PSVirtualNetworkGateway> [--virtualnetworkgateway2 <PSVirtualNetworkGateway>] [--localnetworkgateway2 <PSLocalNetworkGateway>] --connectiontype <string> [--routingweight <int>] [--sharedkey <string>] [--peer <PSPeering>] [--tag <Hashtable[]>] [--force]
-
-az vnet gateway connection new --name <string> --resourcegroupname <string> --location <string> --virtualnetworkgateway1 <PSVirtualNetworkGateway> [--virtualnetworkgateway2 <PSVirtualNetworkGateway>] [--localnetworkgateway2 <PSLocalNetworkGateway>] --connectiontype <string> [--routingweight <int>] [--sharedkey <string>] [--peerid <string>] [--tag <Hashtable[]>] [--force]
-
-
-Parameters
-
---name
-
-
---resourcegroupname
-
-
---location
-
-
---virtualnetworkgateway1
-
-
---virtualnetworkgateway2
-
-
---localnetworkgateway2
-
-
---connectiontype
-
-
---routingweight
-
-
---sharedkey
-
-
---peer
-
-
---tag
-
+--connectionType
+  [string] Gateway connection type:IPsec/Vnet2Vnet/ExpressRoute/VPNClient
 
 --force
+  [flag] Perform this action without prompting, even if permanent changes are made.
 
+--localNetworkGateway2
+  [object] local network gateway. You may use commands including 'az network local gateway create' or 'az network local gateway ls' or 'az network local gateway set' to produce a LocalNetworkGateway2. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az vnet gateway connection create --LocalNetworkGateway2 @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
 
---peerid
+--location
+  [string] The region that will contain this resource.  Possible values include 'East US', 'North Europe', 'East Asia'
 
+--name (--resourceName)
+  [string] The resource name.
 
+--peer
+  [object] Peer. You may use commands including 'az network expressroute circuit peering create' or 'az network expressroute circuit peering ls' to produce a Peer. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az vnet gateway connection create --Peer @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
+
+--peerId
+  [string] PeerId
+
+--resourceGroupName
+  [string] The name of the resource group containing this resource
+
+--routingWeight
+  [int32] RoutingWeight.
+
+--sharedKey
+  [string] The Ipsec share key.
+
+--tag
+  [hashtable[]] An array of hashtables which represents resource tags.
+
+--virtualNetworkGateway1
+  [object] First virtual network gateway. You may use commands including 'az vnet gateway create' or 'az vnet gateway ls' or 'az vnet gateway default site rm' or 'az vnet gateway reset' to produce a VirtualNetworkGateway1. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az vnet gateway connection create --VirtualNetworkGateway1 @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
+
+--virtualNetworkGateway2
+  [object] Second virtual network gateway. You may use commands including 'az vnet gateway create' or 'az vnet gateway ls' or 'az vnet gateway default site rm' or 'az vnet gateway reset' to produce a VirtualNetworkGateway2. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az vnet gateway connection create --VirtualNetworkGateway2 @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
+
+RELATED COMMANDS:
+az vnet gateway create (produces VirtualNetworkGateway1)
+
+az vnet gateway ls (produces VirtualNetworkGateway1)
+
+az vnet gateway default site rm (produces VirtualNetworkGateway1)
+
+az vnet gateway reset (produces VirtualNetworkGateway1)
+
+az vnet gateway resize (produces VirtualNetworkGateway1)
+
+az vnet gateway default site set (produces VirtualNetworkGateway1)
+
+az vnet gateway vpn client set (produces VirtualNetworkGateway1)
+
+az vnet gateway create (produces VirtualNetworkGateway2)
+
+az vnet gateway ls (produces VirtualNetworkGateway2)
+
+az vnet gateway default site rm (produces VirtualNetworkGateway2)
+
+az vnet gateway reset (produces VirtualNetworkGateway2)
+
+az vnet gateway resize (produces VirtualNetworkGateway2)
+
+az vnet gateway default site set (produces VirtualNetworkGateway2)
+
+az vnet gateway vpn client set (produces VirtualNetworkGateway2)
+
+az network local gateway create (produces LocalNetworkGateway2)
+
+az network local gateway ls (produces LocalNetworkGateway2)
+
+az network local gateway set (produces LocalNetworkGateway2)
+
+az network expressroute circuit peering create (produces Peer)
+
+az network expressroute circuit peering ls (produces Peer)
 

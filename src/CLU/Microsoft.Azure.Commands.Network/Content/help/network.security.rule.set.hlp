@@ -1,66 +1,56 @@
+az network security rule set
 
-Set-AzureRmNetworkSecurityRuleConfig: Sets the goal state for a network security rule configuration.
+Update a Network Security Rule Config.
 
+USAGE:
 
-The Set-AzureRmNetworkSecurityRuleConfig cmdlet sets the goal state for an Azure network security rule configuration.
+az network security rule set --networkSecurityGroup <networkSecurityGroup> --name <name> [--description <description>] [--protocol <protocol>] [--sourcePortRange <sourcePortRange>] [--destinationPortRange <destinationPortRange>] [--sourceAddressPrefix <sourceAddressPrefix>] [--destinationAddressPrefix <destinationAddressPrefix>] [--access <access>] [--priority <priority>] [--direction <direction>]
 
-
-Command syntax
-
-az networksecurityrule config set --name <string> --networksecuritygroup <PSNetworkSecurityGroup> [--description <string>] [--protocol <string>] [--sourceportrange <string>] [--destinationportrange <string>] [--sourceaddressprefix <string>] [--destinationaddressprefix <string>] [--access <string>] [--priority <int>] [--direction <string>]
-
-
-Parameters
-
---name
-Specifies the name of the network security rule configuration to set.
-
---networksecuritygroup
-Specifies the NetworkSecurityGroup object that contains the network security rule configuration to set.
-
---description
-Specifies a description for a rule configuration. The maximum size is 140 characters.
-
---protocol
-Specifies the network protocol that a rule configuration applies to. The acceptable values for this parameter are:
---Tcp
--- Udp
-—A wildcard character (*) to match both
-
---sourceportrange
-Specifies the source port or range. The acceptable values for this parameter are:
--- An integer
--- A range of integers between 0 and 65535
--- A wildcard character (*) to match any port
-
---destinationportrange
-Specifies a destination port or range. The acceptable values for this parameter are:
--- An integer 
--- A range of integers between 0 and 65535
--- A wildcard character (*) to match any port
-
---sourceaddressprefix
-Specifies a source address prefix. The acceptable values for this parameter are:
--- A CIDR
--- A source IP range
--- A wildcard character (*) to match any IP address 
-You can also use tags such as VirtualNetwork, AzureLoadBalancer and Internet.
-
---destinationaddressprefix
-Specifies a destination address prefix. The acceptable values for this parameter are:
--- A Classless Interdomain Routing (CIDR) address 
--- A destination IP address range 
--- A wildcard character (*) to match any IP address
-You can use tags such as VirtualNetwork, AzureLoadBalancer, and Internet.
+PARAMETERS:
 
 --access
-Specifies whether network traffic is allowed or denied. The acceptable values for this parameter are:Allow and Deny.
+  [string] The description of the rule
 
---priority
-Specifies the priority of a rule configuration. The acceptable values for this parameter are:An integer between 100 and 4096.
-The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
+--description
+  [string] The description of the rule
+
+--destinationAddressPrefix
+  [string] Destination Address Prefix rule
+
+--destinationPortRange
+  [string] Destination Port Range rule
 
 --direction
-Specifies whether a rule is evaluated for incoming or outgoing traffic. The acceptable values for this parameter are:Inbound and Outbound.
+  [string] The direction of the rule
 
+--name
+  [string] The name of the rule
+
+--networkSecurityGroup
+  [object] The NetworkSecurityGroup. You may use commands including 'az network security group create' or 'az network security group ls' or 'az network security group set' or 'az network security rule add' to produce a NetworkSecurityGroup. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network security rule set --NetworkSecurityGroup @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
+
+--priority
+  [int32] The prioroty of the rule
+
+--protocol
+  [string] Rule protocol
+
+--sourceAddressPrefix
+  [string] Source Address Prefix  rule
+
+--sourcePortRange
+  [string] Source Port Range rule
+
+RELATED COMMANDS:
+az network security group create (produces NetworkSecurityGroup)
+
+az network security group ls (produces NetworkSecurityGroup)
+
+az network security group set (produces NetworkSecurityGroup)
+
+az network security rule add (produces NetworkSecurityGroup)
+
+az network security rule rm (produces NetworkSecurityGroup)
+
+az network security rule set (produces NetworkSecurityGroup)
 

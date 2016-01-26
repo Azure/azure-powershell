@@ -1,8 +1,38 @@
-
-Get-AzureRMWebAppMetrics
-
-
-Command syntax
-
 az appservice metrics ls
+
+Get Web App Metrics details.
+
+USAGE:
+
+az appservice metrics ls [--metrics] <metrics> [--startTime] <startTime> [[--endTime] <endTime>] [--granularity] <granularity> [--instanceDetails]
+
+az appservice metrics ls [-g] <resourceGroupName> [-n] <name> [--metrics] <metrics> [--startTime] <startTime> [[--endTime] <endTime>] [--granularity] <granularity> [--instanceDetails]
+
+az appservice metrics ls [--webApp] <webApp> [--metrics] <metrics> [--startTime] <startTime> [[--endTime] <endTime>] [--granularity] <granularity> [--instanceDetails]
+
+PARAMETERS:
+
+--endTime
+  [dateTime] Metrics end time
+
+-g (--group, --resourceGroupName)
+  [string] The name of the resource group containing this resource
+
+--granularity
+  [string] Metric granularity. Allowed values: [PT1M|PT1H|P1D]
+
+--instanceDetails
+  [flag] Whether or not to include instance details
+
+--metrics
+  [string[]] Names of web app metrics
+
+-n (--name)
+  [string] The name of the web app.
+
+--startTime
+  [dateTime] Metrics start time
+
+--webApp
+  [object] The web app object
 

@@ -1,0 +1,43 @@
+az network load balancer create
+
+Create a Load Balancer.
+
+USAGE:
+
+az network load balancer create --name <name> --resourceGroupName <resourceGroupName> --location <location> [--frontendIpConfiguration <frontendIpConfiguration>] [--backendAddressPool <backendAddressPool>] [--probe <probe>] [--inboundNatRule <inboundNatRule>] [--loadBalancingRule <loadBalancingRule>] [--tag <tag>] [--inboundNatPool <inboundNatPool>] [--force]
+
+PARAMETERS:
+
+--backendAddressPool
+  [object[]] The list of backend address pool
+
+--force
+  [flag] Perform this action without prompting, even if permanent changes are made.
+
+--frontendIpConfiguration
+  [object[]] The list of frontend Ip config
+
+--inboundNatPool
+  [object[]] The list of inbound NAT pools
+
+--inboundNatRule
+  [object[]] The list of inbound NAT rule
+
+--loadBalancingRule
+  [object[]] The list of load balancing rule
+
+--location
+  [string] The region that will contain this resource.  Possible values include 'East US', 'North Europe', 'East Asia'
+
+--name (--resourceName)
+  [string] The resource name.
+
+--probe
+  [object[]] The list of probe
+
+--resourceGroupName
+  [string] The name of the resource group containing this resource
+
+--tag
+  [hashtable[]] An array of hashtables which represents resource tags.
+

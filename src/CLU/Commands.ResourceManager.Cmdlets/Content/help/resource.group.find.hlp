@@ -1,0 +1,19 @@
+az resource group find
+
+Find a Resource Group.
+
+USAGE:
+
+az resource group find [-t <tag>] [--apiVersion <apiVersion>] [--pre]
+
+PARAMETERS:
+
+--apiVersion
+  [string] When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.
+
+--pre
+  [flag] When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.
+
+-t (--tag)
+  [hashtable] The tag filter for the OData query. The expected format is @{Name = 'tagName'} or @{Name = 'tagName'; Value = 'tagValue'}.
+

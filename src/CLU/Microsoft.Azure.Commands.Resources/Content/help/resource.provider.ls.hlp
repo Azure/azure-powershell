@@ -1,26 +1,21 @@
+az resource provider ls
 
-Get-AzureRmResourceProvider
+Get Resource Provider details.
 
+USAGE:
 
+az resource provider ls [-l <location>] [-a]
 
+az resource provider ls -m <providerNamespace> [-l <location>]
 
+PARAMETERS:
 
-Command syntax
+-a (--listAvailable)
+  [flag] When specified, lists all the resource providers available, including those not registered with the current subscription.
 
-az resourcemanager resource resourcemanager provider ls [--listavailable] [--profile <AzureProfile>]
+-l (--location)
+  [string] The region that will contain this resource.  Possible values include 'East US', 'North Europe', 'East Asia'
 
-az resourcemanager resource resourcemanager provider ls --providernamespace <string> [--profile <AzureProfile>]
-
-
-Parameters
-
---listavailable
-
-
---profile
-
-
---providernamespace
-
-
+-m (--namespace, --providerNamespace)
+  [string] The resource provider namespace.
 

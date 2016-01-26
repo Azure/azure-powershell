@@ -1,39 +1,28 @@
+az vm ls
 
-Get-AzureRmVM: Gets the properties of a virtual machine.
+Get VM details.
 
+USAGE:
 
-The Get-AzureRmVM cmdlet gets the model view and instance view of an Azure virtual machine. The model view is the user specified properties of the virtual machine. The instance view is the instance level status of the virtual machine. To get only the instance view of a virtual machine, specify the Status parameter.
+az vm ls 
 
+az vm ls [--resourceGroupName] <resourceGroupName>
 
-Command syntax
+az vm ls [--resourceGroupName] <resourceGroupName> [--name] <name> [--status]
 
-az vm ls [--informationaction <ActionPreference>] [--informationvariable <string>]
+az vm ls [--nextLink] <nextLink>
 
-az vm ls [--resourcegroupname] <string> [--name] <string> [[--status]] [--informationaction <ActionPreference>] [--informationvariable <string>]
+PARAMETERS:
 
-az vm ls [--resourcegroupname] <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
+--name (--resourceName, --vmName)
+  [string] The virtual machine name.
 
-az vm ls [--nextlink] <Uri> [--informationaction <ActionPreference>] [--informationvariable <string>]
+--nextLink
+  [uri] 
 
-
-Parameters
-
---informationaction
-
-
---informationvariable
-
-
---resourcegroupname
-Specifies the name of a resource group.
-
---name
-Specifies the name of the virtual machine to get.
+--resourceGroupName
+  [string] The name of the resource group containing this resource
 
 --status
-Indicates that this cmdlet gets only the instance view of the virtual machine.
-
---nextlink
-Specifies the next link.
-
+  [flag] 
 

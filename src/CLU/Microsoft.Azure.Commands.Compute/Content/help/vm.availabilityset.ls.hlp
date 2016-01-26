@@ -1,27 +1,16 @@
+az vm availabilityset ls
 
-Get-AzureRmAvailabilitySet: Gets Azure availability sets in a resource group.
+Get Availability Set details.
 
+USAGE:
 
-The Get-AzureRmAvailabilitySet cmdlet gets Azure availability sets in a resource group. Specify the name of a specific availability set to get.
+az vm availabilityset ls [--resourceGroupName] <resourceGroupName> [[--name] <name>]
 
+PARAMETERS:
 
-Command syntax
+--name (--resourceName, --availabilitySetName)
+  [string] The availability set name.
 
-az vm availabilityset ls [--resourcegroupname] <string> [[--name] <string>] [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-
-Parameters
-
---resourcegroupname
-Specifies the name of a resource group.
-
---name
-Specifies the name of an availability set to get.
-
---informationaction
-
-
---informationvariable
-
-
+--resourceGroupName
+  [string] The name of the resource group containing this resource
 

@@ -26,12 +26,12 @@ namespace Microsoft.Azure.Commands.Profile
     /// <summary>
     /// Saves Microsoft Azure profile.
     /// </summary>
-    [Cmdlet(VerbsData.Save, "AzureRmProfile"), OutputType(typeof(PSAzureProfile))]
+    [Cmdlet(VerbsData.Save, "AzureRmProfile"), OutputType(typeof(void))]
     [CliCommandAlias("profile save")]
     public class SaveAzureRMProfileCommand : AzureRMCmdlet
     {
         [Parameter(Mandatory = false, Position = 0, ValueFromPipelineByPropertyName = true)]
-        public AzureRMProfile Profile { get; set; }
+        public PSAzureProfile Profile { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true)]
         public string Path { get; set; }
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Profile
         {
             if (Profile != null)
             {
-                Profile.Save(Path);
+                ((AzureRMProfile) Profile).Save(DataStore, Path);
             }
             else
             {

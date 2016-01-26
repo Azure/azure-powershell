@@ -1,38 +1,70 @@
+az vnet subnet set
 
-Set-AzureRmVirtualNetworkSubnetConfig: Sets the goal state for a subnet configuration in a virtual network.
+Update a Virtual Network Subnet Config.
 
+USAGE:
 
-The Set-AzureRmVirtualNetworkSubnetConfig cmdlet sets the goal state for a subnet configuration in an Azure virtual network.
+az vnet subnet set --virtualNetwork <virtualNetwork> --name <name> --addressPrefix <addressPrefix> [--networkSecurityGroup <networkSecurityGroup>] [--routeTable <routeTable>]
 
+az vnet subnet set --virtualNetwork <virtualNetwork> --name <name> --addressPrefix <addressPrefix> [--networkSecurityGroupId <networkSecurityGroupId>] [--routeTableId <routeTableId>]
 
-Command syntax
+PARAMETERS:
 
-az vnet subnet config set --name <string> --virtualnetwork <PSVirtualNetwork> --addressprefix <string> [--networksecuritygroup <PSNetworkSecurityGroup>] [--routetable <PSRouteTable>]
-
-az vnet subnet config set --name <string> --virtualnetwork <PSVirtualNetwork> --addressprefix <string> [--networksecuritygroupid <string>] [--routetableid <string>]
-
-
-Parameters
+--addressPrefix
+  [string] The address prefix of the subnet
 
 --name
-Specifies the name of a subnet configuration.
+  [string] The name of the subnet
 
---virtualnetwork
-Specifies the VirtualNetwork object that contains the subnet configuration.
+--networkSecurityGroup
+  [object] NetworkSecurityGroup. You may use commands including 'az network security group create' or 'az network security group ls' or 'az network security group set' or 'az network security rule add' to produce a NetworkSecurityGroup. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az vnet subnet set --NetworkSecurityGroup @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
 
---addressprefix
-Specifies a range of IP addresses for a subnet configuration.
+--networkSecurityGroupId
+  [string] NetworkSecurityGroupId
 
---networksecuritygroup
-Specifies a NetworkSecurityGroup object.
+--routeTable
+  [object] RouteTable. You may use commands including 'az network route table create' or 'az newtork route table ls' or 'az network route table set' or 'az network route add' to produce a RouteTable. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az vnet subnet set --RouteTable @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
 
---routetable
+--routeTableId
+  [string] RouteTableId
 
+--virtualNetwork
+  [object] The virtualNetwork. You may use commands including 'az vnet create' or 'az vnet ls' or 'az vnet set' or 'az vnet subnet add' to produce a VirtualNetwork. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az vnet subnet set --VirtualNetwork @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
 
---networksecuritygroupid
-Specifies the ID of a network security group.
+RELATED COMMANDS:
+az vnet create (produces VirtualNetwork)
 
---routetableid
+az vnet ls (produces VirtualNetwork)
 
+az vnet set (produces VirtualNetwork)
 
+az vnet subnet add (produces VirtualNetwork)
+
+az vnet subnet rm (produces VirtualNetwork)
+
+az vnet subnet set (produces VirtualNetwork)
+
+az network security group create (produces NetworkSecurityGroup)
+
+az network security group ls (produces NetworkSecurityGroup)
+
+az network security group set (produces NetworkSecurityGroup)
+
+az network security rule add (produces NetworkSecurityGroup)
+
+az network security rule rm (produces NetworkSecurityGroup)
+
+az network security rule set (produces NetworkSecurityGroup)
+
+az network route table create (produces RouteTable)
+
+az newtork route table ls (produces RouteTable)
+
+az network route table set (produces RouteTable)
+
+az network route add (produces RouteTable)
+
+az network route rm (produces RouteTable)
+
+az network route set (produces RouteTable)
 

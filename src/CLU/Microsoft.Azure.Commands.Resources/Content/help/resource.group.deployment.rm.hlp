@@ -1,8 +1,24 @@
+az resource group deployment rm
 
-Remove-AzureRmResourceGroupDeployment
+Remove a Resource Group Deployment.
 
+USAGE:
 
-Command syntax
+az resource group deployment rm [-g] <resourceGroupName> [-n] <name> [-f]
 
-az resourcemanager group deployment rm
+az resource group deployment rm --id <id> [-f]
+
+PARAMETERS:
+
+-f (--force)
+  [flag] Perform this action without prompting, even if permanent changes are made.
+
+-g (--group, --resourceGroupName)
+  [string] The name of the resource group containing this resource
+
+--id (--deploymentId, --resourceId)
+  [string] The identity of this resource. Resource identity is a Uri path that uniquely identifies the resource.
+
+-n (--deploymentName, --name)
+  [string] The name of the deployment.
 

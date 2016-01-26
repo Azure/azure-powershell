@@ -1,8 +1,13 @@
+az network expressroute circuit auth create
 
-New-AzureRmExpressRouteCircuitAuthorization
+Create an Express Route Circuit Authorization.
 
+USAGE:
 
-Command syntax
+az network expressroute circuit auth create --name <name>
 
-az expressroute circuit authorization new
+PARAMETERS:
+
+--name
+  [string] The name of the Authorization
 

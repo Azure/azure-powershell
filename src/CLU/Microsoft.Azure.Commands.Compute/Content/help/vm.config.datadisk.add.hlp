@@ -1,52 +1,65 @@
+az vm config datadisk add
 
-Add-AzureRmVMDataDisk: Adds a data disk to a virtual machine.
+Add a VM Data Disk.
 
+USAGE:
 
-The Add-AzureRmVMDataDisk cmdlet adds a data disk to a virtual machine. You can add a data disk when you create a virtual machine, or you can add a data disk to an existing virtual machine.
+az vm config datadisk add [--vm] <vm> [--name] <name> [--vhdUri] <vhdUri> [[--caching] <caching>] [--diskSizeInGB] <diskSizeInGB> [[--lun] <lun>] [--createOption] <createOption> [[--sourceImageUri] <sourceImageUri>]
 
-
-Command syntax
-
-az vm datadisk add [--vm] <PSVirtualMachine> [--name] <string> [[--vhduri] <string>] [[--caching] <string>] [--disksizeingb] <Nullable`1[Int32]> [[--lun] <Nullable`1[Int32]>] [--createoption] <string> [[--sourceimageuri] <string>] [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-
-Parameters
-
---vm
-Specifies the local virtual machine object to which to add a data disk. To obtain a virtual machine object, use the Get-AzureRmVM cmdlet. Create a virtual machine object by using the New-AzureRmVMConfig cmdlet.
-
---name
-Specifies the name of the data disk to add.
-
---vhduri
-Specifies the Uniform Resource Identifier (URI) for the virtual hard disk (VHD) file to create when a platform image or user image is used. This cmdlet copies the image binary large object (BLOB) to this location. This is the location from which to start the virtual machine.
+PARAMETERS:
 
 --caching
-Specifies the caching mode of the disk. Valid values are:
--- ReadOnly
--- ReadWrite
-The default value is ReadWrite. Changing this value causes the virtual machine to restart.
-This setting affects the consistency and performance of the disk.
+  [string] The virtual machine data disk's caching.
 
---disksizeingb
-Specifies the size, in gigabytes, of an empty disk to attach to a virtual machine.
+--createOption
+  [string] The virtual machine data disk's create option.
+
+--diskSizeInGB
+  [int32] The virtual machine data disk's size in GB.
 
 --lun
-Specifies the logical unit number (LUN) for a data disk.
+  [int32] The virtual machine data disk's Lun.
 
---createoption
-Specifies whether this cmldet creates a disk in the virtual machine from a platform or user image, creates an empty disk, or attaches an existing disk. Valid values are: 
--- Attach 
--- Empty 
--- FromImage
+--name
+  [string] The virtual machine data disk's name.
 
---sourceimageuri
-Specifies the source URI of the disk that this cmdlet attaches.
+--sourceImageUri (--sourceImage)
+  [string] The virtual machine OS disk's source image Uri.
 
---informationaction
+--vhdUri
+  [string] The virtual machine data disk's Vhd Uri.
 
+--vm (--vmProfile)
+  [object] The virtual machine profile. You may use commands including 'az vm config create' or 'az vm bootdiagnostics ls' or 'az vm ls' or 'az vm config additionalunattendcontent add' to produce a VM. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az vm config datadisk add --VM @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
 
---informationvariable
+RELATED COMMANDS:
+az vm config create (produces VM)
 
+az vm bootdiagnostics ls (produces VM)
 
+az vm ls (produces VM)
+
+az vm config additionalunattendcontent add (produces VM)
+
+az vm config datadisk add (produces VM)
+
+az vm config network interface add (produces VM)
+
+az vm config secret add (produces VM)
+
+az vm config ssh public key add (produces VM)
+
+az vm config datadisk rm (produces VM)
+
+az vm config network interface rm (produces VM)
+
+az vm config bootdiagnostics set (produces VM)
+
+az vm config datadisk set (produces VM)
+
+az vm config os set (produces VM)
+
+az vm config osdisk set (produces VM)
+
+az vm config source image set (produces VM)
 

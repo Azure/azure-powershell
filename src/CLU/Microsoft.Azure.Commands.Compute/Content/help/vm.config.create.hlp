@@ -1,30 +1,19 @@
+az vm config create
 
-New-AzureRmVMConfig: Creates a configurable virtual machine object.
+Create a VM Config.
 
+USAGE:
 
-The New-AzureRmVMConfig cmdlet creates a configurable local virtual machine object for Azure. Configure a virtual machine object by using other cmdlets, such as Set-AzureRmVMOperatingSystem, Set-AzureRmVMSourceImage, Add-AzureRmVMNetworkInterface, and Set-AzureRmVMOSDisk.
+az vm config create [--vmName] <vmName> [--vmSize] <vmSize> [[--availabilitySetId] <availabilitySetId>]
 
+PARAMETERS:
 
-Command syntax
+--availabilitySetId
+  [string] The Availability Set Id.
 
-az vm config new [--vmname] <string> [--vmsize] <string> [[--availabilitysetid] <string>] [--informationaction <ActionPreference>] [--informationvariable <string>]
+--vmName (--resourceName, --name)
+  [string] The VM name.
 
-
-Parameters
-
---vmname
-Specifies a name for the virtual machine.
-
---vmsize
-Specifies the size for the virtual machine.
-
---availabilitysetid
-Specifies the ID of an availability set. To obtain an availability set object, use the Get-AzureRmAvailabilitySet cmdlet. The availability set object contains an ID property.
-
---informationaction
-
-
---informationvariable
-
-
+--vmSize
+  [string] The virtual machine size.
 

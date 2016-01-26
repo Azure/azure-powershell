@@ -1,8 +1,16 @@
+az vnet gateway vpn client root cert create
 
-New-AzureRmVpnClientRootCertificate
+Create a Vpn Client Root Certificate.
 
+USAGE:
 
-Command syntax
+az vnet gateway vpn client root cert create --name <name> --publicCertData <publicCertData>
 
-az vpn client root certificate new
+PARAMETERS:
+
+--name
+  [string] The name of the Client Root certificate
+
+--publicCertData
+  [string] Client Root Public certificate data
 

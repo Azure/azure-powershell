@@ -1,8 +1,35 @@
-
-Set-AzureRMAppServicePlan
-
-
-Command syntax
-
 az appservice plan set
+
+Update an App Service Plan.
+
+USAGE:
+
+az appservice plan set 
+
+az appservice plan set [-g] <resourceGroupName> [-n] <name> [[-n] <adminSiteName>] [[--tier] <tier>] [[--numberofWorkers] <numberofWorkers>] [[--workerSize] <workerSize>]
+
+az appservice plan set [--appServicePlan] <appServicePlan>
+
+PARAMETERS:
+
+--appServicePlan (--plan)
+  [object] The app service plan object
+
+-g (--group, --resourceGroupName)
+  [string] The name of the resource group containing this resource
+
+-n (--name, --adminSiteName)
+  [string] The name of the admin web app
+
+-n (--name)
+  [string] The name of the app service plan.
+
+--numberofWorkers (--workers)
+  [int32] Number of Workers to be allocated.
+
+--tier
+  [string] The App Service plan tier. Allowed values are [Free|Shared|Basic|Standard|Premium]
+
+--workerSize (--size)
+  [string] Size of workers to be allocated. Allowed values are [Small|Medium|Large|ExtraLarge]
 

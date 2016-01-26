@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Commands.Common", "Commands.Common\Commands.Common.xproj", "{5F567ACA-595E-436D-83DB-A21E08F82DF6}"
 EndProject
@@ -67,6 +67,8 @@ EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Microsoft.Azure.Commands.Network", "Microsoft.Azure.Commands.Network\Microsoft.Azure.Commands.Network.xproj", "{C4DCF4EA-62E7-431E-ADB5-16FD6CFEA5D6}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Microsoft.CLU.Test", "Microsoft.CLU.Test\Microsoft.CLU.Test.xproj", "{13C34370-51A4-4726-81B8-BE0996FC9CF0}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "StaticAnalysis", "StaticAnalysis\StaticAnalysis.xproj", "{84F9573A-449E-4159-8493-EFD6C3C8F0A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -172,6 +174,10 @@ Global
 		{13C34370-51A4-4726-81B8-BE0996FC9CF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13C34370-51A4-4726-81B8-BE0996FC9CF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13C34370-51A4-4726-81B8-BE0996FC9CF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84F9573A-449E-4159-8493-EFD6C3C8F0A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84F9573A-449E-4159-8493-EFD6C3C8F0A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84F9573A-449E-4159-8493-EFD6C3C8F0A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84F9573A-449E-4159-8493-EFD6C3C8F0A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

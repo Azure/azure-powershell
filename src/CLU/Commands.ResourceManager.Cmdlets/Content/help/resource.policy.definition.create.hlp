@@ -1,0 +1,28 @@
+az resource policy definition create
+
+Create a Policy Definition.
+
+USAGE:
+
+az resource policy definition create -n <name> --policy <policy> [--displayName <displayName>] [--description <description>] [--apiVersion <apiVersion>] [--pre]
+
+PARAMETERS:
+
+--apiVersion
+  [string] When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.
+
+--description
+  [string] The description for policy definition.
+
+--displayName
+  [string] The display name for policy definition.
+
+-n (--name)
+  [string] The policy definition name.
+
+--policy
+  [string] The rule for policy definition. This can either be a path to a file name containing the rule, or the rule as string.
+
+--pre
+  [flag] When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.
+

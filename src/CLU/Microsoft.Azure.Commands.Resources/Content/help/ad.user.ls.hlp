@@ -1,40 +1,30 @@
+az ad user ls
 
-Get-AzureRmADUser: Filters active directory users.
+Get Active Directory User details.
 
+USAGE:
 
-This is the Description section
+az ad user ls [--userPrincipalName <userPrincipalName>]
 
-Filters active directory users.
+az ad user ls -s <searchString>
 
+az ad user ls --objectId <objectId>
 
-Command syntax
+az ad user ls --userPrincipalName <userPrincipalName>
 
-az activedirectory users ls [--userprincipalname <string>] [--profile <AzureProfile>]
+az ad user ls --mail <mail>
 
-az activedirectory users ls --searchstring <string> [--profile <AzureProfile>]
-
-az activedirectory users ls --objectid <Guid> [--profile <AzureProfile>]
-
-az activedirectory users ls [--userprincipalname <string>] [--profile <AzureProfile>]
-
-az activedirectory users ls --mail <string> [--profile <AzureProfile>]
-
-
-Parameters
-
---userprincipalname
-UPN of the user.
-
---profile
-
-
---searchstring
-The user display name
-
---objectid
-Object id of the user.
+PARAMETERS:
 
 --mail
+  [string] The user mail.
 
+--objectId (--id)
+  [guid] The user object id.
 
+-s (--searchString)
+  [string] The user search string.
+
+--userPrincipalName (--uPN)
+  [string] The user UPN.
 

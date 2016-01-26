@@ -1,0 +1,57 @@
+az login
+
+Add an Account.
+
+USAGE:
+
+az login [-e <environmentName>] [-u <username>] [-p <password>] [-t <tenantId>] [-s <subscriptionId>]
+
+az login --secret <secret> --applicationId <applicationId> --servicePrincipal -t <tenantId> [-e <environmentName>] [-s <subscriptionId>]
+
+az login --secret <secret> --applicationId <applicationId> --servicePrincipal -t <tenantId> -n <subscriptionName> [-e <environmentName>]
+
+az login -u <username> --accessToken <accessToken> -n <subscriptionName> [-e <environmentName>] [-t <tenantId>]
+
+az login -u <username> --accessToken <accessToken> [-e <environmentName>] [-t <tenantId>] [-s <subscriptionId>]
+
+az login -n <subscriptionName> [-e <environmentName>] [-u <username>] [-p <password>] [-t <tenantId>]
+
+az login --certificateThumbprint <certificateThumbprint> --applicationId <applicationId> --servicePrincipal -t <tenantId> [-e <environmentName>] [-s <subscriptionId>]
+
+az login --certificateThumbprint <certificateThumbprint> --applicationId <applicationId> --servicePrincipal -t <tenantId> -n <subscriptionName> [-e <environmentName>]
+
+PARAMETERS:
+
+--accessToken (--token)
+  [string] AccessToken string for direct authentication of requests.
+
+--applicationId (--appid)
+  [string] The application id for service principal login.
+
+--certificateThumbprint (--cert)
+  [string] Certificate Hash (Thumbprint) for authenticating the given service principal.
+
+-e (--environmentName)
+  [string] Name of the environment containing the account to log into
+
+-n (--name, --subscriptionName)
+  [string] The friendly name of the subscription.
+
+-p (--password)
+  [string] Password for given user id.  If not provided, interactvie login will be used.
+
+-s (--id, --subscriptionId)
+  [string] The subscription identity, a global unique identifier (GUID) that uniquely identifies the subscription.
+
+--secret
+  [string] The application secret for this service principal.
+
+--servicePrincipal (--spn)
+  [flag] Indicates a login using service principal credentials.
+
+-t (--domain, --tenantId)
+  [string] The tenant identity (GUID) or the domain name.
+
+-u (--username)
+  [string] User Account Id (for example, user@contoso.com) to use for login.
+

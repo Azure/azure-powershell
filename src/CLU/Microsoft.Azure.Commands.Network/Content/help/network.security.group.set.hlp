@@ -1,18 +1,26 @@
+az network security group set
 
-Set-AzureRmNetworkSecurityGroup: Sets the goal state for a network security group.
+Update a Network Security Group.
 
+USAGE:
 
-The Set-AzureRmNetworkSecurityGroup cmdlet sets the goal state for an Azure network security group.
+az network security group set --networkSecurityGroup <networkSecurityGroup>
 
+PARAMETERS:
 
-Command syntax
+--networkSecurityGroup
+  [object] The NetworkSecurityGroup. You may use commands including 'az network security group create' or 'az network security group ls' or 'az network security group set' or 'az network security rule add' to produce a NetworkSecurityGroup. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network security group set --NetworkSecurityGroup @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
 
-az networksecuritygroup set --networksecuritygroup <PSNetworkSecurityGroup>
+RELATED COMMANDS:
+az network security group create (produces NetworkSecurityGroup)
 
+az network security group ls (produces NetworkSecurityGroup)
 
-Parameters
+az network security group set (produces NetworkSecurityGroup)
 
---networksecuritygroup
-A Network Security Group object representing the goal state to which the Network Security Group should be set.
+az network security rule add (produces NetworkSecurityGroup)
 
+az network security rule rm (produces NetworkSecurityGroup)
+
+az network security rule set (produces NetworkSecurityGroup)
 

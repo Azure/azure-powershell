@@ -103,7 +103,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         /// <param name="path">File path on disk to save profile to</param>
         public void Save(string path)
         {
+            Save(_dataStore, path);
+        }
+
+        public void Save(IDataStore store, string path)
+        {
+
             if (string.IsNullOrEmpty(path))
+            {
+                return;
+            }
+
+            if (store == null)
             {
                 return;
             }
@@ -118,14 +129,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             {
                 string contents = ToString();
                 string diskContents = string.Empty;
-                if (_dataStore.FileExists(path))
+                if (store.FileExists(path))
                 {
-                    diskContents = _dataStore.ReadFileAsText(path);
+                    diskContents = store.ReadFileAsText(path);
                 }
 
                 if (diskContents != contents)
                 {
-                    _dataStore.WriteFile(path, contents);
+                    store.WriteFile(path, contents);
                 }
             }
             finally

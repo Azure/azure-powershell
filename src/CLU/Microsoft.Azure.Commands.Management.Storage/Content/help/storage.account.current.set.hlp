@@ -1,8 +1,21 @@
+az storage account current set
 
-Set-AzureRmCurrentStorageAccount
+Update a Current Storage Account.
 
+USAGE:
 
-Command syntax
+az storage account current set -g <resourceGroupName> -n <storageAccountName>
 
-az current storage account set
+az storage account current set --context <context>
+
+PARAMETERS:
+
+--context
+  [object] The Storage context for the storage account.
+
+-g (--group, --resourceGroupName)
+  [string] The name of the resource group containing this resource
+
+-n (--name, --storageAccountName)
+  [string] The current storage account name.
 

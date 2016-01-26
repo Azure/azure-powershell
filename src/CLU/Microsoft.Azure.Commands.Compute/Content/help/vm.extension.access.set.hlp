@@ -1,42 +1,31 @@
+az vm extension access set
 
-Set-AzureRmVMAccessExtension: Adds the VMAccess extension to a virtual machine.
+Update a VM Access Extension.
 
+USAGE:
 
-The Set-AzureRmVMAccessExtension cmdlet adds the Virtual Machine Access (VMAccess) Virtual Machine Extension to a virtual machine. VMAccess can reset the virtual machine user name and password.
+az vm extension access set [--resourceGroupName] <resourceGroupName> [--vmName] <vmName> [--name] <name> [[--typeHandlerVersion] <typeHandlerVersion>] [[--userName] <userName>] [[--password] <password>] [[--location] <location>]
 
-
-Command syntax
-
-az vm accessextension set [--resourcegroupname] <string> [--vmname] <string> [--name] <string> [[--typehandlerversion] <string>] [[--username] <string>] [[--password] <string>] [[--location] <string>] [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-
-Parameters
-
---resourcegroupname
-Specifies the name of the resource group of the virtual machine.
-
---vmname
-Specifies the name of a virtual machine. This cmdlet adds VMAccess for the virtual machine that this parameter specifies.
-
---name
-Specifies the name of the extension that this cmdlet adds.
-
---typehandlerversion
-Specifies the version of the extension to use for this virtual machine. To obtain the version, run the Get-AzureRmVMExtensionImage cmdlet with a value of Microsoft.Compute for the PublisherName parameter and VMAccessAgent for the Type parameter.
-
---username
-Specifies the new user name for the virtual machine.
-
---password
-Specifies the new password of the virtual machine.
+PARAMETERS:
 
 --location
-Specifies the location of the virtual machine.
+  [string] The region that will contain this resource.  Possible values include 'East US', 'North Europe', 'East Asia'
 
---informationaction
+--name (--extensionName)
+  [string] The extension name.
 
+--password
+  [string] New or Existing User Password
 
---informationvariable
+--resourceGroupName
+  [string] The name of the resource group containing this resource
 
+--typeHandlerVersion (--handlerVersion, --version)
+  [string] The type handler version.
 
+--userName
+  [string] New or Existing User Name
+
+--vmName (--resourceName)
+  [string] The virtual machine name.
 

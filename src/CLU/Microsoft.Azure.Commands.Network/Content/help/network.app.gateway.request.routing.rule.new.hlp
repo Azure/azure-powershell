@@ -1,0 +1,73 @@
+az network app gateway request routing rule new
+
+Create an Application Gateway Request Routing Rule.
+
+USAGE:
+
+az network app gateway request routing rule new --name <name> --ruleType <ruleType>
+
+az network app gateway request routing rule new --name <name> --ruleType <ruleType> [--backendHttpSettingsId <backendHttpSettingsId>] [--httpListenerId <httpListenerId>] [--backendAddressPoolId <backendAddressPoolId>] [--urlPathMapId <urlPathMapId>]
+
+az network app gateway request routing rule new --name <name> --ruleType <ruleType> [--backendHttpSettings <backendHttpSettings>] [--httpListener <httpListener>] [--backendAddressPool <backendAddressPool>] [--urlPathMap <urlPathMap>]
+
+PARAMETERS:
+
+--backendAddressPool
+  [object] Application gateway BackendAddressPool. You may use commands including 'az network app gateway backend address pool create' or 'az network app gateway backend address pool ls' or 'az network app gateway backend address pool ls' or 'az network app gateway backend address pool rm' to produce a BackendAddressPool. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network app gateway request routing rule new --BackendAddressPool @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
+
+--backendAddressPoolId
+  [string] ID of the application gateway BackendAddressPool
+
+--backendHttpSettings
+  [object] Application gateway BackendHttpSettings. You may use commands including 'az network app gateway backend http settings create' or 'az network app gateway backend http settings ls' or 'az network app gateway backend http settings ls' to produce a BackendHttpSettings. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network app gateway request routing rule new --BackendHttpSettings @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
+
+--backendHttpSettingsId
+  [string] ID of the application gateway BackendHttpSettings
+
+--httpListener
+  [object] Application gateway HttpListener. You may use commands including 'az network app gateway http listener create' or 'az network app gateway http listener ls' or 'az network app gateway http listener ls' or 'az network app gateway http listener rm' to produce a HttpListener. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network app gateway request routing rule new --HttpListener @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
+
+--httpListenerId
+  [string] ID of the application gateway HttpListener
+
+--name
+  [string] The name of the Request Routing Rule
+
+--ruleType
+  [string] The type of rule
+
+--urlPathMap
+  [object] Application gateway UrlPathMap. You may use commands including 'az network app gateway url path map create' or 'az network app gateway url path map ls' or 'az network app gateway url path map ls' to produce a UrlPathMap. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network app gateway request routing rule new --UrlPathMap @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
+
+--urlPathMapId
+  [string] ID of the application gateway UrlPathMap
+
+RELATED COMMANDS:
+az network app gateway backend http settings create (produces BackendHttpSettings)
+
+az network app gateway backend http settings ls (produces BackendHttpSettings)
+
+az network app gateway backend http settings ls (produces BackendHttpSettings)
+
+az network app gateway http listener create (produces HttpListener)
+
+az network app gateway http listener ls (produces HttpListener)
+
+az network app gateway http listener ls (produces HttpListener)
+
+az network app gateway http listener rm (produces HttpListener)
+
+az network app gateway backend address pool create (produces BackendAddressPool)
+
+az network app gateway backend address pool ls (produces BackendAddressPool)
+
+az network app gateway backend address pool ls (produces BackendAddressPool)
+
+az network app gateway backend address pool rm (produces BackendAddressPool)
+
+az network app gateway url path map create (produces UrlPathMap)
+
+az network app gateway url path map ls (produces UrlPathMap)
+
+az network app gateway url path map ls (produces UrlPathMap)
+

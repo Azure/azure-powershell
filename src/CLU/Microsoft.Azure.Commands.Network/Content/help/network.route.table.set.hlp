@@ -1,18 +1,26 @@
+az network route table set
 
-Set-AzureRmRouteTable: Sets the goal state for a route table.
+Update a Route Table.
 
+USAGE:
 
-The Set-AzureRmRouteTable cmdlet sets the goal state for an Azure route table.
+az network route table set --routeTable <routeTable>
 
+PARAMETERS:
 
-Command syntax
+--routeTable
+  [object] The RouteTable. You may use commands including 'az network route table create' or 'az newtork route table ls' or 'az network route table set' or 'az network route add' to produce a RouteTable. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network route table set --RouteTable @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
 
-az route table set --routetable <PSRouteTable>
+RELATED COMMANDS:
+az network route table create (produces RouteTable)
 
+az newtork route table ls (produces RouteTable)
 
-Parameters
+az network route table set (produces RouteTable)
 
---routetable
-Specifies a route table object that represents the goal state to which this cmdlet sets the route table.
+az network route add (produces RouteTable)
 
+az network route rm (produces RouteTable)
+
+az network route set (produces RouteTable)
 

@@ -1,35 +1,55 @@
+az vm config network interface add
 
-Add-AzureRmVMNetworkInterface: Adds a network interface to a virtual machine.
+Add a VM Network Interface.
 
+USAGE:
 
-The Add-AzureRmVMNetworkInterface cmdlet adds a network interface to a virtual machine. You can add an interface when you create a virtual machine or add one to an existing virtual machine.
+az vm config network interface add [--vm] <vm> [--id] <id> [--primary]
 
+az vm config network interface add [--vm] <vm> [--networkInterface] <networkInterface>
 
-Command syntax
+PARAMETERS:
 
-az vm network interface add [--vm] <PSVirtualMachine> [--id] <string> [[--primary]] [--informationaction <ActionPreference>] [--informationvariable <string>]
+--id (--nicId, --networkInterfaceId)
+  [string] The identity of this resource. Resource identity is a Uri path that uniquely identifies the resource.
 
-az vm network interface add [--vm] <PSVirtualMachine> [--networkinterface] <List`1[PSNetworkInterface]> [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-
-Parameters
-
---vm
-Specifies a local virtual machine object to which to add a network interface. To create a virtual machine, use the New-AzureRmVMConfig cmdlet. To obtain an existing virtual machine, use the Get-AzureRmVM cmdlet.
-
---id
-Specifies the ID of a network interface to add to a virtual machine. To obtain a network interface, use the Get-AzureRmNetworkInterface cmdlet.
+--networkInterface
+  [object[]] 
 
 --primary
-Indicates that this cmdlet adds the network interface as the primary interface.
+  [flag] 
 
---informationaction
+--vm (--vmProfile)
+  [object] The virtual machine profile. You may use commands including 'az vm config create' or 'az vm bootdiagnostics ls' or 'az vm ls' or 'az vm config additionalunattendcontent add' to produce a VM. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az vm config network interface add --VM @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
 
+RELATED COMMANDS:
+az vm config create (produces VM)
 
---informationvariable
+az vm bootdiagnostics ls (produces VM)
 
+az vm ls (produces VM)
 
---networkinterface
+az vm config additionalunattendcontent add (produces VM)
 
+az vm config datadisk add (produces VM)
 
+az vm config network interface add (produces VM)
+
+az vm config secret add (produces VM)
+
+az vm config ssh public key add (produces VM)
+
+az vm config datadisk rm (produces VM)
+
+az vm config network interface rm (produces VM)
+
+az vm config bootdiagnostics set (produces VM)
+
+az vm config datadisk set (produces VM)
+
+az vm config os set (produces VM)
+
+az vm config osdisk set (produces VM)
+
+az vm config source image set (produces VM)
 

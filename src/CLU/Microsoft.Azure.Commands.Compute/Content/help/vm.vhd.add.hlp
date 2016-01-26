@@ -1,39 +1,30 @@
+az vm vhd add
 
-Add-AzureRmVhd
+Add a Vhd.
 
+USAGE:
 
+az vm vhd add [[--resourceGroupName] <resourceGroupName>] [--destination] <destination> [--localFilePath] <localFilePath> [[--numberOfUploaderThreads] <numberOfUploaderThreads>] [[--baseImageUriToPatch] <baseImageUriToPatch>]
 
+az vm vhd add [[--resourceGroupName] <resourceGroupName>] [--destination] <destination> [--localFilePath] <localFilePath> [[--numberOfUploaderThreads] <numberOfUploaderThreads>] [[--baseImageUriToPatch] <baseImageUriToPatch>] [-o]
 
+PARAMETERS:
 
-Command syntax
+--baseImageUriToPatch (--bs)
+  [string] Uri to a base image in a blob storage account to apply the difference
 
-az vhd add [[--resourcegroupname] <string>] [--destination] <Uri> [--localfilepath] <FileInfo> [[--numberofuploaderthreads] <Nullable`1[Int32]>] [[--baseimageuritopatch] <Uri>] [[--overwrite]] [--informationaction <ActionPreference>] [--informationvariable <string>]
+--destination (--dst)
+  [string] Uri to blob
 
+--localFilePath (--lf)
+  [string] Local path of the vhd file
 
-Parameters
+--numberOfUploaderThreads (--th)
+  [int32] Number of uploader threads
 
---resourcegroupname
+-o (--overWrite)
+  [flag] Delete the blob if already exists
 
-
---destination
-
-
---localfilepath
-
-
---numberofuploaderthreads
-
-
---baseimageuritopatch
-
-
---overwrite
-
-
---informationaction
-
-
---informationvariable
-
-
+--resourceGroupName
+  [string] The name of the resource group containing this resource
 

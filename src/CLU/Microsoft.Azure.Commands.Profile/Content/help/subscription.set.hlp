@@ -1,0 +1,33 @@
+az subscription set
+
+Update a Context.
+
+USAGE:
+
+az subscription set [-t <tenantId>] [-n <subscriptionName>]
+
+az subscription set [-t <tenantId>] [-s <subscriptionId>]
+
+az subscription set --context <context>
+
+PARAMETERS:
+
+--context
+  [object] Context. You may use commands including 'az context ls' or 'az context set' or 'az subscription set' to produce a Context. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az subscription set --Context @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
+
+-n (--name, --subscriptionName)
+  [string] The friendly name of the subscription.
+
+-s (--id, --subscriptionId)
+  [string] The subscription identity, a global unique identifier (GUID) that uniquely identifies the subscription.
+
+-t (--domain, --tenantId)
+  [string] The tenant identity (GUID) or the domain name.
+
+RELATED COMMANDS:
+az context ls (produces Context)
+
+az context set (produces Context)
+
+az subscription set (produces Context)
+

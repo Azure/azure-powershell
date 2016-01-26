@@ -1,8 +1,45 @@
+az resource group deployment test
 
-Test-AzureRmResourceGroupDeployment
+Test a Resource Group Deployment.
 
+USAGE:
 
-Command syntax
+az resource group deployment test -g <resourceGroupName> --templateFile <templateFile> [--mode <mode>]
 
-az resourcemanager group deployment test
+az resource group deployment test -g <resourceGroupName> --templateParameterObject <templateParameterObject> --templateFile <templateFile> [--mode <mode>]
+
+az resource group deployment test -g <resourceGroupName> --templateParameterObject <templateParameterObject> --templateUri <templateUri> [--mode <mode>]
+
+az resource group deployment test -g <resourceGroupName> --templateParameterFile <templateParameterFile> --templateFile <templateFile> [--mode <mode>]
+
+az resource group deployment test -g <resourceGroupName> --templateParameterFile <templateParameterFile> --templateUri <templateUri> [--mode <mode>]
+
+az resource group deployment test -g <resourceGroupName> --templateParameterUri <templateParameterUri> --templateFile <templateFile> [--mode <mode>]
+
+az resource group deployment test -g <resourceGroupName> --templateParameterUri <templateParameterUri> --templateUri <templateUri> [--mode <mode>]
+
+az resource group deployment test -g <resourceGroupName> --templateUri <templateUri> [--mode <mode>]
+
+PARAMETERS:
+
+-g (--group, --resourceGroupName)
+  [string] The name of the resource group containing this resource
+
+--mode
+  [object] The deployment mode.
+
+--templateFile
+  [string] Local path to the template file.
+
+--templateParameterFile
+  [string] A file that has the template parameters.
+
+--templateParameterObject
+  [hashtable] A hash table which represents the parameters.
+
+--templateParameterUri
+  [string] Uri to the template parameter file.
+
+--templateUri
+  [string] Uri to the template file.
 
