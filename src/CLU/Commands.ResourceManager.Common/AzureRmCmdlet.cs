@@ -25,6 +25,7 @@ using System.Management.Automation.Host;
 using System.Reflection;
 using System.Linq;
 using System.Globalization;
+using Microsoft.Azure.Management.Resources;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
@@ -65,19 +66,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 DefaultProfile = DefaultProfile?? sessionProfile;
             }
             base.BeginProcessing();
-            //TODO:  Add back RP automatic registration
-            //ClientFactory.AddHandler(new RPRegistrationDelegatingHandler(
-            //               () => new ResourceManagementClient(
-            //                   AuthenticationFactory.GetSubscriptionCloudCredentials(DefaultContext, AzureEnvironment.Endpoint.ResourceManager),
-            //                   DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager)),
-            //               s => _debugMessages.Enqueue(s)));
+            ClientFactory.AddHandler(new RPRegistrationDelegatingHandler(
+                           () => new ResourceManagementClient(
+                               AuthenticationFactory.GetSubscriptionCloudCredentials(DefaultContext, AzureEnvironment.Endpoint.ResourceManager)),
+                           s => _debugMessages.Enqueue(s)));
 
         }
 
         protected override void EndProcessing()
         {
             SetSessionVariable(AzurePowerShell.ProfileVariable, ((PSAzureProfile)DefaultProfile));
-            //ClientFactory.RemoveHandler(typeof(RPRegistrationDelegatingHandler));
+            ClientFactory.RemoveHandler(typeof(RPRegistrationDelegatingHandler));
             base.EndProcessing();
         }
 
