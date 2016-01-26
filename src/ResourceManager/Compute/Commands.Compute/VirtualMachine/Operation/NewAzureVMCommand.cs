@@ -25,11 +25,12 @@ using System;
 using System.Collections;
 using System.Linq;
 using System.Management.Automation;
+using System.Reflection;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.New, ProfileNouns.VirtualMachine)]
-    [OutputType(typeof(PSComputeLongRunningOperation))]
+    [OutputType(typeof(PSAzureOperationResponse))]
     public class NewAzureVMCommand : VirtualMachineBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
@@ -48,9 +49,14 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(ValueFromPipelineByPropertyName = true)]
         public Hashtable[] Tags { get; set; }
 
-        protected override void ProcessRecord()
+        [Parameter(
+            Position = 3,
+            HelpMessage = "Disable BG Info Extension")]
+        public SwitchParameter DisableBginfoExtension { get; set; }
+
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             if (this.VM.DiagnosticsProfile == null)
             {
@@ -63,7 +69,7 @@ namespace Microsoft.Azure.Commands.Compute
                         BootDiagnostics = new BootDiagnostics
                         {
                             Enabled = true,
-                            StorageUri = storageUri,
+                            StorageUri = storageUri.ToString(),
                         }
                     };
                 }
@@ -77,18 +83,118 @@ namespace Microsoft.Azure.Commands.Compute
                     HardwareProfile          = this.VM.HardwareProfile,
                     StorageProfile           = this.VM.StorageProfile,
                     NetworkProfile           = this.VM.NetworkProfile,
-                    OSProfile                = this.VM.OSProfile,
+                    OsProfile                = this.VM.OSProfile,
                     Plan                     = this.VM.Plan,
-                    AvailabilitySetReference = this.VM.AvailabilitySetReference,
+                    AvailabilitySet = this.VM.AvailabilitySetReference,
                     Location                 = !string.IsNullOrEmpty(this.Location) ? this.Location : this.VM.Location,
-                    Name                     = this.VM.Name,
                     Tags                     = this.Tags != null ? this.Tags.ToDictionary() : this.VM.Tags
                 };
 
-                var op = this.VirtualMachineClient.CreateOrUpdate(this.ResourceGroupName, parameters);
-                var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+                var op = this.VirtualMachineClient.CreateOrUpdateWithHttpMessagesAsync(
+                    this.ResourceGroupName,
+                    this.VM.Name,
+                    parameters);
+                var wait = op.GetAwaiter();
+                var resultop = wait.GetResult();
+                var result = Mapper.Map<PSAzureOperationResponse>(resultop);
+
+                if (!(this.DisableBginfoExtension.IsPresent || IsLinuxOs()))
+                {
+
+                    var currentBginfoVersion = GetBginfoExtension();
+
+                    if (!string.IsNullOrEmpty(currentBginfoVersion))
+                    {
+                        var extensionParameters = new VirtualMachineExtension
+                        {
+                            Location = this.Location,
+                            Publisher = VirtualMachineBGInfoExtensionContext.ExtensionDefaultPublisher,
+                            VirtualMachineExtensionType = VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
+                            TypeHandlerVersion = currentBginfoVersion,
+                            AutoUpgradeMinorVersion = true,
+                        };
+
+                        typeof(Resource).GetRuntimeProperty("Name").SetValue(extensionParameters, VirtualMachineBGInfoExtensionContext.ExtensionDefaultName);
+                        typeof(Resource).GetRuntimeProperty("Type")
+                            .SetValue(extensionParameters, VirtualMachineExtensionType);
+
+                        var op2 = ComputeClient.ComputeManagementClient.VirtualMachineExtensions.CreateOrUpdateWithHttpMessagesAsync(
+                            this.ResourceGroupName,
+                            this.VM.Name,
+                            VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
+                            extensionParameters).GetAwaiter().GetResult();
+                        result = Mapper.Map<PSAzureOperationResponse>(op2);
+                    }
+                }
                 WriteObject(result);
             });
+        }
+
+        private string GetBginfoExtension()
+        {
+            var canonicalizedLocation = this.Location.Canonicalize();
+
+            var publishers =
+                ComputeClient.ComputeManagementClient.VirtualMachineImages.ListPublishers(canonicalizedLocation);
+
+            var publisher = publishers.FirstOrDefault(e => e.Name.Equals(VirtualMachineBGInfoExtensionContext.ExtensionDefaultPublisher));
+
+            if (publisher == null || !publisher.Name.Equals(VirtualMachineBGInfoExtensionContext.ExtensionDefaultPublisher))
+            {
+                return null;
+            }
+
+            var virtualMachineImageClient = ComputeClient.ComputeManagementClient.VirtualMachineExtensionImages;
+
+
+            var imageTypes =
+                virtualMachineImageClient.ListTypes(canonicalizedLocation,
+                    VirtualMachineBGInfoExtensionContext.ExtensionDefaultPublisher);
+
+            var extensionType = imageTypes.FirstOrDefault(
+                e => e.Name.Equals(VirtualMachineBGInfoExtensionContext.ExtensionDefaultName));
+
+            if (extensionType == null || !extensionType.Name.Equals(VirtualMachineBGInfoExtensionContext.ExtensionDefaultName))
+            {
+                return null;
+            }
+
+            var bginfoVersions =
+                virtualMachineImageClient.ListVersions(canonicalizedLocation,
+                    VirtualMachineBGInfoExtensionContext.ExtensionDefaultPublisher,
+                    VirtualMachineBGInfoExtensionContext.ExtensionDefaultName);
+
+            if (bginfoVersions != null
+                && bginfoVersions.Count > 0)
+            {
+                return bginfoVersions.Max(ver =>
+                {
+                    Version result;
+                    return (Version.TryParse(ver.Name, out result))
+                        ? string.Format("{0}.{1}", result.Major, result.Minor)
+                        : VirtualMachineBGInfoExtensionContext.ExtensionDefaultVersion;
+                });
+            }
+
+            return null;
+        }
+
+        private bool IsLinuxOs()
+        {
+            if (this.VM == null)
+            {
+                return false;
+            }
+
+            if ((this.VM.StorageProfile != null)
+                && (this.VM.StorageProfile.OsDisk != null)
+                && (this.VM.StorageProfile.OsDisk.OsType != null))
+            {
+                return (this.VM.StorageProfile.OsDisk.OsType.Equals(OperatingSystemTypes.Linux));
+            }
+
+            return ((this.VM.OSProfile != null)
+                    && (this.VM.OSProfile.LinuxConfiguration != null));
         }
 
         private Uri GetOrCreateStorageAccountForBootDiagnostics()
@@ -102,15 +208,26 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 try
                 {
-                    var storageAccountResponse = storageClient.StorageAccounts.GetProperties(this.ResourceGroupName,
-                        storageAccountName);
-                    if (!storageAccountResponse.StorageAccount.AccountType.Equals(AccountType.PremiumLRS))
+                    var storageAccountList = storageClient.StorageAccounts.List();
+                    if (storageAccountList != null)
                     {
-                        return storageAccountResponse.StorageAccount.PrimaryEndpoints.Blob;
+                        var osDiskStorageAccount = storageAccountList.StorageAccounts.First(e => e.Name.Equals(storageAccountName));
+
+                        if (osDiskStorageAccount != null
+                            && osDiskStorageAccount.AccountType.HasValue
+                            && !osDiskStorageAccount.AccountType.Value.ToString().ToLowerInvariant().Contains("premium"))
+                        {
+                            return osDiskStorageAccount.PrimaryEndpoints.Blob;
+                        }
                     }
                 }
                 catch (Exception e)
                 {
+                    if (e.Message.Contains("Unable to find a matching HTTP request"))
+                    {
+                        throw;
+                    }
+
                     if (e.Message.Contains("ResourceNotFound"))
                     {
                         WriteWarning(string.Format(
@@ -139,14 +256,14 @@ namespace Microsoft.Azure.Commands.Compute
         {
             if (this.VM == null
                 || this.VM.StorageProfile == null
-                || this.VM.StorageProfile.OSDisk == null
-                || this.VM.StorageProfile.OSDisk.VirtualHardDisk == null
-                || this.VM.StorageProfile.OSDisk.VirtualHardDisk.Uri == null)
+                || this.VM.StorageProfile.OsDisk == null
+                || this.VM.StorageProfile.OsDisk.Vhd == null
+                || this.VM.StorageProfile.OsDisk.Vhd.Uri == null)
             {
                 return null;
             }
 
-            return GetStorageAccountNameFromUriString(this.VM.StorageProfile.OSDisk.VirtualHardDisk.Uri);
+            return GetStorageAccountNameFromUriString(this.VM.StorageProfile.OsDisk.Vhd.Uri);
         }
 
         private StorageAccount TryToChooseExistingStandardStorageAccount(StorageManagementClient client)
@@ -160,7 +277,8 @@ namespace Microsoft.Azure.Commands.Compute
             try
             {
                 return storageAccountList.StorageAccounts.First(
-                e => e.AccountType.HasValue && !e.AccountType.Value.Equals(AccountType.PremiumLRS));
+                e => e.AccountType.HasValue
+                    && !e.AccountType.Value.ToString().ToLowerInvariant().Contains("premium"));
             }
             catch (InvalidOperationException e)
             {

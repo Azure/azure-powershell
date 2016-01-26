@@ -28,6 +28,13 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             WebsitesController.NewInstance.RunPsTest("Test-CreateNewWebApp");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateNewAppOnAse()
+        {
+            WebsitesController.NewInstance.RunPsTest("Test-CreateNewWebAppOnAse");
+        }
+
         [Fact(Skip = "Needs investigation. Fails running playback")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetWebApp()
@@ -54,6 +61,13 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         public void TestCloneNewWebApp()
         {
             WebsitesController.NewInstance.RunPsTest("Test-CloneNewWebApp");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCloneNewWebAppAndDeploymentSlots()
+        {
+            WebsitesController.NewInstance.RunPsTest("Test-CloneNewWebAppAndDeploymentSlots");
         }
 
         [Fact]

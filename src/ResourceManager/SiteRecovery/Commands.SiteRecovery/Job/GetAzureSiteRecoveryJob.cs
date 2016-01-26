@@ -42,50 +42,51 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         [ValidateNotNullOrEmpty]
         public ASRJob Job { get; set; }
 
-        ///// <summary>
-        ///// Gets or sets start time. Allows to filter the list of jobs started after the given 
-        ///// start time.
-        ///// </summary>
-        //[Parameter(ParameterSetName = ASRParameterSets.ByParam, HelpMessage = "Represents start time of jobs to querying, jobs with the start time later than this will be returned")]
-        //[ValidateNotNullOrEmpty]
-        //public DateTime? StartTime { get; set; }
+        /// <summary>
+        /// Gets or sets start time. Allows to filter the list of jobs started after the given 
+        /// start time.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.ByParam, HelpMessage = "Represents start time of jobs to querying, jobs with the start time later than this will be returned")]
+        [ValidateNotNullOrEmpty]
+        public DateTime? StartTime { get; set; }
 
-        ///// <summary>
-        ///// Gets or sets end time. Allows to filter the list of jobs ended before it.
-        ///// </summary>
-        //[Parameter(ParameterSetName = ASRParameterSets.ByParam, HelpMessage = "Represents end time of jobs to query.")]
-        //[ValidateNotNullOrEmpty]
-        //public DateTime? EndTime { get; set; }
+        /// <summary>
+        /// Gets or sets end time. Allows to filter the list of jobs ended before it.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.ByParam, HelpMessage = "Represents end time of jobs to query.")]
+        [ValidateNotNullOrEmpty]
+        public DateTime? EndTime { get; set; }
 
-        ///// <summary>
-        ///// Gets or sets target object id.
-        ///// </summary>
-        //[Parameter(ParameterSetName = ASRParameterSets.ByParam, HelpMessage = "ID of the object on which Job was targeted to.")]
-        //[ValidateNotNullOrEmpty]
-        //public string TargetObjectId { get; set; }
+        /// <summary>
+        /// Gets or sets target object id.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.ByParam, HelpMessage = "ID of the object on which Job was targeted to.")]
+        [ValidateNotNullOrEmpty]
+        public string TargetObjectId { get; set; }
 
-        ///// <summary>
-        ///// Gets or sets state. Take string input for possible States of ASR Job. Use this parameter 
-        ///// to get filtered view of Jobs
-        ///// </summary>
-        ///// Considered Valid states from WorkflowStatus enum in SRS (WorkflowData.cs)
-        //[Parameter(ParameterSetName = ASRParameterSets.ByParam, HelpMessage = "State of job to return.")]
-        //[ValidateNotNullOrEmpty]
-        //[ValidateSet(
-        //    "NotStarted",
-        //    "InProgress",
-        //    "Succeeded",
-        //    "Other",
-        //    "Failed",
-        //    "Cancelled",
-        //    "Suspended")]
-        //public string State { get; set; }
+        /// <summary>
+        /// Gets or sets state. Take string input for possible States of ASR Job. Use this parameter 
+        /// to get filtered view of Jobs
+        /// </summary>
+        /// Considered Valid states from WorkflowStatus enum in SRS (WorkflowData.cs)
+        [Parameter(ParameterSetName = ASRParameterSets.ByParam, HelpMessage = "State of job to return.")]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(
+            "NotStarted",
+            "InProgress",
+            "Succeeded",
+            "Other",
+            "Failed",
+            "Cancelled",
+            "Suspended")]
+        public string State { get; set; }
+
         #endregion Parameters
 
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             try
             {
@@ -127,22 +128,33 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             JobQueryParameter jqp = new JobQueryParameter();
 
-            //if (this.StartTime.HasValue)
-            //{
-            //    jqp.StartTime =
-            //        this.StartTime.Value.ToUniversalTime().ToBinary().ToString();
-            //}
+            if (this.StartTime.HasValue)
+            {
+                jqp.StartTime = this.StartTime.Value.ToUniversalTime().ToString("o");
+            }
 
-            //if (this.EndTime.HasValue)
-            //{
-            //    jqp.EndTime =
-            //        this.EndTime.Value.ToUniversalTime().ToBinary().ToString();
-            //}
+            if (this.EndTime.HasValue)
+            {
+                jqp.EndTime = this.EndTime.Value.ToUniversalTime().ToString("o");
+            }
 
-            //jqp.State = this.State;
-            //jqp.ObjectId = this.TargetObjectId;
+            if (this.State != null)
+            {
+                jqp.JobStatus = new List<string>();
+                jqp.JobStatus.Add(this.State);
+            }
 
-            this.WriteJobs(RecoveryServicesClient.GetAzureSiteRecoveryJob(jqp).Jobs);
+            IList<Management.SiteRecovery.Models.Job> completeJobsList = RecoveryServicesClient.GetAzureSiteRecoveryJob(jqp).Jobs;
+
+            // Filtering TargetObjectId
+            IEnumerable<Management.SiteRecovery.Models.Job> filteredJobsList = completeJobsList.ToArray().AsEnumerable();
+            if (this.TargetObjectId != null)
+            {
+                filteredJobsList = filteredJobsList.Where(j => 0 == string.Compare(j.Properties.TargetObjectId.ToString(),
+                     this.TargetObjectId.ToString(), StringComparison.OrdinalIgnoreCase));
+            }
+
+            this.WriteJobs(filteredJobsList.ToList());
         }
 
         /// <summary>

@@ -132,7 +132,16 @@
   <data name="RemoveRedisCache" xml:space="preserve">
     <value>Removing redis cache '{0}' ...</value>
   </data>
+  <data name="RemoveRedisCacheDiagnostics" xml:space="preserve">
+    <value>Disabling diagnostics on redis cache '{0}' ...</value>
+  </data>
   <data name="RemovingRedisCache" xml:space="preserve">
     <value>Are you sure you want to remove redis cache '{0}'?</value>
+  </data>
+  <data name="RemovingRedisCacheDiagnostics" xml:space="preserve">
+    <value>Are you sure you want to disable diagnostics on redis cache '{0}'?</value>
+  </data>
+  <data name="StorageAccountIdException" xml:space="preserve">
+    <value>StorageAccountId is not valid ARM resource Id.</value>
   </data>
 </root>

@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string StorageAccountName { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             var diagnosticsProfile = this.VM.DiagnosticsProfile;
 
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.Compute
                         ThrowPremiumStorageError(this.StorageAccountName);
                     }
 
-                    diagnosticsProfile.BootDiagnostics.StorageUri = storageAccount.StorageAccount.PrimaryEndpoints.Blob;
+                    diagnosticsProfile.BootDiagnostics.StorageUri = storageAccount.StorageAccount.PrimaryEndpoints.Blob.ToString();
                 }
             }
 

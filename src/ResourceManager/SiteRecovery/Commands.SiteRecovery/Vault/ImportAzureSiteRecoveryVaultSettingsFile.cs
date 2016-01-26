@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             this.WriteVerbose("Vault Settings File path: " + this.Path);
 
@@ -100,14 +100,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
             try
             {
+                Utilities.UpdateCurrentVaultContext(asrVaultCreds);
+
                 RecoveryServicesClient.ValidateVaultSettings(
                     asrVaultCreds.ResourceName,
                     asrVaultCreds.ResourceGroupName);
 
-                Utilities.UpdateVaultSettings(asrVaultCreds);
-                this.WriteObject(new ASRVaultSettings(
-                    asrVaultCreds.ResourceName,
-                    asrVaultCreds.ResourceGroupName));
+                this.WriteObject(new ASRVaultSettings(asrVaultCreds));
             }
             catch (Exception exception)
             {

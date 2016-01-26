@@ -120,7 +120,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             helper.SetupManagementClients(SubscriptionClient);
         }
 
-
         private SubscriptionClient GetSubscriptionClient()
         {
             return TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);

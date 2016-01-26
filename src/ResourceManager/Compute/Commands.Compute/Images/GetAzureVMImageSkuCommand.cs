@@ -14,8 +14,6 @@
 
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Compute.Models;
 using System.Linq;
 using System.Management.Automation;
 
@@ -34,26 +32,22 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
         public string Offer { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             ExecuteClientAction(() =>
             {
-                var parameters = new VirtualMachineImageListSkusParameters
-                {
-                    Location = Location.Canonicalize(),
-                    PublisherName = PublisherName,
-                    Offer = Offer
-                };
+                var result = this.VirtualMachineImageClient.ListSkusWithHttpMessagesAsync(
+                    this.Location.Canonicalize(),
+                    this.PublisherName,
+                    this.Offer).GetAwaiter().GetResult();
 
-                VirtualMachineImageResourceList result = this.VirtualMachineImageClient.ListSkus(parameters);
-
-                var images = from r in result.Resources
+                var images = from r in result.Body
                              select new PSVirtualMachineImageSku
                              {
                                  RequestId = result.RequestId,
-                                 StatusCode = result.StatusCode,
+                                 StatusCode = result.Response.StatusCode,
                                  Id = r.Id,
                                  Location = r.Location,
                                  PublisherName = this.PublisherName,

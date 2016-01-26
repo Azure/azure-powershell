@@ -285,6 +285,22 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         }
 
         /// <summary>
+        /// Syncs the collections on a PSMultiInstanceSettings with its wrapped OM object
+        /// </summary>
+        internal static void MultiInstanceSettingsSyncCollections(PSMultiInstanceSettings multiInstanceSettings)
+        {
+            if (multiInstanceSettings != null)
+            {
+                multiInstanceSettings.omObject.CommonResourceFiles = CreateSyncedList(multiInstanceSettings.CommonResourceFiles,
+                    (r) =>
+                    {
+                        ResourceFile resourceFile = new ResourceFile(r.BlobSource, r.FilePath);
+                        return resourceFile;
+                    });
+            }
+        }
+
+        /// <summary>
         /// Creates a list of OM objects matching a list of PowerShell objects
         /// </summary>
         /// <typeparam name="Tps">The type of the PowerShell class</typeparam>

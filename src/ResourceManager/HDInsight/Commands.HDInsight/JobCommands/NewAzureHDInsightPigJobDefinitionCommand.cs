@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             job = new AzureHDInsightPigJobDefinition();
         }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             foreach (var arg in Arguments)
             {

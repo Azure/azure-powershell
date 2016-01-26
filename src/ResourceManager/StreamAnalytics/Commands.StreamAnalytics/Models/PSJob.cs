@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
 
         public string PropertiesInJson
         {
-            get { return job.Properties.ToFormattedString(); }
+            get { return job.ToFormattedString(); }
         }
     }
 }

@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             // error handling for not passing or passing both script and script path
             if ((string.IsNullOrEmpty(Script) && string.IsNullOrEmpty(ScriptPath)) ||

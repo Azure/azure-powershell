@@ -22,14 +22,25 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
     {
         public static string GetDomain(this IAccessToken token)
         {
-            if( token != null && token.UserId !=null && token.UserId.Contains('@'))
+            if (token != null)
             {
-                return token.UserId.Split(
-                    new[] { '@' }, 
-                    StringSplitOptions.RemoveEmptyEntries).Last();
+                return GetDomain(token.UserId);
             }
 
             return null;
+        }
+
+        public static string GetDomain(string emailString)
+        {
+            string result = null;
+            if (emailString != null && emailString.Contains('@'))
+            {
+                result = emailString.Split(
+                    new[] { '@' },
+                    StringSplitOptions.RemoveEmptyEntries).Last();
+            }
+
+            return result;
         }
     }
 }

@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string SettingName { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (this.VM.OSProfile == null)
             {
@@ -75,12 +75,12 @@ namespace Microsoft.Azure.Commands.Compute
                 throw new ArgumentException(Microsoft.Azure.Commands.Compute.Properties.Resources.BothWindowsAndLinuxConfigurationsSpecified);
             }
 
-            if (this.VM.OSProfile.WindowsConfiguration.AdditionalUnattendContents == null)
+            if (this.VM.OSProfile.WindowsConfiguration.AdditionalUnattendContent == null)
             {
-                this.VM.OSProfile.WindowsConfiguration.AdditionalUnattendContents = new List<AdditionalUnattendContent> ();
+                this.VM.OSProfile.WindowsConfiguration.AdditionalUnattendContent = new List<AdditionalUnattendContent> ();
             }
 
-            this.VM.OSProfile.WindowsConfiguration.AdditionalUnattendContents.Add(
+            this.VM.OSProfile.WindowsConfiguration.AdditionalUnattendContent.Add(
                 new AdditionalUnattendContent
                 {
                     ComponentName = defaultComponentName,
