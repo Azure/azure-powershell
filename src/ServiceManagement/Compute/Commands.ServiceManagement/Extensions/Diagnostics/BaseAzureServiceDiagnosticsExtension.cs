@@ -115,7 +115,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
                 }
             }
 
-            var publicConfigElem = DiagnosticsHelper.GetPublicConfigElement(this.DiagnosticsConfigurationPath);
+            var publicConfigElem = DiagnosticsHelper.GetPublicConfigXElementFromXmlFile(this.DiagnosticsConfigurationPath);
             if (publicConfigElem == null)
             {
                 throw new ArgumentException(Resources.DiagnosticsExtensionNullPublicConfig);
