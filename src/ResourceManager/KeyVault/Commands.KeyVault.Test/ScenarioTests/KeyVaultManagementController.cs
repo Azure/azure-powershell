@@ -26,6 +26,7 @@ using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Management.KeyVault;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Common;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.KeyVault.Test
 {
@@ -87,7 +88,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
             string callingClassType,
             string mockName)
         {
-            HttpMockServer.Matcher = new PermissiveRecordMatcher();
+            //HttpMockServer.Matcher = new PermissiveRecordMatcher();
+
+            Dictionary<string, string> d = new Dictionary<string, string>();
+            
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d);
+
             using (UndoContext context = UndoContext.Current)
             {
                 context.Start(callingClassType, mockName);

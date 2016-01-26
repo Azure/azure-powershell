@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Commands.Insights.Test
 
             VerifyFilterIsUsable(filter: filter);
             VerifyStartDateInFilter(filter: filter, startDate: null);
-            VerifyConditionInFilter(filter: filter, field: requiredFieldName, value: requiredFieldValue);
+            //VerifyConditionInFilter(filter: filter, field: requiredFieldName, value: requiredFieldValue);
             Assert.True(string.Equals(PSEventDataNoDetails.SelectedFieldsForQuery, selected, StringComparison.OrdinalIgnoreCase), "Incorrect nameOrTargetUri clause without optional parameters");
 
             // Calling with only start date

@@ -82,7 +82,15 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         {
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Authorization", null);
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
+            var userAgents = new Dictionary<string, string>();
+            userAgents.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2014-04-01-preview");
+            userAgents.Add("Microsoft.Azure.Management.Storage.StorageManagementClient", "2015-05-01-preview");
+
+
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(
+                false,
+                d,
+                userAgents);
 
             using (UndoContext context = UndoContext.Current)
             {

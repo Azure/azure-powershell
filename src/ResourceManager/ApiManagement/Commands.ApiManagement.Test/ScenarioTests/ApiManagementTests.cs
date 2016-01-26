@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 #endif
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Authorization", "2014-07-01-preview");
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d);
 
             using (var context = UndoContext.Current)
             {

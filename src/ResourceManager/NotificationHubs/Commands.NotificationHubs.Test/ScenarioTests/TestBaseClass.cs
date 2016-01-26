@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Test.ScenarioTests
     using Microsoft.Azure.Management.Authorization;
     using System.Collections.Generic;
     using Microsoft.WindowsAzure.Management;
+    using Microsoft.Azure.Test.HttpRecorder;
 
     public abstract class TestBaseClass : RMTestBase
     {
@@ -49,6 +50,16 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Test.ScenarioTests
 
         protected void RunPowerShellTest(params string[] scripts)
         {
+            Dictionary<string, string> d = new Dictionary<string, string>();
+            var userAgents = new Dictionary<string, string>();
+            userAgents.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2014-04-01-preview");
+
+
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(
+                false,
+                d,
+                userAgents);
+
             using (UndoContext context = UndoContext.Current)
             {
                 context.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2));
