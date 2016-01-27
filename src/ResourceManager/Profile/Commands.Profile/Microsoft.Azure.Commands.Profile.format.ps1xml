@@ -85,6 +85,9 @@
               <ListItem>
                 <PropertyName>TenantId</PropertyName>
               </ListItem>
+              <ListItem>
+                <PropertyName>State</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>

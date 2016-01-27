@@ -143,6 +143,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             else
             {
                 _profile.Context = new AzureContext(newSubscription, account, environment, newTenant);
+                if (!newSubscription.State.Equals("Enabled", StringComparison.OrdinalIgnoreCase))
+                {
+                    WriteWarningMessage(string.Format(
+                                   Microsoft.Azure.Commands.Profile.Properties.Resources.SelectedSubscriptionNotActive,
+                                   newSubscription.State));
+                }
             }
             
             _profile.Context.TokenCache = TokenCache.DefaultShared.Serialize();
@@ -222,7 +228,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 _profile.Context.Subscription.Properties[AzureSubscription.Property.Tenants] = tenantId;
             }
 
-            var newSubscription = new AzureSubscription { Id = subscription.Id };
+            var newSubscription = new AzureSubscription 
+            { 
+                Id = subscription.Id,
+                State = subscription.State
+            };
             if (_profile.Context.Subscription != null)
             {
                 newSubscription.Account = _profile.Context.Subscription.Account;
@@ -523,6 +533,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                         Account = accessToken.UserId,
                         Environment = environment.Name,
                         Name = subscriptionFromServer.DisplayName,
+                        State = subscriptionFromServer.State,
                         Properties = new Dictionary<AzureSubscription.Property, string> { { AzureSubscription.Property.Tenants, accessToken.TenantId } }
                     };
 
