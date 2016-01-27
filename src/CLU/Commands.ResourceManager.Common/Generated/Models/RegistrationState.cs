@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 
-namespace Microsoft.Azure.Commands.ResourceManager.Common
+namespace Microsoft.Azure.Management.Internal.Resources.Models
 {
     /// <summary>
     /// Common registration states.

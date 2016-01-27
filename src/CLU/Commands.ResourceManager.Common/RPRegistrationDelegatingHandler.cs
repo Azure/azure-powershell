@@ -13,14 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using Commands.ResourceManager.Common.Properties;
+using Microsoft.Azure.Commands.Utilities.Common;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.Internal.Resources.Models;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Management.Resources.Models;
-using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {

@@ -12,20 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Commands.ResourceManager.Common.Properties;
 using Microsoft.Azure.Commands.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Commands.ResourceManager.Common.Properties;
 using Microsoft.Azure.Commands.Models;
 using Microsoft.Azure.Commands.Utilities.Common;
-using Newtonsoft.Json;
-using System;
-using System.IO;
+using Microsoft.Azure.Management.Internal.Resources;
+using System.Globalization;
+using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Host;
 using System.Reflection;
-using System.Linq;
-using System.Globalization;
-using Microsoft.Azure.Management.Resources;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
