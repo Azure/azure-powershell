@@ -58,7 +58,10 @@ namespace Microsoft.Azure.Commands.Profile
                 throw new ArgumentException(Resources.AzureProfileMustNotBeNull);
             }
 
-            if (!AzureRmProfileProvider.Instance.Profile.Context.Subscription.State.Equals(
+            if (AzureRmProfileProvider.Instance.Profile.Context != null &&
+                AzureRmProfileProvider.Instance.Profile.Context.Subscription != null &&
+                AzureRmProfileProvider.Instance.Profile.Context.Subscription.State != null &&
+                !AzureRmProfileProvider.Instance.Profile.Context.Subscription.State.Equals(
                 "Enabled",
                 StringComparison.OrdinalIgnoreCase))
             {
