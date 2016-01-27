@@ -58,6 +58,15 @@ namespace Microsoft.Azure.Commands.Profile
                 throw new ArgumentException(Resources.AzureProfileMustNotBeNull);
             }
 
+            if (!AzureRmProfileProvider.Instance.Profile.Context.Subscription.State.Equals(
+                "Enabled",
+                StringComparison.OrdinalIgnoreCase))
+            {
+                WriteWarning(string.Format(
+                               Microsoft.Azure.Commands.Profile.Properties.Resources.SelectedSubscriptionNotActive,
+                               AzureRmProfileProvider.Instance.Profile.Context.Subscription.State));
+            }
+
             WriteObject((PSAzureProfile)AzureRmProfileProvider.Instance.Profile);
         }
     }
