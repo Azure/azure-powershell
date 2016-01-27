@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             GraphClient = GetGraphClient();
             InsightsClient = GetInsightsClient();
             this.FeatureClient = this.GetFeatureClient();
-            HttpClientHelperFactory.Instance = new TestHttpClientHelperFactory(this.csmTestFactory.GetTestEnvironment().GetCredentials() as SubscriptionCloudCredentials);
+            HttpClientHelperFactory.Instance = new TestHttpClientHelperFactory(this.csmTestFactory.GetTestEnvironment().Credentials as SubscriptionCloudCredentials);
 
             helper.SetupManagementClients(ResourceManagementClient,
                 SubscriptionClient,

@@ -228,13 +228,13 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             string jwtToken = null;
             X509Certificate2 certificate = null;
 
-            if (environment.GetCredentials() is TokenCloudCredentials)
+            if (environment.Credentials is TokenCloudCredentials)
             {
-                jwtToken = ((TokenCloudCredentials)environment.GetCredentials()).Token;
+                jwtToken = ((TokenCloudCredentials)environment.Credentials).Token;
             }
-            if (environment.GetCredentials() is CertificateCloudCredentials)
+            if (environment.Credentials is CertificateCloudCredentials)
             {
-                certificate = ((CertificateCloudCredentials)environment.GetCredentials()).ManagementCertificate;
+                certificate = ((CertificateCloudCredentials)environment.Credentials).ManagementCertificate;
             }
 
 
