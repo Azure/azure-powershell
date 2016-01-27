@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Automation.Test
 {
     public class AutomationTests : AutomationScenarioTestsBase
     {
-        [Fact(Skip = "Fix to make x86 compatible.")]
+        [Fact(Skip = "Need x64 test framework.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
         public void TestAutomationStartAndStopRunbook()
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Automation.Test
             RunPowerShellTest("Test-AutomationStartAndStopRunbook -runbookPath ScenarioTests\\Resources\\Test-Workflow.ps1");
         }
 
-        [Fact(Skip = "Fix to make x86 compatible.")]
+        [Fact(Skip = "Need x64 test framework.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
         public void TestAutomationPublishAndEditRunbook()
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Automation.Test
             RunPowerShellTest("Test-AutomationPublishAndEditRunbook -runbookPath ScenarioTests\\Resources\\Test-Workflow.ps1 -editRunbookPath Resources\\Automation\\Test-WorkflowV2.ps1");
         }
 
-        [Fact(Skip = "Fix to make x86 compatible.")]
+        [Fact(Skip = "Need x64 test framework.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
         public void TestAutomationConfigureRunbook()
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Automation.Test
             RunPowerShellTest("Test-AutomationStartRunbookOnASchedule -runbookPath ScenarioTests\\Resources\\Test-Workflow.ps1");
         }
 
-        [Fact(Skip = "Fix to make x86 compatible.")]
+        [Fact(Skip = "Need x64 test framework.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
         public void TestAutomationStartUnpublishedRunbook()
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Automation.Test
             RunPowerShellTest("Test-AutomationStartUnpublishedRunbook -runbookPath ScenarioTests\\Resources\\Test-WorkFlowWithVariousParameters.ps1");
         }
 
-        [Fact(Skip = "Fix to make x86 compatible.")]
+        [Fact(Skip = "Need x64 test framework.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
         public void TestAutomationRunbookWithParameter()
