@@ -84,8 +84,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                     Account,
                     powerShellSourcePath,
                     CmdletCancellationToken,
-                    -1,
                     NumThreads,
+                    -1,
                     Recurse,
                     Force,
                     Resume, ForceBinary, ForceBinary, this);

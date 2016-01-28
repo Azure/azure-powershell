@@ -449,207 +449,214 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
             // we need to override the default .NET value for max connections to a host to our number of threads, if necessary (otherwise we won't achieve the parallelism we want)
             var previousDefaultConnectionLimit = ServicePointManager.DefaultConnectionLimit;
-            ServicePointManager.DefaultConnectionLimit =
-                Math.Max((internalFolderThreads*internalFileThreads) + internalFolderThreads,
-                    ServicePointManager.DefaultConnectionLimit);
-
-            //TODO: defect: 4259238 (located here: http://vstfrd:8080/Azure/RD/_workitems/edit/4259238) needs to be resolved or the tracingadapter work around needs to be put back in
-            while (allDirectories.Count > 0)
+            try
             {
-                var currentDir = allDirectories.Pop();
-                string[] files;
+                ServicePointManager.DefaultConnectionLimit =
+                    Math.Max((internalFolderThreads*internalFileThreads) + internalFolderThreads,
+                        ServicePointManager.DefaultConnectionLimit);
 
-                try
+                //TODO: defect: 4259238 (located here: http://vstfrd:8080/Azure/RD/_workitems/edit/4259238) needs to be resolved or the tracingadapter work around needs to be put back in
+                while (allDirectories.Count > 0)
                 {
-                    files = Directory.GetFiles(currentDir);
-                    if (recursive)
+                    var currentDir = allDirectories.Pop();
+                    string[] files;
+
+                    try
                     {
-                        // Push the subdirectories onto the stack for traversal. 
-                        // This could also be done before handing the files. 
-                        foreach (var str in Directory.GetDirectories(currentDir))
+                        files = Directory.GetFiles(currentDir);
+                        if (recursive)
                         {
-                            allDirectories.Push(str);
+                            // Push the subdirectories onto the stack for traversal. 
+                            // This could also be done before handing the files. 
+                            foreach (var str in Directory.GetDirectories(currentDir))
+                            {
+                                allDirectories.Push(str);
+                            }
                         }
                     }
-                }
-                catch
-                {
-                    // update the list of folders that could not be accessed
-                    // for later reporting to the user.
-                    allFailedDirs.Add(currentDir);
-                    continue;
-                }
-
-                // Execute in parallel if there are enough files in the directory. 
-                // Otherwise, execute sequentially.Files are opened and processed 
-                // synchronously but this could be modified to perform async I/O. 
-                // NOTE: in order to write progress in a meaningful way, we have
-                // wrapped the parallel execution in a container task, which is
-                // then monitored from the main thread. 
-                // TODO: enable resumability in the event that copy fails somewhere in the middle
-                var folderOptions = new ParallelOptions();
-                if (folderThreadCount > 0)
-                {
-                    folderOptions.MaxDegreeOfParallelism = folderThreadCount;
-                }
-
-                var task = Task.Run(
-                    () =>
+                    catch
                     {
-                        Parallel.ForEach(
-                            files,
-                            folderOptions,
-                            () => 0,
-                            (file, loopState, localCount) =>
-                            {
-                                cmdletCancellationToken.ThrowIfCancellationRequested();
-                                var dataLakeFilePath = string.Format(
-                                    "{0}/{1}",
-                                    destinationFolderPath,
-                                    file.Substring(folderPathStartIndex).TrimStart('\\').Replace('\\', '/'));
-
-                                // for each file we will either honor a force conversion
-                                // to either binary or text, or attempt to determine
-                                // if the file is either binary or text, with a default
-                                // behavior of text.
-                                isBinary = forceBinaryOrText
-                                    ? isBinary
-                                    : GlobalMembers.BinaryFileExtension.Contains(
-                                        Path.GetExtension(file).ToLowerInvariant());
-
-                                try
-                                {
-                                    CopyFile(dataLakeFilePath, accountName, file, cmdletCancellationToken,
-                                        internalFileThreads, overwrite, resume, isBinary, null, progress);
-                                }
-                                catch (Exception e)
-                                {
-                                    allFailedFiles.GetOrAdd(file, e.Message);
-                                }
-
-                                // note: we will always increment the count, since the file was seen and attempted
-                                // this does not necessarily mean the file was successfully uploaded, as indicated by
-                                // the warning messages that can be written out.
-                                return ++localCount;
-                            },
-                            c => Interlocked.Add(ref fileCount, c));
-                    }, cmdletCancellationToken);
-
-                while (!task.IsCompleted && !task.IsCanceled)
-                {
-                    // if we somehow made it in here prior to the cancel, I want to issue a throw
-                    cmdletCancellationToken.ThrowIfCancellationRequested();
-
-                    // only update progress if the percentage has changed.
-                    if ((int) Math.Ceiling((decimal) testFileCountChanged/totalFiles*100)
-                        < (int) Math.Ceiling((decimal) fileCount/totalFiles*100))
-                    {
-                        testFileCountChanged = fileCount;
-                        var percentComplete = (int) Math.Ceiling((decimal) fileCount/totalFiles*100);
-                        if (percentComplete > 100)
-                        {
-                            // in some cases we can get 101 percent complete using ceiling, however we want to be
-                            // able to round up to full percentage values, instead of down.
-                            percentComplete = 100;
-                        }
-
-                        progress.PercentComplete = percentComplete;
-                        UpdateProgress(progress, cmdletRunningRequest);
+                        // update the list of folders that could not be accessed
+                        // for later reporting to the user.
+                        allFailedDirs.Add(currentDir);
+                        continue;
                     }
 
-                    // sleep for a half of a second.
-                    Thread.Sleep(500);
-                }
-
-                if (task.IsFaulted && !task.IsCanceled)
-                {
-                    var ae = task.Exception;
-                    if (ae != null)
+                    // Execute in parallel if there are enough files in the directory. 
+                    // Otherwise, execute sequentially.Files are opened and processed 
+                    // synchronously but this could be modified to perform async I/O. 
+                    // NOTE: in order to write progress in a meaningful way, we have
+                    // wrapped the parallel execution in a container task, which is
+                    // then monitored from the main thread. 
+                    // TODO: enable resumability in the event that copy fails somewhere in the middle
+                    var folderOptions = new ParallelOptions();
+                    if (folderThreadCount > 0)
                     {
-                        if (cmdletRunningRequest != null)
-                        {
-                            cmdletRunningRequest.WriteWarning(
-                                "The following errors were encountered during the copy:");
-                        }
-                        else
-                        {
-                            Console.WriteLine(@"The following errors were encountered during the copy:");
-                        }
+                        folderOptions.MaxDegreeOfParallelism = folderThreadCount;
+                    }
 
-                        ae.Handle(
-                            ex =>
-                            {
-                                if (ex is AggregateException)
+                    var task = Task.Run(
+                        () =>
+                        {
+                            Parallel.ForEach(
+                                files,
+                                folderOptions,
+                                () => 0,
+                                (file, loopState, localCount) =>
                                 {
-                                    var secondLevel = ex as AggregateException;
-                                    secondLevel.Handle(
-                                        secondEx =>
-                                        {
-                                            if (cmdletRunningRequest != null)
-                                            {
-                                                cmdletRunningRequest.WriteWarning(secondEx.ToString());
-                                            }
-                                            else
-                                            {
-                                                Console.WriteLine(secondEx);
-                                            }
+                                    cmdletCancellationToken.ThrowIfCancellationRequested();
+                                    var dataLakeFilePath = string.Format(
+                                        "{0}/{1}",
+                                        destinationFolderPath,
+                                        file.Substring(folderPathStartIndex).TrimStart('\\').Replace('\\', '/'));
 
-                                            return true;
-                                        });
-                                }
-                                else
-                                {
-                                    if (cmdletRunningRequest != null)
+                                    // for each file we will either honor a force conversion
+                                    // to either binary or text, or attempt to determine
+                                    // if the file is either binary or text, with a default
+                                    // behavior of text.
+                                    isBinary = forceBinaryOrText
+                                        ? isBinary
+                                        : GlobalMembers.BinaryFileExtension.Contains(
+                                            Path.GetExtension(file).ToLowerInvariant());
+
+                                    try
                                     {
-                                        cmdletRunningRequest.WriteWarning(ex.ToString());
+                                        CopyFile(dataLakeFilePath, accountName, file, cmdletCancellationToken,
+                                            internalFileThreads, overwrite, resume, isBinary, null, progress);
+                                    }
+                                    catch (Exception e)
+                                    {
+                                        allFailedFiles.GetOrAdd(file, e.Message);
+                                    }
+
+                                    // note: we will always increment the count, since the file was seen and attempted
+                                    // this does not necessarily mean the file was successfully uploaded, as indicated by
+                                    // the warning messages that can be written out.
+                                    return ++localCount;
+                                },
+                                c => Interlocked.Add(ref fileCount, c));
+                        }, cmdletCancellationToken);
+
+                    while (!task.IsCompleted && !task.IsCanceled)
+                    {
+                        // if we somehow made it in here prior to the cancel, I want to issue a throw
+                        cmdletCancellationToken.ThrowIfCancellationRequested();
+
+                        // only update progress if the percentage has changed.
+                        if ((int) Math.Ceiling((decimal) testFileCountChanged/totalFiles*100)
+                            < (int) Math.Ceiling((decimal) fileCount/totalFiles*100))
+                        {
+                            testFileCountChanged = fileCount;
+                            var percentComplete = (int) Math.Ceiling((decimal) fileCount/totalFiles*100);
+                            if (percentComplete > 100)
+                            {
+                                // in some cases we can get 101 percent complete using ceiling, however we want to be
+                                // able to round up to full percentage values, instead of down.
+                                percentComplete = 100;
+                            }
+
+                            progress.PercentComplete = percentComplete;
+                            UpdateProgress(progress, cmdletRunningRequest);
+                        }
+
+                        // sleep for a half of a second.
+                        Thread.Sleep(500);
+                    }
+
+                    if (task.IsFaulted && !task.IsCanceled)
+                    {
+                        var ae = task.Exception;
+                        if (ae != null)
+                        {
+                            if (cmdletRunningRequest != null)
+                            {
+                                cmdletRunningRequest.WriteWarning(
+                                    "The following errors were encountered during the copy:");
+                            }
+                            else
+                            {
+                                Console.WriteLine(@"The following errors were encountered during the copy:");
+                            }
+
+                            ae.Handle(
+                                ex =>
+                                {
+                                    if (ex is AggregateException)
+                                    {
+                                        var secondLevel = ex as AggregateException;
+                                        secondLevel.Handle(
+                                            secondEx =>
+                                            {
+                                                if (cmdletRunningRequest != null)
+                                                {
+                                                    cmdletRunningRequest.WriteWarning(secondEx.ToString());
+                                                }
+                                                else
+                                                {
+                                                    Console.WriteLine(secondEx);
+                                                }
+
+                                                return true;
+                                            });
                                     }
                                     else
                                     {
-                                        Console.WriteLine(ex);
+                                        if (cmdletRunningRequest != null)
+                                        {
+                                            cmdletRunningRequest.WriteWarning(ex.ToString());
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine(ex);
+                                        }
                                     }
-                                }
 
-                                return true;
-                            });
+                                    return true;
+                                });
+                        }
                     }
                 }
-            }
 
-            if (allFailedDirs.Count > 0 && !cmdletCancellationToken.IsCancellationRequested)
-            {
-                var errString =
-                    "The following {0} directories could not be opened and their contents must be copied up with the single file copy command: {1}";
-                if (cmdletRunningRequest != null)
+                if (allFailedDirs.Count > 0 && !cmdletCancellationToken.IsCancellationRequested)
                 {
-                    cmdletRunningRequest.WriteWarning(
-                        string.Format(errString, allFailedDirs.Count, string.Join(",\r\n", allFailedDirs)));
+                    var errString =
+                        "The following {0} directories could not be opened and their contents must be copied up with the single file copy command: {1}";
+                    if (cmdletRunningRequest != null)
+                    {
+                        cmdletRunningRequest.WriteWarning(
+                            string.Format(errString, allFailedDirs.Count, string.Join(",\r\n", allFailedDirs)));
+                    }
+                    else
+                    {
+                        Console.WriteLine(errString, allFailedDirs.Count, string.Join(",\r\n", allFailedDirs));
+                    }
                 }
-                else
+
+                if (allFailedFiles.Count > 0 && !cmdletCancellationToken.IsCancellationRequested)
                 {
-                    Console.WriteLine(errString, allFailedDirs.Count, string.Join(",\r\n", allFailedDirs));
+                    var errString =
+                        "The following {0} files could not be copied and must be copied up with the single file copy command: {1}";
+                    if (cmdletRunningRequest != null)
+                    {
+                        cmdletRunningRequest.WriteWarning(
+                            string.Format(errString, allFailedFiles.Count, string.Join(",\r\n", allFailedFiles)));
+                    }
+                    else
+                    {
+                        Console.WriteLine(errString, allFailedFiles.Count, string.Join(",\r\n", allFailedFiles));
+                    }
+                }
+
+                if (!cmdletCancellationToken.IsCancellationRequested)
+                {
+                    progress.PercentComplete = 100;
+                    progress.RecordType = ProgressRecordType.Completed;
+                    UpdateProgress(progress, cmdletRunningRequest);
                 }
             }
-
-            if (allFailedFiles.Count > 0 && !cmdletCancellationToken.IsCancellationRequested)
+            finally
             {
-                var errString =
-                    "The following {0} files could not be copied and must be copied up with the single file copy command: {1}";
-                if (cmdletRunningRequest != null)
-                {
-                    cmdletRunningRequest.WriteWarning(
-                        string.Format(errString, allFailedFiles.Count, string.Join(",\r\n", allFailedFiles)));
-                }
-                else
-                {
-                    Console.WriteLine(errString, allFailedFiles.Count, string.Join(",\r\n", allFailedFiles));
-                }
-            }
-
-            if (!cmdletCancellationToken.IsCancellationRequested)
-            {
-                progress.PercentComplete = 100;
-                progress.RecordType = ProgressRecordType.Completed;
-                UpdateProgress(progress, cmdletRunningRequest);
+                ServicePointManager.DefaultConnectionLimit = previousDefaultConnectionLimit;
             }
         }
 

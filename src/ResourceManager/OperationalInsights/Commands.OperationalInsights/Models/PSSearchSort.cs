@@ -13,17 +13,28 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.WindowsAzure.Storage.DataMovement;
+using System.Collections.Generic;
+using Microsoft.Azure.Management.OperationalInsights.Models;
 
-namespace Microsoft.WindowsAzure.Commands.Storage.Common
+namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
-    /// <summary>
-    /// Provides the interface for transfer job runners.
-    /// </summary>
-    internal interface ITransferJobRunner : IDisposable
+    public class PSSearchSort
     {
-        Task RunTransferJob(TransferJob job, Action<double, double> progressReport, CancellationToken cancellationToken);
+        public PSSearchSort()
+        {
+        }
+
+        public PSSearchSort(SearchSort sort)
+        {
+            if (sort != null)
+            {
+                this.Name = sort.Name;
+                this.Order = sort.Order;
+            }
+        }
+        public string Name { get; set; }
+
+        public string Order { get; set; }
+
     }
 }

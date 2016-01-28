@@ -125,5 +125,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
         {
             return new AccessTokenCredential(context.Subscription.Id, Token);
         }
+
+
+        public ServiceClientCredentials GetServiceClientCredentials(AzureContext context, AzureEnvironment.Endpoint targetEndpoint)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
