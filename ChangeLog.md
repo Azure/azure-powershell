@@ -1,5 +1,6 @@
-## 2016.02.02 version 1.1.1
+## 2016.02.02 version 1.2.0
 * Azure RemoteApp: Organizational Unit in Azure RemoteApp RDFE cmdlets now accepts Unicode characters.
+
 ## 2016.01.12 version 1.1.0
 * Azure SQL Database: Threat Detection policies:
   * Using new Threat Detection Types
