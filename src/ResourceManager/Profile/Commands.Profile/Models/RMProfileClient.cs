@@ -27,6 +27,7 @@ using System.Management.Automation;
 using System.Security;
 using Microsoft.Azure.Commands.Profile.Models;
 
+
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
     public class RMProfileClient
@@ -286,13 +287,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         public IEnumerable<AzureSubscription> GetSubscriptions(string tenantId)
         {
             IEnumerable<AzureSubscription> subscriptionList= new List<AzureSubscription>();
+            string listNextLink = null;
             if (string.IsNullOrWhiteSpace(tenantId))
             {
                 subscriptionList = ListSubscriptions();
             }
             else
             {
-                subscriptionList = ListSubscriptions(tenantId);
+                subscriptionList = ListSubscriptions(tenantId, ref listNextLink);
             }
 
             return subscriptionList;
@@ -377,14 +379,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             return ListAccountTenants(_profile.Context.Account, _profile.Context.Environment, null, ShowDialog.Never);
         }
 
-        public IEnumerable<AzureSubscription> ListSubscriptions(string tenant)
+        public IEnumerable<AzureSubscription> ListSubscriptions(string tenant, ref string listNextLink)
         {
-            return ListSubscriptionsForTenant(_profile.Context.Account, _profile.Context.Environment, null,
-                ShowDialog.Never, tenant);
+            return ListSubscriptionsForTenant(
+                _profile.Context.Account, 
+                _profile.Context.Environment, 
+                null,
+                ShowDialog.Never, 
+                tenant,
+                ref listNextLink);
         }
 
         public IEnumerable<AzureSubscription> ListSubscriptions()
         {
+            string listNextLink = null;
+
             List<AzureSubscription> subscriptions = new List<AzureSubscription>();
             foreach (var tenant in ListTenants())
             {
@@ -392,7 +401,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 {
                     subscriptions.AddRange(
                         ListSubscriptions(
-                            (tenant.Id == Guid.Empty) ? tenant.Domain:tenant.Id.ToString()));
+                            (tenant.Id == Guid.Empty) ? tenant.Domain:tenant.Id.ToString(),
+                            ref listNextLink));
                 }
                 catch (AadAuthenticationException)
                 {
@@ -616,8 +626,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             return result;
         }
 
-        private IEnumerable<AzureSubscription> ListSubscriptionsForTenant(AzureAccount account, AzureEnvironment environment,
-            SecureString password, ShowDialog promptBehavior, string tenantId)
+        private IEnumerable<AzureSubscription> ListSubscriptionsForTenant(
+            AzureAccount account, 
+            AzureEnvironment environment,
+            SecureString password, 
+            ShowDialog promptBehavior, 
+            string tenantId, 
+            ref string listNextLink)
         {
             IAccessToken accessToken = null;
 
@@ -636,9 +651,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 new TokenCloudCredentials(accessToken.AccessToken),
                 environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager)))
             {
-                var subscriptions = subscriptionClient.Subscriptions.List();
+                Microsoft.Azure.Subscriptions.Models.SubscriptionListResult subscriptions = null;
+                if(listNextLink == null)
+                {
+                    subscriptions = subscriptionClient.Subscriptions.List();
+                }
+                else
+                {
+                    subscriptions = subscriptionClient.Subscriptions.ListNext(listNextLink);
+                }
                 if (subscriptions != null && subscriptions.Subscriptions != null)
                 {
+                    listNextLink = subscriptions.NextLink;
                     return
                         subscriptions.Subscriptions.Select(
                             (s) =>
