@@ -19,8 +19,6 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
     {
         public string SearchString { get; set; }
 
-        public string SignInName { get; set; }
-
         public string Mail { get; set; }
 
         public string UPN { get; set; }
@@ -50,8 +48,6 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                     return SPN;
                 else if (!string.IsNullOrEmpty(Mail))
                     return Mail;
-                else if (!string.IsNullOrEmpty(SignInName))
-                    return SignInName;
                 else if (!string.IsNullOrEmpty(SearchString))
                     return SearchString;
                 else
