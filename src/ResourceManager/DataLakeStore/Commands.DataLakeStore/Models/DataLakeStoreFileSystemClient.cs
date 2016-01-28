@@ -489,7 +489,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                     // wrapped the parallel execution in a container task, which is
                     // then monitored from the main thread. 
                     // TODO: enable resumability in the event that copy fails somewhere in the middle
-                    var folderOptions = new ParallelOptions();
+                    var folderOptions = new ParallelOptions
+                    {
+                        CancellationToken = cmdletCancellationToken
+                    };
+
                     if (folderThreadCount > 0)
                     {
                         folderOptions.MaxDegreeOfParallelism = folderThreadCount;

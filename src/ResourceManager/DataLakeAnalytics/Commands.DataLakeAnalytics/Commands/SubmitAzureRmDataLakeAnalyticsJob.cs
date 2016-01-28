@@ -120,14 +120,13 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPath, Position = 6,
             Mandatory = false,
             HelpMessage =
-                "The degree of parallelism to use for this job. Typically, a higher degree of parallelism dedicated to a script results in faster script execution time. Valid range is between 1 and 50, inclusive."
+                "The degree of parallelism to use for this job. Typically, a higher degree of parallelism dedicated to a script results in faster script execution time."
             )]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetName, Position = 6,
             Mandatory = false,
             HelpMessage =
-                "The degree of parallelism to use for this job. Typically, a higher degree of parallelism dedicated to a script results in faster script execution time. Valid range is between 1 and 50, inclusive."
+                "The degree of parallelism to use for this job. Typically, a higher degree of parallelism dedicated to a script results in faster script execution time."
             )]
-        [ValidateRange(1, 50)]
         public int DegreeOfParallelism
         {
             get { return _degreeOfParallelism; }
