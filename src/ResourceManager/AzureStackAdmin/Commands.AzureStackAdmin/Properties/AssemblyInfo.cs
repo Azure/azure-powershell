@@ -29,6 +29,5 @@ using System.Runtime.InteropServices;
 
 [assembly: Guid("0B02390C-8AA9-4D99-8AA8-2A9D2D39682F")]
 
-[assembly: AssemblyVersion(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyVersion)]
-[assembly: AssemblyFileVersion(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyFileVersion)]
-
+[assembly: AssemblyVersion("0.9.1")]
+[assembly: AssemblyFileVersion("0.9.1")]

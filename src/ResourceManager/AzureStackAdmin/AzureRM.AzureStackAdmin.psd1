@@ -12,7 +12,7 @@
 ModuleToProcess = 'Microsoft.AzureStack.Commands.dll'
 
 # Version number of this module.
-ModuleVersion = '0.10.1'
+ModuleVersion = '0.9.1'
 
 # ID used to uniquely identify this module
 GUID = '0e691e0a-ce16-40f2-af84-86fb0d82fb29'
@@ -24,10 +24,10 @@ Author = 'Microsoft Corporation'
 CompanyName = 'Microsoft Corporation'
 
 # Copyright statement for this module
-Copyright = '© Microsoft Corporation. All rights reserved.'
+Copyright = 'Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Azure Stack Administration Module'
+Description = 'Microsoft Azure Stack Administration Module'
 
 # Minimum version of the Windows PowerShell engine required by this module
 PowerShellVersion = '3.0'
@@ -48,7 +48,7 @@ CLRVersion = '4.0'
 ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @()
+RequiredModules = @( @{ ModuleName = 'AzureRM.Profile'; ModuleVersion = '1.0.3'})
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
