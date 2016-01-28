@@ -97,9 +97,14 @@ namespace Microsoft.CLU.CommandModel
                 catch (CommandNotFoundException)
                 {
                     var helplines = binderAndCommand.ListCommands(binderAndCommand.Discriminators.ToArray(), isComplete);
+                    string strNoCommand = string.Format(Strings.CmdletHelp_Generate_NoCommandAvailable,
+                        CLUEnvironment.ScriptName, String.Join(" ", binderAndCommand.Discriminators.ToArray()));
                     foreach (var entry in helplines)
                     {
-                        CLUEnvironment.Console.WriteLine(entry);
+                        if (!String.Equals(strNoCommand, entry))
+                        {
+                            System.Console.WriteLine(entry);
+                        }
                     }
                     return CommandModelErrorCode.CommandNotFound;
                 }
