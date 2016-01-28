@@ -192,7 +192,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
                 InvokeInOperationContext(() => peerDeployment = func(peerSlottype));
 
                 ExtensionManager extensionMgr = new ExtensionManager(this, ServiceName);
-                extConfig = extensionMgr.Add(currentDeployment, peerDeployment, ExtensionConfiguration, this.Slot);
+
+                foreach (var config in ExtensionConfiguration)
+                {
+                    extConfig = (config.State == null)
+                        ? extensionMgr.Add(currentDeployment, peerDeployment, ExtensionConfiguration, this.Slot)
+                        : extensionMgr.UpdateExtensionState(config);
+                }
             }
 
             // Upgrade Parameter Set
