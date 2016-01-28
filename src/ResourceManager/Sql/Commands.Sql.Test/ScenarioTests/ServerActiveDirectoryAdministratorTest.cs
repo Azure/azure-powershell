@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
     public class ServerActiveDirectoryAdministratorTest : SqlTestsBase
     {
-        [Fact]
+        [Fact(Skip = "Temporarily disabled for graph rbac update in resources proj")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerActiveDirectoryAdministratorCRUD()
         {
