@@ -193,12 +193,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
 
                 ExtensionManager extensionMgr = new ExtensionManager(this, ServiceName);
 
-                foreach (var config in ExtensionConfiguration)
-                {
-                    extConfig = (config.State == null)
-                        ? extensionMgr.Add(currentDeployment, peerDeployment, ExtensionConfiguration, this.Slot)
-                        : extensionMgr.UpdateExtensionState(config);
-                }
+                extConfig = (ExtensionConfiguration[0].State == null)
+                    ? extensionMgr.Add(currentDeployment, peerDeployment, ExtensionConfiguration, this.Slot)
+                    : extensionMgr.UpdateExtensionState(ExtensionConfiguration[0]);
             }
 
             // Upgrade Parameter Set
