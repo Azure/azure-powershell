@@ -167,9 +167,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             string fullFileName = System.IO.Path.Combine(filePath, fileName);
             using (System.IO.StreamWriter file = new System.IO.StreamWriter(@fullFileName, false))
             {
-                string json = JsonConvert.SerializeObject(recoveryPlan);
+                string json = JsonConvert.SerializeObject(recoveryPlan, Formatting.Indented);
                 file.WriteLine(json);
-                //this.WriteObject(string.Format(Properties.Resources.RPJSONPath, recoveryPlan.Name, fullFileName));
+                this.WriteObject(string.Format(Properties.Resources.RPJSONPath, recoveryPlan.Name, fullFileName));
             }
         }
 

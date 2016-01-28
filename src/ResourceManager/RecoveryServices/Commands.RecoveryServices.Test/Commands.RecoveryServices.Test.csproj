@@ -135,7 +135,6 @@
     <Compile Include="ScenarioTests\RecoveryServicesTestsBase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="ScenarioTests\RecoveryServicesTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
