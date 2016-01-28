@@ -1319,6 +1319,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                         providerNamespace, publicConfig, privateConfig, version));
         }
 
+        public ExtensionConfigurationInput NewAzureServiceExtensionConfig(string extensionId, string extensionStatus,
+            string [] roles = null)
+        {
+            return
+                RunPSCmdletAndReturnFirst<ExtensionConfigurationInput>(
+                    new NewAzureServiceExtensionConfigCmdletInfo(extensionId, extensionStatus, roles));
+        }
+
         // Set-AzureServiceExtension
         public ManagementOperationContext SetAzureServiceExtension(string serviceName, string extensionName,
             string providerNamespace, string publicConfig, string privateConfig, string[] roles = null, string slot = null, string version = null)
