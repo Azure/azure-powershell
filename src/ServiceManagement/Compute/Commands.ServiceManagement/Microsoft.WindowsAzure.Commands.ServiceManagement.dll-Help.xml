@@ -36528,6 +36528,13 @@ PS C:\&gt; Update-AzureVM -ServiceName $Service_Name -Name $VM_Name -VM $VM_Upda
           </maml:description>
           <command:parameterValue required="true" variableLength="false">IPersistentVM</command:parameterValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>DataCollection</maml:name>
+          <maml:description>
+            <maml:para>Enables or Disables Data Collection in the extension.  It is enabled if it is not specified.  The value is persisted in the extension between calls. Allowed Values are: Enable and Disable</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
           <maml:name>Confirm</maml:name>
           <maml:description>
@@ -36694,6 +36701,18 @@ PS C:\&gt; Update-AzureVM -ServiceName $Service_Name -Name $VM_Name -VM $VM_Upda
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>DataCollection</maml:name>
+        <maml:description>
+          <maml:para>Enables or Disables Data Collection in the extension.  It is enabled if it is not specified.  The value is persisted in the extension between calls. Allowed Values are: Enable and Disable</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
         <maml:name>Confirm</maml:name>
