@@ -152,9 +152,6 @@
     <Compile Include="UnitTests\LogicAppUnitTestBase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
@@ -192,7 +189,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests.WorkflowAccessKeyTests\TestSetAzureLogicAppAccessKey.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests.WorkflowRunTests\TestGetAzureLogicAppRunAction.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests.WorkflowRunTests\TestGetAzureLogicAppRunAction.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests.WorkflowRunTests\TestGetAzureLogicAppRunHistory.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
