@@ -23,12 +23,16 @@ namespace Microsoft.CLU.CommandModel
         {
             Debug.Assert(commandConfiguration != null);
             Debug.Assert(arguments != null);
-
             if (arguments.Length < 1)
             {
                 throw new ArgumentException(Strings.CmdletCommandModel_Run_MissingMinimalArguments);
             }
-
+            bool isComplete = false;
+            //assuming --complete will always be typed at the end
+            if (String.Equals(arguments[arguments.Length - 1], "--complete"))
+            {
+                isComplete = true;
+            }
             Init(commandConfiguration);
             IPipe<string> pipe = new ConsolePipe(CLUEnvironment.Console);
             HostStreamInfo hostStreamInfo = new HostStreamInfo
@@ -92,10 +96,15 @@ namespace Microsoft.CLU.CommandModel
                 }
                 catch (CommandNotFoundException)
                 {
-                    var helplines = binderAndCommand.ListCommands(binderAndCommand.Discriminators.ToArray());
+                    var helplines = binderAndCommand.ListCommands(binderAndCommand.Discriminators.ToArray(), isComplete);
+                    string strNoCommand = string.Format(Strings.CmdletHelp_Generate_NoCommandAvailable,
+                        CLUEnvironment.ScriptName, String.Join(" ", binderAndCommand.Discriminators.ToArray()));
                     foreach (var entry in helplines)
                     {
-                        CLUEnvironment.Console.WriteLine(entry);
+                        if (!String.Equals(strNoCommand, entry))
+                        {
+                            System.Console.WriteLine(entry);
+                        }
                     }
                     return CommandModelErrorCode.CommandNotFound;
                 }

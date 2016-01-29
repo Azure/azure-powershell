@@ -47,7 +47,12 @@ namespace Microsoft.CLU.CommandLineParser
             }
 
             int position = 0;
-            for (; _positionIndicator < arguments.Length; _positionIndicator++)
+            int argLength = arguments.Length;
+            if (String.Equals(arguments[argLength - 1], "--complete"))
+            {
+                argLength = argLength - 1;
+            }
+            for (; _positionIndicator < argLength; _positionIndicator++)
             {
                 var arg = arguments[_positionIndicator];
 
@@ -122,8 +127,8 @@ namespace Microsoft.CLU.CommandLineParser
                 }
                 else
                 {
-                    if (position == 0 && 
-                        commandBinder.SupportsAutomaticHelp && 
+                    if (position == 0 &&
+                        commandBinder.SupportsAutomaticHelp &&
                         arg.Equals("help", System.StringComparison.OrdinalIgnoreCase))
                     {
                         PresentCommandCompletion(arguments.Skip(position + 1).ToArray());
@@ -167,7 +172,7 @@ namespace Microsoft.CLU.CommandLineParser
         /// </example>
         public string FormatParameterName(string name, string type, bool isMandatory, bool isPositional)
         {
-            Func<string,string> nameFunc = n => n.Length == 1 ? "-" + n : "--" + n.ToLowerInvariant();
+            Func<string, string> nameFunc = n => n.Length == 1 ? "-" + n : "--" + n.ToLowerInvariant();
 
             var builder = new System.Text.StringBuilder();
             if (!isMandatory)
@@ -195,15 +200,39 @@ namespace Microsoft.CLU.CommandLineParser
 
         private void PresentCommandHelp(string[] arguments)
         {
-            // BUGBUG - NYI!
+            // Static help implementation of "az --help"
             if (arguments.Length == 0)
             {
-                // TODO
-                Console.WriteLine("Present help for Azure itself...");
+                System.IO.DirectoryInfo di = new System.IO.DirectoryInfo(CLUEnvironment.GetPackagesRootPath());
+                String rootPath = CLUEnvironment.GetPackagesRootPath();
+                try
+                {
+                    var files = from file in System.IO.Directory.EnumerateFiles(@rootPath, "az.hlp",
+                        System.IO.SearchOption.AllDirectories)
+                                from line in System.IO.File.ReadLines(file)
+                                select new
+                                {
+                                    File = file,
+                                    Line = line
+                                };
+
+                    foreach (var f in files)
+                    {
+                        Console.WriteLine(f.Line);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+
+                return;
+
             }
             else
-            { 
-                var helpFile = CommandDispatchHelper.FindBestHelp(new HelpPackageFinder(CLUEnvironment.GetPackagesRootPath()), arguments);
+            {
+                var helpFile = CommandDispatchHelper.FindBestHelp(new HelpPackageFinder
+                               (CLUEnvironment.GetPackagesRootPath()), arguments);
                 if (helpFile != null)
                 {
                     // Found appropriate help...

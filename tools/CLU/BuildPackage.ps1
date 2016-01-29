@@ -17,8 +17,10 @@ if ([string]::IsNullOrWhiteSpace($env:WORKSPACE) -or !(Test-Path $env:WORKSPACE)
 $packageSource = $packageSource.TrimEnd('\\')
 Write-Host "using package id: $packageId, package source: $packageSource, packageVersion: $packageVersion"
 dotnet publish $cmdletsDir -f dnxcore50 -r win7-x64 -o $packageSource
-Copy-Item -Path $cmdletsDir\content -Destination $packageSource\content -Recurse -Force
-Copy-Item -Path $cmdletsDir\*xml -Destination $packageSource\content -Force
+Write-Host "CMDLETSDIR is .."+$cmdletsDir
+Write-Host "packageSource is .."+$packageSource
+Copy-Item -Path $cmdletsDir\content -Destination $packageSource\ -Recurse -Force
+Copy-Item -Path $cmdletsDir\*xml -Destination $packageSource\ -Force
 
 $nuSpecTemplate = (Get-ChildItem ([System.IO.Path]::Combine($cmdletsDir, ($packageId + ".nuspec.template"))))
 $nuSpecOutput = [System.IO.Path]::Combine($packageSource, ($packageId + ".nuspec"))
@@ -37,7 +39,7 @@ if ($packageId -ne "Microsoft.CLU.Commands")
     $contentFileText += "    <file src=""content\*xml"" target=""content""/>`r`n"
     if (Test-Path "$packageSource\content\help") 
     {
-        $contentFileText += "    <file src=""content\help\*.hlp"" target=""content\help""/>`r`n"
+		$contentFileText += "    <file src=""content\help\*hlp"" target=""content\help""/>`r`n"
     }
 }
 if ($renameFileExists)

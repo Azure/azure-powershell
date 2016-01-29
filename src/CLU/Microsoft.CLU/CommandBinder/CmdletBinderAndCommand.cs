@@ -172,18 +172,73 @@ namespace Microsoft.CLU.CommandBinder
         /// </summary>
         /// <param name="args">The command-line arguments to be considered in the help logic.</param>
         /// <returns>A list of lines containing help information.</returns>
-        public IEnumerable<string> ListCommands(string[] args)
+        public IEnumerable<string> ListCommands(string[] args, bool autoComplete)
         {
 #if PSCMDLET_HELP
             return CmdletHelp.Generate(parser.FormatParameterName, _discriminatorBinder.Modules, args, prefix);
 #else
             var commands = CommandDispatchHelper
                 .CompleteCommands(new HelpPackageFinder(CLUEnvironment.GetPackagesRootPath()), args).ToArray();
+            //
+            string strCmdLine = string.Join(";", args);
+            System.Collections.IDictionary commandPortion = new Dictionary<String, int>();
             if (commands.Length > 0)
             {
                 foreach (var command in commands)
                 {
-                    yield return command.Discriminators.Replace(';', ' ');
+                    if (!autoComplete) //--complete was not typed in commandline
+                    {
+                        yield return command.Discriminators.Replace(';', ' ');
+                    }
+                    else // "--complete" was typed in commandline
+                    {
+                        string strMatchedPart = command.Discriminators;
+                        string strUnmatchedPart = strMatchedPart.Substring(strCmdLine.Length);
+                        string result = "";
+                        int lastPosition, nextPosition;
+                        if (strUnmatchedPart.Length > 0)
+                        {
+                            bool isSemiColon = String.Equals(';', strUnmatchedPart.ElementAt(0));
+                            if (!isSemiColon)
+                            {
+                                //last command portion is incomplete, e.g "az vm c" so get back to previous position of ";"
+                                lastPosition = strCmdLine.LastIndexOf(";") + 1;
+                                nextPosition = strUnmatchedPart.IndexOf(";");
+                                if (nextPosition < 0)
+                                {
+                                    result = strMatchedPart.Substring(lastPosition);//no command word portion left
+                                }
+                                else
+                                {
+                                    //remaining command word
+                                    result = strMatchedPart.Substring(lastPosition, nextPosition
+                                            + strCmdLine.Length - lastPosition);
+                                }
+                            }
+                            else
+                            {
+                                //last command portion is complete, e.g "az vm" so process next command word
+                                nextPosition = strUnmatchedPart.IndexOf(";", 1);
+                                if (nextPosition >= 0)
+                                {
+                                    result = strUnmatchedPart.Substring(1, nextPosition - 1);//multiple command words exist
+                                }
+                                else
+                                {
+                                    result = strUnmatchedPart.Substring(1); //only command word left
+                                }
+                            }
+                        }
+                        if (commandPortion.Contains(result))
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            commandPortion.Add(result, 1);
+                            yield return result.Replace(';', ' ');
+                        }
+                    }
                 }
             }
             else
@@ -193,9 +248,9 @@ namespace Microsoft.CLU.CommandBinder
 #endif
         }
 
-#endregion
+        #endregion
 
-#region ICommand implementation
+        #region ICommand implementation
 
         /// <summary>
         /// Tells whether the command is synchronous or asynchronous.
@@ -280,7 +335,7 @@ namespace Microsoft.CLU.CommandBinder
             throw new InvalidOperationException(Strings.CmdletBinderAndCommand_InvokeAsync_CmdletNotSupportAsyncInvoke);
         }
 
-#endregion
+        #endregion
 
         public void MarkStaticParameterBindFinished()
         {
@@ -346,7 +401,7 @@ namespace Microsoft.CLU.CommandBinder
         /// <param name="cmdletType">The cmdlet types</param>
         private void InitCmdlet(Type cmdletType, string assemblyLocation)
         {
-            _cmdlet = CreateCmdlet(cmdletType,assemblyLocation);
+            _cmdlet = CreateCmdlet(cmdletType, assemblyLocation);
             _cmdletMetadata = CmdletMetadata.Load(_cmdlet);
             _staticParametersBindState = new ParameterBindState(_cmdletMetadata.Type);
             _staticParametersBindHandler = new BindHandler(_cmdlet, _staticParametersBindState);
@@ -665,6 +720,6 @@ namespace Microsoft.CLU.CommandBinder
         /// </summary>
         private bool _positionalArgumentsBounded;
 
-#endregion
+        #endregion
     }
 }

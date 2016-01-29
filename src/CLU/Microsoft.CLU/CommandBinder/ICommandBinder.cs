@@ -38,6 +38,6 @@ namespace Microsoft.CLU
         /// <summary>
         /// List the set of possible command matches for the given set of commands
         /// </summary>  
-        IEnumerable<string> ListCommands(string[] args);
+        IEnumerable<string> ListCommands(string[] args, bool autoComplete);
     }
 }
