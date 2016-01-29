@@ -89,6 +89,14 @@
       <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.1.8.2\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.0.11.0\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
+      <Private>True</Private>
+    </Reference>    
+    <Reference Include="Microsoft.Azure.Common.NetFramework">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
+    </Reference> 	
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
@@ -105,7 +113,13 @@
     <Compile Include="ArgumentValidator.cs" />
     <Compile Include="StringExtensions.cs" />
     <Compile Include="ValidateAbsoluteUriAttribute.cs" />
-    <None Include="Microsoft.AzureStack.Commands.dll-help.psd1" />
+    <None Include="..\AzureRM.AzureStackAdmin.psd1">
+      <Link>AzureRM.AzureStackAdmin.psd1</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Microsoft.AzureStack.Commands.dll-help.psd1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Compile Include="CommonPSConst.cs" />
     <Compile Include="Microsoft.Subscriptions\ManagedLocations\GetManagedLocation.cs" />
     <Compile Include="Microsoft.Subscriptions\ManagedLocations\NewManagedLocation.cs" />
@@ -161,7 +175,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Microsoft.AzureStack.Commands.dll-help.xml" />
+    <Content Include="Microsoft.AzureStack.Commands.dll-help.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Token\readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
