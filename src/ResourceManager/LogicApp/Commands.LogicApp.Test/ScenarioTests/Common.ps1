@@ -67,21 +67,43 @@ function TestSetup-CreateResourceGroup
     $resourceGroupName = getAssetName
 	$rglocation = Get-ProviderLocation "North Europe"
     $resourceGroup = New-AzureRmResourceGroup -Name $resourceGroupName -location $rglocation -Force
+	
 	return $resourceGroup
+}
+
+<#
+.SYNOPSIS
+Creates an App Service Plan
+#>
+function TestSetup-CreateAppServicePlan ([string]$resourceGroupName, [string]$AppServicePlan)
+{	
+	if(Test-Path Env:AZURE_TEST_MODE)
+	{
+		$AZURE_TEST_MODE = Get-ChildItem Env:AZURE_TEST_MODE
+		if($AZURE_TEST_MODE.Value.ToLowerInvariant() -eq 'record')
+		{
+			$PropertiesObject = @{}
+			$Sku = @{Name='S1'; Tier='Standard'; Size='S1'; Family='S'; Capacity=1}		
+			$Plan = New-AzureRmResource -Name $AppServicePlan -Location "West US" -ResourceGroupName $resourceGroupName -ResourceType "Microsoft.Web/serverfarms" -ApiVersion 2015-08-01 -SkuObject $Sku -PropertyObject $PropertiesObject -Force	
+			return $Plan
+		}
+	}
+	return $null	
 }
 
 <#
 .SYNOPSIS
 Creates a new workflow
 #>
-function TestSetup-CreateWorkflow ([string]$resourceGroupName)
+function TestSetup-CreateWorkflow ([string]$resourceGroupName, [string]$workflowName, [string]$AppServicePlan)
 {		
 	$rglocation = Get-ProviderLocation "North Europe"
     $resourceGroup = New-AzureRmResourceGroup -Name $resourceGroupName -location $rglocation -Force
 
-	$workflowName = getAssetname	
+	TestSetup-CreateAppServicePlan $resourceGroupName $AppServicePlan
+
 	$definitionFilePath = "Resources\TestSimpleWorkflowDefinition.json"
 	$parameterFilePath = "Resources\TestSimpleWorkflowParameter.json"
-	$workflow = $resourceGroup | New-AzureLogicApp -Name $workflowName -PlanName "StandardServicePlan" -SkuName "Standard" -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath
+	$workflow = $resourceGroup | New-AzureLogicApp -Name $workflowName -AppServicePlan $AppServicePlan -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath
     return $workflow
 }

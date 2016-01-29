@@ -2896,7 +2896,13 @@
               <File Id="filFF35EE21508345E39155C07A686F1F51" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.LogicApp\Microsoft.Threading.Tasks.Extensions.dll" />
             </Component>
             <Component Id="cmp500F1912F259409E860EF80064808EC2" Guid="*">
-              <File Id="fil95D11309779A45BAA7E0E1C577E564E3" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.LogicApp\Microsoft.Azure.Commands.LogicApp.dll-help.Help.xml" />
+              <File Id="fil95D11309779A45BAA7E0E1C577E564E3" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.LogicApp\Microsoft.Azure.Commands.LogicApp.dll-Help.xml" />
+            </Component>
+            <Component Id="cmpB26F871E16EB47E5B3213C92D2884C0C" Guid="*">
+              <File Id="filB19081AAE2C44C9896F4E5882DA54E91" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.LogicApp\Microsoft.Azure.Commands.LogicApp.format.ps1xml" />
+            </Component>          
+            <Component Id="cmpF2F7D8E7EE274D27884224FE4E656A3E" Guid="*">
+              <File Id="filEC9279C086EB4D438262BCB33B94008A" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.LogicApp\Microsoft.Azure.Management.Websites.dll" />
             </Component>          
           </Directory>
         </Directory>
@@ -6542,6 +6548,8 @@
       <ComponentRef Id="cmp144E348D34DA4982965564C0A8EEEDC4" />
       <ComponentRef Id="cmpD7E8CCF43EDE42FDBE7936AC579F7B5A" />
       <ComponentRef Id="cmp500F1912F259409E860EF80064808EC2" />
+      <ComponentRef Id="cmpB26F871E16EB47E5B3213C92D2884C0C" />
+      <ComponentRef Id="cmpF2F7D8E7EE274D27884224FE4E656A3E" />
     </ComponentGroup>
   </Fragment>
 </Include>

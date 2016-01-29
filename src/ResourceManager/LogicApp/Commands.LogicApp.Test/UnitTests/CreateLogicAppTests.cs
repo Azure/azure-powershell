@@ -40,9 +40,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.UnitTests
             {
                 Name = Name,
                 DefinitionFilePath = DefinitionFilePath,
-                ResourceGroupName = ResourceGroupName,
-                Location = Location,
-                SkuName = SkuName
+                ResourceGroupName = ResourceGroupName                                
             };
 
             var exception = Assert.Throws<PSArgumentException>(() => cmdlet.ExecuteCmdlet());
@@ -60,9 +58,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.UnitTests
             {
                 Name = Name,
                 ParameterFilePath = ParameterFilePath,
-                ResourceGroupName = ResourceGroupName,
-                Location = Location,
-                SkuName = SkuName
+                ResourceGroupName = ResourceGroupName                
             };
             var exception = Assert.Throws<PSArgumentException>(() => cmdlet.ExecuteCmdlet());
             Assert.Equal("File LogicAppParameter.json does not exist.", exception.Message);

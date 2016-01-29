@@ -66,6 +66,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Logic.0.1.0-preview\lib\net45\Microsoft.Azure.Management.Logic.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Azure.Management.WebSites, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.WebSites.0.16.7-preview\lib\net45\Microsoft.Azure.Management.WebSites.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.11-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
@@ -79,15 +83,18 @@
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.1.4.1\lib\dotnet\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.1.2.0\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Rest.ClientRuntime.Azure">
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.1.0.20\lib\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication">
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.0.11.0\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.TestFramework.0.9.3-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.TestFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -115,9 +122,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cmdlets\GetAzureLogicApp.cs" />
+    <Compile Include="Cmdlets\CancelAzureLogicAppRunCommand.cs" />
+    <Compile Include="Cmdlets\GetAzureLogicAppCommand.cs" />
+    <Compile Include="Cmdlets\GetAzureLogicAppAccessKeyCommand.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Cmdlets\GetAzureLogicAppRunActionCommand.cs" />
+    <Compile Include="Cmdlets\GetAzureLogicAppRunHistoryCommand.cs" />
+    <Compile Include="Cmdlets\GetAzureLogicAppTriggerCommand.cs" />
+    <Compile Include="Cmdlets\GetAzureLogicAppTriggerHistoryCommand.cs" />
     <Compile Include="Cmdlets\NewAzureLogicAppCommand.cs" />
-    <Compile Include="Cmdlets\RemoveAzureLogicApp.cs" />
+    <Compile Include="Cmdlets\RemoveAzureLogicAppCommand.cs" />
+    <Compile Include="Cmdlets\RunAzureLogicAppCommand.cs" />
+    <Compile Include="Cmdlets\UpdateAzureLogicAppAccessKeyCommand.cs" />
     <Compile Include="Cmdlets\UpdateAzureLogicAppCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resource.Designer.cs">
@@ -133,7 +150,11 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Utilities\LogicAppClient.cs" />
+    <Compile Include="Utilities\LogicAppClientAccessKeyOperations.cs" />
+    <Compile Include="Utilities\LogicAppClientRunOperations.cs" />
+    <Compile Include="Utilities\LogicAppClientTriggerOperations.cs" />
     <Compile Include="Utilities\ParameterSet.cs" />
+    <Compile Include="Utilities\WebsitesClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\AzureRM.LogicApp.psd1">
@@ -172,8 +193,11 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Microsoft.Azure.Commands.LogicApp.dll-help.Help.xml">
+    <Content Include="Microsoft.Azure.Commands.LogicApp.dll-Help.xml">
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Microsoft.Azure.Commands.LogicApp.format.ps1xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

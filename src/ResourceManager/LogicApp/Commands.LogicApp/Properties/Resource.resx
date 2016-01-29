@@ -120,6 +120,9 @@
   <data name="ApplicationServicePlanIdFormat" xml:space="preserve">
     <value>/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Web/serverfarms/{2}</value>
   </data>
+  <data name="DefinitionMissingWarning" xml:space="preserve">
+    <value>Definition content needs to be specified.</value>
+  </data>
   <data name="FileDoesNotExist" xml:space="preserve">
     <value>File {0} does not exist.</value>
   </data>

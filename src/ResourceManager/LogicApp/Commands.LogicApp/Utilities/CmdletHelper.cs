@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
     using Microsoft.Azure.Management.Logic.Models;
     using Newtonsoft.Json.Linq;
     using Newtonsoft.Json;
+    using Microsoft.Azure.Management.WebSites.Models;
 
     /// <summary>
     /// Helper class for the logic app commands 
@@ -126,6 +127,20 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         {
             return string.Format(CultureInfo.InvariantCulture,
                 Properties.Resource.ApplicationServicePlanIdFormat, subscriptionId, resourceGroupName, planName);
+        }
+
+        /// <summary>
+        /// Converts IEnumerator to IEnumerable
+        /// </summary>
+        /// <typeparam name="T">Generic Type</typeparam>
+        /// <param name="enumerator">Enumerator to be converted</param>
+        /// <returns>IEnumerable collection</returns>
+        public static IEnumerable<T> ToIEnumerable<T>(this IEnumerator<T> enumerator)
+        {
+            while (enumerator.MoveNext())
+            {
+                yield return enumerator.Current;
+            }
         }
     }
 }

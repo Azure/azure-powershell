@@ -15,284 +15,198 @@
 <#
 .SYNOPSIS
 Test New-AzureLogicApp with physical file paths
+Test New-AzureLogicApp using definition object and parameter file
+Test New-AzureLogicApp using piped input
 #>
-function Test-NewLogicAppUsingDefinitionFilePath		 
+function Test-CreateAndRemoveLogicApp
 {
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$workflowName = getAssetname	
 	$definitionFilePath = "Resources\TestSimpleWorkflowDefinition.json"
-	$parameterFilePath = "Resources\TestSimpleWorkflowParameter.json"
+	$parameterFilePath = "Resources\TestSimpleWorkflowParameter.json"	
 
-	$workflow = New-AzureLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -Location "westus" -State "Enabled" -PlanName "StandardServicePlan" -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath -SkuName "Standard"
-    
-	Assert-NotNull $workflow
-	Assert-AreEqual $workflowName $workflow.Name 
+	#Create App Service Plan
+	$planName = "StandardServicePlan"
+	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
+
+	#Case1 : Using physical file
+	$workflow = New-AzureLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -AppServicePlan $planName -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath
+	
+	Assert-NotNull $workflow	
 	Assert-NotNull $workflow.Definition
 	Assert-NotNull $workflow.Parameters
-}
+	Assert-AreEqual $workflowName $workflow.Name 
+	Remove-AzureLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $WorkflowName -Force
 
-<#
-.SYNOPSIS
-Test New-AzureLogicApp with object type parameters
-#>
-function Test-NewLogicAppUsingDefinitionObject
-{
-	$resourceGroup = TestSetup-CreateResourceGroup
-	$workflowName = getAssetname	
-	$parameterFilePath = "Resources\TestSimpleWorkflowParameter.json"
-		
+	#Case2 : Using definition object and parameter file
+	$parameterFilePath = "Resources\TestSimpleWorkflowParameter.json"		
     $definition = [IO.File]::ReadAllText("Resources\TestSimpleWorkflowDefinition.json")
 
-	$workflow = New-AzureLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -Location "westus" -State "Enabled" -SkuName "Standard" -PlanName "StandardServicePlan" -Definition $definition -ParameterFilePath $parameterFilePath
-    
-	Assert-NotNull $workflow
-	Assert-AreEqual $workflowName $workflow.Name 
-	Assert-NotNull $workflow.Definition
-	Assert-NotNull $workflow.Parameters
-}
-
-<#
-.SYNOPSIS
-Test New-AzureLogicApp with Definition file and object parameters
-#>
-function Test-NewLogicAppUsingDefinitionObjectAndParameterFile
-{
-	$resourceGroup = TestSetup-CreateResourceGroup
 	$workflowName = getAssetname	
-
-	$parameterFilePath = "Resources\TestSimpleWorkflowParameter.json"	
-	$definitionFilePath = "Resources\TestSimpleWorkflowDefinition.json"
-			
-	$definition = [IO.File]::ReadAllText("Resources\TestSimpleWorkflowDefinition.json")
-
-	$workflow = New-AzureLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -Location "westus" -State "Enabled" -SkuName "Standard" -PlanName "StandardServicePlan" -Definition $definition -ParameterFilePath $parameterFilePath
+	$workflow = New-AzureLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -Definition $definition -ParameterFilePath $parameterFilePath -AppServicePlan $planName
     
-	Assert-NotNull $workflow
-	Assert-AreEqual $workflowName $workflow.Name 
+	Assert-NotNull $workflow	
 	Assert-NotNull $workflow.Definition
 	Assert-NotNull $workflow.Parameters
-}
+	Assert-AreEqual $workflowName $workflow.Name 
+	Remove-AzureLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $WorkflowName -Force
 
-<#
-.SYNOPSIS
-Test New-AzureLogicApp with Pipeline Input from ResourceGroupObject
-#>
-function Test-NewLogicAppUsingResourcegroupPipeline
-{
-	$resourceGroup = TestSetup-CreateResourceGroup
+	#Case3 : Create using Piped input
+
 	$workflowName = getAssetname	
-	$definitionFilePath = "Resources\TestSimpleWorkflowDefinition.json"
-	$parameterFilePath = "Resources\TestSimpleWorkflowParameter.json"
-
-	$workflow = $resourceGroup | New-AzureLogicApp -Name $workflowName -State "Enabled" -SkuName "Standard" -PlanName "StandardServicePlan" -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath
-    
+	$workflow = $resourceGroup | New-AzureLogicApp -Name $workflowName -AppServicePlan $planName -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath    
+	
 	Assert-NotNull $workflow
-	Assert-AreEqual $workflowName $workflow.Name 
-	Assert-NotNull $workflow.Definition
-	Assert-NotNull $workflow.Parameters
+	Remove-AzureLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $WorkflowName -Force
 }
 
 <#
 .SYNOPSIS
 Test New-AzureLogicApp to create a workflow with a duplicate name.
 #>
-function Test-NewLogicAppWithDuplicateName
+function Test-CreateLogicAppWithDuplicateName
 {
 	$resourceGroup = TestSetup-CreateResourceGroup
-	$workflowName = getAssetname	
+	$workflowName = getAssetname
+	
 	$definitionFilePath = "Resources\TestSimpleWorkflowDefinition.json"
 	$parameterFilePath = "Resources\TestSimpleWorkflowParameter.json"
 	$resourceGroupName = $resourceGroup.ResourceGroupName
-	$workflow = $resourceGroup | New-AzureLogicApp -Name $workflowName -SkuName "Standard" -PlanName "StandardServicePlan" -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath
+
+	#Create App Service Plan
+	$planName = "StandardServicePlan"
+	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
+
+	$workflow = $resourceGroup | New-AzureLogicApp -Name $workflowName -AppServicePlan $planName -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath
     
 	Assert-NotNull $workflow
 	try
 	{
-		$workflow = $resourceGroup | New-AzureLogicApp -Name $workflowName -SkuName "Standard" -PlanName "StandardServicePlan" -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath
+		$workflow = $resourceGroup | New-AzureLogicApp -Name $workflowName -AppServicePlan $planName -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath
 	}
 	catch
 	{		
 		Assert-AreEqual $_.Exception.Message "The Resource 'Microsoft.Logic/workflows/$WorkflowName' under resource group '$resourceGroupName' already exists."		
-	}	
-}
-
-<#
-.SYNOPSIS
-Test New-AzureLogicApp with SKU Plan ID
-#>
-function Test-NewLogicAppWithPlanId
-{
-	$resourceGroup = TestSetup-CreateResourceGroup
-	$workflowName = getAssetname	
-	
-	$definitionFilePath = "Resources\TestSimpleWorkflowDefinition.json"
-	$parameterFilePath = "Resources\TestSimpleWorkflowParameter.json"
-
-	$resourceGroupName = $resourceGroup.ResourceGroupName
-	$planId = "/subscriptions/57b7034d-72d4-433d-ace2-a7460aed6a99/resourceGroups/$resourceGroupName/providers/Microsoft.Web/serverfarms/StandardServicePlan"
-	$workflow = New-AzureLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location "westus" -State "Enabled" -SkuName "Standard" -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath -PlanId $planId -PlanName "StandardServicePlan"
-    
-	Assert-NotNull $workflow	
-	Assert-NotNull $workflow.Definition
-	Assert-NotNull $workflow.Parameters	
-	Assert-AreEqual $workflowName $workflow.Name 
-}
-
-<#
-.SYNOPSIS
-Test New-AzureLogicApp with Pipeline Input from Sku
-#>
-function Test-NewLogicAppUsingSkuPipeline
-{
-	$resourceGroup = TestSetup-CreateResourceGroup
-	$workflowName = getAssetname	
-	$resourceGroupName = $resourceGroup.ResourceGroupName
-	$planId = "/subscriptions/57b7034d-72d4-433d-ace2-a7460aed6a99/resourceGroups/$resourceGroupName/providers/Microsoft.Web/serverfarms/StandardServicePlan"
-	
-	#Custom Sku Object
-	$SkuObject = [PSCustomObject]@{
-		SkuName = 'Standard'
-		PlanName = 'StandardServicePlan'
-		PlanId = $planId
 	}
-
-	$definitionFilePath = "Resources\TestSimpleWorkflowDefinition.json"
-	$parameterFilePath = "Resources\TestSimpleWorkflowParameter.json"
-
-	$workflow = $SkuObject | New-AzureLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location "westus" -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath	
-		    
-	Assert-NotNull $workflow	
-	Assert-NotNull $workflow.Definition
-	Assert-NotNull $workflow.Parameters
-	Assert-AreEqual $workflowName $workflow.Name 
-	Assert-AreEqual "Enabled" $workflow.State
+	
+	Remove-AzureLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $WorkflowName -Force	
 }
 
 <#
 .SYNOPSIS
 Test New-AzureLogicApp with workflow object
 #>
-function Test-NewLogicAppUsingInputfromWorkflowObject
+function Test-CreateLogicAppUsingInputfromWorkflowObject
 {
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$workflowName = getAssetname	
+	$newWorkflowName = getAssetname	
 	$resourceGroupName = $resourceGroup.ResourceGroupName
 	
+	$planName = "StandardServicePlan"
+	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
+
 	$definitionFilePath = "Resources\TestSimpleWorkflowDefinition.json"
 	$parameterFilePath = "Resources\TestSimpleWorkflowParameter.json"
 
-	$workflow = New-AzureLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location "westus" -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath -PlanName "StandardServicePlan" -SkuName "Standard"
-	$newWorkflowName = getAssetname	
-	$workflow = New-AzureLogicApp -ResourceGroupName $resourceGroupName -Name $newWorkflowName -Location "westus" -Definition $workflow.Definition -Parameters $workflow.Parameters -PlanName "StandardServicePlan" -SkuName "Standard"
+	$workflow = New-AzureLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -AppServicePlan $planName -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath 
+	$workflow = New-AzureLogicApp -ResourceGroupName $resourceGroupName -Name $newWorkflowName -AppServicePlan $planName -Definition $workflow.Definition -Parameters $workflow.Parameters
 		    
 	Assert-NotNull $workflow	
 	Assert-NotNull $workflow.Definition
 	Assert-NotNull $workflow.Parameters
 	Assert-AreEqual $newWorkflowName $workflow.Name 
 	Assert-AreEqual "Enabled" $workflow.State
+
+	Remove-AzureLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Force	
 }
 
 <#
 .SYNOPSIS
 Test New-AzureLogicApp with Parameter as hash table
 #>
-function Test-NewLogicAppUsingInputParameterAsHashTable
+function Test-CreateLogicAppUsingInputParameterAsHashTable
 {
-	$endpointName = getAssetname
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$workflowName = getAssetname	
 	$resourceGroupName = $resourceGroup.ResourceGroupName
-	
+
+	$planName = "StandardServicePlan"
+	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
+
 	$definitionFilePath = "Resources\TestSimpleWorkflowDefinition.json"	
-	$parameters = @{destinationUri="http://requestb.in/1kj7g8e1"}
+	$parameters = @{destinationUri="http://www.bing.com"}
 		
-	$workflow = New-AzureLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location "westus" -DefinitionFilePath $definitionFilePath -Parameters $parameters -PlanName "StandardServicePlan" -SkuName "Standard"
+	$workflow = New-AzureLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -Parameters $parameters -AppServicePlan $planName
 		    
 	Assert-NotNull $workflow	
 	Assert-NotNull $workflow.Parameters
-}
-
-<#
-.SYNOPSIS
-Test New-AzureLogicApp with only definition
-#>
-function Test-NewLogicAppUsingDefinitionWithTriggers
-{
-	$endpointName = getAssetname
-	$resourceGroup = TestSetup-CreateResourceGroup
-	$workflowName = getAssetname	
-	$resourceGroupName = $resourceGroup.ResourceGroupName
 	
-	$definitionFilePath = "Resources\TestSimpleWorkflowTriggerDefinition.json"			
-		
-	$workflow = New-AzureLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location "westus" -DefinitionFilePath $definitionFilePath -PlanName "StandardServicePlan" -SkuName "Standard"
-		    
-	Assert-NotNull $workflow		
+	Remove-AzureLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $WorkflowName -Force	
 }
 
 <#
 .SYNOPSIS
 Test New-AzureLogicApp with only definition
 #>
-function Test-NewLogicAppUsingDefinitionWithActions
-{
-	$endpointName = getAssetname
+function Test-CreateLogicAppUsingDefinitionWithTriggers
+{		
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$workflowName = getAssetname	
-	$resourceGroupName = $resourceGroup.ResourceGroupName
-		
-	$definitionFilePath = "Resources\TestSimpleWorkflowActionDefinition.json"		
-		
-	$workflow = New-AzureLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location "westus" -DefinitionFilePath $definitionFilePath -PlanName "StandardServicePlan" -SkuName "Standard"
+	$resourceGroupName = $resourceGroup.ResourceGroupName		
+	$definitionFilePath = "Resources\TestSimpleWorkflowTriggerDefinition.json"
+
+	$planName = "StandardServicePlan"
+	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
+
+	$workflow = New-AzureLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -AppServicePlan $planName
 		    
-	Assert-NotNull $workflow		
+	Assert-NotNull $workflow
+	
+	Remove-AzureLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -Force			
 }
 
 <#
 .SYNOPSIS
-Test GetLogicAppWithWorkflowName command to get workflow by name.
+Test New-AzureLogicApp with only definition
+Test Get-AzureLogicApp 
+Test Get-AzureLogicApp for a non-existing logic app
 #>
-function Test-GetLogicAppWithWorkflowName
-{
-	$resourceGroupName = getAssetname
-	$ExpectedWorkflow = TestSetup-CreateWorkflow $resourceGroupName
+function Test-CreateAndGetLogicAppUsingDefinitionWithActions
+{	
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$workflowName = getAssetname	
+	$resourceGroupName = $resourceGroup.ResourceGroupName		
+	$definitionFilePath = "Resources\TestSimpleWorkflowActionDefinition.json"
+	$planName = "StandardServicePlan"
+	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
+	
+	#Case1: Create logic app without parameters
+	$workflow1 = New-AzureLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -AppServicePlan $planName
+	Assert-NotNull $workflow1	
 
-	Assert-NotNull $ExpectedWorkflow
-		
-	$ActualWorkflow = Get-AzureLogicApp -ResourceGroupName $resourceGroupName -Name $ExpectedWorkflow.Name
-    
-	Assert-NotNull $ActualWorkflow
-	Assert-AreEqual $ExpectedWorkflow.Name $ActualWorkflow.Name	
-}
+	#Case1: Get logic app using get cmdlet
+	$workflow2 = Get-AzureLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName
+	Assert-NotNull $workflow2
 
-<#
-.SYNOPSIS
-Test RemoveLogicAppWithWorkflowName command to remove workflow by name.
-Test Get-AzureLogicApp to get non existing workflow.
-#>
-function Test-RemoveLogicAppWithWorkflowName
-{
-	$resourceGroupName = getAssetname
-	$ExpectedWorkflow = TestSetup-CreateWorkflow $resourceGroupName
-	$WorkflowName = $ExpectedWorkflow.Name
-	Assert-NotNull $ExpectedWorkflow
-		
-	Remove-AzureLogicApp -ResourceGroupName $resourceGroupName -Name $WorkflowName -Force
+	#Case1: Get non-existing logic app using get cmdlet
 	try
 	{
-		$ActualWorkflow = Get-AzureLogicApp -ResourceGroupName $resourceGroupName -Name $WorkflowName
+		Get-AzureLogicApp -ResourceGroupName $resourceGroupName -Name "InvalidWorkflow"
 	}
 	catch
 	{		
-		Assert-AreEqual $_.Exception.Message "The Resource 'Microsoft.Logic/workflows/$WorkflowName' under resource group '$resourceGroupName' was not found."		
-	}   	
+		Assert-AreEqual $_.Exception.Message "The Resource 'Microsoft.Logic/workflows/InvalidWorkflow' under resource group '$resourceGroupName' was not found."		
+	} 
+
+	Remove-AzureLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -Force		
 }
 
 <#
 .SYNOPSIS
-Test RemoveLogicAppWithWorkflowName command to remove nonexisting workflow by name.
+Test Remove-AzureLogicApp command to remove nonexisting workflow by name.
 #>
-function Test-RemoveLogicAppWithInvalidWorkflowName
+function Test-RemoveNonExistingLogicApp
 {
 	$WorkflowName = "09e81ac4-848a-428d-82a6-7d61953e3940"
 	$resourceGroup = TestSetup-CreateResourceGroup
@@ -303,46 +217,88 @@ function Test-RemoveLogicAppWithInvalidWorkflowName
 
 <#
 .SYNOPSIS
-Test Set-AzureLogicApp command to update workflow.
+Test Set-AzureLogicApp command to update workflow defintion without parametrs.
+Test Set-AzureLogicApp command to update workflow defintion and state to Disabled.
+Test Set-AzureLogicApp command to update workflow state to Enabled.
+Test Set-AzureLogicApp command to set logic app with null definition.
+Test Set-AzureLogicApp command to set non-existing logic app.
 #>
 function Test-UpdateLogicApp
 {
-	$resourceGroupName = getAssetname
-	$ExpectedWorkflow = TestSetup-CreateWorkflow $resourceGroupName
-	$WorkflowName = $ExpectedWorkflow.Name	
-	Assert-NotNull $ExpectedWorkflow
-				
-	$definitionFilePath = "Resources\TestSimpleWorkflowTriggerDefinition.json"	
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$workflowName = getAssetname	
+	$resourceGroupName = $resourceGroup.ResourceGroupName
 
-	$UpdatedWorkflow = Set-AzureLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location "westus" -PlanName "NonStandardServicePlan" -SkuName "Free" -DefinitionFilePath $definitionFilePath
+	$planName = "StandardServicePlan"
+	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
 
-	Assert-NotNull $UpdatedWorkflow
-	Assert-AreEqual $UpdatedWorkflow.Location "westus"
-	Assert-AreEqual $UpdatedWorkflow.Sku.Plan.Name "NonStandardServicePlan"
-	Assert-AreEqual $UpdatedWorkflow.Sku.Name "Free"
+	$simpleDefinitionFilePath = "Resources\TestSimpleWorkflowDefinition.json"
+	$simpleParameterFilePath = "Resources\TestSimpleWorkflowParameter.json"
+	$workflow = $resourceGroup | New-AzureLogicApp -Name $workflowName -AppServicePlan $planName -DefinitionFilePath $simpleDefinitionFilePath -ParameterFilePath $simpleParameterFilePath
+	
+	Assert-NotNull $workflow
+					
+	#Case1: Update definition with no parameters and disable
+	$definitionFilePath = "Resources\TestSimpleWorkflowTriggerDefinition.json"
+
+	$UpdatedWorkflow = Set-AzureLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -State "Disabled" -DefinitionFilePath $definitionFilePath -Parameters $null
 	
 	Assert-NotNull $UpdatedWorkflow
+	Assert-AreEqual $UpdatedWorkflow.State "Disabled"
+
+	#Case2: Update definition with parameters of logic app
+	$UpdatedWorkflow = Set-AzureLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $simpleDefinitionFilePath -ParameterFilePath $simpleParameterFilePath
+
+	Assert-NotNull $UpdatedWorkflow
+
+	#Case3: Enable the logic app
+	$UpdatedWorkflow = Set-AzureLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -State "Enabled"
+	
+	Assert-NotNull $UpdatedWorkflow
+	Assert-AreEqual $UpdatedWorkflow.State "Enabled"
+
+	#Case4: Test update command to set logic app with null definition
+	try
+	{
+		$UpdatedWorkflow = Set-AzureLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Definition $null
+	}
+	catch
+	{		
+		Assert-AreEqual $_.Exception.Message "Definition content needs to be specified."		
+	}
+
+	#Case5: Update non-existing workflow
+
+	try
+	{
+		$workflowName = "82D2D842-C312-445C-8A4D-E3EE9542436D"
+		$definitionFilePath = "Resources\TestSimpleWorkflowTriggerDefinition.json"
+		Set-AzureLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -AppServicePlan $planName -DefinitionFilePath $definitionFilePath
+	}
+	catch
+	{		
+		Assert-AreEqual $_.Exception.Message "The Resource 'Microsoft.Logic/workflows/$workflowName' under resource group '$resourceGroupName' was not found."		
+	}
 }
 
 <#
 .SYNOPSIS
-Test Set-AzureLogicApp command to update non-existing workflow.
+Test New-AzureLogicApp to create logic app for non-existing service plan. Constraint validation.
 #>
-function Test-UpdateNonExistingLogicApp
+function Test-CreateLogicAppWithNonExistingAppServicePlan
 {
-	$resourceGroupName = getAssetname
-	$ExpectedWorkflow = TestSetup-CreateWorkflow $resourceGroupName
-	$WorkflowName = "82D2D842-C312-445C-8A4D-E3EE9542436D"
-	Assert-NotNull $ExpectedWorkflow
-				
-	$definitionFilePath = "Resources\TestSimpleWorkflowTriggerDefinition.json"		
-
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$workflowName = getAssetname		
+	$resourceGroupName = $resourceGroup.ResourceGroupName	
+	$definitionFilePath = "Resources\TestSimpleWorkflowDefinition.json"
+	$parameterFilePath = "Resources\TestSimpleWorkflowParameter.json"
+	$Plan = "B9F87338CAE4470F9116F3D685365748"
 	try
 	{
-		$UpdatedWorkflow = Set-AzureLogicApp -ResourceGroupName $resourceGroupName -Name $WorkflowName -Location "westus" -PlanName "NonStandardServicePlan" -SkuName "Free" -DefinitionFilePath $definitionFilePath
+		$workflow = New-AzureLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName	-AppServicePlan $Plan -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath	
 	}
 	catch
 	{		
-		Assert-AreEqual $_.Exception.Message "The Resource 'Microsoft.Logic/workflows/$WorkflowName' under resource group '$resourceGroupName' was not found."		
-	} 
+		Assert-AreEqual $_.Exception.Message "The Resource 'Microsoft.Web/serverFarms/$Plan' under resource group '$resourceGroupName' was not found."
+	} 			
 }

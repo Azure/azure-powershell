@@ -12,7 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Logic;
+using System;
+using Microsoft.Azure.Management.Logic.Models;
 
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
@@ -22,11 +23,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Creates a new LogicApp workflow 
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureLogicApp"), OutputType(typeof (object))]
-    public class GetAzureLogicApp : LogicAppBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureLogicAppRunHistory"), OutputType(typeof(object))]
+    public class AzureLogicAppRunHistoryCommand : LogicAppBaseCmdlet
     {
 
-        #region Input Paramters
+        #region Input Parameters
 
         [Parameter(Mandatory = true, HelpMessage = "The targeted resource group for the workflow.",
             ValueFromPipelineByPropertyName = true)]
@@ -37,14 +38,28 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The name of the workflow run.",
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public string RunName { get; set; }        
+
         #endregion Input Parameters
 
         /// <summary>
-        /// Executes the get workflow command
+        /// Executes the get workflow run history command
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            this.WriteObject(LogicAppClient.GetWorkflow(this.ResourceGroupName, this.Name), true);
+            base.ExecuteCmdlet();
+            if (string.IsNullOrEmpty(this.RunName))
+            {
+                var enumerator = LogicAppClient.GetWorkflowRuns(this.ResourceGroupName, this.Name).GetEnumerator();
+                this.WriteObject(enumerator.ToIEnumerable<WorkflowRun>(), true);                
+            }
+            else
+            {
+                this.WriteObject(LogicAppClient.GetWorkflowRun(this.ResourceGroupName, this.Name, this.RunName), true);
+            }
         }
     }
 }

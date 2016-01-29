@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
     using LegacyTest = Microsoft.Azure.Test;
     using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
     using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
+    using Microsoft.Azure.Management.WebSites;
 
     /// <summary>
     /// Test controller for the logic app scenario testing
@@ -64,6 +65,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         /// Gets or sets the LogicManagementClient
         /// </summary>
         public LogicManagementClient LogicManagementClient { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the WebSiteManagementClient
+        /// </summary>
+        public WebSiteManagementClient WebsiteManagementClient { get; private set; }
 
         /// <summary>
         /// Gets or sets the AuthorizationManagementClient
@@ -146,7 +152,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
-                    helper.RMResourceModule,
+                    helper.RMResourceModule,                    
                     helper.GetRMModulePath(@"AzureRM.LogicApp.psd1"));
 
                 try
@@ -182,11 +188,13 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
             AuthorizationManagementClient = GetAuthorizationManagementClient();
             GalleryClient = GetGalleryClient();
             LogicManagementClient = GetLogicManagementClient(context);
+            WebsiteManagementClient = GetWebsiteManagementClient(context);
             helper.SetupManagementClients(ResourceManagementClient,
                 SubscriptionClient,
                 AuthorizationManagementClient,
                 GalleryClient,
-                LogicManagementClient
+                LogicManagementClient,
+                WebsiteManagementClient
                 );
         }
 
@@ -216,6 +224,16 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         private LogicManagementClient GetLogicManagementClient(MockContext context)
         {
             return context.GetServiceClient<LogicManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        /// <summary>
+        /// Creates WebSiteManagementClient instance  based on mode setting
+        /// </summary>
+        /// <param name="context">Mock undocontext</param>
+        /// <returns>WebSiteManagementClient instance</returns>
+        private WebSiteManagementClient GetWebsiteManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<WebSiteManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private SubscriptionClient GetSubscriptionClient()

@@ -44,18 +44,17 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The location of the workflow.",
-            ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
-
         [Parameter(Mandatory = true, HelpMessage = "The name of the workflow.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The Plan name.", ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = true, HelpMessage = "App service plan name.", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public string PlanName { get; set; }
+        public string AppServicePlan { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The location of the workflow.", ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public string Location { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The state of the workflow.")]
         [ValidateSet(Constants.StatusEnabled, Constants.StatusDisabled, IgnoreCase = false)]
@@ -102,14 +101,6 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [ValidateNotNullOrEmpty]
         public string ParameterFilePath { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The SKU name.", ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNullOrEmpty]
-        public string SkuName { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "The Plan Id.", ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNullOrEmpty]
-        public string PlanId { get; set; }
-
         #endregion Input Parameters
 
         /// <summary>
@@ -117,7 +108,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
+            base.ExecuteCmdlet();            
 
             if (this.Definition != null)
             {
@@ -138,12 +129,13 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             {
                 this.Parameters = CmdletHelper.GetParametersFromFile(this.TryResolvePath(this.ParameterFilePath));
             }
+            
+            var servicePlan = WebsitesClient.GetAppServicePlan(this.ResourceGroupName, this.AppServicePlan);
 
-            if (string.IsNullOrEmpty(this.PlanId))
+            if (string.IsNullOrEmpty(this.Location))
             {
-                this.PlanId = CmdletHelper.BuildAppServicePlanId(this.PlanName, this.ResourceGroupName,
-                    LogicAppClient.LogicManagementClient.SubscriptionId);
-            }            
+                this.Location = servicePlan.GeoRegion;
+            }
 
             this.WriteObject(LogicAppClient.CreateWorkflow(this.ResourceGroupName, this.Name, new Workflow
             {
@@ -167,10 +159,10 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 State = (WorkflowState) Enum.Parse(typeof (WorkflowState), this.State),
                 Sku = new Sku
                 {
-                    Name = (SkuName)Enum.Parse(typeof(SkuName), this.SkuName),
+                    Name = (SkuName)Enum.Parse(typeof(SkuName), servicePlan.Sku.Tier),                    
                     Plan = new ResourceReference
                     {
-                        Id = this.PlanId
+                        Id = servicePlan.Id                        
                     }
                 }
             }), true);

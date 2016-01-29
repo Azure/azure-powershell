@@ -70,6 +70,15 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Definition content needs to be specified..
+        /// </summary>
+        internal static string DefinitionMissingWarning {
+            get {
+                return ResourceManager.GetString("DefinitionMissingWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File {0} does not exist..
         /// </summary>
         internal static string FileDoesNotExist {

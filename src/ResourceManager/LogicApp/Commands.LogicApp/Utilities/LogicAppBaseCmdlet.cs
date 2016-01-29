@@ -24,6 +24,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         private LogicAppClient _logicAppClient = null;
 
         /// <summary>
+        /// Websites client
+        /// </summary>
+        private WebsitesClient _websitesClient = null;
+
+        /// <summary>
         /// Gets or sets the LogicApp client used in the PowerShell commands.
         /// </summary>
         public LogicAppClient LogicAppClient
@@ -42,6 +47,28 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
             set
             {
                 this._logicAppClient = value;                 
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the WebsitesClient client used in the PowerShell commands.
+        /// </summary>
+        public WebsitesClient WebsitesClient
+        {
+            get
+            {
+                this._websitesClient = new WebsitesClient(DefaultProfile.Context)
+                {
+                    VerboseLogger = WriteVerboseWithTimestamp,
+                    ErrorLogger = WriteErrorWithTimestamp
+                };
+
+                return _websitesClient;
+            }
+
+            set
+            {
+                this._websitesClient = value;
             }
         }
     }

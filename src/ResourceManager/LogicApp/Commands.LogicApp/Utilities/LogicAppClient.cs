@@ -12,21 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Globalization;
 
 namespace Microsoft.Azure.Commands.LogicApp.Utilities
 {
     using System;
+    using System.Management.Automation;
+    using System.Globalization;
     using Microsoft.Azure.Common.Authentication;
     using Microsoft.Azure.Common.Authentication.Models;
     using Microsoft.Azure.Management.Logic;
     using Microsoft.Azure.Management.Logic.Models;
-    using System.Management.Automation;
 
     /// <summary>
     /// LogicApp client class
     /// </summary>
-    public class LogicAppClient
+    public partial class LogicAppClient
     {
         /// <summary>
         /// Gets or sets the Verbose Logger
@@ -78,15 +78,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <returns>Newly created workflow object</returns>
         public Workflow UpdateWorkflow(string resourceGroupName, string workflowName, Workflow workflow)
         {
-            if (this.DoesLogicAppExist(resourceGroupName, workflowName))
-            {
-                return this.LogicManagementClient.Workflows.CreateOrUpdate(resourceGroupName, workflowName, workflow);
-            }
-            else
-            {
-                throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture,
-                    Properties.Resource.ResourceNotFound, workflowName, resourceGroupName));
-            }
+            return this.LogicManagementClient.Workflows.CreateOrUpdate(resourceGroupName, workflowName, workflow);
         }
 
         /// <summary>
@@ -136,7 +128,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <param name="resourceGroupName">Name of the resource group</param>
         /// <param name="workflowName">Name of the workflow</param>
         /// <returns>Boolean result</returns>
-        public bool DoesLogicAppExist(string resourceGroupName, string workflowName)
+        private bool DoesLogicAppExist(string resourceGroupName, string workflowName)
         {
             bool result = false;
             try

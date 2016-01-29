@@ -20,6 +20,10 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
     public class Constants
     {
         public const string StatusEnabled = "Enabled";
-        public const string StatusDisabled = "Disabled";        
+        public const string StatusDisabled = "Disabled";
+
+        public const string KeyTypeNotSpecified = "NotSpecified";
+        public const string KeyTypePrimary = "Primary";
+        public const string KeyTypeSecondary = "Secondary";
     }
 }

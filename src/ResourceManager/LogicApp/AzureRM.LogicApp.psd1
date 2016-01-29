@@ -57,10 +57,12 @@ ScriptsToProcess = @()
 TypesToProcess = @()
   
 # Format files (.ps1xml) to be loaded when importing this module  
-FormatsToProcess = @()
+FormatsToProcess = @(
+	'.\Microsoft.Azure.Commands.LogicApp.format.ps1xml'
+)
   
 # Modules to import as nested modules of the module specified in ModuleToProcess  
-NestedModules = @(
+NestedModules = @(	
 	'.\Microsoft.Azure.Commands.LogicApp.dll'
 )
 
@@ -82,7 +84,7 @@ ModuleList = @()
 # List of all files packaged with this module  
 FileList =  @()  
   
-# Private data to pass to the module specified in ModuleToProcess  
+# Private data to pass to the module specified in ModuleToProcess
 PrivateData = ''  
 
 } 

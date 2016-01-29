@@ -41,15 +41,5 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.UnitTests
         /// </summary>
         protected const string ResourceGroupName = "TestResourceGroup";
         
-        /// <summary>
-        /// Default azure data center location used for testing
-        /// </summary>
-        protected const string Location = "westus";
-        
-        /// <summary>
-        /// Default Sku name used for testing
-        /// </summary>
-        protected const string SkuName = "Standard";
-
     }
 }

@@ -12,48 +12,56 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.Logic.Models;
+
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
-    using System.Globalization;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using System.Management.Automation;
 
     /// <summary>
-    /// Creates a new LogicApp workflow 
+    /// Gets the access key of a workflow.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureLogicApp"), OutputType(typeof (object))]
-    public class RemoveAzureLogicApp : LogicAppBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureLogicAppAccessKey"), OutputType(typeof (object))]
+    public class GetAzureLogicAppAccessKeyCommand : LogicAppBaseCmdlet
     {
+        #region private attribues
 
-        #region Input Paramters
+        private string _accessKeyName = "default";
+
+        #endregion private attribues
+        #region Input Parameters
 
         [Parameter(Mandatory = true, HelpMessage = "The targeted resource group for the workflow.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The name of the workflow.")]
+        [Parameter(Mandatory = true, HelpMessage = "The name of the workflow.",
+            ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "The name of the workflow accesskey.",
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public string AccessKeyName
+        {
+            get { return this._accessKeyName; }
+            set { this._accessKeyName = value; }
+        }
 
         #endregion Input Parameters
 
         /// <summary>
-        /// Executes the remove workflow command
+        /// Executes the get workflow accesskey command
         /// </summary>
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            ConfirmAction(Force.IsPresent,
-                string.Format(CultureInfo.InvariantCulture, Properties.Resource.RemoveLogicAppWarning, this.Name),
-                Properties.Resource.RemoveLogicAppMessage,
-                Name,
-                () => {
-                          LogicAppClient.RemoveWorkflow(ResourceGroupName, Name);
-                });
+
+            this.WriteObject(
+                LogicAppClient.GetWorkflowAccessKey(this.ResourceGroupName, this.Name, this.AccessKeyName), true);
         }
     }
 }

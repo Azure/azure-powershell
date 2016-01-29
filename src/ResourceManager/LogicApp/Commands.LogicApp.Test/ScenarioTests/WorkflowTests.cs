@@ -26,13 +26,15 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
     {
 
         /// <summary>
-        /// Test New-AzurelogicApp command with Definition file and parameter file.
+        ///Test New-AzureLogicApp with physical file paths
+        ///Test New-AzureLogicApp using definition object and parameter file
+        ///Test New-AzureLogicApp using piped input
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewLogicAppUsingDefinitionFilePath()
+        public void TestCreateAndRemoveLogicApp()
         {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-NewLogicAppUsingDefinitionFilePath");
+            WorkflowController.NewInstance.RunPowerShellTest("Test-CreateAndRemoveLogicApp");
         }
 
         /// <summary>
@@ -40,69 +42,19 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewLogicAppWithDuplicateName()
+        public void TestCreateLogicAppWithDuplicateName()
         {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-NewLogicAppWithDuplicateName");
+            WorkflowController.NewInstance.RunPowerShellTest("Test-CreateLogicAppWithDuplicateName");
         }        
-
-        /// <summary>
-        /// Test New-AzurelogicApp command with Definition and parameter object as parameter.
-        /// </summary>
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewLogicAppUsingDefinitionObject()
-        {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-NewLogicAppUsingDefinitionObject");
-        }
-
-        /// <summary>
-        /// Test New-AzurelogicApp command with Definition  object and parameter file as parameter.
-        /// </summary>
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewLogicAppUsingDefinitionObjectAndParameterFile()
-        {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-NewLogicAppUsingDefinitionObjectAndParameterFile");
-        }
-
-        /// <summary>
-        /// Test New-AzurelogicApp command with pipe input from resource group.
-        /// </summary>
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewLogicAppUsingResourcegroupPipeline()
-        {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-NewLogicAppUsingResourcegroupPipeline");
-        }
-
-        /// <summary>
-        /// Test New-AzurelogicApp command with plan id.
-        /// </summary>
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewLogicAppWithPlanId()
-        {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-NewLogicAppWithPlanId");
-        }
-
-        /// <summary>
-        /// Test New-AzurelogicApp command with pipe input for SKU parameters.
-        /// </summary>
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewLogicAppUsingSkuPipeline()
-        {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-NewLogicAppUsingSkuPipeline");
-        }
 
         /// <summary>
         /// Test New-AzurelogicApp command with workflow object for parameters and definition input.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewLogicAppUsingInputfromWorkflowObject()
+        public void TestCreateLogicAppUsingInputfromWorkflowObject()
         {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-NewLogicAppUsingInputfromWorkflowObject");
+            WorkflowController.NewInstance.RunPowerShellTest("Test-CreateLogicAppUsingInputfromWorkflowObject");
         }
 
         /// <summary>
@@ -110,9 +62,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewLogicAppUsingInputParameterAsHashTable()
+        public void TestCreateLogicAppUsingInputParameterAsHashTable()
         {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-NewLogicAppUsingInputParameterAsHashTable");
+            WorkflowController.NewInstance.RunPowerShellTest("Test-CreateLogicAppUsingInputParameterAsHashTable");
         }                 
 
         /// <summary>
@@ -120,72 +72,55 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewLogicAppUsingDefinitionWithTriggers()
+        public void TestCreateLogicAppUsingDefinitionWithTriggers()
         {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-NewLogicAppUsingDefinitionWithTriggers");
+            WorkflowController.NewInstance.RunPowerShellTest("Test-CreateLogicAppUsingDefinitionWithTriggers");
         }
 
         /// <summary>
-        /// Test New-AzurelogicApp command with workflow definition with actions
+        ///Test New-AzureLogicApp with only definition
+        ///Test Get-AzureLogicApp 
+        ///Test Get-AzureLogicApp for a non-existing logic app
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewLogicAppUsingDefinitionWithActions()
+        public void TestCreateAndGetLogicAppUsingDefinitionWithActions()
         {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-NewLogicAppUsingDefinitionWithActions");
+            WorkflowController.NewInstance.RunPowerShellTest("Test-CreateAndGetLogicAppUsingDefinitionWithActions");
         }
 
         /// <summary>
-        /// Test Get-AzurelogicApp command to get newly created workflow
+        /// Test Remove-AzurelogicApp command to remove non-existing workflow
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetLogicAppWithWorkflowName()
+        public void TestRemoveNonExistingLogicApp()
         {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-GetLogicAppWithWorkflowName");
-        }
-
-        /// <summary>
-        /// Test Remove-AzurelogicApp command to delete newly created workflow
-        /// </summary>
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveLogicAppWithWorkflowName()
-        {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-RemoveLogicAppWithWorkflowName");
-        }
-
-        /// <summary>
-        /// Test Remove-AzurelogicApp command to remove by invalid workflow name
-        /// </summary>
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveLogicAppWithInvalidWorkflowName()
-        {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-RemoveLogicAppWithInvalidWorkflowName");
+            WorkflowController.NewInstance.RunPowerShellTest("Test-RemoveNonExistingLogicApp");
         }
        
         /// <summary>
-        /// Test Set-Azurelogicapp command to update the workflow
+        ///Test Set-AzureLogicApp command to update workflow defintion without parametrs.
+        ///Test Set-AzureLogicApp command to update workflow defintion and state to Disabled.
+        ///Test Set-AzureLogicApp command to update workflow state to Enabled.
+        ///Test Set-AzureLogicApp command to set logic app with null definition.
+        ///Test Set-AzureLogicApp command to set non-existing logic app.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateLogicApp()
         {
             WorkflowController.NewInstance.RunPowerShellTest("Test-UpdateLogicApp");
-        }                         
+        }
 
         /// <summary>
-        /// Test Set-Azurelogicapp command to update a non-existing workflow
+        ///Test New-AzureLogicApp to create logic app for non-existing service plan. Constraint validation.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestUpdateNonExistingLogicApp()
+        public void TestCreateLogicAppWithNonExistingAppServicePlan()
         {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-UpdateNonExistingLogicApp");
-        }                         
-
-
-        
+            WorkflowController.NewInstance.RunPowerShellTest("Test-CreateLogicAppWithNonExistingAppServicePlan");
+        }         
     }
 }
