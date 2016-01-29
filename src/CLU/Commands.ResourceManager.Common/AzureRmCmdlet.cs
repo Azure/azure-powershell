@@ -12,19 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Commands.ResourceManager.Common.Properties;
 using Microsoft.Azure.Commands.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Commands.ResourceManager.Common.Properties;
 using Microsoft.Azure.Commands.Models;
 using Microsoft.Azure.Commands.Utilities.Common;
-using Newtonsoft.Json;
-using System;
-using System.IO;
+using Microsoft.Azure.Management.Internal.Resources;
+using System.Globalization;
+using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Host;
 using System.Reflection;
-using System.Linq;
-using System.Globalization;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
@@ -65,19 +63,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 DefaultProfile = DefaultProfile?? sessionProfile;
             }
             base.BeginProcessing();
-            //TODO:  Add back RP automatic registration
-            //ClientFactory.AddHandler(new RPRegistrationDelegatingHandler(
-            //               () => new ResourceManagementClient(
-            //                   AuthenticationFactory.GetSubscriptionCloudCredentials(DefaultContext, AzureEnvironment.Endpoint.ResourceManager),
-            //                   DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager)),
-            //               s => _debugMessages.Enqueue(s)));
+            ClientFactory.AddHandler(new RPRegistrationDelegatingHandler(
+                           () => new ResourceManagementClient(
+                               AuthenticationFactory.GetSubscriptionCloudCredentials(DefaultContext, AzureEnvironment.Endpoint.ResourceManager)),
+                           s => _debugMessages.Enqueue(s)));
 
         }
 
         protected override void EndProcessing()
         {
             SetSessionVariable(AzurePowerShell.ProfileVariable, ((PSAzureProfile)DefaultProfile));
-            //ClientFactory.RemoveHandler(typeof(RPRegistrationDelegatingHandler));
+            ClientFactory.RemoveHandler(typeof(RPRegistrationDelegatingHandler));
             base.EndProcessing();
         }
 
