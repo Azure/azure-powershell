@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BlobService" xml:space="preserve">
+    <value>ACS Blob Service</value>
+  </data>
+  <data name="DisableNodeVerboseDescription" xml:space="preserve">
+    <value>Disabling Node '{0}' in Storage cluster '{1}'.</value>
+  </data>
+  <data name="DisableNodeVerboseWarning" xml:space="preserve">
+    <value>Are you sure you want to disable Node '{0}' in Storage cluster '{1}'?</value>
+  </data>
+  <data name="EnableNodeVerboseDescription" xml:space="preserve">
+    <value>Enabling Node '{0}' in Storage cluster '{1}'.</value>
+  </data>
+  <data name="EnableNodeVerboseWarning" xml:space="preserve">
+    <value>Are you sure you want to enable Node '{0}' in Storage cluster '{1}'?</value>
+  </data>
+  <data name="FailedToGetAccount" xml:space="preserve">
+    <value>Failed to get undeleted storage account via Account Id or one of its properties is invalid: Tenant Subscription Id, Tenant View Id, Tenant Resource Group Name, Location.</value>
+  </data>
+  <data name="FailedToUndeleteAccount" xml:space="preserve">
+    <value>Failed to undelete storage account.</value>
+  </data>
+  <data name="InvalidRoleTypeErrorMessageFormat" xml:space="preserve">
+    <value>This role type is not supported: '{0}'</value>
+  </data>
+  <data name="ManagementService" xml:space="preserve">
+    <value>ACS Management Service</value>
+  </data>
+  <data name="OperationFailedErrorMessage" xml:space="preserve">
+    <value>Operation is failed. Error code is: '{0}'</value>
+    <comment>{0} is the error code.</comment>
+  </data>
+  <data name="OtherParameterMustNotSetWithVersionedAccountNameSet" xml:space="preserve">
+    <value>If specified VersionedAccountName parameter, PartialAccountName, StorageAccountStatus or TenantSubscriptionId parameters must not be set.</value>
+  </data>
+  <data name="RestartRoleInstanceVerboseDescription" xml:space="preserve">
+    <value>Restarting role instance '{0}' with type '{1}'.</value>
+  </data>
+  <data name="RestartRoleInstanceVerboseWarning" xml:space="preserve">
+    <value>Are you sure you want to restart role instance '{0}' with type '{1}'.</value>
+  </data>
+  <data name="SetServiceDescription" xml:space="preserve">
+    <value>Performing the operation set {0} {1}.</value>
+  </data>
+  <data name="SetServiceSettingParameter" xml:space="preserve">
+    <value> '{0}' to '{1}'</value>
+    <comment>whilte space in the beginning can't be discarded, it's treated as seperator.</comment>
+  </data>
+  <data name="SetServiceWarning" xml:space="preserve">
+    <value>Are you sure you want to perform the operation "set {0}{1}"?</value>
+  </data>
+  <data name="RetrieveUndeletedStorageAccount" xml:space="preserve">
+    <value>Retrieve properties of undeleted storage account to prepare for resource sync</value>
+  </data>
+  <data name="ShouldProcessCaption" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="ShouldProcessRemoveSmbShare" xml:space="preserve">
+    <value>Specified SMB share will be removed</value>
+  </data>
+  <data name="StartBlobServerRoleInstanceVerboseDescription" xml:space="preserve">
+    <value>Starting Blob server instance '{0}'.</value>
+  </data>
+  <data name="StartBlobServerRoleInstanceVerboseWarning" xml:space="preserve">
+    <value>Are you sure you want to start Blob server role instance ‘{0}’.</value>
+  </data>
+  <data name="StopBlobServerRoleInstanceVerboseDescription" xml:space="preserve">
+    <value>Stopping Blob server instance '{0}'.</value>
+  </data>
+  <data name="StopBlobServerRoleInstanceVerboseWarning" xml:space="preserve">
+    <value>Are you sure you want to stop Blob server role instance ‘{0}’.</value>
+  </data>
+  <data name="TableService" xml:space="preserve">
+    <value>ACS Table Service</value>
+  </data>
+  <data name="UpdateRoleInstanceSettingDescription" xml:space="preserve">
+    <value>Performing the operation update the settings on ACS Role Instance '{0}' with type '{1}'.</value>
+  </data>
+  <data name="UpdateRoleInstanceSettingWarning" xml:space="preserve">
+    <value>Are you sure you want to perform the operation "update the settings on ACS Role Instance '{0}' with type '{1}'"?</value>
+  </data>
+  <data name="StorageAccount" xml:space="preserve">
+    <value>Storage Account '{0}'</value>
+  </data>
+  <data name="StorageAccountAdminView" xml:space="preserve">
+    <value>Storage Account With VersionedAccountName '{0}'</value>
+  </data>
+  <data name="SyncOperation" xml:space="preserve">
+    <value>Resource Sync</value>
+  </data>
+  <data name="TriggerResourceSync" xml:space="preserve">
+    <value>Triger resource sync now.</value>
+  </data>
+  <data name="UndeleteOperation" xml:space="preserve">
+    <value>Undelete</value>
+  </data>
+  <data name="ValidateAbsoluteUriNotAbsolute" xml:space="preserve">
+    <value>Argument should be an absolute URI.</value>
+  </data>
+  <data name="ValidateAbsoluteUriWrongType" xml:space="preserve">
+    <value>System.Uri type is expected.</value>
+  </data>
+  <data name="ValidateUncNotValidUnc" xml:space="preserve">
+    <value>Argument should be a valid UNC.</value>
+  </data>
+  <data name="ValidateUncWrongType" xml:space="preserve">
+    <value>System.Uri type is expected.</value>
+  </data>
+  <data name="WaitAfterArmSync" xml:space="preserve">
+    <value>Please wait a few minutes to let frontdoor finish sync job. After that storage account can be accessed by tenant user.</value>
+  </data>
+  <data name="InvalidProfile" xml:space="preserve">
+    <value>The Azure profile is invalid, Make sure that you are in the Azure context with the Add-AzureEnvironment and Add-AzureAccount cmdlets.</value>
+  </data>
+  <data name="TokenAndAdminUriRequired" xml:space="preserve">
+    <value>Both the parameters Token, AdminUri and SubscriptionId are required.</value>
+  </data>
+  <data name="SetFarmDescription" xml:space="preserve">
+    <value>Performing the operation set ACS Farm '{0}', {1}.</value>
+    <comment>{0} is the farm name, {1} is the updated settings key/value pair.</comment>
+  </data>
+  <data name="SetFarmWarning" xml:space="preserve">
+    <value>Are you sure you want to perform the operation "set ACS Farm '{0}', {1}"?</value>
+  </data>
+  <data name="BadParameterSet" xml:space="preserve">
+    <value>Bad parameter set</value>
+  </data>
+</root>

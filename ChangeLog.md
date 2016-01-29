@@ -1,5 +1,11 @@
 ## 2016.02.02 version 1.2.0
-* Azure RemoteApp: Organizational Unit in Azure RemoteApp RDFE cmdlets now accepts Unicode characters.
+* Azure RemoteApp: 
+  * Organizational Unit in Azure RemoteApp RDFE cmdlets now accepts Unicode characters.
+* Azure Stack Admin: 
+  * New module for the management of azure stack administrative resources such as plan, offer, subscription, resource provider and
+    gallery items.
+* Azure Stack Storage Admin: 
+  * New module for the management of azure stack storage administrative resources such as configuration, infrastructure and health.
 
 ## 2016.01.12 version 1.1.0
 * Azure SQL Database: Threat Detection policies:
