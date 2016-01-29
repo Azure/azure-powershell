@@ -19,6 +19,9 @@ using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using System.Collections.Generic;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Microsoft.Azure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -278,4 +281,134 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 data.UnFormatArmId(ARMResourceIdPaths.SRSArmUrlPattern));
         }
     }
+
+    /// <summary>
+    /// Custom Convertor for deserializing JSON
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public abstract class JsonCreationConverter<T> : JsonConverter
+    {
+        /// <summary>
+        /// Gets a value indicating whether this Newtonsoft.Json.JsonConverter can write JSON
+        /// </summary>
+        public override bool CanWrite
+        {
+            get
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Determines whether this instance can convert the specified object type.
+        /// </summary>
+        /// <param name="objectType">Type of the object.</param>
+        /// <returns>true if this instance can convert the specified object type; otherwise, false.</returns>
+        public override bool CanConvert(Type objectType)
+        {
+            return typeof(T).IsAssignableFrom(objectType);
+        }
+
+        /// <summary>
+        /// Reads the JSON representation of the object.
+        /// </summary>
+        /// <param name="reader">The Newtonsoft.Json.JsonReader to read from.</param>
+        /// <param name="objectType">Type of the object.</param>
+        /// <param name="existingValue">The existing value of object being read.</param>
+        /// <param name="serializer">The calling serializer.</param>
+        /// <returns>the type of object</returns>
+        public override object ReadJson(
+            JsonReader reader,
+            Type objectType,
+            object existingValue,
+            JsonSerializer serializer)
+        {
+            if (reader.TokenType == JsonToken.Null)
+            {
+                return null;
+            }
+
+            // Load JObject from stream 
+            JObject jObject = JObject.Load(reader);
+
+            // Create target object based on JObject 
+            T target = this.Create(objectType, jObject);
+
+            // Populate the object properties 
+            serializer.Populate(jObject.CreateReader(), target);
+
+            return target;
+        }
+
+        /// <summary>
+        /// Writes the JSON representation of the object.
+        /// </summary>
+        /// <param name="writer">The Newtonsoft.Json.JsonWriter to write to.</param>
+        /// <param name="value">The value.</param>
+        /// <param name="serializer">The calling serializer.</param>
+        public override void WriteJson(
+            JsonWriter writer,
+            object value,
+            JsonSerializer serializer)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary> 
+        /// Create an instance of objectType, based on properties in the JSON object 
+        /// </summary> 
+        /// <param name="objectType">Type of the object.</param> 
+        /// <param name="jObject">Contents of JSON object that will be deserialized.</param> 
+        /// <returns>Returns object of type.</returns> 
+        protected abstract T Create(Type objectType, JObject jObject);
+    }
+
+    /// <summary>
+    /// Custom Convertor for deserializing RecoveryPlanActionDetails(RecoveryPlan) object
+    /// </summary>
+    [JsonConverter(typeof(RecoveryPlanActionDetails))]
+    public class RecoveryPlanActionDetailsConverter : JsonCreationConverter<RecoveryPlanActionDetails>
+    {
+        /// <summary>
+        /// Creates recovery plan action custom details.
+        /// </summary>
+        /// <param name="objectType">Object type.</param> 
+        /// <param name="jObject">JSON object that will be deserialized.</param> 
+        /// <returns>Returns recovery plan action custom details.</returns>
+        protected override RecoveryPlanActionDetails Create(
+            Type objectType,
+            JObject jObject)
+        {
+            RecoveryPlanActionDetails outputType = null;
+            RecoveryPlanActionDetailsType actionType =
+                (RecoveryPlanActionDetailsType)Enum.Parse(typeof(RecoveryPlanActionDetailsType), jObject.Value<string>(Constants.InstanceType));
+
+            switch (actionType)
+            {
+                case RecoveryPlanActionDetailsType.AutomationRunbookActionDetails:
+                    outputType = new RecoveryPlanAutomationRunbookActionDetails();
+                    break;
+
+                case RecoveryPlanActionDetailsType.ManualActionDetails:
+                    outputType = new RecoveryPlanManualActionDetails();
+                    break;
+
+                case RecoveryPlanActionDetailsType.ScriptActionDetails:
+                    outputType = new RecoveryPlanScriptActionDetails();
+                    break;
+            }
+
+            return outputType;
+        }
+    }
+
+    /// <summary>
+    /// Recovery Plan Action Types
+    /// </summary>
+    public enum RecoveryPlanActionDetailsType
+    {
+        AutomationRunbookActionDetails,
+        ManualActionDetails,
+        ScriptActionDetails
+    };
 }

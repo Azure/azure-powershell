@@ -67,9 +67,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     RecoveryPlan recoveryPlan = null;
                     using (System.IO.StreamReader file = new System.IO.StreamReader(filePath))
                     {
-                        recoveryPlan = JsonConvert.DeserializeObject<RecoveryPlan>(file.ReadToEnd());
+                        recoveryPlan = JsonConvert.DeserializeObject<RecoveryPlan>(file.ReadToEnd(), new RecoveryPlanActionDetailsConverter());
                     }
-                    UpdateReplicationPlan(recoveryPlan);                       
+                    UpdateReplicationPlan(recoveryPlan);
                     break;
             }
         }
@@ -136,5 +136,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
             WriteObject(new ASRJob(jobResponse.Job));
         }
+       
     }
 }

@@ -326,6 +326,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Group Type: Failover
         /// </summary>
         public const string Failover = "Failover";
+
+        /// <summary>
+        /// JSON field: InstanceType
+        /// </summary>
+        public const string InstanceType = "InstanceType";
     }
 
      /// <summary>
