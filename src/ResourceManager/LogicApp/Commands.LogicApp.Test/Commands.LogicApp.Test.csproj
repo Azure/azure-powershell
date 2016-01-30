@@ -189,7 +189,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests.WorkflowAccessKeyTests\TestSetAzureLogicAppAccessKey.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests.WorkflowRunTests\TestGetAzureLogicAppRunAction.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests.WorkflowRunTests\TestGetAzureLogicAppRunAction.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests.WorkflowRunTests\TestGetAzureLogicAppRunHistory.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
