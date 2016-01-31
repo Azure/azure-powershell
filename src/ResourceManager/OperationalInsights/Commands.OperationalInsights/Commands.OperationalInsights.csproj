@@ -49,24 +49,25 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Hyak.Common">
-      <HintPath>..\..\..\packages\Hyak.Common.1.0.2\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
+      <HintPath>..\..\..\packages\Hyak.Common.1.0.3\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.Authentication">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.5.1-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.6.1-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.NetFramework">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.OperationalInsights">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.OperationalInsights.0.10.0-preview\lib\net40\Microsoft.Azure.Management.OperationalInsights.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.OperationalInsights, Version=0.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.OperationalInsights.0.11.0-preview\lib\net40\Microsoft.Azure.Management.OperationalInsights.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.7-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.11-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.18.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.18.206251556\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
@@ -108,7 +109,7 @@
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -124,12 +125,27 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Client\OperationalInsightsClient.Search.cs" />
     <Compile Include="Client\OperationalInsightsClient.StorageInsights.cs" />
     <Compile Include="Client\OperationalInsightsClient.Workspaces.cs" />
     <Compile Include="Client\OperationalInsightsClient.cs" />
     <Compile Include="CloudExceptionExtensions.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Models\PSCoreSummary.cs" />
+    <Compile Include="Models\PSSearchError.cs" />
+    <Compile Include="Models\PSHighlight.cs" />
     <Compile Include="Models\PSIntelligencePack.cs" />
+    <Compile Include="Models\PSSearchMetadata.cs" />
+    <Compile Include="Models\PSMetadataSchema.cs" />
+    <Compile Include="Models\PSSavedSearchProperties.cs" />
+    <Compile Include="Models\PSSavedSearchValue.cs" />
+    <Compile Include="Models\PSSchemaValue.cs" />
+    <Compile Include="Models\PSSearchGetSavedSearchResponse.cs" />
+    <Compile Include="Models\PSSearchGetSchemaResponse.cs" />
+    <Compile Include="Models\PSSearchGetSearchResultsParameters.cs" />
+    <Compile Include="Models\PSSearchGetSearchResultsResponse.cs" />
+    <Compile Include="Models\PSSearchListSavedSearchResponse.cs" />
+    <Compile Include="Models\PSSearchSort.cs" />
     <Compile Include="Models\PSUsageMetric.cs" />
     <Compile Include="Models\PSManagementGroup.cs" />
     <Compile Include="Models\PSAccount.cs" />
@@ -149,6 +165,13 @@
     </Compile>
     <Compile Include="OperationalInsightsBaseCmdlet.cs" />
     <Compile Include="ProvisioningFailedException.cs" />
+    <Compile Include="Search\GetAzureOperationalInsightsSavedSearchCommand.cs" />
+    <Compile Include="Search\GetAzureOperationalInsightsSavedSearchResultsCommand.cs" />
+    <Compile Include="Search\GetAzureOperationalInsightsSchemaCommand.cs" />
+    <Compile Include="Search\GetAzureOperationalInsightsSearchResultsCommand.cs" />
+    <Compile Include="Search\NewAzureOperationalInsightsSavedSearchCommand.cs" />
+    <Compile Include="Search\SetAzureOperationalInsightsSavedSearch.cs" />
+    <Compile Include="Search\RemoveAzureOperationalInsightsSavedSearchCommand.cs" />
     <Compile Include="StorageInsights\GetAzureOperationalInsightsStorageInsightCommand.cs" />
     <Compile Include="StorageInsights\SetAzureOperationalInsightsStorageInsightCommand.cs" />
     <Compile Include="StorageInsights\NewAzureOperationalInsightsStorageInsightCommand.cs" />

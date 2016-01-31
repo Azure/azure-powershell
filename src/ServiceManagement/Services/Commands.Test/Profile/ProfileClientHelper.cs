@@ -254,6 +254,14 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             return Task.FromResult(result);
         }
 
+        public Task<Azure.Subscriptions.Models.LocationListResult> ListLocationsAsync(string subscriptionId, System.Threading.CancellationToken cancellationToken)
+        {
+            var result = new Azure.Subscriptions.Models.LocationListResult();
+            result.Locations = new List<Azure.Subscriptions.Models.Location>();
+
+            return Task.FromResult(result);
+        }
+
         private static Azure.Subscriptions.Models.Subscription CreateSubscription(string subscriptionId)
         {
             return new Azure.Subscriptions.Models.Subscription

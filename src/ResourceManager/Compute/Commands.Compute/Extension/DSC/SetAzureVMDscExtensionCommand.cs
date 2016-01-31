@@ -14,6 +14,7 @@ using System.Globalization;
 using System.IO;
 using System.Management.Automation;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 {
@@ -22,7 +23,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         ProfileNouns.VirtualMachineDscExtension,
         SupportsShouldProcess = true,
         DefaultParameterSetName = AzureBlobDscExtensionParamSet)]
-    [OutputType(typeof(PSComputeLongRunningOperation))]
+    [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureVMDscExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         protected const string AzureBlobDscExtensionParamSet = "AzureBlobDscExtension";
@@ -334,38 +335,45 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             var parameters = new VirtualMachineExtension
             {
                 Location = this.Location,
-                Name = Name ?? DscExtensionCmdletConstants.ExtensionPublishedNamespace + "." + DscExtensionCmdletConstants.ExtensionPublishedName,
-                Type = VirtualMachineExtensionType,
                 Publisher = DscExtensionCmdletConstants.ExtensionPublishedNamespace,
-                ExtensionType = DscExtensionCmdletConstants.ExtensionPublishedName,
+                VirtualMachineExtensionType = DscExtensionCmdletConstants.ExtensionPublishedName,
                 TypeHandlerVersion = Version,
                 // Define the public and private property bags that will be passed to the extension.
-                Settings = DscExtensionSettingsSerializer.SerializePublicSettings(publicSettings),
+                Settings = publicSettings,
                 //PrivateConfuguration contains sensitive data in a plain text
-                ProtectedSettings = DscExtensionSettingsSerializer.SerializePrivateSettings(privateSettings),
+                ProtectedSettings = privateSettings,
                 AutoUpgradeMinorVersion = AutoUpdate.IsPresent
             };
 
             //Add retry logic due to CRP service restart known issue CRP bug: 3564713
             var count = 1;
-            ComputeLongRunningOperationResponse op = null;
+            Rest.Azure.AzureOperationResponse<VirtualMachineExtension> op = null;
             while (count <= 2)
             {
-                op = VirtualMachineExtensionClient.CreateOrUpdate(
+                try
+                {
+                    op = VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
                         ResourceGroupName,
                         VMName,
-                        parameters);
-
-                if (ComputeOperationStatus.Failed.Equals(op.Status) && op.Error != null && "InternalExecutionError".Equals(op.Error.Code))
-                {
-                    count++;
+                        Name ?? DscExtensionCmdletConstants.ExtensionPublishedNamespace + "." + DscExtensionCmdletConstants.ExtensionPublishedName,
+                        parameters).GetAwaiter().GetResult();
                 }
-                else
+                catch (Rest.Azure.CloudException ex)
                 {
-                    break;    
+                    var errorReturned = JsonConvert.DeserializeObject<ComputeLongRunningOperationError>(ex.Response.Content.ReadAsStringAsync().Result);
+
+                    if (ComputeOperationStatus.Failed.Equals(errorReturned.Status)
+                        && errorReturned.Error != null && "InternalExecutionError".Equals(errorReturned.Error.Code))
+                    {
+                        count++;
+                    }
+                    else
+                    {
+                        break;
+                    }
                 }
             }
-            var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+            var result = Mapper.Map<PSAzureOperationResponse>(op);
             WriteObject(result);
         }
 

@@ -80,6 +80,16 @@ namespace Microsoft.Azure.Commands.Automation.Common
         internal const string ByRunbookName = "ByRunbookName";
 
         /// <summary>
+        /// The ByAsynchronousReturnJob.
+        /// </summary>
+        internal const string ByAsynchronousReturnJob = "ByAsynchronousReturnJob";
+
+        /// <summary>
+        /// The BySynchronousReturnJob.
+        /// </summary>
+        internal const string BySynchronousReturnJobOutput = "BySynchronousReturnJobOutput";
+
+        /// <summary>
         /// The Configuration name parameter set.
         /// </summary>
         internal const string ByConfigurationName = "ByConfigurationName";

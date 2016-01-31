@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         VerbsCommon.Remove,
         ProfileNouns.VirtualMachineDscExtension,
         SupportsShouldProcess = true)]
-    [OutputType(typeof(PSComputeLongRunningOperation))]
+    [OutputType(typeof(PSAzureOperationResponse))]
     public class RemoveAzureVMDscExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(
@@ -58,12 +58,16 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             {
                 //Add retry logic due to CRP service restart known issue CRP bug: 3564713
                 var count = 1;
-                DeleteOperationResponse op = null;
+                Rest.Azure.AzureOperationResponse op = null;
                 while (count <= 2)
                 {
-                    op = VirtualMachineExtensionClient.Delete(ResourceGroupName, VMName, Name);
+                    op = VirtualMachineExtensionClient.DeleteWithHttpMessagesAsync(
+                        ResourceGroupName,
+                        VMName,
+                        Name).GetAwaiter().GetResult();
 
-                    if (ComputeOperationStatus.Failed.Equals(op.Status) && op.Error != null && "InternalExecutionError".Equals(op.Error.Code))
+                    if (ComputeOperationStatus.Failed.Equals(op.Response.StatusCode))
+                        //&& op.Error != null && "InternalExecutionError".Equals(op.Error.Code))
                     {
                         count++;
                     }
@@ -72,7 +76,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                         break;
                     }
                 }
-                var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+                var result = Mapper.Map<PSAzureOperationResponse>(op);
                 WriteObject(result);
             }
         }

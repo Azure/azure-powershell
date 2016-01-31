@@ -18,11 +18,16 @@ using System.Linq;
 using Xunit;
 using System;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections.Generic;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Common;
 using Moq;
+using System.Collections.Concurrent;
+using System.Threading.Tasks;
+using Microsoft.Azure.Commands.Profile;
+using Microsoft.Azure.Commands.Profile.Models;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 {
@@ -115,6 +120,40 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var tenantsInAccount = azureRmProfile.Context.Account.GetPropertyAsArray( AzureAccount.Property.Tenants);
             Assert.Equal(1, tenantsInAccount.Length);
             Assert.Equal(tenants.First(), tenantsInAccount[0]);
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void AdalExceptionsArePropagatedToCaller()
+        {
+            var tenants = new List<string> { Guid.NewGuid().ToString(), DefaultTenant.ToString() };
+            var secondsubscriptionInTheFirstTenant = Guid.NewGuid().ToString();
+            var firstList = new List<string> { DefaultSubscription.ToString(), secondsubscriptionInTheFirstTenant };
+            var secondList = new List<string> { Guid.NewGuid().ToString() };
+            var thirdList = new List<string> { DefaultSubscription.ToString(), secondsubscriptionInTheFirstTenant };
+            var fourthList = new List<string> { DefaultSubscription.ToString(), secondsubscriptionInTheFirstTenant };
+            var client = SetupTestEnvironment(tenants, firstList, secondList, thirdList, fourthList);
+
+            var tokens = new Queue<MockAccessToken>();
+            tokens.Enqueue(new MockAccessToken
+            {
+                UserId = "aaa@contoso.com",
+                LoginType = LoginType.OrgId,
+                AccessToken = "bbb"
+            });
+
+            ((MockTokenAuthenticationFactory)AzureSession.AuthenticationFactory).TokenProvider = (account, environment, tenant) =>
+            {
+                throw new AadAuthenticationCanceledException("Login window was closed", null);
+            };
+
+            Assert.Throws<AadAuthenticationCanceledException>( () => client.Login(
+                Context.Account,
+                Context.Environment,
+                null,
+                secondsubscriptionInTheFirstTenant,
+                null,
+                null));
         }
 
         [Fact]
@@ -209,7 +248,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-      public void SetContextPreservesTokenCache()
+        public void SetContextPreservesTokenCache()
         {
             AzureRMProfile profile = null;
             AzureContext context = new AzureContext(null, null, null, null);
@@ -218,6 +257,57 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.Throws<ArgumentNullException>(() => profile.SetContextWithCache(null));
             profile.SetContextWithCache(context);
             Assert.Equal(TokenCache.DefaultShared.Serialize(), profile.Context.TokenCache);
+        }
+
+        [Fact]
+        public void AzurePSComletMessageQueue()
+        {
+            ConcurrentQueue<string> queue = new ConcurrentQueue<string>();
+      
+            Parallel.For(0, 5, i =>
+            {
+                for (int j = 0; j < 300; j++)
+                {
+                    queue.CheckAndEnqueue(j.ToString());
+                }
+            });
+
+            Assert.Equal(500, queue.Count);
+        }
+
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetAzureRmSubscriptionPaginatedResult()
+        {
+            var tenants = new List<string> { Guid.NewGuid().ToString(), DefaultTenant.ToString() };
+            var secondsubscriptionInTheFirstTenant = Guid.NewGuid().ToString();
+            var firstList = new List<string> { DefaultSubscription.ToString(), secondsubscriptionInTheFirstTenant };
+            var secondList = new List<string> { Guid.NewGuid().ToString() };
+            var thirdList = new List<string> { DefaultSubscription.ToString(), secondsubscriptionInTheFirstTenant };
+            var fourthList = new List<string> { DefaultSubscription.ToString(), secondsubscriptionInTheFirstTenant };
+            var client = SetupTestEnvironment(tenants, firstList, secondList, thirdList, fourthList);
+
+            var dataStore = new MemoryDataStore();
+            AzureSession.DataStore = dataStore;
+            var commandRuntimeMock = new MockCommandRuntime();
+            AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
+            var profile = new AzureRMProfile();
+            profile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
+            profile.Context = Context;
+            var cmdlt = new GetAzureRMSubscriptionCommand();
+            // Setup
+            cmdlt.DefaultProfile = profile;
+            cmdlt.CommandRuntime = commandRuntimeMock;
+
+            // Act
+            cmdlt.InvokeBeginProcessing();
+            cmdlt.ExecuteCmdlet();
+            cmdlt.InvokeEndProcessing();
+
+            Assert.True(commandRuntimeMock.OutputPipeline.Count == 7);
+            Assert.Equal("Disabled", ((PSAzureSubscription)commandRuntimeMock.OutputPipeline[2]).State);
+            Assert.Equal("LinkToNextPage", ((PSAzureSubscription)commandRuntimeMock.OutputPipeline[2]).SubscriptionName);
         }
     }
 }

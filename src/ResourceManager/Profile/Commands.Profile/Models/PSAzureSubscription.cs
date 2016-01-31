@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Commands.Profile.Models
             var subscription= new PSAzureSubscription
             {
                 SubscriptionId = other.Id.ToString(),
-                SubscriptionName = other.Name ,
+                SubscriptionName = other.Name,
+                State = other.State,
                 TenantId = other.IsPropertySet(AzureSubscription.Property.Tenants)? 
                 other.GetProperty(AzureSubscription.Property.Tenants) : null
             };
@@ -89,6 +90,11 @@ namespace Microsoft.Azure.Commands.Profile.Models
                 result.Properties.SetProperty(AzureSubscription.Property.StorageAccount, other.CurrentStorageAccount);
             }
 
+            if (other.State != null)
+            {
+                result.State = other.State;
+            }
+
             return result;
         }
 
@@ -101,6 +107,11 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// The name of the subscription.
         /// </summary>
         public string SubscriptionName { get; set; }
+
+        /// <summary>
+        /// Gets or sets subscription State
+        /// </summary>
+        public string State { get; set; }
 
         /// <summary>
         /// The tenant home for the subscription.

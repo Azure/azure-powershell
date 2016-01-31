@@ -158,7 +158,20 @@ namespace Microsoft.Azure.Commands.Resources
             if (templateParameterFilePath != null && FileUtilities.DataStore.FileExists(templateParameterFilePath))
             {
                 var parametersFromFile = GalleryTemplatesClient.ParseTemplateParameterFileContents(templateParameterFilePath);
-                parametersFromFile.ForEach(dp => prameterObject[dp.Key] = new Hashtable { { "value", dp.Value.Value }, { "reference", dp.Value.Reference } });
+                parametersFromFile.ForEach(dp =>
+                    {
+                        var parameter = new Hashtable();
+                        if (dp.Value.Value != null)
+                        {
+                            parameter.Add("value", dp.Value.Value);
+                        }
+                        if (dp.Value.Reference != null)
+                        {
+                            parameter.Add("reference", dp.Value.Reference);
+                        }
+
+                        prameterObject[dp.Key] = parameter;
+                    });
             }
 
             // Load dynamic parameters
