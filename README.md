@@ -119,11 +119,6 @@ This repository contains a set of PowerShell cmdlets for developers and administ
 * Azure Automation
   * Manage automation accounts
   * Manage automation jobs, runbooks and schedules
-* Logic Apps
-  * Manage LogicApp, such as CRUD, start and stop.
-  * Get LogicApp trigger and trigger history.
-  * Get Access keys
-  * Get LogicApp run and run history. 
 
 For detail descriptions and examples of the cmdlets, type
 * ```help azure``` to get all the cmdlets.
