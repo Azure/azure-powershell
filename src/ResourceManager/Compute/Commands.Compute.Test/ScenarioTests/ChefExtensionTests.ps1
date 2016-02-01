@@ -22,7 +22,7 @@ function Test-SetChefExtensionBasic
 
 		# Set Chef extension
         Set-AzureRmVMChefExtension -ResourceGroupName $rgname -VMName $vmname -TypeHandlerVersion $version -ClientRb $client.rb -ValidationPem $validationPemFile -Windows
-		$extension = Get-AzureRmVMExtension -ResourceGroupName $rgname -VMName $vmname -Name ChefClient        
+		$extension = Get-AzureRmVMChefExtension -ResourceGroupName $rgname -VMName $vmname
 
         Assert-NotNull $extension
         Assert-AreEqual $extension.Publisher 'Chef.Bootstrap.WindowsAzure'
@@ -31,6 +31,11 @@ function Test-SetChefExtensionBasic
         $settings = $extension.PublicSettings | ConvertFrom-Json
         Assert-AreEqual $settings.autoUpdateClient "false"
 		Assert-AreEqual $settings.deleteChefConfig "false"
+
+		# Test Remove command.
+        Remove-AzureRmVMChefExtension -ResourceGroupName $rgname -VMName $vmname
+        $extension = Get-AzureRmVMChefExtension -ResourceGroupName $rgname -VMName $vmname
+        Assert-Null $extension
     }
     finally
     {
