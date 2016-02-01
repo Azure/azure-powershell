@@ -179,7 +179,7 @@ function Import-AzureRM
   $AzureRMModules.Keys | ForEach {
     $moduleName = $_
     $_MinVer = $MajorVersion 
-    if(!MajorVersion ) {
+    if(!$MajorVersion) {
       $_MinVer = $AzureRMModules[$_]
     }
     $_MaxVer = "$($_MinVer.Split(".")[0]).9999.9999.9999"
