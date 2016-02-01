@@ -53,7 +53,7 @@
     <CmdletSolutionsToBuild Include=".\src\ServiceManagement\ServiceManagement.sln"
                             Condition=" '$(Scope)' == 'ServiceManagement' or '$(Scope)' == 'AzureStorage' "/>
     <SetupSln Include=".\setup\azurepowershell.sln" />
-    <Analysis Include=".\tools\StaticAnalysis\Static Analysis.sln" />
+    <StaticAnalysis Include=".\tools\StaticAnalysis\StaticAnalysis.sln" />
   </ItemGroup>
   
   <!--
@@ -164,7 +164,7 @@
       Condition=" '$(Scope)' == 'all' "/>
 
     <MSBuild
-      Projects="@(Analysis)"
+      Projects="@(StaticAnalysis)"
       Targets="Build"
       Properties="Configuration=Debug;Platform=Any CPU"
       ContinueOnError="false" />
