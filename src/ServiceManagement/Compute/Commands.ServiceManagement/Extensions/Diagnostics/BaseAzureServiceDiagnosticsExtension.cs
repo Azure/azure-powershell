@@ -123,12 +123,20 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             publicConfigElem.SetAttributeValue("xmlns", XmlNamespace);
             PublicConfiguration = publicConfigElem.ToString();
 
-            // The element <StorageAccount> is not meant to be set by the user in the public config.
-            // Make sure it matches the storage account in the private config.
             XmlDocument doc = new XmlDocument();
             XmlNamespaceManager ns = new XmlNamespaceManager(doc.NameTable);
             ns.AddNamespace("ns", XmlNamespace);
             doc.Load(DiagnosticsConfigurationPath);
+
+            // Make sure the configuration element exist
+            var config = doc.SelectSingleNode("//ns:WadCfg", ns) ?? doc.SelectSingleNode("//ns:WadCfgBlob", ns);
+            if (config == null)
+            {
+                throw new ArgumentException(Resources.DiagnosticsExtensionPaaSConfigElementNotDefined);
+            }
+
+            // The element <StorageAccount> is not meant to be set by the user in the public config.
+            // Make sure it matches the storage account in the private config.
             var node = doc.SelectSingleNode("//ns:StorageAccount", ns);
             if(node != null)
             {
@@ -147,9 +155,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             {
                 // the StorageAccount is not there. we must set it
                 string storageAccountElem = "\n<StorageAccount>" + StorageAccountName + "</StorageAccount>\n";
-                // insert it after </WadCfg>
+
+                // insert it after </WadCfg> or </WadCfgBlob>
                 int wadCfgEndIndex = PublicConfiguration.IndexOf("</WadCfg>");
-                PublicConfiguration = PublicConfiguration.Insert(wadCfgEndIndex + "</WadCfg>".Length, storageAccountElem);
+                int wadCfgBlobEndIndex = PublicConfiguration.IndexOf("</WadCfgBlob>");
+                int insertIndex = wadCfgEndIndex >= 0 ? wadCfgEndIndex + "</WadCfg>".Length : wadCfgBlobEndIndex + "</WadCfgBlob>".Length;
+                PublicConfiguration = PublicConfiguration.Insert(insertIndex, storageAccountElem);
             }
 
             // Make sure the storage account name in PrivateConfig matches.
