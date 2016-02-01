@@ -48,6 +48,16 @@ namespace StaticAnalysis
 
         public void AddDecorator(Action<T> action, string name)
         {
+            if (action == null)
+            {
+                throw new ArgumentNullException("action");
+            }
+
+            if (name == null)
+            {
+                throw new ArgumentNullException("name");
+            }
+
             if (Inner == null)
             {
                 Inner = new Decorator<T>(action, name);

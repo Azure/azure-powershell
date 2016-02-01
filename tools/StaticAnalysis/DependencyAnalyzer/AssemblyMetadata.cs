@@ -30,6 +30,11 @@ namespace StaticAnalysis.DependencyAnalyzer
 
         public AssemblyMetadata(Assembly assembly)
         {
+            if (assembly == null)
+            {
+                throw new ArgumentNullException("assembly");
+            }
+
             _name = assembly.GetName();
             _location = assembly.Location;
             _references = new List<AssemblyName>();
