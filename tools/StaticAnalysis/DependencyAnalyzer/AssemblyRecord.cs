@@ -46,8 +46,8 @@ namespace StaticAnalysis.DependencyAnalyzer
         public int AssemblyFileMajorVersion { get; set; }
 
         /// <summary>
-        /// The minorVersion portion of the file version for the assembly file. This may or may not match the corresponding part of
-        /// the assembly version.
+        /// The minorVersion portion of the file version for the assembly file. This may or may not match the corresponding 
+        /// part of the assembly version.
         /// </summary>
         public int AssemblyFileMinorVersion { get; set; }
 
@@ -103,8 +103,8 @@ namespace StaticAnalysis.DependencyAnalyzer
         public override string ToString()
         {
             StringBuilder output = new StringBuilder();
-            output.AppendLine(string.Format("AssemblyName: {0}, Version:{1}, FileVersion: {2}.{3}, Location:{4}", Name, Version,
-                AssemblyFileMajorVersion, AssemblyFileMinorVersion, Location));
+            output.AppendLine(string.Format("AssemblyName: {0}, Version:{1}, FileVersion: {2}.{3}, Location:{4}", 
+                Name, Version, AssemblyFileMajorVersion, AssemblyFileMinorVersion, Location));
             if (ReferencingAssembly.Any())
             {
                 output.AppendFormat("-> Parents: ({0})", string.Join(", ", ReferencingAssembly));
