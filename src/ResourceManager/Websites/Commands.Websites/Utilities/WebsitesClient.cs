@@ -18,8 +18,11 @@ using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
+using Microsoft.Azure.Commands.Resources.Models;
+using Microsoft.Azure.Commands.WebApps.Models.WebApp;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.Azure.Management.WebSites;
 using Microsoft.Azure.Management.WebSites.Models;
 
@@ -48,18 +51,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
         {
             Site createdWebSite = null;
             string qualifiedSiteName;
-            HostingEnvironmentProfile profile = null;
-            if (!string.IsNullOrEmpty(aseName))
-            {
-                var rg = string.IsNullOrEmpty(aseResourceGroupName) ? resourceGroupName : aseResourceGroupName;
-                var aseResourceId = CmdletHelpers.GetApplicationServiceEnvironmentResourceId(WrappedWebsitesClient.SubscriptionId, rg, aseName);
-                profile = new HostingEnvironmentProfile
-                {
-                    Id = aseResourceId,
-                    Type = CmdletHelpers.ApplicationServiceEnvironmentResourcesName,
-                    Name = aseName
-                };
-            }
+            var profile = CreateHostingEnvironmentProfile(resourceGroupName, aseResourceGroupName, aseName);
 
             if (CmdletHelpers.ShouldUseDeploymentSlot(webAppName, slotName, out qualifiedSiteName))
             {
@@ -92,6 +84,16 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 
             GetWebAppConfiguration(resourceGroupName, webAppName, slotName, createdWebSite);
             return createdWebSite;
+        }
+
+        public HostingEnvironmentProfile CreateHostingEnvironmentProfile(string resourceGroupName, string aseResourceGroupName, string aseName)
+        {
+            if (string.IsNullOrEmpty(aseName))
+            {
+                return null;
+            }
+
+            return CmdletHelpers.CreateHostingEnvironmentProfile(WrappedWebsitesClient.SubscriptionId, resourceGroupName, aseResourceGroupName, aseName);
         }
 
         public void UpdateWebApp(string resourceGroupName, string location, string webAppName, string slotName, string appServicePlan)

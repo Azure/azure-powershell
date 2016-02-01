@@ -80,6 +80,18 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             return result;
         }
 
+        internal static HostingEnvironmentProfile CreateHostingEnvironmentProfile(string subscriptionId, string resourceGroupName, string aseResourceGroupName, string aseName)
+        {
+            var rg = string.IsNullOrEmpty(aseResourceGroupName) ? resourceGroupName : aseResourceGroupName;
+            var aseResourceId = CmdletHelpers.GetApplicationServiceEnvironmentResourceId(subscriptionId, rg, aseName);
+            return new HostingEnvironmentProfile
+            {
+                Id = aseResourceId,
+                Type = CmdletHelpers.ApplicationServiceEnvironmentResourcesName,
+                Name = aseName
+            };
+        }
+
         internal static string BuildMetricFilter(DateTime? startTime, DateTime? endTime, string timeGrain, IReadOnlyList<string> metricNames)
         {
             var dateTimeFormat = "yyyy-MM-ddTHH:mm:ssZ";

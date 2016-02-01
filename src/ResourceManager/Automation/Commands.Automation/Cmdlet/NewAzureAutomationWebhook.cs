@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the Runbook parameters
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false,
             HelpMessage = "The Runbook parameters name/value.")]
         public IDictionary Parameters { get; set; }
 

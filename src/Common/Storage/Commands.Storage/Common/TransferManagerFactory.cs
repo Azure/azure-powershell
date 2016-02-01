@@ -17,12 +17,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
     /// <summary>
     /// Provides factory class to build instances of TransferJobRunners.
     /// </summary>
-    internal static class TransferJobRunnerFactory
+    internal static class TransferManagerFactory
     {
         /// <summary>
         /// Stores the cached runner;
         /// </summary>
-        private static ITransferJobRunner cachedRunner;
+        private static ITransferManager cachedTransferManager;
 
         /// <summary>
         /// Creates a new instance of the runner.
@@ -31,14 +31,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <returns>
         /// Returns the created instance or the cached one (if available).
         /// </returns>
-        public static ITransferJobRunner CreateRunner(int concurrency)
+        public static ITransferManager CreateTransferManager(int concurrency)
         {
-            if (cachedRunner != null)
+            if (cachedTransferManager != null)
             {
-                return cachedRunner;
+                return cachedTransferManager;
             }
 
-            return new DataManagementWrapper(concurrency, CmdletOperationContext.ClientRequestId);
+            return new DataManagementWrapper(concurrency);
         }
 
         /// <summary>
@@ -47,9 +47,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <param name="runner">
         /// Indicating the instance of the cached runner.
         /// </param>
-        internal static void SetCachedRunner(ITransferJobRunner runner)
+        internal static void SetCachedTransferManager(ITransferManager transferManager)
         {
-            cachedRunner = runner;
+            cachedTransferManager = transferManager;
         }
     }
 }
