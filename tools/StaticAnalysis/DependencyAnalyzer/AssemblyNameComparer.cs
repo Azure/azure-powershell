@@ -18,16 +18,34 @@ using System.Reflection;
 
 namespace StaticAnalysis.DependencyAnalyzer
 {
+    /// <summary>
+    /// Equality comparer, used to uniquely store assembly records by assembly name
+    /// </summary>
     public class AssemblyNameComparer : IEqualityComparer<AssemblyName>
     {
-        public static string GetComparisonName(AssemblyName name)
+        private static string GetComparisonName(AssemblyName name)
         {
+            if (name == null)
+            {
+                throw new ArgumentNullException("name");
+            }
+
             return string.Format("{0}.v{1}", name.Name, name.Version);
         }
 
-        public bool Equals(AssemblyName x, AssemblyName y)
+        public bool Equals(AssemblyName assembly1, AssemblyName assembly2)
         {
-            return StringComparer.OrdinalIgnoreCase.Equals(GetComparisonName(x), GetComparisonName(y));
+            if (assembly1 == null)
+            {
+                throw new ArgumentNullException("assembly1");
+            }
+
+            if (assembly2 == null)
+            {
+                throw new ArgumentNullException("assembly2");
+            }
+
+            return StringComparer.OrdinalIgnoreCase.Equals(GetComparisonName(assembly1), GetComparisonName(assembly2));
         }
 
         public int GetHashCode(AssemblyName obj)

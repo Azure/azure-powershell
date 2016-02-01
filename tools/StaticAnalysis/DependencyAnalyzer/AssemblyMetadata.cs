@@ -14,9 +14,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
 
 namespace StaticAnalysis.DependencyAnalyzer
 {
@@ -40,7 +38,7 @@ namespace StaticAnalysis.DependencyAnalyzer
                 _references.Add(child);
             }
         }
-        
+
         /// <summary>
         /// Path to the assembly.
         /// </summary>
@@ -49,7 +47,7 @@ namespace StaticAnalysis.DependencyAnalyzer
         /// <summary>
         /// The assembly name
         /// </summary>
-        /// <returns>The assembly name for this assembly, including name and version</returns>
+        /// <returns>The assembly name for this assembly, including name and the version</returns>
         public AssemblyName GetName()
         {
             return _name;

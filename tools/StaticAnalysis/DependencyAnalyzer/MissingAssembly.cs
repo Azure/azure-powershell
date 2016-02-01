@@ -15,7 +15,7 @@
 namespace StaticAnalysis.DependencyAnalyzer
 {
     /// <summary>
-    /// Indicates an assembly that is not in the dependency tree for a cmdlet assembly
+    /// Record to indicate an assembly that is not in the dependency tree for a cmdlet assembly
     /// </summary>
     public class MissingAssembly : IReportRecord
     {
@@ -29,13 +29,15 @@ namespace StaticAnalysis.DependencyAnalyzer
 
         public string PrintHeaders()
         {
-            return "\"Directory\",\"Assembly Name\",\"Assembly Version\",\"Referencing Assembly\",\"Severity\",\"Description\",\"Remediation\"";
+            return "\"Directory\",\"Assembly Name\",\"Assembly Version\",\"Referencing Assembly\"," +
+                   "\"Severity\",\"Description\",\"Remediation\"";
         }
 
         public string FormatRecord()
         {
             return string.Format("\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\",\"{6}\"",
-                Directory, AssemblyName, AssemblyVersion, ReferencingAssembly, Severity, Description, Remediation);
+                Directory, AssemblyName, AssemblyVersion, ReferencingAssembly,
+                Severity, Description, Remediation);
         }
 
         public override string ToString()

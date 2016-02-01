@@ -12,14 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace StaticAnalysis
 {
     /// <summary>
-    /// Abstract report logger - used an an abstract handle to write reports from typed loggers
+    /// Abstract report logger - used as an abstraction over typed loggers.
     /// </summary>
     public abstract class ReportLogger
     {
@@ -54,10 +53,11 @@ namespace StaticAnalysis
     /// <summary>
     /// A typed report logger
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public class ReportLogger<T> : ReportLogger where T:IReportRecord, new()
+    /// <typeparam name="T">The type of the report this logger will log.</typeparam>
+    public class ReportLogger<T> : ReportLogger where T : IReportRecord, new()
     {
-        public ReportLogger(string fileName, AnalysisLogger logger) : base(fileName, logger)
+        public ReportLogger(string fileName, AnalysisLogger logger)
+            : base(fileName, logger)
         {
             Decorator = Decorator<T>.Create();
         }
@@ -71,7 +71,7 @@ namespace StaticAnalysis
         /// <param name="record"></param>
         public void LogRecord(T record)
         {
-           Decorator.Apply(record);
+            Decorator.Apply(record);
             _records.Add(record);
         }
 

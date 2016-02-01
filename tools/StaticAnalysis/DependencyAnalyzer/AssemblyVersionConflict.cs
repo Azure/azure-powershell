@@ -22,7 +22,7 @@ namespace StaticAnalysis.DependencyAnalyzer
     public class AssemblyVersionConflict : IReportRecord
     {
         /// <summary>
-        /// The directory containing the conflict
+        /// The directory containing a conflict
         /// </summary>
         public string Directory { get; set; }
 
@@ -61,7 +61,8 @@ namespace StaticAnalysis.DependencyAnalyzer
         public string PrintHeaders()
         {
             return
-                "\"Directory\",\"AssemblyName\",\"Expected Version\",\"Actual Version\",\"Parent Assembly\",\"Severity\",\"Description\",\"Remediation\"";
+                "\"Directory\",\"AssemblyName\",\"Expected Version\",\"Actual Version\",\"Parent Assembly\",\"Severity\"," +
+                "\"Description\",\"Remediation\"";
         }
 
         public string FormatRecord()
@@ -69,7 +70,8 @@ namespace StaticAnalysis.DependencyAnalyzer
             return
                 string.Format(
                     "\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\",\"{6}\",\"{7}\"",
-                    Directory, AssemblyName, ExpectedVersion, ActualVersion, ParentAssembly, Severity, Description, Remediation);
+                    Directory, AssemblyName, ExpectedVersion, ActualVersion, ParentAssembly, Severity,
+                    Description, Remediation);
         }
 
         public override string ToString()

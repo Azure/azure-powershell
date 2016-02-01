@@ -12,14 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Threading.Tasks;
 
 namespace StaticAnalysis
 {
+    /// <summary>
+    /// Defines the public object model for a static analysis tool
+    /// </summary>
     public interface IStaticAnalyzer
     {
         /// <summary>

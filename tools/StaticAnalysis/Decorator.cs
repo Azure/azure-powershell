@@ -16,6 +16,10 @@ using System;
 
 namespace StaticAnalysis
 {
+    /// <summary>
+    /// Abstract class to implement the Decorator pattern
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class Decorator<T>
     {
         Action<T> _action;
@@ -31,7 +35,7 @@ namespace StaticAnalysis
         public static Decorator<T> Create()
         {
             return new Decorator<T>(r => { }, "default");
-        } 
+        }
 
         public void Apply(T record)
         {

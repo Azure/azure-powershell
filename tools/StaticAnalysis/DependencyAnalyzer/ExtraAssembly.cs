@@ -12,10 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-
 namespace StaticAnalysis.DependencyAnalyzer
 {
+    /// <summary>
+    /// Record for reporting assemblies that are not used by a Cmdlet assembly or its dependencies
+    /// </summary>
     public class ExtraAssembly : IReportRecord
     {
         public string Directory { get; set; }
@@ -36,7 +37,7 @@ namespace StaticAnalysis.DependencyAnalyzer
 
         public string FormatRecord()
         {
-            return string.Format("\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\"", 
+            return string.Format("\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\"",
                 Directory, AssemblyName, Severity, Description, Remediation);
         }
 

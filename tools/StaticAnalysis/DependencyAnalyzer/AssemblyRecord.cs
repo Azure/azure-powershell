@@ -20,23 +20,8 @@ using System.Text;
 
 namespace StaticAnalysis.DependencyAnalyzer
 {
-    public class AssemblyEqualityComparer : IEqualityComparer<AssemblyRecord>
-    {
-
-        public bool Equals(AssemblyRecord x, AssemblyRecord y)
-        {
-            return x.Equals(y) && x.Location.Equals(y.Location, StringComparison.OrdinalIgnoreCase);
-        }
-
-        public int GetHashCode(AssemblyRecord obj)
-        {
-            var hashKey= string.Format("{0} {1} {2} {3} {4}", obj.Name, obj.Version, obj.AssemblyFileMajorVersion, 
-                obj.AssemblyFileMinorVersion, obj.Location);
-            return hashKey.GetHashCode();
-        }
-    }
     /// <summary>
-    /// Information about references to an assembly
+    /// Information about assemblies
     /// </summary>
     public class AssemblyRecord : ICloneable
     {
@@ -49,9 +34,9 @@ namespace StaticAnalysis.DependencyAnalyzer
 
         public string Name { get { return AssemblyName.Name; } }
         public Version Version { get { return AssemblyName.Version; } }
-        public HashSet<AssemblyRecord> ReferencingAssembly { get {return _parents;} }
+        public HashSet<AssemblyRecord> ReferencingAssembly { get { return _parents; } }
 
-        public IList<AssemblyName> Children { get { return _children;} }
+        public IList<AssemblyName> Children { get { return _children; } }
 
         public AssemblyName AssemblyName { get; set; }
 
@@ -97,6 +82,11 @@ namespace StaticAnalysis.DependencyAnalyzer
 
         }
 
+        /// <summary>
+        /// Compare the assembly record to an assembly name
+        /// </summary>
+        /// <param name="assembly">The assembly name to compare with</param>
+        /// <returns>True if the assembly name is a reference to this assembly, otherwise false</returns>
         public bool Equals(AssemblyName assembly)
         {
             return string.Equals(assembly.Name, Name, StringComparison.OrdinalIgnoreCase) &&
@@ -105,15 +95,15 @@ namespace StaticAnalysis.DependencyAnalyzer
 
         public bool Equals(AssemblyRecord record)
         {
-            return Equals(record.AssemblyName) 
-                && AssemblyFileMajorVersion == record.AssemblyFileMajorVersion 
+            return Equals(record.AssemblyName)
+                && AssemblyFileMajorVersion == record.AssemblyFileMajorVersion
                 && AssemblyFileMinorVersion == record.AssemblyFileMinorVersion;
         }
 
         public override string ToString()
         {
             StringBuilder output = new StringBuilder();
-            output.AppendLine(string.Format("AssemblyName: {0}, Version:{1}, FileVersion: {2}.{3}, Location:{4}", Name, Version, 
+            output.AppendLine(string.Format("AssemblyName: {0}, Version:{1}, FileVersion: {2}.{3}, Location:{4}", Name, Version,
                 AssemblyFileMajorVersion, AssemblyFileMinorVersion, Location));
             if (ReferencingAssembly.Any())
             {
@@ -124,6 +114,10 @@ namespace StaticAnalysis.DependencyAnalyzer
 
         }
 
+        /// <summary>
+        /// Get all the ancestors in the ancestor tree
+        /// </summary>
+        /// <returns>The full set of ancestors in the ancestor tree.</returns>
         public HashSet<AssemblyRecord> GetAncestors()
         {
             var result = new HashSet<AssemblyRecord>();

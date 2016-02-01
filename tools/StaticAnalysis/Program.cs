@@ -18,6 +18,9 @@ using System.IO;
 
 namespace StaticAnalysis.DependencyAnalyzer
 {
+    /// <summary>
+    /// Runner for all static analysis tools.
+    /// </summary>
     public class Program
     {
         public static void Main(string[] args)
@@ -40,14 +43,22 @@ namespace StaticAnalysis.DependencyAnalyzer
             };
 
             var reportsDirectory = Directory.GetCurrentDirectory();
+            bool logReportsDirectoryWarning = true;
             if (args.Length > 1 && Directory.Exists(args[1]))
             {
                 reportsDirectory = args[1];
+                logReportsDirectoryWarning = false;
             }
 
-
             var logger = new ConsoleLogger(reportsDirectory);
-            var analyzer = new DependencyAnalyzer {Logger = logger};
+
+            if (logReportsDirectoryWarning)
+            {
+                logger.WriteWarning("No logger specified in the second parameter, writing reports to {0}",
+                    reportsDirectory);
+            }
+
+            var analyzer = new DependencyAnalyzer { Logger = logger };
             logger.WriteMessage("Executing analyzer: {0}", analyzer.Name);
             analyzer.Analyze(directories);
             logger.WriteReports();

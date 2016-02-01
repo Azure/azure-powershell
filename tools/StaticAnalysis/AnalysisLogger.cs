@@ -1,14 +1,27 @@
-﻿using System;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace StaticAnalysis
 {
     /// <summary>
-    /// Abstract class to implement the logging structure
+    /// Abstract class to implement the report logging structure
     /// </summary>
     public abstract class AnalysisLogger
     {
@@ -72,8 +85,13 @@ namespace StaticAnalysis
         /// <typeparam name="T">The type of records written to the log</typeparam>
         /// <param name="fileName">The filename (without file path) where the report will be written</param>
         /// <returns>The given logger.  Analyzer may write records to this logger and they will be written to the report file.</returns>
-        public virtual ReportLogger<T> CreateLogger<T>(string fileName) where T: IReportRecord, new()
+        public virtual ReportLogger<T> CreateLogger<T>(string fileName) where T : IReportRecord, new()
         {
+            if (string.IsNullOrWhiteSpace(fileName))
+            {
+                throw new ArgumentNullException("fileName");
+            }
+
             var filePath = Path.Combine(_baseDirectory, fileName);
             var logger = new ReportLogger<T>(filePath, this);
             Loggers.Add(logger);

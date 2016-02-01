@@ -18,7 +18,7 @@ using System.Reflection;
 namespace StaticAnalysis.DependencyAnalyzer
 {
     /// <summary>
-    /// A class using .Net remoting to load assemblies and retrieve information in a separate app domain
+    /// A class using .Net Remoting to load assemblies and retrieve information in a separate app domain
     /// </summary>
     public class AssemblyLoader : MarshalByRefObject
     {
@@ -26,11 +26,16 @@ namespace StaticAnalysis.DependencyAnalyzer
         /// Load the assembly in the reflection context by name. Will succeed if the referenced assembly name can 
         /// be found using default assembly loading rules (i.e. it is in the current directory or the GAC)
         /// </summary>
-        /// <param name="assemblyName">The fullname of the assembly</param>
-        /// <returns>Information on the given assembly, if it was loaded successfully, or null if there is an assembly 
-        /// loading issue. </returns>
-        public AssemblyMetadata  GetReflectedAssemblyInfo(string assemblyName)
+        /// <param name="assemblyName">The full name of the assembly</param>
+        /// <returns>Information on the given assembly, if it was loaded successfully, or null if there is an 
+        /// assembly loading issue. </returns>
+        public AssemblyMetadata GetReflectedAssemblyInfo(string assemblyName)
         {
+            if (string.IsNullOrWhiteSpace(assemblyName))
+            {
+                throw new ArgumentException("assemblyName");
+            }
+
             AssemblyMetadata result = null;
             try
             {
@@ -50,6 +55,11 @@ namespace StaticAnalysis.DependencyAnalyzer
         /// <returns>Assembly metadata if the assembly is loaded successfully, or null if there are load errors.</returns>
         public AssemblyMetadata GetReflectedAssemblyFromFile(string assemblyPath)
         {
+            if (string.IsNullOrWhiteSpace(assemblyPath))
+            {
+                throw new ArgumentException("assemblyPath");
+            }
+
             AssemblyMetadata result = null;
             try
             {
@@ -66,10 +76,15 @@ namespace StaticAnalysis.DependencyAnalyzer
         /// Create a new AppDomain and create a remote instance of AssemblyLoader we can use there
         /// </summary>
         /// <param name="directoryPath">directory containing assemblies</param>
-        /// <param name="testDomain">A new appdomain, where assemblies can be loaded</param>
+        /// <param name="testDomain">A new AppDomain, where assemblies can be loaded</param>
         /// <returns>A proxy to the AssemblyLoader running in the newly created app domain</returns>
         public static AssemblyLoader Create(string directoryPath, out AppDomain testDomain)
         {
+            if (string.IsNullOrWhiteSpace(directoryPath))
+            {
+                throw new ArgumentException("directoryPath");
+            }
+
             var setup = new AppDomainSetup();
             setup.ApplicationBase = directoryPath;
             setup.ApplicationName = "TestDomain";
@@ -79,7 +94,7 @@ namespace StaticAnalysis.DependencyAnalyzer
             setup.DisallowBindingRedirects = false;
             setup.DisallowPublisherPolicy = false;
             testDomain = AppDomain.CreateDomain("TestDomain", null, setup);
-            return testDomain.CreateInstanceFromAndUnwrap(typeof(AssemblyLoader).Assembly.Location, 
+            return testDomain.CreateInstanceFromAndUnwrap(typeof(AssemblyLoader).Assembly.Location,
                 typeof(AssemblyLoader).FullName) as AssemblyLoader;
         }
     }

@@ -13,24 +13,24 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.IO;
 
 namespace StaticAnalysis
 {
     /// <summary>
-    /// Simple class for logging information
+    /// Simple class for logging errors and warnings to the console and writing reports to the file system.
     /// </summary>
     public class ConsoleLogger : AnalysisLogger
     {
 
-        public ConsoleLogger(string baseDirectory) : base(baseDirectory)
+        public ConsoleLogger(string baseDirectory)
+            : base(baseDirectory)
         {
         }
 
-       public override void WriteError(string error)
+        public override void WriteError(string error)
         {
-            Console.WriteLine(string.Format("### ERROR {0}", error));
+            Console.WriteLine("### ERROR {0}", error);
         }
 
         public override void WriteMessage(string message)
@@ -40,7 +40,7 @@ namespace StaticAnalysis
 
         public override void WriteWarning(string message)
         {
-            Console.WriteLine(string.Format("Warning: {0}", message));
+            Console.WriteLine("Warning: {0}", message);
         }
 
         public override void WriteReport(string name, string records)
