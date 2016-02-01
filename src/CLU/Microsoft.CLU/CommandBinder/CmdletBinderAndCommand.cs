@@ -172,13 +172,12 @@ namespace Microsoft.CLU.CommandBinder
         /// </summary>
         /// <param name="args">The command-line arguments to be considered in the help logic.</param>
         /// <returns>A list of lines containing help information.</returns>
-        public IEnumerable<string> ListCommands(string[] args, bool autoComplete)
+        public IEnumerable<string> ListCommands(string[] args, bool autoComplete, CommandDispatchHelper.CommandInfo[] command1)
         {
 #if PSCMDLET_HELP
             return CmdletHelp.Generate(parser.FormatParameterName, _discriminatorBinder.Modules, args, prefix);
 #else
-            var commands = CommandDispatchHelper
-                .CompleteCommands(new HelpPackageFinder(CLUEnvironment.GetPackagesRootPath()), args).ToArray();
+            var commands = command1;
             //
             string strCmdLine = string.Join(";", args);
             System.Collections.IDictionary commandPortion = new Dictionary<String, int>();

@@ -3,7 +3,7 @@
     /// <summary>
     /// Contract that all command line parsers needs to implement.
     /// </summary>
-    public interface ICommandLineParser
+    internal interface ICommandLineParser
     {
         /// <summary>
         /// Parse the arguments based on a specific syntax (e.g. Unix, DOS) and invoke
