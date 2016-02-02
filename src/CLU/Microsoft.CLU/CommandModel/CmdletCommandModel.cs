@@ -6,6 +6,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Runspaces;
+using Microsoft.CLU.Help;
+using System.Collections.Generic;
 
 namespace Microsoft.CLU.CommandModel
 {
@@ -96,7 +98,25 @@ namespace Microsoft.CLU.CommandModel
                 }
                 catch (CommandNotFoundException)
                 {
-                    var helplines = binderAndCommand.ListCommands(binderAndCommand.Discriminators.ToArray(), isComplete);
+                    CommandDispatchHelper.CommandInfo[] commands;
+                    if (isComplete)
+                    {
+                        List<string> listValidArg = new List<string>();
+                        for (int i = 0; i < arguments.Length - 1; i++)
+                        {
+                            listValidArg.Add(arguments[i]);
+                        }
+                        string[] validArg = listValidArg.ToArray();
+                        commands = CommandDispatchHelper
+                .CompleteCommands(new HelpPackageFinder(CLUEnvironment.GetPackagesRootPath()), validArg).ToArray();
+                    }
+                    else
+                    {
+                        commands = CommandDispatchHelper
+                .CompleteCommands(new HelpPackageFinder(CLUEnvironment.GetPackagesRootPath()), arguments).ToArray();
+                    }
+                    
+                    var helplines = binderAndCommand.ListCommands(binderAndCommand.Discriminators.ToArray(), isComplete, commands);
                     string strNoCommand = string.Format(Strings.CmdletHelp_Generate_NoCommandAvailable,
                         CLUEnvironment.ScriptName, String.Join(" ", binderAndCommand.Discriminators.ToArray()));
                     foreach (var entry in helplines)

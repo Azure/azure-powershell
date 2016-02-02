@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.CLU.Help;
 
 namespace Microsoft.CLU
 {
@@ -7,7 +8,7 @@ namespace Microsoft.CLU
     /// The contract that needs to be implemented by binders defined for
     /// various "Programming Model"
     /// </summary>
-    public interface ICommandBinder
+    internal interface ICommandBinder
     {
         /// <summary>
         /// Bind a positonal argument.
@@ -38,6 +39,6 @@ namespace Microsoft.CLU
         /// <summary>
         /// List the set of possible command matches for the given set of commands
         /// </summary>  
-        IEnumerable<string> ListCommands(string[] args, bool autoComplete);
+        IEnumerable<string> ListCommands(string[] args, bool autoComplete, CommandDispatchHelper.CommandInfo[] commandhelper);
     }
 }
