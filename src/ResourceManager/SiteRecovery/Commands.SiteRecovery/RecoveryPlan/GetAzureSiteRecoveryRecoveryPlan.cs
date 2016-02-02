@@ -85,15 +85,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
             foreach (RecoveryPlan recoveryPlan in recoveryPlanListResponse.RecoveryPlans)
             {
-                if (0 == string.Compare(this.FriendlyName, recoveryPlan.Properties.FriendlyName, true))
+                if (0 == string.Compare(this.FriendlyName, recoveryPlan.Properties.FriendlyName, StringComparison.OrdinalIgnoreCase))
                 {
                     var rp = RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlan(recoveryPlan.Name).RecoveryPlan;
+                    this.WriteRecoveryPlan(rp);
                     if (!string.IsNullOrEmpty(this.Path))
                     {
                         GetRecoveryPlanFile(rp);
                     }
 
-                    this.WriteRecoveryPlan(rp);
                     found = true;
                 }
             }
@@ -119,15 +119,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
             foreach (RecoveryPlan recoveryPlan in recoveryPlanListResponse.RecoveryPlans)
             {
-                if (0 == string.Compare(this.Name, recoveryPlan.Name, true))
+                if (0 == string.Compare(this.Name, recoveryPlan.Name, StringComparison.OrdinalIgnoreCase))
                 {
                     var rp = RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlan(recoveryPlan.Name).RecoveryPlan;
+                    this.WriteRecoveryPlan(rp);
                     if (!string.IsNullOrEmpty(this.Path))
                     {
                         GetRecoveryPlanFile(rp);
                     }
 
-                    this.WriteRecoveryPlan(rp);
                     found = true;
                 }
             }
@@ -157,19 +157,16 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             recoveryPlan = RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlan(recoveryPlan.Name).RecoveryPlan;
 
-            string filePath = string.IsNullOrEmpty(this.Path) ? Utilities.GetDefaultPath() : this.Path;
-            if(!Directory.Exists(filePath))
+            if (string.IsNullOrEmpty(this.Path) || !Directory.Exists(System.IO.Path.GetDirectoryName(this.Path)))
             {
-                throw new DirectoryNotFoundException(string.Format(Properties.Resources.DirectoryNotFound, filePath));
+                throw new DirectoryNotFoundException(string.Format(Properties.Resources.DirectoryNotFound, System.IO.Path.GetDirectoryName(this.Path)));
             }
 
-            string fileName = string.Format("{0}_{1}.json", recoveryPlan.Name, DateTime.UtcNow.ToString("yyyy-MM-ddTHH-mm-ss"));
-            string fullFileName = System.IO.Path.Combine(filePath, fileName);
+            string fullFileName = this.Path; 
             using (System.IO.StreamWriter file = new System.IO.StreamWriter(@fullFileName, false))
             {
                 string json = JsonConvert.SerializeObject(recoveryPlan, Formatting.Indented);
                 file.WriteLine(json);
-                this.WriteObject(string.Format(Properties.Resources.RPJSONPath, recoveryPlan.Name, fullFileName));
             }
         }
 

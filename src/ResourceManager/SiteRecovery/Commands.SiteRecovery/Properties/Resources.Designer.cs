@@ -134,6 +134,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to File &quot;{0}&quot; already exists. Specify a different name or path..
+        /// </summary>
+        internal static string FileAlreadyExists {
+            get {
+                return ResourceManager.GetString("FileAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File {0} Not Found.
         /// </summary>
         internal static string FileNotFound {

@@ -319,4 +319,7 @@ Please provide a storage account with the same location as that of the vault.</v
   <data name="FileNotFound" xml:space="preserve">
     <value>File {0} Not Found</value>
   </data>
+  <data name="FileAlreadyExists" xml:space="preserve">
+    <value>File "{0}" already exists. Specify a different name or path.</value>
+  </data>
 </root>

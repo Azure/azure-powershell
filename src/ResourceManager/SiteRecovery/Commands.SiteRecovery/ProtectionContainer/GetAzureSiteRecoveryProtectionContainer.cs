@@ -89,15 +89,17 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     ProtectionContainer protectionContainer in
                     protectionContainerListResponse.ProtectionContainers)
                 {
-                    if (0 == string.Compare(this.FriendlyName, protectionContainer.Properties.FriendlyName, true))
+                    if (0 == string.Compare(this.FriendlyName, protectionContainer.Properties.FriendlyName, StringComparison.OrdinalIgnoreCase))
                     {
-                        this.WriteProtectionContainer(protectionContainer);
+                        var protectionContainerByName = RecoveryServicesClient.GetAzureSiteRecoveryProtectionContainer(fabric.Name, protectionContainer.Name).ProtectionContainer;
+                        this.WriteProtectionContainer(protectionContainerByName);
+
                         found = true;
                         // break; //We can break if we are sure that we have clouds with unique name across fabrics
                     }
                 }
             }
-            
+
             if (!found)
             {
                 throw new InvalidOperationException(
@@ -131,9 +133,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     ProtectionContainer protectionContainer in
                     protectionContainerListResponse.ProtectionContainers)
                 {
-                    if (0 == string.Compare(this.Name, protectionContainer.Name, true))
+                    if (0 == string.Compare(this.Name, protectionContainer.Name, StringComparison.OrdinalIgnoreCase))
                     {
-                        this.WriteProtectionContainer(protectionContainer);
+                        var protectionContainerByName = RecoveryServicesClient.GetAzureSiteRecoveryProtectionContainer(fabric.Name, protectionContainer.Name).ProtectionContainer;
+                        this.WriteProtectionContainer(protectionContainerByName);
+
                         found = true;
                         // break; //We can break if we are sure that we have clouds with unique name across fabrics
                     }
@@ -169,7 +173,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 RecoveryServicesClient.GetAzureSiteRecoveryProtectionContainer(fabric.Name);
 
                 this.WriteProtectionContainers(protectionContainerListResponse.ProtectionContainers);
-            }            
+            }
         }
 
         /// <summary>
@@ -177,7 +181,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         /// <param name="protectionContainers">List of Protection Containers</param>
         private void WriteProtectionContainers(IList<ProtectionContainer> protectionContainers)
-        {           
+        {
             List<ASRProtectionContainer> asrProtectionContainers = new List<ASRProtectionContainer>();
 
             foreach (ProtectionContainer protectionContainer in protectionContainers)
@@ -188,9 +192,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 foreach (ProtectionContainerMapping protectionContainerMapping in protectionContainerMappingListResponse.ProtectionContainerMappings)
                 {
                     PolicyResponse policyResponse = RecoveryServicesClient.GetAzureSiteRecoveryPolicy(Utilities.GetValueFromArmId(protectionContainerMapping.Properties.PolicyId, ARMResourceTypeConstants.ReplicationPolicies));
-                    availablePolicies.Add(new ASRPolicy(policyResponse.Policy));          
+                    availablePolicies.Add(new ASRPolicy(policyResponse.Policy));
                 }
-                
+
                 asrProtectionContainers.Add(new ASRProtectionContainer(protectionContainer, availablePolicies));
             }
 

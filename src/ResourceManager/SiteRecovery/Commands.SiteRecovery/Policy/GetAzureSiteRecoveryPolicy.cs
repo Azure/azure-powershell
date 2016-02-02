@@ -78,7 +78,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             {
                 if (0 == string.Compare(this.FriendlyName, policy.Properties.FriendlyName, true))
                 {
-                    this.WritePolicy(policy);
+                    var policyByName = RecoveryServicesClient.GetAzureSiteRecoveryPolicy(policy.Name).Policy;
+                    this.WritePolicy(policyByName);
+
                     found = true;
                 }
             }
@@ -107,7 +109,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             {
                 if (0 == string.Compare(this.Name, policy.Name, true))
                 {
-                    this.WritePolicy(policy);
+                    var policyByName = RecoveryServicesClient.GetAzureSiteRecoveryPolicy(policy.Name).Policy;
+                    this.WritePolicy(policyByName);
+
                     found = true;
                 }
             }
