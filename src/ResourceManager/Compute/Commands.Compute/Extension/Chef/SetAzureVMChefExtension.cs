@@ -33,6 +33,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
         private string PrivateConfigurationTemplate = "validation_key";
         private string AutoUpdateTemplate = "autoUpdateClient";
         private string DeleteChefConfigTemplate = "deleteChefConfig";
+        private string BootstrapVersionTemplate = "bootstrap_version";
+        private string UninstallChefClientTemplate = "uninstallChefClient";
         private string ClientRbTemplate = "client_rb";
         private string BootStrapOptionsTemplate = "bootstrap_options";
         private string RunListTemplate = "runlist";
@@ -129,6 +131,18 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
         public SwitchParameter DeleteChefConfig { get; set; }
 
         [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Chef client version to be installed with the extension. Works for only linux.")]
+        [ValidateNotNullOrEmpty]
+        public string BootstrapVersion { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Uninstall Chef client during update/uninstall extension. Default is false.")]
+         [ValidateNotNullOrEmpty]
+         public SwitchParameter UninstallChefClient { get; set; }
+
+        [Parameter(
             Mandatory = true,
             ParameterSetName = LinuxParameterSetName,
             HelpMessage = "Set extension for Linux.")]
@@ -210,6 +224,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
                     bool IsBootstrapOptionsEmpty = string.IsNullOrEmpty(this.BootstrapOptions);
                     string AutoUpdateChefClient = this.AutoUpdateChefClient.IsPresent ? "true" : "false";
                     string DeleteChefConfig = this.DeleteChefConfig.IsPresent ? "true" : "false";
+                    string BootstrapVersion = this.BootstrapVersion;
+                    string UninstallChefClient = this.UninstallChefClient.IsPresent ? "true" : "false";
 
                     //Cases handled:
                     // 1. When clientRb given by user and:
@@ -264,6 +280,8 @@ validation_client_name 	'{1}'
                             var hashTable = new Hashtable();
                             hashTable.Add(AutoUpdateTemplate, AutoUpdateChefClient);
                             hashTable.Add(DeleteChefConfigTemplate, DeleteChefConfig);
+                            hashTable.Add(BootstrapVersionTemplate, BootstrapVersion);
+                            hashTable.Add(UninstallChefClientTemplate, UninstallChefClient);
                             hashTable.Add(ClientRbTemplate, ClientConfig);
                             this.publicConfiguration = hashTable;
                         }
@@ -272,6 +290,8 @@ validation_client_name 	'{1}'
                             var hashTable = new Hashtable();
                             hashTable.Add(AutoUpdateTemplate, AutoUpdateChefClient);
                             hashTable.Add(DeleteChefConfigTemplate, DeleteChefConfig);
+                            hashTable.Add(BootstrapVersionTemplate, BootstrapVersion);
+                            hashTable.Add(UninstallChefClientTemplate, UninstallChefClient);
                             hashTable.Add(ClientRbTemplate, ClientConfig);
                             hashTable.Add(BootStrapOptionsTemplate, this.BootstrapOptions);
                             this.publicConfiguration = hashTable;
@@ -284,6 +304,8 @@ validation_client_name 	'{1}'
                             var hashTable = new Hashtable();
                             hashTable.Add(AutoUpdateTemplate, AutoUpdateChefClient);
                             hashTable.Add(DeleteChefConfigTemplate, DeleteChefConfig);
+                            hashTable.Add(BootstrapVersionTemplate, BootstrapVersion);
+                            hashTable.Add(UninstallChefClientTemplate, UninstallChefClient);
                             hashTable.Add(ClientRbTemplate, ClientConfig);
                             hashTable.Add(RunListTemplate, this.RunList);
                             this.publicConfiguration = hashTable;
@@ -293,6 +315,8 @@ validation_client_name 	'{1}'
                             var hashTable = new Hashtable();
                             hashTable.Add(AutoUpdateTemplate, AutoUpdateChefClient);
                             hashTable.Add(DeleteChefConfigTemplate, DeleteChefConfig);
+                            hashTable.Add(BootstrapVersionTemplate, BootstrapVersion);
+                            hashTable.Add(UninstallChefClientTemplate, UninstallChefClient);
                             hashTable.Add(ClientRbTemplate, ClientConfig);
                             hashTable.Add(RunListTemplate, this.RunList);
                             hashTable.Add(BootStrapOptionsTemplate, this.BootstrapOptions);
