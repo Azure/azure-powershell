@@ -1,56 +1,45 @@
+az vm extension set
 
-Set-AzureRmVMExtension: Updates extension properties or adds an extension to a virtual machine.
+Update a VM Extension.
 
+USAGE:
 
-The Set-AzureRmVMExtension cmdlet updates properties for existing Virtual Machine Extensions or adds an extension to a virtual machine.
+az vm extension set [--resourceGroupName] <resourceGroupName> [--vmName] <vmName> [--name] <name> [--publisher] <publisher> [--extensionType] <extensionType> [--typeHandlerVersion] <typeHandlerVersion> [[--settings] <settings>] [[--protectedSettings] <protectedSettings>] [[--location] <location>]
 
+az vm extension set [--resourceGroupName] <resourceGroupName> [--vmName] <vmName> [--name] <name> [--publisher] <publisher> [--extensionType] <extensionType> [--typeHandlerVersion] <typeHandlerVersion> [[--settingString] <settingString>] [[--protectedSettingString] <protectedSettingString>] [[--location] <location>]
 
-Command syntax
+PARAMETERS:
 
-az vm extension set [--resourcegroupname] <string> [--vmname] <string> [--name] <string> [--publisher] <string> [--extensiontype] <string> [--typehandlerversion] <string> [[--settings] <Hashtable>] [[--protectedsettings] <Hashtable>] [[--location] <string>] [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-az vm extension set [--resourcegroupname] <string> [--vmname] <string> [--name] <string> [--publisher] <string> [--extensiontype] <string> [--typehandlerversion] <string> [[--settingstring] <string>] [[--protectedsettingstring] <string>] [[--location] <string>] [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-
-Parameters
-
---resourcegroupname
-Specifies the name of a resource group.
-
---vmname
-Specifies the name of a virtual machine. This cmdlet modifies extensions for the virtual machine that this parameter specifies.
-
---name
-Specifies the name of an extension.
-
---publisher
-Specifies the name of the extension publisher. The publisher provides a name when the publisher registers an extension.
-
---extensiontype
-Specifies the extension type.
-
---typehandlerversion
-Specifies the version of the extension to use for this virtual machine.
-
---settings
-Specifies public configuration for the extension, as a hash table. This cmdlet does not encrypt public configuration.
-
---protectedsettings
-Specifies private configuration for the extension, as a hash table. This cmdlet encrypts the private configuration.
+--extensionType
+  [string] The type.
 
 --location
-Specifies the location of the virtual machine.
+  [string] The region that will contain this resource.  Possible values include 'East US', 'North Europe', 'East Asia'
 
---informationaction
+--name (--extensionName)
+  [string] The extension name.
 
+--protectedSettings
+  [hashtable] The protected settings.
 
---informationvariable
+--protectedSettingString
+  [string] The protected setting raw string.
 
+--publisher
+  [string] The publisher.
 
---settingstring
-Specifies public configuration for the extension, as a string. This cmdlet does not encrypt public configuration.
+--resourceGroupName
+  [string] The name of the resource group containing this resource
 
---protectedsettingstring
-Specifies private configuration for the extension, as a string. This cmdlet encrypts the private configuration.
+--settings
+  [hashtable] The settings.
 
+--settingString
+  [string] The setting raw string.
+
+--typeHandlerVersion (--handlerVersion, --version)
+  [string] The type.
+
+--vmName (--resourceName)
+  [string] The virtual machine name.
 

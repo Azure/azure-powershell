@@ -141,6 +141,24 @@
   <data name="CurrentTenantInUse" xml:space="preserve">
     <value>Current tenant with Id '{0}' will be used.</value>
   </data>
+  <data name="DataCollectionActivity" xml:space="preserve">
+    <value>Microsoft Azure CLU Data Collection Confirmation</value>
+  </data>
+  <data name="DataCollectionConfirmNo" xml:space="preserve">
+    <value>You choose not to participate in Microsoft Azure CLU data collection.</value>
+  </data>
+  <data name="DataCollectionConfirmYes" xml:space="preserve">
+    <value>You choose to participate in Microsoft Azure CLU data collection.</value>
+  </data>
+  <data name="DataCollectionPrompt" xml:space="preserve">
+    <value>Microsoft Azure CLU collects data about how users use CLU commands and some problems they encounter.  Microsoft uses this information to improve our CLU commands.  Participation is voluntary and when you choose to participate your device automatically sends information to Microsoft about how you use Azure CLU. 
+ 
+If you choose to participate, you may stop later at any time. To stop participation run `az telemetry --disable`.
+
+If you choose to not participate, you may start later at any time. To start participation run `az telemetry --enable`.
+ 
+Select Y to enable data collection [Y/N]:</value>
+  </data>
   <data name="EnvironmentNameNeedsToBeSpecified" xml:space="preserve">
     <value>Environment name needs to be specified</value>
   </data>

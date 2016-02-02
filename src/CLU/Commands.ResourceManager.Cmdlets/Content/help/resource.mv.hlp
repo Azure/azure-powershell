@@ -1,0 +1,28 @@
+az resource mv
+
+Move a Resource.
+
+USAGE:
+
+az resource mv -g <destinationResourceGroupName> --resourceId <resourceId> [-s <destinationSubscriptionId>] [-f] [--apiVersion <apiVersion>] [--pre]
+
+PARAMETERS:
+
+--apiVersion
+  [string] When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.
+
+-f (--force)
+  [flag] Perform this action without prompting, even if permanent changes are made.
+
+-g (--targetResourceGroup, --destination, --target, --group, --destinationResourceGroupName)
+  [string] The name of the resource group into which the resources are to be moved.
+
+--pre
+  [flag] When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.
+
+--resourceId
+  [string[]] The identity of this resource. Resource identity is a Uri path that uniquely identifies the resource.
+
+-s (--id, --subscriptionId, --destinationSubscriptionId)
+  [guid] The Id of the subscription to move the resources into.
+

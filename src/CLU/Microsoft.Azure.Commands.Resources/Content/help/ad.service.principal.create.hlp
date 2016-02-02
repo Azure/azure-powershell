@@ -1,26 +1,16 @@
+az ad service principal create
 
-New-AzureRmADServicePrincipal: Creates a new azure active directory service principal.
+Create an Active Directory Service Principal.
 
+USAGE:
 
-This is the Description section
+az ad service principal create --applicationId <applicationId> [-d]
 
-Creates a new azure active directory service principal.
+PARAMETERS:
 
+--applicationId (--id)
+  [guid] The application id for which service principal is created.
 
-Command syntax
-
-az activedirectory sp principal create --applicationid <Guid> [--disableaccount] [--profile <AzureProfile>]
-
-
-Parameters
-
---applicationid
-
-
---disableaccount
-
-
---profile
-
-
+-d (--disableAccount)
+  [flag] Create the service principal with account disabled.
 

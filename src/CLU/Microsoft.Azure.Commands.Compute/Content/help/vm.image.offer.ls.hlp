@@ -1,27 +1,16 @@
+az vm image offer ls
 
-Get-AzureRmVMImageOffer: Gets VMImage offer types.
+Get VM Image Offer details.
 
+USAGE:
 
-The Get-AzureRmVMImageOffer cmdlet gets the VMImage offer types.
+az vm image offer ls --location <location> --publisherName <publisherName>
 
-
-Command syntax
-
-az vm image offer ls --location <string> --publishername <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-
-Parameters
+PARAMETERS:
 
 --location
-Specifies the location of the VMImage.
+  [string] The region that will contain this resource.  Possible values include 'East US', 'North Europe', 'East Asia'
 
---publishername
-Specifies the name of a publisher of a VMImage. To obtain a publisher, use the Get-AzureRmVMImagePublisher cmdlet.
-
---informationaction
-
-
---informationvariable
-
-
+--publisherName
+  [string] The virtual machine image offer name.
 

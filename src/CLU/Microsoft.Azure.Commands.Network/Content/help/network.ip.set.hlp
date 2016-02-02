@@ -1,18 +1,20 @@
+az network ip set
 
-Set-AzureRmPublicIpAddress: Sets the goal state for a public IP address.
+Update a Public Ip Address.
 
+USAGE:
 
-The Set-AzureRmPublicIpAddress cmdlet sets the goal state for a public IP address.
+az network ip set --publicIpAddress <publicIpAddress>
 
+PARAMETERS:
 
-Command syntax
+--publicIpAddress
+  [object] The PublicIpAddress. You may use commands including 'az network ip create' or 'az network ip ls' or 'az network ip set' to produce a PublicIpAddress. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network ip set --PublicIpAddress @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
 
-az publicip address set --publicipaddress <PSPublicIpAddress>
+RELATED COMMANDS:
+az network ip create (produces PublicIpAddress)
 
+az network ip ls (produces PublicIpAddress)
 
-Parameters
-
---publicipaddress
-Specifis a PublicIpAddress object that represents the goal state to which the public IP address should be set.
-
+az network ip set (produces PublicIpAddress)
 

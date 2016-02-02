@@ -1,0 +1,61 @@
+az resource ls
+
+Get Resource details.
+
+USAGE:
+
+az resource ls [--expandProperties] [--oDataQuery <oDataQuery>] [--apiVersion <apiVersion>] [--pre]
+
+az resource ls --resourceId <resourceId> [--expandProperties] [--oDataQuery <oDataQuery>] [--apiVersion <apiVersion>] [--pre]
+
+az resource ls -n <resourceName> -t <resourceType> --tenantLevel [--extensionResourceName <extensionResourceName>] [--extensionResourceType <extensionResourceType>] [--expandProperties] [--isCollection] [--oDataQuery <oDataQuery>] [--apiVersion <apiVersion>] [--pre]
+
+az resource ls --tenantLevel [-n <resourceName>] [-t <resourceType>] [--extensionResourceName <extensionResourceName>] [--extensionResourceType <extensionResourceType>] [--expandProperties] [--isCollection] [--top <top>] [--oDataQuery <oDataQuery>] [--apiVersion <apiVersion>] [--pre]
+
+az resource ls -n <resourceName> -g <resourceGroupName> [--extensionResourceName <extensionResourceName>] [--extensionResourceType <extensionResourceType>] [--expandProperties] [--isCollection] [--oDataQuery <oDataQuery>] [--apiVersion <apiVersion>] [--pre]
+
+az resource ls -n <resourceName> -t <resourceType> [--extensionResourceName <extensionResourceName>] [--extensionResourceType <extensionResourceType>] [--expandProperties] [--isCollection] [--oDataQuery <oDataQuery>] [--apiVersion <apiVersion>] [--pre]
+
+az resource ls -n <resourceName> -t <resourceType> -g <resourceGroupName> [--extensionResourceName <extensionResourceName>] [--extensionResourceType <extensionResourceType>] [--expandProperties] [--isCollection] [--oDataQuery <oDataQuery>] [--apiVersion <apiVersion>] [--pre]
+
+PARAMETERS:
+
+--apiVersion
+  [string] When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.
+
+--expandProperties
+  [flag] When specified, expands the properties of the resource.
+
+--extensionResourceName
+  [string] The extension resource name. e.g. to specify a database MyServer/MyDatabase.
+
+--extensionResourceType
+  [string] The extension resource type. e.g. Microsoft.Sql/Servers/Databases.
+
+-g (--group, --resourceGroupName)
+  [string] The name of the resource group containing this resource
+
+--isCollection
+  [flag] When specified, ensures that the query is run against a collection instead of a resource.
+
+-n (--name, --resourceName)
+  [string] The resource name. e.g. to specify a database MyServer/MyDatabase.
+
+--oDataQuery
+  [string] An OData style filter which will be appended to the request in addition to any other filters.
+
+--pre
+  [flag] When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.
+
+--resourceId (--id)
+  [string] The identity of this resource. Resource identity is a Uri path that uniquely identifies the resource.
+
+-t (--type, --resourceType)
+  [string] The resource type. e.g. Microsoft.Sql/Servers/Databases.
+
+--tenantLevel
+  [flag] Indicates that this is a tenant level operation.
+
+--top
+  [int32] The number of resources to retrieve.
+

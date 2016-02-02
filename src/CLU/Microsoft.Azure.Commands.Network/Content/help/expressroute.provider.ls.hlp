@@ -1,0 +1,8 @@
+az expressroute provider ls
+
+Get Express Route Service Provider details.
+
+USAGE:
+
+az expressroute provider ls 
+

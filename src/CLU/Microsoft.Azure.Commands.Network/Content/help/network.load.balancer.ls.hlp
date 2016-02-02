@@ -1,0 +1,23 @@
+az network load balancer ls
+
+Get Load Balancer details.
+
+USAGE:
+
+az network load balancer ls 
+
+az network load balancer ls [--name <name>] [--resourceGroupName <resourceGroupName>]
+
+az network load balancer ls --name <name> --resourceGroupName <resourceGroupName> --expandResource <expandResource>
+
+PARAMETERS:
+
+--expandResource
+  [string] The resource reference to be expanded.
+
+--name (--resourceName)
+  [string] The resource name.
+
+--resourceGroupName
+  [string] The name of the resource group containing this resource
+

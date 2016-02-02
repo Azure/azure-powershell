@@ -1,0 +1,54 @@
+az resource lock ls
+
+Get Resource Lock details.
+
+USAGE:
+
+az resource lock ls [--atScope] [--apiVersion <apiVersion>] [--pre]
+
+az resource lock ls -g <resourceGroupName> [-n <lockName>] [--atScope] [--apiVersion <apiVersion>] [--pre]
+
+az resource lock ls --resourceName <resourceName> -t <resourceType> -g <resourceGroupName> [-n <lockName>] [--atScope] [--apiVersion <apiVersion>] [--pre]
+
+az resource lock ls --scope <scope> [-n <lockName>] [--atScope] [--apiVersion <apiVersion>] [--pre]
+
+az resource lock ls [-n <lockName>] [--atScope] [--apiVersion <apiVersion>] [--pre]
+
+az resource lock ls --resourceName <resourceName> -t <resourceType> [-n <lockName>] [--atScope] [--apiVersion <apiVersion>] [--pre]
+
+az resource lock ls --resourceName <resourceName> -t <resourceType> --tenantLevel [-n <lockName>] [--atScope] [--apiVersion <apiVersion>] [--pre]
+
+az resource lock ls --lockId <lockId> [--atScope] [--apiVersion <apiVersion>] [--pre]
+
+PARAMETERS:
+
+--apiVersion
+  [string] When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.
+
+--atScope
+  [flag] When specified returns all locks at or above the specified scope, otherwise returns all locks at, above or below the scope.
+
+-g (--group, --resourceGroupName)
+  [string] The name of the resource group containing this resource
+
+--lockId
+  [string] The Id of the lock.
+
+-n (--extensionResourceName, --name, --lockName)
+  [string] The name of the lock.
+
+--pre
+  [flag] When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.
+
+--resourceName
+  [string] The resource name. e.g. to specify a database MyServer/MyDatabase.
+
+--scope (--id, --resourceId)
+  [string] The scope. e.g. to specify a database '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaserName}', to specify a resoruce group: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}'
+
+-t (--type, --resourceType)
+  [string] The resource type. e.g. Microsoft.Sql/Servers/Databases.
+
+--tenantLevel
+  [flag] Indicates that this is a tenant level operation.
+

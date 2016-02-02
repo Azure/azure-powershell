@@ -1,21 +1,29 @@
+az vnet subnet rm
 
-Remove-AzureRmVirtualNetworkSubnetConfig: Removes a subnet configuration from a virtual network.
+Remove a Virtual Network Subnet Config.
 
+USAGE:
 
-The Remove-AzureRmVirtualNetworkSubnetConfig cmdlet removes a subnet from an Azure virtual network.
+az vnet subnet rm --virtualNetwork <virtualNetwork> [--name <name>]
 
-
-Command syntax
-
-az vnet subnet config rm [--name <string>] --virtualnetwork <PSVirtualNetwork>
-
-
-Parameters
+PARAMETERS:
 
 --name
-Specifies the name of the subnet configuration to remove.
+  [string] The name of the subnet
 
---virtualnetwork
-Specifies the VirtualNetwork object that contains the subnet configuration to remove.
+--virtualNetwork
+  [object] The virtualNetwork. You may use commands including 'az vnet create' or 'az vnet ls' or 'az vnet set' or 'az vnet subnet add' to produce a VirtualNetwork. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az vnet subnet rm --VirtualNetwork @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
 
+RELATED COMMANDS:
+az vnet create (produces VirtualNetwork)
+
+az vnet ls (produces VirtualNetwork)
+
+az vnet set (produces VirtualNetwork)
+
+az vnet subnet add (produces VirtualNetwork)
+
+az vnet subnet rm (produces VirtualNetwork)
+
+az vnet subnet set (produces VirtualNetwork)
 

@@ -1,29 +1,99 @@
+az network app gateway ipconfig set
 
-Set-AzureRmApplicationGatewayIPConfiguration: Modifies an IP configuration for an application gateway.
+Update an Application Gateway IPConfiguration.
 
+USAGE:
 
-The Set-AzureRmApplicationGatewayIPConfiguration cmdlet modifies an IP configuration. An IP configuration contains the subnet in which an application gateway is deployed.
+az network app gateway ipconfig set --applicationGateway <applicationGateway> --name <name>
 
+az network app gateway ipconfig set --applicationGateway <applicationGateway> --name <name> [--subnetId <subnetId>]
 
-Command syntax
+az network app gateway ipconfig set --applicationGateway <applicationGateway> --name <name> [--subnet <subnet>]
 
-az applicationgateway ipconfiguration set --applicationgateway <PSApplicationGateway> --name <string> [--subnetid <string>]
+PARAMETERS:
 
-az applicationgateway ipconfiguration set --applicationgateway <PSApplicationGateway> --name <string> [--subnet <PSSubnet>]
-
-
-Parameters
-
---applicationgateway
-Specifies an application gateway object with which this cmdlet associates an IP configuration.
+--applicationGateway
+  [object] The applicationGateway. You may use commands including 'az network app gateway create' or 'az network app gateway ls' or 'az network app gateway ls' or 'az network app gateway set' to produce a ApplicationGateway. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network app gateway ipconfig set --ApplicationGateway @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
 
 --name
-Specifies the name of the IP configuration.
-
---subnetid
-Specifies the subnet ID. This is the subnet in which the application gateway is deployed.
+  [string] The name of the application gateway IP configuration
 
 --subnet
-Specifies the subnet. This is the subnet in which the application gateway is deployed.
+  [object] Subnet where application gateway gets its address from. You may use commands including 'az vnet subnet create' or 'az vnet subnet ls' to produce a Subnet. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network app gateway ipconfig set --Subnet @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
 
+--subnetId
+  [string] ID of subnet where application gateway gets its address from
+
+RELATED COMMANDS:
+az network app gateway create (produces ApplicationGateway)
+
+az network app gateway ls (produces ApplicationGateway)
+
+az network app gateway ls (produces ApplicationGateway)
+
+az network app gateway set (produces ApplicationGateway)
+
+az network app gateway start (produces ApplicationGateway)
+
+az applicationgateway stop (produces ApplicationGateway)
+
+az network app gateway backend address pool add (produces ApplicationGateway)
+
+az network app gateway backend address pool set (produces ApplicationGateway)
+
+az network app gateway backend http settings add (produces ApplicationGateway)
+
+az network app gateway backend http settings rm (produces ApplicationGateway)
+
+az network app gateway backend http settings set (produces ApplicationGateway)
+
+az network app gateway frontend ipconfig add (produces ApplicationGateway)
+
+az network app gateway frontend ipconfig rm (produces ApplicationGateway)
+
+az network app gateway frontend ipconfig set (produces ApplicationGateway)
+
+az network app gateway frontend port add (produces ApplicationGateway)
+
+az network app gateway frontend port rm (produces ApplicationGateway)
+
+az network app gateway frontend port set (produces ApplicationGateway)
+
+az network app gateway ipconfig add (produces ApplicationGateway)
+
+az network app gateway ipconfig rm (produces ApplicationGateway)
+
+az network app gateway ipconfig set (produces ApplicationGateway)
+
+az network app gateway http listener add (produces ApplicationGateway)
+
+az network app gateway http listener set (produces ApplicationGateway)
+
+az network app gateway probe config add (produces ApplicationGateway)
+
+az network app gateway probe config rm (produces ApplicationGateway)
+
+az network app gateway probe config set (produces ApplicationGateway)
+
+az network app gateway request routing rule add (produces ApplicationGateway)
+
+az network app gateway request routing rule set (produces ApplicationGateway)
+
+az network app gateway sku set (produces ApplicationGateway)
+
+az network app gateway ssl cert add (produces ApplicationGateway)
+
+az network app gateway ssl cert rm (produces ApplicationGateway)
+
+az network app gateway ssl cert set (produces ApplicationGateway)
+
+az network app gateway url path map add (produces ApplicationGateway)
+
+az network app gateway url path map rm (produces ApplicationGateway)
+
+az network app gateway url path map set (produces ApplicationGateway)
+
+az vnet subnet create (produces Subnet)
+
+az vnet subnet ls (produces Subnet)
 

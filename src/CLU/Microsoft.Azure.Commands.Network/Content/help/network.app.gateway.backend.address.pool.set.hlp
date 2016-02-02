@@ -1,34 +1,100 @@
+az network app gateway backend address pool set
 
-Set-AzureRmApplicationGatewayBackendAddressPool: Updates a back-end address pool for an application gateway.
+Update an Application Gateway Backend Address Pool.
 
+USAGE:
 
-The Set-AzureRmApplicationGatewayBackendAddressPool cmdlet updates a back-end address pool for an Azure application gateway. Back-end addresses can be specified as IP addresses, fully-qualified domain names (FQDN) or IP configurations IDs.
+az network app gateway backend address pool set --applicationGateway <applicationGateway> --name <name>
 
+az network app gateway backend address pool set --applicationGateway <applicationGateway> --name <name> [--backendIPConfigurationIds <backendIPConfigurationIds>]
 
-Command syntax
+az network app gateway backend address pool set --applicationGateway <applicationGateway> --name <name> [--backendIPAddresses <backendIPAddresses>]
 
-az applicationgateway backendaddress pool set --applicationgateway <PSApplicationGateway> --name <string> [--backendipconfigurationids <List`1[String]>]
+az network app gateway backend address pool set --applicationGateway <applicationGateway> --name <name> [--backendFqdns <backendFqdns>]
 
-az applicationgateway backendaddress pool set --applicationgateway <PSApplicationGateway> --name <string> [--backendipaddresses <List`1[String]>]
+PARAMETERS:
 
-az applicationgateway backendaddress pool set --applicationgateway <PSApplicationGateway> --name <string> [--backendfqdns <List`1[String]>]
+--applicationGateway
+  [object] The applicationGateway. You may use commands including 'az network app gateway create' or 'az network app gateway ls' or 'az network app gateway ls' or 'az network app gateway set' to produce a ApplicationGateway. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network app gateway backend address pool set --ApplicationGateway @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
 
+--backendFqdns
+  [string[]] FQDNs of application gateway backend servers
 
-Parameters
+--backendIPAddresses
+  [string[]] IP addresses of application gateway backend servers
 
---applicationgateway
-Specifies the application gateway with which this cmdlet associates the back-end address pool.
+--backendIPConfigurationIds
+  [string[]] Resource IDs of the application gateway backend servers
 
 --name
-Specifies the name of the back-end address pool. This back-end address pool must exist in the application gateway.
+  [string] The name of the Backend Address Pool
 
---backendipconfigurationids
-Specifies a list of back-end IP configuration IDs to use for the back-end server pool.
+RELATED COMMANDS:
+az network app gateway create (produces ApplicationGateway)
 
---backendipaddresses
-Specifies a list of back-end IP addresses to use as a back-end server pool.
+az network app gateway ls (produces ApplicationGateway)
 
---backendfqdns
-Specifies a list of back-end FQDNs to use as a back-end server pool.
+az network app gateway ls (produces ApplicationGateway)
 
+az network app gateway set (produces ApplicationGateway)
+
+az network app gateway start (produces ApplicationGateway)
+
+az applicationgateway stop (produces ApplicationGateway)
+
+az network app gateway backend address pool add (produces ApplicationGateway)
+
+az network app gateway backend address pool set (produces ApplicationGateway)
+
+az network app gateway backend http settings add (produces ApplicationGateway)
+
+az network app gateway backend http settings rm (produces ApplicationGateway)
+
+az network app gateway backend http settings set (produces ApplicationGateway)
+
+az network app gateway frontend ipconfig add (produces ApplicationGateway)
+
+az network app gateway frontend ipconfig rm (produces ApplicationGateway)
+
+az network app gateway frontend ipconfig set (produces ApplicationGateway)
+
+az network app gateway frontend port add (produces ApplicationGateway)
+
+az network app gateway frontend port rm (produces ApplicationGateway)
+
+az network app gateway frontend port set (produces ApplicationGateway)
+
+az network app gateway ipconfig add (produces ApplicationGateway)
+
+az network app gateway ipconfig rm (produces ApplicationGateway)
+
+az network app gateway ipconfig set (produces ApplicationGateway)
+
+az network app gateway http listener add (produces ApplicationGateway)
+
+az network app gateway http listener set (produces ApplicationGateway)
+
+az network app gateway probe config add (produces ApplicationGateway)
+
+az network app gateway probe config rm (produces ApplicationGateway)
+
+az network app gateway probe config set (produces ApplicationGateway)
+
+az network app gateway request routing rule add (produces ApplicationGateway)
+
+az network app gateway request routing rule set (produces ApplicationGateway)
+
+az network app gateway sku set (produces ApplicationGateway)
+
+az network app gateway ssl cert add (produces ApplicationGateway)
+
+az network app gateway ssl cert rm (produces ApplicationGateway)
+
+az network app gateway ssl cert set (produces ApplicationGateway)
+
+az network app gateway url path map add (produces ApplicationGateway)
+
+az network app gateway url path map rm (produces ApplicationGateway)
+
+az network app gateway url path map set (produces ApplicationGateway)
 

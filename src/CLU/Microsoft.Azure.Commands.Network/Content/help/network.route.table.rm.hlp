@@ -1,27 +1,22 @@
+az network route table rm
 
-Remove-AzureRmRouteTable: Removes a route table.
+Remove a Route Table.
 
+USAGE:
 
-The Remove-AzureRmRouteTable cmdlet removes an Azure route table.
+az network route table rm --name <name> --resourceGroupName <resourceGroupName> [--force] [--passThru]
 
-
-Command syntax
-
-az route table rm --name <string> --resourcegroupname <string> [--force] [--passthru]
-
-
-Parameters
-
---name
-Specifies the name of the route table that this cmdlet removes.
-
---resourcegroupname
-Specifies the name of the resource group that contains the route table that this cmdlet removes.
+PARAMETERS:
 
 --force
-Forces the command to run without asking for user confirmation.
+  [flag] Perform this action without prompting, even if permanent changes are made.
 
---passthru
-Indicates that this cmdlet returns a value of $True if it removes a route table, or $False if it fails. If you do not specify this parameter, this cmdlet returns no value.
+--name (--resourceName)
+  [string] The resource name.
 
+--passThru
+  [flag] Forces true or false output.  Without this flag, the command will return nothing if successful.
+
+--resourceGroupName
+  [string] The name of the resource group containing this resource
 

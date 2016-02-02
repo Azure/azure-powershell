@@ -1,23 +1,13 @@
+az ad group member ls
 
-Get-AzureRmADGroupMember: Get a group members.
+Get Active Directory Group Member details.
 
+USAGE:
 
-This is the Description section
+az ad group member ls [--groupObjectId <groupObjectId>]
 
-Get a group members.
+PARAMETERS:
 
-
-Command syntax
-
-az activedirectory resourcemanager group member ls [--groupobjectid <Guid>] [--profile <AzureProfile>]
-
-
-Parameters
-
---groupobjectid
-Object id of the group.
-
---profile
-
-
+--groupObjectId (--id)
+  [guid] The user email address.
 

@@ -3,6 +3,9 @@ src/Publish/
 src/Package/
 drop/
 
+# external tools
+tools/CLU/7zip/
+
 obj
 TestResults
 *.orig

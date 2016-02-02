@@ -1,18 +1,30 @@
+az network expressroute circuit set
 
-Set-AzureRmExpressRouteCircuit
+Update an Express Route Circuit.
 
+USAGE:
 
+az network expressroute circuit set --expressRouteCircuit <expressRouteCircuit>
 
+PARAMETERS:
 
+--expressRouteCircuit
+  [object] The ExpressRouteCircuit. You may use commands including 'az network expressroute circuit create' or 'az network expressroute circuit ls' or 'az network expressroute circuit set' or 'az network expressroute circuit auth add' to produce a ExpressRouteCircuit. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network expressroute circuit set --ExpressRouteCircuit @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
 
-Command syntax
+RELATED COMMANDS:
+az network expressroute circuit create (produces ExpressRouteCircuit)
 
-az expressroute circuit set --expressroutecircuit <PSExpressRouteCircuit>
+az network expressroute circuit ls (produces ExpressRouteCircuit)
 
+az network expressroute circuit set (produces ExpressRouteCircuit)
 
-Parameters
+az network expressroute circuit auth add (produces ExpressRouteCircuit)
 
---expressroutecircuit
+az network expressroute circuit auth rm (produces ExpressRouteCircuit)
 
+az network expressroute circuit peering add (produces ExpressRouteCircuit)
 
+az network expressroute circuit peering rm (produces ExpressRouteCircuit)
+
+az network expressroute circuit peering set (produces ExpressRouteCircuit)
 

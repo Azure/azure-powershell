@@ -322,7 +322,7 @@ namespace Microsoft.CLU.CommandBinder
             }
             finally
             {
-                _telemetryClient.Flush();
+                Task.Run(() => _telemetryClient.Flush()).Wait(TimeSpan.FromSeconds(5));
             }
         }
 

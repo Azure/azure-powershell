@@ -1,8 +1,28 @@
-
-Remove-AzureRmVirtualNetworkGatewayDefaultSite
-
-
-Command syntax
-
 az vnet gateway default site rm
+
+Remove a Virtual Network Gateway Default Site.
+
+USAGE:
+
+az vnet gateway default site rm --virtualNetworkGateway <virtualNetworkGateway>
+
+PARAMETERS:
+
+--virtualNetworkGateway
+  [object] The VirtualNetworkGateway. You may use commands including 'az vnet gateway create' or 'az vnet gateway ls' or 'az vnet gateway default site rm' or 'az vnet gateway reset' to produce a VirtualNetworkGateway. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az vnet gateway default site rm --VirtualNetworkGateway @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
+
+RELATED COMMANDS:
+az vnet gateway create (produces VirtualNetworkGateway)
+
+az vnet gateway ls (produces VirtualNetworkGateway)
+
+az vnet gateway default site rm (produces VirtualNetworkGateway)
+
+az vnet gateway reset (produces VirtualNetworkGateway)
+
+az vnet gateway resize (produces VirtualNetworkGateway)
+
+az vnet gateway default site set (produces VirtualNetworkGateway)
+
+az vnet gateway vpn client set (produces VirtualNetworkGateway)
 

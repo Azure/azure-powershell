@@ -1,28 +1,21 @@
+az resource group ls
 
-Get-AzureRmResourceGroup: Gets Azure resource groups
+Get Resource Group details.
 
+USAGE:
 
-This is the Description section
+az resource group ls [-n <name>] [-l <location>]
 
-The Get-AzureRmResourceGroup cmdlet gets the Azure resource groups in your subscription. You can use the Name parameter to select resource groups by name. The default is all resource groups.An Azure resource is a user-managed Azure entity, such as a database server, database, or web site. An Azure resource group is a collection of Azure resources that are deployed as a unit.
+az resource group ls [-l <location>] [--id <id>]
 
+PARAMETERS:
 
-Command syntax
+--id (--resourceGroupId, --resourceId)
+  [string] The identity of this resource. Resource identity is a Uri path that uniquely identifies the resource.
 
-az resourcemanager group ls --name <string> [--location <string>]
+-l (--location)
+  [string] The region that will contain this resource.  Possible values include 'East US', 'North Europe', 'East Asia'
 
-az resourcemanager group ls --id <string> [--location <string>]
-
-
-Parameters
-
---name
-Specifies the name of the resource group. Wildcards are not permitted. This parameter is optional. The default is all resource groups in the subscription
-
---location
-Specifies the location of the resource group.
-
---id
-Specifies the id of the resource group. Wildcards are not permitted. This parameter is optional. The default is all resource groups in the subscription
-
+-n (--resourceGroupName, --name)
+  [string] The resource group name.
 

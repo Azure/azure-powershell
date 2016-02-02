@@ -1,21 +1,29 @@
+az network route ls
 
-Get-AzureRmRouteConfig: Gets routes from a route table.
+Get Route Config details.
 
+USAGE:
 
-The Get-AzureRmRouteConfig cmdlet gets routes from an Azure route table. You can specify a route by name.
+az network route ls --routeTable <routeTable> [--name <name>]
 
-
-Command syntax
-
-az route config ls [--name <string>] --routetable <PSRouteTable>
-
-
-Parameters
+PARAMETERS:
 
 --name
-Specifies the name of the route that this cmdlet gets.
+  [string] The name of the route
 
---routetable
-Specifies the route table from which this cmdlet gets routes.
+--routeTable
+  [object] The RouteTable. You may use commands including 'az network route table create' or 'az newtork route table ls' or 'az network route table set' or 'az network route add' to produce a RouteTable. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network route ls --RouteTable @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
 
+RELATED COMMANDS:
+az network route table create (produces RouteTable)
+
+az newtork route table ls (produces RouteTable)
+
+az network route table set (produces RouteTable)
+
+az network route add (produces RouteTable)
+
+az network route rm (produces RouteTable)
+
+az network route set (produces RouteTable)
 

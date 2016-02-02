@@ -35,7 +35,7 @@ printf "\n7. Move Resource to resource group: %s.\n" "$destinationGroupName"
 az resource group create --name "$destinationGroupName" --location "$location"
 resourceId=$(echo $resourceInfo | jq '.ResourceId')
 arrayId="[$resourceId]"
-az resource move -g "$destinationGroupName" --ResourceId "$arrayId" -f
+az resource mv -g "$destinationGroupName" --ResourceId "$arrayId" -f
 
 printf "\n8. Removing resource: %s.\n" "$resourceName"
 foundResource=$(az resource find -n "$resourceName" -t $resourceType)

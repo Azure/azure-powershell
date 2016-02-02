@@ -1,0 +1,30 @@
+az ad user ls
+
+Get Active Directory User details.
+
+USAGE:
+
+az ad user ls [--userPrincipalName <userPrincipalName>]
+
+az ad user ls -s <searchString>
+
+az ad user ls --objectId <objectId>
+
+az ad user ls --userPrincipalName <userPrincipalName>
+
+az ad user ls --mail <mail>
+
+PARAMETERS:
+
+--mail
+  [string] The user mail.
+
+--objectId (--id)
+  [guid] The user object id.
+
+-s (--searchString)
+  [string] The user search string.
+
+--userPrincipalName (--uPN)
+  [string] The user UPN.
+

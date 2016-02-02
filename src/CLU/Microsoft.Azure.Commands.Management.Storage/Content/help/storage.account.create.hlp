@@ -1,37 +1,25 @@
+az storage account create
 
-New-AzureRmStorageAccount: Allows you to create a new Storage Account
+Create a Storage Account.
 
+USAGE:
 
-This cmdlet allows you to create a new Storage Account.
+az storage account create [-g] <resourceGroupName> [-n] <name> [-t] <type> [-l] <location> [[--tags] <tags>]
 
+PARAMETERS:
 
-Command syntax
+-g (--group, --resourceGroupName)
+  [string] The name of the resource group containing this resource
 
-az storage account new [--resourcegroupname] <string> [--name] <string> [--type] <string> [--location] <string> [[--tags] <Hashtable[]>] [--profile <AzureProfile>]
+-l (--location)
+  [string] The region that will contain this resource.  Possible values include 'East US', 'North Europe', 'East Asia'
 
+-n (--storageAccountName, --accountName, --name)
+  [string] Storage Account Name.
 
-Parameters
-
---resourcegroupname
-Name of the Resource Group
-
---name
-Name of the Storage Account
-
---type
-Type of Storage Account. Valid values are 
-• Standard_LRS (Locally-redundant storage)
-• Standard_ZRS (Zone-redundant storage)
-• Standard_GRS (Geo-redundant storage)
-• Standard_RAGRS (Read access geo-redundant storage)
-
---location
-Location of the Storage Account
+-t (--storageAccountType, --accountType, --type)
+  [string] Storage Account Type.
 
 --tags
-Tags to set on the storage account.
-
---profile
-
-
+  [hashtable[]] Storage Account Tags.
 

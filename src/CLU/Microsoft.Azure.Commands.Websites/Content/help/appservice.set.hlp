@@ -1,8 +1,65 @@
-
-Set-AzureRMWebApp
-
-
-Command syntax
-
 az appservice set
+
+Update a Web App.
+
+USAGE:
+
+az appservice set [[--use32BitWorkerProcess] <use32BitWorkerProcess>]
+
+az appservice set [-g] <resourceGroupName> [-n] <name> [[--appServicePlan] <appServicePlan>] [[--defaultDocuments] <defaultDocuments>] [[--netFrameworkVersion] <netFrameworkVersion>] [[--phpVersion] <phpVersion>] [[--requestTracingEnabled] <requestTracingEnabled>] [[--httpLoggingEnabled] <httpLoggingEnabled>] [[--detailedErrorLoggingEnabled] <detailedErrorLoggingEnabled>] [[--appSettings] <appSettings>] [[--connectionStrings] <connectionStrings>] [[--handlerMappings] <handlerMappings>] [[--managedPipelineMode] <managedPipelineMode>] [[--webSocketsEnabled] <webSocketsEnabled>] [[--use32BitWorkerProcess] <use32BitWorkerProcess>] [[--hostNames] <hostNames>]
+
+az appservice set [--webApp] <webApp> [[--use32BitWorkerProcess] <use32BitWorkerProcess>]
+
+PARAMETERS:
+
+--appServicePlan (--plan)
+  [string] The name of the app service plan eg: Default1.
+
+--appSettings
+  [hashtable] Web app settings. Example: -AppSettings @{"setting1" = "ValueA"}
+
+--connectionStrings
+  [hashtable] Web app connection strings. Example: -ConnectionStrings @{ ConnectionString1 = @{ Type = "MySql"; Value = "MySql Connection string"}; ConnectionString2 = @{ Type = "SQLAzure"; Value = "SqlAzure Connection string 2"} }
+
+--defaultDocuments (--docs)
+  [string[]] Default documents for web app
+
+--detailedErrorLoggingEnabled
+  [boolean] Whether or not detailed error logging is enabled
+
+-g (--group, --resourceGroupName)
+  [string] The name of the resource group containing this resource
+
+--handlerMappings
+  [object[]] Web app handler mappings
+
+--hostNames (--hosts)
+  [string[]] Custom hostnames associated with web app
+
+--httpLoggingEnabled
+  [boolean] Whether or not http logging is enabled
+
+--managedPipelineMode
+  [string] Web app managed pipeline mode. Allowed Values [Classic|Integrated]
+
+-n (--name)
+  [string] The name of the web app.
+
+--netFrameworkVersion
+  [string] .NET Framework version
+
+--phpVersion
+  [string] PHP version
+
+--requestTracingEnabled
+  [boolean] Whether or not request tracing is enabled
+
+--use32BitWorkerProcess
+  [boolean] Whether or not to use 32-bit worker process. By default worker process is 64-bit
+
+--webApp
+  [object] The web app object
+
+--webSocketsEnabled
+  [boolean] Whether or not detailed error logging is enabled
 

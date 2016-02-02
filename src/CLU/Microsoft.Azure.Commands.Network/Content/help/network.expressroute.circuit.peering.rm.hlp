@@ -1,21 +1,33 @@
+az network expressroute circuit peering rm
 
-Remove-AzureRmExpressRouteCircuitPeeringConfig
+Remove an Express Route Circuit Peering Config.
 
+USAGE:
 
+az network expressroute circuit peering rm --circuit <circuit> [--name <name>]
 
-
-
-Command syntax
-
-az expressroute circuit peering config rm [--name <string>] --circuit <PSExpressRouteCircuit>
-
-
-Parameters
-
---name
-
+PARAMETERS:
 
 --circuit
+  [object] The circuit. You may use commands including 'az network expressroute circuit create' or 'az network expressroute circuit ls' or 'az network expressroute circuit set' or 'az network expressroute circuit auth add' to produce a Circuit. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network expressroute circuit peering rm --Circuit @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
 
+--name
+  [string] The name of the Peering
 
+RELATED COMMANDS:
+az network expressroute circuit create (produces Circuit)
+
+az network expressroute circuit ls (produces Circuit)
+
+az network expressroute circuit set (produces Circuit)
+
+az network expressroute circuit auth add (produces Circuit)
+
+az network expressroute circuit auth rm (produces Circuit)
+
+az network expressroute circuit peering add (produces Circuit)
+
+az network expressroute circuit peering rm (produces Circuit)
+
+az network expressroute circuit peering set (produces Circuit)
 

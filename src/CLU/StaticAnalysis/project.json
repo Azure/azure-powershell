@@ -1,0 +1,45 @@
+{
+  "version": "1.0.0-*",
+  "description": "Static Analysis Console Application",
+  "authors": [ "markcowl" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+  "commands": {
+    "StaticAnalysis": "StaticAnalysis"
+  },
+  "frameworks": {
+    "dnxcore50": {
+      "dependencies": {
+        "Microsoft.NETCore": "5.0.1-beta-23516",
+        "Microsoft.NETCore.Platforms": "1.0.1-beta-23516",
+        "Microsoft.CSharp": "4.0.1-beta-23516",
+        "System.Reflection": "4.1.0-beta-23516",
+        "System.Reflection.Extensions": "4.0.1-beta-23516",
+        "System.Reflection.Primitives": "4.0.1-beta-23516",
+        "System.Reflection.TypeExtensions": "4.1.0-beta-23516",
+        "System.Reflection.Context": "4.0.1-beta-23516",
+        "System.Reflection.Metadata": "1.1.1-beta-23516",
+        "System.Reflection.Emit": "4.0.1-beta-23516",
+        "System.Reflection.DispatchProxy": "4.0.1-beta-23516",
+        "System.Runtime": "4.0.21-beta-23516",
+        "System.Runtime.Extensions": "4.0.11-beta-23516",
+        "System.Runtime.Loader": "4.0.0-beta-23516",
+        "System.Xml.XDocument": "4.0.11-beta-23516",
+        "System.IO": "4.0.11-beta-23516",
+        "System.Console": "4.0.0-beta-23516",
+        "Microsoft.Dnx.Runtime": "1.0.0-rc1-final",
+        "Microsoft.CLU": "1.0.0-*"
+      }
+    }
+  },
+  "dependencies": {
+    "Commands.ResourceManager.Cmdlets": "",
+    "Microsoft.Azure.Commands.Compute": "",
+    "Microsoft.Azure.Commands.Management.Storage": "",
+    "Microsoft.Azure.Commands.Network": "",
+    "Microsoft.Azure.Commands.Profile": "",
+    "Microsoft.Azure.Commands.Resources": "",
+    "Microsoft.Azure.Commands.Websites": ""
+  }
+}

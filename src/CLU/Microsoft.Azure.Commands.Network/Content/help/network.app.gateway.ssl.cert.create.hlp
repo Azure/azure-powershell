@@ -1,24 +1,19 @@
+az network app gateway ssl cert create
 
-New-AzureRmApplicationGatewaySslCertificate: Creates an SSL certificate for an Azure application gateway.
+Create an Application Gateway Ssl Certificate.
 
+USAGE:
 
-The New-AzureRmApplicationGatewaySslCertificate cmdlet creates an SSL certificate for an Azure application gateway.
+az network app gateway ssl cert create --name <name> --certificateFile <certificateFile> --password <password>
 
+PARAMETERS:
 
-Command syntax
-
-az applicationgateway sslcertificate new --name <string> --certificatefile <string> --password <string>
-
-
-Parameters
+--certificateFile
+  [string] Path of certificate PFX file
 
 --name
-Specifies the name of the SSL certificate that this cmdlet creates.
-
---certificatefile
-Specifies the path of the .pfx file of the SSL certificate that this cmdlet creates.
+  [string] The name of the ssl certificate
 
 --password
-Specifies the password of the SSL that this cmdlet creates.
-
+  [string] Certificate password
 

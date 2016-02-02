@@ -1,8 +1,16 @@
+az vnet gateway vpn client revoked cert create
 
-New-AzureRmVpnClientRevokedCertificate
+Create a Vpn Client Revoked Certificate.
 
+USAGE:
 
-Command syntax
+az vnet gateway vpn client revoked cert create --name <name> --thumbprint <thumbprint>
 
-az vpn client revoked certificate new
+PARAMETERS:
+
+--name
+  [string] The name of the VpnClient certificate to be revoked.
+
+--thumbprint
+  [string] The thumbprint of the VpnClient certificate to be revoked.
 

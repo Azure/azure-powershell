@@ -1,24 +1,16 @@
+az resource provider unregister
 
-Unregister-AzureRmResourceProvider
+Unregister a Resource Provider.
 
+USAGE:
 
+az resource provider unregister -m <providerNamespace> [-f]
 
+PARAMETERS:
 
+-f (--force)
+  [flag] Perform this action without prompting, even if permanent changes are made.
 
-Command syntax
-
-az resourcemanager resource resourcemanager provider unregister --providernamespace <string> [--force] [--profile <AzureProfile>]
-
-
-Parameters
-
---providernamespace
-
-
---force
-
-
---profile
-
-
+-m (--namespace, --providerNamespace)
+  [string] The resource provider namespace.
 

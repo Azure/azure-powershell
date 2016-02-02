@@ -1,44 +1,27 @@
+az resource role definition set
 
-Set-AzureRmRoleDefinition: Modifies a custom role in Azure RBAC. Provide the modified role definition either as a JSON file or as a PSRoleDefinition. First, use the Get-AzureRmRoleDefinition command to retrieve the custom role that you wish to modify. Then, modify the properties that you wish to change. Finally, save the role definition using this command.You can use Get-AzureRmRoleDefinition | ConvertTo-Json command to export the into a JSON file, that you can modify. Use the Get-AzureRmProviderOperation command to list all actions in Azure that can be secured using RBAC.
+Update a Role Definition.
 
+USAGE:
 
-The Set-AzureRmRoleDefinition cmdlet updates an existing custom role in Azure Role-Based Access Control. Provide the updated role definition as an input to the cmdlet in the form of a JSON file or a PSRoleDefinition object. The role definition for the updated custom role MUST contain the Id property. The role definition SHOULD contain at least one property that is being updated: DisplayName, Description, Actions, NotActions, AssignableScopes.
+az resource role definition set 
 
-Following is a sample updated role definition json for Set-AzureRmRoleDefinition
+az resource role definition set --inputFile <inputFile>
 
+az resource role definition set --role <role>
 
-        {
-        "Id": "52a6cc13-ff92-47a8-a39b-2a8205c3087e",
-        "Description": "Can monitor all resources and start and restart virtual machines",
-        "Actions":
-        [
-        "*/read",
-        "Microsoft.ClassicCompute/virtualmachines/restart/action",
-        "Microsoft.ClassicCompute/virtualmachines/start/action"
-        ]
-        }
-      
+PARAMETERS:
 
-
-Command syntax
-
-az networksecurityrole definition set --inputfile <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-az networksecurityrole definition set --role <PSRoleDefinition> [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-
-Parameters
-
---inputfile
-File name containing a single json role definition to be updated. Only include the properties that are to be updated in the JSON. Id property is Required.
-
---informationaction
-
-
---informationvariable
-
+--inputFile
+  [string] File name containing a single role definition.
 
 --role
-Role definition object to be updated
+  [object] Role definition. You may use commands including 'az resource role definition create' or 'az resource role definition ls' or 'az resource role definition set' to produce a Role. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az resource role definition set --Role @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
 
+RELATED COMMANDS:
+az resource role definition create (produces Role)
+
+az resource role definition ls (produces Role)
+
+az resource role definition set (produces Role)
 

@@ -1,41 +1,32 @@
+az vm image ls
 
-Get-AzureRmVMImage: Gets all the versions of a VMImage.
+Get VM Image details.
 
+USAGE:
 
-The Get-AzureRmVMImage cmdlet gets all the versions of a VMImage.
+az vm image ls 
 
+az vm image ls --location <location> --publisherName <publisherName> --offer <offer> --skus <skus> [--filterExpression <filterExpression>]
 
-Command syntax
+az vm image ls --location <location> --publisherName <publisherName> --offer <offer> --skus <skus> --version <version>
 
-az vm image ls --location <string> --publishername <string> --offer <string> --skus <string> [--filterexpression <string>] [--informationaction <ActionPreference>] [--informationvariable <string>]
+PARAMETERS:
 
-az vm image ls --location <string> --publishername <string> --offer <string> --skus <string> --version <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-
-Parameters
+--filterExpression
+  [string] 
 
 --location
-Specifies the location of a VMImage.
-
---publishername
-Specifies the publisher of a VMImage. To obtain an image publisher, use the Get-AzureRmVMImagePublisher cmdlet.
+  [string] The region that will contain this resource.  Possible values include 'East US', 'North Europe', 'East Asia'
 
 --offer
-Specifies the type of VMImage offer. To obtain an image offer, use the Get-AzureRmVMImageOffer cmdlet.
+  [string] 
+
+--publisherName
+  [string] The virtual machine image name.
 
 --skus
-Specifies a VMImage SKU. To obtain an SKU, use the Get-AzureRmVMImageSku cmdlet.
-
---filterexpression
-Specifies a filter expression.
-
---informationaction
-
-
---informationvariable
-
+  [string] 
 
 --version
-
-
+  [string] 
 

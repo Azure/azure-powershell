@@ -1,62 +1,51 @@
+az vm extension script set
 
-Set-AzureRmVMCustomScriptExtension: Adds a custom script extension to a virtual machine.
+Update a VM Custom Script Extension.
 
+USAGE:
 
-The Set-AzureRmVMCustomScriptExtension cmdlet adds a custom script Virtual Machine Extension to a virtual machine. This extension allows you to run your own scripts on the virtual machine.
+az vm extension script set [--resourceGroupName] <resourceGroupName> [--vmName] <vmName> [--name] <name> [[--typeHandlerVersion] <typeHandlerVersion>] [--containerName] <containerName> [--fileName] <fileName> [[--storageAccountName] <storageAccountName>] [[--storageEndpointSuffix] <storageEndpointSuffix>] [[--storageAccountKey] <storageAccountKey>] [[--run] <run>] [[--argument] <argument>] [[--location] <location>]
 
+az vm extension script set [--resourceGroupName] <resourceGroupName> [--vmName] <vmName> [--name] <name> [[--typeHandlerVersion] <typeHandlerVersion>] [[--fileUri] <fileUri>] [--run] <run> [[--argument] <argument>] [[--location] <location>]
 
-Command syntax
-
-az vm customscriptextension set [--resourcegroupname] <string> [--vmname] <string> [--name] <string> [[--typehandlerversion] <string>] [--containername] <string> [--filename] <String[]> [[--storageaccountname] <string>] [[--storageendpointsuffix] <string>] [[--storageaccountkey] <string>] [[--run] <string>] [[--argument] <string>] [[--location] <string>] [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-az vm customscriptextension set [--resourcegroupname] <string> [--vmname] <string> [--name] <string> [[--typehandlerversion] <string>] [[--fileuri] <String[]>] [[--run] <string>] [[--argument] <string>] [[--location] <string>] [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-
-Parameters
-
---resourcegroupname
-Specifies the name of the resource group of the virtual machine.
-
---vmname
-Specifies the name of a virtual machine. This cmdlet adds the custom script extension for the virtual machine that this parameter specifies.
-
---name
-Specifies the name of the custom script extension.
-
---typehandlerversion
-Specifies the version of the extension to use for this virtual machine. To obtain the version, run the Get-AzureRmVMExtensionImage cmdlet with a value of Microsoft.Compute for the PublisherName parameter and VMAccessAgent for the Type parameter.
-
---containername
-Specifies the name of the Azure Storage container where this cmdlet stores the script.
-
---filename
-Specifies the name of the script file.
-
---storageaccountname
-Specifies the name of the Azure Storage account where this cmdlet stores the script.
-
---storageendpointsuffix
-Specifies the storage endpoint suffix.
-
---storageaccountkey
-Specifies the key for the Azure Storage container.
-
---run
-Specifies the command to use that runs your script.
+PARAMETERS:
 
 --argument
-Specifies arguments that the script extension passes to the script.
+  [string] The Argument String for the Run File.
+
+--containerName
+  [string] The Name of the Container.
+
+--fileName
+  [string[]] The Blob Files in the Container.
+
+--fileUri
+  [string[]] The File URIs.
 
 --location
-Specifies the location of the virtual machine.
+  [string] The region that will contain this resource.  Possible values include 'East US', 'North Europe', 'East Asia'
 
---informationaction
+--name (--extensionName)
+  [string] The extension name.
 
+--resourceGroupName
+  [string] The name of the resource group containing this resource
 
---informationvariable
+--run (--runFile, --command)
+  [string] The Run File to Execute in PowerShell on the VM.
 
+--storageAccountKey
+  [string] The Storage Account Key.
 
---fileuri
-Specifies the URI of the script file.
+--storageAccountName
+  [string] The Storage Account Name.
 
+--storageEndpointSuffix
+  [string] The Storage Endpoint Suffix.
+
+--typeHandlerVersion (--handlerVersion, --version)
+  [string] The type handler version.
+
+--vmName (--resourceName)
+  [string] The virtual machine name.
 

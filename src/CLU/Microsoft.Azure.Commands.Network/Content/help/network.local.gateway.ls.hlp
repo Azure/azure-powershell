@@ -1,21 +1,16 @@
+az network local gateway ls
 
-Get-AzureRmLocalNetworkGateway
+Get Local Network Gateway details.
 
+USAGE:
 
+az network local gateway ls --resourceGroupName <resourceGroupName> [--name <name>]
 
+PARAMETERS:
 
+--name (--resourceName)
+  [string] The resource name.
 
-Command syntax
-
-az localgateway ls [--name <string>] --resourcegroupname <string>
-
-
-Parameters
-
---name
-
-
---resourcegroupname
-
-
+--resourceGroupName
+  [string] The name of the resource group containing this resource
 

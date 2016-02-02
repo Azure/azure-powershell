@@ -1,114 +1,78 @@
+az resource role assignment ls
 
-Get-AzureRmRoleAssignment: Lists Azure RBAC role assignments at the specified scope. By default it lists all role assignments in the selected Azure subscription. Use respective parameters to list assignments to a specific user, or to list assignments on a specific resource group or resource.The Azure RBAC role that is assigned dictates what type of resources the user is allowed to manage in the scope, and what actions the user is allowed to perform on those resources. Use Get-AzureRMRoleDefinition command to list actions that a given role allows.
+Get Role Assignment details.
 
+USAGE:
 
+az resource role assignment ls [--roleDefinitionName <roleDefinitionName>] [--includeClassicAdministrators]
 
-        Use the Get-AzureRMRoleAssignment command to list all role assignments that are effective on a scope.
-      
+az resource role assignment ls --objectId <objectId> [--roleDefinitionName <roleDefinitionName>] [-e] [--includeClassicAdministrators]
 
-        Without any parameters, this command returns all the role assignments made under the subscription. This list can  be filtered using filtering parameters for principal, role and scope.
+az resource role assignment ls --objectId <objectId> -g <resourceGroupName> [--roleDefinitionName <roleDefinitionName>] [--includeClassicAdministrators]
 
+az resource role assignment ls --objectId <objectId> -g <resourceGroupName> -r <resourceName> -t <resourceType> [--parentResource <parentResource>] [--roleDefinitionName <roleDefinitionName>] [--includeClassicAdministrators]
 
-        The subject of the assignment must be specified. To specify a user, use SignInName or Azure AD ObjectId parameters. To specify a security group, use Azure AD ObjectId parameter. And to specify an Azure AD application, use ServicePrincipalName or ObjectId parameters.
-      
+az resource role assignment ls --objectId <objectId> --scope <scope> [--roleDefinitionName <roleDefinitionName>] [--includeClassicAdministrators]
 
+az resource role assignment ls --roleDefinitionId <roleDefinitionId> [--objectId <objectId>] [--scope <scope>]
 
-        The role that is being assigned must be specified using the RoleDefinitionName parameter.
-      
+az resource role assignment ls --signInName <signInName> -g <resourceGroupName> [--roleDefinitionName <roleDefinitionName>] [--includeClassicAdministrators]
 
+az resource role assignment ls --signInName <signInName> -g <resourceGroupName> -r <resourceName> -t <resourceType> [--parentResource <parentResource>] [--roleDefinitionName <roleDefinitionName>] [--includeClassicAdministrators]
 
-        The scope at which access is being granted may be specified. It defaults to the selected subscription.  The scope of the assignment can be specified using one of the following parameter combinations
-        a. Scope - This is the fully qualified scope starting with /subscriptions/<subscriptionId>. This will filter assignments that are effective at that particular scope i.e. all assignments at that scope and above.
-        b. ResourceGroupName - Name of any resource group under the subscription. This will filter assignments effective at the specified resource group
-        c. ResourceName, ResourceType, ResourceGroupName and (optionally) ParentResource - Identifies a particular resource under the subscription and will filter assignments effective at that resource scope.
-      
+az resource role assignment ls --signInName <signInName> --scope <scope> [--roleDefinitionName <roleDefinitionName>] [--includeClassicAdministrators]
 
+az resource role assignment ls --signInName <signInName> [--roleDefinitionName <roleDefinitionName>] [-e] [--includeClassicAdministrators]
 
-        To determine what access a particular user has in the subscription, use the ExpandPrincipalGroups switch. This will list all roles assigned to the user, and to the groups that the user is member of.
-      
+az resource role assignment ls --servicePrincipalName <servicePrincipalName> -g <resourceGroupName> [--roleDefinitionName <roleDefinitionName>] [--includeClassicAdministrators]
 
-Use the IncludeClassicAdministrators switch to also display the subscription admins and co-admins.
+az resource role assignment ls --servicePrincipalName <servicePrincipalName> -g <resourceGroupName> -r <resourceName> -t <resourceType> [--parentResource <parentResource>] [--roleDefinitionName <roleDefinitionName>] [--includeClassicAdministrators]
 
+az resource role assignment ls --servicePrincipalName <servicePrincipalName> --scope <scope> [--roleDefinitionName <roleDefinitionName>] [--includeClassicAdministrators]
 
-Command syntax
+az resource role assignment ls --servicePrincipalName <servicePrincipalName> [--roleDefinitionName <roleDefinitionName>] [--includeClassicAdministrators]
 
-az networksecurityrole assignment ls [--roledefinitionname <string>] [--includeclassicadministrators] [--informationaction <ActionPreference>] [--informationvariable <string>]
+az resource role assignment ls -g <resourceGroupName> [--roleDefinitionName <roleDefinitionName>] [--includeClassicAdministrators]
 
-az networksecurityrole assignment ls [--objectid <Guid>] --roledefinitionid <Guid> [--scope <string>] [--informationaction <ActionPreference>] [--informationvariable <string>]
+az resource role assignment ls -g <resourceGroupName> -r <resourceName> -t <resourceType> [--parentResource <parentResource>] [--roleDefinitionName <roleDefinitionName>] [--includeClassicAdministrators]
 
-az networksecurityrole assignment ls [--objectid <Guid>] [--roledefinitionname <string>] [--expandprincipalgroups] [--includeclassicadministrators] [--informationaction <ActionPreference>] [--informationvariable <string>]
+az resource role assignment ls --scope <scope> [--roleDefinitionName <roleDefinitionName>] [--includeClassicAdministrators]
 
-az networksecurityrole assignment ls [--objectid <Guid>] [--roledefinitionname <string>] [--scope <string>] [--includeclassicadministrators] [--informationaction <ActionPreference>] [--informationvariable <string>]
+PARAMETERS:
 
-az networksecurityrole assignment ls [--objectid <Guid>] --resourcegroupname <string> --resourcename <string> --resourcetype <string> [--parentresource <string>] [--roledefinitionname <string>] [--includeclassicadministrators] [--informationaction <ActionPreference>] [--informationvariable <string>]
+-e (--expand, --expandPrincipalGroups)
+  [flag] If specified, returns role assignments directly assigned to the principal as well as assignments to the principal's groups (transitive). Supported only for User Principals.
 
-az networksecurityrole assignment ls [--objectid <Guid>] --resourcegroupname <string> [--roledefinitionname <string>] [--includeclassicadministrators] [--informationaction <ActionPreference>] [--informationvariable <string>]
+-g (--group, --resourceGroupName)
+  [string] The name of the resource group containing this resource
 
-az networksecurityrole assignment ls --signinname <string> --resourcegroupname <string> [--roledefinitionname <string>] [--includeclassicadministrators] [--informationaction <ActionPreference>] [--informationvariable <string>]
+--includeClassicAdministrators
+  [flag] If specified, also returns the subscription classic administrators as role assignments.
 
-az networksecurityrole assignment ls --signinname <string> --resourcegroupname <string> --resourcename <string> --resourcetype <string> [--parentresource <string>] [--roledefinitionname <string>] [--includeclassicadministrators] [--informationaction <ActionPreference>] [--informationvariable <string>]
+--objectId (--id, --principalId)
+  [guid] The user or group object id.
 
-az networksecurityrole assignment ls --signinname <string> [--roledefinitionname <string>] [--scope <string>] [--includeclassicadministrators] [--informationaction <ActionPreference>] [--informationvariable <string>]
+--parentResource (--parent)
+  [string] Parent resource of the resource to assign the role to, if there is any.
 
-az networksecurityrole assignment ls --signinname <string> [--roledefinitionname <string>] [--expandprincipalgroups] [--includeclassicadministrators] [--informationaction <ActionPreference>] [--informationvariable <string>]
+-r (--resource, --resourceName)
+  [string] Resource to assign the role to.
 
-az networksecurityrole assignment ls --serviceprincipalname <string> [--roledefinitionname <string>] [--scope <string>] [--includeclassicadministrators] [--informationaction <ActionPreference>] [--informationvariable <string>]
+--roleDefinitionId
+  [guid] Role Id the principal is assigned to.
 
-az networksecurityrole assignment ls --serviceprincipalname <string> --resourcegroupname <string> --resourcename <string> --resourcetype <string> [--parentresource <string>] [--roledefinitionname <string>] [--includeclassicadministrators] [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-az networksecurityrole assignment ls --serviceprincipalname <string> --resourcegroupname <string> [--roledefinitionname <string>] [--includeclassicadministrators] [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-az networksecurityrole assignment ls --serviceprincipalname <string> [--roledefinitionname <string>] [--includeclassicadministrators] [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-az networksecurityrole assignment ls --resourcegroupname <string> --resourcename <string> --resourcetype <string> [--parentresource <string>] [--roledefinitionname <string>] [--includeclassicadministrators] [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-az networksecurityrole assignment ls --resourcegroupname <string> [--roledefinitionname <string>] [--includeclassicadministrators] [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-az networksecurityrole assignment ls [--roledefinitionname <string>] [--scope <string>] [--includeclassicadministrators] [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-
-Parameters
-
---roledefinitionname
-Role that is assigned to the principal i.e. Reader, Contributor, Virtual Network Administrator, etc.
-
---includeclassicadministrators
-If specified, also lists subscription classic administrators (co-admins, service admins, etc.) role assignments.
-
---informationaction
-
-
---informationvariable
-
-
---objectid
-The Azure AD ObjectId of the User, Group or Service Principal. Filters all assignments that are made to the specified principal.
-
---roledefinitionid
-Id of the Role that is assigned to the principal.
+--roleDefinitionName
+  [string] Role to assign the principals with.
 
 --scope
-The Scope of the role assignment. In the format of relative URI. For e.g. /subscriptions/9004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/TestRG. It must start with "/subscriptions/{id}". The command filters all assignments that are effective at that scope.
+  [string] Scope of the role assignment. In the format of relative URI.
 
---expandprincipalgroups
-If specified, returns roles directly assigned to the user and to the groups of which the user is a member (transitively). Supported only for a user principal.
+--servicePrincipalName (--spn)
+  [string] The app SPN.
 
---resourcegroupname
-The resource group name. Lists role assignments that are effective at the specified resource group. When used in conjunction with ResourceName, ResourceType, and ParentResource parameters, the command lists assignments effective at resources within the resource group.
+--signInName (--email, --userPrincipalName)
+  [string] The user SignInName.
 
---resourcename
-The resource name. For e.g. storageaccountprod. Must be used in conjunction with ResourceGroupName, ResourceType, and (optionally)ParentResource parameters.
-
---resourcetype
-The resource type. For e.g. Microsoft.Network/virtualNetworks. Must be used in conjunction with ResourceGroupName, ResourceName, and (optionally)ParentResource parameters.
-
---parentresource
-The parent resource in the hierarchy of the resource specified using ResourceName parameter. Must be used in conjunction with ResourceGroupName, ResourceType, and ResourceName parameters.
-
---signinname
-The email address or the user principal name of the user. Filters all assignments that are made to the specified user.
-
---serviceprincipalname
-The ServicePrincipalName of the service principal. Filters all assignments that are made to the specified Azure AD application.
-
+-t (--type, --resourceType)
+  [string] Type of the resource to assign the role to.
 

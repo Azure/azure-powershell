@@ -1,24 +1,16 @@
+az storage account ls
 
-Get-AzureRmStorageAccount: Get the properties of a Storage Account
+Get Storage Account details.
 
+USAGE:
 
-This cmdlet allows you to get the properties of a specified Storage Account or all Storage Accounts within a Resource Group or the subscription.
+az storage account ls [[-g] <resourceGroupName>] [[-n] <name>]
 
+PARAMETERS:
 
-Command syntax
+-g (--group, --resourceGroupName)
+  [string] The name of the resource group containing this resource
 
-az storage account get [[--resourcegroupname] <string>] [[--name] <string>] [--profile <AzureProfile>]
-
-
-Parameters
-
---resourcegroupname
-Name of the Resource Group
-
---name
-Name of the Storage Account
-
---profile
-
-
+-n (--storageAccountName, --accountName, --name)
+  [string] Storage Account Name.
 

@@ -1,29 +1,21 @@
+az ad service principal rm
 
-Remove-AzureRmADServicePrincipal: Deletes the azure active directory service principal.
+Remove an Active Directory Service Principal.
 
+USAGE:
 
-This is the Description section
+az ad service principal rm [-f] [--passThru]
 
-Deletes the azure active directory service principal.
+az ad service principal rm --objectId <objectId> [-f] [--passThru]
 
+PARAMETERS:
 
-Command syntax
+-f (--force)
+  [flag] Perform this action without prompting, even if permanent changes are made.
 
-az activedirectory sp principal rm --objectid <Guid> [--force] [--passthru] [--profile <AzureProfile>]
+--objectId (--principalId, --id)
+  [guid] The service principal object id.
 
-
-Parameters
-
---objectid
-
-
---force
-
-
---passthru
-
-
---profile
-
-
+--passThru
+  [flag] Forces true or false output.  Without this flag, the command will return nothing if successful.
 

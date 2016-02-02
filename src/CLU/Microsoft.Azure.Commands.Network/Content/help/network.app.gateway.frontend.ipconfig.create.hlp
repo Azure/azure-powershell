@@ -1,21 +1,43 @@
+az network app gateway frontend ipconfig create
 
-New-AzureRmApplicationGatewayFrontendPort: Creates a front-end port for an application gateway.
+Create an Application Gateway Frontend IPConfig.
 
+USAGE:
 
-The New-AzureRmApplicationGatewayFrontendPort cmdlet creates a front-end port for an Azure application gateway.
+az network app gateway frontend ipconfig create --name <name>
 
+az network app gateway frontend ipconfig create --name <name> [--privateIPAddress <privateIPAddress>] [--subnetId <subnetId>] [--publicIPAddressId <publicIPAddressId>]
 
-Command syntax
+az network app gateway frontend ipconfig create --name <name> [--privateIPAddress <privateIPAddress>] [--subnet <subnet>] [--publicIPAddress <publicIPAddress>]
 
-az applicationgateway frontendipconfig new --name <string> --port <int>
-
-
-Parameters
+PARAMETERS:
 
 --name
-Specifies the name of the front-end port that this cmdlet creates.
+  [string] The name of the FrontendIPConfiguration
 
---port
-Specifies the port number of the front-end port.
+--privateIPAddress
+  [string] The private ip address of the frontendIPConfiguration if static allocation is specified.
 
+--publicIPAddress
+  [object] PublicIPAddress. You may use commands including 'az network ip create' or 'az network ip ls' or 'az network ip set' to produce a PublicIPAddress. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network app gateway frontend ipconfig create --PublicIPAddress @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
+
+--publicIPAddressId
+  [string] PublicIPAddressId
+
+--subnet
+  [object] Subnet. You may use commands including 'az vnet subnet create' or 'az vnet subnet ls' to produce a Subnet. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network app gateway frontend ipconfig create --Subnet @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
+
+--subnetId
+  [string] SubnetId
+
+RELATED COMMANDS:
+az vnet subnet create (produces Subnet)
+
+az vnet subnet ls (produces Subnet)
+
+az network ip create (produces PublicIPAddress)
+
+az network ip ls (produces PublicIPAddress)
+
+az network ip set (produces PublicIPAddress)
 

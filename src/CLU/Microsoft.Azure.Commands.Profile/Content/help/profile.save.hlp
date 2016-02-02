@@ -1,27 +1,21 @@
+az profile save
 
-Save-AzureRmProfile: Save the current authentication information for use in other PowerShell sessions.
+Save a Profile.
 
+USAGE:
 
-Save the current authentication information for use in other PowerShell sessions.
+az profile save [[--profile] <profile>] [--path] <path>
 
-
-Command syntax
-
-az profile save [[--profile] <AzureRmProfile>] [--path] <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-
-Parameters
-
---profile
-If provided, saves the given profile to the provided path.  If no profile is provided, the currently active profile will be saved.
+PARAMETERS:
 
 --path
-The full path of the file to save authentication information to.
+  [string] The path to a file.
 
---informationaction
+--profile
+  [object] A container for azure environments and credentials. You may use commands including 'az login' or 'az profile select' to produce a Profile. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az profile save --Profile @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
 
+RELATED COMMANDS:
+az login (produces Profile)
 
---informationvariable
-
-
+az profile select (produces Profile)
 

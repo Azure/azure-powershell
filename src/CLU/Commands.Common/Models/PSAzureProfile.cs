@@ -28,7 +28,8 @@ namespace Microsoft.Azure.Commands.Models
 
             var result =  new PSAzureProfile
             {
-                Context = profile.Context
+                Context = profile.Context,
+                IsTelemetryCollectionEnabled = profile.IsTelemetryCollectionEnabled
             };
 
             profile.Environments
@@ -50,7 +51,8 @@ namespace Microsoft.Azure.Commands.Models
 
             var result = new AzureRMProfile
             {
-                Context = profile.Context
+                Context = profile.Context,
+                IsTelemetryCollectionEnabled = profile.IsTelemetryCollectionEnabled
             };
             profile.Environments.ForEach((e) => result.Environments[e.Key] = (AzureEnvironment) e.Value);
             return result;
@@ -73,6 +75,11 @@ namespace Microsoft.Azure.Commands.Models
         /// The current credentials and metadata for connecting with the current Azure cloud instance.
         /// </summary>
         public PSAzureContext Context { get; set; }
+
+        /// <summary>
+        /// When set to true, collects telemetry information.
+        /// </summary>
+        public bool? IsTelemetryCollectionEnabled { get; set; }
 
         public override string ToString()
         {

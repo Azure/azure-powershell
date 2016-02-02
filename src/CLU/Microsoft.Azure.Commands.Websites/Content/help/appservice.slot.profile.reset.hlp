@@ -1,8 +1,26 @@
-
-Reset-AzureRMWebAppSlotPublishingProfile
-
-
-Command syntax
-
 az appservice slot profile reset
+
+Reset a Web App Slot Publishing Profile.
+
+USAGE:
+
+az appservice slot profile reset 
+
+az appservice slot profile reset [-g] <resourceGroupName> [-n] <name> [--slot] <slot>
+
+az appservice slot profile reset [--webApp] <webApp>
+
+PARAMETERS:
+
+-g (--group, --resourceGroupName)
+  [string] The name of the resource group containing this resource
+
+-n (--name)
+  [string] The name of the web app.
+
+--slot
+  [string] The name of the web app slot.
+
+--webApp
+  [object] The web app object
 

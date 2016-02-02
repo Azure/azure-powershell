@@ -1,24 +1,13 @@
+az vm image publisher ls
 
-Get-AzureRmVMImagePublisher: Gets the VMImage publishers.
+Get VM Image Publisher details.
 
+USAGE:
 
-The Get-AzureRmVMImagePublisher cmdlet gets the VMImage publishers.
+az vm image publisher ls --location <location>
 
-
-Command syntax
-
-az vm image publisher ls --location <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-
-Parameters
+PARAMETERS:
 
 --location
-Specifies the location of the VMImage.
-
---informationaction
-
-
---informationvariable
-
-
+  [string] The region that will contain this resource.  Possible values include 'East US', 'North Europe', 'East Asia'
 

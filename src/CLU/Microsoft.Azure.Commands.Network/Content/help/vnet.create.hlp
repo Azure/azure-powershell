@@ -1,0 +1,34 @@
+az vnet create
+
+Create a Virtual Network.
+
+USAGE:
+
+az vnet create --name <name> --resourceGroupName <resourceGroupName> --location <location> [--addressPrefix <addressPrefix>] [--dnsServer <dnsServer>] [--subnet <subnet>] [--tag <tag>] [--force]
+
+PARAMETERS:
+
+--addressPrefix
+  [string[]] The address prefixes of the virtual network
+
+--dnsServer
+  [string[]] The list of Dns Servers
+
+--force
+  [flag] Perform this action without prompting, even if permanent changes are made.
+
+--location
+  [string] The region that will contain this resource.  Possible values include 'East US', 'North Europe', 'East Asia'
+
+--name (--resourceName)
+  [string] The resource name.
+
+--resourceGroupName
+  [string] The name of the resource group containing this resource
+
+--subnet
+  [object[]] The list of subnets
+
+--tag
+  [hashtable[]] An array of hashtables which represents resource tags.
+

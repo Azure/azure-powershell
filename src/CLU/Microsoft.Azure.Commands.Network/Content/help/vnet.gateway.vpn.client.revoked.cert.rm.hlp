@@ -1,8 +1,22 @@
+az vnet gateway vpn client revoked cert rm
 
-Remove-AzureRmVpnClientRevokedCertificate
+Remove a Vpn Client Revoked Certificate.
 
+USAGE:
 
-Command syntax
+az vnet gateway vpn client revoked cert rm --vpnClientRevokedCertificateName <vpnClientRevokedCertificateName> --virtualNetworkGatewayName <virtualNetworkGatewayName> --resourceGroupName <resourceGroupName> --thumbprint <thumbprint>
 
-az vpn client revoked certificate rm
+PARAMETERS:
+
+--resourceGroupName
+  [string] The name of the resource group containing this resource
+
+--thumbprint
+  [string] The thumbprint of the revoked VpnClient certificate to be Unrevoked.
+
+--virtualNetworkGatewayName
+  [string] The virtual network gateway name.
+
+--vpnClientRevokedCertificateName (--resourceName)
+  [string] The vpn client revoked certificate name to be Unrevoked.
 

@@ -1,0 +1,22 @@
+az network load balancer rm
+
+Remove a Load Balancer.
+
+USAGE:
+
+az network load balancer rm --name <name> --resourceGroupName <resourceGroupName> [--force] [--passThru]
+
+PARAMETERS:
+
+--force
+  [flag] Perform this action without prompting, even if permanent changes are made.
+
+--name (--resourceName)
+  [string] The resource name.
+
+--passThru
+  [flag] Forces true or false output.  Without this flag, the command will return nothing if successful.
+
+--resourceGroupName
+  [string] The name of the resource group containing this resource
+

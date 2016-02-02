@@ -1,21 +1,16 @@
+az vnet gateway connection ls
 
-Get-AzureRmVirtualNetworkGatewayConnection
+Get Virtual Network Gateway Connection details.
 
+USAGE:
 
+az vnet gateway connection ls --resourceGroupName <resourceGroupName> [--name <name>]
 
+PARAMETERS:
 
+--name (--resourceName)
+  [string] The resource name.
 
-Command syntax
-
-az vnet gateway connection ls [--name <string>] --resourcegroupname <string>
-
-
-Parameters
-
---name
-
-
---resourcegroupname
-
-
+--resourceGroupName
+  [string] The name of the resource group containing this resource
 

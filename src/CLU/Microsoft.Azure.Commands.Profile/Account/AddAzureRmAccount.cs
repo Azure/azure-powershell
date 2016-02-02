@@ -12,37 +12,35 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.IO;
 using System.Management.Automation;
-using System.Reflection;
-using System.Security;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common;
 using System;
 using Microsoft.Azure.Commands.Models;
-using Microsoft.Azure.Commands.Profile;
 using Microsoft.Azure.Commands.Profile.Properties;
+using System.Management.Automation.Host;
+using System.Collections.ObjectModel;
 
 namespace Microsoft.Azure.Commands.Profile
 {
     /// <summary>
     /// Cmdlet to log into an environment and download the subscriptions
     /// </summary>
-    [Cmdlet("Add", "AzureRmAccount", DefaultParameterSetName = "User")]
+    [Cmdlet("Add", "AzureRmAccount", DefaultParameterSetName = "UserSubscriptionId")]
     [Alias("Login-AzureRmAccount", "Login")]
     [OutputType(typeof(PSAzureProfile))]
     [CliCommandAlias("login")]
     public class AddAzureRMAccountCommand : AzureRMCmdlet
     {
-        private const string UserParameterSet = "User";
-        private const string ServicePrincipalParameterSet = "ServicePrincipal";
-        private const string ServicePrincipalCertificateParameterSet = "ServicePrincipalCertificate";
-        private const string AccessTokenParameterSet = "AccessToken";
-        private const string SubscriptionNameParameterSet = "SubscriptionName";
-        private const string SubscriptionIdParameterSet = "SubscriptionId";
+        private const string ServicePrincipalSubscriptionIdParameterSet = "ServicePrincipalId";
+        private const string ServicePrincipalSubscriptionNameParameterSet = "ServicePrincipalName";
+        private const string ServicePrincipalCertificateIdParameterSet = "ServicePrincipalCertificateId";
+        private const string ServicePrincipalCertificateNameParameterSet = "ServicePrincipalCertificateName";
+        private const string UserSubscriptionIdParameterSet = "UserSubscriptionId";
+        private const string UserSubscriptionNameParameterSet = "UserSubscriptionName";
+        private const string AccessTokenNameParameterSet = "AccessTokenName";
+        private const string AccessTokenIdParameterSet = "AccessTokenId";
+        internal const string CollectTelemetryEnvironmentVariable = "Azure_PS_Data_Collection";
 
         public AzureEnvironment Environment { get; set; }
 
@@ -51,69 +49,73 @@ namespace Microsoft.Azure.Commands.Profile
         [ValidateNotNullOrEmpty]
         public string EnvironmentName { get; set; }
 
-        [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = true, HelpMessage = "Secret")]
-        [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Optional secret")]
-        [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "Optional secret")]
+        [Parameter(ParameterSetName = ServicePrincipalSubscriptionIdParameterSet, Mandatory = true, HelpMessage = "The application secret for this service principal.")]
+        [Parameter(ParameterSetName = ServicePrincipalSubscriptionNameParameterSet, Mandatory = true, HelpMessage = "The application secret for this service principal.")]
         public string Secret { get; set; }
 
-        [Parameter(ParameterSetName = AccessTokenParameterSet, Mandatory = true, HelpMessage = "Account Id for access token")]
-        [Parameter(ParameterSetName = UserParameterSet, Mandatory = false, HelpMessage = "User name (in username@contoso.com format)")]
-        [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Account Id for access token")]
-        [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "Account Id for access token")]
+        [Parameter(ParameterSetName = AccessTokenNameParameterSet, Mandatory = true, HelpMessage = "User Account Id (for example, user@contoso.com) to use for login.")]
+        [Parameter(ParameterSetName = AccessTokenIdParameterSet, Mandatory = true, HelpMessage = "User Account Id (for example, user@contoso.com) to use for login.")]
+        [Parameter(ParameterSetName = UserSubscriptionIdParameterSet, Mandatory = false, HelpMessage = "User Account Id (for example, user@contoso.com) to use for login.")]
+        [Parameter(ParameterSetName = UserSubscriptionNameParameterSet, Mandatory = false, HelpMessage = "User Account Id (for example, user@contoso.com) to use for login.")]
         [ValidateNotNullOrEmpty]
         [Alias("u")]
         public string Username { get; set; }
 
-        [Parameter(ParameterSetName = UserParameterSet, Mandatory = false, HelpMessage = "Optional password")]
-        [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Optional password")]
-        [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "Optional password")]
+        [Parameter(ParameterSetName = UserSubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Password for given user id.  If not provided, interactvie login will be used.")]
+        [Parameter(ParameterSetName = UserSubscriptionNameParameterSet, Mandatory = false, HelpMessage = "Password for given user id.  If not provided, interactvie login will be used.")]
         [ValidateNotNullOrEmpty]
         [Alias("p")]
         public string Password { get; set; }
 
-        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, Mandatory = true, HelpMessage = "Certificate Hash (Thumbprint)")]
-        [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Certificate Hash (Thumbprint)")]
-        [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "Certificate Hash (Thumbprint)")]
+        [Parameter(ParameterSetName = ServicePrincipalCertificateIdParameterSet, Mandatory = true, HelpMessage = "Certificate Hash (Thumbprint) for authenticating the given service principal.")]
+        [Parameter(ParameterSetName = ServicePrincipalCertificateNameParameterSet, Mandatory = true, HelpMessage = "Certificate Hash (Thumbprint) for authenticating the given service principal.")]
         [Alias("cert")]
         public string CertificateThumbprint { get; set; }
 
-        [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = true, HelpMessage = "Credential")]
-        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, Mandatory = true, HelpMessage = "SPN")]
-        [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "SPN")]
-        [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "SPN")]
+        [Parameter(ParameterSetName = ServicePrincipalSubscriptionIdParameterSet, Mandatory = true, HelpMessage = "The application id for service principal login.")]
+        [Parameter(ParameterSetName = ServicePrincipalSubscriptionNameParameterSet, Mandatory = true, HelpMessage = "The application id for service principal login.")]
+        [Parameter(ParameterSetName = ServicePrincipalCertificateIdParameterSet, Mandatory = true, HelpMessage = "The application id for service principal login.")]
+        [Parameter(ParameterSetName = ServicePrincipalCertificateNameParameterSet, Mandatory = true, HelpMessage = "The application id for service principal login.")]
         [Alias("appid")]
         public string ApplicationId { get; set; }
 
-        [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = true)]
-        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, Mandatory = true)]
+        [Parameter(ParameterSetName = ServicePrincipalSubscriptionNameParameterSet, Mandatory = true, HelpMessage = "Indicates a login using service principal credentials.")]
+        [Parameter(ParameterSetName = ServicePrincipalSubscriptionIdParameterSet, Mandatory = true, HelpMessage = "Indicates a login using service principal credentials.")]
+        [Parameter(ParameterSetName = ServicePrincipalCertificateIdParameterSet, Mandatory = true, HelpMessage = "Indicates a login using service principal credentials.")]
+        [Parameter(ParameterSetName = ServicePrincipalCertificateNameParameterSet, Mandatory = true, HelpMessage = "Indicates a login using service principal credentials.")]
         [Alias("spn")]
         public SwitchParameter ServicePrincipal { get; set; }
 
-        [Parameter(ParameterSetName = UserParameterSet, Mandatory = false, HelpMessage = "Optional tenant name or ID")]
-        [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = true, HelpMessage = "TenantId name or ID")]
-        [Parameter(ParameterSetName = AccessTokenParameterSet, Mandatory = false, HelpMessage = "TenantId name or ID")]
-        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, Mandatory = true, HelpMessage = "TenantId name or ID")]
-        [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "TenantId name or ID")]
-        [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "TenantId name or ID")]
+        [Parameter(ParameterSetName = UserSubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Optional domain name or Tenant ID.")]
+        [Parameter(ParameterSetName = UserSubscriptionNameParameterSet, Mandatory = false, HelpMessage = "Optional domain name or Tenant ID.")]
+        [Parameter(ParameterSetName = ServicePrincipalSubscriptionIdParameterSet, Mandatory = true, HelpMessage = "Optional domain name or Tenant ID.")]
+        [Parameter(ParameterSetName = ServicePrincipalSubscriptionNameParameterSet, Mandatory = true, HelpMessage = "Optional domain name or Tenant ID.")]
+        [Parameter(ParameterSetName = AccessTokenIdParameterSet, Mandatory = false, HelpMessage = "Optional domain name or Tenant ID.")]
+        [Parameter(ParameterSetName = AccessTokenNameParameterSet, Mandatory = false, HelpMessage = "Optional domain name or Tenant ID.")]
+        [Parameter(ParameterSetName = ServicePrincipalCertificateIdParameterSet, Mandatory = true, HelpMessage = "Optional domain name or Tenant ID.")]
+        [Parameter(ParameterSetName = ServicePrincipalCertificateNameParameterSet, Mandatory = true, HelpMessage = "Optional domain name or Tenant ID.")]
         [Alias("Domain", "t")]
         [ValidateNotNullOrEmpty]
         public string TenantId { get; set; }
 
-        [Parameter(ParameterSetName = AccessTokenParameterSet, Mandatory = true, HelpMessage = "AccessToken")]
-        [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "AccessToken")]
-        [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "AccessToken")]
+        [Parameter(ParameterSetName = AccessTokenIdParameterSet, Mandatory = true, HelpMessage = "AccessToken string for direct authentication of requests.")]
+        [Parameter(ParameterSetName = AccessTokenNameParameterSet, Mandatory = true, HelpMessage = "AccessToken string for direct authentication of requests.")]
         [ValidateNotNullOrEmpty]
         [Alias("token")]
         public string AccessToken { get; set; }
 
-        [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Subscription", ValueFromPipelineByPropertyName = true)]
-        [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = false, HelpMessage = "Subscription", ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = UserSubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Subscription ID", ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = ServicePrincipalSubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Subscription ID", ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = ServicePrincipalCertificateIdParameterSet, Mandatory = false, HelpMessage = "Subscription ID", ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = AccessTokenIdParameterSet, Mandatory = false, HelpMessage = "Subscription ID", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         [Alias("s", "id")]
         public string SubscriptionId { get; set; }
 
-        [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "Subscription Name", ValueFromPipelineByPropertyName = true)]
-        [Parameter(ParameterSetName = ServicePrincipalParameterSet, Mandatory = false, HelpMessage = "Subscription Name", ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = UserSubscriptionNameParameterSet, Mandatory = true, HelpMessage = "Subscription friendly name", ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = ServicePrincipalSubscriptionNameParameterSet, Mandatory = true, HelpMessage = "Subscription friendly name", ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = ServicePrincipalCertificateNameParameterSet, Mandatory = true, HelpMessage = "Subscription friendly name.", ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = AccessTokenNameParameterSet, Mandatory = true, HelpMessage = "Subscriptionfriendly Name", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         [Alias("n", "name")]
         public string SubscriptionName { get; set; }
@@ -214,11 +216,45 @@ namespace Microsoft.Azure.Commands.Profile
                 DefaultProfile = new AzureRMProfile();
             }
 
+            bool isInteractive = azureAccount.Id == null;
+
+            PromptForDataCollectionProfileIfNotExists(isInteractive);
+
             var profileClient = new RMProfileClient(AuthenticationFactory, ClientFactory, DefaultProfile);
             profileClient.WarningLog = (s) => WriteWarning(s);
-
+            
             WriteObject((PSAzureProfile)profileClient.Login(azureAccount, Environment, TenantId, SubscriptionId,
                 SubscriptionName, password));
+        }
+
+        private void PromptForDataCollectionProfileIfNotExists(bool isInteractive)
+        {
+            var collectTelemetryEnv = System.Environment.GetEnvironmentVariable(CollectTelemetryEnvironmentVariable);
+            if (!string.IsNullOrEmpty(collectTelemetryEnv))
+            {
+                bool collectTelemetry = false;
+                if (bool.TryParse(collectTelemetryEnv, out collectTelemetry))
+                {
+                    DefaultProfile.IsTelemetryCollectionEnabled = collectTelemetry;
+                }
+            }
+
+            if (!DefaultProfile.IsTelemetryCollectionEnabled.HasValue && isInteractive)
+            {
+                Collection<ChoiceDescription> choices = new Collection<ChoiceDescription>();
+                choices.Add(new ChoiceDescription("&Yes", Resources.DataCollectionConfirmYes));
+                choices.Add(new ChoiceDescription("&No", Resources.DataCollectionConfirmNo));
+                try
+                {
+                    int choice = this.Host.UI.PromptForChoice(Resources.DataCollectionActivity, Resources.DataCollectionPrompt, choices, 1);
+                    DefaultProfile.IsTelemetryCollectionEnabled = choice == 0;
+                    WriteWarning(choice == 0 ? Resources.DataCollectionConfirmYes : Resources.DataCollectionConfirmNo);
+                }
+                catch (PSInvalidOperationException)
+                {
+                    // Ignore Exception
+                }
+            }
         }
     }
 }

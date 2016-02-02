@@ -1,0 +1,13 @@
+az network load balancer backend address pool create
+
+Create a Load Balancer Backend Address Pool Config.
+
+USAGE:
+
+az network load balancer backend address pool create --name <name>
+
+PARAMETERS:
+
+--name
+  [string] The name of the BackendAddressPool
+

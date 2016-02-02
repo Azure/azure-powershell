@@ -1,0 +1,31 @@
+az network app gateway probe config new
+
+Create an Application Gateway Probe Config.
+
+USAGE:
+
+az network app gateway probe config new --name <name> --protocol <protocol> --hostName <hostName> --path <path> --interval <interval> --timeout <timeout> --unhealthyThreshold <unhealthyThreshold>
+
+PARAMETERS:
+
+--hostName
+  [string] Host name to send probe to
+
+--interval
+  [uInt32] Probe interval in seconds. This is the time interval between two consecutive probes
+
+--name
+  [string] Name of the probe
+
+--path
+  [string] The path to a file.
+
+--protocol
+  [string] Protocol used to send probe
+
+--timeout
+  [uInt32] Probe timeout in seconds. Probe marked as failed if valid response is not received with this timeout period
+
+--unhealthyThreshold
+  [uInt32] Probe  retry count. Backend server is marked down after consecutive probe failure count reaches UnhealthyThreshold
+

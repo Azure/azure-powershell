@@ -1,27 +1,38 @@
+az network app gateway backend http settings create
 
-New-AzureRmApplicationGatewayBackendHttpSettings: Creates back-end HTTP settings for an application gateway.
+Create an Application Gateway Backend Http Settings.
 
+USAGE:
 
-The New-AzureRmApplicationGatewayBackendHttpSettings cmdlet creates back-end HTTP settings for an application gateway. Back-end HTTP settings are applied to all back-end servers in a pool.
+az network app gateway backend http settings create --name <name> --port <port> --protocol <protocol> --cookieBasedAffinity <cookieBasedAffinity> [--requestTimeout <requestTimeout>] [--probeId <probeId>] [--probe <probe>]
 
+PARAMETERS:
 
-Command syntax
-
-az applicationgateway backend http settings new --name <string> --port <int> --protocol <string> --cookiebasedaffinity <string>
-
-
-Parameters
+--cookieBasedAffinity
+  [string] Cookie Based Affinity
 
 --name
-Specifies the name of the back-end HTTP settings that this cmdlet creates.
+  [string] The name of the backend http settings
 
 --port
-Specifies the port of the back-end server pool.
+  [int32] Port
+
+--probe
+  [object] Application gateway Probe. You may use commands including 'az network app gateway probe config ls' or 'az network app gateway probe config ls' or 'az network app gateway probe config new' to produce a Probe. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network app gateway backend http settings create --Probe @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
+
+--probeId
+  [string] ID of the application gateway Probe
 
 --protocol
-Specifies the protocol to use for communication between the application gateway and the back-end servers.
+  [string] Protocol
 
---cookiebasedaffinity
-Specifies whether cookie-based affinity should be enabled or disabled for the back-end server pool.
+--requestTimeout
+  [uInt32] Request Timeout. Default value 30 seconds.
 
+RELATED COMMANDS:
+az network app gateway probe config ls (produces Probe)
+
+az network app gateway probe config ls (produces Probe)
+
+az network app gateway probe config new (produces Probe)
 

@@ -1,0 +1,22 @@
+az vnet gateway vpn client root certificate add
+
+Add a Vpn Client Root Certificate.
+
+USAGE:
+
+az vnet gateway vpn client root certificate add --vpnClientRootCertificateName <vpnClientRootCertificateName> --virtualNetworkGatewayName <virtualNetworkGatewayName> --resourceGroupName <resourceGroupName> --publicCertData <publicCertData>
+
+PARAMETERS:
+
+--publicCertData
+  [string] Client Root Public certificate data
+
+--resourceGroupName
+  [string] The name of the resource group containing this resource
+
+--virtualNetworkGatewayName
+  [string] The virtual network gateway name.
+
+--vpnClientRootCertificateName (--resourceName)
+  [string] The vpn client root certificate name.
+

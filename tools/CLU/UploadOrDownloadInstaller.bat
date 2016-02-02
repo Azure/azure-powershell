@@ -8,7 +8,15 @@ set key=%3
 set downloadFolder=%4
 
 if "%1" == "upload" (
-    del /Q /F %root%\drop\*.tar.*
+    
+    IF EXIST %root%\drop\*.tar.* del /Q /F %root%\drop\*.tar.*
+
+    %~dp0\AzCopy\AzCopy.exe /Source:https://azuresdktools.blob.core.windows.net/7-zip  /S /Dest:%~dp0\7-zip  /Y
+    if ERRORLEVEL 1 (
+        echo failed to download 7-zip to local 7-zip folder
+        exit /B 1  
+    )
+     
     %~dp0\7-Zip\7z.exe a -ttar -so %root%\drop\ubuntu.14.04-x64.latest.tar %root%\drop\clurun\ubuntu.14.04-x64 | %~dp0\7-Zip\7z.exe a -si %root%\drop\ubuntu.14.04-x64.latest.tar.gz
     if ERRORLEVEL 1 (
         echo failed to create tar.gz file ubuntu.14.04-x64.latest.tar.gz
@@ -36,6 +44,7 @@ if "%1" == "upload" (
 
 if "%1" == "download" (
     echo download the latest installer
+    echo  %~dp0\AzCopy\AzCopy.exe /Source:%storageUrl% /SourceKey:%key% /Dest:%downloadFolder% /Pattern:*.gz /Y /S
     %~dp0\AzCopy\AzCopy.exe /Source:%storageUrl% /SourceKey:%key% /Dest:%downloadFolder% /Pattern:*.gz /Y /S
     if ERRORLEVEL 1 (
         echo failed to download installers from "%storageUrl%" to "%downloadFolder%"

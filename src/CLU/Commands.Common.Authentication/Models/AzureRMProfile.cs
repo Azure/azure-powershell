@@ -71,19 +71,20 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         [JsonIgnore]
         public string ProfilePath { get; private set; }
 
+        /// <summary>
+        /// When set to true, collects telemetry information.
+        /// </summary>
+        public bool? IsTelemetryCollectionEnabled { get; set; }
+        
         private void Load(string path)
         {
             this.ProfilePath = path;
             if (_dataStore.FileExists(ProfilePath))
             {
                 string contents = _dataStore.ReadFileAsText(ProfilePath);
-                AzureRMProfile profile = JsonConvert.DeserializeObject<AzureRMProfile>(contents);
-                Debug.Assert(profile != null);
-                this.Context = profile.Context;
-                this.Environments = profile.Environments;
+                JsonConvert.PopulateObject(contents, this);
             }
         }
-
 
         /// <summary>
         /// Writes profile to the disk it was opened from disk.
@@ -102,7 +103,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         /// <param name="path">File path on disk to save profile to</param>
         public void Save(string path)
         {
+            Save(_dataStore, path);
+        }
+
+        public void Save(IDataStore store, string path)
+        {
+
             if (string.IsNullOrEmpty(path))
+            {
+                return;
+            }
+
+            if (store == null)
             {
                 return;
             }
@@ -117,14 +129,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             {
                 string contents = ToString();
                 string diskContents = string.Empty;
-                if (_dataStore.FileExists(path))
+                if (store.FileExists(path))
                 {
-                    diskContents = _dataStore.ReadFileAsText(path);
+                    diskContents = store.ReadFileAsText(path);
                 }
 
                 if (diskContents != contents)
                 {
-                    _dataStore.WriteFile(path, contents);
+                    store.WriteFile(path, contents);
                 }
             }
             finally

@@ -1,44 +1,88 @@
+az network app gateway frontend port set
 
-Set-AzureRmApplicationGatewayFrontendIPConfig: Modifies a front-end IP address configuration.
+Update an Application Gateway Frontend Port.
 
+USAGE:
 
-The Set-AzureRmApplicationGatewayFrontendIPConfig cmdlet updates a front-end IP configuration. 
+az network app gateway frontend port set --applicationGateway <applicationGateway> --name <name> --port <port>
 
-An application gateway supports two types of front-end IP addresses: 
--- Public IP addresses
--- Private IP addresses for which the configuration uses Internal Load Balancing (ILB)
+PARAMETERS:
 
-An application gateway can have at most one public IP address and one private IP address. A public IP address and a private IP address should be added separately as front-end IP addresses.
-
-
-Command syntax
-
-az applicationgateway frontend port set --applicationgateway <PSApplicationGateway> --name <string> [--privateipaddress <string>] [--subnet <PSSubnet>] [--publicipaddress <PSPublicIpAddress>]
-
-az applicationgateway frontend port set --applicationgateway <PSApplicationGateway> --name <string> [--privateipaddress <string>] [--subnetid <string>] [--publicipaddressid <string>]
-
-
-Parameters
-
---applicationgateway
-Specifies an application gateway object in which to modify the front-end IP configuration.
+--applicationGateway
+  [object] The applicationGateway. You may use commands including 'az network app gateway create' or 'az network app gateway ls' or 'az network app gateway ls' or 'az network app gateway set' to produce a ApplicationGateway. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network app gateway frontend port set --ApplicationGateway @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
 
 --name
-Specifies the name of the front-end IP configuration to modify.
+  [string] The name of the frontend port
 
---privateipaddress
-Specifies the private IP address. If specified, this IP is statically allocated from the subnet.
+--port
+  [int32] Frontend port
 
---subnet
-Specifies the subnet that the application gateway uses. Specify this parameter if the gateway uses a private IP address. If PrivateIPAddress is specified, it should belong to this subnet. If PrivateIPAddress is not specified, one of the IP addresses from this subnet is dynamically picked up as the fron-tend IP address of the application gateway.
+RELATED COMMANDS:
+az network app gateway create (produces ApplicationGateway)
 
---publicipaddress
-Specifies the public IP address.
+az network app gateway ls (produces ApplicationGateway)
 
---subnetid
-Specifies the subnet ID. Specify this parameter if the gateway uses a private IP address. If PrivateIPAddress is specified, it should belong to this subnet. If PrivateIPAddress is not specified, one of the IP addresses from this subnet is dynamically picked up as the front-end IP address of the application gateway.
+az network app gateway ls (produces ApplicationGateway)
 
---publicipaddressid
-Specifies the ID of the public IP address.
+az network app gateway set (produces ApplicationGateway)
 
+az network app gateway start (produces ApplicationGateway)
+
+az applicationgateway stop (produces ApplicationGateway)
+
+az network app gateway backend address pool add (produces ApplicationGateway)
+
+az network app gateway backend address pool set (produces ApplicationGateway)
+
+az network app gateway backend http settings add (produces ApplicationGateway)
+
+az network app gateway backend http settings rm (produces ApplicationGateway)
+
+az network app gateway backend http settings set (produces ApplicationGateway)
+
+az network app gateway frontend ipconfig add (produces ApplicationGateway)
+
+az network app gateway frontend ipconfig rm (produces ApplicationGateway)
+
+az network app gateway frontend ipconfig set (produces ApplicationGateway)
+
+az network app gateway frontend port add (produces ApplicationGateway)
+
+az network app gateway frontend port rm (produces ApplicationGateway)
+
+az network app gateway frontend port set (produces ApplicationGateway)
+
+az network app gateway ipconfig add (produces ApplicationGateway)
+
+az network app gateway ipconfig rm (produces ApplicationGateway)
+
+az network app gateway ipconfig set (produces ApplicationGateway)
+
+az network app gateway http listener add (produces ApplicationGateway)
+
+az network app gateway http listener set (produces ApplicationGateway)
+
+az network app gateway probe config add (produces ApplicationGateway)
+
+az network app gateway probe config rm (produces ApplicationGateway)
+
+az network app gateway probe config set (produces ApplicationGateway)
+
+az network app gateway request routing rule add (produces ApplicationGateway)
+
+az network app gateway request routing rule set (produces ApplicationGateway)
+
+az network app gateway sku set (produces ApplicationGateway)
+
+az network app gateway ssl cert add (produces ApplicationGateway)
+
+az network app gateway ssl cert rm (produces ApplicationGateway)
+
+az network app gateway ssl cert set (produces ApplicationGateway)
+
+az network app gateway url path map add (produces ApplicationGateway)
+
+az network app gateway url path map rm (produces ApplicationGateway)
+
+az network app gateway url path map set (produces ApplicationGateway)
 

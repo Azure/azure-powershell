@@ -1,41 +1,32 @@
+az vm vhd save
 
-Save-AzureRmVhd
+Save a Vhd.
 
+USAGE:
 
+az vm vhd save [--sourceUri] <sourceUri> [--localFilePath] <localFilePath> [[--numberOfThreads] <numberOfThreads>] [-o]
 
+az vm vhd save [--resourceGroupName] <resourceGroupName> [--sourceUri] <sourceUri> [--localFilePath] <localFilePath> [[--numberOfThreads] <numberOfThreads>] [-o]
 
+az vm vhd save [--storageKey] <storageKey> [--sourceUri] <sourceUri> [--localFilePath] <localFilePath> [[--numberOfThreads] <numberOfThreads>] [-o]
 
-Command syntax
+PARAMETERS:
 
-az vhd save [--resourcegroupname] <string> [--sourceuri] <Uri> [--localfilepath] <FileInfo> [[--numberofthreads] <int>] [[--overwrite]] [--informationaction <ActionPreference>] [--informationvariable <string>]
+--localFilePath (--lf)
+  [string] Local path of the vhd file
 
-az vhd save [--storagekey] <string> [--sourceuri] <Uri> [--localfilepath] <FileInfo> [[--numberofthreads] <int>] [[--overwrite]] [--informationaction <ActionPreference>] [--informationvariable <string>]
+--numberOfThreads (--th)
+  [int32] Number of downloader threads
 
+-o (--overWrite)
+  [flag] Delete the local file if already exists
 
-Parameters
+--resourceGroupName
+  [string] The name of the resource group containing this resource
 
---resourcegroupname
+--sourceUri (--src, --source)
+  [string] Uri to blob
 
-
---sourceuri
-
-
---localfilepath
-
-
---numberofthreads
-
-
---overwrite
-
-
---informationaction
-
-
---informationvariable
-
-
---storagekey
-
-
+--storageKey (--sk)
+  [string] Key of the storage account
 

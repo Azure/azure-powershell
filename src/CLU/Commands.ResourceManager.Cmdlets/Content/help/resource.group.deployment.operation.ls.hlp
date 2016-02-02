@@ -1,0 +1,25 @@
+az resource group deployment operation ls
+
+Get Resource Group Deployment Operation details.
+
+USAGE:
+
+az resource group deployment operation ls -n <deploymentName> -g <resourceGroupName> [-s <subscriptionId>] [--apiVersion <apiVersion>] [--pre]
+
+PARAMETERS:
+
+--apiVersion
+  [string] When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.
+
+-g (--group, --resourceGroupName)
+  [string] The name of the resource group containing this resource
+
+-n (--name, --deploymentName)
+  [string] The deployment name.
+
+--pre
+  [flag] When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.
+
+-s (--id, --subscriptionId)
+  [guid] The subscription identity, a global unique identifier (GUID) that uniquely identifies the subscription.
+

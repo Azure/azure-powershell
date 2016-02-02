@@ -1,0 +1,19 @@
+az vnet gateway vpn client root certificate ls
+
+Get Vpn Client Root Certificate details.
+
+USAGE:
+
+az vnet gateway vpn client root certificate ls --virtualNetworkGatewayName <virtualNetworkGatewayName> --resourceGroupName <resourceGroupName> [--vpnClientRootCertificateName <vpnClientRootCertificateName>]
+
+PARAMETERS:
+
+--resourceGroupName
+  [string] The name of the resource group containing this resource
+
+--virtualNetworkGatewayName
+  [string] The virtual network gateway name.
+
+--vpnClientRootCertificateName (--resourceName)
+  [string] The vpnclient root certificate name.
+

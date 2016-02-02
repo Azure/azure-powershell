@@ -1,24 +1,32 @@
+az network security rule ls
 
-Get-AzureRmNetworkSecurityRuleConfig: Get a network security rule configuration for a network security group.
+Get Network Security Rule Config details.
 
+USAGE:
 
-The Get-AzureRmNetworkSecurityRuleConfig cmdlet gets a network security rule configuration for an Azure network security group.
+az network security rule ls --networkSecurityGroup <networkSecurityGroup> [--name <name>] [--defaultRules]
 
+PARAMETERS:
 
-Command syntax
-
-az networksecurityrule config ls [--name <string>] --networksecuritygroup <PSNetworkSecurityGroup> [--defaultrules]
-
-
-Parameters
+--defaultRules
+  [flag] 
 
 --name
-Specifies the name of the network security rule configuration to get.
+  [string] The name of the rule
 
---networksecuritygroup
-Specifies a NetworkSecurityGroup object that contains the network security rule configuration to get.
+--networkSecurityGroup
+  [object] The NetworkSecurityGroup. You may use commands including 'az network security group create' or 'az network security group ls' or 'az network security group set' or 'az network security rule add' to produce a NetworkSecurityGroup. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network security rule ls --NetworkSecurityGroup @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
 
---defaultrules
-Indicates whether this cmdlet gets a user-created rule configuration or a default rule configuration.
+RELATED COMMANDS:
+az network security group create (produces NetworkSecurityGroup)
 
+az network security group ls (produces NetworkSecurityGroup)
+
+az network security group set (produces NetworkSecurityGroup)
+
+az network security rule add (produces NetworkSecurityGroup)
+
+az network security rule rm (produces NetworkSecurityGroup)
+
+az network security rule set (produces NetworkSecurityGroup)
 

@@ -1,46 +1,32 @@
+az storage account set
 
-Set-AzureRmStorageAccount: Update the Storage Account properties
+Update a Storage Account.
 
+USAGE:
 
-This cmdlet allows you to update the Storage Account properties.
+az storage account set [-g] <resourceGroupName> [-n] <name> [-t] <type>
 
+az storage account set [-g] <resourceGroupName> [-n] <name> [--customDomainName] <customDomainName> [[--useSubDomain] <useSubDomain>]
 
-Command syntax
+az storage account set [-g] <resourceGroupName> [-n] <name> [--tags] <tags>
 
-az storage account set [--resourcegroupname] <string> [--name] <string> [--type] <string> [--profile <AzureProfile>]
+PARAMETERS:
 
-az storage account set [--resourcegroupname] <string> [--name] <string> [--customdomainname] <string> [[--usesubdomain] <Nullable`1[Boolean]>] [--profile <AzureProfile>]
+--customDomainName
+  [string] Storage Account Custom Domain Name.
 
-az storage account set [--resourcegroupname] <string> [--name] <string> [--tags] <Hashtable[]> [--profile <AzureProfile>]
+-g (--group, --resourceGroupName)
+  [string] The name of the resource group containing this resource
 
+-n (--storageAccountName, --accountName, --name)
+  [string] Storage Account StorageAccountName.
 
-Parameters
-
---resourcegroupname
-Name of the Resource Group
-
---name
-Name of the Storage Account
-
---type
-Specifies the account type of the storage account. One of four options:
-            • Standard_LRS (Locally-redundant storage)
-            • Standard_GRS (Geo-redundant storage)
-            • Standard_RAGRS (Read access geo-redundant storage)
-            • Standard_ZRS
-          
-            Note that Standard_ZRS accounts cannot be changed to other account types, and other account types cannot be changed to Standard_ZRS.
-
---profile
-
-
---customdomainname
-The name of the custom domain.
-
---usesubdomain
-Indicates whether indirect CName validation is enabled.
+-t (--type)
+  [string] Storage Account Type.
 
 --tags
-Tags to set on the storage account.
+  [hashtable[]] Storage Account Tags.
 
+--useSubDomain
+  [boolean] To Use Sub Domain StorageAccountName.
 

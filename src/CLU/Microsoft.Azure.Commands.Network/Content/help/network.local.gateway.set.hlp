@@ -1,21 +1,23 @@
+az network local gateway set
 
-Set-AzureRmLocalNetworkGateway
+Update a Local Network Gateway.
 
+USAGE:
 
+az network local gateway set --localNetworkGateway <localNetworkGateway> --addressPrefix <addressPrefix>
 
+PARAMETERS:
 
+--addressPrefix
+  [string[]] The address prefixes of the local network to be changed.
 
-Command syntax
+--localNetworkGateway
+  [object] The LocalNetworkGateway. You may use commands including 'az network local gateway create' or 'az network local gateway ls' or 'az network local gateway set' to produce a LocalNetworkGateway. You can pipe the output of one of these commands to the input of this command, or you can store the ouput to a file and use 'az network local gateway set --LocalNetworkGateway @@<file-name>' to pass the file contents. See 'Related Commands' for more information.
 
-az localgateway set --localnetworkgateway <PSLocalNetworkGateway> --addressprefix <List`1[String]>
+RELATED COMMANDS:
+az network local gateway create (produces LocalNetworkGateway)
 
+az network local gateway ls (produces LocalNetworkGateway)
 
-Parameters
-
---localnetworkgateway
-
-
---addressprefix
-
-
+az network local gateway set (produces LocalNetworkGateway)
 

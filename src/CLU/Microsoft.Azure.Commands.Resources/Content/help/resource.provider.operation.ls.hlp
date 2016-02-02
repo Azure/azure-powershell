@@ -1,34 +1,13 @@
+az resource provider operation ls
 
-Get-AzureRmProviderOperation: Gets the operations for an Azure resource provider that are securable using Azure RBAC.
+Get Provider Operation details.
 
+USAGE:
 
+az resource provider operation ls [-s] <operationSearchString>
 
-        The Get-AzureRmProviderOperation gets the operations exposed by Azure resource providers. Operations can be composed to create custom roles in Azure RBAC. The command takes as input an operation search string (with possible wildcard(*) character(s)) which determines the operations details to display.
-      
+PARAMETERS:
 
-
-        Use Get-AzureRmProviderOperation * to get all operations for all Azure resource providers.
-      
-
-
-        Use Get-AzureRmProviderOperation Microsoft.Compute/* to get all operations of Microsoft.Compute resource provider.
-      
-
-
-Command syntax
-
-az resourcemanager provider operation ls [--operationsearchstring] <string> [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-
-Parameters
-
---operationsearchstring
-The operation search string (with possible wildcard (*) characters)
-
---informationaction
-
-
---informationvariable
-
-
+-s (--operationSearchString)
+  [string] The action string.
 

@@ -1,27 +1,31 @@
+az network interface ls
 
-Get-AzureRmNetworkInterface: Gets a network interface.
+Get Network Interface details.
 
+USAGE:
 
-The Get-AzureRmNetworkInterface cmdlet gets an Azure network interface or a list of Azure network interfaces in a resource group.
+az network interface ls [--name <name>] [--resourceGroupName <resourceGroupName>]
 
+az network interface ls --name <name> --resourceGroupName <resourceGroupName> --expandResource <expandResource>
 
-Command syntax
+az network interface ls --resourceGroupName <resourceGroupName> [--name <name>] [--virtualMachineScaleSetName <virtualMachineScaleSetName>] [--virtualMachineIndex <virtualMachineIndex>]
 
-az networkinterface ls [--name <string>] [--resourcegroupname <string>] [--virtualmachinescalesetname <string>] [--virtualmachineindex <string>]
+az network interface ls --name <name> --resourceGroupName <resourceGroupName> --virtualMachineScaleSetName <virtualMachineScaleSetName> --virtualMachineIndex <virtualMachineIndex> --expandResource <expandResource>
 
+PARAMETERS:
 
-Parameters
+--expandResource
+  [string] The resource reference to be expanded.
 
 --name
-Specifies the name of the network interface to get.
+  [string] The resource name.
 
---resourcegroupname
-Specifies the name of the resource group that contains the network interface to get.
+--resourceGroupName
+  [string] The name of the resource group containing this resource
 
---virtualmachinescalesetname
+--virtualMachineIndex
+  [string] Virtual Machine Index.
 
-
---virtualmachineindex
-
-
+--virtualMachineScaleSetName
+  [string] Virtual Machine Scale Set Name.
 

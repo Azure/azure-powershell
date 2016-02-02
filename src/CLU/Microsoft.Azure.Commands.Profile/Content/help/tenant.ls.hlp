@@ -1,24 +1,13 @@
+az tenant ls
 
-Get-AzureRmTenant: Get detailed information about tenants authorized for the current user
+Get Tenant details.
 
+USAGE:
 
-Get detailed information about tenants authorized for the current user
+az tenant ls [[-t] <tenantId>]
 
+PARAMETERS:
 
-Command syntax
-
-az tenant ls [[--tenantid] <string>] [--informationaction <ActionPreference>] [--informationvariable <string>]
-
-
-Parameters
-
---tenantid
-TenantId to get information about.  If not provided, all authorized tenants are returned.
-
---informationaction
-
-
---informationvariable
-
-
+-t (--domain, --tenant, --tenantId)
+  [string] The tenant identity (GUID) or the domain name.
 

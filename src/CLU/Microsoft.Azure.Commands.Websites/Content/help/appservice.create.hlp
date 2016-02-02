@@ -1,8 +1,42 @@
-
-New-AzureRmWebApp
-
-
-Command syntax
-
 az appservice create
+
+Create a Web App.
+
+USAGE:
+
+az appservice create [-g] <resourceGroupName> [-n] <name> [-l] <location> [[--appServicePlan] <appServicePlan>] [[--sourceWebApp] <sourceWebApp>] [[--trafficManagerProfileId] <trafficManagerProfileId>] [--ignoreSourceControl] [--ignoreCustomHostNames] [[--appSettingsOverrides] <appSettingsOverrides>]
+
+az appservice create [-g] <resourceGroupName> [-n] <name> [-l] <location> [[--appServicePlan] <appServicePlan>] [[--sourceWebApp] <sourceWebApp>] [[--trafficManagerProfileName] <trafficManagerProfileName>] [--ignoreSourceControl] [--ignoreCustomHostNames] [[--appSettingsOverrides] <appSettingsOverrides>]
+
+PARAMETERS:
+
+--appServicePlan (--plan)
+  [string] The name of the app service plan eg: Default1.
+
+--appSettingsOverrides
+  [hashtable] Overrides all application settings in new web app
+
+-g (--group, --resourceGroupName)
+  [string] The name of the resource group containing this resource
+
+--ignoreCustomHostNames
+  [flag] Ignore custom hostnames on source web app
+
+--ignoreSourceControl
+  [flag] Ignore source control on source web app
+
+-l (--location)
+  [string] The region that will contain this resource.  Possible values include 'East US', 'North Europe', 'East Asia'
+
+-n (--name)
+  [string] The name of the web app.
+
+--sourceWebApp
+  [object] The source web app to clone
+
+--trafficManagerProfileId
+  [string] Resource Id of existing traffic manager profile
+
+--trafficManagerProfileName
+  [string] Name of new traffic manager profile
 
