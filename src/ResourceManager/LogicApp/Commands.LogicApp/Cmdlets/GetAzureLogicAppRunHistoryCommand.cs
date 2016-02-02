@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Creates a new LogicApp workflow 
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureLogicAppRunHistory"), OutputType(typeof(object))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmLogicAppRunHistory"), OutputType(typeof(object))]
     public class AzureLogicAppRunHistoryCommand : LogicAppBaseCmdlet
     {
 

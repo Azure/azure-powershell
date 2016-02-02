@@ -26,11 +26,11 @@ function Test-GetAzureLogicAppAccessKey
 	$workflow = TestSetup-CreateWorkflow $resourceGroupName $workflowName $planName	
 
 	#Case1: Get access keys of the workflow
-	$workflowAccessKeys = Get-AzureLogicAppAccessKey -ResourceGroupName $resourceGroupName -Name $workflowName
+	$workflowAccessKeys = Get-AzureRmLogicAppAccessKey -ResourceGroupName $resourceGroupName -Name $workflowName
 	Assert-NotNull $workflowAccessKeys
 	
 	#Case2: Get specific access key of the workflow
-	$workflowAccessKeys = Get-AzureLogicAppAccessKey -ResourceGroupName $resourceGroupName -Name $workflowName -AccessKeyName "default"
+	$workflowAccessKeys = Get-AzureRmLogicAppAccessKey -ResourceGroupName $resourceGroupName -Name $workflowName -AccessKeyName "default"
 	Assert-NotNull $workflowAccessKeys		
 }
 
@@ -46,9 +46,9 @@ function Test-SetAzureLogicAppAccessKey
 	$workflow = TestSetup-CreateWorkflow $resourceGroupName $workflowName $planName	
 
 	#Case1: Regenerate secret for the access key of the workflow
-	$workflowAccessKeys = Get-AzureLogicAppAccessKey -ResourceGroupName $resourceGroupName -Name $workflowName
-	$workflowAccessKey1 = Set-AzureLogicAppAccessKey -ResourceGroupName $resourceGroupName -Name $workflowName -AccessKeyName "default" -KeyType "Primary"
-	$workflowAccessKey2 = Set-AzureLogicAppAccessKey -ResourceGroupName $resourceGroupName -Name $workflowName -AccessKeyName "default" -KeyType "Secondary"	
+	$workflowAccessKeys = Get-AzureRmLogicAppAccessKey -ResourceGroupName $resourceGroupName -Name $workflowName
+	$workflowAccessKey1 = Set-AzureRmLogicAppAccessKey -ResourceGroupName $resourceGroupName -Name $workflowName -AccessKeyName "default" -KeyType "Primary"
+	$workflowAccessKey2 = Set-AzureRmLogicAppAccessKey -ResourceGroupName $resourceGroupName -Name $workflowName -AccessKeyName "default" -KeyType "Secondary"	
 	
 	Assert-AreNotEqual $workflowAccessKey1.PrimarySecretKey $workflowAccessKeys.PrimarySecretKey
 	Assert-AreNotEqual $workflowAccessKey2.SecondarySecretKey $workflowAccessKeys.SecondarySecretKey	

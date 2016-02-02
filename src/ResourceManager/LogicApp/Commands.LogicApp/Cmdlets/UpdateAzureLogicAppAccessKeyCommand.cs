@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Sets the secret of the access keys of a workflow
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureLogicAppAccessKey"), OutputType(typeof (object))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmLogicAppAccessKey"), OutputType(typeof(object))]
     public class UpdateAzureLogicAppAccessKeyCommand : LogicAppBaseCmdlet
     {
         #region Input Parameters

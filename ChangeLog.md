@@ -1,5 +1,4 @@
-## 2016.02.02 version 1.1.1
-* Azure RemoteApp: Organizational Unit in Azure RemoteApp RDFE cmdlets now accepts Unicode characters.
+##2016.03.08 version 1.3.0
 * Azure LogicApp: New cmdlets for managing LogicApps  
   * Get-AzureLogicAppAccessKey
   * Get-AzureLogicApp
@@ -13,6 +12,8 @@
   * Set-AzureLogicAppAccessKey
   * Set-AzureLogicApp
   * Stop-AzureLogicAppRun
+## 2016.02.02 version 1.1.1
+* Azure RemoteApp: Organizational Unit in Azure RemoteApp RDFE cmdlets now accepts Unicode characters.
 ## 2016.01.12 version 1.1.0
 * Azure SQL Database: Threat Detection policies:
   * Using new Threat Detection Types

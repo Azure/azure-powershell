@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Gets the access key of a workflow.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureLogicAppAccessKey"), OutputType(typeof (object))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmLogicAppAccessKey"), OutputType(typeof(object))]
     public class GetAzureLogicAppAccessKeyCommand : LogicAppBaseCmdlet
     {
         #region private attribues

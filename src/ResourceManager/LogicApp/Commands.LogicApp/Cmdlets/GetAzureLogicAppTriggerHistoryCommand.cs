@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Gets the trigger history of the workflow
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureLogicAppTriggerHistory"), OutputType(typeof (object))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmLogicAppTriggerHistory"), OutputType(typeof(object))]
     public class GetAzureLogicAppTriggerHistoryCommand : LogicAppBaseCmdlet
     {
 

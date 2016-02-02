@@ -14,7 +14,7 @@
 
 <#
 .SYNOPSIS
-Test Get-AzureLogicAppTrigger for workflow triggers and test to get trigger by name
+Test Get-AzureRmLogicAppTrigger for workflow triggers and test to get trigger by name
 #>
 function Test-GetAzureLogicAppTrigger
 {
@@ -26,18 +26,18 @@ function Test-GetAzureLogicAppTrigger
 	$workflowName = getAssetname	
 	$definitionFilePath = "Resources\TestSimpleWorkflowTriggerDefinition.json"
 		
-	$workflow = New-AzureLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -AppServicePlan $planName
+	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -AppServicePlan $planName
 
-	$workflowTrigger = Get-AzureLogicAppTrigger -ResourceGroupName $resourceGroupName -Name $workflowName		    
+	$workflowTrigger = Get-AzureRmLogicAppTrigger -ResourceGroupName $resourceGroupName -Name $workflowName		    
 	Assert-NotNull $workflowTrigger	
 
-	$workflowTrigger = Get-AzureLogicAppTrigger -ResourceGroupName $resourceGroupName -Name $workflowName -TriggerName "httpTrigger" 	    
+	$workflowTrigger = Get-AzureRmLogicAppTrigger -ResourceGroupName $resourceGroupName -Name $workflowName -TriggerName "httpTrigger" 	    
 	Assert-NotNull $workflowTrigger
 }
 
 <#
 .SYNOPSIS
-Test Get-AzureLogicAppTriggerHistory command to get workflow trigger histories and history by history name
+Test Get-AzureRmLogicAppTriggerHistory command to get workflow trigger histories and history by history name
 #>
 function Test-GetAzureLogicAppTriggerHistory
 {	
@@ -49,27 +49,27 @@ function Test-GetAzureLogicAppTriggerHistory
 	$workflowName = getAssetname		
 	$definitionFilePath = "Resources\TestSimpleWorkflowTriggerDefinition.json"			
 		
-	$workflow = New-AzureLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -AppServicePlan $planName
+	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -AppServicePlan $planName
 	
 	[int]$counter = 0
 	do {
 		Sleep -seconds 2        
-		$workflow =  Get-AzureLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName
+		$workflow =  Get-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName
 	} while ($workflow.State -ne "Enabled" -or $counter++ -lt 5)
 	
-	Start-AzureLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -TriggerName "httpTrigger"
+	Start-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -TriggerName "httpTrigger"
 
-	$workflowTriggerHistories = Get-AzureLogicAppTriggerHistory -ResourceGroupName $resourceGroupName -Name $workflowName -TriggerName "httpTrigger"
+	$workflowTriggerHistories = Get-AzureRmLogicAppTriggerHistory -ResourceGroupName $resourceGroupName -Name $workflowName -TriggerName "httpTrigger"
 	Assert-NotNull $workflowTriggerHistories	
 	$firstHistory = $workflowTriggerHistories[0]
 
-	$workflowTriggerHistory = Get-AzureLogicAppTriggerHistory -ResourceGroupName $resourceGroupName -Name $workflowName -TriggerName "httpTrigger" -HistoryName  $firstHistory.Name
+	$workflowTriggerHistory = Get-AzureRmLogicAppTriggerHistory -ResourceGroupName $resourceGroupName -Name $workflowName -TriggerName "httpTrigger" -HistoryName  $firstHistory.Name
 	Assert-NotNull $workflowTriggerHistory	
 }
 
 <#
 .SYNOPSIS
-Test Start-AzureLogicAppTrigger command to run workflow trigger
+Test Start-AzureRmLogicAppTrigger command to run workflow trigger
 #>
 function Test-StartAzureLogicAppTrigger
 {	
@@ -81,24 +81,24 @@ function Test-StartAzureLogicAppTrigger
 	$workflowName = getAssetname	
 	$definitionFilePath = "Resources\TestSimpleWorkflowTriggerDefinition.json"			
 		
-	$workflow = New-AzureLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -AppServicePlan $planName
+	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -AppServicePlan $planName
 	
 	[int]$counter = 0
 	do {
 		Sleep -seconds 2        
-		$workflow =  Get-AzureLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName
+		$workflow =  Get-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName
 	} while ($workflow.State -ne "Enabled" -or $counter++ -lt 5)
 	
-	$workflowTriggerHistories1 = Get-AzureLogicAppTriggerHistory -ResourceGroupName $resourceGroupName -Name $workflowName -TriggerName "httpTrigger"
+	$workflowTriggerHistories1 = Get-AzureRmLogicAppTriggerHistory -ResourceGroupName $resourceGroupName -Name $workflowName -TriggerName "httpTrigger"
 	$counter = 2
 	while($val -lt $counter)
 	{
-		Start-AzureLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -TriggerName "httpTrigger"
+		Start-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -TriggerName "httpTrigger"
 		Sleep -seconds 1
 		$val++	
 	}
 
-	$workflowTriggerHistories2 = Get-AzureLogicAppTriggerHistory -ResourceGroupName $resourceGroupName -Name $workflowName -TriggerName "httpTrigger"	
+	$workflowTriggerHistories2 = Get-AzureRmLogicAppTriggerHistory -ResourceGroupName $resourceGroupName -Name $workflowName -TriggerName "httpTrigger"	
 	$count = $workflowTriggerHistories2.Count - $workflowTriggerHistories1.Count
 	Assert-AreEqual $counter $count 
 }
