@@ -71,31 +71,5 @@ namespace StaticAnalysis.DependencyAnalyzer
 
             return result;
         }
-
-        /// <summary>
-        /// Create a new AppDomain and create a remote instance of AssemblyLoader we can use there
-        /// </summary>
-        /// <param name="directoryPath">directory containing assemblies</param>
-        /// <param name="testDomain">A new AppDomain, where assemblies can be loaded</param>
-        /// <returns>A proxy to the AssemblyLoader running in the newly created app domain</returns>
-        public static AssemblyLoader Create(string directoryPath, out AppDomain testDomain)
-        {
-            if (string.IsNullOrWhiteSpace(directoryPath))
-            {
-                throw new ArgumentException("directoryPath");
-            }
-
-            var setup = new AppDomainSetup();
-            setup.ApplicationBase = directoryPath;
-            setup.ApplicationName = "TestDomain";
-            setup.ApplicationTrust = AppDomain.CurrentDomain.ApplicationTrust;
-            setup.DisallowApplicationBaseProbing = false;
-            setup.DisallowCodeDownload = false;
-            setup.DisallowBindingRedirects = false;
-            setup.DisallowPublisherPolicy = false;
-            testDomain = AppDomain.CreateDomain("TestDomain", null, setup);
-            return testDomain.CreateInstanceFromAndUnwrap(typeof(AssemblyLoader).Assembly.Location,
-                typeof(AssemblyLoader).FullName) as AssemblyLoader;
-        }
     }
 }
