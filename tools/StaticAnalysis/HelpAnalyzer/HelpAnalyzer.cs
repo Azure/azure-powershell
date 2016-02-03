@@ -48,7 +48,8 @@ namespace StaticAnalysis.HelpAnalyzer
                 foreach (var directory in Directory.EnumerateDirectories(Path.GetFullPath(baseDirectory)))
                 {
                     var helpFiles = Directory.EnumerateFiles(directory, "*.dll-Help.xml")
-                        .Where(f => !processedHelpFiles.Contains(Path.GetFileName(f), StringComparer.OrdinalIgnoreCase)).ToList();
+                        .Where(f => !processedHelpFiles.Contains(Path.GetFileName(f), 
+                            StringComparer.OrdinalIgnoreCase)).ToList();
                     if (helpFiles.Any())
                     {
                         Directory.SetCurrentDirectory(directory);
