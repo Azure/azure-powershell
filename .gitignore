@@ -8,6 +8,7 @@ TestResults
 *.ncrunchsolution
 *.patch
 msbuild.log
+*.dll-help.psd1
 
 # app.config is not useful for PowerShell.
 # please do not commit any app.config files.

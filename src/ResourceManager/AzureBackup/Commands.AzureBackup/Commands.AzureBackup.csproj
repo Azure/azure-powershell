@@ -197,7 +197,6 @@
       <Link>AzureRM.Backup.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Microsoft.Azure.Commands.AzureBackup.dll-help.psd1" />
     <None Include="Microsoft.Azure.Commands.AzureBackup.format.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
