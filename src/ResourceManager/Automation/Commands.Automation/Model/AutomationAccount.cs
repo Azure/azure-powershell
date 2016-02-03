@@ -48,6 +48,8 @@ namespace Microsoft.Azure.Commands.Automation.Model
                 this.ResourceGroupName = automationAccount.Id.Substring(1).Split(Convert.ToChar("/"))[3];
             }
 
+            this.SubscriptionId = automationAccount.Id.Substring(1).Split(Convert.ToChar("/"))[1];
+
             this.AutomationAccountName = automationAccount.Name;
             this.Location = automationAccount.Location;
 
@@ -72,6 +74,11 @@ namespace Microsoft.Azure.Commands.Automation.Model
         public AutomationAccount()
         {
         }
+
+        /// <summary>
+        /// Gets or sets the Subscription ID
+        /// </summary>
+        public string SubscriptionId { get; set; }
 
         /// <summary>
         /// Gets or sets the resource group name.

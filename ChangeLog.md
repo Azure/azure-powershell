@@ -1,3 +1,26 @@
+## 2016.02.03 version 1.2.0
+* Azure RemoteApp: 
+  * Organizational Unit in Azure RemoteApp RDFE cmdlets now accepts Unicode characters.
+* Azure Stack Admin: 
+  * New module for the management of azure stack administrative resources such as plan, offer, subscription, resource provider and
+    gallery items.
+* Azure Stack Storage Admin: 
+  * New module for the management of azure stack storage administrative resources such as configuration, infrastructure and health.
+* Azure Operational Insights new cmdlets:
+  *  Get-AzureRmOperationalInsightsSavedSearch
+  *  Get-AzureRmOperationalInsightsSavedSeearchResults
+  *  Get-AzureRmOperationalInsightsSavedSearches
+  *  Get-AzureRmOperationalInsightsSchema
+  *  Get-AzureRmOperationalInsightsSearchResult
+  *  Get-AzureRmOperationalInsightsSearchResultUpdate
+  *  Remove-AzureRmOperationalInsightsSavedSearch
+  *  Remove-AzureRmOperationalInsightsSavedSearch
+  *  Set-AzureRmOperationalInsightsSavedSearch
+* Add-AzureRmAccount fixed issue with wrong credential message
+* Get-AzureRmSubscription cmdlet now returns paginated results
+* Update-AzureRM now only updates when need unless -Force is used
+* Added telemetry to ARM and ASM cmdlets
+
 ## 2016.01.12 version 1.1.0
 * Azure SQL Database: Threat Detection policies:
   * Using new Threat Detection Types

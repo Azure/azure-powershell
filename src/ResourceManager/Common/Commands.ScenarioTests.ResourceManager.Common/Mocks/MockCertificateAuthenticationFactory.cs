@@ -85,5 +85,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
         {
             return new CertificateCloudCredentials(context.Subscription.Id.ToString(), Certificate);
         }
+
+
+        public Rest.ServiceClientCredentials GetServiceClientCredentials(AzureContext context, AzureEnvironment.Endpoint targetEndpoint)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

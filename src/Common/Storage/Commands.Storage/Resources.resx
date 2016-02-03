@@ -160,7 +160,7 @@
     <value>Can not find the specified file '{0}'.</value>
   </data>
   <data name="FileTransmitStatus" xml:space="preserve">
-    <value>Percent : {0}%. Average Speed : {1}/Second.</value>
+    <value>Percent : {0}%.</value>
   </data>
   <data name="InvalidBlobName" xml:space="preserve">
     <value>Blob name '{0}' is invalid. Valid names should be 1 through 1024 characters long and should not end with a . or /.</value>
@@ -519,6 +519,9 @@
     <value>CopyId mismatch on  blob '{0}' in container '{1}'. Expected:{2}. User supplied: {3}.</value>
     <comment>0 for blob name, 1 for container name. 2 for copy id on blob, 3 for user supplied copy id.</comment>
   </data>
+  <data name="DestinationBlobTypeNotMatch" xml:space="preserve">
+    <value>User specified blob type does not match the blob type of the existing destination blob.</value>
+  </data>    
   <data name="StopCopyOperationCancelled" xml:space="preserve">
     <value>The stop copy operation on blob '{0}' in container '{1}' is cancelled.</value>
     <comment>0 for blob name, 1 for container name.</comment>

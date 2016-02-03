@@ -84,5 +84,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
         {
             throw new System.NotImplementedException();
         }
+
+
+        public Rest.ServiceClientCredentials GetServiceClientCredentials(AzureContext context, AzureEnvironment.Endpoint targetEndpoint)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
