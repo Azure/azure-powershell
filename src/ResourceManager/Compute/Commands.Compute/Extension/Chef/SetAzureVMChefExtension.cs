@@ -58,7 +58,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
 
         [Alias("HandlerVersion", "Version")]
         [Parameter(
-            Mandatory = true,
             Position = 9,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The extension version.")]
@@ -224,7 +223,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
                     bool IsBootstrapOptionsEmpty = string.IsNullOrEmpty(this.BootstrapOptions);
                     string AutoUpdateChefClient = this.AutoUpdateChefClient.IsPresent ? "true" : "false";
                     string DeleteChefConfig = this.DeleteChefConfig.IsPresent ? "true" : "false";
-                    string BootstrapVersion = this.BootstrapVersion;
+                    string BootstrapVersion = string.IsNullOrEmpty(this.BootstrapVersion) ? "" : this.BootstrapVersion;
                     string UninstallChefClient = this.UninstallChefClient.IsPresent ? "true" : "false";
 
                     //Cases handled:
@@ -389,15 +388,30 @@ validation_client_name 	'{1}'
                 this.Name = ExtensionDefaultName;
             }
 
-            //Uncomment this when GetLatestChefExtensionVersion() is implemented
-            //this.TypeHandlerVersion = this.TypeHandlerVersion ?? GetLatestChefExtensionVersion();
+            this.TypeHandlerVersion = this.TypeHandlerVersion ?? GetLatestChefExtensionVersion();
         }
 
         private string GetLatestChefExtensionVersion()
-        {       
-            //Right now chef extension's major version is freezed as 1210. 
-            //Todo: Implement proper logic to fetch the current major.minor version number
-            return "1210.12";
+        {
+            var result = ComputeClient.ComputeManagementClient.VirtualMachineExtensionImages.ListVersionsWithHttpMessagesAsync(this.Location, ExtensionDefaultPublisher, this.Name).GetAwaiter().GetResult();
+
+            var images = from r in result.Body
+                         select new PSVirtualMachineExtensionImage
+                         {
+                             RequestId = result.RequestId,
+                             StatusCode = result.Response.StatusCode,
+                             Id = r.Id,
+                             Location = r.Location,
+                             Version = r.Name,
+                             PublisherName = ExtensionDefaultPublisher,
+                             Type = this.Name
+                         };
+
+            var maxVersion = images.Max(extension => extension.Version);
+            string[] separators = { "." };
+            string[] splitVersion = maxVersion.Split(separators, StringSplitOptions.None);
+            string majorMinorVersion = splitVersion[0] + "." + splitVersion[1];
+            return majorMinorVersion;
         }
 
         private void ValidateParameters()
