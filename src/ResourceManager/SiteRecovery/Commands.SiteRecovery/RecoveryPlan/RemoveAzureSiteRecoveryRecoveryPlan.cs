@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// <summary>
     /// Remove Azure Site Recovery Recovery Plan.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoveryRecoveryPlan")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoveryRecoveryPlan", DefaultParameterSetName = ASRParameterSets.ByObject)]
     public class RemoveAzureSiteRecoveryRecoveryPlan : SiteRecoveryCmdletBase
     {
         #region Parameters
@@ -32,7 +32,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Gets or sets Name of the Recovery Plan.
         /// </summary>
-        [Parameter(Mandatory = true)]
+        [Parameter(Mandatory = true, ParameterSetName = ASRParameterSets.ByName)]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets Name of the Recovery Plan.
+        /// </summary>
+        [Parameter(Mandatory = true, ParameterSetName = ASRParameterSets.ByObject)]
         public ASRRecoveryPlan RecoveryPlan { get; set; }
 
         #endregion Parameters
@@ -44,7 +50,12 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            LongRunningOperationResponse response = RecoveryServicesClient.RemoveAzureSiteRecoveryRecoveryPlan(this.RecoveryPlan.Name);
+            if (string.Compare(this.ParameterSetName, ASRParameterSets.ByObject, StringComparison.OrdinalIgnoreCase) == 0)
+            {
+                this.Name = this.RecoveryPlan.Name;
+            }
+
+            LongRunningOperationResponse response = RecoveryServicesClient.RemoveAzureSiteRecoveryRecoveryPlan(this.Name);
 
             JobResponse jobResponse =
                 RecoveryServicesClient

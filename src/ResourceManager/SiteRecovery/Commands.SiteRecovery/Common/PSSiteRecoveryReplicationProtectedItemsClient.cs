@@ -16,6 +16,7 @@ using System;
 using Microsoft.Azure.Management.SiteRecovery;
 using Microsoft.Azure.Management.SiteRecovery.Models;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -36,6 +37,37 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 this
                 .GetSiteRecoveryClient()
                 .ReplicationProtectedItem.List(fabricName, protectionContainerName, this.GetRequestHeaders());
+        }
+
+        /// <summary>
+        /// Retrieves Protected Items.
+        /// </summary>
+        /// <param name="protectionContainerName">Recovery Plan Name</param>
+        /// <param name="sourceFabricName">Source Fabric Name</param>
+        /// <returns>Protection entity list response</returns>
+        public ReplicationProtectedItemListResponse GetAzureSiteRecoveryReplicationProtectedItemInRP(string recoveryPlanName)
+        {
+            ReplicationProtectedItemListResponse output = new ReplicationProtectedItemListResponse();
+            List<ReplicationProtectedItem> replicationProtectedItems = new List<ReplicationProtectedItem>();
+
+            var protectedItemsQueryParameter = new ProtectedItemsQueryParameter()
+            {
+                RecoveryPlanName = recoveryPlanName
+            };
+            ReplicationProtectedItemListResponse response = this
+                .GetSiteRecoveryClient()
+                .ReplicationProtectedItem.ListAll(null, protectedItemsQueryParameter, this.GetRequestHeaders());
+            replicationProtectedItems.AddRange(response.ReplicationProtectedItems);
+            while (response.NextLink != null)
+            {
+                response = this
+                    .GetSiteRecoveryClient()
+                    .ReplicationProtectedItem.ListAllNext(response.NextLink, this.GetRequestHeaders());
+                replicationProtectedItems.AddRange(response.ReplicationProtectedItems);
+            }
+
+            output.ReplicationProtectedItems = replicationProtectedItems;
+            return output;
         }
 
         /// <summary>

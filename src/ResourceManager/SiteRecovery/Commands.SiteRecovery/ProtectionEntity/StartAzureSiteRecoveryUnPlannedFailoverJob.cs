@@ -206,7 +206,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             // Refresh RP Object
             var rp = RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlan(this.RecoveryPlan.Name);
-            this.RecoveryPlan = new ASRRecoveryPlan(rp.RecoveryPlan);
 
             var recoveryPlanUnplannedFailoverInputProperties = new RecoveryPlanUnplannedFailoverInputProperties()
             {
@@ -215,7 +214,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 ProviderSpecificDetails = new List<RecoveryPlanProviderSpecificFailoverInput>()
             };
 
-            foreach (string replicationProvider in this.RecoveryPlan.ReplicationProvider)
+            foreach (string replicationProvider in rp.RecoveryPlan.Properties.ReplicationProviders)
             {
                 if (0 == string.Compare(
                     replicationProvider,

@@ -114,12 +114,12 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                         RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(fabricName,
                         pe.ProtectionContainerId, Utilities.GetValueFromArmId(protectableItemResponse.ProtectableItem.Properties.ReplicationProtectedItemId, ARMResourceTypeConstants.ReplicationProtectedItems));
 
-                        RecoveryPlanProtectedItem recoveryPlanProtectedItem = new RecoveryPlanProtectedItem();
-                        recoveryPlanProtectedItem.Id = replicationProtectedItemResponse.ReplicationProtectedItem.Id;
+                        //RecoveryPlanProtectedItem recoveryPlanProtectedItem = new RecoveryPlanProtectedItem();
+                        //recoveryPlanProtectedItem.Id = replicationProtectedItemResponse.ReplicationProtectedItem.Id;
                         tempGroup = this.RecoveryPlan.Groups.FirstOrDefault(g => String.CompareOrdinal(g.Name, Group.Name) == 0);
                         if (tempGroup != null)
                         {
-                            this.RecoveryPlan.Groups[RecoveryPlan.Groups.IndexOf(tempGroup)].ReplicationProtectedItems.Add(recoveryPlanProtectedItem);
+                            this.RecoveryPlan.Groups[RecoveryPlan.Groups.IndexOf(tempGroup)].ReplicationProtectedItems.Add(replicationProtectedItemResponse.ReplicationProtectedItem);
                         }                            
                     }
                     break;
@@ -139,10 +139,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                         tempGroup = this.RecoveryPlan.Groups.FirstOrDefault(g => String.CompareOrdinal(g.Name, Group.Name) == 0);
                         if (tempGroup != null)
                         {
-                            RecoveryPlanProtectedItem tempRecoveryPlanProtectedItem = this.RecoveryPlan.Groups[RecoveryPlan.Groups.IndexOf(tempGroup)].ReplicationProtectedItems.FirstOrDefault(pi => String.CompareOrdinal(pi.Id, replicationProtectedItemResponse.ReplicationProtectedItem.Id) == 0);
-                            if (tempRecoveryPlanProtectedItem != null)
+                            //RecoveryPlanProtectedItem tempRecoveryPlanProtectedItem = this.RecoveryPlan.Groups[RecoveryPlan.Groups.IndexOf(tempGroup)].ReplicationProtectedItems.FirstOrDefault(pi => String.CompareOrdinal(pi.Id, replicationProtectedItemResponse.ReplicationProtectedItem.Id) == 0);
+                            var ReplicationProtectedItem = this.RecoveryPlan.Groups[RecoveryPlan.Groups.IndexOf(tempGroup)].ReplicationProtectedItems.FirstOrDefault(pi => String.CompareOrdinal(pi.Id, replicationProtectedItemResponse.ReplicationProtectedItem.Id) == 0);
+                            if (ReplicationProtectedItem != null)
                             {
-                                this.RecoveryPlan.Groups[RecoveryPlan.Groups.IndexOf(tempGroup)].ReplicationProtectedItems.Remove(tempRecoveryPlanProtectedItem);
+                                this.RecoveryPlan.Groups[RecoveryPlan.Groups.IndexOf(tempGroup)].ReplicationProtectedItems.Remove(ReplicationProtectedItem);
                             }
                         }  
                     }

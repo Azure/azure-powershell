@@ -21,6 +21,7 @@ using Properties = Microsoft.Azure.Commands.SiteRecovery.Properties;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using System.IO;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -89,7 +90,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 RecoveryPlanGroup recoveryPlanGroup = new RecoveryPlanGroup()
                 {
                     GroupType = asrRecoveryPlanGroup.GroupType,
-                    ReplicationProtectedItems = asrRecoveryPlanGroup.ReplicationProtectedItems,
+                    ReplicationProtectedItems = asrRecoveryPlanGroup.ReplicationProtectedItems.Select(item => new RecoveryPlanProtectedItem(item.Id)).ToList(),
                     StartGroupActions = asrRecoveryPlanGroup.StartGroupActions,
                     EndGroupActions = asrRecoveryPlanGroup.EndGroupActions
                 };

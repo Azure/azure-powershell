@@ -17,29 +17,35 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 using Microsoft.Azure.Management.SiteRecovery.Models;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
-    public class ASRRecoveryPlanGroup : RecoveryPlanGroup
+    public class ASRRecoveryPlanGroup
     {
         public ASRRecoveryPlanGroup()
             : base()
         {
         }
 
-        public ASRRecoveryPlanGroup(RecoveryPlanGroup recoveryPlanGroup)
+        public ASRRecoveryPlanGroup(RecoveryPlanGroup recoveryPlanGroup, IList<ReplicationProtectedItem> replicationProtectedItems = null)
         {
             if(recoveryPlanGroup != null)
             {
                 this.GroupType = recoveryPlanGroup.GroupType;
                 this.StartGroupActions = recoveryPlanGroup.StartGroupActions;
-                this.ReplicationProtectedItems = recoveryPlanGroup.ReplicationProtectedItems;
                 this.EndGroupActions = recoveryPlanGroup.EndGroupActions;
+
+                if (replicationProtectedItems != null)
+                {
+                    var replicationProtectedItemList = recoveryPlanGroup.ReplicationProtectedItems.Select(item => item.Id.ToLower());
+                    this.ReplicationProtectedItems = replicationProtectedItems.Where(rpi => replicationProtectedItemList.Contains(rpi.Id.ToLower())).ToList();
+                }
             }
         }
 
-        public ASRRecoveryPlanGroup(string groupName, RecoveryPlanGroup recoveryPlanGroup)
-            : this(recoveryPlanGroup)
+        public ASRRecoveryPlanGroup(string groupName, RecoveryPlanGroup recoveryPlanGroup, IList<ReplicationProtectedItem> replicationProtectedItems = null)
+            : this(recoveryPlanGroup, replicationProtectedItems)
         {
             this.Name = groupName;
         }
@@ -48,6 +54,22 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Gets or sets Recovery plan group Name.
         /// </summary>
         public string Name { get; set; }
+
+        // Summary:
+        //     Optional. Recovery plan end group actions.
+        public IList<RecoveryPlanAction> EndGroupActions { get; set; }
+        //
+        // Summary:
+        //     Required. Group type.
+        public string GroupType { get; set; }
+        //
+        // Summary:
+        //     Optional. List of protected items.
+        public IList<ReplicationProtectedItem> ReplicationProtectedItems { get; set; }
+        //
+        // Summary:
+        //     Optional. Recovery plan start group actions.
+        public IList<RecoveryPlanAction> StartGroupActions { get; set; }
 
     }
     /// <summary>
@@ -71,7 +93,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// parameters.
         /// </summary>
         /// <param name="recoveryPlan">Recovery plan object</param>
-        public ASRRecoveryPlan(RecoveryPlan recoveryPlan)
+        public ASRRecoveryPlan(RecoveryPlan recoveryPlan, IList<ReplicationProtectedItem> replicationProtectedItems)
         {
             this.Name = recoveryPlan.Name;
             this.FriendlyName = recoveryPlan.Properties.FriendlyName;
@@ -81,6 +103,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             this.Groups = new List<ASRRecoveryPlanGroup>();
             int groupCount = 0;
             string groupName = null;
+
             foreach (RecoveryPlanGroup recoveryPlanGroup in recoveryPlan.Properties.Groups)
             {
                 switch(recoveryPlanGroup.GroupType)
@@ -96,8 +119,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                         groupName = Constants.Shutdown;
                         break;
                 }
-                this.Groups.Add(new ASRRecoveryPlanGroup(groupName, recoveryPlanGroup));
+                this.Groups.Add(new ASRRecoveryPlanGroup(groupName, recoveryPlanGroup, replicationProtectedItems));
             }
+
             this.ReplicationProvider = recoveryPlan.Properties.ReplicationProviders;
         }
 

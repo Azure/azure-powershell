@@ -176,7 +176,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <param name="recoveryPlanList">List of Recovery Plans</param>
         private void WriteRecoveryPlans(IList<RecoveryPlan> recoveryPlanList)
         {
-            this.WriteObject(recoveryPlanList.Select(rp => new ASRRecoveryPlan(rp)), true);
+            IList<ASRRecoveryPlan> asrRecoveryPlans = new List<ASRRecoveryPlan>();
+
+            foreach(RecoveryPlan recoveryPlan in recoveryPlanList)
+            {
+                var replicationProtectedItemListResponse = RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItemInRP(recoveryPlan.Name);
+                asrRecoveryPlans.Add(new ASRRecoveryPlan(recoveryPlan, replicationProtectedItemListResponse.ReplicationProtectedItems));
+            }
+
+            this.WriteObject(asrRecoveryPlans, true);
         }
 
         /// <summary>
@@ -185,7 +193,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <param name="recoveryPlan">Recovery Plan object</param>
         private void WriteRecoveryPlan(RecoveryPlan recoveryPlan)
         {
-            this.WriteObject(new ASRRecoveryPlan(recoveryPlan));
+            var replicationProtectedItemListResponse = RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItemInRP(recoveryPlan.Name);
+            this.WriteObject(new ASRRecoveryPlan(recoveryPlan, replicationProtectedItemListResponse.ReplicationProtectedItems));
         }
     }
 }
