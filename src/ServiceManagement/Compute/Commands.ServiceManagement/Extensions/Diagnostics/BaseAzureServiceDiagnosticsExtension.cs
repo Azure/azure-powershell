@@ -129,38 +129,37 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             doc.Load(DiagnosticsConfigurationPath);
 
             // Make sure the configuration element exist
-            var config = doc.SelectSingleNode("//ns:WadCfg", ns) ?? doc.SelectSingleNode("//ns:WadCfgBlob", ns);
-            if (config == null)
+            var configElement = doc.SelectSingleNode("//ns:WadCfg", ns) ?? doc.SelectSingleNode("//ns:WadCfgBlob", ns);
+            if (configElement == null)
             {
                 throw new ArgumentException(Resources.DiagnosticsExtensionPaaSConfigElementNotDefined);
             }
 
             // The element <StorageAccount> is not meant to be set by the user in the public config.
             // Make sure it matches the storage account in the private config.
-            var node = doc.SelectSingleNode("//ns:StorageAccount", ns);
-            if(node != null)
+            var storageAccountElement = doc.SelectSingleNode("//ns:StorageAccount", ns);
+            if(storageAccountElement != null)
             {
                 // The StorageAccount is empty, we must set it
-                if (string.IsNullOrEmpty(node.InnerText))
+                if (string.IsNullOrEmpty(storageAccountElement.InnerText))
                 {
-                    var insertIndex = PublicConfiguration.IndexOf("</StorageAccount>");
-                    PublicConfiguration = PublicConfiguration.Insert(insertIndex, StorageAccountName);
+                    storageAccountElement.InnerText = StorageAccountName;
+                    PublicConfiguration = doc.OuterXml;
                 }
-                else if (!string.IsNullOrEmpty(node.InnerText) && string.Compare(node.InnerText, StorageAccountName, true) != 0)
+                else if (!string.IsNullOrEmpty(storageAccountElement.InnerText) && string.Compare(storageAccountElement.InnerText, StorageAccountName, true) != 0)
                 {
                     throw new ArgumentException(Resources.DiagnosticsExtensionNoMatchStorageAccount);
                 }
             }
             else
             {
-                // the StorageAccount is not there. we must set it
-                string storageAccountElem = "\n<StorageAccount>" + StorageAccountName + "</StorageAccount>\n";
+                // The StorageAccount is not there. we must set it
+                storageAccountElement = doc.CreateElement("StorageAccount", XmlNamespace);
+                storageAccountElement.InnerText = StorageAccountName;
 
-                // insert it after </WadCfg> or </WadCfgBlob>
-                int wadCfgEndIndex = PublicConfiguration.IndexOf("</WadCfg>");
-                int wadCfgBlobEndIndex = PublicConfiguration.IndexOf("</WadCfgBlob>");
-                int insertIndex = wadCfgEndIndex >= 0 ? wadCfgEndIndex + "</WadCfg>".Length : wadCfgBlobEndIndex + "</WadCfgBlob>".Length;
-                PublicConfiguration = PublicConfiguration.Insert(insertIndex, storageAccountElem);
+                // Insert it after <WadCfg> or <WadCfgBlob>
+                configElement.ParentNode.AppendChild(storageAccountElement);
+                PublicConfiguration = doc.OuterXml;
             }
 
             // Make sure the storage account name in PrivateConfig matches.

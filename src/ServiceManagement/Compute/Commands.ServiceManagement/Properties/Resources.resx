@@ -784,12 +784,12 @@
     <value>WadCfg start element in the config is not matching the end element.</value>
   </data>
   <data name="DiagnosticsExtensionIaaSConfigElementNotDefined" xml:space="preserve">
-    <value>No WadCfg, WadCfgBlob or xmlCfg element is defined in the configuration file.</value>
+    <value>No WadCfg, WadCfgBlob or xmlCfg element defined in the configuration file.</value>
   </data>
   <data name="DiagnosticsExtensionInvalidConfigFileFormat" xml:space="preserve">
     <value>Invalid diagnostics configuration file. It should be in either xml or json format.</value>
   </data>
   <data name="DiagnosticsExtensionPaaSConfigElementNotDefined" xml:space="preserve">
-    <value>No WadCfg or WadCfgBlob element is defined in the configuration file.</value>
+    <value>No WadCfg or WadCfgBlob element defined in the configuration file.</value>
   </data>
 </root>

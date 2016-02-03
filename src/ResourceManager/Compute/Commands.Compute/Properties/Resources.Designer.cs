@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No WadCfg, WadCfgBlob or xmlCfg element is defined in the configuration file..
+        ///   Looks up a localized string similar to No WadCfg, WadCfgBlob or xmlCfg element defined in the configuration file..
         /// </summary>
         public static string DiagnosticsExtensionIaaSConfigElementNotDefined {
             get {

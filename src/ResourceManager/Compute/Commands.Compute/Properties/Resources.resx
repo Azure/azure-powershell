@@ -483,7 +483,7 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
     <value>Storage account endpoint is not defined or can not be retrieved automatically..</value>
   </data>
   <data name="DiagnosticsExtensionIaaSConfigElementNotDefined" xml:space="preserve">
-    <value>No WadCfg, WadCfgBlob or xmlCfg element is defined in the configuration file.</value>
+    <value>No WadCfg, WadCfgBlob or xmlCfg element defined in the configuration file.</value>
   </data>
   <data name="DiagnosticsExtensionInvalidConfigFileFormat" xml:space="preserve">
     <value>Invalid diagnostics configuration file. It should be in Invalid diagnostics configuration file. It should be in either xml or json format.either xml or json format.</value>

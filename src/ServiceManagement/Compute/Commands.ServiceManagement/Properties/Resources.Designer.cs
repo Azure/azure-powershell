@@ -485,7 +485,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No WadCfg, WadCfgBlob or xmlCfg element is defined in the configuration file..
+        ///   Looks up a localized string similar to No WadCfg, WadCfgBlob or xmlCfg element defined in the configuration file..
         /// </summary>
         public static string DiagnosticsExtensionIaaSConfigElementNotDefined {
             get {
@@ -566,7 +566,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No WadCfg or WadCfgBlob element is defined in the configuration file..
+        ///   Looks up a localized string similar to No WadCfg or WadCfgBlob element defined in the configuration file..
         /// </summary>
         public static string DiagnosticsExtensionPaaSConfigElementNotDefined {
             get {
