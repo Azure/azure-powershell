@@ -158,28 +158,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <param name="protectableItems">List of protectable items</param>
         private void WriteProtectionEntities(IList<ProtectableItem> protectableItems)
         {
-            List<ASRProtectionEntity> asrProtectionEntityList = new List<ASRProtectionEntity>();
-            foreach (ProtectableItem protectableItem in protectableItems)
-            {
-                ReplicationProtectedItemResponse replicationProtectedItemResponse = null;
-                if (!String.IsNullOrEmpty(protectableItem.Properties.ReplicationProtectedItemId))
-                {
-                    replicationProtectedItemResponse = RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(
-                        Utilities.GetValueFromArmId(this.ProtectionContainer.ID, ARMResourceTypeConstants.ReplicationFabrics),
-                        this.ProtectionContainer.Name,
-                        Utilities.GetValueFromArmId(protectableItem.Properties.ReplicationProtectedItemId, ARMResourceTypeConstants.ReplicationProtectedItems));
-                }
-
-                if (replicationProtectedItemResponse != null && replicationProtectedItemResponse.ReplicationProtectedItem != null)
-                {
-                    PolicyResponse policyResponse = RecoveryServicesClient.GetAzureSiteRecoveryPolicy(Utilities.GetValueFromArmId(replicationProtectedItemResponse.ReplicationProtectedItem.Properties.PolicyID, ARMResourceTypeConstants.ReplicationPolicies));
-                    asrProtectionEntityList.Add(new ASRVirtualMachine(protectableItem, replicationProtectedItemResponse.ReplicationProtectedItem, policyResponse.Policy));
-                }
-                else
-                {
-                    asrProtectionEntityList.Add(new ASRVirtualMachine(protectableItem));
-                }
-            }
+            List<ASRProtectionEntity> asrProtectionEntityList = RecoveryServicesClient.FetchProtectionEntitiesData(
+                protectableItems, this.ProtectionContainer.ID, this.ProtectionContainer.Name);
 
             this.WriteObject(asrProtectionEntityList, true);
         }
@@ -190,24 +170,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <param name="protectableItem"></param>
         private void WriteProtectionEntity(ProtectableItem protectableItem)
         {
-            ReplicationProtectedItemResponse replicationProtectedItemResponse = null;
-            if (!String.IsNullOrEmpty(protectableItem.Properties.ReplicationProtectedItemId))
-            {
-                replicationProtectedItemResponse = RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(
-                    Utilities.GetValueFromArmId(this.ProtectionContainer.ID, ARMResourceTypeConstants.ReplicationFabrics),
-                    this.ProtectionContainer.Name,
-                    Utilities.GetValueFromArmId(protectableItem.Properties.ReplicationProtectedItemId, ARMResourceTypeConstants.ReplicationProtectedItems));
-            }
-
-            if (replicationProtectedItemResponse != null && replicationProtectedItemResponse.ReplicationProtectedItem != null)
-            {
-                PolicyResponse policyResponse = RecoveryServicesClient.GetAzureSiteRecoveryPolicy(Utilities.GetValueFromArmId(replicationProtectedItemResponse.ReplicationProtectedItem.Properties.PolicyID, ARMResourceTypeConstants.ReplicationPolicies));
-                this.WriteObject(new ASRVirtualMachine(protectableItem, replicationProtectedItemResponse.ReplicationProtectedItem, policyResponse.Policy));
-            }
-            else
-            {
-                this.WriteObject(new ASRVirtualMachine(protectableItem));
-            }
+            ASRVirtualMachine ASRVirtualMachine = RecoveryServicesClient.FetchProtectionEntityData(protectableItem, this.ProtectionContainer.ID, this.ProtectionContainer.Name);
+            this.WriteObject(ASRVirtualMachine);
         }
     }
 }
