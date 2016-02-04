@@ -102,6 +102,12 @@
     <CustomAction Id="SetExecutionPolicy" Property="POWERSHELLEXE" ExeCommand="-NoLogo -NoProfile -WindowStyle Hidden -NonInteractive -ExecutionPolicy Bypass -Command &quot;. \&quot;[PowerShellFolder]SetExecutionPolicy.ps1\&quot;&quot;" Execute="deferred" Impersonate="no" Return="check"/>
     <CustomAction Id="RemoveGalleryModules" Property="POWERSHELLEXE" ExeCommand="-NoLogo -NoProfile -WindowStyle Hidden -NonInteractive -ExecutionPolicy Bypass -Command &quot;. \&quot;[PowerShellFolder]RemoveGalleryModules.ps1\&quot;&quot;" Execute="deferred" Impersonate="no" Return="check"/>
 
+    <InstallExecuteSequence>
+      <Custom Action="SetCustomActionDataValue" After="CreateShortcuts">NOT Installed</Custom>
+      <Custom Action="RemoveGalleryModules" After="SetCustomActionDataValue">NOT Installed</Custom>
+      <Custom Action="SetExecutionPolicy" After="RemoveGalleryModules">NOT Installed</Custom>
+    </InstallExecuteSequence>
+
     <WixVariable Id="WixUILicenseRtf" Value="$(var.ProjectDir)\media\License.rtf" />
     <UIRef Id="WixUI_Minimal" />
     <WixVariable Id="WixUIBannerBmp" Value="media\bannrbmp.bmp" />
