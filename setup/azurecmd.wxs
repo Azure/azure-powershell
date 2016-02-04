@@ -103,8 +103,7 @@
     <CustomAction Id="RemoveGalleryModules" Property="POWERSHELLEXE" ExeCommand="-NoLogo -NoProfile -WindowStyle Hidden -NonInteractive -ExecutionPolicy Bypass -Command &quot;. \&quot;[PowerShellFolder]RemoveGalleryModules.ps1\&quot;&quot;" Execute="deferred" Impersonate="no" Return="check"/>
 
     <InstallExecuteSequence>
-      <Custom Action="SetCustomActionDataValue" After="CreateShortcuts">NOT Installed</Custom>
-      <Custom Action="RemoveGalleryModules" After="SetCustomActionDataValue">NOT Installed</Custom>
+      <Custom Action="RemoveGalleryModules" After="CreateShortcuts">NOT Installed</Custom>
       <Custom Action="SetExecutionPolicy" After="RemoveGalleryModules">NOT Installed</Custom>
     </InstallExecuteSequence>
 
