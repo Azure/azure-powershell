@@ -27,11 +27,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         [Parameter(Position = 1, Mandatory = false, HelpMessage = "Confirm deletion of vault")]
         public SwitchParameter Force { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
             {
-                base.ProcessRecord();
+                base.ExecuteCmdlet();
 
                 ConfirmAction(Force, Resources.DeleteVaultCaption, Resources.DeleteVaultMessage, "",
                     () =>

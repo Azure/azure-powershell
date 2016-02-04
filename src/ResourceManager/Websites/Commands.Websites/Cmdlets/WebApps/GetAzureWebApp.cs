@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// this commandlet will let you get a new Azure Websites using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMWebApp")]
+    [Cmdlet(VerbsCommon.Get, "AzureRmWebApp")]
     public class GetAzureWebAppCmdlet : WebAppBaseClientCmdLet
     {
         private const string ParameterSet1 = "S1";
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             switch (ParameterSetName)
             {

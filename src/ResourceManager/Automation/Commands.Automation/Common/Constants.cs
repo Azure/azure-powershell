@@ -38,6 +38,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         public const string ClientRequestIdHeaderName = "x-ms-client-request-id";
 
+        public const string ActivityIdHeaderName = "x-ms-activity-id";
+
         // default schedule expiry time for daily schedule, consistent with UX
         // 12/31/9999 12:00:00 AM
         public static readonly DateTimeOffset DefaultScheduleExpiryTime = DateTimeOffset.MaxValue;
@@ -59,13 +61,17 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         public const int PsCommandValueDepth = 10;
 
+        public const int JobSummaryLength = 80;
+
+        public const int MaxWaitSeconds = 10800;
+
         // The template file is a json
-        public const string TemplateFile = @"https://eus2oaasibizamarketprod1.blob.core.windows.net/automationdscpreview/azuredeploy.json";
+        public const string TemplateFile = @"https://eus2oaasibizamarketprod1.blob.core.windows.net/automationdscpreview/azuredeployV2.json";
 
         // The metaconfig file
-        public const string ModulesUrl = @"https://eus2oaasibizamarketprod1.blob.core.windows.net/automationdscpreview/RegistrationMetaConfig.zip";
+        public const string ModulesUrl = @"https://eus2oaasibizamarketprod1.blob.core.windows.net/automationdscpreview/RegistrationMetaConfigV2.zip";
 
-        public const string ConfigurationFunction = @"RegistrationMetaConfig.ps1\RegistrationMetaConfig";
+        public const string ConfigurationFunction = @"RegistrationMetaConfigV2.ps1\RegistrationMetaConfigV2";
 
 
         public static class RunbookType

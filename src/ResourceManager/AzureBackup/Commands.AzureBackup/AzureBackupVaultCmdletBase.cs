@@ -27,9 +27,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         //public AzureRMBackupVault Vault1 { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             //if (Vault.GetType() == typeof(ARSVault))
             //{

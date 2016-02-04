@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         
         #endregion
         
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             Config.AdditionalStorageAccounts.Add(StorageAccountName, StorageAccountKey);
             WriteObject(Config);

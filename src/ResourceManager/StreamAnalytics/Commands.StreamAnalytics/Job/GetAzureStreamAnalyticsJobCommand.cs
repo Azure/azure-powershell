@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
         public SwitchParameter NoExpand { get; set; }
 
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (ParameterSetName == StreamAnalyticsObjectsInResourceGroup)
             {
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
                 }
             }
 
-            string propertiesToExpand = "inputs,transformation,outputs";
+            string propertiesToExpand = "inputs,transformation,outputs,functions";
             if (NoExpand.IsPresent)
             {
                 propertiesToExpand = string.Empty;

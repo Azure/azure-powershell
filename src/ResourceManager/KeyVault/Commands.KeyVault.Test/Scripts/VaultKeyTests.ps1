@@ -418,17 +418,19 @@ function Test_UpdateAllEditableKeyAttributes
     # Update all attributes
     $key=Set-AzureKeyVaultKeyAttribute -VaultName $keyVault -Name $keyname -Expires $newexpires  -NotBefore $newnbf -KeyOps $newops -Enable $true -Tags $newtags -PassThru   
     Assert-KeyAttributes $key.Attributes 'RSA' $true $newexpires $newnbf $newops $newtags
+    if($global:standardVaultOnly -eq $false)
+    {
+       # Create a hsm key for updating
+      $keyname=Get-KeyName 'uhsm'
+      $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'HSM' -Expires $expires -NotBefore $nbf -KeyOps $ops -Disable -Tags $tags
+      Assert-NotNull $key
+      $global:createdKeys += $keyname
+      Assert-KeyAttributes $key.Attributes 'RSA-HSM' $false $expires $nbf $ops $tags
 
-     # Create a hsm key for updating
-    $keyname=Get-KeyName 'uhsm'
-    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'HSM' -Expires $expires -NotBefore $nbf -KeyOps $ops -Disable -Tags $tags
-    Assert-NotNull $key
-    $global:createdKeys += $keyname
-    Assert-KeyAttributes $key.Attributes 'RSA-HSM' $false $expires $nbf $ops $tags
-
-    # Update all attributes
-    $key=Set-AzureKeyVaultKeyAttribute -VaultName $keyVault -Name $keyname -Expires $newexpires  -NotBefore $newnbf -KeyOps $newops -Enable $true -Tags $newtags -PassThru   
-    Assert-KeyAttributes $key.Attributes 'RSA-HSM' $true $newexpires $newnbf $newops $newtags
+      # Update all attributes
+      $key=Set-AzureKeyVaultKeyAttribute -VaultName $keyVault -Name $keyname -Expires $newexpires  -NotBefore $newnbf -KeyOps $newops -Enable $true -Tags $newtags -PassThru
+      Assert-KeyAttributes $key.Attributes 'RSA-HSM' $true $newexpires $newnbf $newops $newtags
+    }
 }
 
 

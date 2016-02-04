@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             this.targetNameOrId = this.ProtectionEntity.FriendlyName;
             this.ConfirmAction(
@@ -226,10 +226,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                             };
 
                             // fetch the latest PE object
-                            ProtectableItemListResponse protectableItemListResponse =
+                            ProtectableItemResponse protectableItemResponse =
                                                         RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(Utilities.GetValueFromArmId(this.ProtectionEntity.ID, ARMResourceTypeConstants.ReplicationFabrics),
-                                                        this.ProtectionEntity.ProtectionContainerId);
-                            ProtectableItem protectableItem = protectableItemListResponse.ProtectableItems.SingleOrDefault(t => t.Name.CompareTo(this.ProtectionEntity.Name) == 0);
+                                                        this.ProtectionEntity.ProtectionContainerId, this.ProtectionEntity.Name);
+                            ProtectableItem protectableItem = protectableItemResponse.ProtectableItem;
 
                             this.response =
                                 RecoveryServicesClient.DisableProtection(

@@ -55,5 +55,16 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             return this.GetSiteRecoveryClient().RecoveryServicesProvider.BeginDeleting(fabricId, providerId, input, this.GetRequestHeaders());
         }
+
+        /// <summary>
+        /// Purge Azure Site Recovery Providers.
+        /// </summary>
+        /// <param name="fabricId">Fabric ID</param>
+        /// <param name="providerId">Provider ID</param>
+        /// <returns>Provider response</returns>
+        public LongRunningOperationResponse PurgeAzureSiteRecoveryProvider(string fabricId, string providerId)
+        {
+            return this.GetSiteRecoveryClient().RecoveryServicesProvider.BeginPurging(fabricId, providerId, this.GetRequestHeaders());
+        }
     }
 }

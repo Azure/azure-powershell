@@ -36,12 +36,19 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         [Parameter(Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRServer Server { get; set; }
+
+        /// <summary>
+        /// Gets or sets switch parameter. On passing, command does not ask for confirmation.
+        /// </summary>
+        [Parameter]
+        public SwitchParameter Force { get; set; }
+
         #endregion Parameters
 
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             try
             {
@@ -63,13 +70,23 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 throw new PSInvalidOperationException(Properties.Resources.InvalidServerType);
             }
 
-            RecoveryServicesProviderDeletionInput input = new RecoveryServicesProviderDeletionInput()
-            {
-                Properties = new RecoveryServicesProviderDeletionInputProperties()
-            };
+            LongRunningOperationResponse response;
 
-            LongRunningOperationResponse response =
-                    RecoveryServicesClient.RemoveAzureSiteRecoveryProvider(Utilities.GetValueFromArmId(this.Server.ID, ARMResourceTypeConstants.ReplicationFabrics), this.Server.Name, input);
+            if (!this.Force.IsPresent)
+            {
+                RecoveryServicesProviderDeletionInput input = new RecoveryServicesProviderDeletionInput()
+                {
+                    Properties = new RecoveryServicesProviderDeletionInputProperties()
+                };
+
+                response =
+                        RecoveryServicesClient.RemoveAzureSiteRecoveryProvider(Utilities.GetValueFromArmId(this.Server.ID, ARMResourceTypeConstants.ReplicationFabrics), this.Server.Name, input);
+            }
+            else
+            {
+                response =
+                        RecoveryServicesClient.PurgeAzureSiteRecoveryProvider(Utilities.GetValueFromArmId(this.Server.ID, ARMResourceTypeConstants.ReplicationFabrics), this.Server.Name);
+            }
 
             JobResponse jobResponse =
                 RecoveryServicesClient

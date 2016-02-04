@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         public void SetDatabaseSecurityAlertPolicy(string resourceGroupName, string serverName, string databaseName, string clientRequestId, DatabaseSecurityAlertPolicyCreateOrUpdateParameters parameters)
         {
             ISecurityAlertPolicyOperations operations = GetCurrentSqlClient(clientRequestId).SecurityAlertPolicy;
-            operations.CreateOrUpdateDatebaseSecurityAlertPolicy(resourceGroupName, serverName, databaseName, parameters);
+            operations.CreateOrUpdateDatabaseSecurityAlertPolicy(resourceGroupName, serverName, databaseName, parameters);
         }
 
         /// <summary>

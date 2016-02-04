@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     /// <summary>
     /// this commandlet will get the publishing creds of the given Azure Web app slot using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMWebAppSlotPublishingProfile")]
+    [Cmdlet(VerbsCommon.Get, "AzureRmWebAppSlotPublishingProfile")]
     public class GetAzureWebAppSlotPublishingProfileCmdlet : WebAppSlotBaseCmdlet
     {
         private const string DefaultFormat = "WebDeploy";
@@ -40,9 +40,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
             Format = Format ?? DefaultFormat;
         }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
             WriteObject(WebsitesClient.GetWebAppPublishingProfile(ResourceGroupName, Name, Slot, OutputFile, Format));
         }
 

@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             backendAddressPool.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
-                                this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
+                                this.NetworkClient.NetworkManagementClient.SubscriptionId,
                                 Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewayBackendAddressPoolName,
                                 this.Name);
 

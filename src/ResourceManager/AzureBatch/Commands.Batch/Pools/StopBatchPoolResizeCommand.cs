@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             BatchClient.StopResizePool(this.BatchContext, this.Id, this.AdditionalBehaviors);
         }

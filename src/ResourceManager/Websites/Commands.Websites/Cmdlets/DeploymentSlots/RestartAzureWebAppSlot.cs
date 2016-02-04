@@ -21,12 +21,12 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     /// <summary>
     /// this commandlet will let you restart an Azure Web app slot 
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Restart, "AzureRMWebAppSlot")]
+    [Cmdlet(VerbsLifecycle.Restart, "AzureRmWebAppSlot")]
     public class RestartAzureWebAppSlotCmdlet : WebAppSlotBaseCmdlet
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
             WebsitesClient.RestartWebApp(ResourceGroupName, Name, Slot);
             WriteObject(WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot));
         }
