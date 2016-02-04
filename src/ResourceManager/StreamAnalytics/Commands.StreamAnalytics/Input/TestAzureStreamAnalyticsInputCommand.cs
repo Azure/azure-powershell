@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
         public string Name { get; set; }
 
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (ResourceGroupName != null && string.IsNullOrWhiteSpace(ResourceGroupName))
             {
@@ -53,8 +53,8 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
 
             try
             {
-                DataSourceTestConnectionResponse response = StreamAnalyticsClient.TestPSInput(ResourceGroupName, JobName, Name);
-                if (response.StatusCode == HttpStatusCode.OK && response.DataSourceTestStatus == DataSourceTestStatus.TestSucceeded)
+                ResourceTestConnectionResponse response = StreamAnalyticsClient.TestPSInput(ResourceGroupName, JobName, Name);
+                if (response.StatusCode == HttpStatusCode.OK && response.ResourceTestStatus == ResourceTestStatus.TestSucceeded)
                 {
                     WriteObject(true);
                 }

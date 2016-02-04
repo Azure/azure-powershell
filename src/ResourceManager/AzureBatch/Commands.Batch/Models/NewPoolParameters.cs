@@ -68,6 +68,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
         public int? TargetDedicated { get; set; }
 
         /// <summary>
+        /// The time interval at which to automatically adjust the pool size according to the AutoScaleFormula.
+        /// </summary>
+        public TimeSpan? AutoScaleEvaluationInterval { get; set; }
+
+        /// <summary>
         /// The AutoScale formula to use with the pool.
         /// </summary>
         public string AutoScaleFormula { get; set; }

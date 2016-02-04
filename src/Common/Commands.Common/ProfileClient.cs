@@ -841,6 +841,9 @@ namespace Microsoft.Azure.Common.Authentication
                 Id = subscription1.Id,
                 Name = subscription1.Name,
                 Environment = subscription1.Environment,
+                State = (subscription1.State != null &&
+                         subscription1.State.Equals(subscription2.State, StringComparison.OrdinalIgnoreCase)) ? 
+                        subscription1.State: null,
                 Account = subscription1.Account ?? subscription2.Account
             };
 

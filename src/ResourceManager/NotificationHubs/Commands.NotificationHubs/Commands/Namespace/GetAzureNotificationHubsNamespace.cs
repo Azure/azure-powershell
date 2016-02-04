@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
         /// Gets a Namespace from the service.
         /// </summary>
         /// <returns>A single Namespace</returns>
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (!string.IsNullOrEmpty(ResourceGroup) && !string.IsNullOrEmpty(Namespace))
             {

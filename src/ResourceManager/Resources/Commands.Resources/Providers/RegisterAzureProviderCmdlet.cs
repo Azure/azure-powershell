@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Resources
         /// <summary>
         /// Executes the cmdlet
         /// </summary>
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             this.ConfirmAction(
                 force: this.Force,

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Microsoft.Azure.Management.WebSites.Models;
+using Microsoft.Azure.Commands.Resources.Models;
 
 namespace Microsoft.Azure.Commands.WebApps.Utilities
 {
@@ -35,6 +36,10 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
            new Regex(@"^\/subscriptions\/(?<subscriptionName>[^\/]+)\/resourceGroups\/(?<resourceGroupName>[^\/]+)\/providers\/Microsoft.Web\/serverFarms\/(?<serverFarmName>[^\/]+)$", RegexOptions.IgnoreCase);
 
         private static readonly Dictionary<string, int> WorkerSizes = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase) { { "Small", 1 }, { "Medium", 2 }, { "Large", 3 }, { "ExtraLarge", 4 } };
+
+        public const string ApplicationServiceEnvironmentResourcesName = "hostingEnvironments";
+        private const string ApplicationServiceEnvironmentResourceIdFormat =
+            "/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Web/{2}/{3}";
 
         public static Dictionary<string, string> ConvertToStringDictionary(this Hashtable hashtable)
         {
@@ -70,6 +75,18 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             }
 
             return result;
+        }
+
+        internal static HostingEnvironmentProfile CreateHostingEnvironmentProfile(string subscriptionId, string resourceGroupName, string aseResourceGroupName, string aseName)
+        {
+            var rg = string.IsNullOrEmpty(aseResourceGroupName) ? resourceGroupName : aseResourceGroupName;
+            var aseResourceId = CmdletHelpers.GetApplicationServiceEnvironmentResourceId(subscriptionId, rg, aseName);
+            return new HostingEnvironmentProfile
+            {
+                Id = aseResourceId,
+                Type = CmdletHelpers.ApplicationServiceEnvironmentResourcesName,
+                Name = aseName
+            };
         }
 
         internal static string BuildMetricFilter(DateTime? startTime, DateTime? endTime, string timeGrain, IReadOnlyList<string> metricNames)
@@ -205,6 +222,73 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             slotName = null;
 
             return false;
+        }
+
+        internal static string GetApplicationServiceEnvironmentResourceId(string subscriptionId, string resourceGroupName, string applicationServiceEnvironmentName)
+        {
+            return string.Format(ApplicationServiceEnvironmentResourceIdFormat, subscriptionId, resourceGroupName, ApplicationServiceEnvironmentResourcesName,
+                applicationServiceEnvironmentName);
+        }
+
+        internal static HostNameSslState[] GetHostNameSslStatesFromSiteResponse(Site site, string hostName = null)
+        {
+            var hostNameSslState = new HostNameSslState[0];
+            if (site.HostNameSslStates != null)
+            {
+                hostNameSslState = site.HostNameSslStates.Where(h => h.SslState.HasValue && h.SslState.Value != SslState.Disabled).ToArray();
+                if (!string.IsNullOrEmpty(hostName))
+                {
+                    hostNameSslState = hostNameSslState.Where(h => string.Equals(h.Name, hostName)).ToArray();
+                }
+            }
+            return hostNameSslState;
+        }
+
+        internal static string GetResourceGroupFromResourceId(string resourceId)
+        {
+            return new ResourceIdentifier(resourceId).ResourceGroupName;
+        }
+
+        internal static void ExtractWebAppPropertiesFromWebApp(Site webapp, out string resourceGroupName, out string webAppName, out string slot)
+        {
+            resourceGroupName = GetResourceGroupFromResourceId(webapp.Id);
+
+            string webAppNameTemp, slotNameTemp;
+            if (TryParseAppAndSlotNames(webapp.SiteName, out webAppNameTemp, out slotNameTemp))
+            {
+                webAppName = webAppNameTemp;
+                slot = slotNameTemp;
+            }
+            else
+            {
+                webAppName = webapp.Name;
+                slot = null;
+            }
+        }
+
+        internal static Certificate[] GetCertificates(ResourcesClient resourceClient, WebsitesClient websitesClient, string resourceGroupName, string thumbPrint)
+        {
+            var certificateResources = resourceClient.FilterPSResources(new BasePSResourceParameters()
+            {
+                ResourceType = "Microsoft.Web/Certificates"
+            }).ToArray();
+
+            if (!string.IsNullOrEmpty(resourceGroupName))
+            {
+                certificateResources = certificateResources.Where(c => string.Equals(c.ResourceGroupName, resourceGroupName, StringComparison.OrdinalIgnoreCase)).ToArray();
+            }
+
+            var certificates =
+                certificateResources.Select(
+                    certificateResource =>
+                    websitesClient.GetCertificate(certificateResource.ResourceGroupName, certificateResource.Name));
+
+            if (!string.IsNullOrEmpty(thumbPrint))
+            {
+                certificates = certificates.Where(c => string.Equals(c.Thumbprint, thumbPrint, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
+            return certificates.ToArray();
         }
     }
 }

@@ -82,28 +82,6 @@
       </ListControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.OperationalInsights.Models.PSIntelligencePack</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.OperationalInsights.Models.PSIntelligencePack</TypeName>
-      </ViewSelectedBy>
-      <ListControl>
-        <ListEntries>
-          <ListEntry>
-            <ListItems>
-              <ListItem>
-                <Label>Name</Label>
-                <PropertyName>Name</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Enabled</Label>
-                <PropertyName>Enabled</PropertyName>
-              </ListItem>
-            </ListItems>
-          </ListEntry>
-        </ListEntries>
-      </ListControl>
-    </View>
-    <View>
       <Name>Microsoft.Azure.Commands.OperationalInsights.Models.PSManagementGroup</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.OperationalInsights.Models.PSManagementGroup</TypeName>

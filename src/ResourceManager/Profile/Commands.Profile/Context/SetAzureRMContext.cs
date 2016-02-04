@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Commands.Profile.Properties;
+using System;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -52,7 +53,7 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(ParameterSetName = ContextParameterSet, Mandatory = true, HelpMessage = "Context", ValueFromPipeline = true)]
         public PSAzureContext Context { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ContextParameterSet)
             {
@@ -77,6 +78,18 @@ namespace Microsoft.Azure.Commands.Profile
                 {
                     profileClient.SetCurrentContext(TenantId);
                 }
+            }
+
+            if (AzureRmProfileProvider.Instance.Profile.Context != null &&
+                AzureRmProfileProvider.Instance.Profile.Context.Subscription != null &&
+                AzureRmProfileProvider.Instance.Profile.Context.Subscription.State != null &&
+                !AzureRmProfileProvider.Instance.Profile.Context.Subscription.State.Equals(
+                "Enabled", 
+                StringComparison.OrdinalIgnoreCase))
+            {
+                WriteWarning(string.Format(
+                               Microsoft.Azure.Commands.Profile.Properties.Resources.SelectedSubscriptionNotActive,
+                               AzureRmProfileProvider.Instance.Profile.Context.Subscription.State));
             }
             WriteObject((PSAzureContext)AzureRmProfileProvider.Instance.Profile.Context);
         }

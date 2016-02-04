@@ -16,6 +16,7 @@ using Hyak.Common;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
+using Microsoft.Azure.Commands.Compute.Common;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -49,9 +50,9 @@ namespace Microsoft.Azure.Commands.Compute
             set { computeClient = value; }
         }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
             ComputeAutoMapperProfile.Initialize();
         }
 
@@ -61,7 +62,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 action();
             }
-            catch (CloudException ex)
+            catch (Rest.Azure.CloudException ex)
             {
                 try
                 {
@@ -77,3 +78,4 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+

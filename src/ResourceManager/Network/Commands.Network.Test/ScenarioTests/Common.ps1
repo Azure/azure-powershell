@@ -49,7 +49,14 @@ function Get-ProviderLocation($provider)
 				return "West US"  
 			} else 
 			{  
-				return $location.Locations[0]  
+			if($location.Locations[0] -eq "West US")
+			{ 
+			return $location.Locations[1]
+			}
+			else
+			{
+				return $location.Locations[0]
+				}
 			}  
 		}
 		
