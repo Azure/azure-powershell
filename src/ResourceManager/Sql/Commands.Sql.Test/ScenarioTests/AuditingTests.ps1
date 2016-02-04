@@ -105,8 +105,6 @@ function Test-AuditingDatabaseUpdatePolicyWithSameNameStorageOnDifferentRegion
 		Assert-AreEqual $policy.StorageAccountName $params.storageAccount
 		Assert-AreEqual $policy.AuditState "Enabled"  
 		Assert-AreEqual $policy.UseServerDefault "Disabled"
-
-
 	}
 	finally
 	{
@@ -434,6 +432,7 @@ function Test-AuditingDisableDatabaseAuditing
 	
 		# Assert
 		Assert-AreEqual $policy.AuditState "Disabled"
+		Assert-AreEqual $policy.StorageAccountName $params.storageAccount
 	}
 	finally
 	{

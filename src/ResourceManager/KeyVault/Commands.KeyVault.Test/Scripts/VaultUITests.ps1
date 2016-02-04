@@ -9,7 +9,7 @@ Tests remove a key with two confirmations
 #>
 function Test_RemoveKeyWithTwoConfirmations
 {
-    Write-Host "Type 'Yes' twice"
+    Write-Host -ForegroundColor Yellow "Type 'Yes' twice"
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'remove'
     $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
@@ -30,7 +30,7 @@ Tests remove a key with one confirmation
 #>
 function Test_RemoveKeyWithOneConfirmations
 {
-    Write-Host "Type 'Yes' once"
+    Write-Host -ForegroundColor Yellow "Type 'Yes' once"
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'remove'
     $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
@@ -51,7 +51,7 @@ Tests cancel removing a key with once
 #>
 function Test_CancelKeyRemovalOnce
 {
-    Write-Host "Type 'No' once"
+    Write-Host -ForegroundColor Yellow "Type 'No' once"
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'remove'
     $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
@@ -73,7 +73,7 @@ Tests cancel removing a key with two prompts
 #>
 function Test_ConfirmThenCancelKeyRemoval
 {
-    Write-Host "Type 'Yes' first. Then type 'No'"
+    Write-Host -ForegroundColor Yellow "Type 'Yes' first. Then type 'No'"
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'remove'
     $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
@@ -97,7 +97,7 @@ Tests remove a secret with two confirmations
 #>
 function Test_RemoveSecretWithTwoConfirmations
 {
-    Write-Host "Type 'Yes' twice"
+    Write-Host -ForegroundColor Yellow "Type 'Yes' twice"
     $keyVault = Get-KeyVault
     $secretname= Get-SecretName 'remove'  
     $sec=Set-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname  -SecretValue $securedata
@@ -118,7 +118,7 @@ Tests remove a secret with one confirmations
 #>
 function Test_RemoveSecretWithOneConfirmations
 {
-    Write-Host "Type 'Yes' once"
+    Write-Host -ForegroundColor Yellow "Type 'Yes' once"
     $keyVault = Get-KeyVault
     $secretname= Get-SecretName 'remove'  
     $sec=Set-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname  -SecretValue $securedata
@@ -139,7 +139,7 @@ Tests cancel removing a secret with once
 #>
 function Test_CancelSecretRemovalOnce
 {
-    Write-Host "Type 'No' once"
+    Write-Host -ForegroundColor Yellow "Type 'No' once"
     $keyVault = Get-KeyVault
     $secretname= Get-SecretName 'remove'  
     $sec=Set-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname  -SecretValue $securedata
@@ -161,7 +161,7 @@ Tests cancel removing a secret with two prompts
 #>
 function Test_ConfirmThenCancelSecretRemoval
 {
-    Write-Host "Type 'Yes' first. Then type 'No'"
+    Write-Host -ForegroundColor Yellow "Type 'Yes' first. Then type 'No'"
     $keyVault = Get-KeyVault
     $secretname= Get-SecretName 'remove'  
     $sec=Set-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname  -SecretValue $securedata

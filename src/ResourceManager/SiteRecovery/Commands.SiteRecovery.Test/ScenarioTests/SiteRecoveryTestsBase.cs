@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
                 if (testEnvironment.UsesCustomUri())
                 {
                     client = new RecoveryServicesManagementClient(
-                        "Microsoft.RecoveryServices",
+                        "Microsoft.RecoveryServicesBVTD2",
                         "vaults",
                         testEnvironment.Credentials as SubscriptionCloudCredentials,
                         testEnvironment.BaseUri);
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
                 else
                 {
                     client = new RecoveryServicesManagementClient(
-                        "Microsoft.RecoveryServices",
+                        "Microsoft.RecoveryServicesBVTD2",
                         "vaults",
                         testEnvironment.Credentials as SubscriptionCloudCredentials);
                 }
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
                     client = new SiteRecoveryManagementClient(
                         asrVaultCreds.ResourceName,
                         asrVaultCreds.ResourceGroupName,
-                        "Microsoft.RecoveryServices",
+                        "Microsoft.RecoveryServicesBVTD2",
                         "vaults",
                         testEnvironment.Credentials as SubscriptionCloudCredentials,
                         testEnvironment.BaseUri);

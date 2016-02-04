@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The virtualNetworkGateway")]
+        [ValidateNotNull]
         public PSVirtualNetworkGateway VirtualNetworkGateway { get; set; }
 
         public override void ExecuteCmdlet()
@@ -43,7 +44,6 @@ namespace Microsoft.Azure.Commands.Network
 
             // Map to the sdk object
             var vnetGatewayModel = Mapper.Map<MNM.VirtualNetworkGateway>(this.VirtualNetworkGateway);
-            vnetGatewayModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.VirtualNetworkGatewayType;
             vnetGatewayModel.Tags = TagsConversionHelper.CreateTagDictionary(this.VirtualNetworkGateway.Tag, validate: true);
 
             this.VirtualNetworkGatewayClient.Reset(this.VirtualNetworkGateway.ResourceGroupName, this.VirtualNetworkGateway.Name, vnetGatewayModel);

@@ -28,6 +28,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         public const string CloudService = "CloudService";
 
+        public const string DiagnosticsExtension = "DiagnosticsExtension";
+
         public const string Management = "Management";
 
         public const string MediaServices = "MediaServices";

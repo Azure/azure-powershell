@@ -193,6 +193,20 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             TestReimageComputeNode(true, TestUtilities.GetCurrentMethodName());
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDisableAndEnableComputeNodeSchedulingById()
+        {
+            TestDisableAndEnableComputeNodeScheduling(false, TestUtilities.GetCurrentMethodName());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDisableAndEnableComputeNodeSchedulingPipeline()
+        {
+            TestDisableAndEnableComputeNodeScheduling(true, TestUtilities.GetCurrentMethodName());
+        }
+
         private void TestRemoveComputeNode(bool usePipeline, string testMethodName)
         {
             BatchController controller = BatchController.NewInstance;
@@ -246,6 +260,24 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 () =>
                 {
                     context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    computeNodeId = ScenarioTestHelpers.GetComputeNodeId(controller, context, poolId);
+                    ScenarioTestHelpers.WaitForIdleComputeNode(controller, context, poolId, computeNodeId);
+                },
+                null,
+                TestUtilities.GetCallingClass(),
+                testMethodName);
+        }
+
+        private void TestDisableAndEnableComputeNodeScheduling(bool usePipeline, string testMethodName)
+        {
+            BatchController controller = BatchController.NewInstance;
+            BatchAccountContext context = null;
+            string computeNodeId = null;
+            controller.RunPsTestWorkflow(
+                () => { return new string[] { string.Format("Test-DisableAndEnableComputeNodeScheduling '{0}' '{1}' '{2}' '{3}'", ScenarioTestHelpers.MpiOnlineAccount, poolId, computeNodeId, usePipeline ? 1 : 0) }; },
+                () =>
+                {
+                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, ScenarioTestHelpers.MpiOnlineAccount);
                     computeNodeId = ScenarioTestHelpers.GetComputeNodeId(controller, context, poolId);
                     ScenarioTestHelpers.WaitForIdleComputeNode(controller, context, poolId, computeNodeId);
                 },

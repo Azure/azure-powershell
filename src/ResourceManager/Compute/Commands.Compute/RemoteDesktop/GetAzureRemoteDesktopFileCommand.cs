@@ -69,6 +69,10 @@ namespace Microsoft.Azure.Commands.Compute
             set;
         }
 
+        const string PublicIPAddressResource = "publicIPAddresses";
+        const string NetworkInterfaceResouce = "networkInterfaces";
+        const string LoadBalancerResouce = "loadBalancers";
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -85,34 +89,32 @@ namespace Microsoft.Azure.Commands.Compute
                 // Get Azure VM
                 var vmResponse = this.VirtualMachineClient.Get(this.ResourceGroupName, this.Name);
 
+                var nicId = vmResponse.NetworkProfile.NetworkInterfaces.First().Id;
+
                 // Get the NIC
-                var nicResourceGroupName =
-                    this.GetResourceGroupName(vmResponse.VirtualMachine.NetworkProfile.NetworkInterfaces.First().ReferenceUri);
+                var nicResourceGroupName = this.GetResourceGroupName(nicId);
 
-                var nicName =
-                    this.GetResourceName(
-                        vmResponse.VirtualMachine.NetworkProfile.NetworkInterfaces.First().ReferenceUri, "networkInterfaces");
+                var nicName = this.GetResourceName(nicId, NetworkInterfaceResouce);
 
-                var nicResponse =
-                    this.NetworkClient.NetworkResourceProviderClient.NetworkInterfaces.Get(nicResourceGroupName, nicName);
+                var nic = this.NetworkClient.NetworkManagementClient.NetworkInterfaces.Get(nicResourceGroupName, nicName);
 
-                if (nicResponse.NetworkInterface.IpConfigurations.First().PublicIpAddress != null && !string.IsNullOrEmpty(nicResponse.NetworkInterface.IpConfigurations.First().PublicIpAddress.Id))
+                if (nic.IpConfigurations.First().PublicIPAddress != null && !string.IsNullOrEmpty(nic.IpConfigurations.First().PublicIPAddress.Id))
                 {
                     // Get PublicIPAddress resource if present
-                    address = this.GetAddressFromPublicIPResource(nicResponse.NetworkInterface.IpConfigurations.First().PublicIpAddress.Id);
+                    address = this.GetAddressFromPublicIPResource(nic.IpConfigurations.First().PublicIPAddress.Id);
                 }
-                else if (nicResponse.NetworkInterface.IpConfigurations.First().LoadBalancerInboundNatRules.Any())
+                else if (nic.IpConfigurations.First().LoadBalancerInboundNatRules.Any())
                 {
                     address = string.Empty;
 
                     // Get ipaddress and port from loadbalancer
-                    foreach (var nicRuleRef in nicResponse.NetworkInterface.IpConfigurations.First().LoadBalancerInboundNatRules)
+                    foreach (var nicRuleRef in nic.IpConfigurations.First().LoadBalancerInboundNatRules)
                     {
-                        var lbName = this.GetResourceName(nicRuleRef.Id, "loadBalancers");
+                        var lbName = this.GetResourceName(nicRuleRef.Id, LoadBalancerResouce);
                         var lbResourceGroupName = this.GetResourceGroupName(nicRuleRef.Id);
 
                         var loadbalancer =
-                            this.NetworkClient.NetworkResourceProviderClient.LoadBalancers.Get(lbResourceGroupName, lbName).LoadBalancer;
+                            this.NetworkClient.NetworkManagementClient.LoadBalancers.Get(lbResourceGroupName, lbName);
 
                         // Iterate over the InboundNatRules where Backendport = 3389
                         var inboundRule =
@@ -126,20 +128,20 @@ namespace Microsoft.Azure.Commands.Compute
 
                         if (inboundRule.Any())
                         {
-                            port = inboundRule.First().FrontendPort;
+                            port = inboundRule.First().FrontendPort.Value;
 
                             // Get the corresponding frontendIPConfig -> publicIPAddress
                             var frontendIPConfig =
-                                loadbalancer.FrontendIpConfigurations.First(
+                                loadbalancer.FrontendIPConfigurations.First(
                                     frontend =>
                                     string.Equals(
                                         inboundRule.First().FrontendIPConfiguration.Id,
                                         frontend.Id,
                                         StringComparison.OrdinalIgnoreCase));
 
-                            if (frontendIPConfig.PublicIpAddress != null)
+                            if (frontendIPConfig.PublicIPAddress != null)
                             {
-                                address = this.GetAddressFromPublicIPResource(frontendIPConfig.PublicIpAddress.Id);
+                                address = this.GetAddressFromPublicIPResource(frontendIPConfig.PublicIPAddress.Id);
                                 break;
                             }
                         }
@@ -200,26 +202,25 @@ namespace Microsoft.Azure.Commands.Compute
         private string GetAddressFromPublicIPResource(string resourceId)
         {
             string address = string.Empty;
-
+            
             // Get IpAddress from public IPAddress resource
             var publicIPResourceGroupName = this.GetResourceGroupName(resourceId);
-            var publicIPName = this.GetResourceName(resourceId, "publicIPAddresses");
+            var publicIPName = this.GetResourceName(resourceId, PublicIPAddressResource);
 
-            var publicIpResponse =
-                this.NetworkClient.NetworkResourceProviderClient.PublicIpAddresses.Get(
+            var publicIp =
+                this.NetworkClient.NetworkManagementClient.PublicIPAddresses.Get(
                     publicIPResourceGroupName,
                     publicIPName);
 
 
             // Use the FQDN if present
-            if (publicIpResponse.PublicIpAddress.DnsSettings != null
-                && !string.IsNullOrEmpty(publicIpResponse.PublicIpAddress.DnsSettings.Fqdn))
+            if (publicIp.DnsSettings != null && !string.IsNullOrEmpty(publicIp.DnsSettings.Fqdn))
             {
-                address = publicIpResponse.PublicIpAddress.DnsSettings.Fqdn;
+                address = publicIp.DnsSettings.Fqdn;
             }
             else
             {
-                address = publicIpResponse.PublicIpAddress.IpAddress;
+                address = publicIp.IpAddress;
             }
 
             return address;
@@ -231,7 +232,16 @@ namespace Microsoft.Azure.Commands.Compute
 
         private string GetResourceName(string resourceId, string resource)
         {
-            return resourceId.Split('/')[8];
+            int resourceTypeLocation = resourceId.IndexOf(resource, StringComparison.OrdinalIgnoreCase);
+
+            var resourceName = resourceId.Substring(resourceTypeLocation + resource.Length + 1);
+            if (resourceName.Contains("/"))
+            {
+                int resourceNameEnd = resourceName.IndexOf("/");
+                resourceName = resourceName.Substring(0, resourceNameEnd);
+            }
+
+            return resourceName;
         }
     }
 }

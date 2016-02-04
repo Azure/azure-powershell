@@ -300,6 +300,29 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
             }
         }
 
+        public void DeleteConfiguration(string resourceGroupName, string automationAccountName, string name)
+        {
+            Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
+            Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
+            using (var request = new RequestSettings(this.automationManagementClient))
+            {
+                try
+                {
+                    this.automationManagementClient.Configurations.Delete(resourceGroupName, automationAccountName, name);
+                }
+                catch (CloudException cloudException)
+                {
+                    if (cloudException.Response.StatusCode == HttpStatusCode.NoContent)
+                    {
+                        throw new ResourceNotFoundException(
+                            typeof(Model.DscConfiguration),
+                            string.Format(CultureInfo.CurrentCulture, Resources.ConfigurationNotFound, name));
+                    }
+                    throw;
+                }
+            }
+        }
+
     #endregion
 
         #region DscMetaConfig Operations
@@ -568,7 +591,7 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
 
                 IEnumerable<AutomationManagement.Models.DscNode> dscNodes;
 
-                if (!String.IsNullOrEmpty(status))
+                if (!string.IsNullOrEmpty(status))
                 {
                     dscNodes = AutomationManagementClient.ContinuationTokenHandler(
                         skipToken =>
@@ -727,7 +750,7 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
                         automationAccountName,
                         new DscNodePatchParameters
                             {
-                                Id = nodeId,
+                                NodeId = nodeId,
                                 NodeConfiguration = nodeConfiguration
                             }).Node;
 
@@ -809,6 +832,7 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
             templateParameters.Add("rebootNodeIfNeeded", rebootFlag);
             templateParameters.Add("actionAfterReboot", actionAfterReboot);
             templateParameters.Add("allowModuleOverwrite", moduleOverwriteFlag);
+            templateParameters.Add("timestamp", DateTimeOffset.UtcNow.ToString("o"));
 
             // invoke the New-AzureRmResourceGroupDeployment cmdlet
             using (Pipeline pipe = Runspace.DefaultRunspace.CreateNestedPipeline())
@@ -1258,6 +1282,48 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
 
 
                 return new Model.NodeConfiguration(resourceGroupName, automationAccountName, nodeConfiguration, null);
+            }
+        }
+
+        public void DeleteNodeConfiguration(string resourceGroupName, string automationAccountName, string name, bool ignoreNodeMappings)
+        {
+            Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
+            Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
+            Requires.Argument("NodeConfigurationName", name).NotNull();
+
+            using (var request = new RequestSettings(this.automationManagementClient))
+            {
+                try
+                {
+                    if (ignoreNodeMappings)
+                    {
+                        this.automationManagementClient.NodeConfigurations.Delete(resourceGroupName, automationAccountName, name);
+                    }
+                    else
+                    {
+                        var nodeList = this.ListDscNodesByNodeConfiguration(resourceGroupName, automationAccountName, name, null);
+                        if (nodeList.Any())
+                        {
+                            throw new ResourceCommonException(
+                                typeof (Model.NodeConfiguration),
+                                string.Format(CultureInfo.CurrentCulture, Resources.CannotDeleteNodeConfiguration, name));
+                        }
+                        else
+                        {
+                            this.automationManagementClient.NodeConfigurations.Delete(resourceGroupName, automationAccountName, name);
+                        }
+                    }
+                }
+                catch (CloudException cloudException)
+                {
+                    if (cloudException.Response.StatusCode == HttpStatusCode.NotFound)
+                    {
+                        throw new ResourceNotFoundException(
+                            typeof(Model.NodeConfiguration), 
+                            string.Format(CultureInfo.CurrentCulture, Resources.NodeConfigurationNotFound, name));
+                    }
+                    throw;
+                }
             }
         }
 

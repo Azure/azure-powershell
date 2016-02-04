@@ -1,36 +1,52 @@
 {
   "Entries": [
     {
-      "RequestUri": "/1449d5b7-8a83-47db-ae4c-9b03e888bad0/groups?api-version=1.42-previewInternal",
+      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/groups?api-version=1.6-internal",
+      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9ncm91cHM/YXBpLXZlcnNpb249MS42LWludGVybmFs",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"displayName\": \"adgroup8266\",\r\n  \"mailEnabled\": false,\r\n  \"mailNickname\": \"adgroupmail196\",\r\n  \"securityEnabled\": true\r\n}",
+      "RequestBody": "{\r\n  \"displayName\": \"adgroup5092\",\r\n  \"mailEnabled\": false,\r\n  \"mailNickname\": \"adgroupmail4509\",\r\n  \"securityEnabled\": true\r\n}",
       "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "127"
+        ],
         "User-Agent": [
           "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1449d5b7-8a83-47db-ae4c-9b03e888bad0/$metadata#directoryObjects/Microsoft.WindowsAzure.ActiveDirectory.Group/@Element\",\r\n  \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.Group\",\r\n  \"objectType\": \"Group\",\r\n  \"objectId\": \"5a2bae3d-6c6c-4f04-9f15-9b73738499f1\",\r\n  \"softDeletionTimestamp\": null,\r\n  \"appMetadata\": null,\r\n  \"exchangeResources\": [],\r\n  \"description\": null,\r\n  \"dirSyncEnabled\": null,\r\n  \"displayName\": \"adgroup8266\",\r\n  \"groupType\": null,\r\n  \"isPublic\": null,\r\n  \"lastDirSyncTime\": null,\r\n  \"licenseAssignment\": [],\r\n  \"mail\": null,\r\n  \"mailNickname\": \"adgroupmail196\",\r\n  \"mailEnabled\": false,\r\n  \"onPremiseSecurityIdentifier\": null,\r\n  \"provisioningErrors\": [],\r\n  \"proxyAddresses\": [],\r\n  \"securityEnabled\": true,\r\n  \"sharepointResources\": []\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects/Microsoft.DirectoryServices.Group/@Element\",\r\n  \"odata.type\": \"Microsoft.DirectoryServices.Group\",\r\n  \"objectType\": \"Group\",\r\n  \"objectId\": \"77ff01a9-e566-459e-831b-eb4ff93bf9ae\",\r\n  \"deletionTimestamp\": null,\r\n  \"appMetadata\": null,\r\n  \"cloudSecurityIdentifier\": \"S-1-12-1-2013200809-1168041318-1340808067-2935569401\",\r\n  \"description\": null,\r\n  \"dirSyncEnabled\": null,\r\n  \"displayName\": \"adgroup5092\",\r\n  \"exchangeResources\": [],\r\n  \"creationOptions\": [],\r\n  \"groupTypes\": [],\r\n  \"isMembershipRuleLocked\": null,\r\n  \"isPublic\": null,\r\n  \"lastDirSyncTime\": null,\r\n  \"licenseAssignment\": [],\r\n  \"mail\": null,\r\n  \"mailNickname\": \"adgroupmail4509\",\r\n  \"mailEnabled\": false,\r\n  \"membershipRule\": null,\r\n  \"membershipRuleProcessingState\": null,\r\n  \"onPremisesSecurityIdentifier\": null,\r\n  \"primarySMTPAddress\": null,\r\n  \"provisioningErrors\": [],\r\n  \"proxyAddresses\": [],\r\n  \"securityEnabled\": true,\r\n  \"sharepointResources\": [],\r\n  \"targetAddress\": null,\r\n  \"visibility\": null,\r\n  \"wellKnownObject\": null\r\n}",
       "ResponseHeaders": {
+        "Content-Length": [
+          "959"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
         "Pragma": [
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "v3yGAWrccus9FzuzL9cLf8vSbclXQ3anB0vIyjf36ac="
+          "CsyM59IyEG8NtoG93Zs1iaZk8m7nLCS/ZIsRW3/qOUQ="
         ],
         "request-id": [
-          "c954482c-f68d-4140-82bd-5b0131d67aa6"
+          "504d220c-9e90-42b9-b7b9-b345a449d3ab"
         ],
         "client-request-id": [
-          "8123163f-a590-4dc9-92e1-1f8039a2f52b"
+          "d6498548-d3cf-473e-9ace-8f60aa698d26"
+        ],
+        "x-ms-dirapi-data-contract-version": [
+          "1.6-internal"
         ],
         "x-ms-gateway-rewrite": [
           "false"
         ],
-        "x-ms-dirapi-data-contract-version": [
-          "1.42-previewInternal"
-        ],
         "ocp-aad-session-key": [
-          "5iAWZebsZ0jQXgybB5g55ao4vwW0shOihhRAicwE3NRnSQwNyxn_-WiLWyPTCX47mfqAk3l7LbgN4hhEu7iozT9QnYB3yHEPN2iG2rzON3wuYCoRctkv18dB3XpyGRgeDnt0dCnYjbE-lorFfF-qnA.Z5qZXHjS46XDEqka8Znyi8Jdi9SFoOAnR4mJ2Np-VLU"
+          "vZ2ETREWp59mzHuBYM-EkRSLZJA5TFK6wCGvONbi4xYUzsF8O-3IFl5Ux6ppJNIqLR9xlQy49STLjtlxxMp4JQ45YozCBqM_ya-jEVi3Q2TbaPqAKyuYPZarS8PkGiNxFtKqmgBcQoNQo06L9-crWQ.UuH2JCs66HEY-TmgGV-hLOY7ofgMcifPKzrZLe4PBMY"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -41,14 +57,20 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "Duration": [
+          "4856732"
+        ],
         "Cache-Control": [
           "no-cache"
         ],
         "Location": [
-          "https://graph.windows.net/1449d5b7-8a83-47db-ae4c-9b03e888bad0/directoryObjects/5a2bae3d-6c6c-4f04-9f15-9b73738499f1/Microsoft.WindowsAzure.ActiveDirectory.Group"
+          "https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/directoryObjects/77ff01a9-e566-459e-831b-eb4ff93bf9ae/Microsoft.DirectoryServices.Group"
         ],
         "Server": [
-          "Microsoft-IIS/8.0"
+          "Microsoft-IIS/8.5"
         ],
         "X-AspNet-Version": [
           "4.0.30319"
@@ -58,13 +80,14 @@
           "ASP.NET"
         ],
         "Date": [
-          "Wed, 24 Sep 2014 21:32:52 GMT"
+          "Wed, 27 Jan 2016 21:19:48 GMT"
         ]
       },
       "StatusCode": 201
     },
     {
-      "RequestUri": "/1449d5b7-8a83-47db-ae4c-9b03e888bad0/groups?api-version=1.42-previewInternal",
+      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/groups?api-version=1.6-internal",
+      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9ncm91cHM/YXBpLXZlcnNpb249MS42LWludGVybmFs",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -72,28 +95,37 @@
           "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1449d5b7-8a83-47db-ae4c-9b03e888bad0/$metadata#directoryObjects/Microsoft.WindowsAzure.ActiveDirectory.Group\",\r\n  \"value\": [\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.Group\",\r\n      \"objectType\": \"Group\",\r\n      \"objectId\": \"1ddba6df-e959-456b-8f02-50252ece007f\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"appMetadata\": null,\r\n      \"exchangeResources\": [],\r\n      \"description\": \"group of admins\",\r\n      \"dirSyncEnabled\": null,\r\n      \"displayName\": \"admingroup\",\r\n      \"groupType\": null,\r\n      \"isPublic\": null,\r\n      \"lastDirSyncTime\": null,\r\n      \"licenseAssignment\": [],\r\n      \"mail\": null,\r\n      \"mailNickname\": \"481689dd-0a1c-44d0-a848-a02e7d591a3a\",\r\n      \"mailEnabled\": false,\r\n      \"onPremiseSecurityIdentifier\": null,\r\n      \"provisioningErrors\": [],\r\n      \"proxyAddresses\": [],\r\n      \"securityEnabled\": true,\r\n      \"sharepointResources\": []\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.Group\",\r\n      \"objectType\": \"Group\",\r\n      \"objectId\": \"2823a770-d3f7-4e84-8e5d-2542d5b08e13\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"appMetadata\": null,\r\n      \"exchangeResources\": [],\r\n      \"description\": \"hello2\",\r\n      \"dirSyncEnabled\": null,\r\n      \"displayName\": \"hello\",\r\n      \"groupType\": null,\r\n      \"isPublic\": null,\r\n      \"lastDirSyncTime\": null,\r\n      \"licenseAssignment\": [],\r\n      \"mail\": null,\r\n      \"mailNickname\": \"de93d080-c9de-4120-bf7d-cdb78cb3f655\",\r\n      \"mailEnabled\": false,\r\n      \"onPremiseSecurityIdentifier\": null,\r\n      \"provisioningErrors\": [],\r\n      \"proxyAddresses\": [],\r\n      \"securityEnabled\": true,\r\n      \"sharepointResources\": []\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.Group\",\r\n      \"objectType\": \"Group\",\r\n      \"objectId\": \"2ff5c0e4-40cf-48b6-be7e-174615c4956d\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"appMetadata\": null,\r\n      \"exchangeResources\": [],\r\n      \"description\": \"2nd group of readers\",\r\n      \"dirSyncEnabled\": null,\r\n      \"displayName\": \"readergroup2\",\r\n      \"groupType\": null,\r\n      \"isPublic\": null,\r\n      \"lastDirSyncTime\": null,\r\n      \"licenseAssignment\": [],\r\n      \"mail\": null,\r\n      \"mailNickname\": \"46f915be-2f40-4908-8c6b-9a0232567640\",\r\n      \"mailEnabled\": false,\r\n      \"onPremiseSecurityIdentifier\": null,\r\n      \"provisioningErrors\": [],\r\n      \"proxyAddresses\": [],\r\n      \"securityEnabled\": true,\r\n      \"sharepointResources\": []\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.Group\",\r\n      \"objectType\": \"Group\",\r\n      \"objectId\": \"5a2bae3d-6c6c-4f04-9f15-9b73738499f1\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"appMetadata\": null,\r\n      \"exchangeResources\": [],\r\n      \"description\": null,\r\n      \"dirSyncEnabled\": null,\r\n      \"displayName\": \"adgroup8266\",\r\n      \"groupType\": null,\r\n      \"isPublic\": null,\r\n      \"lastDirSyncTime\": null,\r\n      \"licenseAssignment\": [],\r\n      \"mail\": null,\r\n      \"mailNickname\": \"adgroupmail196\",\r\n      \"mailEnabled\": false,\r\n      \"onPremiseSecurityIdentifier\": null,\r\n      \"provisioningErrors\": [],\r\n      \"proxyAddresses\": [],\r\n      \"securityEnabled\": true,\r\n      \"sharepointResources\": []\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.Group\",\r\n      \"objectType\": \"Group\",\r\n      \"objectId\": \"8fd46a09-454e-41f1-b70f-f28331b12a31\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"appMetadata\": null,\r\n      \"exchangeResources\": [],\r\n      \"description\": \"an empty group\",\r\n      \"dirSyncEnabled\": null,\r\n      \"displayName\": \"emptygroup\",\r\n      \"groupType\": null,\r\n      \"isPublic\": null,\r\n      \"lastDirSyncTime\": null,\r\n      \"licenseAssignment\": [],\r\n      \"mail\": null,\r\n      \"mailNickname\": \"9764488b-bdf2-4169-8045-916fc8083f3d\",\r\n      \"mailEnabled\": false,\r\n      \"onPremiseSecurityIdentifier\": null,\r\n      \"provisioningErrors\": [],\r\n      \"proxyAddresses\": [],\r\n      \"securityEnabled\": true,\r\n      \"sharepointResources\": []\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.Group\",\r\n      \"objectType\": \"Group\",\r\n      \"objectId\": \"d5fbb343-cf1d-47bb-9aa8-5c3dd57b336f\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"appMetadata\": null,\r\n      \"exchangeResources\": [],\r\n      \"description\": \"group of owners\",\r\n      \"dirSyncEnabled\": null,\r\n      \"displayName\": \"ownergroup\",\r\n      \"groupType\": null,\r\n      \"isPublic\": null,\r\n      \"lastDirSyncTime\": null,\r\n      \"licenseAssignment\": [],\r\n      \"mail\": null,\r\n      \"mailNickname\": \"d9dc3124-a996-44d6-9049-3f379194fd1c\",\r\n      \"mailEnabled\": false,\r\n      \"onPremiseSecurityIdentifier\": null,\r\n      \"provisioningErrors\": [],\r\n      \"proxyAddresses\": [],\r\n      \"securityEnabled\": true,\r\n      \"sharepointResources\": []\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.Group\",\r\n      \"objectType\": \"Group\",\r\n      \"objectId\": \"fb7d9586-9377-43c8-95c0-22f1f067915f\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"appMetadata\": null,\r\n      \"exchangeResources\": [],\r\n      \"description\": \"group of readers\",\r\n      \"dirSyncEnabled\": null,\r\n      \"displayName\": \"readergroup\",\r\n      \"groupType\": null,\r\n      \"isPublic\": null,\r\n      \"lastDirSyncTime\": null,\r\n      \"licenseAssignment\": [],\r\n      \"mail\": null,\r\n      \"mailNickname\": \"c7a16934-b86a-43a2-8d96-7c6a8949b206\",\r\n      \"mailEnabled\": false,\r\n      \"onPremiseSecurityIdentifier\": null,\r\n      \"provisioningErrors\": [],\r\n      \"proxyAddresses\": [],\r\n      \"securityEnabled\": true,\r\n      \"sharepointResources\": []\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects/Microsoft.DirectoryServices.Group\",\r\n  \"value\": [\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Group\",\r\n      \"objectType\": \"Group\",\r\n      \"objectId\": \"19848de6-d9f0-47ae-b829-33a7d17d89f6\",\r\n      \"deletionTimestamp\": null,\r\n      \"appMetadata\": null,\r\n      \"cloudSecurityIdentifier\": \"S-1-12-1-428117478-1202641392-2805148088-4136205777\",\r\n      \"description\": null,\r\n      \"dirSyncEnabled\": null,\r\n      \"displayName\": \"testGroup9\",\r\n      \"exchangeResources\": [],\r\n      \"creationOptions\": [],\r\n      \"groupTypes\": [],\r\n      \"isMembershipRuleLocked\": null,\r\n      \"isPublic\": null,\r\n      \"lastDirSyncTime\": null,\r\n      \"licenseAssignment\": [],\r\n      \"mail\": null,\r\n      \"mailNickname\": \"testGroup9\",\r\n      \"mailEnabled\": false,\r\n      \"membershipRule\": null,\r\n      \"membershipRuleProcessingState\": null,\r\n      \"onPremisesSecurityIdentifier\": null,\r\n      \"primarySMTPAddress\": null,\r\n      \"provisioningErrors\": [],\r\n      \"proxyAddresses\": [],\r\n      \"securityEnabled\": true,\r\n      \"sharepointResources\": [],\r\n      \"targetAddress\": null,\r\n      \"visibility\": null,\r\n      \"wellKnownObject\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Group\",\r\n      \"objectType\": \"Group\",\r\n      \"objectId\": \"2447d261-fac2-4567-9453-e2566eee4314\",\r\n      \"deletionTimestamp\": null,\r\n      \"appMetadata\": null,\r\n      \"cloudSecurityIdentifier\": \"S-1-12-1-608686689-1164442306-1457673108-339996270\",\r\n      \"description\": null,\r\n      \"dirSyncEnabled\": null,\r\n      \"displayName\": \"testGroup7\",\r\n      \"exchangeResources\": [],\r\n      \"creationOptions\": [],\r\n      \"groupTypes\": [],\r\n      \"isMembershipRuleLocked\": null,\r\n      \"isPublic\": null,\r\n      \"lastDirSyncTime\": null,\r\n      \"licenseAssignment\": [],\r\n      \"mail\": null,\r\n      \"mailNickname\": \"testGroup7\",\r\n      \"mailEnabled\": false,\r\n      \"membershipRule\": null,\r\n      \"membershipRuleProcessingState\": null,\r\n      \"onPremisesSecurityIdentifier\": null,\r\n      \"primarySMTPAddress\": null,\r\n      \"provisioningErrors\": [],\r\n      \"proxyAddresses\": [],\r\n      \"securityEnabled\": true,\r\n      \"sharepointResources\": [],\r\n      \"targetAddress\": null,\r\n      \"visibility\": null,\r\n      \"wellKnownObject\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Group\",\r\n      \"objectType\": \"Group\",\r\n      \"objectId\": \"37b2bfc9-be59-4ccc-9068-b14b38bbdaa4\",\r\n      \"deletionTimestamp\": null,\r\n      \"appMetadata\": null,\r\n      \"cloudSecurityIdentifier\": \"S-1-12-1-934461385-1288486489-1269917840-2765798200\",\r\n      \"description\": null,\r\n      \"dirSyncEnabled\": null,\r\n      \"displayName\": \"adgroup4521\",\r\n      \"exchangeResources\": [],\r\n      \"creationOptions\": [],\r\n      \"groupTypes\": [],\r\n      \"isMembershipRuleLocked\": null,\r\n      \"isPublic\": null,\r\n      \"lastDirSyncTime\": null,\r\n      \"licenseAssignment\": [],\r\n      \"mail\": null,\r\n      \"mailNickname\": \"adgroupmail7662\",\r\n      \"mailEnabled\": false,\r\n      \"membershipRule\": null,\r\n      \"membershipRuleProcessingState\": null,\r\n      \"onPremisesSecurityIdentifier\": null,\r\n      \"primarySMTPAddress\": null,\r\n      \"provisioningErrors\": [],\r\n      \"proxyAddresses\": [],\r\n      \"securityEnabled\": true,\r\n      \"sharepointResources\": [],\r\n      \"targetAddress\": null,\r\n      \"visibility\": null,\r\n      \"wellKnownObject\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Group\",\r\n      \"objectType\": \"Group\",\r\n      \"objectId\": \"4bffd4d5-2077-4562-aab9-3b11773ed251\",\r\n      \"deletionTimestamp\": null,\r\n      \"appMetadata\": null,\r\n      \"cloudSecurityIdentifier\": \"S-1-12-1-1275057365-1164058743-289126826-1372733047\",\r\n      \"description\": null,\r\n      \"dirSyncEnabled\": null,\r\n      \"displayName\": \"adgroup2712\",\r\n      \"exchangeResources\": [],\r\n      \"creationOptions\": [],\r\n      \"groupTypes\": [],\r\n      \"isMembershipRuleLocked\": null,\r\n      \"isPublic\": null,\r\n      \"lastDirSyncTime\": null,\r\n      \"licenseAssignment\": [],\r\n      \"mail\": null,\r\n      \"mailNickname\": \"adgroup2712tester\",\r\n      \"mailEnabled\": false,\r\n      \"membershipRule\": null,\r\n      \"membershipRuleProcessingState\": null,\r\n      \"onPremisesSecurityIdentifier\": null,\r\n      \"primarySMTPAddress\": null,\r\n      \"provisioningErrors\": [],\r\n      \"proxyAddresses\": [],\r\n      \"securityEnabled\": true,\r\n      \"sharepointResources\": [],\r\n      \"targetAddress\": null,\r\n      \"visibility\": null,\r\n      \"wellKnownObject\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Group\",\r\n      \"objectType\": \"Group\",\r\n      \"objectId\": \"4ec42c1e-3732-41cf-a7f6-b362756f236b\",\r\n      \"deletionTimestamp\": null,\r\n      \"appMetadata\": null,\r\n      \"cloudSecurityIdentifier\": \"S-1-12-1-1321479198-1104099122-1655961255-1797484405\",\r\n      \"description\": null,\r\n      \"dirSyncEnabled\": null,\r\n      \"displayName\": \"testGroup2\",\r\n      \"exchangeResources\": [],\r\n      \"creationOptions\": [],\r\n      \"groupTypes\": [],\r\n      \"isMembershipRuleLocked\": null,\r\n      \"isPublic\": null,\r\n      \"lastDirSyncTime\": null,\r\n      \"licenseAssignment\": [],\r\n      \"mail\": null,\r\n      \"mailNickname\": \"testGroup2\",\r\n      \"mailEnabled\": false,\r\n      \"membershipRule\": null,\r\n      \"membershipRuleProcessingState\": null,\r\n      \"onPremisesSecurityIdentifier\": null,\r\n      \"primarySMTPAddress\": null,\r\n      \"provisioningErrors\": [],\r\n      \"proxyAddresses\": [],\r\n      \"securityEnabled\": true,\r\n      \"sharepointResources\": [],\r\n      \"targetAddress\": null,\r\n      \"visibility\": null,\r\n      \"wellKnownObject\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Group\",\r\n      \"objectType\": \"Group\",\r\n      \"objectId\": \"62d159b4-6e8f-410a-9245-441ee77dea30\",\r\n      \"deletionTimestamp\": null,\r\n      \"appMetadata\": null,\r\n      \"cloudSecurityIdentifier\": \"S-1-12-1-1657887156-1091202703-507790738-820674023\",\r\n      \"description\": null,\r\n      \"dirSyncEnabled\": null,\r\n      \"displayName\": \"testGroup3\",\r\n      \"exchangeResources\": [],\r\n      \"creationOptions\": [],\r\n      \"groupTypes\": [],\r\n      \"isMembershipRuleLocked\": null,\r\n      \"isPublic\": null,\r\n      \"lastDirSyncTime\": null,\r\n      \"licenseAssignment\": [],\r\n      \"mail\": null,\r\n      \"mailNickname\": \"testGroup3\",\r\n      \"mailEnabled\": false,\r\n      \"membershipRule\": null,\r\n      \"membershipRuleProcessingState\": null,\r\n      \"onPremisesSecurityIdentifier\": null,\r\n      \"primarySMTPAddress\": null,\r\n      \"provisioningErrors\": [],\r\n      \"proxyAddresses\": [],\r\n      \"securityEnabled\": true,\r\n      \"sharepointResources\": [],\r\n      \"targetAddress\": null,\r\n      \"visibility\": null,\r\n      \"wellKnownObject\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Group\",\r\n      \"objectType\": \"Group\",\r\n      \"objectId\": \"6a11bb61-8009-4de1-b29d-2add2b75caa9\",\r\n      \"deletionTimestamp\": null,\r\n      \"appMetadata\": null,\r\n      \"cloudSecurityIdentifier\": \"S-1-12-1-1779546977-1306624009-3710557618-2848617771\",\r\n      \"description\": null,\r\n      \"dirSyncEnabled\": null,\r\n      \"displayName\": \"testGroup1\",\r\n      \"exchangeResources\": [],\r\n      \"creationOptions\": [],\r\n      \"groupTypes\": [],\r\n      \"isMembershipRuleLocked\": null,\r\n      \"isPublic\": null,\r\n      \"lastDirSyncTime\": null,\r\n      \"licenseAssignment\": [],\r\n      \"mail\": null,\r\n      \"mailNickname\": \"testGroup1\",\r\n      \"mailEnabled\": false,\r\n      \"membershipRule\": null,\r\n      \"membershipRuleProcessingState\": null,\r\n      \"onPremisesSecurityIdentifier\": null,\r\n      \"primarySMTPAddress\": null,\r\n      \"provisioningErrors\": [],\r\n      \"proxyAddresses\": [],\r\n      \"securityEnabled\": true,\r\n      \"sharepointResources\": [],\r\n      \"targetAddress\": null,\r\n      \"visibility\": null,\r\n      \"wellKnownObject\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Group\",\r\n      \"objectType\": \"Group\",\r\n      \"objectId\": \"6d61b11d-1b0b-44e7-8a90-91cef61809bf\",\r\n      \"deletionTimestamp\": null,\r\n      \"appMetadata\": null,\r\n      \"cloudSecurityIdentifier\": \"S-1-12-1-1835118877-1155996427-3465646218-3205044470\",\r\n      \"description\": null,\r\n      \"dirSyncEnabled\": null,\r\n      \"displayName\": \"adgroup8550\",\r\n      \"exchangeResources\": [],\r\n      \"creationOptions\": [],\r\n      \"groupTypes\": [],\r\n      \"isMembershipRuleLocked\": null,\r\n      \"isPublic\": null,\r\n      \"lastDirSyncTime\": null,\r\n      \"licenseAssignment\": [],\r\n      \"mail\": null,\r\n      \"mailNickname\": \"adgroup8550tester\",\r\n      \"mailEnabled\": false,\r\n      \"membershipRule\": null,\r\n      \"membershipRuleProcessingState\": null,\r\n      \"onPremisesSecurityIdentifier\": null,\r\n      \"primarySMTPAddress\": null,\r\n      \"provisioningErrors\": [],\r\n      \"proxyAddresses\": [],\r\n      \"securityEnabled\": true,\r\n      \"sharepointResources\": [],\r\n      \"targetAddress\": null,\r\n      \"visibility\": null,\r\n      \"wellKnownObject\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Group\",\r\n      \"objectType\": \"Group\",\r\n      \"objectId\": \"738222ae-a898-4e3f-ae04-f9ef5c5182fa\",\r\n      \"deletionTimestamp\": null,\r\n      \"appMetadata\": null,\r\n      \"cloudSecurityIdentifier\": \"S-1-12-1-1937908398-1312794776-4026074286-4202844508\",\r\n      \"description\": null,\r\n      \"dirSyncEnabled\": null,\r\n      \"displayName\": \"testGroup4\",\r\n      \"exchangeResources\": [],\r\n      \"creationOptions\": [],\r\n      \"groupTypes\": [],\r\n      \"isMembershipRuleLocked\": null,\r\n      \"isPublic\": null,\r\n      \"lastDirSyncTime\": null,\r\n      \"licenseAssignment\": [],\r\n      \"mail\": null,\r\n      \"mailNickname\": \"testGroup4\",\r\n      \"mailEnabled\": false,\r\n      \"membershipRule\": null,\r\n      \"membershipRuleProcessingState\": null,\r\n      \"onPremisesSecurityIdentifier\": null,\r\n      \"primarySMTPAddress\": null,\r\n      \"provisioningErrors\": [],\r\n      \"proxyAddresses\": [],\r\n      \"securityEnabled\": true,\r\n      \"sharepointResources\": [],\r\n      \"targetAddress\": null,\r\n      \"visibility\": null,\r\n      \"wellKnownObject\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Group\",\r\n      \"objectType\": \"Group\",\r\n      \"objectId\": \"77ff01a9-e566-459e-831b-eb4ff93bf9ae\",\r\n      \"deletionTimestamp\": null,\r\n      \"appMetadata\": null,\r\n      \"cloudSecurityIdentifier\": \"S-1-12-1-2013200809-1168041318-1340808067-2935569401\",\r\n      \"description\": null,\r\n      \"dirSyncEnabled\": null,\r\n      \"displayName\": \"adgroup5092\",\r\n      \"exchangeResources\": [],\r\n      \"creationOptions\": [],\r\n      \"groupTypes\": [],\r\n      \"isMembershipRuleLocked\": null,\r\n      \"isPublic\": null,\r\n      \"lastDirSyncTime\": null,\r\n      \"licenseAssignment\": [],\r\n      \"mail\": null,\r\n      \"mailNickname\": \"adgroupmail4509\",\r\n      \"mailEnabled\": false,\r\n      \"membershipRule\": null,\r\n      \"membershipRuleProcessingState\": null,\r\n      \"onPremisesSecurityIdentifier\": null,\r\n      \"primarySMTPAddress\": null,\r\n      \"provisioningErrors\": [],\r\n      \"proxyAddresses\": [],\r\n      \"securityEnabled\": true,\r\n      \"sharepointResources\": [],\r\n      \"targetAddress\": null,\r\n      \"visibility\": null,\r\n      \"wellKnownObject\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Group\",\r\n      \"objectType\": \"Group\",\r\n      \"objectId\": \"7f28a17d-0952-494b-a00c-7189dce54d80\",\r\n      \"deletionTimestamp\": null,\r\n      \"appMetadata\": null,\r\n      \"cloudSecurityIdentifier\": \"S-1-12-1-2133369213-1229654354-2305887392-2152588764\",\r\n      \"description\": null,\r\n      \"dirSyncEnabled\": null,\r\n      \"displayName\": \"adgroup3856\",\r\n      \"exchangeResources\": [],\r\n      \"creationOptions\": [],\r\n      \"groupTypes\": [],\r\n      \"isMembershipRuleLocked\": null,\r\n      \"isPublic\": null,\r\n      \"lastDirSyncTime\": null,\r\n      \"licenseAssignment\": [],\r\n      \"mail\": null,\r\n      \"mailNickname\": \"adgroup3856tester\",\r\n      \"mailEnabled\": false,\r\n      \"membershipRule\": null,\r\n      \"membershipRuleProcessingState\": null,\r\n      \"onPremisesSecurityIdentifier\": null,\r\n      \"primarySMTPAddress\": null,\r\n      \"provisioningErrors\": [],\r\n      \"proxyAddresses\": [],\r\n      \"securityEnabled\": true,\r\n      \"sharepointResources\": [],\r\n      \"targetAddress\": null,\r\n      \"visibility\": null,\r\n      \"wellKnownObject\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Group\",\r\n      \"objectType\": \"Group\",\r\n      \"objectId\": \"a25c0c2a-e46b-4fa2-93de-a11f7c304360\",\r\n      \"deletionTimestamp\": null,\r\n      \"appMetadata\": null,\r\n      \"cloudSecurityIdentifier\": \"S-1-12-1-2723941418-1336075371-530701971-1615016060\",\r\n      \"description\": null,\r\n      \"dirSyncEnabled\": null,\r\n      \"displayName\": \"testGroup8\",\r\n      \"exchangeResources\": [],\r\n      \"creationOptions\": [],\r\n      \"groupTypes\": [],\r\n      \"isMembershipRuleLocked\": null,\r\n      \"isPublic\": null,\r\n      \"lastDirSyncTime\": null,\r\n      \"licenseAssignment\": [],\r\n      \"mail\": null,\r\n      \"mailNickname\": \"testGroup8\",\r\n      \"mailEnabled\": false,\r\n      \"membershipRule\": null,\r\n      \"membershipRuleProcessingState\": null,\r\n      \"onPremisesSecurityIdentifier\": null,\r\n      \"primarySMTPAddress\": null,\r\n      \"provisioningErrors\": [],\r\n      \"proxyAddresses\": [],\r\n      \"securityEnabled\": true,\r\n      \"sharepointResources\": [],\r\n      \"targetAddress\": null,\r\n      \"visibility\": null,\r\n      \"wellKnownObject\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Group\",\r\n      \"objectType\": \"Group\",\r\n      \"objectId\": \"a2ff37b5-e471-4f6c-910c-cd3a72c06438\",\r\n      \"deletionTimestamp\": null,\r\n      \"appMetadata\": null,\r\n      \"cloudSecurityIdentifier\": \"S-1-12-1-2734634933-1332536433-986516625-946126962\",\r\n      \"description\": null,\r\n      \"dirSyncEnabled\": null,\r\n      \"displayName\": \"adgroup3182\",\r\n      \"exchangeResources\": [],\r\n      \"creationOptions\": [],\r\n      \"groupTypes\": [],\r\n      \"isMembershipRuleLocked\": null,\r\n      \"isPublic\": null,\r\n      \"lastDirSyncTime\": null,\r\n      \"licenseAssignment\": [],\r\n      \"mail\": null,\r\n      \"mailNickname\": \"adgroup3182tester\",\r\n      \"mailEnabled\": false,\r\n      \"membershipRule\": null,\r\n      \"membershipRuleProcessingState\": null,\r\n      \"onPremisesSecurityIdentifier\": null,\r\n      \"primarySMTPAddress\": null,\r\n      \"provisioningErrors\": [],\r\n      \"proxyAddresses\": [],\r\n      \"securityEnabled\": true,\r\n      \"sharepointResources\": [],\r\n      \"targetAddress\": null,\r\n      \"visibility\": null,\r\n      \"wellKnownObject\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Group\",\r\n      \"objectType\": \"Group\",\r\n      \"objectId\": \"beec4c05-d5ef-46c9-808e-35365198b218\",\r\n      \"deletionTimestamp\": null,\r\n      \"appMetadata\": null,\r\n      \"cloudSecurityIdentifier\": \"S-1-12-1-3203156997-1187632623-909479552-414357585\",\r\n      \"description\": null,\r\n      \"dirSyncEnabled\": null,\r\n      \"displayName\": \"adgroup2324\",\r\n      \"exchangeResources\": [],\r\n      \"creationOptions\": [],\r\n      \"groupTypes\": [],\r\n      \"isMembershipRuleLocked\": null,\r\n      \"isPublic\": null,\r\n      \"lastDirSyncTime\": null,\r\n      \"licenseAssignment\": [],\r\n      \"mail\": null,\r\n      \"mailNickname\": \"adgroup2324tester\",\r\n      \"mailEnabled\": false,\r\n      \"membershipRule\": null,\r\n      \"membershipRuleProcessingState\": null,\r\n      \"onPremisesSecurityIdentifier\": null,\r\n      \"primarySMTPAddress\": null,\r\n      \"provisioningErrors\": [],\r\n      \"proxyAddresses\": [],\r\n      \"securityEnabled\": true,\r\n      \"sharepointResources\": [],\r\n      \"targetAddress\": null,\r\n      \"visibility\": null,\r\n      \"wellKnownObject\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Group\",\r\n      \"objectType\": \"Group\",\r\n      \"objectId\": \"cae88902-fc9b-41b8-92a9-0537cd3740b5\",\r\n      \"deletionTimestamp\": null,\r\n      \"appMetadata\": null,\r\n      \"cloudSecurityIdentifier\": \"S-1-12-1-3404237058-1102642331-923117970-3040884685\",\r\n      \"description\": null,\r\n      \"dirSyncEnabled\": null,\r\n      \"displayName\": \"adgroup6260\",\r\n      \"exchangeResources\": [],\r\n      \"creationOptions\": [],\r\n      \"groupTypes\": [],\r\n      \"isMembershipRuleLocked\": null,\r\n      \"isPublic\": null,\r\n      \"lastDirSyncTime\": null,\r\n      \"licenseAssignment\": [],\r\n      \"mail\": null,\r\n      \"mailNickname\": \"adgroupmail8480\",\r\n      \"mailEnabled\": false,\r\n      \"membershipRule\": null,\r\n      \"membershipRuleProcessingState\": null,\r\n      \"onPremisesSecurityIdentifier\": null,\r\n      \"primarySMTPAddress\": null,\r\n      \"provisioningErrors\": [],\r\n      \"proxyAddresses\": [],\r\n      \"securityEnabled\": true,\r\n      \"sharepointResources\": [],\r\n      \"targetAddress\": null,\r\n      \"visibility\": null,\r\n      \"wellKnownObject\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Group\",\r\n      \"objectType\": \"Group\",\r\n      \"objectId\": \"d38be276-a880-4096-a284-8eb9bf6e918e\",\r\n      \"deletionTimestamp\": null,\r\n      \"appMetadata\": null,\r\n      \"cloudSecurityIdentifier\": \"S-1-12-1-3549160054-1083615360-3113125026-2391895743\",\r\n      \"description\": null,\r\n      \"dirSyncEnabled\": null,\r\n      \"displayName\": \"testGroup5\",\r\n      \"exchangeResources\": [],\r\n      \"creationOptions\": [],\r\n      \"groupTypes\": [],\r\n      \"isMembershipRuleLocked\": null,\r\n      \"isPublic\": null,\r\n      \"lastDirSyncTime\": null,\r\n      \"licenseAssignment\": [],\r\n      \"mail\": null,\r\n      \"mailNickname\": \"testGroup5\",\r\n      \"mailEnabled\": false,\r\n      \"membershipRule\": null,\r\n      \"membershipRuleProcessingState\": null,\r\n      \"onPremisesSecurityIdentifier\": null,\r\n      \"primarySMTPAddress\": null,\r\n      \"provisioningErrors\": [],\r\n      \"proxyAddresses\": [],\r\n      \"securityEnabled\": true,\r\n      \"sharepointResources\": [],\r\n      \"targetAddress\": null,\r\n      \"visibility\": null,\r\n      \"wellKnownObject\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Group\",\r\n      \"objectType\": \"Group\",\r\n      \"objectId\": \"d3a484d1-288c-4d33-a99b-0b36b452a2b6\",\r\n      \"deletionTimestamp\": null,\r\n      \"appMetadata\": null,\r\n      \"cloudSecurityIdentifier\": \"S-1-12-1-3550774481-1295198348-906730409-3064091316\",\r\n      \"description\": \"rbacclitestgroup\",\r\n      \"dirSyncEnabled\": null,\r\n      \"displayName\": \"rbacclitestgroup\",\r\n      \"exchangeResources\": [],\r\n      \"creationOptions\": [],\r\n      \"groupTypes\": [],\r\n      \"isMembershipRuleLocked\": null,\r\n      \"isPublic\": null,\r\n      \"lastDirSyncTime\": null,\r\n      \"licenseAssignment\": [],\r\n      \"mail\": null,\r\n      \"mailNickname\": \"40c7b71b-b8cf-4463-a5b2-06e7fcd256dd\",\r\n      \"mailEnabled\": false,\r\n      \"membershipRule\": null,\r\n      \"membershipRuleProcessingState\": null,\r\n      \"onPremisesSecurityIdentifier\": null,\r\n      \"primarySMTPAddress\": null,\r\n      \"provisioningErrors\": [],\r\n      \"proxyAddresses\": [],\r\n      \"securityEnabled\": true,\r\n      \"sharepointResources\": [],\r\n      \"targetAddress\": null,\r\n      \"visibility\": null,\r\n      \"wellKnownObject\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Group\",\r\n      \"objectType\": \"Group\",\r\n      \"objectId\": \"d782475a-39ff-4042-9515-57aee79ad724\",\r\n      \"deletionTimestamp\": null,\r\n      \"appMetadata\": null,\r\n      \"cloudSecurityIdentifier\": \"S-1-12-1-3615639386-1078082047-2924942741-618109671\",\r\n      \"description\": null,\r\n      \"dirSyncEnabled\": null,\r\n      \"displayName\": \"testGroup6\",\r\n      \"exchangeResources\": [],\r\n      \"creationOptions\": [],\r\n      \"groupTypes\": [],\r\n      \"isMembershipRuleLocked\": null,\r\n      \"isPublic\": null,\r\n      \"lastDirSyncTime\": null,\r\n      \"licenseAssignment\": [],\r\n      \"mail\": null,\r\n      \"mailNickname\": \"testGroup6\",\r\n      \"mailEnabled\": false,\r\n      \"membershipRule\": null,\r\n      \"membershipRuleProcessingState\": null,\r\n      \"onPremisesSecurityIdentifier\": null,\r\n      \"primarySMTPAddress\": null,\r\n      \"provisioningErrors\": [],\r\n      \"proxyAddresses\": [],\r\n      \"securityEnabled\": true,\r\n      \"sharepointResources\": [],\r\n      \"targetAddress\": null,\r\n      \"visibility\": null,\r\n      \"wellKnownObject\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Group\",\r\n      \"objectType\": \"Group\",\r\n      \"objectId\": \"deda9dcf-c94c-4525-8ac8-cdea7b256245\",\r\n      \"deletionTimestamp\": null,\r\n      \"appMetadata\": null,\r\n      \"cloudSecurityIdentifier\": \"S-1-12-1-3738869199-1160104268-3939354762-1164060027\",\r\n      \"description\": null,\r\n      \"dirSyncEnabled\": null,\r\n      \"displayName\": \"testGroup0\",\r\n      \"exchangeResources\": [],\r\n      \"creationOptions\": [],\r\n      \"groupTypes\": [],\r\n      \"isMembershipRuleLocked\": null,\r\n      \"isPublic\": null,\r\n      \"lastDirSyncTime\": null,\r\n      \"licenseAssignment\": [],\r\n      \"mail\": null,\r\n      \"mailNickname\": \"testGroup0\",\r\n      \"mailEnabled\": false,\r\n      \"membershipRule\": null,\r\n      \"membershipRuleProcessingState\": null,\r\n      \"onPremisesSecurityIdentifier\": null,\r\n      \"primarySMTPAddress\": null,\r\n      \"provisioningErrors\": [],\r\n      \"proxyAddresses\": [],\r\n      \"securityEnabled\": true,\r\n      \"sharepointResources\": [],\r\n      \"targetAddress\": null,\r\n      \"visibility\": null,\r\n      \"wellKnownObject\": null\r\n    },\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.Group\",\r\n      \"objectType\": \"Group\",\r\n      \"objectId\": \"e523db17-2506-4b3a-8edd-fef92af60df4\",\r\n      \"deletionTimestamp\": null,\r\n      \"appMetadata\": null,\r\n      \"cloudSecurityIdentifier\": \"S-1-12-1-3844332311-1262101766-4194229646-4094555690\",\r\n      \"description\": null,\r\n      \"dirSyncEnabled\": null,\r\n      \"displayName\": \"adgroup7292\",\r\n      \"exchangeResources\": [],\r\n      \"creationOptions\": [],\r\n      \"groupTypes\": [],\r\n      \"isMembershipRuleLocked\": null,\r\n      \"isPublic\": null,\r\n      \"lastDirSyncTime\": null,\r\n      \"licenseAssignment\": [],\r\n      \"mail\": null,\r\n      \"mailNickname\": \"adgroup7292tester\",\r\n      \"mailEnabled\": false,\r\n      \"membershipRule\": null,\r\n      \"membershipRuleProcessingState\": null,\r\n      \"onPremisesSecurityIdentifier\": null,\r\n      \"primarySMTPAddress\": null,\r\n      \"provisioningErrors\": [],\r\n      \"proxyAddresses\": [],\r\n      \"securityEnabled\": true,\r\n      \"sharepointResources\": [],\r\n      \"targetAddress\": null,\r\n      \"visibility\": null,\r\n      \"wellKnownObject\": null\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
+        "Content-Length": [
+          "16291"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
         "Pragma": [
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "v3yGAWrccus9FzuzL9cLf8vSbclXQ3anB0vIyjf36ac="
+          "8QS3Rr9OchX/gNA/xIqqaruLx3+x2qpMKF2JrRGoy1I="
         ],
         "request-id": [
-          "79f9b532-048d-4165-bd56-2a1f495f126e"
+          "651d2d04-f6f5-4d5e-a3ee-60e80db0e5a4"
         ],
         "client-request-id": [
-          "f5deacf9-68f7-439c-8aba-c9f9432a2a6f"
+          "f342e3d2-4094-4436-bec2-388318c8c5b6"
+        ],
+        "x-ms-dirapi-data-contract-version": [
+          "1.6-internal"
         ],
         "x-ms-gateway-rewrite": [
           "false"
         ],
-        "x-ms-dirapi-data-contract-version": [
-          "1.42-previewInternal"
-        ],
         "ocp-aad-session-key": [
-          "2ycJD01u63mOuC77PdetEOlnLGc2ixY4mzN4uqLAzPSOBhiIF6-3sNFNQsG_G_T4UUFRtnzieGUtjenz4ogmQrvq0rR_-uAdaDRdbdgoIY5oMXl0xyjXmDK3EwxWCVl1kOQTnGsBcmSXemR44Tds_w.oQOlinED2Ybr6DpvjGP3HLLBOazoh9q-fB-8keGnWyU"
+          "bTF2FfQNTRL4XvOk1lwXNBHCGWCItFoiC9WjsqHqu42ddaEKfKTdlmBl5vdJpNFZ2boBABWJP-lgDQcAh8YeyASXcRgKoEoyArtqP3Fg4nJAPkwWW8-_KJNLn6-zXy42P3BZsSSH7r9RlS4hVUJbBw.MGrBZZxKCRplgT3-xIWcIjznIgQ-sw3TgRynW-SGBBA"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -104,11 +136,17 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "Duration": [
+          "1339946"
+        ],
         "Cache-Control": [
           "no-cache"
         ],
         "Server": [
-          "Microsoft-IIS/8.0"
+          "Microsoft-IIS/8.5"
         ],
         "X-AspNet-Version": [
           "4.0.30319"
@@ -118,13 +156,14 @@
           "ASP.NET"
         ],
         "Date": [
-          "Wed, 24 Sep 2014 21:32:53 GMT"
+          "Wed, 27 Jan 2016 21:19:53 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/1449d5b7-8a83-47db-ae4c-9b03e888bad0/groups/5a2bae3d-6c6c-4f04-9f15-9b73738499f1?api-version=1.42-previewInternal",
+      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/groups/77ff01a9-e566-459e-831b-eb4ff93bf9ae?api-version=1.6-internal",
+      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9ncm91cHMvNzdmZjAxYTktZTU2Ni00NTllLTgzMWItZWI0ZmY5M2JmOWFlP2FwaS12ZXJzaW9uPTEuNi1pbnRlcm5hbA==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
@@ -134,26 +173,29 @@
       },
       "ResponseBody": "",
       "ResponseHeaders": {
+        "Expires": [
+          "-1"
+        ],
         "Pragma": [
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "v3yGAWrccus9FzuzL9cLf8vSbclXQ3anB0vIyjf36ac="
+          "8QS3Rr9OchX/gNA/xIqqaruLx3+x2qpMKF2JrRGoy1I="
         ],
         "request-id": [
-          "7b13b39f-419e-4618-8e7c-cb78f64aeb32"
+          "85b92d34-96c2-412f-83f1-4675563af146"
         ],
         "client-request-id": [
-          "9b51ea1c-bc59-49c6-81a4-aa029af996b1"
+          "5025ec78-6e79-4fe7-a092-e214bea8fd74"
+        ],
+        "x-ms-dirapi-data-contract-version": [
+          "1.6-internal"
         ],
         "x-ms-gateway-rewrite": [
           "false"
         ],
-        "x-ms-dirapi-data-contract-version": [
-          "1.42-previewInternal"
-        ],
         "ocp-aad-session-key": [
-          "Q3WvL7dC7o0OAQhFu3mg_fhnT4GosoT6OU5MVt6HV6mKt2_zB2GBp9x3kue-yODbIhWOb82OA1oo__dSs8A01KZ_Q92i9YKPO8lc0YmXBW-y-5GRm11_5yc8Y7XrTBQgxJ3SW3_yJYzkVS0cNYicpw.qz00rZY0PqWkdHevowIqMdEN5ONbVMs2LbBy6OM8X74"
+          "uI_WoaI3crli4_znKV_EyJ5XBUjlMPPk780y9SqfWb5anHSGOFQh-C1HsQo8r7nI0mEf7AoS2KfDdDS3lgEqIRuux6Ic2ghingKmVw8v1QHmsRRHdpdm7ELPDmwLeC-uDbDCk4bNr3Xfbglrp-BVDw.0p4E5vPaxPGFGbXsbTczZDi-ejb55-MvkZuxppyUoN0"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -164,11 +206,17 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "Duration": [
+          "2486257"
+        ],
         "Cache-Control": [
           "no-cache"
         ],
         "Server": [
-          "Microsoft-IIS/8.0"
+          "Microsoft-IIS/8.5"
         ],
         "X-AspNet-Version": [
           "4.0.30319"
@@ -178,7 +226,7 @@
           "ASP.NET"
         ],
         "Date": [
-          "Wed, 24 Sep 2014 21:32:53 GMT"
+          "Wed, 27 Jan 2016 21:19:54 GMT"
         ]
       },
       "StatusCode": 204
@@ -186,13 +234,13 @@
   ],
   "Names": {
     "CreateNewAdGroup": [
-      "adgroup8266",
-      "adgroupmail196"
+      "adgroup5092",
+      "adgroupmail4509"
     ]
   },
   "Variables": {
-    "SubscriptionId": "db1ab6f0-4769-4b27-930e-01e2ef9c123c",
-    "TenantId": "1449d5b7-8a83-47db-ae4c-9b03e888bad0",
-    "Domain": "rbactest.onmicrosoft.com"
+    "SubscriptionId": "4004a9fd-d58e-48dc-aeb2-4a4aec58606f",
+    "TenantId": "1273adef-00a3-4086-a51a-dbcce1857d36",
+    "Domain": "rbacCliTest.onmicrosoft.com"
   }
 }
