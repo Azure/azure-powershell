@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             var mode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
             var csmAuth = Environment.GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION");
 
-            if (mode.ToLower() != "record")
+            if (mode == null || csmAuth == null || mode.ToLower() != "record")
             {
                 return;
             }
@@ -32,7 +32,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
             var authenticationContext = new AuthenticationContext("https://login.windows.net/" + testEnv.Tenant);
             var credential = new ClientCredential(testEnv.ClientId, envDictionary["ApplicationSecret"]);
-
 
             var result = authenticationContext.AcquireToken("https://management.core.windows.net/", clientCredential: credential);
             Assert.NotNull(result.AccessToken);
