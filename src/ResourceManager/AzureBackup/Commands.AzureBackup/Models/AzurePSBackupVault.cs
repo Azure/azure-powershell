@@ -57,6 +57,15 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
             Type = VaultType.BackupVault;
         }
 
+        public AzureRMBackupVault(ARSVault arsVault)
+        {
+            Name = arsVault.Name;
+            Region = arsVault.Location;
+            ResourceGroupName = arsVault.ResouceGroupName;
+            ResourceId = arsVault.ID;
+            Type = VaultType.ARSVault;
+        }
+
         internal void Validate()
         {
             if (String.IsNullOrEmpty(ResourceGroupName))

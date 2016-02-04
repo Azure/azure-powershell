@@ -22,34 +22,26 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.Vault, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public AzureRMBackupVault Vault { get; set; }
-        //public VaultBase Vault { get; set; }
+        public VaultBase Vault { get; set; }
 
-        //public AzureRMBackupVault Vault1 { get; set; }
+        public AzureRMBackupVault BackupVault { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            //if (Vault.GetType() == typeof(ARSVault))
-            //{
-            //    var arsVault = (ARSVault)Vault;
-            //    BackupVault = new AzureRMBackupVault();
-            //    BackupVault.Name = arsVault.Name;
-            //    BackupVault.Region = arsVault.Location;
-            //    BackupVault.ResourceGroupName = arsVault.ResouceGroupName;
-            //    BackupVault.ResourceId = arsVault.ID;
-            //    BackupVault.Type = VaultType.ARSVault;
-            //}
-            //else if (Vault.GetType() == typeof(AzureRMBackupVault))
-            //{
-            //    BackupVault = (AzureRMBackupVault)Vault;
-            //    BackupVault.Type = VaultType.BackupVault;
-            //}
+            if (Vault.GetType() == typeof(ARSVault))
+            {
+                BackupVault = new AzureRMBackupVault((ARSVault)Vault);
+            }
+            else if (Vault.GetType() == typeof(AzureRMBackupVault))
+            {
+                BackupVault = (AzureRMBackupVault)Vault;
+            }
 
-            Vault.Validate();
+            BackupVault.Validate();
 
-            InitializeAzureBackupCmdlet(Vault);
+            InitializeAzureBackupCmdlet(BackupVault);
         }
     }
 }
