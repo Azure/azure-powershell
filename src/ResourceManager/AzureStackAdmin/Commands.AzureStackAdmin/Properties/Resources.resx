@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="WindowTitle" xml:space="preserve">
+    <value>Azure Stack PowerShell</value>
+  </data>
+  <data name="GettingGalleryItem" xml:space="preserve">
+    <value>Getting gallery item with name "{0}".</value>
+  </data>
+  <data name="ListingGalleryItems" xml:space="preserve">
+    <value>Listing all gallery items.</value>
+  </data>
+  <data name="AddingGalleryItem" xml:space="preserve">
+    <value>Adding gallery item with name "{0}".</value>
+  </data>
+  <data name="RemovingGalleryItem" xml:space="preserve">
+    <value>Removing gallery item with name "{0}".</value>
+  </data>
+  <data name="AddingResourceProviderRegistration" xml:space="preserve">
+    <value>Adding resource provider registration with name "{0}".</value>
+  </data>
+  <data name="GettingResourceProviderRegistration" xml:space="preserve">
+    <value>Getting resource provider registration with name "{0}".</value>
+  </data>
+  <data name="ListingResourceProviderRegistration" xml:space="preserve">
+    <value>Listing all resource provider registrations.</value>
+  </data>
+  <data name="RemovingResourceProviderRegistration" xml:space="preserve">
+    <value>Removing resource provider registration with name "{0}".</value>
+  </data>
+  <data name="ProviderRegistrationAlreadyExists" xml:space="preserve">
+    <value>A resource provider registration with name "{0}" and region "{1}" already exists.</value>
+  </data>
+  <data name="ProviderRegistrationDoesNotExist" xml:space="preserve">
+    <value>A resource provider registration with name "{0}" and region "{1}" does not exist.</value>
+  </data>
+  <data name="ResourceGroupDoesNotExist" xml:space="preserve">
+    <value>A resource group with Name "{0}" does not exist.</value>
+  </data>
+  <data name="GettingSubscriptionByID" xml:space="preserve">
+    <value>Getting Subscription with SubscriptionId "{0}".</value>
+  </data>
+  <data name="ListingSubscriptions" xml:space="preserve">
+    <value>Listing all subscriptions.</value>
+  </data>
+  <data name="ResourceGroupCannotBeEmpty" xml:space="preserve">
+    <value>Resource group cannot be empty.</value>
+  </data>
+  <data name="GettingManagedOffer" xml:space="preserve">
+    <value>Getting managed offer "{0}" in resource group "{1}".</value>
+  </data>
+  <data name="ListingManagedOffers" xml:space="preserve">
+    <value>Listing all managed offers in resource group "{0}".</value>
+  </data>
+  <data name="ListingManagedSubscriptions" xml:space="preserve">
+    <value>Listing all managed subscriptions.</value>
+  </data>
+  <data name="RemovingManagedOffer" xml:space="preserve">
+    <value>Removing managed offer "{0}" in resource group "{1}".</value>
+  </data>
+  <data name="GettingOffer" xml:space="preserve">
+    <value>Getting offer "{0}".</value>
+  </data>
+  <data name="ListingOffers" xml:space="preserve">
+    <value>Listing offers for provider "{0}".</value>
+  </data>
+  <data name="GettingManagedPlan" xml:space="preserve">
+    <value>Getting managed plan "{0}" in resource group "{1}".</value>
+  </data>
+  <data name="GettingPlan" xml:space="preserve">
+    <value>Getting plan "{0}".</value>
+  </data>
+  <data name="ListingManagedPlans" xml:space="preserve">
+    <value>Listing all managed plans in resource group "{0}".</value>
+  </data>
+  <data name="ListingPlans" xml:space="preserve">
+    <value>Listing all plans.</value>
+  </data>
+  <data name="ManagedOfferAlreadyExists" xml:space="preserve">
+    <value>A managed offer with name "{0}" already exists in resource group "{1}".</value>
+  </data>
+  <data name="ManagedOfferDoesNotExist" xml:space="preserve">
+    <value>A managed offer with name "{0}" does not exist in resource group "{1}".</value>
+  </data>
+  <data name="ManagedPlanAlreadyExists" xml:space="preserve">
+    <value>A managed plan with name "{0}" and region "{1}" already exists.</value>
+  </data>
+  <data name="ManagedPlanDoesNotExist" xml:space="preserve">
+    <value>A managed plan with name "{0}" does not exist in resource group "{1}".</value>
+  </data>
+  <data name="RemovingManagedPlan" xml:space="preserve">
+    <value>Removing managed plan "{0}" in resource group "{1}".</value>
+  </data>
+  <data name="CreatingNewOffer" xml:space="preserve">
+    <value>Creating a new offer with name "{0}" in resource group "{1}".</value>
+  </data>
+  <data name="CreatingNewPlan" xml:space="preserve">
+    <value>Creating a new plan with name "{0}" in resource group "{1}".</value>
+  </data>
+  <data name="CreatingNewSubscription" xml:space="preserve">
+    <value>Creating a new subscription for owner "{0}" to offer "{1}" with display name "{2}".</value>
+  </data>
+  <data name="DeletingSubscription" xml:space="preserve">
+    <value>Deleting subscription "{0}".</value>
+  </data>
+  <data name="GettingManagedSubscriptionByID" xml:space="preserve">
+    <value>Getting managed Subscription with SubscriptionId "{0}".</value>
+  </data>
+  <data name="UpdatingOffer" xml:space="preserve">
+    <value>Updating offer with name "{0}" in resource group "{1}".</value>
+  </data>
+  <data name="UpdatingPlan" xml:space="preserve">
+    <value>Updating plan with name "{0}" in resource group "{1}".</value>
+  </data>
+  <data name="UpdatingManagedSubscription" xml:space="preserve">
+    <value>Updating managed subscription with id "{0}" and owner "{1}" under provider subscription '{2}'.</value>
+  </data>
+  <data name="UpdatingSubscription" xml:space="preserve">
+    <value>Updating subscription with id "{0}" and owner "{1}".</value>
+  </data>
+  <data name="WarningDisableCertificateValidation" xml:space="preserve">
+    <value>Disabling certificate validation may allow others to intercept and decrypt this web request.</value>
+  </data>
+  <data name="ManagedLocationAlreadyExists" xml:space="preserve">
+    <value>A managed location with name "{0}" already exists.</value>
+  </data>
+  <data name="CreatingNewManagedLocation" xml:space="preserve">
+    <value>Creating new managed location "{0}".</value>
+  </data>
+  <data name="GettingManagedLocation" xml:space="preserve">
+    <value>Getting managed location "{0}".</value>
+  </data>
+  <data name="ListingManagedLocations" xml:space="preserve">
+    <value>Listing all managed locations.</value>
+  </data>
+  <data name="RemovingManagedLocation" xml:space="preserve">
+    <value>Removing managed location "{0}".</value>
+  </data>
+  <data name="UpdatingManagedLocation" xml:space="preserve">
+    <value>Updating managed location "{0}".</value>
+  </data>
+  <data name="InvalidProfile" xml:space="preserve">
+    <value>The Azure profile is invalid, Make sure that you are in the Azure context with the Login-AzureRMAccount cmdlets.</value>
+  </data>
+  <data name="TokenAndAdminUriRequired" xml:space="preserve">
+    <value>Both the parameters Token and AdminUri are required.</value>
+  </data>
+  <data name="ExpectedNotEmptyCollection" xml:space="preserve">
+    <value>Expected not empty collection.</value>
+  </data>
+  <data name="ExpectedNotEmptyValue" xml:space="preserve">
+    <value>Expected not empty value.</value>
+  </data>
+  <data name="ValidateAbsoluteUriNotAbsolute" xml:space="preserve">
+    <value>Argument must be an absolute URI.</value>
+  </data>
+  <data name="ValidateAbsoluteUriWrongType" xml:space="preserve">
+    <value>ValidateAbsoluteUri attribute was defined on property of type {0}. System.Uri type is expected.</value>
+  </data>
+  <data name="ValidateGuidEmpty" xml:space="preserve">
+    <value>Argument must not be an empty GUID.</value>
+    <comment>ValidationMetadataException</comment>
+  </data>
+  <data name="ValidateGuidWrongType" xml:space="preserve">
+    <value>Argument must be a GUID.</value>
+    <comment>ValidationMetadataException</comment>
+  </data>
+</root>
