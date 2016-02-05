@@ -21,23 +21,8 @@ using System.Threading;
 
 namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
 {
-    public partial class AzureBackupClientAdapter
+    public partial class AzureBackupClientAdapter : ClientAdapterBase
     {
-        /// <summary>
-        /// Cloud credentials for client calls
-        /// </summary>
-        private SubscriptionCloudCredentials cloudCreds { get; set; }
-
-        /// <summary>
-        /// Base URI for client calls
-        /// </summary>
-        private Uri baseURI { get; set; }
-
-        /// <summary>
-        /// Client request id.
-        /// </summary>
-        private string clientRequestId;
-
         /// <summary>
         /// Azure vault backup client to talk to IdMgmt.
         /// </summary>
@@ -49,12 +34,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
         private BackupServicesManagementClient azureBackupClient;
 
         /// <summary>
-        /// Cancellation Token Source
-        /// </summary>
-        private CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
-        private CancellationToken CmdletCancellationToken;
-
-        /// <summary>
         /// Get Azure backup client.
         /// </summary>
         private BackupVaultServicesManagementClient AzureBackupVaultClient
@@ -63,7 +42,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
             {
                 if (this.azureBackupVaultClient == null)
                 {
-                    this.azureBackupVaultClient = AzureSession.ClientFactory.CreateCustomClient<BackupVaultServicesManagementClient>(cloudCreds, baseURI);
+                    this.azureBackupVaultClient = AzureSession.ClientFactory.CreateCustomClient<BackupVaultServicesManagementClient>(CloudCreds, BaseURI);
                 }
 
                 return this.azureBackupVaultClient;
@@ -79,7 +58,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
             {
                 if (this.azureBackupClient == null)
                 {
-                    this.azureBackupClient = AzureSession.ClientFactory.CreateCustomClient<BackupServicesManagementClient>(cloudCreds, baseURI);
+                    this.azureBackupClient = AzureSession.ClientFactory.CreateCustomClient<BackupServicesManagementClient>(CloudCreds, BaseURI);
                 }
 
                 return this.azureBackupClient;
@@ -87,32 +66,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
         }
 
         public AzureBackupClientAdapter(SubscriptionCloudCredentials creds, Uri baseUri)
-        {
-            cloudCreds = creds;
-            baseURI = baseUri;
-
-            RefreshClientRequestId();
-
-            // Temp code to be able to test internal env.
-            ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
-        }
-
-        public void RefreshClientRequestId()
-        {
-            clientRequestId = Guid.NewGuid().ToString() + "-" + DateTime.Now.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ssZ") + "-PS";
-        }
-
-        public string GetClientRequestId()
-        {
-            return clientRequestId;
-        }
+            : base(creds, baseUri) { }
 
         internal CustomRequestHeaders GetCustomRequestHeaders()
         {
             var hdrs = new CustomRequestHeaders()
             {
                 // ClientRequestId is a unique ID for every request to backend service.
-                ClientRequestId = this.clientRequestId,
+                ClientRequestId = this.ClientRequestId,
             };
 
             return hdrs;
