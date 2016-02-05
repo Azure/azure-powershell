@@ -31,5 +31,3 @@ using System.Runtime.InteropServices;
 [assembly: Guid("e50b915e-1c94-4cd1-bbea-72ff2246d237")]
 [assembly: AssemblyVersion("1.0.0")]
 [assembly: AssemblyFileVersion("1.0.0")]
-
-[assembly: InternalsVisibleTo("Microsoft.Azure.Commands.LogicApp.Test")]
