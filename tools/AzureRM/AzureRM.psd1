@@ -9,7 +9,7 @@
 @{  
   
 # Version number of this module.  
-ModuleVersion = '1.3.0'  
+ModuleVersion = '1.2.0'  
   
 # ID used to uniquely identify this module  
 GUID = 'B433E830-B479-4F7F-9C80-9CC6C28E1B51'  
@@ -46,34 +46,34 @@ ProcessorArchitecture = 'None'
   
 # Modules that must be imported into the global environment prior to importing this module  
 RequiredModules = @(
-    @{ ModuleName = 'AzureRM.Profile'; ModuleVersion = '1.0.4'},
-    @{ ModuleName = 'Azure.Storage'; ModuleVersion = '1.0.4'},
-    @{ ModuleName = 'AzureRM.ApiManagement'; ModuleVersion = '1.0.4'},
-    @{ ModuleName = 'AzureRM.Automation'; ModuleVersion = '1.0.4'},
-    @{ ModuleName = 'AzureRM.Backup'; ModuleVersion = '1.0.4'},
-    @{ ModuleName = 'AzureRM.Batch'; ModuleVersion = '1.0.4'},
-    @{ ModuleName = 'AzureRM.Compute'; ModuleVersion = '1.2.2'},
-    @{ ModuleName = 'AzureRM.DataFactories'; ModuleVersion = '1.0.4'},
-    @{ ModuleName = 'AzureRM.DataLakeAnalytics'; ModuleVersion = '1.0.4'},
-    @{ ModuleName = 'AzureRM.DataLakeStore'; ModuleVersion = '1.0.4'},
-    @{ ModuleName = 'AzureRM.Dns'; ModuleVersion = '1.0.4'},
-    @{ ModuleName = 'AzureRM.HDInsight'; ModuleVersion = '1.0.5'},
-    @{ ModuleName = 'AzureRM.Insights'; ModuleVersion = '1.0.4'},
-    @{ ModuleName = 'AzureRM.KeyVault'; ModuleVersion = '1.1.3'},
-    @{ ModuleName = 'AzureRM.Network'; ModuleVersion = '1.0.4'},
-    @{ ModuleName = 'AzureRM.NotificationHubs'; ModuleVersion = '1.0.4'},
-    @{ ModuleName = 'AzureRM.OperationalInsights'; ModuleVersion = '1.0.4'},
-    @{ ModuleName = 'AzureRM.RecoveryServices'; ModuleVersion = '1.0.5'},
-    @{ ModuleName = 'AzureRM.RedisCache'; ModuleVersion = '1.1.2'},
-    @{ ModuleName = 'AzureRM.Resources'; ModuleVersion = '1.0.4'},
-    @{ ModuleName = 'AzureRM.SiteRecovery'; ModuleVersion = '1.1.3'},
-    @{ ModuleName = 'AzureRM.Sql'; ModuleVersion = '1.0.4'},
-    @{ ModuleName = 'AzureRM.Storage'; ModuleVersion = '1.0.4'},
-    @{ ModuleName = 'AzureRM.StreamAnalytics'; ModuleVersion = '1.0.4'},
-    @{ ModuleName = 'AzureRM.Tags'; ModuleVersion = '1.0.4'},
-    @{ ModuleName = 'AzureRM.TrafficManager'; ModuleVersion = '1.0.4'},
-    @{ ModuleName = 'AzureRM.UsageAggregates'; ModuleVersion = '1.0.4'},
-    @{ ModuleName = 'AzureRM.Websites'; ModuleVersion = '1.0.4'}
+    @{ ModuleName = 'AzureRM.Profile'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.4'},
+    @{ ModuleName = 'Azure.Storage'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.4'},
+    @{ ModuleName = 'AzureRM.ApiManagement'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.4'},
+    @{ ModuleName = 'AzureRM.Automation'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.4'},
+    @{ ModuleName = 'AzureRM.Backup'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.4'},
+    @{ ModuleName = 'AzureRM.Batch'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.4'},
+    @{ ModuleName = 'AzureRM.Compute'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.2.2'},
+    @{ ModuleName = 'AzureRM.DataFactories'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.4'},
+    @{ ModuleName = 'AzureRM.DataLakeAnalytics'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.4'},
+    @{ ModuleName = 'AzureRM.DataLakeStore'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.4'},
+    @{ ModuleName = 'AzureRM.Dns'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.4'},
+    @{ ModuleName = 'AzureRM.HDInsight'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.5'},
+    @{ ModuleName = 'AzureRM.Insights'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.4'},
+    @{ ModuleName = 'AzureRM.KeyVault'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.1.3'},
+    @{ ModuleName = 'AzureRM.Network'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.4'},
+    @{ ModuleName = 'AzureRM.NotificationHubs'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.4'},
+    @{ ModuleName = 'AzureRM.OperationalInsights'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.4'},
+    @{ ModuleName = 'AzureRM.RecoveryServices'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.5'},
+    @{ ModuleName = 'AzureRM.RedisCache'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.1.2'},
+    @{ ModuleName = 'AzureRM.Resources'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.4'},
+    @{ ModuleName = 'AzureRM.SiteRecovery'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.1.3'},
+    @{ ModuleName = 'AzureRM.Sql'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.4'},
+    @{ ModuleName = 'AzureRM.Storage'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.4'},
+    @{ ModuleName = 'AzureRM.StreamAnalytics'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.4'},
+    @{ ModuleName = 'AzureRM.Tags'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.4'},
+    @{ ModuleName = 'AzureRM.TrafficManager'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.4'},
+    @{ ModuleName = 'AzureRM.UsageAggregates'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.4'},
+    @{ ModuleName = 'AzureRM.Websites'; MaximumVersion = '1.9999.9999.9999'; ModuleVersion = '1.0.4'}
 ) 
   
 # Assemblies that must be loaded prior to importing this module  
