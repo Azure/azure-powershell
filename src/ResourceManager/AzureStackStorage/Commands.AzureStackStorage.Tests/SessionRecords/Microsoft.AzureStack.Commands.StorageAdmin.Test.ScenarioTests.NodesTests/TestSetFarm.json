@@ -1,0 +1,62 @@
+{
+    "Entries": [
+        {
+            "RequestUri": "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourcegroups/Default-Web-EastUS/providers/Microsoft.Storage.Admin/farms/03768357-B4F2-4C3C-AA75-574209B03D49?api-version=2014-12-01-preview",
+            "RequestMethod": "PATCH",
+            "RequestBody": "{\"properties\":{\"settings\":{\"settingsPollingIntervalInSecond\":90,\"corsAllowedOriginsList\":\"http://manage.wossportal.com;http://www.example.com\"}},\"tags\":{}}",
+            "RequestHeaders": {
+                "Accept": [ "application/json" ],
+                "User-Agent": [ "Microsoft.Azure.Insights.InsightsClient/0.9.0.0 AzurePowershell/v0.8.14" ],
+                "Content-Length": [ "1217" ],
+                "Content-Type": [ "application/json; charset=utf-8" ],
+                "Connection": [ "Keep-Alive" ],
+                "Expect": [ "100-continue" ]
+            },
+            "ResponseBody": "{\"id\":\"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/Microsoft.Storage.Admin/farms/03768357-B4F2-4C3C-AA75-574209B03D49\",\"name\":\"82ba752f-0fac-47e2-8477-5731f9f5db34\",\"type\":\"Microsoft.Storage.Admin/farms\",\"location\":\"redmond\",\"properties\":{\"farmId\":\"82ba752f-0fac-47e2-8477-5731f9f5db34\",\"version\":\"2014-12-01-preview\",\"settingsStore\":\"file://172.17.145.159/SMB/Settings/ObjectStorageService/Settings\",\"healthStatus\":\"Unknown\",\"settings\":{\"settingsPollingIntervalInSecond\":90,\"hostStyleHttpPort\":80,\"hostStyleHttpsPort\":443,\"corsAllowedOriginsList\":\"http://manage.wossportal.com;http://www.example.com\",\"dataCenterUriHostSuffixes\":\"contoso.com\"}}}",
+            "ResponseHeaders": {
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Date": [
+                    "Mon, 03 Mar 2015 00:07:07 GMT"
+                ],
+                "Expires": [
+                    "-1"
+                ],
+                "Pragma": [
+                    "no-cache"
+                ],
+                "Content-Length": [
+                    "1612"
+                ],
+                "Content-Type": [
+                    "application/json; charset=utf-8"
+                ],
+                "x-ms-ratelimit-remaining-subscription-writes": [
+                    "1199"
+                ],
+                "x-ms-request-id": [
+                    "47af504c-88a1-49c5-9766-e397d54e490b"
+                ],
+                "x-ms-correlation-request-id": [
+                    "e223e5fa-7d3c-4d2c-a2e9-aed3011aefb7"
+                ],
+                "x-ms-routing-request-id": [
+                    "WESTUS:20150303T190828Z:e223e5fa-7d3c-4d2c-a2e9-aed3011aefb7"
+                ],
+                "Strict-Transport-Security": [
+                    "max-age=31536000; includeSubDomains"
+                ]
+            },
+            "StatusCode": 200
+        }
+    ],
+  "Names": {
+    "Test-SetFarm": [
+      ""
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "a93fb07c-6c93-40be-bf3b-4f0deba10f4b"
+  }
+}
