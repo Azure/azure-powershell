@@ -1,3 +1,6 @@
+## 2016.02.04 version 1.2.1
+* Fix installer issue - remove PSGallery modules on install
+
 ## 2016.02.03 version 1.2.0
 * Azure RemoteApp: 
   * Organizational Unit in Azure RemoteApp RDFE cmdlets now accepts Unicode characters.
