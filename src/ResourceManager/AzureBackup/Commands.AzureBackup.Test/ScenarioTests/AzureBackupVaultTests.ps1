@@ -45,7 +45,7 @@ function Test-AzureBackupVaultScenario
 	Remove-AzureRmBackupVault -Vault $vault;	
 }
 
-function Test-AzureBackupVaultRsVaultScenario
+function Test-AzureRecoveryServiceVaultScenario
 {
 	$bvault = New-AzureRmBackupVault -ResourceGroupName $ResourceGroupName -Name $ResourceName -Region $Location -Storage "LocallyRedundant";
 	$rsvault = New-AzureRmRecoveryServicesVault -ResourceGroupName $ResourceGroupName -Name "rsrnvault" -Location $Location;

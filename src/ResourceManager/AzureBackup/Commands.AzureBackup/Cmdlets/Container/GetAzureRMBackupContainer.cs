@@ -62,10 +62,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     case AzureBackupContainerType.SCDPM:
                     case AzureBackupContainerType.AzureBackupServer:
                     case AzureBackupContainerType.Other:
-                        containers.AddRange(GetMachineContainers(BackupVault.ResourceGroupName, BackupVault.Name));
+                        containers.AddRange(GetMachineContainers(RecoveryServicesVault.ResourceGroupName, RecoveryServicesVault.Name));
                         break;
                     case AzureBackupContainerType.AzureVM:
-                        containers.AddRange(GetManagedContainers(BackupVault.ResourceGroupName, BackupVault.Name));
+                        containers.AddRange(GetManagedContainers(RecoveryServicesVault.ResourceGroupName, RecoveryServicesVault.Name));
                         break;
                     default:
                         break;
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
             return marsContainerResponses.ConvertAll<AzureRMBackupContainer>(marsContainerResponse =>
             {
-                return new AzureRMBackupContainer(BackupVault, marsContainerResponse);
+                return new AzureRMBackupContainer(RecoveryServicesVault, marsContainerResponse);
             }).Where(container => container.ContainerType == Type.ToString()).ToList();
         }
 
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             // BUG: Friendly name was previously assigned to ResourceName (vault name)
             managedContainers.AddRange(containers.ConvertAll(container =>
             {
-                return new AzureRMBackupContainer(BackupVault, container);
+                return new AzureRMBackupContainer(RecoveryServicesVault, container);
             }));
 
             return managedContainers;

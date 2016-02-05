@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         [ValidateNotNullOrEmpty]
         public VaultBase Vault { get; set; }
 
-        public AzureRMBackupVault BackupVault { get; set; }
+        public AzureRMBackupVault RecoveryServicesVault { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -32,16 +32,16 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
             if (Vault.GetType() == typeof(ARSVault))
             {
-                BackupVault = new AzureRMBackupVault((ARSVault)Vault);
+                RecoveryServicesVault = new AzureRMBackupVault((ARSVault)Vault);
             }
             else if (Vault.GetType() == typeof(AzureRMBackupVault))
             {
-                BackupVault = (AzureRMBackupVault)Vault;
+                RecoveryServicesVault = (AzureRMBackupVault)Vault;
             }
 
-            BackupVault.Validate();
+            RecoveryServicesVault.Validate();
 
-            InitializeAzureBackupCmdlet(BackupVault);
+            InitializeAzureBackupCmdlet(RecoveryServicesVault);
         }
     }
 }

@@ -52,14 +52,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 string subscriptionId = DefaultContext.Subscription.Id.ToString();
                 string resourceType = "BackupVault";
-                string displayName = subscriptionId + "_" + BackupVault.ResourceGroupName + "_" + BackupVault.Name;
+                string displayName = subscriptionId + "_" + RecoveryServicesVault.ResourceGroupName + "_" + RecoveryServicesVault.Name;
 
                 WriteDebug(string.Format(CultureInfo.InvariantCulture,
                                           Resources.ExecutingGetVaultCredCmdlet,
-                                          subscriptionId, BackupVault.ResourceGroupName, BackupVault.Name, TargetLocation));
+                                          subscriptionId, RecoveryServicesVault.ResourceGroupName, RecoveryServicesVault.Name, TargetLocation));
 
                 X509Certificate2 cert = CertUtils.CreateSelfSignedCert(CertUtils.DefaultIssuer,
-                                                                       CertUtils.GenerateCertFriendlyName(subscriptionId, BackupVault.Name),
+                                                                       CertUtils.GenerateCertFriendlyName(subscriptionId, RecoveryServicesVault.Name),
                                                                        CertUtils.DefaultPassword,
                                                                        DateTime.UtcNow.AddMinutes(-10),
                                                                        DateTime.UtcNow.AddHours(this.GetCertificateExpiryInHours()));
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 {
                     // Upload cert into ID Mgmt
                     WriteDebug(string.Format(CultureInfo.InvariantCulture, Resources.UploadingCertToIdmgmt));
-                    acsNamespace = UploadCert(cert, subscriptionId, BackupVault.Name, resourceType, BackupVault.ResourceGroupName);
+                    acsNamespace = UploadCert(cert, subscriptionId, RecoveryServicesVault.Name, resourceType, RecoveryServicesVault.ResourceGroupName);
                     WriteDebug(string.Format(CultureInfo.InvariantCulture, Resources.UploadedCertToIdmgmt));
                 }
                 catch (Exception exception)
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 {
                     BackupVaultCreds backupVaultCreds = new BackupVaultCreds(subscriptionId,
                                                                              resourceType,
-                                                                             BackupVault.Name,
+                                                                             RecoveryServicesVault.Name,
                                                                              CertUtils.SerializeCert(cert, X509ContentType.Pfx),
                                                                              acsNamespace,
                                                                              GetAgentLinks());

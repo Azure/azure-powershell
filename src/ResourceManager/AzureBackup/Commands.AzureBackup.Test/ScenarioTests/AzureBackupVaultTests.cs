@@ -28,9 +28,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void AzureBackupVaultRsVaultScenario()
+        public void AzureRecoveryServiceVaultScenario()
         {
-            this.RunPowerShellTest("Test-AzureBackupVaultRsVaultScenario");
+            this.RunPowerShellTest("Test-AzureRecoveryServiceVaultScenario");
         }
     }
 }
