@@ -56,6 +56,20 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEnableDR()
+        {
+            this.RunPowerShellTest("Test-SiteRecoveryEnableDR -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateAndEnumerateRP()
+        {
+            this.RunPowerShellTest("Test-SiteRecoveryCreateAndEnumerateRP -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void VaultCRUDTests()
         {
             this.RunPowerShellTest("Test-SiteRecoveryVaultCRUDTests");

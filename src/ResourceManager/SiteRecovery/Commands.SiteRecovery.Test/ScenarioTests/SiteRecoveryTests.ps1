@@ -69,9 +69,8 @@ function Test-SiteRecoveryCreateProfile
 	Import-AzureRmSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
 
 	# Create profile
-	$job = New-AzureRmSiteRecoveryPolicy -Name ppAzure -ReplicationProvider HyperVReplicaAzure -ReplicationFrequencyInSeconds 30 -RecoveryPoints 1 -ApplicationConsistentSnapshotFrequencyInHours 0 -RecoveryAzureStorageAccountId "/subscriptions/aef7cd8f-a06f-407d-b7f0-cc78cfebaab0/resourceGroups/Default-Storage-WestUS/providers/Microsoft.ClassicStorage/storageAccounts/b2astorageversion1"
-
-	# WaitForJobCompletion -JobId $job.Name
+	$job = New-AzureRmSiteRecoveryPolicy -Name ppAzure -ReplicationProvider HyperVReplicaAzure -ReplicationFrequencyInSeconds 30 -RecoveryPoints 1 -ApplicationConsistentSnapshotFrequencyInHours 0 -RecoveryAzureStorageAccountId "/subscriptions/aef7cd8f-a06f-407d-b7f0-cc78cfebaab0/resourceGroups/rgn1/providers/Microsoft.Storage/storageAccounts/e2astoragev2"
+	WaitForJobCompletion -JobId $job.Name
 }
 
 <#
@@ -92,7 +91,7 @@ function Test-SiteRecoveryDeleteProfile
 
 	# Delete the profile
 	$job = Remove-AzureRmSiteRecoveryPolicy -Policy $profiles[0]
-	# WaitForJobCompletion -JobId $job.Name
+	WaitForJobCompletion -JobId $job.Name
 }
 
 <#
@@ -111,9 +110,10 @@ function Test-SiteRecoveryAssociateProfile
 	$pp = Get-AzureRmSiteRecoveryPolicy -Name ppAzure;
 
 	# Associate the profile
-	# $job = Start-AzureRmSiteRecoveryPolicyAssociationJob -Policy $pp -PrimaryProtectionContainer $pri
-	# WaitForJobCompletion -JobId $job.Name
+	$job = Start-AzureRmSiteRecoveryPolicyAssociationJob -Policy $pp -PrimaryProtectionContainer $pri
+	WaitForJobCompletion -JobId $job.Name
 }
+
 
 <#
 .SYNOPSIS
@@ -132,7 +132,53 @@ function Test-SiteRecoveryDissociateProfile
 
 	# Dissociate the profile
 	$job = Start-AzureRmSiteRecoveryPolicyDissociationJob -Policy $pp -PrimaryProtectionContainer $pri
-	# WaitForJobCompletion -JobId $job.Name
+	WaitForJobCompletion -JobId $job.Name
+}
+
+<#
+.SYNOPSIS
+Site Recovery Dissociate profile Test
+#>
+function Test-SiteRecoveryEnableDR
+{
+	param([string] $vaultSettingsFilePath)
+
+	# Import Azure Site Recovery Vault Settings
+	Import-AzureRmSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
+
+	# Get the primary cloud, recovery cloud, and protection profile
+	$pri = Get-AzureRmSiteRecoveryProtectionContainer -FriendlyName B2asite1
+	$pp = Get-AzureRmSiteRecoveryPolicy -Name ppAzure;
+
+	# EnableDR
+	$VM = Get-AzureRMSiteRecoveryProtectionEntity -ProtectionContainer $PrimaryContainer -FriendlyName rpVM12
+	$job = Set-AzureRMSiteRecoveryProtectionEntity -ProtectionEntity $VM -Protection Enable -Force -Policy $pp -RecoveryAzureStorageAccountId "/subscriptions/aef7cd8f-a06f-407d-b7f0-cc78cfebaab0/resourceGroups/rgn1/providers/Microsoft.Storage/storageAccounts/e2astoragev2"
+	WaitForJobCompletion -JobId $job.Name
+	WaitForIRCompletion -VM $VM 
+}
+
+<#
+.SYNOPSIS
+Site Recovery Dissociate profile Test
+#>
+function Test-SiteRecoveryCreateAndEnumerateRP
+{
+	param([string] $vaultSettingsFilePath)
+
+	# Import Azure Site Recovery Vault Settings
+	Import-AzureRmSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
+
+	# Get the primary cloud, recovery cloud, and protection profile
+	$pri = Get-AzureRmSiteRecoveryProtectionContainer -FriendlyName B2asite1	
+	$PrimaryServer = Get-AzureRMSiteRecoveryServer -FriendlyName $PrimaryServerName
+	$VM = Get-AzureRMSiteRecoveryProtectionEntity -ProtectionContainer $PrimaryContainer -FriendlyName rpVM12
+
+	$job = New-AzureRmSiteRecoveryRecoveryPlan -Name rp -PrimaryServer $PrimaryServer -Azure -FailoverDeploymentModel ResourceManager -ProtectionEntityList $VM
+	WaitForJobCompletion -JobId $job.Name
+	
+	$RP = Get-AzureRmSiteRecoveryRecoveryPlan -Name $RPName
+	Assert-NotNull($RP)
+	Assert-True { $RP.Count -gt 0 }
 }
 
 <#
@@ -142,6 +188,7 @@ Usage:
 	WaitForJobCompletion -JobId $job.ID
 	WaitForJobCompletion -JobId $job.ID -NumOfSecondsToWait 10
 #>
+<#
 function WaitForJobCompletion
 {
     param([string] $JobId, [Int] $NumOfSecondsToWait = 120)
@@ -158,7 +205,81 @@ function WaitForJobCompletion
 
 	Assert-True { $endStateDescription -ccontains $job.State } "Job did not reached desired state within $NumOfSecondsToWait seconds."
 }
+#>
 
+function WaitForJobCompletion
+{ 
+	param(
+        [string] $JobId,
+        [int] $JobQueryWaitTimeInSeconds = 60,
+        [string] $Message = "NA"
+        )
+        $isJobLeftForProcessing = $true;
+        do
+        {
+            $Job = Get-AzureRMSiteRecoveryJob -Name $JobId
+            Write-Host $("Job Status:") -ForegroundColor Green
+            $Job
+
+            if($Job.State -eq "InProgress" -or $Job.State -eq "NotStarted")
+            {
+	            $isJobLeftForProcessing = $true
+            }
+            else
+            {
+                $isJobLeftForProcessing = $false
+            }
+
+            if($isJobLeftForProcessing)
+	        {
+                if($Message -ne "NA")
+                {
+                    Write-Host $Message -ForegroundColor Yellow
+                }
+                else
+                {
+                    Write-Host $($($Job.JobType) + " in Progress...") -ForegroundColor Yellow
+                }
+		        Write-Host $("Waiting for: " + $JobQueryWaitTimeInSeconds.ToString() + " Seconds") -ForegroundColor Yellow
+		        Start-Sleep -Seconds $JobQueryWaitTimeInSeconds
+	        }
+        }While($isJobLeftForProcessing)
+}
+
+function WaitForIRCompletion
+{ 
+	param(
+        [PSObject] $VM,
+        [int] $JobQueryWaitTimeInSeconds = 60
+        )
+        $isProcessingLeft = $true
+        $IRjobs = $null
+
+        Write-Host $("IR in Progress...") -ForegroundColor Yellow
+        do
+        {
+            $IRjobs = Get-AzureRMSiteRecoveryJob -TargetObjectId $VM.Name | Sort-Object StartTime -Descending | select -First 5 | Where-Object{$_.JobType -eq "IrCompletion"}
+            if($IRjobs -eq $null -or $IRjobs.Count -ne 1)
+            {
+	            $isProcessingLeft = $true
+            }
+            else
+            {
+                $isProcessingLeft = $false
+            }
+
+            if($isProcessingLeft)
+	        {
+                Write-Host $("IR in Progress...") -ForegroundColor Yellow
+		        Write-Host $("Waiting for: " + $JobQueryWaitTimeInSeconds.ToString() + " Seconds") -ForegroundColor Yellow
+		        Start-Sleep -Seconds $JobQueryWaitTimeInSeconds
+	        }
+        }While($isProcessingLeft)
+
+        Write-Host $("Finalize IR jobs:") -ForegroundColor Green
+        $IRjobs
+        WaitForJobCompletion -JobId $IRjobs[0].Name -JobQueryWaitTimeInSeconds $JobQueryWaitTimeInSeconds -Message $("Finalize IR in Progress...")
+}
 <#
 .SYNOPSIS
 Site Recovery Vault CRUD Tests
