@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <param name="protectableItems">List of protectable items</param>
         private void WriteProtectionEntities(IList<ProtectableItem> protectableItems)
         {
-            List<ASRProtectionEntity> asrProtectionEntityList = RecoveryServicesClient.FetchProtectionEntitiesData(
+            List<ASRVirtualMachine> asrProtectionEntityList = RecoveryServicesClient.FetchProtectionEntitiesData<ASRVirtualMachine>(
                 protectableItems, this.ProtectionContainer.ID, this.ProtectionContainer.Name);
 
             this.WriteObject(asrProtectionEntityList, true);
@@ -170,8 +170,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <param name="protectableItem"></param>
         private void WriteProtectionEntity(ProtectableItem protectableItem)
         {
-            ASRVirtualMachine ASRVirtualMachine = RecoveryServicesClient.FetchProtectionEntityData(protectableItem, this.ProtectionContainer.ID, this.ProtectionContainer.Name);
-            this.WriteObject(ASRVirtualMachine);
+            ASRVirtualMachine entity = RecoveryServicesClient.FetchProtectionEntityData<ASRVirtualMachine>(
+                protectableItem, this.ProtectionContainer.ID, this.ProtectionContainer.Name);
+            this.WriteObject(entity);
         }
     }
 }

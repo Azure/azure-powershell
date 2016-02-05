@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Write Protection Entities
         /// </summary>
         /// <param name="protectableItems">List of protectable items</param>
-        internal List<ASRProtectionEntity> FetchProtectionEntitiesData(IList<ProtectableItem> protectableItems, string protectionContainerId, string protectionContainerName)
+        internal List<T> FetchProtectionEntitiesData<T>(IList<ProtectableItem> protectableItems, string protectionContainerId, string protectionContainerName)
         {
             List<ASRProtectionEntity> asrProtectionEntityList = new List<ASRProtectionEntity>();
             Dictionary<string, Policy> policyCache = new Dictionary<string, Policy>();
@@ -262,36 +262,52 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 }
             }
 
+            List<T> entities = new List<T>();
             // Fill up powershell entity with all the data.
             foreach (ProtectableItem protectableItem in protectableItems)
             {
                 if (0 == string.Compare(protectableItem.Properties.ProtectionStatus, "protected", StringComparison.OrdinalIgnoreCase))
                 {
-                    string protectedItemName = Utilities.GetValueFromArmId(protectableItem.Properties.ReplicationProtectedItemId, ARMResourceTypeConstants.ReplicationProtectedItems).ToLower();
+                    string protectedItemName = Utilities.GetValueFromArmId(
+                        protectableItem.Properties.ReplicationProtectedItemId, ARMResourceTypeConstants.ReplicationProtectedItems).ToLower();
                     ReplicationProtectedItem protectedItem = protectedItemCache[protectedItemName];
 
                     string policyName = Utilities.GetValueFromArmId(protectedItem.Properties.PolicyID, ARMResourceTypeConstants.ReplicationPolicies).ToLower();
                     Policy asrPolicy = policyCache[policyName];
 
-                    asrProtectionEntityList.Add(new ASRVirtualMachine(protectableItem, protectedItem, asrPolicy));
+                    if (typeof(T) == typeof(ASRVirtualMachine))
+                    {
+                        entities.Add((T)Convert.ChangeType(new ASRVirtualMachine(protectableItem, protectedItem, asrPolicy), typeof(T)));
+                    }
+                    else
+                    {
+                        entities.Add((T)Convert.ChangeType(new ASRProtectionEntity(protectableItem, protectedItem, asrPolicy), typeof(T)));
+                    }
                 }
                 else
                 {
-                    asrProtectionEntityList.Add(new ASRVirtualMachine(protectableItem));
+                    if (typeof(T) == typeof(ASRVirtualMachine))
+                    {
+                        entities.Add((T)Convert.ChangeType(new ASRVirtualMachine(protectableItem), typeof(T)));
+                    }
+                    else
+                    {
+                        entities.Add((T)Convert.ChangeType(new ASRProtectionEntity(protectableItem), typeof(T)));
+                    }
+
                 }
             }
 
             asrProtectionEntityList.Sort((x, y) => x.FriendlyName.CompareTo(y.FriendlyName));
-            return asrProtectionEntityList;
+            return entities;
         }
 
         /// <summary>
         /// Write Protection Entity
         /// </summary>
         /// <param name="protectableItem"></param>
-        internal ASRVirtualMachine FetchProtectionEntityData(ProtectableItem protectableItem, string protectionContainerId, string protectionContainerName)
+        internal T FetchProtectionEntityData<T>(ProtectableItem protectableItem, string protectionContainerId, string protectionContainerName)
         {
-            ASRVirtualMachine asrVirtualMachine = null;
             ReplicationProtectedItemResponse replicationProtectedItemResponse = null;
             if (!String.IsNullOrEmpty(protectableItem.Properties.ReplicationProtectedItemId))
             {
@@ -305,14 +321,31 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             {
                 PolicyResponse policyResponse = this.GetAzureSiteRecoveryPolicy(Utilities.GetValueFromArmId(
                     replicationProtectedItemResponse.ReplicationProtectedItem.Properties.PolicyID, ARMResourceTypeConstants.ReplicationPolicies));
-                asrVirtualMachine = new ASRVirtualMachine(protectableItem, replicationProtectedItemResponse.ReplicationProtectedItem, policyResponse.Policy);
+                if (typeof(T) == typeof(ASRVirtualMachine))
+                {
+                    var pe = new ASRVirtualMachine(protectableItem, replicationProtectedItemResponse.ReplicationProtectedItem, policyResponse.Policy);
+                    return (T)Convert.ChangeType(pe, typeof(T));
+                }
+                else
+                {
+                    var pe = new ASRProtectionEntity(protectableItem, replicationProtectedItemResponse.ReplicationProtectedItem, policyResponse.Policy);
+                    return (T)Convert.ChangeType(pe, typeof(T));
+                }
+
             }
             else
             {
-                asrVirtualMachine = new ASRVirtualMachine(protectableItem);
+                if (typeof(T) == typeof(ASRVirtualMachine))
+                {
+                    var pe = new ASRVirtualMachine(protectableItem);
+                    return (T)Convert.ChangeType(pe, typeof(T));
+                }
+                else
+                {
+                    var pe = new ASRProtectionEntity(protectableItem);
+                    return (T)Convert.ChangeType(pe, typeof(T));
+                }
             }
-
-            return asrVirtualMachine;
         }
 
     }
