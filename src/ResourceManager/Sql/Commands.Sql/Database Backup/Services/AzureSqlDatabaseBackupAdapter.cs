@@ -87,5 +87,29 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 }; 
             }).ToList();
         }
+
+        /// <summary>
+        /// Lists the recoverable databases (geo backups) for a given Sql Azure Server.
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="databaseName">The name of the Azure SQL database</param>
+        /// <returns>List of restore points</returns>
+        internal IEnumerable<AzureSqlDatabaseGeoBackupModel> ListGeoBackups(string resourceGroup, string serverName, string databaseName)
+        {
+            var resp = Communicator.ListGeoBackups(resourceGroup, serverName, databaseName, Util.GenerateTracingId());
+            return resp.Select((geoBackup) =>
+            {
+                return new AzureSqlDatabaseGeoBackupModel()
+                {
+                    ResourceGroupName = resourceGroup,
+                    ServerName = serverName,
+                    DatabaseName = databaseName,
+                    Edition = geoBackup.Edition,
+                    EntityId = geoBackup.EntityId,
+                    LastAvailableBackupDate = geoBackup.LastAvailableBackupDate
+                };
+            }).ToList();
+        }
     }
 }
