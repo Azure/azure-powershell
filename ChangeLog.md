@@ -1,4 +1,4 @@
-﻿##2016.03.08 version 1.3.0
+##2016.03.08 version 1.3.0
 * Azure LogicApp: New cmdlets for managing LogicApps  
   * Get-AzureLogicAppAccessKey
   * Get-AzureLogicApp
@@ -12,6 +12,9 @@
   * Set-AzureLogicAppAccessKey
   * Set-AzureLogicApp
   * Stop-AzureLogicAppRun
+
+## 2016.02.04 version 1.2.1
+* Fix installer issue - remove PSGallery modules on install
 
 ## 2016.02.03 version 1.2.0
 * Azure RemoteApp: 
