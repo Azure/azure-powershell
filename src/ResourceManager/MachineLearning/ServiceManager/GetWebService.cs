@@ -49,8 +49,8 @@ namespace Microsoft.Azure.Commands.MachineLearning
             Console.WriteLine("Subscription ID: {0}", DefaultProfile.Context.Subscription.Id);
 
             PSResourceManagerModels.ResourcesClient rcClient = new PSResourceManagerModels.ResourcesClient(DefaultProfile.Context);
-            Console.WriteLine("Credentials: {0}", rcClient.AuthorizationManagementClient.Credentials);
-            Console.WriteLine("Subscription ID in Credentials: {0}", rcClient.AuthorizationManagementClient.Credentials.SubscriptionId);
+            // Console.WriteLine("Credentials: {0}", rcClient.AuthorizationManagementClient.Credentials);
+            // Console.WriteLine("Subscription ID in Credentials: {0}", rcClient.AuthorizationManagementClient.Credentials.SubscriptionId);
 
             Console.WriteLine("-----------------------------------");
             Console.WriteLine("===================================");
