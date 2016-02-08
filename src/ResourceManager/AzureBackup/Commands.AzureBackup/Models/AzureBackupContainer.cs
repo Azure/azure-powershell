@@ -66,7 +66,23 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
             : base(vault, protectionContainer)
         {
             Name = protectionContainer.Name;
-            Status = ((AzureIaaSVMProtectionContainer)protectionContainer.Properties).RegistrationStatus;
+
+            if (protectionContainer.Properties.GetType().IsSubclassOf(typeof(AzureIaaSVMProtectionContainer)))
+            {
+                Status = ((AzureIaaSVMProtectionContainer)protectionContainer.Properties).RegistrationStatus;
+            }
+            else if (protectionContainer.Properties.GetType() == typeof(DpmProtectionContainer))
+            {
+                Status = AzureBackupContainerRegistrationStatus.Registered.ToString();
+            }
+            else if (protectionContainer.Properties.GetType() == typeof(MabProtectionContainer))
+            {
+                Status = AzureBackupContainerRegistrationStatus.Registered.ToString();
+            }
+            else if (protectionContainer.Properties.GetType() == typeof(DpmVenusProtectionContainer))
+            {
+                Status = AzureBackupContainerRegistrationStatus.Registered.ToString();
+            }
         }
     }
 }

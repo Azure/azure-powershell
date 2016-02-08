@@ -83,18 +83,26 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         private void GetContainersForRecoveryServicesVault(List<AzureRMBackupContainer> containers)
         {
             ProtectionContainerListQueryParams queryParams = new ProtectionContainerListQueryParams();
-            queryParams.ProviderType = ProviderType.AzureIaasVM.ToString();
+            queryParams.ProviderType = ContainerHelpers.GetProviderTypeForContainerType(Type).ToString();
             queryParams.FriendlyName = Name;
             if (Status != 0)
             {
                 queryParams.RegistrationStatus = Status.ToString();
             }
-            
+
             List<ProtectionContainerResource> protectionContainers = new List<ProtectionContainerResource>();
             protectionContainers.AddRange(AzureBackupClient.RecoveryServicesListContainers(RecoveryServicesVault.ResourceGroupName, RecoveryServicesVault.Name, queryParams));
             WriteDebug(string.Format(Resources.FetchedContainer, containers.Count()));
-            
-            // TODO: Apply rg name based filtering
+
+            if (!string.IsNullOrEmpty(ManagedResourceGroupName))
+            {
+                protectionContainers.RemoveAll(
+                    protectionContainer =>
+                    {
+                        return !(protectionContainer.GetType().IsSubclassOf(typeof(AzureIaaSVMProtectionContainer)) &&
+                            (((AzureIaaSVMProtectionContainer)protectionContainer.Properties).ResourceGroup == ManagedResourceGroupName));
+                    });
+            }
 
             containers.AddRange(protectionContainers.ConvertAll(
                 protectionContainer =>
