@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Management.Automation;
 
-namespace RPCmdlet
+namespace Microsoft.Azure.Commands.MachineLearning
 {
     [Cmdlet(VerbsCommon.Get, "WebServices")]
-    public class GetWebServices : PSCmdlet
+    public class GetWebServices : ManagementCmdletBase
     {
         [Parameter(
             Position = 0, 

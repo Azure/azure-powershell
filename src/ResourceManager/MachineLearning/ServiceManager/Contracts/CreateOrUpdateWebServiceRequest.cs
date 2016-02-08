@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RPCmdlet.Contracts
+namespace Microsoft.Azure.Commands.MachineLearning.Contracts
 {
     public class CreateOrUpdateWebServiceRequest
     {

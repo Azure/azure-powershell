@@ -5,10 +5,10 @@ using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RPCmdlet
+namespace Microsoft.Azure.Commands.MachineLearning
 {
     [Cmdlet(VerbsCommon.Get, "AvailableOperations")]
-    public class GetAvailableOperations : PSCmdlet
+    public class GetAvailableOperations : ManagementCmdletBase
     {
         [Parameter(
              Position = 0,

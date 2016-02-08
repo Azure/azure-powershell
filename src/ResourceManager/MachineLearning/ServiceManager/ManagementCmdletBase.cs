@@ -9,7 +9,7 @@ using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
 
 namespace Microsoft.Azure.Commands.MachineLearning
 {
-    public abstract class ManagementCmdletBase : AzureRMCmdlet //PSCmdlet
+    public abstract class ManagementCmdletBase : AzureRMCmdlet //ManagementCmdletBase
     {
         private PSResourceManagerModels.ResourcesClient _resourcesClient;
 

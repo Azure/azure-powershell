@@ -5,10 +5,10 @@ using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RPCmdlet
+namespace Microsoft.Azure.Commands.MachineLearning
 {
     [Cmdlet(VerbsDiagnostic.Test, "NameAvailability")]
-    public class CheckNameAvailability : PSCmdlet
+    public class CheckNameAvailability : ManagementCmdletBase
     {
         [Parameter(
             Position = 0,

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Management.Automation;
-using RPCmdlet.Contracts;
+using Microsoft.Azure.Commands.MachineLearning.Contracts;
 
 namespace Microsoft.Azure.Commands.MachineLearning
 {
