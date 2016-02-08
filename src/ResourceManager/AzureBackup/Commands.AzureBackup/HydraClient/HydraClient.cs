@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Client
     public partial class HydraClient
     {
         const string AzureFabricName = "AzureIaasVM";
+        const string RecoveryServicesResourceNamespace = "Microsoft.RecoveryServices";
 
         public ClientAdapter<BackupServicesNS.BackupServicesManagementClient, BackupServicesModelsNS.CustomRequestHeaders> BackupBmsAdapter;
 
@@ -33,16 +34,17 @@ namespace Microsoft.Azure.Commands.AzureBackup.Client
         public HydraClient(SubscriptionCloudCredentials creds, Uri baseUri)
         {
             BackupBmsAdapter = new ClientAdapter<BackupServicesNS.BackupServicesManagementClient, BackupServicesModelsNS.CustomRequestHeaders>(
-                creds, baseUri,
-                clientRequestId => new BackupServicesModelsNS.CustomRequestHeaders() { ClientRequestId = clientRequestId });
+                clientRequestId => new BackupServicesModelsNS.CustomRequestHeaders() { ClientRequestId = clientRequestId },
+                creds, baseUri);
 
             BackupIdmAdapter = new ClientAdapter<BackupServicesNS.BackupVaultServicesManagementClient, BackupServicesModelsNS.CustomRequestHeaders>(
-                creds, baseUri,
-                clientRequestId => new BackupServicesModelsNS.CustomRequestHeaders() { ClientRequestId = clientRequestId });
+                clientRequestId => new BackupServicesModelsNS.CustomRequestHeaders() { ClientRequestId = clientRequestId },
+                creds, baseUri);
 
+            // TODO: See if we can take RecoveryServicesResourceNamespace from a config file
             RecoveryServicesBmsAdapter = new ClientAdapter<RecoveryServicesNS.RecoveryServicesBackupManagementClient, RecoveryServicesModelsNS.CustomRequestHeaders>(
-                creds, baseUri,
-                clientRequestId => new RecoveryServicesModelsNS.CustomRequestHeaders() { ClientRequestId = clientRequestId });
+                clientRequestId => new RecoveryServicesModelsNS.CustomRequestHeaders() { ClientRequestId = clientRequestId },
+                RecoveryServicesResourceNamespace, creds, baseUri);
         }
 
         public string GetBackupBmsClientRequestId()

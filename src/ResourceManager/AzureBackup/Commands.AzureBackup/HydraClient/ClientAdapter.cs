@@ -44,15 +44,15 @@ namespace Microsoft.Azure.Commands.AzureBackup.Client
             {
                 if (this.client == null)
                 {
-                    this.client = AzureSession.ClientFactory.CreateCustomClient<TClient>(CloudCreds, BaseURI);
+                    this.client = AzureSession.ClientFactory.CreateCustomClient<TClient>(Parameters);
                 }
 
                 return this.client;
             }
         }
 
-        public ClientAdapter(SubscriptionCloudCredentials creds, Uri baseUri, Func<string, THeader> headerGenerator)
-            : base(creds, baseUri)
+        public ClientAdapter(Func<string, THeader> headerGenerator, params object[] parameters)
+            : base(parameters)
         {
             CustomRequestHeaderGenerator = headerGenerator;
         }

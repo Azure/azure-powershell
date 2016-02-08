@@ -24,15 +24,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Client
 {
     public class ClientAdapterBase
     {
-        /// <summary>
-        /// Cloud credentials for client calls
-        /// </summary>
-        protected SubscriptionCloudCredentials CloudCreds { get; set; }
-
-        /// <summary>
-        /// Base URI for client calls
-        /// </summary>
-        protected Uri BaseURI { get; set; }
+        protected object[] Parameters;
 
         /// <summary>
         /// Client request id.
@@ -45,10 +37,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Client
         private CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
         public CancellationToken CmdletCancellationToken;
 
-        public ClientAdapterBase(SubscriptionCloudCredentials creds, Uri baseUri)
+        public ClientAdapterBase(params object[] parameters)
         {
-            CloudCreds = creds;
-            BaseURI = baseUri;
+            Parameters = parameters;
 
             RefreshClientRequestId();
 
