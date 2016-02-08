@@ -20,7 +20,7 @@ using System;
 using System.Net;
 using System.Threading;
 
-namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
+namespace Microsoft.Azure.Commands.AzureBackup.Client
 {
     public class ClientAdapterBase
     {
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
         /// Cancellation Token Source
         /// </summary>
         private CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
-        protected CancellationToken CmdletCancellationToken;
+        public CancellationToken CmdletCancellationToken;
 
         public ClientAdapterBase(SubscriptionCloudCredentials creds, Uri baseUri)
         {
