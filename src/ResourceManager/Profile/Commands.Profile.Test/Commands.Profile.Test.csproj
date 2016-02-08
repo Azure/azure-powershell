@@ -242,6 +242,5 @@
       <Name>Commands.ScenarioTests.ResourceManager.Common</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
