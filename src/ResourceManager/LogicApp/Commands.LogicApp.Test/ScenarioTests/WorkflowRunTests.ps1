@@ -126,8 +126,7 @@ function Test-StopAzureRmLogicAppRun
 	} while ($workflow.State -ne "Enabled" -and $counter++ -lt 5)
 	
 	Start-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -TriggerName "httpTrigger"
-	
-	Sleep -seconds 2   
+		
 	$runHistory = Get-AzureRmLogicAppRunHistory -ResourceGroupName $resourceGroupName -Name $workflowName
 
 	Stop-AzureRmLogicAppRun -ResourceGroupName $resourceGroupName -Name $workflowName -RunName $runHistory[0].Name
