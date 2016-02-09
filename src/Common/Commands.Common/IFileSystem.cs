@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+﻿ // ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,28 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Concurrent;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
-    public static class ConcurrentQueueExtensions
+    public interface IFileSystem
     {
-        private const int Capacity = 500;
-        public static void CheckAndEnqueue(this ConcurrentQueue<string> queue, string item)
-        {
-            if (queue == null || item == null)
-            {
-                return;
-            }
-            lock(queue)
-            {
-                while (queue.Count >= Capacity)
-                {
-                    string result;
-                    queue.TryDequeue(out result);
-                }
-                queue.Enqueue(item);
-            } 
-        }
+        string ReadFile(string path);
+        void WriteFile(string path, string contents);
     }
 }

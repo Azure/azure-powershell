@@ -67,10 +67,12 @@ namespace Microsoft.WindowsAzure.Commands.Common
             {
                 try
                 {
-                    GeneralUtilities.EnsureDefaultProfileDirectoryExists();
-                    _defaultDiskTokenCache = new ProtectedFileTokenCache(Path.Combine(AzureSession.ProfileDirectory,
+                    ServiceManagementUtilities.EnsureDefaultProfileDirectoryExists();
+                    _defaultDiskTokenCache = new ProtectedFileTokenCache(
+                        Path.Combine(AzureSession.ProfileDirectory,
                         AzureSession.TokenCacheFile));
-                    return new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+                    return new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, 
+                        AzureSession.ProfileFile));
                 }
                 catch
                 {

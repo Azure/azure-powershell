@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+﻿ // ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,35 +29,8 @@ using Microsoft.WindowsAzure.Commands.Common.Properties;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
-    public class AzureDataCmdlet : AzurePSCmdlet
+    public class AzureDataCmdlet : AzureSMCmdlet
     {
-        protected override Azure.Common.Authentication.Models.AzureContext DefaultContext
-        {
-            get
-            {
-                if (RMProfile != null && RMProfile.Context != null)
-                {
-                    return RMProfile.Context;
-                }
-
-                if (SMProfile == null || SMProfile.Context == null)
-                {
-                    throw new InvalidOperationException(Resources.NoCurrentContextForDataCmdlet);
-                }
-
-                return SMProfile.Context;
-            }
-        }
-
-        public AzureSMProfile SMProfile
-        {
-            get { return AzureSMProfileProvider.Instance.Profile; }
-        }
-
-        public AzureRMProfile RMProfile
-        {
-            get { return AzureRmProfileProvider.Instance.Profile; }
-        }
 
         protected override void SaveDataCollectionProfile()
         {
@@ -118,10 +91,6 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
                 SaveDataCollectionProfile();
             }
-        }
-
-        protected override void InitializeQosEvent()
-        {
         }
     }
 }

@@ -27,11 +27,14 @@ using Newtonsoft.Json;
 using System.Threading;
 using System.Management.Automation.Host;
 using System.Globalization;
+using System.Net.Http.Headers;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
     public abstract class AzureSMCmdlet : AzurePSCmdlet
     {
+        DebugStreamTraceListener _adalListener;
+
         [Parameter(Mandatory = false, HelpMessage = "In-memory profile.")]
         public AzureSMProfile Profile { get; set; }
 
@@ -52,7 +55,12 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
         }
 
-        protected override AzureContext DefaultContext { get { return CurrentProfile.Context; } }
+        public override IFileSystem FileSystem
+        {
+            get { return new FileSystemAdapter(); }
+        }
+
+        protected virtual AzureContext DefaultContext { get { return CurrentProfile.Context; } }
 
         static AzureSMCmdlet()
         {
@@ -126,7 +134,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 commandAlias = this.MyInvocation.MyCommand.Name;
             }
 
-            QosEvent = new AzurePSQoSEvent()
+            _qosEvent = new AzurePSQoSEvent()
             {
                 CommandName = commandAlias,
                 ModuleName = this.GetType().Assembly.GetName().Name,
@@ -138,7 +146,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
             if (this.MyInvocation != null && this.MyInvocation.BoundParameters != null)
             {
-                QosEvent.Parameters = string.Join(" ",
+                _qosEvent.Parameters = string.Join(" ",
                     this.MyInvocation.BoundParameters.Keys.Select(
                         s => string.Format(CultureInfo.InvariantCulture, "-{0} ***", s)));
             }
@@ -147,12 +155,12 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 this.DefaultContext.Account != null &&
                 this.DefaultContext.Account.Id != null)
             {
-                QosEvent.Uid = MetricHelper.GenerateSha256HashString(
+                _qosEvent.Uid = MetricHelper.GenerateSha256HashString(
                     this.DefaultContext.Account.Id.ToString());
             }
             else
             {
-                QosEvent.Uid = "defaultid";
+                _qosEvent.Uid = "defaultid";
             }
         }
 
@@ -178,6 +186,64 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             {
                 AzureSMProfileProvider.Instance.SetTokenCacheForProfile(Profile);
             }
+        }
+
+        protected override void SetupDebuggingTraces()
+        {
+            base.SetupDebuggingTraces();
+            _adalListener = _adalListener ?? new DebugStreamTraceListener(DebugMessages);
+            DebugStreamTraceListener.AddAdalTracing(_adalListener);
+        }
+
+        protected override void TearDownDebuggingTraces()
+        {
+            base.TearDownDebuggingTraces();
+            DebugStreamTraceListener.RemoveAdalTracing(_adalListener);
+            _adalListener = null;
+        }
+
+        protected override void LogCmdletStartInvocationInfo()
+        {
+            base.LogCmdletStartInvocationInfo();
+            if (DefaultContext != null && DefaultContext.Account != null 
+                && DefaultContext.Account.Id != null)
+            {
+                WriteDebugWithTimestamp(string.Format("using account id '{0}'...", 
+                    DefaultContext.Account.Id));
+            }
+        }
+
+        protected override void LogCmdletEndInvocationInfo()
+        {
+            base.LogCmdletEndInvocationInfo();
+            string message = string.Format("{0} end processing.", this.GetType().Name);
+            WriteDebugWithTimestamp(message);
+        }
+
+        protected override void SetupHttpClientPipeline()
+        {
+            ProductInfoHeaderValue userAgentValue = new ProductInfoHeaderValue(
+                ModuleName, string.Format("v{0}", ModuleVersion));
+            AzureSession.ClientFactory.UserAgents.Add(userAgentValue);
+            AzureSession.ClientFactory.AddHandler(
+                new CmdletInfoHandler(this.CommandRuntime.ToString(), 
+                    this.ParameterSetName, this._clientRequestId));
+        }
+
+        protected override void TearDownHttpClientPipeline()
+        {
+            AzureSession.ClientFactory.UserAgents.RemoveWhere(u => u.Product.Name == ModuleName);
+            AzureSession.ClientFactory.RemoveHandler(typeof(CmdletInfoHandler));
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (_adalListener != null)
+            {
+                _adalListener.Dispose();
+                _adalListener = null;
+            }
+
         }
     }
 }

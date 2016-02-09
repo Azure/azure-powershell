@@ -163,7 +163,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
                 if (Profile.Context != null && Profile.Context.Subscription != null &&
                     Profile.Context.Subscription.Id == subscription.Id)
                 {
-                    GeneralUtilities.ClearCurrentStorageAccount();
+                    ServiceManagementUtilities.ClearCurrentStorageAccount();
                 }
                 var context = new AzureContext(subscription, ProfileClient.GetAccount(subscription.Account), ProfileClient.GetEnvironmentOrDefault(subscription.Environment));
                 if (Context != null)

@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+﻿ // ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,28 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Concurrent;
+ using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+ using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
-    public static class ConcurrentQueueExtensions
+    public class FileSystemAdapter : IFileSystem
     {
-        private const int Capacity = 500;
-        public static void CheckAndEnqueue(this ConcurrentQueue<string> queue, string item)
+        public string ReadFile(string path)
         {
-            if (queue == null || item == null)
-            {
-                return;
-            }
-            lock(queue)
-            {
-                while (queue.Count >= Capacity)
-                {
-                    string result;
-                    queue.TryDequeue(out result);
-                }
-                queue.Enqueue(item);
-            } 
+            return AzureSession.DataStore.ReadFileAsText(path);
+        }
+
+        public void WriteFile(string path, string contents)
+        {
+            AzureSession.DataStore.WriteFile(path, contents);
         }
     }
 }

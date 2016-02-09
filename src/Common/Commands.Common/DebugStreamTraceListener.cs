@@ -12,39 +12,39 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Concurrent;
-using System.Diagnostics;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
+//using System.Collections.Concurrent;
+//using System.Diagnostics;
+//using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
-namespace Microsoft.WindowsAzure.Commands.Common
-{
-    public class DebugStreamTraceListener : TraceListener
-    {
-        public DebugStreamTraceListener(ConcurrentQueue<string> queue)
-        {
-            Messages = queue;
-        }
+//namespace Microsoft.WindowsAzure.Commands.Common
+//{
+//    public class DebugStreamTraceListener : TraceListener
+//    {
+//        public DebugStreamTraceListener(ConcurrentQueue<string> queue)
+//        {
+//            Messages = queue;
+//        }
 
-        public static void AddAdalTracing(DebugStreamTraceListener listener)
-        {
-            AdalTrace.TraceSource.Listeners.Add(listener);
-            AdalTrace.TraceSource.Switch.Level = SourceLevels.All;
-        }
+//        public static void AddAdalTracing(DebugStreamTraceListener listener)
+//        {
+//            AdalTrace.TraceSource.Listeners.Add(listener);
+//            AdalTrace.TraceSource.Switch.Level = SourceLevels.All;
+//        }
 
-        public ConcurrentQueue<string> Messages; 
-        public override void Write(string message)
-        {
-            Messages.CheckAndEnqueue(message);
-        }
+//        public ConcurrentQueue<string> Messages; 
+//        public override void Write(string message)
+//        {
+//            Messages.CheckAndEnqueue(message);
+//        }
 
-        public override void WriteLine(string message)
-        {
-            Write(message +  "\n");
-        }
+//        public override void WriteLine(string message)
+//        {
+//            Write(message +  "\n");
+//        }
 
-        public static void RemoveAdalTracing(DebugStreamTraceListener listener)
-        {
-            AdalTrace.TraceSource.Listeners.Remove(listener);
-        }
-    }
-}
+//        public static void RemoveAdalTracing(DebugStreamTraceListener listener)
+//        {
+//            AdalTrace.TraceSource.Listeners.Remove(listener);
+//        }
+//    }
+//}

@@ -22,6 +22,7 @@ using System.Security.Cryptography.X509Certificates;
 using Hyak.Common;
 using Microsoft.Azure.Common.Authentication.Factories;
 using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Subscriptions;
@@ -653,7 +654,7 @@ namespace Microsoft.Azure.Common.Authentication
             {
                 if (subscription.IsPropertySet(AzureSubscription.Property.StorageAccount))
                 {
-                    GeneralUtilities.ClearCurrentStorageAccount();
+                    ServiceManagementUtilities.ClearCurrentStorageAccount();
                 }
 
                 Profile.DefaultSubscription = subscription;
