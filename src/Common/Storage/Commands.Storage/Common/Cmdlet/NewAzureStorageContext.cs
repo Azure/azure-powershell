@@ -338,7 +338,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         {
             AzureEnvironment azureEnvironment = null;
 
-            if (null != SMProfile)
+            if (null != Profile)
             {
                 if (DefaultContext != null && string.IsNullOrEmpty(azureEnvironmentName))
                 {
@@ -354,7 +354,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                 {
                     try
                     {
-                        var profileClient = new ProfileClient(SMProfile);
+                        var profileClient = new ProfileClient(Profile);
                         azureEnvironment = profileClient.GetEnvironmentOrDefault(azureEnvironmentName);
                     }
                     catch(ArgumentException e)

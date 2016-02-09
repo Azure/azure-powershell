@@ -244,8 +244,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 string storageAccount;
                 try
                 {
-                    if (TryGetStorageAccount(RMProfile, out storageAccount)
-                        || TryGetStorageAccount(SMProfile, out storageAccount)
+                    if (TryGetStorageAccount(Profile, out storageAccount)
                         || TryGetStorageAccountFromEnvironmentVariable(out storageAccount))
                     {
                         account = GetStorageAccountFromConnectionString(storageAccount);
