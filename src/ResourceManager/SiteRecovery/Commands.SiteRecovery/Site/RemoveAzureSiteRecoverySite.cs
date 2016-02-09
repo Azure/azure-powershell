@@ -37,6 +37,12 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         [ValidateNotNullOrEmpty]
         public ASRSite Site { get; set; }
 
+        /// <summary>
+        /// Gets or sets switch parameter. On passing, command does not ask for confirmation.
+        /// </summary>
+        [Parameter]
+        public SwitchParameter Force { get; set; }
+
         #endregion
 
         /// <summary>
@@ -54,14 +60,19 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             {
                 throw new PSInvalidOperationException(Properties.Resources.SiteRemovalWithRegisteredHyperVHostsError);
             }
+         
+            LongRunningOperationResponse response;
 
-            FabricDeletionInput input = new FabricDeletionInput()
+            if (!this.Force.IsPresent)
             {
-                Properties = new FabricDeletionInputProperties()
-            };
-
-            LongRunningOperationResponse response =
-             RecoveryServicesClient.DeleteAzureSiteRecoveryFabric(this.Site.Name, input);
+                response =
+                         RecoveryServicesClient.DeleteAzureSiteRecoveryFabric(this.Site.Name);
+            }
+            else
+            {
+                response =
+                        RecoveryServicesClient.PurgeAzureSiteRecoveryFabric(this.Site.Name);
+            }
 
             JobResponse jobResponse =
                 RecoveryServicesClient

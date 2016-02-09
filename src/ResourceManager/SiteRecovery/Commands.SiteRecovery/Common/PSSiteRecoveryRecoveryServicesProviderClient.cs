@@ -51,9 +51,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <param name="fabricId">Fabric ID</param>
         /// <param name="providerId">Provider ID</param>
         /// <returns>Provider response</returns>
-        public LongRunningOperationResponse RemoveAzureSiteRecoveryProvider(string fabricId, string providerId, RecoveryServicesProviderDeletionInput input)
+        public LongRunningOperationResponse RemoveAzureSiteRecoveryProvider(string fabricId, string providerId)
         {
-            return this.GetSiteRecoveryClient().RecoveryServicesProvider.BeginDeleting(fabricId, providerId, input, this.GetRequestHeaders());
+            return this.GetSiteRecoveryClient().RecoveryServicesProvider.BeginDeleting(fabricId, providerId, this.GetRequestHeaders());
         }
 
         /// <summary>

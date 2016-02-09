@@ -90,10 +90,32 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 RecoveryPlanGroup recoveryPlanGroup = new RecoveryPlanGroup()
                 {
                     GroupType = asrRecoveryPlanGroup.GroupType,
-                    ReplicationProtectedItems = asrRecoveryPlanGroup.ReplicationProtectedItems.Select(item => new RecoveryPlanProtectedItem(item.Id)).ToList(),
+                    ReplicationProtectedItems = asrRecoveryPlanGroup.ReplicationProtectedItems.Select(item =>
+                        { 
+                            var newItem = new RecoveryPlanProtectedItem(item.Id);
+
+                            string VmId = null;
+
+                            switch (item.Properties.ProviderSpecificDetails.InstanceType)
+                            {
+                                case Constants.HyperVReplicaAzureReplicationDetails:
+                                    VmId = ((HyperVReplicaAzureReplicationDetails)item.Properties.ProviderSpecificDetails).VmId;
+                                    break;
+
+                                case Constants.HyperVReplica2012ReplicationDetails:
+                                    VmId = ((HyperVReplica2012ReplicationDetails)item.Properties.ProviderSpecificDetails).VmId;
+                                    break;
+                            };
+
+                            newItem.VirtualMachineId = VmId;
+
+                            return newItem;
+
+                        }).ToList(),
                     StartGroupActions = asrRecoveryPlanGroup.StartGroupActions,
                     EndGroupActions = asrRecoveryPlanGroup.EndGroupActions
                 };
+
                 updateRecoveryPlanInputProperties.Groups.Add(recoveryPlanGroup);
             }
 

@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            switch(this.ParameterSetName)
+            switch (this.ParameterSetName)
             {
                 case ASRParameterSets.EnterpriseToEnterprise:
                     failoverDeploymentModel = Constants.NotApplicable;
@@ -163,8 +163,22 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                             RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(fabricName,
                             pe.ProtectionContainerId, Utilities.GetValueFromArmId(protectableItemResponse.ProtectableItem.Properties.ReplicationProtectedItemId, ARMResourceTypeConstants.ReplicationProtectedItems));
 
+                string VmId = null;
+
+                switch(replicationProtectedItemResponse.ReplicationProtectedItem.Properties.ProviderSpecificDetails.InstanceType)
+                {
+                    case Constants.HyperVReplicaAzureReplicationDetails:
+                        VmId = ((HyperVReplicaAzureReplicationDetails)replicationProtectedItemResponse.ReplicationProtectedItem.Properties.ProviderSpecificDetails).VmId;
+                        break;
+                    
+                    case Constants.HyperVReplica2012ReplicationDetails:
+                       VmId = ((HyperVReplica2012ReplicationDetails)replicationProtectedItemResponse.ReplicationProtectedItem.Properties.ProviderSpecificDetails).VmId;
+                       break;
+                };
+
                 RecoveryPlanProtectedItem recoveryPlanProtectedItem = new RecoveryPlanProtectedItem();
                 recoveryPlanProtectedItem.Id = replicationProtectedItemResponse.ReplicationProtectedItem.Id;
+                recoveryPlanProtectedItem.VirtualMachineId = VmId;
                 recoveryPlanGroup.ReplicationProtectedItems.Add(recoveryPlanProtectedItem);
 
             }

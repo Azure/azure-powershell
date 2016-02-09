@@ -153,6 +153,26 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public const string HyperVReplicaAzure = "HyperVReplicaAzure";
 
         /// <summary>
+        /// Represents HyperVReplicaAzureReplicationDetails string constant.
+        /// </summary>
+        public const string HyperVReplicaAzureReplicationDetails = "HyperVReplicaAzureReplicationDetails";
+
+        /// <summary>
+        /// Represents HyperVReplica2012ReplicationDetails string constant.
+        /// </summary>
+        public const string HyperVReplica2012ReplicationDetails = "HyperVReplica2012ReplicationDetails";
+
+        /// <summary>
+        /// Represents InMageAzureV2ProviderSpecificSettings string constant.
+        /// </summary>
+        public const string InMageAzureV2ProviderSpecificSettings = "InMageAzureV2ProviderSpecificSettings";
+
+        /// <summary>
+        /// Represents InMageProviderSpecificSettings string constant.
+        /// </summary>
+        public const string InMageProviderSpecificSettings = "InMageProviderSpecificSettings";
+
+        /// <summary>
         /// Represents San string constant.
         /// </summary>
         public const string San = "San";

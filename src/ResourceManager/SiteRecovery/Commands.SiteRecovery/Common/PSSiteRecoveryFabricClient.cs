@@ -76,11 +76,22 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Deletes Azure Site Recovery Fabric.
         /// </summary>
-        /// <param name="createAndAssociatePolicyInput">Policy Input</param>
+        /// <param name="DeleteAzureSiteRecoveryFabric">Fabric Input</param>
         /// <returns>Long operation response</returns>
-        public LongRunningOperationResponse DeleteAzureSiteRecoveryFabric(string fabricName, FabricDeletionInput input)
+        public LongRunningOperationResponse DeleteAzureSiteRecoveryFabric(string fabricName)
         {
-            return this.GetSiteRecoveryClient().Fabrics.BeginDeleting(fabricName, input,
+            return this.GetSiteRecoveryClient().Fabrics.BeginDeleting(fabricName,
+                this.GetRequestHeaders());
+        }
+
+        /// <summary>
+        /// Purge Azure Site Recovery Fabric.
+        /// </summary>
+        /// <param name="PurgeAzureSiteRecoveryFabric">Policy Input</param>
+        /// <returns>Long operation response</returns>
+        public LongRunningOperationResponse PurgeAzureSiteRecoveryFabric(string fabricName)
+        {
+            return this.GetSiteRecoveryClient().Fabrics.BeginPurging(fabricName,
                 this.GetRequestHeaders());
         }
     }

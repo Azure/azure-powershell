@@ -68,13 +68,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
             if (!this.Force.IsPresent)
             {
-                RecoveryServicesProviderDeletionInput input = new RecoveryServicesProviderDeletionInput()
-                {
-                    Properties = new RecoveryServicesProviderDeletionInputProperties()
-                };
-
                 response =
-                        RecoveryServicesClient.RemoveAzureSiteRecoveryProvider(Utilities.GetValueFromArmId(this.Server.ID, ARMResourceTypeConstants.ReplicationFabrics), this.Server.Name, input);
+                        RecoveryServicesClient.RemoveAzureSiteRecoveryProvider(Utilities.GetValueFromArmId(this.Server.ID, ARMResourceTypeConstants.ReplicationFabrics), this.Server.Name);
             }
             else
             {
