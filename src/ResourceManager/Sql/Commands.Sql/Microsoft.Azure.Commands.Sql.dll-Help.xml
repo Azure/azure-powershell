@@ -4895,7 +4895,7 @@ Status                          : Queued</maml:para>
     <command:details>
       <command:name>Get-AzureRmSqlServerCommunicationLink</command:name>
       <maml:description>
-        <maml:para>Gets server communication links and their property values in an Azure SQL Server.</maml:para>
+        <maml:para>Gets server communication links and their property values in an Azure SQL Database.</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5012,7 +5012,7 @@ Status                          : Queued</maml:para>
         </maml:introduction>
         <dev:code>PS C:\&gt; Get-AzureRmSqlServerCommunicationLink -ResourceGroupName &quot;resourcegroup01&quot; -ServerName &quot;server01&quot;</dev:code>
         <dev:remarks>
-          <maml:para>Gets all server-to-server partnership for Elastic transactions that the specified server is involved in.</maml:para>
+          <maml:para>Gets all server-to-server partnerships for Elastic transactions that the specified server in Azure SQL Database is involved in.</maml:para>
           <maml:para />
           <maml:para />
           <maml:para></maml:para>
@@ -7194,7 +7194,7 @@ FirewallRuleName  : rule01</maml:para>
     <command:details>
       <command:name>New-AzureRmSqlServerCommunicationLink</command:name>
       <maml:description>
-        <maml:para>Creates an Azure SQL Server partnership for Elastic transactions. Once established, Elastic transactions will be able to span databases in either of the servers paired.</maml:para>
+        <maml:para>Creates a communication link for Elastic transactions between two logical servers in Azure SQL Database. Once established, Elastic transactions will be able to span databases in either of the servers paired.</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -7204,7 +7204,7 @@ FirewallRuleName  : rule01</maml:para>
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The New-AzureRmSqlServerCommunicationLink cmdlet creates an Azure SQL Server partnership for Elastic transactions. The partnership can be set up for two servers at a time and once established, Elastic transactions will be able to span databases in either of the servers paired. Users can create many server partnerships as necessary and involve a server in multiple partnerships to span Elastic transactions over a larger number of servers.</maml:para>
+      <maml:para>The New-AzureRmSqlServerCommunicationLink cmdlet creates a communication link for Elastic transactions between two logical servers in Azure SQL Database. The communication link can be set up for two servers at a time and once established, Elastic transactions will be able to span databases in either of the servers paired. Users can create as many server partnerships as necessary and involve a server in multiple partnerships to span Elastic transactions over a larger number of servers.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -7324,7 +7324,7 @@ FirewallRuleName  : rule01</maml:para>
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>--------------------------  Example 1: Create a new Azure SQL Server communication link  --------------------------</maml:title>
+        <maml:title>--------------------------  Example 1: Create a new communication link  --------------------------</maml:title>
         <maml:introduction>
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
@@ -9300,7 +9300,7 @@ resourcegroup01   server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</m
     <command:details>
       <command:name>Remove-AzureRmSqlServerCommunicationLink</command:name>
       <maml:description>
-        <maml:para>Deletes an Azure SQL Server communication link.</maml:para>
+        <maml:para>Deletes a communication link for Elastic transactions between two logical servers in Azure SQL Database.</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -9346,14 +9346,14 @@ resourcegroup01   server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</m
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>WhatIf</maml:name>
           <maml:description>
-            <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+            <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Confirm</maml:name>
           <maml:description>
-            <maml:para>Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.</maml:para>
+            <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         </command:parameter>
@@ -9411,7 +9411,7 @@ resourcegroup01   server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</m
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>WhatIf</maml:name>
         <maml:description>
-          <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+          <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -9423,7 +9423,7 @@ resourcegroup01   server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</m
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>Confirm</maml:name>
         <maml:description>
-          <maml:para>Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.</maml:para>
+          <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>

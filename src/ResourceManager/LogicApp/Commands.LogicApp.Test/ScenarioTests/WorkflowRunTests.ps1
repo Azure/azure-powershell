@@ -101,5 +101,34 @@ function Test-GetAzureLogicAppRunAction
 
 	$action = Get-AzureRmLogicAppRunAction -ResourceGroupName $resourceGroupName -Name $workflowName -RunName $runHistory[0].Name -ActionName "http"
 	Assert-NotNull $action
+}
+
+<#
+.SYNOPSIS
+Test Start and Stop AzureLogicApp command for logic app workflow.
+#>
+function Test-StopAzureRmLogicAppRun
+{
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$resourceGroupName = $resourceGroup.ResourceGroupName
+	$planName = "StandardServicePlan"
+	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
+
+	$workflowName = getAssetname		
+	$definitionFilePath = "Resources\TestSimpleWorkflowTriggerDefinitionWithDelayAction.json"			
+		
+	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -AppServicePlan $planName
+	
+	[int]$counter = 0
+	do {
+		Sleep -seconds 2        
+		$workflow =  Get-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName
+	} while ($workflow.State -ne "Enabled" -and $counter++ -lt 5)
+	
+	Start-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -TriggerName "httpTrigger"
+		
+	$runHistory = Get-AzureRmLogicAppRunHistory -ResourceGroupName $resourceGroupName -Name $workflowName
+
+	Stop-AzureRmLogicAppRun -ResourceGroupName $resourceGroupName -Name $workflowName -RunName $runHistory[0].Name
 
 }
