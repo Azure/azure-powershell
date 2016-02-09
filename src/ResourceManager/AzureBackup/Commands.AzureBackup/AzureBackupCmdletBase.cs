@@ -173,8 +173,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     WriteDebug(String.Format(Resources.OperationStatus, response.Status));
                     break;
                 }
-
-                Thread.Sleep(checkFrequency);
+                TestMockSupport.Delay(checkFrequency);
             }
 
             return response;
