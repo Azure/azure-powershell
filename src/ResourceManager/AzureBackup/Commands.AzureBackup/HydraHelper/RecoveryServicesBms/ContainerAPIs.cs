@@ -17,7 +17,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Client
 {
-    public partial class HydraClient
+    public partial class HydraHelper
     {
         /// <summary>
         /// Fetches protection containers in the vault according to the query params

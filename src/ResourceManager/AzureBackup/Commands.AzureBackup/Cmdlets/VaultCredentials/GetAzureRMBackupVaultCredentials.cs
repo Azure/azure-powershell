@@ -52,14 +52,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 string subscriptionId = DefaultContext.Subscription.Id.ToString();
                 string resourceType = "BackupVault";
-                string displayName = subscriptionId + "_" + RecoveryServicesVault.ResourceGroupName + "_" + RecoveryServicesVault.Name;
+                string displayName = subscriptionId + "_" + CommonPSVault.ResourceGroupName + "_" + CommonPSVault.Name;
 
                 WriteDebug(string.Format(CultureInfo.InvariantCulture,
                                           Resources.ExecutingGetVaultCredCmdlet,
-                                          subscriptionId, RecoveryServicesVault.ResourceGroupName, RecoveryServicesVault.Name, TargetLocation));
+                                          subscriptionId, CommonPSVault.ResourceGroupName, CommonPSVault.Name, TargetLocation));
 
                 X509Certificate2 cert = CertUtils.CreateSelfSignedCert(CertUtils.DefaultIssuer,
-                                                                       CertUtils.GenerateCertFriendlyName(subscriptionId, RecoveryServicesVault.Name),
+                                                                       CertUtils.GenerateCertFriendlyName(subscriptionId, CommonPSVault.Name),
                                                                        CertUtils.DefaultPassword,
                                                                        DateTime.UtcNow.AddMinutes(-10),
                                                                        DateTime.UtcNow.AddHours(this.GetCertificateExpiryInHours()));
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 {
                     // Upload cert into ID Mgmt
                     WriteDebug(string.Format(CultureInfo.InvariantCulture, Resources.UploadingCertToIdmgmt));
-                    acsNamespace = UploadCert(cert, subscriptionId, RecoveryServicesVault.Name, resourceType, RecoveryServicesVault.ResourceGroupName);
+                    acsNamespace = UploadCert(cert, subscriptionId, CommonPSVault.Name, resourceType, CommonPSVault.ResourceGroupName);
                     WriteDebug(string.Format(CultureInfo.InvariantCulture, Resources.UploadedCertToIdmgmt));
                 }
                 catch (Exception exception)
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 },
             };
 
-            var vaultCredUploadCertResponse = AzureBackupClient.UploadCertificate(resourceGroupName, resourceName, "IdMgmtInternalCert", vaultCredUploadCertRequest);
+            var vaultCredUploadCertResponse = CommonHydraHelper.UploadCertificate(resourceGroupName, resourceName, "IdMgmtInternalCert", vaultCredUploadCertRequest);
 
             return new AcsNamespace(vaultCredUploadCertResponse.ResourceCertificateAndACSDetails.GlobalAcsHostName,
                                     vaultCredUploadCertResponse.ResourceCertificateAndACSDetails.GlobalAcsNamespace,
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 {
                     BackupVaultCreds backupVaultCreds = new BackupVaultCreds(subscriptionId,
                                                                              resourceType,
-                                                                             RecoveryServicesVault.Name,
+                                                                             CommonPSVault.Name,
                                                                              CertUtils.SerializeCert(cert, X509ContentType.Pfx),
                                                                              acsNamespace,
                                                                              GetAgentLinks());
