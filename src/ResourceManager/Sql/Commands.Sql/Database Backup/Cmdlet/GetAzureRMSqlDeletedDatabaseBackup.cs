@@ -19,17 +19,17 @@ using Microsoft.Azure.Commands.Sql.Database.Model;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRMSqlDatabaseGeoBackup",
+    [Cmdlet(VerbsCommon.Get, "AzureRMSqlDeletedDatabaseBackup",
         ConfirmImpact = ConfirmImpact.None)]
-    public class GetAzureRMSqlDatabaseGeoBackup : AzureSqlDatabaseGeoBackupCmdletBase
+    public class GetAzureRMSqlDeletedDatabaseBackup : AzureSqlDeletedDatabaseBackupCmdletBase
     {
         /// <summary>
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>
-        protected override IEnumerable<AzureSqlDatabaseGeoBackupModel> GetEntity()
+        protected override IEnumerable<AzureSqlDeletedDatabaseBackupModel> GetEntity()
         {
-            return ModelAdapter.ListGeoBackups(this.ResourceGroupName, this.ServerName, this.DatabaseName);
+            return ModelAdapter.ListDeletedDatabaseBackups(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.DeletionDate);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// </summary>
         /// <param name="model">Model retrieved from service</param>
         /// <returns>The model that was passed in</returns>
-        protected override IEnumerable<AzureSqlDatabaseGeoBackupModel> ApplyUserInputToModel(IEnumerable<AzureSqlDatabaseGeoBackupModel> model)
+        protected override IEnumerable<AzureSqlDeletedDatabaseBackupModel> ApplyUserInputToModel(IEnumerable<AzureSqlDeletedDatabaseBackupModel> model)
         {
             return model;
         }
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// </summary>
         /// <param name="entity">The output of apply user input to model</param>
         /// <returns>The input entity</returns>
-        protected override IEnumerable<AzureSqlDatabaseGeoBackupModel> PersistChanges(IEnumerable<AzureSqlDatabaseGeoBackupModel> entity)
+        protected override IEnumerable<AzureSqlDeletedDatabaseBackupModel> PersistChanges(IEnumerable<AzureSqlDeletedDatabaseBackupModel> entity)
         {
             return entity;
         }

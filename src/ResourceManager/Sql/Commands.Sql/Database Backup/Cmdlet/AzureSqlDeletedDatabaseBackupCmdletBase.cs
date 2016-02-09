@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Sql.Backup.Model;
@@ -22,8 +23,8 @@ using Microsoft.Azure.Commands.Sql.Database.Services;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
-    public abstract class AzureSqlDatabaseGeoBackupCmdletBase
-        : AzureSqlCmdletBase<IEnumerable<AzureSqlDatabaseGeoBackupModel>, AzureSqlDatabaseBackupAdapter>
+    public abstract class AzureSqlDeletedDatabaseBackupCmdletBase
+        : AzureSqlCmdletBase<IEnumerable<AzureSqlDeletedDatabaseBackupModel>, AzureSqlDatabaseBackupAdapter>
     {
         /// <summary>
         /// Gets or sets the name of the database server to use.
@@ -41,9 +42,19 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
-            HelpMessage = "The name of the Azure SQL Database to retrieve geo backups for.")]
+            HelpMessage = "The name of the Azure SQL Database to retrieve backups for.")]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the deletion date of the database to use.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            Position = 3,
+            HelpMessage = "The deletion date of the Azure SQL Database to retrieve backups for.")]
+        [ValidateNotNullOrEmpty]
+        public DateTime? DeletionDate { get; set; }
 
         /// <summary>
         /// Initializes the adapter

@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                     RestorePointType = restorePoint.Properties.RestorePointType,
                     RestorePointCreationDate = restorePoint.Properties.RestorePointCreationDate,
                     EarliestRestoreDate = restorePoint.Properties.EarliestRestoreDate
-                }; 
+                };
             }).ToList();
         }
 
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="resourceGroup">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <param name="databaseName">The name of the Azure SQL database</param>
-        /// <returns>List of restore points</returns>
+        /// <returns>List of geo backups</returns>
         internal IEnumerable<AzureSqlDatabaseGeoBackupModel> ListGeoBackups(string resourceGroup, string serverName, string databaseName)
         {
             var resp = Communicator.ListGeoBackups(resourceGroup, serverName, databaseName, Util.GenerateTracingId());
@@ -105,9 +105,40 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                     ResourceGroupName = resourceGroup,
                     ServerName = serverName,
                     DatabaseName = databaseName,
-                    Edition = geoBackup.Edition,
-                    EntityId = geoBackup.EntityId,
-                    LastAvailableBackupDate = geoBackup.LastAvailableBackupDate
+                    Edition = geoBackup.Properties.Edition,
+                    EntityId = geoBackup.name + "," + geoBackup.Properties.LastAvailableBackupDate,
+                    LastAvailableBackupDate = geoBackup.Properties.LastAvailableBackupDate
+                };
+            }).ToList();
+        }
+
+        /// <summary>
+        /// Lists the restorable deleted databases for a given Sql Azure Server.
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="databaseName">The name of the Azure SQL database</param>
+        /// <param name="deletionDate">The deletion time of the Azure SQL database</param>
+        /// <returns>List of restorable deleted databases</returns>
+        internal IEnumerable<AzureSqlDeletedDatabaseBackupModel> ListDeletedDatabaseBackups(string resourceGroup, string serverName, string databaseName, DateTime? deletionDate)
+        {
+            var resp = Communicator.ListDeletedDatabaseBackups(resourceGroup, serverName, databaseName, deletionDate, Util.GenerateTracingId());
+            return resp.Select((deletedDatabaseBackup) =>
+            {
+                return new AzureSqlDeletedDatabaseBackupModel()
+                {
+                    ResourceGroupName = resourceGroup,
+                    ServerName = serverName,
+                    DatabaseName = databaseName,
+                    Edition = deletedDatabaseBackup.Properties.Edition,
+                    MaxSizeBytes = deletedDatabaseBackup.Properties.MaxSizeBytes,
+                    ServiceLevelObjective = deletedDatabaseBackup.Properties.ServiceLevelObjective,
+                    ElasticPoolName = deletedDatabaseBackup.Properties.ElasticPoolName,
+                    CreationDate = deletedDatabaseBackup.Properties.CreationDate,
+                    DeletionDate = deletedDatabaseBackup.Properties.DeletionDate,
+                    RecoveryPeriodStartDate = deletedDatabaseBackup.Properties.EarliestRestoreDate,
+                    EntityId = deletedDatabaseBackup.name,
+                    LastAvailableBackupDate = deletedDatabaseBackup.Properties.LastAvailableBackupDate
                 };
             }).ToList();
         }
