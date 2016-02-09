@@ -52,5 +52,15 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         {
             WorkflowController.NewInstance.RunPowerShellTest("Test-GetAzureLogicAppRunAction");
         }
+
+        /// <summary>
+        /// Test Stop-AzureRmLogicAppRun command to cancel logic app run
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestStopAzureRmLogicAppRun()
+        {
+            WorkflowController.NewInstance.RunPowerShellTest("Test-StopAzureRmLogicAppRun");
+        }
     }
 }
