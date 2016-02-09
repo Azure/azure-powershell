@@ -23,7 +23,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
         protected const string DefaultExtensionIdPrefixStr = "Default";
         protected const string ExtensionIdSuffixTemplate = "-{0}-{1}-Ext-{2}";
         protected const int MaxExtensionIdLength = 60;
-        protected const int MaxSuffixLength = MaxExtensionIdLength - 1;
+        protected const int MinRoleNamePartLength = 1;
+        protected const int MaxSuffixLength = MaxExtensionIdLength - MinRoleNamePartLength;
 
         public string RoleName { get; private set; }
         public string PrefixName { get; private set; }
@@ -34,15 +35,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
         {
             // Remove characters that are not allowed in the extension id
             var disallowedCharactersRegex = new Regex(@"[^A-Za-z0-9\-]");
-            var match = disallowedCharactersRegex.Match(roleName);
-
-            while (match.Success)
-            {
-                roleName = roleName.Remove(match.Index, match.Length);
-                match = disallowedCharactersRegex.Match(roleName);
-            }
-
-            return roleName;
+            return disallowedCharactersRegex.Replace(roleName, string.Empty);
         }
 
         public ExtensionRole()
@@ -81,14 +74,18 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             var normalizedExtName = RemoveDisallowedCharacters(extensionName);
 
             var suffix = new StringBuilder();
+            // Suffix format: -{extension_name_part}-{slot}-Ext-{index}
             suffix.AppendFormat(ExtensionIdSuffixTemplate, normalizedExtName, slot, index);
             if (suffix.Length > MaxSuffixLength)
             {
+                // If the suffix is too long, truncate the {extension_name_part}
                 int lenDiff = suffix.Length - MaxSuffixLength;
                 int startIndex = 1; // Suffix starts with '-'
                 suffix.Remove(startIndex + normalizedExtName.Length - lenDiff, lenDiff);
             }
 
+            // Calculate the prefix length by the difference between the suffix and the max ID length.
+            // The difference should always be at least 1.
             int prefixSubStrLen = Math.Min(Math.Max(MaxExtensionIdLength - suffix.Length, 0), PrefixName.Length);
 
             var result = new StringBuilder();

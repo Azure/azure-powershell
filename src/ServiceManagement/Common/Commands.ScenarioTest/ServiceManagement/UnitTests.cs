@@ -40,6 +40,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             foreach (var roleName in roleNames)
             {
                 ExtensionRole er = new ExtensionRole(roleName);
+                Assert.Equal(er.RoleName, roleName.Trim());
                 Assert.Equal(er.PrefixName, expectedPrefixName);
                 Assert.Equal(er.GetExtensionId("test", "test", 0), expectedExtensionId);
             }
@@ -48,26 +49,41 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             {
                 "A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789",
                 "   A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789 ~~~"
-            }; 
-            
-            // Extenion ID's Max Length 60 = 43 + 1 + 4 + 1 + 4 + 1 + 5
+            };
+
+            // PrefixName = A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789
+            // Extension Name = test
+            // Slot = test
+            // Index = 0
+            // Extension ID Format = {prefix_name_part}-{extension_name_part}-{slot}-Ext-{index}
+            // Extenion ID's Max Length: 60 = 43 + 1 + 4 + 1 + 4 + 1 + 5
             // i.e. 'A123...E123' + '-' + 'test' + '-' + 'test' + '-' + 'Ext-0'
-            //           L=43       L=1    L=4     L=1    L=4     L=1  L=5
+            //           L=43       L=1    L=4     L=1    L=4     L=1     L=5
             expectedPrefixName = longRoleNames[0];
             expectedExtensionId = "A123456789B123456789C123456789D123456789E123-test-test-Ext-0";
             foreach (var roleName in longRoleNames)
             {
                 ExtensionRole er = new ExtensionRole(roleName);
+                Assert.Equal(er.RoleName, roleName.Trim());
                 Assert.Equal(er.PrefixName, expectedPrefixName);
                 Assert.Equal(er.GetExtensionId("test", "test", 0), expectedExtensionId);
             }
 
 
             var longExtensionNames = longRoleNames;
+            // PrefixName = Default
+            // Extension Name = A123456789B123456789C123456789D123456789E123456789F123456789G123456789H123456789
+            // Slot = test
+            // Index = 1
+            // Extension ID Format = {prefix_name_part}-{extension_name_part}-{slot}-Ext-{index}
+            // Extenion ID's Max Length: 60 = 1 + 1 + 47 + 1 + 4 + 1 + 5
+            // i.e. 'D' + '-' + 'A123...456' + '-' + 'test' + '-' + 'Ext-0'
+            //      L=1   L=1       L=47       L=1    L=4     L=1     L=5
             expectedExtensionId = "D-A123456789B123456789C123456789D123456789E123456-test-Ext-1";
             foreach (var extensionName in longExtensionNames)
             {
                 ExtensionRole er = new ExtensionRole();
+                Assert.Equal(er.RoleName, string.Empty);
                 Assert.Equal(er.PrefixName, "Default");
                 Assert.Equal(er.GetExtensionId(extensionName, "test", 1), expectedExtensionId);
             }
