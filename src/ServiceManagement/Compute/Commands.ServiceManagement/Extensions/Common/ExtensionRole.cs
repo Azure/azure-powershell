@@ -23,6 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
         protected const string DefaultExtensionIdPrefixStr = "Default";
         protected const string ExtensionIdSuffixTemplate = "-{0}-{1}-Ext-{2}";
         protected const int MaxExtensionIdLength = 60;
+        protected const int MaxSuffixLength = MaxExtensionIdLength - 1;
 
         public string RoleName { get; private set; }
         public string PrefixName { get; private set; }
@@ -81,6 +82,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
 
             var suffix = new StringBuilder();
             suffix.AppendFormat(ExtensionIdSuffixTemplate, normalizedExtName, slot, index);
+            if (suffix.Length > MaxSuffixLength)
+            {
+                int lenDiff = suffix.Length - MaxSuffixLength;
+                int startIndex = 1; // Suffix starts with '-'
+                suffix.Remove(startIndex + normalizedExtName.Length - lenDiff, lenDiff);
+            }
 
             int prefixSubStrLen = Math.Min(Math.Max(MaxExtensionIdLength - suffix.Length, 0), PrefixName.Length);
 
