@@ -66,13 +66,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets.DataSource
                                 Properties = new CSMUpdateProtectionRequestProperties(string.Empty)
                             };
 
-                            operationId = AzureBackupClient.UpdateProtection(Item.ResourceGroupName, Item.ResourceName, Item.ContainerUniqueName, Item.ItemName, input);
+                            operationId = CommonHydraHelper.BackupUpdateProtection(Item.ResourceGroupName, Item.ResourceName, Item.ContainerUniqueName, Item.ItemName, input);
                         }
 
                         else
                         {
                             //Calling disable protection
-                            operationId = AzureBackupClient.DisableProtection(Item.ResourceGroupName, Item.ResourceName, Item.ContainerUniqueName, Item.ItemName);
+                            operationId = CommonHydraHelper.BackupDisableProtection(Item.ResourceGroupName, Item.ResourceName, Item.ContainerUniqueName, Item.ItemName);
                         }
 
 

@@ -55,16 +55,16 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 WriteDebug(String.Format(Resources.CreatingBackupVault, ResourceGroupName, Name));
 
-                var createdVault = AzureBackupClient.CreateOrUpdateAzureBackupVault(ResourceGroupName, Name, Region);
+                var createdVault = CommonHydraHelper.CreateOrUpdateAzureBackupVault(ResourceGroupName, Name, Region);
 
                 if (Storage != 0)
                 {
                     WriteDebug(String.Format(Resources.SettingStorageType, Storage));
 
-                    AzureBackupClient.UpdateStorageType(ResourceGroupName, Name, Storage.ToString());
+                    CommonHydraHelper.UpdateStorageType(ResourceGroupName, Name, Storage.ToString());
                 }
 
-                WriteObject(VaultHelpers.GetCmdletVault(createdVault, AzureBackupClient.GetStorageTypeDetails(VaultHelpers.GetResourceGroup(createdVault.Id), createdVault.Name)));
+                WriteObject(VaultHelpers.GetCmdletVault(createdVault, CommonHydraHelper.GetStorageTypeDetails(VaultHelpers.GetResourceGroup(createdVault.Id), createdVault.Name)));
             });
         }
     }

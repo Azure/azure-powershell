@@ -12,25 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Xunit;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.AzureBackup.Client
 {
-    public class AzureBackupVaultTests : AzureBackupTestsBase
+    public partial class HydraHelper
     {
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void AzureBackupVaultScenarioTests()
-        {
-            this.RunPowerShellTest("Test-AzureBackupVaultScenario");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void AzureRecoveryServiceVaultScenario()
-        {
-            this.RunPowerShellTest("Test-AzureRecoveryServiceVaultScenario");
-        }
     }
 }

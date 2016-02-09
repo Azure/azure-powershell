@@ -13,14 +13,21 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.AzureBackup.Properties;
+using Microsoft.Azure.Commands.RecoveryServices;
 using System;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Models
 {
+    public enum VaultType
+    {
+        BackupVault = 0,
+        ARSVault,
+    }
+
     /// <summary>
     /// Represents Azure Backup vault
     /// </summary>
-    public class AzureRMBackupVault
+    public class AzureRMBackupVault : VaultBase
     {
         public string ResourceId { get; set; }
 
@@ -35,13 +42,28 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
 
         public string Storage { get; set; }
 
-        public AzureRMBackupVault() : base() { }
+        public VaultType Type { get; set; }
+
+        public AzureRMBackupVault() 
+        {
+            Type = VaultType.BackupVault;
+        }
 
         public AzureRMBackupVault(string resourceGroupName, string resourceName, string region)
         {
             ResourceGroupName = resourceGroupName;
             Name = resourceName;
             Region = region;
+            Type = VaultType.BackupVault;
+        }
+
+        public AzureRMBackupVault(ARSVault arsVault)
+        {
+            Name = arsVault.Name;
+            Region = arsVault.Location;
+            ResourceGroupName = arsVault.ResouceGroupName;
+            ResourceId = arsVault.ID;
+            Type = VaultType.ARSVault;
         }
 
         internal void Validate()

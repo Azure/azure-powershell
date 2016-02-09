@@ -13,6 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.AzureBackup.Models;
+using Microsoft.Azure.Commands.AzureBackup.Properties;
+using Microsoft.Azure.Commands.RecoveryServices;
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
@@ -21,14 +24,30 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.Vault, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public AzureRMBackupVault Vault { get; set; }
+        public VaultBase Vault { get; set; }
+
+        public AzureRMBackupVault CommonPSVault { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            Vault.Validate();
 
-            InitializeAzureBackupCmdlet(Vault);
+            if (Vault.GetType() == typeof(ARSVault))
+            {
+                CommonPSVault = new AzureRMBackupVault((ARSVault)Vault);
+            }
+            else if (Vault.GetType() == typeof(AzureRMBackupVault))
+            {
+                CommonPSVault = (AzureRMBackupVault)Vault;
+            }
+            else
+            {
+                throw new ArgumentException(Resources.UnkownVaultType);
+            }
+
+            CommonPSVault.Validate();
+
+            InitializeAzureBackupCmdlet(CommonPSVault);
         }
     }
 }

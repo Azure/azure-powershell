@@ -45,17 +45,17 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 if (ResourceGroupName != null && Name != null)
                 {
-                    var backupVault = AzureBackupClient.GetVault(ResourceGroupName, Name);
-                    WriteObject(VaultHelpers.GetCmdletVault(backupVault, AzureBackupClient.GetStorageTypeDetails(VaultHelpers.GetResourceGroup(backupVault.Id), backupVault.Name)));
+                    var backupVault = CommonHydraHelper.GetVault(ResourceGroupName, Name);
+                    WriteObject(VaultHelpers.GetCmdletVault(backupVault, CommonHydraHelper.GetStorageTypeDetails(VaultHelpers.GetResourceGroup(backupVault.Id), backupVault.Name)));
                 }
                 else if (ResourceGroupName != null)
                 {
-                    var backupVaults = AzureBackupClient.GetVaultsInResourceGroup(ResourceGroupName);
+                    var backupVaults = CommonHydraHelper.GetVaultsInResourceGroup(ResourceGroupName);
                     WriteObject(GetCmdletVaults(backupVaults), true);
                 }
                 else
                 {
-                    var backupVaults = AzureBackupClient.GetVaults();
+                    var backupVaults = CommonHydraHelper.GetVaults();
 
                     if (Name != null)
                     {
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             {
                 foreach (var backupVault in backupVaults)
                 {
-                    resultList.Add(VaultHelpers.GetCmdletVault(backupVault, AzureBackupClient.GetStorageTypeDetails(VaultHelpers.GetResourceGroup(backupVault.Id), backupVault.Name)));
+                    resultList.Add(VaultHelpers.GetCmdletVault(backupVault, CommonHydraHelper.GetStorageTypeDetails(VaultHelpers.GetResourceGroup(backupVault.Id), backupVault.Name)));
                 }
             }
 

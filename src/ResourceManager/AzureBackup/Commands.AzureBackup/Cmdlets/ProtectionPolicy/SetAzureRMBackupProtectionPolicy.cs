@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 base.ExecuteCmdlet();
                 WriteDebug(Resources.MakingClientCall);
 
-                var response = AzureBackupClient.GetProtectionPolicyByName(ProtectionPolicy.ResourceGroupName, ProtectionPolicy.ResourceName, ProtectionPolicy.Name);
+                var response = CommonHydraHelper.BackupGetProtectionPolicyByName(ProtectionPolicy.ResourceGroupName, ProtectionPolicy.ResourceName, ProtectionPolicy.Name);
                 var vault = new CmdletModel.AzureRMBackupVault(ProtectionPolicy.ResourceGroupName, ProtectionPolicy.ResourceName, ProtectionPolicy.Location);
 
                 var policyInfo = ProtectionPolicyHelpers.GetCmdletPolicy(vault, response);
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     ProtectionPolicyHelpers.ValidateRetentionPolicy(policyInfo.RetentionPolicy, backupSchedule);
                 }
 
-                var operationId = AzureBackupClient.UpdateProtectionPolicy(ProtectionPolicy.ResourceGroupName, ProtectionPolicy.ResourceName, policyInfo.Name, updateProtectionPolicyRequest);
+                var operationId = CommonHydraHelper.BackupUpdateProtectionPolicy(ProtectionPolicy.ResourceGroupName, ProtectionPolicy.ResourceName, policyInfo.Name, updateProtectionPolicyRequest);
 
                 if (operationId != Guid.Empty)
                 {
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             if (newName != null && NewName != policy.Name)
             {
                 ProtectionPolicyHelpers.ValidateProtectionPolicyName(this.NewName);
-                AzureBackupClient.CheckProtectionPolicyNameAvailability(ProtectionPolicy.ResourceGroupName, ProtectionPolicy.ResourceName, this.NewName);
+                CommonHydraHelper.BackupCheckProtectionPolicyNameAvailability(ProtectionPolicy.ResourceGroupName, ProtectionPolicy.ResourceName, this.NewName);
             }
 
             BackupTime = (BackupTime == DateTime.MinValue) ? policy.BackupTime :

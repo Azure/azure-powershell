@@ -45,11 +45,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 {
                     WriteDebug(String.Format(Resources.SettingStorageType, Storage));
 
-                    AzureBackupClient.UpdateStorageType(Vault.ResourceGroupName, Vault.Name, Storage.ToString());
+                    CommonHydraHelper.UpdateStorageType(CommonPSVault.ResourceGroupName, CommonPSVault.Name, Storage.ToString());
                 }
 
-                var backupVault = AzureBackupClient.GetVault(Vault.ResourceGroupName, Vault.Name);
-                WriteObject(VaultHelpers.GetCmdletVault(backupVault, AzureBackupClient.GetStorageTypeDetails(Vault.ResourceGroupName, Vault.Name)));
+                var backupVault = CommonHydraHelper.GetVault(CommonPSVault.ResourceGroupName, CommonPSVault.Name);
+                WriteObject(VaultHelpers.GetCmdletVault(backupVault, CommonHydraHelper.GetStorageTypeDetails(CommonPSVault.ResourceGroupName, CommonPSVault.Name)));
             });
         }
     }
