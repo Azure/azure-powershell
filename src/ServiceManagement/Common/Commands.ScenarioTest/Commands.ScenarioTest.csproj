@@ -380,6 +380,7 @@
     <Compile Include="Resources\ResourceLocator.cs" />
     <Compile Include="Scheduler\SchedulerTests.cs" />
     <Compile Include="ServiceBusTests\ServiceBusAuthorizationRuleTests.cs" />
+    <Compile Include="ServiceManagement\UnitTests.cs" />
     <Compile Include="ServiceManagement\ScenarioTests.cs" />
     <Compile Include="ServiceManagement\ServiceManagementTests.cs" />
     <Compile Include="StorageTests\StorageContainerTest.cs" />

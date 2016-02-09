@@ -14,6 +14,7 @@
 
 using System;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
 {
@@ -22,11 +23,27 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
         protected const string DefaultExtensionIdPrefixStr = "Default";
         protected const string ExtensionIdSuffixTemplate = "-{0}-{1}-Ext-{2}";
         protected const int MaxExtensionIdLength = 60;
+        protected const int MaxSuffixLength = MaxExtensionIdLength - 1;
 
         public string RoleName { get; private set; }
         public string PrefixName { get; private set; }
         public ExtensionRoleType RoleType { get; private set; }
         public bool Default { get; private set; }
+
+        private static string RemoveDisallowedCharacters(string roleName)
+        {
+            // Remove characters that are not allowed in the extension id
+            var disallowedCharactersRegex = new Regex(@"[^A-Za-z0-9\-]");
+            var match = disallowedCharactersRegex.Match(roleName);
+
+            while (match.Success)
+            {
+                roleName = roleName.Remove(match.Index, match.Length);
+                match = disallowedCharactersRegex.Match(roleName);
+            }
+
+            return roleName;
+        }
 
         public ExtensionRole()
         {
@@ -48,9 +65,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             else
             {
                 PrefixName = RoleName = roleName.Trim();
-                PrefixName = PrefixName.Replace(".", string.Empty);
-                PrefixName = PrefixName.Replace(" ", string.Empty);
-                PrefixName = PrefixName.Replace("_", string.Empty);
+                PrefixName = RemoveDisallowedCharacters(PrefixName);
                 RoleType = ExtensionRoleType.NamedRoles;
                 Default = false;
             }
@@ -63,12 +78,16 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
 
         public string GetExtensionId(string extensionName, string slot, int index)
         {
-            var normalizedExtName = extensionName.Replace(".", string.Empty);
-            normalizedExtName = normalizedExtName.Replace(" ", string.Empty);
-            normalizedExtName = normalizedExtName.Replace("_", string.Empty);
+            var normalizedExtName = RemoveDisallowedCharacters(extensionName);
 
             var suffix = new StringBuilder();
             suffix.AppendFormat(ExtensionIdSuffixTemplate, normalizedExtName, slot, index);
+            if (suffix.Length > MaxSuffixLength)
+            {
+                int lenDiff = suffix.Length - MaxSuffixLength;
+                int startIndex = 1; // Suffix starts with '-'
+                suffix.Remove(startIndex + normalizedExtName.Length - lenDiff, lenDiff);
+            }
 
             int prefixSubStrLen = Math.Min(Math.Max(MaxExtensionIdLength - suffix.Length, 0), PrefixName.Length);
 
