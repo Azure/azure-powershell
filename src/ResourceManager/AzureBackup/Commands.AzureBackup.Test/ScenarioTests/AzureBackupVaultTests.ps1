@@ -47,9 +47,13 @@ function Test-AzureBackupVaultScenario
 
 function Test-AzureRecoveryServiceVaultScenario
 {
-	$bvault = New-AzureRmBackupVault -ResourceGroupName $ResourceGroupName -Name $ResourceName -Region $Location -Storage "LocallyRedundant";
-	$rsvault = New-AzureRmRecoveryServicesVault -ResourceGroupName $ResourceGroupName -Name "rsrnvault" -Location $Location;
+	#$bvault = New-AzureRmBackupVault -ResourceGroupName $ResourceGroupName -Name $ResourceName -Region $Location -Storage "LocallyRedundant";
+	$rsvault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "phaniktRSV" -Name "phaniktRs1";
 	
-	$bconts = Get-AzureRmBackupContainer -Vault $bvault -Type AzureVM;
+	#$bconts = Get-AzureRmBackupContainer -Vault $bvault -Type AzureVM;
 	$rsconts = Get-AzureRmBackupContainer -Vault $rsvault -Type AzureVM;
+	#$rsconts[0].ContainerType
+	foreach ($rscont in $rsconts) {
+		$rscont.ContainerType;
+	}
 }

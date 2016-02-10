@@ -17,7 +17,7 @@ using Microsoft.Azure.Commands.AzureBackup.Library;
 using Microsoft.Azure.Commands.AzureBackup.Models;
 using Microsoft.Azure.Commands.AzureBackup.Properties;
 using Microsoft.Azure.Management.BackupServices.Models;
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using RecoveryServicesNSModels = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -82,25 +82,33 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         private void GetContainersForRecoveryServicesVault(List<AzureRMBackupContainer> containers)
         {
-            ProtectionContainerListQueryParams queryParams = new ProtectionContainerListQueryParams();
-            queryParams.ProviderType = ContainerHelpers.GetProviderTypeForContainerType(Type).ToString();
+            RecoveryServicesNSModels.ProtectionContainerListQueryParams queryParams = new RecoveryServicesNSModels.ProtectionContainerListQueryParams();
+            if (Type != AzureBackupContainerType.Other)
+            {
+                ProviderType providerType = ContainerHelpers.GetProviderTypeForContainerType(Type);
+                if (providerType == ProviderType.Invalid)
+                {
+                    throw new Exception("Provided Container Type doesn't map to any known provider type");
+                }
+                queryParams.ProviderType = providerType.ToString();
+            }
             queryParams.FriendlyName = Name;
             if (Status != 0)
             {
                 queryParams.RegistrationStatus = Status.ToString();
             }
 
-            List<ProtectionContainerResource> protectionContainers = new List<ProtectionContainerResource>();
+            List<RecoveryServicesNSModels.ProtectionContainerResource> protectionContainers = new List<RecoveryServicesNSModels.ProtectionContainerResource>();
             protectionContainers.AddRange(CommonHydraHelper.RecoveryServicesListContainers(CommonPSVault.ResourceGroupName, CommonPSVault.Name, queryParams));
-            WriteDebug(string.Format(Resources.FetchedContainer, containers.Count()));
+            WriteDebug(string.Format(Resources.FetchedContainer, protectionContainers.Count()));
 
             if (!string.IsNullOrEmpty(ManagedResourceGroupName))
             {
                 protectionContainers.RemoveAll(
                     protectionContainer =>
                     {
-                        return !(protectionContainer.GetType().IsSubclassOf(typeof(AzureIaaSVMProtectionContainer)) &&
-                            (((AzureIaaSVMProtectionContainer)protectionContainer.Properties).ResourceGroup == ManagedResourceGroupName));
+                        return !(protectionContainer.GetType().IsSubclassOf(typeof(RecoveryServicesNSModels.AzureIaaSVMProtectionContainer)) &&
+                            (((RecoveryServicesNSModels.AzureIaaSVMProtectionContainer)protectionContainer.Properties).ResourceGroup == ManagedResourceGroupName));
                     });
             }
 
