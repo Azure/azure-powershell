@@ -151,7 +151,9 @@ function WaitForJobCompletion
 	$interval = 5;
 	do
 	{
-		Start-Sleep $interval
+        if ($env:AZURE_TEST_MODE -eq "Record"){
+			Start-Sleep $interval
+		}
 		$timeElapse = $timeElapse + $interval
 		$job = Get-AzureRmSiteRecoveryJob -Name $JobId;
 	} while((-not ($endStateDescription -ccontains $job.State)) -and ($timeElapse -lt $NumOfSecondsToWait))

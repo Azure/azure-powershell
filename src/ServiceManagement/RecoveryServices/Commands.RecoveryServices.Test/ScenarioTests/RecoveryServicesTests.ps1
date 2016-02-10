@@ -1216,7 +1216,9 @@ function WaitForCanFailover
     $count = 20
 	do
 	{
-		Start-Sleep 5
+        if ($env:AZURE_TEST_MODE -eq "Record"){
+			Start-Sleep 5
+		}
 		$pes = Get-AzureSiteRecoveryProtectionEntity -ProtectionContainerId $pcId;
 
         $count = $count -1;
@@ -1242,7 +1244,9 @@ function WaitForJobCompletion
 	$interval = 5;
 	do
 	{
-		Start-Sleep $interval
+        if ($env:AZURE_TEST_MODE -eq "Record"){
+			Start-Sleep $interval
+		}
 		$timeElapse = $timeElapse + $interval
 		$job = Get-AzureSiteRecoveryJob -Id $JobId;
 	} while((-not ($endStateDescription -ccontains $job.State)) -and ($timeElapse -lt $NumOfSecondsToWait))

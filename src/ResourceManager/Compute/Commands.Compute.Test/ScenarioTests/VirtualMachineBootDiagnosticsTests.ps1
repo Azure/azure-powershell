@@ -128,7 +128,9 @@ function Test-VirtualMachineBootDiagnostics
         Assert-AreEqual $true $vm1.DiagnosticsProfile.BootDiagnostics.Enabled;
         Assert-AreEqual $stoaccount.PrimaryEndpoints.Blob $vm1.DiagnosticsProfile.BootDiagnostics.StorageUri;
 
-        Start-Sleep -s 600;
+        if ($env:AZURE_TEST_MODE -eq "Record"){
+            Start-Sleep -s 600;
+        }
         $localpath = (Get-Item -Path ".\" -Verbose).FullName
         Get-AzureRmVMBootDiagnosticsData -Windows -ResourceGroupName $rgname -Name $vmname -LocalPath $localpath;
 
@@ -164,7 +166,9 @@ function Test-VirtualMachineBootDiagnostics
         Assert-AreEqual $true $vm1.DiagnosticsProfile.BootDiagnostics.Enabled;
         Assert-AreEqual $stoaccount.PrimaryEndpoints.Blob $vm1.DiagnosticsProfile.BootDiagnostics.StorageUri;
 
-        Start-Sleep -s 600;
+        if ($env:AZURE_TEST_MODE -eq "Record"){
+            Start-Sleep -s 600;
+        }
 
         $bddata = Get-AzureRmVMBootDiagnosticsData -Linux -ResourceGroupName $rgname -Name $vmname | Out-String;
 

@@ -280,7 +280,9 @@ function Wait-Function
 
     do
     {
-        Start-Sleep -s 5
+        if ($env:AZURE_TEST_MODE -eq "Record"){
+          Start-Sleep -s 5
+        }
         $current = [DateTime]::Now
         $diff = $current - $start
         $result = &$scriptBlock
@@ -337,7 +339,9 @@ function Retry-Function
     $tries = 1;
     while(( $result -ne $true) -and ($tries -le $maxTries))
     {
-        Start-Sleep -s $interval
+        if ($env:AZURE_TEST_MODE -eq "Record"){
+          Start-Sleep -s $interval
+        }
         $result = Invoke-Command -ScriptBlock $scriptBlock -ArgumentList $argument;
         $tries++;
     }
