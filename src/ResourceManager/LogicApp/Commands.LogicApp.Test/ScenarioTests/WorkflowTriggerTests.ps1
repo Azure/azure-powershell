@@ -53,7 +53,7 @@ function Test-GetAzureLogicAppTriggerHistory
 	
 	[int]$counter = 0
 	do {
-		Sleep -Milliseconds 2000        
+		SleepInRecordMode 2000
 		$workflow =  Get-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName
 	} while ($workflow.State -ne "Enabled" -and $counter++ -lt 5)
 	
@@ -85,7 +85,7 @@ function Test-StartAzureLogicAppTrigger
 	
 	[int]$counter = 0
 	do {
-		Sleep -Milliseconds 2000      
+		SleepInRecordMode 2000
 		$workflow =  Get-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName
 	} while ($workflow.State -ne "Enabled" -and $counter++ -lt 5)
 	

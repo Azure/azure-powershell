@@ -107,3 +107,16 @@ function TestSetup-CreateWorkflow ([string]$resourceGroupName, [string]$workflow
 	$workflow = $resourceGroup | New-AzureRmLogicApp -Name $workflowName -AppServicePlan $AppServicePlan -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath
     return $workflow
 }
+
+<#
+.SYNOPSIS
+Sleep in record mode only
+#>
+function SleepInRecordMode ([int]$SleepIntervalInMillisec)
+{
+	$mode = $env:AZURE_TEST_MODE
+	if ( $mode.ToUpperInvariant() -eq "RECORD")
+	{	
+		Sleep -Milliseconds $SleepIntervalInMillisec 
+	}		
+}
