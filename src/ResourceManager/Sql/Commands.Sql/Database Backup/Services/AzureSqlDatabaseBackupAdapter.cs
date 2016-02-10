@@ -142,5 +142,54 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 };
             }).ToList();
         }
+
+        /// <summary>
+        /// Restore a given Sql Azure Database
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="databaseName">The name of the Azure SQL database</param>
+        /// <param name="parameters">Parameters describing the database restore request</param>
+        /// <returns>Restored database object</returns>
+        internal AzureSqlDatabaseModel RestoreDatabase(string resourceGroup, string serverName, string databaseName, Guid databaseId, DateTime restorePointInTime, string createMode, AzureSqlDatabaseModel model)
+        {
+            string location = GetServerLocation(resourceGroup, serverName);
+
+            // Look up source database ID via direct call to GetDatabase, since one wasn't passed in
+            if (databaseId == null)
+            {
+                databaseId = new AzureSqlDatabaseAdapter(Context).GetDatabase(resourceGroup, serverName, databaseName).DatabaseId;
+            }
+
+            DatabaseCreateOrUpdateParameters parameters = new DatabaseCreateOrUpdateParameters()
+                    {
+                    Location = model.Location,
+                    Properties = new DatabaseCreateOrUpdateProperties()
+                    {
+                        Edition = model.Edition == DatabaseEdition.None ? null : model.Edition.ToString(),
+                        RequestedServiceObjectiveId = model.RequestedServiceObjectiveId,
+                        ElasticPoolName = model.ElasticPoolName,
+                        RequestedServiceObjectiveName = model.RequestedServiceObjectiveName,
+                        SourceDatabaseId = databaseId,
+                        RestorePointInTime = restorePointInTime,
+                        CreateMode = createMode
+                    }
+                    };
+            var resp = Communicator.RestoreDatabase(resourceGroup, serverName, databaseName, Util.GenerateTracingId(), parameters);
+            return AzureSqlDatabaseAdapter.CreateDatabaseModelFromResponse(resourceGroup, serverName, resp);
+        }
+
+        /// <summary>
+        /// Gets the Location of the server.
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group the server is in</param>
+        /// <param name="serverName">The name of the server</param>
+        /// <returns></returns>
+        public string GetServerLocation(string resourceGroupName, string serverName)
+        {
+            AzureSqlServerAdapter serverAdapter = new AzureSqlServerAdapter(Context);
+            var server = serverAdapter.GetServer(resourceGroupName, serverName);
+            return server.Location;
+        }
     }
 }
