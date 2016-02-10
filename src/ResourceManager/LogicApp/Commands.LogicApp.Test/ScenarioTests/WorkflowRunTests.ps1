@@ -30,7 +30,7 @@ function Test-StartLogicApp
 	
 	[int]$counter = 0
 	do {
-		Sleep -seconds 2        
+		SleepInRecordMode 2000       
 		$workflow =  Get-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName
 	} while ($workflow.State -ne "Enabled" -and $counter++ -lt 5)
 	
@@ -55,7 +55,7 @@ function Test-GetAzureLogicAppRunHistory
 	
 	[int]$counter = 0
 	do {
-		Sleep -seconds 2        
+		SleepInRecordMode 2000       
 		$workflow =  Get-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName
 	} while ($workflow.State -ne "Enabled" -and $counter++ -lt 5)
 	
@@ -86,7 +86,7 @@ function Test-GetAzureLogicAppRunAction
 	
 	[int]$counter = 0
 	do {
-		Sleep -seconds 2        
+		SleepInRecordMode 2000        
 		$workflow =  Get-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName
 	} while ($workflow.State -ne "Enabled" -and $counter++ -lt 5)
 	
@@ -121,7 +121,7 @@ function Test-StopAzureRmLogicAppRun
 	
 	[int]$counter = 0
 	do {
-		Sleep -seconds 2        
+		SleepInRecordMode 2000       
 		$workflow =  Get-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName
 	} while ($workflow.State -ne "Enabled" -and $counter++ -lt 5)
 	
