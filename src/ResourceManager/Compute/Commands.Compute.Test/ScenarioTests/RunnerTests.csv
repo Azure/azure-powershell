@@ -1,5 +1,1 @@
-﻿Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AvailabilitySetTests;TestAvailabilitySet
-Microsoft.Azure.Commands.Compute.Test.ScenarioTests.ComputeCloudExceptionTests;RunComputeCloudExceptionTests
-Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineTests;TestLinuxVirtualMachine
-Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineProfileTests;TestVirtualMachineProfile
-Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VMDynamicTests;RunVMDynamicTests
+﻿Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VMDynamicTests;RunVMDynamicTests
