@@ -157,7 +157,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                     break;
                 case "FromDeletedDatabaseBackup":
                     createMode = "Restore";
-                    restorePointInTime = DeletionDate;
                     break;
                 case "FromGeoBackup":
                     createMode = "Recovery";
