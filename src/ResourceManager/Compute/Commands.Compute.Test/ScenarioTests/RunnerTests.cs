@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             var credential = new ClientCredential(testEnv.ClientId, envDictionary["ApplicationSecret"]);
 
             var result = authenticationContext.AcquireToken("https://management.core.windows.net/", clientCredential: credential);
+
             Assert.NotNull(result.AccessToken);
             envDictionary["RawToken"] = result.AccessToken;
 
@@ -54,7 +55,11 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                     var testClassInstance = constructorInfo.Invoke(new object[] {});
                     var testMethod = type.GetMethod(method);
 
+                    Console.WriteLine("Invoking method : " + testMethod);
+
                     testMethod.Invoke(testClassInstance, new object[] {});
+
+                    Console.WriteLine("Method " + testMethod + " has finished");
                 }
             }
         }

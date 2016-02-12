@@ -229,15 +229,6 @@
     <None Include="ScenarioTests\DummyConfig.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\Generated\VirtualMachineDynamicTest1.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\Generated\VirtualMachineDynamicTest2.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\Generated\VirtualMachineDynamicTest3.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="ScenarioTests\RunnerTests.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
