@@ -133,10 +133,5 @@ namespace Microsoft.WindowsAzure.Commands.Common
         protected override void InitializeQosEvent()
         {
         }
-
-        protected override void Dispose(bool disposing)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

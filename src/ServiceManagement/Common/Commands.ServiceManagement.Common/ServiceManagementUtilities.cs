@@ -15,8 +15,8 @@
 using System.ServiceModel.Channels;
 using System.Text;
 using System.Xml;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {

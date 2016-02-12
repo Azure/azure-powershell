@@ -26,8 +26,10 @@ using System.ServiceModel.Channels;
 using System.Text;
 using System.Xml.Linq;
 using Hyak.Common;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Newtonsoft.Json;
 using Formatting = System.Xml.Formatting;
@@ -419,11 +421,53 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             return contents;
         }
 
+        /// <summary>
+        /// Pad a string using the given separator string
+        /// </summary>
+        /// <param name="amount">The number of repetitions of the separator</param>
+        /// <param name="separator">The separator string to use</param>
+        /// <returns>A string containing the given number of repetitions of the separator string</returns>
         public static string GenerateSeparator(int amount, string separator)
         {
             StringBuilder result = new StringBuilder();
             while (amount-- != 0) result.Append(separator);
             return result.ToString();
+        }
+
+        /// <summary>
+        /// Ensure the default profile directory exists
+        /// </summary>
+        public static void EnsureDefaultProfileDirectoryExists()
+        {
+            if (!AzureSession.DataStore.DirectoryExists(AzureSession.ProfileDirectory))
+            {
+                AzureSession.DataStore.CreateDirectory(AzureSession.ProfileDirectory);
+            }
+        }
+
+        /// <summary>
+        /// Clear the current storage account from the context - guarantees that only one storage account will be active 
+        /// at a time.
+        /// </summary>
+        /// <param name="clearSMContext">Whether to clear the service management context.</param>
+        public static void ClearCurrentStorageAccount(bool clearSMContext = false)
+        {
+            var RMProfile = AzureRmProfileProvider.Instance.Profile;
+            if (RMProfile != null && RMProfile.Context != null && 
+                RMProfile.Context.Subscription != null && RMProfile.Context.Subscription.IsPropertySet(AzureSubscription.Property.StorageAccount))
+            {
+                RMProfile.Context.Subscription.SetProperty(AzureSubscription.Property.StorageAccount, null);
+            }
+
+            if (clearSMContext)
+            {
+                var SMProfile = AzureSMProfileProvider.Instance.Profile;
+                if (SMProfile != null && SMProfile.Context != null && SMProfile.Context.Subscription != null &&
+                    SMProfile.Context.Subscription.IsPropertySet(AzureSubscription.Property.StorageAccount))
+                {
+                    SMProfile.Context.Subscription.SetProperty(AzureSubscription.Property.StorageAccount, null);
+                }
+            }
         }
     }
 }

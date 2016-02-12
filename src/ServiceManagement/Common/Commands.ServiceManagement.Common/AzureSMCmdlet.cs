@@ -28,7 +28,7 @@ using System.Threading;
 using System.Management.Automation.Host;
 using System.Globalization;
 using System.Net.Http.Headers;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {

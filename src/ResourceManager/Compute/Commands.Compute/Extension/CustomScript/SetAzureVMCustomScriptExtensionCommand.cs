@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
@@ -28,6 +28,7 @@ using System.Collections;
 using System.Management.Automation;
 using System.Linq;
 using AutoMapper;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -237,7 +238,7 @@ namespace Microsoft.Azure.Commands.Compute
                 catch (Rest.Azure.CloudException ex)
                 {
                     var errorReturned = JsonConvert.DeserializeObject<ComputeLongRunningOperationError>(
-                        ex.Response.Content.ReadAsStringAsync().Result);
+                        ex.Response.Content);
                     WriteObject(errorReturned);
                 }
             });

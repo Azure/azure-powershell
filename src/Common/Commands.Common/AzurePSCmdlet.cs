@@ -17,7 +17,7 @@ using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Management.Automation;
 using System.Reflection;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Newtonsoft.Json;
 using System.IO;
@@ -552,6 +552,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected virtual void Dispose(bool disposing)
         {
+            try
+            {
+                FlushDebugMessages();
+            }
+            catch { }
             if (disposing && _adalListener != null)
             {
                 _adalListener.Dispose();
@@ -562,11 +567,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         public void Dispose()
         {
-            try
-            {
-                FlushDebugMessages();
-            }
-            catch { }
             Dispose(true);
             GC.SuppressFinalize(this);
         }

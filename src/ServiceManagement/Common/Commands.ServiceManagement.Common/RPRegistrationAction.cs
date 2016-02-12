@@ -22,7 +22,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.WindowsAzure.Management;
 
-namespace Microsoft.Azure.Common.Authentication.Models
+namespace Microsoft.Azure.ServiceManagemenet.Common.Models
 {
     public class RPRegistrationAction : IClientAction
     {

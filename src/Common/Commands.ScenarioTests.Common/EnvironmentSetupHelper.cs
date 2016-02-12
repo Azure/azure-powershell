@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
@@ -26,6 +26,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Management.Automation;
 using System.Security.Cryptography.X509Certificates;
+using Microsoft.Azure.ServiceManagemenet.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {

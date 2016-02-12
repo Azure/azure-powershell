@@ -13,8 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 
-namespace Microsoft.Azure.Common.Authentication.Models
+namespace Microsoft.Azure.ServiceManagemenet.Common.Models
 {
     public class PSAzureAccount
     {

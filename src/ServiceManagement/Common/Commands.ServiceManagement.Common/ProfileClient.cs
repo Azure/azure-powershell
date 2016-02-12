@@ -20,14 +20,14 @@ using System.Linq;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
 using Hyak.Common;
-using Microsoft.Azure.Common.Authentication.Factories;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Factories;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Subscriptions;
 
-namespace Microsoft.Azure.Common.Authentication
+namespace Microsoft.Azure.ServiceManagemenet.Common
 {
     /// <summary>
     /// Convenience client for azure profile and subscriptions.
