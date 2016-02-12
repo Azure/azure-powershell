@@ -123,14 +123,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         public string TargetDatabaseName { get; set; }
 
         /// <summary>
-        /// The ID of the source database.
-        /// </summary>
-        [Parameter(Mandatory = false,
-                    ValueFromPipelineByPropertyName = true,
-                    HelpMessage = "The ID of the source database")]
-        public Guid DatabaseId { get; set; }
-
-        /// <summary>
         /// Initializes the adapter
         /// </summary>
         /// <param name="subscription"></param>
@@ -174,9 +166,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                 Edition = Edition,
                 RequestedServiceObjectiveName = ServiceObjectiveName,
                 ElasticPoolName = ElasticPoolName,
+                CreateMode = createMode
             };
 
-            return ModelAdapter.RestoreDatabase(this.ResourceGroupName, this.ServerName, this.DatabaseName, DatabaseId, restorePointInTime, createMode, model);
+            return ModelAdapter.RestoreDatabase(this.ResourceGroupName, this.ServerName, this.DatabaseName, restorePointInTime, model);
         }
     }
 }

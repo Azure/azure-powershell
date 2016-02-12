@@ -81,5 +81,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Model
         /// Gets or sets UTC time of the last available backup
         /// </summary>
         public DateTime LastAvailableBackupDate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the database ID
+        /// </summary>
+        public Guid DatabaseId { get; set; }
     }
 }
