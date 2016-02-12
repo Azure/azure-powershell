@@ -18,8 +18,8 @@ using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.IO;
 using System.Management.Automation;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
@@ -28,13 +28,12 @@ using System.Threading;
 using System.Management.Automation.Host;
 using System.Globalization;
 using System.Net.Http.Headers;
+using Microsoft.Azure.Common.Authentication.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
     public abstract class AzureSMCmdlet : AzurePSCmdlet
     {
-        DebugStreamTraceListener _adalListener;
-
         [Parameter(Mandatory = false, HelpMessage = "In-memory profile.")]
         public AzureSMProfile Profile { get; set; }
 
@@ -55,12 +54,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
         }
 
-        public override IFileSystem FileSystem
-        {
-            get { return new FileSystemAdapter(); }
-        }
 
-        protected virtual AzureContext DefaultContext { get { return CurrentProfile.Context; } }
+        protected override AzureContext DefaultContext { get { return CurrentProfile.Context; } }
 
         static AzureSMCmdlet()
         {
@@ -188,20 +183,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
         }
 
-        protected override void SetupDebuggingTraces()
-        {
-            base.SetupDebuggingTraces();
-            _adalListener = _adalListener ?? new DebugStreamTraceListener(DebugMessages);
-            DebugStreamTraceListener.AddAdalTracing(_adalListener);
-        }
-
-        protected override void TearDownDebuggingTraces()
-        {
-            base.TearDownDebuggingTraces();
-            DebugStreamTraceListener.RemoveAdalTracing(_adalListener);
-            _adalListener = null;
-        }
-
         protected override void LogCmdletStartInvocationInfo()
         {
             base.LogCmdletStartInvocationInfo();
@@ -218,32 +199,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             base.LogCmdletEndInvocationInfo();
             string message = string.Format("{0} end processing.", this.GetType().Name);
             WriteDebugWithTimestamp(message);
-        }
-
-        protected override void SetupHttpClientPipeline()
-        {
-            ProductInfoHeaderValue userAgentValue = new ProductInfoHeaderValue(
-                ModuleName, string.Format("v{0}", ModuleVersion));
-            AzureSession.ClientFactory.UserAgents.Add(userAgentValue);
-            AzureSession.ClientFactory.AddHandler(
-                new CmdletInfoHandler(this.CommandRuntime.ToString(), 
-                    this.ParameterSetName, this._clientRequestId));
-        }
-
-        protected override void TearDownHttpClientPipeline()
-        {
-            AzureSession.ClientFactory.UserAgents.RemoveWhere(u => u.Product.Name == ModuleName);
-            AzureSession.ClientFactory.RemoveHandler(typeof(CmdletInfoHandler));
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (_adalListener != null)
-            {
-                _adalListener.Dispose();
-                _adalListener = null;
-            }
-
         }
     }
 }

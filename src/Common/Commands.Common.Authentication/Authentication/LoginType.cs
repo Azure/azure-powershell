@@ -1,4 +1,4 @@
-﻿ // ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,25 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
- using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
- using Microsoft.Azure.Common.Authentication;
-
-namespace Microsoft.WindowsAzure.Commands.Common
+namespace Microsoft.Azure.Commands.Common.Authentication
 {
-    public class FileSystemAdapter : IFileSystem
+    public enum LoginType
     {
-        public string ReadFile(string path)
-        {
-            return AzureSession.DataStore.ReadFileAsText(path);
-        }
+        /// <summary>
+        /// User is logging in with orgid credentials
+        /// </summary>
+         OrgId,
 
-        public void WriteFile(string path, string contents)
-        {
-            AzureSession.DataStore.WriteFile(path, contents);
-        }
+        /// <summary>
+        /// User is logging in with liveid credentials
+        /// </summary>
+        LiveId
     }
 }

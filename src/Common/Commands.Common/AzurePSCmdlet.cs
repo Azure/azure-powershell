@@ -23,7 +23,10 @@ using Newtonsoft.Json;
 using System.IO;
 using System.Text;
 using System.Linq;
+using System.Net.Http.Headers;
 using Microsoft.ApplicationInsights;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
@@ -42,7 +45,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         protected string _clientRequestId = Guid.NewGuid().ToString();
         protected MetricHelper _metricHelper;
         protected AzurePSQoSEvent _qosEvent;
-        public abstract IFileSystem FileSystem {get;}
+        protected DebugStreamTraceListener _adalListener;
 
         protected virtual bool IsUsageMetricEnabled {
             get { return true; }
@@ -64,6 +67,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// </summary>
         protected string ModuleVersion { get { return Assembly.GetCallingAssembly().GetName().Version.ToString(); } }
 
+        /// <summary>
+        /// The context for management cmdlet requests - includes account, tenant, subscription, 
+        /// and credential information for targeting and authorizing management calls.
+        /// </summary>
+        protected abstract AzureContext DefaultContext { get; }
 
         /// <summary>
         /// Initializes AzurePSCmdlet properties.
@@ -219,25 +227,35 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             _httpTracingInterceptor = _httpTracingInterceptor ?? new 
                 RecordingTracingInterceptor(DebugMessages);
-            //_adalListener = _adalListener ?? new DebugStreamTraceListener(DebugMessages);
-            //_serviceClientTracingInterceptor = _serviceClientTracingInterceptor ?? new ServiceClientTracingInterceptor(_debugMessages);
+            _adalListener = _adalListener ?? new DebugStreamTraceListener(DebugMessages);
             RecordingTracingInterceptor.AddToContext(_httpTracingInterceptor);
-            //DebugStreamTraceListener.AddAdalTracing(_adalListener);
-            // ServiceClientTracing.AddTracingInterceptor(_serviceClientTracingInterceptor);
+            DebugStreamTraceListener.AddAdalTracing(_adalListener);
         }
 
         protected virtual void TearDownDebuggingTraces()
         {
             RecordingTracingInterceptor.RemoveFromContext(_httpTracingInterceptor);
-            //DebugStreamTraceListener.RemoveAdalTracing(_adalListener);
-            //ServiceClientTracingInterceptor.RemoveTracingInterceptor(_serviceClientTracingInterceptor);
+            DebugStreamTraceListener.RemoveAdalTracing(_adalListener);
             FlushDebugMessages();
         }
 
 
-        protected abstract void SetupHttpClientPipeline();
+        protected virtual void SetupHttpClientPipeline()
+        {
+            ProductInfoHeaderValue userAgentValue = new ProductInfoHeaderValue(
+                ModuleName, string.Format("v{0}", ModuleVersion));
+            AzureSession.ClientFactory.UserAgents.Add(userAgentValue);
+            AzureSession.ClientFactory.AddHandler(
+                new CmdletInfoHandler(this.CommandRuntime.ToString(), 
+                    this.ParameterSetName, this._clientRequestId));
 
-        protected abstract void TearDownHttpClientPipeline();
+        }
+
+        protected virtual void TearDownHttpClientPipeline()
+        {
+            AzureSession.ClientFactory.UserAgents.RemoveWhere(u => u.Product.Name == ModuleName);
+            AzureSession.ClientFactory.RemoveHandler(typeof(CmdletInfoHandler));
+        }
         /// <summary>
         /// Cmdlet begin process. Write to logs, setup Http Tracing and initialize profile
         /// </summary>
@@ -446,7 +464,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 sb.AppendLine(content);
             }
 
-           FileSystem.WriteFile(filePath, sb.ToString());
+           AzureSession.DataStore.WriteFile(filePath, sb.ToString());
         }
 
         /// <summary>
@@ -532,7 +550,15 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
         }
 
-        protected abstract void Dispose(bool disposing);
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing && _adalListener != null)
+            {
+                _adalListener.Dispose();
+                _adalListener = null;
+            }
+
+        }
 
         public void Dispose()
         {

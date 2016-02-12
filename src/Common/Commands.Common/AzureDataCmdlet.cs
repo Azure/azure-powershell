@@ -1,4 +1,4 @@
-﻿ // ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,16 +21,43 @@ using System.Management.Automation.Host;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
-    public class AzureDataCmdlet : AzureSMCmdlet
+    public class AzureDataCmdlet : AzurePSCmdlet
     {
+        protected override AzureContext DefaultContext
+        {
+            get
+            {
+                if (RMProfile != null && RMProfile.Context != null)
+                {
+                    return RMProfile.Context;
+                }
+
+                if (SMProfile == null || SMProfile.Context == null)
+                {
+                    throw new InvalidOperationException(Resources.NoCurrentContextForDataCmdlet);
+                }
+
+                return SMProfile.Context;
+            }
+        }
+
+        public AzureSMProfile SMProfile
+        {
+            get { return AzureSMProfileProvider.Instance.Profile; }
+        }
+
+        public AzureRMProfile RMProfile
+        {
+            get { return AzureRmProfileProvider.Instance.Profile; }
+        }
 
         protected override void SaveDataCollectionProfile()
         {
@@ -91,6 +118,25 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
                 SaveDataCollectionProfile();
             }
+        }
+
+        protected override void SetupHttpClientPipeline()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void TearDownHttpClientPipeline()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void InitializeQosEvent()
+        {
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            throw new NotImplementedException();
         }
     }
 }

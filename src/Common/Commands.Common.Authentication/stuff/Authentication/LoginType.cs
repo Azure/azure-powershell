@@ -12,14 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication.Models;
-
-namespace Microsoft.WindowsAzure.Commands.Common
+namespace Microsoft.Azure.Common.Authentication
 {
-    public interface IProfileProvider<T> where T : IAzureProfile
+    public enum LoginType
     {
-        T Profile { get; set; }
-        void SetTokenCacheForProfile(T profile);
-        void ResetDefaultProfile();
+        /// <summary>
+        /// User is logging in with orgid credentials
+        /// </summary>
+         OrgId,
+
+        /// <summary>
+        /// User is logging in with liveid credentials
+        /// </summary>
+        LiveId
     }
 }

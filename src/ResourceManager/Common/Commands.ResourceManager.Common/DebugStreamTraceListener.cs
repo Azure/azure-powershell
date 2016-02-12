@@ -15,8 +15,9 @@
 using System.Collections.Concurrent;
 using System.Diagnostics;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.WindowsAzure.Commands.Common;
 
-namespace Microsoft.WindowsAzure.Commands.Common
+namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
     public class DebugStreamTraceListener : TraceListener
     {
