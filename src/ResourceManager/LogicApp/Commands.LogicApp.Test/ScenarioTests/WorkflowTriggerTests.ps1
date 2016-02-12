@@ -53,9 +53,9 @@ function Test-GetAzureLogicAppTriggerHistory
 	
 	[int]$counter = 0
 	do {
-		Sleep -seconds 2        
+		SleepInRecordMode 2000
 		$workflow =  Get-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName
-	} while ($workflow.State -ne "Enabled" -or $counter++ -lt 5)
+	} while ($workflow.State -ne "Enabled" -and $counter++ -lt 5)
 	
 	Start-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -TriggerName "httpTrigger"
 
@@ -85,20 +85,13 @@ function Test-StartAzureLogicAppTrigger
 	
 	[int]$counter = 0
 	do {
-		Sleep -seconds 2        
+		SleepInRecordMode 2000
 		$workflow =  Get-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName
-	} while ($workflow.State -ne "Enabled" -or $counter++ -lt 5)
+	} while ($workflow.State -ne "Enabled" -and $counter++ -lt 5)
 	
-	$workflowTriggerHistories1 = Get-AzureRmLogicAppTriggerHistory -ResourceGroupName $resourceGroupName -Name $workflowName -TriggerName "httpTrigger"
-	$counter = 2
-	while($val -lt $counter)
-	{
-		Start-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -TriggerName "httpTrigger"
-		Sleep -seconds 1
-		$val++	
-	}
+	Start-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -TriggerName "httpTrigger"
 
-	$workflowTriggerHistories2 = Get-AzureRmLogicAppTriggerHistory -ResourceGroupName $resourceGroupName -Name $workflowName -TriggerName "httpTrigger"	
-	$count = $workflowTriggerHistories2.Count - $workflowTriggerHistories1.Count
-	Assert-AreEqual $counter $count 
+	$workflowTriggerHistories = Get-AzureRmLogicAppTriggerHistory -ResourceGroupName $resourceGroupName -Name $workflowName -TriggerName "httpTrigger"	
+	
+	Assert-AreEqual 1 $workflowTriggerHistories.Count 
 }
