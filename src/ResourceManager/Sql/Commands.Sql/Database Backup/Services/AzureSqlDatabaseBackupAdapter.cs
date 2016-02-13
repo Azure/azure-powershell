@@ -93,19 +93,17 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// </summary>
         /// <param name="resourceGroup">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure SQL Server</param>
-        /// <param name="databaseName">The name of the Azure SQL database</param>
         /// <returns>List of geo backups</returns>
-        internal IEnumerable<AzureSqlDatabaseGeoBackupModel> ListGeoBackups(string resourceGroup, string serverName, string databaseName)
+        internal IEnumerable<AzureSqlDatabaseGeoBackupModel> ListGeoBackups(string resourceGroup, string serverName)
         {
-            var resp = Communicator.ListGeoBackups(resourceGroup, serverName, databaseName, Util.GenerateTracingId());
-            //TODO hchung: use LINQ where to select a single if database name is specified, do at cmdlet level?
+            var resp = Communicator.ListGeoBackups(resourceGroup, serverName, Util.GenerateTracingId());
             return resp.Select((geoBackup) =>
             {
                 return new AzureSqlDatabaseGeoBackupModel()
                 {
                     ResourceGroupName = resourceGroup,
                     ServerName = serverName,
-                    DatabaseName = databaseName,
+                    SourceDatabaseId = geoBackup.Id,
                     Edition = geoBackup.Properties.Edition,
                     EntityId = geoBackup.name + "," + geoBackup.Properties.LastAvailableBackupDate,
                     LastAvailableBackupDate = geoBackup.Properties.LastAvailableBackupDate
@@ -118,20 +116,17 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// </summary>
         /// <param name="resourceGroup">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure SQL Server</param>
-        /// <param name="databaseName">The name of the Azure SQL database</param>
-        /// <param name="deletionDate">The deletion time of the Azure SQL database</param>
         /// <returns>List of restorable deleted databases</returns>
-        internal IEnumerable<AzureSqlDeletedDatabaseBackupModel> ListDeletedDatabaseBackups(string resourceGroup, string serverName, string databaseName, DateTime? deletionDate)
+        internal IEnumerable<AzureSqlDeletedDatabaseBackupModel> ListDeletedDatabaseBackups(string resourceGroup, string serverName)
         {
-            var resp = Communicator.ListDeletedDatabaseBackups(resourceGroup, serverName, databaseName, deletionDate, Util.GenerateTracingId());
-            //TODO hchung: use LINQ where to select a single if database name is specified
+            var resp = Communicator.ListDeletedDatabaseBackups(resourceGroup, serverName, Util.GenerateTracingId());
             return resp.Select((deletedDatabaseBackup) =>
             {
                 return new AzureSqlDeletedDatabaseBackupModel()
                 {
                     ResourceGroupName = resourceGroup,
                     ServerName = serverName,
-                    DatabaseName = databaseName,
+                    DatabaseName = deletedDatabaseBackup.Properties.DatabaseName,
                     Edition = deletedDatabaseBackup.Properties.Edition,
                     MaxSizeBytes = deletedDatabaseBackup.Properties.MaxSizeBytes,
                     ServiceLevelObjective = deletedDatabaseBackup.Properties.ServiceLevelObjective,
@@ -140,7 +135,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                     DeletionDate = deletedDatabaseBackup.Properties.DeletionDate,
                     RecoveryPeriodStartDate = deletedDatabaseBackup.Properties.EarliestRestoreDate,
                     EntityId = deletedDatabaseBackup.name,
-                    LastAvailableBackupDate = deletedDatabaseBackup.Properties.LastAvailableBackupDate
+                    LastAvailableBackupDate = deletedDatabaseBackup.Properties.LastAvailableBackupDate,
+                    SourceDatabaseId = deletedDatabaseBackup.Id
                 };
             }).ToList();
         }
@@ -149,18 +145,13 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// Restore a given Sql Azure Database
         /// </summary>
         /// <param name="resourceGroup">The name of the resource group</param>
-        /// <param name="serverName">The name of the Azure SQL Server</param>
-        /// <param name="databaseName">The name of the Azure SQL database</param>
+        /// <param name="restorePointInTime">A point to time to restore to (for PITR and dropped DB restore)</param>
+        /// <param name="sourceDatabaseId">The resource ID of the DB to restore</param>
+        /// <param name="model">An object modeling the database to create via restore</param>
         /// <param name="parameters">Parameters describing the database restore request</param>
         /// <returns>Restored database object</returns>
-        internal AzureSqlDatabaseModel RestoreDatabase(string resourceGroup, string serverName, string databaseName, DateTime restorePointInTime, AzureSqlDatabaseModel model)
+        internal AzureSqlDatabaseModel RestoreDatabase(string resourceGroup, DateTime restorePointInTime, string sourceDatabaseId, AzureSqlDatabaseModel model)
         {
-            string location = GetServerLocation(resourceGroup, serverName);
-
-            //TODO hchung use ListDeletedDatabaseBackups and ListGeoBackups to get the databaseId to use, otherwise use GetDatabase
-
-            //AzureSqlDatabaseAdapter.GetDatabase(resourceGroup, serverName, databaseName).Id
-
             DatabaseCreateOrUpdateParameters parameters = new DatabaseCreateOrUpdateParameters()
                 {
                     Location = model.Location,
@@ -170,13 +161,13 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                         RequestedServiceObjectiveId = model.RequestedServiceObjectiveId,
                         ElasticPoolName = model.ElasticPoolName,
                         RequestedServiceObjectiveName = model.RequestedServiceObjectiveName,
-                        SourceDatabaseId = databaseId,
+                        SourceDatabaseId = sourceDatabaseId,
                         RestorePointInTime = restorePointInTime,
                         CreateMode = model.CreateMode
                     }
                 };
-            var resp = Communicator.RestoreDatabase(resourceGroup, serverName, databaseName, Util.GenerateTracingId(), parameters);
-            return AzureSqlDatabaseAdapter.CreateDatabaseModelFromResponse(resourceGroup, serverName, resp);
+            var resp = Communicator.RestoreDatabase(resourceGroup, model.ServerName, model.DatabaseName, Util.GenerateTracingId(), parameters);
+            return AzureSqlDatabaseAdapter.CreateDatabaseModelFromResponse(resourceGroup, model.ServerName, resp);
         }
 
         /// <summary>
@@ -190,6 +181,19 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             AzureSqlServerAdapter serverAdapter = new AzureSqlServerAdapter(Context);
             var server = serverAdapter.GetServer(resourceGroupName, serverName);
             return server.Location;
+        }
+
+        /// <summary>
+        /// Gets a SQL database by name
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group the database is in</param>
+        /// <param name="serverName">The name of the server</param>
+        /// <param name="databaseName">The name of the database</param>
+        /// <returns></returns>
+        public AzureSqlDatabaseModel GetDatabase(string resourceGroupName, string serverName, string databaseName)
+        {
+            AzureSqlDatabaseAdapter databaseAdapter = new AzureSqlDatabaseAdapter(Context);
+            return databaseAdapter.GetDatabase(resourceGroupName, serverName, databaseName);
         }
     }
 }

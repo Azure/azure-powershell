@@ -55,13 +55,23 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             HelpMessage = "Restore a dropped database.")]
         public bool FromDeletedDatabaseBackup { get; set; }
 
+        /// <summary> 
+        /// Gets or sets the name of the database server to use. 
+        /// </summary> 
+        [Parameter(Mandatory = true, 
+            ValueFromPipelineByPropertyName = true, 
+            HelpMessage = "The name of the Azure SQL Database Server to restore the database to.")] 
+        [ValidateNotNullOrEmpty]
+        public string ServerName { get; set; } 
+
         /// <summary>
         /// Gets or sets the deletion time of the dropped database to restore.
         /// </summary>
         [Parameter(
             ParameterSetName = "FromDeletedDatabaseBackup",
             Mandatory = true,
-            HelpMessage = "The deletion time of the dropped database to restore.")]
+            ValueFromPipelineByPropertyName = true, 
+            HelpMessage = "The deletion date of the dropped database to restore.")]
         public DateTime DeletionDate { get; set; }
 
         /// <summary>
@@ -72,24 +82,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             Mandatory = true,
             HelpMessage = "Restore from a geo backup.")]
         public bool FromGeoBackup { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the database server to use.
-        /// </summary>
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The name of the Azure SQL Database Server the database is in.")]
-        [ValidateNotNullOrEmpty]
-        public string ServerName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the database to use.
-        /// </summary>
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The name of the Azure SQL Database to restore from.")]
-        [ValidateNotNullOrEmpty]
-        public string DatabaseName { get; set; }
 
         /// <summary>
         /// Gets or sets the target edition of the database to restore
@@ -123,6 +115,13 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         public string TargetDatabaseName { get; set; }
 
         /// <summary>
+        /// The resource ID of the database to restore (dropped DB, geo backup DB, live DB)
+        /// </summary>
+        [Parameter(Mandatory = true,
+                    HelpMessage = "The resource ID of the database to restore.")]
+        public string SourceDatabaseId { get; set; }
+        
+        /// <summary>
         /// Initializes the adapter
         /// </summary>
         /// <param name="subscription"></param>
@@ -139,16 +138,19 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         protected override AzureSqlDatabaseModel ExecuteCmdlet()
         {
             AzureSqlDatabaseModel model;
-            DateTime restorePointInTime = PointInTime;
+            DateTime restorePointInTime = DateTime.MinValue;
             string createMode;
             string location = ModelAdapter.GetServerLocation(ResourceGroupName, ServerName);
             switch (ParameterSetName)
             {
                 case "FromPointInTimeBackup":
                     createMode = "PointInTimeRestore";
+                    restorePointInTime = PointInTime;
                     break;
                 case "FromDeletedDatabaseBackup":
                     createMode = "Restore";
+                    //Use DeletionDate as RestorePointInTime for dropped restore
+                    restorePointInTime = DeletionDate;
                     break;
                 case "FromGeoBackup":
                     createMode = "Recovery";
@@ -169,7 +171,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                 CreateMode = createMode
             };
 
-            return ModelAdapter.RestoreDatabase(this.ResourceGroupName, this.ServerName, this.DatabaseName, restorePointInTime, model);
+            return ModelAdapter.RestoreDatabase(this.ResourceGroupName, restorePointInTime, SourceDatabaseId, model);
         }
     }
 }
