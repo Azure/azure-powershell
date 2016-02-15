@@ -24,6 +24,7 @@ using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
 using Microsoft.WindowsAzure.Storage.File;
+using Microsoft.WindowsAzure.Storage;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
@@ -104,6 +105,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             ParameterSetName = CloudFileSasPermissionParameterSet)]
         public string Permission { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Protocol can be used in the request with this SAS token.")]
+        public SharedAccessProtocol Protocol { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "IP, or IP range ACL (access control list) that the request would be accepted from by Azure Storage.")]
+        public string IPAddressOrRange { get; set; }
+
         [Parameter(HelpMessage = "Start Time")]
         public DateTime? StartTime { get; set; }
 
@@ -158,7 +165,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
             SetupAccessPolicy(accessPolicy, shouldSetExpiryTime);
 
-            string sasToken = file.GetSharedAccessSignature(accessPolicy, accessPolicyIdentifier);
+            string sasToken = file.GetSharedAccessSignature(accessPolicy, null, accessPolicyIdentifier, Protocol, Util.SetupIPAddressOrRangeForSAS(IPAddressOrRange));
 
             if (FullUri)
             {
