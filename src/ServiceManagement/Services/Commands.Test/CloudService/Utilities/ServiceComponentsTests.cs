@@ -61,7 +61,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         {
             TestMockSupport.TestExecutionFolder = AppDomain.CurrentDomain.BaseDirectory;
             newServiceCmdlet.NewAzureServiceProcess(TestMockSupport.TestExecutionFolder, serviceName);
-            ServiceComponents components = new ServiceComponents(new PowerShellProjectPathInfo(serviceName));
+            ServiceComponents components = new ServiceComponents(
+                new PowerShellProjectPathInfo(
+                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, serviceName)));
             AzureAssert.AreEqualServiceComponents(components);
         }
 
@@ -87,7 +89,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         {
             TestMockSupport.TestExecutionFolder = AppDomain.CurrentDomain.BaseDirectory;
             newServiceCmdlet.NewAzureServiceProcess(TestMockSupport.TestExecutionFolder, serviceName);
-            PowerShellProjectPathInfo paths = new PowerShellProjectPathInfo(serviceName);
+            PowerShellProjectPathInfo paths = new PowerShellProjectPathInfo(
+                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, serviceName));
 
             try
             {
@@ -108,7 +111,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         {
             TestMockSupport.TestExecutionFolder = AppDomain.CurrentDomain.BaseDirectory;
             newServiceCmdlet.NewAzureServiceProcess(TestMockSupport.TestExecutionFolder, serviceName);
-            PowerShellProjectPathInfo paths = new PowerShellProjectPathInfo(serviceName);
+            PowerShellProjectPathInfo paths = new PowerShellProjectPathInfo(
+                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, serviceName));
 
             try
             {
@@ -129,7 +133,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         {
             TestMockSupport.TestExecutionFolder = AppDomain.CurrentDomain.BaseDirectory;
             newServiceCmdlet.NewAzureServiceProcess(TestMockSupport.TestExecutionFolder, serviceName);
-            PowerShellProjectPathInfo paths = new PowerShellProjectPathInfo(serviceName);
+            PowerShellProjectPathInfo paths = new PowerShellProjectPathInfo(
+                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, serviceName));
 
             try
             {
@@ -150,7 +155,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         {
             TestMockSupport.TestExecutionFolder = AppDomain.CurrentDomain.BaseDirectory;
             newServiceCmdlet.NewAzureServiceProcess(TestMockSupport.TestExecutionFolder, serviceName);
-            PowerShellProjectPathInfo paths = new PowerShellProjectPathInfo(serviceName);
+            PowerShellProjectPathInfo paths = new PowerShellProjectPathInfo(
+                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, serviceName));
 
             try
             {
