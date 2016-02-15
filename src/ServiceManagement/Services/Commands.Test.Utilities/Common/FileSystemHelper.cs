@@ -140,7 +140,11 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
                     }
                     
                     Log("Deleting directory {0}", RootPath);
-                    FileUtilities.DataStore.DeleteDirectory(RootPath);
+                    try
+                    {
+                        FileUtilities.DataStore.DeleteDirectory(RootPath);
+                    }
+                    catch { }
 
                     DisposeWatcher();
 
