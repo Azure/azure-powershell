@@ -18,6 +18,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
     public class TestMockSupport
     {
+        public static string TestExecutionFolder { get; set; }
+
         //a.k.a when you run under Playback mode
         public static bool RunningMocked { get; set; }
 

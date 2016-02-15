@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Threading;
+using System.IO;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 {
@@ -33,6 +34,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 
         public RMTestBase()
         {
+            System.Environment.CurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
             BaseSetup();
         }
 

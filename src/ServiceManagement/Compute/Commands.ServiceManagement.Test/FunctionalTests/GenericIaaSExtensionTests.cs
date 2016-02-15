@@ -63,7 +63,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             testStartTime = DateTime.Now;
             GetVmAccessConfiguration();
             referenceName = Utilities.GetUniqueShortName(referenceNamePrefix);
-            localPath = Path.Combine(Environment.CurrentDirectory, serviceName + ".xml").ToString();
+            localPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, serviceName + ".xml").ToString();
         }
 
         [TestCleanup]

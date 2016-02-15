@@ -23,6 +23,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
 using Microsoft.WindowsAzure.Commands.Common;
+using System;
 
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Scaffolding
 {
@@ -124,7 +125,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Scaffold
         public void AddAzureWorkerRoleWithMissingScaffoldXmlFail()
         {
             string scaffoldingPath = "TemplateMissingScaffoldXml";
-            Directory.CreateDirectory(Path.Combine(System.Environment.CurrentDirectory, scaffoldingPath));
+            Directory.CreateDirectory(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, scaffoldingPath));
 
             using (FileSystemHelper files = new FileSystemHelper(this))
             {
