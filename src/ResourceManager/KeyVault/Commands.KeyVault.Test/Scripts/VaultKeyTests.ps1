@@ -595,9 +595,7 @@ function Test_GetAllKeys
     $i = 1
     do {
       Write-Host "Sleep 5 seconds before creating another $total keys"
-      if ($env:AZURE_TEST_MODE -eq "Record"){    
-        Start-Sleep -s 5
-      }
+      Wait-Seconds 5
       BulkCreateSoftKeys $keyVault $keypartialname $total
       $i++
     } while ($i -le $run)
@@ -647,9 +645,7 @@ function Test_GetKeyVersions
     $i = 1
     do {
       Write-Host "Sleep 5 seconds before creating another $total keys"
-      if ($env:AZURE_TEST_MODE -eq "Record"){
-        Start-Sleep -s 5
-      }
+      Wait-Seconds 5
       BulkCreateSoftKeyVersions $keyVault $keyname $total          
       $i++
     } while ($i -le $run)
