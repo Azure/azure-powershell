@@ -18,7 +18,6 @@ using System.Linq;
 using System.ServiceModel.Description;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Web.Deployment;
 
 namespace Microsoft.WindowsAzure.Commands.Profile.Models
 {

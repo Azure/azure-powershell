@@ -175,6 +175,10 @@
                 <PropertyName>Location</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>LicenseType</Label>
+                <PropertyName>LicenseType</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>Tags</Label>
                 <PropertyName>TagsText</PropertyName>
               </ListItem>
