@@ -19,6 +19,8 @@ using Microsoft.Azure.Management.SiteRecovery.Models;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Properties = Microsoft.Azure.Commands.SiteRecovery.Properties;
 using System.Collections.Generic;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -42,6 +44,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Gets or sets failover deployment model
         /// </summary>
         public string failoverDeploymentModel;
+
+        /// <summary>
+        /// Gets or sets recovery plan object
+        /// </summary>
+        RecoveryPlan recoveryPlan = null;
 
         #region Parameters
 
@@ -99,6 +106,12 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         [ValidateNotNullOrEmpty]
         public ASRProtectionEntity[] ProtectionEntityList { get; set; }
 
+        /// <summary>
+        /// Gets or sets RP JSON FilePath.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.ByRPFile, Mandatory = true)]
+        public string Path { get; set; }
+
         #endregion Parameters
 
         /// <summary>
@@ -125,15 +138,38 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     this.primaryserver = this.PrimarySite.ID;
                     this.recoveryserver = Constants.AzureContainer;
                     break;
+                case ASRParameterSets.ByRPFile:
+
+                    if (!File.Exists(this.Path))
+                    {
+                        throw new FileNotFoundException(string.Format(Properties.Resources.FileNotFound, this.Path)); ;
+                    }
+
+                    string filePath = this.Path;
+
+                    using (System.IO.StreamReader file = new System.IO.StreamReader(filePath))
+                    {
+                        recoveryPlan = JsonConvert.DeserializeObject<RecoveryPlan>(file.ReadToEnd(), new RecoveryPlanActionDetailsConverter());
+                    }
+
+                    break;
 
             }
-            this.CreateReplicationPlan();
+
+            if (string.Compare(this.ParameterSetName, ASRParameterSets.ByRPFile, StringComparison.OrdinalIgnoreCase) == 0)
+            {
+                CreateRecoveryPlan(recoveryPlan);
+            }
+            else
+            {
+                this.CreateRecoveryPlan();
+            }
         }
 
         /// <summary>
         /// Creates Replication Plan
         /// </summary>
-        private void CreateReplicationPlan()
+        private void CreateRecoveryPlan()
         {
             CreateRecoveryPlanInputProperties createRecoveryPlanInputProperties = new CreateRecoveryPlanInputProperties()
             {
@@ -165,22 +201,21 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
                 string VmId = null;
 
-                switch(replicationProtectedItemResponse.ReplicationProtectedItem.Properties.ProviderSpecificDetails.InstanceType)
+                switch (replicationProtectedItemResponse.ReplicationProtectedItem.Properties.ProviderSpecificDetails.InstanceType)
                 {
                     case Constants.HyperVReplicaAzureReplicationDetails:
                         VmId = ((HyperVReplicaAzureReplicationDetails)replicationProtectedItemResponse.ReplicationProtectedItem.Properties.ProviderSpecificDetails).VmId;
                         break;
-                    
+
                     case Constants.HyperVReplica2012ReplicationDetails:
-                       VmId = ((HyperVReplica2012ReplicationDetails)replicationProtectedItemResponse.ReplicationProtectedItem.Properties.ProviderSpecificDetails).VmId;
-                       break;
+                        VmId = ((HyperVReplica2012ReplicationDetails)replicationProtectedItemResponse.ReplicationProtectedItem.Properties.ProviderSpecificDetails).VmId;
+                        break;
                 };
 
                 RecoveryPlanProtectedItem recoveryPlanProtectedItem = new RecoveryPlanProtectedItem();
                 recoveryPlanProtectedItem.Id = replicationProtectedItemResponse.ReplicationProtectedItem.Id;
                 recoveryPlanProtectedItem.VirtualMachineId = VmId;
                 recoveryPlanGroup.ReplicationProtectedItems.Add(recoveryPlanProtectedItem);
-
             }
 
             createRecoveryPlanInputProperties.Groups.Add(recoveryPlanGroup);
@@ -190,8 +225,37 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 Properties = createRecoveryPlanInputProperties
             };
 
+            CreateRecoveryPlan(this.Name, createRecoveryPlanInput);
+        }
+
+        /// <summary>
+        /// Create Recovery Plan: By Service object
+        /// </summary>
+        private void CreateRecoveryPlan(RecoveryPlan recoveryPlan)
+        {
+            CreateRecoveryPlanInputProperties createRecoveryPlanInputProperties = new CreateRecoveryPlanInputProperties()
+            {
+                FailoverDeploymentModel = recoveryPlan.Properties.FailoverDeploymentModel,
+                Groups = recoveryPlan.Properties.Groups,
+                PrimaryFabricId = recoveryPlan.Properties.PrimaryFabricId,
+                RecoveryFabricId = recoveryPlan.Properties.RecoveryFabricId
+            };
+
+            CreateRecoveryPlanInput createRecoveryPlanInput = new CreateRecoveryPlanInput()
+            {
+                Properties = createRecoveryPlanInputProperties
+            };
+
+            CreateRecoveryPlan(recoveryPlan.Name, createRecoveryPlanInput);
+        }
+
+        /// <summary>
+        /// Create Replication Plan: Utility call
+        /// </summary>
+        private void CreateRecoveryPlan(string recoveryPlanName, CreateRecoveryPlanInput createRecoveryPlanInput)
+        {
             LongRunningOperationResponse response =
-                RecoveryServicesClient.CreateAzureSiteRecoveryRecoveryPlan(this.Name, createRecoveryPlanInput);
+                RecoveryServicesClient.CreateAzureSiteRecoveryRecoveryPlan(recoveryPlanName, createRecoveryPlanInput);
 
             JobResponse jobResponse =
                 RecoveryServicesClient

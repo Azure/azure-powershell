@@ -57,28 +57,32 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             switch (this.ParameterSetName)
             {
                 case ASRParameterSets.ByRPObject:
-                    UpdateReplicationPlan(this.RecoveryPlan);
+                    UpdateRecoveryPlan(this.RecoveryPlan);
                     break;
                 case ASRParameterSets.ByRPFile:
+
                     if (!File.Exists(this.Path))
                     {
                         throw new FileNotFoundException(string.Format(Properties.Resources.FileNotFound, this.Path)); ;
                     }
+
                     string filePath = this.Path;
                     RecoveryPlan recoveryPlan = null;
+
                     using (System.IO.StreamReader file = new System.IO.StreamReader(filePath))
                     {
                         recoveryPlan = JsonConvert.DeserializeObject<RecoveryPlan>(file.ReadToEnd(), new RecoveryPlanActionDetailsConverter());
                     }
-                    UpdateReplicationPlan(recoveryPlan);
+
+                    UpdateRecoveryPlan(recoveryPlan);
                     break;
             }
         }
 
         /// <summary>
-        /// Update Replication Plan: By powerShell object
+        /// Update Recovery Plan: By powerShell Recovery Plan object
         /// </summary>
-        private void UpdateReplicationPlan(ASRRecoveryPlan asrRecoveryPlan)
+        private void UpdateRecoveryPlan(ASRRecoveryPlan asrRecoveryPlan)
         {
             UpdateRecoveryPlanInputProperties updateRecoveryPlanInputProperties = new UpdateRecoveryPlanInputProperties()
             {
@@ -124,13 +128,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 Properties = updateRecoveryPlanInputProperties
             };
 
-            UpdateReplicationPlan(asrRecoveryPlan.Name, updateRecoveryPlanInput);
+            UpdateRecoveryPlan(asrRecoveryPlan.Name, updateRecoveryPlanInput);
         }
 
         /// <summary>
-        /// Update Replication Plan: By Service object
+        /// Update Recovery Plan: By Service object
         /// </summary>
-        private void UpdateReplicationPlan(RecoveryPlan recoveryPlan)
+        private void UpdateRecoveryPlan(RecoveryPlan recoveryPlan)
         {
             UpdateRecoveryPlanInputProperties updateRecoveryPlanInputProperties = new UpdateRecoveryPlanInputProperties()
             {
@@ -142,13 +146,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 Properties = updateRecoveryPlanInputProperties
             };
 
-            UpdateReplicationPlan(recoveryPlan.Name, updateRecoveryPlanInput);
+            UpdateRecoveryPlan(recoveryPlan.Name, updateRecoveryPlanInput);
         }
 
         /// <summary>
         /// Update Replication Plan: Utility call
         /// </summary>
-        private void UpdateReplicationPlan(string recoveryPlanName, UpdateRecoveryPlanInput updateRecoveryPlanInput)
+        private void UpdateRecoveryPlan(string recoveryPlanName, UpdateRecoveryPlanInput updateRecoveryPlanInput)
         {
             LongRunningOperationResponse response =
             RecoveryServicesClient.UpdateAzureSiteRecoveryRecoveryPlan(recoveryPlanName, updateRecoveryPlanInput);

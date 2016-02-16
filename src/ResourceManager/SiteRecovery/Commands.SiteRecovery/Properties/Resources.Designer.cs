@@ -152,6 +152,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Group &quot;{0}&quot; not found for recovery plan &quot;{1}&quot;.
+        /// </summary>
+        internal static string GroupNotFoundInRecoveryPlan {
+            get {
+                return ResourceManager.GetString("GroupNotFoundInRecoveryPlan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Calls using ID based parameter {0} will not be supported from next release. Please use its corresponding full object parameter instead..
         /// </summary>
         internal static string IDBasedParamUsageNotSupportedFromNextRelease {
@@ -655,6 +664,24 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Properties {
         internal static string VirtualMachineNotFound {
             get {
                 return ResourceManager.GetString("VirtualMachineNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Virtual Machine &quot;{0}&quot; is already part of Group &quot;{1}&quot; for recovery plan &quot;{1}&quot;.
+        /// </summary>
+        internal static string VMAlreadyPartOfGroup {
+            get {
+                return ResourceManager.GetString("VMAlreadyPartOfGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Virtual Machine &quot;{0}&quot; not found in Group &quot;{1}&quot; for recovery plan &quot;{1}&quot;.
+        /// </summary>
+        internal static string VMNotFoundInGroup {
+            get {
+                return ResourceManager.GetString("VMNotFoundInGroup", resourceCulture);
             }
         }
         
