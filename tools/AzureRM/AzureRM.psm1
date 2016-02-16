@@ -30,6 +30,7 @@ $AzureRMModules = @{
   "AzureRM.TrafficManager" = "1.0.4";
   "AzureRM.UsageAggregates" = "1.0.4";
   "AzureRM.Websites" = "1.0.4";
+  "AzureRM.LogicApp" = "1.0.0";
 }
 
 function Test-AdminRights([string]$Scope)
@@ -179,7 +180,7 @@ function Import-AzureRM
   $AzureRMModules.Keys | ForEach {
     $moduleName = $_
     $_MinVer = $MajorVersion 
-    if(!MajorVersion ) {
+    if(!$MajorVersion) {
       $_MinVer = $AzureRMModules[$_]
     }
     $_MaxVer = "$($_MinVer.Split(".")[0]).9999.9999.9999"

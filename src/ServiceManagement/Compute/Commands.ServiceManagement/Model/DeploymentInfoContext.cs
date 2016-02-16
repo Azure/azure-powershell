@@ -180,6 +180,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
             protected set;
         }
 
+        public PVM.ExtensionConfiguration ExtensionConfiguration
+        {
+            get;
+            protected set;
+        }
+
         public DeploymentInfoContext(DeploymentGetResponse deployment)
         {
             this.Slot             = deployment.DeploymentSlot.ToString();
@@ -286,6 +292,35 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
 
                 this.InternalLoadBalancerName = this.LoadBalancers == null || !this.LoadBalancers.Any() ? null
                                               : this.LoadBalancers.First().Name;
+            }
+
+            // ExtensionConfiguration
+            if (deployment.ExtensionConfiguration != null)
+            {
+                this.ExtensionConfiguration = new PVM.ExtensionConfiguration();
+                if (deployment.ExtensionConfiguration.AllRoles != null)
+                {
+                    this.ExtensionConfiguration.AllRoles = new PVM.AllRoles(
+                        from all in deployment.ExtensionConfiguration.AllRoles
+                        select new PVM.Extension(all.Id, 0, all.State));
+                }
+
+                if (deployment.ExtensionConfiguration.NamedRoles != null)
+                {
+                    this.ExtensionConfiguration.NamedRoles = new PVM.NamedRoles();
+                    foreach (var role in deployment.ExtensionConfiguration.NamedRoles)
+                    {
+                        var extList = new PVM.ExtensionList(
+                            from ext in role.Extensions
+                            select new PVM.Extension(ext.Id, 0, ext.State));
+
+                        this.ExtensionConfiguration.NamedRoles.Add(new PVM.RoleExtensions
+                        {
+                            RoleName = role.RoleName,
+                            Extensions = extList
+                        });
+                    }
+                }
             }
         }
 
