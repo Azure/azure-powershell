@@ -15,7 +15,7 @@ function downloadWithRetry {
 	    	Write-Host
 	    	Write-Host "Waiting 5 seconds and retrying"
 	    	Write-Host
-	    	Wait-Seconds 5
+	    	Start-Sleep -s 5
 	    	downloadWithRetry $url $dest $retry $client
 	    }
 	    else {
