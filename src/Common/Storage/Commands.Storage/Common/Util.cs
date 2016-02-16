@@ -161,5 +161,21 @@ using Microsoft.WindowsAzure.Storage.Blob;
                         blobUri));
             }
         }
+
+        public static IPAddressOrRange SetupIPAddressOrRangeForSAS(string inputIPACL)
+        {
+            if (string.IsNullOrEmpty(inputIPACL)) return null;
+
+            int separator = inputIPACL.IndexOf('-');
+
+            if (-1 == separator)
+            {
+                return new IPAddressOrRange(inputIPACL);
+            }
+            else
+            {
+                return new IPAddressOrRange(inputIPACL.Substring(0, separator), inputIPACL.Substring(separator + 1));
+            }
+        }
     }
 }

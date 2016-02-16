@@ -74,7 +74,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                 Services = Service,
                 ResourceTypes = ResourceType,
                 Protocols = Protocol,
-                IPAddressOrRange = SetupIPAddressOrRange(this.IPAddressOrRange)
+                IPAddressOrRange = Util.SetupIPAddressOrRangeForSAS(this.IPAddressOrRange)
             };
 
             DateTimeOffset? accessStartTime;
@@ -133,22 +133,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
             }
 
             return accountPermission;
-        }
-
-        internal IPAddressOrRange SetupIPAddressOrRange(string inputIPACL)
-        {
-            if (string.IsNullOrEmpty(inputIPACL)) return null;
-
-            int separator = inputIPACL.IndexOf('-');
-
-            if (-1 == separator)
-            {
-                return new IPAddressOrRange(inputIPACL);
-            }
-            else
-            {
-                return new IPAddressOrRange(inputIPACL.Substring(0, separator), inputIPACL.Substring(separator + 1));
-            }
         }
     }
 }
