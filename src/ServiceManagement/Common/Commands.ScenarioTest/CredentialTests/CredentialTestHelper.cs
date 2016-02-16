@@ -99,6 +99,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.CredentialTests
 
         private void SetupPowerShellModules(System.Management.Automation.PowerShell powershell)
         {
+            powershell.AddScript("$error.clear()");
             powershell.AddScript(string.Format("cd \"{0}\"", AppDomain.CurrentDomain.BaseDirectory));
 
             foreach (string moduleName in modules)
