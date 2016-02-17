@@ -95,7 +95,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
 
             getAzureWebsiteLogCommand.DefaultCurrentPath = AppDomain.CurrentDomain.BaseDirectory;
             getAzureWebsiteLogCommand.ExecuteCmdlet();
-            Assert.Equal("test", FileUtilities.DataStore.ReadFileAsText(SaveAzureWebsiteLogCommand.DefaultOutput));
+            Assert.Equal("test", FileUtilities.DataStore.ReadFileAsText(
+                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, SaveAzureWebsiteLogCommand.DefaultOutput)));
         }
 
         [Fact]
@@ -155,7 +156,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
 
             getAzureWebsiteLogCommand.DefaultCurrentPath = AppDomain.CurrentDomain.BaseDirectory;
             getAzureWebsiteLogCommand.ExecuteCmdlet();
-            Assert.Equal("test", FileUtilities.DataStore.ReadFileAsText(SaveAzureWebsiteLogCommand.DefaultOutput));
+            Assert.Equal("test", FileUtilities.DataStore.ReadFileAsText(
+                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, SaveAzureWebsiteLogCommand.DefaultOutput)));
         }
     }
 }
