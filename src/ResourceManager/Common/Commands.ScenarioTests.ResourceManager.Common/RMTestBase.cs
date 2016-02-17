@@ -18,6 +18,7 @@ using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Threading;
+using System.IO;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 
@@ -32,6 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 
         public RMTestBase()
         {
+            System.Environment.CurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
             BaseSetup();
         }
 

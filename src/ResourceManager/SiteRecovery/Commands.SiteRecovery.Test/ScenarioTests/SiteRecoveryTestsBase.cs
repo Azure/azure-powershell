@@ -40,10 +40,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
 
         public SiteRecoveryManagementClient SiteRecoveryMgmtClient { get; private set; }
         public RecoveryServicesManagementClient RecoveryServicesMgmtClient { get; private set; }
-
+        
         protected SiteRecoveryTestsBase()
         {
-            this.vaultSettingsFilePath = "ScenarioTests\\vaultSettings.VaultCredentials";
+            this.vaultSettingsFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ScenarioTests\\vaultSettings.VaultCredentials");
 
             if (File.Exists(this.vaultSettingsFilePath))
             {
@@ -73,7 +73,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
             else
             {
                 throw new FileNotFoundException(
-                    "Vault settings file not found, please pass the file downloaded from portal");
+                    string.Format(
+                        "Vault settings file not found at '{0}', please pass the file downloaded from portal",
+                        this.vaultSettingsFilePath));
             }
 
             helper = new EnvironmentSetupHelper();

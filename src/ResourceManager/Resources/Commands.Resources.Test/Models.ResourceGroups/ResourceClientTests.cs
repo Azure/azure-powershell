@@ -35,6 +35,7 @@ using Moq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Xunit;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Models
 {
@@ -70,7 +71,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
         private string deploymentName = "fooDeployment";
 
-        private string templateFile = @"Resources\sampleTemplateFile.json";
+        private string templateFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\sampleTemplateFile.json");
 
         private string storageAccountName = "myStorageAccount";
 

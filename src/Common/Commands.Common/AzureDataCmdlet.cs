@@ -95,7 +95,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
                 while (!this.Host.UI.RawUI.KeyAvailable && elapsedSeconds < timeToWaitInSeconds)
                 {
-                    Thread.Sleep(TimeSpan.FromMilliseconds(10));
+                    TestMockSupport.Delay(10*1000);
                     endTime = DateTime.Now;
 
                     elapsedSeconds = (endTime - startTime).TotalSeconds;

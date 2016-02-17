@@ -31,6 +31,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 
         public SMTestBase()
         {
+            System.Environment.CurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
             BaseSetup();
         }
 

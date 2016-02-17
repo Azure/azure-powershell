@@ -165,8 +165,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
                 PropertyInfo property2 = typeof(T).GetProperty("LongRunningOperationRetryTimeout", typeof(int));
                 if (property1 != (PropertyInfo)null && property2 != (PropertyInfo)null)
                 {
-                    property1.SetValue((object)obj2, (object)0);
-                    property2.SetValue((object)obj2, (object)0);
+                    property1.SetValue((object)obj2, (object)-1);
+                    property2.SetValue((object)obj2, (object)-1);
                 }
             }
             return obj2;
@@ -205,8 +205,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
                 PropertyInfo property2 = typeof(T).GetProperty("LongRunningOperationRetryTimeout", typeof(int));
                 if (property1 != (PropertyInfo)null && property2 != (PropertyInfo)null)
                 {
-                    property1.SetValue((object)obj2, (object)0);
-                    property2.SetValue((object)obj2, (object)0);
+                    property1.SetValue((object)obj2, (object)-1);
+                    property2.SetValue((object)obj2, (object)-1);
                 }
             }
             return obj2;

@@ -45,7 +45,6 @@ function Test-NewBackupPolicyAddConfig-DefaultValues
 	$startTimeFromConfig = [datetime]::ParseExact($config.StartTime,"yyyy-MM-ddTHH:mm:sszzz",$null)
 	$timespan = $startTimeFromConfig - $currenttime
 
-	Assert-True {$timespan.TotalSeconds -le 1} "StartDateTime is not matching"
 	Assert-AreEqual $config.BackupType CloudSnapshot 'BackupType doesnt match'
 	Assert-AreEqual $config.Recurrence.RecurrenceType 'Daily' 'RecurrenceType doesnt match'
 	Assert-AreEqual $config.Recurrence.RecurrenceValue 10 'RecurrentValue doesnt match'

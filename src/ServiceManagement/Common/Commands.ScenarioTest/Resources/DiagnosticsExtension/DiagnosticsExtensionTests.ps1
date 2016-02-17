@@ -22,20 +22,20 @@ function Test-AzureServiceDiagnosticsExtensionBasic
         $testMode = Get-ComputeTestMode;
         if ($testMode.ToLower() -ne 'playback')
         {
-            $cscpkg = '.\Resources\ServiceManagement\Files\OneWebOneWorker.cspkg';
+            $cscpkg = "$TestOutputRoot\Resources\ServiceManagement\Files\OneWebOneWorker.cspkg";
         }
         else
         {
             $cscpkg = "https://${storageName}.blob.azure.windows.net/blob/OneWebOneWorker.cspkg";
         }
-        $cscfg = '.\Resources\ServiceManagement\Files\OneWebOneWorker.cscfg'
+        $cscfg = "$TestOutputRoot\Resources\ServiceManagement\Files\OneWebOneWorker.cscfg"
         New-AzureService -ServiceName $svcName -Location $location
         New-AzureDeployment -ServiceName $svcName -Slot Production -Package $cscpkg -Configuration $cscfg
 
         $extension = Get-AzureServiceDiagnosticsExtension -ServiceName $svcName
         Assert-Null $extension "The default deployment shouldn't have diagnostics extension enabled"
 
-        $configFilePath = '.\Resources\DiagnosticsExtension\Files\CloudServiceConfig.xml'
+        $configFilePath = "$TestOutputRoot\Resources\DiagnosticsExtension\Files\CloudServiceConfig.xml"
         Set-AzureServiceDiagnosticsExtension -ServiceName $svcName -StorageAccountName $storageName -DiagnosticsConfigurationPath $configFilePath
         $extension = Get-AzureServiceDiagnosticsExtension -ServiceName $svcName
         Assert-NotNull $extension "Diagnostics extension should be enabled"
@@ -79,20 +79,20 @@ function Test-AzureServiceDiagnosticsExtensionConfigurationArray
         $testMode = Get-ComputeTestMode;
         if ($testMode.ToLower() -ne 'playback')
         {
-            $cscpkg = '.\Resources\ServiceManagement\Files\OneWebOneWorker.cspkg';
+            $cscpkg = "$TestOutputRoot\Resources\ServiceManagement\Files\OneWebOneWorker.cspkg";
         }
         else
         {
             $cscpkg = "https://${storageName}.blob.azure.windows.net/blob/OneWebOneWorker.cspkg";
         }
-        $cscfg = '.\Resources\ServiceManagement\Files\OneWebOneWorker.cscfg'
+        $cscfg = "$TestOutputRoot\Resources\ServiceManagement\Files\OneWebOneWorker.cscfg"
         New-AzureService -ServiceName $svcName -Location $location
         New-AzureDeployment -ServiceName $svcName -Slot Production -Package $cscpkg -Configuration $cscfg
 
-        $xmlConfig = '.\Resources\DiagnosticsExtension\Files\CloudServiceConfig.xml'
+        $xmlConfig = "$TestOutputRoot\Resources\DiagnosticsExtension\Files\CloudServiceConfig.xml"
         $workerRoleConfig = New-AzureServiceDiagnosticsExtensionConfig -Role "WorkerRole1" -StorageAccountName $storageName -DiagnosticsConfigurationPath $xmlConfig
 
-        $wadcfgxConfig = '.\Resources\DiagnosticsExtension\Files\diagnostics.wadcfgx'
+        $wadcfgxConfig = "$TestOutputRoot\Resources\DiagnosticsExtension\Files\diagnostics.wadcfgx"
         $webRoleConfig = New-AzureServiceDiagnosticsExtensionConfig -Role "WebRole1" -StorageAccountName $storageName -DiagnosticsConfigurationPath $wadcfgxConfig
 
         Set-AzureServiceDiagnosticsExtension -ServiceName $svcName -DiagnosticsConfiguration @($workerRoleConfig, $webRoleConfig)

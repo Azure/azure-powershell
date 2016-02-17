@@ -65,13 +65,13 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
         /// <summary>
         /// Get certificate test credentials and target management URI from environment variables
         /// </summary>
-        /// <returns>A test environment containg credentials and target URI, or null if no environment is found</returns>
+        /// <returns>A test environment containing credentials and target URI, or null if no environment is found</returns>
         protected virtual TestEnvironment GetCertificateTestEnvironment()
         {
             TestEnvironment environment = null;
             string testConnectionString = Environment.GetEnvironmentVariable(TestCertificateConnectionStringKey);
             string testPublishSettingsString = Environment.GetEnvironmentVariable(TestPublishSettingsFileKey);
-            string defaultPublishSettingsFile = Path.Combine(Environment.CurrentDirectory, DefaultPublishsettingsFilename);
+            string defaultPublishSettingsFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, DefaultPublishsettingsFilename);
             if (File.Exists(defaultPublishSettingsFile))
             {
                 TracingAdapter.Information("Getting credentials from local publishsettings file: {0}", defaultPublishSettingsFile);

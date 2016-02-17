@@ -27,6 +27,7 @@ using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Management.KeyVault;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Common;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.KeyVault.Test
 {
@@ -89,6 +90,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
             string mockName)
         {
             HttpMockServer.Matcher = new PermissiveRecordMatcher();
+            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
             using (UndoContext context = UndoContext.Current)
             {
                 context.Start(callingClassType, mockName);
