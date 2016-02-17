@@ -24,12 +24,14 @@ using System;
 
 namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 {
-    public class KeyVaultManagementTests : IUseFixture<KeyVaultTestFixture>
+    public class KeyVaultManagementTests : IClassFixture<KeyVaultTestFixture>
     {
         private KeyVaultTestFixture _data;
 
-        public KeyVaultManagementTests()
+        public KeyVaultManagementTests(KeyVaultTestFixture fixture)
         {
+            this._data = fixture;
+            this._data.Initialize(TestUtilities.GetCallingClass());
         }
 
         private void Initialize()
@@ -739,12 +741,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
             }
         }
         #endregion
-
-        public void SetFixture(KeyVaultTestFixture data)
-        {
-            this._data = data;
-            this._data.Initialize(TestUtilities.GetCallingClass());
-       }
     }
 
 

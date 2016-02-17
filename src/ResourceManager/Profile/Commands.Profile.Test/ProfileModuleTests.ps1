@@ -23,7 +23,7 @@ function Test-LoadProfileModule
     $global:pushedProfileModule = $(Get-Module AzureRM.Profile).Path 
     Remove-Module AzureRM.Profile
     try {
-        Register-PSRepository -Name "ProfileModuleTest" -SourceLocation (Resolve-Path .\FakeModuleRepo).Path -InstallationPolicy Trusted
+        Register-PSRepository -Name "ProfileModuleTest" -SourceLocation (Resolve-Path "$TestOutputRoot\FakeModuleRepo").Path -InstallationPolicy Trusted
         try {
             Install-Module AzureRM.ApiManagement -Scope CurrentUser -Repository ProfileModuleTest -RequiredVersion 998.9.8
             $global:buffer = Import-Module $global:pushedProfileModule 2>&1 3>&1 | Out-String

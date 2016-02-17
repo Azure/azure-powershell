@@ -52,6 +52,9 @@ namespace Microsoft.Azure.Commands.Compute.Models
         // Gets or sets the property of 'Location'
         public string Location { get; set; }
 
+        // Gets or sets the license type
+        public string LicenseType { get; set; }
+
         // Gets or sets the property of 'Tags'
         public IDictionary<string, string> Tags { get; set; }
 

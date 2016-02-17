@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
 
-  <?define productName="Microsoft Azure PowerShell - January 2016" ?>
+  <?define productName="Microsoft Azure PowerShell - February 2016" ?>
   <?define sourceDir="$(var.SolutionDir)..\src\Package\$(var.Configuration)" ?>
   <?define caSourceDir="$(var.SolutionDir)setup\bin\$(var.Configuration)" ?>
 
-  <?define version="1.1.0" ?>
+  <?define version="1.2.1" ?>
 
   <Product Id="*"
            Name="$(var.productName)"
@@ -101,6 +101,11 @@
     <Binary Id="CustomActions" SourceFile="$(var.caSourceDir)\Microsoft.WindowsAzure.Setup.CA.dll"/>
     <CustomAction Id="SetExecutionPolicy" Property="POWERSHELLEXE" ExeCommand="-NoLogo -NoProfile -WindowStyle Hidden -NonInteractive -ExecutionPolicy Bypass -Command &quot;. \&quot;[PowerShellFolder]SetExecutionPolicy.ps1\&quot;&quot;" Execute="deferred" Impersonate="no" Return="check"/>
     <CustomAction Id="RemoveGalleryModules" Property="POWERSHELLEXE" ExeCommand="-NoLogo -NoProfile -WindowStyle Hidden -NonInteractive -ExecutionPolicy Bypass -Command &quot;. \&quot;[PowerShellFolder]RemoveGalleryModules.ps1\&quot;&quot;" Execute="deferred" Impersonate="no" Return="check"/>
+
+    <InstallExecuteSequence>
+      <Custom Action="RemoveGalleryModules" After="CreateShortcuts">NOT Installed</Custom>
+      <Custom Action="SetExecutionPolicy" After="RemoveGalleryModules">NOT Installed</Custom>
+    </InstallExecuteSequence>
 
     <WixVariable Id="WixUILicenseRtf" Value="$(var.ProjectDir)\media\License.rtf" />
     <UIRef Id="WixUI_Minimal" />

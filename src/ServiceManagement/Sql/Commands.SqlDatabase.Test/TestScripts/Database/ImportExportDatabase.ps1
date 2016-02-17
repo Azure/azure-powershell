@@ -84,7 +84,7 @@ function GetOperationStatus
     # Test Get IE status with request object
     do
     {
-        Start-Sleep -m 1500
+        Wait-Seconds 1500
         $status = Get-AzureSqlDatabaseImportExportStatus $Request
         Write-Output "Request Status: $($status.Status)"
         if($status.Status -eq "Failed")
@@ -121,7 +121,7 @@ function GetOperationStatusWithRequestId
     # Test Get IE status with request id, servername, and login credentials
     do
     {
-        Start-Sleep -m 1500
+        Wait-Seconds 1500
         $status = Get-AzureSqlDatabaseImportExportStatus -RequestId $RequestId `
             -ServerName $ServerName -UserName $UserName -Password $Password
 

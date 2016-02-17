@@ -16,13 +16,18 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace StaticAnalysis.DependencyAnalyzer
+namespace StaticAnalysis
 {
     /// <summary>
     /// Runner for all static analysis tools.
     /// </summary>
     public class Program
     {
+        static readonly IList<IStaticAnalyzer> Analyzers = new List<IStaticAnalyzer>()
+        {
+            new HelpAnalyzer.HelpAnalyzer(),
+            new DependencyAnalyzer.DependencyAnalyzer()
+        };
         public static void Main(string[] args)
         {
             if (args == null || args.Length < 1)
@@ -58,11 +63,15 @@ namespace StaticAnalysis.DependencyAnalyzer
                     reportsDirectory);
             }
 
-            var analyzer = new DependencyAnalyzer { Logger = logger };
-            logger.WriteMessage("Executing analyzer: {0}", analyzer.Name);
-            analyzer.Analyze(directories);
+            foreach (var analyzer in Analyzers)
+            {
+                analyzer.Logger = logger;
+                logger.WriteMessage("Executing analyzer: {0}", analyzer.Name);
+                analyzer.Analyze(directories);
+                logger.WriteMessage("Processing complete for analyzer: {0}", analyzer.Name);
+            }
+
             logger.WriteReports();
-            logger.WriteMessage("Processing complete for analyzer: {0}", analyzer.Name);
         }
     }
 }

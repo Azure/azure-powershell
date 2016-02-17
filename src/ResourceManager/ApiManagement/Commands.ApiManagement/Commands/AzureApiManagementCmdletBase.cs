@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                 var retryAfter = longRunningOperation.RetryAfter ?? LongRunningOperationDefaultTimeout;
 
                 WriteVerboseWithTimestamp(Resources.VerboseGetOperationStateTimeoutMessage, retryAfter);
-                Thread.Sleep(retryAfter);
+                TestMockSupport.Delay(retryAfter);
 
                 longRunningOperation = Client.GetLongRunningOperationStatus(longRunningOperation);
                 WriteProgress(longRunningOperation);

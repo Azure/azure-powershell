@@ -20,13 +20,12 @@ using System.Management.Automation;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Storage.File;
 using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using Microsoft.WindowsAzure.Storage.File;
@@ -244,7 +243,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 string storageAccount;
                 try
                 {
-                    if (TryGetStorageAccount(RMProfile, out storageAccount)
+                    if (TryGetStorageAccount(RMProfile, out storageAccount) 
                         || TryGetStorageAccount(SMProfile, out storageAccount)
                         || TryGetStorageAccountFromEnvironmentVariable(out storageAccount))
                     {

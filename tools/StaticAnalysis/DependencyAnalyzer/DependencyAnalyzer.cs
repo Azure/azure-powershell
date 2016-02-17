@@ -209,7 +209,7 @@ namespace StaticAnalysis.DependencyAnalyzer
         {
             var savedDirectory = Directory.GetCurrentDirectory();
             Directory.SetCurrentDirectory(directoryPath);
-            _loader = AssemblyLoader.Create(directoryPath, out _testDomain);
+            _loader = AppDomainHelpers.CreateProxy<AssemblyLoader>(directoryPath, out _testDomain);
             foreach (var file in Directory.GetFiles(directoryPath).Where(file => file.EndsWith(".dll")))
             {
                 AssemblyRecord assembly = CreateAssemblyRecord(file);

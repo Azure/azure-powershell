@@ -53,6 +53,7 @@
     <CmdletSolutionsToBuild Include=".\src\ServiceManagement\ServiceManagement.sln"
                             Condition=" '$(Scope)' == 'ServiceManagement' or '$(Scope)' == 'AzureStorage' "/>
     <SetupSln Include=".\setup\azurepowershell.sln" />
+    <StaticAnalysis Include=".\tools\StaticAnalysis\StaticAnalysis.sln" />
   </ItemGroup>
   
   <!--
@@ -69,7 +70,7 @@
   <Import Condition=" $(OnPremiseBuild) " Project="$(CIToolsPath)\Microsoft.WindowsAzure.Build.OnPremise.msbuild" />
 
   <UsingTask 
-    AssemblyFile="$(MSBuildProjectDirectory)\src\packages\xunit.MSBuild.2.0.0.0\tools\xunit.runner.msbuild.dll"
+    AssemblyFile="$(MSBuildProjectDirectory)\packages\xunit.runner.msbuild.2.1.0\build\portable-net45+win8+wp8+wpa81\xunit.runner.msbuild.dll"
     TaskName="Xunit.Runner.MSBuild.xunit" />
   
   <!-- Clean the build in all configurations -->
@@ -161,6 +162,14 @@
       Properties="Configuration=$(Configuration);Platform=Any CPU"
       ContinueOnError="false" 
       Condition=" '$(Scope)' == 'all' "/>
+
+    <MSBuild
+      Projects="@(StaticAnalysis)"
+      Targets="Build"
+      Properties="Configuration=Debug;Platform=Any CPU"
+      ContinueOnError="false" />
+
+    <CallTarget Targets="DependencyAnalysis" />
     
     <CallTarget Targets="CodeSignInstaller" 
                 Condition=" '$(CodeSign)' == 'true' and '$(Scope)' == 'all'" />    
@@ -280,6 +289,12 @@
     <Copy SourceFiles="@(InstallersToSign)" DestinationFolder="signed" Condition="$(DelaySign)" />
   </Target>
   
+  <!-- Run Dependecy Analyzer -->
+  <Target Name="DependencyAnalysis">
+    <Message Importance="high" Text="Running Dependency Analysis..." />
+    <Exec Command="$(MSBuildProjectDirectory)\src\Package\StaticAnalysis.exe $(MSBuildProjectDirectory)\src\Package\$(Configuration) $(MSBuildProjectDirectory)\src\Package"/>
+  </Target>
+
   <!-- Publish all packages -->
   <Target Name="Publish">
     <Error Condition=" '$(NuGetKey)' == '' " Text="You must provide the NuGetKey parameter to the build: /p:NuGetKey=YOUR_PUBLISHING_KEY" />
