@@ -130,6 +130,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             ParameterSetName = NameSasPolicyParmeterSet)]
         public override AzureStorageContext Context { get; set; }
 
+        // Overwrite the useless parameter
+        public override int? ServerTimeoutPerRequest { get; set; }
+        public override int? ClientTimeoutPerRequest { get; set; }
+        public override int? ConcurrentTaskCount { get; set; }
+
         /// <summary>
         /// Execute command
         /// </summary>

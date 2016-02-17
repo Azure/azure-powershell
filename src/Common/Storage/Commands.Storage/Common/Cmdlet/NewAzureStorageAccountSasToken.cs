@@ -44,6 +44,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         [Parameter(Mandatory = false, HelpMessage = "Expiry Time")]
         public DateTime? ExpiryTime { get; set; }
 
+        // Overwrite the useless parameter
+        public override int? ServerTimeoutPerRequest { get; set; }
+        public override int? ClientTimeoutPerRequest { get; set; }
+        public override int? ConcurrentTaskCount { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the NewAzureStorageAccountSasTokenCommand class.
         /// </summary>
