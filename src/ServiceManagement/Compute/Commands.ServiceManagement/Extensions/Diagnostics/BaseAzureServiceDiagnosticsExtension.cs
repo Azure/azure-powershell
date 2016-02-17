@@ -115,22 +115,20 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
                 }
             }
 
-            var publicConfigElem = DiagnosticsHelper.GetPublicConfigXElementFromXmlFile(this.DiagnosticsConfigurationPath);
-            if (publicConfigElem == null)
-            {
-                throw new ArgumentException(Resources.DiagnosticsExtensionNullPublicConfig);
-            }
-            publicConfigElem.SetAttributeValue("xmlns", XmlNamespace);
-            PublicConfiguration = publicConfigElem.ToString();
-
             XmlDocument doc = new XmlDocument();
             XmlNamespaceManager ns = new XmlNamespaceManager(doc.NameTable);
             ns.AddNamespace("ns", XmlNamespace);
             doc.Load(DiagnosticsConfigurationPath);
 
-            // Make sure the configuration element exist
-            var configElement = doc.SelectSingleNode("//ns:WadCfg", ns) ?? doc.SelectSingleNode("//ns:WadCfgBlob", ns);
-            if (configElement == null)
+            // Make sure the configuration elements exist
+            var publicConfigElement = doc.SelectSingleNode("//ns:PublicConfig", ns);
+            if (publicConfigElement == null)
+            {
+                throw new ArgumentException(Resources.DiagnosticsExtensionNullPublicConfig);
+            }
+
+            var wadConfigElement = doc.SelectSingleNode("//ns:WadCfg", ns) ?? doc.SelectSingleNode("//ns:WadCfgBlob", ns);
+            if (wadConfigElement == null)
             {
                 throw new ArgumentException(Resources.DiagnosticsExtensionPaaSConfigElementNotDefined);
             }
@@ -138,36 +136,27 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             // The element <StorageAccount> is not meant to be set by the user in the public config.
             // Make sure it matches the storage account in the private config.
             var storageAccountElement = doc.SelectSingleNode("//ns:StorageAccount", ns);
-            if(storageAccountElement != null)
+            if (storageAccountElement == null)
             {
-                // The StorageAccount is empty, we must set it
-                if (string.IsNullOrEmpty(storageAccountElement.InnerText))
-                {
-                    storageAccountElement.InnerText = StorageAccountName;
-                    PublicConfiguration = doc.OuterXml;
-                }
-                else if (!string.IsNullOrEmpty(storageAccountElement.InnerText) && string.Compare(storageAccountElement.InnerText, StorageAccountName, true) != 0)
-                {
-                    throw new ArgumentException(Resources.DiagnosticsExtensionNoMatchStorageAccount);
-                }
-            }
-            else
-            {
-                // The StorageAccount is not there. we must set it
+                // The StorageAccount element is not there, we create one
                 storageAccountElement = doc.CreateElement("StorageAccount", XmlNamespace);
-                storageAccountElement.InnerText = StorageAccountName;
-
-                // Insert it after <WadCfg> or <WadCfgBlob>
-                configElement.ParentNode.AppendChild(storageAccountElement);
-                PublicConfiguration = doc.OuterXml;
+                wadConfigElement.ParentNode.AppendChild(storageAccountElement);
             }
+
+            if (!string.IsNullOrEmpty(storageAccountElement.InnerText) && string.Compare(storageAccountElement.InnerText, StorageAccountName, true) != 0)
+            {
+                WriteWarning(Resources.DiagnosticsExtensionNoMatchStorageAccount);
+            }
+
+            storageAccountElement.InnerText = StorageAccountName;
+            PublicConfiguration = publicConfigElement.OuterXml;
 
             // Make sure the storage account name in PrivateConfig matches.
             var privateConfigStorageAccountName = DiagnosticsHelper.GetStorageAccountInfoFromPrivateConfig(this.DiagnosticsConfigurationPath, DiagnosticsHelper.PrivConfNameAttr);
             if (!string.IsNullOrEmpty(privateConfigStorageAccountName)
                 && !string.Equals(StorageAccountName, privateConfigStorageAccountName, StringComparison.OrdinalIgnoreCase))
             {
-                throw new ArgumentException(Resources.DiagnosticsExtensionNoMatchPrivateStorageAccount);
+                WriteWarning(Resources.DiagnosticsExtensionNoMatchPrivateStorageAccount);
             }
 
             PrivateConfigurationXml = new XDocument(PrivateConfigurationXmlTemplate);
