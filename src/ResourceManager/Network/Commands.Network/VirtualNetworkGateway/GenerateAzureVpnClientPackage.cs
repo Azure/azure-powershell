@@ -26,7 +26,7 @@ using System.Net.Http;
 using Microsoft.Rest.Azure;
 using Microsoft.Azure.Management.Network.Models;
 using Microsoft.Rest;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.ServiceManagemenet.Common;
 using Newtonsoft.Json;
 using System.Text;
 using System.Net.Http.Headers;

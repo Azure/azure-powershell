@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
     using System;
@@ -29,7 +31,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using Microsoft.WindowsAzure.Storage.Blob;
     using Microsoft.WindowsAzure.Storage.DataMovement;
     using Microsoft.WindowsAzure.Storage.File;
-    using Microsoft.Azure.Common.Authentication;
+    using Azure.ServiceManagemenet.Common;
     using System.Reflection;
 
     [Cmdlet(VerbsLifecycle.Start, StorageNouns.CopyBlob, ConfirmImpact = ConfirmImpact.High, DefaultParameterSetName = ContainerNameParameterSet),
@@ -600,8 +602,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         {
             try
             {
-                System.Management.Automation.PowerShell invoker = null;
-                invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
+                PowerShell invoker = null;
+                invoker = PowerShell.Create(RunspaceMode.CurrentRunspace);
                 invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(
                     Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
                     "AzureStorageStartup.ps1")));

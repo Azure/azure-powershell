@@ -14,12 +14,14 @@
 
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.Sync.Download;
 using System;
 using System.IO;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Rsrc = Microsoft.Azure.Commands.Compute.Properties.Resources;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Commands.ResourceManager.Common;

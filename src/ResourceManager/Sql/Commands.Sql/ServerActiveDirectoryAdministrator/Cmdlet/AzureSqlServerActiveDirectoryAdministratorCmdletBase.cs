@@ -15,6 +15,7 @@
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Model;
 using Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Services;
@@ -38,7 +39,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
         /// </summary>
         /// <param name="subscription"></param>
         /// <returns></returns>
-        protected override AzureSqlServerActiveDirectoryAdministratorAdapter InitModelAdapter(Azure.Common.Authentication.Models.AzureSubscription subscription)
+        protected override AzureSqlServerActiveDirectoryAdministratorAdapter InitModelAdapter(AzureSubscription subscription)
         {
             return new AzureSqlServerActiveDirectoryAdministratorAdapter(DefaultProfile.Context);
         }

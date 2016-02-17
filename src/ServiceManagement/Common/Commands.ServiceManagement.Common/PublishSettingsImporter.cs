@@ -18,10 +18,11 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml.Serialization;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Common.Authentication.XmlSchema;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.ServiceManagement.Common.XmlSchema;
 
-namespace Microsoft.Azure.Common.Authentication
+namespace Microsoft.Azure.ServiceManagemenet.Common
 {
     /// <summary>
     /// Class that handles loading publishsettings files
@@ -29,7 +30,8 @@ namespace Microsoft.Azure.Common.Authentication
     /// </summary>
     public static class PublishSettingsImporter
     {
-        public static IEnumerable<AzureSubscription> ImportAzureSubscription(Stream stream, ProfileClient azureProfileClient, string environment)
+        public static IEnumerable<AzureSubscription> ImportAzureSubscription(Stream stream, 
+            ProfileClient azureProfileClient, string environment)
         {
             var publishData = DeserializePublishData(stream);
             PublishDataPublishProfile profile = publishData.Items.Single();

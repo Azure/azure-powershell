@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Microsoft.Azure.Common.Authentication;
+    using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Gallery;
     using Microsoft.Azure.Management.Authorization;
     using Microsoft.Azure.Management.Resources;

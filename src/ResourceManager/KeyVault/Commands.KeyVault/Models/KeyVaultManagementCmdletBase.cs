@@ -18,15 +18,15 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.Tags.Model;
-using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
 using PSKeyVaultModels = Microsoft.Azure.Commands.KeyVault.Models;
 using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.ActiveDirectory.GraphClient;
-using Microsoft.Azure.Common.Authentication;
 using System.Threading.Tasks;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault

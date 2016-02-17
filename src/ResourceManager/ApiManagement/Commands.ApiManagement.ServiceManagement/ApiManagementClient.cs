@@ -12,6 +12,9 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 {
     using System;
@@ -24,8 +27,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
     using System.Text.RegularExpressions;
     using AutoMapper;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
-    using Microsoft.Azure.Common.Authentication;
-    using Microsoft.Azure.Common.Authentication.Models;
+    using ServiceManagemenet.Common;
+    using ServiceManagemenet.Common.Models;
     using Microsoft.Azure.Management.ApiManagement;
     using Microsoft.Azure.Management.ApiManagement.SmapiModels;
     using Newtonsoft.Json;

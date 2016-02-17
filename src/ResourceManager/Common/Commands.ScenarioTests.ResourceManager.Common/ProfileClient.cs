@@ -20,13 +20,16 @@ using System.Linq;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
 using Hyak.Common;
-using Microsoft.Azure.Common.Authentication.Factories;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Factories;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Subscriptions;
 
-namespace Microsoft.Azure.Common.Authentication
+namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
     /// <summary>
     /// Convenience client for azure profile and subscriptions.
@@ -653,7 +656,7 @@ namespace Microsoft.Azure.Common.Authentication
             {
                 if (subscription.IsPropertySet(AzureSubscription.Property.StorageAccount))
                 {
-                    GeneralUtilities.ClearCurrentStorageAccount();
+                    subscription.SetProperty(AzureSubscription.Property.StorageAccount, null);
                 }
 
                 Profile.DefaultSubscription = subscription;
@@ -688,44 +691,6 @@ namespace Microsoft.Azure.Common.Authentication
         {
             return Profile.Accounts.Where(a => a.Value.HasSubscription(subscriptionId))
                 .Select(a => a.Value).ToList();
-        }
-
-        public List<AzureSubscription> ImportPublishSettings(string filePath, string environmentName)
-        {
-            var subscriptions = ListSubscriptionsFromPublishSettingsFile(filePath, environmentName);
-            if (subscriptions.Any())
-            {
-                foreach (var subscription in subscriptions)
-                {
-                    AzureAccount account = new AzureAccount
-                    {
-                        Id = subscription.Account,
-                        Type = AzureAccount.AccountType.Certificate
-                    };
-                    account.SetOrAppendProperty(AzureAccount.Property.Subscriptions, subscription.Id.ToString());
-                    AddOrSetAccount(account);
-
-                    if (!Profile.Subscriptions.ContainsKey(subscription.Id))
-                    {
-                        AddOrSetSubscription(subscription);
-                    }
-
-                    if (Profile.DefaultSubscription == null)
-                    {
-                        Profile.DefaultSubscription = subscription;
-                    }
-                }
-            }
-            return subscriptions;
-        }
-
-        private List<AzureSubscription> ListSubscriptionsFromPublishSettingsFile(string filePath, string environment)
-        {
-            if (string.IsNullOrEmpty(filePath) || !AzureSession.DataStore.FileExists(filePath))
-            {
-                throw new ArgumentException(Resources.FilePathIsNotValid, "filePath");
-            }
-            return PublishSettingsImporter.ImportAzureSubscription(AzureSession.DataStore.ReadFileAsStream(filePath), this, environment).ToList();
         }
 
         private IEnumerable<AzureSubscription> ListSubscriptionsFromServerForAllAccounts(AzureEnvironment environment)
