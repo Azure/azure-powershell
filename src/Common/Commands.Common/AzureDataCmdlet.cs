@@ -119,17 +119,6 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 SaveDataCollectionProfile();
             }
         }
-
-        protected override void SetupHttpClientPipeline()
-        {
-            throw new NotImplementedException();
-        }
-
-        protected override void TearDownHttpClientPipeline()
-        {
-            throw new NotImplementedException();
-        }
-
         protected override void InitializeQosEvent()
         {
         }
