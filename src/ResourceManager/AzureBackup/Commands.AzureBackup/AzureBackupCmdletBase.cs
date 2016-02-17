@@ -23,11 +23,11 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Net;
-using System.Threading;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using CmdletModel = Microsoft.Azure.Commands.AzureBackup.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
