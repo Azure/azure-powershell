@@ -321,7 +321,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 }
 
                 deployment = ResourceManagementClient.Deployments.Get(resourceGroup, deploymentName).Deployment;
-                Thread.Sleep(2000);
+                TestMockSupport.Delay(2000);
 
             } while (!status.Any(s => s.Equals(deployment.Properties.ProvisioningState, StringComparison.OrdinalIgnoreCase)));
 

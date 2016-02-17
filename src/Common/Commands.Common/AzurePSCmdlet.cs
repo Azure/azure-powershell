@@ -265,10 +265,10 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         protected string CurrentPath()
         {
             // SessionState is only available within PowerShell so default to
-            // the CurrentDirectory when being run from tests.
+            // the TestMockSupport.TestExecutionFolder when being run from tests.
             return (SessionState != null) ?
                 SessionState.Path.CurrentLocation.Path :
-                Environment.CurrentDirectory;
+                TestMockSupport.TestExecutionFolder;
         }
 
         protected bool IsVerbose()

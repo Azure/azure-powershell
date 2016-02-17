@@ -96,6 +96,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
         {
             powershell = System.Management.Automation.PowerShell.Create();
 
+            powershell.AddScript("$error.clear()");
             foreach (string moduleName in modules)
             {
                 powershell.AddScript(string.Format("Import-Module \"{0}\"", Test.Utilities.Common.Testing.GetAssemblyTestResourcePath<ResourceLocator>(moduleName)));

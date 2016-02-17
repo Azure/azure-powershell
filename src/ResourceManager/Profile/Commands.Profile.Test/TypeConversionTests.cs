@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var account = (PSAzureRmAccount) oldAccount;
             Assert.Equal(oldAccount.Type.ToString(), account.AccountType);
             Assert.Equal(oldAccount.Id, account.Id);
-            Assert.DoesNotThrow(() => account.ToString());
+            var accountString = account.ToString();
         }
 
        [Fact]

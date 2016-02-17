@@ -52,7 +52,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
             if (this.runningMocked)
             {
                 AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
-                string dummyCredentialFile = Path.Combine(Environment.CurrentDirectory, TestCredentialHelper.DefaultCredentialFile);
+                string dummyCredentialFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, TestCredentialHelper.DefaultCredentialFile);
                 if (!File.Exists(dummyCredentialFile))
                 {
                     AzureSession.DataStore.WriteFile(dummyCredentialFile, Properties.Resources.RdfeTestDummy);
@@ -61,7 +61,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
             }
             else
             {
-                this.credentials = new TestCredentialHelper(Environment.CurrentDirectory);
+                this.credentials = new TestCredentialHelper(AppDomain.CurrentDomain.BaseDirectory);
                 this.credentialFile = TestCredentialHelper.DefaultCredentialFile;
                 this.profileFile = TestCredentialHelper.WindowsAzureProfileFile;
             }

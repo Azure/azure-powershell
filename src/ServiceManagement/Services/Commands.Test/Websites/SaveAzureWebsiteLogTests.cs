@@ -93,9 +93,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
             subscription.Properties[AzureSubscription.Property.Default] = "True";
             currentProfile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
 
-            getAzureWebsiteLogCommand.DefaultCurrentPath = "";
+            getAzureWebsiteLogCommand.DefaultCurrentPath = AppDomain.CurrentDomain.BaseDirectory;
             getAzureWebsiteLogCommand.ExecuteCmdlet();
-            Assert.Equal("test", FileUtilities.DataStore.ReadFileAsText(SaveAzureWebsiteLogCommand.DefaultOutput));
+            Assert.Equal("test", FileUtilities.DataStore.ReadFileAsText(
+                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, SaveAzureWebsiteLogCommand.DefaultOutput)));
         }
 
         [Fact]
@@ -103,7 +104,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         public void SaveAzureWebsiteLogWithNoFileExtensionTest()
         {
             // Setup
-            string expectedOutput = "file_without_ext.zip";
+            string expectedOutput = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "file_without_ext.zip");
 
             SimpleDeploymentServiceManagement deploymentChannel = new SimpleDeploymentServiceManagement
             {
@@ -124,7 +125,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
             subscription.Properties[AzureSubscription.Property.Default] = "True";
             currentProfile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
 
-            getAzureWebsiteLogCommand.DefaultCurrentPath = "";
+            getAzureWebsiteLogCommand.DefaultCurrentPath = AppDomain.CurrentDomain.BaseDirectory;
             getAzureWebsiteLogCommand.ExecuteCmdlet();
             Assert.Equal("test with no extension", FileUtilities.DataStore.ReadFileAsText(expectedOutput));
         }
@@ -153,9 +154,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
             subscription.Properties[AzureSubscription.Property.Default] = "True";
             currentProfile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
 
-            getAzureWebsiteLogCommand.DefaultCurrentPath = "";
+            getAzureWebsiteLogCommand.DefaultCurrentPath = AppDomain.CurrentDomain.BaseDirectory;
             getAzureWebsiteLogCommand.ExecuteCmdlet();
-            Assert.Equal("test", FileUtilities.DataStore.ReadFileAsText(SaveAzureWebsiteLogCommand.DefaultOutput));
+            Assert.Equal("test", FileUtilities.DataStore.ReadFileAsText(
+                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, SaveAzureWebsiteLogCommand.DefaultOutput)));
         }
     }
 }
