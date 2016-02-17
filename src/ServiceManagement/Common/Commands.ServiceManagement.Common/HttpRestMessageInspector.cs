@@ -21,6 +21,7 @@ using System.ServiceModel.Description;
 using System.ServiceModel.Dispatcher;
 using System.Threading;
 using System.Xml.Linq;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
@@ -92,14 +93,14 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         public virtual void AfterReceiveReply(ref Message reply, object correlationState)
         {
             HttpResponseMessageProperty prop = (HttpResponseMessageProperty)reply.Properties[HttpResponseMessageProperty.Name];
-            string body = GeneralUtilities.ReadMessageBody(ref reply);
+            string body = ServiceManagementUtilities.ReadMessageBody(ref reply);
             logger(GeneralUtilities.GetHttpResponseLog(prop.StatusCode.ToString(), prop.Headers, body));
         }
 
         public virtual object BeforeSendRequest(ref Message request, IClientChannel channel)
         {
             HttpRequestMessageProperty prop = (HttpRequestMessageProperty)request.Properties[HttpRequestMessageProperty.Name];
-            string body = GeneralUtilities.ReadMessageBody(ref request);
+            string body = ServiceManagementUtilities.ReadMessageBody(ref request);
             logger(GeneralUtilities.GetHttpRequestLog(prop.Method, request.Headers.To.AbsoluteUri, prop.Headers, body));
 
             return request;

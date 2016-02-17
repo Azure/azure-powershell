@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Test;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

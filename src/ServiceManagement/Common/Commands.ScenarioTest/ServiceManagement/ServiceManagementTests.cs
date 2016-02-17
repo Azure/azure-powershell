@@ -12,12 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Management;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Network;
 using Microsoft.WindowsAzure.Management.Storage;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -51,7 +52,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
                 SetupManagementClients();
 
-                List<string> modules = Directory.GetFiles(@"Resources\ServiceManagement", "*.ps1").ToList();
+                List<string> modules = Directory.GetFiles(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\ServiceManagement"), "*.ps1").ToList();
                 modules.Add("Common.ps1");
                 modules.Add(@"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Azure.psd1");
                 modules.Add(@"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Compute\AzurePreview.psd1");

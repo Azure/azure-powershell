@@ -20,6 +20,7 @@ using System.Linq;
 using Mgmt = Microsoft.Azure.Management.BackupServices.Models;
 using Microsoft.Azure.Commands.AzureBackup.Models;
 using Microsoft.Azure.Commands.AzureBackup.Properties;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -133,7 +134,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                         break;
                     }
 
-                    System.Threading.Thread.Sleep(30 * 1000);
+                    TestMockSupport.Delay(30 * 1000);
                 }
 
                 IList<AzureRMBackupJob> finalJobs = new List<AzureRMBackupJob>();

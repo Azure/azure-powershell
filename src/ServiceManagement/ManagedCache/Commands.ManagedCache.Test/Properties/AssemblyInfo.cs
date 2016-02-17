@@ -27,3 +27,4 @@ using Xunit;
 [assembly: Guid("3E5D3114-DEBB-4DC2-BB9D-CF2A2707F74D")]
 [assembly: AssemblyVersion("1.0.4")]
 [assembly: AssemblyFileVersion("1.0.4")]
+[assembly: CollectionBehavior(DisableTestParallelization = true)]
