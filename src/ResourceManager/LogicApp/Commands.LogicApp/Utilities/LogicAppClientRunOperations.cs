@@ -21,7 +21,6 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
     using System.Threading.Tasks;
     using Microsoft.Azure.Management.Logic.Models;
     using Microsoft.Azure.Management.Logic;
-    using Microsoft.Rest.Azure;
 
     /// <summary>
     /// LogicApp client partial class for run operations
