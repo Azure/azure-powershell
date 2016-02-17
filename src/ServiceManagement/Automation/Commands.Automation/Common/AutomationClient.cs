@@ -26,7 +26,7 @@ using Microsoft.Azure.Commands.Automation.Properties;
 using Microsoft.WindowsAzure.Management.Automation;
 using Microsoft.WindowsAzure.Management.Automation.Models;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Newtonsoft.Json;
 
 using Runbook = Microsoft.Azure.Commands.Automation.Model.Runbook;
@@ -43,7 +43,7 @@ using Connection = Microsoft.Azure.Commands.Automation.Model.Connection;
 namespace Microsoft.Azure.Commands.Automation.Common
 {
     using AutomationManagement = WindowsAzure.Management.Automation;
-    using Microsoft.Azure.Common.Authentication;
+    using Microsoft.Azure.Commands.Common.Authentication;
     using Hyak.Common;
 
 

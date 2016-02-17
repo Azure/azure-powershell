@@ -152,5 +152,11 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineWithEmptyAuc");
         }
 
+        [Fact(Skip="TODO: Implement BYOL in Swagger")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineWithBYOL()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineWithBYOL");
+        }
     }
 }

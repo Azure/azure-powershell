@@ -12,6 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+
 namespace Microsoft.Azure.Commands.TrafficManager.Utilities
 {
     using System;
@@ -19,12 +22,10 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
     using System.Collections.Generic;
     using System.Linq;
     using System.Net;
-    using Microsoft.Azure.Commands.Tags.Model;
-    using Microsoft.Azure.Commands.TrafficManager.Models;
-    using Microsoft.Azure.Common.Authentication;
-    using Microsoft.Azure.Common.Authentication.Models;
-    using Microsoft.Azure.Management.TrafficManager;
-    using Microsoft.Azure.Management.TrafficManager.Models;
+    using Tags.Model;
+    using Models;
+    using Management.TrafficManager;
+    using Management.TrafficManager.Models;
 
     public class TrafficManagerClient 
     {
