@@ -25,7 +25,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
 {
     using DatabaseCopyModel = Model.DatabaseCopy;
-    using Microsoft.Azure.Common.Authentication;
+    using Microsoft.Azure.Commands.Common.Authentication;
 
     /// <summary>
     /// Stop an ongoing copy operation for a Microsoft Azure SQL Database in the given server context.

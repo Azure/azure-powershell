@@ -20,7 +20,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Scheduler.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Scheduler.Model;
 using Microsoft.WindowsAzure.Scheduler;
 using Microsoft.WindowsAzure.Scheduler.Models;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Scheduler
 {

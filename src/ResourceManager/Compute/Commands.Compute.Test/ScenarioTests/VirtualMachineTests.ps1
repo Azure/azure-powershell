@@ -363,7 +363,7 @@ function Test-VirtualMachinePiping
         Get-AzureRmVM -ResourceGroupName $rgname | Set-AzureRmVM -Generalize;
 
         $dest = Get-ComputeTestResourceName;
-        $templatePath = ".\template.txt";
+        $templatePath = "$TestOutputRoot\template.txt";
         Get-AzureRmVM -ResourceGroupName $rgname | Save-AzureRmVMImage -DestinationContainerName $dest -VHDNamePrefix 'pslib' -Overwrite -Path $templatePath;
 
         $template = Get-Content $templatePath;
@@ -943,7 +943,7 @@ function Test-VirtualMachineCapture
         Set-AzureRmVM -Generalize -ResourceGroupName $rgname -Name $vmname;
 
         $dest = Get-ComputeTestResourceName;
-        $templatePath = ".\template.txt";
+        $templatePath = "$TestOutputRoot\template.txt";
         Save-AzureRmVMImage -ResourceGroupName $rgname -VMName $vmname -DestinationContainerName $dest -VHDNamePrefix 'pslib' -Overwrite -Path $templatePath;
         $template = Get-Content $templatePath;
         Assert-True { $template[1].Contains("$schema"); }
