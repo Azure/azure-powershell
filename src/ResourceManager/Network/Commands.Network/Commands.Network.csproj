@@ -77,7 +77,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.2.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Network, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.3.0.4-preview\lib\net45\Microsoft.Azure.Management.Network.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.3.1.0-preview\lib\net45\Microsoft.Azure.Management.Network.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Data.Edm, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -280,6 +280,7 @@
     <Compile Include="Models\PSApplicationGatewaySku.cs" />
     <Compile Include="Models\PSApplicationGatewaySslCertificate.cs" />
     <Compile Include="Models\PSApplicationGatewayUrlPathMap.cs" />
+    <Compile Include="Models\PSInboundRule.cs" />
     <Compile Include="Models\PSInboundNatPool.cs" />
     <Compile Include="Models\PSExpressRouteServiveProvider.cs" />
     <Compile Include="Models\PSExpressRouteCircuitArpTable.cs" />
@@ -319,10 +320,10 @@
     <Compile Include="VirtualNetworkGateway\NewAzureVirtualNetworkGatewayCommand.cs" />
     <Compile Include="VirtualNetworkGateway\GetAzureVpnClientRootCertificateCommand.cs" />
     <Compile Include="VirtualNetworkGateway\GetAzureVpnClientRevokedCertificateCommand.cs" />
-    <Compile Include="VirtualNetworkGateway\AddAzureVpnClientRootCertificateCommand.cs" />	
-    <Compile Include="VirtualNetworkGateway\AddAzureVpnClientRevokedCertificateCommand.cs" />	
+    <Compile Include="VirtualNetworkGateway\AddAzureVpnClientRootCertificateCommand.cs" />
+    <Compile Include="VirtualNetworkGateway\AddAzureVpnClientRevokedCertificateCommand.cs" />
     <Compile Include="VirtualNetworkGateway\NewAzureVpnClientRootCertificateCommand.cs" />
-    <Compile Include="VirtualNetworkGateway\NewAzureVpnClientRevokedCertificateCommand.cs" />	
+    <Compile Include="VirtualNetworkGateway\NewAzureVpnClientRevokedCertificateCommand.cs" />
     <Compile Include="VirtualNetworkGateway\ResizeAzureVirtualNetworkGatewayCommand.cs" />
     <Compile Include="VirtualNetworkGateway\RemoveAzureVpnClientRevokedCertificateCommand.cs" />
     <Compile Include="VirtualNetworkGateway\RemoveAzureVpnClientRootCertificateCommand.cs" />
