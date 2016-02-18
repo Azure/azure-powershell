@@ -23,8 +23,13 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Azure Sql Database server communication link
     /// </summary>
+    /*
+     * Commenting out since update semantics are not supported at the moment for Server 
+     * communication links. Leaving the code in for later. DO NOT REMOVE.
+     * 
     [Cmdlet(VerbsCommon.Set, "AzureRmSqlServerCommunicationLink",
         ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlServerCommunicationLinkModel))]
+     */
     public class SetAzureSqlServerCommunicationLink : AzureSqlServerCommunicationLinkCmdletBase
     {
         /// <summary>
