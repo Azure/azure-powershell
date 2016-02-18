@@ -32,7 +32,8 @@ namespace Common.Authentication.Test
         public void ProfileSaveDoesNotSerializeContext()
         {
             var dataStore = new MockDataStore();
-            var profile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+            var profilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, AzureSession.ProfileFile);
+            var profile = new AzureSMProfile(profilePath);
             AzureSession.DataStore = dataStore;
             var tenant = Guid.NewGuid().ToString();
             var environment = new AzureEnvironment
@@ -82,7 +83,8 @@ namespace Common.Authentication.Test
        public void ProfileSerializeDeserializeWorks()
         {
             var dataStore = new MockDataStore();
-            var profile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+            var profilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, AzureSession.ProfileFile);
+            var profile = new AzureSMProfile(profilePath);
             AzureSession.DataStore = dataStore;
             var tenant = Guid.NewGuid().ToString();
             var environment = new AzureEnvironment

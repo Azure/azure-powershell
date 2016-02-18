@@ -23,7 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-       public void DeserializeJsonWorksForSimpleCases()
+        public void DeserializeJsonWorksForSimpleCases()
         {
             const string json1 =
                 @"{

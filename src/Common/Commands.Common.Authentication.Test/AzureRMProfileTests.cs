@@ -31,7 +31,8 @@ namespace Common.Authentication.Test
         {
             var dataStore = new MockDataStore();
             AzureSession.DataStore = dataStore;
-            var currentProfile = new AzureRMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+            var profilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, AzureSession.ProfileFile);
+            var currentProfile = new AzureRMProfile(profilePath);
             var tenantId = Guid.NewGuid().ToString();
             var environment = new AzureEnvironment
             {
@@ -128,7 +129,7 @@ namespace Common.Authentication.Test
     ""TokenCache"": ""AQIDBAUGCAkA""
   }
 }";
-            string path = Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile);
+            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, AzureSession.ProfileFile);
             var dataStore = new MockDataStore();
             AzureSession.DataStore = dataStore;
             AzureRMProfile profile = new AzureRMProfile(path);
@@ -211,7 +212,7 @@ namespace Common.Authentication.Test
     }
   }
 }";
-            string path = Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile);
+            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, AzureSession.ProfileFile);
             var dataStore = new MockDataStore();
             AzureSession.DataStore = dataStore;
             dataStore.WriteFile(path, contents);
