@@ -8,9 +8,9 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Commands.Compute.Extension.AEM;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {

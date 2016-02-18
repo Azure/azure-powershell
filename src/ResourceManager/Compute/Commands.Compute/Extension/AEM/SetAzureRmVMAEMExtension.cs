@@ -25,8 +25,6 @@ using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Storage.Models;
 using Newtonsoft.Json;
 using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
 using System.Text.RegularExpressions;
 using System.Net;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
@@ -36,6 +34,8 @@ using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Shared.Protocol;
 using Microsoft.Azure.Commands.Compute.Extension.AEM;
 using AutoMapper;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {

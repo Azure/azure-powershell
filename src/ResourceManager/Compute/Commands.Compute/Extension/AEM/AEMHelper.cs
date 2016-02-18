@@ -1,5 +1,5 @@
-﻿using Microsoft.Azure.Commands.Compute.StorageServices;
-using Microsoft.Azure.Common.Authentication.Models;
+﻿using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Compute.StorageServices;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
@@ -92,6 +92,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
 
         internal int? GetDiskSizeGbFromBlobUri(string sBlobUri)
         {
+            var storageClient = new StorageManagementClient();
             var blobMatch = Regex.Match(sBlobUri, "https?://(\\S*?)\\..*?/(.*)");
             if (!blobMatch.Success)
             {
@@ -103,22 +104,36 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
             BlobUri blobUri;
             if (BlobUri.TryParseUri(new Uri(sBlobUri), out blobUri))
             {
-                var account = this.GetStorageAccountFromCache(accountName);
-                var resGroupName = this.GetResourceGroupFromId(account.Id);
-                StorageCredentialsFactory storageCredentialsFactory = new StorageCredentialsFactory(resGroupName,
-                    this._StorageClient, this._Subscription);
-                StorageCredentials sc = storageCredentialsFactory.Create(blobUri);
-                CloudStorageAccount cloudStorageAccount = new CloudStorageAccount(sc, true);
-                CloudBlobClient blobClient = cloudStorageAccount.CreateCloudBlobClient();
-                CloudBlobContainer blobContainer = blobClient.GetContainerReference(blobUri.BlobContainerName);
-                var cloudref = blobContainer.GetBlobReferenceFromServer(blobUri.BlobName);
+                try
+                {
+                    var account = this.GetStorageAccountFromCache(accountName);
+                    var resGroupName = this.GetResourceGroupFromId(account.Id);
+                    StorageCredentialsFactory storageCredentialsFactory = new StorageCredentialsFactory(resGroupName,
+                        this._StorageClient, this._Subscription);
+                    StorageCredentials sc = storageCredentialsFactory.Create(blobUri);
+                    CloudStorageAccount cloudStorageAccount = new CloudStorageAccount(sc, true);
+                    CloudBlobClient blobClient = cloudStorageAccount.CreateCloudBlobClient();
+                    CloudBlobContainer blobContainer = blobClient.GetContainerReference(blobUri.BlobContainerName);
+                    var cloudBlob = blobContainer.GetPageBlobReference(blobUri.BlobName);
+                    var sasToken = cloudBlob.GetSharedAccessSignature(
+                        new SharedAccessBlobPolicy()
+                        {
+                            SharedAccessExpiryTime = DateTime.UtcNow.AddHours(24.0),
+                            Permissions = SharedAccessBlobPermissions.Read
+                        });
+                    cloudBlob.FetchAttributes();
 
-                //var key = this.GetAzureStorageKeyFromCache(accountName);
-                //var account = this.GetStorageAccountFromCache(accountName);
-                //var credentials = new StorageCredentials(account.Name.ToLower(), key);
-                //var client = new CloudBlobClient(account.PrimaryEndpoints.Blob, credentials);
-                //var cloudref = blobClient.GetBlobReferenceFromServer(sc.TransformUri(new Uri(sBlobUri)));
-                return (int?)(cloudref.Properties.Length / (1024 * 1024 * 1024));
+                    //var key = this.GetAzureStorageKeyFromCache(accountName);
+                    //var account = this.GetStorageAccountFromCache(accountName);
+                    //var credentials = new StorageCredentials(account.Name.ToLower(), key);
+                    //var client = new CloudBlobClient(account.PrimaryEndpoints.Blob, credentials);
+                    //var cloudref = blobClient.GetBlobReferenceFromServer(sc.TransformUri(new Uri(sBlobUri)));
+                    return (int?)(cloudBlob.Properties.Length / (1024 * 1024 * 1024));
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
             }
 
             return null;
