@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
 

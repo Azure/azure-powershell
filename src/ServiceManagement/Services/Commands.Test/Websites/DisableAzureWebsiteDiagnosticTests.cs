@@ -14,14 +14,14 @@
 
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Websites;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites;
 using Microsoft.WindowsAzure.Commands.Websites;
 using Moq;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using System;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Websites

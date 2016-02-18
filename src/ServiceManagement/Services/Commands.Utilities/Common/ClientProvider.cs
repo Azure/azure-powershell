@@ -14,8 +14,8 @@
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
-    using Microsoft.Azure.Common.Authentication;
-    using Microsoft.Azure.Common.Authentication.Models;
+    using Microsoft.Azure.Commands.Common.Authentication;
+    using Microsoft.Azure.Commands.Common.Authentication.Models;
     using Microsoft.WindowsAzure.Management;
     using Microsoft.WindowsAzure.Management.Compute;
     using Microsoft.WindowsAzure.Management.Network;

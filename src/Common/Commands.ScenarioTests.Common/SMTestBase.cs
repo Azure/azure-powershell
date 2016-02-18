@@ -15,9 +15,10 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.ServiceManagemenet.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 {
@@ -30,6 +31,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 
         public SMTestBase()
         {
+            System.Environment.CurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
             BaseSetup();
         }
 

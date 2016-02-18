@@ -18,8 +18,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
     using System;
     using System.Management.Automation;
     using System.Globalization;
-    using Microsoft.Azure.Common.Authentication;
-    using Microsoft.Azure.Common.Authentication.Models;
+    using Microsoft.Azure.Commands.Common.Authentication;
+    using Microsoft.Azure.Commands.Common.Authentication.Models;
     using Microsoft.Azure.Management.Logic;
     using Microsoft.Azure.Management.Logic.Models;
 

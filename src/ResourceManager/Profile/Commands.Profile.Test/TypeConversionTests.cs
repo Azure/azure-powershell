@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Newtonsoft.Json;
 using Xunit;
 using Xunit.Extensions;
 
@@ -15,10 +9,264 @@ namespace Microsoft.Azure.Commands.Profile.Test
 {
     public class TypeConversionTests
     {
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanConvertNullEnvironments()
+        {
+            Assert.Null((PSAzureEnvironment)null);
+            var environment = (PSAzureEnvironment) new AzureEnvironment();
+            Assert.NotNull(environment);
+            Assert.Null(environment.ActiveDirectoryAuthority);
+            Assert.Null(environment.ActiveDirectoryServiceEndpointResourceId);
+            Assert.Null(environment.AdTenant);
+            Assert.Null(environment.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix);
+            Assert.Null(environment.AzureDataLakeStoreFileSystemEndpointSuffix);
+            Assert.Null(environment.AzureKeyVaultDnsSuffix);
+            Assert.Null(environment.AzureKeyVaultServiceEndpointResourceId);
+            Assert.False(environment.EnableAdfsAuthentication);
+            Assert.Null(environment.GalleryUrl);
+            Assert.Null(environment.GraphUrl);
+            Assert.Null(environment.GraphEndpointResourceId);
+            Assert.Null(environment.ManagementPortalUrl);
+            Assert.Null(environment.Name);
+            Assert.Null(environment.PublishSettingsFileUrl);
+            Assert.Null(environment.ResourceManagerUrl);
+            Assert.Null(environment.ServiceManagementUrl);
+            Assert.Null(environment.SqlDatabaseDnsSuffix);
+            Assert.Null(environment.StorageEndpointSuffix);
+            Assert.Null(environment.TrafficManagerDnsSuffix);
+       }
+        
+        [Theory]
+        [InlineData("TestAll", true, "https://login.microsoftonline.com","https://management.core.windows.net/",
+            "Common", "https://mangement.azure.com/dataLakeJobs", "https://management.azure.com/dataLakeFiles", 
+            ".keyvault.azure.com", "https://keyvault.azure.com/", "https://gallery.azure.com", 
+            "https://graph.windows.net", "https://graph.windows.net/", "https://manage.windowsazure.com", 
+            "https://manage.windowsazure.com/publishsettings", "https://management.azure.com", 
+            "https://management.core.windows.net", ".sql.azure.com", ".core.windows.net", 
+            ".trafficmanager.windows.net")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanConvertValidEnvironments(string name, bool onPremise, string activeDirectory, string serviceResource, 
+            string adTenant, string dataLakeJobs, string dataLakeFiles, string kvDnsSuffix, 
+            string kvResource, string gallery, string graph, string graphResource, string portal, 
+            string publishSettings, string resourceManager, string serviceManagement, 
+            string sqlSuffix, string storageSuffix, string trafficManagerSuffix)
+        {
+            AzureEnvironment azEnvironment = CreateEnvironment(name, onPremise, activeDirectory, 
+                serviceResource, adTenant, dataLakeJobs, dataLakeFiles, kvDnsSuffix, 
+                kvResource, gallery, graph, graphResource, portal, publishSettings, 
+                resourceManager, serviceManagement, sqlSuffix, storageSuffix,
+                trafficManagerSuffix);
+            var environment = (PSAzureEnvironment) azEnvironment;
+            Assert.NotNull(environment);
+            CheckEndpoint(AzureEnvironment.Endpoint.ActiveDirectory, azEnvironment, 
+                environment.ActiveDirectoryAuthority);
+            CheckEndpoint(AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId, 
+                azEnvironment, environment.ActiveDirectoryServiceEndpointResourceId);
+            CheckEndpoint(AzureEnvironment.Endpoint.AdTenant, azEnvironment, 
+                environment.AdTenant);
+            CheckEndpoint(AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix, azEnvironment, 
+                environment.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix);
+            CheckEndpoint(AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix, azEnvironment, 
+                environment.AzureDataLakeStoreFileSystemEndpointSuffix);
+            CheckEndpoint(AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix, azEnvironment, 
+                environment.AzureKeyVaultDnsSuffix);
+            CheckEndpoint(AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId, azEnvironment, 
+                environment.AzureKeyVaultServiceEndpointResourceId);
+            CheckEndpoint(AzureEnvironment.Endpoint.Gallery, azEnvironment,
+                environment.GalleryUrl);
+            CheckEndpoint(AzureEnvironment.Endpoint.Graph, azEnvironment, 
+                environment.GraphUrl);
+            CheckEndpoint(AzureEnvironment.Endpoint.GraphEndpointResourceId, azEnvironment, 
+                environment.GraphEndpointResourceId);
+            CheckEndpoint(AzureEnvironment.Endpoint.ManagementPortalUrl, azEnvironment, 
+                environment.ManagementPortalUrl);
+            CheckEndpoint(AzureEnvironment.Endpoint.PublishSettingsFileUrl, azEnvironment, 
+                environment.PublishSettingsFileUrl);
+            CheckEndpoint(AzureEnvironment.Endpoint.ResourceManager, azEnvironment, 
+                environment.ResourceManagerUrl);
+            CheckEndpoint(AzureEnvironment.Endpoint.ServiceManagement, azEnvironment, 
+                environment.ServiceManagementUrl);
+            CheckEndpoint(AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix, azEnvironment, 
+                environment.SqlDatabaseDnsSuffix);
+            CheckEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix, azEnvironment, 
+                environment.StorageEndpointSuffix);
+            CheckEndpoint(AzureEnvironment.Endpoint.TrafficManagerDnsSuffix, azEnvironment, 
+                environment.TrafficManagerDnsSuffix);
+            Assert.Equal(azEnvironment.Name, environment.Name);
+            Assert.Equal(azEnvironment.OnPremise, environment.EnableAdfsAuthentication);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanConvertNullPSEnvironments()
+        {
+            PSAzureEnvironment env = null;
+            Assert.Null((AzureEnvironment)env);
+            var environment = (AzureEnvironment) new PSAzureEnvironment();
+            Assert.NotNull(environment);
+            Assert.False(environment.IsEndpointSet(AzureEnvironment.Endpoint.ActiveDirectory));
+            Assert.False(environment.IsEndpointSet(AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId));
+            Assert.False(environment.IsEndpointSet(AzureEnvironment.Endpoint.AdTenant));
+            Assert.False(environment.IsEndpointSet(AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix));
+            Assert.False(environment.IsEndpointSet(AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix));
+            Assert.False(environment.IsEndpointSet(AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix));
+            Assert.False(environment.IsEndpointSet(AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId));
+            Assert.False(environment.OnPremise);
+            Assert.False(environment.IsEndpointSet(AzureEnvironment.Endpoint.Gallery));
+            Assert.False(environment.IsEndpointSet(AzureEnvironment.Endpoint.Graph));
+            Assert.False(environment.IsEndpointSet(AzureEnvironment.Endpoint.GraphEndpointResourceId));
+            Assert.False(environment.IsEndpointSet(AzureEnvironment.Endpoint.ManagementPortalUrl));
+            Assert.Null(environment.Name);
+            Assert.False(environment.IsEndpointSet(AzureEnvironment.Endpoint.PublishSettingsFileUrl));
+            Assert.False(environment.IsEndpointSet(AzureEnvironment.Endpoint.ResourceManager));
+            Assert.False(environment.IsEndpointSet(AzureEnvironment.Endpoint.ServiceManagement));
+            Assert.False(environment.IsEndpointSet(AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix));
+            Assert.False(environment.IsEndpointSet(AzureEnvironment.Endpoint.StorageEndpointSuffix));
+            Assert.False(environment.IsEndpointSet(AzureEnvironment.Endpoint.TrafficManagerDnsSuffix));
+       }
+        [Theory]
+        [InlineData("TestAll", true, "https://login.microsoftonline.com","https://management.core.windows.net/",
+            "Common", "https://mangement.azure.com/dataLakeJobs", "https://management.azure.com/dataLakeFiles", 
+            ".keyvault.azure.com", "https://keyvault.azure.com/", "https://gallery.azure.com", 
+            "https://graph.windows.net", "https://graph.windows.net/", "https://manage.windowsazure.com", 
+            "https://manage.windowsazure.com/publishsettings", "https://management.azure.com", 
+            "https://management.core.windows.net", ".sql.azure.com", ".core.windows.net", 
+            ".trafficmanager.windows.net")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanConvertValidPSEnvironments(string name, bool onPremise, string activeDirectory, string serviceResource, 
+            string adTenant, string dataLakeJobs, string dataLakeFiles, string kvDnsSuffix, 
+            string kvResource, string gallery, string graph, string graphResource, string portal, 
+            string publishSettings, string resourceManager, string serviceManagement, 
+            string sqlSuffix, string storageSuffix, string trafficManagerSuffix)
+        {
+            PSAzureEnvironment environment = new PSAzureEnvironment 
+            {
+                Name =name, 
+                EnableAdfsAuthentication = onPremise, 
+                ActiveDirectoryAuthority = activeDirectory, 
+                ActiveDirectoryServiceEndpointResourceId = serviceResource, 
+                AdTenant = adTenant, 
+                AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = dataLakeJobs, 
+                AzureDataLakeStoreFileSystemEndpointSuffix = dataLakeFiles, 
+                AzureKeyVaultDnsSuffix = kvDnsSuffix, 
+                AzureKeyVaultServiceEndpointResourceId = kvResource, 
+                GalleryUrl = gallery, 
+                GraphUrl = graph, 
+                GraphEndpointResourceId = graphResource, 
+                ManagementPortalUrl = portal, 
+                PublishSettingsFileUrl = publishSettings, 
+                ResourceManagerUrl = resourceManager, 
+                ServiceManagementUrl = serviceManagement, 
+                SqlDatabaseDnsSuffix = sqlSuffix, 
+                StorageEndpointSuffix = storageSuffix,
+                TrafficManagerDnsSuffix = trafficManagerSuffix
+            };
+            var azEnvironment = (AzureEnvironment) environment;
+            Assert.NotNull(environment);
+            CheckEndpoint(AzureEnvironment.Endpoint.ActiveDirectory, azEnvironment, 
+                environment.ActiveDirectoryAuthority);
+            CheckEndpoint(AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId, 
+                azEnvironment, environment.ActiveDirectoryServiceEndpointResourceId);
+            CheckEndpoint(AzureEnvironment.Endpoint.AdTenant, azEnvironment, 
+                environment.AdTenant);
+            CheckEndpoint(AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix, azEnvironment, 
+                environment.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix);
+            CheckEndpoint(AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix, azEnvironment, 
+                environment.AzureDataLakeStoreFileSystemEndpointSuffix);
+            CheckEndpoint(AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix, azEnvironment, 
+                environment.AzureKeyVaultDnsSuffix);
+            CheckEndpoint(AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId, azEnvironment, 
+                environment.AzureKeyVaultServiceEndpointResourceId);
+            CheckEndpoint(AzureEnvironment.Endpoint.Gallery, azEnvironment,
+                environment.GalleryUrl);
+            CheckEndpoint(AzureEnvironment.Endpoint.Graph, azEnvironment, 
+                environment.GraphUrl);
+            CheckEndpoint(AzureEnvironment.Endpoint.GraphEndpointResourceId, azEnvironment, 
+                environment.GraphEndpointResourceId);
+            CheckEndpoint(AzureEnvironment.Endpoint.ManagementPortalUrl, azEnvironment, 
+                environment.ManagementPortalUrl);
+            CheckEndpoint(AzureEnvironment.Endpoint.PublishSettingsFileUrl, azEnvironment, 
+                environment.PublishSettingsFileUrl);
+            CheckEndpoint(AzureEnvironment.Endpoint.ResourceManager, azEnvironment, 
+                environment.ResourceManagerUrl);
+            CheckEndpoint(AzureEnvironment.Endpoint.ServiceManagement, azEnvironment, 
+                environment.ServiceManagementUrl);
+            CheckEndpoint(AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix, azEnvironment, 
+                environment.SqlDatabaseDnsSuffix);
+            CheckEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix, azEnvironment, 
+                environment.StorageEndpointSuffix);
+            CheckEndpoint(AzureEnvironment.Endpoint.TrafficManagerDnsSuffix, azEnvironment, 
+                environment.TrafficManagerDnsSuffix);
+            Assert.Equal(azEnvironment.Name, environment.Name);
+            Assert.Equal(azEnvironment.OnPremise, environment.EnableAdfsAuthentication);
+        }
+
+
+        private AzureEnvironment CreateEnvironment(string name, bool onPremise, string activeDirectory, string serviceResource, 
+            string adTenant, string dataLakeJobs, string dataLakeFiles, string kvDnsSuffix, 
+            string kvResource, string gallery, string graph, string graphResource, string portal, 
+            string publishSettings, string resourceManager, string serviceManagement, 
+            string sqlSuffix, string storageSuffix, string trafficManagerSuffix)
+        {
+            var environment = new AzureEnvironment() {Name = name, OnPremise = onPremise};
+            SetEndpoint(AzureEnvironment.Endpoint.ActiveDirectory, environment, activeDirectory);
+            CheckEndpoint(AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId, 
+                environment, serviceResource);
+            CheckEndpoint(AzureEnvironment.Endpoint.AdTenant, environment, adTenant);
+            CheckEndpoint(
+                AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix, 
+                environment, 
+                dataLakeJobs);
+            CheckEndpoint(AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix, 
+                environment, 
+                dataLakeFiles);
+            CheckEndpoint(AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix, environment, 
+                kvDnsSuffix);
+            CheckEndpoint(AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId, 
+                environment, 
+                kvResource);
+            CheckEndpoint(AzureEnvironment.Endpoint.Gallery, environment, gallery);
+            CheckEndpoint(AzureEnvironment.Endpoint.Graph, environment,graph);
+            CheckEndpoint(AzureEnvironment.Endpoint.GraphEndpointResourceId, environment, 
+                graphResource);
+            CheckEndpoint(AzureEnvironment.Endpoint.ManagementPortalUrl, environment, portal);
+            CheckEndpoint(AzureEnvironment.Endpoint.PublishSettingsFileUrl, environment, 
+                publishSettings);
+            CheckEndpoint(AzureEnvironment.Endpoint.ResourceManager, environment, 
+                resourceManager);
+            CheckEndpoint(AzureEnvironment.Endpoint.ServiceManagement, environment, 
+                serviceManagement);
+            CheckEndpoint(AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix, environment, 
+                sqlSuffix);
+            CheckEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix, environment, 
+                storageSuffix);
+            CheckEndpoint(AzureEnvironment.Endpoint.TrafficManagerDnsSuffix, environment, 
+                trafficManagerSuffix);
+
+            return environment;
+
+        }
+
+        private void SetEndpoint(AzureEnvironment.Endpoint endpoint, AzureEnvironment environment, string endpointValue)
+        {
+            if (!environment.IsEndpointSet(endpoint) && !string.IsNullOrEmpty(endpointValue))
+            {
+                environment.Endpoints[endpoint] = endpointValue;
+            }
+        }
+        private void CheckEndpoint(AzureEnvironment.Endpoint endpoint, AzureEnvironment environment, string valueToCheck)
+        {
+            if (environment.IsEndpointSet(endpoint))
+            {
+                Assert.Equal(environment.GetEndpoint(endpoint), valueToCheck);
+            }
+        }
+
        [Fact]
        [Trait(Category.AcceptanceType, Category.CheckIn)]
        public void CanConvertNullAzureSubscriptions()
-        { 
+       { 
             Assert.Null((PSAzureSubscription)null);
             var subscription = (PSAzureSubscription) (new AzureSubscription());
             Assert.NotNull(subscription);
@@ -174,7 +422,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var account = (PSAzureRmAccount) oldAccount;
             Assert.Equal(oldAccount.Type.ToString(), account.AccountType);
             Assert.Equal(oldAccount.Id, account.Id);
-            Assert.DoesNotThrow(() => account.ToString());
+            var accountString = account.ToString();
         }
 
        [Fact]

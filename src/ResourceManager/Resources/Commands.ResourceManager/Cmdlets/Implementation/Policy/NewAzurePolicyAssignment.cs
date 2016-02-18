@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-    using Microsoft.Azure.Common.Authentication;
+    using ServiceManagemenet.Common;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Newtonsoft.Json.Linq;
 
