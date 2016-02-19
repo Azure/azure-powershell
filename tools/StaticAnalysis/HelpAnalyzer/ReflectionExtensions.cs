@@ -55,6 +55,11 @@ namespace StaticAnalysis.help
 
         }
 
+        public static IEnumerable<PropertyInfo> GetParameters(this Type cmdletType)
+        {
+            return cmdletType.GetProperties().Where(p => p.HasAttribute<ParameterAttribute>());
+        }
+
         public static IEnumerable<Type> GetCmdletTypes(this Assembly assembly)
         {
             return assembly.GetTypes().Where(t => t.HasAttribute<CmdletAttribute>());

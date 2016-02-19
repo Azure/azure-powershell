@@ -70,6 +70,10 @@
     <Compile Include="IReportRecord.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SignatureVerifier\CmdletSignatureLoader.cs" />
+    <Compile Include="SignatureVerifier\CmdletSignatureMetdata.cs" />
+    <Compile Include="SignatureVerifier\OutputMetadata.cs" />
+    <Compile Include="SignatureVerifier\ParameterMetadata.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
