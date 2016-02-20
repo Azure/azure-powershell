@@ -51,7 +51,7 @@
     <Compile Include="JobCommands\StopAzureHDInsightJobCommand.cs" />
     <Compile Include="JobCommands\StartAzureHDInsightJobCommand.cs" />
     <Compile Include="ManagementCommands\SetAzureHDInsightDefaultStorageCommand.cs" />
-    <Compile Include="ManagementCommands\NewAzureHDInsightClusterIdentity.cs" />
+    <Compile Include="ManagementCommands\AddAzureHDInsightClusterIdentity.cs" />
     <Compile Include="ManagementCommands\AddAzureHDInsightStorageCommand.cs" />
     <Compile Include="ManagementCommands\AddAzureHDInsightScriptActionCommand.cs" />
     <Compile Include="ManagementCommands\AddAzureHDInsightMetastoreCommand.cs" />
