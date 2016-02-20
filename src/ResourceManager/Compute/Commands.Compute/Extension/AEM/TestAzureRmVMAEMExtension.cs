@@ -58,6 +58,13 @@ namespace Microsoft.Azure.Commands.Compute
                 HelpMessage = "Time that should be waited for the Strorage Metrics or Diagnostics data to be available in minutes. Default is 15 minutes")]
         public int WaitTimeInMinutes { get; set; }
 
+        [Parameter(
+                Mandatory = false,
+                Position = 4,
+                ValueFromPipelineByPropertyName = false,
+                HelpMessage = "Disables the test for table content")]
+        public SwitchParameter SkipTableContentCheck { get; set; }
+
         public TestAzureRmVMAEMExtension()
         {
             this.WaitTimeInMinutes = 15;
@@ -214,16 +221,20 @@ namespace Microsoft.Azure.Commands.Compute
                         var filterMinute = Microsoft.WindowsAzure.Storage.Table.TableQuery.
                             GenerateFilterConditionForDate("Timestamp", "gt", DateTime.Now.AddMinutes(AEMExtensionConstants.ContentAgeInMinutes * -1));
 
-                        if (storageConfigOk && this._Helper.CheckTableAndContent(account, "$MetricsMinutePrimaryTransactionsBlob", filterMinute, ".", false, this.WaitTimeInMinutes))
+                        if (!this.SkipTableContentCheck.IsPresent && storageConfigOk && this._Helper.CheckTableAndContent(account, "$MetricsMinutePrimaryTransactionsBlob", filterMinute, ".", false, this.WaitTimeInMinutes))
 
                         {
                             this._Helper.WriteHost("OK ", ConsoleColor.Green);
                             accountResult.PartialResults.Add(new AEMTestResult("Storage Metrics data check for {0}", true, account));
                         }
-                        else
+                        else if (!this.SkipTableContentCheck.IsPresent)
                         {
                             accountResult.PartialResults.Add(new AEMTestResult("Storage Metrics data check for {0}", false, account));
                             this._Helper.WriteHost("NOT OK ", ConsoleColor.Red);
+                        }
+                        else
+                        {
+                            this._Helper.WriteHost("Skipped ", ConsoleColor.Yellow);
                         }
                     }
                     else
@@ -437,7 +448,7 @@ namespace Microsoft.Azure.Commands.Compute
 
 
                         var ok = false;
-                        if ((!String.IsNullOrEmpty(deploymentId)) && (!String.IsNullOrEmpty(roleName)) && (!String.IsNullOrEmpty(wadstorage)))
+                        if (!this.SkipTableContentCheck.IsPresent && (!String.IsNullOrEmpty(deploymentId)) && (!String.IsNullOrEmpty(roleName)) && (!String.IsNullOrEmpty(wadstorage)))
                         {
 
                             if (this.OSType.Equals(AEMExtensionConstants.OSTypeLinux, StringComparison.InvariantCultureIgnoreCase))
@@ -456,15 +467,19 @@ namespace Microsoft.Azure.Commands.Compute
 
 
                         }
-                        if (ok)
+                        if (ok && !this.SkipTableContentCheck.IsPresent)
                         {
                             wadConfigResult.PartialResults.Add(new AEMTestResult("IaaSDiagnostics data check", true));
                             this._Helper.WriteHost("OK ", ConsoleColor.Green);
                         }
-                        else
+                        else if (!this.SkipTableContentCheck.IsPresent)
                         {
                             wadConfigResult.PartialResults.Add(new AEMTestResult("IaaSDiagnostics data check", false));
                             this._Helper.WriteHost("NOT OK ", ConsoleColor.Red);
+                        }
+                        else
+                        {
+                            this._Helper.WriteHost("Skipped ", ConsoleColor.Yellow);
                         }
                     }
                     else

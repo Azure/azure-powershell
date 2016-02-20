@@ -56,7 +56,7 @@ function Test-AEMExtensionBasicWindows
 
 
 		# Test command.
-		$testResult = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -WaitTimeInMinutes 50
+		$testResult = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -WaitTimeInMinutes 50 -SkipTableContentCheck
 		Assert-True { $testResult.Result }
 		Assert-True { ($testResult.PartialResults.Count -gt 0) }
 
@@ -117,7 +117,7 @@ function Test-AEMExtensionAdvancedWindows
 
 		# Test command.
 		Write-Verbose "Test-AEMExtensionAdvancedWindows: Test with extension"
-		$res = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
+		$res = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -SkipTableContentCheck
 		Assert-True { $res.Result }
 		Assert-True { ($res.PartialResults.Count -gt 0) }
 		Write-Verbose "Test-AEMExtensionAdvancedWindows: Test done"
@@ -177,7 +177,7 @@ function Test-AEMExtensionBasicLinux
 		Restart-AzureRmVM -ResourceGroupName $rgname -Name $vmname
 
 		# Test command.
-		$testResult = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -WaitTimeInMinutes 50
+		$testResult = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -WaitTimeInMinutes 50 -SkipTableContentCheck
 		Assert-True { $testResult.Result }
 		Assert-True { ($testResult.PartialResults.Count -gt 0) }
 
@@ -239,7 +239,7 @@ function Test-AEMExtensionAdvancedLinux
 
 		# Test command.
 		Write-Verbose "Test-AEMExtensionAdvancedLinux: Test with extension"
-		$res = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
+		$res = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -SkipTableContentCheck
 		Assert-True { $res.Result }
 		Assert-True { ($res.PartialResults.Count -gt 0) }
 		Write-Verbose "Test-AEMExtensionAdvancedLinux: Test done"

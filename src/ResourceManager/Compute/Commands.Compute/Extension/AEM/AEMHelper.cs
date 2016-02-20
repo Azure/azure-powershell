@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
                 }
                 catch (Exception)
                 {
-                    throw;
+                    this.WriteWarning("Could not determine OS Disk size.");
                 }
             }
 
@@ -288,6 +288,11 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
             if (!diskSize.HasValue)
             {
                 diskSize = this.GetDiskSizeGbFromBlobUri(vhdUri);
+            }
+            if (!diskSize.HasValue)
+            {
+                this.WriteWarning("OS Disk size is empty and could not be determined. Assuming P10.");
+                diskSize = 127;
             }
 
             AzureSLA sla = new AzureSLA();
