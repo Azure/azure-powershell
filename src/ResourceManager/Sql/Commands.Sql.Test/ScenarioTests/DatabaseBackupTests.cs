@@ -26,5 +26,23 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             RunPowerShellTest("Test-ListDatabaseRestorePoints");
         }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRestoreGeoBackup()
+        {
+            RunPowerShellTest("Test-RestoreGeoBackup");
+        }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRestoreDeletedDatabaseBackup()
+        {
+            RunPowerShellTest("Test-RestoreDeletedDatabaseBackup");
+        }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRestorePointInTimeBackup()
+        {
+            RunPowerShellTest("Test-RestorePointInTimeBackup");
+        }
     }
 }

@@ -219,7 +219,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\DatabaseBackupTests.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\RecommendedElasticPoolTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

@@ -35,7 +35,25 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             ParameterSetName = "FromPointInTimeBackup",
             Mandatory = true,
             HelpMessage = "Restore from a point-in-time backup.")]
-        public bool FromPointInTimeBackup { get; set; }
+        public SwitchParameter FromPointInTimeBackup { get; set; }
+
+        /// <summary>
+        /// Gets or sets flag indicating a restore of a dropped database.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = "FromDeletedDatabaseBackup",
+            Mandatory = true,
+            HelpMessage = "Restore a dropped database.")]
+        public SwitchParameter FromDeletedDatabaseBackup { get; set; }
+
+        /// <summary>
+        /// Gets or sets flag indicating a geo-restore (recover) request
+        /// </summary>
+        [Parameter(
+            ParameterSetName = "FromGeoBackup",
+            Mandatory = true,
+            HelpMessage = "Restore from a geo backup.")]
+        public SwitchParameter FromGeoBackup { get; set; }
 
         /// <summary>
         /// Gets or sets the point in time to restore the database to
@@ -47,24 +65,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         public DateTime PointInTime { get; set; }
 
         /// <summary>
-        /// Gets or sets flag indicating a restore of a dropped database.
-        /// </summary>
-        [Parameter(
-            ParameterSetName = "FromDeletedDatabaseBackup",
-            Mandatory = true,
-            HelpMessage = "Restore a dropped database.")]
-        public bool FromDeletedDatabaseBackup { get; set; }
-
-        /// <summary> 
-        /// Gets or sets the name of the database server to use. 
-        /// </summary> 
-        [Parameter(Mandatory = true, 
-            ValueFromPipelineByPropertyName = true, 
-            HelpMessage = "The name of the Azure SQL Database Server to restore the database to.")] 
-        [ValidateNotNullOrEmpty]
-        public string ServerName { get; set; } 
-
-        /// <summary>
         /// Gets or sets the deletion time of the dropped database to restore.
         /// </summary>
         [Parameter(
@@ -74,14 +74,29 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             HelpMessage = "The deletion date of the dropped database to restore.")]
         public DateTime DeletionDate { get; set; }
 
+        /// <summary> 
+        /// Gets or sets the name of the database server to use. 
+        /// </summary> 
+        [Parameter(Mandatory = true, 
+            ValueFromPipelineByPropertyName = true, 
+            HelpMessage = "The name of the Azure SQL Database Server to restore the database to.")] 
+        [ValidateNotNullOrEmpty]
+        public string ServerName { get; set; }
+
         /// <summary>
-        /// Gets or sets flag indicating a geo-restore (recover) request
+        /// Gets or sets the name of the target database to restore to
         /// </summary>
-        [Parameter(
-            ParameterSetName = "FromGeoBackup",
-            Mandatory = true,
-            HelpMessage = "Restore from a geo backup.")]
-        public bool FromGeoBackup { get; set; }
+        [Parameter(Mandatory = true,
+                    HelpMessage = "The name of the target database to restore to.")]
+        public string TargetDatabaseName { get; set; }
+
+        /// <summary>
+        /// The resource ID of the database to restore (dropped DB, geo backup DB, live DB)
+        /// </summary>
+        [Parameter(Mandatory = true,
+                    ValueFromPipelineByPropertyName = true, 
+                    HelpMessage = "The resource ID of the database to restore.")]
+        public string ResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the target edition of the database to restore
@@ -106,20 +121,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                     ValueFromPipelineByPropertyName = true,
                     HelpMessage = "The name of the elastic pool to restore to.")]
         public string ElasticPoolName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the target database to restore to
-        /// </summary>
-        [Parameter(Mandatory = true,
-                    HelpMessage = "The name of the target database to restore to.")]
-        public string TargetDatabaseName { get; set; }
-
-        /// <summary>
-        /// The resource ID of the database to restore (dropped DB, geo backup DB, live DB)
-        /// </summary>
-        [Parameter(Mandatory = true,
-                    HelpMessage = "The resource ID of the database to restore.")]
-        public string SourceDatabaseId { get; set; }
         
         /// <summary>
         /// Initializes the adapter
@@ -135,7 +136,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// Send the restore request
         /// </summary>
         /// <returns>The list of entities</returns>
-        protected override AzureSqlDatabaseModel ExecuteCmdlet()
+        protected override AzureSqlDatabaseModel GetEntity()
         {
             AzureSqlDatabaseModel model;
             DateTime restorePointInTime = DateTime.MinValue;
@@ -171,7 +172,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                 CreateMode = createMode
             };
 
-            return ModelAdapter.RestoreDatabase(this.ResourceGroupName, restorePointInTime, SourceDatabaseId, model);
+            return ModelAdapter.RestoreDatabase(this.ResourceGroupName, restorePointInTime, ResourceId, model);
         }
     }
 }

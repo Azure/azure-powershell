@@ -103,9 +103,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 {
                     ResourceGroupName = resourceGroup,
                     ServerName = serverName,
-                    SourceDatabaseId = geoBackup.Id,
+                    ResourceId = geoBackup.Id,
                     Edition = geoBackup.Properties.Edition,
-                    EntityId = geoBackup.name + "," + geoBackup.Properties.LastAvailableBackupDate,
                     LastAvailableBackupDate = geoBackup.Properties.LastAvailableBackupDate
                 };
             }).ToList();
@@ -134,9 +133,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                     CreationDate = deletedDatabaseBackup.Properties.CreationDate,
                     DeletionDate = deletedDatabaseBackup.Properties.DeletionDate,
                     RecoveryPeriodStartDate = deletedDatabaseBackup.Properties.EarliestRestoreDate,
-                    EntityId = deletedDatabaseBackup.name,
-                    LastAvailableBackupDate = deletedDatabaseBackup.Properties.LastAvailableBackupDate,
-                    SourceDatabaseId = deletedDatabaseBackup.Id
+                    ResourceId = deletedDatabaseBackup.Id
                 };
             }).ToList();
         }
@@ -146,11 +143,11 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// </summary>
         /// <param name="resourceGroup">The name of the resource group</param>
         /// <param name="restorePointInTime">A point to time to restore to (for PITR and dropped DB restore)</param>
-        /// <param name="sourceDatabaseId">The resource ID of the DB to restore</param>
+        /// <param name="resourceId">The resource ID of the DB to restore (live, geo backup, or deleted database)</param>
         /// <param name="model">An object modeling the database to create via restore</param>
         /// <param name="parameters">Parameters describing the database restore request</param>
         /// <returns>Restored database object</returns>
-        internal AzureSqlDatabaseModel RestoreDatabase(string resourceGroup, DateTime restorePointInTime, string sourceDatabaseId, AzureSqlDatabaseModel model)
+        internal AzureSqlDatabaseModel RestoreDatabase(string resourceGroup, DateTime restorePointInTime, string resourceId, AzureSqlDatabaseModel model)
         {
             DatabaseCreateOrUpdateParameters parameters = new DatabaseCreateOrUpdateParameters()
                 {
@@ -161,7 +158,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                         RequestedServiceObjectiveId = model.RequestedServiceObjectiveId,
                         ElasticPoolName = model.ElasticPoolName,
                         RequestedServiceObjectiveName = model.RequestedServiceObjectiveName,
-                        SourceDatabaseId = sourceDatabaseId,
+                        SourceDatabaseId = resourceId,
                         RestorePointInTime = restorePointInTime,
                         CreateMode = model.CreateMode
                     }

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Linq;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Sql.Backup.Model;
@@ -29,7 +30,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// <returns>The list of entities</returns>
         protected override IEnumerable<AzureSqlDeletedDatabaseBackupModel> GetEntity()
         {
-            return ModelAdapter.ListDeletedDatabaseBackups(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.DeletionDate);
+            return ModelAdapter.ListDeletedDatabaseBackups(this.ResourceGroupName, this.ServerName).Where(backup => (string.IsNullOrEmpty(DatabaseName) || backup.DatabaseName == DatabaseName) && (DeletionDate == null || backup.DeletionDate == DeletionDate)); ;
         }
 
         /// <summary>

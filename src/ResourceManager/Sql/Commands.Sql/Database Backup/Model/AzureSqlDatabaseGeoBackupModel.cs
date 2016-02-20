@@ -53,8 +53,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Model
         public DateTime LastAvailableBackupDate { get; set; }
 
         /// <summary>
-        /// Gets or sets the database ID
+        /// Gets or sets the resource ID
         /// </summary>
-        public Guid SourceDatabaseId { get; set; }
+        public string ResourceId { get; set; }
     }
 }

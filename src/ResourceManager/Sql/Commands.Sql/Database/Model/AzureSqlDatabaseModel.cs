@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         /// <summary>
         /// Gets or sets the resource ID of the database.
         /// </summary>
-        public string Id { get; set; }
+        public string ResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the create mode of the database.
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             Tags = database.Tags as Dictionary<string, string>;
             ElasticPoolName = database.Properties.ElasticPoolName;
             Location = database.Location;
-            Id = database.Id;
+            ResourceId = database.Id;
             CreateMode = database.Properties.CreateMode;
 
             Guid.TryParse(database.Properties.CurrentServiceObjectiveId, out id);
