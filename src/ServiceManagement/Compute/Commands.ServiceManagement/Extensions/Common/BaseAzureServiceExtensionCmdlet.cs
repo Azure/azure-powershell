@@ -39,8 +39,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
 
         protected const string NewExtensionParameterSetName = "NewExtension";
         protected const string NewExtensionUsingThumbprintParameterSetName = "NewExtensionUsingThumbprint";
+        protected const string UpdateExtensionStatusParameterSetName = "UpdateExtensionStatusParameterSetName";
         protected const string SetExtensionParameterSetName = "SetExtension";
         protected const string SetExtensionUsingThumbprintParameterSetName = "SetExtensionUsingThumbprint";
+        protected const string SetExtensionUsingDiagnosticsConfigurationParameterSetName = "SetExtensionUsingDiagnosticsConfiguration";
         protected const string RemoveByRolesParameterSet = "RemoveByRoles";
         protected const string RemoveAllRolesParameterSet = "RemoveAllRoles";
 
@@ -64,6 +66,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
         public virtual string ProviderNamespace { get; set; }
         public virtual string ExtensionName { get; set; }
         public virtual string Version { get; set; }
+        public virtual string ExtensionId { get; set; }
+        public virtual string ExtensionState { get; set; }
 
         public BaseAzureServiceExtensionCmdlet()
             : base()
@@ -114,10 +118,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             PeerDeployment = GetPeerDeployment(Slot);
         }
 
-        protected void ValidateRoles()
+        protected void ValidateRoles(string[] roles)
         {
-            Role = Role == null ? new string[0] : Role.Select(r => r == null ? string.Empty : r.Trim()).Distinct().ToArray();
-            foreach (string roleName in Role)
+            foreach (string roleName in roles)
             {
                 if (Deployment.Roles == null || !Deployment.Roles.Any(r => r.RoleName == roleName))
                 {
@@ -129,6 +132,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
                     throw new Exception(Resources.ServiceExtensionCannotFindRoleName);
                 }
             }
+        }
+
+        protected void ValidateRoles()
+        {
+            Role = Role == null ? new string[0] : Role.Select(r => r == null ? string.Empty : r.Trim()).Distinct().ToArray();
+            ValidateRoles(Role);
         }
 
         protected void ValidateThumbprint(bool uploadCert)

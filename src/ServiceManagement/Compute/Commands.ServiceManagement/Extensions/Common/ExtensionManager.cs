@@ -21,16 +21,12 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
-using DeploymentSlotType = Microsoft.WindowsAzure.Commands.ServiceManagement.Model.DeploymentSlotType;
-using System.Diagnostics;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
 {
     public class ExtensionManager
     {
         public const int ExtensionIdLiveCycleCount = 3;
-        private const string ExtensionIdTemplate = "{0}-{1}-{2}-Ext-{3}";
-        private const string DefaultAllRolesNameStr = "Default";
         private const string ExtensionCertificateSubject = "DC=Microsoft Azure Service Management for Extensions";
         private const string ThumbprintAlgorithmStr = "sha1";
         private const string ExtensionDefaultVersion = "1.*";
@@ -144,15 +140,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
                 thumbprintAlgorithm = string.Empty;
             }
         }
-        
+
         public ExtensionConfiguration InstallExtension(ExtensionConfigurationInput context, string slot,
-            DeploymentGetResponse deployment, DeploymentGetResponse peerDeployment)
+            ExtensionConfiguration extConfig, ExtensionConfiguration secondSlotExtConfig)
         {
-            Func<DeploymentGetResponse, ExtensionConfiguration> func = (d) => d == null ? null : d.ExtensionConfiguration;
-
-            ExtensionConfiguration extConfig = func(deployment);
-            ExtensionConfiguration secondSlotExtConfig = func(peerDeployment);
-
             ExtensionConfigurationBuilder builder = GetBuilder(extConfig);
             ExtensionConfigurationBuilder secondSlotConfigBuilder = null;
             if (secondSlotExtConfig != null)
@@ -165,9 +156,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
                 var extensionIds = (from index in Enumerable.Range(0, ExtensionIdLiveCycleCount)
                                     select r.GetExtensionId(context.Type, slot, index)).ToList();
 
-                string availableId = (from extensionId in extensionIds
-                                      where !builder.ExistAny(extensionId) && (secondSlotConfigBuilder == null || !secondSlotConfigBuilder.ExistAny(extensionId))
-                                      select extensionId).FirstOrDefault();
+                string availableId = context.Id
+                                     ?? (from extensionId in extensionIds
+                                         where
+                                             !builder.ExistAny(extensionId) &&
+                                             (secondSlotConfigBuilder == null ||
+                                              !secondSlotConfigBuilder.ExistAny(extensionId))
+                                         select extensionId).FirstOrDefault();
 
                 var extensionList = (from id in extensionIds
                                      let e = GetExtension(id)
@@ -238,6 +233,17 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             }
 
             return builder.ToConfiguration();
+        }
+
+        public ExtensionConfiguration InstallExtension(ExtensionConfigurationInput context, string slot,
+            DeploymentGetResponse deployment, DeploymentGetResponse peerDeployment)
+        {
+            Func<DeploymentGetResponse, ExtensionConfiguration> func = (d) => d == null ? null : d.ExtensionConfiguration;
+
+            ExtensionConfiguration extConfig = func(deployment);
+            ExtensionConfiguration secondSlotExtConfig = func(peerDeployment);
+
+            return InstallExtension(context, slot, extConfig, secondSlotExtConfig);
         }
 
         public void Uninstall(string nameSpace, string type, Microsoft.WindowsAzure.Management.Compute.Models.ExtensionConfiguration extConfig)
@@ -335,6 +341,40 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             }
             var extConfig = configBuilder.ToConfiguration();
 
+            return extConfig;
+        }
+
+        public ExtensionConfiguration UpdateExtensionState(ExtensionConfigurationInput input)
+        {
+            var extConfig = new ExtensionConfiguration();
+            if (input.Roles == null || input.Roles.Count == 1 && input.Roles[0].RoleType == ExtensionRoleType.AllRoles)
+            {
+
+                extConfig.AllRoles = new List<ExtensionConfiguration.Extension>();
+                extConfig.AllRoles.Add(new ExtensionConfiguration.Extension
+                {
+                    Id = input.Id,
+                    State = input.State
+                });
+            }
+            else
+            {
+                extConfig.NamedRoles = new List<ExtensionConfiguration.NamedRole>();
+                foreach (var role in input.Roles)
+                {
+                    var ext = new List<ExtensionConfiguration.Extension>();
+                    ext.Add(new ExtensionConfiguration.Extension
+                    {
+                        Id = input.Id,
+                        State = input.State
+                    });
+                    extConfig.NamedRoles.Add(new ExtensionConfiguration.NamedRole
+                    {
+                        RoleName = role.RoleName,
+                        Extensions = ext
+                    });
+                }
+            }
             return extConfig;
         }
 

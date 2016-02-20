@@ -38,7 +38,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 var allSACs = StorSimpleClient.GetAllStorageAccountCredentials();
                 if (StorageAccountName == null)
                 {
-                    WriteObject(allSACs);
+                    WriteObject(allSACs, true);
                     WriteVerbose(string.Format(Resources.SACGet_StatusMessage, allSACs.Count, allSACs.Count > 1 ? "s" : string.Empty));
                     return;
                 }

@@ -16,13 +16,14 @@ using System;
 using System.Globalization;
 using System.Management.Automation;
 using System.Security.Permissions;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.ServiceManagemenet.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 {
@@ -73,7 +74,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         /// </summary>
         private const string AnonymousEnvironmentParameterSet = "AnonymousAccountEnvironment";
 
-        private const string StorageAccountNameHelpMessage = "Azure Storage Acccount Name";
+        private const string StorageAccountNameHelpMessage = "Azure Storage Account Name";
         [Parameter(Position = 0, HelpMessage = StorageAccountNameHelpMessage,
             Mandatory = true, ParameterSetName = AccountNameKeyParameterSet)]
         [Parameter(Position = 0, HelpMessage = StorageAccountNameHelpMessage,
@@ -283,7 +284,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         /// <summary>
         /// Get storage account and use specific end point
         /// </summary>
-        /// <param name="credential">Storage credentail</param>
+        /// <param name="credential">Storage credential</param>
         /// <param name="storageAccountName">Storage account name, it's used for build end point</param>
         /// <param name="useHttps"></param>
         /// <param name="endPoint"></param>
@@ -338,15 +339,28 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         {
             AzureEnvironment azureEnvironment = null;
 
-            if (null != DefaultContext)
+            if (null != SMProfile)
             {
-                if (string.IsNullOrEmpty(azureEnvironmentName) )
+                if (DefaultContext != null && string.IsNullOrEmpty(azureEnvironmentName))
                 {
                     azureEnvironment = DefaultContext.Environment;
 
                     if (null == azureEnvironment)
                     {
                         azureEnvironmentName = EnvironmentName.AzureCloud;
+                    }
+                }
+
+                if(null == azureEnvironment)
+                {
+                    try
+                    {
+                        var profileClient = new ProfileClient(SMProfile);
+                        azureEnvironment = profileClient.GetEnvironmentOrDefault(azureEnvironmentName);
+                    }
+                    catch(ArgumentException e)
+                    {
+                        throw new ArgumentException(e.Message + " " + string.Format(CultureInfo.CurrentCulture, Resources.ValidEnvironmentName, EnvironmentName.AzureCloud, EnvironmentName.AzureChinaCloud));
                     }
                 }
 
@@ -381,16 +395,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
             return Resources.DefaultStorageEndPointDomain;
         }
 
-        protected override void ProcessRecord()
-        {
-            ExecuteCmdlet();
-        }
-
         /// <summary>
         /// Execute command
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        public virtual void ExecuteCmdlet()
+        public override void ExecuteCmdlet()
         {
             CloudStorageAccount account = null;
             bool useHttps = (StorageNouns.HTTPS.ToLower() == protocolType.ToLower());

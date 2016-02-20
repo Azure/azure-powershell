@@ -20,12 +20,14 @@ using System.Xml;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Management.Scheduler;
 using Microsoft.Azure.Management.RecoveryServices;
 using Microsoft.Azure.Management.SiteRecovery;
 using Microsoft.Azure.Test;
-using Microsoft.Azure.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using System;
+using System.Net.Http;
+using System.Reflection;
+using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
 {
@@ -38,11 +40,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
 
         public SiteRecoveryManagementClient SiteRecoveryMgmtClient { get; private set; }
         public RecoveryServicesManagementClient RecoveryServicesMgmtClient { get; private set; }
-        public CloudServiceManagementClient CloudServiceManagementClient { get; private set; }
-
+        
         protected SiteRecoveryTestsBase()
         {
-            this.vaultSettingsFilePath = "ScenarioTests\\vaultSettings.VaultCredentials";
+            this.vaultSettingsFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ScenarioTests\\vaultSettings.VaultCredentials");
 
             if (File.Exists(this.vaultSettingsFilePath))
             {
@@ -72,7 +73,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
             else
             {
                 throw new FileNotFoundException(
-                    "Vault settings file not found, please pass the file downloaded from portal");
+                    string.Format(
+                        "Vault settings file not found at '{0}', please pass the file downloaded from portal",
+                        this.vaultSettingsFilePath));
             }
 
             helper = new EnvironmentSetupHelper();
@@ -80,11 +83,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
 
         protected void SetupManagementClients()
         {
-            CloudServiceManagementClient = GetCloudServicesManagementClient();
             RecoveryServicesMgmtClient = GetRecoveryServicesManagementClient();
             SiteRecoveryMgmtClient = GetSiteRecoveryManagementClient();
 
-            helper.SetupManagementClients(CloudServiceManagementClient, RecoveryServicesMgmtClient, SiteRecoveryMgmtClient);
+            helper.SetupManagementClients(RecoveryServicesMgmtClient, SiteRecoveryMgmtClient);
         }
 
         protected void RunPowerShellTest(params string[] scripts)
@@ -106,35 +108,152 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
             }
         }
 
-        private CloudServiceManagementClient GetCloudServicesManagementClient()
-        {
-            return TestBase.GetServiceClient<CloudServiceManagementClient>(this.armTestFactory);
-        }
-
         private RecoveryServicesManagementClient GetRecoveryServicesManagementClient()
         {
-            return new RecoveryServicesManagementClient(
-                "Microsoft.SiteRecovery",
-                CloudServiceManagementClient.Credentials,
-                CloudServiceManagementClient.BaseUri).WithHandler(HttpMockServer.CreateInstance());
+            return GetServiceClient<RecoveryServicesManagementClient>();
         }
 
         private SiteRecoveryManagementClient GetSiteRecoveryManagementClient()
         {
-            TestEnvironment environment = this.armTestFactory.GetTestEnvironment();
+            return GetServiceClient<SiteRecoveryManagementClient>();
+        }
 
-            if (ServicePointManager.ServerCertificateValidationCallback == null)
+        public T GetServiceClient<T>() where T : class
+        {
+            var factory = (TestEnvironmentFactory)new CSMTestEnvironmentFactory();
+            var testEnvironment = factory.GetTestEnvironment();
+
+            ServicePointManager.ServerCertificateValidationCallback = IgnoreCertificateErrorHandler;
+
+            if (typeof(T) == typeof(RecoveryServicesManagementClient))
             {
-                ServicePointManager.ServerCertificateValidationCallback =
-                    IgnoreCertificateErrorHandler;
+                RecoveryServicesManagementClient client;
+
+                if (testEnvironment.UsesCustomUri())
+                {
+                    client = new RecoveryServicesManagementClient(
+                        "Microsoft.RecoveryServicesBVTD2",
+                        "vaults",
+                        testEnvironment.Credentials as SubscriptionCloudCredentials,
+                        testEnvironment.BaseUri);
+                }
+                else
+                {
+                    client = new RecoveryServicesManagementClient(
+                        "Microsoft.RecoveryServicesBVTD2",
+                        "vaults",
+                        testEnvironment.Credentials as SubscriptionCloudCredentials);
+                }
+                return GetRSMServiceClient<T>(factory, client);
+            }
+            else
+            {
+                SiteRecoveryManagementClient client;
+
+                if (testEnvironment.UsesCustomUri())
+                {
+                    client = new SiteRecoveryManagementClient(
+                        asrVaultCreds.ResourceName,
+                        asrVaultCreds.ResourceGroupName,
+                        "Microsoft.RecoveryServicesBVTD2",
+                        "vaults",
+                        testEnvironment.Credentials as SubscriptionCloudCredentials,
+                        testEnvironment.BaseUri);
+                }
+
+                else
+                {
+                    client = new SiteRecoveryManagementClient(
+                        asrVaultCreds.ResourceName,
+                        asrVaultCreds.ResourceGroupName,
+                        "Microsoft.RecoveryServices",
+                        "vaults",
+                        testEnvironment.Credentials as SubscriptionCloudCredentials);
+                }
+
+                return GetSRMServiceClient<T>(factory, client);
             }
 
-            return new SiteRecoveryManagementClient(
-                asrVaultCreds.ResourceName,
-                asrVaultCreds.ResourceGroupName,
-                "Microsoft.SiteRecovery",
-                CloudServiceManagementClient.Credentials,
-                CloudServiceManagementClient.BaseUri).WithHandler(HttpMockServer.CreateInstance());
+        }
+
+        public static T GetRSMServiceClient<T>(TestEnvironmentFactory factory, RecoveryServicesManagementClient client) where T : class
+        {
+            TestEnvironment testEnvironment = factory.GetTestEnvironment();
+
+            HttpMockServer instance;
+            try
+            {
+                instance = HttpMockServer.CreateInstance();
+            }
+            catch (ApplicationException)
+            {
+                HttpMockServer.Initialize("TestEnvironment", "InitialCreation");
+                instance = HttpMockServer.CreateInstance();
+            }
+            T obj2 = typeof(T).GetMethod("WithHandler", new Type[1]
+            {
+                typeof (DelegatingHandler)
+            }).Invoke((object)client, new object[1]
+            {
+                (object) instance
+            }) as T;
+
+            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            {
+                HttpMockServer.Variables[TestEnvironment.SubscriptionIdKey] = testEnvironment.SubscriptionId;
+            }
+
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                PropertyInfo property1 = typeof(T).GetProperty("LongRunningOperationInitialTimeout", typeof(int));
+                PropertyInfo property2 = typeof(T).GetProperty("LongRunningOperationRetryTimeout", typeof(int));
+                if (property1 != (PropertyInfo)null && property2 != (PropertyInfo)null)
+                {
+                    property1.SetValue((object)obj2, (object)0);
+                    property2.SetValue((object)obj2, (object)0);
+                }
+            }
+            return obj2;
+        }
+
+        public static T GetSRMServiceClient<T>(TestEnvironmentFactory factory, SiteRecoveryManagementClient client) where T : class
+        {
+            TestEnvironment testEnvironment = factory.GetTestEnvironment();
+
+            HttpMockServer instance;
+            try
+            {
+                instance = HttpMockServer.CreateInstance();
+            }
+            catch (ApplicationException)
+            {
+                HttpMockServer.Initialize("TestEnvironment", "InitialCreation");
+                instance = HttpMockServer.CreateInstance();
+            }
+            T obj2 = typeof(T).GetMethod("WithHandler", new Type[1]
+            {
+                typeof (DelegatingHandler)
+            }).Invoke((object)client, new object[1]
+            {
+                (object) instance
+            }) as T;
+
+            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            {
+                HttpMockServer.Variables[TestEnvironment.SubscriptionIdKey] = testEnvironment.SubscriptionId;
+            }
+
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                PropertyInfo property1 = typeof(T).GetProperty("LongRunningOperationInitialTimeout", typeof(int));
+                PropertyInfo property2 = typeof(T).GetProperty("LongRunningOperationRetryTimeout", typeof(int));
+                if (property1 != (PropertyInfo)null && property2 != (PropertyInfo)null)
+                {
+                    property1.SetValue((object)obj2, (object)0);
+                    property2.SetValue((object)obj2, (object)0);
+                }
+            }
+            return obj2;
         }
 
         private static bool IgnoreCertificateErrorHandler

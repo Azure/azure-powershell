@@ -44,7 +44,7 @@ HelpMessage = "The data factory object.")]
             HelpMessage = "The description to update.")]
         public string Description { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ByFactoryObject)
             {

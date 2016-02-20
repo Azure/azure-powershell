@@ -16,10 +16,9 @@ using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using System.Security;
 using Microsoft.Azure.Commands.Automation.Model;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
@@ -62,6 +61,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
         IEnumerable<NodeConfiguration> ListNodeConfigurations(string resourceGroupName, string automationAccountName, string rollupStatus);
 
         NodeConfiguration CreateNodeConfiguration(string resourceGroupName, string automationAccountName, string sourcePath, string nodeConfiguraionName, bool overWrite);
+
+        void DeleteNodeConfiguration(string resourceGroupName, string automationAccountName, string name, bool ignoreNodeMappings);
         #endregion
 
         #region Configurations
@@ -73,6 +74,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
         DscConfiguration CreateConfiguration(string resourceGroupName, string automationAccountName, string sourcePath, IDictionary tags, string description, bool? logVerbose, bool published, bool overWrite);
 
         DirectoryInfo GetConfigurationContent(string resourceGroupName, string automationAccountName, string configurationName, bool? isDraft, string outputFolder, bool overwriteExistingFile);
+
+        void DeleteConfiguration(string resourceGroupName, string automationAccountName, string name);
 
         #endregion
 
@@ -234,6 +237,10 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         IEnumerable<JobStream> GetJobStream(string resourceGroupName, string automationAccountName, Guid jobId,
             DateTimeOffset? time, string streamType, ref string nextLink);
+
+        JobStreamRecord GetJobStreamRecord(string resourceGroupName, string automationAccountName, Guid jobId, string jobStreamId);
+
+        object GetJobStreamRecordAsPsObject(string resourceGroupName, string automationAccountName, Guid jobId, string jobStreamId);
 
         #endregion
 

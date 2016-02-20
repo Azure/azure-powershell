@@ -14,8 +14,6 @@
 
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Compute.Models;
 using System.Linq;
 using System.Management.Automation;
 
@@ -31,25 +29,21 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
         public string PublisherName { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             ExecuteClientAction(() =>
             {
-                var parameters = new VirtualMachineExtensionImageListTypesParameters
-                {
-                    Location = Location.Canonicalize(),
-                    PublisherName = PublisherName
-                };
+                var result = this.VirtualMachineExtensionImageClient.ListTypesWithHttpMessagesAsync(
+                    this.Location.Canonicalize(),
+                    this.PublisherName).GetAwaiter().GetResult();
 
-                VirtualMachineImageResourceList result = this.VirtualMachineExtensionImageClient.ListTypes(parameters);
-
-                var images = from r in result.Resources
+                var images = from r in result.Body
                              select new PSVirtualMachineExtensionImageType
                              {
                                  RequestId = result.RequestId,
-                                 StatusCode = result.StatusCode,
+                                 StatusCode = result.Response.StatusCode,
                                  Id = r.Id,
                                  Location = r.Location,
                                  Type = r.Name,

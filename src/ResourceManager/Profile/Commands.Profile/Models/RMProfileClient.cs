@@ -13,19 +13,19 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Factories;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Common.Authentication.Properties;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Management.Automation;
 using System.Security;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Factories;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Properties;
+
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
@@ -66,20 +66,60 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             if (!string.IsNullOrEmpty(tenantId))
             {
                 var token = AcquireAccessToken(account, environment, tenantId, password, promptBehavior);
-                TryGetTenantSubscription(token, account, environment, tenantId, subscriptionId, subscriptionName, out newSubscription, out newTenant);
+                if(TryGetTenantSubscription(token, account, environment, tenantId, subscriptionId, subscriptionName, out newSubscription, out newTenant))
+                {
+                    account.SetOrAppendProperty(AzureAccount.Property.Tenants, new[] { newTenant.Id.ToString() });
+                }
             }
             // (tenant is not provided and subscription is present) OR
             // (tenant is not provided and subscription is not provided)
             else
             {
-                foreach (var tenant in ListAccountTenants(account, environment, password, promptBehavior))
+                var tenants = ListAccountTenants(account, environment, password, promptBehavior).Select(s => s.Id.ToString()).ToArray();
+                account.SetProperty(AzureAccount.Property.Tenants, null);
+                string accountId = null;
+
+                for (int i = 0; i < tenants.Count(); i++)
                 {
+                    var tenant = tenants[i];
+
                     AzureTenant tempTenant;
                     AzureSubscription tempSubscription;
-                    var token = AcquireAccessToken(account, environment, tenant.Id.ToString(), password,
-                        ShowDialog.Auto);
-                    if (newTenant == null && TryGetTenantSubscription(token, account, environment, tenant.Id.ToString(), subscriptionId, subscriptionName, out tempSubscription, out tempTenant) &&
-                        newTenant == null)
+
+                    IAccessToken token = null;
+
+                    try
+                    {
+                        token = AcquireAccessToken(account, environment, tenant, password, ShowDialog.Auto);
+
+                        if (accountId == null)
+                        {
+                            accountId = account.Id;
+                            account.SetOrAppendProperty(AzureAccount.Property.Tenants, tenant);
+                        }
+                        else if (accountId.Equals(account.Id, StringComparison.OrdinalIgnoreCase))
+                        {
+                            account.SetOrAppendProperty(AzureAccount.Property.Tenants, tenant);
+                        }
+                        else
+                        {   // if account ID is different from the first tenant account id we need to ignore current tenant
+                            WriteWarningMessage(string.Format(
+                                Microsoft.Azure.Commands.Profile.Properties.Resources.AccountIdMismatch, 
+                                account.Id, 
+                                tenant, 
+                                accountId));
+                            account.Id = accountId;
+                            token = null;
+                        }
+                    }
+                    catch
+                    {
+                        WriteWarningMessage(string.Format(Microsoft.Azure.Commands.Profile.Properties.Resources.UnableToAqcuireToken, tenant));
+                    }
+
+                    if (token != null && 
+                        newTenant == null &&                         
+                        TryGetTenantSubscription(token, account, environment, tenant, subscriptionId, subscriptionName, out tempSubscription, out tempTenant))
                     {
                         newTenant = tempTenant;
                         newSubscription = tempSubscription;
@@ -103,6 +143,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             else
             {
                 _profile.Context = new AzureContext(newSubscription, account, environment, newTenant);
+                if (!newSubscription.State.Equals("Enabled", StringComparison.OrdinalIgnoreCase))
+                {
+                    WriteWarningMessage(string.Format(
+                                   Microsoft.Azure.Commands.Profile.Properties.Resources.SelectedSubscriptionNotActive,
+                                   newSubscription.State));
+                }
             }
             
             _profile.Context.TokenCache = TokenCache.DefaultShared.Serialize();
@@ -182,7 +228,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 _profile.Context.Subscription.Properties[AzureSubscription.Property.Tenants] = tenantId;
             }
 
-            var newSubscription = new AzureSubscription { Id = subscription.Id };
+            var newSubscription = new AzureSubscription 
+            { 
+                Id = subscription.Id,
+                State = subscription.State
+            };
             if (_profile.Context.Subscription != null)
             {
                 newSubscription.Account = _profile.Context.Subscription.Account;
@@ -200,7 +250,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         public List<AzureTenant> ListTenants(string tenant)
         {
-            return ListAccountTenants(_profile.Context.Account, _profile.Context.Environment, null, ShowDialog.Auto)
+            return ListAccountTenants(_profile.Context.Account, _profile.Context.Environment, null, ShowDialog.Never)
                 .Where(t => tenant == null ||
                             tenant.Equals(t.Id.ToString(), StringComparison.OrdinalIgnoreCase) ||
                             tenant.Equals(t.Domain, StringComparison.OrdinalIgnoreCase))
@@ -236,13 +286,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         public IEnumerable<AzureSubscription> GetSubscriptions(string tenantId)
         {
             IEnumerable<AzureSubscription> subscriptionList= new List<AzureSubscription>();
+            string listNextLink = null;
             if (string.IsNullOrWhiteSpace(tenantId))
             {
                 subscriptionList = ListSubscriptions();
             }
             else
             {
-                subscriptionList = ListSubscriptions(tenantId);
+                subscriptionList = ListSubscriptions(tenantId, ref listNextLink);
             }
 
             return subscriptionList;
@@ -313,7 +364,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
         }
 
-        public IAccessToken AcureAccessToken(string tenantId)
+        public IAccessToken AcquireAccessToken(string tenantId)
         {
             return AcquireAccessToken(_profile.Context.Account, _profile.Context.Environment, tenantId, null, ShowDialog.Auto);
         }
@@ -327,26 +378,37 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             return ListAccountTenants(_profile.Context.Account, _profile.Context.Environment, null, ShowDialog.Never);
         }
 
-        public IEnumerable<AzureSubscription> ListSubscriptions(string tenant)
+        public IEnumerable<AzureSubscription> ListSubscriptions(string tenant, ref string listNextLink)
         {
-            return ListSubscriptionsForTenant(_profile.Context.Account, _profile.Context.Environment, null,
-                ShowDialog.Never, tenant);
+            return ListSubscriptionsForTenant(
+                _profile.Context.Account, 
+                _profile.Context.Environment, 
+                null,
+                ShowDialog.Never, 
+                tenant,
+                ref listNextLink);
         }
 
         public IEnumerable<AzureSubscription> ListSubscriptions()
         {
+            string listNextLink = null;
+
             List<AzureSubscription> subscriptions = new List<AzureSubscription>();
             foreach (var tenant in ListTenants())
             {
                 try
                 {
-                    subscriptions.AddRange(ListSubscriptions(tenant.Id.ToString()));
+                    subscriptions.AddRange(
+                        ListSubscriptions(
+                            (tenant.Id == Guid.Empty) ? tenant.Domain:tenant.Id.ToString(),
+                            ref listNextLink));
                 }
                 catch (AadAuthenticationException)
                 {
-                    WriteWarningMessage(string.Format("Could not authenticate user account {0} with tenant {1}.  " +
-                       "Subscriptions in this tenant will not be listed. Please login again using Login-AzureRmAccount " +
-                       "to view the subscriptions in this tenant.", _profile.Context.Account, tenant));
+                    WriteWarningMessage(string.Format(
+                        Microsoft.Azure.Commands.Profile.Properties.Resources.UnableToLogin, 
+                        _profile.Context.Account, 
+                        tenant));
                 }
 
             }
@@ -441,19 +503,24 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     }
                     else
                     {
-                        var subscriptions = subscriptionClient.Subscriptions.List().Subscriptions;
-                        if (subscriptions != null && subscriptions.Any())
+                        var subscriptions = (subscriptionClient.Subscriptions.List().Subscriptions ?? 
+                                                new List<Microsoft.Azure.Subscriptions.Models.Subscription>())
+                                            .Where(s => "enabled".Equals(s.State, StringComparison.OrdinalIgnoreCase) ||
+                                                        "warned".Equals(s.State, StringComparison.OrdinalIgnoreCase));
+
+                        if (subscriptions.Any())
                         {
                             if (subscriptionName != null)
                             {
-                                subscriptionFromServer = subscriptions.FirstOrDefault(s => s.DisplayName.Equals(subscriptionName, StringComparison.OrdinalIgnoreCase));
+                                subscriptionFromServer = subscriptions.FirstOrDefault(
+                                    s => s.DisplayName.Equals(subscriptionName, StringComparison.OrdinalIgnoreCase));
                             }
                             else
                             {
-                                if (subscriptions.Count > 1)
+                                if (subscriptions.Count() > 1)
                                 {
                                     WriteWarningMessage(string.Format(
-                                        "TenantId '{0}' contains more than one subscription. First one will be selected for further use. " +
+                                        "TenantId '{0}' contains more than one active subscription. First one will be selected for further use. " +
                                         "To select another subscription, use Set-AzureRmContext.",
                                         tenantId));
                                 }
@@ -475,10 +542,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                         Account = accessToken.UserId,
                         Environment = environment.Name,
                         Name = subscriptionFromServer.DisplayName,
+                        State = subscriptionFromServer.State,
                         Properties = new Dictionary<AzureSubscription.Property, string> { { AzureSubscription.Property.Tenants, accessToken.TenantId } }
                     };
 
-                    account.Properties[AzureAccount.Property.Tenants] = accessToken.TenantId;
                     tenant = new AzureTenant();
                     tenant.Id = new Guid(accessToken.TenantId);
                     tenant.Domain = accessToken.GetDomain();
@@ -509,35 +576,97 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         private List<AzureTenant> ListAccountTenants(AzureAccount account, AzureEnvironment environment, SecureString password, ShowDialog promptBehavior)
         {
-            var commonTenantToken = AcquireAccessToken(account, environment, AuthenticationFactory.CommonAdTenant,
-                password, promptBehavior);
+            List<AzureTenant> result = new List<AzureTenant>();
+            try
+            {
+                var commonTenantToken = AcquireAccessToken(account, environment, AuthenticationFactory.CommonAdTenant,
+                    password, promptBehavior);
 
-            using (var subscriptionClient = AzureSession.ClientFactory.CreateCustomClient<SubscriptionClient>(
+                using (var subscriptionClient = AzureSession.ClientFactory.CreateCustomClient<SubscriptionClient>(
                     new TokenCloudCredentials(commonTenantToken.AccessToken),
                     environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager)))
-            {
-                return subscriptionClient.Tenants.List().TenantIds
-                    .Select(ti => new AzureTenant() { Id = new Guid(ti.TenantId), Domain = commonTenantToken.GetDomain() })
-                    .ToList();
+                {
+                    //TODO: Fix subscription client to not require subscriptionId
+                    result = account.MergeTenants(subscriptionClient.Tenants.List().TenantIds, commonTenantToken);
+                }
             }
+            catch
+            {
+                WriteWarningMessage(string.Format(Microsoft.Azure.Commands.Profile.Properties.Resources.UnableToAqcuireToken, AuthenticationFactory.CommonAdTenant));
+                if (account.IsPropertySet(AzureAccount.Property.Tenants))
+                {
+                    result =
+                        account.GetPropertyAsArray(AzureAccount.Property.Tenants)
+                            .Select(ti =>
+                            {
+                                var tenant = new AzureTenant();
+
+                                Guid guid;
+                                if (Guid.TryParse(ti, out guid))
+                                {
+                                    tenant.Id = guid;
+                                    tenant.Domain = AccessTokenExtensions.GetDomain(account.Id);
+                                }
+                                else
+                                {
+                                    tenant.Domain = ti;
+                                }
+
+                                return tenant;
+                            }).ToList();
+                }
+                if(!result.Any())
+                {
+                    throw;
+                }
+
+            }
+
+            return result;
         }
 
-        private IEnumerable<AzureSubscription> ListSubscriptionsForTenant(AzureAccount account, AzureEnvironment environment,
-            SecureString password, ShowDialog promptBehavior, string tenantId)
+        private IEnumerable<AzureSubscription> ListSubscriptionsForTenant(
+            AzureAccount account, 
+            AzureEnvironment environment,
+            SecureString password, 
+            ShowDialog promptBehavior, 
+            string tenantId, 
+            ref string listNextLink)
         {
-            var accessToken = AcquireAccessToken(account, environment, tenantId, password, promptBehavior);
+            IAccessToken accessToken = null;
+
+            try
+            {
+                accessToken = AcquireAccessToken(account, environment, tenantId, password, promptBehavior);
+
+            }
+            catch
+            {
+                WriteWarningMessage(string.Format(Microsoft.Azure.Commands.Profile.Properties.Resources.UnableToAqcuireToken, tenantId));
+                return new List<AzureSubscription>();
+            }
+
             using (var subscriptionClient = AzureSession.ClientFactory.CreateCustomClient<SubscriptionClient>(
                 new TokenCloudCredentials(accessToken.AccessToken),
                 environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager)))
             {
-                var subscriptions = subscriptionClient.Subscriptions.List();
+                Microsoft.Azure.Subscriptions.Models.SubscriptionListResult subscriptions = null;
+                if(listNextLink == null)
+                {
+                    subscriptions = subscriptionClient.Subscriptions.List();
+                }
+                else
+                {
+                    subscriptions = subscriptionClient.Subscriptions.ListNext(listNextLink);
+                }
                 if (subscriptions != null && subscriptions.Subscriptions != null)
                 {
+                    listNextLink = subscriptions.NextLink;
                     return
                         subscriptions.Subscriptions.Select(
                             (s) =>
                                 s.ToAzureSubscription(new AzureContext(_profile.Context.Subscription, account,
-                                    environment, CreateTenantFromString(tenantId))));
+                                    environment, CreateTenantFromString(tenantId, accessToken.TenantId))));
                 }
 
                 return new List<AzureSubscription>();
@@ -551,8 +680,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 WarningLog(message);
             }
         }
-
-        private static AzureTenant CreateTenantFromString(string tenantOrDomain)
+        
+        private static AzureTenant CreateTenantFromString(string tenantOrDomain, string accessTokenTenantId)
         {
             AzureTenant result = new AzureTenant();
             Guid id;
@@ -562,6 +691,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
             else
             {
+                result.Id = Guid.Parse(accessTokenTenantId);
                 result.Domain = tenantOrDomain;
             }
 

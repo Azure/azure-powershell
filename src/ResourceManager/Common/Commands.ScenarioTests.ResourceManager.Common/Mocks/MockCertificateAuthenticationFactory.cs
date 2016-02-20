@@ -13,10 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 {
@@ -84,6 +84,12 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
         public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(AzureContext context, AzureEnvironment.Endpoint targetEndpoint)
         {
             return new CertificateCloudCredentials(context.Subscription.Id.ToString(), Certificate);
+        }
+
+
+        public Rest.ServiceClientCredentials GetServiceClientCredentials(AzureContext context, AzureEnvironment.Endpoint targetEndpoint)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

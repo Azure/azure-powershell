@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
 
             if (job.Properties == null) return;
 
-            this.Id = job.Properties.JobId;
+            this.JobId = job.Properties.JobId;
             this.CreationTime = job.Properties.CreationTime.ToLocalTime();
             this.LastModifiedTime = job.Properties.LastModifiedTime.ToLocalTime();
             this.StartTime = job.Properties.StartTime.HasValue ? job.Properties.StartTime.Value.ToLocalTime() : (DateTimeOffset?)null;
@@ -61,6 +61,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.EndTime = job.Properties.EndTime.HasValue ? job.Properties.EndTime.Value.ToLocalTime() : (DateTimeOffset?) null;
             this.LastStatusModifiedTime = job.Properties.LastStatusModifiedTime;
             this.HybridWorker = job.Properties.RunOn;
+            this.StartedBy = job.Properties.StartedBy;
             this.JobParameters = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
             foreach (var kvp in job.Properties.Parameters) 
             {
@@ -105,7 +106,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Gets or sets the job id.
         /// </summary>
-        public Guid Id { get; set; }
+        public Guid JobId { get; set; }
 
         /// <summary>
         /// Gets or sets the tags.
@@ -161,5 +162,10 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// Gets or sets the HybridWorker.
         /// </summary>
         public string HybridWorker { get; set; }
+
+        /// <summary>
+        /// Gets or sets the StartedBy property.
+        /// </summary>
+        public string StartedBy { get; set; }
     }
 }

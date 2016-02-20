@@ -39,6 +39,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         
         private static string publishSettingsFile = null;
         private static string defaultSubscriptionName = null;
+        private static string defaultSubscriptionId = null;
         private static string location = null;
         private static string defaultStorageName = null;
         private static string currentTestEnvironment = null;
@@ -137,7 +138,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             {
                 case "UseDefaults":
                 default:
-                    CredentialHelper.GetCredentialInfo(Environment.CurrentDirectory);
+                    CredentialHelper.GetCredentialInfo(AppDomain.CurrentDomain.BaseDirectory);
                     break;
 
                 case "UseCustom":
@@ -165,7 +166,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     break;
 
                 case "UseDefaultsandOverride":
-                    CredentialHelper.GetCredentialInfo(Environment.CurrentDirectory);
+                    CredentialHelper.GetCredentialInfo(AppDomain.CurrentDomain.BaseDirectory);
 
                     if (!string.IsNullOrWhiteSpace(Resource.PublishSettingsFile))
                     {
@@ -226,6 +227,18 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             set
             {
                 defaultSubscriptionName = value;
+            }
+        }
+
+        public static string DefaultSubscriptionId
+        {
+            get
+            {
+                return defaultSubscriptionId;
+            }
+            set
+            {
+                defaultSubscriptionId = value;
             }
         }
 

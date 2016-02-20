@@ -27,11 +27,11 @@ namespace Microsoft.Azure.Commands.Network
 
     public abstract class NetworkSecurityGroupBaseCmdlet : NetworkBaseCmdlet
     {
-        public INetworkSecurityGroupOperations NetworkSecurityGroupClient
+        public INetworkSecurityGroupsOperations NetworkSecurityGroupClient
         {
             get
             {
-                return NetworkClient.NetworkResourceProviderClient.NetworkSecurityGroups;
+                return NetworkClient.NetworkManagementClient.NetworkSecurityGroups;
             }
         }
 
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 GetNetworkSecurityGroup(resourceGroupName, name);
             }
-            catch (CloudException exception)
+            catch (Microsoft.Rest.Azure.CloudException exception)
             {
                 if (exception.Response.StatusCode == HttpStatusCode.NotFound)
                 {
@@ -55,17 +55,16 @@ namespace Microsoft.Azure.Commands.Network
             return true;
         }
 
-        public PSNetworkSecurityGroup GetNetworkSecurityGroup(string resourceGroupName, string name)
+        public PSNetworkSecurityGroup GetNetworkSecurityGroup(string resourceGroupName, string name, string expandResource = null)
         {
-            var getNetworkSecurityGroupResponse = this.NetworkSecurityGroupClient.Get(resourceGroupName, name);
+            var nsg = this.NetworkSecurityGroupClient.Get(resourceGroupName, name, expandResource);
 
-            var networkSecurityGroup = Mapper.Map<PSNetworkSecurityGroup>(getNetworkSecurityGroupResponse.NetworkSecurityGroup);
-            networkSecurityGroup.ResourceGroupName = resourceGroupName;
+            var psNetworkSecurityGroup = Mapper.Map<PSNetworkSecurityGroup>(nsg);
+            psNetworkSecurityGroup.ResourceGroupName = resourceGroupName;
 
-            networkSecurityGroup.Tag =
-                TagsConversionHelper.CreateTagHashtable(getNetworkSecurityGroupResponse.NetworkSecurityGroup.Tags);
+            psNetworkSecurityGroup.Tag = TagsConversionHelper.CreateTagHashtable(nsg.Tags);
 
-            return networkSecurityGroup;
+            return psNetworkSecurityGroup;
         }
 
         public PSNetworkSecurityGroup ToPsNetworkSecurityGroup(NetworkSecurityGroup nsg)

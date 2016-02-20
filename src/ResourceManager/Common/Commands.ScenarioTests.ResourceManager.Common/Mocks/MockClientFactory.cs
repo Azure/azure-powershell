@@ -23,12 +23,12 @@ using System.Threading;
 using System.Threading.Tasks;
 using Hyak.Common;
 using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.Azure.Common;
-using Microsoft.Azure.Common.Authentication.Factories;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure;
 using System.IO;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Factories;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.ServiceManagemenet.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 {
@@ -189,7 +189,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
         /// <summary>
         /// This class exists to allow adding an additional reference to the httpClient to prevent the client 
-        /// from being disposed.  Should not be used execpt in this mocked context.
+        /// from being disposed.  Should not be used except in this mocked context.
         /// </summary>
         class PassThroughDelegatingHandler : DelegatingHandler
         {

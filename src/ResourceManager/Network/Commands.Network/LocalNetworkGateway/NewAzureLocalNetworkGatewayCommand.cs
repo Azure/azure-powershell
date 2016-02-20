@@ -73,9 +73,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             if (this.IsLocalNetworkGatewayPresent(this.ResourceGroupName, this.Name))
             {
@@ -108,7 +108,6 @@ namespace Microsoft.Azure.Commands.Network
 
             // Map to the sdk object
             var localnetGatewayModel = Mapper.Map<MNM.LocalNetworkGateway>(localnetGateway);
-            localnetGatewayModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.LocalNetworkGatewayType;
             localnetGatewayModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create Local Network Gateway call

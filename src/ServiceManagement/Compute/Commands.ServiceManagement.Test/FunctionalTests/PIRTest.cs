@@ -39,6 +39,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         private const string location3 = "East US";
 
         private static string publisher = "publisher1";
+        private static string publisherSubId = "602258C5-52EC-46B3-A49A-7587A764AC84";
         private static string normaluser = "normaluser2";
         private const string normaluserSubId = "602258C5-52EC-46B3-A49A-7587A764AC84";
 
@@ -52,12 +53,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 Assert.Inconclusive("No Subscription is selected!");
             }
 
-            if (vmPowershellCmdlets.GetAzureSubscription(publisher) == null)
+            if (vmPowershellCmdlets.GetAzureSubscription(publisherSubId) == null)
             {
                 publisher = defaultAzureSubscription.SubscriptionName;
             }
 
-            if (vmPowershellCmdlets.GetAzureSubscription(normaluser) == null)
+            if (vmPowershellCmdlets.GetAzureSubscription(normaluserSubId) == null)
             {
                 normaluser = defaultAzureSubscription.SubscriptionName;
             }
@@ -298,7 +299,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                         throw;
                     }
                 }
-                vmPowershellCmdlets.SetAzureSubscription(normaluser, normaluserSubId, storageNormalUser);
+                vmPowershellCmdlets.SetAzureSubscription(normaluserSubId, storageNormalUser);
 
                 // Replicate the user image to "West US" and wait until the replication process is completed.
                 SwitchToPublisher();
@@ -341,12 +342,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         private void SwitchToPublisher()
         {
-            vmPowershellCmdlets.SetDefaultAzureSubscription(publisher);
+            vmPowershellCmdlets.SetDefaultAzureSubscription(publisherSubId);
         }
 
         private void SwitchToNormalUser()
         {
-            vmPowershellCmdlets.SetDefaultAzureSubscription(normaluser);
+            vmPowershellCmdlets.SetDefaultAzureSubscription(normaluserSubId);
         }
 
         private void WaitForReplicationComplete(string imageName)

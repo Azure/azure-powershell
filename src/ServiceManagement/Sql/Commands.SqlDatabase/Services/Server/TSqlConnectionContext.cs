@@ -662,6 +662,33 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
                 {
                     Context = this,
                     Enabled = true,
+                    Id = new Guid("afe1eee1-1f12-4e5f-9ad6-2de9c12cb4dc"),
+                    IsDefault = false,
+                    IsSystem = false,
+                    Name = "P4"
+                },
+                new ServiceObjective()
+                {
+                    Context = this,
+                    Enabled = true,
+                    Id = new Guid("43940481-9191-475a-9dba-6b505615b9aa"),
+                    IsDefault = false,
+                    IsSystem = false,
+                    Name = "P6"
+                },
+                new ServiceObjective()
+                {
+                    Context = this,
+                    Enabled = true,
+                    Id = new Guid("dd00d544-bbc0-4f61-ba60-cdce0c410288"),
+                    IsDefault = false,
+                    IsSystem = false,
+                    Name = "P11"
+                },
+                new ServiceObjective()
+                {
+                    Context = this,
+                    Enabled = true,
                     Id = new Guid("D1737D22-A8EA-4DE7-9BD0-33395D2A7419"),
                     IsDefault = false,
                     IsSystem = false,
@@ -837,15 +864,21 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
                     }
                 }
             }
+
             if (db.MaxSizeBytes.HasValue)
             {
                 db.MaxSizeGB = (int)(db.MaxSizeBytes / (1024 * 1024 * 1024));
             }
+
             if (!string.IsNullOrEmpty(db.ServiceObjectiveName))
             {
                 db.ServiceObjective = GetServiceObjective(db.ServiceObjectiveName);
-                db.ServiceObjectiveId = db.ServiceObjective.Id;
+                if (db.ServiceObjective != null)
+                {
+                    db.ServiceObjectiveId = db.ServiceObjective.Id;
+                }
             }
+
 
             builder["Database"] = null;
         }

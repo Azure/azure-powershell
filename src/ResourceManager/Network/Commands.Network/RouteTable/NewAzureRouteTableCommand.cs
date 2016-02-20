@@ -66,9 +66,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             if (this.IsRouteTablePresent(this.ResourceGroupName, this.Name))
             {
@@ -99,7 +99,6 @@ namespace Microsoft.Azure.Commands.Network
 
             // Map to the sdk object
             var routeTableModel = Mapper.Map<MNM.RouteTable>(psRouteTable);
-            routeTableModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.RouteTableType;
             routeTableModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create RouteTable call

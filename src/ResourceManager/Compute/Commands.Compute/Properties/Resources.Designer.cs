@@ -279,6 +279,87 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No WadCfg, WadCfgBlob or xmlCfg element defined in the configuration file..
+        /// </summary>
+        public static string DiagnosticsExtensionIaaSConfigElementNotDefined {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionIaaSConfigElementNotDefined", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid diagnostics configuration file. It should be in Invalid diagnostics configuration file. It should be in either xml or json format.either xml or json format..
+        /// </summary>
+        public static string DiagnosticsExtensionInvalidConfigFileFormat {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionInvalidConfigFileFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No diagnostics extension found under resource group &apos;{0}&apos;, virtual machine &apos;{1}&apos;..
+        /// </summary>
+        public static string DiagnosticsExtensionNotFound {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Storage account endpoint is not defined or can not be retrieved automatically...
+        /// </summary>
+        public static string DiagnosticsExtensionNullStorageAccountEndpoint {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionNullStorageAccountEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Storage account key is not specified or can not be retrieved automatically..
+        /// </summary>
+        public static string DiagnosticsExtensionNullStorageAccountKey {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionNullStorageAccountKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Storage account name is not defined..
+        /// </summary>
+        public static string DiagnosticsExtensionNullStorageAccountName {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionNullStorageAccountName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot find the WadCfg end element in the config..
+        /// </summary>
+        public static string DiagnosticsExtensionXmlConfigNoWadCfgEndTag {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionXmlConfigNoWadCfgEndTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot find the WadCfg element in the config..
+        /// </summary>
+        public static string DiagnosticsExtensionXmlConfigNoWadCfgStartTag {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionXmlConfigNoWadCfgStartTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WadCfg start element in the config is not matching the end element..
+        /// </summary>
+        public static string DiagnosticsExtensionXmlConfigWadCfgTagNotMatch {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionXmlConfigWadCfgTagNotMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove Extension.
         /// </summary>
         public static string DscExtensionRemovalCaption {
@@ -842,7 +923,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Storage account, {0}, is not found.  The OS disk may be in a different storage group..
+        ///   Looks up a localized string similar to Storage account, {0}, is not found.  The OS disk may be in a different subscription..
         /// </summary>
         public static string StorageAccountNotFoundForBootDiagnostics {
             get {

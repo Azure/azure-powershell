@@ -17,8 +17,8 @@ using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.Compute.StorageServices;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Storage;
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
     [Cmdlet(
         VerbsCommon.Set,
         ProfileNouns.AzureVMBackupExtension)]
-    [OutputType(typeof(PSComputeLongRunningOperation))]
+    [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureVMBackupExtension: VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(
@@ -75,16 +75,16 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             HelpMessage = "The tag for this backup.")]
         public string Tag { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             AzureVMBackupExtensionUtil azureBackupExtensionUtil = new AzureVMBackupExtensionUtil();
 
             AzureVMBackupConfig vmConfig = new AzureVMBackupConfig();
             vmConfig.ResourceGroupName = ResourceGroupName;
-            vmConfig.VMName = VMName;
-            vmConfig.ExtensionName = Name;
+            vmConfig.VMName = this.VMName;
+            vmConfig.ExtensionName = this.Name;
             vmConfig.VirtualMachineExtensionType = VirtualMachineExtensionType;
 
             azureBackupExtensionUtil.CreateSnapshotForDisks(vmConfig,Tag, this);

@@ -27,9 +27,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     [Cmdlet(VerbsLifecycle.Stop, "AzureRmWebApp")]
     public class StopAzureWebAppCmdlet : WebAppBaseCmdlet
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
             WebsitesClient.StopWebApp(ResourceGroupName, Name, null);
             WriteObject(WebsitesClient.GetWebApp(ResourceGroupName, Name, null));
         }

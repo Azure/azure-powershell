@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.ServiceManagemenet.Common;
 using Microsoft.Azure.Commands.NotificationHubs.Models;
 using Microsoft.Azure.Management.NotificationHubs.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
         [ValidateNotNullOrEmpty]
         public SharedAccessAuthorizationRuleAttributes SASRule { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             SharedAccessAuthorizationRuleAttributes sasRule = null;
             if (!string.IsNullOrEmpty(InputFile))

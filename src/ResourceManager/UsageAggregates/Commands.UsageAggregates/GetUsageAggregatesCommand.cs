@@ -13,14 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commerce.UsageAggregates;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.UsageAggregates
 {
     using Commerce.UsageAggregates.Models;
-    using WindowsAzure.Commands.Utilities.Common;
     using System;
     using System.Management.Automation;
     using ResourceManager.Common;
@@ -53,7 +52,7 @@ namespace Microsoft.Azure.Commands.UsageAggregates
         [Parameter(Mandatory = false, HelpMessage = "Retrieved from previous calls, this is the bookmark used for progress when the responses are paged.")]
         public string ContinuationToken { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (_theClient == null)
             {

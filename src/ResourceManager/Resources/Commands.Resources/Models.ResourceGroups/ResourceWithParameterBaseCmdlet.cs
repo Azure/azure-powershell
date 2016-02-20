@@ -22,8 +22,9 @@ using System.Management.Automation;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Resources.Models;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.ServiceManagemenet.Common;
 using Hyak.Common;
+using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.Resources
 {
@@ -39,7 +40,7 @@ namespace Microsoft.Azure.Commands.Resources
         protected const string ParameterlessTemplateFileParameterSetName = "Deployment via template file without parameters";
         protected const string ParameterlessGalleryTemplateParameterSetName = "Deployment via Gallery without parameters";
         protected const string ParameterlessTemplateUriParameterSetName = "Deployment via template uri without parameters";
-        
+
         protected RuntimeDefinedParameterDictionary dynamicParameters;
 
         private string templateFile;
@@ -143,24 +144,45 @@ namespace Microsoft.Azure.Commands.Resources
 
         protected Hashtable GetTemplateParameterObject(Hashtable templateParameterObject)
         {
-            templateParameterObject = templateParameterObject ?? new Hashtable();
+            // NOTE(jogao): create a new Hashtable so that user can re-use the templateParameterObject.
+            var prameterObject = new Hashtable();
+            if (templateParameterObject != null)
+            {
+                foreach (var parameterKey in templateParameterObject.Keys)
+                {
+                    prameterObject[parameterKey] = new Hashtable { { "value", templateParameterObject[parameterKey] } };
+                }
+            }
 
             // Load parameters from the file
             string templateParameterFilePath = this.TryResolvePath(TemplateParameterFile);
             if (templateParameterFilePath != null && FileUtilities.DataStore.FileExists(templateParameterFilePath))
             {
                 var parametersFromFile = GalleryTemplatesClient.ParseTemplateParameterFileContents(templateParameterFilePath);
-                parametersFromFile.ForEach(dp => templateParameterObject[dp.Key] = dp.Value.Value);
+                parametersFromFile.ForEach(dp =>
+                    {
+                        var parameter = new Hashtable();
+                        if (dp.Value.Value != null)
+                        {
+                            parameter.Add("value", dp.Value.Value);
+                        }
+                        if (dp.Value.Reference != null)
+                        {
+                            parameter.Add("reference", dp.Value.Reference);
+                        }
+
+                        prameterObject[dp.Key] = parameter;
+                    });
             }
 
             // Load dynamic parameters
             IEnumerable<RuntimeDefinedParameter> parameters = PowerShellUtilities.GetUsedDynamicParameters(dynamicParameters, MyInvocation);
             if (parameters.Any())
             {
-                parameters.ForEach(dp => templateParameterObject[((ParameterAttribute)dp.Attributes[0]).HelpMessage] = dp.Value);
+                parameters.ForEach(dp => prameterObject[((ParameterAttribute)dp.Attributes[0]).HelpMessage] = new Hashtable { { "value", dp.Value } });
             }
 
-            return templateParameterObject;
+            return prameterObject;
         }
     }
 }

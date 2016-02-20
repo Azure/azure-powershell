@@ -82,28 +82,28 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
             TestController.NewInstance.RunPowerShellTest("Test-RemoveNonExistingEndpointFromProfile");
         }
 
-        [Fact(Skip = "Bug")]
+        [Fact(Skip = "TFS#5185296")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEnableEndpoint()
         {
             TestController.NewInstance.RunPowerShellTest("Test-EnableEndpoint");
         }
 
-        [Fact(Skip = "Bug")]
+        [Fact(Skip = "TFS#5185296")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDisableEndpoint()
         {
             TestController.NewInstance.RunPowerShellTest("Test-DisableEndpoint");
         }
 
-        [Fact(Skip = "Bug")]
+        [Fact(Skip = "TFS#5185296")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEnableEndpointUsingPiping()
         {
             TestController.NewInstance.RunPowerShellTest("Test-EnableEndpointUsingPiping");
         }
 
-        [Fact(Skip = "Bug")]
+        [Fact(Skip = "TFS#5185296")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDisableEndpointUsingPiping()
         {

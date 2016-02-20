@@ -12,14 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Hyak.Common;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Graph.RBAC.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
@@ -34,7 +36,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
         /// <param name="context"></param>
         public ActiveDirectoryClient(AzureContext context)
         {
-            AccessTokenCredential creds = (AccessTokenCredential)AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(context);
+            AccessTokenCredential creds = (AccessTokenCredential)AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(context, AzureEnvironment.Endpoint.Graph);
             GraphClient = AzureSession.ClientFactory.CreateCustomClient<GraphRbacManagementClient>(
                 creds.TenantID,
                 creds,
@@ -47,7 +49,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
 
             Debug.Assert(options != null);
 
-            if (IsSet(options.SignInName, options.Mail, options.UPN, options.Id))
+            if (IsSet(options.Mail, options.UPN, options.Id))
             {
                 result = FilterUsers(options).FirstOrDefault();
             }
@@ -150,11 +152,11 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
             UserListResult result = new UserListResult();
             User user = null;
 
-            if (!string.IsNullOrEmpty(options.Id) || !string.IsNullOrEmpty(options.UPN))
+            if (!string.IsNullOrEmpty(options.Id))
             {
                 try
                 {
-                    user = GraphClient.User.Get(Normalize(options.Id) ?? Normalize(options.UPN)).User;
+                    user = GraphClient.User.Get(Normalize(options.Id)).User;
                 }
                 catch {  /* The user does not exist, ignore the exception. */ }
 
@@ -163,11 +165,11 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                     users.Add(user.ToPSADUser());
                 }
             }
-            else if (!string.IsNullOrEmpty(options.Mail) || !string.IsNullOrEmpty(options.SignInName))
+            else if (!string.IsNullOrEmpty(options.UPN) || !string.IsNullOrEmpty(options.Mail))
             {
                 try
                 {
-                    user = GraphClient.User.GetBySignInName(Normalize(options.Mail) ?? Normalize(options.SignInName)).Users.FirstOrDefault();
+                    user = GraphClient.User.GetByUserPrincipalName(Normalize(options.UPN) ?? Normalize(options.Mail)).Users.FirstOrDefault();
                 }
                 catch {  /* The user does not exist, ignore the exception. */ }
 
@@ -371,12 +373,38 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                 KeyCredentials = keyCredentials
             };
 
-            return GraphClient.Application.Create(graphParameters).Application.ToPSADApplication();
+            try
+            {
+                return GraphClient.Application.Create(graphParameters).Application.ToPSADApplication();
+            }
+            catch (CloudException ce)
+            {
+                if (ce.Response.StatusCode == HttpStatusCode.Forbidden)
+                {
+                    GetCurrentUserResult currentUser = GraphClient.Objects.GetCurrentUser();
+                    if (currentUser.AADObject != null && string.Equals(currentUser.AADObject.UserType, "Guest", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        throw new InvalidOperationException(ProjectResources.CreateApplicationNotAllowedGuestUser);
+                    }
+                }
+
+                throw;
+            }
         }
 
         public void RemoveApplication(string applicationObjectId)
         {
             GraphClient.Application.Delete(applicationObjectId.ToString());
+        }
+
+        public PSADApplication GetApplication(string applicationObjectId)
+        {
+            return GraphClient.Application.Get(applicationObjectId.ToString()).Application.ToPSADApplication();
+        }
+
+        public IEnumerable<PSADApplication> GetApplicationWithFilters(ApplicationFilterParameters parameters)
+        {
+            return GraphClient.Application.List(parameters).Applications.Select(a => a.ToPSADApplication());
         }
 
         public PSADServicePrincipal CreateServicePrincipal(CreatePSServicePrincipalParameters createParameters)
@@ -387,7 +415,23 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                 AccountEnabled = createParameters.AccountEnabled
             };
 
-            return GraphClient.ServicePrincipal.Create(graphParameters).ServicePrincipal.ToPSADServicePrincipal();
+            try
+            {
+                return GraphClient.ServicePrincipal.Create(graphParameters).ServicePrincipal.ToPSADServicePrincipal();
+            }
+            catch (CloudException ce)
+            {
+                if (ce.Response.StatusCode == HttpStatusCode.Forbidden)
+                {
+                    GetCurrentUserResult currentUser = GraphClient.Objects.GetCurrentUser();
+                    if (currentUser.AADObject != null && string.Equals(currentUser.AADObject.UserType, "Guest", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        throw new InvalidOperationException(ProjectResources.CreateServicePrincipalNotAllowedGuestUser);
+                    }
+                }
+
+                throw;
+            }
         }
 
         public PSADServicePrincipal RemoveServicePrincipal(string objectId)

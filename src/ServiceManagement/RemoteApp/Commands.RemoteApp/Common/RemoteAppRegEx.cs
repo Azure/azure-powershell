@@ -57,11 +57,14 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
         // ASCII code in hex, e.g. #ff
         protected const string asciiCodeRegexPattern = @"#([0-9A-Fa-f]{2})+";
 
+        // Unicode grapheme
+        protected const string unicodeRegexPattern = @"(?>\P{M}\p{M}*)";
+
         // used to separate entities, , or + followed by 0 or more spaces
         protected const string delimiterRegexPattern = @"[\+,]\s*";
 
         // an entity value, consists of normal chars, escape codes and hex codes
-        protected const string entityRegexPattern = @"(" + normalCharRegexPattern + @"|" + escapedCharRegexPattern + @"|" + asciiCodeRegexPattern + @")+";
+        protected const string entityRegexPattern = @"(" + normalCharRegexPattern + @"|" + escapedCharRegexPattern + @"|" + asciiCodeRegexPattern + @"|" + unicodeRegexPattern + @")+";
 
         // a key/entity pair, e.g DC=foo-bar.com
         protected const string keyEntityRegexPattern = @"(" + keyRegexPattern + @"=" + entityRegexPattern + @")";
@@ -92,6 +95,10 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
          *              |
          * Or a # followed by a sequence of 8 bit ASCII codes in hex
          *              (#([0-9A-Fa-f]{2})+)
+         * 
+         * Or a Unicode grapheme
+         *              (?>\P{M}\p{M}*)
+         * 
          * There will be 1 or more characters matching this pattern
          *          )+
          *      )
