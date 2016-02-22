@@ -56,6 +56,7 @@ namespace Common.Authentication.Test
 
         public ProfileClientTests()
         {
+            AzureSession.ProfileDirectory = AppDomain.CurrentDomain.BaseDirectory;
             SetMockData();
             currentProfile = new AzureSMProfile();
         }
