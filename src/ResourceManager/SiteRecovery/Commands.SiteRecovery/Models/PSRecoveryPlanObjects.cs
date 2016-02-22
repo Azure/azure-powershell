@@ -41,6 +41,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     var replicationProtectedItemList = recoveryPlanGroup.ReplicationProtectedItems.Select(item => item.Id.ToLower());
                     this.ReplicationProtectedItems = replicationProtectedItems.Where(rpi => replicationProtectedItemList.Contains(rpi.Id.ToLower())).ToList();
                 }
+                else
+                {
+                    this.ReplicationProtectedItems = new List<ReplicationProtectedItem>();
+                }
             }
         }
 

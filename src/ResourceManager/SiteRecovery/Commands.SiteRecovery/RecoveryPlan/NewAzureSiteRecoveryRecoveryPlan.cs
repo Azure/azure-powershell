@@ -201,16 +201,14 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
                 string VmId = null;
 
-                switch (replicationProtectedItemResponse.ReplicationProtectedItem.Properties.ProviderSpecificDetails.InstanceType)
+                if(replicationProtectedItemResponse.ReplicationProtectedItem.Properties.ProviderSpecificDetails.GetType() == typeof(HyperVReplicaAzureReplicationDetails))
+                {                  
+                    VmId = ((HyperVReplicaAzureReplicationDetails)replicationProtectedItemResponse.ReplicationProtectedItem.Properties.ProviderSpecificDetails).VmId;
+                }
+                else if(replicationProtectedItemResponse.ReplicationProtectedItem.Properties.ProviderSpecificDetails.GetType() == typeof(HyperVReplica2012ReplicationDetails))
                 {
-                    case Constants.HyperVReplicaAzureReplicationDetails:
-                        VmId = ((HyperVReplicaAzureReplicationDetails)replicationProtectedItemResponse.ReplicationProtectedItem.Properties.ProviderSpecificDetails).VmId;
-                        break;
-
-                    case Constants.HyperVReplica2012ReplicationDetails:
-                        VmId = ((HyperVReplica2012ReplicationDetails)replicationProtectedItemResponse.ReplicationProtectedItem.Properties.ProviderSpecificDetails).VmId;
-                        break;
-                };
+                    VmId = ((HyperVReplica2012ReplicationDetails)replicationProtectedItemResponse.ReplicationProtectedItem.Properties.ProviderSpecificDetails).VmId;
+                }
 
                 RecoveryPlanProtectedItem recoveryPlanProtectedItem = new RecoveryPlanProtectedItem();
                 recoveryPlanProtectedItem.Id = replicationProtectedItemResponse.ReplicationProtectedItem.Id;

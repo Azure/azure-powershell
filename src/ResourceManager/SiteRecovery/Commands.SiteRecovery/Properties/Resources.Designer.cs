@@ -668,7 +668,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Virtual Machine &quot;{0}&quot; is already part of Group &quot;{1}&quot; for recovery plan &quot;{1}&quot;.
+        ///   Looks up a localized string similar to Virtual Machine &quot;{0}&quot; is already part of Group &quot;{1}&quot; for recovery plan &quot;{2}&quot;.
         /// </summary>
         internal static string VMAlreadyPartOfGroup {
             get {
@@ -677,7 +677,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Virtual Machine &quot;{0}&quot; not found in Group &quot;{1}&quot; for recovery plan &quot;{1}&quot;.
+        ///   Looks up a localized string similar to Virtual Machine &quot;{0}&quot; not found in Group &quot;{1}&quot; for recovery plan &quot;{2}&quot;.
         /// </summary>
         internal static string VMNotFoundInGroup {
             get {

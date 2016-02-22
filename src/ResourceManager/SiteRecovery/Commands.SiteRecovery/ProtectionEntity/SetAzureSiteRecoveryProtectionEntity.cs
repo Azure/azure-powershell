@@ -219,24 +219,36 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     }
                     else
                     {
-                        DisableProtectionInput input = new DisableProtectionInput();
-                        input.Properties = new DisableProtectionInputProperties()
-                        {
-                            ProviderSettings = new DisableProtectionProviderSpecificInput()
-                        };
-
                         // fetch the latest PE object
                         ProtectableItemResponse protectableItemResponse =
                                                     RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(Utilities.GetValueFromArmId(this.ProtectionEntity.ID, ARMResourceTypeConstants.ReplicationFabrics),
                                                     this.ProtectionEntity.ProtectionContainerId, this.ProtectionEntity.Name);
                         ProtectableItem protectableItem = protectableItemResponse.ProtectableItem;
 
-                        this.response =
-                            RecoveryServicesClient.DisableProtection(
-                            Utilities.GetValueFromArmId(this.ProtectionEntity.ID, ARMResourceTypeConstants.ReplicationFabrics),
-                            Utilities.GetValueFromArmId(this.ProtectionEntity.ID, ARMResourceTypeConstants.ReplicationProtectionContainers),
-                            Utilities.GetValueFromArmId(protectableItem.Properties.ReplicationProtectedItemId, ARMResourceTypeConstants.ReplicationProtectedItems),
-                            input);
+                        if (!this.Force.IsPresent)
+                        {
+                            DisableProtectionInput input = new DisableProtectionInput();
+                            input.Properties = new DisableProtectionInputProperties()
+                            {
+                                ProviderSettings = new DisableProtectionProviderSpecificInput()
+                            };
+
+                            this.response =
+                                RecoveryServicesClient.DisableProtection(
+                                Utilities.GetValueFromArmId(this.ProtectionEntity.ID, ARMResourceTypeConstants.ReplicationFabrics),
+                                Utilities.GetValueFromArmId(this.ProtectionEntity.ID, ARMResourceTypeConstants.ReplicationProtectionContainers),
+                                Utilities.GetValueFromArmId(protectableItem.Properties.ReplicationProtectedItemId, ARMResourceTypeConstants.ReplicationProtectedItems),
+                                input);
+                        }
+                        else
+                        {
+                            this.response =
+                                RecoveryServicesClient.PurgeProtection(
+                                Utilities.GetValueFromArmId(this.ProtectionEntity.ID, ARMResourceTypeConstants.ReplicationFabrics),
+                                Utilities.GetValueFromArmId(this.ProtectionEntity.ID, ARMResourceTypeConstants.ReplicationProtectionContainers),
+                                Utilities.GetValueFromArmId(protectableItem.Properties.ReplicationProtectedItemId, ARMResourceTypeConstants.ReplicationProtectedItems)
+                                );
+                        }
                     }
 
                     jobResponse =

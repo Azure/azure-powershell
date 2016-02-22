@@ -129,6 +129,23 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         }
 
         /// <summary>
+        /// Purges Replicated Protected Item.
+        /// </summary>
+        /// <param name="protectionContainerName">Protection Container ID</param>
+        /// <param name="replicationProtectedItemName">Virtual Machine ID or Replication group Id</param>
+        /// <returns>Job response</returns>
+        public LongRunningOperationResponse PurgeProtection(string fabricName,
+            string protectionContainerName,
+            string replicationProtectedItemName)
+        {
+            return this.GetSiteRecoveryClient().ReplicationProtectedItem.BeginPurgeProtection(
+                fabricName,
+                protectionContainerName,
+                replicationProtectedItemName,
+                this.GetRequestHeaders());
+        }
+
+        /// <summary>
         /// Starts Planned Failover
         /// </summary>
         /// <param name="fabricName">Fabric Name</param>

@@ -326,9 +326,9 @@ Please provide a storage account with the same location as that of the vault.</v
     <value>Group "{0}" not found for recovery plan "{1}"</value>
   </data>
   <data name="VMAlreadyPartOfGroup" xml:space="preserve">
-    <value>Virtual Machine "{0}" is already part of Group "{1}" for recovery plan "{1}"</value>
+    <value>Virtual Machine "{0}" is already part of Group "{1}" for recovery plan "{2}"</value>
   </data>
   <data name="VMNotFoundInGroup" xml:space="preserve">
-    <value>Virtual Machine "{0}" not found in Group "{1}" for recovery plan "{1}"</value>
+    <value>Virtual Machine "{0}" not found in Group "{1}" for recovery plan "{2}"</value>
   </data>
 </root>
