@@ -158,7 +158,9 @@
     <None Include="ScenarioTests\AppServicePlanTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\WebAppBackupRestoreTests.ps1" />
+    <None Include="ScenarioTests\WebAppBackupRestoreTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\SSLBindingTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
