@@ -366,7 +366,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             //Add retry logic due to CRP service restart known issue CRP bug: 3564713
             var count = 1;
             Rest.Azure.AzureOperationResponse<VirtualMachineExtension> op = null;
-            while (count <= 2)
+
+            while (true)
             {
                 try
                 {
@@ -375,6 +376,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                         VMName,
                         Name ?? DscExtensionCmdletConstants.ExtensionPublishedNamespace + "." + DscExtensionCmdletConstants.ExtensionPublishedName,
                         parameters).GetAwaiter().GetResult();
+
+                    break;
                 }
                 catch (Rest.Azure.CloudException ex)
                 {
@@ -385,13 +388,16 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                         && errorReturned.Error != null && "InternalExecutionError".Equals(errorReturned.Error.Code))
                     {
                         count++;
+                        if (count <= 2)
+                        {
+                            continue;
+                        }
                     }
-                    else
-                    {
-                        break;
-                    }
+
+                    ThrowTerminatingError(new ErrorRecord(ex, "InvalidResult", ErrorCategory.InvalidResult, null));
                 }
             }
+
             var result = Mapper.Map<PSAzureOperationResponse>(op);
             WriteObject(result);
         }
