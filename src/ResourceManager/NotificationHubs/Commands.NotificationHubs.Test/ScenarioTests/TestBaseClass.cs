@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Test.ScenarioTests
     using Microsoft.Azure.Test;
     using Microsoft.Azure.Management.NotificationHubs;
     using Microsoft.Azure.Management.Resources;
-    using Microsoft.Azure.Common.Authentication;
+    using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Gallery;
     using Microsoft.Azure.Management.Authorization;
     using System.Collections.Generic;

@@ -14,24 +14,17 @@
 
 using System;
 using System.Collections;
-using System.Globalization;
-using System.Linq;
 using System.Management.Automation;
-using System.Xml.Linq;
 using AutoMapper;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Commands.Management.Storage.Models;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Management.Compute;
+using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Auth;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -253,112 +246,41 @@ namespace Microsoft.Azure.Commands.Compute
         private void InitializeStorageParameters()
         {
             InitializeStorageAccountName();
-
-            var storageAccounts = this.StorageClient.StorageAccounts.List().StorageAccounts;
-            var storageAccount = storageAccounts == null ? null : storageAccounts.FirstOrDefault(account => account.Name.Equals(this.StorageAccountName));
-
-            InitializeStorageAccountKey(storageAccount);
-            InitializeStorageAccountEndpoint(storageAccount);
+            InitializeStorageAccountKey();
+            InitializeStorageAccountEndpoint();
         }
 
-        /// <summary>
-        /// Make sure the storage account name is set.
-        /// It can be defined in multiple places, we only take the one with higher precedence. And the precedence is:
-        /// 1. Directly specified from command line parameter
-        /// 2. The one get from StorageContext parameter
-        /// 3. The one parsed from the diagnostics configuration file
-        /// </summary>
         private void InitializeStorageAccountName()
         {
+            this.StorageAccountName = this.StorageAccountName ??
+                DiagnosticsHelper.InitializeStorageAccountName(this.StorageContext, this.DiagnosticsConfigurationPath);
+
             if (string.IsNullOrEmpty(this.StorageAccountName))
             {
-                if (this.StorageContext != null)
-                {
-                    this.StorageAccountName = this.StorageContext.StorageAccountName;
-                }
-                else
-                {
-                    var config = XElement.Load(this.DiagnosticsConfigurationPath);
-                    var storageNode = config.Elements().FirstOrDefault(ele => ele.Name.LocalName == "StorageAccount");
-
-                    if (storageNode == null)
-                    {
-                        throw new ArgumentNullException(Properties.Resources.DiagnosticsExtensionStorageAccountNameNotDefined);
-                    }
-                    else
-                    {
-                        this.StorageAccountName = storageNode.Value;
-                    }
-                }
+                throw new ArgumentException(Properties.Resources.DiagnosticsExtensionNullStorageAccountName);
             }
         }
 
-        /// <summary>
-        /// Make sure the storage account key is set.
-        /// If user doesn't specify it in command line, we try to resolve the key for the user given the storage account.
-        /// </summary>
-        /// <param name="storageAccount">The storage account to list the key.</param>
-        private void InitializeStorageAccountKey(StorageAccount storageAccount)
+        private void InitializeStorageAccountKey()
         {
+            this.StorageAccountKey = this.StorageAccountKey ??
+                DiagnosticsHelper.InitializeStorageAccountKey(this.StorageClient, this.StorageAccountName, this.DiagnosticsConfigurationPath);
+
             if (string.IsNullOrEmpty(this.StorageAccountKey))
             {
-                if (storageAccount == null)
-                {
-                    throw new Exception(string.Format(CultureInfo.InvariantCulture, Properties.Resources.DiagnosticsExtensionFailedToListKeyForNoStorageAccount, this.StorageAccountName));
-                }
-
-                var psStorageAccount = new PSStorageAccount(storageAccount);
-                var credentials = StorageUtilities.GenerateStorageCredentials(this.StorageClient, psStorageAccount.ResourceGroupName, psStorageAccount.StorageAccountName);
-                this.StorageAccountKey = credentials.ExportBase64EncodedKey();
+                throw new ArgumentException(Properties.Resources.DiagnosticsExtensionNullStorageAccountKey);
             }
         }
 
-        /// <summary>
-        /// Make sure we set the correct storage account endpoint.
-        /// We can get the value from multiple places, we only take the one with higher precedence. And the precedence is:
-        /// 1. Directly specified from command line parameter
-        /// 2. The one get from StorageContext parameter
-        /// 3. The one get from the storage account we list
-        /// 4. The one get from current Azure Environment
-        /// </summary>
-        /// <param name="storageAccount">The storage account to help get the endpoint.</param>
-        private void InitializeStorageAccountEndpoint(StorageAccount storageAccount)
+        private void InitializeStorageAccountEndpoint()
         {
+            this.StorageAccountEndpoint = this.StorageAccountEndpoint ??
+                DiagnosticsHelper.InitializeStorageAccountEndpoint(this.StorageAccountName, this.StorageAccountKey, this.StorageClient,
+                    this.StorageContext, this.DiagnosticsConfigurationPath, this.DefaultContext);
+
             if (string.IsNullOrEmpty(this.StorageAccountEndpoint))
             {
-                var context = this.StorageContext;
-                if (context == null)
-                {
-                    Uri blobEndpoint = null, queueEndpoint = null, tableEndpoint = null, fileEndpoint = null;
-                    if (storageAccount != null)
-                    {
-                        // Create storage context from storage account
-                        var endpoints = storageAccount.PrimaryEndpoints;
-                        blobEndpoint = endpoints.Blob;
-                        queueEndpoint = endpoints.Queue;
-                        tableEndpoint = endpoints.Table;
-                        fileEndpoint = endpoints.File;
-                    }
-                    else if (this.DefaultContext != null && this.DefaultContext.Environment != null)
-                    {
-                        // Create storage context from default azure environment. Default to use https
-                        blobEndpoint = DefaultContext.Environment.GetStorageBlobEndpoint(this.StorageAccountName);
-                        queueEndpoint = DefaultContext.Environment.GetStorageQueueEndpoint(this.StorageAccountName);
-                        tableEndpoint = DefaultContext.Environment.GetStorageTableEndpoint(this.StorageAccountName);
-                        fileEndpoint = DefaultContext.Environment.GetStorageFileEndpoint(this.StorageAccountName);
-                    }
-                    else
-                    {
-                        // Can't automatically get the endpoint to create storage context
-                        throw new ArgumentNullException(Properties.Resources.DiagnosticsExtensionStorageAccountEndpointNotDefined);
-                    }
-                    var credentials = new StorageCredentials(this.StorageAccountName, this.StorageAccountKey);
-                    var cloudStorageAccount = new CloudStorageAccount(credentials, blobEndpoint, queueEndpoint, tableEndpoint, fileEndpoint);
-                    context = new AzureStorageContext(cloudStorageAccount);
-                }
-
-                var scheme = context.BlobEndPoint.StartsWith("https://", StringComparison.OrdinalIgnoreCase) ? "https://" : "http://";
-                this.StorageAccountEndpoint = scheme + context.EndPointSuffix;
+                throw new ArgumentNullException(Properties.Resources.DiagnosticsExtensionNullStorageAccountEndpoint);
             }
         }
 

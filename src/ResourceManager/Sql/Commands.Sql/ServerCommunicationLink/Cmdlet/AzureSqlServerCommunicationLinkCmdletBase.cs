@@ -14,6 +14,7 @@
 
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model;
 using Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Services;
@@ -37,7 +38,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Cmdlet
         /// </summary>
         /// <param name="subscription">The subscription</param>
         /// <returns>Link adapter for ServerCommunicationLink</returns>
-        protected override AzureSqlServerCommunicationLinkAdapter InitModelAdapter(Azure.Common.Authentication.Models.AzureSubscription subscription)
+        protected override AzureSqlServerCommunicationLinkAdapter InitModelAdapter(AzureSubscription subscription)
         {
             return new AzureSqlServerCommunicationLinkAdapter(DefaultProfile.Context);
         }
