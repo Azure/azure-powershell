@@ -26,10 +26,11 @@ using Microsoft.Azure.Test;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
@@ -102,6 +103,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             d.Add("Microsoft.Authorization", null);
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
 
+            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
             using (RestTestFramework.MockContext context = RestTestFramework.MockContext.Start(callingClassType, mockName))
             {
                 this.csmTestFactory = new CSMTestEnvironmentFactory();
@@ -161,7 +163,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             NetworkManagementClient = this.GetNetworkManagementClientClient(context);
             ComputeManagementClient = GetComputeManagementClient(context);
             AuthorizationManagementClient = GetAuthorizationManagementClient();
-            GraphClient = GetGraphClient();
+            // GraphClient = GetGraphClient();
 
             helper.SetupManagementClients(
                 ResourceManagementClient,
@@ -171,8 +173,8 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                 //eventsClient,
                 NetworkManagementClient,
                 ComputeManagementClient,
-                AuthorizationManagementClient,
-                GraphClient);
+                AuthorizationManagementClient);
+                // GraphClient);
         }
 
         private GraphRbacManagementClient GetGraphClient()

@@ -1,7 +1,7 @@
 using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
@@ -10,10 +10,12 @@ using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Management.Automation;
 using System.Text.RegularExpressions;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.DSC
@@ -207,6 +209,17 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         [ValidateSetAttribute(new[] { "4.0", "latest", "5.0PP" })]
         public string WmfVersion { get; set; }
 
+        /// <summary>
+        /// The Extension Data Collection state
+        /// </summary>
+        [Parameter(ValueFromPipelineByPropertyName = true, 
+            HelpMessage = "Enables or Disables Data Collection in the extension.  It is enabled if it is not specified.  " + 
+            "The value is persisted in the extension between calls.")
+        ]
+        [ValidateSet("Enable", "Disable")]
+        [AllowNull]
+        public string DataCollection { get; set; }
+        
         //Private Variables
         private const string VersionRegexExpr = @"^(([0-9])\.)\d+$";
 
@@ -309,6 +322,11 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 
                 publicSettings.SasToken = configurationUris.SasToken;
                 publicSettings.ModulesUrl = configurationUris.ModulesUrl;
+
+                Hashtable privacySetting = new Hashtable();
+                privacySetting.Add("DataCollection", DataCollection);
+                publicSettings.Privacy = privacySetting;
+
                 publicSettings.ConfigurationFunction = string.Format(
                     CultureInfo.InvariantCulture,
                     "{0}\\{1}",
@@ -348,7 +366,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             //Add retry logic due to CRP service restart known issue CRP bug: 3564713
             var count = 1;
             Rest.Azure.AzureOperationResponse<VirtualMachineExtension> op = null;
-            while (count <= 2)
+
+            while (true)
             {
                 try
                 {
@@ -357,22 +376,28 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                         VMName,
                         Name ?? DscExtensionCmdletConstants.ExtensionPublishedNamespace + "." + DscExtensionCmdletConstants.ExtensionPublishedName,
                         parameters).GetAwaiter().GetResult();
+
+                    break;
                 }
                 catch (Rest.Azure.CloudException ex)
                 {
-                    var errorReturned = JsonConvert.DeserializeObject<ComputeLongRunningOperationError>(ex.Response.Content.ReadAsStringAsync().Result);
+                    var errorReturned = JsonConvert.DeserializeObject<ComputeLongRunningOperationError>(
+                        ex.Response.Content);
 
                     if (ComputeOperationStatus.Failed.Equals(errorReturned.Status)
                         && errorReturned.Error != null && "InternalExecutionError".Equals(errorReturned.Error.Code))
                     {
                         count++;
+                        if (count <= 2)
+                        {
+                            continue;
+                        }
                     }
-                    else
-                    {
-                        break;
-                    }
+
+                    ThrowTerminatingError(new ErrorRecord(ex, "InvalidResult", ErrorCategory.InvalidResult, null));
                 }
             }
+
             var result = Mapper.Map<PSAzureOperationResponse>(op);
             WriteObject(result);
         }
