@@ -85,6 +85,13 @@ namespace Microsoft.Azure.Commands.Compute
                 HelpMessage = "Operating System Type of the virtual machines. Possible values: Windows | Linux")]
         public string OSType { get; set; }
 
+        [Parameter(
+                Mandatory = false,
+                Position = 5,
+                ValueFromPipelineByPropertyName = false,
+                HelpMessage = "Disables the settings for table content")]
+        public SwitchParameter SkipStorage { get; set; }
+
         public SetAzureRmVMAEMExtension()
         {           
         }
@@ -244,21 +251,23 @@ namespace Microsoft.Azure.Commands.Compute
 
                     if (!this._Helper.IsPremiumStorageAccount(storage))
                     {
-                        var currentConfig = this._Helper.GetStorageAnalytics(storage.Name);
-
-                        if (!this._Helper.CheckStorageAnalytics(storage.Name, currentConfig))
+                        if (!this.SkipStorage.IsPresent)
                         {
-                            this._Helper.WriteHost("[INFO] Enabling Storage Account Metrics for storage account {0}", storage.Name);
+                            var currentConfig = this._Helper.GetStorageAnalytics(storage.Name);
 
-                            // Enable analytics on storage accounts
-                            this.SetStorageAnalytics(storage.Name);
+                            if (!this._Helper.CheckStorageAnalytics(storage.Name, currentConfig))
+                            {
+                                this._Helper.WriteHost("[INFO] Enabling Storage Account Metrics for storage account {0}", storage.Name);
 
+                                // Enable analytics on storage accounts
+                                this.SetStorageAnalytics(storage.Name);
+
+                            }
                         }
 
                         var endpoint = this._Helper.GetAzureSAPTableEndpoint(storage);
                         var hourUri = endpoint + "$MetricsHourPrimaryTransactionsBlob";
                         var minuteUri = endpoint + "$MetricsMinutePrimaryTransactionsBlob";
-
 
                         this._Helper.WriteHost("[INFO] Adding Storage Account Metric information for storage account {0}", storage.Name);
 

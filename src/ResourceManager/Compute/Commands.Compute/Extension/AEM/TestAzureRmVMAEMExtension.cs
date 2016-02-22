@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Compute
                 Position = 4,
                 ValueFromPipelineByPropertyName = false,
                 HelpMessage = "Disables the test for table content")]
-        public SwitchParameter SkipTableContentCheck { get; set; }
+        public SwitchParameter SkipStorageCheck { get; set; }
 
         public TestAzureRmVMAEMExtension()
         {
@@ -189,61 +189,63 @@ namespace Microsoft.Azure.Commands.Compute
                 this._Helper.WriteHost("Storage Metrics check...");
                 var metricsResult = new AEMTestResult("Storage Metrics check");
                 rootResult.PartialResults.Add(metricsResult);
-
-                foreach (var account in accounts)
+                if (!this.SkipStorageCheck.IsPresent)
                 {
-                    var accountResult = new AEMTestResult("Storage Metrics check for {0}", account);
-                    metricsResult.PartialResults.Add(accountResult);
-
-                    this._Helper.WriteHost("\tStorage Metrics check for {0}...", account);
-                    var storage = this._Helper.GetStorageAccountFromCache(account);
-
-                    if (!this._Helper.IsPremiumStorageAccount(storage))
+                    foreach (var account in accounts)
                     {
-                        this._Helper.WriteHost("\t\tStorage Metrics configuration check for {0}...", false, account);
-                        var currentConfig = this._Helper.GetStorageAnalytics(account);
+                        var accountResult = new AEMTestResult("Storage Metrics check for {0}", account);
+                        metricsResult.PartialResults.Add(accountResult);
 
-                        bool storageConfigOk = false;
-                        if (!this._Helper.CheckStorageAnalytics(account, currentConfig))
+                        this._Helper.WriteHost("\tStorage Metrics check for {0}...", account);
+                        var storage = this._Helper.GetStorageAccountFromCache(account);
+
+                        if (!this._Helper.IsPremiumStorageAccount(storage))
                         {
-                            accountResult.PartialResults.Add(new AEMTestResult("Storage Metrics configuration check for {0}", false, account));
-                            this._Helper.WriteHost("NOT OK ", ConsoleColor.Red);
+                            this._Helper.WriteHost("\t\tStorage Metrics configuration check for {0}...", false, account);
+                            var currentConfig = this._Helper.GetStorageAnalytics(account);
 
+                            bool storageConfigOk = false;
+                            if (!this._Helper.CheckStorageAnalytics(account, currentConfig))
+                            {
+                                accountResult.PartialResults.Add(new AEMTestResult("Storage Metrics configuration check for {0}", false, account));
+                                this._Helper.WriteHost("NOT OK ", ConsoleColor.Red);
+
+                            }
+                            else
+                            {
+                                accountResult.PartialResults.Add(new AEMTestResult("Storage Metrics configuration check for {0}", true, account));
+                                this._Helper.WriteHost("OK ", ConsoleColor.Green);
+                                storageConfigOk = true;
+                            }
+
+                            this._Helper.WriteHost("\t\tStorage Metrics data check for {0}...", false, account);
+                            var filterMinute = Microsoft.WindowsAzure.Storage.Table.TableQuery.
+                                GenerateFilterConditionForDate("Timestamp", "gt", DateTime.Now.AddMinutes(AEMExtensionConstants.ContentAgeInMinutes * -1));
+
+                            if (storageConfigOk && this._Helper.CheckTableAndContent(account, "$MetricsMinutePrimaryTransactionsBlob", filterMinute, ".", false, this.WaitTimeInMinutes))
+
+                            {
+                                this._Helper.WriteHost("OK ", ConsoleColor.Green);
+                                accountResult.PartialResults.Add(new AEMTestResult("Storage Metrics data check for {0}", true, account));
+                            }
+                            else
+                            {
+                                accountResult.PartialResults.Add(new AEMTestResult("Storage Metrics data check for {0}", false, account));
+                                this._Helper.WriteHost("NOT OK ", ConsoleColor.Red);
+                            }
                         }
                         else
                         {
-                            accountResult.PartialResults.Add(new AEMTestResult("Storage Metrics configuration check for {0}", true, account));
+                            accountResult.PartialResults.Add(new AEMTestResult("Storage Metrics not available for Premium Storage account {0}", true, account));
+                            this._Helper.WriteHost("\t\tStorage Metrics not available for Premium Storage account {0}...", false, account);
                             this._Helper.WriteHost("OK ", ConsoleColor.Green);
-                            storageConfigOk = true;
-                        }
-
-                        this._Helper.WriteHost("\t\tStorage Metrics data check for {0}...", false, account);
-                        var filterMinute = Microsoft.WindowsAzure.Storage.Table.TableQuery.
-                            GenerateFilterConditionForDate("Timestamp", "gt", DateTime.Now.AddMinutes(AEMExtensionConstants.ContentAgeInMinutes * -1));
-
-                        if (!this.SkipTableContentCheck.IsPresent && storageConfigOk && this._Helper.CheckTableAndContent(account, "$MetricsMinutePrimaryTransactionsBlob", filterMinute, ".", false, this.WaitTimeInMinutes))
-
-                        {
-                            this._Helper.WriteHost("OK ", ConsoleColor.Green);
-                            accountResult.PartialResults.Add(new AEMTestResult("Storage Metrics data check for {0}", true, account));
-                        }
-                        else if (!this.SkipTableContentCheck.IsPresent)
-                        {
-                            accountResult.PartialResults.Add(new AEMTestResult("Storage Metrics data check for {0}", false, account));
-                            this._Helper.WriteHost("NOT OK ", ConsoleColor.Red);
-                        }
-                        else
-                        {
-                            this._Helper.WriteHost("Skipped ", ConsoleColor.Yellow);
                         }
                     }
-                    else
-                    {
-                        accountResult.PartialResults.Add(new AEMTestResult("Storage Metrics not available for Premium Storage account {0}", true, account));
-                        this._Helper.WriteHost("\t\tStorage Metrics not available for Premium Storage account {0}...", false, account);
-                        this._Helper.WriteHost("OK ", ConsoleColor.Green);
-
-                    }
+                }
+                else
+                {
+                    metricsResult.Result = true;
+                    this._Helper.WriteHost("Skipped ", ConsoleColor.Yellow);
                 }
                 //################################################# 
                 //#################################################    
@@ -448,7 +450,7 @@ namespace Microsoft.Azure.Commands.Compute
 
 
                         var ok = false;
-                        if (!this.SkipTableContentCheck.IsPresent && (!String.IsNullOrEmpty(deploymentId)) && (!String.IsNullOrEmpty(roleName)) && (!String.IsNullOrEmpty(wadstorage)))
+                        if (!this.SkipStorageCheck.IsPresent && (!String.IsNullOrEmpty(deploymentId)) && (!String.IsNullOrEmpty(roleName)) && (!String.IsNullOrEmpty(wadstorage)))
                         {
 
                             if (this.OSType.Equals(AEMExtensionConstants.OSTypeLinux, StringComparison.InvariantCultureIgnoreCase))
@@ -467,12 +469,12 @@ namespace Microsoft.Azure.Commands.Compute
 
 
                         }
-                        if (ok && !this.SkipTableContentCheck.IsPresent)
+                        if (ok && !this.SkipStorageCheck.IsPresent)
                         {
                             wadConfigResult.PartialResults.Add(new AEMTestResult("IaaSDiagnostics data check", true));
                             this._Helper.WriteHost("OK ", ConsoleColor.Green);
                         }
-                        else if (!this.SkipTableContentCheck.IsPresent)
+                        else if (!this.SkipStorageCheck.IsPresent)
                         {
                             wadConfigResult.PartialResults.Add(new AEMTestResult("IaaSDiagnostics data check", false));
                             this._Helper.WriteHost("NOT OK ", ConsoleColor.Red);

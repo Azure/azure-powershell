@@ -146,41 +146,49 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
             switch (virtualMachine.HardwareProfile.VmSize)
             {
                 case "Standard_DS1":
+                case "Standard_DS1_v2":
                     result.HasSLA = true;
                     result.IOPS = "3200";
                     result.TP = "32";
                     break;
                 case "Standard_DS2":
+                case "Standard_DS2_v2":
                     result.HasSLA = true;
                     result.IOPS = "6400";
                     result.TP = "64";
                     break;
                 case "Standard_DS3":
+                case "Standard_DS3_v2":
                     result.HasSLA = true;
                     result.IOPS = "12800";
                     result.TP = "128";
                     break;
                 case "Standard_DS4":
+                case "Standard_DS4_v2":
                     result.HasSLA = true;
                     result.IOPS = "25600";
                     result.TP = "256";
                     break;
                 case "Standard_DS11":
+                case "Standard_DS11_v2":
                     result.HasSLA = true;
                     result.IOPS = "6400";
                     result.TP = "64";
                     break;
                 case "Standard_DS12":
+                case "Standard_DS12_v2":
                     result.HasSLA = true;
                     result.IOPS = "12800";
                     result.TP = "128";
                     break;
                 case "Standard_DS13":
+                case "Standard_DS13_v2":
                     result.HasSLA = true;
                     result.IOPS = "25600";
                     result.TP = "256";
                     break;
                 case "Standard_DS14":
+                case "Standard_DS14_v2":
                     result.HasSLA = true;
                     result.IOPS = "50000";
                     result.TP = "512";

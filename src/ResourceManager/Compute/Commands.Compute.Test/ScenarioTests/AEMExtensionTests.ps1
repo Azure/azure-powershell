@@ -32,11 +32,11 @@ function Test-AEMExtensionBasicWindows
 		$extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
 		Assert-Null $extension
 		# Test with not extension
-		$testResult = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
+		$testResult = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -SkipStorageCheck
 		Assert-False { $testResult.Result }
 
 		# Set and Get command.
-		Set-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
+		Set-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -SkipStorage
         $extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
 
 		Assert-NotNull $extension
@@ -46,17 +46,8 @@ function Test-AEMExtensionBasicWindows
         $settings = $extension.PublicSettings | ConvertFrom-Json
         Assert-NotNull $settings.cfg
 
-		$stoname = 'sto' + $rgname;
-		$tempFile = [System.IO.Path]::GetTempFileName()
-		"new file content" | Out-File $tempFile
-		$ctxt = (New-AzureStorageContext -StorageAccountName $stoname -StorageAccountKey (Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname).Key1)
-		$container = New-AzureStorageContainer -Name "uploadtest" -Context $ctxt
-		Set-AzureStorageBlobContent -File $tempFile -Context $ctxt -Container "uploadtest" -Blob "filtemp.txt"
-		Restart-AzureRmVM -ResourceGroupName $rgname -Name $vmname
-
-
 		# Test command.
-		$testResult = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -WaitTimeInMinutes 50 -SkipTableContentCheck
+		$testResult = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -WaitTimeInMinutes 50 -SkipStorageCheck
 		Assert-True { $testResult.Result }
 		Assert-True { ($testResult.PartialResults.Count -gt 0) }
 
@@ -92,7 +83,7 @@ function Test-AEMExtensionAdvancedWindows
 
 		# Test with not extension
 		Write-Verbose "Test-AEMExtensionAdvancedWindows: Test with no extension"
-		$res = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
+		$res = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -SkipStorageCheck
 		Assert-False { $res.Result }
 		Write-Verbose "Test-AEMExtensionAdvancedWindows: Test done"
 
@@ -101,7 +92,7 @@ function Test-AEMExtensionAdvancedWindows
 
 		# Set and Get command.
 		Write-Verbose "Test-AEMExtensionAdvancedWindows: Set with no extension"
-		Set-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -WADStorageAccountName $stoname
+		Set-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -WADStorageAccountName $stoname -SkipStorage
 		Write-Verbose "Test-AEMExtensionAdvancedWindows: Set done"
 		Write-Verbose "Test-AEMExtensionAdvancedWindows: Get with extension"
         $extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
@@ -117,7 +108,7 @@ function Test-AEMExtensionAdvancedWindows
 
 		# Test command.
 		Write-Verbose "Test-AEMExtensionAdvancedWindows: Test with extension"
-		$res = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -SkipTableContentCheck
+		$res = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -SkipStorageCheck
 		Assert-True { $res.Result }
 		Assert-True { ($res.PartialResults.Count -gt 0) }
 		Write-Verbose "Test-AEMExtensionAdvancedWindows: Test done"
@@ -154,11 +145,11 @@ function Test-AEMExtensionBasicLinux
 		$extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
 		Assert-Null $extension
 		# Test with not extension
-		$testResult = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
+		$testResult = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -SkipStorageCheck
 		Assert-False { $testResult.Result }
 
 		# Set and Get command.
-		Set-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
+		Set-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -SkipStorage
         $extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
 
 		Assert-NotNull $extension
@@ -168,16 +159,8 @@ function Test-AEMExtensionBasicLinux
         $settings = $extension.PublicSettings | ConvertFrom-Json
         Assert-NotNull $settings.cfg
 
-		$stoname = 'sto' + $rgname;
-		$tempFile = [System.IO.Path]::GetTempFileName()
-		"new file content" | Out-File $tempFile
-		$ctxt = (New-AzureStorageContext -StorageAccountName $stoname -StorageAccountKey (Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname).Key1)
-		$container = New-AzureStorageContainer -Name "uploadtest" -Context $ctxt
-		Set-AzureStorageBlobContent -File $tempFile -Context $ctxt -Container "uploadtest" -Blob "filtemp.txt"
-		Restart-AzureRmVM -ResourceGroupName $rgname -Name $vmname
-
 		# Test command.
-		$testResult = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -WaitTimeInMinutes 50 -SkipTableContentCheck
+		$testResult = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -WaitTimeInMinutes 50 -SkipStorageCheck
 		Assert-True { $testResult.Result }
 		Assert-True { ($testResult.PartialResults.Count -gt 0) }
 
@@ -213,7 +196,7 @@ function Test-AEMExtensionAdvancedLinux
 
 		# Test with not extension
 		Write-Verbose "Test-AEMExtensionAdvancedLinux: Test with no extension"
-		$res = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
+		$res = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -SkipStorageCheck
 		Write-Verbose ("Test-AEMExtensionAdvancedLinux: Test result " + $res.Result)
 		Assert-False { $res.Result }
 		Write-Verbose "Test-AEMExtensionAdvancedLinux: Test done"
@@ -223,7 +206,7 @@ function Test-AEMExtensionAdvancedLinux
 
 		# Set and Get command.
 		Write-Verbose "Test-AEMExtensionAdvancedLinux: Set with no extension"
-		Set-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -WADStorageAccountName $stoname
+		Set-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -WADStorageAccountName $stoname -SkipStorage
 		Write-Verbose "Test-AEMExtensionAdvancedLinux: Set done"
 		Write-Verbose "Test-AEMExtensionAdvancedLinux: Get with extension"
         $extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
@@ -239,7 +222,7 @@ function Test-AEMExtensionAdvancedLinux
 
 		# Test command.
 		Write-Verbose "Test-AEMExtensionAdvancedLinux: Test with extension"
-		$res = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -SkipTableContentCheck
+		$res = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -SkipStorageCheck
 		Assert-True { $res.Result }
 		Assert-True { ($res.PartialResults.Count -gt 0) }
 		Write-Verbose "Test-AEMExtensionAdvancedLinux: Test done"
