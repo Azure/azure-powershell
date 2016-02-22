@@ -102,6 +102,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 return new AzureSqlDatabaseGeoBackupModel()
                 {
                     ResourceGroupName = resourceGroup,
+                    DatabaseName = geoBackup.Name,
                     ServerName = serverName,
                     ResourceId = geoBackup.Id,
                     Edition = geoBackup.Properties.Edition,

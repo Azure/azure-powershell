@@ -153,6 +153,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             Location = database.Location;
             ResourceId = database.Id;
             CreateMode = database.Properties.CreateMode;
+            EarliestRestoreDate = database.Properties.EarliestRestoreDate;
 
             Guid.TryParse(database.Properties.CurrentServiceObjectiveId, out id);
             CurrentServiceObjectiveId = id;

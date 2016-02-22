@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// <returns>The list of entities</returns>
         protected override IEnumerable<AzureSqlDeletedDatabaseBackupModel> GetEntity()
         {
-            return ModelAdapter.ListDeletedDatabaseBackups(this.ResourceGroupName, this.ServerName).Where(backup => (string.IsNullOrEmpty(DatabaseName) || backup.DatabaseName == DatabaseName) && (DeletionDate == null || backup.DeletionDate == DeletionDate)); ;
+            return ModelAdapter.ListDeletedDatabaseBackups(this.ResourceGroupName, this.ServerName).Where(backup => (string.IsNullOrEmpty(DatabaseName) || backup.DatabaseName == DatabaseName) && (DeletionDate == null || backup.DeletionDate == DeletionDate));
         }
 
         /// <summary>
