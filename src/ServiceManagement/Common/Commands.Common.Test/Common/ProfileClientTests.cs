@@ -25,6 +25,7 @@ using Microsoft.Azure.ServiceManagemenet.Common;
 using Xunit;
 using CSMSubscription = Microsoft.Azure.Subscriptions.Models.Subscription;
 using RDFESubscription = Microsoft.WindowsAzure.Subscriptions.Models.SubscriptionListOperationResponse.Subscription;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Common.Authentication.Test
 {
@@ -56,7 +57,6 @@ namespace Common.Authentication.Test
 
         public ProfileClientTests()
         {
-            AzureSession.ProfileDirectory = AppDomain.CurrentDomain.BaseDirectory;
             SetMockData();
             currentProfile = new AzureSMProfile();
         }
@@ -194,6 +194,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ProfileMigratesAccountsAndDefaultSubscriptions()
         {
             MemoryDataStore dataStore = new MemoryDataStore();
