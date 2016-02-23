@@ -165,9 +165,11 @@
   <ItemGroup>
     <Compile Include="Common\ComputeTestController.cs" />
     <Compile Include="ScenarioTests\AddVhdTests.cs" />
+    <Compile Include="ScenarioTests\AEMExtensionTests.cs" />
     <Compile Include="ScenarioTests\ComputeCloudExceptionTests.cs" />
     <Compile Include="ScenarioTests\DiagnosticsExtensionTests.cs" />
     <Compile Include="ScenarioTests\DscExtensionTests.cs" />
+    <Compile Include="ScenarioTests\RunnerTests.cs" />
     <Compile Include="ScenarioTests\VirtualMachineBootDiagnosticsTests.cs" />
     <Compile Include="ScenarioTests\VMDynamicTests.cs" />
     <Compile Include="ScenarioTests\VirtualMachineProfileTests.cs" />
@@ -224,6 +226,9 @@
     <None Include="ScenarioTests\AddVhdTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\AEMExtensionTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\ComputeCloudExceptionTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -233,13 +238,7 @@
     <None Include="ScenarioTests\DummyConfig.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\Generated\VirtualMachineDynamicTest1.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\Generated\VirtualMachineDynamicTest2.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\Generated\VirtualMachineDynamicTest3.ps1">
+    <None Include="ScenarioTests\RunnerTests.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\VirtualMachineBootDiagnosticsTests.ps1">
@@ -272,6 +271,18 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AddVhdTests\TestAddVhd.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\TestAEMExtensionAdvancedLinux.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\TestAEMExtensionAdvancedWindows.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\TestAEMExtensionBasicLinux.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\TestAEMExtensionBasicWindows.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AvailabilitySetTests\TestAvailabilitySet.json">
