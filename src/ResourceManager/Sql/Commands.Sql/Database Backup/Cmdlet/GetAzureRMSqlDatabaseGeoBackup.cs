@@ -30,7 +30,19 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// <returns>The list of entities</returns>
         protected override IEnumerable<AzureSqlDatabaseGeoBackupModel> GetEntity()
         {
-            return ModelAdapter.ListGeoBackups(this.ResourceGroupName, this.ServerName).Where(gb => (string.IsNullOrEmpty(DatabaseName) || gb.DatabaseName == DatabaseName));
+            ICollection<AzureSqlDatabaseGeoBackupModel> results;
+
+            if (MyInvocation.BoundParameters.ContainsKey("DatabaseName"))
+            {
+                results = new List<AzureSqlDatabaseGeoBackupModel>();
+                results.Add(ModelAdapter.GetGeoBackup(this.ResourceGroupName, this.ServerName, this.DatabaseName));
+            }
+            else
+            {
+                results = ModelAdapter.ListGeoBackups(this.ResourceGroupName, this.ServerName);
+            }
+
+            return results;
         }
 
         /// <summary>

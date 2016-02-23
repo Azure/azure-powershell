@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 3,
-            HelpMessage = "The deletion date of the Azure SQL Database to retrieve backups for.")]
+            HelpMessage = "The deletion date of the Azure SQL Database to retrieve backups for, with millisecond precision (e.g. 2016-02-23T00:21:22.847Z)")]
         [ValidateNotNullOrEmpty]
         public DateTime? DeletionDate { get; set; }
 

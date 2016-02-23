@@ -77,7 +77,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// </summary>
         /// <param name="resourceGroup">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure SQL Server</param>
-        /// <param name="databaseName">The name of the Azure SQL database</param>
         /// <returns>List of restore points</returns>
         public IList<Management.Sql.Models.GeoBackup> ListGeoBackups(string resourceGroupName, string serverName, string clientRequestId)
         {
@@ -89,12 +88,34 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// </summary>
         /// <param name="resourceGroup">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure SQL Server</param>
-        /// <param name="databaseName">The name of the Azure SQL database</param>
-        /// <param name="deletionDate">The date the database was dropped</param>
         /// <returns>List of restore points</returns>
         public IList<Management.Sql.Models.DeletedDatabaseBackup> ListDeletedDatabaseBackups(string resourceGroupName, string serverName, string clientRequestId)
         {
             return GetCurrentSqlClient(clientRequestId).DatabaseBackup.ListDeletedDatabaseBackups(resourceGroupName, serverName).DeletedDatabaseBackups;
+        }
+
+        /// <summary>
+        /// Get a geo backup for a given Sql Azure Database
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="databaseName">The name of the Azure SQL database</param>
+        /// <returns>List of restore points</returns>
+        public Management.Sql.Models.GeoBackup GetGeoBackup(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
+        {
+            return GetCurrentSqlClient(clientRequestId).DatabaseBackup.GetGeoBackup(resourceGroupName, serverName, databaseName).GeoBackup;
+        }
+
+        /// <summary>
+        /// Get a restorable deleted database for a given Sql Azure Database
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="databaseName">The name of the Azure SQL database</param>
+        /// <returns>List of restore points</returns>
+        public Management.Sql.Models.DeletedDatabaseBackup GetDeletedDatabaseBackup(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
+        {
+            return GetCurrentSqlClient(clientRequestId).DatabaseBackup.GetDeletedDatabaseBackup(resourceGroupName, serverName, databaseName).DeletedDatabaseBackup;
         }
 
         /// <summary>

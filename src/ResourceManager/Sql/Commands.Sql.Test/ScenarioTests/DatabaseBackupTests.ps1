@@ -72,13 +72,12 @@ function Test-RestoreDeletedDatabaseBackup
 	# Setup
 	$location = "Southeast Asia"
 	$serverVersion = "12.0"
-	$rg = Get-AzureRmResourceGroup -ResourceGroupName hchung-test
-	$server = Get-AzureRmSqlServer -ServerName hchung-testsvr -ResourceGroupName $rg.ResourceGroupName
-	$droppedDbName = "powershell_db_restored"
+	$rg = Get-AzureRmResourceGroup -ResourceGroupName hchung-test2
+	$server = Get-AzureRmSqlServer -ServerName hchung-testsvr2 -ResourceGroupName $rg.ResourceGroupName
+	$droppedDbName = "powershell_db_georestored"
 	$restoredDbName = "powershell_db_deleted"
-	Remove-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $droppedDbName -Force
 
-	Get-AzureRmSqlDeletedDatabaseBackup -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName -DatabaseName $droppedDbName | Restore-AzureRmSqlDatabase -FromDeletedDatabaseBackup -TargetDatabaseName $restoredDbName
+	Get-AzureRmSqlDeletedDatabaseBackup -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName -DatabaseName $droppedDbName -DeletionDate "2016-02-23T00:21:22.847Z" | Restore-AzureRmSqlDatabase -FromDeletedDatabaseBackup -TargetDatabaseName $restoredDbName
 }
 
 function Test-RestorePointInTimeBackup

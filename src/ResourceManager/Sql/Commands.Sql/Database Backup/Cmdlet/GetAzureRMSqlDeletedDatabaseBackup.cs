@@ -30,7 +30,27 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// <returns>The list of entities</returns>
         protected override IEnumerable<AzureSqlDeletedDatabaseBackupModel> GetEntity()
         {
-            return ModelAdapter.ListDeletedDatabaseBackups(this.ResourceGroupName, this.ServerName).Where(backup => (string.IsNullOrEmpty(DatabaseName) || backup.DatabaseName == DatabaseName) && (DeletionDate == null || backup.DeletionDate == DeletionDate));
+            ICollection<AzureSqlDeletedDatabaseBackupModel> results;
+
+            if (MyInvocation.BoundParameters.ContainsKey("DatabaseName"))
+            {
+                if (MyInvocation.BoundParameters.ContainsKey("DeletionDate"))
+                {
+                    results = new List<AzureSqlDeletedDatabaseBackupModel>();
+                    // The server expects a deleted database entity ID that consists of the database name and deletion time as a windows file time separated by a comma.
+                    results.Add(ModelAdapter.GetDeletedDatabaseBackup(this.ResourceGroupName, this.ServerName, this.DatabaseName + "," + this.DeletionDate.Value.ToFileTimeUtc().ToString()));
+                }
+                else
+                {
+                    results = ModelAdapter.ListDeletedDatabaseBackups(this.ResourceGroupName, this.ServerName).Where(backup => backup.DatabaseName == DatabaseName).ToList();
+                }
+            }
+            else
+            {
+                results = ModelAdapter.ListDeletedDatabaseBackups(this.ResourceGroupName, this.ServerName);
+            }
+
+            return results;
         }
 
         /// <summary>
