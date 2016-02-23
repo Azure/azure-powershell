@@ -26,7 +26,7 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteCircuitCRUD");
         }
 
-        [Fact(Skip = "Rerecord tests")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExpressRouteCircuitPeeringCRUD()
         {

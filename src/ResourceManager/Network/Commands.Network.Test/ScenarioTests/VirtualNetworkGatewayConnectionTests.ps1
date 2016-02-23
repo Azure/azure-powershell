@@ -19,7 +19,7 @@ Virtual network gateway connection tests
 function Test-VirtualNetworkGatewayConnectionCRUD
 {
     # Setup
-    $rgname = Get-ResourceGroupName
+    $rgname = "onesdkTestConnection"
     $rname = Get-ResourceName
     $domainNameLabel = Get-ResourceName
     $vnetName = Get-ResourceName
@@ -33,8 +33,8 @@ function Test-VirtualNetworkGatewayConnectionCRUD
     
     try 
      {
-      # Create the resource group
-      $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
+      # Get the resource group
+      $resourceGroup = Get-AzureRmResourceGroup -Name $rgname } 
       
       # Create the Virtual Network
       $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
