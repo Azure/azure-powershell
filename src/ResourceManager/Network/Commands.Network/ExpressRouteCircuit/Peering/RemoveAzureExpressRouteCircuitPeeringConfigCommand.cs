@@ -30,21 +30,21 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
              Mandatory = true,
              ValueFromPipeline = true,
-             HelpMessage = "The circuit")]
-        public PSExpressRouteCircuit Circuit { get; set; }
+             HelpMessage = "The ExpressRouteCircuit")]
+        public PSExpressRouteCircuit ExpressRouteCircuit { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            var auth = this.Circuit.Peerings.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+            var auth = this.ExpressRouteCircuit.Peerings.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
             if (auth != null)
             {
-                this.Circuit.Peerings.Remove(auth);
+                this.ExpressRouteCircuit.Peerings.Remove(auth);
             }
 
-            WriteObject(this.Circuit);
+            WriteObject(this.ExpressRouteCircuit);
         }
     }
 }
