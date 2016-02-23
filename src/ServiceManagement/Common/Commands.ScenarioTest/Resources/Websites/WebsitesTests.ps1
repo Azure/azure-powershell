@@ -858,12 +858,12 @@ function Test-SetAzureWebsite
     Assert-AreEqual Classic $website.ManagedPipelineMode
     Assert-AreEqual $true $website.WebSocketsEnabled
 
-	$website.RemoteDebuggingEnabled = $true
-	$website.RemoteDebuggingVersion = $remotedebuggingversion
+    $website.RemoteDebuggingEnabled = $true
+    $website.RemoteDebuggingVersion = $remotedebuggingversion
+    Set-AzureWebsite $name -Slot Production -SiteWithConfig $website
 
-	Set-AzureWebsite $name -Slot Production -SiteWithConfig $website
-	Assert-AreEqual $true $website.RemoteDebuggingEnabled
-	Assert-AreEqual $remotedebuggingversion $website.RemoteDebuggingVersion
+    Assert-AreEqual $true $website.RemoteDebuggingEnabled
+    Assert-AreEqual $remotedebuggingversion $website.RemoteDebuggingVersion
 }
 
 ########################################################################### Test-StartAzureWebsiteTriggeredJob Scenario Tests ###########################################################################
