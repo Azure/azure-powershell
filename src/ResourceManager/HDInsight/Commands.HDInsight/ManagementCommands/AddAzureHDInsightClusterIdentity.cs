@@ -20,10 +20,10 @@ using Microsoft.Azure.Commands.HDInsight.Commands;
 namespace Microsoft.Azure.Commands.HDInsight.ManagementCommands
 {
     [Cmdlet(
-       VerbsCommon.New,
+       VerbsCommon.Add,
        Constants.CommandNames.AzureHDInsightClusterIdentity),
     OutputType(typeof(AzureHDInsightConfig))]
-    public class NewAzureHDInsightClusterIdentity : HDInsightCmdletBase
+    public class AddAzureHDInsightClusterIdentity : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
 
