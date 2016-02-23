@@ -28,29 +28,34 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
     public class RestoreAzureRmSqlDatabase
         : AzureSqlCmdletBase<Database.Model.AzureSqlDatabaseModel, AzureSqlDatabaseBackupAdapter>
     {
+
+        private const string FromPointInTimeBackupSetName = "FromPointInTimeBackup";
+        private const string FromDeletedDatabaseBackupSetName = "FromDeletedDatabaseBackup";
+        private const string FromGeoBackupSetName = "FromGeoBackup";
+
         /// <summary>
         /// Gets or sets flag indicating a restore from a point-in-time backup.
         /// </summary>
         [Parameter(
-            ParameterSetName = "FromPointInTimeBackup",
+            ParameterSetName = FromPointInTimeBackupSetName,
             Mandatory = true,
             HelpMessage = "Restore from a point-in-time backup.")]
         public SwitchParameter FromPointInTimeBackup { get; set; }
 
         /// <summary>
-        /// Gets or sets flag indicating a restore of a dropped database.
+        /// Gets or sets flag indicating a restore of a deleted database.
         /// </summary>
         [Parameter(
-            ParameterSetName = "FromDeletedDatabaseBackup",
+            ParameterSetName = FromDeletedDatabaseBackupSetName,
             Mandatory = true,
-            HelpMessage = "Restore a dropped database.")]
+            HelpMessage = "Restore a deleted database.")]
         public SwitchParameter FromDeletedDatabaseBackup { get; set; }
 
         /// <summary>
         /// Gets or sets flag indicating a geo-restore (recover) request
         /// </summary>
         [Parameter(
-            ParameterSetName = "FromGeoBackup",
+            ParameterSetName = FromGeoBackupSetName,
             Mandatory = true,
             HelpMessage = "Restore from a geo backup.")]
         public SwitchParameter FromGeoBackup { get; set; }
@@ -59,19 +64,19 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// Gets or sets the point in time to restore the database to
         /// </summary>
         [Parameter(
-            ParameterSetName = "FromPointInTimeBackup",
+            ParameterSetName = FromPointInTimeBackupSetName,
             Mandatory = true,
             HelpMessage = "The point in time to restore the database to.")]
         public DateTime PointInTime { get; set; }
 
         /// <summary>
-        /// Gets or sets the deletion time of the dropped database to restore.
+        /// Gets or sets the deletion time of the deleted database to restore.
         /// </summary>
         [Parameter(
-            ParameterSetName = "FromDeletedDatabaseBackup",
+            ParameterSetName = FromDeletedDatabaseBackupSetName,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true, 
-            HelpMessage = "The deletion date of the dropped database to restore.")]
+            HelpMessage = "The deletion date of the deleted database to restore.")]
         public DateTime DeletionDate { get; set; }
 
         /// <summary> 
@@ -79,7 +84,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// </summary> 
         [Parameter(Mandatory = true, 
             ValueFromPipelineByPropertyName = true, 
-            HelpMessage = "The name of the Azure SQL Database Server to restore the database to.")] 
+            HelpMessage = "The name of the Azure SQL Server to restore the database to.")] 
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }
 
@@ -91,7 +96,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         public string TargetDatabaseName { get; set; }
 
         /// <summary>
-        /// The resource ID of the database to restore (dropped DB, geo backup DB, live DB)
+        /// The resource ID of the database to restore (deleted DB, geo backup DB, live DB)
         /// </summary>
         [Parameter(Mandatory = true,
                     ValueFromPipelineByPropertyName = true, 
@@ -103,7 +108,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The edition of the database to restore to.")]
+            HelpMessage = "The database edition to use for the restored database.")]
         public DatabaseEdition Edition { get; set; }
 
         /// <summary>
@@ -111,7 +116,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The service level objective of the database to restore to.")]
+            HelpMessage = "The service level objective to use for the restored database.")]
         public string ServiceObjectiveName { get; set; }
 
         /// <summary>
@@ -119,13 +124,13 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
                     ValueFromPipelineByPropertyName = true,
-                    HelpMessage = "The name of the elastic pool to restore to.")]
+                    HelpMessage = "The name of the elastic pool into which the database should be restored.")]
         public string ElasticPoolName { get; set; }
         
         /// <summary>
         /// Initializes the adapter
         /// </summary>
-        /// <param name="subscription"></param>
+        /// <param name="subscription">The subscription ID to operate on</param>
         /// <returns></returns>
         protected override AzureSqlDatabaseBackupAdapter InitModelAdapter(Azure.Common.Authentication.Models.AzureSubscription subscription)
         {
@@ -144,16 +149,16 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             string location = ModelAdapter.GetServerLocation(ResourceGroupName, ServerName);
             switch (ParameterSetName)
             {
-                case "FromPointInTimeBackup":
+                case FromPointInTimeBackupSetName:
                     createMode = "PointInTimeRestore";
                     restorePointInTime = PointInTime;
                     break;
-                case "FromDeletedDatabaseBackup":
+                case FromDeletedDatabaseBackupSetName:
                     createMode = "Restore";
-                    //Use DeletionDate as RestorePointInTime for dropped restore
+                    // Use DeletionDate as RestorePointInTime for restore of deleted DB
                     restorePointInTime = DeletionDate;
                     break;
-                case "FromGeoBackup":
+                case FromGeoBackupSetName:
                     createMode = "Recovery";
                     break;
                 default:

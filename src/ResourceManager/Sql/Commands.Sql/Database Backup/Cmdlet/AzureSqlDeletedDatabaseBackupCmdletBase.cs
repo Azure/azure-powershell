@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
-            HelpMessage = "The name of the Azure SQL Database Server the database is in.")]
+            HelpMessage = "The name of the Azure SQL Server the database is in.")]
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }
 
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// <summary>
         /// Initializes the adapter
         /// </summary>
-        /// <param name="subscription"></param>
+        /// <param name="subscription">The subscription to operate on</param>
         /// <returns></returns>
         protected override AzureSqlDatabaseBackupAdapter InitModelAdapter(Azure.Common.Authentication.Models.AzureSubscription subscription)
         {
