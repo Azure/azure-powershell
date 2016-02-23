@@ -298,7 +298,7 @@ function Wait-Seconds
 {
     param([int] $timeout)
     
-    [Microsoft.WindowsAzure.Testing.TestUtilities]::Wait($timeout * 1000)
+    Sleep -s $timeout
 }
 
 
