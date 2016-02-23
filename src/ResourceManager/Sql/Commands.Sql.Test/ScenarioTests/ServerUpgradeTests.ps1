@@ -49,11 +49,7 @@ function Test-ServerUpgradeWithUpgradeHint
                 Assert-AreEqual $server.ServerVersion "2.0"
                 break
             }
-
-            if ($env:AZURE_TEST_MODE -eq "Record")
-            {
-                Start-Sleep -Seconds 10
-            }
+            Wait-Seconds 10
         }
     }
     finally
@@ -90,11 +86,7 @@ function Test-ServerUpgradeAndCancel
             {
                 break
             }
-
-            if ($env:AZURE_TEST_MODE -eq "Record")
-            {
-                Start-Sleep -Seconds 10
-            }
+            Wait-Seconds 10
         }
 
         # Upgrade is cancelled

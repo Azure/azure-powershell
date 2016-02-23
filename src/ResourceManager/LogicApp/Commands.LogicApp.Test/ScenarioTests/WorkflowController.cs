@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Microsoft.Azure.Common.Authentication;
+    using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Gallery;
     using Microsoft.Azure.Management.Authorization;
     using Microsoft.Azure.Management.Resources;
@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
     using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
     using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
     using Microsoft.Azure.Management.WebSites;
+    using System.IO;
 
     /// <summary>
     /// Test controller for the logic app scenario testing
@@ -135,6 +136,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
             d.Add("Microsoft.Authorization", AuthorizationApiVersion);
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
 
+            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
             using (MockContext context = MockContext.Start(callingClassType, mockName))
             {
                 this.csmTestFactory = new LegacyTest.CSMTestEnvironmentFactory();

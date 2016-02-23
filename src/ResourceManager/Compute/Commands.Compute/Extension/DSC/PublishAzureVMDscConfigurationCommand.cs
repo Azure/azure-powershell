@@ -1,10 +1,11 @@
 using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
 using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish;
 using Microsoft.WindowsAzure.Storage.Auth;
 using System;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 {

@@ -22,7 +22,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites.Services;
 using Microsoft.WindowsAzure.Management.MediaServices;
@@ -30,7 +30,7 @@ using Microsoft.WindowsAzure.Management.MediaServices.Models;
 using Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.WindowsAzure.Management.Storage.Models;
 using Newtonsoft.Json;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.MediaServices

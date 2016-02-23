@@ -151,7 +151,7 @@ function WaitForJobCompletion
 	$interval = 5;
 	do
 	{
-		Start-Sleep $interval
+		Wait-Seconds $interval
 		$timeElapse = $timeElapse + $interval
 		$job = Get-AzureRmSiteRecoveryJob -Name $JobId;
 	} while((-not ($endStateDescription -ccontains $job.State)) -and ($timeElapse -lt $NumOfSecondsToWait))

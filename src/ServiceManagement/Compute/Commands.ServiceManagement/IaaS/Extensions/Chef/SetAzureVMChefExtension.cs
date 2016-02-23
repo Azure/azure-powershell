@@ -103,6 +103,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         public string BootstrapVersion { get; set; }
 
         [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Uninstall Chef client during update/uninstall extension. Default is false.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter UninstallChefClient { get; set; }
+
+        [Parameter(
             Mandatory = true,
             ParameterSetName = LinuxParameterSetName,
             HelpMessage = "Set extension for Linux.")]
@@ -174,6 +180,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             string AutoUpdateChefClient = this.AutoUpdateChefClient.IsPresent ? "true" : "false";
             string DeleteChefConfig = this.DeleteChefConfig.IsPresent ? "true" : "false";
             string BootstrapVersion = this.BootstrapVersion;
+            string UninstallChefClient = this.UninstallChefClient.IsPresent ? "true" : "false";
 
             //Cases handled:
             // 1. When clientRb given by user and:
@@ -227,42 +234,46 @@ validation_client_name 	\""{1}\""
             {
                 if (IsBootstrapOptionsEmpty)
                 {
-                    this.PublicConfiguration = string.Format("{{{0},{1},{2},{3}}}",
-                        string.Format(AutoUpdateTemplate, AutoUpdateChefClient),
-                        string.Format(DeleteChefConfigTemplate, DeleteChefConfig),
-                        string.Format(ClientRbTemplate, ClientConfig),
-                        string.Format(BootstrapVersionTemplate, BootstrapVersion));
-                }
-                else
-                {
                     this.PublicConfiguration = string.Format("{{{0},{1},{2},{3},{4}}}",
                         string.Format(AutoUpdateTemplate, AutoUpdateChefClient),
                         string.Format(DeleteChefConfigTemplate, DeleteChefConfig),
                         string.Format(ClientRbTemplate, ClientConfig),
+                        string.Format(BootstrapVersionTemplate, BootstrapVersion),
+                        string.Format(UninstallChefClientTemplate, UninstallChefClient));
+                }
+                else
+                {
+                    this.PublicConfiguration = string.Format("{{{0},{1},{2},{3},{4},{5}}}",
+                        string.Format(AutoUpdateTemplate, AutoUpdateChefClient),
+                        string.Format(DeleteChefConfigTemplate, DeleteChefConfig),
+                        string.Format(ClientRbTemplate, ClientConfig),
                         string.Format(BootStrapOptionsTemplate, this.BootstrapOptions),
-                        string.Format(BootstrapVersionTemplate, BootstrapVersion));
+                        string.Format(BootstrapVersionTemplate, BootstrapVersion),
+                        string.Format(UninstallChefClientTemplate, UninstallChefClient));
                 }
             }
             else
             {
                 if (IsBootstrapOptionsEmpty)
                 {
-                    this.PublicConfiguration = string.Format("{{{0},{1},{2},{3},{4}}}",
+                    this.PublicConfiguration = string.Format("{{{0},{1},{2},{3},{4},{5}}}",
                         string.Format(AutoUpdateTemplate, AutoUpdateChefClient),
                         string.Format(DeleteChefConfigTemplate, DeleteChefConfig),
                         string.Format(ClientRbTemplate, ClientConfig),
                         string.Format(RunListTemplate, this.RunList),
-                        string.Format(BootstrapVersionTemplate, BootstrapVersion));
+                        string.Format(BootstrapVersionTemplate, BootstrapVersion),
+                        string.Format(UninstallChefClientTemplate, UninstallChefClient));
                 }
                 else
                 {
-                    this.PublicConfiguration = string.Format("{{{0},{1},{2},{3},{4},{5}}}",
+                    this.PublicConfiguration = string.Format("{{{0},{1},{2},{3},{4},{5},{6}}}",
                          string.Format(AutoUpdateTemplate, AutoUpdateChefClient),
                          string.Format(DeleteChefConfigTemplate, DeleteChefConfig),
                          string.Format(ClientRbTemplate, ClientConfig),
                          string.Format(RunListTemplate, this.RunList),
                          string.Format(BootStrapOptionsTemplate, this.BootstrapOptions),
-                         string.Format(BootstrapVersionTemplate, BootstrapVersion));
+                         string.Format(BootstrapVersionTemplate, BootstrapVersion),
+                         string.Format(UninstallChefClientTemplate, UninstallChefClient));
                 }
             }
         }

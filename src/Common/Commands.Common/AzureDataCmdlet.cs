@@ -21,8 +21,8 @@ using System.Management.Automation.Host;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
@@ -31,7 +31,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
 {
     public class AzureDataCmdlet : AzurePSCmdlet
     {
-        protected override Azure.Common.Authentication.Models.AzureContext DefaultContext
+        protected override AzureContext DefaultContext
         {
             get
             {
@@ -95,7 +95,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
                 while (!this.Host.UI.RawUI.KeyAvailable && elapsedSeconds < timeToWaitInSeconds)
                 {
-                    Thread.Sleep(TimeSpan.FromMilliseconds(10));
+                    TestMockSupport.Delay(10*1000);
                     endTime = DateTime.Now;
 
                     elapsedSeconds = (endTime - startTime).TotalSeconds;
@@ -119,7 +119,6 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 SaveDataCollectionProfile();
             }
         }
-
         protected override void InitializeQosEvent()
         {
         }

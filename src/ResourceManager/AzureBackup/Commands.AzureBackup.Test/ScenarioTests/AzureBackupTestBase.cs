@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.BackupServices;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
@@ -165,8 +165,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
                 PropertyInfo property2 = typeof(T).GetProperty("LongRunningOperationRetryTimeout", typeof(int));
                 if (property1 != (PropertyInfo)null && property2 != (PropertyInfo)null)
                 {
-                    property1.SetValue((object)obj2, (object)0);
-                    property2.SetValue((object)obj2, (object)0);
+                    property1.SetValue((object)obj2, (object)-1);
+                    property2.SetValue((object)obj2, (object)-1);
                 }
             }
             return obj2;
@@ -205,8 +205,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
                 PropertyInfo property2 = typeof(T).GetProperty("LongRunningOperationRetryTimeout", typeof(int));
                 if (property1 != (PropertyInfo)null && property2 != (PropertyInfo)null)
                 {
-                    property1.SetValue((object)obj2, (object)0);
-                    property2.SetValue((object)obj2, (object)0);
+                    property1.SetValue((object)obj2, (object)-1);
+                    property2.SetValue((object)obj2, (object)-1);
                 }
             }
             return obj2;
