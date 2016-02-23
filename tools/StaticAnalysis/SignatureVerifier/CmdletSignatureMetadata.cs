@@ -22,11 +22,23 @@ namespace StaticAnalysis.SignatureVerifier
     /// Data about the cmdlet signature
     /// </summary>
     [Serializable]
-    public class CmdletSignatureMetdata
+    public class CmdletSignatureMetadata
     {
         private IList<OutputMetadata> _outputTypes = new List<OutputMetadata>();
-        private IList<ParameterMetadata> _parameters = new List<ParameterMetadata>(); 
- 
+        private IList<ParameterMetadata> _parameters = new List<ParameterMetadata>();
+
+        private static readonly List<string> DestructiveVerbs = new List<string>
+        {
+            VerbsCommon.Clear,
+            VerbsCommon.Move,
+            VerbsCommon.Hide,
+            VerbsCommon.Remove,
+            VerbsCommon.Rename,
+            VerbsCommon.Reset,
+            VerbsCommon.Set,
+            "Update"
+        };
+
         /// <summary>
         /// The verb portion of the cmdlet name
         /// </summary>
@@ -36,6 +48,21 @@ namespace StaticAnalysis.SignatureVerifier
         /// The noun portion of the cmdlet name
         /// </summary>
         public string NounName { get; set; }
+
+        /// <summary>
+        /// The name of the cmdlet
+        /// </summary>
+        public string Name { get { return string.Format("{0}-{1}", VerbName, NounName); } }
+
+        public bool IsDestructiveVerb
+        {
+            get { return VerbName != null && DestructiveVerbs.Contains(VerbName); }
+        }
+
+        /// <summary>
+        /// The name of the class that implements the cmdlet
+        /// </summary>
+        public string ClassName { get; set; }
 
         /// <summary>
         /// Indicates whether the cmdlet may ask for confirmation

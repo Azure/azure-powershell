@@ -25,6 +25,7 @@ namespace StaticAnalysis
     {
         static readonly IList<IStaticAnalyzer> Analyzers = new List<IStaticAnalyzer>()
         {
+            new SignatureVerifier.SignatureVerifier(),
             new HelpAnalyzer.HelpAnalyzer(),
             new DependencyAnalyzer.DependencyAnalyzer()
         };
