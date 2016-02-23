@@ -60,7 +60,6 @@ namespace Microsoft.AzureStack.Commands
         [ValidateNotNull]
         public string Path { get; set; }
 
-
         /// <summary>
         /// This queue is used by the tests to assign fixed GalleryPackageId
         /// every time the test runs
@@ -71,7 +70,6 @@ namespace Microsoft.AzureStack.Commands
         {
             GalleryPackageIds = new Queue<Guid>();
         }
-
 
         /// <summary>
         /// Executes the API call(s) against Azure Resource Management API(s).
