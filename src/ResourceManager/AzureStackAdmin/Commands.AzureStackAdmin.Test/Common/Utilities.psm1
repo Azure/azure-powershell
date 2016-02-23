@@ -112,37 +112,3 @@ add-type @"
 
     Write-Warning -Message "CertificatePolicy set to ignore all server certificate errors"
 }
-
-<#
-.SYNOPSIS
-Retires the specified job the given numer of times, waiting the given interval between tries
-
-.PARAMETER ScriptBlock
-The script block to execute. Must be a predicate (return true or false)
-
-.PARAMETER Argument
-Argument to pass to the script block
-
-.PARAMETER MaxTries
-The maximum number of times to retry
-
-.PARAMETER IntervalInSeconds
-The number of seconds to wait before retrying
-#>
-function Retry-Function
-{
-    param([ScriptBlock] $ScriptBlock, [Object] $Argument, [int] $MaxTries, [int] $IntervalInSeconds)
-
-    if ($IntervalInSeconds -eq 0) { $IntervalInSeconds = 60  }
-
-    $result = Invoke-Command -ScriptBlock $ScriptBlock -ArgumentList $Argument;
-    $tries = 1;
-    while(( $result -ne $true) -and ($tries -le $MaxTries))
-    {
-        Start-Sleep -Seconds $IntervalInSeconds
-        $result = Invoke-Command -ScriptBlock $ScriptBlock -ArgumentList $Argument;
-        $tries++;
-    }
-
-    return $result;
-}
