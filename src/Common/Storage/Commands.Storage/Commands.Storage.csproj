@@ -173,6 +173,7 @@
     <Compile Include="Common\BlobToFileSystemNameResolver.cs" />
     <Compile Include="Blob\Cmdlet\StartAzureStorageBlobCopy.cs" />
     <Compile Include="Blob\Cmdlet\StopAzureStorageBlobCopy.cs" />
+    <Compile Include="Common\Cmdlet\NewAzureStorageAccountSasToken.cs" />
     <Compile Include="Common\Cmdlet\SetAzureStorageCORSRule.cs" />
     <Compile Include="Common\Cmdlet\GetAzureStorageCORSRule.cs" />
     <Compile Include="Common\Cmdlet\GetAzureStorageServiceLogging.cs" />

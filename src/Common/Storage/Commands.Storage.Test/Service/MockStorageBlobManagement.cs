@@ -686,6 +686,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Service
         }
 
         /// <summary>
+        /// Get the SAS token for an account.
+        /// </summary>
+        /// <param name="sharedAccessAccountPolicy">Shared access policy to generate the SAS token.</param>
+        /// <returns>Account SAS token.</returns>
+        public string GetStorageAccountSASToken(SharedAccessAccountPolicy sharedAccessAccountPolicy)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
         /// The storage context
         /// </summary>
         public AzureStorageContext StorageContext
