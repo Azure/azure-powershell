@@ -40,7 +40,7 @@ namespace StaticAnalysis.SignatureVerifier
                 {
                     var cmdlet = type.GetAttribute<CmdletAttribute>();
                     var outputs = type.GetAttributes<OutputTypeAttribute>();
-                    //var parameters = type.GetParameters();
+                    var parameters = type.GetParameters();
 
                     var cmdletMetadata = new CmdletSignatureMetadata
                     {
@@ -62,27 +62,27 @@ namespace StaticAnalysis.SignatureVerifier
                         }
                     }
 
-                    //foreach (var parameter in parameters)
-                    //{
-                    //    if ( parameter.Name == "Force" && parameter.PropertyType == typeof (SwitchParameter))
-                    //    {
-                    //        cmdletMetadata.HasForceSwitch = true;
-                    //    }
+                    foreach (var parameter in parameters)
+                    {
+                        if ( parameter.Name == "Force" && parameter.PropertyType == typeof (SwitchParameter))
+                        {
+                            cmdletMetadata.HasForceSwitch = true;
+                        }
 
-                    //    var parameterData = new ParameterMetadata
-                    //    {
-                    //        Type = parameter.PropertyType,
-                    //        Name = parameter.Name
-                    //    };
-                    //    if (parameter.HasAttribute<AliasAttribute>())
-                    //    {
-                    //        var aliases = parameter.GetAttributes<AliasAttribute>();
-                    //        parameterData.AliasList.AddRange(
-                    //            aliases.SelectMany(a => a.AliasNames));
-                    //    }
+                        var parameterData = new ParameterMetadata
+                        {
+                            Type = parameter.PropertyType,
+                            Name = parameter.Name
+                        };
+                        if (parameter.HasAttribute<AliasAttribute>())
+                        {
+                            var aliases = parameter.GetAttributes<AliasAttribute>();
+                            parameterData.AliasList.AddRange(
+                                aliases.SelectMany(a => a.AliasNames));
+                        }
 
-                    //    cmdletMetadata.Parameters.Add(parameterData);
-                    //}
+                        cmdletMetadata.Parameters.Add(parameterData);
+                    }
 
                     result.Add(cmdletMetadata);
                 }

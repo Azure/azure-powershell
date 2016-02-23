@@ -70,10 +70,18 @@ namespace StaticAnalysis.SignatureVerifier
                                     string remediation = "Determine if the cmdlet should implement ShouldProcess, and " +
                                                          "if so, assign an appropriate ConfirmImpact and determine if " +
                                                          "it should implement Force / ShouldContinue";
-                                    if (cmdlet.SupportsShouldProcess || cmdlet.HasForceSwitch)
+                                    if (cmdlet.HasForceSwitch)
                                     {
-                                        description = string.Format("Cmdlet {0} implements ShouldProcess or has a Force " +
+                                        description = string.Format("Cmdlet {0} has a Force " +
                                                                     "parameter", cmdlet.Name);
+                                        remediation =
+                                            "Implement ShouldProcess correctly, set appropriate ConfirmImpact, " +
+                                            "and determine if cmdlet needs ShouldContinue / Force.";
+                                        severity = 0;
+                                    }
+                                    else if (cmdlet.SupportsShouldProcess)
+                                    {
+                                        description = string.Format("Cmdlet {0} supports ShouldProcess", cmdlet.Name);
                                         remediation =
                                             "Implement ShouldProcess correctly, set appropriate ConfirmImpact, " +
                                             "and determine if cmdlet needs ShouldContinue / Force.";

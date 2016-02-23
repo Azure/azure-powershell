@@ -76,6 +76,7 @@
     <Compile Include="SignatureVerifier\ParameterMetadata.cs" />
     <Compile Include="SignatureVerifier\SignatureIssue.cs" />
     <Compile Include="SignatureVerifier\SignatureVerifier.cs" />
+    <Compile Include="SignatureVerifier\TypeMetadata.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

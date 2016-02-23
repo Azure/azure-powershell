@@ -27,7 +27,7 @@ namespace StaticAnalysis.SignatureVerifier
         /// <summary>
         /// The output type
         /// </summary>
-        public Type Type { get; set; }
+        public TypeMetadata Type { get; set; }
 
         /// <summary>
         /// The parameter sets for the given output type
