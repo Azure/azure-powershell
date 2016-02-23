@@ -18,8 +18,9 @@ namespace Microsoft.AzureStack.Commands.Admin.Test.Common
     using System.Collections.Generic;
     using System.Configuration;
     using System.Globalization;
+    using System.IO;
     using System.Linq;
-    using Microsoft.Azure.Common.Authentication;
+    using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Gallery;
     using Microsoft.Azure.Management.Authorization;
     using Microsoft.Azure.Management.Resources;
@@ -31,9 +32,9 @@ namespace Microsoft.AzureStack.Commands.Admin.Test.Common
 
     public sealed class AzStackTestRunner
     {
-       
         private EnvironmentSetupHelper helper;
         private CSMTestEnvironmentFactory armTestEnvironmentFactory;
+        private const string DefaultApiVersion = "1.0";
 
         public AzureStackClient azureStackClient;
 
@@ -51,7 +52,7 @@ namespace Microsoft.AzureStack.Commands.Admin.Test.Common
         {
             get
             {
-                return new AzStackTestRunner() {ApiVersion= "1.0"};
+                return new AzStackTestRunner() { ApiVersion = AzStackTestRunner.DefaultApiVersion };
             }
         }
 
@@ -59,14 +60,33 @@ namespace Microsoft.AzureStack.Commands.Admin.Test.Common
         {
             helper = new EnvironmentSetupHelper();
         }
+        public void RunPsTest(string testScript)
+        {
+            var callingClassType = TestUtilities.GetCallingClass(2);
+            var mockName = TestUtilities.GetCurrentMethodName(2);
 
-        public List<string> SetupCommonModules()
+            RunPsTestWorkflow(
+                () => SetupAzureStackEnvironment(testScript),
+                // no custom initializer
+                null,
+                // no custom cleanup 
+                null,
+                callingClassType,
+                mockName);
+        }
+
+        private List<string> SetupCommonModules()
         {
             List<string> modules = new List<string>();
             modules = new List<string>();
             bool aadEnvironement = Convert.ToBoolean(ReadAppSettings("AadEnvironment"), CultureInfo.InvariantCulture);
 
+            string azStackAdminModulePath = Path.Combine(
+                this.helper.PackageDirectory,
+                @"ResourceManager\AzureResourceManager\AzureRM.AzureStackAdmin\AzureRM.AzureStackAdmin.psd1");
+
             // The modules are deployed to the test run directory with the test settings file
+            modules.Add(azStackAdminModulePath);
             modules.Add(@"AssertResources.psm1");
             modules.Add(@"GlobalVariables.psm1");
             modules.Add(@"AuthOperations.psm1");
@@ -110,11 +130,6 @@ namespace Microsoft.AzureStack.Commands.Admin.Test.Common
                 setupAzureStackEnvironmentPs = "Set-AzureStackEnvironment -AzureStackMachineName " + azureStackMachine;
             }
 
-            scripts.Add(
-                string.Format(
-                "Import-Module -Force {0}",
-                @"F:\gh-bganapa\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.AzureStackAdmin\AzureRM.AzureStackAdmin.psd1"));
-
             //string selfSignedCertPs = "Ignore-SelfSignedCert";
             //scripts.Add(selfSignedCertPs);
             scripts.Add(setupAzureStackEnvironmentPs);
@@ -123,7 +138,7 @@ namespace Microsoft.AzureStack.Commands.Admin.Test.Common
             return scripts.ToArray();
         }
 
-        public static string ReadAppSettings(string key, bool mandatory = true)
+        private static string ReadAppSettings(string key, bool mandatory = true)
         {
             if (ConfigurationManager.AppSettings.AllKeys.Contains(key, StringComparer.OrdinalIgnoreCase))
             {
@@ -138,22 +153,8 @@ namespace Microsoft.AzureStack.Commands.Admin.Test.Common
             return null;
         }
 
-        public void RunPsTest(string testScript)
-        {
-            var callingClassType = TestUtilities.GetCallingClass(2);
-            var mockName = TestUtilities.GetCurrentMethodName(2);
 
-            RunPsTestWorkflow(
-                () => SetupAzureStackEnvironment(testScript),
-                // no custom initializer
-                null,
-                // no custom cleanup 
-                null,
-                callingClassType,
-                mockName);
-        }
-
-        public void RunPsTestWorkflow(
+        private void RunPsTestWorkflow(
            Func<string[]> scriptBuilder,
            Action<CSMTestEnvironmentFactory> initialize,
            Action cleanup,
@@ -219,11 +220,7 @@ namespace Microsoft.AzureStack.Commands.Admin.Test.Common
             this.SetupManagementClients(ResourceManagementClient, SubscriptionClient, GalleryClient, AuthorizationManagementClient, azureStackClient);
         }
 
-        /// <summary>
-        /// Loads DummyManagementClientHelper with clients and throws exception if any client is missing.
-        /// </summary>
-        /// <param name="initializedManagementClients"></param>
-        public void SetupManagementClients(params object[] initializedManagementClients)
+        private void SetupManagementClients(params object[] initializedManagementClients)
         {
             AzureSession.ClientFactory = new MockClientFactory(initializedManagementClients);
         }
@@ -247,7 +244,5 @@ namespace Microsoft.AzureStack.Commands.Admin.Test.Common
         {
             return TestBase.GetServiceClient<AuthorizationManagementClient>(this.armTestEnvironmentFactory);
         }
-
-
     }
 }
