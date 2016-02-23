@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Compute
     [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureRmVMAEMExtension : VirtualMachineExtensionBaseCmdlet
     {
-        private AEMHelper _Helper = null;        
+        private AEMHelper _Helper = null;
 
         [Parameter(
                 Mandatory = true,
@@ -93,16 +93,13 @@ namespace Microsoft.Azure.Commands.Compute
         public SwitchParameter SkipStorage { get; set; }
 
         public SetAzureRmVMAEMExtension()
-        {           
+        {
         }
 
         public override void ExecuteCmdlet()
         {
             this._Helper = new AEMHelper((err) => this.WriteError(err), (msg) => this.WriteVerbose(msg), (msg) => this.WriteWarning(msg),
-                this.CommandRuntime.Host.UI,
-                AzureSession.ClientFactory.CreateClient<StorageManagementClient>(DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager),
-                this.DefaultContext.Subscription);
-            
+                this.CommandRuntime.Host.UI, AzureSession.ClientFactory.CreateClient<StorageManagementClient>(DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager), this.DefaultContext.Subscription);
 
             base.ExecuteCmdlet();
 
@@ -121,7 +118,6 @@ namespace Microsoft.Azure.Commands.Compute
                 }
 
                 var osdisk = selectedVM.StorageProfile.OsDisk;
-
 
                 if (String.IsNullOrEmpty(this.OSType))
                 {
@@ -176,7 +172,6 @@ namespace Microsoft.Azure.Commands.Compute
                     sapmonPublicConfig.Add(new KeyValuePair() { Key = "vm.sla.throughput", Value = vmSLA.TP });
                     sapmonPublicConfig.Add(new KeyValuePair() { Key = "vm.sla.iops", Value = vmSLA.IOPS });
                 }
-
 
                 // Get Disks
                 var accounts = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
@@ -261,7 +256,6 @@ namespace Microsoft.Azure.Commands.Compute
 
                                 // Enable analytics on storage accounts
                                 this.SetStorageAnalytics(storage.Name);
-
                             }
                         }
 
@@ -329,11 +323,9 @@ namespace Microsoft.Azure.Commands.Compute
 
                 ExtensionConfig jsonPublicConfig = new ExtensionConfig();
                 jsonPublicConfig.Config = sapmonPublicConfig;
-                //var publicConfString = JsonConvert.SerializeObject(jsonPublicConfig);
 
                 ExtensionConfig jsonPrivateConfig = new ExtensionConfig();
                 jsonPrivateConfig.Config = sapmonPrivateConfig;
-                //var privateConfString = JsonConvert.SerializeObject(jsonPrivateConfig);
 
                 this._Helper.WriteHost("[INFO] Updating Azure Enhanced Monitoring Extension for SAP configuration - Please wait...");
 
@@ -353,7 +345,7 @@ namespace Microsoft.Azure.Commands.Compute
 
                 this._Helper.WriteHost("[INFO] Azure Enhanced Monitoring Extension for SAP configuration updated. It can take up to 15 Minutes for the monitoring data to appear in the SAP system.");
                 this._Helper.WriteHost("[INFO] You can check the configuration of a virtual machine by calling the Test-VMConfigForSAP_GUI commandlet.");
-                
+
                 var result = Mapper.Map<PSAzureOperationResponse>(op);
                 WriteObject(result);
             });
@@ -362,11 +354,10 @@ namespace Microsoft.Azure.Commands.Compute
         private VirtualMachine SetAzureVMDiagnosticsExtensionC(VirtualMachine selectedVM, string storageAccountName, string storageAccountKey)
         {
             System.Xml.XmlDocument xpublicConfig = null;
-            //var xmlnsConfig = "http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration";
 
             var extensionName = AEMExtensionConstants.WADExtensionDefaultName[this.OSType];
 
-            var extTemp = this._Helper.GetExtension(selectedVM, 
+            var extTemp = this._Helper.GetExtension(selectedVM,
                 AEMExtensionConstants.WADExtensionType[this.OSType], AEMExtensionConstants.WADExtensionPublisher[OSType]);
             object publicConf = null;
             if (extTemp != null)
@@ -413,7 +404,7 @@ namespace Microsoft.Azure.Commands.Compute
                             SelectSingleNode("WadCfg/DiagnosticMonitorConfiguration/PerformanceCounters/PerformanceCounterConfiguration[@counterSpecifier = '" + perfCounter.counterSpecifier + "']");
                 if (currentCounter == null)
                 {
-                    var node = xpublicConfig.CreateElement("PerformanceCounterConfiguration"); //, xmlnsConfig);
+                    var node = xpublicConfig.CreateElement("PerformanceCounterConfiguration");
                     xpublicConfig.SelectSingleNode("WadCfg/DiagnosticMonitorConfiguration/PerformanceCounters").AppendChild(node);
                     node.SetAttribute("counterSpecifier", perfCounter.counterSpecifier);
                     node.SetAttribute("sampleRate", perfCounter.sampleRate);
@@ -434,7 +425,6 @@ namespace Microsoft.Azure.Commands.Compute
             WriteVerbose("Installing WAD extension");
             VirtualMachineExtension vmExtParameters = new VirtualMachineExtension();
 
-            //vmExtParameters.Name = AEMExtensionConstants.WADExtensionDefaultName[this.OSType];
             vmExtParameters.Publisher = AEMExtensionConstants.WADExtensionPublisher[this.OSType];
             vmExtParameters.VirtualMachineExtensionType = AEMExtensionConstants.WADExtensionType[this.OSType];
             vmExtParameters.TypeHandlerVersion = AEMExtensionConstants.WADExtensionVersion[this.OSType];
@@ -471,10 +461,6 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 props.HourMetrics.RetentionDays = retentionDays;
             }
-            //if (props.Metrics != null && props.Metrics.RetentionDays != null)
-            //{
-            //    props.Metrics.RetentionDays = retentionDays;
-            //}
 
             var key = this._Helper.GetAzureStorageKeyFromCache(storageAccountName);
             var credentials = new StorageCredentials(storageAccountName, key);
@@ -482,14 +468,5 @@ namespace Microsoft.Azure.Commands.Compute
 
             cloudStorageAccount.CreateCloudBlobClient().SetServiceProperties(props);
         }
-
-
-
-
-        
-
-
-
-        
     }
 }

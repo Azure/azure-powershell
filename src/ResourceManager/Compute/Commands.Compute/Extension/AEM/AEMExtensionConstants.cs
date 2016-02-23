@@ -100,18 +100,5 @@ namespace Microsoft.Azure.Commands.Compute
                 }
             }
         };
-
-        //internal static string GetStorageAccountFromUri(string uri)
-        //{
-        //    var match = Regex.Match(new Uri(uri).Host, "(.*?)\\..*");
-        //    if (match.Success)
-        //    {
-        //        return match.Groups[1].Value;
-        //    }
-        //    else
-        //    {
-        //        throw new ArgumentException("Could not determine storage account for OS disk. Please contact support");
-        //    }
-        //}
     }
 }

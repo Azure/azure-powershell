@@ -4,6 +4,7 @@ using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Sync.Download;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
@@ -123,11 +124,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
                         });
                     cloudBlob.FetchAttributes();
 
-                    //var key = this.GetAzureStorageKeyFromCache(accountName);
-                    //var account = this.GetStorageAccountFromCache(accountName);
-                    //var credentials = new StorageCredentials(account.Name.ToLower(), key);
-                    //var client = new CloudBlobClient(account.PrimaryEndpoints.Blob, credentials);
-                    //var cloudref = blobClient.GetBlobReferenceFromServer(sc.TransformUri(new Uri(sBlobUri)));
                     return (int?)(cloudBlob.Properties.Length / (1024 * 1024 * 1024));
                 }
                 catch (Exception)
@@ -225,8 +221,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
             return result;
         }
 
-
-
         internal string GetAzureStorageKeyFromCache(string accountName)
         {
             if (_StorageKeyCache.ContainsKey(accountName))
@@ -246,14 +240,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
         internal string GetCoreEndpoint(string storageAccountName)
         {
             var storage = this.GetStorageAccountFromCache(storageAccountName);
-            //var tableendpoint = storage.PrimaryEndpoints.Table.Host;
             var blobendpoint = storage.PrimaryEndpoints.Blob.Host;
-
-            //var tableMatch = Regex.Match(tableendpoint, ".*?\\.table\\.(.*)");
-            //if (tableMatch.Success)
-            //{
-            //    return tableMatch.Groups[1].Value;
-            //}
 
             var blobMatch = Regex.Match(blobendpoint, ".*?\\.blob\\.(.*)");
             if (blobMatch.Success)
@@ -556,8 +543,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
             if (account != null)
             {
                 var endpoint = this.GetCoreEndpoint(StorageAccountName);
-                //var keys = this.GetAzureStorageKeyFromCache(StorageAccountName);
-                //var context = New - AzureStorageContext - StorageAccountName $StorageAccountName - StorageAccountKey $keys - Endpoint $endpoint
                 var key = this.GetAzureStorageKeyFromCache(StorageAccountName);
                 var credentials = new StorageCredentials(StorageAccountName, key);
                 var cloudStorageAccount = new CloudStorageAccount(credentials, endpoint, true);
@@ -597,7 +582,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
                     }
 
                     WriteHost(WaitChar, newLine: false);
-                    Thread.Sleep(5000);
+                    TestMockSupport.Delay(5000);
                     if (UseNewTableNames)
                     {
                         try
@@ -621,36 +606,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
             return tableExists;
         }
 
-        //internal bool WaitforTable(CloudTableClient tableClient, string tableName, string waitChar, DateTime checkStart, int timeout)
-        //{
-        //    int minRowCount = 3;
-        //    var tableExists = false;
-        //    var wait = true;
-        //    var table = tableClient.GetTableReference(tableName);
-        //    do
-        //    {
-        //        if (table.Exists())
-        //        {
-        //            var schemaTableResult = table.ExecuteQuery(new 
-        //                TableQuery() { SelectColumns = new List<string>() { AEMExtensionConstants.SchemasTablePhysicalTableName } });
-
-        //            if (schemaTableResult.Count() >= minRowCount)
-        //            {
-        //                wait = false;
-        //                tableExists = true;
-        //            }
-        //        }
-        //        else
-        //        {
-        //            WriteHost(waitChar, newLine: false);
-        //            Thread.Sleep(5000);
-        //            wait = ((DateTime.Now) - checkStart).TotalMinutes < timeout;
-        //        }
-        //    } while (wait);
-
-        //    return tableExists;
-        //}
-
         internal bool CheckDiagnosticsTable(string storageAccountName, string resId, string host, string waitChar, string osType, int TimeoutinMinutes = 15)
         {
             var tableExists = true;
@@ -668,16 +623,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
                 var tableClient = cloudStorageAccount.CreateCloudTableClient();
                 var checkStart = DateTime.Now;
                 var searchTime = DateTime.UtcNow.AddMinutes(-5);
-
-                //if (!this.WaitforTable(tableClient, AEMExtensionConstants.SchemasTable, waitChar, checkStart, TimeoutinMinutes))
-                //{
-                //    this.WriteVerbose("Table SchemaTable not found");
-                //    return false;
-                //}
-
-                //var table = tableClient.GetTableReference(AEMExtensionConstants.SchemasTable);
-                //var schemaTableResult = table.ExecuteQuery(new TableQuery() { SelectColumns = new List<string>() { AEMExtensionConstants.SchemasTablePhysicalTableName } });
-                //tableExists = schemaTableResult.Count() > 0;
 
                 foreach (var tableName in AEMExtensionConstants.WADTablesV2[osType])
                 {
@@ -704,7 +649,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
                         else
                         {
                             WriteHost(waitChar, newLine: false);
-                            Thread.Sleep(5000);
+                            TestMockSupport.Delay(5000);
                         }
                         wait = ((DateTime.Now) - checkStart).TotalMinutes < TimeoutinMinutes;
                     }

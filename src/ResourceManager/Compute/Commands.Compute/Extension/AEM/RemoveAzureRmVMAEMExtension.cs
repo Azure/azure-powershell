@@ -69,8 +69,7 @@ namespace Microsoft.Azure.Commands.Compute
                 VirtualMachine virtualMachine = null;
                 if (String.IsNullOrEmpty(this.OSType))
                 {
-                    virtualMachine = ComputeClient.ComputeManagementClient.VirtualMachines.Get(
-                       this.ResourceGroupName, this.VMName);
+                    virtualMachine = ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName);
                     this.OSType = virtualMachine.StorageProfile.OsDisk.OsType;
                 }
                 if (String.IsNullOrEmpty(this.OSType))
@@ -84,14 +83,9 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     if (virtualMachine == null)
                     {
-                        virtualMachine = ComputeClient.ComputeManagementClient.VirtualMachines.Get(
-                            this.ResourceGroupName, this.VMName);
+                        virtualMachine = ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName);
                     }
-                    var aemExtension = virtualMachine.Resources != null
-                            ? virtualMachine.Resources.FirstOrDefault(extension =>
-                                extension.Publisher.Equals(AEMExtensionConstants.AEMExtensionPublisher[this.OSType], StringComparison.InvariantCultureIgnoreCase) &&
-                                extension.VirtualMachineExtensionType.Equals(AEMExtensionConstants.AEMExtensionType[this.OSType], StringComparison.InvariantCultureIgnoreCase))
-                            : null;
+                    var aemExtension = this._Helper.GetExtension(virtualMachine, AEMExtensionConstants.AEMExtensionType[this.OSType], AEMExtensionConstants.AEMExtensionPublisher[this.OSType]);
 
                     if (aemExtension == null)
                     {
@@ -104,11 +98,7 @@ namespace Microsoft.Azure.Commands.Compute
                     }
                 }
 
-
-                var op = this.VirtualMachineExtensionClient.DeleteWithHttpMessagesAsync(
-                    this.ResourceGroupName,
-                    this.VMName,
-                    this.Name).GetAwaiter().GetResult();
+                var op = this.VirtualMachineExtensionClient.DeleteWithHttpMessagesAsync(this.ResourceGroupName, this.VMName, this.Name).GetAwaiter().GetResult();
                 var result = Mapper.Map<PSAzureOperationResponse>(op);
                 WriteObject(result);
             });
