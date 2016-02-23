@@ -20,6 +20,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.WindowsAzure.Storage.Blob;
+    using Microsoft.WindowsAzure.Storage;
 
     [Cmdlet(VerbsCommon.New, StorageNouns.ContainerSas), OutputType(typeof(String))]
     public class NewAzureStorageContainerSasTokenCommand : StorageCloudBlobCmdletBase
@@ -51,8 +52,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         private string accessPolicyIdentifier;
 
         [Parameter(HelpMessage = "Permissions for a container. Permissions can be any not-empty subset of \"rwdl\".",
-            ParameterSetName = SasPermissionParameterSet)]
+        ParameterSetName = SasPermissionParameterSet)]
         public string Permission { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Protocol can be used in the request with this SAS token.")]
+        public SharedAccessProtocol Protocol { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "IP, or IP range ACL (access control list) that the request would be accepted from by Azure Storage.")]
+        public string IPAddressOrRange { get; set; }
 
         [Parameter(HelpMessage = "Start Time")]
         public DateTime? StartTime { get; set; }
@@ -98,7 +105,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             SharedAccessBlobPolicy accessPolicy = new SharedAccessBlobPolicy();
             bool shouldSetExpiryTime = SasTokenHelper.ValidateContainerAccessPolicy(Channel, container.Name, accessPolicy, accessPolicyIdentifier);
             SetupAccessPolicy(accessPolicy, shouldSetExpiryTime);
-            string sasToken = container.GetSharedAccessSignature(accessPolicy, accessPolicyIdentifier);
+            string sasToken = container.GetSharedAccessSignature(accessPolicy, accessPolicyIdentifier, Protocol, Util.SetupIPAddressOrRangeForSAS(IPAddressOrRange));
 
             if (FullUri)
             {
