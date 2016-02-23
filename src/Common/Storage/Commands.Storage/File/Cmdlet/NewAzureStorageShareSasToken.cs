@@ -22,6 +22,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.WindowsAzure.Storage.File;
+    using Microsoft.WindowsAzure.Storage;
 
     [Cmdlet(VerbsCommon.New, StorageNouns.ShareSas), OutputType(typeof(String))]
     public class NewAzureStorageShareSasToken : AzureStorageFileCmdletBase
@@ -55,6 +56,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(HelpMessage = "Permissions for a share. Permissions can be any subset of \"rwdl\".",
             ParameterSetName = SasPermissionParameterSet)]
         public string Permission { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Protocol can be used in the request with this SAS token.")]
+        public SharedAccessProtocol Protocol { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "IP, or IP range ACL (access control list) that the request would be accepted from by Azure Storage.")]
+        public string IPAddressOrRange { get; set; }
 
         [Parameter(HelpMessage = "Start Time")]
         public DateTime? StartTime { get; set; }
@@ -95,7 +102,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 this.ExpiryTime.HasValue);
 
             SetupAccessPolicy(accessPolicy, shouldSetExpiryTime);
-            string sasToken = fileShare.GetSharedAccessSignature(accessPolicy, accessPolicyIdentifier);
+            string sasToken = fileShare.GetSharedAccessSignature(accessPolicy, accessPolicyIdentifier, Protocol, Util.SetupIPAddressOrRangeForSAS(IPAddressOrRange));
 
             if (FullUri)
             {

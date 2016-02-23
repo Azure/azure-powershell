@@ -15,29 +15,36 @@
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
-namespace Commands.Network.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
-    public class ExpressRouteCircuitTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class AEMExtensionTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestExpressRouteCircuitCRUD()
+        public void TestAEMExtensionBasicWindows()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteCircuitCRUD");
-        }
-
-        [Fact(Skip = "Rerecord tests")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestExpressRouteCircuitPeeringCRUD()
-        {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteCircuitPeeringCRUD");
+            ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionBasicWindows");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestExpressRouteCircuitAuthorizationCRUD()
+        public void TestAEMExtensionBasicLinux()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteCircuitAuthorizationCRUD");
+            ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionBasicLinux");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAEMExtensionAdvancedWindows()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedWindows");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAEMExtensionAdvancedLinux()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedLinux");
         }
     }
 }

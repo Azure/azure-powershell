@@ -20,6 +20,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.WindowsAzure.Storage.Queue;
+    using Microsoft.WindowsAzure.Storage;
 
     [Cmdlet(VerbsCommon.New, StorageNouns.QueueSas), OutputType(typeof(String))]
     public class NewAzureStorageQueueSasTokenCommand : StorageQueueBaseCmdlet
@@ -53,6 +54,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
         [Parameter(HelpMessage = "Permissions for a container. Permissions can be any not-empty subset of \"raup\".",
             ParameterSetName = SasPermissionParameterSet)]
         public string Permission { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Protocol can be used in the request with this SAS token.")]
+        public SharedAccessProtocol Protocol { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "IP, or IP range ACL (access control list) that the request would be accepted from by Azure Storage.")]
+        public string IPAddressOrRange { get; set; }
 
         [Parameter(HelpMessage = "Start Time")]
         public DateTime? StartTime { get; set; }
@@ -96,7 +103,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
             SharedAccessQueuePolicy policy = new SharedAccessQueuePolicy();
             bool shouldSetExpiryTime = SasTokenHelper.ValidateQueueAccessPolicy(Channel, queue.Name, policy, accessPolicyIdentifier);
             SetupAccessPolicy(policy, shouldSetExpiryTime);
-            string sasToken = queue.GetSharedAccessSignature(policy, accessPolicyIdentifier);
+            string sasToken = queue.GetSharedAccessSignature(policy, accessPolicyIdentifier, Protocol, Util.SetupIPAddressOrRangeForSAS(IPAddressOrRange));
 
             if (FullUri)
             {
