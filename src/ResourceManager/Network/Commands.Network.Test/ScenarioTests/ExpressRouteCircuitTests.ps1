@@ -92,111 +92,7 @@ function Test-ExpressRouteCircuitCRUD
 
 <#
 .SYNOPSIS
-Tests ExpressRouteCircuitPeeringCRUD.
-#>
-function Test-ExpressRouteCircuitPrivateMicrosoftPeeringCRUD
-{
-    # Setup
-    $rgname = Get-ResourceGroupName
-    $circuitName = Get-ResourceName
-	$rglocation = Get-ProviderLocation ResourceManagement
-    $resourceTypeParent = "Microsoft.Network/expressRouteCircuits"
-    $location = Get-ProviderLocation $resourceTypeParent
-    $location = "brazilSouth"
-    try 
-    {
-        # Create the resource group
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation
-        
-        # Create the ExpressRouteCircuit with peering
-		$peering = New-AzureRmExpressRouteCircuitPeeringConfig -Name AzurePrivatePeering -PeeringType AzurePrivatePeering -PeerASN 100 -PrimaryPeerAddressPrefix "192.168.1.0/30" -SecondaryPeerAddressPrefix "192.168.2.0/30" -VlanId 123
-		$circuit = New-AzureRmExpressRouteCircuit -Name $circuitName -Location $location -ResourceGroupName $rgname -SkuTier Premium -SkuFamily MeteredData  -ServiceProviderName "equinix" -PeeringLocation "Silicon Valley" -BandwidthInMbps 1000 -Peering $peering
-        
-        #verification
-        Assert-AreEqual $rgName $circuit.ResourceGroupName
-        Assert-AreEqual $circuitName $circuit.Name
-        Assert-NotNull $circuit.Location
-        Assert-NotNull $circuit.Etag
-        Assert-AreEqual 1 @($circuit.Peerings).Count
-        Assert-AreEqual "Premium_MeteredData" $circuit.Sku.Name
-        Assert-AreEqual "Premium" $circuit.Sku.Tier
-        Assert-AreEqual "MeteredData" $circuit.Sku.Family
-        Assert-AreEqual "equinix" $circuit.ServiceProviderProperties.ServiceProviderName
-        Assert-AreEqual "Silicon Valley" $circuit.ServiceProviderProperties.PeeringLocation
-        Assert-AreEqual "1000" $circuit.ServiceProviderProperties.BandwidthInMbps
-		
-		# Verify the peering
-		Assert-AreEqual "AzurePrivatePeering" $circuit.Peerings[0].Name
-		Assert-AreEqual "AzurePrivatePeering" $circuit.Peerings[0].PeeringType
-		Assert-AreEqual "100" $circuit.Peerings[0].PeerASN
-		Assert-AreEqual "192.168.1.0/30" $circuit.Peerings[0].PrimaryPeerAddressPrefix
-		Assert-AreEqual "192.168.2.0/30" $circuit.Peerings[0].SecondaryPeerAddressPrefix
-		Assert-AreEqual "123" $circuit.Peerings[0].VlanId
-
-		# get peering
-		$p = $circuit | Get-AzureRmExpressRouteCircuitPeeringConfig -Name AzurePrivatePeering
-		Assert-AreEqual "AzurePrivatePeering" $p.Name
-		Assert-AreEqual "AzurePrivatePeering" $p.PeeringType
-		Assert-AreEqual "100" $p.PeerASN
-		Assert-AreEqual "192.168.1.0/30" $p.PrimaryPeerAddressPrefix
-		Assert-AreEqual "192.168.2.0/30" $p.SecondaryPeerAddressPrefix
-		Assert-AreEqual "123" $p.VlanId
-
-		# List peering
-		$listPeering = $circuit | Get-AzureRmExpressRouteCircuitPeeringConfig
-		Assert-AreEqual 1 @($listPeering).Count
-
-		# add a new Peering
-		$circuit = Get-AzureRmExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname | Add-AzureRmExpressRouteCircuitPeeringConfig -Name MicrosoftPeering -PeeringType MicrosoftPeering -PeerASN 33 -PrimaryPeerAddressPrefix "192.168.1.0/30" -SecondaryPeerAddressPrefix "192.168.2.0/30" -VlanId 223 -MicrosoftConfigAdvertisedPublicPrefixes @("11.2.3.4/30", "12.2.3.4/30") -MicrosoftConfigCustomerAsn 1000 -MicrosoftConfigRoutingRegistryName AFRINIC | Set-AzureRmExpressRouteCircuit 
-
-		$p = $circuit | Get-AzureRmExpressRouteCircuitPeeringConfig -Name MicrosoftPeering
-		Assert-AreEqual "MicrosoftPeering" $p.Name
-		Assert-AreEqual "MicrosoftPeering" $p.PeeringType
-		Assert-AreEqual "33" $p.PeerASN
-		Assert-AreEqual "192.168.1.0/30" $p.PrimaryPeerAddressPrefix
-		Assert-AreEqual "192.168.2.0/30" $p.SecondaryPeerAddressPrefix
-		Assert-AreEqual "223" $p.VlanId
-		Assert-NotNull $p.MicrosoftPeeringConfig
-		Assert-AreEqual "1000" $p.MicrosoftPeeringConfig.CustomerASN
-		Assert-AreEqual "AFRINIC" $p.MicrosoftPeeringConfig.RoutingRegistryName
-		Assert-AreEqual 2 @($p.MicrosoftPeeringConfig.AdvertisedPublicPrefixes).Count
-		Assert-NotNull $p.MicrosoftPeeringConfig.AdvertisedPublicPrefixesState
-
-		$listPeering = $circuit | Get-AzureRmExpressRouteCircuitPeeringConfig
-		Assert-AreEqual 2 @($listPeering).Count
-
-		# Set a new peering
-	    $circuit = Get-AzureRmExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname | Set-AzureRmExpressRouteCircuitPeeringConfig -Name MicrosoftPeering -PeeringType MicrosoftPeering -PeerASN 44 -PrimaryPeerAddressPrefix "192.168.1.0/30" -SecondaryPeerAddressPrefix "192.168.2.0/30" -VlanId 333 -MicrosoftConfigAdvertisedPublicPrefixes @("11.2.3.4/30", "12.2.3.4/30") -MicrosoftConfigCustomerAsn 1000 -MicrosoftConfigRoutingRegistryName AFRINIC | Set-AzureRmExpressRouteCircuit 
-		$p = $circuit | Get-AzureRmExpressRouteCircuitPeeringConfig -Name MicrosoftPeering
-		Assert-AreEqual "MicrosoftPeering" $p.Name
-		Assert-AreEqual "MicrosoftPeering" $p.PeeringType
-		Assert-AreEqual "44" $p.PeerASN
-		Assert-AreEqual "192.168.1.0/30" $p.PrimaryPeerAddressPrefix
-		Assert-AreEqual "192.168.2.0/30" $p.SecondaryPeerAddressPrefix
-		Assert-AreEqual "333" $p.VlanId
-		Assert-NotNull $p.MicrosoftPeeringConfig
-		Assert-AreEqual "1000" $p.MicrosoftPeeringConfig.CustomerASN
-		Assert-AreEqual "AFRINIC" $p.MicrosoftPeeringConfig.RoutingRegistryName
-		Assert-AreEqual 2 @($p.MicrosoftPeeringConfig.AdvertisedPublicPrefixes).Count
-		Assert-NotNull $p.MicrosoftPeeringConfig.AdvertisedPublicPrefixesState
-
-        # Delete Circuit
-        $delete = Remove-AzureRmExpressRouteCircuit -ResourceGroupName $rgname -name $circuitName -PassThru -Force
-        Assert-AreEqual true $delete
-		        
-        $list = Get-AzureRmExpressRouteCircuit -ResourceGroupName $rgname
-        Assert-AreEqual 0 @($list).Count
-    }
-    finally
-    {
-        # Cleanup
-        Clean-ResourceGroup $rgname
-    }
-}
-
-<#
-.SYNOPSIS
-Tests ExpressRouteCircuitPeeringCRUD.
+Tests ExpressRouteCircuitPeeringCRUD for private peering and public peering
 #>
 function Test-ExpressRouteCircuitPrivatePublicPeeringCRUD
 {
@@ -288,6 +184,103 @@ function Test-ExpressRouteCircuitPrivatePublicPeeringCRUD
     {
         # Cleanup
         Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests express route microsoft peering
+#>
+function Test-ExpressRouteCircuitMicrosoftPeeringCRUD
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $circuitName = Get-ResourceName
+	$rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/expressRouteCircuits"
+    $location = Get-ProviderLocation $resourceTypeParent
+    $location = "brazilSouth"
+    try 
+    {
+        # Create the resource group
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+        
+        # Create the ExpressRouteCircuit with peering
+		$peering = New-AzureRmExpressRouteCircuitPeeringConfig -Name MicrosoftPeering -PeeringType MicrosoftPeering -PeerASN 33 -PrimaryPeerAddressPrefix "192.168.1.0/30" -SecondaryPeerAddressPrefix "192.168.2.0/30" -VlanId 223 -MicrosoftConfigAdvertisedPublicPrefixes @("11.2.3.4/30", "12.2.3.4/30") -MicrosoftConfigCustomerAsn 1000 -MicrosoftConfigRoutingRegistryName AFRINIC 
+		$circuit = New-AzureRmExpressRouteCircuit -Name $circuitName -Location $location -ResourceGroupName $rgname -SkuTier Premium -SkuFamily MeteredData  -ServiceProviderName "equinix" -PeeringLocation "Silicon Valley" -BandwidthInMbps 1000 -Peering $peering
+        
+        #verification
+        Assert-AreEqual $rgName $circuit.ResourceGroupName
+        Assert-AreEqual $circuitName $circuit.Name
+        Assert-NotNull $circuit.Location
+        Assert-NotNull $circuit.Etag
+        Assert-AreEqual 1 @($circuit.Peerings).Count
+        Assert-AreEqual "Premium_MeteredData" $circuit.Sku.Name
+        Assert-AreEqual "Premium" $circuit.Sku.Tier
+        Assert-AreEqual "MeteredData" $circuit.Sku.Family
+        Assert-AreEqual "equinix" $circuit.ServiceProviderProperties.ServiceProviderName
+        Assert-AreEqual "Silicon Valley" $circuit.ServiceProviderProperties.PeeringLocation
+        Assert-AreEqual "1000" $circuit.ServiceProviderProperties.BandwidthInMbps
+		
+		# Verify the peering
+		Assert-AreEqual "MicrosoftPeering" $circuit.Peerings[0].Name
+		Assert-AreEqual "MicrosoftPeering" $circuit.Peerings[0].PeeringType
+		Assert-AreEqual "192.168.1.0/30" $circuit.Peerings[0].PrimaryPeerAddressPrefix
+		Assert-AreEqual "192.168.2.0/30" $circuit.Peerings[0].SecondaryPeerAddressPrefix
+		Assert-AreEqual "223" $circuit.Peerings[0].VlanId
+		Assert-NotNull $circuit.Peerings[0].MicrosoftPeeringConfig
+		Assert-AreEqual "1000" $circuit.Peerings[0].MicrosoftPeeringConfig.CustomerASN
+		Assert-AreEqual "AFRINIC" $circuit.Peerings[0].MicrosoftPeeringConfig.RoutingRegistryName
+		Assert-AreEqual 2 @($circuit.Peerings[0].MicrosoftPeeringConfig.AdvertisedPublicPrefixes).Count
+		Assert-NotNull $circuit.Peerings[0].MicrosoftPeeringConfig.AdvertisedPublicPrefixesState
+
+		# get peering
+		$p = $circuit | Get-AzureRmExpressRouteCircuitPeeringConfig -Name MicrosoftPeering
+		Assert-AreEqual "MicrosoftPeering" $p.Name
+		Assert-AreEqual "MicrosoftPeering" $p.PeeringType
+		Assert-AreEqual "192.168.1.0/30" $p.PrimaryPeerAddressPrefix
+		Assert-AreEqual "192.168.2.0/30" $p.SecondaryPeerAddressPrefix
+		Assert-AreEqual "223" $p.VlanId
+		Assert-NotNull $p.MicrosoftPeeringConfig
+		Assert-AreEqual "1000" $p.MicrosoftPeeringConfig.CustomerASN
+		Assert-AreEqual "AFRINIC" $p.MicrosoftPeeringConfig.RoutingRegistryName
+		Assert-AreEqual 2 @($p.MicrosoftPeeringConfig.AdvertisedPublicPrefixes).Count
+		Assert-NotNull $p.MicrosoftPeeringConfig.AdvertisedPublicPrefixesState
+
+		# List peering
+		$listPeering = $circuit | Get-AzureRmExpressRouteCircuitPeeringConfig
+		Assert-AreEqual 1 @($listPeering).Count
+
+		# Set a new peering
+	    $circuit = Get-AzureRmExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname | Set-AzureRmExpressRouteCircuitPeeringConfig -Name MicrosoftPeering -PeeringType MicrosoftPeering -PeerASN 44 -PrimaryPeerAddressPrefix "192.168.1.0/30" -SecondaryPeerAddressPrefix "192.168.2.0/30" -VlanId 555 -MicrosoftConfigAdvertisedPublicPrefixes @("11.2.3.4/30", "12.2.3.4/30") -MicrosoftConfigCustomerAsn 1000 -MicrosoftConfigRoutingRegistryName AFRINIC | Set-AzureRmExpressRouteCircuit 
+		$p = $circuit | Get-AzureRmExpressRouteCircuitPeeringConfig -Name MicrosoftPeering
+		Assert-AreEqual "MicrosoftPeering" $p.Name
+		Assert-AreEqual "MicrosoftPeering" $p.PeeringType
+		Assert-AreEqual "44" $p.PeerASN
+		Assert-AreEqual "192.168.1.0/30" $p.PrimaryPeerAddressPrefix
+		Assert-AreEqual "192.168.2.0/30" $p.SecondaryPeerAddressPrefix
+		Assert-AreEqual "555" $p.VlanId
+		Assert-NotNull $p.MicrosoftPeeringConfig
+		Assert-AreEqual "1000" $p.MicrosoftPeeringConfig.CustomerASN
+		Assert-AreEqual "AFRINIC" $p.MicrosoftPeeringConfig.RoutingRegistryName
+		Assert-AreEqual 2 @($p.MicrosoftPeeringConfig.AdvertisedPublicPrefixes).Count
+		Assert-NotNull $p.MicrosoftPeeringConfig.AdvertisedPublicPrefixesState
+		
+		# List peering
+		$listPeering = $circuit | Get-AzureRmExpressRouteCircuitPeeringConfig
+		Assert-AreEqual 1 @($listPeering).Count
+
+        # Delete Circuit
+        $delete = Remove-AzureRmExpressRouteCircuit -ResourceGroupName $rgname -name $circuitName -PassThru -Force
+        Assert-AreEqual true $delete
+		        
+        $list = Get-AzureRmExpressRouteCircuit -ResourceGroupName $rgname
+        Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+        # Cleanup
+       Clean-ResourceGroup $rgname
     }
 }
 
