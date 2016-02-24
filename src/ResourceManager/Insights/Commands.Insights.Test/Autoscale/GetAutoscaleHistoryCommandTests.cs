@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
             Test.Utilities.ExecuteVerifications(
                 cmdlet: cmdlet,
                 insinsightsEventOperationsMockightsClientMock: this.insightsEventOperationsMock,
-                requiredFieldName: "eventSource",
+                requiredFieldName: "category",
                 requiredFieldValue: GetAutoscaleHistoryCommand.AutoscaleEventSourceName,
                 filter: ref this.filter,
                 selected: ref this.selected,

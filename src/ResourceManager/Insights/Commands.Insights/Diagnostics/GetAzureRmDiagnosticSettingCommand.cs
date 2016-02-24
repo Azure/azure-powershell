@@ -12,8 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
 using System.Management.Automation;
 using System.Threading;
 using Microsoft.Azure.Commands.Insights.OutputClasses;

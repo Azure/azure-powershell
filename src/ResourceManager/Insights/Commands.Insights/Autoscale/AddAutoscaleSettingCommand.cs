@@ -17,7 +17,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Hyak.Common;
-using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Commands.Insights.Properties;
 using Microsoft.Azure.Management.Insights;
 using Microsoft.Azure.Management.Insights.Models;
@@ -94,7 +93,11 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         protected override void ProcessRecordInternal()
         {
+            WriteWarning("******* DEPRECATION NOTICE: The name of this Insights Cmdlet will either change to include 'Rm' for consistency or disappear to be merged into other Cmdlets\n\r");
+
             AutoscaleSettingCreateOrUpdateParameters parameters = this.CreateSdkCallParameters();
+
+            WriteVerboseWithTimestamp(string.Format("ProcessRecordInternal: Calling the Insights SDK AutoscaleOperations.CreateOrUpdateSettingAsync function with resource group:{0}, setting name:{1}, and parameters:{2}", this.ResourceGroup, this.Name, parameters));
             var result = this.InsightsManagementClient.AutoscaleOperations.CreateOrUpdateSettingAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name, parameters: parameters).Result;
 
             WriteObject(result);
@@ -106,6 +109,8 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
 
             if (this.SettingSpec != null)
             {
+                WriteVerboseWithTimestamp(string.Format("CreateSdkCallParameters: taking the parameters data from the single input SettingSpec parameter"));
+
                 // Receiving a single parameter with the whole spec for an autoscale setting
                 var property = this.SettingSpec.Properties;
 
@@ -124,6 +129,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
                 enableSetting = !this.DisableSetting.IsPresent && property.Enabled;
             }
 
+            WriteVerboseWithTimestamp(string.Format("CreateSdkCallParameters: creating the parameters"));
             return new AutoscaleSettingCreateOrUpdateParameters()
                 {
                     Location = this.Location,

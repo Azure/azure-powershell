@@ -12,8 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Management.Insights;
 
@@ -50,6 +48,9 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         protected override void ProcessRecordInternal()
         {
+            WriteWarning("******* DEPRECATION NOTICE: The name of this Insights Cmdlet will either change to include 'Rm' for consistency or disappear to be merged into other Cmdlets\n\r");
+
+            WriteVerboseWithTimestamp(string.Format("ProcessRecordInternal: Calling the Insights SDK AutoscaleOperations.DeleteSettingAsync function with resource group:{0}, and setting name:{1}", this.ResourceGroup, this.Name));
             AzureOperationResponse result = this.InsightsManagementClient.AutoscaleOperations.DeleteSettingAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name).Result;
             WriteObject(result);
         }

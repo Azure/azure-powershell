@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Linq;
 using System.Management.Automation;
 using System.Text;
@@ -71,12 +70,18 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
         /// </summary>
         protected override void ProcessRecordInternal()
         {
+            WriteWarning("******* DEPRECATION NOTICE: The name of this Insights Cmdlet will either change to include 'Rm' for consistency or disappear to be merged into other Cmdlets\n\r");
+
+            WriteVerboseWithTimestamp(string.Format("ProcessRecordInternal: Processing Parameters"));
             string queryFilter = this.ProcessParameters();
             bool fullDetails = this.DetailedOutput.IsPresent;
 
             // Call the proper API methods to return a list of raw records.
             // If fullDetails is present full details of the records are displayed, otherwise only a summary of the records is displayed
+            WriteVerboseWithTimestamp(string.Format("ProcessRecordInternal: Calling the Insights SDK MetricDefinitionOperations.GetMetricDefinitionsAsync function with resourceId: {0},and filter:{1}", this.ResourceId, queryFilter));
             MetricDefinitionListResponse response = this.InsightsClient.MetricDefinitionOperations.GetMetricDefinitionsAsync(resourceUri: this.ResourceId, filterString: queryFilter, cancellationToken: CancellationToken.None).Result;
+
+            WriteVerboseWithTimestamp("ProcessRecordInternal: converting records to the proper type before returning");
             var records = response.MetricDefinitionCollection.Value.Select(e => fullDetails ? (MetricDefinition)new PSMetricDefinition(e) : new PSMetricDefinitionNoDetails(e)).ToArray();
 
             WriteObject(sendToPipeline: records);
