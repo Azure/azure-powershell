@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             public const string AzureHDInsightJobOutput = "AzureRmHDInsightJobOutput";
             public const string AzureHDInsightDefaultStorage = "AzureRmHDInsightDefaultStorage";
             public const string AzureHDInsightHiveJob = "AzureRmHDInsightHiveJob";
-            public const string AzureHDInsightClusterIdentity = "AzureHDInsightClusterIdentity";
+            public const string AzureHDInsightClusterIdentity = "AzureRmHDInsightClusterIdentity";
             public const string Hive = "Hive";
         }
 
