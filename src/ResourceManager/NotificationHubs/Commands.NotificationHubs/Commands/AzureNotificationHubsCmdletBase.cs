@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.NotificationHubs.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using System.IO;
 using Newtonsoft.Json;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.ServiceManagemenet.Common;
 using System.Collections.Generic;
 using System.Collections;
 using System.Globalization;

@@ -30,6 +30,7 @@ $AzureRMModules = @{
   "AzureRM.TrafficManager" = "1.0.4";
   "AzureRM.UsageAggregates" = "1.0.4";
   "AzureRM.Websites" = "1.0.4";
+  "AzureRM.LogicApp" = "1.0.0";
 }
 
 function Test-AdminRights([string]$Scope)

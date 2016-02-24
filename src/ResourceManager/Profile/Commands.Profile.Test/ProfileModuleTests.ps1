@@ -12,32 +12,47 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+function Verify-TestRepoDeleted
+{
+    $createdRepo = Get-PSRepository -Name "ProfileModuleTest" -ErrorAction Ignore
+    if($createdRepo)
+    {
+        Unregister-PSRepository -Name "ProfileModuleTest"
+    }
+}
+
 <#
 .SYNOPSIS
 Tests warning gets printed on incompatible modules with profile
 #>
 function Test-LoadProfileModule
 {
+    $testPassed = $false
+    # Clean environment
+    Verify-TestRepoDeleted
+
     # Push current profile module
     Get-PackageProvider -Name NuGet -ForceBootstrap
     $global:pushedProfileModule = $(Get-Module AzureRM.Profile).Path 
     Remove-Module AzureRM.Profile
     try {
-        Register-PSRepository -Name "ProfileModuleTest" -SourceLocation (Resolve-Path .\FakeModuleRepo).Path -InstallationPolicy Trusted
+        Register-PSRepository -Name "ProfileModuleTest" -SourceLocation (Resolve-Path "$TestOutputRoot\FakeModuleRepo").Path -InstallationPolicy Trusted
         try {
             Install-Module AzureRM.ApiManagement -Scope CurrentUser -Repository ProfileModuleTest -RequiredVersion 998.9.8
             $global:buffer = Import-Module $global:pushedProfileModule 2>&1 3>&1 | Out-String
             Write-Warning $global:buffer
             Assert-True { $global:buffer -Like "*AzureRM.ApiManagement 998.9.8 is not compatible with AzureRM.Profile*" }
+            $testPassed = $true
         } catch [system.exception] {
-            Write-Error $_ -ErrorAction Continue
+            Write-Error $_
         } finally {
             Uninstall-Module AzureRM.ApiManagement -ErrorAction Ignore
             Uninstall-Module AzureRM.Profile -ErrorAction Ignore
         }
     } catch [system.exception] {
-        Write-Error $_ -ErrorAction Continue
+        Write-Error $_
     } finally {
-        Unregister-PSRepository -Name "ProfileModuleTest"
+        Verify-TestRepoDeleted
     }
+    Assert-True { $testPassed -eq $true } "testPassed = $testPassed"
 }

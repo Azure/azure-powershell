@@ -18,8 +18,9 @@ using System.IO;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.ServiceManagemenet.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 {
@@ -50,13 +51,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
         /// Monitors changes to the file system.
         /// </summary>
         private FileSystemWatcher _watcher = null;
-
-        /// <summary>
-        /// The previous Environment.CurrentDirectory which is cached so it can
-        /// be restored on disposal.
-        /// </summary>
-        private string _previousDirectory = null;
-
+        
         /// <summary>
         /// Gets or sets a value indicating whether to enable monitoring on
         /// the portion of the file system being managed by FileSystemHelper.
@@ -144,15 +139,13 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
                         
                         AzureSdkPath = null;
                     }
-
-                    // Restore the previous CurrentDirectory
-                    if (_previousDirectory != null)
-                    {
-                        Environment.CurrentDirectory = _previousDirectory;
-                    }
-
+                    
                     Log("Deleting directory {0}", RootPath);
-                    FileUtilities.DataStore.DeleteDirectory(RootPath);
+                    try
+                    {
+                        FileUtilities.DataStore.DeleteDirectory(RootPath);
+                    }
+                    catch { }
 
                     DisposeWatcher();
 
@@ -215,7 +208,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
         /// <summary>
         /// Create a random directory name that doesn't yet exist on disk.
         /// </summary>
-        /// <returns>A random, non-existant directory name.</returns>
+        /// <returns>A random, non-existent directory name.</returns>
         public static string GetTemporaryDirectoryName()
         {
             string path = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
@@ -306,9 +299,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
         {
             CloudServiceProject newService = new CloudServiceProject(RootPath, serviceName, FileUtilities.GetContentFilePath(@"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Services"));
             string path = Path.Combine(RootPath, serviceName);
-            _previousDirectory = Environment.CurrentDirectory;
-            Environment.CurrentDirectory = path;
-
+            TestMockSupport.TestExecutionFolder = path;
             return path;
         }
 
@@ -324,8 +315,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
                 + "xmlns=\"http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration\" " 
                 + "osFamily=\"2\" osVersion=\"*\" />";
             FileUtilities.DataStore.WriteFile(configuration, template);
-            _previousDirectory = Environment.CurrentDirectory;
-            Environment.CurrentDirectory = RootPath;
+            TestMockSupport.TestExecutionFolder = RootPath;
         }
     }
 }
