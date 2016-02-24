@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Commands.Storage.File;
 using Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet;
 using Microsoft.WindowsAzure.Management.Storage.Test.Common;
-using Microsoft.WindowsAzure.Storage.DataMovement;
-using Microsoft.WindowsAzure.Storage.File;
-using PSHFile = Microsoft.WindowsAzure.Commands.Storage.File;
 
 namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
 {
@@ -50,7 +46,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
                 "remoteFile",
                 this.destinationFilePath,
                 () => this.CmdletInstance.RunCmdlet(
-                    PSHFile.Constants.ShareNameParameterSetName,
+                    Constants.ShareNameParameterSetName,
                     new KeyValuePair<string, object>("ShareName", "share"),
                     new KeyValuePair<string, object>("Path", "remoteFile"),
                     new KeyValuePair<string, object>("Destination", this.destinationFilePath)));
@@ -64,7 +60,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
                 "remoteFile",
                 this.destinationFilePath,
                 () => this.CmdletInstance.RunCmdlet(
-                    PSHFile.Constants.ShareParameterSetName,
+                    Constants.ShareParameterSetName,
                     new KeyValuePair<string, object>("Share", this.MockChannel.GetShareReference("share")),
                     new KeyValuePair<string, object>("Path", "remoteFile"),
                     new KeyValuePair<string, object>("Destination", this.destinationFilePath)));
@@ -78,7 +74,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
                 "remoteFile",
                 this.destinationFilePath,
                 () => this.CmdletInstance.RunCmdlet(
-                    PSHFile.Constants.DirectoryParameterSetName,
+                    Constants.DirectoryParameterSetName,
                     new KeyValuePair<string, object>("Directory", this.MockChannel.GetShareReference("share").GetRootDirectoryReference()),
                     new KeyValuePair<string, object>("Path", "remoteFile"),
                     new KeyValuePair<string, object>("Destination", this.destinationFilePath)));
@@ -92,7 +88,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
                 "remoteFile",
                 this.destinationFilePath,
                 () => this.CmdletInstance.RunCmdlet(
-                    PSHFile.Constants.FileParameterSetName,
+                    Constants.FileParameterSetName,
                     new KeyValuePair<string, object>("File", this.MockChannel.GetShareReference("share").GetRootDirectoryReference().GetFileReference("remoteFile")),
                     new KeyValuePair<string, object>("Destination", this.destinationFilePath)));
         }
@@ -106,43 +102,29 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
                 "remoteFile",
                 this.destinationFilePath,
                 () => this.CmdletInstance.RunCmdlet(
-                    PSHFile.Constants.FileParameterSetName,
+                    Constants.FileParameterSetName,
                     new KeyValuePair<string, object>("File", this.MockChannel.GetShareReference("share").GetRootDirectoryReference().GetFileReference("remoteFile")),
                     new KeyValuePair<string, object>("Destination", this.destinationPath)));
         }
 
         private void DownloadFileInternal(string shareName, string fileName, string destination, Action downloadFileAction)
         {
-            var mockupTransferManager = new DownloadTransferManager(
-            (sourceFile, destPath) =>
+            var mockupRunner = new MockTransferJobRunner(
+                job =>
                 {
-                    Assert.AreEqual(destination, destPath, "Destination validation failed.");
-                    Assert.AreEqual(shareName, sourceFile.Share.Name, "Share validation failed.");
-                    Assert.AreEqual(fileName, sourceFile.Name, "SourceFile validation failed.");
+                    Assert.AreEqual(destination, job.Destination.FilePath, "Destination validation failed.");
+                    Assert.AreEqual(shareName, job.Source.AzureFile.Share.Name, "Share validation failed.");
+                    Assert.AreEqual(fileName, job.Source.AzureFile.Name, "SourceFile validation failed.");
+                    return TaskEx.FromResult(true);
                 });
 
-            TransferManagerFactory.SetCachedTransferManager(mockupTransferManager);
+            TransferJobRunnerFactory.SetCachedRunner(mockupRunner);
 
             downloadFileAction();
 
-            mockupTransferManager.ThrowAssertExceptionIfAvailable();
+            mockupRunner.ThrowAssertExceptionIfAvailable();
             this.MockCmdRunTime.OutputPipeline.AssertNoObject();
-        }
-
-        private sealed class DownloadTransferManager : MockTransferManager
-        {
-            private Action<CloudFile, string> validateAction;
-
-            public DownloadTransferManager(Action<CloudFile, string> validate)
-            {
-                validateAction = validate;
-            }
-
-            public override Task DownloadAsync(CloudFile sourceFile, string destFilePath, DownloadOptions options, TransferContext context, CancellationToken cancellationToken)
-            {
-                validateAction(sourceFile, destFilePath);
-                return TaskEx.FromResult(true);
-            }
+            this.MockCmdRunTime.ErrorStream.AssertNoObject();
         }
     }
 }

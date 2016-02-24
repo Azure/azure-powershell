@@ -20,8 +20,6 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
 using Xunit;
-using System.IO;
-using System;
 
 namespace Microsoft.Azure.Commands.Resources.Test
 {
@@ -39,7 +37,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
         private string deploymentName = "fooDeployment";
 
-        private string templateFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\sampleTemplateFile.json");
+        private string templateFile = @"Resources\sampleTemplateFile.json";
 
         private Hashtable[] tags;
 

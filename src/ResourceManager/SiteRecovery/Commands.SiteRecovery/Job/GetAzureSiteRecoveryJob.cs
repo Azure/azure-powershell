@@ -128,27 +128,26 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             JobQueryParameter jqp = new JobQueryParameter();
 
+            IList<Management.SiteRecovery.Models.Job> completeJobsList = RecoveryServicesClient.GetAzureSiteRecoveryJob().Jobs;
+
+            IEnumerable<Management.SiteRecovery.Models.Job> filteredJobsList = completeJobsList.ToArray().AsEnumerable();           
             if (this.StartTime.HasValue)
             {
-                jqp.StartTime = this.StartTime.Value.ToUniversalTime().ToString("o");
+                filteredJobsList = filteredJobsList.Where(j => j.Properties.StartTime.Value.ToUniversalTime().ToBinary() >= this.StartTime.Value.ToUniversalTime().ToBinary());
             }
 
             if (this.EndTime.HasValue)
             {
-                jqp.EndTime = this.EndTime.Value.ToUniversalTime().ToString("o");
+                filteredJobsList = filteredJobsList.Where(j => j.Properties.EndTime.Value.ToUniversalTime().ToBinary() <= this.EndTime.Value.ToUniversalTime().ToBinary());
             }
 
             if (this.State != null)
             {
-                jqp.JobStatus = new List<string>();
-                jqp.JobStatus.Add(this.State);
+                filteredJobsList = filteredJobsList.Where(j => 0 == string.Compare(j.Properties.State.ToString(),
+                    this.State.ToString(),StringComparison.OrdinalIgnoreCase));
             }
 
-            IList<Management.SiteRecovery.Models.Job> completeJobsList = RecoveryServicesClient.GetAzureSiteRecoveryJob(jqp).Jobs;
-
-            // Filtering TargetObjectId
-            IEnumerable<Management.SiteRecovery.Models.Job> filteredJobsList = completeJobsList.ToArray().AsEnumerable();
-            if (this.TargetObjectId != null)
+            if(this.TargetObjectId != null)
             {
                 filteredJobsList = filteredJobsList.Where(j => 0 == string.Compare(j.Properties.TargetObjectId.ToString(),
                      this.TargetObjectId.ToString(), StringComparison.OrdinalIgnoreCase));

@@ -16,9 +16,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Management.Automation;
 using System.Reflection;
-using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Sql.Server.Model;
-using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
 {

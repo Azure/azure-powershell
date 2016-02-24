@@ -69,10 +69,6 @@ namespace Microsoft.Azure.Commands.Compute
             set;
         }
 
-        const string PublicIPAddressResource = "publicIPAddresses";
-        const string NetworkInterfaceResouce = "networkInterfaces";
-        const string LoadBalancerResouce = "loadBalancers";
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -89,19 +85,21 @@ namespace Microsoft.Azure.Commands.Compute
                 // Get Azure VM
                 var vmResponse = this.VirtualMachineClient.Get(this.ResourceGroupName, this.Name);
 
-                var nicId = vmResponse.NetworkProfile.NetworkInterfaces.First().Id;
-
                 // Get the NIC
-                var nicResourceGroupName = this.GetResourceGroupName(nicId);
+                var nicResourceGroupName =
+                    this.GetResourceGroupName(vmResponse.VirtualMachine.NetworkProfile.NetworkInterfaces.First().ReferenceUri);
 
-                var nicName = this.GetResourceName(nicId, NetworkInterfaceResouce);
+                var nicName =
+                    this.GetResourceName(
+                        vmResponse.VirtualMachine.NetworkProfile.NetworkInterfaces.First().ReferenceUri, "networkInterfaces");
 
-                var nic = this.NetworkClient.NetworkManagementClient.NetworkInterfaces.Get(nicResourceGroupName, nicName);
+                var nic =
+                    this.NetworkClient.NetworkManagementClient.NetworkInterfaces.Get(nicResourceGroupName, nicName);
 
-                if (nic.IpConfigurations.First().PublicIPAddress != null && !string.IsNullOrEmpty(nic.IpConfigurations.First().PublicIPAddress.Id))
+                if (nic.IpConfigurations.First().PublicIPAddress != null && !string.IsNullOrEmpty(nic.IpConfigurations.First().Id))
                 {
                     // Get PublicIPAddress resource if present
-                    address = this.GetAddressFromPublicIPResource(nic.IpConfigurations.First().PublicIPAddress.Id);
+                    address = this.GetAddressFromPublicIPResource(nic.IpConfigurations.First().Id);
                 }
                 else if (nic.IpConfigurations.First().LoadBalancerInboundNatRules.Any())
                 {
@@ -110,7 +108,7 @@ namespace Microsoft.Azure.Commands.Compute
                     // Get ipaddress and port from loadbalancer
                     foreach (var nicRuleRef in nic.IpConfigurations.First().LoadBalancerInboundNatRules)
                     {
-                        var lbName = this.GetResourceName(nicRuleRef.Id, LoadBalancerResouce);
+                        var lbName = this.GetResourceName(nicRuleRef.Id, "loadBalancers");
                         var lbResourceGroupName = this.GetResourceGroupName(nicRuleRef.Id);
 
                         var loadbalancer =
@@ -202,10 +200,10 @@ namespace Microsoft.Azure.Commands.Compute
         private string GetAddressFromPublicIPResource(string resourceId)
         {
             string address = string.Empty;
-            
+
             // Get IpAddress from public IPAddress resource
             var publicIPResourceGroupName = this.GetResourceGroupName(resourceId);
-            var publicIPName = this.GetResourceName(resourceId, PublicIPAddressResource);
+            var publicIPName = this.GetResourceName(resourceId, "publicIPAddresses");
 
             var publicIp =
                 this.NetworkClient.NetworkManagementClient.PublicIPAddresses.Get(
@@ -232,16 +230,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         private string GetResourceName(string resourceId, string resource)
         {
-            int resourceTypeLocation = resourceId.IndexOf(resource, StringComparison.OrdinalIgnoreCase);
-
-            var resourceName = resourceId.Substring(resourceTypeLocation + resource.Length + 1);
-            if (resourceName.Contains("/"))
-            {
-                int resourceNameEnd = resourceName.IndexOf("/");
-                resourceName = resourceName.Substring(0, resourceNameEnd);
-            }
-
-            return resourceName;
+            return resourceId.Split('/')[8];
         }
     }
 }

@@ -36,13 +36,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         [Parameter(Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRServer Server { get; set; }
-
-        /// <summary>
-        /// Gets or sets switch parameter. On passing, command does not ask for confirmation.
-        /// </summary>
-        [Parameter]
-        public SwitchParameter Force { get; set; }
-
         #endregion Parameters
 
         /// <summary>
@@ -70,23 +63,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 throw new PSInvalidOperationException(Properties.Resources.InvalidServerType);
             }
 
-            LongRunningOperationResponse response;
-
-            if (!this.Force.IsPresent)
+            RecoveryServicesProviderDeletionInput input = new RecoveryServicesProviderDeletionInput()
             {
-                RecoveryServicesProviderDeletionInput input = new RecoveryServicesProviderDeletionInput()
-                {
-                    Properties = new RecoveryServicesProviderDeletionInputProperties()
-                };
+                Properties = new RecoveryServicesProviderDeletionInputProperties()
+            };
 
-                response =
-                        RecoveryServicesClient.RemoveAzureSiteRecoveryProvider(Utilities.GetValueFromArmId(this.Server.ID, ARMResourceTypeConstants.ReplicationFabrics), this.Server.Name, input);
-            }
-            else
-            {
-                response =
-                        RecoveryServicesClient.PurgeAzureSiteRecoveryProvider(Utilities.GetValueFromArmId(this.Server.ID, ARMResourceTypeConstants.ReplicationFabrics), this.Server.Name);
-            }
+            LongRunningOperationResponse response =
+                    RecoveryServicesClient.RemoveAzureSiteRecoveryProvider(Utilities.GetValueFromArmId(this.Server.ID, ARMResourceTypeConstants.ReplicationFabrics), this.Server.Name, input);
 
             JobResponse jobResponse =
                 RecoveryServicesClient

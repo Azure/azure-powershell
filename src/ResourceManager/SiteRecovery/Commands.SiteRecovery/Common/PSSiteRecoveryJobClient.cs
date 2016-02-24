@@ -36,9 +36,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Get Azure Site Recovery Job.
         /// </summary>
         /// <returns>Job list response</returns>
-        public JobListResponse GetAzureSiteRecoveryJob(JobQueryParameter jqp)
+        public JobListResponse GetAzureSiteRecoveryJob()
         {
-            return this.GetSiteRecoveryClient().Jobs.List(jqp, this.GetRequestHeaders(false));
+            return this.GetSiteRecoveryClient().Jobs.List(this.GetRequestHeaders(false));
         }
 
         /// <summary>

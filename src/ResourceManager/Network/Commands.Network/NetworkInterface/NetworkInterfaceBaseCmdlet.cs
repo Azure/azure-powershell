@@ -55,9 +55,9 @@ namespace Microsoft.Azure.Commands.Network
             return true;
         }
 
-        public PSNetworkInterface GetNetworkInterface(string resourceGroupName, string name, string expandResource = null)
+        public PSNetworkInterface GetNetworkInterface(string resourceGroupName, string name)
         {
-            var nic = this.NetworkInterfaceClient.Get(resourceGroupName, name, expandResource);
+            var nic = this.NetworkInterfaceClient.Get(resourceGroupName, name);
 
             var psNetworkInterface = Mapper.Map<PSNetworkInterface>(nic);
             psNetworkInterface.ResourceGroupName = resourceGroupName;
@@ -67,9 +67,9 @@ namespace Microsoft.Azure.Commands.Network
             return psNetworkInterface;
         }
 
-        public PSNetworkInterface GetScaleSetNetworkInterface(string resourceGroupName, string scaleSetName, string vmIndex, string name, string expandResource = null)
+        public PSNetworkInterface GetScaleSetNetworkInterface(string resourceGroupName, string scaleSetName, string vmIndex, string name)
         {
-            var nic = this.NetworkInterfaceClient.GetVirtualMachineScaleSetNetworkInterface(resourceGroupName, scaleSetName, vmIndex, name, expandResource);
+            var nic = this.NetworkInterfaceClient.GetVirtualMachineScaleSetNetworkInterface(resourceGroupName, scaleSetName, vmIndex, name);
 
             var psNetworkInterface = Mapper.Map<PSNetworkInterface>(nic);
             psNetworkInterface.ResourceGroupName = resourceGroupName;

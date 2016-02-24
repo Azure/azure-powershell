@@ -19,7 +19,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using System.Management.Automation;
     using System.Net;
     using System.Threading.Tasks;
-    using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.DataMovement;
     using Microsoft.WindowsAzure.Storage.File;
@@ -89,23 +88,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 string[] path = NamingUtil.ValidatePath(this.Path, out isDirectory);
                 var cloudFileToBeUploaded = await this.BuildCloudFileInstanceFromPathAsync(localFile.Name, path, isDirectory);
 
+                var uploadJob = new TransferJob(
+                    new TransferLocation(localFile.FullName),
+                    new TransferLocation(cloudFileToBeUploaded),
+                    TransferMethod.SyncCopy);
+
                 var progressRecord = new ProgressRecord(
                     this.OutputStream.GetProgressId(taskId),
                     string.Format(CultureInfo.CurrentCulture, Resources.SendAzureFileActivity, localFile.Name, cloudFileToBeUploaded.GetFullPath(), cloudFileToBeUploaded.Share.Name),
                     Resources.PrepareUploadingFile);
 
-                await DataMovementTransferHelper.DoTransfer(() =>
-                    {
-                        return this.TransferManager.UploadAsync(
-                        localFile.FullName,
-                        cloudFileToBeUploaded,
-                        null,
-                        this.GetTransferContext(progressRecord, localFile.Length),
-                        this.CmdletCancellationToken);
-                    },
-                    progressRecord,
-                    this.OutputStream);
-
+                await this.RunTransferJob(uploadJob, progressRecord);
 
                 if (this.PassThru)
                 {

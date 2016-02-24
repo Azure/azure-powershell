@@ -54,9 +54,9 @@ namespace Microsoft.Azure.Commands.Network
             return true;
         }
 
-        public PSPublicIpAddress GetPublicIpAddress(string resourceGroupName, string name, string expandResource = null)
+        public PSPublicIpAddress GetPublicIpAddress(string resourceGroupName, string name)
         {
-            var publicIP = this.PublicIpAddressClient.Get(resourceGroupName, name, expandResource);
+            var publicIP = this.PublicIpAddressClient.Get(resourceGroupName, name);
 
             var psPublicIpAddress = ToPsPublicIpAddress(publicIP);
             psPublicIpAddress.ResourceGroupName = resourceGroupName;

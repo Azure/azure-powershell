@@ -9,8 +9,6 @@ using Microsoft.WindowsAzure.Management.WebSites.Models;
 using Moq;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
-using System;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Websites
 {
@@ -76,16 +74,16 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         {
             var websiteName = "test-site";
             string slot = null;
-            var projectFile = string.Format(@"{0}\Resources\MyWebApplication\WebApplication4.csproj", AppDomain.CurrentDomain.BaseDirectory);
+            var projectFile = string.Format(@"{0}\Resources\MyWebApplication\WebApplication4.csproj", Directory.GetCurrentDirectory());
             var configuration = "Debug";
-            var logFile = string.Format(@"{0}\build.log", AppDomain.CurrentDomain.BaseDirectory);
+            var logFile = string.Format(@"{0}\build.log", Directory.GetCurrentDirectory());
             var connectionStrings = new Hashtable();
             connectionStrings["DefaultConnection"] = "test-connection-string";
             string setParametersFile = "testfile.xml";
 
             using (FileSystemHelper files = new FileSystemHelper(this))
             {
-                string originalDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                string originalDirectory = Directory.GetCurrentDirectory();
             }
 
             var publishProfile = new WebSiteGetPublishProfileResponse.PublishProfile()
@@ -116,7 +114,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 });
 
             Mock<ICommandRuntime> powerShellMock = new Mock<ICommandRuntime>();
-            TestMockSupport.TestExecutionFolder = AppDomain.CurrentDomain.BaseDirectory;
+
             var command = new PublishAzureWebsiteProject()
             {
                 CommandRuntime = powerShellMock.Object,

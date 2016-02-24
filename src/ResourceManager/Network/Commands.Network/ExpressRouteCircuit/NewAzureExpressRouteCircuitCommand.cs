@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Network
         public string ServiceProviderName { get; set; }
 
         [Parameter(
-             Mandatory = true,
+             Mandatory = false,
              ValueFromPipelineByPropertyName = true)]
         public string PeeringLocation { get; set; }
 

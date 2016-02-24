@@ -27,43 +27,23 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource name.",
-            ParameterSetName = "NoExpand")]
-        [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource name.",
-           ParameterSetName = "Expand")]
+            HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.",
-            ParameterSetName = "NoExpand")]
-        [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.",
-           ParameterSetName = "Expand")]
+            HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource reference to be expanded.",
-            ParameterSetName = "Expand")]
-        [ValidateNotNullOrEmpty]
-        public string ExpandResource { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
             if (!string.IsNullOrEmpty(this.Name))
             {
-                var routeTable = this.GetRouteTable(this.ResourceGroupName, this.Name, this.ExpandResource);
+                var routeTable = this.GetRouteTable(this.ResourceGroupName, this.Name);
 
                 WriteObject(routeTable);
             }

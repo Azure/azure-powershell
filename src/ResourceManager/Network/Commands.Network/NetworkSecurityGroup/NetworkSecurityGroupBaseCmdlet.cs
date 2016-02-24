@@ -55,9 +55,9 @@ namespace Microsoft.Azure.Commands.Network
             return true;
         }
 
-        public PSNetworkSecurityGroup GetNetworkSecurityGroup(string resourceGroupName, string name, string expandResource = null)
+        public PSNetworkSecurityGroup GetNetworkSecurityGroup(string resourceGroupName, string name)
         {
-            var nsg = this.NetworkSecurityGroupClient.Get(resourceGroupName, name, expandResource);
+            var nsg = this.NetworkSecurityGroupClient.Get(resourceGroupName, name);
 
             var psNetworkSecurityGroup = Mapper.Map<PSNetworkSecurityGroup>(nsg);
             psNetworkSecurityGroup.ResourceGroupName = resourceGroupName;

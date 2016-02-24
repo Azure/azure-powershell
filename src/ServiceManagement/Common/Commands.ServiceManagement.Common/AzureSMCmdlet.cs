@@ -13,22 +13,18 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Linq;
 using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.IO;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Newtonsoft.Json;
 using System.Threading;
 using System.Management.Automation.Host;
-using System.Globalization;
-using System.Net.Http.Headers;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
@@ -54,7 +50,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
         }
 
-
         protected override AzureContext DefaultContext { get { return CurrentProfile.Context; } }
 
         static AzureSMCmdlet()
@@ -65,6 +60,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 AzureSession.DataStore = new DiskDataStore();
            }
         }
+
+
 
         protected override void SaveDataCollectionProfile()
         {
@@ -123,39 +120,20 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected override void InitializeQosEvent()
         {
-            var commandAlias = this.GetType().Name;
-            if (this.MyInvocation != null && this.MyInvocation.MyCommand != null)
+            QosEvent = new AzurePSQoSEvent()
             {
-                commandAlias = this.MyInvocation.MyCommand.Name;
-            }
-
-            _qosEvent = new AzurePSQoSEvent()
-            {
-                CommandName = commandAlias,
-                ModuleName = this.GetType().Assembly.GetName().Name,
-                ModuleVersion = this.GetType().Assembly.GetName().Version.ToString(),
-                ClientRequestId = this._clientRequestId,
-                SessionId = _sessionId,
+                CmdletType = this.GetType().Name,
                 IsSuccess = true,
             };
 
-            if (this.MyInvocation != null && this.MyInvocation.BoundParameters != null)
+            if (this.Profile != null && this.Profile.DefaultSubscription != null)
             {
-                _qosEvent.Parameters = string.Join(" ",
-                    this.MyInvocation.BoundParameters.Keys.Select(
-                        s => string.Format(CultureInfo.InvariantCulture, "-{0} ***", s)));
-            }
-
-            if (this.DefaultContext != null &&
-                this.DefaultContext.Account != null &&
-                this.DefaultContext.Account.Id != null)
-            {
-                _qosEvent.Uid = MetricHelper.GenerateSha256HashString(
-                    this.DefaultContext.Account.Id.ToString());
+                QosEvent.Uid = MetricHelper.GenerateSha256HashString(
+                    this.Profile.DefaultSubscription.Id.ToString());
             }
             else
             {
-                _qosEvent.Uid = "defaultid";
+                QosEvent.Uid = "defaultid";
             }
         }
 
@@ -181,24 +159,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             {
                 AzureSMProfileProvider.Instance.SetTokenCacheForProfile(Profile);
             }
-        }
-
-        protected override void LogCmdletStartInvocationInfo()
-        {
-            base.LogCmdletStartInvocationInfo();
-            if (DefaultContext != null && DefaultContext.Account != null 
-                && DefaultContext.Account.Id != null)
-            {
-                WriteDebugWithTimestamp(string.Format("using account id '{0}'...", 
-                    DefaultContext.Account.Id));
-            }
-        }
-
-        protected override void LogCmdletEndInvocationInfo()
-        {
-            base.LogCmdletEndInvocationInfo();
-            string message = string.Format("{0} end processing.", this.GetType().Name);
-            WriteDebugWithTimestamp(message);
         }
     }
 }

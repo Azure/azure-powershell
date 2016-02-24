@@ -31,13 +31,5 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         public const string IntelligencePack = "AzureRmOperationalInsightsIntelligencePack";
 
         public const string IntelligencePacks = "AzureRmOperationalInsightsIntelligencePacks";
-
-        public const string SavedSearch = "AzureRmOperationalInsightsSavedSearch";
-
-        public const string SavedSearchResults = "AzureRmOperationalInsightsSavedSearchResults";
-
-        public const string Schema = "AzureRmOperationalInsightsSchema";
-
-        public const string SearchResults = "AzureRmOperationalInsightsSearchResults";
     }
 }

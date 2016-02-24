@@ -92,7 +92,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             if (!string.IsNullOrEmpty(parameters.AutoScaleFormula))
             {
                 pool.AutoScaleEnabled = true;
-                pool.AutoScaleEvaluationInterval = parameters.AutoScaleEvaluationInterval;
                 pool.AutoScaleFormula = parameters.AutoScaleFormula;
             }
             else if (parameters.TargetDedicated.HasValue)
@@ -208,8 +207,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// <summary>
         /// Enables automatic scaling on the specified pool.
         /// </summary>
-        /// <param name="parameters">The parameters specifying the pool and autoscale parameters.</param>
-        public void EnableAutoScale(EnableAutoScaleParameters parameters)
+        /// <param name="parameters">The parameters specifying the pool and autoscale formula.</param>
+        public void EnableAutoScale(AutoScaleParameters parameters)
         {
             if (parameters == null)
             {
@@ -220,8 +219,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             WriteVerbose(string.Format(Resources.EnableAutoScale, poolId, parameters.AutoScaleFormula));
             PoolOperations poolOperations = parameters.Context.BatchOMClient.PoolOperations;
-            poolOperations.EnableAutoScale(poolId, parameters.AutoScaleFormula, parameters.AutoScaleEvaluationInterval, 
-                parameters.AdditionalBehaviors);
+            poolOperations.EnableAutoScale(poolId, parameters.AutoScaleFormula, parameters.AdditionalBehaviors);
         }
 
         /// <summary>
@@ -246,7 +244,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// Gets the result of evaluating an automatic scaling formula on the specified pool.
         /// </summary>
         /// <param name="parameters">The parameters specifying the pool and autoscale formula.</param>
-        public PSAutoScaleEvaluation EvaluateAutoScale(EvaluateAutoScaleParameters parameters)
+        public PSAutoScaleEvaluation EvaluateAutoScale(AutoScaleParameters parameters)
         {
             if (parameters == null)
             {

@@ -16,7 +16,6 @@ using Hyak.Common;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
-using Microsoft.Azure.Commands.Compute.Common;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -62,7 +61,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 action();
             }
-            catch (Rest.Azure.CloudException ex)
+            catch (CloudException ex)
             {
                 try
                 {
@@ -78,4 +77,3 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
-

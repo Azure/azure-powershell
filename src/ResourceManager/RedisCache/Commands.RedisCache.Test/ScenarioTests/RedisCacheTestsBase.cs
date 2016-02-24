@@ -12,17 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
-
 namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
 {
     using System;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Microsoft.Azure.Test;
     using Microsoft.Azure.Management.Redis;
+    using Microsoft.Azure.Common.Authentication;
     using WindowsAzure.Commands.Test.Utilities.Common;
-    using Microsoft.Azure.Management.Insights;
-    using Microsoft.Azure.Management.Internal.Resources;
 
     public abstract class RedisCacheTestsBase : RMTestBase, IDisposable
     {
@@ -35,11 +32,8 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
 
         protected void SetupManagementClients()
         {
-            object[] managementClients = new object[3];
-            managementClients[0] = GetRedisManagementClient();
-            managementClients[1] = GetInsightsManagementClient();
-            managementClients[2] = GetResourceManagementClient();
-            helper.SetupManagementClients(managementClients);
+            var redisManagementClient = GetRedisManagementClient();
+            helper.SetupManagementClients(redisManagementClient);
         }
 
         protected void RunPowerShellTest(params string[] scripts)
@@ -63,16 +57,6 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
         protected RedisManagementClient GetRedisManagementClient()
         {
             return TestBase.GetServiceClient<RedisManagementClient>(new CSMTestEnvironmentFactory());
-        }
-
-        protected InsightsManagementClient GetInsightsManagementClient()
-        {
-            return TestBase.GetServiceClient<InsightsManagementClient>(new CSMTestEnvironmentFactory());
-        }
-
-        protected ResourceManagementClient GetResourceManagementClient()
-        {
-            return TestBase.GetServiceClient<ResourceManagementClient>(new CSMTestEnvironmentFactory());
         }
 
         public void Dispose()

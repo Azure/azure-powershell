@@ -1,5 +1,8 @@
 ﻿Param(
   [Parameter(Mandatory=$True,Position=0)]   
+  [ValidateSet('BVT','PROD')]
+  [string]$testenv,
+  [Parameter(Mandatory=$True,Position=1)]   
   [string]$testns 
 )
 
@@ -14,6 +17,7 @@ $global:passedCount = 0;
 $global:passedTests = @()
 $global:failedTests = @()
 $global:times = @{}
+$global:testEnv = $testenv.ToUpperInvariant()
 $global:testns = $testns+"UI"
 
 function Run-TestProtected

@@ -22,9 +22,8 @@ using System.Management.Automation;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Resources.Models;
-using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.Azure.Common.Authentication;
 using Hyak.Common;
-using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.Resources
 {
@@ -159,20 +158,7 @@ namespace Microsoft.Azure.Commands.Resources
             if (templateParameterFilePath != null && FileUtilities.DataStore.FileExists(templateParameterFilePath))
             {
                 var parametersFromFile = GalleryTemplatesClient.ParseTemplateParameterFileContents(templateParameterFilePath);
-                parametersFromFile.ForEach(dp =>
-                    {
-                        var parameter = new Hashtable();
-                        if (dp.Value.Value != null)
-                        {
-                            parameter.Add("value", dp.Value.Value);
-                        }
-                        if (dp.Value.Reference != null)
-                        {
-                            parameter.Add("reference", dp.Value.Reference);
-                        }
-
-                        prameterObject[dp.Key] = parameter;
-                    });
+                parametersFromFile.ForEach(dp => prameterObject[dp.Key] = new Hashtable { { "value", dp.Value.Value }, { "reference", dp.Value.Reference } });
             }
 
             // Load dynamic parameters

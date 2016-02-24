@@ -22,7 +22,6 @@ using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Scaffolding.Cmdlet
 {
@@ -38,7 +37,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Scaffold
             cmdlet = new NewAzureServiceProjectCommand();
             mockCommandRuntime = new MockCommandRuntime();
             cmdlet.CommandRuntime = mockCommandRuntime;
-            TestMockSupport.TestExecutionFolder = AppDomain.CurrentDomain.BaseDirectory;
         }
 
         [Fact]

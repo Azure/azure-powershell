@@ -67,12 +67,5 @@ namespace Commands.Network.Test.ScenarioTests
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceEnableIPForwarding");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNetworkInterfaceExpandResource()
-        {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceExpandResource");
-        }
     }
 }

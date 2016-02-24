@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// Creates Azure Site Recovery Policy object in memory.
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmSiteRecoveryPolicy", DefaultParameterSetName = ASRParameterSets.EnterpriseToAzure)]
+    [Alias("New-AzureRmSiteRecoveryProtectionProfile")]
     public class NewAzureSiteRecoveryPolicy : SiteRecoveryCmdletBase
     {
         /// <summary>

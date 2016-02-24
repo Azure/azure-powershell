@@ -15,6 +15,7 @@
 
 using System.Linq;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.Azure.Management.Resources;
 using Xunit;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Graph.RBAC;
@@ -24,14 +25,12 @@ using System;
 
 namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 {
-    public class KeyVaultManagementTests : IClassFixture<KeyVaultTestFixture>
+    public class KeyVaultManagementTests : IUseFixture<KeyVaultTestFixture>
     {
         private KeyVaultTestFixture _data;
 
-        public KeyVaultManagementTests(KeyVaultTestFixture fixture)
+        public KeyVaultManagementTests()
         {
-            this._data = fixture;
-            this._data.Initialize(TestUtilities.GetCallingClass());
         }
 
         private void Initialize()
@@ -52,8 +51,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         
         #region New-AzureRmKeyVault        
-                
-        [Fact(Skip = "Graph authentication blocks test passes")]
+
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNewVault()
         {
@@ -65,8 +64,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
                 TestUtilities.GetCurrentMethodName()
                 );
         }
-        
-        [Fact(Skip = "Graph authentication blocks test passes")]
+
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNewPremiumVaultEnabledForDeployment()
         {
@@ -105,8 +104,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
                 TestUtilities.GetCurrentMethodName()
                 );
         }
-        
-        [Fact(Skip = "Graph authentication blocks test passes")]
+
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateVaultPositionalParams()
         {
@@ -123,8 +122,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         #endregion
 
         #region Get-AzureRmKeyVault
-        
-        [Fact(Skip = "Graph authentication blocks test passes")]
+
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetVaultByNameAndResourceGroup()
         {
@@ -138,7 +137,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         }
 
-        [Fact(Skip = "Graph authentication blocks test passes")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetVaultByNameAndResourceGroupPositionalParams()
         {
@@ -152,7 +151,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         }
 
-        [Fact(Skip = "Graph authentication blocks test passes")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetVaultByName()
         {
@@ -165,7 +164,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
                 );
         }
 
-        [Fact(Skip = "Graph authentication blocks test passes")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetVaultByNameCapitalized()
         {
@@ -264,8 +263,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         #endregion
         
         #region Remove-AzureRmKeyVault 
-                
-        [Fact(Skip = "Graph authentication blocks test passes")]
+        
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDeleteVaultByName()
         {
@@ -294,20 +293,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         #endregion
 
         #region Set-AzureRmKeyVaultAccessPolicy & Remove-AzureRmKeyVaultAccessPolicy
-
-        [Fact(Skip = "Graph authentication blocks test passes")]
+        
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetRemoveAccessPolicyByObjectId()
         {
             string upn = "";
             _data.ResetPreCreatedVault();
-
-            KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
-            controller.RunPsTestWorkflow(
+            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
                 () =>
                 {
-                    var objId = GetUserObjectId(controller, upn);
-                    return new[] { string.Format("{0} {1} {2} {3}", "Test-SetRemoveAccessPolicyByObjectId", _data.preCreatedVault, _data.resourceGroupName, objId) };
+                    return new[] { string.Format("{0} {1} {2} {3}", "Test-SetRemoveAccessPolicyByObjectId", _data.preCreatedVault, _data.resourceGroupName, upn) };
                 },
                 (env) =>
                 {
@@ -320,7 +316,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
                 );
         }
 
-        [Fact(Skip = "Graph authentication blocks test passes")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetRemoveAccessPolicyByUPN()
         {
@@ -342,20 +338,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
                 );
         }
 
-        [Fact(Skip = "Graph authentication blocks test passes")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetRemoveAccessPolicyByCompoundId()
         {
             string upn = "";
             Guid? appId = null;
             _data.ResetPreCreatedVault();
-
-            KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
-            controller.RunPsTestWorkflow(
+            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
                 () =>
                 {
-                    var objId = GetUserObjectId(controller, upn);
-                    return new[] { string.Format("{0} {1} {2} {3} {4}", "Test-SetRemoveAccessPolicyByCompoundId", _data.preCreatedVault, _data.resourceGroupName, appId, objId) };
+                    return new[] { string.Format("{0} {1} {2} {3} {4}", "Test-SetRemoveAccessPolicyByCompoundId", _data.preCreatedVault, _data.resourceGroupName, upn, appId) };
                 },
                 (env) =>
                 {
@@ -369,22 +362,18 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
                 );
         }
 
-        [Fact(Skip = "Graph authentication blocks test passes")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAccessPolicyWithCompoundIdPolicies()
         {
             string upn = "";
-
             Guid? appId1 = null;
             Guid? appId2 = null;
             _data.ResetPreCreatedVault();
-
-            KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
-            controller.RunPsTestWorkflow(
+            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
                 () =>
                 {
-                    var objId = GetUserObjectId(controller, upn);
-                    return new[] { string.Format("{0} {1} {2} {3} {4} {5}", "Test-RemoveAccessPolicyWithCompoundIdPolicies", _data.preCreatedVault, _data.resourceGroupName, appId1, appId2, objId) };
+                    return new[] { string.Format("{0} {1} {2} {3} {4} {5}", "Test-RemoveAccessPolicyWithCompoundIdPolicies", _data.preCreatedVault, _data.resourceGroupName, upn, appId1, appId2) };
                 },
                 (env) =>
                 {
@@ -399,20 +388,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
                 );
         }
 
-        [Fact(Skip = "Graph authentication blocks test passes")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetCompoundIdAccessPolicy()
         {
             string upn = "";
             Guid? appId = null;
             _data.ResetPreCreatedVault();
-
-            KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
-            controller.RunPsTestWorkflow(
+            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
                 () =>
                 {
-                    var objId = GetUserObjectId(controller, upn);
-                    return new[] { string.Format("{0} {1} {2} {3} {4}", "Test-SetCompoundIdAccessPolicy", _data.preCreatedVault, _data.resourceGroupName, appId, objId) };
+                    return new[] { string.Format("{0} {1} {2} {3} {4}", "Test-SetCompoundIdAccessPolicy", _data.preCreatedVault, _data.resourceGroupName, upn, appId) };
                 },
                 (env) =>
                 {
@@ -426,7 +412,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
                 );
         }
 
-        [Fact(Skip = "Graph authentication blocks test passes")]
+
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetRemoveAccessPolicyBySPN()
         {
@@ -462,24 +449,20 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
             );
         }
 
-        [Fact(Skip = "Graph authentication blocks test passes")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestModifyAccessPolicy()
         {
             string upn = "";
 
-            KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
             _data.ResetPreCreatedVault();
-
-            controller.RunPsTestWorkflow(
+            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
                 () =>
                 {
-
-                    var objId = GetUserObjectId(controller, upn);
-                    return new[] { string.Format("{0} {1} {2} {3}", "Test-ModifyAccessPolicy", _data.preCreatedVault, _data.resourceGroupName, objId) };
+                    return new[] { string.Format("{0} {1} {2} {3}", "Test-ModifyAccessPolicy", _data.preCreatedVault, _data.resourceGroupName, upn) };
                 },
                 (env) =>
-                {
+                {                    
                     Initialize();
                     upn = GetUser(env.GetTestEnvironment());
                 },
@@ -488,8 +471,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
                 TestUtilities.GetCurrentMethodName()
                 );
         }
-        
-        [Fact(Skip = "Graph authentication blocks test passes")]
+
+
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestModifyAccessPolicyEnabledForDeployment()
         {
@@ -513,7 +497,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         }
 
 
-        [Fact(Skip = "Graph authentication blocks test passes")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestModifyAccessPolicyEnabledForTemplateDeployment()
         {
@@ -536,7 +520,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
                 );
         }
 
-        [Fact(Skip = "Graph authentication blocks test passes")]
+
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestModifyAccessPolicyEnabledForDiskEncryption()
         {
@@ -583,22 +568,20 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
                 );
         }
 
-        [Fact(Skip = "Graph authentication blocks test passes")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveNonExistentAccessPolicyDoesNotThrow()
         {
             string upn = "";
-            _data.ResetPreCreatedVault();
 
-            KeyVaultManagementController controller = KeyVaultManagementController.NewInstance;
-            controller.RunPsTestWorkflow(
+            _data.ResetPreCreatedVault();
+            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
                 () =>
                 {
-                    var objId = GetUserObjectId(controller, upn);
-                    return new[] { string.Format("{0} {1} {2} {3}", "Test-RemoveNonExistentAccessPolicyDoesNotThrow", _data.preCreatedVault, _data.resourceGroupName, objId) };
+                    return new[] { string.Format("{0} {1} {2} {3}", "Test-RemoveNonExistentAccessPolicyDoesNotThrow", _data.preCreatedVault, _data.resourceGroupName, upn) };
                 },
                 (env) =>
-                {
+                {                    
                     Initialize();
                     upn = GetUser(env.GetTestEnvironment());
                 },
@@ -611,7 +594,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         #endregion
 
         #region Piping
-        [Fact(Skip = "Graph authentication blocks test passes")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateDeleteVaultWithPiping()
         {
@@ -637,20 +620,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
             else
             {
                 return HttpMockServer.Variables["User"];
-            }
-        }
-
-        private string GetUserObjectId(KeyVaultManagementController controllerAdmin, string upn)
-        {
-            if (HttpMockServer.Mode == HttpRecorderMode.Record)
-            {
-                var result = controllerAdmin.GraphClient.User.Get(upn);
-                HttpMockServer.Variables["ObjectId"] = result.User.ObjectId;
-                return result.User.ObjectId;
-            }
-            else
-            {
-                return HttpMockServer.Variables["ObjectId"];
             }
         }
 
@@ -741,6 +710,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
             }
         }
         #endregion
+
+        public void SetFixture(KeyVaultTestFixture data)
+        {
+            this._data = data;
+            this._data.Initialize(TestUtilities.GetCallingClass());
+       }
     }
 
 

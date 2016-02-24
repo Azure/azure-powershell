@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
 
         public string PropertiesInJson
         {
-            get { return transformation.ToFormattedString(); }
+            get { return transformation.Properties.ToFormattedString(); }
         }
     }
 }

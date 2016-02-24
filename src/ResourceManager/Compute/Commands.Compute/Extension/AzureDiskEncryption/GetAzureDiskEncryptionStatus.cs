@@ -54,9 +54,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         {
             if ((vmParameters != null) &&
                 (vmParameters.StorageProfile != null) &&
-                (vmParameters.StorageProfile.OsDisk != null))
+                (vmParameters.StorageProfile.OSDisk != null))
             {
-                return vmParameters.StorageProfile.OsDisk.EncryptionSettings;
+                return vmParameters.StorageProfile.OSDisk.EncryptionSettings;
             }
             return null;
         }
@@ -64,9 +64,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         {
             if ((vmExtension != null) &&
                 (vmExtension.Publisher != null) &&
-                (vmExtension.VirtualMachineExtensionType != null) &&
+                (vmExtension.ExtensionType != null) &&
                 (vmExtension.Publisher.Equals(AzureDiskEncryptionExtensionContext.ExtensionDefaultPublisher, StringComparison.InvariantCultureIgnoreCase)) &&
-                (vmExtension.VirtualMachineExtensionType.Equals(AzureDiskEncryptionExtensionContext.ExtensionDefaultName, StringComparison.InvariantCultureIgnoreCase)))
+                (vmExtension.ExtensionType.Equals(AzureDiskEncryptionExtensionContext.ExtensionDefaultName, StringComparison.InvariantCultureIgnoreCase)))
             {
                 return true;
             }
@@ -91,9 +91,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
         private bool ExtensionProvisioningSucceeded(AzureDiskEncryptionExtensionContext adeExtension)
         {
-            var extensionStatusViewresult = this.VirtualMachineExtensionClient.GetWithInstanceView(this.ResourceGroupName, this.VMName, adeExtension.Name);
-            var extensionStatusView = extensionStatusViewresult.ToPSVirtualMachineExtension(this.ResourceGroupName);
-            var adeExtensionWithStatus = new AzureDiskEncryptionExtensionContext(extensionStatusView);
+            VirtualMachineExtensionGetResponse extensionStatusViewresult = this.VirtualMachineExtensionClient.GetWithInstanceView(this.ResourceGroupName, this.VMName, adeExtension.Name);
+            PSVirtualMachineExtension extensionStatusView = extensionStatusViewresult.ToPSVirtualMachineExtension(this.ResourceGroupName);
+            AzureDiskEncryptionExtensionContext adeExtensionWithStatus = new AzureDiskEncryptionExtensionContext(extensionStatusView);
             if (adeExtensionWithStatus.ProvisioningState.Equals(AzureDiskEncryptionExtensionContext.StatusSucceeded, StringComparison.InvariantCultureIgnoreCase))
             {
                 return true;
@@ -104,12 +104,12 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
         private bool AreDataVolumesEncrypted(VirtualMachine vmParameters)
         {
-            if (vmParameters == null || vmParameters.Resources == null)
+            if (vmParameters == null || vmParameters.Extensions == null)
             {
                 return false;
             }
 
-            foreach (VirtualMachineExtension vmExtension in vmParameters.Resources)
+            foreach (VirtualMachineExtension vmExtension in vmParameters.Extensions)
             {
                 if (IsAzureDiskEncryptionExtension(vmExtension))
                 {
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
             ExecuteClientAction(() =>
             {
-                VirtualMachine vmParameters = (this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName));
+                VirtualMachine vmParameters = (this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName)).VirtualMachine;
 
                 bool osVolumeEncrypted = IsOsVolumeEncrypted(vmParameters);
                 DiskEncryptionSettings osVolumeEncryptionSettings = GetOsVolumeEncryptionSettings(vmParameters);

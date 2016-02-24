@@ -50,15 +50,6 @@ function Get-ResourceGroupName
 
 <#
 .SYNOPSIS
-Gets an aseName for testing.
-#>
-function Get-AseName
-{
-    return getAssetName
-}
-
-<#
-.SYNOPSIS
 Gets the location for the Website. Default to West US if none found.
 #>
 function Get-Location

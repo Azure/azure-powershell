@@ -17,8 +17,11 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     using Newtonsoft.Json;
 
-    public class PSLoadBalancingRule : PSInboundRule
+    public class PSLoadBalancingRule : PSChildResource
     {
+        [JsonProperty(Order = 1)]
+        public PSResourceId FrontendIPConfiguration { get; set; }
+
         [JsonProperty(Order = 1)]
         public PSResourceId BackendAddressPool { get; set; }
 
@@ -26,7 +29,13 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSResourceId Probe { get; set; }
 
         [JsonProperty(Order = 1)]
+        public string Protocol { get; set; }
+
+        [JsonProperty(Order = 1)]
         public int FrontendPort { get; set; }
+
+        [JsonProperty(Order = 1)]
+        public int BackendPort { get; set; }
 
         [JsonProperty(Order = 1)]
         public int? IdleTimeoutInMinutes { get; set; }
@@ -35,7 +44,16 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string LoadDistribution { get; set; }
 
         [JsonProperty(Order = 1)]
-        public bool? EnableFloatingIP { get; set; }
+        public bool EnableFloatingIP { get; set; }
+
+        [JsonProperty(Order = 1)]
+        public string ProvisioningState { get; set; }
+
+        [JsonIgnore]
+        public string FrontendIPConfigurationText
+        {
+            get { return JsonConvert.SerializeObject(FrontendIPConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
 
         [JsonIgnore]
         public string BackendAddressPoolText
@@ -49,9 +67,5 @@ namespace Microsoft.Azure.Commands.Network.Models
             get { return JsonConvert.SerializeObject(Probe, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
-        public bool ShouldSerializeFrontendPort()
-        {
-            return !string.IsNullOrEmpty(this.Name);
-        }
     }
 }

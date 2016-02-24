@@ -14,13 +14,21 @@ using System.IO;
 using System.Xml;
 using System.Xml.Linq;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Common;
+using Microsoft.WindowsAzure.Commands.ServiceManagement;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
+using Microsoft.WindowsAzure.Management.Storage;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
 {
     public abstract class BaseAzureServiceDiagnosticsExtensionCmdlet : BaseAzureServiceExtensionCmdlet
     {
+        protected const string StorageAccountElemStr = "StorageAccount";
+        protected const string LocalResourceDirElemStr = "LocalResourceDirectory";
+        protected const string StorageNameAttrStr = "name";
+        protected const string PrivConfNameAttr = "name";
+        protected const string PrivConfKeyAttr = "key";
+        protected const string PrivConfEndpointAttr = "endpoint";
+        protected const string StorageKeyElemStr = "StorageKey";
         protected const string WadCfgElemStr = "WadCfg";
         protected const string PathAttr = "path";
         protected const string ExpandEnvAttr = "expandEnvironment";
@@ -28,13 +36,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
         protected const string DiagnosticsExtensionType = "PaaSDiagnostics";
         protected readonly string XmlNamespace = "http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration";
 
+        protected string StorageKey { get; set; }
         protected string ConnectionQualifiers { get; set; }
         protected string DefaultEndpointsProtocol { get; set; }
+        protected string Endpoint { get; set; }
 
         public virtual AzureStorageContext StorageContext { get; set; }
-        public virtual string StorageAccountName { get; set; }
-        public virtual string StorageAccountKey { get; set; }
-        public virtual string StorageAccountEndpoint { get; set; }
         public virtual string DiagnosticsConfigurationPath { get; set; }
 
 
@@ -54,53 +61,38 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             PrivateConfigurationXmlTemplate = new XDocument(
                 new XDeclaration("1.0", "utf-8", null),
                 new XElement(configNameSpace + PrivateConfigStr,
-                    new XElement(configNameSpace + DiagnosticsHelper.StorageAccountElemStr,
-                    new XAttribute(DiagnosticsHelper.PrivConfNameAttr, string.Empty),
-                    new XAttribute(DiagnosticsHelper.PrivConfKeyAttr, string.Empty),
-                    new XAttribute(DiagnosticsHelper.PrivConfEndpointAttr, string.Empty)
+                    new XElement(configNameSpace + StorageAccountElemStr,
+                    new XAttribute(PrivConfNameAttr, string.Empty),
+                    new XAttribute(PrivConfKeyAttr, string.Empty),
+                    new XAttribute(PrivConfEndpointAttr, string.Empty)
                 ))
             );
         }
 
         protected void ValidateStorageAccount()
         {
-            ValidateStorageAccountName();
-            ValidateStorageAccountKey();
-            ValidateStorageAccountEndpoint();
-        }
+            StorageKey = GetStorageKey();
+            Endpoint = "https://" + StorageContext.EndPointSuffix;
+       }
 
-        private void ValidateStorageAccountName()
+        protected string GetStorageKey()
         {
-            this.StorageAccountName = this.StorageAccountName ??
-                DiagnosticsHelper.InitializeStorageAccountName(this.StorageContext, this.DiagnosticsConfigurationPath);
+            string storageKey = string.Empty;
 
-            if (string.IsNullOrEmpty(this.StorageAccountName))
+            if (!string.IsNullOrEmpty(StorageContext.StorageAccountName))
             {
-                throw new ArgumentException(Resources.DiagnosticsExtensionNullStorageAccountName);
+                var storageAccount = this.StorageClient.StorageAccounts.Get(StorageContext.StorageAccountName);
+                if (storageAccount != null)
+                {
+                    var keys = this.StorageClient.StorageAccounts.GetKeys(StorageContext.StorageAccountName);
+                    if (keys != null)
+                    {
+                        storageKey = !string.IsNullOrEmpty(keys.PrimaryKey) ? keys.PrimaryKey : keys.SecondaryKey;
+                    }
+                }
             }
-        }
 
-        private void ValidateStorageAccountKey()
-        {
-            this.StorageAccountKey = this.StorageAccountKey ??
-                DiagnosticsHelper.InitializeStorageAccountKey(this.StorageClient, this.StorageAccountName, this.DiagnosticsConfigurationPath);
-
-            if (string.IsNullOrEmpty(this.StorageAccountKey))
-            {
-                throw new ArgumentException(Resources.DiagnosticsExtensionNullStorageAccountKey);
-            }
-        }
-
-        private void ValidateStorageAccountEndpoint()
-        {
-            this.StorageAccountEndpoint = this.StorageAccountEndpoint ??
-                DiagnosticsHelper.InitializeStorageAccountEndpoint(this.StorageAccountName, this.StorageAccountKey, this.StorageClient,
-                    this.StorageContext, this.DiagnosticsConfigurationPath, this.DefaultContext);
-
-            if (string.IsNullOrEmpty(this.StorageAccountEndpoint))
-            {
-                throw new ArgumentNullException(Resources.DiagnosticsExtensionNullStorageAccountEndpoint);
-            }
+            return storageKey;
         }
 
         protected override void ValidateConfiguration()
@@ -111,59 +103,45 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
                 // make sure it is the header
                 if (!header.Trim().StartsWith("<?xml"))
                 {
-                    throw new ArgumentException(Resources.DiagnosticsExtensionWrongHeader);
+                    throw new ArgumentException(Resources.PaaSDiagnosticsWrongHeader);
                 }
+
+                PublicConfiguration = sr.ReadToEnd();
             }
 
+            // the element <StorageAccount> is not meant to be set by teh user in the public config. 
+            // Make sure it matches the storage account in the private config.
             XmlDocument doc = new XmlDocument();
             XmlNamespaceManager ns = new XmlNamespaceManager(doc.NameTable);
             ns.AddNamespace("ns", XmlNamespace);
             doc.Load(DiagnosticsConfigurationPath);
-
-            // Make sure the configuration elements exist
-            var publicConfigElement = doc.SelectSingleNode("//ns:PublicConfig", ns);
-            if (publicConfigElement == null)
+            var node = doc.SelectSingleNode("//ns:StorageAccount", ns);
+            if(node != null)
             {
-                throw new ArgumentException(Resources.DiagnosticsExtensionNullPublicConfig);
+                if(node.InnerText == null)
+                {
+                    throw new ArgumentException(Resources.PaaSDiagnosticsNullStorageAccount);
+                }
+                if (string.Compare(node.InnerText, StorageContext.StorageAccountName, true) != 0)
+                {
+                    throw new ArgumentException(Resources.PassDiagnosticsNoMatchStorageAccount);
+                }
             }
-
-            var wadConfigElement = doc.SelectSingleNode("//ns:WadCfg", ns) ?? doc.SelectSingleNode("//ns:WadCfgBlob", ns);
-            if (wadConfigElement == null)
+            else
             {
-                throw new ArgumentException(Resources.DiagnosticsExtensionPaaSConfigElementNotDefined);
-            }
-
-            // The element <StorageAccount> is not meant to be set by the user in the public config.
-            // Make sure it matches the storage account in the private config.
-            var storageAccountElement = doc.SelectSingleNode("//ns:StorageAccount", ns);
-            if (storageAccountElement == null)
-            {
-                // The StorageAccount element is not there, we create one
-                storageAccountElement = doc.CreateElement("StorageAccount", XmlNamespace);
-                wadConfigElement.ParentNode.AppendChild(storageAccountElement);
-            }
-
-            if (!string.IsNullOrEmpty(storageAccountElement.InnerText) && string.Compare(storageAccountElement.InnerText, StorageAccountName, true) != 0)
-            {
-                WriteWarning(Resources.DiagnosticsExtensionNoMatchStorageAccount);
-            }
-
-            storageAccountElement.InnerText = StorageAccountName;
-            PublicConfiguration = publicConfigElement.OuterXml;
-
-            // Make sure the storage account name in PrivateConfig matches.
-            var privateConfigStorageAccountName = DiagnosticsHelper.GetStorageAccountInfoFromPrivateConfig(this.DiagnosticsConfigurationPath, DiagnosticsHelper.PrivConfNameAttr);
-            if (!string.IsNullOrEmpty(privateConfigStorageAccountName)
-                && !string.Equals(StorageAccountName, privateConfigStorageAccountName, StringComparison.OrdinalIgnoreCase))
-            {
-                WriteWarning(Resources.DiagnosticsExtensionNoMatchPrivateStorageAccount);
+                // the StorageAccount is not there. we must set it
+                string storageAccountElem = "\n<StorageAccount>" + StorageContext.StorageAccountName + "</StorageAccount>\n";
+                // insert it after </WadCfg>
+                int wadCfgEndIndex = PublicConfiguration.IndexOf("</WadCfg>");
+                PublicConfiguration = PublicConfiguration.Insert(wadCfgEndIndex + "</WadCfg>".Length, storageAccountElem);
             }
 
             PrivateConfigurationXml = new XDocument(PrivateConfigurationXmlTemplate);
-            SetPrivateConfigAttribute(DiagnosticsHelper.StorageAccountElemStr, DiagnosticsHelper.PrivConfNameAttr, StorageAccountName);
-            SetPrivateConfigAttribute(DiagnosticsHelper.StorageAccountElemStr, DiagnosticsHelper.PrivConfKeyAttr, StorageAccountKey);
-            SetPrivateConfigAttribute(DiagnosticsHelper.StorageAccountElemStr, DiagnosticsHelper.PrivConfEndpointAttr, StorageAccountEndpoint);
+            SetPrivateConfigAttribute(StorageAccountElemStr, PrivConfNameAttr, StorageContext.StorageAccountName);
+            SetPrivateConfigAttribute(StorageAccountElemStr, PrivConfKeyAttr, StorageKey);
+            SetPrivateConfigAttribute(StorageAccountElemStr, PrivConfEndpointAttr, Endpoint);
             PrivateConfiguration = PrivateConfigurationXml.ToString();
+
         }
     }
 }

@@ -16,7 +16,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.Batch;
 
@@ -124,14 +123,14 @@ namespace Microsoft.Azure.Commands.Batch.Models
             return ((IEnumerator<T2>)this.omEnumerator).MoveNext();
         }
 
-        public Task<bool> MoveNextAsync(CancellationToken cancellationToken)
+        public Task<bool> MoveNextAsync()
         {
-            return this.omEnumerator.MoveNextAsync(cancellationToken);
+            return this.omEnumerator.MoveNextAsync();
         }
 
-        public Task ResetAsync(CancellationToken cancellationToken)
+        public Task ResetAsync()
         {
-            return this.omEnumerator.ResetAsync(cancellationToken);
+            return this.omEnumerator.ResetAsync();
         }
 
         public void Reset()

@@ -24,10 +24,13 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Model
     /// </summary> 
     public enum DetectionType
     {
-        Sql_Injection,
-        Sql_Injection_Vulnerability,
-        Access_Anomaly,
-        Usage_Anomaly,
+        Successful_SQLi,
+        Attempted_SQLi,
+        Client_GEO_Anomaly,
+        Failed_Logins_Anomaly,
+        Failed_Queries_Anomaly,
+        Data_Extraction_Anomaly,
+        Data_Alteration_Anomaly
     };
 
     /// <summary>

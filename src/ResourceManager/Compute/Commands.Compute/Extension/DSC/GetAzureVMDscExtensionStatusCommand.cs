@@ -62,9 +62,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             }
 
             var result = VirtualMachineExtensionClient.GetWithInstanceView(ResourceGroupName, VMName, Name);
-            if (result != null && result.Body != null)
+            if (result != null && result.VirtualMachineExtension != null)
             {
-                WriteObject(GetDscExtensionStatusContext(result.Body, ResourceGroupName, VMName));
+                WriteObject(GetDscExtensionStatusContext(result.VirtualMachineExtension, ResourceGroupName, VMName));
             }
             else
             {
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             if (instanceView == null) return context;
 
             var statuses = instanceView.Statuses;
-            var substatuses = instanceView.Substatuses;
+            var substatuses = instanceView.SubStatuses;
 
             if (statuses != null && statuses.Count > 0)
             {

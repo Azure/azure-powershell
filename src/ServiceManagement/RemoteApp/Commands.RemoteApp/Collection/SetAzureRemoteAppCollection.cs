@@ -28,7 +28,6 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
         private const string RdpPropertyOnly = "RdpPropertyOnly";
         private const string DescriptionOnly = "DescriptionOnly";
         private const string PlanOnly = "PlanOnly";
-        private const string AclLevelOnly = "AclLevelOnly";
 
         [Parameter(Mandatory = true,
             Position = 0,
@@ -65,13 +64,6 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
                    HelpMessage = "Used to allow RDP redirection.")]
         [ValidateNotNull]
         public string CustomRdpProperty { get; set; }
-
-        [Parameter(Mandatory = true,
-                   ValueFromPipelineByPropertyName = true,
-                   ParameterSetName = AclLevelOnly,
-                   HelpMessage = "Specifies at which level ACLs are set. Possible values: Collection, Application.")]
-        [ValidateNotNullOrEmpty]
-        public LocalModels.CollectionAclLevel AclLevel { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -127,42 +119,6 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
             else if (CustomRdpProperty != null)
             {
                 details.CustomRdpProperty = CustomRdpProperty;
-            }
-            else if (this.ParameterSetName == AclLevelOnly)
-            {
-                CollectionAclLevel newAclLevel = CollectionAclLevel.Unknown;
-
-                switch(AclLevel)
-                {
-                    case LocalModels.CollectionAclLevel.Application:
-                        newAclLevel = CollectionAclLevel.Application;
-                        break;
-
-                    case LocalModels.CollectionAclLevel.Collection:
-                        newAclLevel = CollectionAclLevel.Collection;
-                        break;
-
-                    default:
-                        ErrorRecord er = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
-                            "Invalid value for AclLevel parameter.",
-                            String.Empty,
-                            Client.Collections,
-                            ErrorCategory.InvalidArgument);
-                        ThrowTerminatingError(er);
-                        break;
-                }
-
-                if(collection.AclLevel == newAclLevel)
-                {
-                    ErrorRecord er = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
-                        String.Format("Collection is already in desired ACL level: {0}.", newAclLevel.ToString()),
-                        String.Empty,
-                        Client.Collections,
-                        ErrorCategory.InvalidArgument);
-                    ThrowTerminatingError(er);
-                }
-
-                details.AclLevel = newAclLevel;
             }
             else
             {

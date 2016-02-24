@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Compute
         VerbsCommon.Set,
         ProfileNouns.VirtualMachineExtension,
         DefaultParameterSetName = SettingsParamSet)]
-    [OutputType(typeof(PSAzureOperationResponse))]
+    [OutputType(typeof(PSComputeLongRunningOperation))]
     public class SetAzureVMExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         protected const string SettingStringParamSet = "SettingString";
@@ -129,33 +129,30 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
-                if (this.ParameterSetName.Equals(SettingStringParamSet))
+                if (this.Settings != null)
                 {
-                    this.Settings = string.IsNullOrEmpty(this.SettingString)
-                        ? null
-                        : JsonConvert.DeserializeObject<Hashtable>(this.SettingString);
-                    this.ProtectedSettings = string.IsNullOrEmpty(this.ProtectedSettingString)
-                        ? null
-                        : JsonConvert.DeserializeObject<Hashtable>(this.ProtectedSettingString);
+                    this.SettingString = JsonConvert.SerializeObject(Settings);
+                    this.ProtectedSettingString = JsonConvert.SerializeObject(ProtectedSettings);
                 }
 
                 var parameters = new VirtualMachineExtension
                 {
                     Location = this.Location,
+                    Name = this.Name,
+                    Type = VirtualMachineExtensionType,
                     Publisher = this.Publisher,
-                    VirtualMachineExtensionType = this.ExtensionType,
+                    ExtensionType = this.ExtensionType,
                     TypeHandlerVersion = this.TypeHandlerVersion,
-                    Settings = this.Settings,
-                    ProtectedSettings = this.ProtectedSettings,
+                    Settings = this.SettingString,
+                    ProtectedSettings = this.ProtectedSettingString,
                 };
 
-                var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
+                var op = this.VirtualMachineExtensionClient.CreateOrUpdate(
                     this.ResourceGroupName,
                     this.VMName,
-                    this.Name,
-                    parameters).GetAwaiter().GetResult();
+                    parameters);
 
-                var result = Mapper.Map<PSAzureOperationResponse>(op);
+                var result = Mapper.Map<PSComputeLongRunningOperation>(op);
                 WriteObject(result);
             });
         }

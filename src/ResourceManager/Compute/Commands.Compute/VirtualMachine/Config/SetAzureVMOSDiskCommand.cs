@@ -183,16 +183,16 @@ namespace Microsoft.Azure.Commands.Compute
                         string.Empty, ErrorCategory.InvalidArgument, null));
             }
 
-            this.VM.StorageProfile.OsDisk = new OSDisk
+            this.VM.StorageProfile.OSDisk = new OSDisk
             {
                 Caching = this.Caching,
                 Name = this.Name,
-                OsType = this.Windows.IsPresent ? OperatingSystemTypes.Windows : this.Linux.IsPresent ? OperatingSystemTypes.Linux : null,
-                Vhd = string.IsNullOrEmpty(this.VhdUri) ? null : new VirtualHardDisk
+                OperatingSystemType = this.Windows.IsPresent ? OperatingSystemTypes.Windows : this.Linux.IsPresent ? OperatingSystemTypes.Linux : null,
+                VirtualHardDisk = string.IsNullOrEmpty(this.VhdUri) ? null : new VirtualHardDisk
                 {
                     Uri = this.VhdUri
                 },
-                Image = string.IsNullOrEmpty(this.SourceImageUri) ? null : new VirtualHardDisk
+                SourceImage = string.IsNullOrEmpty(this.SourceImageUri) ? null : new VirtualHardDisk
                 {
                     Uri = this.SourceImageUri
                 },
@@ -203,9 +203,9 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     DiskEncryptionKey = new KeyVaultSecretReference
                     {
-                        SourceVault = new SubResource
+                        SourceVault = new SourceVaultReference
                         {
-                            Id = this.DiskEncryptionKeyVaultId
+                            ReferenceUri = this.DiskEncryptionKeyVaultId
                         },
                         SecretUrl = this.DiskEncryptionKeyUrl
                     },
@@ -214,9 +214,9 @@ namespace Microsoft.Azure.Commands.Compute
                     : new KeyVaultKeyReference
                     {
                         KeyUrl = this.KeyEncryptionKeyUrl,
-                        SourceVault = new SubResource
+                        SourceVault = new SourceVaultReference
                         {
-                            Id = this.KeyEncryptionKeyVaultId
+                            ReferenceUri = this.KeyEncryptionKeyVaultId
                         },
                     }
                 }

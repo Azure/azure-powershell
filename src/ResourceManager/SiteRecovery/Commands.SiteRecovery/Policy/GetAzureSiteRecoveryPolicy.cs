@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// Retrieves Azure Site Recovery Server.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmSiteRecoveryPolicy", DefaultParameterSetName = ASRParameterSets.Default)]
+    [Alias("Get-AzureRmSiteRecoveryProtectionProfile")]
     [OutputType(typeof(IEnumerable<ASRPolicy>))]
     public class GetAzureSiteRecoveryPolicy : SiteRecoveryCmdletBase
     {

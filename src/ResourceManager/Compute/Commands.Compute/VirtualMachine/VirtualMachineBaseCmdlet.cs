@@ -18,9 +18,7 @@ namespace Microsoft.Azure.Commands.Compute
 {
     public abstract class VirtualMachineBaseCmdlet : ComputeClientBaseCmdlet
     {
-        protected const string InstanceViewExpand = "instanceView";
-
-        public IVirtualMachinesOperations VirtualMachineClient
+        public IVirtualMachineOperations VirtualMachineClient
         {
             get
             {

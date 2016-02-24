@@ -13,14 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     public abstract class VirtualMachineExtensionBaseCmdlet : ComputeClientBaseCmdlet
     {
-        public IVirtualMachineExtensionsOperations VirtualMachineExtensionClient
+        public IVirtualMachineExtensionOperations VirtualMachineExtensionClient
         {
             get
             {
@@ -31,7 +29,7 @@ namespace Microsoft.Azure.Commands.Compute
         protected string GetLocationFromVm(string rgName, string vmName)
         {
             var vm = this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(rgName, vmName);
-            return vm.Location;
+            return vm.VirtualMachine.Location;
         }
     }
 }

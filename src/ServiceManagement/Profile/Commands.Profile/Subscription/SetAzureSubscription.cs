@@ -16,9 +16,8 @@ using System;
 using System.Linq;
 using System.Management.Automation;
 using System.Security.Cryptography.X509Certificates;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -164,7 +163,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
                 if (Profile.Context != null && Profile.Context.Subscription != null &&
                     Profile.Context.Subscription.Id == subscription.Id)
                 {
-                    ServiceManagementUtilities.ClearCurrentStorageAccount();
+                    GeneralUtilities.ClearCurrentStorageAccount();
                 }
                 var context = new AzureContext(subscription, ProfileClient.GetAccount(subscription.Account), ProfileClient.GetEnvironmentOrDefault(subscription.Environment));
                 if (Context != null)

@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Insights.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Insights.Autoscale
 {
@@ -156,10 +157,9 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
                         Maximum = this.MaximumCapacity,
                     },
 
-                    // NOTE: "always" is specify by a null value in the FixedDate value with null ScheduledDays(Minutes, Seconds)
-                    // Premise: Fixed date schedule and recurrence are mutually exclusive, but they can both be missing so that the rule is always enabled.
+                    // Premise: Fixed date schedule and recurrence are mutually exclusive
                     // Assuming dates are validated by the server
-                    FixedDate = this.ScheduleDays == null && (this.StartTimeWindow != default(DateTime) || this.EndTimeWindow != default(DateTime))
+                    FixedDate = this.ScheduleDays == null 
                         ? new TimeWindow()
                             {
                                 Start = this.StartTimeWindow,

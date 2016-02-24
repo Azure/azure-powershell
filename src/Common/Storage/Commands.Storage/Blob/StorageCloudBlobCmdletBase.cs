@@ -16,16 +16,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage
 {
     using System;
     using System.Globalization;
-    using System.Management.Automation;
-    using System.Threading.Tasks;
     using Microsoft.WindowsAzure.Commands.Common.Storage;
-    using Microsoft.WindowsAzure.Commands.Storage.Blob;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
-    using Microsoft.WindowsAzure.Storage.DataMovement;
 
     /// <summary>
     /// Base cmdlet for storage blob/container cmdlet
@@ -220,6 +216,5 @@ namespace Microsoft.WindowsAzure.Commands.Storage
                     blob.Name));
             }
         }
-
     }
 }

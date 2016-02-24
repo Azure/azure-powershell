@@ -39,12 +39,6 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
         public string ImageName { get; set; }
 
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Name of the subnet to move the collection into."
-        )]
-        public string SubnetName { get; set; }
-
-        [Parameter(Mandatory = false,
             HelpMessage = "Log off users immediately after the update has successfully completed")]
         public SwitchParameter ForceLogoffWhenUpdateComplete { get; set; }
 
@@ -63,8 +57,7 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
             details = new CollectionUpdateDetails()
             {
                 TemplateImageName = ImageName,
-                WaitBeforeShutdownInMinutes = ForceLogoffWhenUpdateComplete ? -1 : 0,
-                SubnetName = string.IsNullOrEmpty(SubnetName) ? null : SubnetName
+                WaitBeforeShutdownInMinutes = ForceLogoffWhenUpdateComplete ? -1 : 0
             };
 
             if (ShouldProcess(CollectionName, Commands_RemoteApp.UpdateCollection))

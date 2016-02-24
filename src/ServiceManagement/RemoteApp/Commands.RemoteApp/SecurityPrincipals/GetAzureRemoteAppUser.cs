@@ -40,11 +40,6 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
         [ValidateNotNullOrEmpty()]
         public string UserUpn { get; set; }
 
-        [Parameter(Mandatory = false,
-            HelpMessage = "Published program alias (applicable only in per-app publishing mode)")]
-        [ValidateNotNullOrEmpty()]
-        public string Alias { get; set; }
-
         private bool showAllUsers = false;
 
         public class ServicePrincipalComparer : IComparer<SecurityPrincipalInfo>
@@ -142,14 +137,7 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
             }
 
             // You must pass in an empty string to this call. After that pass in the token returned by the previous call
-            if (String.IsNullOrEmpty(Alias))
-            {
-                response = CallClient(() => Client.Principals.List(CollectionName), Client.Principals);
-            }
-            else
-            {
-                response = CallClient(() => Client.Principals.ListForApp(CollectionName, Alias), Client.Principals);
-            }
+            response = CallClient(() => Client.Principals.List(CollectionName), Client.Principals);
 
             if (response != null && response.SecurityPrincipalInfoList != null)
             {

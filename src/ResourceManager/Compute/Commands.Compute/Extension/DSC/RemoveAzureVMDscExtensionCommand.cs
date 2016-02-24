@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         VerbsCommon.Remove,
         ProfileNouns.VirtualMachineDscExtension,
         SupportsShouldProcess = true)]
-    [OutputType(typeof(PSAzureOperationResponse))]
+    [OutputType(typeof(PSComputeLongRunningOperation))]
     public class RemoveAzureVMDscExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(
@@ -58,29 +58,21 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             {
                 //Add retry logic due to CRP service restart known issue CRP bug: 3564713
                 var count = 1;
-                Rest.Azure.AzureOperationResponse op = null;
-
-                while (true)
+                DeleteOperationResponse op = null;
+                while (count <= 2)
                 {
-                    op = VirtualMachineExtensionClient.DeleteWithHttpMessagesAsync(
-                        ResourceGroupName,
-                        VMName,
-                        Name).GetAwaiter().GetResult();
+                    op = VirtualMachineExtensionClient.Delete(ResourceGroupName, VMName, Name);
 
-                    if (ComputeOperationStatus.Failed.Equals(op.Response.StatusCode))
-                        //&& op.Error != null && "InternalExecutionError".Equals(op.Error.Code))
+                    if (ComputeOperationStatus.Failed.Equals(op.Status) && op.Error != null && "InternalExecutionError".Equals(op.Error.Code))
                     {
                         count++;
-                        if (count <= 2)
-                        {
-                            continue;
-                        }
                     }
-                    
-                    break;
+                    else
+                    {
+                        break;
+                    }
                 }
-
-                var result = Mapper.Map<PSAzureOperationResponse>(op);
+                var result = Mapper.Map<PSComputeLongRunningOperation>(op);
                 WriteObject(result);
             }
         }

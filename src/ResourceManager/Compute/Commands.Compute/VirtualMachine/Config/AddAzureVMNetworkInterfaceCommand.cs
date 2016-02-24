@@ -102,11 +102,11 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 if (!this.Primary.IsPresent)
                 {
-                    if (! networkProfile.NetworkInterfaces.Any(e => e.Id.Equals(this.Id)))
+                    if (! networkProfile.NetworkInterfaces.Any(e => e.ReferenceUri.Equals(this.Id)))
                     {
                         networkProfile.NetworkInterfaces.Add(new NetworkInterfaceReference
                         {
-                            Id = this.Id,
+                            ReferenceUri = this.Id,
                         });
                     }
 
@@ -126,13 +126,13 @@ namespace Microsoft.Azure.Commands.Compute
                         networkInterfaceReference.Primary = false;
                     }
 
-                    var existingNic = networkProfile.NetworkInterfaces.FirstOrDefault(e => e.Id.Equals(this.Id));
+                    var existingNic = networkProfile.NetworkInterfaces.Where(e => e.ReferenceUri.Equals(this.Id)).FirstOrDefault();
                     if (existingNic == null)
                     {
                         networkProfile.NetworkInterfaces.Add(
                             new NetworkInterfaceReference
                             {
-                                Id = this.Id,
+                                ReferenceUri = this.Id,
                                 Primary = true
                             });
                     }
@@ -146,14 +146,14 @@ namespace Microsoft.Azure.Commands.Compute
             { // Nic Object Parameter Set
                 foreach (var nic in this.NetworkInterface)
                 {
-                    var existingNic = networkProfile.NetworkInterfaces.FirstOrDefault(e => e.Id.Equals(nic.Id));
+                    var existingNic = networkProfile.NetworkInterfaces.Where(e => e.ReferenceUri.Equals(nic.Id)).FirstOrDefault();
 
                     if (existingNic == null)
                     {
                         networkProfile.NetworkInterfaces.Add(
                             new NetworkInterfaceReference
                             {
-                                Id = nic.Id,
+                                ReferenceUri = nic.Id,
                                 Primary = nic.Primary
                             });
                     }

@@ -14,7 +14,6 @@
 
 using System;
 using System.Text;
-using System.Text.RegularExpressions;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
 {
@@ -23,20 +22,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
         protected const string DefaultExtensionIdPrefixStr = "Default";
         protected const string ExtensionIdSuffixTemplate = "-{0}-{1}-Ext-{2}";
         protected const int MaxExtensionIdLength = 60;
-        protected const int MinRoleNamePartLength = 1;
-        protected const int MaxSuffixLength = MaxExtensionIdLength - MinRoleNamePartLength;
 
         public string RoleName { get; private set; }
         public string PrefixName { get; private set; }
         public ExtensionRoleType RoleType { get; private set; }
         public bool Default { get; private set; }
-
-        private static string RemoveDisallowedCharacters(string roleName)
-        {
-            // Remove characters that are not allowed in the extension id
-            var disallowedCharactersRegex = new Regex(@"[^A-Za-z0-9\-]");
-            return disallowedCharactersRegex.Replace(roleName, string.Empty);
-        }
 
         public ExtensionRole()
         {
@@ -58,7 +48,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             else
             {
                 PrefixName = RoleName = roleName.Trim();
-                PrefixName = RemoveDisallowedCharacters(PrefixName);
+                PrefixName = PrefixName.Replace(".", string.Empty);
+                PrefixName = PrefixName.Replace(" ", string.Empty);
                 RoleType = ExtensionRoleType.NamedRoles;
                 Default = false;
             }
@@ -71,21 +62,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
 
         public string GetExtensionId(string extensionName, string slot, int index)
         {
-            var normalizedExtName = RemoveDisallowedCharacters(extensionName);
+            var normalizedExtName = extensionName.Replace(".", string.Empty);
+            normalizedExtName = normalizedExtName.Replace(" ", string.Empty);
 
             var suffix = new StringBuilder();
-            // Suffix format: -{extension_name_part}-{slot}-Ext-{index}
             suffix.AppendFormat(ExtensionIdSuffixTemplate, normalizedExtName, slot, index);
-            if (suffix.Length > MaxSuffixLength)
-            {
-                // If the suffix is too long, truncate the {extension_name_part}
-                int lenDiff = suffix.Length - MaxSuffixLength;
-                int startIndex = 1; // Suffix starts with '-'
-                suffix.Remove(startIndex + normalizedExtName.Length - lenDiff, lenDiff);
-            }
 
-            // Calculate the prefix length by the difference between the suffix and the max ID length.
-            // The difference should always be at least 1.
             int prefixSubStrLen = Math.Min(Math.Max(MaxExtensionIdLength - suffix.Length, 0), PrefixName.Length);
 
             var result = new StringBuilder();

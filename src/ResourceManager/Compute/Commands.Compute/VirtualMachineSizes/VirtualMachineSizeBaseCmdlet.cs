@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.Compute
 {
     public abstract class VirtualMachineSizeBaseCmdlet : ComputeClientBaseCmdlet
     {
-        public IVirtualMachineSizesOperations VirtualMachineSizeClient
+        public IVirtualMachineSizeOperations VirtualMachineSizeClient
         {
             get
             {
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Compute
             }
         }
 
-        public IVirtualMachinesOperations VirtualMachineClient
+        public IVirtualMachineOperations VirtualMachineClient
         {
             get
             {
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Compute
             }
         }
 
-        public IAvailabilitySetsOperations AvailabilitySetClient
+        public IAvailabilitySetOperations AvailabilitySetClient
         {
             get
             {

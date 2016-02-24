@@ -116,12 +116,12 @@ namespace Microsoft.Azure.Commands.Compute
                 Caching = this.Caching,
                 DiskSizeGB = this.DiskSizeInGB,
                 Lun = this.Lun.GetValueOrDefault(),
-                Vhd = new VirtualHardDisk
+                VirtualHardDisk = new VirtualHardDisk
                 {
                     Uri = this.VhdUri
                 },
                 CreateOption = this.CreateOption,
-                Image = string.IsNullOrEmpty(this.SourceImageUri) ? null : new VirtualHardDisk
+                SourceImage = string.IsNullOrEmpty(this.SourceImageUri) ? null : new VirtualHardDisk
                 {
                     Uri = this.SourceImageUri
                 }

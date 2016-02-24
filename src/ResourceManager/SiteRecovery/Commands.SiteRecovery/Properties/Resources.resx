@@ -119,7 +119,10 @@
   </resheader>
   <data name="CloudExceptionDetails" xml:space="preserve">
     <value>Operation Failed.
-</value>
+Message: {0}
+Possible Causes: {1}
+Recommended Action: {2}
+ClientRequestId: {3}</value>
   </data>
   <data name="CloudServiceNameNullOrEmpty" xml:space="preserve">
     <value>Cloud Service name mentioned is either null or empty</value>

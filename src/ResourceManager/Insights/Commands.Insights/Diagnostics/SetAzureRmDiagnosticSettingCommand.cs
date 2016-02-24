@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -70,36 +69,37 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         protected override void ProcessRecordInternal()
         {
             var putParameters = new ServiceDiagnosticSettingsPutParameters();
-
-            ServiceDiagnosticSettingsGetResponse getResponse = this.InsightsManagementClient.ServiceDiagnosticSettingsOperations.GetAsync(this.ResourceId, CancellationToken.None).Result;
-
-            ServiceDiagnosticSettings properties = getResponse.Properties;
-
-            if (this.Enabled && string.IsNullOrWhiteSpace(this.StorageAccountId))
+            
+            if (this.Categories == null && this.Timegrains == null && !this.Enabled)
             {
-                throw new ArgumentException("StorageAccountId can't be null when enabling");
-            }
+                // This is the only case where no call to get diagnostic settings is necessary. Since we are disabling everything, we just need to request stroage account false.
 
-            if (!string.IsNullOrWhiteSpace(this.StorageAccountId))
-            {
-                properties.StorageAccountId = this.StorageAccountId;
-            }
-
-            if (this.Categories == null && this.Timegrains == null)
-            {
-                foreach (var log in properties.Logs)
-                {
-                    log.Enabled = this.Enabled;
-                }
-
-                foreach (var metric in properties.Metrics)
-                {
-                    metric.Enabled = this.Enabled;
-                }
+                putParameters.Properties = new ServiceDiagnosticSettings();
             }
             else
             {
-                if (this.Categories != null)
+                ServiceDiagnosticSettingsGetResponse getResponse = this.InsightsManagementClient.ServiceDiagnosticSettingsOperations.GetAsync(this.ResourceId, CancellationToken.None).Result;
+
+                ServiceDiagnosticSettings properties = getResponse.Properties;
+
+                if (this.Enabled && string.IsNullOrWhiteSpace(this.StorageAccountId))
+                {
+                    throw new ArgumentException("StorageAccountId can't be null when enabling");
+                }
+
+                if (!string.IsNullOrWhiteSpace(this.StorageAccountId))
+                {
+                    properties.StorageAccountId = this.StorageAccountId;
+                }
+                
+                if (this.Categories == null)
+                {
+                    foreach (var log in properties.Logs)
+                    {
+                        log.Enabled = this.Enabled;
+                    }
+                }
+                else
                 {
                     foreach (string category in this.Categories)
                     {
@@ -111,10 +111,17 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                         }
 
                         logSettings.Enabled = this.Enabled;
-                    }
+                    }   
                 }
 
-                if (this.Timegrains != null)
+                if (this.Timegrains == null)
+                {
+                    foreach (var metric in properties.Metrics)
+                    {
+                        metric.Enabled = this.Enabled;
+                    }
+                }
+                else
                 {
                     foreach (string timegrainString in this.Timegrains)
                     {
@@ -128,9 +135,9 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                         metricSettings.Enabled = this.Enabled;
                     }
                 }
-            }
 
-            putParameters.Properties = properties;
+                putParameters.Properties = properties;
+            }
 
             this.InsightsManagementClient.ServiceDiagnosticSettingsOperations.PutAsync(this.ResourceId, putParameters, CancellationToken.None).Wait();
             PSServiceDiagnosticSettings psResult = new PSServiceDiagnosticSettings(putParameters.Properties);

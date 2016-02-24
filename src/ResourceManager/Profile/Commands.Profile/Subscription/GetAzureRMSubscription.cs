@@ -13,14 +13,11 @@
 
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using System.Collections.Generic;
-using System;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -95,41 +92,7 @@ namespace Microsoft.Azure.Commands.Profile
             {
                 try
                 {
-                    var tenantsList = new List<string>();
-
-                    if (string.IsNullOrWhiteSpace(tenant))
-                    {
-                        tenantsList.AddRange(_client.ListTenants()
-                            .Select(t => (t.Id == Guid.Empty) ? t.Domain : t.Id.ToString()));
-                    }
-                    else
-                    {
-                        tenantsList.Add(tenant);
-                    }
-
-                    foreach (var tenantId in tenantsList)
-                    {
-                        try
-                        {
-                            string listNextLink = null;
-                            do
-                            {
-                                var subscriptions = _client.ListSubscriptions(tenantId, ref listNextLink);
-                                WriteObject(subscriptions.Select((s) => (PSAzureSubscription)s), enumerateCollection: true);
-                            } while (listNextLink != null);
-                        }
-                        catch (AadAuthenticationException)
-                        {
-                            if (!string.IsNullOrWhiteSpace(tenant))
-                            {
-                                throw;
-                            }
-                            WriteWarning(string.Format(
-                                Microsoft.Azure.Commands.Profile.Properties.Resources.UnableToLogin,
-                                AzureRmProfileProvider.Instance.Profile.Context.Account,
-                                tenant));
-                        }
-                    }
+                    WriteObject(_client.GetSubscriptions(tenant).Select((s) => (PSAzureSubscription)s), enumerateCollection: true);
                 }
                 catch (AadAuthenticationException exception)
                 {

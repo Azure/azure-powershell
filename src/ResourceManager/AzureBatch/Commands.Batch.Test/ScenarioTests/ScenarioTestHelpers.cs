@@ -22,9 +22,6 @@ using Microsoft.Azure.Management.Batch.Models;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Auth;
-using Microsoft.WindowsAzure.Storage.Blob;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,19 +48,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         internal const string SharedPool = "testPool";
         internal const string SharedPoolStartTaskStdOut = "startup\\stdout.txt";
         internal const string SharedPoolStartTaskStdOutContent = "hello";
-
-        // TO DO: MPI and online/offline node scheduling are only enabled in a few regions, so they need a dedicated account.  Once the features are
-        // enabled everywhere, the tests for these features can just use the default shared account.
-        internal const string MpiOnlineAccount = "batchtest";
-
-        // MPI requires a special pool configuration. When recording, the Storage environment variables need to be
-        // set so we can upload the MPI installer for use as a start task resource file.
-        internal const string MpiPoolId = "mpiPool";
-        internal const string MpiSetupFileContainer = "mpi";
-        internal const string MpiSetupFileName = "MSMpiSetup.exe";
-        internal const string MpiSetupFileLocalPath = "Resources\\MSMpiSetup.exe";
-        internal const string StorageAccountEnvVar = "AZURE_STORAGE_ACCOUNT";
-        internal const string StorageKeyEnvVar = "AZURE_STORAGE_ACCESS_KEY";
 
         /// <summary>
         /// Creates an account and resource group for use with the Scenario tests
@@ -196,8 +180,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Creates a test pool for use in Scenario tests.
         /// </summary>
-        public static void CreateTestPool(BatchController controller, BatchAccountContext context, string poolId, int targetDedicated, 
-            CertificateReference certReference = null, StartTask startTask = null)
+        public static void CreateTestPool(BatchController controller, BatchAccountContext context, string poolId, int targetDedicated, CertificateReference certReference = null)
         {
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
@@ -205,11 +188,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             if (certReference != null)
             {
                 certReferences = new PSCertificateReference[] { new PSCertificateReference(certReference) };
-            }
-            PSStartTask psStartTask = null;
-            if (startTask != null)
-            {
-                psStartTask = new PSStartTask(startTask);
             }
 
             NewPoolParameters parameters = new NewPoolParameters(context, poolId)
@@ -219,62 +197,17 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 TargetOSVersion = "*",
                 TargetDedicated = targetDedicated,
                 CertificateReferences = certReferences,
-                StartTask = psStartTask,
-                InterComputeNodeCommunicationEnabled = true
             };
 
             client.CreatePool(parameters);
         }
-
-        /// <summary>
-        /// Creates an MPI pool.
-        /// </summary>
-        public static void CreateMpiPoolIfNotExists(BatchController controller, BatchAccountContext context, int targetDedicated = 3)
-        {
-            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
-            ListPoolOptions listOptions = new ListPoolOptions(context)
-            {
-                PoolId = MpiPoolId
-            };
-
-            try
-            {
-                client.ListPools(listOptions);
-                return; // The call returned without throwing an exception, so the pool exists
-            }
-            catch (AggregateException aex)
-            {
-                BatchException innerException = aex.InnerException as BatchException;
-                if (innerException == null || innerException.RequestInformation == null || innerException.RequestInformation.AzureError == null ||
-                    innerException.RequestInformation.AzureError.Code != BatchErrorCodeStrings.PoolNotFound)
-                {
-                    throw;
-                }
-                // We got the pool not found error, so continue and create the pool
-            }
-
-            string blobUrl = UploadBlobAndGetUrl(MpiSetupFileContainer, MpiSetupFileName, MpiSetupFileLocalPath);
-
-            StartTask startTask = new StartTask();
-            startTask.CommandLine = string.Format("cmd /c set & {0} -unattend -force", MpiSetupFileName);
-            startTask.ResourceFiles = new List<ResourceFile>();
-            startTask.ResourceFiles.Add(new ResourceFile(blobUrl, MpiSetupFileName));
-            startTask.RunElevated = true;
-            startTask.WaitForSuccess = true;
-
-            CreateTestPool(controller, context, MpiPoolId, targetDedicated, startTask: startTask);
-        }
-
 
         public static void EnableAutoScale(BatchController controller, BatchAccountContext context, string poolId)
         {
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
             string formula = "$TargetDedicated=2";
-            EnableAutoScaleParameters parameters = new EnableAutoScaleParameters(context, poolId, null)
-            {
-                AutoScaleFormula = formula
-            };
+            AutoScaleParameters parameters = new AutoScaleParameters(context, poolId, null, formula);
             client.EnableAutoScale(parameters);
         }
 
@@ -295,7 +228,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 PoolId = poolId
             };
 
-            DateTime timeout = DateTime.Now.AddMinutes(5);
+            DateTime timeout = DateTime.Now.AddMinutes(2);
             PSCloudPool pool = client.ListPools(options).First();
             while (pool.CurrentOSVersion != pool.TargetOSVersion)
             {
@@ -412,12 +345,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Creates a test job for use in Scenario tests.
         /// </summary>
-        public static void CreateTestJob(BatchController controller, BatchAccountContext context, string jobId, string poolId = SharedPool)
+        public static void CreateTestJob(BatchController controller, BatchAccountContext context, string jobId)
         {
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
             PSPoolInformation poolInfo = new PSPoolInformation();
-            poolInfo.PoolId = poolId;
+            poolInfo.PoolId = SharedPool;
 
             NewJobParameters parameters = new NewJobParameters(context, jobId)
             {
@@ -458,22 +391,14 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Creates a test task for use in Scenario tests.
         /// </summary>
-        public static void CreateTestTask(BatchController controller, BatchAccountContext context, string jobId, string taskId, string cmdLine = "cmd /c dir /s", int numInstances = 0)
+        public static void CreateTestTask(BatchController controller, BatchAccountContext context, string jobId, string taskId, string cmdLine = "cmd /c dir /s")
         {
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
-
-            PSMultiInstanceSettings multiInstanceSettings = null;
-            if (numInstances > 1)
-            {
-                multiInstanceSettings = new PSMultiInstanceSettings(numInstances);
-                multiInstanceSettings.CoordinationCommandLine = "cmd /c echo coordinating";
-            }
 
             NewTaskParameters parameters = new NewTaskParameters(context, jobId, null, taskId)
             {
                 CommandLine = cmdLine,
-                MultiInstanceSettings = multiInstanceSettings,
-                RunElevated = numInstances <= 1
+                RunElevated = true
             };
             
             client.CreateTask(parameters);
@@ -496,7 +421,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             if (HttpMockServer.Mode == HttpRecorderMode.Record)
             {
                 TaskStateMonitor monitor = context.BatchOMClient.Utilities.CreateTaskStateMonitor();
-                monitor.WaitAll(tasks.Select(t => t.omObject), TaskState.Completed, TimeSpan.FromMinutes(10), null);
+                monitor.WaitAll(tasks.Select(t => t.omObject), TaskState.Completed, TimeSpan.FromMinutes(2), null);
             }
         }
 
@@ -569,13 +494,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
             ListComputeNodeOptions options = new ListComputeNodeOptions(context, poolId, null)
             {
-                ComputeNodeId = computeNodeId,
-                Select = "id,state"
+                ComputeNodeId = computeNodeId
             };
 
-            DateTime timeout = DateTime.Now.AddMinutes(5);
+            DateTime timeout = DateTime.Now.AddMinutes(2);
             PSComputeNode computeNode = client.ListComputeNodes(options).First();
-            while (computeNode.State != ComputeNodeState.Idle)
+            if (computeNode.State != ComputeNodeState.Idle)
             {
                 if (DateTime.Now > timeout)
                 {
@@ -613,43 +537,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             ComputeNodeUserOperationParameters parameters = new ComputeNodeUserOperationParameters(context, poolId, computeNodeId, computeNodeUserName);
 
             client.DeleteComputeNodeUser(parameters);
-        }
-
-        /// <summary>
-        /// Uploads a blob to Storage if it doesn't exist and gets the url
-        /// </summary>
-        private static string UploadBlobAndGetUrl(string containerName, string blobName, string localFilePath)
-        {
-            string blobUrl = "https://defaultUrl.blob.core.windows.net/blobName";
-
-            if (HttpMockServer.Mode == HttpRecorderMode.Record)
-            {
-                // Create container and upload blob if they don't exist
-                string storageAccountName = Environment.GetEnvironmentVariable(StorageAccountEnvVar);
-                string storageKey = Environment.GetEnvironmentVariable(StorageKeyEnvVar);
-                StorageCredentials creds = new StorageCredentials(storageAccountName, storageKey);
-                CloudStorageAccount storageAccount = new CloudStorageAccount(creds, true);
-
-                CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-                CloudBlobContainer container = blobClient.GetContainerReference(containerName);
-                container.CreateIfNotExists();
-
-                CloudBlockBlob blob = container.GetBlockBlobReference(blobName);
-                if (!blob.Exists())
-                {
-                    blob.UploadFromFile(localFilePath, System.IO.FileMode.Open);
-                }
-
-                // Get blob url with SAS string
-                SharedAccessBlobPolicy sasPolicy = new SharedAccessBlobPolicy();
-                sasPolicy.Permissions = SharedAccessBlobPermissions.Read;
-                sasPolicy.SharedAccessExpiryTime = DateTime.UtcNow.AddHours(10);
-                string sasString = container.GetSharedAccessSignature(sasPolicy);
-
-                blobUrl = string.Format("{0}/{1}{2}", container.Uri, blobName, sasString);
-            }
-
-            return blobUrl;
         }
 
         /// <summary>

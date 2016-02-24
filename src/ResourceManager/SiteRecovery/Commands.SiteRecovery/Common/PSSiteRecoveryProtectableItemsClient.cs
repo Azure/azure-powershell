@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using Microsoft.Azure.Management.SiteRecovery;
 using Microsoft.Azure.Management.SiteRecovery.Models;
 
@@ -32,22 +31,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public ProtectableItemListResponse GetAzureSiteRecoveryProtectableItem(string fabricName,
             string protectionContainerName)
         {
-            ProtectableItemListResponse output = new ProtectableItemListResponse();
-            List<ProtectableItem> protectableItems = new List<ProtectableItem>();
-            ProtectableItemListResponse response = this
+            return
+                this
                 .GetSiteRecoveryClient()
-                .ProtectableItem.List(fabricName, protectionContainerName, null, null, null, this.GetRequestHeaders());
-            protectableItems.AddRange(response.ProtectableItems);
-            while(response.NextLink != null)
-            {
-                response = this
-                    .GetSiteRecoveryClient()
-                    .ProtectableItem.ListNext(response.NextLink, this.GetRequestHeaders());
-                protectableItems.AddRange(response.ProtectableItems);
-            }
-
-            output.ProtectableItems = protectableItems;
-            return output;
+                .ProtectableItem.List(fabricName, protectionContainerName, "All", this.GetRequestHeaders());
         }
 
         /// <summary>

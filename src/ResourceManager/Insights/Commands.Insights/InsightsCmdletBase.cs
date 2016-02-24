@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Insights
     public abstract class InsightsCmdletBase : AzureRMCmdlet
     {
         /// <summary>
-        /// Executes the Cmdlet. This is a callback function to simplify the exception handling
+        /// Executes the Cmdlet. This is a callback function to simplify the execption handling
         /// </summary>
         protected abstract void ProcessRecordInternal();
 

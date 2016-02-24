@@ -23,9 +23,8 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using Hyak.Common;
-using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Resources.Models;
-using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
@@ -35,7 +34,6 @@ using Moq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Xunit;
-using System.IO;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Models
 {
@@ -71,7 +69,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
         private string deploymentName = "fooDeployment";
 
-        private string templateFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\sampleTemplateFile.json");
+        private string templateFile = @"Resources\sampleTemplateFile.json";
 
         private string storageAccountName = "myStorageAccount";
 

@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Profile.Models
 {
@@ -54,14 +54,12 @@ namespace Microsoft.Azure.Commands.Profile.Models
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.StorageEndpointSuffix] =
                 environment.StorageEndpointSuffix;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.Graph] = environment.GraphUrl;
-            newEnvironment.Endpoints[AzureEnvironment.Endpoint.GraphEndpointResourceId] = environment.GraphEndpointResourceId;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.TrafficManagerDnsSuffix] =
                 environment.TrafficManagerDnsSuffix;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix] =
                 environment.AzureKeyVaultDnsSuffix;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId] =
                 environment.AzureKeyVaultServiceEndpointResourceId;
-
             return newEnvironment;
         }
 
@@ -149,11 +147,6 @@ namespace Microsoft.Azure.Commands.Profile.Models
                 GraphUrl =
                     environment.Endpoints[AzureEnvironment.Endpoint.Graph];
             }
-            if (environment.IsEndpointSet(AzureEnvironment.Endpoint.GraphEndpointResourceId))
-            {
-                GraphEndpointResourceId =
-                    environment.Endpoints[AzureEnvironment.Endpoint.GraphEndpointResourceId];
-            }
             if (environment.IsEndpointSet(AzureEnvironment.Endpoint.TrafficManagerDnsSuffix))
             {
                 TrafficManagerDnsSuffix =
@@ -187,7 +180,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether ADFS authentication should be allowed . 
+        /// Gets or sets a value indicating whther ADFS authentication should be allowed . 
         /// Generally, this is only used in Azure Stack environments.
         /// </summary>
         public bool EnableAdfsAuthentication { get; set; }
@@ -246,11 +239,6 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// Gets or sets the Uri of the Active Directory metadata (Graph) endpoint.
         /// </summary>
         public string GraphUrl { get; set; }
-
-        /// <summary>
-        /// Gets or sets the resource Id to use for contacting the Graph endpoint
-        /// </summary>
-        public string GraphEndpointResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the domain name suffix for traffig manager services.

@@ -153,11 +153,9 @@ namespace Microsoft.Azure.Commands.KeyVault
             var updatedPolicies = existingVault.AccessPolicies;
             if (!string.IsNullOrEmpty(UserPrincipalName) || !string.IsNullOrEmpty(ServicePrincipalName) || (ObjectId != Guid.Empty))
             {
-                if (ObjectId == Guid.Empty)
-                {
-                    ObjectId = GetObjectId(this.ObjectId, this.UserPrincipalName, this.ServicePrincipalName);
-                }
-                updatedPolicies = existingVault.AccessPolicies.Where(ap => !ShallBeRemoved(ap, ObjectId, this.ApplicationId)).ToArray();
+                Guid objId = GetObjectId(this.ObjectId, this.UserPrincipalName, this.ServicePrincipalName);
+               
+                updatedPolicies = existingVault.AccessPolicies.Where(ap => !ShallBeRemoved(ap, objId, this.ApplicationId)).ToArray();
             }
 
             // Update the vault

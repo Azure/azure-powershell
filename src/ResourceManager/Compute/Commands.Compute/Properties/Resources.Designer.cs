@@ -70,15 +70,6 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No Azure Enhanced Monitoring extension found under resource group &apos;{0}&apos;, virtual machine &apos;{1}&apos;..
-        /// </summary>
-        public static string AEMExtensionNotFound {
-            get {
-                return ResourceManager.GetString("AEMExtensionNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Availability set removal operation.
         /// </summary>
         public static string AvailabilitySetRemovalCaption {
@@ -288,20 +279,11 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No WadCfg, WadCfgBlob or xmlCfg element defined in the configuration file..
+        ///   Looks up a localized string similar to Failed to list storage account key. Can&apos;t find storage account &quot;{0}&quot; under current subscription..
         /// </summary>
-        public static string DiagnosticsExtensionIaaSConfigElementNotDefined {
+        public static string DiagnosticsExtensionFailedToListKeyForNoStorageAccount {
             get {
-                return ResourceManager.GetString("DiagnosticsExtensionIaaSConfigElementNotDefined", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Invalid diagnostics configuration file. It should be in Invalid diagnostics configuration file. It should be in either xml or json format.either xml or json format..
-        /// </summary>
-        public static string DiagnosticsExtensionInvalidConfigFileFormat {
-            get {
-                return ResourceManager.GetString("DiagnosticsExtensionInvalidConfigFileFormat", resourceCulture);
+                return ResourceManager.GetString("DiagnosticsExtensionFailedToListKeyForNoStorageAccount", resourceCulture);
             }
         }
         
@@ -315,56 +297,20 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Storage account endpoint is not defined or can not be retrieved automatically...
+        ///   Looks up a localized string similar to Storage account endpoint is not defined..
         /// </summary>
-        public static string DiagnosticsExtensionNullStorageAccountEndpoint {
+        public static string DiagnosticsExtensionStorageAccountEndpointNotDefined {
             get {
-                return ResourceManager.GetString("DiagnosticsExtensionNullStorageAccountEndpoint", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Storage account key is not specified or can not be retrieved automatically..
-        /// </summary>
-        public static string DiagnosticsExtensionNullStorageAccountKey {
-            get {
-                return ResourceManager.GetString("DiagnosticsExtensionNullStorageAccountKey", resourceCulture);
+                return ResourceManager.GetString("DiagnosticsExtensionStorageAccountEndpointNotDefined", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Storage account name is not defined..
         /// </summary>
-        public static string DiagnosticsExtensionNullStorageAccountName {
+        public static string DiagnosticsExtensionStorageAccountNameNotDefined {
             get {
-                return ResourceManager.GetString("DiagnosticsExtensionNullStorageAccountName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cannot find the WadCfg end element in the config..
-        /// </summary>
-        public static string DiagnosticsExtensionXmlConfigNoWadCfgEndTag {
-            get {
-                return ResourceManager.GetString("DiagnosticsExtensionXmlConfigNoWadCfgEndTag", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cannot find the WadCfg element in the config..
-        /// </summary>
-        public static string DiagnosticsExtensionXmlConfigNoWadCfgStartTag {
-            get {
-                return ResourceManager.GetString("DiagnosticsExtensionXmlConfigNoWadCfgStartTag", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to WadCfg start element in the config is not matching the end element..
-        /// </summary>
-        public static string DiagnosticsExtensionXmlConfigWadCfgTagNotMatch {
-            get {
-                return ResourceManager.GetString("DiagnosticsExtensionXmlConfigWadCfgTagNotMatch", resourceCulture);
+                return ResourceManager.GetString("DiagnosticsExtensionStorageAccountNameNotDefined", resourceCulture);
             }
         }
         

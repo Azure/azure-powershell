@@ -75,12 +75,12 @@ namespace Microsoft.Azure.Commands.Compute
                 throw new ArgumentException(Microsoft.Azure.Commands.Compute.Properties.Resources.BothWindowsAndLinuxConfigurationsSpecified);
             }
 
-            if (this.VM.OSProfile.WindowsConfiguration.AdditionalUnattendContent == null)
+            if (this.VM.OSProfile.WindowsConfiguration.AdditionalUnattendContents == null)
             {
-                this.VM.OSProfile.WindowsConfiguration.AdditionalUnattendContent = new List<AdditionalUnattendContent> ();
+                this.VM.OSProfile.WindowsConfiguration.AdditionalUnattendContents = new List<AdditionalUnattendContent> ();
             }
 
-            this.VM.OSProfile.WindowsConfiguration.AdditionalUnattendContent.Add(
+            this.VM.OSProfile.WindowsConfiguration.AdditionalUnattendContents.Add(
                 new AdditionalUnattendContent
                 {
                     ComponentName = defaultComponentName,

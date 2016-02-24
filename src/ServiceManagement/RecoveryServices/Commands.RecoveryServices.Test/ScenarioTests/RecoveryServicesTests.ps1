@@ -1216,7 +1216,7 @@ function WaitForCanFailover
     $count = 20
 	do
 	{
-		Wait-Seconds 5
+		Start-Sleep 5
 		$pes = Get-AzureSiteRecoveryProtectionEntity -ProtectionContainerId $pcId;
 
         $count = $count -1;
@@ -1242,7 +1242,7 @@ function WaitForJobCompletion
 	$interval = 5;
 	do
 	{
-		Wait-Seconds $interval
+		Start-Sleep $interval
 		$timeElapse = $timeElapse + $interval
 		$job = Get-AzureSiteRecoveryJob -Id $JobId;
 	} while((-not ($endStateDescription -ccontains $job.State)) -and ($timeElapse -lt $NumOfSecondsToWait))

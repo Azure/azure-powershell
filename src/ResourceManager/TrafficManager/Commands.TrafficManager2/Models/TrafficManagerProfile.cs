@@ -21,8 +21,6 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
 
     public class TrafficManagerProfile
     {
-        public string Id { get; set; }
-
         public string Name { get; set; }
 
         public string ResourceGroupName { get; set; }
@@ -47,7 +45,6 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
         {
             var profile = new Profile
             {
-                Id = this.Id,
                 Name = this.Name,
                 Type = Constants.ProfileType,
                 Location = TrafficManagerClient.ProfileResourceLocation,

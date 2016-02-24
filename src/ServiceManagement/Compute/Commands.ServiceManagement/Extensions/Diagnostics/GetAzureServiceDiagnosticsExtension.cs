@@ -14,7 +14,6 @@
 
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Management.Compute;
 
@@ -41,19 +40,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             set;
         }
 
-        [Parameter(Position = 2, ValueFromPipelineByPropertyName = true, ParameterSetName = RemoveByRolesParameterSet, HelpMessage = ExtensionParameterPropertyHelper.RoleHelpMessage)]
-        public override string[] Role
-        {
-            get;
-            set;
-        }
-
         protected override void ValidateParameters()
         {
             base.ValidateParameters();
             ValidateService();
             ValidateDeployment();
-            ValidateRoles();
         }
 
         public void ExecuteCommand()
@@ -65,9 +56,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
                 () => this.ComputeClient.HostedServices.ListExtensions(this.ServiceName),
                 (s, r) =>
                 {
-                    // If Role is not specified, get extensions for all roles. Otherwise, filter on the given role array.
                     var extensionRoleList = (from dr in Deployment.Roles
-                                             where (Role == null || !Role.Any()) || Role.Contains(dr.RoleName)
                                              select new ExtensionRole(dr.RoleName)).ToList().Union(new ExtensionRole[] { new ExtensionRole() });
 
                     return from role in extensionRoleList
@@ -83,7 +72,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
                                ProviderNameSpace = extension.ProviderNamespace,
                                Id = extension.Id,
                                Role = role,
-                               StorageAccountName = GetPublicConfigValue(extension, DiagnosticsHelper.StorageAccountElemStr),
+                               StorageAccountName = GetPublicConfigValue(extension, StorageAccountElemStr),
                                WadCfg = GetPublicConfigValue(extension, WadCfgElemStr),
                                PublicConfiguration = GetPublicConfigValue(extension, "PublicConfig"),
                                Version = extension.Version

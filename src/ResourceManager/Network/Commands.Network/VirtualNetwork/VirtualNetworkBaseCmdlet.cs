@@ -55,9 +55,9 @@ namespace Microsoft.Azure.Commands.Network
             return true;
         }
 
-        public PSVirtualNetwork GetVirtualNetwork(string resourceGroupName, string name, string expandResource = null)
+        public PSVirtualNetwork GetVirtualNetwork(string resourceGroupName, string name)
         {
-            var vnet = this.VirtualNetworkClient.Get(resourceGroupName, name, expandResource);
+            var vnet = this.VirtualNetworkClient.Get(resourceGroupName, name);
 
             var psVirtualNetwork = Mapper.Map<PSVirtualNetwork>(vnet);
             psVirtualNetwork.ResourceGroupName = resourceGroupName;

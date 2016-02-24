@@ -17,7 +17,6 @@ using Microsoft.Azure.Commands.Sql.Replication.Model;
 using Microsoft.Azure.Commands.Sql.ReplicationLink.Services;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
 {
@@ -38,7 +37,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// </summary>
         /// <param name="subscription"></param>
         /// <returns>A replication Adapter object</returns>
-        protected override AzureSqlDatabaseReplicationAdapter InitModelAdapter(AzureSubscription subscription)
+        protected override AzureSqlDatabaseReplicationAdapter InitModelAdapter(Azure.Common.Authentication.Models.AzureSubscription subscription)
         {
             return new AzureSqlDatabaseReplicationAdapter(DefaultProfile.Context);
         }

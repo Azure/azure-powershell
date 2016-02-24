@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.DataLake.AnalyticsCatalog;
 using Microsoft.Azure.Management.DataLake.AnalyticsJob;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
 {
     using Microsoft.Azure;
+    using Microsoft.Azure.Common.Authentication;
     using Microsoft.Azure.Management.DataLake.Store;
     using Microsoft.Azure.Management.DataLake.Store.Models;
     using Microsoft.Azure.Management.Storage;
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
                 resourceManagementClient, dataLakeStoreManagementClient, storageManagementClient);
         }
 
-        protected void RunPowerShellTest(bool createWasbAccount, params string[] scripts)
+        protected void RunPowerShellTest(params string[] scripts)
         {
             using (UndoContext context = UndoContext.Current)
             {
@@ -102,15 +102,10 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
                 this.TryCreateResourceGroup(this.resourceGroupName, resourceGroupLocation);
                 this.TryCreateDataLakeStoreAccount(this.resourceGroupName, this.dataLakeStoreAccountName, resourceGroupLocation);
                 this.TryCreateDataLakeStoreAccount(this.resourceGroupName, this.secondDataLakeStoreAccountName, resourceGroupLocation);
-                if (createWasbAccount)
-                {
-                    string storageSuffix;
-                    this.azureBlobStoreAccessKey = this.TryCreateStorageAccount(this.resourceGroupName,
-                        this.azureBlobStoreName,
-                        "DataLakeAnalyticsTestStorage", "DataLakeAnalyticsTestStorageDescription", resourceGroupLocation,
-                        out storageSuffix);
-                }
-
+                string storageSuffix;
+                this.azureBlobStoreAccessKey = this.TryCreateStorageAccount(this.resourceGroupName, this.azureBlobStoreName,
+                    "DataLakeAnalyticsTestStorage", "DataLakeAnalyticsTestStorageDescription", resourceGroupLocation,
+                    out storageSuffix);
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
                 helper.SetupModules(AzureModule.AzureResourceManager, "ScenarioTests\\" + this.GetType().Name + ".ps1",
                     helper.RMProfileModule, helper.GetRMModulePath(@"AzureRM.DataLakeAnalytics.psd1"));

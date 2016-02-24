@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Commands.Resources
                 RoleDefinitionId = RoleDefinitionId == Guid.Empty ? null : RoleDefinitionId.ToString(),
                 ADObjectFilter = new ADObjectFilterOptions
                 {
-                    UPN = SignInName,
+                    SignInName = SignInName,
                     SPN = ServicePrincipalName,
                     Id = ObjectId == Guid.Empty ? null : ObjectId.ToString(),
                 },

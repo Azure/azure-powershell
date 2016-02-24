@@ -94,11 +94,6 @@ namespace Microsoft.Azure.Commands.RedisCache
                 skuFamily = Size.Substring(0, 1);
                 int.TryParse(Size.Substring(1), out skuCapacity);
             }
-
-            if (!ShardCount.HasValue && response.Resource.Properties.ShardCount.HasValue)
-            {
-                ShardCount = response.Resource.Properties.ShardCount;
-            }
             
             
             WriteObject(new RedisCacheAttributesWithAccessKeys(

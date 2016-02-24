@@ -38,6 +38,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetCertificateByThumbprint()
         {
             BatchController controller = BatchController.NewInstance;
@@ -59,6 +60,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListCertificatesByFilter()
         {
             BatchController controller = BatchController.NewInstance;
@@ -112,6 +114,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListCertificatesWithMaxCount()
         {
             BatchController controller = BatchController.NewInstance;
@@ -137,6 +140,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListAllCertificates()
         {
             BatchController controller = BatchController.NewInstance;
@@ -181,6 +185,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCancelCertificateDelete()
         {
             BatchController controller = BatchController.NewInstance;

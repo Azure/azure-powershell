@@ -19,8 +19,6 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
 {
     public class PSADApplication
     {
-        public string DisplayName { get; set; }
-
         public string Type { get; set; }
 
         public Guid ApplicationId { get; set; }
@@ -30,9 +28,5 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
         public bool AvailableToOtherTenants { get; set; }
 
         public IList<string> AppPermissions { get; set; }
-
-        public IList<string> IdentifierUris { get; set; }
-
-        public IList<string> ReplyUrls { get; set; }
     }
 }

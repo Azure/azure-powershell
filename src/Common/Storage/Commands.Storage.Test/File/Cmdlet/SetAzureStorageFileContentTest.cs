@@ -15,16 +15,12 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Commands.Storage.File;
 using Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet;
 using Microsoft.WindowsAzure.Management.Storage.Test.Common;
-using Microsoft.WindowsAzure.Storage.DataMovement;
-using Microsoft.WindowsAzure.Storage.File;
-using PSHFile = Microsoft.WindowsAzure.Commands.Storage.File;
 
 namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
 {
@@ -59,7 +55,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
                 this.sourceFilePath,
                 "remoteFile",
                 () => this.CmdletInstance.RunCmdlet(
-                    PSHFile.Constants.ShareNameParameterSetName,
+                    Constants.ShareNameParameterSetName,
                     new KeyValuePair<string, object>("ShareName", "share"),
                     new KeyValuePair<string, object>("Source", this.sourceFilePath),
                     new KeyValuePair<string, object>("Path", "remoteFile")));
@@ -73,7 +69,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
                 this.sourceFilePath,
                 "remoteFile",
                 () => this.CmdletInstance.RunCmdlet(
-                    PSHFile.Constants.ShareParameterSetName,
+                    Constants.ShareParameterSetName,
                     new KeyValuePair<string, object>("Share", this.MockChannel.GetShareReference("share")),
                     new KeyValuePair<string, object>("Source", this.sourceFilePath),
                     new KeyValuePair<string, object>("Path", "remoteFile")));
@@ -87,7 +83,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
                 this.sourceFilePath,
                 "remoteFile",
                 () => this.CmdletInstance.RunCmdlet(
-                    PSHFile.Constants.DirectoryParameterSetName,
+                    Constants.DirectoryParameterSetName,
                     new KeyValuePair<string, object>("Directory", this.MockChannel.GetShareReference("share").GetRootDirectoryReference()),
                     new KeyValuePair<string, object>("Source", this.sourceFilePath),
                     new KeyValuePair<string, object>("Path", "remoteFile")));
@@ -103,7 +99,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
                 this.sourceFilePath,
                 Path.GetFileName(this.sourceFilePath),
                 () => this.CmdletInstance.RunCmdlet(
-                    PSHFile.Constants.DirectoryParameterSetName,
+                    Constants.DirectoryParameterSetName,
                     new KeyValuePair<string, object>("Directory", this.MockChannel.GetShareReference("share").GetRootDirectoryReference().GetDirectoryReference("dir")),
                     new KeyValuePair<string, object>("Source", this.sourceFilePath)));
         }
@@ -118,7 +114,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
                 this.sourceFilePath,
                 Path.GetFileName(this.sourceFilePath),
                 () => this.CmdletInstance.RunCmdlet(
-                    PSHFile.Constants.ShareParameterSetName,
+                    Constants.ShareParameterSetName,
                     new KeyValuePair<string, object>("Share", this.MockChannel.GetShareReference("share")),
                     new KeyValuePair<string, object>("Source", this.sourceFilePath)));
         }
@@ -133,43 +129,29 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
                 this.sourceFilePath,
                 Path.GetFileName(this.sourceFilePath),
                 () => this.CmdletInstance.RunCmdlet(
-                    PSHFile.Constants.ShareNameParameterSetName,
+                    Constants.ShareNameParameterSetName,
                     new KeyValuePair<string, object>("ShareName", "share"),
                     new KeyValuePair<string, object>("Source", this.sourceFilePath)));
         }
 
         private void UploadFileInternal(string shareName, string sourceFilePath, string destinationFileName, Action uploadFileAction)
         {
-            var mockupTransferManager = new UploadTransferManager(
-                (sourcePath, destFile) =>
+            var mockupRunner = new MockTransferJobRunner(
+                job =>
                 {
-                    Assert.AreEqual(destinationFileName, destFile.Name, "Destination file name validation failed.");
-                    Assert.AreEqual(shareName, destFile.Share.Name, "Share validation failed.");
-                    Assert.AreEqual(sourceFilePath, sourcePath, "Source file validation failed.");
+                    Assert.AreEqual(destinationFileName, job.Destination.AzureFile.Name, "Destination file name validation failed.");
+                    Assert.AreEqual(shareName, job.Destination.AzureFile.Share.Name, "Share validation failed.");
+                    Assert.AreEqual(sourceFilePath, job.Source.FilePath, "Source file validation failed.");
+                    return TaskEx.FromResult(true);
                 });
 
-            TransferManagerFactory.SetCachedTransferManager(mockupTransferManager);
+            TransferJobRunnerFactory.SetCachedRunner(mockupRunner);
 
             uploadFileAction();
 
-            mockupTransferManager.ThrowAssertExceptionIfAvailable();
+            mockupRunner.ThrowAssertExceptionIfAvailable();
             this.MockCmdRunTime.OutputPipeline.AssertNoObject();
             this.MockCmdRunTime.ErrorStream.AssertNoObject();
-        }
-
-        private sealed class UploadTransferManager : MockTransferManager
-        {
-            private Action<string, CloudFile> validateAction;
-            public UploadTransferManager(Action<string, CloudFile> validate)
-            {
-                validateAction = validate;
-            }
-
-            public override Task UploadAsync(string sourcePath, CloudFile destFile, UploadOptions options, TransferContext context, CancellationToken cancellationToken)
-            {
-                validateAction(sourcePath, destFile);
-                return TaskEx.FromResult(true);
-            }
         }
     }
 }

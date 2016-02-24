@@ -19,7 +19,6 @@ using Microsoft.WindowsAzure.Storage.File;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
-    using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Storage.DataMovement;
     using LocalConstants = Microsoft.WindowsAzure.Commands.Storage.File.Constants;
     using LocalDirectory = System.IO.Directory;
@@ -152,25 +151,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
             this.RunTask(async taskId =>
             {
-                await fileToBeDownloaded.FetchAttributesAsync(null, this.RequestOptions, OperationContext, CmdletCancellationToken);
+                var downloadJob = new TransferJob(
+                    new TransferLocation(fileToBeDownloaded),
+                    new TransferLocation(targetFile),
+                    TransferMethod.SyncCopy);
 
                 var progressRecord = new ProgressRecord(
                     this.OutputStream.GetProgressId(taskId),
                     string.Format(CultureInfo.CurrentCulture, Resources.ReceiveAzureFileActivity, fileToBeDownloaded.GetFullPath(), targetFile),
                     Resources.PrepareDownloadingFile);
 
-                await DataMovementTransferHelper.DoTransfer(() =>
-                    {
-                        return this.TransferManager.DownloadAsync(
-                            fileToBeDownloaded,
-                            targetFile,
-                            null,
-                            this.GetTransferContext(progressRecord, fileToBeDownloaded.Properties.Length),
-                            CmdletCancellationToken);
-                    }, 
-                    progressRecord,
-                    this.OutputStream);
-                
+                await this.RunTransferJob(downloadJob, progressRecord);
+
                 if (this.PassThru)
                 {
                     this.OutputStream.WriteObject(taskId, fileToBeDownloaded);

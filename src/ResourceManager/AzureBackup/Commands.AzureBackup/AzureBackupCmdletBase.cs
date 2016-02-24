@@ -16,18 +16,19 @@ using Hyak.Common;
 using Microsoft.Azure.Commands.AzureBackup.ClientAdapter;
 using Microsoft.Azure.Commands.AzureBackup.Models;
 using Microsoft.Azure.Commands.AzureBackup.Properties;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.BackupServices;
 using Microsoft.Azure.Management.BackupServices.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Scheduler;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Net;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using System.Threading;
 using CmdletModel = Microsoft.Azure.Commands.AzureBackup.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -172,7 +173,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     WriteDebug(String.Format(Resources.OperationStatus, response.Status));
                     break;
                 }
-                TestMockSupport.Delay(checkFrequency);
+
+                Thread.Sleep(checkFrequency);
             }
 
             return response;

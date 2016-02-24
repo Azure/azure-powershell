@@ -12,9 +12,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-
 namespace Microsoft.Azure.Commands.ApiManagement
 {
     using System;
@@ -22,9 +19,11 @@ namespace Microsoft.Azure.Commands.ApiManagement
     using System.IO;
     using System.Linq;
     using AutoMapper;
-    using Models;
-    using Management.ApiManagement;
-    using Management.ApiManagement.Models;
+    using Microsoft.Azure.Commands.ApiManagement.Models;
+    using Microsoft.Azure.Common.Authentication;
+    using Microsoft.Azure.Common.Authentication.Models;
+    using Microsoft.Azure.Management.ApiManagement;
+    using Microsoft.Azure.Management.ApiManagement.Models;
 
     public class ApiManagementClient
     {

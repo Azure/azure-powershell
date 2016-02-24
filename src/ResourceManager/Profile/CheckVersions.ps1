@@ -8,6 +8,7 @@ $AzureRMModules = @(
   "AzureRM.Dns";
   "AzureRM.HDInsight";
   "AzureRM.Intune";
+  "AzureRM.Insights";
   "AzureRM.KeyVault";
   "AzureRM.Network";
   "AzureRM.OperationalInsights";

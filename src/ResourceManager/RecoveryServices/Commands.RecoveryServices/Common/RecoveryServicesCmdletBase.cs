@@ -19,8 +19,6 @@ using System.Xml;
 using Hyak.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Newtonsoft.Json;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -70,46 +68,36 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             CloudException cloudException = ex as CloudException;
             if (cloudException != null)
             {
-                ARMError error = null;
+                Error error = null;
                 try
                 {
-                    if (cloudException.Message != null)
+                    using (Stream stream = new MemoryStream())
                     {
-                        string originalMessage = cloudException.Error.OriginalMessage;
-                        error = JsonConvert.DeserializeObject<ARMError>(originalMessage);
-
-                        StringBuilder exceptionMessage = new StringBuilder();
-                        exceptionMessage.Append(Properties.Resources.CloudExceptionDetails);
-
-                        if (error.Error.Details != null)
+                        if (cloudException.Message != null)
                         {
-                            foreach (ARMExceptionDetails detail in error.Error.Details)
-                            {
-                                if (!string.IsNullOrEmpty(detail.ErrorCode))
-                                    exceptionMessage.AppendLine("ErrorCode: " + detail.ErrorCode);
-                                if (!string.IsNullOrEmpty(detail.Message))
-                                    exceptionMessage.AppendLine("Message: " + detail.Message);
+                            byte[] data = System.Text.Encoding.UTF8.GetBytes(cloudException.Message);
+                            stream.Write(data, 0, data.Length);
+                            stream.Position = 0;
 
-                                exceptionMessage.AppendLine();
-                            }
+                            var deserializer = new DataContractSerializer(typeof(ErrorInException));
+                            error = (Error)deserializer.ReadObject(stream);
+
+                            throw new InvalidOperationException(
+                                string.Format(
+                                Properties.Resources.CloudExceptionDetails,
+                                error.Message,
+                                error.PossibleCauses,
+                                error.RecommendedAction,
+                                error.ClientRequestId));
                         }
                         else
                         {
-                            if (!string.IsNullOrEmpty(error.Error.ErrorCode))
-                                exceptionMessage.AppendLine("ErrorCode: " + error.Error.ErrorCode);
-                            if (!string.IsNullOrEmpty(error.Error.Message))
-                                exceptionMessage.AppendLine("Message: " + error.Error.Message);
+                            throw new Exception(
+                                string.Format(
+                                Properties.Resources.InvalidCloudExceptionErrorMessage,
+                                clientRequestIdMsg + ex.Message),
+                                ex);
                         }
-
-                        throw new InvalidOperationException(exceptionMessage.ToString());
-                    }
-                    else
-                    {
-                        throw new Exception(
-                            string.Format(
-                            Properties.Resources.InvalidCloudExceptionErrorMessage,
-                            clientRequestIdMsg + ex.Message),
-                            ex);
                     }
                 }
                 catch (XmlException)

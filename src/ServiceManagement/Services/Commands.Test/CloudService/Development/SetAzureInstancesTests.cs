@@ -23,7 +23,6 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common.XmlSchema.ServiceConfigur
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests.Cmdlet
 {
@@ -239,53 +238,54 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests.Cm
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureServiceProjectRoleWithoutPassingRoleName()
         {
-            TestMockSupport.TestExecutionFolder = AppDomain.CurrentDomain.BaseDirectory;
+            string originalDirectory = Directory.GetCurrentDirectory();
             string serviceName = "AzureService1";
-            if (Directory.Exists(Path.Combine(TestMockSupport.TestExecutionFolder,serviceName)))
+            if (Directory.Exists(serviceName))
             {
-                Directory.Delete(Path.Combine(TestMockSupport.TestExecutionFolder, serviceName), true);
+                Directory.Delete(serviceName, true);
             }
-            CloudServiceProject service = new CloudServiceProject(TestMockSupport.TestExecutionFolder, serviceName, null);
+            CloudServiceProject service = new CloudServiceProject(Directory.GetCurrentDirectory(), serviceName, null);
             service.AddWebRole(Test.Utilities.Common.Data.NodeWebRoleScaffoldingPath);
-            TestMockSupport.TestExecutionFolder = Path.Combine(service.Paths.RootPath, "WebRole1");
+            Directory.SetCurrentDirectory(Path.Combine(service.Paths.RootPath, "WebRole1"));
             cmdlet.RoleName = string.Empty;
             cmdlet.ExecuteCmdlet();
             service = new CloudServiceProject(service.Paths.RootPath, null);
 
             Assert.Equal<string>("WebRole1", cmdlet.RoleName);
+            Directory.SetCurrentDirectory(originalDirectory);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureServiceProjectRoleInDeepDirectory()
         {
-            TestMockSupport.TestExecutionFolder = AppDomain.CurrentDomain.BaseDirectory;
+            string originalDirectory = Directory.GetCurrentDirectory();
             string serviceName = "AzureService2";
-            if (Directory.Exists(Path.Combine(TestMockSupport.TestExecutionFolder, serviceName)))
+            if (Directory.Exists(serviceName))
             {
-                Directory.Delete(Path.Combine(TestMockSupport.TestExecutionFolder, serviceName), true);
+                Directory.Delete(serviceName, true);
             }
-            CloudServiceProject service = new CloudServiceProject(TestMockSupport.TestExecutionFolder, serviceName, null);
+            CloudServiceProject service = new CloudServiceProject(Directory.GetCurrentDirectory(), serviceName, null);
             service.AddWebRole(Test.Utilities.Common.Data.NodeWebRoleScaffoldingPath);
-            TestMockSupport.TestExecutionFolder = Path.Combine(service.Paths.RootPath, "WebRole1", "bin");
+            Directory.SetCurrentDirectory(Path.Combine(service.Paths.RootPath, "WebRole1", "bin"));
             cmdlet.RoleName = string.Empty;
             cmdlet.ExecuteCmdlet();
             service = new CloudServiceProject(service.Paths.RootPath, null);
 
             Assert.Equal<string>("WebRole1", cmdlet.RoleName);
+            Directory.SetCurrentDirectory(originalDirectory);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureServiceProjectRoleInServiecRootDirectoryFail()
         {
-            TestMockSupport.TestExecutionFolder = AppDomain.CurrentDomain.BaseDirectory;
             string serviceName = "AzureService3";
-            if (Directory.Exists(Path.Combine(TestMockSupport.TestExecutionFolder, serviceName)))
+            if (Directory.Exists(serviceName))
             {
-                Directory.Delete(Path.Combine(TestMockSupport.TestExecutionFolder, serviceName), true);
+                Directory.Delete(serviceName, true);
             }
-            CloudServiceProject service = new CloudServiceProject(TestMockSupport.TestExecutionFolder, serviceName, null);
+            CloudServiceProject service = new CloudServiceProject(Directory.GetCurrentDirectory(), serviceName, null);
             service.AddWebRole(Test.Utilities.Common.Data.NodeWebRoleScaffoldingPath);
             cmdlet.RoleName = string.Empty;
             Testing.AssertThrows<InvalidOperationException>(() => cmdlet.ExecuteCmdlet(), Resources.CannotFindServiceRoot);

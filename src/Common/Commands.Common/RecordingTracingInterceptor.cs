@@ -18,9 +18,8 @@ using System.Collections.Generic;
 using System.Net.Http;
 using Hyak.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Commands.Common;
 
-namespace Microsoft.Azure.ServiceManagemenet.Common.Models
+namespace Microsoft.Azure.Common.Authentication.Models
 {
     public class RecordingTracingInterceptor : Hyak.Common.ICloudTracingInterceptor
     {
@@ -35,17 +34,17 @@ namespace Microsoft.Azure.ServiceManagemenet.Common.Models
         {
             if (arguments == null || arguments.Length == 0)
             {
-                MessageQueue.CheckAndEnqueue(message);
+                MessageQueue.Enqueue(message);
             }
             else
             {
-                MessageQueue.CheckAndEnqueue(string.Format(message, arguments));
+                MessageQueue.Enqueue(string.Format(message, arguments));
             }
         }
 
         public void Information(string message)
         {
-            MessageQueue.CheckAndEnqueue(message);
+            MessageQueue.Enqueue(message);
         }
 
         public void Configuration(string source, string name, string value)

@@ -25,7 +25,6 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet(
         VerbsCommon.Set,
         ProfileNouns.VirtualMachineBgInfoExtension)]
-    [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureVMBGInfoExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(
@@ -92,19 +91,20 @@ namespace Microsoft.Azure.Commands.Compute
                 var parameters = new VirtualMachineExtension
                 {
                     Location = this.Location,
+                    Name = this.Name ?? VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
+                    Type = VirtualMachineExtensionType,
                     Publisher = VirtualMachineBGInfoExtensionContext.ExtensionDefaultPublisher,
-                    VirtualMachineExtensionType = VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
+                    ExtensionType = VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
                     TypeHandlerVersion = this.TypeHandlerVersion ?? VirtualMachineBGInfoExtensionContext.ExtensionDefaultVersion,
                     AutoUpgradeMinorVersion = !DisableAutoUpgradeMinorVersion.IsPresent
                 };
 
-                var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
+                var op = this.VirtualMachineExtensionClient.CreateOrUpdate(
                     this.ResourceGroupName,
                     this.VMName,
-                    this.Name ?? VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
-                    parameters).GetAwaiter().GetResult();
+                    parameters);
 
-                var result = Mapper.Map<PSAzureOperationResponse>(op);
+                var result = Mapper.Map<PSComputeLongRunningOperation>(op);
                 WriteObject(result);
             });
         }

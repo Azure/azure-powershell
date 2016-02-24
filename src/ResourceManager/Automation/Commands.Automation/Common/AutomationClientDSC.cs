@@ -300,29 +300,6 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
             }
         }
 
-        public void DeleteConfiguration(string resourceGroupName, string automationAccountName, string name)
-        {
-            Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
-            Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
-            using (var request = new RequestSettings(this.automationManagementClient))
-            {
-                try
-                {
-                    this.automationManagementClient.Configurations.Delete(resourceGroupName, automationAccountName, name);
-                }
-                catch (CloudException cloudException)
-                {
-                    if (cloudException.Response.StatusCode == HttpStatusCode.NoContent)
-                    {
-                        throw new ResourceNotFoundException(
-                            typeof(Model.DscConfiguration),
-                            string.Format(CultureInfo.CurrentCulture, Resources.ConfigurationNotFound, name));
-                    }
-                    throw;
-                }
-            }
-        }
-
     #endregion
 
         #region DscMetaConfig Operations
@@ -591,7 +568,7 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
 
                 IEnumerable<AutomationManagement.Models.DscNode> dscNodes;
 
-                if (!string.IsNullOrEmpty(status))
+                if (!String.IsNullOrEmpty(status))
                 {
                     dscNodes = AutomationManagementClient.ContinuationTokenHandler(
                         skipToken =>
@@ -750,7 +727,7 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
                         automationAccountName,
                         new DscNodePatchParameters
                             {
-                                NodeId = nodeId,
+                                Id = nodeId,
                                 NodeConfiguration = nodeConfiguration
                             }).Node;
 
@@ -1282,48 +1259,6 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
 
 
                 return new Model.NodeConfiguration(resourceGroupName, automationAccountName, nodeConfiguration, null);
-            }
-        }
-
-        public void DeleteNodeConfiguration(string resourceGroupName, string automationAccountName, string name, bool ignoreNodeMappings)
-        {
-            Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
-            Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
-            Requires.Argument("NodeConfigurationName", name).NotNull();
-
-            using (var request = new RequestSettings(this.automationManagementClient))
-            {
-                try
-                {
-                    if (ignoreNodeMappings)
-                    {
-                        this.automationManagementClient.NodeConfigurations.Delete(resourceGroupName, automationAccountName, name);
-                    }
-                    else
-                    {
-                        var nodeList = this.ListDscNodesByNodeConfiguration(resourceGroupName, automationAccountName, name, null);
-                        if (nodeList.Any())
-                        {
-                            throw new ResourceCommonException(
-                                typeof (Model.NodeConfiguration),
-                                string.Format(CultureInfo.CurrentCulture, Resources.CannotDeleteNodeConfiguration, name));
-                        }
-                        else
-                        {
-                            this.automationManagementClient.NodeConfigurations.Delete(resourceGroupName, automationAccountName, name);
-                        }
-                    }
-                }
-                catch (CloudException cloudException)
-                {
-                    if (cloudException.Response.StatusCode == HttpStatusCode.NotFound)
-                    {
-                        throw new ResourceNotFoundException(
-                            typeof(Model.NodeConfiguration), 
-                            string.Format(CultureInfo.CurrentCulture, Resources.NodeConfigurationNotFound, name));
-                    }
-                    throw;
-                }
             }
         }
 

@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
                 }
             }
 
-            string propertiesToExpand = "inputs,transformation,outputs,functions";
+            string propertiesToExpand = "inputs,transformation,outputs";
             if (NoExpand.IsPresent)
             {
                 propertiesToExpand = string.Empty;

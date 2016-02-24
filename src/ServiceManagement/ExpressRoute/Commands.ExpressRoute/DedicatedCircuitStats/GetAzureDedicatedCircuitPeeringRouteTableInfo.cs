@@ -20,8 +20,6 @@ using System;
 
 namespace Microsoft.WindowsAzure.Commands.ExpressRoute
 {
-    using System.Text;
-
     [Cmdlet(VerbsCommon.Get, "AzureDedicatedCircuitPeeringRouteTableInfo"), OutputType(typeof(AzureDedicatedCircuitPeeringRouteTableInfo), typeof(IEnumerable<AzureDedicatedCircuitPeeringRouteTableInfo>))]
     public class GetAzureDedicatedCircuitPeeringRouteTableInfoCommand : ExpressRouteBaseCmdlet
     {
@@ -35,15 +33,12 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Device Path: Primary or Secondary")]
-        public DevicePath Path { get; set; }
+        public DevicePath BgpPeeringDevicePath { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            var routeTable = ExpressRouteClient.GetAzureDedicatedCircuitPeeringRouteTableInfo(ServiceKey, AccessType, Path);
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine("");
-            sb.AppendLine("Route Table Info:");
-            WriteObject(CommonParser.parseResult(routeTable, sb));
+            var arpInfo = ExpressRouteClient.GetAzureDedicatedCircuitPeeringRouteTableInfo(ServiceKey, AccessType, BgpPeeringDevicePath);
+            WriteObject(arpInfo);
         }
     }
     

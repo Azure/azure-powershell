@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
         Mandatory = true,
         HelpMessage = "The type of rule")]
-        [ValidateSet("Basic", "PathBasedRouting", IgnoreCase = true)]
+        [ValidateSet("Basic", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string RuleType { get; set; }
 
@@ -69,18 +69,6 @@ namespace Microsoft.Azure.Commands.Network
                 HelpMessage = "Application gateway BackendAddressPool")]
         [ValidateNotNullOrEmpty]
         public PSApplicationGatewayBackendAddressPool BackendAddressPool { get; set; }
-
-        [Parameter(
-                ParameterSetName = "SetByResourceId",
-                HelpMessage = "ID of the application gateway UrlPathMap")]
-        [ValidateNotNullOrEmpty]
-        public string UrlPathMapId { get; set; }
-
-        [Parameter(
-                ParameterSetName = "SetByResource",
-                HelpMessage = "Application gateway UrlPathMap")]
-        [ValidateNotNullOrEmpty]
-        public PSApplicationGatewayUrlPathMap UrlPathMap { get; set; }
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -98,10 +86,6 @@ namespace Microsoft.Azure.Commands.Network
                 if (HttpListener != null)
                 {
                     this.HttpListenerId = this.HttpListener.Id;
-                }
-                if (UrlPathMap != null)
-                {
-                    this.UrlPathMapId = this.UrlPathMap.Id;
                 }
             }
         }
@@ -127,11 +111,6 @@ namespace Microsoft.Azure.Commands.Network
             {
                 requestRoutingRule.BackendAddressPool = new PSResourceId();
                 requestRoutingRule.BackendAddressPool.Id = this.BackendAddressPoolId;
-            }
-            if (!string.IsNullOrEmpty(this.UrlPathMapId))
-            {
-                requestRoutingRule.UrlPathMap = new PSResourceId();
-                requestRoutingRule.UrlPathMap.Id = this.UrlPathMapId;
             }
 
             requestRoutingRule.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
