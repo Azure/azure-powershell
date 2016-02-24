@@ -12,19 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Resources.Test.ScenarioTests;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Xunit;
-
-namespace Microsoft.Azure.Commands.Profile.Test
+namespace Microsoft.Azure.Commands.Compute
 {
-    public class ProfileModuleTests
+    public class AzureSLA
     {
-        [Fact(Skip="Removed flaky test from CI.")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void WarningOnIncompatibleVersions()
-        {
-            ProfileController.NewInstance.RunPsTest("db1ab6f0-4769-4b27-930e-01e2ef9c123c", "Test-LoadProfileModule");
-        }
+        public bool HasSLA { get; internal set; }
+        public string IOPS { get; internal set; }
+        public string TP { get; internal set; }
     }
 }

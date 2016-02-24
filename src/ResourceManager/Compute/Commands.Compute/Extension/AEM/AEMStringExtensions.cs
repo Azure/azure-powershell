@@ -12,19 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Resources.Test.ScenarioTests;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Xunit;
+using System.Text.RegularExpressions;
 
-namespace Microsoft.Azure.Commands.Profile.Test
+namespace Microsoft.Azure.Commands.Compute.Extension.AEM
 {
-    public class ProfileModuleTests
+    internal static class AEMStringExtensions
     {
-        [Fact(Skip="Removed flaky test from CI.")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void WarningOnIncompatibleVersions()
+        public static Match Match(this string text, string pattern)
         {
-            ProfileController.NewInstance.RunPsTest("db1ab6f0-4769-4b27-930e-01e2ef9c123c", "Test-LoadProfileModule");
+            return Regex.Match(text, pattern);
+        }
+
+        public static Match Match(this char text, string pattern)
+        {
+            return Regex.Match(text.ToString(), pattern);
+        }
+
+        public static bool Matches(this char text, string pattern)
+        {
+            return Regex.Match(text.ToString(), pattern).Success;
         }
     }
 }
