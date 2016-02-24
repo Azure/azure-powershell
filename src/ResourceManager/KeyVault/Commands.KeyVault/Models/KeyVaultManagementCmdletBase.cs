@@ -17,27 +17,25 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 using Microsoft.Azure.Commands.Tags.Model;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Management.KeyVault;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using PSKeyVaultModels = Microsoft.Azure.Commands.KeyVault.Models;
 using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
+using Microsoft.Azure.ActiveDirectory.GraphClient;
+using System.Threading.Tasks;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
     public class KeyVaultManagementCmdletBase : AzureRMCmdlet
     {
-        public KeyVaultManagementCmdletBase()
-        {
-
-        }
 
         private PSKeyVaultModels.VaultManagementClient _keyVaultManagementClient;
+        private DataServiceCredential _dataServiceCredential;
         public PSKeyVaultModels.VaultManagementClient KeyVaultManagementClient
         {
             get
@@ -60,7 +58,10 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 if (_activeDirectoryClient == null)
                 {
-                    _activeDirectoryClient = new ActiveDirectoryClient(DefaultContext);
+                    _dataServiceCredential = new DataServiceCredential(AzureSession.AuthenticationFactory, DefaultProfile.Context, AzureEnvironment.Endpoint.Graph);
+                    _activeDirectoryClient = new ActiveDirectoryClient(new Uri(string.Format("{0}/{1}",
+                        DefaultProfile.Context.Environment.Endpoints[AzureEnvironment.Endpoint.Graph], _dataServiceCredential.TenantId)),
+                        () => Task.FromResult(_dataServiceCredential.AccessToken));
                 }
                 return this._activeDirectoryClient;
             }
@@ -177,45 +178,48 @@ namespace Microsoft.Azure.Commands.KeyVault
                 throw new InvalidOperationException(PSKeyVaultProperties.Resources.NoDefaultUserAccount);
 
 
-            try
-            {
-                return GetObjectId(
+            return GetObjectId(
                     upn: DefaultContext.Account.Id,
                     objectId: Guid.Empty,
                     spn: null
-                );
-            }
-            catch
-            {
-                throw new InvalidOperationException(string.Format(PSKeyVaultProperties.Resources.ADObjectNotFound, DefaultContext.Subscription.Account, ActiveDirectoryClient.GraphClient.TenantID));
-            }
+                    );
         }
 
         protected Guid GetObjectId(Guid objectId, string upn, string spn)
         {
-            var filter = new ADObjectFilterOptions()
-                {
-                    Id = (objectId != Guid.Empty) ? objectId.ToString() : null,
-                    UPN = upn,
-                    SPN = spn,                    
-                    Paging = true,
-                };
+            Guid objId = Guid.Empty;
+            string objectFilter = objectId.ToString();
 
-            var obj = ActiveDirectoryClient.GetADObject(filter);
-
-            if (obj == null && !string.IsNullOrWhiteSpace(upn))
+            if (!string.IsNullOrWhiteSpace(upn))
             {
-                filter = new ADObjectFilterOptions()
-                {
-                    Mail = upn,
-                    Paging = true,
-                };
-                obj = ActiveDirectoryClient.GetADObject(filter);
+                objectFilter = upn;
+                var user = ActiveDirectoryClient.Users.Where(u =>
+                        u.UserPrincipalName.Equals(upn) || u.Mail.Equals(upn) || u.OtherMails.Any(m => m.Equals(upn))).
+                        ExecuteAsync().GetAwaiter().GetResult().CurrentPage.FirstOrDefault();
+                if (user != null)
+                    objId = Guid.Parse(user.ObjectId);
+            }
+            else if(!string.IsNullOrWhiteSpace(spn))
+            {
+                objectFilter = spn;
+                var servicePrincipal = ActiveDirectoryClient.ServicePrincipals.Where(s =>
+                    s.ServicePrincipalNames.Any(n => n.Equals(spn)))
+                    .ExecuteAsync().GetAwaiter().GetResult().CurrentPage.FirstOrDefault();
+                if(servicePrincipal != null)
+                    objId = Guid.Parse(servicePrincipal.ObjectId);
+            }
+            else if(objectId != Guid.Empty)
+            {
+                var objectCollection = ActiveDirectoryClient.GetObjectsByObjectIdsAsync(new []{objectId.ToString()}, new string[] {}).GetAwaiter().GetResult();
+                if(objectCollection.Any())
+                    objId = objectId;
             }
 
-            if (obj != null)
-                return obj.Id;
-            throw new ArgumentException(string.Format(PSKeyVaultProperties.Resources.ADObjectNotFound, filter.ActiveFilter, ActiveDirectoryClient.GraphClient.TenantID));
+            if (objId != Guid.Empty)
+                return objId;
+
+            throw new ArgumentException(string.Format(PSKeyVaultProperties.Resources.ADObjectNotFound, objectFilter, 
+                (_dataServiceCredential != null)? _dataServiceCredential.TenantId : string.Empty));
         }
 
         protected readonly string[] DefaultPermissionsToKeys =

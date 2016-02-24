@@ -473,14 +473,32 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
     <value>No diagnostics extension found under resource group '{0}', virtual machine '{1}'.</value>
     <comment>{0} = resource group name, {1} = virtual machine name</comment>
   </data>
-  <data name="DiagnosticsExtensionFailedToListKeyForNoStorageAccount" xml:space="preserve">
-    <value>Failed to list storage account key. Can't find storage account "{0}" under current subscription.</value>
-    <comment>{0} = storage account name</comment>
+  <data name="DiagnosticsExtensionNullStorageAccountKey" xml:space="preserve">
+    <value>Storage account key is not specified or can not be retrieved automatically.</value>
   </data>
-  <data name="DiagnosticsExtensionStorageAccountNameNotDefined" xml:space="preserve">
+  <data name="DiagnosticsExtensionNullStorageAccountName" xml:space="preserve">
     <value>Storage account name is not defined.</value>
   </data>
-  <data name="DiagnosticsExtensionStorageAccountEndpointNotDefined" xml:space="preserve">
-    <value>Storage account endpoint is not defined.</value>
+  <data name="DiagnosticsExtensionNullStorageAccountEndpoint" xml:space="preserve">
+    <value>Storage account endpoint is not defined or can not be retrieved automatically..</value>
+  </data>
+  <data name="DiagnosticsExtensionIaaSConfigElementNotDefined" xml:space="preserve">
+    <value>No WadCfg, WadCfgBlob or xmlCfg element defined in the configuration file.</value>
+  </data>
+  <data name="DiagnosticsExtensionInvalidConfigFileFormat" xml:space="preserve">
+    <value>Invalid diagnostics configuration file. It should be in Invalid diagnostics configuration file. It should be in either xml or json format.either xml or json format.</value>
+  </data>
+  <data name="DiagnosticsExtensionXmlConfigNoWadCfgEndTag" xml:space="preserve">
+    <value>Cannot find the WadCfg end element in the config.</value>
+  </data>
+  <data name="DiagnosticsExtensionXmlConfigNoWadCfgStartTag" xml:space="preserve">
+    <value>Cannot find the WadCfg element in the config.</value>
+  </data>
+  <data name="DiagnosticsExtensionXmlConfigWadCfgTagNotMatch" xml:space="preserve">
+    <value>WadCfg start element in the config is not matching the end element.</value>
+  </data>
+  <data name="AEMExtensionNotFound" xml:space="preserve">
+    <value>No Azure Enhanced Monitoring extension found under resource group '{0}', virtual machine '{1}'.</value>
+    <comment>{0} = resource group name, {1} = virtual machine name</comment>
   </data>
 </root>

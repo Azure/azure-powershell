@@ -14,7 +14,7 @@
 
 using AutoMapper;
 using Hyak.Common;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;

@@ -13,26 +13,36 @@
 // ----------------------------------------------------------------------------------
 
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
 using System;
 using System.Threading.Tasks;
 using System.Linq;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     internal class DataServiceCredential
     {
-        public DataServiceCredential(IAuthenticationFactory authFactory, AzureContext context)
+        public DataServiceCredential(IAuthenticationFactory authFactory, AzureContext context, AzureEnvironment.Endpoint resourceIdEndpoint)
         {
             if (authFactory == null)
                 throw new ArgumentNullException("authFactory");
             if (context == null)
                 throw new ArgumentNullException("context");
-            
-            var bundle = GetToken(authFactory, context);
+
+            var bundle = GetToken(authFactory, context, resourceIdEndpoint);
             this.token = bundle.Item1;
         }
+
+        public string AccessToken
+        {
+            get
+            {
+                return token.AccessToken;
+            }
+        }
+
+        public string TenantId { get; set; }
 
         /// <summary>
         /// Authentication callback method required by KeyVaultClient
@@ -53,26 +63,32 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return Task.FromResult<string>(tokenStr);           
         }
 
-        private Tuple<IAccessToken, string> GetToken(IAuthenticationFactory authFactory, AzureContext context)
+        private Tuple<IAccessToken, string> GetToken(IAuthenticationFactory authFactory, AzureContext context, AzureEnvironment.Endpoint resourceIdEndpoint)
         {
-            if (context.Subscription == null)
-                throw new ArgumentException(KeyVaultProperties.Resources.InvalidCurrentSubscription);
             if (context.Account == null)
-                throw new ArgumentException(KeyVaultProperties.Resources.InvalidSubscriptionState);
-            if (context.Account.Type != AzureAccount.AccountType.User)
+                throw new ArgumentException(KeyVaultProperties.Resources.ArmAccountNotFound);
+
+            if (context.Account.Type != AzureAccount.AccountType.User &&
+                context.Account.Type != AzureAccount.AccountType.ServicePrincipal )
                 throw new ArgumentException(string.Format(KeyVaultProperties.Resources.UnsupportedAccountType, context.Account.Type));
-            var tenant = context.Subscription.GetPropertyAsArray(AzureSubscription.Property.Tenants)
-                  .Intersect(context.Account.GetPropertyAsArray(AzureAccount.Property.Tenants))
-                  .FirstOrDefault();
-            if (tenant == null)
-                throw new ArgumentException(KeyVaultProperties.Resources.InvalidSubscriptionState);
+
+            if (context.Subscription != null && context.Account != null)
+                TenantId = context.Subscription.GetPropertyAsArray(AzureSubscription.Property.Tenants)
+                       .Intersect(context.Account.GetPropertyAsArray(AzureAccount.Property.Tenants))
+                       .FirstOrDefault();
+
+            if (string.IsNullOrWhiteSpace(TenantId) && context.Tenant != null && context.Tenant.Id != Guid.Empty)
+                TenantId = context.Tenant.Id.ToString();
+
+            if (string.IsNullOrWhiteSpace(TenantId))
+                throw new ArgumentException(KeyVaultProperties.Resources.NoTenantInContext);
           
             try
             {
-                var accesstoken = authFactory.Authenticate(context.Account, context.Environment, tenant, null, ShowDialog.Auto,
-                    ResourceIdEndpoint);
+                var accesstoken = authFactory.Authenticate(context.Account, context.Environment, TenantId, null, ShowDialog.Auto,
+                    resourceIdEndpoint);
 
-                return Tuple.Create(accesstoken, context.Environment.Endpoints[ResourceIdEndpoint]);
+                return Tuple.Create(accesstoken, context.Environment.Endpoints[resourceIdEndpoint]);
             }
             catch (Exception ex)
             {
@@ -81,6 +97,5 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         }
      
         private IAccessToken token;
-        private const AzureEnvironment.Endpoint ResourceIdEndpoint = AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId;
     }
 }

@@ -15,12 +15,15 @@
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Management.Compute;
 using System.Management.Automation;
+using AutoMapper;
+using Microsoft.Azure.Commands.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(
         VerbsCommon.Remove,
         ProfileNouns.VirtualMachineSqlServerExtension)]
+    [OutputType(typeof(PSAzureOperationResponse))]
     public class RemoveAzureVMSqlServerExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(
@@ -62,8 +65,12 @@ namespace Microsoft.Azure.Commands.Compute
 
                 if (this.ShouldContinue(Properties.Resources.VirtualMachineExtensionRemovalConfirmation, Properties.Resources.VirtualMachineExtensionRemovalCaption))
                 {
-                    var op = this.VirtualMachineExtensionClient.Delete(this.ResourceGroupName, this.VMName, this.Name);
-                    WriteObject(op);
+                    var op = this.VirtualMachineExtensionClient.DeleteWithHttpMessagesAsync(
+                        this.ResourceGroupName,
+                        this.VMName,
+                        this.Name).GetAwaiter().GetResult();
+                    var result = Mapper.Map<PSAzureOperationResponse>(op);
+                    WriteObject(result);
                 }
             });
         }

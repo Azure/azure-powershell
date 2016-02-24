@@ -41,7 +41,7 @@ function Test-DiagnosticsExtensionBasic
         }
 
         # Test Set and Get command. It should use the storage account defined in configuration file
-        Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname -DiagnosticsConfigurationPath '.\ConfigFiles\DiagnosticsExtensionConfig.xml'
+        Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname -DiagnosticsConfigurationPath "$TestOutputRoot\ConfigFiles\DiagnosticsExtensionConfig.xml"
         $extension = Get-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
 
         Assert-NotNull $extension
@@ -92,7 +92,7 @@ function Test-DiagnosticsExtensionSepcifyStorageAccountName
             Assert-Null $extension
         }
 
-        Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname -DiagnosticsConfigurationPath '.\ConfigFiles\DiagnosticsExtensionConfig.xml' -StorageAccountName $storagename
+        Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname -DiagnosticsConfigurationPath "$TestOutputRoot\ConfigFiles\DiagnosticsExtensionConfig.xml" -StorageAccountName $storagename
         $extension = Get-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
 
         Assert-NotNull $extension
@@ -135,8 +135,48 @@ function Test-DiagnosticsExtensionCantListSepcifyStorageAccountKey
         # Get a random storage account name, which we can't list the key
         $storagename = 'notexiststorage'
         Assert-ThrowsContains `
-            { Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname -DiagnosticsConfigurationPath '.\ConfigFiles\DiagnosticsExtensionConfig.xml' -StorageAccountName $storagename } `
-            'Failed to list storage account key'
+            { Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname -DiagnosticsConfigurationPath "$TestOutputRoot\ConfigFiles\DiagnosticsExtensionConfig.xml" -StorageAccountName $storagename } `
+            'Storage account key'
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test that we support config file in json format
+#>
+function Test-DiagnosticsExtensionSupportJsonConfig
+{
+    $rgname = Get-ComputeTestResourceName
+    $loc = Get-ComputeVMLocation
+
+    try
+    {
+        # Setup
+        $vm = Create-VirtualMachine -rgname $rgname -loc $loc
+        $vmname = $vm.Name
+        $storagename = $vmname + "storage"
+        $storagetype = 'Standard_GRS'
+        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $storagename -Location $loc -Type $storagetype
+
+        # If diagnostics extension already exist, remove it
+        $extension = Get-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
+        if ($extension) {
+            Remove-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
+            $extension = Get-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
+            Assert-Null $extension
+        }
+
+        Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname -DiagnosticsConfigurationPath "$TestOutputRoot\ConfigFiles\DiagnosticsExtensionConfig.json" -StorageAccountName $storagename
+        $extension = Get-AzureRmVMDiagnosticsExtension -ResourceGroupName $rgname -VMName $vmname
+
+        Assert-NotNull $extension
+        $settings = $extension.PublicSettings | ConvertFrom-Json
+        Assert-AreEqual $settings.storageAccount $storagename
     }
     finally
     {

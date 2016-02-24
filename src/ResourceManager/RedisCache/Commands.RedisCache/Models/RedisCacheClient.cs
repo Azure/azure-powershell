@@ -12,35 +12,46 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+
 namespace Microsoft.Azure.Commands.RedisCache
 {
-    using Microsoft.Azure.Common.Authentication;
-    using Microsoft.Azure.Common.Authentication.Models;
-    using Microsoft.Azure.Management.Redis;
-    using Microsoft.Azure.Management.Redis.Models;
-    using Microsoft.WindowsAzure;
-    using Microsoft.WindowsAzure.Commands.Common;
     using System.Collections;
     using System.Collections.Generic;
+    using System.ComponentModel;
+    using ServiceManagemenet.Common;
+    using ServiceManagemenet.Common.Models;
+    using Microsoft.Azure.Management.Insights;
+    using Microsoft.Azure.Management.Insights.Models;
+    using Microsoft.Azure.Management.Internal.Resources;
+    using Microsoft.Azure.Management.Redis;
+    using Microsoft.Azure.Management.Redis.Models;
 
     public class RedisCacheClient
     {
         private RedisManagementClient _client;
+        private InsightsManagementClient _insightsClient;
+        private ResourceManagementClient _resourceManagementClient;
+
         public RedisCacheClient(AzureContext context)
         {
             _client = AzureSession.ClientFactory.CreateClient<RedisManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            _insightsClient = AzureSession.ClientFactory.CreateClient<InsightsManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            _resourceManagementClient  = AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
         }
         public RedisCacheClient() { }
 
         public RedisCreateOrUpdateResponse CreateOrUpdateCache(string resourceGroupName, string cacheName, string location, string skuFamily, int skuCapacity, string skuName,
                 Hashtable redisConfiguration, bool? enableNonSslPort, Hashtable tenantSettings, int? shardCount, string virtualNetwork, string subnet, string staticIP)
         {
+            _resourceManagementClient.Providers.Register("Microsoft.Cache");
             RedisCreateOrUpdateParameters parameters = new RedisCreateOrUpdateParameters
                                                     {
                                                         Location = location,
                                                         Properties = new RedisProperties
                                                         {
-                                                            Sku = new Sku() { 
+                                                            Sku = new Microsoft.Azure.Management.Redis.Models.Sku { 
                                                                 Name = skuName,
                                                                 Family = skuFamily,
                                                                 Capacity = skuCapacity
@@ -71,7 +82,10 @@ namespace Microsoft.Azure.Commands.RedisCache
                 }
             }
 
-            parameters.Properties.ShardCount = shardCount;
+            if (shardCount.HasValue)
+            {
+                parameters.Properties.ShardCount = shardCount.Value;
+            }
             
             if (!string.IsNullOrWhiteSpace(virtualNetwork))
             {
@@ -127,6 +141,21 @@ namespace Microsoft.Azure.Commands.RedisCache
         public RedisListKeysResponse GetAccessKeys(string resourceGroupName, string cacheName)
         {
             return _client.Redis.ListKeys(resourceGroupName: resourceGroupName, name: cacheName);
+        }
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        internal void SetDiagnostics(string cacheId, string storageAccountName)
+        {
+            _insightsClient.ServiceDiagnosticSettingsOperations.Put(
+                resourceUri: cacheId,
+                parameters: new ServiceDiagnosticSettingsPutParameters
+                {
+                    Properties = new ServiceDiagnosticSettings
+                    {
+                        StorageAccountName = storageAccountName
+                    }
+                }
+            );
         }
     }
 }

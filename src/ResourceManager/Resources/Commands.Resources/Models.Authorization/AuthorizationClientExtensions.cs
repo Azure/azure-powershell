@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                         RoleDefinitionId = roleDefinition.Id,
                         RoleDefinitionName = roleDefinition.Name,
                         Scope = assignment.Properties.Scope,
-                        SignInName = ((PSADUser)adObject).SignInName,
+                        SignInName = ((PSADUser)adObject).UserPrincipalName,
                         ObjectId = adObject.Id,
                         ObjectType = adObject.Type
                     });

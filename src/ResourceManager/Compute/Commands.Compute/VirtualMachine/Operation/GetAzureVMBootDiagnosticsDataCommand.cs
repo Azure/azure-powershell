@@ -14,8 +14,8 @@
 
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.WindowsAzure.Commands.Sync.Download;
@@ -26,6 +26,8 @@ using System.Globalization;
 using System.IO;
 using System.Management.Automation;
 using System.Text;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -85,48 +87,48 @@ namespace Microsoft.Azure.Commands.Compute
             ExecuteClientAction(() =>
             {
                 var result = this.VirtualMachineClient.GetWithInstanceView(this.ResourceGroupName, this.Name);
-                if (result == null || result.VirtualMachine == null)
+                if (result == null || result.Body == null)
                 {
                     ThrowTerminatingError
-                (new ErrorRecord(
-                    new InvalidOperationException(string.Format(CultureInfo.InvariantCulture,
-                        "no virtual machine")),
-                    string.Empty,
-                    ErrorCategory.InvalidData,
-                    null));
+                        (new ErrorRecord(
+                            new InvalidOperationException(string.Format(CultureInfo.InvariantCulture,
+                                "no virtual machine")),
+                            string.Empty,
+                            ErrorCategory.InvalidData,
+                            null));
                 }
 
-                if (result.VirtualMachine.DiagnosticsProfile == null
-                    || result.VirtualMachine.DiagnosticsProfile.BootDiagnostics == null
-                    || result.VirtualMachine.DiagnosticsProfile.BootDiagnostics.Enabled == null
-                    || !result.VirtualMachine.DiagnosticsProfile.BootDiagnostics.Enabled.Value
-                    || result.VirtualMachine.DiagnosticsProfile.BootDiagnostics.StorageUri == null)
+                if (result.Body.DiagnosticsProfile == null
+                    || result.Body.DiagnosticsProfile.BootDiagnostics == null
+                    || result.Body.DiagnosticsProfile.BootDiagnostics.Enabled == null
+                    || !result.Body.DiagnosticsProfile.BootDiagnostics.Enabled.Value
+                    || result.Body.DiagnosticsProfile.BootDiagnostics.StorageUri == null)
                 {
                     ThrowTerminatingError
-                (new ErrorRecord(
-                    new InvalidOperationException(string.Format(CultureInfo.InvariantCulture,
-                        "no diagnostic profile enabled")),
-                    string.Empty,
-                    ErrorCategory.InvalidData,
-                    null));
+                        (new ErrorRecord(
+                            new InvalidOperationException(string.Format(CultureInfo.InvariantCulture,
+                                "no diagnostic profile enabled")),
+                            string.Empty,
+                            ErrorCategory.InvalidData,
+                            null));
                 }
 
-                if (result.VirtualMachine.InstanceView == null
-                    || result.VirtualMachine.InstanceView.BootDiagnostics == null)
+                if (result.Body.InstanceView == null
+                    || result.Body.InstanceView.BootDiagnostics == null)
                 {
                     ThrowTerminatingError
-                (new ErrorRecord(
-                    new InvalidOperationException(string.Format(CultureInfo.InvariantCulture,
-                        "no boot diagnostic")),
-                    string.Empty,
-                    ErrorCategory.InvalidData,
-                    null));
+                        (new ErrorRecord(
+                            new InvalidOperationException(string.Format(CultureInfo.InvariantCulture,
+                                "no boot diagnostic")),
+                            string.Empty,
+                            ErrorCategory.InvalidData,
+                            null));
                 }
 
                 if (this.Windows.IsPresent
                     || (this.Linux.IsPresent && !string.IsNullOrEmpty(this.LocalPath)))
                 {
-                    var screenshotUri = result.VirtualMachine.InstanceView.BootDiagnostics.ConsoleScreenshotBlobUri;
+                    var screenshotUri = new Uri(result.Body.InstanceView.BootDiagnostics.ConsoleScreenshotBlobUri);
                     var localFile = this.LocalPath + screenshotUri.Segments[2];
                     DownloadFromBlobUri(screenshotUri, localFile);
                 }
@@ -134,7 +136,7 @@ namespace Microsoft.Azure.Commands.Compute
 
                 if (this.Linux.IsPresent)
                 {
-                    var logUri = result.VirtualMachine.InstanceView.BootDiagnostics.SerialConsoleLogBlobUri;
+                    var logUri = new Uri(result.Body.InstanceView.BootDiagnostics.SerialConsoleLogBlobUri);
 
                     var localFile = (this.LocalPath ?? Path.GetTempPath()) + logUri.Segments[2];
 

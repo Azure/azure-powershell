@@ -18,7 +18,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
     using System.Globalization;
     using System.Management.Automation;
     using System.Threading.Tasks;
+    using Microsoft.WindowsAzure.Commands.Storage.Blob;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.DataMovement;
     using Microsoft.WindowsAzure.Storage.File;
 
@@ -30,9 +32,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
         private const int DefaultConcurrentTaskCount = 10;
 
         /// <summary>
-        /// Stores the transfer job runner instance.
+        /// Stores the transfer manager instance.
         /// </summary>
-        private ITransferJobRunner transferJobRunner;
+        protected ITransferManager TransferManager
+        {
+            get;
+            private set;
+        }
 
         /// <summary>
         /// Gets or sets whether to force overwrite the existing file.
@@ -59,7 +65,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
         {
             base.BeginProcessing();
 
-            this.transferJobRunner = TransferJobRunnerFactory.CreateRunner(this.ConcurrentTaskCount ?? DefaultConcurrentTaskCount);
+            this.TransferManager = TransferManagerFactory.CreateTransferManager(this.GetCmdletConcurrency());
         }
 
         protected override void EndProcessing()
@@ -71,86 +77,28 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
             }
             finally
             {
-                this.transferJobRunner.Dispose();
-                this.transferJobRunner = null;
+                this.TransferManager = null;
             }
         }
 
-        protected async Task RunTransferJob(TransferJob job, ProgressRecord record)
+        protected TransferContext GetTransferContext(ProgressRecord record, long totalTransferLength)
         {
-            this.SetRequestOptionsInTransferJob(job);
-            job.OverwritePromptCallback = this.ConfirmOverwrite;
+            TransferContext transferContext = new TransferContext();
+            transferContext.ClientRequestId = CmdletOperationContext.ClientRequestId;
+            transferContext.OverwriteCallback = ConfirmOverwrite;
 
-            try
+            transferContext.ProgressHandler = new TransferProgressHandler((transferProgress) =>
             {
-                await this.transferJobRunner.RunTransferJob(job,
-                        (percent, speed) =>
-                        {
-                            record.PercentComplete = (int)percent;
-                            record.StatusDescription = string.Format(CultureInfo.CurrentCulture, Resources.FileTransmitStatus, (int)percent, Util.BytesToHumanReadableSize(speed));
-                            this.OutputStream.WriteProgress(record);
-                        },
-                        this.CmdletCancellationToken);
+                if (record != null)
+                {
+                    // Size of the source file might be 0, when it is, directly treat the progress as 100 percent.
+                    record.PercentComplete = (totalTransferLength == 0) ? 100 : (int)(transferProgress.BytesTransferred * 100 / totalTransferLength);
+                    record.StatusDescription = string.Format(CultureInfo.CurrentCulture, Resources.FileTransmitStatus, record.PercentComplete);
+                    this.OutputStream.WriteProgress(record);
+                }
+            });
 
-                record.PercentComplete = 100;
-                record.StatusDescription = Resources.TransmitSuccessfully;
-                this.OutputStream.WriteProgress(record);
-            }
-            catch (OperationCanceledException)
-            {
-                record.StatusDescription = Resources.TransmitCancelled;
-                this.OutputStream.WriteProgress(record);
-            }
-            catch (Exception e)
-            {
-                record.StatusDescription = string.Format(CultureInfo.CurrentCulture, Resources.TransmitFailed, e.Message);
-                this.OutputStream.WriteProgress(record);
-                throw;
-            }
-        }
-
-        protected void SetRequestOptionsInTransferJob(TransferJob transferJob)
-        {
-            var cmdletOptions = this.RequestOptions;
-
-            if (cmdletOptions == null)
-            {
-                return;
-            }
-
-            if (null != transferJob.Source.AzureFile)
-            {
-                this.SetRequestOptions(transferJob.Source, cmdletOptions);
-            }
-
-            if (null != transferJob.Destination.AzureFile)
-            {
-                this.SetRequestOptions(transferJob.Destination, cmdletOptions);
-            }
-        }
-
-        private void SetRequestOptions(TransferLocation location, FileRequestOptions cmdletOptions)
-        {
-            FileRequestOptions requestOptions = location.RequestOptions as FileRequestOptions;
-
-            if (null == requestOptions)
-            { 
-                requestOptions = new FileRequestOptions();
-            }
-
-            if (cmdletOptions.MaximumExecutionTime != null)
-            {
-                requestOptions.MaximumExecutionTime = cmdletOptions.MaximumExecutionTime;
-            }
-
-            if (cmdletOptions.ServerTimeout != null)
-            {
-                requestOptions.ServerTimeout = cmdletOptions.ServerTimeout;
-            }
-
-            requestOptions.DisableContentMD5Validation = true;
-
-            location.RequestOptions = requestOptions;
+            return transferContext;
         }
     }
 }

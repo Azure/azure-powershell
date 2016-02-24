@@ -22,9 +22,9 @@ using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.Azure.Management.RecoveryServices;
 using Microsoft.Azure.Test;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using System;
 using System.Net.Http;
 using System.Reflection;
@@ -84,14 +84,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
             if (testEnvironment.UsesCustomUri())
             {
                 client = new RecoveryServicesManagementClient(
-                    "Microsoft.RecoveryServices",
+                    "Microsoft.RecoveryServicesBVTD2",
                     testEnvironment.Credentials as SubscriptionCloudCredentials,
                     testEnvironment.BaseUri);
             }
             else
             {
                 client = new RecoveryServicesManagementClient(
-                    "Microsoft.RecoveryServices",
+                    "Microsoft.RecoveryServicesBVTD2",
                     testEnvironment.Credentials as SubscriptionCloudCredentials);
             }
             return GetServiceClient<T>(factory, client);

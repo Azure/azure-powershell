@@ -1,3 +1,89 @@
+##2016.03.08 version 1.3.0
+* Azure LogicApp: New cmdlets for managing LogicApps  
+  * Get-AzureLogicAppAccessKey
+  * Get-AzureLogicApp
+  * Get-AzureLogicAppRunAction
+  * Get-AzureLogicAppRunHistory
+  * Get-AzureLogicAppTrigger
+  * Get-AzureLogicAppTriggerHistory
+  * New-AzureLogicApp
+  * Remove-AzureLogicApp
+  * Start-AzureLogicApp
+  * Set-AzureLogicAppAccessKey
+  * Set-AzureLogicApp
+  * Stop-AzureLogicAppRun
+ * Azure Storage
+  * Added cmdlet to generate SAS token against storage account
+    - New-AzureStorageAccountSASToken
+  * Added IPAddressOrRange/Protocol support in cmdlets to generate SAS token against blob, container, file, share, table, queue
+    - New-AzureStorageBlobSASToken
+    - New-AzureStorageContainerSASToken
+    - New-AzureStorageFileSASToken
+    - New-AzureStorageShareSASToken
+    - New-AzureStorageQueueSASToken
+    - New-AzureStorageTableSASToken
+
+## 2016.02.04 version 1.2.1
+* Fix installer issue - remove PSGallery modules on install
+
+## 2016.02.03 version 1.2.0
+* Azure RemoteApp: 
+  * Organizational Unit in Azure RemoteApp RDFE cmdlets now accepts Unicode characters.
+* Azure Stack Admin: 
+  * New module for the management of azure stack administrative resources such as plan, offer, subscription, resource provider and
+    gallery items.
+* Azure Stack Storage Admin: 
+  * New module for the management of azure stack storage administrative resources such as configuration, infrastructure and health.
+* Azure Operational Insights new cmdlets:
+  *  Get-AzureRmOperationalInsightsSavedSearch
+  *  Get-AzureRmOperationalInsightsSavedSeearchResults
+  *  Get-AzureRmOperationalInsightsSavedSearches
+  *  Get-AzureRmOperationalInsightsSchema
+  *  Get-AzureRmOperationalInsightsSearchResult
+  *  Get-AzureRmOperationalInsightsSearchResultUpdate
+  *  Remove-AzureRmOperationalInsightsSavedSearch
+  *  Remove-AzureRmOperationalInsightsSavedSearch
+  *  Set-AzureRmOperationalInsightsSavedSearch
+* Add-AzureRmAccount fixed issue with wrong credential message
+* Get-AzureRmSubscription cmdlet now returns paginated results
+* Update-AzureRM now only updates when need unless -Force is used
+* Added telemetry to ARM and ASM cmdlets
+
+## 2016.01.12 version 1.1.0
+* Azure SQL Database: Threat Detection policies:
+  * Using new Threat Detection Types
+* Azure Redis Cache: new cmdlets for enabling and disabling diagnostics
+  * Set-AzureRmRedisCacheDiagnostics
+  * Remove-AzureRmRedisCacheDiagnostics
+* Azure Websites: New cmdlets for managing SSL binding
+  * Get-AzureRmWebAppCertificate
+  * New-AzureRmWebAppSSLBinding
+  * Get-AzureRmWebAppSSLBinding
+  * Remove-AzureRmWebAppSSLBinding
+  * Added AseName and AseResourceGroupName parameters in New-AzureRmWebApp and New-AzureRmAppServicePlan cmdlet
+  * Added support for cloning all deployment slots associated with source website
+* Azure Stream Analytics: Added new cmdlet support for Functions.
+  * New-AzureRmStreamAnalyticsFunction
+  * Get-AzureRmStreamAnalyticsFunction
+  * Test-AzureRmStreamAnalyticsFunction
+  * Get-AzureRmStreamAnalyticsDefaultFunctionDefinition
+  * Remove-AzureRmStreamAnalyticsFunction
+* Azure Batch
+  * New-AzureBatchTask now accepts a MultiInstanceSettings parameter
+  * Get-AzureBatchSubtask cmdlet added
+  * Enable-AzureBatchComputeNodeScheduling / Disable-AzureBatchComputeNodeScheduling cmdlets added
+  * Enable-AzureBatchAutoScale and New-AzureBatchPool now accept an AutoScaleEvaluationInterval parameter.
+  
+## 2015.12.14 version 1.0.2
+* Azure Compute (ARM):
+  * Enable BGInfo extension by default
+  * Fix the issue when an OS disk is in a different resource group: Now New-AzureRmVM does not create a new storage account for boot diagnostics.
+  * Add Set-AzureRmBginfoExtension cmdlet
+  * Make WinRMCertificateUrl parameter mandatory when Set-AzureRmVMOperatingSystem cmdlet is performed with WinRMHttps switch
+* Azure Compute (Service Management):
+  * Fix the issue when adding a new VM without a data disk
+  * Add ExtensionId parameter for all extension cmdlets
+  * Expose RemoteAccessCertificateThumbprint property for Get-AzureVM cmdlet
 * Azure SQL Database: new cmdlets for managing database threat detection policies:
   * Get-AzureRmSqlDatabaseThreatDetectionPolicy
   * Set-AzureRmSqlDatabaseThreatDetectionPolicy
@@ -5,36 +91,10 @@
 * Azure RemoteApp: New cmdlets for managing stale machine accounts in AD:
   * Get-AzureRemoteAppVmStaleAdObject
   * Clear-AzureRemoteAppVmStaleAdObject
-* Azure Intune: New cmdlets for Mobile Application management:
-   * Add-AzureRmIntuneAndroidMAMPolicyApp      
-   * Add-AzureRmIntuneAndroidMAMPolicyGroup    
-   * Add-AzureRmIntuneiOSMAMPolicyApp          
-   * Add-AzureRmIntuneiOSMAMPolicyGroup        
-   * Get-AzureRmIntuneAndroidMAMApp            
-   * Get-AzureRmIntuneAndroidMAMPolicy         
-   * Get-AzureRmIntuneAndroidMAMPolicyApp      
-   * Get-AzureRmIntuneAndroidMAMPolicyGroup    
-   * Get-AzureRmIntuneiOSMAMApp                
-   * Get-AzureRmIntuneiOSMAMPolicy             
-   * Get-AzureRmIntuneiOSMAMPolicyApp          
-   * Get-AzureRmIntuneiOSMAMPolicyGroup        
-   * Get-AzureRmIntuneMAMFlaggedUser           
-   * Get-AzureRmIntuneMAMStatus                
-   * Get-AzureRmIntuneMAMUserDevice            
-   * Get-AzureRmIntuneMAMUserFlaggedEnrolledApp
-   * Get-AzureRmIntuneOperationResult          
-   * Invoke-AzureRmIntuneMAMUserDeviceWipe     
-   * New-AzureRmIntuneAndroidMAMPolicy         
-   * New-AzureRmIntuneiOSMAMPolicy             
-   * Remove-AzureRmIntuneAndroidMAMPolicy      
-   * Remove-AzureRmIntuneAndroidMAMPolicyApp   
-   * Remove-AzureRmIntuneAndroidMAMPolicyGroup 
-   * Remove-AzureRmIntuneIOSMAMPolicy          
-   * Remove-AzureRmIntuneiOSMAMPolicyApp       
-   * Remove-AzureRmIntuneiOSMAMPolicyGroup     
-   * Set-AzureRmIntuneAndroidMAMPolicy         
-   * Set-AzureRmIntuneiOSMAMPolicy                   
-  
+* ARM Storage:
+  * Fix alias missing issue
+
+
 ## 2015.11.09 version 1.0.1
 * Azure Compute
   * Added cmdlets for managing VM DiskEncryption extension

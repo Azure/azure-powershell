@@ -147,6 +147,9 @@
   <data name="NoValidTenant" xml:space="preserve">
     <value>Please provide a valid tenant Id on the command line or execute Login-AzureRmAccount.</value>
   </data>
+  <data name="SelectedSubscriptionNotActive" xml:space="preserve">
+    <value>Selected subscription is in '{0}' state. </value>
+  </data>
   <data name="SetAzureRmContextNoParameterSet" xml:space="preserve">
     <value>Please provide either a subscription ID, subscription name, tenant Id or domain.</value>
   </data>
@@ -166,7 +169,10 @@
     <value>To create an access token credential, you must provide an access token account.</value>
   </data>
   <data name="UnableToAqcuireToken" xml:space="preserve">
-    <value>Unabe to acquire token for tenant '{0}'</value>
+    <value>Unable to acquire token for tenant '{0}'</value>
+  </data>
+  <data name="UnableToLogin" xml:space="preserve">
+    <value>Could not authenticate user account '{0}' with tenant '{1}'. Subscriptions in this tenant will not be listed. Please login again using Login-AzureRmAccount to view the subscriptions in this tenant.</value>
   </data>
   <data name="UnknownEnvironment" xml:space="preserve">
     <value>Unable to find environment with name '{0}'</value>

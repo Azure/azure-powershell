@@ -30,7 +30,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         private const string poolId = ScenarioTestHelpers.SharedPool;
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetComputeNodeById()
         {
             BatchController controller = BatchController.NewInstance;
@@ -38,7 +37,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListComputeNodesByFilter()
         {
             BatchController controller = BatchController.NewInstance;
@@ -77,7 +75,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListComputeNodesWithMaxCount()
         {
             BatchController controller = BatchController.NewInstance;
@@ -86,7 +83,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListAllComputeNodes()
         {
             BatchController controller = BatchController.NewInstance;
@@ -105,7 +101,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListComputeNodePipeline()
         {
             BatchController controller = BatchController.NewInstance;
@@ -124,7 +119,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveComputeNodeById()
         {
             TestRemoveComputeNode(false, TestUtilities.GetCurrentMethodName());
@@ -138,7 +132,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveMultipleComputeNodes()
         {
             BatchController controller = BatchController.NewInstance;
@@ -166,31 +159,39 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRebootComputeNodeById()
         {
             TestRebootComputeNode(false, TestUtilities.GetCurrentMethodName());
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRebootComputeNodePipeline()
         {
             TestRebootComputeNode(true, TestUtilities.GetCurrentMethodName());
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestReimageComputeNodeById()
         {
             TestReimageComputeNode(false, TestUtilities.GetCurrentMethodName());
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestReimageComputeNodePipeline()
         {
             TestReimageComputeNode(true, TestUtilities.GetCurrentMethodName());
+        }
+
+        [Fact]
+        public void TestDisableAndEnableComputeNodeSchedulingById()
+        {
+            TestDisableAndEnableComputeNodeScheduling(false, TestUtilities.GetCurrentMethodName());
+        }
+
+        [Fact]
+        public void TestDisableAndEnableComputeNodeSchedulingPipeline()
+        {
+            TestDisableAndEnableComputeNodeScheduling(true, TestUtilities.GetCurrentMethodName());
         }
 
         private void TestRemoveComputeNode(bool usePipeline, string testMethodName)
@@ -246,6 +247,24 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 () =>
                 {
                     context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    computeNodeId = ScenarioTestHelpers.GetComputeNodeId(controller, context, poolId);
+                    ScenarioTestHelpers.WaitForIdleComputeNode(controller, context, poolId, computeNodeId);
+                },
+                null,
+                TestUtilities.GetCallingClass(),
+                testMethodName);
+        }
+
+        private void TestDisableAndEnableComputeNodeScheduling(bool usePipeline, string testMethodName)
+        {
+            BatchController controller = BatchController.NewInstance;
+            BatchAccountContext context = null;
+            string computeNodeId = null;
+            controller.RunPsTestWorkflow(
+                () => { return new string[] { string.Format("Test-DisableAndEnableComputeNodeScheduling '{0}' '{1}' '{2}' '{3}'", ScenarioTestHelpers.MpiOnlineAccount, poolId, computeNodeId, usePipeline ? 1 : 0) }; },
+                () =>
+                {
+                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, ScenarioTestHelpers.MpiOnlineAccount);
                     computeNodeId = ScenarioTestHelpers.GetComputeNodeId(controller, context, poolId);
                     ScenarioTestHelpers.WaitForIdleComputeNode(controller, context, poolId, computeNodeId);
                 },
