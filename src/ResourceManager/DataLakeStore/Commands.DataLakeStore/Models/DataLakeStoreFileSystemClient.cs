@@ -55,13 +55,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 throw new ApplicationException(Resources.InvalidDefaultSubscription);
             }
 
-            _client = AzureSession.ClientFactory.CreateArmClient<DataLakeStoreFileSystemManagementClient>(context,
-                AzureEnvironment.Endpoint.ResourceManager); // NOTE: this is overwritten below by design, since we have a custom URI with variable replacement
-            _client.BaseUri = new Uri("https://accountname.datalakeserviceuri");
-            _client.Datalakeserviceuri = context.Environment.GetEndpoint(AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix);
+            _client = AzureSession.ClientFactory.CreateAdlArmClient<DataLakeStoreFileSystemManagementClient>(context,
+                AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix, true);
 
             // update the user agent
-            UpdateUserAgentAssemblyVersion(_client);
+            // UpdateUserAgentAssemblyVersion(_client);
 
             uniqueActivityIdGenerator = new Random();
         }
@@ -98,22 +96,23 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         public void SetAcl(string path, string accountName, string aclToSet)
         {
-            _client.FileSystem.SetAcl(path, accountName, aclToSet);
+            _client.FileSystem.SetAcl(path, aclToSet, accountName);
         }
 
         public void ModifyAcl(string path, string accountName, string aclToModify)
         {
-            _client.FileSystem.ModifyAclEntries(path, accountName, aclToModify);
+            _client.FileSystem.ModifyAclEntries(path, aclToModify, accountName);
         }
 
         public void RemoveDefaultAcl(string path, string accountName)
         {
-            _client.FileSystem.RemoveDefaultAcl(path, accountName);
+            // _client.FileSystem.RemoveDefaultAcl(path, accountName);
+            throw new NotImplementedException();
         }
 
         public void RemoveAclEntries(string path, string accountName, string aclsToRemove)
         {
-            _client.FileSystem.RemoveAclEntries(path, accountName, aclsToRemove);
+            _client.FileSystem.RemoveAclEntries(path, aclsToRemove, accountName);
         }
 
         public void RemoveAcl(string path, string accountName)
@@ -123,7 +122,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         public void UpdateAclEntries(string path, string accountName, string newAclSpec)
         {
-            _client.FileSystem.ModifyAclEntries(path, accountName, newAclSpec);
+            _client.FileSystem.ModifyAclEntries(path, newAclSpec, accountName);
         }
 
         public AclStatus GetAclStatus(string filePath, string accountName)
@@ -151,18 +150,20 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         public void SetTimes(string path, string accountName, DateTimeOffset modificationTime, DateTimeOffset accessTime)
         {
-            _client.FileSystem.SetTimes(path, accountName, modificationTime.ToFileTime(), accessTime.ToFileTime());
+            //_client.FileSystem.SetTimes(path, accountName, modificationTime.ToFileTime(), accessTime.ToFileTime());
+            throw new NotImplementedException();
         }
 
         public bool SetReplication(string filePath, string accountName, short replicationValue)
         {
-            var boolean = _client.FileSystem.SetReplication(filePath, accountName, replicationValue).Boolean;
-            return boolean != null && boolean.Value;
+            // var boolean = _client.FileSystem.SetReplication(filePath, accountName, replicationValue).Boolean;
+            // return boolean != null && boolean.Value;
+            throw new NotImplementedException();
         }
 
         public bool RenameFileOrDirectory(string sourcePath, string accountName, string destinationPath)
         {
-            var boolean = _client.FileSystem.Rename(sourcePath, accountName, destinationPath).Boolean;
+            var boolean = _client.FileSystem.Rename(sourcePath, destinationPath, accountName).Boolean;
             return boolean != null && boolean.Value;
         }
 
@@ -289,7 +290,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         public string GetHomeDirectory(string accountName)
         {
-            return _client.FileSystem.GetHomeDirectory(accountName).Path;
+            // return _client.FileSystem.GetHomeDirectory(accountName).Path;
+            throw new NotImplementedException();
         }
 
         public FileStatuses GetFileStatuses(string folderPath, string accountName, int maxEntriesReturned = 100)
@@ -316,32 +318,33 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         public void CreateSymLink(string sourcePath, string accountName, string destinationPath,
             bool createParent = false)
         {
-            _client.FileSystem.CreateSymLink(sourcePath, accountName, destinationPath, createParent);
+            // _client.FileSystem.CreateSymLink(sourcePath, accountName, destinationPath, createParent);
+            throw new NotImplementedException();
         }
 
         public void ConcatenateFiles(string destinationPath, string accountName, string[] filesToConcatenate,
             bool deleteDirectory = false)
         {
-            _client.FileSystem.MsConcat(destinationPath, accountName,
-                new MemoryStream(Encoding.UTF8.GetBytes("sources=" + string.Join(",", filesToConcatenate))),
+            _client.FileSystem.MsConcat(destinationPath,
+                new MemoryStream(Encoding.UTF8.GetBytes("sources=" + string.Join(",", filesToConcatenate))), 
+                accountName,
                 deleteDirectory);
         }
 
-        public void CreateFile(string filePath, string accountName, Stream contents = null, bool overwrite = false,
-            string permissions = null)
+        public void CreateFile(string filePath, string accountName, Stream contents = null, bool overwrite = false)
         {
-            _client.FileSystem.Create(filePath, accountName, contents, overwrite: overwrite, permission: permissions);
+            _client.FileSystem.Create(filePath, accountName, contents, overwrite: overwrite);
         }
 
-        public bool CreateDirectory(string dirPath, string accountName, string permissions = null)
+        public bool CreateDirectory(string dirPath, string accountName)
         {
-            var boolean = _client.FileSystem.Mkdirs(dirPath, accountName, permissions).Boolean;
+            var boolean = _client.FileSystem.Mkdirs(dirPath, accountName).Boolean;
             return boolean != null && boolean.Value;
         }
 
         public void AppendToFile(string filePath, string accountName, Stream contents)
         {
-            _client.FileSystem.Append(filePath, accountName, contents, null);
+            _client.FileSystem.Append(filePath, contents, accountName);
         }
 
         public void CopyFile(string destinationPath, string accountName, string sourcePath,

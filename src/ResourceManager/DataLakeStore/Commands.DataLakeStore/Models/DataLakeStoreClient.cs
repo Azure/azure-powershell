@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
     public class DataLakeStoreClient
     {
-        private readonly DataLakeStoreManagementClient _client;
+        private readonly DataLakeStoreAccountManagementClient _client;
         private readonly Guid _subscriptionId;
 
         public DataLakeStoreClient(AzureContext context)
@@ -43,11 +43,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             }
 
             _subscriptionId = context.Subscription.Id;
-            _client = AzureSession.ClientFactory.CreateArmClient<DataLakeStoreManagementClient>(context,
+            _client = AzureSession.ClientFactory.CreateAdlArmClient<DataLakeStoreAccountManagementClient>(context,
                 AzureEnvironment.Endpoint.ResourceManager);
 
             // Update the user agent
-            UpdateUserAgentAssemblyVersion(_client);
+            // UpdateUserAgentAssemblyVersion(_client);
         }
 
         public DataLakeStoreClient()
@@ -92,8 +92,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             }
 
             return accountExists
-                ? _client.DataLakeStoreAccount.Update(resourceGroupName,accountName, parameters)
-                : _client.DataLakeStoreAccount.Create(resourceGroupName, accountName, parameters);
+                ? _client.Account.Update(resourceGroupName,accountName, parameters)
+                : _client.Account.Create(resourceGroupName, accountName, parameters);
         }
 
         public void DeleteAccount(string resourceGroupName, string accountName)
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 throw new InvalidOperationException(string.Format(Properties.Resources.AccountDoesNotExist, accountName));
             }
 
-            _client.DataLakeStoreAccount.Delete(resourceGroupName, accountName);
+            _client.Account.Delete(resourceGroupName, accountName);
         }
 
         public bool TestAccount(string resourceGroupName, string accountName)
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 resourceGroupName = GetResourceGroupByAccount(accountName);
             }
 
-            return _client.DataLakeStoreAccount.Get(resourceGroupName, accountName);
+            return _client.Account.Get(resourceGroupName, accountName);
         }
 
         public List<DataLakeStoreAccount> ListAccounts(string resourceGroupName, string filter, int? top, int? skip)
@@ -150,8 +150,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
             var accountList = new List<DataLakeStoreAccount>();
             var response = string.IsNullOrEmpty(resourceGroupName) ? 
-                _client.DataLakeStoreAccount.List(parameters) : 
-                _client.DataLakeStoreAccount.ListByResourceGroup(resourceGroupName, parameters);
+                _client.Account.List(parameters) : 
+                _client.Account.ListByResourceGroup(resourceGroupName, parameters);
 
             accountList.AddRange(response);
 
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         private IPage<DataLakeStoreAccount> ListAccountsWithNextLink(string nextLink)
         {
-            return _client.DataLakeStoreAccount.ListNext(nextLink);
+            return _client.Account.ListNext(nextLink);
         }
 
         private string GetResourceGroupByAccount(string accountName)

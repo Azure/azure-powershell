@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 {
     public class DataLakeAnalyticsClient
     {
-        private readonly DataLakeAnalyticsManagementClient _accountClient;
+        private readonly DataLakeAnalyticsAccountManagementClient _accountClient;
         private readonly DataLakeAnalyticsCatalogManagementClient _catalogClient;
         private readonly DataLakeAnalyticsJobManagementClient _jobClient;
         private readonly Guid _subscriptionId;
@@ -45,25 +45,20 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 throw new ApplicationException(Resources.InvalidDefaultSubscription);
             }
 
-            _accountClient = AzureSession.ClientFactory.CreateArmClient<DataLakeAnalyticsManagementClient>(context,
+            _accountClient = AzureSession.ClientFactory.CreateAdlArmClient<DataLakeAnalyticsAccountManagementClient>(context,
                 AzureEnvironment.Endpoint.ResourceManager);
             _subscriptionId = context.Subscription.Id;
 
-            _jobClient = AzureSession.ClientFactory.CreateArmClient<DataLakeAnalyticsJobManagementClient>(context,
-                AzureEnvironment.Endpoint.ResourceManager); // NOTE: this is overwritten below by design, since we have a custom URI with variable replacement
-            _jobClient.BaseUri = new Uri("https://accountname.jobserviceuri");
-            _jobClient.Jobserviceuri = context.Environment.GetEndpoint(AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix);
+            _jobClient = AzureSession.ClientFactory.CreateAdlArmClient<DataLakeAnalyticsJobManagementClient>(context,
+                AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix, true);
 
-            _catalogClient = AzureSession.ClientFactory.CreateArmClient<DataLakeAnalyticsCatalogManagementClient>(context,
-                AzureEnvironment.Endpoint.ResourceManager); // NOTE: this is overwritten below by design, since we have a custom URI with variable replacement
-            _catalogClient.BaseUri = new Uri("https://accountname.catalogserviceuri");
-            _catalogClient.Catalogserviceuri = context.Environment.GetEndpoint(AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix);
-
+            _catalogClient = AzureSession.ClientFactory.CreateAdlArmClient<DataLakeAnalyticsCatalogManagementClient>(context,
+                AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix, true);
 
             // update the versions in the headers for all the types.
-            UpdateUserAgentAssemblyVersion(_accountClient);
-            UpdateUserAgentAssemblyVersion(_jobClient);
-            UpdateUserAgentAssemblyVersion(_catalogClient);
+            // UpdateUserAgentAssemblyVersion(_accountClient);
+            // UpdateUserAgentAssemblyVersion(_jobClient);
+            // UpdateUserAgentAssemblyVersion(_catalogClient);
         }
 
         #region Account Related Operations
@@ -135,8 +130,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             }
 
             return accountExists
-                ? _accountClient.DataLakeAnalyticsAccount.Update(resourceGroupName, accountName, parameters)
-                : _accountClient.DataLakeAnalyticsAccount.Create(resourceGroupName, accountName, parameters);
+                ? _accountClient.Account.Update(resourceGroupName, accountName, parameters)
+                : _accountClient.Account.Create(resourceGroupName, accountName, parameters);
         }
 
         public void DeleteAccount(string resourceGroupName, string accountName)
@@ -151,7 +146,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 throw new InvalidOperationException(string.Format(Properties.Resources.AccountDoesNotExist, accountName));
             }
 
-            _accountClient.DataLakeAnalyticsAccount.Delete(resourceGroupName, accountName);
+            _accountClient.Account.Delete(resourceGroupName, accountName);
         }
 
         public bool TestAccount(string resourceGroupName, string accountName)
@@ -179,7 +174,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 resourceGroupName = GetResourceGroupByAccountName(accountName);
             }
 
-            return _accountClient.DataLakeAnalyticsAccount.Get(resourceGroupName, accountName);
+            return _accountClient.Account.Get(resourceGroupName, accountName);
         }
 
         public List<DataLakeAnalyticsAccount> ListAccounts(string resourceGroupName, string filter, int? top, int? skip)
@@ -193,8 +188,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
             var accountList = new List<DataLakeAnalyticsAccount>();
             var response = string.IsNullOrEmpty(resourceGroupName)
-                ? _accountClient.DataLakeAnalyticsAccount.List(parameters)
-                : _accountClient.DataLakeAnalyticsAccount.ListByResourceGroup(resourceGroupName, parameters);
+                ? _accountClient.Account.List(parameters)
+                : _accountClient.Account.ListByResourceGroup(resourceGroupName, parameters);
             accountList.AddRange(response);
 
             while (!string.IsNullOrEmpty(response.NextPageLink))
@@ -219,7 +214,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 Properties = storageToAdd.Properties
             };
 
-            _accountClient.DataLakeAnalyticsAccount.AddDataLakeStoreAccount(resourceGroupName, accountName,
+            _accountClient.Account.AddDataLakeStoreAccount(resourceGroupName, accountName,
                 storageToAdd.Name, storageParams);
         }
 
@@ -231,7 +226,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 resourceGroupName = GetResourceGroupByAccountName(accountName);
             }
 
-            _accountClient.DataLakeAnalyticsAccount.DeleteDataLakeStoreAccount(resourceGroupName, accountName,
+            _accountClient.Account.DeleteDataLakeStoreAccount(resourceGroupName, accountName,
                 dataLakeStoreAccountName);
         }
 
@@ -247,7 +242,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 Properties = storageToAdd.Properties
             };
 
-            _accountClient.DataLakeAnalyticsAccount.AddStorageAccount(resourceGroupName, accountName, storageToAdd.Name,
+            _accountClient.Account.AddStorageAccount(resourceGroupName, accountName, storageToAdd.Name,
                 storageParams);
         }
 
@@ -263,7 +258,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 Properties = storageToSet.Properties
             };
 
-            _accountClient.DataLakeAnalyticsAccount.UpdateStorageAccount(resourceGroupName, accountName,
+            _accountClient.Account.UpdateStorageAccount(resourceGroupName, accountName,
                 storageToSet.Name, storageParams);
         }
 
@@ -274,7 +269,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 resourceGroupName = GetResourceGroupByAccountName(accountName);
             }
 
-            _accountClient.DataLakeAnalyticsAccount.DeleteStorageAccount(resourceGroupName, accountName,
+            _accountClient.Account.DeleteStorageAccount(resourceGroupName, accountName,
                 storageAccountName);
         }
 
@@ -293,7 +288,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 !account.Properties.DataLakeStoreAccounts.Any(
                     acct => acct.Name.Equals(storageToSet.Name, StringComparison.InvariantCultureIgnoreCase)))
             {
-                _accountClient.DataLakeAnalyticsAccount.AddDataLakeStoreAccount(resourceGroupName, accountName,
+                _accountClient.Account.AddDataLakeStoreAccount(resourceGroupName, accountName,
                     storageToSet.Name, null);
             }
 
@@ -301,12 +296,12 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             account.Properties.DataLakeStoreAccounts = null;
             account.Properties.StorageAccounts = null;
 
-            _accountClient.DataLakeAnalyticsAccount.Update(resourceGroupName, accountName, account);
+            _accountClient.Account.Update(resourceGroupName, accountName, account);
         }
 
         private IPage<DataLakeAnalyticsAccount> ListAccountsWithNextLink(string nextLink)
         {
-            return _accountClient.DataLakeAnalyticsAccount.ListNext(nextLink);
+            return _accountClient.Account.ListNext(nextLink);
         }
 
         #endregion
@@ -316,33 +311,33 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         public USqlSecret CreateSecret(string accountName, string databaseName,
             string secretName, string password, string hostUri)
         {
-            return _catalogClient.Catalog.CreateSecret(accountName, databaseName, secretName,
+            return _catalogClient.Catalog.CreateSecret(databaseName, secretName,
                 new DataLakeAnalyticsCatalogSecretCreateOrUpdateParameters
                 {
                     Password = password,
                     Uri = hostUri
-                });
+                }, accountName);
         }
 
         public USqlSecret UpdateSecret(string accountName, string databaseName,
             string secretName, string password, string hostUri)
         {
-            return _catalogClient.Catalog.UpdateSecret(accountName, databaseName, secretName,
+            return _catalogClient.Catalog.UpdateSecret(databaseName, secretName,
                 new DataLakeAnalyticsCatalogSecretCreateOrUpdateParameters
                 {
                     Password = password,
                     Uri = hostUri
-                });
+                }, accountName);
         }
 
         public void DeleteSecret(string accountName, string databaseName, string secretName)
         {
-            _catalogClient.Catalog.DeleteSecret(accountName, databaseName, secretName);
+            _catalogClient.Catalog.DeleteSecret(databaseName, secretName, accountName);
         }
 
         public USqlSecret GetSecret(string accountName, string databaseName, string secretName)
         {
-            return _catalogClient.Catalog.GetSecret(accountName, databaseName, secretName);
+            return _catalogClient.Catalog.GetSecret(databaseName, secretName, accountName);
         }
 
         public bool TestCatalogItem(string accountName, CatalogPathInstance path,
@@ -364,7 +359,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             }
         }
 
-        public IList<CatalogItem> GetCatalogItem( string accountName, CatalogPathInstance path,
+        public IList<CatalogItem> GetCatalogItem(string accountName, CatalogPathInstance path,
             DataLakeAnalyticsEnums.CatalogItemType itemType)
         {
             var isList = IsCatalogItemOrList(path, itemType);
@@ -375,22 +370,22 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 case DataLakeAnalyticsEnums.CatalogItemType.Database:
                     if (isList)
                     {
-                        toReturn.AddRange(GetDatabases( accountName));
+                        toReturn.AddRange(GetDatabases(accountName));
                     }
                     else
                     {
-                        toReturn.Add(GetDatabase( accountName, path.DatabaseName));
+                        toReturn.Add(GetDatabase(accountName, path.DatabaseName));
                     }
 
                     break;
                 case DataLakeAnalyticsEnums.CatalogItemType.Schema:
                     if (isList)
                     {
-                        toReturn.AddRange(GetSchemas( accountName, path.DatabaseName));
+                        toReturn.AddRange(GetSchemas(accountName, path.DatabaseName));
                     }
                     else
                     {
-                        toReturn.Add(GetSchema( accountName, path.DatabaseName,
+                        toReturn.Add(GetSchema(accountName, path.DatabaseName,
                             path.SchemaAssemblyOrExternalDataSourceName));
                     }
 
@@ -398,11 +393,11 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 case DataLakeAnalyticsEnums.CatalogItemType.Assembly:
                     if (isList)
                     {
-                        toReturn.AddRange(GetAssemblies( accountName, path.DatabaseName));
+                        toReturn.AddRange(GetAssemblies(accountName, path.DatabaseName));
                     }
                     else
                     {
-                        toReturn.Add(GetAssembly( accountName, path.DatabaseName,
+                        toReturn.Add(GetAssembly(accountName, path.DatabaseName,
                             path.SchemaAssemblyOrExternalDataSourceName));
                     }
 
@@ -410,11 +405,11 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 case DataLakeAnalyticsEnums.CatalogItemType.ExternalDataSource:
                     if (isList)
                     {
-                        toReturn.AddRange(GetExternalDataSources( accountName, path.DatabaseName));
+                        toReturn.AddRange(GetExternalDataSources(accountName, path.DatabaseName));
                     }
                     else
                     {
-                        toReturn.Add(GetExternalDataSource( accountName, path.DatabaseName,
+                        toReturn.Add(GetExternalDataSource(accountName, path.DatabaseName,
                             path.SchemaAssemblyOrExternalDataSourceName));
                     }
 
@@ -423,11 +418,11 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 case DataLakeAnalyticsEnums.CatalogItemType.Credential:
                     if (isList)
                     {
-                        toReturn.AddRange(GetCredentials( accountName, path.DatabaseName));
+                        toReturn.AddRange(GetCredentials(accountName, path.DatabaseName));
                     }
                     else
                     {
-                        toReturn.Add(GetCredential( accountName, path.DatabaseName,
+                        toReturn.Add(GetCredential(accountName, path.DatabaseName,
                             path.SchemaAssemblyOrExternalDataSourceName));
                     }
 
@@ -435,12 +430,12 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 case DataLakeAnalyticsEnums.CatalogItemType.Table:
                     if (isList)
                     {
-                        toReturn.AddRange(GetTables( accountName, path.DatabaseName,
+                        toReturn.AddRange(GetTables(accountName, path.DatabaseName,
                             path.SchemaAssemblyOrExternalDataSourceName));
                     }
                     else
                     {
-                        toReturn.Add(GetTable( accountName, path.DatabaseName,
+                        toReturn.Add(GetTable(accountName, path.DatabaseName,
                             path.SchemaAssemblyOrExternalDataSourceName, path.TableOrTableValuedFunctionName));
                     }
 
@@ -448,12 +443,12 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 case DataLakeAnalyticsEnums.CatalogItemType.TableValuedFunction:
                     if (isList)
                     {
-                        toReturn.AddRange(GetTableValuedFunctions( accountName, path.DatabaseName,
+                        toReturn.AddRange(GetTableValuedFunctions(accountName, path.DatabaseName,
                             path.SchemaAssemblyOrExternalDataSourceName));
                     }
                     else
                     {
-                        toReturn.Add(GetTableValuedFunction( accountName, path.DatabaseName,
+                        toReturn.Add(GetTableValuedFunction(accountName, path.DatabaseName,
                             path.SchemaAssemblyOrExternalDataSourceName, path.TableOrTableValuedFunctionName));
                     }
 
@@ -461,12 +456,12 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 case DataLakeAnalyticsEnums.CatalogItemType.TableStatistics:
                     if (isList)
                     {
-                        toReturn.AddRange(GetTableStatistics( accountName, path.DatabaseName,
+                        toReturn.AddRange(GetTableStatistics(accountName, path.DatabaseName,
                             path.SchemaAssemblyOrExternalDataSourceName, path.TableOrTableValuedFunctionName));
                     }
                     else
                     {
-                        toReturn.Add(GetTableStatistic( accountName, path.DatabaseName,
+                        toReturn.Add(GetTableStatistic(accountName, path.DatabaseName,
                             path.SchemaAssemblyOrExternalDataSourceName, path.TableOrTableValuedFunctionName,
                             path.TableStatisticsName));
                     }
@@ -475,12 +470,12 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 case DataLakeAnalyticsEnums.CatalogItemType.View:
                     if (isList)
                     {
-                        toReturn.AddRange(GetViews( accountName, path.DatabaseName,
+                        toReturn.AddRange(GetViews(accountName, path.DatabaseName,
                             path.SchemaAssemblyOrExternalDataSourceName));
                     }
                     else
                     {
-                        toReturn.Add(GetView( accountName, path.DatabaseName,
+                        toReturn.Add(GetView(accountName, path.DatabaseName,
                             path.SchemaAssemblyOrExternalDataSourceName, path.TableOrTableValuedFunctionName));
                     }
 
@@ -489,12 +484,12 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 case DataLakeAnalyticsEnums.CatalogItemType.Procedure:
                     if (isList)
                     {
-                        toReturn.AddRange(GetProcedures( accountName, path.DatabaseName,
+                        toReturn.AddRange(GetProcedures(accountName, path.DatabaseName,
                             path.SchemaAssemblyOrExternalDataSourceName));
                     }
                     else
                     {
-                        toReturn.Add(GetProcedure( accountName, path.DatabaseName,
+                        toReturn.Add(GetProcedure(accountName, path.DatabaseName,
                             path.SchemaAssemblyOrExternalDataSourceName, path.TableOrTableValuedFunctionName));
                     }
 
@@ -502,7 +497,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 case DataLakeAnalyticsEnums.CatalogItemType.Types:
                     if (isList)
                     {
-                        toReturn.AddRange(GetTypes( accountName, path.DatabaseName,
+                        toReturn.AddRange(GetTypes(accountName, path.DatabaseName,
                             path.SchemaAssemblyOrExternalDataSourceName));
                     }
                     else
@@ -518,7 +513,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                     }
                     else
                     {
-                        toReturn.Add(GetSecret( accountName, path.DatabaseName,
+                        toReturn.Add(GetSecret(accountName, path.DatabaseName,
                             path.SchemaAssemblyOrExternalDataSourceName));
                     }
 
@@ -528,15 +523,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             return toReturn;
         }
 
-        private USqlDatabase GetDatabase( string accountName, string databaseName)
+        private USqlDatabase GetDatabase(string accountName, string databaseName)
         {
-            return _catalogClient.Catalog.GetDatabase( accountName, databaseName);
+            return _catalogClient.Catalog.GetDatabase(databaseName, accountName);
         }
 
-        private IList<USqlDatabase> GetDatabases( string accountName)
+        private IList<USqlDatabase> GetDatabases(string accountName)
         {
             List<USqlDatabase> toReturn = new List<USqlDatabase>();
-            var response =  _catalogClient.Catalog.ListDatabases( accountName);
+            var response =  _catalogClient.Catalog.ListDatabases(accountName);
             toReturn.AddRange(response);
             while (!string.IsNullOrEmpty(response.NextPageLink))
             {
@@ -547,17 +542,17 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             return toReturn;
         }
 
-        private USqlAssembly GetAssembly( string accountName, string databaseName,
+        private USqlAssembly GetAssembly(string accountName, string databaseName,
             string assemblyName)
         {
             return
-                _catalogClient.Catalog.GetAssembly( accountName, databaseName, assemblyName);
+                _catalogClient.Catalog.GetAssembly(databaseName, assemblyName, accountName);
         }
 
-        private IList<USqlAssemblyClr> GetAssemblies( string accountName, string databaseName)
+        private IList<USqlAssemblyClr> GetAssemblies(string accountName, string databaseName)
         {
             List<USqlAssemblyClr> toReturn = new List<USqlAssemblyClr>();
-            var response = _catalogClient.Catalog.ListAssemblies(accountName, databaseName);
+            var response = _catalogClient.Catalog.ListAssemblies(databaseName, accountName);
             toReturn.AddRange(response);
             while (!string.IsNullOrEmpty(response.NextPageLink))
             {
@@ -568,19 +563,19 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             return toReturn;
         }
 
-        private USqlExternalDataSource GetExternalDataSource( string accountName,
+        private USqlExternalDataSource GetExternalDataSource(string accountName,
             string databaseName, string dataSourceName)
         {
             return
-                _catalogClient.Catalog.GetExternalDataSource( accountName, databaseName,
-                    dataSourceName);
+                _catalogClient.Catalog.GetExternalDataSource(databaseName,
+                    dataSourceName, accountName);
         }
 
-        private IList<USqlExternalDataSource> GetExternalDataSources( string accountName,
+        private IList<USqlExternalDataSource> GetExternalDataSources(string accountName,
             string databaseName)
         {
             List<USqlExternalDataSource> toReturn = new List<USqlExternalDataSource>();
-            var response = _catalogClient.Catalog.ListExternalDataSources(accountName, databaseName);
+            var response = _catalogClient.Catalog.ListExternalDataSources(databaseName, accountName);
             toReturn.AddRange(response);
             while (!string.IsNullOrEmpty(response.NextPageLink))
             {
@@ -591,19 +586,19 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             return toReturn;
         }
 
-        private USqlCredential GetCredential( string accountName,
+        private USqlCredential GetCredential(string accountName,
             string databaseName, string credName)
         {
             return
-                _catalogClient.Catalog.GetCredential( accountName, databaseName,
-                    credName);
+                _catalogClient.Catalog.GetCredential(databaseName,
+                    credName, accountName);
         }
 
-        private IList<USqlCredential> GetCredentials( string accountName,
+        private IList<USqlCredential> GetCredentials(string accountName,
             string databaseName)
         {
             List<USqlCredential> toReturn = new List<USqlCredential>();
-            var response = _catalogClient.Catalog.ListCredentials(accountName, databaseName);
+            var response = _catalogClient.Catalog.ListCredentials(databaseName, accountName);
             toReturn.AddRange(response);
             while (!string.IsNullOrEmpty(response.NextPageLink))
             {
@@ -614,16 +609,16 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             return toReturn;
         }
 
-        private USqlSchema GetSchema( string accountName, string databaseName,
+        private USqlSchema GetSchema(string accountName, string databaseName,
             string schemaName)
         {
-            return _catalogClient.Catalog.GetSchema( accountName, databaseName, schemaName);
+            return _catalogClient.Catalog.GetSchema(databaseName, schemaName, accountName);
         }
 
-        private IList<USqlSchema> GetSchemas( string accountName, string databaseName)
+        private IList<USqlSchema> GetSchemas(string accountName, string databaseName)
         {
             List<USqlSchema> toReturn = new List<USqlSchema>();
-            var response = _catalogClient.Catalog.ListSchemas(accountName, databaseName);
+            var response = _catalogClient.Catalog.ListSchemas(databaseName, accountName);
             toReturn.AddRange(response);
             while (!string.IsNullOrEmpty(response.NextPageLink))
             {
@@ -634,18 +629,18 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             return toReturn;
         }
 
-        private USqlTable GetTable( string accountName, string databaseName, string schemaName,
+        private USqlTable GetTable(string accountName, string databaseName, string schemaName,
             string tableName)
         {
             return
-                _catalogClient.Catalog.GetTable( accountName, databaseName, schemaName, tableName);
+                _catalogClient.Catalog.GetTable(databaseName, schemaName, tableName, accountName);
         }
 
-        private IList<USqlTable> GetTables( string accountName, string databaseName,
+        private IList<USqlTable> GetTables(string accountName, string databaseName,
             string schemaName)
         {
             List<USqlTable> toReturn = new List<USqlTable>();
-            var response = _catalogClient.Catalog.ListTables(accountName, databaseName, schemaName);
+            var response = _catalogClient.Catalog.ListTables(databaseName, schemaName, accountName);
             toReturn.AddRange(response);
             while (!string.IsNullOrEmpty(response.NextPageLink))
             {
@@ -656,19 +651,19 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             return toReturn;
         }
 
-        private USqlTableValuedFunction GetTableValuedFunction( string accountName,
+        private USqlTableValuedFunction GetTableValuedFunction(string accountName,
             string databaseName, string schemaName, string tableValuedFunctionName)
         {
             return
-                _catalogClient.Catalog.GetTableValuedFunction( accountName, databaseName, schemaName,
-                    tableValuedFunctionName);
+                _catalogClient.Catalog.GetTableValuedFunction(databaseName, schemaName,
+                    tableValuedFunctionName, accountName);
         }
 
-        private IList<USqlTableValuedFunction> GetTableValuedFunctions( string accountName,
+        private IList<USqlTableValuedFunction> GetTableValuedFunctions(string accountName,
             string databaseName, string schemaName)
         {
             List<USqlTableValuedFunction> toReturn = new List<USqlTableValuedFunction>();
-            var response = _catalogClient.Catalog.ListTableValuedFunctions(accountName, databaseName, schemaName);
+            var response = _catalogClient.Catalog.ListTableValuedFunctions(databaseName, schemaName, accountName);
             toReturn.AddRange(response);
             while (!string.IsNullOrEmpty(response.NextPageLink))
             {
@@ -679,19 +674,19 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             return toReturn;
         }
 
-        private USqlTableStatistics GetTableStatistic( string accountName, string databaseName,
+        private USqlTableStatistics GetTableStatistic(string accountName, string databaseName,
             string schemaName, string tableName, string statisticsName)
         {
             return
-                _catalogClient.Catalog.GetTableStatistic( accountName, databaseName, schemaName,
-                    tableName, statisticsName);
+                _catalogClient.Catalog.GetTableStatistic(databaseName, schemaName,
+                    tableName, statisticsName, accountName);
         }
 
-        private IList<USqlTableStatistics> GetTableStatistics( string accountName,
+        private IList<USqlTableStatistics> GetTableStatistics(string accountName,
             string databaseName, string schemaName, string tableName)
         {
             List<USqlTableStatistics> toReturn = new List<USqlTableStatistics>();
-            var response = _catalogClient.Catalog.ListTableStatistics(accountName, databaseName, schemaName, tableName);
+            var response = _catalogClient.Catalog.ListTableStatistics(databaseName, schemaName, tableName, accountName);
             toReturn.AddRange(response);
             while (!string.IsNullOrEmpty(response.NextPageLink))
             {
@@ -702,18 +697,18 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             return toReturn;
         }
 
-        private USqlView GetView( string accountName, string databaseName, string schemaName,
+        private USqlView GetView(string accountName, string databaseName, string schemaName,
             string viewName)
         {
             return
-                _catalogClient.Catalog.GetView( accountName, databaseName, schemaName, viewName);
+                _catalogClient.Catalog.GetView(databaseName, schemaName, viewName, accountName);
         }
 
-        private IList<USqlView> GetViews( string accountName, string databaseName,
+        private IList<USqlView> GetViews(string accountName, string databaseName,
             string schemaName)
         {
             List<USqlView> toReturn = new List<USqlView>();
-            var response = _catalogClient.Catalog.ListViews(accountName, databaseName, schemaName);
+            var response = _catalogClient.Catalog.ListViews(databaseName, schemaName, accountName);
             toReturn.AddRange(response);
             while (!string.IsNullOrEmpty(response.NextPageLink))
             {
@@ -724,18 +719,18 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             return toReturn;
         }
 
-        private USqlProcedure GetProcedure( string accountName, string databaseName, string schemaName,
+        private USqlProcedure GetProcedure(string accountName, string databaseName, string schemaName,
             string procName)
         {
             return
-                _catalogClient.Catalog.GetProcedure( accountName, databaseName, schemaName, procName);
+                _catalogClient.Catalog.GetProcedure(databaseName, schemaName, procName, accountName);
         }
 
-        private IList<USqlProcedure> GetProcedures( string accountName, string databaseName,
+        private IList<USqlProcedure> GetProcedures(string accountName, string databaseName,
             string schemaName)
         {
             List<USqlProcedure> toReturn = new List<USqlProcedure>();
-            var response = _catalogClient.Catalog.ListProcedures(accountName, databaseName, schemaName);
+            var response = _catalogClient.Catalog.ListProcedures(databaseName, schemaName, accountName);
             toReturn.AddRange(response);
             while (!string.IsNullOrEmpty(response.NextPageLink))
             {
@@ -746,11 +741,11 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             return toReturn;
         }
 
-        private IList<USqlType> GetTypes( string accountName, string databaseName,
+        private IList<USqlType> GetTypes(string accountName, string databaseName,
             string schemaName)
         {
             List<USqlType> toReturn = new List<USqlType>();
-            var response = _catalogClient.Catalog.ListTypes(accountName, databaseName, schemaName);
+            var response = _catalogClient.Catalog.ListTypes(databaseName, schemaName, accountName);
             toReturn.AddRange(response);
             while (!string.IsNullOrEmpty(response.NextPageLink))
             {
@@ -773,14 +768,14 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         public JobInformation SubmitJob( string accountName, JobInformation jobToSubmit)
         {
             return
-                _jobClient.Job.Create( accountName, jobToSubmit.JobId,
-                    jobToSubmit);
+                _jobClient.Job.Create(jobToSubmit.JobId,
+                    jobToSubmit, accountName);
         }
 
         public JobInformation BuildJob( string accountName, JobInformation jobToBuild)
         {
             return
-                _jobClient.Job.Build( accountName, jobToBuild);
+                _jobClient.Job.Build(jobToBuild, accountName);
         }
 
         public void CancelJob( string accountName, Guid jobId)

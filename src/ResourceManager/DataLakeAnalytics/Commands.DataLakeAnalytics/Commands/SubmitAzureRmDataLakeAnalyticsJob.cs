@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             if (USql)
             {
                 jobType = JobType.USql;
-                var sqlIpProperties = new USqlProperties
+                var sqlIpProperties = new USqlJobProperties
                 {
                     Script = Script
                 };
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             else if (Hive)
             {
                 jobType = JobType.Hive;
-                properties = new HiveProperties
+                properties = new HiveJobProperties
                 {
                     Script = Script
                 };

@@ -104,14 +104,14 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                         if (Include == DataLakeAnalyticsEnums.ExtendedJobData.All ||
                             Include == DataLakeAnalyticsEnums.ExtendedJobData.DebugInfo)
                         {
-                            ((USqlProperties) jobDetails.Properties).DebugData =
+                            ((USqlJobProperties) jobDetails.Properties).DebugData =
                                 DataLakeAnalyticsClient.GetDebugDataPaths(Account, JobId);
                         }
 
                         if (Include == DataLakeAnalyticsEnums.ExtendedJobData.All ||
                             Include == DataLakeAnalyticsEnums.ExtendedJobData.Statistics)
                         {
-                            ((USqlProperties) jobDetails.Properties).Statistics =
+                            ((USqlJobProperties) jobDetails.Properties).Statistics =
                                 DataLakeAnalyticsClient.GetJobStatistics(Account, JobId);
                         }
                     }

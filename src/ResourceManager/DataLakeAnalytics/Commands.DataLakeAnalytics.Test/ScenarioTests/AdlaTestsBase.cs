@@ -18,7 +18,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using Microsoft.Azure.Gallery;
-using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.DataLake.Store;
@@ -33,6 +32,7 @@ using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtili
 using Microsoft.Azure.Management.DataLake.Analytics;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
 {
@@ -51,9 +51,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
 
         public SubscriptionClient SubscriptionClient { get; private set; }
 
-        public DataLakeStoreManagementClient DataLakeStoreManagementClient { get; private set; }
+        public DataLakeStoreAccountManagementClient DataLakeStoreAccountManagementClient { get; private set; }
 
-        public DataLakeAnalyticsManagementClient DataLakeAnalyticsManagementClient { get; private set; }
+        public DataLakeAnalyticsAccountManagementClient DataLakeAnalyticsAccountManagementClient { get; private set; }
 
         public DataLakeAnalyticsJobManagementClient DataLakeAnalyticsJobManagementClient { get; private set; }
 
@@ -184,8 +184,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         {
             ResourceManagementClient = GetResourceManagementClient();
             SubscriptionClient = GetSubscriptionClient();
-            DataLakeStoreManagementClient = GetDataLakeStoreManagementClient(context);
-            DataLakeAnalyticsManagementClient = GetDataLakeAnalyticsManagementClient(context);
+            DataLakeStoreAccountManagementClient = GetDataLakeStoreAccountManagementClient(context);
+            DataLakeAnalyticsAccountManagementClient = GetDataLakeAnalyticsAccountManagementClient(context);
             DataLakeAnalyticsJobManagementClient = GetDataLakeAnalyticsJobManagementClient(context);
             DataLakeAnalyticsCatalogManagementClient = GetDataLakeAnalyticsCatalogManagementClient(context);
             AuthorizationManagementClient = GetAuthorizationManagementClient(context);
@@ -193,10 +193,10 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
             GalleryClient = GetGalleryClient();
             helper.SetupManagementClients(ResourceManagementClient,
                 SubscriptionClient,
-                DataLakeAnalyticsManagementClient,
+                DataLakeAnalyticsAccountManagementClient,
                 DataLakeAnalyticsJobManagementClient,
                 DataLakeAnalyticsCatalogManagementClient,
-                DataLakeStoreManagementClient,
+                DataLakeStoreAccountManagementClient,
                 AuthorizationManagementClient,
                 StorageManagementClient,
                 GalleryClient
@@ -224,22 +224,21 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
             return LegacyTest.TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
         }
 
-        private DataLakeStoreManagementClient GetDataLakeStoreManagementClient(MockContext context)
+        private DataLakeStoreAccountManagementClient GetDataLakeStoreAccountManagementClient(MockContext context)
         {
-            return context.GetServiceClient<DataLakeStoreManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<DataLakeStoreAccountManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private DataLakeAnalyticsManagementClient GetDataLakeAnalyticsManagementClient(MockContext context)
+        private DataLakeAnalyticsAccountManagementClient GetDataLakeAnalyticsAccountManagementClient(MockContext context)
         {
-            return context.GetServiceClient<DataLakeAnalyticsManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<DataLakeAnalyticsAccountManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private DataLakeAnalyticsJobManagementClient GetDataLakeAnalyticsJobManagementClient(MockContext context)
         {
             var currentEnvironment = TestEnvironmentFactory.GetTestEnvironment();
-            var toReturn = context.GetServiceClient<DataLakeAnalyticsJobManagementClient>(currentEnvironment);
-            toReturn.BaseUri = new System.Uri("https://accountname.jobserviceuri");
-            toReturn.Jobserviceuri =
+            var toReturn = context.GetServiceClient<DataLakeAnalyticsJobManagementClient>(currentEnvironment, true);
+            toReturn.AdlaJobDnsSuffix =
                 currentEnvironment.Endpoints.DataLakeAnalyticsJobAndCatalogServiceUri.OriginalString.Replace("https://", "");
             return toReturn;
         }
@@ -247,9 +246,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         private DataLakeAnalyticsCatalogManagementClient GetDataLakeAnalyticsCatalogManagementClient(MockContext context)
         {
             var currentEnvironment = TestEnvironmentFactory.GetTestEnvironment();
-            var toReturn = context.GetServiceClient<DataLakeAnalyticsCatalogManagementClient>(currentEnvironment);
-            toReturn.BaseUri = new System.Uri("https://accountname.catalogserviceuri");
-            toReturn.Catalogserviceuri =
+            var toReturn = context.GetServiceClient<DataLakeAnalyticsCatalogManagementClient>(currentEnvironment, true);
+            toReturn.AdlaCatalogDnsSuffix =
                 currentEnvironment.Endpoints.DataLakeAnalyticsJobAndCatalogServiceUri.OriginalString.Replace("https://", "");
             return toReturn;
         }

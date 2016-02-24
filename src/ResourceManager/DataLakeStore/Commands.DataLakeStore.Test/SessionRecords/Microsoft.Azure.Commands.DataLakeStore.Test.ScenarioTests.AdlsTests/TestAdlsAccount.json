@@ -262,7 +262,7 @@
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreManagementClient/0.9.6.0"
+          "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreAccountManagementClient/0.9.6.0"
         ]
       },
       "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.DataLakeStore/accounts/onesdk2170' under resource group 'onesdk5323' was not found.\"\r\n  }\r\n}",
@@ -316,7 +316,7 @@
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreManagementClient/0.9.6.0"
+          "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreAccountManagementClient/0.9.6.0"
         ]
       },
       "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.DataLakeStore/accounts/onesdk2170' under resource group 'onesdk5323' was not found.\"\r\n  }\r\n}",
@@ -364,7 +364,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreManagementClient/0.9.6.0"
+          "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreAccountManagementClient/0.9.6.0"
         ]
       },
       "ResponseBody": "{\r\n  \"properties\": {\r\n    \"firewallState\": \"Disabled\",\r\n    \"firewallRules\": [],\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"state\": \"Active\",\r\n    \"endpoint\": \"onesdk2170.azuredatalakestore.net\",\r\n    \"creationTime\": \"2016-01-15T02:47:32.4059677Z\",\r\n    \"lastModifiedTime\": \"2016-01-15T02:47:32.4059677Z\"\r\n  },\r\n  \"location\": \"East US 2\",\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/onesdk5323/providers/Microsoft.DataLakeStore/accounts/onesdk2170\",\r\n  \"name\": \"onesdk2170\",\r\n  \"type\": \"Microsoft.DataLakeStore/accounts\"\r\n}",
@@ -427,7 +427,7 @@
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreManagementClient/0.9.6.0"
+          "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreAccountManagementClient/0.9.6.0"
         ]
       },
       "ResponseBody": "{\r\n  \"properties\": {\r\n    \"firewallState\": \"Disabled\",\r\n    \"firewallRules\": [],\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"state\": \"Active\",\r\n    \"endpoint\": \"onesdk2170.azuredatalakestore.net\",\r\n    \"creationTime\": \"2016-01-15T02:47:32.4059677Z\",\r\n    \"lastModifiedTime\": \"2016-01-15T02:47:32.4059677Z\"\r\n  },\r\n  \"location\": \"East US 2\",\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/onesdk5323/providers/Microsoft.DataLakeStore/accounts/onesdk2170\",\r\n  \"name\": \"onesdk2170\",\r\n  \"type\": \"Microsoft.DataLakeStore/accounts\"\r\n}",
@@ -490,7 +490,7 @@
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreManagementClient/0.9.6.0"
+          "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreAccountManagementClient/0.9.6.0"
         ]
       },
       "ResponseBody": "{\r\n  \"properties\": {\r\n    \"firewallState\": \"Disabled\",\r\n    \"firewallRules\": [],\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"state\": \"Active\",\r\n    \"endpoint\": \"onesdk2170.azuredatalakestore.net\",\r\n    \"creationTime\": \"2016-01-15T02:47:32.4059677Z\",\r\n    \"lastModifiedTime\": \"2016-01-15T02:47:32.4059677Z\"\r\n  },\r\n  \"location\": \"East US 2\",\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/onesdk5323/providers/Microsoft.DataLakeStore/accounts/onesdk2170\",\r\n  \"name\": \"onesdk2170\",\r\n  \"type\": \"Microsoft.DataLakeStore/accounts\"\r\n}",
@@ -553,7 +553,7 @@
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreManagementClient/0.9.6.0"
+          "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreAccountManagementClient/0.9.6.0"
         ]
       },
       "ResponseBody": "{\r\n  \"properties\": {\r\n    \"firewallState\": \"Disabled\",\r\n    \"firewallRules\": [],\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"state\": \"Active\",\r\n    \"endpoint\": \"onesdk2170.azuredatalakestore.net\",\r\n    \"creationTime\": \"2016-01-15T02:47:32.4059677Z\",\r\n    \"lastModifiedTime\": \"2016-01-15T02:47:32.4059677Z\"\r\n  },\r\n  \"location\": \"East US 2\",\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/onesdk5323/providers/Microsoft.DataLakeStore/accounts/onesdk2170\",\r\n  \"name\": \"onesdk2170\",\r\n  \"type\": \"Microsoft.DataLakeStore/accounts\"\r\n}",
@@ -616,7 +616,7 @@
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreManagementClient/0.9.6.0"
+          "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreAccountManagementClient/0.9.6.0"
         ]
       },
       "ResponseBody": "{\r\n  \"properties\": {\r\n    \"firewallState\": \"Disabled\",\r\n    \"firewallRules\": [],\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"state\": \"Active\",\r\n    \"endpoint\": \"onesdk2170.azuredatalakestore.net\",\r\n    \"creationTime\": \"2016-01-15T02:47:32.4059677Z\",\r\n    \"lastModifiedTime\": \"2016-01-15T02:48:13.9266443Z\"\r\n  },\r\n  \"location\": \"East US 2\",\r\n  \"tags\": {\r\n    \"TestTag\": \"TestUpdate\"\r\n  },\r\n  \"id\": \"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/onesdk5323/providers/Microsoft.DataLakeStore/accounts/onesdk2170\",\r\n  \"name\": \"onesdk2170\",\r\n  \"type\": \"Microsoft.DataLakeStore/accounts\"\r\n}",
@@ -679,7 +679,7 @@
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreManagementClient/0.9.6.0"
+          "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreAccountManagementClient/0.9.6.0"
         ]
       },
       "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.DataLakeStore/accounts/onesdk2170' under resource group 'onesdk5323' was not found.\"\r\n  }\r\n}",
@@ -733,7 +733,7 @@
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreManagementClient/0.9.6.0"
+          "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreAccountManagementClient/0.9.6.0"
         ]
       },
       "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.DataLakeStore/accounts/onesdk2170' under resource group 'onesdk5323' was not found.\"\r\n  }\r\n}",
@@ -793,7 +793,7 @@
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreManagementClient/0.9.6.0"
+          "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreAccountManagementClient/0.9.6.0"
         ]
       },
       "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"state\": null,\r\n    \"endpoint\": null,\r\n    \"creationTime\": null,\r\n    \"lastModifiedTime\": null\r\n  },\r\n  \"location\": \"East US 2\",\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/onesdk5323/providers/Microsoft.DataLakeStore/accounts/onesdk2170\",\r\n  \"name\": \"onesdk2170\",\r\n  \"type\": \"Microsoft.DataLakeStore/accounts\"\r\n}",
@@ -859,7 +859,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreManagementClient/0.9.6.0"
+          "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreAccountManagementClient/0.9.6.0"
         ]
       },
       "ResponseBody": "{\r\n  \"status\": \"InProgress\"\r\n}",
@@ -916,7 +916,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreManagementClient/0.9.6.0"
+          "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreAccountManagementClient/0.9.6.0"
         ]
       },
       "ResponseBody": "{\r\n  \"status\": \"Succeeded\"\r\n}",
@@ -985,7 +985,7 @@
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreManagementClient/0.9.6.0"
+          "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreAccountManagementClient/0.9.6.0"
         ]
       },
       "ResponseBody": "{\r\n  \"properties\": {\r\n    \"firewallState\": \"Disabled\",\r\n    \"firewallRules\": [],\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"state\": \"Active\",\r\n    \"endpoint\": \"onesdk2170.azuredatalakestore.net\",\r\n    \"creationTime\": \"2016-01-15T02:47:32.4059677Z\",\r\n    \"lastModifiedTime\": \"2016-01-15T02:48:13.9266443Z\"\r\n  },\r\n  \"location\": \"East US 2\",\r\n  \"tags\": {\r\n    \"TestTag\": \"TestUpdate\"\r\n  },\r\n  \"id\": \"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/onesdk5323/providers/Microsoft.DataLakeStore/accounts/onesdk2170\",\r\n  \"name\": \"onesdk2170\",\r\n  \"type\": \"Microsoft.DataLakeStore/accounts\"\r\n}",
@@ -1048,7 +1048,7 @@
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreManagementClient/0.9.6.0"
+          "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreAccountManagementClient/0.9.6.0"
         ]
       },
       "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"state\": \"Active\",\r\n        \"endpoint\": \"onesdk2170.azuredatalakestore.net\",\r\n        \"creationTime\": \"2016-01-15T02:47:32.4059677Z\",\r\n        \"lastModifiedTime\": \"2016-01-15T02:48:13.9266443Z\"\r\n      },\r\n      \"location\": \"East US 2\",\r\n      \"tags\": {\r\n        \"TestTag\": \"TestUpdate\"\r\n      },\r\n      \"id\": \"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/onesdk5323/providers/Microsoft.DataLakeStore/accounts/onesdk2170\",\r\n      \"name\": \"onesdk2170\",\r\n      \"type\": \"Microsoft.DataLakeStore/accounts\"\r\n    }\r\n  ]\r\n}",
@@ -1111,7 +1111,7 @@
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreManagementClient/0.9.6.0"
+          "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreAccountManagementClient/0.9.6.0"
         ]
       },
       "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"state\": \"Active\",\r\n        \"endpoint\": \"onesdk3710.azuredatalakestore.net\",\r\n        \"creationTime\": \"2016-01-13T23:39:07.5481412Z\",\r\n        \"lastModifiedTime\": \"2016-01-13T23:39:07.5481412Z\"\r\n      },\r\n      \"location\": \"East US 2\",\r\n      \"tags\": {},\r\n      \"id\": \"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/onesdk2781/providers/Microsoft.DataLakeStore/accounts/onesdk3710\",\r\n      \"name\": \"onesdk3710\",\r\n      \"type\": \"Microsoft.DataLakeStore/accounts\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"state\": \"Active\",\r\n        \"endpoint\": \"onesdk2248.azuredatalakestore.net\",\r\n        \"creationTime\": \"2016-01-13T23:38:02.3295561Z\",\r\n        \"lastModifiedTime\": \"2016-01-13T23:38:02.3295561Z\"\r\n      },\r\n      \"location\": \"East US 2\",\r\n      \"tags\": {},\r\n      \"id\": \"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/onesdk4517/providers/Microsoft.DataLakeStore/accounts/onesdk2248\",\r\n      \"name\": \"onesdk2248\",\r\n      \"type\": \"Microsoft.DataLakeStore/accounts\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"state\": \"Active\",\r\n        \"endpoint\": \"onesdk2170.azuredatalakestore.net\",\r\n        \"creationTime\": \"2016-01-15T02:47:32.4059677Z\",\r\n        \"lastModifiedTime\": \"2016-01-15T02:48:13.9266443Z\"\r\n      },\r\n      \"location\": \"East US 2\",\r\n      \"tags\": {\r\n        \"TestTag\": \"TestUpdate\"\r\n      },\r\n      \"id\": \"/subscriptions/53d9063d-87ae-4ea8-be90-3686c3b8669f/resourceGroups/onesdk5323/providers/Microsoft.DataLakeStore/accounts/onesdk2170\",\r\n      \"name\": \"onesdk2170\",\r\n      \"type\": \"Microsoft.DataLakeStore/accounts\"\r\n    }\r\n  ]\r\n}",
@@ -1174,7 +1174,7 @@
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreManagementClient/0.9.6.0"
+          "Microsoft.Azure.Management.DataLake.Store.DataLakeStoreAccountManagementClient/0.9.6.0"
         ]
       },
       "ResponseBody": "",

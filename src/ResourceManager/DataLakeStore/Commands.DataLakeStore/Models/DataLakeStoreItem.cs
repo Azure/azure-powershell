@@ -29,25 +29,12 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
     {
         public DateTimeOffset LastWriteTime { get; set; }
         public string Name { get; set; }
-        public DataLakeStoreItem(FileStatusProperties property)
+        public DataLakeStoreItem(FileStatusProperties property, string optionalPath = "") :
+            base(property.AccessTime, property.BlockSize, property.ChildrenNum, property.Group, property.Length, property.ModificationTime, property.Owner, string.IsNullOrEmpty(optionalPath) ? property.PathSuffix : optionalPath, property.Permission, property.Type)
         {
-            // copy over all initial properties
-            this.PathSuffix = property.PathSuffix;
-            this.BlockSize = property.BlockSize;
-            this.ChildrenNum = property.ChildrenNum;
-            this.FileId = property.FileId;
-            this.Group = property.Group;
-            this.Length = property.Length;
-            this.ModificationTime = property.ModificationTime;
-            this.Owner = property.Owner;
-            this.Permission = property.Permission;
-            this.AccessTime = property.AccessTime;
-            this.Replication = property.Replication;
-            this.Type = property.Type;
-
             // create two new properties
             this.LastWriteTime = new DateTime(1970, 1, 1, 0, 0, 0, 0).AddMilliseconds((long)this.ModificationTime).ToLocalTime();
-            this.Name = this.PathSuffix;
+            this.Name = property.PathSuffix;
         }
     }
 }
