@@ -14,6 +14,7 @@
 
 using System;
 using AutoMapper;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageRepository.ExtensionPublishing;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageRepository.Model;
 using Microsoft.WindowsAzure.Management.Compute.Models;
@@ -54,6 +55,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageReposit
             Mapper.CreateMap<ExtensionInputEndpoint, ExtensionEndpointConfiguration.InputEndpoint>();
             Mapper.CreateMap<ExtensionInstanceInputEndpoint, ExtensionEndpointConfiguration.InstanceInputEndpoint>();
             Mapper.CreateMap<ExtensionEndpointConfigSet, ExtensionEndpointConfiguration>();
+
+            Mapper.CreateMap<ExtensionImage, ExtensionImageContext>()
+                  .ForMember(c => c.ThumbprintAlgorithm, o => o.MapFrom(r => r.Certificate.ThumbprintAlgorithm))
+                  .ForMember(c => c.ExtensionName, o => o.MapFrom(r => r.Type));
 
             Mapper.CreateMap<PublishAzurePlatformExtensionCommand, ExtensionImageRegisterParameters>()
                   .ForMember(c => c.IsJsonExtension, o => o.MapFrom(r => !r.XmlExtension.IsPresent))
