@@ -1,4 +1,4 @@
-##2016.03.08 version 1.3.0
+﻿##2016.03.08 version 1.3.0
 * Azure LogicApp: New cmdlets for managing LogicApps  
   * Get-AzureLogicAppAccessKey
   * Get-AzureLogicApp
@@ -22,6 +22,11 @@
     - New-AzureStorageShareSASToken
     - New-AzureStorageQueueSASToken
     - New-AzureStorageTableSASToken
+* Azure SQL DB Backup/restore
+  * Get-AzureRmSqlDatabaseGeoBackup
+  * Get-AzureRmSqlDeletedDatabaseBackup
+  * Restore-AzureRmSqlDatabase
+    * This cmdlet accepts as pipelined input the result of one of the first two cmdlets (or Get-AzureRmSqlDatabase if restoring a live DB to a point-in-time)
 
 ## 2016.02.04 version 1.2.1
 * Fix installer issue - remove PSGallery modules on install
