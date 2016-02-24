@@ -55,7 +55,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             int diskSize2 = 50;
             int lunSlot2 = 2;
 
-
             string ep1Name = "tcp1";
             int ep1LocalPort = 60010;
             int ep1PublicPort = 60011;
@@ -278,6 +277,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 var endpoints = vmPowershellCmdlets.GetAzureEndPoint(vm);
                 Assert.IsTrue(endpoints.Count(e => e.Name == "PowerShell" && e.LocalPort == 5986 && e.Protocol == "tcp") == 1);
                 Assert.IsTrue(endpoints.Count(e => e.Name == "RemoteDesktop" && e.LocalPort == 3389 && e.Protocol == "tcp") == 1);
+
+                //
+                // Verify DebugSettings
+                //
+                Assert.IsTrue(vm.DebugSettings.BootDiagnosticsEnabled);
 
                 //
                 // Verify AzureDns
