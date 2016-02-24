@@ -25,7 +25,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     /// <summary>
     /// create a new azure container
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, StorageNouns.ContainerStoredAccessPolicy), OutputType(typeof(String))]
+    [Cmdlet(VerbsCommon.Set, StorageNouns.ContainerStoredAccessPolicy, SupportsShouldProcess=true, ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(String))]
     public class SetAzureStorageContainerStoredAccessPolicyCommand : StorageCloudBlobCmdletBase
     {
         [Alias("N", "Name")]
@@ -114,7 +114,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 throw new ArgumentException(Resources.ExpiryTimeParameterConflict);
             }
 
-            SetAzureContainerStoredAccessPolicy(Channel, Container, Policy, StartTime, ExpiryTime, Permission, NoStartTime, NoExpiryTime);
+            if (ShouldProcess(Policy))
+            {
+                SetAzureContainerStoredAccessPolicy(Channel, Container, Policy, StartTime, ExpiryTime, Permission,
+                    NoStartTime, NoExpiryTime);
+            }
         }
     }
 }

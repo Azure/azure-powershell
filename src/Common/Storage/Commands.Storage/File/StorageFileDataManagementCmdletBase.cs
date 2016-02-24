@@ -43,8 +43,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
         /// <summary>
         /// Gets or sets whether to force overwrite the existing file.
         /// </summary>
-        [Parameter(HelpMessage = "Force to overwrite the existing file.")]
-        public SwitchParameter Force
+        public virtual SwitchParameter Force
         {
             get;
             set;

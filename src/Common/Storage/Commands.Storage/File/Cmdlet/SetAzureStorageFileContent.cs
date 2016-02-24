@@ -72,6 +72,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(HelpMessage = "Returns an object representing the downloaded cloud file. By default, this cmdlet does not generate any output.")]
         public SwitchParameter PassThru { get; set; }
 
+        [Parameter(HelpMessage = "Force to overwrite the existing file.")]
+        public override SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
             // Step 1: Validate source file.

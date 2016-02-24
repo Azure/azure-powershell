@@ -185,6 +185,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [Parameter(HelpMessage = "Destination Storage context object", Mandatory = false)]
         public AzureStorageContext DestContext { get; set; }
 
+        [Parameter(HelpMessage = "Force to overwrite the existing blob or file")]
+        public SwitchParameter Force
+        {
+            get { return overwrite; }
+            set { overwrite = value; }
+        }
+
         private bool skipSourceChannelInit;
 
         /// <summary>

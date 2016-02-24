@@ -32,15 +32,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue
                    ValueFromPipelineByPropertyName = true)]
         public string Name { get; set; }
 
-        [Parameter(HelpMessage = "Force to remove the queue without confirm")]
-        public SwitchParameter Force
-        {
-            get { return force; }
-            set { force = value; }
-        }
-
-        private bool force;
-
         [Parameter(Mandatory = false, HelpMessage = "Return whether the specified queue is successfully removed")]
         public SwitchParameter PassThru { get; set; }
 
@@ -95,7 +86,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue
                 throw new ResourceNotFoundException(String.Format(Resources.QueueNotFound, name));
             }
 
-            if (force || ConfirmRemove(name))
+            if (ConfirmRemove(name))
             {
                 Channel.DeleteQueue(queue, requestOptions, OperationContext);
                 return true;

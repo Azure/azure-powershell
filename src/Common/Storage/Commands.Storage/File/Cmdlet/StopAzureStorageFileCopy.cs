@@ -8,39 +8,35 @@ using Microsoft.WindowsAzure.Storage.RetryPolicies;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
-    [Cmdlet(VerbsLifecycle.Stop, Constants.FileCopyCmdletName)]
+    [Cmdlet(VerbsLifecycle.Stop, Constants.FileCopyCmdletName, SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Medium)]
     public class StopAzureStorageFileCopyCommand : AzureStorageFileCmdletBase
     {
         [Parameter(
-            Position = 0, 
-            HelpMessage = "Target share name", 
-            Mandatory = true, 
+            Position = 0,
+            HelpMessage = "Target share name",
+            Mandatory = true,
             ParameterSetName = Constants.ShareNameParameterSetName)]
         [ValidateNotNullOrEmpty]
         public string ShareName { get; set; }
 
         [Parameter(
-            Position = 1, 
-            HelpMessage = "Target file path", 
-            Mandatory = true, 
+            Position = 1,
+            HelpMessage = "Target file path",
+            Mandatory = true,
             ParameterSetName = Constants.ShareNameParameterSetName)]
         [ValidateNotNullOrEmpty]
         public string FilePath { get; set; }
 
         [Parameter(
-            Position = 0, 
+            Position = 0,
             HelpMessage = "Target file instance", Mandatory = true,
-            ValueFromPipeline = true, 
+            ValueFromPipeline = true,
             ParameterSetName = Constants.FileParameterSetName)]
         [ValidateNotNull]
         public CloudFile File { get; set; }
 
         [Parameter(HelpMessage = "Copy Id", Mandatory = false)]
         public string CopyId { get; set; }
-
-
-        [Parameter(HelpMessage = "Whether to stop the copy when copy id is different with the one input.", Mandatory = false)]
-        public SwitchParameter Force { get; set; }
 
         /// <summary>
         /// Execute command
@@ -98,14 +94,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     abortCopyId = file.CopyState.CopyId;
                 }
 
-                if (!Force)
+                string confirmation = String.Format(Resources.ConfirmAbortFileCopyOperation, file.Uri.ToString(), abortCopyId);
+                if (!await OutputStream.ConfirmAsync(confirmation))
                 {
-                    string confirmation = String.Format(Resources.ConfirmAbortFileCopyOperation, file.Uri.ToString(), abortCopyId);
-                    if (!await OutputStream.ConfirmAsync(confirmation))
-                    {
-                        string cancelMessage = String.Format(Resources.StopCopyOperationCancelled, file.Uri.ToString());
-                        OutputStream.WriteVerbose(taskId, cancelMessage);
-                    }
+                    string cancelMessage = String.Format(Resources.StopCopyOperationCancelled, file.Uri.ToString());
+                    OutputStream.WriteVerbose(taskId, cancelMessage);
                 }
             }
             else

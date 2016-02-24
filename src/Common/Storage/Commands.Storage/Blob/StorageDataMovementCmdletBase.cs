@@ -34,20 +34,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             private set;
         }
 
-        [Parameter(HelpMessage = "Force to overwrite the existing blob or file")]
-        public SwitchParameter Force
-        {
-            get { return overwrite; }
-            set { overwrite = value; }
-        }
-
         protected bool overwrite;
 
         /// <summary>
         /// Confirm the overwrite operation
         /// </summary>
         /// <param name="msg">Confirmation message</param>
-        /// <returns>True if the opeation is confirmed, otherwise return false</returns>
+        /// <returns>True if the operation is confirmed, otherwise return false</returns>
         protected bool ConfirmOverwrite(string sourcePath, string destinationPath)
         {
             string overwriteMessage = string.Format(CultureInfo.CurrentCulture, Resources.OverwriteConfirmation, destinationPath);

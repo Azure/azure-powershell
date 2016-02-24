@@ -34,15 +34,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
            ValueFromPipelineByPropertyName = true)]
         public string Name { get; set; }
 
-        [Parameter(HelpMessage = "Force to remove the table without confirmation")]
-        public SwitchParameter Force
-        {
-            get { return force; }
-            set { force = value; }
-        }
-
-        private bool force;
-
         [Parameter(Mandatory = false, HelpMessage = "Return whether the specified table is successfully removed")]
         public SwitchParameter PassThru { get; set; }
 
@@ -96,7 +87,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
                 throw new ResourceNotFoundException(String.Format(Resources.TableNotFound, name));
             }
 
-            if (force || ConfirmRemove(name))
+            if (ConfirmRemove(name))
             {
                 Channel.Delete(table, requestOptions, OperationContext);
                 return true;

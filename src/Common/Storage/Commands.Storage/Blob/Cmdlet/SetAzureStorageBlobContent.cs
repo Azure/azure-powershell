@@ -33,7 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
     /// <summary>
     /// download blob from azure
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, StorageNouns.BlobContent, ConfirmImpact = ConfirmImpact.High, DefaultParameterSetName = ManualParameterSet),
+    [Cmdlet(VerbsCommon.Set, StorageNouns.BlobContent, ConfirmImpact = ConfirmImpact.High, SupportsShouldProcess =true, DefaultParameterSetName = ManualParameterSet),
         OutputType(typeof(AzureStorageBlob))]
     public class SetAzureBlobContentCommand : StorageDataMovementCmdletBase
     {
@@ -78,6 +78,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         {
             get { return FileName; }
             set { FileName = value; }
+        }
+
+        [Parameter(HelpMessage = "Force to overwrite the existing blob or file")]
+        public SwitchParameter Force
+        {
+            get { return overwrite; }
+            set { overwrite = value; }
         }
 
         private string FileName = String.Empty;

@@ -43,9 +43,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Policy { get; set; }
 
-        [Parameter(HelpMessage = "Force to remove the policy without confirm")]
-        public SwitchParameter Force { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = "Return whether the specified policy is successfully removed")]
         public SwitchParameter PassThru { get; set; }
         
@@ -69,7 +66,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 throw new ResourceNotFoundException(String.Format(CultureInfo.CurrentCulture, Resources.PolicyNotFound, policyName));
             }
 
-            if (this.Force || ConfirmRemove(policyName))
+            if (ConfirmRemove(policyName))
             {
                 permissions.SharedAccessPolicies.Remove(policyName);
                 localChannel.SetSharePermissions(share, permissions);

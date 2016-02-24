@@ -25,7 +25,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using LocalDirectory = System.IO.Directory;
     using LocalPath = System.IO.Path;
 
-    [Cmdlet(VerbsCommon.Get, LocalConstants.FileContentCmdletName, SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High, DefaultParameterSetName = LocalConstants.ShareNameParameterSetName)]
+    [Cmdlet(VerbsCommon.Get, LocalConstants.FileContentCmdletName, DefaultParameterSetName = LocalConstants.ShareNameParameterSetName)]
     public class GetAzureStorageFileContent : StorageFileDataManagementCmdletBase
     {
         [Parameter(
