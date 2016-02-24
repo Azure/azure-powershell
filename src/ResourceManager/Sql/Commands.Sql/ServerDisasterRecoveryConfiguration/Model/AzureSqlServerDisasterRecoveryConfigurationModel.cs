@@ -84,13 +84,19 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Model
         {
             ResourceGroupName = resourceGroup;
             ServerName = serverName;
-            ServerDisasterRecoveryConfigurationName = serverDisasterRecoveryConfiguration.Name;
-            VirtualEndpointName = serverDisasterRecoveryConfiguration.Name;
-            Location = serverDisasterRecoveryConfiguration.Location;
-            PartnerServerName = serverDisasterRecoveryConfiguration.Properties.PartnerLogicalServerName;
-            AutoFailover = serverDisasterRecoveryConfiguration.Properties.AutoFailover;
-            FailoverPolicy = serverDisasterRecoveryConfiguration.Properties.FailoverPolicy;
-            Role = serverDisasterRecoveryConfiguration.Properties.Role;
+
+            // A workaround for the sdrc not always returning. Will remove once upstream issues are resolved.
+            if (serverDisasterRecoveryConfiguration != null)
+            {
+                ServerDisasterRecoveryConfigurationName = serverDisasterRecoveryConfiguration.Name;
+                VirtualEndpointName = serverDisasterRecoveryConfiguration.Name;
+                Location = serverDisasterRecoveryConfiguration.Location;
+                PartnerServerName = serverDisasterRecoveryConfiguration.Properties.PartnerLogicalServerName;
+                AutoFailover = serverDisasterRecoveryConfiguration.Properties.AutoFailover;
+                FailoverPolicy = serverDisasterRecoveryConfiguration.Properties.FailoverPolicy;
+                Role = serverDisasterRecoveryConfiguration.Properties.Role;
+            }
+            
         }
     }
 }
