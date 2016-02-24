@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// <summary>
         /// Gets or sets the flavor for a cluster.
         /// </summary>
-        public HDInsightClusterType ClusterType { get; set; }
+        public string ClusterType { get; set; }
         
         /// <summary>
         /// Gets or sets the database to store the metadata for Oozie.
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 
         public AzureHDInsightConfig()
         {
-            ClusterType = HDInsightClusterType.Hadoop;
+            ClusterType = Constants.Hadoop;
             AdditionalStorageAccounts = new Dictionary<string, string>();
             Configurations = new Dictionary<string, Hashtable>();
             ScriptActions = new Dictionary<ClusterNodeType, List<AzureHDInsightScriptAction>>();
