@@ -14,7 +14,7 @@
 
 <#
 .SYNOPSIS
-Virtual network gateway tests
+Virtual network express route gateway tests
 #>
 function Test-VirtualNetworkExpressRouteGatewayCRUD
 {
@@ -60,18 +60,13 @@ function Test-VirtualNetworkExpressRouteGatewayCRUD
       Assert-AreEqual $list[0].Name $actual.Name	
       Assert-AreEqual $list[0].Location $actual.Location
       
-      # Reset/Reboot virtualNetworkGateway primary
-      $actual = Reset-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $expected
-      $list = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname
-      Assert-AreEqual 1 @($list).Count
-
-
       # Delete virtualNetworkGateway
       $delete = Remove-AzureRmVirtualNetworkGateway -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force
       Assert-AreEqual true $delete
       
       $list = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $actual.ResourceGroupName
       Assert-AreEqual 0 @($list).Count
+
      }
      finally
      {
@@ -79,6 +74,11 @@ function Test-VirtualNetworkExpressRouteGatewayCRUD
         Clean-ResourceGroup $rgname
      }
 }
+
+<#
+.SYNOPSIS
+Virtual network gateway tests
+#>
 function Test-VirtualNetworkGatewayCRUD
 {
     # Setup

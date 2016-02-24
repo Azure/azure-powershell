@@ -14,12 +14,57 @@
 
 <#
 .SYNOPSIS
+Virtual network express route gateway connection tests
+#>
+function Test-VirtualNetworkeExpressRouteGatewayConnectionCRUD
+{
+    # Setup
+    $rgname = "onesdkTestConnection"
+    $vnetConnectionName = Get-ResourceName
+	$location = "westus"
+    try 
+     {
+      # Get the resource group
+      $resourceGroup = Get-AzureRmResourceGroup -Name $rgname  
+      Assert-NotNull $resourceGroup
+      # Get Gateway
+	  $gw = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname
+	  Assert-AreEqual 1 @($gw).Count
+      # Get Circuit
+      $circuit = Get-AzureRmExpressRouteCircuit -ResourceGroupName $rgname
+      Assert-AreEqual 1 @($circuit).Count
+	
+	  # Create & Get VirtualNetworkGatewayConnection
+      $actual = New-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $gw  -ConnectionType ExpressRoute -RoutingWeight 3 -PeerId $circuit.Id
+      $expected = Get-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName
+      Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
+      Assert-AreEqual $expected.Name $actual.Name	
+      Assert-AreEqual "ExpressRoute" $expected.ConnectionType
+      Assert-AreEqual "3" $expected.RoutingWeight
+
+	
+      # Delete VirtualNetworkGatewayConnection
+      $delete = Remove-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $actual.ResourceGroupName -name $vnetConnectionName -PassThru -Force
+      Assert-AreEqual true $delete
+      
+      $list = Get-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $actual.ResourceGroupName
+      Assert-AreEqual 0 @($list).Count
+     }
+     finally
+     {
+        # Cleanup
+        
+     }
+}
+
+<#
+.SYNOPSIS
 Virtual network gateway connection tests
 #>
 function Test-VirtualNetworkGatewayConnectionCRUD
 {
     # Setup
-    $rgname = "onesdkTestConnection"
+    $rgname = Get-ResourceGroupName
     $rname = Get-ResourceName
     $domainNameLabel = Get-ResourceName
     $vnetName = Get-ResourceName
@@ -33,8 +78,8 @@ function Test-VirtualNetworkGatewayConnectionCRUD
     
     try 
      {
-      # Get the resource group
-      $resourceGroup = Get-AzureRmResourceGroup -Name $rgname } 
+      # Create the resource group
+      $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
       
       # Create the Virtual Network
       $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
