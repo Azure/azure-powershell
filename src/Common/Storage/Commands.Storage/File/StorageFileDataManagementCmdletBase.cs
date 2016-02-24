@@ -91,7 +91,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
             {
                 if (record != null)
                 {
-                    record.PercentComplete = (int)(transferProgress.BytesTransferred * 100 / totalTransferLength);
+                    // Size of the source file might be 0, when it is, directly treat the progress as 100 percent.
+                    record.PercentComplete = (totalTransferLength == 0) ? 100 : (int)(transferProgress.BytesTransferred * 100 / totalTransferLength);
                     record.StatusDescription = string.Format(CultureInfo.CurrentCulture, Resources.FileTransmitStatus, record.PercentComplete);
                     this.OutputStream.WriteProgress(record);
                 }
