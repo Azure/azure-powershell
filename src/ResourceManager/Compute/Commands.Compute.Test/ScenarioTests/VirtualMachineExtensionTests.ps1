@@ -580,7 +580,10 @@ function Test-VirtualMachineCustomScriptExtensionSecureExecution
         $containerName = 'script';
 
         # Set custom script extension
-        Set-AzureRmVMCustomScriptExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname -TypeHandlerVersion $extver -StorageAccountName $stoname -StorageAccountKey $stokey -FileName $fileToExecute -ContainerName $containerName -SecureExecution;
+        Set-AzureRmVMCustomScriptExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname `
+            -Name $extname -TypeHandlerVersion $extver `
+            -StorageAccountName $stoname -StorageAccountKey $stokey `
+            -FileName $fileToExecute -ContainerName $containerName -SecureExecution;
 
         # Get VM Extension
         $ext = Get-AzureRmVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname;
