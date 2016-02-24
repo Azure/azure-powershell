@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             ParameterSetName = ExportToFile,
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "If specified will override the file if it exists. This parameter is optional.")]
+            HelpMessage = "If specified will overwrite the file if it exists. This parameter is optional.")]
         public SwitchParameter Force { get; set; }
 
         [Parameter(

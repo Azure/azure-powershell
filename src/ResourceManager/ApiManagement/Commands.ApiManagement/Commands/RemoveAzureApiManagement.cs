@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.Properties;
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRmApiManagement"), OutputType(typeof (bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmApiManagement", SupportsShouldProcess=true, ConfirmImpact=ConfirmImpact.High), OutputType(typeof (bool))]
     public class RemoveAzureApiManagement : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -57,18 +57,23 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                 Name);
 
             // Do nothing if force is not specified and user cancelled the operation
-            if (!Force.IsPresent &&
-                !ShouldProcess(
+            if (ShouldProcess(
                     actionDescription,
                     actionWarning,
                     Resources.ShouldProcessCaption))
             {
-                return;
+                ExecuteCmdLetWrap(
+                    () => Client.DeleteApiManagement(ResourceGroupName, Name),
+                    PassThru.IsPresent);
+            }
+            else
+            {
+                if (PassThru.IsPresent)
+                {
+                    WriteObject(false);
+                }
             }
 
-            ExecuteCmdLetWrap(
-                () => Client.DeleteApiManagement(ResourceGroupName, Name),
-                PassThru.IsPresent);
         }
     }
 }
