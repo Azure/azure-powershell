@@ -200,7 +200,6 @@
     <Compile Include="ServerCommunicationLink\Cmdlet\GetAzureSqlServerCommunicationLink.cs" />
     <Compile Include="ServerCommunicationLink\Cmdlet\NewAzureSqlServerCommunicationLink.cs" />
     <Compile Include="ServerCommunicationLink\Cmdlet\RemoveAzureSqlServerCommunicationLink.cs" />
-    <Compile Include="ServerCommunicationLink\Cmdlet\SetAzureSqlServerCommunicationLink.cs" />
     <Compile Include="ServerCommunicationLink\Model\AzureSqlServerCommunicationLinkModel.cs" />
     <Compile Include="ServerCommunicationLink\Services\AzureSqlServerCommunicationLinkAdapter.cs" />
     <Compile Include="ServerCommunicationLink\Services\AzureSqlServerCommunicationLinkCommunicator.cs" />
