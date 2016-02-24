@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Subscriptions.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using System;
@@ -21,9 +21,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
+using Microsoft.Azure.ServiceManagemenet.Common;
 using Xunit;
 using CSMSubscription = Microsoft.Azure.Subscriptions.Models.Subscription;
 using RDFESubscription = Microsoft.WindowsAzure.Subscriptions.Models.SubscriptionListOperationResponse.Subscription;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Common.Authentication.Test
 {
@@ -192,6 +194,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ProfileMigratesAccountsAndDefaultSubscriptions()
         {
             MemoryDataStore dataStore = new MemoryDataStore();

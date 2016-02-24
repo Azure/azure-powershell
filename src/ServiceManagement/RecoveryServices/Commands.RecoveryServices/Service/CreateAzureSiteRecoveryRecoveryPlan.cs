@@ -13,12 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
 using System.Management.Automation;
-using System.Threading;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices

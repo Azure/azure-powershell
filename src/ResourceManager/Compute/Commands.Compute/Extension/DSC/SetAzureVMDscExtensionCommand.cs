@@ -1,7 +1,7 @@
 using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
@@ -15,6 +15,7 @@ using System.Globalization;
 using System.IO;
 using System.Management.Automation;
 using System.Text.RegularExpressions;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.DSC
@@ -365,7 +366,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             //Add retry logic due to CRP service restart known issue CRP bug: 3564713
             var count = 1;
             Rest.Azure.AzureOperationResponse<VirtualMachineExtension> op = null;
-            while (count <= 2)
+
+            while (true)
             {
                 try
                 {
@@ -374,22 +376,28 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                         VMName,
                         Name ?? DscExtensionCmdletConstants.ExtensionPublishedNamespace + "." + DscExtensionCmdletConstants.ExtensionPublishedName,
                         parameters).GetAwaiter().GetResult();
+
+                    break;
                 }
                 catch (Rest.Azure.CloudException ex)
                 {
-                    var errorReturned = JsonConvert.DeserializeObject<ComputeLongRunningOperationError>(ex.Response.Content.ReadAsStringAsync().Result);
+                    var errorReturned = JsonConvert.DeserializeObject<ComputeLongRunningOperationError>(
+                        ex.Response.Content);
 
                     if (ComputeOperationStatus.Failed.Equals(errorReturned.Status)
                         && errorReturned.Error != null && "InternalExecutionError".Equals(errorReturned.Error.Code))
                     {
                         count++;
+                        if (count <= 2)
+                        {
+                            continue;
+                        }
                     }
-                    else
-                    {
-                        break;
-                    }
+
+                    ThrowTerminatingError(new ErrorRecord(ex, "InvalidResult", ErrorCategory.InvalidResult, null));
                 }
             }
+
             var result = Mapper.Map<PSAzureOperationResponse>(op);
             WriteObject(result);
         }

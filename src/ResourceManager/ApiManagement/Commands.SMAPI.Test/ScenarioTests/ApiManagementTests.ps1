@@ -1126,7 +1126,7 @@ Param($resourceGroupName, $serviceName)
 
     Assert-AreEqual 0 $certificates.Count
 
-    $certPath = './Resources/testcertificate.pfx'
+    $certPath = "$TestOutputRoot\Resources\testcertificate.pfx"
     $certPassword = 'powershelltest'
     $certThumbprint = '51A702569BADEDB90A75141B070F2D4B5DDFA447'
     $certSubject = 'CN=ailn.redmond.corp.microsoft.com'

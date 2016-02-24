@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Profile.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
@@ -341,7 +341,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         {
             // Re-import the subscription.
             vmPowershellCmdlets.ImportAzurePublishSettingsFile();
-            vmPowershellCmdlets.SetDefaultAzureSubscription(CredentialHelper.DefaultSubscriptionName);
+            vmPowershellCmdlets.SetDefaultAzureSubscription(defaultAzureSubscription.SubscriptionId);
             vmPowershellCmdlets.SetAzureSubscription(defaultAzureSubscription.SubscriptionId, defaultAzureSubscription.CurrentStorageAccountName);
         }
 

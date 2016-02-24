@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 

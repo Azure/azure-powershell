@@ -19,7 +19,7 @@ namespace Commands.Network.Test.ScenarioTests
 {
     public class ExpressRouteCircuitTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
-        [Fact(Skip = "Rerecord tests")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExpressRouteCircuitCRUD()
         {

@@ -20,6 +20,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.WindowsAzure.Storage.Blob;
+    using Microsoft.WindowsAzure.Storage;
 
     [Cmdlet(VerbsCommon.New, StorageNouns.BlobSas, DefaultParameterSetName = BlobNamePipelineParmeterSetWithPermission), OutputType(typeof(String))]
     public class NewAzureStorageBlobSasTokenCommand : StorageCloudBlobCmdletBase
@@ -80,6 +81,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             ParameterSetName = BlobPipelineParameterSetWithPermision)]
         public string Permission { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Protocol can be used in the request with this SAS token.")]
+        public SharedAccessProtocol Protocol { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "IP, or IP range ACL (access control list) that the request would be accepted from by Azure Storage.")]
+        public string IPAddressOrRange { get; set; }
+
         [Parameter(HelpMessage = "Start Time")]
         public DateTime? StartTime { get; set; }
 
@@ -133,7 +140,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             SharedAccessBlobPolicy accessPolicy = new SharedAccessBlobPolicy();
             bool shouldSetExpiryTime = SasTokenHelper.ValidateContainerAccessPolicy(Channel, blob.Container.Name, accessPolicy, accessPolicyIdentifier);
             SetupAccessPolicy(accessPolicy, shouldSetExpiryTime);
-            string sasToken = GetBlobSharedAccessSignature(blob, accessPolicy, accessPolicyIdentifier);
+            string sasToken = GetBlobSharedAccessSignature(blob, accessPolicy, accessPolicyIdentifier, Protocol, Util.SetupIPAddressOrRangeForSAS(IPAddressOrRange));
 
             if (FullUri)
             {
@@ -154,10 +161,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <param name="accessPolicy">SharedAccessBlobPolicy object</param>
         /// <param name="policyIdentifier">The existing policy identifier.</param>
         /// <returns></returns>
-        private string GetBlobSharedAccessSignature(CloudBlob blob, SharedAccessBlobPolicy accessPolicy, string policyIdentifier)
+        private string GetBlobSharedAccessSignature(CloudBlob blob, SharedAccessBlobPolicy accessPolicy, string policyIdentifier, SharedAccessProtocol protocol, IPAddressOrRange iPAddressOrRange)
         {
             CloudBlobContainer container = blob.Container;
-            return blob.GetSharedAccessSignature(accessPolicy, policyIdentifier);
+            return blob.GetSharedAccessSignature(accessPolicy, null, policyIdentifier, protocol, iPAddressOrRange);
         }
 
         /// <summary>

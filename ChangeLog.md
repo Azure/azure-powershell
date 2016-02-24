@@ -1,3 +1,28 @@
+##2016.03.08 version 1.3.0
+* Azure LogicApp: New cmdlets for managing LogicApps  
+  * Get-AzureLogicAppAccessKey
+  * Get-AzureLogicApp
+  * Get-AzureLogicAppRunAction
+  * Get-AzureLogicAppRunHistory
+  * Get-AzureLogicAppTrigger
+  * Get-AzureLogicAppTriggerHistory
+  * New-AzureLogicApp
+  * Remove-AzureLogicApp
+  * Start-AzureLogicApp
+  * Set-AzureLogicAppAccessKey
+  * Set-AzureLogicApp
+  * Stop-AzureLogicAppRun
+ * Azure Storage
+  * Added cmdlet to generate SAS token against storage account
+    - New-AzureStorageAccountSASToken
+  * Added IPAddressOrRange/Protocol support in cmdlets to generate SAS token against blob, container, file, share, table, queue
+    - New-AzureStorageBlobSASToken
+    - New-AzureStorageContainerSASToken
+    - New-AzureStorageFileSASToken
+    - New-AzureStorageShareSASToken
+    - New-AzureStorageQueueSASToken
+    - New-AzureStorageTableSASToken
+
 ## 2016.02.04 version 1.2.1
 * Fix installer issue - remove PSGallery modules on install
 

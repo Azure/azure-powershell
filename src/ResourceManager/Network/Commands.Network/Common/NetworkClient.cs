@@ -14,8 +14,6 @@
 
 using System;
 using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Management.Network.Models;
 using System.Threading.Tasks;
 using System.Threading;
@@ -28,6 +26,8 @@ using System.Text;
 using System.Net.Http.Headers;
 using System.Net;
 using System.Linq;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
