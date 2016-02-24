@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
 {
     public class ProfileModuleTests
     {
-        [Fact]
+        [Fact(Skip="Removed flaky test from CI.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void WarningOnIncompatibleVersions()
         {
