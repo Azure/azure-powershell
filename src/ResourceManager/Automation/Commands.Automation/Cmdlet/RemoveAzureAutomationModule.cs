@@ -25,18 +25,18 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Remove a Module for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmAutomationModule", DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmAutomationModule", 
+        DefaultParameterSetName = AutomationCmdletParameterSets.ByName, 
+        SupportsShouldProcess=true, ConfirmImpact=ConfirmImpact.High)]
     public class RemoveAzureAutomationModule : AzureAutomationBaseCmdlet
     {
         /// <summary>
         /// Gets or sets the module name.
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The module name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 2, Mandatory = true, 
+            ValueFromPipelineByPropertyName = true, HelpMessage = "The module name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 3, HelpMessage = "Confirm the removal of the module")]
-        public SwitchParameter Force { get; set; }
 
         /// <summary>
         /// Execute this cmdlet.
@@ -45,8 +45,6 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         protected override void AutomationProcessRecord()
         {
             ConfirmAction(
-                       Force.IsPresent,
-                       string.Format(Resources.RemovingAzureAutomationResourceWarning, "Module"),
                        string.Format(Resources.RemoveAzureAutomationResourceDescription, "Module"),
                        Name,
                        () =>

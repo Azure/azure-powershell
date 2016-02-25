@@ -21,7 +21,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Remove a DSC configuration
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmAutomationDscConfiguration")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmAutomationDscConfiguration", 
+        SupportsShouldProcess=true, ConfirmImpact=ConfirmImpact.High)]
     public class RemoveAzureAutomationDscConfiguration : AzureAutomationBaseCmdlet
     {
         /// <summary>
@@ -33,9 +34,6 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Position = 3, HelpMessage = "Force confirmation of the removal of the configuration")]
-        public SwitchParameter Force { get; set; }
-
         /// <summary>
         /// Execute this cmdlet.
         /// </summary>
@@ -43,8 +41,6 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         protected override void AutomationProcessRecord()
         {
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(Resources.RemovingAzureAutomationDscConfigurationWarning, "DSC Configuration"),
                 string.Format(Resources.RemoveAzureAutomationResourceDescription, "DSC Configuration"),
                 Name,
                 () => this.AutomationClient.DeleteConfiguration(

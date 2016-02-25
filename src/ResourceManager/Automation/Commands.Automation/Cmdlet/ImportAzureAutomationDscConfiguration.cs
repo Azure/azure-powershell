@@ -26,7 +26,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Imports dsc configuration script
     /// </summary>
-    [Cmdlet(VerbsData.Import, "AzureRmAutomationDscConfiguration")]
+    [Cmdlet(VerbsData.Import, "AzureRmAutomationDscConfiguration", 
+        SupportsShouldProcess=true, ConfirmImpact=ConfirmImpact.Medium)]
     [OutputType(typeof(DscConfiguration))]
     public class ImportAzureAutomationDscConfiguration : AzureAutomationBaseCmdlet
     {

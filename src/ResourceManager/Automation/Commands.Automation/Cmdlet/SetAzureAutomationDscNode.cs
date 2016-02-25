@@ -28,7 +28,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Updates configuration on the dsc node.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmAutomationDscNode")]
+    [Cmdlet(VerbsCommon.Set, "AzureRmAutomationDscNode", 
+        SupportsShouldProcess=true, ConfirmImpact=ConfirmImpact.High)]
     [OutputType(typeof(DscNode))]
     public class SetAzureAutomationDscNode : AzureAutomationBaseCmdlet
     {
@@ -53,29 +54,18 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         public string NodeConfigurationName { get; set; }
 
         /// <summary>
-        /// Gets or sets switch parameter to confirm overwriting of existing nodeconfigurations.
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Forces the command to run without asking for user confirmation.")]
-        public SwitchParameter Force
-        {
-            get { return this.overwriteExistingNodeConfiguration; }
-            set { this.overwriteExistingNodeConfiguration = value; }
-        }
-
-        /// <summary>
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
             this.ConfirmAction(
-                this.Force.IsPresent,
-                string.Format(CultureInfo.CurrentCulture, Resources.SetnodeconfigurationWarning),
                 string.Format(CultureInfo.CurrentCulture, Resources.SetnodeconfigurationDescription),
                 this.NodeConfigurationName,
                 () =>
                 {
-                    var node = this.AutomationClient.SetDscNodeById(this.ResourceGroupName, this.AutomationAccountName, this.Id, this.NodeConfigurationName);
+                    var node = this.AutomationClient.SetDscNodeById(this.ResourceGroupName, this.AutomationAccountName, 
+                        this.Id, this.NodeConfigurationName);
                     this.WriteObject(node);
                 });
 

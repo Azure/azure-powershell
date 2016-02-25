@@ -29,7 +29,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets.DataSource
     /// <summary>
     /// Disable Azure Backup protection
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Disable, "AzureRmBackupProtection"), OutputType(typeof(AzureRMBackupJob))]
+    [Cmdlet(VerbsLifecycle.Disable, "AzureRmBackupProtection", 
+        SupportsShouldProcess=true, ConfirmImpact=ConfirmImpact.High), 
+    OutputType(typeof(AzureRMBackupJob))]
     public class DisableAzureRMBackupProtection : AzureRMBackupDSCmdletBase
     {
         [Parameter(Position = 1, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.RemoveProtectionOption)]
@@ -39,16 +41,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets.DataSource
             set { DeleteBackupData = value; }
         }
 
-        [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
-        public SwitchParameter Force { get; set; }   
-
         private bool DeleteBackupData;
 
         public override void ExecuteCmdlet()
         {
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(Resources.DisableProtectionWarning, Item.Name),
                 Resources.DisableProtectionMessage,
                 Item.Name, () =>
                 {
