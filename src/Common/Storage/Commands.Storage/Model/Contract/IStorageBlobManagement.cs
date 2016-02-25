@@ -209,6 +209,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         void SetStorageServiceProperties(StorageServiceType type, ServiceProperties properties, IRequestOptions options, OperationContext operationContext);
 
         /// <summary>
+        /// Get the SAS token for an account.
+        /// </summary>
+        /// <param name="sharedAccessAccountPolicy">Shared access policy to generate the SAS token.</param>
+        /// <returns>Account SAS token.</returns>
+        string GetStorageAccountSASToken(SharedAccessAccountPolicy sharedAccessAccountPolicy);
+
+        /// <summary>
         /// Async get container presssions
         /// </summary>
         /// <param name="container">A cloudblobcontainer object</param>

@@ -497,4 +497,8 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
   <data name="DiagnosticsExtensionXmlConfigWadCfgTagNotMatch" xml:space="preserve">
     <value>WadCfg start element in the config is not matching the end element.</value>
   </data>
+  <data name="AEMExtensionNotFound" xml:space="preserve">
+    <value>No Azure Enhanced Monitoring extension found under resource group '{0}', virtual machine '{1}'.</value>
+    <comment>{0} = resource group name, {1} = virtual machine name</comment>
+  </data>
 </root>

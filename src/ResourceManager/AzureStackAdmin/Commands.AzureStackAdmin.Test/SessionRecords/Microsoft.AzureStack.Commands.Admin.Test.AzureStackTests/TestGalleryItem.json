@@ -1,0 +1,938 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/tenants?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3RlbmFudHM/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Subscriptions.SubscriptionClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/tenants/4993704a-4e53-4e79-95dd-5f1747eb7554\",\r\n      \"tenantId\": \"4993704a-4e53-4e79-95dd-5f1747eb7554\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "116"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-tenant-writes": [
+          "1193"
+        ],
+        "x-ms-request-id": [
+          "59edc627-cc1e-4872-963c-bf00c5830d8f"
+        ],
+        "x-ms-correlation-request-id": [
+          "59edc627-cc1e-4872-963c-bf00c5830d8f"
+        ],
+        "x-ms-routing-request-id": [
+          "REDMOND:20160216T221702Z:59edc627-cc1e-4872-963c-bf00c5830d8f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 16 Feb 2016 22:17:02 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/tenants?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3RlbmFudHM/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Subscriptions.SubscriptionClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/tenants/4993704a-4e53-4e79-95dd-5f1747eb7554\",\r\n      \"tenantId\": \"4993704a-4e53-4e79-95dd-5f1747eb7554\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "116"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-tenant-writes": [
+          "1191"
+        ],
+        "x-ms-request-id": [
+          "7bb5270d-b364-48ab-90e5-7b3b36572392"
+        ],
+        "x-ms-correlation-request-id": [
+          "7bb5270d-b364-48ab-90e5-7b3b36572392"
+        ],
+        "x-ms-routing-request-id": [
+          "REDMOND:20160216T221703Z:7bb5270d-b364-48ab-90e5-7b3b36572392"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 16 Feb 2016 22:17:03 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnM/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Subscriptions.SubscriptionClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/69D8709B-B058-4537-92A0-68C9D272FE31\",\r\n      \"subscriptionId\": \"69D8709B-B058-4537-92A0-68C9D272FE31\",\r\n      \"displayName\": \"Default Provider Subscription\",\r\n      \"owner\": \"aaptlab@microsoft.com\",\r\n      \"offerName\": \"2139D7FE-E522-4E40-8DBD-EFB08F3FC2BA\",\r\n      \"offerDisplayName\": \"Default Offer\",\r\n      \"state\": \"Enabled\",\r\n      \"quotaSyncState\": \"InSync\",\r\n      \"serviceQuotas\": [],\r\n      \"acquiredPlans\": []\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "374"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-tenant-writes": [
+          "1192"
+        ],
+        "x-ms-request-id": [
+          "1397c200-d3d6-48f2-be34-864a2891cf9f"
+        ],
+        "x-ms-correlation-request-id": [
+          "1397c200-d3d6-48f2-be34-864a2891cf9f"
+        ],
+        "x-ms-routing-request-id": [
+          "REDMOND:20160216T221702Z:1397c200-d3d6-48f2-be34-864a2891cf9f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 16 Feb 2016 22:17:02 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnM/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Subscriptions.SubscriptionClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/69D8709B-B058-4537-92A0-68C9D272FE31\",\r\n      \"subscriptionId\": \"69D8709B-B058-4537-92A0-68C9D272FE31\",\r\n      \"displayName\": \"Default Provider Subscription\",\r\n      \"owner\": \"aaptlab@microsoft.com\",\r\n      \"offerName\": \"2139D7FE-E522-4E40-8DBD-EFB08F3FC2BA\",\r\n      \"offerDisplayName\": \"Default Offer\",\r\n      \"state\": \"Enabled\",\r\n      \"quotaSyncState\": \"InSync\",\r\n      \"serviceQuotas\": [],\r\n      \"acquiredPlans\": []\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "374"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-tenant-writes": [
+          "1190"
+        ],
+        "x-ms-request-id": [
+          "c377ff2d-dce7-4900-b210-83ba40287afd"
+        ],
+        "x-ms-correlation-request-id": [
+          "c377ff2d-dce7-4900-b210-83ba40287afd"
+        ],
+        "x-ms-routing-request-id": [
+          "REDMOND:20160216T221703Z:c377ff2d-dce7-4900-b210-83ba40287afd"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 16 Feb 2016 22:17:03 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/69D8709B-B058-4537-92A0-68C9D272FE31/resourcegroups/GalleryItems?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlEODcwOUItQjA1OC00NTM3LTkyQTAtNjhDOUQyNzJGRTMxL3Jlc291cmNlZ3JvdXBzL0dhbGxlcnlJdGVtcz9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestMethod": "HEAD",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "104"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "13636"
+        ],
+        "x-ms-request-id": [
+          "eb7a21ae-75ec-49f9-989c-7038742cf776"
+        ],
+        "x-ms-correlation-request-id": [
+          "eb7a21ae-75ec-49f9-989c-7038742cf776"
+        ],
+        "x-ms-routing-request-id": [
+          "REDMOND:20160216T221704Z:eb7a21ae-75ec-49f9-989c-7038742cf776"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 16 Feb 2016 22:17:03 GMT"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/69D8709B-B058-4537-92A0-68C9D272FE31/resourcegroups/GalleryItems?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlEODcwOUItQjA1OC00NTM3LTkyQTAtNjhDOUQyNzJGRTMxL3Jlc291cmNlZ3JvdXBzL0dhbGxlcnlJdGVtcz9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestMethod": "HEAD",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "13631"
+        ],
+        "x-ms-request-id": [
+          "2e467166-1d1f-4bfb-bca6-01c4128968af"
+        ],
+        "x-ms-correlation-request-id": [
+          "2e467166-1d1f-4bfb-bca6-01c4128968af"
+        ],
+        "x-ms-routing-request-id": [
+          "REDMOND:20160216T221706Z:2e467166-1d1f-4bfb-bca6-01c4128968af"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 16 Feb 2016 22:17:05 GMT"
+        ]
+      },
+      "StatusCode": 204
+    },
+    {
+      "RequestUri": "/subscriptions/69D8709B-B058-4537-92A0-68C9D272FE31/resourcegroups/GalleryItems?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlEODcwOUItQjA1OC00NTM3LTkyQTAtNjhDOUQyNzJGRTMxL3Jlc291cmNlZ3JvdXBzL0dhbGxlcnlJdGVtcz9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"redmond\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "29"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/69D8709B-B058-4537-92A0-68C9D272FE31/resourceGroups/GalleryItems\",\r\n  \"name\": \"GalleryItems\",\r\n  \"location\": \"redmond\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "178"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "19d5770e-1026-490c-9488-0151a235d0cb"
+        ],
+        "x-ms-correlation-request-id": [
+          "19d5770e-1026-490c-9488-0151a235d0cb"
+        ],
+        "x-ms-routing-request-id": [
+          "REDMOND:20160216T221704Z:19d5770e-1026-490c-9488-0151a235d0cb"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 16 Feb 2016 22:17:03 GMT"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/69D8709B-B058-4537-92A0-68C9D272FE31/resourceGroups/GalleryItems/resources?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlEODcwOUItQjA1OC00NTM3LTkyQTAtNjhDOUQyNzJGRTMxL3Jlc291cmNlR3JvdXBzL0dhbGxlcnlJdGVtcy9yZXNvdXJjZXM/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": []\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "12"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "13635"
+        ],
+        "x-ms-request-id": [
+          "31f641bc-321b-4008-8ef0-f0f59fe491c5"
+        ],
+        "x-ms-correlation-request-id": [
+          "31f641bc-321b-4008-8ef0-f0f59fe491c5"
+        ],
+        "x-ms-routing-request-id": [
+          "REDMOND:20160216T221704Z:31f641bc-321b-4008-8ef0-f0f59fe491c5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 16 Feb 2016 22:17:03 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/69D8709B-B058-4537-92A0-68C9D272FE31/resourcegroups/GalleryItems/providers/Microsoft.Gallery/mypackages/1988820c-2bcc-4682-9991-bec44e6b8324?api-version=2015-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlEODcwOUItQjA1OC00NTM3LTkyQTAtNjhDOUQyNzJGRTMxL3Jlc291cmNlZ3JvdXBzL0dhbGxlcnlJdGVtcy9wcm92aWRlcnMvTWljcm9zb2Z0LkdhbGxlcnkvbXlwYWNrYWdlcy8xOTg4ODIwYy0yYmNjLTQ2ODItOTk5MS1iZWM0NGU2YjgzMjQ/YXBpLXZlcnNpb249MjAxNS0wNC0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "PK\u0003\u0004\n\u0000\u0000\u0000\u0000\u0000Tx&H�7�`�\u0004\u0000\u0000�\u0004\u0000\u0000\r\u0000\u001c\u0000Manifest.json �\u0018\u0000(�\u0014\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000{ \"$schema\": \"https://gallery.azure.com/schemas/2014-09-01/manifest.json#\",\r\n    \"name\": \"SimpleVMTemplate\",\r\n    \"publisher\": \"Microsoft\",\r\n    \"version\": \"1.0.0\",\r\n    \"displayName\": \"ms-resource:displayName\",\r\n    \"publisherDisplayName\": \"ms-resource:publisherDisplayName\",\r\n    \"publisherLegalName\": \"ms-resource:publisherDisplayName\",\r\n    \"summary\": \"ms-resource:summary\",\r\n    \"longSummary\": \"ms-resource:longSummary\",\r\n    \"description\": \"ms-resource:description\",\r\n    \"longDescription\": \"ms-resource:description\",\r\n    \"links\": [\r\n        { \"displayName\": \"ms-resource:documentationLink\", \"uri\": \"http://go.microsoft.com/fwlink/?LinkId=532898\" }\r\n    ], \r\n    \"artifacts\": [\r\n        {\r\n            \"name\": \"azuredeploy-101-simple-windows-vm\",\r\n            \"type\": \"Template\",\r\n            \"path\": \"DeploymentTemplates\\\\azuredeploy-101-simple-windows-vm.json\",\r\n            \"isDefault\": true\r\n        }\r\n    ],\r\n    \"icons\": {\r\n      \"Small\": \"Icons\\\\Small.png\",\r\n      \"Medium\": \"Icons\\\\Medium.png\",\r\n      \"Large\": \"Icons\\\\Large.png\",\r\n      \"Wide\": \"Icons\\\\Wide.png\"\r\n    },\r\n    \"categories\":[\r\n\t\"My Gallery Items\"\r\n      ],\r\n    \"uiDefinition\": {\r\n      \"path\": \"UIDefinition.json\"\r\n    }\r\n}\r\nPK\u0003\u0004\n\u0000\u0000\u0000\u0000\u0000Tx&H\u0002a�9 \u0005\u0000\u0000 \u0005\u0000\u0000\u000b\u0000\u001c\u0000_rels/.rels �\u0018\u0000(�\u0014\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Relationships xmlns=\"http://schemas.openxmlformats.org/package/2006/relationships\"><Relationship Type=\"http://schemas.microsoft.com/azpkg/2013/12/manifest\" Target=\"/Manifest.json\" Id=\"R3be855dad4b54b89\" /><Relationship Type=\"http://schemas.microsoft.com/azpkg/2013/12/icon/small\" Target=\"/Icons/Small.png\" Id=\"DEFAULT_d621c8f04f094b068a8c9c9c1744044a\" /><Relationship Type=\"http://schemas.microsoft.com/azpkg/2013/12/icon/medium\" Target=\"/Icons/Medium.png\" Id=\"DEFAULT_e296a39f6c6847ae8716757f1f2a23d4\" /><Relationship Type=\"http://schemas.microsoft.com/azpkg/2013/12/icon/large\" Target=\"/Icons/Large.png\" Id=\"DEFAULT_52540806fee74c37af5b6487e6e6c0ae\" /><Relationship Type=\"http://schemas.microsoft.com/azpkg/2013/12/icon/wide\" Target=\"/Icons/Wide.png\" Id=\"DEFAULT_a16c3c6710b543d1a8fe985ae7ef1de5\" /><Relationship Type=\"http://schemas.microsoft.com/azpkg/2013/12/strings\" Target=\"/strings/resources.resjson\" Id=\"DEFAULT_117ce6bb098b4313893cf5d196e628d8\" /><Relationship Type=\"http://schemas.microsoft.com/azpkg/2013/12/uidefinition\" Target=\"/UIDefinition.json\" Id=\"Rc54d428d22af49a8\" /><Relationship Type=\"http://schemas.microsoft.com/azpkg/2013/12/artifact\" Target=\"/DeploymentTemplates/azuredeploy-101-simple-windows-vm.json\" Id=\"R3f2c00435e4d4172\" /></Relationships>PK\u0003\u0004\n\u0000\u0000\u0000\u0000\u0000Tx&H�� �'\u0003\u0000\u0000'\u0003\u0000\u0000\u000f\u0000\u001c\u0000Icons/Small.png �\u0018\u0000(�\u0014\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000�PNG\r\n\u001a\n\u0000\u0000\u0000\rIHDR\u0000\u0000\u0000(\u0000\u0000\u0000(\b\u0002\u0000\u0000\u0000\u0003�/:\u0000\u0000\u0000\u0019tEXtSoftware\u0000Adobe ImageReadyq�e<\u0000\u0000\u0002�IDATx��WOH�a\u0018�WJN�4O�<,�����hV�\u001d&�a\u001e�%�\nc$�C B\u001a��ʋ���0a�\f�C|��ET������\u0005\u0013��\b��%�����[���?�I��}\u0018c����~���q\u0001�#�q�\t�1\t#fČ�\u0011\u001fY��.Z�\u001b꼗*\u001d\u0015þp*�V���J\u001a�7�c.��{���B��g�+#���\u000fё9]��W*굧n��־f .D�S��\n�����\u0017�M<\b\u0004�+��'}�t\u0018�����\u001d)��5&n}���׉��u%+�:�7aVi���\u0014�*\u0002��F���vFʒC��\\|\u0004�U�\u0019{\\\\�\u0010j��<�\u0014vx���U�%�Cl�f�o�� �Z�B��(�?z\u0012\b�2b�R���G�+�C�\n%��\u001b4��s_��ȼ9�|d�_\b�\t��vz\u001a{\u0010\u0018��,�\u000e\b�\u0010O�\u0003�s�e\f\u0005��؃�<v���N�\u0016u���@�O��b5��6�A^I$�WX��C�)\u0015S�M�ͭ��'\u0006ܝ!/��Դ/��ix\u0006��\u0003�0\u0005��M�\b��q���\u0002�'�DU��x���?��K���x\u0002.\u0014�B���\u0002�Q<�@tr\f��;��\u0003N+�Z%�\u000f�[�(7a�:@\u0000��h[K���S�\bB��\b�?.\t\u0014��\u0001r�Q.'�_�M�\n%&%J\u0013�\u0005e>��#/to�V5��\u0016jҩ\u0004\u0002\u0005�W4�=�0ڔ\u0013Ƥ6\r�\u0013�����\b籅2[Y�\u0016�^���$�\u001b�tfk�\fp\f�Q��dl�\u0006\f�\u001aK\u0005���Z�S�Ƒ�\n\u000f����1\u0013��q����\u0003\r�(\u001b����|Ug�K�9�I�c��icČ�\u00113�B�\u0000\u0003\u0000��P�/'_\u0000\u0000\u0000\u0000IEND�B`�PK\u0003\u0004\n\u0000\u0000\u0000\u0000\u0000Tx&H�o�U�\u0005\u0000\u0000�\u0005\u0000\u0000\u0010\u0000\u001c\u0000Icons/Medium.png �\u0018\u0000(�\u0014\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000�PNG\r\n\u001a\n\u0000\u0000\u0000\rIHDR\u0000\u0000\u0000Z\u0000\u0000\u0000Z\b\u0002\u0000\u0000\u0000���U\u0000\u0000\u0000\u0019tEXtSoftware\u0000Adobe ImageReadyq�e<\u0000\u0000\u0005QIDATx��OH�A\u0014�ӊ4H�� �A!!;X\u0012dE\u001e\f\u000b�C`\u0012�!\b\u00164\b�H\u000f���KE�\u0011� \t�v����D\u000fA�B�v0(�C��\u0010��\f:��^M����μ�߮�7�����7���}o��(����\u0006i�Z� \u0010\u001c�Cp\b\u000e�!8\u0004��\u0010\u001c�Cp\b\u000e�!8\u0004��\u0010\u001c�CpH\u0013\u001c�Cp\b\u000eV��hGmsu��b<�_����**+����\u0005^�Gs��8�43�n��%\u001e2����\u0004X��\u0006P6t�.�)���ɏ�-Q�Lh��+G�q^E�2��H}�;����\u0013W���`��~~\u0013k;\u001c\u0019����2���+˫3c��\u001ds\u0018w���;0\u0019z�W\u000e�Gm�\u0014@\u001b:j� �\u0006\u0016 \u0002.�\u001eW�\\M\u001b�\u0006�q \u001c���V\u0016�i`{w7\u000eX�@���kX�d,h�\u0000\u0016v\n>l>2�G7\u0006�Xu��8\\��g��Z9vS���!\u0012N����ן��T�4}O�\u0006\u001eY�\u000b�n�'\u00136��\u0004�Ф@p�˄aC��8\fA\t\u001c���\u000fs�hh�5t\r�-\u0006�� �\u001a}\u001f�h҅\u0011�s]\u001c�h_��z�˄�\u0000aXp1������X���\u001b��cȂ\u0010w���Xs�\u0014K�J�Ԡ�E߁>�\u000f��:�\u000b�|��*4�4�|D7)\u0013�b�5p���{C�\u0011�,�\"h[�ݔR�s�v6\u000b.��_U\u0014\\��H.\u0010\u001a\u0011\blg��餗i\\A���E\t��cd�\u0003m~A>lB�Yy�b$2NQ\u00003�|@\u0004O\b1�6��\u0011H\u0003N��i´�\u000e�4I�\f�t0\u0004�\u001b�L���oCAI(\u0013�\u0000\u0016�)L�q(��d�\u0002�k\u000eԔab�}/\b\u001f\t�����撌-C�O\u0019\u0019�v`�+�bO���'\u000f\u0019:Nn긙LP0�κ�\u001e����axR�(rؠv\u0007\u0016\u0019_PYP��\u0013�U��&�\tc�T��\u0005\u0005�9\u0014\u001e�+\u0014��\u000eF��\u0014n�\u0012���OU88��J\u00021\r���#\u0019�\t�S[�\u0004%�'��\u0017z�\u0018\u0001ݩ��50��\t������\u0004�l;���h^AĤ\u0014���Ў�G�o_�o��\u001b��{U��᷿~��N�l���o޲\t3\u0007\u0017,�2F�C9��ܙ�S\u0005��\u0019�?�5k�A@sϿ�\u0014��Y�1Ä��Y��q���/\u001ac\u00050\u0019�\u00137�!`\u000e���\u001a�F-\u0006\tS��\u0005!P��']�O{S^\f#\u0019K唤��W��p(��%�N�p�&�Yir)�C�\u0001\u0015x\\����P��_\u0004�z[���b�5\u000e���!��v�n\u0012�Rk�c�&��U�����J�t\u000b��G��\u0002m����D\u0007����f�\u001a\u0006\u00168���)Ye�\n\"��c�p��\u001e�e�E�\f��BtڜE׋\"߬�\n|�U�\u0018�Y$,su]��o����MbH��-\u001c�pS:yw�\u0000f�\u0016�x\u0001�%�u�7�]$|S7��\u0016Y�M�\bG\u0005.�x�^\u0010��k�v�D&�Ѥx\u00033�z.��X�_b,\u0000G;�£�\u0003Gru*O������%x��^��\u0018���\u0014Z�ufǅ���d���\u001c��\u0004�\u0019Y�F��\"��\u001c@P�\u0007]��w�\b�K�\u001dV\u0019-G�;\u00139�\u000b\u000e�!8\u0004��\u0010\u001c�Cp\b\u000e�!8\u0004��\u0010\u001c�Cp\b\u000e�!Mp\b\u000e�!8\u0004�{�-�\u0000�\b�w^���\u0000\u0000\u0000\u0000IEND�B`�PK\u0003\u0004\n\u0000\u0000\u0000\u0000\u0000Tx&H1����\u0007\u0000\u0000�\u0007\u0000\u0000\u000f\u0000\u001c\u0000Icons/Large.png �\u0018\u0000(�\u0014\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000�PNG\r\n\u001a\n\u0000\u0000\u0000\rIHDR\u0000\u0000\u0000s\u0000\u0000\u0000s\b\u0002\u0000\u0000\u0000$!��\u0000\u0000\u0000\u0019tEXtSoftware\u0000Adobe ImageReadyq�e<\u0000\u0000\u0007zIDATx��_H\\G\u0014��VIVP\u0012�\u0010��AK�n����M�\u0005E\u0002�@�\"�k1�]��R��<4�S�K-\u0011%P\u000bJH �\u0010�M\u000bE�AhcK\u0011$T�P}p�\u0004k\u0013LqS�C?3�2;w������9,a]�{g~s�s��5�����y`�\u0010\u0002\"KdɈ,�%�dD��\u0012Y2\"Kd�,\u0019�%�D���\u0012Y\"KFd�,�%#�D�Ȓ\u0011Y\"KdɈ,�%�d�$[YW�W`{��E�e�]?_o[�bǏ�YƷ��\u001a��8���jݣ\t�}j~m�����Y�\t\u0016�p���}��MQ�����XI��F�ɽ+?�M��>\\\u0001��s'p�=����@�\u0001�~5��\b+hv�I������C;>�h\"�\u0017�\u000bz�~�W�\u000f�T�Db�Le]��!&���S�f���\u0003�хS�\r�aL\u0005���\u001a��������<�`-\u0014�_\\Zt�����\u001e(b\t)>�\u0000߹8�\u0005��ԍ_�\u0006&\u0015'\u0014&fKW����.�v�s��r�����꿃�����Z>\u0000�N��IJ�\u0011�T����U\u0005���\u0000�\u000e~\u001fP6RO\u001f/���\u0011���X8\u0012-���c�\t�ξ�\u0019WayQ��m\rݑT�_T\u0013߱�)�~�\u001cua��f\u0010�c����\u001a���r�\u0012\"�{W�%�Hc����ʂL�0�!sZ�cv�cMQ9�����\u0004�����^j�\u001e?a���u����|�![��\u0001���z�\u0003�2\u000bC|�\u0010\u0007�3\u001d�c�Ȧ7�|g�|\u0005ᔢ��\u0015_�� �H|���\rR�\u0004O��w\r+\u001f\u001d\u000b�jV\u001f��\u000fd�`�$r�v\t�\u000f+\u0006�n#���v���r�\u0016*�]�hAāT-�,#Ñ���\u001a���\\w\"\u0005B˅~���H~�\u001f\u000b��\u000e�\b�C�����^0��5>0��(�\\��j\u0010�\u001e�\u0010;�\u0010\u000e?���\u0015�Hs��a��\r\u000bX�@YTⅤK]\r4ǳ��>�t�\u0015\u0016\u0010f���{P@\u0004�8�m^��@3y�g��7�\u0011���#k��|-��y�\u0002�xaI\u0011�\u000f�x1q��Ǡ-����$�\u0011�dR?��\"� \u0010x� �@X��Ԁ���''����D�<!˻��\u0006\u001c��/����8\u000f\u0005�\f�Ĥ\u0006_۩\u0000\u000f�\u001aQI�x��}�vZ\u0012n�\u0015Lp.�\u0015#�{4\u0001Ħ@}\r�;t�v���E����XѤ��\u001e����L�Wϼ�*��\u0018��(Q��#]w-�ڜ\t{�\f8\n�\u0015@�����u8o(/�_�\u000b�P����W(�CR;�>9�^cQ5�I�f��\u0010���k�/��~�\u001f�\u000f7���U�/���4|z\u0002\u0013���ȗw-\n�\u0016d�vv\u0007�[�0<��\u0005\u00042:=�[qi\u0011�1x?\rM\u000b�7\\�l_��\u000b��k֍�E\u0016���Ͽ�OW\u0019��׼�h8�\u0017�\toe���_�5�͛=I뒝�[nW$��9\u001er+��Q\u0017D\u0000#d\u000eN$NMhX��\u0003����R\u0000\u0016��ф9��\u001a���b\u0014�\u001b��Z�I�P��55�E#�N\r\n�{�fjlw k�\u000f�h�jԸ\u0005`�3��m\u0019��P�0�45&\u000e|gk3\r\u0010Z3��w\u0007�^\u0019QG�Ml-&\u001410��7����.�e:���\u001b�'J�2|����9\u0001�5Ȳ@B;V�B�z->���\u0014���X���\u001d�r\u0003�S��\u001f\f�R��U�\u0014�x��s����r��I\r'��\u001a��%�\u0007\u0003Z�\u001eЙ�,��,\u0018�<��>���\u001ei����:\f���\u0015��o��#�L�u�/\u0018�d\u000b3S�-�\u0003\u0010�ikf�\u000b�ϙ�����8�ZXۣd��\u000b��P\u0016Z�߫d�:a�w�\u0015��\"�\r�▫�j���[g���m���^#��X?}�w쵒]�\n\f<:��p�����m6�ɬ����}�d۰��׷�p�\rL�2W�>\u001d�8ua��\u001c>�$mn��қL�<�̄�y9ûCs\u0010�[=IW�iZ��>�,�ֵ���g��M��:�T��cg���\u0003ٹ�\u0005�ǣMюl{�6Q�ݹ\r烴�B��h\u0010�@�\u000fj\u0000\u0016����\t��e� �9\u001e$�Cs\u0012��v�I�W\\-\u0010�<�)��4PY\r�\u001e���T�\u0016b\u0002iل�\u0010ϲ�8�O^�Cs��+-���\u0006}\t��Y�\u0002*��&\u0007|AK��ė�X�\u000bQ[�ϵ<\".�kea\r����hȻ�-\u0010�PX�_��'�k�\u0003\fRʳ\u0012��9X*�u/���v\u0018�,�%#�D�Ȓ\u0011Y\"KdɈ,�%�dD��\u0012Y2\"Kd�,\u0019�%�D���\u0012Y\"KFd�,�%#�D�Ȓ��\u0002\f\u0000C\u0018\u0001\u0003D'�+\u0000\u0000\u0000\u0000IEND�B`�PK\u0003\u0004\n\u0000\u0000\u0000\u0000\u0000Tx&H��\u0003\u000b�\b\u0000\u0000�\b\u0000\u0000\u000e\u0000\u001c\u0000Icons/Wide.png �\u0018\u0000(�\u0014\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000�PNG\r\n\u001a\n\u0000\u0000\u0000\rIHDR\u0000\u0000\u0000�\u0000\u0000\u0000s\b\u0002\u0000\u0000\u0000�\u0018C>\u0000\u0000\u0000\u0019tEXtSoftware\u0000Adobe ImageReadyq�e<\u0000\u0000\b<IDATx��]h\u0014W\u0018����\t$(b14���\u0001���\u0006�\u0016SH\b��в\u0004�Z\u0014ۅ�P\u001aR\u001a/����T1D��\u0010\u0011\u0005#\"{�\bE�E�5�\u0012�R\u0003��\u000b\u0013��T�%��E�up��ٝ�����y\u001e\u0016�]wg�d�s��}�g\n[*�+\u0000X��Ɵ\u0000P?\u0000�\u0007@�\u0000�\u001f\u0000�\u0003�~\u0000�\u000f��\u0001P?\u0000�\u0007@�\u0000�\u001f\u0000�\u0003�~\u0000�\u000f��\u0001P?\u0000�\u0007@�\u0000�\u001f\u0000�\u0003�~\u0000�\u000f��\u0001P?\u0000�\u0007@�\u0000�\u001f\u0000�\u0003��\\����c!\u0017�<R���7�\u0013��&��bc�]U_n8\u001a��ǆ��:Z[_<�|���ح�\u0011=�wD��(*]u�dtsC$����ѵ�k�'\u001e_=~���;�\u001e_�U���;u�\u000b퉹�g��8\u001f����/�'�K�m��j���z���\u0001��'Ӣ�е��Y��^�f\u0017\u0005���}U5\u001b�7e$�'��1�\u0018\t\\�>>���3�,�\u001bU�6�M��,��}\u001e�?�`��8~麒�o����w~Y�B����\fG����s��/�݃9�\u0007������m��b�.Ǿ���qGt���c����}i�ݨ�m�'v�/�'\u0002�ǖŗϩ޻i���Q�>��K��\u0013O\u001e�{\u0014�*���\u0015�25��z����\u0017���;�s�\nIs��IO�����bn�@�\r��\u0002r>Y}H0� �Q���ֺ\\�^��R\u001e�fb���\u0000��\\'�ω��A\u0004$�\"�\u001dV�EG��\u0010\t\u0016\f��\n�;��W�,{���s��H�Fj���cd\u0000�C\u0006���j�N��cO�F�R���s\u0019!���b#\u0013\u001fP�?�?g\u0017���4���h��\u0006\u0003\u001e��v�e�.� ��\f\u0016\u001f\u0018-����s^��S�\u001d�i����\u0015.�\u0005�?\rF�gm��l�e�+��*\u0007���\u000ft߸�m��(9C]�߃�'穤܃u\u001e\u001b\u001e?V{*X^�/\u0012}g�Y/��(�q]��O��?��,.-��EyqIS1�lI>\n�xw�{���h���u\u0001mv�S\u001eY�b���.j��\u0003�\u001f\bwN��t�=ѵ�א��Z��6��.·��7E����Ƃ\u0017\u0013��\u001e�fז�K��\u001b\"�\u001d{��qpZ|u)��v��Ԙ����\u001d\u0002��Q�\u000f��}�T*�Ca��Q�\n=,#\u0014l�W>J�u��\u0001�Ԃ\rZ���Hq�o�6��I�=F*F�j�s�q0�\u001fxL-�\u0015��e��Y�>WL\r����d\u001d81`\u0017�:\u0004�v\u0019\u0018Ձ�]�Z����\u0000�撝��ӱڝ��\u0013F#�w��t��\u0017W5p\f6M)\u0018���R�����w6�uJ_E�\u001cj�;�vw~ב�Y\u0018�\u0014V��ڍ��$�\fE�<�z%Ӈ��3�WE�L�]�r�\f�}e��{��\t\u0014\u0016\u0014�\u0003��.�\u0010zZ.�_c\u0019�,~Kϧ�\u000elsY\u00193�\u0018I�͜�|\\\u001b۞��\u001fV�1tw��?�ʨߌ#wD߯�l�̉]g羾���E�\u0005/WiU7mR\u0015��\u001ft��\u000f��Z��Du@}�*�O=CFZF]ǡ�я�����\u000b�I��H\u000f���z�Tyjc�^,�z����\u0012��&��^�Ӈ\\hO�O'v~�o\u0014+7��E����\u0019O\u0019\u001e�\"g�)�]��z�\u0014Ʉ}�\\��C\nv����\ff�,�t��(�\u001dU�ӱ�-=\u0007B<&�_�H('���Rs�[��lk�V��+٤���Зb���i�\u0005�_\"�<\u0014�\u0014Y�)�L���ٙ9�5�\u0013�Vi)�Me��n@\u0012\nƤ#U9�?�IsO���S���o�I�8�;�I=z'�i\u0002�[�\t��o%�B�(]�!�ӱ^���!�?\u000f�C��]@[\u0016m��ޏ\t]\u0017�G���D���;Jj����ߛ\u0011��O^��'yh�Q��e�)3�Q�7��\u000eP�i�����(Կ�0��ߋv>�1ǓIΨ?;����.�M���\u0017s�\u0016���\"ϻk�Ģ]\u0013h�ܸ.@�i0�C�_��Bc\u000e3��B��}��4�\u0005\u0012\u0010g���ؚ\u0005ߏ��\t�MߝMgÝ\u0003痱[��w�\"a��sP��[�'O{Wy��]�ޮ�Y�\u000fu/?0�3\f!��M�}:ߧS���\u001e��\u001cԿ,�>Djmd�񶤁�{�T�xQ���u�\b\u0016�O\u0011��F�2W\u0017�\u0013�|�#|gE\u000b��C+n��s\u0017\u001d+\u0018P@\u001cV0���;��\u0019�t]���p��������t{\"��u�*�\u0015)\u0019U�\u0014�u�/��\u0018�\u00058��m�܋}����j�%k�\u0015)�F�~-�h�\u001c�d�u4����\u0013jq+6�\u0019�9p\u0004�w#�\u0000\u0016߽���ݜ\u0002糴\u0003��\u0002�\u0010�\u0002Z\u001b�f\r\u0006\u0002[|��G��������*�^USY\u0013ݪ65�D�\u0015\fXw��O���yfݥ\"�\u0016Z�?:�c���\u0005v2�Pq�\u0005�<Q]UEB��ya�\u000b��&�\u001f\u0000�\u0003�~\u0000�\u000f��\u0001P?\u0000�\u0007�\u000f��\u0001P?\u0000�\u0007@�\u0000�\u001f\u0000�\u0003�~\u0000�\u000f��\u0001P?\u0000�\u0007@�\u0000�\u001f\u0000�\u0003�~\u0000�\u000f��\u0001P?\u0000�\u0007@�\u0000�\u001f\u0000�\u0003��\u0002\f\u0000��\u0001\u0000E�z\b\u0000\u0000\u0000\u0000IEND�B`�PK\u0003\u0004\n\u0000\u0000\u0000\u0000\u0000Tx&H\u0018\u0006\u0001�a\u0001\u0000\u0000a\u0001\u0000\u0000\u0019\u0000\u001c\u0000strings/resources.resjson �\u0018\u0000(�\u0014\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000{\r\n  \"displayName\": \"Simple VM\",\r\n  \"publisherDisplayName\": \"Microsoft\",\r\n  \"summary\": \"Create a simple VM\",\r\n  \"longSummary\": \"Create a simple VM and use it\",\r\n  \"description\": \"<p>This is just a sample of the type of description you could create for your gallery item!</p><p>This is a second paragraph.</p>\",\r\n  \"documentationLink\": \"Documentation\"\r\n}PK\u0003\u0004\n\u0000\u0000\u0000\u0000\u0000Tx&HC\u001f���\u0000\u0000\u0000�\u0000\u0000\u0000\u0011\u0000\u001c\u0000UIDefinition.json �\u0018\u0000(�\u0014\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000{\r\n    \"$schema\": \"https://gallery.azure.com/schemas/2015-02-12/UIDefinition.json#\",\r\n    \"createDefinition\": {\r\n        \"createBlade\": {\r\n            \"name\": \"DeployFromTemplateBlade\",\r\n            \"extension\": \"HubsExtension\"\r\n        }\r\n    }\r\n}\r\nPK\u0003\u0004\n\u0000\u0000\u0000\u0000\u0000Tx&H�\u0000��b\u001a\u0000\u0000b\u001a\u0000\u0000:\u0000\u001c\u0000DeploymentTemplates/azuredeploy-101-simple-windows-vm.json �\u0018\u0000(�\u0014\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000{\r\n  \"$schema\": \"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#\",\r\n  \"contentVersion\": \"1.0.0.0\",\r\n  \"parameters\": {\r\n    \"newStorageAccountName\": {\r\n      \"type\": \"string\",\r\n      \"metadata\": {\r\n        \"description\": \"Unique DNS Name for the Storage Account where the Virtual Machine's disks will be placed.\"\r\n      }\r\n    },\r\n\r\n     \"blobStorageEndpoint\": {\r\n      \"type\": \"string\",\r\n      \"defaultValue\": \"blob.azurestack.local\",\r\n      \"allowedValues\": [\r\n        \"blob.azurestack.local\",\r\n        \"blob.core.windows.net\"\r\n      ],\r\n      \"metadata\": {\r\n        \"description\": \"Blob storage endpoint\"\r\n      }\r\n    },\r\n\r\n\r\n      \"deploymentLocation\": {\r\n      \"type\": \"string\",\r\n      \"defaultValue\": \"local\",\r\n      \"allowedValues\": [\r\n        \"local\",\r\n        \"westus\",\r\n        \"eastus\"\r\n      ],\r\n      \"metadata\": {\r\n        \"description\": \"Blob storage endpoint\"\r\n      }\r\n    },\r\n\r\n\r\n    \"adminUsername\": {\r\n      \"type\": \"string\",\r\n      \"metadata\": {\r\n        \"description\": \"Username for the Virtual Machine.\"\r\n      }\r\n    },\r\n    \"adminPassword\": {\r\n      \"type\": \"securestring\",\r\n      \"metadata\": {\r\n        \"description\": \"Password for the Virtual Machine.\"\r\n      }\r\n    },\r\n    \"dnsNameForPublicIP\": {\r\n      \"type\": \"string\",\r\n      \"metadata\": {\r\n        \"description\": \"Unique DNS Name for the Public IP used to access the Virtual Machine.\"\r\n      }\r\n    },\r\n    \"windowsOSVersion\": {\r\n      \"type\": \"string\",\r\n      \"defaultValue\": \"2012-R2-Datacenter\",\r\n      \"allowedValues\": [\r\n        \"2008-R2-SP1\",\r\n        \"2012-Datacenter\",\r\n        \"2012-R2-Datacenter\"\r\n      ],\r\n      \"metadata\": {\r\n        \"description\": \"The Windows version for the VM. This will pick a fully patched image of this given Windows version. Allowed values: 2008-R2-SP1, 2012-Datacenter, 2012-R2-Datacenter.\"\r\n      }\r\n    }\r\n  },\r\n  \"variables\": {\r\n    \"location\": \"[parameters('deploymentLocation')]\",\r\n    \"imagePublisher\": \"MicrosoftWindowsServer\",\r\n    \"imageOffer\": \"WindowsServer\",\r\n    \"OSDiskName\": \"osdiskforwindowssimple\",\r\n    \"nicName\": \"myVMNic\",\r\n    \"addressPrefix\": \"10.0.0.0/24\",\r\n    \"subnetName\": \"Subnet\",\r\n    \"subnetPrefix\": \"10.0.0.0/24\",\r\n    \"storageAccountType\": \"Standard_LRS\",\r\n    \"publicIPAddressName\": \"myPublicIP\",\r\n    \"publicIPAddressType\": \"Dynamic\",\r\n    \"vmStorageAccountContainerName\": \"vhds\",\r\n    \"vmName\": \"myVM0007\",\r\n    \"vmSize\": \"Standard_A1\",\r\n    \"virtualNetworkName\": \"MyVNET\",\r\n    \"vnetID\": \"[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]\",\r\n    \"subnetRef\": \"[concat(variables('vnetID'),'/subnets/',variables('subnetName'))]\"\r\n  },\r\n  \"resources\": [\r\n    {\r\n      \"type\": \"Microsoft.Storage/storageAccounts\",\r\n      \"name\": \"[parameters('newStorageAccountName')]\",\r\n      \"apiVersion\": \"2015-05-01-preview\",\r\n      \"location\": \"[variables('location')]\",\r\n      \"properties\": {\r\n        \"accountType\": \"[variables('storageAccountType')]\"\r\n      }\r\n    },\r\n    {\r\n      \"apiVersion\": \"2015-05-01-preview\",\r\n      \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n      \"name\": \"[variables('publicIPAddressName')]\",\r\n      \"location\": \"[variables('location')]\",\r\n      \"properties\": {\r\n        \"publicIPAllocationMethod\": \"[variables('publicIPAddressType')]\",\r\n        \"dnsSettings\": {\r\n          \"domainNameLabel\": \"[parameters('dnsNameForPublicIP')]\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"apiVersion\": \"2015-05-01-preview\",\r\n      \"type\": \"Microsoft.Network/virtualNetworks\",\r\n      \"name\": \"[variables('virtualNetworkName')]\",\r\n      \"location\": \"[variables('location')]\",\r\n      \"properties\": {\r\n        \"addressSpace\": {\r\n          \"addressPrefixes\": [\r\n            \"[variables('addressPrefix')]\"\r\n          ]\r\n        },\r\n        \"subnets\": [\r\n          {\r\n            \"name\": \"[variables('subnetName')]\",\r\n            \"properties\": {\r\n              \"addressPrefix\": \"[variables('subnetPrefix')]\"\r\n            }\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    {\r\n      \"apiVersion\": \"2015-05-01-preview\",\r\n      \"type\": \"Microsoft.Network/networkInterfaces\",\r\n      \"name\": \"[variables('nicName')]\",\r\n      \"location\": \"[variables('location')]\",\r\n      \"dependsOn\": [\r\n        \"[concat('Microsoft.Network/publicIPAddresses/', variables('publicIPAddressName'))]\",\r\n        \"[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]\"\r\n      ],\r\n      \"properties\": {\r\n        \"ipConfigurations\": [\r\n          {\r\n            \"name\": \"ipconfig1\",\r\n            \"properties\": {\r\n              \"privateIPAllocationMethod\": \"Dynamic\",\r\n              \"publicIPAddress\": {\r\n                \"id\": \"[resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPAddressName'))]\"\r\n              },\r\n              \"subnet\": {\r\n                \"id\": \"[variables('subnetRef')]\"\r\n              }\r\n            }\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    {\r\n      \"apiVersion\": \"2015-06-15\",\r\n      \"type\": \"Microsoft.Compute/virtualMachines\",\r\n      \"name\": \"[variables('vmName')]\",\r\n      \"location\": \"[variables('location')]\",\r\n      \"dependsOn\": [\r\n        \"[concat('Microsoft.Storage/storageAccounts/', parameters('newStorageAccountName'))]\",\r\n        \"[concat('Microsoft.Network/networkInterfaces/', variables('nicName'))]\"\r\n      ],\r\n      \"properties\": {\r\n        \"hardwareProfile\": {\r\n          \"vmSize\": \"[variables('vmSize')]\"\r\n        },\r\n        \"osProfile\": {\r\n          \"computerName\": \"[variables('vmName')]\",\r\n          \"adminUsername\": \"[parameters('adminUsername')]\",\r\n          \"adminPassword\": \"[parameters('adminPassword')]\"\r\n        },\r\n        \"storageProfile\": {\r\n          \"imageReference\": {\r\n            \"publisher\": \"[variables('imagePublisher')]\",\r\n            \"offer\": \"[variables('imageOffer')]\",\r\n            \"sku\": \"[parameters('windowsOSVersion')]\",\r\n            \"version\": \"latest\"\r\n          },\r\n          \"osDisk\": {\r\n            \"name\": \"osdisk\",\r\n            \"vhd\": {\r\n              \"uri\": \"[concat('http://',parameters('newStorageAccountName'),'.', parameters('blobStorageEndpoint'), '/', variables('vmStorageAccountContainerName'),'/',variables('OSDiskName'),'.vhd')]\"\r\n            },\r\n            \"caching\": \"ReadWrite\",\r\n            \"createOption\": \"FromImage\"\r\n          }\r\n        },\r\n        \"networkProfile\": {\r\n          \"networkInterfaces\": [\r\n            {\r\n              \"id\": \"[resourceId('Microsoft.Network/networkInterfaces',variables('nicName'))]\"\r\n            }\r\n          ]\r\n        },\r\n        \"diagnosticsProfile\": {\r\n          \"bootDiagnostics\": {\r\n             \"enabled\": \"true\",\r\n             \"storageUri\": \"[concat('http://',parameters('newStorageAccountName'),'.', parameters('blobStorageEndpoint'))]\"\r\n          }\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}PK\u0003\u0004\n\u0000\u0000\u0000\u0000\u0000Tx&HV�f�7\u0001\u0000\u00007\u0001\u0000\u0000E\u0000\u001c\u0000DeploymentTemplates/_rels/azuredeploy-101-simple-windows-vm.json.rels �\u0018\u0000(�\u0014\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Relationships xmlns=\"http://schemas.openxmlformats.org/package/2006/relationships\"><Relationship Type=\"http://schemas.microsoft.com/azpkg/2013/12/deploymenttemplateproperties\" Target=\"/dfbc848bf3784b1885cc44224ecbd0e9/Artifact\" Id=\"Re741a8d1aa99498e\" /></Relationships>PK\u0003\u0004\n\u0000\u0000\u0000\u0000\u0000Tx&H�9�bF\u0001\u0000\u0000F\u0001\u0000\u0000)\u0000\u001c\u0000dfbc848bf3784b1885cc44224ecbd0e9/Artifact �\u0018\u0000(�\u0014\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000<?xml version=\"1.0\"?>\r\n<Artifact xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Name>azuredeploy-101-simple-windows-vm</Name>\r\n  <Type>Template</Type>\r\n  <Path>DeploymentTemplates\\azuredeploy-101-simple-windows-vm.json</Path>\r\n  <IsDefault>true</IsDefault>\r\n</Artifact>PK\u0003\u0004\n\u0000\u0000\u0000\u0000\u0000Tx&HC\\���\u0002\u0000\u0000�\u0002\u0000\u0000\u0013\u0000\u001c\u0000[Content_Types].xml �\u0018\u0000(�\u0014\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000﻿<?xml version=\"1.0\" encoding=\"utf-8\"?><Types xmlns=\"http://schemas.openxmlformats.org/package/2006/content-types\"><Default Extension=\"json\" ContentType=\"application/json\" /><Default Extension=\"rels\" ContentType=\"application/vnd.openxmlformats-package.relationships+xml\" /><Default Extension=\"png\" ContentType=\"image/png\" /><Default Extension=\"resjson\" ContentType=\"text/json\" /><Override PartName=\"/UIDefinition.json\" ContentType=\"text/json\" /><Override PartName=\"/DeploymentTemplates/azuredeploy-101-simple-windows-vm.json\" ContentType=\"text/json\" /><Override PartName=\"/dfbc848bf3784b1885cc44224ecbd0e9/Artifact\" ContentType=\"text/xml\" /></Types>PK\u0001\u0002-\u0000\n\u0000\u0000\u0000\u0000\u0000Tx&H�7�`�\u0004\u0000\u0000�\u0004\u0000\u0000\r\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000Manifest.jsonPK\u0001\u0002-\u0000\n\u0000\u0000\u0000\u0000\u0000Tx&H\u0002a�9 \u0005\u0000\u0000 \u0005\u0000\u0000\u000b\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000�\u0004\u0000\u0000_rels/.relsPK\u0001\u0002-\u0000\n\u0000\u0000\u0000\u0000\u0000Tx&H�� �'\u0003\u0000\u0000'\u0003\u0000\u0000\u000f\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000d\n\u0000\u0000Icons/Small.pngPK\u0001\u0002-\u0000\n\u0000\u0000\u0000\u0000\u0000Tx&H�o�U�\u0005\u0000\u0000�\u0005\u0000\u0000\u0010\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000�\r\u0000\u0000Icons/Medium.pngPK\u0001\u0002-\u0000\n\u0000\u0000\u0000\u0000\u0000Tx&H1����\u0007\u0000\u0000�\u0007\u0000\u0000\u000f\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000�\u0013\u0000\u0000Icons/Large.pngPK\u0001\u0002-\u0000\n\u0000\u0000\u0000\u0000\u0000Tx&H��\u0003\u000b�\b\u0000\u0000�\b\u0000\u0000\u000e\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000�\u001b\u0000\u0000Icons/Wide.pngPK\u0001\u0002-\u0000\n\u0000\u0000\u0000\u0000\u0000Tx&H\u0018\u0006\u0001�a\u0001\u0000\u0000a\u0001\u0000\u0000\u0019\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000�$\u0000\u0000strings/resources.resjsonPK\u0001\u0002-\u0000\n\u0000\u0000\u0000\u0000\u0000Tx&HC\u001f���\u0000\u0000\u0000�\u0000\u0000\u0000\u0011\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000�&\u0000\u0000UIDefinition.jsonPK\u0001\u0002-\u0000\n\u0000\u0000\u0000\u0000\u0000Tx&H�\u0000��b\u001a\u0000\u0000b\u001a\u0000\u0000:\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000�'\u0000\u0000DeploymentTemplates/azuredeploy-101-simple-windows-vm.jsonPK\u0001\u0002-\u0000\n\u0000\u0000\u0000\u0000\u0000Tx&HV�f�7\u0001\u0000\u00007\u0001\u0000\u0000E\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000�B\u0000\u0000DeploymentTemplates/_rels/azuredeploy-101-simple-windows-vm.json.relsPK\u0001\u0002-\u0000\n\u0000\u0000\u0000\u0000\u0000Tx&H�9�bF\u0001\u0000\u0000F\u0001\u0000\u0000)\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000UD\u0000\u0000dfbc848bf3784b1885cc44224ecbd0e9/ArtifactPK\u0001\u0002-\u0000\n\u0000\u0000\u0000\u0000\u0000Tx&HC\\���\u0002\u0000\u0000�\u0002\u0000\u0000\u0013\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000�E\u0000\u0000[Content_Types].xmlPK\u0005\u0006\u0000\u0000\u0000\u0000\f\u0000\f\u0000a\u0003\u0000\u0000�H\u0000\u0000\u0000\u0000",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "19533"
+        ],
+        "User-Agent": [
+          "Microsoft.AzureStack.Management.AzureStackClient/0.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"default\": {\r\n    \"products\": [],\r\n    \"uiDefinitionUri\": \"https://pt-test04:30016//artifacts/1988820c-2bcc-4682-9991-bec44e6b8324/UIDefinition.json?api-version=2015-04-01\",\r\n    \"artifacts\": [\r\n      {\r\n        \"name\": \"azuredeploy-101-simple-windows-vm\",\r\n        \"uri\": \"https://pt-test04:30016//artifacts/1988820c-2bcc-4682-9991-bec44e6b8324/DeploymentTemplates/azuredeploy-101-simple-windows-vm.json?api-version=2015-04-01\",\r\n        \"type\": \"template\"\r\n      }\r\n    ],\r\n    \"metadata\": {},\r\n    \"properties\": {},\r\n    \"identity\": \"Microsoft.SimpleVMTemplate.1.0.0\",\r\n    \"publisher\": \"Microsoft\",\r\n    \"publisherDisplayName\": \"Microsoft\",\r\n    \"itemName\": \"SimpleVMTemplate\",\r\n    \"itemDisplayName\": \"Simple VM\",\r\n    \"version\": \"1.0.0\",\r\n    \"summary\": \"Create a simple VM\",\r\n    \"description\": \"<p>This is just a sample of the type of description you could create for your gallery item!</p><p>This is a second paragraph.</p>\",\r\n    \"categoryIds\": [\r\n      \"My Gallery Items\"\r\n    ],\r\n    \"screenshotUris\": [],\r\n    \"links\": [\r\n      {\r\n        \"displayName\": \"Documentation\",\r\n        \"uri\": \"http://go.microsoft.com/fwlink/?LinkId=532898\"\r\n      }\r\n    ],\r\n    \"filters\": [],\r\n    \"iconFileUris\": {\r\n      \"small\": \"https://pt-test04:30016//artifacts/1988820c-2bcc-4682-9991-bec44e6b8324/Icons/Small.png?api-version=2015-04-01\",\r\n      \"medium\": \"https://pt-test04:30016//artifacts/1988820c-2bcc-4682-9991-bec44e6b8324/Icons/Medium.png?api-version=2015-04-01\",\r\n      \"large\": \"https://pt-test04:30016//artifacts/1988820c-2bcc-4682-9991-bec44e6b8324/Icons/Large.png?api-version=2015-04-01\",\r\n      \"wide\": \"https://pt-test04:30016//artifacts/1988820c-2bcc-4682-9991-bec44e6b8324/Icons/Wide.png?api-version=2015-04-01\"\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1454"
+        ],
+        "Content-Type": [
+          "text/plain; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-request-id": [
+          "e062357e-d498-4cd7-9f49-e2f6c1fd28ca"
+        ],
+        "x-ms-correlation-request-id": [
+          "e062357e-d498-4cd7-9f49-e2f6c1fd28ca"
+        ],
+        "x-ms-routing-request-id": [
+          "REDMOND:20160216T221705Z:e062357e-d498-4cd7-9f49-e2f6c1fd28ca"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 16 Feb 2016 22:17:04 GMT"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/69D8709B-B058-4537-92A0-68C9D272FE31/resourcegroups/GalleryItems/providers/Microsoft.Gallery/mygalleryitems/Microsoft.SimpleVMTemplate.1.0.0?api-version=2015-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlEODcwOUItQjA1OC00NTM3LTkyQTAtNjhDOUQyNzJGRTMxL3Jlc291cmNlZ3JvdXBzL0dhbGxlcnlJdGVtcy9wcm92aWRlcnMvTWljcm9zb2Z0LkdhbGxlcnkvbXlnYWxsZXJ5aXRlbXMvTWljcm9zb2Z0LlNpbXBsZVZNVGVtcGxhdGUuMS4wLjA/YXBpLXZlcnNpb249MjAxNS0wNC0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"default\": {\r\n    \"products\": [],\r\n    \"uiDefinitionUri\": \"https://pt-test04:30016//artifacts/1988820c-2bcc-4682-9991-bec44e6b8324/UIDefinition.json?api-version=2015-04-01\",\r\n    \"artifacts\": [\r\n      {\r\n        \"name\": \"azuredeploy-101-simple-windows-vm\",\r\n        \"uri\": \"https://pt-test04:30016//artifacts/1988820c-2bcc-4682-9991-bec44e6b8324/DeploymentTemplates/azuredeploy-101-simple-windows-vm.json?api-version=2015-04-01\",\r\n        \"type\": \"template\"\r\n      }\r\n    ],\r\n    \"metadata\": {},\r\n    \"properties\": {},\r\n    \"identity\": \"Microsoft.SimpleVMTemplate.1.0.0\",\r\n    \"publisher\": \"Microsoft\",\r\n    \"publisherDisplayName\": \"Microsoft\",\r\n    \"itemName\": \"SimpleVMTemplate\",\r\n    \"itemDisplayName\": \"Simple VM\",\r\n    \"version\": \"1.0.0\",\r\n    \"summary\": \"Create a simple VM\",\r\n    \"description\": \"<p>This is just a sample of the type of description you could create for your gallery item!</p><p>This is a second paragraph.</p>\",\r\n    \"categoryIds\": [\r\n      \"My Gallery Items\"\r\n    ],\r\n    \"screenshotUris\": [],\r\n    \"links\": [\r\n      {\r\n        \"displayName\": \"Documentation\",\r\n        \"uri\": \"http://go.microsoft.com/fwlink/?LinkId=532898\"\r\n      }\r\n    ],\r\n    \"filters\": [],\r\n    \"iconFileUris\": {\r\n      \"small\": \"https://pt-test04:30016//artifacts/1988820c-2bcc-4682-9991-bec44e6b8324/Icons/Small.png?api-version=2015-04-01\",\r\n      \"medium\": \"https://pt-test04:30016//artifacts/1988820c-2bcc-4682-9991-bec44e6b8324/Icons/Medium.png?api-version=2015-04-01\",\r\n      \"large\": \"https://pt-test04:30016//artifacts/1988820c-2bcc-4682-9991-bec44e6b8324/Icons/Large.png?api-version=2015-04-01\",\r\n      \"wide\": \"https://pt-test04:30016//artifacts/1988820c-2bcc-4682-9991-bec44e6b8324/Icons/Wide.png?api-version=2015-04-01\"\r\n    }\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "1454"
+        ],
+        "User-Agent": [
+          "Microsoft.AzureStack.Management.AzureStackClient/0.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/69D8709B-B058-4537-92A0-68C9D272FE31/resourceGroups/GalleryItems/providers/Microsoft.Gallery/myGalleryItems/Microsoft.SimpleVMTemplate.1.0.0\",\r\n  \"name\": \"Microsoft.SimpleVMTemplate.1.0.0\",\r\n  \"type\": \"Microsoft.Gallery/myGalleryItems\",\r\n  \"properties\": {\r\n    \"default\": {\r\n      \"products\": [],\r\n      \"uiDefinitionUri\": \"https://pt-test04:30016//artifacts/1988820c-2bcc-4682-9991-bec44e6b8324/UIDefinition.json?api-version=2015-04-01\",\r\n      \"artifacts\": [\r\n        {\r\n          \"name\": \"azuredeploy-101-simple-windows-vm\",\r\n          \"uri\": \"https://pt-test04:30016//artifacts/1988820c-2bcc-4682-9991-bec44e6b8324/DeploymentTemplates/azuredeploy-101-simple-windows-vm.json?api-version=2015-04-01\",\r\n          \"type\": \"template\"\r\n        }\r\n      ],\r\n      \"metadata\": {},\r\n      \"properties\": {},\r\n      \"identity\": \"Microsoft.SimpleVMTemplate.1.0.0\",\r\n      \"publisher\": \"Microsoft\",\r\n      \"publisherDisplayName\": \"Microsoft\",\r\n      \"itemName\": \"SimpleVMTemplate\",\r\n      \"itemDisplayName\": \"Simple VM\",\r\n      \"version\": \"1.0.0\",\r\n      \"summary\": \"Create a simple VM\",\r\n      \"description\": \"<p>This is just a sample of the type of description you could create for your gallery item!</p><p>This is a second paragraph.</p>\",\r\n      \"categoryIds\": [\r\n        \"My Gallery Items\"\r\n      ],\r\n      \"screenshotUris\": [],\r\n      \"links\": [\r\n        {\r\n          \"displayName\": \"Documentation\",\r\n          \"uri\": \"http://go.microsoft.com/fwlink/?LinkId=532898\"\r\n        }\r\n      ],\r\n      \"filters\": [],\r\n      \"iconFileUris\": {\r\n        \"small\": \"https://pt-test04:30016//artifacts/1988820c-2bcc-4682-9991-bec44e6b8324/Icons/Small.png?api-version=2015-04-01\",\r\n        \"medium\": \"https://pt-test04:30016//artifacts/1988820c-2bcc-4682-9991-bec44e6b8324/Icons/Medium.png?api-version=2015-04-01\",\r\n        \"large\": \"https://pt-test04:30016//artifacts/1988820c-2bcc-4682-9991-bec44e6b8324/Icons/Large.png?api-version=2015-04-01\",\r\n        \"wide\": \"https://pt-test04:30016//artifacts/1988820c-2bcc-4682-9991-bec44e6b8324/Icons/Wide.png?api-version=2015-04-01\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1716"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1197"
+        ],
+        "x-ms-request-id": [
+          "4cd8de36-0e8d-40eb-b0b3-e13da842bdd8"
+        ],
+        "x-ms-correlation-request-id": [
+          "4cd8de36-0e8d-40eb-b0b3-e13da842bdd8"
+        ],
+        "x-ms-routing-request-id": [
+          "REDMOND:20160216T221705Z:4cd8de36-0e8d-40eb-b0b3-e13da842bdd8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 16 Feb 2016 22:17:04 GMT"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/69D8709B-B058-4537-92A0-68C9D272FE31/resourcegroups/GalleryItems/providers/Microsoft.Gallery/mygalleryitems/Microsoft.SimpleVMTemplate.1.0.0?api-version=2015-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlEODcwOUItQjA1OC00NTM3LTkyQTAtNjhDOUQyNzJGRTMxL3Jlc291cmNlZ3JvdXBzL0dhbGxlcnlJdGVtcy9wcm92aWRlcnMvTWljcm9zb2Z0LkdhbGxlcnkvbXlnYWxsZXJ5aXRlbXMvTWljcm9zb2Z0LlNpbXBsZVZNVGVtcGxhdGUuMS4wLjA/YXBpLXZlcnNpb249MjAxNS0wNC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.AzureStack.Management.AzureStackClient/0.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/69D8709B-B058-4537-92A0-68C9D272FE31/resourceGroups/GalleryItems/providers/Microsoft.Gallery/myGalleryItems/Microsoft.SimpleVMTemplate.1.0.0\",\r\n  \"name\": \"Microsoft.SimpleVMTemplate.1.0.0\",\r\n  \"type\": \"Microsoft.Gallery/myGalleryItems\",\r\n  \"properties\": {\r\n    \"products\": [],\r\n    \"uiDefinitionUri\": \"https://pt-test04:30016//artifacts/1988820c-2bcc-4682-9991-bec44e6b8324/UIDefinition.json?api-version=2015-04-01\",\r\n    \"artifacts\": [\r\n      {\r\n        \"name\": \"azuredeploy-101-simple-windows-vm\",\r\n        \"uri\": \"https://pt-test04:30016//artifacts/1988820c-2bcc-4682-9991-bec44e6b8324/DeploymentTemplates/azuredeploy-101-simple-windows-vm.json?api-version=2015-04-01\",\r\n        \"type\": \"template\"\r\n      }\r\n    ],\r\n    \"metadata\": {},\r\n    \"properties\": {},\r\n    \"identity\": \"Microsoft.SimpleVMTemplate.1.0.0\",\r\n    \"publisher\": \"Microsoft\",\r\n    \"publisherDisplayName\": \"Microsoft\",\r\n    \"itemName\": \"SimpleVMTemplate\",\r\n    \"itemDisplayName\": \"Simple VM\",\r\n    \"version\": \"1.0.0\",\r\n    \"summary\": \"Create a simple VM\",\r\n    \"description\": \"<p>This is just a sample of the type of description you could create for your gallery item!</p><p>This is a second paragraph.</p>\",\r\n    \"categoryIds\": [\r\n      \"My Gallery Items\"\r\n    ],\r\n    \"screenshotUris\": [],\r\n    \"links\": [\r\n      {\r\n        \"displayName\": \"Documentation\",\r\n        \"uri\": \"http://go.microsoft.com/fwlink/?LinkId=532898\"\r\n      }\r\n    ],\r\n    \"filters\": [],\r\n    \"iconFileUris\": {\r\n      \"small\": \"https://pt-test04:30016//artifacts/1988820c-2bcc-4682-9991-bec44e6b8324/Icons/Small.png?api-version=2015-04-01\",\r\n      \"medium\": \"https://pt-test04:30016//artifacts/1988820c-2bcc-4682-9991-bec44e6b8324/Icons/Medium.png?api-version=2015-04-01\",\r\n      \"large\": \"https://pt-test04:30016//artifacts/1988820c-2bcc-4682-9991-bec44e6b8324/Icons/Large.png?api-version=2015-04-01\",\r\n      \"wide\": \"https://pt-test04:30016//artifacts/1988820c-2bcc-4682-9991-bec44e6b8324/Icons/Wide.png?api-version=2015-04-01\"\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1704"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "13633"
+        ],
+        "x-ms-request-id": [
+          "920d7142-35ee-41b7-a959-074d06c9890f"
+        ],
+        "x-ms-correlation-request-id": [
+          "920d7142-35ee-41b7-a959-074d06c9890f"
+        ],
+        "x-ms-routing-request-id": [
+          "REDMOND:20160216T221705Z:920d7142-35ee-41b7-a959-074d06c9890f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 16 Feb 2016 22:17:04 GMT"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/69D8709B-B058-4537-92A0-68C9D272FE31/resourcegroups/GalleryItems/providers/Microsoft.Gallery/mygalleryitems/Microsoft.SimpleVMTemplate.1.0.0?api-version=2015-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlEODcwOUItQjA1OC00NTM3LTkyQTAtNjhDOUQyNzJGRTMxL3Jlc291cmNlZ3JvdXBzL0dhbGxlcnlJdGVtcy9wcm92aWRlcnMvTWljcm9zb2Z0LkdhbGxlcnkvbXlnYWxsZXJ5aXRlbXMvTWljcm9zb2Z0LlNpbXBsZVZNVGVtcGxhdGUuMS4wLjA/YXBpLXZlcnNpb249MjAxNS0wNC0wMQ==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.AzureStack.Management.AzureStackClient/0.9.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1196"
+        ],
+        "x-ms-request-id": [
+          "dc91b0f4-494e-4542-af56-a0c9ce1fc00c"
+        ],
+        "x-ms-correlation-request-id": [
+          "dc91b0f4-494e-4542-af56-a0c9ce1fc00c"
+        ],
+        "x-ms-routing-request-id": [
+          "REDMOND:20160216T221706Z:dc91b0f4-494e-4542-af56-a0c9ce1fc00c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 16 Feb 2016 22:17:05 GMT"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/69D8709B-B058-4537-92A0-68C9D272FE31/resourcegroups/GalleryItems?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlEODcwOUItQjA1OC00NTM3LTkyQTAtNjhDOUQyNzJGRTMxL3Jlc291cmNlZ3JvdXBzL0dhbGxlcnlJdGVtcz9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1195"
+        ],
+        "x-ms-request-id": [
+          "7b49794e-2d7d-44bc-875f-bd0dd8ea580a"
+        ],
+        "x-ms-correlation-request-id": [
+          "7b49794e-2d7d-44bc-875f-bd0dd8ea580a"
+        ],
+        "x-ms-routing-request-id": [
+          "REDMOND:20160216T221706Z:7b49794e-2d7d-44bc-875f-bd0dd8ea580a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 16 Feb 2016 22:17:05 GMT"
+        ],
+        "Location": [
+          "https://pt-test04:30005/subscriptions/69D8709B-B058-4537-92A0-68C9D272FE31/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HQUxMRVJZSVRFTVMtUkVETU9ORCIsImpvYkxvY2F0aW9uIjoicmVkbW9uZCJ9?api-version=2014-04-01-preview"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/69D8709B-B058-4537-92A0-68C9D272FE31/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HQUxMRVJZSVRFTVMtUkVETU9ORCIsImpvYkxvY2F0aW9uIjoicmVkbW9uZCJ9?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlEODcwOUItQjA1OC00NTM3LTkyQTAtNjhDOUQyNzJGRTMxL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFIUVV4TVJWSlpTVlJGVFZNdFVrVkVUVTlPUkNJc0ltcHZZa3h2WTJGMGFXOXVJam9pY21Wa2JXOXVaQ0o5P2FwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-04-01-preview"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "13629"
+        ],
+        "x-ms-request-id": [
+          "a2d5d5f4-ba92-433a-bcb4-de35184dbbf1"
+        ],
+        "x-ms-correlation-request-id": [
+          "a2d5d5f4-ba92-433a-bcb4-de35184dbbf1"
+        ],
+        "x-ms-routing-request-id": [
+          "REDMOND:20160216T221706Z:a2d5d5f4-ba92-433a-bcb4-de35184dbbf1"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 16 Feb 2016 22:17:06 GMT"
+        ],
+        "Location": [
+          "https://pt-test04:30005/subscriptions/69D8709B-B058-4537-92A0-68C9D272FE31/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HQUxMRVJZSVRFTVMtUkVETU9ORCIsImpvYkxvY2F0aW9uIjoicmVkbW9uZCJ9?api-version=2014-04-01-preview"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/69D8709B-B058-4537-92A0-68C9D272FE31/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HQUxMRVJZSVRFTVMtUkVETU9ORCIsImpvYkxvY2F0aW9uIjoicmVkbW9uZCJ9?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlEODcwOUItQjA1OC00NTM3LTkyQTAtNjhDOUQyNzJGRTMxL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFIUVV4TVJWSlpTVlJGVFZNdFVrVkVUVTlPUkNJc0ltcHZZa3h2WTJGMGFXOXVJam9pY21Wa2JXOXVaQ0o5P2FwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-04-01-preview"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "13617"
+        ],
+        "x-ms-request-id": [
+          "fecaa103-0763-4527-b4d5-2ad2223a0692"
+        ],
+        "x-ms-correlation-request-id": [
+          "fecaa103-0763-4527-b4d5-2ad2223a0692"
+        ],
+        "x-ms-routing-request-id": [
+          "REDMOND:20160216T221722Z:fecaa103-0763-4527-b4d5-2ad2223a0692"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 16 Feb 2016 22:17:21 GMT"
+        ],
+        "Location": [
+          "https://pt-test04:30005/subscriptions/69D8709B-B058-4537-92A0-68C9D272FE31/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HQUxMRVJZSVRFTVMtUkVETU9ORCIsImpvYkxvY2F0aW9uIjoicmVkbW9uZCJ9?api-version=2014-04-01-preview"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/69D8709B-B058-4537-92A0-68C9D272FE31/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HQUxMRVJZSVRFTVMtUkVETU9ORCIsImpvYkxvY2F0aW9uIjoicmVkbW9uZCJ9?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlEODcwOUItQjA1OC00NTM3LTkyQTAtNjhDOUQyNzJGRTMxL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFIUVV4TVJWSlpTVlJGVFZNdFVrVkVUVTlPUkNJc0ltcHZZa3h2WTJGMGFXOXVJam9pY21Wa2JXOXVaQ0o5P2FwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-04-01-preview"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "13606"
+        ],
+        "x-ms-request-id": [
+          "14940ffa-85fc-4c06-b029-3ccf10f30e52"
+        ],
+        "x-ms-correlation-request-id": [
+          "14940ffa-85fc-4c06-b029-3ccf10f30e52"
+        ],
+        "x-ms-routing-request-id": [
+          "REDMOND:20160216T221737Z:14940ffa-85fc-4c06-b029-3ccf10f30e52"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 16 Feb 2016 22:17:37 GMT"
+        ],
+        "Location": [
+          "https://pt-test04:30005/subscriptions/69D8709B-B058-4537-92A0-68C9D272FE31/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HQUxMRVJZSVRFTVMtUkVETU9ORCIsImpvYkxvY2F0aW9uIjoicmVkbW9uZCJ9?api-version=2014-04-01-preview"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/69D8709B-B058-4537-92A0-68C9D272FE31/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1HQUxMRVJZSVRFTVMtUkVETU9ORCIsImpvYkxvY2F0aW9uIjoicmVkbW9uZCJ9?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlEODcwOUItQjA1OC00NTM3LTkyQTAtNjhDOUQyNzJGRTMxL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFIUVV4TVJWSlpTVlJGVFZNdFVrVkVUVTlPUkNJc0ltcHZZa3h2WTJGMGFXOXVJam9pY21Wa2JXOXVaQ0o5P2FwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-04-01-preview"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "13604"
+        ],
+        "x-ms-request-id": [
+          "741eedab-c816-4dc9-987d-6104cedce807"
+        ],
+        "x-ms-correlation-request-id": [
+          "741eedab-c816-4dc9-987d-6104cedce807"
+        ],
+        "x-ms-routing-request-id": [
+          "REDMOND:20160216T221752Z:741eedab-c816-4dc9-987d-6104cedce807"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 16 Feb 2016 22:17:52 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/69D8709B-B058-4537-92A0-68C9D272FE31/resourcegroups/GalleryItems?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlEODcwOUItQjA1OC00NTM3LTkyQTAtNjhDOUQyNzJGRTMxL3Jlc291cmNlZ3JvdXBzL0dhbGxlcnlJdGVtcz9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceGroupNotFound\",\r\n    \"message\": \"Resource group 'GalleryItems' could not be found.\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "104"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "13603"
+        ],
+        "x-ms-request-id": [
+          "8d4beef9-26c9-4d1e-900b-7b3bd3d4a207"
+        ],
+        "x-ms-correlation-request-id": [
+          "8d4beef9-26c9-4d1e-900b-7b3bd3d4a207"
+        ],
+        "x-ms-routing-request-id": [
+          "REDMOND:20160216T221752Z:8d4beef9-26c9-4d1e-900b-7b3bd3d4a207"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 16 Feb 2016 22:17:52 GMT"
+        ]
+      },
+      "StatusCode": 404
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "69D8709B-B058-4537-92A0-68C9D272FE31"
+  }
+}
