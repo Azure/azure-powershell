@@ -56,7 +56,24 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Test.Framework">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Test.Framework.1.0.5886.28964-prerelease\lib\net45\Microsoft.Azure.Test.Framework.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Test.Framework.1.0.5896.19355-prerelease\lib\net45\Microsoft.Azure.Test.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Test.HttpRecorder">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Test.HttpRecorder.1.0.5896.19355-prerelease\lib\net45\Microsoft.Azure.Test.HttpRecorder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.Edm">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Data.Edm.5.6.4\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Data.OData.5.6.4\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Data.Services.Client.5.6.4\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.0.1\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>

@@ -27,8 +27,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 {
     public class VirtualMachineExtensionCmdletBase : VirtualMachineConfigurationCmdletBase
     {
-        protected const string VirtualMachineExtensionNoun = "AzureVMExtension";
-
         protected const string PublicConfigurationKeyStr = "PublicConfiguration";
         protected const string PrivateConfigurationKeyStr = "PrivateConfiguration";
         protected const string PublicTypeStr = "Public";
