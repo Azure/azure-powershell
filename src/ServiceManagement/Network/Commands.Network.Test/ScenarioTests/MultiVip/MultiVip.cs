@@ -15,13 +15,14 @@
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests
 {
-    using Microsoft.Azure.Common.Authentication;
+    using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Test;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Microsoft.WindowsAzure.Management;
     using Microsoft.WindowsAzure.Management.Compute;
     using Microsoft.WindowsAzure.Management.Network;
     using Microsoft.WindowsAzure.Management.Storage;
+    using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
@@ -80,8 +81,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Scenari
             {
                 context.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2));
 
-                List<string> modules = Directory.GetFiles("ScenarioTests\\MultiVip", "*.ps1").ToList();
-                modules.AddRange(Directory.GetFiles("ScenarioTests", "*.ps1"));
+                List<string> modules = Directory.GetFiles(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ScenarioTests\\MultiVip"), "*.ps1").ToList();
+                modules.AddRange(Directory.GetFiles(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ScenarioTests"), "*.ps1"));
                 modules.Add("Common.ps1");
 
                 SetupManagementClients();

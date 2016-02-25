@@ -348,3 +348,25 @@ function Test-GetResourceExpandProperties
 	# Assert
 	Assert-AreEqual $resourceGet.Properties.key "value"
 }
+
+<#
+.SYNOPSIS
+Tests getting a resource with IsCollection
+#>
+function Test-GetResourceWithCollection
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rname = Get-ResourceName
+	$rglocation = Get-ProviderLocation ResourceManagement
+	$apiversion = "2015-08-01"
+	$resourceType = "Providers.Test/statefulResources"
+
+	# Test
+	New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+	New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile sampleTemplate.json -TemplateParameterFile sampleTemplateParams.json
+	$resourceGet = Get-AzureRmResource -ResourceGroupName $rgname -ResourceType Microsoft.Web/serverFarms -IsCollection -ApiVersion 2015-08-01
+
+	# Assert
+	Assert-AreEqual $resourceGet.ResourceType "Microsoft.Web/serverFarms"
+}

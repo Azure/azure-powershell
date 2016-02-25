@@ -13,10 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Commands.Sql.Server.Model;
-using Microsoft.Azure.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
 {
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// <returns>The server adapter</returns>
         protected override AzureSqlServerAdapter InitModelAdapter(AzureSubscription subscription)
         {
-            return new AzureSqlServerAdapter(DefaultProfile.Context);
+            return new AzureSqlServerAdapter(DefaultContext);
         }
     }
 }

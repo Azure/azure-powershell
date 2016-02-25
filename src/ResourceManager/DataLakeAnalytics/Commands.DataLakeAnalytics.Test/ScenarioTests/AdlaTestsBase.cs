@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.DataLake.AnalyticsCatalog;
 using Microsoft.Azure.Management.DataLake.AnalyticsJob;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
 {
     using Microsoft.Azure;
-    using Microsoft.Azure.Common.Authentication;
     using Microsoft.Azure.Management.DataLake.Store;
     using Microsoft.Azure.Management.DataLake.Store.Models;
     using Microsoft.Azure.Management.Storage;

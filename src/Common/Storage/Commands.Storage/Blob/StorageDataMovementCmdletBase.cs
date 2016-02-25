@@ -19,6 +19,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
     using System.Management.Automation;
     using System.Threading.Tasks;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
     using Microsoft.WindowsAzure.Storage.DataMovement;
 
@@ -27,7 +28,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// <summary>
         /// Blob Transfer Manager
         /// </summary>
-        private ITransferJobRunner transferJobRunner;
+        protected ITransferManager TransferManager
+        {
+            get;
+            private set;
+        }
 
         [Parameter(HelpMessage = "Force to overwrite the existing blob or file")]
         public SwitchParameter Force
@@ -64,96 +69,27 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         {
             base.BeginProcessing();
 
-            this.transferJobRunner = TransferJobRunnerFactory.CreateRunner(this.GetCmdletConcurrency());
+            this.TransferManager = TransferManagerFactory.CreateTransferManager(this.GetCmdletConcurrency());
         }
 
-        protected async Task RunTransferJob(TransferJob transferJob, DataMovementUserData userData)
+        protected TransferContext GetTransferContext(DataMovementUserData userData)
         {
-            this.SetRequestOptionsInTransferJob(transferJob);
-            transferJob.OverwritePromptCallback = ConfirmOverwrite;
+            TransferContext transferContext = new TransferContext();
+            transferContext.ClientRequestId = CmdletOperationContext.ClientRequestId;
+            transferContext.OverwriteCallback = ConfirmOverwrite;
 
-            try
-            {
-                await this.transferJobRunner.RunTransferJob(
-                    transferJob,
-                    (percent, speed) =>
+            transferContext.ProgressHandler = new TransferProgressHandler((transferProgress) =>
+                {
+                    if (userData.Record != null)
                     {
-                        if (userData.Record != null)
-                        {
-                            userData.Record.PercentComplete = (int)percent;
-                            userData.Record.StatusDescription = string.Format(CultureInfo.CurrentCulture, Resources.FileTransmitStatus, (int)percent, Util.BytesToHumanReadableSize(speed));
-                            this.OutputStream.WriteProgress(userData.Record);
-                        }
-                    },
-                    this.CmdletCancellationToken);
+                        // Size of the source file might be 0, when it is, directly treat the progress as 100 percent.
+                        userData.Record.PercentComplete = 0 == userData.TotalSize ? 100 : (int)(transferProgress.BytesTransferred * 100 / userData.TotalSize);
+                        userData.Record.StatusDescription = string.Format(CultureInfo.CurrentCulture, Resources.FileTransmitStatus, userData.Record.PercentComplete);
+                        this.OutputStream.WriteProgress(userData.Record);
+                    }
+                });
 
-                if (userData.Record != null)
-                {
-                    userData.Record.PercentComplete = 100;
-                    userData.Record.StatusDescription = Resources.TransmitSuccessfully;
-                    this.OutputStream.WriteProgress(userData.Record);
-                }
-            }
-            catch (OperationCanceledException)
-            {
-                if (userData.Record != null)
-                {
-                    userData.Record.StatusDescription = Resources.TransmitCancelled;
-                    this.OutputStream.WriteProgress(userData.Record);
-                }
-            }
-            catch (Exception e)
-            {
-                if (userData.Record != null)
-                {
-                    userData.Record.StatusDescription = string.Format(CultureInfo.CurrentCulture, Resources.TransmitFailed, e.Message);
-                    this.OutputStream.WriteProgress(userData.Record);
-                }
-
-                throw;
-            }
-        }
-
-        protected void SetRequestOptionsInTransferJob(TransferJob transferJob)
-        {
-            BlobRequestOptions cmdletOptions = RequestOptions;
-
-            if (cmdletOptions == null)
-            {
-                return;
-            }
-
-            if (null != transferJob.Source.Blob)
-            {
-                this.SetRequestOptions(transferJob.Source, cmdletOptions);
-            }
-
-            if (null != transferJob.Destination.Blob)
-            {
-                this.SetRequestOptions(transferJob.Destination, cmdletOptions);
-            }
-        }
-
-        protected void SetRequestOptions(TransferLocation location, BlobRequestOptions cmdletOptions)
-        {
-            BlobRequestOptions requestOptions = location.RequestOptions as BlobRequestOptions;
-
-            if (null == requestOptions)
-            {
-                requestOptions = new BlobRequestOptions();
-            }
-
-            if (cmdletOptions.MaximumExecutionTime != null)
-            {
-                requestOptions.MaximumExecutionTime = cmdletOptions.MaximumExecutionTime;
-            }
-
-            if (cmdletOptions.ServerTimeout != null)
-            {
-                requestOptions.ServerTimeout = cmdletOptions.ServerTimeout;
-            }
-
-            location.RequestOptions = requestOptions;
+            return transferContext;
         }
 
         protected override void EndProcessing()
@@ -165,26 +101,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             }
             finally
             {
-                this.transferJobRunner.Dispose();
-                this.transferJobRunner = null;
+                this.TransferManager = null;
             }
-        }
-
-        /// <summary>
-        /// Dispose DataMovement cmdlet
-        /// </summary>
-        /// <param name="disposing">User disposing</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                if (this.transferJobRunner != null)
-                {
-                    this.transferJobRunner.Dispose();
-                    this.transferJobRunner = null;
-                }
-            }
-            base.Dispose(disposing);
         }
     }
 }

@@ -23,11 +23,11 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.Azure.Management.RecoveryServices;
 using Microsoft.Azure.Management.SiteRecovery;
 using Microsoft.Azure.Test;
-using Microsoft.Azure.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System;
 using System.Net.Http;
 using System.Reflection;
+using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
 {
@@ -40,10 +40,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
 
         public SiteRecoveryManagementClient SiteRecoveryMgmtClient { get; private set; }
         public RecoveryServicesManagementClient RecoveryServicesMgmtClient { get; private set; }
-
+        
         protected SiteRecoveryTestsBase()
         {
-            this.vaultSettingsFilePath = "ScenarioTests\\vaultSettings.VaultCredentials";
+            this.vaultSettingsFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ScenarioTests\\vaultSettings.VaultCredentials");
 
             if (File.Exists(this.vaultSettingsFilePath))
             {
@@ -73,7 +73,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
             else
             {
                 throw new FileNotFoundException(
-                    "Vault settings file not found, please pass the file downloaded from portal");
+                    string.Format(
+                        "Vault settings file not found at '{0}', please pass the file downloaded from portal",
+                        this.vaultSettingsFilePath));
             }
 
             helper = new EnvironmentSetupHelper();

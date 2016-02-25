@@ -13,10 +13,11 @@
 //  limitations under the License.
 
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 {
-    using Microsoft.Azure.Common.Authentication;
+    using ServiceManagemenet.Common;
     using Microsoft.Azure.Gallery;
     using Microsoft.Azure.Management.Authorization;
     using Microsoft.Azure.Management.Resources;

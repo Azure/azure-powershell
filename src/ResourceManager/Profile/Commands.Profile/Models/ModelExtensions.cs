@@ -14,9 +14,8 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Subscriptions.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
@@ -31,6 +30,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             subscription.Environment = context.Environment != null ? context.Environment.Name : EnvironmentName.AzureCloud;
             subscription.Id = new Guid(other.SubscriptionId);
             subscription.Name = other.DisplayName;
+            subscription.State = other.State;
             subscription.SetProperty(AzureSubscription.Property.Tenants,
                 context.Tenant.Id.ToString());
             return subscription;

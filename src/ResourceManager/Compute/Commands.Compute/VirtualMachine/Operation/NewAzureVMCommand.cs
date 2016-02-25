@@ -15,8 +15,8 @@
 using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Storage;
@@ -26,6 +26,8 @@ using System.Collections;
 using System.Linq;
 using System.Management.Automation;
 using System.Reflection;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -53,6 +55,10 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 3,
             HelpMessage = "Disable BG Info Extension")]
         public SwitchParameter DisableBginfoExtension { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public string LicenseType { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -85,6 +91,7 @@ namespace Microsoft.Azure.Commands.Compute
                     NetworkProfile           = this.VM.NetworkProfile,
                     OsProfile                = this.VM.OSProfile,
                     Plan                     = this.VM.Plan,
+                    LicenseType              = this.LicenseType,
                     AvailabilitySet = this.VM.AvailabilitySetReference,
                     Location                 = !string.IsNullOrEmpty(this.Location) ? this.Location : this.VM.Location,
                     Tags                     = this.Tags != null ? this.Tags.ToDictionary() : this.VM.Tags

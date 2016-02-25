@@ -35132,6 +35132,12 @@ If this parameter is not specified, the default value is Standard_GRS. </maml:pa
           </maml:description>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+          <maml:name>UninstallChefClient</maml:name>
+          <maml:description>
+            <maml:para>Indicates that this cmdlet uninstalls the Chef Client on the vitual machine.</maml:para>
+          </maml:description>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>OrganizationName</maml:name>
           <maml:description>
             <maml:para>Specifies the organization name of the Chef extension.</maml:para>
@@ -35224,6 +35230,12 @@ If this parameter is not specified, the default value is Standard_GRS. </maml:pa
           <maml:name>BootstrapVersion</maml:name>
           <maml:description>
             <maml:para>Specifies the version of chef-client to be installed with the extension.</maml:para>
+          </maml:description>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+          <maml:name>UninstallChefClient</maml:name>
+          <maml:description>
+            <maml:para>Indicates that this cmdlet uninstalls the Chef Client on the vitual machine.</maml:para>
           </maml:description>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
@@ -35350,6 +35362,18 @@ If this parameter is not specified, the default value is Standard_GRS. </maml:pa
         <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+        <maml:name>UninstallChefClient</maml:name>
+        <maml:description>
+          <maml:para>Indicates that this cmdlet uninstalls the Chef Client on the vitual machine.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -36528,6 +36552,13 @@ PS C:\&gt; Update-AzureVM -ServiceName $Service_Name -Name $VM_Name -VM $VM_Upda
           </maml:description>
           <command:parameterValue required="true" variableLength="false">IPersistentVM</command:parameterValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>DataCollection</maml:name>
+          <maml:description>
+            <maml:para>Enables or Disables Data Collection in the extension.  It is enabled if it is not specified.  The value is persisted in the extension between calls. Allowed Values are: Enable and Disable</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
           <maml:name>Confirm</maml:name>
           <maml:description>
@@ -36694,6 +36725,18 @@ PS C:\&gt; Update-AzureVM -ServiceName $Service_Name -Name $VM_Name -VM $VM_Upda
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>DataCollection</maml:name>
+        <maml:description>
+          <maml:para>Enables or Disables Data Collection in the extension.  It is enabled if it is not specified.  The value is persisted in the extension between calls. Allowed Values are: Enable and Disable</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
         <maml:name>Confirm</maml:name>

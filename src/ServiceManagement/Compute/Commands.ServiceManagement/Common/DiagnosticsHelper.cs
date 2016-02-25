@@ -19,13 +19,14 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using System.Xml.Linq;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.WindowsAzure.Management.Storage.Models;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
 {
@@ -33,6 +34,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
     {
         private static string XmlNamespace = "http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration";
         private static string EncodedXmlCfg = "xmlCfg";
+        private static string WadCfg = "WadCfg";
+        private static string WadCfgBlob = "WadCfgBlob";
         private static string StorageAccount = "storageAccount";
         private static string Path = "path";
         private static string ExpandResourceDirectory = "expandResourceDirectory";
@@ -49,24 +52,56 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
         public static string PrivConfKeyAttr = "key";
         public static string PrivConfEndpointAttr = "endpoint";
 
-        public static string GetJsonSerializedPublicDiagnosticsConfigurationFromFile(string configurationPath,
-            string storageAccountName)
+        public enum ConfigFileType
         {
-            return
-                JsonConvert.SerializeObject(
-                    DiagnosticsHelper.GetPublicDiagnosticsConfigurationFromFile(configurationPath, storageAccountName));
+            Unknown,
+            Json,
+            Xml
         }
 
-        public static Hashtable GetPublicDiagnosticsConfigurationFromFile(string configurationPath, string storageAccountName)
+        public static ConfigFileType GetConfigFileType(string configurationPath)
         {
-            using (StreamReader reader = new StreamReader(configurationPath))
+            if (!string.IsNullOrEmpty(configurationPath))
             {
-                return GetPublicDiagnosticsConfiguration(reader.ReadToEnd(), storageAccountName);
+                try
+                {
+                    XmlDocument doc = new XmlDocument();
+                    doc.Load(configurationPath);
+                    return ConfigFileType.Xml;
+                }
+                catch
+                { }
+
+                try
+                {
+                    JsonConvert.DeserializeObject(File.ReadAllText(configurationPath));
+                    return ConfigFileType.Json;
+                }
+                catch
+                { }
+            }
+
+            return ConfigFileType.Unknown;
+        }
+
+        public static Hashtable GetPublicDiagnosticsConfigurationFromFile(string configurationPath,
+            string storageAccountName)
+        {
+            switch (GetConfigFileType(configurationPath))
+            {
+                case ConfigFileType.Xml:
+                    return GetPublicConfigFromXmlFile(configurationPath, storageAccountName);
+                case ConfigFileType.Json:
+                    return GetPublicConfigFromJsonFile(configurationPath, storageAccountName);
+                default:
+                    throw new ArgumentException(Properties.Resources.DiagnosticsExtensionInvalidConfigFileFormat);
             }
         }
 
-        public static Hashtable GetPublicDiagnosticsConfiguration(string config, string storageAccountName)
+        private static Hashtable GetPublicConfigFromXmlFile(string configurationPath, string storageAccountName)
         {
+            var config = File.ReadAllText(configurationPath);
+
             // find the <WadCfg> element and extract it
             int wadCfgBeginIndex = config.IndexOf("<WadCfg>");
             if (wadCfgBeginIndex == -1)
@@ -123,22 +158,49 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
             return hashTable;
         }
 
-        public static string GetJsonSerializedPrivateDiagnosticsConfiguration(string storageAccountName,
-            string storageKey, string endpoint)
+        private static Hashtable GetPublicConfigFromJsonFile(string configurationPath, string storageAccountName)
         {
-            return JsonConvert.SerializeObject(GetPrivateDiagnosticsConfiguration(storageAccountName, storageKey, endpoint));
-        }
+            var publicConfig = GetPublicConfigJObjectFromJsonFile(configurationPath);
+            var properties = publicConfig.Properties().Select(p => p.Name);
+            var wadCfgProperty = properties.FirstOrDefault(p => p.Equals(WadCfg, StringComparison.OrdinalIgnoreCase));
+            var wadCfgBlobProperty = properties.FirstOrDefault(p => p.Equals(WadCfgBlob, StringComparison.OrdinalIgnoreCase));
+            var xmlCfgProperty = properties.FirstOrDefault(p => p.Equals(EncodedXmlCfg, StringComparison.OrdinalIgnoreCase));
 
-        public static Hashtable GetPrivateDiagnosticsConfiguration(string storageAccountName, string storageKey, string endpoint)
-        {
             var hashTable = new Hashtable();
-            hashTable.Add(StorageAccountNameTag, storageAccountName);
-            hashTable.Add(StorageAccountKeyTag, storageKey);
-            hashTable.Add(StorageAccountEndPointTag, endpoint);
+            hashTable.Add(StorageAccount, storageAccountName);
+
+            if (wadCfgProperty != null)
+            {
+                hashTable.Add(wadCfgProperty, publicConfig[wadCfgProperty]);
+            }
+            else if (wadCfgBlobProperty != null)
+            {
+                hashTable.Add(wadCfgBlobProperty, publicConfig[wadCfgBlobProperty]);
+            }
+            else if (xmlCfgProperty != null)
+            {
+                hashTable.Add(xmlCfgProperty, publicConfig[xmlCfgProperty]);
+            }
+            else
+            {
+                throw new ArgumentException(Properties.Resources.DiagnosticsExtensionIaaSConfigElementNotDefined);
+            }
+
             return hashTable;
         }
 
-        public static XElement GetPublicConfigElement(string configurationPath)
+        public static Hashtable GetPrivateDiagnosticsConfiguration(string storageAccountName,
+            string storageKey, string endpoint)
+        {
+            var privateConfig = new Hashtable();
+            privateConfig.Add(StorageAccountNameTag, storageAccountName);
+            privateConfig.Add(StorageAccountKeyTag, storageKey);
+            privateConfig.Add(StorageAccountEndPointTag, endpoint);
+
+            return privateConfig;
+        }
+
+        public static XElement GetPublicConfigXElementFromXmlFile(string configurationPath)
         {
             XElement publicConfig = null;
 
@@ -161,11 +223,24 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
             return publicConfig;
         }
 
+        public static JObject GetPublicConfigJObjectFromJsonFile(string configurationPath)
+        {
+            var config = JsonConvert.DeserializeObject<JObject>(File.ReadAllText(configurationPath));
+            var properties = config.Properties().Select(p => p.Name);
+
+            // If the json config has the public config as a property, we extract it. Otherwise, the root object is the public config.
+            var publicConfigProperty = properties.FirstOrDefault(p => p.Equals(PublicConfigElemStr, StringComparison.OrdinalIgnoreCase));
+            var publicConfig = publicConfigProperty == null ? config : config[publicConfigProperty] as JObject;
+
+            return publicConfig;
+        }
+
         public static string GetStorageAccountInfoFromPrivateConfig(string configurationPath, string attributeName)
         {
             string value = null;
+            var configFileType = GetConfigFileType(configurationPath);
 
-            if (!string.IsNullOrEmpty(configurationPath))
+            if (configFileType == ConfigFileType.Xml)
             {
                 var xmlConfig = XElement.Load(configurationPath);
 
@@ -175,6 +250,21 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
                     var storageAccountElem = privateConfigElem == null ? null : privateConfigElem.Elements().FirstOrDefault(ele => ele.Name.LocalName == StorageAccountElemStr);
                     var attribute = storageAccountElem == null ? null : storageAccountElem.Attributes().FirstOrDefault(a => string.Equals(a.Name.LocalName, attributeName));
                     value = attribute == null ? null : attribute.Value;
+                }
+            }
+            else if (configFileType == ConfigFileType.Json)
+            {
+                var jsonConfig = JsonConvert.DeserializeObject<JObject>(File.ReadAllText(configurationPath));
+                var properties = jsonConfig.Properties().Select(p => p.Name);
+
+                var privateConfigProperty = properties.FirstOrDefault(p => p.Equals(PrivateConfigElemStr, StringComparison.OrdinalIgnoreCase));
+                if (privateConfigProperty != null)
+                {
+                    var privateConfig = jsonConfig[privateConfigProperty] as JObject;
+                    properties = privateConfig.Properties().Select(p => p.Name);
+
+                    var attributeProperty = properties.FirstOrDefault(p => p.Equals(attributeName, StringComparison.OrdinalIgnoreCase));
+                    value = attributeProperty == null ? null : privateConfig[attributeProperty].Value<string>();
                 }
             }
 
@@ -190,16 +280,24 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
         public static string InitializeStorageAccountName(AzureStorageContext storageContext = null, string configurationPath = null)
         {
             string storageAccountName = null;
+            var configFileType = GetConfigFileType(configurationPath);
 
             if (storageContext != null)
             {
                 storageAccountName = storageContext.StorageAccountName;
             }
-            else if (!string.IsNullOrEmpty(configurationPath))
+            else if (configFileType == ConfigFileType.Xml)
             {
-                var publicConfig = GetPublicConfigElement(configurationPath);
+                var publicConfig = GetPublicConfigXElementFromXmlFile(configurationPath);
                 var storageNode = publicConfig == null ? null : publicConfig.Elements().FirstOrDefault(ele => ele.Name.LocalName == StorageAccountElemStr);
                 storageAccountName = storageNode == null ? null : storageNode.Value;
+            }
+            else if (configFileType == ConfigFileType.Json)
+            {
+                var publicConfig = GetPublicConfigJObjectFromJsonFile(configurationPath);
+                var properties = publicConfig.Properties().Select(p => p.Name);
+                var storageAccountProperty = properties.FirstOrDefault(p => p.Equals(StorageAccount, StringComparison.OrdinalIgnoreCase));
+                storageAccountName = storageAccountProperty == null ? null : publicConfig[storageAccountProperty].Value<string>();
             }
 
             return storageAccountName;
@@ -211,20 +309,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
         /// 1. The one we try to resolve within current subscription
         /// 2. The one defined in PrivateConfig in the configuration file
         /// </summary>
-        public static string InitializeStorageAccountKey(StorageManagementClient storageClient, string storageAccountName = null, string configurationPath = null)
+        public static string InitializeStorageAccountKey(IStorageManagementClient storageClient, string storageAccountName = null, string configurationPath = null)
         {
             string storageAccountKey = null;
             StorageAccount storageAccount = null;
 
-            try
-            {
-                storageAccount = storageClient.StorageAccounts.Get(storageAccountName).StorageAccount;
-            }
-            catch
-            {
-            }
-
-            if (storageAccount != null)
+            if (TryGetStorageAccount(storageClient, storageAccountName, out storageAccount))
             {
                 // Help user retrieve the storage account key
                 var keys = storageClient.StorageAccounts.GetKeys(storageAccount.Name);
@@ -250,54 +340,56 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
         /// 3. The one get from PrivateConfig element in config file
         /// 4. The one get from current Azure Environment
         /// </summary>
-        public static string InitializeStorageAccountEndpoint(string storageAccountName, string storageAccountKey, StorageManagementClient storageClient,
+        public static string InitializeStorageAccountEndpoint(string storageAccountName, string storageAccountKey, IStorageManagementClient storageClient,
             AzureStorageContext storageContext = null, string configurationPath = null, AzureContext defaultContext = null)
         {
             string storageAccountEndpoint = null;
+            StorageAccount storageAccount = null;
 
             if (storageContext != null)
             {
                 // Get value from StorageContext
                 storageAccountEndpoint = GetEndpointFromStorageContext(storageContext);
             }
-            else
+            else if (TryGetStorageAccount(storageClient, storageAccountName, out storageAccount)
+                && storageAccount.Properties.Endpoints.Count >= 4)
             {
-                // Try get the storage account from current subscription
-                StorageAccount storageAccount = null;
-
-                try
-                {
-                    storageAccount = storageClient.StorageAccounts.Get(storageAccountName).StorageAccount;
-                }
-                catch
-                {
-                }
-
-                if (storageAccount != null && storageAccount.Properties.Endpoints.Count >= 4)
-                {
-                    // Get value from StorageAccount
-                    var endpoints = storageAccount.Properties.Endpoints;
-                    var context = CreateStorageContext(endpoints[0], endpoints[1], endpoints[2], endpoints[3], storageAccountName, storageAccountKey);
-                    storageAccountEndpoint = GetEndpointFromStorageContext(context);
-                }
-                else if (!string.IsNullOrEmpty(GetStorageAccountInfoFromPrivateConfig(configurationPath, PrivConfEndpointAttr)))
-                {
-                    // Get value from PrivateConfig
-                    storageAccountEndpoint = GetStorageAccountInfoFromPrivateConfig(configurationPath, PrivConfEndpointAttr);
-                }
-                else if (defaultContext != null && defaultContext.Environment != null)
-                {
-                    // Get value from default azure environment. Default to use https
-                    Uri blobEndpoint = defaultContext.Environment.GetStorageBlobEndpoint(storageAccountName);
-                    Uri queueEndpoint = defaultContext.Environment.GetStorageQueueEndpoint(storageAccountName);
-                    Uri tableEndpoint = defaultContext.Environment.GetStorageTableEndpoint(storageAccountName);
-                    Uri fileEndpoint = defaultContext.Environment.GetStorageFileEndpoint(storageAccountName);
-                    var context = CreateStorageContext(blobEndpoint, queueEndpoint, tableEndpoint, fileEndpoint, storageAccountName, storageAccountKey);
-                    storageAccountEndpoint = GetEndpointFromStorageContext(context);
-                }
+                // Get value from StorageAccount
+                var endpoints = storageAccount.Properties.Endpoints;
+                var context = CreateStorageContext(endpoints[0], endpoints[1], endpoints[2], endpoints[3], storageAccountName, storageAccountKey);
+                storageAccountEndpoint = GetEndpointFromStorageContext(context);
+            }
+            else if (!string.IsNullOrEmpty(
+                storageAccountEndpoint = GetStorageAccountInfoFromPrivateConfig(configurationPath, PrivConfEndpointAttr)))
+            {
+                // We can get value from PrivateConfig
+            }
+            else if (defaultContext != null && defaultContext.Environment != null)
+            {
+                // Get value from default azure environment. Default to use https
+                Uri blobEndpoint = defaultContext.Environment.GetStorageBlobEndpoint(storageAccountName);
+                Uri queueEndpoint = defaultContext.Environment.GetStorageQueueEndpoint(storageAccountName);
+                Uri tableEndpoint = defaultContext.Environment.GetStorageTableEndpoint(storageAccountName);
+                Uri fileEndpoint = defaultContext.Environment.GetStorageFileEndpoint(storageAccountName);
+                var context = CreateStorageContext(blobEndpoint, queueEndpoint, tableEndpoint, fileEndpoint, storageAccountName, storageAccountKey);
+                storageAccountEndpoint = GetEndpointFromStorageContext(context);
             }
 
             return storageAccountEndpoint;
+        }
+
+        private static bool TryGetStorageAccount(IStorageManagementClient storageClient, string storageAccountName, out StorageAccount storageAccount)
+        {
+            try
+            {
+                storageAccount = storageClient.StorageAccounts.Get(storageAccountName).StorageAccount;
+            }
+            catch
+            {
+                storageAccount = null;
+            }
+
+            return storageAccount != null;
         }
 
         private static AzureStorageContext CreateStorageContext(Uri blobEndpoint, Uri queueEndpoint, Uri tableEndpoint, Uri fileEndpoint,

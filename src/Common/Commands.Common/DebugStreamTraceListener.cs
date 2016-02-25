@@ -34,7 +34,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
         public ConcurrentQueue<string> Messages; 
         public override void Write(string message)
         {
-            Messages.Enqueue(message);
+            Messages.CheckAndEnqueue(message);
         }
 
         public override void WriteLine(string message)

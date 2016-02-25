@@ -309,7 +309,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 parameters).GetAwaiter().GetResult();
         }
 
-        private string GetExtensionPublicSettings()
+        private Hashtable GetExtensionPublicSettings()
         {
             Hashtable publicSettings = new Hashtable();
             publicSettings.Add(aadClientIDKey, AadClientID ?? String.Empty);
@@ -321,10 +321,10 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             publicSettings.Add(encryptionOperationKey, enableEncryptionOperation);
             publicSettings.Add(sequenceVersionKey, SequenceVersion ?? String.Empty);
 
-            return JsonConvert.SerializeObject(publicSettings);
+            return publicSettings;
         }
 
-        private string GetExtensionProtectedSettings()
+        private Hashtable GetExtensionProtectedSettings()
         {
             Hashtable protectedSettings = new Hashtable();
             protectedSettings.Add(aadClientSecretKey, AadClientSecret ?? String.Empty);
@@ -332,13 +332,13 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             {
                 protectedSettings.Add(passphraseKey, Passphrase ?? null);
             }
-            return JsonConvert.SerializeObject(protectedSettings);
+            return protectedSettings;
         }
 
         private VirtualMachineExtension GetVmExtensionParameters(VirtualMachine vmParameters)
         {
-            string SettingString = GetExtensionPublicSettings();
-            string ProtectedSettingString = GetExtensionProtectedSettings();
+            Hashtable SettingString = GetExtensionPublicSettings();
+            Hashtable ProtectedSettingString = GetExtensionProtectedSettings();
 
             if (vmParameters == null)
             {
