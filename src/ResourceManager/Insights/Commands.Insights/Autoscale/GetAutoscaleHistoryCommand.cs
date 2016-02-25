@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// <returns>Modified query filter including the condition for eventSource</returns>
         protected override string ProcessParticularParameters(string currentQueryFilter)
         {
-            WriteWarning("******* DEPRECATION NOTICE: The name of this Insights Cmdlet will either change to include 'Rm' for consistency or disappear to be merged into other Cmdlets\n\r");
+            WriteWarning("This cmdlet is being modified to enable better experience and may contain breaking changes in a future release.\n\r");
 
             return this.AddConditionIfPResent(currentQueryFilter, "category", AutoscaleEventSourceName);
         }

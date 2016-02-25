@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            WriteWarning("******* DEPRECATION NOTICE: The name of this Insights Cmdlet will either change to include 'Rm' for consistency or disappear to be merged into other Cmdlets\n\r");
+            WriteWarning("This cmdlet is being modified to enable better experience and may contain breaking changes in a future release.\n\r");
 
             ScaleRule rule = this.CreateSettingRule();
             WriteObject(rule);
@@ -125,7 +125,6 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// <returns>A ScaleRule created based on the properties of the object</returns>
         public ScaleRule CreateSettingRule()
         {
-            WriteVerboseWithTimestamp(string.Format("CreateSettingRule: Checking parameters"));
             if (this.TimeWindow != default(TimeSpan) && this.TimeWindow < MinimumTimeWindow)
             {
                 throw new ArgumentOutOfRangeException("TimeWindow", this.TimeWindow, ResourcesForAutoscaleCmdlets.MinimumTimeWindow5min);
@@ -136,7 +135,6 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
                 throw new ArgumentOutOfRangeException("TimeGrain", this.TimeGrain, ResourcesForAutoscaleCmdlets.MinimumTimeGrain1min);
             }
 
-            WriteVerboseWithTimestamp(string.Format("CreateSettingRule: Creating trigger"));
             MetricTrigger trigger = new MetricTrigger()
             {
                 MetricName = this.MetricName,
@@ -149,7 +147,6 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
                 TimeWindow = this.TimeWindow == default(TimeSpan) ? MinimumTimeWindow : this.TimeWindow,
             };
 
-            WriteVerboseWithTimestamp(string.Format("CreateSettingRule: Creating scale action"));
             ScaleAction action = new ScaleAction()
             {
                 Cooldown = this.ScaleActionCooldown,
@@ -158,7 +155,6 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
                 Value = this.ScaleActionValue,
             };
 
-            WriteVerboseWithTimestamp(string.Format("CreateSettingRule: Creating scale rule"));
             return new ScaleRule()
             {
                 MetricTrigger = trigger,

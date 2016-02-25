@@ -199,7 +199,6 @@ namespace Microsoft.Azure.Commands.Insights
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            WriteVerboseWithTimestamp(string.Format("ProcessRecordInternal: Processing Parameters"));
             string queryFilter = this.ProcessParameters();
 
             // Retrieve the records
@@ -210,7 +209,6 @@ namespace Microsoft.Azure.Commands.Insights
 
             // Call the proper API methods to return a list of raw records. In the future this pattern can be extended to include DigestRecords
             // If fullDetails is present do not select fields, if not present fetch only the SelectedFieldsForQuery
-            WriteVerboseWithTimestamp(string.Format("ProcessRecordInternal: Calling the Insights SDK ListEventsAsync function with filter:{0}, with list of selected fields:{1}", queryFilter, fullDetails ? null : PSEventDataNoDetails.SelectedFieldsForQuery.Replace(",", ", ").Trim()));
             EventDataListResponse response = this.InsightsClient.EventOperations.ListEventsAsync(filterString: queryFilter, selectedProperties: fullDetails ? null : PSEventDataNoDetails.SelectedFieldsForQuery, cancellationToken: CancellationToken.None).Result;
             var records = new List<IPSEventData>(response.EventDataCollection.Value.Where(this.KeepTheRecord).Select(e => fullDetails ? (IPSEventData)new PSEventData(e) : (IPSEventData)new PSEventDataNoDetails(e)));
             string nextLink = response.EventDataCollection.NextLink;
@@ -218,7 +216,6 @@ namespace Microsoft.Azure.Commands.Insights
             // Adding a safety check to stop returning records if too many have been read already.
             while (!string.IsNullOrWhiteSpace(nextLink) && records.Count < maxNumberOfRecords)
             {
-                WriteVerboseWithTimestamp(string.Format("ProcessRecordInternal: Following continuation token, next link: {0}", nextLink));
                 response = this.InsightsClient.EventOperations.ListEventsNextAsync(nextLink: nextLink, cancellationToken: CancellationToken.None).Result;
                 records.AddRange(response.EventDataCollection.Value.Select(e => fullDetails ? (IPSEventData)new PSEventData(e) : (IPSEventData)new PSEventDataNoDetails(e)));
                 nextLink = response.EventDataCollection.NextLink;
@@ -227,12 +224,10 @@ namespace Microsoft.Azure.Commands.Insights
             var recordsReturned = new List<IPSEventData>();
             if (records.Count > maxNumberOfRecords)
             {
-                WriteVerboseWithTimestamp(string.Format("ProcessRecordInternal: Reducing the response to a maximum of {0} records", maxNumberOfRecords));
                 recordsReturned.AddRange(records.Take(maxNumberOfRecords));
             }
             else
             {
-                WriteVerboseWithTimestamp(string.Format("ProcessRecordInternal: Returning {0} records", records.Count));
                 recordsReturned = records;
             }
 

@@ -39,7 +39,6 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
         /// <returns>A tabular format of the input parameters</returns>
         public PSMetricTabularResult[] ProcessParameter()
         {
-            WriteVerboseWithTimestamp(string.Format("ProcessParameter: converting array of metric, with {0} records, into the proper type before returning", this.Metrics != null ? this.Metrics.Length : 0));
             var metricsTable = new List<PSMetricTabularResult>();
             foreach (var metric in this.Metrics ?? Enumerable.Empty<Metric>())
             {
@@ -77,7 +76,7 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            WriteWarning("******* DEPRECATION NOTICE: The name of this Insights Cmdlet will either change to include 'Rm' for consistency or disappear to be merged into other Cmdlets\n\r");
+            WriteWarning("This cmdlet is being modified to enable better experience and may contain breaking changes in a future release.\n\r");
 
             WriteObject(this.ProcessParameter());
         }

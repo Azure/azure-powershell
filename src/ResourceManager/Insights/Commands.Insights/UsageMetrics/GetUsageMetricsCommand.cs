@@ -121,20 +121,17 @@ namespace Microsoft.Azure.Commands.Insights.UsageMetrics
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            WriteWarning("******* DEPRECATION NOTICE: The name of this Insights Cmdlet will either change to include 'Rm' for consistency or disappear to be merged into other Cmdlets\n\r");
+            WriteWarning("This cmdlet is being modified to enable better experience and may contain breaking changes in a future release.\n\r");
 
-            WriteVerboseWithTimestamp(string.Format("ProcessRecordInternal: Processing Parameters"));
             string queryFilter = this.ProcessParameters();
             string apiVersion = this.ApiVersion ?? DefaultApiVersion;
 
             // Call the proper API methods to return a list of raw records.
             // If fullDetails is present full details of the records displayed, otherwise only a summary of the values is displayed
-            WriteVerboseWithTimestamp(string.Format("ProcessRecordInternal: Calling the Insights SDK UsageMetricOperations.ListAsync function with resourceId: {0}, filter:{1}, and API version:{2}", this.ResourceId, queryFilter, apiVersion));
             UsageMetricListResponse response = this.InsightsClient.UsageMetricOperations
                 .ListAsync(resourceUri: this.ResourceId, filterString: queryFilter, apiVersion: apiVersion, cancellationToken: CancellationToken.None)
                 .Result;
 
-            WriteVerboseWithTimestamp("ProcessRecordInternal: converting records to the proper type before returning");
             var records = response.UsageMetricCollection.Value
                 .Select(e => new PSUsageMetric(e))
                 .ToArray();

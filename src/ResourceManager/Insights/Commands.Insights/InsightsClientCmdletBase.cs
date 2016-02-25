@@ -39,7 +39,6 @@ namespace Microsoft.Azure.Commands.Insights
             {
                 if (this.insightsClient == null)
                 {
-                    WriteVerboseWithTimestamp(string.Format("Creating a new InsightsClient with subscription: {0} ({1}) and endpoint: {2}", DefaultProfile.Context.Subscription.Id, DefaultProfile.Context.Subscription.Name, AzureEnvironment.Endpoint.ResourceManager));
                     // The premise is that a command to establish a context (like Add-AzureRmAccount) has been called before this command in order to have a correct CurrentContext
                     this.insightsClient = AzureSession.ClientFactory.CreateClient<InsightsClient>(DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
                 }

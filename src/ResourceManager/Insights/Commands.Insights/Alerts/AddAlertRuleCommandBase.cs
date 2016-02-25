@@ -116,11 +116,10 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            WriteWarning("******* DEPRECATION NOTICE: The name of this Insights Cmdlet will either change to include 'Rm' for consistency or disappear to be merged into other Cmdlets\n\r");
+            WriteWarning("This cmdlet is being modified to enable better experience and may contain breaking changes in a future release.\n\r");
 
             RuleCreateOrUpdateParameters parameters = this.CreateSdkCallParameters();
 
-            WriteVerboseWithTimestamp(string.Format("ProcessRecordInternal: Calling the Insights SDK AlertOperations.CreateOrUpdateRuleAsync function with resource group:{0}, and parameters:{1}", this.ResourceGroup, parameters));
             var result = this.InsightsManagementClient.AlertOperations.CreateOrUpdateRuleAsync(resourceGroupName: this.ResourceGroup, parameters: parameters).Result;
             WriteObject(result);
         }

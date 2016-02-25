@@ -71,25 +71,21 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            WriteWarning("******* DEPRECATION NOTICE: The name of this Insights Cmdlet will either change to include 'Rm' for consistency or disappear to be merged into other Cmdlets\n\r");
+            WriteWarning("This cmdlet is being modified to enable better experience and may contain breaking changes in a future release.\n\r");
 
             if (string.IsNullOrWhiteSpace(this.Name))
             {
                 // Retrieve all the AlertRules for a ResourceGroup
-                WriteVerboseWithTimestamp(string.Format("ProcessRecordInternal: Calling the Insights SDK AlertOperations.ListRulesAsync function with resource group:{0}, target resource Uri:{1}", this.ResourceGroup, this.TargetResourceId));
                 RuleListResponse result = this.InsightsManagementClient.AlertOperations.ListRulesAsync(resourceGroupName: this.ResourceGroup, targetResourceUri: this.TargetResourceId).Result;
 
-                WriteVerboseWithTimestamp(string.Format("ProcessRecordInternal: Converting to the proper type and level of detail before returning"));
                 var records = result.RuleResourceCollection.Value.Select(e => this.DetailedOutput.IsPresent ? (PSManagementItemDescriptor)new PSAlertRule(e) : new PSAlertRuleNoDetails(e));
                 WriteObject(sendToPipeline: records.ToList());
             }
             else
             {
                 // Retrieve a single AlertRule determined by the ResourceGroup and the rule name
-                WriteVerboseWithTimestamp(string.Format("ProcessRecordInternal: Calling the Insights SDK AlertOperations.GetRuleAsync function with resource group:{0}, rule name:{1}", this.ResourceGroup, this.Name));
                 RuleGetResponse result = this.InsightsManagementClient.AlertOperations.GetRuleAsync(resourceGroupName: this.ResourceGroup, ruleName: this.Name).Result;
 
-                WriteVerboseWithTimestamp(string.Format("ProcessRecordInternal: Converting to the proper type and level of detail before returning"));
                 var finalResult = new List<PSManagementItemDescriptor> { this.DetailedOutput.IsPresent ? (PSManagementItemDescriptor)new PSAlertRule(result) : new PSAlertRuleNoDetails(result) };
                 WriteObject(sendToPipeline: finalResult);
             }

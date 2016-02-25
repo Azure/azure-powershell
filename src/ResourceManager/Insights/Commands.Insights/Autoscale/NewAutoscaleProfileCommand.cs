@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            WriteWarning("******* DEPRECATION NOTICE: The name of this Insights Cmdlet will either change to include 'Rm' for consistency or disappear to be merged into other Cmdlets\n\r");
+            WriteWarning("This cmdlet is being modified to enable better experience and may contain breaking changes in a future release.\n\r");
 
             AutoscaleProfile profile = this.CreateSettingProfile();
             WriteObject(profile);
@@ -148,7 +148,6 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// <returns>An autoscale profile based on the properties of the object</returns>
         public AutoscaleProfile CreateSettingProfile()
         {
-            WriteVerboseWithTimestamp("CreateSettingProfile");
             return new AutoscaleProfile
                 {
                     Name = this.Name ?? string.Empty,
@@ -181,7 +180,6 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// <returns>A Recurrence created based on the properties of this object</returns>
         public Recurrence CreateAutoscaleRecurrence()
         {
-            WriteVerboseWithTimestamp("CreateAutoscaleRecurrence");
             return new Recurrence()
             {
                 Frequency = this.RecurrenceFrequency,
@@ -192,7 +190,6 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         private RecurrentSchedule CreateRecurrentSchedule()
         {
             // Assuming validation is done by the server
-            WriteVerboseWithTimestamp("CreateRecurrentSchedule");
             return new RecurrentSchedule()
             {
                 Days = this.ScheduleDays,

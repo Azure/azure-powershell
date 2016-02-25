@@ -39,7 +39,6 @@ namespace Microsoft.Azure.Commands.Insights
             get {
                 if (this.insightsManagementClient == null)
                 {
-                    WriteVerboseWithTimestamp(string.Format("Creating a new InsightsManagementClient with context: {0} ({1}) and endpoint: {2}", DefaultProfile.Context.Subscription.Id, DefaultProfile.Context.Subscription.Name, AzureEnvironment.Endpoint.ResourceManager));
                     this.insightsManagementClient = AzureSession.ClientFactory.CreateClient<InsightsManagementClient>(DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
                 }
 

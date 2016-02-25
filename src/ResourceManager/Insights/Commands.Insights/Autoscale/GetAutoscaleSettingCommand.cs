@@ -58,25 +58,21 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            WriteWarning("******* DEPRECATION NOTICE: The name of this Insights Cmdlet will either change to include 'Rm' for consistency or disappear to be merged into other Cmdlets\n\r");
+            WriteWarning("This cmdlet is being modified to enable better experience and may contain breaking changes in a future release.\n\r");
 
             if (string.IsNullOrWhiteSpace(this.Name))
             {
                 // Retrieve all the Autoscale settings for a resource group
-                WriteVerboseWithTimestamp(string.Format("ProcessRecordInternal: Calling the Insights SDK AutoscaleOperations.ListSettingsAsync function with resource group:{0} and null target resource uri", this.ResourceGroup));
                 AutoscaleSettingListResponse result = this.InsightsManagementClient.AutoscaleOperations.ListSettingsAsync(resourceGroupName: this.ResourceGroup, targetResourceUri: null).Result;
 
-                WriteVerboseWithTimestamp(string.Format("ProcessRecordInternal: converting to the proper type and level of detail before returning"));
                 var records = result.AutoscaleSettingResourceCollection.Value.Select(e => this.DetailedOutput.IsPresent ? new PSAutoscaleSetting(e) : e);
                 WriteObject(sendToPipeline: records, enumerateCollection: true);
             }
             else
             {
                 // Retrieve a single Autoscale setting determined by the resource group and the rule name
-                WriteVerboseWithTimestamp(string.Format("ProcessRecordInternal: Calling the Insights SDK AutoscaleOperations.ListSettingsAsync function with resource group:{0} and setting name:{1}", this.ResourceGroup, this.Name));
                 AutoscaleSettingGetResponse result = this.InsightsManagementClient.AutoscaleOperations.GetSettingAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name).Result;
 
-                WriteVerboseWithTimestamp(string.Format("ProcessRecordInternal: converting to the proper type and level of detail before returning"));
                 WriteObject(sendToPipeline: this.DetailedOutput.IsPresent ? new PSAutoscaleSetting(result) : result.ToAutoscaleSettingGetResponse());
             }
         }
