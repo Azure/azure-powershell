@@ -296,6 +296,7 @@ namespace Microsoft.Azure.Commands.Compute
                     if (wadstorage == null)
                     {
                         this._Helper.WriteError("A Standard Storage Account is required.");
+                        return;
                     }
 
                     selectedVM = SetAzureVMDiagnosticsExtensionC(selectedVM, wadstorage.Key, wadstorage.Value);
