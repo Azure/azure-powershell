@@ -88,6 +88,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string VirtualMachineExtensionImageVersion = "AzureRmVMExtensionImageVersion";
         public const string VirtualMachineExtensionImageType = "AzureRmVMExtensionImageType";
         public const string VirtualMachineChefExtension = "AzureRmVMChefExtension";
+        public const string VirtualMachineAEMExtension = "AzureRmVMAEMExtension";
 
         public const string AvailabilitySet = "AzureRmAvailabilitySet";
         public const string VirtualMachineConfig = "AzureRmVMConfig";
