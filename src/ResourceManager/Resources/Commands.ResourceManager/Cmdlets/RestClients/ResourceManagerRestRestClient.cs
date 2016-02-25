@@ -454,7 +454,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.RestClients
             resourceIdStringBuilder.AppendFormat("?{0}", queryString);
 
             var relativeUri = resourceIdStringBuilder.ToString()
-                .Select(character => char.IsWhiteSpace(character) ? "+" : character.ToString())
+                .Select(character => char.IsWhiteSpace(character) ? "%20" : character.ToString())
                 .ConcatStrings();
 
             return new Uri(baseUri: this.EndpointUri, relativeUri: relativeUri);
