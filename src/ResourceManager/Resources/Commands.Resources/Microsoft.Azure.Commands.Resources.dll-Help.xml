@@ -5119,6 +5119,13 @@ Resources</dev:code>
         <dev:defaultValue>
         </dev:defaultValue>
       </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Force</maml:name>
+        <maml:description>
+          <maml:para>Do not ask for confirmation</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+      </command:parameter>
     </command:parameters>
     <command:inputTypes>
       <command:inputType>
