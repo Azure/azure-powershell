@@ -365,7 +365,16 @@ namespace Microsoft.Azure.Commands.Resources.Models
                             parameters: null);
 
                         newNestedOperations = GetNewOperations(operations, result.Operations);
-                        newOperations.AddRange(newNestedOperations);
+
+                        foreach (DeploymentOperation op in newNestedOperations)
+                        {
+                            DeploymentOperation nestedOperationWithSameIdAndProvisioningState = newOperations.Find(o => o.OperationId.Equals(op.OperationId) && o.Properties.ProvisioningState.Equals(op.Properties.ProvisioningState));
+
+                            if (nestedOperationWithSameIdAndProvisioningState == null)
+                            {
+                                newOperations.Add(op);
+                            }
+                        }
                     }
                 }
             }
