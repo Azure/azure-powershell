@@ -38,6 +38,16 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             DeserializeErrors = new List<string>();
 
             DataContractSerializer serializer = new DataContractSerializer(typeof(ProfileData));
+
+            // For backward compatibility since namespace of ProfileData has been changed
+            // we need to replace previous namespace with the current one
+            if (!string.IsNullOrWhiteSpace(contents))
+            {
+                contents = contents.Replace(
+                    "http://schemas.datacontract.org/2004/07/Microsoft.Azure.Common.Authentication",
+                    "http://schemas.datacontract.org/2004/07/Microsoft.Azure.Commands.Common.Authentication");
+            }
+
             using (MemoryStream s = new MemoryStream(Encoding.UTF8.GetBytes(contents ?? "")))
             {
                 data = (ProfileData)serializer.ReadObject(s);

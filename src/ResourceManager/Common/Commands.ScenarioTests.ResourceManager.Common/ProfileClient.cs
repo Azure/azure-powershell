@@ -656,7 +656,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             {
                 if (subscription.IsPropertySet(AzureSubscription.Property.StorageAccount))
                 {
-                    subscription.SetProperty(AzureSubscription.Property.StorageAccount, null);
+                    GeneralUtilities.ClearCurrentStorageAccount();
                 }
 
                 Profile.DefaultSubscription = subscription;
