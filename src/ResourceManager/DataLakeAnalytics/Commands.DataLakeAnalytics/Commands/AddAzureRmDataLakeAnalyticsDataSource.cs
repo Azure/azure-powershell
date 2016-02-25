@@ -90,7 +90,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             {
                 var toAdd = new DataLakeStoreAccountInfo
                 {
-                    Name = DataLakeStore
+                    Name = DataLakeStore,
+                    Properties = new DataLakeStoreAccountInfoProperties()
                 };
 
                 DataLakeAnalyticsClient.AddDataLakeStoreAccount(ResourceGroupName, Account, toAdd);

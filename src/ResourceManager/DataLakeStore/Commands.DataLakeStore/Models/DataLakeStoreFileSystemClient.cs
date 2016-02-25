@@ -294,9 +294,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             throw new NotImplementedException();
         }
 
-        public FileStatuses GetFileStatuses(string folderPath, string accountName, int maxEntriesReturned = 100)
+        public FileStatuses GetFileStatuses(string folderPath, string accountName)
         {
-            return _client.FileSystem.ListFileStatus(folderPath, accountName, maxEntriesReturned).FileStatuses;
+            return _client.FileSystem.ListFileStatus(folderPath, accountName).FileStatuses;
         }
 
         public FileStatusProperties GetFileStatus(string filePath, string accountName)
@@ -396,15 +396,26 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 new DataLakeStoreFrontEndAdapter(accountName, _client, cmdletCancellationToken),
                 cmdletCancellationToken,
                 progressTracker);
-            // Execute the uploader.
-            var uploadTask = Task.Run(() =>
-            {
-                cmdletCancellationToken.ThrowIfCancellationRequested();
-                uploader.Execute();
-                cmdletCancellationToken.ThrowIfCancellationRequested();
-            }, cmdletCancellationToken);
 
-            TrackUploadProgress(uploadTask, progress, cmdletRunningRequest, cmdletCancellationToken);
+            var previousExpect100 = ServicePointManager.Expect100Continue;
+            try
+            {
+                ServicePointManager.Expect100Continue = false;
+
+                // Execute the uploader.
+                var uploadTask = Task.Run(() =>
+                {
+                    cmdletCancellationToken.ThrowIfCancellationRequested();
+                    uploader.Execute();
+                    cmdletCancellationToken.ThrowIfCancellationRequested();
+                }, cmdletCancellationToken);
+
+                TrackUploadProgress(uploadTask, progress, cmdletRunningRequest, cmdletCancellationToken);
+            }
+            finally
+            {
+                ServicePointManager.Expect100Continue = previousExpect100;
+            }
         }
 
         public void CopyDirectory(
@@ -452,11 +463,13 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
             // we need to override the default .NET value for max connections to a host to our number of threads, if necessary (otherwise we won't achieve the parallelism we want)
             var previousDefaultConnectionLimit = ServicePointManager.DefaultConnectionLimit;
+            var previousExpect100 = ServicePointManager.Expect100Continue;
             try
             {
                 ServicePointManager.DefaultConnectionLimit =
                     Math.Max((internalFolderThreads*internalFileThreads) + internalFolderThreads,
                         ServicePointManager.DefaultConnectionLimit);
+                ServicePointManager.Expect100Continue = false;
 
                 //TODO: defect: 4259238 (located here: http://vstfrd:8080/Azure/RD/_workitems/edit/4259238) needs to be resolved or the tracingadapter work around needs to be put back in
                 while (allDirectories.Count > 0)
@@ -664,6 +677,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             finally
             {
                 ServicePointManager.DefaultConnectionLimit = previousDefaultConnectionLimit;
+                ServicePointManager.Expect100Continue = previousExpect100;
             }
         }
 

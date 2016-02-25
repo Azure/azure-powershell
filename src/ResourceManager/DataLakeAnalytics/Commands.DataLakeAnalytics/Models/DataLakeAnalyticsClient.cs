@@ -760,40 +760,40 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
         #region Job Related Operations
 
-        public JobInformation GetJob( string accountName, Guid jobId)
+        public JobInformation GetJob(string accountName, Guid jobId)
         {
-            return _jobClient.Job.Get( accountName, jobId.ToString());
+            return _jobClient.Job.Get(jobId.ToString(), accountName);
         }
 
-        public JobInformation SubmitJob( string accountName, JobInformation jobToSubmit)
+        public JobInformation SubmitJob(string accountName, JobInformation jobToSubmit)
         {
             return
                 _jobClient.Job.Create(jobToSubmit.JobId,
                     jobToSubmit, accountName);
         }
 
-        public JobInformation BuildJob( string accountName, JobInformation jobToBuild)
+        public JobInformation BuildJob(string accountName, JobInformation jobToBuild)
         {
             return
                 _jobClient.Job.Build(jobToBuild, accountName);
         }
 
-        public void CancelJob( string accountName, Guid jobId)
+        public void CancelJob(string accountName, Guid jobId)
         {
-            _jobClient.Job.Cancel( accountName, jobId.ToString());
+            _jobClient.Job.Cancel(jobId.ToString(), accountName);
         }
 
-        public JobDataPath GetDebugDataPaths( string accountName, Guid jobId)
+        public JobDataPath GetDebugDataPaths(string accountName, Guid jobId)
         {
-            return _jobClient.Job.GetDebugDataPath( accountName, jobId.ToString());
+            return _jobClient.Job.GetDebugDataPath(jobId.ToString(), accountName);
         }
 
-        public JobStatistics GetJobStatistics( string accountName, Guid jobId)
+        public JobStatistics GetJobStatistics(string accountName, Guid jobId)
         {
-            return _jobClient.Job.GetStatistics( accountName, jobId.ToString());
+            return _jobClient.Job.GetStatistics(jobId.ToString(), accountName);
         }
 
-        public List<JobInformation> ListJobs( string accountName, string filter, int? top,
+        public List<JobInformation> ListJobs(string accountName, string filter, int? top,
             int? skip)
         {
             var parameters = new ODataQuery<JobInformation>
@@ -804,7 +804,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             };
 
             var jobList = new List<JobInformation>();
-            var response = _jobClient.Job.List( accountName, parameters);
+            var response = _jobClient.Job.List(accountName, parameters);
 
             jobList.AddRange(response);
             while (!string.IsNullOrEmpty(response.NextPageLink))

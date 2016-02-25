@@ -24,11 +24,11 @@ using Microsoft.Rest.Azure;
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet(VerbsLifecycle.Wait, "AzureRmDataLakeAnalyticsJob"), OutputType(typeof (JobInformation))]
-    public class WaitAzureDataLakeAnalyticsJobInfo : DataLakeAnalyticsCmdletBase
+    public class WaitAzureDataLakeAnalyticsJob : DataLakeAnalyticsCmdletBase
     {
         private int _waitIntervalInSeconds = 5;
 
-        public WaitAzureDataLakeAnalyticsJobInfo()
+        public WaitAzureDataLakeAnalyticsJob()
         {
             TimeoutInSeconds = 0;
         }

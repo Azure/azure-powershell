@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
             SubscriptionClient = GetSubscriptionClient();
             DataLakeStoreAccountManagementClient = GetDataLakeStoreAccountManagementClient(context);
             DataLakeStoreFileSystemManagementClient = GetDataLakeStoreFileSystemManagementClient(context);
-            AuthorizationManagementClient = GetAuthorizationManagementClient(context);
+            AuthorizationManagementClient = GetAuthorizationManagementClient();
             GalleryClient = GetGalleryClient();
             helper.SetupManagementClients(ResourceManagementClient,
                 SubscriptionClient,
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
         }
 
 
-        private AuthorizationManagementClient GetAuthorizationManagementClient(MockContext context)
+        private AuthorizationManagementClient GetAuthorizationManagementClient()
         {
             return LegacyTest.TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
         }

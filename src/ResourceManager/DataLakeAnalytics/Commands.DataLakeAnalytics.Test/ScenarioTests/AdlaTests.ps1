@@ -184,8 +184,8 @@ function Test-DataLakeAnalyticsJob
 		}
 
 		# For now, all Job related tests just ensure that they have a valid response and do not throw.
-		# Wait for two minutes prior to attempting to submit the job in the freshly created account.
-		[Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(120000)
+		# Wait for two minutes and 30 seconds prior to attempting to submit the job in the freshly created account.
+		[Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(150000)
 		# submit a job
 		$jobInfo = Submit-AzureRmDataLakeAnalyticsJob -AccountName $accountName -Name "TestJob" -Script "DROP DATABASE IF EXISTS foo; CREATE DATABASE foo;"
 		Assert-NotNull {$jobInfo}
