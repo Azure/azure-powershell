@@ -95,8 +95,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 }, retriableErrorMessages, 10, 30);
 
                 // Verify
-                Assert.AreEqual(newAzureQuickVMName1,
-                    vmPowershellCmdlets.GetAzureVM(newAzureQuickVMName1, serviceName).Name, true);
+                var vm = vmPowershellCmdlets.GetAzureVM(newAzureQuickVMName1, serviceName);
+                Assert.AreEqual(newAzureQuickVMName1, vm.Name, true);
+                Assert.IsTrue(vm.VM.DebugSettings.BootDiagnosticsEnabled);
 
                 Utilities.RetryActionUntilSuccess(() =>
                 {

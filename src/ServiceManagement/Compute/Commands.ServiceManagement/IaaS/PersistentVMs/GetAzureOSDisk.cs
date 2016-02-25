@@ -13,11 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
 {
-    [Cmdlet(VerbsCommon.Get, "AzureOSDisk"), OutputType(typeof(OSVirtualHardDisk))]
+    [Cmdlet(VerbsCommon.Get, ProfileNouns.OsDisk), OutputType(typeof(OSVirtualHardDisk))]
     public class GetAzureOSDiskCommand : VirtualMachineConfigurationCmdletBase
     {
         protected override void ProcessRecord()

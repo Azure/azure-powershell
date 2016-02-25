@@ -14,13 +14,14 @@
 
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 {
     [Cmdlet(
         VerbsCommon.Get,
-        VirtualMachineExtensionNoun,
+        ProfileNouns.VirtualMachineExtension,
         DefaultParameterSetName = ListByReferenceParamSetName),
     OutputType(
         typeof(VirtualMachineExtensionContext))]

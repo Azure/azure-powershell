@@ -15,26 +15,42 @@
 using System;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Common;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 {
-    [Cmdlet(VerbsData.Import, ProfileNouns.VirtualMachine), OutputType(typeof(PersistentVM))]
-    public class ImportAzureVMCommand : Cmdlet
-    {   
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "Path to the file with the persistent VM role state previously serialized.")]
-        [ValidateNotNullOrEmpty]
-        public string Path
-        {
-            get;
-            set;
-        }
+    /// <summary>
+    /// Enable or Disable boot diagnostics of a persistent VM object.
+    /// </summary>
+    [Cmdlet(VerbsCommon.Set, ProfileNouns.BootDiagnostics), OutputType(typeof(IPersistentVM))]
+    public class SetAzureBootDiagnosticsCommand : VirtualMachineConfigurationCmdletBase
+    {
+        private const string EnableParameterSet = "EnableBootDiagnostics";
+        private const string DisableParameterSet = "DisableBootDiagnostics";
+
+        [Parameter(
+            Mandatory = true,
+            Position = 1,
+            ParameterSetName = EnableParameterSet,
+            HelpMessage = HelpMessages.VMBootDiagnosticsEnable)]
+        public SwitchParameter Enable { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            Position = 1,
+            ParameterSetName = DisableParameterSet,
+            HelpMessage = HelpMessages.VMBootDiagnosticsDisable)]
+        public SwitchParameter Disable { get; set; }
 
         internal void ExecuteCommand()
         {
-            PersistentVM  role = PersistentVMHelper.LoadStateFromFile(Path);
-            WriteObject(role, true);
+            var role = VM.GetInstance();
+            if (role.DebugSettings == null)
+            {
+                role.DebugSettings = new DebugSettings();
+            }
+            role.DebugSettings.BootDiagnosticsEnabled = Enable.IsPresent;
+            WriteObject(VM, true);
         }
 
         protected override void ProcessRecord()

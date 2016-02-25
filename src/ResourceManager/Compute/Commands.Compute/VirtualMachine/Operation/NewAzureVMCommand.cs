@@ -35,28 +35,42 @@ namespace Microsoft.Azure.Commands.Compute
     [OutputType(typeof(PSAzureOperationResponse))]
     public class NewAzureVMCommand : VirtualMachineBaseCmdlet
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = true,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = true,
+            Position = 1,
+            ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
         [Alias("VMProfile")]
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = true,
+            Position = 2,
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public PSVirtualMachine VM { get; set; }
-
-        [Parameter(ValueFromPipelineByPropertyName = true)]
-        public Hashtable[] Tags { get; set; }
 
         [Parameter(
             Position = 3,
             HelpMessage = "Disable BG Info Extension")]
         public SwitchParameter DisableBginfoExtension { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public Hashtable[] Tags { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string LicenseType { get; set; }
 

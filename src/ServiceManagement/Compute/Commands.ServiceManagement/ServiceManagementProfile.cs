@@ -269,6 +269,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement
                   .ForMember(c => c.InputEndpoints, o => o.MapFrom(r => r.InputEndpoints != null ? r.InputEndpoints.ToList() : null))
                   .ForMember(c => c.SubnetNames, o => o.MapFrom(r => r.SubnetNames != null ? r.SubnetNames.ToList() : null))
                   .ForMember(c => c.PublicIPs, o => o.MapFrom(r => r.PublicIPs != null ? r.PublicIPs.ToList() : null));
+            Mapper.CreateMap<PVM.DebugSettings, NSM.DebugSettings>();
 
             Mapper.CreateMap<PVM.LinuxProvisioningConfigurationSet.SSHKeyPair, NSM.SshSettingKeyPair>();
             Mapper.CreateMap<PVM.LinuxProvisioningConfigurationSet.SSHPublicKey, NSM.SshSettingPublicKey>();
@@ -313,6 +314,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement
                   .ForMember(c => c.OS, o => o.MapFrom(r => r.OperatingSystem));
             Mapper.CreateMap<NSM.ConfigurationSet, PVM.ConfigurationSet>();
             Mapper.CreateMap<NSM.ConfigurationSet, PVM.NetworkConfigurationSet>();
+            Mapper.CreateMap<NSM.DebugSettings, PVM.DebugSettings>();
 
             Mapper.CreateMap<NSM.SshSettingKeyPair, PVM.LinuxProvisioningConfigurationSet.SSHKeyPair>();
             Mapper.CreateMap<NSM.SshSettingPublicKey, PVM.LinuxProvisioningConfigurationSet.SSHPublicKey>();

@@ -22,7 +22,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         {
             cmdletName = Utilities.SetAzureSubscriptionCmdletName;
             cmdletParams.Add(new CmdletParam("SubscriptionId", subscriptionId));
-            cmdletParams.Add(new CmdletParam("CurrentStorageAccount", currentStorageAccount));
+            cmdletParams.Add(new CmdletParam("CurrentStorageAccountName", currentStorageAccount));
         }
     }
 }
