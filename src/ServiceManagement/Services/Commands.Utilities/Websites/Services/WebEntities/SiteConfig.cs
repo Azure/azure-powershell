@@ -63,7 +63,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntitie
 
         bool? RemoteDebuggingEnabled { get; set; }
 
-        RemoteDebuggingVersion RemoteDebuggingVersion { get; set; }
+        string RemoteDebuggingVersion { get; set; }
 
         List<RoutingRule> RoutingRules { get; set; }
 
@@ -350,7 +350,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntitie
             set { SiteConfig.RemoteDebuggingEnabled = value; }
         }
 
-        public RemoteDebuggingVersion RemoteDebuggingVersion
+        public string RemoteDebuggingVersion
         {
             get { return SiteConfig.RemoteDebuggingVersion; }
             set { SiteConfig.RemoteDebuggingVersion = value; }
@@ -440,7 +440,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntitie
         public bool? RemoteDebuggingEnabled { get; set; }
 
         [DataMember(IsRequired = false)]
-        public RemoteDebuggingVersion RemoteDebuggingVersion { get; set; }
+        public string RemoteDebuggingVersion { get; set; }
 
         [DataMember(IsRequired = false)]
         public List<RoutingRule> RoutingRules { get; set; }
