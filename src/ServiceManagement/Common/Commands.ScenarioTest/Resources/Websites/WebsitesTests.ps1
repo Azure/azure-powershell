@@ -846,6 +846,7 @@ function Test-SetAzureWebsite
 {
     # Setup
     $name = Get-WebsiteName
+	$remotedebuggingversion = "VS2015"
     New-AzureWebsite $name
 
     # Test
@@ -856,6 +857,13 @@ function Test-SetAzureWebsite
     $website = Get-AzureWebsite $name -Slot Production
     Assert-AreEqual Classic $website.ManagedPipelineMode
     Assert-AreEqual $true $website.WebSocketsEnabled
+
+    $website.RemoteDebuggingEnabled = $true
+    $website.RemoteDebuggingVersion = $remotedebuggingversion
+    Set-AzureWebsite $name -Slot Production -SiteWithConfig $website
+
+    Assert-AreEqual $true $website.RemoteDebuggingEnabled
+    Assert-AreEqual $remotedebuggingversion $website.RemoteDebuggingVersion
 }
 
 ########################################################################### Test-StartAzureWebsiteTriggeredJob Scenario Tests ###########################################################################
