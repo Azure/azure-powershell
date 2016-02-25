@@ -210,6 +210,17 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
         }
 
+        public TClient CreateAdlArmClient<TClient>(AzureContext context, AzureEnvironment.Endpoint endpoint, bool isParameterizedBaseUri) where TClient : Rest.ServiceClient<TClient>
+        {
+            Debug.Assert(context != null);
+            var credentials = AzureSession.AuthenticationFactory.GetServiceClientCredentials(context);
+            var client = isParameterizedBaseUri ? CreateCustomArmClient<TClient>(credentials, string.Empty, context.Environment.GetEndpoint(endpoint),
+                context.Subscription.Id) : CreateCustomArmClient<TClient>(credentials, string.Empty, context.Environment.GetEndpointAsUri(endpoint),
+                context.Subscription.Id);
+            return client;
+
+        }
+
         public TClient CreateCustomArmClient<TClient>(params object[] parameters) where TClient : Rest.ServiceClient<TClient>
         {
             TClient client = ManagementClients.FirstOrDefault(o => o is TClient) as TClient;

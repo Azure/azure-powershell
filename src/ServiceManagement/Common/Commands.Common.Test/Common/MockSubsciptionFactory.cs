@@ -95,6 +95,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             throw new NotImplementedException();
         }
 
+        public TClient CreateAdlArmClient<TClient>(AzureContext context, AzureEnvironment.Endpoint endpoint, bool isParameterizedHost) where TClient : Microsoft.Rest.ServiceClient<TClient>
+        {
+            throw new NotImplementedException();
+        }
+
         public TClient CreateCustomArmClient<TClient>(params object[] parameters) where TClient : Microsoft.Rest.ServiceClient<TClient>
         {
             throw new NotImplementedException();
