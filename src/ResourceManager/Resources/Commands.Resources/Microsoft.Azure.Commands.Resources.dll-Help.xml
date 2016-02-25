@@ -5106,6 +5106,19 @@ Resources</dev:code>
         <dev:defaultValue>
         </dev:defaultValue>
       </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>Mode</maml:name>
+        <maml:description>
+          <maml:para>The deployment mode to use. Default is Incremental. If 'Complete' deployment mode is used, existing resources in the resource group that are not included in the template will be deleted. For more information, please refer to https://azure.microsoft.com/en-us/documentation/articles/resource-group-template-deploy/</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
     </command:parameters>
     <command:inputTypes>
       <command:inputType>
