@@ -13,71 +13,71 @@
 # ----------------------------------------------------------------------------------
 
 <#
-	.SYNOPSIS
-	Tests CRUD on disaster recovery configuration
+    .SYNOPSIS
+    Tests CRUD on disaster recovery configuration
 #>
 function Test-ServerDisasterRecoveryConfiguration
 {
-	Test-ServerDisasterRecoveryConfigurationInternal
+    Test-ServerDisasterRecoveryConfigurationInternal
 }
 
 <#
-	.SYNOPSIS
-	Tests creating 2 servers, a disaster recovery configuration, failing over, then deleting
+    .SYNOPSIS
+    Tests creating 2 servers, a disaster recovery configuration, failing over, then deleting
 #>
 function Test-ServerDisasterRecoveryConfigurationInternal ($location1 = "North Europe", $location2 = "Southeast Asia")
 {
-	# Setup
-	$rg1 = Create-ResourceGroupForTest $location1
-	$rg2 = Create-ResourceGroupForTest $location2
-	
-	try
-	{
-		$server1 = Create-ServerForTest $rg1 "12.0" $location1
-		$server2 = Create-ServerForTest $rg2 "12.0" $location2
-		$failoverPolicy = "Off"
-		$sdrcName = "test-sdrc-alias"
+    # Setup
+    $rg1 = Create-ResourceGroupForTest $location1
+    $rg2 = Create-ResourceGroupForTest $location2
+    
+    try
+    {
+        $server1 = Create-ServerForTest $rg1 "12.0" $location1
+        $server2 = Create-ServerForTest $rg2 "12.0" $location2
+        $failoverPolicy = "Off"
+        $sdrcName = "test-sdrc-alias"
 
-		# Create and validate
-		#
-		$sdrc = New-AzureRmSqlServerDisasterRecoveryConfiguration -ResourceGroupName $rg1.ResourceGroupName -ServerName $server1.ServerName -VirtualEndpointName $sdrcName -PartnerResourceGroupName $rg2.ResourceGroupName -PartnerServerName $server2.ServerName  
+        # Create and validate
+        #
+        $sdrc = New-AzureRmSqlServerDisasterRecoveryConfiguration -ResourceGroupName $rg1.ResourceGroupName -ServerName $server1.ServerName -VirtualEndpointName $sdrcName -PartnerResourceGroupName $rg2.ResourceGroupName -PartnerServerName $server2.ServerName  
 
-		GetSdrcCheck $rg1 $server1 $sdrcName $rg2 $server2 $failoverPolicy "Primary"
-		GetSdrcCheck $rg2 $server2 $sdrcName $rg1 $server1 $failoverPolicy "Secondary"
+        GetSdrcCheck $rg1 $server1 $sdrcName $rg2 $server2 $failoverPolicy "Primary"
+        GetSdrcCheck $rg2 $server2 $sdrcName $rg1 $server1 $failoverPolicy "Secondary"
 
-		# Failover and check
-		#
-		Set-AzureRmSqlServerDisasterRecoveryConfiguration -ResourceGroupName $rg2.ResourceGroupName -ServerName $server2.ServerName -VirtualEndpointName $sdrcName -Failover
+        # Failover and check
+        #
+        Set-AzureRmSqlServerDisasterRecoveryConfiguration -ResourceGroupName $rg2.ResourceGroupName -ServerName $server2.ServerName -VirtualEndpointName $sdrcName -Failover
 
-		GetSdrcCheck $rg2 $server2 $sdrcName $rg1 $server1 $failoverPolicy "Primary"
-		GetSdrcCheck $rg1 $server1 $sdrcName $rg2 $server2 $failoverPolicy "Secondary"
+        GetSdrcCheck $rg2 $server2 $sdrcName $rg1 $server1 $failoverPolicy "Primary"
+        GetSdrcCheck $rg1 $server1 $sdrcName $rg2 $server2 $failoverPolicy "Secondary"
 
-		# Fail back and check
-		#
-		Set-AzureRmSqlServerDisasterRecoveryConfiguration -ResourceGroupName $rg1.ResourceGroupName -ServerName $server1.ServerName -VirtualEndpointName $sdrcName -Failover
+        # Fail back and check
+        #
+        Set-AzureRmSqlServerDisasterRecoveryConfiguration -ResourceGroupName $rg1.ResourceGroupName -ServerName $server1.ServerName -VirtualEndpointName $sdrcName -Failover
 
-		GetSdrcCheck $rg1 $server1 $sdrcName $rg2 $server2 $failoverPolicy "Primary"
-		GetSdrcCheck $rg2 $server2 $sdrcName $rg1 $server1 $failoverPolicy "Secondary"
+        GetSdrcCheck $rg1 $server1 $sdrcName $rg2 $server2 $failoverPolicy "Primary"
+        GetSdrcCheck $rg2 $server2 $sdrcName $rg1 $server1 $failoverPolicy "Secondary"
 
-		# Delete
-		#
-		Remove-AzureRmSqlServerDisasterRecoveryConfiguration  -ResourceGroupName $rg1.ResourceGroupName -ServerName $server1.ServerName -VirtualEndpointName $sdrcName -Force
-	}
-	finally
-	{
-		Remove-ResourceGroupForTest $rg1
-		Remove-ResourceGroupForTest $rg2
-	}
+        # Delete
+        #
+        Remove-AzureRmSqlServerDisasterRecoveryConfiguration  -ResourceGroupName $rg1.ResourceGroupName -ServerName $server1.ServerName -VirtualEndpointName $sdrcName -Force
+    }
+    finally
+    {
+        Remove-ResourceGroupForTest $rg1
+        Remove-ResourceGroupForTest $rg2
+    }
 }
 
 function GetSdrcCheck ($resourceGroup, $server, $virtualEndpointName, $partnerResourceGroup, $partnerServer, $failoverPolicy, $role)
 {
-	$sdrcGet = Get-AzureRmSqlServerDisasterRecoveryConfiguration -ResourceGroupName $resourceGroup.ResourceGroupName -ServerName $server.ServerName -VirtualEndpointName $virtualEndpointName
+    $sdrcGet = Get-AzureRmSqlServerDisasterRecoveryConfiguration -ResourceGroupName $resourceGroup.ResourceGroupName -ServerName $server.ServerName -VirtualEndpointName $virtualEndpointName
 
-	Assert-AreEqual $resourceGroup.ResourceGroupName $sdrcGet.ResourceGroupName
-	Assert-AreEqual $server.ServerName $sdrcGet.ServerName
-	Assert-AreEqual $virtualEndpointName $sdrcGet.VirtualEndpointName
-	Assert-AreEqual $partnerServer.ServerName $sdrcGet.PartnerServerName
-	Assert-AreEqual $failoverPolicy $sdrcGet.FailoverPolicy
-	Assert-AreEqual $role $sdrcGet.Role
+    Assert-AreEqual $resourceGroup.ResourceGroupName $sdrcGet.ResourceGroupName
+    Assert-AreEqual $server.ServerName $sdrcGet.ServerName
+    Assert-AreEqual $virtualEndpointName $sdrcGet.VirtualEndpointName
+    Assert-AreEqual $partnerServer.ServerName $sdrcGet.PartnerServerName
+    Assert-AreEqual $failoverPolicy $sdrcGet.FailoverPolicy
+    Assert-AreEqual $role $sdrcGet.Role
 }
