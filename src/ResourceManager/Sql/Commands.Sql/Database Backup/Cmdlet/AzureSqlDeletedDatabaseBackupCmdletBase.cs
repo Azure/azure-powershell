@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
@@ -23,8 +24,8 @@ using Microsoft.Azure.Commands.Sql.Database.Services;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
-    public abstract class AzureSqlDatabaseRestorePointCmdletBase 
-        : AzureSqlCmdletBase<IEnumerable<AzureSqlDatabaseRestorePointModel>, AzureSqlDatabaseBackupAdapter>
+    public abstract class AzureSqlDeletedDatabaseBackupCmdletBase
+        : AzureSqlCmdletBase<IEnumerable<AzureSqlDeletedDatabaseBackupModel>, AzureSqlDatabaseBackupAdapter>
     {
         /// <summary>
         /// Gets or sets the name of the database server to use.
@@ -39,17 +40,27 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// <summary>
         /// Gets or sets the name of the database to use.
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
-            HelpMessage = "The name of the Azure SQL Database to retrieve restore points from.")]
+            HelpMessage = "The name of the Azure SQL Database to retrieve backups for.")]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
 
         /// <summary>
+        /// Gets or sets the deletion date of the database to use.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            Position = 3,
+            HelpMessage = "The deletion date of the Azure SQL Database to retrieve backups for, with millisecond precision (e.g. 2016-02-23T00:21:22.847Z)")]
+        [ValidateNotNullOrEmpty]
+        public DateTime? DeletionDate { get; set; }
+
+        /// <summary>
         /// Initializes the adapter
         /// </summary>
-        /// <param name="subscription"></param>
+        /// <param name="subscription">The subscription to operate on</param>
         /// <returns></returns>
         protected override AzureSqlDatabaseBackupAdapter InitModelAdapter(AzureSubscription subscription)
         {

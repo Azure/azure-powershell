@@ -51,6 +51,13 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Database Backup\Cmdlet\AzureSqlDatabaseGeoBackupCmdletBase.cs" />
+    <Compile Include="Database Backup\Cmdlet\AzureSqlDeletedDatabaseBackupCmdletBase.cs" />
+    <Compile Include="Database Backup\Cmdlet\GetAzureRMSqlDeletedDatabaseBackup.cs" />
+    <Compile Include="Database Backup\Cmdlet\GetAzureRMSqlDatabaseGeoBackup.cs" />
+    <Compile Include="Database Backup\Cmdlet\RestoreAzureRMSqlDatabase.cs" />
+    <Compile Include="Database Backup\Model\AzureSqlDeletedDatabaseBackupModel.cs" />
+    <Compile Include="Database Backup\Model\AzureSqlDatabaseGeoBackupModel.cs" />
     <Compile Include="ThreatDetection\Cmdlet\SqlDatabaseThreatDetectionCmdletBase.cs" />
     <Compile Include="ThreatDetection\Cmdlet\GetAzureSqlDatabaseThreatDetection.cs" />
     <Compile Include="ThreatDetection\Cmdlet\SetAzureSqlDatabaseThreatDetection.cs" />
@@ -290,7 +297,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Sql, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.44.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.45.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
