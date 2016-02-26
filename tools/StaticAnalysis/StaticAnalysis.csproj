@@ -46,7 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnalysisLogger.cs" />
-    <Compile Include="AppDomainHelpers.cs" />
+    <Compile Include="EnvironmentHelpers.cs" />
     <Compile Include="DependencyAnalyzer\AssemblyLoader.cs" />
     <Compile Include="DependencyAnalyzer\AssemblyNameComparer.cs" />
     <Compile Include="DependencyAnalyzer\AssemblyRecord.cs" />

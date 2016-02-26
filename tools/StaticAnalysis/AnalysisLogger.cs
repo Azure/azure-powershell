@@ -86,7 +86,7 @@ namespace StaticAnalysis
         /// <param name="fileName">The filename (without file path) where the report will be written</param>
         /// <returns>The given logger.  Analyzer may write records to this logger and they will be written to 
         /// the report file.</returns>
-        public virtual ReportLogger<T> CreateLogger<T>(string fileName) where T : IReportRecord, new()
+        public virtual ReportLogger<T> CreateLogger<T>(string fileName) where T : class, IReportRecord, new()
         {
             if (string.IsNullOrWhiteSpace(fileName))
             {
