@@ -359,7 +359,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             var filterQuery = QueryFilterBuilder
                 .CreateFilter(
-                    subscriptionIds: new Guid[] { this.SubscriptionId.Value },
+                    subscriptionIds: null,
                     resourceGroup: this.ResourceGroupName,
                     resourceType: this.ResourceType,
                     resourceName: this.ResourceName,

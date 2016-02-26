@@ -1,0 +1,4118 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourcegroups/hchung-test2?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlZ3JvdXBzL2hjaHVuZy10ZXN0Mj9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2\",\r\n  \"name\": \"hchung-test2\",\r\n  \"location\": \"southeastasia\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "184"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14816"
+        ],
+        "x-ms-request-id": [
+          "d93341e9-9eac-43d6-a093-627b7d992bfd"
+        ],
+        "x-ms-correlation-request-id": [
+          "d93341e9-9eac-43d6-a093-627b7d992bfd"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T004149Z:d93341e9-9eac-43d6-a093-627b7d992bfd"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:41:49 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2?api-version=2014-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMj9hcGktdmVyc2lvbj0yMDE0LTA0LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "41a3998e-4cf1-49ec-ba80-d1ff3dc97df4"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2\",\r\n  \"name\": \"hchung-testsvr2\",\r\n  \"type\": \"Microsoft.Sql/servers\",\r\n  \"location\": \"Southeast Asia\",\r\n  \"kind\": \"v12.0\",\r\n  \"properties\": {\r\n    \"fullyQualifiedDomainName\": \"hchung-testsvr2.sqltest-eg1.mscds.com\",\r\n    \"administratorLogin\": \"hchung\",\r\n    \"administratorLoginPassword\": null,\r\n    \"externalAdministratorLogin\": null,\r\n    \"externalAdministratorSid\": null,\r\n    \"version\": \"12.0\",\r\n    \"state\": \"Ready\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "480"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
+        ],
+        "x-ms-request-id": [
+          "be4b8bff-f01a-4493-91de-a5c2f315b091"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14796"
+        ],
+        "x-ms-correlation-request-id": [
+          "96bc95c4-c0c1-4cfa-bb11-1b82358daed0"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T004150Z:96bc95c4-c0c1-4cfa-bb11-1b82358daed0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:41:49 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2?api-version=2014-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMj9hcGktdmVyc2lvbj0yMDE0LTA0LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "fb030b6f-98da-43f4-a2a6-2d514875f284"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2\",\r\n  \"name\": \"hchung-testsvr2\",\r\n  \"type\": \"Microsoft.Sql/servers\",\r\n  \"location\": \"Southeast Asia\",\r\n  \"kind\": \"v12.0\",\r\n  \"properties\": {\r\n    \"fullyQualifiedDomainName\": \"hchung-testsvr2.sqltest-eg1.mscds.com\",\r\n    \"administratorLogin\": \"hchung\",\r\n    \"administratorLoginPassword\": null,\r\n    \"externalAdministratorLogin\": null,\r\n    \"externalAdministratorSid\": null,\r\n    \"version\": \"12.0\",\r\n    \"state\": \"Ready\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "480"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
+        ],
+        "x-ms-request-id": [
+          "00b325e5-a0b0-48ac-a499-197ab4b1c8d8"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14793"
+        ],
+        "x-ms-correlation-request-id": [
+          "6bdf5cea-ddfd-4c0d-abeb-31543fa7aabe"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T004204Z:6bdf5cea-ddfd-4c0d-abeb-31543fa7aabe"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:42:03 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/hchung-testdb-geo2?api-version=2014-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvaGNodW5nLXRlc3RkYi1nZW8yP2FwaS12ZXJzaW9uPTIwMTQtMDQtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "881974ad-702f-4053-9a53-cfbdd2cae976"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/hchung-testdb-geo2\",\r\n  \"name\": \"hchung-testdb-geo2\",\r\n  \"type\": \"Microsoft.Sql/servers/databases\",\r\n  \"location\": \"SouthEast Asia\",\r\n  \"kind\": \"v12.0,user\",\r\n  \"properties\": {\r\n    \"databaseId\": \"2d14aa41-5ec8-4393-a813-a2cee0465cf6\",\r\n    \"edition\": \"Standard\",\r\n    \"status\": \"Online\",\r\n    \"serviceLevelObjective\": \"S0\",\r\n    \"collation\": \"SQL_Latin1_General_CP1_CI_AS\",\r\n    \"maxSizeBytes\": \"268435456000\",\r\n    \"creationDate\": \"2016-02-22T19:35:12.313Z\",\r\n    \"currentServiceObjectiveId\": \"f1173c43-91bd-4aaa-973c-54e79e15235b\",\r\n    \"requestedServiceObjectiveId\": \"f1173c43-91bd-4aaa-973c-54e79e15235b\",\r\n    \"requestedServiceObjectiveName\": null,\r\n    \"defaultSecondaryLocation\": \"North Europe\",\r\n    \"earliestRestoreDate\": \"2016-02-22T19:46:11.22Z\",\r\n    \"elasticPoolName\": null,\r\n    \"containmentState\": 2\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "839"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
+        ],
+        "x-ms-request-id": [
+          "e25df2c8-2b68-449f-951c-7ef8eca80fd0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14795"
+        ],
+        "x-ms-correlation-request-id": [
+          "9184c8a2-f554-4f56-9d6c-9e716f3ec96f"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T004151Z:9184c8a2-f554-4f56-9d6c-9e716f3ec96f"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:41:50 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/recoverabledatabases/hchung-testdb-geo2?api-version=2014-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9yZWNvdmVyYWJsZWRhdGFiYXNlcy9oY2h1bmctdGVzdGRiLWdlbzI/YXBpLXZlcnNpb249MjAxNC0wNC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "dafba08e-1607-4f3c-96d3-8836a9dad95b"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/recoverabledatabases/hchung-testdb-geo2\",\r\n  \"name\": \"hchung-testdb-geo2\",\r\n  \"type\": \"Microsoft.Sql/servers/recoverableDatabases\",\r\n  \"properties\": {\r\n    \"edition\": \"Standard\",\r\n    \"lastAvailableBackupDate\": \"2016-02-22T23:42:03.8975335Z\",\r\n    \"serviceLevelObjective\": \"S0\",\r\n    \"elasticPoolName\": null\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "401"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
+        ],
+        "x-ms-request-id": [
+          "6eaadcc8-bd24-4af1-902b-449f737e6b1d"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14794"
+        ],
+        "x-ms-correlation-request-id": [
+          "07423e62-abd2-4a13-8992-1c7854132116"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T004204Z:07423e62-abd2-4a13-8992-1c7854132116"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:42:03 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored?api-version=2014-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZD9hcGktdmVyc2lvbj0yMDE0LTA0LTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"edition\": \"Standard\",\r\n    \"sourceDatabaseId\": \"/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/recoverabledatabases/hchung-testdb-geo2\",\r\n    \"createMode\": \"Recovery\",\r\n    \"restorePointInTime\": \"0001-01-01T00:00:00\"\r\n  },\r\n  \"location\": \"Southeast Asia\",\r\n  \"tags\": {}\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "380"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-22T16:42:07.232-08:00\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "79"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "6b868992-ae8f-45c4-8964-efb9a16c97f5"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Preference-Applied": [
+          "return-content"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "6ff7eec9-9c88-4384-af64-d6f8789d208d"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T004207Z:6ff7eec9-9c88-4384-af64-d6f8789d208d"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:42:07 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "015ce8d8-1cde-4439-8d22-255dad230a26"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14792"
+        ],
+        "x-ms-correlation-request-id": [
+          "44d03663-1947-40bc-941a-180523ddb8a9"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T004209Z:44d03663-1947-40bc-941a-180523ddb8a9"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:42:08 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "5da4844b-db19-42f5-a60b-caa0c5085456"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14787"
+        ],
+        "x-ms-correlation-request-id": [
+          "d6d77550-53a6-498b-9f48-c327efb721f1"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T004240Z:d6d77550-53a6-498b-9f48-c327efb721f1"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:42:39 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "801358ab-a174-4aae-8b74-c41969ea660c"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14786"
+        ],
+        "x-ms-correlation-request-id": [
+          "fe6ee2d4-aa85-4c44-9e14-ae0f83f7abba"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T004256Z:fe6ee2d4-aa85-4c44-9e14-ae0f83f7abba"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:42:56 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "6d6ed89b-4684-4b94-ade2-4ccb1c095226"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14785"
+        ],
+        "x-ms-correlation-request-id": [
+          "f179d238-183c-413b-b097-89b0a2281f79"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T004313Z:f179d238-183c-413b-b097-89b0a2281f79"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:43:12 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "b224e4ff-c17d-4768-905e-307aab476c27"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14782"
+        ],
+        "x-ms-correlation-request-id": [
+          "4b5b399c-e2ec-4611-88a9-115cd6198f73"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T004329Z:4b5b399c-e2ec-4611-88a9-115cd6198f73"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:43:29 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "618e0cd5-5ffd-43c6-a5a2-b8299c188d5b"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14781"
+        ],
+        "x-ms-correlation-request-id": [
+          "9e4b85dc-7983-431b-91d1-e216e44fc5a6"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T004345Z:9e4b85dc-7983-431b-91d1-e216e44fc5a6"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:43:44 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "b460bf71-ea88-4c82-bca2-ac2c89a8a8d5"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14780"
+        ],
+        "x-ms-correlation-request-id": [
+          "0fe03c04-e2ed-45b4-8007-8257fbb316b9"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T004402Z:0fe03c04-e2ed-45b4-8007-8257fbb316b9"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:44:01 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "caaa6a26-8916-4c8a-8201-ff867a153623"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14779"
+        ],
+        "x-ms-correlation-request-id": [
+          "6e7a08b7-5642-4cdb-98c9-01682fbf2083"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T004418Z:6e7a08b7-5642-4cdb-98c9-01682fbf2083"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:44:18 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "df16e6b6-8bea-45b6-8b19-55c678e39ff7"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14776"
+        ],
+        "x-ms-correlation-request-id": [
+          "63910c5b-ec62-4ce8-bcf4-4b29baaa0a92"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T004434Z:63910c5b-ec62-4ce8-bcf4-4b29baaa0a92"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:44:34 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "4e01c9d4-af2c-4972-b4ea-c3adcab61022"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14775"
+        ],
+        "x-ms-correlation-request-id": [
+          "bff0a95e-01cd-42eb-b2d4-9c58747ea251"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T004451Z:bff0a95e-01cd-42eb-b2d4-9c58747ea251"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:44:50 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "99d59d6f-2682-4b07-9366-b6108e100149"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14793"
+        ],
+        "x-ms-correlation-request-id": [
+          "9d792cd4-7fb1-422a-bedc-1dd1010fcfb1"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T004507Z:9d792cd4-7fb1-422a-bedc-1dd1010fcfb1"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:45:06 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "2f975686-272c-4fa6-abe6-58ac3844beeb"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14791"
+        ],
+        "x-ms-correlation-request-id": [
+          "c6a1f11f-ad58-42f7-9106-c849f09a0874"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T004523Z:c6a1f11f-ad58-42f7-9106-c849f09a0874"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:45:23 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "4bee0138-5a5c-41ba-882e-302e1914070b"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14788"
+        ],
+        "x-ms-correlation-request-id": [
+          "6055869f-40ca-405c-a4e3-4d167a8666c9"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T004540Z:6055869f-40ca-405c-a4e3-4d167a8666c9"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:45:39 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "029b1c92-a8f8-4753-a4a9-c87c2659855c"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14787"
+        ],
+        "x-ms-correlation-request-id": [
+          "18c7a9e7-f7a0-4685-ac1b-64a2698c8635"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T004556Z:18c7a9e7-f7a0-4685-ac1b-64a2698c8635"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:45:56 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "b7d46ace-4abb-4e70-91cb-91670b12e6f9"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14786"
+        ],
+        "x-ms-correlation-request-id": [
+          "78678eef-8897-4bda-affa-ea569f1a4e1b"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T004613Z:78678eef-8897-4bda-affa-ea569f1a4e1b"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:46:12 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "7a91a652-6483-4812-b3df-87dc206ea25e"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14784"
+        ],
+        "x-ms-correlation-request-id": [
+          "d623ae5a-5991-4b45-8819-a46643f30c64"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T004629Z:d623ae5a-5991-4b45-8819-a46643f30c64"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:46:28 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "0a7e4e51-ca63-495d-880e-629d2e9d479b"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14781"
+        ],
+        "x-ms-correlation-request-id": [
+          "7ebca54b-290e-45b0-8567-967c80bdbfce"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T004645Z:7ebca54b-290e-45b0-8567-967c80bdbfce"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:46:45 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "a036009a-f12c-4535-8bd7-a302eddf0dca"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14780"
+        ],
+        "x-ms-correlation-request-id": [
+          "c3bbcf31-c738-4d19-9f7d-68233e8a7778"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T004702Z:c3bbcf31-c738-4d19-9f7d-68233e8a7778"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:47:02 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "694d1d3f-2f7c-45a3-a9f9-6c3589627035"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14778"
+        ],
+        "x-ms-correlation-request-id": [
+          "2fa25f3d-08f3-43e2-98f0-5206c45b13a5"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T004718Z:2fa25f3d-08f3-43e2-98f0-5206c45b13a5"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:47:17 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "a3cd649b-c166-4b69-96ed-3238ef69921e"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14775"
+        ],
+        "x-ms-correlation-request-id": [
+          "1e66923d-3966-4a3e-9f88-c2652a1a6407"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T004734Z:1e66923d-3966-4a3e-9f88-c2652a1a6407"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:47:34 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "2dd421bc-2e6b-4917-92b7-55b9c7970764"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14774"
+        ],
+        "x-ms-correlation-request-id": [
+          "f741d4c4-ef4d-45c0-ac44-75b12ccdc941"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T004751Z:f741d4c4-ef4d-45c0-ac44-75b12ccdc941"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:47:50 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "55987d05-c06a-4913-8c4f-fa8329a1565a"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14773"
+        ],
+        "x-ms-correlation-request-id": [
+          "6d3b0d92-2a28-413f-adc4-90b614253562"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T004807Z:6d3b0d92-2a28-413f-adc4-90b614253562"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:48:06 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "e6d3ae4a-5fb5-4bb3-a032-11645246e157"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14771"
+        ],
+        "x-ms-correlation-request-id": [
+          "e5ecca56-e26b-44d7-86f7-cea01ff13ef6"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T004823Z:e5ecca56-e26b-44d7-86f7-cea01ff13ef6"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:48:22 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "d8215b0c-4830-4f51-b1f5-916f28d43026"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14768"
+        ],
+        "x-ms-correlation-request-id": [
+          "79a16e30-6940-424d-99ec-24820fe0821e"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T004840Z:79a16e30-6940-424d-99ec-24820fe0821e"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:48:39 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "0b3a8143-8f1b-4e0e-809f-bd04b92e32e8"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14767"
+        ],
+        "x-ms-correlation-request-id": [
+          "ff7241ba-876c-4fd9-8de4-59d598a8008d"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T004856Z:ff7241ba-876c-4fd9-8de4-59d598a8008d"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:48:55 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "7b760cb1-8b21-4046-9c12-112b2e3bb1c1"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14766"
+        ],
+        "x-ms-correlation-request-id": [
+          "5046889a-b15f-4a57-af0e-07737e17162e"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T004912Z:5046889a-b15f-4a57-af0e-07737e17162e"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:49:12 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "9a134683-d97d-4ce8-90bb-6ad8514bde4f"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14765"
+        ],
+        "x-ms-correlation-request-id": [
+          "b36f87f3-0421-4f17-aa12-90d326cef5f1"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T004929Z:b36f87f3-0421-4f17-aa12-90d326cef5f1"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:49:29 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "0f8b8ec4-a33a-481d-b733-0a45d685a364"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14763"
+        ],
+        "x-ms-correlation-request-id": [
+          "7b9513a2-7e75-4b5d-8ba5-3e7a2ba09add"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T004945Z:7b9513a2-7e75-4b5d-8ba5-3e7a2ba09add"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:49:45 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "99af40d8-8d2e-4813-8e7d-dc1974784d29"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14778"
+        ],
+        "x-ms-correlation-request-id": [
+          "549413dd-f3be-4978-996d-b1528fc79248"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T005034Z:549413dd-f3be-4978-996d-b1528fc79248"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:50:33 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "a448e1f3-f7fe-4667-b5f9-a6aa66f38d65"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14774"
+        ],
+        "x-ms-correlation-request-id": [
+          "fe6d9d29-e1c0-442e-94cf-fbfb22819a55"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T005050Z:fe6d9d29-e1c0-442e-94cf-fbfb22819a55"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:50:50 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "959c8975-c914-4449-bd9a-ab950c6c9da2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14773"
+        ],
+        "x-ms-correlation-request-id": [
+          "41d0cf1e-9309-454a-bf78-051125b78bfa"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T005107Z:41d0cf1e-9309-454a-bf78-051125b78bfa"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:51:07 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "72253cf9-eaa8-474c-9fd4-3153c5f1c149"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14771"
+        ],
+        "x-ms-correlation-request-id": [
+          "4896a7c0-6b8d-4b6d-9170-8ebcf23cc88f"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T005123Z:4896a7c0-6b8d-4b6d-9170-8ebcf23cc88f"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:51:23 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "2b1e7fa9-0796-46c2-a64c-5f6428770f85"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14768"
+        ],
+        "x-ms-correlation-request-id": [
+          "355b1aac-1069-4065-b400-c1d205292b3e"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T005139Z:355b1aac-1069-4065-b400-c1d205292b3e"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:51:39 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "c8411932-ee8b-4df3-8191-d0f4f993fde8"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14765"
+        ],
+        "x-ms-correlation-request-id": [
+          "120fec99-420d-43da-a0d9-d51f9e503a4c"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T005156Z:120fec99-420d-43da-a0d9-d51f9e503a4c"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:51:55 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "a7a2363e-0d1f-4903-97fa-3a7c29315ba0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14764"
+        ],
+        "x-ms-correlation-request-id": [
+          "b8e333db-58c0-4a78-8d58-ddd0935f9c88"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T005212Z:b8e333db-58c0-4a78-8d58-ddd0935f9c88"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:52:12 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "20f8404d-f87a-49df-8fcc-439d2ef72632"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14763"
+        ],
+        "x-ms-correlation-request-id": [
+          "f6b2fcae-ebf3-4884-ba2c-63be1c1ed967"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T005228Z:f6b2fcae-ebf3-4884-ba2c-63be1c1ed967"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:52:28 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "c9c06f30-d3c7-4b3c-bbc0-e1a6329ac96f"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14761"
+        ],
+        "x-ms-correlation-request-id": [
+          "4771d1e4-d5ec-4503-a222-6252a886bc07"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T005245Z:4771d1e4-d5ec-4503-a222-6252a886bc07"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:52:44 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "8ea28475-5de8-451d-8839-7b02e8728433"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14759"
+        ],
+        "x-ms-correlation-request-id": [
+          "e5ce40ae-d6e8-4c8e-bd55-4aa61913ef9d"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T005301Z:e5ce40ae-d6e8-4c8e-bd55-4aa61913ef9d"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:53:00 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "54a18ace-b3bb-4795-96a4-7e9790f86735"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14758"
+        ],
+        "x-ms-correlation-request-id": [
+          "f581995e-d4fb-4a6f-aec8-7dc3b1e53032"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T005317Z:f581995e-d4fb-4a6f-aec8-7dc3b1e53032"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:53:17 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "12a1272a-0b68-48d7-9ae2-35869a66007f"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14757"
+        ],
+        "x-ms-correlation-request-id": [
+          "d8a37ae4-1836-4e91-bd35-bc3a8a6f7493"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T005334Z:d8a37ae4-1836-4e91-bd35-bc3a8a6f7493"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:53:33 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "e5a3d1b2-6a8a-40ba-80e1-3bcfb377342f"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14753"
+        ],
+        "x-ms-correlation-request-id": [
+          "32f1138b-9ecd-4f02-ac06-04acd871d1fc"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T005350Z:32f1138b-9ecd-4f02-ac06-04acd871d1fc"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:53:49 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "66cf4cb2-e293-4fd2-babb-75dce04d6547"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14752"
+        ],
+        "x-ms-correlation-request-id": [
+          "e1fc9b3c-6e3e-434a-b915-5a9d53277df4"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T005406Z:e1fc9b3c-6e3e-434a-b915-5a9d53277df4"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:54:06 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "49b064a2-f9d2-4a09-b946-916bbc7a0b87"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14750"
+        ],
+        "x-ms-correlation-request-id": [
+          "9245f956-b383-41df-aecd-cf97e56c8321"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T005423Z:9245f956-b383-41df-aecd-cf97e56c8321"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:54:22 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "658e8c09-b7ff-4ab9-a303-d186f88a20b8"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14749"
+        ],
+        "x-ms-correlation-request-id": [
+          "31db52f2-66cf-4aa7-80ae-3463d5d9692d"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T005439Z:31db52f2-66cf-4aa7-80ae-3463d5d9692d"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:54:39 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "061048b5-f0cb-480e-979d-661f1cb67315"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14747"
+        ],
+        "x-ms-correlation-request-id": [
+          "a2559df7-08fb-4849-9086-adc94ef5cd96"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T005456Z:a2559df7-08fb-4849-9086-adc94ef5cd96"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:54:56 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "b65b6b06-0820-472c-bf3f-6ddb46870796"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14767"
+        ],
+        "x-ms-correlation-request-id": [
+          "1533ef41-27f1-40a8-b3c8-411c33af7a06"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T005512Z:1533ef41-27f1-40a8-b3c8-411c33af7a06"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:55:11 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "030b6e6b-233e-4322-8820-8c26eb02c718"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14765"
+        ],
+        "x-ms-correlation-request-id": [
+          "3c250544-51fd-4c9c-86c6-ecc287e18bc0"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T005528Z:3c250544-51fd-4c9c-86c6-ecc287e18bc0"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:55:28 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "579d24db-aa37-430a-ad30-1d3f9d6eaca2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14763"
+        ],
+        "x-ms-correlation-request-id": [
+          "a2849395-858b-4b20-a532-cd5651ae0158"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T005545Z:a2849395-858b-4b20-a532-cd5651ae0158"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:55:44 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "06b595fa-d3aa-4876-9a84-26519aae7a5e"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14761"
+        ],
+        "x-ms-correlation-request-id": [
+          "f7e63339-4bcd-4683-ba42-5db57cded652"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T005601Z:f7e63339-4bcd-4683-ba42-5db57cded652"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:56:01 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "64f63f5f-27fd-49a0-8622-a8f88896660b"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14760"
+        ],
+        "x-ms-correlation-request-id": [
+          "1a92b8ec-b7bf-4954-978b-8efe40fc31cd"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T005618Z:1a92b8ec-b7bf-4954-978b-8efe40fc31cd"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:56:18 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "9e511b9a-0342-4d81-a553-2f9992513a9b"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14759"
+        ],
+        "x-ms-correlation-request-id": [
+          "77e9eb1a-b24e-4ae5-b62d-59fd875aafbf"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T005634Z:77e9eb1a-b24e-4ae5-b62d-59fd875aafbf"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:56:33 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "e5d5f83e-5bdc-40dd-b79e-aba4ee156c1c"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14755"
+        ],
+        "x-ms-correlation-request-id": [
+          "8bbe0b67-723e-4e14-bab3-817fa62600e3"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T005650Z:8bbe0b67-723e-4e14-bab3-817fa62600e3"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:56:50 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "40277611-cc2c-4209-9b69-d83f56e531b4"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14754"
+        ],
+        "x-ms-correlation-request-id": [
+          "c2f466fd-172c-41cd-9d8a-3d07586a1180"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T005707Z:c2f466fd-172c-41cd-9d8a-3d07586a1180"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:57:07 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "3cd00821-8219-43cb-8770-eeffba63d6e1"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14753"
+        ],
+        "x-ms-correlation-request-id": [
+          "dce5d768-edb3-4892-b3e4-54e56ab09272"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T005723Z:dce5d768-edb3-4892-b3e4-54e56ab09272"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:57:23 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "310e31a7-196d-4fc7-b041-4c0d560ba452"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14752"
+        ],
+        "x-ms-correlation-request-id": [
+          "ac231546-d17e-40eb-88d2-40e89fa3bd13"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T005740Z:ac231546-d17e-40eb-88d2-40e89fa3bd13"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:57:39 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "d6167da0-aa59-45ff-b2b8-a74dd3e858e6"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14749"
+        ],
+        "x-ms-correlation-request-id": [
+          "6145ce64-6386-4d9c-a33f-aa29529034dd"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T005756Z:6145ce64-6386-4d9c-a33f-aa29529034dd"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:57:56 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "b82392e2-8d3a-4d68-8ecd-4bd37317c47a"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14748"
+        ],
+        "x-ms-correlation-request-id": [
+          "879df2c3-2d0a-4319-8147-54284a7cbd1d"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T005812Z:879df2c3-2d0a-4319-8147-54284a7cbd1d"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:58:12 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "2a1ff937-b7ab-41f0-be61-01e68794254e"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14747"
+        ],
+        "x-ms-correlation-request-id": [
+          "9631c28c-30a9-4a63-a6f5-daff02705d97"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T005829Z:9631c28c-30a9-4a63-a6f5-daff02705d97"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:58:28 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"CreateRecoverRequest\",\r\n  \"startTime\": \"2016-02-23T00:42:07.17Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "5d05c9fa-d6e3-48ef-b3f8-8db3a87a07a8"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/azureAsyncOperation/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14746"
+        ],
+        "x-ms-correlation-request-id": [
+          "1b176d61-8eb4-4803-9e01-10a94c0a84cf"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T005845Z:1b176d61-8eb4-4803-9e01-10a94c0a84cf"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:58:45 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored/operationResults/6b868992-ae8f-45c4-8964-efb9a16c97f5?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMi9kYXRhYmFzZXMvcG93ZXJzaGVsbF9kYl9nZW9yZXN0b3JlZC9vcGVyYXRpb25SZXN1bHRzLzZiODY4OTkyLWFlOGYtNDVjNC04OTY0LWVmYjlhMTZjOTdmNT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "461cfda8-0f0b-4086-8a39-927b442d6e54"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2/databases/powershell_db_georestored\",\r\n  \"name\": \"powershell_db_georestored\",\r\n  \"type\": \"Microsoft.Sql/servers/databases\",\r\n  \"location\": \"SouthEast Asia\",\r\n  \"kind\": \"v12.0,user\",\r\n  \"properties\": {\r\n    \"databaseId\": \"ac6f66cb-cc8d-4167-b64f-beb5c60019e4\",\r\n    \"edition\": \"Standard\",\r\n    \"status\": \"Online\",\r\n    \"serviceLevelObjective\": \"S0\",\r\n    \"collation\": \"SQL_Latin1_General_CP1_CI_AS\",\r\n    \"maxSizeBytes\": \"268435456000\",\r\n    \"creationDate\": \"2016-02-23T00:42:08.593Z\",\r\n    \"currentServiceObjectiveId\": \"f1173c43-91bd-4aaa-973c-54e79e15235b\",\r\n    \"requestedServiceObjectiveId\": \"f1173c43-91bd-4aaa-973c-54e79e15235b\",\r\n    \"requestedServiceObjectiveName\": null,\r\n    \"defaultSecondaryLocation\": \"North Europe\",\r\n    \"earliestRestoreDate\": \"2016-02-23T01:08:20.09Z\",\r\n    \"elasticPoolName\": null,\r\n    \"containmentState\": 2\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "863"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
+        ],
+        "x-ms-request-id": [
+          "0ceb4ad5-18b5-4a2a-9f97-d234feea5b47"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14741"
+        ],
+        "x-ms-correlation-request-id": [
+          "2db7a9c2-1e9e-4825-8aaf-0497fb8a1739"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160223T005902Z:2db7a9c2-1e9e-4825-8aaf-0497fb8a1739"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 23 Feb 2016 00:59:01 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 201
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "0a496442-635f-4974-bda4-2d339b9a6b3c",
+    "TenantId": "b98ac74f-3f88-40dd-a91d-9d48aab4bf1f",
+    "Domain": "aad18.ccsctp.net",
+    "User": "admin@aad18.ccsctp.net"
+  }
+}
