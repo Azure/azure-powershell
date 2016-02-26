@@ -48,7 +48,6 @@ namespace StaticAnalysis
             };
 
             var reportsDirectory = Directory.GetCurrentDirectory();
-            var exceptionsDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Exceptions");
             bool logReportsDirectoryWarning = true;
             if (args.Length > 1 && Directory.Exists(args[1]))
             {
@@ -56,7 +55,8 @@ namespace StaticAnalysis
                 logReportsDirectoryWarning = false;
             }
 
-            bool useExceptions = true;
+           var exceptionsDirectory = Path.Combine(reportsDirectory, "Exceptions");
+           bool useExceptions = true;
             if (args.Length > 2)
             {
                 bool.TryParse(args[2], out useExceptions);
