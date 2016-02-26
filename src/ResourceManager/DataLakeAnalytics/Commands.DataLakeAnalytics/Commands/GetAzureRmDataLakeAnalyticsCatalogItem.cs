@@ -15,7 +15,7 @@
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
-using Microsoft.Azure.Management.DataLake.AnalyticsCatalog.Models;
+using Microsoft.Azure.Management.DataLake.Analytics.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
@@ -41,14 +41,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [ValidateNotNullOrEmpty]
         public CatalogPathInstance Path { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
-            HelpMessage = "Name of resource group under which the Data Lake Analytics account and catalog exists.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
         public override void ExecuteCmdlet()
         {
-            var itemList = DataLakeAnalyticsClient.GetCatalogItem(ResourceGroupName, Account, Path, ItemType);
+            var itemList = DataLakeAnalyticsClient.GetCatalogItem(Account, Path, ItemType);
             if (itemList.Count == 1)
             {
                 WriteObject(itemList[0]);
