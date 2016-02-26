@@ -119,6 +119,9 @@ This repository contains a set of PowerShell cmdlets for developers and administ
 * Azure Automation
   * Manage automation accounts
   * Manage automation jobs, runbooks and schedules
+* CDN
+  * Manage profiles and endpoints
+  * Purge and load content on CDN endpoint
 
 For detail descriptions and examples of the cmdlets, type
 * ```help azure``` to get all the cmdlets.
