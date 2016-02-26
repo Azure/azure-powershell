@@ -39,39 +39,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             _handlers = new OrderedDictionary();
         }
 
-        public virtual TClient CreateAdlArmClient<TClient>(AzureContext context, AzureEnvironment.Endpoint endpoint, bool parameterizedBaseUri = false) where TClient : Microsoft.Rest.ServiceClient<TClient>
-        {
-            if (context == null)
-            {
-                throw new ApplicationException(Resources.NoSubscriptionInContext);
-            }
-
-            var creds = AzureSession.AuthenticationFactory.GetServiceClientCredentials(context);
-            var newHandlers = GetCustomHandlers();
-            TClient client;
-            if (!parameterizedBaseUri)
-            {
-                client = (newHandlers == null || newHandlers.Length == 0)
-                    // string.Empty ensures that we hit the constructors that set the assembly version properly
-                    ? CreateCustomArmClient<TClient>(context.Environment.GetEndpointAsUri(endpoint), creds, string.Empty)
-                    : CreateCustomArmClient<TClient>(context.Environment.GetEndpointAsUri(endpoint), creds, string.Empty, GetCustomHandlers());
-            }
-            else
-            {
-                client = (newHandlers == null || newHandlers.Length == 0)
-                    ? CreateCustomArmClient<TClient>(creds, context.Environment.GetEndpoint(endpoint), string.Empty)
-                    : CreateCustomArmClient<TClient>(creds, context.Environment.GetEndpoint(endpoint), string.Empty, GetCustomHandlers());
-            }
-
-            var subscriptionId = typeof(TClient).GetProperty("SubscriptionId");
-            if (subscriptionId != null && context.Subscription != null)
-            {
-                subscriptionId.SetValue(client, context.Subscription.Id.ToString());
-            }
-
-            return client;
-        }
-
         public virtual TClient CreateArmClient<TClient>(AzureContext context, AzureEnvironment.Endpoint endpoint) where TClient : Microsoft.Rest.ServiceClient<TClient>
         {
             if (context == null)
@@ -152,11 +119,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         }
 
         /// <summary>
+        /// Creates the client.
         /// </summary>
-        /// <typeparam name="TClient"></typeparam>
-        /// <param name="subscription"></param>
-        /// <param name="endpoint"></param>
+        /// <typeparam name="TClient">The type of the client.</typeparam>
+        /// <param name="profile">The profile.</param>
+        /// <param name="subscription">The subscription.</param>
+        /// <param name="endpoint">The endpoint.</param>
         /// <returns></returns>
+        /// <exception cref="System.ApplicationException"></exception>
+        /// <exception cref="System.ArgumentException">
+        /// accountName
+        /// or
+        /// </exception>
         public virtual TClient CreateClient<TClient>(AzureSMProfile profile, AzureSubscription subscription, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>
         {
             if (subscription == null)
@@ -320,7 +294,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
         public HashSet<ProductInfoHeaderValue> UserAgents { get; set; }
 
-        private DelegatingHandler[] GetCustomHandlers()
+        public DelegatingHandler[] GetCustomHandlers()
         {
             List<DelegatingHandler> newHandlers = new List<DelegatingHandler>();
             var enumerator = _handlers.GetEnumerator();

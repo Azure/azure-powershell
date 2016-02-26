@@ -77,6 +77,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             throw new NotImplementedException();
         }
 
+        public DelegatingHandler[] GetCustomHandlers()
+        {
+            throw new NotImplementedException();
+        }
+
         public void AddUserAgent(string productName, string productVersion)
         {
             throw new NotImplementedException();
@@ -91,11 +96,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 
 
         public TClient CreateArmClient<TClient>(AzureContext context, AzureEnvironment.Endpoint endpoint) where TClient : Microsoft.Rest.ServiceClient<TClient>
-        {
-            throw new NotImplementedException();
-        }
-
-        public TClient CreateAdlArmClient<TClient>(AzureContext context, AzureEnvironment.Endpoint endpoint, bool isParameterizedHost) where TClient : Microsoft.Rest.ServiceClient<TClient>
         {
             throw new NotImplementedException();
         }

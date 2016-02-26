@@ -16,17 +16,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
-using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Management.DataLake.Store;
 using Microsoft.Azure.Management.DataLake.Store.Models;
-using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Rest.Azure;
 using Microsoft.Rest.Azure.OData;
-using System.Reflection;
-using System.Linq;
-using System.Diagnostics;
 
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
@@ -43,11 +39,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             }
 
             _subscriptionId = context.Subscription.Id;
-            _client = AzureSession.ClientFactory.CreateAdlArmClient<DataLakeStoreAccountManagementClient>(context,
+            _client = DataLakeStoreCmdletBase.CreateAdlsClient<DataLakeStoreAccountManagementClient>(context,
                 AzureEnvironment.Endpoint.ResourceManager);
-
-            // Update the user agent
-            // UpdateUserAgentAssemblyVersion(_client);
         }
 
         public DataLakeStoreClient()
@@ -187,29 +180,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 throw new CloudException(string.Format(Properties.Resources.FailedToDiscoverResourceGroup, accountName,
                     _subscriptionId));
             }
-        }
-
-        /// <summary>
-        /// Get the assembly version of a service client.
-        /// </summary>
-        /// <returns>The assembly version of the client.</returns>        
-        private void UpdateUserAgentAssemblyVersion(IAzureClient clientToUpdate)
-        {
-            var type = clientToUpdate.GetType();
-
-            var newVersion = FileVersionInfo.GetVersionInfo(type.Assembly.Location).FileVersion;
-
-            foreach (
-                var info in
-                    clientToUpdate.HttpClient.DefaultRequestHeaders.UserAgent.Where(
-                        info => info.Product.Name.Equals(type.FullName, StringComparison.OrdinalIgnoreCase)))
-            {
-                clientToUpdate.HttpClient.DefaultRequestHeaders.UserAgent.Remove(info);
-                clientToUpdate.HttpClient.DefaultRequestHeaders.UserAgent.Add(
-                    new System.Net.Http.Headers.ProductInfoHeaderValue(type.FullName, newVersion));
-                break;
-            }
-
         }
 
         #endregion

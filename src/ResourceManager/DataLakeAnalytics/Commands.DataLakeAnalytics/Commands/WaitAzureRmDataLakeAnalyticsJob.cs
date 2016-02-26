@@ -18,8 +18,8 @@ using System.Threading;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
 using Microsoft.Azure.Management.DataLake.Analytics.Models;
-using JobState = Microsoft.Azure.Management.DataLake.Analytics.Models.JobState;
 using Microsoft.Rest.Azure;
+using JobState = Microsoft.Azure.Management.DataLake.Analytics.Models.JobState;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {

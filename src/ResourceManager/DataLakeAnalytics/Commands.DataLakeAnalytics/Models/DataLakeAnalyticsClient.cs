@@ -17,7 +17,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.Tags.Model;
@@ -25,9 +24,6 @@ using Microsoft.Azure.Management.DataLake.Analytics;
 using Microsoft.Azure.Management.DataLake.Analytics.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.Rest.Azure.OData;
-using System.Reflection;
-using Microsoft.Rest;
-using System.Diagnostics;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 {
@@ -45,20 +41,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 throw new ApplicationException(Resources.InvalidDefaultSubscription);
             }
 
-            _accountClient = AzureSession.ClientFactory.CreateAdlArmClient<DataLakeAnalyticsAccountManagementClient>(context,
+            _accountClient = DataLakeAnalyticsCmdletBase.CreateAdlaClient<DataLakeAnalyticsAccountManagementClient>(context,
                 AzureEnvironment.Endpoint.ResourceManager);
             _subscriptionId = context.Subscription.Id;
 
-            _jobClient = AzureSession.ClientFactory.CreateAdlArmClient<DataLakeAnalyticsJobManagementClient>(context,
+            _jobClient = DataLakeAnalyticsCmdletBase.CreateAdlaClient<DataLakeAnalyticsJobManagementClient>(context,
                 AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix, true);
 
-            _catalogClient = AzureSession.ClientFactory.CreateAdlArmClient<DataLakeAnalyticsCatalogManagementClient>(context,
+            _catalogClient = DataLakeAnalyticsCmdletBase.CreateAdlaClient<DataLakeAnalyticsCatalogManagementClient>(context,
                 AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix, true);
-
-            // update the versions in the headers for all the types.
-            // UpdateUserAgentAssemblyVersion(_accountClient);
-            // UpdateUserAgentAssemblyVersion(_jobClient);
-            // UpdateUserAgentAssemblyVersion(_catalogClient);
         }
 
         #region Account Related Operations
@@ -916,30 +907,6 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
             return isList;
         }
-
-        /// <summary>
-        /// Get the assembly version of a service client.
-        /// </summary>
-        /// <returns>The assembly version of the client.</returns>        
-        private void UpdateUserAgentAssemblyVersion(IAzureClient clientToUpdate)
-        {
-            var type = clientToUpdate.GetType();
-
-            var newVersion = FileVersionInfo.GetVersionInfo(type.Assembly.Location).FileVersion;
-
-            foreach (
-                var info in
-                    clientToUpdate.HttpClient.DefaultRequestHeaders.UserAgent.Where(
-                        info => info.Product.Name.Equals(type.FullName, StringComparison.OrdinalIgnoreCase)))
-            {
-                clientToUpdate.HttpClient.DefaultRequestHeaders.UserAgent.Remove(info);
-                clientToUpdate.HttpClient.DefaultRequestHeaders.UserAgent.Add(
-                    new System.Net.Http.Headers.ProductInfoHeaderValue(type.FullName, newVersion));
-                break;
-            }
-
-        }
-
         #endregion
     }
 }

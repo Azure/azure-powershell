@@ -176,6 +176,12 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             // Do nothing
         }
 
+        public DelegatingHandler[] GetCustomHandlers()
+        {
+            // the equivalent of doing nothing
+            return new DelegatingHandler[0];
+        }
+
         public void AddUserAgent(string productName, string productVersion)
         {
             this.UniqueUserAgents.Add(new ProductInfoHeaderValue(productName, productVersion));
@@ -206,19 +212,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             var credentials = AzureSession.AuthenticationFactory.GetServiceClientCredentials(context);
             var client = CreateCustomArmClient<TClient>(credentials, context.Environment.GetEndpointAsUri(endpoint),
                 context.Subscription.Id);
-            return client;
-
-        }
-
-        public TClient CreateAdlArmClient<TClient>(AzureContext context, AzureEnvironment.Endpoint endpoint, bool parameterizedBaseUri = false) where TClient : Rest.ServiceClient<TClient>
-        {
-            Debug.Assert(context != null);
-            var credentials = AzureSession.AuthenticationFactory.GetServiceClientCredentials(context);
-            var client = parameterizedBaseUri ? 
-                CreateCustomArmClient<TClient>(credentials, context.Environment.GetEndpoint(endpoint), 
-                string.Empty, context.Subscription.Id) :
-                CreateCustomArmClient<TClient>(credentials, context.Environment.GetEndpointAsUri(endpoint),
-                string.Empty, context.Subscription.Id);
             return client;
 
         }

@@ -13,8 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
-using System.Net;
-
 using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics

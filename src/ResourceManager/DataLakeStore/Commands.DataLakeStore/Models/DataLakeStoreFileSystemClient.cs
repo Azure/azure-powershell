@@ -15,7 +15,6 @@
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
@@ -23,14 +22,12 @@ using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Management.DataLake.Store;
 using Microsoft.Azure.Management.DataLake.Store.Models;
 using Microsoft.Azure.Management.DataLake.StoreUploader;
 using Microsoft.Rest.Azure;
-using System.Reflection;
 
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
@@ -55,11 +52,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 throw new ApplicationException(Resources.InvalidDefaultSubscription);
             }
 
-            _client = AzureSession.ClientFactory.CreateAdlArmClient<DataLakeStoreFileSystemManagementClient>(context,
+            _client = DataLakeStoreCmdletBase.CreateAdlsClient<DataLakeStoreFileSystemManagementClient>(context,
                 AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix, true);
-
-            // update the user agent
-            // UpdateUserAgentAssemblyVersion(_client);
 
             uniqueActivityIdGenerator = new Random();
         }
@@ -76,7 +70,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 itemType = status.FileStatus.Type ?? FileType.File;
                 return true;
             }
-            catch (Rest.Azure.CloudException)
+            catch (CloudException)
             {
                 // TODO test for a specific code (such as 404 and only return false on those)
                 itemType = FileType.File;
@@ -137,7 +131,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 _client.FileSystem.CheckAccess(path, accountName, permissionsToCheck);
                 return true;
             }
-            catch (Rest.Azure.CloudException)
+            catch (CloudException)
             {
                 // TODO: ensure specific error code for "false", and throw for all others.
                 return false;
@@ -853,29 +847,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                     progress.StatusDescription,
                     progress.PercentComplete);
             }
-        }
-
-        /// <summary>
-        /// Get the assembly version of a service client.
-        /// </summary>
-        /// <returns>The assembly version of the client.</returns>        
-        private void UpdateUserAgentAssemblyVersion(IAzureClient clientToUpdate)
-        {
-            var type = clientToUpdate.GetType();
-
-            var newVersion = FileVersionInfo.GetVersionInfo(type.Assembly.Location).FileVersion;
-
-            foreach (
-                var info in
-                    clientToUpdate.HttpClient.DefaultRequestHeaders.UserAgent.Where(
-                        info => info.Product.Name.Equals(type.FullName, StringComparison.OrdinalIgnoreCase)))
-            {
-                clientToUpdate.HttpClient.DefaultRequestHeaders.UserAgent.Remove(info);
-                clientToUpdate.HttpClient.DefaultRequestHeaders.UserAgent.Add(
-                    new System.Net.Http.Headers.ProductInfoHeaderValue(type.FullName, newVersion));
-                break;
-            }
-
         }
 
         #endregion
