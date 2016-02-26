@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Commands.Insights.Test
             if (!string.IsNullOrWhiteSpace(field))
             {
                 var condition = string.Format("and {0} eq '{1}'", field, value);
-                Assert.True(filter.Contains(condition), "Filter does not contain required condition");
+                Assert.True(filter.Contains(condition), string.Format("Filter: {0} does not contain required condition: {1}", filter, condition));
             }
         }
 
