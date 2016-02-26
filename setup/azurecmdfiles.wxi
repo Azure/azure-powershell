@@ -1945,6 +1945,15 @@
                         <Component Id="cmpD9121909DC0B824088B2A5EF17CA911C" Guid="*">
                             <File Id="filB288DC1EB16DDE50BB2DA4B2CC2931CE" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Profile\Microsoft.Web.Administration.dll" />
                         </Component>
+                        <Component Id="cmp6AA20BD223B947D8F639F8418352533D" Guid="*">
+                            <File Id="filDCACB5E97555B198D633B0F65E4AAC5D" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Profile\Microsoft.Web.Delegation.dll" />
+                        </Component>
+                        <Component Id="cmpD70748C6F934F291B41467868246436F" Guid="*">
+                            <File Id="fil61F9393E7F2BF00B994B5674A27808B6" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Profile\Microsoft.Web.Deployment.dll" />
+                        </Component>
+                        <Component Id="cmpBB5A1FF19C61F57B30BA44D11241DE0B" Guid="*">
+                            <File Id="fil9D0F763F6C09229659C7E53BB2535CF8" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Profile\Microsoft.Web.Deployment.Tracing.dll" />
+                        </Component>
                         <Component Id="cmp0352F7B00A97FE5B02477D6B4DAC6AAF" Guid="*">
                             <File Id="filFD863A0C2F2C528FAFB80B7E298762C4" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Profile\Microsoft.WindowsAzure.Commands.Common.dll" />
                         </Component>
@@ -5658,6 +5667,9 @@
             <ComponentRef Id="cmpC7B3E3214E7ED8708906D8F3E0F9F476" />
             <ComponentRef Id="cmp8D637393B06DDB4E95F9C9DE02FBDC88" />
             <ComponentRef Id="cmpD9121909DC0B824088B2A5EF17CA911C" />
+            <ComponentRef Id="cmp6AA20BD223B947D8F639F8418352533D" />
+            <ComponentRef Id="cmpD70748C6F934F291B41467868246436F" />
+            <ComponentRef Id="cmpBB5A1FF19C61F57B30BA44D11241DE0B" />
             <ComponentRef Id="cmp0352F7B00A97FE5B02477D6B4DAC6AAF" />
             <ComponentRef Id="cmp3F9778895366D6C753CEDF6DC18F265D" />
             <ComponentRef Id="cmpEBB62AC41F55737CBA5B67CD38320203" />
