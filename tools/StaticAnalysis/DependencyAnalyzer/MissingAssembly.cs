@@ -65,19 +65,19 @@ namespace StaticAnalysis.DependencyAnalyzer
         {
             var matcher = "\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\"";
             var match = Regex.Match(line, matcher);
-            if (!match.Success || match.Groups.Count < 8)
+            if (!match.Success || match.Groups.Count < 9)
             {
                 throw new InvalidOperationException(string.Format("Could not parse '{0}' as MissingAssembly record", line));
             }
 
-            Directory = match.Groups[0].Value;
-            AssemblyName = match.Groups[1].Value;
-            AssemblyVersion = match.Groups[2].Value;
-            ReferencingAssembly = match.Groups[3].Value;
-            Severity = int.Parse(match.Groups[4].Value);
-            ProblemId = int.Parse(match.Groups[5].Value);
-            Description = match.Groups[6].Value;
-            Remediation = match.Groups[7].Value;
+            Directory = match.Groups[1].Value;
+            AssemblyName = match.Groups[2].Value;
+            AssemblyVersion = match.Groups[3].Value;
+            ReferencingAssembly = match.Groups[4].Value;
+            Severity = int.Parse(match.Groups[5].Value);
+            ProblemId = int.Parse(match.Groups[6].Value);
+            Description = match.Groups[7].Value;
+            Remediation = match.Groups[8].Value;
             return this;
         }
 

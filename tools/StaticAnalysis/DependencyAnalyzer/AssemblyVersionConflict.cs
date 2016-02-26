@@ -100,20 +100,20 @@ namespace StaticAnalysis.DependencyAnalyzer
         {
             var matcher = "\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\"";
             var match = Regex.Match(line, matcher);
-            if (!match.Success || match.Groups.Count < 9)
+            if (!match.Success || match.Groups.Count < 10)
             {
                 throw new InvalidOperationException(string.Format("Could not parse '{0}' as AssemblyVersionConflict record", line));
             }
 
-            Directory = match.Groups[0].Value;
-            AssemblyName = match.Groups[1].Value;
-            ExpectedVersion = Version.Parse(match.Groups[2].Value);
-            ActualVersion = Version.Parse(match.Groups[3].Value);
-            ParentAssembly = match.Groups[4].Value;
-            Severity = int.Parse(match.Groups[5].Value);
-            ProblemId = int.Parse(match.Groups[6].Value);
-            Description = match.Groups[7].Value;
-            Remediation = match.Groups[8].Value;
+            Directory = match.Groups[1].Value;
+            AssemblyName = match.Groups[2].Value;
+            ExpectedVersion = Version.Parse(match.Groups[3].Value);
+            ActualVersion = Version.Parse(match.Groups[4].Value);
+            ParentAssembly = match.Groups[5].Value;
+            Severity = int.Parse(match.Groups[6].Value);
+            ProblemId = int.Parse(match.Groups[7].Value);
+            Description = match.Groups[8].Value;
+            Remediation = match.Groups[9].Value;
             return this;
         }
 

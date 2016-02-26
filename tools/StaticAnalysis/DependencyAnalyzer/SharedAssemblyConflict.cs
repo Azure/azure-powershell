@@ -66,17 +66,17 @@ namespace StaticAnalysis.DependencyAnalyzer
         {
             var matcher = "\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\"";
             var match = Regex.Match(line, matcher);
-            if (!match.Success || match.Groups.Count < 7)
+            if (!match.Success || match.Groups.Count < 8)
             {
                 throw new InvalidOperationException(string.Format("Could not parse '{0}' as SharedAssemblyConflict record", line));
             }
 
-            AssemblyName = match.Groups[1].Value;
-            AssemblyVersion = Version.Parse(match.Groups[2].Value);
-            Severity = int.Parse(match.Groups[3].Value);
-            ProblemId = int.Parse(match.Groups[4].Value);
-            Description = match.Groups[5].Value;
-            Remediation = match.Groups[6].Value;
+            AssemblyName = match.Groups[2].Value;
+            AssemblyVersion = Version.Parse(match.Groups[3].Value);
+            Severity = int.Parse(match.Groups[4].Value);
+            ProblemId = int.Parse(match.Groups[5].Value);
+            Description = match.Groups[6].Value;
+            Remediation = match.Groups[7].Value;
             return this;
         }
 

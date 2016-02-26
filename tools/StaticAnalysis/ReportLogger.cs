@@ -26,17 +26,18 @@ namespace StaticAnalysis
     {
         private AnalysisLogger _parent;
         private string _outputFile;
-        private string _exceptionsFile;
+        private string _exceptionsFilename;
 
-        public ReportLogger(string fileName, AnalysisLogger parent) : this(fileName, null, parent)
+        public ReportLogger(string fileName, AnalysisLogger parent)
+            : this(fileName, null, parent)
         {
         }
 
-        public ReportLogger(string fileName, string exceptionsFileName, AnalysisLogger parent)
+        public ReportLogger(string fileName, string exceptionsFilename, AnalysisLogger parent)
         {
             _parent = parent;
             _outputFile = fileName;
-            _exceptionsFile = exceptionsFileName;
+            _exceptionsFilename = exceptionsFilename;
         }
 
         protected AnalysisLogger ParentLogger { get { return _parent; } }
@@ -63,7 +64,7 @@ namespace StaticAnalysis
     /// A typed report logger
     /// </summary>
     /// <typeparam name="T">The type of the report this logger will log.</typeparam>
-    public class ReportLogger<T> : ReportLogger where T : class, IReportRecord, new()  
+    public class ReportLogger<T> : ReportLogger where T : class, IReportRecord, new()
     {
         public ReportLogger(string fileName, AnalysisLogger logger)
             : this(fileName, null, logger)
