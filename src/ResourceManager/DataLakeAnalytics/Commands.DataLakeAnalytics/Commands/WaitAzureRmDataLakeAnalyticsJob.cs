@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
 using Microsoft.Azure.Management.DataLake.Analytics.Models;
 using Microsoft.Rest.Azure;
 using JobState = Microsoft.Azure.Management.DataLake.Analytics.Models.JobState;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
@@ -68,7 +69,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                 }
 
                 WriteVerboseWithTimestamp(string.Format(Resources.WaitJobState, jobInfo.State));
-                Thread.Sleep(WaitIntervalInSeconds*1000);
+                TestMockSupport.Delay(WaitIntervalInSeconds*1000);
                 timeWaitedInSeconds += WaitIntervalInSeconds;
                 jobInfo = DataLakeAnalyticsClient.GetJob(Account, JobId);
             }

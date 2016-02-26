@@ -28,6 +28,7 @@ using Microsoft.Azure.Management.DataLake.Store;
 using Microsoft.Azure.Management.DataLake.Store.Models;
 using Microsoft.Azure.Management.DataLake.StoreUploader;
 using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
@@ -574,7 +575,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                         }
 
                         // sleep for a half of a second.
-                        Thread.Sleep(500);
+                        TestMockSupport.Delay(500);
                     }
 
                     if (task.IsFaulted && !task.IsCanceled)
@@ -792,7 +793,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                     }
                 }
 
-                Thread.Sleep(250);
+                TestMockSupport.Delay(250);
             }
 
             if (uploadTask.IsCanceled || token.IsCancellationRequested)

@@ -130,6 +130,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         /// <exception cref="System.ArgumentException">
         /// accountName
         /// or
+        /// environment
         /// </exception>
         public virtual TClient CreateClient<TClient>(AzureSMProfile profile, AzureSubscription subscription, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>
         {
