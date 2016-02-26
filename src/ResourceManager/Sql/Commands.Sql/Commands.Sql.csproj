@@ -144,6 +144,17 @@
     <Compile Include="Database\Model\DatabaseEdition.cs" />
     <Compile Include="Database\Services\AzureSqlDatabaseAdapter.cs" />
     <Compile Include="Database\Services\AzureSqlDatabaseCommunicator.cs" />
+    <Compile Include="ServerDisasterRecoveryConfiguration\Cmdlet\AzureSqlServerDisasterRecoveryConfigurationActivityCmdletBase.cs" />
+    <Compile Include="ServerDisasterRecoveryConfiguration\Cmdlet\AzureSqlServerDisasterRecoveryConfigurationCmdletBase.cs" />
+    <Compile Include="ServerDisasterRecoveryConfiguration\Cmdlet\GetAzureSqlServerDisasterRecoveryConfiguration.cs" />
+    <Compile Include="ServerDisasterRecoveryConfiguration\Cmdlet\GetAzureSqlServerDisasterRecoveryConfigurationActivity.cs" />
+    <Compile Include="ServerDisasterRecoveryConfiguration\Cmdlet\NewAzureSqlServerDisasterRecoveryConfiguration.cs" />
+    <Compile Include="ServerDisasterRecoveryConfiguration\Cmdlet\RemoveAzureSqlServerDisasterRecoveryConfiguration.cs" />
+    <Compile Include="ServerDisasterRecoveryConfiguration\Cmdlet\SetAzureSqlServerDisasterRecoveryConfiguration.cs" />
+    <Compile Include="ServerDisasterRecoveryConfiguration\Model\AzureSqlServerDisasterRecoveryConfigurationActivityModel.cs" />
+    <Compile Include="ServerDisasterRecoveryConfiguration\Model\AzureSqlServerDisasterRecoveryConfigurationModel.cs" />
+    <Compile Include="ServerDisasterRecoveryConfiguration\Services\AzureSqlServerDisasterRecoveryConfigurationAdapter.cs" />
+    <Compile Include="ServerDisasterRecoveryConfiguration\Services\AzureSqlServerDisasterRecoveryConfigurationCommunicator.cs" />
     <Compile Include="Elastic Pools\Cmdlet\AzureSqlElasticPoolActivityCmdletBase.cs" />
     <Compile Include="Elastic Pools\Cmdlet\AzureSqlElasticPoolCmdletBase.cs" />
     <Compile Include="Elastic Pools\Cmdlet\GetAzureSqlElasticPool.cs" />
@@ -200,7 +211,6 @@
     <Compile Include="ServerCommunicationLink\Cmdlet\GetAzureSqlServerCommunicationLink.cs" />
     <Compile Include="ServerCommunicationLink\Cmdlet\NewAzureSqlServerCommunicationLink.cs" />
     <Compile Include="ServerCommunicationLink\Cmdlet\RemoveAzureSqlServerCommunicationLink.cs" />
-    <Compile Include="ServerCommunicationLink\Cmdlet\SetAzureSqlServerCommunicationLink.cs" />
     <Compile Include="ServerCommunicationLink\Model\AzureSqlServerCommunicationLinkModel.cs" />
     <Compile Include="ServerCommunicationLink\Services\AzureSqlServerCommunicationLinkAdapter.cs" />
     <Compile Include="ServerCommunicationLink\Services\AzureSqlServerCommunicationLinkCommunicator.cs" />
@@ -280,7 +290,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Sql, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.43.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.44.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">

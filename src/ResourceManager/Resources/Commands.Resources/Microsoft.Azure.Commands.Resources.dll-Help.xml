@@ -1006,6 +1006,98 @@
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+    <command:example>
+      <maml:title>--------------------------  Example 1: Get all registered resource providers --------------------------</maml:title>
+      <maml:introduction>
+        <maml:paragraph>PS C:\&gt;</maml:paragraph>
+      </maml:introduction>
+      <dev:code>
+        PS C:\&gt;Get-AzureRmResourceProvider
+      </dev:code>
+      <dev:remarks>
+        <maml:para>This command gets all the registered resource providers.</maml:para>
+        <maml:para />
+        <maml:para />
+        <maml:para>
+        </maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText>
+            <maml:para />
+          </command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
+    <command:example>
+      <maml:title>--------------------------  Example 2: Get all resource providers, including those not registered --------------------------</maml:title>
+      <maml:introduction>
+        <maml:paragraph>PS C:\&gt;</maml:paragraph>
+      </maml:introduction>
+      <dev:code>
+        PS C:\&gt;Get-AzureRmResourceProvider -ListAvailable
+      </dev:code>
+      <dev:remarks>
+        <maml:para>This command gets all the resource providers, including those registered and unregistered.</maml:para>
+        <maml:para />
+        <maml:para />
+        <maml:para>
+        </maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText>
+            <maml:para />
+          </command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
+    <command:example>
+      <maml:title>--------------------------  Example 3: Get details about a particular resource provider --------------------------</maml:title>
+      <maml:introduction>
+        <maml:paragraph>PS C:\&gt;</maml:paragraph>
+      </maml:introduction>
+      <dev:code>
+        PS C:\&gt;Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web
+      </dev:code>
+      <dev:remarks>
+        <maml:para>This command gets details about a particular resource provider, including the resource types and locations available for the resource provider.</maml:para>
+        <maml:para />
+        <maml:para />
+        <maml:para>
+        </maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText>
+            <maml:para />
+          </command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
+    <command:example>
+      <maml:title>--------------------------  Example 4: Get all registered resource providers filtered by a location --------------------------</maml:title>
+      <maml:introduction>
+        <maml:paragraph>PS C:\&gt;</maml:paragraph>
+      </maml:introduction>
+      <dev:code>
+        PS C:\&gt;Get-AzureRmResourceProvider -Location westus
+      </dev:code>
+      <dev:remarks>
+        <maml:para>This command gets all the registered resource providers under a location.</maml:para>
+        <maml:para />
+        <maml:para />
+        <maml:para>
+        </maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText>
+            <maml:para />
+          </command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -6311,6 +6403,29 @@ Resources</dev:code>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
+      <command:example>
+      <maml:title>--------------------------  Example 1: Register a resource provider --------------------------</maml:title>
+      <maml:introduction>
+        <maml:paragraph>PS C:\&gt;</maml:paragraph>
+      </maml:introduction>
+      <dev:code>
+        PS C:\&gt;Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Web
+      </dev:code>
+      <dev:remarks>
+        <maml:para>This command registers the provider "Microsoft.Web" for the selected subscription.</maml:para>
+        <maml:para />
+        <maml:para />
+        <maml:para>
+        </maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText>
+            <maml:para />
+          </command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
     </command:examples>
     <maml:relatedLinks>
     </maml:relatedLinks>
@@ -9657,6 +9772,29 @@ Tags:
       </maml:alert>
     </maml:alertSet>
     <command:examples>
+      <command:example>
+        <maml:title>--------------------------  Example 1: Unregister a resource provider --------------------------</maml:title>
+        <maml:introduction>
+          <maml:paragraph>PS C:\&gt;</maml:paragraph>
+        </maml:introduction>
+        <dev:code>
+          PS C:\&gt;Unregister-AzureRmResourceProvider -ProviderNamespace Microsoft.Web
+        </dev:code>
+        <dev:remarks>
+          <maml:para>This command unregisters the provider "Microsoft.Web" for the selected subscription.</maml:para>
+          <maml:para />
+          <maml:para />
+          <maml:para>
+          </maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText>
+              <maml:para />
+            </command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
     </command:examples>
     <maml:relatedLinks>
     </maml:relatedLinks>

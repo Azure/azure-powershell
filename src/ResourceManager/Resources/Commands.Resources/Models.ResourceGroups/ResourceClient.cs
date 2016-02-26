@@ -245,23 +245,33 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
                 if (operation.Properties.ProvisioningState != ProvisioningState.Failed)
                 {
-                    statusMessage = string.Format(normalStatusFormat,
+                    if (operation.Properties.TargetResource != null)
+                    {
+                        statusMessage = string.Format(normalStatusFormat,
                         operation.Properties.TargetResource.ResourceType,
                         operation.Properties.TargetResource.ResourceName,
                         operation.Properties.ProvisioningState.ToLower());
 
-                    WriteVerbose(statusMessage);
+                        WriteVerbose(statusMessage);
+                    }
                 }
                 else
                 {
                     string errorMessage = ParseErrorMessage(operation.Properties.StatusMessage);
 
-                    statusMessage = string.Format(failureStatusFormat,
+                    if(operation.Properties.TargetResource != null)
+                    {
+                        statusMessage = string.Format(failureStatusFormat,
                         operation.Properties.TargetResource.ResourceType,
                         operation.Properties.TargetResource.ResourceName,
                         errorMessage);
 
-                    WriteError(statusMessage);
+                        WriteError(statusMessage);
+                    }
+                    else
+                    {
+                        WriteError(errorMessage);
+                    }
 
                     List<string> detailedMessage = ParseDetailErrorMessage(operation.Properties.StatusMessage);
 
@@ -355,7 +365,16 @@ namespace Microsoft.Azure.Commands.Resources.Models
                             parameters: null);
 
                         newNestedOperations = GetNewOperations(operations, result.Operations);
-                        newOperations.AddRange(newNestedOperations);
+
+                        foreach (DeploymentOperation op in newNestedOperations)
+                        {
+                            DeploymentOperation nestedOperationWithSameIdAndProvisioningState = newOperations.Find(o => o.OperationId.Equals(op.OperationId) && o.Properties.ProvisioningState.Equals(op.Properties.ProvisioningState));
+
+                            if (nestedOperationWithSameIdAndProvisioningState == null)
+                            {
+                                newOperations.Add(op);
+                            }
+                        }
                     }
                 }
             }
