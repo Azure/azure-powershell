@@ -1,4 +1,4 @@
-﻿##2016.03.08 version 1.3.0
+﻿##2016.03.02 version 1.2.2
 * Azure LogicApp: New cmdlets for managing LogicApps  
   * Get-AzureLogicAppAccessKey
   * Get-AzureLogicApp
