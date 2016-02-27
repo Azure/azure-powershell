@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            WriteWarning("This cmdlet is being modified to enable better experience and may contain breaking changes in a future release.\n\r");
+            WriteWarning("This cmdlet is being modified to enable better experience and may contain breaking changes in a future release.");
 
             string queryFilter = this.ProcessParameters();
             bool fullDetails = this.DetailedOutput.IsPresent;

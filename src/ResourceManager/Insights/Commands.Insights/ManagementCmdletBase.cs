@@ -35,7 +35,8 @@ namespace Microsoft.Azure.Commands.Insights
         /// </summary>
         public IInsightsManagementClient InsightsManagementClient
         {
-            // The premise is that a command to establish a context (like Add-AzureRmAccount) has been called before this command in order to have a correct CurrentContext
+            // The premise is that a command to establish a context (like Add-AzureRmAccount) has
+            //   been called before this command in order to have a correct CurrentContext
             get {
                 if (this.insightsManagementClient == null)
                 {

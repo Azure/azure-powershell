@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.Insights.UsageMetrics
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            WriteWarning("This cmdlet is being modified to enable better experience and may contain breaking changes in a future release.\n\r");
+            WriteWarning("This cmdlet is being modified to enable better experience and may contain breaking changes in a future release.");
 
             string queryFilter = this.ProcessParameters();
             string apiVersion = this.ApiVersion ?? DefaultApiVersion;

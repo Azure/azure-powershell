@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            WriteWarning("This cmdlet is being modified to enable better experience and may contain breaking changes in a future release.\n\r");
+            WriteWarning("This cmdlet is being modified to enable better experience and may contain breaking changes in a future release.");
 
             ScaleRule rule = this.CreateSettingRule();
             WriteObject(rule);

@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            WriteWarning("This cmdlet is being modified to enable better experience and may contain breaking changes in a future release.\n\r");
+            WriteWarning("This cmdlet is being modified to enable better experience and may contain breaking changes in a future release.");
 
             RuleCreateOrUpdateParameters parameters = this.CreateSdkCallParameters();
 
