@@ -12,16 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Management.Automation;
+using System.Net;
 using Microsoft.Azure.Commands.Cdn.Common;
 using Microsoft.Azure.Commands.Cdn.Models.Profile;
 using Microsoft.Azure.Commands.Cdn.Properties;
 using Microsoft.Azure.Management.Cdn;
+using Microsoft.Azure.Management.Cdn.Models;
 
 namespace Microsoft.Azure.Commands.Cdn.Profile
 {
-    [Cmdlet(VerbsCommon.Get, "AzureCdnProfileSsoUrl", ConfirmImpact = ConfirmImpact.None), OutputType(typeof(PSSsoUri))]
-    public class GetAzureCdnProfileSsoUrl : AzureCdnCmdletBase
+    [Cmdlet(VerbsCommon.Remove, "AzureRmCdnProfile", ConfirmImpact = ConfirmImpact.High, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    public class RemoveAzureRmCdnProfile : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The name of the profile.")]
         [ValidateNotNullOrEmpty]
@@ -35,7 +38,6 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
         [ValidateNotNullOrEmpty]
         public PSProfile CdnProfile { get; set; }
 
-
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ObjectParameterSet)
@@ -44,10 +46,35 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
                 ProfileName = CdnProfile.Name;
             }
 
-            var sso = CdnManagementClient.Profiles.GenerateSsoUri(ProfileName, ResourceGroupName);
-            
-            WriteVerbose(Resources.Success);
-            WriteObject(new PSSsoUri {SsoUriValue = sso.SsoUriValue });
+            try
+            {
+                CdnManagementClient.Profiles.GetWithHttpMessagesAsync(ProfileName, ResourceGroupName).Wait();
+            }
+            catch (AggregateException exception)
+            {
+                var errorResponseException = exception.InnerException as ErrorResponseException;
+                if (errorResponseException == null)
+                {
+                    throw;
+                }
+
+                if (errorResponseException.Response.StatusCode.Equals(HttpStatusCode.NotFound))
+                {
+                    throw new PSArgumentException(string.Format(
+                        Resources.Error_DeleteNonExistingProfile, 
+                        ProfileName,
+                        ResourceGroupName));
+                }
+            }
+
+            if (!ShouldProcess(string.Format(Resources.Confirm_RemoveProfile, ProfileName)))
+            {
+                return;
+            }
+
+            CdnManagementClient.Profiles.DeleteIfExists(ProfileName, ResourceGroupName);
+
+            WriteObject(true);
         }
     }
 }

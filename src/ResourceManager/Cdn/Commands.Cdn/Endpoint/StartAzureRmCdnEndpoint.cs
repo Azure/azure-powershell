@@ -14,15 +14,14 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Cdn.Common;
-using Microsoft.Azure.Commands.Cdn.Helpers;
 using Microsoft.Azure.Commands.Cdn.Models.Endpoint;
 using Microsoft.Azure.Commands.Cdn.Properties;
 using Microsoft.Azure.Management.Cdn;
 
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
-    [Cmdlet("Validate", "AzureCdnCustomDomain", ConfirmImpact = ConfirmImpact.None), OutputType(typeof(PSValidateCustomDomainOutput))]
-    public class ValidateAzureCdnCustomDomain : AzureCdnCmdletBase
+    [Cmdlet(VerbsLifecycle.Start, "AzureRmCdnEndpoint", ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(bool))]
+    public class StartAzureRmCdnEndpoint : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure Cdn endpoint name.")]
         [ValidateNotNullOrEmpty]
@@ -40,10 +39,6 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         [ValidateNotNull]
         public PSEndpoint CdnEndpoint { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The resource group of the Azure Cdn Profile")]
-        [ValidateNotNullOrEmpty]
-        public string CustomDomainHostName { get; set; }
-
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ObjectParameterSet)
@@ -52,16 +47,11 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
                 ProfileName = CdnEndpoint.ProfileName;
                 EndpointName = CdnEndpoint.Name;
             }
-
-            var validateCustomDomainOutput = CdnManagementClient.Endpoints.ValidateCustomDomain(
-                EndpointName, 
-                ProfileName,
-                ResourceGroupName, 
-                CustomDomainHostName);
-
+            CdnManagementClient.Endpoints.Start(EndpointName, ProfileName, ResourceGroupName);
+            
             WriteVerbose(Resources.Success);
-            WriteVerbose(string.Format(Resources.Success_StopEndpoint, EndpointName, ProfileName, ResourceGroupName));
-            WriteObject(validateCustomDomainOutput.ToPsValidateCustomDomainOutput());
+            WriteVerbose(string.Format(Resources.Success_StartEndpoint, EndpointName, ProfileName, ResourceGroupName));
+            WriteObject(true);
         }
     }
 }

@@ -28,10 +28,10 @@ using SdkSkuName = Microsoft.Azure.Management.Cdn.Models.SkuName;
 namespace Microsoft.Azure.Commands.Cdn.Profile
 {
     /// <summary>
-    /// Defines the New-AzureCdnProfile cmdlet.
+    /// Defines the New-AzureRmCdnProfile cmdlet.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureCdnProfile", ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(PSProfile))]
-    public class NewAzureCdnProfile : AzureCdnCmdletBase
+    [Cmdlet(VerbsCommon.New, "AzureRmCdnProfile", ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(PSProfile))]
+    public class NewAzureRmCdnProfile : AzureCdnCmdletBase
     {
         /// <summary>
         /// Gets or sets the profile name.

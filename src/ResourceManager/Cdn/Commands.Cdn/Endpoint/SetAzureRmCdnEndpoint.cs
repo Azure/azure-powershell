@@ -24,8 +24,8 @@ using SdkQueryStringCachingBehavior = Microsoft.Azure.Management.Cdn.Models.Quer
 
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
-    [Cmdlet(VerbsCommon.Set, "AzureCdnEndpoint", ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(PSEndpoint))]
-    public class SetAzureCdnEndpoint : AzureCdnCmdletBase
+    [Cmdlet(VerbsCommon.Set, "AzureRmCdnEndpoint", ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(PSEndpoint))]
+    public class SetAzureRmCdnEndpoint : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The endpoint.", ParameterSetName = "Object")]
         [ValidateNotNull]

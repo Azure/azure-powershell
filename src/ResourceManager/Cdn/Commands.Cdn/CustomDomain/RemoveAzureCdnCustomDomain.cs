@@ -23,7 +23,7 @@ using Microsoft.Azure.Management.Cdn.Models;
 
 namespace Microsoft.Azure.Commands.Cdn.CustomDomain
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureCdnCustomDomain", ConfirmImpact = ConfirmImpact.High), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmCdnCustomDomain", ConfirmImpact = ConfirmImpact.High, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureCdnCustomDomain : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure Cdn CustomDomain name.")]
@@ -45,9 +45,6 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The profile.", ParameterSetName = ObjectParameterSet)]
         [ValidateNotNull]
         public PSCustomDomain CdnCustomDomain { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -85,27 +82,21 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
                 }
             }
 
-            ConfirmAction(
-                        Force.IsPresent,
-                        string.Format(
-                            Resources.Confirm_RemoveCustomDomain, 
-                            CustomDomainName, 
-                            EndpointName, 
-                            ProfileName, 
-                            ResourceGroupName),
-                        () => { CdnManagementClient.CustomDomains.DeleteIfExists(
-                            CustomDomainName, 
-                            EndpointName, 
-                            ProfileName, 
-                            ResourceGroupName); });
+            if (!ShouldProcess(string.Format(
+                            Resources.Confirm_RemoveCustomDomain,
+                            CustomDomainName,
+                            EndpointName,
+                            ProfileName,
+                            ResourceGroupName)))
+            {
+                return;
+            }
 
-            WriteVerbose(Resources.Success);
-            WriteVerbose(string.Format(
-                Resources.Success_RemoveCustomDomain,
-                CustomDomainName,
-                EndpointName,
-                ProfileName,
-                ResourceGroupName));
+            CdnManagementClient.CustomDomains.DeleteIfExists(
+                            CustomDomainName,
+                            EndpointName,
+                            ProfileName,
+                            ResourceGroupName);
 
             WriteObject(true);
         }

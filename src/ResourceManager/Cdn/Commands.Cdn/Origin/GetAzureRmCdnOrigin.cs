@@ -15,18 +15,18 @@
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Cdn.Common;
 using Microsoft.Azure.Commands.Cdn.Helpers;
-using Microsoft.Azure.Commands.Cdn.Models.CustomDomain;
+using Microsoft.Azure.Commands.Cdn.Models.Origin;
 using Microsoft.Azure.Commands.Cdn.Properties;
 using Microsoft.Azure.Management.Cdn;
 
-namespace Microsoft.Azure.Commands.Cdn.CustomDomain
+namespace Microsoft.Azure.Commands.Cdn.Origin
 {
-    [Cmdlet(VerbsCommon.Get, "AzureCdnCustomDomain", ConfirmImpact = ConfirmImpact.None), OutputType(typeof(PSCustomDomain))]
-    public class GetAzureCdnCustomDomain : AzureCdnCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRmCdnOrigin", ConfirmImpact = ConfirmImpact.None), OutputType(typeof(PSOrigin))]
+    public class GetAzureRmCdnOrigin : AzureCdnCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = "Azure Cdn CustomDomain name.")]
+        [Parameter(Mandatory = true, HelpMessage = "Azure Cdn origin name.")]
         [ValidateNotNullOrEmpty]
-        public string CustomDomainName { get; set; }
+        public string OriginName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "Azure Cdn endpoint name.")]
         [ValidateNotNullOrEmpty]
@@ -42,10 +42,10 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
 
         public override void ExecuteCmdlet()
         {
-            var customDomain = CdnManagementClient.CustomDomains.Get(CustomDomainName, EndpointName, ProfileName, ResourceGroupName);
+            var origin = CdnManagementClient.Origins.Get(OriginName, EndpointName, ProfileName, ResourceGroupName);
 
             WriteVerbose(Resources.Success);
-            WriteObject(customDomain.ToPsCustomDomain());
+            WriteObject(origin.ToPsOrigin());
         }
     }
 }

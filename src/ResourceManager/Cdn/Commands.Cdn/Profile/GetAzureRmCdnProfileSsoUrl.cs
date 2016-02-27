@@ -14,33 +14,40 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Cdn.Common;
-using Microsoft.Azure.Commands.Cdn.Helpers;
-using Microsoft.Azure.Commands.Cdn.Models.Endpoint;
+using Microsoft.Azure.Commands.Cdn.Models.Profile;
 using Microsoft.Azure.Commands.Cdn.Properties;
 using Microsoft.Azure.Management.Cdn;
 
-namespace Microsoft.Azure.Commands.Cdn.Endpoint
+namespace Microsoft.Azure.Commands.Cdn.Profile
 {
-    [Cmdlet(VerbsCommon.Get, "AzureCdnEndpoint", ConfirmImpact = ConfirmImpact.None), OutputType(typeof(PSEndpoint))]
-    public class GetAzureCdnEndpoint : AzureCdnCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRmCdnProfileSsoUrl", ConfirmImpact = ConfirmImpact.None), OutputType(typeof(PSSsoUri))]
+    public class GetAzureRmCdnProfileSsoUrl : AzureCdnCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = "Azure Cdn endpoint name.")]
-        [ValidateNotNullOrEmpty]
-        public string EndpointName { get; set; }
-
-        [Parameter(Mandatory = true, HelpMessage = "Azure Cdn profile name.")]
+        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The name of the profile.")]
         [ValidateNotNullOrEmpty]
         public string ProfileName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The resource group of the Azure Cdn Profile")]
+        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The resource group to which the profile belongs.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
+        [Parameter(Mandatory = true, ParameterSetName = ObjectParameterSet, ValueFromPipeline = true, HelpMessage = "The profile.")]
+        [ValidateNotNullOrEmpty]
+        public PSProfile CdnProfile { get; set; }
+
+
         public override void ExecuteCmdlet()
         {
-            var endpoint = CdnManagementClient.Endpoints.Get(EndpointName, ProfileName, ResourceGroupName);
+            if (ParameterSetName == ObjectParameterSet)
+            {
+                ResourceGroupName = CdnProfile.ResourceGroupName;
+                ProfileName = CdnProfile.Name;
+            }
+
+            var sso = CdnManagementClient.Profiles.GenerateSsoUri(ProfileName, ResourceGroupName);
+            
             WriteVerbose(Resources.Success);
-            WriteObject(endpoint.ToPsEndpoint());
+            WriteObject(new PSSsoUri {SsoUriValue = sso.SsoUriValue });
         }
     }
 }

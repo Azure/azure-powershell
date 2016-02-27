@@ -15,28 +15,37 @@
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Cdn.Common;
 using Microsoft.Azure.Commands.Cdn.Helpers;
-using Microsoft.Azure.Commands.Cdn.Models.Endpoint;
+using Microsoft.Azure.Commands.Cdn.Models.CustomDomain;
 using Microsoft.Azure.Commands.Cdn.Properties;
 using Microsoft.Azure.Management.Cdn;
-using Microsoft.Azure.Management.Cdn.Models;
 
-namespace Microsoft.Azure.Commands.Cdn.Endpoint
+namespace Microsoft.Azure.Commands.Cdn.CustomDomain
 {
-    [Cmdlet(VerbsCommon.Get, "AzureCdnEndpointNameAvailability", ConfirmImpact = ConfirmImpact.None), OutputType(typeof(PSCheckNameAvailabilityOutput))]
-    public class GetAzureCdnEndpointNameAvailability : AzureCdnCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRmCdnCustomDomain", ConfirmImpact = ConfirmImpact.None), OutputType(typeof(PSCustomDomain))]
+    public class GetAzureRmCdnCustomDomain : AzureCdnCmdletBase
     {
+        [Parameter(Mandatory = true, HelpMessage = "Azure Cdn CustomDomain name.")]
+        [ValidateNotNullOrEmpty]
+        public string CustomDomainName { get; set; }
+
         [Parameter(Mandatory = true, HelpMessage = "Azure Cdn endpoint name.")]
         [ValidateNotNullOrEmpty]
         public string EndpointName { get; set; }
 
+        [Parameter(Mandatory = true, HelpMessage = "Azure Cdn profile name.")]
+        [ValidateNotNullOrEmpty]
+        public string ProfileName { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = "The resource group of the Azure Cdn Profile")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            var result = CdnManagementClient.NameAvailability.CheckNameAvailability(
-                EndpointName,
-                ResourceType.MicrosoftCdnProfilesEndpoints);
+            var customDomain = CdnManagementClient.CustomDomains.Get(CustomDomainName, EndpointName, ProfileName, ResourceGroupName);
 
             WriteVerbose(Resources.Success);
-            WriteObject(result.ToPsCheckNameAvailabilityOutput());
+            WriteObject(customDomain.ToPsCustomDomain());
         }
     }
 }

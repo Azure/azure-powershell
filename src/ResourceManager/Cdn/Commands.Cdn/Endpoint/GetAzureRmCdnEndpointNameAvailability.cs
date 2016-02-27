@@ -15,37 +15,28 @@
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Cdn.Common;
 using Microsoft.Azure.Commands.Cdn.Helpers;
-using Microsoft.Azure.Commands.Cdn.Models.Origin;
+using Microsoft.Azure.Commands.Cdn.Models.Endpoint;
 using Microsoft.Azure.Commands.Cdn.Properties;
 using Microsoft.Azure.Management.Cdn;
+using Microsoft.Azure.Management.Cdn.Models;
 
-namespace Microsoft.Azure.Commands.Cdn.Origin
+namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
-    [Cmdlet(VerbsCommon.Get, "AzureCdnOrigin", ConfirmImpact = ConfirmImpact.None), OutputType(typeof(PSOrigin))]
-    public class GetAzureCdnOrigin : AzureCdnCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRmCdnEndpointNameAvailability", ConfirmImpact = ConfirmImpact.None), OutputType(typeof(PSCheckNameAvailabilityOutput))]
+    public class GetAzureRmCdnEndpointNameAvailability : AzureCdnCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = "Azure Cdn origin name.")]
-        [ValidateNotNullOrEmpty]
-        public string OriginName { get; set; }
-
         [Parameter(Mandatory = true, HelpMessage = "Azure Cdn endpoint name.")]
         [ValidateNotNullOrEmpty]
         public string EndpointName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "Azure Cdn profile name.")]
-        [ValidateNotNullOrEmpty]
-        public string ProfileName { get; set; }
-
-        [Parameter(Mandatory = true, HelpMessage = "The resource group of the Azure Cdn Profile")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
         public override void ExecuteCmdlet()
         {
-            var origin = CdnManagementClient.Origins.Get(OriginName, EndpointName, ProfileName, ResourceGroupName);
+            var result = CdnManagementClient.NameAvailability.CheckNameAvailability(
+                EndpointName,
+                ResourceType.MicrosoftCdnProfilesEndpoints);
 
             WriteVerbose(Resources.Success);
-            WriteObject(origin.ToPsOrigin());
+            WriteObject(result.ToPsCheckNameAvailabilityOutput());
         }
     }
 }

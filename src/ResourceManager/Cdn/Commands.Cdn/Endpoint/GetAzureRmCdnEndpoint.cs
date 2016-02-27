@@ -15,31 +15,32 @@
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Cdn.Common;
 using Microsoft.Azure.Commands.Cdn.Helpers;
-using Microsoft.Azure.Commands.Cdn.Models.Origin;
+using Microsoft.Azure.Commands.Cdn.Models.Endpoint;
 using Microsoft.Azure.Commands.Cdn.Properties;
 using Microsoft.Azure.Management.Cdn;
-using Microsoft.Azure.Management.Cdn.Models;
 
-namespace Microsoft.Azure.Commands.Cdn.Origin
+namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
-    [Cmdlet(VerbsCommon.Set, "AzureCdnOrigin", ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(PSOrigin))]
-    public class SetAzureCdnOrigin : AzureCdnCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRmCdnEndpoint", ConfirmImpact = ConfirmImpact.None), OutputType(typeof(PSEndpoint))]
+    public class GetAzureRmCdnEndpoint : AzureCdnCmdletBase
     {
-        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The origin.", ParameterSetName = "Object")]
-        [ValidateNotNull]
-        public PSOrigin CdnOrigin { get; set; }
+        [Parameter(Mandatory = true, HelpMessage = "Azure Cdn endpoint name.")]
+        [ValidateNotNullOrEmpty]
+        public string EndpointName { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = "Azure Cdn profile name.")]
+        [ValidateNotNullOrEmpty]
+        public string ProfileName { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = "The resource group of the Azure Cdn Profile")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            var origin = CdnManagementClient.Origins.Update(
-                CdnOrigin.Name, 
-                new OriginParameters(CdnOrigin.HostName, CdnOrigin.HttpPort, CdnOrigin.HttpsPort), 
-                CdnOrigin.EndpointName,
-                CdnOrigin.ProfileName, 
-                CdnOrigin.ResourceGroupName);
-
+            var endpoint = CdnManagementClient.Endpoints.Get(EndpointName, ProfileName, ResourceGroupName);
             WriteVerbose(Resources.Success);
-            WriteObject(origin.ToPsOrigin());
+            WriteObject(endpoint.ToPsEndpoint());
         }
     }
 }

@@ -22,10 +22,10 @@ using Microsoft.Azure.Management.Cdn;
 namespace Microsoft.Azure.Commands.Cdn.Profile
 {
     /// <summary>
-    /// Defines the New-AzureCdnProfile cmdlet.
+    /// Defines the New-AzureRmCdnProfile cmdlet.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureCdnProfile", ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(PSProfile))]
-    public class SetAzureCdnProfile : AzureCdnCmdletBase
+    [Cmdlet(VerbsCommon.Set, "AzureRmCdnProfile", ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(PSProfile))]
+    public class SetAzureRmCdnProfile : AzureCdnCmdletBase
     {
         /// <summary>
         /// Gets or sets the profile to update.
