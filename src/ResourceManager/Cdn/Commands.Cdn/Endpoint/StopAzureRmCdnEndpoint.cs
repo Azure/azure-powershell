@@ -20,8 +20,8 @@ using Microsoft.Azure.Management.Cdn;
 
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
-    [Cmdlet(VerbsLifecycle.Stop, "AzureCdnEndpoint", ConfirmImpact = ConfirmImpact.High), OutputType(typeof(bool))]
-    public class StopAzureCdnEndpoint : AzureCdnCmdletBase
+    [Cmdlet(VerbsLifecycle.Stop, "AzureRmCdnEndpoint", ConfirmImpact = ConfirmImpact.High, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    public class StopAzureRmCdnEndpoint : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure Cdn endpoint name.")]
         [ValidateNotNullOrEmpty]
@@ -39,8 +39,6 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         [ValidateNotNull]
         public PSEndpoint CdnEndpoint { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -51,13 +49,17 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
                 EndpointName = CdnEndpoint.Name;
             }
 
-            ConfirmAction(
-                        Force.IsPresent,
-                        string.Format(Resources.Confirm_StopEndpoint, EndpointName, ProfileName, ResourceGroupName),
-                        () => { CdnManagementClient.Endpoints.Stop(EndpointName, ProfileName, ResourceGroupName); });
+            if (!ShouldProcess(string.Format(
+                    Resources.Confirm_StopEndpoint, 
+                    EndpointName, 
+                    ProfileName,
+                    ResourceGroupName)))
+            {
+                return;
+            }
 
-            WriteVerbose(Resources.Success);
-            WriteVerbose(string.Format(Resources.Success_StopEndpoint, EndpointName, ProfileName, ResourceGroupName));
+            CdnManagementClient.Endpoints.Stop(EndpointName, ProfileName, ResourceGroupName);
+
             WriteObject(true);
         }
     }

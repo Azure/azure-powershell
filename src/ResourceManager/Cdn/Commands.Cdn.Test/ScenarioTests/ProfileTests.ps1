@@ -23,7 +23,7 @@ function Test-ProfileCrud
     $profileLocation = "EastUS"
     $profileSku = "Standard"
     $tags = @{"tag1" = "value1"; "tag2" = "value2"}
-    $createdProfile = New-AzureCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $profileLocation -Sku $profileSku -Tags $tags
+    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $profileLocation -Sku $profileSku -Tags $tags
 
     Assert-NotNull $createdProfile
     Assert-AreEqual $profileName $createdProfile.Name 
@@ -31,7 +31,7 @@ function Test-ProfileCrud
     Assert-AreEqual $profileSku $createdProfile.Sku.Name
     Assert-Tags $tags $createdProfile.Tags
 
-    $retrievedProfile = Get-AzureCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+    $retrievedProfile = Get-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
 
     Assert-NotNull $retrievedProfile
     Assert-AreEqual $profileName $retrievedProfile.Name 
@@ -41,20 +41,20 @@ function Test-ProfileCrud
     $newTags = @{"tag1" = "value3"; "tag2" = "value4"}
     $retrievedProfile.Tags = $newTags
 
-    $updatedProfile = Set-AzureCdnProfile -CdnProfile $retrievedProfile
+    $updatedProfile = Set-AzureRmCdnProfile -CdnProfile $retrievedProfile
 
     Assert-NotNull $updatedProfile
     Assert-AreEqual $profileName $updatedProfile.Name 
     Assert-AreEqual $resourceGroup.ResourceGroupName $updatedProfile.ResourceGroupName
     Assert-Tags $newTags $updatedProfile.Tags
 
-    $sso = Get-AzureCdnProfileSsoUrl -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+    $sso = Get-AzureRmCdnProfileSsoUrl -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
     Assert-NotNull $sso.SsoUriValue
 
-    $removed = Remove-AzureCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Force
+    $removed = Remove-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
 
     Assert-True { $removed }
-    Assert-ThrowsContains { Get-AzureCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "NotFound"
+    Assert-ThrowsContains { Get-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "NotFound"
 
     Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
@@ -70,17 +70,17 @@ function Test-ProfileDeleteAndSsoWithPiping
     $profileLocation = "EastUS"
     $profileSku = "Standard"
     $tags = @{"tag1" = "value1"; "tag2" = "value2"}
-    $createdProfile = New-AzureCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $profileLocation -Sku $profileSku -Tags $tags
+    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $profileLocation -Sku $profileSku -Tags $tags
 
     Assert-NotNull $createdProfile
 
-    $sso = Get-AzureCdnProfileSsoUrl -CdnProfile $createdProfile
+    $sso = Get-AzureRmCdnProfileSsoUrl -CdnProfile $createdProfile
     Assert-NotNull $sso.SsoUriValue
 
-    $removed = Remove-AzureCdnProfile -CdnProfile $createdProfile -Force
+    $removed = Remove-AzureRmCdnProfile -CdnProfile $createdProfile -Confirm:$false
 
     Assert-True { $removed }
-    Assert-ThrowsContains { Get-AzureCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "NotFound"
+    Assert-ThrowsContains { Get-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "NotFound"
 
     Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }

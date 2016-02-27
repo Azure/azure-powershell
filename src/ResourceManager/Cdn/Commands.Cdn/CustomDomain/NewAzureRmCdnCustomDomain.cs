@@ -24,8 +24,8 @@ using Microsoft.Azure.Management.Cdn.Models;
 
 namespace Microsoft.Azure.Commands.Cdn.CustomDomain
 {
-    [Cmdlet(VerbsCommon.New, "AzureCdnCustomDomain", ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(PSCustomDomain))]
-    public class NewAzureCdnCustomDomain : AzureCdnCmdletBase
+    [Cmdlet(VerbsCommon.New, "AzureRmCdnCustomDomain", ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(PSCustomDomain))]
+    public class NewAzureRmCdnCustomDomain : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "Host name of the Azure Cdn CustomDomain name.")]
         [ValidateNotNullOrEmpty]

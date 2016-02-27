@@ -20,8 +20,8 @@ using Microsoft.Azure.Management.Cdn;
 
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
-    [Cmdlet(VerbsLifecycle.Start, "AzureCdnEndpoint", ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(bool))]
-    public class StartAzureCdnEndpoint : AzureCdnCmdletBase
+    [Cmdlet("Load", "AzureRmCdnEndpointContent", ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(bool))]
+    public class LoadAzureRmCdnEndpointContent : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure Cdn endpoint name.")]
         [ValidateNotNullOrEmpty]
@@ -35,9 +35,13 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = ObjectParameterSet, ValueFromPipeline = true, HelpMessage = "The endpoint.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The endpoint.", ParameterSetName = ObjectParameterSet)]
         [ValidateNotNull]
         public PSEndpoint CdnEndpoint { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = "The resource group of the Azure Cdn Profile")]
+        [ValidateCount(Constants.PurgeLoadMinimumCollectionCount, Constants.PurgeLoadMaximumCollectionCount)]
+        public string[] LoadContent { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -47,10 +51,9 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
                 ProfileName = CdnEndpoint.ProfileName;
                 EndpointName = CdnEndpoint.Name;
             }
-            CdnManagementClient.Endpoints.Start(EndpointName, ProfileName, ResourceGroupName);
-            
+
+            CdnManagementClient.Endpoints.LoadContent(EndpointName, ProfileName, ResourceGroupName, LoadContent);
             WriteVerbose(Resources.Success);
-            WriteVerbose(string.Format(Resources.Success_StartEndpoint, EndpointName, ProfileName, ResourceGroupName));
             WriteObject(true);
         }
     }

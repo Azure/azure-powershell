@@ -12,19 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Management.Automation;
-using System.Net;
 using Microsoft.Azure.Commands.Cdn.Common;
+using Microsoft.Azure.Commands.Cdn.Helpers;
 using Microsoft.Azure.Commands.Cdn.Models.Endpoint;
 using Microsoft.Azure.Commands.Cdn.Properties;
 using Microsoft.Azure.Management.Cdn;
-using Microsoft.Azure.Management.Cdn.Models;
 
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureCdnEndpoint", ConfirmImpact = ConfirmImpact.High), OutputType(typeof(bool))]
-    public class RemoveAzureCdnEndpoint : AzureCdnCmdletBase
+    [Cmdlet("Validate", "AzureRmCdnCustomDomain", ConfirmImpact = ConfirmImpact.None), OutputType(typeof(PSValidateCustomDomainOutput))]
+    public class ValidateAzureRmCdnCustomDomain : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure Cdn endpoint name.")]
         [ValidateNotNullOrEmpty]
@@ -42,8 +40,9 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         [ValidateNotNull]
         public PSEndpoint CdnEndpoint { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
+        [Parameter(Mandatory = true, HelpMessage = "The resource group of the Azure Cdn Profile")]
+        [ValidateNotNullOrEmpty]
+        public string CustomDomainHostName { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -54,36 +53,15 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
                 EndpointName = CdnEndpoint.Name;
             }
 
-            try
-            {
-                CdnManagementClient.Endpoints.Get(EndpointName, ProfileName, ResourceGroupName);
-            }
-            catch (AggregateException exception)
-            {
-                var errorResponseException = exception.InnerException as ErrorResponseException;
-                if (errorResponseException == null)
-                {
-                    throw;
-                }
-
-                if (errorResponseException.Response.StatusCode.Equals(HttpStatusCode.NotFound))
-                {
-                    throw new PSArgumentException(string.Format(
-                        Resources.Error_DeleteNonExistingEndpoint,
-                        EndpointName,
-                        ProfileName,
-                        ResourceGroupName));
-                }
-            }
-
-            ConfirmAction(
-                        Force.IsPresent,
-                        string.Format(Resources.Confirm_RemoveEndpoint, EndpointName, ProfileName, ResourceGroupName),
-                        () => { CdnManagementClient.Endpoints.DeleteIfExists(EndpointName, ProfileName, ResourceGroupName); });
+            var validateCustomDomainOutput = CdnManagementClient.Endpoints.ValidateCustomDomain(
+                EndpointName, 
+                ProfileName,
+                ResourceGroupName, 
+                CustomDomainHostName);
 
             WriteVerbose(Resources.Success);
-            WriteVerbose(string.Format(Resources.Success_RemoveEndpoint, EndpointName, ProfileName, ResourceGroupName));
-            WriteObject(true);
+            WriteVerbose(string.Format(Resources.Success_StopEndpoint, EndpointName, ProfileName, ResourceGroupName));
+            WriteObject(validateCustomDomainOutput.ToPsValidateCustomDomainOutput());
         }
     }
 }

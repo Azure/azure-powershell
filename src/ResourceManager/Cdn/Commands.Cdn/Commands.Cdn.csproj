@@ -98,19 +98,19 @@
   <ItemGroup>
     <Compile Include="Common\AzureCdnCmdletBase.cs" />
     <Compile Include="Common\Constants.cs" />
-    <Compile Include="CustomDomain\GetAzureCdnCustomDomain.cs" />
-    <Compile Include="CustomDomain\NewAzureCdnCustomDomain.cs" />
+    <Compile Include="CustomDomain\GetAzureRmCdnCustomDomain.cs" />
+    <Compile Include="CustomDomain\NewAzureRmCdnCustomDomain.cs" />
     <Compile Include="CustomDomain\RemoveAzureCdnCustomDomain.cs" />
-    <Compile Include="Endpoint\GetAzureCdnEndpointNameAvailability.cs" />
-    <Compile Include="Endpoint\GetAzureCdnEndpoint.cs" />
-    <Compile Include="Endpoint\LoadAzureCdnEndpointContent.cs" />
-    <Compile Include="Endpoint\NewAzureCdnEndpoint.cs" />
-    <Compile Include="Endpoint\PurgeAzureCdnEndpointContent.cs" />
-    <Compile Include="Endpoint\RemoveAzureCdnEndnpoint.cs" />
-    <Compile Include="Endpoint\SetAzureCdnEndpoint.cs" />
-    <Compile Include="Endpoint\StartAzureCdnEndpoint.cs" />
-    <Compile Include="Endpoint\StopAzureCdnEndpoint.cs" />
-    <Compile Include="Endpoint\ValidateCustomDomain.cs" />
+    <Compile Include="Endpoint\GetAzureRmCdnEndpointNameAvailability.cs" />
+    <Compile Include="Endpoint\GetAzureRmCdnEndpoint.cs" />
+    <Compile Include="Endpoint\LoadAzureRmCdnEndpointContent.cs" />
+    <Compile Include="Endpoint\NewAzureRmCdnEndpoint.cs" />
+    <Compile Include="Endpoint\PurgeAzureRmCdnEndpointContent.cs" />
+    <Compile Include="Endpoint\RemoveAzureRmCdnEndnpoint.cs" />
+    <Compile Include="Endpoint\SetAzureRmCdnEndpoint.cs" />
+    <Compile Include="Endpoint\StartAzureRmCdnEndpoint.cs" />
+    <Compile Include="Endpoint\StopAzureRmCdnEndpoint.cs" />
+    <Compile Include="Endpoint\ValidateAzureRmCdnCustomDomain.cs" />
     <Compile Include="Helpers\ModelExtensions.cs" />
     <Compile Include="Models\CustomDomain\PSCustomDomain.cs" />
     <Compile Include="Models\CustomDomain\PSCustomDomainResourceState.cs" />
@@ -134,13 +134,13 @@
     <Compile Include="Models\Profile\PSSkuName.cs" />
     <Compile Include="Models\PSTrackedResources.cs" />
     <Compile Include="Models\Profile\PSSsoUri.cs" />
-    <Compile Include="Origin\GetAzureCdnOrigin.cs" />
-    <Compile Include="Origin\SetAzureCdnOrigin.cs" />
-    <Compile Include="Profile\GetAzureCdnProfile.cs" />
-    <Compile Include="Profile\GetAzureCdnProfileSsoUrl.cs" />
-    <Compile Include="Profile\NewAzureCdnProfile.cs" />
-    <Compile Include="Profile\RemoveAzureCdnProfile.cs" />
-    <Compile Include="Profile\SetAzureCdnProfile.cs" />
+    <Compile Include="Origin\GetAzureRmCdnOrigin.cs" />
+    <Compile Include="Origin\SetAzureRmCdnOrigin.cs" />
+    <Compile Include="Profile\GetAzureRmCdnProfile.cs" />
+    <Compile Include="Profile\GetAzureRmCdnProfileSsoUrl.cs" />
+    <Compile Include="Profile\NewAzureRmCdnProfile.cs" />
+    <Compile Include="Profile\RemoveAzureRmCdnProfile.cs" />
+    <Compile Include="Profile\SetAzureRmCdnProfile.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -171,7 +171,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="AzureCdn.psd1" />
+    <None Include="AzureCdn.psd1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Microsoft.Azure.Commands.Cdn.dll-help.psd1" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">

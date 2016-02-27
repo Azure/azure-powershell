@@ -23,10 +23,10 @@ using Microsoft.Azure.Management.Cdn;
 namespace Microsoft.Azure.Commands.Cdn.Profile
 {
     /// <summary>
-    /// Defines the New-AzureCdnProfile cmdlet.
+    /// Defines the New-AzureRMCdnProfile cmdlet.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureCdnProfile", ConfirmImpact = ConfirmImpact.None), OutputType(typeof(PSProfile))]
-    public class GetAzureCdnProfile : AzureCdnCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRMCdnProfile", ConfirmImpact = ConfirmImpact.None), OutputType(typeof(PSProfile))]
+    public class GetAzureRmCdnProfile : AzureCdnCmdletBase
     {
         /// <summary>
         /// Gets or sets the profile name.

@@ -12,16 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Management.Automation;
+using System.Net;
 using Microsoft.Azure.Commands.Cdn.Common;
 using Microsoft.Azure.Commands.Cdn.Models.Endpoint;
 using Microsoft.Azure.Commands.Cdn.Properties;
 using Microsoft.Azure.Management.Cdn;
+using Microsoft.Azure.Management.Cdn.Models;
 
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
-    [Cmdlet("Purge", "AzureCdnEndpointContent", ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(bool))]
-    public class PurgeAzureCdnEndpointContent : AzureCdnCmdletBase
+    [Cmdlet(VerbsCommon.Remove, "AzureRmCdnEndpoint", ConfirmImpact = ConfirmImpact.High, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    public class RemoveAzureCdnEndpoint : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure Cdn endpoint name.")]
         [ValidateNotNullOrEmpty]
@@ -35,13 +38,9 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The endpoint.", ParameterSetName = ObjectParameterSet)]
+        [Parameter(Mandatory = true, ParameterSetName = ObjectParameterSet, ValueFromPipeline = true, HelpMessage = "The endpoint.")]
         [ValidateNotNull]
         public PSEndpoint CdnEndpoint { get; set; }
-
-        [Parameter(Mandatory = true, HelpMessage = "The resource group of the Azure Cdn Profile")]
-        [ValidateCount(Constants.PurgeLoadMinimumCollectionCount, Constants.PurgeLoadMaximumCollectionCount)]
-        public string[] PurgeContent { get; set; } 
 
         public override void ExecuteCmdlet()
         {
@@ -52,8 +51,35 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
                 EndpointName = CdnEndpoint.Name;
             }
 
-            CdnManagementClient.Endpoints.PurgeContent(EndpointName, ProfileName, ResourceGroupName, PurgeContent);
-            WriteVerbose(Resources.Success);
+            try
+            {
+                CdnManagementClient.Endpoints.Get(EndpointName, ProfileName, ResourceGroupName);
+            }
+            catch (AggregateException exception)
+            {
+                var errorResponseException = exception.InnerException as ErrorResponseException;
+                if (errorResponseException == null)
+                {
+                    throw;
+                }
+
+                if (errorResponseException.Response.StatusCode.Equals(HttpStatusCode.NotFound))
+                {
+                    throw new PSArgumentException(string.Format(
+                        Resources.Error_DeleteNonExistingEndpoint,
+                        EndpointName,
+                        ProfileName,
+                        ResourceGroupName));
+                }
+            }
+
+            if(!ShouldProcess(string.Format(Resources.Confirm_RemoveEndpoint, EndpointName, ProfileName, ResourceGroupName)))
+            {
+                return;
+            }
+
+            CdnManagementClient.Endpoints.DeleteIfExists(EndpointName, ProfileName, ResourceGroupName);
+
             WriteObject(true);
         }
     }

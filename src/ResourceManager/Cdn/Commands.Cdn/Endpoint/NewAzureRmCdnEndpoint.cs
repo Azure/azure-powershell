@@ -26,8 +26,8 @@ using Microsoft.Azure.Management.Cdn.Models;
 
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
-    [Cmdlet(VerbsCommon.New, "AzureCdnEndpoint", ConfirmImpact = ConfirmImpact.None), OutputType(typeof(PSEndpoint))]
-    public class NewAzureCdnEndpoint : AzureCdnCmdletBase
+    [Cmdlet(VerbsCommon.New, "AzureRmCdnEndpoint", ConfirmImpact = ConfirmImpact.None), OutputType(typeof(PSEndpoint))]
+    public class NewAzureRmCdnEndpoint : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "Azure Cdn endpoint name.")]
         [ValidateNotNullOrEmpty]
