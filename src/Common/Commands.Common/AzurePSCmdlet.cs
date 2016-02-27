@@ -327,12 +327,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
-        protected new void WriteInformation(object text, string[] tags)
-        {
-            FlushDebugMessages();
-            base.WriteInformation(text, tags);
-        }
-
         protected new void WriteVerbose(string text)
         {
             FlushDebugMessages();
