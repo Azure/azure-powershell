@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     },
                 };
 
-                Guid operationId = AzureBackupClient.BackupTriggerRestore(RecoveryPoint.ResourceGroupName, RecoveryPoint.ResourceName, RecoveryPoint.ContainerUniqueName, RecoveryPoint.ItemName, RecoveryPoint.RecoveryPointName, csmRestoreRequest);
+                Guid operationId = AzureBackupClient.TriggerRestore(RecoveryPoint.ResourceGroupName, RecoveryPoint.ResourceName, RecoveryPoint.ContainerUniqueName, RecoveryPoint.ItemName, RecoveryPoint.RecoveryPointName, csmRestoreRequest);
                 WriteDebug(string.Format(Resources.TriggeringRestore, operationId));
 
                 var operationStatus = TrackOperation(RecoveryPoint.ResourceGroupName, RecoveryPoint.ResourceName, operationId);

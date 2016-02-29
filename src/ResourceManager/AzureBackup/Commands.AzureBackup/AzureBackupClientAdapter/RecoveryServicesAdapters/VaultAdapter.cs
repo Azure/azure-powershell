@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using System;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.AzureBackup.Client
+namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
 {
-    public partial class HydraClient
+    public partial class AzureRsClientAdapter
     {
     }
 }

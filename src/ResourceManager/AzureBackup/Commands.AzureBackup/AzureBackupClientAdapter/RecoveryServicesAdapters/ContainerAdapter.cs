@@ -12,22 +12,34 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using System;
+using System.Management.Automation;
 using System.Collections.Generic;
+using System.Xml;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
+using System.Threading;
+using Hyak.Common;
+using Microsoft.Azure.Commands.AzureBackup.Properties;
+using System.Net;
+using System.Linq;
+using Microsoft.WindowsAzure.Management.Scheduler;
+using Microsoft.Azure.Commands.AzureBackup.Models;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
-namespace Microsoft.Azure.Commands.AzureBackup.Client
+namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
 {
-    public partial class HydraClient
+    public partial class AzureRsClientAdapter
     {
         /// <summary>
         /// Fetches protection containers in the vault according to the query params
         /// </summary>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public IEnumerable<ProtectionContainerResource> RecoveryServicesListContainers(string resourceGroupName, string resourceName, ProtectionContainerListQueryParams queryParams)
+        public IEnumerable<ProtectionContainerResource> ListContainers(string resourceGroupName, string resourceName, ProtectionContainerListQueryParams queryParams)
         {
-            var listResponse = RecoveryServicesBmsAdapter.Client.Container.ListAsync(resourceGroupName, resourceName, queryParams,
-                RecoveryServicesBmsAdapter.GetCustomRequestHeaders(), RecoveryServicesBmsAdapter.CmdletCancellationToken).Result;
+            var listResponse = AzureRSClient.Container.ListAsync(resourceGroupName, resourceName, queryParams, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
             return listResponse.ItemList.ProtectionContainers;
         }
 
@@ -35,11 +47,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Client
         /// Triggers refresh of container catalog in service
         /// </summary>
         /// <returns></returns>
-        public BaseRecoveryServicesJobResponse RecoveryServicesRefreshContainers(string resourceGroupName, string resourceName)
+        public BaseRecoveryServicesJobResponse RefreshContainers(string resourceGroupName, string resourceName)
         {
-            var response = RecoveryServicesBmsAdapter.Client.Container.RefreshAsync(
-                resourceGroupName, resourceName,
-                RecoveryServicesBmsAdapter.GetCustomRequestHeaders(), AzureFabricName, RecoveryServicesBmsAdapter.CmdletCancellationToken).Result;
+            var response = AzureRSClient.Container.RefreshAsync(resourceGroupName, resourceName, GetCustomRequestHeaders(), AzureFabricName, CmdletCancellationToken).Result;
             return response;
         }
     }

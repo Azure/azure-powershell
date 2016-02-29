@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     Name = JobId
                 };
 
-                var jobsList = AzureBackupClient.BackupListJobs(Vault.ResourceGroupName, Vault.Name, queryParams);
+                var jobsList = AzureBackupClient.ListJobs(Vault.ResourceGroupName, Vault.Name, queryParams);
                 List<AzureRMBackupJob> retrievedJobs = new List<AzureRMBackupJob>();
 
                 foreach (Mgmt.CSMJobResponse serviceJob in jobsList)

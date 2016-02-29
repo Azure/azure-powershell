@@ -37,12 +37,12 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 if (Name != null)
                 {
-                    var policyInfo = AzureBackupClient.BackupGetProtectionPolicyByName(RecoveryServicesVault.ResourceGroupName, RecoveryServicesVault.Name, Name);
+                    var policyInfo = AzureBackupClient.GetProtectionPolicyByName(RecoveryServicesVault.ResourceGroupName, RecoveryServicesVault.Name, Name);
                     WriteObject(ProtectionPolicyHelpers.GetCmdletPolicy(RecoveryServicesVault, policyInfo));
                 }
                 else
                 {
-                    var policyObjects = AzureBackupClient.BackupListProtectionPolicies(RecoveryServicesVault.ResourceGroupName, RecoveryServicesVault.Name);
+                    var policyObjects = AzureBackupClient.ListProtectionPolicies(RecoveryServicesVault.ResourceGroupName, RecoveryServicesVault.Name);
                     WriteObject(ProtectionPolicyHelpers.GetCmdletPolicies(RecoveryServicesVault, policyObjects));
                 }
             });

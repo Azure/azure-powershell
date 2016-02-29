@@ -472,38 +472,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Initialized Azure Backup BMS Client, ClientRequestId: {0}, ResourceGroupName: {1}, ResourceName : {2}.
-        /// </summary>
-        internal static string InitializingBackupBmsClient {
-            get {
-                return ResourceManager.GetString("InitializingBackupBmsClient", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Initialized Azure Backup Id Mgmt Client, ClientRequestId: {0}, ResourceGroupName: {1}, ResourceName : {2}.
-        /// </summary>
-        internal static string InitializingBackupIdmClient {
-            get {
-                return ResourceManager.GetString("InitializingBackupIdmClient", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Initialized AzureBackup Cmdlet, ClientRequestId: {0}, ResourceGroupName: {1}, ResourceName : {2}.
         /// </summary>
         internal static string InitializingClient {
             get {
                 return ResourceManager.GetString("InitializingClient", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Initialized Azure Recovery Services BMS Client, ClientRequestId: {0}, ResourceGroupName: {1}, ResourceName : {2}.
-        /// </summary>
-        internal static string InitializingRecoveryServicesBmsClient {
-            get {
-                return ResourceManager.GetString("InitializingRecoveryServicesBmsClient", resourceCulture);
             }
         }
         

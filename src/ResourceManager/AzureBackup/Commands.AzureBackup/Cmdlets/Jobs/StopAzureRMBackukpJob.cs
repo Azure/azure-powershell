@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 }
 
                 WriteDebug(String.Format(Resources.JobId, JobID));
-                Guid cancelTaskId = AzureBackupClient.BackupTriggerCancelJob(Vault.ResourceGroupName, Vault.Name, JobID);
+                Guid cancelTaskId = AzureBackupClient.TriggerCancelJob(Vault.ResourceGroupName, Vault.Name, JobID);
 
                 if (cancelTaskId == Guid.Empty)
                 {

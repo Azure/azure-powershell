@@ -134,21 +134,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HydraClient\BackupIdm\ContainerAPIs.cs" />
-    <Compile Include="HydraClient\ClientAdapterBase.cs" />
-    <Compile Include="HydraClient\ClientAdapter.cs" />
-    <Compile Include="HydraClient\BackupBms\ContainerAPIs.cs" />
-    <Compile Include="HydraClient\BackupBms\ItemAPIs.cs" />
-    <Compile Include="HydraClient\BackupBms\JobAPIs.cs" />
-    <Compile Include="HydraClient\BackupBms\OperationStatusAPIs.cs" />
-    <Compile Include="HydraClient\BackupBms\PolicyAPIs.cs" />
-    <Compile Include="HydraClient\BackupIdm\VaultAPIs.cs" />
-    <Compile Include="HydraClient\HydraClient.cs" />
-    <Compile Include="HydraClient\RecoveryServicesBms\ContainerAPIs.cs" />
-    <Compile Include="HydraClient\RecoveryServicesBms\ItemAPIs.cs" />
-    <Compile Include="HydraClient\RecoveryServicesBms\JobAPIs.cs" />
-    <Compile Include="HydraClient\RecoveryServicesBms\OperationStatusAPIs.cs" />
-    <Compile Include="HydraClient\RecoveryServicesBms\PolicyAPIs.cs" />
+    <Compile Include="AzureBackupClientAdapter\AzureRsClientAdapter.cs" />
+    <Compile Include="AzureBackupClientAdapter\ClientAdapterBase.cs" />
+    <Compile Include="AzureBackupClientAdapter\AzureBackupClientAdapter.cs" />
+    <Compile Include="AzureBackupClientAdapter\BackupAdapters\ContainerAdapter.cs" />
+    <Compile Include="AzureBackupClientAdapter\BackupAdapters\ItemAdapter.cs" />
+    <Compile Include="AzureBackupClientAdapter\BackupAdapters\JobAdapter.cs" />
+    <Compile Include="AzureBackupClientAdapter\BackupAdapters\OperationStatusAdapter.cs" />
+    <Compile Include="AzureBackupClientAdapter\BackupAdapters\PolicyAdapter.cs" />
+    <Compile Include="AzureBackupClientAdapter\BackupAdapters\VaultAdapter.cs" />
+    <Compile Include="AzureBackupClientAdapter\RecoveryServicesAdapters\ContainerAdapter.cs" />
+    <Compile Include="AzureBackupClientAdapter\RecoveryServicesAdapters\ItemAdapter.cs" />
+    <Compile Include="AzureBackupClientAdapter\RecoveryServicesAdapters\JobAdapter.cs" />
+    <Compile Include="AzureBackupClientAdapter\RecoveryServicesAdapters\OperationStatusAdapter.cs" />
+    <Compile Include="AzureBackupClientAdapter\RecoveryServicesAdapters\PolicyAdapter.cs" />
+    <Compile Include="AzureBackupClientAdapter\RecoveryServicesAdapters\VaultAdapter.cs" />
     <Compile Include="AzureBackupContainerCmdletBase.cs" />
     <Compile Include="AzureBackupDSCmdletBase.cs" />
     <Compile Include="AzureBackupItemCmdletBase.cs" />

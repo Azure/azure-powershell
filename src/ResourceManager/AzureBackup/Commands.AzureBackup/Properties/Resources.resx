@@ -523,13 +523,4 @@ Please contact Microsoft for further assistant.</value>
   <data name="BlockUnregistrationForRsVault" xml:space="preserve">
     <value>Warning! Do not use Unregister-AzureRMBackupContainer with Azure VMs. Use Disable-AzureRMBackupProtection to directly disable backup for Azure VMs.</value>
   </data>
-  <data name="InitializingBackupBmsClient" xml:space="preserve">
-    <value>Initialized Azure Backup BMS Client, ClientRequestId: {0}, ResourceGroupName: {1}, ResourceName : {2}</value>
-  </data>
-  <data name="InitializingBackupIdmClient" xml:space="preserve">
-    <value>Initialized Azure Backup Id Mgmt Client, ClientRequestId: {0}, ResourceGroupName: {1}, ResourceName : {2}</value>
-  </data>
-  <data name="InitializingRecoveryServicesBmsClient" xml:space="preserve">
-    <value>Initialized Azure Recovery Services BMS Client, ClientRequestId: {0}, ResourceGroupName: {1}, ResourceName : {2}</value>
-  </data>
 </root>

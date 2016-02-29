@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
+using Microsoft.Azure.Commands.AzureBackup.ClientAdapter;
 using Microsoft.Azure.Commands.AzureBackup.Models;
 using Microsoft.Azure.Commands.AzureBackup.Properties;
 using Microsoft.Azure.Common.Authentication;
@@ -28,22 +29,24 @@ using System.Net;
 using System.Threading;
 using CmdletModel = Microsoft.Azure.Commands.AzureBackup.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Commands.AzureBackup.Client;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     public abstract class AzureBackupCmdletBase : AzureRMCmdlet
     {
-        HydraClient hydraClient;
+        /// <summary>
+        /// Azure backup client.
+        /// </summary>
+        private AzureBackupClientAdapter azureBackupClientAdapter;
 
         /// <summary>
         /// Get Azure backup client.
         /// </summary>
-        protected HydraClient AzureBackupClient
+        protected AzureBackupClientAdapter AzureBackupClient
         {
             get
             {
-                return this.hydraClient;
+                return this.azureBackupClientAdapter;
             }
         }
 
@@ -55,11 +58,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         protected void InitializeAzureBackupCmdlet(string rgName, string rName)
         {
             var cloudServicesClient = AzureSession.ClientFactory.CreateClient<CloudServiceManagementClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
-            hydraClient = new HydraClient(cloudServicesClient.Credentials, cloudServicesClient.BaseUri);
+            azureBackupClientAdapter = new AzureBackupClientAdapter(cloudServicesClient.Credentials, cloudServicesClient.BaseUri);
 
-            WriteDebug(string.Format(Resources.InitializingBackupBmsClient, hydraClient.GetBackupBmsClientRequestId(), rgName, rName));
-            WriteDebug(string.Format(Resources.InitializingBackupIdmClient, hydraClient.GetBackupIdmClientRequestId(), rgName, rName));
-            WriteDebug(string.Format(Resources.InitializingRecoveryServicesBmsClient, hydraClient.GetRecoveryServicesBmsClientRequestId(), rgName, rName));
+            WriteDebug(string.Format(Resources.InitializingClient, azureBackupClientAdapter.GetClientRequestId(), rgName, rName));
         }
 
         /// <summary>
@@ -148,7 +149,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         /// <returns></returns>
         internal CSMOperationResult GetOperationStatus(string resourceGroupName, string resourceName, Guid operationId)
         {
-            return AzureBackupClient.BackupGetOperationStatus(resourceGroupName, resourceName, operationId.ToString());
+            return AzureBackupClient.GetOperationStatus(resourceGroupName, resourceName, operationId.ToString());
         }
 
         private const int defaultOperationStatusRetryTimeInMilliSec = 10 * 1000; // 10 sec
@@ -185,7 +186,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
             foreach (string jobId in jobIds)
             {
-                CSMJobDetailsResponse job = AzureBackupClient.BackupGetJobDetails(resourceGroupName, resourceName, jobId);
+                CSMJobDetailsResponse job = AzureBackupClient.GetJobDetails(resourceGroupName, resourceName, jobId);
                 jobs.Add(new AzureRMBackupJob(vault, job.JobDetailedProperties, job.Name));
             }
 

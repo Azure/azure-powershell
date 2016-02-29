@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.AzureBackup.Helpers;
 using Microsoft.Azure.Management.BackupServices.Models;
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Models
@@ -101,13 +100,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
         {
             ContainerType = ContainerHelpers.GetTypeForManagedContainer(containerInfo.Properties.ContainerType).ToString();
             ContainerUniqueName = containerInfo.Name;
-        }
-
-        public AzureRMBackupContainerContextObject(AzureRMBackupVault vault, ProtectionContainerResource protectionContainer)
-            : base(vault.ResourceGroupName, vault.Name, vault.Region, vault.Type)
-        {
-            ContainerType = AzureBackupContainerType.AzureVM.ToString();
-            ContainerUniqueName = protectionContainer.Name;
         }
     }
 

@@ -17,7 +17,6 @@ using Microsoft.Azure.Commands.AzureBackup.Library;
 using Microsoft.Azure.Commands.AzureBackup.Models;
 using Microsoft.Azure.Commands.AzureBackup.Properties;
 using Microsoft.Azure.Management.BackupServices.Models;
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,20 +52,23 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         {
             ExecutionBlock(() =>
             {
-                base.ExecuteCmdlet();
+                base.ExecuteCmdlet();                
 
                 List<AzureRMBackupContainer> containers = new List<AzureRMBackupContainer>();
 
-                switch (RecoveryServicesVault.Type)
+                switch (Type)
                 {
-                    case VaultType.BackupVault:
-                        GetContainersForBackupVault(containers);
+                    case AzureBackupContainerType.Windows:
+                    case AzureBackupContainerType.SCDPM:
+                    case AzureBackupContainerType.AzureBackupServer:
+                    case AzureBackupContainerType.Other:
+                        containers.AddRange(GetMachineContainers(RecoveryServicesVault.ResourceGroupName, RecoveryServicesVault.Name));
                         break;
-                    case VaultType.ARSVault:
-                        GetContainersForRsVault(containers);
+                    case AzureBackupContainerType.AzureVM:
+                        containers.AddRange(GetManagedContainers(RecoveryServicesVault.ResourceGroupName, RecoveryServicesVault.Name));
                         break;
                     default:
-                        throw new Exception(Resources.UnkownVaultType);
+                        break;
                 }
 
                 if (containers.Count == 1)
@@ -78,47 +80,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     WriteObject(containers);
                 }
             });
-        }
-
-        private void GetContainersForRsVault(List<AzureRMBackupContainer> containers)
-        {
-            ProtectionContainerListQueryParams queryParams = new ProtectionContainerListQueryParams();
-            queryParams.ProviderType = ProviderType.AzureIaasVM.ToString();
-            queryParams.FriendlyName = Name;
-            if (Status != 0)
-            {
-                queryParams.RegistrationStatus = Status.ToString();
-            }
-            
-            List<ProtectionContainerResource> protectionContainers = new List<ProtectionContainerResource>();
-            protectionContainers.AddRange(AzureBackupClient.RecoveryServicesListContainers(RecoveryServicesVault.ResourceGroupName, RecoveryServicesVault.Name, queryParams));
-            WriteDebug(string.Format(Resources.FetchedContainer, containers.Count()));
-            
-            // TODO: Apply rg name based filtering
-
-            containers.AddRange(protectionContainers.ConvertAll(
-                protectionContainer =>
-                {
-                    return new AzureRMBackupContainer(RecoveryServicesVault, protectionContainer);
-                }));
-        }
-
-        private void GetContainersForBackupVault(List<AzureRMBackupContainer> containers)
-        {
-            switch (Type)
-            {
-                case AzureBackupContainerType.Windows:
-                case AzureBackupContainerType.SCDPM:
-                case AzureBackupContainerType.AzureBackupServer:
-                case AzureBackupContainerType.Other:
-                    containers.AddRange(GetMachineContainers(RecoveryServicesVault.ResourceGroupName, RecoveryServicesVault.Name));
-                    break;
-                case AzureBackupContainerType.AzureVM:
-                    containers.AddRange(GetManagedContainers(RecoveryServicesVault.ResourceGroupName, RecoveryServicesVault.Name));
-                    break;
-                default:
-                    break;
-            }
         }
 
         private List<AzureRMBackupContainer> GetMachineContainers(string resourceGroupName, string resourceName)
@@ -164,8 +125,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             }
 
             List<CSMContainerResponse> containers = new List<CSMContainerResponse>();
-            containers.AddRange(AzureBackupClient.BackupListContainers(resourceGroupName, resourceName, parameters));
-            WriteDebug(string.Format(Resources.FetchedContainer, containers.Count()));
+            containers.AddRange(AzureBackupClient.ListContainers(resourceGroupName, resourceName, parameters));
+            WriteDebug(string.Format(Resources.FetchedContainer , containers.Count()));
 
             // When resource group name is specified, remove all containers whose resource group name
             // doesn't match the given resource group name

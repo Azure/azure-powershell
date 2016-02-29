@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         private void UnregisterContainer()
         {
             string containerUniqueName = Container.ContainerUniqueName;
-            var operationId = AzureBackupClient.BackupUnRegisterContainer(Container.ResourceGroupName, Container.ResourceName, containerUniqueName);
+            var operationId = AzureBackupClient.UnRegisterContainer(Container.ResourceGroupName, Container.ResourceName, containerUniqueName);
 
             WriteObject(GetCreatedJobs(Container.ResourceGroupName,
                 Container.ResourceName,

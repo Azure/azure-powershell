@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
             //Container is discovered. Register the container
             WriteDebug(String.Format(Resources.RegisteringVM, vmName));
-            var operationId = AzureBackupClient.BackupRegisterContainer(RecoveryServicesVault.ResourceGroupName, RecoveryServicesVault.Name, container.Name);
+            var operationId = AzureBackupClient.RegisterContainer(RecoveryServicesVault.ResourceGroupName, RecoveryServicesVault.Name, container.Name);
 
             var operationStatus = GetOperationStatus(RecoveryServicesVault.ResourceGroupName, RecoveryServicesVault.Name, operationId);
             WriteObject(GetCreatedJobs(RecoveryServicesVault.ResourceGroupName, RecoveryServicesVault.Name, RecoveryServicesVault, operationStatus.JobList).FirstOrDefault());
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             string errorMessage = string.Empty;
             while (isRetryNeeded && retryCount <= 3)
             {
-                var operationId = AzureBackupClient.BackupRefreshContainers(resourceGroupName, resourceName);
+                var operationId = AzureBackupClient.RefreshContainers(resourceGroupName, resourceName);
 
                 //Now wait for the operation to Complete               
                 isRetryNeeded = WaitForDiscoveryToComplete(resourceGroupName, resourceName, operationId, out isDiscoverySuccessful, out errorMessage);
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             };
 
             //First check if container is discovered or not            
-            var containers = AzureBackupClient.BackupListContainers(RecoveryServicesVault.ResourceGroupName, RecoveryServicesVault.Name, parameters);
+            var containers = AzureBackupClient.ListContainers(RecoveryServicesVault.ResourceGroupName, RecoveryServicesVault.Name, parameters);
             WriteDebug(String.Format(Resources.ContainerCountFromService, containers.Count()));
             if (containers.Count() == 0)
             {
