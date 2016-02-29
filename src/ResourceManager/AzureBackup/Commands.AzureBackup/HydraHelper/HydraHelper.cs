@@ -24,8 +24,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Client
     {
         const string AzureFabricName = "AzureIaasVM";
         const string RecoveryServicesResourceNamespace = "Microsoft.RecoveryServices";
-        const string AppSettingsSectionName = "appSettings";
-        const string ProviderNamespaceKey = "ProviderNamespace";
 
         public ClientAdapter<BackupServicesNS.BackupServicesManagementClient, BackupServicesModelsNS.CustomRequestHeaders> BackupBmsAdapter;
 
@@ -43,16 +41,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Client
                 clientRequestId => new BackupServicesModelsNS.CustomRequestHeaders() { ClientRequestId = clientRequestId },
                 creds, baseUri);
 
-            System.Configuration.Configuration exeConfiguration = System.Configuration.ConfigurationManager.OpenExeConfiguration(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            System.Configuration.AppSettingsSection appSettings = (System.Configuration.AppSettingsSection)exeConfiguration.GetSection(AppSettingsSectionName);
-            string recoveryServicesResourceNamespace = RecoveryServicesResourceNamespace;
-            if (appSettings.Settings[ProviderNamespaceKey] != null)
-            {
-                recoveryServicesResourceNamespace = appSettings.Settings[ProviderNamespaceKey].Value;
-            }
+            // TODO: See if we can take RecoveryServicesResourceNamespace from a config file
             RecoveryServicesBmsAdapter = new ClientAdapter<RecoveryServicesNS.RecoveryServicesBackupManagementClient, RecoveryServicesModelsNS.CustomRequestHeaders>(
                 clientRequestId => new RecoveryServicesModelsNS.CustomRequestHeaders() { ClientRequestId = clientRequestId },
-                recoveryServicesResourceNamespace, creds, baseUri);
+                RecoveryServicesResourceNamespace, creds, baseUri);
         }
 
         public string GetBackupBmsClientRequestId()

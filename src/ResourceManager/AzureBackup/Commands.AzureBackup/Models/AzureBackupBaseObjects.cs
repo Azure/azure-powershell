@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
         public AzureRMBackupContainerContextObject(AzureRMBackupVault vault, ProtectionContainerResource protectionContainer)
             : base(vault.ResourceGroupName, vault.Name, vault.Region, vault.Type)
         {
-            ContainerType = ContainerHelpers.GetContainerType(protectionContainer.Properties.GetType()).ToString();
+            ContainerType = ContainerHelpers.GetContainerType(protectionContainer.GetType()).ToString();
             ContainerUniqueName = protectionContainer.Name;
         }
     }

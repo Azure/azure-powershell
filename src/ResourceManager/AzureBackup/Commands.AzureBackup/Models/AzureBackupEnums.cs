@@ -115,12 +115,4 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
     {
         IaasVM = 0
     }
-
-    public enum ProviderType
-    {
-        Invalid = 0,
-        AzureIaasVM,
-        MAB,
-        DPM,
-    }
 }
