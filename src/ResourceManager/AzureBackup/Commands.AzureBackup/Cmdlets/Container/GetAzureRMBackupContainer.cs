@@ -54,15 +54,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             {
                 base.ExecuteCmdlet();
 
-                if (Vault.Type == VaultType.BackupVault)
-                {
-                    WriteDebug("Incoming Type: BackupVault");
-                }
-                else if (Vault.Type == VaultType.ARSVault)
-                {
-                    WriteDebug("Incoming Type: ARSVault");
-                }
-
                 List<AzureRMBackupContainer> containers = new List<AzureRMBackupContainer>();
 
                 switch (Type)
