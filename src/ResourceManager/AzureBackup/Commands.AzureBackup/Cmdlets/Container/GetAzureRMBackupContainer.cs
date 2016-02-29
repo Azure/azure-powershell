@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 List<AzureRMBackupContainer> containers = new List<AzureRMBackupContainer>();
 
-                switch (CommonPSVault.Type)
+                switch (RecoveryServicesVault.Type)
                 {
                     case VaultType.BackupVault:
                         GetContainersForBackupVault(containers);
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             }
 
             List<ProtectionContainerResource> protectionContainers = new List<ProtectionContainerResource>();
-            protectionContainers.AddRange(CommonHydraHelper.RecoveryServicesListContainers(CommonPSVault.ResourceGroupName, CommonPSVault.Name, queryParams));
+            protectionContainers.AddRange(AzureBackupClient.RecoveryServicesListContainers(RecoveryServicesVault.ResourceGroupName, RecoveryServicesVault.Name, queryParams));
             WriteDebug(string.Format(Resources.FetchedContainer, containers.Count()));
 
             if (!string.IsNullOrEmpty(ManagedResourceGroupName))
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             containers.AddRange(protectionContainers.ConvertAll(
                 protectionContainer =>
                 {
-                    return new AzureRMBackupContainer(CommonPSVault, protectionContainer);
+                    return new AzureRMBackupContainer(RecoveryServicesVault, protectionContainer);
                 }));
         }
 
@@ -119,10 +119,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 case AzureBackupContainerType.SCDPM:
                 case AzureBackupContainerType.AzureBackupServer:
                 case AzureBackupContainerType.Other:
-                    containers.AddRange(GetMachineContainers(CommonPSVault.ResourceGroupName, CommonPSVault.Name));
+                    containers.AddRange(GetMachineContainers(RecoveryServicesVault.ResourceGroupName, RecoveryServicesVault.Name));
                     break;
                 case AzureBackupContainerType.AzureVM:
-                    containers.AddRange(GetManagedContainers(CommonPSVault.ResourceGroupName, CommonPSVault.Name));
+                    containers.AddRange(GetManagedContainers(RecoveryServicesVault.ResourceGroupName, RecoveryServicesVault.Name));
                     break;
                 default:
                     break;
@@ -146,16 +146,16 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
             if (string.IsNullOrEmpty(Name))
             {
-                marsContainerResponses.AddRange(CommonHydraHelper.ListMachineContainers(resourceGroupName, resourceName));
+                marsContainerResponses.AddRange(AzureBackupClient.ListMachineContainers(resourceGroupName, resourceName));
             }
             else
             {
-                marsContainerResponses.AddRange(CommonHydraHelper.ListMachineContainers(resourceGroupName, resourceName, Name));
+                marsContainerResponses.AddRange(AzureBackupClient.ListMachineContainers(resourceGroupName, resourceName, Name));
             }
 
             return marsContainerResponses.ConvertAll<AzureRMBackupContainer>(marsContainerResponse =>
             {
-                return new AzureRMBackupContainer(CommonPSVault, marsContainerResponse);
+                return new AzureRMBackupContainer(RecoveryServicesVault, marsContainerResponse);
             }).Where(container => container.ContainerType == Type.ToString()).ToList();
         }
 
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             }
 
             List<CSMContainerResponse> containers = new List<CSMContainerResponse>();
-            containers.AddRange(CommonHydraHelper.BackupListContainers(resourceGroupName, resourceName, parameters));
+            containers.AddRange(AzureBackupClient.BackupListContainers(resourceGroupName, resourceName, parameters));
             WriteDebug(string.Format(Resources.FetchedContainer, containers.Count()));
 
             // When resource group name is specified, remove all containers whose resource group name
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             // BUG: Friendly name was previously assigned to ResourceName (vault name)
             managedContainers.AddRange(containers.ConvertAll(container =>
             {
-                return new AzureRMBackupContainer(CommonPSVault, container);
+                return new AzureRMBackupContainer(RecoveryServicesVault, container);
             }));
 
             return managedContainers;

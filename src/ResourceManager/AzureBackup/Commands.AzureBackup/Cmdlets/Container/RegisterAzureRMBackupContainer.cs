@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             {
                 base.ExecuteCmdlet();
 
-                switch (CommonPSVault.Type)
+                switch (RecoveryServicesVault.Type)
                 {
                     case VaultType.BackupVault:
                         RegisterToBackupVault();
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             if (isDiscoveryNeed)
             {
                 WriteDebug(String.Format(Resources.VMNotDiscovered, vmName));
-                RefreshContainer(CommonPSVault.ResourceGroupName, CommonPSVault.Name);
+                RefreshContainer(RecoveryServicesVault.ResourceGroupName, RecoveryServicesVault.Name);
                 isDiscoveryNeed = IsDiscoveryNeeded(vmName, rgName, out container);
                 if ((isDiscoveryNeed == true) || (container == null))
                 {
@@ -116,10 +116,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
             //Container is discovered. Register the container
             WriteDebug(String.Format(Resources.RegisteringVM, vmName));
-            var operationId = CommonHydraHelper.BackupRegisterContainer(CommonPSVault.ResourceGroupName, CommonPSVault.Name, container.Name);
+            var operationId = AzureBackupClient.BackupRegisterContainer(RecoveryServicesVault.ResourceGroupName, RecoveryServicesVault.Name, container.Name);
 
-            var operationStatus = GetOperationStatus(CommonPSVault.ResourceGroupName, CommonPSVault.Name, operationId);
-            WriteObject(GetCreatedJobs(CommonPSVault.ResourceGroupName, CommonPSVault.Name, CommonPSVault, operationStatus.JobList).FirstOrDefault());
+            var operationStatus = GetOperationStatus(RecoveryServicesVault.ResourceGroupName, RecoveryServicesVault.Name, operationId);
+            WriteObject(GetCreatedJobs(RecoveryServicesVault.ResourceGroupName, RecoveryServicesVault.Name, RecoveryServicesVault, operationStatus.JobList).FirstOrDefault());
         }
 
         private void RefreshContainer(string resourceGroupName, string resourceName)
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             string errorMessage = string.Empty;
             while (isRetryNeeded && retryCount <= 3)
             {
-                var operationId = CommonHydraHelper.BackupRefreshContainers(resourceGroupName, resourceName);
+                var operationId = AzureBackupClient.BackupRefreshContainers(resourceGroupName, resourceName);
 
                 //Now wait for the operation to Complete               
                 isRetryNeeded = WaitForDiscoveryToComplete(resourceGroupName, resourceName, operationId, out isDiscoverySuccessful, out errorMessage);
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             };
 
             //First check if container is discovered or not            
-            var containers = CommonHydraHelper.BackupListContainers(CommonPSVault.ResourceGroupName, CommonPSVault.Name, parameters);
+            var containers = AzureBackupClient.BackupListContainers(RecoveryServicesVault.ResourceGroupName, RecoveryServicesVault.Name, parameters);
             WriteDebug(String.Format(Resources.ContainerCountFromService, containers.Count()));
             if (containers.Count() == 0)
             {

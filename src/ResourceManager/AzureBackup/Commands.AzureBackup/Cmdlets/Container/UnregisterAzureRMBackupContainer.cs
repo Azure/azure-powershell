@@ -78,13 +78,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         private void DeleteServer()
         {
             ConfirmAction(Force, Resources.UnregisterServerCaption, Resources.UnregisterServerMessage, "", () =>
-                CommonHydraHelper.UnregisterMachineContainer(Container.ResourceGroupName, Container.ResourceName, Container.Id));
+                AzureBackupClient.UnregisterMachineContainer(Container.ResourceGroupName, Container.ResourceName, Container.Id));
         }
 
         private void UnregisterContainer()
         {
             string containerUniqueName = Container.ContainerUniqueName;
-            var operationId = CommonHydraHelper.BackupUnRegisterContainer(Container.ResourceGroupName, Container.ResourceName, containerUniqueName);
+            var operationId = AzureBackupClient.BackupUnRegisterContainer(Container.ResourceGroupName, Container.ResourceName, containerUniqueName);
 
             WriteObject(GetCreatedJobs(Container.ResourceGroupName,
                 Container.ResourceName,

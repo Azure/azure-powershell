@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     Type = GetItemType(this.Type)
                 };
 
-                var azureBackupDatasourceListResponse = CommonHydraHelper.BackupListDataSources(Container.ResourceGroupName, Container.ResourceName, DSQueryParam);
+                var azureBackupDatasourceListResponse = AzureBackupClient.BackupListDataSources(Container.ResourceGroupName, Container.ResourceName, DSQueryParam);
 
                 if (azureBackupDatasourceListResponse != null)
                 {
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 if (this.Status == null)
                 {
-                    var azureBackupPOListResponse = CommonHydraHelper.BackupListProtectableObjects(Container.ResourceGroupName, Container.ResourceName, POQueryParam);
+                    var azureBackupPOListResponse = AzureBackupClient.BackupListProtectableObjects(Container.ResourceGroupName, Container.ResourceName, POQueryParam);
                     if (azureBackupPOListResponse != null)
                     {
                         azureBackupPOObjects = azureBackupPOListResponse.Where(x => x.Properties.ContainerId.Split('/').Last().Equals(Container.ContainerUniqueName, System.StringComparison.InvariantCultureIgnoreCase)).ToList();

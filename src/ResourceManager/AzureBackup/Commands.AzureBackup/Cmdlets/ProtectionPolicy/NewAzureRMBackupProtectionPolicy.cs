@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 WriteDebug("Making client call");
 
                 ProtectionPolicyHelpers.ValidateProtectionPolicyName(Name);
-                CommonHydraHelper.BackupCheckProtectionPolicyNameAvailability(CommonPSVault.ResourceGroupName, CommonPSVault.Name, this.Name);
+                AzureBackupClient.BackupCheckProtectionPolicyNameAvailability(RecoveryServicesVault.ResourceGroupName, RecoveryServicesVault.Name, this.Name);
 
                 var ScheduleType = ProtectionPolicyHelpers.GetScheduleType(DaysOfWeek, this.ParameterSetName,
                                     DailyScheduleParamSet, WeeklyScheduleParamSet);
@@ -87,11 +87,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 addCSMProtectionPolicyRequest.Properties.LtrRetentionPolicy = ProtectionPolicyHelpers.ConvertToCSMRetentionPolicyObject(RetentionPolicy, backupSchedule);
 
-                CommonHydraHelper.BackupAddProtectionPolicy(CommonPSVault.ResourceGroupName, CommonPSVault.Name, this.Name, addCSMProtectionPolicyRequest);
+                AzureBackupClient.BackupAddProtectionPolicy(RecoveryServicesVault.ResourceGroupName, RecoveryServicesVault.Name, this.Name, addCSMProtectionPolicyRequest);
                 WriteDebug(Resources.ProtectionPolicyCreated);
 
-                var policyInfo = CommonHydraHelper.BackupGetProtectionPolicyByName(CommonPSVault.ResourceGroupName, CommonPSVault.Name, Name);
-                WriteObject(ProtectionPolicyHelpers.GetCmdletPolicy(CommonPSVault, policyInfo));
+                var policyInfo = AzureBackupClient.BackupGetProtectionPolicyByName(RecoveryServicesVault.ResourceGroupName, RecoveryServicesVault.Name, Name);
+                WriteObject(ProtectionPolicyHelpers.GetCmdletPolicy(RecoveryServicesVault, policyInfo));
             });
         }
     }

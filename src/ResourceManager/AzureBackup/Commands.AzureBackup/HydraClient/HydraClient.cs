@@ -20,7 +20,7 @@ using System;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Client
 {
-    public partial class HydraHelper
+    public partial class HydraClient
     {
         const string AzureFabricName = "AzureIaasVM";
         const string RecoveryServicesResourceNamespace = "Microsoft.RecoveryServices";
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Client
 
         public ClientAdapter<RecoveryServicesNS.RecoveryServicesBackupManagementClient, RecoveryServicesModelsNS.CustomRequestHeaders> RecoveryServicesBmsAdapter;
 
-        public HydraHelper(SubscriptionCloudCredentials creds, Uri baseUri)
+        public HydraClient(SubscriptionCloudCredentials creds, Uri baseUri)
         {
             BackupBmsAdapter = new ClientAdapter<BackupServicesNS.BackupServicesManagementClient, BackupServicesModelsNS.CustomRequestHeaders>(
                 clientRequestId => new BackupServicesModelsNS.CustomRequestHeaders() { ClientRequestId = clientRequestId },

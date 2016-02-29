@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 WriteDebug(String.Format(Resources.JobIdFilter, JobId));
 
-                Mgmt.CSMJobDetailsResponse serviceJobProperties = CommonHydraHelper.BackupGetJobDetails(Vault.ResourceGroupName, Vault.Name, JobId);
+                Mgmt.CSMJobDetailsResponse serviceJobProperties = AzureBackupClient.BackupGetJobDetails(Vault.ResourceGroupName, Vault.Name, JobId);
                 AzureRMBackupJobDetails jobDetails = new AzureRMBackupJobDetails(Vault, serviceJobProperties.JobDetailedProperties, serviceJobProperties.Name);
 
                 WriteDebug(Resources.JobResponse);

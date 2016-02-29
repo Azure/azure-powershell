@@ -34,12 +34,12 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     public abstract class AzureBackupCmdletBase : AzureRMCmdlet
     {
-        HydraHelper hydraClient;
+        HydraClient hydraClient;
 
         /// <summary>
         /// Get Azure backup client.
         /// </summary>
-        protected HydraHelper CommonHydraHelper
+        protected HydraClient AzureBackupClient
         {
             get
             {
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         protected void InitializeAzureBackupCmdlet(string rgName, string rName)
         {
             var cloudServicesClient = AzureSession.ClientFactory.CreateClient<CloudServiceManagementClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
-            hydraClient = new HydraHelper(cloudServicesClient.Credentials, cloudServicesClient.BaseUri);
+            hydraClient = new HydraClient(cloudServicesClient.Credentials, cloudServicesClient.BaseUri);
 
             WriteDebug(string.Format(Resources.InitializingBackupBmsClient, hydraClient.GetBackupBmsClientRequestId(), rgName, rName));
             WriteDebug(string.Format(Resources.InitializingBackupIdmClient, hydraClient.GetBackupIdmClientRequestId(), rgName, rName));
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         /// <returns></returns>
         internal CSMOperationResult GetOperationStatus(string resourceGroupName, string resourceName, Guid operationId)
         {
-            return CommonHydraHelper.BackupGetOperationStatus(resourceGroupName, resourceName, operationId.ToString());
+            return AzureBackupClient.BackupGetOperationStatus(resourceGroupName, resourceName, operationId.ToString());
         }
 
         private const int defaultOperationStatusRetryTimeInMilliSec = 10 * 1000; // 10 sec
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
             foreach (string jobId in jobIds)
             {
-                CSMJobDetailsResponse job = CommonHydraHelper.BackupGetJobDetails(resourceGroupName, resourceName, jobId);
+                CSMJobDetailsResponse job = AzureBackupClient.BackupGetJobDetails(resourceGroupName, resourceName, jobId);
                 jobs.Add(new AzureRMBackupJob(vault, job.JobDetailedProperties, job.Name));
             }
 

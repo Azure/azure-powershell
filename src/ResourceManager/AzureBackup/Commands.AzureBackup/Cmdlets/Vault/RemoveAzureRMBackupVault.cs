@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 ConfirmAction(Force, Resources.DeleteVaultCaption, Resources.DeleteVaultMessage, "",
                     () =>
                     {
-                        if (!CommonHydraHelper.DeleteVault(CommonPSVault.ResourceGroupName, CommonPSVault.Name))
+                        if (!AzureBackupClient.DeleteVault(RecoveryServicesVault.ResourceGroupName, RecoveryServicesVault.Name))
                         {
                             throw new Exception(Resources.ResourceNotFoundMessage);
                         }

@@ -17,7 +17,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Client
 {
-    public partial class HydraHelper
+    public partial class HydraClient
     {
     }
 }

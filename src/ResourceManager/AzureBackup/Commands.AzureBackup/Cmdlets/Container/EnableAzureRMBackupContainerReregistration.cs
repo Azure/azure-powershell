@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 case AzureBackupContainerType.SCDPM:
                 case AzureBackupContainerType.AzureBackupServer:
                 case AzureBackupContainerType.Other:
-                    CommonHydraHelper.EnableMachineContainerReregistration(Container.ResourceGroupName, Container.ResourceName, Container.Id);
+                    AzureBackupClient.EnableMachineContainerReregistration(Container.ResourceGroupName, Container.ResourceName, Container.Id);
                     break;
                 default:
                     throw new ArgumentException(Resources.CannotEnableRegistration);

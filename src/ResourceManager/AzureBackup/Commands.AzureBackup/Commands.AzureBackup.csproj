@@ -134,21 +134,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HydraHelper\BackupIdm\ContainerAPIs.cs" />
-    <Compile Include="HydraHelper\ClientAdapterBase.cs" />
-    <Compile Include="HydraHelper\ClientAdapter.cs" />
-    <Compile Include="HydraHelper\BackupBms\ContainerAPIs.cs" />
-    <Compile Include="HydraHelper\BackupBms\ItemAPIs.cs" />
-    <Compile Include="HydraHelper\BackupBms\JobAPIs.cs" />
-    <Compile Include="HydraHelper\BackupBms\OperationStatusAPIs.cs" />
-    <Compile Include="HydraHelper\BackupBms\PolicyAPIs.cs" />
-    <Compile Include="HydraHelper\BackupIdm\VaultAPIs.cs" />
-    <Compile Include="HydraHelper\HydraHelper.cs" />
-    <Compile Include="HydraHelper\RecoveryServicesBms\ContainerAPIs.cs" />
-    <Compile Include="HydraHelper\RecoveryServicesBms\ItemAPIs.cs" />
-    <Compile Include="HydraHelper\RecoveryServicesBms\JobAPIs.cs" />
-    <Compile Include="HydraHelper\RecoveryServicesBms\OperationStatusAPIs.cs" />
-    <Compile Include="HydraHelper\RecoveryServicesBms\PolicyAPIs.cs" />
+    <Compile Include="HydraClient\BackupIdm\ContainerAPIs.cs" />
+    <Compile Include="HydraClient\ClientAdapterBase.cs" />
+    <Compile Include="HydraClient\ClientAdapter.cs" />
+    <Compile Include="HydraClient\BackupBms\ContainerAPIs.cs" />
+    <Compile Include="HydraClient\BackupBms\ItemAPIs.cs" />
+    <Compile Include="HydraClient\BackupBms\JobAPIs.cs" />
+    <Compile Include="HydraClient\BackupBms\OperationStatusAPIs.cs" />
+    <Compile Include="HydraClient\BackupBms\PolicyAPIs.cs" />
+    <Compile Include="HydraClient\BackupIdm\VaultAPIs.cs" />
+    <Compile Include="HydraClient\HydraClient.cs" />
+    <Compile Include="HydraClient\RecoveryServicesBms\ContainerAPIs.cs" />
+    <Compile Include="HydraClient\RecoveryServicesBms\ItemAPIs.cs" />
+    <Compile Include="HydraClient\RecoveryServicesBms\JobAPIs.cs" />
+    <Compile Include="HydraClient\RecoveryServicesBms\OperationStatusAPIs.cs" />
+    <Compile Include="HydraClient\RecoveryServicesBms\PolicyAPIs.cs" />
     <Compile Include="AzureBackupContainerCmdletBase.cs" />
     <Compile Include="AzureBackupDSCmdletBase.cs" />
     <Compile Include="AzureBackupItemCmdletBase.cs" />
