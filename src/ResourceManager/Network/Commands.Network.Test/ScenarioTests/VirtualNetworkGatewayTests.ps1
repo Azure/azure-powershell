@@ -14,6 +14,69 @@
 
 <#
 .SYNOPSIS
+Virtual network express route gateway tests
+#>
+function Test-VirtualNetworkExpressRouteGatewayCRUD
+{
+ # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+    $vnetName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $vnetGatewayConfigName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/virtualNetworkGateways"
+    $location = Get-ProviderLocation $resourceTypeParent
+    
+    try 
+     {
+      # Create the resource group
+      $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
+      
+	 
+      # Create the Virtual Network
+      $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
+      $vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+      $vnet = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+      $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
+
+      # Create the publicip
+      $publicip = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel    
+
+      # Create & Get virtualnetworkgateway
+      $vnetIpConfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
+
+      $actual = New-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType ExpressRoute 
+      $expected = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+      Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
+      Assert-AreEqual $expected.Name $actual.Name	
+      #Assert-AreEqual "ExpressRoute" $expected.GatewayType
+      
+      # List virtualNetworkGateways
+      $list = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname
+      Assert-AreEqual 1 @($list).Count
+      Assert-AreEqual $list[0].ResourceGroupName $actual.ResourceGroupName	
+      Assert-AreEqual $list[0].Name $actual.Name	
+      Assert-AreEqual $list[0].Location $actual.Location
+      
+      # Delete virtualNetworkGateway
+      $delete = Remove-AzureRmVirtualNetworkGateway -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force
+      Assert-AreEqual true $delete
+      
+      $list = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $actual.ResourceGroupName
+      Assert-AreEqual 0 @($list).Count
+
+     }
+     finally
+     {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+     }
+}
+
+<#
+.SYNOPSIS
 Virtual network gateway tests
 #>
 function Test-VirtualNetworkGatewayCRUD

@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Network
             return psExpressRouteCircuit;
         }
 
-        public PSExpressRouteCircuit ToPsExpressRouteCircuit(ExpressRouteCircuit circuit)
+        public PSExpressRouteCircuit ToPsExpressRouteCircuit(Management.Network.Models.ExpressRouteCircuit circuit)
         {
             var psCircuit = Mapper.Map<PSExpressRouteCircuit>(circuit);
 
