@@ -45,15 +45,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
         [Parameter(Position = 6, Mandatory = false, HelpMessage = "Virtual network gateway BGP speaker's ASN")]
         public uint Asn { get; set; }
 
-        [Parameter(Position = 7, Mandatory = false, HelpMessage = "Virtual network gateway BGP speaker's IP/BGP identifier")]
-        public string BgpPeeringAddress { get; set; }
-
-        [Parameter(Position = 8, Mandatory = false, HelpMessage = "Weight for routes learned from this BGP speaker")]
+        [Parameter(Position = 7, Mandatory = false, HelpMessage = "Weight for routes learned from this BGP speaker")]
         public int PeerWeight { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            WriteObject(Client.CreateVirtualNetworkGateway(VNetName, GatewayName, GatewayType, GatewaySKU, Location, VnetId, Asn, BgpPeeringAddress, PeerWeight));
+            WriteObject(Client.CreateVirtualNetworkGateway(VNetName, GatewayName, GatewayType, GatewaySKU, Location, VnetId, Asn, PeerWeight));
         }
     }
 }

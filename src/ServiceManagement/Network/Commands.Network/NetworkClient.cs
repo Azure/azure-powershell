@@ -1096,10 +1096,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
                 VnetId = response.VnetId,
                 SubnetId = response.SubnetId,
                 EnableBgp = response.EnableBgp.ToString(),
-                Asn = response.BgpSettings.Asn,
-                BgpPeeringAddress = response.BgpSettings.BgpPeeringAddress,
-                PeerWeight = response.BgpSettings.PeerWeight,
             };
+
+            if(response.BgpSettings != null)
+            {
+                gatewayContext.Asn = response.BgpSettings.Asn;
+                gatewayContext.BgpPeeringAddress = response.BgpSettings.BgpPeeringAddress;
+                gatewayContext.PeerWeight = response.BgpSettings.PeerWeight;
+            }
             PopulateOperationContext(response.RequestId, gatewayContext);
 
             return gatewayContext;
@@ -1148,10 +1152,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
                 GatewayName = response.GatewayName,
                 IpAddress = response.IpAddress,
                 AddressSpace = response.AddressSpace.ToList(),
-                Asn = response.BgpSettings.Asn,
-                BgpPeeringAddress = response.BgpSettings.BgpPeeringAddress,
-                PeerWeight = response.BgpSettings.PeerWeight,
             };
+
+            if(response.BgpSettings != null)
+            {
+                gatewayContext.Asn = response.BgpSettings.Asn;
+                gatewayContext.BgpPeeringAddress = response.BgpSettings.BgpPeeringAddress;
+                gatewayContext.PeerWeight = response.BgpSettings.PeerWeight;
+            }
+
             PopulateOperationContext(response.RequestId, gatewayContext);
 
             return gatewayContext;
@@ -1202,6 +1211,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
                         VnetId = virtualNetworkGateway.VnetId,
                         SubnetId = virtualNetworkGateway.SubnetId,
                         EnableBgp = virtualNetworkGateway.EnableBgp.ToString(),
+                        Asn = virtualNetworkGateway.BgpSettings != null ? virtualNetworkGateway.BgpSettings.Asn : 0,
+                        BgpPeeringAddress = virtualNetworkGateway.BgpSettings != null ? virtualNetworkGateway.BgpSettings.BgpPeeringAddress : "",
+                        PeerWeight = virtualNetworkGateway.BgpSettings != null ? virtualNetworkGateway.BgpSettings.PeerWeight : 0
                     };
                 });
             PopulateOperationContext(response.RequestId, virtualNetworkGateways);
@@ -1260,7 +1272,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
         }
 
         public GatewayGetOperationStatusResponse CreateVirtualNetworkGateway(string vnetName, string gatewayName, string gatewayType, string gatewaySKU, string location, string vnetId,
-            uint Asn, string BgpPeeringAddress, int PeerWeight)
+            uint Asn, int PeerWeight)
         {
             VirtualNetworkGatewayCreateParameters parameters = new VirtualNetworkGatewayCreateParameters()
             {
@@ -1269,9 +1281,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
                 GatewayType = gatewayType,
                 Location = location,
                 VnetId = vnetId,
-                BgpSettings = Asn > 0?new BgpSettings {
+                BgpSettings = (Asn > 0 || PeerWeight > 0)?new BgpSettings {
                     Asn = Asn,
-                    BgpPeeringAddress = BgpPeeringAddress,
+                    BgpPeeringAddress = "", // We don't allow changing the gateway's BgpPeeringAddress
                     PeerWeight = PeerWeight
                 }:null,
             };
@@ -1379,7 +1391,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
             UpdateLocalNetworkGatewayParameters parameters = new UpdateLocalNetworkGatewayParameters()
             {
                 AddressSpace = addressSpace,
-                BgpSettings = Asn > 0?new BgpSettings {
+                BgpSettings = (Asn > 0 || PeerWeight > 0 || ! string.IsNullOrEmpty(BgpPeeringAddress))?new BgpSettings {
                     Asn = Asn,
                     BgpPeeringAddress = BgpPeeringAddress,
                     PeerWeight = PeerWeight,

@@ -48,11 +48,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
         public string VirtualNetworkGatewayId { get; set; }
 
         [Parameter(Position = 6, Mandatory = false, HelpMessage = "Whether to establish a BGP session over this connection")]
-        public bool EnableBgp { get; set; }
+        public string EnableBgp { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            WriteObject(Client.CreateVirtualNetworkGatewayConnection(ConnectedEntityId, GatewayConnectionName, GatewayConnectionType, RoutingWeight, SharedKey, Guid.Parse(VirtualNetworkGatewayId), EnableBgp));
+            WriteObject(Client.CreateVirtualNetworkGatewayConnection(ConnectedEntityId, GatewayConnectionName, GatewayConnectionType, RoutingWeight, SharedKey, Guid.Parse(VirtualNetworkGatewayId), bool.Parse(EnableBgp)));
         }
     }
 }
