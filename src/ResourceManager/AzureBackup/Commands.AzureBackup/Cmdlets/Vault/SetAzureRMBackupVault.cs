@@ -45,11 +45,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 {
                     WriteDebug(String.Format(Resources.SettingStorageType, Storage));
 
-                    AzureBackupClient.UpdateStorageType(BackupVault.ResourceGroupName, BackupVault.Name, Storage.ToString());
+                    AzureBackupClient.UpdateStorageType(Vault.ResourceGroupName, Vault.Name, Storage.ToString());
                 }
 
-                var backupVault = AzureBackupClient.GetVault(BackupVault.ResourceGroupName, BackupVault.Name);
-                WriteObject(VaultHelpers.GetCmdletVault(backupVault, AzureBackupClient.GetStorageTypeDetails(BackupVault.ResourceGroupName, BackupVault.Name)));
+                var backupVault = AzureBackupClient.GetVault(Vault.ResourceGroupName, Vault.Name);
+                WriteObject(VaultHelpers.GetCmdletVault(backupVault, AzureBackupClient.GetStorageTypeDetails(Vault.ResourceGroupName, Vault.Name)));
             });
         }
     }

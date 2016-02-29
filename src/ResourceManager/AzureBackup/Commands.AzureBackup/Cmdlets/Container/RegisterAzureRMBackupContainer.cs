@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 if(isDiscoveryNeed)
                 {
                     WriteDebug(String.Format(Resources.VMNotDiscovered, vmName));
-                    RefreshContainer(BackupVault.ResourceGroupName, BackupVault.Name);
+                    RefreshContainer(Vault.ResourceGroupName, Vault.Name);
                     isDiscoveryNeed = IsDiscoveryNeeded(vmName, rgName, out container);
                     if ((isDiscoveryNeed == true) || (container == null))
                     {
@@ -100,10 +100,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 //Container is discovered. Register the container
                 WriteDebug(String.Format(Resources.RegisteringVM, vmName));
-                var operationId = AzureBackupClient.RegisterContainer(BackupVault.ResourceGroupName, BackupVault.Name, container.Name);
+                var operationId = AzureBackupClient.RegisterContainer(Vault.ResourceGroupName, Vault.Name, container.Name);
 
-                var operationStatus = GetOperationStatus(BackupVault.ResourceGroupName, BackupVault.Name, operationId);
-                WriteObject(GetCreatedJobs(BackupVault.ResourceGroupName, BackupVault.Name, BackupVault, operationStatus.JobList).FirstOrDefault());
+                var operationStatus = GetOperationStatus(Vault.ResourceGroupName, Vault.Name, operationId);
+                WriteObject(GetCreatedJobs(Vault.ResourceGroupName, Vault.Name, Vault, operationStatus.JobList).FirstOrDefault());
             });
         }
 
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             };
 
             //First check if container is discovered or not            
-            var containers = AzureBackupClient.ListContainers(BackupVault.ResourceGroupName, BackupVault.Name, parameters);
+            var containers = AzureBackupClient.ListContainers(Vault.ResourceGroupName, Vault.Name, parameters);
             WriteDebug(String.Format(Resources.ContainerCountFromService, containers.Count()));
             if (containers.Count() == 0)
             {

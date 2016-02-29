@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 ConfirmAction(Force, Resources.DeleteVaultCaption, Resources.DeleteVaultMessage, "",
                     () =>
                     {
-                        if (!AzureBackupClient.DeleteVault(BackupVault.ResourceGroupName, BackupVault.Name))
+                        if (!AzureBackupClient.DeleteVault(Vault.ResourceGroupName, Vault.Name))
                         {
                             throw new Exception(Resources.ResourceNotFoundMessage);
                         }
