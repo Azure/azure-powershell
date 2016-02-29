@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 if(isDiscoveryNeed)
                 {
                     WriteDebug(String.Format(Resources.VMNotDiscovered, vmName));
-                    RefreshContainer(RecoveryServicesVault.ResourceGroupName, RecoveryServicesVault.Name);
+                    RefreshContainer(BackupVault.ResourceGroupName, BackupVault.Name);
                     isDiscoveryNeed = IsDiscoveryNeeded(vmName, rgName, out container);
                     if ((isDiscoveryNeed == true) || (container == null))
                     {
@@ -100,10 +100,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 //Container is discovered. Register the container
                 WriteDebug(String.Format(Resources.RegisteringVM, vmName));
-                var operationId = AzureBackupClient.RegisterContainer(RecoveryServicesVault.ResourceGroupName, RecoveryServicesVault.Name, container.Name);
+                var operationId = AzureBackupClient.RegisterContainer(BackupVault.ResourceGroupName, BackupVault.Name, container.Name);
 
-                var operationStatus = GetOperationStatus(RecoveryServicesVault.ResourceGroupName, RecoveryServicesVault.Name, operationId);
-                WriteObject(GetCreatedJobs(RecoveryServicesVault.ResourceGroupName, RecoveryServicesVault.Name, RecoveryServicesVault, operationStatus.JobList).FirstOrDefault());
+                var operationStatus = GetOperationStatus(BackupVault.ResourceGroupName, BackupVault.Name, operationId);
+                WriteObject(GetCreatedJobs(BackupVault.ResourceGroupName, BackupVault.Name, BackupVault, operationStatus.JobList).FirstOrDefault());
             });
         }
 
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             };
 
             //First check if container is discovered or not            
-            var containers = AzureBackupClient.ListContainers(RecoveryServicesVault.ResourceGroupName, RecoveryServicesVault.Name, parameters);
+            var containers = AzureBackupClient.ListContainers(BackupVault.ResourceGroupName, BackupVault.Name, parameters);
             WriteDebug(String.Format(Resources.ContainerCountFromService, containers.Count()));
             if (containers.Count() == 0)
             {
