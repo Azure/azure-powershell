@@ -209,6 +209,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         void SetStorageServiceProperties(StorageServiceType type, ServiceProperties properties, IRequestOptions options, OperationContext operationContext);
 
         /// <summary>
+        /// Get the SAS token for an account.
+        /// </summary>
+        /// <param name="sharedAccessAccountPolicy">Shared access policy to generate the SAS token.</param>
+        /// <returns>Account SAS token.</returns>
+        string GetStorageAccountSASToken(SharedAccessAccountPolicy sharedAccessAccountPolicy);
+
+        /// <summary>
         /// Async get container presssions
         /// </summary>
         /// <param name="container">A cloudblobcontainer object</param>
@@ -296,6 +303,19 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="cmdletCancellationToken">Cancellation token</param>
         /// <returns>Return a task that asynchronously abort the blob copy operation</returns>
         Task AbortCopyAsync(CloudBlob blob, string copyId, AccessCondition accessCondition, BlobRequestOptions requestOption, OperationContext operationContext, CancellationToken cmdletCancellationToken);
+
+        /// <summary>
+        /// Return a task that asynchronously start copy operation to a blob.
+        /// </summary>
+        /// <param name="blob">CloudBlob object</param>
+        /// <param name="source">Uri to copying source</param>
+        /// <param name="sourceAccessCondition">Access condition to source if it's file/blob in azure.</param>
+        /// <param name="destAccessCondition">Access condition to Destination blob.</param>
+        /// <param name="options">Blob request options</param>
+        /// <param name="operationContext">Operation context</param>
+        /// <param name="cmdletCancellationToken">Cancellation token</param>
+        /// <returns>Return copy id if succeeded.</returns>
+        Task<string> StartCopyAsync(CloudBlob blob, Uri source, AccessCondition sourceAccessCondition, AccessCondition destAccessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken);
 
         /// <summary>
         /// Return a task that asynchronously set the container permission

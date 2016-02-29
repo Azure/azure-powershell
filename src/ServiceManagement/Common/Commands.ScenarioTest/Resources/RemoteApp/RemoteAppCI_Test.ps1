@@ -71,7 +71,10 @@ function CreateCloudCollection([string] $Collection)
     do
     {
         Write-Verbose "Waiting current time: $(Get-Date)"
-        sleep -Seconds (PollingInterval)
+
+        if ($env:AZURE_TEST_MODE -eq "Record"){
+          sleep -Seconds (PollingInterval)
+        }
 
         $collectionState = Get-AzureRemoteAppOperationResult -TrackingId $trackIdCollection.TrackingId -ErrorAction SilentlyContinue -ErrorVariable er
         if ($? -eq $false)
@@ -205,7 +208,9 @@ function UnpublishRemoteApplications([string] $Collection, [string[]] $applicati
        }
    }
 
-   Sleep 60 # seconds
+   if ($env:AZURE_TEST_MODE -eq "Record"){
+    Sleep 60 # seconds
+   }
    $remainingApps = Get-AzureRemoteAppProgram $Collection | % Alias
 
    $failedToUnpublish = $remainingApps | ? {$applications -contains $_}
@@ -224,8 +229,9 @@ function DeleteRemoteAppCollection([string] $Collection)
     do
     {
         Write-Verbose "Waiting current time: $(Get-Date)"
-        sleep -Seconds (PollingInterval)
-
+        if ($env:AZURE_TEST_MODE -eq "Record"){
+          sleep -Seconds (PollingInterval)
+        }
         $collectionState = Get-AzureRemoteAppOperationResult -TrackingId $trackIdCollection.TrackingId -ErrorAction SilentlyContinue -ErrorVariable er
         if ($? -eq $false)
         {

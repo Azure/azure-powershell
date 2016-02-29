@@ -184,21 +184,27 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             string status = Resources.PrepareUploadingBlob;
             ProgressRecord pr = new ProgressRecord(OutputStream.GetProgressId(taskId), activity, status);
 
+            FileInfo fileInfo = new FileInfo(filePath);
+
             DataMovementUserData data = new DataMovementUserData()
             {
                 Data = blob,
                 TaskId = taskId,
                 Channel = localChannel,
-                Record = pr
+                Record = pr,
+                TotalSize = fileInfo.Length
             };
 
-            TransferJob uploadJob = 
-                new TransferJob(
-                    new TransferLocation(filePath),
-                    new TransferLocation(blob),
-                    TransferMethod.SyncCopy);
-
-            await this.RunTransferJob(uploadJob, data);
+            await DataMovementTransferHelper.DoTransfer(() =>
+                {
+                    return this.TransferManager.UploadAsync(filePath,
+                        blob,
+                        null,
+                        this.GetTransferContext(data),
+                        this.CmdletCancellationToken);
+                }, 
+                data.Record,
+                this.OutputStream);
 
             if (this.BlobProperties != null || this.BlobMetadata != null)
             {

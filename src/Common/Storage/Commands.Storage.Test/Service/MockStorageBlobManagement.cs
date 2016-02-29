@@ -680,6 +680,21 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Service
             throw new NotImplementedException();
         }
 
+        public Task<string> StartCopyAsync(CloudBlob blob, Uri source, AccessCondition sourceAccessCondition, AccessCondition destAccessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Get the SAS token for an account.
+        /// </summary>
+        /// <param name="sharedAccessAccountPolicy">Shared access policy to generate the SAS token.</param>
+        /// <returns>Account SAS token.</returns>
+        public string GetStorageAccountSASToken(SharedAccessAccountPolicy sharedAccessAccountPolicy)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// The storage context
         /// </summary>

@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.ResourceGroupName = resourceGroupName;
             this.AutomationAccountName = automationAccountName;
             this.Name = node.Name;
-            this.Id = node.Id;
+            this.Id = node.NodeId.ToString("D");
             this.IpAddress = node.Ip;
             this.LastSeen = node.LastSeen.ToLocalTime();
             this.RegistrationTime = node.RegistrationTime.ToLocalTime();

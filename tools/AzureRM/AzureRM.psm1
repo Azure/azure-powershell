@@ -1,35 +1,36 @@
 $AzureRMDependencies = @{
-  "Azure.Storage" = "1.0.3";
-  "AzureRM.Profile" = "1.0.3";
+  "Azure.Storage" = "1.0.4";
+  "AzureRM.Profile" = "1.0.4";
 }
 
 $AzureRMModules = @{
-  "AzureRM.ApiManagement" = "1.0.3";
-  "AzureRM.Automation" = "1.0.3";
-  "AzureRM.Backup" = "1.0.3";
-  "AzureRM.Batch" = "1.0.3";
-  "AzureRM.Compute" = "1.2.1";
-  "AzureRM.DataFactories" = "1.0.3";
-  "AzureRM.DataLakeAnalytics" = "1.0.3";
-  "AzureRM.DataLakeStore" = "1.0.3";
-  "AzureRM.Dns" = "1.0.3";
-  "AzureRM.HDInsight" = "1.0.4";
-  "AzureRM.Insights" = "1.0.3";
-  "AzureRM.KeyVault" = "1.1.2";
-  "AzureRM.Network" = "1.0.3";
-  "AzureRM.NotificationHubs" = "1.0.3";
-  "AzureRM.OperationalInsights" = "1.0.3";
-  "AzureRM.RecoveryServices" = "1.0.4";
-  "AzureRM.RedisCache" = "1.1.1";
-  "AzureRM.Resources" = "1.0.3";
-  "AzureRM.SiteRecovery" = "1.1.2";
-  "AzureRM.Sql" = "1.0.3";
-  "AzureRM.Storage" = "1.0.3";
-  "AzureRM.StreamAnalytics" = "1.0.3";
-  "AzureRM.Tags" = "1.0.3";
-  "AzureRM.TrafficManager" = "1.0.3";
-  "AzureRM.UsageAggregates" = "1.0.3";
-  "AzureRM.Websites" = "1.0.3";
+  "AzureRM.ApiManagement" = "1.0.4";
+  "AzureRM.Automation" = "1.0.4";
+  "AzureRM.Backup" = "1.0.4";
+  "AzureRM.Batch" = "1.0.4";
+  "AzureRM.Compute" = "1.2.2";
+  "AzureRM.DataFactories" = "1.0.4";
+  "AzureRM.DataLakeAnalytics" = "1.0.4";
+  "AzureRM.DataLakeStore" = "1.0.4";
+  "AzureRM.Dns" = "1.0.4";
+  "AzureRM.HDInsight" = "1.0.5";
+  "AzureRM.Insights" = "1.0.4";
+  "AzureRM.KeyVault" = "1.1.3";
+  "AzureRM.Network" = "1.0.4";
+  "AzureRM.NotificationHubs" = "1.0.4";
+  "AzureRM.OperationalInsights" = "1.0.4";
+  "AzureRM.RecoveryServices" = "1.0.5";
+  "AzureRM.RedisCache" = "1.1.2";
+  "AzureRM.Resources" = "1.0.4";
+  "AzureRM.SiteRecovery" = "1.1.3";
+  "AzureRM.Sql" = "1.0.4";
+  "AzureRM.Storage" = "1.0.4";
+  "AzureRM.StreamAnalytics" = "1.0.4";
+  "AzureRM.Tags" = "1.0.4";
+  "AzureRM.TrafficManager" = "1.0.4";
+  "AzureRM.UsageAggregates" = "1.0.4";
+  "AzureRM.Websites" = "1.0.4";
+  "AzureRM.LogicApp" = "1.0.0";
 }
 
 function Test-AdminRights([string]$Scope)
@@ -179,7 +180,7 @@ function Import-AzureRM
   $AzureRMModules.Keys | ForEach {
     $moduleName = $_
     $_MinVer = $MajorVersion 
-    if(!MajorVersion ) {
+    if(!$MajorVersion) {
       $_MinVer = $AzureRMModules[$_]
     }
     $_MaxVer = "$($_MinVer.Split(".")[0]).9999.9999.9999"

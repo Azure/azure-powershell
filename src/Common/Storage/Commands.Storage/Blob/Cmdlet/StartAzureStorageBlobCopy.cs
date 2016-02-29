@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
     using System;
@@ -29,13 +31,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using Microsoft.WindowsAzure.Storage.Blob;
     using Microsoft.WindowsAzure.Storage.DataMovement;
     using Microsoft.WindowsAzure.Storage.File;
-    using Microsoft.Azure.Common.Authentication;
+    using Azure.ServiceManagemenet.Common;
     using System.Reflection;
 
     [Cmdlet(VerbsLifecycle.Start, StorageNouns.CopyBlob, ConfirmImpact = ConfirmImpact.High, DefaultParameterSetName = ContainerNameParameterSet),
        OutputType(typeof(AzureStorageBlob))]
     public class StartAzureStorageBlobCopy : StorageDataMovementCmdletBase, IModuleAssemblyInitializer
     {
+        private const string BlobTypeMismatch = "Blob type of the blob reference doesn't match blob type of the blob.";
+
         /// <summary>
         /// Blob Pipeline parameter set name
         /// </summary>
@@ -213,26 +217,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             base.BeginProcessing();
         }
 
-        protected async Task EnqueueStartCopyJob(TransferJob startCopyJob, DataMovementUserData userData)
-        {
-            await this.RunTransferJob(startCopyJob, userData);
-
-            this.OutputStream.WriteVerbose(userData.TaskId, startCopyJob.CopyId);
-            Dictionary<string, string> destBlobPath = userData.Data as Dictionary<string, string>;
-
-            if (destBlobPath != null)
-            {
-                var destChannel = userData.Channel;
-                this.OutputStream.WriteVerbose(userData.TaskId, String.Format(Resources.CopyDestinationBlobPending, destBlobPath["Blob"], destBlobPath["Container"], startCopyJob.CopyId));
-                CloudBlobContainer container = destChannel.GetContainerReference(destBlobPath["Container"]);
-                CloudBlob destBlob = this.GetDestinationBlobWithCopyId(destChannel, container, destBlobPath["Blob"]);
-                if (destBlob != null)
-                {
-                    this.WriteCloudBlobObject(userData.TaskId, destChannel, destBlob);
-                }
-            }
-        }
-
         private IStorageFileManagement GetFileChannel()
         {
             return new StorageFileManagement(GetCmdletStorageContext());
@@ -352,7 +336,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         {
             ValidateBlobType(srcCloudBlob);
 
-            Func<long, Task> taskGenerator = (taskId) => StartCopyInTransferManager(taskId, destChannel, srcCloudBlob, destCloudBlob);
+            Func<long, Task> taskGenerator = (taskId) => StartCopyAsync(taskId, destChannel, srcCloudBlob, destCloudBlob);
             RunTask(taskGenerator);
         }
 
@@ -418,7 +402,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             else
             {
                 CloudBlobContainer container = destChannel.GetContainerReference(destContainer);
-                Func<long, Task> taskGenerator = (taskId) => StartCopyInTransferManager(taskId, destChannel, new Uri(srcUri), container, destBlobName);
+                Func<long, Task> taskGenerator = (taskId) => StartCopyAsync(taskId, destChannel, new Uri(srcUri), container, destBlobName);
                 RunTask(taskGenerator);
             }
         }
@@ -490,8 +474,31 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             RunTask(taskGenerator);
         }
 
-        private async Task StartCopyFromFile(long taskId, IStorageBlobManagement destChannel, CloudFile srcFile, CloudBlockBlob destBlob)
+        private async Task StartCopyFromBlob(long taskId, IStorageBlobManagement destChannel, CloudBlob srcBlob, CloudBlob destBlob)
         {
+            try
+            {
+                await StartCopyFromUri(taskId, destChannel, srcBlob.GenerateUriWithCredentials(), destBlob);
+            }
+            catch (StorageException ex)
+            {
+                if (0 == string.Compare(ex.Message, BlobTypeMismatch, StringComparison.OrdinalIgnoreCase))
+                {
+                    // Current use error message to decide whether it caused by blob type mismatch,
+                    // We should ask xscl to expose an error code for this..
+                    // Opened workitem 1487579 to track this.
+                    throw new InvalidOperationException(Resources.DestinationBlobTypeNotMatch);
+                }
+                else
+                {
+                    throw;
+                }
+            }
+        }
+
+        private async Task StartCopyFromUri(long taskId, IStorageBlobManagement destChannel, Uri srcUri, CloudBlob destBlob)
+        {
+
             bool destExist = true;
             try
             {
@@ -509,12 +516,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 }
             }
 
-            if (!destExist || this.ConfirmOverwrite(srcFile.Uri.ToString(), destBlob.Uri.ToString()))
+            if (!destExist || this.ConfirmOverwrite(srcUri.AbsoluteUri.ToString(), destBlob.Uri.ToString()))
             {
-                string copyId = await destBlob.StartCopyAsync(srcFile.GenerateCopySourceFile(), null, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken);
+                string copyId = await destChannel.StartCopyAsync(destBlob, srcUri, null, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken);
                 this.OutputStream.WriteVerbose(taskId, String.Format(Resources.CopyDestinationBlobPending, destBlob.Name, destBlob.Container.Name, copyId));
                 this.WriteCloudBlobObject(taskId, destChannel, destBlob);
             }
+        }
+
+        private async Task StartCopyFromFile(long taskId, IStorageBlobManagement destChannel, CloudFile srcFile, CloudBlockBlob destBlob)
+        {
+            await this.StartCopyFromUri(taskId, destChannel, srcFile.GenerateUriWithCredentials(), destBlob);
         }
 
         private CloudBlob GetDestBlob(IStorageBlobManagement destChannel, string destContainerName, string destBlobName, BlobType blobType)
@@ -551,29 +563,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <param name="destContainer">Destination CloudBlobContainer object</param>
         /// <param name="destBlobName">Destination blob name</param>
         /// <returns>Destination CloudBlob object</returns>
-        private async Task StartCopyInTransferManager(long taskId, IStorageBlobManagement DestChannel, CloudBlob sourceBlob, CloudBlob destBlob)
+        private async Task StartCopyAsync(long taskId, IStorageBlobManagement destChannel, CloudBlob sourceBlob, CloudBlob destBlob)
         {
             NameUtil.ValidateBlobName(sourceBlob.Name);
             NameUtil.ValidateContainerName(destBlob.Container.Name);
             NameUtil.ValidateBlobName(destBlob.Name);
 
-            Dictionary<string, string> BlobPath = new Dictionary<string, string>()
-            {
-                {"Container", destBlob.Container.Name},
-                {"Blob", destBlob.Name}
-            };
-
-            DataMovementUserData data = new DataMovementUserData()
-            {
-                Data = BlobPath,
-                TaskId = taskId,
-                Channel = DestChannel,
-                Record = null
-            };
-
-            TransferJob startCopyJob = new TransferJob(new TransferLocation(sourceBlob), new TransferLocation(destBlob), TransferMethod.AsyncCopyInAzureStorageWithoutMonitor);
-
-            await this.EnqueueStartCopyJob(startCopyJob, data);
+            await this.StartCopyFromBlob(taskId, destChannel, sourceBlob, destBlob);
         }
 
         /// <summary>
@@ -583,30 +579,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <param name="destContainer">Destination CloudBlobContainer object</param>
         /// <param name="destBlobName">Destination blob name</param>
         /// <returns>Destination CloudBlob object</returns>
-        private async Task StartCopyInTransferManager(long taskId, IStorageBlobManagement destChannel, Uri uri, CloudBlobContainer destContainer, string destBlobName)
+        private async Task StartCopyAsync(long taskId, IStorageBlobManagement destChannel, Uri uri, CloudBlobContainer destContainer, string destBlobName)
         {
             NameUtil.ValidateContainerName(destContainer.Name);
             NameUtil.ValidateBlobName(destBlobName);
-            Dictionary<string, string> BlobPath = new Dictionary<string, string>()
-            {
-                {"Container", destContainer.Name},
-                {"Blob", destBlobName}
-            };
 
-            DataMovementUserData data = new DataMovementUserData()
-            {
-                Data = BlobPath,
-                TaskId = taskId,
-                Channel = destChannel,
-                Record = null
-            };
-
-            TransferJob startCopyJob = new TransferJob(
-                new TransferLocation(uri), 
-                new TransferLocation(destContainer.GetBlockBlobReference(destBlobName)),
-                TransferMethod.AsyncCopyInAzureStorageWithoutMonitor);
-
-            await this.EnqueueStartCopyJob(startCopyJob, data);
+            await this.StartCopyFromUri(taskId, destChannel, uri, destContainer.GetBlockBlobReference(destBlobName));
         }
 
         /// <summary>
@@ -628,8 +606,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         {
             try
             {
-                System.Management.Automation.PowerShell invoker = null;
-                invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
+                PowerShell invoker = null;
+                invoker = PowerShell.Create(RunspaceMode.CurrentRunspace);
                 invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(
                     Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
                     "AzureStorageStartup.ps1")));

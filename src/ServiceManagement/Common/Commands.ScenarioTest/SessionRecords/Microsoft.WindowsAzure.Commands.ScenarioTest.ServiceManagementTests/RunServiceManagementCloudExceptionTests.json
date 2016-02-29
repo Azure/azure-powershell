@@ -1,13 +1,13 @@
 {
   "Entries": [
     {
-      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/*",
-      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy8lMkE=",
+      "RequestUri": "/a0d901ba-9956-4f7d-830c-2d7974c36666/services/hostedservices/*",
+      "EncodedRequestUri": "L2EwZDkwMWJhLTk5NTYtNGY3ZC04MzBjLTJkNzk3NGMzNjY2Ni9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy8lMkE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2015-09-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -28,30 +28,30 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "8fbc1c1bfd26be549be7ac6edfe8fd67"
+          "9fe36abeae3162089c3902f56c31352d"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 24 Jun 2015 21:52:37 GMT"
+          "Thu, 21 Jan 2016 11:24:57 GMT"
         ],
         "Server": [
-          "1.0.6198.243",
-          "(rd_rdfe_stable.150618-1025)",
+          "1.0.6198.306",
+          "(rd_rdfe_stable.160114-1616)",
           "Microsoft-HTTPAPI/2.0"
         ]
       },
       "StatusCode": 400
     },
     {
-      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/services/hostedservices/*/deploymentslots/Production",
-      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy8lMkEvZGVwbG95bWVudHNsb3RzL1Byb2R1Y3Rpb24=",
+      "RequestUri": "/a0d901ba-9956-4f7d-830c-2d7974c36666/services/hostedservices/*/deploymentslots/Production",
+      "EncodedRequestUri": "L2EwZDkwMWJhLTk5NTYtNGY3ZC04MzBjLTJkNzk3NGMzNjY2Ni9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy8lMkEvZGVwbG95bWVudHNsb3RzL1Byb2R1Y3Rpb24=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2015-09-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -72,25 +72,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "235043d87cdfbdbea385a799a177dbeb"
+          "031f88f1b864625bbeb9af94134d1e92"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 24 Jun 2015 21:52:37 GMT"
+          "Thu, 21 Jan 2016 11:24:58 GMT"
         ],
         "Server": [
-          "1.0.6198.243",
-          "(rd_rdfe_stable.150618-1025)",
+          "1.0.6198.306",
+          "(rd_rdfe_stable.160114-1616)",
           "Microsoft-HTTPAPI/2.0"
         ]
       },
       "StatusCode": 400
     },
     {
-      "RequestUri": "/4d368445-cbb1-42a7-97a6-6850ab99f48e/affinitygroups/*",
-      "EncodedRequestUri": "LzRkMzY4NDQ1LWNiYjEtNDJhNy05N2E2LTY4NTBhYjk5ZjQ4ZS9hZmZpbml0eWdyb3Vwcy8lMkE=",
+      "RequestUri": "/a0d901ba-9956-4f7d-830c-2d7974c36666/affinitygroups/*",
+      "EncodedRequestUri": "L2EwZDkwMWJhLTk5NTYtNGY3ZC04MzBjLTJkNzk3NGMzNjY2Ni9hZmZpbml0eWdyb3Vwcy8lMkE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -113,17 +113,17 @@
           "ussouth3"
         ],
         "x-ms-request-id": [
-          "e7eb6116c17abe61b27520096b982601"
+          "3a30bc8b9e5c64dd97fd240fc0508b85"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 24 Jun 2015 21:52:38 GMT"
+          "Thu, 21 Jan 2016 11:24:59 GMT"
         ],
         "Server": [
-          "1.0.6198.243",
-          "(rd_rdfe_stable.150618-1025)",
+          "1.0.6198.306",
+          "(rd_rdfe_stable.160114-1616)",
           "Microsoft-HTTPAPI/2.0"
         ]
       },
@@ -132,6 +132,6 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "4d368445-cbb1-42a7-97a6-6850ab99f48e"
+    "SubscriptionId": "a0d901ba-9956-4f7d-830c-2d7974c36666"
   }
 }

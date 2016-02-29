@@ -148,7 +148,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
             clientContext.User.Id = qos.Uid;
             clientContext.User.AccountId = qos.Uid;
             clientContext.Session.Id = qos.SessionId;
-            clientContext.Device.OperatingSystem = "Windows";
+            clientContext.Device.OperatingSystem = Environment.OSVersion.ToString();
         }
 
         private void PopulatePropertiesFromQos(AzurePSQoSEvent qos, IDictionary<string, string> eventProperties)
@@ -157,7 +157,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
             eventProperties.Add("ModuleName", qos.ModuleName);
             eventProperties.Add("ModuleVersion", qos.ModuleVersion);
             eventProperties.Add("HostVersion", qos.HostVersion);
-            eventProperties.Add("OS", "Windows");
+            eventProperties.Add("OS", Environment.OSVersion.ToString());
             eventProperties.Add("CommandParameters", qos.Parameters);
             eventProperties.Add("UserId", qos.Uid);
             eventProperties.Add("x-ms-client-request-id", qos.ClientRequestId);

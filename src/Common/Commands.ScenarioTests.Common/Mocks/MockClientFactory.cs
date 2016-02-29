@@ -24,11 +24,12 @@ using System.Threading.Tasks;
 using Hyak.Common;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Azure.Common;
-using Microsoft.Azure.Common.Authentication.Factories;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Factories;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure;
 using System.IO;
+using Microsoft.Azure.ServiceManagemenet.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 {
