@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Models
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel.Models
 {
-    class BaseObjects
+    public class BaseObjects
     {
     }
 }

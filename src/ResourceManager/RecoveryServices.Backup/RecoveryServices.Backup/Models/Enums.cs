@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Models
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
-    class Enums
+    public class Enums
     {
     }
 }

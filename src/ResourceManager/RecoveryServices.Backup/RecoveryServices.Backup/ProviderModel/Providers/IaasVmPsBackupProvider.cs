@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProviderModel.Providers
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
-    interface IaasVmPsBackupProvider
+    public class IaasVmPsBackupProvider : IPsBackupProvider
     {
     }
 }

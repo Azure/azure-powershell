@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProviderModel
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
-    interface IPsBackupProvider
+    public interface IPsBackupProvider
     {
     }
 }
