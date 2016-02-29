@@ -60,10 +60,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.BackupServices.1.0.5-preview\lib\net40\Microsoft.Azure.Management.BackupServicesManagement.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.RecoveryServicesBackupManagement, Version=0.9.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Resources\Microsoft.Azure.Management.RecoveryServicesBackupManagement.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.11-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
@@ -134,21 +130,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AzureBackupClientAdapter\AzureRsClientAdapter.cs" />
-    <Compile Include="AzureBackupClientAdapter\ClientAdapterBase.cs" />
     <Compile Include="AzureBackupClientAdapter\AzureBackupClientAdapter.cs" />
-    <Compile Include="AzureBackupClientAdapter\BackupAdapters\ContainerAdapter.cs" />
-    <Compile Include="AzureBackupClientAdapter\BackupAdapters\ItemAdapter.cs" />
-    <Compile Include="AzureBackupClientAdapter\BackupAdapters\JobAdapter.cs" />
-    <Compile Include="AzureBackupClientAdapter\BackupAdapters\OperationStatusAdapter.cs" />
-    <Compile Include="AzureBackupClientAdapter\BackupAdapters\PolicyAdapter.cs" />
-    <Compile Include="AzureBackupClientAdapter\BackupAdapters\VaultAdapter.cs" />
-    <Compile Include="AzureBackupClientAdapter\RecoveryServicesAdapters\ContainerAdapter.cs" />
-    <Compile Include="AzureBackupClientAdapter\RecoveryServicesAdapters\ItemAdapter.cs" />
-    <Compile Include="AzureBackupClientAdapter\RecoveryServicesAdapters\JobAdapter.cs" />
-    <Compile Include="AzureBackupClientAdapter\RecoveryServicesAdapters\OperationStatusAdapter.cs" />
-    <Compile Include="AzureBackupClientAdapter\RecoveryServicesAdapters\PolicyAdapter.cs" />
-    <Compile Include="AzureBackupClientAdapter\RecoveryServicesAdapters\VaultAdapter.cs" />
+    <Compile Include="AzureBackupClientAdapter\ContainerAdapter.cs" />
+    <Compile Include="AzureBackupClientAdapter\ItemAdapter.cs" />
+    <Compile Include="AzureBackupClientAdapter\JobAdapter.cs" />
+    <Compile Include="AzureBackupClientAdapter\OperationStatusAdapter.cs" />
+    <Compile Include="AzureBackupClientAdapter\PolicyAdapter.cs" />
+    <Compile Include="AzureBackupClientAdapter\VaultAdapter.cs" />
     <Compile Include="AzureBackupContainerCmdletBase.cs" />
     <Compile Include="AzureBackupDSCmdletBase.cs" />
     <Compile Include="AzureBackupItemCmdletBase.cs" />
@@ -209,7 +197,7 @@
       <Link>AzureRM.Backup.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Microsoft.Azure.Commands.AzureBackup.dll-help.psd1">
+    <None Include="Microsoft.Azure.Commands.AzureBackup.dll-help.psd1" >
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </None>
@@ -233,7 +221,6 @@
     <Content Include="Microsoft.Azure.Commands.AzureBackup.dll-help.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Microsoft.Azure.Management.RecoveryServicesBackupManagement.dll" />
     <Content Include="Resources\Microsoft.WindowsAzure.Management.Common.dll" />
     <Content Include="Resources\Security.Cryptography.dll" />
   </ItemGroup>
