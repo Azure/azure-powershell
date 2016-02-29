@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         public const string VaultExtendedInfoContractVersion = "V2014_09";
     }
-    
+
     /// <summary>
     /// Azure Recovery Services Vault.
     /// </summary>
