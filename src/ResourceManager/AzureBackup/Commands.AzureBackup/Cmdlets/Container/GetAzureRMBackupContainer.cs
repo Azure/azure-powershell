@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                         GetContainersForBackupVault(containers);
                         break;
                     case VaultType.ARSVault:
-                        GetContainersForRecoveryServicesVault(containers);
+                        GetContainersForRsVault(containers);
                         break;
                     default:
                         throw new Exception(Resources.UnkownVaultType);
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             });
         }
 
-        private void GetContainersForRecoveryServicesVault(List<AzureRMBackupContainer> containers)
+        private void GetContainersForRsVault(List<AzureRMBackupContainer> containers)
         {
             ProtectionContainerListQueryParams queryParams = new ProtectionContainerListQueryParams();
             queryParams.ProviderType = ProviderType.AzureIaasVM.ToString();
