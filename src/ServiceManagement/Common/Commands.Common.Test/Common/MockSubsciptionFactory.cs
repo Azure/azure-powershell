@@ -77,6 +77,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             throw new NotImplementedException();
         }
 
+        public DelegatingHandler[] GetCustomHandlers()
+        {
+            throw new NotImplementedException();
+        }
+
         public void AddUserAgent(string productName, string productVersion)
         {
             throw new NotImplementedException();
