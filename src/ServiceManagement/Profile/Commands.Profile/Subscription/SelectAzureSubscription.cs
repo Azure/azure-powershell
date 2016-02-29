@@ -140,6 +140,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             }
 
             AzureSubscription subscription = ProfileClient.Profile.Subscriptions.Values
+                .Where(s => !string.IsNullOrWhiteSpace(s.Name))
                 .FirstOrDefault(s => s.Name.Equals(SubscriptionName, StringComparison.InvariantCultureIgnoreCase) ||
                                      s.Id.ToString().Equals(SubscriptionId, StringComparison.InvariantCultureIgnoreCase));
 
