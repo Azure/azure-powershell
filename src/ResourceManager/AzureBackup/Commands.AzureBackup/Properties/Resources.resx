@@ -511,16 +511,4 @@ Please contact Microsoft for further assistant.</value>
   <data name="DeleteVaultMessage" xml:space="preserve">
     <value>This operation will delete the vault. Are you sure you want to delete the vault?</value>
   </data>
-  <data name="BlockRegistrationForRsVault" xml:space="preserve">
-    <value>Warning! Do not use Register-AzureRMBackupContainer with Azure VMs. Use Enable-AzureRMBackupProtection to directly backup Azure VMs.</value>
-  </data>
-  <data name="UnkownVaultType" xml:space="preserve">
-    <value>Unknown vault type passed</value>
-  </data>
-  <data name="BlockReregistrationForRsVault" xml:space="preserve">
-    <value>Warning! Enable-AzureRmBackupContainerReregistration does not support RecoveryServices Vault yet.</value>
-  </data>
-  <data name="BlockUnregistrationForRsVault" xml:space="preserve">
-    <value>Warning! Do not use Unregister-AzureRMBackupContainer with Azure VMs. Use Disable-AzureRMBackupProtection to directly disable backup for Azure VMs.</value>
-  </data>
 </root>

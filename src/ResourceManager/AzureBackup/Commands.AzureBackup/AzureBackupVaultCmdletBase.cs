@@ -13,9 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.AzureBackup.Models;
-using Microsoft.Azure.Commands.AzureBackup.Properties;
 using Microsoft.Azure.Commands.RecoveryServices;
-using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
@@ -39,10 +37,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             else if (Vault.GetType() == typeof(AzureRMBackupVault))
             {
                 RecoveryServicesVault = (AzureRMBackupVault)Vault;
-            }
-            else
-            {
-                throw new ArgumentException(Resources.UnkownVaultType);
             }
 
             RecoveryServicesVault.Validate();

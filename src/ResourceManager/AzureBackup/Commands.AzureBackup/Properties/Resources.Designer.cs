@@ -184,33 +184,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Warning! Do not use Register-AzureRMBackupContainer with Azure VMs. Use Enable-AzureRMBackupProtection to directly backup Azure VMs..
-        /// </summary>
-        internal static string BlockRegistrationForRsVault {
-            get {
-                return ResourceManager.GetString("BlockRegistrationForRsVault", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Warning! Enable-AzureRmBackupContainerReregistration does not support RecoveryServices Vault yet..
-        /// </summary>
-        internal static string BlockReregistrationForRsVault {
-            get {
-                return ResourceManager.GetString("BlockReregistrationForRsVault", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Warning! Do not use Unregister-AzureRMBackupContainer with Azure VMs. Use Disable-AzureRMBackupProtection to directly disable backup for Azure VMs..
-        /// </summary>
-        internal static string BlockUnregistrationForRsVault {
-            get {
-                return ResourceManager.GetString("BlockUnregistrationForRsVault", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Reregistration can be enable only for machine containers..
         /// </summary>
         internal static string CannotEnableRegistration {
@@ -954,15 +927,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Properties {
         internal static string UnknownItemType {
             get {
                 return ResourceManager.GetString("UnknownItemType", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Unknown vault type passed.
-        /// </summary>
-        internal static string UnkownVaultType {
-            get {
-                return ResourceManager.GetString("UnkownVaultType", resourceCulture);
             }
         }
         

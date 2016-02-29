@@ -42,37 +42,22 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             {
                 base.ExecuteCmdlet();
 
-                switch (Container.VaultType)
+                AzureBackupContainerType containerType = (AzureBackupContainerType)Enum.Parse(typeof(AzureBackupContainerType), Container.ContainerType, true);
+                switch (containerType)
                 {
-                    case VaultType.BackupVault:
-                        UnregisterFromBackupVault();
+                    case AzureBackupContainerType.Windows:
+                    case AzureBackupContainerType.SCDPM:
+                    case AzureBackupContainerType.AzureBackupServer:
+                    case AzureBackupContainerType.Other:
+                        DeleteServer();
                         break;
-                    case VaultType.ARSVault:
-                        WriteWarning(Resources.BlockUnregistrationForRsVault);
+                    case AzureBackupContainerType.AzureVM:
+                        UnregisterContainer();
                         break;
                     default:
-                        throw new Exception(Resources.UnkownVaultType);
+                        break;
                 }
             });
-        }
-
-        private void UnregisterFromBackupVault()
-        {
-            AzureBackupContainerType containerType = (AzureBackupContainerType)Enum.Parse(typeof(AzureBackupContainerType), Container.ContainerType, true);
-            switch (containerType)
-            {
-                case AzureBackupContainerType.Windows:
-                case AzureBackupContainerType.SCDPM:
-                case AzureBackupContainerType.AzureBackupServer:
-                case AzureBackupContainerType.Other:
-                    DeleteServer();
-                    break;
-                case AzureBackupContainerType.AzureVM:
-                    UnregisterContainer();
-                    break;
-                default:
-                    break;
-            }
         }
 
         private void DeleteServer()
@@ -86,9 +71,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             string containerUniqueName = Container.ContainerUniqueName;
             var operationId = AzureBackupClient.UnRegisterContainer(Container.ResourceGroupName, Container.ResourceName, containerUniqueName);
 
-            WriteObject(GetCreatedJobs(Container.ResourceGroupName,
-                Container.ResourceName,
-                new Models.AzureRMBackupVault(Container.ResourceGroupName, Container.ResourceName, Container.Location),
+            WriteObject(GetCreatedJobs(Container.ResourceGroupName, 
+                Container.ResourceName, 
+                new Models.AzureRMBackupVault(Container.ResourceGroupName, Container.ResourceName, Container.Location), 
                 GetOperationStatus(Container.ResourceGroupName, Container.ResourceName, operationId).JobList).FirstOrDefault());
         }
     }
