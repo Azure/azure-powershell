@@ -41,19 +41,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         public const string VaultExtendedInfoContractVersion = "V2014_09";
     }
-
-    /// <summary>
-    /// Base Vault for both ARSVault and BackupVault
-    /// </summary>
-    public class VaultBase
-    {
-
-    }
     
     /// <summary>
     /// Azure Recovery Services Vault.
     /// </summary>
-    public class ARSVault : VaultBase
+    public class ARSVault
     {
         #region Constructor
 
