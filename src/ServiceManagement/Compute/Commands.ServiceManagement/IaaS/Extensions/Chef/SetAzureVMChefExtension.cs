@@ -193,7 +193,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             if (!IsClientRbEmpty)
             {
                 ClientConfig = Regex.Replace(File.ReadAllText(this.ClientRb),
-                    "\"|'", "\\\"").TrimEnd('\r', '\n');
+                    "\"|'", "\\\"").TrimEnd('\r', '\n').Replace("\r\n", "\\r\\n");
                 // Append ChefServerUrl and ValidationClientName to end of ClientRb
                 if (!IsChefServerUrlEmpty && !IsValidationClientNameEmpty)
                 {

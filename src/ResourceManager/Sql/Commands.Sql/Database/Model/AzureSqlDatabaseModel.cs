@@ -113,6 +113,16 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         public Dictionary<string, string> Tags { get; set; }
 
         /// <summary>
+        /// Gets or sets the resource ID of the database.
+        /// </summary>
+        public string ResourceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the create mode of the database.
+        /// </summary>
+        public string CreateMode { get; set; }
+
+        /// <summary>
         /// Construct AzureSqlDatabaseModel
         /// </summary>
         public AzureSqlDatabaseModel()
@@ -141,6 +151,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             Tags = database.Tags as Dictionary<string, string>;
             ElasticPoolName = database.Properties.ElasticPoolName;
             Location = database.Location;
+            ResourceId = database.Id;
+            CreateMode = database.Properties.CreateMode;
+            EarliestRestoreDate = database.Properties.EarliestRestoreDate;
 
             Guid.TryParse(database.Properties.CurrentServiceObjectiveId, out id);
             CurrentServiceObjectiveId = id;
