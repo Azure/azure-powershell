@@ -31,7 +31,6 @@ using CmdletModel = Microsoft.Azure.Commands.AzureBackup.Models;
 using System.Collections.Specialized;
 using System.Web;
 using System.Text.RegularExpressions;
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Helpers
 {
@@ -156,52 +155,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
                 filterValue = filterValue.Remove(filterValue.Length - 5);
             }
             return filterValue;
-        }
-
-        internal static ProviderType GetProviderTypeForContainerType(AzureBackupContainerType containerType)
-        {
-            ProviderType providerType = 0;
-
-            switch (containerType)
-            {
-                case AzureBackupContainerType.Windows:
-                    break;
-                case AzureBackupContainerType.SCDPM:
-                    break;
-                case AzureBackupContainerType.AzureVM:
-                    providerType = ProviderType.AzureIaasVM;
-                    break;
-                case AzureBackupContainerType.AzureBackupServer:
-                    break;
-                case AzureBackupContainerType.Other:
-                    break;
-                default:
-                    break;
-            }
-
-            return providerType;
-        }
-
-        internal static AzureBackupContainerType GetContainerType(Type type)
-        {
-            if (type.IsSubclassOf(typeof(AzureIaaSVMProtectionContainer)))
-            {
-                return AzureBackupContainerType.AzureVM;
-            }
-            else if (type == typeof(DpmProtectionContainer))
-            {
-                return AzureBackupContainerType.SCDPM;
-            }
-            else if (type == typeof(DpmVenusProtectionContainer))
-            {
-                return AzureBackupContainerType.AzureBackupServer;
-            }
-            else if (type == typeof(MabProtectionContainer))
-            {
-                return AzureBackupContainerType.Windows;
-            }
-
-            return AzureBackupContainerType.Other;
         }
     }
 }

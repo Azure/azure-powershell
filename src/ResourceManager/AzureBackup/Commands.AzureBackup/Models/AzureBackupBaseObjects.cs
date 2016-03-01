@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.AzureBackup.Helpers;
 using Microsoft.Azure.Management.BackupServices.Models;
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Models
@@ -36,23 +35,17 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
         /// </summary>
         public string Location { get; set; }
 
-        /// <summary>
-        /// Type of the vault - AzureBackupVault or AzureRecoveryServicesVault
-        /// </summary>
-        public VaultType VaultType { get; set; }
-
         public AzureBackupVaultContextObject() { }
 
-        public AzureBackupVaultContextObject(string resourceGroupName, string resourceName, string locationName, VaultType vaultType)
+        public AzureBackupVaultContextObject(string resourceGroupName, string resourceName, string locationName)
         {
             ResourceGroupName = resourceGroupName;
             ResourceName = resourceName;
             Location = locationName;
-            VaultType = vaultType;
         }
 
         public AzureBackupVaultContextObject(AzureRMBackupVault vault)
-            : this(vault.ResourceGroupName, vault.Name, vault.Region, vault.Type) { }
+            : this(vault.ResourceGroupName, vault.Name, vault.Region) { }
     }
 
     /// <summary>
@@ -84,30 +77,23 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
         }
 
         public AzureRMBackupContainerContextObject(AzureRMBackupContainerContextObject azureBackupContainerContextObject)
-            : base(azureBackupContainerContextObject.ResourceGroupName, azureBackupContainerContextObject.ResourceName, azureBackupContainerContextObject.Location, azureBackupContainerContextObject.VaultType)
+            : base(azureBackupContainerContextObject.ResourceGroupName, azureBackupContainerContextObject.ResourceName, azureBackupContainerContextObject.Location)
         {
             ContainerType = azureBackupContainerContextObject.ContainerType;
             ContainerUniqueName = azureBackupContainerContextObject.ContainerUniqueName;
         }
         public AzureRMBackupContainerContextObject(AzureRMBackupContainer azureBackupContainer)
-            : base(azureBackupContainer.ResourceGroupName, azureBackupContainer.ResourceName, azureBackupContainer.Location, azureBackupContainer.VaultType)
+            : base(azureBackupContainer.ResourceGroupName, azureBackupContainer.ResourceName, azureBackupContainer.Location)
         {
             ContainerType = azureBackupContainer.ContainerType;
             ContainerUniqueName = azureBackupContainer.ContainerUniqueName;
         }
 
         public AzureRMBackupContainerContextObject(AzureRMBackupVault vault, CSMContainerResponse containerInfo)
-            : base(vault.ResourceGroupName, vault.Name, vault.Region, vault.Type)
+            : base(vault.ResourceGroupName, vault.Name, vault.Region)
         {
             ContainerType = ContainerHelpers.GetTypeForManagedContainer(containerInfo.Properties.ContainerType).ToString();
             ContainerUniqueName = containerInfo.Name;
-        }
-
-        public AzureRMBackupContainerContextObject(AzureRMBackupVault vault, ProtectionContainerResource protectionContainer)
-            : base(vault.ResourceGroupName, vault.Name, vault.Region, vault.Type)
-        {
-            ContainerType = ContainerHelpers.GetContainerType(protectionContainer.GetType()).ToString();
-            ContainerUniqueName = protectionContainer.Name;
         }
     }
 

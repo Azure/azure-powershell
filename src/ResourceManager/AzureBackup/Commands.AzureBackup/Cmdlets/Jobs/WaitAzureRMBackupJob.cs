@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                     for (int i = 0; i < pendingJobs.Count; i++)
                     {
-                        Mgmt.CSMJobDetailsResponse retrievedJob = CommonHydraHelper.BackupGetJobDetails(Vault.ResourceGroupName, Vault.Name, pendingJobs[i]);
+                        Mgmt.CSMJobDetailsResponse retrievedJob = AzureBackupClient.GetJobDetails(Vault.ResourceGroupName, Vault.Name, pendingJobs[i]);
                         if (AzureBackupJobHelper.IsJobRunning(retrievedJob.JobDetailedProperties.Status))
                             areJobsRunning = true;
                         else
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 IList<AzureRMBackupJob> finalJobs = new List<AzureRMBackupJob>();
                 foreach(string jobId in specifiedJobs)
                 {
-                    Mgmt.CSMJobDetailsResponse retrievedJob = CommonHydraHelper.BackupGetJobDetails(Vault.ResourceGroupName, Vault.Name, jobId);
+                    Mgmt.CSMJobDetailsResponse retrievedJob = AzureBackupClient.GetJobDetails(Vault.ResourceGroupName, Vault.Name, jobId);
                     finalJobs.Add(new AzureRMBackupJob(Vault, retrievedJob.JobDetailedProperties, retrievedJob.Name));
                 }
 

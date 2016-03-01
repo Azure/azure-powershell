@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.AzureBackup.Helpers;
 using Microsoft.Azure.Management.BackupServices.Models;
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,29 +59,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
             Name = containerInfo.Properties.FriendlyName;
             //HealthStatus = containerInfo.Properties.HealthStatus;
             Status = containerInfo.Properties.Status;
-        }
-
-        public AzureRMBackupContainer(AzureRMBackupVault vault, ProtectionContainerResource protectionContainer)
-            : base(vault, protectionContainer)
-        {
-            Name = protectionContainer.Name;
-
-            if (protectionContainer.Properties.GetType().IsSubclassOf(typeof(AzureIaaSVMProtectionContainer)))
-            {
-                Status = ((AzureIaaSVMProtectionContainer)protectionContainer.Properties).RegistrationStatus;
-            }
-            else if (protectionContainer.Properties.GetType() == typeof(DpmProtectionContainer))
-            {
-                Status = AzureBackupContainerRegistrationStatus.Registered.ToString();
-            }
-            else if (protectionContainer.Properties.GetType() == typeof(MabProtectionContainer))
-            {
-                Status = AzureBackupContainerRegistrationStatus.Registered.ToString();
-            }
-            else if (protectionContainer.Properties.GetType() == typeof(DpmVenusProtectionContainer))
-            {
-                Status = AzureBackupContainerRegistrationStatus.Registered.ToString();
-            }
         }
     }
 }

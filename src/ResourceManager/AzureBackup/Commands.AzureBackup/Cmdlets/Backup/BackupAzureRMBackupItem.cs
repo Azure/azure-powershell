@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 base.ExecuteCmdlet();
 
                 WriteDebug(Resources.MakingClientCall);
-                Guid operationId = CommonHydraHelper.BackupTriggerBackup(Item.ResourceGroupName, Item.ResourceName, Item.ContainerUniqueName, Item.ItemName);
+                Guid operationId = AzureBackupClient.TriggerBackup(Item.ResourceGroupName, Item.ResourceName, Item.ContainerUniqueName, Item.ItemName);
 
                 WriteDebug(string.Format(Resources.TriggeringBackup, operationId));
 

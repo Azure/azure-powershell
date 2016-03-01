@@ -43,17 +43,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     }
 
     /// <summary>
-    /// Base Vault for both ARSVault and BackupVault
-    /// </summary>
-    public class VaultBase
-    {
-
-    }
-    
-    /// <summary>
     /// Azure Recovery Services Vault.
     /// </summary>
-    public class ARSVault : VaultBase
+    public class ARSVault
     {
         #region Constructor
 

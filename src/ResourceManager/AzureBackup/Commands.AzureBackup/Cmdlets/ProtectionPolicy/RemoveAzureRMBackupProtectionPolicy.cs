@@ -46,10 +46,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                        WriteDebug(Resources.MakingClientCall);
 
-                       var policyInfo = CommonHydraHelper.BackupGetProtectionPolicyByName(ProtectionPolicy.ResourceGroupName, ProtectionPolicy.ResourceName, ProtectionPolicy.Name);
+                       var policyInfo = AzureBackupClient.GetProtectionPolicyByName(ProtectionPolicy.ResourceGroupName, ProtectionPolicy.ResourceName, ProtectionPolicy.Name);
                        if (policyInfo != null)
                        {
-                           CommonHydraHelper.BackupDeleteProtectionPolicy(ProtectionPolicy.ResourceGroupName, ProtectionPolicy.ResourceName, policyInfo.Name);
+                           AzureBackupClient.DeleteProtectionPolicy(ProtectionPolicy.ResourceGroupName, ProtectionPolicy.ResourceName, policyInfo.Name);
                            WriteDebug(Resources.ProtectionPolicyDeleted);
                        }
                        else

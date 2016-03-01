@@ -41,34 +41,19 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             {
                 base.ExecuteCmdlet();
 
-                switch (Container.VaultType)
+                AzureBackupContainerType containerType = (AzureBackupContainerType)Enum.Parse(typeof(AzureBackupContainerType), Container.ContainerType);
+                switch (containerType)
                 {
-                    case VaultType.BackupVault:
-                        ReregisterToBackupVault();
-                        break;
-                    case VaultType.ARSVault:
-                        WriteWarning(Resources.BlockReregistrationForRsVault);
+                    case AzureBackupContainerType.Windows:
+                    case AzureBackupContainerType.SCDPM:
+                    case AzureBackupContainerType.AzureBackupServer:
+                    case AzureBackupContainerType.Other:
+                        AzureBackupClient.EnableMachineContainerReregistration(Container.ResourceGroupName, Container.ResourceName, Container.Id);
                         break;
                     default:
-                        throw new Exception(Resources.UnkownVaultType);
+                        throw new ArgumentException(Resources.CannotEnableRegistration);
                 }
             });
-        }
-
-        private void ReregisterToBackupVault()
-        {
-            AzureBackupContainerType containerType = (AzureBackupContainerType)Enum.Parse(typeof(AzureBackupContainerType), Container.ContainerType);
-            switch (containerType)
-            {
-                case AzureBackupContainerType.Windows:
-                case AzureBackupContainerType.SCDPM:
-                case AzureBackupContainerType.AzureBackupServer:
-                case AzureBackupContainerType.Other:
-                    CommonHydraHelper.EnableMachineContainerReregistration(Container.ResourceGroupName, Container.ResourceName, Container.Id);
-                    break;
-                default:
-                    throw new ArgumentException(Resources.CannotEnableRegistration);
-            }
         }
     }
 }

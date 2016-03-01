@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     throw new Exception(Resources.UnknownItemType);
                 }
 
-                var operationId = CommonHydraHelper.BackupEnableProtection(Item.ResourceGroupName, Item.ResourceName, Item.ContainerUniqueName, itemName, input);
+                var operationId = AzureBackupClient.EnableProtection(Item.ResourceGroupName, Item.ResourceName, Item.ContainerUniqueName, itemName, input);
                 WriteDebug(Resources.EnableAzureBackupProtection);
 
                 var operationStatus = TrackOperation(Item.ResourceGroupName, Item.ResourceName, operationId);
