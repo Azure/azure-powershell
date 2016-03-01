@@ -1180,6 +1180,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
                         GatewayConnectionType = connection.GatewayConnectionType,
                         RoutingWeight = connection.RoutingWeight,
                         SharedKey = connection.SharedKey,
+                        EnableBgp = connection.EnableBgp.ToString(),
                     };
                 });
             PopulateOperationContext(response.RequestId, connections);
