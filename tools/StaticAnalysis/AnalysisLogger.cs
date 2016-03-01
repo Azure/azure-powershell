@@ -49,7 +49,7 @@ namespace StaticAnalysis
             _exceptionsDirectory = null;
         }
 
-       IList<ReportLogger> _loggers = new List<ReportLogger>();
+        IList<ReportLogger> _loggers = new List<ReportLogger>();
         protected virtual IList<ReportLogger> Loggers { get { return _loggers; } }
 
         /// <summary>
@@ -111,8 +111,8 @@ namespace StaticAnalysis
             if (_exceptionsDirectory != null && Directory.Exists(_exceptionsDirectory))
             {
                 var exceptionsPath = Path.Combine(_exceptionsDirectory, fileName);
-                 WriteWarning("Using exceptions file {0}", exceptionsPath);
-               logger = new ReportLogger<T>(filePath, exceptionsPath, this);
+                WriteWarning("Using exceptions file {0}", exceptionsPath);
+                logger = new ReportLogger<T>(filePath, exceptionsPath, this);
             }
             else
             {
@@ -145,7 +145,7 @@ namespace StaticAnalysis
         public void CheckForIssues(int maxSeverity)
         {
             var hasErrors = false;
-            foreach (var logger in Loggers.Where(l => l.Records.Any( r => r.Severity < maxSeverity)))
+            foreach (var logger in Loggers.Where(l => l.Records.Any(r => r.Severity < maxSeverity)))
             {
                 hasErrors = true;
                 StringBuilder errorText = new StringBuilder();
