@@ -23,7 +23,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RecoveryServices.Backup
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     /// <summary>
     /// Base class for Recovery Services Backup cmdlets
