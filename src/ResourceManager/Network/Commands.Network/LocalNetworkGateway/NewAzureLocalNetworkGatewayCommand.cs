@@ -125,6 +125,11 @@ namespace Microsoft.Azure.Commands.Network
             localnetGateway.LocalNetworkAddressSpace.AddressPrefixes = this.AddressPrefix;
             localnetGateway.GatewayIpAddress = this.GatewayIpAddress;
 
+            if(this.PeerWeight < 0)
+            {
+                throw new PSArgumentException("PeerWeight cannot be negative");
+            }
+
             if (this.Asn > 0 && !string.IsNullOrEmpty(this.BgpPeeringAddress))
             {
                 localnetGateway.BgpSettings = new PSBgpSetings()
