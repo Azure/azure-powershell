@@ -160,8 +160,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
             else
             {
                 var parameter = new PrepareDeploymentMigrationParameters
-                {
-                    DestinationVirtualNetwork = this.DestinationVNetType
+                { // TODO: Fix later due to client library bug
+                    DestinationVirtualNetwork = this.DestinationVNetType,
+                    ResourceGroupName = string.Empty,
+                    SubNetName = string.Empty,
+                    VirtualNetworkName = string.Empty
                 };
 
                 if (this.DestinationVNetType.Equals(DestinationVirtualNetwork.Existing))
