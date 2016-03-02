@@ -17,9 +17,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Authorization.Models;
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
@@ -279,8 +279,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                     var userObject = adObject as PSADUser;
                     classicAdministratorsAssignments = classicAdministratorsAssignments.Where(c =>
                            c.DisplayName.Equals(userObject.UserPrincipalName, StringComparison.OrdinalIgnoreCase) ||
-                           c.DisplayName.Equals(userObject.Mail, StringComparison.OrdinalIgnoreCase) ||
-                           c.DisplayName.Equals(userObject.SignInName, StringComparison.OrdinalIgnoreCase)).ToList();
+                           c.DisplayName.Equals(userObject.Mail, StringComparison.OrdinalIgnoreCase)).ToList();
                 }
 
                 result.AddRange(classicAdministratorsAssignments);

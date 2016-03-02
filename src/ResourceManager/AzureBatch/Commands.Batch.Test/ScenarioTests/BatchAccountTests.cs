@@ -20,49 +20,42 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
     public class BatchAccountTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetNonExistingBatchAccount()
         {
             BatchController.NewInstance.RunPsTest("Test-GetNonExistingBatchAccount");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreatesNewBatchAccount()
         {
             BatchController.NewInstance.RunPsTest("Test-CreatesNewBatchAccount");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateExistingBatchAccount()
         {
             BatchController.NewInstance.RunPsTest("Test-CreateExistingBatchAccount");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdatesExistingBatchAccount()
         {
             BatchController.NewInstance.RunPsTest("Test-UpdatesExistingBatchAccount");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetBatchAccountsUnderResourceGroups()
         {
             BatchController.NewInstance.RunPsTest("Test-GetBatchAccountsUnderResourceGroups");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateAndRemoveBatchAccountViaPiping()
         {
             BatchController.NewInstance.RunPsTest("Test-CreateAndRemoveBatchAccountViaPiping");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBatchAccountKeys()
         {
             BatchController.NewInstance.RunPsTest("Test-BatchAccountKeys");

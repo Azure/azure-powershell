@@ -18,19 +18,20 @@ using System.Linq;
 using System.Management.Automation;
 using System.Net;
 using AutoMapper;
-using Microsoft.Azure.Common.Authentication.Models;
+using Hyak.Common;
+using Microsoft.Azure;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Storage;
-using Microsoft.Azure;
-using Hyak.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
 {
-    [Cmdlet(VerbsCommon.New, "AzureVM", DefaultParameterSetName = "ExistingService"), OutputType(typeof(ManagementOperationContext))]
+    [Cmdlet(VerbsCommon.New, ProfileNouns.VirtualMachine, DefaultParameterSetName = "ExistingService"), OutputType(typeof(ManagementOperationContext))]
     public class NewAzureVMCommand : IaaSDeploymentManagementCmdletBase
     {
         private bool createdDeployment;
@@ -464,6 +465,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
             if (persistentVM.ConfigurationSets != null)
             {
                 PersistentVMHelper.MapConfigurationSets(persistentVM.ConfigurationSets).ForEach(c => result.ConfigurationSets.Add(c));
+            }
+
+            if (persistentVM.DebugSettings != null)
+            {
+                result.DebugSettings = new DebugSettings
+                {
+                    BootDiagnosticsEnabled = persistentVM.DebugSettings.BootDiagnosticsEnabled
+                };
             }
 
             return result;

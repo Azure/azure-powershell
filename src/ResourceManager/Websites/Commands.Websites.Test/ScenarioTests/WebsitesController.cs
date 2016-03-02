@@ -15,7 +15,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.ServiceManagemenet.Common;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Resources;
@@ -27,6 +28,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using LegacyTest = Microsoft.Azure.Test;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 {
@@ -91,6 +93,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             d.Add("Microsoft.Authorization", AuthorizationApiVersion);
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
 
+            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
             using (MockContext context = MockContext.Start(callingClassType, mockName))
             {
                 this.csmTestFactory = new LegacyTest.CSMTestEnvironmentFactory();

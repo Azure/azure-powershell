@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the runbook parameters.
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookNameAndScheduleName, Mandatory = false, ValueFromPipelineByPropertyName = true,
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookNameAndScheduleName, Mandatory = false, ValueFromPipelineByPropertyName = false,
             HelpMessage = "The runbook parameters.")]
         public IDictionary Parameters { get; set; }
 

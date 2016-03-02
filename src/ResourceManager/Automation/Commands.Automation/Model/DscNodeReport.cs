@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
             Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
             Requires.Argument("dscNodeReport", dscNodeReport).NotNull();
-            Requires.Argument("dscNodeReport", dscNodeReport.Id).NotNull();
+            Requires.Argument("dscNodeReport", dscNodeReport.ReportId).NotNull();
 
             this.ResourceGroupName = resourceGroupName;
             this.AutomationAccountName = automationAccountName;
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.EndTime = dscNodeReport.EndTime;
             this.LastModifiedTime = dscNodeReport.LastModifiedTime;
             this.ReportType = dscNodeReport.Type;
-            this.Id =  dscNodeReport.Id.ToString("D");
+            this.Id =  dscNodeReport.ReportId.ToString("D");
             this.NodeId = nodeId;
             this.Status = dscNodeReport.Status;
             this.RefreshMode = dscNodeReport.RefreshMode;

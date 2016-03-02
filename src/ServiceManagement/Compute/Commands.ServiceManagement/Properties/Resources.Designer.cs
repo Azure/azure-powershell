@@ -485,6 +485,24 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No WadCfg, WadCfgBlob or xmlCfg element defined in the configuration file..
+        /// </summary>
+        public static string DiagnosticsExtensionIaaSConfigElementNotDefined {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionIaaSConfigElementNotDefined", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid diagnostics configuration file. It should be in either xml or json format..
+        /// </summary>
+        public static string DiagnosticsExtensionInvalidConfigFileFormat {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionInvalidConfigFileFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The element StorageAccount in PrivateConfig doesn&apos;t match. It is recommended to not use the element StorageAccount as it is automatically set by the cmdlet..
         /// </summary>
         public static string DiagnosticsExtensionNoMatchPrivateStorageAccount {
@@ -544,6 +562,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         public static string DiagnosticsExtensionNullStorageAccountName {
             get {
                 return ResourceManager.GetString("DiagnosticsExtensionNullStorageAccountName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No WadCfg or WadCfgBlob element defined in the configuration file..
+        /// </summary>
+        public static string DiagnosticsExtensionPaaSConfigElementNotDefined {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionPaaSConfigElementNotDefined", resourceCulture);
             }
         }
         

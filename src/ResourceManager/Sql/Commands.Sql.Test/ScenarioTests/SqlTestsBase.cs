@@ -19,10 +19,11 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Graph.RBAC;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.ServiceManagemenet.Common;
 using Microsoft.Azure.Management.Authorization;
 using System;
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Common;
@@ -59,7 +60,9 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             //HttpMockServer.Matcher = new PermissiveRecordMatcher();
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Authorization", null);
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
+            var providersToIgnore = new Dictionary<string, string>();
+            providersToIgnore.Add("Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient", "1.42-previewInternal");
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d, providersToIgnore);
             // Enable undo functionality as well as mock recording
             using (UndoContext context = UndoContext.Current)
             {

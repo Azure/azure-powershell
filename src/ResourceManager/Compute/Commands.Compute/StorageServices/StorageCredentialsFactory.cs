@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.WindowsAzure.Commands.Sync.Download;
 using Microsoft.WindowsAzure.Storage.Auth;
 using System;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Rsrc = Microsoft.Azure.Commands.Compute.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Compute.StorageServices
