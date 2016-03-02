@@ -489,6 +489,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     // Opened workitem 1487579 to track this.
                     throw new InvalidOperationException(Resources.DestinationBlobTypeNotMatch);
                 }
+                else
+                {
+                    throw;
+                }
             }
         }
 

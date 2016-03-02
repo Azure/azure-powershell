@@ -59,7 +59,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                 //Add retry logic due to CRP service restart known issue CRP bug: 3564713
                 var count = 1;
                 Rest.Azure.AzureOperationResponse op = null;
-                while (count <= 2)
+
+                while (true)
                 {
                     op = VirtualMachineExtensionClient.DeleteWithHttpMessagesAsync(
                         ResourceGroupName,
@@ -70,12 +71,15 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                         //&& op.Error != null && "InternalExecutionError".Equals(op.Error.Code))
                     {
                         count++;
+                        if (count <= 2)
+                        {
+                            continue;
+                        }
                     }
-                    else
-                    {
-                        break;
-                    }
+                    
+                    break;
                 }
+
                 var result = Mapper.Map<PSAzureOperationResponse>(op);
                 WriteObject(result);
             }

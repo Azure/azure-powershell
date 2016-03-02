@@ -169,6 +169,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\ConstantStringTypes.cs" />
     <Compile Include="Common\DiagnosticsHelper.cs" />
     <Compile Include="IaaS\Extensions\SqlServer\AzureVMSqlServerPublicAutoBackupSettings.cs" />
     <Compile Include="IaaS\Extensions\SqlServer\AzureVMSqlServerPublicKeyVaultCredentialSettings.cs" />
@@ -273,6 +274,7 @@
     <Compile Include="IaaS\Network\SetAzureNetworkInterfaceConfig.cs" />
     <Compile Include="IaaS\Network\SetAzurePublicIP.cs" />
     <Compile Include="IaaS\Network\SetAzureReservedIPAssociation.cs" />
+    <Compile Include="IaaS\PersistentVMs\SetAzureBootDiagnostics.cs" />
     <Compile Include="Migration\MigrateAzureVirtualNetwork.cs" />
     <Compile Include="Migration\MigrateAzureStorageAccount.cs" />
     <Compile Include="Migration\MigrateAzureService.cs" />

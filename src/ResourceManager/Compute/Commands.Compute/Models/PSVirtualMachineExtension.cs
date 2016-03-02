@@ -58,7 +58,8 @@ namespace Microsoft.Azure.Commands.Compute.Models
         {
             get { return JsonConvert.SerializeObject(SubStatuses, Formatting.Indented); }
         }
-
+        public bool? AutoUpgradeMinorVersion { get; set; }
+        public string ForceUpdateTag { get; set; }
     }
 
     public static class PSVirtualMachineExtensionConversions
@@ -90,6 +91,8 @@ namespace Microsoft.Azure.Commands.Compute.Models
                 ProvisioningState = ext.ProvisioningState,
                 Statuses = ext.InstanceView == null ? null : ext.InstanceView.Statuses,
                 SubStatuses = ext.InstanceView == null ? null : ext.InstanceView.Substatuses,
+                AutoUpgradeMinorVersion = ext.AutoUpgradeMinorVersion,
+                ForceUpdateTag = ext.ForceUpdateTag
             };
 
             return result;

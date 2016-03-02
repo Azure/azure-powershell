@@ -61,9 +61,11 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             rmprofile.Context.Subscription.Environment = "foo";
             if (AzureRmProfileProvider.Instance.Profile == null)
             {
-                AzureRmProfileProvider.Instance.Profile = rmprofile;            }
+                AzureRmProfileProvider.Instance.Profile = rmprofile;
+            }
 
-            AzureSession.DataStore = datastore;            ProfileClient = new ProfileClient(profile);
+            AzureSession.DataStore = datastore;            
+            ProfileClient = new ProfileClient(profile);
 
             // Ignore SSL errors
             System.Net.ServicePointManager.ServerCertificateValidationCallback += (se, cert, chain, sslerror) => true;
@@ -167,6 +169,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             environment.Endpoints[AzureEnvironment.Endpoint.ServiceManagement] = currentEnvironment.BaseUri.AbsoluteUri;
             environment.Endpoints[AzureEnvironment.Endpoint.ResourceManager] = currentEnvironment.Endpoints.ResourceManagementUri.AbsoluteUri;
             environment.Endpoints[AzureEnvironment.Endpoint.Graph] = currentEnvironment.Endpoints.GraphUri.AbsoluteUri;
+            environment.Endpoints[AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix] = currentEnvironment.Endpoints.DataLakeAnalyticsJobAndCatalogServiceUri.OriginalString.Replace("https://",""); // because it is just a sufix
+            environment.Endpoints[AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix] = currentEnvironment.Endpoints.DataLakeStoreServiceUri.OriginalString.Replace("https://", ""); // because it is just a sufix
 
             if (!ProfileClient.Profile.Environments.ContainsKey(testEnvironmentName))
             {

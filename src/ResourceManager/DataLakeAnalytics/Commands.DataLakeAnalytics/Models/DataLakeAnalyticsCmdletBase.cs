@@ -12,7 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Rest;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 {
@@ -35,6 +40,40 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             }
 
             set { _bigAnalyticsClient = value; }
+        }
+
+        internal static TClient CreateAdlaClient<TClient>(AzureContext context, AzureEnvironment.Endpoint endpoint, bool parameterizedBaseUri = false) where TClient : ServiceClient<TClient>
+        {
+            if (context == null)
+            {
+                throw new ApplicationException(Resources.NoSubscriptionInContext);
+            }
+
+            var creds = AzureSession.AuthenticationFactory.GetServiceClientCredentials(context);
+            var clientFactory = AzureSession.ClientFactory;
+            var newHandlers = clientFactory.GetCustomHandlers();
+            TClient client;
+            if (!parameterizedBaseUri)
+            {
+                client = (newHandlers == null || newHandlers.Length == 0)
+                    // string.Empty ensures that we hit the constructors that set the assembly version properly
+                    ? clientFactory.CreateCustomArmClient<TClient>(context.Environment.GetEndpointAsUri(endpoint), creds, string.Empty)
+                    : clientFactory.CreateCustomArmClient<TClient>(context.Environment.GetEndpointAsUri(endpoint), creds, string.Empty, clientFactory.GetCustomHandlers());
+            }
+            else
+            {
+                client = (newHandlers == null || newHandlers.Length == 0)
+                    ? clientFactory.CreateCustomArmClient<TClient>(creds, string.Empty, context.Environment.GetEndpoint(endpoint))
+                    : clientFactory.CreateCustomArmClient<TClient>(creds, string.Empty, context.Environment.GetEndpoint(endpoint), clientFactory.GetCustomHandlers());
+            }
+
+            var subscriptionId = typeof(TClient).GetProperty("SubscriptionId");
+            if (subscriptionId != null && context.Subscription != null)
+            {
+                subscriptionId.SetValue(client, context.Subscription.Id.ToString());
+            }
+
+            return client;
         }
     }
 }
