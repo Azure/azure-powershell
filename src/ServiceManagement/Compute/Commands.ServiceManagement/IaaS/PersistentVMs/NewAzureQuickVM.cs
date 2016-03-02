@@ -411,11 +411,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
                     new VirtualMachineExtensionImageFactory(this.ComputeClient).MakeList(
                         VirtualMachineBGInfoExtensionCmdletBase.ExtensionDefaultPublisher,
                         VirtualMachineBGInfoExtensionCmdletBase.ExtensionDefaultName,
-                        VirtualMachineBGInfoExtensionCmdletBase.ExtensionDefaultVersion)),
-                DebugSettings = new Management.Compute.Models.DebugSettings
-                {
-                    BootDiagnosticsEnabled = true
-                }
+                        VirtualMachineBGInfoExtensionCmdletBase.ExtensionDefaultVersion))
             };
 
             if (!_isVMImage && vm.OSVirtualHardDisk.MediaLink == null && String.IsNullOrEmpty(vm.OSVirtualHardDisk.Name))
