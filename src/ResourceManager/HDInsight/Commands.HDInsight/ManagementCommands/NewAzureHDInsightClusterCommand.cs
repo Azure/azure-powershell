@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
 
         [Parameter(HelpMessage = "Gets or sets the flavor for a cluster.")]
-        public HDInsightClusterType ClusterType
+        public string ClusterType
         {
             get { return parameters.ClusterType; }
             set { parameters.ClusterType = value; }

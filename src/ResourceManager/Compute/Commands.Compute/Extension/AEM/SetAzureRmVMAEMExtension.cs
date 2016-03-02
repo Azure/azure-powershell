@@ -296,6 +296,7 @@ namespace Microsoft.Azure.Commands.Compute
                     if (wadstorage == null)
                     {
                         this._Helper.WriteError("A Standard Storage Account is required.");
+                        return;
                     }
 
                     selectedVM = SetAzureVMDiagnosticsExtensionC(selectedVM, wadstorage.Key, wadstorage.Value);
@@ -337,7 +338,7 @@ namespace Microsoft.Azure.Commands.Compute
                     }).GetAwaiter().GetResult();
 
                 this._Helper.WriteHost("[INFO] Azure Enhanced Monitoring Extension for SAP configuration updated. It can take up to 15 Minutes for the monitoring data to appear in the SAP system.");
-                this._Helper.WriteHost("[INFO] You can check the configuration of a virtual machine by calling the Test-VMConfigForSAP_GUI commandlet.");
+                this._Helper.WriteHost("[INFO] You can check the configuration of a virtual machine by calling the Test-AzureRmVMAEMExtension commandlet.");
 
                 var result = Mapper.Map<PSAzureOperationResponse>(op);
                 WriteObject(result);

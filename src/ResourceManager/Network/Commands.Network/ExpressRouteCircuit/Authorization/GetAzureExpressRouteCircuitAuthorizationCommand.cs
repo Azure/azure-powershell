@@ -30,8 +30,8 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The Circuit")]
-        public PSExpressRouteCircuit Circuit { get; set; }
+            HelpMessage = "The ExpressRouteCircuit")]
+        public PSExpressRouteCircuit ExpressRouteCircuit { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Network
             if (!string.IsNullOrEmpty(this.Name))
             {
                 var authorization =
-                    this.Circuit.Authorizations.First(
+                    this.ExpressRouteCircuit.Authorizations.First(
                         resource =>
                         string.Equals(
                             resource.Name,
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                var authorizations = this.Circuit.Authorizations;
+                var authorizations = this.ExpressRouteCircuit.Authorizations;
                 WriteObject(authorizations, true);
             }
         }

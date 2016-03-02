@@ -124,7 +124,7 @@
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Compute, Version=12.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Compute.12.5.0\lib\net40\Microsoft.WindowsAzure.Management.Compute.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Compute.12.6.0\lib\net40\Microsoft.WindowsAzure.Management.Compute.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Network, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -169,6 +169,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\ConstantStringTypes.cs" />
     <Compile Include="Common\DiagnosticsHelper.cs" />
     <Compile Include="IaaS\Extensions\SqlServer\AzureVMSqlServerPublicAutoBackupSettings.cs" />
     <Compile Include="IaaS\Extensions\SqlServer\AzureVMSqlServerPublicKeyVaultCredentialSettings.cs" />
@@ -273,6 +274,7 @@
     <Compile Include="IaaS\Network\SetAzureNetworkInterfaceConfig.cs" />
     <Compile Include="IaaS\Network\SetAzurePublicIP.cs" />
     <Compile Include="IaaS\Network\SetAzureReservedIPAssociation.cs" />
+    <Compile Include="IaaS\PersistentVMs\SetAzureBootDiagnostics.cs" />
     <Compile Include="Model\DeploymentRebootEventContext.cs" />
     <Compile Include="Model\InternalLoadBalancerSetting.cs" />
     <Compile Include="Model\InternalLoadBalancerContext.cs" />

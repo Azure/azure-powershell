@@ -168,7 +168,7 @@ namespace Microsoft.AzureStack.Commands
             {
                 return new AzureStackClient(
                     baseUri: this.AdminUri,
-                    credentials: new TokenCloudCredentials(token: this.Token),
+                    credentials: new TokenCloudCredentials(token: this.Token), 
                     apiVersion: this.ApiVersion);
             }
             else

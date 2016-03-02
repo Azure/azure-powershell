@@ -64,6 +64,14 @@
     <Compile Include="ManagementCommands\NewAzureHDInsightClusterConfigCommand.cs" />
     <Compile Include="ManagementCommands\RemoveAzureHDInsightClusterCommand.cs" />
     <Compile Include="ManagementCommands\SetAzureHDInsightClusterSizeCommand.cs" />
+    <Compile Include="ManagementCommands\GetAzureHDInsightPersistedScriptActionCommand.cs" />
+    <Compile Include="ManagementCommands\GetAzureHDInsightScriptActionHistoryCommand.cs" />
+    <Compile Include="ManagementCommands\RemoveAzureHDInsightPersistedScriptActionCommand.cs" />
+    <Compile Include="ManagementCommands\SetAzureHDInsightPersistedScriptActionCommand.cs" />
+    <Compile Include="ManagementCommands\SubmitAzureHDInsightScriptActionCommand.cs" />
+    <Compile Include="Models\Management\AzureHDInsightRuntimeScriptAction.cs" />
+    <Compile Include="Models\Management\AzureHDInsightRuntimeScriptActionDetail.cs" />
+    <Compile Include="Models\Management\AzureHDInsightRuntimeScriptActionOperationResource.cs" />
     <Compile Include="HDInsightCmdletBase.cs" />
     <Compile Include="ManagementCommands\GetAzureHDInsightClusterCommand.cs" />
     <Compile Include="Constants.cs" />
@@ -115,7 +123,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.HDInsight.1.0.9-preview\lib\net40\Microsoft.Azure.Management.HDInsight.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.HDInsight.1.0.10-preview\lib\net40\Microsoft.Azure.Management.HDInsight.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.HDInsight.Job">
       <SpecificVersion>False</SpecificVersion>
@@ -149,7 +157,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.0.0-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.0.1-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks">

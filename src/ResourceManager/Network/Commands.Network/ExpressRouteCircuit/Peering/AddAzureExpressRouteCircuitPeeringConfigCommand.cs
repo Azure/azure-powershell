@@ -32,14 +32,14 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The ExpressRouteCircuit")]
-        public PSExpressRouteCircuit Circuit { get; set; }
+        public PSExpressRouteCircuit ExpressRouteCircuit { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
             // Verify if the subnet exists in the VirtualNetwork
-            var peering = this.Circuit.Peerings.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+            var peering = this.ExpressRouteCircuit.Peerings.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
             if (peering != null)
             {
@@ -69,9 +69,9 @@ namespace Microsoft.Azure.Commands.Network
                 peering.MicrosoftPeeringConfig.RoutingRegistryName = this.MicrosoftConfigRoutingRegistryName;
             }
 
-            this.Circuit.Peerings.Add(peering);
+            this.ExpressRouteCircuit.Peerings.Add(peering);
 
-            WriteObject(this.Circuit);
+            WriteObject(this.ExpressRouteCircuit);
         }
     }
 }

@@ -331,7 +331,7 @@
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>CloudBlob object and Azure storage context and etc.</maml:para>
+				<maml:para>CloudBlob object and Azure Storage context and etc.</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -346,7 +346,7 @@
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  Get azure storage blob by blob name  --------------------------</maml:title>
+			<maml:title>--------------------------  Get Azure Storage blob by blob name  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -386,7 +386,7 @@
 			</command:commandLines>
 		</command:example>
 		<command:example>
-			<maml:title>--------------------------  Get azure storage blob by name prefix  --------------------------</maml:title>
+			<maml:title>--------------------------  Get Azure Storage blob by name prefix  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -459,7 +459,7 @@ echo &quot;Total $total blobs in container $containerName&quot;</dev:code>
 	<command:details>
 		<command:name>Get-AzureStorageBlobContent</command:name>
 		<maml:description>
-			<maml:para>Download the specified azure storage blob.</maml:para>
+			<maml:para>Download the specified Azure Storage blob.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -469,7 +469,7 @@ echo &quot;Total $total blobs in container $containerName&quot;</dev:code>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Download the specified azure storage blob.</maml:para>
+		<maml:para>Download the specified Azure Storage blob.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -993,7 +993,7 @@ echo &quot;Total $total blobs in container $containerName&quot;</dev:code>
 	<command:details>
 		<command:name>Get-AzureStorageBlobCopyState</command:name>
 		<maml:description>
-			<maml:para>Get copy state of the specified azure storage blob.</maml:para>
+			<maml:para>Get copy state of the specified Azure Storage blob.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -1003,7 +1003,7 @@ echo &quot;Total $total blobs in container $containerName&quot;</dev:code>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Get copy state of the specified azure storage blob.</maml:para>
+		<maml:para>Get copy state of the specified Azure Storage blob.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -1420,7 +1420,7 @@ echo &quot;Total $total blobs in container $containerName&quot;</dev:code>
 			</command:commandLines>
 		</command:example>
 		<command:example>
-			<maml:title>--------------------------  Get azure storage blob copy state using pipeline from GetAzureStorageContainer.  --------------------------</maml:title>
+			<maml:title>--------------------------  Get Azure Storage blob copy state using pipeline from GetAzureStorageContainer.  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -1456,7 +1456,7 @@ echo &quot;Total $total blobs in container $containerName&quot;</dev:code>
 	<command:details>
 		<command:name>Get-AzureStorageContainer</command:name>
 		<maml:description>
-			<maml:para>List azure storage containers.</maml:para>
+			<maml:para>List Azure Storage containers.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -1466,7 +1466,7 @@ echo &quot;Total $total blobs in container $containerName&quot;</dev:code>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>List azure storage containers.</maml:para>
+		<maml:para>List Azure Storage containers.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -1772,7 +1772,7 @@ echo &quot;Total $total blobs in container $containerName&quot;</dev:code>
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  Get azure storage blob by namne  --------------------------</maml:title>
+			<maml:title>--------------------------  Get Azure Storage blob by namne  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -1792,7 +1792,7 @@ echo &quot;Total $total blobs in container $containerName&quot;</dev:code>
 			</command:commandLines>
 		</command:example>
 		<command:example>
-			<maml:title>--------------------------  Get azure storage container by container name prefix  --------------------------</maml:title>
+			<maml:title>--------------------------  Get Azure Storage container by container name prefix  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -1866,7 +1866,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 	<command:details>
 		<command:name>Get-AzureStorageContainerStoredAccessPolicy</command:name>
 		<maml:description>
-			<maml:para>List the specified Stored Access Policy for an azure storage container, or list all the Stored Access Policies for an azure storage container.</maml:para>
+			<maml:para>List the specified Stored Access Policy for an Azure Storage container, or list all the Stored Access Policies for an Azure Storage container.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -1876,7 +1876,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>List the specified Stored Access Policy for an azure storage container, or list all the Stored Access Policies for an azure storage container.</maml:para>
+		<maml:para>List the specified Stored Access Policy for an Azure Storage container, or list all the Stored Access Policies for an Azure Storage container.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -1884,7 +1884,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 				<maml:name>Container</maml:name>
 				<maml:description>
-					<maml:para>Azure storage container name.</maml:para>
+					<maml:para>Azure Storage container name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -1898,7 +1898,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+					<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -1943,7 +1943,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 			<maml:name>Container</maml:name>
 			<maml:description>
-				<maml:para>Azure storage container name.</maml:para>
+				<maml:para>Azure Storage container name.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -1967,7 +1967,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+				<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -2147,7 +2147,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Get azure storage service CORS rules.</maml:para>
+		<maml:para>Get Azure Storage service CORS rules.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -2155,7 +2155,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
 				<maml:name>ServiceType</maml:name>
 				<maml:description>
-					<maml:para>Azure storage service type, such as Blob, Table, Queue.</maml:para>
+					<maml:para>Azure Storage service type, such as Blob, Table, Queue.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">StorageServiceType</command:parameterValue>
 			</command:parameter>
@@ -2207,7 +2207,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
 			<maml:name>ServiceType</maml:name>
 			<maml:description>
-				<maml:para>Azure storage service type, such as Blob, Table, Queue.</maml:para>
+				<maml:para>Azure Storage service type, such as Blob, Table, Queue.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">StorageServiceType</command:parameterValue>
 			<dev:type>
@@ -2884,7 +2884,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 	<command:details>
 		<command:name>Get-AzureStorageFileContent</command:name>
 		<maml:description>
-			<maml:para>Download the specified azure storage file.</maml:para>
+			<maml:para>Download the specified Azure Storage file.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -2894,7 +2894,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Download the specified azure storage file.</maml:para>
+		<maml:para>Download the specified Azure Storage file.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -2909,7 +2909,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
 				<maml:name>Path</maml:name>
 				<maml:description>
-					<maml:para>the path of the azure storage file to download</maml:para>
+					<maml:para>the path of the Azure Storage file to download</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -3003,7 +3003,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
 				<maml:name>Path</maml:name>
 				<maml:description>
-					<maml:para>the path of the azure storage file to download</maml:para>
+					<maml:para>the path of the Azure Storage file to download</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -3090,7 +3090,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
 				<maml:name>Path</maml:name>
 				<maml:description>
-					<maml:para>the path of the azure storage file to download</maml:para>
+					<maml:para>the path of the Azure Storage file to download</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -3408,7 +3408,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
 			<maml:name>Path</maml:name>
 			<maml:description>
-				<maml:para>the path of the azure storage file to download</maml:para>
+				<maml:para>the path of the Azure Storage file to download</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -3702,7 +3702,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 	<command:details>
 		<command:name>Get-AzureStorageFileCopyState</command:name>
 		<maml:description>
-			<maml:para>Get copy state of the specified azure storage file.</maml:para>
+			<maml:para>Get copy state of the specified Azure Storage file.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -3712,7 +3712,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Get copy state of the specified azure storage file.</maml:para>
+		<maml:para>Get copy state of the specified Azure Storage file.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -3720,14 +3720,14 @@ echo &quot;Total $total containers&quot;</dev:code>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
 				<maml:name>ShareName</maml:name>
 				<maml:description>
-					<maml:para>Azure storage share name.</maml:para>
+					<maml:para>Azure Storage share name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
 				<maml:name>FilePath</maml:name>
 				<maml:description>
-					<maml:para>Relative path in azure storage share to the azure storage file.</maml:para>
+					<maml:para>Relative path in Azure Storage share to the Azure Storage file.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -3942,7 +3942,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
 			<maml:name>ShareName</maml:name>
 			<maml:description>
-				<maml:para>Azure storage share name.</maml:para>
+				<maml:para>Azure Storage share name.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -3954,7 +3954,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
 			<maml:name>FilePath</maml:name>
 			<maml:description>
-				<maml:para>Relative path in azure storage share to the azure storage file.</maml:para>
+				<maml:para>Relative path in Azure Storage share to the Azure Storage file.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -4124,7 +4124,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 	<command:details>
 		<command:name>Get-AzureStorageQueue</command:name>
 		<maml:description>
-			<maml:para>list azure storage queues</maml:para>
+			<maml:para>list Azure Storage queues</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -4134,7 +4134,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>list azure storage queues</maml:para>
+		<maml:para>list Azure Storage queues</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -4334,7 +4334,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  List all azure storage queues  --------------------------</maml:title>
+			<maml:title>--------------------------  List all Azure Storage queues  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -4354,7 +4354,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 			</command:commandLines>
 		</command:example>
 		<command:example>
-			<maml:title>--------------------------  List azure storage queues using wildcard  --------------------------</maml:title>
+			<maml:title>--------------------------  List Azure Storage queues using wildcard  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -4374,7 +4374,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 			</command:commandLines>
 		</command:example>
 		<command:example>
-			<maml:title>--------------------------  List azure storage queues using queue name prefix  --------------------------</maml:title>
+			<maml:title>--------------------------  List Azure Storage queues using queue name prefix  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -4402,7 +4402,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 	<command:details>
 		<command:name>Get-AzureStorageQueueStoredAccessPolicy</command:name>
 		<maml:description>
-			<maml:para>List the specified Stored Access Policy for an azure storage queue, or list all the Stored Access Policies for an azure storage queue.</maml:para>
+			<maml:para>List the specified Stored Access Policy for an Azure Storage queue, or list all the Stored Access Policies for an Azure Storage queue.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -4412,7 +4412,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>List the specified Stored Access Policy for an azure storage queue, or list all the Stored Access Policies for an azure storage queue.</maml:para>
+		<maml:para>List the specified Stored Access Policy for an Azure Storage queue, or list all the Stored Access Policies for an Azure Storage queue.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -4420,7 +4420,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 				<maml:name>Queue</maml:name>
 				<maml:description>
-					<maml:para>Azure storage queue name.</maml:para>
+					<maml:para>Azure Storage queue name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -4434,7 +4434,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+					<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -4458,7 +4458,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 			<maml:name>Queue</maml:name>
 			<maml:description>
-				<maml:para>Azure storage queue name.</maml:para>
+				<maml:para>Azure Storage queue name.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -4482,7 +4482,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+				<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -4615,7 +4615,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 	<command:details>
 		<command:name>Get-AzureStorageServiceLoggingProperty</command:name>
 		<maml:description>
-			<maml:para>Get azure storage service logging properties.</maml:para>
+			<maml:para>Get Azure Storage service logging properties.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -4625,7 +4625,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Get azure storage service logging properties.</maml:para>
+		<maml:para>Get Azure Storage service logging properties.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -4633,14 +4633,14 @@ echo &quot;Total $total containers&quot;</dev:code>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
 				<maml:name>ServiceType</maml:name>
 				<maml:description>
-					<maml:para>Azure storage service type.</maml:para>
+					<maml:para>Azure Storage service type.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">StorageServiceType</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+					<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -4664,7 +4664,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
 			<maml:name>ServiceType</maml:name>
 			<maml:description>
-				<maml:para>Azure storage service type.</maml:para>
+				<maml:para>Azure Storage service type.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">StorageServiceType</command:parameterValue>
 			<dev:type>
@@ -4676,7 +4676,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+				<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -4782,7 +4782,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  Get azure storage blob service logging properties.  --------------------------</maml:title>
+			<maml:title>--------------------------  Get Azure Storage blob service logging properties.  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -4810,7 +4810,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 	<command:details>
 		<command:name>Get-AzureStorageServiceMetricsProperty</command:name>
 		<maml:description>
-			<maml:para>Get azure storage service metrics properties.</maml:para>
+			<maml:para>Get Azure Storage service metrics properties.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -4820,7 +4820,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Get azure storage service metrics properties.</maml:para>
+		<maml:para>Get Azure Storage service metrics properties.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -4828,7 +4828,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
 				<maml:name>ServiceType</maml:name>
 				<maml:description>
-					<maml:para>Azure storage service type.</maml:para>
+					<maml:para>Azure Storage service type.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">StorageServiceType</command:parameterValue>
 			</command:parameter>
@@ -4842,7 +4842,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+					<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -4866,7 +4866,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
 			<maml:name>ServiceType</maml:name>
 			<maml:description>
-				<maml:para>Azure storage service type.</maml:para>
+				<maml:para>Azure Storage service type.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">StorageServiceType</command:parameterValue>
 			<dev:type>
@@ -4890,7 +4890,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+				<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -4996,7 +4996,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  Get hour metrics properties for azure storage blob service.  --------------------------</maml:title>
+			<maml:title>--------------------------  Get hour metrics properties for Azure Storage blob service.  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -5027,7 +5027,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 	<command:details>
 		<command:name>Get-AzureStorageShare</command:name>
 		<maml:description>
-			<maml:para>List azure storage file shares.</maml:para>
+			<maml:para>List Azure Storage file shares.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -5037,7 +5037,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>List azure storage file shares.</maml:para>
+		<maml:para>List Azure Storage file shares.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -5404,7 +5404,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 	<command:details>
 		<command:name>Get-AzureStorageShareStoredAccessPolicy</command:name>
 		<maml:description>
-			<maml:para>Get the specified Stored Access Policy for an azure storage share, or list all the Stored Access Policies for an azure storage share.</maml:para>
+			<maml:para>Get the specified Stored Access Policy for an Azure Storage share, or list all the Stored Access Policies for an Azure Storage share.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -5414,7 +5414,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Get the specified Stored Access Policy for an azure storage share, or list all the Stored Access Policies for an azure storage share.</maml:para>
+		<maml:para>Get the specified Stored Access Policy for an Azure Storage share, or list all the Stored Access Policies for an Azure Storage share.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -5422,7 +5422,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 				<maml:name>ShareName</maml:name>
 				<maml:description>
-					<maml:para>Azure storage share name.</maml:para>
+					<maml:para>Azure Storage share name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -5436,7 +5436,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+					<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -5481,7 +5481,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 			<maml:name>ShareName</maml:name>
 			<maml:description>
-				<maml:para>Azure storage share name.</maml:para>
+				<maml:para>Azure Storage share name.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -5505,7 +5505,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+				<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -5659,7 +5659,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 	<command:details>
 		<command:name>Get-AzureStorageTable</command:name>
 		<maml:description>
-			<maml:para>List azure storage tables</maml:para>
+			<maml:para>List Azure Storage tables</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -5669,7 +5669,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>List azure storage tables</maml:para>
+		<maml:para>List Azure Storage tables</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -5869,7 +5869,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  List all azure storage tables  --------------------------</maml:title>
+			<maml:title>--------------------------  List all Azure Storage tables  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -5889,7 +5889,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 			</command:commandLines>
 		</command:example>
 		<command:example>
-			<maml:title>--------------------------  List azure storage tables using wildcard  --------------------------</maml:title>
+			<maml:title>--------------------------  List Azure Storage tables using wildcard  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -5909,7 +5909,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 			</command:commandLines>
 		</command:example>
 		<command:example>
-			<maml:title>--------------------------  List azure storage tables using table name prefix  --------------------------</maml:title>
+			<maml:title>--------------------------  List Azure Storage tables using table name prefix  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -5937,7 +5937,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 	<command:details>
 		<command:name>Get-AzureStorageTableStoredAccessPolicy</command:name>
 		<maml:description>
-			<maml:para>List the specified Stored Access Policy for an azure storage table, or list all the Stored Access Policies for an azure storage tabel.</maml:para>
+			<maml:para>List the specified Stored Access Policy for an Azure Storage table, or list all the Stored Access Policies for an Azure Storage tabel.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -5947,7 +5947,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>List the specified Stored Access Policy for an azure storage table, or list all the Stored Access Policies for an azure storage tabel.</maml:para>
+		<maml:para>List the specified Stored Access Policy for an Azure Storage table, or list all the Stored Access Policies for an Azure Storage tabel.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -5955,7 +5955,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 				<maml:name>Table</maml:name>
 				<maml:description>
-					<maml:para>Azure storage table name.</maml:para>
+					<maml:para>Azure Storage table name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -5969,7 +5969,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+					<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -5993,7 +5993,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 			<maml:name>Table</maml:name>
 			<maml:description>
-				<maml:para>Azure storage table name.</maml:para>
+				<maml:para>Azure Storage table name.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -6017,7 +6017,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+				<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -6151,7 +6151,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 	<command:details>
 		<command:name>New-AzureStorageAccountSASToken</command:name>
 		<maml:description>
-			<maml:para>Generate Shared Access Signature token for azure storage account.</maml:para>
+			<maml:para>Generate an account-level Shared Access Signature to delegate permissions for multiple services, or for those not available with an object-level SAS. Examples include Get/Set Service properties, and write and delete operations for containers, queues, tables, and file shares.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -6161,7 +6161,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Generate Shared Access Signature token for azure storage account.</maml:para>
+		<maml:para>Generate Shared Access Signature token for Azure Storage Account.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -6169,7 +6169,7 @@ echo &quot;Total $total containers&quot;</dev:code>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Service</maml:name>
 				<maml:description>
-					<maml:para>Azure storage service type, such as Blob, Table, Queue, File.</maml:para>
+					<maml:para>Azure Storage service type, such as Blob, Table, Queue, File.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">SharedAccessAccountServices</command:parameterValue>
 			</command:parameter>
@@ -6219,7 +6219,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+					<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -6243,7 +6243,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Service</maml:name>
 			<maml:description>
-				<maml:para>Azure storage service type, such as Blob, Table, Queue, File.</maml:para>
+				<maml:para>Azure Storage service type, such as Blob, Table, Queue, File.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">SharedAccessAccountServices</command:parameterValue>
 			<dev:type>
@@ -6328,7 +6328,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+				<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -6446,7 +6446,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 	<command:details>
 		<command:name>New-AzureStorageBlobSASToken</command:name>
 		<maml:description>
-			<maml:para>Generate Shared Access Signature token for azure storage blob.</maml:para>
+			<maml:para>Generate Shared Access Signature token for Azure Storage blob.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -6456,7 +6456,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Generate Shared Access Signature token for azure storage blob.</maml:para>
+		<maml:para>Generate Shared Access Signature token for Azure Storage blob.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -6464,14 +6464,14 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
 				<maml:name>Container</maml:name>
 				<maml:description>
-					<maml:para>Azure storage container name.</maml:para>
+					<maml:para>Azure Storage container name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
 				<maml:name>Blob</maml:name>
 				<maml:description>
-					<maml:para>Azure storage blob name.</maml:para>
+					<maml:para>Azure Storage blob name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -6521,7 +6521,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+					<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -6595,7 +6595,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+					<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -6669,7 +6669,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+					<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -6693,14 +6693,14 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
 				<maml:name>Container</maml:name>
 				<maml:description>
-					<maml:para>Azure storage container name.</maml:para>
+					<maml:para>Azure Storage container name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
 				<maml:name>Blob</maml:name>
 				<maml:description>
-					<maml:para>Azure storage blob name.</maml:para>
+					<maml:para>Azure Storage blob name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -6750,7 +6750,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+					<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -6774,7 +6774,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
 			<maml:name>Container</maml:name>
 			<maml:description>
-				<maml:para>Azure storage container name.</maml:para>
+				<maml:para>Azure Storage container name.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -6786,7 +6786,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
 			<maml:name>Blob</maml:name>
 			<maml:description>
-				<maml:para>Azure storage blob name.</maml:para>
+				<maml:para>Azure Storage blob name.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -6871,7 +6871,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+				<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -7030,7 +7030,7 @@ New-AzureStorageBlobSASToken -Container cname -Blob bname -Permission rwd -Start
 	<command:details>
 		<command:name>New-AzureStorageContainer</command:name>
 		<maml:description>
-			<maml:para>Create an azure storage container.</maml:para>
+			<maml:para>Create an Azure Storage container.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -7040,7 +7040,7 @@ New-AzureStorageBlobSASToken -Container cname -Blob bname -Permission rwd -Start
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Create an azure storage container.</maml:para>
+		<maml:para>Create an Azure Storage container.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -7249,7 +7249,7 @@ New-AzureStorageBlobSASToken -Container cname -Blob bname -Permission rwd -Start
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  Create a new azure storage container  --------------------------</maml:title>
+			<maml:title>--------------------------  Create a new Azure Storage container  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -7269,7 +7269,7 @@ New-AzureStorageBlobSASToken -Container cname -Blob bname -Permission rwd -Start
 			</command:commandLines>
 		</command:example>
 		<command:example>
-			<maml:title>--------------------------  Create multiple azure storage containers.  --------------------------</maml:title>
+			<maml:title>--------------------------  Create multiple Azure Storage containers.  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -7309,7 +7309,7 @@ New-AzureStorageBlobSASToken -Container cname -Blob bname -Permission rwd -Start
 	<command:details>
 		<command:name>New-AzureStorageContainerSASToken</command:name>
 		<maml:description>
-			<maml:para>Generate Shared Access Signature token for azure storage container.</maml:para>
+			<maml:para>Generate Shared Access Signature token for Azure Storage container.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -7319,7 +7319,7 @@ New-AzureStorageBlobSASToken -Container cname -Blob bname -Permission rwd -Start
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Generate Shared Access Signature token for azure storage container.</maml:para>
+		<maml:para>Generate Shared Access Signature token for Azure Storage container.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -7327,7 +7327,7 @@ New-AzureStorageBlobSASToken -Container cname -Blob bname -Permission rwd -Start
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para>Azure storage container name.</maml:para>
+					<maml:para>Azure Storage container name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -7377,7 +7377,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+					<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -7401,7 +7401,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para>Azure storage container name.</maml:para>
+					<maml:para>Azure Storage container name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -7451,7 +7451,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+					<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -7475,7 +7475,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 			<maml:name>Name</maml:name>
 			<maml:description>
-				<maml:para>Azure storage container name.</maml:para>
+				<maml:para>Azure Storage container name.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -7560,7 +7560,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+				<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -7726,7 +7726,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 	<command:details>
 		<command:name>New-AzureStorageContainerStoredAccessPolicy</command:name>
 		<maml:description>
-			<maml:para>Create Stored Access Policy for azure storage container.</maml:para>
+			<maml:para>Create Stored Access Policy for Azure Storage container.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -7736,7 +7736,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Create Stored Access Policy for azure storage container.</maml:para>
+		<maml:para>Create Stored Access Policy for Azure Storage container.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -7744,7 +7744,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 				<maml:name>Container</maml:name>
 				<maml:description>
-					<maml:para>Azure storage container name.</maml:para>
+					<maml:para>Azure Storage container name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -7779,7 +7779,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+					<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -7824,7 +7824,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 			<maml:name>Container</maml:name>
 			<maml:description>
-				<maml:para>Azure storage container name.</maml:para>
+				<maml:para>Azure Storage container name.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -7884,7 +7884,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+				<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -8034,7 +8034,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 	<command:details>
 		<command:name>New-AzureStorageContext</command:name>
 		<maml:description>
-			<maml:para>Create an azure storage context using azure storage credentials.</maml:para>
+			<maml:para>Create an Azure Storage context using Azure Storage credentials.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -8044,7 +8044,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Create an azure storage context using azure storage credentials.</maml:para>
+		<maml:para>Create an Azure Storage context using Azure Storage credentials.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -8052,14 +8052,14 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
 				<maml:name>StorageAccountName</maml:name>
 				<maml:description>
-					<maml:para>Azure storage account name</maml:para>
+					<maml:para>Azure Storage Account name</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
 				<maml:name>StorageAccountKey</maml:name>
 				<maml:description>
-					<maml:para>Azure storage account key.</maml:para>
+					<maml:para>Azure Storage Account key.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -8097,7 +8097,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
 				<maml:name>StorageAccountName</maml:name>
 				<maml:description>
-					<maml:para>Azure storage account name</maml:para>
+					<maml:para>Azure Storage Account name</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -8135,7 +8135,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
 				<maml:name>StorageAccountName</maml:name>
 				<maml:description>
-					<maml:para>Azure storage account name</maml:para>
+					<maml:para>Azure Storage Account name</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -8180,14 +8180,14 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
 				<maml:name>StorageAccountName</maml:name>
 				<maml:description>
-					<maml:para>Azure storage account name</maml:para>
+					<maml:para>Azure Storage Account name</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
 				<maml:name>StorageAccountKey</maml:name>
 				<maml:description>
-					<maml:para>Azure storage account key.</maml:para>
+					<maml:para>Azure Storage Account key.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -8225,7 +8225,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
 				<maml:name>StorageAccountName</maml:name>
 				<maml:description>
-					<maml:para>Azure storage account name</maml:para>
+					<maml:para>Azure Storage Account name</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -8270,7 +8270,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
 				<maml:name>StorageAccountName</maml:name>
 				<maml:description>
-					<maml:para>Azure storage account name</maml:para>
+					<maml:para>Azure Storage Account name</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -8315,7 +8315,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>ConnectionString</maml:name>
 				<maml:description>
-					<maml:para>Azure storage connection string.</maml:para>
+					<maml:para>Azure Storage connection string.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -8363,7 +8363,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
 			<maml:name>StorageAccountName</maml:name>
 			<maml:description>
-				<maml:para>Azure storage account name</maml:para>
+				<maml:para>Azure Storage Account name</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -8375,7 +8375,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
 			<maml:name>StorageAccountKey</maml:name>
 			<maml:description>
-				<maml:para>Azure storage account key.</maml:para>
+				<maml:para>Azure Storage Account key.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -8471,7 +8471,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>ConnectionString</maml:name>
 			<maml:description>
-				<maml:para>Azure storage connection string.</maml:para>
+				<maml:para>Azure Storage connection string.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -8664,7 +8664,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</command:commandLines>
 		</command:example>
 		<command:example>
-			<maml:title>--------------------------  Create azure storage context with specified storage end point  --------------------------</maml:title>
+			<maml:title>--------------------------  Create Azure Storage context with specified storage end point  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -8684,7 +8684,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</command:commandLines>
 		</command:example>
 		<command:example>
-			<maml:title>--------------------------  Create azure storage context with specified storage end point  --------------------------</maml:title>
+			<maml:title>--------------------------  Create Azure Storage context with specified storage end point  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -8704,7 +8704,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</command:commandLines>
 		</command:example>
 		<command:example>
-			<maml:title>--------------------------  Create azure storage context with specified azure environment  --------------------------</maml:title>
+			<maml:title>--------------------------  Create Azure Storage context with specified azure environment  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -8754,7 +8754,7 @@ $context | Get-AzureStorageBlob -Container abc</dev:code>
 	<command:details>
 		<command:name>New-AzureStorageDirectory</command:name>
 		<maml:description>
-			<maml:para>Create an azure storage directory.</maml:para>
+			<maml:para>Create an Azure Storage directory.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -8764,7 +8764,7 @@ $context | Get-AzureStorageBlob -Container abc</dev:code>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Create an azure storage directory.</maml:para>
+		<maml:para>Create an Azure Storage directory.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -9273,7 +9273,7 @@ $context | Get-AzureStorageBlob -Container abc</dev:code>
 	<command:details>
 		<command:name>New-AzureStorageFileSASToken</command:name>
 		<maml:description>
-			<maml:para>Generate Shared Access Signature token for azure storage file.</maml:para>
+			<maml:para>Generate Shared Access Signature token for Azure Storage file.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -9283,7 +9283,7 @@ $context | Get-AzureStorageBlob -Container abc</dev:code>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Generate Shared Access Signature token for azure storage file.</maml:para>
+		<maml:para>Generate Shared Access Signature token for Azure Storage file.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -9291,14 +9291,14 @@ $context | Get-AzureStorageBlob -Container abc</dev:code>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 				<maml:name>ShareName</maml:name>
 				<maml:description>
-					<maml:para>Azure storage share name.</maml:para>
+					<maml:para>Azure Storage share name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
 				<maml:name>Path</maml:name>
 				<maml:description>
-					<maml:para>Relative path in azure storage share to the azure storage file.</maml:para>
+					<maml:para>Relative path in Azure Storage share to the Azure Storage file.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -9348,7 +9348,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+					<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -9372,14 +9372,14 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 				<maml:name>ShareName</maml:name>
 				<maml:description>
-					<maml:para>Azure storage share name.</maml:para>
+					<maml:para>Azure Storage share name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
 				<maml:name>Path</maml:name>
 				<maml:description>
-					<maml:para>Relative path in azure storage share to the azure storage file.</maml:para>
+					<maml:para>Relative path in Azure Storage share to the Azure Storage file.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -9429,7 +9429,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+					<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -9587,7 +9587,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 			<maml:name>ShareName</maml:name>
 			<maml:description>
-				<maml:para>Azure storage share name.</maml:para>
+				<maml:para>Azure Storage share name.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -9599,7 +9599,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
 			<maml:name>Path</maml:name>
 			<maml:description>
-				<maml:para>Relative path in azure storage share to the azure storage file.</maml:para>
+				<maml:para>Relative path in Azure Storage share to the Azure Storage file.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -9684,7 +9684,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+				<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -9828,7 +9828,7 @@ New-AzureStorageFileSASToken -ShareName share -Path filePath -Permission rwd -St
 	<command:details>
 		<command:name>New-AzureStorageQueue</command:name>
 		<maml:description>
-			<maml:para>Create an azure storage queue</maml:para>
+			<maml:para>Create an Azure Storage queue</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -9838,7 +9838,7 @@ New-AzureStorageFileSASToken -ShareName share -Path filePath -Permission rwd -St
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Create an azure storage queue</maml:para>
+		<maml:para>Create an Azure Storage queue</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -9995,7 +9995,7 @@ New-AzureStorageFileSASToken -ShareName share -Path filePath -Permission rwd -St
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  Create an azure storage queue  --------------------------</maml:title>
+			<maml:title>--------------------------  Create an Azure Storage queue  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -10015,7 +10015,7 @@ New-AzureStorageFileSASToken -ShareName share -Path filePath -Permission rwd -St
 			</command:commandLines>
 		</command:example>
 		<command:example>
-			<maml:title>--------------------------  Create multiple azure storage queues  --------------------------</maml:title>
+			<maml:title>--------------------------  Create multiple Azure Storage queues  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -10043,7 +10043,7 @@ New-AzureStorageFileSASToken -ShareName share -Path filePath -Permission rwd -St
 	<command:details>
 		<command:name>New-AzureStorageQueueSASToken</command:name>
 		<maml:description>
-			<maml:para>Generate Shared Access Signature token for azure storage queue.</maml:para>
+			<maml:para>Generate Shared Access Signature token for Azure Storage queue.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -10053,7 +10053,7 @@ New-AzureStorageFileSASToken -ShareName share -Path filePath -Permission rwd -St
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Generate Shared Access Signature token for azure storage queue.</maml:para>
+		<maml:para>Generate Shared Access Signature token for Azure Storage queue.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -10061,7 +10061,7 @@ New-AzureStorageFileSASToken -ShareName share -Path filePath -Permission rwd -St
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para>Azure storage queue name.</maml:para>
+					<maml:para>Azure Storage queue name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -10111,7 +10111,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+					<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -10135,7 +10135,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para>Azure storage queue name.</maml:para>
+					<maml:para>Azure Storage queue name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -10185,7 +10185,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+					<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -10209,7 +10209,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 			<maml:name>Name</maml:name>
 			<maml:description>
-				<maml:para>Azure storage queue name.</maml:para>
+				<maml:para>Azure Storage queue name.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -10294,7 +10294,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+				<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -10440,7 +10440,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 	<command:details>
 		<command:name>New-AzureStorageQueueStoredAccessPolicy</command:name>
 		<maml:description>
-			<maml:para>Create Stored Access Policy for azure storage queue.</maml:para>
+			<maml:para>Create Stored Access Policy for Azure Storage queue.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -10450,7 +10450,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Create Stored Access Policy for azure storage queue.</maml:para>
+		<maml:para>Create Stored Access Policy for Azure Storage queue.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -10458,7 +10458,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 				<maml:name>Queue</maml:name>
 				<maml:description>
-					<maml:para>Azure storage queue name.</maml:para>
+					<maml:para>Azure Storage queue name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -10493,7 +10493,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+					<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -10517,7 +10517,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 			<maml:name>Queue</maml:name>
 			<maml:description>
-				<maml:para>Azure storage queue name.</maml:para>
+				<maml:para>Azure Storage queue name.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -10577,7 +10577,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+				<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -10691,7 +10691,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 	<command:details>
 		<command:name>New-AzureStorageShare</command:name>
 		<maml:description>
-			<maml:para>Create a new Azure storage file share.</maml:para>
+			<maml:para>Create a new Azure Storage file share.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -10701,7 +10701,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Create a new Azure storage file share.</maml:para>
+		<maml:para>Create a new Azure Storage file share.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -11051,7 +11051,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 	<command:details>
 		<command:name>New-AzureStorageShareSASToken</command:name>
 		<maml:description>
-			<maml:para>Generate Shared Access Signature token for azure storage share.</maml:para>
+			<maml:para>Generate Shared Access Signature token for Azure Storage share.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -11061,7 +11061,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Generate Shared Access Signature token for azure storage share.</maml:para>
+		<maml:para>Generate Shared Access Signature token for Azure Storage share.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -11069,7 +11069,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 				<maml:name>ShareName</maml:name>
 				<maml:description>
-					<maml:para>Azure storage share name.</maml:para>
+					<maml:para>Azure Storage share name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -11119,7 +11119,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+					<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -11143,7 +11143,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 				<maml:name>ShareName</maml:name>
 				<maml:description>
-					<maml:para>Azure storage share name.</maml:para>
+					<maml:para>Azure Storage share name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -11193,7 +11193,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+					<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -11217,7 +11217,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 			<maml:name>ShareName</maml:name>
 			<maml:description>
-				<maml:para>Azure storage share name.</maml:para>
+				<maml:para>Azure Storage share name.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -11302,7 +11302,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+				<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -11452,7 +11452,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 	<command:details>
 		<command:name>New-AzureStorageShareStoredAccessPolicy</command:name>
 		<maml:description>
-			<maml:para>Create Stored Access Policy on an azure storage share.</maml:para>
+			<maml:para>Create Stored Access Policy on an Azure Storage share.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -11462,7 +11462,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Create Stored Access Policy on an azure storage share.</maml:para>
+		<maml:para>Create Stored Access Policy on an Azure Storage share.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -11470,7 +11470,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 				<maml:name>ShareName</maml:name>
 				<maml:description>
-					<maml:para>Azure storage share name.</maml:para>
+					<maml:para>Azure Storage share name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -11505,7 +11505,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+					<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -11550,7 +11550,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 			<maml:name>ShareName</maml:name>
 			<maml:description>
-				<maml:para>Azure storage share name.</maml:para>
+				<maml:para>Azure Storage share name.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -11610,7 +11610,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+				<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -11744,7 +11744,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 	<command:details>
 		<command:name>New-AzureStorageTable</command:name>
 		<maml:description>
-			<maml:para>Create an azure storage table</maml:para>
+			<maml:para>Create an Azure Storage table</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -11754,7 +11754,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Create an azure storage table</maml:para>
+		<maml:para>Create an Azure Storage table</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -11911,7 +11911,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  Create an azure storage table  --------------------------</maml:title>
+			<maml:title>--------------------------  Create an Azure Storage table  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -11931,7 +11931,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</command:commandLines>
 		</command:example>
 		<command:example>
-			<maml:title>--------------------------  Create multiple azure storage tables  --------------------------</maml:title>
+			<maml:title>--------------------------  Create multiple Azure Storage tables  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -11959,7 +11959,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 	<command:details>
 		<command:name>New-AzureStorageTableSASToken</command:name>
 		<maml:description>
-			<maml:para>Generate Shared Access Signature token for azure storage table.</maml:para>
+			<maml:para>Generate Shared Access Signature token for Azure Storage table.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -11969,7 +11969,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Generate Shared Access Signature token for azure storage table.</maml:para>
+		<maml:para>Generate Shared Access Signature token for Azure Storage table.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -11977,7 +11977,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para>Azure storage table name.</maml:para>
+					<maml:para>Azure Storage table name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -12055,7 +12055,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+					<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -12079,7 +12079,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para>Azure storage table name.</maml:para>
+					<maml:para>Azure Storage table name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -12157,7 +12157,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+					<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -12181,7 +12181,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 			<maml:name>Name</maml:name>
 			<maml:description>
-				<maml:para>Azure storage table name.</maml:para>
+				<maml:para>Azure Storage table name.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -12314,7 +12314,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+				<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -12479,7 +12479,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 	<command:details>
 		<command:name>New-AzureStorageTableStoredAccessPolicy</command:name>
 		<maml:description>
-			<maml:para>Create Stored Access Policy for azure storage table.</maml:para>
+			<maml:para>Create Stored Access Policy for Azure Storage table.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -12489,7 +12489,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Create Stored Access Policy for azure storage table.</maml:para>
+		<maml:para>Create Stored Access Policy for Azure Storage table.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -12497,7 +12497,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 				<maml:name>Table</maml:name>
 				<maml:description>
-					<maml:para>Azure storage table name.</maml:para>
+					<maml:para>Azure Storage table name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -12532,7 +12532,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+					<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -12556,7 +12556,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 			<maml:name>Table</maml:name>
 			<maml:description>
-				<maml:para>Azure storage table name.</maml:para>
+				<maml:para>Azure Storage table name.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -12616,7 +12616,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+				<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -12730,7 +12730,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 	<command:details>
 		<command:name>Remove-AzureStorageBlob</command:name>
 		<maml:description>
-			<maml:para>Remove the specified azure storage blob.</maml:para>
+			<maml:para>Remove the specified Azure Storage blob.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -12740,7 +12740,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Remove the specified azure storage blob.</maml:para>
+		<maml:para>Remove the specified Azure Storage blob.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -13261,7 +13261,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  Remove azure storage blob by name  --------------------------</maml:title>
+			<maml:title>--------------------------  Remove Azure Storage blob by name  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -13281,7 +13281,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</command:commandLines>
 		</command:example>
 		<command:example>
-			<maml:title>--------------------------  Remove azure storage blob using pipeline from GetAzureStorageBlob  --------------------------</maml:title>
+			<maml:title>--------------------------  Remove Azure Storage blob using pipeline from GetAzureStorageBlob  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -13301,7 +13301,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</command:commandLines>
 		</command:example>
 		<command:example>
-			<maml:title>--------------------------  Remove azure storage blob using pipeline from GetAzureStorageContainer  --------------------------</maml:title>
+			<maml:title>--------------------------  Remove Azure Storage blob using pipeline from GetAzureStorageContainer  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -13341,7 +13341,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 	<command:details>
 		<command:name>Remove-AzureStorageContainer</command:name>
 		<maml:description>
-			<maml:para>Remove the specified azure storage container.</maml:para>
+			<maml:para>Remove the specified Azure Storage container.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -13351,7 +13351,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Remove the specified azure storage container.</maml:para>
+		<maml:para>Remove the specified Azure Storage container.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -13625,7 +13625,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 	<command:details>
 		<command:name>Remove-AzureStorageContainerStoredAccessPolicy</command:name>
 		<maml:description>
-			<maml:para>Remove Stored Access Policy from azure storage container.</maml:para>
+			<maml:para>Remove Stored Access Policy from Azure Storage container.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -13635,7 +13635,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Remove Stored Access Policy from azure storage container.</maml:para>
+		<maml:para>Remove Stored Access Policy from Azure Storage container.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -13643,7 +13643,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 				<maml:name>Container</maml:name>
 				<maml:description>
-					<maml:para>Azure storage container name.</maml:para>
+					<maml:para>Azure Storage container name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -13730,7 +13730,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 			<maml:name>Container</maml:name>
 			<maml:description>
-				<maml:para>Azure storage container name.</maml:para>
+				<maml:para>Azure Storage container name.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -13962,7 +13962,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Clear azure storage service CORS rules. This cmdlet will delete all CORS rules in the specific azure storage service.</maml:para>
+		<maml:para>Clear Azure Storage service CORS rules. This cmdlet will delete all CORS rules in the specific Azure Storage service.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -13970,7 +13970,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
 				<maml:name>ServiceType</maml:name>
 				<maml:description>
-					<maml:para>Azure storage service type, such as Blob, Table, Queue.</maml:para>
+					<maml:para>Azure Storage service type, such as Blob, Table, Queue.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">StorageServiceType</command:parameterValue>
 			</command:parameter>
@@ -14022,7 +14022,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
 			<maml:name>ServiceType</maml:name>
 			<maml:description>
-				<maml:para>Azure storage service type, such as Blob, Table, Queue.</maml:para>
+				<maml:para>Azure Storage service type, such as Blob, Table, Queue.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">StorageServiceType</command:parameterValue>
 			<dev:type>
@@ -14168,7 +14168,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 	<command:details>
 		<command:name>Remove-AzureStorageDirectory</command:name>
 		<maml:description>
-			<maml:para>Remove an azure storage file directory.</maml:para>
+			<maml:para>Remove an Azure Storage file directory.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -14178,7 +14178,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Remove an azure storage file directory.</maml:para>
+		<maml:para>Remove an Azure Storage file directory.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -15514,7 +15514,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 	<command:details>
 		<command:name>Remove-AzureStorageQueue</command:name>
 		<maml:description>
-			<maml:para>Remove the specified azure storage queue</maml:para>
+			<maml:para>Remove the specified Azure Storage queue</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -15524,7 +15524,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Remove the specified azure storage queue</maml:para>
+		<maml:para>Remove the specified Azure Storage queue</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -15757,7 +15757,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  Remove azure storage queue by queue name  --------------------------</maml:title>
+			<maml:title>--------------------------  Remove Azure Storage queue by queue name  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -15777,7 +15777,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</command:commandLines>
 		</command:example>
 		<command:example>
-			<maml:title>--------------------------  Remove azure storage queue using GetAzureStorageQueue  --------------------------</maml:title>
+			<maml:title>--------------------------  Remove Azure Storage queue using GetAzureStorageQueue  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -15805,7 +15805,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 	<command:details>
 		<command:name>Remove-AzureStorageQueueStoredAccessPolicy</command:name>
 		<maml:description>
-			<maml:para>Remove Stored Access Policy from azure storage queue.</maml:para>
+			<maml:para>Remove Stored Access Policy from Azure Storage queue.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -15815,7 +15815,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Remove Stored Access Policy from azure storage queue.</maml:para>
+		<maml:para>Remove Stored Access Policy from Azure Storage queue.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -15823,7 +15823,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 				<maml:name>Queue</maml:name>
 				<maml:description>
-					<maml:para>Azure storage queue name.</maml:para>
+					<maml:para>Azure Storage queue name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -15889,7 +15889,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 			<maml:name>Queue</maml:name>
 			<maml:description>
-				<maml:para>Azure storage queue name.</maml:para>
+				<maml:para>Azure Storage queue name.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -16075,7 +16075,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 	<command:details>
 		<command:name>Remove-AzureStorageShare</command:name>
 		<maml:description>
-			<maml:para>Remove an azure storage file share.</maml:para>
+			<maml:para>Remove an Azure Storage file share.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -16085,7 +16085,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Remove an azure storage file share.</maml:para>
+		<maml:para>Remove an Azure Storage file share.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -16590,7 +16590,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 	<command:details>
 		<command:name>Remove-AzureStorageShareStoredAccessPolicy</command:name>
 		<maml:description>
-			<maml:para>Remove a Stored Access Policy from an azure storage share.</maml:para>
+			<maml:para>Remove a Stored Access Policy from an Azure Storage share.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -16600,7 +16600,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Remove a Stored Access Policy from an azure storage share.</maml:para>
+		<maml:para>Remove a Stored Access Policy from an Azure Storage share.</maml:para>
 	</maml:description>	
 	<command:syntax>
 		<command:syntaxItem>
@@ -16608,14 +16608,14 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 				<maml:name>ShareName</maml:name>
 				<maml:description>
-					<maml:para>Azure storage share name.</maml:para>
+					<maml:para>Azure Storage share name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>Policy</maml:name>
 				<maml:description>
-					<maml:para>Name of the Azure storage Shared Access Policy to delete.</maml:para>
+					<maml:para>Name of the Azure Storage Shared Access Policy to delete.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -16695,7 +16695,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 			<maml:name>ShareName</maml:name>
 			<maml:description>
-				<maml:para>Azure storage share name.</maml:para>
+				<maml:para>Azure Storage share name.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -16707,7 +16707,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 			<maml:name>Policy</maml:name>
 			<maml:description>
-				<maml:para>Name of the Azure storage Shared Access Policy to delete.</maml:para>
+				<maml:para>Name of the Azure Storage Shared Access Policy to delete.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -16885,7 +16885,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  Remove a stored access policy from an azure storage share  --------------------------</maml:title>
+			<maml:title>--------------------------  Remove a stored access policy from an Azure Storage share  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -16913,7 +16913,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 	<command:details>
 		<command:name>Remove-AzureStorageTable</command:name>
 		<maml:description>
-			<maml:para>Remove azure storage table</maml:para>
+			<maml:para>Remove Azure Storage table</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -16923,7 +16923,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Remove azure storage table</maml:para>
+		<maml:para>Remove Azure Storage table</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -17156,7 +17156,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  Remove azure storage table by table name  --------------------------</maml:title>
+			<maml:title>--------------------------  Remove Azure Storage table by table name  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -17176,7 +17176,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			</command:commandLines>
 		</command:example>
 		<command:example>
-			<maml:title>--------------------------  Remove azure storage tables using GetAzureStorageTable  --------------------------</maml:title>
+			<maml:title>--------------------------  Remove Azure Storage tables using GetAzureStorageTable  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -17204,7 +17204,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 	<command:details>
 		<command:name>Remove-AzureStorageTableStoredAccessPolicy</command:name>
 		<maml:description>
-			<maml:para>Remove Stored Access Policy from azure storage table.</maml:para>
+			<maml:para>Remove Stored Access Policy from Azure Storage table.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -17214,7 +17214,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Remove Stored Access Policy from azure storage table.</maml:para>
+		<maml:para>Remove Stored Access Policy from Azure Storage table.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -17222,7 +17222,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 				<maml:name>Table</maml:name>
 				<maml:description>
-					<maml:para>Azure storage table name.</maml:para>
+					<maml:para>Azure Storage table name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -17288,7 +17288,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 			<maml:name>Table</maml:name>
 			<maml:description>
-				<maml:para>Azure storage table name.</maml:para>
+				<maml:para>Azure Storage table name.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -17474,7 +17474,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 	<command:details>
 		<command:name>Set-AzureStorageBlobContent</command:name>
 		<maml:description>
-			<maml:para>Upload local file to azure storage blob.</maml:para>
+			<maml:para>Upload local file to Azure Storage blob.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -17484,7 +17484,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Upload local file to azure storage blob.</maml:para>
+		<maml:para>Upload local file to Azure Storage blob.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -18126,7 +18126,7 @@ Set-AzureStorageBlobContent -File filename -Container containername -Metadata $m
 	<command:details>
 		<command:name>Set-AzureStorageContainerAcl</command:name>
 		<maml:description>
-			<maml:para>Set the public access permission to the specified azure storage container.</maml:para>
+			<maml:para>Set the public access permission to the specified Azure Storage container.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -18136,7 +18136,7 @@ Set-AzureStorageBlobContent -File filename -Container containername -Metadata $m
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Set the public access permission to the specified azure storage container.</maml:para>
+		<maml:para>Set the public access permission to the specified Azure Storage container.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -18364,7 +18364,7 @@ Set-AzureStorageBlobContent -File filename -Container containername -Metadata $m
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  Set azure storage container acl by name.  --------------------------</maml:title>
+			<maml:title>--------------------------  Set Azure Storage container acl by name.  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -18384,7 +18384,7 @@ Set-AzureStorageBlobContent -File filename -Container containername -Metadata $m
 			</command:commandLines>
 		</command:example>
 		<command:example>
-			<maml:title>--------------------------  Set azure storage container acl using pipeline by GetAzureStorageContainer  --------------------------</maml:title>
+			<maml:title>--------------------------  Set Azure Storage container acl using pipeline by GetAzureStorageContainer  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -18428,7 +18428,7 @@ Set-AzureStorageBlobContent -File filename -Container containername -Metadata $m
 	<command:details>
 		<command:name>Set-AzureStorageContainerStoredAccessPolicy</command:name>
 		<maml:description>
-			<maml:para>Set Stored Access Policy for azure storage container.</maml:para>
+			<maml:para>Set Stored Access Policy for Azure Storage container.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -18438,7 +18438,7 @@ Set-AzureStorageBlobContent -File filename -Container containername -Metadata $m
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Set Stored Access Policy for azure storage container.</maml:para>
+		<maml:para>Set Stored Access Policy for Azure Storage container.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -18446,7 +18446,7 @@ Set-AzureStorageBlobContent -File filename -Container containername -Metadata $m
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 				<maml:name>Container</maml:name>
 				<maml:description>
-					<maml:para>Azure storage container name.</maml:para>
+					<maml:para>Azure Storage container name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -18495,7 +18495,7 @@ Set-AzureStorageBlobContent -File filename -Container containername -Metadata $m
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+					<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -18540,7 +18540,7 @@ Set-AzureStorageBlobContent -File filename -Container containername -Metadata $m
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 			<maml:name>Container</maml:name>
 			<maml:description>
-				<maml:para>Azure storage container name.</maml:para>
+				<maml:para>Azure Storage container name.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -18624,7 +18624,7 @@ Set-AzureStorageBlobContent -File filename -Container containername -Metadata $m
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+				<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -18774,7 +18774,7 @@ Set-AzureStorageBlobContent -File filename -Container containername -Metadata $m
 	<command:details>
 		<command:name>Set-AzureStorageCORSRule</command:name>
 		<maml:description>
-			<maml:para>Set azure storage service CORS rules.</maml:para>
+			<maml:para>Set Azure Storage service CORS rules.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -18792,7 +18792,7 @@ Set-AzureStorageBlobContent -File filename -Container containername -Metadata $m
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
 				<maml:name>ServiceType</maml:name>
 				<maml:description>
-					<maml:para>Azure storage service type, such as Blob, Table, Queue.</maml:para>
+					<maml:para>Azure Storage service type, such as Blob, Table, Queue.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">StorageServiceType</command:parameterValue>
 			</command:parameter>
@@ -18858,7 +18858,7 @@ Set-AzureStorageBlobContent -File filename -Container containername -Metadata $m
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
 			<maml:name>ServiceType</maml:name>
 			<maml:description>
-				<maml:para>Azure storage service type, such as Blob, Table, Queue.</maml:para>
+				<maml:para>Azure Storage service type, such as Blob, Table, Queue.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">StorageServiceType</command:parameterValue>
 			<dev:type>
@@ -19108,7 +19108,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Force</maml:name>
 				<maml:description>
-					<maml:para>If this parameter is set, it will overwrite the azure storage file when there is name conflict.</maml:para>
+					<maml:para>If this parameter is set, it will overwrite the Azure Storage file when there is name conflict.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
@@ -19202,7 +19202,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Force</maml:name>
 				<maml:description>
-					<maml:para>If this parameter is set, it will overwrite the azure storage file when there is name conflict.</maml:para>
+					<maml:para>If this parameter is set, it will overwrite the Azure Storage file when there is name conflict.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
@@ -19289,7 +19289,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Force</maml:name>
 				<maml:description>
-					<maml:para>If this parameter is set, it will overwrite the azure storage file when there is name conflict.</maml:para>
+					<maml:para>If this parameter is set, it will overwrite the Azure Storage file when there is name conflict.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
@@ -19369,7 +19369,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Force</maml:name>
 				<maml:description>
-					<maml:para>If this parameter is set, it will overwrite the azure storage file when there is name conflict.</maml:para>
+					<maml:para>If this parameter is set, it will overwrite the Azure Storage file when there is name conflict.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
@@ -19456,7 +19456,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Force</maml:name>
 				<maml:description>
-					<maml:para>If this parameter is set, it will overwrite the azure storage file when there is name conflict.</maml:para>
+					<maml:para>If this parameter is set, it will overwrite the Azure Storage file when there is name conflict.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
@@ -19570,7 +19570,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Force</maml:name>
 			<maml:description>
-				<maml:para>If this parameter is set, it will overwrite the azure storage file when there is name conflict.</maml:para>
+				<maml:para>If this parameter is set, it will overwrite the Azure Storage file when there is name conflict.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -19804,7 +19804,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 	<command:details>
 		<command:name>Set-AzureStorageQueueStoredAccessPolicy</command:name>
 		<maml:description>
-			<maml:para>Set Stored Access Policy for azure storage queue.</maml:para>
+			<maml:para>Set Stored Access Policy for Azure Storage queue.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -19814,7 +19814,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Set Stored Access Policy for azure storage queue.</maml:para>
+		<maml:para>Set Stored Access Policy for Azure Storage queue.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -19822,7 +19822,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 				<maml:name>Queue</maml:name>
 				<maml:description>
-					<maml:para>Azure storage queue name.</maml:para>
+					<maml:para>Azure Storage queue name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -19871,7 +19871,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+					<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -19895,7 +19895,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 			<maml:name>Queue</maml:name>
 			<maml:description>
-				<maml:para>Azure storage queue name.</maml:para>
+				<maml:para>Azure Storage queue name.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -19979,7 +19979,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+				<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -20093,7 +20093,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 	<command:details>
 		<command:name>Set-AzureStorageServiceLoggingProperty</command:name>
 		<maml:description>
-			<maml:para>Set azure storage service logging properties。</maml:para>
+			<maml:para>Set Azure Storage service logging properties。</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -20103,7 +20103,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Set azure storage service logging properties。</maml:para>
+		<maml:para>Set Azure Storage service logging properties。</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -20111,42 +20111,42 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
 				<maml:name>ServiceType</maml:name>
 				<maml:description>
-					<maml:para>Azure storage service type.</maml:para>
+					<maml:para>Azure Storage service type.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">StorageServiceType</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Version</maml:name>
 				<maml:description>
-					<maml:para>Azure storage service logging version.</maml:para>
+					<maml:para>Azure Storage service logging version.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[Double]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>RetentionDays</maml:name>
 				<maml:description>
-					<maml:para>Azure storage logging retention days.</maml:para>
+					<maml:para>Azure Storage logging retention days.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>LoggingOperations</maml:name>
 				<maml:description>
-					<maml:para>Azure storage service logging operations.</maml:para>
+					<maml:para>Azure Storage service logging operations.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">LoggingOperations[]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>PassThru</maml:name>
 				<maml:description>
-					<maml:para>Ouput the updated azure storage service logging properties.</maml:para>
+					<maml:para>Ouput the updated Azure Storage service logging properties.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+					<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -20170,7 +20170,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
 			<maml:name>ServiceType</maml:name>
 			<maml:description>
-				<maml:para>Azure storage service type.</maml:para>
+				<maml:para>Azure Storage service type.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">StorageServiceType</command:parameterValue>
 			<dev:type>
@@ -20182,7 +20182,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Version</maml:name>
 			<maml:description>
-				<maml:para>Azure storage service logging version.</maml:para>
+				<maml:para>Azure Storage service logging version.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[Double]</command:parameterValue>
 			<dev:type>
@@ -20194,7 +20194,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 			<maml:name>RetentionDays</maml:name>
 			<maml:description>
-				<maml:para>Azure storage logging retention days.</maml:para>
+				<maml:para>Azure Storage logging retention days.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			<dev:type>
@@ -20206,7 +20206,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 			<maml:name>LoggingOperations</maml:name>
 			<maml:description>
-				<maml:para>Azure storage service logging operations.</maml:para>
+				<maml:para>Azure Storage service logging operations.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">LoggingOperations[]</command:parameterValue>
 			<dev:type>
@@ -20218,7 +20218,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>PassThru</maml:name>
 			<maml:description>
-				<maml:para>Ouput the updated azure storage service logging properties.</maml:para>
+				<maml:para>Ouput the updated Azure Storage service logging properties.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -20230,7 +20230,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+				<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -20336,7 +20336,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  Set logging properties for azure storage blob service.  --------------------------</maml:title>
+			<maml:title>--------------------------  Set logging properties for Azure Storage blob service.  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -20367,7 +20367,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 	<command:details>
 		<command:name>Set-AzureStorageServiceMetricsProperty</command:name>
 		<maml:description>
-			<maml:para>Set azure storage service metrics properties.</maml:para>
+			<maml:para>Set Azure Storage service metrics properties.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -20377,7 +20377,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Set azure storage service metrics properties.</maml:para>
+		<maml:para>Set Azure Storage service metrics properties.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -20385,7 +20385,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
 				<maml:name>ServiceType</maml:name>
 				<maml:description>
-					<maml:para>Azure storage service type.</maml:para>
+					<maml:para>Azure Storage service type.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">StorageServiceType</command:parameterValue>
 			</command:parameter>
@@ -20399,35 +20399,35 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Version</maml:name>
 				<maml:description>
-					<maml:para>Azure storage service metrics version.</maml:para>
+					<maml:para>Azure Storage service metrics version.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[Double]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>RetentionDays</maml:name>
 				<maml:description>
-					<maml:para>Azure storage service metrics retention days.</maml:para>
+					<maml:para>Azure Storage service metrics retention days.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>MetricsLevel</maml:name>
 				<maml:description>
-					<maml:para>Azure storage service metrics level.</maml:para>
+					<maml:para>Azure Storage service metrics level.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[MetricsLevel]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>PassThru</maml:name>
 				<maml:description>
-					<maml:para>Output the updated azure storage service metrics properties.</maml:para>
+					<maml:para>Output the updated Azure Storage service metrics properties.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+					<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -20451,7 +20451,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
 			<maml:name>ServiceType</maml:name>
 			<maml:description>
-				<maml:para>Azure storage service type.</maml:para>
+				<maml:para>Azure Storage service type.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">StorageServiceType</command:parameterValue>
 			<dev:type>
@@ -20475,7 +20475,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Version</maml:name>
 			<maml:description>
-				<maml:para>Azure storage service metrics version.</maml:para>
+				<maml:para>Azure Storage service metrics version.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[Double]</command:parameterValue>
 			<dev:type>
@@ -20487,7 +20487,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 			<maml:name>RetentionDays</maml:name>
 			<maml:description>
-				<maml:para>Azure storage service metrics retention days.</maml:para>
+				<maml:para>Azure Storage service metrics retention days.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
 			<dev:type>
@@ -20499,7 +20499,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 			<maml:name>MetricsLevel</maml:name>
 			<maml:description>
-				<maml:para>Azure storage service metrics level.</maml:para>
+				<maml:para>Azure Storage service metrics level.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[MetricsLevel]</command:parameterValue>
 			<dev:type>
@@ -20511,7 +20511,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>PassThru</maml:name>
 			<maml:description>
-				<maml:para>Output the updated azure storage service metrics properties.</maml:para>
+				<maml:para>Output the updated Azure Storage service metrics properties.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -20523,7 +20523,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+				<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -20629,7 +20629,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  Set metrics properties for azure storage blob service.  --------------------------</maml:title>
+			<maml:title>--------------------------  Set metrics properties for Azure Storage blob service.  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -20959,7 +20959,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 	<command:details>
 		<command:name>Set-AzureStorageShareStoredAccessPolicy</command:name>
 		<maml:description>
-			<maml:para>Update a Stored Access Policy for an azure storage share.</maml:para>
+			<maml:para>Update a Stored Access Policy for an Azure Storage share.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -20969,7 +20969,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Update a Stored Access Policy for an azure storage share.</maml:para>
+		<maml:para>Update a Stored Access Policy for an Azure Storage share.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -20977,14 +20977,14 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 				<maml:name>ShareName</maml:name>
 				<maml:description>
-					<maml:para>Azure storage share name.</maml:para>
+					<maml:para>Azure Storage share name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
 				<maml:name>Policy</maml:name>
 				<maml:description>
-					<maml:para>Name of Azure storage Stored Access Policy to be set.</maml:para>
+					<maml:para>Name of Azure Storage Stored Access Policy to be set.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -21026,7 +21026,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+					<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -21071,7 +21071,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 			<maml:name>ShareName</maml:name>
 			<maml:description>
-				<maml:para>Azure storage share name.</maml:para>
+				<maml:para>Azure Storage share name.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -21083,7 +21083,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
 			<maml:name>Policy</maml:name>
 			<maml:description>
-				<maml:para>Name of Azure storage Stored Access Policy to be set.</maml:para>
+				<maml:para>Name of Azure Storage Stored Access Policy to be set.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -21155,7 +21155,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+				<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
@@ -21261,7 +21261,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  Update a stored access policy in an azure storage share with full permission  --------------------------</maml:title>
+			<maml:title>--------------------------  Update a stored access policy in an Azure Storage share with full permission  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -21289,7 +21289,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 	<command:details>
 		<command:name>Set-AzureStorageTableStoredAccessPolicy</command:name>
 		<maml:description>
-			<maml:para>Set Stored Access Policy for azure storage table.</maml:para>
+			<maml:para>Set Stored Access Policy for Azure Storage table.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -21299,7 +21299,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Set Stored Access Policy for azure storage table.</maml:para>
+		<maml:para>Set Stored Access Policy for Azure Storage table.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -21307,7 +21307,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 				<maml:name>Table</maml:name>
 				<maml:description>
-					<maml:para>Azure storage table name.</maml:para>
+					<maml:para>Azure Storage table name.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -21356,7 +21356,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				<maml:name>Context</maml:name>
 				<maml:description>
-					<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+					<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
@@ -21380,7 +21380,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
 			<maml:name>Table</maml:name>
 			<maml:description>
-				<maml:para>Azure storage table name.</maml:para>
+				<maml:para>Azure Storage table name.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -21464,7 +21464,7 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 			<maml:name>Context</maml:name>
 			<maml:description>
-				<maml:para>Azure storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
+				<maml:para>Azure Storage context. You can create it by New-AzureStorageContext cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			<dev:type>
