@@ -37,4 +37,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     {
         IaasVm = 1,
     }
+
+    public enum ContainerRegistrationStatus
+    {
+        Registered = 1,
+        Registering,
+    }
 }

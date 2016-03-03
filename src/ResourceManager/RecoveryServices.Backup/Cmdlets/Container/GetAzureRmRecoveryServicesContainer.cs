@@ -17,22 +17,48 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
-    class GetAzureRmRecoveryServicesContainer : RecoveryServicesBackupCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesContainer"), OutputType(typeof(List<AzureRmRecoveryServicesContainerBase>))]
+    public class GetAzureRmRecoveryServicesContainer : RecoveryServicesBackupCmdletBase
     {
-        PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<string, object>()
-            {
-                {GetContainerParams.Name.ToString(), "Param1Value"}, 
-                {GetContainerParams.Status.ToString(), "Param2Value"}
-            });
+        [Parameter(Mandatory = false, HelpMessage = "", ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
+        public ARSVault Vault { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = "")]
+        [ValidateNotNullOrEmpty]
+        public ContainerType ContainerType { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "")]
+        [ValidateNotNullOrEmpty]
+        public ContainerRegistrationStatus Status { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+
+            PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
+            {
+                {GetContainerParams.Vault, Vault}, 
+                {GetContainerParams.ContainerType, ContainerType},
+                {GetContainerParams.Name, Name},
+                {GetContainerParams.ResourceGroupName, ResourceGroupName},
+                {GetContainerParams.Status, Status},
+            }, HydraAdapter);
+
             IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(ContainerType.AzureVM);
         }
     }

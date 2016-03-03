@@ -22,9 +22,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
     public class ProviderData
     {
-        Dictionary<string, object> providerParameters;
+        Dictionary<System.Enum, object> providerParameters;
 
-        public Dictionary<string, object> ProviderParameters
+        public Dictionary<System.Enum, object> ProviderParameters
         {
             get
             {
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
         }
 
-        public ProviderData(Dictionary<string, object> inProviderParameters)
+        public ProviderData(Dictionary<System.Enum, object> inProviderParameters)
         {
             providerParameters = inProviderParameters;
         }

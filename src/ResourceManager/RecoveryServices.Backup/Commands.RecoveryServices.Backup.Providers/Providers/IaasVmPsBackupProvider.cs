@@ -22,5 +22,49 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
     public class IaasVmPsBackupProvider : IPsBackupProvider
     {
+        public void Initialize(ProviderData providerData, HydraAdapter.HydraAdapter hydraAdapter)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Management.RecoveryServices.Backup.Models.BaseRecoveryServicesJobResponse EnableProtection()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Management.RecoveryServices.Backup.Models.BaseRecoveryServicesJobResponse DisableProtection()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Management.RecoveryServices.Backup.Models.BaseRecoveryServicesJobResponse TriggerBackup()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Management.RecoveryServices.Backup.Models.BaseRecoveryServicesJobResponse TriggerRestore()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Management.RecoveryServices.Backup.Models.ProtectedItemResponse GetProtectedItem()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Management.RecoveryServices.Backup.Models.RecoveryPointResponse GetRecoveryPoint()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Management.RecoveryServices.Backup.Models.ProtectionPolicyResponse CreatePolicy()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Management.RecoveryServices.Backup.Models.ProtectionPolicyResponse ModifyPolicy()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

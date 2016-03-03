@@ -24,15 +24,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
     public class PsBackupProviderManager
     {
         ProviderData providerData;
+        HydraAdapter.HydraAdapter hydraAdapter;
 
-        public PsBackupProviderManager(Dictionary<string, object> providerParams)
-        {
-            providerData = new ProviderData(providerParams);
-        }
+        public PsBackupProviderManager(Dictionary<System.Enum, object> providerParams, HydraAdapter.HydraAdapter hydraAdapterIn)
+            : this(new ProviderData(providerParams), hydraAdapterIn) { }
 
-        public PsBackupProviderManager(ProviderData providerDataIn)
+        public PsBackupProviderManager(ProviderData providerDataIn, HydraAdapter.HydraAdapter hydraAdapterIn)
         {
             providerData = providerDataIn;
+            hydraAdapter = hydraAdapterIn;
         }
 
         public IPsBackupProvider GetProviderInstance(ContainerType containerType)
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     break;
             }
 
-            psBackupProvider.Initialize(providerData);
+            psBackupProvider.Initialize(providerData, hydraAdapter);
 
             return psBackupProvider;
         }
