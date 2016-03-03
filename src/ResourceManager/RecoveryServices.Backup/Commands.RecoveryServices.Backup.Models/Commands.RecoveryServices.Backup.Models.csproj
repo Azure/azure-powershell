@@ -42,7 +42,9 @@
     <Compile Include="BaseObjects.cs" />
     <Compile Include="CmdletParamEnums.cs" />
     <Compile Include="CommonEnums.cs" />
-    <Compile Include="IaasVmModels\Container.cs" />
+    <Compile Include="IaasVmModels\AzureRmRecoveryServicesIaasVmPolicy.cs" />
+    <Compile Include="IaasVmModels\AzureRmRecoveryServicesIaasVmItem.cs" />
+    <Compile Include="IaasVmModels\AzureRmRecoveryServicesIaasVmContainer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
