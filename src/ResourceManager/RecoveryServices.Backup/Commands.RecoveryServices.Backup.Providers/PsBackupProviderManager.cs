@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        public IPsBackupProvider GetProviderInstance(ContainerType containerType, WorkloadType workloadType)
+        public IPsBackupProvider GetProviderInstance(WorkloadType workloadType, BackupManagementType backupManagementType)
         {
             throw new NotImplementedException();
         }

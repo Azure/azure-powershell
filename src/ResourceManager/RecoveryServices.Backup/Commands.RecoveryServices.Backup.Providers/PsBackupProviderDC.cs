@@ -20,11 +20,6 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
-    public enum PsBackupProviderTypes
-    {
-        IaasVm = 1,
-    }
-
     public class ProviderData
     {
         Dictionary<string, object> providerParameters;

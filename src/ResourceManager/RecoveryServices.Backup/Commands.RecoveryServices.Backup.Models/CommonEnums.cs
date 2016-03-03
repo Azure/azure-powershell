@@ -32,4 +32,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     public enum WorkloadType
     {
     }
+
+    public enum PsBackupProviderTypes
+    {
+        IaasVm = 1,
+    }
 }
