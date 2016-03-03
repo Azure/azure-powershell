@@ -192,7 +192,7 @@ function Test-CreateAndRemoveBatchAccountViaPiping
         # Test
         New-AzureRmBatchAccount -Name $account1 -ResourceGroupName $resourceGroup -Location $location1
         New-AzureRmBatchAccount -Name $account2 -ResourceGroupName $resourceGroup -Location $location2
-        Get-AzureRmBatchAccount | where {$_.AccountName -eq $account1 -or $_.AccountName -eq $account2} | Remove-AzureRmBatchAccount -Force
+        Get-AzureRmBatchAccount | where {$_.AccountName -eq $account1 -or $_.AccountName -eq $account2} | Remove-AzureRmBatchAccount -Confirm:$false
 
         # Assert
         Assert-Throws { Get-AzureRmBatchAccount -Name $account1 } 

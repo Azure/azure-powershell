@@ -105,7 +105,7 @@ function Clean-BatchAccount($accountName,$resourceGroup)
 {
     if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) 
     {
-        Remove-AzureRmBatchAccount -Name $accountName -ResourceGroupName $resourceGroup -Force
+        Remove-AzureRmBatchAccount -Name $accountName -ResourceGroupName $resourceGroup -Confirm:$false
     }
 }
 
@@ -117,6 +117,6 @@ function Clean-ResourceGroup($resourceGroup)
 {
     if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) 
     {
-        Remove-AzureRmResourceGroup -Name $resourceGroup -Force
+        Remove-AzureRmResourceGroup -Name $resourceGroup -Confirm:$false
     }
 }

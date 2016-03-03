@@ -519,11 +519,11 @@ function Test-DeleteNodeFileByTask
     $context = Get-ScenarioTestContext $accountName
     if ($usePipeline -eq '1')
     {
-        Get-AzureBatchNodeFile -JobId $jobId -TaskId $taskId -Name $filePath -BatchContext $context | Remove-AzureBatchNodeFile -Force -BatchContext $context
+        Get-AzureBatchNodeFile -JobId $jobId -TaskId $taskId -Name $filePath -BatchContext $context | Remove-AzureBatchNodeFile -Confirm:$false -BatchContext $context
     }
     else
     {
-        Remove-AzureBatchNodeFile -JobId $jobId -TaskId $taskId -Name $filePath -Force -BatchContext $context
+        Remove-AzureBatchNodeFile -JobId $jobId -TaskId $taskId -Name $filePath -Confirm:$false -BatchContext $context
     }
 
     $file = Get-AzureBatchNodeFile -JobId $jobId -TaskId $taskId -Filter "startswith(name,'$filePath')" -BatchContext $context
@@ -542,11 +542,11 @@ function Test-DeleteNodeFileByComputeNode
     $context = Get-ScenarioTestContext $accountName
     if ($usePipeline -eq '1')
     {
-        Get-AzureBatchNodeFile $poolId $computeNodeId $filePath -BatchContext $context | Remove-AzureBatchNodeFile -Force -BatchContext $context
+        Get-AzureBatchNodeFile $poolId $computeNodeId $filePath -BatchContext $context | Remove-AzureBatchNodeFile -Confirm:$false -BatchContext $context
     }
     else
     {
-        Remove-AzureBatchNodeFile $poolId $computeNodeId $filePath -Force -BatchContext $context
+        Remove-AzureBatchNodeFile $poolId $computeNodeId $filePath -Confirm:$false -BatchContext $context
     }
 
     $file = Get-AzureBatchNodeFile $poolId $computeNodeId -Filter "startswith(name,'$filePath')" -BatchContext $context

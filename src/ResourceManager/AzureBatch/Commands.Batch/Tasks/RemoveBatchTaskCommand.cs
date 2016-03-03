@@ -12,8 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Batch.Properties;
@@ -21,7 +19,7 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.AzureBatchTask)]
+    [Cmdlet(VerbsCommon.Remove, Constants.AzureBatchTask, SupportsShouldProcess=true, ConfirmImpact=ConfirmImpact.High)]
     public class RemoveBatchTaskCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true, 
@@ -39,9 +37,6 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSCloudTask InputObject { get; set; }
 
-        [Parameter]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
             string taskId = InputObject == null ? this.Id : InputObject.Id;
@@ -49,8 +44,6 @@ namespace Microsoft.Azure.Commands.Batch
                 this.Id, this.InputObject, this.AdditionalBehaviors);
 
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(Resources.RemoveTaskConfirm, taskId),
                 Resources.RemoveTask,
                 taskId,
                 () => BatchClient.DeleteTask(parameters));

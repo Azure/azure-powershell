@@ -22,7 +22,8 @@ using Microsoft.Azure.Commands.Batch.Properties;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.AzureBatchNodeFile)]
+    [Cmdlet(VerbsCommon.Remove, Constants.AzureBatchNodeFile, SupportsShouldProcess=true, 
+        ConfirmImpact=ConfirmImpact.High)]
     public class RemoveBatchNodeFileCommand : BatchObjectModelCmdletBase
     {
         internal const string TaskParameterSet = "Task";
@@ -57,9 +58,6 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSNodeFile InputObject { get; set; }
 
-        [Parameter]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
             string fileName = this.InputObject == null ? this.Name : this.InputObject.Name;
@@ -67,8 +65,6 @@ namespace Microsoft.Azure.Commands.Batch
                 this.ComputeNodeId, this.Name, this.InputObject, this.AdditionalBehaviors);
 
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(Resources.RemoveNodeFileConfirm, fileName),
                 Resources.RemoveNodeFile,
                 fileName,
                 () => BatchClient.DeleteNodeFile(parameters));

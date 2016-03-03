@@ -49,7 +49,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
         public void RemoveBatchComputeNodeParametersTest()
         {
             // Setup cmdlet to skip confirmation popup
-            cmdlet.Force = true;
             commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
 
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
@@ -77,7 +76,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
         public void RemoveComputeNodeRequestTest()
         {
             // Setup cmdlet to skip confirmation popup
-            cmdlet.Force = true;
             commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
 
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();

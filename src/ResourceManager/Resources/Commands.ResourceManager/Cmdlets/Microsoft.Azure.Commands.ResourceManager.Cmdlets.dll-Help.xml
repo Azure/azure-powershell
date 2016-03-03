@@ -2828,7 +2828,7 @@
         <maml:introduction>
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
-        <dev:code>New-AzureRmResource -Location "West US" -Properties @{"test"="test"} -ResourceName myTestSiteName -ResourceType microsoft.web/sites -ResourceGroupName myResourceGroup -Force</dev:code>
+        <dev:code>New-AzureRmResource -Location "West US" -Properties @{"test"="test"} -ResourceName myTestSiteName -ResourceType microsoft.web/sites -ResourceGroupName myResourceGroup -Confirm:$false -Force</dev:code>
         <dev:remarks>
           <maml:para>Create a new website</maml:para>
           <maml:para />
@@ -4260,7 +4260,7 @@
         <maml:introduction>
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
-        <dev:code>Remove-AzureRmResource -ResourceId /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Web/sites/myTestSiteName -Force</dev:code>
+        <dev:code>Remove-AzureRmResource -ResourceId /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Web/sites/myTestSiteName -Confirm:$false</dev:code>
         <dev:remarks>
           <maml:para>Removes the existing website resource</maml:para>
           <maml:para />
@@ -5610,7 +5610,7 @@
         <dev:code>
           $r = Get-AzureRmResource -ResourceType microsoft.web/sites -ResourceGroupName myResourceGroup -ResourceName mySite 
           $r.Properties.Enabled = "False"
-          $r | Set-AzureRmResource -Force
+          $r | Set-AzureRmResource -Confirm:$false
         </dev:code>
         <dev:remarks>
           <maml:para />
@@ -9382,7 +9382,7 @@
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code>$rg = Get-AzureRmResourceGroup -Name testGroup
-Remove-AzureRmPolicyAssignment -Name myPolicyAssignment -Scope $rg.ResourceId -Force</dev:code>
+Remove-AzureRmPolicyAssignment -Name myPolicyAssignment -Scope $rg.ResourceId -Confirm:$false</dev:code>
 			<dev:remarks>
 				<maml:para>Removes the policy assignment &#39;myPolicyAssignment&#39; assigned at the specified resource group level scope</maml:para>
 				<maml:para />
@@ -9404,7 +9404,7 @@ Remove-AzureRmPolicyAssignment -Name myPolicyAssignment -Scope $rg.ResourceId -F
 			</maml:introduction>
 			<dev:code>$rg = Get-AzureRmResourceGroup -Name testGroup
 $policyAssignment = Get-AzureRmPolicyAssignment -Name &apos;myAssignment&apos; -Scope $rg.ResourceId
-Remove-AzureRmPolicyAssignment -Id $policyAssignment.ResourceId -Force</dev:code>
+Remove-AzureRmPolicyAssignment -Id $policyAssignment.ResourceId -Confirm:$false</dev:code>
 			<dev:remarks>
 				<maml:para>Removes the policy assignment identified by the Id</maml:para>
 				<maml:para />
@@ -9677,7 +9677,7 @@ Remove-AzureRmPolicyAssignment -Id $policyAssignment.ResourceId -Force</dev:code
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code>$policyDefinition = Get-AzureRmPolicyDefinition -Name myPolicyDefinition
-Remove-AzureRmPolicyDefinition -Id $policyDefinition.ResourceId -Force</dev:code>
+Remove-AzureRmPolicyDefinition -Id $policyDefinition.ResourceId -Confirm:$false</dev:code>
 			<dev:remarks>
 				<maml:para>Removes the policy definition identified by its resource Id</maml:para>
 				<maml:para />
@@ -9971,7 +9971,7 @@ Remove-AzureRmPolicyDefinition -Id $policyDefinition.ResourceId -Force</dev:code
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>Invoke-AzureRmResourceAction -ResourceGroupName myGroup -ResourceType Microsoft.Web/sites/config/list -ResourceName mySite/appsettings -Action list -ApiVersion 2015-08-01 -Force</dev:code>
+			<dev:code>Invoke-AzureRmResourceAction -ResourceGroupName myGroup -ResourceType Microsoft.Web/sites/config/list -ResourceName mySite/appsettings -Action list -ApiVersion 2015-08-01 -Confirm:$false</dev:code>
 			<dev:remarks>
 				<maml:para>Invokes the list action on website config</maml:para>
 				<maml:para />

@@ -37,9 +37,6 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByCertificateName, Position = 3, HelpMessage = "Confirm the removal of the certificate")]
-        public SwitchParameter Force { get; set; }
-
         /// <summary>
         /// Execute this cmdlet.
         /// </summary>

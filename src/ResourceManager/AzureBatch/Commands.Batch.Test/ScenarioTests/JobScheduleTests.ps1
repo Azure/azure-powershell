@@ -262,8 +262,8 @@ function Test-NewJobSchedule
     }
     finally
     {
-        Remove-AzureBatchJobSchedule -Id $jsId1 -Force -BatchContext $context
-        Remove-AzureBatchJobSchedule -Id $jsId2 -Force -BatchContext $context
+        Remove-AzureBatchJobSchedule -Id $jsId1 -Confirm:$false -BatchContext $context
+        Remove-AzureBatchJobSchedule -Id $jsId2 -Confirm:$false -BatchContext $context
     }
 }
 
@@ -621,11 +621,11 @@ function Test-DeleteJobSchedule
 
     if ($usePipeline -eq '1')
     {
-        Get-AzureBatchJobSchedule -Id $jobScheduleId -BatchContext $context | Remove-AzureBatchJobSchedule -Force -BatchContext $context
+        Get-AzureBatchJobSchedule -Id $jobScheduleId -BatchContext $context | Remove-AzureBatchJobSchedule -Confirm:$false -BatchContext $context
     }
     else
     {
-        Remove-AzureBatchJobSchedule -Id $jobScheduleId -Force -BatchContext $context
+        Remove-AzureBatchJobSchedule -Id $jobScheduleId -Confirm:$false -BatchContext $context
     }
 
     # Verify the job schedule was deleted

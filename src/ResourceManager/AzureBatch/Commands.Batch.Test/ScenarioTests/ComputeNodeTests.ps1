@@ -164,11 +164,11 @@ function Test-RemoveComputeNode
 
     if ($usePipeline -eq '1')
     {
-        Get-AzureBatchComputeNode $poolId $computeNodeId -BatchContext $context | Remove-AzureBatchComputeNode -DeallocationOption $deallocationOption -ResizeTimeout $resizeTimeout -Force -BatchContext $context
+        Get-AzureBatchComputeNode $poolId $computeNodeId -BatchContext $context | Remove-AzureBatchComputeNode -DeallocationOption $deallocationOption -ResizeTimeout $resizeTimeout -Confirm:$false -BatchContext $context
     }
     else
     {
-        Remove-AzureBatchComputeNode $poolId $computeNodeId -DeallocationOption $deallocationOption -ResizeTimeout $resizeTimeout -Force -BatchContext $context
+        Remove-AzureBatchComputeNode $poolId $computeNodeId -DeallocationOption $deallocationOption -ResizeTimeout $resizeTimeout -Confirm:$false -BatchContext $context
     }
 
     # State transition isn't immediate
@@ -198,7 +198,7 @@ function Test-RemoveMultipleComputeNodes
 
     $context = Get-ScenarioTestContext $accountName
 
-    Remove-AzureBatchComputeNode $poolId @($computeNodeId, $computeNodeId2) -Force -BatchContext $context
+    Remove-AzureBatchComputeNode $poolId @($computeNodeId, $computeNodeId2) -Confirm:$false -BatchContext $context
 
     # State transition isn't immediate
     $filter = "(id eq '$computeNodeId') or (id eq '$computeNodeId2')"

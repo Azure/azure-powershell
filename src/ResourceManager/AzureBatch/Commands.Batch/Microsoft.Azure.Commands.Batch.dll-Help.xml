@@ -8367,7 +8367,7 @@
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;Get-AzureBatchCertificate -Filter "state eq 'active'" -BatchContext $Context | Remove-AzureBatchCertificate -Force -BatchContext $Context
+          PS C:\&gt;Get-AzureBatchCertificate -Filter "state eq 'active'" -BatchContext $Context | Remove-AzureBatchCertificate -Confirm:$false -BatchContext $Context
         </dev:code>
         <dev:remarks>
           <maml:para>This command gets all certificates that are active by using the Get-AzureBatchCertificate cmdlet. The command passes the active certificates to the current cmdlet by using the pipeline operator. That cmdlet removes each certificate. The command specifies the Force parameter. Therefore, the command does not prompt you for confirmation. </maml:para>
@@ -8653,7 +8653,7 @@
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;Get-AzureBatchComputeNode -PoolId "Pool07" -Id "tvm-2316545714_1-20150725t213220z" -BatchContext $Context | Remove-AzureBatchComputeNode -Force -BatchContext $Context
+          PS C:\&gt;Get-AzureBatchComputeNode -PoolId "Pool07" -Id "tvm-2316545714_1-20150725t213220z" -BatchContext $Context | Remove-AzureBatchComputeNode -Confirm:$false -BatchContext $Context
         </dev:code>
         <dev:remarks>
           <maml:para>This command gets the compute node that has the specified ID from pool that has the ID Pool07 by using the Get-AzureBatchComputeNode cmdlet. The command passes that node to the current cmdlet by using the pipeline. The current cmdlet removes the compute node. The command specifies the Force parameter. Therefore, the command does not prompt you for confirmation.</maml:para>
@@ -8673,7 +8673,7 @@
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;Remove-AzureBatchComputeNode -PoolId "Pool07" @("tvm-1783593343_28-20151117t214257z","tvm-1783593343_29-20151117t214257z") -Force -BatchContext $Context
+          PS C:\&gt;Remove-AzureBatchComputeNode -PoolId "Pool07" @("tvm-1783593343_28-20151117t214257z","tvm-1783593343_29-20151117t214257z") -Confirm:$false -BatchContext $Context
         </dev:code>
         <dev:remarks>
           <maml:para>This command removes two compute nodes from the pool that has the ID Pool07. The command does not prompt you for confirmation. </maml:para>
@@ -8863,7 +8863,7 @@
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;Remove-AzureBatchComputeNodeUser -PoolId "Pool01" -ComputeNodeId "ComputeNode01" -Name "User14" -Force -BatchContext $Context
+          PS C:\&gt;Remove-AzureBatchComputeNodeUser -PoolId "Pool01" -ComputeNodeId "ComputeNode01" -Name "User14" -Confirm:$false -BatchContext $Context
         </dev:code>
         <dev:remarks>
           <maml:para>This command deletes the user named User14 from compute node named ComputeNode01. The compute node is in the pool named Pool01. This command specifies the Force parameter. Therefore, the command does not prompt you for confirmation. </maml:para>
@@ -9035,7 +9035,7 @@
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;Get-AzureBatchJob -Id "Job-000002" -BatchContext $Context | Remove-AzureBatchJob -Force -BatchContext $Context
+          PS C:\&gt;Get-AzureBatchJob -Id "Job-000002" -BatchContext $Context | Remove-AzureBatchJob -Confirm:$false -BatchContext $Context
         </dev:code>
         <dev:remarks>
           <maml:para>This command gets the job that has the ID Job-000002 by using the Get-AzureBatchJob cmdlet. The command passes that job to the current cmdlet by using the pipeline operator. The command deletes that job. Because the command includes the Force parameter, it does not prompt you for confirmation.</maml:para>
@@ -9535,7 +9535,7 @@
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;Get-AzureBatchNodeFile -JobId "Job-000001" -TaskId "Task26" -Name "wd\testFile2.txt" -BatchContext $Context | Remove-AzureBatchNodeFile -Force -BatchContext $Context
+          PS C:\&gt;Get-AzureBatchNodeFile -JobId "Job-000001" -TaskId "Task26" -Name "wd\testFile2.txt" -BatchContext $Context | Remove-AzureBatchNodeFile -Confirm:$false -BatchContext $Context
         </dev:code>
         <dev:remarks>
           <maml:para>This command gets the node file by using Get-AzureBatchNodeFile. That file is associated with the task that has the ID Task26 under the job Job-000001. The command passes that file to the current cmdlet by using the pipeline. The current cmdlet removes the node file. The command specifies the Force parameter. Therefore, the command does not prompt you for confirmation. </maml:para>
@@ -9707,7 +9707,7 @@
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;Get-AzureBatchPool -BatchContext $Context | Remove-AzureBatchPool -Force -BatchContext $Context
+          PS C:\&gt;Get-AzureBatchPool -BatchContext $Context | Remove-AzureBatchPool -Confirm:$false -BatchContext $Context
         </dev:code>
         <dev:remarks>
           <maml:para>This command deletes all Batch pools. Because the Force parameter is present, the confirmation prompt is suppressed.</maml:para>
@@ -9937,7 +9937,7 @@
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;Get-AzureBatchTask -JobId "Job-000001" -Id "Task26" -BatchContext $Context | Remove-AzureBatchTask -Force -BatchContext $Context
+          PS C:\&gt;Get-AzureBatchTask -JobId "Job-000001" -Id "Task26" -BatchContext $Context | Remove-AzureBatchTask -Confirm:$false -BatchContext $Context
         </dev:code>
         <dev:remarks>
           <maml:para>This command gets the Batch task that has the ID Task26 in the job that has the ID Job-000001 by using the Get-AzureBatchTask cmdlet. The command passes that task to the current cmdlet by using the pipeline operator. The command deletes that task. This command specifies the Force parameter. Therefore, the command does not prompt you for confirmation.</maml:para>

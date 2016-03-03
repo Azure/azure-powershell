@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         {
             var nextLink = string.Empty;
             var removeMessageWarning = Resources.RemovingAzureAutomationResourceWarning;
+            bool connectionTypeUsedForConnections = false;
 
             // check if any connections exists that use this connection type
             do
@@ -60,6 +61,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                                                        StringComparison.CurrentCultureIgnoreCase)))
                 {
                     removeMessageWarning = Resources.RemoveConnectionTypeThatHasConnectionWarning;
+                    connectionTypeUsedForConnections = true;
                     break;
                 }
 
@@ -72,7 +74,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                        string.Format(Resources.RemoveAzureAutomationResourceDescription, "ConnectionType"),
                        Name,
                        () => this.AutomationClient.DeleteConnectionType(this.ResourceGroupName, this.AutomationAccountName, Name),
-                       () => removeMessageWarning == Resources.RemoveConnectionTypeThatHasConnectionWarning);
+                       () => connectionTypeUsedForConnections);
         }
     }
 }

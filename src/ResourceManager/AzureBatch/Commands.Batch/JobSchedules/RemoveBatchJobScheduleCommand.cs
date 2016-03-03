@@ -18,7 +18,8 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.AzureBatchJobSchedule)]
+    [Cmdlet(VerbsCommon.Remove, Constants.AzureBatchJobSchedule, SupportsShouldProcess=true, 
+        ConfirmImpact=ConfirmImpact.High)]
     public class RemoveBatchJobScheduleCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, 
@@ -26,14 +27,9 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
-        [Parameter]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(Resources.RemoveJobScheduleConfirm, this.Id),
                 Resources.RemoveJobSchedule,
                 this.Id,
                 () => BatchClient.DeleteJobSchedule(this.BatchContext, this.Id, this.AdditionalBehaviors));
