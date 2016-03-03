@@ -14,6 +14,9 @@
 
 using Hyak.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.WindowsAzure.Management.Scheduler;
 using RecoveryServices.Backup.Properties;
 using System;
 using System.Collections.Generic;
@@ -22,6 +25,7 @@ using System.Management.Automation;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using HydraAdapterNS = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -30,9 +34,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// </summary>
     public abstract class RecoveryServicesBackupCmdletBase : AzureRMCmdlet
     {
+        protected HydraAdapterNS.HydraAdapter HydraAdapter { get; set; }
+
         protected void InitializeAzureBackupCmdlet(string resourceGroupName, string resourceName)
         {
-
+            var cloudServicesClient = AzureSession.ClientFactory.CreateClient<CloudServiceManagementClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
+            HydraAdapter = new HydraAdapterNS.HydraAdapter(cloudServicesClient.Credentials, cloudServicesClient.BaseUri);
         }
 
         protected void ExecutionBlock(Action action)

@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
     public interface IPsBackupProvider
     {
-        void Initialize(ProviderData providerData);
+        void Initialize(ProviderData providerData, HydraAdapter.HydraAdapter hydraAdapter);
 
         BaseRecoveryServicesJobResponse EnableProtection();
 
