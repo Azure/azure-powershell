@@ -18,30 +18,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
-    public class AzureRmRecoveryServicesContainerBase
+    public class ProviderData
     {
-        public string Name { get; set; }
+        Dictionary<string, object> providerParameters;
 
-        public string ResourceGroupName { get; set; }
+        public Dictionary<string, object> ProviderParameters
+        {
+            get
+            {
+                return providerParameters;
+            }
+        }
 
-        public string Status { get; set; }
-
-        public ContainerType ContainerType { get; set; }
-
-        public int BackupItemsCount { get; set; }
-    }
-
-    public class AzureRmRecoveryServicesItemBase
-    {
-    }
-
-    public class AzureRmRecoveryServicesPolicyBase
-    {
-    }
-
-    public class AzureRmRecoveryServicesRecoveryPointBase
-    {
+        public ProviderData(Dictionary<string, object> inProviderParameters)
+        {
+            providerParameters = inProviderParameters;
+        }
     }
 }

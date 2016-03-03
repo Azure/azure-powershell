@@ -20,28 +20,21 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
-    public class AzureRmRecoveryServicesContainerBase
+    public enum ContainerType
     {
-        public string Name { get; set; }
-
-        public string ResourceGroupName { get; set; }
-
-        public string Status { get; set; }
-
-        public ContainerType ContainerType { get; set; }
-
-        public int BackupItemsCount { get; set; }
+        AzureVM,
     }
 
-    public class AzureRmRecoveryServicesItemBase
+    public enum BackupManagementType
     {
     }
 
-    public class AzureRmRecoveryServicesPolicyBase
+    public enum WorkloadType
     {
     }
 
-    public class AzureRmRecoveryServicesRecoveryPointBase
+    public enum PsBackupProviderTypes
     {
+        IaasVm = 1,
     }
 }

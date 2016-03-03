@@ -12,36 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
-    public class AzureRmRecoveryServicesContainerBase
+    class GetAzureRmRecoveryServicesContainer : RecoveryServicesBackupCmdletBase
     {
-        public string Name { get; set; }
+        PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<string, object>()
+            {
+                {GetContainerParams.Name.ToString(), "Param1Value"}, 
+                {GetContainerParams.Status.ToString(), "Param2Value"}
+            });
 
-        public string ResourceGroupName { get; set; }
-
-        public string Status { get; set; }
-
-        public ContainerType ContainerType { get; set; }
-
-        public int BackupItemsCount { get; set; }
-    }
-
-    public class AzureRmRecoveryServicesItemBase
-    {
-    }
-
-    public class AzureRmRecoveryServicesPolicyBase
-    {
-    }
-
-    public class AzureRmRecoveryServicesRecoveryPointBase
-    {
+        public override void ExecuteCmdlet()
+        {
+            base.ExecuteCmdlet();
+            IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(ContainerType.AzureVM);
+        }
     }
 }
