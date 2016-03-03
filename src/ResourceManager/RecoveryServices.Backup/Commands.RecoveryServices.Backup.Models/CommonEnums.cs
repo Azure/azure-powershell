@@ -20,7 +20,16 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
-    public class Enums
+    public enum ContainerType
+    {
+        AzureVM,
+    }
+
+    public enum BackupManagementType
+    {
+    }
+
+    public enum WorkloadType
     {
     }
 }

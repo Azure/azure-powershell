@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,24 +20,26 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
-    public interface IPsBackupProvider
+    public enum PsBackupProviderTypes
     {
-        void Initialize(ProviderData providerData);
+        IaasVm = 1,
+    }
 
-        BaseRecoveryServicesJobResponse EnableProtection();
+    public class ProviderData
+    {
+        Dictionary<string, object> providerParameters;
 
-        BaseRecoveryServicesJobResponse DisableProtection();
+        public Dictionary<string, object> ProviderParameters
+        {
+            get
+            {
+                return providerParameters;
+            }
+        }
 
-        BaseRecoveryServicesJobResponse TriggerBackup();
-
-        BaseRecoveryServicesJobResponse TriggerRestore();
-
-        ProtectedItemResponse GetProtectedItem();
-
-        RecoveryPointResponse GetRecoveryPoint();
-
-        ProtectionPolicyResponse CreatePolicy();
-
-        ProtectionPolicyResponse ModifyPolicy();
+        public ProviderData(Dictionary<string, object> inProviderParameters)
+        {
+            providerParameters = inProviderParameters;
+        }
     }
 }

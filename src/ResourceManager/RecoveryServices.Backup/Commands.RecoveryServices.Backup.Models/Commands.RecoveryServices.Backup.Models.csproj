@@ -40,7 +40,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseObjects.cs" />
-    <Compile Include="Enums.cs" />
+    <Compile Include="CmdletParamEnums.cs" />
+    <Compile Include="CommonEnums.cs" />
     <Compile Include="IaasVmModels\Container.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

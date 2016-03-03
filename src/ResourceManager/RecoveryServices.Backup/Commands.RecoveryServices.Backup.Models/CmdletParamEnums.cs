@@ -12,33 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
-    public interface IPsBackupProvider
+    public enum GetContainerParams
     {
-        void Initialize(ProviderData providerData);
-
-        BaseRecoveryServicesJobResponse EnableProtection();
-
-        BaseRecoveryServicesJobResponse DisableProtection();
-
-        BaseRecoveryServicesJobResponse TriggerBackup();
-
-        BaseRecoveryServicesJobResponse TriggerRestore();
-
-        ProtectedItemResponse GetProtectedItem();
-
-        RecoveryPointResponse GetRecoveryPoint();
-
-        ProtectionPolicyResponse CreatePolicy();
-
-        ProtectionPolicyResponse ModifyPolicy();
+        Vault,
+        ContainerType,
+        BackupManagementType,
+        BackupManagementServer,
+        Name,
+        ResourceGroupName,
+        Status,
     }
 }
