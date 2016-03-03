@@ -33,10 +33,6 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     [OutputType(typeof(DscNode))]
     public class SetAzureAutomationDscNode : AzureAutomationBaseCmdlet
     {
-        /// <summary>
-        /// True to overwrite the existing configuration; false otherwise.
-        /// </summary>        
-        private bool overwriteExistingNodeConfiguration;
 
         /// <summary> 
         /// Gets or sets the node id. 

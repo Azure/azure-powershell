@@ -64,9 +64,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         }
 
         /// <summary>
-        /// Stop copy operation by CloudBlob object
+        /// Stop copy operation 
         /// </summary>
-        /// <param name="blob">CloudBlob object</param>
+        /// <param name="taskId">The identity of the task</param>
+        /// <param name="localChannel">The storage management implementation</param>
+        /// <param name="file">ClodFile object performing the copy</param>
         /// <param name="copyId">Copy id</param>
         private async Task StopCopyFile(long taskId, IStorageFileManagement localChannel, CloudFile file, string copyId)
         {
@@ -77,7 +79,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
             string abortCopyId = string.Empty;
 
-            if (string.IsNullOrEmpty(copyId) || Force)
+            if (string.IsNullOrEmpty(copyId))
             {
                 //Make sure we use the correct copy id to abort
                 //Use default retry policy for FetchBlobAttributes

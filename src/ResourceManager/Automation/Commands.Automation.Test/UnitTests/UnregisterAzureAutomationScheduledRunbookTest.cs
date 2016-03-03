@@ -59,7 +59,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             this.cmdlet.AutomationAccountName = accountName;
             this.cmdlet.JobScheduleId = jobScheduleId;
             this.cmdlet.SetParameterSet(AutomationCmdletParameterSets.ByJobScheduleId);
-            this.cmdlet.Force = true;
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
@@ -83,7 +82,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             this.cmdlet.RunbookName = runbookName;
             this.cmdlet.ScheduleName = scheduleName;
             this.cmdlet.SetParameterSet(AutomationCmdletParameterSets.ByRunbookNameAndScheduleName);
-            this.cmdlet.Force = true;
             this.cmdlet.ExecuteCmdlet();
 
             // Assert

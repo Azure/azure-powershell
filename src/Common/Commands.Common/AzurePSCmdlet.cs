@@ -505,17 +505,16 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
         }
 
-        /// <summary>
+                /// <summary>
         /// Asks for confirmation before executing the action. Used for 
         /// </summary>
         /// <param name="force">Do not ask for confirmation</param>
         /// <param name="actionMessage">Message to describe the action</param>
         /// <param name="processMessage">Message to prompt after the active is performed.</param>
         /// <param name="target">The target name.</param>
-        /// <param name="useShouldContinuePrompt">A function to determine whether the ShouldContinue prompt should be used</param>
+        /// prompt should be used or the action should be performed regardless</param>
         /// <param name="action">The action code</param>
-        protected void ConfirmAction(bool force, string actionMessage, string processMessage, string target, Action action, 
-            Func<bool> useShouldContinuePrompt = null )
+        protected void ConfirmAction(bool force, string actionMessage, string processMessage, string target, Action action)
         {
             if (_qosEvent != null)
             {
@@ -524,8 +523,42 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
             if (ShouldProcess(target, processMessage))
             {
-                if ((useShouldContinuePrompt!= null && !useShouldContinuePrompt()) 
-                    || force || ShouldContinue(actionMessage, ""))
+                if (force || ShouldContinue(actionMessage, ""))
+                {
+                    if (_qosEvent != null)
+                    {
+                        _qosEvent.ResumeQosTimer();
+                    }
+
+                    action();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Asks for confirmation before executing the action. Used for 
+        /// </summary>
+        /// <param name="force">Do not ask for confirmation</param>
+        /// <param name="actionMessage">Message to describe the action</param>
+        /// <param name="processMessage">Message to prompt after the active is performed.</param>
+        /// <param name="target">The target name.</param>
+        /// <param name="useShouldContinuePrompt">A predicate to determine whether the ShouldContinue 
+        /// prompt should be used or the action should be performed regardless</param>
+        /// <param name="action">The action code</param>
+        protected void ConfirmAction(bool force, string actionMessage, string processMessage, string target, Action action, 
+            Func<bool> useShouldContinuePrompt)
+        {
+            if (_qosEvent != null)
+            {
+                _qosEvent.PauseQoSTimer();
+            }
+
+            if (ShouldProcess(target, processMessage))
+            {
+                if (useShouldContinuePrompt == null 
+                    || !useShouldContinuePrompt()
+                    || force 
+                    || ShouldContinue(actionMessage, ""))
                 {
                     if (_qosEvent != null)
                     {
