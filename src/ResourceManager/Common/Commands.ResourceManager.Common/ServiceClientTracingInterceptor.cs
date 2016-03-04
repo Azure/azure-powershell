@@ -17,6 +17,8 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
     public class ServiceClientTracingInterceptor : IServiceClientTracingInterceptor
@@ -50,13 +52,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         public void ReceiveResponse(string invocationId, System.Net.Http.HttpResponseMessage response)
         {
-            string responseAsString = response == null ? string.Empty : response.AsFormattedString();
+            string responseAsString = response == null ? string.Empty : GeneralUtilities.GetLog(response);
             MessageQueue.CheckAndEnqueue(responseAsString);
         }
 
         public void SendRequest(string invocationId, System.Net.Http.HttpRequestMessage request)
         {
-            string requestAsString = request == null ? string.Empty : request.AsFormattedString();
+            string requestAsString = request == null ? string.Empty : GeneralUtilities.GetLog(request);
             MessageQueue.CheckAndEnqueue(requestAsString);
         }
 
