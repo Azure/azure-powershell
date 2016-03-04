@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     public class PolicyConstants
     {
         public const int MaxAllowedRetentionDurationCount = 9999;
+        public const int MaxAllowedDateInMonth = 28;
     }
 
     public class TraceUtils

@@ -25,6 +25,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public AzureRmRecoveryServicesSchedulePolicyBase SchedulePolicy { get; set; }
 
         public AzureRmRecoveryServicesRetentionPolicyBase RetentionPolicy { get; set; }
+
+        public virtual void Validate()
+        {
+            SchedulePolicy.Validate();
+            RetentionPolicy.Validate();
+        }
     }
 
 }
