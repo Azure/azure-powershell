@@ -13,34 +13,33 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
-{
-    public enum ContainerType
+{    
+    public class PolicyConstants
     {
-        AzureVM,
+        public const int MaxAllowedRetentionDurationCount = 9999;
     }
 
-    public enum BackupManagementType
+    public class TraceUtils
     {
-    }
+        public static string GetString(IEnumerable<Object> objList)
+        {
+            return (objList == null) ? "null" : "{" + string.Join("}, {", objList) + "}";
+        }
 
-    public enum WorkloadType
-    {
-    }
+        public static string GetString(IEnumerable<DateTime> objList)
+        {
+            return (objList == null) ? "null" : "{" + string.Join("}, {", objList) + "}";
+        }
 
-    public enum PsBackupProviderTypes
-    {
-        IaasVm = 1,
-    }
-
-    public enum ContainerRegistrationStatus
-    {
-        Registered = 1,
-        Registering,
+        public static string GetString(IEnumerable<DayOfWeek> objList)
+        {
+            return (objList == null) ? "null" : "{" + string.Join("}, {", objList) + "}";
+        }
     }
 }
