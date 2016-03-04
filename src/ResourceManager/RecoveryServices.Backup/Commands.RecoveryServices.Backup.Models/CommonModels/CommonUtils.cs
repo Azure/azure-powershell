@@ -13,70 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
-{
-    public enum ContainerType
-    {
-        AzureVM,
-    }
-
-    public enum BackupManagementType
-    {
-    }
-
-    public enum WorkloadType
-    {
-    }
-
-    public enum PsBackupProviderTypes
-    {
-        IaasVm = 1,
-    }
-
-    public enum ContainerRegistrationStatus
-    {
-        Registered = 1,
-        Registering,
-    }
-      
-    public enum WeekNumber
-    {
-        First,
-        Second,
-        Third,
-        Fourth,
-        Last
-    }
-
-    public enum Month
-    {
-        Invalid = 0,
-        January = 1,
-        February = 2,
-        March = 3,
-        April = 4,
-        May = 5,
-        June = 6,
-        July = 7,
-        August = 8,
-        September = 9,
-        October = 10,
-        November = 11,
-        December = 12
-    }
-
-    public enum ScheduleRunType
-    {    
-        Invalid = 0,
-        Daily = 1,
-        Weekly = 2,
-    }
-
+{    
     public class PolicyConstants
     {
         public const int MaxAllowedRetentionDurationCount = 9999;

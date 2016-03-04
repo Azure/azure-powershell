@@ -20,22 +20,6 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
-    public enum RetentionDurationType
-    {
-        Invalid = 0,
-        Days = 1,
-        Weeks = 2,
-        Months = 3,
-        Years = 4
-    }   
-
-    public enum RetentionScheduleFormat
-    {       
-        Invalid = 0,        
-        Daily = 1,        
-        Weekly = 2
-    }  
-
     public class AzureRmRecoveryServicesLongTermRetentionPolicy : AzureRmRecoveryServicesRetentionPolicyBase
     {
         public DailyRetentionSchedule DailySchedule { get; set; }
