@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,5 +23,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
     public class AzureRmRecoveryServicesIaasVmContainer : AzureRmRecoveryServicesContainerBase
     {
+        /// <summary>
+        /// Resource Group where the Container is present
+        /// </summary>
+        public string ResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Registration Status
+        /// </summary>
+        public string Status { get; set; }
+
+        public AzureRmRecoveryServicesIaasVmContainer(ProtectionContainerResource protectionContainer)
+            : base(protectionContainer)
+        {
+            AzureIaaSVMProtectionContainer iaasVmProtectionContainer = (AzureIaaSVMProtectionContainer)protectionContainer.Properties;
+            ContainerType = ContainerType.AzureVM;
+            ResourceGroupName = IdUtils.GetResourceGroupName(protectionContainer.Id);
+            Status = iaasVmProtectionContainer.RegistrationStatus;
+        }
     }
 }
