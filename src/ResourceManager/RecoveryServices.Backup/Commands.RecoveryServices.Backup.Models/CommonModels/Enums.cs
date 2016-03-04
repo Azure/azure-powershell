@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     }
 
     #region policy
-    public enum WeekNumber
+    public enum WeekOfMonth
     {
         Invalid = 0,
         First = 1,

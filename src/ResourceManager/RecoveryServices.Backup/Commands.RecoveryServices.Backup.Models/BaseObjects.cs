@@ -55,21 +55,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
         public WorkloadType WorkloadType { get; set; }
 
-        public virtual void Validate()
+        public override void Validate()
         {
         }
     }
 
     public class AzureRmRecoveryServicesRetentionPolicyBase : AzureRmRecoveryServicesObjectBase
     {
-        public virtual void Validate()
+        public override void Validate()
         {
         }
     }
 
     public class AzureRmRecoveryServicesSchedulePolicyBase : AzureRmRecoveryServicesObjectBase
     {
-        public virtual void Validate()
+        public override void Validate()
         {
         }
     }  

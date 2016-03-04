@@ -345,7 +345,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     {
         public List<DayOfWeek> DaysOfTheWeek { get; set; }
 
-        public List<WeekNumber> WeeksOfTheMonth { get; set; }
+        public List<WeekOfMonth> WeeksOfTheMonth { get; set; }
 
         public void Validate()
         {
@@ -360,9 +360,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             }
 
             // validate if WeeksOfTheMonth are valid
-            foreach (WeekNumber week in WeeksOfTheMonth)
+            foreach (WeekOfMonth week in WeeksOfTheMonth)
             {
-                if (week == WeekNumber.Invalid)
+                if (week == WeekOfMonth.Invalid)
                 {
                     throw new ArgumentException("WeeksOfTheMonth content is Invalid");
                 }
