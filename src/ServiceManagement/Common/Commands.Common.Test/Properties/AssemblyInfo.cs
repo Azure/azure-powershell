@@ -26,8 +26,8 @@ using Xunit;
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(false)]
 [assembly: Guid("080bc9b8-3c00-4d0e-bec2-38d2fd0d7061")]
-[assembly: AssemblyVersion("1.0.4")]
-[assembly: AssemblyFileVersion("1.0.4")]
+[assembly: AssemblyVersion("1.2.3")]
+[assembly: AssemblyFileVersion("1.2.3")]
 [assembly: CollectionBehavior(DisableTestParallelization = true)]
 
 #if SIGN
