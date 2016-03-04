@@ -485,11 +485,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to WadCfg or xmlCfg is not defined in configuration file..
+        ///   Looks up a localized string similar to No WadCfg, WadCfgBlob or xmlCfg element defined in the configuration file..
         /// </summary>
-        public static string DiagnosticsExtensionConfigNoWadCfgOrXmlCfg {
+        public static string DiagnosticsExtensionIaaSConfigElementNotDefined {
             get {
-                return ResourceManager.GetString("DiagnosticsExtensionConfigNoWadCfgOrXmlCfg", resourceCulture);
+                return ResourceManager.GetString("DiagnosticsExtensionIaaSConfigElementNotDefined", resourceCulture);
             }
         }
         
@@ -562,6 +562,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         public static string DiagnosticsExtensionNullStorageAccountName {
             get {
                 return ResourceManager.GetString("DiagnosticsExtensionNullStorageAccountName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No WadCfg or WadCfgBlob element defined in the configuration file..
+        /// </summary>
+        public static string DiagnosticsExtensionPaaSConfigElementNotDefined {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionPaaSConfigElementNotDefined", resourceCulture);
             }
         }
         

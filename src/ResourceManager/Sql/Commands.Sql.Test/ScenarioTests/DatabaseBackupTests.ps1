@@ -53,3 +53,42 @@ function Test-ListDatabaseRestorePoints
 		Remove-ResourceGroupForTest $rg
 	}
 }
+
+function Test-RestoreGeoBackup
+{
+	# Setup
+	$location = "Southeast Asia"
+	$serverVersion = "12.0"
+	$rg = Get-AzureRmResourceGroup -ResourceGroupName hchung-test2
+	$server = Get-AzureRmSqlServer -ServerName hchung-testsvr2 -ResourceGroupName $rg.ResourceGroupName
+	$db = Get-AzureRmSqlDatabase -ServerName $server.ServerName -DatabaseName hchung-testdb-geo2 -ResourceGroupName $rg.ResourceGroupName
+	$restoredDbName = "powershell_db_georestored"
+
+	Get-AzureRmSqlDatabaseGeoBackup -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName -DatabaseName $db.DatabaseName | Restore-AzureRmSqlDatabase -FromGeoBackup -TargetDatabaseName $restoredDbName
+}
+
+function Test-RestoreDeletedDatabaseBackup
+{
+	# Setup
+	$location = "Southeast Asia"
+	$serverVersion = "12.0"
+	$rg = Get-AzureRmResourceGroup -ResourceGroupName hchung-test2
+	$server = Get-AzureRmSqlServer -ServerName hchung-testsvr2 -ResourceGroupName $rg.ResourceGroupName
+	$droppedDbName = "powershell_db_georestored"
+	$restoredDbName = "powershell_db_deleted"
+
+	Get-AzureRmSqlDeletedDatabaseBackup -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName -DatabaseName $droppedDbName -DeletionDate "2016-02-23T00:21:22.847Z" | Restore-AzureRmSqlDatabase -FromDeletedDatabaseBackup -TargetDatabaseName $restoredDbName
+}
+
+function Test-RestorePointInTimeBackup
+{
+	# Setup
+	$location = "Southeast Asia"
+	$serverVersion = "12.0"
+	$rg = Get-AzureRmResourceGroup -ResourceGroupName hchung-test
+	$server = Get-AzureRmSqlServer -ServerName hchung-testsvr -ResourceGroupName $rg.ResourceGroupName
+	$db = Get-AzureRmSqlDatabase -ServerName $server.ServerName -DatabaseName hchung-testdb -ResourceGroupName $rg.ResourceGroupName
+	$restoredDbName = "powershell_db_restored"
+
+	Get-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $db.DatabaseName | Restore-AzureRmSqlDatabase -FromPointInTimeBackup -PointInTime "2016-02-20T00:06:00Z" -TargetDatabaseName $restoredDbName
+}

@@ -12,68 +12,68 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Rest;
-using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-namespace Microsoft.WindowsAzure.Commands.Common
-{
-    class ServiceClientTracingInterceptor : IServiceClientTracingInterceptor
-    {
-        public ServiceClientTracingInterceptor(ConcurrentQueue<string> queue)
-        {
-            MessageQueue = queue;
-        }
+//using Microsoft.Rest;
+//using System;
+//using System.Collections.Concurrent;
+//using System.Collections.Generic;
+//using System.Diagnostics;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
+//namespace Microsoft.WindowsAzure.Commands.Common
+//{
+//    class ServiceClientTracingInterceptor : IServiceClientTracingInterceptor
+//    {
+//        public ServiceClientTracingInterceptor(ConcurrentQueue<string> queue)
+//        {
+//            MessageQueue = queue;
+//        }
 
-        public ConcurrentQueue<string> MessageQueue { get; private set; }
+//        public ConcurrentQueue<string> MessageQueue { get; private set; }
 
-        public void Configuration(string source, string name, string value)
-        {
-            // Ignore 
-        }
+//        public void Configuration(string source, string name, string value)
+//        {
+//            // Ignore 
+//        }
 
-        public void EnterMethod(string invocationId, object instance, string method, IDictionary<string, object> parameters)
-        {
-            // Ignore 
-        }
+//        public void EnterMethod(string invocationId, object instance, string method, IDictionary<string, object> parameters)
+//        {
+//            // Ignore 
+//        }
 
-        public void ExitMethod(string invocationId, object returnValue)
-        {
-            // Ignore 
-        }
+//        public void ExitMethod(string invocationId, object returnValue)
+//        {
+//            // Ignore 
+//        }
 
-        public void Information(string message)
-        {
-            MessageQueue.CheckAndEnqueue(message);
-        }
+//        public void Information(string message)
+//        {
+//            MessageQueue.CheckAndEnqueue(message);
+//        }
 
-        public void ReceiveResponse(string invocationId, System.Net.Http.HttpResponseMessage response)
-        {
-            string responseAsString = response == null ? string.Empty : response.AsFormattedString();
-            MessageQueue.CheckAndEnqueue(responseAsString);
-        }
+//        public void ReceiveResponse(string invocationId, System.Net.Http.HttpResponseMessage response)
+//        {
+//            string responseAsString = response == null ? string.Empty : response.AsFormattedString();
+//            MessageQueue.CheckAndEnqueue(responseAsString);
+//        }
 
-        public void SendRequest(string invocationId, System.Net.Http.HttpRequestMessage request)
-        {
-            string requestAsString = request == null ? string.Empty : request.AsFormattedString();
-            MessageQueue.CheckAndEnqueue(requestAsString);
-        }
+//        public void SendRequest(string invocationId, System.Net.Http.HttpRequestMessage request)
+//        {
+//            string requestAsString = request == null ? string.Empty : request.AsFormattedString();
+//            MessageQueue.CheckAndEnqueue(requestAsString);
+//        }
 
-        public void TraceError(string invocationId, Exception exception)
-        {
-            // Ignore 
-        }
+//        public void TraceError(string invocationId, Exception exception)
+//        {
+//            // Ignore 
+//        }
 
-        public static void RemoveTracingInterceptor(ServiceClientTracingInterceptor interceptor)
-        {
-            if (interceptor != null)
-            {
-                ServiceClientTracing.RemoveTracingInterceptor(interceptor);
-            }
-        }
-    }
-}
+//        public static void RemoveTracingInterceptor(ServiceClientTracingInterceptor interceptor)
+//        {
+//            if (interceptor != null)
+//            {
+//                ServiceClientTracing.RemoveTracingInterceptor(interceptor);
+//            }
+//        }
+//    }
+//}

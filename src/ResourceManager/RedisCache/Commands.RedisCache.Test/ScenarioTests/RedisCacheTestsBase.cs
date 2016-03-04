@@ -12,13 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+
 namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
 {
     using System;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Microsoft.Azure.Test;
     using Microsoft.Azure.Management.Redis;
-    using Microsoft.Azure.Common.Authentication;
     using WindowsAzure.Commands.Test.Utilities.Common;
     using Microsoft.Azure.Management.Insights;
     using Microsoft.Azure.Management.Internal.Resources;

@@ -20,6 +20,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.WindowsAzure.Storage.Table;
+    using Microsoft.WindowsAzure.Storage;
 
     [Cmdlet(VerbsCommon.New, StorageNouns.TableSas), OutputType(typeof(String))]
     public class NewAzureStorageTableSasTokenCommand : StorageCloudTableCmdletBase
@@ -54,6 +55,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         [Parameter(HelpMessage = "Permissions for a container. Permissions can be any not-empty subset of \"audq\".",
             ParameterSetName = SasPermissionParameterSet)]
         public string Permission { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Protocol can be used in the request with this SAS token.")]
+        public SharedAccessProtocol Protocol { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "IP, or IP range ACL (access control list) that the request would be accepted from by Azure Storage.")]
+        public string IPAddressOrRange { get; set; }
 
         [Parameter(HelpMessage = "Start Time")]
         public DateTime? StartTime { get; set; }
@@ -113,7 +120,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
             SetupAccessPolicy(policy, shouldSetExpiryTime);
             ValidatePkAndRk(StartPartitionKey, StartRowKey, EndPartitionKey, EndRowKey);
             string sasToken = table.GetSharedAccessSignature(policy, accessPolicyIdentifier, StartPartitionKey,
-                                StartRowKey, EndPartitionKey, EndRowKey);
+                                StartRowKey, EndPartitionKey, EndRowKey, Protocol, Util.SetupIPAddressOrRangeForSAS(IPAddressOrRange));
 
             if (FullUri)
             {

@@ -20,7 +20,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest.Resources;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
 {
@@ -96,6 +96,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
         {
             powershell = System.Management.Automation.PowerShell.Create();
 
+            powershell.AddScript("$error.clear()");
             foreach (string moduleName in modules)
             {
                 powershell.AddScript(string.Format("Import-Module \"{0}\"", Test.Utilities.Common.Testing.GetAssemblyTestResourcePath<ResourceLocator>(moduleName)));

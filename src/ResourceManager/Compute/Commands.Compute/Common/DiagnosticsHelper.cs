@@ -19,8 +19,8 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using System.Xml.Linq;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Management.Storage.Models;
-using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
@@ -36,6 +36,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         private static string XmlNamespace = "http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration";
         private static string EncodedXmlCfg = "xmlCfg";
         private static string WadCfg = "WadCfg";
+        private static string WadCfgBlob = "WadCfgBlob";
         private static string StorageAccount = "storageAccount";
         private static string Path = "path";
         private static string ExpandResourceDirectory = "expandResourceDirectory";
@@ -163,6 +164,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
             var publicConfig = GetPublicConfigJObjectFromJsonFile(configurationPath);
             var properties = publicConfig.Properties().Select(p => p.Name);
             var wadCfgProperty = properties.FirstOrDefault(p => p.Equals(WadCfg, StringComparison.OrdinalIgnoreCase));
+            var wadCfgBlobProperty = properties.FirstOrDefault(p => p.Equals(WadCfgBlob, StringComparison.OrdinalIgnoreCase));
             var xmlCfgProperty = properties.FirstOrDefault(p => p.Equals(EncodedXmlCfg, StringComparison.OrdinalIgnoreCase));
 
             var hashTable = new Hashtable();
@@ -172,13 +174,17 @@ namespace Microsoft.Azure.Commands.Compute.Common
             {
                 hashTable.Add(wadCfgProperty, publicConfig[wadCfgProperty]);
             }
+            else if (wadCfgBlobProperty != null)
+            {
+                hashTable.Add(wadCfgBlobProperty, publicConfig[wadCfgBlobProperty]);
+            }
             else if (xmlCfgProperty != null)
             {
                 hashTable.Add(xmlCfgProperty, publicConfig[xmlCfgProperty]);
             }
             else
             {
-                throw new ArgumentException(Properties.Resources.DiagnosticsExtensionConfigNoWadCfgOrXmlCfg);
+                throw new ArgumentException(Properties.Resources.DiagnosticsExtensionIaaSConfigElementNotDefined);
             }
 
             return hashTable;
