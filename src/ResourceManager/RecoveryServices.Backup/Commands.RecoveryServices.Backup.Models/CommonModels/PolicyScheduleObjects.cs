@@ -21,19 +21,18 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
     public class AzureRmRecoveryServicesSimpleSchedulePolicy : AzureRmRecoveryServicesSchedulePolicyBase
-    {        
-        public string ScheduleRunFrequency { get; set; }   
-   
-        public List<string> ScheduleRunDays { get; set; }
+    {
+        public ScheduleRunType ScheduleRunFrequency { get; set; }
+
+        public List<DayOfWeek> ScheduleRunDays { get; set; }
        
         public List<DateTime> ScheduleRunTimes { get; set; }
 
         public override void Validate()
         {
-            ScheduleRunType schedRun;
-            if (!Enum.TryParse<ScheduleRunType>(ScheduleRunFrequency, out schedRun) || schedRun == ScheduleRunType.Invalid)
+            if (ScheduleRunFrequency == ScheduleRunType.Invalid)
             {
-                throw new ArgumentException("", "scheduleRunType");
+                throw new ArgumentException("ScheduleRunFrequency is set to Invalid");
             }
 
             //Currently only one scheduled run time is allowed
@@ -45,26 +44,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             //Validate that the schedule runtime is in multiples of 30 Mins
             if (ScheduleRunTimes[0].Minute % 30 != 0 || ScheduleRunTimes[0].Second != 0 || ScheduleRunTimes[0].Millisecond != 0)
             {
-                throw new ArgumentException("ScheduleTimes must be of multiples of 30 Mins with Seconds and milliseconds set to 0 ",
-                    "ScheduleRunTimes");
+                throw new ArgumentException("ScheduleTimes must be of multiples of 30 Mins with Seconds " +
+                                            "and milliseconds set to 0");
             }
 
-            if (schedRun == ScheduleRunType.Weekly)
+            if (ScheduleRunFrequency == ScheduleRunType.Weekly)
             {
                 if (ScheduleRunDays == null || ScheduleRunDays.Count == 0)
                 {
                     throw new ArgumentException("", "scheduleRunDays");
-                }
-
-                // validate scheduleRunsdays content 
-                foreach (var day in ScheduleRunDays)
-                {
-                    DayOfWeek weekDay;
-                    if (!Enum.TryParse<DayOfWeek>(day, out weekDay))
-                    {
-                        throw new ArgumentException("ScheduleRunDays content is invalid");
-                    }
-                }
+                }              
             }
         }
 

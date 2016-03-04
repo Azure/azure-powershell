@@ -21,7 +21,15 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
-    public class AzureRmRecoveryServicesContainerBase
+    public class AzureRmRecoveryServicesObjectBase
+    {
+        public virtual void Validate()
+        {
+
+        } 
+    }
+
+    public class AzureRmRecoveryServicesContainerBase : AzureRmRecoveryServicesObjectBase
     {
         /// <summary>
         /// Container Name
@@ -36,32 +44,35 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
     }
 
-    public class AzureRmRecoveryServicesItemBase
+    public class AzureRmRecoveryServicesItemBase : AzureRmRecoveryServicesObjectBase
     {
     }
 
-    public class AzureRmRecoveryServicesRecoveryPointBase
+    public class AzureRmRecoveryServicesRecoveryPointBase : AzureRmRecoveryServicesObjectBase
     {
     }
 
-    public class AzureRmRecoveryServicesPolicyBase
+    public class AzureRmRecoveryServicesPolicyBase : AzureRmRecoveryServicesObjectBase
     {
         public BackupManagementType BackupManagementType { get; set; }
 
         public WorkloadType WorkloadType { get; set; }
 
-    }
-
-    public class AzureRmRecoveryServicesRetentionPolicyBase
-    {
-        public virtual void Validate()
+        public override void Validate()
         {
         }
     }
 
-    public class AzureRmRecoveryServicesSchedulePolicyBase
+    public class AzureRmRecoveryServicesRetentionPolicyBase : AzureRmRecoveryServicesObjectBase
     {
-        public virtual void Validate()
+        public override void Validate()
+        {
+        }
+    }
+
+    public class AzureRmRecoveryServicesSchedulePolicyBase : AzureRmRecoveryServicesObjectBase
+    {
+        public override void Validate()
         {
         }
     }
