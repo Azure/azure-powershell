@@ -66,6 +66,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     storageClassifications.AddRange(entities);
                 });
 
+            Task.WaitAll(storageClassificationTask);
+
             switch (this.ParameterSetName)
             {
                 case ASRParameterSets.ByFriendlyName:
