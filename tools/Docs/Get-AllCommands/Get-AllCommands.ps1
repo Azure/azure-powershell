@@ -597,12 +597,12 @@ function Get-AllBuildServerCommands {
 			[System.XML.XMLDocument] $docCmdlet = New-Object System.XML.XMLDocument
 			$docCmdlet.Load((Join-Path -Path $ModuleOutputPath -ChildPath $_))
 			[System.XML.XMLNode] $rootCmdlet = $docCmdlet.DocumentElement
-			[System.XML.XMLNode] $cmdletNode = $RawDataXML.ImportNode($rootCmdlet, $true)
-			[System.XML.XMLNode] $newChild2 = $RawDataXMLRoot.AppendChild($cmdletNode)
+			[System.XML.XMLNode] $cmdletNode = $RawDataXml.ImportNode($rootCmdlet, $true)
+			[System.XML.XMLNode] $newChild2 = $RawDataXmlRoot.AppendChild($cmdletNode)
 			Remove-Item -Path (Join-Path -Path $ModuleOutputPath -ChildPath $_) 
 		}
 		#save main file
-		$RawDataXML.Save((Join-Path -Path $ModuleOutputPath -ChildPath $PSRawData))
+		$RawDataXml.Save((Join-Path -Path $ModuleOutputPath -ChildPath $PSRawData))
 
 		#Creating XML object of Project Writer file
 		[xml] $xmlProjectWriter = get-content $ProjectOutputFile

@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             byte[] byteArray;
             if (Length <= 0)
             {
-                Length = DataLakeStoreFileSystemClient.GetFileStatus(Path.TransformedPath, Account).Length - Offset;
+                Length = (long)DataLakeStoreFileSystemClient.GetFileStatus(Path.TransformedPath, Account).Length - Offset;
                 if (Length > 1*1024*1024 && !Force)
                     // If content is greater than 1MB throw an error to the user to let them know they must pass in a length to preview this much content
                 {
