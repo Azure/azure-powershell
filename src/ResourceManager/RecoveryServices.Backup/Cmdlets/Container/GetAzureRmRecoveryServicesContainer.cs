@@ -23,7 +23,10 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesContainer"), OutputType(typeof(List<AzureRmRecoveryServicesContainerBase>))]
+    /// <summary>
+    /// Get list of containers
+    /// </summary>
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesContainer"), OutputType(typeof(List<AzureRmRecoveryServicesContainerBase>), typeof(AzureRmRecoveryServicesContainerBase))]
     public class GetAzureRmRecoveryServicesContainer : RecoveryServicesBackupCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = "", ValueFromPipeline = true)]
