@@ -41,10 +41,10 @@
   <ItemGroup>
     <Compile Include="BaseObjects.cs" />
     <Compile Include="CmdletParamEnums.cs" />
-    <Compile Include="CommonModels\CommonUtils.cs" />
-    <Compile Include="CommonModels\CommonEnums.cs" />
-    <Compile Include="CommonModels\CommonPolicyRetentionObjects.cs" />
-    <Compile Include="CommonModels\CommonPolicyScheduleObjects.cs" />
+    <Compile Include="CommonModels\Utils.cs" />
+    <Compile Include="CommonModels\Enums.cs" />
+    <Compile Include="CommonModels\PolicyRetentionObjects.cs" />
+    <Compile Include="CommonModels\PolicyScheduleObjects.cs" />
     <Compile Include="IaasVmModels\AzureRmRecoveryServicesIaasVmPolicy.cs" />
     <Compile Include="IaasVmModels\AzureRmRecoveryServicesIaasVmItem.cs" />
     <Compile Include="IaasVmModels\AzureRmRecoveryServicesIaasVmContainer.cs" />
