@@ -97,6 +97,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Availability set &apos;{0}&apos;.
+        /// </summary>
+        public static string AvailabilitySetTarget {
+            get {
+                return ResourceManager.GetString("AvailabilitySetTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Apply configuration &apos;{0}&apos;.
         /// </summary>
         public static string AzureVMDscApplyConfigurationAction {
@@ -365,6 +374,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         public static string DiagnosticsExtensionXmlConfigWadCfgTagNotMatch {
             get {
                 return ResourceManager.GetString("DiagnosticsExtensionXmlConfigWadCfgTagNotMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disk Encription Extension &apos;{0}&apos; extending VirtualMachine &apos;{1}&apos;.
+        /// </summary>
+        public static string DiskEncryptionExtensionTarget {
+            get {
+                return ResourceManager.GetString("DiskEncryptionExtensionTarget", resourceCulture);
             }
         }
         
@@ -928,6 +946,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         public static string PublishVMDscExtensionUploadArchiveConfigFileNotExist1 {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionUploadArchiveConfigFileNotExist1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove.
+        /// </summary>
+        public static string RemoveAction {
+            get {
+                return ResourceManager.GetString("RemoveAction", resourceCulture);
             }
         }
         

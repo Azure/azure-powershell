@@ -501,4 +501,13 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
     <value>No Azure Enhanced Monitoring extension found under resource group '{0}', virtual machine '{1}'.</value>
     <comment>{0} = resource group name, {1} = virtual machine name</comment>
   </data>
+  <data name="AvailabilitySetTarget" xml:space="preserve">
+    <value>Availability set '{0}'</value>
+  </data>
+  <data name="DiskEncryptionExtensionTarget" xml:space="preserve">
+    <value>Disk Encription Extension '{0}' extending VirtualMachine '{1}'</value>
+  </data>
+  <data name="RemoveAction" xml:space="preserve">
+    <value>Remove</value>
+  </data>
 </root>
