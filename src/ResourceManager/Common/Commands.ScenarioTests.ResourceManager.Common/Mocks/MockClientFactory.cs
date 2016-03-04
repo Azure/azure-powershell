@@ -176,6 +176,12 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             // Do nothing
         }
 
+        public DelegatingHandler[] GetCustomHandlers()
+        {
+            // the equivalent of doing nothing
+            return new DelegatingHandler[0];
+        }
+
         public void AddUserAgent(string productName, string productVersion)
         {
             this.UniqueUserAgents.Add(new ProductInfoHeaderValue(productName, productVersion));
