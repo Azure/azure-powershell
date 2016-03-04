@@ -37,11 +37,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     {
     }
 
-    public class AzureRmRecoveryServicesPolicyBase
-    {
-    }
-
     public class AzureRmRecoveryServicesRecoveryPointBase
     {
     }
+
+    public class AzureRmRecoveryServicesPolicyBase
+    {
+        public BackupManagementType BackupManagementType { get; set; }
+
+        public WorkloadType WorkloadType { get; set; }
+
+    }
+
+    public class AzureRmRecoveryServicesRetentionPolicyBase
+    {
+        public virtual void Validate()
+        {
+        }
+    }
+
+    public class AzureRmRecoveryServicesSchedulePolicyBase
+    {
+        public virtual void Validate()
+        {
+        }
+    }  
 }

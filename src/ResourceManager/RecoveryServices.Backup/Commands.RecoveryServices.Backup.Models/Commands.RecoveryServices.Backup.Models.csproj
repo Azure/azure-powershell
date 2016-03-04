@@ -42,6 +42,8 @@
     <Compile Include="BaseObjects.cs" />
     <Compile Include="CmdletParamEnums.cs" />
     <Compile Include="CommonEnums.cs" />
+    <Compile Include="CommonPolicyRetentionObjects.cs" />
+    <Compile Include="CommonPolicyScheduleObjects.cs" />
     <Compile Include="IaasVmModels\AzureRmRecoveryServicesIaasVmPolicy.cs" />
     <Compile Include="IaasVmModels\AzureRmRecoveryServicesIaasVmItem.cs" />
     <Compile Include="IaasVmModels\AzureRmRecoveryServicesIaasVmContainer.cs" />
