@@ -392,7 +392,7 @@ function ${generated_func_name}
 
         # Remove
         `$st = Write-Verbose 'Running Test ${generated_func_name} - Removing VM';
-        `$st = Remove-AzureRmVM -Name `$vmname -ResourceGroupName `$rgname -Force;
+        `$st = Remove-AzureRmVM -Name `$vmname -ResourceGroupName `$rgname -Confirm:$false;
 
         `$st = Write-Verbose 'Running Test ${generated_func_name} - End';
     }

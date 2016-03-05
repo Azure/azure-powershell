@@ -133,7 +133,7 @@ function Test-VirtualMachineBootDiagnostics
         Get-AzureRmVMBootDiagnosticsData -Windows -ResourceGroupName $rgname -Name $vmname -LocalPath $localpath;
 
         # Remove VM
-        Remove-AzureRmVM -Name $vmname -ResourceGroupName $rgname -Force;
+        Remove-AzureRmVM -Name $vmname -ResourceGroupName $rgname -Confirm:$false;
 
         $p = New-AzureRMVMConfig -VMName $vmname -VMSize $vmsize;
         $p = Add-AzureRMVMNetworkInterface -VM $p -Id $nicId;
@@ -383,7 +383,7 @@ function Test-LinuxVirtualMachineBootDiagnostics
         Assert-AreEqual $stoaccount.PrimaryEndpoints.Blob $vm1.DiagnosticsProfile.BootDiagnostics.StorageUri;
 
         # Remove
-        Remove-AzureRMVM -Name $vmname -ResourceGroupName $rgname -Force;
+        Remove-AzureRMVM -Name $vmname -ResourceGroupName $rgname -Confirm:$false;
     }
     finally
     {

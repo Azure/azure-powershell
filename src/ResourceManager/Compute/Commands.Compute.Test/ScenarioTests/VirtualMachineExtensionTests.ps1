@@ -142,7 +142,7 @@ function Test-VirtualMachineExtension
         Assert-NotNull $ext.SubStatuses;
 
         # Remove Extension
-        Remove-AzureRmVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname -Force;
+        Remove-AzureRmVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname -Confirm:$false;
     }
     finally
     {
@@ -305,7 +305,7 @@ function Test-VirtualMachineExtensionUsingHashTable
         Assert-NotNull $vm1.Extensions[1].Settings;
 
         # Remove Extension
-        Remove-AzureRmVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname -Force;
+        Remove-AzureRmVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname -Confirm:$false;
     }
     finally
     {
@@ -1025,14 +1025,14 @@ function Test-AzureDiskEncryptionExtension
         New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
 		#Enable encryption on the VM
-        Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $keyVaultResourceId -Force;
+        Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $keyVaultResourceId -Confirm:$false;
         #Get encryption status
         $encryptionStatus = Get-AzureRmVmDiskEncryptionStatus -ResourceGroupName $rgname -VMName $vmName;
         #Remove AzureDiskEncryption extension
-        Remove-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName;
+        Remove-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -Confirm:$false;
 
         #Remove the VM 
-        Remove-AzureRmVm -ResourceGroupName $rgname -Name $vmName -Force;
+        Remove-AzureRmVm -ResourceGroupName $rgname -Name $vmName -Confirm:$false;
 
         #Create a brand new VM using the same OS vhd encrypted above
         $p.StorageProfile.ImageReference = $null;
@@ -1332,7 +1332,7 @@ function Test-VirtualMachineExtensionWithSwitch
         Assert-NotNull $ext.SubStatuses;
 
         # Remove Extension
-        Remove-AzureRmVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname -Force;
+        Remove-AzureRmVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname -Confirm:$false;
     }
     finally
     {

@@ -43,7 +43,7 @@ function Test-AvailabilitySet
         Assert-AreEqual $aset.PlatformUpdateDomainCount $nonDefaultUD;
         Assert-AreEqual $aset.PlatformFaultDomainCount $nonDefaultFD;
 
-        Remove-AzureRmAvailabilitySet -ResourceGroupName $rgname -Name $asetName -Force;
+        Remove-AzureRmAvailabilitySet -ResourceGroupName $rgname -Name $asetName -Confirm:$false;
         
         $asets = Get-AzureRmAvailabilitySet -ResourceGroupName $rgname;
         Assert-AreEqual $asets $null;

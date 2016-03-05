@@ -75,10 +75,10 @@ function Test-GetAzureRmVMDscExtension
 		# Publish DSC Configuration
 		#TODO: Find a way to mock calls with storage
 		#$configPath = '.\ScenarioTests\DummyConfig.ps1'
-		#Publish-AzureRmVMDscConfiguration -ConfigurationPath $configPath -ResourceGroupName $rgname -StorageAccountName $stoname -Force -Verbose
+		#Publish-AzureRmVMDscConfiguration -ConfigurationPath $configPath -ResourceGroupName $rgname -StorageAccountName $stoname -Confirm:$false -Force -Verbose
 
 		#Install DSC Extension handler
-		Set-AzureRmVMDscExtension -ResourceGroupName $rgname -VMName $vmname -ArchiveBlobName $null -ArchiveStorageAccountName $stoname -Version $version -Force -Location $loc
+		Set-AzureRmVMDscExtension -ResourceGroupName $rgname -VMName $vmname -ArchiveBlobName $null -ArchiveStorageAccountName $stoname -Version $version -Confirm:$false -Location $loc
 
         $extension = Get-AzureRmVMDscExtension -ResourceGroupName $rgname -VMName $vmname 
 		Assert-NotNull $extension
@@ -98,7 +98,7 @@ function Test-GetAzureRmVMDscExtension
 		Assert-NotNull $status.Timestamp 
 		
         # Remove Extension
-        Remove-AzureRmVMDscExtension -ResourceGroupName $rgname -VMName $vmname
+        Remove-AzureRmVMDscExtension -ResourceGroupName $rgname -VMName $vmname -Confirm:$false
     }
     finally
     {

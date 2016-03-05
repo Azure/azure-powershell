@@ -125,7 +125,7 @@ function Test-SingleNetworkInterface
         Assert-NotNull $getnic.MacAddress;
 
         # Remove
-        Remove-AzureRmVM -Name $vmname -ResourceGroupName $rgname -Force;
+        Remove-AzureRmVM -Name $vmname -ResourceGroupName $rgname -Confirm:$false;
     }
     finally
     {
@@ -231,7 +231,7 @@ function Test-SingleNetworkInterfaceDnsSettings
         Assert-NotNull $getnic.DnsSettings.AppliedDnsServers;
 
         # Remove
-        Remove-AzureRmVM -Name $vmname -ResourceGroupName $rgname -Force;
+        Remove-AzureRmVM -Name $vmname -ResourceGroupName $rgname -Confirm:$false;
     }
     finally
     {
@@ -345,7 +345,7 @@ function Test-MultipleNetworkInterface
         Assert-NotNull $getnic2.MacAddress;
 
         # Remove
-        Remove-AzureRmVM -Name $vmname -ResourceGroupName $rgname -Force;
+        Remove-AzureRmVM -Name $vmname -ResourceGroupName $rgname -Confirm:$false;
     }
     finally
     {
