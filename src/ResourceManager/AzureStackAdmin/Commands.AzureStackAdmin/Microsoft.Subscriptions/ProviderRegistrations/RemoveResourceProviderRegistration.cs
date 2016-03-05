@@ -22,7 +22,7 @@ namespace Microsoft.AzureStack.Commands
     using Microsoft.AzureStack.Management;
 
     /// <summary>
-    /// Resource Provider Registration Cmdlet
+    /// Remove Resource Provider Registration Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, Nouns.ResourceProviderRegistration)]
     [OutputType(typeof(AzureOperationResponse))]
@@ -40,6 +40,7 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true)]
         [ValidateNotNull]
+        [ValidateLength(1,90)]
         public string ResourceGroup { get; set; }
 
         /// <summary>

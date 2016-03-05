@@ -145,10 +145,10 @@
     <value>Removing resource provider registration with name "{0}".</value>
   </data>
   <data name="ProviderRegistrationAlreadyExists" xml:space="preserve">
-    <value>A resource provider registration with name "{0}" and region "{1}" already exists.</value>
+    <value>A resource provider registration with namespace "{0}" and region "{1}" already exists.</value>
   </data>
   <data name="ProviderRegistrationDoesNotExist" xml:space="preserve">
-    <value>A resource provider registration with name "{0}" and region "{1}" does not exist.</value>
+    <value>A resource provider registration with namespace "{0}" and region "{1}" does not exist.</value>
   </data>
   <data name="ResourceGroupDoesNotExist" xml:space="preserve">
     <value>A resource group with Name "{0}" does not exist.</value>
@@ -214,7 +214,7 @@
     <value>Creating a new plan with name "{0}" in resource group "{1}".</value>
   </data>
   <data name="CreatingNewSubscription" xml:space="preserve">
-    <value>Creating a new subscription for owner "{0}" to offer "{1}" with display name "{2}".</value>
+    <value>Creating a new subscription to offer "{0}" with display name "{1}".</value>
   </data>
   <data name="DeletingSubscription" xml:space="preserve">
     <value>Deleting subscription "{0}".</value>
@@ -229,10 +229,10 @@
     <value>Updating plan with name "{0}" in resource group "{1}".</value>
   </data>
   <data name="UpdatingManagedSubscription" xml:space="preserve">
-    <value>Updating managed subscription with id "{0}" and owner "{1}" under provider subscription '{2}'.</value>
+    <value>Updating managed subscription with id "{0}" under provider subscription "{1}".</value>
   </data>
   <data name="UpdatingSubscription" xml:space="preserve">
-    <value>Updating subscription with id "{0}" and owner "{1}".</value>
+    <value>Updating subscription id "{0}".</value>
   </data>
   <data name="WarningDisableCertificateValidation" xml:space="preserve">
     <value>Disabling certificate validation may allow others to intercept and decrypt this web request.</value>
@@ -280,5 +280,11 @@
   <data name="ValidateGuidWrongType" xml:space="preserve">
     <value>Argument must be a GUID.</value>
     <comment>ValidationMetadataException</comment>
+  </data>
+  <data name="InvalidJson" xml:space="preserve">
+    <value>The provided string is not a valid json</value>
+  </data>
+  <data name="QuotaIdOrSkuIdRequired" xml:space="preserve">
+    <value>Either QuotaId or SkuId is required for creating the plan</value>
   </data>
 </root>

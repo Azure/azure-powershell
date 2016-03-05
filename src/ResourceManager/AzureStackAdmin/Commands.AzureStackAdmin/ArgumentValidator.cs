@@ -12,12 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Newtonsoft.Json.Linq;
+
 namespace Microsoft.AzureStack.Commands
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Microsoft.WindowsAzure.Commands.Common.Properties;
 
     /// <summary>
     /// Argument Validation Methods
@@ -74,5 +75,21 @@ namespace Microsoft.AzureStack.Commands
             }
         }
 
+        /// <summary>
+        /// Checks if the argument is a valid json string
+        /// </summary>
+        /// <param name="paramName">Name of the property</param>
+        /// <param name="value">The json string</param>
+        public static void ValidateJson(string paramName, string value)
+        {
+            try
+            {
+                JObject.Parse(value);
+            }
+            catch
+            {
+                throw new ArgumentException(Resources.InvalidJson, paramName: paramName);
+            }
+        }
     }
 }

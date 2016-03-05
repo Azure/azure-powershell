@@ -106,7 +106,7 @@ namespace Microsoft.AzureStack.Commands {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Creating a new subscription for owner &quot;{0}&quot; to offer &quot;{1}&quot; with display name &quot;{2}&quot;..
+        ///   Looks up a localized string similar to Creating a new subscription to offer &quot;{0}&quot; with display name &quot;{1}&quot;..
         /// </summary>
         public static string CreatingNewSubscription {
             get {
@@ -219,6 +219,15 @@ namespace Microsoft.AzureStack.Commands {
         public static string GettingSubscriptionByID {
             get {
                 return ResourceManager.GetString("GettingSubscriptionByID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The provided string is not a valid json.
+        /// </summary>
+        public static string InvalidJson {
+            get {
+                return ResourceManager.GetString("InvalidJson", resourceCulture);
             }
         }
         
@@ -358,7 +367,7 @@ namespace Microsoft.AzureStack.Commands {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A resource provider registration with name &quot;{0}&quot; and region &quot;{1}&quot; already exists..
+        ///   Looks up a localized string similar to A resource provider registration with namespace &quot;{0}&quot; and region &quot;{1}&quot; already exists..
         /// </summary>
         public static string ProviderRegistrationAlreadyExists {
             get {
@@ -367,11 +376,20 @@ namespace Microsoft.AzureStack.Commands {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A resource provider registration with name &quot;{0}&quot; and region &quot;{1}&quot; does not exist..
+        ///   Looks up a localized string similar to A resource provider registration with namespace &quot;{0}&quot; and region &quot;{1}&quot; does not exist..
         /// </summary>
         public static string ProviderRegistrationDoesNotExist {
             get {
                 return ResourceManager.GetString("ProviderRegistrationDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Either QuotaId or SkuId is required for creating the plan.
+        /// </summary>
+        public static string QuotaIdOrSkuIdRequired {
+            get {
+                return ResourceManager.GetString("QuotaIdOrSkuIdRequired", resourceCulture);
             }
         }
         
@@ -457,7 +475,7 @@ namespace Microsoft.AzureStack.Commands {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Updating managed subscription with id &quot;{0}&quot; and owner &quot;{1}&quot; under provider subscription &apos;{2}&apos;..
+        ///   Looks up a localized string similar to Updating managed subscription with id &quot;{0}&quot; under provider subscription &quot;{1}&quot;..
         /// </summary>
         public static string UpdatingManagedSubscription {
             get {
@@ -484,7 +502,7 @@ namespace Microsoft.AzureStack.Commands {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Updating subscription with id &quot;{0}&quot; and owner &quot;{1}&quot;..
+        ///   Looks up a localized string similar to Updating subscription id &quot;{0}&quot;..
         /// </summary>
         public static string UpdatingSubscription {
             get {

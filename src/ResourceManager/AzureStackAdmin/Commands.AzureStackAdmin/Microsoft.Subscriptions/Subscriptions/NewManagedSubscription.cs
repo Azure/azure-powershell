@@ -23,7 +23,7 @@ namespace Microsoft.AzureStack.Commands
     using Microsoft.AzureStack.Management.Models;
 
     /// <summary>
-    /// New Subscription Cmdlet
+    /// New Managed Subscription Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.New, Nouns.ManagedSubscription)]
     [OutputType(typeof(SubscriptionDefinition))]
@@ -35,14 +35,6 @@ namespace Microsoft.AzureStack.Commands
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false)]
         [ValidateGuidNotEmpty]
         public Guid SubscriptionId { get; set; } 
-
-        /// <summary>
-        /// Gets or sets the owner.
-        /// </summary>
-        [Parameter(Mandatory = true)]
-        [ValidateLength(1, 128)]
-        [ValidateNotNull]
-        public string Owner { get; set; }
 
         /// <summary>
         /// Gets or sets the identifier of the offer.
@@ -78,13 +70,12 @@ namespace Microsoft.AzureStack.Commands
         {
             return new SubscriptionDefinition()
                    {
+                       // ToDo: Make the SubscriptionId as an optional parameter 
                        SubscriptionId = (NewManagedSubscription.SubscriptionIds.Count == 0
                            ? Guid.NewGuid()
                            : NewManagedSubscription.SubscriptionIds.Dequeue()).ToString(),
                        DisplayName = this.DisplayName,
                        OfferId = this.OfferId,
-                       OfferName = GetAndValidateOfferName(this.OfferId),
-                       Owner = this.Owner,
                        State = SubscriptionState.Enabled,
                    };
         }
@@ -96,34 +87,10 @@ namespace Microsoft.AzureStack.Commands
         {
             using (var client = this.GetAzureStackClient(this.SubscriptionId))
             {
-                this.WriteVerbose(Resources.CreatingNewSubscription.FormatArgs(this.Owner, this.OfferId, this.DisplayName));
+                this.WriteVerbose(Resources.CreatingNewSubscription.FormatArgs(this.OfferId, this.DisplayName));
                 var parameters = new ManagedSubscriptionCreateOrUpdateParameters(this.GetSubscriptionDefinition());
                 return client.ManagedSubscriptions.CreateOrUpdate(parameters).Subscription;
             }
-        }
-
-        /// <summary>
-        /// Gets and validates the name of the offer.
-        /// </summary>
-        /// <param name="offerId">The offer identifier.</param>
-        private static string GetAndValidateOfferName(string offerId)
-        {
-            ArgumentValidator.ValidateNotNull("offerId", offerId);
-
-            var parts = offerId.Trim('/').Split('/');
-
-            if (parts.Length != 4
-                || !"delegatedProviders".EqualsInsensitively(parts[0])
-                || !"offers".EqualsInsensitively(parts[2])
-                || string.IsNullOrWhiteSpace(parts[1])
-                || string.IsNullOrWhiteSpace(parts[3]))
-            {
-                throw new ArgumentException(
-                    message: "Invalid offer identifier; must be of the form '/delegatedProviders/{providerId}/offers/{offerName}'",
-                    paramName: "offerId");
-            }
-
-            return parts[3];
         }
     }
 }

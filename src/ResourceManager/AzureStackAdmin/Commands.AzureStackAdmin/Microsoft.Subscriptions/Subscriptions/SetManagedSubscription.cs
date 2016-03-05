@@ -19,8 +19,9 @@ namespace Microsoft.AzureStack.Commands
     using Microsoft.WindowsAzure.Commands.Common;
     using Microsoft.AzureStack.Management;
     using Microsoft.AzureStack.Management.Models;
+
     /// <summary>
-    /// Subscription Cmdlet
+    /// Set Managed Subscription Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Set, Nouns.ManagedSubscription)]
     [OutputType(typeof(SubscriptionDefinition))]
@@ -50,7 +51,6 @@ namespace Microsoft.AzureStack.Commands
                 this.WriteVerbose(
                     Resources.UpdatingManagedSubscription.FormatArgs(
                         this.Subscription.SubscriptionId,
-                        this.Subscription.Owner,
                         this.SubscriptionId));
 
                 var parameters = new ManagedSubscriptionCreateOrUpdateParameters(this.Subscription);

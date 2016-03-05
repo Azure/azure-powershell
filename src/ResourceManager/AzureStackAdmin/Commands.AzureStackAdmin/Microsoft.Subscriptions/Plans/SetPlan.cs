@@ -40,6 +40,7 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         [Parameter(Mandatory = true)]
         [ValidateNotNull]
+        [ValidateLength(1,90)]
         public string ResourceGroup { get; set; }
 
         /// <summary>
