@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(
         VerbsCommon.Remove,
-        ProfileNouns.VirtualMachineCustomScriptExtension)]
+        ProfileNouns.VirtualMachineCustomScriptExtension, SupportsShouldProcess=true,
+        ConfirmImpact=ConfirmImpact.High)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class RemoveAzureVMCustomScriptExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
@@ -62,7 +63,8 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
-                if (this.Force.IsPresent || this.ShouldContinue(Microsoft.Azure.Commands.Compute.Properties.Resources.VirtualMachineExtensionRemovalConfirmation, Microsoft.Azure.Commands.Compute.Properties.Resources.VirtualMachineExtensionRemovalCaption))
+                if (ShouldProcess(string.Format(Properties.Resources.CustomScriptExtensionTarget, Name, VMName),
+                    Properties.Resources.RemoveExtensionAction))
                 {
                     var op = this.VirtualMachineExtensionClient.DeleteWithHttpMessagesAsync(
                         this.ResourceGroupName,

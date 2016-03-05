@@ -505,9 +505,35 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
     <value>Availability set '{0}'</value>
   </data>
   <data name="DiskEncryptionExtensionTarget" xml:space="preserve">
-    <value>Disk Encription Extension '{0}' extending VirtualMachine '{1}'</value>
+    <value>Disk Encryption Extension '{0}' extending VirtualMachine '{1}'</value>
+    <comment>{0}= extension name, {1} = VMName</comment>
   </data>
-  <data name="RemoveAction" xml:space="preserve">
-    <value>Remove</value>
+  <data name="RemoveExtensionAction" xml:space="preserve">
+    <value>Remove Extension</value>
+  </data>
+  <data name="AccessExtensionTarget" xml:space="preserve">
+    <value>Virtual Machine Access Extension '{0}' extending VirtualMachine '{1}'</value>
+    <comment>{0}= extension name, {1} = VMName</comment>
+  </data>
+  <data name="CustomScriptExtensionTarget" xml:space="preserve">
+    <value>Custom Script Extension '{0}' extending VirtualMachine '{1}'</value>
+    <comment>{0}= extension name, {1} = VMName</comment>
+  </data>
+  <data name="SetExtensionAction" xml:space="preserve">
+    <value>Set Extension</value>
+  </data>
+  <data name="VMExtensionTarget" xml:space="preserve">
+    <value>Virtual Machine Extension '{0}' extending VirtualMachine '{1}'</value>
+    <comment>{0}= extension name, {1} = VMName</comment>
+  </data>
+  <data name="VMRemoveAction" xml:space="preserve">
+    <value>Remove Virtual Machine</value>
+  </data>
+  <data name="VMStopAction" xml:space="preserve">
+    <value>Stop Virtual Machine</value>
+  </data>
+  <data name="VMTarget" xml:space="preserve">
+    <value>Virtual Machine '{0}'</value>
+    <comment>{0} = VMName</comment>
   </data>
 </root>

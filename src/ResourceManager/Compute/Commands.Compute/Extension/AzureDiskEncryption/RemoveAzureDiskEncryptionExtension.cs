@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 }
 
                 if (this.ShouldProcess(string.Format(Properties.Resources.DiskEncryptionExtensionTarget, Name, VMName), 
-                    Properties.Resources.RemoveAction))
+                    Properties.Resources.RemoveExtensionAction))
                 {
                     var op = this.VirtualMachineExtensionClient.DeleteWithHttpMessagesAsync(
                         this.ResourceGroupName,

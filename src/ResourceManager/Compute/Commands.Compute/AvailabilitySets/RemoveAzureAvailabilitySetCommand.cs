@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Compute
             ExecuteClientAction(() =>
             {
                 if ( this.ShouldProcess(string.Format(Properties.Resources.AvailabilitySetTarget, Name), 
-                    Properties.Resources.RemoveAction))
+                    VerbsCommon.Remove))
                 {
                     var op = this.AvailabilitySetClient.DeleteWithHttpMessagesAsync(
                         this.ResourceGroupName,

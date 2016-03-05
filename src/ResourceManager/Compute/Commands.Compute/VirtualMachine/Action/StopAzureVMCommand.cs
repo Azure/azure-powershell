@@ -25,7 +25,8 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsLifecycle.Stop, ProfileNouns.VirtualMachine, DefaultParameterSetName = ResourceGroupNameParameterSet)]
+    [Cmdlet(VerbsLifecycle.Stop, ProfileNouns.VirtualMachine, DefaultParameterSetName = ResourceGroupNameParameterSet,
+        SupportsShouldProcess=true, ConfirmImpact=ConfirmImpact.Medium)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class StopAzureVMCommand : VirtualMachineActionBaseCmdlet
     {
@@ -39,12 +40,6 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "To force the stopping.")]
-        [ValidateNotNullOrEmpty]
-        public SwitchParameter Force { get; set; }
-
-        [Parameter(
-            Mandatory = false,
             HelpMessage = "To keep the VM provisioned.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter StayProvisioned { get; set; }
@@ -55,7 +50,8 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
-                if (this.Force.IsPresent || this.ShouldContinue(Properties.Resources.VirtualMachineStoppingConfirmation, Properties.Resources.VirtualMachineStoppingCaption))
+                if (ShouldProcess(string.Format(Properties.Resources.VMTarget, Name),
+                    Properties.Resources.VMStopAction))
                 {
                     Action<Func<string, string, Dictionary<string, List<string>>, CancellationToken, Task<Rest.Azure.AzureOperationResponse>>> call = f =>
                     {

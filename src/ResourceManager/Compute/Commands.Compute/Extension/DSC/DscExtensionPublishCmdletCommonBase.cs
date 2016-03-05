@@ -407,24 +407,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
                 GetBlobReference(storageCredentials, storageEndpointSuffix, containerName, archivePath);
 
             ConfirmAction(
-                true,
+                force,
                 string.Empty,
                 string.Format(CultureInfo.CurrentUICulture, Microsoft.Azure.Commands.Compute.Properties.Resources.AzureVMDscUploadToBlobStorageAction, archivePath),
                 modulesBlob.Uri.AbsoluteUri, () =>
                 {
-                    if (!force && modulesBlob.Exists())
-                    {
-                        ThrowTerminatingError(
-                            new ErrorRecord(
-                                new UnauthorizedAccessException(
-                                    string.Format(
-                                        CultureInfo.CurrentUICulture,
-                                        Microsoft.Azure.Commands.Compute.Properties.Resources.AzureVMDscStorageBlobAlreadyExists, modulesBlob.Uri.AbsoluteUri)),
-                                "StorageBlobAlreadyExists",
-                                ErrorCategory.PermissionDenied,
-                                null));
-                    }
-
                     modulesBlob.UploadFromFile(archivePath, FileMode.Open);
 
                     WriteVerbose(string.Format(
@@ -435,7 +422,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
                     {
                         WriteObject(modulesBlob.Uri.AbsoluteUri);
                     }
-                });
+                },
+                () => modulesBlob.Exists());
         }
 
         private void CopyFileToZipFolder(String source, string destination)

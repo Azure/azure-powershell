@@ -30,7 +30,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
     [Cmdlet(
         VerbsCommon.Set,
         ProfileNouns.AzureDiskEncryptionExtension,
-        DefaultParameterSetName = aadClientSecretParameterSet)]
+        DefaultParameterSetName = aadClientSecretParameterSet,
+        SupportsShouldProcess=true, ConfirmImpact=ConfirmImpact.Medium)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureDiskEncryptionExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
@@ -406,7 +407,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             ExecuteClientAction(() =>
             {
                 if (
-                this.ShouldProcess(Properties.Resources.EnableAzureDiskEncryptionConfirmation, Properties.Resources.EnableAzureDiskEncryptionCaption))
+                this.ShouldProcess(string.Format(Properties.Resources.DiskEncryptionExtensionTarget, Name, VMName), 
+                Properties.Resources.SetExtensionAction))
                 {
                     VirtualMachine virtualMachineResponse = this.ComputeClient.ComputeManagementClient.VirtualMachines.GetWithInstanceView(
                         this.ResourceGroupName, VMName).Body;
