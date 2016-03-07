@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Container.Get.Status)]
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Container.Get.Status)]
         [ValidateNotNullOrEmpty]
         public ContainerRegistrationStatus Status { get; set; }
 
@@ -56,16 +56,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             base.ExecuteCmdlet();
 
             ProtectionContainerListQueryParams queryParams = new ProtectionContainerListQueryParams();
+
+            // 1. Filter by Name
             queryParams.FriendlyName = Name;
-            
-            // TODO: Removing hardcoding of ProviderType
-            queryParams.ProviderType = ProviderType.AzureIaasVM.ToString();
+
+            // 2. Filter by ContainerType
+            queryParams.ProviderType = HydraHelpers.GetHydraProviderType(ContainerType);
+
+            // 3. Filter by Status
             queryParams.RegistrationStatus = Status.ToString();
+
             var listResponse = HydraAdapter.ListContainers(Vault.Name, Vault.ResouceGroupName, queryParams);
 
-            // TODO: Filter the response
+            List<AzureRmRecoveryServicesContainerBase> containerModels = ConversionHelpers.GetContainerModelList(listResponse);
 
-            WriteObject((ConversionHelpers.GetContainerModelList(listResponse)));
+            // 4. Filter by RG Name
+            if (ContainerType == Models.ContainerType.AzureVM)
+            {
+                containerModels.RemoveAll(containerModel =>
+                    (containerModel as AzureRmRecoveryServicesIaasVmContainer).ResourceGroupName == ResourceGroupName);
+            }
+
+            WriteObject(containerModels);
         }
     }
 }
