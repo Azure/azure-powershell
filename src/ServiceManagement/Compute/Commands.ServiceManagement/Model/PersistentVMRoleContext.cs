@@ -44,7 +44,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
         public NetworkInterfaceList NetworkInterfaces { get; set; }
         public string VirtualNetworkName { get; set; }
         public string RemoteAccessCertificateThumbprint { get; set; }
-
         public PersistentVM GetInstance()
         {
             return this.VM;

@@ -397,6 +397,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         }
 
         /// <summary>
+        /// Get the SAS token for an account.
+        /// </summary>
+        /// <param name="sharedAccessAccountPolicy">Shared access policy to generate the SAS token.</param>
+        /// <returns>Account SAS token.</returns>
+        public string GetStorageAccountSASToken(SharedAccessAccountPolicy sharedAccessAccountPolicy)
+        {
+            return StorageContext.StorageAccount.GetSharedAccessSignature(sharedAccessAccountPolicy);
+        }
+
+        /// <summary>
         /// Async Get container presssions
         /// </summary>
         /// <param name="container">A cloudblobcontainer object</param>

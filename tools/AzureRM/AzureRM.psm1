@@ -1,36 +1,36 @@
 $AzureRMDependencies = @{
-  "Azure.Storage" = "1.0.4";
-  "AzureRM.Profile" = "1.0.4";
+  "Azure.Storage" = "1.0.5";
+  "AzureRM.Profile" = "1.0.5";
 }
 
 $AzureRMModules = @{
-  "AzureRM.ApiManagement" = "1.0.4";
-  "AzureRM.Automation" = "1.0.4";
-  "AzureRM.Backup" = "1.0.4";
-  "AzureRM.Batch" = "1.0.4";
-  "AzureRM.Compute" = "1.2.2";
-  "AzureRM.DataFactories" = "1.0.4";
-  "AzureRM.DataLakeAnalytics" = "1.0.4";
-  "AzureRM.DataLakeStore" = "1.0.4";
-  "AzureRM.Dns" = "1.0.4";
-  "AzureRM.HDInsight" = "1.0.5";
-  "AzureRM.Insights" = "1.0.4";
-  "AzureRM.KeyVault" = "1.1.3";
-  "AzureRM.Network" = "1.0.4";
-  "AzureRM.NotificationHubs" = "1.0.4";
-  "AzureRM.OperationalInsights" = "1.0.4";
-  "AzureRM.RecoveryServices" = "1.0.5";
-  "AzureRM.RedisCache" = "1.1.2";
-  "AzureRM.Resources" = "1.0.4";
-  "AzureRM.SiteRecovery" = "1.1.3";
-  "AzureRM.Sql" = "1.0.4";
-  "AzureRM.Storage" = "1.0.4";
-  "AzureRM.StreamAnalytics" = "1.0.4";
-  "AzureRM.Tags" = "1.0.4";
-  "AzureRM.TrafficManager" = "1.0.4";
-  "AzureRM.UsageAggregates" = "1.0.4";
-  "AzureRM.Websites" = "1.0.4";
-  "AzureRM.LogicApp" = "1.0.0";
+  "AzureRM.ApiManagement" = "1.0.5";
+  "AzureRM.Automation" = "1.0.5";
+  "AzureRM.Backup" = "1.0.5";
+  "AzureRM.Batch" = "1.0.5";
+  "AzureRM.Compute" = "1.2.4";
+  "AzureRM.DataFactories" = "1.0.5";
+  "AzureRM.DataLakeAnalytics" = "1.0.5";
+  "AzureRM.DataLakeStore" = "1.0.5";
+  "AzureRM.Dns" = "1.0.5";
+  "AzureRM.HDInsight" = "1.0.6";
+  "AzureRM.Insights" = "1.0.5";
+  "AzureRM.KeyVault" = "1.1.4";
+  "AzureRM.Network" = "1.0.5";
+  "AzureRM.NotificationHubs" = "1.0.5";
+  "AzureRM.OperationalInsights" = "1.0.5";
+  "AzureRM.RecoveryServices" = "1.0.6";
+  "AzureRM.RedisCache" = "1.1.3";
+  "AzureRM.Resources" = "1.0.5";
+  "AzureRM.SiteRecovery" = "1.1.4";
+  "AzureRM.Sql" = "1.0.5";
+  "AzureRM.Storage" = "1.0.5";
+  "AzureRM.StreamAnalytics" = "1.0.5";
+  "AzureRM.Tags" = "1.0.5";
+  "AzureRM.TrafficManager" = "1.0.5";
+  "AzureRM.UsageAggregates" = "1.0.5";
+  "AzureRM.Websites" = "1.0.5";
+  "AzureRM.LogicApp" = "1.0.1";
 }
 
 function Test-AdminRights([string]$Scope)

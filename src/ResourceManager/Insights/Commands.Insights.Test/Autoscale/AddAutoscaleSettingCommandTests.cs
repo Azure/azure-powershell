@@ -20,7 +20,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Hyak.Common;
 using Microsoft.Azure.Commands.Insights.Autoscale;
-using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Management.Insights;
 using Microsoft.Azure.Management.Insights.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
