@@ -1,4 +1,4 @@
-﻿##2016.03.02 version 1.2.2
+﻿##2016.03.03 version 1.2.2
 * Azure Compute (ARM):
   * Add -LicenseType parameter to New-AzureRmVM for bring your own license (BYOL)
   * Add -SecureExecution parameter to Set-AzureRmVMCustomScriptExtension
