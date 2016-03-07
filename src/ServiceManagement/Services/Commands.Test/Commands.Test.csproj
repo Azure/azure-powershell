@@ -385,6 +385,9 @@
     </Content>
     <None Include="packages.config" />
     <None Include="Performance\Microsoft.ServiceBus.MessagingPerformanceCounters.man" />
+    <None Include="Profile\SelectAzureSubscriptionTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Profile\SelectAzureProfileTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
