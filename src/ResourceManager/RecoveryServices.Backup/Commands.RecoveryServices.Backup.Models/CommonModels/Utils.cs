@@ -17,6 +17,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {    
@@ -41,6 +42,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public static string GetString(IEnumerable<DayOfWeek> objList)
         {
             return (objList == null) ? "null" : "{" + string.Join("}, {", objList) + "}";
+        }
+    }
+
+    public class IdUtils
+    {
+        private static readonly Regex ResourceGroupRegex = new Regex(@"/subscriptions/(?<subscriptionsId>.+)/resourceGroups/(?<resourceGroupName>.+)/providers/(?<providersName>.+)/BackupVault/(?<BackupVaultName>.+)/containers/(?<containersName>.+)", RegexOptions.Compiled);
+
+        public static string GetResourceGroupName(string id)
+        {
+            var match = ResourceGroupRegex.Match(id);
+            if (match.Success)
+            {
+                var vmRGName = match.Groups["containersName"];
+                if (vmRGName != null && vmRGName.Success)
+                {
+                    return vmRGName.Value;
+                }
+            }
+
+            return null;
         }
     }
 }

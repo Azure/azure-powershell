@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,15 +31,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
     public class AzureRmRecoveryServicesContainerBase : AzureRmRecoveryServicesObjectBase
     {
+        /// <summary>
+        /// Container Name
+        /// </summary>
         public string Name { get; set; }
-
-        public string ResourceGroupName { get; set; }
-
-        public string Status { get; set; }
 
         public ContainerType ContainerType { get; set; }
 
-        public int BackupItemsCount { get; set; }
+        public AzureRmRecoveryServicesContainerBase(ProtectionContainerResource protectionContainer)
+        {
+            Name = protectionContainer.Name;
+        }
     }
 
     public class AzureRmRecoveryServicesItemBase : AzureRmRecoveryServicesObjectBase
@@ -72,5 +75,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public override void Validate()
         {
         }
-    }  
+    }
 }

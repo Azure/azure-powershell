@@ -14,6 +14,8 @@
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,26 +25,29 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesContainer"), OutputType(typeof(List<AzureRmRecoveryServicesContainerBase>))]
+    /// <summary>
+    /// Get list of containers
+    /// </summary>
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesContainer"), OutputType(typeof(List<AzureRmRecoveryServicesContainerBase>), typeof(AzureRmRecoveryServicesContainerBase))]
     public class GetAzureRmRecoveryServicesContainer : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = false, HelpMessage = "", ValueFromPipeline = true)]
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Common.Vault, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ARSVault Vault { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "")]
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Container.Get.ContainerType)]
         [ValidateNotNullOrEmpty]
         public ContainerType ContainerType { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "")]
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Container.Get.Name)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "")]
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Container.Get.ResourceGroupName)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "")]
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Container.Get.Status)]
         [ValidateNotNullOrEmpty]
         public ContainerRegistrationStatus Status { get; set; }
 
@@ -50,16 +55,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         {
             base.ExecuteCmdlet();
 
-            PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
-            {
-                {GetContainerParams.Vault, Vault}, 
-                {GetContainerParams.ContainerType, ContainerType},
-                {GetContainerParams.Name, Name},
-                {GetContainerParams.ResourceGroupName, ResourceGroupName},
-                {GetContainerParams.Status, Status},
-            }, HydraAdapter);
+            ProtectionContainerListQueryParams queryParams = new ProtectionContainerListQueryParams();
 
-            IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(ContainerType.AzureVM);
+            // 1. Filter by Name
+            queryParams.FriendlyName = Name;
+
+            // 2. Filter by ContainerType
+            queryParams.ProviderType = HydraHelpers.GetHydraProviderType(ContainerType);
+
+            // 3. Filter by Status
+            queryParams.RegistrationStatus = Status.ToString();
+
+            var listResponse = HydraAdapter.ListContainers(Vault.Name, Vault.ResouceGroupName, queryParams);
+
+            List<AzureRmRecoveryServicesContainerBase> containerModels = ConversionHelpers.GetContainerModelList(listResponse);
+
+            // 4. Filter by RG Name
+            if (ContainerType == Models.ContainerType.AzureVM)
+            {
+                containerModels.RemoveAll(containerModel =>
+                    (containerModel as AzureRmRecoveryServicesIaasVmContainer).ResourceGroupName == ResourceGroupName);
+            }
+
+            WriteObject(containerModels);
         }
     }
 }

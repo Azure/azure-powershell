@@ -12,15 +12,32 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
-    public class AzureRmRecoveryServicesIaasVmContainer : AzureRmRecoveryServicesContainerBase
+    public class HydraHelpers
     {
+        public static string GetHydraProviderType(ContainerType containerType)
+        {
+            string providerType = string.Empty;
+
+            switch (containerType)
+            {
+                case ContainerType.AzureVM:
+                    providerType = ProviderType.AzureIaasVM.ToString();
+                    break;
+                default:
+                    break;
+            }
+
+            return providerType;
+        }
     }
 }
