@@ -44,7 +44,41 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
     }
 
+    /// <summary>
+    /// Represents Azure Backup Item Base Class
+    /// </summary>
     public class AzureRmRecoveryServicesItemBase : AzureRmRecoveryServicesObjectBase
+    {
+        /// <summary>
+        /// Unique Name for the Item
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Workload Type of Item
+        /// </summary>
+        public string WorkloadType { get; set; }
+
+        /// <summary>
+        /// Unique name of the Container
+        /// </summary>
+        public string ContainerName { get; set; }
+
+        /// <summary>
+        /// Type of the container
+        /// </summary>
+        public string ContainerType { get; set; }
+
+        /// <summary>
+        /// Last Recovery Point for the item
+        /// </summary>
+        public DateTime? LastRecoveryPoint { get; set; }
+    }
+
+    /// <summary>
+    /// Represents Azure Backup Item ExtendedInfo Base Class
+    /// </summary>
+    public class AzureRmRecoveryServicesItemExtendedInfo : AzureRmRecoveryServicesItemBase
     {
     }
 
