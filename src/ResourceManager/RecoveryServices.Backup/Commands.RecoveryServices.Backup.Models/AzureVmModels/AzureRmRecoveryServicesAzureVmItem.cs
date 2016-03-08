@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
@@ -51,12 +52,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// ExtendedInfo for the Item
         /// </summary
         public AzureRmRecoveryServicesIaasVmItemExtendedInfo ExtendedInfo { get; set; }
+
+        public AzureRmRecoveryServicesIaasVmItem(AzureIaaSVMProtectedItem protectedItem, 
+            AzureRmRecoveryServicesContainerBase container)
+            : base(protectedItem, container)
+        {
+
+        }
     }
 
     /// <summary>
     /// Represents IaaSVM Item ExtendedInfo Class
     /// </summary>
-    public class AzureRmRecoveryServicesIaasVmItemExtendedInfo : AzureRmRecoveryServicesItemExtendedInfo
+    public class AzureRmRecoveryServicesIaasVmItemExtendedInfo : AzureRmRecoveryServicesItemExtendedInfoBase
     {
         /// <summary>
         /// Oldest Recovery Point for the Item
