@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Test.Profile
             Assert.True(true);
         }
 
-        [Fact(Skip="Fix CI failures")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void StorageAccountIsNotCleaned()
         {

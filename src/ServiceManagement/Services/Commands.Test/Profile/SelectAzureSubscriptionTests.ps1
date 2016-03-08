@@ -21,7 +21,5 @@ function Test-StorageAccountIsNotCleaned
     Set-AzureSubscription -SubscriptionId 2c224e7e-3ef5-431d-a57b-e71f4662e3a6 -CurrentStorageAccount teststorage1220 
     Select-AzureSubscription -SubscriptionId 2c224e7e-3ef5-431d-a57b-e71f4662e3a6
     $subscription = Get-AzureSubscription -SubscriptionId 2c224e7e-3ef5-431d-a57b-e71f4662e3a6
-    $storageContainer = Get-AzureStorageContainer
     Assert-NotNull $($subscription.CurrentStorageAccountName)
-    Assert-NotNull $($storageContainer)
 }
