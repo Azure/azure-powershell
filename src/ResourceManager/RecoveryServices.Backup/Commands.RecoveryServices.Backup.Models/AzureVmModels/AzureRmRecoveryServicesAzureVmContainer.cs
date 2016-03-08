@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public string Status { get; set; }
 
         public AzureRmRecoveryServicesIaasVmContainer(ProtectionContainerResource protectionContainer)
-            : base(protectionContainer)
+            : base(protectionContainer.Properties as ProtectionContainer)
         {
             AzureIaaSVMProtectionContainer iaasVmProtectionContainer = (AzureIaaSVMProtectionContainer)protectionContainer.Properties;
             ContainerType = ContainerType.AzureVM;
