@@ -1,4 +1,15 @@
-##2016.03.08 version 1.3.0
+﻿##2016.03.03 version 1.2.2
+* Azure Compute (ARM):
+  * Add -LicenseType parameter to New-AzureRmVM for bring your own license (BYOL)
+  * Add -SecureExecution parameter to Set-AzureRmVMCustomScriptExtension
+  * Add -DisableAutoUpgradeMinorVersion and -ForceRerun parameters to Set-AzureRmVMExtension
+  * Add Set-AzureRmVMPlan cmdlet
+  * Add -Redeploy parameter to Set-AzureRmVM
+  * Add AutoUpgradeMinorVersion and ForceUpdateTag parameters for Get-AzureRmVMExtension
+  * Update positions of parameters for New-AzureRmVM
+* Azure Compute (Service Management):
+  * Add Set-AzureBootDiagnostics cmdlets
+  * Enable boot diagnostics by default for New-AzureVM and New-AzureQuickVM
 * Azure LogicApp: New cmdlets for managing LogicApps  
   * Get-AzureLogicAppAccessKey
   * Get-AzureLogicApp
@@ -22,6 +33,11 @@
     - New-AzureStorageShareSASToken
     - New-AzureStorageQueueSASToken
     - New-AzureStorageTableSASToken
+* Azure SQL DB Backup/restore
+  * Get-AzureRmSqlDatabaseGeoBackup
+  * Get-AzureRmSqlDeletedDatabaseBackup
+  * Restore-AzureRmSqlDatabase
+    * This cmdlet accepts as pipelined input the result of one of the first two cmdlets (or Get-AzureRmSqlDatabase if restoring a live DB to a point-in-time)
 
 ## 2016.02.04 version 1.2.1
 * Fix installer issue - remove PSGallery modules on install

@@ -51,6 +51,13 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Database Backup\Cmdlet\AzureSqlDatabaseGeoBackupCmdletBase.cs" />
+    <Compile Include="Database Backup\Cmdlet\AzureSqlDeletedDatabaseBackupCmdletBase.cs" />
+    <Compile Include="Database Backup\Cmdlet\GetAzureRMSqlDeletedDatabaseBackup.cs" />
+    <Compile Include="Database Backup\Cmdlet\GetAzureRMSqlDatabaseGeoBackup.cs" />
+    <Compile Include="Database Backup\Cmdlet\RestoreAzureRMSqlDatabase.cs" />
+    <Compile Include="Database Backup\Model\AzureSqlDeletedDatabaseBackupModel.cs" />
+    <Compile Include="Database Backup\Model\AzureSqlDatabaseGeoBackupModel.cs" />
     <Compile Include="ThreatDetection\Cmdlet\SqlDatabaseThreatDetectionCmdletBase.cs" />
     <Compile Include="ThreatDetection\Cmdlet\GetAzureSqlDatabaseThreatDetection.cs" />
     <Compile Include="ThreatDetection\Cmdlet\SetAzureSqlDatabaseThreatDetection.cs" />
@@ -144,6 +151,17 @@
     <Compile Include="Database\Model\DatabaseEdition.cs" />
     <Compile Include="Database\Services\AzureSqlDatabaseAdapter.cs" />
     <Compile Include="Database\Services\AzureSqlDatabaseCommunicator.cs" />
+    <Compile Include="ServerDisasterRecoveryConfiguration\Cmdlet\AzureSqlServerDisasterRecoveryConfigurationActivityCmdletBase.cs" />
+    <Compile Include="ServerDisasterRecoveryConfiguration\Cmdlet\AzureSqlServerDisasterRecoveryConfigurationCmdletBase.cs" />
+    <Compile Include="ServerDisasterRecoveryConfiguration\Cmdlet\GetAzureSqlServerDisasterRecoveryConfiguration.cs" />
+    <Compile Include="ServerDisasterRecoveryConfiguration\Cmdlet\GetAzureSqlServerDisasterRecoveryConfigurationActivity.cs" />
+    <Compile Include="ServerDisasterRecoveryConfiguration\Cmdlet\NewAzureSqlServerDisasterRecoveryConfiguration.cs" />
+    <Compile Include="ServerDisasterRecoveryConfiguration\Cmdlet\RemoveAzureSqlServerDisasterRecoveryConfiguration.cs" />
+    <Compile Include="ServerDisasterRecoveryConfiguration\Cmdlet\SetAzureSqlServerDisasterRecoveryConfiguration.cs" />
+    <Compile Include="ServerDisasterRecoveryConfiguration\Model\AzureSqlServerDisasterRecoveryConfigurationActivityModel.cs" />
+    <Compile Include="ServerDisasterRecoveryConfiguration\Model\AzureSqlServerDisasterRecoveryConfigurationModel.cs" />
+    <Compile Include="ServerDisasterRecoveryConfiguration\Services\AzureSqlServerDisasterRecoveryConfigurationAdapter.cs" />
+    <Compile Include="ServerDisasterRecoveryConfiguration\Services\AzureSqlServerDisasterRecoveryConfigurationCommunicator.cs" />
     <Compile Include="Elastic Pools\Cmdlet\AzureSqlElasticPoolActivityCmdletBase.cs" />
     <Compile Include="Elastic Pools\Cmdlet\AzureSqlElasticPoolCmdletBase.cs" />
     <Compile Include="Elastic Pools\Cmdlet\GetAzureSqlElasticPool.cs" />
@@ -279,7 +297,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Sql, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.43.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.45.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
@@ -315,7 +333,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.0.0-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.0.1-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">

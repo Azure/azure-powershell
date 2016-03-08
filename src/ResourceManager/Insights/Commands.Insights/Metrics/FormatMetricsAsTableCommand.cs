@@ -18,7 +18,6 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Insights.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Insights.Metrics
 {
@@ -77,6 +76,8 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
         /// </summary>
         public override void ExecuteCmdlet()
         {
+            WriteWarning("This cmdlet is being modified to enable better experience and may contain breaking changes in a future release.");
+
             WriteObject(this.ProcessParameter());
         }
     }

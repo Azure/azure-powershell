@@ -125,7 +125,7 @@
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Compute">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Compute.12.5.0\lib\net40\Microsoft.WindowsAzure.Management.Compute.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Compute.12.6.0\lib\net40\Microsoft.WindowsAzure.Management.Compute.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Storage">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Storage.5.1.1\lib\net40\Microsoft.WindowsAzure.Management.Storage.dll</HintPath>
@@ -162,6 +162,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExtensionPublishing\GetAzurePlatformExtension.cs" />
     <Compile Include="ExtensionPublishing\SetAzurePlatformExtensionEndpoint.cs" />
     <Compile Include="ExtensionPublishing\RemoveAzurePlatformExtensionEndpoint.cs" />
     <Compile Include="ExtensionPublishing\RemoveAzurePlatformExtensionLocalResource.cs" />
