@@ -159,7 +159,6 @@
     <Compile Include="RecordingTracingInterceptor.cs" />
     <Compile Include="ClientCreatedArgs.cs" />
     <Compile Include="CmdletExtensions.cs" />
-    <Compile Include="ServiceClientTracingInterceptor.cs" />
     <Compile Include="TestMockSupport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValidateGuidNotEmpty.cs" />
