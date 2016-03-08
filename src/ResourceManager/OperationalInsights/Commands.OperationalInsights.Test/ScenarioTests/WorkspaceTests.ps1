@@ -193,6 +193,8 @@ function Test-WorkspaceEnableDisableListIntelligencePacks
 
 	# List to verify that the IP's have been disabled
 	$ipList = Get-AzureRmOperationalInsightsIntelligencePacks -ResourceGroupName $rgname -WorkspaceName $wsname
+	Assert-NotNull $ipList
+	Assert-NotEqual 0 $ipList.Count
 	Foreach ($ip in $ipList)
 	{
 		if ($ip.Name -eq "LogManagement")
