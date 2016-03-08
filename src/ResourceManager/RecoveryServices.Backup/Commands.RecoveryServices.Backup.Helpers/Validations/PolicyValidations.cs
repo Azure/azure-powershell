@@ -12,37 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
-namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
-    public interface IPsBackupProvider
-    {
-        void Initialize(ProviderData providerData, HydraAdapter.HydraAdapter hydraAdapter);
-
-        BaseRecoveryServicesJobResponse EnableProtection();
-
-        BaseRecoveryServicesJobResponse DisableProtection();
-
-        BaseRecoveryServicesJobResponse TriggerBackup();
-
-        BaseRecoveryServicesJobResponse TriggerRestore();
-
-        ProtectedItemResponse GetProtectedItem();
-
-        RecoveryPointResponse GetRecoveryPoint();
-
-        ProtectionPolicyResponse CreatePolicy();
-
-        ProtectionPolicyResponse ModifyPolicy();
-
-        ProtectionPolicyResponse GetPolicy();
-
-        void DeletePolicy();
+    public partial class PolicyHelpers
+    {        
+        public static void ValidateLongTermRetentionPolicyWithSimpleRetentionPolicy(
+            AzureRmRecoveryServicesLongTermRetentionPolicy ltrPolicy,
+            AzureRmRecoveryServicesSimpleSchedulePolicy schPolicy)
+        {
+            throw new NotImplementedException();
+        }       
     }
 }

@@ -42,7 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConversionHelpers.cs" />
+    <Compile Include="Validations\PolicyValidations.cs" />
+    <Compile Include="Conversions\SchedulePolicyConversions.cs" />
+    <Compile Include="Conversions\RetentionPolicyConversions.cs" />
+    <Compile Include="Conversions\ConversionHelpers.cs" />
     <Compile Include="HydraHelpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -26,28 +26,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Update existing protection policy
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmRecoveryServicesProtectionPolicy")]    
+    [Cmdlet(VerbsCommon.Set, "AzureRmRecoveryServicesProtectionPolicy")]
     public class SetAzureRmRecoveryServicesProtectionPolicy : RecoveryServicesBackupCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "", ValueFromPipeline = true)]
+        [Parameter(Mandatory = true, HelpMessage = "", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public WorkloadType WorkloadType { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "", ValueFromPipeline = true)]
+        [Parameter(Mandatory = false, HelpMessage = "", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public BackupManagementType BackupManagementType { get; set; }
-        
-        [Parameter(Mandatory = false, HelpMessage = "", ValueFromPipeline = true)]
+
+        [Parameter(Mandatory = false, HelpMessage = "", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public AzureRmRecoveryServicesRetentionPolicyBase RetentionPolicy { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "", ValueFromPipeline = true)]
+        [Parameter(Mandatory = false, HelpMessage = "", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public AzureRmRecoveryServicesSchedulePolicyBase SchedulePolicy { get; set; }      
+        public AzureRmRecoveryServicesSchedulePolicyBase SchedulePolicy { get; set; }
 
         public override void ExecuteCmdlet()
         {
