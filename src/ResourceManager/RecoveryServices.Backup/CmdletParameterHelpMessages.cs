@@ -24,13 +24,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     {
         internal static class Container
         {
-            internal static class Get
-            {
-                public const string Name = "The name of the resource being managed by the Azure Backup service (for example: resource name of the VM).";
-                public const string ResourceGroupName = "The ResourceGroup of the resource being managed by the Azure Backup service (for example: ResourceGroup name of the VM).";
-                public const string Status = "The registration status of the Azure Backup container.";
-                public const string ContainerType = "The type of the Azure Backup container. This can be a Windows Server, an Azure IaaS VM, or a Data Protection Manager server.";
-            }
+            public const string Name = "The name of the resource being managed by the Azure Backup service (for example: resource name of the VM).";
+            public const string ResourceGroupName = "The ResourceGroup of the resource being managed by the Azure Backup service (for example: ResourceGroup name of the VM).";
+            public const string Status = "The registration status of the Azure Backup container.";
+            public const string ContainerType = "The type of the Azure Backup container. This can be a Windows Server, an Azure IaaS VM, or a Data Protection Manager server.";
         }
 
         internal static class Common

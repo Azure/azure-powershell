@@ -35,19 +35,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public ARSVault Vault { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Container.Get.ContainerType)]
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Container.ContainerType)]
         [ValidateNotNullOrEmpty]
         public ContainerType ContainerType { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Container.Get.Name)]
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Container.Name)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Container.Get.ResourceGroupName)]
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsg.Container.ResourceGroupName)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Container.Get.Status)]
+        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsg.Container.Status)]
         [ValidateNotNullOrEmpty]
         public ContainerRegistrationStatus Status { get; set; }
 
