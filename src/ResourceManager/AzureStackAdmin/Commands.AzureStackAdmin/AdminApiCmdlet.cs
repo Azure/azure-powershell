@@ -32,7 +32,7 @@ namespace Microsoft.AzureStack.Commands
         /// <summary>
         /// The default API version.
         /// </summary>
-        private const string DefaultApiVersion = "1.0";
+        private const string DefaultApiVersion = "2015-11-01";
 
         /// <summary>
         /// Gets or sets the admin base URI
