@@ -49,6 +49,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public string Location { get; set; }
 
+        public AzureRmRecoveryServicesVaultCreds()
+        {           
+        }
+
         public AzureRmRecoveryServicesVaultCreds(string resourceName, string resourceGroupName, string location)
         {
             ResourceName = resourceName;

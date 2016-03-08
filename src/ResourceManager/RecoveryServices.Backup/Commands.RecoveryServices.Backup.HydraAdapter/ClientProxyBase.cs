@@ -19,6 +19,7 @@ using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
 {
@@ -36,6 +37,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
         /// </summary>
         private CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
         public CancellationToken CmdletCancellationToken;
+
+        public static AzureRmRecoveryServicesVaultCreds recoveryServicesVaultCreds = new AzureRmRecoveryServicesVaultCreds();
 
         public ClientProxyBase(params object[] parameters)
         {
@@ -55,6 +58,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
         public string GetClientRequestId()
         {
             return ClientRequestId;
+        }
+
+        public static void UpdateCurrentVaultContext(AzureRmRecoveryServicesVaultCreds vaultCreds)
+        {
+            object updateVaultContextOneAtATime = new object();
+            lock (updateVaultContextOneAtATime)
+            {
+                recoveryServicesVaultCreds.ResourceName =
+                    vaultCreds.ResourceName;
+                recoveryServicesVaultCreds.ResourceGroupName =
+                    vaultCreds.ResourceGroupName;
+                recoveryServicesVaultCreds.Location =
+                    vaultCreds.Location;                
+            }
         }
     }
 }
