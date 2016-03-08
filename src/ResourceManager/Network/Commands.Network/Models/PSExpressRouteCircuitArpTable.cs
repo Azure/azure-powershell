@@ -17,7 +17,11 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSExpressRouteCircuitArpTable
     {
-        public string IPAddress { get; set; }
+        public int? Age { get; set; }
+
+        public string InterfaceProperty { get; set; }
+
+        public string IpAddress { get; set; }
 
         public string MacAddress { get; set; }
     }

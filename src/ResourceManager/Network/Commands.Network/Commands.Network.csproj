@@ -73,8 +73,8 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.2.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Network, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.3.2.0-preview\lib\net45\Microsoft.Azure.Management.Network.dll</HintPath>
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.3.6.0-preview\lib\net45\Microsoft.Azure.Management.Network.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Data.Edm">
       <SpecificVersion>False</SpecificVersion>
@@ -276,6 +276,8 @@
     <Compile Include="Models\PSApplicationGatewaySku.cs" />
     <Compile Include="Models\PSApplicationGatewaySslCertificate.cs" />
     <Compile Include="Models\PSApplicationGatewayUrlPathMap.cs" />
+    <Compile Include="Models\PSExpressRouteCircuitRoutesTableSummary.cs" />
+    <Compile Include="Models\PSExpressRouteCircuitStats.cs" />
     <Compile Include="Models\PSInboundRule.cs" />
     <Compile Include="Models\PSInboundNatPool.cs" />
     <Compile Include="Models\PSExpressRouteServiveProvider.cs" />
@@ -434,6 +436,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="ExpressRouteCircuit\Stats\GetAzureExpressRouteARPTableCommand.cs" />
+    <Compile Include="ExpressRouteCircuit\Stats\GetAzureExpressRouteRouteTableCommand.cs" />
+    <Compile Include="ExpressRouteCircuit\Stats\GetAzureExpressRouteStatsCommand.cs" />
     <Compile Include="ProviderWideCmdlets\TestAzureDnsAvailabilityCmdlet.cs" />
     <Compile Include="VirtualNetwork\RemoveAzureVirtualNetworkCommand.cs" />
     <Compile Include="VirtualNetwork\SetAzureVirtualNetworkCommand.cs" />
