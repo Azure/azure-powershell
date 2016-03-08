@@ -42,6 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PolicyValidations.cs" />
+    <Compile Include="SchedulePolicyConversions.cs" />
+    <Compile Include="RetentionPolicyConversions.cs" />
     <Compile Include="ConversionHelpers.cs" />
     <Compile Include="HydraHelpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

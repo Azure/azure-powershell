@@ -39,5 +39,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             return providerType;
         }
+
+        public static string GetHydraProviderType(WorkloadType workloadType)
+        {
+            string providerType = string.Empty;
+
+            switch (workloadType)
+            {
+                case WorkloadType.AzureVM:
+                    providerType = ProviderType.AzureIaasVM.ToString();
+                    break;
+                default:
+                    break;
+            }
+
+            return providerType;
+        }
     }
 }
