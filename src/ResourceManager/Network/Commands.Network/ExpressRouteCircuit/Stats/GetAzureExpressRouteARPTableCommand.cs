@@ -7,6 +7,9 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     using System;
+    using System.Collections;
+    using System.Linq;
+
     using AutoMapper;
 
     public enum DevicePathEnum
@@ -62,16 +65,13 @@ namespace Microsoft.Azure.Commands.Network
             DevicePathEnum path;
             if (Enum.TryParse(DevicePath, true, out path))
             {
-                var arpTables = this.NetworkClient.NetworkManagementClient.ExpressRouteCircuits.ListArpTable(ResourceGroupName,ExpressRouteCircuitName,PeeringType,DevicePath);
-
+                var arpTables = this.NetworkClient.NetworkManagementClient.ExpressRouteCircuits.ListArpTable(ResourceGroupName, ExpressRouteCircuitName, PeeringType, DevicePath).Value.Cast<object>().ToList();       
                 var psARPs = new List<PSExpressRouteCircuitArpTable>();
-
                 foreach (var arpTable in arpTables)
                 {
                     var psARP = Mapper.Map<PSExpressRouteCircuitArpTable>(arpTable);
                     psARPs.Add(psARP);
                 }
-
                 WriteObject(psARPs, true);
             }
         }

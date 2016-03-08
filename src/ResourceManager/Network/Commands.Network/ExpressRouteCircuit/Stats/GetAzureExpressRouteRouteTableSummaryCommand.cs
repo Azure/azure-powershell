@@ -7,12 +7,13 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     using System;
+    using System.Collections;
     using System.Linq;
 
     using AutoMapper;
 
-    [Cmdlet(VerbsCommon.Get, "AzureExpressRouteCircuitRouteTable"), OutputType(typeof(PSExpressRouteCircuitRoutesTable))]
-    public class GetAzureExpressRouteCircuitRouteTableCommand : NetworkBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureRmExpressRouteCircuitARPTable"), OutputType(typeof(PSExpressRouteCircuitRoutesTableSummary))]
+    public class GetAzureExpressRouteRouteTableSummaryCommand : NetworkBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -51,28 +52,21 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The DevicePath, can be either Primary or Secondary")]
         [ValidateNotNullOrEmpty]
         public string DevicePath { get; set; }
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            
             DevicePathEnum path;
             if (Enum.TryParse(DevicePath, true, out path))
             {
-                var routeTables = this.NetworkClient.NetworkManagementClient.ExpressRouteCircuits.ListRoutesTable(ResourceGroupName, ExpressRouteCircuitName, PeeringType, DevicePath).Value.Cast<object>().ToList();
-                var psroutes = new List<PSExpressRouteCircuitRoutesTable>();
-
-                foreach (var routeTable in routeTables)
+                var routeTables = this.NetworkClient.NetworkManagementClient.ExpressRouteCircuits.BeginListRoutesTableSummary(ResourceGroupName, ExpressRouteCircuitName, PeeringType, DevicePath).Value.Cast<object>().ToList();
+                var psRouteTables = new List<PSExpressRouteCircuitRoutesTableSummary>();
+                foreach (var arpTable in routeTables)
                 {
-                    var psroute = Mapper.Map<PSExpressRouteCircuitRoutesTable>(routeTable);
-                    psroutes.Add(psroute);
+                    var psARP = Mapper.Map<PSExpressRouteCircuitRoutesTableSummary>(arpTable);
+                    psRouteTables.Add(psARP);
                 }
-
-                WriteObject(psroutes, true);
+                WriteObject(psRouteTables, true);
             }
         }
     }
 }
-
-
-
