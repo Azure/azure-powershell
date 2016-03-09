@@ -29,6 +29,10 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             {
                 System.Threading.Thread.Sleep(milliSeconds);
             }
+            else
+            {
+                System.Threading.Thread.Yield();
+            }
         }
 
         public static void Delay(TimeSpan duration)
@@ -36,6 +40,10 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             if (!RunningMocked)
             {
                 System.Threading.Thread.Sleep(duration);
+            }
+            else
+            {
+                System.Threading.Thread.Yield();
             }
         }
     }

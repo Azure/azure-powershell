@@ -15,20 +15,21 @@
 using System;
 using System.Management.Automation;
 using System.Threading;
-using Hyak.Common;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
-using Microsoft.Azure.Management.DataLake.AnalyticsJob.Models;
-using JobState = Microsoft.Azure.Management.DataLake.AnalyticsJob.Models.JobState;
+using Microsoft.Azure.Management.DataLake.Analytics.Models;
+using Microsoft.Rest.Azure;
+using JobState = Microsoft.Azure.Management.DataLake.Analytics.Models.JobState;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet(VerbsLifecycle.Wait, "AzureRmDataLakeAnalyticsJob"), OutputType(typeof (JobInformation))]
-    public class WaitAzureDataLakeAnalyticsJobInfo : DataLakeAnalyticsCmdletBase
+    public class WaitAzureDataLakeAnalyticsJob : DataLakeAnalyticsCmdletBase
     {
         private int _waitIntervalInSeconds = 5;
 
-        public WaitAzureDataLakeAnalyticsJobInfo()
+        public WaitAzureDataLakeAnalyticsJob()
         {
             TimeoutInSeconds = 0;
         }
@@ -56,14 +57,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             HelpMessage = "The maximum amount of time to wait before erroring out. Default value is to never timeout.")]
         public int TimeoutInSeconds { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
-            HelpMessage = "Name of resource group under which want to stop the job.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
         public override void ExecuteCmdlet()
         {
-            var jobInfo = DataLakeAnalyticsClient.GetJob(ResourceGroupName, Account, JobId);
+            var jobInfo = DataLakeAnalyticsClient.GetJob(Account, JobId);
             var timeWaitedInSeconds = 0;
             while (jobInfo.State != JobState.Ended)
             {
@@ -73,9 +69,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                 }
 
                 WriteVerboseWithTimestamp(string.Format(Resources.WaitJobState, jobInfo.State));
-                Thread.Sleep(WaitIntervalInSeconds*1000);
+                TestMockSupport.Delay(WaitIntervalInSeconds*1000);
                 timeWaitedInSeconds += WaitIntervalInSeconds;
-                jobInfo = DataLakeAnalyticsClient.GetJob(ResourceGroupName, Account, JobId);
+                jobInfo = DataLakeAnalyticsClient.GetJob(Account, JobId);
             }
 
             WriteObject(jobInfo);
