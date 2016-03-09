@@ -23,6 +23,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     public enum ContainerType
     {
         AzureVM,
+
+        AzureSqlContainer,
     }
 
     public enum BackupManagementType
@@ -36,6 +38,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     public enum PsBackupProviderTypes
     {
         IaasVm = 1,
+
+        AzureSql,
     }
 
     public enum ContainerRegistrationStatus
