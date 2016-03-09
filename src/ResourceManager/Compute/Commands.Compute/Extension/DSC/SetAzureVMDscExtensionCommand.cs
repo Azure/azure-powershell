@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         /// The default value is "latest"
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true)]
-        [ValidateSetAttribute(new[] { "4.0", "latest", "5.0" })]
+        [ValidateSetAttribute(new[] { "4.0", "latest", "5.0PP", "5.0" })]
         public string WmfVersion { get; set; }
 
         /// <summary>
