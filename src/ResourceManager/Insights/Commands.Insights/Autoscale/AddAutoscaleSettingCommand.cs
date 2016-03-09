@@ -17,7 +17,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Hyak.Common;
-using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Commands.Insights.Properties;
 using Microsoft.Azure.Management.Insights;
 using Microsoft.Azure.Management.Insights.Models;
@@ -94,7 +93,10 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         protected override void ProcessRecordInternal()
         {
+            WriteWarning("This cmdlet is being modified to enable better experience and may contain breaking changes in a future release.");
+
             AutoscaleSettingCreateOrUpdateParameters parameters = this.CreateSdkCallParameters();
+
             var result = this.InsightsManagementClient.AutoscaleOperations.CreateOrUpdateSettingAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name, parameters: parameters).Result;
 
             WriteObject(result);
@@ -106,6 +108,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
 
             if (this.SettingSpec != null)
             {
+
                 // Receiving a single parameter with the whole spec for an autoscale setting
                 var property = this.SettingSpec.Properties;
 

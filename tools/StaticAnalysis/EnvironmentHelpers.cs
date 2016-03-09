@@ -16,7 +16,7 @@ using System;
 
 namespace StaticAnalysis
 {
-    public static class AppDomainHelpers
+    public static class EnvironmentHelpers
     {
         /// <summary>
         /// Create a new AppDomain and create a remote instance of AssemblyLoader we can use there
@@ -26,7 +26,7 @@ namespace StaticAnalysis
         /// <returns>A proxy to the AssemblyLoader running in the newly created app domain</returns>
         public static T CreateProxy<T>(string directoryPath, out AppDomain testDomain) where T:MarshalByRefObject
         {
-            if (string.IsNullOrWhiteSpace(directoryPath))
+            if (String.IsNullOrWhiteSpace(directoryPath))
             {
                 throw new ArgumentException("directoryPath");
             }
@@ -42,6 +42,28 @@ namespace StaticAnalysis
             testDomain = AppDomain.CreateDomain("TestDomain", null, setup);
             return testDomain.CreateInstanceFromAndUnwrap(typeof(T).Assembly.Location,
                 typeof(T).FullName) as T;
+        }
+
+        /// <summary>
+        /// Get the name of the directory from a directory path
+        /// </summary>
+        /// <param name="path">A directory path</param>
+        /// <returns>The name of the directory</returns>
+        public static string GetDirectoryName(string path)
+        {
+            if (path == null)
+            {
+                throw new ArgumentNullException("path");
+            }
+
+            string result = path.TrimEnd('\\');
+            var lastSlash = result.LastIndexOf("\\");
+            if (lastSlash > 0)
+            {
+                result = result.Substring(lastSlash + 1);
+            }
+
+            return result;
         }
     }
 }

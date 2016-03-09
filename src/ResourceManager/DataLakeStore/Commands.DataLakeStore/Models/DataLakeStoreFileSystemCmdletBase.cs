@@ -16,10 +16,10 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
-using Hyak.Common;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.PowerShell.Commands;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {

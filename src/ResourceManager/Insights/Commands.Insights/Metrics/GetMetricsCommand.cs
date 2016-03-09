@@ -127,12 +127,15 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
         /// </summary>
         protected override void ProcessRecordInternal()
         {
+            WriteWarning("This cmdlet is being modified to enable better experience and may contain breaking changes in a future release.");
+
             string queryFilter = this.ProcessParameters();
             bool fullDetails = this.DetailedOutput.IsPresent;
 
             // Call the proper API methods to return a list of raw records.
             // If fullDetails is present full details of the records displayed, otherwise only a summary of the values is displayed
             MetricListResponse response = this.InsightsClient.MetricOperations.GetMetricsAsync(resourceUri: this.ResourceId, filterString: queryFilter, cancellationToken: CancellationToken.None).Result;
+
             var records = response.MetricCollection.Value.Select(e => fullDetails ? (Metric)new PSMetric(e) : new PSMetricNoDetails(e)).ToArray();
 
             WriteObject(sendToPipeline: records);
