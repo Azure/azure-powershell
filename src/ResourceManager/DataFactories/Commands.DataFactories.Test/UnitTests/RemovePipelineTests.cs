@@ -36,7 +36,6 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
                 Name = pipelineName,
                 ResourceGroupName = ResourceGroupName,
                 DataFactoryName = DataFactoryName,
-                Force = true
             };
         }
 

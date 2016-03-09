@@ -36,7 +36,6 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
                 Name = hubName,
                 ResourceGroupName = ResourceGroupName,
                 DataFactoryName = DataFactoryName,
-                Force = true
             };
         }
 

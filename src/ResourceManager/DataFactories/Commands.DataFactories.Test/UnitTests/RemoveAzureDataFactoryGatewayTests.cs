@@ -33,7 +33,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.Gateway
                 CommandRuntime = commandRuntimeMock.Object,
                 DataFactoryClient = dataFactoriesClientMock.Object,
                 ResourceGroupName = ResourceGroupName,
-                Force = true
             };
         }
 

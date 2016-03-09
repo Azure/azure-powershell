@@ -305,7 +305,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             var cmdlet = new RemoveAzureRMEnvironmentCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                Force = true,
                 Name = name
             };
 
@@ -327,7 +326,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 Name = "test2",
-                Force = true
             };
 
             cmdlet.InvokeBeginProcessing();
@@ -346,7 +344,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
                 var cmdlet = new RemoveAzureRMEnvironmentCommand()
                 {
                     CommandRuntime = commandRuntimeMock.Object,
-                    Force = true,
                     Name = name
                 };
 

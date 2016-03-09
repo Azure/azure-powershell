@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                         this.HandleException(exception);
                     }
                 },
-            () => 0 != string.CompareOrdinal(this.Protection, Constants.DisableProtection);
+            () => 0 != string.CompareOrdinal(this.Protection, Constants.DisableProtection));
         }
 
         /// <summary>
