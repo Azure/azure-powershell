@@ -17,8 +17,9 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Profile;
 using Moq;
+using Microsoft.Azure.Commands.Test.Profile;
 
-namespace Microsoft.WindowsAzure.Commands.Test.Profile
+namespace Microsoft.Azure.Commands.Test.Profile
 {
     
     public class SelectAzureSubscriptionTests
@@ -42,6 +43,13 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
 
             // Assert that no exception is thrown
             Assert.True(true);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void StorageAccountIsNotCleaned()
+        {
+            ProfileTestController.NewRdfeInstance.RunPsTest("Test-StorageAccountIsNotCleaned");
         }
     }
 }
