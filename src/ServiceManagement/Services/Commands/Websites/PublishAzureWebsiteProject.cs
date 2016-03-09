@@ -92,7 +92,7 @@ namespace Microsoft.WindowsAzure.Commands.Websites
                 if (File.Exists(Path.Combine(Path.GetDirectoryName(fullPackage), fullSetParametersFile)))
                 {
                     WriteVerbose("Setting path for Parameters file to local one to package: " + Path.Combine(Path.GetDirectoryName(fullPackage), fullSetParametersFile));
-                    fullSetParametersFile = Path.Combine(Path.GetDirectoryName(fullPackage), fullSetParametersFile);
+                    fullSetParametersFile = Path.Combine(Path.GetDirectoryName(fullPackage),fullSetParametersFile);
                 }
             }
 
@@ -155,12 +155,12 @@ namespace Microsoft.WindowsAzure.Commands.Websites
                         parameter.Name = name;
                         parameter.ParameterType = typeof(string);
                         parameter.Attributes.Add(new ParameterAttribute()
-                        {
-                            ParameterSetName = "ProjectFile",
-                            Mandatory = false,
-                            ValueFromPipelineByPropertyName = true,
-                            HelpMessage = "Connection string from Web.config."
-                        }
+                            {
+                                ParameterSetName = "ProjectFile",
+                                Mandatory = false,
+                                ValueFromPipelineByPropertyName = true,
+                                HelpMessage = "Connection string from Web.config."
+                            }
                         );
                         dynamicParameters.Add(name, parameter);
                     }
