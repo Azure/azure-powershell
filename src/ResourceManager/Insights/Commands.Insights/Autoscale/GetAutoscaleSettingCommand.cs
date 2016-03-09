@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -59,6 +58,8 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         protected override void ProcessRecordInternal()
         {
+            WriteWarning("This cmdlet is being modified to enable better experience and may contain breaking changes in a future release.");
+
             if (string.IsNullOrWhiteSpace(this.Name))
             {
                 // Retrieve all the Autoscale settings for a resource group
@@ -71,6 +72,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
             {
                 // Retrieve a single Autoscale setting determined by the resource group and the rule name
                 AutoscaleSettingGetResponse result = this.InsightsManagementClient.AutoscaleOperations.GetSettingAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name).Result;
+
                 WriteObject(sendToPipeline: this.DetailedOutput.IsPresent ? new PSAutoscaleSetting(result) : result.ToAutoscaleSettingGetResponse());
             }
         }

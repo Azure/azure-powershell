@@ -14,15 +14,15 @@
 
 using System.IO;
 using System.Management.Automation;
-using Hyak.Common;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
-using Microsoft.Azure.Management.DataLake.StoreFileSystem.Models;
+using Microsoft.Azure.Management.DataLake.Store.Models;
 using Microsoft.PowerShell.Commands;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmDataLakeStoreItem", SupportsShouldProcess = true, 
+    [Cmdlet(VerbsCommon.New, "AzureRmDataLakeStoreItem", SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.Low), OutputType(typeof (string))]
     public class NewAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {
@@ -70,13 +70,12 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             if (ShouldProcess(Path.OriginalPath, Resources.CreateFileOrFolderAction))
             {
                 if (DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Path.TransformedPath, Account, out ignored)
-                    && !Force 
+                    && !Force
                     && !ShouldContinue(string.Format(Resources.OverwriteFileOrFolderAction, Path.OriginalPath), ""))
                 {
                     throw new CloudException(string.Format(Resources.ServerFileAlreadyExists, Path.TransformedPath));
                 }
 
-                string toReturn;
                 if (Folder)
                 {
                     DataLakeStoreFileSystemClient.CreateDirectory(Path.TransformedPath, Account);
@@ -85,14 +84,21 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 {
                     if (Path.TransformedPath.EndsWith("/"))
                     {
-                        throw new CloudException(string.Format(Resources.InvalidFilePath, Path.TransformedPath));
+                        DataLakeStoreFileSystemClient.CreateDirectory(Path.TransformedPath, Account);
+                    }
+                    else
+                    {
+                        if (Path.TransformedPath.EndsWith("/"))
+                        {
+                            throw new CloudException(string.Format(Resources.InvalidFilePath, Path.TransformedPath));
+                        }
+
+                        DataLakeStoreFileSystemClient.CreateFile(Path.TransformedPath, Account,
+                            Value != null ? new MemoryStream(GetBytes(Value, Encoding)) : new MemoryStream(), Force);
                     }
 
-                    DataLakeStoreFileSystemClient.CreateFile(Path.TransformedPath, Account,
-                        Value != null ? new MemoryStream(GetBytes(Value, Encoding)) : new MemoryStream(), Force);
+                    WriteObject(Path.OriginalPath);
                 }
-
-                WriteObject(Path.OriginalPath);
             }
         }
     }

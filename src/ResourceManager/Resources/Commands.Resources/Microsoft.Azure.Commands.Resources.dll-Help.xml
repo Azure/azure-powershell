@@ -14,7 +14,6 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>This is the Description section</maml:para>
 		<maml:para>Filters active directory groups.</maml:para>
 	</maml:description>
 	<command:syntax>
@@ -234,7 +233,6 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>This is the Description section</maml:para>
 		<maml:para>Get a group members.</maml:para>
 	</maml:description>
 	<command:syntax>
@@ -368,7 +366,6 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>This is the Description section</maml:para>
 		<maml:para>Filters active directory service principals.</maml:para>
 	</maml:description>
 	<command:syntax>
@@ -617,7 +614,6 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>This is the Description section</maml:para>
 		<maml:para>Filters active directory users.</maml:para>
 	</maml:description>
 	<command:syntax>
@@ -1473,7 +1469,6 @@
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>This is the Description section</maml:para>
       <maml:para>The Get-AzureRmResourceGroup cmdlet gets the Azure resource groups in your subscription. You can use the Name parameter to select resource groups by name. The default is all resource groups.An Azure resource is a user-managed Azure entity, such as a database server, database, or web site. An Azure resource group is a collection of Azure resources that are deployed as a unit.</maml:para>
     </maml:description>
     <command:syntax>
@@ -1755,7 +1750,6 @@ Tags:
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>This is the Description section</maml:para>
       <maml:para>The Get-AzureRmResourceGroupDeployment cmdlet gets the deployments in an Azure resource group. You can use the Name (DeploymentName) and ProvisioningState parameters to filter the deployments. By default, Get-AzureRmResourceGroupDeployment returns all deployments for a specified resource group.An Azure resource is a user-managed Azure entity, such as a database server, database, or web site. An Azure resource group is a collection of Azure resources that are deployed as a unit. A deployment is the operation that makes the resources in the resource group available for use.This cmdlet is very useful for tracking. For debugging, use it with the Get-AzureRmResourceGroupLog cmdlet.</maml:para>
     </maml:description>
     <command:syntax>
@@ -3461,7 +3455,6 @@ ContosoLabsRG                       WordPress.WordPress                     Succ
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>This is the Description section</maml:para>
       <maml:para>Creates a new azure active directory application.</maml:para>
     </maml:description>
     <command:syntax>
@@ -4013,7 +4006,6 @@ AppPermissions          : {{
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>This is the Description section</maml:para>
       <maml:para>Creates a new azure active directory service principal.</maml:para>
     </maml:description>
     <command:syntax>
@@ -4183,7 +4175,6 @@ NewApplication                                                61b5d8ea-fdc6-40a2
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>This is the Description section</maml:para>
 		<maml:para>The New-AzureRmResourceGroup cmdlet creates an Azure resource group and returns an object that represents the resource group.</maml:para>
 	</maml:description>
 	<command:syntax>
@@ -4385,7 +4376,6 @@ Resources</dev:code>
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>This is the Description section</maml:para>
       <maml:para>The New-AzureRmResourceGroupDeployment cmdlet adds a deployment to an existing resource group, including the resources that the deployment requires. To add resources to a resource group without using a template, use the New-AzureRmResource cmdlet.</maml:para>
       <maml:para>An Azure resource is a user-managed Azure entity, such as a database server, database, website, virtual machine, or storage account. An Azure resource group is a collection of Azure resources that are deployed as a unit, such as the web site, database server, and databases that are required for a financial web site. A deployment uses a resource group template to add resource to a resource group and publish them so they are available in Azure.</maml:para>
       <maml:para>To add a resource group deployment, specify the name of an existing resource group and a resource group template, which is a JSON string that represents of a resource group for a complex cloud-based service, such as a web portal. The template includes parameter (placeholders) for required resources and configurable property values, likes names and sizes. You can find many templates in the Azure template gallery and you can create your own templates. </maml:para>
@@ -6320,7 +6310,6 @@ Resources</dev:code>
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>This is the Description section</maml:para>
       <maml:para>Deletes the azure active directory application.</maml:para>
     </maml:description>
     <command:syntax>
@@ -6478,7 +6467,6 @@ Resources</dev:code>
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>This is the Description section</maml:para>
       <maml:para>Deletes the azure active directory service principal.</maml:para>
     </maml:description>
     <command:syntax>
@@ -6661,7 +6649,6 @@ Resources</dev:code>
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>This is the Description section</maml:para>
       <maml:para>The Remove-AzureRmResourceGroup cmdlet deletes a resource group and its resources from your subscription. By default, Remove-AzureRmResourceGroup prompts you for confirmation. To suppress the prompt, use the Force parameter.To delete a resource, but leave the resource group, use the Remove-AzureRmResource cmdlet.</maml:para>
     </maml:description>
     <command:syntax>
@@ -8100,7 +8087,6 @@ True</dev:code>
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>This is the Description section</maml:para>
       <maml:para>The Set-AzureRmResourceGroup cmdlet changes the properties of a resource group. You can use this cmdlet to add, change, or delete the Azure tags applied to a resource group. Use the Name parameter to identify the resource group and the Tag parameter to change the tags. You cannot use this cmdlet to change the name of a resource group.</maml:para>
     </maml:description>
     <command:syntax>
@@ -8574,7 +8560,6 @@ Tags:
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>This is the Description section</maml:para>
       <maml:para>The Stop-AzureRmResourceGroupDeployment cmdlet cancels an Azure resource group deployment that is started, but not completed. To stop a deployment, the deployment must have an incomplete provisioning state, such as Provisioning, and not a completed state, such as Provisioned or Failed.An Azure resource is a user-managed entity, such as a website, database, or database server. A resource group is a collection of resources that are deployed as a unit. To deploy a resource group, use the New-AzureRmResourceGroup or New-AzureRmResourceGroupDeployment cmdlets. The New-AzureRmResource cmdlet creates a new resource, but it does not trigger a resource group deployment operation that this cmdlet can stop.This cmdlet stops only one running deployment. Use the Name parameter to stop a particular deployment. If you omit the Name parameter, Stop-AzureRmResourceGroupDeployment searches for a running deployment and stops it, but if it finds more than one running deployment, the command fails.By default, Stop-AzureRmResourceGroupDeployment prompts you for confirmation. To suppress the prompt, use the Force parameter.</maml:para>
     </maml:description>
     <command:syntax>
@@ -8728,7 +8713,6 @@ Tags:
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>This is the Description section</maml:para>
       <maml:para>The Test-AzureResourceGroupDeployment cmdlet verifies the validity of a resource group template, its parameters, and parameter values. It returns errors that it finds. Otherwise, it does not return any output.</maml:para>
       <maml:para>To specify a template, use the TemplateUri or TemplateFile parameters. To specify the template parameter values, use the TemplateParameterFile or TemplateParameterObject parameters, or use the template parameters that are added to the command dynamically when you specify the template. To get the parameters, just type a minus sign (-) to indicate a parameter name and press the TAB key to trigger tab-completion. If you miss a required parameter, the cmdlet prompts you for the value. Parameter values typed at the command line take precedence over values in a template parameter object or file.A resource group template is a JSON-based model of a resource group for a complex cloud-based service, such as a web portal. You can use a resource group template to create a resource group or resource group deployment. The template includes parameter (placeholders) for configurable property values, likes names and sizes. You can find many templates in the Azure template gallery and you can create your own templates.</maml:para>
     </maml:description>
@@ -11951,7 +11935,6 @@ Tags:
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>This is the Description section</maml:para>
       <maml:para>The Get-AzureRmResource cmdlet gets the Azure resources in the subscription. By default, it gets all resources in the subscription, but you can use the parameters in the cmdlet to filter the results.An Azure resource is a user-managed Azure entity, such as a database server, database, or website. Every Azure resource is associated with a resource group, which is a collection of resources that are deployed as a unit.</maml:para>
     </maml:description>
     <command:syntax>
@@ -12488,7 +12471,6 @@ Tags:
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>This is the Description section</maml:para>
 		<maml:para>The New-AzureRmResource cmdlet creates an Azure resource, such as a website, SQL Azure database server, or SQL Azure database, in a new or existing resource group.If a resource with the same name exists in the resource group, the cmdlet prompts for confirmation before replacing the existing resource. To suppress the confirmation prompt, use the Force parameter.A resource is a user-managed Azure entity. A resource group is a collection of resources that are deployed as a unit. Every resource belongs to exactly one resource group.Typically, you use a template to create a resource group (New-AzureRmResourceGroup) and its resources. Then, if necessary, you can use this cmdlet to add additional resources to it.</maml:para>
 	</maml:description>
 	<command:syntax>
@@ -12729,7 +12711,6 @@ Properties        : {[name, ContosoWeb], [state, Running], [hostNames,
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>This is the Description section</maml:para>
       <maml:para>The Remove-AzureRmResource cmdlet deletes a resource from your subscription. It does not delete the resource group of the resource. By default, Remove-AzureRmResource prompts you for confirmation. To suppress the prompt, use the Force parameter.</maml:para>
     </maml:description>
     <command:syntax>
@@ -12973,7 +12954,6 @@ True</dev:code>
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>This is the Description section</maml:para>
       <maml:para>The Set-AzureRmResource cmdlet changes the properties of an Azure resource. To use the cmdlet, use the Name, ResourceGroupName, ResourceGroupType, and ParentResource parameters to identify the resource, and the PropertyObject parameter to specify the new property names and values.If the command succeeds, it returns the resource with the new properties and values.An Azure resource is a user-managed entity, such as an Azure Website or Azure SQL Database. Some resources have properties, which are user-configured values, like sizes and operational modes. You can specify these values when you create the resource, such as by using the New-AzureRmResource, New-AzureRmResourceGroup, or New-AzureRmResourceGroupDeployment cmdlets. And, you can change the properties by using this cmdlet.To get the properties of a resource, use the Get-AzureRmResource cmdlet to get the resource. Then use the dot method to get the Properties property collection and a particular named property. For example, to get the siteMode property of an object, type (Get-AzureRmResource -Name MyWebSite -ResourceGroupName RG -ResourceType Microsoft.Web/sites -ApiVersion 2014-04-01).Properties.siteMode</maml:para>
     </maml:description>
     <command:syntax>
@@ -13274,7 +13254,6 @@ Tags:
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>This is the Description section</maml:para>
       <maml:para>The Get-AzureRmResourceGroupLog cmdlet gets the deployment log entries for a resource group. The entries are very useful for many IT tasks, including maintaining a transaction history, performing statistical analyses, and debugging.By default, Get-AzureRmResourceGroupLog gets the log entries of the currently running or most recently completed deployment for the resource group, but you can use the cmdlet parameters to get the entries for a particular deployment by name or all deployments.</maml:para>
     </maml:description>
     <command:syntax>

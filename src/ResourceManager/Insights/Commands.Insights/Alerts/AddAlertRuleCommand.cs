@@ -166,6 +166,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
 
         private void VerifyRuleTypeToParametersConsistency()
         {
+            WriteVerboseWithTimestamp(string.Format("VerifyRuleTypeToParametersConsistency: input type:{0}", this.RuleType)); 
             AlertRuleTypes type = AlertRuleTypes.Event;
 
             // NOTE: the parameters EventName and MetricName cannot appear both at same time (see the parameters declaration), but they can be both absent simultaneously (i.e. Webtest data source type) 
@@ -209,12 +210,15 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
             switch (this.RuleType)
             {
                 case AlertRuleTypes.Event:
+                    WriteVerboseWithTimestamp(string.Format("CreateRuleCondition: Creating event rule condition (event-based rule)")); 
                     condition = this.CreateEventRuleCondition();
                     break;
                 case AlertRuleTypes.Metric:
+                    WriteVerboseWithTimestamp(string.Format("CreateRuleCondition: Creating threshold rule condition (metric-based rule")); 
                     condition = this.CreateThresholdRuleCondition();
                     break;
                 case AlertRuleTypes.Webtest:
+                    WriteVerboseWithTimestamp(string.Format("CreateRuleCondition: Creating location threshold rule condition (webtest rule)")); 
                     condition = new LocationThresholdRuleCondition()
                     {
                         DataSource = new RuleMetricDataSource(),
@@ -234,6 +238,8 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
             this.VerifyRuleTypeToParametersConsistency();
 
             RuleCondition condition = this.CreateRuleCondition();
+
+            WriteVerboseWithTimestamp(string.Format("CreateSdkCallParameters: Creating rule object")); 
             return new RuleCreateOrUpdateParameters()
             {
                 Location = this.Location,

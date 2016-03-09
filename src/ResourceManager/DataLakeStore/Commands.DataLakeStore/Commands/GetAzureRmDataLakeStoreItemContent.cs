@@ -68,8 +68,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             byte[] byteArray;
             if (Length <= 0)
             {
-
-                Length = DataLakeStoreFileSystemClient.GetFileStatus(Path.TransformedPath, Account).Length - Offset;
+                Length = (long)DataLakeStoreFileSystemClient.GetFileStatus(Path.TransformedPath, Account).Length - Offset;
                 needsConfirmation = Length > 1*1024*1024;
             }
 

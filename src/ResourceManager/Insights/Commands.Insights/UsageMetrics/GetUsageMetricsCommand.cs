@@ -121,6 +121,8 @@ namespace Microsoft.Azure.Commands.Insights.UsageMetrics
         /// </summary>
         protected override void ProcessRecordInternal()
         {
+            WriteWarning("This cmdlet is being modified to enable better experience and may contain breaking changes in a future release.");
+
             string queryFilter = this.ProcessParameters();
             string apiVersion = this.ApiVersion ?? DefaultApiVersion;
 
@@ -129,6 +131,7 @@ namespace Microsoft.Azure.Commands.Insights.UsageMetrics
             UsageMetricListResponse response = this.InsightsClient.UsageMetricOperations
                 .ListAsync(resourceUri: this.ResourceId, filterString: queryFilter, apiVersion: apiVersion, cancellationToken: CancellationToken.None)
                 .Result;
+
             var records = response.UsageMetricCollection.Value
                 .Select(e => new PSUsageMetric(e))
                 .ToArray();

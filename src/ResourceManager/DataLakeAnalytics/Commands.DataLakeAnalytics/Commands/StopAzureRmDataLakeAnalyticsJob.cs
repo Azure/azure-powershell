@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             ConfirmAction(
                 string.Format(Resources.StopDataLakeAnalyticsJob, JobId),
                 JobId.ToString(),
-                () => DataLakeAnalyticsClient.CancelJob(ResourceGroupName, Account, JobId));
+                () => DataLakeAnalyticsClient.CancelJob(Account, JobId));
 
             if (PassThru)
             {

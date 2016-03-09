@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             ConfirmAction(
                 string.Format(Resources.RemoveDataLakeAnalyticsCatalogSecret, Name),
                 Name,
-                () => DataLakeAnalyticsClient.DeleteSecret(ResourceGroupName, Account, DatabaseName, Name));
+                () => DataLakeAnalyticsClient.DeleteSecret(Account, DatabaseName, Name));
 
             if (PassThru)
             {

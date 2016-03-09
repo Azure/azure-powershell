@@ -11195,7 +11195,7 @@
           PS C:\&gt; $StartTask = New-Object Microsoft.Azure.Commands.Batch.Models.PSStartTask
           PS C:\&gt; $StartTask.CommandLine = "cmd /c echo example"
           PS C:\&gt; $Pool.StartTask = $StartTask
-          PS C:\&gt; Set-AzureBatchPool -PSCloudPool $Pool -BatchContext $Context
+          PS C:\&gt; Set-AzureBatchPool -Pool $Pool -BatchContext $Context
         </dev:code>
         <dev:remarks>
           <maml:para>The first command gets a pool by using Get-AzureBatchPool, and then stores it in the $Pool variable. </maml:para>
