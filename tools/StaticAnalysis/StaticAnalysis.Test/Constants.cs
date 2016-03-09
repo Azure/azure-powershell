@@ -1,4 +1,5 @@
-﻿// ----------------------------------------------------------------------------------
+﻿
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,22 +13,29 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Security.Cryptography.X509Certificates;
-
-namespace StaticAnalysis
+namespace StaticAnalysis.Test
 {
-    /// <summary>
-    /// Abstract interface for static analysis reports.
-    /// </summary>
-    public interface IReportRecord
+    public class Category
     {
-        int ProblemId { get; set; }
-        string Description { get; set; }
-        string Remediation { get; set; }
-        int Severity { get; set; }
-        string PrintHeaders();
-        string FormatRecord();
-        bool Match(IReportRecord other);
-        IReportRecord Parse(string line);
+        // Service
+        public const string Service = "Service";
+
+        public const string All = "All";
+
+        // Owners
+        public const string OneSDK = "OneSDK";
+
+        // Acceptance type
+        public const string AcceptanceType = "AcceptanceType";
+
+        public const string CIT = "CIT";
+
+        public const string BVT = "BVT";
+
+        public const string CheckIn = "CheckIn";
+
+        // Run Type
+        public const string RunType = "RunType";
+        public const string LiveOnly = "LiveOnly";
     }
 }
