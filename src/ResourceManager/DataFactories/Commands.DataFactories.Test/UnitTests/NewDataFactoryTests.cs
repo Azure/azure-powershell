@@ -26,14 +26,14 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
     public class NewDataFactoryTests : DataFactoryUnitTestBase
     {
         private NewAzureDataFactoryCommand cmdlet;
-        
+
         private IDictionary<string, string> tags;
 
         public NewDataFactoryTests()
         {
             base.SetupTest();
 
-            tags = new Dictionary<string, string>() {{"foo", "bar"}};
+            tags = new Dictionary<string, string>() { { "foo", "bar" } };
 
             cmdlet = new NewAzureDataFactoryCommand()
             {
@@ -56,6 +56,10 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
                 Location = Location,
                 Properties = new DataFactoryProperties() { ProvisioningState = "Succeeded" }
             };
+
+            commandRuntimeMock.Setup(m => m.ShouldProcess(It.IsAny<string>())).Returns(true);
+            commandRuntimeMock.Setup(m => m.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+            commandRuntimeMock.Setup(m => m.ShouldProcess(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>())).Returns(true);
 
             dataFactoriesClientMock.Setup(
                 f =>
@@ -86,7 +90,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
                     f.WriteObject(
                         It.Is<PSDataFactory>(
                             df =>
-                                df.DataFactoryName == expected.Name && 
+                                df.DataFactoryName == expected.Name &&
                                 df.Location == expected.Location)),
                 Times.Once());
         }

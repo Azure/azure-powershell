@@ -458,7 +458,7 @@ function Test-SetApiManagementHostnames
 
     # Create resource group
     $resourceGroupName = 'onesdk598'#Get-ResourceGroupName
-    #New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
+    #New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Confirm:$false
 
     $apiManagementName = 'onesdk2394'#Get-ApiManagementServiceName
     $organization = "apimpowershellorg"
@@ -489,7 +489,7 @@ function Test-SetApiManagementHostnames
     Assert-Null $result.PortalHostnameConfiguration
 
     # Remove the service
-    Remove-AzureRmApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -Force
+    Remove-AzureRmApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -Confirm:$false
 
     # Remove resource group
     Remove-AzureRmResourceGroup -Name $resourceGroupName -Confirm:$false

@@ -37,7 +37,7 @@ function Test-AzureProvider
 
     Assert-True { @(Get-AzureRmResourceProvider -ProviderName "Microsoft.ApiManagement").RegistrationState -eq "Registered" }
 
-    Unegister-AzureRmResourceProvider -ProviderName "Microsoft.ApiManagement" -Confirm:$false
+    Unregister-AzureRmResourceProvider -ProviderName "Microsoft.ApiManagement" -Confirm:$false
 
     while ([DateTime]::UtcNow -lt $endTime -and @(Get-AzureRmResourceProvider -ProviderName "Microsoft.ApiManagement").RegistrationState -ne "Unregistered")
     {

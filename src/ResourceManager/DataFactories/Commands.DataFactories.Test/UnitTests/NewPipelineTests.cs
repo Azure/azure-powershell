@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
 }";
 
         private NewAzureDataFactoryPipelineCommand cmdlet;
-        
+
         public NewPipelineTests()
         {
             base.SetupTest();
@@ -61,6 +61,10 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
                 Properties = new PipelineProperties() { ProvisioningState = "Succeeded" }
             };
 
+            commandRuntimeMock.Setup(m => m.ShouldProcess(It.IsAny<string>())).Returns(true);
+            commandRuntimeMock.Setup(m => m.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+            commandRuntimeMock.Setup(m => m.ShouldProcess(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+
             dataFactoriesClientMock.Setup(c => c.ReadJsonFileContent(It.IsAny<string>()))
                 .Returns(rawJsonContent)
                 .Verifiable();
@@ -81,7 +85,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
                     c.CreateOrUpdatePipeline(ResourceGroupName, DataFactoryName, pipelineName, rawJsonContent))
                 .Returns(expected)
                 .Verifiable();
-            
+
             // Action
             cmdlet.File = filePath;
             cmdlet.Force = true;
@@ -112,6 +116,9 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
                 Properties = new PipelineProperties() { ProvisioningState = "Failed" }
             };
 
+            commandRuntimeMock.Setup(m => m.ShouldProcess(It.IsAny<string>())).Returns(true);
+            commandRuntimeMock.Setup(m => m.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+            commandRuntimeMock.Setup(m => m.ShouldProcess(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>())).Returns(true);
             dataFactoriesClientMock.Setup(c => c.ReadJsonFileContent(It.IsAny<string>()))
                 .Returns(rawJsonContent)
                 .Verifiable();
