@@ -26,14 +26,27 @@ namespace StaticAnalysis
     public abstract class AnalysisLogger
     {
         string _baseDirectory;
+        string _exceptionsDirectory;
 
         /// <summary>
         /// Create an analysis logger that will write reports to the given directory
         /// </summary>
-        /// <param name="baseDirectory"></param>
+        /// <param name="baseDirectory">The base directory for reports</param>
+        /// <param name="exceptionsDirectory">The directory containing exceptions form static analysis rules.</param>
+        public AnalysisLogger(string baseDirectory, string exceptionsDirectory)
+        {
+            _baseDirectory = baseDirectory;
+            _exceptionsDirectory = exceptionsDirectory;
+        }
+
+        /// <summary>
+        /// Create an analysis logger without exceptions
+        /// </summary>
+        /// <param name="baseDirectory">The base directory for reports</param>
         public AnalysisLogger(string baseDirectory)
         {
             _baseDirectory = baseDirectory;
+            _exceptionsDirectory = null;
         }
 
         IList<ReportLogger> _loggers = new List<ReportLogger>();
@@ -86,7 +99,7 @@ namespace StaticAnalysis
         /// <param name="fileName">The filename (without file path) where the report will be written</param>
         /// <returns>The given logger.  Analyzer may write records to this logger and they will be written to 
         /// the report file.</returns>
-        public virtual ReportLogger<T> CreateLogger<T>(string fileName) where T : IReportRecord, new()
+        public virtual ReportLogger<T> CreateLogger<T>(string fileName) where T : class, IReportRecord, new()
         {
             if (string.IsNullOrWhiteSpace(fileName))
             {
@@ -94,7 +107,19 @@ namespace StaticAnalysis
             }
 
             var filePath = Path.Combine(_baseDirectory, fileName);
-            var logger = new ReportLogger<T>(filePath, this);
+            ReportLogger<T> logger;
+            if (_exceptionsDirectory != null && Directory.Exists(_exceptionsDirectory))
+            {
+                var exceptionsPath = Path.Combine(_exceptionsDirectory, fileName);
+                WriteWarning("Using exceptions file {0}", exceptionsPath);
+                logger = new ReportLogger<T>(filePath, exceptionsPath, this);
+            }
+            else
+            {
+                WriteWarning("Using no exceptions file.");
+                logger = new ReportLogger<T>(filePath, this);
+            }
+
             Loggers.Add(logger);
             return logger;
         }
@@ -114,6 +139,32 @@ namespace StaticAnalysis
                 }
 
                 WriteReport(logger.FileName, reportText.ToString());
+            }
+        }
+
+        public void CheckForIssues(int maxSeverity)
+        {
+            var hasErrors = false;
+            foreach (var logger in Loggers.Where(l => l.Records.Any(r => r.Severity < maxSeverity)))
+            {
+                hasErrors = true;
+                StringBuilder errorText = new StringBuilder();
+                errorText.AppendLine(logger.Records.First().PrintHeaders());
+                foreach (var reportRecord in logger.Records)
+                {
+                    errorText.AppendLine(reportRecord.FormatRecord());
+                }
+
+                WriteError("{0} Errors", logger.FileName);
+                WriteError(errorText.ToString());
+                WriteError("");
+            }
+
+            if (hasErrors)
+            {
+                throw new InvalidOperationException(string.Format("One or more errors occurred in validation. " +
+                                                                  "See the analysis repots at {0} for details",
+                    _baseDirectory));
             }
         }
     }
