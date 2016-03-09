@@ -25,6 +25,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
 {
     public class ClientProxyBase
     {
+        /// <summary>
+        /// Recovery Services Vault Credentials.
+        /// </summary>
+        protected static AzureRmRecoveryServicesVaultCreds recoveryServicesVaultCreds = new AzureRmRecoveryServicesVaultCreds();
+
         protected object[] Parameters;
 
         /// <summary>
@@ -37,9 +42,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
         /// </summary>
         private CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
         public CancellationToken CmdletCancellationToken;
-
-        public static AzureRmRecoveryServicesVaultCreds recoveryServicesVaultCreds = new AzureRmRecoveryServicesVaultCreds();
-
+        
         public ClientProxyBase(params object[] parameters)
         {
             Parameters = parameters;
@@ -58,6 +61,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
         public string GetClientRequestId()
         {
             return ClientRequestId;
+        }
+
+        public AzureRmRecoveryServicesVaultCreds GetVaultCredentials()
+        {
+            return recoveryServicesVaultCreds;
         }
 
         public static void UpdateCurrentVaultContext(AzureRmRecoveryServicesVaultCreds vaultCreds)
