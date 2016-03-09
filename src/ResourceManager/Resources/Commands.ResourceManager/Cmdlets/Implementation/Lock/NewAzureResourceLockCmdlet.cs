@@ -22,7 +22,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// The new azure resource lock cmdlet.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmResourceLock", SupportsShouldProcess = true, DefaultParameterSetName = ResourceLockManagementCmdletBase.SubscriptionResourceLevelLock), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.New, "AzureRmResourceLock", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High, 
+        DefaultParameterSetName = ResourceLockManagementCmdletBase.SubscriptionResourceLevelLock), 
+    OutputType(typeof(PSObject))]
     public class NewAzureResourceLockCmdlet : ResourceLockManagementCmdletBase
     {
         /// <summary>
@@ -55,12 +57,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string LockNotes { get; set; }
 
         /// <summary>
-        /// Gets or sets the force parameter.
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
-        /// <summary>
         /// Executes the cmdlet.
         /// </summary>
         protected override void OnProcessRecord()
@@ -68,8 +64,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             base.OnProcessRecord();
             var resourceId = this.GetResourceId(this.LockName);
             this.ConfirmAction(
-                this.Force,
-                this.GetActionMessage(resourceId),
                 this.GetProccessMessage(),
                 resourceId,
                 () =>

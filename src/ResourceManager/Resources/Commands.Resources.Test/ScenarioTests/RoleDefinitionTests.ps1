@@ -51,8 +51,8 @@ function Test-RoleDefinitionCreateTests
 	Assert-AreEqual $roleDef.AssignableScopes $addedRoleDef.AssignableScopes
 	Assert-AreEqual $true $addedRoleDef.IsCustom
 
-    Remove-AzureRmRoleDefinition -Id $addedRoleDef.Id -Force
-    Remove-AzureRmRoleDefinition -Id $rd.Id -Force
+    Remove-AzureRmRoleDefinition -Id $addedRoleDef.Id -Confirm:$false
+    Remove-AzureRmRoleDefinition -Id $rd.Id -Confirm:$false
 }
 
 <#
@@ -94,7 +94,7 @@ function Test-RdNegativeScenarios
 
     # Throws on trying to delete a role that does not exist
     $missingSubscription = "MissingSubscription: The request did not have a provided subscription. All requests must have an associated subscription Id."
-    Assert-Throws { Remove-AzureRmRoleDefinition -Id $rdId -Force} $badIdException
+    Assert-Throws { Remove-AzureRmRoleDefinition -Id $rdId -Confirm:$false} $badIdException
 }
 
 <#
@@ -118,7 +118,7 @@ function Test-RDPositiveScenarios
     Assert-NotNull $updatedRd
 
     # delete the role definition
-    $deletedRd = Remove-AzureRmRoleDefinition -Id $rd.Id -Force -PassThru
+    $deletedRd = Remove-AzureRmRoleDefinition -Id $rd.Id -Confirm:$false -PassThru
     Assert-AreEqual $rd.Name $deletedRd.Name
 
     # try to read the deleted role definition
@@ -156,14 +156,14 @@ function Test-RDRemove
 
     # try to delete the role definition with subscription scope - should fail
 	$badIdException = "RoleDefinitionDoesNotExist: The specified role definition with ID '" + $Rd.Id + "' does not exist."
-	Assert-Throws { Remove-AzureRmRoleDefinition -Id $Rd.Id -Scope $scope -Force -PassThru} $badIdException
+	Assert-Throws { Remove-AzureRmRoleDefinition -Id $Rd.Id -Scope $scope -Confirm:$false -PassThru} $badIdException
 
 	# try to delete the role definition without specifying scope (default to subscription scope) - should fail
 	$badIdException = "RoleDefinitionDoesNotExist: The specified role definition with ID '" + $Rd.Id + "' does not exist."
-	Assert-Throws { Remove-AzureRmRoleDefinition -Id $Rd.Id -Scope $scope -Force -PassThru} $badIdException
+	Assert-Throws { Remove-AzureRmRoleDefinition -Id $Rd.Id -Scope $scope -Confirm:$false -PassThru} $badIdException
 
 	# try to delete the role definition with RG scope - should succeed
-	$deletedRd = Remove-AzureRmRoleDefinition -Id $Rd.Id -Scope $rgScope -Force -PassThru
+	$deletedRd = Remove-AzureRmRoleDefinition -Id $Rd.Id -Scope $rgScope -Confirm:$false -PassThru
 	Assert-AreEqual $Rd.Name $deletedRd.Name
 }
 
@@ -227,14 +227,14 @@ function Test-RDGet
 
 
 	# delete roles
-	$deletedRd = Remove-AzureRmRoleDefinition -Id $roleDefSubScope.Id -Scope $subScope -Force -PassThru
+	$deletedRd = Remove-AzureRmRoleDefinition -Id $roleDefSubScope.Id -Scope $subScope -Confirm:$false -PassThru
 	Assert-AreEqual $roleDefSubScope.Name $deletedRd.Name
 
 	# delete roles
-	$deletedRd = Remove-AzureRmRoleDefinition -Id $roleDefRGScope.Id -Scope $rgScope -Force -PassThru
+	$deletedRd = Remove-AzureRmRoleDefinition -Id $roleDefRGScope.Id -Scope $rgScope -Confirm:$false -PassThru
 	Assert-AreEqual $roleDefRGScope.Name $deletedRd.Name
 
 	# delete roles
-	$deletedRd = Remove-AzureRmRoleDefinition -Id $roleDefResourceScope.Id -Scope $resourceScope -Force -PassThru
+	$deletedRd = Remove-AzureRmRoleDefinition -Id $roleDefResourceScope.Id -Scope $resourceScope -Confirm:$false -PassThru
 	Assert-AreEqual $roleDefResourceScope.Name $deletedRd.Name
 }

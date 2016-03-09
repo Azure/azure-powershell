@@ -20,7 +20,8 @@ using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Reso
 
 namespace Microsoft.Azure.Commands.TrafficManager
 {
-    [Cmdlet(VerbsLifecycle.Disable, "AzureRmTrafficManagerProfile"), OutputType(typeof(bool))]
+    [Cmdlet(VerbsLifecycle.Disable, "AzureRmTrafficManagerProfile", SupportsShouldProcess = true, 
+        ConfirmImpact = ConfirmImpact.High), OutputType(typeof(bool))]
     public class DisableAzureTrafficManagerProfile : TrafficManagerBaseCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the profile.", ParameterSetName = "Fields")]
@@ -34,9 +35,6 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The profile.", ParameterSetName = "Object")]
         [ValidateNotNullOrEmpty]
         public TrafficManagerProfile TrafficManagerProfile { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -57,8 +55,6 @@ namespace Microsoft.Azure.Commands.TrafficManager
             }
 
             this.ConfirmAction(
-                this.Force.IsPresent,
-                string.Format(ProjectResources.Confirm_DisableProfile, profileToDisable.Name),
                 ProjectResources.Progress_DisablingProfile,
                 profileToDisable.Name,
                 () => { disabled = this.TrafficManagerClient.EnableDisableTrafficManagerProfile(profileToDisable, shouldEnableProfileStatus: false); });

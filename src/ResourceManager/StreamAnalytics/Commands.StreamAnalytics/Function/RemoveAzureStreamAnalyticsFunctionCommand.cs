@@ -20,7 +20,8 @@ using Microsoft.Azure.Commands.StreamAnalytics.Properties;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.StreamAnalyticsFunction)]
+    [Cmdlet(VerbsCommon.Remove, Constants.StreamAnalyticsFunction, SupportsShouldProcess = true, 
+        ConfirmImpact = ConfirmImpact.High)]
     public class RemoveAzureStreamAnalyticsFunctionCommand : StreamAnalyticsResourceProviderBaseCmdlet
     {
         [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The azure stream analytics job name.")]
@@ -30,9 +31,6 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The stream analytics function name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
 
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
@@ -53,13 +51,6 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
             }
 
             this.ConfirmAction(
-                this.Force.IsPresent,
-                string.Format(
-                    CultureInfo.InvariantCulture,
-                    Resources.FunctionRemovalConfirmationMessage,
-                    this.Name,
-                    this.JobName,
-                    this.ResourceGroupName),
                 string.Format(
                     CultureInfo.InvariantCulture,
                     Resources.FunctionRemoving,

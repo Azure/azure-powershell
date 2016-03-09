@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.DataFactories
                     resourceGroupName,
                     dataFactoryName,
                     linkedServiceName,
-                    new LinkedServiceCreateOrUpdateWithRawJsonContentParameters() {Content = rawJsonContent});
+                    new LinkedServiceCreateOrUpdateWithRawJsonContentParameters() { Content = rawJsonContent });
 
             return response.LinkedService;
         }
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.DataFactories
 
             return response.StatusCode;
         }
-        
+
         public virtual List<PSLinkedService> FilterPSLinkedServices(LinkedServiceFilterOptions filterOptions)
         {
             if (filterOptions == null)
@@ -124,14 +124,14 @@ namespace Microsoft.Azure.Commands.DataFactories
 
             return linkedServices;
         }
-        
+
         public virtual PSLinkedService CreatePSLinkedService(CreatePSLinkedServiceParameters parameters)
         {
             if (parameters == null)
             {
                 throw new ArgumentNullException("parameters");
             }
-            
+
             PSLinkedService linkedService = null;
             Action createLinkedService = () =>
             {
@@ -153,32 +153,23 @@ namespace Microsoft.Azure.Commands.DataFactories
                     throw new ProvisioningFailedException(errorMessage);
                 }
             };
-            
-            if (parameters.Force)
-            {
-                // If user decides to overwrite anyway, then there is no need to check if the linked service exists or not.
-                createLinkedService();
-            }
-            else
-            {
-                bool linkedServiceExists = CheckLinkedServiceExists(parameters.ResourceGroupName,
-                    parameters.DataFactoryName, parameters.Name);
 
-                parameters.ConfirmAction(
-                        !linkedServiceExists,  // prompt only if the linked service exists
-                        string.Format(
-                            CultureInfo.InvariantCulture,
-                            Resources.LinkedServiceExists,
-                            parameters.Name,
-                            parameters.DataFactoryName),
-                        string.Format(
-                            CultureInfo.InvariantCulture,
-                            Resources.LinkedServiceCreating,
-                            parameters.Name,
-                            parameters.DataFactoryName),
+            parameters.ConfirmAction(
+                    parameters.Force,  // prompt only if the linked service exists
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.LinkedServiceExists,
                         parameters.Name,
-                        createLinkedService);
-            }
+                        parameters.DataFactoryName),
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.LinkedServiceCreating,
+                        parameters.Name,
+                        parameters.DataFactoryName),
+                    parameters.Name,
+                    createLinkedService,
+                    () => CheckLinkedServiceExists(parameters.ResourceGroupName,
+                parameters.DataFactoryName, parameters.Name));
 
             return linkedService;
         }

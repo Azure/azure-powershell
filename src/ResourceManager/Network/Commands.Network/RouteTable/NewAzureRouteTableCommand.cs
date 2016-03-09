@@ -24,7 +24,8 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmRouteTable"), OutputType(typeof(PSRouteTable))]
+    [Cmdlet(VerbsCommon.New, "AzureRmRouteTable", SupportsShouldProcess = true, 
+        ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(PSRouteTable))]
     public class NewAzureRouteTableCommand : RouteTableBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -70,23 +71,15 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.ExecuteCmdlet();
 
-            if (this.IsRouteTablePresent(this.ResourceGroupName, this.Name))
-            {
                 ConfirmAction(
                     Force.IsPresent,
                     string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResource, Name),
                     Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage,
                     Name,
-                    () => this.CreateRouteTable());
+                    () => this.CreateRouteTable(),
+                    () => IsRouteTablePresent(ResourceGroupName, Name));
 
                 WriteObject(this.GetRouteTable(this.ResourceGroupName, this.Name));
-            }
-            else
-            {
-                var routeTable = this.CreateRouteTable();
-
-                WriteObject(routeTable);
-            }
         }
 
         private PSRouteTable CreateRouteTable()

@@ -107,7 +107,7 @@ function Test-SearchSetAndRemoveSavedSearches
 	$count = $savedSearches.Value.Count
 	$newCount = $count + 1
 
-	New-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname -SavedSearchId $id -DisplayName $displayName -Category $category -Query $query -Version $version -Force
+	New-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname -SavedSearchId $id -DisplayName $displayName -Category $category -Query $query -Version $version -Confirm:$false -Force
 	
 	# Check that the search was saved
 	$savedSearches = Get-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname
@@ -139,7 +139,7 @@ function Test-SearchSetAndRemoveSavedSearches
 	Assert-AreEqual $found 1
 
 
-	Remove-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname -SavedSearchId $id -Force
+	Remove-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname -SavedSearchId $id -Confirm:$false
 	
 	# Check that the search was deleted
 	$savedSearches = Get-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname

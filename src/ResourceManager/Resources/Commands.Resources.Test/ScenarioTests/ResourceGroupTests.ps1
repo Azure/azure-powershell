@@ -131,7 +131,7 @@ function Test-RemoveNonExistingResourceGroup
     # Setup
     $rgname = Get-ResourceGroupName
 
-    Assert-Throws { Remove-AzureRmResourceGroup -Name $rgname -Force } "Provided resource group does not exist."
+    Assert-Throws { Remove-AzureRmResourceGroup -Name $rgname -Confirm:$false } "Provided resource group does not exist."
 }
 
 <#
@@ -244,7 +244,7 @@ function Test-RemoveDeployment
         # Test
         New-AzureRmResourceGroup -Name $rgName -Location "west us"
         $deployment = New-AzureRmResourceGroupDeployment -ResourceGroupName $rgName -Name $deploymentName -TemplateUri $templateUri
-        Assert-True { Remove-AzureRmResourceGroupDeployment -ResourceGroupName $deployment.ResourceGroupName -Name $deployment.DeploymentName -Force }
+        Assert-True { Remove-AzureRmResourceGroupDeployment -ResourceGroupName $deployment.ResourceGroupName -Name $deployment.DeploymentName -Confirm:$false }
     }
     finally
     {

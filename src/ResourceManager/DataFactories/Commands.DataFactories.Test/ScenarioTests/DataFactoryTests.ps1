@@ -44,7 +44,7 @@ function Test-CreateDataFactory
 
     try
     {
-        $actual = New-AzureRmDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+        $actual = New-AzureRmDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Confirm:$false -Force
         $expected = Get-AzureRmDataFactory -ResourceGroupName $rgname -Name $dfname
 
         Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
@@ -69,8 +69,8 @@ function Test-DeleteDataFactoryWithDataFactoryParameter
     
     New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
 
-    $df = New-AzureRmDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force        
-    Remove-AzureRmDataFactory -DataFactory $df -Force
+    $df = New-AzureRmDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Confirm:$false -Force        
+    Remove-AzureRmDataFactory -DataFactory $df -Confirm:$false
 }
 
 <#
@@ -86,7 +86,7 @@ function Test-DataFactoryPiping
     
     New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
 
-    New-AzureRmDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+    New-AzureRmDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Confirm:$false -Force
 
     Get-AzureRmDataFactory -ResourceGroupName $rgname | Remove-AzureRmDataFactory -Force
 

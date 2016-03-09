@@ -22,15 +22,13 @@ using Microsoft.Azure.Commands.StreamAnalytics.Properties;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.StreamAnalyticsJob)]
+    [Cmdlet(VerbsCommon.Remove, Constants.StreamAnalyticsJob, SupportsShouldProcess = true, 
+        ConfirmImpact = ConfirmImpact.High)]
     public class RemoveAzureStreamAnalyticsJobCommand : StreamAnalyticsResourceProviderBaseCmdlet
     {
         [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The azure stream analytics job name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
 
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
@@ -41,12 +39,6 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
             }
 
             this.ConfirmAction(
-                this.Force.IsPresent,
-                string.Format(
-                    CultureInfo.InvariantCulture,
-                    Resources.JobRemovalConfirmationMessage,
-                    this.Name,
-                    this.ResourceGroupName),
                 string.Format(
                     CultureInfo.InvariantCulture,
                     Resources.JobRemoving,

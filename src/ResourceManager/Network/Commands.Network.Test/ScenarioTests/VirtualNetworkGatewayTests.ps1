@@ -37,7 +37,7 @@ function Test-VirtualNetworkExpressRouteGatewayCRUD
 	 
       # Create the Virtual Network
       $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
-      $vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+      $vnet = New-AzureRmVirtualNetwork -Confirm:$false -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
       $vnet = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
       $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
 
@@ -47,7 +47,7 @@ function Test-VirtualNetworkExpressRouteGatewayCRUD
       # Create & Get virtualnetworkgateway
       $vnetIpConfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
 
-      $actual = New-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType ExpressRoute 
+      $actual = New-AzureRmVirtualNetworkGateway -Confirm:$false -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType ExpressRoute 
       $expected = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $expected.Name $actual.Name	
@@ -61,7 +61,7 @@ function Test-VirtualNetworkExpressRouteGatewayCRUD
       Assert-AreEqual $list[0].Location $actual.Location
       
       # Delete virtualNetworkGateway
-      $delete = Remove-AzureRmVirtualNetworkGateway -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force
+      $delete = Remove-AzureRmVirtualNetworkGateway -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Confirm:$false
       Assert-AreEqual true $delete
       
       $list = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $actual.ResourceGroupName
@@ -99,7 +99,7 @@ function Test-VirtualNetworkGatewayCRUD
       
       # Create the Virtual Network
       $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
-      $vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+      $vnet = New-AzureRmVirtualNetwork -Confirm:$false -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
       $vnet = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
       $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
 
@@ -109,7 +109,7 @@ function Test-VirtualNetworkGatewayCRUD
       # Create & Get virtualnetworkgateway
       $vnetIpConfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
 
-      $actual = New-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false
+      $actual = New-AzureRmVirtualNetworkGateway -Confirm:$false -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false
       $expected = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $expected.Name $actual.Name	
@@ -129,7 +129,7 @@ function Test-VirtualNetworkGatewayCRUD
       Assert-AreEqual 1 @($list).Count
 
       # Delete virtualNetworkGateway
-      $delete = Remove-AzureRmVirtualNetworkGateway -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force
+      $delete = Remove-AzureRmVirtualNetworkGateway -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Confirm:$false
       Assert-AreEqual true $delete
       
       $list = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $actual.ResourceGroupName
@@ -165,7 +165,7 @@ function Test-VirtualNetworkGatewayP2SAndSKU
       $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
       
       # Create & Get LocalNetworkGateway      
-      $actual = New-AzureRmLocalNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -AddressPrefix 192.168.0.0/16 -GatewayIpAddress 192.168.4.5
+      $actual = New-AzureRmLocalNetworkGateway -Confirm:$false -ResourceGroupName $rgname -name $rname -location $location -AddressPrefix 192.168.0.0/16 -GatewayIpAddress 192.168.4.5
       $localnetGateway = Get-AzureRmLocalNetworkGateway -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $localnetGateway.ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $localnetGateway.Name $actual.Name	
@@ -175,7 +175,7 @@ function Test-VirtualNetworkGatewayP2SAndSKU
 
       # Create the Virtual Network
       $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
-      $vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+      $vnet = New-AzureRmVirtualNetwork -Confirm:$false -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
       $vnet = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
       $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
 
@@ -192,7 +192,7 @@ function Test-VirtualNetworkGatewayP2SAndSKU
       $rootCert = New-AzureRmVpnClientRootCertificate -Name $clientRootCertName -PublicCertData $samplePublicCertData
       $clientCert = New-AzureRmVpnClientRevokedCertificate -Name $sampleClientCertName -Thumbprint $sampleClinentCertThumbprint
       
-      $actual = New-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku Basic -GatewayDefaultSite $localnetGateway -VpnClientAddressPool 201.169.0.0/16 -VpnClientRootCertificates $rootCert -VpnClientRevokedCertificates $clientCert
+      $actual = New-AzureRmVirtualNetworkGateway -Confirm:$false -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku Basic -GatewayDefaultSite $localnetGateway -VpnClientAddressPool 201.169.0.0/16 -VpnClientRootCertificates $rootCert -VpnClientRevokedCertificates $clientCert
       $expected = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $expected.Name $actual.Name	

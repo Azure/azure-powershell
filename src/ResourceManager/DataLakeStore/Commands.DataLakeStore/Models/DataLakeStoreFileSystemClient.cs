@@ -26,15 +26,17 @@ using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.DataLake.StoreFileSystem;
 using Microsoft.Azure.Management.DataLake.StoreFileSystem.Models;
 using Microsoft.Azure.Management.DataLake.StoreUploader;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
     public class DataLakeStoreFileSystemClient
     {
-        private const decimal MaximumBytesPerDownloadRequest = 32*1024*1024; //32MB
+        private const decimal MaximumBytesPerDownloadRequest = 32 * 1024 * 1024; //32MB
 
         /// <summary>
         /// The lock object
@@ -181,7 +183,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             }
 
             var lengthToUse = GetFileStatus(filePath, accountName).Length;
-            var numRequests = Math.Ceiling(lengthToUse/MaximumBytesPerDownloadRequest);
+            var numRequests = Math.Ceiling(lengthToUse / MaximumBytesPerDownloadRequest);
 
             using (var fileStream = new FileStream(destinationFilePath, FileMode.CreateNew))
             {
@@ -191,7 +193,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                     string.Format("Downloading File in DataLakeStore Store Location: {0} to destination path: {1}",
                         filePath, destinationFilePath));
                 long currentOffset = 0;
-                var bytesToRequest = (long) MaximumBytesPerDownloadRequest;
+                var bytesToRequest = (long)MaximumBytesPerDownloadRequest;
                 var originalValue = TracingAdapter.IsEnabled;
                 try
                 {
@@ -200,7 +202,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                     for (long i = 0; i < numRequests; i++)
                     {
                         cmdletCancellationToken.ThrowIfCancellationRequested();
-                        progress.PercentComplete = (int) Math.Ceiling((i/numRequests)*100);
+                        progress.PercentComplete = (int)Math.Ceiling((i / numRequests) * 100);
                         UpdateProgress(progress, cmdletRunningRequest);
                         var responseBytes =
                             ReadFromFile(
@@ -237,7 +239,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 lengthToUse = bytesToPreview;
             }
 
-            var numRequests = Math.Ceiling(lengthToUse/MaximumBytesPerDownloadRequest);
+            var numRequests = Math.Ceiling(lengthToUse / MaximumBytesPerDownloadRequest);
 
             var byteStream = new MemoryStream();
             var progress = new ProgressRecord(
@@ -246,7 +248,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 string.Format("Previewing file in DataLakeStore Store Location: {0}. Bytes to preview: {1}", filePath,
                     bytesToPreview));
             long currentOffset = 0;
-            var bytesToRequest = (long) MaximumBytesPerDownloadRequest;
+            var bytesToRequest = (long)MaximumBytesPerDownloadRequest;
             var originalValue = TracingAdapter.IsEnabled;
             try
             {
@@ -255,7 +257,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 for (long i = 0; i < numRequests; i++)
                 {
                     cmdletCancellationToken.ThrowIfCancellationRequested();
-                    progress.PercentComplete = (int) Math.Ceiling((i/numRequests)*100);
+                    progress.PercentComplete = (int)Math.Ceiling((i / numRequests) * 100);
                     UpdateProgress(progress, cmdletRunningRequest);
 
                     if (lengthToUse < bytesToRequest)
@@ -375,64 +377,58 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         {
             var originalValue = TracingAdapter.IsEnabled;
             FileType ignoredType;
-            
-            if (!overwrite && TestFileOrFolderExistence(destinationPath, accountName, out ignoredType))
-            {
-                throw new InvalidOperationException(string.Format(Properties.Resources.LocalFileAlreadyExists, destinationPath));    
-            }
 
             try
             {
                 //TODO: Remove this logic when defect: 4259238 (located here: http://vstfrd:8080/Azure/RD/_workitems/edit/4259238) is resolved
                 TracingAdapter.IsEnabled = false;
-
-                // default the number of threads to use to the processor count
-                if (threadCount < 1)
-                {
-                    threadCount = Environment.ProcessorCount;
-                }
-
-                // Progress bar indicator.
-                var description = string.Format("Copying File: {0} to DataLakeStore Location: {1} for account: {2}",
-                    sourcePath, destinationPath, accountName);
-                var progress = new ProgressRecord(
-                    uniqueActivityIdGenerator.Next(0, 10000000),
-                    "Upload to DataLakeStore Store",
-                    description)
-                {
-                    PercentComplete = 0
-                };
-
-                if (parentProgress != null)
-                {
-                    progress.ParentActivityId = parentProgress.ActivityId;
-                }
-
-                // On update from the Data Lake store uploader, capture the progress.
-                var progressTracker = new System.Progress<UploadProgress>();
-                progressTracker.ProgressChanged += (s, e) =>
-                {
-                    lock (ConsoleOutputLock)
+                    // default the number of threads to use to the processor count
+                    if (threadCount < 1)
                     {
-                        progress.PercentComplete = (int) (1.0*e.UploadedByteCount/e.TotalFileLength*100);
+                        threadCount = Environment.ProcessorCount;
                     }
-                };
 
-                var uploadParameters = new UploadParameters(sourcePath, destinationPath, accountName, threadCount,
-                    overwrite, resume, isBinary);
-                var uploader = new DataLakeStoreUploader(uploadParameters,
-                    new DataLakeStoreFrontEndAdapter(accountName, _client, cmdletCancellationToken),
-                    cmdletCancellationToken,
-                    progressTracker);
-                // Execute the uploader.
-                var uploadTask = Task.Run(() =>
-                {
-                    cmdletCancellationToken.ThrowIfCancellationRequested();
-                    uploader.Execute();
-                    cmdletCancellationToken.ThrowIfCancellationRequested();
-                }, cmdletCancellationToken);
+                    // Progress bar indicator.
+                    var description = string.Format("Copying File: {0} to DataLakeStore Location: {1} for account: {2}",
+                        sourcePath, destinationPath, accountName);
+                    var progress = new ProgressRecord(
+                        uniqueActivityIdGenerator.Next(0, 10000000),
+                        "Upload to DataLakeStore Store",
+                        description)
+                    {
+                        PercentComplete = 0
+                    };
 
-                TrackUploadProgress(uploadTask, progress, cmdletRunningRequest, cmdletCancellationToken);
+                    if (parentProgress != null)
+                    {
+                        progress.ParentActivityId = parentProgress.ActivityId;
+                    }
+
+                    // On update from the Data Lake store uploader, capture the progress.
+                    var progressTracker = new System.Progress<UploadProgress>();
+                    progressTracker.ProgressChanged += (s, e) =>
+                    {
+                        lock (ConsoleOutputLock)
+                        {
+                            progress.PercentComplete = (int)(1.0 * e.UploadedByteCount / e.TotalFileLength * 100);
+                        }
+                    };
+
+                    var uploadParameters = new UploadParameters(sourcePath, destinationPath, accountName, threadCount,
+                        overwrite, resume, isBinary);
+                    var uploader = new DataLakeStoreUploader(uploadParameters,
+                        new DataLakeStoreFrontEndAdapter(accountName, _client, cmdletCancellationToken),
+                        cmdletCancellationToken,
+                        progressTracker);
+                    // Execute the uploader.
+                    var uploadTask = Task.Run(() =>
+                    {
+                        cmdletCancellationToken.ThrowIfCancellationRequested();
+                        uploader.Execute();
+                        cmdletCancellationToken.ThrowIfCancellationRequested();
+                    }, cmdletCancellationToken);
+
+                    TrackUploadProgress(uploadTask, progress, cmdletRunningRequest, cmdletCancellationToken);
             }
             finally
             {
@@ -476,7 +472,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 uniqueActivityIdGenerator.Next(0, 10000000),
                 string.Format("Copying Folder: {0}{1}. Total bytes to be copied: {2}. Total files to be copied: {3}",
                     sourceFolderPath, recursive ? " recursively" : string.Empty, totalBytes, totalFiles),
-                "Copy in progress...") {PercentComplete = 0};
+                "Copy in progress...") { PercentComplete = 0 };
 
             UpdateProgress(progress, cmdletRunningRequest);
 
@@ -486,7 +482,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             // we need to override the default .NET value for max connections to a host to our number of threads, if necessary (otherwise we won't achieve the parallelism we want)
             var previousDefaultConnectionLimit = ServicePointManager.DefaultConnectionLimit;
             ServicePointManager.DefaultConnectionLimit =
-                Math.Max((internalFolderThreads*internalFileThreads) + internalFolderThreads,
+                Math.Max((internalFolderThreads * internalFileThreads) + internalFolderThreads,
                     ServicePointManager.DefaultConnectionLimit);
             var originalValue = TracingAdapter.IsEnabled;
             try
@@ -558,6 +554,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
                                     try
                                     {
+
                                         CopyFile(dataLakeFilePath, accountName, file, cmdletCancellationToken,
                                             internalFileThreads, overwrite, resume, isBinary, null, progress);
                                     }
@@ -580,11 +577,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                         cmdletCancellationToken.ThrowIfCancellationRequested();
 
                         // only update progress if the percentage has changed.
-                        if ((int) Math.Ceiling((decimal) testFileCountChanged/totalFiles*100)
-                            < (int) Math.Ceiling((decimal) fileCount/totalFiles*100))
+                        if ((int)Math.Ceiling((decimal)testFileCountChanged / totalFiles * 100)
+                            < (int)Math.Ceiling((decimal)fileCount / totalFiles * 100))
                         {
                             testFileCountChanged = fileCount;
-                            var percentComplete = (int) Math.Ceiling((decimal) fileCount/totalFiles*100);
+                            var percentComplete = (int)Math.Ceiling((decimal)fileCount / totalFiles * 100);
                             if (percentComplete > 100)
                             {
                                 // in some cases we can get 101 percent complete using ceiling, however we want to be

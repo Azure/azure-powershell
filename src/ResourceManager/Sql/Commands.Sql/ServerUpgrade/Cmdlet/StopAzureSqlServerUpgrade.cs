@@ -29,12 +29,6 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet
     public class StopAzureSqlServerUpgrade : AzureSqlServerUpgradeCmdletBase<AzureSqlServerUpgradeModel>
     {
         /// <summary>
-        /// Defines whether it is ok to skip the requesting of rule removal confirmation
-        /// </summary>
-        [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
-        public SwitchParameter Force { get; set; }
-
-        /// <summary>
         /// Gets the entity to delete
         /// </summary>
         /// <returns>The entity going to be deleted</returns>
@@ -62,15 +56,13 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet
         /// <returns>The server that was deleted</returns>
         protected override IEnumerable<AzureSqlServerUpgradeModel> PersistChanges(IEnumerable<AzureSqlServerUpgradeModel> entity)
         {
-            if (!Force.IsPresent && !ShouldProcess(
+            if (ShouldProcess(
                 string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.StopAzureSqlServerUpgradeDescription, this.ServerName),
                 string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.StopAzureSqlServerUpgradeWarning, this.ServerName),
                 Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
             {
-                return null;
+                ModelAdapter.Cancel(this.ResourceGroupName, this.ServerName);
             }
-
-            ModelAdapter.Cancel(this.ResourceGroupName, this.ServerName);
 
             return null;
         }

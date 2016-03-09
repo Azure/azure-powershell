@@ -88,7 +88,7 @@ function Test-GetWebAppSlot
 		Remove-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname2 -Force
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $appname -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName -Force
-		Remove-AzureRmResourceGroup -Name $rgname -Force
+		Remove-AzureRmResourceGroup -Name $rgname -Confirm:$false
     }
 }
 
@@ -165,7 +165,7 @@ function Test-GetWebAppSlotMetrics
 		Remove-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -Force
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $appname -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName -Force
-		Remove-AzureRmResourceGroup -Name $rgname -Force
+		Remove-AzureRmResourceGroup -Name $rgname -Confirm:$false
     }
 }
 
@@ -248,7 +248,7 @@ function Test-StartStopRestartWebAppSlot
 		Remove-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -Force
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $appname -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName -Force
-		Remove-AzureRmResourceGroup -Name $rgname -Force
+		Remove-AzureRmResourceGroup -Name $rgname -Confirm:$false
     }
 }
 
@@ -300,7 +300,7 @@ function Test-CloneWebAppToSlot
 		Remove-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -Force
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $appname -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName -Force
-		Remove-AzureRmResourceGroup -Name $rgname -Force
+		Remove-AzureRmResourceGroup -Name $rgname -Confirm:$false
     }
 }
 
@@ -373,7 +373,7 @@ function Test-CloneWebAppSlot
 		Remove-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $destAppName -Slot $slotname -Force
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $destAppName -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $destPlanName -Force
-		Remove-AzureRmResourceGroup -Name $rgname -Force
+		Remove-AzureRmResourceGroup -Name $rgname -Confirm:$false
     }
 }
 
@@ -426,7 +426,7 @@ function Test-CreateNewWebAppSlot
 		Remove-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -Force
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $appname -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName -Force
-		Remove-AzureRmResourceGroup -Name $rgname -Force
+		Remove-AzureRmResourceGroup -Name $rgname -Confirm:$false
     }
 }
 
@@ -576,7 +576,7 @@ function Test-SetWebAppSlot
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $appname -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName1 -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName2 -Force
-		Remove-AzureRmResourceGroup -Name $rgname -Force
+		Remove-AzureRmResourceGroup -Name $rgname -Confirm:$false
     }
 }
 
@@ -630,7 +630,7 @@ function Test-RemoveWebAppSlot
 		# Cleanup
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $appname -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName -Force
-		Remove-AzureRmResourceGroup -Name $rgname -Force
+		Remove-AzureRmResourceGroup -Name $rgname -Confirm:$false
     }
 }
 
@@ -701,6 +701,6 @@ function Test-WebAppSlotPublishingProfile
 		Remove-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname  -Slot $slotname -Force
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $appname -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName -Force
-		Remove-AzureRmResourceGroup -Name $rgname -Force
+		Remove-AzureRmResourceGroup -Name $rgname -Confirm:$false
     }
 }

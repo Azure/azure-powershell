@@ -23,7 +23,9 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Removes a new resource group.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmResourceGroup", SupportsShouldProcess = true, DefaultParameterSetName = ResourceGroupNameParameterSet), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmResourceGroup", SupportsShouldProcess = true, 
+        ConfirmImpact = ConfirmImpact.High, DefaultParameterSetName = ResourceGroupNameParameterSet), 
+    OutputType(typeof(bool))]
     public class RemoveAzureResourceGroupCommand : ResourcesBaseCmdlet
     {
         /// <summary>
@@ -45,17 +47,12 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = true, ParameterSetName = ResourceGroupIdParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group Id.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
         
         public override void ExecuteCmdlet()
         {
             Name = Name ?? ResourceIdentifier.FromResourceGroupIdentifier(this.Id).ResourceGroupName;
 
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(ProjectResources.RemovingResourceGroup, Name),
                 ProjectResources.RemoveResourceGroupMessage,
                 Name,
                 () => ResourcesClient.DeleteResourceGroup(Name));

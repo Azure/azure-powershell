@@ -28,19 +28,19 @@ function Test-Table
 
     try
     {
-        New-AzureRmDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+        New-AzureRmDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Confirm:$false -Force
      
-        New-AzureRmDataFactoryLinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File .\Resources\linkedService.json -Force
+        New-AzureRmDataFactoryLinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File .\Resources\linkedService.json -Confirm:$false -Force
    
         $datasetname = "foo2"
-        $actual = New-AzureRmDataFactoryDataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname -File .\Resources\dataset.json -Force
+        $actual = New-AzureRmDataFactoryDataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname -File .\Resources\dataset.json -Confirm:$false -Force
         $expected = Get-AzureRmDataFactoryDataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname
 
         Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
         Assert-AreEqual $expected.DataFactoryName $actual.DataFactoryName
         Assert-AreEqual $expected.DatasetName $actual.DatasetName
 
-        Remove-AzureRmDataFactoryDataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname -Force
+        Remove-AzureRmDataFactoryDataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname -Confirm:$false
     }
     finally
     {
@@ -65,19 +65,19 @@ function Test-TableWithDataFactoryParameter
 
     try
     {
-        $df = New-AzureRmDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+        $df = New-AzureRmDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Confirm:$false -Force
      
-        New-AzureRmDataFactoryLinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File .\Resources\linkedService.json -Force
+        New-AzureRmDataFactoryLinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File .\Resources\linkedService.json -Confirm:$false -Force
    
         $datasetname = "foo2"
-        $actual = New-AzureRmDataFactoryDataset -DataFactory $df -Name $datasetname -File .\Resources\dataset.json -Force
+        $actual = New-AzureRmDataFactoryDataset -DataFactory $df -Name $datasetname -File .\Resources\dataset.json -Confirm:$false -Force
         $expected = Get-AzureRmDataFactoryDataset -DataFactory $df -Name $datasetname
 
         Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
         Assert-AreEqual $expected.DataFactoryName $actual.DataFactoryName
         Assert-AreEqual $expected.DatasetName $actual.DatasetName
 
-        Remove-AzureRmDataFactoryDataset -DataFactory $df -Name $datasetname -Force
+        Remove-AzureRmDataFactoryDataset -DataFactory $df -Name $datasetname -Confirm:$false
     }
     finally
     {
@@ -100,12 +100,12 @@ function Test-TablePiping
 
     try
     {
-        New-AzureRmDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+        New-AzureRmDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Confirm:$false -Force
      
-        New-AzureRmDataFactoryLinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File .\Resources\linkedService.json -Force
+        New-AzureRmDataFactoryLinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File .\Resources\linkedService.json -Confirm:$false -Force
    
         $datasetname = "foo2"
-        New-AzureRmDataFactoryDataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname -File .\Resources\dataset.json -Force
+        New-AzureRmDataFactoryDataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname -File .\Resources\dataset.json -Confirm:$false -Force
         
         Get-AzureRmDataFactoryDataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname | Remove-AzureRmDataFactoryDataset -Force
 

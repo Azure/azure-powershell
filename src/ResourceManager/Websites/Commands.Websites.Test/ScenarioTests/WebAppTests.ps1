@@ -86,7 +86,7 @@ function Test-GetWebApp
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $wname -Force
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $wname2 -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
-		Remove-AzureRmResourceGroup -Name $rgname -Force
+		Remove-AzureRmResourceGroup -Name $rgname -Confirm:$false
     }
 }
 
@@ -153,7 +153,7 @@ function Test-GetWebAppMetrics
 		# Cleanup
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $wname -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
-		Remove-AzureRmResourceGroup -Name $rgname -Force
+		Remove-AzureRmResourceGroup -Name $rgname -Confirm:$false
     }
 }
 
@@ -226,7 +226,7 @@ function Test-StartStopRestartWebApp
 		# Cleanup
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $wname -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
-		Remove-AzureRmResourceGroup -Name $rgname -Force
+		Remove-AzureRmResourceGroup -Name $rgname -Confirm:$false
     }
 }
 
@@ -293,7 +293,7 @@ function Test-CloneNewWebApp
 
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $destAppName -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $destPlanName -Force
-		Remove-AzureRmResourceGroup -Name $rgname -Force
+		Remove-AzureRmResourceGroup -Name $rgname -Confirm:$false
     }
 }
 
@@ -399,7 +399,7 @@ function Test-CloneNewWebAppAndDeploymentSlots
 		Remove-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $destAppName -Slot $slot2name -Force
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $destAppName -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $destPlanName -Force
-		Remove-AzureRmResourceGroup -Name $rgname -Force
+		Remove-AzureRmResourceGroup -Name $rgname -Confirm:$false
     }
 }
 
@@ -467,7 +467,7 @@ function Test-CloneNewWebAppWithTrafficManager
 
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $destWebAppName -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $destAppServicePlanName -Force
-		Remove-AzureRmResourceGroup -Name $rgname -Force
+		Remove-AzureRmResourceGroup -Name $rgname -Confirm:$false
     }
 }
 
@@ -510,7 +510,7 @@ function Test-CreateNewWebApp
 		# Cleanup
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $wname -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
-		Remove-AzureRmResourceGroup -Name $rgname -Force
+		Remove-AzureRmResourceGroup -Name $rgname -Confirm:$false
     }
 }
 
@@ -631,7 +631,7 @@ function Test-SetWebApp
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $webAppName -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $appServicePlanName1 -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $appServicePlanName2 -Force
-		Remove-AzureRmResourceGroup -Name $rgname -Force
+		Remove-AzureRmResourceGroup -Name $rgname -Confirm:$false
     }
 }
 
@@ -675,7 +675,7 @@ function Test-RemoveWebApp
 	{
 		# Cleanup
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName -Force
-		Remove-AzureRmResourceGroup -Name $rgname -Force
+		Remove-AzureRmResourceGroup -Name $rgname -Confirm:$false
     }
 }
 
@@ -734,6 +734,6 @@ function Test-WebAppPublishingProfile
 		# Cleanup
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $appName -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName -Force
-		Remove-AzureRmResourceGroup -Name $rgname -Force
+		Remove-AzureRmResourceGroup -Name $rgname -Confirm:$false
     }
 }

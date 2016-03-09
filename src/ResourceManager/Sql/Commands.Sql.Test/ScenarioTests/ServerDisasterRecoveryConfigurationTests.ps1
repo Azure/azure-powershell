@@ -61,7 +61,7 @@ function Test-ServerDisasterRecoveryConfigurationInternal ($location1 = "North E
 
         # Delete
         #
-        Remove-AzureRmSqlServerDisasterRecoveryConfiguration  -ResourceGroupName $rg1.ResourceGroupName -ServerName $server1.ServerName -VirtualEndpointName $sdrcName -Force
+        Remove-AzureRmSqlServerDisasterRecoveryConfiguration  -ResourceGroupName $rg1.ResourceGroupName -ServerName $server1.ServerName -VirtualEndpointName $sdrcName -Confirm:$false
     }
     finally
     {

@@ -21,11 +21,12 @@ using Microsoft.Azure.Commands.OperationalInsights.Properties;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.StorageInsight, DefaultParameterSetName = ByWorkspaceName)]
+    [Cmdlet(VerbsCommon.Remove, Constants.StorageInsight, DefaultParameterSetName = ByWorkspaceName, 
+        SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High)]
     public class RemoveAzureOperationalInsightsStorageInsightCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, ParameterSetName = ByWorkspaceObject, Mandatory = true, ValueFromPipeline = true,
-            HelpMessage = "The workspace that containts the storage insight.")]
+            HelpMessage = "The workspace that contains the storage insight.")]
         [ValidateNotNull]
         public PSWorkspace Workspace { get; set; }
 
@@ -44,9 +45,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ByWorkspaceObject)
@@ -56,12 +54,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights
             }
 
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(
-                    CultureInfo.InvariantCulture,
-                    Resources.StorageInsightDeleteConfirmationMessage,
-                    Name,
-                    WorkspaceName),
                 string.Format(
                     CultureInfo.InvariantCulture,
                     Resources.StorageInsightRemoving,

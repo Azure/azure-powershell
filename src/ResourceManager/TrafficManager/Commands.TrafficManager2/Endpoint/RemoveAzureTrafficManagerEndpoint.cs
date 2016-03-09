@@ -20,7 +20,8 @@ using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Reso
 
 namespace Microsoft.Azure.Commands.TrafficManager
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmTrafficManagerEndpoint"), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmTrafficManagerEndpoint", SupportsShouldProcess = true, 
+        ConfirmImpact = ConfirmImpact.High), OutputType(typeof(bool))]
     public class RemoveAzureTrafficManagerEndpoint : TrafficManagerBaseCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the endpoint.", ParameterSetName = "Fields")]
@@ -44,9 +45,6 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [ValidateNotNullOrEmpty]
         public TrafficManagerEndpoint TrafficManagerEndpoint { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
             var deleted = false;
@@ -68,8 +66,6 @@ namespace Microsoft.Azure.Commands.TrafficManager
             }
 
             this.ConfirmAction(
-                this.Force.IsPresent,
-                string.Format(ProjectResources.Confirm_RemoveEndpoint, trafficManagerEndpointToDelete.Name, trafficManagerEndpointToDelete.ProfileName, trafficManagerEndpointToDelete.ResourceGroupName),
                 ProjectResources.Progress_RemovingEndpoint,
                 this.Name,
                 () => { deleted = this.TrafficManagerClient.DeleteTrafficManagerEndpoint(trafficManagerEndpointToDelete); });

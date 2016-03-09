@@ -23,7 +23,7 @@ function Test-GetNonExistingDataFactoryGateway
     $rglocation = Get-ProviderLocation ResourceManagement
     
     New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
-    New-AzureRmDataFactory -Name $dfname -Location $rglocation -ResourceGroup $rgname  -Force
+    New-AzureRmDataFactory -Name $dfname -Location $rglocation -ResourceGroup $rgname  -Confirm:$false -Force
     
     # Test
     Assert-ThrowsContains { Get-AzureRmDataFactoryGateway -ResourceGroupName $rgname -DataFactoryName $dfname -Name "gwname"  } "GatewayNotFound"    
@@ -45,7 +45,7 @@ function Test-DataFactoryGateway
 
     try
     {
-        New-AzureRmDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+        New-AzureRmDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Confirm:$false -Force
      
         $gwname = "foo"
         $description = "description"
@@ -62,7 +62,7 @@ function Test-DataFactoryGateway
         $result = Set-AzureRmDataFactoryGateway -ResourceGroupName $rgname -DataFactoryName $dfname -Name $gwname -Description $description
         Assert-AreEqual $result.Description $description
 
-        Remove-AzureRmDataFactoryGateway -ResourceGroupName $rgname -DataFactoryName $dfname -Name $gwname -Force
+        Remove-AzureRmDataFactoryGateway -ResourceGroupName $rgname -DataFactoryName $dfname -Name $gwname -Confirm:$false
     }
     finally
     {
@@ -86,7 +86,7 @@ function Test-DataFactoryGatewayWithDataFactoryParameter
 
     try
     {
-        $datafactory = New-AzureRmDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+        $datafactory = New-AzureRmDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Confirm:$false -Force
      
         $gwname = "foo"
         $description = "description"
@@ -102,7 +102,7 @@ function Test-DataFactoryGatewayWithDataFactoryParameter
         $result = Set-AzureRmDataFactoryGateway -DataFactory $datafactory -Name $gwname -Description $description
         Assert-AreEqual $result.Description $description
 
-        Remove-AzureRmDataFactoryGateway -DataFactory $datafactory -Name $gwname -Force
+        Remove-AzureRmDataFactoryGateway -DataFactory $datafactory -Name $gwname -Confirm:$false
     }
     finally
     {

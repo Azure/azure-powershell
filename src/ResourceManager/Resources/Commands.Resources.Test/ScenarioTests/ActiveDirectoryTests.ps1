@@ -489,7 +489,7 @@ function Test-NewADApplication
 	Assert-True { $app1.Count -ge 1}
 
 	# Delete 
-	Remove-AzureRmADApplication -ApplicationObjectId $application.ApplicationObjectId -Force
+	Remove-AzureRmADApplication -ApplicationObjectId $application.ApplicationObjectId -Confirm:$false
 }
 
 <#

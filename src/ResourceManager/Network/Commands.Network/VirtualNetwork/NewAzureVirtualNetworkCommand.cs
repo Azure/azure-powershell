@@ -24,7 +24,8 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmVirtualNetwork"), OutputType(typeof(PSVirtualNetwork))]
+    [Cmdlet(VerbsCommon.New, "AzureRmVirtualNetwork", SupportsShouldProcess = true,
+        ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(PSVirtualNetwork))]
     public class NewAzureVirtualNetworkCommand : VirtualNetworkBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -83,23 +84,15 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.ExecuteCmdlet();
 
-            if (this.IsVirtualNetworkPresent(this.ResourceGroupName, this.Name))
-            {
-                ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResource, Name),
-                    Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage,
-                    Name,
-                    () => CreateVirtualNetwork());
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResource, Name),
+                Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage,
+                Name,
+                () => CreateVirtualNetwork(),
+                () => IsVirtualNetworkPresent(ResourceGroupName, Name));
 
-                WriteObject(this.GetVirtualNetwork(this.ResourceGroupName, this.Name));
-            }
-            else
-            {
-                var virtualNetwork = CreateVirtualNetwork();
-
-                WriteObject(virtualNetwork);
-            }
+            WriteObject(this.GetVirtualNetwork(this.ResourceGroupName, this.Name));
         }
 
         private PSVirtualNetwork CreateVirtualNetwork()

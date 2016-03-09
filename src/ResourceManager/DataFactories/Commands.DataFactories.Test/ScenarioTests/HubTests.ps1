@@ -28,18 +28,18 @@ function Test-Hub
 
     try
     {
-        New-AzureRmDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+        New-AzureRmDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Confirm:$false -Force
      
         $hubname = "SampleHub"
    
-        $actual = New-AzureRmDataFactoryHub -ResourceGroupName $rgname -DataFactoryName $dfname -Name $hubname -File .\Resources\hub.json -Force
+        $actual = New-AzureRmDataFactoryHub -ResourceGroupName $rgname -DataFactoryName $dfname -Name $hubname -File .\Resources\hub.json -Confirm:$false -Force
         $expected = Get-AzureRmDataFactoryHub -ResourceGroupName $rgname -DataFactoryName $dfname -Name $hubname
 
         Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
         Assert-AreEqual $expected.DataFactoryName $actual.DataFactoryName
         Assert-AreEqual $expected.HubName $actual.HubName
 
-        Remove-AzureRmDataFactoryHub -ResourceGroupName $rgname -DataFactoryName $dfname -Name $hubname -Force
+        Remove-AzureRmDataFactoryHub -ResourceGroupName $rgname -DataFactoryName $dfname -Name $hubname -Confirm:$false
     }
     finally
     {
@@ -64,18 +64,18 @@ function Test-HubWithDataFactoryParameter
 
     try
     {
-        $df = New-AzureRmDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+        $df = New-AzureRmDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Confirm:$false -Force
      
         $hubname = "SampleHub"
    
-        $actual = New-AzureRmDataFactoryHub -DataFactory $df -Name $hubname -File .\Resources\hub.json -Force
+        $actual = New-AzureRmDataFactoryHub -DataFactory $df -Name $hubname -File .\Resources\hub.json -Confirm:$false -Force
         $expected = Get-AzureRmDataFactoryHub -DataFactory $df -Name $hubname
 
         Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
         Assert-AreEqual $expected.DataFactoryName $actual.DataFactoryName
         Assert-AreEqual $expected.HubName $actual.HubName
 
-        Remove-AzureRmDataFactoryHub -DataFactory $df -Name $hubname -Force
+        Remove-AzureRmDataFactoryHub -DataFactory $df -Name $hubname -Confirm:$false
     }
     finally
     {
@@ -98,11 +98,11 @@ function Test-HubPiping
 
     try
     {
-        New-AzureRmDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+        New-AzureRmDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Confirm:$false -Force
      
         $hubname = "SampleHub"
    
-        New-AzureRmDataFactoryHub -ResourceGroupName $rgname -DataFactoryName $dfname -Name $hubname -File .\Resources\hub.json -Force
+        New-AzureRmDataFactoryHub -ResourceGroupName $rgname -DataFactoryName $dfname -Name $hubname -File .\Resources\hub.json -Confirm:$false -Force
         
         Get-AzureRmDataFactoryHub -ResourceGroupName $rgname -DataFactoryName $dfname -Name $hubname | Remove-AzureRmDataFactoryHub -Force
 

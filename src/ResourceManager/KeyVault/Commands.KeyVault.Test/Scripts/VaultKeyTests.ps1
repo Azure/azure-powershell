@@ -730,7 +730,7 @@ function Test_RemoveKeyWithoutPrompt
     Assert-NotNull $key
     $global:createdKeys += $keyname
     
-    $key=Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Force -Confirm:$false -PassThru
+    $key=Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname  -Confirm:$false -PassThru
     Assert-NotNull $key
     
     Assert-Throws { Get-AzureKeyVaultKey  -VaultName $keyVault -Name $keyname}    
@@ -748,7 +748,7 @@ function Test_RemoveKeyWhatIf
     Assert-NotNull $key
     $global:createdKeys += $keyname
     
-    Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname  -WhatIf -Force
+    Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname  -WhatIf 
     
     $key=Get-AzureKeyVaultKey -VaultName $keyVault -Name $keyname
     Assert-NotNull $key    
@@ -783,7 +783,7 @@ function Test_RemoveKeyAliasParameter
     Assert-NotNull $key                 
     $global:createdKeys += $keyname    
 
-    Remove-AzureKeyVaultKey -VaultName $keyVault -KeyName $keyname  -Force -Confirm:$false                
+    Remove-AzureKeyVaultKey -VaultName $keyVault -KeyName $keyname   -Confirm:$false                
 
     Assert-Throws { Get-AzureKeyVaultKey  -VaultName $keyVault -Name $keyname} 
 }
@@ -796,7 +796,7 @@ function Test_RemoveKeyInNonExistVault
 {
     $keyVault = 'notexistvault'
     $keyname = 'notexist'
-    Assert-Throws {Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Force -Confirm:$false}
+    Assert-Throws {Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname  -Confirm:$false}
 }
 
 <#
@@ -807,7 +807,7 @@ function Test_RemoveNonExistKey
 {
     $keyVault = Get-KeyVault
     $keyname = 'notexist'
-    Assert-Throws {Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Force -Confirm:$false}
+    Assert-Throws {Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname  -Confirm:$false}
 }
 
 <#
@@ -818,7 +818,7 @@ function Test_RemoveKeyInNoPermissionVault
 {
     $keyVault = Get-KeyVault $false
     $keyname= Get-KeyName 'nopermission'
-    Assert-Throws {Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Enable $true -Force -Confirm:$false}
+    Assert-Throws {Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Enable $true  -Confirm:$false}
 }
 
 <#
@@ -834,7 +834,7 @@ function Test_BackupRestoreKey
     $global:createdKeys += $keyname
 
     $backupblob = Backup-AzureKeyVaultKey -VaultName $keyVault -KeyName $keyname       
-    Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Force -Confirm:$false
+    Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname  -Confirm:$false
     $restoredKey = Restore-AzureKeyVaultKey -VaultName $keyVault -InputFile $backupblob
     Assert-KeyAttributes $restoredKey.Attributes 'RSA' $true $null $null $null
 }
@@ -866,7 +866,7 @@ function Test_BackupToANamedFile
     $backupfile='.\backup' + ([GUID]::NewGuid()).GUID.ToString() + '.blob'
  
     Backup-AzureKeyVaultKey -VaultName $keyVault -KeyName $keyname -OutputFile $backupfile    
-    Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Force -Confirm:$false
+    Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname  -Confirm:$false
     $restoredKey = Restore-AzureKeyVaultKey -VaultName $keyVault -InputFile $backupfile
     Assert-KeyAttributes $restoredKey.Attributes 'RSA' $true $null $null $null
 }

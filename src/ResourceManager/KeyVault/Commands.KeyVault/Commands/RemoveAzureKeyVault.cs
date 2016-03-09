@@ -48,13 +48,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         [ValidateNotNullOrEmpty()]
         public string ResourceGroupName { get; set; }
 
-        /// <summary>
-        /// If present, do not ask for confirmation
-        /// </summary>
-        [Parameter(Mandatory = false,
-           HelpMessage = "Indicates that the cmdlet does not prompt you for confirmation. By default, this cmdlet prompts you to confirm that you want to delete the key vault.")]
-        public SwitchParameter Force { get; set; }        
-
         #endregion
 
         public override void ExecuteCmdlet()
@@ -64,11 +57,6 @@ namespace Microsoft.Azure.Commands.KeyVault
                 throw new ArgumentException(string.Format(PSKeyVaultProperties.Resources.VaultNotFound, VaultName, ResourceGroupName));
 
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(
-                    CultureInfo.InvariantCulture,
-                    PSKeyVaultProperties.Resources.RemoveVaultWarning,
-                    VaultName),
                 string.Format(
                     CultureInfo.InvariantCulture,
                     PSKeyVaultProperties.Resources.RemoveVaultWhatIfMessage,

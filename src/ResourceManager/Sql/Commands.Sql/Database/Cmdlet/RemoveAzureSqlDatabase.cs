@@ -36,12 +36,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public string DatabaseName { get; set; }
 
         /// <summary>
-        /// Defines whether it is ok to skip the requesting of rule removal confirmation
-        /// </summary>
-        [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
-        public SwitchParameter Force { get; set; }
-
-        /// <summary>
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>
@@ -78,15 +72,14 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            if (!Force.IsPresent && !ShouldProcess(
+            if (ShouldProcess(
                string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlDatabaseDescription, this.DatabaseName, this.ServerName),
                string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlDatabaseWarning, this.DatabaseName, this.ServerName),
                Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
             {
-                return;
+                base.ExecuteCmdlet();
             }
 
-            base.ExecuteCmdlet();
         }
     }
 }

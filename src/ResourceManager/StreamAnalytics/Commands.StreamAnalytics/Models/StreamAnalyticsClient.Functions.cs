@@ -128,33 +128,23 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
                 };
             };
 
-            if (parameter.Force)
-            {
-                // If user decides to overwrite anyway, then there is no need to check if the linked service exists or not.
-                createFunction();
-            }
-            else
-            {
-                bool functionExists = CheckFunctionExists(parameter.ResourceGroupName, parameter.JobName, parameter.FunctionName);
-
-                parameter.ConfirmAction(
-                        !functionExists,
-                        string.Format(
-                            CultureInfo.InvariantCulture,
-                            Resources.FunctionExists,
-                            parameter.FunctionName,
-                            parameter.JobName,
-                            parameter.ResourceGroupName),
-                        string.Format(
-                            CultureInfo.InvariantCulture,
-                            Resources.FunctionCreating,
-                            parameter.FunctionName,
-                            parameter.JobName,
-                            parameter.ResourceGroupName),
+            parameter.ConfirmAction(
+                    parameter.Force,
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.FunctionExists,
                         parameter.FunctionName,
-                        createFunction);
-            }
-
+                        parameter.JobName,
+                        parameter.ResourceGroupName),
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.FunctionCreating,
+                        parameter.FunctionName,
+                        parameter.JobName,
+                        parameter.ResourceGroupName),
+                    parameter.FunctionName,
+                    createFunction,
+                    () => CheckFunctionExists(parameter.ResourceGroupName, parameter.JobName, parameter.FunctionName));
             return function;
         }
 
@@ -179,7 +169,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
 
             var response = StreamAnalyticsManagementClient.Functions.RetrieveDefaultDefinitionWithRawJsonContent(
                 parameter.ResourceGroupName, parameter.JobName, parameter.FunctionName,
-                new FunctionRetrieveDefaultDefinitionWithRawJsonContentParameters() {Content = parameter.RawJsonContent});
+                new FunctionRetrieveDefaultDefinitionWithRawJsonContentParameters() { Content = parameter.RawJsonContent });
 
             return new PSFunction(response.Function)
             {

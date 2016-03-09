@@ -19,7 +19,8 @@ using Microsoft.Azure.Management.DataLake.StoreFileSystem.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeStoreItem"), OutputType(typeof (bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeStoreItem", SupportsShouldProcess = true, 
+        ConfirmImpact = ConfirmImpact.High), OutputType(typeof (bool))]
     public class RemoveAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -44,12 +45,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 "Indicates the user wants to remove all of the contents of the folder, but not the folder itself")]
         public SwitchParameter Clean { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
-            HelpMessage =
-                "Indicates the delete should be immediately performed with no confirmation or prompting. Use carefully."
-            )]
-        public SwitchParameter Force { get; set; }
-
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false,
             HelpMessage =
                 "Indicates the delete should be immediately performed with no confirmation or prompting. Use carefully."
@@ -66,8 +61,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                     Account, out testClean);
 
                 ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(Resources.RemovingDataLakeStoreItem, path.OriginalPath),
                     string.Format(Resources.RemoveDataLakeStoreItem, path.OriginalPath),
                     path.OriginalPath,
                     () =>

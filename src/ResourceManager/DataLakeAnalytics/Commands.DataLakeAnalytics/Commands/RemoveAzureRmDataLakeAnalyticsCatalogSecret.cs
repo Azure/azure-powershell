@@ -18,7 +18,8 @@ using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeAnalyticsCatalogSecret"), OutputType(typeof (bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeAnalyticsCatalogSecret", SupportsShouldProcess = true, 
+        ConfirmImpact = ConfirmImpact.High), OutputType(typeof(bool))]
     public class RemoveAzureDataLakeAnalyticsSecret : DataLakeAnalyticsCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -43,27 +44,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 4, Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
-        [Parameter(Position = 5, Mandatory = false)]
+        [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (!Force.IsPresent)
-            {
-                ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(Resources.RemovingDataLakeAnalyticsCatalogSecret, Name),
-                    string.Format(Resources.RemoveDataLakeAnalyticsCatalogSecret, Name),
-                    Name,
-                    () => DataLakeAnalyticsClient.DeleteSecret(ResourceGroupName, Account, DatabaseName, Name));
-            }
-            else
-            {
-                DataLakeAnalyticsClient.DeleteSecret(ResourceGroupName, Account, DatabaseName, Name);
-            }
+            ConfirmAction(
+                string.Format(Resources.RemoveDataLakeAnalyticsCatalogSecret, Name),
+                Name,
+                () => DataLakeAnalyticsClient.DeleteSecret(ResourceGroupName, Account, DatabaseName, Name));
 
             if (PassThru)
             {

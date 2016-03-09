@@ -36,7 +36,7 @@ function Test-CreateAndRemoveLogicApp
 	Assert-NotNull $workflow.Definition
 	Assert-NotNull $workflow.Parameters
 	Assert-AreEqual $workflowName $workflow.Name 
-	Remove-AzureRmLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $WorkflowName -Force
+	Remove-AzureRmLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $WorkflowName -Confirm:$false
 
 	#Case2 : Using definition object and parameter file
 	$parameterFilePath = "$TestOutputRoot\Resources\TestSimpleWorkflowParameter.json"		
@@ -49,7 +49,7 @@ function Test-CreateAndRemoveLogicApp
 	Assert-NotNull $workflow.Definition
 	Assert-NotNull $workflow.Parameters
 	Assert-AreEqual $workflowName $workflow.Name 
-	Remove-AzureRmLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $WorkflowName -Force
+	Remove-AzureRmLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $WorkflowName -Confirm:$false
 
 	#Case3 : Create using Piped input
 
@@ -57,7 +57,7 @@ function Test-CreateAndRemoveLogicApp
 	$workflow = $resourceGroup | New-AzureRmLogicApp -Name $workflowName -AppServicePlan $planName -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath    
 	
 	Assert-NotNull $workflow
-	Remove-AzureRmLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $WorkflowName -Force
+	Remove-AzureRmLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $WorkflowName -Confirm:$false
 }
 
 <#
@@ -89,7 +89,7 @@ function Test-CreateLogicAppWithDuplicateName
 		Assert-AreEqual $_.Exception.Message "The Resource 'Microsoft.Logic/workflows/$WorkflowName' under resource group '$resourceGroupName' already exists."		
 	}
 	
-	Remove-AzureRmLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $WorkflowName -Force	
+	Remove-AzureRmLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $WorkflowName -Confirm:$false	
 }
 
 <#
@@ -118,7 +118,7 @@ function Test-CreateLogicAppUsingInputfromWorkflowObject
 	Assert-AreEqual $newWorkflowName $workflow.Name 
 	Assert-AreEqual "Enabled" $workflow.State
 
-	Remove-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Force	
+	Remove-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Confirm:$false	
 }
 
 <#
@@ -142,7 +142,7 @@ function Test-CreateLogicAppUsingInputParameterAsHashTable
 	Assert-NotNull $workflow	
 	Assert-NotNull $workflow.Parameters
 	
-	Remove-AzureRmLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $WorkflowName -Force	
+	Remove-AzureRmLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $WorkflowName -Confirm:$false	
 }
 
 <#
@@ -163,7 +163,7 @@ function Test-CreateLogicAppUsingDefinitionWithTriggers
 		    
 	Assert-NotNull $workflow
 	
-	Remove-AzureRmLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -Force			
+	Remove-AzureRmLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -Confirm:$false			
 }
 
 <#
@@ -199,7 +199,7 @@ function Test-CreateAndGetLogicAppUsingDefinitionWithActions
 		Assert-AreEqual $_.Exception.Message "The Resource 'Microsoft.Logic/workflows/InvalidWorkflow' under resource group '$resourceGroupName' was not found."		
 	} 
 
-	Remove-AzureRmLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -Force		
+	Remove-AzureRmLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -Confirm:$false		
 }
 
 <#
@@ -212,7 +212,7 @@ function Test-RemoveNonExistingLogicApp
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$resourceGroupName = $resourceGroup.ResourceGroupName
 			
-	Remove-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $WorkflowName -Force
+	Remove-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $WorkflowName -Confirm:$false
 }
 
 <#

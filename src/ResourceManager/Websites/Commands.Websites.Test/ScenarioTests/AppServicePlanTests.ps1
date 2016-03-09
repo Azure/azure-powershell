@@ -51,7 +51,7 @@ function Test-CreateNewAppServicePlan
     {
 		# Cleanup
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
-		Remove-AzureRmResourceGroup -Name $rgname -Force
+		Remove-AzureRmResourceGroup -Name $rgname -Confirm:$false
     }
 }
 
@@ -117,7 +117,7 @@ function Test-SetAppServicePlan
     {
 		# Cleanup
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
-		Remove-AzureRmResourceGroup -Name $rgname -Force
+		Remove-AzureRmResourceGroup -Name $rgname -Confirm:$false
     }
 }
 
@@ -213,7 +213,7 @@ function Test-GetAppServicePlan
 		# Cleanup
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $serverFarmName1 -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $serverFarmName2 -Force
-		Remove-AzureRmResourceGroup -Name $rgname -Force
+		Remove-AzureRmResourceGroup -Name $rgname -Confirm:$false
     }
 }
 
@@ -254,7 +254,7 @@ function Test-RemoveAppServicePlan
     finally
     {
 		# Cleanup
-		Remove-AzureRmResourceGroup -Name $rgname -Force
+		Remove-AzureRmResourceGroup -Name $rgname -Confirm:$false
     }
 }
 
@@ -307,7 +307,7 @@ function Test-GetAppServicePlanMetrics
 	{
 		# Cleanup
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $appServicePlanName -Force
-		Remove-AzureRmResourceGroup -Name $rgname -Force
+		Remove-AzureRmResourceGroup -Name $rgname -Confirm:$false
     }
 }
 
@@ -352,6 +352,6 @@ function Test-CreateNewAppServicePlanInAse
     {
 		# Cleanup
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
-		Remove-AzureRmResourceGroup -Name $rgname -Force
+		Remove-AzureRmResourceGroup -Name $rgname -Confirm:$false
     }
 }

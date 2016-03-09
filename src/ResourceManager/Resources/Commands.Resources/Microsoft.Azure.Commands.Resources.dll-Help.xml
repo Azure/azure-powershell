@@ -6785,7 +6785,7 @@ Are you sure you want to remove resource group 'ContosoRG01'
         <maml:introduction>
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRmResourceGroup -Name ContosoRG01 | Remove-AzureRmResourceGroup -Verbose -Confirm:$false -Force
+        <dev:code>PS C:\&gt;Get-AzureRmResourceGroup -Name ContosoRG01 | Remove-AzureRmResourceGroup -Verbose -Confirm:$false -Confirm:$false
 VERBOSE: Performing the operation "Removing resource group ..." on target "ContosoRG01".</dev:code>
         <dev:remarks>
           <maml:para>This command deletes the ContosoRG01 resource group from the subscription. It uses the Get-AzureRmResourceGroup cmdlet to get the resource group and pipes the resource group (by name) to the Remove-AzureRmResourceGroup cmdlet. The Remove-AzureRmResourceGroup command uses the Verbose common parameter to get status information about the operation and the Force parameter to suppress the confirmation prompt.</maml:para>

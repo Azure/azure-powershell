@@ -276,7 +276,7 @@ function Create-AdvancedVM($rgname, $vmname, $loc, $vmsize, $stotype, $nicCount,
     $nicPrimParams.Add("Primary", $true)
     for ($i = 0;$i -lt $nicCount;$i++)
     {
-        $nic = New-AzureRmNetworkInterface -Force -Name ('nic' + $i + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId @pibparams
+        $nic = New-AzureRmNetworkInterface -Confirm:$false -Force -Name ('nic' + $i + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId @pibparams
         $nic = Get-AzureRmNetworkInterface -Name ('nic' + $i + $rgname) -ResourceGroupName $rgname;
         $nicId = $nic.Id;
 

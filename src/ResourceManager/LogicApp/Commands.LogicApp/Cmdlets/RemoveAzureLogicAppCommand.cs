@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Creates a new LogicApp workflow 
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmLogicApp"), OutputType(typeof(object))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmLogicApp", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High), OutputType(typeof(object))]
     public class RemoveAzureLogicAppCommand : LogicAppBaseCmdlet
     {
 
@@ -36,9 +36,6 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
         #endregion Input Parameters
 
         /// <summary>
@@ -47,8 +44,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            ConfirmAction(Force.IsPresent,
-                string.Format(CultureInfo.InvariantCulture, Properties.Resource.RemoveLogicAppWarning, this.Name),
+            ConfirmAction(
                 Properties.Resource.RemoveLogicAppMessage,
                 Name,
                 () => {

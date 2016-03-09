@@ -39,7 +39,7 @@ function Test_RemoveKeyWithOneConfirmations
     
     $cr=$global:ConfirmPreference   
     $global:ConfirmPreference="High"     
-    Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Force
+    Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname 
     $global:ConfirmPreference=$cr
 
     Assert-Throws { Get-AzureKeyVaultKey  -VaultName $keyVault -Name $keyname}    
@@ -127,7 +127,7 @@ function Test_RemoveSecretWithOneConfirmations
        
     $cr=$global:ConfirmPreference   
     $global:ConfirmPreference="High"    
-    Remove-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname  -Force
+    Remove-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname  
     $global:ConfirmPreference=$cr
 
     Assert-Throws { Get-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname }    

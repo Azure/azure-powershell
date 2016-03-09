@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.IO;
 using System.Management.Automation;
 using Hyak.Common;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
@@ -21,7 +22,8 @@ using Microsoft.Azure.Management.DataLake.StoreFileSystem.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsData.Export, "AzureRmDataLakeStoreItem"), OutputType(typeof (string))]
+    [Cmdlet(VerbsData.Export, "AzureRmDataLakeStoreItem",
+        SupportsShouldProcess=true, ConfirmImpact = ConfirmImpact.Low), OutputType(typeof (string))]
     public class ExportAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -58,8 +60,14 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 throw new CloudException(string.Format(Resources.InvalidExportPathType, Path.TransformedPath));
             }
 
-            DataLakeStoreFileSystemClient.DownloadFile(Path.TransformedPath, Account, powerShellReadyPath, CmdletCancellationToken,
-                Force, this);
+            ConfirmAction(
+                Force.IsPresent, 
+                string.Format(Resources.OverwriteFileAction, Destination), 
+                Resources.ExportFileAction, 
+                Destination,
+                 () => DataLakeStoreFileSystemClient.DownloadFile(Path.TransformedPath, Account, 
+                     powerShellReadyPath, CmdletCancellationToken, Force, this),
+                () => File.Exists(powerShellReadyPath));
 
             WriteObject(powerShellReadyPath);
         }

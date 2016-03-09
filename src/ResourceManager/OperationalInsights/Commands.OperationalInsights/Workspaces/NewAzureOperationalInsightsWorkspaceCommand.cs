@@ -19,7 +19,8 @@ using Microsoft.Azure.Commands.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet(VerbsCommon.New, Constants.Workspace), OutputType(typeof(PSWorkspace))]
+    [Cmdlet(VerbsCommon.New, Constants.Workspace, SupportsShouldProcess = true, 
+        ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(PSWorkspace))]
     public class NewAzureOperationalInsightsWorkspaceCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,

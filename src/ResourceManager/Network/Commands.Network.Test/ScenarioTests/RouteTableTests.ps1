@@ -51,7 +51,7 @@ function Test-EmptyRouteTable
         Assert-AreEqual @($list[0].Routes).Count @($getRT.Routes).Count              
 
         # Delete NetworkSecurityGroup
-        $delete = Remove-AzureRmRouteTable -ResourceGroupName $rgname -name $routeTableName -PassThru -Force
+        $delete = Remove-AzureRmRouteTable -ResourceGroupName $rgname -name $routeTableName -PassThru -Confirm:$false
         Assert-AreEqual true $delete
         
         $list = Get-AzureRmRouteTable -ResourceGroupName $rgname
@@ -114,7 +114,7 @@ function Test-RouteTableCRUD
 		$route2 = New-AzureRmRouteConfig -name "route2" -AddressPrefix "192.168.2.0/24" -NextHopType "VnetLocal"
 
 		# Add a route table
-		$getRT = New-AzureRmRouteTable -name $routeTableName -ResourceGroupName $rgname -Location $location -Route $route1,$route2 -Force
+		$getRT = New-AzureRmRouteTable -name $routeTableName -ResourceGroupName $rgname -Location $location -Route $route1,$route2 -Confirm:$false -Force
 
 		#verification
         Assert-AreEqual $rgName $getRT.ResourceGroupName
@@ -129,7 +129,7 @@ function Test-RouteTableCRUD
 		Assert-NotNull $getRT.Routes[1].Etag
 
 		# Remove a route table
-		$getRT = New-AzureRmRouteTable -name $routeTableName -ResourceGroupName $rgname -Location $location -Route $route2 -Force
+		$getRT = New-AzureRmRouteTable -name $routeTableName -ResourceGroupName $rgname -Location $location -Route $route2 -Confirm:$false -Force
 
 		Assert-AreEqual $rgName $getRT.ResourceGroupName
         Assert-AreEqual $routeTableName $getRT.Name
@@ -138,7 +138,7 @@ function Test-RouteTableCRUD
 		Assert-AreEqual $getRT.Routes[0].Name "route2"		
 
 		# Delete NetworkSecurityGroup
-        $delete = Remove-AzureRmRouteTable -ResourceGroupName $rgname -name $routeTableName -PassThru -Force
+        $delete = Remove-AzureRmRouteTable -ResourceGroupName $rgname -name $routeTableName -PassThru -Confirm:$false
         Assert-AreEqual true $delete
         
         $list = Get-AzureRmRouteTable -ResourceGroupName $rgname
@@ -190,7 +190,7 @@ function Test-RouteTableSubnetRef
 		# create vnet and subnet associated to a Routetable
 		# Create the Virtual Network
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24 -RouteTable $getRT
-        $vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -DnsServer 8.8.8.8 -Subnet $subnet
+        $vnet = New-AzureRmVirtualNetwork -Confirm:$false -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -DnsServer 8.8.8.8 -Subnet $subnet
 		
 		# Verify RouteTable reference in subnet
 		Assert-AreEqual $vnet.Subnets[0].RouteTable.Id $getRT.Id
@@ -302,7 +302,7 @@ function Test-RouteTableRouteCRUD
 		Assert-AreEqual $list[0].Name "route2"
 
 		# Delete NetworkSecurityGroup
-        $delete = Remove-AzureRmRouteTable -ResourceGroupName $rgname -name $routeTableName -PassThru -Force
+        $delete = Remove-AzureRmRouteTable -ResourceGroupName $rgname -name $routeTableName -PassThru -Confirm:$false
         Assert-AreEqual true $delete
         
         $list = Get-AzureRmRouteTable -ResourceGroupName $rgname
@@ -362,7 +362,7 @@ function Test-RouteHopTypeTest
 		Assert-AreEqual $getRT.Routes[3].NextHopType "None"
 		
 		# Delete RouteTable
-        $delete = Remove-AzureRmRouteTable -ResourceGroupName $rgname -name $routeTableName -PassThru -Force
+        $delete = Remove-AzureRmRouteTable -ResourceGroupName $rgname -name $routeTableName -PassThru -Confirm:$false
         Assert-AreEqual true $delete
         
         $list = Get-AzureRmRouteTable -ResourceGroupName $rgname

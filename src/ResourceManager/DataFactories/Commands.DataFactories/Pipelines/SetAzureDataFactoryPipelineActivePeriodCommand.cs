@@ -22,7 +22,8 @@ using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.Set, Constants.PipelineActivePeriod, DefaultParameterSetName = ByFactoryName), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Set, Constants.PipelineActivePeriod, DefaultParameterSetName = ByFactoryName, 
+        SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(bool))]
     public class SetAzureDataFactoryPipelineActivePeriodCommand : DataFactoryBaseCmdlet
     {
         private DateTime _endDateTime;
@@ -66,9 +67,6 @@ namespace Microsoft.Azure.Commands.DataFactories
         [Parameter(Mandatory = false, HelpMessage = "Mark all data slices in the period as PendingExecution to force re-calculation.")]
         public SwitchParameter ForceRecalculate { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
@@ -87,13 +85,6 @@ namespace Microsoft.Azure.Commands.DataFactories
             DateTime endTime = EndDateTime;
 
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(
-                    CultureInfo.InvariantCulture,
-                    "Are you sure you want to set pipeline '{0}' active period from '{1}' to '{2}'?",
-                    PipelineName,
-                    startTime,
-                    endTime),
                 string.Format(
                     CultureInfo.InvariantCulture,
                     "Set pipeline '{0}' active period from '{1}' to '{2}'",

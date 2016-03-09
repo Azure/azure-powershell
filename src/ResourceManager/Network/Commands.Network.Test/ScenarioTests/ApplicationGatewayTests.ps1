@@ -49,12 +49,12 @@ function Test-ApplicationGatewayCRUD
       
 		# Create the Virtual Network
 		$subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
-		$vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+		$vnet = New-AzureRmVirtualNetwork -Confirm:$false -Force-Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 		$vnet = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
 		$subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet
  
 		# Create public ip
-		$publicip = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic
+		$publicip = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -Confirm:$false
 
 		# Create application gateway configuration
 		$gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name $gipconfigname -Subnet $subnet
@@ -157,7 +157,7 @@ function Test-ApplicationGatewayCRUD
 		Stop-AzureRmApplicationGateway -ApplicationGateway $getgw
  
 		# Delete Application Gateway
-		Remove-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Force
+		Remove-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Confirm:$false
 	}
 	finally
 	{

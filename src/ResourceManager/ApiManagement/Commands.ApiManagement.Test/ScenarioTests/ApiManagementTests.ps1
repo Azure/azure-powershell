@@ -120,7 +120,7 @@ function Test-CrudApiManagement
     Assert-AreEqual 0 $allServices.Count
 
     # Remove resource group
-    Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+    Remove-AzureRmResourceGroup -Name $resourceGroupName -Confirm:$false
 }
 
 <#
@@ -180,7 +180,7 @@ function Test-BackupRestoreApiManagement
         Remove-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName
 
         # Remove resource group
-        Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+        Remove-AzureRmResourceGroup -Name $resourceGroupName -Confirm:$false
     }
     catch
     {
@@ -268,7 +268,7 @@ function Test-UpdateApiManagementDeployment
     Remove-AzureRmApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -Force
 
     # Remove resource group
-    Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+    Remove-AzureRmResourceGroup -Name $resourceGroupName -Confirm:$false
 }
 
 <#
@@ -352,7 +352,7 @@ function Test-UpdateApiManagementDeploymentWithHelpersAndPipline
     Remove-AzureRmApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -Force
 
     # Remove resource group
-    Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+    Remove-AzureRmResourceGroup -Name $resourceGroupName -Confirm:$false
 }
 
 <#
@@ -389,7 +389,7 @@ function Test-ImportApiManagementHostnameCertificate
     Remove-AzureRmApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -Force
 
     # Remove resource group
-    Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+    Remove-AzureRmResourceGroup -Name $resourceGroupName -Confirm:$false
 }
 
 <#
@@ -438,7 +438,7 @@ function Test-SetApiManagementVirtualNetworks
         Remove-AzureRmApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -Force
 
         # Remove resource group
-        Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+        Remove-AzureRmResourceGroup -Name $resourceGroupName -Confirm:$false
     }
 }
 
@@ -492,5 +492,5 @@ function Test-SetApiManagementHostnames
     Remove-AzureRmApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -Force
 
     # Remove resource group
-    Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+    Remove-AzureRmResourceGroup -Name $resourceGroupName -Confirm:$false
 }

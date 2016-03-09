@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Un-registers the resource provider from the current subscription.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Unregister, "AzureRmResourceProvider"), OutputType(typeof(List<PSResourceProvider>))]
+    [Cmdlet(VerbsLifecycle.Unregister, "AzureRmResourceProvider", SupportsShouldProcess = true, 
+        ConfirmImpact = ConfirmImpact.High), OutputType(typeof(List<PSResourceProvider>))]
     public class UnregisterAzureProviderCmdlet : ResourcesBaseCmdlet
     {
         /// <summary>
@@ -33,19 +34,11 @@ namespace Microsoft.Azure.Commands.Resources
         public string ProviderNamespace { get; set; }
 
         /// <summary>
-        /// Gets or sets a switch that indicates if the user should be prompted for confirmation.
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
-        /// <summary>
         /// Executes the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
             this.ConfirmAction(
-                force: this.Force,
-                actionMessage: string.Format(ProjectResources.UnregisteringProvider, this.ProviderNamespace),
                 processMessage: ProjectResources.UnregisterProviderMessage,
                 target: this.ProviderNamespace,
                 action: () => this.WriteObject(this.ResourcesClient.UnregisterProvider(providerName: this.ProviderNamespace)));

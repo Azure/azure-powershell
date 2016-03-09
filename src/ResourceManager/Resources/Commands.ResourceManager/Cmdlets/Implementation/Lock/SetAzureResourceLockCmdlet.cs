@@ -19,17 +19,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// The set resource lock cmdlet.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmResourceLock", SupportsShouldProcess = true, DefaultParameterSetName = ResourceLockManagementCmdletBase.SubscriptionResourceLevelLock), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmResourceLock", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High, 
+        DefaultParameterSetName = ResourceLockManagementCmdletBase.SubscriptionResourceLevelLock), 
+    OutputType(typeof(PSObject))]
     public class SetAzureResourceLockCmdlet : NewAzureResourceLockCmdlet
     {
-        /// <summary>
-        /// Gets the action message.
-        /// </summary>
-        /// <param name="resourceId">The resource Id.</param>
-        protected override string GetActionMessage(string resourceId)
-        {
-            return "Are you sure you want to update the following lock: " + resourceId;
-        }
 
         /// <summary>
         /// Gets the process message.

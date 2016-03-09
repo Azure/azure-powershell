@@ -334,13 +334,13 @@ function Test-RemoveDatabaseInternal  ($serverVersion, $location = "Japan East")
 				-CollationName "SQL_Latin1_General_CP1_CI_AS" -MaxSizeBytes 250GB -Edition DataWarehouse -RequestedServiceObjectiveName DW100
 			Assert-AreEqual $dwdb.DatabaseName $databaseName
 
-			Remove-AzureRmSqlDatabase -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName -Force
+			Remove-AzureRmSqlDatabase -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName -Confirm:$false
 		}
 		
 		$all = $server | Get-AzureRmSqlDatabase
 		Assert-AreEqual $all.Count 3 # 3 because master database is included
         
-        Remove-AzureRmSqlDatabase -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $db1.DatabaseName -Force
+        Remove-AzureRmSqlDatabase -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $db1.DatabaseName -Confirm:$false
 
         $db2 | Remove-AzureRmSqlDatabase -Force
 

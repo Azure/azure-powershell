@@ -24,7 +24,8 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmApplicationGateway"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet(VerbsCommon.New, "AzureRmApplicationGateway", SupportsShouldProcess = true, 
+        ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(PSApplicationGateway))]
     public class NewAzureApplicationGatewayCommand : ApplicationGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -55,7 +56,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The SKU of application gateway")]
         [ValidateNotNullOrEmpty]
         public virtual PSApplicationGatewaySku Sku { get; set; }
-        
+
         [Parameter(
              Mandatory = true,
              ValueFromPipelineByPropertyName = true,
@@ -132,23 +133,15 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.ExecuteCmdlet();
 
-            if (this.IsApplicationGatewayPresent(this.ResourceGroupName, this.Name))            
-            {
-                ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResource, Name),
-                    Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage,
-                    Name,
-                    () => CreateApplicationGateway());
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResource, Name),
+                Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage,
+                Name,
+                () => CreateApplicationGateway(),
+                () => IsApplicationGatewayPresent(ResourceGroupName, Name));
 
-                WriteObject(this.GetApplicationGateway(this.ResourceGroupName, this.Name));
-            }
-            else
-            {
-                var applicationGateway = this.CreateApplicationGateway();
-
-                WriteObject(applicationGateway);
-            }
+            WriteObject(this.GetApplicationGateway(this.ResourceGroupName, this.Name));
         }
 
         private PSApplicationGateway CreateApplicationGateway()
@@ -156,7 +149,7 @@ namespace Microsoft.Azure.Commands.Network
             var applicationGateway = new PSApplicationGateway();
             applicationGateway.Name = this.Name;
             applicationGateway.ResourceGroupName = this.ResourceGroupName;
-            applicationGateway.Location = this.Location;            
+            applicationGateway.Location = this.Location;
             applicationGateway.Sku = this.Sku;
 
             if (this.GatewayIPConfigurations != null)

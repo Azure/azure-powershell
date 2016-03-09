@@ -55,7 +55,7 @@ function Test-ZoneCrud
 	Assert-AreEqual $retrievedZone.Etag $updatedZone.Etag
 	Assert-AreEqual 2 $retrievedZone.Tags.Count
 
-	$removed = Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -PassThru -Force
+	$removed = Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -PassThru -Confirm:$false
 
 	Assert-True { $removed }
 
@@ -86,7 +86,7 @@ function Test-ZoneCrudTrimsDot
 	Assert-NotNull $updatedZone
 	Assert-AreEqual $zoneName $updatedZone.Name 
 
-	$removed = Remove-AzureRmDnsZone -Name $zoneNameWithDot -ResourceGroupName $resourceGroup.ResourceGroupName -PassThru -Force
+	$removed = Remove-AzureRmDnsZone -Name $zoneNameWithDot -ResourceGroupName $resourceGroup.ResourceGroupName -PassThru -Confirm:$false
 
 	Assert-True { $removed }
 
@@ -119,7 +119,7 @@ function Test-ZoneCrudWithPiping
 	Assert-AreNotEqual $updatedZone.Etag $createdZone.Etag
 	Assert-AreEqual 0 $updatedZone.Tags.Count 
 
-	$removed = Get-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroupName | Remove-AzureRmDnsZone -PassThru -Force
+	$removed = Get-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroupName | Remove-AzureRmDnsZone -PassThru -Confirm:$false
 
 	Assert-True { $removed }
 
@@ -147,7 +147,7 @@ function Test-ZoneCrudWithPipingTrimsDot
 	Assert-NotNull $updatedZone
 	Assert-AreEqual $zoneName $updatedZone.Name 
 
-	$removed = $zoneObjectWithDot | Remove-AzureRmDnsZone -Overwrite -PassThru -Force
+	$removed = $zoneObjectWithDot | Remove-AzureRmDnsZone -Overwrite -PassThru -Confirm:$false
 
 	Assert-True { $removed }
 
@@ -167,7 +167,7 @@ function Test-ZoneNewAlreadyExists
 	
 	Assert-Throws { New-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroupName } "PreconditionFailed: The condition '*' in the If-None-Match header was not satisfied. The current was 'n/a'."
 
-	$createdZone | Remove-AzureRmDnsZone -PassThru -Force
+	$createdZone | Remove-AzureRmDnsZone -PassThru -Confirm:$false
 }
 
 <#
@@ -188,7 +188,7 @@ function Test-ZoneSetEtagMismatch
 	Assert-AreNotEqual "gibberish" $updatedZone.Etag
 	Assert-AreNotEqual $createdZone.Etag $updatedZone.Etag
 
-	$updatedZone | Remove-AzureRmDnsZone -PassThru -Force
+	$updatedZone | Remove-AzureRmDnsZone -PassThru -Confirm:$false
 }
 
 <#
@@ -216,7 +216,7 @@ function Test-ZoneRemoveEtagMismatch
 
 	Assert-Throws { $createdZone | Remove-AzureRmDnsZone -Force } "PreconditionFailed: The condition 'gibberish' in the If-Match header was not satisfied. The current was '$originalEtag'."
 
-	$removed = $createdZone | Remove-AzureRmDnsZone -Overwrite -Force -PassThru
+	$removed = $createdZone | Remove-AzureRmDnsZone -Overwrite -Confirm:$false -PassThru
 
 	Assert-True { $removed }
 }
@@ -230,7 +230,7 @@ function Test-ZoneRemoveNonExisting
 	$zoneName = getAssetname
     $resourceGroup = TestSetup-CreateResourceGroup
 	
-	$removed = Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Force -PassThru
+	$removed = Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false -PassThru
 	Assert-True { $removed }
 }
 
@@ -260,7 +260,7 @@ function Test-ZoneList
 	Assert-NotNull $resourceGroup.ResourceGroupName $result[1].ResourceGroupName
 	Assert-AreEqual 0 $result[1].Tags.Count 
 
-	$result | Remove-AzureRmDnsZone -PassThru -Force
+	$result | Remove-AzureRmDnsZone -PassThru -Confirm:$false
 }
 
 <#
@@ -285,5 +285,5 @@ function Test-ZoneListWithEndsWith
 	Assert-AreEqual $createdZone2.Name $result[0].Name
 	Assert-NotNull $resourceGroup.ResourceGroupName $result[0].ResourceGroupName
 
-	$result | Remove-AzureRmDnsZone -PassThru -Force
+	$result | Remove-AzureRmDnsZone -PassThru -Confirm:$false
 }

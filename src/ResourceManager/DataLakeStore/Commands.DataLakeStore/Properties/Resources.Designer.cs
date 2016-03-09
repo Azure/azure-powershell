@@ -70,6 +70,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create file or folder.
+        /// </summary>
+        internal static string CreateFileOrFolderAction {
+            get {
+                return ResourceManager.GetString("CreateFileOrFolderAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to DataLakeStore account with name &apos;{0}&apos; already exists..
         /// </summary>
         internal static string DataLakeStoreAccountExists {
@@ -84,6 +93,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         internal static string DefaultAclWord {
             get {
                 return ResourceManager.GetString("DefaultAclWord", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export file.
+        /// </summary>
+        internal static string ExportFileAction {
+            get {
+                return ResourceManager.GetString("ExportFileAction", resourceCulture);
             }
         }
         
@@ -111,6 +129,42 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         internal static string FilePreviewTooLarge {
             get {
                 return ResourceManager.GetString("FilePreviewTooLarge", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get contents of file.
+        /// </summary>
+        internal static string GetFileContentsAction {
+            get {
+                return ResourceManager.GetString("GetFileContentsAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get contents for large file ({0} bytes).
+        /// </summary>
+        internal static string GetLargeDataAction {
+            get {
+                return ResourceManager.GetString("GetLargeDataAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import file.
+        /// </summary>
+        internal static string ImportFileAction {
+            get {
+                return ResourceManager.GetString("ImportFileAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import directory.
+        /// </summary>
+        internal static string ImportFolderAction {
+            get {
+                return ResourceManager.GetString("ImportFolderAction", resourceCulture);
             }
         }
         
@@ -223,6 +277,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Join file or folder.
+        /// </summary>
+        internal static string JoinItemAction {
+            get {
+                return ResourceManager.GetString("JoinItemAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The destination path &apos;{0}&apos; already exists. Please set overwrite to true or use the force switch in order to overwrite this file.
         /// </summary>
         internal static string LocalFileAlreadyExists {
@@ -246,6 +309,42 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         internal static string MoveFailed {
             get {
                 return ResourceManager.GetString("MoveFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Move file or folder.
+        /// </summary>
+        internal static string MoveItemAction {
+            get {
+                return ResourceManager.GetString("MoveItemAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overwrite file {0}.
+        /// </summary>
+        internal static string OverwriteFileAction {
+            get {
+                return ResourceManager.GetString("OverwriteFileAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overwrite file  or folder {0}.
+        /// </summary>
+        internal static string OverwriteFileOrFolderAction {
+            get {
+                return ResourceManager.GetString("OverwriteFileOrFolderAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Merge contents of remote directory with local directory.
+        /// </summary>
+        internal static string OverwriteFolderAction {
+            get {
+                return ResourceManager.GetString("OverwriteFolderAction", resourceCulture);
             }
         }
         

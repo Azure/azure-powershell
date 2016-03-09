@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Register the previewed features of a certain azure resource provider.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Register, "AzureRmResourceProvider"), OutputType(typeof(PSResourceProvider))]
+    [Cmdlet(VerbsLifecycle.Register, "AzureRmResourceProvider", SupportsShouldProcess = true, 
+        ConfirmImpact = ConfirmImpact.High), OutputType(typeof(PSResourceProvider))]
     public class RegisterAzureProviderCmdlet : ResourcesBaseCmdlet
     {
         /// <summary>
@@ -33,19 +34,11 @@ namespace Microsoft.Azure.Commands.Resources
         public string ProviderNamespace { get; set; }
 
         /// <summary>
-        /// Gets or sets a switch that indicates if the user should be prompted for confirmation.
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
-        /// <summary>
         /// Executes the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
             this.ConfirmAction(
-                force: this.Force,
-                actionMessage: string.Format(ProjectResources.RegisteringProvider, this.ProviderNamespace),
                 processMessage: ProjectResources.RegisterProviderMessage,
                 target: this.ProviderNamespace,
                 action: () => this.WriteObject(this.ResourcesClient.RegisterProvider(providerName: this.ProviderNamespace)));

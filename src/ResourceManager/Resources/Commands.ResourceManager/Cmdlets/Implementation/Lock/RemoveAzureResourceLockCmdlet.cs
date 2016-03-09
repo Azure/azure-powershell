@@ -20,7 +20,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// The remove azure resource lock cmdlet.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmResourceLock", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmResourceLock", SupportsShouldProcess = true, 
+        ConfirmImpact = ConfirmImpact.High), OutputType(typeof(PSObject))]
     public class RemoveAzureResourceLockCmdlet : ResourceLockManagementCmdletBase 
     {
         /// <summary>
@@ -37,12 +38,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string LockName { get; set; }
 
         /// <summary>
-        /// Gets or sets the force parameter.
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
-        /// <summary>
         /// Executes the cmdlet.
         /// </summary>
         protected override void OnProcessRecord()
@@ -50,8 +45,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             base.OnProcessRecord();
             var resourceId = this.GetResourceId(this.LockName);
             this.ConfirmAction(
-                this.Force,
-                string.Format("Are you sure you want to delete the following lock: {0}", resourceId),
                 "Deleting the lock...",
                 resourceId,
                 () =>

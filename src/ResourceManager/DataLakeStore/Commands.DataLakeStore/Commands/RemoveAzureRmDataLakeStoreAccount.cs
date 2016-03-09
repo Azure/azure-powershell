@@ -18,7 +18,8 @@ using Microsoft.Azure.Commands.DataLakeStore.Properties;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeStoreAccount"), OutputType(typeof (bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeStoreAccount", SupportsShouldProcess = true,
+        ConfirmImpact = ConfirmImpact.High), OutputType(typeof(bool))]
     public class RemoveAzureDataLakeStoreAccount : DataLakeStoreCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -31,27 +32,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
         [Parameter(Position = 3, Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (!Force.IsPresent)
-            {
-                ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(Resources.RemovingDataLakeStoreAccount, Name),
-                    string.Format(Resources.RemoveDataLakeStoreAccount, Name),
-                    Name,
-                    () => DataLakeStoreClient.DeleteAccount(ResourceGroupName, Name));
-            }
-            else
-            {
-                DataLakeStoreClient.DeleteAccount(ResourceGroupName, Name);
-            }
+            ConfirmAction(
+                string.Format(Resources.RemoveDataLakeStoreAccount, Name),
+                Name,
+                () => DataLakeStoreClient.DeleteAccount(ResourceGroupName, Name));
 
             if (PassThru)
             {

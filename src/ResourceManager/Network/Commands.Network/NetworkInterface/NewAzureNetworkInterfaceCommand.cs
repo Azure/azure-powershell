@@ -26,19 +26,20 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmNetworkInterface"), OutputType(typeof(PSNetworkInterface))]
+    [Cmdlet(VerbsCommon.New, "AzureRmNetworkInterface", SupportsShouldProcess = true,
+        ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(PSNetworkInterface))]
     public class NewAzureNetworkInterfaceCommand : NetworkInterfaceBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
-            Mandatory = true, 
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
         [Parameter(
-            Mandatory = true, 
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
@@ -168,24 +169,15 @@ namespace Microsoft.Azure.Commands.Network
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResource, Name),
+                Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage,
+                Name,
+                () => CreateNetworkInterface(),
+                () => IsNetworkInterfacePresent(ResourceGroupName, Name));
 
-            if (this.IsNetworkInterfacePresent(this.ResourceGroupName, this.Name))
-            {
-                ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResource, Name),
-                    Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage,
-                    Name,
-                    () => CreateNetworkInterface());
-
-                WriteObject(this.GetNetworkInterface(this.ResourceGroupName, this.Name));
-            }
-            else
-            {
-                var networkInterface = CreateNetworkInterface();
-
-                WriteObject(networkInterface);
-            }
+            WriteObject(this.GetNetworkInterface(this.ResourceGroupName, this.Name));
         }
 
         private PSNetworkInterface CreateNetworkInterface()
@@ -301,4 +293,3 @@ namespace Microsoft.Azure.Commands.Network
     }
 }
 
- 

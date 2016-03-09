@@ -24,7 +24,8 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmNetworkSecurityGroup"), OutputType(typeof(PSNetworkSecurityGroup))]
+    [Cmdlet(VerbsCommon.New, "AzureRmNetworkSecurityGroup", SupportsShouldProcess = true,
+        ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(PSNetworkSecurityGroup))]
     public class NewAzureNetworkSecurityGroupCommand : NetworkSecurityGroupBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -69,24 +70,15 @@ namespace Microsoft.Azure.Commands.Network
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResource, Name),
+                Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage,
+                Name,
+                () => this.CreateNetworkSecurityGroup(),
+                () => IsNetworkSecurityGroupPresent(ResourceGroupName, Name));
 
-            if (this.IsNetworkSecurityGroupPresent(this.ResourceGroupName, this.Name))
-            {
-                ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResource, Name),
-                    Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage,
-                    Name,
-                    () => this.CreateNetworkSecurityGroup());
-
-                WriteObject(this.GetNetworkSecurityGroup(this.ResourceGroupName, this.Name));
-            }
-            else
-            {
-                var networkSecurityGroup = this.CreateNetworkSecurityGroup();
-
-                WriteObject(networkSecurityGroup);
-            }
+            WriteObject(this.GetNetworkSecurityGroup(this.ResourceGroupName, this.Name));
         }
 
         private PSNetworkSecurityGroup CreateNetworkSecurityGroup()

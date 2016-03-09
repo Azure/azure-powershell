@@ -23,16 +23,14 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Removes the service principal.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmADServicePrincipal"), OutputType(typeof(PSADServicePrincipal))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmADServicePrincipal", SupportsShouldProcess = true,
+        ConfirmImpact = ConfirmImpact.High), OutputType(typeof(PSADServicePrincipal))]
     public class RemoveAzureADServicePrincipalCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId,
                   HelpMessage = "The service principal object id.")]
         [Alias("PrincipalId")]
         public Guid ObjectId { get; set; }
-
-        [Parameter(Mandatory = false)]
-        public SwitchParameter Force { get; set; }
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
@@ -42,8 +40,6 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             PSADServicePrincipal servicePrincipal = null;
 
             ConfirmAction(
-              Force.IsPresent,
-              string.Format(ProjectResources.RemovingServicePrincipal, ObjectId),
               ProjectResources.RemoveServicePrincipal,
               null,
               () => servicePrincipal = ActiveDirectoryClient.RemoveServicePrincipal(ObjectId.ToString()));

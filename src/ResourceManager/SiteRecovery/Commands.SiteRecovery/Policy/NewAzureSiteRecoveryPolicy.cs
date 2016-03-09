@@ -141,12 +141,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         [ValidateNotNullOrEmpty]
         public string RecoveryAzureStorageAccountId { get; set; }
 
-        /// <summary>
-        /// Gets or sets switch parameter. On passing, command does not ask for confirmation.
-        /// </summary>
-        [Parameter]
-        public SwitchParameter Force { get; set; }
-
         #endregion Parameters
 
         /// <summary>

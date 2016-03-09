@@ -201,7 +201,7 @@ function Create-ResourceGroupForTest ($location = "Japan East")
 	#>
 function Remove-ResourceGroupForTest ($rg)
 {
-	Remove-AzureRmResourceGroup -Name $rg.ResourceGroupName -Force
+	Remove-AzureRmResourceGroup -Name $rg.ResourceGroupName -Confirm:$false
 }
 
 <#

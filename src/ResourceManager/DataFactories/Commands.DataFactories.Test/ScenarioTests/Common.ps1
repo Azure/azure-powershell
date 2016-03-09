@@ -47,7 +47,7 @@ Cleans the created data factory
 function Clean-DataFactory($rgname, $dfname)
 {
     if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) {
-        Remove-AzureRmDataFactory -ResourceGroupName $rgname -Name $dfname -Force
+        Remove-AzureRmDataFactory -ResourceGroupName $rgname -Name $dfname -Confirm:$false
     }
 }
 
@@ -57,5 +57,5 @@ Cleans the created tags
 #>
 function Clean-Tags
 {
-    Get-AzureRmTag | Remove-AzureRmTag -Force
+    Get-AzureRmTag | Remove-AzureRmTag -Confirm:$false
 }

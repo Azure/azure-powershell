@@ -427,8 +427,8 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
             get {
                 return ResourceManager.GetString("ServerCommunicationLinkNameExists", resourceCulture);
             }
-        }        
-
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to Server Disaster Recovery Configuration already exists in server &apos;{1}&apos;..
         /// </summary>
@@ -495,13 +495,12 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// <summary>
         ///   Looks up a localized string similar to No Set Options were provided.
         /// </summary>
-        internal static string SetDisasterRecoveryConfigurationNoOptionProvided
-        {
+        internal static string SetDisasterRecoveryConfigurationNoOptionProvided {
             get {
                 return ResourceManager.GetString("SetDisasterRecoveryConfigurationNoOptionProvided", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to No Set Options were provided.
         /// </summary>
@@ -562,6 +561,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string StorageAccountNotFound {
             get {
                 return ResourceManager.GetString("StorageAccountNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating Azure Sql Database Server &apos;{0}&apos;..
+        /// </summary>
+        internal static string UpdateAzureSqlServerDescription {
+            get {
+                return ResourceManager.GetString("UpdateAzureSqlServerDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to update the Azure Sql Database Server &apos;{0}&apos;?.
+        /// </summary>
+        internal static string UpdateAzureSqlServerWarning {
+            get {
+                return ResourceManager.GetString("UpdateAzureSqlServerWarning", resourceCulture);
             }
         }
         

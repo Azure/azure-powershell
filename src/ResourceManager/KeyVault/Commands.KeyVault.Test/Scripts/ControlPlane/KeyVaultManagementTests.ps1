@@ -218,7 +218,7 @@ function Test-DeleteVaultByName
     
     New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $location 
     
-    Remove-AzureRmKeyVault -VaultName $vaultName -Force -Confirm:$false
+    Remove-AzureRmKeyVault -VaultName $vaultName -Confirm:$false
 
     Assert-Throws { Get-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $rgName }
 }

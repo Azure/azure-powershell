@@ -2828,7 +2828,7 @@
         <maml:introduction>
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
-        <dev:code>New-AzureRmResource -Location "West US" -Properties @{"test"="test"} -ResourceName myTestSiteName -ResourceType microsoft.web/sites -ResourceGroupName myResourceGroup -Confirm:$false -Force</dev:code>
+        <dev:code>New-AzureRmResource -Location "West US" -Properties @{"test"="test"} -ResourceName myTestSiteName -ResourceType microsoft.web/sites -ResourceGroupName myResourceGroup -Confirm:$false -Confirm:$false</dev:code>
         <dev:remarks>
           <maml:para>Create a new website</maml:para>
           <maml:para />

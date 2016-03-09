@@ -89,7 +89,7 @@ function Test-DataLakeStoreAccount
     Assert-True {$found -eq 1} "Account created earlier is not found when listing all in subscription."
 
     # Delete Data Lake account
-    Assert-True {Remove-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
+    Assert-True {Remove-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Confirm:$false -PassThru} "Remove Account failed."
 
 	# Verify that it is gone by trying to get it again
 	Assert-Throws {Get-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}
@@ -218,14 +218,14 @@ function Test-DataLakeStoreFileSystem
 	Assert-AreEqual 0 $result.Length
 	Assert-Throws {Get-AzureRMDataLakeStoreItem -Account $accountName -path $folderToCreate}
 	# delete a file
-	Assert-True {Remove-AzureRmDataLakeStoreItem -Account $accountName -paths "$moveFolder/movefile.txt" -force -passthru } "Remove File Failed"
+	Assert-True {Remove-AzureRmDataLakeStoreItem -Account $accountName -paths "$moveFolder/movefile.txt" -Confirm:$false -passthru } "Remove File Failed"
 	Assert-Throws {Get-AzureRMDataLakeStoreItem -Account $accountName -path $moveFile}
 	# delete a folder
-	Assert-True {Remove-AzureRmDataLakeStoreItem -Account $accountName -paths $moveFolder -force -recurse -passthru} "Remove folder failed"
+	Assert-True {Remove-AzureRmDataLakeStoreItem -Account $accountName -paths $moveFolder -Confirm:$false -recurse -passthru} "Remove folder failed"
 	Assert-Throws {Get-AzureRMDataLakeStoreItem -Account $accountName -path $moveFolder}
     
 	# Delete Data Lake account
-    Assert-True {Remove-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
+    Assert-True {Remove-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Confirm:$false -PassThru} "Remove Account failed."
 
 	# Verify that it is gone by trying to get it again
 	Assert-Throws {Get-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}
@@ -275,25 +275,25 @@ function Test-DataLakeStoreFileSystemPermissions
 	Assert-True {$result.UserAces.count -ge 0} "UserAces is negative or null"
 	$currentCount = $result.UserAces.Count
 	$result.UserAces.Add($aceUserId, "rwx") 
-	Set-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/" -Acl $result -Force
+	Set-AzureRmDataLakeStoreItemAcl -Account $accountName -path "/" -Acl $result -Confirm:$false
 	$result = Get-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/"
 	Assert-AreEqual $($currentCount+1) $result.UserACes.Count
 	$result.UserAces.Remove($aceUserId)
 	# remove the account
-	Set-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/" -Acl $result -Force
+	Set-AzureRmDataLakeStoreItemAcl -Account $accountName -path "/" -Acl $result -Confirm:$false
 	$result = Get-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/"
 	Assert-AreEqual $currentCount $result.UserAces.Count
 
 	# Set and get a specific permission with friendly sets
-	Set-AzureRmDataLakeStoreItemAclEntry -Account $accountName -path "/" -AceType User -Id $aceUserId -Permissions All -Force
+	Set-AzureRmDataLakeStoreItemAclEntry -Account $accountName -path "/" -AceType User -Id $aceUserId -Permissions All -Confirm:$false
 	$result = Get-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/"
 	Assert-AreEqual $($currentCount+1) $result.UserAces.Count
 	# remove a specific permission with friendly remove
-	Remove-AzureRmDataLakeStoreItemAclEntry -Account $accountName -path "/" -AceType User -Id $aceUserId -Force
+	Remove-AzureRmDataLakeStoreItemAclEntry -Account $accountName -path "/" -AceType User -Id $aceUserId -Confirm:$false
 	$result = Get-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/"
 	Assert-AreEqual $currentCount $result.UserAces.Count
 	# set and get a specific permission with the ACE string
-	Set-AzureRmDataLakeStoreItemAclEntry -Account $accountName -path "/" -Acl $([string]::Format("user:{0}:rwx", $aceUserId)) -Force
+	Set-AzureRmDataLakeStoreItemAclEntry -Account $accountName -path "/" -Acl $([string]::Format("user:{0}:rwx", $aceUserId)) -Confirm:$false
 	$result = Get-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/"
 	Assert-AreEqual $($currentCount+1) $result.UserAces.Count
 	# remove a specific permission with the ACE string
@@ -301,11 +301,11 @@ function Test-DataLakeStoreFileSystemPermissions
 	$result = Get-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/"
 	Assert-AreEqual $currentCount $result.UserAces.Count
 	# verify that removal of full acl and default acl fail
-	Assert-Throws {Remove-AzureRmDataLakeStoreItemAcl -Account $accountName -Path "/" -Force }
-	Assert-Throws {Remove-AzureRmDataLakeStoreItemAcl -Account $accountName -Path "/" -Force -Default }
+	Assert-Throws {Remove-AzureRmDataLakeStoreItemAcl -Account $accountName -Path "/" -Confirm:$false }
+	Assert-Throws {Remove-AzureRmDataLakeStoreItemAcl -Account $accountName -Path "/" -Confirm:$false -Default }
 
 	# Delete Data Lake account
-    Assert-True {Remove-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
+    Assert-True {Remove-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Confirm:$false -PassThru} "Remove Account failed."
 
 	# Verify that it is gone by trying to get it again
 	Assert-Throws {Get-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}
@@ -363,10 +363,10 @@ function Test-NegativeDataLakeStoreAccount
 	Assert-Throws {Get-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $fakeaccountName}
 
     # Delete Data Lake account
-    Assert-True {Remove-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
+    Assert-True {Remove-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Confirm:$false -PassThru} "Remove Account failed."
 
 	# Delete Data Lake account again should throw.
-    Assert-Throws {Remove-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru}
+    Assert-Throws {Remove-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Confirm:$false -PassThru}
 
 	# Verify that it is gone by trying to get it again
 	Assert-Throws {Get-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}
