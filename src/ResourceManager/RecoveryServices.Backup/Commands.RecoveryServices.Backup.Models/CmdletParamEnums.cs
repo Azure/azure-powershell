@@ -30,4 +30,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         ResourceGroupName,
         Status,
     }
+
+    public enum GetRecoveryPointParams
+    {
+        Vault,
+        StartDate,
+        EndDate,
+        Item,
+        RecoveryPointId,
+    }
 }

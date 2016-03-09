@@ -22,6 +22,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
     public class AzureRmRecoveryServicesIaasVmRecoveryPoint : AzureRmRecoveryServicesRecoveryPointBase
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// 
+        public string RecoveryPointAdditionalInfo { get; set; }
         public override void Validate()
         {
             base.Validate();

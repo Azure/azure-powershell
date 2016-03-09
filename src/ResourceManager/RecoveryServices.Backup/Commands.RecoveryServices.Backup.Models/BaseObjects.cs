@@ -47,6 +47,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
     public class AzureRmRecoveryServicesRecoveryPointBase : AzureRmRecoveryServicesObjectBase
     {
+        /// <summary>
+        ///Type of recovery point (appConsistent\CrashConsistent etc) 
+        /// </summary>
+        ///
+        public String RecoveryPointType { get; set; }
+        
+        /// <summary>
+        /// Time of RecoveryPoint
+        /// </summary>
+        public DateTime RecoveryPointTime { get; set; }
+
+        public AzureRmRecoveryServicesRecoveryPointBase()
+            : base()
+        {
+        }
+
+        public AzureRmRecoveryServicesRecoveryPointBase(RecoveryPointResponse recPointRsp, AzureRmRecoveryServicesItemBase item)
+            : base(item)
+        {
+
+        }
+
     }
 
     public class AzureRmRecoveryServicesPolicyBase : AzureRmRecoveryServicesObjectBase
