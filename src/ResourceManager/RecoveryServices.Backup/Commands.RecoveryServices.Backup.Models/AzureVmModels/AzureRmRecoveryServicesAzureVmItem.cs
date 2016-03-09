@@ -17,10 +17,68 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
+    /// <summary>
+    /// Represents IaaSVM Item Class
+    /// </summary>
     public class AzureRmRecoveryServicesIaasVmItem : AzureRmRecoveryServicesItemBase
+    {   
+        public string VirtualMachineId { get; set; }
+
+        /// <summary>
+        /// Protection Status of the item
+        /// </summary>
+        public string ProtectionStatus { get; set; }
+
+        /// <summary>
+        /// Protection State of the item
+        /// </summary>
+        public string ProtectionState { get; set; }
+
+        /// <summary>
+        /// Last Backup Status for the item
+        /// </summary>
+        public string LastBackupStatus { get; set; }
+
+        /// <summary>
+        /// Protection Policy Name for the Item
+        /// </summary>
+        public string ProtectionPolicyName { get; set; }
+
+        /// <summary>
+        /// ExtendedInfo for the Item
+        /// </summary
+        public AzureRmRecoveryServicesIaasVmItemExtendedInfo ExtendedInfo { get; set; }
+
+        public AzureRmRecoveryServicesIaasVmItem(AzureIaaSVMProtectedItem protectedItem, 
+            AzureRmRecoveryServicesContainerBase container)
+            : base(protectedItem, container)
+        {
+
+        }
+    }
+
+    /// <summary>
+    /// Represents IaaSVM Item ExtendedInfo Class
+    /// </summary>
+    public class AzureRmRecoveryServicesIaasVmItemExtendedInfo : AzureRmRecoveryServicesItemExtendedInfoBase
     {
+        /// <summary>
+        /// Oldest Recovery Point for the Item
+        /// </summary
+        public DateTime? OldestRecoveryPoint { get; set; }
+
+        /// <summary>
+        /// Recovery Points Count for the Item
+        /// </summary
+        public int RecoveryPointCount { get; set; }
+
+        /// <summary>
+        /// PolicyState for the Item
+        /// </summary
+        public string PolicyState { get; set; }
     }
 }

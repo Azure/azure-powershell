@@ -12,37 +12,34 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
-namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
-    public interface IPsBackupProvider
+    public partial class PolicyHelpers
     {
-        void Initialize(ProviderData providerData, HydraAdapter.HydraAdapter hydraAdapter);
+        #region HydraToPSObject conversions
+        public static AzureRmRecoveryServicesLongTermRetentionPolicy GetPSLongTermRetentionPolicy(
+            LongTermRetentionPolicy hydraRetPolicy)
+        {
+            throw new NotImplementedException();
+        }
 
-        BaseRecoveryServicesJobResponse EnableProtection();
+        #endregion
 
-        BaseRecoveryServicesJobResponse DisableProtection();
+        #region PStoHydraObject conversions
+        public static LongTermRetentionPolicy GetHydraLongTermRetentionPolicy(
+            AzureRmRecoveryServicesLongTermRetentionPolicy psRetPolicy)
+        {
+            throw new NotImplementedException();
+        }
 
-        BaseRecoveryServicesJobResponse TriggerBackup();
-
-        BaseRecoveryServicesJobResponse TriggerRestore();
-
-        ProtectedItemResponse GetProtectedItem();
-
-        RecoveryPointResponse GetRecoveryPoint();
-
-        ProtectionPolicyResponse CreatePolicy();
-
-        ProtectionPolicyResponse ModifyPolicy();
-
-        ProtectionPolicyResponse GetPolicy();
-
-        void DeletePolicy();
+        #endregion
     }
 }
