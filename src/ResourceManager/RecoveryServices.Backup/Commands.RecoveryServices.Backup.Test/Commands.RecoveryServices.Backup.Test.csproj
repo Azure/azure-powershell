@@ -42,8 +42,9 @@
     <Reference Include="Microsoft.Azure.Management.RecoveryServicesBackupManagement">
       <HintPath>..\Commands.RecoveryServices.Backup.HydraAdapter\Resources\Microsoft.Azure.Management.RecoveryServicesBackupManagement.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Test.Framework">
-      <HintPath>..\..\..\..\..\azure-sdk-for-net\packages\Microsoft.Azure.Test.Framework.1.0.5568.26003-prerelease\lib\net45\Microsoft.Azure.Test.Framework.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Test.Framework, Version=1.0.5568.26003, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Test.Framework.1.0.5799.28345-prerelease\lib\net45\Microsoft.Azure.Test.Framework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Test.HttpRecorder">
       <HintPath>..\..\..\packages\Microsoft.Azure.Test.HttpRecorder.1.0.5799.28345-prerelease\lib\net45\Microsoft.Azure.Test.HttpRecorder.dll</HintPath>
