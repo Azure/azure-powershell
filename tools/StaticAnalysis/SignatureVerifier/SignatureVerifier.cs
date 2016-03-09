@@ -60,7 +60,7 @@ namespace StaticAnalysis.SignatureVerifier
                             {
                                 issueLogger.Decorator.AddDecorator(a => a.AssemblyFileName = cmdletFileName, "AssemblyFileName");
                                 processedHelpFiles.Add(helpFileName);
-                                var proxy = AppDomainHelpers.CreateProxy<CmdletSignatureLoader>(directory, out _appDomain);
+                                var proxy = EnvironmentHelpers.CreateProxy<CmdletSignatureLoader>(directory, out _appDomain);
                                 var cmdlets = proxy.GetCmdlets(cmdletFile);
                                 foreach (var cmdlet in cmdlets.Where(c => c.SupportsShouldProcess || c.HasForceSwitch || c.IsDestructiveVerb))
                                 {
