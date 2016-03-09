@@ -70,11 +70,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
             List<AzureRmRecoveryServicesContainerBase> containerModels = ConversionHelpers.GetContainerModelList(listResponse);
 
+            // NOTE: Should move this to provider?
             // 4. Filter by RG Name
             if (ContainerType == Models.ContainerType.AzureVM)
             {
-                containerModels.RemoveAll(containerModel =>
-                    (containerModel as AzureRmRecoveryServicesIaasVmContainer).ResourceGroupName == ResourceGroupName);
+                containerModels = containerModels.Where(containerModel =>
+                    (containerModel as AzureRmRecoveryServicesIaasVmContainer).ResourceGroupName == ResourceGroupName).ToList();
             }
 
             WriteObject(containerModels);
