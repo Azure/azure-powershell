@@ -184,5 +184,26 @@ namespace Microsoft.Azure.Commands.Resources
 
             return prameterObject;
         }
+
+        protected string GetDeploymentDebugLogLevel(string deploymentDebugLogLevel)
+        {
+            string debugSetting = string.Empty;
+            switch(deploymentDebugLogLevel)
+            {
+                case "All":
+                    debugSetting = "RequestContent,ResponseContent";
+                    break;
+                case "HttpRequestContent":
+                    debugSetting = "RequestContent";
+                    break;
+                case "HttpResponseContent":
+                    debugSetting = "ResponseContent";
+                    break;
+                case "None":
+                    debugSetting = null;
+                    break;
+            }
+            return debugSetting;
+        }
     }
 }

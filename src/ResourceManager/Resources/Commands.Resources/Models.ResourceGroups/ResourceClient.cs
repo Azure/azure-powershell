@@ -382,7 +382,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             return newOperations;
         }
 
-        private Deployment CreateBasicDeployment(ValidatePSResourceGroupDeploymentParameters parameters, DeploymentMode deploymentMode)
+        private Deployment CreateBasicDeployment(ValidatePSResourceGroupDeploymentParameters parameters, DeploymentMode deploymentMode, string debugSetting)
         {
             Deployment deployment = new Deployment
             {
@@ -391,18 +391,19 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 }
             };
 
+            if(!string.IsNullOrEmpty(debugSetting))
+            {
+                deployment.Properties.DebugSetting = new DeploymentDebugSetting
+                {
+                    DeploymentDebugDetailLevel = debugSetting
+                };
+            }
+
             if (Uri.IsWellFormedUriString(parameters.TemplateFile, UriKind.Absolute))
             {
                 deployment.Properties.TemplateLink = new TemplateLink
                 {
                     Uri = new Uri(parameters.TemplateFile)
-                };
-            }
-            else if (!string.IsNullOrEmpty(parameters.GalleryTemplateIdentity))
-            {
-                deployment.Properties.TemplateLink = new TemplateLink
-                {
-                    Uri = new Uri(GalleryTemplatesClient.GetGalleryTemplateFile(parameters.GalleryTemplateIdentity))
                 };
             }
             else
