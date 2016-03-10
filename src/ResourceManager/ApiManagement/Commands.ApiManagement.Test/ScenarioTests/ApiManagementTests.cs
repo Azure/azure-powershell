@@ -157,6 +157,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 #endif
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Authorization", "2014-07-01-preview");
+            d.Add("Microsoft.Resources", null);
+            d.Add("Microsoft.Features", null);
+            d.Add("Microsoft.Authorization", null);
+            var providersToIgnore = new Dictionary<string, string>();
+            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
 
             using (var context = UndoContext.Current)
