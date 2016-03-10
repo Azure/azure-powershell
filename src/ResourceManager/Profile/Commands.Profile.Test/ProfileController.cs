@@ -20,6 +20,7 @@ using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System.Collections.Generic;
+using Microsoft.Azure.Test.HttpRecorder;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
