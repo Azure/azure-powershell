@@ -100,7 +100,7 @@
     <Compile Include="Common\Constants.cs" />
     <Compile Include="CustomDomain\GetAzureRmCdnCustomDomain.cs" />
     <Compile Include="CustomDomain\NewAzureRmCdnCustomDomain.cs" />
-    <Compile Include="CustomDomain\RemoveAzureCdnCustomDomain.cs" />
+    <Compile Include="CustomDomain\RemoveAzureRmCdnCustomDomain.cs" />
     <Compile Include="Endpoint\GetAzureRmCdnEndpointNameAvailability.cs" />
     <Compile Include="Endpoint\GetAzureRmCdnEndpoint.cs" />
     <Compile Include="Endpoint\LoadAzureRmCdnEndpointContent.cs" />
@@ -171,7 +171,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="AzureCdn.psd1">
+    <None Include="AzureRmCdn.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Microsoft.Azure.Commands.Cdn.dll-help.psd1" />

@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
     /// <summary>
     /// Defines the New-AzureRmCdnProfile cmdlet.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmCdnProfile", ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(PSProfile))]
+    [Cmdlet(VerbsCommon.New, "AzureRmCdnProfile"), OutputType(typeof(PSProfile))]
     public class NewAzureRmCdnProfile : AzureCdnCmdletBase
     {
         /// <summary>
@@ -73,7 +73,8 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
             // before creation.
             try
             {
-                CdnManagementClient.Profiles.GetWithHttpMessagesAsync(ProfileName, ResourceGroupName).Wait();
+                CdnManagementClient.Profiles.GetWithHttpMessagesAsync(ProfileName, ResourceGroupName)
+                    .ConfigureAwait(false);
                 throw new PSArgumentException(string.Format(Resources.Error_CreateExistingProfile, ProfileName,
                     ResourceGroupName));
             }

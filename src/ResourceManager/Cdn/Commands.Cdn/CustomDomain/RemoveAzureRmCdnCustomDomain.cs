@@ -23,8 +23,12 @@ using Microsoft.Azure.Management.Cdn.Models;
 
 namespace Microsoft.Azure.Commands.Cdn.CustomDomain
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmCdnCustomDomain", ConfirmImpact = ConfirmImpact.High, SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class RemoveAzureCdnCustomDomain : AzureCdnCmdletBase
+    [Cmdlet(VerbsCommon.Remove, 
+        "AzureRmCdnCustomDomain", 
+        ConfirmImpact = ConfirmImpact.High, 
+        SupportsShouldProcess = true), 
+        OutputType(typeof(bool))]
+    public class RemoveAzureRmCdnCustomDomain : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure Cdn CustomDomain name.")]
         [ValidateNotNullOrEmpty]
@@ -45,6 +49,9 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The profile.", ParameterSetName = ObjectParameterSet)]
         [ValidateNotNull]
         public PSCustomDomain CdnCustomDomain { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Return object if specified.")]
+        public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -98,7 +105,10 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
                             ProfileName,
                             ResourceGroupName);
 
-            WriteObject(true);
+            if (PassThru)
+            {
+                WriteObject(true);
+            }
         }
     }
 }

@@ -20,7 +20,7 @@ using Microsoft.Azure.Management.Cdn;
 
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
-    [Cmdlet("Purge", "AzureRmCdnEndpointContent", ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(bool))]
+    [Cmdlet("Purge", "AzureRmCdnEndpointContent"), OutputType(typeof(bool))]
     public class PurgeAzureRmCdnEndpointContent : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure Cdn endpoint name.")]
@@ -41,7 +41,10 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
 
         [Parameter(Mandatory = true, HelpMessage = "The resource group of the Azure Cdn Profile")]
         [ValidateCount(Constants.PurgeLoadMinimumCollectionCount, Constants.PurgeLoadMaximumCollectionCount)]
-        public string[] PurgeContent { get; set; } 
+        public string[] PurgeContent { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Return object if specified.")]
+        public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -54,7 +57,11 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
 
             CdnManagementClient.Endpoints.PurgeContent(EndpointName, ProfileName, ResourceGroupName, PurgeContent);
             WriteVerbose(Resources.Success);
-            WriteObject(true);
+
+            if (PassThru)
+            {
+                WriteObject(true);
+            }
         }
     }
 }

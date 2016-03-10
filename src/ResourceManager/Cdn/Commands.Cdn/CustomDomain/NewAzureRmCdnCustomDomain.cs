@@ -24,7 +24,7 @@ using Microsoft.Azure.Management.Cdn.Models;
 
 namespace Microsoft.Azure.Commands.Cdn.CustomDomain
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmCdnCustomDomain", ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(PSCustomDomain))]
+    [Cmdlet(VerbsCommon.New, "AzureRmCdnCustomDomain"), OutputType(typeof(PSCustomDomain))]
     public class NewAzureRmCdnCustomDomain : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "Host name of the Azure Cdn CustomDomain name.")]
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
                     CustomDomainName, 
                     EndpointName, 
                     ProfileName,
-                    ResourceGroupName).Wait();
+                    ResourceGroupName).ConfigureAwait(false);
 
                 throw new PSArgumentException(string.Format(
                     Resources.Error_CreateExistingCustomDomain, 

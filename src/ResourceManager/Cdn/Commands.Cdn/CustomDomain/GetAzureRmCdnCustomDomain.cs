@@ -21,7 +21,7 @@ using Microsoft.Azure.Management.Cdn;
 
 namespace Microsoft.Azure.Commands.Cdn.CustomDomain
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmCdnCustomDomain", ConfirmImpact = ConfirmImpact.None), OutputType(typeof(PSCustomDomain))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmCdnCustomDomain"), OutputType(typeof(PSCustomDomain))]
     public class GetAzureRmCdnCustomDomain : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "Azure Cdn CustomDomain name.")]
@@ -42,7 +42,11 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
 
         public override void ExecuteCmdlet()
         {
-            var customDomain = CdnManagementClient.CustomDomains.Get(CustomDomainName, EndpointName, ProfileName, ResourceGroupName);
+            var customDomain = CdnManagementClient.CustomDomains.Get(
+                CustomDomainName, 
+                EndpointName, 
+                ProfileName, 
+                ResourceGroupName);
 
             WriteVerbose(Resources.Success);
             WriteObject(customDomain.ToPsCustomDomain());

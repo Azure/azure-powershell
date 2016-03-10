@@ -21,7 +21,7 @@ using Microsoft.Azure.Management.Cdn;
 
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmCdnEndpoint", ConfirmImpact = ConfirmImpact.None), OutputType(typeof(PSEndpoint))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmCdnEndpoint"), OutputType(typeof(PSEndpoint))]
     public class GetAzureRmCdnEndpoint : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "Azure Cdn endpoint name.")]
