@@ -64,7 +64,7 @@ namespace StaticAnalysis.SignatureVerifier
                                 var cmdlets = proxy.GetCmdlets(cmdletFile);
                                 foreach (var cmdlet in cmdlets.Where(c => c.SupportsShouldProcess || c.HasForceSwitch || c.IsDestructiveVerb))
                                 {
-                                    int severity = 1;
+                                    int severity = 3;
                                     string description= string.Format("Cmdlet {0} does not implement ShouldProcess or " +
                                                         "Force but may perform a destructive action.", cmdlet.Name);
                                     string remediation = "Determine if the cmdlet should implement ShouldProcess, and " +
@@ -77,7 +77,7 @@ namespace StaticAnalysis.SignatureVerifier
                                         remediation =
                                             "Implement ShouldProcess correctly, set appropriate ConfirmImpact, " +
                                             "and determine if cmdlet needs ShouldContinue / Force.";
-                                        severity = 0;
+                                        severity = 2;
                                     }
                                     else if (cmdlet.SupportsShouldProcess)
                                     {
@@ -85,7 +85,7 @@ namespace StaticAnalysis.SignatureVerifier
                                         remediation =
                                             "Implement ShouldProcess correctly, set appropriate ConfirmImpact, " +
                                             "and determine if cmdlet needs ShouldContinue / Force.";
-                                        severity = 0;
+                                        severity = 2;
                                     }
 
                                     issueLogger.LogRecord(new SignatureIssue
