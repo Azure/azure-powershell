@@ -38,6 +38,9 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
         [ValidateNotNullOrEmpty]
         public PSProfile CdnProfile { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Return object if specified.")]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ObjectParameterSet)
@@ -74,7 +77,10 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
 
             CdnManagementClient.Profiles.DeleteIfExists(ProfileName, ResourceGroupName);
 
-            WriteObject(true);
+            if (PassThru)
+            {
+                WriteObject(true);
+            }
         }
     }
 }

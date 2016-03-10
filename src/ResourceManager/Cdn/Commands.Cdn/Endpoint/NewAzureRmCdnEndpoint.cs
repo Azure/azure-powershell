@@ -26,7 +26,7 @@ using Microsoft.Azure.Management.Cdn.Models;
 
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmCdnEndpoint", ConfirmImpact = ConfirmImpact.None), OutputType(typeof(PSEndpoint))]
+    [Cmdlet(VerbsCommon.New, "AzureRmCdnEndpoint"), OutputType(typeof(PSEndpoint))]
     public class NewAzureRmCdnEndpoint : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "Azure Cdn endpoint name.")]
@@ -86,7 +86,8 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         {
             try
             {
-                CdnManagementClient.Endpoints.GetWithHttpMessagesAsync(EndpointName, ProfileName, ResourceGroupName).Wait();
+                CdnManagementClient.Endpoints.GetWithHttpMessagesAsync(EndpointName, ProfileName, ResourceGroupName)
+                    .ConfigureAwait(false);
                 throw new PSArgumentException(string.Format(
                     Resources.Error_CreateExistingEndpoint, 
                     EndpointName, 

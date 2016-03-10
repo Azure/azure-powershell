@@ -20,7 +20,7 @@ using Microsoft.Azure.Management.Cdn;
 
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
-    [Cmdlet(VerbsLifecycle.Start, "AzureRmCdnEndpoint", ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(bool))]
+    [Cmdlet(VerbsLifecycle.Start, "AzureRmCdnEndpoint"), OutputType(typeof(bool))]
     public class StartAzureRmCdnEndpoint : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure Cdn endpoint name.")]
@@ -39,6 +39,9 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         [ValidateNotNull]
         public PSEndpoint CdnEndpoint { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Return object if specified.")]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ObjectParameterSet)
@@ -51,7 +54,11 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
             
             WriteVerbose(Resources.Success);
             WriteVerbose(string.Format(Resources.Success_StartEndpoint, EndpointName, ProfileName, ResourceGroupName));
-            WriteObject(true);
+
+            if (PassThru)
+            {
+                WriteObject(true);
+            }
         }
     }
 }

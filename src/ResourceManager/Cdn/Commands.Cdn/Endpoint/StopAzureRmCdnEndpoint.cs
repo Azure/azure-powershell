@@ -39,6 +39,8 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         [ValidateNotNull]
         public PSEndpoint CdnEndpoint { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Return object if specified.")]
+        public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -60,7 +62,10 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
 
             CdnManagementClient.Endpoints.Stop(EndpointName, ProfileName, ResourceGroupName);
 
-            WriteObject(true);
+            if (PassThru)
+            {
+                WriteObject(true);
+            }
         }
     }
 }

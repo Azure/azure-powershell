@@ -21,7 +21,7 @@ using Microsoft.Azure.Management.Cdn;
 
 namespace Microsoft.Azure.Commands.Cdn.Origin
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmCdnOrigin", ConfirmImpact = ConfirmImpact.None), OutputType(typeof(PSOrigin))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmCdnOrigin"), OutputType(typeof(PSOrigin))]
     public class GetAzureRmCdnOrigin : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "Azure Cdn origin name.")]

@@ -22,7 +22,7 @@ using Microsoft.Azure.Management.Cdn.Models;
 
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmCdnEndpointNameAvailability", ConfirmImpact = ConfirmImpact.None), OutputType(typeof(PSCheckNameAvailabilityOutput))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmCdnEndpointNameAvailability"), OutputType(typeof(PSCheckNameAvailabilityOutput))]
     public class GetAzureRmCdnEndpointNameAvailability : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "Azure Cdn endpoint name.")]

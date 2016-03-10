@@ -20,7 +20,7 @@ using Microsoft.Azure.Management.Cdn;
 
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
-    [Cmdlet("Load", "AzureRmCdnEndpointContent", ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(bool))]
+    [Cmdlet("Load", "AzureRmCdnEndpointContent"), OutputType(typeof(bool))]
     public class LoadAzureRmCdnEndpointContent : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure Cdn endpoint name.")]
@@ -43,6 +43,9 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         [ValidateCount(Constants.PurgeLoadMinimumCollectionCount, Constants.PurgeLoadMaximumCollectionCount)]
         public string[] LoadContent { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Return object if specified.")]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ObjectParameterSet)
@@ -54,7 +57,11 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
 
             CdnManagementClient.Endpoints.LoadContent(EndpointName, ProfileName, ResourceGroupName, LoadContent);
             WriteVerbose(Resources.Success);
-            WriteObject(true);
+
+            if (PassThru)
+            {
+                WriteObject(true);
+            }
         }
     }
 }

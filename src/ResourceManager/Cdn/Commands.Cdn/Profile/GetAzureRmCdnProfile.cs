@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
     /// <summary>
     /// Defines the New-AzureRMCdnProfile cmdlet.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMCdnProfile", ConfirmImpact = ConfirmImpact.None), OutputType(typeof(PSProfile))]
+    [Cmdlet(VerbsCommon.Get, "AzureRMCdnProfile"), OutputType(typeof(PSProfile))]
     public class GetAzureRmCdnProfile : AzureCdnCmdletBase
     {
         /// <summary>
