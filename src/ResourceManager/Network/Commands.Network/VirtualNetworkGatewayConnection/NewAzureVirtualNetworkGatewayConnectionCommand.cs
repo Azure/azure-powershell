@@ -165,7 +165,16 @@ namespace Microsoft.Azure.Commands.Network
             vnetGatewayConnection.ConnectionType = this.ConnectionType;
             vnetGatewayConnection.RoutingWeight = this.RoutingWeight;
             vnetGatewayConnection.SharedKey = this.SharedKey;
-            vnetGatewayConnection.EnableBgp = bool.Parse(this.EnableBgp);
+
+            if(!string.IsNullOrEmpty(this.EnableBgp))
+            {
+                vnetGatewayConnection.EnableBgp = bool.Parse(this.EnableBgp);
+            }
+            else
+            {
+                vnetGatewayConnection.EnableBgp = false;
+            }
+
             if (!string.IsNullOrEmpty(this.AuthorizationKey))
             {
                 vnetGatewayConnection.AuthorizationKey = this.AuthorizationKey;
