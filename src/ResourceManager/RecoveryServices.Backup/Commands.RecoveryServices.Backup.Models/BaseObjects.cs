@@ -152,6 +152,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
     public class AzureRmRecoveryServicesPolicyBase : AzureRmRecoveryServicesObjectBase
     {
+        public string PolicyName { get; set; }
+
         public BackupManagementType BackupManagementType { get; set; }
 
         public WorkloadType WorkloadType { get; set; }
