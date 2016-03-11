@@ -67,6 +67,7 @@ namespace Commands.Network.Test
             d.Add("Microsoft.Authorization", null);
             var providersToIgnore = new Dictionary<string, string>();
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);

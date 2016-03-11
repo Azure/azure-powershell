@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             var providersToIgnore = new Dictionary<string, string>();
             providersToIgnore.Add("Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient", "1.42-previewInternal");
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d, providersToIgnore);
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
             // Enable undo functionality as well as mock recording
             using (UndoContext context = UndoContext.Current)
             {
