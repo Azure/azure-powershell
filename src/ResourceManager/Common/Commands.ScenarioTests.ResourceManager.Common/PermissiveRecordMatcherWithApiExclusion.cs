@@ -106,7 +106,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         private bool ContainsIgnoredProvider(string requestUri, out string version)
         {
-            if (_ignoreGenericResource && !requestUri.Contains("providers"))
+            if (_ignoreGenericResource &&
+                !requestUri.Contains("providers") &&
+                !requestUri.StartsWith("/certificates?"))
             {
                 version = String.Empty;
                 return true;
