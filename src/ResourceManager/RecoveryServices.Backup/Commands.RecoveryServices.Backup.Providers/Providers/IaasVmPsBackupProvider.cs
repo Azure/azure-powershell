@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             //Default is daily scedule at 10:30 AM local time
             defaultSchedule.ScheduleRunFrequency = ScheduleRunType.Daily;
 
-            DateTime scheduleTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 10, 30, 00); //tbd: make it const
+            DateTime scheduleTime = GenerateRandomTime();
             defaultSchedule.ScheduleRunTimes = new List<DateTime>();
             defaultSchedule.ScheduleRunTimes.Add(scheduleTime);
 
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             AzureRmRecoveryServicesLongTermRetentionPolicy defaultRetention = new AzureRmRecoveryServicesLongTermRetentionPolicy();
             
             //Default time is 10:30 local time
-            DateTime retentionTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 10, 30, 00); //TBD make in const
+            DateTime retentionTime = GenerateRandomTime(); 
 
             //Daily Retention policy
             defaultRetention.IsDailyScheduleEnabled = true;
@@ -135,15 +135,55 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             defaultRetention.MonthlySchedule = new Models.MonthlyRetentionSchedule();
             defaultRetention.MonthlySchedule.DurationCountInMonths = 60; //tbd: make it const
             defaultRetention.MonthlySchedule.RetentionScheduleFormatType = Models.RetentionScheduleFormat.Weekly;
-            defaultRetention.MonthlySchedule.RetentionScheduleDaily = new Models.DailyRetentionFormat();
-            defaultRetention.MonthlySchedule.RetentionScheduleDaily.DaysOfTheMonth = 
+
+            //Initialize day based schedule
+            defaultRetention.MonthlySchedule.RetentionScheduleDaily = GetDailyRetentionFormat();  
+
+            //Initialize Week based schedule
+            defaultRetention.MonthlySchedule.RetentionScheduleWeekly = GetWeeklyRetentionFormat();
 
             //Yearly retention policy
             defaultRetention.IsYearlyScheduleEnabled = true;
             defaultRetention.YearlySchedule = new Models.YearlyRetentionSchedule();
-
+            defaultRetention.YearlySchedule.DurationCountInYears = 10;
+            defaultRetention.YearlySchedule.RetentionScheduleFormatType = Models.RetentionScheduleFormat.Weekly;
+            defaultRetention.YearlySchedule.MonthsOfYear = new List<Models.Month>();
+            defaultRetention.YearlySchedule.MonthsOfYear.Add(Models.Month.January);
+            defaultRetention.YearlySchedule.RetentionScheduleDaily = GetDailyRetentionFormat();
+            defaultRetention.YearlySchedule.RetentionScheduleWeekly = GetWeeklyRetentionFormat();
             return defaultRetention;
 
+        }
+
+        private static Models.DailyRetentionFormat GetDailyRetentionFormat()
+        {
+            Models.DailyRetentionFormat dailyRetention = new Models.DailyRetentionFormat();
+            dailyRetention.DaysOfTheMonth = new List<Models.Day>();
+            Models.Day dayBasedRetention = new Models.Day();
+            dayBasedRetention.IsLast = false;
+            dayBasedRetention.Date = 1;
+            dailyRetention.DaysOfTheMonth.Add(dayBasedRetention);
+            return dailyRetention;
+        }
+
+        private static Models.WeeklyRetentionFormat GetWeeklyRetentionFormat()
+        {
+            Models.WeeklyRetentionFormat weeklyRetention = new Models.WeeklyRetentionFormat();
+            weeklyRetention.DaysOfTheWeek = new List<DayOfWeek>();
+            weeklyRetention.DaysOfTheWeek.Add(DayOfWeek.Sunday);
+
+            weeklyRetention.WeeksOfTheMonth = new List<WeekOfMonth>();
+            weeklyRetention.WeeksOfTheMonth.Add(WeekOfMonth.First);
+            return weeklyRetention;
+        }
+
+        private static DateTime GenerateRandomTime()
+        {
+            //Schedule time will be random to avoid the load in service (same is in portal as well)
+            Random rand = new Random();
+            int hour = rand.Next(0, 24);
+            int minute = (rand.Next(0, 2) == 0) ? 0 : 30;
+            return new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, hour, minute, 00);
         }
 
     }
