@@ -39,7 +39,7 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         [Parameter(Mandatory = true)]
         [ValidateNotNull]
-        public SubscriptionDefinition Subscription { get; set; }
+        public AdminSubscriptionDefinition Subscription { get; set; }
 
         /// <summary>
         /// Performs the API operation(s) against managed subscriptions.

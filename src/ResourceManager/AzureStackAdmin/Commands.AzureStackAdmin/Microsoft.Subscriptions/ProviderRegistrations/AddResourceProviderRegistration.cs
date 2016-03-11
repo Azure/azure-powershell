@@ -146,7 +146,7 @@ namespace Microsoft.AzureStack.Commands
                         {
                             Name = this.DisplayName,
                             Location = this.ArmLocation,
-                            Properties = new ProviderRegistrationPropertiesDefinition()
+                            Properties = new ManifestPropertiesDefinition()
                                 {
                                     DisplayName = this.DisplayName,
                                     Namespace = this.Namespace,
@@ -171,7 +171,7 @@ namespace Microsoft.AzureStack.Commands
                         {
                             Name = this.DisplayName,
                             Location = this.ArmLocation,
-                            Properties = new ProviderRegistrationPropertiesDefinition()
+                            Properties = new ManifestPropertiesDefinition()
                             {
                                 DisplayName = this.DisplayName,
                                 Namespace = this.Namespace,

@@ -109,8 +109,8 @@ namespace Microsoft.AzureStack.Commands
                         {
                             Name = this.Name,
                             DisplayName = this.DisplayName,
-                            QuotaIds = this.QuotaIds.ToList(),
-                            SkuIds = this.SkuIds.ToList()
+                            QuotaIds = (this.QuotaIds != null ? this.QuotaIds.ToList() : null),
+                            SkuIds = (this.SkuIds != null ? this.SkuIds.ToList() : null)
                         }
                     }
                 };

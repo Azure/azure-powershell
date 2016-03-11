@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-
 namespace Microsoft.AzureStack.Commands
 {
     using System;
+    using System.Collections.Generic;
     using System.Management.Automation;
     using Microsoft.WindowsAzure.Commands.Common;
     using Microsoft.AzureStack.Management;
@@ -34,13 +33,21 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false)]
         [ValidateGuidNotEmpty]
-        public Guid SubscriptionId { get; set; } 
+        public Guid SubscriptionId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the subscription owner.
+        /// </summary>
+        [Parameter(Mandatory = true)]
+        [ValidateLength(1, 128)]
+        [ValidateNotNull]
+        public string Owner { get; set; }
 
         /// <summary>
         /// Gets or sets the identifier of the offer.
         /// </summary>
         [Parameter(Mandatory = true)]
-        [ValidateLength(1, 128)]
+        [ValidateLength(1, 512)]
         [ValidateNotNull]
         public string OfferId { get; set; }
 
@@ -66,9 +73,9 @@ namespace Microsoft.AzureStack.Commands
         /// <summary>
         /// Gets the subscription definition.
         /// </summary>
-        protected SubscriptionDefinition GetSubscriptionDefinition()
+        protected AdminSubscriptionDefinition GetSubscriptionDefinition()
         {
-            return new SubscriptionDefinition()
+            return new AdminSubscriptionDefinition()
                    {
                        // ToDo: Make the SubscriptionId as an optional parameter 
                        SubscriptionId = (NewManagedSubscription.SubscriptionIds.Count == 0
@@ -76,6 +83,7 @@ namespace Microsoft.AzureStack.Commands
                            : NewManagedSubscription.SubscriptionIds.Dequeue()).ToString(),
                        DisplayName = this.DisplayName,
                        OfferId = this.OfferId,
+                       Owner = this.Owner,
                        State = SubscriptionState.Enabled,
                    };
         }
