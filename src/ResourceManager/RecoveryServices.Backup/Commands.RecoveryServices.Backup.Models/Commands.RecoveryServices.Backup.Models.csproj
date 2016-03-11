@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AzureVmModels\AzureRmRecoveryServicesAzureVmJob.cs" />
     <Compile Include="BaseObjects.cs" />
     <Compile Include="CmdletParamEnums.cs" />
     <Compile Include="CommonModels\Utils.cs" />
