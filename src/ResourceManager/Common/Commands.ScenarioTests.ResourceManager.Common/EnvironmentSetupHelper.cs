@@ -312,8 +312,10 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             d.Add("Microsoft.Features", null);
             d.Add("Microsoft.Authorization", null);
             d.Add("Microsoft.Compute", null);
+            d.Add("Microsoft.Batch", "");
             var providersToIgnore = new Dictionary<string, string>();
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            providersToIgnore.Add("Microsoft.Azure.Management.Batch", "2015-09-01");
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
             using (var powershell = System.Management.Automation.PowerShell.Create(RunspaceMode.NewRunspace))
