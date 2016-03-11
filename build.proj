@@ -203,8 +203,6 @@
     <!-- Copying shortcut to be signed -->
     <Copy SourceFiles="$(LibraryRoot)tools\AzureRM\AzureRM.psd1" 
       DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" />
-    <Copy SourceFiles="$(LibraryRoot)tools\AzureRM\AzureRM.psm1" 
-      DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" />
     
     <ItemGroup>
       <DelaySignedAssembliesToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\Microsoft*Azure*Commands*.dll" />
@@ -257,8 +255,6 @@
         
     <!-- Copying signed shortcut back -->
     <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureRM.psd1" 
-      DestinationFolder="$(LibraryRoot)tools\AzureRM" />
-    <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureRM.psm1" 
       DestinationFolder="$(LibraryRoot)tools\AzureRM" />
   </Target>
   
