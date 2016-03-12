@@ -2094,19 +2094,6 @@
         <dev:defaultValue>
         </dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>SubscriptionDataFile</maml:name>
-        <maml:description>
-          <maml:para>[Deprecated]:  The SubscriptionDataFile parameter is deprecated.  This parameter will be removed in a future release. See https://github.com/Azure/azure-powershell/wiki/Proposed-Design-Stateless-Azure-Profile for a description of the upcoming mechanism for providing alternate sources of subscription information. Specifies the path to a profile file. This parameter is optional. If it is not provided, default file in the user's profile is used.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        <dev:type>
-          <maml:name>string</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
     </command:parameters>
     <command:inputTypes>
       <command:inputType>
@@ -2172,26 +2159,6 @@
       </command:example>
       <command:example>
         <maml:title>--------------------------  Example 2  --------------------------</maml:title>
-        <maml:introduction>
-          <maml:paragraph>PS C:\&gt;</maml:paragraph>
-        </maml:introduction>
-        <dev:code>PS C:\&gt;Import-AzurePublishSettingsFile –PublishSettingsFile C:\Temp\MyAccount.publishsettings –SubscriptionDataFile C:\Subs\Subscriptions.xml</dev:code>
-        <dev:remarks>
-          <maml:para>This command imports the "C:\Temp\MyAccountName-date-credentials.publishsettings" file and then saves the subscription data file in C:\Subs\Subscriptions.xml.</maml:para>
-          <maml:para />
-          <maml:para />
-          <maml:para>When you use the SubscriptionDataFile parameter to save your subscription data file in an alternate location, be sure to use the SubscriptionDataFile parameter of cmdlets that use subscription data file, such as Select-AzureSubscription and Remove-AzureAccount.</maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText>
-              <maml:para />
-            </command:commandText>
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-      <command:example>
-        <maml:title>--------------------------  Example 3  --------------------------</maml:title>
         <maml:introduction>
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
