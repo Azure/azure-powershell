@@ -29,6 +29,7 @@ using LegacyTest = Microsoft.Azure.Test;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
 using System.IO;
+using Microsoft.Azure.Management.Storage;
 
 namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 {
@@ -107,11 +108,13 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
                 var callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
-                helper.SetupModules(AzureModule.AzureResourceManager, 
-                    "ScenarioTests\\Common.ps1", 
-                    "ScenarioTests\\" + callingClassName + ".ps1", 
-                    helper.RMProfileModule, 
-                    helper.RMResourceModule, 
+                helper.SetupModules(AzureModule.AzureResourceManager,
+                    "ScenarioTests\\Common.ps1",
+                    "ScenarioTests\\" + callingClassName + ".ps1",
+                    helper.RMProfileModule,
+                    helper.RMStorageDataPlaneModule,
+                    helper.RMStorageModule,
+                    helper.RMResourceModule,
                     helper.GetRMModulePath(@"AzureRM.WebSites.psd1"));
 
                 try
@@ -143,14 +146,21 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             WebsitesManagementClient = GetWebsitesManagementClient(context);
             AuthorizationManagementClient = GetAuthorizationManagementClient();
             GalleryClient = GetGalleryClient();
+
+            var armStorageManagementClient = GetArmStorageManagementClient();
             helper.SetupManagementClients(ResourceManagementClient,
                 SubscriptionClient,
                 WebsitesManagementClient,
                 AuthorizationManagementClient,
-                GalleryClient
+                GalleryClient,
+                armStorageManagementClient
                 );
         }
 
+        protected StorageManagementClient GetArmStorageManagementClient()
+        {
+            return LegacyTest.TestBase.GetServiceClient<StorageManagementClient>(this.csmTestFactory);
+        }
 
         private AuthorizationManagementClient GetAuthorizationManagementClient()
         {
@@ -175,6 +185,6 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         {
             return LegacyTest.TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
         }
-    
+
     }
 }

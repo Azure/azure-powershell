@@ -23,7 +23,6 @@ namespace Microsoft.Azure.Commands.WebApps
 
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 2, Mandatory = false,
             HelpMessage = "The name of the web app slot.")]
-        [ValidateNotNullOrEmpty]
         public string Slot { get; set; }
 
         [Parameter(ParameterSetName = ParameterSet2Name, Position = 0, Mandatory = true,

@@ -30,6 +30,10 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 {
     public class WebsitesClient
     {
+        // Azure SDK requires a request parameter to be specified for a few Backup API calls, but
+        // the request is actually optional unless an update is needed
+        private static readonly BackupRequest EmptyRequest = new BackupRequest(location: "");
+
         public Action<string> VerboseLogger { get; set; }
 
         public Action<string> ErrorLogger { get; set; }
@@ -433,11 +437,13 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             var useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
             if (useSlot)
             {
-                return WrappedWebsitesClient.Sites.BackupSiteSlot(resourceGroupName, webSiteName, request, slotName);
+                var backup = WrappedWebsitesClient.Sites.BackupSiteSlot(resourceGroupName, webSiteName, request, slotName);
+                return backup;
             }
             else
             {
-                return WrappedWebsitesClient.Sites.BackupSite(resourceGroupName, webSiteName, request);
+                var backup = WrappedWebsitesClient.Sites.BackupSite(resourceGroupName, webSiteName, request);
+                return backup;
             }
         }
 
@@ -461,12 +467,12 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             var useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
             if (useSlot)
             {
-                return WrappedWebsitesClient.Sites.GetSiteBackupStatusSecretsSlot(resourceGroupName, webSiteName, backupId, null, slotName);
+                return WrappedWebsitesClient.Sites.GetSiteBackupStatusSecretsSlot(resourceGroupName, webSiteName, backupId, EmptyRequest, slotName);
             }
             else
             {
                 return WrappedWebsitesClient.Sites.GetSiteBackupStatusSecrets(resourceGroupName, webSiteName, backupId,
-                    null);
+                    EmptyRequest);
             }
         }
 

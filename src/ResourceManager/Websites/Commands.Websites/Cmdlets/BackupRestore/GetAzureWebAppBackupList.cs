@@ -1,11 +1,12 @@
 ﻿using System.Management.Automation;
+using Microsoft.Azure.Management.WebSites.Models;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
     /// <summary>
     ///     Gets the status of an Azure Web App backup
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmWebAppBackupList")]
+    [Cmdlet(VerbsCommon.Get, "AzureRmWebAppBackupList"), OutputType(typeof(BackupItemCollection))]
     public class GetAzureWebAppBackupList : WebAppOptionalSlotBaseCmdlet
     {
         public override void ExecuteCmdlet()

@@ -43,7 +43,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
                 Databases = this.Databases,
                 OperationType = BackupRestoreOperationType.Default
             };
-            WebsitesClient.RestoreSite(ResourceGroupName, Name, Slot, null, request);
+            // The id here does not actually matter. It is an artifact of the CSM API requirements.
+            WebsitesClient.RestoreSite(ResourceGroupName, Name, Slot, "1", request);
         }
 
     }
