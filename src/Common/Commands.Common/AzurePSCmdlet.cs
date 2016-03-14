@@ -557,6 +557,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             {
                 if (force 
                     || useShouldContinuePrompt == null 
+#if DEBUG
+                    || TestMockSupport.RunningMocked
+#endif
                     || !useShouldContinuePrompt()
                     || ShouldContinue(actionMessage, ""))
                 {
