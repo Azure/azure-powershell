@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [Parameter(Mandatory = true, HelpMessage = "")]
         [ValidateNotNullOrEmpty]
         [ValidateSet(ContainerType.AzureVM.ToString())]
-        public ContainerType WorkloadType { get; set; }
+        public WorkloadType WorkloadType { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "")]
         [ValidateNotNullOrEmpty]
