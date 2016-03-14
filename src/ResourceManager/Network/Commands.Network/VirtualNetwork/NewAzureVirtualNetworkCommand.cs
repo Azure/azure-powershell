@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
+            HelpMessage = "Do not ask for confirmation if you want to overwrite a resource")]
         public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Network
             WriteObject(this.GetVirtualNetwork(this.ResourceGroupName, this.Name));
         }
 
-        private PSVirtualNetwork CreateVirtualNetwork()
+        private void CreateVirtualNetwork()
         {
             var vnet = new PSVirtualNetwork();
             vnet.Name = this.Name;
@@ -119,10 +119,6 @@ namespace Microsoft.Azure.Commands.Network
 
             // Execute the Create VirtualNetwork call
             this.VirtualNetworkClient.CreateOrUpdate(this.ResourceGroupName, this.Name, vnetModel);
-
-            var getVirtualNetwork = this.GetVirtualNetwork(this.ResourceGroupName, this.Name);
-
-            return getVirtualNetwork;
         }
     }
 }

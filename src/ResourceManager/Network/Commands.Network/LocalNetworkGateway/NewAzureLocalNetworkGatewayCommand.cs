@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Network
             WriteObject(this.GetLocalNetworkGateway(this.ResourceGroupName, this.Name));
         }
 
-        private PSLocalNetworkGateway CreateLocalNetworkGateway()
+        private void CreateLocalNetworkGateway()
         {
             var localnetGateway = new PSLocalNetworkGateway();
             localnetGateway.Name = this.Name;
@@ -104,10 +104,6 @@ namespace Microsoft.Azure.Commands.Network
 
             // Execute the Create Local Network Gateway call
             this.LocalNetworkGatewayClient.CreateOrUpdate(this.ResourceGroupName, this.Name, localnetGatewayModel);
-
-            var getLocalNetworkGateway = this.GetLocalNetworkGateway(this.ResourceGroupName, this.Name);
-
-            return getLocalNetworkGateway;
         }
     }
 }

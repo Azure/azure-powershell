@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Commands.Network
             WriteObject(this.GetApplicationGateway(this.ResourceGroupName, this.Name));
         }
 
-        private PSApplicationGateway CreateApplicationGateway()
+        private void CreateApplicationGateway()
         {
             var applicationGateway = new PSApplicationGateway();
             applicationGateway.Name = this.Name;
@@ -221,10 +221,6 @@ namespace Microsoft.Azure.Commands.Network
 
             // Execute the Create ApplicationGateway call
             this.ApplicationGatewayClient.CreateOrUpdate(this.ResourceGroupName, this.Name, appGwModel);
-
-            var getApplicationGateway = this.GetApplicationGateway(this.ResourceGroupName, this.Name);
-
-            return getApplicationGateway;
         }
     }
 }

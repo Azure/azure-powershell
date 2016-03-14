@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Network
             WriteObject(this.GetPublicIpAddress(this.ResourceGroupName, this.Name));
         }
 
-        private PSPublicIpAddress CreatePublicIpAddress()
+        private void CreatePublicIpAddress()
         {
             var publicIp = new PSPublicIpAddress();
             publicIp.Name = this.Name;
@@ -130,10 +130,6 @@ namespace Microsoft.Azure.Commands.Network
             publicIpModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             this.PublicIpAddressClient.CreateOrUpdate(this.ResourceGroupName, this.Name, publicIpModel);
-
-            var getPublicIp = this.GetPublicIpAddress(this.ResourceGroupName, this.Name);
-
-            return getPublicIp;
         }
     }
 }

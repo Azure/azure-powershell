@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Network
                 WriteObject(this.GetRouteTable(this.ResourceGroupName, this.Name));
         }
 
-        private PSRouteTable CreateRouteTable()
+        private void CreateRouteTable()
         {
             var psRouteTable = new PSRouteTable();
             psRouteTable.Name = this.Name;
@@ -96,10 +96,6 @@ namespace Microsoft.Azure.Commands.Network
 
             // Execute the Create RouteTable call
             this.RouteTableClient.CreateOrUpdate(this.ResourceGroupName, this.Name, routeTableModel);
-
-            var getRouteTable = this.GetRouteTable(this.ResourceGroupName, this.Name);
-
-            return getRouteTable;
         }
     }
 }

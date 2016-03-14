@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.Network
             WriteObject(this.GetVirtualNetworkGatewayConnection(this.ResourceGroupName, this.Name));
         }
 
-        private PSVirtualNetworkGatewayConnection CreateVirtualNetworkGatewayConnection()
+        private void CreateVirtualNetworkGatewayConnection()
         {
             var vnetGatewayConnection = new PSVirtualNetworkGatewayConnection();
             vnetGatewayConnection.Name = this.Name;
@@ -178,10 +178,6 @@ namespace Microsoft.Azure.Commands.Network
 
             // Execute the Create VirtualNetworkConnection call
             this.VirtualNetworkGatewayConnectionClient.CreateOrUpdate(this.ResourceGroupName, this.Name, vnetGatewayConnectionModel);
-
-            var getVirtualNetworkGatewayConnection = this.GetVirtualNetworkGatewayConnection(this.ResourceGroupName, this.Name);
-
-            return getVirtualNetworkGatewayConnection;
         }
     }
 }

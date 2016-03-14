@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Network
             WriteObject(this.GetNetworkSecurityGroup(this.ResourceGroupName, this.Name));
         }
 
-        private PSNetworkSecurityGroup CreateNetworkSecurityGroup()
+        private void CreateNetworkSecurityGroup()
         {
             var nsg = new PSNetworkSecurityGroup();
             nsg.Name = this.Name;
@@ -95,10 +95,6 @@ namespace Microsoft.Azure.Commands.Network
 
             // Execute the Create NetworkSecurityGroup call
             this.NetworkSecurityGroupClient.CreateOrUpdate(this.ResourceGroupName, this.Name, nsgModel);
-
-            var getNetworkSecurityGroup = this.GetNetworkSecurityGroup(this.ResourceGroupName, this.Name);
-
-            return getNetworkSecurityGroup;
         }
     }
 }

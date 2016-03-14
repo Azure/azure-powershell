@@ -555,12 +555,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
             if (ShouldProcess(target, processMessage))
             {
-                if (force 
-                    || useShouldContinuePrompt == null 
-#if DEBUG
-                    || TestMockSupport.RunningMocked
-#endif
+                if (useShouldContinuePrompt == null 
                     || !useShouldContinuePrompt()
+                    || force
                     || ShouldContinue(actionMessage, ""))
                 {
                     if (_qosEvent != null)

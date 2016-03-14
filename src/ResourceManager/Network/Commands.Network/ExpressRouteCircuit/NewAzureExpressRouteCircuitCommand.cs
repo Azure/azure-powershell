@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.Network
                 WriteObject(GetExpressRouteCircuit(ResourceGroupName, Name));
         }
 
-        private PSExpressRouteCircuit CreateExpressRouteCircuit()
+        private void CreateExpressRouteCircuit()
         {
             var circuit = new PSExpressRouteCircuit();
             circuit.Name = this.Name;
@@ -158,9 +158,6 @@ namespace Microsoft.Azure.Commands.Network
 
             // Execute the Create ExpressRouteCircuit call
             this.ExpressRouteCircuitClient.CreateOrUpdate(this.ResourceGroupName, this.Name, circuitModel);
-
-            var getExpressRouteCircuit = this.GetExpressRouteCircuit(this.ResourceGroupName, this.Name);
-            return getExpressRouteCircuit;
         }
     }
 }

@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Commands.Network
             WriteObject(this.GetNetworkInterface(this.ResourceGroupName, this.Name));
         }
 
-        private PSNetworkInterface CreateNetworkInterface()
+        private void CreateNetworkInterface()
         {
             // Get the subnetId and publicIpAddressId from the object if specified
             if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
@@ -285,10 +285,6 @@ namespace Microsoft.Azure.Commands.Network
             networkInterfaceModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             this.NetworkInterfaceClient.CreateOrUpdate(this.ResourceGroupName, this.Name, networkInterfaceModel);
-
-            var getNetworkInterface = this.GetNetworkInterface(this.ResourceGroupName, this.Name);
-
-            return getNetworkInterface;
         }
     }
 }

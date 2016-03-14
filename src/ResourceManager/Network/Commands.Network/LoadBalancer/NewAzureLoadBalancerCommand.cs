@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.Network
             WriteObject(this.GetLoadBalancer(this.ResourceGroupName, this.Name));
         }
 
-        private PSLoadBalancer CreateLoadBalancer()
+        private void CreateLoadBalancer()
         {
             var loadBalancer = new PSLoadBalancer();
             loadBalancer.Name = this.Name;
@@ -164,10 +164,6 @@ namespace Microsoft.Azure.Commands.Network
 
             // Execute the Create VirtualNetwork call
             this.LoadBalancerClient.CreateOrUpdate(this.ResourceGroupName, this.Name, lbModel);
-
-            var getLoadBalancer = this.GetLoadBalancer(this.ResourceGroupName, this.Name);
-
-            return getLoadBalancer;
         }
     }
 }
