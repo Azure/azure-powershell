@@ -12,15 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
 {
     public partial class HydraAdapter
     {
+        public JobResponse GetJob(string resourceGroupName, string resourceName, string jobId)
+        {
+            return BmsAdapter.Client.Job.GetAsync(
+                resourceGroupName, 
+                resourceName, 
+                jobId, 
+                BmsAdapter.GetCustomRequestHeaders(), 
+                BmsAdapter.CmdletCancellationToken).Result;
+        }
     }
 }
