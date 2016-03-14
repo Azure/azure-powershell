@@ -49,7 +49,7 @@ function Test-ApplicationGatewayCRUD
       
 		# Create the Virtual Network
 		$subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
-		$vnet = New-AzureRmVirtualNetwork -Confirm:$false -Force-Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+		$vnet = New-AzureRmVirtualNetwork -Confirm:$false -Force -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 		$vnet = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
 		$subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet
  

@@ -10205,7 +10205,7 @@ PS C:\&gt; $ResourceGroup = New-AzureRmResourceGroup -Name &quot;ResourceGroup01
 
 These four commands create a virtual network. The first command creates a subnet configuration. The second command creates a virtual network. The third command verifies the subnet configuration and the fourth command verifies that the virtual network is created successfully.
 PS C:\&gt; $Subnet = New-AzureRmVirtualNetworkSubnetConfig -Name &quot;Subnet01&quot; -AddressPrefix 10.0.0.0/24
-PS C:\&gt; $VNet = New-AzureRmVirtualNetwork -Confirm:$false -Force-Name &quot;VNet01&quot; -ResourceGroupName &quot;ResourceGroup01&quot; -Location &quot;West US&quot; -AddressPrefix 10.0.0.0/16 -Subnet $Subnet
+PS C:\&gt; $VNet = New-AzureRmVirtualNetwork -Confirm:$false -Force -Name &quot;VNet01&quot; -ResourceGroupName &quot;ResourceGroup01&quot; -Location &quot;West US&quot; -AddressPrefix 10.0.0.0/16 -Subnet $Subnet
 PS C:\&gt; $VNet = Get-AzureRmvirtualNetwork -Name &quot;VNet01&quot; -ResourceGroupName &quot;ResourceGroup01&quot;
 PS C:\&gt; $Subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name $Subnet01 -VirtualNetwork $VNet
 

@@ -213,7 +213,6 @@ namespace Microsoft.Azure.Commands.Resources.Models
         public virtual PSResourceGroup CreatePSResourceGroup(CreatePSResourceGroupParameters parameters)
         {
             bool createDeployment = !string.IsNullOrEmpty(parameters.GalleryTemplateIdentity) || !string.IsNullOrEmpty(parameters.TemplateFile);
-            bool resourceExists = ResourceManagementClient.ResourceGroups.CheckExistence(parameters.ResourceGroupName).Exists;
 
             ResourceGroupExtended resourceGroup = null;
             Action createOrUpdateResourceGroup = () =>
@@ -232,10 +231,10 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 ProjectResources.NewResourceGroupMessage,
                 parameters.DeploymentName,
                 createOrUpdateResourceGroup,
-                () => resourceExists);
-            resourceGroup = ResourceManagementClient.ResourceGroups.Get(parameters.ResourceGroupName).ResourceGroup;
+                () => ResourceManagementClient.ResourceGroups.CheckExistence(parameters.ResourceGroupName).Exists);
+            //resourceGroup = ResourceManagementClient.ResourceGroups.Get(parameters.ResourceGroupName).ResourceGroup;
 
-            return resourceGroup.ToPSResourceGroup(this, true);
+            return resourceGroup == null? null : resourceGroup.ToPSResourceGroup(this, true);
         }
 
         /// <summary>
