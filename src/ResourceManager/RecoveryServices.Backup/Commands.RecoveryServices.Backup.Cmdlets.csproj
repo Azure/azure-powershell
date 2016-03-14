@@ -71,12 +71,7 @@
     <Compile Include="Cmdlets\Container\GetAzureRmRecoveryServicesContainer.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\GetAzureRmRecoveryServicesBackupRetentionPolicyObject.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\GetAzureRmRecoveryServicesPolicy.cs" />
-<<<<<<< HEAD
     <Compile Include="Cmdlets\ProtectionPolicy\GetAzureRmRecoveryServicesSchedulePolicyObject.cs" />
-=======
-    <Compile Include="Cmdlets\ProtectionPolicy\GetAzureRMBackupSchedulePolicyObject.cs" />
-    <Compile Include="Cmdlets\ProtectionPolicy\GetAzureRMBackupRetentionPolicyObject.cs" />
->>>>>>> dev1
     <Compile Include="Cmdlets\ProtectionPolicy\SetAzureRmRecoveryServicesPolicy.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\NewAzureRmRecoveryServicesPolicy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
