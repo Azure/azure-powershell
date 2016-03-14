@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
@@ -27,42 +28,52 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        public Management.RecoveryServices.Backup.Models.BaseRecoveryServicesJobResponse EnableProtection()
+        public BaseRecoveryServicesJobResponse EnableProtection()
         {
             throw new NotImplementedException();
         }
 
-        public Management.RecoveryServices.Backup.Models.BaseRecoveryServicesJobResponse DisableProtection()
+        public BaseRecoveryServicesJobResponse DisableProtection()
         {
             throw new NotImplementedException();
         }
 
-        public Management.RecoveryServices.Backup.Models.BaseRecoveryServicesJobResponse TriggerBackup()
+        public BaseRecoveryServicesJobResponse TriggerBackup()
         {
             throw new NotImplementedException();
         }
 
-        public Management.RecoveryServices.Backup.Models.BaseRecoveryServicesJobResponse TriggerRestore()
+        public BaseRecoveryServicesJobResponse TriggerRestore()
         {
             throw new NotImplementedException();
         }
 
-        public Management.RecoveryServices.Backup.Models.ProtectedItemResponse GetProtectedItem()
+        public ProtectedItemResponse GetProtectedItem()
         {
             throw new NotImplementedException();
         }
 
-        public Management.RecoveryServices.Backup.Models.RecoveryPointResponse GetRecoveryPoint()
+        public RecoveryPointResponse GetRecoveryPoint()
         {
             throw new NotImplementedException();
         }
 
-        public Management.RecoveryServices.Backup.Models.ProtectionPolicyResponse CreatePolicy()
+        public ProtectionPolicyResponse CreatePolicy()
         {
             throw new NotImplementedException();
         }
 
-        public Management.RecoveryServices.Backup.Models.ProtectionPolicyResponse ModifyPolicy()
+        public ProtectionPolicyResponse ModifyPolicy()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ProtectionPolicyResponse GetPolicy()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeletePolicy()
         {
             throw new NotImplementedException();
         }

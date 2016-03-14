@@ -12,37 +12,39 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Management.Automation;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
-    /// <summary>
-    /// Get list of protection policies
-    /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesProtectionPolicy"), OutputType(typeof(AzureRmRecoveryServicesPolicyBase), typeof(List<AzureRmRecoveryServicesPolicyBase>))]
-    public class GetAzureRmRecoveryServicesProtectionPolicy : RecoveryServicesBackupCmdletBase
+    [Cmdlet(VerbsData.Restore, "AzureRMRecoveryServicesBackupItem"), OutputType(typeof(AzureRMRecoveryServicesJob))]
+    class RestoreAzureRMRecoveryServicesBackupItem : RecoveryServicesBackupCmdletBase
     {
+        [Parameter(Mandatory = true, HelpMessage = "", ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
+        public AzureRmRecoveryServicesRecoveryPointBase RecoveryPoint { get; set; }
+
         [Parameter(Mandatory = true, HelpMessage = "")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string StorageAccountName { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-
             PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
-            {  
-                {ContainerParams.Name, Name},             
+            {
+                {RestoreBackupItemParams.RecoveryPoint, RecoveryPoint},
+                {RestoreBackupItemParams.StorageAccountName, StorageAccountName}
             }, HydraAdapter);
 
-            IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(ContainerType.AzureVM);
+            IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(RecoveryPoint.ContainerType);
+            psBackupProvider.TriggerRestore();
         }
     }
 }

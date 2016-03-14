@@ -13,36 +13,33 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
-namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
-    public enum ContainerParams
+    public partial class PolicyHelpers
     {
-        Vault,
-        ContainerType,
-        BackupManagementType,
-        BackupManagementServer,
-        Name,
-        ResourceGroupName,
-        Status,
-    }
+        #region HydraToPSObject conversions
+        public static AzureRmRecoveryServicesLongTermRetentionPolicy GetPSLongTermRetentionPolicy(
+            LongTermRetentionPolicy hydraRetPolicy)
+        {
+            throw new NotImplementedException();
+        }
 
-    public enum GetRecoveryPointParams
-    {
-        Vault,
-        StartDate,
-        EndDate,
-        Item,
-        RecoveryPointId,
-    }
+        #endregion
 
-    public enum RestoreBackupItemParams
-    {
-        RecoveryPoint,
-        StorageAccountName,
+        #region PStoHydraObject conversions
+        public static LongTermRetentionPolicy GetHydraLongTermRetentionPolicy(
+            AzureRmRecoveryServicesLongTermRetentionPolicy psRetPolicy)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }

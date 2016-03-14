@@ -13,36 +13,22 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
-namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
-    public enum ContainerParams
-    {
-        Vault,
-        ContainerType,
-        BackupManagementType,
-        BackupManagementServer,
-        Name,
-        ResourceGroupName,
-        Status,
-    }
-
-    public enum GetRecoveryPointParams
-    {
-        Vault,
-        StartDate,
-        EndDate,
-        Item,
-        RecoveryPointId,
-    }
-
-    public enum RestoreBackupItemParams
-    {
-        RecoveryPoint,
-        StorageAccountName,
+    public partial class PolicyHelpers
+    {        
+        public static void ValidateLongTermRetentionPolicyWithSimpleRetentionPolicy(
+            AzureRmRecoveryServicesLongTermRetentionPolicy ltrPolicy,
+            AzureRmRecoveryServicesSimpleSchedulePolicy schPolicy)
+        {
+            throw new NotImplementedException();
+        }       
     }
 }

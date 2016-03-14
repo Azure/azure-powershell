@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.HydraAdapter
         const string ProviderNamespaceKey = "ProviderNamespace";
         const string AzureFabricName = "AzureIaasVM";
 
-        public ClientProxy<RecoveryServicesNS.RecoveryServicesBackupManagementClient, RecoveryServicesModelsNS.CustomRequestHeaders> BmsAdapter;
+        ClientProxy<RecoveryServicesNS.RecoveryServicesBackupManagementClient, RecoveryServicesModelsNS.CustomRequestHeaders> BmsAdapter;
 
         public HydraAdapter(SubscriptionCloudCredentials creds, Uri baseUri)
         {

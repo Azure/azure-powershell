@@ -45,9 +45,6 @@
     <Compile Include="CommonModels\Enums.cs" />
     <Compile Include="CommonModels\PolicyRetentionObjects.cs" />
     <Compile Include="CommonModels\PolicyScheduleObjects.cs" />
-    <Compile Include="IaasVmModels\AzureRmRecoveryServicesIaasVmPolicy.cs" />
-    <Compile Include="IaasVmModels\AzureRmRecoveryServicesIaasVmItem.cs" />
-    <Compile Include="IaasVmModels\AzureRmRecoveryServicesIaasVmContainer.cs" />
     <Compile Include="IaasVmModels\AzureRmRecoveryServicesIaasVmRecoveryPoint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

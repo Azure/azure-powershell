@@ -26,28 +26,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Create new protection policy
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmRecoveryServicesProtectionPolicy")]    
+    [Cmdlet(VerbsCommon.New, "AzureRmRecoveryServicesProtectionPolicy"), OutputType(typeof(AzureRmRecoveryServicesPolicyBase))]
     public class NewAzureRmRecoveryServicesProtectionPolicy : RecoveryServicesBackupCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "", ValueFromPipeline = true)]
+        [Parameter(Mandatory = true, HelpMessage = "", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public WorkloadType WorkloadType { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "", ValueFromPipeline = true)]
+        [Parameter(Mandatory = false, HelpMessage = "", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public BackupManagementType BackupManagementType { get; set; }
-        
-        [Parameter(Mandatory = false, HelpMessage = "", ValueFromPipeline = true)]
+
+        [Parameter(Mandatory = false, HelpMessage = "", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public AzureRmRecoveryServicesRetentionPolicyBase RetentionPolicy { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "", ValueFromPipeline = true)]
+        [Parameter(Mandatory = false, HelpMessage = "", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public AzureRmRecoveryServicesSchedulePolicyBase SchedulePolicy { get; set; }      
+        public AzureRmRecoveryServicesSchedulePolicyBase SchedulePolicy { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
             PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
             {  
-                {GetContainerParams.Name, Name},             
+                {ContainerParams.Name, Name},             
             }, HydraAdapter);
 
             IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(ContainerType.AzureVM);

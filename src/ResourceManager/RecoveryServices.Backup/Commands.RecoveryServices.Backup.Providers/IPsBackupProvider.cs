@@ -40,5 +40,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         ProtectionPolicyResponse CreatePolicy();
 
         ProtectionPolicyResponse ModifyPolicy();
+
+        ProtectionPolicyResponse GetPolicy();
+
+        void DeletePolicy();
     }
 }

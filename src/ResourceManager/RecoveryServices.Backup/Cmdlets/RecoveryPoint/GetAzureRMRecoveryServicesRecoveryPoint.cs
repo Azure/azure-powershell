@@ -26,10 +26,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     [Cmdlet(VerbsCommon.Get, "AzureRMRecoveryServicesRecoveryPoint"), OutputType(typeof(List<AzureRmRecoveryServicesRecoveryPointBase>))]
     class GetAzureRMRecoveryServicesRecoveryPoint : RecoveryServicesBackupCmdletBase
     {
-        [Parameter(Mandatory = false, HelpMessage = "", ValueFromPipeline = true)]
-        [ValidateNotNullOrEmpty]
-        public ARSVault Vault { get; set; }
-
         [Parameter(Mandatory = true, HelpMessage = "", ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public DateTime StartDate { get; set; }
@@ -51,14 +47,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             base.ExecuteCmdlet();
             PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
             {
-                {GetRecoveryPointParams.Vault, Vault},
                 {GetRecoveryPointParams.StartDate, StartDate},
                 {GetRecoveryPointParams.EndDate, EndDate},
                 {GetRecoveryPointParams.Item, Item},
                 {GetRecoveryPointParams.RecoveryPointId, RecoveryPointId},
             }, HydraAdapter);
 
-            IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(ContainerType.AzureVM);
+            IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(Item.ContainerType);
             psBackupProvider.GetRecoveryPoint();
         }
 

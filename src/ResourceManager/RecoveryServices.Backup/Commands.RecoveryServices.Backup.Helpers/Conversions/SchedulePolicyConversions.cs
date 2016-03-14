@@ -13,14 +13,35 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
-namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
-    public class AzureRmRecoveryServicesIaasVmItem : AzureRmRecoveryServicesItemBase
+    public partial class PolicyHelpers
     {
+        #region HydraToPSObject conversions
+
+        public static AzureRmRecoveryServicesSimpleSchedulePolicy GetPSSimpleSchedulePolicyPolicy(
+            SimpleSchedulePolicy hydraRetPolicy)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
+        #region PStoHydraObject conversions
+
+        public static SimpleSchedulePolicy GetHydraSimpleSchedulePolicy(
+            AzureRmRecoveryServicesSimpleSchedulePolicy psRetPolicy)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }
