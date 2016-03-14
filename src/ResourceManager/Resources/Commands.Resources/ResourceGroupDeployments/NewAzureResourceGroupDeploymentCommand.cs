@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Resources
         public DeploymentMode Mode { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The deployment debug log level.")]
-        [ValidateSet("HttpRequestContent", "HttpResponseContent", "All", "None", IgnoreCase = true)]
+        [ValidateSet("RequestContent", "ResponseContent", "All", "None", IgnoreCase = true)]
         public string DeploymentDebugLogLevel { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]

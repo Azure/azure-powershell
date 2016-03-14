@@ -108,10 +108,11 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         {
             if (_ignoreGenericResource &&
                 !requestUri.Contains("providers") &&
-                !requestUri.StartsWith("/certificates?") &&
-                !requestUri.StartsWith("/pools") &&
-                !requestUri.StartsWith("/jobs") &&
-                !requestUri.StartsWith("/jobschedules"))
+                !requestUri.StartsWith("/certificates?", StringComparison.InvariantCultureIgnoreCase) &&
+                !requestUri.StartsWith("/pools", StringComparison.InvariantCultureIgnoreCase) &&
+                !requestUri.StartsWith("/jobs", StringComparison.InvariantCultureIgnoreCase) &&
+                !requestUri.StartsWith("/jobschedules", StringComparison.InvariantCultureIgnoreCase) &&
+                !requestUri.StartsWith("/applications", StringComparison.InvariantCultureIgnoreCase))
             {
                 version = String.Empty;
                 return true;
