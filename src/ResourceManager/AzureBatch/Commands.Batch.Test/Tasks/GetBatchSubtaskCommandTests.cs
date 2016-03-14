@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
-using Microsoft.Azure.Batch.Protocol.Models;
 using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
@@ -26,6 +25,7 @@ using System.Threading.Tasks;
 using Microsoft.Azure.Batch.Protocol.BatchRequests;
 using Microsoft.Rest.Azure;
 using Xunit;
+using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Subtasks
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Subtasks
             cmdlet.TaskId = null;
 
             // Build a SubtaskInformation instead of querying the service on a List Subtasks call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<TaskListSubtasksOptions, AzureOperationResponse<CloudTaskListSubtasksResult, TaskListSubtasksHeaders>>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ProxyModels.TaskListSubtasksOptions, AzureOperationResponse<ProxyModels.CloudTaskListSubtasksResult, ProxyModels.TaskListSubtasksHeaders>>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Subtasks
             int[] idsOfConstructedSubtasks = new[] { 1, 2, 3 };
 
             // Build some SubtaskInformation objects instead of querying the service on a List Subtasks call
-            AzureOperationResponse<CloudTaskListSubtasksResult, TaskListSubtasksHeaders> response = BatchTestHelpers.CreateCloudTaskListSubtasksResponse(idsOfConstructedSubtasks);
+            AzureOperationResponse<ProxyModels.CloudTaskListSubtasksResult, ProxyModels.TaskListSubtasksHeaders> response = BatchTestHelpers.CreateCloudTaskListSubtasksResponse(idsOfConstructedSubtasks);
             RequestInterceptor interceptor = CreateFakeListSubtasksInterceptor(cmdlet.TaskId, response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Subtasks
             int[] idsOfConstructedSubtasks = new[] { 1, 2, 3 };
 
             // Build some SubtaskInformation objects instead of querying the service on a List Subtasks call
-            AzureOperationResponse<CloudTaskListSubtasksResult, TaskListSubtasksHeaders> response = BatchTestHelpers.CreateCloudTaskListSubtasksResponse(idsOfConstructedSubtasks);
+            AzureOperationResponse<ProxyModels.CloudTaskListSubtasksResult, ProxyModels.TaskListSubtasksHeaders> response = BatchTestHelpers.CreateCloudTaskListSubtasksResponse(idsOfConstructedSubtasks);
             RequestInterceptor interceptor = CreateFakeListSubtasksInterceptor(cmdlet.TaskId, response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Subtasks
         // TO DO: Since we have to fetch the task, the interceptor needs to handle that case too. Once
         // the cmdlet can directly call the List Subtasks method by itself, update these test cases to
         // use the generic interceptor creation helper.
-        private RequestInterceptor CreateFakeListSubtasksInterceptor(string taskId, AzureOperationResponse<CloudTaskListSubtasksResult, TaskListSubtasksHeaders> listSubtasksResponse)
+        private RequestInterceptor CreateFakeListSubtasksInterceptor(string taskId, AzureOperationResponse<ProxyModels.CloudTaskListSubtasksResult, ProxyModels.TaskListSubtasksHeaders> listSubtasksResponse)
         {
             RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Subtasks
                 {
                     listSubtaskRequest.ServiceRequestFunc = (cancellationToken) =>
                     {
-                        Task<AzureOperationResponse<CloudTaskListSubtasksResult, TaskListSubtasksHeaders>> task = Task.FromResult(listSubtasksResponse);
+                        Task<AzureOperationResponse<ProxyModels.CloudTaskListSubtasksResult, ProxyModels.TaskListSubtasksHeaders>> task = Task.FromResult(listSubtasksResponse);
                         return task;
                     };
                 }
@@ -170,8 +170,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Subtasks
 
                     getTaskRequest.ServiceRequestFunc = (cancellationToken) =>
                     {
-                        AzureOperationResponse<Microsoft.Azure.Batch.Protocol.Models.CloudTask, TaskGetHeaders> response = BatchTestHelpers.CreateCloudTaskGetResponse(taskId);
-                        Task<AzureOperationResponse<Microsoft.Azure.Batch.Protocol.Models.CloudTask, TaskGetHeaders>> task = Task.FromResult(response);
+                        AzureOperationResponse<ProxyModels.CloudTask, ProxyModels.TaskGetHeaders> response = BatchTestHelpers.CreateCloudTaskGetResponse(taskId);
+                        Task<AzureOperationResponse<ProxyModels.CloudTask, ProxyModels.TaskGetHeaders>> task = Task.FromResult(response);
                         return task;
                     };
                 }

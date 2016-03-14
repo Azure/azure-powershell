@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
             cmdlet.Id = "computeNode01";
 
             // Don't go to the service on an Disable Compute Node Scheduling call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeDisableSchedulingOptions, AzureOperationResponse<ComputeNodeDisableSchedulingHeaders>>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<NodeDisableSchedulingParameter, ComputeNodeDisableSchedulingOptions, AzureOperationHeaderResponse<ComputeNodeDisableSchedulingHeaders>>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameter is set
@@ -82,10 +82,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
             cmdlet.DisableSchedulingOption = disableOption;
 
             // Don't go to the service on an Disable Compute Node Scheduling call
-            Action<BatchRequest<DisableComputeNodeSchedulingParameters, ComputeNodeDisableSchedulingOptions, AzureOperationResponse<ComputeNodeDisableSchedulingHeaders>>> extractFormulaAction =
+            Action<BatchRequest<NodeDisableSchedulingParameter, ComputeNodeDisableSchedulingOptions, AzureOperationHeaderResponse<ComputeNodeDisableSchedulingHeaders>>> extractFormulaAction =
                 (request) =>
                 {
-                    requestDisableOption = BatchTestHelpers.MapEnum<Microsoft.Azure.Batch.Common.DisableComputeNodeSchedulingOption>(request.Parameters.DisableSchedulingOption);
+                    requestDisableOption = BatchTestHelpers.MapEnum<Microsoft.Azure.Batch.Common.DisableComputeNodeSchedulingOption>(request.Parameters.NodeDisableSchedulingOption);
                 };
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor(requestAction: extractFormulaAction);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };

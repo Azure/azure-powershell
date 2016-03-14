@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.Ids = new string[] { "computeNode1" };
 
             // Don't go to the service on a Remove ComputeNode call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<PoolRemoveNodesOptions, AzureOperationHeaderResponse<PoolRemoveNodesHeaders>>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<NodeRemoveParameter, PoolRemoveNodesOptions, AzureOperationHeaderResponse<PoolRemoveNodesHeaders>>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameter is set
