@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Commands.Insights.Test
                 Name = Name,
                 Properties = new Rule()
                 {
-                    Action = new RuleEmailAction(),
+                    ////Action = new RuleEmailAction(),
                     Condition = new ThresholdRuleCondition()
                     {
                         DataSource = new RuleMetricDataSource()

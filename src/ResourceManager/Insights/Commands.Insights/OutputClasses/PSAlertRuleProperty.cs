@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// <param name="properties"></param>
         public PSAlertRuleProperty(Rule properties)
         {
-            this.Action = properties.Action;
+            ////this.Action = properties.Action;
 
             var condition = properties.Condition as ThresholdRuleCondition;
             if (condition != null)

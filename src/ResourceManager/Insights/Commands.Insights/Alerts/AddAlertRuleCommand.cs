@@ -250,11 +250,11 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                     Description = this.Description ?? Utilities.GetDefaultDescription("alert rule"),
                     LastUpdatedTime = DateTime.Now,
                     Condition = condition,
-                    Action = new RuleEmailAction()
-                    {
-                        CustomEmails = this.CustomEmails == null ? null : this.CustomEmails.Where(e => !string.IsNullOrWhiteSpace(e)).ToList(), 
-                        SendToServiceOwners = this.SendToServiceOwners,
-                    },
+                    ////Action = new RuleEmailAction()
+                    ////{
+                    ////    CustomEmails = this.CustomEmails == null ? null : this.CustomEmails.Where(e => !string.IsNullOrWhiteSpace(e)).ToList(), 
+                    ////    SendToServiceOwners = this.SendToServiceOwners,
+                    ////},
                 },
 
                 // DO NOT REMOVE OR CHANGE the following. The two elements in the Tags are required by other services.

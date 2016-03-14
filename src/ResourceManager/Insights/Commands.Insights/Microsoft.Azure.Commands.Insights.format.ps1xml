@@ -4,6 +4,8 @@
     <View>
       <Name>Custom-Json</Name>
       <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfileCollection</TypeName>
         <TypeName>Microsoft.Azure.Commands.Insights.OutputClasses.PSServiceDiagnosticSettings</TypeName>
       </ViewSelectedBy>
       <CustomControl>
