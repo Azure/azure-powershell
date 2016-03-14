@@ -27,6 +27,8 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile;
 using Microsoft.Azure.Commands.Profile.Models;
+using Microsoft.Azure.Subscriptions.Models;
+using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 {
@@ -69,6 +71,41 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SubscriptionIdNotInFirstTenant()
+        {
+            var tenants = new List<string> { DefaultTenant.ToString(), Guid.NewGuid().ToString() };
+            var subscriptionInSecondTenant= Guid.NewGuid().ToString();
+            var firstList = new List<string> { DefaultSubscription.ToString() };
+            var secondList = new List<string> { Guid.NewGuid().ToString(), subscriptionInSecondTenant };
+            var client = SetupTestEnvironment(tenants, firstList, secondList);
+
+            ((MockTokenAuthenticationFactory)AzureSession.AuthenticationFactory).TokenProvider = (account, environment, tenant) =>
+            new MockAccessToken
+            {
+                UserId = "aaa@contoso.com",
+                LoginType = LoginType.OrgId,
+                AccessToken = "bbb",
+                TenantId = DefaultTenant.ToString()
+            };
+
+            var getAsyncResponses = new Queue<Func<GetSubscriptionResult>>();
+            getAsyncResponses.Enqueue(() =>
+            {
+                throw new CloudException("InvalidAuthenticationTokenTenant: The access token is from the wrong issuer");
+            });
+            MockSubscriptionClientFactory.SetGetAsyncResponses(getAsyncResponses);
+            
+            var azureRmProfile = client.Login(
+                Context.Account,
+                Context.Environment,
+                null,
+                subscriptionInSecondTenant,
+                null,
+                null);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TokenIdAndAccountIdMismatch()
         {
             var tenants = new List<string> { Guid.NewGuid().ToString(), DefaultTenant.ToString() };
@@ -78,7 +115,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var thirdList = new List<string> { DefaultSubscription.ToString(), secondsubscriptionInTheFirstTenant };
             var fourthList = new List<string> { DefaultSubscription.ToString(), secondsubscriptionInTheFirstTenant };
             var client = SetupTestEnvironment(tenants, firstList, secondList, thirdList, fourthList);
-
             var tokens = new Queue<MockAccessToken>();
             tokens.Enqueue(new MockAccessToken
             {
