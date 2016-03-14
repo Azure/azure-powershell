@@ -106,6 +106,51 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SubscriptionNameNotInFirstTenant()
+        {
+            var tenants = new List<string> { DefaultTenant.ToString(), Guid.NewGuid().ToString() };
+            var subscriptionInSecondTenant= Guid.NewGuid().ToString();
+            var firstList = new List<string> { DefaultSubscription.ToString() };
+            var secondList = new List<string> { Guid.NewGuid().ToString(), subscriptionInSecondTenant };
+            var client = SetupTestEnvironment(tenants, firstList, secondList);
+
+            ((MockTokenAuthenticationFactory)AzureSession.AuthenticationFactory).TokenProvider = (account, environment, tenant) =>
+            new MockAccessToken
+            {
+                UserId = "aaa@contoso.com",
+                LoginType = LoginType.OrgId,
+                AccessToken = "bbb",
+                TenantId = DefaultTenant.ToString()
+            };
+
+            var listAsyncResponses = new Queue<Func<SubscriptionListResult>>();
+            listAsyncResponses.Enqueue(() =>
+            {
+                var sub = new Subscription
+                {
+                    Id = DefaultSubscription.ToString(), 
+                    SubscriptionId = DefaultSubscription.ToString(),
+                    DisplayName = DefaultSubscriptionName, 
+                    State = "enabled",
+                };
+                return new SubscriptionListResult 
+                {
+                    Subscriptions = new List<Subscription> { sub }
+                };
+            });
+            MockSubscriptionClientFactory.SetListAsyncResponses(listAsyncResponses);
+
+            var azureRmProfile = client.Login(
+                Context.Account,
+                Context.Environment,
+                null,
+                null,
+                "sub name",
+                null);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TokenIdAndAccountIdMismatch()
         {
             var tenants = new List<string> { Guid.NewGuid().ToString(), DefaultTenant.ToString() };

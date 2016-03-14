@@ -30,6 +30,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         private Queue<List<string>> _subscriptions;
         private HashSet<string> _subscriptionSet;
         private static Queue<Func<GetSubscriptionResult>> _getAsyncQueue;
+        private static Queue<Func<SubscriptionListResult>> _listAsyncQueue;
+
         public MockSubscriptionClientFactory(List<string> tenants, Queue<List<string>> subscriptions)
         {
             _tenants = tenants;
@@ -53,6 +55,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         public static void SetGetAsyncResponses(Queue<Func<GetSubscriptionResult>> responses)
         {
             _getAsyncQueue = responses;
+        }
+        public static void SetListAsyncResponses(Queue<Func<SubscriptionListResult>> responses)
+        {
+            _listAsyncQueue = responses;
         }
 
         public SubscriptionClient GetSubscriptionClient()
@@ -101,6 +107,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 (s) => s.ListAsync(It.IsAny<CancellationToken>())).Returns(
                     (CancellationToken token) =>
                     {
+                        if (_listAsyncQueue != null && _listAsyncQueue.Any())
+                        {
+                            return Task.FromResult(_listAsyncQueue.Dequeue().Invoke());
+                        }
+                        
                         SubscriptionListResult result = null;
                         if (_subscriptions.Count > 0)
                         {
