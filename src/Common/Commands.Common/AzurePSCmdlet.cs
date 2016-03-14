@@ -555,9 +555,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
             if (ShouldProcess(target, processMessage))
             {
-                if (useShouldContinuePrompt == null 
+                if (force 
+                    || useShouldContinuePrompt == null 
                     || !useShouldContinuePrompt()
-                    || force 
                     || ShouldContinue(actionMessage, ""))
                 {
                     if (_qosEvent != null)
