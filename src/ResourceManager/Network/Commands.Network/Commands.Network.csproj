@@ -280,6 +280,7 @@
     <Compile Include="Models\PSApplicationGatewaySku.cs" />
     <Compile Include="Models\PSApplicationGatewaySslCertificate.cs" />
     <Compile Include="Models\PSApplicationGatewayUrlPathMap.cs" />
+    <Compile Include="Models\PSBgpSettings.cs" />
     <Compile Include="Models\PSInboundRule.cs" />
     <Compile Include="Models\PSInboundNatPool.cs" />
     <Compile Include="Models\PSExpressRouteServiveProvider.cs" />
