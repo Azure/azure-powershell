@@ -49,6 +49,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public string Location { get; set; }
 
+        public AzureRmRecoveryServicesVaultCreds()
+        {           
+        }
+
         public AzureRmRecoveryServicesVaultCreds(string resourceName, string resourceGroupName, string location)
         {
             ResourceName = resourceName;
@@ -181,6 +185,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     }
     public class AzureRmRecoveryServicesPolicyBase : AzureRmRecoveryServicesObjectBase
     {
+        public string PolicyName { get; set; }
+
         public BackupManagementType BackupManagementType { get; set; }
 
         public WorkloadType WorkloadType { get; set; }

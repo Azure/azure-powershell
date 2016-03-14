@@ -70,6 +70,8 @@
   <ItemGroup>
     <Compile Include="Cmdlets\Container\GetAzureRmRecoveryServicesContainer.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\GetAzureRmRecoveryServicesPolicy.cs" />
+    <Compile Include="Cmdlets\ProtectionPolicy\GetAzureRMBackupSchedulePolicyObject.cs" />
+    <Compile Include="Cmdlets\ProtectionPolicy\GetAzureRMBackupRetentionPolicyObject.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\SetAzureRmRecoveryServicesPolicy.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\NewAzureRmRecoveryServicesPolicy.cs" />
     <Compile Include="Cmdlets\RecoveryPoint\GetAzureRMRecoveryServicesRecoveryPoint.cs" />

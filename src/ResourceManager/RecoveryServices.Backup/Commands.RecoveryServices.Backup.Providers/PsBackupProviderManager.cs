@@ -44,6 +44,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 case ContainerType.AzureVM:
                     providerType = PsBackupProviderTypes.IaasVm;
                     break;
+                case ContainerType.AzureSqlContainer:
+                    providerType = PsBackupProviderTypes.AzureSql;
+                    break;
                 default:
                     break;
             }
@@ -69,6 +72,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 case PsBackupProviderTypes.IaasVm:
                     psBackupProvider = new IaasVmPsBackupProvider();
+                    break;
+                case PsBackupProviderTypes.AzureSql:
+                    psBackupProvider = new AzureSqlPsBackupProvider();
                     break;
                 default:
                     break;
