@@ -50,6 +50,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             }
             catch (Exception exception)
             {
+                WriteDebug(String.Format(Resources.ExceptionInExecution, exception.GetType()));
                 HandleException(exception);
             }
         }

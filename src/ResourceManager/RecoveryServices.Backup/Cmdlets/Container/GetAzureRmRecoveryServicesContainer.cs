@@ -53,32 +53,35 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
+            ExecutionBlock(() =>
+                {
+                    base.ExecuteCmdlet();
 
-            ProtectionContainerListQueryParams queryParams = new ProtectionContainerListQueryParams();
+                    ProtectionContainerListQueryParams queryParams = new ProtectionContainerListQueryParams();
 
-            // 1. Filter by Name
-            queryParams.FriendlyName = Name;
+                    // 1. Filter by Name
+                    queryParams.FriendlyName = Name;
 
-            // 2. Filter by ContainerType
-            queryParams.ProviderType = HydraHelpers.GetHydraProviderType(ContainerType);
+                    // 2. Filter by ContainerType
+                    queryParams.ProviderType = HydraHelpers.GetHydraProviderType(ContainerType);
 
-            // 3. Filter by Status
-            queryParams.RegistrationStatus = Status.ToString();
+                    // 3. Filter by Status
+                    queryParams.RegistrationStatus = Status.ToString();
 
-            var listResponse = HydraAdapter.ListContainers(Vault.Name, Vault.ResouceGroupName, queryParams);
+                    var listResponse = HydraAdapter.ListContainers(Vault.Name, Vault.ResouceGroupName, queryParams);
 
-            List<AzureRmRecoveryServicesContainerBase> containerModels = ConversionHelpers.GetContainerModelList(listResponse);
+                    List<AzureRmRecoveryServicesContainerBase> containerModels = ConversionHelpers.GetContainerModelList(listResponse);
 
-            // NOTE: Should move this to provider?
-            // 4. Filter by RG Name
-            if (ContainerType == Models.ContainerType.AzureVM)
-            {
-                containerModels = containerModels.Where(containerModel =>
-                    (containerModel as AzureRmRecoveryServicesIaasVmContainer).ResourceGroupName == ResourceGroupName).ToList();
-            }
+                    // NOTE: Should move this to provider?
+                    // 4. Filter by RG Name
+                    if (ContainerType == Models.ContainerType.AzureVM)
+                    {
+                        containerModels = containerModels.Where(containerModel =>
+                            (containerModel as AzureRmRecoveryServicesIaasVmContainer).ResourceGroupName == ResourceGroupName).ToList();
+                    }
 
-            WriteObject(containerModels);
+                    WriteObject(containerModels);
+                });
         }
     }
 }
