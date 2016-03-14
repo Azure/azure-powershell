@@ -154,8 +154,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             string[] idsOfConstructedPools = new[] { "pool1", "pool2", "pool3" };
 
             // Build some CloudPools instead of querying the service on a List CloudPools call
-            AzureOperationResponse<IEnumerable<ProxyModels.CloudPool>, ProxyModels.PoolListHeaders> response = BatchTestHelpers.CreateCloudPoolListResponse(idsOfConstructedPools);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ProxyModels.PoolListOptions, AzureOperationResponse<IEnumerable<ProxyModels.CloudPool>, ProxyModels.PoolListHeaders>>(response);
+            AzureOperationResponse<IPage<ProxyModels.CloudPool>, ProxyModels.PoolListHeaders> response = BatchTestHelpers.CreateCloudPoolListResponse(idsOfConstructedPools);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ProxyModels.PoolListOptions, AzureOperationResponse<IPage<ProxyModels.CloudPool>, ProxyModels.PoolListHeaders>>(response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
@@ -195,8 +195,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             string[] idsOfConstructedPools = new[] { "pool1", "pool2", "pool3" };
 
             // Build some CloudPools instead of querying the service on a List CloudPools call
-            AzureOperationResponse<IEnumerable<ProxyModels.CloudPool>, ProxyModels.PoolListHeaders> response = BatchTestHelpers.CreateCloudPoolListResponse(idsOfConstructedPools);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ProxyModels.PoolListOptions, AzureOperationResponse<IEnumerable<ProxyModels.CloudPool>, ProxyModels.PoolListHeaders>>(response);
+            AzureOperationResponse<IPage<ProxyModels.CloudPool>, ProxyModels.PoolListHeaders> response = BatchTestHelpers.CreateCloudPoolListResponse(idsOfConstructedPools);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ProxyModels.PoolListOptions, AzureOperationResponse<IPage<ProxyModels.CloudPool>, ProxyModels.PoolListHeaders>>(response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later

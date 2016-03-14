@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             user.Password = options.Password;
             user.ExpiryTime = options.ExpiryTime;
             user.IsAdmin = options.IsAdmin;
-
+            
             WriteVerbose(string.Format(Resources.CreatingComputeNodeUser, user.Name, computeNodeId));
 
             user.Commit(ComputeNodeUserCommitSemantics.AddUser, options.AdditionalBehaviors);

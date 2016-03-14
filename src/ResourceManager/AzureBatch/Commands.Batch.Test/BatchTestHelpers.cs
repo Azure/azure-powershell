@@ -19,10 +19,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.Azure.Batch.Protocol.BatchRequests;
+using Microsoft.Rest;
 using Xunit;
 using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
 using Microsoft.Rest.Azure;
@@ -124,11 +127,6 @@ namespace Microsoft.Azure.Commands.Batch.Test
             {
                 BatchRequest<TOptions, TResponse> request = (BatchRequest<TOptions, TResponse>)baseRequest;
 
-                if (requestAction != null)
-                {
-                    requestAction(request);
-                }
-
                 request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     TResponse response = responseToUse;
@@ -136,6 +134,11 @@ namespace Microsoft.Azure.Commands.Batch.Test
                     if (responseToUse == null)
                     {
                         response = new TResponse();
+                    }
+
+                    if (requestAction != null)
+                    {
+                        requestAction(request);
                     }
 
                     Task<TResponse> task = Task.FromResult(response);
@@ -175,6 +178,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                     if (responseToUse == null)
                     {
                         response = new TResponse();
+                        response.Response = new HttpResponseMessage();
                     }
 
                     Task<TResponse> task = Task.FromResult(response);
@@ -200,7 +204,11 @@ namespace Microsoft.Azure.Commands.Batch.Test
                     fileRequest.ServiceRequestFunc = (cancellationToken) =>
                     {
                         var response = new AzureOperationResponse<System.IO.Stream, ProxyModels.FileGetFromTaskHeaders>();
+                        response.Headers = new ProxyModels.FileGetFromTaskHeaders();
+                        response.Body = new MemoryStream();
+
                         Task<AzureOperationResponse<System.IO.Stream, ProxyModels.FileGetFromTaskHeaders>> task = Task.FromResult(response);
+
                         return task;
                     };
                 }
@@ -211,7 +219,52 @@ namespace Microsoft.Azure.Commands.Batch.Test
                     propRequest.ServiceRequestFunc = (cancellationToken) =>
                     {
                         var response = new AzureOperationHeaderResponse<ProxyModels.FileGetNodeFilePropertiesFromTaskHeaders>();
+                        response.Headers = new ProxyModels.FileGetNodeFilePropertiesFromTaskHeaders();
+
                         Task<AzureOperationHeaderResponse<ProxyModels.FileGetNodeFilePropertiesFromTaskHeaders>> task = Task.FromResult(response);
+
+                        return task;
+                    };
+                }
+            });
+            return interceptor;
+        }
+
+        /// <summary>
+        /// Creates a RequestInterceptor that does not contact the Batch Service on a Get NodeFile or a Get NodeFile Properties call.
+        /// The interceptor must handle both request types since it's possible for one OM node file method to perform both REST APIs.
+        /// </summary>
+        /// <param name="fileName">The name of the file to put in the response body.</param>
+        public static RequestInterceptor CreateFakeGetFileAndPropertiesFromComputeNodeResponseInterceptor(string fileName)
+        {
+            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
+            {
+                FileGetFromComputeNodeBatchRequest fileRequest = baseRequest as FileGetFromComputeNodeBatchRequest;
+
+                if (fileRequest != null)
+                {
+                    fileRequest.ServiceRequestFunc = (cancellationToken) =>
+                    {
+                        var response = new AzureOperationResponse<System.IO.Stream, ProxyModels.FileGetFromComputeNodeHeaders>();
+                        response.Headers = new ProxyModels.FileGetFromComputeNodeHeaders();
+                        response.Body = new MemoryStream();
+
+                        Task<AzureOperationResponse<System.IO.Stream, ProxyModels.FileGetFromComputeNodeHeaders>> task = Task.FromResult(response);
+
+                        return task;
+                    };
+                }
+                else
+                {
+                    FileGetNodeFilePropertiesFromComputeNodeBatchRequest propRequest = (FileGetNodeFilePropertiesFromComputeNodeBatchRequest)baseRequest;
+
+                    propRequest.ServiceRequestFunc = (cancellationToken) =>
+                    {
+                        var response = new AzureOperationHeaderResponse<ProxyModels.FileGetNodeFilePropertiesFromComputeNodeHeaders>();
+                        response.Headers = new ProxyModels.FileGetNodeFilePropertiesFromComputeNodeHeaders();
+
+                        Task<AzureOperationHeaderResponse<ProxyModels.FileGetNodeFilePropertiesFromComputeNodeHeaders>> task = Task.FromResult(response);
+
                         return task;
                     };
                 }
@@ -225,7 +278,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         public static AzureOperationResponse<ProxyModels.Certificate, ProxyModels.CertificateGetHeaders> CreateCertificateGetResponse(string thumbprint)
         {
             var response = new AzureOperationResponse<ProxyModels.Certificate, ProxyModels.CertificateGetHeaders>();
-            response.Response.StatusCode = HttpStatusCode.OK;
+            response.Response = new HttpResponseMessage(HttpStatusCode.OK);
 
             ProxyModels.Certificate cert = new ProxyModels.Certificate();
             cert.Thumbprint = thumbprint;
@@ -238,11 +291,11 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// <summary>
         /// Builds a CertificateListResponse object
         /// </summary>
-        public static AzureOperationResponse<IEnumerable<ProxyModels.Certificate>, ProxyModels.CertificateListHeaders> CreateCertificateListResponse(IEnumerable<string> certThumbprints)
+        public static AzureOperationResponse<IPage<ProxyModels.Certificate>, ProxyModels.CertificateListHeaders> CreateCertificateListResponse(IEnumerable<string> certThumbprints)
         {
-            var response = new AzureOperationResponse<IEnumerable<ProxyModels.Certificate>, ProxyModels.CertificateListHeaders>();
-            response.Response.StatusCode = HttpStatusCode.OK;
-
+            var response = new AzureOperationResponse<IPage<ProxyModels.Certificate>, ProxyModels.CertificateListHeaders>();
+            response.Response = new HttpResponseMessage(HttpStatusCode.OK);
+            
             List<ProxyModels.Certificate> certs = new List<ProxyModels.Certificate>();
 
             foreach (string t in certThumbprints)
@@ -252,7 +305,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 certs.Add(cert);
             }
 
-            response.Body = certs;
+            response.Body = new MockPage<ProxyModels.Certificate>(certs);
 
             return response;
         }
@@ -263,7 +316,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         public static AzureOperationResponse<ProxyModels.CloudPool, ProxyModels.PoolGetHeaders> CreateCloudPoolGetResponse(string poolId)
         {
             var response = new AzureOperationResponse<ProxyModels.CloudPool, ProxyModels.PoolGetHeaders>();
-            response.Response.StatusCode = HttpStatusCode.OK;
+            response.Response = new HttpResponseMessage(HttpStatusCode.OK);
 
             ProxyModels.CloudPool pool = new ProxyModels.CloudPool();
             pool.Id = poolId;
@@ -276,11 +329,10 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// <summary>
         /// Builds a CloudPoolListResponse object
         /// </summary>
-        public static AzureOperationResponse<IEnumerable<ProxyModels.CloudPool>, ProxyModels.PoolListHeaders> CreateCloudPoolListResponse(IEnumerable<string> poolIds)
+        public static AzureOperationResponse<IPage<ProxyModels.CloudPool>, ProxyModels.PoolListHeaders> CreateCloudPoolListResponse(IEnumerable<string> poolIds)
         {
-            var response = new AzureOperationResponse<IEnumerable<ProxyModels.CloudPool>, ProxyModels.PoolListHeaders>();
-
-            response.Response.StatusCode = HttpStatusCode.OK;
+            var response = new AzureOperationResponse<IPage<ProxyModels.CloudPool>, ProxyModels.PoolListHeaders>();
+            response.Response = new HttpResponseMessage(HttpStatusCode.OK);
 
             List<ProxyModels.CloudPool> pools = new List<ProxyModels.CloudPool>();
 
@@ -291,7 +343,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 pools.Add(pool);
             }
 
-            response.Body = pools;
+            response.Body = new MockPage<ProxyModels.CloudPool>(pools);
 
             return response;
         }
@@ -302,10 +354,11 @@ namespace Microsoft.Azure.Commands.Batch.Test
         public static AzureOperationResponse<ProxyModels.ComputeNode, ProxyModels.ComputeNodeGetHeaders> CreateComputeNodeGetResponse(string computeNodeId)
         {
             var response = new AzureOperationResponse<ProxyModels.ComputeNode, ProxyModels.ComputeNodeGetHeaders>();
-            response.Response.StatusCode = HttpStatusCode.OK;
+            response.Response = new HttpResponseMessage(HttpStatusCode.OK);
 
             ProxyModels.ComputeNode computeNode = new ProxyModels.ComputeNode();
             computeNode.Id = computeNodeId;
+
             response.Body = computeNode;
 
             return response;
@@ -314,10 +367,10 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// <summary>
         /// Builds a ComputeNodeListResponse object
         /// </summary>
-        public static AzureOperationResponse<IEnumerable<ProxyModels.ComputeNode>, ProxyModels.ComputeNodeListHeaders> CreateComputeNodeListResponse(IEnumerable<string> computeNodeIds)
+        public static AzureOperationResponse<IPage<ProxyModels.ComputeNode>, ProxyModels.ComputeNodeListHeaders> CreateComputeNodeListResponse(IEnumerable<string> computeNodeIds)
         {
-            var response = new AzureOperationResponse<IEnumerable<ProxyModels.ComputeNode>, ProxyModels.ComputeNodeListHeaders>();
-            response.Response.StatusCode = HttpStatusCode.OK;
+            var response = new AzureOperationResponse<IPage<ProxyModels.ComputeNode>, ProxyModels.ComputeNodeListHeaders>();
+            response.Response = new HttpResponseMessage(HttpStatusCode.OK);
 
             List<ProxyModels.ComputeNode> computeNodes = new List<ProxyModels.ComputeNode>();
 
@@ -328,7 +381,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 computeNodes.Add(computeNode);
             }
 
-            response.Body = computeNodes;
+            response.Body = new MockPage<ProxyModels.ComputeNode>(computeNodes);
 
             return response;
         }
@@ -339,7 +392,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         public static AzureOperationResponse<ProxyModels.CloudJobSchedule, ProxyModels.JobScheduleGetHeaders> CreateCloudJobScheduleGetResponse(string jobScheduleId)
         {
             var response = new AzureOperationResponse<ProxyModels.CloudJobSchedule, ProxyModels.JobScheduleGetHeaders>();
-            response.Response.StatusCode = HttpStatusCode.OK;
+            response.Response = new HttpResponseMessage(HttpStatusCode.OK);
 
             ProxyModels.JobSpecification jobSpec = new ProxyModels.JobSpecification();
             ProxyModels.Schedule schedule = new ProxyModels.Schedule();
@@ -353,10 +406,10 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// <summary>
         /// Builds a CloudJobScheduleListResponse object
         /// </summary>
-        public static AzureOperationResponse<IEnumerable<ProxyModels.CloudJobSchedule>, ProxyModels.JobScheduleListHeaders> CreateCloudJobScheduleListResponse(IEnumerable<string> jobScheduleIds)
+        public static AzureOperationResponse<IPage<ProxyModels.CloudJobSchedule>, ProxyModels.JobScheduleListHeaders> CreateCloudJobScheduleListResponse(IEnumerable<string> jobScheduleIds)
         {
-            var response = new AzureOperationResponse<IEnumerable<ProxyModels.CloudJobSchedule>, ProxyModels.JobScheduleListHeaders>();
-            response.Response.StatusCode = HttpStatusCode.OK;
+            var response = new AzureOperationResponse<IPage<ProxyModels.CloudJobSchedule>, ProxyModels.JobScheduleListHeaders>();
+            response.Response = new HttpResponseMessage(HttpStatusCode.OK);
 
             List<ProxyModels.CloudJobSchedule> jobSchedules = new List<ProxyModels.CloudJobSchedule>();
             ProxyModels.JobSpecification jobSpec = new ProxyModels.JobSpecification();
@@ -367,7 +420,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 jobSchedules.Add(new ProxyModels.CloudJobSchedule(id: id, schedule: schedule, jobSpecification: jobSpec));
             }
 
-            response.Body = jobSchedules;
+            response.Body = new MockPage<ProxyModels.CloudJobSchedule>(jobSchedules);
 
             return response;
         }
@@ -378,7 +431,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         public static AzureOperationResponse<ProxyModels.CloudJob, ProxyModels.JobGetHeaders> CreateCloudJobGetResponse(string jobId)
         {
             var response = new AzureOperationResponse<ProxyModels.CloudJob, ProxyModels.JobGetHeaders>();
-            response.Response.StatusCode = HttpStatusCode.OK;
+            response.Response = new HttpResponseMessage(HttpStatusCode.OK);
 
             ProxyModels.CloudJob job = new ProxyModels.CloudJob();
             job.Id = jobId;
@@ -391,10 +444,10 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// <summary>
         /// Builds a CloudJobListResponse object
         /// </summary>
-        public static AzureOperationResponse<IEnumerable<ProxyModels.CloudJob>, ProxyModels.JobListHeaders> CreateCloudJobListResponse(IEnumerable<string> jobIds)
+        public static AzureOperationResponse<IPage<ProxyModels.CloudJob>, ProxyModels.JobListHeaders> CreateCloudJobListResponse(IEnumerable<string> jobIds)
         {
-            var response = new AzureOperationResponse<IEnumerable<ProxyModels.CloudJob>, ProxyModels.JobListHeaders>();
-            response.Response.StatusCode = HttpStatusCode.OK;
+            var response = new AzureOperationResponse<IPage<ProxyModels.CloudJob>, ProxyModels.JobListHeaders>();
+            response.Response = new HttpResponseMessage(HttpStatusCode.OK);
 
             List<ProxyModels.CloudJob> jobs = new List<ProxyModels.CloudJob>();
 
@@ -404,8 +457,8 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 job.Id = id;
                 jobs.Add(job);
             }
-
-            response.Body = jobs;
+            
+            response.Body = new MockPage<ProxyModels.CloudJob>(jobs);
 
             return response;
         }
@@ -416,7 +469,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         public static AzureOperationResponse<ProxyModels.CloudTask, ProxyModels.TaskGetHeaders> CreateCloudTaskGetResponse(string taskId)
         {
             var response = new AzureOperationResponse<ProxyModels.CloudTask, ProxyModels.TaskGetHeaders>();
-            response.Response.StatusCode = HttpStatusCode.OK;
+            response.Response = new HttpResponseMessage(HttpStatusCode.OK);
 
             ProxyModels.CloudTask task = new ProxyModels.CloudTask();
             task.Id = taskId;
@@ -429,9 +482,9 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// <summary>
         /// Builds a CloudTaskListResponse object
         /// </summary>
-        public static AzureOperationResponse<IEnumerable<ProxyModels.CloudTask>, ProxyModels.TaskListHeaders> CreateCloudTaskListResponse(IEnumerable<string> taskIds)
+        public static AzureOperationResponse<IPage<ProxyModels.CloudTask>, ProxyModels.TaskListHeaders> CreateCloudTaskListResponse(IEnumerable<string> taskIds)
         {
-            var response = new AzureOperationResponse<IEnumerable<ProxyModels.CloudTask>, ProxyModels.TaskListHeaders>(); 
+            var response = new AzureOperationResponse<IPage<ProxyModels.CloudTask>, ProxyModels.TaskListHeaders>(); 
             response.Response.StatusCode= HttpStatusCode.OK;
 
             List<ProxyModels.CloudTask> tasks = new List<ProxyModels.CloudTask>();
@@ -443,7 +496,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 tasks.Add(task);
             }
 
-            response.Body = tasks;
+            response.Body = new MockPage<ProxyModels.CloudTask>(tasks);
 
             return response;
         }
@@ -454,7 +507,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         public static AzureOperationResponse<ProxyModels.CloudTaskListSubtasksResult, ProxyModels.TaskListSubtasksHeaders> CreateCloudTaskListSubtasksResponse(IEnumerable<int> subtaskIds)
         {
             var response = new AzureOperationResponse<ProxyModels.CloudTaskListSubtasksResult, ProxyModels.TaskListSubtasksHeaders>();
-            response.Response.StatusCode = HttpStatusCode.OK;
+            response.Response = new HttpResponseMessage(HttpStatusCode.OK);
 
             List<ProxyModels.SubtaskInformation> subtasks = new List<ProxyModels.SubtaskInformation>();
             ProxyModels.CloudTaskListSubtasksResult subtasksResult = new ProxyModels.CloudTaskListSubtasksResult();
@@ -478,8 +531,8 @@ namespace Microsoft.Azure.Commands.Batch.Test
         public static AzureOperationHeaderResponse<ProxyModels.FileGetNodeFilePropertiesFromTaskHeaders> CreateNodeFileGetPropertiesByTaskResponse()
         {
             var response = new AzureOperationHeaderResponse<ProxyModels.FileGetNodeFilePropertiesFromTaskHeaders>();
-            response.Response.StatusCode = HttpStatusCode.OK;
-
+            response.Response = new HttpResponseMessage(HttpStatusCode.OK);
+            response.Headers = new ProxyModels.FileGetNodeFilePropertiesFromTaskHeaders();
             return response;
         }
 
@@ -489,18 +542,29 @@ namespace Microsoft.Azure.Commands.Batch.Test
         public static AzureOperationHeaderResponse<ProxyModels.FileGetNodeFilePropertiesFromComputeNodeHeaders> CreateNodeFileGetPropertiesByComputeNodeResponse()
         {
             var response = new AzureOperationHeaderResponse<ProxyModels.FileGetNodeFilePropertiesFromComputeNodeHeaders>();
-            response.Response.StatusCode = HttpStatusCode.OK;
+            response.Response = new HttpResponseMessage(HttpStatusCode.OK);
+            response.Headers = new ProxyModels.FileGetNodeFilePropertiesFromComputeNodeHeaders();
+            return response;
+        }
 
+        /// <summary>
+        /// Builds a NodeFileGetPropertiesResponse object
+        /// </summary>
+        public static AzureOperationResponse<System.IO.Stream, ProxyModels.FileGetFromComputeNodeHeaders> CreateNodeFileByComputeNodeResponse()
+        {
+            var response = new AzureOperationResponse<System.IO.Stream, ProxyModels.FileGetFromComputeNodeHeaders>();
+            response.Response = new HttpResponseMessage(HttpStatusCode.OK);
+            response.Headers = new ProxyModels.FileGetFromComputeNodeHeaders();
             return response;
         }
 
         /// <summary>
         /// Builds a NodeFileListResponse object
         /// </summary>
-        public static AzureOperationResponse<IEnumerable<ProxyModels.NodeFile>, ProxyModels.FileListFromTaskHeaders> CreateNodeFileListByTaskResponse(IEnumerable<string> fileNames)
+        public static AzureOperationResponse<IPage<ProxyModels.NodeFile>, ProxyModels.FileListFromTaskHeaders> CreateNodeFileListByTaskResponse(IEnumerable<string> fileNames)
         {
-            var response = new AzureOperationResponse<IEnumerable<ProxyModels.NodeFile>, ProxyModels.FileListFromTaskHeaders>();
-            response.Response.StatusCode = HttpStatusCode.OK;
+            var response = new AzureOperationResponse<IPage<ProxyModels.NodeFile>, ProxyModels.FileListFromTaskHeaders>();
+            response.Response = new HttpResponseMessage(HttpStatusCode.OK);
 
             List<ProxyModels.NodeFile> files = new List<ProxyModels.NodeFile>();
 
@@ -511,7 +575,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 files.Add(file);
             }
 
-            response.Body = files;
+            response.Body = new MockPage<ProxyModels.NodeFile>(files);
 
             return response;
         }
@@ -519,13 +583,13 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// <summary>
         /// Builds a NodeFileListResponse object
         /// </summary>
-        public static AzureOperationResponse<IEnumerable<ProxyModels.NodeFile>, ProxyModels.FileListFromComputeNodeHeaders> CreateNodeFileListByComputeNodeResponse(IEnumerable<string> fileNames)
+        public static AzureOperationResponse<IPage<ProxyModels.NodeFile>, ProxyModels.FileListFromComputeNodeHeaders> CreateNodeFileListByComputeNodeResponse(IEnumerable<string> fileNames)
         {
-            var response = new AzureOperationResponse<IEnumerable<ProxyModels.NodeFile>, ProxyModels.FileListFromComputeNodeHeaders>();
-            response.Response.StatusCode = HttpStatusCode.OK;
+            var response = new AzureOperationResponse<IPage<ProxyModels.NodeFile>, ProxyModels.FileListFromComputeNodeHeaders>();
+            response.Response = new HttpResponseMessage(HttpStatusCode.OK);
 
             List<ProxyModels.NodeFile> files = new List<ProxyModels.NodeFile>();
-
+            
             foreach (string name in fileNames)
             {
                 ProxyModels.NodeFile file = new ProxyModels.NodeFile();
@@ -533,7 +597,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 files.Add(file);
             }
 
-            response.Body = files;
+            response.Body = new MockPage<ProxyModels.NodeFile>(files);
 
             return response;
         }

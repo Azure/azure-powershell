@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Certificates
             cmdlet.FilePath = BatchTestHelpers.TestCertificateFileName1;
 
             // Don't go to the service on an Add Certificate call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CertificateAddOptions, AzureOperationHeaderResponse<CertificateAddHeaders>>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CertificateAddParameter, CertificateAddOptions, AzureOperationHeaderResponse<CertificateAddHeaders>>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameters are set
