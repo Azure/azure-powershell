@@ -44,6 +44,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
         public override void ExecuteCmdlet()
         {
+            //Validate start time < end time
+            if(StartDate >= EndDate)
+            {
+                throw new Exception("End date should be greated than start date"); //tbd: Correct nsg and exception type
+            }
             base.ExecuteCmdlet();
             PsBackupProviderManager providerManager = new PsBackupProviderManager(new Dictionary<System.Enum, object>()
             {

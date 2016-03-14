@@ -62,6 +62,7 @@
     <Compile Include="BMSAPIs\JobAPIs.cs" />
     <Compile Include="BMSAPIs\ItemAPIs.cs" />
     <Compile Include="BMSAPIs\ContainerAPIs.cs" />
+    <Compile Include="BMSAPIs\RecoveryPointsAPIs.cs" />
     <Compile Include="ClientProxy.cs" />
     <Compile Include="ClientProxyBase.cs" />
     <Compile Include="HydraAdapter.cs" />

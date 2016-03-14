@@ -18,14 +18,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
     public class IaasVmPsBackupProvider : IPsBackupProvider
     {
+        private ProviderData providerData;
+        private HydraAdapter.HydraAdapter hydraAdapter;
         public void Initialize(ProviderData providerData, HydraAdapter.HydraAdapter hydraAdapter)
         {
-            throw new NotImplementedException();
+            this.providerData = providerData;
+            this.hydraAdapter = hydraAdapter;
         }
 
         public BaseRecoveryServicesJobResponse EnableProtection()
@@ -53,9 +58,46 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        public RecoveryPointResponse GetRecoveryPoint()
+        public List<AzureRmRecoveryServicesRecoveryPointBase> GetRecoveryPoint()
         {
-            throw new NotImplementedException();
+            RecoveryPointResponse response = null;
+            DateTime startDate = (DateTime)(providerData.ProviderParameters[GetRecoveryPointParams.StartDate]);
+            DateTime endDate = (DateTime)(providerData.ProviderParameters[GetRecoveryPointParams.EndDate]);
+            AzureRmRecoveryServicesItemBase item = providerData.ProviderParameters[GetRecoveryPointParams.Item]
+                as AzureRmRecoveryServicesItemBase;
+            
+            string recoveryPointId = providerData.ProviderParameters[GetRecoveryPointParams.RecoveryPointId].ToString();
+
+            if(item == null)
+            {
+                throw new InvalidCastException("Cant convert input to AzureRmRecoveryServicesItemBase");
+            }
+
+            string containerName = item.ContainerName;
+            string protectedItemName = item.Name;
+
+            TimeSpan duration = endDate - startDate;
+
+            if(duration.TotalDays > 30)
+            {
+                throw new Exception("Time difference should not be more than 30 days"); //tbd: Correct nsg and exception type
+            }
+
+            if(string.IsNullOrEmpty(recoveryPointId))
+            {
+                //we need to fetch the list of RPs
+                RecoveryPointQueryParameters queryFilter = new RecoveryPointQueryParameters();
+                queryFilter.StartDate = HydraHelpers.GetDateTimeStringForService(startDate);
+                queryFilter.EndDate = HydraHelpers.GetDateTimeStringForService(endDate);
+
+                var result = hydraAdapter.GetRecoveryPoints(containerName, protectedItemName, queryFilter);
+            }
+            else
+            {
+                var result = hydraAdapter.GetRecoveryPointDetails(containerName, protectedItemName, recoveryPointId);
+            }
+
+            List<AzureRmRecoveryServicesRecoveryPointBase> abc = 
         }
 
         public ProtectionPolicyResponse CreatePolicy()
