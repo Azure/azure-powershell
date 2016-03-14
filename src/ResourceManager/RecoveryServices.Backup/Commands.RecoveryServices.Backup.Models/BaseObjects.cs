@@ -176,4 +176,50 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         {
         }
     }
+
+    public class AzureRmRecoveryServicesJobBase : AzureRmRecoveryServicesObjectBase
+    {
+        public string ActivityId { get; set; }
+
+        public string InstanceId { get; set; }
+
+        public string Operation { get; set; }
+
+        public string Status { get; set; }
+
+        public string WorkloadName { get; set; }
+
+        public string BackupManagementType { get; set; }
+
+        public DateTime StartTime { get; set; }
+
+        public DateTime? EndTime { get; set; }
+
+        public TimeSpan Duration { get; set; }
+
+        public override void Validate()
+        {
+            base.Validate();
+        }
+    }
+
+    /// <summary>
+    /// This class is does not represent first class resource. So, we are not inheriting from the base class.
+    /// </summary>
+    public class AzureRmRecoveryServicesJobErrorInfoBase
+    {
+        public string ErrorMessage { get; set; }
+
+        public List<string> Recommendations { get; set; }
+    }
+
+    /// <summary>
+    /// This class is does not represent a first class resource. So, we are not inheriting from the common base class.
+    /// </summary>
+    public class AzureRmRecoveryServicesJobSubTaskBase
+    {
+        public string Name { get; set; }
+
+        public string Status { get; set; }
+    }
 }
