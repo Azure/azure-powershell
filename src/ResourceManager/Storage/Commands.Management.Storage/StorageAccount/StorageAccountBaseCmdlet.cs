@@ -42,11 +42,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         protected struct AccountTypeString
         {
-            internal const string StandardLRS = "Standard_LRS";
-            internal const string StandardZRS = "Standard_ZRS";
-            internal const string StandardGRS = "Standard_GRS";
-            internal const string StandardRAGRS = "Standard_RAGRS";
-            internal const string PremiumLRS = "Premium_LRS";
+            internal const string StandardLRS = "StandardLRS";
+            internal const string StandardZRS = "StandardZRS";
+            internal const string StandardGRS = "StandardGRS";
+            internal const string StandardRAGRS = "StandardRAGRS";
+            internal const string PremiumLRS = "PremiumLRS";
         }
         
         public IStorageManagementClient StorageClient
@@ -78,23 +78,23 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         protected static AccountType ParseAccountType(string accountType)
         {
-            if ("Standard_LRS".Equals(accountType, StringComparison.OrdinalIgnoreCase))
+            if (AccountTypeString.StandardLRS.Equals(accountType, StringComparison.OrdinalIgnoreCase))
             {
                 return AccountType.StandardLRS;
             }
-            if ("Standard_ZRS".Equals(accountType, StringComparison.OrdinalIgnoreCase))
+            if (AccountTypeString.StandardZRS.Equals(accountType, StringComparison.OrdinalIgnoreCase))
             {
                 return AccountType.StandardZRS;
             }
-            if ("Standard_GRS".Equals(accountType, StringComparison.OrdinalIgnoreCase))
+            if (AccountTypeString.StandardGRS.Equals(accountType, StringComparison.OrdinalIgnoreCase))
             {
                 return AccountType.StandardGRS;
             }
-            if ("Standard_RAGRS".Equals(accountType, StringComparison.OrdinalIgnoreCase))
+            if (AccountTypeString.StandardRAGRS.Equals(accountType, StringComparison.OrdinalIgnoreCase))
             {
                 return AccountType.StandardRAGRS;
             }
-            if ("Premium_LRS".Equals(accountType, StringComparison.OrdinalIgnoreCase))
+            if (AccountTypeString.PremiumLRS.Equals(accountType, StringComparison.OrdinalIgnoreCase))
             {
                 return AccountType.PremiumLRS;
             }
