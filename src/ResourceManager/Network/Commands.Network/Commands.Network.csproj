@@ -265,7 +265,6 @@
     <Compile Include="ExpressRouteCircuit\RemoveAzureExpressRouteCircuitCommand.cs" />
     <Compile Include="ExpressRouteCircuit\SetAzureExpressRouteCircuitCommand.cs" />
     <Compile Include="ExpressRouteCircuit\ExpressRouteCircuitBaseCmdlet.cs" />
-    <Compile Include="Models\PSBgpSettings.cs" />
     <Compile Include="Models\PSApplicationGateway.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendAddress.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendAddressPool.cs" />
