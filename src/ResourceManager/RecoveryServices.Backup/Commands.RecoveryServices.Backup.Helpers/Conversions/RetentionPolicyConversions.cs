@@ -25,11 +25,30 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
     public partial class PolicyHelpers
     {
         #region HydraToPSObject conversions
+
+        #region public
         public static AzureRmRecoveryServicesLongTermRetentionPolicy GetPSLongTermRetentionPolicy(
             LongTermRetentionPolicy hydraRetPolicy)
         {
+            AzureRmRecoveryServicesLongTermRetentionPolicy ltrPolicy = new AzureRmRecoveryServicesLongTermRetentionPolicy();
+
+            // TBD
+
+            return ltrPolicy;            
+        }
+
+        public static AzureRmRecoveryServicesLongTermRetentionPolicy GetPSSimpleRetentionPolicy(
+           SimpleRetentionPolicy hydraRetPolicy)
+        {
             throw new NotImplementedException();
         }
+        #endregion
+
+        #region private
+
+        // TBD
+
+        #endregion
 
         #endregion
 
@@ -37,8 +56,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         public static LongTermRetentionPolicy GetHydraLongTermRetentionPolicy(
             AzureRmRecoveryServicesLongTermRetentionPolicy psRetPolicy)
         {
+            LongTermRetentionPolicy hydraRetPolicy = new LongTermRetentionPolicy();
+
+            // TBD
+
+            return hydraRetPolicy;
+        }
+
+        public static SimpleRetentionPolicy GetHydraSimpleRetentionPolicy(
+            AzureRmRecoveryServicesSimpleSchedulePolicy psRetPolicy)
+        {
             throw new NotImplementedException();
         }
+
+        #region private
+
+        // TBD
+
+        #endregion
 
         #endregion
     }

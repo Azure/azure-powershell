@@ -71,6 +71,12 @@
   <ItemGroup>
     <Content Include="Resources\Microsoft.Azure.Management.RecoveryServicesBackupManagement.dll" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Commands.RecoveryServices.Backup.Models\Commands.RecoveryServices.Backup.Models.csproj">
+      <Project>{30b92759-50b3-494e-b9f0-ec9a2ce9d57b}</Project>
+      <Name>Commands.RecoveryServices.Backup.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

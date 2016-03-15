@@ -97,6 +97,15 @@ namespace RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Caught exception, type: {0}..
+        /// </summary>
+        internal static string ExceptionInExecution {
+            get {
+                return ResourceManager.GetString("ExceptionInExecution", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The specified resource does not exist..
         /// </summary>
         internal static string ResourceNotFoundMessage {

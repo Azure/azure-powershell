@@ -129,6 +129,9 @@
   <data name="CloudExceptionCodeNotFound" xml:space="preserve">
     <value>Received CloudException, StatusCode: {0}.</value>
   </data>
+  <data name="ExceptionInExecution" xml:space="preserve">
+    <value>Caught exception, type: {0}.</value>
+  </data>
   <data name="ResourceNotFoundMessage" xml:space="preserve">
     <value>The specified resource does not exist.</value>
   </data>
