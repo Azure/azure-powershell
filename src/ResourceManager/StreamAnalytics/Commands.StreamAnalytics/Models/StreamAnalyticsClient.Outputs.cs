@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
                         parameter.ResourceGroupName),
                     parameter.OutputName,
                     createOutput,
-                    () => CheckOutputExists(parameter.ResourceGroupName, parameter.JobName, parameter.OutputName));
+                    () => CheckOutputExists(parameter.ResourceGroupName, parameter.JobName, parameter.OutputName, parameter.Force));
             return output;
         }
 
@@ -159,8 +159,13 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             return StreamAnalyticsManagementClient.Outputs.TestConnection(resourceGroupName, jobName, outputName);
         }
 
-        private bool CheckOutputExists(string resourceGroupName, string jobName, string outputName)
+        private bool CheckOutputExists(string resourceGroupName, string jobName, string outputName, bool overwrite)
         {
+            if (overwrite)
+            {
+                return false;
+            }
+
             try
             {
                 PSOutput output = GetOutput(resourceGroupName, jobName, outputName);

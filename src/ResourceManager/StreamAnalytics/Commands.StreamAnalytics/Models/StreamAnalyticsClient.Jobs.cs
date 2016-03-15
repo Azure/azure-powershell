@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
                         parameter.ResourceGroupName),
                     parameter.JobName,
                     createJob,
-                    () => CheckJobExists(parameter.ResourceGroupName, parameter.JobName));
+                    () => CheckJobExists(parameter.ResourceGroupName, parameter.JobName, parameter.Force));
             return job;
         }
 
@@ -212,8 +212,13 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             return RemovePSJob(parameter.ResourceGroupName, parameter.JobName);
         }
 
-        private bool CheckJobExists(string resourceGroupName, string jobName)
+        private bool CheckJobExists(string resourceGroupName, string jobName, bool overwrite)
         {
+            if (overwrite)
+            {
+                return false;
+            }
+
             try
             {
                 PSJob job = GetJob(resourceGroupName, jobName, string.Empty);

@@ -90,12 +90,18 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
                         parameter.ResourceGroupName),
                     parameter.TransformationName,
                     createTransformation,
-                    () => CheckTransformationExists(parameter.ResourceGroupName, parameter.JobName, parameter.TransformationName));
+                    () => CheckTransformationExists(parameter.ResourceGroupName, parameter.JobName, 
+                        parameter.TransformationName, parameter.Force));
             return transformation;
         }
 
-        private bool CheckTransformationExists(string resourceGroupName, string jobName, string transformationName)
+        private bool CheckTransformationExists(string resourceGroupName, string jobName, string transformationName, bool overwrite)
         {
+            if (overwrite)
+            {
+                return false;
+            }
+
             try
             {
                 PSTransformation transformation = GetTransformation(resourceGroupName, jobName, transformationName);

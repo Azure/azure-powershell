@@ -122,12 +122,17 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                     workspaceName),
                 savedSearchId,
                 createSavedSearch,
-                () => CheckSavedSearchExists(resourceGroupName, workspaceName, savedSearchId));
+                () => CheckSavedSearchExists(resourceGroupName, workspaceName, savedSearchId, force));
             return status;
         }
 
-        private bool CheckSavedSearchExists(string resourceGroupName, string workspaceName, string savedSearchId)
+        private bool CheckSavedSearchExists(string resourceGroupName, string workspaceName, string savedSearchId, bool force = false)
         {
+            if (force)
+            {
+                return false;
+            }
+
             try
             {
                 PSSearchGetSavedSearchResponse savedSearch = GetSavedSearch(resourceGroupName, workspaceName, savedSearchId);

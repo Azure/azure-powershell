@@ -342,7 +342,7 @@ function Test-RemoveDatabaseInternal  ($serverVersion, $location = "Japan East")
         
         Remove-AzureRmSqlDatabase -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $db1.DatabaseName -Confirm:$false
 
-        $db2 | Remove-AzureRmSqlDatabase -Force
+        $db2 | Remove-AzureRmSqlDatabase
 
         $all = $server | Get-AzureRmSqlDatabase
         Assert-AreEqual $all.Count 1 # 1 because master database is included

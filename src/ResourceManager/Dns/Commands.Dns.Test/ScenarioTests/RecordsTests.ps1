@@ -242,7 +242,7 @@ function Test-RecordSetA
 	Assert-AreEqual 1 $listResult[0].Records.Count
 	Assert-AreEqual "2.2.2.2" $listResult[0].Records[0].Ipv4Address
 
-	$removed = $listResult[0] | Remove-AzureRmDnsRecordSet -Force -PassThru
+	$removed = $listResult[0] | Remove-AzureRmDnsRecordSet -PassThru
 
 	Assert-True { $removed }
 
@@ -282,7 +282,7 @@ function Test-RecordSetAAAA
 	Assert-AreEqual "1::11" $listResult[0].Records[0].Ipv6Address
 	Assert-AreEqual "4::44" $listResult[0].Records[1].Ipv6Address
 
-	$removed = $listResult[0] | Remove-AzureRmDnsRecordSet -Force -PassThru
+	$removed = $listResult[0] | Remove-AzureRmDnsRecordSet -PassThru
 
 	Assert-True { $removed }
 
@@ -319,7 +319,7 @@ function Test-RecordSetCNAME
 	Assert-AreEqual 1 $listResult[0].Records.Count
 	Assert-AreEqual "www.contoso.com" $listResult[0].Records[0].Cname
 
-	$removed = $listResult[0] | Remove-AzureRmDnsRecordSet -Force -PassThru
+	$removed = $listResult[0] | Remove-AzureRmDnsRecordSet -PassThru
 
 	Assert-True { $removed }
 
@@ -358,7 +358,7 @@ function Test-RecordSetMX
 	Assert-AreEqual "mail2.theg.com" $listResult[0].Records[0].Exchange
 	Assert-AreEqual 10 $listResult[0].Records[0].Preference
 
-	$removed = $listResult[0] | Remove-AzureRmDnsRecordSet -Force -PassThru
+	$removed = $listResult[0] | Remove-AzureRmDnsRecordSet -PassThru
 
 	Assert-True { $removed }
 
@@ -400,7 +400,7 @@ function Test-RecordSetNS
 	Assert-AreEqual "ns1.example.com" $listResult[1].Records[0].Nsdname
 	Assert-AreEqual "ns2.example.com" $listResult[1].Records[1].Nsdname
 
-	$removed = $listResult[1] | Remove-AzureRmDnsRecordSet -Force -PassThru
+	$removed = $listResult[1] | Remove-AzureRmDnsRecordSet -PassThru
 
 	Assert-True { $removed }
 
@@ -440,7 +440,7 @@ function Test-RecordSetTXT
 	Assert-AreEqual text2 $listResult[0].Records[0].Value
 	Assert-AreEqual text3 $listResult[0].Records[1].Value
 
-	$removed = $listResult[0] | Remove-AzureRmDnsRecordSet -Force -PassThru
+	$removed = $listResult[0] | Remove-AzureRmDnsRecordSet -PassThru
 
 	Assert-True { $removed }
 
@@ -483,7 +483,7 @@ function Test-RecordSetSRV
 	Assert-AreEqual ns1.example.com $listResult[0].Records[0].Target
 	Assert-AreEqual 5 $listResult[0].Records[0].Weight
 
-	$removed = $listResult[0] | Remove-AzureRmDnsRecordSet -Force -PassThru
+	$removed = $listResult[0] | Remove-AzureRmDnsRecordSet -PassThru
 
 	Assert-True { $removed }
 
@@ -530,7 +530,7 @@ function Test-RecordSetSOA
 	Assert-AreEqual 321 $listResult[0].Records[0].MinimumTtl
 	Assert-AreEqual 110901 $listResult[0].Ttl
 
-	Assert-Throws { $listResult[0] | Remove-AzureRmDnsRecordSet -Force -PassThru } "BadRequest: Records of type 'SOA' cannot be deleted."
+	Assert-Throws { $listResult[0] | Remove-AzureRmDnsRecordSet -PassThru } "BadRequest: Records of type 'SOA' cannot be deleted."
 
 	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
 }
@@ -558,8 +558,8 @@ function Test-RecordSetNewAlreadyExists
 	Assert-AreEqual 999 $retrievedRecordSet.Ttl
 	Assert-AreEqual 2 $retrievedRecordSet.Records.Count
 
-	$retrievedRecordSet | Remove-AzureRmDnsRecordSet -Force
-	$zone | Remove-AzureRmDnsZone -Force
+	$retrievedRecordSet | Remove-AzureRmDnsRecordSet
+	$zone | Remove-AzureRmDnsZone
 }
 
 <#
@@ -574,7 +574,7 @@ function Test-RecordSetAddRecordTypeMismatch
 	
 	Assert-Throws { $recordSet | Add-AzureRmDnsRecordConfig -Ipv6Address 3::90 } "Cannot add a record of type AAAA to a record set of type MX. The types must match."
 
-	$recordSet | Remove-AzureRmDnsRecordSet -Force
+	$recordSet | Remove-AzureRmDnsRecordSet
 	Remove-AzureRmDnsZone -Name $recordSet.ZoneName -ResourceGroupName $recordSet.ResourceGroupName -Confirm:$false
 }
 
@@ -598,7 +598,7 @@ function Test-RecordSetAddTwoCnames
 	Assert-AreEqual 1 $recordSet.Records.Count
 	Assert-AreEqual rubadub.dub $recordSet.Records[0].Cname
 
-	$recordSet | Remove-AzureRmDnsRecordSet -Force
+	$recordSet | Remove-AzureRmDnsRecordSet
 	Remove-AzureRmDnsZone -Name $recordSet.ZoneName -ResourceGroupName $recordSet.ResourceGroupName -Confirm:$false
 }
 
@@ -614,7 +614,7 @@ function Test-RecordSetRemoveRecordTypeMismatch
 	
 	Assert-Throws { $recordSet | Remove-AzureRmDnsRecordConfig -Nsdname nsa.fed.gov } "Cannot remove a record of type NS from a record set of type TXT. The types must match."
 
-	$recordSet | Remove-AzureRmDnsRecordSet -Force
+	$recordSet | Remove-AzureRmDnsRecordSet
 	Remove-AzureRmDnsZone -Name $recordSet.ZoneName -ResourceGroupName $recordSet.ResourceGroupName -Confirm:$false
 }
 
@@ -637,7 +637,7 @@ function Test-RecordSetEtagMismatch
 	Assert-AreNotEqual "gibberish" $updatedRecordSet.Etag
 	Assert-AreNotEqual $recordSet.Etag $updatedRecordSet.Etag
 
-	Assert-Throws { $recordSet | Remove-AzureRmDnsRecordSet -Force } "PreconditionFailed: The condition 'gibberish' in the If-Match header was not satisfied. The current was '$($updatedRecordSet.Etag)'."
+	Assert-Throws { $recordSet | Remove-AzureRmDnsRecordSet } "PreconditionFailed: The condition 'gibberish' in the If-Match header was not satisfied. The current was '$($updatedRecordSet.Etag)'."
 
 	Assert-True { $recordSet | Remove-AzureRmDnsRecordSet -Overwrite -Confirm:$false -PassThru }
 
@@ -685,7 +685,7 @@ function Test-RecordSetGet
 	$zone | Remove-AzureRmDnsRecordSet -Name $recordName2 -RecordType AAAA -Confirm:$false
 	$zone | Remove-AzureRmDnsRecordSet -Name $recordName3 -RecordType MX -Confirm:$false
 
-	$zone | Remove-AzureRmDnsZone -Force -Overwrite
+	$zone | Remove-AzureRmDnsZone -Overwrite
 }
 
 <#
@@ -731,5 +731,5 @@ function Test-RecordSetGetWithEndsWith
 	$zone | Remove-AzureRmDnsRecordSet -Name $recordName2 -RecordType AAAA -Confirm:$false
 	$zone | Remove-AzureRmDnsRecordSet -Name $recordName3 -RecordType MX -Confirm:$false
 
-	$zone | Remove-AzureRmDnsZone -Force -Overwrite
+	$zone | Remove-AzureRmDnsZone -Overwrite
 }

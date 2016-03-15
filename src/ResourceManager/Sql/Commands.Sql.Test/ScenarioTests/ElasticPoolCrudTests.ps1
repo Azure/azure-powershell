@@ -203,7 +203,7 @@ function Test-RemoveElasticPool
         Remove-AzureRmSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -ElasticPoolName $ep1.ElasticPoolName -Confirm:$false
         
         # Create a pool using piping
-        $ep2 | Remove-AzureRmSqlElasticPool -Force
+        $ep2 | Remove-AzureRmSqlElasticPool
 
         $all = $server | Get-AzureRmSqlElasticPool
         Assert-AreEqual $all.Count 0

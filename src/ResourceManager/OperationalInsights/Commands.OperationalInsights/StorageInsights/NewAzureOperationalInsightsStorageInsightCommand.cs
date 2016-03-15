@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.OperationalInsights.Models;
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
     [Cmdlet(VerbsCommon.New, Constants.StorageInsight, DefaultParameterSetName = ByWorkspaceName,
-        SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(PSStorageInsight))]
+        SupportsShouldProcess = true), OutputType(typeof(PSStorageInsight))]
     public class NewAzureOperationalInsightsStorageInsightCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, ParameterSetName = ByWorkspaceObject, Mandatory = true, ValueFromPipeline = true,

@@ -127,7 +127,7 @@ function Test-EndpointCrudPiping
 	Assert-AreEqual "Enabled" $endpoint.EndpointStatus
 	<# Assert-AreEqual "North Europe" $endpoint.EndpointLocation #>
 
-    $removed = Get-AzureRmTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName  -Type "ExternalEndpoints" | Set-AzureRmTrafficManagerEndpoint | Remove-AzureRmTrafficManagerEndpoint -Force
+    $removed = Get-AzureRmTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName  -Type "ExternalEndpoints" | Set-AzureRmTrafficManagerEndpoint | Remove-AzureRmTrafficManagerEndpoint
 
     Assert-True { $removed }
 

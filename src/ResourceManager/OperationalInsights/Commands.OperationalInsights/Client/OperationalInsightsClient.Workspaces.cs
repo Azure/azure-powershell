@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                     parameters.ResourceGroupName),
                 parameters.WorkspaceName,
                 createWorkspace,
-                () => CheckWorkspaceExists(parameters.ResourceGroupName, parameters.WorkspaceName));
+                () => CheckWorkspaceExists(parameters.ResourceGroupName, parameters.WorkspaceName, parameters.Force));
 
             // If the workspace did not transition to a succeeded provisioning state then throw
             if (!string.Equals(workspace.ProvisioningState, OperationStatus.Succeeded.ToString(), StringComparison.OrdinalIgnoreCase))
@@ -272,8 +272,13 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                 return new PSIntelligencePack(intelligencePackName, enabled);
             }
         }
-        private bool CheckWorkspaceExists(string resourceGroupName, string workspaceName)
+        private bool CheckWorkspaceExists(string resourceGroupName, string workspaceName, bool force = false)
         {
+            if (force)
+            {
+                return false;
+            }
+
             try
             {
                 PSWorkspace workspace = GetWorkspace(resourceGroupName, workspaceName);

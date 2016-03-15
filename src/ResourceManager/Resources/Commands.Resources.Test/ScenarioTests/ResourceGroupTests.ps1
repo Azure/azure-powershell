@@ -91,7 +91,7 @@ function Test-CreatesAndRemoveResourceGroupViaPiping
     New-AzureRmResourceGroup -Name $rgname1 -Location $location
     New-AzureRmResourceGroup -Name $rgname2 -Location $location
 
-    Get-AzureRmResourceGroup | where {$_.ResourceGroupName -eq $rgname1 -or $_.ResourceGroupName -eq $rgname2} | Remove-AzureRmResourceGroup -Force
+    Get-AzureRmResourceGroup | where {$_.ResourceGroupName -eq $rgname1 -or $_.ResourceGroupName -eq $rgname2} | Remove-AzureRmResourceGroup -Confirm:$false
 
     # Assert
     Assert-Throws { Get-AzureRmResourceGroup -Name $rgname1 } "Provided resource group does not exist."

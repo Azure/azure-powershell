@@ -20,8 +20,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmNetworkInterface", SupportsShouldProcess = true, 
-        ConfirmImpact = ConfirmImpact.High)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmNetworkInterface", SupportsShouldProcess = true)]
     public class RemoveAzureNetworkInterfaceCommand : NetworkInterfaceBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -51,7 +50,7 @@ namespace Microsoft.Azure.Commands.Network
                 Name,
                 () => this.NetworkInterfaceClient.Delete(this.ResourceGroupName, this.Name));
 
-            if (PassThru)
+            if (PassThru.IsPresent)
             {
                 WriteObject(true);
             }

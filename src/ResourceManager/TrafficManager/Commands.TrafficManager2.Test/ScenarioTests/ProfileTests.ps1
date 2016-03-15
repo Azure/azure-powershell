@@ -63,7 +63,7 @@ function Test-ProfileCrudWithPiping
 
 	$createdProfile.TrafficRoutingMethod = "Priority"
 
-	$removed = Get-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName | Set-AzureRmTrafficManagerProfile | Remove-AzureRmTrafficManagerProfile -Force
+	$removed = Get-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName | Set-AzureRmTrafficManagerProfile | Remove-AzureRmTrafficManagerProfile
 
 	Assert-True { $removed }
 
@@ -157,7 +157,7 @@ function Test-ProfileNewAlreadyExists
 	
 	Assert-Throws { TestSetup-CreateProfile $profileName $resourceGroup.ResourceGroupName } 
 
-	$createdProfile | Remove-AzureRmTrafficManagerProfile -Force
+	$createdProfile | Remove-AzureRmTrafficManagerProfile
 }
 
 <#

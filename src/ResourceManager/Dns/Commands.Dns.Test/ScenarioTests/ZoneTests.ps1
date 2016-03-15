@@ -214,7 +214,7 @@ function Test-ZoneRemoveEtagMismatch
 	$originalEtag = $createdZone.Etag
 	$createdZone.Etag = "gibberish"
 
-	Assert-Throws { $createdZone | Remove-AzureRmDnsZone -Force } "PreconditionFailed: The condition 'gibberish' in the If-Match header was not satisfied. The current was '$originalEtag'."
+	Assert-Throws { $createdZone | Remove-AzureRmDnsZone } "PreconditionFailed: The condition 'gibberish' in the If-Match header was not satisfied. The current was '$originalEtag'."
 
 	$removed = $createdZone | Remove-AzureRmDnsZone -Overwrite -Confirm:$false -PassThru
 

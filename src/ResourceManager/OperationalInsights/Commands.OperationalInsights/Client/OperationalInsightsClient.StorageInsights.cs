@@ -135,7 +135,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                     parameters.WorkspaceName),
                 parameters.Name,
                 createStorageInsight,
-                () => CheckStorageInsightExists(parameters.ResourceGroupName, parameters.WorkspaceName, parameters.Name));
+                () => CheckStorageInsightExists(parameters.ResourceGroupName, parameters.WorkspaceName, 
+                    parameters.Name, parameters.Force));
 
             return storageInsight;
         }
@@ -161,8 +162,14 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             return storageInsights;
         }
 
-        private bool CheckStorageInsightExists(string resourceGroupName, string workspaceName, string storageInsightName)
+        private bool CheckStorageInsightExists(string resourceGroupName, string workspaceName, string storageInsightName, bool force = false)
         {
+            if (force)
+            {
+                // do not check for existence if force is specified.
+                return false;
+            }
+
             try
             {
                 PSStorageInsight storageInsight = GetStorageInsight(resourceGroupName, workspaceName, storageInsightName);

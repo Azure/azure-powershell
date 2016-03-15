@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
                         parameter.ResourceGroupName),
                     parameter.FunctionName,
                     createFunction,
-                    () => CheckFunctionExists(parameter.ResourceGroupName, parameter.JobName, parameter.FunctionName));
+                    () => CheckFunctionExists(parameter.ResourceGroupName, parameter.JobName, parameter.FunctionName, parameter.Force));
             return function;
         }
 
@@ -178,8 +178,13 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             };
         }
 
-        private bool CheckFunctionExists(string resourceGroupName, string jobName, string functionName)
+        private bool CheckFunctionExists(string resourceGroupName, string jobName, string functionName, bool overwrite)
         {
+            if (overwrite)
+            {
+                return false;
+            }
+
             try
             {
                 PSFunction function = GetFunction(resourceGroupName, jobName, functionName);

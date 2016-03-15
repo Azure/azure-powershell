@@ -128,7 +128,7 @@ function Test-RemoveServer
 		Remove-AzureRmSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server1.ServerName -Confirm:$false
 		
 		# Test piping
-		$server2 | Remove-AzureRmSqlServer -Force
+		$server2 | Remove-AzureRmSqlServer
 
 		$all = Get-AzureRmSqlServer -ResourceGroupName $rg.ResourceGroupName
 		Assert-AreEqual $all.Count 0

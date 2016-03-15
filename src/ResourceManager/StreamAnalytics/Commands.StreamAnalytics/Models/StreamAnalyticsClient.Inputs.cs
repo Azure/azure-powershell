@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
                         parameter.ResourceGroupName),
                     parameter.InputName,
                     createInput,
-                    () => CheckInputExists(parameter.ResourceGroupName, parameter.JobName, parameter.InputName));
+                    () => CheckInputExists(parameter.ResourceGroupName, parameter.JobName, parameter.InputName, parameter.Force));
             return input;
         }
 
@@ -159,8 +159,13 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             return StreamAnalyticsManagementClient.Inputs.TestConnection(resourceGroupName, jobName, inputName);
         }
 
-        private bool CheckInputExists(string resourceGroupName, string jobName, string inputName)
+        private bool CheckInputExists(string resourceGroupName, string jobName, string inputName, bool overwrite)
         {
+            if (overwrite)
+            {
+                return false;
+            }
+
             try
             {
                 PSInput input = GetInput(resourceGroupName, jobName, inputName);

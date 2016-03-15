@@ -83,7 +83,7 @@ function Test-WorkspaceCreateUpdateDelete
     Assert-AreEqual standard $workspace.Sku
 
     # Delete the original workspace via piping
-    $workspace | Remove-AzureRmOperationalInsightsWorkspace -Force
+    $workspace | Remove-AzureRmOperationalInsightsWorkspace
     $workspaces = Get-AzureRmOperationalInsightsWorkspace -ResourceGroupName $rgname
     Assert-AreEqual 0 $workspaces.Count
     Assert-ThrowsContains { Get-AzureRmOperationalInsightsWorkspace -ResourceGroupName $rgname -Name wsname } "ResourceNotFound"
@@ -206,7 +206,7 @@ function Test-WorkspaceEnableDisableListIntelligencePacks
 	}
 
 	# Delete the original workspace via piping
-    $workspace | Remove-AzureRmOperationalInsightsWorkspace -Force
+    $workspace | Remove-AzureRmOperationalInsightsWorkspace
     $workspaces = Get-AzureRmOperationalInsightsWorkspace -ResourceGroupName $rgname
     Assert-AreEqual 0 $workspaces.Count
     Assert-ThrowsContains { Get-AzureRmOperationalInsightsWorkspace -ResourceGroupName $rgname -Name wsname } "ResourceNotFound"

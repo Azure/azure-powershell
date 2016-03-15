@@ -21,8 +21,8 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics
 {
-    [Cmdlet(VerbsCommon.New, Constants.StreamAnalyticsJob, SupportsShouldProcess = true, 
-        ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(PSJob))]
+    [Cmdlet(VerbsCommon.New, Constants.StreamAnalyticsJob, SupportsShouldProcess = true), 
+    OutputType(typeof(PSJob))]
     public class NewAzureStreamAnalyticsJobCommand : StreamAnalyticsResourceProviderBaseCmdlet
     {
         [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The stream analytics job name.")]

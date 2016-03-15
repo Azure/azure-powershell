@@ -123,6 +123,8 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
                 .Returns(expected)
                 .Verifiable();
 
+            commandRuntimeMock.Setup(m => m.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+
             // Action
             cmdlet.Tags = tags.ToHashtable();
             cmdlet.Force = true;

@@ -557,6 +557,7 @@ function Test-NetworkInterfaceEnableIPForwarding
 
 		# Create NetworkInterface without IPForwarding
 		$nic = New-AzureRmNetworkInterface -Confirm:$false -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -Force
+		$expectedNic = Get-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgname
 		Assert-AreEqual $expectedNic.Name $nic.Name	
 		Assert-AreEqual false $nic.EnableIPForwarding
 
