@@ -76,14 +76,6 @@ if (($scope -eq 'All') -or ($scope -eq 'AzureStorage')) {
     Publish-Module -Path $modulePath -NuGetApiKey $apiKey -Repository $repoName -Tags ("Azure")
 } 
 
-if (($scope -eq 'All') -or ($scope -eq 'AzureRM')) {
-    # Publish AzureRM module    
-    $modulePath = "$PSScriptRoot\AzureRM"
-    Write-Host "Publishing AzureRM module from $modulePath"
-    Publish-Module -Path $modulePath -NuGetApiKey $apiKey -Repository $repoName -Tags ("Azure")
-    Write-Host "Published Azure module"
-} 
-
 $resourceManagerModules = Get-ChildItem -Path $resourceManagerRootFolder -Directory
 if ($scope -eq 'All') {  
     foreach ($module in $resourceManagerModules) {
@@ -106,3 +98,11 @@ if ($scope -eq 'All') {
         Write-Error "Can not find module with name $scope to publish"
     }
 }
+
+if (($scope -eq 'All') -or ($scope -eq 'AzureRM')) {
+    # Publish AzureRM module    
+    $modulePath = "$PSScriptRoot\AzureRM"
+    Write-Host "Publishing AzureRM module from $modulePath"
+    Publish-Module -Path $modulePath -NuGetApiKey $apiKey -Repository $repoName -Tags ("Azure")
+    Write-Host "Published Azure module"
+} 
