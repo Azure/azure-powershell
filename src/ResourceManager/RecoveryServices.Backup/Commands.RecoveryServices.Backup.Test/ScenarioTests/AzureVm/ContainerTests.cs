@@ -17,10 +17,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xunit;
 
-namespace Commands.RecoveryServices.Backup.Test.ScenarioTests.AzureVm
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
-    class ContainerTests
+    public class ContainerTests : RecoveryServicesBackupTestsBase
     {
+        [Fact]
+        public void Test()
+        {
+            this.RunPowerShellTest("Test");
+        }
     }
 }

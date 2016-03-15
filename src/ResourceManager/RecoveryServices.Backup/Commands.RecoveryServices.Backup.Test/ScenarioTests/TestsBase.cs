@@ -61,6 +61,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             using (UndoContext context = UndoContext.Current)
             {
                 context.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2));
+                
+                string baseDir = TestUtilities.GetMockBaseDirectory();
+                string callingClass = TestUtilities.GetCallingClass(2);
+                string currMethodName = TestUtilities.GetCurrentMethodName(2);
 
                 SetupManagementClients();
 
