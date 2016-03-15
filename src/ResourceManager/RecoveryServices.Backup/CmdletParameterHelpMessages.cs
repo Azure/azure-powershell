@@ -33,6 +33,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         internal static class Common
         {
             public const string Vault = "The Azure Backup vault object which is the parent resource.";
+            public const string WorkloadType = "Workload type of the resource (for example: AzureVM, WindowsServer).";
+            public const string BackupManagementType = "Backup Management type of the resource (for example: MAB, DPM).";
+        }
+
+        internal static class Policy
+        {
+            public const string Name = "Name of the Policy that is being managed.";
+            public const string RetentionPolicy = "Retention Policy object for the policy.";
+            public const string SchedulePolicy = "Schedule Policy object for the policy.";
+            public const string ProtectionPolicy = "Protection policy object.";
         }
     }
 }
