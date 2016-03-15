@@ -110,7 +110,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 WriteError(errorRecord);
             }
         }
-
-
     }
 }
