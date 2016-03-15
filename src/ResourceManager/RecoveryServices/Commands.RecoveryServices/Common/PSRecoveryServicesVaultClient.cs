@@ -33,6 +33,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         }
 
         /// <summary>
+        /// Method to get Azure Recovery Services Vault
+        /// </summary>
+        /// <param name="resouceGroupName">Name of the resouce group</param>
+        /// <param name="resourceName">Name of the resource</param>
+        /// <returns>vault response object.</returns>
+        public VaultResponse GetVault(string resouceGroupName, string resourceName)
+        {
+            return this.GetRecoveryServicesClient.Vaults.Get(resouceGroupName, resourceName, this.GetRequestHeaders());
+        }
+
+        /// <summary>
         /// Method to create Azure Recovery Services Vault
         /// </summary>
         /// <param name="resouceGroupName">Name of the resouce group</param>
