@@ -13,11 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using System.IO;
+using System.Linq;
 using System.Management.Automation;
 using Hyak.Common;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models.Job;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Commands.HDInsight.Models;
+using Microsoft.Azure.Management.HDInsight.Job.Models;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
@@ -43,17 +46,14 @@ namespace Microsoft.Azure.Commands.HDInsight
         public string JobId { get; set; }
 
         [Parameter(Position = 2,
-            Mandatory = true,
             HelpMessage = "The default container name.")]
         public string DefaultContainer { get; set; }
 
         [Parameter(Position = 3,
-            Mandatory = true, 
             HelpMessage = "The default storage account name.")]
         public string DefaultStorageAccountName { get; set; }
 
         [Parameter(Position = 4,
-            Mandatory = true, 
             HelpMessage = "The default storage account key.")]
         public string DefaultStorageAccountKey { get; set; }
 
@@ -80,16 +80,12 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(HelpMessage = "Gets or sets the name of the resource group.")]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(HelpMessage = "The type of job output.", ParameterSetName = "Display")]
+        [Parameter(HelpMessage = "The type of job output.")]
         public JobDisplayOutputType DisplayOutputType { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The type of output to download.", ParameterSetName = "Download")]
-        public JobDownloadOutputType DownloadOutputType { get; set; }
-
-        [Parameter(Mandatory = true, HelpMessage = "The folder to save the output to.", ParameterSetName = "Download")]
-        public string Folder { get; set; }
-
         #endregion
+
+        private IStorageAccess storageAccess = null;
 
         public override void ExecuteCmdlet()
         {
@@ -97,58 +93,68 @@ namespace Microsoft.Azure.Commands.HDInsight
             {
                 ResourceGroupName = GetResourceGroupByAccountName(ClusterName);
             }
+
+            if (DefaultContainer == null || DefaultStorageAccountName == null || DefaultStorageAccountKey == null)
+            {
+                var result = HDInsightManagementClient.GetCluster(ResourceGroupName, _clusterName);
+
+                if (result == null || result.Count == 0)
+                {
+                    throw new CloudException(string.Format("Couldn't find cluster {0}", _clusterName));
+                }
+
+                var cluster = result.FirstOrDefault();
+                string resourceGroupName = ClusterConfigurationUtils.GetResourceGroupFromClusterId(cluster.Id);
+                var configuration = HDInsightManagementClient.GetClusterConfigurations(resourceGroupName, cluster.Name, "core-site");
+
+                if (configuration == null)
+                {
+                    throw new CloudException(string.Format("Couldn't find storage information for cluster {0}", _clusterName));
+                }
+
+                var DefaultStorageAccount = ClusterConfigurationUtils.GetDefaultStorageAccountDetails(
+                                        configuration,
+                                        cluster.Properties.ClusterVersion);
+
+                if (DefaultStorageAccount == null)
+                {
+                    throw new CloudException(string.Format("Couldn't find storage information for cluster {0}", _clusterName));
+                }
+
+                DefaultContainer = DefaultStorageAccount.StorageContainerName;
+                DefaultStorageAccountName = DefaultStorageAccount.StorageAccountName;
+                DefaultStorageAccountKey = DefaultStorageAccount.StorageAccountKey;
+            }
+
+            storageAccess = new AzureStorageAccess(DefaultStorageAccountName, DefaultStorageAccountKey, DefaultContainer);
+
             _clusterName = GetClusterConnection(ResourceGroupName, ClusterName);
 
-            if (ParameterSetName == "Display")
+            string output;
+            switch (DisplayOutputType)
             {
-                string output;
-                switch (DisplayOutputType)
-                {
-                    case JobDisplayOutputType.StandardError:
-                        output = GetJobError();
-                        break;
-                    case JobDisplayOutputType.TaskSummary:
-                        output = GetJobTaskLogSummary();
-                        break;
-                    default:
-                        output = GetJobOutput();
-                        break;
-                }
-                WriteObject(output);
+                case JobDisplayOutputType.StandardError:
+                    output = GetJobError();
+                    break;
+                default:
+                    output = GetJobOutput();
+                    break;
             }
-            else
-            {
-                DownloadJobTaskLogs();
-            }
+            WriteObject(output);
         }
         
         internal string GetJobOutput()
         {
-            var output = HDInsightJobClient.GetJobOutput(JobId, DefaultStorageAccountName, DefaultStorageAccountKey, DefaultContainer);
+            var output = HDInsightJobClient.GetJobOutput(JobId, this.storageAccess);
             var outputStr = Convert(output);
             return outputStr;
         }
 
         private string GetJobError()
         {
-            var output = HDInsightJobClient.GetJobError(JobId, DefaultStorageAccountName, DefaultStorageAccountKey,
-                DefaultContainer);
+            var output = HDInsightJobClient.GetJobError(JobId, this.storageAccess);
             var outputStr = Convert(output);
             return outputStr;
-        }
-
-        private string GetJobTaskLogSummary()
-        {
-            var output = HDInsightJobClient.GetJobTaskLogSummary(JobId, DefaultStorageAccountName, DefaultStorageAccountKey,
-                DefaultContainer);
-            var outputStr = Convert(output);
-            return outputStr;
-        }
-
-        private void DownloadJobTaskLogs()
-        {
-            HDInsightJobClient.GetJobTaskLogSummary(JobId, DefaultStorageAccountName, DefaultStorageAccountKey,
-                DefaultContainer);
         }
 
         private static string Convert(Stream stream)

@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
 
         [Parameter(HelpMessage = "The command line environment for the mappers or the reducers.")]
-        public string[] CommandEnvironment { get; set; }
+        public Hashtable CommandEnvironment { get; set; }
         
         [Parameter(HelpMessage = "The parameters for the jobDetails.")]
         public Hashtable Defines { get; set; }
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         public NewAzureHDInsightStreamingMapReduceJobDefinitionCommand()
         {
             Arguments = new string[] {};
-            CommandEnvironment = new string[] {};
+            CommandEnvironment = new Hashtable();
             Defines = new Hashtable();
             job = new AzureHDInsightStreamingMapReduceJobDefinition();
         }
@@ -100,9 +100,10 @@ namespace Microsoft.Azure.Commands.HDInsight
                 job.Arguments.Add(arg);
             }
 
-            foreach (var cmdenv in CommandEnvironment)
+            var cmdEnvDic = CommandEnvironment.ToDictionary(false);
+            foreach (var cmdEnv in cmdEnvDic)
             {
-                job.CommandEnvironment.Add(cmdenv);
+                job.CommandEnvironment.Add(cmdEnv.Key, cmdEnv.Value.ToString());
             }
 
             var defineDic = Defines.ToDictionary(false);
