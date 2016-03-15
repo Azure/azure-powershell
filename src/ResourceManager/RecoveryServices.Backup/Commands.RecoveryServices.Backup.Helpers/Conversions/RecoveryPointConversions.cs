@@ -21,23 +21,53 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
     class RecoveryPointConversions
     {
-        public static List<AzureRmRecoveryServicesRecoveryPointBase> GetPSAzureRecoveryPoints(RecoveryPointListResponse rpList)
+        public static List<AzureRmRecoveryServicesRecoveryPointBase> GetPSAzureRecoveryPoints(RecoveryPointListResponse rpList, AzureRmRecoveryServicesItemBase item)
         {
-            if (rpList == null) 
+            if (rpList == null || rpList.RecoveryPointList == null || rpList.RecoveryPointList.RecoveryPoints == null) 
             { 
                 throw new ArgumentNullException("rpList is null"); 
             }
 
             List<AzureRmRecoveryServicesRecoveryPointBase> result = new List<AzureRmRecoveryServicesRecoveryPointBase>();
-            foreach(var rp in rpList)
+            foreach (RecoveryPointResource rp in rpList.RecoveryPointList.RecoveryPoints)
             {
-
+                RecoveryPoint recPoint = rp.Properties as RecoveryPoint;
+                AzureRmRecoveryServicesRecoveryPointBase rpBase = new AzureRmRecoveryServicesRecoveryPointBase()
+                {
+                    BackupManagementType = item.BackupManagementType,
+                    ContainerName = item.ContainerName,
+                    ContainerType = item.ContainerType,
+                    RecoveryPointTime = Convert.ToDateTime(recPoint.RecoveryPointTime).ToLocalTime(),
+                    RecoveryPointType = recPoint.RecoveryPointType,
+                    WorkloadType = item.WorkloadType
+                };
+                result.Add(rpBase);
             }
+
+            return result;
         }
 
-        public static List<AzureRmRecoveryServicesRecoveryPointBase> GetPSAzureRecoveryPoints(RecoveryPointResponse rp)
+        public static List<AzureRmRecoveryServicesRecoveryPointBase> GetPSAzureRecoveryPoints(RecoveryPointResponse rpResponse, AzureRmRecoveryServicesItemBase item)
         {
+            if (rpResponse == null || rpResponse.RecPoint == null)
+            {
+                throw new ArgumentNullException("rpResponse is null");
+            }
+            
 
+            List<AzureRmRecoveryServicesRecoveryPointBase> result = new List<AzureRmRecoveryServicesRecoveryPointBase>();
+            RecoveryPoint recPoint = rpResponse.RecPoint.Properties as RecoveryPoint;
+            AzureRmRecoveryServicesRecoveryPointBase rpBase = new AzureRmRecoveryServicesRecoveryPointBase()
+                {
+                    BackupManagementType = item.BackupManagementType,
+                    ContainerName = item.ContainerName,
+                    ContainerType = item.ContainerType,
+                    RecoveryPointTime = Convert.ToDateTime(recPoint.RecoveryPointTime).ToLocalTime(),
+                    RecoveryPointType = recPoint.RecoveryPointType,
+                    WorkloadType = item.WorkloadType
+                };
+            result.Add(rpBase);
+            return result;
         }
     }
 }

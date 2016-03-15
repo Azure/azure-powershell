@@ -89,15 +89,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 RecoveryPointQueryParameters queryFilter = new RecoveryPointQueryParameters();
                 queryFilter.StartDate = HydraHelpers.GetDateTimeStringForService(startDate);
                 queryFilter.EndDate = HydraHelpers.GetDateTimeStringForService(endDate);
-
-                var result = hydraAdapter.GetRecoveryPoints(containerName, protectedItemName, queryFilter);
+                RecoveryPointListResponse rpListResponse = null;
+                rpListResponse = hydraAdapter.GetRecoveryPoints(containerName, protectedItemName, queryFilter);
+                return RecoveryPointConversions.GetPSAzureRecoveryPoints(rpListResponse);
             }
             else
             {
-                var result = hydraAdapter.GetRecoveryPointDetails(containerName, protectedItemName, recoveryPointId);
+                var rpResponse = hydraAdapter.GetRecoveryPointDetails(containerName, protectedItemName, recoveryPointId);
+                return RecoveryPointConversions.GetPSAzureRecoveryPoints(rpResponse);
             }
-
-            List<AzureRmRecoveryServicesRecoveryPointBase> abc = 
         }
 
         public ProtectionPolicyResponse CreatePolicy()

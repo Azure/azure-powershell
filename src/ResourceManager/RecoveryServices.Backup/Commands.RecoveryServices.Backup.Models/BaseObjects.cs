@@ -154,6 +154,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
     public class AzureRmRecoveryServicesRecoveryPointBase : AzureRmRecoveryServicesItemContext
     {
+        private global::Microsoft.Azure.Management.RecoveryServices.Backup.Models.RecoveryPointResource rp;
+
         /// <summary>
         ///Type of recovery point (appConsistent\CrashConsistent etc) 
         /// </summary>
@@ -169,13 +171,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             : base()
         {
         }
-
-        public AzureRmRecoveryServicesRecoveryPointBase(RecoveryPointResponse recPointRsp, AzureRmRecoveryServicesItemBase item)
-            : base(item)
-        {
-
-        }
-
     }
 
     //Dummy class for jobs for time being
