@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Microsoft Azure Powershell")]
 [assembly: AssemblyCompany("Microsoft")]
 [assembly: AssemblyProduct("Microsoft Azure Powershell")]
-[assembly: AssemblyCopyright("Copyright � Microsoft")]
+[assembly: AssemblyCopyright("Copyright © Microsoft")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
@@ -41,5 +41,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.8.16")]
-[assembly: AssemblyFileVersion("0.8.16")]
+[assembly: AssemblyVersion("1.0.6")]
+[assembly: AssemblyFileVersion("1.0.6")]
