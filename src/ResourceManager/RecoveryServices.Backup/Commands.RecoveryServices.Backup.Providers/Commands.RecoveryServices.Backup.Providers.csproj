@@ -59,6 +59,10 @@
     <Compile Include="Providers\IaasVmPsBackupProvider.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
+      <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
+      <Name>Commands.ResourceManager.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Commands.RecoveryServices.Backup.Helpers\Commands.RecoveryServices.Backup.Helpers.csproj">
       <Project>{0e1d3f36-e6c8-4764-8c7d-6f9ee537490c}</Project>
       <Name>Commands.RecoveryServices.Backup.Helpers</Name>
