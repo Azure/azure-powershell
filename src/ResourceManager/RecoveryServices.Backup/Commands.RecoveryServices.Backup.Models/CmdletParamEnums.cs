@@ -30,4 +30,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         ResourceGroupName,
         Status,
     }
+
+    public enum PolicyParams
+    {
+        WorkloadType,
+        BackupManagementType,
+        PolicyName,
+        SchedulePolicy,
+        RetentionPolicy,
+        ProtectionPolicy
+    }
 }

@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
     public class AzureRmRecoveryServicesPolicyBase : AzureRmRecoveryServicesObjectBase
     {
-        public string PolicyName { get; set; }
+        public string Name { get; set; }
 
         public BackupManagementType BackupManagementType { get; set; }
 
