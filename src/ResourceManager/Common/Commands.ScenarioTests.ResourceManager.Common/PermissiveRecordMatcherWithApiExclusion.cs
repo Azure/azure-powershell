@@ -112,8 +112,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 !requestUri.StartsWith("/pools", StringComparison.InvariantCultureIgnoreCase) &&
                 !requestUri.StartsWith("/jobs", StringComparison.InvariantCultureIgnoreCase) &&
                 !requestUri.StartsWith("/jobschedules", StringComparison.InvariantCultureIgnoreCase) &&
-                !requestUri.StartsWith("/applications", StringComparison.InvariantCultureIgnoreCase) &&
-                !requestUri.Contains("servicePrincipals"))
+                !requestUri.Contains("/applications?") &&
+                !requestUri.Contains("/servicePrincipals?"))
             {
                 version = String.Empty;
                 return true;
