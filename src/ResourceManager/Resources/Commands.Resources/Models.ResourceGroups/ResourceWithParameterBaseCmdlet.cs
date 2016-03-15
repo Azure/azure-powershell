@@ -188,21 +188,25 @@ namespace Microsoft.Azure.Commands.Resources
         protected string GetDeploymentDebugLogLevel(string deploymentDebugLogLevel)
         {
             string debugSetting = string.Empty;
-            switch(deploymentDebugLogLevel.ToLower())
+            if(!string.IsNullOrEmpty(deploymentDebugLogLevel))
             {
-                case "all":
-                    debugSetting = "RequestContent,ResponseContent";
-                    break;
-                case "requestcontent":
-                    debugSetting = "RequestContent";
-                    break;
-                case "responsecontent":
-                    debugSetting = "ResponseContent";
-                    break;
-                case "none":
-                    debugSetting = null;
-                    break;
+                switch (deploymentDebugLogLevel.ToLower())
+                {
+                    case "all":
+                        debugSetting = "RequestContent,ResponseContent";
+                        break;
+                    case "requestcontent":
+                        debugSetting = "RequestContent";
+                        break;
+                    case "responsecontent":
+                        debugSetting = "ResponseContent";
+                        break;
+                    case "none":
+                        debugSetting = null;
+                        break;
+                }
             }
+            
             return debugSetting;
         }
     }
