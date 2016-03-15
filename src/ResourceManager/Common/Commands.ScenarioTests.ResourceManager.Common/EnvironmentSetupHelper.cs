@@ -64,7 +64,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 AzureRmProfileProvider.Instance.Profile = rmprofile;
             }
 
-            AzureSession.DataStore = datastore;            
+            AzureSession.DataStore = datastore;
             ProfileClient = new ProfileClient(profile);
 
             // Ignore SSL errors
@@ -78,7 +78,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         {
             get
             {
-                return Path.Combine(this.PackageDirectory, 
+                return Path.Combine(this.PackageDirectory,
                                     @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1");
             }
         }
@@ -96,7 +96,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         {
             get
             {
-                return Path.Combine(this.PackageDirectory, 
+                return Path.Combine(this.PackageDirectory,
                                     @"ResourceManager\AzureResourceManager\AzureRM.Storage\AzureRM.Storage.psd1");
             }
         }
@@ -114,8 +114,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         public string GetRMModulePath(string psd1FileName)
         {
             string basename = Path.GetFileNameWithoutExtension(psd1FileName);
-            return Path.Combine(this.PackageDirectory, 
-                                 @"ResourceManager\AzureResourceManager\" + basename + @"\" + psd1FileName); 
+            return Path.Combine(this.PackageDirectory,
+                                 @"ResourceManager\AzureResourceManager\" + basename + @"\" + psd1FileName);
         }
         /// <summary>
         /// Loads DummyManagementClientHelper with clients and throws exception if any client is missing.
@@ -148,7 +148,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             if (mode == AzureModule.AzureResourceManager)
             {
                 currentEnvironment = new CSMTestEnvironmentFactory().GetTestEnvironment();
-            } 
+            }
             else
             {
                 currentEnvironment = new RDFETestEnvironmentFactory().GetTestEnvironment();
@@ -169,7 +169,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             environment.Endpoints[AzureEnvironment.Endpoint.ServiceManagement] = currentEnvironment.BaseUri.AbsoluteUri;
             environment.Endpoints[AzureEnvironment.Endpoint.ResourceManager] = currentEnvironment.Endpoints.ResourceManagementUri.AbsoluteUri;
             environment.Endpoints[AzureEnvironment.Endpoint.Graph] = currentEnvironment.Endpoints.GraphUri.AbsoluteUri;
-            environment.Endpoints[AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix] = currentEnvironment.Endpoints.DataLakeAnalyticsJobAndCatalogServiceUri.OriginalString.Replace("https://",""); // because it is just a sufix
+            environment.Endpoints[AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix] = currentEnvironment.Endpoints.DataLakeAnalyticsJobAndCatalogServiceUri.OriginalString.Replace("https://", ""); // because it is just a sufix
             environment.Endpoints[AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix] = currentEnvironment.Endpoints.DataLakeStoreServiceUri.OriginalString.Replace("https://", ""); // because it is just a sufix
 
             if (!ProfileClient.Profile.Environments.ContainsKey(testEnvironmentName))
@@ -266,7 +266,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             {
                 this.modules.Add(Path.Combine(PackageDirectory, @"ServiceManagement\Azure\Azure.psd1"));
             }
-            
+
             this.modules.Add("Assert.ps1");
             this.modules.Add("Common.ps1");
             this.modules.AddRange(modules);
@@ -307,9 +307,18 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         public virtual Collection<PSObject> RunPowerShellTest(params string[] scripts)
         {
+            Dictionary<string, string> d = new Dictionary<string, string>();
+            d.Add("Microsoft.Resources", null);
+            d.Add("Microsoft.Features", null);
+            d.Add("Microsoft.Authorization", null);
+            d.Add("Microsoft.Compute", null);
+            var providersToIgnore = new Dictionary<string, string>();
+            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
+
             using (var powershell = System.Management.Automation.PowerShell.Create(RunspaceMode.NewRunspace))
             {
-                SetupPowerShellModules(powershell);                
+                SetupPowerShellModules(powershell);
 
                 Collection<PSObject> output = null;
                 for (int i = 0; i < scripts.Length; ++i)
@@ -352,8 +361,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
             foreach (string moduleName in modules)
             {
-                powershell.AddScript(string.Format("Import-Module \"{0}\"", 
-                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory,moduleName)));
+                powershell.AddScript(string.Format("Import-Module \"{0}\"",
+                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, moduleName)));
             }
 
             powershell.AddScript(
