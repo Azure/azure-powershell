@@ -114,7 +114,7 @@ function Test-CrudApiManagement
     Assert-True {$found -eq 2} "Api Management services created earlier is not found."
 
     # Delete listed services
-    Get-AzureRmApiManagement | Remove-AzureRmApiManagement -Force
+    Get-AzureRmApiManagement | Remove-AzureRmApiManagement
 
     $allServices = Get-AzureRmApiManagement
     Assert-AreEqual 0 $allServices.Count
@@ -174,7 +174,7 @@ function Test-BackupRestoreApiManagement
     try
     {
         # Remove the service
-        Remove-AzureRmApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -Force
+        Remove-AzureRmApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName
 
         # Remove storage account
         Remove-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName
@@ -265,7 +265,7 @@ function Test-UpdateApiManagementDeployment
     Assert-True {$found -eq 1} "Api Management regions created earlier is not found."
 
     # Remove the service
-    Remove-AzureRmApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -Force
+    Remove-AzureRmApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName
 
     # Remove resource group
     Remove-AzureRmResourceGroup -Name $resourceGroupName -Confirm:$false
@@ -349,7 +349,7 @@ function Test-UpdateApiManagementDeploymentWithHelpersAndPipline
 
 
     # Remove the service
-    Remove-AzureRmApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -Force
+    Remove-AzureRmApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName
 
     # Remove resource group
     Remove-AzureRmResourceGroup -Name $resourceGroupName -Confirm:$false
@@ -386,7 +386,7 @@ function Test-ImportApiManagementHostnameCertificate
     Assert-AreEqual "51A702569BADEDB90A75141B070F2D4B5DDFA447" $result.Thumbprint
 
     # Remove the service
-    Remove-AzureRmApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -Force
+    Remove-AzureRmApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName
 
     # Remove resource group
     Remove-AzureRmResourceGroup -Name $resourceGroupName -Confirm:$false
@@ -435,7 +435,7 @@ function Test-SetApiManagementVirtualNetworks
     finally
     {
         # Remove the service
-        Remove-AzureRmApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -Force
+        Remove-AzureRmApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName
 
         # Remove resource group
         Remove-AzureRmResourceGroup -Name $resourceGroupName -Confirm:$false
