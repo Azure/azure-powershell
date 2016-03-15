@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                                                 {
                                                     DisplayName = GetSubscriptionNameFromId(sub),
                                                     Id = sub,
-                                                    State = "Active",
+                                                    State = "enabled",
                                                     SubscriptionId = sub
                                                 }))
                             };

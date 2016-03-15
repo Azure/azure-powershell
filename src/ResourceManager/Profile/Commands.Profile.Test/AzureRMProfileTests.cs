@@ -29,6 +29,7 @@ using Microsoft.Azure.Commands.Profile;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Subscriptions.Models;
 using Hyak.Common;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 {
@@ -67,6 +68,93 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var profile = new AzureRMProfile();
             profile.Context = Context;
             return new RMProfileClient(profile);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SpecifyTenantAndSubscriptionIdSucceed()
+        {
+            var tenants = new List<string> { DefaultTenant.ToString() };
+            var firstList = new List<string> { DefaultSubscription.ToString(), Guid.NewGuid().ToString() };
+            var secondList = new List<string> { Guid.NewGuid().ToString() };
+            var client = SetupTestEnvironment(tenants, firstList, secondList);
+            
+            ((MockTokenAuthenticationFactory)AzureSession.AuthenticationFactory).TokenProvider = (account, environment, tenant) =>
+            new MockAccessToken
+            {
+                UserId = "aaa@contoso.com",
+                LoginType = LoginType.OrgId,
+                AccessToken = "bbb",
+                TenantId = DefaultTenant.ToString()
+            };
+
+            var azureRmProfile = client.Login(
+                Context.Account,
+                Context.Environment,
+                DefaultTenant.ToString(),
+                DefaultSubscription.ToString(), 
+                null,
+                null);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SubscriptionIdNotExist()
+        {
+            var tenants = new List<string> { DefaultTenant.ToString() };
+            var firstList = new List<string> { Guid.NewGuid().ToString() };
+            var client = SetupTestEnvironment(tenants, firstList);
+
+            ((MockTokenAuthenticationFactory)AzureSession.AuthenticationFactory).TokenProvider = (account, environment, tenant) =>
+            new MockAccessToken
+            {
+                UserId = "aaa@contoso.com",
+                LoginType = LoginType.OrgId,
+                AccessToken = "bbb",
+                TenantId = DefaultTenant.ToString()
+            };
+
+            var getAsyncResponses = new Queue<Func<GetSubscriptionResult>>();
+            getAsyncResponses.Enqueue(() =>
+            {
+                throw new CloudException("InvalidAuthenticationTokenTenant: The access token is from the wrong issuer");
+            });
+            MockSubscriptionClientFactory.SetGetAsyncResponses(getAsyncResponses);
+            
+            Assert.Throws<PSInvalidOperationException>( () => client.Login(
+                Context.Account,
+                Context.Environment,
+                null,
+                DefaultSubscription.ToString(), 
+                null,
+                null));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SpecifyTenantAndNotExistingSubscriptionId()
+        {
+            var tenants = new List<string> { DefaultTenant.ToString() };
+            var firstList = new List<string> { Guid.NewGuid().ToString(), Guid.NewGuid().ToString() };
+            var secondList = new List<string> { Guid.NewGuid().ToString() };
+            var client = SetupTestEnvironment(tenants, firstList, secondList);
+            
+            ((MockTokenAuthenticationFactory)AzureSession.AuthenticationFactory).TokenProvider = (account, environment, tenant) =>
+            new MockAccessToken
+            {
+                UserId = "aaa@contoso.com",
+                LoginType = LoginType.OrgId,
+                AccessToken = "bbb",
+                TenantId = DefaultTenant.ToString()
+            };
+
+            Assert.Throws<PSInvalidOperationException>( () => client.Login(
+                Context.Account,
+                Context.Environment,
+                DefaultTenant.ToString(),
+                DefaultSubscription.ToString(), 
+                null,
+                null));
         }
 
         [Fact]
@@ -126,16 +214,23 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var listAsyncResponses = new Queue<Func<SubscriptionListResult>>();
             listAsyncResponses.Enqueue(() =>
             {
-                var sub = new Subscription
+                var sub1 = new Subscription
                 {
                     Id = DefaultSubscription.ToString(), 
                     SubscriptionId = DefaultSubscription.ToString(),
                     DisplayName = DefaultSubscriptionName, 
-                    State = "enabled",
+                    State = "enabled"
+                };
+                var sub2 = new Subscription
+                {
+                    Id = subscriptionInSecondTenant,
+                    SubscriptionId = subscriptionInSecondTenant,
+                    DisplayName = MockSubscriptionClientFactory.GetSubscriptionNameFromId(subscriptionInSecondTenant),
+                    State = "enabled"
                 };
                 return new SubscriptionListResult 
                 {
-                    Subscriptions = new List<Subscription> { sub }
+                    Subscriptions = new List<Subscription> { sub1, sub2 }
                 };
             });
             MockSubscriptionClientFactory.SetListAsyncResponses(listAsyncResponses);
@@ -145,7 +240,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 Context.Environment,
                 null,
                 null,
-                "sub name",
+                MockSubscriptionClientFactory.GetSubscriptionNameFromId(subscriptionInSecondTenant),
                 null);
         }
 
