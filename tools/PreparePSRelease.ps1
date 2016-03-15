@@ -1,3 +1,5 @@
+# e.g. .\PreparePSRelease.ps1 9.10.11 "Spring 2018" -Patch
+# 
 [CmdletBinding()]
 Param(
 [Parameter(Mandatory=$True, Position=0)]
