@@ -106,7 +106,13 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         private bool ContainsIgnoredProvider(string requestUri, out string version)
         {
-            if (_ignoreGenericResource && !requestUri.Contains("providers"))
+            if (_ignoreGenericResource &&
+                !requestUri.Contains("providers") &&
+                !requestUri.StartsWith("/certificates?", StringComparison.InvariantCultureIgnoreCase) &&
+                !requestUri.StartsWith("/pools", StringComparison.InvariantCultureIgnoreCase) &&
+                !requestUri.StartsWith("/jobs", StringComparison.InvariantCultureIgnoreCase) &&
+                !requestUri.StartsWith("/jobschedules", StringComparison.InvariantCultureIgnoreCase) &&
+                !requestUri.StartsWith("/applications", StringComparison.InvariantCultureIgnoreCase))
             {
                 version = String.Empty;
                 return true;
