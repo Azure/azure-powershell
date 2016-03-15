@@ -47,8 +47,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             // validate daily retention schedule with schPolicy
             if(ltrPolicy.DailySchedule != null)
             {
-                ValidateRetentionAndBackupTimes(schPolicy.ScheduleRunTimes, ltrPolicy.DailySchedule.RetentionTimes);
-               
+                ValidateRetentionAndBackupTimes(schPolicy.ScheduleRunTimes, ltrPolicy.DailySchedule.RetentionTimes);               
             }
 
             // validate weekly retention schedule with schPolicy
@@ -56,7 +55,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             {
                 ValidateRetentionAndBackupTimes(schPolicy.ScheduleRunTimes, ltrPolicy.WeeklySchedule.RetentionTimes);
 
-                // validate days of week 
+                // validate days of week - TBD
             }
 
             // validate monthly retention schedule with schPolicy
@@ -64,7 +63,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             {
                 ValidateRetentionAndBackupTimes(schPolicy.ScheduleRunTimes, ltrPolicy.MonthlySchedule.RetentionTimes);
 
-                // for monthly and weeklyFormat, validate days of week
+                // for monthly and weeklyFormat, validate days of week - - TBD
             }
 
             // validate yearly retention schedule with schPolicy
@@ -72,7 +71,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             {
                 ValidateRetentionAndBackupTimes(schPolicy.ScheduleRunTimes, ltrPolicy.YearlySchedule.RetentionTimes);
 
-                // for yearly and weeklyFormat, validate days of week
+                // for yearly and weeklyFormat, validate days of week - TBD
             }
         }
 
@@ -97,6 +96,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
         private static void ValidateRetentionAndScheduleDaysOfWeek(List<DayOfWeek> backupDOWList)
         {
+            // TBD
+
            /* if (backupDOWList.Count != DaysOfTheWeek.Count)
             {
                 throw new ArgumentException("DaysOfTheWeek of retention schedule  must be same of backup schedule DaysOfTheWeek");
@@ -110,9 +111,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             } */
         }
-
-
-
+                
         #endregion
     }
 }
